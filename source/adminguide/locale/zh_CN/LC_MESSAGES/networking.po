@@ -1,0 +1,900 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:04+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# e178ac0be7b0492e8a2edc6ed9be7a7b
+#: ../../networking.rst:18
+msgid "Setting Up Networking for Users"
+msgstr "用户网络设置"
+
+# 04f3cd2def1648f2a118dc72cdd5a592
+#: ../../networking.rst:21
+msgid "Overview of Setting Up Networking for Users"
+msgstr "用户网络设置概览"
+
+# 60188130ecb74037bd537749bcaf4750
+#: ../../networking.rst:23
+msgid ""
+"People using cloud infrastructure have a variety of needs and preferences "
+"when it comes to the networking services provided by the cloud. As a "
+"CloudStack administrator, you can do the following things to set up "
+"networking for your users:"
+msgstr "当涉及到云计算所提供的网络服务, 使用云基础设施的人都有各自不同的需求和喜好. 作为CloudStack管理员, 你可以为你的用户做下面的事情来设置网络:"
+
+# fb8952bb97144229abe5a477941ae76a
+#: ../../networking.rst:28
+msgid "Set up physical networks in zones"
+msgstr "在资源域里设置物理网络"
+
+# 8dd6941ef2c54c6bbabf956d9eb0680a
+#: ../../networking.rst:30
+msgid ""
+"Set up several different providers for the same service on a single physical"
+" network (for example, both Cisco and Juniper firewalls)"
+msgstr "在单个物理网卡上为同一服务设置不同的服务提供者(例如, 同时设置Cisco和Juniper的防火墙)"
+
+# d4c8d144d71e47c7b10f71c182941308
+#: ../../networking.rst:33
+msgid ""
+"Bundle different types of network services into network offerings, so users "
+"can choose the desired network services for any given virtual machine"
+msgstr "绑定不同类型的网络服务到网络方案中, 这样用户可以在给定的虚机中使用期望的网络服务."
+
+# f5309ffd41a14f77a9dd77113c106332
+#: ../../networking.rst:37
+msgid ""
+"Add new network offerings as time goes on so end users can upgrade to a "
+"better class of service on their network"
+msgstr "随着时间的推移, 添加新的网络方案以便是最终用户升级他们的网络服务."
+
+# 13b07adc896a416793148e27ab919b13
+#: ../../networking.rst:40
+msgid ""
+"Provide more ways for a network to be accessed by a user, such as through a "
+"project of which the user is a member"
+msgstr "提供更多的途径让一个用户访问一个网络, 比如通过用户所在的一个项目"
+
+# 75c4f2f501724f68be26715201e81f13
+#: ../../networking.rst:45
+msgid "About Virtual Networks"
+msgstr "关于虚拟网络"
+
+# 6e8b5c92233f49618f96673822e130e6
+#: ../../networking.rst:47
+msgid ""
+"A virtual network is a logical construct that enables multi-tenancy on a "
+"single physical network. In CloudStack a virtual network can be shared or "
+"isolated."
+msgstr "虚拟网络是使多租户在一个物理网络中的逻辑结构。在CloudStack中，虚拟网络可以被共享或隔离。"
+
+# e96b2f098a274b148edc9883c7424a27
+#: ../../networking.rst:53
+msgid "Isolated Networks"
+msgstr "独立的网络"
+
+# 3358619f0382468a9d2f2aea99522408
+#: ../../networking.rst:55
+msgid ""
+"An isolated network can be accessed only by virtual machines of a single "
+"account. Isolated networks have the following properties."
+msgstr "一个隔离的网络可以访问虚拟机的单一账户。隔离的网络具有下列性质。"
+
+# c84b0ce76be64977bad2361a036a55cf
+#: ../../networking.rst:58
+msgid "Resources such as VLAN are allocated and garbage collected dynamically"
+msgstr "如VLAN等资源被动态分配和垃圾收集"
+
+# 3eb29ededba94d0dbcb168491b1acda6
+#: ../../networking.rst:61
+msgid "There is one network offering for the entire network"
+msgstr "有一个用于整个网络的网络方案"
+
+# ff059c44a53e4765b488337444f9fd70
+#: ../../networking.rst:63
+msgid ""
+"The network offering can be upgraded or downgraded but it is for the entire "
+"network"
+msgstr "网络提供可升级或降级，但它是用于整个网络的"
+
+# d147367777724c05a61626c7756aae05
+#: ../../networking.rst:66
+msgid ""
+"For more information, see `“Configure Guest Traffic in an Advanced Zone” "
+"<networking2.html#configure-guest-traffic-in-an-advanced-zone>`_."
+msgstr "更多信息，参考`“在高级区域中配置来宾流量” <networking2.html#configure-guest-traffic-in-an-advanced-zone>`_."
+
+# 9cb58dfba63248058b6e4c2370250e1f
+#: ../../networking.rst:71
+msgid "Shared Networks"
+msgstr "共享网络"
+
+# 4b159336d5054af78283deb65966e56d
+#: ../../networking.rst:73
+msgid ""
+"A shared network can be accessed by virtual machines that belong to many "
+"different accounts. Network Isolation on shared networks is accomplished by "
+"using techniques such as security groups, which is supported only in Basic "
+"zones in CloudStack 3.0.3 and later versions."
+msgstr "共享网络可以被属于不同客户的虚拟机访问。共享网络中的网络隔离通过安全组实现（仅在CloudStack 3.0.3及以后的基本区域中支持）"
+
+# 0eed59cfbc8447e98bc84e58489e3ae7
+#: ../../networking.rst:78
+msgid "Shared Networks are created by the administrator"
+msgstr "管理员创建的共享网络"
+
+# b29eadf838f449549e16a2e745f711af
+#: ../../networking.rst:80
+msgid "Shared Networks can be designated to a certain domain"
+msgstr "在一个确定的哉中设计共享网络"
+
+# 956864b9c95e4fb98178b4a0ad4918d3
+#: ../../networking.rst:82
+msgid ""
+"Shared Network resources such as VLAN and physical network that it maps to "
+"are designated by the administrator"
+msgstr "共享网络资源如VLAN和物理网络，它映射到指定的管理员"
+
+# a9b84145482e4171bdf228084a5d51f4
+#: ../../networking.rst:85
+msgid "Shared Networks can be isolated by security groups"
+msgstr "共享网络通过安全组实现隔离"
+
+# 345abc742c6749aeb975b3453c70c387
+#: ../../networking.rst:87
+msgid "Public Network is a shared network that is not shown to the end users"
+msgstr "公网网络作为一个共享网络不会展示给终端用户"
+
+# 743e27f0ef1d415180cce8da2bb79724
+#: ../../networking.rst:89
+msgid ""
+"Source NAT per zone is not supported in Shared Network when the service "
+"provider is virtual router. However, Source NAT per account is supported. "
+"For information, see `“Configuring a Shared Guest Network” "
+"<networking2.html#configuring-a-shared-guest-network>`_."
+msgstr "当共享网络是由虚拟路由提供的服务，则每个区域是不支持Source NAT功能的。然而，每个帐户是支持Source NAT功能的。更多信息，参考`“配置共享来宾网络” <networking2.html#configuring-a-shared-guest-network>`_."
+
+# dfed0497ec374d71927a32da736f6b28
+#: ../../networking.rst:96
+msgid "Runtime Allocation of Virtual Network Resources"
+msgstr "虚拟网络资源的运行时分配"
+
+# 33c1cc37caa3449d8a22888ee5706153
+#: ../../networking.rst:98
+msgid ""
+"When you define a new virtual network, all your settings for that network "
+"are stored in CloudStack. The actual network resources are activated only "
+"when the first virtual machine starts in the network. When all virtual "
+"machines have left the virtual network, the network resources are garbage "
+"collected so they can be allocated again. This helps to conserve network "
+"resources."
+msgstr "当你定义一个新的虚拟网络，该网络的所有的设置都存储在CloudStack中。只有当第一台虚拟机在该网络中启动时，实际的网络资源才会被激活。当所有的虚拟机都离开了虚拟网络，系统进行网络资源垃圾收集，使它们能够重新分配。这有助于节约网络资源。"
+
+# c7699333b3c747f09b34f3a541caa725
+#: ../../networking.rst:107
+msgid "Network Service Providers"
+msgstr "网络服务提供者"
+
+# 90bd799fd2444d978136f72070afd1ca
+#: ../../networking.rst:110
+msgid ""
+"For the most up-to-date list of supported network service providers, see the"
+" CloudStack UI or call `listNetworkServiceProviders`."
+msgstr "查看最新的网络服务提供者支持列表请见CloudStack用户界面或者调用listNetworkServiceProviders`.。"
+
+# 3f97bb088f7240d99034a78ca6adf65f
+#: ../../networking.rst:113
+msgid ""
+"A service provider (also called a network element) is hardware or virtual "
+"appliance that makes a network service possible; for example, a firewall "
+"appliance can be installed in the cloud to provide firewall service. On a "
+"single network, multiple providers can provide the same network service. For"
+" example, a firewall service may be provided by Cisco or Juniper devices in "
+"the same physical network."
+msgstr "服务提供者(也称为网络元件)是指通过硬件或虚拟应用来实现网络应用。比如，防火墙应用可以安装在云端来提供防火墙服务。在独立网络中多个提供者能提供相同的网络服务。比如，可以通过思科或者Juniper的设备在同一个物理网络中提供防火墙服务。"
+
+# e52ed5139a664c31acccd845de73897d
+#: ../../networking.rst:120
+msgid ""
+"You can have multiple instances of the same service provider in a network "
+"(say, more than one Juniper SRX device)."
+msgstr "在一个网络中你可以多个实例使用相同的服务提供者(也可以使用多个Juniper SRX设备)"
+
+# 013a36e42a254aaa98b7e3ad9ea97db8
+#: ../../networking.rst:123
+msgid ""
+"If different providers are set up to provide the same service on the "
+"network, the administrator can create network offerings so users can specify"
+" which network service provider they prefer (along with the other choices "
+"offered in network offerings). Otherwise, CloudStack will choose which "
+"provider to use whenever the service is called for."
+msgstr "如果不同提供者被设置在网络中提供相同服务，管理员可以通过创建网络提供方案，因此用户能够自己制定使用哪个物理网络提供者(要遵从网络提供方案中的其他选项)。否则CloudStack会在服务被需求的时候选择使用哪个提供者。"
+
+# eb5e7f69942b448f906dc822400a348c
+#: ../../networking.rst:129
+msgid "*Supported Network Service Providers*"
+msgstr "*支持的网络服务提供者*"
+
+# d43ecfbdacb84dac9d6ffe5229f277a3
+#: ../../networking.rst:131
+msgid ""
+"CloudStack ships with an internal list of the supported service providers, "
+"and you can choose from this list when creating a network offering."
+msgstr "CloudStack已经预置了一些内置的服务提供者支持列表。你能在创建网络提供方案的时候你能从这列表中选择。"
+
+# 5dd3d24c6aa149cd8be77c9e90e924fa
+#: ../../networking.rst:136
+msgid "Virtual Router"
+msgstr "虚拟路由"
+
+# 8f9be66568214ef19761bdd0b1e87a0a
+#: ../../networking.rst:136
+msgid "Citrix NetScaler"
+msgstr "Citrix NetScaler"
+
+# dccb0ff066124e7ca8f1f4b1df9b566a
+#: ../../networking.rst:136
+msgid "Juniper SRX"
+msgstr "Juniper SRX"
+
+# b6c9b2cf119641999eeded8e8069824f
+#: ../../networking.rst:136
+msgid "F5 BigIP"
+msgstr "F5 BigIP"
+
+# 4eec0320581e47cea2b8b9a6eb5c5b70
+#: ../../networking.rst:136
+msgid "Host based (KVM/Xen)"
+msgstr "Host based (KVM/Xen)"
+
+# 2c2f1239e908471a929feb91a02e08dd
+#: ../../networking.rst:139
+msgid "Remote Access VPN"
+msgstr "远程访问VPN"
+
+# 3ae9d08f24164c359e5553b13dd96db0
+# 0c7c9adabf9449babcb4553e3a59b52b
+# 411fef44341e42758013621c4a23b6b6
+# 6c934e881e7849368f5400433ea69f81
+# 1fc336068db6481183d8a01c5746f5e0
+# 8a397af8cc344e41b52173b2d9bce329
+# 8a7faf6012614a33a03fce7b63e06032
+# f4b01e6ad27f435bbe4aa4b14adc6cd9
+# 60fc90d0645a4e70a2b43c269d7d92ab
+# 72abbb0d60bb43e7ac7ca73f206aa8dd
+# 3f6508ced2f04ac2adcd337ac022d6b0
+# 5492ba67a1304fdb9b75910ef384ac85
+# 1b2c1c6af0814e59bd1d64623dec20d6
+# 76efa1585e2241eaaae3e5a45da37007
+# 933c860bae084ab4846ad9f7270712aa
+# c38c824dc105481f82f564a1071efb74
+#: ../../networking.rst:139 ../../networking.rst:141 ../../networking.rst:143
+#: ../../networking.rst:143 ../../networking.rst:145 ../../networking.rst:145
+#: ../../networking.rst:145 ../../networking.rst:147 ../../networking.rst:149
+#: ../../networking.rst:151 ../../networking.rst:151 ../../networking.rst:153
+#: ../../networking.rst:153 ../../networking.rst:153 ../../networking.rst:155
+#: ../../networking.rst:155
+msgid "Yes"
+msgstr "是"
+
+# d7b2c2af7ecd47769b0c7bb3013e1bbd
+# beb488a16e4646b3aa87280ad9216415
+# ad48bd439e3148fa94443e2df8acd5a1
+# 5151e216286b45c3b574d6658543a92c
+# ebc177c1de7040e687bb410d7c258141
+# c4efe853b93e471b814a74e0ed31f17d
+# e8ffc6413ca549d69b9a74e6508574d1
+# 8245b2e9c1934761a766679012c0a805
+# 16ec8446477c4c68aabd30136ee67fc0
+# 8a8f9ec35bea40f1853aba71a675887e
+# ec884b7505904c66b59ae39b287f3682
+# a1222a93d01240518b5a74fc57aee793
+# e4317cd2542d43ab90a5f054e18a7e58
+# 82eb13cd8e6a4c14828982cb7c145778
+# fdceedef2f9e43bbbb62a4fb09483cf2
+# 10e8e962affb46bd999d66cae4c189c0
+# 0c5c555a0d3748ac9a84b51b0aaff10a
+# 07903eb7e9fc46fbb91c64c77357409f
+# 98c2b214043b41dea4181a3d1d4726d8
+# ce61ff1d67ff4e90a5a5a722d0fef5f0
+# ded424a7c1b345f398e02e70edea8a5a
+# 9feb3d9ea53b45c5a8e95492710b7124
+# 562866fe2ede4c5f838067549ca5b4bd
+# f21d80c3b07e4fd69b54807235ed3cdb
+# e2d5fa4c2d874e8e90d4022e41f6a3ef
+# 4f7bcdd07de343638f1983951581d2a9
+# 6491fc2c462b4ae5ace77aa2cb534435
+# 248462887faa478ab6a39350b06d8262
+# 5f0d4dc5583a4a2eab7336f826b54b67
+#: ../../networking.rst:139 ../../networking.rst:139 ../../networking.rst:139
+#: ../../networking.rst:139 ../../networking.rst:141 ../../networking.rst:141
+#: ../../networking.rst:141 ../../networking.rst:141 ../../networking.rst:143
+#: ../../networking.rst:143 ../../networking.rst:143 ../../networking.rst:145
+#: ../../networking.rst:145 ../../networking.rst:147 ../../networking.rst:147
+#: ../../networking.rst:147 ../../networking.rst:147 ../../networking.rst:149
+#: ../../networking.rst:149 ../../networking.rst:149 ../../networking.rst:149
+#: ../../networking.rst:151 ../../networking.rst:151 ../../networking.rst:151
+#: ../../networking.rst:153 ../../networking.rst:153 ../../networking.rst:155
+#: ../../networking.rst:155 ../../networking.rst:155
+msgid "No"
+msgstr "否"
+
+# ab9d28c06dcf43d6b43310410d730272
+#: ../../networking.rst:141
+msgid "DNS/DHCP/User Data"
+msgstr "DNS/DHCP/User Data"
+
+# ec9a836945d54daa80b2790549b0e124
+# 98b80ddeb60c417e839a5e695b989f52
+# 155333ae90b64d45959ef29649a45d44
+#: ../../networking.rst:143 ../../networking.rst:180 ../../networking.rst:288
+msgid "Firewall"
+msgstr "防火墙"
+
+# ec3524d24a7c47479fbc5f696c94c8ba
+# 5d871878b8f6400babacd35334ff571b
+#: ../../networking.rst:145 ../../networking.rst:178
+msgid "Load Balancing"
+msgstr "负载均衡"
+
+# e9f00e30da4347368893885b9ebf0951
+#: ../../networking.rst:147
+msgid "Elastic IP"
+msgstr "弹性IP"
+
+# 2665ea2a6b90470e81ee706892bc8f12
+#: ../../networking.rst:149
+msgid "Elastic LB"
+msgstr "弹性负载均衡"
+
+# b07356b446e34c669846ad2c208ed183
+# 522b28c564644bf68213f95712c5b120
+# 2177095ff4a24da29d588bb4cd3c2f4a
+#: ../../networking.rst:151 ../../networking.rst:172 ../../networking.rst:289
+msgid "Source NAT"
+msgstr "Source NAT"
+
+# eea6bbfe102d498e8fed5cb73cc69b0d
+# c02a1aa3d43f4cde9668b0c049f5ca68
+# fdd23b4cdd3f4aa4a540bf84253e6a5b
+#: ../../networking.rst:153 ../../networking.rst:174 ../../networking.rst:292
+msgid "Static NAT"
+msgstr "静态 NAT"
+
+# b4c037f8d0f1486a8b571d432c94dfc2
+# 218d3d03262e42b2aff11ea6d99f0a49
+# 3ec6fc2e436743f7bf4b9704948e4af3
+#: ../../networking.rst:155 ../../networking.rst:176 ../../networking.rst:295
+msgid "Port Forwarding"
+msgstr "端口转发"
+
+# 479f4b962b404a428355bb406c787cd9
+#: ../../networking.rst:160
+msgid "Network Offerings"
+msgstr "网络方案"
+
+# 25cda5fdd680428d82d9dc0b90b9da3f
+#: ../../networking.rst:163
+msgid ""
+"For the most up-to-date list of supported network services, see the "
+"CloudStack UI or call listNetworkServices."
+msgstr "要查看最新的网络服务支持列表，请参见 CloudStack用户界面或者调用API listNetworkServices。"
+
+# 746c329fee3d40298682a774fc0e1ce0
+#: ../../networking.rst:166
+msgid "A network offering is a named set of network services, such as:"
+msgstr "网络方案是带名称的一套网络服务，例如："
+
+# 1f84716ebc364d34a628de273bfae124
+# 50ebc53bb5124166b60910b97ac86bc4
+#: ../../networking.rst:168 ../../networking.rst:283
+msgid "DHCP"
+msgstr "DHCP"
+
+# 883e0ebe77d94552b3e24415615a7bd9
+# 206e31a90b27475a957f3a6347b7e15d
+#: ../../networking.rst:170 ../../networking.rst:284
+msgid "DNS"
+msgstr "DNS"
+
+# c7ba4a3ce199420a8e1ffa59b6b5aa77
+# e018337607ad4a9d90fe4ef3ab26189e
+#: ../../networking.rst:182 ../../networking.rst:298
+msgid "VPN"
+msgstr "VPN"
+
+# 0c8566ee7245401e89972f62635febae
+#: ../../networking.rst:184
+msgid ""
+"(Optional) Name one of several available providers to use for a given "
+"service, such as Juniper for the firewall"
+msgstr "(可选)在服务的多个可选提供者中指定其一，例如Juniper作为防火墙服务"
+
+# 010067ad73c94e95ad457ead1a816c4e
+#: ../../networking.rst:187
+msgid "(Optional) Network tag to specify which physical network to use"
+msgstr "(可选)用于指定使用哪个物理网络的网络标签"
+
+# 27fc0e1384a041e280aad1d5c6497be1
+#: ../../networking.rst:189
+msgid ""
+"When creating a new VM, the user chooses one of the available network "
+"offerings, and that determines which network services the VM can use."
+msgstr "用户创建虚机时，需要选择一种可用的网络方案。该网络方案确定了虚机可使用的网络服务。"
+
+# f0629abea4a3489ab43c6616754295d7
+#: ../../networking.rst:192
+msgid ""
+"The CloudStack administrator can create any number of custom network "
+"offerings, in addition to the default network offerings provided by "
+"CloudStack. By creating multiple custom network offerings, you can set up "
+"your cloud to offer different classes of service on a single multi-tenant "
+"physical network. For example, while the underlying physical wiring may be "
+"the same for two tenants, tenant A may only need simple firewall protection "
+"for their website, while tenant B may be running a web server farm and "
+"require a scalable firewall solution, load balancing solution, and alternate"
+" networks for accessing the database backend."
+msgstr "CloudStack ;提供了默认的网络方案，在此之外，系统管理员可以添加任意数量的自定义网络方案。通过创建多种自定义网络方案，您可以在一个多租户的物理网络基础上提供不同级别的网络服务。例如，尽管两个租户的底层物理网络是一个，租户A可能仅需要用防火墙保护他们的网站，而租户B可能运行一个Web服务器集群，要求一个可扩展的防火墙方案、负载均衡方案、和用于访问后台数据库的可替代的网络。"
+
+# f84d6b9ac9d44d159518d14cc74cef39
+#: ../../networking.rst:204
+msgid ""
+"If you create load balancing rules while using a network service offering "
+"that includes an external load balancer device such as NetScaler, and later "
+"change the network service offering to one that uses the CloudStack virtual "
+"router, you must create a firewall rule on the virtual router for each of "
+"your existing load balancing rules so that they continue to function."
+msgstr "如果你创建了一个负载均衡规则且使用包括外部负载均衡设备的网络服务方案，如包括NetScaler，但随后将网络方案改成使用CloudStack的虚拟路由器，则你必须在虚拟路由器上创建一个防火墙规则，这些防火墙规则与已经设置的负载均衡规则一一对应，只有这样，才能使那些负载均衡规则继续起作用。"
+
+# 6a193ad193634184b47093dfab78d48b
+#: ../../networking.rst:211
+msgid ""
+"When creating a new virtual network, the CloudStack administrator chooses "
+"which network offering to enable for that network. Each virtual network is "
+"associated with one network offering. A virtual network can be upgraded or "
+"downgraded by changing its associated network offering. If you do this, be "
+"sure to reprogram the physical network to match."
+msgstr "创建新虚拟网络时，CloudStack 管理服务器可选择该网络使用的网络方案。每个虚拟网络都关联一个网络方案。虚拟网络可以通过改变关联的网络方案来升级或降级。如果您要这样做，请确保调整物理网络以匹配网络方案。"
+
+# 514547d261a44dbba069882e1163a863
+#: ../../networking.rst:217
+msgid ""
+"CloudStack also has internal network offerings for use by CloudStack system "
+"VMs. These network offerings are not visible to users but can be modified by"
+" administrators."
+msgstr "CloudStack 中有给系统虚机使用的内部网络方案。内部网络方案对最终用户是不可见的，但系统管理员可以对其修改。"
+
+# 9eab025e1e0b4102aabc5ed825ad3513
+#: ../../networking.rst:223
+msgid "Creating a New Network Offering"
+msgstr "创建一个新的网络方案"
+
+# 101c5c58b3164f2d91d7c068fa2ddc13
+#: ../../networking.rst:225
+msgid "To create a network offering:"
+msgstr "创建一个新的网络方案"
+
+# ad144ea208224f0ba8bfd3d268ebaa1a
+#: ../../networking.rst:227
+msgid "Log in with admin privileges to the CloudStack UI."
+msgstr "以管理员权限登录CloudStack用户界面。"
+
+# 7183c1c87f1e4a549609755e3b609e22
+#: ../../networking.rst:229
+msgid "In the left navigation bar, click Service Offerings."
+msgstr "在左侧导航栏中，点击 服务方案。"
+
+# 22b7bae2bee145399e00d289bccc7917
+#: ../../networking.rst:231
+msgid "In Select Offering, choose Network Offering."
+msgstr "在选择方案中，选择网络方案。"
+
+# ef1169d122904044a6c0246757cbbb46
+#: ../../networking.rst:233
+msgid "Click Add Network Offering."
+msgstr "点击添加网络方案。"
+
+# 3479c8e9a5ef4f458aa9a86725ea9a15
+#: ../../networking.rst:235
+msgid "In the dialog, make the following choices:"
+msgstr "在对话框中，选择如下操作："
+
+# b9faa7d006ed43108fcd33897fea3a5f
+#: ../../networking.rst:237
+msgid "**Name**. Any desired name for the network offering."
+msgstr "**名称**: 任何网络方案的名称。"
+
+# 28d48401d7c74f61a6251f06e8e33ea5
+#: ../../networking.rst:239
+msgid ""
+"**Description**. A short description of the offering that can be displayed "
+"to users."
+msgstr "**描述**: 提供一个简短的方案描述。 "
+
+# a81d203163fd41108b4ed24231b5c84d
+#: ../../networking.rst:242
+msgid "**Network Rate**. Allowed data transfer rate in MB per second."
+msgstr "**网络速度**: 允许的数据传输速度（MB/秒）。"
+
+# bf34e4c1410c487c81e21d82564c0ceb
+#: ../../networking.rst:244
+msgid ""
+"**Guest Type**. Choose whether the guest network is isolated or shared."
+msgstr "**来宾类型**: 选择来宾网络为隔离或共享网络。"
+
+# 636bbcf4e8ff4e89bc5a3263fa3152fd
+#: ../../networking.rst:247
+msgid ""
+"For a description of this term, see `“About Virtual Networks” <#about-"
+"virtual-networks>`_."
+msgstr "关于此组的描述，参考 see `“关于虚拟网络” <#about-virtual-networks>`_."
+
+# d9e50bd69812476c975c4eb28509a054
+#: ../../networking.rst:250
+msgid ""
+"**Persistent**. Indicate whether the guest network is persistent or not. The"
+" network that you can provision without having to deploy a VM on it is "
+"termed persistent network. For more information, see `“Persistent Networks” "
+"<networking2.html#persistent-networks>`_."
+msgstr "**持续性**: 表明来宾网络是否支持持续性。无需提供任何VM部署的网络，称之为持续性网络。更多信息，参考 `“持久性网络” <networking2.html#persistent-networks>`_."
+
+# a78fcf61c20941b4a0074b52d456b4fb
+#: ../../networking.rst:256
+msgid ""
+"**Specify VLAN**. (Isolated guest networks only) Indicate whether a VLAN "
+"could be specified when this offering is used. If you select this option and"
+" later use this network offering while creating a VPC tier or an isolated "
+"network, you will be able to specify a VLAN ID for the network you create."
+msgstr "**指定VLAN**.(只针对隔离来宾网络)这表明无论使用这个方案时是否指定了VLAN，如果你选中了这个选项，并且当你创建VPC层或隔离网络时使用了这个网络方案，那么，你都可以为你创建的网络拽定一个VLAN ID。"
+
+# 0c356efbc6b1453083e1df0e795cfc3f
+#: ../../networking.rst:262
+msgid ""
+"**VPC**. This option indicate whether the guest network is Virtual Private "
+"Cloud-enabled. A Virtual Private Cloud (VPC) is a private, isolated part of "
+"CloudStack. A VPC can have its own virtual network topology that resembles a"
+" traditional physical network. For more information on VPCs, see `“About "
+"Virtual Private Clouds” <networking2.html#about-virtual-private-clouds>`_."
+msgstr "**VPC**: 此选项表明是否在来宾网络中启用VPC。 CloudStack中的虚拟专用云(VPC)是专用、隔离的。 一个VPC可以有一个类似于传统物理网络的虚拟网络拓扑结构。有关的VPC的详细信息，请参考 see `“关于VPC” <networking2.html#about-virtual-private-clouds>`_."
+
+# 99699a8ca7b8442b9273331bf3721599
+#: ../../networking.rst:269
+msgid ""
+"**Supported Services**. Select one or more of the possible network services."
+" For some services, you must also choose the service provider; for example, "
+"if you select Load Balancer, you can choose the CloudStack virtual router or"
+" any other load balancers that have been configured in the cloud. Depending "
+"on which services you choose, additional fields may appear in the rest of "
+"the dialog box."
+msgstr "**支持的服务**.选择一个或多个可能的网络服务。对于有一个服务，你还必须同时选择服务的提供者。比如，如果你选择了负载均衡服务，那你可以CLOUDSTACK虚拟路由或是云环境中其它配置了此功能的服务者。取决于你选择服务的不同，额外的选项或是对话框的填写项也会相应不同。"
+
+# 92f1a16c1ffe4ceb84808c9ba972cbd4
+#: ../../networking.rst:277
+msgid ""
+"Based on the guest network type selected, you can see the following "
+"supported services:"
+msgstr "基于你选择的来宾网络类型，可以看到如何支持的服务。"
+
+# 88a57a6470eb454ba571d8fde5632a82
+#: ../../networking.rst:281
+msgid "Supported Services"
+msgstr "支持的服务"
+
+# d4aa55848ef645639458f908896ac697
+#: ../../networking.rst:281
+msgid "Description"
+msgstr "描述"
+
+# f8724e6bbae14251ae83b23169d9420f
+#: ../../networking.rst:281
+msgid "Isolated"
+msgstr "隔离"
+
+# 23bd72f8680a493682d6741602166846
+#: ../../networking.rst:281
+msgid "Shared"
+msgstr "共享"
+
+# b488c5b17c004a7b88b330efbc3bc05f
+# 9817c5466dbe4abf99c2de124120bbed
+#: ../../networking.rst:283 ../../networking.rst:284
+msgid ""
+"For more information, see `“DNS and DHCP” <networking2.html#dns-and-dhcp>`_."
+msgstr "更多信息，请参考 `“DNS and DHCP” <networking2.html#dns-and-dhcp>`_."
+
+# c4875cd1ba3341f0801c282d362f1d24
+# d065a3aee4944733bff2d01f26b75c7f
+# 9f736e032cce456ebb4f77be38b5e58f
+# 7df1ac5d383948bd84380b75c4e098af
+# 3ba5059895ef4d1c85924407662447ee
+# 3e841c3844b94853b7a8aaaed25cd4ad
+# c77eeef8c5314be099fb3716d3445a66
+# 25f106d12a764b078bb2b6524ad18215
+# f63379e1fe44403bb4b003d91fc04f93
+# 4f4951219e654f71ba852ba5238e8851
+# 15ddd915917341cb80019e9b900a4731
+# 8dacf6aaa0704e9db73a0126c94e16e5
+# 50e87369ed7e48e29d7cb426767a5ed8
+# c1b167740f9e43c2a17a96fbf65930bf
+# 22a23c6ed73740b8a269adc46484bd2a
+# bb47b4ce2443499aa4f5308fec5ed187
+# 8754a866d8d14c92a6556744cf012422
+#: ../../networking.rst:283 ../../networking.rst:283 ../../networking.rst:284
+#: ../../networking.rst:284 ../../networking.rst:285 ../../networking.rst:285
+#: ../../networking.rst:288 ../../networking.rst:288 ../../networking.rst:289
+#: ../../networking.rst:289 ../../networking.rst:292 ../../networking.rst:292
+#: ../../networking.rst:295 ../../networking.rst:298 ../../networking.rst:300
+#: ../../networking.rst:302 ../../networking.rst:304
+msgid "Supported"
+msgstr "支持"
+
+# 50819151ad5442aeb2570677b2632a46
+#: ../../networking.rst:285
+msgid "Load Balancer"
+msgstr "负载均衡"
+
+# b9edc8827ba44d2db0f62206a215e670
+#: ../../networking.rst:285
+msgid ""
+"If you select Load Balancer, you can choose the CloudStack virtual router or"
+" any other load balancers that have been configured in the cloud."
+msgstr "如果选择了负载均衡功能，你就可以选择CLOUDSTACK虚拟路由或是云环境中其它配置了此服务的提供者。"
+
+# 2e489054cb1e4a35ac3e90f70c1f1255
+#: ../../networking.rst:288
+msgid "For more information, see the Administration Guide."
+msgstr "更多信息，请参考管理指南"
+
+# 8e117eda9d13423c93e568f0818cc4d9
+#: ../../networking.rst:289
+msgid ""
+"If you select Source NAT, you can choose the CloudStack virtual router or "
+"any other Source NAT providers that have been configured in the cloud."
+msgstr "如果选择了 Source NAT功能，你就可以选择CLOUDSTACK虚拟路由或是云环境中其它配置了此服务的提供者。 "
+
+# aba8109b051a46d89785cb597e382503
+#: ../../networking.rst:292
+msgid ""
+"If you select Static NAT, you can choose the CloudStack virtual router or "
+"any other Static NAT providers that have been configured in the cloud."
+msgstr "如果选择了Static NAT功能，你就可以选择CLOUDSTACK虚拟路由或是云环境中其它配置了此服务的提供者。"
+
+# d932fb3f0c49487e8fb03f47c8ec3137
+#: ../../networking.rst:295
+msgid ""
+"If you select Port Forwarding, you can choose the CloudStack virtual router "
+"or any other Port Forwarding providers that have been configured in the "
+"cloud."
+msgstr "如果选择了端口转发功能，你就可以选择CLOUDSTACK虚拟路由或是云环境中其它配置了此服务的提供者。"
+
+# ba3080b2df494a6194c5a4ec14bd1410
+# 5c07262385d1478c927953b93692e644
+# 23f57ac958b34548a1c2d23a776e1da8
+# c3490a0f19134b8b886f204a4794c427
+# 111a4f3a414c443cb13dcb958326620f
+#: ../../networking.rst:295 ../../networking.rst:298 ../../networking.rst:300
+#: ../../networking.rst:302 ../../networking.rst:304
+msgid "Not Supported"
+msgstr "不支持"
+
+# ab512b24e90a4f0fbeff2872914232bf
+#: ../../networking.rst:298
+msgid ""
+"For more information, see `“Remote Access VPN” <networking2.html#remote-"
+"access-vpn>`_."
+msgstr "更多信息，请参考`“Remote Access VPN” <networking2.html#remote-access-vpn>`_."
+
+# bc836dbec7dd41098535b7062953abf7
+#: ../../networking.rst:300
+msgid "User Data"
+msgstr "用户数据"
+
+# 2ee92986a8924dd1a8704e477e3ce1a6
+#: ../../networking.rst:300
+msgid ""
+"For more information, see `“User Data and Meta Data” <api.html#user-data-"
+"and-meta-data>`_."
+msgstr "更多信息，请参考 `“用户数据和元数据” <api.html#user-data-and-meta-data>`_."
+
+# c84e2a3c0cb2440f96442843325bf941
+#: ../../networking.rst:302
+msgid "Network ACL"
+msgstr "网络 ACL"
+
+# 1a00657b608e45b9b31d17dedf1209d9
+#: ../../networking.rst:302
+msgid ""
+"For more information, see `“Configuring Network Access Control List” "
+"<networking2.html#configuring-network-access-control-list>`_."
+msgstr "更多信息，参考 `“配置网络ACL” <networking2.html#configuring-network-access-control-list>`_."
+
+# 72b47ce7c25a4820af0c52549a594235
+#: ../../networking.rst:304
+msgid "Security Groups"
+msgstr "安全组"
+
+# 08f3a340905b433990695bcc9c4fdd28
+#: ../../networking.rst:304
+msgid ""
+"For more information, see `“Adding a Security Group” "
+"<networking2.html#adding-a-security-group>`_."
+msgstr "更多信息，请参考 `“添加一个安全组” <networking2.html#adding-a-security-group>`_."
+
+# e235b3337dbb400c90ecee3f5837fde2
+#: ../../networking.rst:309
+msgid ""
+"**System Offering**. If the service provider for any of the services "
+"selected in Supported Services is a virtual router, the System Offering "
+"field appears. Choose the system service offering that you want virtual "
+"routers to use in this network. For example, if you selected Load Balancer "
+"in Supported Services and selected a virtual router to provide load "
+"balancing, the System Offering field appears so you can choose between the "
+"CloudStack default system service offering and any custom system service "
+"offerings that have been defined by the CloudStack root administrator."
+msgstr "**系统方案**.如果你在任务服务提供者中选择了虚拟路由，那就会出现系统方案的填写项。选择你希望虚拟路由在此网络中提供的服务。比如，如果你选择了虚拟路由提供负载均衡服务，系统方案填写项就会出现，你可以选择CLOUDSTACK管理员定义的所有系统服务及默认服务。 "
+
+# 34b519afb51c4d1f9b1718b0f32cb527
+#: ../../networking.rst:319
+msgid ""
+"For more information, see `“System Service Offerings” "
+"<service_offerings.html#system-service-offerings>`_."
+msgstr "更多信息，参考 `“系统服务方案” <service_offerings.html#system-service-offerings>`_."
+
+# 66fb3b1df7164cd6bc37c61a61367d73
+#: ../../networking.rst:322
+msgid ""
+"**LB Isolation**: Specify what type of load balancer isolation you want for "
+"the network: Shared or Dedicated."
+msgstr "**负载均衡隔离**:指定一种你希望的网络里的负载均衡隔离类型：共享的或单独的。"
+
+# a07b6242746142e18198a5bf7356254f
+#: ../../networking.rst:325
+msgid ""
+"**Dedicated**: If you select dedicated LB isolation, a dedicated load "
+"balancer device is assigned for the network from the pool of dedicated load "
+"balancer devices provisioned in the zone. If no sufficient dedicated load "
+"balancer devices are available in the zone, network creation fails. "
+"Dedicated device is a good choice for the high-traffic networks that make "
+"full use of the device's resources."
+msgstr "**单独的**:如果你选择了单独的负载均衡隔离类型，这个区域内的单独负载均衡设备资源池里就会分出一个设备来供使用。如果没有足够的设备，网络创建就会失败。如果要在高流量环境充分利用设备，单独的负载均衡设备是一个很好的选择。"
+
+# 1481728f6860436790f1bbdf1de1b4d0
+#: ../../networking.rst:333
+msgid ""
+"**Shared**: If you select shared LB isolation, a shared load balancer device"
+" is assigned for the network from the pool of shared load balancer devices "
+"provisioned in the zone. While provisioning CloudStack picks the shared load"
+" balancer device that is used by the least number of accounts. Once the "
+"device reaches its maximum capacity, the device will not be allocated to a "
+"new account."
+msgstr "**共享的**:如果你选择了共享的负载均衡设备， 这个区域内的共享负载均衡设备资源池里就会分出一个设备来供使用。CloudStack会将共享设备分配给不少于一定量的帐号共用，如果共享设备到达了最大数量，则这个设备不会再分配给新的帐号使用。"
+
+# 232eced6797144d7b6cb941627e8d2e6
+#: ../../networking.rst:341
+msgid "**Mode**: You can select either Inline mode or Side by Side mode:"
+msgstr "**模式**: 你可以选择 Inline mode 或 Side by Side 模式:"
+
+# 7684aca0c54c44fb9871f784de706a13
+#: ../../networking.rst:343
+msgid ""
+"**Inline mode**: Supported only for Juniper SRX firewall and BigF5 load "
+"balancer devices. In inline mode, a firewall device is placed in front of a "
+"load balancing device. The firewall acts as the gateway for all the incoming"
+" traffic, then redirect the load balancing traffic to the load balancer "
+"behind it. The load balancer in this case will not have the direct access to"
+" the public network."
+msgstr "**Inline mode**: 这种模式只被Juniper SRX 和BigF5负载均衡设备支持。在Inline mode模式下，防火墙设备放在负载均衡设置的前端，这个防火墙作为进入流量的网关，所有的流量会被转发到后端的负载均衡设备上。在这种情况下，负载均衡不是直接连接到公网网络的。"
+
+# a5a609bdc196450fb249b0fed2b62618
+#: ../../networking.rst:351
+msgid ""
+"**Side by Side**: In side by side mode, a firewall device is deployed in "
+"parallel with the load balancer device. So the traffic to the load balancer "
+"public IP is not routed through the firewall, and therefore, is exposed to "
+"the public network."
+msgstr "*Side by Side**:在Side by Side模式下，防火墙设备和负载均衡设备是并列的。所以所有的流量都是直接到负载均衡设备而不经过防火墙。因此，负载均衡设备是直接暴露在公网中的。"
+
+# fddae68fcb5145e68976043eb707eed5
+#: ../../networking.rst:356
+msgid ""
+"**Associate Public IP**: Select this option if you want to assign a public "
+"IP address to the VMs deployed in the guest network. This option is "
+"available only if"
+msgstr "**关联的公网IP**:如果你想给来宾网络中的虚拟机直接分配公网IP，选择这个选项。这个选择只有在以下情况都满足时才有效："
+
+# b6cedd774fb4418b8c7f09c30e492ac5
+#: ../../networking.rst:360
+msgid "Guest network is shared."
+msgstr "来宾网络被共享"
+
+# c011835f1c314df2afcb840630a7ff99
+#: ../../networking.rst:362
+msgid "StaticNAT is enabled."
+msgstr "启用StaticNAT "
+
+# fcd9521a7c684aaaaacf045798eaaf33
+#: ../../networking.rst:364
+msgid "Elastic IP is enabled."
+msgstr "启用弹性IP"
+
+# 9818049dc1484f41b94a2c0c3904838d
+#: ../../networking.rst:366
+msgid ""
+"For information on Elastic IP, see `“About Elastic IP” <networking2.html"
+"#about-elastic-ip>`_."
+msgstr "更多信息，参考`“关于弹性IP” <networking2.html#about-elastic-ip>`_."
+
+# 6c9c68a68ab14d30a00460dd3b13f8a6
+#: ../../networking.rst:369
+msgid ""
+"**Redundant router capability**: Available only when Virtual Router is "
+"selected as the Source NAT provider. Select this option if you want to use "
+"two virtual routers in the network for uninterrupted connection: one "
+"operating as the master virtual router and the other as the backup. The "
+"master virtual router receives requests from and sends responses to the "
+"user’s VM. The backup virtual router is activated only when the master is "
+"down. After the failover, the backup becomes the master virtual router. "
+"CloudStack deploys the routers on different hosts to ensure reliability if "
+"one host is down."
+msgstr "**冗余路由性能**:这个选项只有在虚拟路由作为Source NAT提供者时才是可选的。如果你希望提供不间断的网络连接，选中这个选项，则系统会提供两个虚拟路由：一个主的，一个辅的。主虚拟路由负载收发用户虚拟机器的相关请深圳市。如主的路由DOWN掉时，由辅助路由升级为主路由接替工作。CloudStack 会将两个邪气路由分别部署在不同的主机上，以保证可用性。"
+
+# e5994ec5233c4a979624fa1fc8593822
+#: ../../networking.rst:380
+msgid ""
+"**Conserve mode**: Indicate whether to use conserve mode. In this mode, "
+"network resources are allocated only when the first virtual machine starts "
+"in the network. When conservative mode is off, the public IP can only be "
+"used for a single service. For example, a public IP used for a port "
+"forwarding rule cannot be used for defining other services, such as "
+"StaticNAT or load balancing. When the conserve mode is on, you can define "
+"more than one service on the same public IP."
+msgstr "**Conserve mode**: 这个选项表明是滞要使用Conserve模式。在这种模式下，网络资源只会分配给网络里第一个启动的虚拟机。当Conserve模式被关闭时，公网IP只能用于一个设备。比如，一个用于端口转发规则的公网IP不会被用于其它StaticNAT或是负载均衡服务。当Conserve模式启用时，你可以在同一个公网IP上定义多个服务。"
+
+# 6a2faa335b6b42588d747ac83fc4770b
+#: ../../networking.rst:390
+msgid ""
+"If StaticNAT is enabled, irrespective of the status of the conserve mode, no"
+" port forwarding or load balancing rule can be created for the IP. However, "
+"you can add the firewall rules by using the createFirewallRule command."
+msgstr "如果StaticNAT启用后，不考虑conseve模式的状态，则此IP不会创建端口转发或是负载均衡规则。然而，你可以通过 createFirewallRule命令添加防火墙规则。"
+
+# 029a76d3e8444e15981d3fda29b8982e
+#: ../../networking.rst:395
+msgid "**Tags**: Network tag to specify which physical network to use."
+msgstr "**标签**:网络标签用于指定所要使用的物理网络。 "
+
+# e0d7d2460dba47d29922d3dcf0d16dc5
+#: ../../networking.rst:397
+msgid ""
+"**Default egress policy**: Configure the default policy for firewall egress "
+"rules. Options are Allow and Deny. Default is Allow if no egress policy is "
+"specified, which indicates that all the egress traffic is accepted when a "
+"guest network is created from this offering."
+msgstr "**默认外出策略**: 为防火墙配置默认的外出流量规则。选项有阻止和允许。如果没有特别制定策略的话，所有外出流量都是允许的。这表明，从这个方案创建的客户网络是允许所有外出流量的。"
+
+# 6cf9fba73dda48b8801d8608ce2f52a4
+#: ../../networking.rst:403
+msgid ""
+"To block the egress traffic for a guest network, select Deny. In this case, "
+"when you configure an egress rules for an isolated guest network, rules are "
+"added to allow the specified traffic."
+msgstr "为了阻止客户网络的外出流量，选择阻止选项。在这种情况下，当你从一个隔离的客户网络配置一个外出规则时，添加一些特殊的规则以允许外出流量。"
+
+# fcfc7b9313f94bbda5ac1afbd8168f7c
+#: ../../networking.rst:407
+msgid "Click Add."
+msgstr "点击 添加"

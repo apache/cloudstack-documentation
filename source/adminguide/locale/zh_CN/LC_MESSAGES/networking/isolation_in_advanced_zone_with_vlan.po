@@ -1,0 +1,363 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:06+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 2ce5e59640934ab387652df180ce1583
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:18
+msgid "Isolation in Advanced Zone Using Private VLAN"
+msgstr "使用Private VLAN隔离高级Zone中的网络"
+
+# 813ada1771994469abac6b243cbc4ed6
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:20
+msgid ""
+"Isolation of guest traffic in shared networks can be achieved by using "
+"Private VLANs (PVLAN). PVLANs provide Layer 2 isolation between ports within"
+" the same VLAN. In a PVLAN-enabled shared network, a user VM cannot reach "
+"other user VM though they can reach the DHCP server and gateway, this would "
+"in turn allow users to control traffic within a network and help them deploy"
+" multiple applications without communication between application as well as "
+"prevent communication with other users' VMs."
+msgstr "在共享网络中的隔离来宾流量能被Private VLAN（PVLAN）获取。PVLANs提供同一个VLAN里端口间的2层网络隔离。在启用了PVLAN的共享网络，一个用户VM不能到达其他用户VM，但是他们能与DHCP服务器和网关通讯，反过来这样能允许用户去控制网络内部的流量，并且帮助他们像阻止与其他用户VMs通讯一样的去部署无需通讯的多个应用程序。"
+
+# 1f6fb3f08ede4dbcbd7c9017afd047dd
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:29
+msgid "Isolate VMs in a shared networks by using Private VLANs."
+msgstr "使用PVLAN在共享网络中隔离VMs。"
+
+# c578b86e668046b18652e81289fd1811
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:31
+msgid "Supported on KVM, XenServer, and VMware hypervisors"
+msgstr "在KVM，XenServer和VMware hypervisors中支持"
+
+# f410d2d58c4b4e91b95fec05d57cf0b8
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:33
+msgid ""
+"PVLAN-enabled shared network can be a part of multiple networks of a guest "
+"VM."
+msgstr "启用了PVLAN的共享网络可以是来宾VM的多个网络的一部分。"
+
+# 23d9d81e853644d8a8e311853c02a801
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:38
+msgid "About Private VLAN"
+msgstr "关于Private VLAN"
+
+# a83e1c8b0ee2433b8776507d78fdd2b4
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:40
+msgid ""
+"In an Ethernet switch, a VLAN is a broadcast domain where hosts can "
+"establish direct communication with each another at Layer 2. Private VLAN is"
+" designed as an extension of VLAN standard to add further segmentation of "
+"the logical broadcast domain. A regular VLAN is a single broadcast domain, "
+"whereas a private VLAN partitions a larger VLAN broadcast domain into "
+"smaller sub-domains. A sub-domain is represented by a pair of VLANs: a "
+"Primary VLAN and a Secondary VLAN. The original VLAN that is being divided "
+"into smaller groups is called Primary, which implies that all VLAN pairs in "
+"a private VLAN share the same Primary VLAN. All the secondary VLANs exist "
+"only inside the Primary. Each Secondary VLAN has a specific VLAN ID "
+"associated to it, which differentiates one sub-domain from another."
+msgstr "在以太网交换机中，VLAN是二层网络中的一个主机之间主机能建立直接通讯的广播域 。Private VLAN被设计成一个标准的VLAN的延伸，为了进一步细分逻辑广播域。一个规则的VLAN是单一广播域，但是一个 private VLAN将一个较大的VLAN广播域划分为较小的多个子域。子域表现为一对VLANs：一个主VLAN和一个辅助VLAN。被划分为较小组的原始VLAN叫主，这意味着所有的在private VLAN中的VLAN对共享着同一个主VLAN。所有的辅助VLANs存在与主VLAN中。每个辅助VLAN有一个特定的区别于其他子域VLAN ID。"
+
+# 4b8abf8fe1534c228333ad081037a150
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:53
+msgid ""
+"Three types of ports exist in a private VLAN domain, which essentially "
+"determine the behaviour of the participating hosts. Each ports will have its"
+" own unique set of rules, which regulate a connected host's ability to "
+"communicate with other connected host within the same private VLAN domain. "
+"Configure each host that is part of a PVLAN pair can be by using one of "
+"these three port designation:"
+msgstr "在private VLAN中有三种端口类型，它们实质上决定了所包含的主机的流量走势。每组端口都有自己唯一的策略，它能控制配置同一个private VLAN域中连接到端口的主机与其他已连接主机的通讯。使用下面三种端口定义中的一种来配置每个PVLAN对中的主机："
+
+# d369217099d04739b0c778e20ac02897
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:60
+msgid ""
+"**Promiscuous**: A promiscuous port can communicate with all the interfaces,"
+" including the community and isolated host ports that belong to the "
+"secondary VLANs. In Promiscuous mode, hosts are connected to promiscuous "
+"ports and are able to communicate directly with resources on both primary "
+"and secondary VLAN. Routers, DHCP servers, and other trusted devices are "
+"typically attached to promiscuous ports."
+msgstr "**混杂模式（Promiscuous）**：混杂模式的端口能与所有的接口通讯，包括可通讯与隔离属于辅助VLANs的主机端口。在混杂模式中，主机被连接到混在模式端口并且能够直接与主VLAN和辅助VLAN中的资源。典型的连接到混杂模式端口的是路由器，DHCP服务器和其他受信任的设备。"
+
+# 1e0c762b123d404eaedebd33003ad75b
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:68
+msgid ""
+"**Isolated VLANs**: The ports within an isolated VLAN cannot communicate "
+"with each other at the layer-2 level. The hosts that are connected to "
+"Isolated ports can directly communicate only with the Promiscuous resources."
+" If your customer device needs to have access only to a gateway router, "
+"attach it to an isolated port."
+msgstr "**隔离(Isolated)VLANs**: 隔离模式VLAN中的端口不能与其他二层网络中的端口通讯。连接隔离模式端口上的主机只能直接与混杂模式下的资源通讯。如果你的客户设备只访问网关路由器，请将其附加至隔离端口。"
+
+# 15e3128ebacd47afb6aa943d0f2a5df1
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:74
+msgid ""
+"**Community VLANs**: The ports within a community VLAN can communicate with "
+"each other and with the promiscuous ports, but they cannot communicate with "
+"the ports in other communities at the layer-2 level. In a Community mode, "
+"direct communication is permitted only with the hosts in the same community "
+"and those that are connected to the Primary PVLAN in promiscuous mode. If "
+"your customer has two devices that need to be isolated from other customers'"
+" devices, but to be able to communicate among themselves, deploy them in "
+"community ports."
+msgstr "**Community VLANs**：中的端口能与其他端口和混杂模式下的端口通讯，但是他们不能与二层网络中的其他community VLAN中的端口通讯。在Community模式下，主机能与同一community中的主机和连接到混杂模式中的主VLAN的主机可以通讯。如果你的客户有两个设备需要与其他客户的设备隔离，但是他们之间又要通讯，请将他们部署至 community 端口。"
+
+# 6a977183f6864375ada79a287e63bab3
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:84
+msgid "For further reading:"
+msgstr "延伸阅读："
+
+# ca791914bab54854b0b9c5cfdbb20be8
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:86
+msgid ""
+"`Understanding Private VLANs "
+"<http://www.cisco.com/en/US/docs/switches/lan/catalyst3750/software/release/12.2_25_see/configuration/guide/swpvlan.html#wp1038379>`_"
+msgstr "`理解 Private VLANs <http://www.cisco.com/en/US/docs/switches/lan/catalyst3750/software/release/12.2_25_see/configuration/guide/swpvlan.html#wp1038379>`_"
+
+# e676f05feb9a46d6974a4ed7048edad2
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:89
+msgid ""
+"`Cisco Systems' Private VLANs: Scalable Security in a Multi-Client "
+"Environment <http://tools.ietf.org/html/rfc5517>`_"
+msgstr "`Cisco Systems' Private VLANs: Scalable Security in a Multi-Client Environment <http://tools.ietf.org/html/rfc5517>`_"
+
+# d5429c82db8a47aa82c6bf7602605f93
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:92
+msgid ""
+"`Private VLAN (PVLAN) on vNetwork Distributed Switch - Concept Overview "
+"(1010691) <http://kb.vmware.com>`_"
+msgstr "`Private VLAN (PVLAN) on vNetwork Distributed Switch - Concept Overview (1010691) <http://kb.vmware.com>`_"
+
+# ad67b66852ee445b847bec89936c0d02
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:97
+msgid "Prerequisites"
+msgstr "先决条件"
+
+# 1f2367cd590b456b9590a9b2616c8ad5
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:99
+msgid "Use a PVLAN supported switch."
+msgstr "在支持的交换机上使用PVLAN。"
+
+# f2c1161babac465c93d8ff531d97174d
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:101
+msgid ""
+"See `Private VLAN Catalyst Switch Support Matrix "
+"<http://www.cisco.com/en/US/products/hw/switches/ps708/products_tech_note09186a0080094830.shtml>`_"
+" for more information."
+msgstr "更多信息，请参考 `Private VLAN Catalyst Switch Support Matrix <http://www.cisco.com/en/US/products/hw/switches/ps708/products_tech_note09186a0080094830.shtml>`_ "
+
+# d6805374b5244b3da5f5a39bbb521739
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:105
+msgid ""
+"All the layer 2 switches, which are PVLAN-aware, are connected to each "
+"other, and one of them is connected to a router. All the ports connected to "
+"the host would be configured in trunk mode. Open Management VLAN, Primary "
+"VLAN (public) and Secondary Isolated VLAN ports. Configure the switch port "
+"connected to the router in PVLAN promiscuous trunk mode, which would "
+"translate an isolated VLAN to primary VLAN for the PVLAN-unaware router."
+msgstr "将所有能识别PVLAN的二层交换机之间互连，并且其中一个要连至一个路由器。主机连接到的所有端口需配置为trunk模式。打开VLAN管理，主VLAN（公共网络）和隔离的辅助VLAN端口。配置交换机连接到路由器的端口为PVLAN混杂trunk，这样可以为不识别PVLAN的路由器转换一个隔离的VLAN到主VLAN。"
+
+# 3afd52bf2fa3442b8f0721d8bca53715
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:113
+msgid ""
+"Note that only Cisco Catalyst 4500 has the PVLAN promiscuous trunk mode to "
+"connect both normal VLAN and PVLAN to a PVLAN-unaware switch. For the other "
+"Catalyst PVLAN support switch, connect the switch to upper switch by using "
+"cables, one each for a PVLAN pair."
+msgstr "注意只有Cisco Catalyst 4500有PVLAN混杂trunk模式，可以连接所有普通VLAN和PVLAN到不能识别PVLAN的交换机。其他支持PVLAN的Catalyst交换机，在PVALN对中的每个交换机上使用级联线连接到上联交换机。"
+
+# 5ce2b463414844099564cd171152b994
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:118
+msgid "Configure private VLAN on your physical switches out-of-band."
+msgstr "在你的物理交换机上使用带外管理配置private VLAN。"
+
+# 2cd1aebdb79742a3ab786e439ef69d89
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:120
+msgid "Before you use PVLAN on XenServer and KVM, enable Open vSwitch (OVS)."
+msgstr "在XenServer和KVM上使用PVALN之前，请启用Open vSwitch (OVS)。"
+
+# 23029ff5d87847c3b9a551d1755aae1a
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:123
+msgid ""
+"OVS on XenServer and KVM does not support PVLAN natively. Therefore, "
+"CloudStack managed to simulate PVLAN on OVS for XenServer and KVM by "
+"modifying the flow table."
+msgstr "XenServer和KVM中的OVS不支持原生的PVLAN。因此，靠修改flow table，CloudStack为XenServer和KVM模拟OVS中的PVLAN。"
+
+# 1ab529fe7a53485da31a8085c5fc8181
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:129
+msgid "Creating a PVLAN-Enabled Guest Network"
+msgstr "配置一个启用了PVLAN的来宾网络"
+
+# 73811e0470e04b63a31d32549a8c882b
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:131
+msgid "Log in to the CloudStack UI as administrator."
+msgstr "作为管理员登录到CloudStack用户界面。"
+
+# f987d4525be34ae986962e374a48197f
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:133
+msgid "In the left navigation, choose Infrastructure."
+msgstr "在左边的导航，选择基础架构。"
+
+# 81a7cad61d0c43e3989e9742e6efb902
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:135
+msgid "On Zones, click View More."
+msgstr "在区域页面，点击查看全部。"
+
+# 62eb1c2209d34440987b38dc999dad75
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:137
+msgid "Click the zone to which you want to add a guest network."
+msgstr "选择要添加客户网络的那个区域。"
+
+# aeaece1bb557450383b2b0c0930b8d39
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:139
+msgid "Click the Physical Network tab."
+msgstr "点击物理网络标签卡。"
+
+# bdccf5bb73ce4a58b074c7db9f09db19
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:141
+msgid "Click the physical network you want to work with."
+msgstr "选择您要操作的物理网络。"
+
+# d325d3d79e0e41fd9ce93131ae2ea76a
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:143
+msgid "On the Guest node of the diagram, click Configure."
+msgstr "在客户节点界面，点击配置。"
+
+# 3254ff32eecc4e9b9ac57fc4f2219acd
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:145
+msgid "Click the Network tab."
+msgstr "点击网络选项卡。"
+
+# fdd056f25bee447e98028c9301071fd7
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:147
+msgid "Click Add guest network."
+msgstr "点击 添加来宾网络。"
+
+# f58f17bd25284897abbe7df71fc2c3fb
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:149
+msgid "The Add guest network window is displayed."
+msgstr "现实添加客户网络窗口。"
+
+# 5e421fb492504766a709b728f4fc51e5
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:151
+msgid "Specify the following:"
+msgstr "指定以下信息："
+
+# 606686347ca84fbc9a83c5f46c31d8ea
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:153
+msgid "**Name**: The name of the network. This will be visible to the user."
+msgstr "**Name**: 要建立的网络的名字。这个是用户可见的"
+
+# 73bbe5e4075e43f39b388b8b267c5401
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:156
+msgid ""
+"**Description**: The short description of the network that can be displayed "
+"to users."
+msgstr "**描述**: 提供一个简短的方案描述。 "
+
+# 17a0fe7f48cc4af3bbe7b8e52b6f6d1b
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:159
+msgid "**VLAN ID**: The unique ID of the VLAN."
+msgstr "**VLAN ID**: VLAN 的ID。"
+
+# 1656d47de54d42a788bc34e0a0c5f2e4
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:161
+msgid ""
+"**Secondary Isolated VLAN ID**: The unique ID of the Secondary Isolated "
+"VLAN."
+msgstr "**辅助隔离VLAN ID**：辅助隔离VLAN的唯一ID。"
+
+# 22e09670bce14054b1c11ce5ff049ba5
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:164
+msgid ""
+"For the description on Secondary Isolated VLAN, see `About Private VLAN\" "
+"<#about-private-vlan>`_."
+msgstr "更多关于辅助隔离VLAN的描述，请参考see `关于 Private VLAN\" <#about-private-vlan>`_."
+
+# 38765c8ae24048dba72826d07d096afe
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:167
+msgid "**Scope**: The available scopes are Domain, Account, Project, and All."
+msgstr "**Scope**: 可用的范围，包括域，帐户，项目和其他所以。"
+
+# 90706772c0084832b86742ce99f99d6e
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:170
+msgid ""
+"**Domain**: Selecting Domain limits the scope of this guest network to the "
+"domain you specify. The network will not be available for other domains. If "
+"you select Subdomain Access, the guest network is available to all the sub "
+"domains within the selected domain."
+msgstr "**Domain**: 域，指定客户网络范围的域。指定域中的网络相对其他域是隔离不可见的。如果指定子域访问，域中的客户网络将在所有的子域中可用。"
+
+# 7e174e9b956f4f2784d5196f1a30439f
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:176
+msgid ""
+"**Account**: The account for which the guest network is being created for. "
+"You must specify the domain the account belongs to."
+msgstr "**Account**: 这里的帐户是为建立客户网络所指定的。必须指定域中所属的帐户。"
+
+# d8216708afb2490c97e3cca13b2752dd
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:180
+msgid ""
+"**Project**: The project for which the guest network is being created for. "
+"You must specify the domain the project belongs to."
+msgstr "**Project**: 项目是客户网络所建立的项目。必须为这个项目指定域。"
+
+# 3aa0f96be4f84d1bae1f1744b108dff8
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:184
+msgid ""
+"**All**: The guest network is available for all the domains, account, "
+"projects within the selected zone."
+msgstr "**All**:  选择它，会让客户网络对这个区域（Zone）中的所有域，帐户和项目都可用。"
+
+# 339b47c6f0f94ca4a221c0f592e92d5b
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:187
+msgid ""
+"**Network Offering**: If the administrator has configured multiple network "
+"offerings, select the one you want to use for this network."
+msgstr "**网络提议**:  如果管理员已经配置了多个网络方案，可以选择你需要的那个。"
+
+# ae2111debd664f179fe8eb3b251587ff
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:191
+msgid "**Gateway**: The gateway that the guests should use."
+msgstr "**Guest gateway**:  虚拟机需要使用的网关。"
+
+# df6c332c5f7e427d867dcef1784c0731
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:193
+msgid "**Netmask**: The netmask in use on the subnet the guests will use."
+msgstr "**Netmask**:  虚拟机子网要使用的网络掩码。"
+
+# 5331fd382d74450c957ad9e5fa46a095
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:195
+msgid ""
+"**IP Range**: A range of IP addresses that are accessible from the Internet "
+"and are assigned to the guest VMs."
+msgstr "**IP Range**:  定义公网IP范围，这些IP用来访问公网或是从公网访问客户虚拟机。"
+
+# 6be7da6ede894331ad2082717f19c89d
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:198
+msgid ""
+"**Network Domain**: A custom DNS suffix at the level of a network. If you "
+"want to assign a special domain name to the guest VM network, specify a DNS "
+"suffix."
+msgstr "**网络域**:  如果你想为客户虚机网络定义一个域名，在此处输入后缀名。"
+
+# 0f106d1db97249348138b9cf76182524
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:202
+msgid "Click OK to confirm."
+msgstr "点击确定。"

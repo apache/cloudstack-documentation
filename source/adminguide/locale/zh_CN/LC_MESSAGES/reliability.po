@@ -1,0 +1,485 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:04+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 87e0763c1e254b4d865a6575d53cd476
+#: ../../reliability.rst:18
+msgid "System Reliability and High Availability"
+msgstr "系统可靠性与高可用性"
+
+# c2cb2128aadc481d823ace426cd60607
+#: ../../reliability.rst:21
+msgid "HA for Management Server"
+msgstr "管理服务器的HA"
+
+# 2cf0c6cbde074e988216174d32a34366
+#: ../../reliability.rst:23
+msgid ""
+"The CloudStack Management Server should be deployed in a multi-node "
+"configuration such that it is not susceptible to individual server failures."
+" The Management Server itself (as distinct from the MySQL database) is "
+"stateless and may be placed behind a load balancer."
+msgstr "CloudStack管理服务器可以部署为多节点的配置，使得它不容易受到单个服务器故障影响。管理服务器(不同于MySQL数据库)本身是无状态的，可以被部署在负载均衡设备后面。"
+
+# 0fa3d9ec6d144621b71b2a0077137930
+#: ../../reliability.rst:28
+msgid ""
+"Normal operation of Hosts is not impacted by an outage of all Management "
+"Serves. All guest VMs will continue to work."
+msgstr "停止的所有管理服务不会影响主机的正常操作。所有来宾VM将继续工作。"
+
+# 161abac9b6d7470bbf7a984e225c9a6d
+#: ../../reliability.rst:31
+msgid ""
+"When the Management Server is down, no new VMs can be created, and the end "
+"user and admin UI, API, dynamic load distribution, and HA will cease to "
+"work."
+msgstr "当管理主机下线后，不能创建新的VMs、最终用户，管理UI、API、动态负载以及HA都将停止工作。"
+
+# c2abacc0b20149d5b7a4683aedfe4f32
+#: ../../reliability.rst:37
+msgid "Management Server Load Balancing"
+msgstr "管理服务器负载均衡"
+
+# 0dc6eb435a354cf3b4279772461cbf7f
+#: ../../reliability.rst:39
+msgid ""
+"CloudStack can use a load balancer to provide a virtual IP for multiple "
+"Management Servers. The administrator is responsible for creating the load "
+"balancer rules for the Management Servers. The application requires "
+"persistence or stickiness across multiple sessions. The following chart "
+"lists the ports that should be load balanced and whether or not persistence "
+"is required."
+msgstr "CloudStack可以使用负载均衡器为多管理服务器提供一个虚拟IP。管理员负责创建管理服务器的负载均衡规则。应用程序需要跨多个持久性或stickiness的会话。下表列出了需要进行负载平衡的端口和是否有持久性要求。"
+
+# c998c6decbb94666aa6b7c6191a0f4ce
+#: ../../reliability.rst:46
+msgid "Even if persistence is not required, enabling it is permitted."
+msgstr "即使不需要持久性，也使它是允许的。"
+
+# fa7858c33d194002ade885780b974057
+#: ../../reliability.rst:49
+msgid "Source Port"
+msgstr "源端口"
+
+# 8e4749c413de4b28a281ada8d2d64112
+#: ../../reliability.rst:49
+msgid "Destination Port"
+msgstr "目标端口"
+
+# 044f0a55ef9143028e6a1442c2d75ee4
+#: ../../reliability.rst:49
+msgid "Protocol"
+msgstr "协议"
+
+# 50fdab6c4d254b51be652286846ebac8
+#: ../../reliability.rst:49
+msgid "Persistence Required?"
+msgstr "持续请求"
+
+# f5fcf842916f48bba5a1ef7630fe9998
+#: ../../reliability.rst:51
+msgid "80 or 443"
+msgstr "80或者443"
+
+# 3a276b78a619418392895c04f2b8e5f0
+#: ../../reliability.rst:51
+msgid "8080 (or 20400 with AJP)"
+msgstr "8080 (或者 20400 with AJP)"
+
+# d09ff40864724d449227f282f2c255b4
+#: ../../reliability.rst:51
+msgid "HTTP (or AJP)"
+msgstr "HTTP (或者AJP)"
+
+# 10b0e96112a54a5b92b53ee2ad9bf186
+# fb100cffa01e43e2b2b5880237a41528
+#: ../../reliability.rst:51 ../../reliability.rst:52
+msgid "Yes"
+msgstr "是"
+
+# f3007601ae444c0796d25c5e58d09d7a
+# 1393fb040df84ca781d1000f40e4794a
+#: ../../reliability.rst:52 ../../reliability.rst:52
+msgid "8250"
+msgstr "8250"
+
+# 6443f2a5e1d840699fd47b726ff379f9
+#: ../../reliability.rst:52
+msgid "TCP"
+msgstr "TCP"
+
+# 1e51ee3a6cd14a0a954cce617a60c19d
+# a50ea41d89cf476eadb2a4ad960c9c6a
+#: ../../reliability.rst:53 ../../reliability.rst:53
+msgid "8096"
+msgstr "8096"
+
+# c2b280074d6f40d685182ce0770b0146
+#: ../../reliability.rst:53
+msgid "HTTP"
+msgstr "HTTP"
+
+# 759f4cdc678a4b149c52cf0e39205f9c
+#: ../../reliability.rst:53
+msgid "No"
+msgstr "否"
+
+# a6f72463a9f44a83992ea95a6ca2d121
+#: ../../reliability.rst:56
+msgid ""
+"In addition to above settings, the administrator is responsible for setting "
+"the 'host' global config value from the management server IP to load "
+"balancer virtual IP address. If the 'host' value is not set to the VIP for "
+"Port 8250 and one of your management servers crashes, the UI is still "
+"available but the system VMs will not be able to contact the management "
+"server."
+msgstr "除了上面的设置，管理员还负责设置‘host’全局配置值，由管理服务器IP地址更改为负载均衡虚拟IP地址。如果‘host’值未设置为VIP的8250端口并且一台管理服务器崩溃时，用户界面依旧可用，但系统虚拟机将无法与管理服务器联系。"
+
+# 4ea4aac15f0649b9a4ec0335de47dde1
+#: ../../reliability.rst:65
+msgid "HA-Enabled Virtual Machines"
+msgstr "启用了HA的虚拟机"
+
+# c3b807bd9019482093758c219005a8af
+# 15a6c6ff487d4b4ab6f7088de5c25301
+#: ../../reliability.rst:67 ../../reliability.rst:84
+msgid ""
+"The user can specify a virtual machine as HA-enabled. By default, all "
+"virtual router VMs and Elastic Load Balancing VMs are automatically "
+"configured as HA-enabled. When an HA-enabled VM crashes, CloudStack detects "
+"the crash and restarts the VM automatically within the same Availability "
+"Zone. HA is never performed across different Availability Zones. CloudStack "
+"has a conservative policy towards restarting VMs and ensures that there will"
+" never be two instances of the same VM running at the same time. The "
+"Management Server attempts to start the VM on another Host in the same "
+"cluster."
+msgstr "用户可以给指定的虚拟机开启高可用特性。默认情况下所有的虚拟路由虚拟机和弹性负载均衡虚拟机自动开启了高可用特性。当CloudStack检测到开启了高可用特性的虚拟机崩溃时将会在相同的可用资源与中自动重新启动该虚拟机。高可用特性不会跨资源域执行。CloudStack采用比较保守的方式重启虚拟机，以确使不会同时运行两个相同的实例。管理服务器会尝试在本集群的另一台主机上开启该虚拟机。"
+
+# 07861c848b9c4db19a1648e1e80cfabd
+# 69462f0a341c4b64a73b9f2e6a9dbb2d
+#: ../../reliability.rst:77 ../../reliability.rst:94
+msgid ""
+"HA features work with iSCSI or NFS primary storage. HA with local storage is"
+" not supported."
+msgstr "高可用特性只在使用iSCSI和NFS做主存储的时候才可以使用。不支持使用本地存储作为主存储的高可用。"
+
+# d6b616e863194085b6c28e537822b4b0
+#: ../../reliability.rst:82
+msgid "HA for Hosts"
+msgstr "主机的HA"
+
+# 00c672182ced409dbf9628273c7e72cc
+#: ../../reliability.rst:99
+msgid "Dedicated HA Hosts"
+msgstr "专用的HA主机"
+
+# d615a157c03a46f8a4185819e7d53f6a
+#: ../../reliability.rst:101
+msgid ""
+"One or more hosts can be designated for use only by HA-enabled VMs that are "
+"restarting due to a host failure. Setting up a pool of such dedicated HA "
+"hosts as the recovery destination for all HA-enabled VMs is useful to:"
+msgstr "一台或更多台主机可以被设计为只有启用HA的VMs才能使用，这些VMs在主机出现问题的时候会重启。出于灾难恢复目的为所有启用了HA的VMs设置一个像专用HA主机这样的池是有用的："
+
+# 3b2ac4cb2fd24384adc49f8f6de78d12
+#: ../../reliability.rst:106
+msgid ""
+"Make it easier to determine which VMs have been restarted as part of the "
+"CloudStack high-availability function. If a VM is running on a dedicated HA "
+"host, then it must be an HA-enabled VM whose original host failed. (With one"
+" exception: It is possible for an administrator to manually migrate any VM "
+"to a dedicated HA host.)."
+msgstr "确定哪些VMs作为CloudStack高可用功能的一部分而重启是比较容易的。如果一个VM正运行在专用的HA主机上，那么它必须是一个启用了HA的，从失败的主机上迁移过来的VM。(有一个例外：它可能是管理员手工迁移过来的任何VM。)。"
+
+# 2814f71a4772417494be794e95ed6189
+#: ../../reliability.rst:112
+msgid ""
+"Keep HA-enabled VMs from restarting on hosts which may be reserved for other"
+" purposes."
+msgstr "出于其他目的，可能保留一些启用了HA的VMs在主机上不要重启。"
+
+# f29ad59410ba484d81a40d3ab33cfb75
+#: ../../reliability.rst:115
+msgid ""
+"The dedicated HA option is set through a special host tag when the host is "
+"created. To allow the administrator to dedicate hosts to only HA-enabled "
+"VMs, set the global configuration variable ha.tag to the desired tag (for "
+"example, \"ha\\_host\"), and restart the Management Server. Enter the value "
+"in the Host Tags field when adding the host(s) that you want to dedicate to "
+"HA-enabled VMs."
+msgstr "当创建了主机之后，通过指定一个主机标签来设置专用HA选项。要允许管理员只给启用了HA的VMs制定专用主机，请设置全局配置变量ha.tag为想要的tag(比如， \"ha\\_host\")，并且重启管理服务器。当添加你想给启用HA的VMs配置专用主机(s\n)时，在主机标签区域中输入值。"
+
+# d5444df1dd2240bea9615234f1703727
+#: ../../reliability.rst:123
+msgid ""
+"If you set ha.tag, be sure to actually use that tag on at least one host in "
+"your cloud. If the tag specified in ha.tag is not set for any host in the "
+"cloud, the HA-enabled VMs will fail to restart after a crash."
+msgstr "如果你设置ha.tag，请确认在你的云中至少有一台主机真的在使用该标签。如果在ha.tag中没有为云中的任何主机设置指定的标签，那么启用了HA的VMs在崩溃之后不会重启。"
+
+# 41dd6b225a02456f873c956ecc4e6018
+#: ../../reliability.rst:130
+msgid "Primary Storage Outage and Data Loss"
+msgstr "主存储故障和数据丢失"
+
+# 982e58c7dfd644a9a8e0eaf38fbf516a
+#: ../../reliability.rst:132
+msgid ""
+"When a primary storage outage occurs the hypervisor immediately stops all "
+"VMs stored on that storage device. Guests that are marked for HA will be "
+"restarted as soon as practical when the primary storage comes back on line. "
+"With NFS, the hypervisor may allow the virtual machines to continue running "
+"depending on the nature of the issue. For example, an NFS hang will cause "
+"the guest VMs to be suspended until storage connectivity is restored.Primary"
+" storage is not designed to be backed up. Individual volumes in primary "
+"storage can be backed up using snapshots."
+msgstr "当主存储发生故障，hypervisor 立即停止该存储设备上存储的所有虚拟机。客户机被标记为当主存储重新上线时，HA根据实际情况尽快将重新启动。使用NFS时，hypervisor 可以允许虚拟机继续运行，这取决于问题的性质。例如，NFS挂起将导致客户虚拟机暂停，直至恢复存储连接。主存储没有被设计进行备份。在主存储中的单个卷，可以使用快照备份。"
+
+# 2d193df58d2c4fcb867416d740fd9657
+#: ../../reliability.rst:144
+msgid "Secondary Storage Outage and Data Loss"
+msgstr "二级存储的故障和数据丢失"
+
+# 2d7b3415392e4e8ba762191a40dafa04
+#: ../../reliability.rst:146
+msgid ""
+"For a Zone that has only one secondary storage server, a secondary storage "
+"outage will have feature level impact to the system but will not impact "
+"running guest VMs. It may become impossible to create a VM with the selected"
+" template for a user. A user may also not be able to save snapshots or "
+"examine/restore saved snapshots. These features will automatically be "
+"available when the secondary storage comes back online."
+msgstr "由于一个资源域只有一个二级存储服务器，二级存储的中断将会对系统的一些功能产生影响，但不影响正在运行的客户虚拟机。可能会让用户无法选择模版来创建虚拟机。用户也可能无法保存快照，检查或恢复已保存的快照。当二级存储恢复连接后，这些功能也就可以自动恢复。"
+
+# 8cda194548a545c0864b2334b52ac6c1
+#: ../../reliability.rst:153
+msgid ""
+"Secondary storage data loss will impact recently added user data including "
+"templates, snapshots, and ISO images. Secondary storage should be backed up "
+"periodically. Multiple secondary storage servers can be provisioned within "
+"each zone to increase the scalability of the system."
+msgstr "二级存储的数据丢失将会影响最近添加的用户数据，包括模版、快照、和ISO镜像。二级存储应该进行定期备份。为每个资源域提供多个二级存储服务器能够增强系统的可扩展性。"
+
+# 5d6dd861732344e1a4563e92beaf4b89
+#: ../../reliability.rst:160
+msgid "Database High Availability"
+msgstr "数据库的高可用"
+
+# 2ab1e8b94c5447719fe99d7a1f876d22
+#: ../../reliability.rst:162
+msgid ""
+"To help ensure high availability of the databases that store the internal "
+"data for CloudStack, you can set up database replication. This covers both "
+"the main CloudStack database and the Usage database. Replication is achieved"
+" using the MySQL connector parameters and two-way replication. Tested with "
+"MySQL 5.1 and 5.5."
+msgstr "为了确保存储CloudStack内部数据的数据库的高可用性，你可以设置数据库复制。这涉及到所有CloudStack主数据库和用量数据库。复制是指完全使用MySQL连接参数和双向复制。MySQL 5.1和5.5已测试通过。"
+
+# 2f86c6796ebc476ba0a054b55ec4199d
+#: ../../reliability.rst:170
+msgid "How to Set Up Database Replication"
+msgstr "如何设置数据库复制"
+
+# 9c0172a3e34d439ca93117a4c922b4cf
+#: ../../reliability.rst:172
+msgid ""
+"Database replication in CloudStack is provided using the MySQL replication "
+"capabilities. The steps to set up replication can be found in the MySQL "
+"documentation (links are provided below). It is suggested that you set up "
+"two-way replication, which involves two database nodes. In this case, for "
+"example, you might have node1 and node2."
+msgstr "CloudStack中的数据库复制是由MySQL复制功能提供的。设置复制的步骤可在MySQL的文档中找到(链接在下面提供)。它建议你设置双向复制，涉及两个数据库节点。在这个情形下，比如，你可能有node1和node2。"
+
+# c0c448bf2d294f1f99d5a0715263bf84
+#: ../../reliability.rst:178
+msgid ""
+"You can also set up chain replication, which involves more than two nodes. "
+"In this case, you would first set up two-way replication with node1 and "
+"node2. Next, set up one-way replication from node2 to node3. Then set up "
+"one-way replication from node3 to node4, and so on for all the additional "
+"nodes."
+msgstr "你同样可以设置链式复制，这涉及到多于两个节点。在这个情况下，你可以先设置node1和node2的双向复制。然后，设置node2和node3的单向复制。在设置node3和node4的单向复制，其他所有的节点依次类推。"
+
+# 946a91ee699241e981ff92c48293ebe9
+#: ../../reliability.rst:184
+msgid "References:"
+msgstr "参考文献："
+
+# 0e89f25f5f474fa8a51de012dc293160
+#: ../../reliability.rst:186
+msgid ""
+"`http://dev.mysql.com/doc/refman/5.0/en/replication-howto.html "
+"<http://dev.mysql.com/doc/refman/5.0/en/replication-howto.html>`_"
+msgstr "`http://dev.mysql.com/doc/refman/5.0/en/replication-howto.html <http://dev.mysql.com/doc/refman/5.0/en/replication-howto.html>`_"
+
+# 4b174fc7f8484911b245607384172cae
+#: ../../reliability.rst:188
+msgid ""
+"`https://wikis.oracle.com/display/CommSuite/MySQL+High+Availability+and+Replication+Information+For+Calendar+Server"
+" "
+"<https://wikis.oracle.com/display/CommSuite/MySQL+High+Availability+and+Replication+Information+For+Calendar+Server>`_"
+msgstr "`https://wikis.oracle.com/display/CommSuite/MySQL+High+Availability+and+Replication+Information+For+Calendar+Server <https://wikis.oracle.com/display/CommSuite/MySQL+High+Availability+and+Replication+Information+For+Calendar+Server>`_"
+
+# 4fe437de91df4ffa8fe0925f0acdbfc5
+#: ../../reliability.rst:192
+msgid "Configuring Database High Availability"
+msgstr "配置数据库高可用"
+
+# f284eab37564471292cd2af70ef18ae5
+#: ../../reliability.rst:194
+msgid ""
+"To control the database high availability behavior, use the following "
+"configuration settings in the file /etc/cloudstack/management/db.properties."
+msgstr "要控制数据库高可用特性，在/etc/cloudstack/management/db.properties文件中使用以下配置设置。"
+
+# f79c8f4273854ceb83977ca0474e9594
+#: ../../reliability.rst:198
+msgid "**Required Settings**"
+msgstr "**需求设置**"
+
+# 239ea1c4ea2a4c428cbfdd0ae1d3c2a3
+#: ../../reliability.rst:200
+msgid "Be sure you have set the following in db.properties:"
+msgstr "确定你在 db.properties中使用了以下设置："
+
+# e03d864abdca47daa90be6c6c5eccecc
+#: ../../reliability.rst:202
+msgid ""
+"``db.ha.enabled``: set to true if you want to use the replication feature."
+msgstr "``db.ha.enabled``：如果你想使用复制功能，请设置为true。"
+
+# affe10ff738642c4b25a6cbfc26c498e
+#: ../../reliability.rst:205
+msgid "Example: ``db.ha.enabled=true``"
+msgstr "例如：``db.ha.enabled=true``"
+
+# 147ac9efb2314312b6e97323a267fd7c
+#: ../../reliability.rst:207
+msgid ""
+"``db.cloud.slaves``: set to a comma-delimited set of slave hosts for the "
+"cloud database. This is the list of nodes set up with replication. The "
+"master node is not in the list, since it is already mentioned elsewhere in "
+"the properties file."
+msgstr "``db.cloud.slaves``：为云数据库设置多台slave主机，用逗号隔开。这是用于复制的节点清单。主节点不在列表中，因为在属性文件中的别处已经使用了它。"
+
+# aa38f185ca8b4c1b86e19da970eb3901
+#: ../../reliability.rst:212
+msgid "Example: ``db.cloud.slaves=node2,node3,node4``"
+msgstr "例如：``db.cloud.slaves=node2,node3,node4``"
+
+# 1783ef0808884e28ab22f6b3172dba41
+#: ../../reliability.rst:214
+msgid ""
+"``db.usage.slaves``: set to a comma-delimited set of slave hosts for the "
+"usage database. This is the list of nodes set up with replication. The "
+"master node is not in the list, since it is already mentioned elsewhere in "
+"the properties file."
+msgstr "``db.usage.slaves``：为用量数据库设置多台slave主机，用逗号隔开。这是用于复制的节点清单。主节点不在列表中，因为在属性文件中的别处已经使用了它。"
+
+# 573fb04445dd4b0ba4f5b9a5f8517c75
+#: ../../reliability.rst:219
+msgid "Example: ``db.usage.slaves=node2,node3,node4``"
+msgstr "例如：``db.usage.slaves=node2,node3,node4``"
+
+# 739f9df2617d4e24aaa9adb209c65969
+#: ../../reliability.rst:221
+msgid "**Optional Settings**"
+msgstr "**可选的设置**"
+
+# 21e38ceba8e84d3f8b520026cae7d1b7
+#: ../../reliability.rst:223
+msgid ""
+"The following settings must be present in db.properties, but you are not "
+"required to change the default values unless you wish to do so for tuning "
+"purposes:"
+msgstr "必须在db.properties中提供以下设置，但是你不用改变默认值除非你希望做一些优化："
+
+# bcfa8dcb331c4185bab0cbdfbb3624ca
+#: ../../reliability.rst:227
+msgid ""
+"``db.cloud.secondsBeforeRetryMaster``: The number of seconds the MySQL "
+"connector should wait before trying again to connect to the master after the"
+" master went down. Default is 1 hour. The retry might happen sooner if "
+"db.cloud.queriesBeforeRetryMaster is reached first."
+msgstr "``db.cloud.secondsBeforeRetryMaster``：在master宕机之后，MySQL连接器重试连接到master之前所等待的秒数。默认是1小时。如果首先达到了db.cloud.queriesBeforeRetryMaster 的限制，重试可能更早发生。"
+
+# 55d7217f8ea6408e8389bd39dbbfc3fc
+#: ../../reliability.rst:232
+msgid "Example: ``db.cloud.secondsBeforeRetryMaster=3600``"
+msgstr "例如：``db.cloud.secondsBeforeRetryMaster=3600``"
+
+# d8cfb3b10706434d8ad7c63b231e7ee9
+#: ../../reliability.rst:234
+msgid ""
+"``db.cloud.queriesBeforeRetryMaster``: The minimum number of queries to be "
+"sent to the database before trying again to connect to the master after the "
+"master went down. Default is 5000. The retry might happen sooner if "
+"db.cloud.secondsBeforeRetryMaster is reached first."
+msgstr "``db.cloud.queriesBeforeRetryMaster``：在master宕机之后，重新尝试连接到master之前向数据库查询的最小次数。默认值是5000。如果首先达到了db.cloud.secondsBeforeRetryMaster的限制，重试可能更早发生。"
+
+# f7b672a867c64854accef70177a0dd73
+#: ../../reliability.rst:239
+msgid "Example: ``db.cloud.queriesBeforeRetryMaster=5000``"
+msgstr "例如：``db.cloud.queriesBeforeRetryMaster=5000``"
+
+# 2283aca3081443c585804a3c9d63a45d
+#: ../../reliability.rst:241
+msgid ""
+"``db.cloud.initialTimeout``: Initial time the MySQL connector should wait "
+"before trying again to connect to the master. Default is 3600."
+msgstr "``db.cloud.initialTimeout``：在重新尝试连接至master之前，MySQL连接器等待的初始时间。默认是3600。"
+
+# bae95908743e448b967b6992b4e88816
+#: ../../reliability.rst:244
+msgid "Example: ``db.cloud.initialTimeout=3600``"
+msgstr "例如：``db.cloud.initialTimeout=3600``"
+
+# 6b17824c97504228abd0de9726eb598e
+#: ../../reliability.rst:248
+msgid "Limitations on Database High Availability"
+msgstr "数据库高可用性的限制"
+
+# 5df2f93aff944e03bd3c9f9e21c95cb6
+#: ../../reliability.rst:250
+msgid ""
+"The following limitations exist in the current implementation of this "
+"feature."
+msgstr "目前此功能的实现还存在下列限制。"
+
+# 7c4a38ab45c943a489f2e7ae8f3ab0e2
+#: ../../reliability.rst:253
+msgid ""
+"Slave hosts can not be monitored through CloudStack. You will need to have a"
+" separate means of monitoring."
+msgstr "Slave主机不能被CloudStack监控。你必须有单独的监控手段。"
+
+# 5270e63b8008415bbe847a54002660bc
+#: ../../reliability.rst:256
+msgid ""
+"Events from the database side are not integrated with the CloudStack "
+"Management Server events system."
+msgstr "数据库端的事件没有集成到CloudStack管理服务器事件系统。"
+
+# 1bef8f38060a49e7ba30b234ad377f32
+#: ../../reliability.rst:259
+msgid ""
+"You must periodically perform manual clean-up of bin log files generated by "
+"replication on database nodes. If you do not clean up the log files, the "
+"disk can become full."
+msgstr "你必须定期的执行手动清除由数据库节点复制产生的二进制log文件。如果你不清理log文件，磁盘就会被占满。"

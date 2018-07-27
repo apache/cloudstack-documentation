@@ -1,0 +1,43 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../networking/networking_in_zone.rst:18
+# 3080bd3d63ce42f7970a7e111d5cc46b
+msgid "Networking in a Zone"
+msgstr ""
+
+#: ../../networking/networking_in_zone.rst:20
+# acc145c9dbbb43d0a4e7bcb5cdb804cb
+msgid "The following figure illustrates the network setup within a single zone."
+msgstr ""
+
+#: ../../networking/networking_in_zone.rst:22
+# a22b23e45435457b927cdcd248830e97
+msgid "|networksetupzone.png|"
+msgstr ""
+
+#: ../../networking/networking_in_zone.rst:24
+# 116d5e262cd547858fe9873be74c59da
+msgid "A firewall for management traffic operates in the NAT mode. The network typically is assigned IP addresses in the 192.168.0.0/16 Class B private address space. Each pod is assigned IP addresses in the 192.168.\\*.0/24 Class C private address space."
+msgstr ""
+
+#: ../../networking/networking_in_zone.rst:29
+# 7a1eee0be4da4ed3aa3c0854ab4c2230
+msgid "Each zone has its own set of public IP addresses. Public IP addresses from different zones do not overlap."
+msgstr ""
+

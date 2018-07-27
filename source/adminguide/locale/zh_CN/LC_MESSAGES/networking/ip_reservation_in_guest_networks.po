@@ -1,0 +1,282 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:06+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 25e21d9bd50e4db29764c09ec3255ea1
+#: ../../networking/ip_reservation_in_guest_networks.rst:18
+msgid "IP Reservation in Isolated Guest Networks"
+msgstr "隔离的来宾网络中的预留IP"
+
+# f043acb1e27b49aebecf48876dca90d4
+#: ../../networking/ip_reservation_in_guest_networks.rst:20
+msgid ""
+"In isolated guest networks, a part of the guest IP address space can be "
+"reserved for non-CloudStack VMs or physical servers. To do so, you configure"
+" a range of Reserved IP addresses by specifying the CIDR when a guest "
+"network is in Implemented state. If your customers wish to have non-"
+"CloudStack controlled VMs or physical servers on the same network, they can "
+"share a part of the IP address space that is primarily provided to the guest"
+" network."
+msgstr "在隔离的来宾网络中，来宾IP地址空间中的一部分可以被保留下来以供非CloudStack VMs或者物理服务器使用。要真么做，你应该在来宾网络应用状态时依靠指定CIDR来配置一个预留IP地址范围。如果你的客户希望在同一个网络中有非CloudStack控制的VMs或者物理服务器，它们可以共享一部分主要为来宾网络提供的IP地址空间。"
+
+# fe77cb19c33a475f9389f57e62e466e0
+#: ../../networking/ip_reservation_in_guest_networks.rst:28
+msgid ""
+"In an Advanced zone, an IP address range or a CIDR is assigned to a network "
+"when the network is defined. The CloudStack virtual router acts as the DHCP "
+"server and uses CIDR for assigning IP addresses to the guest VMs. If you "
+"decide to reserve CIDR for non-CloudStack purposes, you can specify a part "
+"of the IP address range or the CIDR that should only be allocated by the "
+"DHCP service of the virtual router to the guest VMs created in CloudStack. "
+"The remaining IPs in that network are called Reserved IP Range. When IP "
+"reservation is configured, the administrator can add additional VMs or "
+"physical servers that are not part of CloudStack to the same network and "
+"assign them the Reserved IP addresses. CloudStack guest VMs cannot acquire "
+"IPs from the Reserved IP Range."
+msgstr "在高级域中，定义一个网络时要给其赋予一个IP地址范围或CIDR。CloudStack虚拟路由器起着DHCP的作用，并通过CIDR来给客户虚拟机分配IP地址。如果为了预留CIDR不用于cloudstack，应当进行说明，即部分IP地址范围或CIDR仅能被DHCP服务分配给在cloudstack中创建的虚拟机。剩下的IP地址被称作预留IP地址范围。当预留的IP被配置时，管理员可以增加额外的虚拟机或并不属于cloudstack的物理服务器到同一个网络，可以将预留的IP地址指定给他们。cloudstack的客户虚拟机不能够从预留的IP地址中获得地址。"
+
+# 9428ab05bfce48cb9dce92078998854c
+#: ../../networking/ip_reservation_in_guest_networks.rst:43
+msgid "IP Reservation Considerations"
+msgstr "IP预留事项"
+
+# 5780d0b48e6f44cbb972018a31489ebb
+#: ../../networking/ip_reservation_in_guest_networks.rst:45
+msgid ""
+"Consider the following before you reserve an IP range for non-CloudStack "
+"machines:"
+msgstr "在给非cloudstack内的机器预留IP地址时，要考虑以下几个方面："
+
+# cc50e370af0c450588c711e282c0ac93
+#: ../../networking/ip_reservation_in_guest_networks.rst:48
+msgid "IP Reservation is supported only in Isolated networks."
+msgstr "IP预留仅在隔离网络内支持"
+
+# 9543f099f9de4fc3a8a815cd3cb04f40
+#: ../../networking/ip_reservation_in_guest_networks.rst:50
+msgid ""
+"IP Reservation can be applied only when the network is in Implemented state."
+msgstr "仅当网络在实施状态时，IP预留才能被应用。"
+
+# c7bc13975b37474299e4a7a65c56ed75
+#: ../../networking/ip_reservation_in_guest_networks.rst:53
+msgid "No IP Reservation is done by default."
+msgstr "默认不做IP预留。"
+
+# f7a970b25ef94f48bc75a5c8a5fd0a0c
+#: ../../networking/ip_reservation_in_guest_networks.rst:55
+msgid "Guest VM CIDR you specify must be a subset of the network CIDR."
+msgstr "指定客户的CIDR必须是网络CIDR的子网。"
+
+# a96a64591c4d498ca7c95b1458def6f3
+#: ../../networking/ip_reservation_in_guest_networks.rst:57
+msgid ""
+"Specify a valid Guest VM CIDR. IP Reservation is applied only if no active "
+"IPs exist outside the Guest VM CIDR."
+msgstr "指定一个有效的客户虚拟机CIDR。只有不活动的IP在客户虚拟机CIDR存在时，IP预留才能被应用。"
+
+# 0710411bb18c4764970dffcc49fe5dab
+#: ../../networking/ip_reservation_in_guest_networks.rst:60
+msgid ""
+"You cannot apply IP Reservation if any VM is alloted with an IP address that"
+" is outside the Guest VM CIDR."
+msgstr "如果任一虚拟机被分配了客户虚拟机CIDR之外的IP地址时，IP预留将不能应用。"
+
+# ba005fe1c84e4e5d8d8b2f2cbd904deb
+#: ../../networking/ip_reservation_in_guest_networks.rst:63
+msgid ""
+"To reset an existing IP Reservation, apply IP reservation by specifying the "
+"value of network CIDR in the CIDR field."
+msgstr "为重置一个已存在的IP预留，通过在CIDR框指定CIDR值就可应用IP预留。"
+
+# 23bef4e190a54c2298a52b3acb439c57
+#: ../../networking/ip_reservation_in_guest_networks.rst:66
+msgid ""
+"For example, the following table describes three scenarios of guest network "
+"creation:"
+msgstr "例如，下表描述了客户网络创建的三种情形："
+
+# fd80ccd9ee7947c6a41f35a77766ba87
+#: ../../networking/ip_reservation_in_guest_networks.rst:70
+msgid "Case"
+msgstr "案例"
+
+# 1b0d9124efce41c8bf2ff9c04f471053
+#: ../../networking/ip_reservation_in_guest_networks.rst:70
+msgid "CIDR"
+msgstr "CIDR"
+
+# 340cf6747d6449b09015c49437828468
+#: ../../networking/ip_reservation_in_guest_networks.rst:70
+msgid "Network CIDR"
+msgstr "网络CIDR"
+
+# ca9e89e3707343c6a6bb2e2c52dc4acd
+#: ../../networking/ip_reservation_in_guest_networks.rst:70
+msgid "Reserved IP Range for Non-CloudStack VMs"
+msgstr "非cloudstack虚拟机的IP预留范围"
+
+# e1395f7f735643f98e49f71acb302533
+#: ../../networking/ip_reservation_in_guest_networks.rst:70
+msgid "Description"
+msgstr "描述"
+
+# bfc721eb783042dbbd4049d97eeae50c
+#: ../../networking/ip_reservation_in_guest_networks.rst:72
+msgid "1"
+msgstr "1"
+
+# 07110191079642298d8d53f83f4a6fe7
+# a0e61e48b84a4bb297fead377ce043cf
+# d64231917df74c5189732a5fedd1d141
+#: ../../networking/ip_reservation_in_guest_networks.rst:72
+#: ../../networking/ip_reservation_in_guest_networks.rst:73
+#: ../../networking/ip_reservation_in_guest_networks.rst:76
+msgid "10.1.1.0/24"
+msgstr "10.1.1.0/24"
+
+# 865ea8d88306424bab506a500520c22e
+# 184b1eac870b483f910546a5d5b37906
+# 70f4868471d54ac882b8093eb1db9f74
+# 3c040050888741f09b3cee5a8482aca4
+#: ../../networking/ip_reservation_in_guest_networks.rst:72
+#: ../../networking/ip_reservation_in_guest_networks.rst:72
+#: ../../networking/ip_reservation_in_guest_networks.rst:76
+#: ../../networking/ip_reservation_in_guest_networks.rst:76
+msgid "None"
+msgstr "无"
+
+# 24e526351c7b4686b16e030bc869d399
+#: ../../networking/ip_reservation_in_guest_networks.rst:72
+msgid "No IP Reservation."
+msgstr "无"
+
+# 81f560cf3b4c47bbb2b781add102de88
+#: ../../networking/ip_reservation_in_guest_networks.rst:73
+msgid "2"
+msgstr "2"
+
+# 725f92aed0d44be3bb5865f246acc29d
+#: ../../networking/ip_reservation_in_guest_networks.rst:73
+msgid "10.1.1.0/26"
+msgstr "10.1.1.0/26"
+
+# 02e4012c8ce94d95a0c5e4d5088637fd
+#: ../../networking/ip_reservation_in_guest_networks.rst:73
+msgid "10.1.1.64 to 10.1.1.254"
+msgstr "10.1.1.64-10.1.1.254"
+
+# 8fe36bed92d2475bbdd0fa903eb8c54b
+#: ../../networking/ip_reservation_in_guest_networks.rst:73
+msgid ""
+"IP Reservation configured by the UpdateNetwork API with "
+"guestvmcidr=10.1.1.0/26 or enter 10.1.1.0/26 in the CIDR field in the UI."
+msgstr "在界面的CIDR框内输入10.1.1.0/26或通过UpdateNetwork的API配置为guestvmcidr=10.1.1.0/26，进行IP预留配置"
+
+# e2c363737b654228a0ac0581ba4c55c8
+#: ../../networking/ip_reservation_in_guest_networks.rst:76
+msgid "3"
+msgstr "3"
+
+# 139e9ad2489d40738198ebfac4b14c45
+#: ../../networking/ip_reservation_in_guest_networks.rst:76
+msgid ""
+"Removing IP Reservation by the UpdateNetwork API with "
+"guestvmcidr=10.1.1.0/24 or enter 10.1.1.0/24 in the CIDR field in the UI."
+msgstr "在界面的CIDR框内输入10.1.1.0/24或通过UpdateNetwork API配置为guestvmcidr=10.1.1.0/24，进行IP预留清除"
+
+# 43bbd9a15792420cb8b1e694ad792cf2
+#: ../../networking/ip_reservation_in_guest_networks.rst:83
+msgid "Limitations"
+msgstr "局限性"
+
+# 1ed6f796d3f04ed0b5c96512bc673c25
+#: ../../networking/ip_reservation_in_guest_networks.rst:85
+msgid ""
+"The IP Reservation is not supported if active IPs that are found outside the"
+" Guest VM CIDR."
+msgstr "如果在客户虚拟机CIDR外发现活动的IP地址，IP预留将不被支持。"
+
+# 28ed30440a3543f6b7744261f3f5c2e0
+#: ../../networking/ip_reservation_in_guest_networks.rst:88
+msgid ""
+"Upgrading network offering which causes a change in CIDR (such as upgrading "
+"an offering with no external devices to one with external devices) IP "
+"Reservation becomes void if any. Reconfigure IP Reservation in the new re-"
+"implemeted network."
+msgstr "在IP预留中，引起CIDR变化的网络升级方案都将无效，如将无外部设备的方案升级到带有外部设备的方案。在新实施的网络中，要重新配置IP预留。"
+
+# f9aacfd3f1a94c7c8d3ca0910da962a9
+#: ../../networking/ip_reservation_in_guest_networks.rst:95
+msgid "Best Practices"
+msgstr "最佳实践"
+
+# c5d0950bef8a49ce9b373d64fcf22b86
+#: ../../networking/ip_reservation_in_guest_networks.rst:97
+msgid ""
+"Apply IP Reservation to the guest network as soon as the network state "
+"changes to Implemented. If you apply reservation soon after the first guest "
+"VM is deployed, lesser conflicts occurs while applying reservation."
+msgstr "一旦网络状态变为实施，应尽快应用IP预留到客户网络。如果在第一台客户虚拟机部署后应用IP预留，则会在应用IP会有较少的冲突发生。"
+
+# 636d85b86d5a460788a233fd1cb49014
+#: ../../networking/ip_reservation_in_guest_networks.rst:104
+msgid "Reserving an IP Range"
+msgstr "预留一个IP范围"
+
+# 34eb58849cb141e9898291a434cc05ba
+#: ../../networking/ip_reservation_in_guest_networks.rst:106
+msgid "Log in to the CloudStack UI as an administrator or end user."
+msgstr "使用管理员或者终端用户账号登录CloudStack UI。"
+
+# 3dc484e1bd5145259125fe0fcf8ccf8c
+#: ../../networking/ip_reservation_in_guest_networks.rst:108
+msgid "In the left navigation, choose Network."
+msgstr "在左侧的导航栏，选择网络。"
+
+# e4559a4e7ddf4812890314b955dae344
+#: ../../networking/ip_reservation_in_guest_networks.rst:110
+msgid "Click the name of the network you want to modify."
+msgstr "点击你要修改的网络名称。"
+
+# 9119b8d7ea884da4b996f8a191d30e0b
+#: ../../networking/ip_reservation_in_guest_networks.rst:112
+msgid "In the Details tab, click Edit. |ip-edit-icon.png|"
+msgstr ""
+
+# 31eaf6bfc27e465e950da4b920fbad80
+#: ../../networking/ip_reservation_in_guest_networks.rst:114
+msgid "The CIDR field changes to editable one."
+msgstr "CIDR框将变为可编辑状态"
+
+# f29831c8666d45218af0ae6769e46fff
+#: ../../networking/ip_reservation_in_guest_networks.rst:116
+msgid "In CIDR, specify the Guest VM CIDR."
+msgstr "在CIDR框，说明客户虚拟机的CIDR"
+
+# 41acec1236df4ddbad427f23127244b1
+#: ../../networking/ip_reservation_in_guest_networks.rst:118
+msgid "Click Apply."
+msgstr "点击应用"
+
+# 8213a6fd8f414bd2b710a4ee77b167ae
+#: ../../networking/ip_reservation_in_guest_networks.rst:120
+msgid ""
+"Wait for the update to complete. The Network CIDR and the Reserved IP Range "
+"are displayed on the Details page."
+msgstr "等待更新完成。"

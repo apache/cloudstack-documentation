@@ -1,0 +1,511 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../choosing_deployment_architecture.rst:18
+# 2c4ff27205844a38ba74b1ffed7d0d4c
+msgid "Choosing a Deployment Architecture"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:20
+# b26daf37d81247238775fca77b416ae2
+msgid "The architecture used in a deployment will vary depending on the size and purpose of the deployment. This section contains examples of deployment architecture, including a small-scale deployment useful for test and trial deployments and a fully-redundant large-scale setup for production deployments."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:28
+# 2f09e208c05a4a5aa8f3c9f87ed50c25
+msgid "Small-Scale Deployment"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:30
+# 068dcc56cbd24a0083450026b9402fd6
+msgid "|Small-Scale Deployment|"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:32
+# 97e93e20540547229fc5d499cd5d3fc5
+msgid "This diagram illustrates the network architecture of a small-scale CloudStack deployment."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:35
+# d0e9d1cd6d02485fbb7569bbcac7691f
+msgid "A firewall provides a connection to the Internet. The firewall is configured in NAT mode. The firewall forwards HTTP requests and API calls from the Internet to the Management Server. The Management Server resides on the management network."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:40
+# 3a9520fd64a74db8b3fc06b9204f08a2
+msgid "A layer-2 switch connects all physical servers and storage."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:42
+# cd028d62b82f44ffbe0173ee7583fdee
+msgid "A single NFS server functions as both the primary and secondary storage."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:45
+# de231b4108f546bc9a6ce6fc4468768c
+msgid "The Management Server is connected to the management network."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:49
+# 361b0a48cf54455a94238a38750ee7b9
+msgid "Large-Scale Redundant Setup"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:51
+# 38cdbfb68cca4fd8bc4df9bc1ecd694a
+msgid "|Large-Scale Redundant Setup|"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:53
+# 0933dd6019474cfc97b03f67506bc999
+msgid "This diagram illustrates the network architecture of a large-scale CloudStack deployment."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:56
+# e3f81067d12242558eaf4684bb364861
+msgid "A layer-3 switching layer is at the core of the data center. A router redundancy protocol like VRRP should be deployed. Typically high-end core switches also include firewall modules. Separate firewall appliances may also be used if the layer-3 switch does not have integrated firewall capabilities. The firewalls are configured in NAT mode. The firewalls provide the following functions:"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:63
+# a68bb7cb39bd42afa4d9e29f84fa3457
+msgid "Forwards HTTP requests and API calls from the Internet to the Management Server. The Management Server resides on the management network."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:67
+# 69f7f256ee7341c98affe498692cd667
+msgid "When the cloud spans multiple zones, the firewalls should enable site-to-site VPN such that servers in different zones can directly reach each other."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:71
+# b779613fe6004e40bb248aaeb76d8bc3
+msgid "A layer-2 access switch layer is established for each pod. Multiple switches can be stacked to increase port count. In either case, redundant pairs of layer-2 switches should be deployed."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:75
+# 2032fc16630e41529475a4622c4fb9a2
+msgid "The Management Server cluster (including front-end load balancers, Management Server nodes, and the MySQL database) is connected to the management network through a pair of load balancers."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:79
+# cbcfb563ab554774b485b977d456e814
+msgid "Secondary storage servers are connected to the management network."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:81
+# ed99b388e7464d338ce1e290c13e3e7b
+msgid "Each pod contains storage and computing servers. Each storage and computing server should have redundant NICs connected to separate layer-2 access switches."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:87
+# 741500f6260941e79f28d53a5986fc43
+msgid "Separate Storage Network"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:89
+# 1ef36fbcddb24180bf412b41f03bcbc4
+msgid "In the large-scale redundant setup described in the previous section, storage traffic can overload the management network. A separate storage network is optional for deployments. Storage protocols such as iSCSI are sensitive to network delays. A separate storage network ensures guest network traffic contention does not impact storage performance."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:97
+# b813bc439dea4888b8dddbc9122afe9a
+msgid "Multi-Node Management Server"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:99
+# 35591778160a4e25a505e5dcd507198f
+msgid "The CloudStack Management Server is deployed on one or more front-end servers connected to a single MySQL database. Optionally a pair of hardware load balancers distributes requests from the web. A backup management server set may be deployed using MySQL replication at a remote site to add DR capabilities."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:105
+# faff12b3c7c142f59b2a12926ab7c9f7
+msgid "|Multi-Node Management Server|"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:107
+# ee629ff1681e4b38bfddfac64b76c7d6
+msgid "The administrator must decide the following."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:109
+# 3e9822c46e86433cb6d9f4ecbbacda1e
+msgid "Whether or not load balancers will be used."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:111
+# ab341a95aac3496581377672055b241d
+msgid "How many Management Servers will be deployed."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:113
+# 2dbc1c3c22db42958e785984f5ef93e4
+msgid "Whether MySQL replication will be deployed to enable disaster recovery."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:118
+# 4858e0bbf6f14d6b990948aacc6e0b74
+msgid "Multi-Site Deployment"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:120
+# 31bb0ebb88974050a79e6f0aec7c6778
+msgid "The CloudStack platform scales well into multiple sites through the use of zones. The following diagram shows an example of a multi-site deployment."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:124
+# 72c760ffa57b48a0a2ce31a545672acb
+msgid "|Example Of A Multi-Site Deployment|"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:126
+# 3680185677f54baeb03396c0c6e6b91b
+msgid "Data Center 1 houses the primary Management Server as well as zone 1. The MySQL database is replicated in real time to the secondary Management Server installation in Data Center 2."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:130
+# 44f2f283a3dd4992ba843cd1a6ad29b9
+msgid "|Separate Storage Network|"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:132
+# 85a51dc8edc24f37b0483d2b5d46a1dd
+msgid "This diagram illustrates a setup with a separate storage network. Each server has four NICs, two connected to pod-level network switches and two connected to storage network switches."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:136
+# 56c244202346479080d0963357ce6a01
+msgid "There are two ways to configure the storage network:"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:138
+# 774def02c93d4401aa0961c701e2a346
+msgid "Bonded NIC and redundant switches can be deployed for NFS. In NFS deployments, redundant switches and bonded NICs still result in one network (one CIDR block+ default gateway address)."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:142
+# 42c329aa74164a2a91b1cb061a594df0
+msgid "iSCSI can take advantage of two separate storage networks (two CIDR blocks each with its own default gateway). Multipath iSCSI client can failover and load balance between separate storage networks."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:146
+# 709e7b87aca14df39855bc39efbde210
+msgid "|NIC Bonding And Multipath I/O|"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:148
+# b9cd0b7d1c614f24855cf4e9755e9070
+msgid "This diagram illustrates the differences between NIC bonding and Multipath I/O (MPIO). NIC bonding configuration involves only one network. MPIO involves two separate networks."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:154
+# 36df70c98ae746549452fa36e1ca87e3
+msgid "Choosing a Hypervisor"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:156
+# f236302a8db24c13a141a20573581062
+msgid "CloudStack supports many popular hypervisors. Your cloud can consist entirely of hosts running a single hypervisor, or you can use multiple hypervisors. Each cluster of hosts must run the same hypervisor."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:160
+# ebd33f6eb3b64168ac6543a23dac1afd
+msgid "You might already have an installed base of nodes running a particular hypervisor, in which case, your choice of hypervisor has already been made. If you are starting from scratch, you need to decide what hypervisor software best suits your needs. A discussion of the relative advantages of each hypervisor is outside the scope of our documentation. However, it will help you to know which features of each hypervisor are supported by CloudStack. The following table provides this information."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:169
+# 6095a38fe5eb4ce7acbb1c158db98231
+msgid "Feature"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:169
+# 4a7ee7865ca548379bf859592ddb19f8
+msgid "XenServer 6.0.2"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:169
+# 09198080ae1c486ebd9470b6c99b387f
+msgid "vSphere 4.1/5.0"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:169
+# 1870d6331a364df4a087d4f6f3368ab9
+msgid "KVM - RHEL 6.2"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:169
+# d3c9ece508424f81897e3280902508b0
+msgid "Bare Metal"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:171
+# 970a9d80bc134222b3218d026302891b
+msgid "Network Throttling"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:171
+#: ../../choosing_deployment_architecture.rst:171
+#: ../../choosing_deployment_architecture.rst:172
+#: ../../choosing_deployment_architecture.rst:172
+#: ../../choosing_deployment_architecture.rst:173
+#: ../../choosing_deployment_architecture.rst:173
+#: ../../choosing_deployment_architecture.rst:173
+#: ../../choosing_deployment_architecture.rst:174
+#: ../../choosing_deployment_architecture.rst:174
+#: ../../choosing_deployment_architecture.rst:174
+#: ../../choosing_deployment_architecture.rst:175
+#: ../../choosing_deployment_architecture.rst:175
+#: ../../choosing_deployment_architecture.rst:175
+#: ../../choosing_deployment_architecture.rst:175
+#: ../../choosing_deployment_architecture.rst:176
+#: ../../choosing_deployment_architecture.rst:176
+#: ../../choosing_deployment_architecture.rst:177
+#: ../../choosing_deployment_architecture.rst:177
+#: ../../choosing_deployment_architecture.rst:177
+#: ../../choosing_deployment_architecture.rst:180
+#: ../../choosing_deployment_architecture.rst:180
+#: ../../choosing_deployment_architecture.rst:180
+#: ../../choosing_deployment_architecture.rst:181
+#: ../../choosing_deployment_architecture.rst:181
+# 4fec162cda76433cb982cfc313dcdbe6
+# 1f8cc79d716140189e60a08ebf4687bf
+# 91a8ee2ecce64c71b1eecf843f67deed
+# 2989a051bcd34ea987938c8a7e30b013
+# 9cbaf270ddd6408c8101622f74c7b266
+# 12e9d689493a44049c4874afa2dbadd3
+# f9a1370f394c49a8967531ffb6e1b423
+# 91b5581980864170b9693104a2f61d3c
+# c231f1df091e4ceeb60e89845db5f10b
+# 2852be6028ec46659ae8bf5cac551b29
+# 755b64ababd34e04b82a384d357fc6e4
+# 3e558e80e7bc4878b80739772dfb4a06
+# 227928dd0cf1488b873ce21a5b4842d2
+# 6ca963616f6a42098fed6641c7711e35
+# f36be7f0603b44f5aa77a248d3a97e5e
+# 996c7caeb3384d93be1ce49f570cb8ce
+# 5d9e3cabc113463e8b6c3fb75b182456
+# 159c98b022e14645bef4499b7c0c0235
+# f55810d73d0246b38a1495e4af5ec4bc
+# 0867769fdd5046d0832752148daf908d
+# c25243683e1449f0b89ee3d3b1881025
+# 87e8128b3ae84f228c87a33a892a23ec
+# 9fc4d908264143e682ddec06aaafe205
+# 0bb1aaf47c0543659d4e09d9f91cd185
+msgid "Yes"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:171
+#: ../../choosing_deployment_architecture.rst:172
+#: ../../choosing_deployment_architecture.rst:172
+#: ../../choosing_deployment_architecture.rst:178
+#: ../../choosing_deployment_architecture.rst:178
+#: ../../choosing_deployment_architecture.rst:178
+#: ../../choosing_deployment_architecture.rst:179
+#: ../../choosing_deployment_architecture.rst:179
+#: ../../choosing_deployment_architecture.rst:181
+# 3cb5cc62ebb54cae80640aabea621255
+# 86b2047f134d4b8a8af64d25bea97315
+# 5ca5465c16114b58ab0aaaf014969e31
+# fc76b86618fb433780039d59ce9cf302
+# 0cd9cc48eb624d829d99923f98ab2d5f
+# 748e481678464f27b851cb867b2d78b2
+# 1215b1b0f7e44472adcf474168869721
+# db4ae4f299a14dd097a941a94920c9c0
+# c8744cfc965e4794935294c98d6aae14
+msgid "No"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:171
+#: ../../choosing_deployment_architecture.rst:173
+#: ../../choosing_deployment_architecture.rst:174
+#: ../../choosing_deployment_architecture.rst:176
+#: ../../choosing_deployment_architecture.rst:177
+#: ../../choosing_deployment_architecture.rst:178
+#: ../../choosing_deployment_architecture.rst:179
+#: ../../choosing_deployment_architecture.rst:180
+#: ../../choosing_deployment_architecture.rst:181
+# 63afe958cfa44895bc62e896586ee40f
+# 199baf6fe3444dd48443901731e0ad62
+# ece293ab433448bd95772d3de229bcf6
+# fc04754e8df54fd7b280d1e2d9973a9f
+# 258bacf04ab349cc80b6f7d9ec2c0d7b
+# 9d861363c0d54ccb831b9a52f67834f6
+# be8b43bee82341ce8c679239ccd5e71e
+# 89c3130f25d348d1abc3081a0a033720
+# cfcd30df2f204091be6335cf2b116e44
+msgid "N/A"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:172
+# 6f727e19a82c4be4b3d885ee30c3bd5e
+msgid "Security groups in zones that use basic networking"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:173
+# 97e1ffe107c74bd4846cf646d1b9543e
+msgid "iSCSI"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:174
+# 2ea33b37f3de4e91b56a3f97d94654b7
+msgid "FibreChannel"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:175
+# b1c9732e6c15420a87ad6e0dd96052ef
+msgid "Local Disk"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:176
+# 490c55011c344c2cad34b7ed6f88fade
+msgid "HA"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:176
+# 1aa446ba2cf44112bb3b742a8435bc70
+msgid "Yes (Native)"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:177
+# d46bd32966d54085a61343d211a063d1
+msgid "Snapshots of local disk"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:178
+# 954f1dc69e8945f9a3e8d1363d10feb9
+msgid "Local disk as data disk"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:179
+# e31cc2bd3ce340ae9976c8166beb44cb
+msgid "Work load balancing"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:179
+# 9b6952490df5422e8c9dc96b96e06914
+msgid "DRS"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:180
+# 276af5d2a4d94ebdb3319fbbe859a74e
+msgid "Manual live migration of VMs from host to host"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:181
+# a6ffb0bdac29407e86b5edc37f932c8c
+msgid "Conserve management traffic IP address by using link local network to communicate with virtual router"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:186
+# eb354934ad0c4f1e92a9aa56494e083e
+msgid "Best Practices"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:188
+# 42fc8f2d41c548c0b39e0f03816bd496
+msgid "Deploying a cloud is challenging. There are many different technology choices to make, and CloudStack is flexible enough in its configuration that there are many possible ways to combine and configure the chosen technology. This section contains suggestions and requirements about cloud deployments."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:194
+# 68e273347ac34898aaaddc10df7c5d4d
+msgid "These should be treated as suggestions and not absolutes. However, we do encourage anyone planning to build a cloud outside of these guidelines to seek guidance and advice on the project mailing lists."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:200
+# ba21db935b174028b86bb1e6442669d7
+msgid "Process Best Practices"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:202
+# cefb1b21faf04019abc16cccabd19d30
+msgid "A staging system that models the production environment is strongly advised. It is critical if customizations have been applied to CloudStack."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:206
+# ea64ea072f3746d2b3463aafdc14532b
+msgid "Allow adequate time for installation, a beta, and learning the system. Installs with basic networking can be done in hours. Installs with advanced networking usually take several days for the first attempt, with complicated installations taking longer. For a full production system, allow at least 4-8 weeks for a beta to work through all of the integration issues. You can get help from fellow users on the cloudstack-users mailing list."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:216
+# 67f17d3accb24ff48c29830624f9a607
+msgid "Setup Best Practices"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:218
+# 81402254fd3a4dd888d02f4a884a1d0b
+msgid "Each host should be configured to accept connections only from well-known entities such as the CloudStack Management Server or your network monitoring software."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:222
+# 7481cf7faac5484b8339bb8e4d75b6c8
+msgid "Use multiple clusters per pod if you need to achieve a certain switch density."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:225
+# fd7badb077d04065b340d43fd79a4eec
+msgid "Primary storage mountpoints or LUNs should not exceed 6 TB in size. It is better to have multiple smaller primary storage elements per cluster than one large one."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:229
+# 6ed9bc75682247bfbc913cf9df8e21f1
+msgid "When exporting shares on primary storage, avoid data loss by restricting the range of IP addresses that can access the storage. See \"Linux NFS on Local Disks and DAS\" or \"Linux NFS on iSCSI\"."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:233
+# 5e4ab60bb7e7405180895617b9a6efe1
+msgid "NIC bonding is straightforward to implement and provides increased reliability."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:236
+# ff514643a50b4a478172c6dbe1a9befe
+msgid "10G networks are generally recommended for storage access when larger servers that can support relatively more VMs are used."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:239
+# 570bde20d1b84f1ea78c02bab25c0f7d
+msgid "Host capacity should generally be modeled in terms of RAM for the guests. Storage and CPU may be overprovisioned. RAM may not. RAM is usually the limiting factor in capacity designs."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:243
+# 1910d3f68a634d0fb53fdd5f4bde6b8e
+msgid "(XenServer) Configure the XenServer dom0 settings to allocate more memory to dom0. This can enable XenServer to handle larger numbers of virtual machines. We recommend 2940 MB of RAM for XenServer dom0. For instructions on how to do this, see `http://support.citrix.com/article/CTX126531 <http://support.citrix.com/article/CTX126531>`_. The article refers to XenServer 5.6, but the same information applies to XenServer 6.0."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:254
+# c33ddae286b44338ab9b330c918e8e39
+msgid "Maintenance Best Practices"
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:256
+# ae92610bc5164452b9e9527e5f3a8eec
+msgid "Monitor host disk space. Many host failures occur because the host's root disk fills up from logs that were not rotated adequately."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:259
+# 731977493e6d46559ca32f493189b8f4
+msgid "Monitor the total number of VM instances in each cluster, and disable allocation to the cluster if the total is approaching the maximum that the hypervisor can handle. Be sure to leave a safety margin to allow for the possibility of one or more hosts failing, which would increase the VM load on the other hosts as the VMs are redeployed. Consult the documentation for your chosen hypervisor to find the maximum permitted number of VMs per host, then use CloudStack global configuration settings to set this as the default limit. Monitor the VM activity in each cluster and keep the total number of VMs below a safe level that allows for the occasional host failure. For example, if there are N hosts in the cluster, and you want to allow for one host in the cluster to be down at any given time, the total number of VM instances you can permit in the cluster is at most (N-1) \\* (per-host-limit). Once a cluster reaches this number of VMs, use the CloudStack UI to disable allocation to the cluster."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:276
+# edcacc73b0b64b318b84f0f38e00e8d9
+msgid "The lack of up-do-date hotfixes can lead to data corruption and lost VMs."
+msgstr ""
+
+#: ../../choosing_deployment_architecture.rst:278
+# 07e8bf01dab44bb2b1ab4f52a8be4264
+msgid "Be sure all the hotfixes provided by the hypervisor vendor are applied. Track the release of hypervisor patches through your hypervisor vendor’s support channel, and apply patches as soon as possible after they are released. CloudStack will not track or notify you of required hypervisor patches. It is essential that your hosts are completely up to date with the provided hypervisor patches. The hypervisor vendor is likely to refuse to support any system that is not up to date with patches."
+msgstr ""
+

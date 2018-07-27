@@ -1,0 +1,449 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../hypervisor/hyperv.rst:18
+# a5185d38ad2e4f6cbc35116341dccf23
+msgid "Hyper-V Installation and Configuration"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:20
+# d110647269414479b7fb035bfdcdd6f6
+msgid "If you want to use Hyper-V hypervisor to run guest virtual machines, install Hyper-V on the hosts in your cloud. The instructions in this section doesn't duplicate Hyper-V Installation documentation. It provides the CloudStack-specific steps that are needed to prepare a Hyper-V host to work with CloudStack."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:28
+# f65dfc47347b4c348baf2a6336cacf5b
+msgid "System Requirements for Hyper-V Hypervisor Hosts"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:32
+# 7a236efba2054d4ba58d9ecdaaf20a09
+msgid "Supported Operating Systems for Hyper-V Hosts"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:34
+# bcd4ae34d08a497bad4e1b389059ec7d
+msgid "Windows Server 2012 R2 Standard"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:36
+# 680742a637b2491cbe7f3677dca729ba
+msgid "Windows Server 2012 R2 Datacenter"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:38
+# ccbfedc695de4f1fa589f6b2274d49a1
+msgid "Hyper-V 2012 R2"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:42
+# f9d4e4e9531e4e13910e7f9bcf4f6231
+msgid "Minimum System Requirements for Hyper-V Hosts"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:44
+# cd76d4e704da43a2bf46b4a1ca1206a9
+msgid "1.4 GHz 64-bit processor with hardware-assisted virtualization."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:46
+# d66329292d3e4d679ddd534dcb5b56b1
+msgid "800 MB of RAM"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:48
+# c68a1b515138408e8b48078375c35450
+msgid "32 GB of disk space"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:50
+# 1924b40a1ea34af985c514e7e00fcf07
+msgid "Gigabit (10/100/1000baseT) Ethernet adapter"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:54
+# 5b9c638983de4946816feb1dfe06f7a3
+msgid "Supported Storage"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:56
+# 5501dc718ec148a1b106d7eac8e01f89
+msgid "Primary Storage: Server Message Block (SMB) Version 3, Local"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:58
+# d98826167d964496b31bc798ae8ad5a8
+msgid "Secondary Storage: SMB"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:62
+# 51e903e68fa44cc987b6c2ad08dbeb36
+msgid "Preparation Checklist for Hyper-V"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:64
+# 556e9ae21bb747fe83f5e90bf14d165b
+msgid "For a smoother installation, gather the following information before you start:"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:68
+# 5e62ce48e3304d90a1e5f41a3c4bd74c
+msgid "Hyper-V Requiremen ts"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:68
+# d69ee48d947543d6a0b0d9b680e79b99
+msgid "Value"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:68
+# 020b9f3298894f29adbb932ddaefd9e4
+msgid "Description"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:72
+# a4ae60478f084501bf98804259ca31c7
+msgid "Server Roles"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:72
+# 92022baf55eb439499536554f1c93bc6
+msgid "Hyper-V"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:72
+# 85cc74d52bf447b59ad5a8fb8f528075
+msgid "After the Windows Server 2012 R2 installation, ensure that Hyper-V is selected from Server Roles. For more information, see `Installing Hyper-V <http://technet.microsoft.com/en-us/library/ jj134187.aspx#BKMK_Step2>`__."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:78
+# 19d59b3dace14c519959ecfa3f73fbca
+msgid "Share Location"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:78
+# 6de5f24d299b4e90a4266202e2e60a6c
+msgid "New folders in the /Share director y"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:78
+# 81267131a3fc4d27bf3bcfa5702952c3
+msgid "Ensure that folders are created for Primary and Secondary storage. The SMB share and the hosts should be part of the same domain."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:82
+# 22eb1d2d75ef4c2b898ba205496f1923
+msgid "If you are using Windows SMB share, the location of the file share for the Hyper-V deployment will be the new folder created in the \\\\Shares on the selected volume. You can create sub-folders for both PRODUCT Primary and Secondary storage within the share location. When you select the profile for the file shares, ensure that you select SMB Share -Applications. This creates the file shares with settings appropriate for Hyper-V."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:92
+# 4ffc82e6d7e845dfa1b880966b6d4564
+msgid "Domain and Hosts"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:92
+# a9f0efdf8d5a493d82c08b429664d7b1
+msgid "Hosts should be part of the same Active Directory domain."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:95
+# a92cae038f1a46f789f2c08a44dcd92c
+msgid "Hyper-V Users"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:95
+# 97f0324a2e62434a98f3f91e9478e6f4
+msgid "Full control"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:95
+# 0bcab591e0f042dc8574a8c57b363303
+msgid "Full control on the SMB file share."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:98
+# ee9dcfd392f84b7790d3017d9a958d69
+msgid "Virtual Switch"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:98
+# 84b516f8c0844014922eb947cca2b078
+msgid "If you are using Hyper-V 2012 R2, manually create an external virtual switch before adding the host to PRODUCT. If the Hyper-V host is added to the Hyper-V manager, select the host, then click Virtual Switch Manager, then New Virtual Switch. In the External Network, select the desired NIC adapter and click Apply."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:106
+#: ../../hypervisor/hyperv.rst:237
+# 02cd2a7fcf2e4b109e8c6ca41162ea8c
+# 985a36a6ae43480081c0d0b588f48aad
+msgid "If you are using Windows 2012 R2, virtual switch is created automatically."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:109
+# 7c5051f047ec44a491a9a65e006d5f80
+msgid "Virtual Switch Name"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:109
+# cfebf27404b04a1799cecac6f0d87e84
+msgid "Take a note of the name of the virtual switch. You need to specify that when configuring PRODUCT physical network labels."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:113
+# ad1036d7fef9481ca332cd4247790520
+msgid "Hyper-V Domain Users"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:113
+# 4c2560df94de47199684bb4acfd7808b
+msgid "Add the Hyper-V domain users to the Hyper-V Administrators group."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:116
+# 6571afa7b1d446baaebeff5f13b1e3e8
+msgid "A domain user should have full control on the SMB share that is exported for primary and secondary storage."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:120
+# b88a4f4ee49d4182aff6ba298990d862
+msgid "This domain user should be part of the Hyper-V Administrators and Local Administrators group on the Hyper-V hosts that are to be managed by PRODUCT."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:125
+# a99dc8722cb14924894d5b59a0f7a3bb
+msgid "The Hyper-V Agent service runs with the credentials of this domain user account."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:128
+# 39ee910d4ba544e2b28f18e65ac8a889
+msgid "Specify the credential of the domain user while adding a host to PRODUCT so that it can manage it."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:132
+# 2c879cedc51b41c9ac25284b8676b011
+msgid "Specify the credential of the domain user while adding a shared SMB primary or secondary storage."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:136
+#: ../../hypervisor/hyperv.rst:139
+#: ../../hypervisor/hyperv.rst:144
+# a9e85836b0a04d6794af8975a728757c
+# 6cf6d3303dc24afba8c72b0ac1f61aa5
+# 1399d631b8b94a1b935d4e56999a727a
+msgid "Migration"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:136
+# 9b65f73f4def43419096db3143353cdd
+msgid "Migratio n"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:136
+# dc9b9f2328ac4f3ebb5725c452140827
+msgid "Enable Migration."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:139
+# 516666dbd8874b3ca81518e553176a9f
+msgid "Delegati on"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:139
+# af14af2a223b4526acb445f35ff387fe
+msgid "If you want to use Live Migration, enable Delegation. Enable the following services of other hosts participating in Live Migration: CIFS and Microsoft Virtual System Migration Service."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:144
+# a44c5e1eebd24499a9a3c60210231d65
+msgid "Kerberos"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:144
+# dfad3d88e2c44f009ba6a629d2d11e09
+msgid "Enable Kerberos for Live Migration."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:146
+# 8a1e170e190d499ca5cca07a1df60781
+msgid "Network Access Permission for Dial-in"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:146
+# 25fcf66d3708461798a6ccaae50eaf2e
+msgid "Allow access"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:146
+# c278cbf02bda42f8a6dd149a89346803
+msgid "Allow access for Dial-in connections."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:155
+# ee52be753a9f4e339af5f44dbd6ae389
+msgid "Hyper-V Installation Steps"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:157
+# 5e6a34d960324a189dba8dafc3199b3f
+msgid "Download the operating system from `Windows Server 2012 R2 <http://technet.microsoft.com/en-us/windowsserver/hh534429>`_."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:160
+# ffa1994b12b44c7aad4386869fd9fcf3
+msgid "Install it on the host as given in `Install and Deploy Windows Server 2012 R2 <http://technet.microsoft.com/library/hh831620>`_."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:163
+# a13474286278439686c5ee1893cd2bb1
+msgid "Post installation, ensure that you enable Hyper-V role in the server."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:165
+# 7879473d0a8c43d0b28378281f2486d9
+msgid "If no Active Directory domain exists in your deployment, create one and add users to the domain."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:168
+# 470dd82226bd40d19ad39f3ebe2389c2
+msgid "In the Active Directory domain, ensure that all the Hyper-v hosts are added so that all the hosts are part of the domain."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:171
+# da2cd8c727fa4b4bad3c78af98264cb0
+msgid "Add the domain user to the following groups on the Hyper-V host: Hyper-V Administrators and Local Administrators."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:176
+# 4643f2a8b84e4e2ebbe709f5ffe25c84
+msgid "Installing the CloudStack Agent on a Hyper-V Host"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:178
+# 3ab695eb9dee461ea69f8078437525b4
+msgid "The Hyper-V Agent helps CloudStack perform operations on the Hyper-V hosts. This Agent communicates with the Management Server and controls all the instances on the host. Each Hyper-V host must have the Hyper-V Agent installed on it for successful interaction between the host and CloudStack. The Hyper-V Agent runs as a Windows service. Install the Agent on each host using the following steps."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:185
+# 481e02540708427aae673f5e8c5c81c0
+msgid "CloudStack Management Server communicates with Hyper-V Agent by using HTTPS. For secure communication between the Management Server and the host, install a self-signed certificate on port 8250."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:190
+# 79d9ee71e1814e18ae066a37a64ccf0f
+msgid "The Agent installer automatically perform this operation. You have not selected this option during the Agent installation, it can also be done manually as given in step 1."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:194
+# 9e04f652b33b4fdaa6d33622de1f6c16
+msgid "Create and add a self-signed SSL certificate on port 8250:"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:196
+# 71791cb8679f449ea9810f71aea6642a
+msgid "Create A self-signed SSL certificate:"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:202
+# bf728cee5a7a4b65b04ede76db396b30
+msgid "This command creates the self-signed certificate and add that to the certificate store ``LocalMachine\\My``."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:205
+# f464d4439cc44510b140754a2c06e458
+msgid "Add the created certificate to port 8250 for https communication:"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:211
+# 870daf8bb8194bc5872d413d1cdea8a0
+msgid "Thumbprint is the thumbprint of the certificate you created."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:213
+# 43b892a6de7040a1b7465f30523308d8
+msgid "Build the CloudStack Agent for Hyper-V as given in `Building CloudStack Hyper-V Agent <https://cwiki.apache.org/confluence/display/CLOUDSTACK/Creating+Hyperv+Agent+Installer>`__."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:216
+# 947a2a5df4c84a128f9d8fae319c8153
+msgid "As an administrator, run the installer."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:218
+# 19b6346a3cb94ec59710f84565f8f65c
+msgid "Provide the Hyper-V admin credentials when prompted."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:220
+# f254b72c1df64645831780947bef0830
+msgid "When the agent installation is finished, the agent runs as a service on the host machine."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:225
+# 1a5dd8f4c84b4b2aa53baa0f573b51ce
+msgid "Physical Network Configuration for Hyper-V"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:227
+# 380cb814510b419697ab9623d9466f8e
+msgid "You should have a plan for how the hosts will be cabled and which physical NICs will carry what types of traffic. By default, CloudStack will use the device that is used for the default route."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:231
+# d473bf7504d0430ca53e00c7294017bc
+msgid "If you are using Hyper-V 2012 R2, manually create an external virtual switch before adding the host to CloudStack. If the Hyper-V host is added to the Hyper-V manager, select the host, then click Virtual Switch Manager, then New Virtual Switch. In the External Network, select the desired NIC adapter and click Apply."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:242
+# 7f2f77fa086a4dba967596b9382888ed
+msgid "Storage Preparation for Hyper-V (Optional)"
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:244
+# b30ee4d30a1341bc8d882e9053000bd4
+msgid "CloudStack allows administrators to set up shared Primary Storage and Secondary Storage that uses SMB."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:247
+# 4caaf6cc083841b2aeaf487f0f1ec4a0
+msgid "Create a SMB storage and expose it over SMB Version 3."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:249
+# d49322cf1c1d4f8d8c9ceed36c959d0f
+msgid "For more information, see `Deploying Hyper-V over SMB <http://technet.microsoft.com/en-us/library/jj134187.aspx>`_."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:252
+# 9aefadf6e86e499c98acbb5785e98930
+msgid "You can also create and export SMB share using Windows. After the Windows Server 2012 R2 installation, select File and Storage Services from Server Roles to create an SMB file share. For more information, see `Creating an SMB File Share Using Server Manager <http://technet.microsoft.com/en-us/library/jj134187.aspx#BKMK_Step3>`_."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:258
+# 484e3791c2844730a548c8da780b2bf4
+msgid "Add the SMB share to the Active Directory domain."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:260
+# 1917261171b047b58051d75066e5fb9a
+msgid "The SMB share and the hosts managed by CloudStack need to be in the same domain. However, the storage should be accessible from the Management Server with the domain user privileges."
+msgstr ""
+
+#: ../../hypervisor/hyperv.rst:264
+# 5c7bf0eee6784b07ba689b0964ebdb37
+msgid "While adding storage to CloudStack, ensure that the correct domain, and credentials are supplied. This user should be able to access the storage from the Management Server."
+msgstr ""
+

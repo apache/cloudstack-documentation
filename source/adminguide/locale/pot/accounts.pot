@@ -1,0 +1,409 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../accounts.rst:18
+# bdc151e73be141a8ad0b4190c3102939
+msgid "Managing Accounts, Users and Domains"
+msgstr ""
+
+#: ../../accounts.rst:21
+# a49422e951994e72894009f0fc5cc963
+msgid "Accounts, Users, and Domains"
+msgstr ""
+
+#: ../../accounts.rst:24
+# 7316ca3f637249cbbf2f29bd75791600
+msgid "Accounts"
+msgstr ""
+
+#: ../../accounts.rst:26
+# 7544ce31af194b279c9dcfb7ae37d3cc
+msgid "An account typically represents a customer of the service provider or a department in a large organization. Multiple users can exist in an account."
+msgstr ""
+
+#: ../../accounts.rst:32
+# e758840629a8483ba31892ff437911e1
+msgid "Domains"
+msgstr ""
+
+#: ../../accounts.rst:34
+# 3e28d2a36b0642c08a698f6a4426e72c
+msgid "Accounts are grouped by domains. Domains usually contain multiple accounts that have some logical relationship to each other and a set of delegated administrators with some authority over the domain and its subdomains. For example, a service provider with several resellers could create a domain for each reseller."
+msgstr ""
+
+#: ../../accounts.rst:40
+# 79060520f2e046868f58925f3f2efc01
+msgid "For each account created, the Cloud installation creates three different types of user accounts: root administrator, domain administrator, and user."
+msgstr ""
+
+#: ../../accounts.rst:46
+# 341bf7792d884c2d8180600a07351f62
+msgid "Users"
+msgstr ""
+
+#: ../../accounts.rst:48
+# 8efee3ca63e44a4098ff5086e58f1249
+msgid "Users are like aliases in the account. Users in the same account are not isolated from each other, but they are isolated from users in other accounts. Most installations need not surface the notion of users; they just have one user per account. The same user cannot belong to multiple accounts."
+msgstr ""
+
+#: ../../accounts.rst:54
+# 67a573904306470f87a1f3f6ad52a15f
+msgid "Username is unique in a domain across accounts in that domain. The same username can exist in other domains, including sub-domains. Domain name can repeat only if the full pathname from root is unique. For example, you can create root/d1, as well as root/foo/d1, and root/sales/d1."
+msgstr ""
+
+#: ../../accounts.rst:59
+# af85977a7aeb4aff9010bde059e08b23
+msgid "Administrators are accounts with special privileges in the system. There may be multiple administrators in the system. Administrators can create or delete other administrators, and change the password for any user in the system."
+msgstr ""
+
+#: ../../accounts.rst:66
+# 8613eb42958647fba87ae1b922d58740
+msgid "Domain Administrators"
+msgstr ""
+
+#: ../../accounts.rst:68
+# 901efdb2c8554033b865587a48a319f9
+msgid "Domain administrators can perform administrative operations for users who belong to that domain. Domain administrators do not have visibility into physical servers or other domains."
+msgstr ""
+
+#: ../../accounts.rst:74
+# 5922a532b5814e479301a7d697eb8854
+msgid "Root Administrator"
+msgstr ""
+
+#: ../../accounts.rst:76
+# 20be104d0a134bab92309e774b538dd4
+msgid "Root administrators have complete access to the system, including managing templates, service offerings, customer care administrators, and domains"
+msgstr ""
+
+#: ../../accounts.rst:82
+# 7f9e7eaa9c5b4eaba5575b81514d4040
+msgid "Resource Ownership"
+msgstr ""
+
+#: ../../accounts.rst:84
+# 3fad6f5edfb34464b707419ce6b7b4a6
+msgid "Resources belong to the account, not individual users in that account. For example, billing, resource limits, and so on are maintained by the account, not the users. A user can operate on any resource in the account provided the user has privileges for that operation. The privileges are determined by the role. A root administrator can change the ownership of any virtual machine from one account to any other account by using the assignVirtualMachine API. A domain or sub-domain administrator can do the same for VMs within the domain from one account to any other account in the domain or any of its sub-domains."
+msgstr ""
+
+#: ../../accounts.rst:96
+# f25ec45041cd435d83eaf32720407dd4
+msgid "Dedicating Resources to Accounts and Domains"
+msgstr ""
+
+#: ../../accounts.rst:98
+# 8a6427fc034647e681a14ca03224406c
+msgid "The root administrator can dedicate resources to a specific domain or account that needs private infrastructure for additional security or performance guarantees. A zone, pod, cluster, or host can be reserved by the root administrator for a specific domain or account. Only users in that domain or its subdomain may use the infrastructure. For example, only users in a given domain can create guests in a zone dedicated to that domain."
+msgstr ""
+
+#: ../../accounts.rst:106
+# 13b20e92d1144d5da1089384a9ce4e59
+msgid "There are several types of dedication available:"
+msgstr ""
+
+#: ../../accounts.rst:108
+# a62e7433baeb444386932b41fe5601fa
+msgid "Explicit dedication. A zone, pod, cluster, or host is dedicated to an account or domain by the root administrator during initial deployment and configuration."
+msgstr ""
+
+#: ../../accounts.rst:112
+# 29fbffa86cfd49b4aa29ea7d373eaa03
+msgid "Strict implicit dedication. A host will not be shared across multiple accounts. For example, strict implicit dedication is useful for deployment of certain types of applications, such as desktops, where no host can be shared between different accounts without violating the desktop software's terms of license."
+msgstr ""
+
+#: ../../accounts.rst:118
+# a821acd0f71541708e12788d2fbc5d75
+msgid "Preferred implicit dedication. The VM will be deployed in dedicated infrastructure if possible. Otherwise, the VM can be deployed in shared infrastructure."
+msgstr ""
+
+#: ../../accounts.rst:124
+# b498c9fe36a94f2588d7a9e4494a761d
+msgid "How to Dedicate a Zone, Cluster, Pod, or Host to an Account or Domain"
+msgstr ""
+
+#: ../../accounts.rst:126
+# 62ce22c4d6f346b79218ff7a937ee3e2
+msgid "For explicit dedication: When deploying a new zone, pod, cluster, or host, the root administrator can click the Dedicated checkbox, then choose a domain or account to own the resource."
+msgstr ""
+
+#: ../../accounts.rst:130
+# 9dfe3b7a9e87411d9694c32c5e4f891e
+msgid "To explicitly dedicate an existing zone, pod, cluster, or host: log in as the root admin, find the resource in the UI, and click the Dedicate button. |button to dedicate a zone, pod,cluster, or host|"
+msgstr ""
+
+#: ../../accounts.rst:134
+# 90707af3ed2b4e6fa7875e9bdd890252
+msgid "For implicit dedication: The administrator creates a compute service offering and in the Deployment Planner field, chooses ImplicitDedicationPlanner. Then in Planner Mode, the administrator specifies either Strict or Preferred, depending on whether it is permissible to allow some use of shared resources when dedicated resources are not available. Whenever a user creates a VM based on this service offering, it is allocated on one of the dedicated hosts."
+msgstr ""
+
+#: ../../accounts.rst:144
+# fda3697ce3a4454da72edbe9f02b3564
+msgid "How to Use Dedicated Hosts"
+msgstr ""
+
+#: ../../accounts.rst:146
+# cfd0e245a5a2498b9fa7c89160957ffe
+msgid "To use an explicitly dedicated host, use the explicit-dedicated type of affinity group (see `“Affinity Groups” <virtual_machines.html#affinity-groups>`_). For example, when creating a new VM, an end user can choose to place it on dedicated infrastructure. This operation will succeed only if some infrastructure has already been assigned as dedicated to the user's account or domain."
+msgstr ""
+
+#: ../../accounts.rst:155
+# 86abbd3940f34e96a1ad71a01dc6339d
+msgid "Behavior of Dedicated Hosts, Clusters, Pods, and Zones"
+msgstr ""
+
+#: ../../accounts.rst:157
+# a9963e63da4e48f2a2b7b7fdad96ba29
+msgid "The administrator can live migrate VMs away from dedicated hosts if desired, whether the destination is a host reserved for a different account/domain or a host that is shared (not dedicated to any particular account or domain). CloudStack will generate an alert, but the operation is allowed."
+msgstr ""
+
+#: ../../accounts.rst:163
+# a9a8992734b0490aac5bd5e5efa45483
+msgid "Dedicated hosts can be used in conjunction with host tags. If both a host tag and dedication are requested, the VM will be placed only on a host that meets both requirements. If there is no dedicated resource available to that user that also has the host tag requested by the user, then the VM will not deploy."
+msgstr ""
+
+#: ../../accounts.rst:169
+# 694b1842b07049c094a79e240c2db934
+msgid "If you delete an account or domain, any hosts, clusters, pods, and zones that were dedicated to it are freed up. They will now be available to be shared by any account or domain, or the administrator may choose to re-dedicate them to a different account or domain."
+msgstr ""
+
+#: ../../accounts.rst:174
+# 9676e7d49a4247c0bd41a3d53e7482a1
+msgid "System VMs and virtual routers affect the behavior of host dedication. System VMs and virtual routers are owned by the CloudStack system account, and they can be deployed on any host. They do not adhere to explicit dedication. The presence of system vms and virtual routers on a host makes it unsuitable for strict implicit dedication. The host can not be used for strict implicit dedication, because the host already has VMs of a specific account (the default system account). However, a host with system VMs or virtual routers can be used for preferred implicit dedication."
+msgstr ""
+
+#: ../../accounts.rst:186
+# c3ac9b9cb46f4fa7b6ea8d96adc7111e
+msgid "Using an LDAP Server for User Authentication"
+msgstr ""
+
+#: ../../accounts.rst:188
+# 4c358cdbd0ef4ea8bae9aa240f1b4e4a
+msgid "You can use an external LDAP server such as Microsoft Active Directory or ApacheDS to authenticate CloudStack end-users. Just map CloudStack accounts to the corresponding LDAP accounts using a query filter. The query filter is written using the query syntax of the particular LDAP server, and can include special wildcard characters provided by CloudStack for matching common values such as the user’s email address and name. CloudStack will search the external LDAP directory tree starting at a specified base directory and return the distinguished name (DN) and password of the matching user. This information along with the given password is used to authenticate the user.."
+msgstr ""
+
+#: ../../accounts.rst:199
+# 14c749c7da61408588c8e8cdaa11796c
+msgid "To set up LDAP authentication in CloudStack, call the CloudStack API command ldapConfig and provide the following:"
+msgstr ""
+
+#: ../../accounts.rst:202
+# c4708aa56b75423080f17f84ec2a37a4
+msgid "Hostname or IP address and listening port of the LDAP server"
+msgstr ""
+
+#: ../../accounts.rst:204
+# ff4d11fcc40f4d5c86ce032c3d6e6a76
+msgid "Base directory and query filter"
+msgstr ""
+
+#: ../../accounts.rst:206
+# 0b5fce75930e49b19cf1d00062c78539
+msgid "Search user DN credentials, which give CloudStack permission to search on the LDAP server"
+msgstr ""
+
+#: ../../accounts.rst:209
+# c3d66516470141c3af861a4b24f45150
+msgid "SSL keystore and password, if SSL is used"
+msgstr ""
+
+#: ../../accounts.rst:213
+# 6e565fd7b02d4a97b86b380e839f129f
+msgid "Example LDAP Configuration Commands"
+msgstr ""
+
+#: ../../accounts.rst:215
+# ee72e29a6b33456684ebcbfd012c075a
+msgid "To understand the examples in this section, you need to know the basic concepts behind calling the CloudStack API, which are explained in the Developer’s Guide."
+msgstr ""
+
+#: ../../accounts.rst:219
+# 065e58a0d0f74c8d84670251cf00c487
+msgid "The following shows an example invocation of ldapConfig with an ApacheDS LDAP server"
+msgstr ""
+
+#: ../../accounts.rst:226
+# 31d88144f8004adf8efd11cf7f9db7bd
+msgid "The command must be URL-encoded. Here is the same example without the URL encoding:"
+msgstr ""
+
+#: ../../accounts.rst:244
+# 884cde7f5dbd499ba1c28ff09380c692
+msgid "The following shows a similar command for Active Directory. Here, the search base is the testing group within a company, and the users are matched up based on email address."
+msgstr ""
+
+#: ../../accounts.rst:252
+# d2675a267aa34f4ea3fe2bba2300b61c
+msgid "The next few sections explain some of the concepts you will need to know when filling out the ldapConfig parameters."
+msgstr ""
+
+#: ../../accounts.rst:257
+# befdce0cfd624549844139c917a82bb4
+msgid "Search Base"
+msgstr ""
+
+#: ../../accounts.rst:259
+# 1522f19d5a2a4e35a8bedc5d147a1af1
+msgid "An LDAP query is relative to a given node of the LDAP directory tree, called the search base. The search base is the distinguished name (DN) of a level of the directory tree below which all users can be found. The users can be in the immediate base directory or in some subdirectory. The search base may be equivalent to the organization, group, or domain name. The syntax for writing a DN varies depending on which LDAP server you are using. A full discussion of distinguished names is outside the scope of our documentation. The following table shows some examples of search bases to find users in the testing department.."
+msgstr ""
+
+#: ../../accounts.rst:270
+#: ../../accounts.rst:328
+# 3649e87915d24059beec30463e0abd10
+# eb0f32160dd24b21991c2f454df60742
+msgid "LDAP Server"
+msgstr ""
+
+#: ../../accounts.rst:270
+# d8fb5f498afb4ee1aa6669b39f1e34be
+msgid "Example Search Base DN"
+msgstr ""
+
+#: ../../accounts.rst:272
+#: ../../accounts.rst:330
+# 2e421fc0d49d4a819b31999dc3cae2e0
+# a0327a00878d45dab6dc0bc777814674
+msgid "ApacheDS"
+msgstr ""
+
+#: ../../accounts.rst:272
+# 6c854d5e6cdd4e3aadda7dd9be769a53
+msgid "OU=testing, O=project"
+msgstr ""
+
+#: ../../accounts.rst:273
+#: ../../accounts.rst:331
+# a1fbaf989c584a248386911c51fd2fba
+# c776e850eb3e4d64b262a32a9d302bfb
+msgid "Active Directory"
+msgstr ""
+
+#: ../../accounts.rst:273
+# 5d0095ff2d7044e7b60bc1754210dd3c
+msgid "OU=testing, DC=company"
+msgstr ""
+
+#: ../../accounts.rst:278
+# 8309dae488944f0aae3e84a8e1a97ac3
+msgid "Query Filter"
+msgstr ""
+
+#: ../../accounts.rst:280
+# c523dbbf5dd94c62a2e3927a8f3123dc
+msgid "The query filter is used to find a mapped user in the external LDAP server. The query filter should uniquely map the CloudStack user to LDAP user for a meaningful authentication. For more information about query filter syntax, consult the documentation for your LDAP server."
+msgstr ""
+
+#: ../../accounts.rst:285
+# f4f9c13ceefa4163962bd3cfab257852
+msgid "The CloudStack query filter wildcards are:"
+msgstr ""
+
+#: ../../accounts.rst:288
+# bab683973b9045339c8df3488bc5dd1c
+msgid "Query Filter Wildcard"
+msgstr ""
+
+#: ../../accounts.rst:288
+# a94af335cc864d9a962f1fb9b7b5f72c
+msgid "Description"
+msgstr ""
+
+#: ../../accounts.rst:290
+# 334393ba6786415e91a2ed1a22d26adb
+msgid "%u"
+msgstr ""
+
+#: ../../accounts.rst:290
+# 151cd28e952d4ff98ff9d1544698ccb8
+msgid "User name"
+msgstr ""
+
+#: ../../accounts.rst:291
+# f1f86cbcf39e412fb298da7653a123d3
+msgid "%e"
+msgstr ""
+
+#: ../../accounts.rst:291
+# fdf52531788c41fabb814f45f07b178a
+msgid "Email address"
+msgstr ""
+
+#: ../../accounts.rst:292
+# 6e5b529e3da248ee85f1e20f81bd8e1c
+msgid "%n"
+msgstr ""
+
+#: ../../accounts.rst:292
+# 4704eb3b3e494ad3bc2105d98a3c84a9
+msgid "First and last name"
+msgstr ""
+
+#: ../../accounts.rst:295
+# 51612c6475e246f7b7d8a156605a2323
+msgid "The following examples assume you are using Active Directory, and refer to user attributes from the Active Directory schema."
+msgstr ""
+
+#: ../../accounts.rst:298
+# d853815e3f894dcdbb92be883305dc5b
+msgid "If the CloudStack user name is the same as the LDAP user ID:"
+msgstr ""
+
+#: ../../accounts.rst:304
+# d0bb623240d0410eb8d70ed22ba5a2f8
+msgid "If the CloudStack user name is the LDAP display name:"
+msgstr ""
+
+#: ../../accounts.rst:310
+# 0a96c3c2516946c1b4260fd4d4d6ffb7
+msgid "To find a user by email address:"
+msgstr ""
+
+#: ../../accounts.rst:318
+# 5b63c901fb5a4d208df8e362234d1cba
+msgid "Search User Bind DN"
+msgstr ""
+
+#: ../../accounts.rst:320
+# 92769f4cb5be444cab0bcb685ebe1cc4
+msgid "The bind DN is the user on the external LDAP server permitted to search the LDAP directory within the defined search base. When the DN is returned, the DN and passed password are used to authenticate the CloudStack user with an LDAP bind. A full discussion of bind DNs is outside the scope of our documentation. The following table shows some examples of bind DNs."
+msgstr ""
+
+#: ../../accounts.rst:328
+# 7fcc45a0be9241b09a01d2287541d652
+msgid "Example Bind DN"
+msgstr ""
+
+#: ../../accounts.rst:330
+# b4c0b2f84be54e32820cac392b6c9c75
+msgid "CN=Administrator,DC=testing,OU=project,OU=org"
+msgstr ""
+
+#: ../../accounts.rst:331
+# 46e145ddbc9f47e08b21fa2631ed9fa7
+msgid "CN=Administrator, OU=testing, DC=company, DC=com"
+msgstr ""
+
+#: ../../accounts.rst:336
+# cbaaf7054abf480eb88b336ba62a097b
+msgid "SSL Keystore Path and Password"
+msgstr ""
+
+#: ../../accounts.rst:338
+# 8a6a84c57cc144edb9a20e63c71ddedc
+msgid "If the LDAP server requires SSL, you need to enable it in the ldapConfig command by setting the parameters ssl, truststore, and truststorepass. Before enabling SSL for ldapConfig, you need to get the certificate which the LDAP server is using and add it to a trusted keystore. You will need to know the path to the keystore and the password."
+msgstr ""
+

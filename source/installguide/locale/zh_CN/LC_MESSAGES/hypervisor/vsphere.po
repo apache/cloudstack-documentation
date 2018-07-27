@@ -1,0 +1,2089 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: 2014-06-30 10:27+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-installation-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 19b014507cf143c0bfc2d6b2fdbeca56
+#: ../../hypervisor/vsphere.rst:18
+msgid "VMware vSphere Installation and Configuration"
+msgstr "VMware vSphere 安装和配置"
+
+# 87c85380b4b94a7393cc229882265b58
+#: ../../hypervisor/vsphere.rst:20
+msgid ""
+"If you want to use the VMware vSphere hypervisor to run guest virtual "
+"machines, install vSphere on the host(s) in your cloud."
+msgstr "如果计划使用VMware vSphere平台运行虚拟机，请在云中安装vSphere主机。"
+
+# 3d2c763f10b74d00ae6672f6d8a6ee22
+#: ../../hypervisor/vsphere.rst:25
+msgid "System Requirements for vSphere Hosts"
+msgstr "vSphere主机的系统要求"
+
+# a69a6b7374d64da3a42115a99aad0d8e
+#: ../../hypervisor/vsphere.rst:29
+msgid "Software requirements:"
+msgstr "软件要求："
+
+# 817453f34d1d4ce7adcd829ee2c4469e
+#: ../../hypervisor/vsphere.rst:31
+msgid "vSphere and vCenter, both version 4.1 or 5.0."
+msgstr "vSphere和vCenter版本，4.1或5.0。"
+
+# 307a9f42a4ba44c4ae53ae2a46440a92
+#: ../../hypervisor/vsphere.rst:33
+msgid ""
+"vSphere Standard is recommended. Note however that customers need to "
+"consider the CPU constraints in place with vSphere licensing. See "
+"`http://www.vmware.com/files/pdf/vsphere\\_pricing.pdf "
+"<http://www.vmware.com/files/pdf/vsphere_pricing.pdf>`_ and discuss with "
+"your VMware sales representative."
+msgstr "建议使用vSphere标准版。但是VMware用户需要考虑vSphere授权对CPU的限制。请参考 `http://www.vmware.com/files/pdf/vsphere\\_pricing.pdf <http://www.vmware.com/files/pdf/vsphere_pricing.pdf>`_ 并与销售代表讨论。"
+
+# 0f24943e5a384c2fb7c8d181a5df1d27
+#: ../../hypervisor/vsphere.rst:39
+msgid "vCenter Server Standard is recommended."
+msgstr "建议使用vCenter标准版。"
+
+# 11cf8def2a0e4ca6b35b4141c27541d3
+#: ../../hypervisor/vsphere.rst:41
+msgid ""
+"Be sure all the hotfixes provided by the hypervisor vendor are applied. "
+"Track the release of hypervisor patches through your hypervisor vendor's "
+"support channel, and apply patches as soon as possible after they are "
+"released. CloudStack will not track or notify you of required hypervisor "
+"patches. It is essential that your hosts are completely up to date with the "
+"provided hypervisor patches. The hypervisor vendor is likely to refuse to "
+"support any system that is not up to date with patches."
+msgstr "请确保安装了hypervisor供应商发布的所有补丁程序。随时关注供应商支持信息，一旦发布补丁就立即安装。CloudStack不会跟踪或提醒你安装这些补丁。安装最新的补丁程序对主机至关重要。hypervisor供应商可能不会对过期的系统提供技术支持。"
+
+# 433a750f49e34f96a6568a12d3d5fd74
+#: ../../hypervisor/vsphere.rst:51
+msgid ""
+"Apply All Necessary Hotfixes. The lack of up-do-date hotfixes can lead to "
+"data corruption and lost VMs."
+msgstr "安装一切必要的补丁程序。缺乏最新补丁程序可能会导致数据和虚拟机丢失。"
+
+# cfbe010033704d72879d2e1a83fd3751
+#: ../../hypervisor/vsphere.rst:56
+msgid "Hardware requirements:"
+msgstr "硬件要求："
+
+# b0649e717356409293c4567e656821af
+#: ../../hypervisor/vsphere.rst:58
+msgid ""
+"The host must be certified as compatible with vSphere. See the VMware "
+"Hardware Compatibility Guide at "
+"`http://www.vmware.com/resources/compatibility/search.php "
+"<http://www.vmware.com/resources/compatibility/search.php>`_."
+msgstr "主机必须通过vSphere的兼容性认证。请查看VMware硬件兼容性指南  `http://www.vmware.com/resources/compatibility/search.php <http://www.vmware.com/resources/compatibility/search.php>`_."
+
+# 7bc3ed3794fb40418371381be3db54c4
+#: ../../hypervisor/vsphere.rst:63
+msgid ""
+"All hosts must be 64-bit and must support HVM (Intel-VT or AMD-V enabled)."
+msgstr "所有主机必须为64位架构并且支持HVM(启用Intel-VT或AMD-V)。"
+
+# 0a5dabc432dc454396baf7e656897fe6
+#: ../../hypervisor/vsphere.rst:66
+msgid ""
+"All hosts within a cluster must be homogenous. That means the CPUs must be "
+"of the same type, count, and feature flags."
+msgstr "同一群集中的所有节点必须为同一架构。CPU型号、数量和功能参数必须相同。"
+
+# 94cea4d65ee249be9661ee4a95356c3d
+#: ../../hypervisor/vsphere.rst:69
+msgid "64-bit x86 CPU (more cores results in better performance)"
+msgstr "64位x86 CPU(多核性能更佳)"
+
+# f25b466cb54f42b58faa3675162df14f
+#: ../../hypervisor/vsphere.rst:71
+msgid "Hardware virtualization support required"
+msgstr "硬件虚拟化支持"
+
+# 3eedde6532fd4545af478f114efb0aa6
+#: ../../hypervisor/vsphere.rst:73
+msgid "4 GB of memory"
+msgstr "4GB 内存"
+
+# 23b705dbe90b4ffda152518b41ce6fee
+#: ../../hypervisor/vsphere.rst:75
+msgid "36 GB of local disk"
+msgstr "36GB本地磁盘空间"
+
+# 1e1c717f723448de883b57b168c19a59
+#: ../../hypervisor/vsphere.rst:77
+msgid "At least 1 NIC"
+msgstr "至少一块网卡"
+
+# 3bc46abe138d48eeb9586740ba9e5d00
+#: ../../hypervisor/vsphere.rst:79
+msgid "Statically allocated IP Address"
+msgstr "静态分配的IP"
+
+# adf685e0308e4394aceccfcdb1c3e923
+#: ../../hypervisor/vsphere.rst:83
+msgid "vCenter Server requirements:"
+msgstr "vCenter服务器的系统要求："
+
+# 06ac32e7e8c04f65b302040e55a2a908
+#: ../../hypervisor/vsphere.rst:85
+msgid ""
+"Processor - 2 CPUs 2.0GHz or higher Intel or AMD x86 processors. Processor "
+"requirements may be higher if the database runs on the same machine."
+msgstr "处理器 - 2颗2.0GHz的Intel或AMD x86 CPUs， 或更高的处理器。如果数据库跟VC在同一台服务器中，可能会需要更高的处理器。"
+
+# 271c70d35c104435b5350721391ffed9
+#: ../../hypervisor/vsphere.rst:89
+msgid ""
+"Memory - 3GB RAM. RAM requirements may be higher if your database runs on "
+"the same machine."
+msgstr "内存 - 3GB。如果数据库跟VC在同一台服务器中，可能会需要更多内存。"
+
+# 720bf6b73cd1449fb7ae868c3286012c
+#: ../../hypervisor/vsphere.rst:92
+msgid ""
+"Disk storage - 2GB. Disk requirements may be higher if your database runs on"
+" the same machine."
+msgstr "磁盘空间 - 2GB。如果数据库跟VC在同一台服务器中，可能会需要更多的磁盘空间。"
+
+# 6f4ab896b8f049448d2141390cd6e6cb
+#: ../../hypervisor/vsphere.rst:95
+msgid ""
+"Microsoft SQL Server 2005 Express disk requirements. The bundled database "
+"requires up to 2GB free disk space to decompress the installation archive."
+msgstr "Microsoft SQL Server 2005 Express磁盘要求。最多需要 2 GB 的可用磁盘空间解压安装文件。"
+
+# 9474159ca7834a10864479073a1bf0d3
+#: ../../hypervisor/vsphere.rst:99
+msgid "Networking - 1Gbit or 10Gbit."
+msgstr "网络 - 1Gbit或者10Gbit。"
+
+# 38899761f45d434f8c9fb7a5d24ec00e
+#: ../../hypervisor/vsphere.rst:101
+msgid ""
+"For more information, see `\"vCenter Server and the vSphere Client Hardware "
+"Requirements\" "
+"<http://pubs.vmware.com/vsp40/wwhelp/wwhimpl/js/html/wwhelp.htm#href=install/c_vc_hw.html>`_."
+msgstr "更多信息，请参考 `\"vCenter Server 和 vSphere Client 硬件要求\" <http://pubs.vmware.com/vsp40/wwhelp/wwhimpl/js/html/wwhelp.htm#href=install/c_vc_hw.html>`_。"
+
+# 43340509b56641c28387c6a0b718a9a2
+#: ../../hypervisor/vsphere.rst:106
+msgid "Other requirements:"
+msgstr "其他要求："
+
+# c0ca168c59964efc9aa79369ee7a8104
+#: ../../hypervisor/vsphere.rst:108
+msgid ""
+"VMware vCenter Standard Edition 4.1 or 5.0 must be installed and available "
+"to manage the vSphere hosts."
+msgstr "必须安装VMware vCenter Standard 4.1或5.0版本，并且能够管理vSphere主机。"
+
+# 0ba8fe6d64854dac84850796d0c84f0b
+#: ../../hypervisor/vsphere.rst:111
+msgid ""
+"vCenter must be configured to use the standard port 443 so that it can "
+"communicate with the CloudStack Management Server."
+msgstr "必须配置vCenter使用443端口与CloudStack管理服务器通讯。"
+
+# 311e91fb341e4d30a649ba13d80e2e72
+#: ../../hypervisor/vsphere.rst:114
+msgid ""
+"You must re-install VMware ESXi if you are going to re-use a host from a "
+"previous install."
+msgstr "如果你计划利用之前安装的主机，那么必须重新安装VMware ESXi。"
+
+# c5dcee58723d4fa1b707fecaede37c0e
+#: ../../hypervisor/vsphere.rst:117
+msgid ""
+"CloudStack requires VMware vSphere 4.1 or 5.0. VMware vSphere 4.0 is not "
+"supported."
+msgstr "CloudStack要求VMwarevSphere 4.1或者5.0版本，不支持VMware vSphere 4.0版本。"
+
+# d988a28be0c94e3b9935e2025d0475d0
+#: ../../hypervisor/vsphere.rst:120
+msgid ""
+"All hosts must be 64-bit and must support HVM (Intel-VT or AMD-V enabled). "
+"All hosts within a cluster must be homogeneous. That means the CPUs must be "
+"of the same type, count, and feature flags."
+msgstr "所有主机必须为64位架构并且支持HVM(启用Intel-VT或AMD-V)。同一群集中的所有节点必须为同一架构。CPU型号、数量和功能参数必须相同。"
+
+# f830e27a969e413b831620b0907e346f
+#: ../../hypervisor/vsphere.rst:124
+msgid ""
+"The CloudStack management network must not be configured as a separate "
+"virtual network. The CloudStack management network is the same as the "
+"vCenter management network, and will inherit its configuration. See :ref"
+":`configure-vcenter-management-network`."
+msgstr "CloudStack 管理网络不能使用独立的虚拟网络。CloudStack使用vCenter的管理网络，并继承vCenter管理网络的配置。 可参考 :ref:`configure-vcenter-management-network`."
+
+# eac2d87ef82b4063864397fe3ac48213
+#: ../../hypervisor/vsphere.rst:129
+msgid "CloudStack requires ESXi. ESX is not supported."
+msgstr "CloudStack仅支持ESXi，不支持ESX。"
+
+# 397732aa4a884edbab1fec4290fceae4
+#: ../../hypervisor/vsphere.rst:131
+msgid ""
+"All resources used for CloudStack must be used for CloudStack only. "
+"CloudStack cannot share instance of ESXi or storage with other management "
+"consoles. Do not share the same storage volumes that will be used by "
+"CloudStack with a different set of ESXi servers that are not managed by "
+"CloudStack."
+msgstr "所有用于CloudStack的资源只能被CloudStack使用。CloudStack无法与其他管理控制台共享ESXi实例或存储。请不要与其他不受CloudStack管理的ESXi共享同一个存储卷。"
+
+# 483d1d73b54a40d78329af14748fd831
+#: ../../hypervisor/vsphere.rst:137
+msgid ""
+"Put all target ESXi hypervisors in a cluster in a separate Datacenter in "
+"vCenter."
+msgstr "将所有目标ESXi hypervisors加入vCenter中独立数据中心之下的群集。"
+
+# 8151eb61ba874bc8a60d05b0c751a321
+#: ../../hypervisor/vsphere.rst:140
+msgid ""
+"The cluster that will be managed by CloudStack should not contain any VMs. "
+"Do not run the management server, vCenter or any other VMs on the cluster "
+"that is designated for CloudStack use. Create a separate cluster for use of "
+"CloudStack and make sure that they are no VMs in this cluster."
+msgstr "将被CloudStack管理的群集中不应该存在任何VM。且不应该在CloudStack管理的群集中运行任何管理服务器、vCenter或者VM。为CloudStack创建一个独立的群集，并确保群集中不存在VM。"
+
+# 2bcc13091d3947dc9e7801b766452c80
+#: ../../hypervisor/vsphere.rst:146
+msgid ""
+"All the required VLANS must be trunked into all network switches that are "
+"connected to the ESXi hypervisor hosts. These would include the VLANS for "
+"Management, Storage, vMotion, and guest VLANs. The guest VLAN (used in "
+"Advanced Networking; see Network Setup) is a contiguous range of VLANs that "
+"will be managed by CloudStack."
+msgstr "所有必需的vlan必须通过所有网络交换机端口的trunk模式连接到ESXi hypervisor主机。其中包含管理，存储，vMotion和来宾等VLANs。CloudStack管理一段连续的来宾VLANs范围(高级网络；请参阅 网络设置) 。"
+
+# 12d708e9230b4cf2a6eec95bc47de138
+#: ../../hypervisor/vsphere.rst:154
+msgid "Preparation Checklist for VMware"
+msgstr "VMware的准备工作清单"
+
+# f9a24ff6b44f49d198fbee57859227b1
+#: ../../hypervisor/vsphere.rst:156
+msgid ""
+"For a smoother installation, gather the following information before you "
+"start:"
+msgstr "为了能顺利地安装，在安装之前请收集以下信息："
+
+# 7c40a197d95543d5b09db63ac46a3ff7
+#: ../../hypervisor/vsphere.rst:159
+msgid "Information listed in :ref:`vcenter-checklist`"
+msgstr ":ref:`vcenter-checklist` 中列出的信息"
+
+# 985e27ff41074586a10f90781fc9434b
+#: ../../hypervisor/vsphere.rst:161
+msgid "Information listed in :ref:`networking-checklist-for-vmware`"
+msgstr ":ref:`networking-checklist-for-vmware` 中列出的信息"
+
+# 7bbac620f96b4b238ced330b74d07b49
+#: ../../hypervisor/vsphere.rst:167
+msgid "vCenter Checklist"
+msgstr "vCenter检查清单"
+
+# 04e3ab33127443328f019f7d08a250d6
+#: ../../hypervisor/vsphere.rst:169
+msgid "You will need the following information about vCenter."
+msgstr "你需要关于vCenter的下列信息："
+
+# 230ef95a22cb40c2ac102a9798f69d50
+#: ../../hypervisor/vsphere.rst:172
+msgid "vCenter Requirement"
+msgstr "vCenter要求"
+
+# 52d76ece5b4a44309c219d371f7ddd03
+# 82bd8117216b4dec8f2d3946d40f445c
+# 28ee056cc5ba4ffa9d14464a46e34f3a
+#: ../../hypervisor/vsphere.rst:172 ../../hypervisor/vsphere.rst:189
+#: ../../hypervisor/vsphere.rst:459
+msgid "Notes"
+msgstr "备注"
+
+# e6d6093156eb4c89a795c492963fceed
+#: ../../hypervisor/vsphere.rst:174
+msgid "vCenter User"
+msgstr "vCenter用户"
+
+# 55d86b0382d0488e9e1392ae0a228a03
+#: ../../hypervisor/vsphere.rst:174
+msgid "This user must have admin privileges."
+msgstr "用户必须拥有管理员权限。"
+
+# 21fb181b5dc444fd8fd758ae9a39ba95
+#: ../../hypervisor/vsphere.rst:175
+msgid "vCenter User Password"
+msgstr "vCenter用户的密码"
+
+# 6be77420b0d6471a926b242982798b63
+#: ../../hypervisor/vsphere.rst:175
+msgid "Password for the above user."
+msgstr "上述用户的密码。"
+
+# 79ba83eb3964471ba6ea6718fde7cb34
+#: ../../hypervisor/vsphere.rst:176
+msgid "vCenter Datacenter Name"
+msgstr "vCenter数据库名称"
+
+# 2fd0d6ea1f9a4c85b81d4276deb2c9b8
+#: ../../hypervisor/vsphere.rst:176
+msgid "Name of the datacenter."
+msgstr "数据中心名称"
+
+# 3150bf92a4a347e5aa40a8fe765140b6
+#: ../../hypervisor/vsphere.rst:177
+msgid "vCenter Cluster Name"
+msgstr "vCenter群集名称"
+
+# 4da7406ee21a41999d49265263a3d330
+#: ../../hypervisor/vsphere.rst:177
+msgid "Name of the cluster."
+msgstr "群集名称"
+
+# f06da8e5f04e4715a3428b02687006a5
+#: ../../hypervisor/vsphere.rst:184
+msgid "Networking Checklist for VMware"
+msgstr "VMware网络清单"
+
+# 0b5d8b8b8030478490415117b971cc1d
+#: ../../hypervisor/vsphere.rst:186
+msgid "You will need the following information about VLAN."
+msgstr "你需要以下关于VLAN的信息。"
+
+# d18a8dbf3b5a4e37a6b4a9082e8d9b9a
+#: ../../hypervisor/vsphere.rst:189
+msgid "VLAN Information"
+msgstr "VLAN信息"
+
+# a18ba1020be54125a1a83ecae1b4a59d
+#: ../../hypervisor/vsphere.rst:191
+msgid "ESXi VLAN"
+msgstr "ESXi VLAN"
+
+# 7552379727114564bb1a6005a0bc0b5a
+#: ../../hypervisor/vsphere.rst:191
+msgid "VLAN on which all your ESXi hypervisors reside."
+msgstr "全部ESXi hypervisors主机所在的VLAN。"
+
+# 94167adee63f4adda49e8511ecf154c2
+#: ../../hypervisor/vsphere.rst:192
+msgid "ESXI VLAN IP Address"
+msgstr "ESXi VLAN IP地址"
+
+# 96b5d173daa14cb686b8df6e2af6eda3
+#: ../../hypervisor/vsphere.rst:192
+msgid ""
+"IP Address Range in the ESXi VLAN. One address per Virtual Router is used "
+"from this range."
+msgstr "ESXi VLAN的IP地址范围。每个虚拟路由器使用该范围内的一个IP。"
+
+# 61a0a647d1304c7592fee8b73395ac5e
+#: ../../hypervisor/vsphere.rst:193
+msgid "ESXi VLAN IP Gateway"
+msgstr "ESXi VLAN网关IP"
+
+# 502e2adfefd54290b787aba3d70a6a3c
+#: ../../hypervisor/vsphere.rst:194
+msgid "ESXi VLAN Netmask"
+msgstr "ESXi VLAN子网掩码"
+
+# 3d862fcd0d14490fb29acd36a2958c5d
+#: ../../hypervisor/vsphere.rst:195
+msgid "Management Server VLAN"
+msgstr "管理服务器VLAN"
+
+# ce8231bbfb6f4f86b212bfa7912ce3fb
+#: ../../hypervisor/vsphere.rst:195
+msgid "VLAN on which the CloudStack Management server is installed."
+msgstr "CloudStack管理服务器所在的VLAN。"
+
+# 924ddf7763994ebfbd0a15b603bc22d5
+#: ../../hypervisor/vsphere.rst:196
+msgid "Public VLAN"
+msgstr "公共网络VLAN"
+
+# 3f3fdc9789c048b49167a98f52acc5dc
+#: ../../hypervisor/vsphere.rst:196
+msgid "VLAN for the Public Network."
+msgstr "公共网络的VLAN"
+
+# ee0b4346c9ad482786c589e1947e8ce8
+#: ../../hypervisor/vsphere.rst:197
+msgid "Public VLAN Gateway"
+msgstr "公共网络VLAN的网关"
+
+# 093927bfb8494060b58a6be1d37571a3
+#: ../../hypervisor/vsphere.rst:198
+msgid "Public VLAN Netmask"
+msgstr "公共网络VLAN的子网掩码"
+
+# 48b1d1223c1942f486b2e81fd85701ba
+#: ../../hypervisor/vsphere.rst:199
+msgid "Public VLAN IP Address Range"
+msgstr "公共VLAN IP地址范围"
+
+# fafd189f95f0456fa23cbebd9f3ed266
+#: ../../hypervisor/vsphere.rst:199
+msgid ""
+"Range of Public IP Addresses available for CloudStack use. These addresses "
+"will be used for virtual router on CloudStack to route private traffic to "
+"external networks."
+msgstr "CloudStack使用的公共网络IP范围。CloudStack中的虚拟路由器使用这些地址，用于路由专用流量至外部网络。"
+
+# 8eb456b1619c4753be00cf585593cc7e
+#: ../../hypervisor/vsphere.rst:202
+msgid "VLAN Range for Customer use"
+msgstr "客户使用的VLAN范围"
+
+# dad2013c354145e5b820dc70ef56e99c
+#: ../../hypervisor/vsphere.rst:202
+msgid ""
+"A contiguous range of non-routable VLANs. One VLAN will be assigned for each"
+" customer."
+msgstr "连续的不可路由的VLAN范围。每个用户会分配一个VLAN。"
+
+# 55066669b6874439b121073b06ac7faa
+#: ../../hypervisor/vsphere.rst:208
+msgid "vSphere Installation Steps"
+msgstr "vSphere安装步骤"
+
+# 9254e8523b3f4c3aad496a3e1776451f
+#: ../../hypervisor/vsphere.rst:210
+msgid ""
+"If you haven't already, you'll need to download and purchase vSphere from "
+"the VMware Website (`https://www.vmware.com/tryvmware/index.php?p=vmware-"
+"vsphere&lp=1 <https://www.vmware.com/tryvmware/index.php?p=vmware-"
+"vsphere&lp=1>`_) and install it by following the VMware vSphere Installation"
+" Guide."
+msgstr "如果你还没用准备好安装介质，请在VMware网站下载和购买(`https://www.vmware.com/tryvmware/index.php?p=vmware-vsphere&lp=1 <https://www.vmware.com/tryvmware/index.php?p=vmware-vsphere&lp=1>`_)并按照VMware vSphere安装指南安装。"
+
+# b9235024292f46faacee1b73c71ce9c9
+#: ../../hypervisor/vsphere.rst:215
+msgid ""
+"Following installation, perform the following configuration, which are "
+"described in the next few sections:"
+msgstr "安装过程中，执行下面几个章节描述的以下配置："
+
+# 10d7af3e4cef499aa1fa230b12ce67e0
+#: ../../hypervisor/vsphere.rst:219
+msgid "Required"
+msgstr "要求"
+
+# 906de2717fd64b5c87584e6807af120e
+#: ../../hypervisor/vsphere.rst:219
+msgid "Optional"
+msgstr "可选项"
+
+# b461abbf9e42401da9600e4666054caa
+#: ../../hypervisor/vsphere.rst:221
+msgid "ESXi host setup"
+msgstr "ESXi主机安装"
+
+# a672baaf4ca64f66ba7b0a4aa2b9c820
+#: ../../hypervisor/vsphere.rst:221
+msgid "NIC bonding"
+msgstr "网卡绑定"
+
+# 15b07c50f2814ef5a9b9fe3e6054c7ef
+#: ../../hypervisor/vsphere.rst:222
+msgid ""
+"Configure host physical networking,virtual switch, vCenter Management "
+"Network, and extended port range"
+msgstr "配置主机的物理网络，虚拟交换机，vCenter管理网络和扩展的端口范围"
+
+# 82afddb1d1534689ac6a034abc9ad969
+#: ../../hypervisor/vsphere.rst:222
+msgid "Multipath storage"
+msgstr "存储多路径"
+
+# 908c7c0df32a4091b51fa92198fd58da
+#: ../../hypervisor/vsphere.rst:223
+msgid "Prepare storage for iSCSI"
+msgstr "准备iSCSI存储"
+
+# a92c6507ae414e5f9a0ec8ff2545209e
+#: ../../hypervisor/vsphere.rst:224
+msgid ""
+"Configure clusters in vCenter and add hosts to them, or add hosts without "
+"clusters to vCenter"
+msgstr "在vCenter中配置集群并添加主机，或不使用集群，直接在vCenter中添加主机。"
+
+# a5fd230588934d9a949707390d10c3cd
+#: ../../hypervisor/vsphere.rst:229
+msgid "ESXi Host setup"
+msgstr "ESXi主机配置"
+
+# 4560ac7e0a014d70bbfe865d8cd78abd
+#: ../../hypervisor/vsphere.rst:231
+msgid ""
+"All ESXi hosts should enable CPU hardware virtualization support in BIOS. "
+"Please note hardware virtualization support is not enabled by default on "
+"most servers."
+msgstr "所有ESXi主机都应该在BIOS中启用CPU硬件虚拟化支持。请注意，大多数服务器默认不启用该功能。"
+
+# 4ecccb36e87644d3a98414f9f939fdc5
+#: ../../hypervisor/vsphere.rst:237
+msgid "Physical Host Networking"
+msgstr "物理主机网络"
+
+# 24de9cbfdd0a4277a359684f50fb2ca7
+#: ../../hypervisor/vsphere.rst:239
+msgid ""
+"You should have a plan for cabling the vSphere hosts. Proper network "
+"configuration is required before adding a vSphere host to CloudStack. To "
+"configure an ESXi host, you can use vClient to add it as standalone host to "
+"vCenter first. Once you see the host appearing in the vCenter inventory "
+"tree, click the host node in the inventory tree, and navigate to the "
+"Configuration tab."
+msgstr "您应该准备一个vSphere主机连接的规划。将主机添加至CloudStack之前，需要合理地配置网络。要配置ESXi主机，可以先用vClient将它作为独立主机添加到vCenter。当您在vCenter的导航树中看到该主机时，点击它，选择配置页。"
+
+# 1221f7c6183a439e9db5dfe5282e491a
+#: ../../hypervisor/vsphere.rst:246
+msgid "|vspherephysicalnetwork.png: vSphere client|"
+msgstr "|vspherephysicalnetwork.png: vSphere client|"
+
+# 814e620809104bd1bd43c8b8d28445ad
+#: ../../hypervisor/vsphere.rst:248
+msgid ""
+"In the host configuration tab, click the \"Hardware/Networking\" link to "
+"bring up the networking configuration page as above."
+msgstr "在主机的配置标签页中，点击\"硬件/网络\"链接转到上图中的网络配置页。"
+
+# 6bb1a1da1840400f9cd0ea1a73f0c12a
+#: ../../hypervisor/vsphere.rst:253
+msgid "Configure Virtual Switch"
+msgstr "配置虚拟交换机"
+
+# b867b4246fc449979584e901e0fac0fb
+#: ../../hypervisor/vsphere.rst:255
+msgid ""
+"A default virtual switch vSwitch0 is created. CloudStack requires all ESXi "
+"hosts in the cloud to use the same set of virtual switch names. If you "
+"change the default virtual switch name, you will need to configure one or "
+"more CloudStack configuration variables as well."
+msgstr "默认情况下，系统会创建虚拟交换机vSwitch0。CloudStack要求云中所有ESXi主机中的虚拟交换机都使用相同的名字。如果你改变了默认虚拟交换机名称，那么你需要改变一个或多个CloudStack配置。"
+
+# cfa8f6a17984452ba1aabf882f8c3d42
+#: ../../hypervisor/vsphere.rst:262
+msgid "Separating Traffic"
+msgstr "流量隔离"
+
+# 69b7df288a684ae0b55024da82f5e8fc
+#: ../../hypervisor/vsphere.rst:264
+msgid ""
+"CloudStack allows you to use vCenter to configure three separate networks "
+"per ESXi host. These networks are identified by the name of the vSwitch they"
+" are connected to. The allowed networks for configuration are public (for "
+"traffic to/from the public internet), guest (for guest-guest traffic), and "
+"private (for management and usually storage traffic). You can use the "
+"default virtual switch for all three, or create one or two other vSwitches "
+"for those traffic types."
+msgstr "CloudStack允许你使用vCenter为每个ESXi主机配置三个独立的网络。CloudStack通过vSwitch的名称识别网络。允许配置的网络分别为公共网络(与公共互联网之间的流量)，来宾网络(来宾-来宾流量)和管理网络(与管理服务器和存储之间的流量)。您可以设置3种网络使用默认的虚拟交换机，或创建1个/2个其他虚拟交换机来承载这些网络流量。"
+
+# bf95ebb6ddf44a5cbf07c996d8a660f3
+#: ../../hypervisor/vsphere.rst:272
+msgid ""
+"If you want to separate traffic in this way you should first create and "
+"configure vSwitches in vCenter according to the vCenter instructions. Take "
+"note of the vSwitch names you have used for each traffic type. You will "
+"configure CloudStack to use these vSwitches."
+msgstr "如果您想以这样的方式隔离流量，首先应按照vCenter的指南在vCenter中创建并配置虚拟交换机。请记录每种网络使用的虚拟交换机名称。您需要配置CloudStack使用这些虚拟交换机。"
+
+# bc3f5581dea54034ae73ec0a942e180c
+#: ../../hypervisor/vsphere.rst:279
+msgid "Increasing Ports"
+msgstr "增加端口"
+
+# 88f709156fa8484b902282de91c0793f
+#: ../../hypervisor/vsphere.rst:281
+msgid ""
+"By default a virtual switch on ESXi hosts is created with 56 ports. We "
+"recommend setting it to 4088, the maximum number of ports allowed. To do "
+"that, click the \"Properties...\" link for virtual switch (note this is not "
+"the Properties link for Networking)."
+msgstr "ESXi主机的虚拟交换机默认有56个端口。我们建议设为最大允许数4088。要设置该值，请点击虚拟交换机的“属性…”链接(注意，不是网络的属性)。"
+
+# 4e01bfffde3c422aa7fcdddc74de892f
+#: ../../hypervisor/vsphere.rst:286
+msgid "|vsphereincreaseports.png: vSphere client|"
+msgstr "|vsphereincreaseports.png: vSphere client|"
+
+# 11994bd16f5a45a383d33894daaa0f53
+#: ../../hypervisor/vsphere.rst:288
+msgid ""
+"In vSwitch properties dialog, select the vSwitch and click Edit. You should "
+"see the following dialog:"
+msgstr "在vSwitch属性对话框中，选择vSwitch，点击“编辑”，您将看到以下对话框："
+
+# f64cba4600314bd89382d82cd5d37e5a
+#: ../../hypervisor/vsphere.rst:291
+msgid "|vspherevswitchproperties.png: vSphere client|"
+msgstr "|vspherevswitchproperties.png: vSphere client|"
+
+# 5216577220b34c2980dadbd02476e716
+#: ../../hypervisor/vsphere.rst:293
+msgid ""
+"In this dialog, you can change the number of switch ports. After you've done"
+" that, ESXi hosts are required to reboot in order for the setting to take "
+"effect."
+msgstr "在该对话框中，您可以修改端口数量。修改完后，为使配置生效，需要重启ESXi主机。"
+
+# 0ad4145d13e84c828a62f3d1b613dbd3
+#: ../../hypervisor/vsphere.rst:301
+msgid "Configure vCenter Management Network"
+msgstr "配置vCenter管理网络"
+
+# 55856f0ddbed407eae0a6e859a61f73d
+#: ../../hypervisor/vsphere.rst:303
+msgid ""
+"In the vSwitch properties dialog box, you may see a vCenter management "
+"network. This same network will also be used as the CloudStack management "
+"network. CloudStack requires the vCenter management network to be configured"
+" properly. Select the management network item in the dialog, then click "
+"Edit."
+msgstr "在vSwith属性对话框中，您可以看到一个vCenter管理网络。CloudStack的管理网络也使用该网络。CloudStack要求正确配置vCenter的管理网络。在对话框中点击管理网络，然后点击编辑。"
+
+# 07fa2b72b0564cb89199ffcab114a7ee
+#: ../../hypervisor/vsphere.rst:309
+msgid "|vspheremgtnetwork.png: vSphere client|"
+msgstr "|vspheremgtnetwork.png: vSphere client|"
+
+# 00017c3e4d5e4506808936e3c52b70fd
+#: ../../hypervisor/vsphere.rst:311
+msgid "Make sure the following values are set:"
+msgstr "请确保配置以下设置："
+
+# 383a238254dd4a109140ddd990c2ced7
+#: ../../hypervisor/vsphere.rst:313
+msgid "VLAN ID set to the desired ID"
+msgstr "VLAN ID设置为期望的ID"
+
+# 92318eb7b2c544b08843c50e90bfb36c
+#: ../../hypervisor/vsphere.rst:315
+msgid "vMotion enabled."
+msgstr "启用vMotion。"
+
+# d6f57109f2fa4226a9ff5372703acb79
+#: ../../hypervisor/vsphere.rst:317
+msgid "Management traffic enabled."
+msgstr "启用管理流量。"
+
+# 44d67b07355843239d874a52581251b0
+#: ../../hypervisor/vsphere.rst:319
+msgid ""
+"If the ESXi hosts have multiple VMKernel ports, and ESXi is not using the "
+"default value \"Management Network\" as the management network name, you "
+"must follow these guidelines to configure the management network port group "
+"so that CloudStack can find it:"
+msgstr "如果ESXi主机具有多个VMKernel端口，并且ESXi没有使用默认的“Management Network”作为管理网络名称，您必须按照以下指南配置管理网络端口组，以便CloudStack可以发现管理网络。"
+
+# 9bb53b01739a4056995c0d4a8ca8d472
+#: ../../hypervisor/vsphere.rst:324
+msgid "Use one label for the management network port across all ESXi hosts."
+msgstr "在所有ESXi主机上使用同一个管理网络端口组名称。"
+
+# 9a73da845a73437891672f0ca961eba4
+#: ../../hypervisor/vsphere.rst:326
+msgid ""
+"In the CloudStack UI, go to Configuration - Global Settings and set "
+"vmware.management.portgroup to the management network label from the ESXi "
+"hosts."
+msgstr "在CloudStack管理界面中，点击配置-全局设置，修改vmware.management.portgroup为ESXi主机管理网络的标签。"
+
+# b6695dde2a9e4023ab181aa0b7f43ddf
+#: ../../hypervisor/vsphere.rst:332
+msgid "Extend Port Range for CloudStack Console Proxy"
+msgstr "为CloudStack控制台代理扩展端口范围"
+
+# 8acd9f9a7fd74d82b305dd73462cb96d
+#: ../../hypervisor/vsphere.rst:334
+msgid "(Applies only to VMware vSphere version 4.x)"
+msgstr "（仅适用于VMware vSphere  4.x）"
+
+# 3ca5d828266843f981f791b128eaa6a4
+#: ../../hypervisor/vsphere.rst:336
+msgid ""
+"You need to extend the range of firewall ports that the console proxy works "
+"with on the hosts. This is to enable the console proxy to work with VMware-"
+"based VMs. The default additional port range is 59000-60000. To extend the "
+"port range, log in to the VMware ESX service console on each host and run "
+"the following commands:"
+msgstr "为使控制台代理可以和主机一起工作，您需要扩展主机的防火墙端口范围。这是为了使控制台代理可以访问VMware的VM。为扩展端口范围，请登录到每台主机的VMware ESX服务控制台，然后执行以下命令："
+
+# 1f25aa96ef604ce8acd3ae301b49add1
+#: ../../hypervisor/vsphere.rst:349
+msgid "Configure NIC Bonding for vSphere"
+msgstr "配置vSphere的网卡绑定"
+
+# b3ba21794a784430bc2e6d8755c2a5d6
+#: ../../hypervisor/vsphere.rst:351
+msgid ""
+"NIC bonding on vSphere hosts may be done according to the vSphere "
+"installation guide."
+msgstr "vSphere主机的网卡绑定可以按照vSphere安装指南完成。"
+
+# 57eca85918594e28af92c0453eb88f9e
+#: ../../hypervisor/vsphere.rst:356
+msgid "Configuring a vSphere Cluster with Nexus 1000v Virtual Switch"
+msgstr "配置vSphere群集使用Nexus 1000v虚拟交换机"
+
+# c41be8a6fd7a495a9f3fc72a6f572fc1
+#: ../../hypervisor/vsphere.rst:358
+msgid ""
+"CloudStack supports Cisco Nexus 1000v dvSwitch (Distributed Virtual Switch) "
+"for virtual network configuration in a VMware vSphere environment. This "
+"section helps you configure a vSphere cluster with Nexus 1000v virtual "
+"switch in a VMware vCenter environment. For information on creating a "
+"vSphere cluster, see `\"VMware vSphere Installation and Configuration\" "
+"<#vmware-vsphere-installation-and-configuration>`_"
+msgstr "CloudStack支持在VMware vSphere环境中使用Cisco Nexus 1000v dvSwitch (分布式虚拟交换机)。本章节能帮助你配置vSphere群集使用Nexus 1000v虚拟交换机。关于创建vSphere群集的更多信息，请参考 `\"VMware vSphere安装和配置\" <#vmware-vsphere-installation-and-configuration>`_"
+
+# fd98cbd7bb554d358747d066d0beb7ec
+#: ../../hypervisor/vsphere.rst:368
+msgid "About Cisco Nexus 1000v Distributed Virtual Switch"
+msgstr "关于Cisco Nexus 1000v分布式虚拟交换机"
+
+# 59712fc0b9b3480680eab3fc5438d7d6
+#: ../../hypervisor/vsphere.rst:370
+msgid ""
+"The Cisco Nexus 1000V virtual switch is a software-based virtual machine "
+"access switch for VMware vSphere environments. It can span multiple hosts "
+"running VMware ESXi 4.0 and later. A Nexus virtual switch consists of two "
+"components: the Virtual Supervisor Module (VSM) and the Virtual Ethernet "
+"Module (VEM). The VSM is a virtual appliance that acts as the switch's "
+"supervisor. It controls multiple VEMs as a single network device. The VSM is"
+" installed independent of the VEM and is deployed in redundancy mode as "
+"pairs or as a standalone appliance. The VEM is installed on each VMware ESXi"
+" server to provide packet-forwarding capability. It provides each virtual "
+"machine with dedicated switch ports. This VSM-VEM architecture is analogous "
+"to a physical Cisco switch's supervisor (standalone or configured in high-"
+"availability mode) and multiple linecards architecture."
+msgstr "Cisco Nexus 1000V虚拟交换机是一个内置软件程序的虚拟机。它能跨越多个运行VMware ESXi 4.0或更高版本的主机部署。Nexus虚拟交换机包括两个组件：Virtual Supervisor Module (VSM)和 Virtual Ethernet Module (VEM)。VSM是一个管理交换机的虚拟设备。它单独控制多个VEM。VSM安装在每台VMware ESXi服务器当中提供包转发功能。它为每个虚拟机提供单独的交换机接口。VSM-VEM架构与物理交换机的管理机制（单独或者高可用模式）和多线卡架构类似。"
+
+# f739316e27a14ab39ad8ab22ae8e3d33
+#: ../../hypervisor/vsphere.rst:384
+msgid ""
+"Nexus 1000v switch uses vEthernet port profiles to simplify network "
+"provisioning for virtual machines. There are two types of port profiles: "
+"Ethernet port profile and vEthernet port profile. The Ethernet port profile "
+"is applied to the physical uplink ports-the NIC ports of the physical NIC "
+"adapter on an ESXi server. The vEthernet port profile is associated with the"
+" virtual NIC (vNIC) that is plumbed on a guest VM on the ESXi server. The "
+"port profiles help the network administrators define network policies which "
+"can be reused for new virtual machines. The Ethernet port profiles are "
+"created on the VSM and are represented as port groups on the vCenter server."
+msgstr "Nexus 1000v交换机使用vEthernet端口配置文件为虚拟机提供简单的网络。它有两种类型的端口配置文件：Ethernet端口配置文件和vEthernet端口配置文件。Ethernet端口配置文件应用到物理上联端口-ESXi服务器上面的物理网卡的端口。vEthernet端口配置文件关联到ESXi服务器上运行的虚拟机的虚拟网卡。端口配置文件可以帮助网络管理员快速的为其他虚机定义同样的网络策略。VSM创建的Ethernet端口策略在vCenter服务器上显示为端口组。"
+
+# de9fe88270bf4403afa9e22b05f73471
+# 5d365a93c5e949efb76d86e0763cbad3
+#: ../../hypervisor/vsphere.rst:397 ../../hypervisor/vsphere.rst:715
+msgid "Prerequisites and Guidelines"
+msgstr "先决条件和指南"
+
+# 7c2f20207c414d7d819f7e0e5d408552
+#: ../../hypervisor/vsphere.rst:399
+msgid ""
+"This section discusses prerequisites and guidelines for using Nexus virtual "
+"switch in CloudStack. Before configuring Nexus virtual switch, ensure that "
+"your system meets the following requirements:"
+msgstr "本章节探讨了在CloudStack中使用Nexus虚拟交换机的先决条件与指南。在配置Nexus虚拟交换机之前，请确保你的系统符合下列条件："
+
+# 6069bf189abd4043952218eb4c6136a7
+#: ../../hypervisor/vsphere.rst:403
+msgid "A cluster of servers (ESXi 4.1 or later) is configured in the vCenter."
+msgstr "在vCenter中配置ESXi（ESXi 4.1或更高）群集。"
+
+# f86fc439aeb543e4a45e2c8bbdfd9510
+#: ../../hypervisor/vsphere.rst:406
+msgid ""
+"Each cluster managed by CloudStack is the only cluster in its vCenter "
+"datacenter."
+msgstr "CloudStack只能管理存在当前vCenter数据中心管理之下的每一个群集。"
+
+# 26d3882e3f964a7ba7e2079ae88133a1
+#: ../../hypervisor/vsphere.rst:409
+msgid ""
+"A Cisco Nexus 1000v virtual switch is installed to serve the datacenter that"
+" contains the vCenter cluster. This ensures that CloudStack doesn't have to "
+"deal with dynamic migration of virtual adapters or networks across other "
+"existing virtual switches. See `Cisco Nexus 1000V Installation and Upgrade "
+"Guide "
+"<http://www.cisco.com/en/US/docs/switches/datacenter/nexus1000/sw/4_2_1_s_v_1_5_1/install_upgrade/vsm_vem/guide/n1000v_installupgrade.html>`_"
+" for guidelines on how to install the Nexus 1000v VSM and VEM modules."
+msgstr "Cisco Nexus 1000v虚拟交换机安装在vCenter数据中心所包含的群集主机。这将确保CloudStack不必处理跨现存虚拟交换机之间的虚拟网卡或网络的动态迁移。如何安装Nexus 1000v VSM和VEM 模块，请参考 `Cisco Nexus 1000V Installation and Upgrade Guide <http://www.cisco.com/en/US/docs/switches/datacenter/nexus1000/sw/4_2_1_s_v_1_5_1/install_upgrade/vsm_vem/guide/n1000v_installupgrade.html>`_。"
+
+# 985ff8e2082f419d8d77119acefbfa01
+#: ../../hypervisor/vsphere.rst:417
+msgid ""
+"The Nexus 1000v VSM is not deployed on a vSphere host that is managed by "
+"CloudStack."
+msgstr "Nexus 1000v VSM不能部署在由CloudStack管理的vSphere主机上。"
+
+# affd3445b0854e7ab5ffbef4fa7b9db4
+#: ../../hypervisor/vsphere.rst:420
+msgid ""
+"When the maximum number of VEM modules per VSM instance is reached, an "
+"additional VSM instance is created before introducing any more ESXi hosts. "
+"The limit is 64 VEM modules for each VSM instance."
+msgstr "当每个VSM实例的VEM模块达到最大数量时，需要在添加额外的VSM实例之前引入更多的ESXi主机。每个VSM实例的VEM模块数量限制为64个。"
+
+# e95f2908159b4be0820e8620c94c70c5
+#: ../../hypervisor/vsphere.rst:424
+msgid ""
+"CloudStack expects that the Management Network of the ESXi host is "
+"configured on the standard vSwitch and searches for it in the standard "
+"vSwitch. Therefore, ensure that you do not migrate the management network to"
+" Nexus 1000v virtual switch during configuration."
+msgstr "CloudStack期望ESXi主机的管理网络被配置在标准的vSwitch之上并且在标准的vSwitch中搜索该网络。因此，确保在配置期间不要把管理网络迁移到Nexus 1000v上。"
+
+# 7f74225fb2604754a58806809f2c65c1
+#: ../../hypervisor/vsphere.rst:430
+msgid "All information given in :ref:`nexus-vswift-preconf`"
+msgstr "所有信息在ref:`nexus-vswift-preconf`中："
+
+# 0ab3b61d4a674fb5ba50354f165cf6e9
+#: ../../hypervisor/vsphere.rst:436
+msgid "Nexus 1000v Virtual Switch Preconfiguration"
+msgstr "Nexus 1000v虚拟交换机预配置"
+
+# 2af119d57464425ea16e15da99bba2c2
+# 6067502710ad439c97b2463c8710b803
+#: ../../hypervisor/vsphere.rst:439 ../../hypervisor/vsphere.rst:737
+msgid "Preparation Checklist"
+msgstr "准备工作清单"
+
+# 70d29993a857439d8efb48c089332053
+#: ../../hypervisor/vsphere.rst:441
+msgid ""
+"For a smoother configuration of Nexus 1000v switch, gather the following "
+"information before you start:"
+msgstr "要顺利配置 Nexus 1000v交换机，请在开始之前收集下列信息："
+
+# 12d946312911404db67cdfccc6dcfe14
+#: ../../hypervisor/vsphere.rst:444
+msgid "vCenter credentials"
+msgstr "vCenter凭证"
+
+# 568485eb210d406098935f8d5ab9b909
+#: ../../hypervisor/vsphere.rst:446
+msgid "Nexus 1000v VSM IP address"
+msgstr "Nexus 1000v VSM IP地址"
+
+# a593926b86d04d3a8de54de3c70a9174
+#: ../../hypervisor/vsphere.rst:448
+msgid "Nexus 1000v VSM Credentials"
+msgstr "Nexus 1000v VSM 凭证"
+
+# ff2a8c3138eb40fbbb40579586e678bf
+#: ../../hypervisor/vsphere.rst:450
+msgid "Ethernet port profile names"
+msgstr "以太网端口配置文件名称"
+
+# 4a63ecb799f24c29a04447e5da4130a5
+#: ../../hypervisor/vsphere.rst:454
+msgid "vCenter Credentials Checklist"
+msgstr "vCenter凭证清单"
+
+# 12069bcb02154859beac5cf397ecee61
+#: ../../hypervisor/vsphere.rst:456
+msgid "You will need the following information about vCenter:"
+msgstr "需要vCenter以下信息："
+
+# b2dc772426244f1f87b143366ecfd94a
+#: ../../hypervisor/vsphere.rst:459
+msgid "Nexus vSwitch Requirements"
+msgstr "Nexus vSwitch要求"
+
+# ca1d082b962346c5b7e77314fa8f5339
+#: ../../hypervisor/vsphere.rst:459
+msgid "Value"
+msgstr "值"
+
+# 3e9df2480b0d45c7a1888a94ab74b561
+#: ../../hypervisor/vsphere.rst:461
+msgid "vCenter IP"
+msgstr "vCenter IP"
+
+# 799d10a2870e4192b304caa3220a3c8c
+#: ../../hypervisor/vsphere.rst:461
+msgid "The IP address of the vCenter."
+msgstr "vCenter IP地址"
+
+# 373aace450dd4118b5260a922177871d
+#: ../../hypervisor/vsphere.rst:462
+msgid "Secure HTTP Port Number"
+msgstr "HTTPS端口号"
+
+# bf406db42c3b4a0985b822dc6f559fe9
+#: ../../hypervisor/vsphere.rst:462
+msgid "443"
+msgstr "443"
+
+# 78925de645d8445ab775646afbe88bac
+#: ../../hypervisor/vsphere.rst:462
+msgid ""
+"Port 443 is configured by default; however, you can change the port if "
+"needed."
+msgstr "默认配置使用443端口；如果需要，可以更改为其他端口。"
+
+# 7130dcb862384a349e76cb8cd106e8e2
+#: ../../hypervisor/vsphere.rst:463
+msgid "vCenter User ID"
+msgstr "vCenter用户ID"
+
+# 3c850f22d89f4e009b761127783ecdbd
+#: ../../hypervisor/vsphere.rst:463
+msgid ""
+"The vCenter user with administrator-level privileges. The vCenter User ID is"
+" required when you configure the virtual switch in CloudStack."
+msgstr "拥有管理员权限的vCenter用户。在CloudStack中配置虚拟交换时需要提供vCenter用户ID。"
+
+# 12125993392649a481f3650dc5288a6e
+# 0bd5bef46f9b4c6094ac26305cdfaa3f
+# aa87c00699724716b0aee7487275d581
+#: ../../hypervisor/vsphere.rst:465 ../../hypervisor/vsphere.rst:658
+#: ../../hypervisor/vsphere.rst:870
+msgid "vCenter Password"
+msgstr "vCenter 密码"
+
+# 0e4340b43fb04f7891cf7c7acc4ec52d
+#: ../../hypervisor/vsphere.rst:465
+msgid ""
+"The password for the vCenter user specified above. The password for this "
+"vCenter user is required when you configure the switch in CloudStack."
+msgstr "上述vCenter用户的密码。在CloudStack中配置虚拟交换机时需要提供vCenter用户密码。"
+
+# c78db2020a3c495b810c84656515f5a0
+#: ../../hypervisor/vsphere.rst:471
+msgid "Network Configuration Checklist"
+msgstr "网络配置清单"
+
+# 8685bc23de794287bde9bc32baf13f10
+#: ../../hypervisor/vsphere.rst:473
+msgid ""
+"The following information specified in the Nexus Configure Networking screen"
+" is displayed in the Details tab of the Nexus dvSwitch in the CloudStack UI:"
+msgstr "打开CloudStack管理界面，请在Nexus dvSwitchde 详情标签页中的Nexus 配置网络界面指定下列信息："
+
+# 5ecd7125924d4e3291abfd544471236f
+#: ../../hypervisor/vsphere.rst:477
+msgid ""
+"**Control Port Group VLAN ID** The VLAN ID of the Control Port Group. The "
+"control VLAN is used for communication between the VSM and the VEMs."
+msgstr ""
+
+# 5f52a9e500cc4927a981a052e73bac88
+#: ../../hypervisor/vsphere.rst:481
+msgid ""
+"**Management Port Group VLAN ID** The VLAN ID of the Management Port Group. "
+"The management VLAN corresponds to the mgmt0 interface that is used to "
+"establish and maintain the connection between the VSM and VMware vCenter "
+"Server."
+msgstr ""
+
+# 709fb407f7f7478ea5db1f47f795d42e
+#: ../../hypervisor/vsphere.rst:486
+msgid ""
+"**Packet Port Group VLAN ID** The VLAN ID of the Packet Port Group. The "
+"packet VLAN forwards relevant data packets from the VEMs to the VSM."
+msgstr ""
+
+# ee94ad5da5e44bd8a01b0a8b8d1f08f7
+#: ../../hypervisor/vsphere.rst:491
+msgid ""
+"The VLANs used for control, packet, and management port groups can be the "
+"same."
+msgstr "用于控制，数据和管理端口组可以在同一VLAN。"
+
+# 1d2af92735dc4899b13bb4fc697442f3
+#: ../../hypervisor/vsphere.rst:494
+msgid ""
+"For more information, see `Cisco Nexus 1000V Getting Started Guide "
+"<http://www.cisco.com/en/US/docs/switches/datacenter/nexus1000/sw/4_2_1_s_v_1_4_b/getting_started/configuration/guide/n1000v_gsg.pdf>`_."
+msgstr "更多信息，请参考 `Cisco Nexus 1000V 入门指南 <http://www.cisco.com/en/US/docs/switches/datacenter/nexus1000/sw/4_2_1_s_v_1_4_b/getting_started/configuration/guide/n1000v_gsg.pdf>`_."
+
+# a9b85e88b0e54ef7bfa6227318fcadd8
+#: ../../hypervisor/vsphere.rst:499
+msgid "VSM Configuration Checklist"
+msgstr "VSM配置清单"
+
+# 409e4da026e84021900be9e9944f3530
+#: ../../hypervisor/vsphere.rst:501
+msgid "You will need the following VSM configuration parameters:"
+msgstr "你需要下列的VSM配置参数："
+
+# b2c7beaf3b174e24ae88c155d2eaf8bb
+#: ../../hypervisor/vsphere.rst:503
+msgid ""
+"**Admin Name and Password** The admin name and password to connect to the "
+"VSM appliance. You must specify these credentials while configuring Nexus "
+"virtual switch."
+msgstr ""
+
+# c42b39990d6e4d0589467d0a4ff5be4c
+#: ../../hypervisor/vsphere.rst:507
+msgid ""
+"**Management IP Address** This is the IP address of the VSM appliance. This "
+"is the IP address you specify in the virtual switch IP Address field while "
+"configuting Nexus virtual switch."
+msgstr ""
+
+# 26a1722f2c004284958a7d40035272d8
+#: ../../hypervisor/vsphere.rst:512
+msgid ""
+"**SSL** Should be set to Enable.Always enable SSL. SSH is usually enabled by"
+" default during the VSM installation. However, check whether the SSH "
+"connection to the VSM is working, without which CloudStack failes to connect"
+" to the VSM."
+msgstr ""
+
+# 62e601792f00490dbb068dab317eacb1
+#: ../../hypervisor/vsphere.rst:519
+msgid "Creating a Port Profile"
+msgstr "创建端口配置文件"
+
+# 4c8ad78e43824c658d06ce2ab03a001f
+#: ../../hypervisor/vsphere.rst:521
+msgid ""
+"Whether you create a Basic or Advanced zone configuration, ensure that you "
+"always create an Ethernet port profile on the VSM after you install it and "
+"before you create the zone."
+msgstr "无论创建简单或者高级区域，确保你总是在安装完VSM之后，创建区域之前，创建一个VSM的Ethernet配置文件。"
+
+# 7208a4d7c533445d986522ab1512d4bf
+#: ../../hypervisor/vsphere.rst:525
+msgid ""
+"The Ethernet port profile created to represent the physical network or "
+"networks used by an Advanced zone configuration trunk all the VLANs "
+"including guest VLANs, the VLANs that serve the native VLAN, and the "
+"packet/control/data/management VLANs of the VSM."
+msgstr "创建Ethernet端口配置文件用于表示物理网络或高级区域配置中trunk所有的VLANs网络，VLANs包括来宾网VLANs，本征VLAN以及VSM的数据/控制/管理VLANs。"
+
+# a8f769a137704cb5b1e211dbd40311d3
+#: ../../hypervisor/vsphere.rst:531
+msgid ""
+"The Ethernet port profile created for a Basic zone configuration does not "
+"trunk the guest VLANs because the guest VMs do not get their own VLANs "
+"provisioned on their network interfaces in a Basic zone."
+msgstr "为基础区域配置的Ethernet端口配置文件不会trunk来宾VLANs，因为在基础区域中，来宾VMs无法通过它们的网络接口获得所属的VLANs。"
+
+# e5eb4252f80244b298e78778099d1fc0
+#: ../../hypervisor/vsphere.rst:536
+msgid ""
+"An Ethernet port profile configured on the Nexus 1000v virtual switch should"
+" not use in its set of system VLANs, or any of the VLANs configured or "
+"intended to be configured for use towards VMs or VM resources in the "
+"CloudStack environment."
+msgstr "在Nexus 1000v虚拟交换机上配置的以太网端口配置文件，不应该使用在它的VLANS系统设置中，或者使用在其他任何VLANS配置以及打算使用在CloudStack环境中的虚拟机或者虚拟机资源的配置。"
+
+# d75d1e3b4d5e4861816052de95cd1077
+#: ../../hypervisor/vsphere.rst:541
+msgid ""
+"You do not have to create any vEthernet port profiles – CloudStack does that"
+" during VM deployment."
+msgstr "你无须创建任何vEthernet端口配置文件-CloudStack会在VM部署期间创建。"
+
+# defb84f8c1a843f49799fb10a14be23e
+#: ../../hypervisor/vsphere.rst:544
+msgid ""
+"Ensure that you create required port profiles to be used by CloudStack for "
+"different traffic types of CloudStack, such as Management traffic, Guest "
+"traffic, Storage traffic, and Public traffic. The physical networks "
+"configured during zone creation should have a one-to-one relation with the "
+"Ethernet port profiles."
+msgstr "请确保你为每种CloudStack流量类型创建了所需的端口配置文件，如管理流量，来宾流量，存储流量和公共流量。在区域创建期间配置的物理网络跟Ethernet应该是一一对应的关系。"
+
+# 0e5328f3a23c4e29bfca23e34fcf89e4
+#: ../../hypervisor/vsphere.rst:550
+msgid "|vmwarenexusportprofile.png: vSphere client|"
+msgstr "|vmwarenexusportprofile.png: vSphere client|"
+
+# 70e2a8e74f5a4a1f9e0541bf48f85614
+#: ../../hypervisor/vsphere.rst:552
+msgid ""
+"For information on creating a port profile, see `Cisco Nexus 1000V Port "
+"Profile Configuration Guide "
+"<http://www.cisco.com/en/US/docs/switches/datacenter/nexus1000/sw/4_2_1_s_v_1_4_a/port_profile/configuration/guide/n1000v_port_profile.html>`_."
+msgstr "关于创建端口配置文件的更多信息，请参考 `Cisco Nexus 1000V 端口配置指南 <http://www.cisco.com/en/US/docs/switches/datacenter/nexus1000/sw/4_2_1_s_v_1_4_a/port_profile/configuration/guide/n1000v_port_profile.html>`_。"
+
+# 0bf9d88c6b9f41fd886a6707af18171a
+#: ../../hypervisor/vsphere.rst:558
+msgid "Assigning Physical NIC Adapters"
+msgstr "分配物理网络适配器"
+
+# af30a3508a1749d78432b57d276bbdb3
+#: ../../hypervisor/vsphere.rst:560
+msgid ""
+"Assign ESXi host's physical NIC adapters, which correspond to each physical "
+"network, to the port profiles. In each ESXi host that is part of the vCenter"
+" cluster, observe the physical networks assigned to each port profile and "
+"note down the names of the port profile for future use. This mapping "
+"information helps you when configuring physical networks during the zone "
+"configuration on CloudStack. These Ethernet port profile names are later "
+"specified as VMware Traffic Labels for different traffic types when "
+"configuring physical networks during the zone configuration. For more "
+"information on configuring physical networks, see `\"Configuring a vSphere "
+"Cluster with Nexus 1000v Virtual Switch\" <#configuring-a-vsphere-cluster-"
+"with-nexus-1000v-virtual-switch>`_."
+msgstr "分配ESXi主机上的对应每个物理网络的网卡适配器到端口配置文件。在vCenter群集中的每个ESXi主机上，观察分配到每个端口配置文件的物理网络并记下配置文件的名字。在创建zone期间，当你配置物理网络的时候，这个映射信息能帮助你。这些Ethernet端口配置文件的名字就是随后你在配置zone的时候，配置物理网络时所要输入的不同流量对应的VMware流量标签。配置物理网络所需的更多信息，请参考 `\"Configuring a vSphere Cluster with Nexus 1000v Virtual Switch\" <#configuring-a-vsphere-cluster-with-nexus-1000v-virtual-switch>`_。"
+
+# 4d643ffbee4341e4bb88d373ef58d4cb
+#: ../../hypervisor/vsphere.rst:574
+msgid "Adding VLAN Ranges"
+msgstr "添加VLAN范围"
+
+# baf83061abab4c29997a363586a2456f
+#: ../../hypervisor/vsphere.rst:576
+msgid ""
+"Determine the public VLAN, System VLAN, and Guest VLANs to be used by the "
+"CloudStack. Ensure that you add them to the port profile database. "
+"Corresponding to each physical network, add the VLAN range to port profiles."
+" In the VSM command prompt, run the switchport trunk allowed vlan<range> "
+"command to add the VLAN ranges to the port profile."
+msgstr "决定CloudStack所使用的公共VLAN，系统VLAN和来宾VLAN。确保你添加他们到端口配置文件数据库。对应每个物理网络，为端口配置文件添加VLAN范围。在VSM命令提示符下，运行 switchport trunk allowed vlan<range>命令为端口配置文件添加VLAN范围。"
+
+# a2316a806eeb4659aee14888d7a2fdac
+# 4709d5c62ddc4858afce5f4c10779904
+#: ../../hypervisor/vsphere.rst:582 ../../hypervisor/vsphere.rst:597
+msgid "For example:"
+msgstr "例如："
+
+# b6f0345378ec46c3b728d82ee05d286b
+#: ../../hypervisor/vsphere.rst:588
+msgid "In this example, the allowed VLANs added are 1, 140-147, and 196-203"
+msgstr "在这个示例下，添加的VLANs是1,140-147和196-203"
+
+# 11887130246943b5831c94500ad2baf5
+#: ../../hypervisor/vsphere.rst:590
+msgid ""
+"You must also add all the public and private VLANs or VLAN ranges to the "
+"switch. This range is the VLAN range you specify in your zone."
+msgstr "你同样在该交换机中添加所有的公共和管理VLANs或VLAN范围。这个范围是你在区域中指定的VLAN范围。"
+
+# 330d6aad437046f89b9b68dd7beeb679
+#: ../../hypervisor/vsphere.rst:594
+msgid ""
+"Before you run the vlan command, ensure that the configuration mode is "
+"enabled in Nexus 1000v virtual switch."
+msgstr "在你运行vlan命令之前，确保Nexus 1000v虚拟交换机中启用了配置模式。"
+
+# 22f63b04c60d40dea935e52d90e87e7e
+#: ../../hypervisor/vsphere.rst:599
+msgid ""
+"If you want the VLAN 200 to be used on the switch, run the following "
+"command:"
+msgstr "如果你想在交换机中使用VLAN 200，运行下面的命令："
+
+# ba4c025b07cf4124a3cdd1f31a23eb96
+#: ../../hypervisor/vsphere.rst:606
+msgid ""
+"If you want the VLAN range 1350-1750 to be used on the switch, run the "
+"following command:"
+msgstr "如果你想在交换机中使用VLAN范围1350-1750，请运行下面的命令："
+
+# c199b4ffbd1f477285c999898c2ddd1d
+#: ../../hypervisor/vsphere.rst:613
+msgid ""
+"Refer to Cisco Nexus 1000V Command Reference of specific product version."
+msgstr "参考特定产品版本的Cisco Nexus 1000V 命令参考。"
+
+# fef738594c2b491dba8d52bd4a2af5c6
+#: ../../hypervisor/vsphere.rst:618
+msgid "Enabling Nexus Virtual Switch in CloudStack"
+msgstr "在CloudStack中启用Nexus虚拟交换机。"
+
+# d5d3e75b340e49b59882b4fd17efbeee
+#: ../../hypervisor/vsphere.rst:620
+msgid ""
+"To make a CloudStack deployment Nexus enabled, you must set the "
+"vmware.use.nexus.vswitch parameter true by using the Global Settings page in"
+" the CloudStack UI. Unless this parameter is set to \"true\" and restart the"
+" management server, you cannot see any UI options specific to Nexus virtual "
+"switch, and CloudStack ignores the Nexus virtual switch specific parameters "
+"specified in the AddTrafficTypeCmd, UpdateTrafficTypeCmd, and AddClusterCmd "
+"API calls."
+msgstr "为了使CloudStack启用部署Nexus，你必须在CloudStack UI中全局设置页面设置vmware.use.nexus.vswitch参数为true。只有这个参数设置为 \"true\"并且重启了管理服务器，你才可以看见Nexus虚拟交换机的相关页面，CloudStack在AddTrafficTypeCmd, UpdateTrafficTypeCmd和 AddClusterCmd API的调用中会忽略Nexus虚拟交换机的指定参数。"
+
+# 66954393333444d693e53f7f88f33806
+#: ../../hypervisor/vsphere.rst:628
+msgid ""
+"Unless the CloudStack global parameter \"vmware.use.nexus.vswitch\" is set "
+"to \"true\", CloudStack by default uses VMware standard vSwitch for virtual "
+"network infrastructure. In this release, CloudStack doesn’t support "
+"configuring virtual networks in a deployment with a mix of standard vSwitch "
+"and Nexus 1000v virtual switch. The deployment can have either standard "
+"vSwitch or Nexus 1000v virtual switch."
+msgstr "除非CloudStack全局配置中的\"vmware.use.nexus.vswitch\"设置为\"true\"，否则CloudStack会默认使用VMware标准vSwitch。在本版本中，CloudStack不支持在标准vSwitch和Nexus 1000v虚拟交换机的混合环境中配置虚拟网络。只能支持单一的标准vSwitch或Nexus 1000v虚拟交换机部署。"
+
+# 089aca1a3d354287b5a5f5e3e85a6ac4
+#: ../../hypervisor/vsphere.rst:637
+msgid "Configuring Nexus 1000v Virtual Switch in CloudStack"
+msgstr "在CloudStack中配置Nexus 1000v虚拟交换机"
+
+# 9a68575001b243859acad74ffa452cb3
+#: ../../hypervisor/vsphere.rst:639
+msgid ""
+"You can configure Nexus dvSwitch by adding the necessary resources while the"
+" zone is being created."
+msgstr "可以在创建区域时，通过添加必要的资源用于配置Nexus dvSwitch。"
+
+# 08ba8e10fe624f36bab2f344bcbfdc6d
+#: ../../hypervisor/vsphere.rst:642
+msgid "|vmwarenexusaddcluster.png: vmware nexus add cluster|"
+msgstr "|vmwarenexusaddcluster.png: vmware nexus add cluster|"
+
+# 5666435e9e184603bfede5e1d03e45c9
+#: ../../hypervisor/vsphere.rst:644
+msgid ""
+"After the zone is created, if you want to create an additional cluster along"
+" with Nexus 1000v virtual switch in the existing zone, use the Add Cluster "
+"option. For information on creating a cluster, see `\"Add Cluster: vSphere\""
+" <configuration.html#add-cluster-vsphere>`_."
+msgstr "区域创建完成后，如果你想在区域中创建其他同样使用Nexus 1000v虚拟交换机的群集时，使用添加群集选项。关于创建群集的更多信息，请参见 `\"添加群集: vSphere\" <configuration.html#add-cluster-vsphere>`_。"
+
+# 9f2cbaf16fa54d839d9df5ead1a87d4a
+#: ../../hypervisor/vsphere.rst:649
+msgid ""
+"In both these cases, you must specify the following parameters to configure "
+"Nexus virtual switch:"
+msgstr "在所有的情况下，配置Nexus虚拟交换机时必须指定下列参数："
+
+# f3eae50b0b494bfe81d9c26c4d91d2f6
+#: ../../hypervisor/vsphere.rst:653
+msgid "Parameters"
+msgstr "参数"
+
+# 206d2e47feb14f26af5aa0ba5190283d
+#: ../../hypervisor/vsphere.rst:653
+msgid "Description"
+msgstr "描述"
+
+# f3ce0a1026ad443fb1d31fd83fb6fb89
+# d7c8e2c264fb4986bd9ae232d6bdc8da
+#: ../../hypervisor/vsphere.rst:655 ../../hypervisor/vsphere.rst:867
+msgid "Cluster Name"
+msgstr "群集名称"
+
+# ec69a6aaa2e74f97902c75e7e75e9414
+#: ../../hypervisor/vsphere.rst:655
+msgid ""
+"Enter the name of the cluster you created in vCenter. For "
+"example,\"cloud.cluster\"."
+msgstr "输入在vCenter中创建的群集名称。比如，\"cloud.cluster\"。"
+
+# c1336620763a40f5912677193b00e7d2
+# 5471d0cfd4dd4a1cad1890577ec16d27
+#: ../../hypervisor/vsphere.rst:656 ../../hypervisor/vsphere.rst:868
+msgid "vCenter Host"
+msgstr "vCenter 主机"
+
+# 83d4fc5d91a2434b8dbd5e459e856481
+#: ../../hypervisor/vsphere.rst:656
+msgid ""
+"Enter the host name or the IP address of the vCenter host where you have "
+"deployed the Nexus virtual switch."
+msgstr "输入已经部署了Nexus虚拟交换机的vCenter主机名或IP。"
+
+# a59ea53f5ed34aeeae67a62d22d9ef45
+# 50604ed2276e4b07a2245efe817a0e82
+#: ../../hypervisor/vsphere.rst:657 ../../hypervisor/vsphere.rst:869
+msgid "vCenter User name"
+msgstr "vCenter用户名"
+
+# 15cbe8d043134a98844515d429dc2ce4
+# 3d920505b2f94257aa4fae956cce9e60
+#: ../../hypervisor/vsphere.rst:657 ../../hypervisor/vsphere.rst:869
+msgid ""
+"Enter the username that CloudStack should use to connect to vCenter. This "
+"user must have all administrative privileges."
+msgstr "输入CloudStack连接到vCenter所使用的用户名。这个用户必须拥有所有管理员权限。"
+
+# 72ddd267d0934d71807a5b8f29fcc40b
+# 3d09dd4ec9ca450ab9b2843f5fe568f7
+#: ../../hypervisor/vsphere.rst:658 ../../hypervisor/vsphere.rst:870
+msgid "Enter the password for the user named above."
+msgstr "输入上面用户的密码。"
+
+# 3455a7e1a6ed43d9a04ca83e129c5605
+# 89d73f2b5187411dbeca10e98407d28a
+#: ../../hypervisor/vsphere.rst:659 ../../hypervisor/vsphere.rst:871
+msgid "vCenter Datacenter"
+msgstr "vCenter数据中心"
+
+# b8c64f99941045ba939c00ac64b8577e
+#: ../../hypervisor/vsphere.rst:659
+msgid ""
+"Enter the vCenter datacenter that the cluster is in. For example, "
+"\"cloud.dc.VM\"."
+msgstr "输入群集所属的vCenter数据中心名称。比如， \"cloud.dc.VM\"。"
+
+# 2e1f46464eb742eaa8decef9cc02ee1c
+#: ../../hypervisor/vsphere.rst:660
+msgid "Nexus dvSwitch IP Address"
+msgstr "Nexus dvSwitch IP 地址"
+
+# 0d935b2ec87d43d8ba91c44f85ab3926
+#: ../../hypervisor/vsphere.rst:660
+msgid "The IP address of the VSM component of the Nexus 1000v virtual switch."
+msgstr "Nexus 1000v虚拟交换机VSM组件的IP地址。"
+
+# 506b21479dd245b59972e5235fe090f8
+#: ../../hypervisor/vsphere.rst:661
+msgid "Nexus dvSwitch Username"
+msgstr "Nexus dvSwitch 用户名"
+
+# 51d92f490444448b97636510fda22234
+#: ../../hypervisor/vsphere.rst:661
+msgid "The admin name to connect to the VSM appliance."
+msgstr "连接至VSM appliance的admin名称。"
+
+# d1f48e314d0c4a60b778e89e3e5218c7
+#: ../../hypervisor/vsphere.rst:662
+msgid "Nexus dvSwitch Password"
+msgstr "Nexus dvSwitch 密码"
+
+# 2bf18eee4392452e9e2ce45d3f35ffdf
+#: ../../hypervisor/vsphere.rst:662
+msgid "The corresponding password for the admin user specified above."
+msgstr "上面指定的admin用户所对应的密码。"
+
+# cb27a7f0d42d41a5869093a5664932cc
+#: ../../hypervisor/vsphere.rst:667
+msgid "Removing Nexus Virtual Switch"
+msgstr "移除Nexus虚拟交换机"
+
+# 3661bb5b60a640dfb27da936b1ae3f3f
+#: ../../hypervisor/vsphere.rst:669
+msgid ""
+"In the vCenter datacenter that is served by the Nexus virtual switch, ensure"
+" that you delete all the hosts in the corresponding cluster."
+msgstr "在使用了Nexus虚拟交换机的vCenter数据中心中，确认你在对应的群集中删除了所有的主机。"
+
+# 72b8f0831f1840fba93593a47a3cb31d
+#: ../../hypervisor/vsphere.rst:672
+msgid "Log in with Admin permissions to the CloudStack administrator UI."
+msgstr "使用管理员登录到CloudStack管理界面。"
+
+# a6a80236805f46a289eaf13d946c887a
+#: ../../hypervisor/vsphere.rst:674
+msgid "In the left navigation bar, select Infrastructure."
+msgstr "在左侧导航栏中，选择基础架构。"
+
+# bf58c4e0621740cfa25ee56a211059e4
+#: ../../hypervisor/vsphere.rst:676
+msgid "In the Infrastructure page, click View all under Clusters."
+msgstr "在基础架构页面，点击群集中的查看所有。"
+
+# 5e2de301945c4c99a089b6d4ccbb97f5
+#: ../../hypervisor/vsphere.rst:678
+msgid "Select the cluster where you want to remove the virtual switch."
+msgstr "选择你想要移除虚拟交换机的群集。"
+
+# 8d08ef2d67b24e79a1fd91c3b5c80ac6
+#: ../../hypervisor/vsphere.rst:680
+msgid "In the dvSwitch tab, click the name of the virtual switch."
+msgstr "在dvSwitch标签页中，点击虚拟交换机的名字。"
+
+# e8ab3fb5e03a46a8806229a38548cd5e
+#: ../../hypervisor/vsphere.rst:682
+msgid ""
+"In the Details page, click Delete Nexus dvSwitch icon. |DeleteButton.png: "
+"button to delete dvSwitch|"
+msgstr "在详细页面中，点击删除Nexus dvSwitch的图标。 |DeleteButton.png: button to delete dvSwitch|"
+
+# dab3c1f885254b0d8a52701b537c16a1
+#: ../../hypervisor/vsphere.rst:685
+msgid "Click Yes in the confirmation dialog box."
+msgstr "在确认对话框中点击确定。"
+
+# 5c6a715aab294507b509f8b2c8510cd1
+#: ../../hypervisor/vsphere.rst:689
+msgid "Configuring a VMware Datacenter with VMware Distributed Virtual Switch"
+msgstr "配置VMware数据中心使用VMware分布式虚拟交换机"
+
+# 9929cd85206a4959b9c3daabc7fab873
+#: ../../hypervisor/vsphere.rst:691
+msgid ""
+"CloudStack supports VMware vNetwork Distributed Switch (VDS) for virtual "
+"network configuration in a VMware vSphere environment. This section helps "
+"you configure VMware VDS in a CloudStack deployment. Each vCenter server "
+"instance can support up to 128 VDS instances and each VDS instance can "
+"manage up to 500 VMware hosts."
+msgstr "CloudStack支持在VMware vSphere环境中为虚拟网络配置VMware vNetwork分布式交换机（VDS）。本章节能帮助你在CloudStack中配置VMware VDS。每个vCenter服务器实例最多支持128 VDS实例，每个VDS实例最多可以管理500台VMware服务器。"
+
+# 90d5b5ea40d340a18482d06a12eab802
+#: ../../hypervisor/vsphere.rst:699
+msgid "About VMware Distributed Virtual Switch"
+msgstr "关于VMware分布式虚拟交换机"
+
+# d608c0175d0c4cdda5a1cafa7067caab
+#: ../../hypervisor/vsphere.rst:701
+msgid ""
+"VMware VDS is an aggregation of host-level virtual switches on a VMware "
+"vCenter server. VDS abstracts the configuration of individual virtual "
+"switches that span across a large number of hosts, and enables centralized "
+"provisioning, administration, and monitoring for your entire datacenter from"
+" a centralized interface. In effect, a VDS acts as a single virtual switch "
+"at the datacenter level and manages networking for a number of hosts in a "
+"datacenter from a centralized VMware vCenter server. Each VDS maintains "
+"network runtime state for VMs as they move across multiple hosts, enabling "
+"inline monitoring and centralized firewall services. A VDS can be deployed "
+"with or without Virtual Standard Switch and a Nexus 1000V virtual switch."
+msgstr "在VMware vCenter服务器中的VMware VDS聚合主机层面虚拟交换机 。各个主机层面的虚拟交换机被抽象处理成一个在数据中心层面上横跨多个主机的大型 VDS，通过一个集中的接口，使用集中配置、管理、监控你的整个数据中心。实际上，VDS可以看作是数据中心层面中一个整体的虚拟交换机，通过VMware vCenter服务器管理数据中心中大量的主机网络。在虚拟机跨多个主机移动时保持其网络运行时状态，支持嵌入式监控和集中式防火墙服务。VDS能与标准虚拟交换机和 Nexus 1000V虚拟交换机一起部署或者独立部署。"
+
+# f8c27f93dc7c49a0b45ea450643011b8
+#: ../../hypervisor/vsphere.rst:717
+msgid ""
+"VMware VDS is supported only on Public and Guest traffic in CloudStack."
+msgstr "VMware VDS只支持CloudStack中的公共和来宾流量。"
+
+# 2451bd65c3414c12b60281d4c965ed9e
+#: ../../hypervisor/vsphere.rst:720
+msgid ""
+"VMware VDS does not support multiple VDS per traffic type. If a user has "
+"many VDS switches, only one can be used for Guest traffic and another one "
+"for Public traffic."
+msgstr "VMware VDS不支持每种流量类型使用多个VDS。如果一个用户有多个VDS交换机，那么来宾网络和公共网络只能各使用一个VDS。"
+
+# 1a4762ba91d54eb7b6a18b38c7977b88
+#: ../../hypervisor/vsphere.rst:724
+msgid ""
+"Additional switches of any type can be added for each cluster in the same "
+"zone. While adding the clusters with different switch type, traffic labels "
+"is overridden at the cluster level."
+msgstr "在同一个zone中可以为每个群集添加任何类型的交换机。当在群集中添加不同类型的交换机时，流量标签会被群集级别的覆盖。"
+
+# 698c3a1075c44ad6b44b983353e9c5bd
+#: ../../hypervisor/vsphere.rst:728
+msgid ""
+"Management and Storage network does not support VDS. Therefore, use Standard"
+" Switch for these networks."
+msgstr "管理和存储网络不支持使用VDS。因此在这些网络中使用标准交换机。"
+
+# d0e5f6fb89294c3f992992b8be90c4c3
+#: ../../hypervisor/vsphere.rst:731
+msgid ""
+"When you remove a guest network, the corresponding dvportgroup will not be "
+"removed on the vCenter. You must manually delete them on the vCenter."
+msgstr "当你移除来宾网络时，对应vCenter中的dv端口组不会被移除。你必须手动在vCenter中删除。"
+
+# d9ec908d24a74999a2250196f948e921
+#: ../../hypervisor/vsphere.rst:739
+msgid ""
+"For a smoother configuration of VMware VDS, note down the VDS name you have "
+"added in the datacenter before you start:"
+msgstr "为了顺利的配置VMware VDS，在开始之前，请牢记添加到数据中心中的VDS名称："
+
+# 0285bb1ef7114be98e589ae304a4aaf4
+#: ../../hypervisor/vsphere.rst:742
+msgid "|vds-name.png: Name of the dvSwitch as specified in the vCenter.|"
+msgstr "|vds-name.png: Name of the dvSwitch as specified in the vCenter.|"
+
+# a198446dde7b4bb4b8d32ade0d379e5d
+#: ../../hypervisor/vsphere.rst:744
+msgid "Use this VDS name in the following:"
+msgstr "如下需要使用VDS名称："
+
+# ce7a25d8824b439e989df3a4ec7d6ef4
+#: ../../hypervisor/vsphere.rst:746
+msgid ""
+"The switch name in the Edit traffic label dialog while configuring a public "
+"and guest traffic during zone creation."
+msgstr "在创建zone的过程中配置公共网络和来宾网络时，在编辑流量标签对话框中配置交换机名称。"
+
+# 93f0bed990174313b9ae6b524fe267f8
+#: ../../hypervisor/vsphere.rst:749
+msgid ""
+"During a zone creation, ensure that you select VMware vNetwork Distributed "
+"Virtual Switch when you configure guest and public traffic type."
+msgstr "在创建zone的过程中配置来宾网络和公共网络流量类型时，请确保你选择了VMware vNetwork Distributed Virtual Switch。"
+
+# 5c1aa18eab3146b6a6f65b96c8deaaca
+#: ../../hypervisor/vsphere.rst:753
+msgid "|traffic-type.png|"
+msgstr "|traffic-type.png|"
+
+# 990772b4742749958e08c6337b848941
+#: ../../hypervisor/vsphere.rst:755
+msgid ""
+"The Public Traffic vSwitch Type field when you add a VMware VDS-enabled "
+"cluster."
+msgstr "当添加一个启用了VDS的VMware群集时，则显示公共网络流量vSwitch类型区域。"
+
+# 5d9ac3f1d63b462e9501e015548b5af0
+#: ../../hypervisor/vsphere.rst:758
+msgid ""
+"The switch name in the traffic label while updating the switch type in a "
+"zone."
+msgstr "当在zone中更新交换机类型时，流量标签所使用的交换机名称。"
+
+# 194c1dd122b7499b9058fb68380a5c3b
+#: ../../hypervisor/vsphere.rst:761
+msgid ""
+"Traffic label format in the last case is [[\"Name of "
+"vSwitch/dvSwitch/EthernetPortProfile\"][,\"VLAN ID\"[,\"vSwitch Type\"]]]"
+msgstr "在最后一种情况下流量标签格式是[[\"Name of vSwitch/dvSwitch/EthernetPortProfile\"][,\"VLAN ID\"[,\"vSwitch Type\"]]]"
+
+# d4465ec982c94832ad7802b80686d0d1
+#: ../../hypervisor/vsphere.rst:764
+msgid "The possible values for traffic labels are:"
+msgstr "流量标签可以使用如下值："
+
+# 83829438bd2d4e5e81d7cea6cfdc2119
+#: ../../hypervisor/vsphere.rst:766
+msgid "empty string"
+msgstr "空字符串"
+
+# 089b868403e34bf385680a0275f453d9
+#: ../../hypervisor/vsphere.rst:768
+msgid "dvSwitch0"
+msgstr "dvSwitch0"
+
+# 8b132cc7e95e45b2927b570ef7790872
+#: ../../hypervisor/vsphere.rst:770
+msgid "dvSwitch0,200"
+msgstr "dvSwitch0,200"
+
+# f7e7251340ed4d489fd76000a902ab3e
+#: ../../hypervisor/vsphere.rst:772
+msgid "dvSwitch1,300,vmwaredvs"
+msgstr "dvSwitch1,300,vmwaredvs"
+
+# ffffef07a554452b989817589b59299f
+#: ../../hypervisor/vsphere.rst:774
+msgid "myEthernetPortProfile,,nexusdvs"
+msgstr "myEthernetPortProfile,,nexusdvs"
+
+# 374b8ec5b0114570a8bc2db1e26e1432
+#: ../../hypervisor/vsphere.rst:776
+msgid "dvSwitch0,,vmwaredvs"
+msgstr "dvSwitch0,,vmwaredvs"
+
+# e062d1b7e19e4a5ea9cd173bc474c7f9
+#: ../../hypervisor/vsphere.rst:779
+msgid "The three fields to fill in are:"
+msgstr "填写如下区域："
+
+# b665494425f24293b1cbd8c18d88376e
+#: ../../hypervisor/vsphere.rst:781
+msgid "Name of the virtual / distributed virtual switch at vCenter."
+msgstr "vCenter中 虚拟/分布式 虚拟交换机的名称。"
+
+# 64772a813ddb414aad487db7177d70d9
+#: ../../hypervisor/vsphere.rst:783
+msgid "The default value depends on the type of virtual switch:"
+msgstr "默认值取决于虚拟交换机的类型："
+
+# 0504f575abf04fbab918eb97fc3c23e5
+#: ../../hypervisor/vsphere.rst:785
+msgid ""
+"**vSwitch0**: If type of virtual switch is VMware vNetwork Standard virtual "
+"switch"
+msgstr "**vSwitch0**：如果虚拟交换机的类型是VMware vNetwork标准虚拟交换机。"
+
+# d037b0c2a7774a86950c4337ccb8c737
+#: ../../hypervisor/vsphere.rst:788
+msgid ""
+"**dvSwitch0**: If type of virtual switch is VMware vNetwork Distributed "
+"virtual switch"
+msgstr "**dvSwitch0**：如果虚拟交换机类型为VMware vNetwork分布式虚拟交换机"
+
+# b8bb2c95e98643c5a8416c7cacb4ed84
+#: ../../hypervisor/vsphere.rst:791
+msgid ""
+"**epp0**: If type of virtual switch is Cisco Nexus 1000v Distributed virtual"
+" switch"
+msgstr "**epp0**：如果虚拟交换机类型为Cisco Nexus 1000v分布式虚拟交换机"
+
+# 37bea26e77904c918293b7794b8435fe
+#: ../../hypervisor/vsphere.rst:794
+msgid "VLAN ID to be used for this traffic wherever applicable."
+msgstr "任何适用于这个流量的 VLAN ID"
+
+# 74cab27934ab4664a4ef799aaabc26fa
+#: ../../hypervisor/vsphere.rst:796
+msgid ""
+"This field would be used for only public traffic as of now. In case of guest"
+" traffic this field would be ignored and could be left empty for guest "
+"traffic. By default empty string would be assumed which translates to "
+"untagged VLAN for that specific traffic type."
+msgstr "此时，该区域仅用于公共网络流量。来宾网络区域会被忽略并且留空。默认为空字符即假设特定流量类型不填加VLAN标签。"
+
+# ecac63913296423c96e60c6fcd70b23c
+#: ../../hypervisor/vsphere.rst:801
+msgid "Type of virtual switch. Specified as string."
+msgstr "虚拟交换机类型。指定字符串。"
+
+# 736dcefb710d4eb8ad8ecdafc967ad7b
+#: ../../hypervisor/vsphere.rst:803
+msgid "Possible valid values are vmwaredvs, vmwaresvs, nexusdvs."
+msgstr "合理且有效的值为vmwaredvs, vmwaresvs, nexusdvs。"
+
+# 0ee50e36ae9a42ea93fad5da64772d2a
+#: ../../hypervisor/vsphere.rst:805
+msgid "**vmwaresvs**: Represents VMware vNetwork Standard virtual switch"
+msgstr "**vmwaresvs**：表示VMware vNetwork 标准虚拟交换机"
+
+# c3412e427322421db59d72ed3a1af1da
+#: ../../hypervisor/vsphere.rst:807
+msgid "**vmwaredvs**: Represents VMware vNetwork distributed virtual switch"
+msgstr "**vmwaredvs**：表示VMware vNetwork分布式虚拟交换机"
+
+# 86ab94faa29a4292811f32d8ef417a43
+#: ../../hypervisor/vsphere.rst:809
+msgid "**nexusdvs**: Represents Cisco Nexus 1000v distributed virtual switch."
+msgstr "**nexusdvs**：代表Cisco Nexus 1000v分布式虚拟交换机。"
+
+# b6c929f8a3d94c4ba2b89f14d3454074
+#: ../../hypervisor/vsphere.rst:811
+msgid ""
+"If nothing specified (left empty), zone-level default virtual switchwould be"
+" defaulted, based on the value of global parameter you specify."
+msgstr "如果什么都没指定(留空)，基于全局参数指定的值，区域层面默认使用虚拟交换机。"
+
+# 259ad555197c427b92b871cf9099c6e9
+#: ../../hypervisor/vsphere.rst:814
+msgid "Following are the global configuration parameters:"
+msgstr "以下为全局配置参数："
+
+# ba94337b1d8f418b9b792ff195a188b1
+#: ../../hypervisor/vsphere.rst:816
+msgid ""
+"**vmware.use.dvswitch**: Set to true to enable any kind (VMware DVS and "
+"Cisco Nexus 1000v) of distributed virtual switch in a CloudStack deployment."
+" If set to false, the virtual switch that can be used in that CloudStack "
+"deployment is Standard virtual switch."
+msgstr "**vmware.use.dvswitch**：设置为true则是在CloudStack部署时启用任意种类(VMware DVS和Cisco Nexus 1000v) 分布式交换机。如果设置为false，则CloudStack部署时使用的的虚拟交换机是标准虚拟交换机。"
+
+# 1f0d3c297b1b44caa71c066007cc1f42
+#: ../../hypervisor/vsphere.rst:821
+msgid ""
+"**vmware.use.nexus.vswitch**: This parameter is ignored if "
+"vmware.use.dvswitch is set to false. Set to true to enable Cisco Nexus 1000v"
+" distributed virtual switch in a CloudStack deployment."
+msgstr "**vmware.use.nexus.vswitch**：如果vmware.use.dvswitch设置为false，则忽略该参数。设置为true则是部署CloudStack时启用Cisco Nexus 1000v分布式交换机。"
+
+# 118ddca276544558a4e2202c55e634fd
+#: ../../hypervisor/vsphere.rst:827
+msgid "Enabling Virtual Distributed Switch in CloudStack"
+msgstr "在CloudStack中启用分布式虚拟交换机"
+
+# 82143bb642f94e2aa2cac07ffc264086
+#: ../../hypervisor/vsphere.rst:829
+msgid ""
+"To make a CloudStack deployment VDS enabled, set the vmware.use.dvswitch "
+"parameter to true by using the Global Settings page in the CloudStack UI and"
+" restart the Management Server. Unless you enable the vmware.use.dvswitch "
+"parameter, you cannot see any UI options specific to VDS, and CloudStack "
+"ignores the VDS-specific parameters that you specify. Additionally, "
+"CloudStack uses VDS for virtual network infrastructure if the value of "
+"vmware.use.dvswitch parameter is true and the value of "
+"vmware.use.nexus.dvswitch parameter is false. Another global parameter that "
+"defines VDS configuration is vmware.ports.per.dvportgroup. This is the "
+"default number of ports per VMware dvPortGroup in a VMware environment. "
+"Default value is 256. This number directly associated with the number of "
+"guest network you can create."
+msgstr "在部署CloudStack时启用VDS，请在CloudStack管理界面中的全局设置页面中设置vmware.use.dvswitch parameter为true并重启管理服务器。只有启用了vmware.use.dvswitch参数，你才能在管理界面中指定VDS，并且CloudStack会忽略你指定的VDS-specific参数。另外，如果vmware.use.dvswitch参数的值为true且vmware.use.nexus.dvswitch参数的值为false，那么CloudStack中虚拟网络架构使用VDS。另外一个定义VDS配置的全局参数是vmware.ports.per.dvportgroup。它表示在VMware环境里每个VMware dvPortGroup中默认端口数量。默认是256。这个数值直接关系到你创建的来宾网络的数量。"
+
+# 402c2275d5ad4f3797ca2a376401aee2
+#: ../../hypervisor/vsphere.rst:843
+msgid ""
+"CloudStack supports orchestration of virtual networks in a deployment with a"
+" mix of Virtual Distributed Switch, Standard Virtual Switch and Nexus 1000v "
+"Virtual Switch."
+msgstr "CloudStack支持混合部署分布式虚拟交换机、标准虚拟交换机和Nexus 1000v虚拟交换机的虚拟网络。"
+
+# 6811c0b0e8df461d9e2e43e42a23020c
+#: ../../hypervisor/vsphere.rst:849
+msgid "Configuring Distributed Virtual Switch in CloudStack"
+msgstr "在CloudStack中配置分布式虚拟交换机"
+
+# 8c7c27c152754a3496e49f3e867403e7
+#: ../../hypervisor/vsphere.rst:851
+msgid ""
+"You can configure VDS by adding the necessary resources while a zone is "
+"created."
+msgstr "在创建区域时需要添加必要的资源才能配置VDS。"
+
+# 5c9df8759a344053862dcd9c629277cf
+#: ../../hypervisor/vsphere.rst:854
+msgid ""
+"Alternatively, at the cluster level, you can create an additional cluster "
+"with VDS enabled in the existing zone. Use the Add Cluster option. For "
+"information as given in `“Add Cluster: vSphere” <configuration.html#add-"
+"cluster-vsphere>`_."
+msgstr "另外在群集层面，使用添加群集选项，可以在已经存在并启用VDS的区域中创建附加群集。更多信息请参阅  `“添加群集: vSphere” <configuration.html#add-cluster-vsphere>`_."
+
+# e0af0a758b7d4f03a1f5a83ae7e53aca
+#: ../../hypervisor/vsphere.rst:859
+msgid ""
+"In both these cases, you must specify the following parameters to configure "
+"VDS:"
+msgstr "在所有情况下，配置VDS时必须指定下列参数："
+
+# 68137fa71ec145fc8a3dbdc1dde90e0a
+#: ../../hypervisor/vsphere.rst:862
+msgid "|dvSwitchConfig.png: Configuring dvSwitch|"
+msgstr "|dvSwitchConfig.png: Configuring dvSwitch|"
+
+# c44708acf56642f6bdc0e41399c84ccc
+#: ../../hypervisor/vsphere.rst:865
+msgid "Parameters Description"
+msgstr "参数描述"
+
+# e9d2fae4cc094bf29e7470348646862a
+#: ../../hypervisor/vsphere.rst:867
+msgid ""
+"Enter the name of the cluster you created in vCenter. For example, "
+"\"cloudcluster\"."
+msgstr "输入在vCenter中创建的群集名称。比如，\"cloudcluster\"。"
+
+# 2eb58724f9dc40b78cb1261c45a8425a
+#: ../../hypervisor/vsphere.rst:868
+msgid ""
+"Enter the name or the IP address of the vCenter host where you have deployed"
+" the VMware VDS."
+msgstr "输入已经部署VMware VDS的vCenter主机名称或者IP地址。"
+
+# 64ad16bd9476459999c67afeec2a76cd
+#: ../../hypervisor/vsphere.rst:871
+msgid ""
+"Enter the vCenter datacenter that the cluster is in. For example, "
+"\"clouddcVM\"."
+msgstr "输入群集所属的vCenter数据中心名称。比如，\"clouddcVM\"。"
+
+# 519c5255a7714ab5ae2d130ea2ac0b09
+#: ../../hypervisor/vsphere.rst:872
+msgid "Override Public Traffic"
+msgstr "替代公共流量"
+
+# 834881d8791d4560ba8fcba7d3478f6d
+#: ../../hypervisor/vsphere.rst:872
+msgid ""
+"Enable this option to override the zone-wide public traffic for the cluster "
+"you are creating."
+msgstr "启用该选项时，整个区域中群集的公共流量将被替代。"
+
+# 380dfef8c1844f399f2cbd5c09d3e6ee
+#: ../../hypervisor/vsphere.rst:873
+msgid "Public Traffic vSwitch Type"
+msgstr "公共流量虚拟交换机类型"
+
+# 444137a9e330418b808e55cf02a62e97
+#: ../../hypervisor/vsphere.rst:873
+msgid ""
+"This option is displayed only if you enable the Override Public Traffic "
+"option. Select VMware vNetwork Distributed Virtual Switch. If the "
+"vmware.use.dvswitch global parameter is true, the default option will be "
+"VMware vNetwork Distributed Virtual Switch."
+msgstr "在启用替代公共流量时该选项才会显示。选择VMware vNetwork Distributed Virtual Switch。如果全局设置中vmware.use.dvswitch参数为true，则默认选项为VMware vNetwork Distributed Virtual Switch。"
+
+# 5396ef53dbdc46828b829c10118c7ca9
+#: ../../hypervisor/vsphere.rst:874
+msgid "Public Traffic vSwitch Name"
+msgstr "公共流量虚拟交换机名称"
+
+# 8d69112f1cb240ed98549493d13e6775
+#: ../../hypervisor/vsphere.rst:874
+msgid "Name of virtual switch to be used for the public traffic."
+msgstr "用于公共流量的虚拟交换机名称。"
+
+# 08c372cbcf0c4ae2a6bf96d5b5877d5f
+#: ../../hypervisor/vsphere.rst:875
+msgid "Override Guest Traffic"
+msgstr "替代来宾流量"
+
+# bfb400fd3046492f9c0e679af6725e95
+#: ../../hypervisor/vsphere.rst:875
+msgid ""
+"Enable the option to override the zone-wide guest traffic for the cluster "
+"you are creating."
+msgstr "启用该选项时，整个区域中群集的来宾流量将被替代。"
+
+# c393048d168a4e74851ea171593bff47
+#: ../../hypervisor/vsphere.rst:876
+msgid "Guest Traffic vSwitch Type"
+msgstr "来宾流量虚拟交换机类型"
+
+# 20a6787434c649b8b9804b209e8217d9
+#: ../../hypervisor/vsphere.rst:876
+msgid ""
+"This option is displayed only if you enable the Override Guest Traffic "
+"option. Select VMware vNetwork Distributed Virtual Switch. If the "
+"vmware.use.dvswitch global parameter is true, the default option will be "
+"VMware vNetwork Distributed Virtual Switch."
+msgstr "在启用替代来宾流量时该选项才会显示。选择VMware vNetwork Distributed Virtual Switch。如果全局设置中vmware.use.dvswitch参数为true，则默认选项为VMware vNetwork Distributed Virtual Switch。"
+
+# 8e911ae658a54e38bc94d44bd7360a60
+#: ../../hypervisor/vsphere.rst:877
+msgid "Guest Traffic vSwitch Name"
+msgstr "来宾流量虚拟交换机名称"
+
+# e2fef73d36884fc18391b02ba8492fed
+#: ../../hypervisor/vsphere.rst:877
+msgid "Name of virtual switch to be used for guest traffic."
+msgstr "用于宾流量的虚拟交换机名称。"
+
+# fdd69bb3d44f4bcd9f56db1a98842617
+#: ../../hypervisor/vsphere.rst:882
+msgid "Storage Preparation for vSphere (iSCSI only)"
+msgstr "vSphere的存储准备(仅限iSCSI)"
+
+# 8617abba6dbc4534ad13b17929bb8816
+#: ../../hypervisor/vsphere.rst:884
+msgid ""
+"Use of iSCSI requires preparatory work in vCenter. You must add an iSCSI "
+"target and create an iSCSI datastore."
+msgstr "使用iSCSI需要在vCenter中做一些准备工作。您必须添加iSCSI目标并创建iSCSI数据存储。"
+
+# cd8def1af119474099d424fa51348782
+#: ../../hypervisor/vsphere.rst:887
+msgid "If you are using NFS, skip this section."
+msgstr "如果使用NFS，请跳过本章节。"
+
+# 965c53dfd68549dcb2ff3d7b6f5b8ef6
+#: ../../hypervisor/vsphere.rst:891
+msgid "Enable iSCSI initiator for ESXi hosts"
+msgstr "ESXi主机中启用iSCSI启动器"
+
+# f31d653b97a34904bba9418166f4d27f
+#: ../../hypervisor/vsphere.rst:893
+msgid ""
+"In vCenter, go to hosts and Clusters/Configuration, and click Storage "
+"Adapters link. You will see:"
+msgstr "在vCenter中，点击主机/集群的配置，点击存储适配器。您将看到："
+
+# c2db82b7ad84447c90bc1361acb6fe26
+#: ../../hypervisor/vsphere.rst:896
+msgid "|vmwareiscsiinitiator.png: iscsi initiator|"
+msgstr "|vmwareiscsiinitiator.png: iscsi initiator|"
+
+# b0f077089acc4b47bc0e81c18ef873bc
+#: ../../hypervisor/vsphere.rst:898
+msgid "Select iSCSI software adapter and click Properties."
+msgstr "选择iSCSI软件适配器并点击属性。"
+
+# 5ff6af603a254d62a64459f283531878
+#: ../../hypervisor/vsphere.rst:900
+msgid "|vmwareiscsiinitiatorproperties.png: iscsi initiator properties|"
+msgstr "|vmwareiscsiinitiatorproperties.png: iscsi initiator properties|"
+
+# 4fc6bd69f5a74997a26a8ed8ff4a635d
+#: ../../hypervisor/vsphere.rst:902
+msgid "Click the Configure... button."
+msgstr "点击配置...按钮。"
+
+# d1a7febad60a4c72a88effb69663d334
+#: ../../hypervisor/vsphere.rst:904
+msgid "|vmwareiscsigeneral.png: iscsi general|"
+msgstr "|vmwareiscsigeneral.png: iscsi general|"
+
+# b542942a98b04d3fb1009c9cfbeea698
+#: ../../hypervisor/vsphere.rst:906
+msgid "Check Enabled to enable the initiator."
+msgstr "勾选启用以便启用启动器。"
+
+# 426af842784e4c0bb8e14ec9948ff60c
+#: ../../hypervisor/vsphere.rst:908
+msgid "Click OK to save."
+msgstr "点击 确定 保存。"
+
+# 668e7a8543bd45448ad0db8ae303bfc0
+#: ../../hypervisor/vsphere.rst:912
+msgid "Add iSCSI target"
+msgstr "添加iSCSI目标"
+
+# 8c293602e55f48578e49ba85c6b7bc72
+#: ../../hypervisor/vsphere.rst:914
+msgid "Under the properties dialog, add the iSCSI target info:"
+msgstr "在属性对话框中，添加iSCSI目标信息："
+
+# ca9d056dfd584f658d8c3561ca8e94ac
+#: ../../hypervisor/vsphere.rst:916
+msgid "|vmwareiscsitargetadd.png: iscsi target add|"
+msgstr "|vmwareiscsitargetadd.png: iscsi target add|"
+
+# 48e3de1952584a7f83fdb8878b2e3309
+#: ../../hypervisor/vsphere.rst:918
+msgid "Repeat these steps for all ESXi hosts in the cluster."
+msgstr "在集群中所有ESXi主机上重复以上步骤。"
+
+# 5b7a2a4bd27d4e45ab60e0356f72d8a0
+#: ../../hypervisor/vsphere.rst:922
+msgid "Create an iSCSI datastore"
+msgstr "创建iSCSI数据存储"
+
+# 6e4943dc8eb04b0b839ba66174f1a7f7
+#: ../../hypervisor/vsphere.rst:924
+msgid "You should now create a VMFS datastore. Follow these steps to do so:"
+msgstr "现在您应该创建一个VMFS数据存储。请按照以下步骤："
+
+# 57cc6fe8445d4065b6d918ab122558aa
+#: ../../hypervisor/vsphere.rst:926
+msgid "Select Home/Inventory/Datastores."
+msgstr "选择主页/清单/数据存储。"
+
+# 0c8e6407c16c420c8ab924f07074c3f0
+#: ../../hypervisor/vsphere.rst:928
+msgid "Right click on the datacenter node."
+msgstr "右键点击数据中心节点。"
+
+# 33637d5c54c84c10bd4fddce9500d1db
+#: ../../hypervisor/vsphere.rst:930
+msgid "Choose Add Datastore... command."
+msgstr "选择添加数据存储...命令。"
+
+# 10b59ee6f67f4fe18245206491765fa2
+#: ../../hypervisor/vsphere.rst:932
+msgid "Follow the wizard to create a iSCSI datastore."
+msgstr "按照向导创建iSCSI数据存储。"
+
+# beb1bd72d9054c1aa2929c5f5bb46268
+#: ../../hypervisor/vsphere.rst:934
+msgid ""
+"This procedure should be done on one host in the cluster. It is not "
+"necessary to do this on all hosts."
+msgstr "该过程只需要在集群中的一台主机上执行，不需要在所有主机上执行。"
+
+# fddbde67076a489fae8ac3a07ba72a4e
+#: ../../hypervisor/vsphere.rst:937
+msgid "|vmwareiscsidatastore.png: iscsi datastore|"
+msgstr "|vmwareiscsidatastore.png: iscsi datastore|"
+
+# 720bb6a6678e4d048a7cb2fb20b5f00f
+#: ../../hypervisor/vsphere.rst:941
+msgid "Multipathing for vSphere (Optional)"
+msgstr "vSphere多路径(可选)"
+
+# f6110e7830f74e37b59a9ed7e75cc697
+#: ../../hypervisor/vsphere.rst:943
+msgid ""
+"Storage multipathing on vSphere nodes may be done according to the vSphere "
+"installation guide."
+msgstr "vSphere的存储多路径可以根据vSphere的安装文档配置。"
+
+# 90bf6e714b424e1cb0f0727e69bd91bd
+#: ../../hypervisor/vsphere.rst:948
+msgid "Add Hosts or Configure Clusters (vSphere)"
+msgstr "添加主机或配置集群(vSphere)"
+
+# 34c741b108a3471086a9877f848c219a
+#: ../../hypervisor/vsphere.rst:950
+msgid ""
+"Use vCenter to create a vCenter cluster and add your desired hosts to the "
+"cluster. You will later add the entire cluster to CloudStack. (see `“Add "
+"Cluster: vSphere” <configuration.html#add-cluster-vsphere>`_)."
+msgstr "使用vCenter创建集群，向其中添加期望的主机。随后您可以将整个集群加入到Cloudstack中。(参考  `“添加群集: vSphere” <configuration.html#add-cluster-vsphere>`_)。"
+
+# e222980c86f646a6b7847d19c943d01e
+#: ../../hypervisor/vsphere.rst:956
+msgid "Applying Hotfixes to a VMware vSphere Host"
+msgstr "为VMware vSphere主机安装补丁程序"
+
+# afbce7caade34557b5de0efd81ac8337
+#: ../../hypervisor/vsphere.rst:958
+msgid ""
+"Disconnect the VMware vSphere cluster from CloudStack. It should remain "
+"disconnected long enough to apply the hotfix on the host."
+msgstr "在CloudStack中断开与VMware vSphere 群集的连接。应断开足够长的时间以便在主机上安装补丁程序。"
+
+# c3e9304bebf74cec95280a42ff6c47bc
+# 93ca13f83e884aa6bc68dca551cd9c85
+#: ../../hypervisor/vsphere.rst:961 ../../hypervisor/vsphere.rst:989
+msgid "Log in to the CloudStack UI as root."
+msgstr "使用admin账户登录CloudStack管理界面。"
+
+# ae093003e8e54de3bd3685570562d010
+#: ../../hypervisor/vsphere.rst:963
+msgid ""
+"See `“Log In to the UI” <http://docs.cloudstack.apache.org/projects"
+"/cloudstack-administration/en/latest/ui.html#log-in-to-the-ui>`_."
+msgstr "请参考 `“登录用户界面” <http://docs.cloudstack.apache.org/projects/cloudstack-administration/en/latest/ui.html#log-in-to-the-ui>`_。"
+
+# ab2de97e73f842718ecd3a5c0517a46f
+#: ../../hypervisor/vsphere.rst:966
+msgid "Navigate to the VMware cluster, click Actions, and select Unmanage."
+msgstr "导航至VMware群集，点击操作-取消管理。"
+
+# 291849fb997541a392eb9c265469db83
+#: ../../hypervisor/vsphere.rst:969
+msgid "Watch the cluster status until it shows Unmanaged."
+msgstr "查看群集状态直到显示未受管理。"
+
+# d36d95821f7349bdbeb6146d69609d26
+#: ../../hypervisor/vsphere.rst:971
+msgid "Perform the following on each of the ESXi hosts in the cluster:"
+msgstr "在集群中每个ESXi主机上执行以下操作："
+
+# 1596207414164387b33d50a83ace4f1d
+#: ../../hypervisor/vsphere.rst:973
+msgid "Move each of the ESXi hosts in the cluster to maintenance mode."
+msgstr "将集群中每个ESXi都置为维护模式。"
+
+# 0f443a13d2214787aace57dbe095be32
+#: ../../hypervisor/vsphere.rst:975
+msgid "Ensure that all the VMs are migrated to other hosts in that cluster."
+msgstr "确保所有的VM已经迁移到群集中的其他主机。"
+
+# 993a0bfff5d949d79160c8a611af7d45
+#: ../../hypervisor/vsphere.rst:978
+msgid ""
+"If there is only one host in that cluster, shutdown all the VMs and move the"
+" host into maintenance mode."
+msgstr "如果群集中只有一台主机，关闭所有VMs再将主机置为维护模式。"
+
+# 549ba78fd15b49e081bd0e3212261dc1
+#: ../../hypervisor/vsphere.rst:981
+msgid "Apply the patch on the ESXi host."
+msgstr "在ESXi主机中应用补丁。"
+
+# c7418a0d9f414399a6e7b5d7281c5cd5
+#: ../../hypervisor/vsphere.rst:983
+msgid "Restart the host if prompted."
+msgstr "如果提示重启，请重启主机。"
+
+# 7882f2dc5f704ad2a2ae6b6fe2ef0fb0
+#: ../../hypervisor/vsphere.rst:985
+msgid "Cancel the maintenance mode on the host."
+msgstr "在主机上取消维护模式。"
+
+# 27eaeff783e845fba9f5550da792fe4d
+#: ../../hypervisor/vsphere.rst:987
+msgid "Reconnect the cluster to CloudStack:"
+msgstr "重新连接该集群到CloudStack:"
+
+# dafd6eb321c643db98f259663c789c70
+#: ../../hypervisor/vsphere.rst:991
+msgid "Navigate to the VMware cluster, click Actions, and select Manage."
+msgstr "导航到VMware群集，点击操作-管理。"
+
+# bdbbffe72d294cdbadc09334b9549fdb
+#: ../../hypervisor/vsphere.rst:993
+msgid ""
+"Watch the status to see that all the hosts come up. It might take several "
+"minutes for the hosts to come up."
+msgstr "查看状态以确保所有的主机都恢复正常。所有主机都恢复正常可能需要几分钟时间。"
+
+# 61accad423f64d2b90044cac762efc57
+#: ../../hypervisor/vsphere.rst:996
+msgid ""
+"Alternatively, verify the host state is properly synchronized and updated in"
+" the CloudStack database."
+msgstr "或者，确认主机状态在数据库中得到正确同步和更新。"

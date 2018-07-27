@@ -1,0 +1,932 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:06+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# f3d9b37c09d84940aa4c2fde3f9acd2a
+#: ../../networking/palo_alto_config.rst:18
+msgid "Setup a Palo Alto Networks Firewall"
+msgstr ""
+
+# bf6ec115893747b1baf4957e9be35ff4
+#: ../../networking/palo_alto_config.rst:22
+msgid "Functionality Provided"
+msgstr ""
+
+# c1f3ed83f8394089ab4694fe954e0195
+#: ../../networking/palo_alto_config.rst:24
+msgid ""
+"This implementation enables the orchestration of a Palo Alto Networks "
+"Firewall from within CloudStack UI and API."
+msgstr ""
+
+# 4b1340d4e6f74cd39095e06ca20ccbdd
+#: ../../networking/palo_alto_config.rst:27
+msgid "**The following features are supported**:"
+msgstr ""
+
+# e30f817e0e4d45ff8140a2bf41b86fb3
+#: ../../networking/palo_alto_config.rst:29
+msgid "List/Add/Delete Palo Alto Networks service provider"
+msgstr ""
+
+# d027f8c0521d4e3c8659c5f89b010dc3
+#: ../../networking/palo_alto_config.rst:31
+msgid "List/Add/Delete Palo Alto Networks network service offering"
+msgstr ""
+
+# d3c3bd36ca4744d68797f6bda8758efd
+#: ../../networking/palo_alto_config.rst:33
+msgid ""
+"List/Add/Delete Palo Alto Networks network using the above service offering"
+msgstr ""
+
+# d4ba1563cd1a4efb8039895bd0fc4abc
+#: ../../networking/palo_alto_config.rst:35
+msgid "Add an instance to a Palo Alto Networks network"
+msgstr ""
+
+# 095297003ef84ab4946859b93741650f
+#: ../../networking/palo_alto_config.rst:37
+msgid "Source NAT management on network create and delete"
+msgstr ""
+
+# 83be5169430e457495da1faa61028b94
+#: ../../networking/palo_alto_config.rst:39
+msgid "List/Add/Delete Ingress Firewall rule"
+msgstr ""
+
+# 934645096b2041c0892c5827ab0bae62
+#: ../../networking/palo_alto_config.rst:41
+msgid ""
+"List/Add/Delete Egress Firewall rule (both 'Allow' and 'Deny' default rules "
+"supported)"
+msgstr ""
+
+# b3d40e33e09544e892974a896c1c0f5e
+#: ../../networking/palo_alto_config.rst:44
+msgid "List/Add/Delete Port Forwarding rule"
+msgstr ""
+
+# 2227e25f9e3e4cf19e34dd0deddbb404
+#: ../../networking/palo_alto_config.rst:46
+msgid "List/Add/Delete Static NAT rule"
+msgstr ""
+
+# 64c598fbe2d04d368d5f30c35aa7f1d6
+#: ../../networking/palo_alto_config.rst:48
+msgid ""
+"Apply a Threat Profile to all firewall rules (more details in the Additional"
+" Features section)"
+msgstr ""
+
+# 6843739b321a4d828b6e9b17a9ef0fc8
+#: ../../networking/palo_alto_config.rst:51
+msgid ""
+"Apply a Log Forwarding profile to all firewall rules (more details in the "
+"Additional Features section)"
+msgstr ""
+
+# 90c46aad0abf4f3c9d84941828556629
+#: ../../networking/palo_alto_config.rst:57
+msgid "Initial Palo Alto Networks Firewall Configuration"
+msgstr ""
+
+# 3404e87b314644c49c28a53bc5f5e6a0
+#: ../../networking/palo_alto_config.rst:60
+msgid "Anatomy of the Palo Alto Networks Firewall"
+msgstr ""
+
+# a9c2ce1bfd05437a975c7cb37c0fba62
+#: ../../networking/palo_alto_config.rst:62
+msgid ""
+"In **'Network > Interfaces'** there is a list of physical interfaces as well"
+" as aggregated physical interfaces which are used for managing traffic in "
+"and out of the Palo Alto Networks Firewall device."
+msgstr ""
+
+# 5ac5b705b6834ded91c030380797cbd2
+#: ../../networking/palo_alto_config.rst:66
+msgid ""
+"In **'Network > Zones'** there is a list of the different configuration "
+"zones.  This implementation will use two zones; a public (defaults to "
+"'untrust') and private (defaults to 'trust') zone."
+msgstr ""
+
+# eea4177c1fff4e099f0d3ed3d68ddfca
+#: ../../networking/palo_alto_config.rst:70
+msgid ""
+"In **'Network > Virtual Routers'** there is a list of VRs which handle "
+"traffic routing for the Palo Alto Firewall.  We only use a single Virtual "
+"Router on the firewall and it is used to handle all the routing to the next "
+"network hop."
+msgstr ""
+
+# abd376e7380441f390cd90564d09d4c5
+#: ../../networking/palo_alto_config.rst:75
+msgid ""
+"In **'Objects > Security Profile Groups'** there is a list of profiles which"
+" can be applied to firewall rules.  These profiles are used to better "
+"understand the types of traffic that is flowing through your network. "
+"Configured when you add the firewall provider to CloudStack."
+msgstr ""
+
+# 81bf3163d8e548f9827901650a45fa29
+#: ../../networking/palo_alto_config.rst:80
+msgid ""
+"In **'Objects > Log Forwarding'** there is a list of profiles which can be "
+"applied to firewall rules.  These profiles are used to better track the logs"
+" generated by the firewall.  Configured when you add the firewall provider "
+"to CloudStack."
+msgstr ""
+
+# 3f1feff617394987a3e0e75b9098bdb8
+#: ../../networking/palo_alto_config.rst:85
+msgid ""
+"In **'Policies > Security'** there is a list of firewall rules that are "
+"currently configured.  You will not need to modify this section because it "
+"will be completely automated by CloudStack, but you can review the firewall "
+"rules which have been created here."
+msgstr ""
+
+# 34e8e7a02d1a478d99e352c6a4dd825c
+#: ../../networking/palo_alto_config.rst:90
+msgid ""
+"In **'Policies > NAT'** there is a list of the different NAT rules.  You "
+"will not need to modify this section because it will be completely automated"
+" by CloudStack, but you can review the different NAT rules that have been "
+"created here.  Source NAT, Static NAT and Destination NAT (Port Forwarding) "
+"rules will show up in this list."
+msgstr ""
+
+# 640e9e01bf184821b43d47005542f297
+#: ../../networking/palo_alto_config.rst:99
+msgid "Configure the Public / Private Zones on the firewall"
+msgstr ""
+
+# dd1583c5eff3465b96b6e0e55da67a78
+#: ../../networking/palo_alto_config.rst:101
+msgid ""
+"No manual configuration is required to setup these zones because CloudStack "
+"will configure them automatically when you add the Palo Alto Networks "
+"firewall device to CloudStack as a service provider.  This implementation "
+"depends on two zones, one for the public side and one for the private side "
+"of the firewall."
+msgstr ""
+
+# f247dae111a8455598a5509325f99b2d
+#: ../../networking/palo_alto_config.rst:107
+msgid ""
+"The public zone (defaults to 'untrust') will contain all of the public "
+"interfaces and public IPs."
+msgstr ""
+
+# 3cc0d8d0cdd949bbae82f501193f7705
+#: ../../networking/palo_alto_config.rst:110
+msgid ""
+"The private zone (defaults to 'trust') will contain all of the private "
+"interfaces and guest network gateways."
+msgstr ""
+
+# fffcd92335be420f92a7847a249b200c
+#: ../../networking/palo_alto_config.rst:113
+msgid "The NAT and firewall rules will be configured between these zones."
+msgstr ""
+
+# 0f85059787c94c61b9cb4b39e5cb52c9
+#: ../../networking/palo_alto_config.rst:118
+msgid "Configure the Public / Private Interfaces on the firewall"
+msgstr ""
+
+# c8c72310b2744d4caefb5b9575ee6e60
+#: ../../networking/palo_alto_config.rst:120
+msgid ""
+"This implementation supports standard physical interfaces as well as grouped"
+" physical interfaces called aggregated interfaces.  Both standard interfaces"
+" and aggregated interfaces are treated the same, so they can be used "
+"interchangeably. For this document, we will assume that we are using "
+"'ethernet1/1' as the public interface and 'ethernet1/2' as the private "
+"interface.  If aggregated interfaces where used, you would use something "
+"like 'ae1' and 'ae2' as the interfaces."
+msgstr ""
+
+# 2831a742f496425ba96db130e37c9fdf
+#: ../../networking/palo_alto_config.rst:128
+msgid ""
+"This implementation requires that the 'Interface Type' be set to 'Layer3' "
+"for both the public and private interfaces.  If you want to be able to use "
+"the 'Untagged' VLAN tag for public traffic in CloudStack, you will need to "
+"enable support for it in the public 'ethernet1/1' interface (details below)."
+msgstr ""
+
+# 7c752ebb778a47f5ab20ddd8e7c2c88d
+#: ../../networking/palo_alto_config.rst:133
+msgid "**Steps to configure the Public Interface**:"
+msgstr ""
+
+# 5700c7ece81b43cb98c6727c752735b2
+# e49c5cac5b754c67a068eb76b8f2b016
+# de7a1d67b1d944d9a9282e1481b27948
+#: ../../networking/palo_alto_config.rst:135
+#: ../../networking/palo_alto_config.rst:171
+#: ../../networking/palo_alto_config.rst:228
+msgid "Log into Palo Alto Networks Firewall"
+msgstr ""
+
+# 084f3f60d58341c1bb8a4c5902758909
+# ef024b35b5944a84b02459069f6213a1
+#: ../../networking/palo_alto_config.rst:137
+#: ../../networking/palo_alto_config.rst:230
+msgid "Navigate to 'Network > Interfaces'"
+msgstr ""
+
+# f9c2ae1f0de249878828ead2f5703582
+#: ../../networking/palo_alto_config.rst:139
+msgid ""
+"Click on 'ethernet1/1' (for aggregated ethernet, it will probably be called "
+"'ae1')"
+msgstr ""
+
+# 04a63a60ad414b7e81b979d479bae1fd
+# 04da4ad3a88d4e6cba3ee5b4668f9ee2
+#: ../../networking/palo_alto_config.rst:142
+#: ../../networking/palo_alto_config.rst:155
+msgid "Select 'Layer3' from the 'Interface Type' list"
+msgstr ""
+
+# ff872b1bbd2945db9cce189792e38246
+#: ../../networking/palo_alto_config.rst:144
+msgid "Click 'Advanced'"
+msgstr ""
+
+# 944d68b812d8463a87b69f9d882e8b28
+#: ../../networking/palo_alto_config.rst:146
+msgid "Check the 'Untagged Subinterface' check-box"
+msgstr ""
+
+# 290ce1b89ac441bcbc6691b3a41534a6
+# ac12e64f14884682ba033e7f2177cc9b
+# 8f94cc2074684065a79e57cf90d6ab9a
+# 8a83b222380740918936aca1feee32b9
+# f18ef2d3aeac41389cdfd198b83c5467
+# 95a5afc210324dab8a21ba2da8e6801c
+# d765a343c5f146639728c4ea3493e250
+# 8b7efac976c241fe9f3fa33963361d5a
+# 8a61018dde394d37b9ca3df99d188ee5
+#: ../../networking/palo_alto_config.rst:148
+#: ../../networking/palo_alto_config.rst:157
+#: ../../networking/palo_alto_config.rst:193
+#: ../../networking/palo_alto_config.rst:195
+#: ../../networking/palo_alto_config.rst:265
+#: ../../networking/palo_alto_config.rst:339
+#: ../../networking/palo_alto_config.rst:388
+#: ../../networking/palo_alto_config.rst:426
+#: ../../networking/palo_alto_config.rst:455
+msgid "Click 'OK'"
+msgstr ""
+
+# 8b5c88e0cc8242a580db731046cce5d3
+#: ../../networking/palo_alto_config.rst:150
+msgid "**Steps to configure the Private Interface**:"
+msgstr ""
+
+# a94612c3076e4722bd18904180a04114
+#: ../../networking/palo_alto_config.rst:152
+msgid ""
+"Click on 'ethernet1/2' (for aggregated ethernet, it will probably be called "
+"'ae2')"
+msgstr ""
+
+# 0beaed2fa39442e887eaca261cae62d7
+#: ../../networking/palo_alto_config.rst:162
+msgid "Configure a Virtual Router on the firewall"
+msgstr ""
+
+# 22d2fb39f9f44f928787ed03f4aa558c
+#: ../../networking/palo_alto_config.rst:164
+msgid ""
+"The Virtual Router on the Palo Alto Networks Firewall is not to be confused "
+"with the Virtual Routers that CloudStack provisions.  For this "
+"implementation, the Virtual Router on the Palo Alto Networks Firewall will "
+"ONLY handle the upstream routing from the Firewall to the next hop."
+msgstr ""
+
+# e11103f99e6d45d0bea4183b1cf60c98
+#: ../../networking/palo_alto_config.rst:169
+msgid "**Steps to configure the Virtual Router**:"
+msgstr ""
+
+# d520996f46e84c8c94ce274dd654f3cb
+#: ../../networking/palo_alto_config.rst:173
+msgid "Navigate to 'Network > Virtual Routers'"
+msgstr ""
+
+# e966f3781b904686b55509eef9892346
+#: ../../networking/palo_alto_config.rst:175
+msgid ""
+"Select the 'default' Virtual Router or Add a new Virtual Router if there are"
+" none in the list"
+msgstr ""
+
+# 9cbe5a8debc5407fb6918d33d5b71aab
+#: ../../networking/palo_alto_config.rst:178
+msgid "If you added a new Virtual Router, you will need to give it a 'Name'"
+msgstr ""
+
+# b6a107e3fda3444fbcc24365b6ee33ca
+#: ../../networking/palo_alto_config.rst:180
+msgid "Navigate to 'Static Routes > IPv4'"
+msgstr ""
+
+# 6efcbc75fe144976b8a75a2dd888c615
+#: ../../networking/palo_alto_config.rst:182
+msgid "'Add' a new static route"
+msgstr ""
+
+# ed78234999764665912475eb992e6395
+#: ../../networking/palo_alto_config.rst:184
+msgid "**Name**: next_hop (you can name it anything you want)"
+msgstr ""
+
+# 47efb66b283043aa89a78ad4c6a87339
+#: ../../networking/palo_alto_config.rst:186
+msgid "**Destination**: 0.0.0.0/0 (send all traffic to this route)"
+msgstr ""
+
+# f9dde0e9e0534954bf1da5b6bf535824
+#: ../../networking/palo_alto_config.rst:188
+msgid ""
+"**Interface**: ethernet1/1 (or whatever you set your public interface as)"
+msgstr ""
+
+# 1e8a9818e50544a19445ee39589e5215
+#: ../../networking/palo_alto_config.rst:191
+msgid ""
+"**Next Hop**: (specify the gateway IP for the next hop in your network)"
+msgstr ""
+
+# f26446d9a67c4620a0f511145ecfde2b
+#: ../../networking/palo_alto_config.rst:200
+msgid "Configure the default Public Subinterface"
+msgstr ""
+
+# 7225aebfeb604bd7ad6ffa6bd19425c3
+#: ../../networking/palo_alto_config.rst:202
+msgid ""
+"The current implementation of the Palo Alto Networks firewall integration "
+"uses CIDRs in the form of 'w.x.y.z/32' for the public IP addresses that "
+"CloudStack provisions.  Because no broadcast or gateway IPs are in this "
+"single IP range, there is no way for the firewall to route the traffic for "
+"these IPs.  To route the traffic for these IPs, we create a single "
+"subinterface on the public interface with an IP and a CIDR which "
+"encapsulates the CloudStack public IP range.  This IP will need to be inside"
+" the subnet defined by the CloudStack public range netmask, but outside the "
+"CloudStack public IP range.  The CIDR should reflect the same subnet defined"
+" by the CloudStack public range netmask. The name of the subinterface is "
+"determined by the VLAN configured for the public range in CloudStack."
+msgstr ""
+
+# 3c781eec6bac4e599027b694351c3cd4
+#: ../../networking/palo_alto_config.rst:214
+msgid "To clarify this concept, we will use the following example."
+msgstr ""
+
+# 9637f4b7396f4c51983c5bf87b43e912
+#: ../../networking/palo_alto_config.rst:216
+msgid "**Example CloudStack Public Range Configuration**:"
+msgstr ""
+
+# 8a3070e081974ca68cc0375eca88007b
+#: ../../networking/palo_alto_config.rst:218
+msgid "**Gateway**: 172.30.0.1"
+msgstr ""
+
+# 9f64613849464823b633f1d16645d42e
+#: ../../networking/palo_alto_config.rst:220
+msgid "**Netmask**: 255.255.255.0"
+msgstr ""
+
+# 9330fe95cfaf44abbdb0d4f38e739dde
+#: ../../networking/palo_alto_config.rst:222
+msgid "**IP Range**: 172.30.0.100 - 172.30.0.199"
+msgstr ""
+
+# 435b6fb99438485f877a6756893298bf
+#: ../../networking/palo_alto_config.rst:224
+msgid "**VLAN**: Untagged"
+msgstr ""
+
+# eb956dfff226492fa1b0806cbbf743dc
+#: ../../networking/palo_alto_config.rst:226
+msgid "**Configure the Public Subinterface**:"
+msgstr ""
+
+# 2c3eb0c3c7e642cbb78583a57bc43be3
+#: ../../networking/palo_alto_config.rst:232
+msgid "Select the 'ethernet1/1' line (not clicking on the name)"
+msgstr ""
+
+# 739221cdf0024efc9b93b1d76646825b
+#: ../../networking/palo_alto_config.rst:234
+msgid "Click 'Add Subinterface' at the bottom of the window"
+msgstr ""
+
+# 6b8490f4a2684ca8ad9814a1461edaaa
+#: ../../networking/palo_alto_config.rst:236
+msgid "Enter 'Interface Name': 'ethernet1/1' . '9999'"
+msgstr ""
+
+# fb030c9c7b044a0185fe843def4a3bb5
+#: ../../networking/palo_alto_config.rst:238
+msgid "9999 is used if the CloudStack public range VLAN is 'Untagged'"
+msgstr ""
+
+# 912e1187e17b414f9493ddb7f368b068
+#: ../../networking/palo_alto_config.rst:240
+msgid ""
+"If the CloudStack public range VLAN is tagged (eg: 333), then the name will "
+"reflect that tag"
+msgstr ""
+
+# 4472ddfa3e6f4c878a16d411cc343a7d
+#: ../../networking/palo_alto_config.rst:243
+msgid ""
+"The 'Tag' is the VLAN tag that the traffic is sent to the next hop with, so "
+"set it accordingly.  If you are passing 'Untagged' traffic from CloudStack "
+"to your next hop, leave it blank.  If you want to pass tagged traffic from "
+"CloudStack, specify the tag."
+msgstr ""
+
+# f1ede2abd59c4fcc914acf233aa4b38c
+#: ../../networking/palo_alto_config.rst:248
+msgid ""
+"Select 'default' from the 'Config > Virtual Router' drop-down (assuming that"
+" is what your virtual router is called)"
+msgstr ""
+
+# 0d7f8743ae7e405c833390569c1a342c
+#: ../../networking/palo_alto_config.rst:251
+msgid "Click the 'IPv4' tab"
+msgstr ""
+
+# 93bc9ae7b5f346f99a40644725c2ebc0
+#: ../../networking/palo_alto_config.rst:253
+msgid "Select 'Static' from the 'Type' radio options"
+msgstr ""
+
+# 661bc9fb00f342d58bfd39624ff5f72a
+#: ../../networking/palo_alto_config.rst:255
+msgid "Click 'Add' in the 'IP' section"
+msgstr ""
+
+# b3482058794d4e2abb1e0a1f41bee8fa
+#: ../../networking/palo_alto_config.rst:257
+msgid "Enter '172.30.0.254/24' in the new line"
+msgstr ""
+
+# 02e03b2878504ed9a7ee888b36978cd4
+#: ../../networking/palo_alto_config.rst:259
+msgid ""
+"The IP can be any IP outside the CloudStack public IP range, but inside the "
+"CloudStack public range netmask (it can NOT be the gateway IP)"
+msgstr ""
+
+# 925fe2a4b10d4cb1ab438e2de318af0a
+#: ../../networking/palo_alto_config.rst:262
+msgid ""
+"The subnet defined by the CIDR should match the CloudStack public range "
+"netmask"
+msgstr ""
+
+# 10d6dd9ed3af49ffad4020de805389de
+#: ../../networking/palo_alto_config.rst:269
+msgid "Commit configuration on the Palo Alto Networks Firewall"
+msgstr ""
+
+# 89ac6f1b3c694a06b75008f8eec59b16
+#: ../../networking/palo_alto_config.rst:271
+msgid ""
+"In order for all the changes we just made to take effect, we need to commit "
+"the changes."
+msgstr ""
+
+# 3137cac6d6e14fc9904a5fa154e3905d
+#: ../../networking/palo_alto_config.rst:274
+msgid "Click the 'Commit' link in the top right corner of the window"
+msgstr ""
+
+# f3aaf9f819ef410fba6edbc621ea6a4d
+#: ../../networking/palo_alto_config.rst:276
+msgid "Click 'OK' in the commit window overlay"
+msgstr ""
+
+# 3b4acc9911434ddc83362cedcacab668
+#: ../../networking/palo_alto_config.rst:278
+msgid ""
+"Click 'Close' to the resulting commit status window after the commit "
+"finishes"
+msgstr ""
+
+# 6bb86113a96547538dbfd01db7c9e7ae
+#: ../../networking/palo_alto_config.rst:284
+msgid "Setup the Palo Alto Networks Firewall in CloudStack"
+msgstr ""
+
+# b8515e0d94ef4d4a865f64f7bef85482
+#: ../../networking/palo_alto_config.rst:287
+msgid "Add the Palo Alto Networks Firewall as a Service Provider"
+msgstr ""
+
+# 9b19a32893484d2fac28f3558f2643b5
+#: ../../networking/palo_alto_config.rst:289
+msgid ""
+"Navigate to 'Infrastructure > Zones > ZONE_NAME > Physical Network > "
+"NETWORK_NAME (guest) > Configure; Network Service Providers'"
+msgstr ""
+
+# 9bdf06473baa43cd9c6b8cb17a6313c3
+#: ../../networking/palo_alto_config.rst:292
+msgid "Click on 'Palo Alto' in the list"
+msgstr ""
+
+# 8565a2ab22994798a9167083879136f7
+#: ../../networking/palo_alto_config.rst:294
+msgid "Click 'View Devices'"
+msgstr ""
+
+# d10162d1e53c40e6bd448e05bb8a3259
+#: ../../networking/palo_alto_config.rst:296
+msgid "Click 'Add Palo Alto Device'"
+msgstr ""
+
+# c6fcd95bacbf4675951227d95a5737fc
+#: ../../networking/palo_alto_config.rst:298
+msgid ""
+"Enter your configuration in the overlay.  This example will reflect the "
+"details previously used in this guide."
+msgstr ""
+
+# 1d34f716f84e4296a01fd3f7afde7356
+#: ../../networking/palo_alto_config.rst:301
+msgid "**IP Address**: (the IP of the Palo Alto Networks Firewall)"
+msgstr ""
+
+# add3b3461b6b48d7b74f94961a7b26e1
+#: ../../networking/palo_alto_config.rst:303
+msgid "**Username**: (the admin username for the firewall)"
+msgstr ""
+
+# 708228ac2edb498f9fd079d05a8a7511
+#: ../../networking/palo_alto_config.rst:305
+msgid "**Password**: (the admin password for the firewall)"
+msgstr ""
+
+# b2a6f266de904ebe94805b3176617484
+#: ../../networking/palo_alto_config.rst:307
+msgid "**Type**: Palo Alto Firewall"
+msgstr ""
+
+# 1cc218519592430f98cc8e009d0c8f2c
+#: ../../networking/palo_alto_config.rst:309
+msgid ""
+"**Public Interface**: ethernet1/1 (use what you setup earlier as the public "
+"interface if it is different from my examples)"
+msgstr ""
+
+# 5f1c1837d4df4e65a7a8abd05abd43ce
+#: ../../networking/palo_alto_config.rst:312
+msgid ""
+"**Private Interface**: ethernet1/2 (use what you setup earlier as the "
+"private interface if it is different from my examples)"
+msgstr ""
+
+# dd40b4143070449bb34ede04b3fe467e
+#: ../../networking/palo_alto_config.rst:315
+msgid "**Number of Retries**: 2 (the default is fine)"
+msgstr ""
+
+# 1d8080f41f894087b6e0a8c4c934dfe9
+#: ../../networking/palo_alto_config.rst:317
+msgid "**Timeout**: 300 (the default is fine)"
+msgstr ""
+
+# 876888b0168e496a897f306b246db971
+#: ../../networking/palo_alto_config.rst:319
+msgid ""
+"**Public Network**: untrust (this is the public zone on the firewall and did"
+" not need to be configured)"
+msgstr ""
+
+# 920274e528a341fb8962b73ff4b77179
+#: ../../networking/palo_alto_config.rst:322
+msgid ""
+"**Private Network**: trust (this is the private zone on the firewall and did"
+" not need to be configured)"
+msgstr ""
+
+# 2072277d3e14495aa762454838f72995
+#: ../../networking/palo_alto_config.rst:325
+msgid ""
+"**Virtual Router**: default (this is the name of the Virtual Router we setup"
+" on the firewall)"
+msgstr ""
+
+# 0376444c2cbd4404ad01b614aac5c07f
+#: ../../networking/palo_alto_config.rst:328
+msgid ""
+"**Palo Alto Threat Profile**: (not required.  name of the 'Security Profile "
+"Groups' to apply.  more details in the 'Additional Features' section)"
+msgstr ""
+
+# e649ac1802774500b5003c708987fe74
+#: ../../networking/palo_alto_config.rst:332
+msgid ""
+"**Palo Alto Log Profile**: (not required.  name of the 'Log Forwarding' "
+"profile to apply.  more details in the 'Additional Features' section)"
+msgstr ""
+
+# 32094fb7d72248d28b8f84e1fd56e988
+#: ../../networking/palo_alto_config.rst:335
+msgid "**Capacity**: (not required)"
+msgstr ""
+
+# 7e33721fb17a48e2ab7aa2d1b1dc460c
+#: ../../networking/palo_alto_config.rst:337
+msgid "**Dedicated**: (not required)"
+msgstr ""
+
+# dbef98d732fc4f7fbbad776d1b61f41e
+#: ../../networking/palo_alto_config.rst:341
+msgid "Click on 'Palo Alto' in the breadcrumbs to go back one screen."
+msgstr ""
+
+# e499e22a30754ab4acfd6a779b03ea97
+#: ../../networking/palo_alto_config.rst:343
+msgid "Click on 'Enable Provider' |EnableDisableFeature.png|"
+msgstr ""
+
+# b7b0fa1a4629430b839286b55162f882
+#: ../../networking/palo_alto_config.rst:347
+msgid "Add a Network Service Offering to use the new Provider"
+msgstr ""
+
+# 1cc4ca671df7479c96ab873e7ae0cc68
+#: ../../networking/palo_alto_config.rst:349
+msgid ""
+"There are 6 'Supported Services' that need to be configured in the network "
+"service offering for this functionality.  They are DHCP, DNS, Firewall, "
+"Source NAT, Static NAT and Port Forwarding.  For the other settings, there "
+"are probably additional configurations which will work, but I will just "
+"document a common case."
+msgstr ""
+
+# f406f98a91684fd1bd4947a0b06ed1a2
+#: ../../networking/palo_alto_config.rst:355
+msgid "Navigate to 'Service Offerings'"
+msgstr ""
+
+# 942ee3b426ba4d88acfbee186446dcaf
+#: ../../networking/palo_alto_config.rst:357
+msgid "In the drop-down at the top, select 'Network Offerings'"
+msgstr ""
+
+# 6d216de0290941758439b72593f8a6c8
+#: ../../networking/palo_alto_config.rst:359
+msgid "Click 'Add Network Offering'"
+msgstr ""
+
+# da673cd57e5d4dadaaa406cb5fa5ec13
+#: ../../networking/palo_alto_config.rst:361
+msgid "**Name**: (name it whatever you want)"
+msgstr ""
+
+# a59e3d821172494d9efb8de1253d352d
+#: ../../networking/palo_alto_config.rst:363
+msgid "**Description**: (again, can be whatever you want)"
+msgstr ""
+
+# bdb32fa4fdf545d2886707aa7ca1156d
+#: ../../networking/palo_alto_config.rst:365
+msgid "**Guest Type**: Isolated"
+msgstr ""
+
+# ee73168cca234bf08581ec3131ec5bb8
+#: ../../networking/palo_alto_config.rst:367
+msgid "**Supported Services**:"
+msgstr ""
+
+# 320e8c3f0b9b49ac8768926d267e94d7
+#: ../../networking/palo_alto_config.rst:369
+msgid "**DHCP**: Provided by 'VirtualRouter'"
+msgstr ""
+
+# 4c6b47d1b7b34586863177a90b865d85
+#: ../../networking/palo_alto_config.rst:371
+msgid "**DNS**: Provided by 'VirtualRouter'"
+msgstr ""
+
+# 56ac8260b8a3496ca38997dfc58dae3f
+#: ../../networking/palo_alto_config.rst:373
+msgid "**Firewall**: Provided by 'PaloAlto'"
+msgstr ""
+
+# fb63dd0553724890988f01e52cc9fb1a
+#: ../../networking/palo_alto_config.rst:375
+msgid "**Source NAT**: Provided by 'PaloAlto'"
+msgstr ""
+
+# 4cdf39f3041d47699f285f61fcf0ac95
+#: ../../networking/palo_alto_config.rst:377
+msgid "**Static NAT**: Provided by 'PaloAlto'"
+msgstr ""
+
+# bfbb888f85ab4e179965cac8c6d8dadb
+#: ../../networking/palo_alto_config.rst:379
+msgid "**Port Forwarding**: Provided by 'PaloAlto'"
+msgstr ""
+
+# 88e886aff4204f32811dff6e4d8ea019
+#: ../../networking/palo_alto_config.rst:381
+msgid "**System Offering for Router**: System Offering For Software Router"
+msgstr ""
+
+# 8f0e43a7d0f34b9992263fdfdcfcd2d6
+#: ../../networking/palo_alto_config.rst:383
+msgid ""
+"**Supported Source NAT Type**: Per account (this is the only supported "
+"option)"
+msgstr ""
+
+# e06e5423d74c4f328eae1e741028734b
+#: ../../networking/palo_alto_config.rst:386
+msgid "**Default egress policy**: (both 'Allow' and 'Deny' are supported)"
+msgstr ""
+
+# 59c525fe149a425098205f41b21a9cf1
+#: ../../networking/palo_alto_config.rst:390
+msgid "Click on the newly created service offering"
+msgstr ""
+
+# 44fc81442fe34d68a2728f0ca0a160dc
+#: ../../networking/palo_alto_config.rst:392
+msgid "Click 'Enable network offering' |EnableDisableFeature.png|"
+msgstr ""
+
+# 934d3259e9bf44c083323e6b2f2aa9bf
+#: ../../networking/palo_alto_config.rst:394
+msgid ""
+"When adding networks in CloudStack, select this network offering to use the "
+"Palo Alto Networks firewall."
+msgstr ""
+
+# fae8d19c649e479f99c6b2edd49434eb
+#: ../../networking/palo_alto_config.rst:399
+msgid "Additional Features"
+msgstr ""
+
+# 9dc0b83948d74e16b3ad351d1210f5b5
+#: ../../networking/palo_alto_config.rst:401
+msgid ""
+"In addition to the standard functionality exposed by CloudStack, we have "
+"added a couple additional features to this implementation.  We did not add "
+"any new screens to CloudStack, but we have added a couple fields to the 'Add"
+" Palo Alto Service Provider' screen which will add functionality globally "
+"for the device."
+msgstr ""
+
+# 5af1e576fa7847f7b87eed5fe35e77b8
+#: ../../networking/palo_alto_config.rst:408
+msgid "Palo Alto Networks Threat Profile"
+msgstr ""
+
+# 9070542c237349599f645efcd8a64128
+#: ../../networking/palo_alto_config.rst:410
+msgid ""
+"This feature allows you to specify a 'Security Profile Group' to be applied "
+"to all of the firewall rules which are created on the Palo Alto Networks "
+"firewall device."
+msgstr ""
+
+# a4257973d0524640b7102968817ca7e5
+#: ../../networking/palo_alto_config.rst:414
+msgid ""
+"To create a 'Security Profile Group' on the Palo Alto Networks firewall, do "
+"the following:"
+msgstr ""
+
+# 77a31bab19cd4e55b4cc13c92cb328bb
+# 92409a68a6f345c89e059f0a26e707ee
+#: ../../networking/palo_alto_config.rst:417
+#: ../../networking/palo_alto_config.rst:446
+msgid "Log into the Palo Alto Networks firewall"
+msgstr ""
+
+# 2b0227f96b854d92bf96e91d9c17435c
+#: ../../networking/palo_alto_config.rst:419
+msgid "Navigate to 'Objects > Security Profile Groups'"
+msgstr ""
+
+# 2405f37aad834c34b4360f784ce6ec69
+#: ../../networking/palo_alto_config.rst:421
+msgid "Click 'Add' at the bottom of the page to add a new group"
+msgstr ""
+
+# 7e5ffff8c26545c48b07a4921ca76a52
+#: ../../networking/palo_alto_config.rst:423
+msgid ""
+"Give the group a Name and specify the profiles you would like to include in "
+"the group"
+msgstr ""
+
+# 3e3d4bfaa14c46c38499c68ce4f36095
+# 547b08aaaf164fb68c2b8f1b37d09793
+#: ../../networking/palo_alto_config.rst:428
+#: ../../networking/palo_alto_config.rst:457
+msgid ""
+"Click the 'Commit' link in the top right of the screen and follow the on "
+"screen instructions"
+msgstr ""
+
+# a31ebe4cd3bf4bf9b7e3fe8d35c32f63
+#: ../../networking/palo_alto_config.rst:431
+msgid ""
+"Once you have created a profile, you can reference it by Name in the 'Palo "
+"Alto Threat Profile' field in the 'Add the Palo Alto Networks Firewall as a "
+"Service Provider' step."
+msgstr ""
+
+# 735566ed2935434ea67f2e2595c3f686
+#: ../../networking/palo_alto_config.rst:437
+msgid "Palo Alto Networks Log Forwarding Profile"
+msgstr ""
+
+# c229e4bdb0c04fac952295035d8afa6b
+#: ../../networking/palo_alto_config.rst:439
+msgid ""
+"This feature allows you to specify a 'Log Forwarding' profile to better "
+"manage where the firewall logs are sent to.  This is helpful for keeping "
+"track of issues that can arise on the firewall."
+msgstr ""
+
+# 461ea8be12674fcd842217cf72c68f7f
+#: ../../networking/palo_alto_config.rst:443
+msgid ""
+"To create a 'Log Forwarding' profile on the Palo Alto Networks Firewall, do "
+"the following:"
+msgstr ""
+
+# a61142f77e8941e9b976c01cd1aa9f89
+#: ../../networking/palo_alto_config.rst:448
+msgid "Navigate to 'Objects > Log Forwarding'"
+msgstr ""
+
+# ea14dff9d3c448f0976b6aebe2d119cc
+#: ../../networking/palo_alto_config.rst:450
+msgid "Click 'Add' at the bottom of the page to add a new profile"
+msgstr ""
+
+# 1352f9adcbd94a24a5429e2ed53caa48
+#: ../../networking/palo_alto_config.rst:452
+msgid ""
+"Give the profile a Name and specify the details you want for the traffic and"
+" threat settings"
+msgstr ""
+
+# 6b304cde8312467ebef3f110a46fce1a
+#: ../../networking/palo_alto_config.rst:460
+msgid ""
+"Once you have created a profile, you can reference it by Name in the 'Palo "
+"Alto Log Profile' field in the 'Add the Palo Alto Networks Firewall as a "
+"Service Provider' step."
+msgstr ""
+
+# 7ba0d11bde5b4c3e97de4830b0aecc15
+#: ../../networking/palo_alto_config.rst:467
+msgid "Limitations"
+msgstr "局限性"
+
+# 796314d492b54823a652a3f50d430629
+#: ../../networking/palo_alto_config.rst:469
+msgid ""
+"The implementation currently only supports a single public IP range in "
+"CloudStack"
+msgstr ""
+
+# c8e8545461454cb9acf0a06bf42b95c0
+#: ../../networking/palo_alto_config.rst:472
+msgid "Usage tracking is not yet implemented"
+msgstr ""

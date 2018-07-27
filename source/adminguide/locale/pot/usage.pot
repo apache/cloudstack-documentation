@@ -1,0 +1,1497 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../usage.rst:18
+# f960d1bdf1ff4edcab85c8de14d937d9
+msgid "Working with Usage"
+msgstr ""
+
+#: ../../usage.rst:20
+# 15ed9c55a30744308390d710f71e001e
+msgid "The Usage Server is an optional, separately-installed part of CloudStack that provides aggregated usage records which you can use to create billing integration for CloudStack. The Usage Server works by taking data from the events log and creating summary usage records that you can access using the listUsageRecords API call."
+msgstr ""
+
+#: ../../usage.rst:26
+# 96a54f49657f4ecb814c7babc3d12cd5
+msgid "The usage records show the amount of resources, such as VM run time or template storage space, consumed by guest instances."
+msgstr ""
+
+#: ../../usage.rst:29
+# 55c9c7dee78b4ff284f8a3775ee15d80
+msgid "The Usage Server runs at least once per day. It can be configured to run multiple times per day."
+msgstr ""
+
+#: ../../usage.rst:34
+# e3e786135adc456da195d8c62094e4cf
+msgid "Configuring the Usage Server"
+msgstr ""
+
+#: ../../usage.rst:36
+# 6fb60ef9e16e4db0878d21a3d8ae162b
+msgid "To configure the usage server:"
+msgstr ""
+
+#: ../../usage.rst:38
+# 5adc62eff1f640a094ea087767a99266
+msgid "Be sure the Usage Server has been installed. This requires extra steps beyond just installing the CloudStack software. See Installing the Usage Server (Optional) in the Advanced Installation Guide."
+msgstr ""
+
+#: ../../usage.rst:42
+# 79b6062dbd284c60a7d174315e5ddf4f
+msgid "Log in to the CloudStack UI as administrator."
+msgstr ""
+
+#: ../../usage.rst:44
+# 19a9f5fbef3041d9b13807ca7c2cb8b9
+msgid "Click Global Settings."
+msgstr ""
+
+#: ../../usage.rst:46
+# 667e5b8b21924fb69b4fa8afbf76896b
+msgid "In Search, type usage. Find the configuration parameter that controls the behavior you want to set. See the table below for a description of the available parameters."
+msgstr ""
+
+#: ../../usage.rst:50
+# 8fa5855d775b43958fe08525d0e94aae
+msgid "In Actions, click the Edit icon."
+msgstr ""
+
+#: ../../usage.rst:52
+# 63178267fdd94998ab92da5146692648
+msgid "Type the desired value and click the Save icon."
+msgstr ""
+
+#: ../../usage.rst:54
+# 5d851f4543c0408f8e57dce0857766a3
+msgid "Restart the Management Server (as usual with any global configuration change) and also the Usage Server:"
+msgstr ""
+
+#: ../../usage.rst:62
+# b91f29141e0f4cdaaa81be318e86c10e
+msgid "The following table shows the global configuration settings that control the behavior of the Usage Server."
+msgstr ""
+
+#: ../../usage.rst:65
+# 1e76426d14bf4fc6915a0e1c79ef2b9a
+msgid "Parameter Name  Description"
+msgstr ""
+
+#: ../../usage.rst:67
+# 668e6317ce104d72ab45c55b9411ea8e
+msgid "enable.usage.server  Whether the Usage Server is active."
+msgstr ""
+
+#: ../../usage.rst:69
+# 1fcaf07a4ddb4e8c958cd1b6ef8cfe91
+msgid "usage.aggregation.timezone"
+msgstr ""
+
+#: ../../usage.rst:71
+# fb381c2892df4ea7b1c44440f03ba556
+msgid "Time zone of usage records. Set this if the usage records and daily job execution are in different time zones. For example, with the following settings, the usage job will run at PST 00:15 and generate usage records for the 24 hours from 00:00:00 GMT to 23:59:59 GMT:"
+msgstr ""
+
+#: ../../usage.rst:82
+# 509f3bce303a4ab7a526dcc19e3c3e50
+msgid "Valid values for the time zone are specified in `Appendix A, *Time Zones* <http://docs.cloudstack.apache.org/en/latest/dev.html?highlight=time%20zones#time-zones>`_"
+msgstr ""
+
+#: ../../usage.rst:85
+# 3133231b20dd4c9da1fe9fd7d09136a3
+msgid "Default: GMT"
+msgstr ""
+
+#: ../../usage.rst:87
+# 22dabfab93eb4361b26eb9088cad5134
+msgid "usage.execution.timezone"
+msgstr ""
+
+#: ../../usage.rst:89
+# a27f0dcfc71847ee846e80cb1b5c6e66
+msgid "The time zone of usage.stats.job.exec.time. Valid values for the time zone are specified in `Appendix A, *Time Zones* <http://docs.cloudstack.apache.org/en/latest/dev.html?highlight=time%20zones#time-zones>`_"
+msgstr ""
+
+#: ../../usage.rst:93
+# 101b64630291428aa4dce0f295b51f96
+msgid "Default: The time zone of the management server."
+msgstr ""
+
+#: ../../usage.rst:95
+# e5296f4116c949e282dda12b62a2e31b
+msgid "usage.sanity.check.interval"
+msgstr ""
+
+#: ../../usage.rst:97
+# 12e3d1486808475ba2d50b4b1f480b20
+msgid "The number of days between sanity checks. Set this in order to periodically search for records with erroneous data before issuing customer invoices. For example, this checks for VM usage records created after the VM was destroyed, and similar checks for templates, volumes, and so on. It also checks for usage times longer than the aggregation range. If any issue is found, the alert ALERT\\_TYPE\\_USAGE\\_SANITY\\_RESULT = 21 is sent."
+msgstr ""
+
+#: ../../usage.rst:105
+# d6a51defdc9b4ca1900dca6ee38d488b
+msgid "usage.stats.job.aggregation.range"
+msgstr ""
+
+#: ../../usage.rst:107
+# f200ecf1491a41c58c58d607a2030621
+msgid "The time period in minutes between Usage Server processing jobs. For example, if you set it to 1440, the Usage Server will run once per day. If you set it to 600, it will run every ten hours. In general, when a Usage Server job runs, it processes all events generated since usage was last run."
+msgstr ""
+
+#: ../../usage.rst:113
+# 3fb2ba9c61a64f54bb226a97eff0e59f
+msgid "There is special handling for the case of 1440 (once per day). In this case the Usage Server does not necessarily process all records since Usage was last run. CloudStack assumes that you require processing once per day for the previous, complete day’s records. For example, if the current day is October 7, then it is assumed you would like to process records for October 6, from midnight to midnight. CloudStack assumes this “midnight to midnight” is relative to the usage.execution.timezone."
+msgstr ""
+
+#: ../../usage.rst:121
+# 657e01fff8404e7086e1a5cd318ed5b9
+msgid "Default: 1440"
+msgstr ""
+
+#: ../../usage.rst:123
+# 8e231a3dfe9b4ac494f5ae8dc3e03001
+msgid "usage.stats.job.exec.time"
+msgstr ""
+
+#: ../../usage.rst:125
+# 05f6de4a7dd947ceba3246443c6e2ace
+msgid "The time when the Usage Server processing will start. It is specified in 24-hour format (HH:MM) in the time zone of the server, which should be GMT. For example, to start the Usage job at 10:30 GMT, enter “10:30”."
+msgstr ""
+
+#: ../../usage.rst:129
+# 54677f1477574ba58b744ade5f531ddd
+msgid "If usage.stats.job.aggregation.range is also set, and its value is not 1440, then its value will be added to usage.stats.job.exec.time to get the time to run the Usage Server job again. This is repeated until 24 hours have elapsed, and the next day's processing begins again at usage.stats.job.exec.time."
+msgstr ""
+
+#: ../../usage.rst:135
+# 870bef8e0dc54e1a87ab39acc1c59e7b
+msgid "Default: 00:15."
+msgstr ""
+
+#: ../../usage.rst:137
+# 3c30b2b9e20f485c8ac878c1c8b62ef5
+msgid "For example, suppose that your server is in GMT, your user population is predominantly in the East Coast of the United States, and you would like to process usage records every night at 2 AM local (EST) time. Choose these settings:"
+msgstr ""
+
+#: ../../usage.rst:142
+# 910e4a77b6c34e64ad844e417ab623d5
+msgid "enable.usage.server = true"
+msgstr ""
+
+#: ../../usage.rst:144
+# 078da3cc8569439c9002cbbb7337d936
+msgid "usage.execution.timezone = America/New\\_York"
+msgstr ""
+
+#: ../../usage.rst:146
+# 42e66162ae97481083688b89c626c8cc
+msgid "usage.stats.job.exec.time = 07:00. This will run the Usage job at 2:00 AM EST. Note that this will shift by an hour as the East Coast of the U.S. enters and exits Daylight Savings Time."
+msgstr ""
+
+#: ../../usage.rst:150
+# 5ba2fd5fa7004081a393783418655cdd
+msgid "usage.stats.job.aggregation.range = 1440"
+msgstr ""
+
+#: ../../usage.rst:152
+# 1c9ce06adfa54705878ac2e20fcc8462
+msgid "With this configuration, the Usage job will run every night at 2 AM EST and will process records for the previous day’s midnight-midnight as defined by the EST (America/New\\_York) time zone."
+msgstr ""
+
+#: ../../usage.rst:157
+# 1e914c7e818e47d8b13676d7f92bbe0b
+msgid "Because the special value 1440 has been used for usage.stats.job.aggregation.range, the Usage Server will ignore the data between midnight and 2 AM. That data will be included in the next day's run."
+msgstr ""
+
+#: ../../usage.rst:164
+# 40d99d806e4949158aa5ab2e841cfa2a
+msgid "Setting Usage Limits"
+msgstr ""
+
+#: ../../usage.rst:166
+# 579aaca84d1548508b091885f6e9e9da
+msgid "CloudStack provides several administrator control points for capping resource usage by users. Some of these limits are global configuration parameters. Others are applied at the ROOT domain and may be overridden on a per-account basis."
+msgstr ""
+
+#: ../../usage.rst:173
+# 229ad89efb9c4cb0ab03a6ce99f44f23
+msgid "Globally Configured Limits"
+msgstr ""
+
+#: ../../usage.rst:175
+# e2b6313d1a4d4917a2544b4440379415
+msgid "In a zone, the guest virtual network has a 24 bit CIDR by default. This limits the guest virtual network to 254 running instances. It can be adjusted as needed, but this must be done before any instances are created in the zone. For example, 10.1.1.0/22 would provide for ~1000 addresses."
+msgstr ""
+
+#: ../../usage.rst:181
+# 84670b12426b4429831f536c401fc323
+msgid "The following table lists limits set in the Global Configuration:"
+msgstr ""
+
+#: ../../usage.rst:184
+#: ../../usage.rst:239
+#: ../../usage.rst:343
+#: ../../usage.rst:414
+# 7da9c9f6c4464762b975b5c84e4ebf9c
+# 146d490544914790b152209b009cacb9
+# 1bb822fa0c3e4b7db77988b5cf5efdbd
+# c79e2332c1ba4ad5883126f553ad5388
+msgid "Parameter Name"
+msgstr ""
+
+#: ../../usage.rst:184
+# 69e6a02d3513471b89dca9419976e56b
+msgid "Definition"
+msgstr ""
+
+#: ../../usage.rst:186
+# 8f803160c7ef4b258545cf19783a2cb2
+msgid "max.account.public.ips"
+msgstr ""
+
+#: ../../usage.rst:186
+# 33a9e7f75edb450eb385f759769e8a27
+msgid "Number of public IP addresses that can be owned by an account"
+msgstr ""
+
+#: ../../usage.rst:188
+# 9d54d7043dfa4cfdba9892d7b4987d27
+msgid "max.account.snapshots"
+msgstr ""
+
+#: ../../usage.rst:188
+# 53e9c6336fc343f58d5d0f0c982ecd16
+msgid "Number of snapshots that can exist for an account"
+msgstr ""
+
+#: ../../usage.rst:190
+# 6979458b8f824d9ea8eb1a932cb3700a
+msgid "max.account.templates"
+msgstr ""
+
+#: ../../usage.rst:190
+# a450954b78c549129d90f452f3261c83
+msgid "Number of templates that can exist for an account"
+msgstr ""
+
+#: ../../usage.rst:192
+# e090c2956d874c139e10f94be47e21bd
+msgid "max.account.user.vms"
+msgstr ""
+
+#: ../../usage.rst:192
+# d30280c4822b48cf86341f0c6f0e9f40
+msgid "Number of virtual machine instances that can exist for an account"
+msgstr ""
+
+#: ../../usage.rst:194
+# ecaf59ece9264e429a9664b72c83c9d5
+msgid "max.account.volumes"
+msgstr ""
+
+#: ../../usage.rst:194
+# 352d53dede964c53adaba408485377bb
+msgid "Number of disk volumes that can exist for an account"
+msgstr ""
+
+#: ../../usage.rst:196
+# 4855308d9e7f453ca68c4f73a23b7da2
+msgid "max.template.iso.size"
+msgstr ""
+
+#: ../../usage.rst:196
+# c3cf19fabb7b41c6bfeda6bfcb0d40c6
+msgid "Maximum size for a downloaded template or ISO in GB"
+msgstr ""
+
+#: ../../usage.rst:198
+# e2bd816e02a74341ac3b504ef37abf9b
+msgid "max.volume.size.gb"
+msgstr ""
+
+#: ../../usage.rst:198
+# ac589029cbaa451fb486f219b27caf43
+msgid "Maximum size for a volume in GB"
+msgstr ""
+
+#: ../../usage.rst:200
+# 3b152b7effc14a2098e6b2f885125e11
+msgid "network.throttling.rate"
+msgstr ""
+
+#: ../../usage.rst:200
+# d66b6e2b68304b4d97dae0d72709be2f
+msgid "Default data transfer rate in megabits per second allowed per user (supported on XenServer)"
+msgstr ""
+
+#: ../../usage.rst:202
+# e01d028d0d5643a3a283f12888581998
+msgid "snapshot.max.hourly"
+msgstr ""
+
+#: ../../usage.rst:202
+# 305a224a1c5946ab949570233597705b
+msgid "Maximum recurring hourly snapshots to be retained for a volume. If the limit is reached, early snapshots from the start of the hour are deleted so that newer ones can be saved. This limit does not apply to manual snapshots. If set to 0, recurring hourly snapshots can not be scheduled"
+msgstr ""
+
+#: ../../usage.rst:204
+# 7734cc014872464a8d8672c1190ff731
+msgid "snapshot.max.daily"
+msgstr ""
+
+#: ../../usage.rst:204
+# ddca821bebdf4a12a2b4fb3d9e089efe
+msgid "Maximum recurring daily snapshots to be retained for a volume. If the limit is reached, snapshots from the start of the day are deleted so that newer ones can be saved. This limit does not apply to manual snapshots. If set to 0, recurring daily snapshots can not be scheduled"
+msgstr ""
+
+#: ../../usage.rst:206
+# 90b70954860841d5a31b17b85cc10f84
+msgid "snapshot.max.weekly"
+msgstr ""
+
+#: ../../usage.rst:206
+# 8ee51877c42a40da9039bdc877f388c5
+msgid "Maximum recurring weekly snapshots to be retained for a volume. If the limit is reached, snapshots from the beginning of the week are deleted so that newer ones can be saved. This limit does not apply to manual snapshots. If set to 0, recurring weekly snapshots can not be scheduled"
+msgstr ""
+
+#: ../../usage.rst:208
+# 65aa1a30aab34f218756e423bac8f482
+msgid "snapshot.max.monthly"
+msgstr ""
+
+#: ../../usage.rst:208
+# 631eba2a40fe48f3b4f179dfe6e9fdc7
+msgid "Maximum recurring monthly snapshots to be retained for a volume. If the limit is reached, snapshots from the beginning of the month are deleted so that newer ones can be saved. This limit does not apply to manual snapshots. If set to 0, recurring monthly snapshots can not be scheduled."
+msgstr ""
+
+#: ../../usage.rst:211
+# dce0ccf760cb481290483d2e6c7439e4
+msgid "To modify global configuration parameters, use the global configuration screen in the CloudStack UI. See Setting Global Configuration Parameters"
+msgstr ""
+
+#: ../../usage.rst:216
+# adacfb1bcc74482cbac23e9a14c1803c
+msgid "Limiting Resource Usage"
+msgstr ""
+
+#: ../../usage.rst:218
+# 354d5dde0afe47a982710d8800da3315
+msgid "CloudStack allows you to control resource usage based on the types of resources, such as CPU, RAM, Primary storage, and Secondary storage. A new set of resource types has been added to the existing pool of resources to support the new customization model—need-basis usage, such as large VM or small VM. The new resource types are now broadly classified as CPU, RAM, Primary storage, and Secondary storage. The root administrator is able to impose resource usage limit by the following resource types for Domain, Project, and Accounts."
+msgstr ""
+
+#: ../../usage.rst:227
+# b80deb66aa1244279f48b9e17db7f7a0
+msgid "CPUs"
+msgstr ""
+
+#: ../../usage.rst:229
+# a7c54e874cae4016b7a1d2a17c5a7a89
+msgid "Memory (RAM)"
+msgstr ""
+
+#: ../../usage.rst:231
+# 3db51597d1dd4f328899070b88325384
+msgid "Primary Storage (Volumes)"
+msgstr ""
+
+#: ../../usage.rst:233
+# 6de9a84059e7408e85e9fdb47dbb341d
+msgid "Secondary Storage (Snapshots, Templates, ISOs)"
+msgstr ""
+
+#: ../../usage.rst:235
+# 36f9c552269b44e49eb2f86fa2bd98c8
+msgid "To control the behaviour of this feature, the following configuration parameters have been added:"
+msgstr ""
+
+#: ../../usage.rst:239
+#: ../../usage.rst:345
+#: ../../usage.rst:416
+#: ../../usage.rst:750
+# fc46eaac2efd4bf289bbd9025fd78502
+# 160c8719552a4684880d4f4a8ada714c
+# 947dba25316d4d74959935b65c8c5a33
+# 161ab30e9a60413d90729511c5fe9ec1
+msgid "Description"
+msgstr ""
+
+#: ../../usage.rst:241
+# 23d6c966c2c94a1f986282a729352f38
+msgid "max.account.cpus"
+msgstr ""
+
+#: ../../usage.rst:241
+#: ../../usage.rst:249
+# cdd19d9379ec43648cd224ba64a960dd
+# 2ca1b2c4fdc44e0e940da7f75cb5788b
+msgid "Maximum number of CPU cores that can be used for an account. Default is 40."
+msgstr ""
+
+#: ../../usage.rst:243
+# 4979d3f2676e4809a49cc696c48d2f8d
+msgid "max.account.ram (MB)"
+msgstr ""
+
+#: ../../usage.rst:243
+#: ../../usage.rst:251
+# f3c0b37fc2ea4617b811cef9791eda3b
+# 00fb0cdbac5b4ad291bc50a5e1219a47
+msgid "Maximum RAM that can be used for an account. Default is 40960."
+msgstr ""
+
+#: ../../usage.rst:245
+# 45df7928f7174808a2083dd11add33c0
+msgid "max.account.primary.storage (GB)"
+msgstr ""
+
+#: ../../usage.rst:245
+#: ../../usage.rst:253
+# 1ee6c5009abd4668a5dd0a640a18c8ea
+# 254b02916fc34ad6a649c8c990d4f41a
+msgid "Maximum primary storage space that can be used for an account. Default is 200."
+msgstr ""
+
+#: ../../usage.rst:247
+# cdeb23ce821d4c3196c6ea784f4367b6
+msgid "max.account.secondary.storage (GB)"
+msgstr ""
+
+#: ../../usage.rst:247
+#: ../../usage.rst:255
+# c51c46bd539f4093a4393f2d6d4e9b79
+# 982aa6e78c6f4ecda0f24acd5f6564d3
+msgid "Maximum secondary storage space that can be used for an account. Default is 400."
+msgstr ""
+
+#: ../../usage.rst:249
+# 01081c6a660a44f5851d914915a1281b
+msgid "max.project.cpus"
+msgstr ""
+
+#: ../../usage.rst:251
+# b7aede866d8a41298cf2c284450aea39
+msgid "max.project.ram (MB)"
+msgstr ""
+
+#: ../../usage.rst:253
+# 6a66f463c8a14145b745751a99ff5412
+msgid "max.project.primary.storage (GB)"
+msgstr ""
+
+#: ../../usage.rst:255
+# 86d804726f994f5ea14d1a29e97eb968
+msgid "max.project.secondary.storage (GB)"
+msgstr ""
+
+#: ../../usage.rst:261
+# 8ea9def42949482d99838f5ebe00a5e2
+msgid "User Permission"
+msgstr ""
+
+#: ../../usage.rst:263
+# 31b6a320c933489c96b4ce8db09ee012
+msgid "The root administrator, domain administrators and users are able to list resources. Ensure that proper logs are maintained in the ``vmops.log`` and ``api.log`` files."
+msgstr ""
+
+#: ../../usage.rst:267
+# 41b569e3765441d69d540fed030e34e2
+msgid "The root admin will have the privilege to list and update resource limits."
+msgstr ""
+
+#: ../../usage.rst:270
+# 9f791a84c2014d73b5f8b74f287ad010
+msgid "The domain administrators are allowed to list and change these resource limits only for the sub-domains and accounts under their own domain or the sub-domains."
+msgstr ""
+
+#: ../../usage.rst:274
+# df23a35291874e2d9f7af5d93db4dae4
+msgid "The end users will the privilege to list resource limits. Use the listResourceLimits API."
+msgstr ""
+
+#: ../../usage.rst:279
+# 474425750935446e84565dc2a2f561b6
+msgid "Limit Usage Considerations"
+msgstr ""
+
+#: ../../usage.rst:281
+# c96935ecfc1545448c6a31bf7e9bcefa
+msgid "Primary or Secondary storage space refers to the stated size of the volume and not the physical size— the actual consumed size on disk in case of thin provisioning."
+msgstr ""
+
+#: ../../usage.rst:285
+# 003d62e3a41b4ec0838c1ad1e22ab0c8
+msgid "If the admin reduces the resource limit for an account and set it to less than the resources that are currently being consumed, the existing VMs/templates/volumes are not destroyed. Limits are imposed only if the user under that account tries to execute a new operation using any of these resources. For example, the existing behavior in the case of a VM are:"
+msgstr ""
+
+#: ../../usage.rst:292
+# 61f14d0421dc4f27885ac8f93946dbe6
+msgid "migrateVirtualMachine: The users under that account will be able to migrate the running VM into any other host without facing any limit issue."
+msgstr ""
+
+#: ../../usage.rst:296
+# 287edb83794948b4b1509e7c1ed82b17
+msgid "recoverVirtualMachine: Destroyed VMs cannot be recovered."
+msgstr ""
+
+#: ../../usage.rst:298
+# 2b57273cf486489e856ef1a97146d73a
+msgid "For any resource type, if a domain has limit X, sub-domains or accounts under that domain can have there own limits. However, the sum of resource allocated to a sub-domain or accounts under the domain at any point of time should not exceed the value X."
+msgstr ""
+
+#: ../../usage.rst:303
+# 9f35315b3f6b4560abe71837984f2ed7
+msgid "For example, if a domain has the CPU limit of 40 and the sub-domain D1 and account A1 can have limits of 30 each, but at any point of time the resource allocated to D1 and A1 should not exceed the limit of 40."
+msgstr ""
+
+#: ../../usage.rst:308
+# cfc912fe9e294238a5a41841f8636ecf
+msgid "If any operation needs to pass through two of more resource limit check, then the lower of 2 limits will be enforced, For example: if an account has the VM limit of 10 and CPU limit of 20, and a user under that account requests 5 VMs of 4 CPUs each. The user can deploy 5 more VMs because VM limit is 10. However, the user cannot deploy any more instances because the CPU limit has been exhausted."
+msgstr ""
+
+#: ../../usage.rst:317
+# fd7e43ba4fc2492cb1117d9f171cb475
+msgid "Limiting Resource Usage in a Domain"
+msgstr ""
+
+#: ../../usage.rst:319
+# d7bae8b0c64640aaab9b686ccb641ca1
+msgid "CloudStack allows the configuration of limits on a domain basis. With a domain limit in place, all users still have their account limits. They are additionally limited, as a group, to not exceed the resource limits set on their domain. Domain limits aggregate the usage of all accounts in the domain as well as all the accounts in all the sub-domains of that domain. Limits set at the root domain level apply to the sum of resource usage by the accounts in all the domains and sub-domains below that root domain."
+msgstr ""
+
+#: ../../usage.rst:328
+# 42cc77754b864082aff2b2d5e091fa0f
+msgid "To set a domain limit:"
+msgstr ""
+
+#: ../../usage.rst:330
+#: ../../usage.rst:401
+# bb5fc3b2710e4ea59810c1d28209dfc2
+# b83cbc0f83d7410e8b117351958fc591
+msgid "Log in to the CloudStack UI."
+msgstr ""
+
+#: ../../usage.rst:332
+# 530247f4ca1a4475ae86e656ceff6abb
+msgid "In the left navigation tree, click Domains."
+msgstr ""
+
+#: ../../usage.rst:334
+# a9bff41fd28c435cbb09170c5b103277
+msgid "Select the domain you want to modify. The current domain limits are displayed."
+msgstr ""
+
+#: ../../usage.rst:337
+#: ../../usage.rst:408
+# 519c174598aa4e55b86e899664c75018
+# 182d21886ebb4a09aebb0ef93e1fba63
+msgid "A value of -1 shows that there is no limit in place."
+msgstr ""
+
+#: ../../usage.rst:339
+# b83647ec9f344cccbf360b1f8b85c119
+msgid "Click the Edit button |editbutton.png|"
+msgstr ""
+
+#: ../../usage.rst:341
+#: ../../usage.rst:412
+# c209d72330bd40f887995563563a6337
+# 99aa0e22f71d481eb51b72047c456f3a
+msgid "Edit the following as per your requirement:"
+msgstr ""
+
+#: ../../usage.rst:347
+#: ../../usage.rst:418
+# cd271c3e43ea4c79a12f3f84924b6307
+# f889d8a628fd4b0ba7972855f0dbdc45
+msgid "Instance Limits"
+msgstr ""
+
+#: ../../usage.rst:349
+# 5ef71e88c22848aeb261dfceed3f0ad3
+msgid "The number of instances that can be used in a domain."
+msgstr ""
+
+#: ../../usage.rst:351
+#: ../../usage.rst:424
+# 8eb91b3c4b884b1886b84388b430c4b5
+# 50f79b10ffa84d4e8d63df31d54a18bc
+msgid "Public IP Limits"
+msgstr ""
+
+#: ../../usage.rst:353
+# 9c123828b8bd44759ea889e13f4ab4bb
+msgid "The number of public IP addresses that can be used in a domain."
+msgstr ""
+
+#: ../../usage.rst:355
+#: ../../usage.rst:430
+# 682adde29cb64e42b391dcb5e5cdc9ad
+# f9ffeebe6c1a4111ab27c1b8d080143f
+msgid "Volume Limits"
+msgstr ""
+
+#: ../../usage.rst:357
+# 57ca197f678f416c961a36d6a71f9bf5
+msgid "The number of disk volumes that can be created in a domain."
+msgstr ""
+
+#: ../../usage.rst:359
+#: ../../usage.rst:436
+# 014dffd5f65443088674d2ee9df38979
+# ae967a3a9a714ab2892d18c80a55f652
+msgid "Snapshot Limits"
+msgstr ""
+
+#: ../../usage.rst:361
+# 11f338d7f95041eaa7b84b9960a9f12f
+msgid "The number of snapshots that can be created in a domain."
+msgstr ""
+
+#: ../../usage.rst:363
+#: ../../usage.rst:442
+# 07a01397e2404e18a667da23df9e7bf3
+# 6ba3ca1a17df418cac4387d71ddd7656
+msgid "Template Limits"
+msgstr ""
+
+#: ../../usage.rst:365
+# 6dc70a7ce5ec48f3bcf254b4a20b4145
+msgid "The number of templates that can be registered in a domain."
+msgstr ""
+
+#: ../../usage.rst:367
+#: ../../usage.rst:448
+# 3bf5c725f231453cb6152f1bade12d17
+# 0b2a474b089d426d850f25818db1d152
+msgid "VPC limits"
+msgstr ""
+
+#: ../../usage.rst:369
+# 6041d380cc8b460e838d34d542c0fe6f
+msgid "The number of VPCs that can be created in a domain."
+msgstr ""
+
+#: ../../usage.rst:371
+#: ../../usage.rst:454
+# 6167d0a236e346cdac41980cca4b61a1
+# efac374c510144af805a206947596f0d
+msgid "CPU limits"
+msgstr ""
+
+#: ../../usage.rst:373
+# c3bb1f4173a04335bd9f9a2aa60ffb7f
+msgid "The number of CPU cores that can be used for a domain."
+msgstr ""
+
+#: ../../usage.rst:375
+#: ../../usage.rst:460
+# 5b77e8eb1eed4b89a6add832c6efa78d
+# 0f97c6c6f6bd48d49582e4a5773420a0
+msgid "Memory limits (MB)"
+msgstr ""
+
+#: ../../usage.rst:377
+# 46ff0275d44b492790fbf06cfcc202f9
+msgid "The number of RAM that can be used for a domain."
+msgstr ""
+
+#: ../../usage.rst:379
+#: ../../usage.rst:466
+# cfada3bdc3304c91b6093699cc7aba26
+# e09ca8ab179747818fc4be09918773c3
+msgid "Primary Storage limits (GB)"
+msgstr ""
+
+#: ../../usage.rst:381
+# fadd0e1341ce4a40a364f8e7e5cbd720
+msgid "The primary storage space that can be used for a domain."
+msgstr ""
+
+#: ../../usage.rst:383
+#: ../../usage.rst:472
+# 94e6ad3512c64a968eba503aae4228e9
+# 88b20b1a22f5450abfd0371827b8a662
+msgid "Secondary Storage limits (GB)"
+msgstr ""
+
+#: ../../usage.rst:385
+# af7bbd32f2d744bbb6bc8bc38f2a6fff
+msgid "The secondary storage space that can be used for a domain."
+msgstr ""
+
+#: ../../usage.rst:387
+#: ../../usage.rst:478
+# 9c4e390eeaf74125aff2fabb290d7508
+# 8554c878b3db4319b1e9ff271f3f2e16
+msgid "Click Apply."
+msgstr ""
+
+#: ../../usage.rst:391
+# 0aea17dfad1c43818257b74482bdc4ec
+msgid "Default Account Resource Limits"
+msgstr ""
+
+#: ../../usage.rst:393
+# 5aec04d06e414d8c85567ee7ad5fa5a2
+msgid "You can limit resource use by accounts. The default limits are set by using Global configuration parameters, and they affect all accounts within a cloud. The relevant parameters are those beginning with max.account, for example: max.account.snapshots."
+msgstr ""
+
+#: ../../usage.rst:398
+# 49c964b0ef8840ef953d87ef3115cf7f
+msgid "To override a default limit for a particular account, set a per-account resource limit."
+msgstr ""
+
+#: ../../usage.rst:403
+# 7954a55684b74afbb3e48736fb619dfe
+msgid "In the left navigation tree, click Accounts."
+msgstr ""
+
+#: ../../usage.rst:405
+# 30a0c7b93a044a24b1bbcab3362c9130
+msgid "Select the account you want to modify. The current limits are displayed."
+msgstr ""
+
+#: ../../usage.rst:410
+# 247dcfe79c914ac0a42c2bb5f617c3b2
+msgid "Click the Edit button. |editbutton.png|"
+msgstr ""
+
+#: ../../usage.rst:420
+# a5b53a96d84f4cb993b2539562072ba0
+msgid "The number of instances that can be used in an account."
+msgstr ""
+
+#: ../../usage.rst:422
+#: ../../usage.rst:428
+#: ../../usage.rst:434
+#: ../../usage.rst:440
+#: ../../usage.rst:446
+#: ../../usage.rst:452
+# 4f148fb22eeb4cd5867de40af5d6957d
+# f6aef839dc7e4814a93524ac42691632
+# c8a80cc9dabc47b7908b2be9906b47e6
+# b1fc64706b924e37bcdf44b959b1a10b
+# a4c96e4f6931454c803ad5d310dd832a
+# 37ebe0cf9b3644a59962fb5255cd1e7c
+msgid "The default is 20."
+msgstr ""
+
+#: ../../usage.rst:426
+# b71498e20d9c45f5b4e6246502846b7a
+msgid "The number of public IP addresses that can be used in an account."
+msgstr ""
+
+#: ../../usage.rst:432
+# a7a78f1d32244bd7ae3f36a8706565ec
+msgid "The number of disk volumes that can be created in an account."
+msgstr ""
+
+#: ../../usage.rst:438
+# f22d973606cc4fe68cdf2ef0d22fb7b9
+msgid "The number of snapshots that can be created in an account."
+msgstr ""
+
+#: ../../usage.rst:444
+# 78aa50a7ed74400c8d0a3bcc278ed06b
+msgid "The number of templates that can be registered in an account."
+msgstr ""
+
+#: ../../usage.rst:450
+# 17544e59335b42c2b1dcb5439be274a4
+msgid "The number of VPCs that can be created in an account."
+msgstr ""
+
+#: ../../usage.rst:456
+# dab1fd7da66d424fa313f0a8da2fd672
+msgid "The number of CPU cores that can be used for an account."
+msgstr ""
+
+#: ../../usage.rst:458
+# f8813118e7014ec4b09e2ce57e9826a0
+msgid "The default is 40."
+msgstr ""
+
+#: ../../usage.rst:462
+# 5ee54380b1c7418aa85f1b4aa3d18f5c
+msgid "The number of RAM that can be used for an account."
+msgstr ""
+
+#: ../../usage.rst:464
+# 463fe26a18c747bdba2e4c943174df89
+msgid "The default is 40960."
+msgstr ""
+
+#: ../../usage.rst:468
+# 483d95c867804bd7a67bd7c5db5d7250
+msgid "The primary storage space that can be used for an account."
+msgstr ""
+
+#: ../../usage.rst:470
+# b5792f85ad5748629247339cddc34442
+msgid "The default is 200."
+msgstr ""
+
+#: ../../usage.rst:474
+# cf2794b976cb4597a1c7c46023d92939
+msgid "The secondary storage space that can be used for an account."
+msgstr ""
+
+#: ../../usage.rst:476
+# e31012695d1342b893a7afc797d9efc8
+msgid "The default is 400."
+msgstr ""
+
+#: ../../usage.rst:482
+# 58fd1b50da564cbfbe626a0c715242a2
+msgid "Usage Record Format"
+msgstr ""
+
+#: ../../usage.rst:485
+# bd6e6ad5dd4441038efbfa8256d54fbb
+msgid "Virtual Machine Usage Record Format"
+msgstr ""
+
+#: ../../usage.rst:487
+# f4090312493645f999618d3518704fe4
+msgid "For running and allocated virtual machine usage, the following fields exist in a usage record:"
+msgstr ""
+
+#: ../../usage.rst:490
+#: ../../usage.rst:531
+#: ../../usage.rst:590
+#: ../../usage.rst:624
+#: ../../usage.rst:685
+#: ../../usage.rst:719
+# 1ea8ad4e82f849199566823e669d2e60
+# cb746968f7ea4c6eaeae3a8696c37487
+# 800271ae9863449db8b5d5a7a20f41be
+# 40d84f3b7c0243a2b680c8c5ee6fe699
+# b060e5d0dfc94db5a3dc884d3afc9829
+# 34a867e377074d8b8b7a9d16f17250f8
+msgid "account – name of the account"
+msgstr ""
+
+#: ../../usage.rst:492
+#: ../../usage.rst:533
+#: ../../usage.rst:592
+#: ../../usage.rst:626
+#: ../../usage.rst:687
+#: ../../usage.rst:721
+# 0c884e63b3b6479d8ee0a652be74d5d4
+# 374676d104da4bb795381a260c95ddf1
+# cdf46e85f5ce46b6b29adc8183f20bc5
+# 0afdb6434c584c61acb197cf1a10f04c
+# 871a1002f0e34f38a9d8b6511ac9c04e
+# e13b8b9c705048e583810469fcd0a485
+msgid "accountid – ID of the account"
+msgstr ""
+
+#: ../../usage.rst:494
+#: ../../usage.rst:535
+#: ../../usage.rst:594
+#: ../../usage.rst:628
+#: ../../usage.rst:689
+#: ../../usage.rst:723
+# 422137b0ab2b4696a321d367b6d26f6d
+# 86455aead7614969ab37a2e295a26530
+# 0c7934f2579a497cb68757e53895fe18
+# cd40f5f568ed41969adeb774e54813da
+# bdd3a9da32134e1e8ca88e1d720abcef
+# e797f39fdbc04ecbbbe2bdc559a0b118
+msgid "domainid – ID of the domain in which this account resides"
+msgstr ""
+
+#: ../../usage.rst:496
+#: ../../usage.rst:537
+#: ../../usage.rst:596
+#: ../../usage.rst:630
+#: ../../usage.rst:691
+#: ../../usage.rst:725
+# d938ef5bbcc140c3a43fe372485e16af
+# 0e8bcce04fb34321a8e64ed6f0511dc6
+# 989ad97f092f4ef38b22b0112e749925
+# a74af98e8b4f4970805d2c13cdf90c37
+# 07ebb7ef423743fa8f659f3ab930b615
+# 7f6481f066a049c68b8df922020b9f23
+msgid "zoneid – Zone where the usage occurred"
+msgstr ""
+
+#: ../../usage.rst:498
+#: ../../usage.rst:539
+#: ../../usage.rst:598
+#: ../../usage.rst:632
+#: ../../usage.rst:693
+#: ../../usage.rst:727
+# 603607ff4edb47e9a79f7310b5606576
+# 54a63f2835ce4ebcab6a5e8f61822468
+# 6c1cd88b31ef47699a96c86e2dc2fd57
+# a97e62aec444404ba90732a66e38ba16
+# 851e49d28b7748bc84040d925da26fc0
+# cdf33c6ee5c24ddd843c0c573f0236c9
+msgid "description – A string describing what the usage record is tracking"
+msgstr ""
+
+#: ../../usage.rst:500
+# 18c681fd6a6d4db7ac9c8d0c14546df8
+msgid "usage – String representation of the usage, including the units of usage (e.g. 'Hrs' for VM running time)"
+msgstr ""
+
+#: ../../usage.rst:503
+#: ../../usage.rst:541
+#: ../../usage.rst:603
+#: ../../usage.rst:637
+#: ../../usage.rst:698
+#: ../../usage.rst:704
+#: ../../usage.rst:732
+#: ../../usage.rst:738
+# b56f48c2ce7e4ef8a421781cd8ac72d9
+# 367c8fbc6c3040e1b454649a311e5f24
+# 7a9a014a24af4f13afdf4091e920b2c7
+# 5ea8dfa3838546fea2bc64e05c8c673a
+# 3d7a93e77f944490999348ecfa138347
+# 65753a35c9384d9488a6ba39494069d9
+# 72b65cd48a914780a818c78d2b39df45
+# defb130ed24d43fcbdd05f28d6551b33
+msgid "usagetype – A number representing the usage type (see Usage Types)"
+msgstr ""
+
+#: ../../usage.rst:505
+#: ../../usage.rst:543
+#: ../../usage.rst:605
+#: ../../usage.rst:639
+#: ../../usage.rst:700
+#: ../../usage.rst:734
+# dead7906f5ff49c88d8e41f0a3140bd3
+# 8ee236cbfec44c23a571ce1209509110
+# 51b806027dda42548e0b46c7e5f0c468
+# 2b60dfbda65048239a38cba051b05cd8
+# da840cc63b26444a8154da21e65d5f6b
+# 0f380999106d476eae77a3f78ab9bd69
+msgid "rawusage – A number representing the actual usage in hours"
+msgstr ""
+
+#: ../../usage.rst:507
+#: ../../usage.rst:708
+#: ../../usage.rst:710
+# e398aeba3cd0401992be1f2f12e5fc91
+# e9e71b3111f84185baca323877a352fd
+# 28490f43f8cd44f4bf26a2abb77429ed
+msgid "virtualMachineId – The ID of the virtual machine"
+msgstr ""
+
+#: ../../usage.rst:509
+# adce21eabe0243be8c394e06dd5f7790
+msgid "name – The name of the virtual machine"
+msgstr ""
+
+#: ../../usage.rst:511
+# 6b520c414595424cad27b0ae57527c1f
+msgid "offeringid – The ID of the service offering"
+msgstr ""
+
+#: ../../usage.rst:513
+# 9329a1f52e57454a9b515f46ce1e110c
+msgid "templateid – The ID of the template or the ID of the parent template. The parent template value is present when the current template was created from a volume."
+msgstr ""
+
+#: ../../usage.rst:517
+# d061eac093024ebb867ea323cb34bbc0
+msgid "usageid – Virtual machine"
+msgstr ""
+
+#: ../../usage.rst:519
+#: ../../usage.rst:611
+# 047ce224b91448ba964e79cc572efd1e
+# db530f7238e94cb295d4cf30edceb4bc
+msgid "type – Hypervisor"
+msgstr ""
+
+#: ../../usage.rst:521
+#: ../../usage.rst:549
+#: ../../usage.rst:617
+#: ../../usage.rst:650
+#: ../../usage.rst:712
+#: ../../usage.rst:740
+# 13784faf965d4cae937aa6cdbbb601b3
+# f723716e1445424cbc729bcae6910bae
+# 193cb9ce321c4844bfc67c7421b46b78
+# 3362120577564331af89079c96e60819
+# 48e9160ce71b475d961c452d6984a6fc
+# ed62c302bb274df094275fbf56674a91
+msgid "startdate, enddate – The range of time for which the usage is aggregated; see Dates in the Usage Record"
+msgstr ""
+
+#: ../../usage.rst:526
+# eedaa3906dfd445e8bccefccc0c58cf6
+msgid "Network Usage Record Format"
+msgstr ""
+
+#: ../../usage.rst:528
+# a62195cc17e14143a58822cf0c485c0e
+msgid "For network usage (bytes sent/received), the following fields exist in a usage record."
+msgstr ""
+
+#: ../../usage.rst:545
+# e2aa41ae9fda438280903d7de43e9fa7
+msgid "usageid – Device ID (virtual router ID or external device ID)"
+msgstr ""
+
+#: ../../usage.rst:547
+# cba1335aecd94359b17f04495d757350
+msgid "type – Device type (domain router, external load balancer, etc.)"
+msgstr ""
+
+#: ../../usage.rst:554
+# f60aa591df79401691c6f36e9a9372cd
+msgid "IP Address Usage Record Format"
+msgstr ""
+
+#: ../../usage.rst:556
+# 8c83a518ebf94bda95be14bed415fbdd
+msgid "For IP address usage the following fields exist in a usage record."
+msgstr ""
+
+#: ../../usage.rst:558
+#: ../../usage.rst:657
+# 872facde9d324938a2dc358b6f91d3d6
+# a38435a4207846d386ed6690dbeb757c
+msgid "account - name of the account"
+msgstr ""
+
+#: ../../usage.rst:560
+#: ../../usage.rst:659
+# c2361416c29c4fbd838cca88df7fce39
+# bc06c74f16144181bca49330654a8470
+msgid "accountid - ID of the account"
+msgstr ""
+
+#: ../../usage.rst:562
+#: ../../usage.rst:661
+# 7ad667e8f90242c5b4cacb1421dc53a2
+# e6e2d964ef1a4c8b94bc42f08beea530
+msgid "domainid - ID of the domain in which this account resides"
+msgstr ""
+
+#: ../../usage.rst:564
+#: ../../usage.rst:663
+# c05809fe04764a479c42fe337b8f32a7
+# 051704b34aa84fecb879697aa4461b9c
+msgid "zoneid - Zone where the usage occurred"
+msgstr ""
+
+#: ../../usage.rst:566
+#: ../../usage.rst:665
+# ef2388373bf042c79862477f5068f84f
+# ac7162ddbf9b4f07a70378f7cb4f1376
+msgid "description - A string describing what the usage record is tracking"
+msgstr ""
+
+#: ../../usage.rst:568
+# 680a2939f1ab4cd0b4c7d7ba19346be0
+msgid "usage - String representation of the usage, including the units of usage"
+msgstr ""
+
+#: ../../usage.rst:571
+#: ../../usage.rst:670
+#: ../../usage.rst:676
+# 552772e8c5f745518dc6484ef776e37b
+# 8b658740424143e0804a450732cc90d5
+# 79adc7a2a02248f8a0ee7771272a5624
+msgid "usagetype - A number representing the usage type (see Usage Types)"
+msgstr ""
+
+#: ../../usage.rst:573
+#: ../../usage.rst:672
+# 565c646fcbed4427bf835e888529e76c
+# af9345ffb0554f0eb0ad166c00406ea8
+msgid "rawusage - A number representing the actual usage in hours"
+msgstr ""
+
+#: ../../usage.rst:575
+# 1ce3b40124484eefb27601e1907f939a
+msgid "usageid - IP address ID"
+msgstr ""
+
+#: ../../usage.rst:577
+#: ../../usage.rst:678
+# abfd139b052e4864afc695aba432783c
+# a5cbc24cefb54a2996cf860cf2b1e75c
+msgid "startdate, enddate - The range of time for which the usage is aggregated; see Dates in the Usage Record"
+msgstr ""
+
+#: ../../usage.rst:580
+# 7631780188e9474f8a1041b55d0ac20b
+msgid "issourcenat - Whether source NAT is enabled for the IP address"
+msgstr ""
+
+#: ../../usage.rst:582
+# 85f7d46f4fd5425cad1b87a37ec9ecf7
+msgid "iselastic - True if the IP address is elastic."
+msgstr ""
+
+#: ../../usage.rst:586
+# fd56a0a694804aa884be5fdefcfd3320
+msgid "Disk Volume Usage Record Format"
+msgstr ""
+
+#: ../../usage.rst:588
+# dc66789696474008bbbc81eb24bec679
+msgid "For disk volumes, the following fields exist in a usage record."
+msgstr ""
+
+#: ../../usage.rst:600
+#: ../../usage.rst:634
+#: ../../usage.rst:695
+#: ../../usage.rst:729
+# 4a12e3d8b23f40078657c836a946af1e
+# d33548fd1fe240509c2c86f75c6bd701
+# 38cb41b0bdc94d2e94ee5c3a6492e281
+# 95202bd84a0e4a61991829c07c2c0720
+msgid "usage – String representation of the usage, including the units of usage (e.g. 'Hrs' for hours)"
+msgstr ""
+
+#: ../../usage.rst:607
+# c2f1554e72084e81892a0b538a19c7f8
+msgid "usageid – The volume ID"
+msgstr ""
+
+#: ../../usage.rst:609
+#: ../../usage.rst:643
+# b7525535c67b49b98b4d922f07293bcb
+# c781024621454a418e050f006e91921c
+msgid "offeringid – The ID of the disk offering"
+msgstr ""
+
+#: ../../usage.rst:613
+# 543db09e00804cd787e00be0867a5c6e
+msgid "templateid – ROOT template ID"
+msgstr ""
+
+#: ../../usage.rst:615
+# f2ab3e39617449bf8a68f1fbc0eb4fbe
+msgid "size – The amount of storage allocated"
+msgstr ""
+
+#: ../../usage.rst:622
+# e54797d2c60c4441ac584d3abb0f9c77
+msgid "Template, ISO, and Snapshot Usage Record Format"
+msgstr ""
+
+#: ../../usage.rst:641
+# 60eda22a3c7d4756847f64ff53b961e2
+msgid "usageid – The ID of the the template, ISO, or snapshot"
+msgstr ""
+
+#: ../../usage.rst:645
+# 3562063eefc04af28187703974e45228
+msgid "templateid – – Included only for templates (usage type 7). Source template ID."
+msgstr ""
+
+#: ../../usage.rst:648
+# 9fbfbc974f184b2983595a2d4fed5cdb
+msgid "size – Size of the template, ISO, or snapshot"
+msgstr ""
+
+#: ../../usage.rst:655
+# aa26900876304f758262788c79483c44
+msgid "Load Balancer Policy or Port Forwarding Rule Usage Record Format"
+msgstr ""
+
+#: ../../usage.rst:667
+# f493ad9446bd4b0d84e50c9937d2b21c
+msgid "usage - String representation of the usage, including the units of usage (e.g. 'Hrs' for hours)"
+msgstr ""
+
+#: ../../usage.rst:674
+# 03d262a193f246749d1ed6f6df6d3930
+msgid "usageid - ID of the load balancer policy or port forwarding rule"
+msgstr ""
+
+#: ../../usage.rst:683
+# b01513d3fd8e466ba943f21dd926c03a
+msgid "Network Offering Usage Record Format"
+msgstr ""
+
+#: ../../usage.rst:702
+# d5c5360548e6437882e13f383f854c51
+msgid "usageid – ID of the network offering"
+msgstr ""
+
+#: ../../usage.rst:706
+# 1dd0260b113b4149979baeec2b430e69
+msgid "offeringid – Network offering ID"
+msgstr ""
+
+#: ../../usage.rst:717
+# 2e3b410e70064b95997310d4b2f2d6bb
+msgid "VPN User Usage Record Format"
+msgstr ""
+
+#: ../../usage.rst:736
+# 78984789b8f74fcb9ae0dc8712b092fa
+msgid "usageid – VPN user ID"
+msgstr ""
+
+#: ../../usage.rst:745
+# 371ab2afddac4c8ebe7b59df3a7e3150
+msgid "Usage Types"
+msgstr ""
+
+#: ../../usage.rst:747
+# bb807347fed448728c3e17662b8b1ebc
+msgid "The following table shows all usage types."
+msgstr ""
+
+#: ../../usage.rst:750
+# 9d81d10d8b5343f19edc1316cfbf4854
+msgid "Type ID"
+msgstr ""
+
+#: ../../usage.rst:750
+# e5f69db4f5e44d94804a6a1fa96b3da8
+msgid "Type Name"
+msgstr ""
+
+#: ../../usage.rst:752
+# 78ead0d9336c42648a3ca740bc0c71c3
+msgid "1"
+msgstr ""
+
+#: ../../usage.rst:752
+# e747e335348c4f96b8157b30a1f87074
+msgid "RUNNING\\_VM"
+msgstr ""
+
+#: ../../usage.rst:752
+# 477ac63f7f36460ea08116c949753044
+msgid "Tracks the total running time of a VM per usage record period. If the VM is upgraded during the usage period, you will get a separate Usage Record for the new upgraded VM."
+msgstr ""
+
+#: ../../usage.rst:762
+# 64af61ae9a154740bc59c51cf93b8e50
+msgid "2"
+msgstr ""
+
+#: ../../usage.rst:762
+# 7e1e8fb7beaf45439e7683227a55abb7
+msgid "ALLOCATED\\_VM"
+msgstr ""
+
+#: ../../usage.rst:762
+# 12dcdffa3a2f4d5faaece0b8ee808625
+msgid "Tracks the total time the VM has been created to the time when it has been destroyed. This usage type is also useful in determining usage for specific templates such as Windows-based templates."
+msgstr ""
+
+#: ../../usage.rst:774
+# 56a5110004de419981e5f220ae4e8552
+msgid "3"
+msgstr ""
+
+#: ../../usage.rst:774
+# 9300fc0a0c054c8cb8cf1c50a798ccfe
+msgid "IP\\_ADDRESS"
+msgstr ""
+
+#: ../../usage.rst:774
+# bdd7930fce7d439cac6b82c99e189623
+msgid "Tracks the public IP address owned by the account."
+msgstr ""
+
+#: ../../usage.rst:778
+# 8f41c0480a214679a34ebff91433884a
+msgid "4"
+msgstr ""
+
+#: ../../usage.rst:778
+# 3468bfe1926344ed8b778f78f298e356
+msgid "NETWORK\\_BYTES\\_SENT"
+msgstr ""
+
+#: ../../usage.rst:778
+# 4fc69e9acd00430db5d7bdd162d53a88
+msgid "Tracks the total number of bytes sent by all the VMs for an account. Cloud.com does not currently track network traffic per VM."
+msgstr ""
+
+#: ../../usage.rst:786
+# 9c0a0d79a0ee491b99fc2f18847a9c29
+msgid "5"
+msgstr ""
+
+#: ../../usage.rst:786
+# 8053534caf9a43cfbe6f344918e90568
+msgid "NETWORK\\_BYTES\\_RECEIVED"
+msgstr ""
+
+#: ../../usage.rst:786
+# a09f77e6b1d540fdb4c9e398f8042f22
+msgid "Tracks the total number of bytes received by all the VMs for an account. Cloud.com does not currently track network traffic per VM."
+msgstr ""
+
+#: ../../usage.rst:795
+# 5d8944a3cb7d444aa82efaa09053af2d
+msgid "6"
+msgstr ""
+
+#: ../../usage.rst:795
+# bd9f4acea1a34fb5ada48e39c65e7781
+msgid "VOLUME"
+msgstr ""
+
+#: ../../usage.rst:795
+# e39b0cb9d477433db943c1dfbeb90bb5
+msgid "Tracks the total time a disk volume has been created to the time when it has been destroyed."
+msgstr ""
+
+#: ../../usage.rst:801
+# fb74bed3e64f40f4b1b99833cdfb858b
+msgid "7"
+msgstr ""
+
+#: ../../usage.rst:801
+# 8dbe0a482b8740bcaba3e70100493143
+msgid "TEMPLATE"
+msgstr ""
+
+#: ../../usage.rst:801
+# e01ba5c82149495a87253a75e8f1ee5c
+msgid "Tracks the total time a template (either created from a snapshot or uploaded to the cloud) has been created to the time it has been destroyed. The size of the template is also returned."
+msgstr ""
+
+#: ../../usage.rst:812
+# ea46b251003a4703b4db0e8e9ca83a4a
+msgid "8"
+msgstr ""
+
+#: ../../usage.rst:812
+# f349c4660c004c8f81133723f6ac350c
+msgid "ISO"
+msgstr ""
+
+#: ../../usage.rst:812
+# 7c32db79c4a944e294459472e67ef9a5
+msgid "Tracks the total time an ISO has been uploaded to the time it has been removed from the cloud. The size of the ISO is also returned."
+msgstr ""
+
+#: ../../usage.rst:820
+# b0dacdf41a1c4d989f2f39ef17257ecc
+msgid "9"
+msgstr ""
+
+#: ../../usage.rst:820
+# 1405b90e80e34b8381a814756e95d768
+msgid "SNAPSHOT"
+msgstr ""
+
+#: ../../usage.rst:820
+# e5fa93c081164375acc3fd52345b1187
+msgid "Tracks the total time from when a snapshot has been created to the time it have been destroyed."
+msgstr ""
+
+#: ../../usage.rst:826
+# 4f2594d3f1f24d2c9169fcfc149a62e9
+msgid "11"
+msgstr ""
+
+#: ../../usage.rst:826
+# d37ae3d5c27447e4a1078346d90a373f
+msgid "LOAD\\_BALANCER\\_POLICY"
+msgstr ""
+
+#: ../../usage.rst:826
+# 024b703ada76417194235a1d10290b53
+msgid "Tracks the total time a load balancer policy has been created to the time it has been removed. Cloud.com does not track whether a VM has been assigned to a policy."
+msgstr ""
+
+#: ../../usage.rst:836
+# 6ebb8ff8421347ba8d0f37e13f9738a1
+msgid "12"
+msgstr ""
+
+#: ../../usage.rst:836
+# 4f5ff172a156494c910377d3273476ca
+msgid "PORT\\_FORWARDING\\_RULE"
+msgstr ""
+
+#: ../../usage.rst:836
+# 00141f10a4c040fd9c1981d4c44a5d6b
+msgid "Tracks the time from when a port forwarding rule was created until the time it was removed."
+msgstr ""
+
+#: ../../usage.rst:842
+# bc4b98fcdabc461a8ede71b5285838b0
+msgid "13"
+msgstr ""
+
+#: ../../usage.rst:842
+# 6123d10ab7004c9b943a532e894e2e20
+msgid "NETWORK\\_OFFERING"
+msgstr ""
+
+#: ../../usage.rst:842
+# ec1c84a50ae5471ba6539ff923b81caa
+msgid "The time from when a network offering was assigned to a VM until it is removed."
+msgstr ""
+
+#: ../../usage.rst:847
+# 04d219bbd49540e7a4d433b51cb42d2b
+msgid "14"
+msgstr ""
+
+#: ../../usage.rst:847
+# d70576ee50674251a6ee58e7a072795a
+msgid "VPN\\_USERS"
+msgstr ""
+
+#: ../../usage.rst:847
+# 7031f45ce0894436b7ab77616de3681f
+msgid "The time from when a VPN user is created until it is removed."
+msgstr ""
+
+#: ../../usage.rst:854
+# da745a0b82b6445e998e6d31a0f107b7
+msgid "Example response from listUsageRecords"
+msgstr ""
+
+#: ../../usage.rst:856
+# 73da4de663384d6ba278d517dc44eeef
+msgid "All CloudStack API requests are submitted in the form of a HTTP GET/POST with an associated command and any parameters. A request is composed of the following whether in HTTP or HTTPS:"
+msgstr ""
+
+#: ../../usage.rst:888
+# b1267ab3f74744b8966d6c8dce38d38a
+msgid "Dates in the Usage Record"
+msgstr ""
+
+#: ../../usage.rst:890
+# f9638c3a7a0c4939922d9b03330f3a5a
+msgid "Usage records include a start date and an end date. These dates define the period of time for which the raw usage number was calculated. If daily aggregation is used, the start date is midnight on the day in question and the end date is 23:59:59 on the day in question (with one exception; see below). A virtual machine could have been deployed at noon on that day, stopped at 6pm on that day, then started up again at 11pm. When usage is calculated on that day, there will be 7 hours of running VM usage (usage type 1) and 12 hours of allocated VM usage (usage type 2). If the same virtual machine runs for the entire next day, there will 24 hours of both running VM usage (type 1) and allocated VM usage (type 2)."
+msgstr ""
+
+#: ../../usage.rst:902
+# aa505995145d4de796ce7a54c69e8c04
+msgid "Note: The start date is not the time a virtual machine was started, and the end date is not the time when a virtual machine was stopped. The start and end dates give the time range within which usage was calculated."
+msgstr ""
+
+#: ../../usage.rst:907
+# ffee51b332cd4e589de90c6abf2b8476
+msgid "For network usage, the start date and end date again define the range in which the number of bytes transferred was calculated. If a user downloads 10 MB and uploads 1 MB in one day, there will be two records, one showing the 10 megabytes received and one showing the 1 megabyte sent."
+msgstr ""
+
+#: ../../usage.rst:913
+# de58fb769cc74ed3a62616b4158bd9e8
+msgid "There is one case where the start date and end date do not correspond to midnight and 11:59:59pm when daily aggregation is used. This occurs only for network usage records. When the usage server has more than one day's worth of unprocessed data, the old data will be included in the aggregation period. The start date in the usage record will show the date and time of the earliest event. For other types of usage, such as IP addresses and VMs, the old unprocessed data is not included in daily aggregation."
+msgstr ""
+

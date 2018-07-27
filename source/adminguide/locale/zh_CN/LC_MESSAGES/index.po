@@ -1,0 +1,138 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:04+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 84926a62ef4145eb8258fb18cc990020
+#: ../../index.rst:23
+msgid "Welcome to CloudStack Administration Documentation"
+msgstr "欢迎阅读CloudStack管理文档"
+
+# 17401d6f4fa445e288e17f050447db52
+#: ../../index.rst:29
+msgid ""
+"We are in the process of changing documentation format as well as hosting "
+"mechanism. Please be patient with us as we migrate our entire documentation "
+"to this new setup."
+msgstr ""
+
+# 3ed721b0cbc84d29b41f1f88c145794b
+#: ../../index.rst:32
+msgid ""
+"This guide is aimed at Administrators of a CloudStack based Cloud, for "
+"Release Notes, Installation and General introduction to CloudStack see the "
+"following guides:"
+msgstr ""
+
+# 6bdec416d5864e24a626b2a1672d12fc
+#: ../../index.rst:36
+msgid "`Documentation Start <http://docs.cloudstack.apache.org>`_"
+msgstr ""
+
+# 59647f13b4c6495bb231941872f8615c
+#: ../../index.rst:38
+msgid ""
+"`Installation Guide <http://docs.cloudstack.apache.org/projects/cloudstack-"
+"installation>`_"
+msgstr ""
+
+# 3cb4b38db39a4954baa74c5207e46806
+#: ../../index.rst:40
+msgid ""
+"`Release Notes <http://docs.cloudstack.apache.org/projects/cloudstack-"
+"release-notes>`_"
+msgstr "`发行说明 <http://docs.cloudstack.apache.org/projects/cloudstack-release-notes>`_"
+
+# 62705a3d035f4c9894e165081f5341b0
+#: ../../index.rst:44
+msgid "User Interface"
+msgstr "用户界面"
+
+# 253ae3a9066e4b22aa50e77c73b69357
+#: ../../index.rst:53
+msgid "Managing Accounts, Users and Domains"
+msgstr "管理账户，用户和域"
+
+# bb51dd2b7b6d4b6287d5b832dd1ef9f3
+#: ../../index.rst:62
+msgid "Using Projects to Organize User Resources"
+msgstr "使用项目来组织用户资源"
+
+# fcbcd54779cb4d14b7c28ea8e525c2ff
+#: ../../index.rst:70
+msgid "Service Offerings"
+msgstr "服务方案"
+
+# 2fed4745955e4e73b1b3bd6c4664a015
+#: ../../index.rst:79
+msgid "Setting up Networking for Users"
+msgstr "用户网络设置"
+
+# 37cb22ac86ef4acb9c046bc1dc7f7de4
+#: ../../index.rst:88
+msgid "Working with Virtual Machines"
+msgstr "使用虚拟机"
+
+# 625c8add441e4edeac86a1ec4f792cec
+#: ../../index.rst:97
+msgid "Working with Templates"
+msgstr "使用模板"
+
+# 7ad29a9c67c74560b24731372d219e23
+#: ../../index.rst:106
+msgid "Working with Hosts"
+msgstr "使用主机"
+
+# a3332c4666934361ad83c88e6946f7f7
+#: ../../index.rst:115
+msgid "Working with Storage"
+msgstr "使用存储"
+
+# f2f20fd23af44019b1f0578d399c9ecc
+#: ../../index.rst:124
+msgid "Working with System Virtual Machines"
+msgstr "使用系统虚拟机"
+
+# 73fe247fe2a14cf08be624ae4f8d5926
+#: ../../index.rst:133
+msgid "Working with Usage"
+msgstr "使用服务"
+
+# 5d20c3a9b5124254a155ba5a519c85ca
+#: ../../index.rst:142
+msgid "Managing Networks and Traffic"
+msgstr "网络和流量管理"
+
+# c591434a39994a6fa8546f4b1115eb07
+#: ../../index.rst:151
+msgid "Managing the Cloud"
+msgstr "管理云"
+
+# 1ffdcf555b9a45d58d6a0e3b4d670037
+#: ../../index.rst:160
+msgid "System Reliability and Availability"
+msgstr "系统可靠性和可用性"
+
+# 8422886b2cfe4b9c9d2adf3afd86f37f
+#: ../../index.rst:169
+msgid "Tuning"
+msgstr "调优"
+
+# c05956039d98457abe5c11b6f7661b23
+#: ../../index.rst:178
+msgid "Events and Troubleshooting"
+msgstr "事件和故障排查"

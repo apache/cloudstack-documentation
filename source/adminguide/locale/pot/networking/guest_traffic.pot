@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../networking/guest_traffic.rst:18
+# 6a1d02b308ae4f228e4104aa95e39ee3
+msgid "Guest Traffic"
+msgstr ""
+
+#: ../../networking/guest_traffic.rst:20
+# 77e0128afe644aa9a04259e24cb22595
+msgid "A network can carry guest traffic only between VMs within one zone. Virtual machines in different zones cannot communicate with each other using their IP addresses; they must communicate with each other by routing through a public IP address."
+msgstr ""
+
+#: ../../networking/guest_traffic.rst:25
+# 79cb326a48f942949bf3dfe341a3664f
+msgid "See a typical guest traffic setup given below:"
+msgstr ""
+
+#: ../../networking/guest_traffic.rst:27
+# e0ac4742331840b89eef72912ffd2138
+msgid "|guest-traffic-setup.png|"
+msgstr ""
+
+#: ../../networking/guest_traffic.rst:29
+# 685689cd44444e13aefa015c58761ebb
+msgid "Typically, the Management Server automatically creates a virtual router for each network. A virtual router is a special virtual machine that runs on the hosts. Each virtual router in an isolated network has three network interfaces. If multiple public VLAN is used, the router will have multiple public interfaces. Its eth0 interface serves as the gateway for the guest traffic and has the IP address of 10.1.1.1. Its eth1 interface is used by the system to configure the virtual router. Its eth2 interface is assigned a public IP address for public traffic. If multiple public VLAN is used, the router will have multiple public interfaces."
+msgstr ""
+
+#: ../../networking/guest_traffic.rst:40
+# c07d5440a8e64d5b912e6e98e6f9d078
+msgid "The virtual router provides DHCP and will automatically assign an IP address for each guest VM within the IP range assigned for the network. The user can manually reconfigure guest VMs to assume different IP addresses."
+msgstr ""
+
+#: ../../networking/guest_traffic.rst:45
+# 360d9d124254479e85292973d6d8e7f9
+msgid "Source NAT is automatically configured in the virtual router to forward outbound traffic for all guest VMs"
+msgstr ""
+

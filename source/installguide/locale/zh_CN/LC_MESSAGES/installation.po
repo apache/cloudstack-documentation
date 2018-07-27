@@ -1,0 +1,1592 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: 2014-06-30 10:24+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-installation-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# a4c7e830381745529dad6a0b1d27abc8
+#: ../../installation.rst:18
+msgid "Installation"
+msgstr "安装"
+
+# 08b24c18afac496395e10054c9cf0e71
+#: ../../installation.rst:21
+msgid "Who Should Read This"
+msgstr "谁应该读本文"
+
+# d5a90994aea94deab277060989225b05
+#: ../../installation.rst:23
+msgid ""
+"For those who have already gone through a design phase and planned a more "
+"sophisticated deployment, or those who are ready to start scaling up a trial"
+" installation. With the following procedures, you can start using the more "
+"powerful features of CloudStack, such as advanced VLAN networking, high "
+"availability, additional network elements such as load balancers and "
+"firewalls, and support for multiple hypervisors including Citrix XenServer, "
+"KVM, and VMware vSphere."
+msgstr "如果您已经完成设计阶段，计划部署一个复杂的云，或是准备对用基础安装向导搭建的试验云进行扩展，请选择此项。在后续过程中，您可以使用CloudStack中更强大的功能，例如高级VLAN网络、高可用、负载均衡器和防火墙等额外网络设备，以及支持Citrix XenServer、KVM、VMware vSphere等多种虚拟化平台。"
+
+# e7eb83f865c242ae89ad4c8ae65ed988
+#: ../../installation.rst:33
+msgid "Overview of Installation Steps"
+msgstr "安装步骤概述"
+
+# fc6cbd3f722e496ca3d7a1716a44bc03
+#: ../../installation.rst:35
+msgid ""
+"For anything more than a simple trial installation, you will need guidance "
+"for a variety of configuration choices. It is strongly recommended that you "
+"read the following:"
+msgstr "对于任何一个简单的实验设备，你将需要一系列的配置选择向导。强烈推荐您阅读以下内容："
+
+# 718aecc72e104a2997aba969ae4564c4
+#: ../../installation.rst:39
+msgid "Choosing a Deployment Architecture"
+msgstr "选择部署架构"
+
+# cd6d4bbfdbcb4ae0953b3b36d308c7f5
+#: ../../installation.rst:41
+msgid "Choosing a Hypervisor: Supported Features"
+msgstr "选择Hypervisor：支持的功能"
+
+# 2a0787f9ba6d4b13ba9574e2a6334c2f
+#: ../../installation.rst:43
+msgid "Network Setup"
+msgstr "网络设置"
+
+# f606c83b98e54324a4376e39edcd5e20
+#: ../../installation.rst:45
+msgid "Storage Setup"
+msgstr "存储设置"
+
+# 75e8e878e0284aeeb3f52820e7b675eb
+#: ../../installation.rst:47
+msgid "Best Practices"
+msgstr "最佳实践"
+
+# c1ad793994b9421295f7503b7488274c
+#: ../../installation.rst:49
+msgid ""
+"Make sure you have the required hardware ready. See :ref:`minimum-system-"
+"requirements`"
+msgstr "确定您已经准备好了所需的硬件。参阅 :ref:`minimum-system-requirements`"
+
+# f5dba433b73f4e4b985060a388b195f0
+#: ../../installation.rst:52
+msgid ""
+"Install the Management Server (choose single-node or multi-node). See "
+":ref:`adding-a-zone`"
+msgstr "安装管理服务器 (选择单节点或多节点)。 参阅 :ref:`adding-a-zone`"
+
+# 58ea8b1ced9547bfa75c75859ac799cc
+#: ../../installation.rst:55
+msgid ""
+"Log in to the UI. See `*User Interface* "
+"<http://docs.cloudstack.apache.org/projects/cloudstack-"
+"administration/en/latest/ui.html#log-in-to-the-ui>`_"
+msgstr "登陆到用户界面。参阅 `*用户界面* <http://docs.cloudstack.apache.org/projects/cloudstack-administration/en/latest/ui.html#log-in-to-the-ui>`_"
+
+# d05317e5c0ee48f6b90a44c8b2fcf367
+#: ../../installation.rst:58
+msgid ""
+"Add a zone. Includes the first pod, cluster, and host. See "
+":ref:`adding-a-host`"
+msgstr "添加区域。包含第一个Pod，群集，和主机。参阅 :ref:`adding-a-host`"
+
+# b534b474577b4160ba2cd604d9d52532
+#: ../../installation.rst:61
+msgid "Add more pods (optional). See :ref:`adding-a-pod`"
+msgstr "添加更多的Pod(可选)。参阅 :ref:`adding-a-pod`"
+
+# 299d7e46a3df47ac8e42ee1933e4f29a
+#: ../../installation.rst:63
+msgid "Add more clusters (optional). See :ref:`adding-a-cluster`"
+msgstr "添加更多的群集(可选)。参阅 :ref:`adding-a-cluster`"
+
+# dedefe67789b49af8ace78432dfc2868
+#: ../../installation.rst:65
+msgid "Add more hosts (optional). See :ref:`adding-a-host`"
+msgstr "添加更多的主机(可选)。参阅 :ref:`adding-a-host`"
+
+# 920aa393f8604a648a3f4303e57d1775
+#: ../../installation.rst:67
+msgid "Add more primary storage (optional). See :ref:`add-primary-storage`"
+msgstr "添加更多的主存储(可选)。参阅 :ref:`add-primary-storage`"
+
+# da3f95f402c24f0aa74c36350d5ec371
+#: ../../installation.rst:69
+msgid ""
+"Add more secondary storage (optional). See :ref:`add-secondary-storage`"
+msgstr "添加更多的辅助存储(可选)。参阅 :ref:`add-secondary-storage`"
+
+# 310612dae82445ae8be69f78801a9750
+#: ../../installation.rst:71
+msgid "Try using the cloud. See :ref:`initialize-and-test`"
+msgstr "尝试使用云。参阅： :ref:`initialize-and-test`"
+
+# 482c0b3104aa43dfb72e0a4f853e1463
+#: ../../installation.rst:77
+msgid "Minimum System Requirements"
+msgstr "最低系统需求"
+
+# ea094f27fd264abe88f63697eb32c463
+#: ../../installation.rst:80
+msgid "Management Server, Database, and Storage System Requirements"
+msgstr "管理服务器，数据库和存储系统需求。"
+
+# 910332017d854085a74ff0715162f1b2
+#: ../../installation.rst:82
+msgid ""
+"The machines that will run the Management Server and MySQL database must "
+"meet the following requirements. The same machines can also be used to "
+"provide primary and secondary storage, such as via localdisk or NFS. The "
+"Management Server may be placed on a virtual machine."
+msgstr "运行管理服务器和mysql数据库的机器必须满足以下要求。主存储和辅助存储可以通过本地存储或NFS配置在一台机器上。管理服务器可以安装在虚拟机中。"
+
+# 8e4f1eb139534c4ca4d93f7537dd3fa7
+#: ../../installation.rst:87
+msgid "Operating system:"
+msgstr "操作系统："
+
+# 29b8ae9600b245fe9c60f040f52adfa5
+#: ../../installation.rst:89
+msgid "Preferred: CentOS/RHEL 6.3+ or Ubuntu 12.04(.1)"
+msgstr "推荐：CentOS/RHEL 6.3+ 或 Ubuntu 12.04(.1)"
+
+# 24d4cd50a00945eb98763313d2f65f17
+# 1c5c18472c5644a89e3aecc627b13b6c
+#: ../../installation.rst:91 ../../installation.rst:114
+msgid "64-bit x86 CPU (more cores results in better performance)"
+msgstr "64位x86 CPU(多核性能更佳)"
+
+# 851608c72118406792e449b1d8c7b83a
+# 4f02c321329446d5815a250b05fe2778
+#: ../../installation.rst:93 ../../installation.rst:118
+msgid "4 GB of memory"
+msgstr "4GB 内存"
+
+# 4d8ce09b8a0542e892df38be3af682bf
+#: ../../installation.rst:95
+msgid ""
+"250 GB of local disk (more results in better capability; 500 GB recommended)"
+msgstr "250GB本地硬盘 (更大的容量性能更佳；推荐500GB)"
+
+# 165ce3c523d64e48b04f71ebd0996dd9
+# 4ab891d3ef9f4fdda64c88a8120a9205
+#: ../../installation.rst:98 ../../installation.rst:122
+msgid "At least 1 NIC"
+msgstr "至少一块网卡"
+
+# 1ada394b4bf74ee5a1152e0e725fd331
+#: ../../installation.rst:100
+msgid "Statically allocated IP address"
+msgstr "静态分配的IP地址"
+
+# 230435b75353467b84290fa91c4c08b8
+#: ../../installation.rst:102
+msgid "Fully qualified domain name as returned by the hostname command"
+msgstr "使用hostname命令能返回的完全合格的域名"
+
+# 69ac02bcef5348719f0240d8836e0006
+#: ../../installation.rst:106
+msgid "Host/Hypervisor System Requirements"
+msgstr "主机/Hypervisor系统需求"
+
+# 1820da09a6ae428f9ae4bd3ce16ef3c5
+#: ../../installation.rst:108
+msgid ""
+"The host is where the cloud services run in the form of guest virtual "
+"machines. Each host is one machine that meets the following requirements:"
+msgstr "主机是以虚拟机形式运行云服务。每台主机需满足如下要求："
+
+# 8eecb5d0a6ee40a395e47f52168d5d20
+#: ../../installation.rst:112
+msgid "Must support HVM (Intel-VT or AMD-V enabled)."
+msgstr "必须支持HVM(启用Intel-VT或AMD-V)。"
+
+# c6343d4def954507b56afb34ef637859
+#: ../../installation.rst:116
+msgid "Hardware virtualization support required"
+msgstr "硬件虚拟化支持"
+
+# 292a0c2480e44ec4a30cbc5689aa828a
+#: ../../installation.rst:120
+msgid "36 GB of local disk"
+msgstr "36GB本地磁盘空间"
+
+# 951d1eb038d94e3bac57bdfcc52377af
+#: ../../installation.rst:125
+msgid ""
+"If DHCP is used for hosts, ensure that no conflict occurs between DHCP "
+"server used for these hosts and the DHCP router created by CloudStack."
+msgstr "如果主机使用DHCP，请确保这些主机使用的DHCP服务和CloudStack创建的虚拟路由器提供的DHCP服务不冲突。"
+
+# 142b536acb8941f29e7b44145c079dfa
+#: ../../installation.rst:128
+msgid "Latest hotfixes applied to hypervisor software"
+msgstr "虚拟机软件需打好最新的补丁"
+
+# 9815b650b1b94eba9ad10c4684f5cb0a
+#: ../../installation.rst:130
+msgid ""
+"When you deploy CloudStack, the hypervisor host must not have any VMs "
+"already running"
+msgstr "在部署CloudStack时，Hypervisor主机不能运行任何虚拟机"
+
+# 56e1f4ebe58147f5abd5c96844f64bb5
+#: ../../installation.rst:133
+msgid ""
+"All hosts within a cluster must be homogeneous. The CPUs must be of the same"
+" type, count, and feature flags."
+msgstr "集群中的主机必须是相同架构。CPU的型号、数量和功能参数必须相同。"
+
+# 00933a4ac68a4d19b25c5a6eb58c517e
+#: ../../installation.rst:136
+msgid ""
+"Hosts have additional requirements depending on the hypervisor. See the "
+"requirements listed at the top of the Installation section for your chosen "
+"hypervisor:"
+msgstr "根据所使用虚拟化软件的不同主机可能有另外的需求。详情请查看你所选用虚拟化软件安装部分的需求清单"
+
+# 962bf99b90fa4d2a8edf81295e1df42a
+#: ../../installation.rst:141
+msgid ""
+"Be sure you fulfill the additional hypervisor requirements and installation "
+"steps provided in this Guide. Hypervisor hosts must be properly prepared to "
+"work with CloudStack. For example, the requirements for XenServer are listed"
+" under Citrix XenServer Installation."
+msgstr "如果你按照本指南的步骤并确定你满足了所选用虚拟机软件的 要求。宿主机应该就可以在CloudStack中正常工作了。比如XenServer的要求列表在Citrix XenServer安装部分。"
+
+# 124105e82a0647a994481c09b2a6e3fd
+#: ../../installation.rst:148
+msgid "Configure package repository"
+msgstr "配置包仓库"
+
+# cd54d36f52df4a02bd4ee88dbaa9ac5d
+#: ../../installation.rst:150
+msgid ""
+"CloudStack is only distributed from source from the official mirrors. "
+"However, members of the CloudStack community may build convenience binaries "
+"so that users can install Apache CloudStack without needing to build from "
+"source."
+msgstr "CloudStack是唯一一种源自官方镜像源文件的分布式平台。尽管如此，CloudStack社区的成语可以构建便捷的二进制代码，使用户能够在无需构建源代码的情况下安装Apache CloudStack。"
+
+# a904edd1fa324be999f28aad8271c6e3
+#: ../../installation.rst:155
+msgid ""
+"If you didn't follow the steps to build your own packages from source in the"
+" sections for `“Building RPMs from Source” <building_from_source.html"
+"#building-rpms-from-source>`_ or `“Building DEB packages” "
+"<building_from_source.html#building-deb-packages>`_ you may find pre-built "
+"DEB and RPM packages for your convenience linked from the `downloads "
+"<http://cloudstack.apache.org/downloads.html>`_ page."
+msgstr "如果你不能按照步骤使用源码构建你自己的包 `“从源码编译RPM包” <building_from_source.html#building-rpms-from-source>`_  或  `“编译DEB包” <building_from_source.html#building-deb-packages>`_ 你会发现预先构建的DEB和RPM包在 `下载 <http://cloudstack.apache.org/downloads.html>`_  页面."
+
+# 2cd5d4a70be54d9fad1ee09ac0a59781
+#: ../../installation.rst:163
+msgid ""
+"These repositories contain both the Management Server and KVM Hypervisor "
+"packages."
+msgstr "该仓库同时包含管理服务器和KVM Hypervisor的包"
+
+# ea53cfd031f54c11b1c35976f3e3ce76
+#: ../../installation.rst:168
+msgid "DEB package repository"
+msgstr "DEB包库"
+
+# d5c18e89ae43496093da2abe5de613ad
+#: ../../installation.rst:170
+msgid ""
+"You can add a DEB package repository to your apt sources with the following "
+"commands. Please note that only packages for Ubuntu 12.04 LTS (precise) are "
+"being built at this time."
+msgstr "你可以按照以下指令在你的apt源中增加DEB包库。请注意只有来自 Ubuntu 12.04 LTS (precise)的包可以在此时构建。"
+
+# 80c95c86ec504d6ea8771c2c09678dce
+#: ../../installation.rst:174
+msgid ""
+"Use your preferred editor and open (or create) "
+"``/etc/apt/sources.list.d/cloudstack.list``. Add the community provided "
+"repository to the file:"
+msgstr "用你准备好的编辑器打开(或创建) ``/etc/apt/sources.list.d/cloudstack.list``.将社区提供的仓库添加到该文件："
+
+# 4e809dbba4344fe3bbe0c803b417c4a5
+#: ../../installation.rst:182
+msgid "We now have to add the public key to the trusted keys."
+msgstr "我们现在必须添加公钥并信任密钥。"
+
+# 3308e4a303fa4e109dfe4f012bb673a1
+#: ../../installation.rst:188
+msgid "Now update your local apt cache."
+msgstr "现在升级本地的apt缓存"
+
+# 499fecdd520c470e9e64923350071343
+#: ../../installation.rst:194
+msgid ""
+"Your DEB package repository should now be configured and ready for use."
+msgstr "你的DEB包库现在将被配置并准备使用。"
+
+# 4201a19d82ec40359482777eca721afe
+#: ../../installation.rst:198
+msgid "RPM package repository"
+msgstr "RPM 包仓库"
+
+# a8e0ee6a46fe473f84e190a7a84274a9
+#: ../../installation.rst:200
+msgid ""
+"There is a RPM package repository for CloudStack so you can easily install "
+"on RHEL based platforms."
+msgstr "这里有一个CloudStack的RPM包库，所以你可以轻易地安装在RHEL基础平台上。"
+
+# 0c1bb2bafcf9461ebb5cd59ead93db9f
+#: ../../installation.rst:203
+msgid ""
+"If you're using an RPM-based system, you'll want to add the Yum repository "
+"so that you can install CloudStack with Yum."
+msgstr "如果你使用基于RPM的系统，你需要添加Yum库，以便可以用Yum安装CloudStack."
+
+# 562991c4185349599619509cfbce173d
+#: ../../installation.rst:206
+msgid ""
+"Yum repository information is found under ``/etc/yum.repos.d``. You'll see "
+"several ``.repo`` files in this directory, each one denoting a specific "
+"repository."
+msgstr "Yum库信息在``/etc/yum.repos.d``中。你可以看到一些 ``.repo``文件在这个目录中，每个都代表一个特定的仓库。"
+
+# e49d0a5613af49f69d54163f32b5f898
+#: ../../installation.rst:210
+msgid ""
+"To add the CloudStack repository, create "
+"``/etc/yum.repos.d/cloudstack.repo`` and insert the following information."
+msgstr "添加CloudStack库，创建 ``/etc/yum.repos.d/cloudstack.repo``并插入以下信息"
+
+# d78ed0190d354e4bac2f1c82b8c21dd9
+#: ../../installation.rst:222
+msgid "Now you should be able to install CloudStack using Yum."
+msgstr "现在你可以通过Yum安装CloudStack 。"
+
+# 37094bccdf5f4a6db4dc73588c0d1bc4
+#: ../../installation.rst:226
+msgid "Management Server Installation"
+msgstr "管理服务器安装"
+
+# f57b33dd6c14414ab5c880b0b9a0c438
+#: ../../installation.rst:229
+msgid "Management Server Installation Overview"
+msgstr "管理服务器安装概述"
+
+# 5273d79a7d1f4a12ac19c6d2fdff6406
+#: ../../installation.rst:231
+msgid ""
+"This section describes installing the Management Server. There are two "
+"slightly different installation flows, depending on how many Management "
+"Server nodes will be in your cloud:"
+msgstr "本节介绍管理服务器的安装. 根据你云环境中管理服务器节点个数的不同, 安装步骤有两处稍有不同."
+
+# e05140db89854adbaa7419d25e9dc6ce
+#: ../../installation.rst:235
+msgid "A single Management Server node, with MySQL on the same node."
+msgstr "一个单独的管理服务器节点, MySQL也装在这个节点上."
+
+# 06bdcc369df244f99ad92914eb680347
+#: ../../installation.rst:237
+msgid ""
+"Multiple Management Server nodes, with MySQL on a node separate from the "
+"Management Servers."
+msgstr "多个管理服务器节点, MySQL装在与所有管理服务都不相同的节点上."
+
+# e4b810d71c474f4f98cb64eb346d7404
+#: ../../installation.rst:240
+msgid ""
+"In either case, each machine must meet the system requirements described in "
+"System Requirements."
+msgstr "无论哪种方案, 所有系统的要求都要符合系统需求里的描述."
+
+# 8c6a890d62c94b3c805523d0e55b6b45
+#: ../../installation.rst:244
+msgid ""
+"For the sake of security, be sure the public Internet can not access port "
+"8096 or port 8250 on the Management Server."
+msgstr "出于安全的目的，确保公共网络无法访问管理服务器的8096或者8250端口。"
+
+# 346be7547c7f40ac94d3fd4d11d242b8
+#: ../../installation.rst:247
+msgid "The procedure for installing the Management Server is:"
+msgstr "安装管理服务器的步骤:"
+
+# f5dab499f03647d4b215ac7dc00d2cc8
+# 1d99cd2343054c51bc38e14ba435eef4
+#: ../../installation.rst:249 ../../installation.rst:265
+msgid "Prepare the Operating System"
+msgstr "准备操作系统"
+
+# 4eb68311296e426493a33ddad4958fd8
+#: ../../installation.rst:251
+msgid "(XenServer only) Download and install vhd-util."
+msgstr "（仅限XenServer）下载并安装vhd-util."
+
+# 55d017a2eb3048f1a6e12d9af9ebdc95
+#: ../../installation.rst:253
+msgid "Install the First Management Server"
+msgstr "安装第一台管理服务器"
+
+# be88182cc4d841e884f72dc58d0c597b
+#: ../../installation.rst:255
+msgid "Install and Configure the MySQL database"
+msgstr "安装并配置MySQL数据库。"
+
+# 4c17f8202a1a463589bea6ccc1e5da82
+# e69fe8462a0d4dfc9884fe69c7555783
+#: ../../installation.rst:257 ../../installation.rst:835
+msgid "Prepare NFS Shares"
+msgstr "准备NFS共享存储"
+
+# e5c5a79c1bbb41a5a37c13f1bcb2269b
+#: ../../installation.rst:259
+msgid "Prepare and Start Additional Management Servers (optional)"
+msgstr "准备并启动额外的管理服务器(可选)"
+
+# bb0613b20bae44ec8ea0d6cf3daf54d7
+# 72e55f8870934e6c8f91c0d9a02b53a0
+#: ../../installation.rst:261 ../../installation.rst:1124
+msgid "Prepare the System VM Template"
+msgstr "准备系统虚拟机模板"
+
+# b185c81663174e87aec00ebea42b6106
+#: ../../installation.rst:267
+msgid ""
+"The OS must be prepared to host the Management Server using the following "
+"steps. These steps must be performed on each Management Server node."
+msgstr "要在主机上安装管理服务器,需要按下列步骤准备操作系统. 这些步骤必须在每个要安装的管理服务器节点上执行."
+
+# ad31e2f017254bf4a8bc4b18ed1eb333
+#: ../../installation.rst:271
+msgid "Log in to your OS as root."
+msgstr "使用root用户登录操作系统。"
+
+# f68b5990a29e47a49e5576f3448ae36a
+#: ../../installation.rst:273
+msgid "Check for a fully qualified hostname."
+msgstr "检查FQN完全合格/限定主机名。"
+
+# 68c1a1f0f21745aeb403104055ac4fa9
+#: ../../installation.rst:279
+msgid ""
+"This should return a fully qualified hostname such as "
+"\"management1.lab.example.org\". If it does not, edit /etc/hosts so that it "
+"does."
+msgstr "该命令会返回完整主机名，例如\"management1.lab.example.org\"。如果没有，请编辑 /etc/hosts。"
+
+# 462aa5bfa1ed4426a0fe8fee25f76011
+#: ../../installation.rst:283
+msgid "Make sure that the machine can reach the Internet."
+msgstr "确保机器可以连接到互联网."
+
+# 5b249851325348f5a05df2a11b1a9605
+#: ../../installation.rst:289
+msgid "Turn on NTP for time synchronization."
+msgstr "启用NTP服务以确保时间同步."
+
+# e81842c1ee6c4557856769bb6a36922d
+#: ../../installation.rst:292
+msgid ""
+"NTP is required to synchronize the clocks of the servers in your cloud."
+msgstr "NTP服务用来在你的云中同步服务器时钟。"
+
+# 1ff32df950c6457084e12020a249a243
+#: ../../installation.rst:294
+msgid "Install NTP."
+msgstr "安装NTP."
+
+# dbe1f8c7f9d8488598b40da7132bc863
+#: ../../installation.rst:304
+msgid ""
+"Repeat all of these steps on every host where the Management Server will be "
+"installed."
+msgstr "在每一个安装管理服务器的节点上重复所有这些步骤."
+
+# 332fe2c7d34f46a2b229fc215761f6c4
+#: ../../installation.rst:309
+msgid "Install the Management Server on the First Host"
+msgstr "在第一台主机上安装管理服务器"
+
+# 8f353218baed48e4be6f9ca53b9c2541
+#: ../../installation.rst:311
+msgid ""
+"The first step in installation, whether you are installing the Management "
+"Server on one host or many, is to install the software on a single node."
+msgstr "安装的第一步，不论你在一台或多台主机上安装管理服务器，在单个节点上安装这些软件。"
+
+# 2a1b09c8c09641489db8c0d49c04ae16
+#: ../../installation.rst:316
+msgid ""
+"If you are planning to install the Management Server on multiple nodes for "
+"high availability, do not proceed to the additional nodes yet. That step "
+"will come later."
+msgstr "如果你计划为了高可用在多个节点安装管理服务器，目前不要进行添加其他节点，这个会在后面的步骤中进行"
+
+# 407f24df1ba44541821f28c24576289f
+#: ../../installation.rst:320
+msgid ""
+"The CloudStack Management server can be installed using either RPM or DEB "
+"packages. These packages will depend on everything you need to run the "
+"Management server."
+msgstr "CloudStack管理服务器可以用RMP或者DEB包来安装，这些包会依赖运行管理服务器的所有需要的东西。"
+
+# de7dec2f592640af80d9557e78bdc3af
+#: ../../installation.rst:326
+msgid "Install on CentOS/RHEL"
+msgstr "在CentOS/RHEL上安装"
+
+# 0f47773dda6d44e5a36844163a8642b9
+#: ../../installation.rst:328
+msgid "We start by installing the required packages:"
+msgstr "我们开始安装需要的软件包："
+
+# d2538978382d4b47b1f84bc381b1009f
+#: ../../installation.rst:336
+msgid "Install on Ubuntu"
+msgstr "在Ubuntu上安装"
+
+# 47bc07e11dac4257b9ce54f511342915
+#: ../../installation.rst:344
+msgid ""
+"There is a known bug in the 4.3.0 release. You need to install an additional"
+" package by hand:"
+msgstr ""
+
+# aef5f1918b994df1a0da2b55407ba85f
+#: ../../installation.rst:350
+msgid ""
+"This bug has been fixed in master and upcoming 4.4 release and will also be "
+"fixed in bug fix releases 4.3.x"
+msgstr ""
+
+# 7db6de4cc37d43b8acb33c19898ce6f8
+#: ../../installation.rst:353
+msgid "Downloading vhd-util"
+msgstr "下载vhd-util"
+
+# 39d5d2480cea49508d2a2589ef174eca
+#: ../../installation.rst:355
+msgid ""
+"This procedure is required only for installations where XenServer is "
+"installed on the hypervisor hosts."
+msgstr "这个步骤仅适用于安装了XenServer的hypervisor主机。"
+
+# d212ae279e594ea4a9b82dde3342f509
+#: ../../installation.rst:358
+msgid ""
+"Before setting up the Management Server, download vhd-util from `vhd-util "
+"<http://download.cloud.com.s3.amazonaws.com/tools/vhd-util>`_."
+msgstr "在设置管理服务器前，下载 `vhd-util<http://download.cloud.com.s3.amazonaws.com/tools/vhd-util>`_."
+
+# d4c4d9a792ec46bbacc984b02fa8dd22
+#: ../../installation.rst:361
+msgid ""
+"If the Management Server is RHEL or CentOS, copy vhd-util to `/usr/share"
+"/cloudstack-common/scripts/vm/hypervisor/xenserver`"
+msgstr "如果管理服务器是RHEL或者是CentOS，复制 vhd-util到`/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver`"
+
+# dcbc45d4730e482291fc719820a2e074
+#: ../../installation.rst:364
+msgid ""
+"If the Management Server is Ubuntu, copy vhd-util to `/usr/share/cloudstack-"
+"common/scripts/vm/hypervisor/xenserver`"
+msgstr "如果管理服务器是Ubuntu系统，复制vhd-util到`/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver`"
+
+# 3d000babaab44343b6203aec8596c5e6
+#: ../../installation.rst:369
+msgid "Install the database server"
+msgstr "安装数据库服务器"
+
+# f88a65610c204fafb3a2491316300137
+#: ../../installation.rst:371
+msgid ""
+"The CloudStack management server uses a MySQL database server to store its "
+"data. When you are installing the management server on a single node, you "
+"can install the MySQL server locally. For an installation that has multiple "
+"management server nodes, we assume the MySQL database also runs on a "
+"separate node."
+msgstr "CloudStack管理服务器使用一个MySQL数据库服务来存储自身数据。当你在一个独立的节点上安装管理服务器，你可以在本地安装MySQL服务器。对于在多重节点上安装，我们假设MySQL也运行在一个已经分隔开的节点上。"
+
+# fde5a5bd27424be7b529dc9a04291fc4
+#: ../../installation.rst:377
+msgid ""
+"CloudStack has been tested with MySQL 5.1 and 5.5. These versions are "
+"included in RHEL/CentOS and Ubuntu."
+msgstr "CloudStack已经在MySQL 5.1和5.5上被测试过。这些平台版本包含RHEL/CentOS和Ubuntu."
+
+# bdd992ca70fe4dff8367622ecd75f731
+#: ../../installation.rst:382
+msgid "Install the Database on the Management Server Node"
+msgstr "在管理服务器节点上安装数据库。"
+
+# 7f0fe4eec48240e28d602ad0745156b6
+#: ../../installation.rst:384
+msgid ""
+"This section describes how to install MySQL on the same machine with the "
+"Management Server. This technique is intended for a simple deployment that "
+"has a single Management Server node. If you have a multi-node Management "
+"Server deployment, you will typically use a separate node for MySQL. See "
+":ref:`install-database-on-separate-node`."
+msgstr "本节将会介绍如何将MySQL与管理服务器安装在同一台机器上. 这种方法是针对只有一个管理服务器的部署. 如果你部署了多台管理服务器节点, 你最好使用单独的一个节点来部署MySQL数据库. 参阅 :ref:`install-database-on-separate-node`."
+
+# 9da9fd0e78644a6f90cc13c5f7629147
+#: ../../installation.rst:390
+msgid "Install MySQL from the package repository of your distribution:"
+msgstr "使用你部署的软件仓库安装MySQL：."
+
+# 423988f38bfe4c029c64f905b8083873
+#: ../../installation.rst:400
+msgid ""
+"Open the MySQL configuration file. The configuration file is ``/etc/my.cnf``"
+" or ``/etc/mysql/my.cnf``, depending on your OS."
+msgstr "编辑MySQL的配置文件 。根据你操作系统的不同, 文件是/etc/my.cnf 或者/etc/mysql/my.cnf."
+
+# 69b009a70f9d489d86c665723f326565
+#: ../../installation.rst:403
+msgid "Insert the following lines in the [mysqld] section."
+msgstr "在[mysqld]区域插入下列行。"
+
+# 7c240032679b427986b382f408c4d867
+#: ../../installation.rst:405
+msgid ""
+"You can put these lines below the datadir line. The max\\_connections "
+"parameter should be set to 350 multiplied by the number of Management "
+"Servers you are deploying. This example assumes one Management Server."
+msgstr "你可以把这几行放在datadir行下. 参数max_connections应该设置为 350 乘以你部署管理服务器节点的个数. 这个示例假定你只部署了一台管理服务器."
+
+# 462e4aec3ff248dfa67155a3766e4759
+#: ../../installation.rst:411
+msgid ""
+"On Ubuntu, you can also create a file `/etc/mysql/conf.d/cloudstack.cnf` and"
+" add these directives there. Don't forget to add [mysqld] on the first line "
+"of the file."
+msgstr "在Ubuntu上，你也可以创建 /etc/mysql/conf.d/cloudstack.cnf文件并在此添加如下目录。不要忘记在文件第一行加[mysqld]。"
+
+# 64fd4122c8bd4334bb74dcb6e90272b9
+# 84765c6978a447f7b510dc7a3e4444bb
+#: ../../installation.rst:423 ../../installation.rst:617
+msgid "Start or restart MySQL to put the new configuration into effect."
+msgstr "启动或者重启MySQL使新的配置生效。"
+
+# 724040c0968d4dff95c8d7be03f4017e
+# 8c620289a7ff44589e7c44bc264acaf1
+#: ../../installation.rst:425 ../../installation.rst:619
+msgid ""
+"On RHEL/CentOS, MySQL doesn't automatically start after installation. Start "
+"it manually."
+msgstr "在RHEL/CentOS上，MySQL在安装完后不会自动启动。手工启动它。"
+
+# caa5b484b77844f0bd0826937ee49bc6
+# 6a9edbbfcf6d4c12a0b49cfb8a7417a2
+#: ../../installation.rst:432 ../../installation.rst:626
+msgid "On Ubuntu, restart MySQL."
+msgstr "在Ubuntu上，重启MySQL."
+
+# f61c8b0000f1424c9f2c13630125db20
+# 81d86aeab96741c4854e00bd76a9d650
+#: ../../installation.rst:438 ../../installation.rst:632
+msgid "(CentOS and RHEL only; not required on Ubuntu)"
+msgstr "(仅限CentOS 和 RHEL平台，对Ubuntu不作要求）"
+
+# 49d05484300842749affe75f5a57fc78
+#: ../../installation.rst:441
+msgid ""
+"On RHEL and CentOS, MySQL does not set a root password by default. It is "
+"very strongly recommended that you set a root password as a security "
+"precaution."
+msgstr "在RHEL和CentOS上, MySQL默认并未设置root用户的密码. 强烈建议您设置超级用户密码作为安全预防措施。"
+
+# 35126d196cb44db896a7da2f35f0219c
+#: ../../installation.rst:445
+msgid ""
+"Run the following command to secure your installation. You can answer \"Y\" "
+"to all questions."
+msgstr "运行以下命令进行安全配置。你可以对所有的问题回答”Y\"。"
+
+# 4c6efd3f31564d4e8c184fa2b19e2370
+#: ../../installation.rst:452
+msgid ""
+"CloudStack can be blocked by security mechanisms, such as SELinux. Disable "
+"SELinux to ensure + that the Agent has all the required permissions."
+msgstr "CloudStack的会被安全机制阻止，例如SELinux。确保关闭SELinux 和 Agent具有所必需的权限。"
+
+# c736e2910bf746f29b59b481a266efd5
+#: ../../installation.rst:456
+msgid "Configure SELinux (RHEL and CentOS):"
+msgstr "配置SELinux(RHEL和CentOS)："
+
+# 8d44b0228538457fb684938443b8a184
+#: ../../installation.rst:458
+msgid ""
+"Check whether SELinux is installed on your machine. If not, you can skip "
+"this section."
+msgstr "检查你的机器是否安装了SELinux。如果没有，请跳过此部分。"
+
+# f4dda09e82f14c94b0380640a6a92eaa
+#: ../../installation.rst:461
+msgid ""
+"In RHEL or CentOS, SELinux is installed and enabled by default. You can "
+"verify this with:"
+msgstr "在RHEL或者CentOS中，SELinux是默认安装并启动的。你可以使用如下命令验证："
+
+# c9420ac318f6432fb6feb232be65d8cc
+#: ../../installation.rst:468
+msgid ""
+"Set the SELINUX variable in ``/etc/selinux/config`` to \"permissive\". This "
+"ensures that the permissive setting will be maintained after a system "
+"reboot."
+msgstr "在 ``/etc/selinux/config`` 中设置SELINUX变量值为 \"permissive\"。这样能确保对SELinux的设置在系统重启之后依然生效。"
+
+# 7bf236cb6e324d0b8b23ca6a50acfcdd
+#: ../../installation.rst:472
+msgid "In RHEL or CentOS:"
+msgstr "在RHEL/CentOS上:"
+
+# fe3458a445a247c18078c567d5c3c24c
+#: ../../installation.rst:478
+msgid "Change the following line"
+msgstr "查找如下行"
+
+# af316e719579454392ce08b885fa3f1c
+#: ../../installation.rst:484
+msgid "to this:"
+msgstr "修改为："
+
+# 348280635d374eeabd020521c3079beb
+#: ../../installation.rst:490
+msgid ""
+"Set SELinux to permissive starting immediately, without requiring a system "
+"reboot."
+msgstr "执行该命令无需系统重启就会将SELinux的运行模式设置为permissive。"
+
+# 65a33b90a9fc4a7b95bbf4db213365cb
+#: ../../installation.rst:497
+msgid ""
+"Set up the database. The following command creates the \"cloud\" user on the"
+" database."
+msgstr "设置数据库. 下列的命令会在数据库中创建\"cloud\"用户."
+
+# aa653b538c1649a4ab4c8182d62d2ae4
+#: ../../installation.rst:500
+msgid ""
+"In dbpassword, specify the password to be assigned to the \"cloud\" user. "
+"You can choose to provide no password although that is not recommended."
+msgstr "dbpassword，为 \"cloud\"的用户设置的密码。你也可以选择不设置密码，尽管并不推荐。"
+
+# 0fff4e85bcaa43d7a53ddf5f641899a8
+#: ../../installation.rst:504
+msgid ""
+"In deploy-as, specify the username and password of the user deploying the "
+"database. In the following command, it is assumed the root user is deploying"
+" the database and creating the \"cloud\" user."
+msgstr "deploy-as, 指定安装数据库的用户名和密码. 在下面的命令中, root用户部署了数据库并创建了cloud用户."
+
+# 6e76a4c5d00b40f9a2591a882b9cf7e3
+# 232603c49f9b470fadd4497980b040ea
+#: ../../installation.rst:509 ../../installation.rst:683
+msgid ""
+"(Optional) For encryption\\_type, use file or web to indicate the technique "
+"used to pass in the database encryption password. Default: file. See :ref"
+":`about-password-key-encryption`."
+msgstr "(可选)encryption_type, 使用file或web来告知数据库通过哪种技术对密码进行加密. 默认是file. 参考 :ref:`about-password-key-encryption`."
+
+# c484241ea1734f64b2ee605c25ff4f55
+#: ../../installation.rst:513
+msgid ""
+"(Optional) For management\\_server\\_key, substitute the default key that is"
+" used to encrypt confidential parameters in the CloudStack properties file. "
+"Default: password. It is highly recommended that you replace this with a "
+"more secure value. See :ref:`about-password-key-encryption`."
+msgstr "(可选)management_server_key，在CloudStack属性文件中使用加密的机密参数替代默认密码。默认为：password。强烈推荐您使用更安全的值替代它。参阅： :ref:`about-password-key-encryption`."
+
+# a116bdc1b4f146618c07383056276b2f
+# c84567a232924a2a93426fbde5c68e5c
+#: ../../installation.rst:519 ../../installation.rst:693
+msgid ""
+"(Optional) For database\\_key, substitute the default key that is used to "
+"encrypt confidential parameters in the CloudStack database. Default: "
+"password. It is highly recommended that you replace this with a more secure "
+"value. See :ref:`about-password-key-encryption`."
+msgstr "(可选)database_key,在CloudStack数据库中使用加密的机密参数替代默认密码。默认为：password。强烈推荐您使用更安全的值替代它。参阅： :ref:`about-password-key-encryption`."
+
+# d51435b1acbb403ea778782c88c09cd9
+# 3c2f5d31ed014299b6b2ad61d8d02606
+#: ../../installation.rst:525 ../../installation.rst:699
+msgid ""
+"(Optional) For management\\_server\\_ip, you may explicitly specify cluster "
+"management server node IP. If not specified, the local IP address will be "
+"used."
+msgstr "(可选)management_server_ip, 你可以明确的指定群集管理服务器的IP。如果不指定，默认使用本机IP。"
+
+# 8781d85265da4df69b6b1161f9981921
+# f3bfbf8b741844379f95923b4b686ba8
+#: ../../installation.rst:538 ../../installation.rst:712
+msgid ""
+"When this script is finished, you should see a message like “Successfully "
+"initialized the database.”"
+msgstr "当脚本完成后，你将会看到类似这样的信息:\"Successfully initialized the database\""
+
+# a6cf1c3f7291407581e5da12486d3a20
+#: ../../installation.rst:542
+msgid ""
+"If the script is unable to connect to the MySQL database, check the "
+"\"localhost\" loopback address in ``/etc/hosts``. It should be pointing to "
+"the IPv4 loopback address \"127.0.0.1\" and not the IPv6 loopback address "
+"``::1``. Alternatively, reconfigure MySQL to bind to the IPv6 loopback "
+"interface."
+msgstr ""
+
+# 33b221f992cd42cab21181c9205890e7
+#: ../../installation.rst:548
+msgid ""
+"If you are running the KVM hypervisor on the same machine with the "
+"Management Server, edit /etc/sudoers and add the following line:"
+msgstr "如果你的KVM Hypervisor和管理服务器在同一台的机器上，编辑 /etc/sudoers并添加以下行："
+
+# 52aa8c1267b94037ad3d9615231fbca4
+#: ../../installation.rst:555
+msgid ""
+"Now that the database is set up, you can finish configuring the OS for the "
+"Management Server. This command will set up iptables, sudoers, and start the"
+" Management Server."
+msgstr "现在数据库已经设置好, 你可以完成管理服务器的设置. 这个命令将会设置iptables, sudoers并启动管理服务."
+
+# 08f36fb116e642ba89ca4e2d95dec848
+#: ../../installation.rst:563
+msgid ""
+"You should see the message “CloudStack Management Server setup is done.”"
+msgstr "你应该看到这样的信息:  “Management Server setup is done.”"
+
+# 7d221b73028543c9a2b47b117237997f
+#: ../../installation.rst:570
+msgid "Install the Database on a Separate Node"
+msgstr "在单独的节点上安装数据库。"
+
+# eb04195ea5644ab59b8df4dcd32f8d0b
+#: ../../installation.rst:572
+msgid ""
+"This section describes how to install MySQL on a standalone machine, "
+"separate from the Management Server. This technique is intended for a "
+"deployment that includes several Management Server nodes. If you have a "
+"single-node Management Server deployment, you will typically use the same "
+"node for MySQL. See `“Install the Database on the Management Server Node” "
+"<#install-the-database-on-the-management-server-node>`_."
+msgstr ""
+
+# cb57860521b44243b4452bd9da079744
+#: ../../installation.rst:580
+msgid ""
+"The management server doesn't require a specific distribution for the MySQL "
+"node. You can use a distribution or Operating System of your choice. Using "
+"the same distribution as the management server is recommended, but not "
+"required. See `“Management Server, Database, and Storage System "
+"Requirements” <#management-server-database-and-storage-system-"
+"requirements>`_."
+msgstr "管理服务器不要求为MySQL节点指定特定的分支。你可以选择使用任何一个操作系统的分支。建议与管理服务器使用相同的分支，但不做强制要求。参阅 `“管理服务器, 数据库和存储系统要求” <#management-server-database-and-storage-system-requirements>`_."
+
+# 49b51b3e92d447188645fdf39e28feab
+#: ../../installation.rst:586
+msgid "Install MySQL from the package repository from your distribution:"
+msgstr "使用你部署的软件仓库安装MySQL：."
+
+# ae7d0f661888443dbeda2f242e3e4bc3
+#: ../../installation.rst:596
+msgid ""
+"Edit the MySQL configuration (/etc/my.cnf or /etc/mysql/my.cnf, depending on"
+" your OS) and insert the following lines in the [mysqld] section. You can "
+"put these lines below the datadir line. The max\\_connections parameter "
+"should be set to 350 multiplied by the number of Management Servers you are "
+"deploying. This example assumes two Management Servers."
+msgstr "编辑MySQL的配置文件 (根据你操作系统的不同, 文件为/etc/my.cnf 或者/etc/mysql/my.cnf) 并在 [mysqld] 章节插入下面几行. 你可以把这几行放在datadir行下. 参数max_connections应该设置为 350 乘以你部署管理服务器节点的个数. 这个示例假定你只部署了一台管理服务器."
+
+# ea07aaf2f2094827919c3f7f9d1c8115
+#: ../../installation.rst:604
+msgid ""
+"On Ubuntu, you can also create /etc/mysql/conf.d/cloudstack.cnf file and add"
+" these directives there. Don't forget to add [mysqld] on the first line of "
+"the file."
+msgstr "在Ubuntu上，你也可以创建 /etc/mysql/conf.d/cloudstack.cnf文件并在此添加如下目录。不要忘记在文件第一行加[mysqld]。"
+
+# 181c50670cde4667bbbf5930fb3c854b
+#: ../../installation.rst:635
+msgid ""
+"On RHEL and CentOS, MySQL does not set a root password by default. It is "
+"very strongly recommended that you set a root password as a security "
+"precaution. Run the following command to secure your installation. You can "
+"answer \"Y\" to all questions except \"Disallow root login remotely?\". "
+"Remote root login is required to set up the databases."
+msgstr "在RHEL 和 CentOS上，MySQL默认并未设置root用户的密码。强烈建议您设置超级用户密码作为安全预防措施。运行以下命令进行安全配置。你可以对所有问题回答\"Y\"， \"Disallow root login remotely?\"问题除外。设置数据库需要root远程登录。"
+
+# 278c2f9ed64442a580cb6c385b7793d6
+#: ../../installation.rst:645
+msgid ""
+"If a firewall is present on the system, open TCP port 3306 so external MySQL"
+" connections can be established."
+msgstr "如果系统中存在防火墙，打开TCP的3306端口用于建立MySQL连接。"
+
+# 16ce3ea613174067b6edf85fa82a0323
+#: ../../installation.rst:648
+msgid ""
+"On Ubuntu, UFW is the default firewall. Open the port with this command:"
+msgstr "在Ubuntu上，默认防火墙是UFW。用以下命令打开端口："
+
+# 11cda3fbfc934a199874ab207473898e
+#: ../../installation.rst:655
+msgid "On RHEL/CentOS:"
+msgstr "在RHEL/CentOS上:"
+
+# f0b20f4dbb6849c0963c4affbbba6ae9
+#: ../../installation.rst:657
+msgid ""
+"Edit the /etc/sysconfig/iptables file and add the following line at the "
+"beginning of the INPUT chain."
+msgstr "编辑/etc/sysconfig/iptables文件并在INPUT链中添加下列行。"
+
+# 0bf0dca831b0441fa3a376a3bcccfb78
+#: ../../installation.rst:664
+msgid "Now reload the iptables rules."
+msgstr "现在重新加载iptables规则。"
+
+# 6513db9f42b8495ca96090e285daa673
+#: ../../installation.rst:670
+msgid "Return to the root shell on your first Management Server."
+msgstr "返回到第一个管理服务器root用户的shell中。"
+
+# a2317a3c06f342058c12a67eb8b69383
+#: ../../installation.rst:672
+msgid ""
+"Set up the database. The following command creates the cloud user on the "
+"database."
+msgstr "设置数据库。按照如下命令在数据库中创建cloud用户。"
+
+# 5430f655d0e244fe8921c41ed892882f
+#: ../../installation.rst:675
+msgid ""
+"In dbpassword, specify the password to be assigned to the cloud user. You "
+"can choose to provide no password."
+msgstr "dbpassword，为 \"cloud\"的用户设置的密码。你也可以选择不设置密码。"
+
+# b10e601516ba4ba8ad5cf0a277d811e2
+#: ../../installation.rst:678
+msgid ""
+"In deploy-as, specify the username and password of the user deploying the "
+"database. In the following command, it is assumed the root user is deploying"
+" the database and creating the cloud user."
+msgstr "deploy-as, 指定安装数据库的用户名和密码. 在下面的命令中, root用户部署了数据库并创建了cloud用户."
+
+# 9e82de1fc39e465b8b0b66c224c19483
+#: ../../installation.rst:687
+msgid ""
+"(Optional) For management\\_server\\_key, substitute the default key that is"
+" used to encrypt confidential parameters in the CloudStack properties file. "
+"Default: password. It is highly recommended that you replace this with a "
+"more secure value. See About Password and Key Encryption."
+msgstr "(可选)management_server_key，在CloudStack属性文件中使用加密的机密参数替代默认密码。默认为：password。强烈推荐您使用更安全的值替代它。参阅关于密码和密钥加密。"
+
+# 13de6a8d8fe341028c60b6f04beb31b0
+#: ../../installation.rst:719
+msgid "About Password and Key Encryption"
+msgstr "关于密码和密钥加密"
+
+# 45fbacb318674ad8b9217f0ca90da414
+#: ../../installation.rst:721
+msgid ""
+"CloudStack stores several sensitive passwords and secret keys that are used "
+"to provide security. These values are always automatically encrypted:"
+msgstr "CloudStack存储一些敏感密码和密钥用于提供安全保证。这些值总是自动被加密。"
+
+# 6ad55d0faad740589f3152b45a9670d1
+#: ../../installation.rst:725
+msgid "Database secret key"
+msgstr "数据库密钥"
+
+# e25d10cf49454d89a0301335e4aa2c93
+#: ../../installation.rst:727
+msgid "Database password"
+msgstr "数据库密码"
+
+# c73f9cf443a745509d548cecae66c1fd
+#: ../../installation.rst:729
+msgid "SSH keys"
+msgstr "SSH密钥"
+
+# d042f272678f4ca3a91d02bf058c6ffc
+#: ../../installation.rst:731
+msgid "Compute node root password"
+msgstr "计算节点root密码"
+
+# d70e7fde8c6e4353a2e5a31b6b15a0ff
+#: ../../installation.rst:733
+msgid "VPN password"
+msgstr "VPN密码"
+
+# a91d0ab04c504168a4f86e9e1cd8f588
+#: ../../installation.rst:735
+msgid "User API secret key"
+msgstr "用户API密钥"
+
+# 7c756f6f0e374ae9a1d2b96c1de9c2a0
+#: ../../installation.rst:737
+msgid "VNC password"
+msgstr "VNC密码"
+
+# 3ced5a13cc124b328c89685af71bddfc
+#: ../../installation.rst:739
+msgid ""
+"CloudStack uses the Java Simplified Encryption (JASYPT) library. The data "
+"values are encrypted and decrypted using a database secret key, which is "
+"stored in one of CloudStack’s internal properties files along with the "
+"database password. The other encrypted values listed above, such as SSH "
+"keys, are in the CloudStack internal database."
+msgstr "CloudStack使用java简单的加密库（JASYPT）。数据值加密和解密通过使用一个存储在一个CloudStack带有数据库密码的内部属性文件中的密钥。上述列出的其他加密的值，例如SSH密钥，也在CloudStack内部数据库中。"
+
+# 024c2c3bfb28412392653a45cfe7debe
+#: ../../installation.rst:745
+msgid ""
+"Of course, the database secret key itself can not be stored in the open – it"
+" must be encrypted. How then does CloudStack read it? A second secret key "
+"must be provided from an external source during Management Server startup. "
+"This key can be provided in one of two ways: loaded from a file or provided "
+"by the CloudStack administrator. The CloudStack database has a configuration"
+" setting that lets it know which of these methods will be used. If the "
+"encryption type is set to \"file,\" the key must be in a file in a known "
+"location. If the encryption type is set to \"web,\" the administrator runs "
+"the utility com.cloud.utils.crypt.EncryptionSecretKeySender, which relays "
+"the key to the Management Server over a known port."
+msgstr "当然，数据库密钥本身不是公开存储的-它必须被加密。那么，CloudStack如何阅读它呢？从外部源启动管理服务时必须提供第二个密钥。这个密钥可以提供两种方式中的一种：从文件加载或者由CloudStack的管理员提供。CloudStack数据库中都有一个配置设置使它知道这些方法将被调用。如果加密类型设置为 \"file,\" 密钥 必须存在于文件的已知位置中。如果加密类型设置为 \"web,\" 管理员运行 com.cloud.utils.crypt.EncryptionSecretKeySender工具，which relays the key to the Management Server over a known port."
+
+# 6a3a9b0c66e04e64b4c6d34a4a17bb3b
+#: ../../installation.rst:757
+msgid ""
+"The encryption type, database secret key, and Management Server secret key "
+"are set during CloudStack installation. They are all parameters to the "
+"CloudStack database setup script (cloudstack-setup-databases). The default "
+"values are file, password, and password. It is, of course, highly "
+"recommended that you change these to more secure keys."
+msgstr "加密类型，数据库密钥和管理服务器密钥在CloudStack初始化的过程中设置。它们全部是CloudStack数据库设置脚本的参数（cloud-setup-databases).默认值是file,password和password。当然，强烈建议你修改这些密钥。"
+
+# 511008e5d7e640eea756268a06c19eb0
+#: ../../installation.rst:765
+msgid "Changing the Default Password Encryption"
+msgstr "更改默认密码加密"
+
+# ca4f4a81740849cdb9d61f0a33af6605
+#: ../../installation.rst:767
+msgid ""
+"Passwords are encoded when creating or updating users. CloudStack allows you"
+" to determine the default encoding and authentication mechanism for admin "
+"and user logins. Two new configurable lists have been "
+"introduced—userPasswordEncoders and userAuthenticators. userPasswordEncoders"
+" allows you to configure the order of preference for encoding passwords, "
+"whereas userAuthenticators allows you to configure the order in which "
+"authentication schemes are invoked to validate user passwords."
+msgstr "创建或更新用户密码会被加密。CloudStack允许你定义管理员和用户登录的默认密码和授权机制。这两种配置列表都已经介绍过了—userPasswordEncoders 和 userAuthenticators。userPasswordEncoders允许你配置优先顺序进行密码编码，而userAuthenticators允许你配置的调用身份验证方案来验证用户密码。"
+
+# 78d6cb8f6ce74a82accf0327cbc8375d
+#: ../../installation.rst:776
+msgid ""
+"Additionally, the plain text user authenticator has been modified not to "
+"convert supplied passwords to their md5 sums before checking them with the "
+"database entries. It performs a simple string comparison between retrieved "
+"and supplied login passwords instead of comparing the retrieved md5 hash of "
+"the stored password against the supplied md5 hash of the password because "
+"clients no longer hash the password. The following method determines what "
+"encoding scheme is used to encode the password supplied during user creation"
+" or modification."
+msgstr "此外，纯文本的用户认证方已经修改为:在检查数据库记录之前，不对获取的密码进行md5值校验。仅对提供的登录密码执行检索。 由于客户端不再对密码进行散列（hash），所以不再对比存储的密码散列值和获取的密码的哈希值。下面的方法决定用于用户创建或修改过程中提供的密码进行编码时使用什么编码方案。"
+
+# f6b78ffccd494c30be0c5efac1ab44a9
+#: ../../installation.rst:785
+msgid ""
+"When a new user is created, the user password is encoded by using the first "
+"valid encoder loaded as per the sequence specified in the "
+"``UserPasswordEncoders`` property in the ``ComponentContext.xml`` or "
+"``nonossComponentContext.xml`` files. The order of authentication schemes is"
+" determined by the ``UserAuthenticators`` property in the same files. If "
+"Non-OSS components, such as VMware environments, are to be deployed, modify "
+"the ``UserPasswordEncoders`` and ``UserAuthenticators`` lists in the "
+"``nonossComponentContext.xml`` file, for OSS environments, such as XenServer"
+" or KVM, modify the ``ComponentContext.xml`` file. It is recommended to make"
+" uniform changes across both the files. When a new authenticator or encoder "
+"is added, you can add them to this list. While doing so, ensure that the new"
+" authenticator or encoder is specified as a bean in both these files. The "
+"administrator can change the ordering of both these properties as preferred "
+"to change the order of schemes. Modify the following list properties "
+"available in ``client/tomcatconf/nonossComponentContext.xml.in`` or "
+"``client/tomcatconf/componentContext.xml.in`` as applicable, to the desired "
+"order:"
+msgstr "在创建新用户时,用户密码是按照``ComponentContext.xml`` 或 ``nonossComponentContext.xml`` 文件中 ``UserPasswordEncoders`` 属性中指定的顺序对有效的编码器进行编码。该文件中的 ``UserAuthenticators`` 属性也指定了认证方案的顺序。如果使用了Non-OSS（非开源软件）组件，例如要部署VMware环境，修改 ``nonossComponentContext.xml`` 文件中的 ``UserPasswordEncoders`` 和 ``UserAuthenticators`` 列表。针对OSS（开源软件），例如XenServer和KVM，则修改 ``ComponentContext.xml`` 文件。建议对这两个文件做统一的修改。当添加新的认证器和解释器时，你可以添加至该列表。做的过程中，确保已经在这些文件中指定认证器和解释器。管理员可以更改这两个属性的排序和计划作为首选的排列顺序。如果适用的话，在 ``client/tomcatconf/nonossComponentContext.xml.in`` 或 ``client/tomcatconf/componentContext.xml.in`` 文件中修改下面的列表中可用的属性的顺序："
+
+# 2fcac5693d444b38b51c1e5e74dc7110
+#: ../../installation.rst:823
+msgid ""
+"In the above default ordering, SHA256Salt is used first for "
+"``UserPasswordEncoders``. If the module is found and encoding returns a "
+"valid value, the encoded password is stored in the user table's password "
+"column. If it fails for any reason, the MD5UserAuthenticator will be tried "
+"next, and the order continues. For ``UserAuthenticators``, SHA256Salt "
+"authentication is tried first. If it succeeds, the user is logged into the "
+"Management server. If it fails, md5 is tried next, and attempts continues "
+"until any of them succeeds and the user logs in . If none of them works, the"
+" user is returned an invalid credential message."
+msgstr "在上述排序中，SHA256Salt首次使用 ``UserPasswordEncoders``.如果这个模块已经找到并且编码后返回一个有效值，编码密码存储在用户表密码列中。如果因某些原因失败，接下来将尝试MD5UserAuthenticator，并按照规定继续。对于 ``UserAuthenticators``， SHA256Salt授权首先被使用。如果成功，用户将登陆进入管理服务器。如果失败，下一步将尝试md5,并继续尝试直到成功。如果他们没起作用，用户将返回一个无效的确认信息。"
+
+# 707a625494ae450a987664e845dc1092
+#: ../../installation.rst:837
+msgid ""
+"CloudStack needs a place to keep primary and secondary storage (see Cloud "
+"Infrastructure Overview). Both of these can be NFS shares. This section "
+"tells how to set up the NFS shares before adding the storage to CloudStack."
+msgstr "CloudStack需要主存储和辅助存储空间(参阅 云基础设施概述)。两种存储都可以是NFS共享存储。这节描述如何在CloudStack中添加存储。"
+
+# 0ffaec4550964c9b81b5988488ee74fa
+#: ../../installation.rst:843
+msgid ""
+"NFS is not the only option for primary or secondary storage. For example, "
+"you may use Ceph RBD, GlusterFS, iSCSI, and others. The choice of storage "
+"system will depend on the choice of hypervisor and whether you are dealing "
+"with primary or secondary storage."
+msgstr "NFS并不是主存储和二期存储的唯一选择。例如，您可以使用Ceph RBD、GlusterFS、iSCSI等其它存储。存储系统的选择依赖于虚拟化平台类型以及是用于主存储还是二级存储。"
+
+# d636505b4eb949d49b6786e451926f86
+#: ../../installation.rst:848
+msgid "The requirements for primary and secondary storage are described in:"
+msgstr "主存储和辅助存储的需求描述："
+
+# 4d264009140f4e119313dbaaf55114a5
+#: ../../installation.rst:850
+msgid ""
+"`“About Primary Storage” "
+"<http://docs.cloudstack.apache.org/en/latest/concepts.html#about-primary-"
+"storage>`_"
+msgstr "`“关于主存储” <http://docs.cloudstack.apache.org/en/latest/concepts.html#about-primary-storage>`_"
+
+# ed5e2e20e6ca432b95c1e7e204bd4f6a
+#: ../../installation.rst:853
+msgid ""
+"`“About Secondary Storage” "
+"<http://docs.cloudstack.apache.org/en/latest/concepts.html#about-secondary-"
+"storage>`_"
+msgstr "`“关于辅助存储” <http://docs.cloudstack.apache.org/en/latest/concepts.html#about-secondary-storage>`_。"
+
+# 91c1900704fd4d91b018dd2e441ce1a5
+#: ../../installation.rst:856
+msgid ""
+"A production installation typically uses a separate NFS server. See "
+":ref:`using-a-separage-nfs-server`."
+msgstr "典型地安装使用一个独立的NFS 服务器。参阅  :ref:`using-a-separage-nfs-server`."
+
+# 54dae30e742c45e0bab2066517190be8
+#: ../../installation.rst:859
+msgid ""
+"You can also use the Management Server node as the NFS server. This is more "
+"typical of a trial installation, but is technically possible in a larger "
+"deployment. See :ref:`using-the-management-server-as-the-nfs-server`."
+msgstr "你也可以使用管理服务节点作为NFS服务器。这是更为典型的安装，部署更大的环境在技术上是可行的。参阅 :ref:`using-the-management-server-as-the-nfs-server`."
+
+# feabaaeb53214becbece68200ee0ca7f
+#: ../../installation.rst:867
+msgid "Using a Separate NFS Server"
+msgstr "使用独立的NFS服务器"
+
+# aeb8dd69baf144c4a1df1c6f07faaec9
+#: ../../installation.rst:869
+msgid ""
+"This section tells how to set up NFS shares for secondary and (optionally) "
+"primary storage on an NFS server running on a separate node from the "
+"Management Server."
+msgstr "这一节描述如何在存储系统中为辅助存储和主存储(可选)设置NFS共享，它运行在一个与管理控制服务器不同的独立节点。"
+
+# f25edd950f514c5fb151e7877de7ab99
+# d24aef1ed1ac409589504fe7ef5cdb29
+#: ../../installation.rst:873 ../../installation.rst:934
+msgid ""
+"The exact commands for the following steps may vary depending on your "
+"operating system version."
+msgstr "以下步骤的命令取决于你的操作系统版本。"
+
+# bff14968bd214c0c895eda46fc9c45ff
+#: ../../installation.rst:877
+msgid ""
+"(KVM only) Ensure that no volume is already mounted at your NFS mount point."
+msgstr "(仅KVM)确保没有任何卷被挂载到你的NFS挂载点上。"
+
+# bd33e779304a4c5a81b690637431ef5b
+#: ../../installation.rst:879
+msgid ""
+"On the storage server, create an NFS share for secondary storage and, if you"
+" are using NFS for primary storage as well, create a second NFS share. For "
+"example:"
+msgstr "在存储服务器上，创建一个用于辅助存储的NFS共享，如果同时也用于主存储，则创建2个NFS共享，例如："
+
+# 0d4f698defbb458b8ffdb5ff3dd584e0
+# ce9561250f074471a254c55f6d07c6c9
+#: ../../installation.rst:888 ../../installation.rst:951
+msgid ""
+"To configure the new directories as NFS exports, edit /etc/exports. Export "
+"the NFS share(s) with rw,async,no\\_root\\_squash,no\\_subtree\\_check. For "
+"example:"
+msgstr "配置新的目录作为NFS输出，编辑/etc/exports。使用 rw,async,no_root_squash,no_subtree_check 输出NFS共享目录。例如："
+
+# 01cfe9dc640a44f6b99cb2c58b04c173
+# 98487e7ffdaf4dac9f71cb0719b6c684
+#: ../../installation.rst:896 ../../installation.rst:959
+msgid "Insert the following line."
+msgstr "插入如下行。"
+
+# 94ecddfb2f174696aa885e7caf1c7f5f
+# 01225b1fb90847ec8b8b089ef57ef205
+#: ../../installation.rst:902 ../../installation.rst:965
+msgid "Export the /export directory."
+msgstr "输出/export目录。"
+
+# ecf40e05b66948e587495e8c9b46f371
+#: ../../installation.rst:908
+msgid ""
+"On the management server, create a mount point for secondary storage. For "
+"example:"
+msgstr "在管理服务器上，创建一个辅助存储的挂载点。例如："
+
+# 95a0283dd26a46928e258568441e3d29
+#: ../../installation.rst:915
+msgid ""
+"Mount the secondary storage on your Management Server. Replace the example "
+"NFS server name and NFS share paths below with your own."
+msgstr "在你的管理服务器上挂载辅助存储。更换下面示例中的NFS服务器名称和NFS共享路径为你自己的。"
+
+# 98dfcbe6dbc44fc39d0d5c0f91a45503
+#: ../../installation.rst:926
+msgid "Using the Management Server as the NFS Server"
+msgstr "使用管理服务器作为NFS服务器"
+
+# a4b1c2a1b2bd4729afc842b2675effa2
+#: ../../installation.rst:928
+msgid ""
+"This section tells how to set up NFS shares for primary and secondary "
+"storage on the same node with the Management Server. This is more typical of"
+" a trial installation, but is technically possible in a larger deployment. "
+"It is assumed that you will have less than 16TB of storage on the host."
+msgstr "本节讲述如何在管理服务器节点上设置主存储和辅助存储的NFS共享目录。这是典型的安装部署，但是部署更大的环境在技术上可行的。假设你的主机上拥有少于16TB的存储空间。"
+
+# 640cef0f4b154773ae29c9366515551d
+#: ../../installation.rst:937
+msgid "On RHEL/CentOS systems, you'll need to install the nfs-utils package:"
+msgstr "在 RHEL/CentOS系统上，你需要安装 nfs-utils包："
+
+# e152db6773384cfb9b5fa8d9849cd959
+#: ../../installation.rst:943
+msgid ""
+"On the Management Server host, create two directories that you will use for "
+"primary and secondary storage. For example:"
+msgstr "在管理服务器主机上，创建两个目录用作主存储和辅助存储。例如："
+
+# fad7bb568f4f4071b3685bb833739ef0
+#: ../../installation.rst:971
+msgid "Edit the /etc/sysconfig/nfs file."
+msgstr "编辑/etc/sysconfig/nfs文件。"
+
+# 19d379a8922248c4bb8e975ab8238b30
+#: ../../installation.rst:977
+msgid "Uncomment the following lines:"
+msgstr "取消如下行的注释："
+
+# d39f9b7efd104412bb59b14b784ea816
+#: ../../installation.rst:988
+msgid "Edit the /etc/sysconfig/iptables file."
+msgstr "编辑 /etc/sysconfig/iptables文件。"
+
+# 0c25a4130a4f43aabbf389c386a783c5
+#: ../../installation.rst:994
+msgid ""
+"Add the following lines at the beginning of the INPUT chain, where <NETWORK>"
+" is the network that you'll be using:"
+msgstr "在INPUT链开始处添加如下行， <NETWORK>处为你正在使用的网络："
+
+# 918152dcb1464ec3aa11d25e4df65ac0
+#: ../../installation.rst:1011
+msgid "Run the following commands:"
+msgstr "运行如下命令："
+
+# 8d7934cc7a674dc19677d0cca7b03f94
+#: ../../installation.rst:1018
+msgid ""
+"If NFS v4 communication is used between client and server, add your domain "
+"to /etc/idmapd.conf on both the hypervisor host and Management Server."
+msgstr "如果客户端和服务器之间使用NFS v4进行通讯，在hypervisor主机和管理服务器上的/etc/idmapd.conf文件中添加你的域名。"
+
+# 553ce0f07b7b4689b7b85036357ca826
+#: ../../installation.rst:1026
+msgid ""
+"Remove the character # from the beginning of the Domain line in idmapd.conf "
+"and replace the value in the file with your own domain. In the example "
+"below, the domain is company.com."
+msgstr "从idmapd.conf文件中的Domain开始行移除字符#，并替代文件中的该值为你自己的域名。在下面的示例中，域名为company.com."
+
+# 340dd6777da046a397391290dfe94ebb
+#: ../../installation.rst:1034
+msgid "Reboot the Management Server host."
+msgstr "重启管理服务器主机。"
+
+# 9b857a533abc42eea805251524f28b97
+#: ../../installation.rst:1036
+msgid ""
+"Two NFS shares called /export/primary and /export/secondary are now set up."
+msgstr "两个NFS共享 /export/primary和 /export/secondary已经建立。"
+
+# 0cf24cf59b9f4a5dbbdb2c51c7775ad5
+#: ../../installation.rst:1039
+msgid ""
+"It is recommended that you test to be sure the previous steps have been "
+"successful."
+msgstr "强烈建议您测试以确保之前的步骤已经成功。"
+
+# cbaa4d9e49e74255b3290e9820d55ef3
+#: ../../installation.rst:1042
+msgid "Log in to the hypervisor host."
+msgstr "登陆hypervisor主机。"
+
+# 30e95a69d0a94a719e40f41b7a0bd06f
+#: ../../installation.rst:1044
+msgid ""
+"Be sure NFS and rpcbind are running. The commands might be different "
+"depending on your OS. For example:"
+msgstr "确定NFS和rpcbind正在运行。具体命令可能因您的操作系统而不同。例如："
+
+# eef0133ebeee4897a60b1e510c32b865
+#: ../../installation.rst:1055
+msgid ""
+"Log back in to the hypervisor host and try to mount the /export directories."
+" For example, substitute your own management server name:"
+msgstr "重新登录到hypervisor主机并尝试挂载/export目录。例如，替代你自己的管理服务器名称："
+
+# 945ffae66da941eea53781a93218bc1c
+#: ../../installation.rst:1070
+msgid "Prepare and Start Additional Management Servers"
+msgstr "准备和启动额外的管理服务器。"
+
+# d30a2d1b35064949905881c761a8c32f
+#: ../../installation.rst:1072
+msgid ""
+"For your second and subsequent Management Servers, you will install the "
+"Management Server software, connect it to the database, and set up the OS "
+"for the Management Server."
+msgstr "在你的次级以及以后的管理服务器上，你将安装管理服务器软件，连接到数据库，并启动管理服务器的操作系统。"
+
+# 386574bc8a1942f1a013e2260e7ec892
+#: ../../installation.rst:1076
+msgid ""
+"Perform the steps in `“Prepare the Operating System” <#prepare-the-"
+"operating-system>`_ and `“Building RPMs from Source” "
+"<building_from_source.html#building-rpms-from-source>`_ or `“Building DEB "
+"packages” <building_from_source.html#building-deb-packages>`_ as "
+"appropriate."
+msgstr "执行这些步骤 `“准备操作系统” <#prepare-the-operating-system>`_ 和 `“从源码编译RPM包” <building_from_source.html#building-rpms-from-source>`_ 或 `“编译DEB包” <building_from_source.html#building-deb-packages>`_ 视情况而定."
+
+# 9516fb7c54fc446ab76267a90611e209
+#: ../../installation.rst:1082
+msgid ""
+"This step is required only for installations where XenServer is installed on"
+" the hypervisor hosts."
+msgstr "这个步骤仅适用于安装了XenServer的hypervisor主机。"
+
+# 60bd480d13124c16b4c8774b8abd5439
+#: ../../installation.rst:1085
+msgid ""
+"Download vhd-util from `vhd-util "
+"<http://download.cloud.com.s3.amazonaws.com/tools/vhd-util>`_"
+msgstr "下载 `vhd-util <http://download.cloud.com.s3.amazonaws.com/tools/vhd-util>`_"
+
+# 3b0ff1adaf804ec4b60b43307747e306
+#: ../../installation.rst:1088
+msgid ""
+"Copy vhd-util to /usr/share/cloudstack-"
+"common/scripts/vm/hypervisor/xenserver."
+msgstr "复制vhd-util到/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver目录下。"
+
+# 7a0ee162adde4c378073eeafb4a655f2
+#: ../../installation.rst:1091
+msgid "Ensure that necessary services are started and set to start on boot."
+msgstr "确保必要的服务已经启动并设置为开机启动。"
+
+# 24f30a5c2b9347fabde885434d2e78ed
+#: ../../installation.rst:1100
+msgid ""
+"Configure the database client. Note the absence of the --deploy-as argument "
+"in this case. (For more details about the arguments to this command, see "
+":ref:`install-database-on-separate-node`.)"
+msgstr "配置数据库客户端。注意不使用 --deploy-as 参数在这种情况下。 (关于该命令参数更详细的信息, 参阅 :ref:`install-database-on-separate-node`.)"
+
+# 23d438dc604d4fd8a118a19e36271c4c
+#: ../../installation.rst:1108
+msgid "Configure the OS and start the Management Server:"
+msgstr "配置操作系统，并启动管理服务："
+
+# fdcd15f0de9849368878cc14f5725df2
+#: ../../installation.rst:1114
+msgid "The Management Server on this node should now be running."
+msgstr "管理服务应该运行在这个节点上。"
+
+# 460f1039702f42858ad204d933e5758a
+#: ../../installation.rst:1116
+msgid "Repeat these steps on each additional Management Server."
+msgstr "在每个额外的管理服务器上重复这些步骤。"
+
+# c73ab983e4b14d3faa16deaaf4ab7520
+#: ../../installation.rst:1118
+msgid ""
+"Be sure to configure a load balancer for the Management Servers. See "
+"`“Management Server Load Balancing” "
+"<http://docs.cloudstack.apache.org/en/latest/administration_guide.html?highlight=management%20server%20load"
+"#management-server-load-balancing>`_."
+msgstr "确保为管理服务器配置负载均衡。参阅： `“管理服务器负载均衡\" <http://docs.cloudstack.apache.org/en/latest/administration_guide.html?highlight=management%20server%20load#management-server-load-balancing>`_."
+
+# 85b606d2b0044935b6e9fd3b1af045b3
+#: ../../installation.rst:1126
+msgid ""
+"Secondary storage must be seeded with a template that is used for CloudStack"
+" system VMs."
+msgstr "辅助存储必须应用一个使用于生成CloudStack中虚拟机系统的模板。"
+
+# 4029e03b5ab24a4a88751a9c1a018ea2
+#: ../../installation.rst:1130
+msgid ""
+"When copying and pasting a command, be sure the command has pasted as a "
+"single line before executing. Some document viewers may introduce unwanted "
+"line breaks in copied text."
+msgstr "当复制和粘贴命令时，请确保没有多余的换行符，因为一些文档查看器可能会在复制时加上换行符。"
+
+# cbf94fb3cbf14df48bfb47c0dd21af6f
+#: ../../installation.rst:1134
+msgid ""
+"On the Management Server, run one or more of the following cloud-install-"
+"sys-tmplt commands to retrieve and decompress the system VM template. Run "
+"the command for each hypervisor type that you expect end users to run in "
+"this Zone."
+msgstr "在管理服务器上，运行一个或多个cloud-install-sys-tmplt命令检索和解压系统虚拟机模版。运行这个命令在每个你希望最终用户在这个区域中运行的hypervisor类型。"
+
+# e7bff9caa9f84e8c848d4d19b0daba94
+#: ../../installation.rst:1139
+msgid ""
+"If your secondary storage mount point is not named /mnt/secondary, "
+"substitute your own mount point name."
+msgstr "如果辅助存储挂点不是 /mnt/secondary，替换你自己的挂载点名称。"
+
+# b4aef1ef071f4b71a00b3f645a1a228f
+#: ../../installation.rst:1142
+msgid ""
+"If you set the CloudStack database encryption type to \"web\" when you set "
+"up the database, you must now add the parameter -s <management-server-"
+"secret-key>. See :ref:`about-password-key-encryption`."
+msgstr "如果在设置数据库时，配置CloudStack数据库加密类型是\"web\"，你现在必须添加参数-s <management-server-secret-key>。参阅 :ref:`about-password-key-encryption`。"
+
+# 5b51c5731c5740238035e396516eea52
+#: ../../installation.rst:1146
+msgid ""
+"This process will require approximately 5 GB of free space on the local file"
+" system and up to 30 minutes each time it runs."
+msgstr "这个过程每次运行30分钟，运行时要求本地文件系统剩余大约5GB的空间。"
+
+# fbc4137a3c07458cb016857d765e8e8b
+#: ../../installation.rst:1149
+msgid "For Hyper-V"
+msgstr "对于Hyper-V:"
+
+# 42d30039e33e4a5c89d13a11b25f2545
+#: ../../installation.rst:1155
+msgid "For XenServer:"
+msgstr "对于XenServer："
+
+# 8a428eb947444e7f8a53951d031cfd23
+#: ../../installation.rst:1161
+msgid "For vSphere:"
+msgstr "对于vSphere:"
+
+# 4ebe05af6f144d5b92d47b0a04c3669e
+#: ../../installation.rst:1167
+msgid "For KVM:"
+msgstr "对于KVM:"
+
+# 74cd4b53c2a04c45a2eec8761ae5ef2d
+#: ../../installation.rst:1173
+msgid "For LXC:"
+msgstr "对于LXC："
+
+# 88ddfa6d01ea4de4a01489ecaa5809b1
+#: ../../installation.rst:1179
+msgid "On Ubuntu, use the following path instead:"
+msgstr "在Ubuntu上，使用如下路径："
+
+# f288b19ac3584ac7a502423d40a8558c
+#: ../../installation.rst:1185
+msgid ""
+"If you are using a separate NFS server, perform this step. If you are using "
+"the Management Server as the NFS server, you MUST NOT perform this step."
+msgstr "如果你使用独立的NFS服务器，执行这一步骤。如果你使用管理服务器作为NFS服务器，你必须确保不执行这一步骤。"
+
+# 631bd8031bcf47d3a5e8dff1fd222d47
+#: ../../installation.rst:1189
+msgid ""
+"When the script has finished, unmount secondary storage and remove the "
+"created directory."
+msgstr "当脚本完成后，卸载辅助存储并移除创建的目录。"
+
+# 3534852d9cc24d0dbc62b391e336cf0c
+#: ../../installation.rst:1197
+msgid "Repeat these steps for each secondary storage server."
+msgstr "在每个辅助存储服务器上重述如下步骤。"
+
+# a6cf95cb9f38452bbd3598d0c01df2cc
+#: ../../installation.rst:1201
+msgid "Installation Complete! Next Steps"
+msgstr "安装完成！下一步"
+
+# 6294cacb33fa4969b3bf3bc985881f83
+#: ../../installation.rst:1203
+msgid ""
+"Congratulations! You have now installed CloudStack Management Server and the"
+" database it uses to persist system data."
+msgstr "恭喜！你现在已经安装好了CloudStack管理服务器和用于持久化系统数据的数据库。"
+
+# 482158ea55144603a694e07d25bb404b
+#: ../../installation.rst:1206
+msgid ""
+"|installation-complete.png: Finished installs with single Management Server "
+"and multiple Management Servers|"
+msgstr "|installation-complete.png: Finished installs with single Management Server and multiple Management Servers|"
+
+# bdf25769af294a0ea01aafc7a30ad5c1
+#: ../../installation.rst:1209
+msgid "What should you do next?"
+msgstr "下面你将做什么？"
+
+# e9e84870ee234e5f960460ac41635237
+#: ../../installation.rst:1211
+msgid ""
+"Even without adding any cloud infrastructure, you can run the UI to get a "
+"feel for what's offered and how you will interact with CloudStack on an "
+"ongoing basis. See Log In to the UI."
+msgstr "即使没有增加任何云的基础设施，你可以运行登陆界面感受其提供的内容并与CloudStack进行持续的交互。参见登陆用户界面"
+
+# f1bed9af0dd54d0dbd297f8615f6d35e
+#: ../../installation.rst:1215
+msgid ""
+"When you're ready, add the cloud infrastructure and try running some virtual"
+" machines on it, so you can watch how CloudStack manages the infrastructure."
+" See Provision Your Cloud Infrastructure."
+msgstr "当你已经准备好了，添加云基础架构和尝试运行一些虚拟机，你将会观察到CloudStack如何管理基础设施。参阅：提供你的云基础设置"

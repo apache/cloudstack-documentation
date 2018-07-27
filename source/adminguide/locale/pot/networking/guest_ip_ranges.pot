@@ -1,0 +1,33 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../networking/guest_ip_ranges.rst:18
+# c4f6e8eb1ed7428a8132309d84e4b1bf
+msgid "Guest IP Ranges"
+msgstr ""
+
+#: ../../networking/guest_ip_ranges.rst:20
+# ef6d3891253c4ed58a8a51c2f86b51dc
+msgid "The IP ranges for guest network traffic are set on a per-account basis by the user. This allows the users to configure their network in a fashion that will enable VPN linking between their guest network and their clients."
+msgstr ""
+
+#: ../../networking/guest_ip_ranges.rst:25
+# 943864c06f494d7ca4f4310246ba996a
+msgid "In shared networks in Basic zone and Security Group-enabled Advanced networks, you will have the flexibility to add multiple guest IP ranges from different subnets. You can add or remove one IP range at a time. For more information, see `\"About Multiple IP Ranges\" <#about-multiple-ip-ranges>`_."
+msgstr ""
+

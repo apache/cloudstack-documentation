@@ -1,0 +1,682 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../qig.rst:18
+# 6cd8b0759d274663bfffb589061f6f52
+msgid "Quick Installation Guide for CentOS"
+msgstr ""
+
+#: ../../qig.rst:21
+# 9be60313b8f24a13978f899e18120244
+msgid "Overview"
+msgstr ""
+
+#: ../../qig.rst:24
+# bb54b96eceb4444fa03567f9f31a1368
+msgid "What exactly are we building?"
+msgstr ""
+
+#: ../../qig.rst:26
+# d07669bf21f74381a55f977c98d059e5
+msgid "Infrastructure-as-a-Service (IaaS) clouds can be a complex thing to build, and by definition they have a plethora of options, which often lead to confusion for even experienced admins who are newcomers to building cloud platforms. The goal for this runbook is to provide a straightforward set of instructions to get you up and running with CloudStack with a minimum amount of trouble."
+msgstr ""
+
+#: ../../qig.rst:34
+# 0d4c4b0427014885a465573bca862560
+msgid "High level overview of the process"
+msgstr ""
+
+#: ../../qig.rst:36
+# fe3355f1acbd41399f2a663c90198e9d
+msgid "This runbook will focus on building a CloudStack cloud using KVM with CentOS 6.4 with NFS storage on a flat layer-2 network utilizing layer-3 network isolation (aka Security Groups), and doing it all on a single piece of hardware."
+msgstr ""
+
+#: ../../qig.rst:41
+# 121007f51b094c8aaeac5c49937a5e62
+msgid "KVM, or Kernel-based Virtual Machine is a virtualization technology for the Linux kernel. KVM supports native virtualization atop processors with hardware virtualization extensions."
+msgstr ""
+
+#: ../../qig.rst:45
+# 0e87db8720ee41cfac5448651b99b134
+msgid "Security Groups act as distributed firewalls that control access to a group of virtual machines."
+msgstr ""
+
+#: ../../qig.rst:50
+#: ../../qig.rst:441
+# 605246954ba64e77b704db1e41f70958
+# b19d4cd5e52648039e330c62094e1b90
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../qig.rst:52
+# 9c888fde9935462b91316870b5352356
+msgid "To complete this runbook you'll need the following items:"
+msgstr ""
+
+#: ../../qig.rst:54
+# 7398c338e13940178c516024cdb7624e
+msgid "At least one computer which supports hardware virtualization."
+msgstr ""
+
+#: ../../qig.rst:56
+# 7577f66c21704f93b482ece2df1e02c8
+msgid "The `CentOS 6.4 x86_64 minimal install CD <http://mirrors.kernel.org/centos/6.4/isos/x86_64/CentOS-6.4-x86_64-minimal.iso>`_"
+msgstr ""
+
+#: ../../qig.rst:59
+# 0be94f9998b1434b9a98e5d2eb09a094
+msgid "A /24 network with the gateway being at xxx.xxx.xxx.1, no DHCP should be on this network and none of the computers running CloudStack will have a dynamic address. Again this is done for the sake of simplicity."
+msgstr ""
+
+#: ../../qig.rst:65
+# d42364c803234d79abd4f4e8ef300913
+msgid "Environment"
+msgstr ""
+
+#: ../../qig.rst:67
+# 67d9a987dbb94e83a8686df4283209a6
+msgid "Before you begin , you need to prepare the environment before you install CloudStack. We will go over the steps to prepare now."
+msgstr ""
+
+#: ../../qig.rst:72
+# 744452849b164ae08575b3bbe6199141
+msgid "Operating System"
+msgstr ""
+
+#: ../../qig.rst:74
+# 4365445c8c1c4c36bbee6f9d2b9b0e15
+msgid "Using the CentOS 6.4 x86_64 minimal install ISO, you'll need to install CentOS on your hardware. The defaults will generally be acceptable for this installation."
+msgstr ""
+
+#: ../../qig.rst:78
+# 49109b885f65416db8533ac7b1ad5222
+msgid "Once this installation is complete, you'll want to connect to your freshly installed machine via SSH as the root user. Note that you should not allow root logins in a production environment, so be sure to turn off remote logins once you have finished the installation and configuration."
+msgstr ""
+
+#: ../../qig.rst:87
+# a105d2a14b9645b39773b7f2f43be743
+msgid "Configuring the network"
+msgstr ""
+
+#: ../../qig.rst:89
+# 37ac1900de634e79828d33b848dfbf83
+msgid "By default the network will not come up on your hardware and you will need to configure it to work in your environment. Since we specified that there will be no DHCP server in this environment we will be manually configuring your network interface. We will assume, for the purposes of this exercise, that eth0 is the only network interface that will be connected and used."
+msgstr ""
+
+#: ../../qig.rst:95
+# 1295d8c07ee849fd9b266a0980e0eb03
+msgid "Connecting via the console you should login as root. Check the file /etc/sysconfig/network-scripts/ifcfg-eth0, it will look like this by default:"
+msgstr ""
+
+#: ../../qig.rst:105
+# ffc841b92bbd4994ae1f07ea99b908ac
+msgid "Unfortunately, this configuration will not permit you to connect to the network, and is also unsuitable for our purposes with CloudStack. We want to configure that file so that it specifies the IP address, netmask, etc., as shown in the following example:"
+msgstr ""
+
+#: ../../qig.rst:111
+# feeb899f3fa049019ca4e9cee4cb7d94
+msgid "You should not use the Hardware Address (aka the MAC address) from our example for your configuration. It is network interface specific, so you should keep the address already provided in the HWADDR directive."
+msgstr ""
+
+#: ../../qig.rst:129
+# 39e9cdade6f84cee9efbcac85368b36d
+msgid "IP Addressing - Throughout this document we are assuming that you will have a /24 network for your CloudStack implementation. This can be any RFC 1918 network. However, we are assuming that you will match the machine address that we are using. Thus we may use 172.16.10.2 and because you might be using the 192.168.55.0/24 network you would use 192.168.55.2"
+msgstr ""
+
+#: ../../qig.rst:135
+# 3826ab3ca7e14ea69a7e7083749d4776
+msgid "Now that we have the configuration files properly set up, we need to run a few commands to start up the network:"
+msgstr ""
+
+#: ../../qig.rst:148
+# 7170ae16486348e1940a24d4b4f320bc
+msgid "Hostname"
+msgstr ""
+
+#: ../../qig.rst:150
+# bc70cba9278c435ba8d50ba7f9804861
+msgid "CloudStack requires that the hostname be properly set. If you used the default options in the installation, then your hostname is currently set to localhost.localdomain. To test this we will run:"
+msgstr ""
+
+#: ../../qig.rst:158
+# c0837ecf69a448a6833089b3cb700b74
+msgid "At this point it will likely return:"
+msgstr ""
+
+#: ../../qig.rst:164
+# c0f03d48e4f84cf99a5ae3b5695dd6d4
+msgid "To rectify this situation - we'll set the hostname by editing the /etc/hosts file so that it follows a similar format to this example:"
+msgstr ""
+
+#: ../../qig.rst:173
+# 998941fe58dd4716b4d08c3a0a8b28d7
+msgid "After you've modified that file, go ahead and restart the network using:"
+msgstr ""
+
+#: ../../qig.rst:179
+# d7827b49760a48e696feee0646a10476
+msgid "Now recheck with the hostname --fqdn command and ensure that it returns a FQDN response"
+msgstr ""
+
+#: ../../qig.rst:186
+# 8ef16e261eb24be6bbc94f0183b1ee33
+msgid "SELinux"
+msgstr ""
+
+#: ../../qig.rst:188
+# 24eacbfa30f944b6a49895982406f6ee
+msgid "At the moment, for CloudStack to work properly SELinux must be set to permissive. We want to both configure this for future boots and modify it in the current running system."
+msgstr ""
+
+#: ../../qig.rst:192
+# ba6f0974cd5f4ef896906cfb78819190
+msgid "To configure SELinux to be permissive in the running system we need to run the following command:"
+msgstr ""
+
+#: ../../qig.rst:199
+# 80d187882ef94e018fbc80b3f6cf1657
+msgid "To ensure that it remains in that state we need to configure the file /etc/selinux/config to reflect the permissive state, as shown in this example:"
+msgstr ""
+
+#: ../../qig.rst:219
+# e2dd6bd4d20445af9e40ef1dcfeffc59
+msgid "NTP"
+msgstr ""
+
+#: ../../qig.rst:221
+# 7dcd6b5f047c4747b5663a3ea0a586bb
+msgid "NTP configuration is a necessity for keeping all of the clocks in your cloud servers in sync. However, NTP is not installed by default. So we'll install and and configure NTP at this stage. Installation is accomplished as follows:"
+msgstr ""
+
+#: ../../qig.rst:229
+# dc3f1acb9d75421389f41ab343c99644
+msgid "The actual default configuration is fine for our purposes, so we merely need to enable it and set it to start on boot as follows:"
+msgstr ""
+
+#: ../../qig.rst:241
+# 521e40c294df4b9cb34b11ddbef6c113
+msgid "Configuring the CloudStack Package Repository"
+msgstr ""
+
+#: ../../qig.rst:243
+# b0a49ad7b98149209a251f36c2b42c2e
+msgid "We need to configure the machine to use a CloudStack package repository."
+msgstr ""
+
+#: ../../qig.rst:246
+# ccc1c3b2524242c3b7b2f4646644974f
+msgid "The Apache CloudStack official releases are source code. As such there are no 'official' binaries available. The full installation guide describes how to take the source release and generate RPMs and and yum repository. This guide attempts to keep things as simple as possible, and thus we are using one of the community-provided yum repositories."
+msgstr ""
+
+#: ../../qig.rst:252
+# 839459c6f46e4c4fa3626c7f84a78e14
+msgid "To add the CloudStack repository, create /etc/yum.repos.d/cloudstack.repo and insert the following information."
+msgstr ""
+
+#: ../../qig.rst:265
+# 4a110af8c49c4b398c36065cc45c8f60
+msgid "NFS"
+msgstr ""
+
+#: ../../qig.rst:267
+# 19505af6684e49c794879229d714e4aa
+msgid "Our configuration is going to use NFS for both primary and secondary storage. We are going to go ahead and setup two NFS shares for those purposes. We'll start out by installing nfs-utils."
+msgstr ""
+
+#: ../../qig.rst:275
+# 6cb16ffd970344c3ace837183e3c39ff
+msgid "We now need to configure NFS to serve up two different shares. This is handled comparatively easily in the /etc/exports file. You should ensure that it has the following content:"
+msgstr ""
+
+#: ../../qig.rst:284
+# cc8ef4b76bf64c62b6c5e89b6ee0fcd9
+msgid "You will note that we specified two directories that don't exist (yet) on the system. We'll go ahead and create those directories and set permissions appropriately on them with the following commands:"
+msgstr ""
+
+#: ../../qig.rst:293
+# 518439ba2be945f9a7e3fbab2a21cdbe
+msgid "CentOS 6.x releases use NFSv4 by default. NFSv4 requires that domain setting matches on all clients. In our case, the domain is cloud.priv, so ensure that the domain setting in /etc/idmapd.conf is uncommented and set as follows: Domain = cloud.priv"
+msgstr ""
+
+#: ../../qig.rst:298
+# b485a87031a94a76a3bf754cdb5cefd2
+msgid "Now you'll need uncomment the configuration values in the file /etc/sysconfig/nfs"
+msgstr ""
+
+#: ../../qig.rst:310
+# e876c59eae014aa3baa25c6b7c1401a3
+msgid "Now we need to configure the firewall to permit incoming NFS connections. Edit the file /etc/sysconfig/iptables"
+msgstr ""
+
+#: ../../qig.rst:327
+# d7b296589dc34344af087b4fb44f8a39
+msgid "Now you can restart the iptables service with the following command:"
+msgstr ""
+
+#: ../../qig.rst:333
+# 2174509b3845456db7eab82fa2adba29
+msgid "We now need to configure the nfs service to start on boot and actually start it on the host by executing the following commands:"
+msgstr ""
+
+#: ../../qig.rst:345
+# 3df2c4989e10469ebd9d8e536e5a1d36
+msgid "Management Server Installation"
+msgstr ""
+
+#: ../../qig.rst:347
+# 9a58ef21fdd64508a4a73a7a0a6ca8ab
+msgid "We're going to install the CloudStack management server and surrounding tools."
+msgstr ""
+
+#: ../../qig.rst:351
+# 6ca0e5d18a4f4af287c3a9e04ddadc5d
+msgid "Database Installation and Configuration"
+msgstr ""
+
+#: ../../qig.rst:353
+# 946061f8b1cb4c97b95a950dae96c2e3
+msgid "We'll start with installing MySQL and configuring some options to ensure it runs well with CloudStack."
+msgstr ""
+
+#: ../../qig.rst:356
+# 51eb7503da9a4eb995968d6041b1e2ac
+msgid "Install by running the following command:"
+msgstr ""
+
+#: ../../qig.rst:362
+# 36d9b86e7e3248b784a3dcf59fc552e3
+msgid "With MySQL now installed we need to make a few configuration changes to /etc/my.cnf. Specifically we need to add the following options to the [mysqld] section:"
+msgstr ""
+
+#: ../../qig.rst:374
+# a5c5a266adba4e3290312bca285a9f01
+msgid "Now that MySQL is properly configured we can start it and configure it to start on boot as follows:"
+msgstr ""
+
+#: ../../qig.rst:384
+#: ../../qig.rst:463
+# 1fe575a11b7a4071b4e6a29dcc38cf07
+# 0b4d699f167b42bb9b193792f0bd0725
+msgid "Installation"
+msgstr ""
+
+#: ../../qig.rst:386
+# 48a0def962364fb793fd558db7a83c29
+msgid "We are now going to install the management server. We do that by executing the following command:"
+msgstr ""
+
+#: ../../qig.rst:393
+# ffbb50ab243643e9b5435264bfd61bf7
+msgid "With the application itself installed we can now setup the database, we'll do that with the following command and options:"
+msgstr ""
+
+#: ../../qig.rst:400
+# 59e045efceb0436b8cecf6c9c5eda843
+msgid "When this process is finished, you should see a message like \"CloudStack has successfully initialized the database.\""
+msgstr ""
+
+#: ../../qig.rst:403
+# 5e4571669d1042a1b867fb1b24dbfbdd
+msgid "Now that the database has been created, we can take the final step in setting up the management server by issuing the following command:"
+msgstr ""
+
+#: ../../qig.rst:412
+# 33ce2bfd534f433e8a6cd4f7c6e1c166
+msgid "System Template Setup"
+msgstr ""
+
+#: ../../qig.rst:414
+# 0d95e3d0c71b4c45858b31f77dde036e
+msgid "CloudStack uses a number of system VMs to provide functionality for accessing the console of virtual machines, providing various networking services, and managing various aspects of storage. This step will acquire those system images ready for deployment when we bootstrap your cloud."
+msgstr ""
+
+#: ../../qig.rst:419
+# d3c498d585ab4741bd2c27b0b2084745
+msgid "Now we need to download the system VM template and deploy that to the share we just mounted. The management server includes a script to properly manipulate the system VMs images."
+msgstr ""
+
+#: ../../qig.rst:427
+# 92903e9533534b6fb4148c0635069661
+msgid "That concludes our setup of the management server. We still need to configure CloudStack, but we will do that after we get our hypervisor set up."
+msgstr ""
+
+#: ../../qig.rst:432
+# 7f1393a48e184b35b9bb4a8b95ac1a13
+msgid "KVM Setup and Installation"
+msgstr ""
+
+#: ../../qig.rst:434
+# d098ee902a904e3c8736a2d3464fd49c
+msgid "KVM is the hypervisor we'll be using - we will recover the initial setup which has already been done on the hypervisor host and cover installation of the agent software, you can use the same steps to add additional KVM nodes to your CloudStack environment."
+msgstr ""
+
+#: ../../qig.rst:443
+# e02d098f8e1a4eb081a496f88791dac0
+msgid "We explicitly are using the management server as a compute node as well, which means that we have already performed many of the prerequisite steps when setting up the management server, but we will list them here for clarity. Those steps are:"
+msgstr ""
+
+#: ../../qig.rst:448
+# fdf9d335282f4fe98e99728f3399c1fd
+msgid ":ref:`conf-network`"
+msgstr ""
+
+#: ../../qig.rst:450
+# 445994f799ba4e909ce0c0a186f2f31d
+msgid ":ref:`conf-hostname`"
+msgstr ""
+
+#: ../../qig.rst:452
+# ab93010654414278b9eed8a6c99160e0
+msgid ":ref:`conf-selinux`"
+msgstr ""
+
+#: ../../qig.rst:454
+# fdb31d5daa78457382f913417f11a829
+msgid ":ref:`conf-ntp`"
+msgstr ""
+
+#: ../../qig.rst:456
+# c13c6efacec5485ab038723e8f958003
+msgid ":ref:`qigconf-pkg-repo`"
+msgstr ""
+
+#: ../../qig.rst:458
+# e9a76dadeb804696ac9ac907ed256fbf
+msgid "You shouldn't need to do that for the management server, of course, but any additional hosts will need for you to complete the above steps."
+msgstr ""
+
+#: ../../qig.rst:465
+# adc6a52e07e645149ab0fd5b03cc2e22
+msgid "Installation of the KVM agent is trivial with just a single command, but afterwards we'll need to configure a few things."
+msgstr ""
+
+#: ../../qig.rst:474
+# 9b94ad0de8bc42b6bfed991871ad6c23
+msgid "KVM Configuration"
+msgstr ""
+
+#: ../../qig.rst:476
+# 41d6a9265c8d47f2b9fb9b657cf8dd10
+msgid "We have two different parts of KVM to configure, libvirt, and QEMU."
+msgstr ""
+
+#: ../../qig.rst:480
+# e4f062f561b8411ab57677d08500d1fe
+msgid "QEMU Configuration"
+msgstr ""
+
+#: ../../qig.rst:482
+# 815a9beec20b476d9771e7ef18b8c600
+msgid "KVM configuration is relatively simple at only a single item. We need to edit the QEMU VNC configuration. This is done by editing /etc/libvirt/qemu.conf and ensuring the following line is present and uncommented."
+msgstr ""
+
+#: ../../qig.rst:488
+# 975c5c294f1442bf81c674603302b96d
+msgid "vnc_listen=0.0.0.0"
+msgstr ""
+
+#: ../../qig.rst:492
+# fa6d60015c4f40879deddfeb0aa1faba
+msgid "Libvirt Configuration"
+msgstr ""
+
+#: ../../qig.rst:494
+# 77d8c22ce01a436c86a3356db1be9f2d
+msgid "CloudStack uses libvirt for managing virtual machines. Therefore it is vital that libvirt is configured correctly. Libvirt is a dependency of cloud-agent and should already be installed."
+msgstr ""
+
+#: ../../qig.rst:498
+# 99f2fbc9c2454f3487ad43f84bb08a12
+msgid "In order to have live migration working libvirt has to listen for unsecured TCP connections. We also need to turn off libvirts attempt to use Multicast DNS advertising. Both of these settings are in /etc/libvirt/libvirtd.conf"
+msgstr ""
+
+#: ../../qig.rst:502
+# 9fc492fb10044ee0844b1d25e91f50ee
+msgid "Set the following paramaters:"
+msgstr ""
+
+#: ../../qig.rst:512
+# 95403c520e0647c88d0026cb30086615
+msgid "Turning on \"listen_tcp\" in libvirtd.conf is not enough, we have to change the parameters as well we also need to modify /etc/sysconfig/libvirtd:"
+msgstr ""
+
+#: ../../qig.rst:515
+# d56b9b860fbc4a259d021e12bda7bc3c
+msgid "Uncomment the following line:"
+msgstr ""
+
+#: ../../qig.rst:521
+# 169629893c8f43fa88410c11c1009c5f
+msgid "Restart libvirt"
+msgstr ""
+
+#: ../../qig.rst:529
+# 18f1fb4c4c8a42b386267c081b445d95
+msgid "KVM configuration complete"
+msgstr ""
+
+#: ../../qig.rst:530
+# 03532dcd2b4c4677a2f98e4a0d94594e
+msgid "That concludes our installation and configuration of KVM, and we'll now move to using the CloudStack UI for the actual configuration of our cloud."
+msgstr ""
+
+#: ../../qig.rst:535
+# 952b415ac3874c7f9d04f5e587352ac9
+msgid "Configuration"
+msgstr ""
+
+#: ../../qig.rst:537
+# 523a82da5a444efe823f80fb51e88066
+msgid "As we noted before we will be using security groups to provide isolation and by default that implies that we'll be using a flat layer-2 network. It also means that the simplicity of our setup means that we can use the quick installer."
+msgstr ""
+
+#: ../../qig.rst:544
+# cbed6a65a67b45e6af0fb6ffff271769
+msgid "UI Access"
+msgstr ""
+
+#: ../../qig.rst:546
+# dda96068dfd5400c8163c00981ab2bb8
+msgid "To get access to CloudStack's web interface, merely point your browser to http://172.16.10.2:8080/client The default username is 'admin', and the default password is 'password'. You should see a splash screen that allows you to choose several options for setting up CloudStack. You should choose the Continue with Basic Setup option."
+msgstr ""
+
+#: ../../qig.rst:552
+# bbb1c7f2891a4ec4a83d9d55bcfa3675
+msgid "You should now see a prompt requiring you to change the password for the admin user. Please do so."
+msgstr ""
+
+#: ../../qig.rst:557
+# 3be78f0dce5244e4b9131f8c619ad9a4
+msgid "Setting up a Zone"
+msgstr ""
+
+#: ../../qig.rst:559
+# 0aba2895b7c74bce8a058589e3983a7c
+msgid "A zone is the largest organization entity in CloudStack - and we'll be creating one, this should be the screen that you see in front of you now. And for us there are 5 pieces of information that we need."
+msgstr ""
+
+#: ../../qig.rst:563
+# 678aeb5fe9214685805c844269bc9fb8
+msgid "Name - we will set this to the ever-descriptive 'Zone1' for our cloud."
+msgstr ""
+
+#: ../../qig.rst:565
+# 63f27019f41b44649ba00f8ca77ec852
+msgid "Public DNS 1 - we will set this to '8.8.8.8' for our cloud."
+msgstr ""
+
+#: ../../qig.rst:567
+# b747f07282f845c1b0e23cb76e573616
+msgid "Public DNS 2 - we will set this to '8.8.4.4' for our cloud."
+msgstr ""
+
+#: ../../qig.rst:569
+# b3ccf7d2313948489f913f8c32a9aeb7
+msgid "Internal DNS1 - we will also set this to '8.8.8.8' for our cloud."
+msgstr ""
+
+#: ../../qig.rst:571
+# d9a7755ae183447788f746bd5a20a8ed
+msgid "Internal DNS2 - we will also set this to '8.8.4.4' for our cloud."
+msgstr ""
+
+#: ../../qig.rst:574
+# d29af6bf0c6f453c99632dcde7d46008
+msgid "CloudStack distinguishes between internal and public DNS. Internal DNS is assumed to be capable of resolving internal-only hostnames, such as your NFS server’s DNS name. Public DNS is provided to the guest VMs to resolve public IP addresses. You can enter the same DNS server for both types, but if you do so, you must make sure that both internal and public IP addresses can route to the DNS server. In our specific case we will not use any names for resources internally, and we have indeed them set to look to the same external resource so as to not add a namerserver setup to our list of requirements."
+msgstr ""
+
+#: ../../qig.rst:586
+# d1ccf0a04f8d407f92b076a97ca934aa
+msgid "Pod Configuration"
+msgstr ""
+
+#: ../../qig.rst:588
+# d633c33294f54ed9b55112c0f0f4c4b6
+msgid "Now that we've added a Zone, the next step that comes up is a prompt for information regading a pod. Which is looking for several items."
+msgstr ""
+
+#: ../../qig.rst:591
+# 5d8b827958834106bb8322c4b726e589
+msgid "Name - We'll use Pod1 for our cloud."
+msgstr ""
+
+#: ../../qig.rst:593
+# 213b395a2593404daf151f1a941d4adc
+msgid "Gateway - We'll use 172.16.10.1 as our gateway"
+msgstr ""
+
+#: ../../qig.rst:595
+# f02f613f386b4d1c8b305c1d35c56583
+msgid "Netmask - We'll use 255.255.255.0"
+msgstr ""
+
+#: ../../qig.rst:597
+# 9c5bffa76ac74249ad74e842f6eebf17
+msgid "Start/end reserved system IPs - we will use 172.16.10.10-172.16.10.20"
+msgstr ""
+
+#: ../../qig.rst:599
+# 5cf252fb06404e90931c41694829ed58
+msgid "Guest gateway - We'll use 172.16.10.1"
+msgstr ""
+
+#: ../../qig.rst:601
+# 5f00b4c2472c4db99f0cfaaa62c9a5a2
+msgid "Guest netmask - We'll use 255.255.255.0"
+msgstr ""
+
+#: ../../qig.rst:603
+# 17730085682c4460bcf6fc9b337e1b79
+msgid "Guest start/end IP - We'll use 172.16.10.30-172.16.10.200"
+msgstr ""
+
+#: ../../qig.rst:607
+# 367247fc307a4a82b2ad9e2b711e5619
+msgid "Cluster"
+msgstr ""
+
+#: ../../qig.rst:609
+# 7850cd3533944572afd0e2c12f25a29f
+msgid "Now that we've added a Zone, we need only add a few more items for configuring the cluster."
+msgstr ""
+
+#: ../../qig.rst:612
+# 7001d238c08a4539b6f079919c83370e
+msgid "Name - We'll use Cluster1"
+msgstr ""
+
+#: ../../qig.rst:614
+# b757d57d9ef8406e9cb173ab58d3c2f7
+msgid "Hypervisor - Choose KVM"
+msgstr ""
+
+#: ../../qig.rst:616
+# d2da65ca4fcc49799aa20d81580d1d11
+msgid "You should be prompted to add the first host to your cluster at this point. Only a few bits of information are needed."
+msgstr ""
+
+#: ../../qig.rst:619
+# 3882023bf413443a94edf6abde71aa6d
+msgid "Hostname - we'll use the IP address 172.16.10.2 since we didn't set up a DNS server."
+msgstr ""
+
+#: ../../qig.rst:622
+# d10fbbf3eaeb49159c2e6ccc868e03b1
+msgid "Username - we'll use 'root'"
+msgstr ""
+
+#: ../../qig.rst:624
+# 9c4f5c5877de4ea98bbd1fb9735ecef1
+msgid "Password - enter the operating system password for the root user"
+msgstr ""
+
+#: ../../qig.rst:628
+# 3d5ffbc59d224d41be2df9ba6af77742
+msgid "Primary Storage"
+msgstr ""
+
+#: ../../qig.rst:630
+# 66d0666b459a47c3b5f48d2883046b70
+msgid "With your cluster now setup - you should be prompted for primary storage information. Choose NFS as the storage type and then enter the following values in the fields:"
+msgstr ""
+
+#: ../../qig.rst:634
+# ca283f835167437fb9bc1ef6393ca820
+msgid "Name - We'll use 'Primary1'"
+msgstr ""
+
+#: ../../qig.rst:636
+# fdf29ecc70964523b52e9de67e9413d7
+msgid "Server - We'll be using the IP address 172.16.10.2"
+msgstr ""
+
+#: ../../qig.rst:638
+# 7e622eac227540c9bee2de26c79cb398
+msgid "Path - Well define /primary as the path we are using"
+msgstr ""
+
+#: ../../qig.rst:642
+# 749f44f07ab84067949bed01b90f7371
+msgid "Secondary Storage"
+msgstr ""
+
+#: ../../qig.rst:644
+# 387b9b2ba8bb4d86bbd092c06b307189
+msgid "If this is a new zone, you'll be prompted for secondary storage information - populate it as follows:"
+msgstr ""
+
+#: ../../qig.rst:647
+# b25a138b410441ccabde5dc127832043
+msgid "NFS server - We'll use the IP address 172.16.10.2"
+msgstr ""
+
+#: ../../qig.rst:649
+# 05a433329180429f9aadec69507b153f
+msgid "Path - We'll use /secondary"
+msgstr ""
+
+#: ../../qig.rst:651
+# 5f25228532674a9881e0c4b867cf64a9
+msgid "Now, click Launch and your cloud should begin setup - it may take several minutes depending on your internet connection speed for setup to finalize."
+msgstr ""
+
+#: ../../qig.rst:654
+# bcb5d6bf55794f36bb79ef590164a807
+msgid "That's it, you are done with installation of your Apache CloudStack cloud."
+msgstr ""
+

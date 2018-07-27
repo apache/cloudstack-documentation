@@ -1,0 +1,1199 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:06+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 037fa60a2e2f4601bf22e714a97fe0fd
+#: ../../networking/remote_access_vpn.rst:18
+msgid "Remote Access VPN"
+msgstr "远程访问VPN"
+
+# 8202b8f150584992995c6c6f69a2c907
+#: ../../networking/remote_access_vpn.rst:20
+msgid ""
+"CloudStack account owners can create virtual private networks (VPN) to "
+"access their virtual machines. If the guest network is instantiated from a "
+"network offering that offers the Remote Access VPN service, the virtual "
+"router (based on the System VM) is used to provide the service. CloudStack "
+"provides a L2TP-over-IPsec-based remote access VPN service to guest virtual "
+"networks. Since each network gets its own virtual router, VPNs are not "
+"shared across the networks. VPN clients native to Windows, Mac OS X and iOS "
+"can be used to connect to the guest networks. The account owner can create "
+"and manage users for their VPN. CloudStack does not use its account database"
+" for this purpose but uses a separate table. The VPN user database is shared"
+" across all the VPNs created by the account owner. All VPN users get access "
+"to all VPNs created by the account owner."
+msgstr "CloudStack中的账户拥有者可以建立虚拟专用网(VPN)以便访问他们的虚拟机。如果通过网络方案对来宾网络提供远程VPN访问服务的实例化，虚拟路由(基于System VM)将被用于提供服务。CloudStack为来宾虚拟网络提供了一个基于L2TP-over-IPsec-based协议的远程VPN访问服务。因为每个网络有它自己的虚拟路由器，VPNs不能跨网络共享。Windows, Mac OS X和iOS自带的VPN客户端可以用于访问来宾网络。账户拥有者可以建立并管理他们的VPN用户。CloudStack并不为此使用自己的账户数据库，而是使用一个独立的表。VPN用户数据库在同一个账户拥有者建立的VPN网络中被共享。 也就是说，同一个账户拥有者创建的所有VPN可以被它的所有VPN用户访问。"
+
+# a8a54e6134ab4ebaae71aeb42d0ad32b
+#: ../../networking/remote_access_vpn.rst:35
+msgid ""
+"Make sure that not all traffic goes through the VPN. That is, the route "
+"installed by the VPN should be only for the guest network and not for all "
+"traffic."
+msgstr "确保不是所有的网络流量走VPN。也就是说，用于配置VPN的route不是唯一用于该guest network，也不承担全部的网络流量。"
+
+# a107bc4ab6624b839681adafc00d60e1
+#: ../../networking/remote_access_vpn.rst:39
+msgid ""
+"**Road Warrior / Remote Access**. Users want to be able to connect securely "
+"from a home or office to a private network in the cloud. Typically, the IP "
+"address of the connecting client is dynamic and cannot be preconfigured on "
+"the VPN server."
+msgstr "**公路勇士/远程访问**. .用户希望可以安全地从家里或者办公室连接到云里的一个 私有网络。特别是连接的客户端的IP地址是动态决定的，不能预先配置到VPN 服务器上。"
+
+# 7b5e742bfe7f429794320cf1c32ffdfc
+#: ../../networking/remote_access_vpn.rst:44
+msgid ""
+"**Site to Site**. In this scenario, two private subnets are connected over "
+"the public Internet with a secure VPN tunnel. The cloud user's subnet (for "
+"example, an office network) is connected through a gateway to the network in"
+" the cloud. The address of the user's gateway must be preconfigured on the "
+"VPN server in the cloud. Note that although L2TP-over-IPsec can be used to "
+"set up Site-to-Site VPNs, this is not the primary intent of this feature. "
+"For more information, see \":ref:`setting-s2s-vpn-conn`\"."
+msgstr "**Site to Site 站点到站点**。在这个场景中，两个私有子网通过公共互联网上的一个安全VPN隧道互联。云用户的子网 （例如：办公室的网络）通过一个网关连接到云中的网络。用户的网关地址必须被预先配置到云的VPN服务器上。注意：通过 L2TP-over-IPsec 协议可以用来配置站点到站点的 VPN，虽然这不是该特性的最初目标。更多信息，参考\":ref:`setting-s2s-vpn-conn`\"。"
+
+# 3411c8387ca84f18bd032795907f4585
+#: ../../networking/remote_access_vpn.rst:55
+msgid "Configuring Remote Access VPN"
+msgstr "配置远程访问VPN"
+
+# b5e1d88079c447ba9d2baa0e3f5cf685
+#: ../../networking/remote_access_vpn.rst:57
+msgid "To set up VPN for the cloud:"
+msgstr "为云设置VPN："
+
+# 85153916f2a94aeb80faa2c9f22cfcea
+# e7cff502f3494c00b665a1b732e05fb1
+# 7fd5ac75573d435b8c164435b6b50404
+# ab1f2323529a48e8a071e9baa44284e3
+# 6dfbddbad973426b8d6704da05fb2166
+# ce7c03a477b84c029914728fac5f85d5
+#: ../../networking/remote_access_vpn.rst:59
+#: ../../networking/remote_access_vpn.rst:301
+#: ../../networking/remote_access_vpn.rst:411
+#: ../../networking/remote_access_vpn.rst:431
+#: ../../networking/remote_access_vpn.rst:493
+#: ../../networking/remote_access_vpn.rst:624
+msgid "Log in to the CloudStack UI as an administrator or end user."
+msgstr "使用管理员或者终端用户账号登录CloudStack UI。"
+
+# ef4d98e4df0149d797b4aebfc0dbdc03
+#: ../../networking/remote_access_vpn.rst:61
+msgid "In the left navigation, click Global Settings."
+msgstr "在左侧导航栏，点击 全局设置"
+
+# 6915f23eef3f4ddfaf19ba566058535d
+#: ../../networking/remote_access_vpn.rst:63
+msgid "Set the following global configuration parameters."
+msgstr "设置以下全局配置参数。"
+
+# b46467b5e34e436389d14380f0094d63
+#: ../../networking/remote_access_vpn.rst:65
+msgid ""
+"remote.access.vpn.client.ip.range - The range of IP addresses to be "
+"allocated to remote access VPN clients. The first IP in the range is used by"
+" the VPN server."
+msgstr "remote.access.vpn.client.ip.range – 分配给远程访问VPN客户端的IP地址范围。第一个IP被VPN服务器使用。"
+
+# ad4d961d0bf3453ebc21a59b09ad0207
+#: ../../networking/remote_access_vpn.rst:69
+msgid "remote.access.vpn.psk.length - Length of the IPSec key."
+msgstr "remote.access.vpn.psk.length – IPsec密钥长度。"
+
+# a89aef80d75a49a9bf21eed458b3a570
+#: ../../networking/remote_access_vpn.rst:71
+msgid ""
+"remote.access.vpn.user.limit - Maximum number of VPN users per account."
+msgstr "remote.access.vpn.user.limit – 单个账户的最大VPN用户数量。"
+
+# 115f9b2e63704bd7b8d0880401243098
+#: ../../networking/remote_access_vpn.rst:74
+msgid "To enable VPN for a particular network:"
+msgstr "为特定的网络启用VPN："
+
+# 1cbcce1e10884bc0906f10625b02b967
+# d3065ab6ac634b4ab6d37d5cc5f6b0f8
+#: ../../networking/remote_access_vpn.rst:76
+#: ../../networking/remote_access_vpn.rst:101
+msgid "Log in as a user or administrator to the CloudStack UI."
+msgstr "使用用户或管理员身份登录到CloudStack用户界面。"
+
+# 911488c63a744096b46e3c6ffffb13be
+# d221bc15811f454fbe75a5f60599eddf
+#: ../../networking/remote_access_vpn.rst:78
+#: ../../networking/remote_access_vpn.rst:103
+msgid "In the left navigation, click Network."
+msgstr "在左边导航栏，点击网络。"
+
+# 6c20446c6a1442f5997a8515ffe0e2b7
+#: ../../networking/remote_access_vpn.rst:80
+msgid "Click the name of the network you want to work with."
+msgstr "选择你要操作的网络名称"
+
+# a23f38b6e2c8464bb754dcb7965bd45e
+#: ../../networking/remote_access_vpn.rst:82
+msgid "Click View IP Addresses."
+msgstr "点击查看IP地址。"
+
+# ddf12be035374568a290af5640b40e74
+#: ../../networking/remote_access_vpn.rst:84
+msgid "Click one of the displayed IP address names."
+msgstr "点击一个显示的IP地址名称。"
+
+# 41e32709f78944188aa733087e185747
+# 29b34df35b844a28a5c4da345fb4deca
+#: ../../networking/remote_access_vpn.rst:86
+#: ../../networking/remote_access_vpn.rst:140
+msgid "Click the Enable VPN button. |vpn-icon.png|"
+msgstr "点击启用VPN按钮。|vpn-icon.png|"
+
+# 2721223cf47046fa977985536715b7f7
+#: ../../networking/remote_access_vpn.rst:88
+msgid "The IPsec key is displayed in a popup window."
+msgstr "IPsec密钥将显示在弹出的窗口中。"
+
+# 4837a25ffda64a66818f80b1160c7cd2
+#: ../../networking/remote_access_vpn.rst:92
+msgid "Configuring Remote Access VPN in VPC"
+msgstr "为VPC配置远程访问VPN"
+
+# c157c1f5cdd34780971c2d08fa7c492c
+#: ../../networking/remote_access_vpn.rst:94
+msgid ""
+"On enabling Remote Access VPN on a VPC, any VPN client present outside the "
+"VPC can access VMs present in the VPC by using the Remote VPN connection. "
+"The VPN client can be present anywhere except inside the VPC on which the "
+"user enabled the Remote Access VPN service."
+msgstr "在VPC中启用远程访问VPN，任何VPC以外的VPN客户端都可以使用远程VPN连接访问VPC中的VM。VPN客户端可以在除了用户启用了远程访问VPN服务的VPC中的任何位置。"
+
+# 5254f550923d4da39985b04b9a5b5054
+#: ../../networking/remote_access_vpn.rst:99
+msgid "To enable VPN for a VPC:"
+msgstr "为VPC开启VPN："
+
+# 12f54511f47d449693acfea97e8d4600
+# 435bbd53f5414d84ba589387bf3fdce6
+# b89124caf1504a709e89424403a433ed
+# 7f0dcc6104d34e828aed248a3d1e5382
+#: ../../networking/remote_access_vpn.rst:105
+#: ../../networking/remote_access_vpn.rst:435
+#: ../../networking/remote_access_vpn.rst:497
+#: ../../networking/remote_access_vpn.rst:628
+msgid "In the Select view, select VPC."
+msgstr "在选择视图中，选择VPC。"
+
+# 7febfd652a0f4a4a9e44f110742bf34a
+# f923f2ca6046405ab0c396e3ca9d07ec
+# 07d5aa607fb94d8b9968b055618eea1c
+#: ../../networking/remote_access_vpn.rst:107
+#: ../../networking/remote_access_vpn.rst:437
+#: ../../networking/remote_access_vpn.rst:630
+msgid ""
+"All the VPCs that you have created for the account is listed in the page."
+msgstr "此帐号创建的所有VPC将显示在页面中。"
+
+# 9c932fa1898c4fef97f99b0535e90a08
+#: ../../networking/remote_access_vpn.rst:110
+msgid "Click the Configure button of the VPC."
+msgstr "点击VPC的配置按钮。"
+
+# 83859c50046f48e4b614cd9f79148c16
+# 15f6f70e22df4f90868d62f6c93d09f7
+# 22a5c413786843acb09faad526a6e8e0
+# b4e49b76aea54ad6a1b5116db84dd6d6
+#: ../../networking/remote_access_vpn.rst:112
+#: ../../networking/remote_access_vpn.rst:446
+#: ../../networking/remote_access_vpn.rst:509
+#: ../../networking/remote_access_vpn.rst:641
+msgid "For each tier, the following options are displayed:"
+msgstr "对于每一个层，会显示以下选项。"
+
+# f709cfb9270544caa350d3649e206913
+# 1e135a9023a3449996277c5654e0ffe8
+# 36d751e518594344814cd905fce95167
+# 5f29611ae8024e66a507590e86ca1301
+#: ../../networking/remote_access_vpn.rst:114
+#: ../../networking/remote_access_vpn.rst:448
+#: ../../networking/remote_access_vpn.rst:511
+#: ../../networking/remote_access_vpn.rst:643
+msgid "Internal LB"
+msgstr "内部LB"
+
+# 38b29ff504c24ecc8d7d54f35ab29998
+# d744448419454b5ba7aae6c638c1f8fd
+# 7e6e21ff676c435d902e75134d2341e5
+# b7dd123eea7d460aa99844bad34e0f91
+#: ../../networking/remote_access_vpn.rst:116
+#: ../../networking/remote_access_vpn.rst:450
+#: ../../networking/remote_access_vpn.rst:513
+#: ../../networking/remote_access_vpn.rst:645
+msgid "Public LB IP"
+msgstr "公共LB IP"
+
+# 74d00e17afdf47d8a79f5c8f0a90a214
+# 404668f335f04d41947db0129e79e65f
+# bee509b27e7c4c9985f5bd7c9169ecaf
+# 7f14717fbb6e471c9e00e2f7622cfa7b
+#: ../../networking/remote_access_vpn.rst:118
+#: ../../networking/remote_access_vpn.rst:452
+#: ../../networking/remote_access_vpn.rst:515
+#: ../../networking/remote_access_vpn.rst:647
+msgid "Static NAT"
+msgstr "静态 NAT"
+
+# 6fd6582e4c7d47019c91a20d69646e3a
+# e333c5792fca4359b9348192f5918984
+# bdf83d752fbc42ef93ab96051cdf7700
+# 30265536e81c46c2879ee0cca63d1297
+#: ../../networking/remote_access_vpn.rst:120
+#: ../../networking/remote_access_vpn.rst:454
+#: ../../networking/remote_access_vpn.rst:517
+#: ../../networking/remote_access_vpn.rst:649
+msgid "Virtual Machines"
+msgstr "虚拟机"
+
+# 8696dd08ef2d4b6a816ecd0095cdf602
+# f1f39145e71e46b09b4c26ce0175e5b8
+# fe3c8f334ef04b4aa83e3850c9666137
+# 54ff7edf855e482da2b26688c543effe
+#: ../../networking/remote_access_vpn.rst:122
+#: ../../networking/remote_access_vpn.rst:456
+#: ../../networking/remote_access_vpn.rst:519
+#: ../../networking/remote_access_vpn.rst:651
+msgid "CIDR"
+msgstr "CIDR"
+
+# 1bd24a8501fd4efd8cd4d0eba492ce37
+# e7a3e4a10b2e484f8b311cdb938a0e47
+# 95e13a760c004dc9a119ddf73d83d0fa
+# 5605be5958c24cb5a0f534dbdecdfa40
+#: ../../networking/remote_access_vpn.rst:124
+#: ../../networking/remote_access_vpn.rst:458
+#: ../../networking/remote_access_vpn.rst:521
+#: ../../networking/remote_access_vpn.rst:653
+msgid "The following router information is displayed:"
+msgstr "显示以下路由器信息："
+
+# 8d80f7dd9bcc41f38e801ab022f3fa7d
+# 5c726601395a427e9f541bf544194e40
+# 8b623ab0e8764c58bad6a828685b3cce
+# 71bcceb5de54474b88583e11b88f962e
+#: ../../networking/remote_access_vpn.rst:126
+#: ../../networking/remote_access_vpn.rst:460
+#: ../../networking/remote_access_vpn.rst:523
+#: ../../networking/remote_access_vpn.rst:655
+msgid "Private Gateways"
+msgstr "专用网关"
+
+# 0b3d0e7c6eac4b83b9912d3af84c76b3
+# 582728e1b1c043f0bde4a3c35e0ebaba
+# df66b830cc464227ab4da8790a6275bf
+# 4055bdef61d847dc91261a6fc6346d1d
+#: ../../networking/remote_access_vpn.rst:128
+#: ../../networking/remote_access_vpn.rst:462
+#: ../../networking/remote_access_vpn.rst:525
+#: ../../networking/remote_access_vpn.rst:657
+msgid "Public IP Addresses"
+msgstr "公共IP地址"
+
+# 9ce2994577cc43f9bd1f86225e23149e
+# fbf89a2ae9534ea18fb4673230aa75fb
+# 0720a5b1037e49ffbf44a70beacd5c9b
+# 3ade6e74142f446c9bea2329e2828be8
+#: ../../networking/remote_access_vpn.rst:130
+#: ../../networking/remote_access_vpn.rst:464
+#: ../../networking/remote_access_vpn.rst:527
+#: ../../networking/remote_access_vpn.rst:659
+msgid "Site-to-Site VPNs"
+msgstr "站点到站点 VPN"
+
+# 8c10e84bb92143eb918356bda1b0e7e5
+# 376033730f8d4e0b88fc25e1b6fdea80
+# a7e9c55327984532a4460a2b4ba05bb4
+# cd29b4ee7b0c4da0aec784bb04dce7e6
+#: ../../networking/remote_access_vpn.rst:132
+#: ../../networking/remote_access_vpn.rst:466
+#: ../../networking/remote_access_vpn.rst:529
+#: ../../networking/remote_access_vpn.rst:661
+msgid "Network ACL Lists"
+msgstr "网络 ACL列表"
+
+# c45c88d1e8af4023bd23142b7397edd5
+#: ../../networking/remote_access_vpn.rst:134
+msgid "In the Router node, select Public IP Addresses."
+msgstr "在路由器节点中，选择公共IP地址。"
+
+# 2334ea7959384b2bbf5138eb8c7aaf78
+#: ../../networking/remote_access_vpn.rst:136
+msgid "The IP Addresses page is displayed."
+msgstr "系统显示IP地址页面。"
+
+# 31440b2a6daa47d2a5ff458a51ca81cc
+#: ../../networking/remote_access_vpn.rst:138
+msgid "Click Source NAT IP address."
+msgstr "点击源NAT IP地址。"
+
+# 8cf058b60a184e129abe4d2bc8ade840
+#: ../../networking/remote_access_vpn.rst:142
+msgid "Click OK to confirm. The IPsec key is displayed in a pop-up window."
+msgstr "点击OK确认。IPsec密钥将显示在弹出的窗口中。"
+
+# 36c398fbda5b45599ac36f3b5b77e97d
+#: ../../networking/remote_access_vpn.rst:144
+msgid "Now, you need to add the VPN users."
+msgstr "现在，需要添加VPN用户。"
+
+# a6d5430b813547dabde217104eba046a
+#: ../../networking/remote_access_vpn.rst:146
+msgid "Click the Source NAT IP."
+msgstr "点击源NAT IP。"
+
+# 88ac91cdca464aa8a924d7cbca73f3df
+#: ../../networking/remote_access_vpn.rst:148
+msgid "Select the VPN tab."
+msgstr "选择VPN选项卡。"
+
+# 76a034604e9a4113a46051cde33b0cd8
+#: ../../networking/remote_access_vpn.rst:150
+msgid ""
+"Add the username and the corresponding password of the user you wanted to "
+"add."
+msgstr "为你要创建的用户添加用户名和对应的密码。"
+
+# f388fc2f4f0749f5bbb9e062d57f1137
+#: ../../networking/remote_access_vpn.rst:153
+msgid "Click Add."
+msgstr "点击 添加"
+
+# c491f786e1874564b25032b670c35f98
+#: ../../networking/remote_access_vpn.rst:155
+msgid "Repeat the same steps to add the VPN users."
+msgstr "重复相同的步骤添加VPN用户。"
+
+# d3c8df533b2c4e659158e77c8669a813
+#: ../../networking/remote_access_vpn.rst:159
+msgid "Using Remote Access VPN with Windows"
+msgstr "在Windows系统中使用远程访问VPN"
+
+# d03485e36a8744758782e81ab88041d1
+#: ../../networking/remote_access_vpn.rst:161
+msgid ""
+"The procedure to use VPN varies by Windows version. Generally, the user must"
+" edit the VPN properties and make sure that the default route is not the "
+"VPN. The following steps are for Windows L2TP clients on Windows Vista. The "
+"commands should be similar for other Windows versions."
+msgstr "程序使用不同Windows版本的VPN。通常用户必须编辑VPN属性并确保不使用VPN的默认路由。以下步骤使用基于Windows Vista的Windows L2TP客户端。命令应该类似于其他版本的Windows。"
+
+# 98196e5429de407da75adf5f3ce7cf8d
+#: ../../networking/remote_access_vpn.rst:166
+msgid ""
+"Log in to the CloudStack UI and click on the source NAT IP for the account. "
+"The VPN tab should display the IPsec preshared key. Make a note of this and "
+"the source NAT IP. The UI also lists one or more users and their passwords. "
+"Choose one of these users, or, if none exists, add a user and password."
+msgstr "登录到CloudStack用户界面并点击账户下的源NAT IP。VPN选项卡应该会显示IPsec预共享密钥。记录该密钥和源NAT IP。用户界面同样也列出了一个多或多个用户他们的密码。选择一个用户，或者如果不存在任何用户，则创建一个用户。"
+
+# 6a896fa8431d479195d161efebf56672
+#: ../../networking/remote_access_vpn.rst:172
+msgid ""
+"On the Windows box, go to Control Panel, then select Network and Sharing "
+"center. Click Setup a connection or network."
+msgstr "在Windows中，进入控制面板，然后选择网络和共享中心，点击设置一个网络连接。"
+
+# 8e983aa928b444228e689749e8fc0801
+#: ../../networking/remote_access_vpn.rst:175
+msgid "In the next dialog, select No, create a new connection."
+msgstr "在下一个对话框中，选择否，创建一个新的连接。"
+
+# 98f484c7652c45d2ae57690d719610ed
+#: ../../networking/remote_access_vpn.rst:177
+msgid "In the next dialog, select Use my Internet Connection (VPN)."
+msgstr "在下一个对话框中，选择使用我的Internet连接(VPN)."
+
+# 784c5c041ba94caea475a667add0adcd
+#: ../../networking/remote_access_vpn.rst:179
+msgid ""
+"In the next dialog, enter the source NAT IP from step #1 and give the "
+"connection a name. Check Don't connect now."
+msgstr "在下一个对话框中，输入此步骤#1中的源NAT IP地址并填写连接名称。勾选现在不连接。"
+
+# 41d1540c0a7d401a9c549bd5304f18ce
+#: ../../networking/remote_access_vpn.rst:183
+msgid ""
+"In the next dialog, enter the user name and password selected in step #1."
+msgstr "在下一个对话框中，输入此步骤#1中的用户名和密码。"
+
+# 3cbbd674fd8d412c90bfbbeb8f607ea0
+#: ../../networking/remote_access_vpn.rst:186
+msgid "Click Create."
+msgstr "点击创建。"
+
+# 85a9ef6f201e47f584255229980b3d87
+#: ../../networking/remote_access_vpn.rst:188
+msgid ""
+"Go back to the Control Panel and click Network Connections to see the new "
+"connection. The connection is not active yet."
+msgstr "返回控制面板并点击网络连接查看这个新的连接。但当前连接并不是活动状态。"
+
+# 1d169d66dd744654bd8ea7dd62a677a6
+#: ../../networking/remote_access_vpn.rst:191
+msgid ""
+"Right-click the new connection and select Properties. In the Properties "
+"dialog, select the Networking tab."
+msgstr "在新创建的连接上点击右键并选择属性。在属性对话框中，选择网络选项卡。"
+
+# a191730de1684f06a3d729e5cde2e487
+#: ../../networking/remote_access_vpn.rst:196
+msgid ""
+"In Type of VPN, choose L2TP IPsec VPN, then click IPsec settings. Select Use"
+" preshared key. Enter the preshared key from step #1."
+msgstr "在VPN类型中，选择L2TP IPsec VPN,然后点击IPsec设置，选择用户预共享密钥。并输入此步骤#1中提供的密钥。"
+
+# 343858b6c3e5498fad0bd34b503e792d
+#: ../../networking/remote_access_vpn.rst:199
+msgid ""
+"The connection is ready for activation. Go back to Control Panel -> Network "
+"Connections and double-click the created connection."
+msgstr "该连接已经准备好被激活。返回到控制面板 -> 网络连接，双击创建连接。"
+
+# e60c05ee4aef40d38a3a0b01aade9b5e
+#: ../../networking/remote_access_vpn.rst:202
+msgid "Enter the user name and password from step #1."
+msgstr "输入此步骤 #1中提供的用户名和密码。"
+
+# d1cfefca174a4554a0c4170ec0c49f9b
+#: ../../networking/remote_access_vpn.rst:206
+msgid "Using Remote Access VPN with Mac OS X"
+msgstr "在Mac OS X 中使用远程访问VPN"
+
+# 728cc61e43c440459c1ad6252a2f6b97
+#: ../../networking/remote_access_vpn.rst:208
+msgid ""
+"First, be sure you've configured the VPN settings in your CloudStack "
+"install. This section is only concerned with connecting via Mac OS X to your"
+" VPN."
+msgstr "首先，确保在你的CloudStack中已经设置好VPN。本章节仅涉及通过Mac OS X 连接至VPN。"
+
+# b3185af9f4534991ad3e3e5b66f47da2
+#: ../../networking/remote_access_vpn.rst:212
+msgid ""
+"Note, these instructions were written on Mac OS X 10.7.5. They may differ "
+"slightly in older or newer releases of Mac OS X."
+msgstr "请注意，此指南只基于Mac OS X 10.7.5 。在旧版或新版本的Mac OS X中可能会略有不同。"
+
+# 6f2aaf1e33d6421db0f521c5820d02c8
+#: ../../networking/remote_access_vpn.rst:215
+msgid "On your Mac, open System Preferences and click Network."
+msgstr "在Mac中，打开系统偏好设置然后点击网络。"
+
+# 26e7088ea9494f94922f1a8f5e0ad753
+#: ../../networking/remote_access_vpn.rst:217
+msgid "Make sure Send all traffic over VPN connection is not checked."
+msgstr "确保Send all traffic over VPN connection没有被选定。"
+
+# 8e0600ca2c9546a2b3905659b64a835b
+#: ../../networking/remote_access_vpn.rst:219
+msgid ""
+"If your preferences are locked, you'll need to click the lock in the bottom "
+"left-hand corner to make any changes and provide your administrator "
+"credentials."
+msgstr "如果你的首选项框被锁住，你如果要做些改动需要点击底部左侧的锁按钮，并提供管理员认证。"
+
+# da1ba33a066b4415a728d14ab936780c
+#: ../../networking/remote_access_vpn.rst:223
+msgid ""
+"You will need to create a new network entry. Click the plus icon on the "
+"bottom left-hand side and you'll see a dialog that says \"Select the "
+"interface and enter a name for the new service.\" Select VPN from the "
+"Interface drop-down menu, and \"L2TP over IPSec\" for the VPN Type. Enter "
+"whatever you like within the \"Service Name\" field."
+msgstr "您将需要创建一个新的网络入口。点击底部左侧的加号图标，你会看到一个对话框，写着“选择接口并输入新服务的名称”。在接口下拉菜单中选择VPN，VPN类型为“基于IPSec的L2TP”。在“服务名称”中输入任何你喜欢的字段。"
+
+# b96bb5f3c9534d3384752b6c652405b5
+#: ../../networking/remote_access_vpn.rst:229
+msgid ""
+"You'll now have a new network interface with the name of whatever you put in"
+" the \"Service Name\" field. For the purposes of this example, we'll assume "
+"you've named it \"CloudStack.\" Click on that interface and provide the IP "
+"address of the interface for your VPN under the Server Address field, and "
+"the user name for your VPN under Account Name."
+msgstr "现在你需要在\"Service Name\" 中填入新的网络接口的名称。对于这个例子，我们假设你已经把它命名为“CloudStack”。点击该接口，并在服务器地址字段中填入提供的VPN IP地址，并在账户名称中填入您的VPN用户名。"
+
+# db5b3b2b72e449368be600488d32a212
+#: ../../networking/remote_access_vpn.rst:236
+msgid ""
+"Click Authentication Settings, and add the user's password under User "
+"Authentication and enter the pre-shared IPSec key in the Shared Secret field"
+" under Machine Authentication. Click OK."
+msgstr "点击身份验证设置，在机器验证中，用户身份验证下输入用户名和密码，在共享密钥下输入预共享IPsec密钥。点击OK。"
+
+# 79ff11baad9844c9a7bb84f19aac4703
+#: ../../networking/remote_access_vpn.rst:240
+msgid ""
+"You may also want to click the \"Show VPN status in menu bar\" but that's "
+"entirely optional."
+msgstr "你也可以点击\"在菜单栏中查看VPN状态\",这完全是可选的操作。"
+
+# 74b926642e7d49ca925804a4d6d99abc
+#: ../../networking/remote_access_vpn.rst:243
+msgid "Now click \"Connect\" and you will be connected to the CloudStack VPN."
+msgstr "现在点击\"连接\" 你将会连接到CloudStack VPN。"
+
+# fb0aef197790435d95971b0006f98a9d
+#: ../../networking/remote_access_vpn.rst:249
+msgid "Setting Up a Site-to-Site VPN Connection"
+msgstr "配置站点到站点的VPN连接"
+
+# b113a5a8546b4ce8b1a7507f2b860ad7
+#: ../../networking/remote_access_vpn.rst:251
+msgid ""
+"A Site-to-Site VPN connection helps you establish a secure connection from "
+"an enterprise datacenter to the cloud infrastructure. This allows users to "
+"access the guest VMs by establishing a VPN connection to the virtual router "
+"of the account from a device in the datacenter of the enterprise. You can "
+"also establish a secure connection between two VPC setups or high "
+"availability zones in your environment. Having this facility eliminates the "
+"need to establish VPN connections to individual VMs."
+msgstr "一个站点到站点的VPN连接可以帮助你建立从云基础架构到企业内部数据中心的安全连接.这就允许一个账户从企业内部数据中心的设备连接到此账户启用VPN连接的虚拟路由器上, 从而通过VPN连接到该账户的虚拟机.你也可以在两个VPC之间或是高可用区域之间建立VPC以加强安全。这样一来，就不需要在虚拟机之间建立VPN连接的必要了。"
+
+# ec0ce935716740158c031ebf544b7294
+#: ../../networking/remote_access_vpn.rst:260
+msgid ""
+"The difference from Remote VPN is that Site-to-site VPNs connects entire "
+"networks to each other, for example, connecting a branch office network to a"
+" company headquarters network. In a site-to-site VPN, hosts do not have VPN "
+"client software; they send and receive normal TCP/IP traffic through a VPN "
+"gateway."
+msgstr "与Remote VPN不同，Site-to-site VPNs是将两个网络相互连接。比如，将一个分支办公室的网络与总公司网络互联，Site-to-site VPN的两个主机不需要VPN客户端软件，它们通过VPN网关收发普通的TCP/IP数据包流量 。"
+
+# 79120b77963b4f77afa51573e6ad1ca7
+#: ../../networking/remote_access_vpn.rst:266
+msgid "The supported endpoints on the remote datacenters are:"
+msgstr "目前支持的数据中心的终端设备是:"
+
+# 34aba4dd56884ad3871e85272aab2acf
+#: ../../networking/remote_access_vpn.rst:268
+msgid "Cisco ISR with IOS 12.4 or later"
+msgstr "Cisco ISR IOS 12.4或更新"
+
+# 95978dcfdbf34c2886952ee16cb6e16d
+#: ../../networking/remote_access_vpn.rst:270
+msgid "Juniper J-Series routers with JunOS 9.5 or later"
+msgstr "Juniper J-系统 路由器  JunOS 9.5 或更新版本"
+
+# 272a2a827c494e90a6b2d52dc96b7f0b
+#: ../../networking/remote_access_vpn.rst:272
+msgid "CloudStack virtual routers"
+msgstr "CloudStack虚拟路由器。"
+
+# 8c16297c0eab4c72b6a2a29b0f4866d1
+#: ../../networking/remote_access_vpn.rst:275
+msgid ""
+"In addition to the specific Cisco and Juniper devices listed above, the "
+"expectation is that any Cisco or Juniper device running on the supported "
+"operating systems are able to establish VPN connections."
+msgstr "除了上述指定的Cisco和Juniper设备, 所期望的是任何Cisco或Juniper的设备在支持的操作系统上都可以建立VPN连接."
+
+# eb701cb20d40405b9ca1d79ce15b681f
+#: ../../networking/remote_access_vpn.rst:279
+msgid "To set up a Site-to-Site VPN connection, perform the following:"
+msgstr "为了建立站点到站点的VPN连接, 需要执行以下步骤:"
+
+# b5f397a7a64b47168a74fb1618810e5c
+#: ../../networking/remote_access_vpn.rst:281
+msgid "Create a Virtual Private Cloud (VPC)."
+msgstr "创建一个虚拟私有云(VPC)."
+
+# 1d44be641cf042b99841b146bb055956
+#: ../../networking/remote_access_vpn.rst:283
+msgid "See \":ref:`configuring-vpc`\"."
+msgstr "参考\":ref:`configuring-vpc`\"."
+
+# f1ff67e23d7d4eaeb81c1b5686399942
+#: ../../networking/remote_access_vpn.rst:285
+msgid "Create a VPN Customer Gateway."
+msgstr "创建一个VPN客户网关."
+
+# e3425171b9504f5b958d0802ca1a55ce
+#: ../../networking/remote_access_vpn.rst:287
+msgid "Create a VPN gateway for the VPC that you created."
+msgstr "为你创建的VPC设定一个VPN网关."
+
+# 6d0964544a6944f39ec8eafdaf587428
+#: ../../networking/remote_access_vpn.rst:289
+msgid ""
+"Create VPN connection from the VPC VPN gateway to the customer VPN gateway."
+msgstr "从VPC的VPN网关到客户的VPN网关建立VPN连接."
+
+# 3d85874020904fbdb261885b5e2f05ce
+#: ../../networking/remote_access_vpn.rst:294
+msgid "Creating and Updating a VPN Customer Gateway"
+msgstr "创建和更新一个VPN客户网关."
+
+# 9b0857af13544aaebee5984422c93195
+#: ../../networking/remote_access_vpn.rst:297
+msgid ""
+"A VPN customer gateway can be connected to only one VPN gateway at a time."
+msgstr "一个VPN客户网关在同一时间只能连接一个VPN网关。"
+
+# 1a951a0ee8d54164b9b99ff9cd080e58
+#: ../../networking/remote_access_vpn.rst:299
+msgid "To add a VPN Customer Gateway:"
+msgstr "添加 VPN 客户网关"
+
+# 6a26e636eb224d1eb75c9782de7c830d
+# affc98b5cd4b401086e5e00f9e69ac90
+# 23c81aa674f64826830390c49839730c
+# 98dc2f6f69d341b0b1867f35102e20ff
+# d4efd83e728b439eaa8408bd783d0c11
+#: ../../networking/remote_access_vpn.rst:303
+#: ../../networking/remote_access_vpn.rst:413
+#: ../../networking/remote_access_vpn.rst:433
+#: ../../networking/remote_access_vpn.rst:495
+#: ../../networking/remote_access_vpn.rst:626
+msgid "In the left navigation, choose Network."
+msgstr "在左侧的导航栏，选择网络。"
+
+# b0e99af0f0014e1aa156dd7f2644f23a
+# cf4e8a6aa8be4c3e9c92bd5f84e9b571
+#: ../../networking/remote_access_vpn.rst:305
+#: ../../networking/remote_access_vpn.rst:415
+msgid "In the Select view, select VPN Customer Gateway."
+msgstr "在选择视图里，选择VPN客户网关。"
+
+# 51d8e12e75dd47e4b2d4a9c52da89be9
+#: ../../networking/remote_access_vpn.rst:307
+msgid "Click Add VPN Customer Gateway."
+msgstr "点击添加 VPN 客户网关。"
+
+# e72b7822c85649f99f01e845e1418844
+#: ../../networking/remote_access_vpn.rst:309
+msgid "|addvpncustomergateway.png|"
+msgstr "|addvpncustomergateway.png|"
+
+# 0810d2cb133043b4858badbc2e4ac704
+#: ../../networking/remote_access_vpn.rst:311
+msgid "Provide the following information:"
+msgstr "填写以下内容："
+
+# 372ec8983a514ad3b0927d01bc30fae6
+#: ../../networking/remote_access_vpn.rst:313
+msgid "**Name**: A unique name for the VPN customer gateway you create."
+msgstr "**名称**: 你添加的VPN客户网关的一个唯一的名称。"
+
+# 0cd283ba65a241cf97d90b2c5f04c36f
+#: ../../networking/remote_access_vpn.rst:315
+msgid "**Gateway**: The IP address for the remote gateway."
+msgstr "**IP地址**: 远端网关的IP地址。"
+
+# 0e3f2efe75f7454e9f2ac706604f832d
+#: ../../networking/remote_access_vpn.rst:317
+msgid ""
+"**CIDR list**: The guest CIDR list of the remote subnets. Enter a CIDR or a "
+"comma-separated list of CIDRs. Ensure that a guest CIDR list is not "
+"overlapped with the VPC's CIDR, or another guest CIDR. The CIDR must be "
+"RFC1918-compliant."
+msgstr "**CIDR列表**: 远端客户子网的CIDR。输入一个CIDR或是以逗号分隔的多个CIDR。在确认客户的CIDR和VPC的CIDR或是另一个客户的CIDR不重叠冲突。CIDR的格式必须符合 RFC1918标准。"
+
+# 929c5f444fae4aee88faa98a926d0f52
+#: ../../networking/remote_access_vpn.rst:322
+msgid ""
+"**IPsec Preshared Key**: Preshared keying is a method where the endpoints of"
+" the VPN share a secret key. This key value is used to authenticate the "
+"customer gateway and the VPC VPN gateway to each other."
+msgstr "**IPsec预共享密钥**: 预共享密钥在两个端点之间共享同一个密钥。这个密钥用来在客户网关和VPN的VPN网关之间相互认证。"
+
+# 171abb6f27ef471eae87fd0718d714af
+#: ../../networking/remote_access_vpn.rst:328
+msgid ""
+"The IKE peers (VPN end points) authenticate each other by computing and "
+"sending a keyed hash of data that includes the Preshared key. If the "
+"receiving peer is able to create the same hash independently by using its "
+"Preshared key, it knows that both peers must share the same secret, thus "
+"authenticating the customer gateway."
+msgstr "Internet密钥交换协议（IKE）匹配点 ( VPN 端点 ) 通过计算并发送包含预共享密钥的哈希键值来进行相互验证。如果收接点通过自己的预共享密钥算出同一个键值的话，这就说明两个点是用的同一个密钥，相互之间认证通过，形成匹配。"
+
+# a4553b53ccb04b358a278545e87eb9bd
+#: ../../networking/remote_access_vpn.rst:335
+msgid ""
+"**IKE Encryption**: The Internet Key Exchange (IKE) policy for phase-1. The "
+"supported encryption algorithms are AES128, AES192, AES256, and 3DES. "
+"Authentication is accomplished through the Preshared Keys."
+msgstr "**IKE 加密**: Internet密钥交换协议(IKE)第一阶段（phase-1）策略。支持的加密算法包括 AES128, AES192, AES256和3DES.。认证通过预共享密钥完成。"
+
+# 3bb40218a4db49e0aa09d5983d57a8fa
+#: ../../networking/remote_access_vpn.rst:341
+msgid ""
+"The phase-1 is the first phase in the IKE process. In this initial "
+"negotiation phase, the two VPN endpoints agree on the methods to be used to "
+"provide security for the underlying IP traffic. The phase-1 authenticates "
+"the two VPN gateways to each other, by confirming that the remote gateway "
+"has a matching Preshared Key."
+msgstr "phase-1是IKE过程的第一阶段。在这个开始的协商阶段，两个VPN端点在将底层IP流量加密安全的方法上取得一致。第一阶段认证通过的条件是：两个VPN网关之间使用的是同一个预定义密钥。"
+
+# a5e3619f28fb487987386ff3359d079b
+#: ../../networking/remote_access_vpn.rst:347
+msgid ""
+"**IKE Hash**: The IKE hash for phase-1. The supported hash algorithms are "
+"SHA1 and MD5."
+msgstr "**IKE 哈希**:  IKE第一阶段（ phase-1）哈希散列使用的算法。支持SHA1 和 MD5."
+
+# 998f798e068147c69b96d5332181acdd
+#: ../../networking/remote_access_vpn.rst:350
+msgid ""
+"**IKE DH**: A public-key cryptography protocol which allows two parties to "
+"establish a shared secret over an insecure communications channel. The "
+"1536-bit Diffie-Hellman group is used within IKE to establish session keys. "
+"The supported options are None, Group-5 (1536-bit) and Group-2 (1024-bit)."
+msgstr "**IKE DH（Diffie-Hellman组）**: IKE的DH加密协议，可以在不安全的连接上确保共享KEY的安全。1536位的DH组用在IKE中用来建立会话KEYS。在这里，支持的选项是 None, Group-5 (1536-bit) 和 Group-2 (1024-bit)."
+
+# 34c98169c2dd4375a23dff45d764590d
+#: ../../networking/remote_access_vpn.rst:356
+msgid ""
+"**ESP Encryption**: Encapsulating Security Payload (ESP) algorithm within "
+"phase-2. The supported encryption algorithms are AES128, AES192, AES256, and"
+" 3DES."
+msgstr "**ESP 加密**: 封装安全有效负荷（Encapsulating Security Payload,ESP）算法是发生在第二阶段(phase-2)。其支持的加密算法包括 AES128, AES192, AES256, 和 3DES。"
+
+# c61b40cf82de4f9fb6c45b8e0172b4b4
+#: ../../networking/remote_access_vpn.rst:361
+msgid ""
+"The phase-2 is the second phase in the IKE process. The purpose of IKE "
+"phase-2 is to negotiate IPSec security associations (SA) to set up the IPSec"
+" tunnel. In phase-2, new keying material is extracted from the Diffie-"
+"Hellman key exchange in phase-1, to provide session keys to use in "
+"protecting the VPN data flow."
+msgstr "phase-2是IKE过程的第二阶段，其目标是协助IPSec安全关联 (SA) 以建立IPSec通道。在 phase-2阶段，会利用 phase-1阶段建立好的DH安全协议方法来交换新的密钥。"
+
+# 71d47a66a42f4a04b2540e69eba4cdd9
+#: ../../networking/remote_access_vpn.rst:367
+msgid ""
+"**ESP Hash**: Encapsulating Security Payload (ESP) hash for phase-2. "
+"Supported hash algorithms are SHA1 and MD5."
+msgstr "**ESP哈希散列**:phase-2支持的封装安全有效负荷(Encapsulating Security Payload,ESP)哈希算法包括：SHA1 和MD5."
+
+# 2378eab3a19b42cda0e954ae2c70bb38
+#: ../../networking/remote_access_vpn.rst:370
+msgid ""
+"**Perfect Forward Secrecy**: Perfect Forward Secrecy (or PFS) is the "
+"property that ensures that a session key derived from a set of long-term "
+"public and private keys will not be compromised. This property enforces a "
+"new Diffie-Hellman key exchange. It provides the keying material that has "
+"greater key material life and thereby greater resistance to cryptographic "
+"attacks. The available options are None, Group-5 (1536-bit) and Group-2 "
+"(1024-bit). The security of the key exchanges increase as the DH groups grow"
+" larger, as does the time of the exchanges."
+msgstr "**Perfect forward secrecy(完全正向保密,PFS) **: PFS的性质是确保来自一组的长期的公共密钥和私人密钥之间的会话密钥不会妥协失效。PFS会促使一组新的DH KEY发生交换。这组新KEY具有更长的生命周期因此可以抵制更强大的功击。DH的可用选项是 None, Group-5 (1536-bit)和 Group-2 (1024-bit). 当新KEY交换之后，DH组会变得更大。"
+
+# de12259eb62f48c294bc324395468d43
+#: ../../networking/remote_access_vpn.rst:381
+msgid ""
+"When PFS is turned on, for every negotiation of a new phase-2 SA the two "
+"gateways must generate a new set of phase-1 keys. This adds an extra layer "
+"of protection that PFS adds, which ensures if the phase-2 SA's have expired,"
+" the keys used for new phase-2 SA's have not been generated from the current"
+" phase-1 keying material."
+msgstr "当PFS打开后，两个网关之间的新的phase-2 SA协商都会产生新的phase-1的一组KEY，这就会导致增加一个额外的层。这个层的作用是保证即使phase-2 SA失效过期，其KEY也不会由phase-1生成。"
+
+# c29472e88000476ea8eb3f3165f58da4
+#: ../../networking/remote_access_vpn.rst:387
+msgid ""
+"**IKE Lifetime (seconds)**: The phase-1 lifetime of the security association"
+" in seconds. Default is 86400 seconds (1 day). Whenever the time expires, a "
+"new phase-1 exchange is performed."
+msgstr "**IKE 存活期(秒)**:  SA的phase-1的存活期。默认是86400 秒 (1 天).当这个时间过了之后，会发生一次新的  phase-1 KEY交换。"
+
+# c05a91d5e2b44d7a9ea842e762a6f4a0
+#: ../../networking/remote_access_vpn.rst:391
+msgid ""
+"**ESP Lifetime (seconds)**: The phase-2 lifetime of the security association"
+" in seconds. Default is 3600 seconds (1 hour). Whenever the value is "
+"exceeded, a re-key is initiated to provide a new IPsec encryption and "
+"authentication session keys."
+msgstr "**ESP存活期 (秒)**:SA的  phase-2存活期。默认为 3600 秒(1 小时). 当过了这个时间之后，会有一个新的KEY初始化，用来加密和认证 IPsec的会话KEY。"
+
+# 9afba73f17a3471faa8cff978bb64495
+#: ../../networking/remote_access_vpn.rst:396
+msgid ""
+"**Dead Peer Detection**: A method to detect an unavailable Internet Key "
+"Exchange (IKE) peer. Select this option if you want the virtual router to "
+"query the liveliness of its IKE peer at regular intervals. It's recommended "
+"to have the same configuration of DPD on both side of VPN connection."
+msgstr "**死亡匹配点检测**:这是一种检测不可用IKE节点的方法。如果你希望虚拟路由器随时测试IKE节点的存活情况，选择了这个选项。 一般来说，最好在VPN连接的两端都同时配置DPD(Dead Peer Detectio)."
+
+# 4d12f59b777c48e98fb18ab2bace355d
+# a65f0ba427b04b6da2bdc39a05acba02
+#: ../../networking/remote_access_vpn.rst:402
+#: ../../networking/remote_access_vpn.rst:425
+msgid "Click OK."
+msgstr "点击确定。"
+
+# 460983ec4dd64370b650944e21d45b75
+#: ../../networking/remote_access_vpn.rst:406
+msgid "Updating and Removing a VPN Customer Gateway"
+msgstr "更新和删除一个VPN客户网关."
+
+# 47640086ca6e4122a862027f6e528af6
+#: ../../networking/remote_access_vpn.rst:408
+msgid ""
+"You can update a customer gateway either with no VPN connection, or related "
+"VPN connection is in error state."
+msgstr "你可以更新一个客户网关：即可以从无到有新建一个VPN，或是将有错误提示的VPN改正。"
+
+# eee4a55897da4f06b44795327c878110
+#: ../../networking/remote_access_vpn.rst:417
+msgid "Select the VPN customer gateway you want to work with."
+msgstr "选择您要操作的客户VPN连接。"
+
+# 9dc617447a9c48df92819b996a8e3b39
+#: ../../networking/remote_access_vpn.rst:419
+msgid ""
+"To modify the required parameters, click the Edit VPN Customer Gateway "
+"button |vpn-edit-icon.png|"
+msgstr ""
+
+# 0c3c4beedfb2453cb03958649454d3d2
+#: ../../networking/remote_access_vpn.rst:422
+msgid ""
+"To remove the VPN customer gateway, click the Delete VPN Customer Gateway "
+"button |delete.png|"
+msgstr "删除一个客户VPN网关，点击删除客户VPN网关按钮。  |delete.png|"
+
+# ae45fd8564384b9a8682a662011196da
+#: ../../networking/remote_access_vpn.rst:429
+msgid "Creating a VPN gateway for the VPC"
+msgstr "为VPC创建一个VPN网关"
+
+# addf23d2b2b14d9c80370bc70f64ec94
+# 8ab2d3e53e83433ab4cf699e916d89d9
+# 5ece94a59df34ecdb036ac45fc49bd06
+#: ../../networking/remote_access_vpn.rst:440
+#: ../../networking/remote_access_vpn.rst:501
+#: ../../networking/remote_access_vpn.rst:633
+msgid ""
+"Click the Configure button of the VPC to which you want to deploy the VMs."
+msgstr "点击要部署虚机的VPC的配置按钮。"
+
+# af1a9268a6da4a45922589c847776234
+# 1ccf3bf911414951aeb77508e82aa992
+# 433faedb39a3413c8ce1f220f5e22560
+#: ../../networking/remote_access_vpn.rst:443
+#: ../../networking/remote_access_vpn.rst:504
+#: ../../networking/remote_access_vpn.rst:636
+msgid ""
+"The VPC page is displayed where all the tiers you created are listed in a "
+"diagram."
+msgstr "系统会显示VPC页面，您创建的所有层都列在图中。"
+
+# 3152bcd237704f96b4a1b897b801f81b
+# 5a72231d602e4625acd0cbd4b0af4f7e
+# 243047505a8c40e1aadfa9dfbc091f0c
+#: ../../networking/remote_access_vpn.rst:468
+#: ../../networking/remote_access_vpn.rst:531
+#: ../../networking/remote_access_vpn.rst:663
+msgid "Select Site-to-Site VPN."
+msgstr "选择点对点VPN"
+
+# 626b08a7444c4baeb387b316fcf8921d
+#: ../../networking/remote_access_vpn.rst:470
+msgid ""
+"If you are creating the VPN gateway for the first time, selecting Site-to-"
+"Site VPN prompts you to create a VPN gateway."
+msgstr "如果您是第一次创建VPN网关，选择点对点VPN会提示您创建一个VPN网关。"
+
+# c46b3f642ec240738664d6765c1d736f
+#: ../../networking/remote_access_vpn.rst:473
+msgid "In the confirmation dialog, click Yes to confirm."
+msgstr "在信息确认对话框，点击“是”。"
+
+# 6dbf5c6dc5984bc896785e8d81f1fa0d
+#: ../../networking/remote_access_vpn.rst:475
+msgid ""
+"Within a few moments, the VPN gateway is created. You will be prompted to "
+"view the details of the VPN gateway you have created. Click Yes to confirm."
+msgstr "过一会儿，VPN网关就创建出来了。系统会提示您查看VPN网关的详细信息，请点击“是”。"
+
+# 62c9ff637a9c46beb4a187d9d333e711
+#: ../../networking/remote_access_vpn.rst:479
+msgid "The following details are displayed in the VPN Gateway page:"
+msgstr "VPN网关页面会显示以下详细信息："
+
+# 202a6b9a51f3470d89bb84bb2c9579a8
+# 47435eb81ccf40eab149e9b0abb9213e
+#: ../../networking/remote_access_vpn.rst:481
+#: ../../networking/remote_access_vpn.rst:561
+msgid "IP Address"
+msgstr "IP地址"
+
+# 46f2ea07f3744ac381add8029488f5d3
+#: ../../networking/remote_access_vpn.rst:483
+msgid "Account"
+msgstr "帐号"
+
+# bad02846a1ee4160a278abb51303de1f
+#: ../../networking/remote_access_vpn.rst:485
+msgid "Domain"
+msgstr "域名"
+
+# b0b08d6daddb48409f581811786b76cf
+#: ../../networking/remote_access_vpn.rst:489
+msgid "Creating a VPN Connection"
+msgstr "新建vpn连接"
+
+# 596c1d39f0fe47fa8b05ff9b321ae507
+#: ../../networking/remote_access_vpn.rst:491
+msgid "CloudStack supports creating up to 8 VPN connections."
+msgstr "CloudStack最多支持建立8个VPN连接。"
+
+# a61e029b8b514adfa93c97620ffff95f
+#: ../../networking/remote_access_vpn.rst:499
+msgid "All the VPCs that you create for the account are listed in the page."
+msgstr "页面上列出了该账号下所有的VPC。"
+
+# 690702b545754083adec40f20d69acb4
+# 614430ff17c8485fae7ddb094273ef06
+#: ../../networking/remote_access_vpn.rst:507
+#: ../../networking/remote_access_vpn.rst:639
+msgid "Click the Settings icon."
+msgstr "点击设置图标。"
+
+# 86dbf74b2c6e4f0aab3f252fafd89f2c
+# fab72af09a284fd2800ff51645f071bf
+#: ../../networking/remote_access_vpn.rst:533
+#: ../../networking/remote_access_vpn.rst:665
+msgid "The Site-to-Site VPN page is displayed."
+msgstr "系统会显示点对点VPN页面。"
+
+# db4dc2719dd6405eb250f62908eef010
+# 207bfc2acd9e434887770513a245873b
+#: ../../networking/remote_access_vpn.rst:535
+#: ../../networking/remote_access_vpn.rst:667
+msgid ""
+"From the Select View drop-down, ensure that VPN Connection is selected."
+msgstr "在选择视图下拉框，请确保选择VPN连接。"
+
+# 950eac49657f4a29a9fba1b973577867
+#: ../../networking/remote_access_vpn.rst:538
+msgid "Click Create VPN Connection."
+msgstr "选择创建vpn连接按钮"
+
+# 916fc10dd39346ada9828e3a2a80ffda
+#: ../../networking/remote_access_vpn.rst:540
+msgid "The Create VPN Connection dialog is displayed:"
+msgstr "系统会显示创建VPN连接对话框："
+
+# 87888fff4a5f4664be5c4c03fc2ecf6a
+#: ../../networking/remote_access_vpn.rst:542
+msgid "|createvpnconnection.png|"
+msgstr "|createvpnconnection.png|"
+
+# 4b6cc407b8bc4a728fb3328f0ce53f3f
+#: ../../networking/remote_access_vpn.rst:544
+msgid "Select the desired customer gateway."
+msgstr "选择想要的用户网关。"
+
+# 6776ab8d9fad4c2d8956d78ff11ab998
+#: ../../networking/remote_access_vpn.rst:546
+msgid ""
+"Select Passive if you want to establish a connection between two VPC virtual"
+" routers."
+msgstr "如果你希望在两个VPC虚拟路由器之间建立连接，选择被动模式。"
+
+# 513eee2d7f8745a4b338c8ea142fae05
+#: ../../networking/remote_access_vpn.rst:549
+msgid ""
+"If you want to establish a connection between two VPC virtual routers, "
+"select Passive only on one of the VPC virtual routers, which waits for the "
+"other VPC virtual router to initiate the connection. Do not select Passive "
+"on the VPC virtual router that initiates the connection."
+msgstr "如果你希望在两个VPC虚拟路由器之间建立连接，需要等待另一个虚拟路由器来初始化连接，则只有其中一个虚拟器上选择被动模式。在这种情况下，不要在初始化连接的虚拟路由器上选择被动模式。"
+
+# dd03407d4f064ec99ea68bb066d2289e
+#: ../../networking/remote_access_vpn.rst:555
+msgid "Click OK to confirm."
+msgstr "点击确定。"
+
+# d4c274e9cecb44bcad1ba67ed65069e4
+#: ../../networking/remote_access_vpn.rst:557
+msgid "Within a few moments, the VPN Connection is displayed."
+msgstr "过一会儿，系统会显示该VPN连接。"
+
+# 42dd7918225d458f980e458924b262f3
+#: ../../networking/remote_access_vpn.rst:559
+msgid "The following information on the VPN connection is displayed:"
+msgstr "VPN连接信息"
+
+# 64fdbdcdfac148dea0883db2615bf0ed
+#: ../../networking/remote_access_vpn.rst:563
+msgid "Gateway"
+msgstr "网关"
+
+# 8ac547f2f1574131adc8c69d4e3c30ef
+#: ../../networking/remote_access_vpn.rst:565
+msgid "State"
+msgstr "状态 "
+
+# d2a5bd51a6e347e89857750706114fc9
+#: ../../networking/remote_access_vpn.rst:567
+msgid "IPSec Preshared Key"
+msgstr "IPSec 预共享密钥"
+
+# ccfea0cb9ae34777990aa348b7a9c23f
+#: ../../networking/remote_access_vpn.rst:569
+msgid "IKE Policy"
+msgstr "IKE策略"
+
+# bc29ecfda06848f78a8cc694b3f6d47b
+#: ../../networking/remote_access_vpn.rst:571
+msgid "ESP Policy"
+msgstr "ESP策略"
+
+# 57cee5dc2eed4f6a9164c4838ebdc9d6
+#: ../../networking/remote_access_vpn.rst:575
+msgid "Site-to-Site VPN Connection Between VPC Networks"
+msgstr "在VPC网络之间的站点的VPN连接"
+
+# d8f9f929fafd40e6895122549b022754
+#: ../../networking/remote_access_vpn.rst:577
+msgid ""
+"CloudStack provides you with the ability to establish a site-to-site VPN "
+"connection between CloudStack virtual routers. To achieve that, add a "
+"passive mode Site-to-Site VPN. With this functionality, users can deploy "
+"applications in multiple Availability Zones or VPCs, which can communicate "
+"with each other by using a secure Site-to-Site VPN Tunnel."
+msgstr "CloudStack可以在虚拟路由器之间部署站点到站点的VPN连接，这需要添加一个被动模式的站点到站点VPN。有了这个功能之后，用户就可以在多个区域或VPC之间通过安全的VPN通道互联。"
+
+# 2fb087843cd04fafa3beba95a3ae2af1
+#: ../../networking/remote_access_vpn.rst:583
+msgid "This feature is supported on all the hypervisors."
+msgstr "这个特性支持所有类型的HYPERVISOR."
+
+# 217a4da322cc4f8caa7e04c029779c8b
+#: ../../networking/remote_access_vpn.rst:585
+msgid "Create two VPCs. For example, VPC A and VPC B."
+msgstr "创建两个VPC。比如，VPC A和VPC B。"
+
+# a78d89e3621346c8a11277927e8dc502
+#: ../../networking/remote_access_vpn.rst:587
+msgid "For more information, see \":ref:`configuring-vpc`\"."
+msgstr "更多信息，参考\":ref:`configuring-vpc`\"."
+
+# 09b752dc4d4e4cd29912fcbe352309fa
+#: ../../networking/remote_access_vpn.rst:589
+msgid "Create VPN gateways on both the VPCs you created."
+msgstr "在创建的VPC两边都添加VPN网关。"
+
+# b9af87b346ef40889104b5a1f40c7702
+#: ../../networking/remote_access_vpn.rst:591
+msgid ""
+"For more information, see `\"Creating a VPN gateway for the VPC\" "
+"<#creating-a-vpn-gateway-for-the-vpc>`_."
+msgstr "更多信息，参考 `\"为VPC创建VPN网关\" <#creating-a-vpn-gateway-for-the-vpc>`_."
+
+# 29d8db01114c458e8d855996c22e0664
+#: ../../networking/remote_access_vpn.rst:594
+msgid "Create VPN customer gateway for both the VPCs."
+msgstr "在VPC两边都创建VPN客户网关。"
+
+# 1a50b7ef681f4cb48c15d30e08dfd1e7
+#: ../../networking/remote_access_vpn.rst:596
+msgid ""
+"For more information, see `\"Creating and Updating a VPN Customer Gateway\" "
+"<#creating-and-updating-a-vpn-customer-gateway>`_."
+msgstr "更多信息，参考`\"创建和更新VPN客户网关\" <#creating-and-updating-a-vpn-customer-gateway>`_."
+
+# c9013d4ec4c74444a40bf745ae0a5544
+#: ../../networking/remote_access_vpn.rst:599
+msgid "Enable a VPN connection on VPC A in passive mode."
+msgstr "在VPC A这边启用VPN的被动连接模式。"
+
+# 8fb700491eeb4156a1c7549d81a78346
+#: ../../networking/remote_access_vpn.rst:601
+msgid ""
+"For more information, see `\"Creating a VPN Connection\" <#creating-a-vpn-"
+"connection>`_."
+msgstr "更多信息，请参阅 `\"创建VPN连接\" <#creating-a-vpn-connection>`_。"
+
+# e8dd1dd51dd34f57ac10161220734be4
+#: ../../networking/remote_access_vpn.rst:604
+msgid ""
+"Ensure that the customer gateway is pointed to VPC B. The VPN connection is "
+"shown in the Disconnected state."
+msgstr "确保客户网关指向VPC B。这个VPN当前显示的是未连接状态。"
+
+# eca76af9d9304b17982a0bb977a12547
+#: ../../networking/remote_access_vpn.rst:607
+msgid "Enable a VPN connection on VPC B."
+msgstr "在VPC B上启用VPN连接。"
+
+# 79e9417cc7294b70bd95236d9c2c80ac
+#: ../../networking/remote_access_vpn.rst:609
+msgid ""
+"Ensure that the customer gateway is pointed to VPC A. Because virtual router"
+" of VPC A, in this case, is in passive mode and is waiting for the virtual "
+"router of VPC B to initiate the connection, VPC B virtual router should not "
+"be in passive mode."
+msgstr "确保客户网关指向VPC A。在这个示例里，因为VPC A的虚拟路由器是处于被动模式且等待着VPC B进行初始化连接，所以VPC B的虚拟路由器不要设置为被动模式。"
+
+# cf0657024acb43ea8028262bf74a9848
+#: ../../networking/remote_access_vpn.rst:614
+msgid "The VPN connection is shown in the Disconnected state."
+msgstr "VPN连接当前显示为未连接状态。"
+
+# 4c18218889914f65b2fe355d4568b407
+#: ../../networking/remote_access_vpn.rst:616
+msgid ""
+"Creating VPN connection on both the VPCs initiates a VPN connection. Wait "
+"for few seconds. The default is 30 seconds for both the VPN connections to "
+"show the Connected state."
+msgstr "VPC两边的VPN会进行初始化连接。默认为30秒之后，两边VPN都会显示为已连接状态。"
+
+# 84118e99c0b14f49b14160c3975dad17
+#: ../../networking/remote_access_vpn.rst:622
+msgid "Restarting and Removing a VPN Connection"
+msgstr "VPN连接的重启和删除"
+
+# 090940869ab44e80b8e9c4ea04fa48ec
+#: ../../networking/remote_access_vpn.rst:670
+msgid "All the VPN connections you created are displayed."
+msgstr "系统会显示创建VPN连接对话框："
+
+# b921e72e9ca74e75b9c515a87f105b9a
+#: ../../networking/remote_access_vpn.rst:672
+msgid "Select the VPN connection you want to work with."
+msgstr "选择您要操作的VPN连接。"
+
+# 2387d86e243f469f84a0cee989324610
+#: ../../networking/remote_access_vpn.rst:674
+msgid "The Details tab is displayed."
+msgstr "系统显示详细信息页。"
+
+# 345c5bfe23d84fd09f56e0e34de09e29
+#: ../../networking/remote_access_vpn.rst:676
+msgid ""
+"To remove a VPN connection, click the Delete VPN connection button |remove-"
+"vpn.png|"
+msgstr "删除一个VPN连接，点击删除VPN连接按钮。 |remove-vpn.png|"
+
+# 8d1a3cf378554f51a5702b0710c331f2
+#: ../../networking/remote_access_vpn.rst:679
+msgid ""
+"To restart a VPN connection, click the Reset VPN connection button present "
+"in the Details tab. |reset-vpn.png|"
+msgstr "要重启VPN连接，请点击详细信息页的重置VPN连接按钮。  |reset-vpn.png|"

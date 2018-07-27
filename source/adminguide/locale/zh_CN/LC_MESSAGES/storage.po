@@ -1,0 +1,1460 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:04+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 32b44221e38d43c08f57ce3a72c53f03
+#: ../../storage.rst:18
+msgid "Working with Storage"
+msgstr "使用存储"
+
+# 10d8b20690d442af8af5376748e600e0
+#: ../../storage.rst:21
+msgid "Storage Overview"
+msgstr "存储概述"
+
+# 59f0d86b537245ecb2688c84730ca29a
+#: ../../storage.rst:23
+msgid ""
+"CloudStack defines two types of storage: primary and secondary. Primary "
+"storage can be accessed by either iSCSI or NFS. Additionally, direct "
+"attached storage may be used for primary storage. Secondary storage is "
+"always accessed using NFS."
+msgstr "CloudStack定义了两种存储：主存储和辅助存储。主存储可以使用iSCSI或NFS协议。另外，直接附加存储可被用于主存储。辅助存储通常使用NFS协议。"
+
+# 20876e254ad044ddaa6b6090751c79d2
+#: ../../storage.rst:28
+msgid ""
+"There is no ephemeral storage in CloudStack. All volumes on all nodes are "
+"persistent."
+msgstr "CloudStack不支持临时存储。所有节点上的所有卷都是持久存储。"
+
+# bf8fb32949b941d98036a5312e70d5a4
+#: ../../storage.rst:33
+msgid "Primary Storage"
+msgstr "主存储"
+
+# d56fc829e85b469dae70016a093f1050
+#: ../../storage.rst:35
+msgid ""
+"This section gives concepts and technical details about CloudStack primary "
+"storage. For information about how to install and configure primary storage "
+"through the CloudStack UI, see the Installation Guide."
+msgstr "本章节讲述的是关于CloudStack的主存储概念和技术细节。更多关于如何通过CloudStack UI安装和配置主存储的信息，请参阅安装向导。"
+
+# 950476049a7645b887c0f50e0a4d1f27
+#: ../../storage.rst:39
+msgid ""
+"`“About Primary Storage” "
+"<http://docs.cloudstack.apache.org/en/latest/concepts.html#about-primary-"
+"storage>`_"
+msgstr "`“关于主存储” <http://docs.cloudstack.apache.org/en/latest/concepts.html#about-primary-storage>`_"
+
+# c26af650001f4c28b6d9803b7efde40e
+#: ../../storage.rst:43
+msgid "Best Practices for Primary Storage"
+msgstr "主存储的最佳实践"
+
+# 6f52e89385424e26a23b25f5784a3491
+#: ../../storage.rst:45
+msgid ""
+"The speed of primary storage will impact guest performance. If possible, "
+"choose smaller, higher RPM drives or SSDs for primary storage."
+msgstr "主存储的速度会直接影响来宾虚机的性能。如果可能，为主存储选择选择容量小，转速高的硬盘或SSDs。"
+
+# f8f87fc7d7e4415b831b34939cbe9b12
+#: ../../storage.rst:49
+msgid "There are two ways CloudStack can leverage primary storage:"
+msgstr "CloudStack用两种方式使用主存储："
+
+# 52ac4abe89dd4b3586b61386e9b5b0e5
+#: ../../storage.rst:51
+msgid ""
+"Static: This is CloudStack's traditional way of handling storage. In this "
+"model, a preallocated amount of storage (ex. a volume from a SAN) is given "
+"to CloudStack. CloudStack then permits many of its volumes to be created on "
+"this storage (can be root and/or data disks). If using this technique, "
+"ensure that nothing is stored on the storage. Adding the storage to "
+"CloudStack will destroy any existing data."
+msgstr "静态：CloudStack管理存储的传统方式。在这个模式下，要给CloudStack预先分配几个存储(比如一个SAN上的卷)。然后CloudStack在上面创建若干个卷(可以是root和/或者数据盘)。如果使用这种技术，确保存储上没有数据。给CloudStack添加存储会销毁已存在的所有数据。"
+
+# 813a87ee26ba4259a5c3ef52a1b0ef5a
+#: ../../storage.rst:59
+msgid ""
+"Dynamic: This is a newer way for CloudStack to manage storage. In this "
+"model, a storage system (rather than a preallocated amount of storage) is "
+"given to CloudStack. CloudStack, working in concert with a storage plug-in, "
+"dynamically creates volumes on the storage system and each volume on the "
+"storage system maps to a single CloudStack volume. This is highly useful for"
+" features such as storage Quality of Service. Currently this feature is "
+"supported for data disks (Disk Offerings)."
+msgstr "动态：这是一个比较新的CloudStack管理存储的方式。在这个模式中，给CloudStack使用的是一个存储系统(但不是预分配的存储)。CloudStack配合存储一起工作，动态的在存储系统上创建卷并且存储系统上的每个卷都映射到一个CloudStack卷。这样做非常有利于存储的QoS。目前数据磁盘(磁盘方案)支持这个特性。"
+
+# f97cbc96312f49aba2a6bab0d1e1b2a4
+#: ../../storage.rst:70
+msgid "Runtime Behavior of Primary Storage"
+msgstr "主存储的运行时行为"
+
+# 5bf02a65cf3a40df9e7e165fd9ecd864
+#: ../../storage.rst:72
+msgid ""
+"Root volumes are created automatically when a virtual machine is created. "
+"Root volumes are deleted when the VM is destroyed. Data volumes can be "
+"created and dynamically attached to VMs. Data volumes are not deleted when "
+"VMs are destroyed."
+msgstr "当创建虚拟机的时候，root卷也会自动的创建。在VM被销毁的时候root卷也会被删除。数据卷可以被创建并动态的挂载到VMs上。VMs销毁时并不会删除数据卷。"
+
+# 80ad3630b276444cac7f5324ecf5a326
+#: ../../storage.rst:77
+msgid ""
+"Administrators should monitor the capacity of primary storage devices and "
+"add additional primary storage as needed. See the Advanced Installation "
+"Guide."
+msgstr "管理员可以监控主存储设备的容量和在需要时添加其他的主存储。强参阅高级安装指导。"
+
+# 073d4376c5e04c77bbfdba19e134418c
+#: ../../storage.rst:81
+msgid ""
+"Administrators add primary storage to the system by creating a CloudStack "
+"storage pool. Each storage pool is associated with a cluster or a zone."
+msgstr "管理员通过CloudStack创建存储池来给系统添加主存储。每个存储池对应一个群集或者区域。"
+
+# 79ff1a8b27224fff8510e3a5ce37a304
+#: ../../storage.rst:85
+msgid ""
+"With regards to data disks, when a user executes a Disk Offering to create a"
+" data disk, the information is initially written to the CloudStack database "
+"only. Upon the first request that the data disk be attached to a VM, "
+"CloudStack determines what storage to place the volume on and space is taken"
+" from that storage (either from preallocated storage or from a storage "
+"system (ex. a SAN), depending on how the primary storage was added to "
+"CloudStack)."
+msgstr "对于数据磁盘，当一个用户执行一个磁盘方案来创建数据磁盘的时候，初始化信息就被写到了CloudStack的数据库中。根据第一次给VM附加数据磁盘的请求，CloudStack决定这个卷的位置和空间占用在哪个存储(预分配存储和存储系统(比如SAN)中的任意一种，这取决于CloudStack使用的哪种主存储)。"
+
+# 03d9238ac1b44704b10a3c6cbc9a194c
+#: ../../storage.rst:95
+msgid "Hypervisor Support for Primary Storage"
+msgstr "Hypervisor对主存储的支持"
+
+# f9043e1c7c614dcab5cc48b83c777751
+#: ../../storage.rst:97
+msgid ""
+"The following table shows storage options and parameters for different "
+"hypervisors."
+msgstr "下表显示了针对不同Hypervisors的存储选项和参数。"
+
+# df81aa4abfe0426f8ea7b5d76689b532
+#: ../../storage.rst:101
+msgid "Storage media \\\\ hypervisor"
+msgstr "存储媒介 \\\\ hypervisor"
+
+# 21dd8b1cdc0d40dc8559cbcf4fbfab3d
+# 6e7b702add314a16a42c7e999147c3c9
+#: ../../storage.rst:101 ../../storage.rst:709
+msgid "VMware vSphere"
+msgstr "VMware vSphere"
+
+# 95085080f31c48d7a3c6eeb26d596976
+# fd649d92db414b198a27e37febfdfe07
+#: ../../storage.rst:101 ../../storage.rst:709
+msgid "Citrix XenServer"
+msgstr "Citrix XenServer"
+
+# 94199ee2b07049529bc3e9c2b7eb8707
+# 7b0dbf552cc34bb0ac898f31180f3a83
+# 3f78f67d3c14490da80f847d2a00fc5d
+#: ../../storage.rst:101 ../../storage.rst:332 ../../storage.rst:709
+msgid "KVM"
+msgstr "KVM"
+
+# b63b5cf8a70b492f82138dc7fd0b3d4f
+#: ../../storage.rst:101
+msgid "Hyper-V"
+msgstr "Hyper-V"
+
+# 6b911e3d65954475be2786623c89bfee
+#: ../../storage.rst:103
+msgid "**Format for Disks, Templates, and Snapshots**"
+msgstr "**磁盘、模板和快照的格式**"
+
+# 597a7a22248749eab119febe7cad0654
+#: ../../storage.rst:103
+msgid "VMDK"
+msgstr "VMDK"
+
+# dcb226ea6af24150b270ebd0e57ce0d6
+# 06b1f702f7ae492c9259258d6cdb9bba
+#: ../../storage.rst:103 ../../storage.rst:330
+msgid "VHD"
+msgstr "VHD"
+
+# 3c8131f767e745659f09e7635e52de1d
+# 891d2deb650249bdaaa476d91cedea41
+#: ../../storage.rst:103 ../../storage.rst:332
+msgid "QCOW2"
+msgstr "QCOW2"
+
+# 0ef733d6419b49ddb03a35218b141dad
+#: ../../storage.rst:103
+msgid "VHD Snapshots are not supported."
+msgstr "不支持VHD快照。"
+
+# 366c31ae3c524e20bcbff9f5b0f33865
+#: ../../storage.rst:105
+msgid "**iSCSI support**"
+msgstr "**支持iSCSI**"
+
+# 169329b4d94f4d5a9a71e806fc6493ee
+# eb8734785e1e4253ae29efadaea66c18
+#: ../../storage.rst:105 ../../storage.rst:106
+msgid "VMFS"
+msgstr "VMFS"
+
+# 439fbab809dc46b291a52de0067fb0f5
+#: ../../storage.rst:105
+msgid "Clustered LVM"
+msgstr "集群化的LVM"
+
+# 7166fec7c32746bea34118f3db301ae6
+# aa36e5087ca64a9590ad2b643c91d5f7
+#: ../../storage.rst:105 ../../storage.rst:106
+msgid "Yes, via Shared Mountpoint"
+msgstr "支持，通过Shared Mountpoint"
+
+# 03d269fc73bc48348ab1896256774ae1
+# ce5af21795294bc697ba5aa4474636da
+# 785a027864c94241bdfc6686ade2836e
+# 3099d25cace04a4788cd2531e69b4710
+# 2e285148115d4a2da6cae3f373aba27f
+# 895e4b1ff76840cc94de98328f387f6f
+# 8353d798b3004fb5bbd003df12fac8a2
+# 9695a4455edd45c899785834ba6fef74
+# 7857cd4194be451faa95e02696061cf8
+#: ../../storage.rst:105 ../../storage.rst:106 ../../storage.rst:107
+#: ../../storage.rst:109 ../../storage.rst:110 ../../storage.rst:110
+#: ../../storage.rst:110 ../../storage.rst:711 ../../storage.rst:711
+msgid "No"
+msgstr "否"
+
+# b70b0d5267be474c85b0240f24b6a2b9
+#: ../../storage.rst:106
+msgid "**Fiber Channel support**"
+msgstr "**支持FC**"
+
+# 443c6e664d6b46a9a0f879410a6e1aa7
+#: ../../storage.rst:106
+msgid "Yes, via Existing SR"
+msgstr "支持，通过已有的SR"
+
+# b46dc3d64ece43109c0051e5fc0d66e5
+#: ../../storage.rst:107
+msgid "**NFS support**"
+msgstr "**支持NFS**"
+
+# ac7f31ad38674dd5bd5040d072b67e09
+# de71afbac6cb457caff9416ed30e2d9c
+# 12e7d7ffb19d4610a624484aaffeebf2
+# 10601f00b2d54ae1833a5b8cf47428ea
+# cfade3e6b2824c0b8ae1ddfc34d36e9a
+# 4b311bb6db4b41779b0c525c589c00a7
+# 6ab3b70adba24666a78774746ccfabad
+# bed48ae68b8e4818aad52abb69bbc24b
+# 11121f7bcfdc45db85459a8f12982e26
+#: ../../storage.rst:107 ../../storage.rst:107 ../../storage.rst:107
+#: ../../storage.rst:108 ../../storage.rst:108 ../../storage.rst:108
+#: ../../storage.rst:108 ../../storage.rst:110 ../../storage.rst:711
+msgid "Yes"
+msgstr "是"
+
+# 8c9b266cc80241eda65595fd19a54dc7
+#: ../../storage.rst:108
+msgid "**Local storage support**"
+msgstr "**支持本地存储**"
+
+# 1b48c07eb50544109f66a49c39c5d38c
+#: ../../storage.rst:109
+msgid "**Storage over-provisioning**"
+msgstr "**存储超配**"
+
+# 36ee1094090c495d95a6a7650892ffae
+#: ../../storage.rst:109
+msgid "NFS and iSCSI"
+msgstr "NFS 和 iSCSI"
+
+# 565842e982394810bcd8454836b9b271
+# bb172a9d571244538e501ba593025cd6
+#: ../../storage.rst:109 ../../storage.rst:109
+msgid "NFS"
+msgstr "NFS"
+
+# a5915b6a85a64a268e5a1e41080fa835
+#: ../../storage.rst:110
+msgid "**SMB/CIFS**"
+msgstr "**SMB/CIFS**"
+
+# 8f37dda63c1a49f084a39311ad775fd6
+#: ../../storage.rst:113
+msgid ""
+"XenServer uses a clustered LVM system to store VM images on iSCSI and Fiber "
+"Channel volumes and does not support over-provisioning in the hypervisor. "
+"The storage server itself, however, can support thin-provisioning. As a "
+"result the CloudStack can still support storage over-provisioning by running"
+" on thin-provisioned storage volumes."
+msgstr "XenServer通过在iSCSI和FC卷上使用集群化的LVM系统来存储VM镜像，并且不支持存储超配。尽管存储本身支持自动精简配置。不过CloudStack仍然支持在有自动精简配置的存储卷上使用存储超配。"
+
+# d8bfde747fd541bcb2d1f62d1d2ddd9c
+#: ../../storage.rst:119
+msgid ""
+"KVM supports \"Shared Mountpoint\" storage. A shared mountpoint is a file "
+"system path local to each server in a given cluster. The path must be the "
+"same across all Hosts in the cluster, for example /mnt/primary1. This shared"
+" mountpoint is assumed to be a clustered filesystem such as OCFS2. In this "
+"case the CloudStack does not attempt to mount or unmount the storage as is "
+"done with NFS. The CloudStack requires that the administrator insure that "
+"the storage is available"
+msgstr "KVM支持 \"Shared Mountpoint\"存储。Shared Mountpoint是群集中每个服务器本地文件系统中的一个路径。群集所有主机中的该路径必须一致，比如/mnt/primary1。并假设Shared Mountpoint是一个集群文件系统如OCFS2。在这种情况下，CloudStack不会把它当做NFS存储去尝试挂载或卸载。CloudStack需要管理员确保该存储是可用的。"
+
+# 80ebb012a77045e9b3a5a47d82cef42c
+#: ../../storage.rst:127
+msgid ""
+"With NFS storage, CloudStack manages the overprovisioning. In this case the "
+"global configuration parameter storage.overprovisioning.factor controls the "
+"degree of overprovisioning. This is independent of hypervisor type."
+msgstr "在NFS存储中，CloudStack管理超配。这种情况下，使用全局配置参数storage.overprovisioning.factor来控制超配的范围。且不受hyperviso类型约束。"
+
+# 46f7d4fdff4d4ea996d136375ac93805
+#: ../../storage.rst:132
+msgid ""
+"Local storage is an option for primary storage for vSphere, XenServer, and "
+"KVM. When the local disk option is enabled, a local disk storage pool is "
+"automatically created on each host. To use local storage for the System "
+"Virtual Machines (such as the Virtual Router), set "
+"system.vm.use.local.storage to true in global configuration."
+msgstr "在vSphere, XenServer和KVM中，本地存储是一个可选项。当选择了使用本地存储，所有主机会自动创建本地存储池。想要系统虚拟机 (例如虚拟路由器)使用本地存储，请设置全局配置参数system.vm.use.local.storage为true."
+
+# 84339fc995ab461cb30e853b024629a4
+#: ../../storage.rst:138
+msgid ""
+"CloudStack supports multiple primary storage pools in a Cluster. For "
+"example, you could provision 2 NFS servers in primary storage. Or you could "
+"provision 1 iSCSI LUN initially and then add a second iSCSI LUN when the "
+"first approaches capacity."
+msgstr "CloudStack支持在一个群集内有多个主存储池。比如，使用2个NFS服务器提供主存储。或原有的1个iSCSI LUN达到一定容量时再添加第二个iSCSI LUN。"
+
+# 16767f52da5e4a3ea351cb7c2208207a
+#: ../../storage.rst:145
+msgid "Storage Tags"
+msgstr "存储标签"
+
+# d0ffba1bad5942adaca099b572104c63
+#: ../../storage.rst:147
+msgid ""
+"Storage may be \"tagged\". A tag is a text string attribute associated with "
+"primary storage, a Disk Offering, or a Service Offering. Tags allow "
+"administrators to provide additional information about the storage. For "
+"example, that is a \"SSD\" or it is \"slow\". Tags are not interpreted by "
+"CloudStack. They are matched against tags placed on service and disk "
+"offerings. CloudStack requires all tags on service and disk offerings to "
+"exist on the primary storage before it allocates root or data disks on the "
+"primary storage. Service and disk offering tags are used to identify the "
+"requirements of the storage that those offerings have. For example, the high"
+" end service offering may require \"fast\" for its root disk volume."
+msgstr "存储是可以被\"标签\"的。标签是与主存储、磁盘方案或服务方案关联的字符串属性。标签允许管理员给存储添加额外的信息。比如\"SSD\"或者\"慢速\"。CloudStack不负责解释标签。它不会匹配服务和磁盘方案的标签。CloudStack要求在主存储上分配root或数据磁盘之前，所有服务和磁盘方案的都已存在对应的标签。服务和磁盘方案的标签被用于识别方案对存储的要求。比如，高端服务方案可能需要它的root磁盘卷是\"快速的\""
+
+# 81b0523239f34456bfe222f88c9520e0
+#: ../../storage.rst:159
+msgid ""
+"The interaction between tags, allocation, and volume copying across clusters"
+" and pods can be complex. To simplify the situation, use the same set of "
+"tags on the primary storage for all clusters in a pod. Even if different "
+"devices are used to present those tags, the set of exposed tags can be the "
+"same."
+msgstr "标签，分配，跨集群或机架的卷复制之间的关系是很复杂的。简单的环境就是在一个机架内所有集群的主存储使用相同的标签。即使用这些标签表示不同设备，展现出来的标签组仍可以是一样的。"
+
+# b85907f2a2a546ae9312b9c9d9a443e3
+#: ../../storage.rst:167
+msgid "Maintenance Mode for Primary Storage"
+msgstr "主存储的维护模式"
+
+# 0e84968be86b4971b80b0b9f4f141840
+#: ../../storage.rst:169
+msgid ""
+"Primary storage may be placed into maintenance mode. This is useful, for "
+"example, to replace faulty RAM in a storage device. Maintenance mode for a "
+"storage device will first stop any new guests from being provisioned on the "
+"storage device. Then it will stop all guests that have any volume on that "
+"storage device. When all such guests are stopped the storage device is in "
+"maintenance mode and may be shut down. When the storage device is online "
+"again you may cancel maintenance mode for the device. The CloudStack will "
+"bring the device back online and attempt to start all guests that were "
+"running at the time of the entry into maintenance mode."
+msgstr "主存储可以被设置成维护模式。这很有用，例如，替换存储设备中坏的RAM。对存储设备的维护模式将首先停止任何新的来自预处理的来宾虚机，然后停止所有有数据卷的来宾虚机。当所有来宾虚机被停止的时候，这个存储设备就进入维护模式了并且可以关机。当存储设备再次上线的时候，你可以对这个设备取消维护模式。CloudStack将返回在线状态并且试着启动所有曾在这个设备进入维护模式前运行的来宾机器。"
+
+# 67a803ad730347ec9a5e5667d7ceadfa
+#: ../../storage.rst:182
+msgid "Secondary Storage"
+msgstr "辅助存储"
+
+# d48d908ab2384420a19689dfc1957c12
+#: ../../storage.rst:184
+msgid ""
+"This section gives concepts and technical details about CloudStack secondary"
+" storage. For information about how to install and configure secondary "
+"storage through the CloudStack UI, see the Advanced Installation Guide."
+msgstr "本章节讲述的是关于CloudStack的辅助存储概念和技术细节。更多关于如何通过CloudStack UI安装和配置主存储的信息，请参阅高级安装向导。"
+
+# 4c9b91f3c5dd4d8a83a8c2706ac95f41
+#: ../../storage.rst:189
+msgid ""
+"`“About Secondary Storage” "
+"<http://docs.cloudstack.apache.org/en/latest/concepts.html#about-secondary-"
+"storage>`_"
+msgstr "`“关于辅助存储” <http://docs.cloudstack.apache.org/en/latest/concepts.html#about-secondary-storage>`_。"
+
+# 6ca82acb4184482298cdd589b41fdd16
+#: ../../storage.rst:193
+msgid "Working With Volumes"
+msgstr "使用磁盘卷"
+
+# d8b653a972c54421a4405a011c4ca3e7
+#: ../../storage.rst:195
+msgid ""
+"A volume provides storage to a guest VM. The volume can provide for a root "
+"disk or an additional data disk. CloudStack supports additional volumes for "
+"guest VMs."
+msgstr "卷为来宾虚机提供存储。卷可以作为root分区或附加数据磁盘。CloudStack支持为来宾虚机添加卷。"
+
+# 2197b194989d434ca7e999eb0f6cfaa9
+#: ../../storage.rst:199
+msgid ""
+"Volumes are created for a specific hypervisor type. A volume that has been "
+"attached to guest using one hypervisor type (e.g, XenServer) may not be "
+"attached to a guest that is using another hypervisor type, for "
+"example:vSphere, KVM. This is because the different hypervisors use "
+"different disk image formats."
+msgstr "不同的hypervisor创建的磁盘卷有所不同。当磁盘卷被附加到一种hypervisor的虚拟机(如：xenserver)，就不能再被附加到其他类型的hypervisor,如：vmware、kvm的虚拟机中。因为它们所用的磁盘分区模式不同。"
+
+# 6d23b58657fd41c2aba08ac7ae7eaabe
+#: ../../storage.rst:205
+msgid ""
+"CloudStack defines a volume as a unit of storage available to a guest VM. "
+"Volumes are either root disks or data disks. The root disk has \"/\" in the "
+"file system and is usually the boot device. Data disks provide for "
+"additional storage, for example: \"/opt\" or \"D:\". Every guest VM has a "
+"root disk, and VMs can also optionally have a data disk. End users can mount"
+" multiple data disks to guest VMs. Users choose data disks from the disk "
+"offerings created by administrators. The user can create a template from a "
+"volume as well; this is the standard procedure for private template "
+"creation. Volumes are hypervisor-specific: a volume from one hypervisor type"
+" may not be used on a guest of another hypervisor type."
+msgstr "CloudStack定义一个卷作为来宾虚机的一个有效的存储单元。卷可能是root磁盘或者数据磁盘。root磁盘在文件系统中有 \"/\" 并且通常用于启动设备。数据磁盘提供额外的存储，比如：\"/opt\"或者\"D:\"。每个来宾VM都有一个root磁盘，VMs可能也还有数据磁盘。终端用可以给来宾VMs挂在多个数据磁盘。用户通过管理员创建的磁盘方案来选择数据磁盘。用户同样可以在卷上创建模板；这是标准私有模板的创建流程。针对不同的hypervisor卷也不同：一个hypervisor类型上的卷不能用于其它的hypervisor类型上的来宾虚机。"
+
+# 0dfd84618eba4890bd79fdde4a5681c2
+#: ../../storage.rst:217
+msgid ""
+"CloudStack supports attaching up to 13 data disks to a VM on XenServer "
+"hypervisor versions 6.0 and above. For the VMs on other hypervisor types, "
+"the data disk limit is 6."
+msgstr "CloudStack支持给XenServer 6.0和以上版本的VM最多附加13个数据磁盘。其它hypervisor类型上的VMs，最多附加6个数据磁盘。"
+
+# f423c15d3d884dd295629f532792322b
+#: ../../storage.rst:223
+msgid "Creating a New Volume"
+msgstr "创建新卷"
+
+# 288ba1fb3a644f05a3cd4b08e05b1524
+#: ../../storage.rst:225
+msgid ""
+"You can add more data disk volumes to a guest VM at any time, up to the "
+"limits of your storage capacity. Both CloudStack administrators and users "
+"can add volumes to VM instances. When you create a new volume, it is stored "
+"as an entity in CloudStack, but the actual storage resources are not "
+"allocated on the physical storage device until you attach the volume. This "
+"optimization allows the CloudStack to provision the volume nearest to the "
+"guest that will use it when the first attachment is made."
+msgstr "你可以在符合你存储能力的情况下随时向来宾虚拟机添加多个数据卷。CloudStack的管理员和普通用户都可以向虚拟机实例中添加卷。当你创建了一个新卷，他以一个实体的形式存在于CloudStack中，但是在你将其附加到实例中之前他并不会被分配实际的物理空间。这个优化项允许CloudStack提供最接近来宾虚机的卷，并在第一个附加至虚机的时候使用它。"
+
+# 09420f12f6d84b9ebe5882b8a922b802
+#: ../../storage.rst:235
+msgid "Using Local Storage for Data Volumes"
+msgstr "使用本地存储作为数据卷"
+
+# 87d84c3ad80f4c65ae01116db8e49f5b
+#: ../../storage.rst:237
+msgid ""
+"You can create data volumes on local storage (supported with XenServer, KVM,"
+" and VMware). The data volume is placed on the same host as the VM instance "
+"that is attached to the data volume. These local data volumes can be "
+"attached to virtual machines, detached, re-attached, and deleted just as "
+"with the other types of data volume."
+msgstr "您可以将数据盘创建在本地存储上(XenServer、KVM和VMware支持)。数据盘会存放在和所挂载的虚机相同的主机上。这些本地数据盘可以象其它类型的数据盘一样挂载到虚机、卸载、再挂载和删除。"
+
+# 2092c3e84a0040c88df79f6600d12b26
+#: ../../storage.rst:243
+msgid ""
+"Local storage is ideal for scenarios where persistence of data volumes and "
+"HA is not required. Some of the benefits include reduced disk I/O latency "
+"and cost reduction from using inexpensive local disks."
+msgstr "在不需要持久化数据卷和HA的情况下，本地存储是个理想的选择。其优点包括降低磁盘I/O延迟、使用廉价的本地磁盘来降低费用等。"
+
+# 24091baabed046c79bbde0f55cc59de6
+#: ../../storage.rst:247
+msgid ""
+"In order for local volumes to be used, the feature must be enabled for the "
+"zone."
+msgstr "为了能使用本地磁盘，区域中必须启用该功能。"
+
+# a3fc0fa189a444759468f8645397fc0a
+#: ../../storage.rst:250
+msgid ""
+"You can create a data disk offering for local storage. When a user creates a"
+" new VM, they can select this disk offering in order to cause the data disk "
+"volume to be placed in local storage."
+msgstr "您可以为本地存储创建一个数据盘方案。当创建新虚机时，用户就能够选择该磁盘方案使数据盘存放到本地存储上。"
+
+# 2884a62219544ddea52e40fbabdfc590
+#: ../../storage.rst:254
+msgid ""
+"You can not migrate a VM that has a volume in local storage to a different "
+"host, nor migrate the volume itself away to a different host. If you want to"
+" put a host into maintenance mode, you must first stop any VMs with local "
+"data volumes on that host."
+msgstr "你不能将使用了本地存储作为磁盘的虚机迁移到别的主机，也不能迁移磁盘本身到别的主机。若要将主机置于维护模式，您必须先将该主机上所有拥有本地数据卷的虚机关机。"
+
+# 427238ca555946cc8792695ca92136df
+#: ../../storage.rst:261
+msgid "To Create a New Volume"
+msgstr "创建新卷"
+
+# 70f2f0de47b04a1cbb185fe77792e139
+# 629422b536114a33be189acc56c6cc01
+# 541ad7fafe48443d97a67692a359748c
+# b61f2bef29ea454bb44952aebc53c22c
+# 0e5cea32ef9848a0a96a9ede62313c86
+# 8e3b1d8db33d44fabb0894f24d17d358
+# e35965b604404bef9f199b32675ad907
+#: ../../storage.rst:263 ../../storage.rst:357 ../../storage.rst:390
+#: ../../storage.rst:456 ../../storage.rst:477 ../../storage.rst:506
+#: ../../storage.rst:562
+msgid "Log in to the CloudStack UI as a user or admin."
+msgstr "使用用户或管理员登录到CloudStack用户界面。"
+
+# 146d31151f5e442c8b76e9ef512eac29
+# 11db8955c3494f43b8d2e1bc13a914df
+# 54c24ff429df4622aa1ce17ff0817663
+# f9babc8c9c9941049be79d67a3c60c82
+#: ../../storage.rst:265 ../../storage.rst:312 ../../storage.rst:564
+#: ../../storage.rst:664
+msgid "In the left navigation bar, click Storage."
+msgstr "在左侧导航栏点击存储。"
+
+# 9df84607b2a94838bb6739342d1e0bd7
+# 1f30687ee1374b74bb647174e701cc9b
+# 47fcd7e70cc34717b426f9bf08a626c8
+#: ../../storage.rst:267 ../../storage.rst:361 ../../storage.rst:566
+msgid "In Select View, choose Volumes."
+msgstr "在选择视图中选择卷。"
+
+# d9affc0389314e7cadbe9e0340e6bddd
+#: ../../storage.rst:269
+msgid ""
+"To create a new volume, click Add Volume, provide the following details, and"
+" click OK."
+msgstr "点击添加卷来创建一个新卷，填写以下信息后点击确定。"
+
+# 8aa967b67394416b9971e9986853fc0e
+#: ../../storage.rst:272
+msgid "Name. Give the volume a unique name so you can find it later."
+msgstr "名字。给卷取个唯一的名字以便于你以后找到它。"
+
+# b95f18a10ac946d8bb6e4424522125a5
+#: ../../storage.rst:274
+msgid ""
+"Availability Zone. Where do you want the storage to reside? This should be "
+"close to the VM that will use the volume."
+msgstr "可用的资源域。你想让这个存储在哪个地方有效？这个应该接近要是用这个卷的VM。（就是说你要 在单个资源域内使用这个存储就选择单个资源域，如果此存储要在多个资源与内共享你就选所有资源域）"
+
+# 55b275ed6b1b4c7e965e8d9c3fc64d99
+#: ../../storage.rst:277
+msgid "Disk Offering. Choose the characteristics of the storage."
+msgstr "磁盘方案。选择存储特性。"
+
+# 75cbb5f7984642d8a86bb71c3f274c52
+#: ../../storage.rst:279
+msgid ""
+"The new volume appears in the list of volumes with the state “Allocated.” "
+"The volume data is stored in CloudStack, but the volume is not yet ready for"
+" use"
+msgstr "新建的存储会在卷列表中显示为“已分配”状态。卷数据已经存储到CloudStack了，但是该卷还不能被使用。"
+
+# 97a7e13d891c4ab78df0cd8ebcafdfc7
+#: ../../storage.rst:283
+msgid "To start using the volume, continue to Attaching a Volume"
+msgstr "通过附加卷来开始使用这个卷。"
+
+# 890dc04ff24f497186a44bb7d537412d
+#: ../../storage.rst:287
+msgid "Uploading an Existing Volume to a Virtual Machine"
+msgstr "上传一个已存在的卷给虚拟机"
+
+# 17f14f4d6eec4e609b6e183abaa18556
+#: ../../storage.rst:289
+msgid ""
+"Existing data can be made accessible to a virtual machine. This is called "
+"uploading a volume to the VM. For example, this is useful to upload data "
+"from a local file system and attach it to a VM. Root administrators, domain "
+"administrators, and end users can all upload existing volumes to VMs."
+msgstr "已存在的数据现在可以被虚拟机存取。这个被称为上传一个卷到VM。例如，这对于从本地数据系统上传数据并将数据附加到VM是非常有用的。Root管理员、域管理员和终端用户都可以给VMs上传已存在的卷。"
+
+# f18a289b1dae403cb4a540ec6280499b
+#: ../../storage.rst:295
+msgid ""
+"The upload is performed using HTTP. The uploaded volume is placed in the "
+"zone's secondary storage"
+msgstr "使用HTTP上传。上传的卷被存储在区域中的辅助存储中。"
+
+# e22b07fc396b4455bf886c103b353298
+#: ../../storage.rst:298
+msgid ""
+"You cannot upload a volume if the preconfigured volume limit has already "
+"been reached. The default limit for the cloud is set in the global "
+"configuration parameter max.account.volumes, but administrators can also set"
+" per-domain limits that are different from the global default. See Setting "
+"Usage Limits"
+msgstr "如果预配置的卷已经达到了上限的话，那么你就不能上传卷了。默认的限制在全局配置参数max.account.volumes中设置，但是管理员同样可以为每个用户域设置不同于全局默认的上限值。请参阅设置使用限制。"
+
+# e8b13fa3aadd48cca116ddff3d8ac16a
+#: ../../storage.rst:304
+msgid "To upload a volume:"
+msgstr "要上传一个卷："
+
+# 2032475f0e514f0d87b48fde37cfda03
+#: ../../storage.rst:306
+msgid ""
+"(Optional) Create an MD5 hash (checksum) of the disk image file that you are"
+" going to upload. After uploading the data disk, CloudStack will use this "
+"value to verify that no data corruption has occurred."
+msgstr "(可选项)为将要上传的磁盘镜像文件创建一个MD5哈希(校验)。再上传数据磁盘之后，CloudStack将使用这个校验值来检查这个磁盘文件再上传过程中没有出错。"
+
+# 0fc87857d60e4b6e8d2d80130b6dd64d
+#: ../../storage.rst:310
+msgid "Log in to the CloudStack UI as an administrator or user"
+msgstr "用管理员或用户账号登录CloudStack UI"
+
+# cfa804b4dc5e4b539613e1693f19c041
+#: ../../storage.rst:314
+msgid "Click Upload Volume."
+msgstr "点击上传卷。"
+
+# b664bc425cd54ca4917358c8830843e7
+#: ../../storage.rst:316
+msgid "Provide the following:"
+msgstr "填写以下内容："
+
+# 33a6b2a32f3646e98a44862cba5bea26
+#: ../../storage.rst:318
+msgid ""
+"Name and Description. Any desired name and a brief description that can be "
+"shown in the UI."
+msgstr "名称和描述。你想要的任何名称和一个简洁的描述，这些都会显示在UI中。"
+
+# 1c773983c9a14bda81f657b9831390d5
+#: ../../storage.rst:321
+msgid ""
+"Availability Zone. Choose the zone where you want to store the volume. VMs "
+"running on hosts in this zone can attach the volume."
+msgstr "可用的区域：选择你想存储卷的区域。运行在该区域中的主机上的VMs都可以附加这个卷。"
+
+# d0263e16ccf649a88f3265f9cbd34b80
+#: ../../storage.rst:324
+msgid ""
+"Format. Choose one of the following to indicate the disk image format of the"
+" volume."
+msgstr "格式。在下面所指出的卷的磁盘镜像格式中选择一种。"
+
+# 9e62f8681cf6466c87525f623ab74761
+#: ../../storage.rst:328
+msgid "Hypervisor"
+msgstr "Hypervisor"
+
+# 18fa4b974ece4a8fae34fccd9062dc6a
+#: ../../storage.rst:328
+msgid "Disk Image Format"
+msgstr "磁盘镜像格式"
+
+# fd430608386e4e7db755bcbf9a932e8a
+#: ../../storage.rst:330
+msgid "XenServer"
+msgstr "XenServer"
+
+# 6e5d75ea06c7464cb4ec871161a4a108
+#: ../../storage.rst:331
+msgid "VMware"
+msgstr "VMware"
+
+# 01efef53521d4f8189c939afdd9c1cbb
+#: ../../storage.rst:331
+msgid "OVA"
+msgstr "OVA"
+
+# 9e300c5607d34ce6837b1817e414992a
+#: ../../storage.rst:335
+msgid ""
+"URL. The secure HTTP or HTTPS URL that CloudStack can use to access your "
+"disk. The type of file at the URL must match the value chosen in Format. For"
+" example, if Format is VHD, the URL might look like the following:"
+msgstr "URL。CloudStack用来访问你的磁盘的安全HTTP或HTTPS URL。URL对应的文件种类必须符合在格式中选择的。例如，格式为VHD，则URL必须像下面的："
+
+# 82d85bc5e5704af5a3256a92d5c02114
+#: ../../storage.rst:340
+msgid "``http://yourFileServerIP/userdata/myDataDisk.vhd``"
+msgstr "``http://yourFileServerIP/userdata/myDataDisk.vhd``"
+
+# 2a1e40703cff43efba2d4349b3a16219
+#: ../../storage.rst:342
+msgid "MD5 checksum. (Optional) Use the hash that you created in step 1."
+msgstr "MD5校验。(可选项)使用在步骤1中创建的哈希。"
+
+# c13069ba6499470eb80792d35b8177e5
+#: ../../storage.rst:344
+msgid ""
+"Wait until the status of the volume shows that the upload is complete. Click"
+" Instances - Volumes, find the name you specified in step 5, and make sure "
+"the status is Uploaded."
+msgstr "等到卷的上传显示完成。点击实例-卷，找到你在步骤5中指定的名称，单后确保状态是已上传。"
+
+# 0fd449f8d801478d84a4b2700da5e8b6
+#: ../../storage.rst:350
+msgid "Attaching a Volume"
+msgstr "附加一个卷"
+
+# da2f32e627974c378217daaed2a05282
+#: ../../storage.rst:352
+msgid ""
+"You can attach a volume to a guest VM to provide extra disk storage. Attach "
+"a volume when you first create a new volume, when you are moving an existing"
+" volume from one VM to another, or after you have migrated a volume from one"
+" storage pool to another."
+msgstr "你可以通过附加一个卷来提供虚拟机的额外磁盘存储。当你第一次创建新卷，或移动已存在的卷到另一台虚拟机，或实在从另一个存储池迁移过来一个卷的时候你才可以附加一个卷。"
+
+# e98f959945e047bc950d507b756c28e7
+#: ../../storage.rst:359
+msgid "In the left navigation, click Storage."
+msgstr "在左侧导航栏点击存储。"
+
+# 4334745af8f24f039eba4f0736befe7f
+#: ../../storage.rst:363
+msgid ""
+"Click the volume name in the Volumes list, then click the Attach Disk button"
+" |AttachDiskButton.png|"
+msgstr "在卷列表中点击卷的名称，然后点击附加磁盘按钮 |AttachDiskButton.png|"
+
+# 0840d7b567f84dbcbf9820547c2e68b2
+#: ../../storage.rst:366
+msgid ""
+"In the Instance popup, choose the VM to which you want to attach the volume."
+" You will only see instances to which you are allowed to attach volumes; for"
+" example, a user will see only instances created by that user, but the "
+"administrator will have more choices."
+msgstr "在弹出的实例界面，选择你打算附加卷的那台虚拟机。你只能看到允许你附加卷的实例；比如，普通用户只能看到他自己创建的实例，而管理员将会有更多的选择。"
+
+# 6e680f84bdb84267a7d2d60e4e7fcdf9
+#: ../../storage.rst:371
+msgid ""
+"When the volume has been attached, you should be able to see it by clicking "
+"Instances, the instance name, and View Volumes."
+msgstr "当卷被附加之后，你通过点击实例看到实例名和该实例所附加的卷。"
+
+# dc8f48c99c24477fa1924ef7a1fb28dc
+#: ../../storage.rst:376
+msgid "Detaching and Moving Volumes"
+msgstr "卸载和移动卷"
+
+# 988a57d9e81b49e6be5b37db8f4970c2
+#: ../../storage.rst:379
+msgid ""
+"This procedure is different from moving volumes from one storage pool to "
+"another as described in `“VM Storage Migration” <#vm-storage-migration>`_."
+msgstr "这个过程不同于从一个存储池移动卷到其他的池。这些内容在 `“VM存储迁移” <#vm-storage-migration>`_中有描述。"
+
+# 87a675231744495a92d09e12337edda0
+#: ../../storage.rst:383
+msgid ""
+"A volume can be detached from a guest VM and attached to another guest. Both"
+" CloudStack administrators and users can detach volumes from VMs and move "
+"them to other VMs."
+msgstr "卷可以从来宾虚机上卸载再附加到其他来宾虚机上。CloudStack管理员和用户都能从VMs上卸载卷再给其他VMs附加上。"
+
+# f3a14cfb3fe242fd95952025a2f91323
+#: ../../storage.rst:387
+msgid ""
+"If the two VMs are in different clusters, and the volume is large, it may "
+"take several minutes for the volume to be moved to the new VM."
+msgstr "如果两个VMs存在于不同的群集中，并且卷很大，那么卷移动至新的VM上可能要耗费比较长的时间。"
+
+# 8c279d5d59154e34b12465e6c1b2088a
+#: ../../storage.rst:392
+msgid ""
+"In the left navigation bar, click Storage, and choose Volumes in Select "
+"View. Alternatively, if you know which VM the volume is attached to, you can"
+" click Instances, click the VM name, and click View Volumes."
+msgstr "在左侧的导航栏，点击存储，在选择视图中选择卷。或者，如果你知道卷要附加给哪个VM的话，你可以点击实例，再点击VM名称，然后点击查看卷。"
+
+# 02ba88b018e140248a056d426fd7c9ea
+#: ../../storage.rst:397
+msgid ""
+"Click the name of the volume you want to detach, then click the Detach Disk "
+"button. |DetachDiskButton.png|"
+msgstr "点击你想卸载卷的名字，然后点击卸载磁盘按钮。 |DetachDiskButton.png|"
+
+# 2ef3b0f777434eb58770702236698b0d
+#: ../../storage.rst:400
+msgid ""
+"To move the volume to another VM, follow the steps in `“Attaching a Volume” "
+"<#attaching-a-volume>`_."
+msgstr "要移动卷至其他VM，按照`“附加卷” <#attaching-a-volume>`_中的步骤。"
+
+# 7bce94ec5cda4cfd9031d62fa230127d
+#: ../../storage.rst:405
+msgid "VM Storage Migration"
+msgstr "VM存储迁移"
+
+# 1bc602fbceb14e5ab29eb5e9189ae80d
+#: ../../storage.rst:407
+msgid "Supported in XenServer, KVM, and VMware."
+msgstr "支持XenServer、KVM和VMware。"
+
+# 8183ae7d15c748109dabfa42d80894c4
+#: ../../storage.rst:410
+msgid ""
+"This procedure is different from moving disk volumes from one VM to another "
+"as described in `“Detaching and Moving Volumes” <#detaching-and-moving-"
+"volumes>`_."
+msgstr "这个过程不同于从一个虚拟机移动磁盘卷到另外的虚拟机。这些内容在 \"查看挂载和移动卷\" <#detaching-and-moving-volumes>`_中有描述。"
+
+# 1124cbad549d456f858d2dd00e5689b4
+#: ../../storage.rst:414
+msgid ""
+"You can migrate a virtual machine’s root disk volume or any additional data "
+"disk volume from one storage pool to another in the same zone."
+msgstr "你可以从同一区域中的一个存储池迁移虚机的root磁盘卷或任何其他的数据磁盘卷到其他的池"
+
+# cb9592a82bf84a7c8393f53e9e18ef77
+#: ../../storage.rst:417
+msgid ""
+"You can use the storage migration feature to achieve some commonly desired "
+"administration goals, such as balancing the load on storage pools and "
+"increasing the reliability of virtual machines by moving them away from any "
+"storage pool that is experiencing issues."
+msgstr "你可以使用存储迁移功能完成一些常用的管理目标。如将它们从有问题的存储池中迁移出去以平衡存储池的负载和增加虚拟机的可靠性。"
+
+# a2bcc01e8bd8426dba63dd8846123778
+#: ../../storage.rst:422
+msgid ""
+"On XenServer and VMware, live migration of VM storage is enabled through "
+"CloudStack support for XenMotion and vMotion. Live storage migration allows "
+"VMs to be moved from one host to another, where the VMs are not located on "
+"storage shared between the two hosts. It provides the option to live migrate"
+" a VM’s disks along with the VM itself. It is possible to migrate a VM from "
+"one XenServer resource pool / VMware cluster to another, or to migrate a VM "
+"whose disks are on local storage, or even to migrate a VM’s disks from one "
+"storage repository to another, all while the VM is running."
+msgstr "在XenServer和VMware上，由于CloudStack支持XenMotion和vMotion，VM存储的在线迁移是启用的。在线存储迁移允许没有在共享存储上的VMs从一台主机迁移到另一台主机上。它提供选项让VM的磁盘与VM本身一起在线迁移。它让XenServer资源池之间/VMware群集之间迁移VM，或者在本地存储运行的VM，甚至是存储库之间迁移VM的磁盘成为可能，而且迁移同时VM是正在运行的。"
+
+# ebbd4f4ab1654020b6c6bd65f6c8bf34
+#: ../../storage.rst:433
+msgid ""
+"Because of a limitation in VMware, live migration of storage for a VM is "
+"allowed only if the source and target storage pool are accessible to the "
+"source host; that is, the host where the VM is running when the live "
+"migration operation is requested."
+msgstr "由于VMware中的限制，仅当源和目标存储池都能被源主机访问时才允许VM存储的在线迁移；也就是说，当需要在线迁移操作时，源主机是运行VM的主机。"
+
+# ebbe88108b474e6fbcb0bf7db34d5473
+#: ../../storage.rst:440
+msgid "Migrating a Data Volume to a New Storage Pool"
+msgstr "将数据卷迁移到新的存储池"
+
+# c5d71980858c4c34a0fa4c90024e9f49
+#: ../../storage.rst:442
+msgid "There are two situations when you might want to migrate a disk:"
+msgstr "当你想迁移磁盘的时候可能有两种情况："
+
+# 787fcb424e3a474794856b6e4c36294a
+#: ../../storage.rst:444
+msgid ""
+"Move the disk to new storage, but leave it attached to the same running VM."
+msgstr "将磁盘移动到新的存储，但是还将其附加在原来正在运行的VM上。"
+
+# d3a83f9da3984d7285731f35b1577f61
+#: ../../storage.rst:447
+msgid ""
+"Detach the disk from its current VM, move it to new storage, and attach it "
+"to a new VM."
+msgstr "从当前VM上卸载磁盘，然后将其移动至新的存储，再将其附加至新的VM。"
+
+# 47132cdecc7e40bdbe0b73b197292474
+#: ../../storage.rst:452
+msgid "Migrating Storage For a Running VM"
+msgstr "为正在运行的VM迁移存储"
+
+# 49fb8bbee6ed48a0a77ef96befb12bde
+#: ../../storage.rst:454
+msgid "(Supported on XenServer and VMware)"
+msgstr "(支持XenServer和VMware)"
+
+# 22e57c1b2aa74b2681ccf49f19103618
+#: ../../storage.rst:458
+msgid ""
+"In the left navigation bar, click Instances, click the VM name, and click "
+"View Volumes."
+msgstr "在左侧的导航栏，点击实例，再点击VM名，接着点击查看卷。"
+
+# afc084613de9415cb23e3125751a0dbe
+#: ../../storage.rst:461
+msgid "Click the volume you want to migrate."
+msgstr "点击你想迁移的卷。"
+
+# 162037fc56d042c085a994af770ebe2c
+# 35b4f135a003412db306d5c378f6f2b8
+#: ../../storage.rst:463 ../../storage.rst:479
+msgid ""
+"Detach the disk from the VM. See `“Detaching and Moving Volumes” "
+"<#detaching-and-moving-volumes>`_ but skip the “reattach” step at the end. "
+"You will do that after migrating to new storage."
+msgstr "从VM卸载磁盘。请参阅 `“卸载和移动卷” <#detaching-and-moving-volumes>`_ 但是跳过最后的\"重新附加\"步骤。你会在迁移过后在新的存储上做这一步。"
+
+# bc76fcc2fe05464dbd69894e5d2d4746
+# d3951fd18db542b9b7fa617306a1f07c
+#: ../../storage.rst:467 ../../storage.rst:483
+msgid ""
+"Click the Migrate Volume button |Migrateinstance.png| and choose the "
+"destination from the dropdown list."
+msgstr "点击迁移卷按钮 |Migrateinstance.png| ，然后从下拉列表里面选择目标位置。"
+
+# 98ce5d9b63084686a8b2a0c0ad1bf658
+#: ../../storage.rst:470
+msgid ""
+"Watch for the volume status to change to Migrating, then back to Ready."
+msgstr "这期间，卷的状态会变成正在迁移，然后又变回已就绪。"
+
+# f5d81aecca72450bac7269a86bf20b26
+#: ../../storage.rst:475
+msgid "Migrating Storage and Attaching to a Different VM"
+msgstr "迁移存储和附加到不同的VM"
+
+# 614797ab3f9a44f08c275e1f6ed61f13
+#: ../../storage.rst:486
+msgid ""
+"Watch for the volume status to change to Migrating, then back to Ready. You "
+"can find the volume by clicking Storage in the left navigation bar. Make "
+"sure that Volumes is displayed at the top of the window, in the Select View "
+"dropdown."
+msgstr "观察卷的状态会变成正在迁移，然后又变回已就绪。你可以点击左侧导航条中的存储找到卷。在选择查看的下拉列表中，确保卷显示在窗口的顶部。"
+
+# 5dafaedc6390428eb94978091d3808ad
+#: ../../storage.rst:491
+msgid ""
+"Attach the volume to any desired VM running in the same cluster as the new "
+"storage server. See `“Attaching a Volume” <#attaching-a-volume>`_"
+msgstr "在新的存储服务器中给运行在同一群集中的任何想要的VM附加卷。请参阅 `“附加卷” <#attaching-a-volume>`_。"
+
+# 2b29f819fd9f4a61b39cd73dbc205e65
+#: ../../storage.rst:497
+msgid "Migrating a VM Root Volume to a New Storage Pool"
+msgstr "迁移VM的Root卷到新的存储池"
+
+# 2fdc3aca153f473fac5ef5e7ba874b2a
+#: ../../storage.rst:499
+msgid ""
+"(XenServer, VMware) You can live migrate a VM's root disk from one storage "
+"pool to another, without stopping the VM first."
+msgstr "(XenServer、VMware)你可以在停止VM的情况下，使用在线迁移将VM的root磁盘从一个存储池移动到另外一个。"
+
+# f6a2cc4f4e2c40ce85564e77487a6051
+#: ../../storage.rst:502
+msgid ""
+"(KVM) When migrating the root disk volume, the VM must first be stopped, and"
+" users can not access the VM. After migration is complete, the VM can be "
+"restarted."
+msgstr "(KVM)当前已root磁盘卷的时候，VM必须关机，这时用户不能访问VM。在迁移完成之后，VM就能重启了。"
+
+# 99e0360f9cff4f3595658d757416655e
+#: ../../storage.rst:508
+msgid "In the left navigation bar, click Instances, and click the VM name."
+msgstr "在左侧的导航栏里，点击实例，然后点击VM名。"
+
+# 40a52b70ece74eeb83347bcca88c58c0
+#: ../../storage.rst:510
+msgid "(KVM only) Stop the VM."
+msgstr "(仅限于KVM)停止VM。"
+
+# 918eb301d15e4e369656d3ab9c3eb850
+#: ../../storage.rst:512
+msgid ""
+"Click the Migrate button |Migrateinstance.png| and choose the destination "
+"from the dropdown list."
+msgstr "点击迁移按钮 |Migrateinstance.png| ，然后从下拉列表中选择目标位置。"
+
+# d43200e809304acdad782782547fe7b0
+#: ../../storage.rst:516
+msgid ""
+"If the VM's storage has to be migrated along with the VM, this will be noted"
+" in the host list. CloudStack will take care of the storage migration for "
+"you."
+msgstr "如果VM的存储与VM必须一起被迁移，这点会在主机列表中标注。CloudStack会为你自动的进行存储迁移。"
+
+# 7e0343377d674714bb987eed30d9687e
+#: ../../storage.rst:520
+msgid ""
+"Watch for the volume status to change to Migrating, then back to Running (or"
+" Stopped, in the case of KVM). This can take some time."
+msgstr "观察卷的状态会变成迁移中，然后变回运行中(或者停止，在KVM中)。这过程会持续一段时间。"
+
+# cf995ac6b00e4ede877a0a869d35d0c3
+#: ../../storage.rst:523
+msgid "(KVM only) Restart the VM."
+msgstr "(仅限于KVM)重启VM。"
+
+# fe6a0aed97e24cd7a80e1e10b113296f
+#: ../../storage.rst:527
+msgid "Resizing Volumes"
+msgstr "重新规划卷"
+
+# d5de1d251de94750aef7188031910714
+#: ../../storage.rst:529
+msgid ""
+"CloudStack provides the ability to resize data disks; CloudStack controls "
+"volume size by using disk offerings. This provides CloudStack administrators"
+" with the flexibility to choose how much space they want to make available "
+"to the end users. Volumes within the disk offerings with the same storage "
+"tag can be resized. For example, if you only want to offer 10, 50, and 100 "
+"GB offerings, the allowed resize should stay within those limits. That "
+"implies if you define a 10 GB, a 50 GB and a 100 GB disk offerings, a user "
+"can upgrade from 10 GB to 50 GB, or 50 GB to 100 GB. If you create a custom-"
+"sized disk offering, then you have the option to resize the volume by "
+"specifying a new, larger size."
+msgstr "CloudStack提供了调整数据盘大小的功能；CloudStack借助磁盘方案控制卷大小。这样提供了CloudStack管理员可以灵活地选择他们想要给终端用户多少可用空间。使用相同存储标签的磁盘方案中的卷可以重新划分。比如，如果你只想提供 10,50和100GB的方案，重新划分允许的极限就不会超过这些。也就是说，如果你定义了10GB，50GB和100GB的磁盘方案，用户可以从10GB升级到50GB，或者从50GB升级到100GB。如果你创建了自定义大小的磁盘方案，那么你可以重新规划卷的大小为更大的值。"
+
+# 6111e137df7f47a99f428cab9e407bda
+#: ../../storage.rst:540
+msgid ""
+"Additionally, using the resizeVolume API, a data volume can be moved from a "
+"static disk offering to a custom disk offering with the size specified. This"
+" functionality allows those who might be billing by certain volume sizes or "
+"disk offerings to stick to that model, while providing the flexibility to "
+"migrate to whatever custom size necessary."
+msgstr "另外，使用 resizeVolume API，数据卷可以从一个静态磁盘方案移动到指定大小的自定义磁盘方案。此功能允对特定容量或磁盘方案进行收费，同时可以灵活地更改磁盘大小。"
+
+# c25a67ebb3344e2c951583bec9826b9e
+#: ../../storage.rst:546
+msgid ""
+"This feature is supported on KVM, XenServer, and VMware hosts. However, "
+"shrinking volumes is not supported on VMware hosts."
+msgstr "KVM, XenServer和VMware主机支持这个功能。但是VMware主机不支持卷的收缩。"
+
+# f3d3d1c66a9a46a49a97000ce2d104ee
+#: ../../storage.rst:549
+msgid "Before you try to resize a volume, consider the following:"
+msgstr "在你试图重新规划卷大小之前，请考虑以下几点："
+
+# 1c0434424baf4f79a95622559c9119b2
+#: ../../storage.rst:551
+msgid "The VMs associated with the volume are stopped."
+msgstr "与卷关联的VMs是停止状态。"
+
+# bb545d0a9cf34f5e864a5b016d15775d
+#: ../../storage.rst:553
+msgid "The data disks associated with the volume are removed."
+msgstr "与卷关联的数据磁盘已经移除了。"
+
+# 157e4971d3784646a5df1fc2c27026fa
+#: ../../storage.rst:555
+msgid ""
+"When a volume is shrunk, the disk associated with it is simply truncated, "
+"and doing so would put its content at risk of data loss. Therefore, resize "
+"any partitions or file systems before you shrink a data disk so that all the"
+" data is moved off from that disk."
+msgstr "当卷缩小的时候，上面的磁盘会被截断，这么做的话可能会丢失数据。因此，在缩小数据磁盘之前，重新规划任何分区或文件系统以便数据迁移出这个磁盘。"
+
+# ea92d28ccffe4acbb40da15110829f69
+#: ../../storage.rst:560
+msgid "To resize a volume:"
+msgstr "要重新规划卷容量："
+
+# 4bcbe35ab7f749c49a97fc0b69386143
+#: ../../storage.rst:568
+msgid ""
+"Select the volume name in the Volumes list, then click the Resize Volume "
+"button |resize-volume-icon.png|"
+msgstr "在卷列表中选择卷名称，然后点击调整卷大小按钮 |resize-volume-icon.png|"
+
+# 7e6057281d384902b45704d88725b3b2
+#: ../../storage.rst:571
+msgid ""
+"In the Resize Volume pop-up, choose desired characteristics for the storage."
+msgstr "在弹出的调整卷大小窗口中，为存储选择想要的方案。"
+
+# 837580ae5e7d422eb6d54ca24b547f32
+#: ../../storage.rst:574
+msgid "|resize-volume.png|"
+msgstr "|resize-volume.png|"
+
+# 2a4fef4505014a8c9cee37ce70dc08a3
+#: ../../storage.rst:576
+msgid "If you select Custom Disk, specify a custom size."
+msgstr "如果你选择自定义磁盘，请指定一个自定义大小。"
+
+# 0f0109182c0345099ae713929c4c1f4d
+#: ../../storage.rst:578
+msgid "Click Shrink OK to confirm that you are reducing the size of a volume."
+msgstr "点击是否确实要缩小卷大小来确认你要缩小的容量。"
+
+# 86a5314fba614528805c75a1ce993c5b
+#: ../../storage.rst:581
+msgid ""
+"This parameter protects against inadvertent shrinking of a disk, which might"
+" lead to the risk of data loss. You must sign off that you know what you are"
+" doing."
+msgstr "此参数避免了不小心的失误造成数据的丢失。你必须知道你在做什么。"
+
+# fa1e5898785847d0acd130136d2b3e4b
+#: ../../storage.rst:585
+msgid "Click OK."
+msgstr "点击确定。"
+
+# 7416d78fc57b4a21a1c5a748c35efa62
+#: ../../storage.rst:589
+msgid "Reset VM to New Root Disk on Reboot"
+msgstr "在VM重启时重设VM的root盘"
+
+# aa266ce7558249a58dc21c85bbe527c1
+#: ../../storage.rst:591
+msgid ""
+"You can specify that you want to discard the root disk and create a new one "
+"whenever a given VM is rebooted. This is useful for secure environments that"
+" need a fresh start on every boot and for desktops that should not retain "
+"state. The IP address of the VM will not change due to this operation."
+msgstr "你可以指定你想要放弃的root磁盘和创建一个新的，并且无论何时在VM重启时都使用新的。每次启动时都是一个全新的VM并且桌面不需要保存它的状态，出于安全环境考虑这非常有用。VM的IP地址在这个操作期间不会改变。"
+
+# f4a034b658174e23b49d8a0dae7faf9d
+#: ../../storage.rst:597
+msgid "**To enable root disk reset on VM reboot:**"
+msgstr "**要启用在VM重启时重置root磁盘：**"
+
+# 0d8e7c9c2b4b461bb00b40c89b19ca07
+#: ../../storage.rst:599
+msgid ""
+"When creating a new service offering, set the parameter isVolatile to True. "
+"VMs created from this service offering will have their disks reset upon "
+"reboot. See `“Creating a New Compute Offering” "
+"<service_offerings.html#creating-a-new-compute-offering>`_."
+msgstr "当创建一个新的服务方案时，设置isVolatile这个参数为True。从这个服务方案创建的VMs一旦重启，它们的磁盘就会重置。请参阅 `“创建新的计算方案” <service_offerings.html#creating-a-new-compute-offering>`_。"
+
+# 80b7517a265a468a91758a97f1049265
+#: ../../storage.rst:606
+msgid "Volume Deletion and Garbage Collection"
+msgstr "卷的删除和回收"
+
+# 97ddeaa6235d4294ace130e1f8fd97c0
+#: ../../storage.rst:608
+msgid ""
+"The deletion of a volume does not delete the snapshots that have been "
+"created from the volume"
+msgstr "删除卷不会删除曾经对卷做的快照"
+
+# 0050f5041dd04b1dbeff8201bd20e44e
+#: ../../storage.rst:611
+msgid ""
+"When a VM is destroyed, data disk volumes that are attached to the VM are "
+"not deleted."
+msgstr "当一个VM被销毁时，附加到该VM的数据磁盘卷不会被删除。"
+
+# f3a035c41fca41908db4d1f0f724f360
+#: ../../storage.rst:614
+msgid ""
+"Volumes are permanently destroyed using a garbage collection process. The "
+"global configuration variables expunge.delay and expunge.interval determine "
+"when the physical deletion of volumes will occur."
+msgstr "使用回收程序后，卷就永久的被销毁了。全局配置变量expunge.delay和expunge.interval决定了何时物理删除卷。"
+
+# e4eb84092e8b4ea9a1a97fecac24acbb
+#: ../../storage.rst:618
+msgid ""
+"`expunge.delay`: determines how old the volume must be before it is "
+"destroyed, in seconds"
+msgstr "`expunge.delay`：决定在卷被销毁之前卷存在多长时间，以秒计算。"
+
+# 7564390647064858ac8aa5f26279afe5
+#: ../../storage.rst:621
+msgid ""
+"`expunge.interval`: determines how often to run the garbage collection check"
+msgstr "`expunge.interval`：决定回收检查运行频率。"
+
+# 000948d93f8f4cdba6f8fbab90adf234
+#: ../../storage.rst:624
+msgid ""
+"Administrators should adjust these values depending on site policies around "
+"data retention."
+msgstr "管理员可以根据站点数据保留策略来调整这些值。"
+
+# a8d6b53bbfe04f9198da340f624d7b85
+#: ../../storage.rst:629
+msgid "Working with Volume Snapshots"
+msgstr "使用卷快照"
+
+# 86801042196e4703adde0a0f8f421cc2
+# ecd40cf685aa497094053129489ffa6d
+#: ../../storage.rst:631 ../../storage.rst:676
+msgid ""
+"(Supported for the following hypervisors: **XenServer**, **VMware vSphere**,"
+" and **KVM**)"
+msgstr "(支持以下hypervisors：**XenServer**, **VMware vSphere** 和 **KVM**)"
+
+# 084599a159574408809d1cfaa15f2160
+#: ../../storage.rst:634
+msgid ""
+"CloudStack supports snapshots of disk volumes. Snapshots are a point-in-time"
+" capture of virtual machine disks. Memory and CPU states are not captured. "
+"If you are using the Oracle VM hypervisor, you can not take snapshots, since"
+" OVM does not support them."
+msgstr "CloudStack支持磁盘卷的快照。快照为虚拟机某一时间点的抓取。内存和CPU状态不会被抓取。如果你使用Oracle VM hypervisor，那么你不能做快照，因为OVM不支持。"
+
+# bd4b18a4d2374e20ae0af95dad8d53e5
+#: ../../storage.rst:639
+msgid ""
+"Snapshots may be taken for volumes, including both root and data disks "
+"(except when the Oracle VM hypervisor is used, which does not support "
+"snapshots). The administrator places a limit on the number of stored "
+"snapshots per user. Users can create new volumes from the snapshot for "
+"recovery of particular files and they can create templates from snapshots to"
+" boot from a restored disk."
+msgstr "卷，包括root和数据磁盘(使用Oracle VM hypervisor除外，因为OVM不支持快照)都可以做快照。管理员可以限制每个用户的快照数量。用户可以通过快照创建新的卷，用来恢复特定的文件，还可以通过快照创建模板来启动恢复的磁盘。"
+
+# 61d7db60070b43a4a6a950e12598da22
+#: ../../storage.rst:646
+msgid ""
+"Users can create snapshots manually or by setting up automatic recurring "
+"snapshot policies. Users can also create disk volumes from snapshots, which "
+"may be attached to a VM like any other disk volume. Snapshots of both root "
+"disks and data disks are supported. However, CloudStack does not currently "
+"support booting a VM from a recovered root disk. A disk recovered from "
+"snapshot of a root disk is treated as a regular data disk; the data on "
+"recovered disk can be accessed by attaching the disk to a VM."
+msgstr "用户可以手动或者设置自动循环快照策略创建快照。用户也可以从快照创建附磁盘卷，并像其他磁盘卷一样附加到虚机上。root和数据磁盘支持快照。但是，CloudStack目前不支持通过恢复的root盘启动VM。从快照恢复的root盘会被认为是数据盘；恢复的磁盘可以附加到VM上以访问上面的数据。"
+
+# 42324227e8644e9dae9c6866285da289
+#: ../../storage.rst:655
+msgid ""
+"A completed snapshot is copied from primary storage to secondary storage, "
+"where it is stored until deleted or purged by newer snapshot."
+msgstr "完整快照慧聪主存储拷贝到附加存储，并会一直存储在里面知道删除或被新的快照覆盖。"
+
+# 6d4012e38675491e950c4095403168d4
+#: ../../storage.rst:660
+msgid "How to Snapshot a Volume"
+msgstr "如何给卷做快照"
+
+# c8a3e39ed65148c1b2db5692449e3ec0
+#: ../../storage.rst:662
+msgid "Log in to the CloudStack UI as a user or administrator."
+msgstr "是用用户或者管理员登录CloudStack。"
+
+# ee26042497e54259b376064aafe9cebf
+#: ../../storage.rst:666
+msgid "In Select View, be sure Volumes is selected."
+msgstr "在选择视图，确认选择的是卷。"
+
+# 2f05b064d8b245a99e010a0f45f944e2
+#: ../../storage.rst:668
+msgid "Click the name of the volume you want to snapshot."
+msgstr "点击你要做快照的卷的名称。"
+
+# b4d7d4eaa5a149f0812cdddc1fd45a61
+#: ../../storage.rst:670
+msgid "Click the Snapshot button. |SnapshotButton.png|"
+msgstr "点击快照按钮。 |SnapshotButton.png|"
+
+# 6daa1fb5225e4efe8672fc86408e7055
+#: ../../storage.rst:674
+msgid "Automatic Snapshot Creation and Retention"
+msgstr "创建和保留自动快照"
+
+# 01044207c30b40148eedee96353f6ad9
+#: ../../storage.rst:679
+msgid ""
+"Users can set up a recurring snapshot policy to automatically create "
+"multiple snapshots of a disk at regular intervals. Snapshots can be created "
+"on an hourly, daily, weekly, or monthly interval. One snapshot policy can be"
+" set up per disk volume. For example, a user can set up a daily snapshot at "
+"02:30."
+msgstr "用户可以设置循环快照策略来自动的为磁盘定期地创建多个快照。快照可以按小时，天，周或者月为周期。每个磁盘卷都可以设置快照策略。比如，用户可以设置每天的02:30做快照。"
+
+# bc81c587ad8b4032b27d61690390e258
+#: ../../storage.rst:685
+msgid ""
+"With each snapshot schedule, users can also specify the number of scheduled "
+"snapshots to be retained. Older snapshots that exceed the retention limit "
+"are automatically deleted. This user-defined limit must be equal to or lower"
+" than the global limit set by the CloudStack administrator. See `“Globally "
+"Configured Limits” <usage.html#globally-configured-limits>`_. The limit "
+"applies only to those snapshots that are taken as part of an automatic "
+"recurring snapshot policy. Additional manual snapshots can be created and "
+"retained."
+msgstr "依靠每个快照计划，用户还可以指定计划快照的保留数量。超出保留期限的老快照会被自动的删除。用户定义的限制必须等于或小于CloudStack管理员设置的全局限制。请参阅 `“全局配置的限制” <usage.html#globally-configured-limits>`_.。限制只能应用给作为自动循环快照策略的一部分的快照。额外的手动快照能被创建和保留。"
+
+# 4d944a9ae89444379355fd0f48bd592a
+#: ../../storage.rst:697
+msgid "Incremental Snapshots and Backup"
+msgstr "增量快照和备份"
+
+# d0114a6db3e54775a44f58bd333b2916
+#: ../../storage.rst:699
+msgid ""
+"Snapshots are created on primary storage where a disk resides. After a "
+"snapshot is created, it is immediately backed up to secondary storage and "
+"removed from primary storage for optimal utilization of space on primary "
+"storage."
+msgstr "创建的快照保存在磁盘所在的主存储。在创建快照之后，它会立即被备份到辅助存储并在主存储上删除以节省主存储的空间。"
+
+# 1c3dce8473ed47388f4d6175b8e34c81
+#: ../../storage.rst:704
+msgid ""
+"CloudStack does incremental backups for some hypervisors. When incremental "
+"backups are supported, every N backup is a full backup."
+msgstr "CloudStack给一些 hypervisors做增量备份。当使用了增量备份，那么每N备份就是一个完全备份。"
+
+# 4559fc5082f543d6b1cdacaa46ed5a23
+#: ../../storage.rst:711
+msgid "Support incremental backup"
+msgstr "支持增量备份"
+
+# 1c981e7b2c7b445a9061e36444287afb
+#: ../../storage.rst:716
+msgid "Volume Status"
+msgstr "卷状态"
+
+# b7db2aabc187479797c7424c5a1bb1f8
+#: ../../storage.rst:718
+msgid ""
+"When a snapshot operation is triggered by means of a recurring snapshot "
+"policy, a snapshot is skipped if a volume has remained inactive since its "
+"last snapshot was taken. A volume is considered to be inactive if it is "
+"either detached or attached to a VM that is not running. CloudStack ensures "
+"that at least one snapshot is taken since the volume last became inactive."
+msgstr "当快照操作是由一个循环快照策略所引发的时候，如果从其上次创建快照后，卷一直处于非活跃状态，快照被跳过。如果卷被分离或附加的虚拟机没有运行，那么它就被认为是非活跃的。CloudStack会确保从卷上一次变得不活跃后，至少创建了一个快照。"
+
+# b5a7b1b8f3fe4e47a40bc594491a0643
+#: ../../storage.rst:725
+msgid ""
+"When a snapshot is taken manually, a snapshot is always created regardless "
+"of whether a volume has been active or not."
+msgstr "当手动创建了快照，不管改卷是不是活跃的，快照会一直被创建。"
+
+# e8778a84f2d142489ea29fa0793066b1
+#: ../../storage.rst:730
+msgid "Snapshot Restore"
+msgstr "快照恢复"
+
+# 4bcf574b0e484b7ebf81324e87069f67
+#: ../../storage.rst:732
+msgid ""
+"There are two paths to restoring snapshots. Users can create a volume from "
+"the snapshot. The volume can then be mounted to a VM and files recovered as "
+"needed. Alternatively, a template may be created from the snapshot of a root"
+" disk. The user can then boot a VM from this template to effect recovery of "
+"the root disk."
+msgstr "有两种方式恢复快照。用户能够从快照中创建一个卷。卷可以随后被挂载到虚拟机上并且文件根据需要被复原。另一种方式是，模板可以从一个root 盘的快照创建。用户能够从这个模板启动虚拟机从而实际上复原root盘。"
+
+# cf46f177e13341079bac27a54806636b
+#: ../../storage.rst:740
+msgid "Snapshot Job Throttling"
+msgstr "快照工作调节"
+
+# 6ba670f617a541788c30476794cde2c6
+#: ../../storage.rst:742
+msgid ""
+"When a snapshot of a virtual machine is requested, the snapshot job runs on "
+"the same host where the VM is running or, in the case of a stopped VM, the "
+"host where it ran last. If many snapshots are requested for VMs on a single "
+"host, this can lead to problems with too many snapshot jobs overwhelming the"
+" resources of the host."
+msgstr "当虚拟机需要快照时，VM所在的主机上就会运行快照工作，或者在VM最后运行的主机上。如果在一台主机上的VMs需要很多快照，那么这会导致太多的快照工作进而占用过多的主机资源。"
+
+# aedc3df480554bd59de19f4c4ba17dff
+#: ../../storage.rst:748
+msgid ""
+"To address this situation, the cloud's root administrator can throttle how "
+"many snapshot jobs are executed simultaneously on the hosts in the cloud by "
+"using the global configuration setting "
+"concurrent.snapshots.threshold.perhost. By using this setting, the "
+"administrator can better ensure that snapshot jobs do not time out and "
+"hypervisor hosts do not experience performance issues due to hosts being "
+"overloaded with too many snapshot requests."
+msgstr "针对这种情况，云端的root管理员可以利用全局配置设置中的concurrent.snapshots.threshold.perhost调节有多少快照工作同时在主机上运行。借助这个设置，当太多快照请求发生时，管理员更好的确认快照工作不会超时并且hypervisor主机不会有性能问题。"
+
+# 9a43b07f0da64addaa4eb478d80b82a2
+#: ../../storage.rst:756
+msgid ""
+"Set concurrent.snapshots.threshold.perhost to a value that represents a best"
+" guess about how many snapshot jobs the hypervisor hosts can execute at one "
+"time, given the current resources of the hosts and the number of VMs running"
+" on the hosts. If a given host has more snapshot requests, the additional "
+"requests are placed in a waiting queue. No new snapshot jobs will start "
+"until the number of currently executing snapshot jobs falls below the "
+"configured limit."
+msgstr "给concurrent.snapshots.threshold.perhost设置一个你结合目前主机资源和在主机上运行的VMs数量的最佳值，这个值代表了在同一时刻有多少快照工作在hypervisor主机上执行。如果一个主机有比较多的快照请求，额外的请求就会被放在等待队列里。在当前执行 的快照工作数量下降至限制值之内，新的快照工作才会开始。"
+
+# 2fd65be78bf841d9911d51c1de67cd86
+#: ../../storage.rst:764
+msgid ""
+"The admin can also set job.expire.minutes to place a maximum on how long a "
+"snapshot request will wait in the queue. If this limit is reached, the "
+"snapshot request fails and returns an error message."
+msgstr "管理员也可以通过job.expire.minutes给快照请求等待队列的长度设置一个最大值。如果达到了这个限制，那么快照请求会失败并且返回一个错误消息。"
+
+# 45b8545120ba486ca2cbee08b18502d3
+#: ../../storage.rst:770
+msgid "VMware Volume Snapshot Performance"
+msgstr "VMware卷快照性能"
+
+# aa81997f26a64d1399b138ae79ae8ab7
+#: ../../storage.rst:772
+msgid ""
+"When you take a snapshot of a data or root volume on VMware, CloudStack uses"
+" an efficient storage technique to improve performance."
+msgstr "当你为VMware中的数据卷或root卷做快照时，CloudStack使用一种高效率的存储技术来提高性能。"
+
+# edf5b2aae9f54e098d3b6627c10fe21d
+#: ../../storage.rst:775
+msgid ""
+"A snapshot is not immediately exported from vCenter to a mounted NFS share "
+"and packaged into an OVA file format. This operation would consume time and "
+"resources. Instead, the original file formats (e.g., VMDK) provided by "
+"vCenter are retained. An OVA file will only be created as needed, on demand."
+" To generate the OVA, CloudStack uses information in a properties file "
+"(\\*.ova.meta) which it stored along with the original snapshot data."
+msgstr "快照不会立即从vCenter导出OVA格式文件到挂载的NFS共享中。这个操作会消耗时间和资源。相反的，由vCenter提供的原始文件格式(比如VMDK)被保留。OVA文件只有在需要的时候被创建。CloudStack使用与原始快照数据存储在一起的属性文件(\\*.ova.meta)中的信息来生成OVA。"
+
+# c2bf4f95ccfe40aea4c948e5145c1e45
+#: ../../storage.rst:784
+msgid ""
+"For upgrading customers: This process applies only to newly created "
+"snapshots after upgrade to CloudStack 4.2. Snapshots that have already been "
+"taken and stored in OVA format will continue to exist in that format, and "
+"will continue to work as expected."
+msgstr "对于旧版本升级的客户：这个过程只适用于在升级到CloudStack 4.2之后新创建的快照。已经做过快照并且使用OVA格式存储的将继续使用已有的格式，并且也能正常工作。"

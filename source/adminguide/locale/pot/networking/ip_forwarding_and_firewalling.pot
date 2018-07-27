@@ -1,0 +1,393 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:18
+# 3ec46c2d67cb4acc87705b3f0985e5c8
+msgid "IP Forwarding and Firewalling"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:20
+# 5bb709bf233742ce8f3a83dc5ce7cf26
+msgid "By default, all incoming traffic to the public IP address is rejected. All outgoing traffic from the guests is also blocked by default."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:23
+# 83f985061e4e4301aa5ce50049ea4565
+msgid "To allow outgoing traffic, follow the procedure in :ref:`egress-fw-rules`."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:25
+# 1328a8040ae7487b8f7ed1dcaaf5a596
+msgid "To allow incoming traffic, users may set up firewall rules and/or port forwarding rules. For example, you can use a firewall rule to open a range of ports on the public IP address, such as 33 through 44. Then use port forwarding rules to direct traffic from individual ports within that range to specific ports on user VMs. For example, one port forwarding rule could route incoming traffic on the public IP's port 33 to port 100 on one user VM's private IP."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:35
+# 88ee727310bb4a5789291e8e48578dab
+msgid "Firewall Rules"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:37
+# 073cb21345c44ce2a3f2ce3446d4ad3a
+msgid "By default, all incoming traffic to the public IP address is rejected by the firewall. To allow external traffic, you can open firewall ports by specifying firewall rules. You can optionally specify one or more CIDRs to filter the source IPs. This is useful when you want to allow only incoming requests from certain IP addresses."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:43
+# b43e4fc4f43841c9aebd342bbd60b33d
+msgid "You cannot use firewall rules to open ports for an elastic IP address. When elastic IP is used, outside access is instead controlled through the use of security groups. See `\"Adding a Security Group\" <#adding-a-security-group>`_."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:48
+# 36b1e8acd3ef4b1cb7a7ffd1f60599c5
+msgid "In an advanced zone, you can also create egress firewall rules by using the virtual router. For more information, see \":ref:`egress-fw-rules`\"."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:51
+# 2aeb084c075b4451b0911c2a6baf0f84
+msgid "Firewall rules can be created using the Firewall tab in the Management Server UI. This tab is not displayed by default when CloudStack is installed. To display the Firewall tab, the CloudStack administrator must set the global configuration parameter firewall.rule.ui.enabled to \"true.\""
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:57
+# e1408eeb730f4709bbba8852f79807fd
+msgid "To create a firewall rule:"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:59
+#: ../../networking/ip_forwarding_and_firewalling.rst:132
+#: ../../networking/ip_forwarding_and_firewalling.rst:245
+# 098b22043ec643559c039b39aa24d618
+# f62479b013c241a791c42b8843bd140d
+# c384f1b44804485fba23fe018c16683e
+msgid "Log in to the CloudStack UI as an administrator or end user."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:61
+#: ../../networking/ip_forwarding_and_firewalling.rst:134
+# a633160d3ee343639365b9067af58eb1
+# c6c7495d464a4262ace3361c7cce9b5b
+msgid "In the left navigation, choose Network."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:63
+# ff56e69810c34ee4a08280a7ef06cfbb
+msgid "Click the name of the network where you want to work with."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:65
+# d546be88025a4254b8eecf1f0b16bdf0
+msgid "Click View IP Addresses."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:67
+# 0c60a7fde5644f9188c0bf190c166890
+msgid "Click the IP address you want to work with."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:69
+# 0e0775a902554fa68fc54157ed73ed0a
+msgid "Click the Configuration tab and fill in the following values."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:71
+# 8bb21f2deca7442683f782de4a83935f
+msgid "**Source CIDR**: (Optional) To accept only traffic from IP addresses within a particular address block, enter a CIDR or a comma-separated list of CIDRs. Example: 192.168.0.0/22. Leave empty to allow all CIDRs."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:76
+# 4cb05fbe28ae408a8df34014da711575
+msgid "**Protocol**: The communication protocol in use on the opened port(s)."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:79
+# e59d4d2a187f4510a91409fac5cfb51c
+msgid "**Start Port and End Port**: The port(s) you want to open on the firewall. If you are opening a single port, use the same number in both fields"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:83
+# 3274875afce44bbe9d7017bb4e2fc2b2
+msgid "**ICMP Type and ICMP Code**: Used only if Protocol is set to ICMP. Provide the type and code required by the ICMP protocol to fill out the ICMP header. Refer to ICMP documentation for more details if you are not sure what to enter"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:88
+#: ../../networking/ip_forwarding_and_firewalling.rst:163
+#: ../../networking/ip_forwarding_and_firewalling.rst:276
+# 41821a610d844daf8255026b71299059
+# 1d39fcb3a5e34d769f89885db9866836
+# 2319658c89b74a0294ce8f0a253a4d53
+msgid "Click Add."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:94
+# eec2e0a57feb4eca85c58ac1b58b228b
+msgid "Egress Firewall Rules in an Advanced Zone"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:96
+# 3bae6d1e0fb543beaeb466c40aeddfc3
+msgid "The egress traffic originates from a private network to a public network, such as the Internet. By default, the egress traffic is blocked in default network offerings, so no outgoing traffic is allowed from a guest network to the Internet. However, you can control the egress traffic in an Advanced zone by creating egress firewall rules. When an egress firewall rule is applied, the traffic specific to the rule is allowed and the remaining traffic is blocked. When all the firewall rules are removed the default policy, Block, is applied."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:107
+# 80fbdba2a681463894376f620458c160
+msgid "Prerequisites and Guidelines"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:109
+# 998ae537c5664319b836e769ab967fc3
+msgid "Consider the following scenarios to apply egress firewall rules:"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:111
+# 18a68e97f28f4f7898b92513d34e5e26
+msgid "Egress firewall rules are supported on Juniper SRX and virtual router."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:114
+# a4eaae6cb4474e5a8182092404f48116
+msgid "The egress firewall rules are not supported on shared networks."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:116
+# 85bdd2e7a708485bae147bfa93cdcb1b
+msgid "Allow the egress traffic from specified source CIDR. The Source CIDR is part of guest network CIDR."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:119
+# d9af348ce95e47a0bae91a55488b1155
+msgid "Allow the egress traffic with protocol TCP,UDP,ICMP, or ALL."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:121
+# 786d85af2e334cf5a8a25fc59dde7cb5
+msgid "Allow the egress traffic with protocol and destination port range. The port range is specified for TCP, UDP or for ICMP type and code."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:124
+# 8d9e5fa49cb648a6ad0b917f06176014
+msgid "The default policy is Allow for the new network offerings, whereas on upgrade existing network offerings with firewall service providers will have the default egress policy Deny."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:130
+# ee1ee0417255469abce66dbfd40f9611
+msgid "Configuring an Egress Firewall Rule"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:136
+# 4d43b047c25a4605acc888b025d376aa
+msgid "In Select view, choose Guest networks, then click the Guest network you want."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:139
+# 4c11dfc739f94ce0995b7c7bdf566e5d
+msgid "To add an egress rule, click the Egress rules tab and fill out the following fields to specify what type of traffic is allowed to be sent out of VM instances in this guest network:"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:143
+# a476fe8da41b43168b89c7b558afcb48
+msgid "|egress-firewall-rule.png|"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:145
+# d56527f1ac864c5c9d47df9e55c225cf
+msgid "**CIDR**: (Add by CIDR only) To send traffic only to the IP addresses within a particular address block, enter a CIDR or a comma-separated list of CIDRs. The CIDR is the base IP address of the destination. For example, 192.168.0.0/22. To allow all CIDRs, set to 0.0.0.0/0."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:151
+# c1e8fac9fa8046d8a9315511c011542e
+msgid "**Protocol**: The networking protocol that VMs uses to send outgoing traffic. The TCP and UDP protocols are typically used for data exchange and end-user communications. The ICMP protocol is typically used to send error messages or network monitoring data."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:156
+# 6b9d46d4c88d48c98d3fa4fcceb60e29
+msgid "**Start Port, End Port**: (TCP, UDP only) A range of listening ports that are the destination for the outgoing traffic. If you are opening a single port, use the same number in both fields."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:160
+# 17c266c56f194132a6fc948f3142e4bc
+msgid "**ICMP Type, ICMP Code**: (ICMP only) The type of message and error code that are sent."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:167
+# f0100304289f4a67b01e8f6c52976a10
+msgid "Configuring the Default Egress Policy"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:169
+# a802326f92404392beacd9675985c106
+msgid "The default egress policy for Isolated guest network is configured by using Network offering. Use the create network offering option to determine whether the default policy should be block or allow all the traffic to the public network from a guest network. Use this network offering to create the network. If no policy is specified, by default all the traffic is allowed from the guest network that you create by using this network offering."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:177
+# 9b5e480b6757449ab8272d3e7a691110
+msgid "You have two options: Allow and Deny."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:180
+# 9b8d4463d6024d8589cc801658fa7bab
+msgid "Allow"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:182
+# 01d29e0665f84d548d9f41399d9258d8
+msgid "If you select Allow for a network offering, by default egress traffic is allowed. However, when an egress rule is configured for a guest network, rules are applied to block the specified traffic and rest are allowed. If no egress rules are configured for the network, egress traffic is accepted."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:189
+# 63816b9551f04933aa99e27cc3dc34f1
+msgid "Deny"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:191
+# 1952d7735fb746a6834bbdeed4c1eaa9
+msgid "If you select Deny for a network offering, by default egress traffic for the guest network is blocked. However, when an egress rules is configured for a guest network, rules are applied to allow the specified traffic. While implementing a guest network, CloudStack adds the firewall egress rule specific to the default egress policy for the guest network."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:198
+# 238db98415e74782937deddd3970b285
+msgid "This feature is supported only on virtual router and Juniper SRX."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:200
+# e460df960d61405db56e64d21a8c43d7
+msgid "Create a network offering with your desirable default egress policy:"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:202
+# 5271ad0a1d4a4a27aa5597b044b42acf
+msgid "Log in with admin privileges to the CloudStack UI."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:204
+# fd49a59627284ffda66fef7096eaa709
+msgid "In the left navigation bar, click Service Offerings."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:206
+# 7fce8b96f6e64727bb6063766c828bdd
+msgid "In Select Offering, choose Network Offering."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:208
+# ef8895c197ff4343b04aecc73b5a9294
+msgid "Click Add Network Offering."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:210
+# abb73d0d766d4d32a4bbe32137193cad
+msgid "In the dialog, make necessary choices, including firewall provider."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:213
+# 932c30480a1f4e3ea92f06ba4296ae45
+msgid "In the Default egress policy field, specify the behaviour."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:215
+# 41d012a83e774bdeaeac42e5b44d851c
+msgid "Click OK."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:217
+# 5a1192bc5c8a4c3c930879e56c5d58bb
+msgid "Create an isolated network by using this network offering."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:219
+# 3918ff66d4914376a4707b9db470a027
+msgid "Based on your selection, the network will have the egress public traffic blocked or allowed."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:224
+# 29ffedbd547e431f95d82b075df5ea66
+msgid "Port Forwarding"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:226
+# d9efd9df178e4f7c8d81b2ba24a9fdbb
+msgid "A port forward service is a set of port forwarding rules that define a policy. A port forward service is then applied to one or more guest VMs. The guest VM then has its inbound network access managed according to the policy defined by the port forwarding service. You can optionally specify one or more CIDRs to filter the source IPs. This is useful when you want to allow only incoming requests from certain IP addresses to be forwarded."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:234
+# ae4f5d3e4bc24f8584c17c3057688144
+msgid "A guest VM can be in any number of port forward services. Port forward services can be defined but have no members. If a guest VM is part of more than one network, port forwarding rules will function only if they are defined on the default network"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:239
+# 89ce910349884d8ea8a7b4f6aee10613
+msgid "You cannot use port forwarding to open ports for an elastic IP address. When elastic IP is used, outside access is instead controlled through the use of security groups. See Security Groups."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:243
+# 263627f6e1de45999d0e9ab68c8a1a2d
+msgid "To set up port forwarding:"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:247
+# 41c9b9f2473e4b5aa0d8ea3c54e45b1b
+msgid "If you have not already done so, add a public IP address range to a zone in CloudStack. See Adding a Zone and Pod in the Installation Guide."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:251
+# 2c98fbd961df4ef28a276b3ccf1d53c0
+msgid "Add one or more VM instances to CloudStack."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:253
+# 17a544cc6c8a42cbaef47575f1029173
+msgid "In the left navigation bar, click Network."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:255
+# ade84b4f63694fadbe6c835b52ba796f
+msgid "Click the name of the guest network where the VMs are running."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:257
+# 48ab8bf9d7e04ca7a13eaf58eeead278
+msgid "Choose an existing IP address or acquire a new IP address. See `\"Acquiring a New IP Address\" <#acquiring-a-new-ip-address>`_. Click the name of the IP address in the list."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:261
+# da392889cd304ce8973c2b4b8341665b
+msgid "Click the Configuration tab."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:263
+# 4d02af0497b544d89616ff1ddf286767
+msgid "In the Port Forwarding node of the diagram, click View All."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:265
+# ee9101e2c97447d4b23f89177c60e7ab
+msgid "Fill in the following:"
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:267
+# e9d9402255ae405781f85b32409d3654
+msgid "**Public Port**: The port to which public traffic will be addressed on the IP address you acquired in the previous step."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:270
+# bf8d351e8ca649ca9931311f402ea7bc
+msgid "**Private Port**: The port on which the instance is listening for forwarded public traffic."
+msgstr ""
+
+#: ../../networking/ip_forwarding_and_firewalling.rst:273
+# 5140efc173fd46e194d6c4827a8a67fc
+msgid "**Protocol**: The communication protocol in use between the two ports"
+msgstr ""
+

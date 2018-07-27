@@ -1,0 +1,955 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:04+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# a1ba7b5ddeaa4674a16ca755b4399374
+#: ../../systemvm.rst:18
+msgid "Working with System Virtual Machines"
+msgstr "使用系统虚拟机"
+
+# 8adf74bd899541a180455ab6582554ec
+#: ../../systemvm.rst:20
+msgid ""
+"CloudStack uses several types of system virtual machines to perform tasks in"
+" the cloud. In general CloudStack manages these system VMs and creates, "
+"starts, and stops them as needed based on scale and immediate needs. "
+"However, the administrator should be aware of them and their roles to assist"
+" in debugging issues."
+msgstr "CloudStack使用几类系统虚拟机来完成云中的任务。总的来说，CloudStack管理这些系统虚拟机，并根据某些范围内或快速需要创建、启动和停止它们。然而，管理员需要意识到他们在调试中的作用。"
+
+# 9309f035653a42c2a2abfdaced6acabe
+#: ../../systemvm.rst:28
+msgid "The System VM Template"
+msgstr "系统VM模板"
+
+# c845974251da4739b29ae9338d9f85f0
+#: ../../systemvm.rst:30
+msgid ""
+"The System VMs come from a single template. The System VM has the following "
+"characteristics:"
+msgstr "系统VM来自于一个单独的模板，系统VM具有以下特性："
+
+# 6ce60c193c5547e38390bda23ad9acff
+#: ../../systemvm.rst:33
+msgid ""
+"Debian 6.0 (\"Squeeze\"), 2.6.32 kernel with the latest security patches "
+"from the Debian security APT repository"
+msgstr "Debian 6.0(“Squeeze”)，2.6.32内核具有最新的来自Debian安全APT存储库的安全补丁"
+
+# 7ba8f1dd850e4472b93271c07b12e27e
+#: ../../systemvm.rst:36
+msgid ""
+"Has a minimal set of packages installed thereby reducing the attack surface"
+msgstr "具有一系列最小化安装的包，可以降低安全攻击风险。"
+
+# 157f5d425def480e9b24095a62b2f059
+#: ../../systemvm.rst:39
+msgid "32-bit for enhanced performance on Xen/VMWare"
+msgstr "基于 Xen/VMWare 的32位增强性能"
+
+# 7a44b4350ff6457cab519a552bd9afca
+#: ../../systemvm.rst:41
+msgid ""
+"pvops kernel with Xen PV drivers, KVM virtio drivers, and VMware tools for "
+"optimum performance on all hypervisors"
+msgstr "包含Xen PV 驱动，KVM virtio 驱动和VMware tools的pvops 内核可以使所有hypervisor得到最佳性能。"
+
+# 3e0764891a5141e2b34368e7bb8aeb84
+#: ../../systemvm.rst:44
+msgid "Xen tools inclusion allows performance monitoring"
+msgstr "Xen tools 包含性能监控"
+
+# 60aeed2365974b86a64bdf02460e8ef7
+#: ../../systemvm.rst:46
+msgid ""
+"Latest versions of HAProxy, iptables, IPsec, and Apache from debian "
+"repository ensures improved security and speed"
+msgstr "最新版本的HAProxy,iptables，IPsec和来自debian库的Apache保证了提高安全性和速度。"
+
+# 5dab0ffe88944ef3ad1ceb02e640ed9d
+#: ../../systemvm.rst:49
+msgid ""
+"Latest version of JRE from Sun/Oracle ensures improved security and speed"
+msgstr "从 Sun/Oracle 安装最新版本的JRE可以保证安全性与速度的提高"
+
+# 9f806f6735e64fb786b5ab22d695493f
+#: ../../systemvm.rst:54
+msgid "Changing the Default System VM Template"
+msgstr "改变默认系统VM模板"
+
+# 88cf932e61dd41a8bc1c583aa0bd38b7
+#: ../../systemvm.rst:56
+msgid ""
+"CloudStack allows you to change the default 32-bit System VM template to "
+"64-bit one. Using the 64-bit template, upgrade the virtual router to manage "
+"larger number of connection in your network."
+msgstr "CloudStack允许你将默认的32位系统模板变为64位，使用64位模板，可以升级虚拟路由器，使得网络支撑更大的连接数。"
+
+# a4f753c8b20b411495b4077d429fadda
+#: ../../systemvm.rst:60
+msgid ""
+"Based on the hypervisor you use, download the 64-bit template from the "
+"following location:"
+msgstr "基于你所使用的hypervisor，从以下地址下载64位模板："
+
+# 0c56be6861554fe2b5519acffca4bbbf
+#: ../../systemvm.rst:64
+msgid "Hypervisor"
+msgstr "Hypervisor"
+
+# 2d2c7eabf8364232911d6ea74c1ebce2
+#: ../../systemvm.rst:64
+msgid "Download Location"
+msgstr "下载地址"
+
+# 18c32afddeff4951a466847a983335fe
+#: ../../systemvm.rst:66
+msgid "XenServer"
+msgstr "XenServer"
+
+# 6ea0f846b0a34711b7c0090cb48d8c32
+#: ../../systemvm.rst:66
+msgid ""
+"http://download.cloud.com/templates/4.2/64bit/systemvmtemplate64-2013-07-15"
+"-master-xen.vhd.bz2"
+msgstr "http://download.cloud.com/templates/4.2/64bit/systemvmtemplate64-2013-07-15-master-xen.vhd.bz2"
+
+# e8a51da6f6614114a91e4006eedfc912
+#: ../../systemvm.rst:67
+msgid "KVM"
+msgstr "KVM"
+
+# fe251bca2b854129890cba8e7ac9bbbf
+#: ../../systemvm.rst:67
+msgid ""
+"http://download.cloud.com/templates/4.2/64bit/systemvmtemplate64-2013-07-15"
+"-master-kvm.qcow2.bz2"
+msgstr "http://download.cloud.com/templates/4.2/64bit/systemvmtemplate64-2013-07-15-master-kvm.qcow2.bz2"
+
+# 2d498240d20c4683ab11ac2232135a16
+#: ../../systemvm.rst:70
+msgid "As an administrator, log in to the CloudStack UI"
+msgstr "使用管理员登录到CloudStack管理界面。"
+
+# cb836b9320584dfe917198280919b2a8
+#: ../../systemvm.rst:72
+msgid "Register the 64 bit template."
+msgstr "注册64位的模板。"
+
+# c8cab1a649c94d0ba1393b80e7bf411b
+#: ../../systemvm.rst:74
+msgid "For example: KVM64bitTemplate"
+msgstr "例如：KVM64bit 模板"
+
+# d88c6f133f114456914ec8807ccef386
+#: ../../systemvm.rst:76
+msgid "While registering the template, select Routing."
+msgstr "当注册模板时，选择路由（routing）。"
+
+# b7e2b731ae7e4c789be6af9ed2d185af
+#: ../../systemvm.rst:78
+msgid "Navigate to Infrastructure > Zone > Settings."
+msgstr "导航至 基础结构  > 地域  > 设置"
+
+# b58d5557ddeb454fbae55b570e2c68f0
+#: ../../systemvm.rst:80
+msgid ""
+"Set the name of the 64-bit template, KVM64bitTemplate, in the "
+"*``router.template.kvm``* global parameter."
+msgstr "在全局参数 *``router.template.kvm``*中设置64位模板的名称，KVM64bitTemplate。"
+
+# 951cf2ccd5d34614a87679078d22599c
+#: ../../systemvm.rst:83
+msgid ""
+"If you are using a XenServer 64-bit template, set the name in the "
+"*``router.template.xen``* global parameter."
+msgstr "如果你正在使用XenServer64位模板，将名字设置在*``router.template.xen``*全局参数中。"
+
+# 534ac4d13b2a4560aa420c9aa2fb9e57
+#: ../../systemvm.rst:86
+msgid ""
+"Any new virtual router created in this Zone automatically picks up this "
+"template."
+msgstr "任何在此地域中创建的新虚拟路由器均使用这个模板。"
+
+# be4168abcbfd4eed8d7d73b2284d3ac4
+#: ../../systemvm.rst:89
+msgid "Restart the Management Server."
+msgstr "重启管理服务器。"
+
+# 266b4692ed0b4fb4bae8eb4d1ce9af1f
+#: ../../systemvm.rst:93
+msgid "Multiple System VM Support for VMware"
+msgstr "支持VMware的多种系统虚拟机"
+
+# 2e1e78598bc94637b2c8fdfb6387a908
+#: ../../systemvm.rst:95
+msgid ""
+"Every CloudStack zone has single System VM for template processing tasks "
+"such as downloading templates, uploading templates, and uploading ISOs. In a"
+" zone where VMware is being used, additional System VMs can be launched to "
+"process VMware-specific tasks such as taking snapshots and creating private "
+"templates. The CloudStack management server launches additional System VMs "
+"for VMware-specific tasks as the load increases. The management server "
+"monitors and weights all commands sent to these System VMs and performs "
+"dynamic load balancing and scaling-up of more System VMs."
+msgstr "每个CloudStack 区域都有一个单独的系统VM用于模板处理任务，如下载模板，上传模板，上传ISO。在使用VMware的区域中，有另外的系统VM用来处理VMware专有的任务，如制作快照，创建私有模板。 当VMware专有任务的负载增加时，CloudStack管理端将推出额外的系统VM。管理端监控并平衡发送到这些系统VM的命令，实行动态负载均衡并增加更多的系统VM。"
+
+# 37fb441bcdb34d6fb7432fa98ef8886b
+#: ../../systemvm.rst:107
+msgid "Console Proxy"
+msgstr "控制台代理"
+
+# 9217568c55be47b7bd405187d23f7777
+#: ../../systemvm.rst:109
+msgid ""
+"The Console Proxy is a type of System Virtual Machine that has a role in "
+"presenting a console view via the web UI. It connects the user’s browser to "
+"the VNC port made available via the hypervisor for the console of the guest."
+" Both the administrator and end user web UIs offer a console connection."
+msgstr "控制台代理是一种系统VM，可以通过网页用户接口为用户呈现一个控制台视图。它通过hypervisor为来宾提供控制台将用户的浏览器与vnc端口相连。管理员和终端用户动能通过网页用户接口获得一个控制台连接。"
+
+# f0a0de282eec4d69a9f65b3ff7114cf8
+#: ../../systemvm.rst:115
+msgid ""
+"Clicking a console icon brings up a new window. The AJAX code downloaded "
+"into that window refers to the public IP address of a console proxy VM. "
+"There is exactly one public IP address allocated per console proxy VM. The "
+"AJAX application connects to this IP. The console proxy then proxies the "
+"connection to the VNC port for the requested VM on the Host hosting the "
+"guest."
+msgstr "点击控制台图标会弹出一个新窗口。根据控制台代理的公共IP ，AJAX代码会下载到这个新窗口。每个控制台代理都会分配一个公共IP。AJAX程序会连接到这个IP。控制台代理会将连接代理到正在运行所请求虚拟机的宿主机的vnc端口。"
+
+# b8ee3c97a12f494fadd3971c927e4f87
+#: ../../systemvm.rst:123
+msgid ""
+"The hypervisors will have many ports assigned to VNC usage so that multiple "
+"VNC sessions can occur simultaneously."
+msgstr "hypervisors可能会分配很多端口到VNC上，因此可能同时并发多个VNC会话。"
+
+# 04dcecfe7e024822a311ba18520f6cce
+#: ../../systemvm.rst:126
+msgid ""
+"There is never any traffic to the guest virtual IP, and there is no need to "
+"enable VNC within the guest."
+msgstr "不会有任何流量是来宾虚拟IP的，因此不需要打开来宾虚拟机的vnc。"
+
+# 15e8724d26714949a10f88914e7038db
+#: ../../systemvm.rst:129
+msgid ""
+"The console proxy VM will periodically report its active session count to "
+"the Management Server. The default reporting interval is five seconds. This "
+"can be changed through standard Management Server configuration with the "
+"parameter consoleproxy.loadscan.interval."
+msgstr "控制台虚拟机会定时的向管理服务器汇报当前活动的会话数。默认报告间隔是五秒钟。可以通过管理服务器的配置参数 consoleproxy.loadscan.interval.更改。"
+
+# 67b327e6f92f4c69a649679cf88b933c
+#: ../../systemvm.rst:134
+msgid ""
+"Assignment of guest VM to console proxy is determined by first determining "
+"if the guest VM has a previous session associated with a console proxy. If "
+"it does, the Management Server will assign the guest VM to the target "
+"Console Proxy VM regardless of the load on the proxy VM. Failing that, the "
+"first available running Console Proxy VM that has the capacity to handle new"
+" sessions is used."
+msgstr "如果来宾虚拟机之前有已经分配的关联控制台代理的会话，控制台代理的分配会由第一次分配的控制台代理决定。如果该来宾虚拟机之前存在已分配的控制台代理，则不论该控制台代理目前负载如何管理服务器都会将该来宾虚拟机分配到目标控制台代理虚拟机。如果失败则会将来宾虚拟机分配到第一个拥有足够资源处理新会话的控制台代理上。"
+
+# 0fcca189c0b0490fb490988079cca591
+#: ../../systemvm.rst:141
+msgid ""
+"Console proxies can be restarted by administrators but this will interrupt "
+"existing console sessions for users."
+msgstr "管理员能重启控制台代理，但此操作会中断用户与控制台会话。"
+
+# 9c3b4c70f4cf47379b07b5f24863023b
+#: ../../systemvm.rst:146
+msgid "Using a SSL Certificate for the Console Proxy"
+msgstr "对控制台代理使用SSL证书。"
+
+# 7be31349d45949dfa61f79105ade746f
+#: ../../systemvm.rst:149
+msgid ""
+"In the past CloudStack used the ``realhostip.com`` dynamic  DNS resolution "
+"service. As this service will be shut down as of June 30th, 2014, CloudStack"
+" has stopped using the service as of version 4.3."
+msgstr ""
+
+# ff149d60a5d74070bb252689b6e724ab
+#: ../../systemvm.rst:154
+msgid ""
+"By default, the console viewing functionality uses plaintext HTTP. In any "
+"production environment, the console proxy connection should be encrypted via"
+" SSL at the mininum."
+msgstr "默认情况下，代理视图功能使用HTTP协议，在任何生产环境下，代理服务连接至少要通过SSL进行加密。"
+
+# 471907f542334e94b211495c26beacff
+#: ../../systemvm.rst:158
+msgid ""
+"A CloudStack administrator has 2 ways to secure the console proxy "
+"communication with SSL:"
+msgstr "CloudStack管理员有2种方式来保证SSL加密控制代理连接的安全："
+
+# bd5c72a779c74100ada4a4e0ebd65633
+#: ../../systemvm.rst:161
+msgid "Set up a SSL wild-card certificate and domain name resolution"
+msgstr "建立一个SSL通配证书以及域名解析。"
+
+# 9d2106a856664feba8d3ed31ffef47b3
+#: ../../systemvm.rst:163
+msgid "Set up SSL certificate for specific FQDN and configure load-balancer"
+msgstr "为指定的FQDN建立一个SSL证书并配置负载均衡"
+
+# fbea784e67f546259f790571d5c68d02
+#: ../../systemvm.rst:167
+msgid "Changing the Console Proxy SSL Certificate and Domain"
+msgstr "更改控制代理SSL证书及域"
+
+# 0ef9de23136a444a802cb1fb49929072
+#: ../../systemvm.rst:169
+msgid ""
+"The administrator can configure SSL encryption  by selecting a domain and "
+"uploading a new SSL certificate and private key. The domain must run a DNS "
+"service that is capable of resolving queries for addresses of the form aaa-"
+"bbb-ccc-ddd.your.domain to an IPv4 IP address in the form aaa.bbb.ccc.ddd, "
+"for example, 202.8.44.1. To change the console proxy domain, SSL "
+"certificate, and private key:"
+msgstr "管理员可以通过选择一个域并上传一个新的SSL证书和密钥配置SSL加密。这个域必须运行一个能DNS服务器，该服务器能解决地址格式是aaa-bbb-ccc-ddd.your.domain到IPv4 IP地址的结构aaa.bbb.ccc.ddd，例如 for example, 202.8.44.1。就是为了改变终端代理与，SSL证书和私有密钥。"
+
+# 21ed531476934988b073b6db592f8ded
+#: ../../systemvm.rst:176
+msgid ""
+"Set up dynamic name resolution or populate all possible DNS names in your "
+"public IP range into your existing DNS server with the format aaa-bbb-ccc-"
+"ddd.consoleproxy.company.com -> aaa.bbb.ccc.ddd."
+msgstr "建立一个动态的方案或者适用于所有可能DNS名称在你的公共IP范围以format aaa-bbb-ccc-ddd.consoleproxy.company.com-> aaa.bbb.ccc.ddd.到你已经存在的DNS服务器上"
+
+# 8e0e99fee7274b59a2f75b2439a28528
+#: ../../systemvm.rst:181
+msgid ""
+"In these steps you will notice *consoleproxy.company.com* -For security best"
+" practices, we recommend creating a wildcard SSL certificate on a separate "
+"subdomain so in the event that the certificate is compromised, a malicious "
+"user cannot impersonate a company.com domain."
+msgstr "在上述步骤中你会注意到*consoleproxy.company.com* -为安全最好的实践，我们推荐在独立的子域中创建一个新的有通配符的SSL证书，所以证书在事件中可能妥协，一个恶意的用户不能模仿一个company.com域。"
+
+# 8840c66ff2704cbca38c9c9f5daddc09
+#: ../../systemvm.rst:187
+msgid ""
+"Generate the private key and certificate signing request (CSR). When you are"
+" using openssl to generate private/public key pairs and CSRs, for the "
+"private key that you are going to paste into the CloudStack UI, be sure to "
+"convert it into PKCS#8 format."
+msgstr "通常有私钥和证书签名请求(CSR)。当你使用openssl产生私钥/公钥对和CSR,你将私钥复制到CloudStack中，保证转换为PKCS#8格式。"
+
+# efd9b8a8ee594499800d89e3257cef8c
+#: ../../systemvm.rst:192
+msgid "Generate a new 2048-bit private key"
+msgstr "产生一个新的2048位的私钥"
+
+# 95cd5c1544fd480784d73f497d0474a9
+#: ../../systemvm.rst:198
+msgid ""
+"Generate a new certificate CSR. Ensure the creation of a wildcard "
+"certificate, eg ``*.consoleproxy.company.com``"
+msgstr ""
+
+# 8501f0bd21d3496f9a95f55217ad5715
+#: ../../systemvm.rst:205
+msgid ""
+"Head to the website of your favorite trusted Certificate Authority, purchase"
+" an SSL certificate, and submit the CSR. You should receive a valid "
+"certificate in return"
+msgstr "前往你喜爱的站点相信授权证书，购买一个SSL证书并获得CSR确认。你将会收到一个返回的有效地证书"
+
+# c5e0a99a8e5548a7b30a82aad6008419
+#: ../../systemvm.rst:209
+msgid "Convert your private key format into PKCS#8 encrypted format."
+msgstr "转化你的私钥格式成PKCS#8加密格式。"
+
+# 21138c806f2e48abab8f0748512628e2
+#: ../../systemvm.rst:215
+msgid ""
+"Convert your PKCS#8 encrypted private key into the PKCS#8 format that is "
+"compliant with CloudStack"
+msgstr "转化你的PKC#8加密的私钥到PKC#8格式是CloudStack遵循的方式。"
+
+# 021b9614a4c740eb995d66bb07551c5d
+#: ../../systemvm.rst:222
+msgid ""
+"In the Update SSL Certificate screen of the CloudStack UI, paste the "
+"following:"
+msgstr "在CloudStack用户界面的修改SSL证书，复制以下内容："
+
+# 93d3977b1fbf4bdcaa3cb7c106025be0
+#: ../../systemvm.rst:225
+msgid "The certificate you've just generated."
+msgstr "刚刚生成的证书。"
+
+# f8f025d190ce4094a3dd63915b29267f
+#: ../../systemvm.rst:227
+msgid "The private key you've just generated."
+msgstr "刚刚生成的私钥。"
+
+# a44d63f6a2084e029bf84c965e10cae2
+#: ../../systemvm.rst:229
+msgid ""
+"The desired domain name, prefixed with ``*.``; for example, "
+"``*.consoleproxy.company.com``"
+msgstr ""
+
+# d69ea42c636247548be90fe1cb7c5f51
+#: ../../systemvm.rst:231
+msgid "|update-ssl.png|"
+msgstr "|update-ssl.png|"
+
+# b0dd0973913649e1876bac396552c02e
+#: ../../systemvm.rst:233
+msgid ""
+"This stops all currently running console proxy VMs, then restarts them with "
+"the new certificate and key. Users might notice a brief interruption in "
+"console availability."
+msgstr "这停止了所有正运行的终端代理VM,然后已新的许可和密钥重启。用户可能会注意到对控制台有益的一个简短的打断。"
+
+# 88d8a0760f5641a6a3d5dac7f7ecb8e2
+#: ../../systemvm.rst:237
+msgid ""
+"The Management Server generates URLs of the form \"aaa-bbb-ccc-"
+"ddd.consoleproxy.company.com\" after this change is made. The new console "
+"requests will be served with the new DNS domain name, certificate, and key."
+msgstr "管理服务器在这个改变后生成格式如 \"aaa-bbb-ccc-ddd.consoleproxy.company.com\" 的URLs。这个新的终端请求将会依照新的DNS域名，证书和密钥提供服务。"
+
+# d9ae75c0be0d474f8707a09850ff25db
+#: ../../systemvm.rst:244
+msgid "Load-balancing Console Proxies"
+msgstr "负载均衡终端代理"
+
+# baf2bcf57fed4f82aa193fd45f2f2140
+#: ../../systemvm.rst:245
+msgid ""
+"An alternative to using dynamic DNS or creating a range of DNS entries as "
+"described in the last section would be to create a SSL certificate for a "
+"specific domain name, configure CloudStack to use that particular FQDN, and "
+"then configure a load balancer to load balance the console proxy's IP "
+"address behind the FQDN. As the functionality for this is still new, please "
+"see "
+"https://cwiki.apache.org/confluence/display/CLOUDSTACK/Realhost+IP+changes "
+"for more details."
+msgstr "一个在最近的段落中使用动态DNS或者创建一定范围DNS记录作为可替换的描述将被用来创建一个特定域名的SSL证书，配置CloudStack使用特定的FQDN,然后配置一个负载均衡以均衡终端代理IP地址后的FQDN。作为这项新功能的更多详情，参见              http://cwiki.apache.org/confluence/display/CLOUDSTACK/Realhost+IP+changes。"
+
+# f8bc0488fcae4eed874f0719dcbd03dc
+#: ../../systemvm.rst:256
+msgid "Virtual Router"
+msgstr "虚拟路由"
+
+# 5aa09837be9b4cbbb6e84ebaabca6559
+#: ../../systemvm.rst:258
+msgid ""
+"The virtual router is a type of System Virtual Machine. The virtual router "
+"is one of the most frequently used service providers in CloudStack. The end "
+"user has no direct access to the virtual router. Users can ping the virtual "
+"router and take actions that affect it (such as setting up port forwarding),"
+" but users do not have SSH access into the virtual router."
+msgstr "虚拟路由器是一个系统虚拟机。它经常在CloudStack服务方案中被使用；终端用户不能够直接访问虚拟路由器。用户可ping和影响它(比如设置端口转发)但是不能通过ssh访问"
+
+# b1afb70840d04ed6917b9fd0e68a312b
+#: ../../systemvm.rst:265
+msgid ""
+"There is no mechanism for the administrator to log in to the virtual router."
+" Virtual routers can be restarted by administrators, but this will interrupt"
+" public network access and other services for end users. A basic test in "
+"debugging networking issues is to attempt to ping the virtual router from a "
+"guest VM. Some of the characteristics of the virtual router are determined "
+"by its associated system service offering."
+msgstr "这里没有一种机制使得管理员可以登录虚拟路由器。管理员可以重启虚拟路由器，但是会中断终端用户网络访问和服务。在一个基本的网络故障排错中，尝试在一个虚拟机上ping虚拟路由器。虚拟路由器的一些功能特性是通过系统服务方案配置的。"
+
+# a07561d1be02426f9c20ec39d37ebfda
+#: ../../systemvm.rst:274
+msgid "Configuring the Virtual Router"
+msgstr "配置虚拟路由"
+
+# 33b921e943764375b7e2833cd80501f1
+#: ../../systemvm.rst:276
+msgid "You can set the following:"
+msgstr "你可以设置以下内容："
+
+# f4bf9f0a9f5341ce9751734831cb4100
+#: ../../systemvm.rst:278
+msgid "IP range"
+msgstr "IP地址范围"
+
+# 63e37af44a1644428067b31b62f0c6b2
+#: ../../systemvm.rst:280
+msgid "Supported network services"
+msgstr "支持的网络服务"
+
+# e1a2e37b67a14415b27cdce549422c45
+#: ../../systemvm.rst:282
+msgid "Default domain name for the network serviced by the virtual router"
+msgstr "由虚拟路由为网络服务提供的默认域名"
+
+# a78c71c42d6b400e8c6a037d8be60b00
+#: ../../systemvm.rst:284
+msgid "Gateway IP address"
+msgstr "网关IP地址"
+
+# c17203f5ab7c4339ab3bf6d4b276357c
+#: ../../systemvm.rst:286
+msgid ""
+"How often CloudStack fetches network usage statistics from CloudStack "
+"virtual routers. If you want to collect traffic metering data from the "
+"virtual router, set the global configuration parameter "
+"router.stats.interval. If you are not using the virtual router to gather "
+"network usage statistics, set it to 0."
+msgstr "CloudStack多久从虚拟路由器获取一次网络使用数据。如果你想搜集虚拟路由器的流量计量数据，设置全局变量router.stats.interval。如果你不使用虚拟路由器收集网络使用数据，设置该值为0"
+
+# db1198a11ec947f18c4cf2244c33eb08
+#: ../../systemvm.rst:294
+msgid "Upgrading a Virtual Router with System Service Offerings"
+msgstr "使用系统计算服务升级虚拟路由器"
+
+# 35a9d4cee92b4a9fb1654d44110881fa
+#: ../../systemvm.rst:296
+msgid ""
+"When CloudStack creates a virtual router, it uses default settings which are"
+" defined in a default system service offering. See `“System Service "
+"Offerings” <#system-service-offerings>`_. All the virtual routers in a "
+"single guest network use the same system service offering. You can upgrade "
+"the capabilities of the virtual router by creating and applying a custom "
+"system service offering."
+msgstr "当 CloudStack创建一个虚拟路由器，它是按照默认的系统计算服务方案进行的设置。参见 <xref linkend=\"system-service-offerings\" />。所有在单独客户网络中的虚拟路由器都使用相同的系统计算服务方案。可以通过新建和使用自定义的系统计算服务方案来提高虚拟路由器的性能。"
+
+# cd27cfafbeca4a8dbe03d9b84184a373
+#: ../../systemvm.rst:303
+msgid ""
+"Define your custom system service offering. See `“Creating a New System "
+"Service Offering” <#creating-a-new-system-service-offering>`_. In System VM "
+"Type, choose Domain Router."
+msgstr "定义定制的系统计算服务方案，参见<xref linkend=\"creating-system-service-offerings\" />。在系统虚拟机类型中，选择域路由器。"
+
+# 59d868f989f44a7daf1bfbc0e292db28
+#: ../../systemvm.rst:308
+msgid ""
+"Associate the system service offering with a network offering. See "
+"`“Creating a New Network Offering” <networking.html#creating-a-new-network-"
+"offering>`_."
+msgstr "使用网络服务方案配合系统计算服务方案，参见  `“创建一个新网络方案” <networking.html#creating-a-new-network-offering>`_."
+
+# dfa56664a39341bcbf503aa23d46f1d4
+#: ../../systemvm.rst:312
+msgid ""
+"Apply the network offering to the network where you want the virtual routers"
+" to use the new system service offering. If this is a new network, follow "
+"the steps in Adding an Additional Guest Network on page 66. To change the "
+"service offering for existing virtual routers, follow the steps in "
+"`“Changing the Network Offering on a Guest Network” <networking2.html"
+"#changing-the-network-offering-on-a-guest-network>`_."
+msgstr "将网络服务方案应用到使用新系统计算服务方案的虚拟路由器的网络上。如果这是一个新的网络，请根据66页的添加额外客户网络的步骤操作。想要改变已生成的虚拟路由器的计算服务方案，请根据 `“在客户端网络改变网络方案” <networking2.html#changing-the-network-offering-on-a-guest-network>`_."
+
+# 24d02637553648a99ee527214679997f
+#: ../../systemvm.rst:321
+msgid "Best Practices for Virtual Routers"
+msgstr "虚拟路由器的最佳实践"
+
+# 9264d919f1d24e30b3ff39600891fd32
+#: ../../systemvm.rst:323
+msgid ""
+"WARNING: Restarting a virtual router from a hypervisor console deletes all "
+"the iptables rules. To work around this issue, stop the virtual router and "
+"start it from the CloudStack UI."
+msgstr "警告：从一个虚拟机管理程序控制台重新启动一台虚拟路由器，将删除所有iptables规则。要解决这个问题，从CloudStack用户界面停止虚拟路由器和启动。"
+
+# f0a98ab823014588ba7a79e496358417
+#: ../../systemvm.rst:328
+msgid ""
+"Do not use the destroyRouter API when only one router is available in the "
+"network, because restartNetwork API with the cleanup=false parameter can't "
+"recreate it later. If you want to destroy and recreate the single router "
+"available in the network, use the restartNetwork API with the cleanup=true "
+"parameter."
+msgstr "在网络中只有一个路由器可用时，不要使用destroyRouter API，因为restartNetwork API 带cleanup=false参数不能随后重新创建它。如果你想销毁并重新创建网络中的单一路由器，使用restartNetwork API 带cleanup=true参数。"
+
+# c9fe7a0ac42f4b8ba7e912ff1ccd88a6
+#: ../../systemvm.rst:336
+msgid "Service Monitoring Tool for Virtual Router"
+msgstr "虚拟路由的服务监视工具"
+
+# 8c7761b870df47549d73c8e0a8e21ec0
+#: ../../systemvm.rst:338
+msgid ""
+"Various services running on the CloudStack virtual routers can be monitored "
+"by using a Service Monitoring tool. The tool ensures that services are "
+"successfully running until CloudStack deliberately disables them. If a "
+"service goes down, the tool automatically restarts the service, and if that "
+"does not help bringing up the service, an alert as well as an event is "
+"generated indicating the failure. A new global parameter, "
+"``network.router.enableservicemonitoring``, has been introduced to control "
+"this feature. The default value is false, implies, monitoring is disabled. "
+"When you enable, ensure that the Management Server and the router are "
+"restarted."
+msgstr "运行在CloudStack虚拟路由上的不同的各种服务都可以使用服务监视工具监视。工具将确保服务成功运行除非CloudStack被故意损坏。如果一个服务停止，工具将自动重启该服务，如果不能帮助重启该服务，将产生一个导致失败的警报事件。一个全局参数，\"network.router.enableservicemonitoring\",已经被介绍了它能控制这种特性。默认值是false,也就是说监控不是默认。当你激活后，确保服务管理器和路由被重启。"
+
+# eb435554762a44ae9561f7c121329709
+#: ../../systemvm.rst:349
+msgid ""
+"Monitoring tool can help to start a VR service, which is crashed due to an "
+"unexpected reason. For example:"
+msgstr "监视工具可以帮助启动一个由不期望的原因导致的冲突的VR服务。例如："
+
+# c64d62fa24064373919f92f8bb26dab6
+#: ../../systemvm.rst:352
+msgid "The services crashed due to defects in the source code."
+msgstr "由原代码的缺点引起的服务冲突。"
+
+# 19f8982ead484814b9812242f98822cf
+#: ../../systemvm.rst:354
+msgid ""
+"The services that are terminated by the OS when memory or CPU is not "
+"sufficiently available for the service."
+msgstr "当此服务的内存空间或者CPU运算出现不足时，OS将终止此服务。"
+
+# 88522e16c4ad4587887f207c3cb1de9f
+#: ../../systemvm.rst:358
+msgid ""
+"Only those services with daemons are monitored. The services that are failed"
+" due to errors in the service/daemon configuration file cannot be restarted "
+"by the Monitoring tool. VPC networks are not supported."
+msgstr "只有这些服务的守护进程仍被监视。这些服务因在服务器/守护进程配置文件中的错误而失败将导致不能被监视工具重启。VPC网络不予支持。"
+
+# d6dde7af5158444683442aab05bf244e
+#: ../../systemvm.rst:362
+msgid "The following services are monitored in a VR:"
+msgstr "在VR中监视下列服务："
+
+# 919f0a593e4c494588e1859a5fccfae0
+# b9653f8b1d8744999883790ea0990b01
+#: ../../systemvm.rst:364 ../../systemvm.rst:424
+msgid "DNS"
+msgstr "DNS"
+
+# c8fa5957a2504e62afaf2aef337a064b
+#: ../../systemvm.rst:366
+msgid "HA Proxy"
+msgstr "HA代理"
+
+# d5ed20a1e7744cb0b70dcfa442d18ee0
+#: ../../systemvm.rst:368
+msgid "SSH"
+msgstr "SSH"
+
+# 9a5f6db0ba8441d4ad47c0946c9230bb
+#: ../../systemvm.rst:370
+msgid "Apache Web Server"
+msgstr "Apache网络服务器"
+
+# 6f2ae7c39bfd4fd3b950701b42e2f0fa
+#: ../../systemvm.rst:372
+msgid "The following networks are supported:"
+msgstr "支持以下网络："
+
+# 6ed18a5a0c7f48feacc05607c212daf6
+#: ../../systemvm.rst:374
+msgid "Isolated Networks"
+msgstr "独立的网络"
+
+# fd2ab5e43ac34e0fa5bade7bde71c5cf
+#: ../../systemvm.rst:376
+msgid "Shared Networks in both Advanced and Basic zone"
+msgstr "在高级和基础域中分享网络"
+
+# fb5714c33d284b61af774529226b1346
+#: ../../systemvm.rst:378
+msgid "VPC networks are not supported"
+msgstr "VPC网络不被支持"
+
+# d22c1884f61f4ed5b1e3c6c1b2b8b218
+#: ../../systemvm.rst:380
+msgid ""
+"This feature is supported on the following hypervisors: XenServer, VMware, "
+"and KVM."
+msgstr "在下列hypervisor上支持此特性：XenServer,VMware和KVM"
+
+# 209b4c2a4ff24293988606ece94dcc3d
+#: ../../systemvm.rst:385
+msgid "Enhanced Upgrade for Virtual Routers"
+msgstr "增强的网络路由升级"
+
+# fe5f961e7475463681b5ffacfc66cadd
+#: ../../systemvm.rst:387
+msgid ""
+"Upgrading VR is made flexible. The CloudStack administrators will be able to"
+" control the sequence of the VR upgrades. The sequencing is based on "
+"Infrastructure hierarchy, such as by Cluster, Pod, or Zone, and "
+"Administrative (Account) hierarchy, such as by Tenant or Domain. As an "
+"administrator, you can also determine when a particular customer service, "
+"such as VR, is upgraded within a specified upgrade interval. Upgrade "
+"operation is enhanced to increase the upgrade speed by allowing as many "
+"upgrade operations in parallel as possible."
+msgstr "升级VR也是很灵活的。CloudStack管理员将能够控制VR升级序列。该序列基于Infrastructure层，例如Cluster,pod或者Zone,管理层 (账户)，例如Tenan或者Domain.作为管理员，当一个特殊的用户服务,例如VR,在一个短暂的具体升级后的间隔后，你可以终止它。升级操作将允许多个升级操作并行操作促使升级速度增加。"
+
+# 0a2326eddab447b690fd8118e9f41940
+#: ../../systemvm.rst:396
+msgid ""
+"During the entire duration of the upgrade, users cannot launch new services "
+"or make changes to an existing service."
+msgstr "在一个完整的持续的升级过程中，用户不能启动新服务或者改变已经存在的服务。"
+
+# 4fb42cca852e4f548c30cb9034654413
+#: ../../systemvm.rst:399
+msgid ""
+"Additionally, using multiple versions of VRs in a single instance is "
+"supported. In the Details tab of a VR, you can view the version and whether "
+"it requires upgrade. During the Management Server upgrade, CloudStack checks"
+" whether VR is at the latest version before performing any operation on the "
+"VR. To support this, a new global parameter, *``router.version.check``*, has"
+" been added. This parameter is set to true by default, which implies minimum"
+" required version is checked before performing any operation. No operation "
+"is performed if the VR is not at the required version. Services of the older"
+" version VR continue to be available, but no further operations can be "
+"performed on the VR until it is upgraded to the latest version. This will be"
+" a transient state until the VR is upgraded. This will ensure that the "
+"availability of VR services and VR state is not impacted due to the "
+"Management Server upgrade."
+msgstr "另外，使用多版本的VR在一个单例上也是支持的。对于具体地VR，你可以预览版本和是否升级。在管理服务器升级时，CLoudStack检查VR是否是VR上操作的最新版本。为支持此特点，一个新的全局参数，*``router.version.check``*, 已经被加入.这个参数默认设置为true,它意味着当操作前，最少要求版本检查。如果不是VR要求的版本就没有任何操作。在旧的版本上的VR仍然是有效地，但必须升级后才能进行更多的操作。在升级之前，它将是临时状态。这将保证VR服务和状态不受管理服务器升级的影响。"
+
+# 0567e75c33134bcea3a1caa72a5aaa00
+#: ../../systemvm.rst:414
+msgid ""
+"The following service will be available even if the VR is not upgraded. "
+"However, no changes for any of the services can be sent to the VR, until it "
+"is upgraded:"
+msgstr "以下服务将是有效的，无论VR是否升级。或者，没有任何服务在VR升级后发送到VR."
+
+# 48fcfc3f076b494e942f868e0372e0b9
+#: ../../systemvm.rst:418
+msgid "SecurityGroup"
+msgstr "安全组"
+
+# 1bee20546a154520ba2788c22c1f3486
+#: ../../systemvm.rst:420
+msgid "UserData"
+msgstr "用户数据"
+
+# 60d206f07ef3446fa4fb2747aa88893b
+#: ../../systemvm.rst:422
+msgid "DHCP"
+msgstr "DHCP"
+
+# ace288f1a1044792b92215d6a79af5d1
+#: ../../systemvm.rst:426
+msgid "LB"
+msgstr "LB"
+
+# 4ccc43be9ec44655b59657daed06a562
+#: ../../systemvm.rst:428
+msgid "Port Forwarding"
+msgstr "端口转发"
+
+# 1ffbebe241a745ebaaea80aa5ff7e00e
+#: ../../systemvm.rst:430
+msgid "VPN"
+msgstr "VPN"
+
+# 9bfb5e6221b142eab579bea52cded3a4
+#: ../../systemvm.rst:432
+msgid "Static NAT"
+msgstr "静态 NAT"
+
+# 2b905be150d94c69b81d0dfbcf8e70ec
+#: ../../systemvm.rst:434
+msgid "Source NAT"
+msgstr "Source NAT"
+
+# 952471d71a404a99b736c2438fd03018
+#: ../../systemvm.rst:436
+msgid "Firewall"
+msgstr "防火墙"
+
+# 4051d26b7c91408999d41f021c3ca178
+#: ../../systemvm.rst:438
+msgid "Gateway"
+msgstr "网关"
+
+# 69c89cdcc4844f728351fe01740e32ef
+#: ../../systemvm.rst:440
+msgid "NetworkACL"
+msgstr "网络ACL"
+
+# 769b3ed7ed5c4ccf85d9386e5aea8b3f
+#: ../../systemvm.rst:444
+msgid "Supported Virtual Routers"
+msgstr "支持虚拟路由"
+
+# b3bd3d522cca4802afae131818e0df27
+#: ../../systemvm.rst:446
+msgid "VR"
+msgstr "VR"
+
+# 6378fb7b02b248cb8e34872a3d19b51d
+#: ../../systemvm.rst:448
+msgid "VPC VR"
+msgstr "VPC VR"
+
+# dd5c03dc42ae4454a713ff50a2be91e9
+#: ../../systemvm.rst:450
+msgid "Redundant VR"
+msgstr "多余的VR"
+
+# d9325031af0f4d1597f136b4d9f0e3e3
+#: ../../systemvm.rst:454
+msgid "Upgrading Virtual Routers"
+msgstr "升级中的虚拟路由"
+
+# 975d8f6d95014399909cc0cd8a2b16c6
+#: ../../systemvm.rst:456
+msgid "Download the latest System VM template."
+msgstr "下载最新的系统VM模板。"
+
+# c25708086d324a38b701d238b7463924
+#: ../../systemvm.rst:458
+msgid "Download the latest System VM to all the primary storage pools."
+msgstr "下载最新的系统VM到所有主存储池。"
+
+# c9378adb82f140be8f8663c096c895c5
+#: ../../systemvm.rst:460
+msgid "Upgrade the Management Server."
+msgstr "升级管理服务器"
+
+# 40387558057548f98875005c7ceabeb7
+#: ../../systemvm.rst:462
+msgid ""
+"Upgrade CPVM and SSVM either from the UI or by using the following script:"
+msgstr "从用户界面和使用下列描述中升级CPVM和SSVM"
+
+# d28d9ad5f0a0451bbff0baf5b102d9dd
+#: ../../systemvm.rst:469
+msgid ""
+"Even when the VRs are still on older versions, existing services will "
+"continue to be available to the VMs. The Management Server cannot perform "
+"any operations on the VRs until they are upgraded."
+msgstr "即使VR仍然是老版本，已经存在的服务会继续对VM有效。管理服务器除非升级，否则不会再VR上有任何动作。"
+
+# 2a8027346ddf4f988d4554184bcdb544
+#: ../../systemvm.rst:473
+msgid "Selectively upgrade the VRs:"
+msgstr "选择性的升级VR:"
+
+# 6e59012980ce40deba2b51593d9d8901
+#: ../../systemvm.rst:475
+msgid "Log in to the CloudStack UI as the root administrator."
+msgstr "用系统管理员登陆到CloudStack UI界面。"
+
+# 728ae8ec4eb74571819bf5ec86b38073
+#: ../../systemvm.rst:477
+msgid "In the left navigation, choose Infrastructure."
+msgstr "在左边的导航，选择基础架构。"
+
+# 2d56351b1a1644bda4f342dce58b51d7
+#: ../../systemvm.rst:479
+msgid "On Virtual Routers, click View More."
+msgstr "在虚拟路由上，单击更多视图。"
+
+# 9af9b62d86b14af2a745e1a359d1c940
+#: ../../systemvm.rst:481
+msgid "All the VRs are listed in the Virtual Routers page."
+msgstr "所有的VR都在虚拟路由页中列出。"
+
+# f19642bbaf564ca0a26f3e8dff683a65
+#: ../../systemvm.rst:483
+msgid ""
+"In Select View drop-down, select desired grouping based on your requirement."
+msgstr "在选择视图的下拉列表中，选择所需的群组"
+
+# a76c013f7da8482eb097248fb3757989
+#: ../../systemvm.rst:486
+msgid "You can use either of the following:"
+msgstr "你可以设置以下内容："
+
+# 0b60f1059d8e4b1faadac9b7a3113d8b
+#: ../../systemvm.rst:488
+msgid "Group by zone"
+msgstr "按域分组"
+
+# 5a12e32c9b0c4862a582cca80cd74030
+#: ../../systemvm.rst:490
+msgid "Group by pod"
+msgstr "按提供点分组"
+
+# a83f4a59498e44e09b79b5eb014f9d4f
+#: ../../systemvm.rst:492
+msgid "Group by cluster"
+msgstr "按群集分组"
+
+# a1c022abb009480bb49288cdad2b5210
+#: ../../systemvm.rst:494
+msgid "Group by account"
+msgstr "按账户分组"
+
+# 87a6b85df243430293aa4d5a55e00c4a
+#: ../../systemvm.rst:496
+msgid "Click the group which has the VRs to be upgraded."
+msgstr "单击已经被升级的VR组"
+
+# 9e519d5a83be4513a0a20c665777a298
+#: ../../systemvm.rst:498
+msgid ""
+"For example, if you have selected Group by zone, select the name of the "
+"desired zone."
+msgstr "例如，你可以按域分组，选择希望的域名。"
+
+# bd6d3d8bf8954923909c8147a4718053
+#: ../../systemvm.rst:501
+msgid "Click the Upgrade button to upgrade all the VRs. |vr-upgrade.png|"
+msgstr "单击升级按钮升级所有的VRs.|vr-upgrade.png|"
+
+# 56d36b4fbb234438a6e0fce7d66a0ac1
+#: ../../systemvm.rst:503
+msgid "Click OK to confirm."
+msgstr "点击确定。"
+
+# 2b7574a9be0e46a9bd04bff25c748a13
+#: ../../systemvm.rst:507
+msgid "Secondary Storage VM"
+msgstr "辅助存储VM"
+
+# e941ae432ef24ea2a8b4987accf91257
+#: ../../systemvm.rst:509
+msgid ""
+"In addition to the hosts, CloudStack’s Secondary Storage VM mounts and "
+"writes to secondary storage."
+msgstr "除了主机，CloudStack的二级存储虚拟机会挂载和往二级存储中写入内容。"
+
+# f062d628750b4d5bbf97ac967cf17788
+#: ../../systemvm.rst:512
+msgid ""
+"Submissions to secondary storage go through the Secondary Storage VM. The "
+"Secondary Storage VM can retrieve templates and ISO images from URLs using a"
+" variety of protocols."
+msgstr "通过二级存储虚拟机来提交信息到二级存储。二级存储虚拟机会使用多种协议通过URL来获取模版和ISO镜像文件。"
+
+# cedfcfe3cd38411ca2633b120ab0d034
+#: ../../systemvm.rst:516
+msgid ""
+"The secondary storage VM provides a background task that takes care of a "
+"variety of secondary storage activities: downloading a new template to a "
+"Zone, copying templates between Zones, and snapshot backups."
+msgstr "二级存储虚拟机会提供后台任务来负责各种二级存储的活动：将新模版的下载到资源域中，多个资源域之间的模版复制，和快照备份。"
+
+# c2a68c523bf14634b2f881ce767633cc
+#: ../../systemvm.rst:520
+msgid "The administrator can log in to the secondary storage VM if needed."
+msgstr "如果有需要，管理员可以登录到辅助存储VM上。"

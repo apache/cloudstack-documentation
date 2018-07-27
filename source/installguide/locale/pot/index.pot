@@ -1,0 +1,98 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../index.rst:23
+# 982ed5120e594d65bcff280a0398f5af
+msgid "Welcome to CloudStack Installation Documentation"
+msgstr ""
+
+#: ../../index.rst:29
+# 1f1f369df4b645e0bbda82cf077bdbd6
+msgid "We are in the process of changing documentation format as well as hosting mechanism. Please be patient with us as we migrate our entire documentation to this new setup."
+msgstr ""
+
+#: ../../index.rst:33
+# b3e6055f64164ee0b851226b5573bfb3
+msgid "This is the Apache CloudStack installation guide, for the Documentation home, the administrator guide or the Release-Notes please see:"
+msgstr ""
+
+#: ../../index.rst:36
+# b643ff53ad664a829c30729664d2ad00
+msgid "`Documentation home <http://docs.cloudstack.apache.org>`_"
+msgstr ""
+
+#: ../../index.rst:38
+# 2cf98f8dcdff4610b15031a039d4c5c6
+msgid "`Administration Guide <http://docs.cloudstack.apache.org/projects/cloudstack-administration>`_"
+msgstr ""
+
+#: ../../index.rst:41
+# a98ac35a7f2b4cf9b3090ff68dc12650
+msgid "`Release Notes <http://docs.cloudstack.apache.org/projects/cloudstack-release-notes>`_"
+msgstr ""
+
+#: ../../index.rst:45
+# 86316507b4b44a5a96cfdb3721f97bd4
+msgid "In this guide we first go through some design and architectural choices_ to build your cloud. Then we dive into a single node quick start guide_ to give you a feel for the installation process. The source installation steps_ are given in the follow-on section for people who want to build their own packages. Otherwise you can use the general installation_ which makes use of community maintained package repositories. The rest of the guide goes through the configuration_ of the data-center and the setup of the network_, storage_ and hypervisors_."
+msgstr ""
+
+#: ../../index.rst:60
+# df08cf7ea88245c086043ad57af8e8ac
+msgid "Choosing a Deployment Architecture"
+msgstr ""
+
+#: ../../index.rst:70
+# dbccc2fe994c4999b821643c7bde3eb3
+msgid "Quick Installation Guide"
+msgstr ""
+
+#: ../../index.rst:80
+# a05a3c5a35ca46418756c797e93cdc38
+msgid "Source Installation"
+msgstr ""
+
+#: ../../index.rst:90
+# 42b62bda8da0413d80b6718dab581b66
+msgid "General Installation"
+msgstr ""
+
+#: ../../index.rst:100
+# e9c99f765efc4b4396d3d68516bd9f05
+msgid "Configuration"
+msgstr ""
+
+#: ../../index.rst:110
+# e126703be1d04fb1a536bbecd12daafa
+msgid "Hypervisor Setup"
+msgstr ""
+
+#: ../../index.rst:121
+# 64d7386116784ddfbfaee06209c06377
+msgid "Network Setup"
+msgstr ""
+
+#: ../../index.rst:131
+# ca4526f59f884297b45db3c6d92cd6a6
+msgid "Storage Setup"
+msgstr ""
+
+#: ../../index.rst:139
+# a7129d9d6924487eb5056763f614e703
+msgid "Optional Installation"
+msgstr ""
+

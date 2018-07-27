@@ -1,0 +1,4903 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache CloudStack
+# This file is distributed under the same license as the Apache CloudStack Release Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Release Notes 4.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-31 10:50-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../about.rst:17
+# bdb91b47a91143f1a9fbaaf76b791a2f
+msgid "About this new Release"
+msgstr ""
+
+#: ../../about.rst:20
+# 09ea19a83f3c45fbb713eecff4f4479a
+msgid "What's New in 4.3"
+msgstr ""
+
+#: ../../about.rst:22
+# a7450e3fb9a743108c319a9af9fe1b80
+msgid "CloudStack 4.3 includes the following new features."
+msgstr ""
+
+#: ../../about.rst:25
+# de565510abed48d8af44eb5fdb96baa6
+msgid "Optional 64-Bit System VM Template Support"
+msgstr ""
+
+#: ../../about.rst:27
+# 048e4ce62ed244bba8e86b18d88f3a34
+msgid "CloudStack now provides 64-bit templates for System VMs. With this support, you will be able to upgrade virtual routers in a zone. The following parameters have been introduced for the same purpose:"
+msgstr ""
+
+#: ../../about.rst:33
+# 3ff7bc12fd3a40168e34b0756ea6a56d
+msgid "XenServer: *``router.template.xen``*"
+msgstr ""
+
+#: ../../about.rst:37
+# 0f83f7b6fbfe4d9d83c9434fe623902f
+msgid "KVM: *``router.template.kvm``*"
+msgstr ""
+
+#: ../../about.rst:41
+# 2f7e453939514853b250feb502b7b5e4
+msgid "VMware:"
+msgstr ""
+
+#: ../../about.rst:45
+# 788a74eec57b416b98f7fe353645942d
+msgid "Hyper-V:"
+msgstr ""
+
+#: ../../about.rst:48
+# bf5c467f2c6942ed83e6d9bd84f1b336
+msgid "Hyper-V Support"
+msgstr ""
+
+#: ../../about.rst:50
+# a68a0a054365438c8cf07088b31c3f67
+msgid "CloudStack 4.3 rolls out support for Hyper-V hosts. For Hyper-V, CloudStack supports SMB-based storage. If you want to run guest VMs on Hyper-V hosts, install CloudStack Agents on each Hyper-V hosts. Before you use Hyper-V, review the following list of supported and non-supported features. For detailed instruction, see Hyper-V Quick Start Guide. You can also see the chapter Installing Hyper-V for CloudStack in the CloudStack 4.3 Installation Guide."
+msgstr ""
+
+#: ../../about.rst:59
+# f42fefd9b0704bbd8914c2fc900378e5
+msgid "Supported Functionalities on Hyper-V"
+msgstr ""
+
+#: ../../about.rst:63
+# 8a08c075dad842ae989d94c62ee4c170
+msgid "VM Compute"
+msgstr ""
+
+#: ../../about.rst:67
+# 4a23fdd07b4545a8a2471b9e7858afb0
+msgid "All the VM operations, except VM Snapshots"
+msgstr ""
+
+#: ../../about.rst:71
+# 0853f620548b45c58c3f661681d49db6
+msgid "Live Migration"
+msgstr ""
+
+#: ../../about.rst:75
+# 7f73d6bfa5414af29f7bd70a2f166f2a
+msgid "Service Offerings (Scale up on stopped VMs)"
+msgstr ""
+
+#: ../../about.rst:79
+# 2901e1e3a3ee4f318bee5841071d11f4
+msgid "Console access"
+msgstr ""
+
+#: ../../about.rst:83
+# e9f0cf1c36e34061a4430368430f8b7e
+msgid "SSH key and reseting SSH key"
+msgstr ""
+
+#: ../../about.rst:87
+# 61f557f1ec2841b3b5b64dded25a56ba
+msgid "Upload and download templates, volumes, and ISO"
+msgstr ""
+
+#: ../../about.rst:91
+# c07f2d55f8364cd8b0050aa4d3d54382
+msgid "Create VMs from template and ISO"
+msgstr ""
+
+#: ../../about.rst:95
+# f9b15aeb193941e79220d19f3dce562e
+msgid "Create template from volume"
+msgstr ""
+
+#: ../../about.rst:99
+# 8ccfe45c544e4c638d9f4a12b6436cd9
+msgid "Attach and detach VMs from ISO and password-enabled template"
+msgstr ""
+
+#: ../../about.rst:103
+# d387c492ad4a4f27ae58eab3f0f892a3
+msgid "Copy template across zone"
+msgstr ""
+
+#: ../../about.rst:107
+# cc1d8aed652142ca8d18086e70eccad4
+msgid "Storage"
+msgstr ""
+
+#: ../../about.rst:111
+# 0991d5f6fea746e1b06907ae0bb63f74
+msgid "Primary Storage (SMB and Local)"
+msgstr ""
+
+#: ../../about.rst:115
+# ebc4eb92938f4a3f9061c8321002678d
+msgid "Root and data volumes on Local and SMB"
+msgstr ""
+
+#: ../../about.rst:119
+# 9c6c606883c340a88101911897eb1ac5
+msgid "Add, delete, attach, detach volumes (one or more volumes per VM)"
+msgstr ""
+
+#: ../../about.rst:123
+# 932392fdf2984fe7a875e41f9de7de60
+msgid "Single and multiple secondary storage (SMB)"
+msgstr ""
+
+#: ../../about.rst:127
+# f7cc1aa8312e47ef9e0b9f2046dc6f12
+msgid "Network"
+msgstr ""
+
+#: ../../about.rst:131
+# b13ad43288b34c5398b4fd4904be20dc
+msgid "VLANs (Isolated and Shared)"
+msgstr ""
+
+#: ../../about.rst:135
+# 874f9b3d2c9e4b4f8fb45f9baee22bfe
+msgid "All VR services: DNS, DHCP, SourceNAT, LB, PF, Firewall, StaticNAT, Userdata, and VPN"
+msgstr ""
+
+#: ../../about.rst:140
+# 09421e4ea4d148e68b8d1e37a762586f
+msgid "External device support for both Isolated and Shared networks: Netscaler, SRX, F5"
+msgstr ""
+
+#: ../../about.rst:145
+# d07e8aa630494fa7938a2cf213bd9991
+msgid "Multiple physical networks"
+msgstr ""
+
+#: ../../about.rst:149
+# d100215a6752462ea07718f52c810c16
+msgid "Dedicated IP range, Public VLANs (to account)"
+msgstr ""
+
+#: ../../about.rst:153
+# 0a27b6bb4a754d9e993d9562c77a4ff7
+msgid "Network Offering upgrades and updates"
+msgstr ""
+
+#: ../../about.rst:157
+# 9c4055c13dcd4ca8926e5a28c1b8ab50
+msgid "L4-L7 services in Shared network"
+msgstr ""
+
+#: ../../about.rst:161
+# aa7a95d118364e49979f5adbcb3b0d39
+msgid "Multiple IP ranges and portable IPs"
+msgstr ""
+
+#: ../../about.rst:165
+# 5669e604b4b64897aa6b5ed794b76f5c
+msgid "Host and Storage in maintenance mode"
+msgstr ""
+
+#: ../../about.rst:168
+# fafdc4c1cbd7484b9f05f44fe7260546
+msgid "Unsupported Functionalities on Hyper-V"
+msgstr ""
+
+#: ../../about.rst:172
+# 9126bf9e82bc45e499dc89df7fc0a0f6
+msgid "Affinity an Anti-Affinity Groups"
+msgstr ""
+
+#: ../../about.rst:176
+# 546d2df63ef44bd590e7adcbb31589d7
+msgid "Network throttling"
+msgstr ""
+
+#: ../../about.rst:180
+# 0f4fe83217294fdfb3c4c04617eadef1
+msgid "Security groups (Advanced Zone)"
+msgstr ""
+
+#: ../../about.rst:184
+# 03d2119aa0234ee693ad12ab0d2d118a
+msgid "IPv6"
+msgstr ""
+
+#: ../../about.rst:188
+# d8f2d2b85d76482995ae6d639cc00f3c
+msgid "Snapshot: VM and disk"
+msgstr ""
+
+#: ../../about.rst:192
+# 52ea53b1bd254148bc10e6d3cca67a40
+msgid "PVLAN"
+msgstr ""
+
+#: ../../about.rst:196
+# 7eea4c2b16d94da0bec010bdd4499b75
+msgid "VPC"
+msgstr ""
+
+#: ../../about.rst:200
+# 0ca54967dd9542c2ad230764eec58cb4
+msgid "HA of guest VMs"
+msgstr ""
+
+#: ../../about.rst:204
+# ebfed36bc2b14ce2aaba7818affa537f
+msgid "Redundant VR"
+msgstr ""
+
+#: ../../about.rst:208
+# 18a3cf7e8d6349fab3e8accbd101ea23
+msgid "Object Store"
+msgstr ""
+
+#: ../../about.rst:212
+# 9ec4ba65baa94d5b8771ce1920e78f4e
+msgid "Mixed hypervisor zone"
+msgstr ""
+
+#: ../../about.rst:216
+# 287a5e396359407d97733e009c86b208
+msgid "Zone-wide Primary storage"
+msgstr ""
+
+#: ../../about.rst:220
+# dbebd6f68c114cc98c2feda96bda8339
+msgid "NIC bonding"
+msgstr ""
+
+#: ../../about.rst:223
+# 1219852e8e6d45d29136897552f0a79e
+msgid "Enhanced Upgrade for Virtual Routers"
+msgstr ""
+
+#: ../../about.rst:225
+# b3c22859d0dd4066b256bbe41f847bc4
+msgid "Upgrading VRs is made flexible. The CloudStack administrators will be able to control the sequence of the VR upgrades. The sequencing is based on Infrastructure hierarchy, such as by Cluster, Pod, or Zone, and Administrative hierarchy, such as by Tenant or Domain. This implies, for example, that you will have the flexibility to upgrade a VR in a specified zone. As an administrator, you can also determine when a particular VR can be upgraded within a specified upgrade interval. Additionally, upgrade operation is enhanced to increase the upgrade speed by allowing as many upgrade operations in parallel as possible. During the entire duration of the upgrade, users cannot launch new services or make changes to an existing service."
+msgstr ""
+
+#: ../../about.rst:237
+# 40bdf0a308c2489bb98e96a62d75e548
+msgid "To support this feature, a new API, upgradeRouterTemplate, has been introduced."
+msgstr ""
+
+#: ../../about.rst:240
+# d37f3bc214424defab5f024e87d6f9e9
+msgid "The detailed instruction is provided in the CloudStack 4.3 Administration Guide. See section 17.5.5. Enhanced Upgrade for Virtual Routers."
+msgstr ""
+
+#: ../../about.rst:244
+# 1978f680828e42a6a20bf3259d22a92e
+msgid "Service Monitoring Tool for Virtual Router"
+msgstr ""
+
+#: ../../about.rst:246
+# a4902af1b3fd4bb0ab166c3d3f9feeb1
+msgid "Various services running on the CloudStack virtual routers can be monitored by using a Service Monitoring tool. The tool ensures that services are successfully running until CloudStack deliberately disables them. If a service goes down, the tool automatically performs a restart, and if that does not help bringing up the service, an alert as well as an event is generated indicating the failure."
+msgstr ""
+
+#: ../../about.rst:253
+# 667326bf4c7f4e58865496ef24d6f564
+msgid "The following services are monitored in a VR:"
+msgstr ""
+
+#: ../../about.rst:257
+# 024d834f741b41bebab0bdcecdf5d5e1
+msgid "DNS"
+msgstr ""
+
+#: ../../about.rst:261
+# ff61c6894d1f44528fb0cfaee5973892
+msgid "HA Proxy"
+msgstr ""
+
+#: ../../about.rst:265
+# 7292e272f40f42efa8b4a31dd617fcc4
+msgid "SSH"
+msgstr ""
+
+#: ../../about.rst:269
+# f8d9969dc6d543c4806e00250dcdc745
+msgid "Apache Web Server"
+msgstr ""
+
+#: ../../about.rst:271
+# 2dcd9edec1a04f5d879c7a2b5356f1df
+msgid "Only the services with daemons are monitored."
+msgstr ""
+
+#: ../../about.rst:273
+# 8e45915127fd4804a98e10f181e8c8c3
+msgid "The following networks are supported:"
+msgstr ""
+
+#: ../../about.rst:277
+# 85dab6977a0742da917c0892ea590cf9
+msgid "Isolated Networks"
+msgstr ""
+
+#: ../../about.rst:281
+# f171266ce0c248d2910f9f10eaab6565
+msgid "Shared Networks in both Advanced and Basic zone"
+msgstr ""
+
+#: ../../about.rst:283
+# c6bc2910647143b29bce7ea3161423c1
+msgid "This feature is supported on the following hypervisors: XenServer, VMware, and KVM."
+msgstr ""
+
+#: ../../about.rst:286
+# aeaf1c1efba14b47ab9c6dd048ac9991
+msgid "The detailed instruction is provided in the CloudStack 4.3 Administration Guide. See section 17.5.4. Service Monitoring Tool for Virtual Router."
+msgstr ""
+
+#: ../../about.rst:290
+# e765090bf54a460ca6a394879a4846dd
+msgid "Custom Compute Offering"
+msgstr ""
+
+#: ../../about.rst:292
+# c58cbd0661224b5aaba9862a0f2aa92d
+msgid "CloudStack provides you the flexibility to specify the desired values for the number of CPU, CPU speed, and memory while deploying a VM. The admin creates a Compute Offering by marking it as custom, and as an user, you will be able to customize this dynamic Compute Offering by specifying the memory, CPU and root disk at the time of VM creation or upgrade."
+msgstr ""
+
+#: ../../about.rst:299
+# 3fddca4fb9da49ad86402020e89a2f67
+msgid "Custom Compute Offering is same as the normal Compute Offering except that the values of the dynamic parameters will be set to zeros in the given set of templates. Use this offering to deploy VM by specifying custom values for the dynamic parameters. Memory, CPU and number of CPUs are considered as dynamic parameters. Dynamic Compute Offerings can be used in following cases: deploying a VM, changing the compute offering of a stopped VM and running VMs, which is nothing but scaling up. To support this feature a new field, Custom, has been added to the Create Compute Offering page. If the Custom field is checked, the end-user will be able to create a custom Compute Offering by filling in the desired values for number of CPU, CPU speed, and memory."
+msgstr ""
+
+#: ../../about.rst:312
+# c45fbc9d5812419d8e5659b31d9a3701
+msgid "Remote Access VPN for VPC"
+msgstr ""
+
+#: ../../about.rst:314
+# 3a53541d7f42456aaa3fbf0e9f0d580b
+msgid "Support for Remote access VPN in Isolated networks is now extended to VPC networks. Remote users will now be able to initiate a VPN connection to a VPC network. To enable this feature, enable VPN in the Source NAT IP of the VPC."
+msgstr ""
+
+#: ../../about.rst:320
+# 951c3222d442439fb978cd6154b138f1
+msgid "Site to Site VPN Connection Between VPC Networks"
+msgstr ""
+
+#: ../../about.rst:322
+# 6a62ba77cd734a75b07d944e8a858de2
+msgid "CloudStack provides you with the ability to establish a site-to-site VPN connection between CloudStack virtual routers. With this functionality, users can deploy applications in multiple Availability Zones or VPCs, which can communicate with each other by using a secure Site-to-Site VPN Tunnel. Creating a typical Site to Site VPN connection between VPC networks involves the following:"
+msgstr ""
+
+#: ../../about.rst:331
+# 32395b38487f4fb1af795d6cac8d420a
+msgid "Create two VPCs. For example, VPC A and VPC B."
+msgstr ""
+
+#: ../../about.rst:335
+# 6c1e1dbd31244723b14cd116e34cffbb
+msgid "Create VPN gateways on both the VPCs you created."
+msgstr ""
+
+#: ../../about.rst:339
+# 29cbe5a50cf245608e0cec45c87e90f9
+msgid "Create VPN customer gateway for both the VPCs."
+msgstr ""
+
+#: ../../about.rst:343
+# 6a8a8359c0974163b9dd4016bfee540e
+msgid "Enable a VPN connection on VPC A in passive mode."
+msgstr ""
+
+#: ../../about.rst:345
+# 4615ac14561345f1943cce5fdd745216
+msgid "Ensure that the customer gateway is pointed to VPC B. The VPN connection is shown in the Disconnected state."
+msgstr ""
+
+#: ../../about.rst:350
+# ac948a0813e74cefbba1495ce1d94a01
+msgid "Enable a VPN connection on VPC B."
+msgstr ""
+
+#: ../../about.rst:352
+# cc7322058e944ab2b238719fbd79390a
+msgid "Ensure that the customer gateway is pointed to VPC A. Because virtual router of VPC A, in this case, is in passive mode and is waiting for the virtual router of VPC B to initiate the connection. The virtual router of VPC B should not be in passive mode."
+msgstr ""
+
+#: ../../about.rst:357
+# 92ba5b7586c349e6b946c1d46be6fb2d
+msgid "The VPN connection is shown in the Disconnected state."
+msgstr ""
+
+#: ../../about.rst:359
+# 1fa6614237044be1b758972b7f138f61
+msgid "Creating VPN connection on both the VPCs initiates a VPN connection. Wait for few seconds. The default is 30 seconds for both the VPN connections to show the Connected state."
+msgstr ""
+
+#: ../../about.rst:364
+# 7f80e1e445fc4471be85c99f9a63fae1
+msgid "Reporting CPU Sockets"
+msgstr ""
+
+#: ../../about.rst:366
+# 8cdc324e21274d65bb9c00645c27eedc
+msgid "CloudStack now provides an additional infrastructure statistics for CPU sockets managed by CloudStack, which in turn reflects the size of the cloud. The Infrastructure tab has a new tab for sockets. The Socket page will give you the number of hosts an sockets used for each hypervisor type. This feature is not supported in versions prior to XenServer 6.2."
+msgstr ""
+
+#: ../../about.rst:373
+# 3b300053085f4c51865c61cee31b9c86
+msgid "Database High Availability"
+msgstr ""
+
+#: ../../about.rst:375
+# 2d55be3748744201aecff258124d7a84
+msgid "To help ensure high availability of the databases that store the internal data for CloudStack, you can set up database replication. This covers both the main CloudStack database and the Usage database. Replication is achieved using the MySQL connector parameters and two-way replication. Tested with MySQL 5.1 and 5.5. Database replication in CloudStack is provided using the MySQL replication capabilities. The steps to set up replication can be found in the MySQL documentation."
+msgstr ""
+
+#: ../../about.rst:384
+# ff5e8279823b47249d289b0f66b569c6
+msgid "LDAP User Provisioning"
+msgstr ""
+
+#: ../../about.rst:386
+# 3ce8e3c638fe4a5da87bf86da7c0eb78
+msgid "LDAP user provisioning has been enhanced by allowing user import from the configured LDAP servers. You will be able to add multiple LDAP servers and selectively import LDAP users. You can o filter by group name and import all the users within a group. After they have been imported to CloudStack, in contrast to manually adding them in previous releases, users are allowed to directly log in to CloudStack by using the LDAP credentials."
+msgstr ""
+
+#: ../../about.rst:395
+# 3536819d2546433fb18b893f551a10c9
+msgid "Migrating NFS Secondary Storage to Object Store"
+msgstr ""
+
+#: ../../about.rst:397
+# b6682b07f6e948b499fdd7d6fe164d92
+msgid "In an existing zone that is using NFS for secondary storage, you can upgrade the zone to use a region-wide object storage without causing downtime. The existing NFS storage in the zone will be converted to an NFS Staging Store. After migration, the data that was on the NFS storage remains there. CloudStack does not provide a way to automatically migrate all data to the new object storage. The data remaining on the old NFS storage will remain accessible for read and delete operations only. Newly created snapshots and templates will be placed in the newly configured object storage."
+msgstr ""
+
+#: ../../about.rst:408
+# e2059568a2df4bd5823a5b7f17d09451
+msgid "VXLAN Plugin Support"
+msgstr ""
+
+#: ../../about.rst:410
+# 1e4361812f7d4a5aa2ac245baace915f
+msgid "The VXLAN plugin adds VXLAN as one of the guest network isolation methods in CloudStack. This plugin enables more than 4096 isolated guest networks in a Zone, with almost the same usability as VLAN isolation. This plugin provides no network services. Use virtual router for network services. This plugin is supported on KVM hypervisors."
+msgstr ""
+
+#: ../../about.rst:417
+# d5b76aea4bbb47b38bdd2659da294eed
+msgid "Contrail Network Plugin Support"
+msgstr ""
+
+#: ../../about.rst:419
+# d6f33ea8933841f98efa3b797425049e
+msgid "The Contrail virtual network controller is an open source project that provides an overlay implementation of network virtualization that is interoperable with network devices that support existing network virtualization standards. Support for the Contrail plugin has been added to CloudStack to provide NAT services to the XenServer hosts. The plugin supports isolated networks, Static NAT implemented by the VRouter dataplane, and Source NAT implemented by using a virtual appliance with full NAT functionality."
+msgstr ""
+
+#: ../../about.rst:429
+# 3f923c411f0246ddb382b9bb3b20fb63
+msgid "Publishing Alert Using the Web ROOT Admin API"
+msgstr ""
+
+#: ../../about.rst:431
+# 3866fb1f0a18405198edcc6ab7bf458f
+msgid "In previous releases of CloudStack code alerts are generated for CloudStack services (Usage service) only if they run on the same host as the Management Server. A new API has been introduced in 4.3, which can be used by the following services to generate and publish. The services need not be running on the same host where the Management Server is running."
+msgstr ""
+
+#: ../../about.rst:440
+# 8410cc0152774785aa48177c60589ab7
+msgid "Any new services added to CloudStack."
+msgstr ""
+
+#: ../../about.rst:444
+# 2aac9dee470c48fcb30e45594d822e46
+msgid "Usage service when run on a separate storage host."
+msgstr ""
+
+#: ../../about.rst:448
+# 8301f6de87114eed8372e75dc7d59c01
+msgid "Console Proxy and Secondary Storage VM services."
+msgstr ""
+
+#: ../../about.rst:450
+# 20d5528dcc9a40ba86ec266cc41fe9dd
+msgid "The main advantage of this feature is that the third party systems integrating with CloudStack will be able to utilize the Alert notification system publish alerts."
+msgstr ""
+
+#: ../../about.rst:455
+# 7219cbc180f64a2b84a6532d69e2c13f
+msgid "Support for Palo Alto Firewall Service"
+msgstr ""
+
+#: ../../about.rst:457
+# d8a2ab915328485b9e95aed7718895a4
+msgid "CloudStack supports Palo Alto firewall services. Use the Create Network Offering dialog to create an offering which has the Palo Alto firewall services. What is not supported and not supported are given below:"
+msgstr ""
+
+#: ../../about.rst:462
+# 5ab19452ad294aa0806ad47fa2098aa5
+msgid "Supported Functionalities"
+msgstr ""
+
+#: ../../about.rst:466
+# 645c0421480840e9b6980b1f944f8795
+msgid "Advanced Network"
+msgstr ""
+
+#: ../../about.rst:470
+# c934ca9385b04727a43ab39071588b72
+msgid "Parallel deployment with hardware Load balancer"
+msgstr ""
+
+#: ../../about.rst:474
+# 6447c3aa0d3143a7b4a3891d0f352ef5
+msgid "Virtual Palo Alto firewall."
+msgstr ""
+
+#: ../../about.rst:478
+# c63825cf282044879a8196691680be29
+msgid "Communication layer with Palo Alto APIs."
+msgstr ""
+
+#: ../../about.rst:482
+# 8d42e63976974e58b7f330f3578a2aef
+msgid "Mapping of CloudStack APIs to corresponding Palo Alto APIs."
+msgstr ""
+
+#: ../../about.rst:486
+# 37177f839d2741ef96c21c7f4767ac31
+msgid "Connectivity status of the firewall service on the CloudStack UI."
+msgstr ""
+
+#: ../../about.rst:489
+# 9e019a8a7e544690a3ee5874ec53f2e4
+msgid "Unsupported Functionalities"
+msgstr ""
+
+#: ../../about.rst:493
+# dfc850c506da4331992314cc0926b8c2
+msgid "Inline deployment with hardware Load balancer"
+msgstr ""
+
+#: ../../about.rst:497
+# decfb6946f324fe6b1594ba57d060e25
+msgid "Firewall between VLANs within an advanced network"
+msgstr ""
+
+#: ../../about.rst:501
+# 2c9f38f5cbe243208141b854a0892bee
+msgid "Firewall between VM instances"
+msgstr ""
+
+#: ../../about.rst:503
+# 289436a898b443cda15f4015c790ce78
+msgid "For more information, see `Palo Alto Firewall Integration <https://cwiki.apache.org/confluence/display/CLOUDSTACK/Palo+Alto+Firewall+Integration>`__."
+msgstr ""
+
+#: ../../about.rst:507
+# 677b559b98014a0ca9160b277b871fd9
+msgid "Root Volume Metering"
+msgstr ""
+
+#: ../../about.rst:509
+# b0a9b0c2ced04a849783e40601c1c455
+msgid "CloudStack supports recording usage events as per the dynamically assigned resources. Usage events are registered when a VM is created from dynamic service offering, and the values of parameters, such as CPU, speed, RAM are recorded. If VM is deployed by using template and dynamic root disk size is mentioned, the same value is recorded in the usage event."
+msgstr ""
+
+#: ../../about.rst:517
+# c50214ba81b249a595f65e7546f35f8c
+msgid "Support for SSL Termination"
+msgstr ""
+
+#: ../../about.rst:519
+# 7671dd6babb446dca44a477d3e09f8f5
+msgid "SSL Offloading allows load balancers to handle encryption and decryption of HTTP(s) traffic giving plain text HTTP to the back end servers freeing them from the resource intensive task of handling encryption and decryption. Supported for Citrix NetScaler."
+msgstr ""
+
+#: ../../about.rst:525
+# a657b31bba0d477381342a4169e672a8
+msgid "Support for Pluggable VM Snapshots"
+msgstr ""
+
+#: ../../about.rst:527
+# 97c95ed5aa4648bab662e6f3a68ca4c7
+msgid "CloudStack implements a plugin to integrate a third-party storage provider. Third party storage providers can integrate with CloudStack to provide either primary storage or secondary storage. The user enables a storage plugin through the UI. A new dialog box choice is offered to select the storage provider. Depending on which provider is selected, additional input fields may appear so that the user can provide the additional details required by that provider, such as a user name and password for a third-party storage account."
+msgstr ""
+
+#: ../../about.rst:537
+# 613dd9e315124de1873cca35dd5d16b9
+msgid "Enhanced CloudStack UI"
+msgstr ""
+
+#: ../../about.rst:539
+# e96027034f66405aa2305070f44d66e7
+msgid "A complete UI makeover is implemented to enhance the usability and user experience in modern browsers. The visual look-and-feel has been changed for the Header, Navigation, Buttons, text fields, drop-downs, tables and so on. Consistent color themes has been introduced to match with the Apache branding."
+msgstr ""
+
+#: ../../about.rst:545
+# 0c948052a4214991b7464682f517292d
+msgid "The current UI flow remains the same."
+msgstr ""
+
+#: ../../about.rst:548
+# 079640b7b7b64cd39436ad9200c35f48
+msgid "Depreciation of realhostip.com DNS and SSL certificate"
+msgstr ""
+
+#: ../../about.rst:549
+# a04ae7e6daff4b42a2724df6a1b224d8
+msgid "The realhostip.com dynamic DNS resolution service is being retired this summer. In advance of that, CloudStack 4.3 no longer uses realhostip.com DNS domains or SSL certificates to encrypt Console Proxy or file copy communications."
+msgstr ""
+
+#: ../../about.rst:555
+# 1ab3e4e99a8342078cde95b5a5edba35
+msgid "Issues Fixed in 4.3.0"
+msgstr ""
+
+#: ../../about.rst:557
+#: ../../about.rst:732
+# 952dc9ec1db44f2d83a142ae895eb79b
+# b659d6162a3e49bfab48e1304597c5c1
+msgid "Apache CloudStack uses `Jira <https://issues.apache.org/jira/browse/CLOUDSTACK>`__ to track its issues. All new features and bugs for 4.3 have been tracked in Jira, and have a standard naming convention of \"CLOUDSTACK-NNNN\" where \"NNNN\" is the issue number."
+msgstr ""
+
+#: ../../about.rst:560
+# e477344cc35049a28eb3809f6f6b4a70
+msgid "For the list of issues fixed, see `Issues Fixed in 4.3 <https://issues.apache.org/jira/issues/?filter=12326161>`__."
+msgstr ""
+
+#: ../../about.rst:564
+#: ../../about.rst:739
+# 19c393aa43644c4490205799f532afe1
+# f19ac9d2986d450c8fef7d562c66ca50
+msgid "Bug ID"
+msgstr ""
+
+#: ../../about.rst:564
+#: ../../about.rst:739
+# 24a0954d4ea547449bdcfd807a54c2c7
+# cddb8801a6e64717b905df373c4dde4d
+msgid "Description"
+msgstr ""
+
+#: ../../about.rst:566
+# a43fa93540ee49e28a672d3f5bcc387a
+msgid "`CLOUDSTACK-6103 <https://issues.apache.org/jira/browse/CLOUDSTACK-6103>`_"
+msgstr ""
+
+#: ../../about.rst:566
+# 172a3e260cc043038020f4dceb7d5a0c
+msgid "vms with isos attached don't migrate..."
+msgstr ""
+
+#: ../../about.rst:567
+# aad0e8086ae546b8a875996d93b928c5
+msgid "`CLOUDSTACK-6089 <https://issues.apache.org/jira/browse/CLOUDSTACK-6089>`_"
+msgstr ""
+
+#: ../../about.rst:567
+# 4ff487a8cd9f41688c7249ebc52abe3b
+msgid "resource tags show up in multiples..."
+msgstr ""
+
+#: ../../about.rst:568
+# 92e3feccfc9f4657bdecbd3b99b54d45
+msgid "`CLOUDSTACK-6046 <https://issues.apache.org/jira/browse/CLOUDSTACK-6046>`_"
+msgstr ""
+
+#: ../../about.rst:568
+# e137bb96bac543349f0016165abe9bc3
+msgid "CreateVolume from snapshot is failing with S3 as secondary storage and zone-wide..."
+msgstr ""
+
+#: ../../about.rst:569
+# 27d6b9e3aab54128a4f0aad5c984f3b0
+msgid "`CLOUDSTACK-6040 <https://issues.apache.org/jira/browse/CLOUDSTACK-6040>`_"
+msgstr ""
+
+#: ../../about.rst:569
+# cccd886a01824191afea0e7730507e27
+msgid "Failed to configure PF on vm secondary ip for shared network..."
+msgstr ""
+
+#: ../../about.rst:570
+# 85eb969880864b4d9cef31eb992935c3
+msgid "`CLOUDSTACK-6007 <https://issues.apache.org/jira/browse/CLOUDSTACK-6007>`_"
+msgstr ""
+
+#: ../../about.rst:570
+# f613c25ec8e34d1a9eaad46ce27933e8
+msgid "[VMware] RestoreVM API fails with NPE..."
+msgstr ""
+
+#: ../../about.rst:571
+# fd7f4037eceb48d2b0b81c6513e3208b
+msgid "`CLOUDSTACK-5986 <https://issues.apache.org/jira/browse/CLOUDSTACK-5986>`_"
+msgstr ""
+
+#: ../../about.rst:571
+# f6112b6f33c74c498637f7599dacd888
+msgid "dnsmasq racy condition result in dnsmasq failed to handout IP address..."
+msgstr ""
+
+#: ../../about.rst:572
+# 848d35efab59400d907ff4c154ad7db3
+msgid "`CLOUDSTACK-5971 <https://issues.apache.org/jira/browse/CLOUDSTACK-5971>`_"
+msgstr ""
+
+#: ../../about.rst:572
+# 9165b730c684401bb0d160785380a8e9
+msgid "Templates created from a snapshots can't be copied to other zones..."
+msgstr ""
+
+#: ../../about.rst:573
+# 2fd9b8e5e39e4420a4c49090c6000892
+msgid "`CLOUDSTACK-5960 <https://issues.apache.org/jira/browse/CLOUDSTACK-5960>`_"
+msgstr ""
+
+#: ../../about.rst:573
+# af22070e3f9a4fd38055612952644a67
+msgid "Domain admin or user cannot register a template using S3/Swift object store..."
+msgstr ""
+
+#: ../../about.rst:574
+# 8397aeab15e044a8b1b6c72c46f83c25
+msgid "`CLOUDSTACK-5922 <https://issues.apache.org/jira/browse/CLOUDSTACK-5922>`_"
+msgstr ""
+
+#: ../../about.rst:574
+# 930ae632e9514c60bed68a9d53ea1ffb
+msgid "Incorrect handling RHEL guests ..."
+msgstr ""
+
+#: ../../about.rst:575
+# ee730af6c476432cb966506d5a88c89e
+msgid "`CLOUDSTACK-5921 <https://issues.apache.org/jira/browse/CLOUDSTACK-5921>`_"
+msgstr ""
+
+#: ../../about.rst:575
+# dee97e2e870f433096e88d01b05c8e62
+msgid "S3 security key is stored in DB unencrypted..."
+msgstr ""
+
+#: ../../about.rst:576
+# 93ad54e6b1d44a3ab0ccdb3cdff12008
+msgid "`CLOUDSTACK-5903 <https://issues.apache.org/jira/browse/CLOUDSTACK-5903>`_"
+msgstr ""
+
+#: ../../about.rst:576
+# e7ba5c879e744a6ba1d69aabc6a24b64
+msgid "CLONE - OVA files exist for templates created from volumes..."
+msgstr ""
+
+#: ../../about.rst:577
+# c5fe040ebfea4cc3b072eec9b743d6de
+msgid "`CLOUDSTACK-5895 <https://issues.apache.org/jira/browse/CLOUDSTACK-5895>`_"
+msgstr ""
+
+#: ../../about.rst:577
+# 7a316a57ea2e41babc33969f4bfc7b5f
+msgid "CreateVolumeFromSnapshot can fail in a multiple pod environment with tagged stor..."
+msgstr ""
+
+#: ../../about.rst:578
+# 9ebb40a97a2d4b458e1c47b982d14802
+msgid "`CLOUDSTACK-5886 <https://issues.apache.org/jira/browse/CLOUDSTACK-5886>`_"
+msgstr ""
+
+#: ../../about.rst:578
+# 728849191fa0442ba1e79ecf2cba0e10
+msgid "4.2.1 upgrade fails on acl migration..."
+msgstr ""
+
+#: ../../about.rst:579
+# 0e2dfb62b791451eb9ef455be4556257
+msgid "`CLOUDSTACK-5877 <https://issues.apache.org/jira/browse/CLOUDSTACK-5877>`_"
+msgstr ""
+
+#: ../../about.rst:579
+# 3941c0f94cf54e16b4b88c9b584450ab
+msgid "listTemplates does not sort based on sort_key..."
+msgstr ""
+
+#: ../../about.rst:580
+# 596cb956d35b42b2b11fb2445190a0f6
+msgid "`CLOUDSTACK-5875 <https://issues.apache.org/jira/browse/CLOUDSTACK-5875>`_"
+msgstr ""
+
+#: ../../about.rst:580
+# 9afc247c85e64b7bb689a6944739c737
+msgid "No templates in simulator run..."
+msgstr ""
+
+#: ../../about.rst:581
+# 8a070062759545ac924e81915e5c2fb6
+msgid "`CLOUDSTACK-5864 <https://issues.apache.org/jira/browse/CLOUDSTACK-5864>`_"
+msgstr ""
+
+#: ../../about.rst:581
+# 1daa9aac7b264d57ad7801634f30e516
+msgid "Simulator profile broken ..."
+msgstr ""
+
+#: ../../about.rst:582
+# fab087d4848847879dbc1a09b3a65350
+msgid "`CLOUDSTACK-5813 <https://issues.apache.org/jira/browse/CLOUDSTACK-5813>`_"
+msgstr ""
+
+#: ../../about.rst:582
+# 84929748e059490d91860839cbf5f368
+msgid "With S3 as secondary storage, snapshot taken in one zone cannot be used to creat..."
+msgstr ""
+
+#: ../../about.rst:583
+# 873ec58c448c4bc2b3576ecbfe08fe91
+msgid "`CLOUDSTACK-5723 <https://issues.apache.org/jira/browse/CLOUDSTACK-5723>`_"
+msgstr ""
+
+#: ../../about.rst:583
+# f4ab3c42228f469893405062f75837e7
+msgid "Malfunction agent may block future SSL connection to the server..."
+msgstr ""
+
+#: ../../about.rst:584
+# c7ba7e92feec492b96e76195ecee04d0
+msgid "`CLOUDSTACK-5704 <https://issues.apache.org/jira/browse/CLOUDSTACK-5704>`_"
+msgstr ""
+
+#: ../../about.rst:584
+# 0fd950ccfcf148d781d426eb7f99bde9
+msgid "OVA files exist for templates created from volumes..."
+msgstr ""
+
+#: ../../about.rst:585
+# eddc8a46975945a38c1801c2e9ab0078
+msgid "`CLOUDSTACK-5701 <https://issues.apache.org/jira/browse/CLOUDSTACK-5701>`_"
+msgstr ""
+
+#: ../../about.rst:585
+# e54362e110fe41b385fe444e37aa537a
+msgid "size column is not getting updated in snapshot_store_ref table...."
+msgstr ""
+
+#: ../../about.rst:586
+# 0cd9023c1b8a4681b3b70500efaaa55f
+msgid "`CLOUDSTACK-5666 <https://issues.apache.org/jira/browse/CLOUDSTACK-5666>`_"
+msgstr ""
+
+#: ../../about.rst:586
+# dd77df5602ab47a9a24ef7c717bf9d85
+msgid "Cant remove a nic when a vm is in the Stopped state ..."
+msgstr ""
+
+#: ../../about.rst:587
+# 32a8651ac0b340f7855db6d56a5ccee8
+msgid "`CLOUDSTACK-5661 <https://issues.apache.org/jira/browse/CLOUDSTACK-5661>`_"
+msgstr ""
+
+#: ../../about.rst:587
+# 06b0a669cac447b5863820f66808bb7d
+msgid "[VMware] DetachIsoCmd succeeds even though cdrom is locked by VM as cdrom is mou..."
+msgstr ""
+
+#: ../../about.rst:588
+# a7a0c5068a634d4c915bb24cded1c94e
+msgid "`CLOUDSTACK-5653 <https://issues.apache.org/jira/browse/CLOUDSTACK-5653>`_"
+msgstr ""
+
+#: ../../about.rst:588
+# e6dff212b59a48faa951040a6712829e
+msgid "S3 object store as Secondary Storage, the template created from different zone i..."
+msgstr ""
+
+#: ../../about.rst:589
+# 8ed057a05d0b4840b00ce1e2bb4cbc15
+msgid "`CLOUDSTACK-5613 <https://issues.apache.org/jira/browse/CLOUDSTACK-5613>`_"
+msgstr ""
+
+#: ../../about.rst:589
+# 91c47fd5727f4964b9c2ed0a04c103db
+msgid "CloudStack 4.2.0 - Usage server is running but tables remain empty..."
+msgstr ""
+
+#: ../../about.rst:590
+# b110177bebcd4addb8b09bc5c3bd76b6
+msgid "`CLOUDSTACK-5608 <https://issues.apache.org/jira/browse/CLOUDSTACK-5608>`_"
+msgstr ""
+
+#: ../../about.rst:590
+# ebdfe4750fee42c0915b3990ec49c4f7
+msgid "HyperV Builtin and System vm template entries missing in 4.3 upgrade setup..."
+msgstr ""
+
+#: ../../about.rst:591
+# 409d294a556c4d4bb401a5df0493e0ef
+msgid "`CLOUDSTACK-5534 <https://issues.apache.org/jira/browse/CLOUDSTACK-5534>`_"
+msgstr ""
+
+#: ../../about.rst:591
+# 60a31acf9894466995a20b662749ed46
+msgid "MySQL exception raised when searching for users with keyword..."
+msgstr ""
+
+#: ../../about.rst:592
+# 71047f1716d3425696c0b255eca912b8
+msgid "`CLOUDSTACK-5533 <https://issues.apache.org/jira/browse/CLOUDSTACK-5533>`_"
+msgstr ""
+
+#: ../../about.rst:592
+# e3ccfbc9c09449819b1141a9078951d7
+msgid "Virtual router in shared network does respond to DNS even when no DNS service is..."
+msgstr ""
+
+#: ../../about.rst:593
+# b01fb15aaba740058f3a7d9552395cb0
+msgid "`CLOUDSTACK-5532 <https://issues.apache.org/jira/browse/CLOUDSTACK-5532>`_"
+msgstr ""
+
+#: ../../about.rst:593
+# 13eebd1cd2d14980a7f9f4135a355027
+msgid "Long tag values are not readable within the UI..."
+msgstr ""
+
+#: ../../about.rst:594
+# 0a3611c289324c9d9977b5e331ecd62c
+msgid "`CLOUDSTACK-5519 <https://issues.apache.org/jira/browse/CLOUDSTACK-5519>`_"
+msgstr ""
+
+#: ../../about.rst:594
+# ff5c9f0f0d034143be802c76448ed125
+msgid "[VMWARE] Cancel vCenter tasks if the task invoked by CloudStack failes with time..."
+msgstr ""
+
+#: ../../about.rst:595
+# 4e5be5d95e474f3d9fe576232e89d9c4
+msgid "`CLOUDSTACK-5517 <https://issues.apache.org/jira/browse/CLOUDSTACK-5517>`_"
+msgstr ""
+
+#: ../../about.rst:595
+# e5b76e0e3f6f457d8c70d29198fd3108
+msgid "NPE observed during \"release portable IPs\" as part of account cleanup..."
+msgstr ""
+
+#: ../../about.rst:596
+# 3f1c335388784560bc5ed7d7c9a8f281
+msgid "`CLOUDSTACK-5514 <https://issues.apache.org/jira/browse/CLOUDSTACK-5514>`_"
+msgstr ""
+
+#: ../../about.rst:596
+# ccffa519c73c42a79caf211baf574b29
+msgid "Response of listAccounts API call includes removed users..."
+msgstr ""
+
+#: ../../about.rst:597
+# d105f33710e9422d85cd8764e79f49cd
+msgid "`CLOUDSTACK-5513 <https://issues.apache.org/jira/browse/CLOUDSTACK-5513>`_"
+msgstr ""
+
+#: ../../about.rst:597
+# 585199f3e2194cf7ba8a1888d15a786f
+msgid "VM can't start after creating snapshot from it (CS4.2 + VMware 5.1)..."
+msgstr ""
+
+#: ../../about.rst:598
+# beb21f35d213432cb471c4e2fe8bd524
+msgid "`CLOUDSTACK-5481 <https://issues.apache.org/jira/browse/CLOUDSTACK-5481>`_"
+msgstr ""
+
+#: ../../about.rst:598
+# d7f6cbe2070b49078c83beb74e462183
+msgid "Regular User is unable to use \"Add Isolated Network\" Button on the UI..."
+msgstr ""
+
+#: ../../about.rst:599
+# aef0f1b14c53491da7b807dc7144fe0c
+msgid "`CLOUDSTACK-5466 <https://issues.apache.org/jira/browse/CLOUDSTACK-5466>`_"
+msgstr ""
+
+#: ../../about.rst:599
+# 94b636446b3747a784cfe9532d4d300f
+msgid "removeIpFromNic not working properly..."
+msgstr ""
+
+#: ../../about.rst:600
+# 958fa48f21c04a51855c5d0659cf1190
+msgid "`CLOUDSTACK-5453 <https://issues.apache.org/jira/browse/CLOUDSTACK-5453>`_"
+msgstr ""
+
+#: ../../about.rst:600
+# 1c76166e9b6543dca3fbf26468a1187b
+msgid "Site-to-site VPN connection status monitoring is broken in KVM..."
+msgstr ""
+
+#: ../../about.rst:601
+# 8cd304a426924ea7a8aa03637330f80a
+msgid "`CLOUDSTACK-5431 <https://issues.apache.org/jira/browse/CLOUDSTACK-5431>`_"
+msgstr ""
+
+#: ../../about.rst:601
+# 9d5df4e7abbb4e13a2b04d683139fc85
+msgid "permit 'http' as service type for GSLB rule..."
+msgstr ""
+
+#: ../../about.rst:602
+# 164e76cd04014c1dac9d0656fe55333c
+msgid "`CLOUDSTACK-5428 <https://issues.apache.org/jira/browse/CLOUDSTACK-5428>`_"
+msgstr ""
+
+#: ../../about.rst:602
+# b26407e9f7904625a9358bc18cf908b0
+msgid "support NetScaler to be configured exclusively for GSLB service and not used for..."
+msgstr ""
+
+#: ../../about.rst:603
+# e855f3e23fce4ca2be395b8c7483f375
+msgid "`CLOUDSTACK-5426 <https://issues.apache.org/jira/browse/CLOUDSTACK-5426>`_"
+msgstr ""
+
+#: ../../about.rst:603
+# 5cbdc97a57a64da29bdd377ebb7923e6
+msgid "Cannot deploy instance having multiple volumes that use different storage tags f..."
+msgstr ""
+
+#: ../../about.rst:604
+# 6eb9a9c3ebfa4afbb9ee54872b06cbd4
+msgid "`CLOUDSTACK-5422 <https://issues.apache.org/jira/browse/CLOUDSTACK-5422>`_"
+msgstr ""
+
+#: ../../about.rst:604
+# 86740bf59c384d9da4395fc768d6fa75
+msgid "Changing  XenServer Tools Version 6.1 + doesnt work ..."
+msgstr ""
+
+#: ../../about.rst:605
+# 9a28c24991924f808b75427dd664ef99
+msgid "`CLOUDSTACK-5417 <https://issues.apache.org/jira/browse/CLOUDSTACK-5417>`_"
+msgstr ""
+
+#: ../../about.rst:605
+# 47e1a9eafa9d44cdae779b6658bb1e48
+msgid "On network restart for external devices egress rules configured with old CIDR..."
+msgstr ""
+
+#: ../../about.rst:606
+# 40c7825d2c1348cd9d0d7b39746a08e9
+msgid "`CLOUDSTACK-5416 <https://issues.apache.org/jira/browse/CLOUDSTACK-5416>`_"
+msgstr ""
+
+#: ../../about.rst:606
+# 64c9bb755c454b8fa55863203ca25b0d
+msgid "[VMware] Not able to add seventh disk to VM in an upgraded setup..."
+msgstr ""
+
+#: ../../about.rst:607
+# a6c82beb23e84bb0990e58c667423fcd
+msgid "`CLOUDSTACK-5404 <https://issues.apache.org/jira/browse/CLOUDSTACK-5404>`_"
+msgstr ""
+
+#: ../../about.rst:607
+# 0dc8297ef30b4defbd669083e14e83e0
+msgid "Network usages (bytes sent/received) are saved in the wrong timezone..."
+msgstr ""
+
+#: ../../about.rst:608
+# 1c1abad42a6248609d07bca0db8e973e
+msgid "`CLOUDSTACK-5401 <https://issues.apache.org/jira/browse/CLOUDSTACK-5401>`_"
+msgstr ""
+
+#: ../../about.rst:608
+# c156cd7b21e640c4860bf028420d26c5
+msgid "VM migration during host maintenance fails if pool.storage.capacity.disablethres..."
+msgstr ""
+
+#: ../../about.rst:609
+# 74df6416b8d24e18bf0e42f285ddbcad
+msgid "`CLOUDSTACK-5391 <https://issues.apache.org/jira/browse/CLOUDSTACK-5391>`_"
+msgstr ""
+
+#: ../../about.rst:609
+# c6136e978f5343dbaeb51262df64c7f8
+msgid "Change service offering of a stopped vm and then starting it should check host c..."
+msgstr ""
+
+#: ../../about.rst:610
+# 160fa3d6876b4b67866b179389f08144
+msgid "`CLOUDSTACK-5355 <https://issues.apache.org/jira/browse/CLOUDSTACK-5355>`_"
+msgstr ""
+
+#: ../../about.rst:610
+# 3892afea22cf432ab5251b6111d9ccce
+msgid "addImageStore should not log password in clear text in the log..."
+msgstr ""
+
+#: ../../about.rst:611
+# fec037aa605441058b452eae5f75c02d
+msgid "`CLOUDSTACK-5354 <https://issues.apache.org/jira/browse/CLOUDSTACK-5354>`_"
+msgstr ""
+
+#: ../../about.rst:611
+# f79bf3459deb495292ce27588f86b9b3
+msgid "CLONE - UI - normal users are not allowed to edit their own iso..."
+msgstr ""
+
+#: ../../about.rst:612
+# bcd983fb1b99452f8f416b46290de8cb
+msgid "`CLOUDSTACK-5352 <https://issues.apache.org/jira/browse/CLOUDSTACK-5352>`_"
+msgstr ""
+
+#: ../../about.rst:612
+# 350e7ff63c9b429f9424b556e21ad566
+msgid "CPU cap calculated incorrectly for VMs on XenServer hosts..."
+msgstr ""
+
+#: ../../about.rst:613
+# 7b1fc63cee124b35822ec3eb8fc7f6af
+msgid "`CLOUDSTACK-5332 <https://issues.apache.org/jira/browse/CLOUDSTACK-5332>`_"
+msgstr ""
+
+#: ../../about.rst:613
+# feb3d1322a1241cc9eb08917cd4743be
+msgid "Network offering don't use new system offering for router..."
+msgstr ""
+
+#: ../../about.rst:614
+# 1a2119ed5e8248f19652bef8401fd0e6
+msgid "`CLOUDSTACK-5303 <https://issues.apache.org/jira/browse/CLOUDSTACK-5303>`_"
+msgstr ""
+
+#: ../../about.rst:614
+# 5afc8932f7494cb4a20358ef8fff503b
+msgid "\"snapshot\" count and \"secondary_storage\" count  are not correct in resource_coun..."
+msgstr ""
+
+#: ../../about.rst:615
+# 2affca7697264ca19bac046fd526e064
+msgid "`CLOUDSTACK-5302 <https://issues.apache.org/jira/browse/CLOUDSTACK-5302>`_"
+msgstr ""
+
+#: ../../about.rst:615
+# 877ffb2b03974c0ba79f53c413f1eafb
+msgid "listHosts API response - value of cpuallocated is always 0%..."
+msgstr ""
+
+#: ../../about.rst:616
+# 8ccbb840f7664ac4ba5113134c738df7
+msgid "`CLOUDSTACK-5299 <https://issues.apache.org/jira/browse/CLOUDSTACK-5299>`_"
+msgstr ""
+
+#: ../../about.rst:616
+# 5a90aac42d5a481d8da1ef7de0512938
+msgid "Can not get hypervisor type for volumes..."
+msgstr ""
+
+#: ../../about.rst:617
+# 66a67bf63cee4915bdd5d4d611e60139
+msgid "`CLOUDSTACK-5293 <https://issues.apache.org/jira/browse/CLOUDSTACK-5293>`_"
+msgstr ""
+
+#: ../../about.rst:617
+# a0f8e5038019429888fb26ff53c118e6
+msgid "Error while collecting vm disk stats from hosts if iso is attached to vm..."
+msgstr ""
+
+#: ../../about.rst:618
+# 07c42615e51548f69f8c30439d921d17
+msgid "`CLOUDSTACK-5285 <https://issues.apache.org/jira/browse/CLOUDSTACK-5285>`_"
+msgstr ""
+
+#: ../../about.rst:618
+# 8ff7ce2ceaf24e1e983ba48c88965524
+msgid "Correct the API command description for removeIpFromNic..."
+msgstr ""
+
+#: ../../about.rst:619
+# 9513c8669b24496290525568709a9ef4
+msgid "`CLOUDSTACK-5261 <https://issues.apache.org/jira/browse/CLOUDSTACK-5261>`_"
+msgstr ""
+
+#: ../../about.rst:619
+# d57c730aacac4bf786480d0efe5d6457
+msgid "Ability to publish Alerts via CS Root API..."
+msgstr ""
+
+#: ../../about.rst:620
+# e1a8f1ff555e406a9509a94434de8f82
+msgid "`CLOUDSTACK-5260 <https://issues.apache.org/jira/browse/CLOUDSTACK-5260>`_"
+msgstr ""
+
+#: ../../about.rst:620
+# 4664a6293efc4d7c814b9b4e9bc5d4c1
+msgid "Vmware 5.1 Deploy Template Error : Read Timeout..."
+msgstr ""
+
+#: ../../about.rst:621
+# 291a2a8b016b43d599c1bcf9b8d43dfa
+msgid "`CLOUDSTACK-5228 <https://issues.apache.org/jira/browse/CLOUDSTACK-5228>`_"
+msgstr ""
+
+#: ../../about.rst:621
+# 592e7ee58ff44ca696e5ef93df69756c
+msgid "[API] [EIP/ELB enabled Zone] Need to display EIP address as \"Public IP Address\" ..."
+msgstr ""
+
+#: ../../about.rst:622
+# 9b9c697badbd497ca85bbc500ebb72c5
+msgid "`CLOUDSTACK-5227 <https://issues.apache.org/jira/browse/CLOUDSTACK-5227>`_"
+msgstr ""
+
+#: ../../about.rst:622
+# 46bccacdbe06484aa0199e60e40300e9
+msgid "Cannot pass Japanese characters as parameter values to API..."
+msgstr ""
+
+#: ../../about.rst:623
+# e0e1c93ad5e64a79a45ab35053f01cfb
+msgid "`CLOUDSTACK-5218 <https://issues.apache.org/jira/browse/CLOUDSTACK-5218>`_"
+msgstr ""
+
+#: ../../about.rst:623
+# 81e81b34f1a344af9009ad60222702d1
+msgid "CLONE - [Doc] Make VMware vCenter session timeout value configurable...."
+msgstr ""
+
+#: ../../about.rst:624
+# bab494bd96fb44988e3d25277cccd030
+msgid "`CLOUDSTACK-5199 <https://issues.apache.org/jira/browse/CLOUDSTACK-5199>`_"
+msgstr ""
+
+#: ../../about.rst:624
+# def3f3a51fdf4b1b92c987286f59359f
+msgid "Cannot restart VM after taking a VM snapshot of an existing VM or reverting a VM..."
+msgstr ""
+
+#: ../../about.rst:625
+# a79b0cd2aff14097aa1ad07d0dd422aa
+msgid "`CLOUDSTACK-5141 <https://issues.apache.org/jira/browse/CLOUDSTACK-5141>`_"
+msgstr ""
+
+#: ../../about.rst:625
+# 8c8141ffce9e439bab4f678e9168b296
+msgid "[Automation] Router deployment failed due to failure in SavePasswordCommand, obs..."
+msgstr ""
+
+#: ../../about.rst:626
+# c75a8334357d4a83b752de6a11b2b4d7
+msgid "`CLOUDSTACK-5140 <https://issues.apache.org/jira/browse/CLOUDSTACK-5140>`_"
+msgstr ""
+
+#: ../../about.rst:626
+# d6831610409f4f188790c6d92247cb75
+msgid "A stopped vm cant start after disable threshold has been reached on the storage ..."
+msgstr ""
+
+#: ../../about.rst:627
+# 22cd66d5db22485fb325534c02440206
+msgid "`CLOUDSTACK-5138 <https://issues.apache.org/jira/browse/CLOUDSTACK-5138>`_"
+msgstr ""
+
+#: ../../about.rst:627
+# 4938e30eac0c48f2a122d345be81fcd9
+msgid "[Automation] NPE while create template from snapshot..."
+msgstr ""
+
+#: ../../about.rst:628
+# b20682c52bdf4288bed892d203f99526
+msgid "`CLOUDSTACK-5122 <https://issues.apache.org/jira/browse/CLOUDSTACK-5122>`_"
+msgstr ""
+
+#: ../../about.rst:628
+# 58cf214ec9d64115a3b85e9b3ab8ce36
+msgid "[VMware] System VMs are getting recreated with old template after upgrading to 4..."
+msgstr ""
+
+#: ../../about.rst:629
+# c043a910005e4cfea0bc16a8d9d06a9e
+msgid "`CLOUDSTACK-5105 <https://issues.apache.org/jira/browse/CLOUDSTACK-5105>`_"
+msgstr ""
+
+#: ../../about.rst:629
+# 17735be3e8194a42ae5cd0528fdbb019
+msgid "Template/ISO download fails cause the object to disappear from UI..."
+msgstr ""
+
+#: ../../about.rst:630
+# 09a4f78d472b43eda0644678d5c8c7d3
+msgid "`CLOUDSTACK-5098 <https://issues.apache.org/jira/browse/CLOUDSTACK-5098>`_"
+msgstr ""
+
+#: ../../about.rst:630
+# 7d7cca26788f4dd79f3cbd31e523e0b5
+msgid "[UI] Zone view is showing \"Add VMware Datacenter\" button even though zone is alr..."
+msgstr ""
+
+#: ../../about.rst:631
+# eb8ff0c3bda34421949b4667650cc1d5
+msgid "`CLOUDSTACK-5092 <https://issues.apache.org/jira/browse/CLOUDSTACK-5092>`_"
+msgstr ""
+
+#: ../../about.rst:631
+# 56d5e2c4ab894c55b42e20e05d149623
+msgid "[Automation] [BVT] Failed to copy template and ISO between zones in xen ..."
+msgstr ""
+
+#: ../../about.rst:632
+# b45bd9b4a8cf47d987a26dfe370ca028
+msgid "`CLOUDSTACK-5076 <https://issues.apache.org/jira/browse/CLOUDSTACK-5076>`_"
+msgstr ""
+
+#: ../../about.rst:632
+# 5835754aee834dc69fb7792ffdb7f3f8
+msgid "(Upgrade) reboot VM failed after bridge name change..."
+msgstr ""
+
+#: ../../about.rst:633
+# 23e18a9f4e944601a546ed29c964e216
+msgid "`CLOUDSTACK-5069 <https://issues.apache.org/jira/browse/CLOUDSTACK-5069>`_"
+msgstr ""
+
+#: ../../about.rst:633
+# af479331ce47410f98142b3d0648003c
+msgid "Make VMware vCenter session timeout value configurable...."
+msgstr ""
+
+#: ../../about.rst:634
+# 7aa387b30a3a475fa0411f488558ef4e
+msgid "`CLOUDSTACK-5066 <https://issues.apache.org/jira/browse/CLOUDSTACK-5066>`_"
+msgstr ""
+
+#: ../../about.rst:634
+# 44c96673b9494513930cd45d01464ccb
+msgid "Existed remote access VPN got dropped when adding new VPN users..."
+msgstr ""
+
+#: ../../about.rst:635
+# 116d66a48fd949439363507aca8310c3
+msgid "`CLOUDSTACK-5062 <https://issues.apache.org/jira/browse/CLOUDSTACK-5062>`_"
+msgstr ""
+
+#: ../../about.rst:635
+# c9d4decce149472da2241e905e1e55b8
+msgid "Deleting Load Balancing Rule fails when generating usage events are enabled..."
+msgstr ""
+
+#: ../../about.rst:636
+# 40095f5a91ab4d589f03f2f97f8f6c01
+msgid "`CLOUDSTACK-5054 <https://issues.apache.org/jira/browse/CLOUDSTACK-5054>`_"
+msgstr ""
+
+#: ../../about.rst:636
+# 43e2ed9dd8d1465db3bbb4ac659d8a44
+msgid "vm migration involving storage migration on vmware fails with exception \" The ob..."
+msgstr ""
+
+#: ../../about.rst:637
+# 79281854b68042959a44e49cb47e9068
+msgid "`CLOUDSTACK-5053 <https://issues.apache.org/jira/browse/CLOUDSTACK-5053>`_"
+msgstr ""
+
+#: ../../about.rst:637
+# d7b0c91ea5b84f67b0d1b8fa9c37b990
+msgid "No Qemu-KVM module dependency error message is displayed (if not present)while i..."
+msgstr ""
+
+#: ../../about.rst:638
+# 62a2b6949fe04d868cdb00cb753807ed
+msgid "`CLOUDSTACK-5042 <https://issues.apache.org/jira/browse/CLOUDSTACK-5042>`_"
+msgstr ""
+
+#: ../../about.rst:638
+# cd471cd674ba4b1990f5aa1ddb730ce5
+msgid "(Upgrade) Exception when stop VM after upgrade..."
+msgstr ""
+
+#: ../../about.rst:639
+# b5e9203fefc244c4b44ebba45ec12810
+msgid "`CLOUDSTACK-5029 <https://issues.apache.org/jira/browse/CLOUDSTACK-5029>`_"
+msgstr ""
+
+#: ../../about.rst:639
+# 39d6712e5e4b462183c0a37bf83065bd
+msgid "cloud-bugtool isn't in release package like release notes say..."
+msgstr ""
+
+#: ../../about.rst:640
+# cfd17a3c83424354a101243f1cf7bdc5
+msgid "`CLOUDSTACK-5025 <https://issues.apache.org/jira/browse/CLOUDSTACK-5025>`_"
+msgstr ""
+
+#: ../../about.rst:640
+# c787224cdecb4277a63f59419ade0354
+msgid "display_volume field is set to false by default for VolumeVO object..."
+msgstr ""
+
+#: ../../about.rst:641
+# e0db5d5193714503baaa63774c7883e7
+msgid "`CLOUDSTACK-5024 <https://issues.apache.org/jira/browse/CLOUDSTACK-5024>`_"
+msgstr ""
+
+#: ../../about.rst:641
+# 91985f80c06c4cafaf06c903a93cc7e8
+msgid "listVolumes: add support to list by storage pool (for admin only)..."
+msgstr ""
+
+#: ../../about.rst:642
+# b54e2b69fcf843548bcced086afdb8bb
+msgid "`CLOUDSTACK-5017 <https://issues.apache.org/jira/browse/CLOUDSTACK-5017>`_"
+msgstr ""
+
+#: ../../about.rst:642
+# 89f7cd3a438d498b8a9f547d29ba7da5
+msgid "If SSVM is unavailable DownloadCommands will be routed to mgmt server..."
+msgstr ""
+
+#: ../../about.rst:643
+# 13f38290069340c3a6960c8ace0fe864
+msgid "`CLOUDSTACK-5014 <https://issues.apache.org/jira/browse/CLOUDSTACK-5014>`_"
+msgstr ""
+
+#: ../../about.rst:643
+# 160f63d96c684fca9c79411f55054495
+msgid "vmware:deployVM with data disk failed with exception..."
+msgstr ""
+
+#: ../../about.rst:644
+# ecbb035c4ac349f1807dbd7c1f2b0ae3
+msgid "`CLOUDSTACK-5012 <https://issues.apache.org/jira/browse/CLOUDSTACK-5012>`_"
+msgstr ""
+
+#: ../../about.rst:644
+# 92d0c1c705a34bee9025d5f9c031c65d
+msgid "Bad data inserted into physical network labels for Zone Create Wizard using VMWa..."
+msgstr ""
+
+#: ../../about.rst:645
+# fc1711cc578a49b4bff7216747d1cd04
+msgid "`CLOUDSTACK-5008 <https://issues.apache.org/jira/browse/CLOUDSTACK-5008>`_"
+msgstr ""
+
+#: ../../about.rst:645
+# 79f4077e5ee548a9ab492510295a7187
+msgid "[VMWARE]Failed to start the VM after performing Cold Migration of Volume to Seco..."
+msgstr ""
+
+#: ../../about.rst:646
+# 5a205aae19e94a9595b247e2a2ea81d0
+msgid "`CLOUDSTACK-5002 <https://issues.apache.org/jira/browse/CLOUDSTACK-5002>`_"
+msgstr ""
+
+#: ../../about.rst:646
+# dce91c56d5c44611b1285a73c56bb875
+msgid "unable to destroy vm ;VM destroy failed in Stop i-2-59-VM Command due to You gav..."
+msgstr ""
+
+#: ../../about.rst:647
+# a9151f89758f4052ad1fda7a5ebec833
+msgid "`CLOUDSTACK-4998 <https://issues.apache.org/jira/browse/CLOUDSTACK-4998>`_"
+msgstr ""
+
+#: ../../about.rst:647
+# 23bb79a059e64a7bbd90af2216252f4c
+msgid "assignVirtualMachine API has wrong response string, causing Cloudmonkey to crash..."
+msgstr ""
+
+#: ../../about.rst:648
+# 1eee91dd1f4d4d13913b5499427b15da
+msgid "`CLOUDSTACK-4997 <https://issues.apache.org/jira/browse/CLOUDSTACK-4997>`_"
+msgstr ""
+
+#: ../../about.rst:648
+# b89d57e09f8c4c609b4f093c8af12eea
+msgid "OVS integration is broken..."
+msgstr ""
+
+#: ../../about.rst:649
+# 7ded99c897cc4af0b3e1664b8dfa87b2
+msgid "`CLOUDSTACK-4973 <https://issues.apache.org/jira/browse/CLOUDSTACK-4973>`_"
+msgstr ""
+
+#: ../../about.rst:649
+# 8c7263e10a3b4e0c915ef7848c025420
+msgid "CLONE - Specified keyboard language is not showing as default in consoleView pas..."
+msgstr ""
+
+#: ../../about.rst:650
+# 7dd970bb14874c4e880c05f61d69e120
+msgid "`CLOUDSTACK-4943 <https://issues.apache.org/jira/browse/CLOUDSTACK-4943>`_"
+msgstr ""
+
+#: ../../about.rst:650
+# ac3a0db207af47a082e2e8747cbad0e5
+msgid "Can't create cluster in CS 4.2..."
+msgstr ""
+
+#: ../../about.rst:651
+# fe4e42bf8a4a4c87bf1dbdf3d892352f
+msgid "`CLOUDSTACK-4941 <https://issues.apache.org/jira/browse/CLOUDSTACK-4941>`_"
+msgstr ""
+
+#: ../../about.rst:651
+# dfde391f57bc4705b0b09a46710393d3
+msgid "CLONE - Allocation capacity of a cluster during HA..."
+msgstr ""
+
+#: ../../about.rst:652
+# a69b885ec9174c529a710902645c2413
+msgid "`CLOUDSTACK-4935 <https://issues.apache.org/jira/browse/CLOUDSTACK-4935>`_"
+msgstr ""
+
+#: ../../about.rst:652
+# 76627021c06443dd8cd7cb4934c106f8
+msgid "Adding same network to VM multiple times resulting in failure, No new NIC is gen..."
+msgstr ""
+
+#: ../../about.rst:653
+# a1a864a7fc3f4738928e049dc639ac07
+msgid "`CLOUDSTACK-4931 <https://issues.apache.org/jira/browse/CLOUDSTACK-4931>`_"
+msgstr ""
+
+#: ../../about.rst:653
+# fed2e7496c794dbd8c4c5d953aa12b03
+msgid "observed NPE with new system vm template..."
+msgstr ""
+
+#: ../../about.rst:654
+# d83c883ef59d4e86b8bfd7317b2f9029
+msgid "`CLOUDSTACK-4913 <https://issues.apache.org/jira/browse/CLOUDSTACK-4913>`_"
+msgstr ""
+
+#: ../../about.rst:654
+# f43873d002164e958d8d498fbaec3341
+msgid "Disable security group for bridge mode non-security group zone..."
+msgstr ""
+
+#: ../../about.rst:655
+# c1a803ba102645349754b4400a8295cc
+msgid "`CLOUDSTACK-4904 <https://issues.apache.org/jira/browse/CLOUDSTACK-4904>`_"
+msgstr ""
+
+#: ../../about.rst:655
+# 061044bfcf674f22a7093620e8d16199
+msgid "Unable to see a derieved template if the parent template is deleted..."
+msgstr ""
+
+#: ../../about.rst:656
+# dedc905ddb864b2f89addf62aef0384d
+msgid "`CLOUDSTACK-4886 <https://issues.apache.org/jira/browse/CLOUDSTACK-4886>`_"
+msgstr ""
+
+#: ../../about.rst:656
+# 6e42fe77fa004d7d8329793f97675540
+msgid "cloud-setup-databases not escaping password in shell commands..."
+msgstr ""
+
+#: ../../about.rst:657
+# fa155cfb42d6462098798b1d5d59b458
+msgid "`CLOUDSTACK-4875 <https://issues.apache.org/jira/browse/CLOUDSTACK-4875>`_"
+msgstr ""
+
+#: ../../about.rst:657
+# 747a8fe507a64ab4ae3ca8f6cfd5993a
+msgid "VMWARE: vCenter 5.5 - SYSTEM VM: Unable to create deployment for VM..."
+msgstr ""
+
+#: ../../about.rst:658
+# 1ad6c1a18ac74f9ca5d950d6ed1d5c0c
+msgid "`CLOUDSTACK-4861 <https://issues.apache.org/jira/browse/CLOUDSTACK-4861>`_"
+msgstr ""
+
+#: ../../about.rst:658
+# 8957176fd07f4c109ea7b0357952fa7b
+msgid "[VMware] If Guest traffic spans across multiple physical networks, selection of ..."
+msgstr ""
+
+#: ../../about.rst:659
+# b5ac3a6c76204ad8a9a7268080c64b49
+msgid "`CLOUDSTACK-4860 <https://issues.apache.org/jira/browse/CLOUDSTACK-4860>`_"
+msgstr ""
+
+#: ../../about.rst:659
+# 37976257934d4487a958e85fa50fc551
+msgid "[VMware] Vcenter 5.5  ESXi 5.5 hosts  SSVM CPVM fail to come up to running state..."
+msgstr ""
+
+#: ../../about.rst:660
+# 9cd4d3f685e348f18b8ddf5a934beb28
+msgid "`CLOUDSTACK-4856 <https://issues.apache.org/jira/browse/CLOUDSTACK-4856>`_"
+msgstr ""
+
+#: ../../about.rst:660
+# dc59e549f9c34f5a8460bc55ae67373a
+msgid "Optimize on the # of control commands sent by MS to HV host..."
+msgstr ""
+
+#: ../../about.rst:661
+# 3281238e366244ecb0123297babe660d
+msgid "`CLOUDSTACK-4855 <https://issues.apache.org/jira/browse/CLOUDSTACK-4855>`_"
+msgstr ""
+
+#: ../../about.rst:661
+# 5b4cb016bbae46cb8ff1f3960e6fe0eb
+msgid "Throttle based on the # of outstanding requests to the directly managed HV host ..."
+msgstr ""
+
+#: ../../about.rst:662
+# 42c1986e9f884f6f96efa3330e265dcb
+msgid "`CLOUDSTACK-4852 <https://issues.apache.org/jira/browse/CLOUDSTACK-4852>`_"
+msgstr ""
+
+#: ../../about.rst:662
+# 846be2c7a49f4ae98c1a5b73753cf314
+msgid "Since upgrade to 4.2 only users at the zone-attached domain level can manipulate..."
+msgstr ""
+
+#: ../../about.rst:663
+# 8efb802f4abb4fd48f3f1a19de4aee1e
+msgid "`CLOUDSTACK-4850 <https://issues.apache.org/jira/browse/CLOUDSTACK-4850>`_"
+msgstr ""
+
+#: ../../about.rst:663
+# 5d6b3617c7cb42caa0f701e2e0d38c9e
+msgid "[UCS] using template instead of cloning profile..."
+msgstr ""
+
+#: ../../about.rst:664
+# ab31d5d84b62429dafcbda5ee27859c8
+msgid "`CLOUDSTACK-4831 <https://issues.apache.org/jira/browse/CLOUDSTACK-4831>`_"
+msgstr ""
+
+#: ../../about.rst:664
+# baa83e0f5592429fab4491fad2feb22d
+msgid "Ability for root admin or domain admin to create a network for another user unde..."
+msgstr ""
+
+#: ../../about.rst:665
+# b52b06c6a83646acb6ea1335dd553575
+msgid "`CLOUDSTACK-4830 <https://issues.apache.org/jira/browse/CLOUDSTACK-4830>`_"
+msgstr ""
+
+#: ../../about.rst:665
+# b3f3aee5e5b546c58758169b9ff5c403
+msgid "Allow creation of users and accounts by domain admin in UI..."
+msgstr ""
+
+#: ../../about.rst:666
+# 501a3df6f8e34585b221b1824f047cf1
+msgid "`CLOUDSTACK-4826 <https://issues.apache.org/jira/browse/CLOUDSTACK-4826>`_"
+msgstr ""
+
+#: ../../about.rst:666
+# 189a999bb37b4295958ec024dd7afe19
+msgid "System VMs fail to start..."
+msgstr ""
+
+#: ../../about.rst:667
+# 10f645984ad841c39f942c5541cedb98
+msgid "`CLOUDSTACK-4820 <https://issues.apache.org/jira/browse/CLOUDSTACK-4820>`_"
+msgstr ""
+
+#: ../../about.rst:667
+# cacfcadb7e134c47b6901e101aa71b5f
+msgid "TestVPCNetworkGc.test_01_wait_network_gc netacls are not cleared..."
+msgstr ""
+
+#: ../../about.rst:668
+# 15dc2294ec194ca19884e5f157c54fe4
+msgid "`CLOUDSTACK-4810 <https://issues.apache.org/jira/browse/CLOUDSTACK-4810>`_"
+msgstr ""
+
+#: ../../about.rst:668
+# e333ec5a2a7a4b45a850be2353e42047
+msgid "Enable hypervisor snapshots for CloudStack-managed storage (for XenServer and VM..."
+msgstr ""
+
+#: ../../about.rst:669
+# 48a67622fecd4d56b212eb303217fc29
+msgid "`CLOUDSTACK-4768 <https://issues.apache.org/jira/browse/CLOUDSTACK-4768>`_"
+msgstr ""
+
+#: ../../about.rst:669
+# 750a2810c8b2410caeb179cfdac55331
+msgid "[Automation] Race condition; delete the template and create VM at same time; dep..."
+msgstr ""
+
+#: ../../about.rst:670
+# 211fab9e0d464b588efc4bc6634cd1d7
+msgid "`CLOUDSTACK-4750 <https://issues.apache.org/jira/browse/CLOUDSTACK-4750>`_"
+msgstr ""
+
+#: ../../about.rst:670
+# 8bd6ea66876d4598baa7750dff3a1d3c
+msgid "bond.VLAN mapping in iptables FORWARD chain not created consistently..."
+msgstr ""
+
+#: ../../about.rst:671
+# b639c092953d427ea6530d446dfef07a
+msgid "`CLOUDSTACK-4741 <https://issues.apache.org/jira/browse/CLOUDSTACK-4741>`_"
+msgstr ""
+
+#: ../../about.rst:671
+# 68accc5e76514ef1afeda698a37297ff
+msgid "URL of ImageStore not in proper format for XenServer..."
+msgstr ""
+
+#: ../../about.rst:672
+# 5e8fa3a2ac5d40858b372f0bc4fa8f75
+msgid "`CLOUDSTACK-4740 <https://issues.apache.org/jira/browse/CLOUDSTACK-4740>`_"
+msgstr ""
+
+#: ../../about.rst:672
+# b1f99f7d418642e59644fd4d3c8271a9
+msgid "Some vSphere VMs are shutdown when ACS is restarted..."
+msgstr ""
+
+#: ../../about.rst:673
+# c0e2c47fc85a4c9bb76c4943232f8cfa
+msgid "`CLOUDSTACK-4734 <https://issues.apache.org/jira/browse/CLOUDSTACK-4734>`_"
+msgstr ""
+
+#: ../../about.rst:673
+# 5bf24b93956741eab2801030d5f9841a
+msgid "Creating snapshot from ROOT volume fails with error message - \"Failed to create ..."
+msgstr ""
+
+#: ../../about.rst:674
+# bed7503a00e44110b452dbbf35f399a0
+msgid "`CLOUDSTACK-4724 <https://issues.apache.org/jira/browse/CLOUDSTACK-4724>`_"
+msgstr ""
+
+#: ../../about.rst:674
+# 5d6a1b1bce914e9fba42fa56ca653d74
+msgid "[Vmware] Deploy VM in designated cluster fail if there is only zone wide primary..."
+msgstr ""
+
+#: ../../about.rst:675
+# ada11e5aff404aecabf02b03254c391f
+msgid "`CLOUDSTACK-4697 <https://issues.apache.org/jira/browse/CLOUDSTACK-4697>`_"
+msgstr ""
+
+#: ../../about.rst:675
+# 0a0f8cf524124393992aefaa1c4742ed
+msgid "Not able to delete Primary storage when there are no hosts in the cluster...."
+msgstr ""
+
+#: ../../about.rst:676
+# b2fcbe8c396a4306893bddc2a4d0570e
+msgid "`CLOUDSTACK-4676 <https://issues.apache.org/jira/browse/CLOUDSTACK-4676>`_"
+msgstr ""
+
+#: ../../about.rst:676
+# ac575161189240a1acd5dcf501c06e2f
+msgid "[Baremetal]  baremetal hostename should not be fixed in  kickstart file ..."
+msgstr ""
+
+#: ../../about.rst:677
+# 54e3f264d08642b6b1fb45681e846b36
+msgid "`CLOUDSTACK-4670 <https://issues.apache.org/jira/browse/CLOUDSTACK-4670>`_"
+msgstr ""
+
+#: ../../about.rst:677
+# 5ecae9795b55428b9c96b3fb7288b939
+msgid "[Baremetal] Cloudplatform BareMetal installation guide for CP 4.2..."
+msgstr ""
+
+#: ../../about.rst:678
+# 126fd296bbe3499198ccdf95aedbc428
+msgid "`CLOUDSTACK-4631 <https://issues.apache.org/jira/browse/CLOUDSTACK-4631>`_"
+msgstr ""
+
+#: ../../about.rst:678
+# 46a50fc4b36446fc9f631831185fb301
+msgid "[Automation] Failed to create snapshot from volume due to storage pool missing e..."
+msgstr ""
+
+#: ../../about.rst:679
+# 379803428c4b40a99d75f9c8ef15f7c7
+msgid "`CLOUDSTACK-4620 <https://issues.apache.org/jira/browse/CLOUDSTACK-4620>`_"
+msgstr ""
+
+#: ../../about.rst:679
+# b8558b1ab0904e8eba3bb334e0eed8fd
+msgid "Vm failed to start on the host on which it was running due to not having enough ..."
+msgstr ""
+
+#: ../../about.rst:680
+# 6fbab8fd7917498d9db231ce8dc2b583
+msgid "`CLOUDSTACK-4616 <https://issues.apache.org/jira/browse/CLOUDSTACK-4616>`_"
+msgstr ""
+
+#: ../../about.rst:680
+# 2185171c4e8a42bc8de280d9aa31805c
+msgid "When system Vms fail to start when host is down ,  link local Ip addresses do no..."
+msgstr ""
+
+#: ../../about.rst:681
+# 227ffaee42f144d89bb6d7b32bdf03da
+msgid "`CLOUDSTACK-4598 <https://issues.apache.org/jira/browse/CLOUDSTACK-4598>`_"
+msgstr ""
+
+#: ../../about.rst:681
+# 90e454f8ca38449fa4cb287df0cc8e49
+msgid "[Performance Testing] High delays during deployVM - both network delay and deplo..."
+msgstr ""
+
+#: ../../about.rst:682
+# 3bc452f5797d4fb6926eb4cdfdcaafb1
+msgid "`CLOUDSTACK-4597 <https://issues.apache.org/jira/browse/CLOUDSTACK-4597>`_"
+msgstr ""
+
+#: ../../about.rst:682
+# 9c2214fa5635486b859b99215792fcb4
+msgid "Complete Exceptions are getting displayed in the UI where there is an operationa..."
+msgstr ""
+
+#: ../../about.rst:683
+# 39bc028e76114cdf93712edd47d7ba4a
+msgid "`CLOUDSTACK-4594 <https://issues.apache.org/jira/browse/CLOUDSTACK-4594>`_"
+msgstr ""
+
+#: ../../about.rst:683
+# 7fda7fc93c994e63ab06f9107c77e380
+msgid "[VMWARE] [Upgrade] Failed to revert VM Snapshot which were created before Live S..."
+msgstr ""
+
+#: ../../about.rst:684
+# ce278c39e77745e38df99861dc659544
+msgid "`CLOUDSTACK-4588 <https://issues.apache.org/jira/browse/CLOUDSTACK-4588>`_"
+msgstr ""
+
+#: ../../about.rst:684
+# da095652365841459d93cad09d8ff503
+msgid "[Automation][Vmware] VM deployment failed while creating Volume with NPE..."
+msgstr ""
+
+#: ../../about.rst:685
+# 91ae778c89884cae9473ca921fd31448
+msgid "`CLOUDSTACK-4577 <https://issues.apache.org/jira/browse/CLOUDSTACK-4577>`_"
+msgstr ""
+
+#: ../../about.rst:685
+# d026461c2bf7472f809e4890eebaa2e3
+msgid "VMWare:Volumes: Unexpected exception while executing org.apache.cloudstack.api.c..."
+msgstr ""
+
+#: ../../about.rst:686
+# 1d9f253b59e346a0bad4cfef82be0b91
+msgid "`CLOUDSTACK-4543 <https://issues.apache.org/jira/browse/CLOUDSTACK-4543>`_"
+msgstr ""
+
+#: ../../about.rst:686
+# ee92d2c68ebe4efc8b5cb5be24d06b1b
+msgid "[Automation] Failed to configure VPC router then reported as deployment failure..."
+msgstr ""
+
+#: ../../about.rst:687
+# c980a7ff009242b4b767febc23a2bc29
+msgid "`CLOUDSTACK-4542 <https://issues.apache.org/jira/browse/CLOUDSTACK-4542>`_"
+msgstr ""
+
+#: ../../about.rst:687
+# 41554cf693464f1195755a0ade34141a
+msgid "[Automation] Failed to apply DHCP entry in VR and deployment failed ..."
+msgstr ""
+
+#: ../../about.rst:688
+# 47713c22f8a049c5b2a8ab20c89217c8
+msgid "`CLOUDSTACK-4540 <https://issues.apache.org/jira/browse/CLOUDSTACK-4540>`_"
+msgstr ""
+
+#: ../../about.rst:688
+# 5bd94401fa6847eb8c4f65347ed0eeba
+msgid "[Automation] Parallel deployment - Vmware - When deploying 30 parallel Vms , 16 ..."
+msgstr ""
+
+#: ../../about.rst:689
+# cc0aabdbe28b4d41bf04dda2de5eb39c
+msgid "`CLOUDSTACK-4506 <https://issues.apache.org/jira/browse/CLOUDSTACK-4506>`_"
+msgstr ""
+
+#: ../../about.rst:689
+# 42e3822ed11340979a3879ae3186d3f1
+msgid "In a mixed hypervisor setup, destroying a VM whose host has been removed, throws..."
+msgstr ""
+
+#: ../../about.rst:690
+# 8790d47690d549a593aab8cf0e77a252
+msgid "`CLOUDSTACK-4504 <https://issues.apache.org/jira/browse/CLOUDSTACK-4504>`_"
+msgstr ""
+
+#: ../../about.rst:690
+# fd070f755db54e6ca07f29e3ea78ef08
+msgid "VM creation Is failing using the Ubuntu ISO with Xen 6.1 and 6.2..."
+msgstr ""
+
+#: ../../about.rst:691
+# d383c2b9c5e34965b121e3158bc1c9c6
+msgid "`CLOUDSTACK-4450 <https://issues.apache.org/jira/browse/CLOUDSTACK-4450>`_"
+msgstr ""
+
+#: ../../about.rst:691
+# ffe8f57646ef484abc43c7cd361322d4
+msgid "Possibility of /tmp/xapilog filling up the Root disk on Xenserver ..."
+msgstr ""
+
+#: ../../about.rst:692
+# dc5aa1576b0c44e7b5b3ded245bbd6cc
+msgid "`CLOUDSTACK-4445 <https://issues.apache.org/jira/browse/CLOUDSTACK-4445>`_"
+msgstr ""
+
+#: ../../about.rst:692
+# 221dca1539a34554aa084f746d51092c
+msgid "[UI]Edit Icon is used for Dedicate host / Add or Remove VMWARE Datacenter with ..."
+msgstr ""
+
+#: ../../about.rst:693
+# 05118ddccdf445b5b5edf7344fcd15bb
+msgid "`CLOUDSTACK-4428 <https://issues.apache.org/jira/browse/CLOUDSTACK-4428>`_"
+msgstr ""
+
+#: ../../about.rst:693
+# 77e2ad14b0e54ba482807ec425427645
+msgid "[UI] \"kvm.snapshot.enabled\" flag should be taken to account only when snapshot i..."
+msgstr ""
+
+#: ../../about.rst:694
+# 26b76fe5303649a790ccff43b2c5049f
+msgid "`CLOUDSTACK-4402 <https://issues.apache.org/jira/browse/CLOUDSTACK-4402>`_"
+msgstr ""
+
+#: ../../about.rst:694
+# fe3d5f63a647476c872fd01cf0df19f6
+msgid "[deleteStoragePool] There is no way to delete Primary storage if the last host w..."
+msgstr ""
+
+#: ../../about.rst:695
+# ceb6c277f41143bbb0a1386d5e67013d
+msgid "`CLOUDSTACK-4371 <https://issues.apache.org/jira/browse/CLOUDSTACK-4371>`_"
+msgstr ""
+
+#: ../../about.rst:695
+# f687a03296794550ad49fc92158a9f12
+msgid "[Performance Testing] Basic zone with 20K Hosts, management server restart leave..."
+msgstr ""
+
+#: ../../about.rst:696
+# 11c7794de35044839d3f2258fd73c169
+msgid "`CLOUDSTACK-4263 <https://issues.apache.org/jira/browse/CLOUDSTACK-4263>`_"
+msgstr ""
+
+#: ../../about.rst:696
+# 38b5aeb8acea45e4b64478d6ea6f131e
+msgid "Unable to get git number in maven-jgit-buildnumber-plugin, while build cloudstac..."
+msgstr ""
+
+#: ../../about.rst:697
+# 104b1472320740099883671f2dada31f
+msgid "`CLOUDSTACK-4207 <https://issues.apache.org/jira/browse/CLOUDSTACK-4207>`_"
+msgstr ""
+
+#: ../../about.rst:697
+# 2c9fa169dda640c5a91151935e4330c6
+msgid "[upgrade] Exception observed after upgrade \"jsonParseException: The JsonDeserial..."
+msgstr ""
+
+#: ../../about.rst:698
+# b7503f18923249908d856bc6f328313f
+msgid "`CLOUDSTACK-4061 <https://issues.apache.org/jira/browse/CLOUDSTACK-4061>`_"
+msgstr ""
+
+#: ../../about.rst:698
+# f3af02dae63d4a31bf577266a237d17d
+msgid "UI issue with Japanese localized ui..."
+msgstr ""
+
+#: ../../about.rst:699
+# 5fcd77799e5541bfabddc934a5881b2e
+msgid "`CLOUDSTACK-3806 <https://issues.apache.org/jira/browse/CLOUDSTACK-3806>`_"
+msgstr ""
+
+#: ../../about.rst:699
+# c43319742c0b440d98dda32a5ac2e488
+msgid "OS Preference can not be set..."
+msgstr ""
+
+#: ../../about.rst:700
+# 36bb50dd8a82450b85aea34ec194a3f3
+msgid "`CLOUDSTACK-3664 <https://issues.apache.org/jira/browse/CLOUDSTACK-3664>`_"
+msgstr ""
+
+#: ../../about.rst:700
+# 642b60faf5f246f285267341127b885b
+msgid "scaling up vms is not considering  parameter \"cluster.(memory/cpu).allocated.cap..."
+msgstr ""
+
+#: ../../about.rst:701
+# 0cdfd6782a2a42349352de16b1b14d71
+msgid "`CLOUDSTACK-3627 <https://issues.apache.org/jira/browse/CLOUDSTACK-3627>`_"
+msgstr ""
+
+#: ../../about.rst:701
+# 21702dbb9dfc4d31ad95e5e10b83f8a3
+msgid "Public IP interface(eth2) is not getting confugured with Redundant VR (State = F..."
+msgstr ""
+
+#: ../../about.rst:702
+# 86a6e2f6bb0b4c8b96b2fcb8fb032bdb
+msgid "`CLOUDSTACK-3577 <https://issues.apache.org/jira/browse/CLOUDSTACK-3577>`_"
+msgstr ""
+
+#: ../../about.rst:702
+# 85214d0fa632436d8bfeec4da56ac5e4
+msgid "NPE while downloading the template to secondary storage ..."
+msgstr ""
+
+#: ../../about.rst:703
+# 44810451a0644dc68049333d6e74d170
+msgid "`CLOUDSTACK-3561 <https://issues.apache.org/jira/browse/CLOUDSTACK-3561>`_"
+msgstr ""
+
+#: ../../about.rst:703
+# b75310718e66407587d5c43022fa426e
+msgid "When inputting the nfs server in secondary storage, if once it's required, it al..."
+msgstr ""
+
+#: ../../about.rst:704
+# 13465793b3a943c5a9b6bab068d81298
+msgid "`CLOUDSTACK-3364 <https://issues.apache.org/jira/browse/CLOUDSTACK-3364>`_"
+msgstr ""
+
+#: ../../about.rst:704
+# e951699e241d45bc93be24331efebfe5
+msgid "normal users are not allowed to edit their own iso..."
+msgstr ""
+
+#: ../../about.rst:705
+# 8d83e620d6314c1985c3902a9e1f5b5e
+msgid "`CLOUDSTACK-3266 <https://issues.apache.org/jira/browse/CLOUDSTACK-3266>`_"
+msgstr ""
+
+#: ../../about.rst:705
+# 817aae70948640a39786c8eedc403117
+msgid "[UI] Failed to delete Anti affinitygroup for the first time ..."
+msgstr ""
+
+#: ../../about.rst:706
+# c4c3cbb8586249dca78844b418a347c9
+msgid "`CLOUDSTACK-3252 <https://issues.apache.org/jira/browse/CLOUDSTACK-3252>`_"
+msgstr ""
+
+#: ../../about.rst:706
+# d577dce295e7485e9fe076b1e90fecbe
+msgid "An instance deployed using explicit or implicit dedication doesn't generate a us..."
+msgstr ""
+
+#: ../../about.rst:707
+# e9ebded05b404650a0b91a896ee98046
+msgid "`CLOUDSTACK-3247 <https://issues.apache.org/jira/browse/CLOUDSTACK-3247>`_"
+msgstr ""
+
+#: ../../about.rst:707
+# d9ed05f351ab43efa8484648b34711c7
+msgid "Removing a Disconnected Host throws a NoTransitionException..."
+msgstr ""
+
+#: ../../about.rst:708
+# ebc5535f7dda48c18844a74453e6ae04
+msgid "`CLOUDSTACK-3156 <https://issues.apache.org/jira/browse/CLOUDSTACK-3156>`_"
+msgstr ""
+
+#: ../../about.rst:708
+# 2f7c49bb04cb464592521404a6b645b9
+msgid "needs proper message for failing Add nic command when vmware tools is not instal..."
+msgstr ""
+
+#: ../../about.rst:709
+# e589ed802033435d9e06e6d3451ad4ec
+msgid "`CLOUDSTACK-3067 <https://issues.apache.org/jira/browse/CLOUDSTACK-3067>`_"
+msgstr ""
+
+#: ../../about.rst:709
+# c10c09d9e06b422ea42deff9455b7fc4
+msgid "UI for Dedicating POD/Cluster/Host is misleading Icons should be changed...."
+msgstr ""
+
+#: ../../about.rst:710
+# 1776639960384d91be367c192b193f6e
+msgid "`CLOUDSTACK-3027 <https://issues.apache.org/jira/browse/CLOUDSTACK-3027>`_"
+msgstr ""
+
+#: ../../about.rst:710
+# 73e13ff98b4243b9a20b50ee3e376b9f
+msgid "Object_Store_Refactor - Uploaded template S3 content-type is not appropriate...."
+msgstr ""
+
+#: ../../about.rst:711
+# db9ce076437d4ead84b15545ca7f2527
+msgid "`CLOUDSTACK-2895 <https://issues.apache.org/jira/browse/CLOUDSTACK-2895>`_"
+msgstr ""
+
+#: ../../about.rst:711
+# f3ceed3d135a409baff6c790cc95f0bd
+msgid "Can't start a VM with 3 volumes attached [VMWare]..."
+msgstr ""
+
+#: ../../about.rst:712
+# 82dbd781079744aea51f36c468acf383
+msgid "`CLOUDSTACK-2766 <https://issues.apache.org/jira/browse/CLOUDSTACK-2766>`_"
+msgstr ""
+
+#: ../../about.rst:712
+# 4f6db1729af84eac8239cc4010256df9
+msgid "[VPC] [UI] Firewall service should not be enabled for acquired public IPs in VPC..."
+msgstr ""
+
+#: ../../about.rst:713
+# fc408e4e115344aca26337d032f3fe57
+msgid "`CLOUDSTACK-2687 <https://issues.apache.org/jira/browse/CLOUDSTACK-2687>`_"
+msgstr ""
+
+#: ../../about.rst:713
+# 68662c997bd44c23a4752e827db60032
+msgid "NPE with deploy VM when there are no resources available ..."
+msgstr ""
+
+#: ../../about.rst:714
+# 71ae7842ee464e1e922a222d4d70912f
+msgid "`CLOUDSTACK-2570 <https://issues.apache.org/jira/browse/CLOUDSTACK-2570>`_"
+msgstr ""
+
+#: ../../about.rst:714
+# ac9a0771b87d475cb7be48ffedf997d5
+msgid "[UI]Resource Name is mentioned twice with view VNMC devices ..."
+msgstr ""
+
+#: ../../about.rst:715
+# be29600cb4514dfca86f48d41023e49f
+msgid "`CLOUDSTACK-2562 <https://issues.apache.org/jira/browse/CLOUDSTACK-2562>`_"
+msgstr ""
+
+#: ../../about.rst:715
+# 07bc018e1bbc44d9b62178dd206268cf
+msgid "[VMWARE] As per the code, currently CloudStack fails to program PF/NAT/LB rules ..."
+msgstr ""
+
+#: ../../about.rst:716
+# 61203c44c9c644f4adb7afab63a6681a
+msgid "`CLOUDSTACK-2428 <https://issues.apache.org/jira/browse/CLOUDSTACK-2428>`_"
+msgstr ""
+
+#: ../../about.rst:716
+# c06bebf8a33649ed8131f4b65a442741
+msgid "HA - When the master host is disconnected , the host status contines to remain i..."
+msgstr ""
+
+#: ../../about.rst:717
+# 355721da958a498d8ba4b92a004344db
+msgid "`CLOUDSTACK-2414 <https://issues.apache.org/jira/browse/CLOUDSTACK-2414>`_"
+msgstr ""
+
+#: ../../about.rst:717
+# 88df2cdc4cfa47468edc9b0011db7298
+msgid "NPE while deleting Cisco VNMC provider..."
+msgstr ""
+
+#: ../../about.rst:718
+# ca232c6f2a22456986598e306b91d4db
+msgid "`CLOUDSTACK-2396 <https://issues.apache.org/jira/browse/CLOUDSTACK-2396>`_"
+msgstr ""
+
+#: ../../about.rst:718
+# cfb458af8afc43d8a66b6121cc628293
+msgid "PVLAN - Should not be allowed to create multiple networks with same Vlan  associ..."
+msgstr ""
+
+#: ../../about.rst:719
+# 585c07df2d5448dcba290de9f271688e
+msgid "`CLOUDSTACK-2199 <https://issues.apache.org/jira/browse/CLOUDSTACK-2199>`_"
+msgstr ""
+
+#: ../../about.rst:719
+# 17e0b4ecc6f1404f9e14a5f686051b7d
+msgid "ID parameter of UpdateConfiguration API should be changed to a different name..."
+msgstr ""
+
+#: ../../about.rst:720
+# 01ea2848fe344d31955cd85d1658efd8
+msgid "`CLOUDSTACK-2141 <https://issues.apache.org/jira/browse/CLOUDSTACK-2141>`_"
+msgstr ""
+
+#: ../../about.rst:720
+# 4dddbbae9d0840a8ad81a2468c62ba78
+msgid "During HA process ,  dead lock is detected - Caused by: com.mysql.jdbc.exception..."
+msgstr ""
+
+#: ../../about.rst:721
+# f18c12a93f9c4e3e9851653bcfc49b3e
+msgid "`CLOUDSTACK-1970 <https://issues.apache.org/jira/browse/CLOUDSTACK-1970>`_"
+msgstr ""
+
+#: ../../about.rst:721
+# 8ccc99672b1649e9bfaded6c83b00565
+msgid "Ubuntu - \"cloudstack-setup-management\" not available in \"/usr/bin\"..."
+msgstr ""
+
+#: ../../about.rst:722
+# d8920306f36140cba685be0ae0163462
+msgid "`CLOUDSTACK-1889 <https://issues.apache.org/jira/browse/CLOUDSTACK-1889>`_"
+msgstr ""
+
+#: ../../about.rst:722
+# 67849ec4e4cb4e53b9c45a4dac238292
+msgid "[UI] Consumed Resource usage details are not available for all the resources..."
+msgstr ""
+
+#: ../../about.rst:723
+# ab09a0e8aa764bcaa79200afda6dc05d
+msgid "`CLOUDSTACK-1868 <https://issues.apache.org/jira/browse/CLOUDSTACK-1868>`_"
+msgstr ""
+
+#: ../../about.rst:723
+# 6f9698df0b334e868d1afb282f4ab87a
+msgid "GetVmStatsCommand throws NullPointerException with VMWare..."
+msgstr ""
+
+#: ../../about.rst:724
+# 71081f32c5394fa7b58478869ef588fc
+msgid "`CLOUDSTACK-1762 <https://issues.apache.org/jira/browse/CLOUDSTACK-1762>`_"
+msgstr ""
+
+#: ../../about.rst:724
+# 23d1ec5f650849cb995595f6e6023eb9
+msgid "[MultipleIpsToNic] addIpToNic should not let network id or broadcast to be assig..."
+msgstr ""
+
+#: ../../about.rst:725
+# 19fcef90d9ca435e8221328b24e3aab4
+msgid "`CLOUDSTACK-1637 <https://issues.apache.org/jira/browse/CLOUDSTACK-1637>`_"
+msgstr ""
+
+#: ../../about.rst:725
+# a43129b0cd404f2e82d7c5f8347dd8b3
+msgid "LDAP:UI related issues..."
+msgstr ""
+
+#: ../../about.rst:730
+# 71c836e363854cf5b492fd061ccc190d
+msgid "Known Issues in 4.3.0"
+msgstr ""
+
+#: ../../about.rst:735
+# 1b16efacb0eb4285a3fe990c9faf5236
+msgid "For the list of known issues, see `Known Issues in 4.3 <https://issues.apache.org/jira/issues/?filter=12326162>`__."
+msgstr ""
+
+#: ../../about.rst:741
+# 31d47b582cf145fc8e4492a8b291f116
+msgid "`CLOUDSTACK-4787 <https://issues.apache.org/jira/browse/CLOUDSTACK-4787>`_"
+msgstr ""
+
+#: ../../about.rst:741
+# ef129fa6cb3146b1857507d7c5b584d5
+msgid "Allow selection of scsi controller type in vSphere..."
+msgstr ""
+
+#: ../../about.rst:742
+# 50ebe7aaa9984a51b4e50d70c9d2e276
+msgid "`CLOUDSTACK-6024 <https://issues.apache.org/jira/browse/CLOUDSTACK-6024>`_"
+msgstr ""
+
+#: ../../about.rst:742
+# b4a2aa9ac51b4b519f45e8eb31b6f78a
+msgid "template copy to primary storage uses a random source secstorage from any zone..."
+msgstr ""
+
+#: ../../about.rst:743
+# 87963880d9f34d4c97086171a79a5bb5
+msgid "`CLOUDSTACK-4912 <https://issues.apache.org/jira/browse/CLOUDSTACK-4912>`_"
+msgstr ""
+
+#: ../../about.rst:743
+# 5a6f5883d7ad40abbf0a376104ccfe46
+msgid "API docs are missing some APIs..."
+msgstr ""
+
+#: ../../about.rst:744
+# 03b51226028342628f8903906b987f83
+msgid "`CLOUDSTACK-5124 <https://issues.apache.org/jira/browse/CLOUDSTACK-5124>`_"
+msgstr ""
+
+#: ../../about.rst:744
+# b776d2a67285407ab2e5fb605d18dcaa
+msgid "Simulator: Virtual Router fails to start because of improper version returned by..."
+msgstr ""
+
+#: ../../about.rst:745
+# f57fb57c3bd746adb96f77d30648dbe3
+msgid "`CLOUDSTACK-5262 <https://issues.apache.org/jira/browse/CLOUDSTACK-5262>`_"
+msgstr ""
+
+#: ../../about.rst:745
+# 5c72ef3cabcc4a76ab04ed7f1629d305
+msgid "Few of  the snapshot creation from ROOT volume fails when there are concurrent s..."
+msgstr ""
+
+#: ../../about.rst:746
+# 865cad9874bd49d995f3835cdecb595d
+msgid "`CLOUDSTACK-5356 <https://issues.apache.org/jira/browse/CLOUDSTACK-5356>`_"
+msgstr ""
+
+#: ../../about.rst:746
+# b1e9e358f4d445b58cbf4f657528529c
+msgid "Xenserver - Failed to create snapshot when secondary store was made unavaibale f..."
+msgstr ""
+
+#: ../../about.rst:747
+# c726e0ed500e495192a32edb5f10f224
+msgid "`CLOUDSTACK-5357 <https://issues.apache.org/jira/browse/CLOUDSTACK-5357>`_"
+msgstr ""
+
+#: ../../about.rst:747
+# cb17e1a2a4c1497493142c62b294c29d
+msgid "Xenserver - Failed to create snapshot due to \"unable to destroy task(com.xe nsou..."
+msgstr ""
+
+#: ../../about.rst:748
+# 36992a81b47943f29ffb24dfca04b284
+msgid "`CLOUDSTACK-5358 <https://issues.apache.org/jira/browse/CLOUDSTACK-5358>`_"
+msgstr ""
+
+#: ../../about.rst:748
+# 809afb2c1a5a4e8e834545fdecd809e0
+msgid "API: synchronization on the object is broken..."
+msgstr ""
+
+#: ../../about.rst:749
+# e9ba91dc614643a6b8f4ad800d78b8d5
+msgid "`CLOUDSTACK-5372 <https://issues.apache.org/jira/browse/CLOUDSTACK-5372>`_"
+msgstr ""
+
+#: ../../about.rst:749
+# a12de4d7e892479d9b85f53620897771
+msgid "Xenserver - SR not being recreated when the Primary storage is brought down and ..."
+msgstr ""
+
+#: ../../about.rst:750
+# 242006f64cba438995e2a4751cc8074c
+msgid "`CLOUDSTACK-5429 <https://issues.apache.org/jira/browse/CLOUDSTACK-5429>`_"
+msgstr ""
+
+#: ../../about.rst:750
+# d44d2dfe655b4b60aacd9383de18bf54
+msgid "KVM - Primary store down/Network Failure - Hosts attempt to reboot becasue of pr..."
+msgstr ""
+
+#: ../../about.rst:751
+# 5a67b815905b45faa0786948f1f40a16
+msgid "`CLOUDSTACK-5452 <https://issues.apache.org/jira/browse/CLOUDSTACK-5452>`_"
+msgstr ""
+
+#: ../../about.rst:751
+# 07aad5722c294ceca2d20ff07b9b3d55
+msgid "KVM - Agent is not able to connect back if management server was restarted when ..."
+msgstr ""
+
+#: ../../about.rst:752
+# c469ca03b2d441cf9f2b89a9ad0fd256
+msgid "`CLOUDSTACK-5469 <https://issues.apache.org/jira/browse/CLOUDSTACK-5469>`_"
+msgstr ""
+
+#: ../../about.rst:752
+# 5fc31df43299472b90b99fd450381f27
+msgid "Snapshot creation fails with following exception - \"Failed to backup snapshot: q..."
+msgstr ""
+
+#: ../../about.rst:753
+# ee69b35e9a104e15af05fed03f16bfd6
+msgid "`CLOUDSTACK-5485 <https://issues.apache.org/jira/browse/CLOUDSTACK-5485>`_"
+msgstr ""
+
+#: ../../about.rst:753
+# 6c11592ff2d042b39f286026a49b57fa
+msgid "Vmware - Whe 10 hourly snapshots are scheduled at the same time , we see only 5 ..."
+msgstr ""
+
+#: ../../about.rst:754
+# 812196063f1e4c48b18e33d9e082fdd5
+msgid "`CLOUDSTACK-5494 <https://issues.apache.org/jira/browse/CLOUDSTACK-5494>`_"
+msgstr ""
+
+#: ../../about.rst:754
+# 8634a982a6a241608c9c0041c466b319
+msgid "the dns resolver servers on the VRs are open to the world..."
+msgstr ""
+
+#: ../../about.rst:755
+# 495c1be268f445c1b8d4818f81b9a3e2
+msgid "`CLOUDSTACK-5499 <https://issues.apache.org/jira/browse/CLOUDSTACK-5499>`_"
+msgstr ""
+
+#: ../../about.rst:755
+# 33cbbaaae77946e7a820cdc7d3a2a40a
+msgid "Vmware -When nfs was down for about 12 hours  and then brought back up again , s..."
+msgstr ""
+
+#: ../../about.rst:756
+# 9dbd38304a7246adbccd0c72b9fffbef
+msgid "`CLOUDSTACK-5501 <https://issues.apache.org/jira/browse/CLOUDSTACK-5501>`_"
+msgstr ""
+
+#: ../../about.rst:756
+# fd1a637684f64104b0306facc294dd5c
+msgid "Unable to create more than one vpnConnection per vpn customer gateway..."
+msgstr ""
+
+#: ../../about.rst:757
+# 8c0d9bb0c8434e33b618102c0d54d14f
+msgid "`CLOUDSTACK-5582 <https://issues.apache.org/jira/browse/CLOUDSTACK-5582>`_"
+msgstr ""
+
+#: ../../about.rst:757
+# 7b80352fe2c74d488a4f1e2464276657
+msgid "kvm - HA is not triggered when host is powered down since the host gets into \"Di..."
+msgstr ""
+
+#: ../../about.rst:758
+# 783f8812c4484c618f51d34b26c7a473
+msgid "`CLOUDSTACK-5746 <https://issues.apache.org/jira/browse/CLOUDSTACK-5746>`_"
+msgstr ""
+
+#: ../../about.rst:758
+# 36954ba31b6b46ef9cd2e53529f59f8b
+msgid "[HyperV]Can't access vm console from IE browser..."
+msgstr ""
+
+#: ../../about.rst:759
+# 0553b5764c5548f096edcec2ede64189
+msgid "`CLOUDSTACK-5806 <https://issues.apache.org/jira/browse/CLOUDSTACK-5806>`_"
+msgstr ""
+
+#: ../../about.rst:759
+# e3358df3595e46f89d0e9e178040e051
+msgid "Storage types other than NFS/VMFS can't overprovision..."
+msgstr ""
+
+#: ../../about.rst:760
+# d7ee8f91e0274d89a09eb32b2a3fe162
+msgid "`CLOUDSTACK-5818 <https://issues.apache.org/jira/browse/CLOUDSTACK-5818>`_"
+msgstr ""
+
+#: ../../about.rst:760
+# c4afd7c1057b4a02a51318811dd0604f
+msgid "[Hyper-v]Agent status of the System VMs is not updated during Host disconnect..."
+msgstr ""
+
+#: ../../about.rst:761
+# 677a4b4cd4a04c63a7ab351992c54168
+msgid "`CLOUDSTACK-5825 <https://issues.apache.org/jira/browse/CLOUDSTACK-5825>`_"
+msgstr ""
+
+#: ../../about.rst:761
+# e87b7183c08d4bd9a79801ea0bb14a4a
+msgid "Create snapshot API always returns success..."
+msgstr ""
+
+#: ../../about.rst:762
+# 72e75f9805fd435b9ccd058b65bd54b4
+msgid "`CLOUDSTACK-5882 <https://issues.apache.org/jira/browse/CLOUDSTACK-5882>`_"
+msgstr ""
+
+#: ../../about.rst:762
+# 19fd2a4d5ae64d869733b5e0338c4ff1
+msgid "UI has different fonts and font sizes..."
+msgstr ""
+
+#: ../../about.rst:763
+# 247f7ef2aa90421694ad2b6c90f47332
+msgid "`CLOUDSTACK-5899 <https://issues.apache.org/jira/browse/CLOUDSTACK-5899>`_"
+msgstr ""
+
+#: ../../about.rst:763
+# 16fd252ccb144331b12e9bcd4c31b313
+msgid "Contrail:MS: Exceptions in MS logs on a fresh install,  syncDomain java.lang.Nul..."
+msgstr ""
+
+#: ../../about.rst:764
+# 4ee5ee9fdfd94d5c88540dfb3886aa40
+msgid "`CLOUDSTACK-5928 <https://issues.apache.org/jira/browse/CLOUDSTACK-5928>`_"
+msgstr ""
+
+#: ../../about.rst:764
+# 292cea71244743b88b5e16bcb8925980
+msgid "[VM Sync] - Vmware - When a Vm is \"suspended\" from outside of CloudStack , this ..."
+msgstr ""
+
+#: ../../about.rst:765
+# 5ef4783f7eeb40c9bacacb4919ca82d0
+msgid "`CLOUDSTACK-5929 <https://issues.apache.org/jira/browse/CLOUDSTACK-5929>`_"
+msgstr ""
+
+#: ../../about.rst:765
+# d2f17d37363c4cc7b2851b114418ce92
+msgid "[VM Sync] - Vmware - Even when starting Vm fails, startVirtualMachine async job ..."
+msgstr ""
+
+#: ../../about.rst:766
+# 76fd33bc1154489d975d3abe31affcbf
+msgid "`CLOUDSTACK-5961 <https://issues.apache.org/jira/browse/CLOUDSTACK-5961>`_"
+msgstr ""
+
+#: ../../about.rst:766
+# eb3e836316be4139853918f4ffb63f5d
+msgid "CLONE - API: synchronization on the object is broken..."
+msgstr ""
+
+#: ../../about.rst:767
+# 25ce75c7373d4ca38c31e02205c65ec0
+msgid "`CLOUDSTACK-6050 <https://issues.apache.org/jira/browse/CLOUDSTACK-6050>`_"
+msgstr ""
+
+#: ../../about.rst:767
+# b8ccec7515b84034957aebe65d722c06
+msgid "A limitations on min-max on CPU/RAM for a dynamic offering ..."
+msgstr ""
+
+#: ../../about.rst:768
+# edb163afa7a7435b951c440f1eb8adaa
+msgid "`CLOUDSTACK-6051 <https://issues.apache.org/jira/browse/CLOUDSTACK-6051>`_"
+msgstr ""
+
+#: ../../about.rst:768
+# 3979450b6d8a45adb4a307a9f78e6d1d
+msgid "VR Rolling upgrade: Make the numbers of Routers parallely being upgraded as conf..."
+msgstr ""
+
+#: ../../about.rst:769
+# 0add0d8647da48d98e1f752ad5e5ebd8
+msgid "`CLOUDSTACK-6063 <https://issues.apache.org/jira/browse/CLOUDSTACK-6063>`_"
+msgstr ""
+
+#: ../../about.rst:769
+# 3e818949eac24ce6a0d3d2a030e78bb7
+msgid "CLONE - Non windows instances are created on XenServer with a vcpu-max above sup..."
+msgstr ""
+
+#: ../../about.rst:770
+# 720f854db96746c5a47da9f9ca9bb92a
+msgid "`CLOUDSTACK-6065 <https://issues.apache.org/jira/browse/CLOUDSTACK-6065>`_"
+msgstr ""
+
+#: ../../about.rst:770
+# 50f80b81c959495bb215a273eb93476b
+msgid "No HA for shutdown VM..."
+msgstr ""
+
+#: ../../about.rst:771
+# 34c7e3458c7c49c19e4573ea105a6967
+msgid "`CLOUDSTACK-6079 <https://issues.apache.org/jira/browse/CLOUDSTACK-6079>`_"
+msgstr ""
+
+#: ../../about.rst:771
+# 2f08609fa26b4764868788499ef7e020
+msgid "a broadcast type of a public network is affected by another physical network's i..."
+msgstr ""
+
+#: ../../about.rst:772
+# 3e8bba76ffb3402f854a35dcdd022d8f
+msgid "`CLOUDSTACK-77 <https://issues.apache.org/jira/browse/CLOUDSTACK-77>`_"
+msgstr ""
+
+#: ../../about.rst:772
+# 0f4c1b5bcfc14ab48ca576b42e6493af
+msgid "console proxy display issues..."
+msgstr ""
+
+#: ../../about.rst:773
+# 3365fe9795b34909870583163db215f6
+msgid "`CLOUDSTACK-107 <https://issues.apache.org/jira/browse/CLOUDSTACK-107>`_"
+msgstr ""
+
+#: ../../about.rst:773
+# 486188c703b64696806a1a86bfaf8188
+msgid "Network domain guest suffix is not getting programmed as part of hostnames on Gu..."
+msgstr ""
+
+#: ../../about.rst:774
+# 994f5cbe376840d2ae02fa5953409ed4
+msgid "`CLOUDSTACK-237 <https://issues.apache.org/jira/browse/CLOUDSTACK-237>`_"
+msgstr ""
+
+#: ../../about.rst:774
+# c73ee41ff6a643bb9db3648b8008b46c
+msgid "StopVMCommand reported success in spite of failing to stop a VM which got stuck ..."
+msgstr ""
+
+#: ../../about.rst:775
+# 83494e97fca7463885f04bb064098114
+msgid "`CLOUDSTACK-238 <https://issues.apache.org/jira/browse/CLOUDSTACK-238>`_"
+msgstr ""
+
+#: ../../about.rst:775
+# 1d5f73907f4f40fca7062368bc77acf3
+msgid "vpn:fail to connect to vpnserver using non-sourceNAT IP..."
+msgstr ""
+
+#: ../../about.rst:776
+# 8b883cfbd306436eb833afa800881c9b
+msgid "`CLOUDSTACK-252 <https://issues.apache.org/jira/browse/CLOUDSTACK-252>`_"
+msgstr ""
+
+#: ../../about.rst:776
+# 661901dc6f95475c99a173229d502de9
+msgid "UpdateNetwork Operation on a guest network that is currently using Virtual Route..."
+msgstr ""
+
+#: ../../about.rst:777
+# 88cead594e484ee89ffb6a431087da73
+msgid "`CLOUDSTACK-255 <https://issues.apache.org/jira/browse/CLOUDSTACK-255>`_"
+msgstr ""
+
+#: ../../about.rst:777
+# 953fe31bcf574f6da002fb0eda9829b0
+msgid "Null pointer exception while creating portforwarding rule after performing Updat..."
+msgstr ""
+
+#: ../../about.rst:778
+# d04f44859ed84287b2bbb0f5a2a02fd4
+msgid "`CLOUDSTACK-317 <https://issues.apache.org/jira/browse/CLOUDSTACK-317>`_"
+msgstr ""
+
+#: ../../about.rst:778
+# 9e1e272cd50c4c83ab11fc0068786418
+msgid "get xcp 1.5 into an advanced network zone..."
+msgstr ""
+
+#: ../../about.rst:779
+# bb6eee8040694156baa0f1cd892cfaa2
+msgid "`CLOUDSTACK-375 <https://issues.apache.org/jira/browse/CLOUDSTACK-375>`_"
+msgstr ""
+
+#: ../../about.rst:779
+# fdf3e49a3cb44de28cfeea786a577df3
+msgid "Unable to delete physical network - because there are other networks attached..."
+msgstr ""
+
+#: ../../about.rst:780
+# a1acc70725b24b1e8b2ddab9bd5f0f92
+msgid "`CLOUDSTACK-425 <https://issues.apache.org/jira/browse/CLOUDSTACK-425>`_"
+msgstr ""
+
+#: ../../about.rst:780
+# 2d04ce4728174183b509e742f7071363
+msgid "Check image type is qcow2 before actually installing..."
+msgstr ""
+
+#: ../../about.rst:781
+# d6ecb5b847b141468224a8b22b441114
+msgid "`CLOUDSTACK-992 <https://issues.apache.org/jira/browse/CLOUDSTACK-992>`_"
+msgstr ""
+
+#: ../../about.rst:781
+# daeacb38cd054fd6adfc01a375a85f4d
+msgid "Template creations dies after 2h for no reason..."
+msgstr ""
+
+#: ../../about.rst:782
+# 38316ccdc679458e8c4b44503d897aa3
+msgid "`CLOUDSTACK-1007 <https://issues.apache.org/jira/browse/CLOUDSTACK-1007>`_"
+msgstr ""
+
+#: ../../about.rst:782
+# 61e6cf53ab794c55875f4862b57a3e85
+msgid "Not able to delete Shared network because of not being able to stop the router...."
+msgstr ""
+
+#: ../../about.rst:783
+# c7f801984bf74320b773fe0ad72c3a08
+msgid "`CLOUDSTACK-1091 <https://issues.apache.org/jira/browse/CLOUDSTACK-1091>`_"
+msgstr ""
+
+#: ../../about.rst:783
+# 5d93525d930c49a68eacc663e993da2b
+msgid "Fix API server's parsing mechanism for POST requests..."
+msgstr ""
+
+#: ../../about.rst:784
+# cdd49d3ca6d14a83ae2d4efd2458de9c
+msgid "`CLOUDSTACK-1092 <https://issues.apache.org/jira/browse/CLOUDSTACK-1092>`_"
+msgstr ""
+
+#: ../../about.rst:784
+# 878923cf4ccf40bfb78945d5a54c7226
+msgid "Fix API Server's parsing mechanism to parse GET request as multimap..."
+msgstr ""
+
+#: ../../about.rst:785
+# d9c36379acf9481eaa72f886e2d85d04
+msgid "`CLOUDSTACK-1309 <https://issues.apache.org/jira/browse/CLOUDSTACK-1309>`_"
+msgstr ""
+
+#: ../../about.rst:785
+# 33df291795b74b03ad9bab5e09db2801
+msgid "Large guest subnets downgrade performance..."
+msgstr ""
+
+#: ../../about.rst:786
+# 6fd8714ddad04fc7aefb4b95240c313f
+msgid "`CLOUDSTACK-1389 <https://issues.apache.org/jira/browse/CLOUDSTACK-1389>`_"
+msgstr ""
+
+#: ../../about.rst:786
+# d9197701267548ae99ea1aeaf1c10a18
+msgid "Interactive Password Prompts during Management Server Startup..."
+msgstr ""
+
+#: ../../about.rst:787
+# a4910348aa8546fc81ca2976dcf5ae70
+msgid "`CLOUDSTACK-1413 <https://issues.apache.org/jira/browse/CLOUDSTACK-1413>`_"
+msgstr ""
+
+#: ../../about.rst:787
+# a55911b4455e4dac80c71f3a74ce3f07
+msgid "Need something to concretely identify the version of the code in a particular bu..."
+msgstr ""
+
+#: ../../about.rst:788
+# e1c49f8c562445719ba551cb19c8bddc
+msgid "`CLOUDSTACK-1527 <https://issues.apache.org/jira/browse/CLOUDSTACK-1527>`_"
+msgstr ""
+
+#: ../../about.rst:788
+# 0228182ddaf24ea7a63474da106be626
+msgid "Non-fatal POSTIN scriptlet failure in rpm package cloudstack-management-4.2.0-SN..."
+msgstr ""
+
+#: ../../about.rst:789
+# 864cd6c21f814c459a9a3f0d18ea9500
+msgid "`CLOUDSTACK-1717 <https://issues.apache.org/jira/browse/CLOUDSTACK-1717>`_"
+msgstr ""
+
+#: ../../about.rst:789
+# 1a0044e05ad7401aa9b78b5a82a38192
+msgid "AWS Regions - Local region entry that gets added by default should not include \"..."
+msgstr ""
+
+#: ../../about.rst:790
+# e8cd251bcc6d4c379f0736aa46129bbe
+msgid "`CLOUDSTACK-1885 <https://issues.apache.org/jira/browse/CLOUDSTACK-1885>`_"
+msgstr ""
+
+#: ../../about.rst:790
+# 694628719d7145628aedbc499609a966
+msgid "Broken testcases in 4.1..."
+msgstr ""
+
+#: ../../about.rst:791
+# 7515997e2a7f413f80d330d8a0e0fa9e
+msgid "`CLOUDSTACK-1990 <https://issues.apache.org/jira/browse/CLOUDSTACK-1990>`_"
+msgstr ""
+
+#: ../../about.rst:791
+# cb1d24a891854529a3ec234b0d44e143
+msgid "Docs: Update \"Choosing a Hypervisor\" feature matrix with new info..."
+msgstr ""
+
+#: ../../about.rst:792
+# 0e015d29cbf1478fb5d4362bd9c9a49c
+msgid "`CLOUDSTACK-2004 <https://issues.apache.org/jira/browse/CLOUDSTACK-2004>`_"
+msgstr ""
+
+#: ../../about.rst:792
+# 8ead7e56bda24b15b373057319d52ec0
+msgid "IPV6 - UI -  Router details page - NICs tab - Guest traffic type does not displa..."
+msgstr ""
+
+#: ../../about.rst:793
+# 182bad5646834f53a01d33b9a1024a67
+msgid "`CLOUDSTACK-2009 <https://issues.apache.org/jira/browse/CLOUDSTACK-2009>`_"
+msgstr ""
+
+#: ../../about.rst:793
+# d2bcbe2e6d66493aab159ea738344281
+msgid "IPV6 - listNetwork() command does not return ip6dns1 and ip6dns2 entries...."
+msgstr ""
+
+#: ../../about.rst:794
+# 8bdf10c82eb6496d8fbbd4e18f864519
+msgid "`CLOUDSTACK-2022 <https://issues.apache.org/jira/browse/CLOUDSTACK-2022>`_"
+msgstr ""
+
+#: ../../about.rst:794
+# 281659dd94f447ab89811c990e83746e
+msgid "IPV6 - ListRouter() should return guestip6address parameter similar to guestaddr..."
+msgstr ""
+
+#: ../../about.rst:795
+# 1e8b51b1d53a454a8ca390a0297a01dd
+msgid "`CLOUDSTACK-2023 <https://issues.apache.org/jira/browse/CLOUDSTACK-2023>`_"
+msgstr ""
+
+#: ../../about.rst:795
+# b10aa54c02b043838ee7d2c646017e85
+msgid "IPV6 - Dashboard View - System wide Capacity for Shared Network IPs does not inc..."
+msgstr ""
+
+#: ../../about.rst:796
+# 22f167a09c0c4e0f9f59b8a68f2ee654
+msgid "`CLOUDSTACK-2026 <https://issues.apache.org/jira/browse/CLOUDSTACK-2026>`_"
+msgstr ""
+
+#: ../../about.rst:796
+# 009ae683f400491fb6b1488a79994f26
+msgid "IPV6 - UI - Provide the ability to turn off all the IPV6 parameters by using a g..."
+msgstr ""
+
+#: ../../about.rst:797
+# cb6a5a34bfd341669546708c9119f3d5
+msgid "`CLOUDSTACK-2099 <https://issues.apache.org/jira/browse/CLOUDSTACK-2099>`_"
+msgstr ""
+
+#: ../../about.rst:797
+# 9f2cc504258748d182ed67ac3081057c
+msgid "Not able to add a host after a failed attempt to add the host to a wrong cluster..."
+msgstr ""
+
+#: ../../about.rst:798
+# 3f141bf7fe7445f19888de01c3aa6ba5
+msgid "`CLOUDSTACK-2112 <https://issues.apache.org/jira/browse/CLOUDSTACK-2112>`_"
+msgstr ""
+
+#: ../../about.rst:798
+# f6f310af0449450d87cdd0a210fdb0de
+msgid "VM went in stopped state after  live migration failed while vmscaleup..."
+msgstr ""
+
+#: ../../about.rst:799
+# d3d65c8d21b84f9d8c30ff44d359665a
+msgid "`CLOUDSTACK-2191 <https://issues.apache.org/jira/browse/CLOUDSTACK-2191>`_"
+msgstr ""
+
+#: ../../about.rst:799
+# b718e77dad2d4d70b5ccdf6481a0f2e2
+msgid "sanity tests for \"EIP : Optional public IP\" changes ..."
+msgstr ""
+
+#: ../../about.rst:800
+# 0c16e6776c314ce19cb0b493768ee7da
+msgid "`CLOUDSTACK-2291 <https://issues.apache.org/jira/browse/CLOUDSTACK-2291>`_"
+msgstr ""
+
+#: ../../about.rst:800
+# 5369f4749beb456180f8567cc47c0a64
+msgid "[BasicZone-XenServer] NPE while trying DeleteNetworkCmd..."
+msgstr ""
+
+#: ../../about.rst:801
+# cfbcaf313e0040ada9c9ae72834c0456
+msgid "`CLOUDSTACK-2293 <https://issues.apache.org/jira/browse/CLOUDSTACK-2293>`_"
+msgstr ""
+
+#: ../../about.rst:801
+# fe6538720b324d7fa3bd6ee56bb415db
+msgid "[BasicZone-XenServer] DeletePhysicalNetworkCmd is not deleting the external devi..."
+msgstr ""
+
+#: ../../about.rst:802
+# 19ce524dca9b4b5fbebe8c77e6dc485d
+msgid "`CLOUDSTACK-2412 <https://issues.apache.org/jira/browse/CLOUDSTACK-2412>`_"
+msgstr ""
+
+#: ../../about.rst:802
+# e690d342afc54f69a90ab070bb65b3b1
+msgid "[UI]Disable CiscoVnmc provider for PF/SourceNat/StaticNAT/Firewall dropdown list..."
+msgstr ""
+
+#: ../../about.rst:803
+# ad9cf8f340b34dfe99003df89c673bde
+msgid "`CLOUDSTACK-2418 <https://issues.apache.org/jira/browse/CLOUDSTACK-2418>`_"
+msgstr ""
+
+#: ../../about.rst:803
+# a084e2d66028435e808e334df768f7b1
+msgid "[GSLB] NPE while removing the GSLB enabled Netscaler device..."
+msgstr ""
+
+#: ../../about.rst:804
+# a7edeaba8ea5402091f7ac2d5746244a
+msgid "`CLOUDSTACK-2471 <https://issues.apache.org/jira/browse/CLOUDSTACK-2471>`_"
+msgstr ""
+
+#: ../../about.rst:804
+# 55fe809fb167495bb2dff8be76b93a0a
+msgid "test_host_high_availability.py refers to non-existent library method wait_for_vm..."
+msgstr ""
+
+#: ../../about.rst:805
+# cc41be7d4b0a4b93a6e967d08c5828ab
+msgid "`CLOUDSTACK-2501 <https://issues.apache.org/jira/browse/CLOUDSTACK-2501>`_"
+msgstr ""
+
+#: ../../about.rst:805
+# fc6042d3a4124e0fb977723466b9b649
+msgid "Scalevm - Need to take care of upgraded vms..."
+msgstr ""
+
+#: ../../about.rst:806
+# fbf8b9d297254a44af85b4ad0842ed76
+msgid "`CLOUDSTACK-2790 <https://issues.apache.org/jira/browse/CLOUDSTACK-2790>`_"
+msgstr ""
+
+#: ../../about.rst:806
+# ff03767769eb44ecb3a56532519d227a
+msgid "AWSAPI: packaging includes all .class files bloating size of the RPM..."
+msgstr ""
+
+#: ../../about.rst:807
+# c19f028510d04cc28bfcc5b751d5e3d2
+msgid "`CLOUDSTACK-2795 <https://issues.apache.org/jira/browse/CLOUDSTACK-2795>`_"
+msgstr ""
+
+#: ../../about.rst:807
+# c6229aa4fa8e4d8eb9c3721fdd4ebefa
+msgid "Create template failed..."
+msgstr ""
+
+#: ../../about.rst:808
+# cf5c8f8d78d446059ec5f4f3fed761eb
+msgid "`CLOUDSTACK-2845 <https://issues.apache.org/jira/browse/CLOUDSTACK-2845>`_"
+msgstr ""
+
+#: ../../about.rst:808
+# 37593b03408f427aa7de5a29a3748a9f
+msgid "[DB upgrade] [ExternalLoadBalancer NetworkUsage] Duplicate entries in the databa..."
+msgstr ""
+
+#: ../../about.rst:809
+# c020d1432c6d4c4fb0e6f6b4e5cd1bc4
+msgid "`CLOUDSTACK-2853 <https://issues.apache.org/jira/browse/CLOUDSTACK-2853>`_"
+msgstr ""
+
+#: ../../about.rst:809
+# 4f1e62857eb24e02bcb12508a788902d
+msgid "Cloudstack copies xenserver scripts while adding host even the server is KVM hos..."
+msgstr ""
+
+#: ../../about.rst:810
+# 1f3a582d8a534e73bf6e5c5b2955fb42
+msgid "`CLOUDSTACK-2860 <https://issues.apache.org/jira/browse/CLOUDSTACK-2860>`_"
+msgstr ""
+
+#: ../../about.rst:810
+# d520cc0ec5e94254a5e872f670506b50
+msgid "Add new host into VMWare Cluster failed..."
+msgstr ""
+
+#: ../../about.rst:811
+# cf603d42174143a788458e386ef792e6
+msgid "`CLOUDSTACK-2910 <https://issues.apache.org/jira/browse/CLOUDSTACK-2910>`_"
+msgstr ""
+
+#: ../../about.rst:811
+# c4f453abc31c4760b0de34cd22a0a842
+msgid "SC: Ctrl combinated with >. is not working of SC IME..."
+msgstr ""
+
+#: ../../about.rst:812
+# 57433b88f491415d8a3b3a0557e62e90
+msgid "`CLOUDSTACK-2911 <https://issues.apache.org/jira/browse/CLOUDSTACK-2911>`_"
+msgstr ""
+
+#: ../../about.rst:812
+# c2891aaa96d045f59fdc65bf0ec4c6b6
+msgid "KO: Key translation fails for KO keyboard Right Alt, Han/Eng, Hanja keys..."
+msgstr ""
+
+#: ../../about.rst:813
+# 20c6aa92e5e64bfdbbba9b9873593e6a
+msgid "`CLOUDSTACK-2919 <https://issues.apache.org/jira/browse/CLOUDSTACK-2919>`_"
+msgstr ""
+
+#: ../../about.rst:813
+# 730d2192fd4c480a9ba6ae4dc725c6f7
+msgid "Snapshot cannot be saved to full Secondary Storage, but doesn't utilize other Se..."
+msgstr ""
+
+#: ../../about.rst:814
+# fd7d4be76aad4992a084ee3c9b87316a
+msgid "`CLOUDSTACK-3066 <https://issues.apache.org/jira/browse/CLOUDSTACK-3066>`_"
+msgstr ""
+
+#: ../../about.rst:814
+# a7da0f1a26c54809b0d5050d00edba7c
+msgid "No Error message is popped up on UI when a dedicated resource is dedicated to an..."
+msgstr ""
+
+#: ../../about.rst:815
+# 19fee5eea48c419591b66b59ff3ca932
+msgid "`CLOUDSTACK-3095 <https://issues.apache.org/jira/browse/CLOUDSTACK-3095>`_"
+msgstr ""
+
+#: ../../about.rst:815
+# ad934f739e5b48aaa189bb5006e06667
+msgid "[UI][API]Able to add multiple tier networks to a deployed VM using “Add network”..."
+msgstr ""
+
+#: ../../about.rst:816
+# 1685d66996f24e2c9ac9749ada0c337b
+msgid "`CLOUDSTACK-3111 <https://issues.apache.org/jira/browse/CLOUDSTACK-3111>`_"
+msgstr ""
+
+#: ../../about.rst:816
+# 90300713d7a94be9b4a53a3cbeaf9fb3
+msgid "[UI] Storage tab is not showing the Hypervisor column as 'KVM' if the (root/data..."
+msgstr ""
+
+#: ../../about.rst:817
+# ffd4f821bc2943d2930d9af2c49845de
+msgid "`CLOUDSTACK-3186 <https://issues.apache.org/jira/browse/CLOUDSTACK-3186>`_"
+msgstr ""
+
+#: ../../about.rst:817
+# 40c67476c65141a384d19d5e91ebe8e2
+msgid "Duplicate entries in /etc/hosts file on VR after reboot..."
+msgstr ""
+
+#: ../../about.rst:818
+# 86a63899c98d4540b236af83fc53bcd8
+msgid "`CLOUDSTACK-3195 <https://issues.apache.org/jira/browse/CLOUDSTACK-3195>`_"
+msgstr ""
+
+#: ../../about.rst:818
+# a5d3b451f9e74a57994918f6196c038d
+msgid "cannot view/delete forward rules if underlying/target VM is destroyed first..."
+msgstr ""
+
+#: ../../about.rst:819
+# 6316b885181e4a6db59dd7a61d848af6
+msgid "`CLOUDSTACK-3197 <https://issues.apache.org/jira/browse/CLOUDSTACK-3197>`_"
+msgstr ""
+
+#: ../../about.rst:819
+# 9a68d9f3dded4c1fb613689212157f70
+msgid "UI: NTier: User is required to scroll down every single time to \"Create Network\"..."
+msgstr ""
+
+#: ../../about.rst:820
+# 37f216e52aa64ea3b056df50d30772dd
+msgid "`CLOUDSTACK-3212 <https://issues.apache.org/jira/browse/CLOUDSTACK-3212>`_"
+msgstr ""
+
+#: ../../about.rst:820
+# a03c118709644f8a873dd08ae8d2ecab
+msgid "[Advanced_With_SG]View IP Address Range in Default Guest Network page does not s..."
+msgstr ""
+
+#: ../../about.rst:821
+# 91d455d686d74e8a84d45acd20e37a38
+msgid "`CLOUDSTACK-3272 <https://issues.apache.org/jira/browse/CLOUDSTACK-3272>`_"
+msgstr ""
+
+#: ../../about.rst:821
+# 7d38aaa3e47c41f48e72a98ff6af02ac
+msgid "EventBus: add global config parameters to specify which category of events are p..."
+msgstr ""
+
+#: ../../about.rst:822
+# 99ae405f44074d508e663c61adc5e2fe
+msgid "`CLOUDSTACK-3338 <https://issues.apache.org/jira/browse/CLOUDSTACK-3338>`_"
+msgstr ""
+
+#: ../../about.rst:822
+# 2d4b8aba24aa42c48845921942823f32
+msgid "Please provide an icon for \"assignVMs\" action in internal LB rule detailView..."
+msgstr ""
+
+#: ../../about.rst:823
+# 24213f8f87694830a5969b7396aba336
+msgid "`CLOUDSTACK-3518 <https://issues.apache.org/jira/browse/CLOUDSTACK-3518>`_"
+msgstr ""
+
+#: ../../about.rst:823
+# 345de226be3d4fbfbb1fdc2c36df5b57
+msgid "G11n: JA,SC: Un translation issue occurred on the strings of different UI Specif..."
+msgstr ""
+
+#: ../../about.rst:824
+# 0cad2b157e0643d4b095f8e42ede3653
+msgid "`CLOUDSTACK-3519 <https://issues.apache.org/jira/browse/CLOUDSTACK-3519>`_"
+msgstr ""
+
+#: ../../about.rst:824
+# 10b012d926f74eeaaaef9f5d4472b2e8
+msgid "G11n: JA,SC: Un translation issue occurred on the strings of different dropdown ..."
+msgstr ""
+
+#: ../../about.rst:825
+# 6e4117836bd54627983b90ccb4fd972e
+msgid "`CLOUDSTACK-3520 <https://issues.apache.org/jira/browse/CLOUDSTACK-3520>`_"
+msgstr ""
+
+#: ../../about.rst:825
+# 77e8bb8d4eeb46c8b7e8bbe4235146b3
+msgid "G11n: JA,SC: Un translation issue occurred on the strings of different error/war..."
+msgstr ""
+
+#: ../../about.rst:826
+# 69e17113af284510bbdfe40df0585a2d
+msgid "`CLOUDSTACK-3521 <https://issues.apache.org/jira/browse/CLOUDSTACK-3521>`_"
+msgstr ""
+
+#: ../../about.rst:826
+# 1e1fea07835f4dcebeefc56a4449f575
+msgid "G11n: JA,SC: Un translation issue occurred on the strings of different tooltips...."
+msgstr ""
+
+#: ../../about.rst:827
+# 1d2d8b90f2764934b1dd1cd1fce29339
+msgid "`CLOUDSTACK-3522 <https://issues.apache.org/jira/browse/CLOUDSTACK-3522>`_"
+msgstr ""
+
+#: ../../about.rst:827
+# ca84e356f6e84a6da02cb9d318143ad8
+msgid "G11n: JA,SC: Un translation issue occurred on the strings of different buttons. ..."
+msgstr ""
+
+#: ../../about.rst:828
+# 01b9bc53bfd24beca70b3526031dbff7
+msgid "`CLOUDSTACK-3523 <https://issues.apache.org/jira/browse/CLOUDSTACK-3523>`_"
+msgstr ""
+
+#: ../../about.rst:828
+# 283fcc12a9264505b50208d8bf7d2a49
+msgid "G11n: JA,SC: Un translation issue occurred on the strings of different popup mes..."
+msgstr ""
+
+#: ../../about.rst:829
+# d727ab1d9cdd4390830b55c9e82a72c5
+msgid "`CLOUDSTACK-3528 <https://issues.apache.org/jira/browse/CLOUDSTACK-3528>`_"
+msgstr ""
+
+#: ../../about.rst:829
+# 0ddbdc2d48364a249bb650bcaf5bbab4
+msgid "[UI]list calls are in the processing state forever with invalid name provided wi..."
+msgstr ""
+
+#: ../../about.rst:830
+# e37353944bf54b4a85b99168017481d7
+msgid "`CLOUDSTACK-3579 <https://issues.apache.org/jira/browse/CLOUDSTACK-3579>`_"
+msgstr ""
+
+#: ../../about.rst:830
+# 29097d5077f441acb224dc0abe0531f2
+msgid "[DOC]CLONE - Physical Netwok traffic label update requires Management Server res..."
+msgstr ""
+
+#: ../../about.rst:831
+# 8068a0f7fb314d09890588a269e6fbda
+msgid "`CLOUDSTACK-3607 <https://issues.apache.org/jira/browse/CLOUDSTACK-3607>`_"
+msgstr ""
+
+#: ../../about.rst:831
+# 0c66c8aa620d4276a766aabedf6d27ef
+msgid "\"guest_os_hypervisor\" table has values that are not registered in \"guest_os\" tab..."
+msgstr ""
+
+#: ../../about.rst:832
+# 9b30b8f208624d7fb47de5f9c27d766a
+msgid "`CLOUDSTACK-3608 <https://issues.apache.org/jira/browse/CLOUDSTACK-3608>`_"
+msgstr ""
+
+#: ../../about.rst:832
+# a9abe6215c9a4ffb9c2ad532d94f5af6
+msgid "\"guest_os_hypervisor\" table has repeated mappings of hypervisor and guest OS..."
+msgstr ""
+
+#: ../../about.rst:833
+# 91dda0b77dd7409dbfaee7af5bfd4735
+msgid "`CLOUDSTACK-3656 <https://issues.apache.org/jira/browse/CLOUDSTACK-3656>`_"
+msgstr ""
+
+#: ../../about.rst:833
+# 6fac99ff12f44703800ef69bbd326ade
+msgid "lots of cloud-management should be changed to cloudstack-management..."
+msgstr ""
+
+#: ../../about.rst:834
+# 3c5649e1ab4c47e98e0e3c1fb5c42f85
+msgid "`CLOUDSTACK-3788 <https://issues.apache.org/jira/browse/CLOUDSTACK-3788>`_"
+msgstr ""
+
+#: ../../about.rst:834
+# 23bcc323dd9f4499b4b990f6b60e23de
+msgid "[KVM] Weekly Snapshot got stuck in \"Allocated State\"..."
+msgstr ""
+
+#: ../../about.rst:835
+# bf66b9022ae745eeae6dd0d830e04e4b
+msgid "`CLOUDSTACK-3813 <https://issues.apache.org/jira/browse/CLOUDSTACK-3813>`_"
+msgstr ""
+
+#: ../../about.rst:835
+# 565bddce4d1a4e5c9989fc4713209422
+msgid "\"Service.provider.create\" event doesnt mention about the Service Provider in the..."
+msgstr ""
+
+#: ../../about.rst:836
+# 5909690d894e4af98b88348330eaf80c
+msgid "`CLOUDSTACK-3880 <https://issues.apache.org/jira/browse/CLOUDSTACK-3880>`_"
+msgstr ""
+
+#: ../../about.rst:836
+# 92f4394bbccc4d73a7abf4986b7aef09
+msgid "/sbin/poweroff et al or ACPID initiated shutdown does not stop cloudstack-[usage..."
+msgstr ""
+
+#: ../../about.rst:837
+# af5f6c67184c43d69be0f8a84c3da845
+msgid "`CLOUDSTACK-3952 <https://issues.apache.org/jira/browse/CLOUDSTACK-3952>`_"
+msgstr ""
+
+#: ../../about.rst:837
+# 8f858d9cad2f40c88d8d2f5af1e32c6b
+msgid "Persist VR nic details in DB for additional public ranges..."
+msgstr ""
+
+#: ../../about.rst:838
+# d476952f126c4e0da77c036b61493842
+msgid "`CLOUDSTACK-3973 <https://issues.apache.org/jira/browse/CLOUDSTACK-3973>`_"
+msgstr ""
+
+#: ../../about.rst:838
+# 7699c9364349442f9b4f367fe0cc5406
+msgid "[GSLB] [LOGS Message] Improving logs messages for GSLB rule configuration..."
+msgstr ""
+
+#: ../../about.rst:839
+# db8c9e75bf7148cc912ab4272aefb08e
+msgid "`CLOUDSTACK-4016 <https://issues.apache.org/jira/browse/CLOUDSTACK-4016>`_"
+msgstr ""
+
+#: ../../about.rst:839
+# cf07892fab0e409587c77f182580f130
+msgid "[PortableIP] [VPC] listPublicIpAddresses lists the portable IP that was already ..."
+msgstr ""
+
+#: ../../about.rst:840
+# 8b9b04e7723c4229a66a7451ee9149fa
+msgid "`CLOUDSTACK-4139 <https://issues.apache.org/jira/browse/CLOUDSTACK-4139>`_"
+msgstr ""
+
+#: ../../about.rst:840
+# abdf622f1de14176894c2458dd68a5a5
+msgid "[VMWARE]Failed to resize the volumes which are created from snapshot of root vol..."
+msgstr ""
+
+#: ../../about.rst:841
+# 13c094402d2b473b8748820532360c82
+msgid "`CLOUDSTACK-4475 <https://issues.apache.org/jira/browse/CLOUDSTACK-4475>`_"
+msgstr ""
+
+#: ../../about.rst:841
+# d75b21c14d854c718eb7baa5ae577e57
+msgid "[ZWPS] attaching an uploaded volume to a VM is always going to first primary sto..."
+msgstr ""
+
+#: ../../about.rst:842
+# 963c1f4a34fa48e482e68ecfaf50fb0f
+msgid "`CLOUDSTACK-4517 <https://issues.apache.org/jira/browse/CLOUDSTACK-4517>`_"
+msgstr ""
+
+#: ../../about.rst:842
+# 05f689495c3e468b9616d4a552b6041a
+msgid "[upgrade][Vmware]Deployment of VM using centos 6.2 template registered before up..."
+msgstr ""
+
+#: ../../about.rst:843
+# d79bc70df3164ff498dd037943a1c7d7
+msgid "`CLOUDSTACK-4536 <https://issues.apache.org/jira/browse/CLOUDSTACK-4536>`_"
+msgstr ""
+
+#: ../../about.rst:843
+# 2c3c317a8b7641d4b7411985a2d77a7b
+msgid "[object_store_refactor] Inconsistency in volume store location on secondary stor..."
+msgstr ""
+
+#: ../../about.rst:844
+# 4815b5eae689480abd0b6b7fe91ec576
+msgid "`CLOUDSTACK-4568 <https://issues.apache.org/jira/browse/CLOUDSTACK-4568>`_"
+msgstr ""
+
+#: ../../about.rst:844
+# 0d644eebf87f4ed3974a233caa1875e8
+msgid "Need to add this to the release note of 4.2..."
+msgstr ""
+
+#: ../../about.rst:845
+# 4ed6d4de0686413d897b5d5bc1e47bf4
+msgid "`CLOUDSTACK-4587 <https://issues.apache.org/jira/browse/CLOUDSTACK-4587>`_"
+msgstr ""
+
+#: ../../about.rst:845
+# c6d1314a3416461ca735639c482cff75
+msgid "VM is failing to deploy on a Legacy zone after adding zone wide primary storage ..."
+msgstr ""
+
+#: ../../about.rst:846
+# d8e2c85fe6084953b0cd57ca1432252a
+msgid "`CLOUDSTACK-4644 <https://issues.apache.org/jira/browse/CLOUDSTACK-4644>`_"
+msgstr ""
+
+#: ../../about.rst:846
+# 91e0978f03174df9a0ce716746467e3e
+msgid "Tool Tip information is not provided for the new fields which are added in 4.2 (..."
+msgstr ""
+
+#: ../../about.rst:847
+# e353f5b9bce741fe9283b7fdbc4deb2d
+msgid "`CLOUDSTACK-4789 <https://issues.apache.org/jira/browse/CLOUDSTACK-4789>`_"
+msgstr ""
+
+#: ../../about.rst:847
+# b50cb97705294024b308c11f9ae725dc
+msgid "Fix ResourceMetaDataManagerTest..."
+msgstr ""
+
+#: ../../about.rst:848
+# f59060ae188240b0a5d2f26715489d57
+msgid "`CLOUDSTACK-4906 <https://issues.apache.org/jira/browse/CLOUDSTACK-4906>`_"
+msgstr ""
+
+#: ../../about.rst:848
+# 3f4c63f3409141339cbbc807ce029e12
+msgid "add netaddr to marvin dependency list..."
+msgstr ""
+
+#: ../../about.rst:849
+# 3ae875a8bd9b4099955b237366e34a36
+msgid "`CLOUDSTACK-4918 <https://issues.apache.org/jira/browse/CLOUDSTACK-4918>`_"
+msgstr ""
+
+#: ../../about.rst:849
+# f2fabf4d452845cb95c65f6182800a84
+msgid "VR can not be LB service provider without requiring to be source nat service pro..."
+msgstr ""
+
+#: ../../about.rst:850
+# 9401d4a09ea74a9ab860bf262eb09b0f
+msgid "`CLOUDSTACK-4951 <https://issues.apache.org/jira/browse/CLOUDSTACK-4951>`_"
+msgstr ""
+
+#: ../../about.rst:850
+# 6551a1ac300749d59dcff44e00aa4916
+msgid "[event framework] Action events do not have UUID ..."
+msgstr ""
+
+#: ../../about.rst:851
+# a3fca57fd51343fa9ef3d4895f877e2a
+msgid "`CLOUDSTACK-4987 <https://issues.apache.org/jira/browse/CLOUDSTACK-4987>`_"
+msgstr ""
+
+#: ../../about.rst:851
+# 1b9b350d3957469c9a768c94875ac1ea
+msgid "Able to add isolated network belonging to an account to a virtual machine belong..."
+msgstr ""
+
+#: ../../about.rst:852
+# 90ae3294042f4d0597f0efdd0730c5ad
+msgid "`CLOUDSTACK-5043 <https://issues.apache.org/jira/browse/CLOUDSTACK-5043>`_"
+msgstr ""
+
+#: ../../about.rst:852
+# 5af46297d4384855b7abd846b9067ba0
+msgid "[DOC] Page number missing and words truncated in PDFs since 4.1.1..."
+msgstr ""
+
+#: ../../about.rst:853
+# ec7562dd46d849bca09658dc943e540e
+msgid "`CLOUDSTACK-5044 <https://issues.apache.org/jira/browse/CLOUDSTACK-5044>`_"
+msgstr ""
+
+#: ../../about.rst:853
+# bd1e5dee91b042c38ef5a4158faf96ad
+msgid "Configuration Framework Issue..."
+msgstr ""
+
+#: ../../about.rst:854
+# 538f943df0004e81a22d5df035e09d51
+msgid "`CLOUDSTACK-5090 <https://issues.apache.org/jira/browse/CLOUDSTACK-5090>`_"
+msgstr ""
+
+#: ../../about.rst:854
+# 59f356260ca64980873ea42bcd645f41
+msgid "Anti-Affinity: VM fails to start on a cluster belonging to a different pod...."
+msgstr ""
+
+#: ../../about.rst:855
+# b546e94e9dde4baeb145a43938a9cd10
+msgid "`CLOUDSTACK-5157 <https://issues.apache.org/jira/browse/CLOUDSTACK-5157>`_"
+msgstr ""
+
+#: ../../about.rst:855
+# 2646dfaae349447ca25494693e0462a8
+msgid "Loadbalancer Response should include stickiness, health check and ssl certs info..."
+msgstr ""
+
+#: ../../about.rst:856
+# 6a05087655c44bff937a2124f49369b1
+msgid "`CLOUDSTACK-5243 <https://issues.apache.org/jira/browse/CLOUDSTACK-5243>`_"
+msgstr ""
+
+#: ../../about.rst:856
+# 74a8e6f41c7f45e089dc569457615115
+msgid "SSVM responds with timestamp..."
+msgstr ""
+
+#: ../../about.rst:857
+# 912b281864744e47ad4f479d19241f4a
+msgid "`CLOUDSTACK-5251 <https://issues.apache.org/jira/browse/CLOUDSTACK-5251>`_"
+msgstr ""
+
+#: ../../about.rst:857
+# 37eb832c9bb74af4b0cdae2afcfda41f
+msgid "No Error message is displayed when nonexistent NFS secondary storage  is added t..."
+msgstr ""
+
+#: ../../about.rst:858
+# d66f80edf66146fba90143a9e484d542
+msgid "`CLOUDSTACK-5296 <https://issues.apache.org/jira/browse/CLOUDSTACK-5296>`_"
+msgstr ""
+
+#: ../../about.rst:858
+# 384f8cbdf3654fa2a9eb680df54dd5db
+msgid "Add certificate chain support for NS..."
+msgstr ""
+
+#: ../../about.rst:859
+# 0d998bd399984a29862cb44b71fcbf96
+msgid "`CLOUDSTACK-5307 <https://issues.apache.org/jira/browse/CLOUDSTACK-5307>`_"
+msgstr ""
+
+#: ../../about.rst:859
+# c49d878f41984cd78db12c9fcf070c95
+msgid "Same router is listed twice in router view of project..."
+msgstr ""
+
+#: ../../about.rst:860
+# 71665a82fbc141a6b01d1195697bb70b
+msgid "`CLOUDSTACK-5324 <https://issues.apache.org/jira/browse/CLOUDSTACK-5324>`_"
+msgstr ""
+
+#: ../../about.rst:860
+# d69f8f89c7df449588dae87cd97d1db3
+msgid "error message not proper when start VM  fails because router reuires upgrade..."
+msgstr ""
+
+#: ../../about.rst:861
+# 63e3490bdbfe48dbb9bdda4817820de1
+msgid "`CLOUDSTACK-5342 <https://issues.apache.org/jira/browse/CLOUDSTACK-5342>`_"
+msgstr ""
+
+#: ../../about.rst:861
+# f57d012692bb4c758f3c308260279825
+msgid "[Automation] Add NIC to virtual machine fails in KVM..."
+msgstr ""
+
+#: ../../about.rst:862
+# 854279263dcc4bedbcfdca929874c649
+msgid "`CLOUDSTACK-5359 <https://issues.apache.org/jira/browse/CLOUDSTACK-5359>`_"
+msgstr ""
+
+#: ../../about.rst:862
+# 647abcdf85a14baaba9aed0902868228
+msgid "Failed to add second VMWARE cluster on a standard vSwitch enabled zone when vCen..."
+msgstr ""
+
+#: ../../about.rst:863
+# 18efbd385eca4042bcef93617ac7cfe8
+msgid "`CLOUDSTACK-5373 <https://issues.apache.org/jira/browse/CLOUDSTACK-5373>`_"
+msgstr ""
+
+#: ../../about.rst:863
+# 9271346879e54d97be130f4728cbafeb
+msgid "Web UI (non-English) is corrupted by text expansion..."
+msgstr ""
+
+#: ../../about.rst:864
+# 780d56f9e92f4cc2ba1aa64bb09cbe83
+msgid "`CLOUDSTACK-5395 <https://issues.apache.org/jira/browse/CLOUDSTACK-5395>`_"
+msgstr ""
+
+#: ../../about.rst:864
+# ad882c1bb8f0458f99d80ce32f2583f1
+msgid "When backup snapshot fails becasue of backup.snapshot.wait time exceeding , the ..."
+msgstr ""
+
+#: ../../about.rst:865
+# c7aef46fb8da442d878cdfe4a257324e
+msgid "`CLOUDSTACK-5410 <https://issues.apache.org/jira/browse/CLOUDSTACK-5410>`_"
+msgstr ""
+
+#: ../../about.rst:865
+# ff02b9c29cdf4a668a0f907fe938d4a9
+msgid "Changes for tracking logs using jobid is missing in 4.3..."
+msgstr ""
+
+#: ../../about.rst:866
+# a4a3473f1ace4015b9339ba63e271bce
+msgid "`CLOUDSTACK-5445 <https://issues.apache.org/jira/browse/CLOUDSTACK-5445>`_"
+msgstr ""
+
+#: ../../about.rst:866
+# 186b08ec8c3540e7aacbbda556a2c2a0
+msgid "DeleteImageStoreCmd does not use storage plugins to delete storage..."
+msgstr ""
+
+#: ../../about.rst:867
+# 40a5c6bb376349dea617c8c68dd955b3
+msgid "`CLOUDSTACK-5446 <https://issues.apache.org/jira/browse/CLOUDSTACK-5446>`_"
+msgstr ""
+
+#: ../../about.rst:867
+# 3c0a1722a6cd4281918c4ef6acc1a6a2
+msgid "KVM-Secondary Store down-Even after secondary store is brought back up after bei..."
+msgstr ""
+
+#: ../../about.rst:868
+# 19936917d18f4c77aaaad9e27e2310d9
+msgid "`CLOUDSTACK-5463 <https://issues.apache.org/jira/browse/CLOUDSTACK-5463>`_"
+msgstr ""
+
+#: ../../about.rst:868
+# ba8cbe65e4594d899fe24e54ae8b5992
+msgid "Hyper-V does not report stopped VMs..."
+msgstr ""
+
+#: ../../about.rst:869
+# 27f903e78a1e4230b29219c4ec66fe0d
+msgid "`CLOUDSTACK-5474 <https://issues.apache.org/jira/browse/CLOUDSTACK-5474>`_"
+msgstr ""
+
+#: ../../about.rst:869
+# b91a29a477054ec79e256c6a0fbb1ec3
+msgid "EventBus: RabbitMQ provider expects password to be stored in plain text...."
+msgstr ""
+
+#: ../../about.rst:870
+# 6982699ba50f4148a796aa00770ec36d
+msgid "`CLOUDSTACK-5475 <https://issues.apache.org/jira/browse/CLOUDSTACK-5475>`_"
+msgstr ""
+
+#: ../../about.rst:870
+# ee289fc9554d4907a9b7f6db1c055723
+msgid "cluster.cpu/(memory).allocated.capacity.disablethreshold is getting displayed mu..."
+msgstr ""
+
+#: ../../about.rst:871
+# bca6052a6e7e4389acbc8d0733971f61
+msgid "`CLOUDSTACK-5479 <https://issues.apache.org/jira/browse/CLOUDSTACK-5479>`_"
+msgstr ""
+
+#: ../../about.rst:871
+# 3b3df00c077a4ff183fbb31913209048
+msgid "Upgrading service offering of stopped vm should release the reserved capacity of..."
+msgstr ""
+
+#: ../../about.rst:872
+# c2c37fd269c848c696fd09f301f8ddde
+msgid "`CLOUDSTACK-5482 <https://issues.apache.org/jira/browse/CLOUDSTACK-5482>`_"
+msgstr ""
+
+#: ../../about.rst:872
+# 664f6ca3453948a0a2563e0d533babe6
+msgid "Vmware - When nfs was down for about 1 hour , when snapshots were in progress , ..."
+msgstr ""
+
+#: ../../about.rst:873
+# f5034cfaedc848bdaca9750fe15dbd26
+msgid "`CLOUDSTACK-5488 <https://issues.apache.org/jira/browse/CLOUDSTACK-5488>`_"
+msgstr ""
+
+#: ../../about.rst:873
+# a7dec60810d14854b7976d8efbb9a90b
+msgid "KVM:agent is still in stopped state even after host recovered from sudddent powe..."
+msgstr ""
+
+#: ../../about.rst:874
+# 3bb93b7ac2de4fed9677b7368e741971
+msgid "`CLOUDSTACK-5504 <https://issues.apache.org/jira/browse/CLOUDSTACK-5504>`_"
+msgstr ""
+
+#: ../../about.rst:874
+# 557f1ef5197b4a9ebbfa0a10d2744ffb
+msgid "Vmware-Primary store unavailable for 10 mts - All snapshot tasks reported failur..."
+msgstr ""
+
+#: ../../about.rst:875
+# 5ae6f7889af34ae083506fa75e899a67
+msgid "`CLOUDSTACK-5512 <https://issues.apache.org/jira/browse/CLOUDSTACK-5512>`_"
+msgstr ""
+
+#: ../../about.rst:875
+# 185288f7676b451691fe79f60cabb4ea
+msgid "template format name checking is crude and doesn't work with advanced URLs..."
+msgstr ""
+
+#: ../../about.rst:876
+# 99d37e013d50405a8b7e8c3fbe6bd1b8
+msgid "`CLOUDSTACK-5536 <https://issues.apache.org/jira/browse/CLOUDSTACK-5536>`_"
+msgstr ""
+
+#: ../../about.rst:876
+# 3313cc51b9c54b3ea48d14ba8da7fd5a
+msgid "Restarting cloudstack service with template download in progress creates redunda..."
+msgstr ""
+
+#: ../../about.rst:877
+# 6fc2b9f9f0cd4244b6cae357df2648c1
+msgid "`CLOUDSTACK-5546 <https://issues.apache.org/jira/browse/CLOUDSTACK-5546>`_"
+msgstr ""
+
+#: ../../about.rst:877
+# ad995e32134d42538c1ea2e43b381f39
+msgid "Extra tab for adding rules displayed for non-elb networks..."
+msgstr ""
+
+#: ../../about.rst:878
+# a54dbaac63214de8a33c2afb52bdeb22
+msgid "`CLOUDSTACK-5550 <https://issues.apache.org/jira/browse/CLOUDSTACK-5550>`_"
+msgstr ""
+
+#: ../../about.rst:878
+# 88355285abd84916851924fca618a14f
+msgid "UI - Api key and secret key not fully visible in user detail view...."
+msgstr ""
+
+#: ../../about.rst:879
+# 115fded8d9b14ae888df6d309ed00928
+msgid "`CLOUDSTACK-5561 <https://issues.apache.org/jira/browse/CLOUDSTACK-5561>`_"
+msgstr ""
+
+#: ../../about.rst:879
+# 7d3829818296496e96133bb776f55ced
+msgid "support of multiple nics for VR running in HyperV..."
+msgstr ""
+
+#: ../../about.rst:880
+# 5d53268c0d8649dd8fd8451e90bb2bbe
+msgid "`CLOUDSTACK-5563 <https://issues.apache.org/jira/browse/CLOUDSTACK-5563>`_"
+msgstr ""
+
+#: ../../about.rst:880
+# ace3df46440647d5855140e8dd8dc0e4
+msgid "path field is set to null in volumes table ..."
+msgstr ""
+
+#: ../../about.rst:881
+# a4c069ad32674f6eaaabb01ca26e7113
+msgid "`CLOUDSTACK-5576 <https://issues.apache.org/jira/browse/CLOUDSTACK-5576>`_"
+msgstr ""
+
+#: ../../about.rst:881
+# 29da54590cab44809148bf8c2e05d3ff
+msgid "RemoteVPNonVPC :  Label needs to be changed to \"Enable Remote Access VPN\"..."
+msgstr ""
+
+#: ../../about.rst:882
+# 1c6be0b1e1c545c8aab7cf4c395ee39a
+msgid "`CLOUDSTACK-5583 <https://issues.apache.org/jira/browse/CLOUDSTACK-5583>`_"
+msgstr ""
+
+#: ../../about.rst:882
+# e58f05d86e0a4f419ace651927d24418
+msgid "vmopsSnapshot plug-in (XenServer) does not return an error when it should..."
+msgstr ""
+
+#: ../../about.rst:883
+# cbed0572c6e7432a86db4deb1ac862a1
+msgid "`CLOUDSTACK-5600 <https://issues.apache.org/jira/browse/CLOUDSTACK-5600>`_"
+msgstr ""
+
+#: ../../about.rst:883
+# f1979a44524844f2be872644261781d8
+msgid "Xenserver - After HA , CPVM's disk is corrupted resulting in CPVM being stuck in..."
+msgstr ""
+
+#: ../../about.rst:884
+# 0ab0fd8ed1bb438794ce77987189a38d
+msgid "`CLOUDSTACK-5616 <https://issues.apache.org/jira/browse/CLOUDSTACK-5616>`_"
+msgstr ""
+
+#: ../../about.rst:884
+# 66ca2c3ae557455a8e0bd6fc1cf71461
+msgid "[DBHA]:There is no way to know to which DB is the CS writing in the case of DBHA..."
+msgstr ""
+
+#: ../../about.rst:885
+# d7afa33b29a9481b81da8e9979c9fe99
+msgid "`CLOUDSTACK-5632 <https://issues.apache.org/jira/browse/CLOUDSTACK-5632>`_"
+msgstr ""
+
+#: ../../about.rst:885
+# 1fb27092752e48ebae6b13be3236cc36
+msgid "[Automation] XenServer - Template deletion fails with error \"Please specify a te..."
+msgstr ""
+
+#: ../../about.rst:886
+# 8faf542b4f8d49268ad3f077a273d0ea
+msgid "`CLOUDSTACK-5645 <https://issues.apache.org/jira/browse/CLOUDSTACK-5645>`_"
+msgstr ""
+
+#: ../../about.rst:886
+# 50778e9a2d4a4bcbbc88640e9166df7b
+msgid "Agent manager doesn't need to be aware of vms and their relationship to resource..."
+msgstr ""
+
+#: ../../about.rst:887
+# 18b251fdf12941b08ae9f51e40ad63b5
+msgid "`CLOUDSTACK-5673 <https://issues.apache.org/jira/browse/CLOUDSTACK-5673>`_"
+msgstr ""
+
+#: ../../about.rst:887
+# 37828a256ee04f84bef64abc33e23445
+msgid "[Hyper-V] Default IP address never configured on eth0 with default CentOS templa..."
+msgstr ""
+
+#: ../../about.rst:888
+# a1a62c2a7c7140d893ac132834fa2ac3
+msgid "`CLOUDSTACK-5685 <https://issues.apache.org/jira/browse/CLOUDSTACK-5685>`_"
+msgstr ""
+
+#: ../../about.rst:888
+# ef5d0499d90b4aa1ac23c4c2ed84ad54
+msgid "[Vmsync] - When VR is rebooted outside of cloudstack , there is no change in sta..."
+msgstr ""
+
+#: ../../about.rst:889
+# 05dfaa9b48b74d5ea1cd1e1465e47a37
+msgid "`CLOUDSTACK-5700 <https://issues.apache.org/jira/browse/CLOUDSTACK-5700>`_"
+msgstr ""
+
+#: ../../about.rst:889
+# ae47fe867c8c4bebbf91f2089da3de2c
+msgid "[Vmsync] - kvm- \"paused\" state of Vm is not synced to CS...."
+msgstr ""
+
+#: ../../about.rst:890
+# f5f9d1b9f7eb44a8a12525d5876edaf6
+msgid "`CLOUDSTACK-5719 <https://issues.apache.org/jira/browse/CLOUDSTACK-5719>`_"
+msgstr ""
+
+#: ../../about.rst:890
+# f4a44a6bee7a4174904606768d1b5317
+msgid "[UI] Not listing shared network offerings tagged on second physical network..."
+msgstr ""
+
+#: ../../about.rst:891
+# 6ce899d61b7c48d7a5672becc9c54d4e
+msgid "`CLOUDSTACK-5724 <https://issues.apache.org/jira/browse/CLOUDSTACK-5724>`_"
+msgstr ""
+
+#: ../../about.rst:891
+# 700f101ab73145708d1ba9a04087c56d
+msgid "Console Proxy View - when using ctl c , errors seen on the console proxy view...."
+msgstr ""
+
+#: ../../about.rst:892
+# ff9918b62f6a4a64ba52cca3f79d88b4
+msgid "`CLOUDSTACK-5743 <https://issues.apache.org/jira/browse/CLOUDSTACK-5743>`_"
+msgstr ""
+
+#: ../../about.rst:892
+# 98cbe0a9a1e8430897abd0b9af2db194
+msgid "Download ROOT Volume when the VM is in stopped state is failing with \"Forbidden..."
+msgstr ""
+
+#: ../../about.rst:893
+# d0cf5147264a41baa87388c9783ee790
+msgid "`CLOUDSTACK-5744 <https://issues.apache.org/jira/browse/CLOUDSTACK-5744>`_"
+msgstr ""
+
+#: ../../about.rst:893
+# 0f713dfd8c3c4df69483c843804baab2
+msgid "[Hyper-v] White screen on console window when more than two console sessions are..."
+msgstr ""
+
+#: ../../about.rst:894
+# 5aafc3f652cf44d692c4e1645a8bf3d4
+msgid "`CLOUDSTACK-5753 <https://issues.apache.org/jira/browse/CLOUDSTACK-5753>`_"
+msgstr ""
+
+#: ../../about.rst:894
+# 42cd0b6e37ad4404bdb40e46486fed21
+msgid "[Hyper-v] ConsoleProxyLoadReportCommand does not honor the default value of cons..."
+msgstr ""
+
+#: ../../about.rst:895
+# 5b013ab075a44ee6a6b3e33a2bae8f61
+msgid "`CLOUDSTACK-5762 <https://issues.apache.org/jira/browse/CLOUDSTACK-5762>`_"
+msgstr ""
+
+#: ../../about.rst:895
+# b0cbc6e65abd4f33a804cd00a9b9c695
+msgid "[dynamic compute offerings]UI change required for select  compute offerinngs in ..."
+msgstr ""
+
+#: ../../about.rst:896
+# a634cee299e04a14b89a67fd6a94125c
+msgid "`CLOUDSTACK-5785 <https://issues.apache.org/jira/browse/CLOUDSTACK-5785>`_"
+msgstr ""
+
+#: ../../about.rst:896
+# f250b3550ce9466a9b47ac297dcea0c4
+msgid "VM display name cell not updated upon detaching volume from VM..."
+msgstr ""
+
+#: ../../about.rst:897
+# 57ad55a4e61647a0882bc09169fd6817
+msgid "`CLOUDSTACK-5794 <https://issues.apache.org/jira/browse/CLOUDSTACK-5794>`_"
+msgstr ""
+
+#: ../../about.rst:897
+# 58ad5190ba254101aecd3d7a72a35438
+msgid "[Hyper-v] Specify username and domain name together in the username field while ..."
+msgstr ""
+
+#: ../../about.rst:898
+# ebd16484f41f49ae8baf3ae988aece7e
+msgid "`CLOUDSTACK-5798 <https://issues.apache.org/jira/browse/CLOUDSTACK-5798>`_"
+msgstr ""
+
+#: ../../about.rst:898
+# 7a0969b4f07a49f7b7c462a014c2c8af
+msgid "While attaching a disk to WIN2012 VM with xencenter tools installed got error as..."
+msgstr ""
+
+#: ../../about.rst:899
+# 8e0ee4b7c893491baa02e0e3e93e8e16
+msgid "`CLOUDSTACK-5800 <https://issues.apache.org/jira/browse/CLOUDSTACK-5800>`_"
+msgstr ""
+
+#: ../../about.rst:899
+# 0ed8e78455684cdc8a491ed802c6965f
+msgid "While creating a VM from template (which is created based on existing newly crea..."
+msgstr ""
+
+#: ../../about.rst:900
+# 12d7be57f3964c8ea7f8764a8b5542e1
+msgid "`CLOUDSTACK-5807 <https://issues.apache.org/jira/browse/CLOUDSTACK-5807>`_"
+msgstr ""
+
+#: ../../about.rst:900
+# 1250e3a50d13426193f19f2eb26d8234
+msgid "Problem with shared datastore in VMware cluster with only one host..."
+msgstr ""
+
+#: ../../about.rst:901
+# 69f827f9a93e490dbd9e6f2741f2cbc5
+msgid "`CLOUDSTACK-5809 <https://issues.apache.org/jira/browse/CLOUDSTACK-5809>`_"
+msgstr ""
+
+#: ../../about.rst:901
+# 9074e58f0309446e8db7614d7e5e5127
+msgid "Not able to deploy Vm becasue of crossing pool.storage.allocate d.capacity.disab..."
+msgstr ""
+
+#: ../../about.rst:902
+# 286bdc5b6ef849dd8db6b248ee7d6f60
+msgid "`CLOUDSTACK-5822 <https://issues.apache.org/jira/browse/CLOUDSTACK-5822>`_"
+msgstr ""
+
+#: ../../about.rst:902
+# d289cc546c5e4df4ad53f642e8874469
+msgid "ssh keypairs are removed after rebooting vm..."
+msgstr ""
+
+#: ../../about.rst:903
+# 664f265b4db244e3b0c56c3095902135
+msgid "`CLOUDSTACK-5834 <https://issues.apache.org/jira/browse/CLOUDSTACK-5834>`_"
+msgstr ""
+
+#: ../../about.rst:903
+# 667f15f64c964fa2bac4bba9015e4084
+msgid "[upgrade]Error while collecting disk stats from : You gave an invalid object ref..."
+msgstr ""
+
+#: ../../about.rst:904
+# 786d10393be74d629c641bc4b38faf42
+msgid "`CLOUDSTACK-5836 <https://issues.apache.org/jira/browse/CLOUDSTACK-5836>`_"
+msgstr ""
+
+#: ../../about.rst:904
+# 7bc6019b2e7848dea5578204eaa13518
+msgid "When tried to reverting back to (disk attached)quiesced vm snapshot, got error a..."
+msgstr ""
+
+#: ../../about.rst:905
+# d7f0463020c34e5e834a238760a0f9e4
+msgid "`CLOUDSTACK-5843 <https://issues.apache.org/jira/browse/CLOUDSTACK-5843>`_"
+msgstr ""
+
+#: ../../about.rst:905
+# af63ab512388436084ef9a5e5e26cdc8
+msgid "registering templates/isos should be either async or changed to non-blocking..."
+msgstr ""
+
+#: ../../about.rst:906
+# cb9d311cd97a46f0916d2556e653472d
+msgid "`CLOUDSTACK-5845 <https://issues.apache.org/jira/browse/CLOUDSTACK-5845>`_"
+msgstr ""
+
+#: ../../about.rst:906
+# 05f37dcc77404e77b8c79111c57c9d36
+msgid "[doc] Document Heterogeneous Secondary Storage Not Supported in Region..."
+msgstr ""
+
+#: ../../about.rst:907
+# c293d49d6ee14f3691333a1fcc1d9cae
+msgid "`CLOUDSTACK-5847 <https://issues.apache.org/jira/browse/CLOUDSTACK-5847>`_"
+msgstr ""
+
+#: ../../about.rst:907
+# 6c44f7c2f2f24344bd8bdfa3b418dd4c
+msgid "[Hyper-V] [doc] Document creation of external vswitch for Hyper-V 2012 R2 (unlik..."
+msgstr ""
+
+#: ../../about.rst:908
+# bb970630a4c340cfab239c5db76d5673
+msgid "`CLOUDSTACK-5855 <https://issues.apache.org/jira/browse/CLOUDSTACK-5855>`_"
+msgstr ""
+
+#: ../../about.rst:908
+# e13098ccaa854d3390abfce0d6b31ab9
+msgid "Contrail: Slave compute host restarts when the master compute host is changed to..."
+msgstr ""
+
+#: ../../about.rst:909
+# 928b3d2337e943518c6970f197a7d678
+msgid "`CLOUDSTACK-5862 <https://issues.apache.org/jira/browse/CLOUDSTACK-5862>`_"
+msgstr ""
+
+#: ../../about.rst:909
+# 53ef125446914ddb909aed2609ec7675
+msgid "Template life cycle needs to be changed based on references of existing VMs to t..."
+msgstr ""
+
+#: ../../about.rst:910
+# a799fb1c163f495bb4b930f6407dd4c0
+msgid "`CLOUDSTACK-5866 <https://issues.apache.org/jira/browse/CLOUDSTACK-5866>`_"
+msgstr ""
+
+#: ../../about.rst:910
+# 3c604dcccc1547b981102ad43574b2ea
+msgid "Remove maven profile used to configure zone..."
+msgstr ""
+
+#: ../../about.rst:911
+# 2f2b6f0b3b5b44dd85e12acc6c23ef50
+msgid "`CLOUDSTACK-5876 <https://issues.apache.org/jira/browse/CLOUDSTACK-5876>`_"
+msgstr ""
+
+#: ../../about.rst:911
+# 8b6ef5cbb54a4ce5b0467f0011c7c1f1
+msgid "Contrail: After vrouter restart agent doesnt have info about the Network..."
+msgstr ""
+
+#: ../../about.rst:912
+# 893995e98cc7440ea0dba88aaa379dd0
+msgid "`CLOUDSTACK-5879 <https://issues.apache.org/jira/browse/CLOUDSTACK-5879>`_"
+msgstr ""
+
+#: ../../about.rst:912
+# 6571f89c2aae4158bbd1b99c772c38f5
+msgid "Document on how to use RabbitMq event bus with spring modularisation done in 4.3..."
+msgstr ""
+
+#: ../../about.rst:913
+# cc8c7cf6a4d94119bf49f81944e920d0
+msgid "`CLOUDSTACK-5897 <https://issues.apache.org/jira/browse/CLOUDSTACK-5897>`_"
+msgstr ""
+
+#: ../../about.rst:913
+# 403d2f7b85104696a671c5b93e8ea8bb
+msgid "Remove OVM in add cluster drop down list..."
+msgstr ""
+
+#: ../../about.rst:914
+# 2c4e82e8705045c080699b97100bedb1
+msgid "`CLOUDSTACK-5907 <https://issues.apache.org/jira/browse/CLOUDSTACK-5907>`_"
+msgstr ""
+
+#: ../../about.rst:914
+# f034b4782a2b43f3bb70c3310b99162b
+msgid "KVM/CLVM volumes are shown as Ovm hypervisor..."
+msgstr ""
+
+#: ../../about.rst:915
+# 9334e89d22934a17943a95a1a6d5e76d
+msgid "`CLOUDSTACK-5908 <https://issues.apache.org/jira/browse/CLOUDSTACK-5908>`_"
+msgstr ""
+
+#: ../../about.rst:915
+# 534e0c90b9384a20978f7e71bdb28087
+msgid "Fail to add VXLAN network to instance..."
+msgstr ""
+
+#: ../../about.rst:916
+# 7abee3bb9e2f426d8c64026e38aead1a
+msgid "`CLOUDSTACK-5910 <https://issues.apache.org/jira/browse/CLOUDSTACK-5910>`_"
+msgstr ""
+
+#: ../../about.rst:916
+# 949aa883624c49ec947c8f6043726b82
+msgid "mark the LDAP user as imported from LDAP..."
+msgstr ""
+
+#: ../../about.rst:917
+# ddb914164d494cb389f441f8cdde6e6c
+msgid "`CLOUDSTACK-5920 <https://issues.apache.org/jira/browse/CLOUDSTACK-5920>`_"
+msgstr ""
+
+#: ../../about.rst:917
+# c7c78875c79c41b6a408653ff602283e
+msgid "CloudStack IAM Plugin feature..."
+msgstr ""
+
+#: ../../about.rst:918
+# 8e519430e75d485a994dae2492b983f0
+msgid "`CLOUDSTACK-5926 <https://issues.apache.org/jira/browse/CLOUDSTACK-5926>`_"
+msgstr ""
+
+#: ../../about.rst:918
+# f40042d45fa045c69feac8f0d56523e9
+msgid "[Doc] Create 4.3 Release Notes..."
+msgstr ""
+
+#: ../../about.rst:919
+# 01274b0e8eb0455488738fe326b2ca4a
+msgid "`CLOUDSTACK-5931 <https://issues.apache.org/jira/browse/CLOUDSTACK-5931>`_"
+msgstr ""
+
+#: ../../about.rst:919
+# 2ad43a29eb2446c19054d4f4de8a412d
+msgid "Hyper-V agent does not release logon handle..."
+msgstr ""
+
+#: ../../about.rst:920
+# 7574c7a322544be1b263bb3ec5592bf0
+msgid "`CLOUDSTACK-5932 <https://issues.apache.org/jira/browse/CLOUDSTACK-5932>`_"
+msgstr ""
+
+#: ../../about.rst:920
+# 8959ea6a86f14c44b75082b5cf4a5504
+msgid "SystemVM scripts: the iso download urls need updating as current ones are obsole..."
+msgstr ""
+
+#: ../../about.rst:921
+# 9ba0283e6f494ab9a79dd828a4f01f72
+msgid "`CLOUDSTACK-5933 <https://issues.apache.org/jira/browse/CLOUDSTACK-5933>`_"
+msgstr ""
+
+#: ../../about.rst:921
+#: ../../about.rst:922
+#: ../../about.rst:923
+# 4386f9854460410f99be0fbf30839be2
+# c01f1d82b0b34f4f8e65a923f537f52c
+# ee091b1541c5408892806e573ea04f96
+msgid "Problem with VMware snapshot when datastore has a space in its name..."
+msgstr ""
+
+#: ../../about.rst:922
+# 29f18f2027654c7195ad40575c511e42
+msgid "`CLOUDSTACK-5934 <https://issues.apache.org/jira/browse/CLOUDSTACK-5934>`_"
+msgstr ""
+
+#: ../../about.rst:923
+# 2803afd9715643d9993f1bc6d35b48ea
+msgid "`CLOUDSTACK-5935 <https://issues.apache.org/jira/browse/CLOUDSTACK-5935>`_"
+msgstr ""
+
+#: ../../about.rst:924
+# 16e9afd202824f61b74b88fcd119ac31
+msgid "`CLOUDSTACK-5947 <https://issues.apache.org/jira/browse/CLOUDSTACK-5947>`_"
+msgstr ""
+
+#: ../../about.rst:924
+# eaefc26ccb71465b9dd709c1363ce884
+msgid "Exception for getRootDir.. NFSStorage when running with Simulator..."
+msgstr ""
+
+#: ../../about.rst:925
+# 33be46514ef34269bf6bf799e7a0a600
+msgid "`CLOUDSTACK-5951 <https://issues.apache.org/jira/browse/CLOUDSTACK-5951>`_"
+msgstr ""
+
+#: ../../about.rst:925
+# 04ebebcb83874e32b89e4f558668fdfc
+msgid "Fix base.py for Dynamic compute offerings..."
+msgstr ""
+
+#: ../../about.rst:926
+# 3603844f426d4800b2674bcc3b9b0ecf
+msgid "`CLOUDSTACK-5954 <https://issues.apache.org/jira/browse/CLOUDSTACK-5954>`_"
+msgstr ""
+
+#: ../../about.rst:926
+# 2543950ffe334bd7af6428c70e2b0bc1
+msgid "update-ssl.png missing from docs..."
+msgstr ""
+
+#: ../../about.rst:927
+# fe22a557e4a54a8db459927cbb92059e
+msgid "`CLOUDSTACK-5955 <https://issues.apache.org/jira/browse/CLOUDSTACK-5955>`_"
+msgstr ""
+
+#: ../../about.rst:927
+# 45fbb0c1ae664a41be751b48dea38610
+msgid "vm stuck in migrating if mgmt server is restarted..."
+msgstr ""
+
+#: ../../about.rst:928
+# 8da42368a75849949db98ccf97555530
+msgid "`CLOUDSTACK-5962 <https://issues.apache.org/jira/browse/CLOUDSTACK-5962>`_"
+msgstr ""
+
+#: ../../about.rst:928
+# fc01cb9dba774bf89888043588232727
+msgid "Value of Global parameter \"custom.diskoffering.size.min\" is not reflected in UI ..."
+msgstr ""
+
+#: ../../about.rst:929
+# 4b6f466a4e8643b9860fa0ded9ccac27
+msgid "`CLOUDSTACK-5972 <https://issues.apache.org/jira/browse/CLOUDSTACK-5972>`_"
+msgstr ""
+
+#: ../../about.rst:929
+# ee4e8088a3294f549933b776bd47f7ca
+msgid "[DOC] Service monitoring enable/disable from global setting..."
+msgstr ""
+
+#: ../../about.rst:930
+# b7080df2863f4a02ada36a7669fcafb3
+msgid "`CLOUDSTACK-5976 <https://issues.apache.org/jira/browse/CLOUDSTACK-5976>`_"
+msgstr ""
+
+#: ../../about.rst:930
+# 28f272835ca8486f8c0891e5bcf8f2dd
+msgid "[upgrade]Typo in \"ssh_keypairs\" table's foreign key constraints on the Upgraded ..."
+msgstr ""
+
+#: ../../about.rst:931
+# 9714620e8faf422e9fa107751abe5e3b
+msgid "`CLOUDSTACK-5982 <https://issues.apache.org/jira/browse/CLOUDSTACK-5982>`_"
+msgstr ""
+
+#: ../../about.rst:931
+# 2fc8a368b6f6459d872d5d634ba665da
+msgid "Fix response name for assign and unassign cert from lb..."
+msgstr ""
+
+#: ../../about.rst:932
+# f4acaba44ed241d6a8074c671b3512bd
+msgid "`CLOUDSTACK-5984 <https://issues.apache.org/jira/browse/CLOUDSTACK-5984>`_"
+msgstr ""
+
+#: ../../about.rst:932
+# 7362786c6c33486ea7a8946e592e3ca6
+msgid "addvmwaredc API call is not documented ..."
+msgstr ""
+
+#: ../../about.rst:933
+# 2429317d3e594bd39f9a9fcb598d8c04
+msgid "`CLOUDSTACK-5990 <https://issues.apache.org/jira/browse/CLOUDSTACK-5990>`_"
+msgstr ""
+
+#: ../../about.rst:933
+# 0c384ea6026045b1978af48b16642089
+msgid "[UI]: search by username while importing ldap users..."
+msgstr ""
+
+#: ../../about.rst:934
+# 78e319ed865c4e0fa5dc3f7ed5de0d13
+msgid "`CLOUDSTACK-5991 <https://issues.apache.org/jira/browse/CLOUDSTACK-5991>`_"
+msgstr ""
+
+#: ../../about.rst:934
+# 6ff88586054e4c1d82b6e99db1f9ba80
+msgid "[UI]Infinite scrolling should be enabled to the Ldap user add page..."
+msgstr ""
+
+#: ../../about.rst:935
+# f96e43ac77f04ecfb3dc785d65882fd3
+msgid "`CLOUDSTACK-5992 <https://issues.apache.org/jira/browse/CLOUDSTACK-5992>`_"
+msgstr ""
+
+#: ../../about.rst:935
+# c14aa9269b9d441397bfe8e512f12311
+msgid "[Upgrade] default values of configuraiton parameters in configuration table are ..."
+msgstr ""
+
+#: ../../about.rst:936
+# 115e1a722aec40dea274c772d85f8282
+msgid "`CLOUDSTACK-6032 <https://issues.apache.org/jira/browse/CLOUDSTACK-6032>`_"
+msgstr ""
+
+#: ../../about.rst:936
+# 04d499a0e71b4bcfb0d6e3ac86c4dff9
+msgid "[VmScaleup]service offering id is not getting changed in usage_vm_instance table..."
+msgstr ""
+
+#: ../../about.rst:937
+# bfaa76d737784b5f95c018f977157aac
+msgid "`CLOUDSTACK-6043 <https://issues.apache.org/jira/browse/CLOUDSTACK-6043>`_"
+msgstr ""
+
+#: ../../about.rst:937
+# ccc1bf14d57044fcbb50a3ac110729a4
+msgid "VMware detaching volume fails if volume has snapshots..."
+msgstr ""
+
+#: ../../about.rst:938
+# 9aa2b12288f1420aaff1cfc0743f8da9
+msgid "`CLOUDSTACK-6053 <https://issues.apache.org/jira/browse/CLOUDSTACK-6053>`_"
+msgstr ""
+
+#: ../../about.rst:938
+# 0d09a8008b58494cb60ebe19ca52393a
+msgid "While adding smb as primary or secondary the password should be uri encoded..."
+msgstr ""
+
+#: ../../about.rst:939
+# ea7673542e854e8b8b711ff94908a370
+msgid "`CLOUDSTACK-6069 <https://issues.apache.org/jira/browse/CLOUDSTACK-6069>`_"
+msgstr ""
+
+#: ../../about.rst:939
+# 747f609fab1f4c7ab98cf17ac0fee78b
+msgid "can't create privatgateway with vlan in a mixed network env..."
+msgstr ""
+
+#: ../../about.rst:940
+# 326fdaf624be4f64bf070a7c3e06a679
+msgid "`CLOUDSTACK-6072 <https://issues.apache.org/jira/browse/CLOUDSTACK-6072>`_"
+msgstr ""
+
+#: ../../about.rst:940
+# 2d55d9b75a474be4a4b7d5e5211819c6
+msgid "vxlan networks not deallocating vnet ids..."
+msgstr ""
+
+#: ../../about.rst:941
+# ff1b141db0744c36a592d1d91ed693b4
+msgid "`CLOUDSTACK-6075 <https://issues.apache.org/jira/browse/CLOUDSTACK-6075>`_"
+msgstr ""
+
+#: ../../about.rst:941
+# 9275c6fbfa4144458d09a323ddb8bae2
+msgid "Increase the ram size for router service offering ..."
+msgstr ""
+
+#: ../../about.rst:942
+# 99d3af9b1e5e4a058a7ae118be123d1e
+msgid "`CLOUDSTACK-124 <https://issues.apache.org/jira/browse/CLOUDSTACK-124>`_"
+msgstr ""
+
+#: ../../about.rst:942
+# 8b32bfa08c0b46d6aef684e18497b33d
+msgid "NetworkGarbageCollector not cleaning up networks..."
+msgstr ""
+
+#: ../../about.rst:943
+# c7b26358582f4b899243737fd06f4f37
+msgid "`CLOUDSTACK-231 <https://issues.apache.org/jira/browse/CLOUDSTACK-231>`_"
+msgstr ""
+
+#: ../../about.rst:943
+# 7708223f4e4448b789b13ce1051e7600
+msgid "Tag creation using special charecters ..."
+msgstr ""
+
+#: ../../about.rst:944
+# b1bfdf6469a148aeb6acf9f7d59c9822
+msgid "`CLOUDSTACK-245 <https://issues.apache.org/jira/browse/CLOUDSTACK-245>`_"
+msgstr ""
+
+#: ../../about.rst:944
+# 9646ba76ef4042be82d7fa965b4b4d52
+msgid "VPC ACLs are not stored and programmed consistently..."
+msgstr ""
+
+#: ../../about.rst:945
+# b5967ba18bb7411284a3490e7441a8ac
+msgid "`CLOUDSTACK-270 <https://issues.apache.org/jira/browse/CLOUDSTACK-270>`_"
+msgstr ""
+
+#: ../../about.rst:945
+# cfbf880966d54900827f3b15c49cb007
+msgid "Ui should not ask for a vlan range if the physical network isolation type is not..."
+msgstr ""
+
+#: ../../about.rst:946
+# 8dd70cedd961486b891f7e9f84e26355
+msgid "`CLOUDSTACK-300 <https://issues.apache.org/jira/browse/CLOUDSTACK-300>`_"
+msgstr ""
+
+#: ../../about.rst:946
+# e9a0c1d5e2464610827b27e605893f3c
+msgid "Creation of  compute offering allow   combination of local storage + HA..."
+msgstr ""
+
+#: ../../about.rst:947
+# c314d5cd2be1492494cc4e4ea1154d0a
+msgid "`CLOUDSTACK-310 <https://issues.apache.org/jira/browse/CLOUDSTACK-310>`_"
+msgstr ""
+
+#: ../../about.rst:947
+# dc667412a14d4fc69fc4b8ed16fe2bab
+msgid "Failed to add host - Plugin error..."
+msgstr ""
+
+#: ../../about.rst:948
+# 48d31a39636440bea18cce416c33fbb1
+msgid "`CLOUDSTACK-315 <https://issues.apache.org/jira/browse/CLOUDSTACK-315>`_"
+msgstr ""
+
+#: ../../about.rst:948
+# ae220428d8694c7fb40b3a5761b7fa63
+msgid "Infrastructure view does not show capacity values..."
+msgstr ""
+
+#: ../../about.rst:949
+# 5ede82ec7e3d49d091dc2d17da781c46
+msgid "`CLOUDSTACK-338 <https://issues.apache.org/jira/browse/CLOUDSTACK-338>`_"
+msgstr ""
+
+#: ../../about.rst:949
+# 07a190ee55074d1d819ebabc319c3e68
+msgid "Unique Names of Disk and Service Offerings in the database are prefixed with \"Cl..."
+msgstr ""
+
+#: ../../about.rst:950
+# ae36f1b0f52d44399375157f009f074b
+msgid "`CLOUDSTACK-458 <https://issues.apache.org/jira/browse/CLOUDSTACK-458>`_"
+msgstr ""
+
+#: ../../about.rst:950
+# d2f66c59719448bfaa2ce410d66f8988
+msgid "xen:snapshots:Storage gc fail to clean the failed snapshot images from secondary..."
+msgstr ""
+
+#: ../../about.rst:951
+# 47ae8a9bb8f6481cbd5e3cf677f76b58
+msgid "`CLOUDSTACK-469 <https://issues.apache.org/jira/browse/CLOUDSTACK-469>`_"
+msgstr ""
+
+#: ../../about.rst:951
+# 75fd3eb386254a40a083e972fa4d9a6e
+msgid "CloudStack Documentation Landing Page has Alignment Issues..."
+msgstr ""
+
+#: ../../about.rst:952
+# 806acce787f84760abfb775a59d638ad
+msgid "`CLOUDSTACK-963 <https://issues.apache.org/jira/browse/CLOUDSTACK-963>`_"
+msgstr ""
+
+#: ../../about.rst:952
+# 12fff80d2a504c49bbbd22824bdace67
+msgid "[cloud.utils.AnnotationHelper]  class java.lang.Stringdoes not have a Table anno..."
+msgstr ""
+
+#: ../../about.rst:953
+# de17f1a800814328b23a1e708d2b1d52
+msgid "`CLOUDSTACK-969 <https://issues.apache.org/jira/browse/CLOUDSTACK-969>`_"
+msgstr ""
+
+#: ../../about.rst:953
+# 2d464e8f68a74405b04341a4a2d4adb8
+msgid "api: zone response lists vlan in it as \"vlan range of zone\" but the vlan belongs..."
+msgstr ""
+
+#: ../../about.rst:954
+# f1c3403f8032419e829ccd4f66929b52
+msgid "`CLOUDSTACK-1306 <https://issues.apache.org/jira/browse/CLOUDSTACK-1306>`_"
+msgstr ""
+
+#: ../../about.rst:954
+# dfc0360381c84cfaa6bc712e47d656e3
+msgid "Better Error message when trying to deploy Vm by passing static Ipv4 addresses t..."
+msgstr ""
+
+#: ../../about.rst:955
+# dd3b26e637654719bb43bdc9c4951b4b
+msgid "`CLOUDSTACK-1432 <https://issues.apache.org/jira/browse/CLOUDSTACK-1432>`_"
+msgstr ""
+
+#: ../../about.rst:955
+# 121ae86f157948aca5c4968ee689fdff
+msgid "[UI] Inconsistent field names in \"Add Cluster\" dialog..."
+msgstr ""
+
+#: ../../about.rst:956
+# edb4df0f0696493b89d2bbb6cc1cb883
+msgid "`CLOUDSTACK-1471 <https://issues.apache.org/jira/browse/CLOUDSTACK-1471>`_"
+msgstr ""
+
+#: ../../about.rst:956
+# 675b3aabed6342f89a73e1b339e1307d
+msgid "Pop up window for host details/(host related operation) are not properly alligne..."
+msgstr ""
+
+#: ../../about.rst:957
+# 1cde4cfe8a714ee09c622f4f55535fb6
+msgid "`CLOUDSTACK-1524 <https://issues.apache.org/jira/browse/CLOUDSTACK-1524>`_"
+msgstr ""
+
+#: ../../about.rst:957
+# 53711da9789c471c9c4ccddec57bfd73
+msgid "\"White-box\" effect changes when changing value in combo box..."
+msgstr ""
+
+#: ../../about.rst:958
+# c8b98ae00ee74a8fb6482e1d34e1e202
+msgid "`CLOUDSTACK-1725 <https://issues.apache.org/jira/browse/CLOUDSTACK-1725>`_"
+msgstr ""
+
+#: ../../about.rst:958
+# 04d1ceedb4cf4fd587951c61447daadd
+msgid "publican update_pot might overwrite license headers ..."
+msgstr ""
+
+#: ../../about.rst:959
+# 8a851e230e3e42be884bc41ebca07328
+msgid "`CLOUDSTACK-1932 <https://issues.apache.org/jira/browse/CLOUDSTACK-1932>`_"
+msgstr ""
+
+#: ../../about.rst:959
+# e8da1950cdbf43ce91092026157cd9aa
+msgid "AutoScale UI documentation doesn't mention the option appears only for NetScaler..."
+msgstr ""
+
+#: ../../about.rst:960
+# f57d54cd7d08437ab637326258386606
+msgid "`CLOUDSTACK-2000 <https://issues.apache.org/jira/browse/CLOUDSTACK-2000>`_"
+msgstr ""
+
+#: ../../about.rst:960
+# a2971c5c19f245b2884b505f192fcf00
+msgid "CS4.1 Installation document - cloud-install-sys-tmplt command documented in wron..."
+msgstr ""
+
+#: ../../about.rst:961
+# ef26a2d622594a9f8ae10db60449a3a9
+msgid "`CLOUDSTACK-2213 <https://issues.apache.org/jira/browse/CLOUDSTACK-2213>`_"
+msgstr ""
+
+#: ../../about.rst:961
+# c6f808586258497dbb707d2e7e55cf79
+msgid "russian language select failure..."
+msgstr ""
+
+#: ../../about.rst:962
+# 5b524111ffd5492f878176c4e14f4372
+msgid "`CLOUDSTACK-2345 <https://issues.apache.org/jira/browse/CLOUDSTACK-2345>`_"
+msgstr ""
+
+#: ../../about.rst:962
+# 999211c7bc964a1583b5570055024ce2
+msgid "[GSLB] deleting GSLB rules is not cleaning server info from GSLB device..."
+msgstr ""
+
+#: ../../about.rst:963
+# d9b8c98f542a4b1981d8d347f6aa9590
+msgid "`CLOUDSTACK-2436 <https://issues.apache.org/jira/browse/CLOUDSTACK-2436>`_"
+msgstr ""
+
+#: ../../about.rst:963
+# d4e2678c414e41d0b481b115b9c0f6ad
+msgid "Message \"You do not have any affinity groups. Please continue to the next step.\"..."
+msgstr ""
+
+#: ../../about.rst:964
+# 5ae6ab9b375f4c7bb3589a8050f99194
+msgid "`CLOUDSTACK-2439 <https://issues.apache.org/jira/browse/CLOUDSTACK-2439>`_"
+msgstr ""
+
+#: ../../about.rst:964
+# 87c6a77f806e447ab440b72510b524d8
+msgid "\"Domain\" field under login page should be mandatory for the non root accounts...."
+msgstr ""
+
+#: ../../about.rst:965
+# 02b4ebd93f48469899a2d01cda5705c5
+msgid "`CLOUDSTACK-2449 <https://issues.apache.org/jira/browse/CLOUDSTACK-2449>`_"
+msgstr ""
+
+#: ../../about.rst:965
+# 23efd36a35834b908f1e7a70a28b1633
+msgid "Dropdown menu for action button scaleup System VM shows all service offering inc..."
+msgstr ""
+
+#: ../../about.rst:966
+# 94c82b371e014e7db572a651a1d5a824
+msgid "`CLOUDSTACK-2453 <https://issues.apache.org/jira/browse/CLOUDSTACK-2453>`_"
+msgstr ""
+
+#: ../../about.rst:966
+# 51034807cd4e4520ba084944db0e4554
+msgid "Select view dropdown under \"Network\" is listing the options in the absence of ad..."
+msgstr ""
+
+#: ../../about.rst:967
+# b0f18de078274cd285d7efe5a03e5a4b
+msgid "`CLOUDSTACK-2464 <https://issues.apache.org/jira/browse/CLOUDSTACK-2464>`_"
+msgstr ""
+
+#: ../../about.rst:967
+# 4bcccc8e991e484886d3f5fb30acc412
+msgid "[GSLB][UI] \"Add GSLB\" wizard doesn't prompt for \"PersistenceType\"..."
+msgstr ""
+
+#: ../../about.rst:968
+# 0433e6fc645d4d8fa034ce5b0bf63ce6
+msgid "`CLOUDSTACK-2533 <https://issues.apache.org/jira/browse/CLOUDSTACK-2533>`_"
+msgstr ""
+
+#: ../../about.rst:968
+# aa4c2b01e0c04f75863646c8609878f5
+msgid "Add Network to VM dialog should only show those network in the dropdown which ar..."
+msgstr ""
+
+#: ../../about.rst:969
+# 3cd97e91d6a1494eb443dd53eac4aa64
+msgid "`CLOUDSTACK-2535 <https://issues.apache.org/jira/browse/CLOUDSTACK-2535>`_"
+msgstr ""
+
+#: ../../about.rst:969
+# 0101c1f722244acaa1ba52f563626d08
+msgid "Cleanup port-profiles that gets created on Nexus switch as part of network clean..."
+msgstr ""
+
+#: ../../about.rst:970
+# 37c4a36817b449e9972b80ad060501e5
+msgid "`CLOUDSTACK-2559 <https://issues.apache.org/jira/browse/CLOUDSTACK-2559>`_"
+msgstr ""
+
+#: ../../about.rst:970
+# da49f93acbc0417eb9d4a91a39995de6
+msgid "[UI]Resource Name should not be present in UI as it is not available in listASA1..."
+msgstr ""
+
+#: ../../about.rst:971
+# 9126137d611b484eb865a2c06479b140
+msgid "`CLOUDSTACK-2605 <https://issues.apache.org/jira/browse/CLOUDSTACK-2605>`_"
+msgstr ""
+
+#: ../../about.rst:971
+# 20a378f44363495daf91c485585537ed
+msgid "Add Network to VM Command button should not be displayed for VMs  belonging to B..."
+msgstr ""
+
+#: ../../about.rst:972
+# 71c4c344ffdc4e958ec6f5f7eb89de43
+msgid "`CLOUDSTACK-2697 <https://issues.apache.org/jira/browse/CLOUDSTACK-2697>`_"
+msgstr ""
+
+#: ../../about.rst:972
+# 087ec5baecbd46b8846e00bc1da9f9a8
+msgid "cluster id in alert message is null {alertType:: 1 // dataCenterId:: 1 // podId:..."
+msgstr ""
+
+#: ../../about.rst:973
+# 4e8a9f82abd7415f92b69d5f019956d9
+msgid "`CLOUDSTACK-2714 <https://issues.apache.org/jira/browse/CLOUDSTACK-2714>`_"
+msgstr ""
+
+#: ../../about.rst:973
+# b9a8751bb231427d85be7a486e346356
+msgid "Setting tab should not be visible for user accounts ..."
+msgstr ""
+
+#: ../../about.rst:974
+# 7b464c32172d4ed098b0ce969b998693
+msgid "`CLOUDSTACK-2951 <https://issues.apache.org/jira/browse/CLOUDSTACK-2951>`_"
+msgstr ""
+
+#: ../../about.rst:974
+# e98639016fea473b8b49ca4284a11d10
+msgid "[UI][Mixed-Zone-Management] during \"add Instance\" wizard, listTemplates API is n..."
+msgstr ""
+
+#: ../../about.rst:975
+# 4d48945fe87b49b6a8ae81013698783e
+msgid "`CLOUDSTACK-2993 <https://issues.apache.org/jira/browse/CLOUDSTACK-2993>`_"
+msgstr ""
+
+#: ../../about.rst:975
+# 8d80e722daef45178724195a133b6709
+msgid "[PortableIPRange] remove some of the unused columns if they are not required fro..."
+msgstr ""
+
+#: ../../about.rst:976
+# 54ac3fa8558842c398ccdc38f1ced838
+msgid "`CLOUDSTACK-3025 <https://issues.apache.org/jira/browse/CLOUDSTACK-3025>`_"
+msgstr ""
+
+#: ../../about.rst:976
+# b7b3e51f968948999a7c60937b897275
+msgid "The page and pagesize parameters are not working in ListCfgsByCmds with zoneid s..."
+msgstr ""
+
+#: ../../about.rst:977
+# dd940c1b0f9a409c8915a129da92f71f
+msgid "`CLOUDSTACK-3063 <https://issues.apache.org/jira/browse/CLOUDSTACK-3063>`_"
+msgstr ""
+
+#: ../../about.rst:977
+# 0bc901711ad14ab8833396c81147cca4
+msgid "[UI]Dedicating a host to  non-root domain which has instances of other domain(ro..."
+msgstr ""
+
+#: ../../about.rst:978
+# ac414d5911ce41269d2fefab50309adc
+msgid "`CLOUDSTACK-3101 <https://issues.apache.org/jira/browse/CLOUDSTACK-3101>`_"
+msgstr ""
+
+#: ../../about.rst:978
+# 3eba9b21c31641a781a0c4ddb2bc01a5
+msgid "[DR] list* APIs are not working based on the display* flags ..."
+msgstr ""
+
+#: ../../about.rst:979
+# f7478719c1de492aa2cf09123878a13d
+msgid "`CLOUDSTACK-3225 <https://issues.apache.org/jira/browse/CLOUDSTACK-3225>`_"
+msgstr ""
+
+#: ../../about.rst:979
+# 5256cc0bd9364f87893c336a74f84eb7
+msgid "Multiple NPEs when cloudstack-management service is restarted with incomplete ta..."
+msgstr ""
+
+#: ../../about.rst:980
+# 5cfa9678dc1e43d59b38335ad8f91b4b
+msgid "`CLOUDSTACK-3265 <https://issues.apache.org/jira/browse/CLOUDSTACK-3265>`_"
+msgstr ""
+
+#: ../../about.rst:980
+# e9452d8251b643a4b03bce41674f4808
+msgid "[Health Check for NS LB]Failure to create a lb health check policy returns a API..."
+msgstr ""
+
+#: ../../about.rst:981
+# be48a8cbb5e349f89e66aadcaa541ef0
+msgid "`CLOUDSTACK-3325 <https://issues.apache.org/jira/browse/CLOUDSTACK-3325>`_"
+msgstr ""
+
+#: ../../about.rst:981
+# 230ac59306494ea39197506b81def3eb
+msgid "[UI] [GSLB]: add text box to specify weight for each load balancer participating..."
+msgstr ""
+
+#: ../../about.rst:982
+# 2705c0569cab4d6b90594a92ec65bf31
+msgid "`CLOUDSTACK-3406 <https://issues.apache.org/jira/browse/CLOUDSTACK-3406>`_"
+msgstr ""
+
+#: ../../about.rst:982
+# a8db221ce45a462aa6c2e05bc2d2eb7f
+msgid "UI: ZWPS: Zone wizard: Primary storage creation failed after \"fix error\" in \"add..."
+msgstr ""
+
+#: ../../about.rst:983
+# cf74cfd96dad473fb014d18a35250300
+msgid "`CLOUDSTACK-3477 <https://issues.apache.org/jira/browse/CLOUDSTACK-3477>`_"
+msgstr ""
+
+#: ../../about.rst:983
+# 0fefc1717380441c884cfaaf701079a9
+msgid "resizeDataVolume doesn't return proper error message when trying to shrink volum..."
+msgstr ""
+
+#: ../../about.rst:984
+# d45364bf4020433a913170368f609aab
+msgid "`CLOUDSTACK-3553 <https://issues.apache.org/jira/browse/CLOUDSTACK-3553>`_"
+msgstr ""
+
+#: ../../about.rst:984
+# 184036e307fd4f178ececf263bca2e80
+msgid "[UI]UI remains in the processing state forever when it failed to delete primary ..."
+msgstr ""
+
+#: ../../about.rst:985
+# c83f20fc84834a368caa9314832e54c2
+msgid "`CLOUDSTACK-3671 <https://issues.apache.org/jira/browse/CLOUDSTACK-3671>`_"
+msgstr ""
+
+#: ../../about.rst:985
+# 6c9eb98bd694461dba8f878670819297
+msgid "Set Host, Management Network and Storage Network Properly when there are multipl..."
+msgstr ""
+
+#: ../../about.rst:986
+# 8371c5905f8f4e5bac7ba985216659a3
+msgid "`CLOUDSTACK-3815 <https://issues.apache.org/jira/browse/CLOUDSTACK-3815>`_"
+msgstr ""
+
+#: ../../about.rst:986
+# f7cd0dc26cf648d3bdb020562cea6331
+msgid "\"SNAPSHOT.CREATE\" event's states are not registered on the events table ..."
+msgstr ""
+
+#: ../../about.rst:987
+# 8ed515eec0e24857853cbf89a631c552
+msgid "`CLOUDSTACK-3895 <https://issues.apache.org/jira/browse/CLOUDSTACK-3895>`_"
+msgstr ""
+
+#: ../../about.rst:987
+# ca4f125698734ec2a5122e644275964e
+msgid "VM Migration across VMWARE clusters which are added with different switches(Stan..."
+msgstr ""
+
+#: ../../about.rst:988
+# 85e8ff947d084dd7854ab375d940dd59
+msgid "`CLOUDSTACK-3896 <https://issues.apache.org/jira/browse/CLOUDSTACK-3896>`_"
+msgstr ""
+
+#: ../../about.rst:988
+# bb7ceed6e27445e4b714a9b97059137f
+msgid "[PrimaryStorage] deleteStoragePool is not kicking GC for the downloaded system v..."
+msgstr ""
+
+#: ../../about.rst:989
+# 80946f9e1d0e403980f58aa5f38cc72b
+msgid "`CLOUDSTACK-3994 <https://issues.apache.org/jira/browse/CLOUDSTACK-3994>`_"
+msgstr ""
+
+#: ../../about.rst:989
+# d2eb7ba4d45f47e5b811bf87a2265439
+msgid "Wrong error notification is generated when Primary storage (Cluster wide) is add..."
+msgstr ""
+
+#: ../../about.rst:990
+# 36ecfa62f5374e4997c2097a2e5fded0
+msgid "`CLOUDSTACK-3995 <https://issues.apache.org/jira/browse/CLOUDSTACK-3995>`_"
+msgstr ""
+
+#: ../../about.rst:990
+# bad0ef8ab93941b79b098112471e1747
+msgid "No error notification is generated when Primary storage (Zonelevel) is added wit..."
+msgstr ""
+
+#: ../../about.rst:991
+# 3a6ea2da46bf4583b7e963b661b54ae6
+msgid "`CLOUDSTACK-4071 <https://issues.apache.org/jira/browse/CLOUDSTACK-4071>`_"
+msgstr ""
+
+#: ../../about.rst:991
+# 1ce38dc6184444e086d00b9b1fd04f99
+msgid "[UI] - Word 'Default' is misspelled in descripiton of integration.api.port under..."
+msgstr ""
+
+#: ../../about.rst:992
+# c0007d2c93044bf99b095370c615cd21
+msgid "`CLOUDSTACK-4183 <https://issues.apache.org/jira/browse/CLOUDSTACK-4183>`_"
+msgstr ""
+
+#: ../../about.rst:992
+# 2ed3c6d02b474efdbb1ce654717060cd
+msgid "[Non-Contiguous VLAN] Typos Appear in an Error Message..."
+msgstr ""
+
+#: ../../about.rst:993
+# 9b70ea321e5b4f1686c2c85c6effa7f9
+msgid "`CLOUDSTACK-5033 <https://issues.apache.org/jira/browse/CLOUDSTACK-5033>`_"
+msgstr ""
+
+#: ../../about.rst:993
+# a4955022f36b4cf5b266a6b2375b9c00
+msgid "ipaddress in management-server.log and api.log are wrong if management servers i..."
+msgstr ""
+
+#: ../../about.rst:994
+# b206de9da37d4f21b9fdf71ea84ed410
+msgid "`CLOUDSTACK-5309 <https://issues.apache.org/jira/browse/CLOUDSTACK-5309>`_"
+msgstr ""
+
+#: ../../about.rst:994
+# 636eb801e14e4cb99089f40959d90aac
+msgid "version number and requires upgrade fields are not displayed for routers when na..."
+msgstr ""
+
+#: ../../about.rst:995
+# 1e0b3de7dabd42efb0f8e58b0fdfe23a
+msgid "`CLOUDSTACK-5383 <https://issues.apache.org/jira/browse/CLOUDSTACK-5383>`_"
+msgstr ""
+
+#: ../../about.rst:995
+# 73fcaca57140407c8792a19a593bf46a
+msgid "Multiselect actions are not reset when a multiselect action is performed..."
+msgstr ""
+
+#: ../../about.rst:996
+# e2c36d9ee109437787c7f790163e29fc
+msgid "`CLOUDSTACK-5524 <https://issues.apache.org/jira/browse/CLOUDSTACK-5524>`_"
+msgstr ""
+
+#: ../../about.rst:996
+# dd855f85311343258dc38de841f135a5
+msgid "[UI]\"root disk size\" field should be removed from the add instance wizard since ..."
+msgstr ""
+
+#: ../../about.rst:997
+# 73ee1275ea204ae79c6c82b8906c5bb5
+msgid "`CLOUDSTACK-5824 <https://issues.apache.org/jira/browse/CLOUDSTACK-5824>`_"
+msgstr ""
+
+#: ../../about.rst:997
+# 26bef1d1e89546788c6a884da12ce926
+msgid "Delete snapshot UI always success..."
+msgstr ""
+
+#: ../../about.rst:998
+# 056dbd72918245b09d116ea105d79278
+msgid "`CLOUDSTACK-5885 <https://issues.apache.org/jira/browse/CLOUDSTACK-5885>`_"
+msgstr ""
+
+#: ../../about.rst:998
+# e3f62bba080b450b9f164f5b0847f14c
+msgid "When process receives error, loading overlay on listView element does not disapp..."
+msgstr ""
+
+#: ../../about.rst:999
+# f7ca472d1e224ce79149f204a00048b8
+msgid "`CLOUDSTACK-5912 <https://issues.apache.org/jira/browse/CLOUDSTACK-5912>`_"
+msgstr ""
+
+#: ../../about.rst:999
+# 0f15765758da4cad8200f0decb588c1c
+msgid "WARN  [c.c.h.v.m.HttpNfcLeaseMO] (Thread-28:null) Unexpected exception..."
+msgstr ""
+
+#: ../../about.rst:1000
+# c1f7f973391041c3b69f90eae30ce69d
+msgid "`CLOUDSTACK-5522 <https://issues.apache.org/jira/browse/CLOUDSTACK-5522>`_"
+msgstr ""
+
+#: ../../about.rst:1000
+# 5cd7fcc7c9ba4472afab041350028c5f
+msgid "Need of one more column i.e., \"Name\" at   Home>Storage - Snapshots..."
+msgstr ""
+
+#: ../../about.rst:1001
+# ebdb64c792754bd795a01b47c7c04262
+msgid "`CLOUDSTACK-5904 <https://issues.apache.org/jira/browse/CLOUDSTACK-5904>`_"
+msgstr ""
+
+#: ../../about.rst:1001
+# 209d812fb98b48c8b9efb9602b2a75b8
+msgid "Small UI bug..."
+msgstr ""
+

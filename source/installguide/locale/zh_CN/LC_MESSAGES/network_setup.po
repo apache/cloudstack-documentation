@@ -1,0 +1,2041 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: 2014-06-30 10:24+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-installation-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 204e7166d7584bc8800c10730331b91a
+#: ../../network_setup.rst:18
+msgid "Network Setup"
+msgstr "网络设置"
+
+# 28fd3f07600a446f8025a77d2f76f083
+#: ../../network_setup.rst:20
+msgid ""
+"Achieving the correct networking setup is crucial to a successful CloudStack"
+" installation. This section contains information to help you make decisions "
+"and follow the right procedures to get your network set up correctly."
+msgstr "正确的网络设置对于CloudStack能否成功安装至关重要。遵循本节包含的信息，指导你搭建正确的网络配置。"
+
+# 0f171b003d40415f9683899a68f68949
+#: ../../network_setup.rst:27
+msgid "Basic and Advanced Networking"
+msgstr "基本和高级网络"
+
+# 188908473c3948279ecec71280711a3b
+#: ../../network_setup.rst:29
+msgid "CloudStack provides two styles of networking:."
+msgstr "CloudStack提供二种网络类型："
+
+# d972c75e48ba46ce8b2fd29ba7a548fc
+#: ../../network_setup.rst:31
+msgid ""
+"**Basic** For AWS-style networking. Provides a single network where guest "
+"isolation can be provided through layer-3 means such as security groups (IP "
+"address source filtering)."
+msgstr ""
+
+# 286b58108d5240ab81545392b60577c5
+#: ../../network_setup.rst:36
+msgid ""
+"**Advanced** For more sophisticated network topologies. This network model "
+"provides the most flexibility in defining guest networks, but requires more "
+"configuration steps than basic networking."
+msgstr ""
+
+# ef43036726e14dd092edbbe912848db5
+#: ../../network_setup.rst:41
+msgid ""
+"Each zone has either basic or advanced networking. Once the choice of "
+"networking model for a zone has been made and configured in CloudStack, it "
+"can not be changed. A zone is either basic or advanced for its entire "
+"lifetime."
+msgstr "每个区域都有基本或高级网络。一个区域的整个生命周期中，不论是基本或高级网络。一旦在CloudStack中选择并配置区域的网络类型，就无法再修改。"
+
+# edec4755035e4f65bc0313e508fef22c
+#: ../../network_setup.rst:46
+msgid ""
+"The following table compares the networking features in the two networking "
+"models."
+msgstr "下表比较了两种网络类型的功能"
+
+# 1931f079dbf54009a09b730d78cea8ae
+#: ../../network_setup.rst:49
+msgid "Networking Feature"
+msgstr "网络功能"
+
+# ddb5e29a533944e79cfacd651a55de04
+#: ../../network_setup.rst:49
+msgid "Basic Network"
+msgstr "基本网络"
+
+# 5e5d2126f2b342099f984864fe91699a
+#: ../../network_setup.rst:49
+msgid "Advanced Network"
+msgstr "高级网络"
+
+# 2e392d44156a42619a81a1004ebe92a6
+#: ../../network_setup.rst:51
+msgid "Number of networks"
+msgstr "网络数量"
+
+# 2c57c568f79e4abf9d0b9731eb3ea05b
+#: ../../network_setup.rst:51
+msgid "Single network"
+msgstr "单一网络"
+
+# a0c94e5edb364dc590ac47ed8a4a9104
+#: ../../network_setup.rst:51
+msgid "Multiple networks"
+msgstr "多种网络"
+
+# 15454f7e603b41a4bc4e11f248e4988f
+#: ../../network_setup.rst:52
+msgid "Firewall type"
+msgstr "防火墙类型"
+
+# 0f306c3ed8cc40a7b2a90c79c2bc1b21
+# 08a635b95c484902a4c8d6739599e242
+# a9d431ac26934dc0b50f9d2fb90e1057
+# 48d78bd1b5fc4a06b4f3d035a5c93188
+#: ../../network_setup.rst:52 ../../network_setup.rst:53
+#: ../../network_setup.rst:56 ../../network_setup.rst:57
+msgid "Physical"
+msgstr "物理"
+
+# 54c51460b59b4787a77fe987aff804e0
+# bf584ce2c901485f917ebdf80d512db2
+# fda7d50fe9df495aa57dc3a69b89ce53
+# 4bcf67ddb65b49cc92e25d48cbeeb7aa
+# 0739b5b91ac0446d977a4641dfcc846e
+#: ../../network_setup.rst:52 ../../network_setup.rst:53
+#: ../../network_setup.rst:56 ../../network_setup.rst:57
+#: ../../network_setup.rst:58
+msgid "Physical and Virtual"
+msgstr "物理和虚拟"
+
+# 483cde5d650e412799b4b3d95c1a34ff
+#: ../../network_setup.rst:53
+msgid "Load balancer"
+msgstr "负载均衡"
+
+# 824040016a8e47958d1e7900b0c5bc8f
+#: ../../network_setup.rst:54
+msgid "Isolation type"
+msgstr "隔离类型"
+
+# eb2562a54a6f41439d2c95bcbe8e93f7
+#: ../../network_setup.rst:54
+msgid "Layer 3"
+msgstr "三层"
+
+# 8c4ff876b9af4e23a60a18477d9ad2ac
+#: ../../network_setup.rst:54
+msgid "Layer 2 and Layer 3"
+msgstr "二层和三层"
+
+# 272f31b097a6419b9657d410bc613b29
+#: ../../network_setup.rst:55
+msgid "VPN support"
+msgstr "VPN支持"
+
+# be705df006104fc981cd11ab21dbee41
+# 77c761df6e424c5eaa8fd876956f2fd4
+# 89111394bc904a6688140d3a45239729
+#: ../../network_setup.rst:55 ../../network_setup.rst:58
+#: ../../network_setup.rst:855
+msgid "No"
+msgstr "否"
+
+# 87c00040e2b94a5fb1354724a796ad4e
+# c1bcbed263544b8ba2804541e77b986c
+# 2f87b4b5d55248b68a742abdfcac7411
+# f0fa47c28e75441f8ef8397b8c693fb5
+# 6987985d2d78451b9146580fa5ec7197
+# c235fbc31a63448c9b960c7ccc3745d4
+# f454f4d643734a6283ed71f976c4e65e
+#: ../../network_setup.rst:55 ../../network_setup.rst:59
+#: ../../network_setup.rst:59 ../../network_setup.rst:61
+#: ../../network_setup.rst:61 ../../network_setup.rst:853
+#: ../../network_setup.rst:854
+msgid "Yes"
+msgstr "是"
+
+# cde208e3641549ac9fe8b53a042abd65
+#: ../../network_setup.rst:56
+msgid "Port forwarding"
+msgstr "端口转发"
+
+# 33d5935021cd4f3ab6e723b0921e6945
+#: ../../network_setup.rst:57
+msgid "1:1 NAT"
+msgstr "1:1 NAT"
+
+# 435097d06513454a921a6170741111bb
+#: ../../network_setup.rst:58
+msgid "Source NAT"
+msgstr "Source NAT"
+
+# 4546413386114726ad887ab1acfc1cba
+#: ../../network_setup.rst:59
+msgid "Userdata"
+msgstr "用户数据"
+
+# e6a6cb39df554d4d8490722bb831ef65
+#: ../../network_setup.rst:60
+msgid "Network usage monitoring"
+msgstr "网络监控"
+
+# cb68ceaa47fb447d915faa6dc794d39f
+#: ../../network_setup.rst:60
+msgid "sFlow / netFlow at physical router"
+msgstr "在物理路由器上：sFlow / netFlow"
+
+# 966d9d494a53445b9daf7f7190e39159
+#: ../../network_setup.rst:60
+msgid "Hypervisor and Virtual Router"
+msgstr "Hypervisor和虚拟路由器"
+
+# 118c5bc124044577ba2fbfe145951209
+#: ../../network_setup.rst:61
+msgid "DNS and DHCP"
+msgstr "DNS和DHCP"
+
+# 08f4517f5738454f8ee78adefac8efb1
+#: ../../network_setup.rst:64
+msgid ""
+"The two types of networking may be in use in the same cloud. However, a "
+"given zone must use either Basic Networking or Advanced Networking."
+msgstr "在一个云中可能会存在二种网络类型。但无论如何，一个给定的区域必须使用基本网络或高级网络。"
+
+# 8caea62e111d4d1b8833f7670c72d8df
+#: ../../network_setup.rst:67
+msgid ""
+"Different types of network traffic can be segmented on the same physical "
+"network. Guest traffic can also be segmented by account. To isolate traffic,"
+" you can use separate VLANs. If you are using separate VLANs on a single "
+"physical network, make sure the VLAN tags are in separate numerical ranges."
+msgstr "单一的物理网络可以被分割不同类型的网络流量。账户也可以分割来宾流量。你可以通过划分VLAN来隔离流量。如果你在物理网络中划分了VLAN，确保VLAN标签的数值在独立范围。"
+
+# f4f61d2e2b224b75a03e28cda9e376a8
+#: ../../network_setup.rst:75
+msgid "VLAN Allocation Example"
+msgstr "VLAN分配示例"
+
+# dad8ccdf2ed74b0e9f0173a0aa08c615
+#: ../../network_setup.rst:77
+msgid ""
+"VLANs are required for public and guest traffic. The following is an example"
+" of a VLAN allocation scheme:"
+msgstr "公共和来宾流量要求使用VLAN，下面是一个VLAN分配的示例："
+
+# d9ac134036354b0ab2421582a57e79c6
+#: ../../network_setup.rst:81
+msgid "VLAN IDs"
+msgstr "VLAN IDs"
+
+# e22dc22a2b9449bbb3e9b5fcceafc29b
+#: ../../network_setup.rst:81
+msgid "Traffic type"
+msgstr "流量类型"
+
+# 2abc2124719642c6bf6ab370646803bc
+#: ../../network_setup.rst:81
+msgid "Scope"
+msgstr "范围"
+
+# f3318541895b4a509bfdcfe8f540fcd2
+#: ../../network_setup.rst:83
+msgid "less than 500"
+msgstr "小于500"
+
+# 7f123557b3644b699605f66ed71aaa88
+#: ../../network_setup.rst:83
+msgid "Management traffic. Reserved for administrative purposes."
+msgstr "管理流量。用于管理目的。"
+
+# 8d3f29be0c2341d181217f083f364b66
+#: ../../network_setup.rst:83
+msgid "CloudStack software can access this, hypervisors, system VMs."
+msgstr "CloudStack，hypervisors，系统VM可以访问。"
+
+# ebbb276566564730b2573b1fd1b161a9
+#: ../../network_setup.rst:84
+msgid "500-599"
+msgstr "500-599"
+
+# 125bfc83d5554aaab7fdd32838cce9c9
+#: ../../network_setup.rst:84
+msgid "VLAN carrying public traffic."
+msgstr "承载公共流量。"
+
+# d37af8f70e29457a9557e53215e2e96c
+#: ../../network_setup.rst:84
+msgid "CloudStack accounts."
+msgstr "CloudStack账户。"
+
+# 73133e4e2c86492c8f9817f4981789f8
+#: ../../network_setup.rst:85
+msgid "600-799"
+msgstr "600-799"
+
+# 20844dcf31fd46558c2f60d7ce91478d
+# 7a38326cb87b46d890e1e444ee7ce9e6
+#: ../../network_setup.rst:85 ../../network_setup.rst:86
+msgid "VLANs carrying guest traffic."
+msgstr "承载来宾流量"
+
+# b9283c2609ad426ea049d4b4de64a229
+#: ../../network_setup.rst:85
+msgid "CloudStack accounts. Account-specific VLAN is chosen from this pool."
+msgstr "CloudStack 账户。 从这个池中选择账户特定的VLAN。"
+
+# 2434c3ee95244a3e87c4be5df884d38e
+#: ../../network_setup.rst:86
+msgid "800-899"
+msgstr "800-899"
+
+# 55d07caba3264be299f2f188911b20f8
+#: ../../network_setup.rst:86
+msgid ""
+"CloudStack accounts. Account-specific VLAN chosen by CloudStack admin to "
+"assign to that account."
+msgstr "CloudStack 账户。CloudStack管理员为账户指定特定的VLAN。"
+
+# 916471020e7c48f8a5b214bd1e8b3764
+#: ../../network_setup.rst:87
+msgid "900-999"
+msgstr "900-999"
+
+# 6eb9b2a9c7d541d49840d4b7da813678
+#: ../../network_setup.rst:87
+msgid "VLAN carrying guest traffic"
+msgstr "承载来宾流量"
+
+# cbe91fb5fb35471aaf913bf77c8545b3
+#: ../../network_setup.rst:87
+msgid ""
+"CloudStack accounts. Can be scoped by project, domain, or all accounts."
+msgstr "CloudStack 账户。可作为项目、域或所有账户的作用域。"
+
+# 7cd25e560d8e482489ee707255e6a113
+#: ../../network_setup.rst:88
+msgid "greater than 1000"
+msgstr "大于1000"
+
+# a732a81098944d88b516c81d48fe1dd6
+#: ../../network_setup.rst:88
+msgid "Reserved for future use"
+msgstr "保留为将来使用"
+
+# 9e6124ed88b34569b749356c28e994c5
+#: ../../network_setup.rst:93
+msgid "Example Hardware Configuration"
+msgstr "硬件配置示例"
+
+# 2e0e4d4766c94461bf47dbf4b297511c
+#: ../../network_setup.rst:95
+msgid ""
+"This section contains an example configuration of specific switch models for"
+" zone-level layer-3 switching. It assumes VLAN management protocols, such as"
+" VTP or GVRP, have been disabled. The example scripts must be changed "
+"appropriately if you choose to use VTP or GVRP."
+msgstr "本节包含了一个特定交换机型号的示例配置，作为区域级别的三层交换。它假设VLAN管理协议，例如VTP、GVRP等已经被禁用。如果你正在使用VTP或GVRP，那么你必须适当的修改示例脚本。"
+
+# e49d362a79214babab229f63b561504f
+# ec1918afa90c431ebc41c83d6622bf67
+#: ../../network_setup.rst:102 ../../network_setup.rst:190
+msgid "Dell 62xx"
+msgstr "Dell 62xx"
+
+# 7cac328e3f4d41d2912b3d1374983217
+#: ../../network_setup.rst:104
+msgid ""
+"The following steps show how a Dell 62xx is configured for zone-level "
+"layer-3 switching. These steps assume VLAN 201 is used to route untagged "
+"private IPs for pod 1, and pod 1’s layer-2 switch is connected to Ethernet "
+"port 1/g1."
+msgstr "以下步骤显示如何配置区域级别的三层交换机Dell 62xx。这些步骤假设VLAN。201用于Pod1中未标记的私有IP线路。并且Pod1中的二层交换机已经连接到GigabitEthernet1/0/1端口。"
+
+# f85fd6334b4d42368bd77fd43eab6554
+#: ../../network_setup.rst:109
+msgid "The Dell 62xx Series switch supports up to 1024 VLANs."
+msgstr "DELL 62xx系列交换机最大支持1024个VLAN。"
+
+# 3a9eadcf6462491b83915415a657e356
+# 4d6fd3d41ba3470c8ffe4bec5ad1626a
+#: ../../network_setup.rst:111 ../../network_setup.rst:195
+msgid "Configure all the VLANs in the database."
+msgstr "在VLAN数据库模式配置VLAN。"
+
+# 3b8ffcd8739f4ebeb2ed2be4eef1ad64
+#: ../../network_setup.rst:119
+msgid "Configure Ethernet port 1/g1."
+msgstr "配置端口1/g1。"
+
+# 3f429d4bc0024cd8bd9e41e305d508d9
+#: ../../network_setup.rst:130
+msgid "The statements configure Ethernet port 1/g1 as follows:"
+msgstr "端口1/g1的配置说明："
+
+# d34108f02c0b45b093b68a1f5b8766a3
+#: ../../network_setup.rst:132
+msgid "VLAN 201 is the native untagged VLAN for port 1/g1."
+msgstr "端口1/g1的本征VLAN为201（属于VLAN201）."
+
+# cb2aa517977a4582afcedbfaf7b457cc
+#: ../../network_setup.rst:134
+msgid "All VLANs (300-999) are passed to all the pod-level layer-2 switches."
+msgstr "在Pod级别的二层交换机中允许所有VLAN（300-999）流量通过。"
+
+# 5889063b34fa4e5a946573bb352b45c7
+# c48e437e84a44e1281b7228a01cc0c4f
+#: ../../network_setup.rst:138 ../../network_setup.rst:222
+msgid "Cisco 3750"
+msgstr "Cisco 3750"
+
+# b029ac75d9be4c4d8f41fa45f587b2a7
+#: ../../network_setup.rst:140
+msgid ""
+"The following steps show how a Cisco 3750 is configured for zone-level "
+"layer-3 switching. These steps assume VLAN 201 is used to route untagged "
+"private IPs for pod 1, and pod 1’s layer-2 switch is connected to "
+"GigabitEthernet1/0/1."
+msgstr "以下步骤显示如何配置Cisco 3750作为区域级别的三层交换机。这些步骤假设VLAN 201用于Pod1中未标记的私有IP线路。并且Pod1中的二层交换机已经连接到GigabitEthernet1/0/1端口。"
+
+# 21087caee9cc42529713be381a17944e
+# 77f3004ef9e84e23985c7a992fe12b51
+#: ../../network_setup.rst:145 ../../network_setup.rst:227
+msgid ""
+"Setting VTP mode to transparent allows us to utilize VLAN IDs above 1000. "
+"Since we only use VLANs up to 999, vtp transparent mode is not strictly "
+"required."
+msgstr "设置VTP为透明模式，以便我们使用超过1000的VLAN。虽然我们只用到999，但VTP透明模式并不做严格要求。"
+
+# bc414aaf1d5d49789ab07767a1efc42e
+#: ../../network_setup.rst:155
+msgid "Configure GigabitEthernet1/0/1."
+msgstr "配置GigabitEthernet1/0/1。"
+
+# 13695f0fdc2c4258a81d99fb9126b65c
+#: ../../network_setup.rst:165
+msgid "The statements configure GigabitEthernet1/0/1 as follows:"
+msgstr "端口GigabitEthernet1/g1的配置说明："
+
+# db9281cf2d474ccb8b73772d174b5061
+#: ../../network_setup.rst:167
+msgid "VLAN 201 is the native untagged VLAN for port GigabitEthernet1/0/1."
+msgstr "端口1/g1的本征VLAN为201（属于VLAN201）."
+
+# 2de38e6352e648758eb5e9d33f7f50b9
+#: ../../network_setup.rst:169
+msgid ""
+"Cisco passes all VLANs by default. As a result, all VLANs (300-999) are "
+"passed to all the pod-level layer-2 switches."
+msgstr "Cisco默认允许所有VLAN，因此，VLAN（300-999）都被允许并访问所有的Pod级别的二层交换机。"
+
+# ecca16ca947244c69af3cda7d8ef906a
+#: ../../network_setup.rst:174
+msgid "Layer-2 Switch"
+msgstr "二层交换"
+
+# bd6f1f286da647f0861e42f5c4d5cbd6
+#: ../../network_setup.rst:176
+msgid "The layer-2 switch is the access switching layer inside the pod."
+msgstr "在Pod中的二层交换机提供接入层功能"
+
+# f5aedd9919f44d4d9eea58da5118c865
+#: ../../network_setup.rst:178
+msgid "It should trunk all VLANs into every computing host."
+msgstr "它​通​过​trunk连​接​所​有​VLANS中​的​计​算​主​机。"
+
+# 47960e02b071465188e24cb273c65328
+#: ../../network_setup.rst:180
+msgid ""
+"It should switch traffic for the management network containing computing and"
+" storage hosts. The layer-3 switch will serve as the gateway for the "
+"management network."
+msgstr "它​为​管​理​网​络​提​供​包​含​计​算​和​存​储​主​机​的​流​量​交​换​。​三​层​交​换​机​将​作​为​这​个​管​理​网​络​的​网​关"
+
+# b6bfd5be3b83467192f7d4dba3613304
+#: ../../network_setup.rst:184
+msgid ""
+"The following sections contain example configurations for specific switch "
+"models for pod-level layer-2 switching. It assumes VLAN management protocols"
+" such as VTP or GVRP have been disabled. The scripts must be changed "
+"appropriately if you choose to use VTP or GVRP."
+msgstr "本节包含了一个特定交换机型号的示例配置，作为Pod级别的二层交换机。它假设VLAN管理协议，例如VTP、GVRP等已经被禁用。如果你正在使用VTP或GVRP，那么你必须适当的修改示例脚本。"
+
+# a9c5170aa3324e03adee54023346ad80
+#: ../../network_setup.rst:192
+msgid ""
+"The following steps show how a Dell 62xx is configured for pod-level layer-2"
+" switching."
+msgstr "以​下​步​骤​将​演​示​如何​配​置​Dell 62xx作​为​Pod级​别​的​二层交​换​机。"
+
+# 476b0c81a6c44098804cc2f6b9c8dfd5
+#: ../../network_setup.rst:203
+msgid ""
+"VLAN 201 is used to route untagged private IP addresses for pod 1, and pod 1"
+" is connected to this layer-2 switch."
+msgstr "VLAN201用于Pod1中未标记的私有IP线路。并且Pod1已经连接到该二层交换机。"
+
+# 22aebc930b7b471394516ed87778ba3c
+#: ../../network_setup.rst:213
+msgid "The statements configure all Ethernet ports to function as follows:"
+msgstr "所有的以太网端口功能配置说明："
+
+# 01bdebb29d964df18edcf52ee732caa0
+#: ../../network_setup.rst:215
+msgid "All ports are configured the same way."
+msgstr "所有端口配置相同"
+
+# 42d47d6cc7f148de826545de21dee4c0
+#: ../../network_setup.rst:217
+msgid ""
+"All VLANs (300-999) are passed through all the ports of the layer-2 switch."
+msgstr "二层交换机的所有端口都允许VLAN（300-999）通过。"
+
+# 5057c158f06e4e439eebde80d1e49d38
+#: ../../network_setup.rst:224
+msgid ""
+"The following steps show how a Cisco 3750 is configured for pod-level "
+"layer-2 switching."
+msgstr "以​下​步​骤​将​演​示​如何​配​置​cisco 3750作​为​Pod级​别​的​二层交​换​机"
+
+# 97f41001dc4f44e5bf4def9e08be580c
+#: ../../network_setup.rst:237
+msgid "Configure all ports to dot1q and set 201 as the native VLAN."
+msgstr "配置所有的端口使用dot1q协议，并设置201为本征VLAN。"
+
+# 5ea9eb52eaea40329b40b32897d7c2f1
+#: ../../network_setup.rst:247
+msgid ""
+"By default, Cisco passes all VLANs. Cisco switches complain of the native "
+"VLAN IDs are different when 2 ports are connected together. That’s why you "
+"must specify VLAN 201 as the native VLAN on the layer-2 switch."
+msgstr "默​认​情​况下​，Cisco允​许​所有​VLAN通过。​如果本征VLAN ID不相同的2个​​端​口​连​接​在​一​起时​​，​Cisco交​换​机​提出控诉。​这​就​是​为​什​么​必​须​指​定​VLAN 201为​二交​换​机​的​本​征​VLAN。"
+
+# 8b410ff7a036484a89d183ed79f66761
+#: ../../network_setup.rst:254
+msgid "Hardware Firewall"
+msgstr "硬件防火墙"
+
+# 149a7357d1b2421c8e62f11be11e4a89
+#: ../../network_setup.rst:256
+msgid ""
+"All deployments should have a firewall protecting the management server; see"
+" Generic Firewall Provisions. Optionally, some deployments may also have a "
+"Juniper SRX firewall that will be the default gateway for the guest "
+"networks; see `“External Guest Firewall Integration for Juniper SRX "
+"(Optional)” <#external-guest-firewall-integration-for-juniper-srx-"
+"optional>`_."
+msgstr "所有部署都应该有一个防火墙保护管理服务器；查看防火墙的一般规定。 根据情况不同，一些部署也可能用到Juniper SRX防火墙作为来宾网络的默认网关； 参阅 `“集成外部来宾防火墙Juniper SRX （可选）” <#external-guest-firewall-integration-for-juniper-srx-optional>`_."
+
+# e2f547c68a5549bebcc7c440d52727e8
+#: ../../network_setup.rst:263
+msgid "Generic Firewall Provisions"
+msgstr "防火墙的一般规定"
+
+# 8f3c0247e1254e6c8731076a59b80543
+#: ../../network_setup.rst:265
+msgid "The hardware firewall is required to serve two purposes:"
+msgstr "硬件防火墙必需服务于两个目的："
+
+# 4e3d6f474c664d1ea8727ca773c6c317
+#: ../../network_setup.rst:267
+msgid ""
+"Protect the Management Servers. NAT and port forwarding should be configured"
+" to direct traffic from the public Internet to the Management Servers."
+msgstr "保护管理服务器。"
+
+# deafcee33c084aea9b10dc89e3c056db
+#: ../../network_setup.rst:271
+msgid ""
+"Route management network traffic between multiple zones. Site-to-site VPN "
+"should be configured between multiple zones."
+msgstr "路由多个区域之间的管理网络流量。站点到站点 VPN应该在多个区域之间配置。"
+
+# 3bf3e1c1628b4e3cbd78d690b7f6da5d
+#: ../../network_setup.rst:274
+msgid ""
+"To achieve the above purposes you must set up fixed configurations for the "
+"firewall. Firewall rules and policies need not change as users are "
+"provisioned into the cloud. Any brand of hardware firewall that supports NAT"
+" and site-to-site VPN can be used."
+msgstr "为了达到上述目的，你必须设置固定配置的防火墙。用户被配置到云中，不需要改变防火墙规则和策略。任何支持NAT和站点到站点VPN的硬件防火墙，不论品牌，都可以使用。"
+
+# 6bd99eddfc3a460a8e104b8fb62cb5c1
+#: ../../network_setup.rst:281
+msgid "External Guest Firewall Integration for Juniper SRX (Optional)"
+msgstr "集成外部来宾防火墙Juniper SRX（可选）"
+
+# 91fc9325ee69495fa969c72724802e81
+#: ../../network_setup.rst:284
+msgid "Available only for guests using advanced networking."
+msgstr "客户使用高级网络时才有效。"
+
+# 0dd27c6946794a9cafa7a524eccfffa9
+#: ../../network_setup.rst:286
+msgid ""
+"CloudStack provides for direct management of the Juniper SRX series of "
+"firewalls. This enables CloudStack to establish static NAT mappings from "
+"public IPs to guest VMs, and to use the Juniper device in place of the "
+"virtual router for firewall services. You can have one or more Juniper SRX "
+"per zone. This feature is optional. If Juniper integration is not "
+"provisioned, CloudStack will use the virtual router for these services."
+msgstr "CloudStack中提供了对Juniper SRX系列防火墙的直接管理。这使得CloudStack能建立公共IP到客户虚拟机的静态NAT映射，并利用Juniper设备替代虚拟路由器提供防火墙服务。每个区域中可以有一个或多个Juniper SRX设备。这个特性是可选的。如果不提供Juniper设备集成，CloudStack会使用虚拟路由器提供这些服务。"
+
+# 59a83ba854224a05b873335238575ed2
+#: ../../network_setup.rst:293
+msgid ""
+"The Juniper SRX can optionally be used in conjunction with an external load "
+"balancer. External Network elements can be deployed in a side-by-side or "
+"inline configuration."
+msgstr "Juniper SRX可以和任意的外部负载均衡器一起使用。外部网络元素可以部署为并排或内联结构。"
+
+# 9583a2f6c4bd4bf4a0ef016582e4950e
+#: ../../network_setup.rst:297
+msgid ""
+"|parallel-mode.png: adding a firewall and load balancer in parallel mode.|"
+msgstr "|parallel-mode.png: adding a firewall and load balancer in parallel mode.|"
+
+# 33e495e75ccc4175ac42b392be1f9a25
+#: ../../network_setup.rst:300
+msgid ""
+"CloudStack requires the Juniper SRX firewall to be configured as follows:"
+msgstr "CloudStack要求按照如下信息配置Juniper SRX防火墙："
+
+# 1d1d4d7ab6de4a8985bde992b3d4b3e8
+#: ../../network_setup.rst:303
+msgid "Supported SRX software version is 10.3 or higher."
+msgstr "支持SRX软件版本为10.3或者更高。"
+
+# 6dcbb647db2644fa9a7c43eeb20f382f
+#: ../../network_setup.rst:305
+msgid "Install your SRX appliance according to the vendor's instructions."
+msgstr "根据供应商提供的说明书安装你的SRX设备。"
+
+# 50c53fc1bbaa48ee9e70e7868e5ac785
+#: ../../network_setup.rst:307
+msgid ""
+"Connect one interface to the management network and one interface to the "
+"public network. Alternatively, you can connect the same interface to both "
+"networks and a use a VLAN for the public network."
+msgstr "分别使用两个接口连接管理和公共网络，或者，你可以使用同一个接口来连接这两个网络，但需要为公共网络设置一个VLAN。"
+
+# 0acd20956a3b4ed79e57dd49dd90aa83
+#: ../../network_setup.rst:311
+msgid "Make sure \"vlan-tagging\" is enabled on the private interface."
+msgstr "确保在专有接口上开启了 \"vlan-tagging\" 。"
+
+# 043b2c85f7df4eaa8f35f85717d6411e
+#: ../../network_setup.rst:313
+msgid ""
+"Record the public and private interface names. If you used a VLAN for the "
+"public interface, add a \".[VLAN TAG]\" after the interface name. For "
+"example, if you are using ge-0/0/3 for your public interface and VLAN tag "
+"301, your public interface name would be \"ge-0/0/3.301\". Your private "
+"interface name should always be untagged because the CloudStack software "
+"automatically creates tagged logical interfaces."
+msgstr "记录公共和专用接口名称。如果你在公共接口中使用了VLAN，应该在接口名称后面添加一个\".[VLAN TAG]\"。例如，如果你使用 ge-0/0/3 作为公共接口并且VLAN 标签为301。那么你的公共接口名称应为\"ge-0/0/3.301\"。你的专用接口应始终不添加任何标签，因为CloudStack会自动在逻辑接口上添加标签。"
+
+# d2e6321e2786420589602b57da869135
+#: ../../network_setup.rst:320
+msgid ""
+"Create a public security zone and a private security zone. By default, these"
+" will already exist and will be called \"untrust\" and \"trust\". Add the "
+"public interface to the public zone and the private interface to the private"
+" zone. Note down the security zone names."
+msgstr "创建公共安全区域和专用安全区域。默认情况下，这些已经存在并分别称为\"untrust\" 和 \"trust\"。为公共区域添加公共接口和为专用区域添加专用接口。并记录下安全区域名称。"
+
+# 9d5330a8656f412aa6986f2bd6a1d05d
+#: ../../network_setup.rst:325
+msgid ""
+"Make sure there is a security policy from the private zone to the public "
+"zone that allows all traffic."
+msgstr "确保专用区域到公共区域的安全策略允许所有流量通过。"
+
+# ed6f7d110d0143b6b94e01737a88c911
+#: ../../network_setup.rst:328
+msgid ""
+"Note the username and password of the account you want the CloudStack "
+"software to log in to when it is programming rules."
+msgstr "请注意CloudStack登录所用账户的用户名和密码符合编程规则。"
+
+# 15d496095b294760b7582dd939c7e2a8
+#: ../../network_setup.rst:331
+msgid "Make sure the \"ssh\" and \"xnm-clear-text\" system services are enabled."
+msgstr "确保已经开启 \"ssh\" 和 \"xnm-clear-text\" 等系统服务。"
+
+# 8e2b9fe66ce24116ae4ebbeea154806a
+#: ../../network_setup.rst:333
+msgid "If traffic metering is desired:"
+msgstr "如果需要统计流量："
+
+# b63ccbb8b8fd42aba3d987bed558037b
+#: ../../network_setup.rst:335
+msgid ""
+"Create an incoming firewall filter and an outgoing firewall filter. These "
+"filters should be the same names as your public security zone name and "
+"private security zone name respectively. The filters should be set to be "
+"\"interface-specific\". For example, here is the configuration where the "
+"public zone is \"untrust\" and the private zone is \"trust\":"
+msgstr "创建传入的防火墙过滤和传出的防火墙过滤。这些策略应该有相同的名称分别作为你的公共安全区域名称和专用安全区域名称。过滤应该设置到 \"特定接口\"。 例如，在这个配置中公共区域是 \"untrust\"，专用区域是 \"trust\": "
+
+# b8d90177058440b08f11b6fbd6224400
+#: ../../network_setup.rst:352
+msgid ""
+"Add the firewall filters to your public interface. For example, a sample "
+"configuration output (for public interface ge-0/0/3.0, public security zone "
+"untrust, and private security zone trust) is:"
+msgstr "在你的公共接口添加防火墙过滤。例如，一个示例配置（ge-0/0/3.0为公共接口，untrust为公共安全区域，trust为专用安全区域）"
+
+# d0201cdd17164ce8bb8ed40e21ce56ed
+#: ../../network_setup.rst:370
+msgid "Make sure all VLANs are brought to the private interface of the SRX."
+msgstr "确保SRX中的专用接口允许所有VLAN通过。"
+
+# 0be4d835f5ec47dfb1cb475ce8185cbd
+#: ../../network_setup.rst:372
+msgid ""
+"After the CloudStack Management Server is installed, log in to the "
+"CloudStack UI as administrator."
+msgstr "安装好CloudStack管理端后，使用管理员帐号登录CloudStack用户界面。"
+
+# 83eedf55f3c84dd59b6d0031f7e0c5ee
+# 119ea5f9aac34939b712e6bf35fd6b2b
+# 9de5aa399b044a5a86ccc6bd1abe0800
+# e5a613843e514b77a3d7467cdc372e5f
+#: ../../network_setup.rst:375 ../../network_setup.rst:597
+#: ../../network_setup.rst:631 ../../network_setup.rst:790
+msgid "In the left navigation bar, click Infrastructure."
+msgstr "在左侧导航栏中，点击基础架构"
+
+# c7b8e2f9cbd84c43a23b87769989190b
+# fee6b2759a0a4c8d85973b38457107b9
+# 29aa1bf7a6cc4e779ad52ab4f8d65691
+# 1a6287e3416f438e8e20715084bec873
+#: ../../network_setup.rst:377 ../../network_setup.rst:599
+#: ../../network_setup.rst:633 ../../network_setup.rst:792
+msgid "In Zones, click View More."
+msgstr "点击区域中的查看更多。"
+
+# 564cfc916b7b4250b8211ac6b03d6830
+# 99ba370aee7e4b14ba26cb13b10849ad
+# 0e2e624457db4fba8b6a9bea3ecc8cd2
+# d36af8233dbf427dbda0f1f6a3b3279d
+#: ../../network_setup.rst:379 ../../network_setup.rst:601
+#: ../../network_setup.rst:635 ../../network_setup.rst:794
+msgid "Choose the zone you want to work with."
+msgstr "选择你要设置的区域。"
+
+# fd783e15448d42eca4b34f6d6c297a80
+# 8b0b666f0e2c4a61b088f7aea345a2c1
+#: ../../network_setup.rst:381 ../../network_setup.rst:796
+msgid "Click the Network tab."
+msgstr "点击网络选项卡。"
+
+# 27d53105db6e439c9ee111db84d2e624
+# cc0180b6815b400c9453c2c6a2b25cef
+#: ../../network_setup.rst:383 ../../network_setup.rst:798
+msgid ""
+"In the Network Service Providers node of the diagram, click Configure. (You "
+"might have to scroll down to see this.)"
+msgstr "点击示意图网络服务提供程序中的配置（你可能需要向下滚动才能看到）。"
+
+# c57c2457da7b4b2fab54de32397fb5bb
+#: ../../network_setup.rst:386
+msgid "Click SRX."
+msgstr "点击SRX。"
+
+# c63b5c19989247ce8932e1d0cb37d240
+#: ../../network_setup.rst:388
+msgid "Click the Add New SRX button (+) and provide the following:"
+msgstr "点击（+）按钮添加一个新的SRX，并提供如下信息："
+
+# 8d667d9b05284e6fb6629c3d184f4b12
+# b559300d6e0f48daa0730c40d2cbcf6e
+#: ../../network_setup.rst:390 ../../network_setup.rst:807
+msgid "IP Address: The IP address of the SRX."
+msgstr "IP地址：SRX设备的IP地址。"
+
+# 5f9a972abd4e41d98ebc2925a9bbffb7
+#: ../../network_setup.rst:392
+msgid ""
+"Username: The user name of the account on the SRX that CloudStack should "
+"use."
+msgstr "用户名：CloudStack需要使用SRX设备中的账户。"
+
+# 9805383a254e4a42b7870c8c3c9fc1fb
+# 9d98c3fcf55b4763826c737462e97833
+#: ../../network_setup.rst:395 ../../network_setup.rst:621
+msgid "Password: The password of the account."
+msgstr "密码：该账户的密码。"
+
+# 589a2bf5564f4f3dabfc87038ad99528
+#: ../../network_setup.rst:397
+msgid ""
+"Public Interface. The name of the public interface on the SRX. For example, "
+"ge-0/0/2. A \".x\" at the end of the interface indicates the VLAN that is in"
+" use."
+msgstr "公共接口：SRX中的公共接口名称。例如，ge-0/0/2。 最后一个 \".x\" 表示该VLAN正在使用这个接口。"
+
+# a99e76740bd74ea2b9d864e0f2f22d36
+#: ../../network_setup.rst:401
+msgid ""
+"Private Interface: The name of the private interface on the SRX. For "
+"example, ge-0/0/1."
+msgstr "专用接口: SRX中的专用接口名称。例如, ge-0/0/1。"
+
+# b141f05518cd45c0bfb4563cae4c1f39
+#: ../../network_setup.rst:404
+msgid ""
+"Usage Interface: (Optional) Typically, the public interface is used to meter"
+" traffic. If you want to use a different interface, specify its name here"
+msgstr "Usage Interface: (可选) 通常情况下，公共接口用来统计流量。如果你想使用其他的接口，则在此处修改。"
+
+# 06f5547344474c78b06dfceef142803e
+#: ../../network_setup.rst:408
+msgid ""
+"Number of Retries: The number of times to attempt a command on the SRX "
+"before failing. The default value is 2."
+msgstr "重试次数：尝试控制SRX设备失败时重试的次数。默认值是2。"
+
+# 0e672b9a244d49b981670d6082dcec0e
+#: ../../network_setup.rst:411
+msgid ""
+"Timeout (seconds): The time to wait for a command on the SRX before "
+"considering it failed. Default is 300 seconds."
+msgstr "超时(秒): 尝试控制SRX设备失败时的重试间隔。默认为300秒。"
+
+# fc059aade6b144a4b95d0c8826c39030
+#: ../../network_setup.rst:414
+msgid ""
+"Public Network: The name of the public network on the SRX. For example, "
+"trust."
+msgstr "公共网络: SRX中公共网络的名字。 例，trust。 "
+
+# a174bebde38f47648a5348b5a7f31b8a
+#: ../../network_setup.rst:417
+msgid ""
+"Private Network: The name of the private network on the SRX. For example, "
+"untrust."
+msgstr "专用网络：SRX中专用网络的名字。 例如，untrust。"
+
+# e8f9887a325f4080a1f065d01ce94eef
+#: ../../network_setup.rst:420
+msgid "Capacity: The number of networks the device can handle"
+msgstr "容量：该设备能处理的网络数量。"
+
+# feca5c1941624366a9ee33104afa1869
+#: ../../network_setup.rst:422
+msgid ""
+"Dedicated: When marked as dedicated, this device will be dedicated to a "
+"single account. When Dedicated is checked, the value in the Capacity field "
+"has no significance implicitly, its value is 1"
+msgstr "专用: 当标记为专用后，这个设备只对单个帐号专用。该选项被勾选后，容量选项就没有了实际意义且值会被置为1。"
+
+# d87bed8dbd1d4647a4a74b4fde1e2b4e
+# 6e6650d74a0343ef91d48ae3c11dc1e2
+# e3313ae53b0e404c8a5b589979a311b2
+# 6c0d5b7a35c94391936c43610833c8b1
+#: ../../network_setup.rst:426 ../../network_setup.rst:623
+#: ../../network_setup.rst:661 ../../network_setup.rst:832
+msgid "Click OK."
+msgstr "点击确定。"
+
+# 72e1ae81e175465e801b9a35330c91c7
+#: ../../network_setup.rst:428
+msgid ""
+"Click Global Settings. Set the parameter external.network.stats.interval to "
+"indicate how often you want CloudStack to fetch network usage statistics "
+"from the Juniper SRX. If you are not using the SRX to gather network usage "
+"statistics, set to 0."
+msgstr "点击全局设置。设置external.network.stats.interval参数，指定CloudStack从Juniper SRX收集网络使用情况的时间间隔。如果你不使用SRX统计网络使用情况，即设置为0."
+
+# 5311a929dda944ea92ba1a05fe795f65
+#: ../../network_setup.rst:435
+msgid "External Guest Firewall Integration for Cisco VNMC (Optional)"
+msgstr "整合Cisco VNMC和外部来宾防火墙（可选）"
+
+# 40bbe2d15710459ea8a53a4a3e8be997
+#: ../../network_setup.rst:437
+msgid ""
+"Cisco Virtual Network Management Center (VNMC) provides centralized multi-"
+"device and policy management for Cisco Network Virtual Services. You can "
+"integrate Cisco VNMC with CloudStack to leverage the firewall and NAT "
+"service offered by ASA 1000v Cloud Firewall. Use it in a Cisco Nexus 1000v "
+"dvSwitch-enabled cluster in CloudStack. In such a deployment, you will be "
+"able to:"
+msgstr "Cisco虚拟网络管理中心（VNMC）为Cisco网络虚拟服务提供集中式多设备和策略管理。您可以通过整合Cisco VNMC和CloudStack使用ASA 1000v云防火墙提供防火墙和NAT服务。在开启了Cisco Nexus 1000v分布式虚拟交换机功能的CloudStack群集中。这样部署，您将可以："
+
+# 53b820cc9dff42c7b255ab4d8568a19e
+#: ../../network_setup.rst:444
+msgid ""
+"Configure Cisco ASA 1000v firewalls. You can configure one per guest "
+"network."
+msgstr "配置Cisco ASA 1000v防火墙，你可以为每个来宾创建一个网络。"
+
+# 7d55cb00df5b4a49bfb45bc29b87a677
+#: ../../network_setup.rst:447
+msgid ""
+"Use Cisco ASA 1000v firewalls to create and apply security profiles that "
+"contain ACL policy sets for both ingress and egress traffic."
+msgstr "使用思科ASA 1000v防火墙创建和应用安全配置，包含入口和出口流量的ACL策略集。"
+
+# bbd8e2f953704bfda60d592b7a1c4429
+#: ../../network_setup.rst:450
+msgid ""
+"Use Cisco ASA 1000v firewalls to create and apply Source NAT, Port "
+"Forwarding, and Static NAT policy sets."
+msgstr "使用Cisco ASA 1000v防火墙创建和应用源地址NAT，端口转发，静态NAT策略集。"
+
+# 474d1c74488841138f21f9871e3e7637
+#: ../../network_setup.rst:453
+msgid ""
+"CloudStack supports Cisco VNMC on Cisco Nexus 1000v dvSwich-enabled VMware "
+"hypervisors."
+msgstr "CloudStack对于Cisco VNMC的支持基于开启了Cisco Nexus 1000v分布式虚拟交换机功能的VMware虚拟化管理平台。"
+
+# 42c0de41f2c44491a91b52cf81ed3674
+#: ../../network_setup.rst:458
+msgid ""
+"Using Cisco ASA 1000v Firewall, Cisco Nexus 1000v dvSwitch, and Cisco VNMC "
+"in a Deployment"
+msgstr "部署使用Cisco ASA 1000v防火墙，Cisco Nexus 1000v分布式虚拟交换机和Cisco VNMC。"
+
+# d18809d95a674b9cbe2ffa627eff2786
+#: ../../network_setup.rst:461
+msgid "Guidelines"
+msgstr "指南"
+
+# f97e1aa6ae6b4d49b5c4c66f95db6400
+#: ../../network_setup.rst:463
+msgid "Cisco ASA 1000v firewall is supported only in Isolated Guest Networks."
+msgstr "Cisco ASA 1000v防火墙仅支持隔离的来宾网络。"
+
+# 8df62ec4f02c4a4dbb579d02dd3f150a
+#: ../../network_setup.rst:466
+msgid "Cisco ASA 1000v firewall is not supported on VPC."
+msgstr "Cisco ASA 1000v不支持VPC。"
+
+# 7b56777b52384a36ae1bb6733fedafcb
+#: ../../network_setup.rst:468
+msgid "Cisco ASA 1000v firewall is not supported for load balancing."
+msgstr "Cisco ASA 1000v不支持负载均衡。"
+
+# 237ca442d633476b97185dca9083c955
+#: ../../network_setup.rst:470
+msgid ""
+"When a guest network is created with Cisco VNMC firewall provider, an "
+"additional public IP is acquired along with the Source NAT IP. The Source "
+"NAT IP is used for the rules, whereas the additional IP is used to for the "
+"ASA outside interface. Ensure that this additional public IP is not "
+"released. You can identify this IP as soon as the network is in implemented "
+"state and before acquiring any further public IPs. The additional IP is the "
+"one that is not marked as Source NAT. You can find the IP used for the ASA "
+"outside interface by looking at the Cisco VNMC used in your guest network."
+msgstr "当使用Cisco VNMC防火墙创建的来宾网络时，一个额外的公共IP和SNAT IP一起被获取。SNAT IP用于规则，而额外的IP用于ASA外部接口。确保这一额外的公共IP不会被释放。你可以在网络一旦处在执行状态和获取其他公共IP之前确定这个IP。这个额外的IP没有被标识为SNAT。在你的来宾网络中可以通过Cisco VNMC来查找ASA外部接口的IP地址。"
+
+# 71e7c6de8183436aa6c9219b5fe32097
+#: ../../network_setup.rst:480
+msgid ""
+"Use the public IP address range from a single subnet. You cannot add IP "
+"addresses from different subnets."
+msgstr "使用单一网络中的公共IP地址段。不能添加不同网段的IP地址。"
+
+# 347a68ec09e74810a44472e35d092f64
+#: ../../network_setup.rst:483
+msgid ""
+"Only one ASA instance per VLAN is allowed because multiple VLANS cannot be "
+"trunked to ASA ports. Therefore, you can use only one ASA instance in a "
+"guest network."
+msgstr "每个VLAN中只允许一个ASA实例。因为ASA端口不支持多VLAN的trunk模式。因此，一个来宾网络中只能有一个ASA实例。"
+
+# 569e13e1167c4a76a6f5134ef65d99e8
+#: ../../network_setup.rst:487
+msgid "Only one Cisco VNMC per zone is allowed."
+msgstr "每个区域中，只允许一个Cisco VNMC."
+
+# bb939448a41a44189ebb9d02a40c6b17
+#: ../../network_setup.rst:489
+msgid "Supported only in Inline mode deployment with load balancer."
+msgstr "只支持在Inline模式下部署负载均衡器。"
+
+# 877c7cf7a46f4eb1a593397a10187a6a
+#: ../../network_setup.rst:491
+msgid ""
+"The ASA firewall rule is applicable to all the public IPs in the guest "
+"network. Unlike the firewall rules created on virtual router, a rule created"
+" on the ASA device is not tied to a specific public IP."
+msgstr "ASA防火墙策略适用于来宾网络中所有的公共IP地址。不同于虚拟路由器创建的防火墙规则，ASA设备创建的规则不绑定特定的公共IP地址。"
+
+# cf88d5219d574e44bfc0c436912c5391
+#: ../../network_setup.rst:495
+msgid ""
+"Use a version of Cisco Nexus 1000v dvSwitch that support the vservice "
+"command. For example: nexus-1000v.4.2.1.SV1.5.2b.bin"
+msgstr "使用一个支持vservice命令的Cisco Nexus 1000v分布式虚拟交换机版本。例如：nexus-1000v.4.2.1.SV1.5.2b.bin"
+
+# 6de75b299213451ea9108722f5431abf
+#: ../../network_setup.rst:498
+msgid ""
+"Cisco VNMC requires the vservice command to be available on the Nexus switch"
+" to create a guest network in CloudStack."
+msgstr "使用Cisco VNMC在CloudStack中创建来宾网络，要求vservice命令在Nexus交换机中是可用的。"
+
+# 39bbc9648cf346ba995bd567cba5a91c
+#: ../../network_setup.rst:503
+msgid "Prerequisites"
+msgstr "先决条件"
+
+# c4d87ffce9ee418bb5277196957041d2
+#: ../../network_setup.rst:505
+msgid "Configure Cisco Nexus 1000v dvSwitch in a vCenter environment."
+msgstr "在vCenter环境中配置Cisco Nexus 1000v分布式交换机。"
+
+# 273055b3e10447eb9f6ee66aa7c56122
+#: ../../network_setup.rst:507
+msgid ""
+"Create Port profiles for both internal and external network interfaces on "
+"Cisco Nexus 1000v dvSwitch. Note down the inside port profile, which needs "
+"to be provided while adding the ASA appliance to CloudStack."
+msgstr "在Cisco Nexus 1000v 分布式虚拟交换机中创建两个（内部和外部）网络接口的端口配置文件。记录下内部端口配置，在CloudStack中添加ASA设备时需要提供。"
+
+# e38227e22a094d63bc1b850e584bf3b9
+#: ../../network_setup.rst:512
+msgid ""
+"For information on configuration, see `“Configuring a vSphere Cluster with "
+"Nexus 1000v Virtual Switch” <hypervisor_installation.html#configuring-a"
+"-vsphere-cluster-with-nexus-1000v-virtual-switch>`_."
+msgstr "更多配置信息，请查阅 `“配置vSphere群集和Nexus 1000v 虚拟交换机” <hypervisor_installation.html#configuring-a-vsphere-cluster-with-nexus-1000v-virtual-switch>`_."
+
+# 55fe45ec845548cbb8a78e36f3c06ec0
+#: ../../network_setup.rst:516
+msgid "Deploy and configure Cisco VNMC."
+msgstr "部署和配置Cisco VNMC。"
+
+# f746770abf4f45ef945ff3f0a26b584a
+#: ../../network_setup.rst:518
+msgid ""
+"For more information, see `Installing Cisco Virtual Network Management "
+"Center "
+"<http://www.cisco.com/en/US/docs/switches/datacenter/vsg/sw/4_2_1_VSG_2_1_1/install_upgrade/guide/b_Cisco_VSG_for_VMware_vSphere_Rel_4_2_1_VSG_2_1_1_and_Cisco_VNMC_Rel_2_1_Installation_and_Upgrade_Guide_chapter_011.html>`_"
+" and `Configuring Cisco Virtual Network Management Center "
+"<http://www.cisco.com/en/US/docs/unified_computing/vnmc/sw/1.2/VNMC_GUI_Configuration/b_VNMC_GUI_Configuration_Guide_1_2_chapter_010.html>`_."
+msgstr "更多信息，请查阅 `安装Cisco虚拟网络管理中心 <http://www.cisco.com/en/US/docs/switches/datacenter/vsg/sw/4_2_1_VSG_2_1_1/install_upgrade/guide/b_Cisco_VSG_for_VMware_vSphere_Rel_4_2_1_VSG_2_1_1_and_Cisco_VNMC_Rel_2_1_Installation_and_Upgrade_Guide_chapter_011.html>`_ 和 `配置Cisco虚拟网络管理中心 <http://www.cisco.com/en/US/docs/unified_computing/vnmc/sw/1.2/VNMC_GUI_Configuration/b_VNMC_GUI_Configuration_Guide_1_2_chapter_010.html>`_."
+
+# 890a0309246f4e1cb3c358dcb4e98983
+#: ../../network_setup.rst:524
+msgid "Register Cisco Nexus 1000v dvSwitch with Cisco VNMC."
+msgstr "注册Cisco Nexus 1000v分布式交换机到Cisco VNMC。"
+
+# 5d7310375c57493aa147f26420784b38
+#: ../../network_setup.rst:526
+msgid ""
+"For more information, see `Registering a Cisco Nexus 1000V with Cisco VNMC "
+"<http://www.cisco.com/en/US/docs/switches/datacenter/vsg/sw/4_2_1_VSG_1_2/vnmc_and_vsg_qi/guide/vnmc_vsg_install_5register.html#wp1064301>`_."
+msgstr "更多信息，请查阅 `注册Cisco Nexus 1000V 和Cisco VNMC <http://www.cisco.com/en/US/docs/switches/datacenter/vsg/sw/4_2_1_VSG_1_2/vnmc_and_vsg_qi/guide/vnmc_vsg_install_5register.html#wp1064301>`_."
+
+# 500816abfa7f432d9ed94665ff42315a
+#: ../../network_setup.rst:529
+msgid "Create Inside and Outside port profiles in Cisco Nexus 1000v dvSwitch."
+msgstr "在Cisco Nexus 1000v分布式交换机中创建内部和外部端口配置文件。"
+
+# 76cabd3f3582426c8c8810e144eb23f3
+#: ../../network_setup.rst:531
+msgid ""
+"For more information, see `“Configuring a vSphere Cluster with Nexus 1000v "
+"Virtual Switch” <hypervisor_installation.html#configuring-a-vsphere-cluster-"
+"with-nexus-1000v-virtual-switch>`_."
+msgstr "更多信息，请查阅 `“配置vSphere群集和Nexus 1000v 虚拟交换机” <hypervisor_installation.html#configuring-a-vsphere-cluster-with-nexus-1000v-virtual-switch>`_."
+
+# ff2dcbffa1b14e5ab64b8c834942483e
+#: ../../network_setup.rst:535
+msgid "Deploy and Cisco ASA 1000v appliance."
+msgstr "部署Cisco ASA 1000v设备。"
+
+# 39146f72a8c84d28bc65e5fa9dd4cdb9
+#: ../../network_setup.rst:537
+msgid ""
+"For more information, see `Setting Up the ASA 1000V Using VNMC "
+"<http://www.cisco.com/en/US/docs/security/asa/quick_start/asa1000V/setup_vnmc.html>`_."
+msgstr "更多信息，请查阅 `使用VNMC设置ASA 1000V <http://www.cisco.com/en/US/docs/security/asa/quick_start/asa1000V/setup_vnmc.html>`_."
+
+# 2165e5de14094930bed61e6b01f0b77a
+#: ../../network_setup.rst:540
+msgid ""
+"Typically, you create a pool of ASA 1000v appliances and register them with "
+"CloudStack."
+msgstr "通常情况下，你可以创建一个ASA 1000v设备池通过CloudStack来注册他们。"
+
+# 71608798f1724b909bf18251bbcdce75
+#: ../../network_setup.rst:543
+msgid "Specify the following while setting up a Cisco ASA 1000v instance:"
+msgstr "设置Cisco ASA 1000v设备需指定如下信息："
+
+# e7347e3b34f14bfdb63251d3628abbdd
+#: ../../network_setup.rst:545
+msgid "VNMC host IP."
+msgstr "VNMC主机IP。"
+
+# 6b0bb824d6ba4c308a4713de3f38b8bb
+#: ../../network_setup.rst:547
+msgid "Ensure that you add ASA appliance in VNMC mode."
+msgstr "确保你在VNMC模式中添加ASA设备。"
+
+# 70e3ab12a94645d9b8db4379ed6c40e6
+#: ../../network_setup.rst:549
+msgid ""
+"Port profiles for the Management and HA network interfaces. This need to be "
+"pre-created on Cisco Nexus 1000v dvSwitch."
+msgstr "需要预先在Cisco Nexus 1000v分布式虚拟交换机中创建用于管理和高可用的网络接口配置文件。"
+
+# c53ff0d84fc941c28feda24f9e7e4eef
+#: ../../network_setup.rst:552
+msgid "Internal and external port profiles."
+msgstr "内部和外部端口配置文件"
+
+# 45b55744d6e247269c14c32af61e6b04
+#: ../../network_setup.rst:554
+msgid ""
+"The Management IP for Cisco ASA 1000v appliance. Specify the gateway such "
+"that the VNMC IP is reachable."
+msgstr "Cisco ASA 1000v设备的管理IP。指定网关确保到VNMC IP是可达的。"
+
+# 199952960bde4c1d8f20c181417792e5
+#: ../../network_setup.rst:557
+msgid "Administrator credentials"
+msgstr "管理员证书"
+
+# 93c5f22490074bdc99e81cd94c41d53a
+#: ../../network_setup.rst:559
+msgid "VNMC credentials"
+msgstr "VNMC证书"
+
+# 10dbc0618ab842719aa3772b2e8784fa
+#: ../../network_setup.rst:561
+msgid "Register Cisco ASA 1000v with VNMC."
+msgstr "注册Cisco ASA 1000v到VNMC。"
+
+# 5966ea52cf464c80b807747bebbc8460
+#: ../../network_setup.rst:563
+msgid ""
+"After Cisco ASA 1000v instance is powered on, register VNMC from the ASA "
+"console."
+msgstr "打开Cisco ASA 1000v实例电源后，通过ASA控制台注册VNMC。"
+
+# 3a33bfedd41d4a64b21fb24beccb4b22
+#: ../../network_setup.rst:568
+msgid "Using Cisco ASA 1000v Services"
+msgstr "使用Cisco ASA 1000v服务"
+
+# 92702d5dd3bb4e1489e83c77093f1a05
+#: ../../network_setup.rst:570
+msgid "Ensure that all the prerequisites are met."
+msgstr "确保满足所有的先决条件。"
+
+# 1c86dda56f9b4f1d95dd04a56a545eb6
+#: ../../network_setup.rst:572
+msgid "See `“Prerequisites” <#prerequisites>`_."
+msgstr "参阅 `“先决条件” <#prerequisites>`_."
+
+# 2a96e0eac83d460fb53cfd7a57b336a1
+#: ../../network_setup.rst:574
+msgid "Add a VNMC instance."
+msgstr "添加 VNMC 实例。"
+
+# 7f2786b9a09648eca50126e66e9a1ce9
+#: ../../network_setup.rst:576
+msgid "See `“Adding a VNMC Instance” <#adding-a-vnmc-instance>`_."
+msgstr "参阅 `“添加 VNMC 实例” <#adding-a-vnmc-instance>`_."
+
+# 4c83a0155c3a4b9a8c3e224f13a38643
+#: ../../network_setup.rst:578
+msgid "Add a ASA 1000v instance."
+msgstr "添加 ASA 1000v 实例。"
+
+# df320d40f5224132a3f107b3d70f5a1f
+#: ../../network_setup.rst:580
+msgid "See `“Adding an ASA 1000v Instance” <#adding-an-asa-1000v-instance>`_."
+msgstr "参阅 `“添加 ASA 1000v 实例” <#adding-an-asa-1000v-instance>`_."
+
+# 69e5eb4309584257937bdb75fd4756ab
+#: ../../network_setup.rst:582
+msgid ""
+"Create a Network Offering and use Cisco VNMC as the service provider for "
+"desired services."
+msgstr "创建一个网络方案，使用Cisco VNMC提供你期望的服务。"
+
+# f8bc670f1d1e410d87eb7bebed9dd50b
+#: ../../network_setup.rst:585
+msgid ""
+"See `“Creating a Network Offering Using Cisco ASA 1000v” <#creating-a"
+"-network-offering-using-cisco-asa-1000v>`_."
+msgstr "参阅 `“使用Cisco ASA 1000v创建一个网络方案” <#creating-a-network-offering-using-cisco-asa-1000v>`_."
+
+# b9f4e08c2e4c47038a2651d6e8c45f9a
+#: ../../network_setup.rst:588
+msgid ""
+"Create an Isolated Guest Network by using the network offering you just "
+"created."
+msgstr "使用你刚创建的网络方案，创建一个隔离的来宾网络。"
+
+# dd9740c27dcd49caa18b1e07599c945d
+#: ../../network_setup.rst:593
+msgid "Adding a VNMC Instance"
+msgstr "添加 VNMC 实例"
+
+# c1cfcf6b2714482981a36cdf521b5676
+# b1a384e4258345fcaf5a2c57a062033e
+# fd3b312d35ff4d32b0aeba868015673e
+#: ../../network_setup.rst:595 ../../network_setup.rst:629
+#: ../../network_setup.rst:1012
+msgid "Log in to the CloudStack UI as administrator."
+msgstr "作为管理员登录到CloudStack用户界面。"
+
+# eb09321188c441c584e06b8b6ae6a816
+# fe02f530f0044688a207897b58ff2421
+#: ../../network_setup.rst:603 ../../network_setup.rst:637
+msgid "Click the Physical Network tab."
+msgstr "点击物理网络标签卡。"
+
+# 758d3cd3abe240e3b4b45b46e4fd7293
+# 3eba5d220d984b70b68217882aa7a82b
+#: ../../network_setup.rst:605 ../../network_setup.rst:639
+msgid "In the Network Service Providers node of the diagram, click Configure."
+msgstr "点击示意图'网络服务提供程序'中的配置"
+
+# b2023dfd763a46f2b35bb495d2c6caae
+# 1059ea2b826b4b21b8c818daf678ca46
+#: ../../network_setup.rst:608 ../../network_setup.rst:642
+msgid "You might have to scroll down to see this."
+msgstr "你可能需要向下滚动才能看到。"
+
+# c87503e43e8a4a25a77c4166e02fdef5
+# fdfcc18249374b7c94616ea1de46f8a3
+#: ../../network_setup.rst:610 ../../network_setup.rst:644
+msgid "Click Cisco VNMC."
+msgstr "点击Cisco VNMC"
+
+# 4f9b7772a8f346af94c367b56c696bff
+#: ../../network_setup.rst:612
+msgid "Click View VNMC Devices."
+msgstr "点击查看VNMC设备。"
+
+# 473f0d6944a641d293e217e69b575982
+#: ../../network_setup.rst:614
+msgid "Click the Add VNMC Device and provide the following:"
+msgstr "点击添加VNMC设备并提供如下信息："
+
+# 9d8b2cf61ebf4f0b9d20bde66eb2ada4
+#: ../../network_setup.rst:616
+msgid "Host: The IP address of the VNMC instance."
+msgstr "主机：VNMC实例的IP地址。"
+
+# 3056ecd7f30744acb87118d6b31faf4d
+#: ../../network_setup.rst:618
+msgid ""
+"Username: The user name of the account on the VNMC instance that CloudStack "
+"should use."
+msgstr "用户名：CloudStack需要使用VNMC实例中的账户"
+
+# d98ce3e9beba49e3b8be96b27970e903
+#: ../../network_setup.rst:627
+msgid "Adding an ASA 1000v Instance"
+msgstr "添加 ASA 1000v 实例"
+
+# d58faf4c65d447f7b1ed654fa6d773ef
+#: ../../network_setup.rst:646
+msgid "Click View ASA 1000v."
+msgstr "点击查看ASA 1000v。"
+
+# 48a7684e388a4a1199086e67b9e06fbf
+#: ../../network_setup.rst:648
+msgid "Click the Add CiscoASA1000v Resource and provide the following:"
+msgstr "点击添加Cisco ASA 1000v资源并提供如下信息："
+
+# 928909e6ab0a423cbdb8e647f25772b2
+#: ../../network_setup.rst:650
+msgid ""
+"**Host**: The management IP address of the ASA 1000v instance. The IP "
+"address is used to connect to ASA 1000V."
+msgstr "**主机**: ASA 1000v实例的管理地址。该IP地址用来连接ASA 1000V。"
+
+# 70321795345648bd9c1da27a348d9622
+#: ../../network_setup.rst:653
+msgid ""
+"**Inside Port Profile**: The Inside Port Profile configured on Cisco "
+"Nexus1000v dvSwitch."
+msgstr "**内部端口配置文件**: 在Cisco Nexus1000v分布式虚拟交换机中配置内部端口。"
+
+# 32b609836a04453fb6a045d870d7326f
+#: ../../network_setup.rst:656
+msgid ""
+"**Cluster**: The VMware cluster to which you are adding the ASA 1000v "
+"instance."
+msgstr "**群集**: 你正在添加ASA 1000v实例所在的VMware群集。"
+
+# cd7f376d7aa849a4a7247501f60ba869
+#: ../../network_setup.rst:659
+msgid "Ensure that the cluster is Cisco Nexus 1000v dvSwitch enabled."
+msgstr "确保在群集中启用了Cisco Nexus 1000v分布式虚拟交换机。"
+
+# a3980b1ab6084e3db8cd7521a2eedaea
+#: ../../network_setup.rst:665
+msgid "Creating a Network Offering Using Cisco ASA 1000v"
+msgstr "使用Cisco ASA 1000v创建一个网络方案"
+
+# 950a38dbcb1e421a9f535a092c783907
+#: ../../network_setup.rst:667
+msgid ""
+"To have Cisco ASA 1000v support for a guest network, create a network "
+"offering as follows:"
+msgstr "要来宾网络支持Cisco ASA 1000v，按照如下信息添加网络方案："
+
+# e92f8d283bd34673bd9c78e81833668e
+#: ../../network_setup.rst:670
+msgid "Log in to the CloudStack UI as a user or admin."
+msgstr "使用用户或管理员登录到CloudStack用户界面。"
+
+# 26660317d6fb41258f3d2b9a406f298d
+#: ../../network_setup.rst:672
+msgid "From the Select Offering drop-down, choose Network Offering."
+msgstr "下拉选择方案，选择网络方案："
+
+# ddecb14ca4124b1998831a3da0e5db4f
+#: ../../network_setup.rst:674
+msgid "Click Add Network Offering."
+msgstr "点击添加网络方案。"
+
+# dc73890ea66e4303ac2aa89bff57c086
+#: ../../network_setup.rst:676
+msgid "In the dialog, make the following choices:"
+msgstr "在对话框中，选择如下操作："
+
+# 8cc2e100f0cb4ebfbfaf9c9deadcbaba
+#: ../../network_setup.rst:678
+msgid "**Name**: Any desired name for the network offering."
+msgstr "**名称**: 任何网络方案的名称。"
+
+# dd1d1924540f4e5dbedd6e9a2218be68
+#: ../../network_setup.rst:680
+msgid ""
+"**Description**: A short description of the offering that can be displayed "
+"to users."
+msgstr "**描述**: 提供一个简短的方案描述。 "
+
+# 26e660fc8ea74ce28ac609f6c584cbd2
+#: ../../network_setup.rst:683
+msgid "**Network Rate**: Allowed data transfer rate in MB per second."
+msgstr "**网络速度**: 允许的数据传输速度（MB/秒）。"
+
+# dd894b5b99ef46fa91b4e2548ecbc571
+#: ../../network_setup.rst:685
+msgid ""
+"**Traffic Type**: The type of network traffic that will be carried on the "
+"network."
+msgstr "**流量类型**: 允许承载的网络流量类型。"
+
+# eae0966c87144700836fc5e823127d8b
+#: ../../network_setup.rst:688
+msgid ""
+"**Guest Type**: Choose whether the guest network is isolated or shared."
+msgstr "**来宾类型**: 选择来宾网络为隔离或共享网络。"
+
+# e54268df1bbe4a2099f3e8c010a00d9f
+#: ../../network_setup.rst:691
+msgid ""
+"**Persistent**: Indicate whether the guest network is persistent or not. The"
+" network that you can provision without having to deploy a VM on it is "
+"termed persistent network."
+msgstr "**持续性**: 表明来宾网络是否支持持续性。无需提供任何VM部署的网络，称之为持续性网络。"
+
+# 4fc96223cb514c21a8ec82d8d753d7c9
+#: ../../network_setup.rst:695
+msgid ""
+"**VPC**: This option indicate whether the guest network is Virtual Private "
+"Cloud-enabled. A Virtual Private Cloud (VPC) is a private, isolated part of "
+"CloudStack. A VPC can have its own virtual network topology that resembles a"
+" traditional physical network. For more information on VPCs, see `“About "
+"Virtual Private Clouds” <http://docs.cloudstack.apache.org/projects"
+"/cloudstack-administration/en/latest/networking2.html#about-virtual-private-"
+"clouds>`_."
+msgstr "**VPC**: 此选项表明是否在来宾网络中启用VPC。 CloudStack中的虚拟专用云(VPC)是专用、隔离的。 一个VPC可以有一个类似于传统物理网络的虚拟网络拓扑结构。有关的VPC的详细信息，请参阅 `“关于虚拟专用云” <http://docs.cloudstack.apache.org/projects/cloudstack-administration/en/latest/networking2.html#about-virtual-private-clouds>`_."
+
+# f00fa325f09746919b9d1009245f5015
+#: ../../network_setup.rst:702
+msgid ""
+"**Specify VLAN**: (Isolated guest networks only) Indicate whether a VLAN "
+"should be specified when this offering is used."
+msgstr "**指定**: (仅隔离的来宾网络) 表明在使用这个网络方案时，是否指定VLAN。"
+
+# 3d3c6a5287e4473f8185c047e07a1974
+#: ../../network_setup.rst:705
+msgid ""
+"**Supported Services**: Use Cisco VNMC as the service provider for Firewall,"
+" Source NAT, Port Forwarding, and Static NAT to create an Isolated guest "
+"network offering."
+msgstr "**支持的服务**: 使用Cisco VNMC作为服务提供者针对隔离的来宾网络方案提供Firewall, Source NAT, Port Forwarding, 和Static NAT服务。"
+
+# bc538b1440fd4510b0825b413a042fee
+#: ../../network_setup.rst:709
+msgid ""
+"**System Offering**: Choose the system service offering that you want "
+"virtual routers to use in this network."
+msgstr "**系统方案**: 选择你想在这个网络中使用的虚拟路由器的系统服务方案。"
+
+# 26faeb25fa524771be1e615d700372ba
+#: ../../network_setup.rst:712
+msgid ""
+"**Conserve mode**: Indicate whether to use conserve mode. In this mode, "
+"network resources are allocated only when the first virtual machine starts "
+"in the network."
+msgstr "**保护模式**: 表明是否使用保护模式。在这个模式中，只有网络中第一个虚拟机启动时才分配网络资源。"
+
+# 4ef16133df3a464390c7fee43388e910
+#: ../../network_setup.rst:716
+msgid "Click OK"
+msgstr "点击确定"
+
+# a7992266e0284c60a8f1095f8f4c12e3
+#: ../../network_setup.rst:718
+msgid "The network offering is created."
+msgstr "已经创建网络方案。"
+
+# a742daa985a44045b5e372c411ffc6c2
+#: ../../network_setup.rst:722
+msgid "Reusing ASA 1000v Appliance in new Guest Networks"
+msgstr "在新的来宾网络中重复使用ASA 1000v设备"
+
+# 4a0aa5f289c5495e98a8b4baaaf6a814
+#: ../../network_setup.rst:724
+msgid ""
+"You can reuse an ASA 1000v appliance in a new guest network after the "
+"necessary cleanup. Typically, ASA 1000v is cleaned up when the logical edge "
+"firewall is cleaned up in VNMC. If this cleanup does not happen, you need to"
+" reset the appliance to its factory settings for use in new guest networks. "
+"As part of this, enable SSH on the appliance and store the SSH credentials "
+"by registering on VNMC."
+msgstr "您可以在做了必要的清理后重新在新的来宾网络中使用ASA 1000v设备。通常情况下，ASA 1000v is cleaned up when the logical edge firewall is cleaned up in VNMC。如果清理动作没有发生，你需要将设备恢复到出厂设置，才能在新的来宾网络中使用。作为其中的一部分，需要在设备上启用ssh并通过向VNMC注册存储SSH凭证。"
+
+# 20ad628b69124229b5574084ade4cb93
+#: ../../network_setup.rst:731
+msgid "Open a command line on the ASA appliance:"
+msgstr "打开ASA设备的命令行："
+
+# 105a7e29f0ad4898a7c75a9729dede0a
+#: ../../network_setup.rst:733
+msgid "Run the following:"
+msgstr "运行如下命令："
+
+# 6ab19d6d2e0042538cbbeb508cd0749c
+#: ../../network_setup.rst:739
+msgid "You are prompted with the following message:"
+msgstr "提示您如下信息："
+
+# f0bc8a73d1ca4c1dbb83304efbb74e39
+#: ../../network_setup.rst:745
+msgid "Enter N."
+msgstr "输入N。"
+
+# 8b41e1b3b97942c2834f1d7ac78e9bb1
+#: ../../network_setup.rst:747
+msgid "You will get the following confirmation message:"
+msgstr "你会得到如下确认信息："
+
+# dfb5d4fffbb5409db3ce8728237aa0bc
+#: ../../network_setup.rst:753
+msgid "Restart the appliance."
+msgstr "重启设备。"
+
+# 23cee1ad7b844c61a8902f657c8beb73
+#: ../../network_setup.rst:755
+msgid "Register the ASA 1000v appliance with the VNMC:"
+msgstr "注册ASA 1000v设备到VNMC："
+
+# dc2f284a64c245a29344154ada915e58
+#: ../../network_setup.rst:765
+msgid "External Guest Load Balancer Integration (Optional)"
+msgstr "整合外部来宾负载均衡（可选）"
+
+# 9d948a00894c4f2fa6895235bd45cd3e
+#: ../../network_setup.rst:767
+msgid ""
+"CloudStack can optionally use a Citrix NetScaler or BigIP F5 load balancer "
+"to provide load balancing services to guests. If this is not enabled, "
+"CloudStack will use the software load balancer in the virtual router."
+msgstr "CloudStack可以使用Citrix NetScaler或BigIP F5负载均衡器为客户提供负载平衡服务。如果未启用,CloudStack将使用虚拟路由器中的软件负载平衡。"
+
+# dabdfbfa1edc4c61a06597ddc02e6d92
+#: ../../network_setup.rst:772
+msgid ""
+"To install and enable an external load balancer for CloudStack management:"
+msgstr "在CloudStack管理端中安装和启用外部负载均衡："
+
+# f0578c75b13b4167a35650d6618c3b63
+#: ../../network_setup.rst:775
+msgid "Set up the appliance according to the vendor's directions."
+msgstr "根据供应商提供的说明书安装你的设备。"
+
+# acd66698614d49f18d286135e6689c3d
+#: ../../network_setup.rst:777
+msgid ""
+"Connect it to the networks carrying public traffic and management traffic "
+"(these could be the same network)."
+msgstr "连接到承载公共流量和管理流量的网络（可以是同一个网络）。"
+
+# 91c057c2c551461e8a07b2887f28b3fa
+#: ../../network_setup.rst:780
+msgid ""
+"Record the IP address, username, password, public interface name, and "
+"private interface name. The interface names will be something like \"1.1\" "
+"or \"1.2\"."
+msgstr "记录IP地址、用户名、密码、公共接口名称和专用接口名称。接口名称类似 \"1.1\" 或 \"1.2\"。"
+
+# af8d438df7ea4817814040c1ddc43feb
+#: ../../network_setup.rst:784
+msgid ""
+"Make sure that the VLANs are trunked to the management network interface."
+msgstr "确保VLAN可以通过trunk到管理网络接口。"
+
+# 13351032ab9f44cbadb116a21a1d44f3
+#: ../../network_setup.rst:787
+msgid ""
+"After the CloudStack Management Server is installed, log in as administrator"
+" to the CloudStack UI."
+msgstr "安装好CloudStack管理端后，使用管理员帐号登录CloudStack用户界面。"
+
+# aded9ee3be254e338c7d4e6b7edf7f97
+#: ../../network_setup.rst:801
+msgid "Click NetScaler or F5."
+msgstr "点击NetScaler或F5."
+
+# 1ce1bb2fbaf14b22a9dd5c8a16924159
+#: ../../network_setup.rst:803
+msgid "Click the Add button (+) and provide the following:"
+msgstr "点击（+）添加按钮并提供如下信息："
+
+# a2d8bdc55c3c40028eb64d6e1ae7c16f
+#: ../../network_setup.rst:805
+msgid "For NetScaler:"
+msgstr "对于NetScaler:"
+
+# 1f6de479819a4db684f63f0307d1dc32
+#: ../../network_setup.rst:809
+msgid ""
+"Username/Password: The authentication credentials to access the device. "
+"CloudStack uses these credentials to access the device."
+msgstr "用户名/密码：访问设备的身份验证凭证。CloudStack使用这些凭证来访问设备。"
+
+# 5208277aaa9c4a5a867a0d1fd2ec2854
+#: ../../network_setup.rst:812
+msgid ""
+"Type: The type of device that is being added. It could be F5 Big Ip Load "
+"Balancer, NetScaler VPX, NetScaler MPX, or NetScaler SDX. For a comparison "
+"of the NetScaler types, see the CloudStack Administration Guide."
+msgstr "类型：添加设备的类型。可以是F5 BigIP负载均衡器、NetScaler VPX、NetScaler MPX或 NetScaler SDX等设备。关于NetScaler的类型比较，请参阅CloudStack管理指南。"
+
+# a81a8b45b0364dc28f2b425a8d636be6
+#: ../../network_setup.rst:817
+msgid ""
+"Public interface: Interface of device that is configured to be part of the "
+"public network."
+msgstr "公共接口: 配置为公共网络部分的设备接口。"
+
+# 88814119e09a4dd0921efaa7b868b7d7
+#: ../../network_setup.rst:820
+msgid ""
+"Private interface: Interface of device that is configured to be part of the "
+"private network."
+msgstr "专用接口: 配置为专用网络部分的设备接口。"
+
+# a3d9da03a32f413994871acf89781192
+#: ../../network_setup.rst:823
+msgid ""
+"Number of retries. Number of times to attempt a command on the device before"
+" considering the operation failed. Default is 2."
+msgstr "重试次数：尝试控制设备失败时重试的次数。默认值是2"
+
+# 9fdbb29c229243e3ae2770682cec2268
+#: ../../network_setup.rst:826
+msgid "Capacity: The number of networks the device can handle."
+msgstr "容量：该设备能处理的网络数量。"
+
+# 746f18e5c26844098f69c70f3531eac4
+#: ../../network_setup.rst:828
+msgid ""
+"Dedicated: When marked as dedicated, this device will be dedicated to a "
+"single account. When Dedicated is checked, the value in the Capacity field "
+"has no significance implicitly, its value is 1."
+msgstr "专用: 当标记为专用后，这个设备只对单个帐号专用。该选项被勾选后，容量选项就没有了实际意义且值会被置为1。"
+
+# 8d71ee3b3ba24ef2b09f051382c84f02
+#: ../../network_setup.rst:834
+msgid ""
+"The installation and provisioning of the external load balancer is finished."
+" You can proceed to add VMs and NAT or load balancing rules."
+msgstr "外部负载平衡器的安装和配置完成后，你就可以开始添加虚拟机和NAT或负载均衡规则。"
+
+# 168e73c12edc4ddfb7ceadf3950a1441
+#: ../../network_setup.rst:839
+msgid "Management Server Load Balancing"
+msgstr "管理服务器负载均衡"
+
+# d1c9832bb0ec4c889904900754150662
+#: ../../network_setup.rst:841
+msgid ""
+"CloudStack can use a load balancer to provide a virtual IP for multiple "
+"Management Servers. The administrator is responsible for creating the load "
+"balancer rules for the Management Servers. The application requires "
+"persistence or stickiness across multiple sessions. The following chart "
+"lists the ports that should be load balanced and whether or not persistence "
+"is required."
+msgstr "CloudStack可以使用负载均衡器为多管理服务器提供一个虚拟IP。管理员负责创建管理服务器的负载均衡规则。应用程序需要跨多个持久性或stickiness的会话。下表列出了需要进行负载平衡的端口和是否有持久性要求。"
+
+# 8d59260980c2412d96a8664b0731bd47
+#: ../../network_setup.rst:848
+msgid "Even if persistence is not required, enabling it is permitted."
+msgstr "即使不需要持久性，也使它是允许的。"
+
+# f4777f724d85477090b55c4396cc6f35
+#: ../../network_setup.rst:851
+msgid "Source Port"
+msgstr "源端口"
+
+# 7d326aaf15ab44afa0cd31c1e3fe5590
+#: ../../network_setup.rst:851
+msgid "Destination Port"
+msgstr "目标端口"
+
+# c1da26dd22ac4a4baafe30bd8b745382
+#: ../../network_setup.rst:851
+msgid "Protocol"
+msgstr "协议"
+
+# b2352632cff44c4db47d589dc77aac90
+#: ../../network_setup.rst:851
+msgid "Persistence Required?"
+msgstr "持续请求"
+
+# 4a62a34b37034a728bdbe3708bec46b4
+#: ../../network_setup.rst:853
+msgid "80 or 443"
+msgstr "80或者443"
+
+# e53c8ab237804881bcb3014d9b434e24
+#: ../../network_setup.rst:853
+msgid "8080 (or 20400 with AJP)"
+msgstr "8080 (或者 20400 with AJP)"
+
+# 8e55087fd18c478189ed323b50a78e15
+#: ../../network_setup.rst:853
+msgid "HTTP (or AJP)"
+msgstr "HTTP (或者AJP)"
+
+# 910dae6e62db4b6c87bcd33fba33a41b
+# 625d27f875424cbca2735e4e71329264
+#: ../../network_setup.rst:854 ../../network_setup.rst:854
+msgid "8250"
+msgstr "8250"
+
+# 58601595abf7493fadec45a9912276d6
+#: ../../network_setup.rst:854
+msgid "TCP"
+msgstr "TCP"
+
+# 52192943fcd04698aaf9f3033585bc65
+# a4a53f84a8ed45d2bc84a2fef1df06d4
+#: ../../network_setup.rst:855 ../../network_setup.rst:855
+msgid "8096"
+msgstr "8096"
+
+# 2f45fefee5c04295b3ef2346baaefbf5
+#: ../../network_setup.rst:855
+msgid "HTTP"
+msgstr "HTTP"
+
+# 56b9fa972912451e936f67a7001a6771
+#: ../../network_setup.rst:858
+msgid ""
+"In addition to above settings, the administrator is responsible for setting "
+"the 'host' global config value from the management server IP to load "
+"balancer virtual IP address. If the 'host' value is not set to the VIP for "
+"Port 8250 and one of your management servers crashes, the UI is still "
+"available but the system VMs will not be able to contact the management "
+"server."
+msgstr "除了上面的设置，管理员还负责设置‘host’全局配置值，由管理服务器IP地址更改为负载均衡虚拟IP地址。如果‘host’值未设置为VIP的8250端口并且一台管理服务器崩溃时，用户界面依旧可用，但系统虚拟机将无法与管理服务器联系。"
+
+# ad76871b34a845f5b9d235414f2306e5
+#: ../../network_setup.rst:867
+msgid "Topology Requirements"
+msgstr "拓扑结构要求"
+
+# 636bca2e871e41729f5af58bc925cfbd
+#: ../../network_setup.rst:870
+msgid "Security Requirements"
+msgstr "安全需求"
+
+# b84e3ab736f74a93915035c25c5732ee
+#: ../../network_setup.rst:872
+msgid ""
+"The public Internet must not be able to access port 8096 or port 8250 on the"
+" Management Server."
+msgstr "公共互联网必须不能访问管理服务器的8096和8250端口。"
+
+# a6a9845e5dae4c1c864c36674244fecc
+#: ../../network_setup.rst:877
+msgid "Runtime Internal Communications Requirements"
+msgstr "运行时内部通信需求"
+
+# 268c7a6bce4541139e2a22fe23738d00
+#: ../../network_setup.rst:879
+msgid ""
+"The Management Servers communicate with each other to coordinate tasks. This"
+" communication uses TCP on ports 8250 and 9090."
+msgstr "管理服务器需要跟其他主机进行任务协调。该通信使用TCP协议的8250和9090端口。"
+
+# ce28693898e94e9d86c98a6e41acb59e
+#: ../../network_setup.rst:882
+msgid ""
+"The console proxy VMs connect to all hosts in the zone over the management "
+"traffic network. Therefore the management traffic network of any given pod "
+"in the zone must have connectivity to the management traffic network of all "
+"other pods in the zone."
+msgstr "CPVM跟区域中的所有主机通过管理网络通信。因此区域中任何一个Pod都必须能通过管理网络连接到其他Pod。"
+
+# 2cc6b18efa544724b94a396ea3f29997
+#: ../../network_setup.rst:887
+msgid ""
+"The secondary storage VMs and console proxy VMs connect to the Management "
+"Server on port 8250. If you are using multiple Management Servers, the load "
+"balanced IP address of the Management Servers on port 8250 must be "
+"reachable."
+msgstr "SSVM和CPVM通过8250端口与管理服务器联系。如果你使用了多个管理服务器，确保负载均衡器IP地址到管理服务器的8250端口是可达的。"
+
+# aa5c7cf265704eac9214b589ca5ec409
+#: ../../network_setup.rst:894
+msgid "Storage Network Topology Requirements"
+msgstr "存储网络拓扑要求"
+
+# e41b0df94da8462e80b7ef8072966db0
+#: ../../network_setup.rst:896
+msgid ""
+"The secondary storage NFS export is mounted by the secondary storage VM. "
+"Secondary storage traffic goes over the management traffic network, even if "
+"there is a separate storage network. Primary storage traffic goes over the "
+"storage network, if available. If you choose to place secondary storage NFS "
+"servers on the storage network, you must make sure there is a route from the"
+" management traffic network to the storage network."
+msgstr "SSVM需要挂载辅助存储中的NFS共享目录。即使有一个单独的存储网络，辅助存储的流量也会通过管理网络。如果存储网络可用，主存储的流量会通过存储网络。如果你选择辅助存储也使用存储网络，你必须确保有一条从管理网络到存储网络的路由。"
+
+# 319f0bc16b9c43b285b5381f9c1e1641
+#: ../../network_setup.rst:905
+msgid "External Firewall Topology Requirements"
+msgstr "外部防火墙拓扑要求"
+
+# ef03ddf7f4c1473aaffbab8f2ea10b90
+#: ../../network_setup.rst:907
+msgid ""
+"When external firewall integration is in place, the public IP VLAN must "
+"still be trunked to the Hosts. This is required to support the Secondary "
+"Storage VM and Console Proxy VM."
+msgstr "如果整合了外部防火墙设备，公共IP的VLAN必须通过trunk到达主机。这是支持SSVM和CPVM必须满足的。"
+
+# 8f340bd0be4a45cb9a554d08e4940824
+#: ../../network_setup.rst:913
+msgid "Advanced Zone Topology Requirements"
+msgstr "高级区域拓扑要求"
+
+# 59155e8fb1be458d919a18044910e40e
+#: ../../network_setup.rst:915
+msgid ""
+"With Advanced Networking, separate subnets must be used for private and "
+"public networks."
+msgstr "使用高级网络，专用和公共网络必须分离子网。"
+
+# 703fcda90934401caaa25a5f12b77075
+#: ../../network_setup.rst:920
+msgid "XenServer Topology Requirements"
+msgstr "XenServer拓扑要求"
+
+# 66fa97319fba4438b1ab49713ba74d45
+#: ../../network_setup.rst:922
+msgid ""
+"The Management Servers communicate with XenServer hosts on ports 22 (ssh), "
+"80 (HTTP), and 443 (HTTPs)."
+msgstr "管理服务器与XenServer服务器通过22（ssh）、80（http）和443（https）端口通信。"
+
+# 2a5693ecef9344fc85b357817cb3136c
+#: ../../network_setup.rst:927
+msgid "VMware Topology Requirements"
+msgstr "VMware拓扑要求"
+
+# 825745d3504c4edd9d998f356c622430
+#: ../../network_setup.rst:929
+msgid ""
+"The Management Server and secondary storage VMs must be able to access "
+"vCenter and all ESXi hosts in the zone. To allow the necessary access "
+"through the firewall, keep port 443 open."
+msgstr "管理服务器和SSVM必须能够访问区域中的vCenter和所有的ESXi主机。必须保证在防火墙中允许443端口。"
+
+# e5239c897a2846df832e554fc87473b0
+#: ../../network_setup.rst:933
+msgid ""
+"The Management Servers communicate with VMware vCenter servers on port 443 "
+"(HTTPs)."
+msgstr "管理服务器与VMware vCenter服务器通过443（https）端口通信。"
+
+# fb344a5b995d40428766c436e513381b
+#: ../../network_setup.rst:936
+msgid ""
+"The Management Servers communicate with the System VMs on port 3922 (ssh) on"
+" the management traffic network."
+msgstr "管理服务器与系统VM使用管理网络通过3922（ssh）端口通信。"
+
+# 45f7ce4ca7ee48d080ee6ad2646b28da
+#: ../../network_setup.rst:941
+msgid "Hyper-V Topology Requirements"
+msgstr "Hyper-V拓扑要求"
+
+# 468d7be21f9d4bd3847b12047def08d4
+#: ../../network_setup.rst:943
+msgid ""
+"CloudStack Management Server communicates with Hyper-V Agent by using HTTPS."
+" For secure communication between the Management Server and the Hyper-V "
+"host, open port 8250."
+msgstr "CloudStack管理服务器通过https与Hyper-V代理通信。管理服务器与Hyper-V主机之间的安全通信端口为8250。"
+
+# 1a3519c089b44acd951ab261264deb13
+#: ../../network_setup.rst:949
+msgid "KVM Topology Requirements"
+msgstr "KVM拓扑要求"
+
+# b11a692480274211affee6c78a638bf8
+#: ../../network_setup.rst:951
+msgid "The Management Servers communicate with KVM hosts on port 22 (ssh)."
+msgstr "管理服务器与KVM主机通过22（ssh）端口通信。"
+
+# 7586273883f448f7b24cc0138e7970b7
+#: ../../network_setup.rst:955
+msgid "LXC Topology Requirements"
+msgstr "LXC拓扑要求"
+
+# 259d6b031a2c4d2f99a0d64809c8b0a1
+#: ../../network_setup.rst:957
+msgid "The Management Servers communicate with LXC hosts on port 22 (ssh)."
+msgstr "管理服务器与LXC主机通过22（ssh）端口通信。"
+
+# 888d66b82f3446f1af4ee373439875ad
+#: ../../network_setup.rst:961
+msgid "Guest Network Usage Integration for Traffic Sentinel"
+msgstr "通过流量哨兵整合来宾网络使用情况"
+
+# 29cc34c6bee74b8d9727b38945612791
+#: ../../network_setup.rst:963
+msgid ""
+"To collect usage data for a guest network, CloudStack needs to pull the data"
+" from an external network statistics collector installed on the network. "
+"Metering statistics for guest networks are available through CloudStack’s "
+"integration with inMon Traffic Sentinel."
+msgstr "为了在来宾网络中收集网络数据，CloudStack需要从网络中安装的外部网络数据收集器中提取。并通过整合CloudStack和inMon流量哨兵实现来宾网络的数据统计。"
+
+# d397ec50b01f43649a71d382811b5c4e
+#: ../../network_setup.rst:968
+msgid ""
+"Traffic Sentinel is a network traffic usage data collection package. "
+"CloudStack can feed statistics from Traffic Sentinel into its own usage "
+"records, providing a basis for billing users of cloud infrastructure. "
+"Traffic Sentinel uses the traffic monitoring protocol sFlow. Routers and "
+"switches generate sFlow records and provide them for collection by Traffic "
+"Sentinel, then CloudStack queries the Traffic Sentinel database to obtain "
+"this information"
+msgstr "网络哨兵是一个收集网络流量使用数据的套件。CloudStack可以将流量哨兵中的信息统计到自己的使用记录中,为云基础架构的计费用户提供了依据。流量哨兵使用的流量监控协议为sFlow。路由器和交换机将生成的sFlow记录提供给流量哨兵，然后CloudStack通过查询流量哨兵的数据库来获取这些信息。"
+
+# 0421d85f71a9457aa65c99fe3edf321e
+#: ../../network_setup.rst:976
+msgid ""
+"To construct the query, CloudStack determines what guest IPs were in use "
+"during the current query interval. This includes both newly assigned IPs and"
+" IPs that were assigned in a previous time period and continued to be in "
+"use. CloudStack queries Traffic Sentinel for network statistics that apply "
+"to these IPs during the time period they remained allocated in CloudStack. "
+"The returned data is correlated with the customer account that owned each IP"
+" and the timestamps when IPs were assigned and released in order to create "
+"billable metering records in CloudStack. When the Usage Server runs, it "
+"collects this data."
+msgstr "为了构建查询，CloudStack确定了当前来宾IP的查询时间间隔。这既包含新分配的IP地址，也包含之前已被分配并且在继续使用的IP地址。CloudStack查询流量哨兵，在分配的时间段内这些IP的网络统计信息。返回的数据是账户每个IP地址被分配和释放的时间戳，以便在CloudStack中为每个账户创建计费记录。当使用服务运行时便会收集这些数据"
+
+# 711ce8174a9244d4af0b4fb81578f64b
+#: ../../network_setup.rst:986
+msgid "To set up the integration between CloudStack and Traffic Sentinel:"
+msgstr "配置整合CloudStack和流量哨兵："
+
+# 1c2e09dc5c8447d1ba4f95812f28af41
+#: ../../network_setup.rst:988
+msgid ""
+"On your network infrastructure, install Traffic Sentinel and configure it to"
+" gather traffic data. For installation and configuration steps, see inMon "
+"documentation at `Traffic Sentinel Documentation <http://inmon.com.>`_."
+msgstr "在网络基础设施中，安装和配置流量哨兵收集流量数据。 关于安装和配置步骤，请查阅inMon `流量哨兵文档 <http://inmon.com.>`_."
+
+# 412e3e6834394480af6f9e65fd4aba2d
+#: ../../network_setup.rst:993
+msgid ""
+"In the Traffic Sentinel UI, configure Traffic Sentinel to accept script "
+"querying from guest users. CloudStack will be the guest user performing the "
+"remote queries to gather network usage for one or more IP addresses."
+msgstr "在流量哨兵用户界面中，配置流量哨兵允许来宾用户使用脚本查询。CloudStack将通过执行远程查询为来宾用户的一个或多个IP和收集网络使用情况。"
+
+# 12a1bbfb3cec4016a739bec145bd8a9c
+#: ../../network_setup.rst:998
+msgid ""
+"Click File > Users > Access Control > Reports Query, then select Guest from "
+"the drop-down list."
+msgstr "点击 File > Users > Access Control > Reports Query, 然后从下拉列表中选择来宾。"
+
+# 99d0d664da654239ad897c4d6eb6b08e
+#: ../../network_setup.rst:1001
+msgid ""
+"On CloudStack, add the Traffic Sentinel host by calling the CloudStack API "
+"command addTrafficMonitor. Pass in the URL of the Traffic Sentinel as "
+"protocol + host + port (optional); for example, http://10.147.28.100:8080. "
+"For the addTrafficMonitor command syntax, see the API Reference at `API "
+"Documentation <http://cloudstack.apache.org/docs/api/index.html>`_."
+msgstr "在CloudStack中，使用API中的addTrafficMonitor命令添加流量哨兵主机。传入的流量哨兵URL类似于protocol + host + port (可选)；例如， http://10.147.28.100:8080。 关于addTrafficMonitor命令用法，请参阅API文档 `API Documentation <http://cloudstack.apache.org/docs/api/index.html>`_."
+
+# 382c1696b18d4f25a2e2b5b7cb142225
+#: ../../network_setup.rst:1008
+msgid ""
+"For information about how to call the CloudStack API, see the Developer’s "
+"Guide at `CloudStack API Developer's Guide "
+"<http://docs.cloudstack.apache.org/en/latest/index.html#developers>`_."
+msgstr "关于如何调用CloudStack API，请参阅 `CloudStack API 开发指南 <http://docs.cloudstack.apache.org/en/latest/index.html#developers>`_。"
+
+# 47106f1a9e0142eb9832c2c332d903bf
+#: ../../network_setup.rst:1014
+msgid ""
+"Select Configuration from the Global Settings page, and set the following:"
+msgstr "在全局设置页面中，查找如下参数进行设置："
+
+# fc6fdba63ec445fcb4c66fb37e5faef4
+#: ../../network_setup.rst:1017
+msgid ""
+"direct.network.stats.interval: How often you want CloudStack to query "
+"Traffic Sentinel."
+msgstr "direct.network.stats.interval: 你希望CloudStack多久收集一次流量数据。"
+
+# 41cfa755d06741f186da5ae7aacb6cee
+#: ../../network_setup.rst:1022
+msgid "Setting Zone VLAN and Running VM Maximums"
+msgstr "设置区域中VLAN和虚拟机的最大值"
+
+# a60e16faaf9041a9b9276598f5ee90f9
+#: ../../network_setup.rst:1024
+msgid ""
+"In the external networking case, every VM in a zone must have a unique guest"
+" IP address. There are two variables that you need to consider in "
+"determining how to configure CloudStack to support this: how many Zone VLANs"
+" do you expect to have and how many VMs do you expect to have running in the"
+" Zone at any one time."
+msgstr "在外部网络情况下，每个虚拟机都必须有独立的来宾IP地址。这里有两个参数你需要考虑如何在CloudStack中进行配置：在同一时刻，你希望区域中有多少VLAN和多少虚拟机在运行。"
+
+# d9028276c0544666b5e9721eeb5c8816
+#: ../../network_setup.rst:1030
+msgid ""
+"Use the following table to determine how to configure CloudStack for your "
+"deployment."
+msgstr "使用如下表格来确定如何在CloudStack部署时修改配置。"
+
+# 072f26662ea44459b4fa1cf60692e712
+#: ../../network_setup.rst:1034
+msgid "guest.vlan.bits"
+msgstr "guest.vlan.bits"
+
+# a6cb87fc1b2545d1b1ac09e37fd1be97
+#: ../../network_setup.rst:1034
+msgid "Maximum Running VMs per Zone"
+msgstr "单个区域运行虚拟机的最大值"
+
+# 95b101b8c5db46528c0540ff8c64a5cb
+#: ../../network_setup.rst:1034
+msgid "Maximum Zone VLANs"
+msgstr "区域中VLAN的最大值"
+
+# 67bdc701ec3c4dcf9cd3f5bd5e147554
+#: ../../network_setup.rst:1036
+msgid "12"
+msgstr "12"
+
+# c8d94e62ee844b4e92d52b5c6827e058
+#: ../../network_setup.rst:1036
+msgid "4096"
+msgstr "4096"
+
+# ac4e2d28b54845f1a55c70377f48d5c3
+#: ../../network_setup.rst:1036
+msgid "4094"
+msgstr "4094"
+
+# 7bbc65e86d0147368c5a3431c20f5ed3
+#: ../../network_setup.rst:1037
+msgid "11"
+msgstr "11"
+
+# 01351e134fd445688b9b975e860ff8ac
+#: ../../network_setup.rst:1037
+msgid "8192"
+msgstr "8192"
+
+# 1487356597e74d80ab906cdf7734c3e1
+#: ../../network_setup.rst:1037
+msgid "2048"
+msgstr "2048"
+
+# 210a77ae5568419ab769fe82ba44a994
+# 066cf48d71dd4eea8015322cc0295f26
+#: ../../network_setup.rst:1038 ../../network_setup.rst:1039
+msgid "10"
+msgstr "10"
+
+# ecffb57711494443b7bd29967fc90284
+#: ../../network_setup.rst:1038
+msgid "16384"
+msgstr "16384"
+
+# 77f877c5ae0c4cef92f9e8579cb50a8a
+#: ../../network_setup.rst:1038
+msgid "1024"
+msgstr "1024"
+
+# 7aec5b5262a84030b29ee9b48f82c955
+#: ../../network_setup.rst:1039
+msgid "32768"
+msgstr "32768"
+
+# bd2fc687ddab4d70beebf9747ba3aa15
+#: ../../network_setup.rst:1039
+msgid "512"
+msgstr "512"
+
+# 1735a2a4d8bd40f2a1b021cf8879de91
+#: ../../network_setup.rst:1042
+msgid ""
+"Based on your deployment's needs, choose the appropriate value of "
+"guest.vlan.bits. Set it as described in Edit the Global Configuration "
+"Settings (Optional) section and restart the Management Server."
+msgstr "基于部署的需求，选择合适的guest.vlan.bits参数值。在全局配置设置中编辑该参数，并重启管理服务。"

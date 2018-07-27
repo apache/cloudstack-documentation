@@ -1,0 +1,167 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:05+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 536a6b6a19a04686832c0c8f3202472a
+#: ../../networking/inter_vlan_routing.rst:18
+msgid "About Inter-VLAN Routing (nTier Apps)"
+msgstr "关于vlan间路由(多层应用)"
+
+# 01903cae08524fb18fb51475e29cccc5
+#: ../../networking/inter_vlan_routing.rst:20
+msgid ""
+"Inter-VLAN Routing (nTier Apps) is the capability to route network traffic "
+"between VLANs. This feature enables you to build Virtual Private Clouds "
+"(VPC), an isolated segment of your cloud, that can hold multi-tier "
+"applications. These tiers are deployed on different VLANs that can "
+"communicate with each other. You provision VLANs to the tiers your create, "
+"and VMs can be deployed on different tiers. The VLANs are connected to a "
+"virtual router, which facilitates communication between the VMs. In effect, "
+"you can segment VMs by means of VLANs into different networks that can host "
+"multi-tier applications, such as Web, Application, or Database. Such "
+"segmentation by means of VLANs logically separate application VMs for higher"
+" security and lower broadcasts, while remaining physically connected to the "
+"same device."
+msgstr "vlan间路由(多层应用)提供了在vlan间通过流量路由的功能。这个特性使你能够j建立私有云(vpc)，独立分割的云，可容纳多层应用程序。这些层被部署在不同的VLAN，可以互相沟通。您提供的VLAN层的创建和部署虚拟机可以在不同的层上。VLAN连接到一个虚拟路由器，这有利于虚拟机之间的通信。实际上，你可以通过不同定义的vlan来分割你的虚拟机到不同网络，以便承担多层应用，如Web，应用程序或数据库的虚拟机。通过VLAN的逻辑上独立的应用程序的虚拟具有较高的安全性和较低的广播，同时任然物理连接到同一设备。"
+
+# d835d5a69985471085a5688b045c4e38
+#: ../../networking/inter_vlan_routing.rst:33
+msgid "This feature is supported on XenServer, KVM, and VMware hypervisors."
+msgstr "在 XenServer ,KVM和 VMware hypervisors支持这个特性"
+
+# 7aecd1ac66b84f9cb92b03fea7d5edde
+#: ../../networking/inter_vlan_routing.rst:35
+msgid "The major advantages are:"
+msgstr "主要的优势为："
+
+# dca4c4be393c4d7bbcda75f49ffc8efc
+#: ../../networking/inter_vlan_routing.rst:37
+msgid ""
+"The administrator can deploy a set of VLANs and allow users to deploy VMs on"
+" these VLANs. A guest VLAN is randomly alloted to an account from a pre-"
+"specified set of guest VLANs. All the VMs of a certain tier of an account "
+"reside on the guest VLAN allotted to that account."
+msgstr "管理可以部署一个vlans集，同时运行用户部署虚拟机在这些vlan上。从预先指定的vlan集中随机的为租户分配一个来宾vlan.租户处于同一层的所有vm处于分配给这个租户的来宾vlan."
+
+# d5d8b41e126e4b38913d0cf7de1ec29d
+#: ../../networking/inter_vlan_routing.rst:43
+msgid ""
+"A VLAN allocated for an account cannot be shared between multiple accounts."
+msgstr "一个租户分配到的vlan不能被多个租户共享"
+
+# 4e04be2a6cef4fa8973d317232221018
+#: ../../networking/inter_vlan_routing.rst:45
+msgid ""
+"The administrator can allow users create their own VPC and deploy the "
+"application. In this scenario, the VMs that belong to the account are "
+"deployed on the VLANs allotted to that account."
+msgstr "管理员允许所有用户创建自己的vpc,并部署应用。这个场景中，租户的虚拟机被部署到改租户的分配到的vlan中"
+
+# 48018251e76046c4a606035de8d1b4d5
+#: ../../networking/inter_vlan_routing.rst:49
+msgid ""
+"Both administrators and users can create multiple VPCs. The guest network "
+"NIC is plugged to the VPC virtual router when the first VM is deployed in a "
+"tier."
+msgstr "管理员和用户都可以创建多个vpcs.当第一个虚拟机被部署到该层时候，一个来宾网络nic插入到这个vpc虚拟路由器上"
+
+# cc50778ecfab43c38af3373511f47072
+#: ../../networking/inter_vlan_routing.rst:53
+msgid ""
+"The administrator can create the following gateways to send to or receive "
+"traffic from the VMs:"
+msgstr "管理员创建网关用接受和发送来自vm的流量："
+
+# 5d91169a83a5400b8408b6ce4ccb84f5
+#: ../../networking/inter_vlan_routing.rst:56
+msgid ""
+"**VPN Gateway**: For more information, see `\"Creating a VPN gateway for the"
+" VPC\" <#creating-a-vpn-gateway-for-the-vpc>`_."
+msgstr "**VPN网关**:更多信息，参考 `\"为VPC创建VPN网关\" <#creating-a-vpn-gateway-for-the-vpc>`_."
+
+# 1f0ed1ecf964455ab40301bdf5ab2dc2
+#: ../../networking/inter_vlan_routing.rst:59
+msgid ""
+"**Public Gateway**: The public gateway for a VPC is added to the virtual "
+"router when the virtual router is created for VPC. The public gateway is not"
+" exposed to the end users. You are not allowed to list it, nor allowed to "
+"create any static routes."
+msgstr "**公网网关**：当为vpc创建一个虚拟路由器时，这个vpc的公共网关就添加到虚拟路由器当中。公共网关还没有暴露到最终用户。你不允许其列出，也不允许建立任何静态路由。"
+
+# b843201a793749bb924d48f21be04e09
+#: ../../networking/inter_vlan_routing.rst:64
+msgid ""
+"**Private Gateway**: For more information, see \":ref:`adding-priv-gw-"
+"vpc`\"."
+msgstr "**私有网关**: 更多信息，参考 \":ref:`adding-priv-gw-vpc`\"."
+
+# a4ac63d4b99a4edd968087d0f622647a
+#: ../../networking/inter_vlan_routing.rst:66
+msgid ""
+"Both administrators and users can create various possible destinations-"
+"gateway combinations. However, only one gateway of each type can be used in "
+"a deployment."
+msgstr "管理员和用户可以创建各种可能的目的地的网关组合。但是，在部署中每种类型只能有一个网关。"
+
+# 50735b7154a64b7880f5543c4792b1c0
+#: ../../networking/inter_vlan_routing.rst:70
+msgid "For example:"
+msgstr "例如："
+
+# bdd41dc64438436aac12d9f1c8d5a8bc
+#: ../../networking/inter_vlan_routing.rst:72
+msgid ""
+"**VLANs and Public Gateway**: For example, an application is deployed in the"
+" cloud, and the Web application VMs communicate with the Internet."
+msgstr "**VLAN和公网网关**: 比如，在云中部署了一个应用，并且这个web应用所在的虚拟机要和因特网通信。"
+
+# f2c3b70246534d5aabdd3954a25ba1eb
+#: ../../networking/inter_vlan_routing.rst:76
+msgid ""
+"**VLANs, VPN Gateway, and Public Gateway**: For example, an application is "
+"deployed in the cloud; the Web application VMs communicate with the "
+"Internet; and the database VMs communicate with the on-premise devices."
+msgstr "**VLANs, VPN网关和公网网关**: 比如, 云中部署了一个应用;部署这个web应用的虚拟机要和因特网通信; 并且数据库虚拟要个先前提到的设备通信"
+
+# 7fb2fe01c3484b80a30d4c6edb0b5782
+#: ../../networking/inter_vlan_routing.rst:81
+msgid ""
+"The administrator can define Network Access Control List (ACL) on the "
+"virtual router to filter the traffic among the VLANs or between the Internet"
+" and a VLAN. You can define ACL based on CIDR, port range, protocol, type "
+"code (if ICMP protocol is selected) and Ingress/Egress type."
+msgstr "管理员可以在虚拟路由器定义一个访问控制列表(ACL)用于过滤vlan或者因特网和vlan直接的流量。你可定义基于CIDR,端口范围，协议，类型代码(如果选用ICPM协议)和进出流量的acl"
+
+# 95cd03acfa2948c682ec51eaf24346be
+#: ../../networking/inter_vlan_routing.rst:87
+msgid ""
+"The following figure shows the possible deployment scenarios of a Inter-VLAN"
+" setup:"
+msgstr "下图显示了可能的部署一个VLAN间的场景设置的："
+
+# a9f3216208ba417681d8885848d2a414
+#: ../../networking/inter_vlan_routing.rst:90
+msgid "|mutltier.png|"
+msgstr "|mutltier.png|"
+
+# 785b1c5286424a3680f6ffa4fa40de5a
+#: ../../networking/inter_vlan_routing.rst:92
+msgid ""
+"To set up a multi-tier Inter-VLAN deployment, see \":ref:`configuring-"
+"vpc`\"."
+msgstr "要建立一个多层次的跨VLAN部署，请参考\":ref:`configuring-vpc`\"."

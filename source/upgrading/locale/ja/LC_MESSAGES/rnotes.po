@@ -1,0 +1,2600 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache CloudStack
+# This file is distributed under the same license as the Apache CloudStack Release Notes package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Release Notes RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-05 14:09+0100\n"
+"PO-Revision-Date: 2014-03-31 15:24+0000\n"
+"Last-Translator: sebgoa <runseb@gmail.com>\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/apache-cloudstack-release-notes-rtd/language/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 42d678eb2285488da05dc3cd6c263f02
+#: ../../source/rnotes.rst:18
+msgid "Upgrade Instructions for 4.3"
+msgstr ""
+
+# 41b628d034ee4fce9241de5ef66a7f6b
+#: ../../source/rnotes.rst:20
+msgid ""
+"This section contains upgrade instructions from prior versions of CloudStack"
+" to Apache CloudStack 4.3. We include instructions on upgrading to Apache "
+"CloudStack from pre-Apache versions of Citrix CloudStack (last version prior"
+" to Apache is 3.0.2) and from the releases made while CloudStack was in the "
+"Apache Incubator."
+msgstr ""
+
+# 6212699679f1434586e45ee4fd3827bc
+#: ../../source/rnotes.rst:26
+msgid ""
+"If you run into any issues during upgrades, please feel free to ask "
+"questions on users@cloudstack.apache.org or dev@cloudstack.apache.org."
+msgstr ""
+
+# 89e3526f428349e7bd2e3a6e07058278
+#: ../../source/rnotes.rst:30
+msgid "Upgrade from 4.2.0 to 4.3"
+msgstr ""
+
+# 8bbac42e272243b29532cab877c5b8bc
+#: ../../source/rnotes.rst:32
+msgid "This section will guide you from CloudStack 4.2 to CloudStack 4.3."
+msgstr ""
+
+# bb34709f92104ec98d45d233b9e44f06
+# e1b99036c1f94563a24d6d8d2cd82412
+# 2abaa3bf4c6c4910937c92ac89c2ee8c
+#: ../../source/rnotes.rst:34 ../../source/rnotes.rst:663
+#: ../../source/rnotes.rst:1197
+msgid "Any steps that are hypervisor-specific will be called out with a note."
+msgstr ""
+
+# 6b7c5646356f4d0fba9a8ba16c431a57
+# b7be4c0d68ee4cc2b0df2f511407fc6c
+# 56932859eab846ee8bde43bf4a39aaa0
+#: ../../source/rnotes.rst:36 ../../source/rnotes.rst:665
+#: ../../source/rnotes.rst:1201
+msgid ""
+"We recommend reading through this section once or twice before beginning "
+"your upgrade procedure, and working through it on a test system before "
+"working on a production system."
+msgstr ""
+
+# 505986b902774ceca679cfdbf2e13cce
+# 558231d5963c4b189228e328173557e4
+# 60afca54b4ef4d508b68b4186424a682
+# d501a610dcc94573a2e9c92aac6d9a00
+#: ../../source/rnotes.rst:40 ../../source/rnotes.rst:678
+#: ../../source/rnotes.rst:1223 ../../source/rnotes.rst:1641
+msgid ""
+"The following upgrade instructions should be performed regardless of "
+"hypervisor type."
+msgstr ""
+
+# 3a8581a1b3584a41b31a5c70b36d8020
+#: ../../source/rnotes.rst:46
+msgid ""
+"While running the existing 4.2.0 system, log in to the UI as root "
+"administrator."
+msgstr ""
+
+# dead12c2e5c54084b6fbba84c753c00a
+# 94bfbc9d533d4dd2abaa51ea8c274320
+# c651b785c87e463da7426af0a270417b
+# 6ae408a97d4c41e394b95b8859ea6969
+# 0a41d5ac486f4713a9d3efa71202bfb1
+#: ../../source/rnotes.rst:51 ../../source/rnotes.rst:687
+#: ../../source/rnotes.rst:1232 ../../source/rnotes.rst:1650
+#: ../../source/rnotes.rst:2475
+msgid "In the left navigation bar, click Templates."
+msgstr ""
+
+# 1b425d8481a34191926e9c1035f818c5
+# b5df3d99c2644a7b894dce754153c9ab
+# 69da380f577f46a3ab8f6e4f5cdec9f2
+# 5d01f7180135414d9affc57d6b8b3584
+# 4cd4c23255c54b12bd800870cd1c6fd8
+#: ../../source/rnotes.rst:55 ../../source/rnotes.rst:691
+#: ../../source/rnotes.rst:1236 ../../source/rnotes.rst:1654
+#: ../../source/rnotes.rst:2479
+msgid "In Select view, click Templates."
+msgstr ""
+
+# eb18c047f67d4bfe846ad7843047244b
+# 1af75b9c5972487488b73a0eec220d7d
+# 644051fde9ab49dba735cfe6f0a77f38
+# afc364dcc0be4e0796690a0a72680998
+# c2534c7e344a4a81a634d8666543d1eb
+#: ../../source/rnotes.rst:59 ../../source/rnotes.rst:695
+#: ../../source/rnotes.rst:1240 ../../source/rnotes.rst:1658
+#: ../../source/rnotes.rst:2483
+msgid "Click Register template."
+msgstr ""
+
+# f958c175bf8f4edfb68f850080032003
+# 57ba4c7f0ba24b1f8099281573aa01c2
+# c56adc75ca1d411587542598779ae293
+# a804e8c72fa84801bb4a68550f112e53
+# a19821955fdf4128b23a8bab0f787a1d
+#: ../../source/rnotes.rst:61 ../../source/rnotes.rst:697
+#: ../../source/rnotes.rst:1242 ../../source/rnotes.rst:1660
+#: ../../source/rnotes.rst:2485
+msgid "The Register template dialog box is displayed."
+msgstr ""
+
+# 5c05e1912faf49c58b6b71e38915a8b1
+# c2ff2045faca4ca0854a6378f7dbf05e
+# 74adacefbc094e0da36da3afece913f4
+# 6b719f75b2ec44c4a954cef0fad48b25
+#: ../../source/rnotes.rst:65 ../../source/rnotes.rst:701
+#: ../../source/rnotes.rst:1246 ../../source/rnotes.rst:1664
+msgid ""
+"In the Register template dialog box, specify the following values (do not "
+"change these):"
+msgstr ""
+
+# 008bbb4c8ab2489d997f3fac9bd8dd3e
+# b6de8b708b154b379af5a94da6953d30
+# d25fd8cdb35342d5b76d3af23ec8b3d0
+# 70d66ffed2864e94964b8bd40b257176
+# 63d69aaddcac4e519cb72d2b914359f3
+#: ../../source/rnotes.rst:69 ../../source/rnotes.rst:705
+#: ../../source/rnotes.rst:1250 ../../source/rnotes.rst:1668
+#: ../../source/rnotes.rst:2493
+msgid "Hypervisor"
+msgstr "ハイパーバイザー"
+
+# d1781bdac5cb40e684a6888e8eb052fd
+# a861163d98014b449c8b501efb2812ce
+# 1c3c49173dff4c07a6ae2d2febf1ab37
+# 9134492ad9f5407781bc408bb9494aa6
+# b89357f04fcd4549959d20bcb82b6800
+#: ../../source/rnotes.rst:69 ../../source/rnotes.rst:705
+#: ../../source/rnotes.rst:1250 ../../source/rnotes.rst:1668
+#: ../../source/rnotes.rst:2493
+msgid "Description"
+msgstr "説明"
+
+# 85616c2b776642458b6b074f0955b7ec
+# 390402007d6748c1bfbc48a03eb1ff4a
+# 16b265fc693d40059afb1a0557c5b1b0
+# c23d316b1adb4a10aa4506f6df8d7695
+# 0a964e1ec1434396b92cf81ca7da353a
+#: ../../source/rnotes.rst:71 ../../source/rnotes.rst:707
+#: ../../source/rnotes.rst:1252 ../../source/rnotes.rst:1670
+#: ../../source/rnotes.rst:2495
+msgid "XenServer"
+msgstr ""
+
+# d46f926f5a5e454589899b93b4c51eeb
+# f202c480c879466e84a2bc7ee2ef8eb1
+# 70bc5eec456146758139bfeafcd6c254
+# 2d50b6b5c36f4415af39d1007d8035f4
+# 3e50d8b797504a0c9250d43fc8be49e2
+#: ../../source/rnotes.rst:71 ../../source/rnotes.rst:707
+#: ../../source/rnotes.rst:1252 ../../source/rnotes.rst:1670
+#: ../../source/rnotes.rst:2495
+msgid "Name: systemvm-xenserver-4.3"
+msgstr ""
+
+# 60087b2d154f4132b46f52086e5ef029
+# b05063dc53a542889111c74ddf820fc8
+# e4ee3f30d36348b79761563c511fcc53
+# 2f2a7a9e5b99483787ad9929b2ee2e19
+# 015ea9102fe34d138c41765527102de1
+#: ../../source/rnotes.rst:73 ../../source/rnotes.rst:709
+#: ../../source/rnotes.rst:1254 ../../source/rnotes.rst:1672
+#: ../../source/rnotes.rst:2497
+msgid "Description: systemvm-xenserver-4.3"
+msgstr ""
+
+# aab4e46f0f074fd494f398a0f2376690
+# 6f3059ed5a924af1a6af9888de9f60f8
+# f1cfa864cc48446da7d15b78d13e8cec
+# b0d327bfcfb748ddb9a3b12e65dfdbca
+# 78393b0f0b05474fbda4d5e95cc7bbdf
+#: ../../source/rnotes.rst:75 ../../source/rnotes.rst:711
+#: ../../source/rnotes.rst:1256 ../../source/rnotes.rst:1674
+#: ../../source/rnotes.rst:2499
+msgid ""
+"URL: http://download.cloud.com/templates/4.3/systemvm64template-2014-01-14"
+"-master-xen.vhd.bz2"
+msgstr ""
+
+# d439e558d2494c82ba35d4b7d5141ac8
+# 351e1644cbf84a30af80410ba146f523
+# 0d02e5117823415d95d11bb0f9dec178
+# 9c9085c2e247415a9ee61fb1f0c2e7a1
+# 6323bb49cb9d4386b9e3636b89975a1e
+# ce606edd6e0043e483827424308e9eae
+# b9857085067e474680eeb7dd3e26ba6e
+# 0b639ca277014c348ca0ef447d5ad81b
+# 0d4ddf72a2884ac680c470c5e4f80dd5
+# 730c0e58fb4f495bb028b139240c2c82
+# 5b27e86a9ca742e598279f8564c13c56
+# fcc6a47719614722975ba2ba45768c4f
+#: ../../source/rnotes.rst:78 ../../source/rnotes.rst:103
+#: ../../source/rnotes.rst:128 ../../source/rnotes.rst:714
+#: ../../source/rnotes.rst:739 ../../source/rnotes.rst:764
+#: ../../source/rnotes.rst:1259 ../../source/rnotes.rst:1284
+#: ../../source/rnotes.rst:1309 ../../source/rnotes.rst:2502
+#: ../../source/rnotes.rst:2527 ../../source/rnotes.rst:2552
+msgid "Zone: Choose the zone where this hypervisor is used"
+msgstr ""
+
+# 838318c9d31645ae99bd3e79e18940e0
+# 89d8cd6fc1f74356ac886e43bc4187b9
+# 27b2a7a43fae446c926fc8bbecd5d7f1
+# 9ba791b12686435eb446164e4517f7ac
+# 24c021d0aac94240bbe06b215175b4c9
+#: ../../source/rnotes.rst:80 ../../source/rnotes.rst:716
+#: ../../source/rnotes.rst:1261 ../../source/rnotes.rst:1680
+#: ../../source/rnotes.rst:2504
+msgid "Hypervisor: XenServer"
+msgstr ""
+
+# d69de9c666aa46f992dea502e19b70a9
+# 893acc0852ac4e70b8530c3e6660c855
+# 25d54017a01647eca16c41b394917469
+# 99d94266a0a540348c29e7ddca07f3a4
+# d302f3b8b27c44dd896488739bd364d7
+#: ../../source/rnotes.rst:82 ../../source/rnotes.rst:718
+#: ../../source/rnotes.rst:1263 ../../source/rnotes.rst:1682
+#: ../../source/rnotes.rst:2506
+msgid "Format: VHD"
+msgstr ""
+
+# 4b6a013e94f2406396f926647afd9372
+# ecc1aa91806f4aef9673429da7c08880
+# 3b131d605d6c4ceebf36d0629e200f6e
+# c85c58df68cd489abeb977c3e68019c7
+# 49d9c0788b314116a9ccb36c5733b3a9
+# 1ca463f215ec4f3b84128380c4a05890
+# cade67e03efc472fa6e133c9640a306d
+# 4e5b73a422da4d40bd312e4b135c3f74
+# a321a8102e2a46b3a77d89daca362cb9
+# 2c86881fb2194b039886df7a968c6fdd
+# 67974420a6e6499d99cfec0a4eacf00c
+# 805a3f0bd7f2442e9686ff640c8549d3
+# 67256469d5de4d358947f1fdd2068ea7
+# ad16207a4d3b4f3782eac427c7b47f61
+# e54a1866e7f44b69a9ac67a5c8737d9f
+#: ../../source/rnotes.rst:84 ../../source/rnotes.rst:109
+#: ../../source/rnotes.rst:134 ../../source/rnotes.rst:720
+#: ../../source/rnotes.rst:745 ../../source/rnotes.rst:770
+#: ../../source/rnotes.rst:1265 ../../source/rnotes.rst:1290
+#: ../../source/rnotes.rst:1315 ../../source/rnotes.rst:1684
+#: ../../source/rnotes.rst:1710 ../../source/rnotes.rst:1736
+#: ../../source/rnotes.rst:2508 ../../source/rnotes.rst:2533
+#: ../../source/rnotes.rst:2558
+msgid ""
+"OS Type: Debian GNU/Linux 7.0 (64-bit) (or the highest Debian release number"
+" available in the dropdown)"
+msgstr ""
+
+# 6cd60538b91c4ca5bc7535ddf246faff
+# 5ddafdb9f3134b599e1817da2e457ddd
+# 356e260a95954844b66ec5df22cd0772
+# bf9acaffb00444edb70986d08b54eb95
+# 8a92f91fd6c34944af0588a8c0778a3d
+# c06527d037c44b8eb7978e30e850be1e
+# 940bef4e5d9540f191979e277d89e7c2
+# f164d0f782ec4d21a99b07420e0b0956
+# 1bf3285c07c2470f981c3091069c3844
+# 84232d240a6244029ddb76715ad99792
+# 8aa46285358b4a2cb083a76342d12f2d
+# f2ee96c3a9d14c41a0fec175098732c9
+# 44052173c6294a59afc5ff05ac365a2c
+# ed71f8f74e9d44388bc335e25c5e266c
+# 5c35014e67244638806bcbc59a5a8e99
+#: ../../source/rnotes.rst:88 ../../source/rnotes.rst:113
+#: ../../source/rnotes.rst:138 ../../source/rnotes.rst:724
+#: ../../source/rnotes.rst:749 ../../source/rnotes.rst:774
+#: ../../source/rnotes.rst:1269 ../../source/rnotes.rst:1294
+#: ../../source/rnotes.rst:1319 ../../source/rnotes.rst:1688
+#: ../../source/rnotes.rst:1714 ../../source/rnotes.rst:1740
+#: ../../source/rnotes.rst:2512 ../../source/rnotes.rst:2537
+#: ../../source/rnotes.rst:2562
+msgid "Extractable: no"
+msgstr ""
+
+# c610924f4de5446c86e8cf570a23ec59
+# f7e0fbc65cb44ec9b685cc665d535123
+# 6b3fe309850a4b7c9ac5c1d5d6821f38
+# 1d3cb70b0c4142c78ba821a0ee011f78
+# fc2911c8b6bb4849b7925489c9ae2a01
+# b211fe77f3b3422b83580c73840ce837
+# ccdeca12ad42483f832b6c5636b06d42
+# 34c794f2b5d9429884c5d5279c21d9e6
+# 90cc0c25be9a46c29323f9ad2c1f4454
+# 094de1f60c2a489f9fd7c7303adbb05c
+# 8eeb67728c8145fd89aa217a2d7096ca
+# ae18a78f3b63424a8a270f64abe4f297
+# e89815bd8daf4980a3c32701ca3c3593
+# bf7a491dc39b418caa3c7784c57f1d87
+# 4968cdbc67bf4f46b02e432ee7ed9025
+#: ../../source/rnotes.rst:90 ../../source/rnotes.rst:115
+#: ../../source/rnotes.rst:140 ../../source/rnotes.rst:726
+#: ../../source/rnotes.rst:751 ../../source/rnotes.rst:776
+#: ../../source/rnotes.rst:1271 ../../source/rnotes.rst:1296
+#: ../../source/rnotes.rst:1321 ../../source/rnotes.rst:1690
+#: ../../source/rnotes.rst:1716 ../../source/rnotes.rst:1742
+#: ../../source/rnotes.rst:2514 ../../source/rnotes.rst:2539
+#: ../../source/rnotes.rst:2564
+msgid "Password Enabled: no"
+msgstr ""
+
+# d6152128090641c8a551f7042fd18c6b
+# 762f5dec3e704bd8998af37e07921d72
+# 3336b3b2a5f44f03aa571c6f2a8e4165
+# 437c7bc51da84b8789b8bb404791f285
+# 8144ecbdaa224a31b211841bcd3fccb1
+# f04444c7107142249b3cd0632f799c32
+# 96ec3fa5df8742788bf8fa4f8972014f
+# 972a8dfca90b433088bf3d63e7c15939
+# 8038d59b9d754d27a13c188e4c8bad3e
+# 831638958e1741bfb19b4f4cf7432ce3
+# bc44062b6198465899b9a11ca85491aa
+# decb386fa81b401982b49671d7184a34
+# e358075912924d02b0b06fd7f5ad5dd9
+# 673458355d034ed0bd3eb1b9375f4b85
+# 476237cedab440c586788be1d6df2f5d
+#: ../../source/rnotes.rst:92 ../../source/rnotes.rst:117
+#: ../../source/rnotes.rst:142 ../../source/rnotes.rst:728
+#: ../../source/rnotes.rst:753 ../../source/rnotes.rst:778
+#: ../../source/rnotes.rst:1273 ../../source/rnotes.rst:1298
+#: ../../source/rnotes.rst:1323 ../../source/rnotes.rst:1692
+#: ../../source/rnotes.rst:1718 ../../source/rnotes.rst:1744
+#: ../../source/rnotes.rst:2516 ../../source/rnotes.rst:2541
+#: ../../source/rnotes.rst:2566
+msgid "Public: no"
+msgstr ""
+
+# b51fe881ba9e4e88af3f1a8661d3a404
+# 5e2ef5de96b54b2ba6c4a5021d63ed04
+# 68b4d45fd6db489393c8216607ae4973
+# f0e3f79f0c474ff7a02a627ad5fd3e01
+# b52b0917a65d4458b247ace2ec5974d0
+# eb8782d77531425abe596b14aa3ca8b7
+# 946fa41fee4b4f1d8dc7d7be82013fe8
+# 1ebb133a1b9e4d639f9a8bf3f0617a6a
+# 661c21e32c514f79a4f81f0357e125d8
+# 390461162ef446769dffda2d6b0acbe5
+# 4e995dea789045949fb42600ad9ade03
+# 61a2fb46acd34449942ec665442fb311
+# 32c1401f85fe44199f8bc0ad300a6b61
+# 24c2ef0a6929479cad3441c1d0909176
+# 7929dd67193e4a06afaa845ea7786ae5
+#: ../../source/rnotes.rst:94 ../../source/rnotes.rst:119
+#: ../../source/rnotes.rst:144 ../../source/rnotes.rst:730
+#: ../../source/rnotes.rst:755 ../../source/rnotes.rst:780
+#: ../../source/rnotes.rst:1275 ../../source/rnotes.rst:1300
+#: ../../source/rnotes.rst:1325 ../../source/rnotes.rst:1694
+#: ../../source/rnotes.rst:1720 ../../source/rnotes.rst:1746
+#: ../../source/rnotes.rst:2518 ../../source/rnotes.rst:2543
+#: ../../source/rnotes.rst:2568
+msgid "Featured: no"
+msgstr ""
+
+# 11882b63ef7a4207989d951b3bb0aa7e
+# f7e6ba6ca99e489cafa9e01826c00694
+# bc092dbc933f4a7a860a9cbdeecaac4c
+# ed43f33f14554bfbb225108a681122a7
+# 3f801c529ea544f38628bf1cdd48fc8f
+#: ../../source/rnotes.rst:96 ../../source/rnotes.rst:732
+#: ../../source/rnotes.rst:1277 ../../source/rnotes.rst:1696
+#: ../../source/rnotes.rst:2520
+msgid "KVM"
+msgstr ""
+
+# 8e80783043a140f2b20e8402b4f220a5
+# 65d65d30eeed44899982886ca191f56f
+# c5764e41dac2435c816a427dc218d49b
+# 5d87a38451e14cd79f91ce9b5d97b65f
+# a2a697b6834f4bd88f5388964e56cace
+#: ../../source/rnotes.rst:96 ../../source/rnotes.rst:732
+#: ../../source/rnotes.rst:1277 ../../source/rnotes.rst:1696
+#: ../../source/rnotes.rst:2520
+msgid "Name: systemvm-kvm-4.3"
+msgstr ""
+
+# dd9acd3e777b43b7be90baa619188718
+# f447dba905de4318b415de8adca145a7
+# 1bdbe2601bba4382afef6d603f5f6924
+# 9ecd547930b3472bb042e1b836f9055c
+# e41898b69f6f4312804f9e8edb6800be
+#: ../../source/rnotes.rst:98 ../../source/rnotes.rst:734
+#: ../../source/rnotes.rst:1279 ../../source/rnotes.rst:1698
+#: ../../source/rnotes.rst:2522
+msgid "Description: systemvm-kvm-4.3"
+msgstr ""
+
+# 18112d67045a4826a21324e45043c1f3
+# 9d7818ae080e4b6980b33c55edcd3ee1
+# 048a5c6ac93648a7b149fa2723ec3beb
+# 565c06cb13304129ba04c27978dfc8d8
+# b8cf8c952bf14f4fb5f7cf084d11aa98
+#: ../../source/rnotes.rst:100 ../../source/rnotes.rst:736
+#: ../../source/rnotes.rst:1281 ../../source/rnotes.rst:1700
+#: ../../source/rnotes.rst:2524
+msgid ""
+"URL: http://download.cloud.com/templates/4.3/systemvm64template-2014-01-14"
+"-master-kvm.qcow2.bz2"
+msgstr ""
+
+# b823ddc9d9f54579be8a164f1949daba
+# f0f674de683c45fb8ce275d210bcebab
+# ac4620c3578b415989d0fb5c0a7f4a73
+# 4d0c71801b434a328dede28902babdc2
+# ed682ff3eca04e2d830b5f51069f5c84
+#: ../../source/rnotes.rst:105 ../../source/rnotes.rst:741
+#: ../../source/rnotes.rst:1286 ../../source/rnotes.rst:1706
+#: ../../source/rnotes.rst:2529
+msgid "Hypervisor: KVM"
+msgstr ""
+
+# e60ebf3c4ba14a35a525462a3101d310
+# 5955b72117514bb783eca575e0523ffb
+# 1c02fe8f1e744fd49394aae64ee5e641
+# 16bb7ae5db4948848078473e7381acd9
+# 27e2c08b6e184428a34365ede87022a7
+#: ../../source/rnotes.rst:107 ../../source/rnotes.rst:743
+#: ../../source/rnotes.rst:1288 ../../source/rnotes.rst:1708
+#: ../../source/rnotes.rst:2531
+msgid "Format: QCOW2"
+msgstr ""
+
+# 2ab69eec46fa4d5fa6e3c5a948936a2a
+# e81be8f0c17e4f2ea26367a9e8a19b54
+# 64b557c5c2ec4e158743408500e1435f
+# d1d572a3c2794d58b48e885153e29199
+# e6e24a4ae6054a6ca04673a1ab1ace8c
+#: ../../source/rnotes.rst:121 ../../source/rnotes.rst:757
+#: ../../source/rnotes.rst:1302 ../../source/rnotes.rst:1722
+#: ../../source/rnotes.rst:2545
+msgid "VMware"
+msgstr ""
+
+# 5c7c14896c464e89a40ed46ec9f1badc
+# 8daf63b1e5de487dbfb052b1b1b5b52b
+# 3accf7c3794c4d089081b73e16c957fc
+# 12f83ab21c4040d8baff0e3c021cfc96
+# 9a9f6bbe66bc485ca94003e7b451ddf7
+#: ../../source/rnotes.rst:121 ../../source/rnotes.rst:757
+#: ../../source/rnotes.rst:1302 ../../source/rnotes.rst:1722
+#: ../../source/rnotes.rst:2545
+msgid "Name: systemvm-vmware-4.3"
+msgstr ""
+
+# 92780e97400449fdbbf2ef0bd374b1cb
+# 22948f9a1e0f43b98635627529b72279
+# cdb07852eb024ada85739a45b8b2fb31
+# 681aad54f06945aab0f6686a28b37aea
+# 026be4dcadd44f8eb288449ea7c5bb71
+#: ../../source/rnotes.rst:123 ../../source/rnotes.rst:759
+#: ../../source/rnotes.rst:1304 ../../source/rnotes.rst:1724
+#: ../../source/rnotes.rst:2547
+msgid "Description: systemvm-vmware-4.3"
+msgstr ""
+
+# 9edb2b100d91490993b3139d7695b2a8
+# b68299a5d4374958b34b758386cc85cd
+# d96632db3762451da83bea92b5586509
+# 03002181282749228c393ace2ca1ab28
+# dfcba25531e24b87a8081fe1761c585c
+#: ../../source/rnotes.rst:125 ../../source/rnotes.rst:761
+#: ../../source/rnotes.rst:1306 ../../source/rnotes.rst:1726
+#: ../../source/rnotes.rst:2549
+msgid ""
+"URL: http://download.cloud.com/templates/4.3/systemvm64template-2014-01-14"
+"-master-vmware.ova"
+msgstr ""
+
+# 2739f087399644a286227208c62d16f2
+# 27ee5363cc7645c0974a787822cc2731
+# c04dae621a60468f89942bdf35214aa7
+# 4410929e67ae4b9a8ccde344ee6635a6
+# 0b0ae4d5aaf4402688e03b8cbce733b6
+#: ../../source/rnotes.rst:130 ../../source/rnotes.rst:766
+#: ../../source/rnotes.rst:1311 ../../source/rnotes.rst:1732
+#: ../../source/rnotes.rst:2554
+msgid "Hypervisor: VMware"
+msgstr ""
+
+# 7c525c40349d426da8d4edb0fad6a3a1
+# 43f012151a5a4dca828b7ac5686d17f6
+# c5a8185466a3403ca88731b04acb0640
+# bb4c9e98ec2740ec84c4a6966efc02ff
+# f61eaa2f59c7479fa85cfbb35196f2ee
+#: ../../source/rnotes.rst:132 ../../source/rnotes.rst:768
+#: ../../source/rnotes.rst:1313 ../../source/rnotes.rst:1734
+#: ../../source/rnotes.rst:2556
+msgid "Format: OVA"
+msgstr ""
+
+# cc7b963a69ea4b88aeeedb09e5be332d
+# f03e04a6fc68422c9e99141bb72c1a8e
+# c03b65c705f64cfc98d04f6597064847
+#: ../../source/rnotes.rst:149 ../../source/rnotes.rst:671
+#: ../../source/rnotes.rst:1207
+msgid ""
+"Most users of CloudStack manage the installation and upgrades of CloudStack "
+"with one of Linux's predominant package systems, RPM or APT. This guide "
+"assumes you'll be using RPM and Yum (for Red Hat Enterprise Linux or "
+"CentOS), or APT and Debian packages (for Ubuntu)."
+msgstr ""
+
+# 723a52379d254df48e67493131d59a6e
+#: ../../source/rnotes.rst:156
+msgid ""
+"Create RPM or Debian packages (as appropriate) and a repository from the 4.3"
+" source, or check the Apache CloudStack downloads page at "
+"`http://cloudstack.apache.org/downloads.html "
+"<http://cloudstack.apache.org/downloads.html>`__ for package repositories "
+"supplied by community members. You will need them for step `9 <#upgrade-deb-"
+"packages-4.3>`__ or step `12 <#upgrade-rpm-packages-4.3>`__."
+msgstr ""
+
+# f34250896ef542fda4fd42546a65a5d4
+# 030a350e5cd2436297a5a4519df23e0d
+# 957e3d9727b24f8eb2ee7f45c9b76863
+#: ../../source/rnotes.rst:163 ../../source/rnotes.rst:793
+#: ../../source/rnotes.rst:1219
+msgid ""
+"Instructions for creating packages from the CloudStack source are in the "
+"`Installation Guide <http://cloudstack.apache.org/docs/en-US/index.html>`__."
+msgstr ""
+
+# 42052b8c68a6456ab40cacbc15103d1f
+# d5e34b3f6dd043978b90d0583a16c946
+# 0dd8514fea1f4e97bf0dc98ca9fd66b2
+#: ../../source/rnotes.rst:169 ../../source/rnotes.rst:799
+#: ../../source/rnotes.rst:1331
+msgid ""
+"Stop your management server or servers. Run this on all management server "
+"hosts:"
+msgstr ""
+
+# d5ae2a32ec9d4814b44cdff2aaf4ec3a
+# 0ae0988de33b418ab302b9b1185708c2
+# cb9a9840e38d4c94bedf6bd6f8ceb590
+#: ../../source/rnotes.rst:178 ../../source/rnotes.rst:808
+#: ../../source/rnotes.rst:1340
+msgid ""
+"If you are running a usage server or usage servers, stop those as well:"
+msgstr ""
+
+# 770393d964b04d53b7ccc6412a5b3c6a
+# c5e8ca3e3527463aa2cbdb2240ed1bbf
+# e889a951d681486388064f4f31e91989
+#: ../../source/rnotes.rst:187 ../../source/rnotes.rst:817
+#: ../../source/rnotes.rst:1349
+msgid ""
+"Make a backup of your MySQL database. If you run into any issues or need to "
+"roll back the upgrade, this will assist in debugging or restoring your "
+"existing environment. You'll be prompted for your password."
+msgstr ""
+
+# f9fbf2fee0e64639ad8782f8303ddf7b
+#: ../../source/rnotes.rst:198
+msgid "Perform the following to verify the artifacts:"
+msgstr ""
+
+# e63dfd2fe1084bacb083d72eb5db8371
+#: ../../source/rnotes.rst:202
+msgid "(optional) Install GPG keys if needed:"
+msgstr ""
+
+# af9567066dc845fdb1ec7366b444120f
+#: ../../source/rnotes.rst:210
+msgid "Import the GPG keys stored in the source distribution's KEYS file"
+msgstr ""
+
+# 049005cfc12041f8b1e292490c30f4c4
+#: ../../source/rnotes.rst:216
+msgid ""
+"Alternatively, download the signing keys, the IDs found in the KEYS file, "
+"individually by using a keyserver."
+msgstr ""
+
+# a3097e42d1084f048a59d85830de53d3
+#: ../../source/rnotes.rst:219
+msgid "For example:"
+msgstr ""
+
+# d2b32a530b2a4cd796599dd23a5f1221
+#: ../../source/rnotes.rst:227
+msgid "Verify signatures and hash files:"
+msgstr ""
+
+# 1564e50432084d9d98e98a456444e4c9
+#: ../../source/rnotes.rst:235
+msgid ""
+"Each of these commands should return no output. Any output from them implies"
+" that there is a difference between the hash you generated locally and the "
+"hash that has been pulled from the server."
+msgstr ""
+
+# 8f767747ab0a4c8dbd0e1198c243bff0
+#: ../../source/rnotes.rst:242
+msgid "Get the commit hash from the VOTE email."
+msgstr ""
+
+# f35ea10fc96a44de830d0206391f8969
+#: ../../source/rnotes.rst:244
+msgid ""
+"For example: ``4cd60f3d1683a3445c3248f48ae064fb573db2a1``. The value changes"
+" between releases."
+msgstr ""
+
+# 6c23307830ae47e6b2dd297e55ad9bc3
+#: ../../source/rnotes.rst:249
+msgid "Create two new temporary directories:"
+msgstr ""
+
+# 15ea8b909be7467686ff82c62dcb1e74
+#: ../../source/rnotes.rst:258
+msgid "Check out the 4.3 branch:"
+msgstr ""
+
+# 6e12f6014678491393792d02fc13ac58
+#: ../../source/rnotes.rst:268
+msgid "Unpack the release artifact:"
+msgstr ""
+
+# 0e59c95dfb4e49a380b57fc8d78dd5ab
+#: ../../source/rnotes.rst:277
+msgid ""
+"Compare the contents of the release artifact with the contents pulled from "
+"the repo:"
+msgstr ""
+
+# 2d63c16b73194f3bbe52bb8bbce5c656
+#: ../../source/rnotes.rst:284
+msgid "Ensure that content is the same."
+msgstr ""
+
+# ba868de916d1458aaf74f2ceaed20269
+#: ../../source/rnotes.rst:288
+msgid "Verify the Code License Headers:"
+msgstr ""
+
+# 70de015831004787afd4554bf5d06815
+#: ../../source/rnotes.rst:295
+msgid ""
+"The build fails if any non-compliant files are present that are not "
+"specifically excluded from the ASF license header requirement. You can "
+"optionally review the target/rat.txt file after the run completes. Passing "
+"the build implies that RAT certifies that the files are compliant and this "
+"test is passed."
+msgstr ""
+
+# e5a4e1d35a774619b436bcf6e9be9222
+# dd7ca70744e14d20861895d26f347a5d
+#: ../../source/rnotes.rst:303 ../../source/rnotes.rst:828
+msgid ""
+"(KVM Only) If primary storage of type local storage is in use, the path for "
+"this storage needs to be verified to ensure it passes new validation. Check "
+"local storage by querying the cloud.storage\\_pool table:"
+msgstr ""
+
+# 15205eb55014464fb0a975958c7f2d5a
+# 895acb18e41a45fabf1ab6bf500e2152
+#: ../../source/rnotes.rst:312 ../../source/rnotes.rst:837
+msgid ""
+"If local storage paths are found to have a trailing forward slash, remove "
+"it:"
+msgstr ""
+
+# bc2246bf393547aabcf817be27dc60c7
+#: ../../source/rnotes.rst:321
+msgid ""
+"If you are using Ubuntu, follow this procedure to upgrade your packages. If "
+"not, skip to step `12 <#upgrade-rpm-packages-4.3>`__."
+msgstr ""
+
+# b59040bf9a744dbf82ee0fd68cd8c137
+# 5a90c117d3be4bd2bf7438b0a446a878
+# 1683f96797754542a758f642d4f4fae1
+# 8027b164288e47328241d47cb193a0a7
+# 71ef1804ff0c40ca91afd6189a4e564d
+#: ../../source/rnotes.rst:324 ../../source/rnotes.rst:851
+#: ../../source/rnotes.rst:1408 ../../source/rnotes.rst:1850
+#: ../../source/rnotes.rst:2680
+msgid ""
+"**Community Packages:** This section assumes you're using the community "
+"supplied packages for CloudStack. If you've created your own packages and "
+"APT repository, substitute your own URL for the ones used in these examples."
+msgstr ""
+
+# 56b9d98656664482be98c200f1856254
+# 19351e795331422c98e4a905875390e3
+# 74c4b1459a144077aeb0c9f63951ca2f
+# 231674bdf08047fea592149bf4f4ddb8
+# 0a42937bde294e2091dac1a3a0b86a52
+#: ../../source/rnotes.rst:328 ../../source/rnotes.rst:855
+#: ../../source/rnotes.rst:1412 ../../source/rnotes.rst:1854
+#: ../../source/rnotes.rst:2684
+msgid ""
+"The first order of business will be to change the sources list for each "
+"system with CloudStack packages. This means all management servers, and any "
+"hosts that have the KVM agent. (No changes should be necessary for hosts "
+"that are running VMware or Xen.)"
+msgstr ""
+
+# 5d189abeac584f7f8553e4d41c9965d6
+# 84e85d30c2dd40edbca568d9e419cad0
+# a157030034164bfbb32f6259e6ae759b
+# 9143325723c04e8dbe1773d7762b6ada
+# 5f8137d1d4784df2842e703d772e9d8c
+#: ../../source/rnotes.rst:333 ../../source/rnotes.rst:860
+#: ../../source/rnotes.rst:1417 ../../source/rnotes.rst:1859
+#: ../../source/rnotes.rst:2689
+msgid ""
+"Start by opening ``/etc/apt/sources.list.d/cloudstack.list`` on any systems "
+"that have CloudStack packages installed."
+msgstr ""
+
+# c11b9c6bf46e4ceeb988a252e4a6f44e
+# 66acc455c74e4b60a8a973b187e8db0f
+# 77e3b00fd01a4461b6b56a739374c223
+# 2aa42c46e3d84198bfe64eccc145ab97
+# 59d99fc5fa3e4fe89dded04722ba49bb
+#: ../../source/rnotes.rst:336 ../../source/rnotes.rst:863
+#: ../../source/rnotes.rst:1420 ../../source/rnotes.rst:1862
+#: ../../source/rnotes.rst:2692
+msgid "This file should have one line, which contains:"
+msgstr ""
+
+# 0315b6db253046839da27e9afd21dac8
+# 31b497170b494959b37f944a08fcedd4
+# 43e35965702d4a6f914fe60b4db32d55
+# 236ee7a215514b2f8aaca32f6fc0eb34
+# f95f05a212424cf5bc5d5c55b3e585eb
+#: ../../source/rnotes.rst:342 ../../source/rnotes.rst:869
+#: ../../source/rnotes.rst:1426 ../../source/rnotes.rst:1868
+#: ../../source/rnotes.rst:2698
+msgid "We'll change it to point to the new package repository:"
+msgstr ""
+
+# fe18287ca92649d994652022a0a389fe
+# 7ef37ac6e8b04b51b22655148ee43880
+# b6fdfa285ff04ecd8c6a8d70aca45711
+# b773059057dc4b7a8fdd18420c7aff6b
+# 3344b7380cd54082872676747d07b745
+# 19d0366892ff4b1198fa32bd69859746
+# e2d8d36e8860452a9c23b62f39fd3330
+#: ../../source/rnotes.rst:348 ../../source/rnotes.rst:561
+#: ../../source/rnotes.rst:875 ../../source/rnotes.rst:1093
+#: ../../source/rnotes.rst:1547 ../../source/rnotes.rst:1874
+#: ../../source/rnotes.rst:2819
+msgid ""
+"If you're using your own package repository, change this line to read as "
+"appropriate for your 4.3 repository."
+msgstr ""
+
+# 11d93d2eff9c46d8ad99acb75658a9d0
+# f33a797d7e5a4cb68d5f85f94b785dba
+# d2a25e4c47e8400cba504f5918c6374c
+# 498e43c4b60e42b5a6e92ee3f3fc8423
+# 1fab03282141473daab0aaa3c229441a
+#: ../../source/rnotes.rst:353 ../../source/rnotes.rst:880
+#: ../../source/rnotes.rst:1437 ../../source/rnotes.rst:1879
+#: ../../source/rnotes.rst:2709
+msgid "Now update your apt package list:"
+msgstr ""
+
+# 039423ac897546afa8394f0dc3762981
+# 98851837e2c7438fbb9dd33756aef5c6
+# 198ef0103fda4b0eb4c0bae19000f845
+# b2b659bca4774c74b9b3daf1f509726f
+# 04034e3390cb43938e79c05191907c58
+#: ../../source/rnotes.rst:361 ../../source/rnotes.rst:888
+#: ../../source/rnotes.rst:1445 ../../source/rnotes.rst:1887
+#: ../../source/rnotes.rst:2717
+msgid ""
+"Now that you have the repository configured, it's time to install the "
+"``cloudstack-management`` package. This will pull in any other dependencies "
+"you need."
+msgstr ""
+
+# 71dbbbaa4b0545df97bedc9c6d71c5a8
+# dea91b1d5e664521ae9fe2a0c8c2e92d
+# 8188541359f342f78e5cf9d60d972549
+# 46f51ea2d101426d95c74c17f3dc5cde
+#: ../../source/rnotes.rst:371 ../../source/rnotes.rst:898
+#: ../../source/rnotes.rst:1455 ../../source/rnotes.rst:1897
+msgid "You will need to manually install the ``cloudstack-agent`` package:"
+msgstr ""
+
+# 1ef7dae76e35474393b92874cbb36532
+# 739b3c30b2e04fc398bfd6859b4815fc
+# 209b0d0315264225ab5c6168301135d4
+# 8a235d41942341f3bf47878b970aa03d
+# 513550d9f3f34fdeb7c07f9b2e7afcf3
+#: ../../source/rnotes.rst:378 ../../source/rnotes.rst:905
+#: ../../source/rnotes.rst:1462 ../../source/rnotes.rst:1904
+#: ../../source/rnotes.rst:2734
+msgid ""
+"During the installation of ``cloudstack-agent``, APT will copy your "
+"``agent.properties``, ``log4j-cloud.xml``, and ``environment.properties`` "
+"from ``/etc/cloud/agent`` to ``/etc/cloudstack/agent``."
+msgstr ""
+
+# 9701bd815cf148148208dc7b91302f40
+# a8ae754b5fd04a13a867fc2d3c187ce0
+# 085a733706c546dba0f059578892c4a7
+# a728a0e4c92b44fbba5d0b45d114950d
+# 13448224ffa74fc094bfe11a9115fbfa
+#: ../../source/rnotes.rst:381 ../../source/rnotes.rst:910
+#: ../../source/rnotes.rst:1467 ../../source/rnotes.rst:1909
+#: ../../source/rnotes.rst:2739
+msgid "When prompted whether you wish to keep your configuration, say Yes."
+msgstr ""
+
+# af79487ad81341af8144cc2106099f23
+# 73131961a6d2466ba2717ecee3cdf920
+# 9d016ec139344e6186aa43b71c983a76
+# c9409b4b169746b096a8c48a2d7d1ce2
+# 4dd1829a8065410880bea2c97a9b2fa0
+# 32b52f92d69d4c089d800cd10017471f
+# 4dae2cb96e99419d95c76ea7e705ca00
+# c6f1d3d341e84dd0a7ceddce6c604363
+# 83e25244a86f44339113b774652c1bbf
+# dad75aecbba8407e901a4322bb1eec9f
+#: ../../source/rnotes.rst:386 ../../source/rnotes.rst:586
+#: ../../source/rnotes.rst:915 ../../source/rnotes.rst:1118
+#: ../../source/rnotes.rst:1472 ../../source/rnotes.rst:1577
+#: ../../source/rnotes.rst:1914 ../../source/rnotes.rst:2019
+#: ../../source/rnotes.rst:2744 ../../source/rnotes.rst:2849
+msgid ""
+"Verify that the file ``/etc/cloudstack/agent/environment.properties`` has a "
+"line that reads:"
+msgstr ""
+
+# 48202ecf3c764be3afe78387c441645d
+# a8b296466110468da08acfa6cc535135
+# 0e27905c523846a5b404e94b239aa343
+# f463a9539cd6440fae0efe92c14e90f1
+# e910c345f581438da404660d14d56c36
+# 4e51e4f9328545d6bf02d7de41f3d787
+# 70428b7ab64442af9fd0fac15dca01f7
+# d0451a72b44d4a609356f0537372b57f
+# fd3ad945ef1a48958c77d9e5b5aa0055
+# 9b43bdb2b8664c22a2e2b69038d81093
+#: ../../source/rnotes.rst:394 ../../source/rnotes.rst:594
+#: ../../source/rnotes.rst:923 ../../source/rnotes.rst:1126
+#: ../../source/rnotes.rst:1480 ../../source/rnotes.rst:1585
+#: ../../source/rnotes.rst:1922 ../../source/rnotes.rst:2027
+#: ../../source/rnotes.rst:2752 ../../source/rnotes.rst:2857
+msgid "If not, add the line."
+msgstr ""
+
+# 042c9c6d0f13426387a84291fc291952
+# 03fb714adf8a48aa9d99aabcae5a1610
+# 6351d0f660b14dc499fbf3e875658080
+# 43b1707916e74b7784e3b08a2c6ed881
+# 8f76d80899b34f7ca30adb493f085fef
+# 8efc5c39fdd64533957cc3941da4e1b4
+# 5cfeecd7389e4866acfb4440d0d1c020
+# dae7b83474684e2bb0a24a4589826983
+# e182686d199f4cd6b8e3691430995278
+# b031852eec1a450da4b42dc1c66d7b69
+#: ../../source/rnotes.rst:398 ../../source/rnotes.rst:598
+#: ../../source/rnotes.rst:927 ../../source/rnotes.rst:1130
+#: ../../source/rnotes.rst:1484 ../../source/rnotes.rst:1589
+#: ../../source/rnotes.rst:1926 ../../source/rnotes.rst:2031
+#: ../../source/rnotes.rst:2756 ../../source/rnotes.rst:2861
+msgid "Restart the agent:"
+msgstr ""
+
+# 6081bbfdf7d24c4b8b9ab07614b56273
+# 7c211e87de09465bb5a539ebd4a01754
+#: ../../source/rnotes.rst:408 ../../source/rnotes.rst:937
+msgid ""
+"(VMware only) Additional steps are required for each VMware cluster. These "
+"steps will not affect running guests in the cloud. These steps are required "
+"only for clouds using VMware clusters:"
+msgstr ""
+
+# 34f20e5a1a254983baf1a289562457cc
+# b65cec52a81d40248b4f640d3c356aaa
+#: ../../source/rnotes.rst:414 ../../source/rnotes.rst:943
+msgid "Stop the Management Server:"
+msgstr ""
+
+# 7f9596344d6b4824b56b3e9254bbc16c
+# 36ca6513825a4e8d923a5838a123b0f7
+#: ../../source/rnotes.rst:422 ../../source/rnotes.rst:951
+msgid "Generate the encrypted equivalent of your vCenter password:"
+msgstr ""
+
+# efb6ab9a82e7426e84f110c176a707f6
+# 2198298a7a6842dfb8afd2735968909d
+#: ../../source/rnotes.rst:428 ../../source/rnotes.rst:957
+msgid ""
+"Store the output from this step, we need to add this in cluster\\_details "
+"table and vmware\\_data\\_center tables in place of the plain text password"
+msgstr ""
+
+# 99acd44b40a34912a76fde6eccc9e0a2
+# ed1e34bd9d12479088c430270a20c80e
+#: ../../source/rnotes.rst:434 ../../source/rnotes.rst:963
+msgid ""
+"Find the ID of the row of cluster\\_details table that you have to update:"
+msgstr ""
+
+# 8f3bd3ed0592477f8ceea7930a008d38
+# 631c4f13cefc4c5b94e6f10a94ebfba1
+#: ../../source/rnotes.rst:447 ../../source/rnotes.rst:976
+msgid "Update the plain text password with the encrypted one"
+msgstr ""
+
+# e1f63620a0904624a050970144760d41
+# ba1a7b976ab7471da8f4ae5cc6acc69c
+# 8d017dc5b3614e3786fd14c3f098dd4f
+# 62427dddea394f98a9eac0cb913f80c1
+#: ../../source/rnotes.rst:455 ../../source/rnotes.rst:480
+#: ../../source/rnotes.rst:984 ../../source/rnotes.rst:1009
+msgid "Confirm that the table is updated:"
+msgstr ""
+
+# 2f577273146045c4855666e8069007e6
+# 5a358193fff4466ca2d1afab27a439c3
+#: ../../source/rnotes.rst:463 ../../source/rnotes.rst:992
+msgid ""
+"Find the ID of the correct row of vmware\\_data\\_center that you want to "
+"update"
+msgstr ""
+
+# 44774239c7124aeea278ffd8a1e0ce41
+# 49d7985782fe41b284a9f659a0b07c1c
+#: ../../source/rnotes.rst:472 ../../source/rnotes.rst:1001
+msgid "update the plain text password with the encrypted one:"
+msgstr ""
+
+# 56448a6a49a4408386be85dab4b2315f
+# 1aacd1189d6b4ab7ba4daa2c32937c9a
+#: ../../source/rnotes.rst:488 ../../source/rnotes.rst:1017
+msgid "Start the CloudStack Management server"
+msgstr ""
+
+# b2f224ce5298470e91f2b8d31135cd1e
+# c5bf1bb0d38e4fa5aa1253aaa4abd1a7
+#: ../../source/rnotes.rst:496 ../../source/rnotes.rst:1025
+msgid ""
+"(KVM only) Additional steps are required for each KVM host. These steps will"
+" not affect running guests in the cloud. These steps are required only for "
+"clouds using KVM as hosts and only on the KVM hosts."
+msgstr ""
+
+# f4d538249e0345cab4b0b811c939cb00
+# d50828a7a95f4604b0fa2213975047a5
+#: ../../source/rnotes.rst:503 ../../source/rnotes.rst:1032
+msgid "Configure the CloudStack yum repository as detailed above."
+msgstr ""
+
+# f06d2d146d724032b87cb4226d6fac93
+# 351c9808bd414461b803718057d20224
+# 85cb78aba52f4a3583b5d5faf5143640
+# 4136fdbd755442ddbe031d3bc309e73c
+#: ../../source/rnotes.rst:507 ../../source/rnotes.rst:1036
+#: ../../source/rnotes.rst:2138 ../../source/rnotes.rst:3053
+msgid "Stop the running agent."
+msgstr ""
+
+# 1cb7133384b5402cb2cf14632153c4cd
+# 64a138d932f747c98f6efcb0c8ca0346
+#: ../../source/rnotes.rst:515 ../../source/rnotes.rst:1044
+msgid "Update the agent software."
+msgstr ""
+
+# 9efa8f702b9145af9ec5fdfa36823bbb
+# 9312871613354beb9803f1d746527094
+# 8fba178c912e43a193d037247d356a6d
+# 8d9b6d1f39c14466a3fe4569b44a8595
+#: ../../source/rnotes.rst:523 ../../source/rnotes.rst:1052
+#: ../../source/rnotes.rst:2189 ../../source/rnotes.rst:3111
+msgid "Start the agent."
+msgstr ""
+
+# f86632e46670495698f5d20c200fdd69
+#: ../../source/rnotes.rst:531
+msgid ""
+"If you are using CentOS or RHEL, follow this procedure to upgrade your "
+"packages. If not, skip to step `14 <#restart-system-vms-4.3>`__."
+msgstr ""
+
+# f4329c69f54b476da773a8c35a08e778
+# 85e264dbc7dd4ed19606e6dfa79f9a16
+# 11da3a3cb2d54cdca41f7622006bfbce
+# 4306b36338c846fd8bac053165a33cbf
+# ad1b98990fb64bb3b57c3296a7ea607d
+#: ../../source/rnotes.rst:534 ../../source/rnotes.rst:1066
+#: ../../source/rnotes.rst:1521 ../../source/rnotes.rst:1963
+#: ../../source/rnotes.rst:2793
+msgid ""
+"**Community Packages:** This section assumes you're using the community "
+"supplied packages for CloudStack. If you've created your own packages and "
+"yum repository, substitute your own URL for the ones used in these examples."
+msgstr ""
+
+# 6d6ebc753fba484eb9204b6781fda970
+# e742839c52f640f0a426c73a4fd018df
+#: ../../source/rnotes.rst:538 ../../source/rnotes.rst:1070
+msgid ""
+"The first order of business will be to change the yum repository for each "
+"system with CloudStack packages. This means all management servers, and any "
+"hosts that have the KVM agent."
+msgstr ""
+
+# 3ffbf1503681481e95b4c336a25564e0
+# d9ec84ef6bac453591c608d69295622e
+#: ../../source/rnotes.rst:542 ../../source/rnotes.rst:1074
+msgid ""
+"(No changes should be necessary for hosts that are running VMware or Xen.)"
+msgstr ""
+
+# e894df58f47f40edb96c40339871544b
+# bd819c73ef4845019e7cb1e100c664fe
+# 7fa2b208cd6e45a28e45fd0e3f51b7c3
+# eba94a5371074f1fb589564435926056
+# 1884cef709f34a88abecec2bf3833c3a
+#: ../../source/rnotes.rst:545 ../../source/rnotes.rst:1077
+#: ../../source/rnotes.rst:1531 ../../source/rnotes.rst:1973
+#: ../../source/rnotes.rst:2803
+msgid ""
+"Start by opening ``/etc/yum.repos.d/cloudstack.repo`` on any systems that "
+"have CloudStack packages installed."
+msgstr ""
+
+# ac7e0cad1d17428e896f935bd5c5b384
+# dcbce38317ba4e89b9ef6d2db7c802b2
+# 467cc3a4a560458f9b054f2e58d20ee4
+# 16512f5b43624e84979e9af514a36ab3
+# 707eba890aa945709aa0459269af8308
+#: ../../source/rnotes.rst:548 ../../source/rnotes.rst:1080
+#: ../../source/rnotes.rst:1534 ../../source/rnotes.rst:1976
+#: ../../source/rnotes.rst:2806
+msgid "This file should have content similar to the following:"
+msgstr ""
+
+# babaf567e6f5404483ed6ee0bf637444
+#: ../../source/rnotes.rst:558
+msgid ""
+"If you are using the community provided package repository, change the base "
+"url to http://cloudstack.apt-get.eu/rhel/4.3/"
+msgstr ""
+
+# d89b9a5996ce4f0f9ac0c3e436719fb5
+# b1cfb2c096db48ba93d8b2f09c56031b
+#: ../../source/rnotes.rst:566 ../../source/rnotes.rst:1098
+msgid ""
+"Now that you have the repository configured, it's time to install the "
+"``cloudstack-management`` package by upgrading the older ``cloudstack-"
+"management`` package."
+msgstr ""
+
+# 65f51f39a8bf4fcf8083f0342a056bc5
+# 1a05c4de3f944f14a407be8137766bc0
+# beb8ff931b2a4d8c98c73a4fa8ac4204
+# d74cc786e6214deea323b8028f08a467
+# 83a307beac844266953b7bbed75a7d6e
+#: ../../source/rnotes.rst:576 ../../source/rnotes.rst:1108
+#: ../../source/rnotes.rst:1562 ../../source/rnotes.rst:2004
+#: ../../source/rnotes.rst:2834
+msgid ""
+"For KVM hosts, you will need to upgrade the ``cloud-agent`` package, "
+"similarly installing the new version as ``cloudstack-agent``."
+msgstr ""
+
+# c40af3663afc4704b56545eddb37609c
+# a4c37669c6fd442882bf4165eff9dc21
+#: ../../source/rnotes.rst:608 ../../source/rnotes.rst:1140
+msgid "Now it's time to restart the management server"
+msgstr ""
+
+# ebc23ee9a8fe452a94e969a3b3ed3797
+# bb9d6984a87e48d1a5ffc67450096bb8
+#: ../../source/rnotes.rst:616 ../../source/rnotes.rst:1148
+msgid ""
+"Once you've upgraded the packages on your management servers, you'll need to"
+" restart the system VMs. Ensure that the admin port is set to 8096 by using "
+"the \"integration.api.port\" global parameter. This port is used by the "
+"cloud-sysvmadm script at the end of the upgrade procedure. For information "
+"about how to set this parameter, see \"Setting Global Configuration "
+"Parameters\" in the Installation Guide. Changing this parameter will require"
+" management server restart. Also make sure port 8096 is open in your local "
+"host firewall to do this."
+msgstr ""
+
+# e87299dd3d554c7e805ebe052b4921cb
+# c4d82271ad904af8a92a1ae13e75bf2f
+# b8019db7253342c791c16841737a94c3
+#: ../../source/rnotes.rst:625 ../../source/rnotes.rst:1157
+#: ../../source/rnotes.rst:1603
+msgid ""
+"There is a script that will do this for you, all you need to do is run the "
+"script and supply the IP address for your MySQL instance and your MySQL "
+"credentials:"
+msgstr ""
+
+# 00030e4dafd740129590b1781499186e
+# f68656ca3312479db2afefff67e1bdd6
+# 9cb6b77dd29243c79031b6bd19da51ff
+#: ../../source/rnotes.rst:633 ../../source/rnotes.rst:1165
+#: ../../source/rnotes.rst:1611
+msgid ""
+"You can monitor the log for progress. The process of restarting the system "
+"VMs can take an hour or more."
+msgstr ""
+
+# bccf889f462e49b4b1bb423c1e88b5c8
+# 1ac4420efcdc492f9fb919b61307b42a
+# 5dcddcbb73614aa4af06e592c9348913
+#: ../../source/rnotes.rst:640 ../../source/rnotes.rst:1172
+#: ../../source/rnotes.rst:1618
+msgid "The output to ``sysvm.log`` will look something like this:"
+msgstr ""
+
+# 42227647c4b4492d83c87f97545d5390
+# 8a3282874711468dbaacf5fb628280bf
+#: ../../source/rnotes.rst:653 ../../source/rnotes.rst:1187
+msgid ""
+"**For Xen Hosts: Copy vhd-utils:** This step is only for CloudStack installs"
+" that are using Xen hosts."
+msgstr ""
+
+# 973fb456e9984a6b88e6e3c4df1b77dd
+# a399a1e3318245928b48752177f60df6
+# 7b800cae60f54399a1b3ca872c19412e
+#: ../../source/rnotes.rst:655 ../../source/rnotes.rst:1189
+#: ../../source/rnotes.rst:1631
+msgid ""
+"Copy the file ``vhd-utils`` to ``/usr/share/cloudstack-"
+"common/scripts/vm/hypervisor/xenserver``."
+msgstr ""
+
+# 0c4cb838a9a9481a8d93a180dcc079f8
+#: ../../source/rnotes.rst:659
+msgid "Upgrade from 4.1.x to 4.3"
+msgstr ""
+
+# 68c72fe017a24b6faaa07d9f4d650e5b
+#: ../../source/rnotes.rst:661
+msgid ""
+"This section will guide you from CloudStack 4.1.x versions to CloudStack "
+"4.3."
+msgstr ""
+
+# ab0415d71764422e9cc4345bc744c67f
+#: ../../source/rnotes.rst:682
+msgid ""
+"While running the existing 4.1.x system, log in to the UI as root "
+"administrator."
+msgstr ""
+
+# 5d21f203ae88464ba82a2bb5644b39c6
+#: ../../source/rnotes.rst:786
+msgid ""
+"Create RPM or Debian packages (as appropriate) and a repository from the "
+"4.2.1 source, or check the Apache CloudStack downloads page at "
+"`http://cloudstack.apache.org/downloads.html "
+"<http://cloudstack.apache.org/downloads.html>`__ for package repositories "
+"supplied by community members. You will need them for step `8 <#upgrade-deb-"
+"packages-41to42>`__ or step `11 <#upgrade-rpm-packages-41to42>`__."
+msgstr ""
+
+# 55cd20754528476498956b7167b4dd64
+#: ../../source/rnotes.rst:846
+msgid ""
+"If you are using Ubuntu, follow this procedure to upgrade your packages. If "
+"not, skip to step `11 <#upgrade-rpm-packages-41to42>`__."
+msgstr ""
+
+# ca81934545a041b387b565f0c0413aad
+#: ../../source/rnotes.rst:1060
+msgid ""
+"If you are using CentOS or RHEL, follow this procedure to upgrade your "
+"packages. If not, skip to step `13 <#restart-system-vms-41to42>`__."
+msgstr ""
+
+# ade8209fbda64faba8a63c157b288803
+#: ../../source/rnotes.rst:1090
+msgid ""
+"If you are using the community provided package repository, change the base "
+"url to http://cloudstack.apt-get.eu/rhel/4.2/"
+msgstr ""
+
+# d9130ccbfe84403ab6625f9dfdcab053
+#: ../../source/rnotes.rst:1193
+msgid "Upgrade from 4.0.x to 4.3"
+msgstr ""
+
+# bd7f93faa1db403fa9dd6896441f6009
+#: ../../source/rnotes.rst:1195
+msgid ""
+"This section will guide you from CloudStack 4.0.x versions to CloudStack "
+"4.3."
+msgstr ""
+
+# 72900bd6795d4323b06ce5e775e4281d
+#: ../../source/rnotes.rst:1199
+msgid ""
+"**Package Structure Changes:** The package structure for CloudStack has "
+"changed significantly since the 4.0.x releases. If you've compiled your own "
+"packages, you'll notice that the package names and the number of packages "
+"has changed. This is *not* a bug. However, this *does* mean that the "
+"procedure is not as simple as an ``apt-get upgrade`` or ``yum update``, so "
+"please follow this section carefully."
+msgstr ""
+
+# 9925093a67ba46d4a82afe4983cde3d6
+#: ../../source/rnotes.rst:1212
+msgid ""
+"Create RPM or Debian packages (as appropriate) and a repository from the "
+"4.1.0 source, or check the Apache CloudStack downloads page at "
+"`http://cloudstack.apache.org/downloads.html "
+"<http://cloudstack.apache.org/downloads.html>`__ for package repositories "
+"supplied by community members. You will need them for step `9 <#upgrade-deb-"
+"packages-40to41>`__ or step `10 <#upgrade-rpm-packages-40to41>`__."
+msgstr ""
+
+# e0355ef90969449aa728622612f70057
+#: ../../source/rnotes.rst:1227
+msgid ""
+"While running the existing 4.0.0 system, log in to the UI as root "
+"administrator."
+msgstr ""
+
+# 524983e688224bf18c091cba0ce6ba2c
+#: ../../source/rnotes.rst:1360
+msgid ""
+"Whether you're upgrading a Red Hat/CentOS based system or Ubuntu based "
+"system, you're going to need to stop the CloudStack management server before"
+" proceeding."
+msgstr ""
+
+# c4bb349458c3436aa5064c8348a804cb
+#: ../../source/rnotes.rst:1370
+msgid ""
+"If you have made changes to ``/etc/cloud/management/components.xml``, you'll"
+" need to carry these over manually to the new file, "
+"``/etc/cloudstack/management/componentContext.xml``. This is not done "
+"automatically. (If you're unsure, we recommend making a backup of the "
+"original ``components.xml`` to be on the safe side."
+msgstr ""
+
+# 91d1e1359bf54d59b1b810b6935a20fa
+# 70de4e87d0024a18b3298a6ed81193fb
+#: ../../source/rnotes.rst:1378 ../../source/rnotes.rst:2078
+msgid ""
+"After upgrading to 4.3, API clients are expected to send plain text "
+"passwords for login and user creation, instead of MD5 hash. Incase, api "
+"client changes are not acceptable, following changes are to be made for "
+"backward compatibility:"
+msgstr ""
+
+# 6738c1d868b146448f8933886adfa669
+#: ../../source/rnotes.rst:1383
+msgid ""
+"Modify componentsContext.xml, and make PlainTextUserAuthenticator as the "
+"default authenticator (1st entry in the userAuthenticators adapter list is "
+"default)"
+msgstr ""
+
+# f8b44cf359d148f4b91aab1902dd8495
+#: ../../source/rnotes.rst:1400
+msgid ""
+"PlainTextUserAuthenticator works the same way MD5UserAuthenticator worked "
+"prior to 4.3."
+msgstr ""
+
+# b79f73b2986e4326b50f4543b60a80eb
+#: ../../source/rnotes.rst:1405
+msgid ""
+"If you are using Ubuntu, follow this procedure to upgrade your packages. If "
+"not, skip to step `10 <#upgrade-rpm-packages-40to41>`__."
+msgstr ""
+
+# b5c3c9cedf64481396311fb07233e58b
+#: ../../source/rnotes.rst:1432
+msgid ""
+"If you're using your own package repository, change this line to read as "
+"appropriate for your 4.1.0 repository."
+msgstr ""
+
+# 0eaa898254a64902b5c567db1298842f
+# b871c8f1d0a84e2e861c12292bc46977
+# 8081e0b4d2f64021944ed4638d2d0226
+#: ../../source/rnotes.rst:1494 ../../source/rnotes.rst:1936
+#: ../../source/rnotes.rst:2766
+msgid ""
+"During the upgrade, ``log4j-cloud.xml`` was simply copied over, so the logs "
+"will continue to be added to ``/var/log/cloud/agent/agent.log``. There's "
+"nothing *wrong* with this, but if you prefer to be consistent, you can "
+"change this by copying over the sample configuration file:"
+msgstr ""
+
+# f8f1c5326e634caca24199a666ee0792
+# 81564ab5762b44eda70a58cda80022d2
+# eed567da89fd4e0eb4d3ae5a48a726d6
+#: ../../source/rnotes.rst:1508 ../../source/rnotes.rst:1950
+#: ../../source/rnotes.rst:2780
+msgid ""
+"Once the agent is running, you can uninstall the old cloud-\\* packages from"
+" your system:"
+msgstr ""
+
+# 68ef47a188cb4ef89974f80e71de5475
+#: ../../source/rnotes.rst:1517
+msgid ""
+"If you are using CentOS or RHEL, follow this procedure to upgrade your "
+"packages. If not, skip to step `11 <#restart-system-vms-40to41>`__."
+msgstr ""
+
+# a2c27f6a615f432f92bbf1522037096e
+# 78492d493d8a47c482846c2e22f8a67e
+# eda4705004e144ef847024d20f666082
+#: ../../source/rnotes.rst:1525 ../../source/rnotes.rst:1967
+#: ../../source/rnotes.rst:2797
+msgid ""
+"The first order of business will be to change the yum repository for each "
+"system with CloudStack packages. This means all management servers, and any "
+"hosts that have the KVM agent. (No changes should be necessary for hosts "
+"that are running VMware or Xen.)"
+msgstr ""
+
+# 50534c980d8f486280114b8ca158a788
+#: ../../source/rnotes.rst:1544
+msgid ""
+"If you are using the community provided package repository, change the "
+"baseurl to http://cloudstack.apt-get.eu/rhel/4.1/"
+msgstr ""
+
+# 7ddaef2707504d33bb47147835052b82
+# cf3028e1960b447f901c681d9adc50ad
+# 16364561824242ae97931f392f26b118
+#: ../../source/rnotes.rst:1552 ../../source/rnotes.rst:1994
+#: ../../source/rnotes.rst:2824
+msgid ""
+"Now that you have the repository configured, it's time to install the "
+"``cloudstack-management`` package by upgrading the older ``cloud-client`` "
+"package."
+msgstr ""
+
+# 3b35fa76dd24499599dc04b6fb44d0dc
+# 43cc60efd03844569f473a2ff71e4dfe
+# f4638220dedf413d8516450e9ac81e50
+#: ../../source/rnotes.rst:1570 ../../source/rnotes.rst:2012
+#: ../../source/rnotes.rst:2842
+msgid ""
+"During the installation of ``cloudstack-agent``, the RPM will copy your "
+"``agent.properties``, ``log4j-cloud.xml``, and ``environment.properties`` "
+"from ``/etc/cloud/agent`` to ``/etc/cloudstack/agent``."
+msgstr ""
+
+# 61bde7141a654f528c9308eb8aea7ba9
+#: ../../source/rnotes.rst:1599
+msgid ""
+"Once you've upgraded the packages on your management servers, you'll need to"
+" restart the system VMs. Make sure port 8096 is open in your local host "
+"firewall to do this."
+msgstr ""
+
+# 93c8bb7ab89b4303b1ebaa9983b03b6c
+#: ../../source/rnotes.rst:1629
+msgid ""
+"*For Xen Hosts: Copy vhd-utils:** This step is only for CloudStack installs "
+"that are using Xen hosts."
+msgstr ""
+
+# 59b97f43649345cfbe2049be86d9c389
+#: ../../source/rnotes.rst:1635
+msgid "Upgrade from 3.0.x to 4.3"
+msgstr ""
+
+# 5e32327fa74d40f182eefac57ec8e916
+#: ../../source/rnotes.rst:1637
+msgid ""
+"This section will guide you from Citrix CloudStack 3.0.x to Apache "
+"CloudStack 4.3. Sections that are hypervisor-specific will be called out "
+"with a note."
+msgstr ""
+
+# 1e472e681f1744d2a30240396cb0f661
+#: ../../source/rnotes.rst:1645
+msgid ""
+"While running the existing 3.0.x system, log in to the UI as root "
+"administrator."
+msgstr ""
+
+# c598b4573abc40ef8cb1f8ff3f8ba1b4
+# 287bba7730ba467ab67c78556c15abc0
+# 50c89d21fbe341c0bc10c00240d82caf
+#: ../../source/rnotes.rst:1677 ../../source/rnotes.rst:1703
+#: ../../source/rnotes.rst:1729
+msgid "Zone: Choose the zone where this hypervisor is used used"
+msgstr ""
+
+# 45960608e6c94d5d9d95ee664a2ce3d2
+#: ../../source/rnotes.rst:1751
+msgid ""
+"Watch the screen to be sure that the template downloads successfully and "
+"enters the READY state. Do not proceed until this is successful."
+msgstr ""
+
+# 369af9370c2e41dca9f4bfaf0f1519ab
+# a8d838ac79c247a4afd1a5950dd416b2
+#: ../../source/rnotes.rst:1757 ../../source/rnotes.rst:2587
+msgid ""
+"(KVM on RHEL 6.0/6.1 only) If your existing CloudStack deployment includes "
+"one or more clusters of KVM hosts running RHEL 6.0 or RHEL 6.1, perform the "
+"following:"
+msgstr ""
+
+# f185884dbe5143e4ba60c4a1cc8e7227
+# 4b69e99638574f33ba5cc56e6d049b75
+#: ../../source/rnotes.rst:1763 ../../source/rnotes.rst:2593
+msgid ""
+"Ensure that you upgrade the operating system version on those hosts before "
+"upgrading CloudStack"
+msgstr ""
+
+# f6b49bea48cd44a78ba1ba39ce1d62c9
+# fa9c3347ce1d4ca99fa94db744a028aa
+#: ../../source/rnotes.rst:1766 ../../source/rnotes.rst:2596
+msgid ""
+"To do that, change the yum repository for each system with CloudStack "
+"packages, that implies that all the Management Servers and any hosts that "
+"have the KVM agent."
+msgstr ""
+
+# e3cffd2be44544da877c3ee50b05232c
+# f25e1a97111848df9ad153e4bd8b7ae4
+#: ../../source/rnotes.rst:1772 ../../source/rnotes.rst:2602
+msgid ""
+"Open ``/etc/yum.repos.d/cloudstack.repo`` on any systems that have "
+"CloudStack packages installed."
+msgstr ""
+
+# 30309403085a4433baa9037014c18d72
+# 1eb4b5dfd9ba4c4eb0cc3b4516056dc7
+#: ../../source/rnotes.rst:1777 ../../source/rnotes.rst:2607
+msgid "Edit as follows:"
+msgstr ""
+
+# 6d41dd815dd64a108dd55bdfcea801aa
+# 8015ca898771446d8c032203cb37154f
+#: ../../source/rnotes.rst:1792 ../../source/rnotes.rst:2622
+msgid ""
+"If you are using the community provided package repository, change the "
+"baseurl to http:// cloudstack.apt-get.eu/rhel/4.2/"
+msgstr ""
+
+# f9d19fa077d9497abf70c710a81f4db6
+# 83164b94d94849a68fc3b8dc68a2a054
+#: ../../source/rnotes.rst:1795 ../../source/rnotes.rst:2625
+msgid ""
+"If you are using your own package repository, change this line to read as "
+"appropriate for your 4.2.0 repository."
+msgstr ""
+
+# 37e87120204c4aa9b575d43425c2db54
+# 43ef10811cdb46c8ad19cd456586fbf8
+#: ../../source/rnotes.rst:1800 ../../source/rnotes.rst:2630
+msgid ""
+"Now that you have the repository configured, upgrade the host operating "
+"system from RHEL 6.0 to 6.3:"
+msgstr ""
+
+# 5e5c81225020442e83c240f9c770f4a1
+# dbd504a399f4491591cc84dbe61e67f5
+#: ../../source/rnotes.rst:1809 ../../source/rnotes.rst:2639
+msgid "Stop all Usage Servers if running. Run this on all Usage Server hosts."
+msgstr ""
+
+# 5e48ffe2e97c4830906dbd90fcd3ef5d
+# c455c85393ef42f4a9c1528886c3e09f
+#: ../../source/rnotes.rst:1818 ../../source/rnotes.rst:2648
+msgid "Stop the Management Servers. Run this on all Management Server hosts."
+msgstr ""
+
+# 6969d11093b8440988a59fa1dff6be6e
+# 9c4f5494faa54226bfeea797c0d3bcdf
+#: ../../source/rnotes.rst:1826 ../../source/rnotes.rst:2656
+msgid ""
+"On the MySQL master, take a backup of the MySQL databases. We recommend "
+"performing this step even in test upgrades. If there is an issue, this will "
+"assist with debugging."
+msgstr ""
+
+# 825da40bc5314b5a8b130e89ad1a9a5c
+# 72fb79e016be496fa214442911ce060c
+#: ../../source/rnotes.rst:1830 ../../source/rnotes.rst:2660
+msgid ""
+"In the following commands, it is assumed that you have set the root password"
+" on the database, which is a CloudStack recommended best practice. "
+"Substitute your own MySQL root password."
+msgstr ""
+
+# 26589f96a49f4066bd0ab2a72a1f7317
+# 16d0068c27204a0faa66b905d52befe0
+#: ../../source/rnotes.rst:1841 ../../source/rnotes.rst:2671
+msgid ""
+"Either build RPM/DEB packages as detailed in the Installation Guide, or use "
+"one of the community provided yum/apt repositories to gain access to the "
+"CloudStack binaries."
+msgstr ""
+
+# f056a426534b49afbd1365f026fe2d2b
+#: ../../source/rnotes.rst:1847
+msgid ""
+"If you are using Ubuntu, follow this procedure to upgrade your packages. If "
+"not, skip to step `8 <#upgrade-rpm-packages-302>`__."
+msgstr ""
+
+# 84016fd7d3884343b978b2fd6c708da7
+#: ../../source/rnotes.rst:1959
+msgid ""
+"If you are using CentOS or RHEL, follow this procedure to upgrade your "
+"packages. If not, skip to step `9 <#correct-components-xml-302>`__."
+msgstr ""
+
+# 6cebde363347471d9ddc60b659269ddb
+# 269ad8a52be048a9a1fdbccb09243abb
+#: ../../source/rnotes.rst:1986 ../../source/rnotes.rst:2816
+msgid ""
+"If you are using the community provided package repository, change the "
+"baseurl to http://cloudstack.apt-get.eu/rhel/4.2/"
+msgstr ""
+
+# e6d488cc033942d08f511b1af789458b
+# 90df2c6c84c146b0b44da5df81753bb6
+#: ../../source/rnotes.rst:1989 ../../source/rnotes.rst:2704
+msgid ""
+"If you're using your own package repository, change this line to read as "
+"appropriate for your 4.2.0 repository."
+msgstr ""
+
+# eb96e4c8fee5460c87b905716ccb7e42
+#: ../../source/rnotes.rst:2041
+msgid ""
+"If you have made changes to your copy of "
+"``/etc/cloud/management/components.xml`` the changes will be preserved in "
+"the upgrade. However, you need to do the following steps to place these "
+"changes in a new version of the file which is compatible with version 4.2.0."
+msgstr ""
+
+# aefa34afaad7414d8c78efbb8e62e94c
+#: ../../source/rnotes.rst:2049
+msgid ""
+"Make a backup copy of ``/etc/cloud/management/components.xml``. For example:"
+msgstr ""
+
+# a89a3722670e4031b416e5940ecff4f6
+# 4b5606edfece4d73a061033c44291198
+#: ../../source/rnotes.rst:2058 ../../source/rnotes.rst:2895
+msgid ""
+"Copy ``/etc/cloud/management/components.xml.rpmnew`` to create a new "
+"``/etc/cloud/management/components.xml``:"
+msgstr ""
+
+# 28450742b3f54afc970bb28dc3cb8c55
+#: ../../source/rnotes.rst:2067
+msgid ""
+"Merge your changes from the backup file into the new ``components.xml``."
+msgstr ""
+
+# 602debbc4519432cb9eb5cd657212990
+#: ../../source/rnotes.rst:2074
+msgid ""
+"If you have more than one management server node, repeat the upgrade steps "
+"on each node."
+msgstr ""
+
+# c3a3f8aab28945a38940615c4aa7c674
+# ae12189a99b14d70b751a1a0ad5e8e78
+#: ../../source/rnotes.rst:2083 ../../source/rnotes.rst:2918
+msgid ""
+"Modify componentContext.xml, and make PlainTextUserAuthenticator as the "
+"default authenticator (1st entry in the userAuthenticators adapter list is "
+"default)"
+msgstr ""
+
+# db4b5e693294450689d29e7b397a66e1
+#: ../../source/rnotes.rst:2100
+msgid ""
+"PlainTextUserAuthenticator works the same way MD5UserAuthenticator worked "
+"prior to 4.3"
+msgstr ""
+
+# 5431071dd41c473d9eefccc4845ef2ad
+# 754d5fda4f9443cba5574bf18d1c2299
+#: ../../source/rnotes.rst:2105 ../../source/rnotes.rst:3017
+msgid ""
+"Start the first Management Server. Do not start any other Management Server "
+"nodes yet."
+msgstr ""
+
+# 5ca91f223ce34c07831f7c5423255427
+#: ../../source/rnotes.rst:2112
+msgid ""
+"Wait until the databases are upgraded. Ensure that the database upgrade is "
+"complete. After confirmation, start the other Management Servers one at a "
+"time by running the same command on each node."
+msgstr ""
+
+# 17144f244bcc4d5ba9f0274e3e20dd93
+#: ../../source/rnotes.rst:2116
+msgid ""
+"Failing to restart the Management Server indicates a problem in the upgrade."
+" Having the Management Server restarted without any issues indicates that "
+"the upgrade is successfully completed."
+msgstr ""
+
+# 5e74545331a7449fb38c9b4562ef3a4b
+# 1059ad4546844e30a69e255db2aada33
+#: ../../source/rnotes.rst:2120 ../../source/rnotes.rst:3031
+msgid ""
+"Start all Usage Servers (if they were running on your previous version). "
+"Perform this on each Usage Server host."
+msgstr ""
+
+# c6c743684c67470bb2e60153d066d39f
+#: ../../source/rnotes.rst:2123
+msgid "``# service cloudstack-usage start``"
+msgstr ""
+
+# 494054707df24576ac8b9a414f1a75b1
+#: ../../source/rnotes.rst:2127
+msgid ""
+"Additional steps are required for each KVM host. These steps will not affect"
+" running guests in the cloud. These steps are required only for clouds using"
+" KVM as hosts and only on the KVM hosts."
+msgstr ""
+
+# b80fdea5eb3f43ef82d8f401098353b5
+#: ../../source/rnotes.rst:2133
+msgid ""
+"Configure a yum or apt repository containing the CloudStack packages as "
+"outlined in the Installation Guide."
+msgstr ""
+
+# 5278fa99d8d4485fb30e42c9411a12f2
+#: ../../source/rnotes.rst:2140
+msgid "``# service cloud-agent stop``"
+msgstr ""
+
+# 3c3fe8b7b19e44cba7a79327a4a72112
+#: ../../source/rnotes.rst:2144
+msgid ""
+"Update the agent software with one of the following command sets as "
+"appropriate for your environment."
+msgstr ""
+
+# f03c00458dfd4309b653b7dd9267b42f
+#: ../../source/rnotes.rst:2147
+msgid "``# yum update cloud-*``"
+msgstr ""
+
+# 3675fb43e8734dd49422ab4b442080b1
+#: ../../source/rnotes.rst:2149
+msgid "``# apt-get update``"
+msgstr ""
+
+# c2bd6eec94fd4fd9ad4aab9c609893cc
+#: ../../source/rnotes.rst:2151
+msgid "``# apt-get upgrade cloud-*``"
+msgstr ""
+
+# c0c4fb3a314d4413b307c50a48ae1228
+#: ../../source/rnotes.rst:2155
+msgid ""
+"Edit ``/etc/cloudstack/agent/agent.properties`` to change the resource "
+"parameter from "
+"\"com.cloud.agent.resource.computing.LibvirtComputingResource\" to "
+"\"com.cloud.hypervisor.kvm.resource.LibvirtComputingResource\"."
+msgstr ""
+
+# 83835a68fb204ae89d6b2f7a6ee8aee8
+# b0e1a8285a0147c98f7193cb947e882f
+#: ../../source/rnotes.rst:2162 ../../source/rnotes.rst:3084
+msgid ""
+"Upgrade all the existing bridge names to new bridge names by running this "
+"script:"
+msgstr ""
+
+# d8fdc08185fc413c805ee17b4372bb1f
+# 56421fb2994141eda8d7a9bc86903b3d
+#: ../../source/rnotes.rst:2171 ../../source/rnotes.rst:3093
+msgid "Install a libvirt hook with the following commands:"
+msgstr ""
+
+# 6c0677df0917467dbf0927ad53c70859
+# 14f18389b7ad431cad97054748e80d01
+#: ../../source/rnotes.rst:2181 ../../source/rnotes.rst:3103
+msgid "Restart libvirtd."
+msgstr ""
+
+# 59e801d0ff0e42e9b908096e9b5a2062
+# 3bb319ee2e3f43719b09beb5f4d34eaa
+#: ../../source/rnotes.rst:2197 ../../source/rnotes.rst:3119
+msgid ""
+"When the Management Server is up and running, log in to the CloudStack UI "
+"and restart the virtual router for proper functioning of all the features."
+msgstr ""
+
+# 20f728fcbbd9438086424d593e216d79
+#: ../../source/rnotes.rst:2203
+msgid ""
+"Log in to the CloudStack UI as administrator, and check the status of the "
+"hosts. All hosts should come to Up state (except those that you know to be "
+"offline). You may need to wait 20 or 30 minutes, depending on the number of "
+"hosts."
+msgstr ""
+
+# 241d2aa9891f408790433893448b144f
+#: ../../source/rnotes.rst:2208
+msgid ""
+"Troubleshooting: If login fails, clear your browser cache and reload the "
+"page."
+msgstr ""
+
+# 43b500c7cce54508bdaeb5e51fc1a33b
+#: ../../source/rnotes.rst:2210
+msgid "Do not proceed to the next step until the hosts show in Up state."
+msgstr ""
+
+# cfa256927ea946a88f88826d49bfa779
+#: ../../source/rnotes.rst:2214
+msgid "If you are upgrading from 3.0.x, perform the following:"
+msgstr ""
+
+# 5124cdeeb6af42268826554aa614f454
+#: ../../source/rnotes.rst:2218
+msgid ""
+"Ensure that the admin port is set to 8096 by using the "
+"\"integration.api.port\" global parameter."
+msgstr ""
+
+# 0411036b58574b94ab1ed659570c295c
+#: ../../source/rnotes.rst:2221
+msgid ""
+"This port is used by the cloud-sysvmadm script at the end of the upgrade "
+"procedure. For information about how to set this parameter, see \"Setting "
+"Global Configuration Parameters\" in the Installation Guide."
+msgstr ""
+
+# 176d29df7a7c40b7bc206569b6219a6a
+#: ../../source/rnotes.rst:2228
+msgid "Restart the Management Server."
+msgstr ""
+
+# 5566efe7e7024e038d8e10e4668e527d
+#: ../../source/rnotes.rst:2230
+msgid ""
+"If you don't want the admin port to remain open, you can set it to null "
+"after the upgrade is done and restart the management server."
+msgstr ""
+
+# b12a8c95a4684dc980a18b97519d555b
+#: ../../source/rnotes.rst:2234
+msgid ""
+"Run the ``cloudstack-sysvmadm`` script to stop, then start, all Secondary "
+"Storage VMs, Console Proxy VMs, and virtual routers. Run the script once on "
+"each management server. Substitute your own IP address of the MySQL "
+"instance, the MySQL user to connect as, and the password to use for that "
+"user. In addition to those parameters, provide the ``-c`` and ``-r`` "
+"arguments. For example:"
+msgstr ""
+
+# f3a9c0911690431ba39dd6d5d29cbcb5
+#: ../../source/rnotes.rst:2241
+msgid ""
+"``# nohup cloudstack-sysvmadm -d 192.168.1.5 -u cloud -p password -c -r > "
+"sysvm.log 2>&1 &``"
+msgstr ""
+
+# 5cdd5748449243d6b6854c3569b11961
+#: ../../source/rnotes.rst:2243
+msgid "``# tail -f sysvm.log``"
+msgstr ""
+
+# c6c35f1a472746a5b280f5243f7ca483
+# ea4304f6924c4fb8ae65904191b11ad4
+#: ../../source/rnotes.rst:2245 ../../source/rnotes.rst:3150
+msgid ""
+"This might take up to an hour or more to run, depending on the number of "
+"accounts in the system."
+msgstr ""
+
+# 4bbd312624104a61ae9c776827d49ed6
+#: ../../source/rnotes.rst:2250
+msgid ""
+"If needed, upgrade all Citrix XenServer hypervisor hosts in your cloud to a "
+"version supported by CloudStack 4.3. The supported versions are XenServer "
+"5.6 SP2 and 6.0.2. Instructions for upgrade can be found in the CloudStack "
+"4.3 Installation Guide under \"Upgrading XenServer Versions.\""
+msgstr ""
+
+# 61e3d7fc35a64e39a1c0126e30aa9f36
+#: ../../source/rnotes.rst:2258
+msgid ""
+"Now apply the XenServer hotfix XS602E003 (and any other needed hotfixes) to "
+"XenServer v6.0.2 hypervisor hosts."
+msgstr ""
+
+# 2b43c0fdef414981a2c74e337540748d
+# 66ecdcd2c3d347329b52cbc5d9c18143
+#: ../../source/rnotes.rst:2263 ../../source/rnotes.rst:3236
+msgid "Disconnect the XenServer cluster from CloudStack."
+msgstr ""
+
+# b4f42bd432054b93a4e458abeb8be1b3
+# 9fbe25aec0cb4dd6b085da9b2db82f2b
+#: ../../source/rnotes.rst:2265 ../../source/rnotes.rst:3238
+msgid ""
+"In the left navigation bar of the CloudStack UI, select Infrastructure. "
+"Under Clusters, click View All. Select the XenServer cluster and click "
+"Actions - Unmanage."
+msgstr ""
+
+# 0a388b8fae49416e8c12288175689189
+# 8d4ecaddee81413aaa9ac9fb0eef3260
+#: ../../source/rnotes.rst:2269 ../../source/rnotes.rst:3242
+msgid ""
+"This may fail if there are hosts not in one of the states Up, Down, "
+"Disconnected, or Alert. You may need to fix that before unmanaging this "
+"cluster."
+msgstr ""
+
+# be4bab92baa048a1a64dbcaf3979f1b8
+# b5e3cd4c03914aceb35590d6b2c02390
+#: ../../source/rnotes.rst:2273 ../../source/rnotes.rst:3246
+msgid ""
+"Wait until the status of the cluster has reached Unmanaged. Use the "
+"CloudStack UI to check on the status. When the cluster is in the unmanaged "
+"state, there is no connection to the hosts in the cluster."
+msgstr ""
+
+# 701d735a313646168e9258e68406bd59
+# 3852ebac77a44424a5d3d220ab53ad7f
+#: ../../source/rnotes.rst:2280 ../../source/rnotes.rst:3253
+msgid "To clean up the VLAN, log in to one XenServer host and run:"
+msgstr ""
+
+# 7aef1179327b48fb9d239fb9abb53494
+#: ../../source/rnotes.rst:2282
+msgid "``/opt/xensource/bin/cloud-clean-vlan.sh``"
+msgstr ""
+
+# 16a41fb12fb348b2aef8eef44201dc09
+#: ../../source/rnotes.rst:2286
+msgid ""
+"Now prepare the upgrade by running the following on one XenServer host:"
+msgstr ""
+
+# 2e5c5805788d4619be1bd88edd6d0f8b
+#: ../../source/rnotes.rst:2289
+msgid "``/opt/xensource/bin/cloud-prepare-upgrade.sh``"
+msgstr ""
+
+# f9486dd60039428eb666ccb36df33df2
+#: ../../source/rnotes.rst:2291
+msgid ""
+"If you see a message like \"can't eject CD\", log in to the VM and unmount "
+"the CD, then run this script again."
+msgstr ""
+
+# 1b90ef07720649ef8be857a6b8613995
+#: ../../source/rnotes.rst:2296
+msgid ""
+"Upload the hotfix to the XenServer hosts. Always start with the Xen pool "
+"master, then the slaves. Using your favorite file copy utility (e.g. "
+"WinSCP), copy the hotfixes to the host. Place them in a temporary folder "
+"such as /tmp."
+msgstr ""
+
+# 95579949c0c0468f9fb5a886c0de0067
+# b9c190b4fd614d0596e6cf2a21762978
+#: ../../source/rnotes.rst:2301 ../../source/rnotes.rst:3278
+msgid "On the Xen pool master, upload the hotfix with this command:"
+msgstr ""
+
+# 79193bd7beb24dad8e02baea8f8fc9e1
+#: ../../source/rnotes.rst:2303
+msgid "``xe patch-upload file-name=XS602E003.xsupdate``"
+msgstr ""
+
+# cd7814430ea74a93a70c8f47170bd22d
+# b14b4d4a191a482bb52ea5f049bceac4
+#: ../../source/rnotes.rst:2305 ../../source/rnotes.rst:3284
+msgid ""
+"Make a note of the output from this command, which is a UUID for the hotfix "
+"file. You'll need it in another step later."
+msgstr ""
+
+# eebe6b8f5f8a4a0c8070cb916408f131
+# d73f4217d05a41aeae87769a8d70aaf7
+#: ../../source/rnotes.rst:2308 ../../source/rnotes.rst:3287
+msgid ""
+"(Optional) If you are applying other hotfixes as well, you can repeat the "
+"commands in this section with the appropriate hotfix number. For example, "
+"XS602E004.xsupdate."
+msgstr ""
+
+# 2463a45ebed644d98aa875979171a856
+# ea165db83e0543f3bb9bf43ee31f1b1f
+#: ../../source/rnotes.rst:2312 ../../source/rnotes.rst:3291
+msgid ""
+"Manually live migrate all VMs on this host to another host. First, get a "
+"list of the VMs on this host:"
+msgstr ""
+
+# 097871715cba4ed3a1430cfd45bf432e
+#: ../../source/rnotes.rst:2315
+msgid "``# xe vm-list``"
+msgstr ""
+
+# 91a6615ab8044e81816572579377c718
+# 2fecd03a5f7c4b69ad918cffe23ee336
+#: ../../source/rnotes.rst:2317 ../../source/rnotes.rst:3298
+msgid ""
+"Then use this command to migrate each VM. Replace the example host name and "
+"VM name with your own:"
+msgstr ""
+
+# ed5ae637635a478da7def0f58b94eb48
+#: ../../source/rnotes.rst:2320
+msgid "``# xe vm-migrate live=true host=host-name`` vm=\\ *``VM-name``*"
+msgstr ""
+
+# cdcae2f3667941289d57e72fed7dfa95
+# 1204a1f920a54d19951f8fc3b0ca2d3f
+#: ../../source/rnotes.rst:2322 ../../source/rnotes.rst:3305
+msgid ""
+"**Troubleshooting:** If you see a message like \"You attempted an operation "
+"on a VM which requires PV drivers to be installed but the drivers were not "
+"detected,\" run: ``/opt/xensource/bin/make_migratable.sh b6cf79c8-02ee-050b-"
+"922f-49583d9f1a14``."
+msgstr ""
+
+# 3de97a19518c446c9c3c24206b1891f4
+# dc7e8ff7538740fd8931578db081c519
+#: ../../source/rnotes.rst:2326 ../../source/rnotes.rst:3309
+msgid "Apply the hotfix. First, get the UUID of this host:"
+msgstr ""
+
+# 438b1e95684647569c3783ca16ce0605
+# 6a54b573120547b9b5079d7edb53f67d
+#: ../../source/rnotes.rst:2332 ../../source/rnotes.rst:3313
+msgid ""
+"Then use the following command to apply the hotfix. Replace the example host"
+" UUID with the current host ID, and replace the hotfix UUID with the output "
+"from the patch-upload command you ran on this machine earlier. You can also "
+"get the hotfix UUID by running xe patch-list."
+msgstr ""
+
+# c8ec6b43de33435d85c0053b0105b112
+# 4637156a9b74469299c17305a87ac225
+#: ../../source/rnotes.rst:2344 ../../source/rnotes.rst:3323
+msgid ""
+"Copy the following files from the CloudStack Management Server to the host."
+msgstr ""
+
+# 8bab7909084144539d7f3f0d96f5410d
+# f0830d516fe8489a8e14f4cc87d3bd0b
+#: ../../source/rnotes.rst:2349 ../../source/rnotes.rst:3327
+msgid "Copy from here..."
+msgstr ""
+
+# d661c3f6488e4437bcad12807e868ba6
+# c65616039e844df49a2c66a9e72fab4d
+#: ../../source/rnotes.rst:2349 ../../source/rnotes.rst:3327
+msgid "...to here"
+msgstr ""
+
+# 5d2066c046d54230a20ba472410c9cca
+#: ../../source/rnotes.rst:2351
+msgid ""
+"/usr/lib64/cloud/common /scripts/vm/hypervisor/ xenserver/xenserver60/N "
+"FSSR.py"
+msgstr ""
+
+# 1782bbb0a4484bfda837b67ed08637f5
+#: ../../source/rnotes.rst:2351
+msgid "/opt/xensource/sm/NFSSR.py"
+msgstr ""
+
+# 9083b6c4d0a84550b56d29048de163fd
+#: ../../source/rnotes.rst:2356
+msgid ""
+"/usr/lib64/cloud/common /scripts/vm/hypervisor/ xenserver/setupxenserve r.sh"
+msgstr ""
+
+# cc60a777fdb84763928959eac1413256
+#: ../../source/rnotes.rst:2356
+msgid "/opt/xensource/bin/setupxenserver.sh"
+msgstr ""
+
+# 7f602a64a7384f1faeeb3cd3cb6906c8
+#: ../../source/rnotes.rst:2361
+msgid ""
+"/usr/lib64/cloud/common /scripts/vm/hypervisor/ xenserver/make\\_migrata "
+"ble.sh"
+msgstr ""
+
+# fd8304dd4b4745048ca492d792e96336
+#: ../../source/rnotes.rst:2361
+msgid "/opt/xensource/bin/make\\_migratable.sh"
+msgstr ""
+
+# 1189f098e11e4821b8dd6002d4701b37
+# 0b20faf71a1d4b488f695e1121d2fce8
+#: ../../source/rnotes.rst:2370 ../../source/rnotes.rst:3347
+msgid ""
+"(Only for hotfixes XS602E005 and XS602E007) You need to apply a new Cloud "
+"Support Pack."
+msgstr ""
+
+# 51314060eb4e4274a94556cf66d7b8f5
+# 6f0e38b936c146a88f18f01bd79fb137
+#: ../../source/rnotes.rst:2375 ../../source/rnotes.rst:3352
+msgid ""
+"Download the CSP software onto the XenServer host from one of the following "
+"links:"
+msgstr ""
+
+# 7960ce9d01764dca84c420221f5ac947
+# 2b5b6fb5241d45ca94ee8aee0c067700
+#: ../../source/rnotes.rst:2378 ../../source/rnotes.rst:3355
+msgid ""
+"For hotfix XS602E005: "
+"`http://coltrane.eng.hq.xensource.com/release/XenServer-6.x/XS-6.0.2/hotfixes/XS602E005/56710"
+"/xe-phase-2/xenserver-cloud-supp.tgz "
+"<http://coltrane.eng.hq.xensource.com/release/XenServer-6.x/XS-6.0.2/hotfixes/XS602E005/56710"
+"/xe-phase-2/xenserver-cloud-supp.tgz>`__"
+msgstr ""
+
+# 93f404dfecb845f7a295abed79cd2bdc
+# 1e9987f14ee140caab3cd9ac80fb3d70
+#: ../../source/rnotes.rst:2381 ../../source/rnotes.rst:3358
+msgid ""
+"For hotfix XS602E007: "
+"`http://coltrane.eng.hq.xensource.com/release/XenServer-6.x/XS-6.0.2/hotfixes/XS602E007/57824"
+"/xe-phase-2/xenserver-cloud-supp.tgz "
+"<http://coltrane.eng.hq.xensource.com/release/XenServer-6.x/XS-6.0.2/hotfixes/XS602E007/57824"
+"/xe-phase-2/xenserver-cloud-supp.tgz>`__"
+msgstr ""
+
+# 5487658881254252bc032a418bc9d211
+# d5d3595872834a30b69f2a97f934a6b6
+#: ../../source/rnotes.rst:2386 ../../source/rnotes.rst:3363
+msgid "Extract the file:"
+msgstr ""
+
+# 10aadbef588b4906aa4411610fff2b38
+# 41fba79ec98c4ba9bb33a5ece8089e84
+#: ../../source/rnotes.rst:2394 ../../source/rnotes.rst:3369
+msgid "Run the following script:"
+msgstr ""
+
+# 304c43ec19654d4facc909cee84b878e
+# 6f36c01dad0c4038b06f62939ceb97c4
+#: ../../source/rnotes.rst:2402 ../../source/rnotes.rst:3375
+msgid ""
+"If the XenServer host is part of a zone that uses basic networking, disable "
+"Open vSwitch (OVS):"
+msgstr ""
+
+# 196938b763f24a729f0d5fc34034cf8d
+# 97f83d0655ca49899c2f7b23cf07100d
+#: ../../source/rnotes.rst:2411 ../../source/rnotes.rst:3382
+msgid "Reboot this XenServer host."
+msgstr ""
+
+# 2b44592533884e89a228bd0a5f8e8a24
+# c82ea223be1d4b64adaed5f89d77845f
+# ba507e290ab84df6bee757006448475b
+# 723c48dca8094e9da7624f83d2ac56c7
+#: ../../source/rnotes.rst:2415 ../../source/rnotes.rst:2425
+#: ../../source/rnotes.rst:3386 ../../source/rnotes.rst:3394
+msgid "Run the following:"
+msgstr ""
+
+# 60d0028a822d4455a2ef0e71a774fc89
+# 3c2b4eb2c1a34738a8fee6a813020cc8
+#: ../../source/rnotes.rst:2421 ../../source/rnotes.rst:3390
+msgid ""
+"If the message \"mv: cannot stat \\`/etc/cron.daily/logrotate': No such file"
+" or directory\" appears, you can safely ignore it."
+msgstr ""
+
+# e365729bdd0a43d98ca4aa6df76a080a
+# 292dce1c5566443db1f36434502cbe40
+#: ../../source/rnotes.rst:2433 ../../source/rnotes.rst:3402
+msgid ""
+"On each slave host in the Xen pool, repeat these steps, starting from "
+"\"manually live migrate VMs.\""
+msgstr ""
+
+# 53aa4ba520af4d32a111c7bdd061c7f6
+#: ../../source/rnotes.rst:2436
+msgid ""
+"**Troubleshooting Tip:** If passwords which you know to be valid appear not "
+"to work after upgrade, or other UI issues are seen, try clearing your "
+"browser cache and reloading the UI page."
+msgstr ""
+
+# 82f67a0f08f74ea0b372cfc3d9798cff
+#: ../../source/rnotes.rst:2439
+msgid "Upgrade from 2.2.14 to 4.3"
+msgstr ""
+
+# 8dd5152530dc4c448bc7ca2147bb3f58
+#: ../../source/rnotes.rst:2443
+msgid ""
+"Ensure that you query your IPaddress usage records and process them; for "
+"example, issue invoices for any usage that you have not yet billed users "
+"for."
+msgstr ""
+
+# 08a3e11c4ac84d15a5539ea1a29e5540
+#: ../../source/rnotes.rst:2447
+msgid ""
+"Starting in 3.0.2, the usage record format for IP addresses is the same as "
+"the rest of the usage types. Instead of a single record with the assignment "
+"and release dates, separate records are generated per aggregation period "
+"with start and end dates. After upgrading to 4.3, any existing IP address "
+"usage records in the old format will no longer be available."
+msgstr ""
+
+# 82d3912ade2e4425b10822ef75644184
+#: ../../source/rnotes.rst:2456
+msgid ""
+"If you are using version 2.2.0 - 2.2.13, first upgrade to 2.2.14 by using "
+"the instructions in the `2.2.14 Release Notes "
+"<http://download.cloud.com/releases/2.2.0/CloudStack2.2.14ReleaseNotes.pdf>`__."
+msgstr ""
+
+# 43af6a2f821148dc933817dda7004642
+#: ../../source/rnotes.rst:2460
+msgid ""
+"**KVM Hosts:** If KVM hypervisor is used in your cloud, be sure you "
+"completed the step to insert a valid username and password into the "
+"host\\_details table on each KVM node as described in the 2.2.14 Release "
+"Notes. This step is critical, as the database will be encrypted after the "
+"upgrade to 4.3."
+msgstr ""
+
+# 165a6cb6d6d14af88d88b0b78f71157f
+#: ../../source/rnotes.rst:2464
+msgid ""
+"While running the 2.2.14 system, log in to the UI as root administrator."
+msgstr ""
+
+# 1f8e9d1a6daa49ee9369d371b139cfd1
+#: ../../source/rnotes.rst:2469
+msgid ""
+"Using the UI, add a new System VM template for each hypervisor type that is "
+"used in your cloud. In each zone, add a system VM template for each "
+"hypervisor used in that zone"
+msgstr ""
+
+# 61df5a92c7374826b61d112059dfcf30
+#: ../../source/rnotes.rst:2489
+msgid ""
+"In the Register template dialog box, specify the following values depending "
+"on the hypervisor type (do not change these):"
+msgstr ""
+
+# cf7180ae32be4c09baac3d08c8d8592f
+#: ../../source/rnotes.rst:2575
+msgid ""
+"Watch the screen to be sure that the template downloads successfully and "
+"enters the READY state. Do not proceed until this is successful"
+msgstr ""
+
+# abd7c11dce0748e393edeabe2b1a3c88
+#: ../../source/rnotes.rst:2580
+msgid ""
+"**WARNING**: If you use more than one type of hypervisor in your cloud, be "
+"sure you have repeated these steps to download the system VM template for "
+"each hypervisor type. Otherwise, the upgrade will fail."
+msgstr ""
+
+# 944b4efebb274b4b9168b8c9bc07cd2d
+#: ../../source/rnotes.rst:2677
+msgid ""
+"If you are using Ubuntu, follow this procedure to upgrade your packages. If "
+"not, skip to step `13 <#upgrade-rpm-packages-22>`__."
+msgstr ""
+
+# 5621f0bde6ef435598eb9f26e3dad529
+#: ../../source/rnotes.rst:2727
+msgid ""
+"On KVM hosts, you will need to manually install the ``cloudstack-agent`` "
+"package:"
+msgstr ""
+
+# 203132db7f3948499d31bb3eb0057291
+#: ../../source/rnotes.rst:2789
+msgid ""
+"If you are using CentOS or RHEL, follow this procedure to upgrade your "
+"packages. If not, skip to step `14 <#correct-components-xml-22>`__."
+msgstr ""
+
+# 690f899c6bd24183860a840ddf554d44
+#: ../../source/rnotes.rst:2871
+msgid ""
+"If you have made changes to your existing copy of the file components.xml in"
+" your previous-version CloudStack installation, the changes will be "
+"preserved in the upgrade. However, you need to do the following steps to "
+"place these changes in a new version of the file which is compatible with "
+"version 4.0.0-incubating."
+msgstr ""
+
+# b2fef2e295cf40a6b3777a62e5e8dd89
+#: ../../source/rnotes.rst:2877
+msgid ""
+"How will you know whether you need to do this? If the upgrade output in the "
+"previous step included a message like the following, then some custom "
+"content was found in your old components.xml, and you need to merge the two "
+"files:"
+msgstr ""
+
+# 28092dbc6a1e4c8b8b40af19e0361a7a
+#: ../../source/rnotes.rst:2886
+msgid ""
+"Make a backup copy of your ``/etc/cloud/management/components.xml`` file. "
+"For example:"
+msgstr ""
+
+# ce76e70e3d0d4085b429224f3c46f5f0
+#: ../../source/rnotes.rst:2904
+msgid ""
+"Merge your changes from the backup file into the new components.xml file."
+msgstr ""
+
+# 5d31708084ea431cb32c6de017984b9d
+#: ../../source/rnotes.rst:2913
+msgid ""
+"After upgrading to 4.3, API clients are expected to send plain text "
+"passwords for login and user creation, instead of MD5 hash. If API client "
+"changes are not acceptable, following changes are to be made for backward "
+"compatibility:"
+msgstr ""
+
+# 3e13a458fcec46348d78d6a05c0a73f2
+#: ../../source/rnotes.rst:2936
+msgid ""
+"PlainTextUserAuthenticator works the same way MD5UserAuthenticator worked "
+"prior to 4.2."
+msgstr ""
+
+# 977e0462a4514e8290c4f6efb24ffbc6
+#: ../../source/rnotes.rst:2941
+msgid ""
+"If you have made changes to your existing copy of the "
+"``/etc/cloud/management/db.properties`` file in your previous-version "
+"CloudStack installation, the changes will be preserved in the upgrade. "
+"However, you need to do the following steps to place these changes in a new "
+"version of the file which is compatible with this version."
+msgstr ""
+
+# 6f3fecf7bee440819bd35439052e7134
+#: ../../source/rnotes.rst:2950
+msgid ""
+"Make a backup copy of your file ``/etc/cloud/management/db.properties``. For"
+" example:"
+msgstr ""
+
+# 1e4702a05d304ef4a3d18a310670413b
+#: ../../source/rnotes.rst:2959
+msgid ""
+"Copy ``/etc/cloud/management/db.properties.rpmnew`` to create a new "
+"``/etc/cloud/management/db.properties``:"
+msgstr ""
+
+# 2a689fd4c8b34f159bbccda75eea3b44
+#: ../../source/rnotes.rst:2968
+msgid ""
+"Merge your changes from the backup file into the new db.properties file."
+msgstr ""
+
+# 14c9f00e13384fe7818635db57ddebbe
+#: ../../source/rnotes.rst:2977
+msgid ""
+"On the management server node, run the following command. It is recommended "
+"that you use the command-line flags to provide your own encryption keys. See"
+" Password and Key Encryption in the Installation Guide."
+msgstr ""
+
+# 3f168b18c27443dd875c5adeb55a85a0
+#: ../../source/rnotes.rst:2986
+msgid ""
+"When used without arguments, as in the following example, the default "
+"encryption type and keys will be used:"
+msgstr ""
+
+# 33bee02a88e14c6f8726562c1066932f
+#: ../../source/rnotes.rst:2991
+msgid ""
+"(Optional) For encryption\\_type, use file or web to indicate the technique "
+"used to pass in the database encryption password. Default: file."
+msgstr ""
+
+# da3a05583c554e95a25b01ea4b2fab78
+#: ../../source/rnotes.rst:2997
+msgid ""
+"(Optional) For management\\_server\\_key, substitute the default key that is"
+" used to encrypt confidential parameters in the properties file. Default: "
+"password. It is highly recommended that you replace this with a more secure "
+"value"
+msgstr ""
+
+# d47187c0a6934275b49e5f7142bf2a49
+#: ../../source/rnotes.rst:3004
+msgid ""
+"(Optional) For database\\_key, substitute the default key that is used to "
+"encrypt confidential parameters in the CloudStack database. Default: "
+"password. It is highly recommended that you replace this with a more secure "
+"value."
+msgstr ""
+
+# a1b1f1666d0e4e5fa004939d7cb65ebb
+#: ../../source/rnotes.rst:3011
+msgid ""
+"Repeat steps 10 - 14 on every management server node. If you provided your "
+"own encryption key in step 14, use the same key on all other management "
+"servers."
+msgstr ""
+
+# d2b6a61b4d4c4ea4ac31966205b494e9
+#: ../../source/rnotes.rst:3024
+msgid ""
+"Wait until the databases are upgraded. Ensure that the database upgrade is "
+"complete. You should see a message like \"Complete! Done.\" After "
+"confirmation, start the other Management Servers one at a time by running "
+"the same command on each node."
+msgstr ""
+
+# d3aa8aeaac984b868f7bb6203777068c
+#: ../../source/rnotes.rst:3040
+msgid "(KVM only) Perform the following additional steps on each KVM host."
+msgstr ""
+
+# 7f58ac6f2a6546e984b291d14708aecd
+#: ../../source/rnotes.rst:3042
+msgid ""
+"These steps will not affect running guests in the cloud. These steps are "
+"required only for clouds using KVM as hosts and only on the KVM hosts."
+msgstr ""
+
+# a40f34aedd354e19b622dba6af947dc9
+#: ../../source/rnotes.rst:3048
+msgid ""
+"Configure your CloudStack package repositories as outlined in the "
+"Installation Guide"
+msgstr ""
+
+# 60b6f718e10b44b2932fe47305402e68
+#: ../../source/rnotes.rst:3061
+msgid ""
+"Update the agent software with one of the following command sets as "
+"appropriate."
+msgstr ""
+
+# d1c9b23bfd3047b3af0434ee9d2f4b81
+#: ../../source/rnotes.rst:3075
+msgid ""
+"Copy the contents of the ``agent.properties`` file to the new "
+"``agent.properties`` file by using the following command"
+msgstr ""
+
+# f29b1de1f5784d40a03f632bee5da0c8
+#: ../../source/rnotes.rst:3125
+msgid ""
+"Log in to the CloudStack UI as admin, and check the status of the hosts. All"
+" hosts should come to Up state (except those that you know to be offline). "
+"You may need to wait 20 or 30 minutes, depending on the number of hosts."
+msgstr ""
+
+# 5d312c8c705f4c878ea150dab52c575d
+#: ../../source/rnotes.rst:3130
+msgid ""
+"Do not proceed to the next step until the hosts show in the Up state. If the"
+" hosts do not come to the Up state, contact support."
+msgstr ""
+
+# 25837b241e564dd7a200dc22ed3e929b
+#: ../../source/rnotes.rst:3135
+msgid ""
+"Run the following script to stop, then start, all Secondary Storage VMs, "
+"Console Proxy VMs, and virtual routers."
+msgstr ""
+
+# ac2edfb7c37b4bf994275e773d12c5c4
+#: ../../source/rnotes.rst:3140
+msgid ""
+"Run the command once on one management server. Substitute your own IP "
+"address of the MySQL instance, the MySQL user to connect as, and the "
+"password to use for that user. In addition to those parameters, provide the "
+"\"-c\" and \"-r\" arguments. For example:"
+msgstr ""
+
+# 62fdd3c67b9b4b9cb1c6ecce251c6b5a
+#: ../../source/rnotes.rst:3155
+msgid ""
+"After the script terminates, check the log to verify correct execution:"
+msgstr ""
+
+# 47faf7f70b334ae98f3f1c7a670a311f
+#: ../../source/rnotes.rst:3162
+msgid "The content should be like the following:"
+msgstr ""
+
+# cf26992fc5ea49f8a46b7c97db3db2db
+#: ../../source/rnotes.rst:3175
+msgid ""
+"If you would like additional confirmation that the new system VM templates "
+"were correctly applied when these system VMs were rebooted, SSH into the "
+"System VM and check the version."
+msgstr ""
+
+# d907b5857e874ddb9e2685400bdaa324
+#: ../../source/rnotes.rst:3179
+msgid "Use one of the following techniques, depending on the hypervisor."
+msgstr ""
+
+# 47eeb152f7354386a945820cf565dd7d
+#: ../../source/rnotes.rst:3181
+msgid "**XenServer or KVM:**"
+msgstr ""
+
+# 4845c8f916aa46c8b0afb4d65839827a
+#: ../../source/rnotes.rst:3183
+msgid ""
+"SSH in by using the link local IP address of the system VM. For example, in "
+"the command below, substitute your own path to the private key used to log "
+"in to the system VM and your own link local IP."
+msgstr ""
+
+# fd4e4c86a1e44bb184899f9b2f2a2215
+#: ../../source/rnotes.rst:3188
+msgid ""
+"Run the following commands on the XenServer or KVM host on which the system "
+"VM is present:"
+msgstr ""
+
+# 9fb15734392e492db8eec3bfd8db8456
+# 3d3c3fffab7445d18c30fce3880b7b1c
+#: ../../source/rnotes.rst:3196 ../../source/rnotes.rst:3215
+msgid "The output should be like the following:"
+msgstr ""
+
+# 6c25de5d57584107bb52f4b83298476e
+#: ../../source/rnotes.rst:3202
+msgid "**ESXi:**"
+msgstr ""
+
+# 1c5098a14ab44e28bbc70f3c2c27f1b8
+#: ../../source/rnotes.rst:3204
+msgid ""
+"SSH in using the private IP address of the system VM. For example, in the "
+"command below, substitute your own path to the private key used to log in to"
+" the system VM and your own private IP."
+msgstr ""
+
+# 1ea48fa0ab9a49cd99f56b64aeeff8cf
+#: ../../source/rnotes.rst:3208
+msgid "Run the following commands on the Management Server:"
+msgstr ""
+
+# 2de578dee3164dc9b979d4322ff158fe
+#: ../../source/rnotes.rst:3223
+msgid ""
+"If needed, upgrade all Citrix XenServer hypervisor hosts in your cloud to a "
+"version supported by CloudStack 4.0.0-incubating. The supported versions are"
+" XenServer 5.6 SP2 and 6.0.2. Instructions for upgrade can be found in the "
+"CloudStack 4.0.0-incubating Installation Guide."
+msgstr ""
+
+# 78d0d9395c604a4c805ddfec475f15bb
+#: ../../source/rnotes.rst:3231
+msgid ""
+"Apply the XenServer hotfix XS602E003 (and any other needed hotfixes) to "
+"XenServer v6.0.2 hypervisor hosts."
+msgstr ""
+
+# aaa65cee9a6f430bac41e5738591839d
+#: ../../source/rnotes.rst:3261
+msgid "Prepare the upgrade by running the following on one XenServer host:"
+msgstr ""
+
+# 7d50c3d8799447ff89c8c364eb70731d
+#: ../../source/rnotes.rst:3268
+msgid ""
+"If you see a message like \"can't eject CD\", log in to the VM and umount "
+"the CD, then run this script again."
+msgstr ""
+
+# 933303f89e9f4fdbb4693a289c7f28cb
+#: ../../source/rnotes.rst:3273
+msgid ""
+"Upload the hotfix to the XenServer hosts. Always start with the Xen pool "
+"master, then the slaves. Using your favorite file copy utility (e.g. "
+"WinSCP), copy the hotfixes to the host. Place them in a temporary folder "
+"such as /root or /tmp."
+msgstr ""
+
+# be996cb933684ad28c8d1a0fc11b51f3
+#: ../../source/rnotes.rst:3311
+msgid "``# xe host-list``"
+msgstr ""
+
+# 8b48b679d3034863a0cf33f4243733e0
+#: ../../source/rnotes.rst:3319
+msgid "``xe patch-apply host-uuid=host-uuid`` uuid=\\ *``hotfix-uuid``*"
+msgstr ""
+
+# fba81dae9aa141759a651c9681d452ca
+#: ../../source/rnotes.rst:3329
+msgid ""
+"``/usr/share/cloudstack -common/scripts/vm/hype rvisor/xenserver/xenser "
+"ver60/NFSSR.py``"
+msgstr ""
+
+# f17727fee8de4422b1854899f586b480
+#: ../../source/rnotes.rst:3329
+msgid "``/opt/xensource/sm/NFSSR.py``"
+msgstr ""
+
+# 8b641d51a32547f6bacbfdf2b6a2bf14
+#: ../../source/rnotes.rst:3334
+msgid ""
+"``/usr/share/cloudstack -common/scripts/vm/hype rvisor/xenserver/setupx "
+"enserver.sh``"
+msgstr ""
+
+# e5244c3c204643cbac950d4ef0a3e6c7
+# 15d387013eea4eb2b0bb7d051beed7ad
+#: ../../source/rnotes.rst:3334 ../../source/rnotes.rst:3388
+msgid "``/opt/xensource/bin/setupxenserver.sh``"
+msgstr ""
+
+# 46501ce5ab894a74ada10967a82596af
+#: ../../source/rnotes.rst:3339
+msgid ""
+"``/usr/lib64/cloudstack -common/scripts/vm/hype rvisor/xenserver/make_m "
+"igratable.sh``"
+msgstr ""
+
+# ae866867817d4b3aa8dee6324cad801d
+#: ../../source/rnotes.rst:3339
+msgid "``/opt/xensource/bin/make_migratable.sh``"
+msgstr ""
+
+# d1c878ddd25d437b89be1fe7935981a0
+#: ../../source/rnotes.rst:3365
+msgid "``# tar xf xenserver-cloud-supp.tgz``"
+msgstr ""
+
+# be55bf39cd3b47ae95be10e364d38068
+#: ../../source/rnotes.rst:3371
+msgid "``# xe-install-supplemental-pack xenserver-cloud-supp.iso``"
+msgstr ""
+
+# 511effdc9d26448290f575384afe0676
+#: ../../source/rnotes.rst:3378
+msgid "``# xe-switch-network-backend bridge``"
+msgstr ""

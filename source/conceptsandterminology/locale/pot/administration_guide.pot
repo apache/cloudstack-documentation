@@ -1,0 +1,1011 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache CloudStack
+# This file is distributed under the same license as the Apache CloudStack package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack 4.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-31 13:49-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../administration_guide.rst:2
+# f93ee7d929a94d1aa72564b1870baf22
+msgid "Apache CloudStack Administration Guide"
+msgstr ""
+
+#: ../../administration_guide.rst:5
+# 991318d1af8b4843b6b599dd8efc6fd3
+msgid "Backups"
+msgstr ""
+
+#: ../../administration_guide.rst:8
+# 917231f850524d1ba0f1eb122f495ede
+msgid "Monitoring"
+msgstr ""
+
+#: ../../administration_guide.rst:11
+# 7ad6e9ad4b414f67a22054dcabf5fd93
+msgid "SNMP"
+msgstr ""
+
+#: ../../administration_guide.rst:13
+# a61d4132541c4dc6aa18461706c73805
+msgid "CloudStack will send alerts for a number of"
+msgstr ""
+
+#: ../../administration_guide.rst:16
+# e9b1920a542846c4b6dd7350f24604ff
+msgid "Syslog"
+msgstr ""
+
+#: ../../administration_guide.rst:19
+# 79a88d29791844eb871f809b9f93b92a
+msgid "AMQP"
+msgstr ""
+
+#: ../../administration_guide.rst:22
+# 3b8760c6578349c3b77f6f4ea36bbd5a
+msgid "JMX"
+msgstr ""
+
+#: ../../administration_guide.rst:25
+# b39837fbf8d44f1782538f8355388429
+msgid "API Queries"
+msgstr ""
+
+#: ../../administration_guide.rst:29
+# 2e929ed37ab146e999d737a2a372af41
+msgid "Usage"
+msgstr ""
+
+#: ../../administration_guide.rst:32
+# 4c07a35f678448539c1b8e6cf720d6a0
+msgid "Tuning"
+msgstr ""
+
+#: ../../administration_guide.rst:35
+# 9eae43d89b224ca89534b9a12061f257
+msgid "Configuration Parameters"
+msgstr ""
+
+#: ../../administration_guide.rst:38
+# 3975ef164d6744b2a634522261de942b
+msgid "System Reliability and Availability"
+msgstr ""
+
+#: ../../administration_guide.rst:41
+# 2c563940c8a04c2dadce14ae1234e87a
+msgid "HA for Management Server"
+msgstr ""
+
+#: ../../administration_guide.rst:43
+# 8c3d685775114722b0287e3aa03c4f11
+msgid "The CloudStack Management Server should be deployed in a multi-node configuration such that it is not susceptible to individual server failures. The Management Server itself (as distinct from the MySQL database) is stateless and may be placed behind a load balancer."
+msgstr ""
+
+#: ../../administration_guide.rst:45
+# 98974855279a4cbaa867412f06e89600
+msgid "Normal operation of Hosts is not impacted by an outage of all Management Serves. All guest VMs will continue to work."
+msgstr ""
+
+#: ../../administration_guide.rst:47
+# b5c9018bcbc8477db8c34093fc16116c
+msgid "When the Management Server is down, no new VMs can be created, and the end user and admin UI, API, dynamic load distribution, and HA will cease to work."
+msgstr ""
+
+#: ../../administration_guide.rst:50
+# 5fc98a91cc354695bb9eff610b8667e7
+msgid "Management Server Load Balancing"
+msgstr ""
+
+#: ../../administration_guide.rst:52
+# 84b4167f5b1a4b4c9744f07cff1bab35
+msgid "CloudStack can use a load balancer to provide a virtual IP for multiple Management Servers. The administrator is responsible for creating the load balancer rules for the Management Servers. The application requires persistence or stickiness across multiple sessions. The following chart lists the ports that should be load balanced and whether or not persistence is required."
+msgstr ""
+
+#: ../../administration_guide.rst:55
+# cd27881746f04a0d929b9b6efd8b3d32
+msgid "Source port"
+msgstr ""
+
+#: ../../administration_guide.rst:55
+# 91f8db675e8f450a8bcd25455b6bd233
+msgid "Destination port"
+msgstr ""
+
+#: ../../administration_guide.rst:55
+# 2ed27a6df81448a9aa9c47172789d416
+msgid "Protocol"
+msgstr ""
+
+#: ../../administration_guide.rst:55
+# 644cdfa1ecaa49d496e7178d9d07fc69
+msgid "Persistence Required?"
+msgstr ""
+
+#: ../../administration_guide.rst:57
+# b656bdc5be594529bb49cddceb0bda5e
+msgid "80 or 443"
+msgstr ""
+
+#: ../../administration_guide.rst:57
+# e16e25248cb14bae876a878e767125b0
+msgid "8080 (or 20400 with AJP)"
+msgstr ""
+
+#: ../../administration_guide.rst:57
+# ce20e784c0e24c4ea83294648499787e
+msgid "HTTP (or AJP)"
+msgstr ""
+
+#: ../../administration_guide.rst:57
+#: ../../administration_guide.rst:58
+# ab33be8dc5424aedb9ee5f24062b29c5
+# 46d9c33fc2274527b9346717f23cfad5
+msgid "Yes"
+msgstr ""
+
+#: ../../administration_guide.rst:58
+#: ../../administration_guide.rst:58
+# e9feebce20be4306bd10338e1ff06068
+# 11f22c09784940779d1699defd245efe
+msgid "8250"
+msgstr ""
+
+#: ../../administration_guide.rst:58
+# a791a4167bcb4daca73ecd1b64a23fa2
+msgid "TCP"
+msgstr ""
+
+#: ../../administration_guide.rst:61
+# 33d8b086229e4f19a53a623fb5e62a13
+msgid "In addition to above settings, the administrator is responsible for setting the 'host' global config value from the management server IP to load balancer virtual IP address. If the 'host' value is not set to the VIP for Port 8250 and one of your management servers crashes, the UI is still available but the system VMs will not be able to contact the management server."
+msgstr ""
+
+#: ../../administration_guide.rst:64
+# 2006569208ac4cf7bf748dff1cfe0953
+msgid "Limiting the Rate of API Requests"
+msgstr ""
+
+#: ../../administration_guide.rst:66
+# fcee3fe6cc9d43c0a398617ba6470d26
+msgid "You can limit the rate at which API requests can be placed for each account. This is useful to avoid malicious attacks on the Management Server, prevent performance degradation, and provide fairness to all accounts."
+msgstr ""
+
+#: ../../administration_guide.rst:68
+# 19fee786cade47c6a5592329e9b61745
+msgid "If the number of API calls exceeds the threshold, an error message is returned for any additional API calls. The caller will have to retry these API calls at another time."
+msgstr ""
+
+#: ../../administration_guide.rst:71
+# ad4394d6414847698ae7ba0e0f06ce30
+msgid "Configuring the API Request Rate"
+msgstr ""
+
+#: ../../administration_guide.rst:73
+# f1b90e13ad004a9d86dff559e7cddd6f
+msgid "To control the API request rate, use the following global configuration settings:"
+msgstr ""
+
+#: ../../administration_guide.rst:75
+# 9516f8c3a536423eaadf5546bc517da5
+msgid "api.throttling.enabled - Enable/Disable API throttling. By default, this setting is false, so API throttling is not enabled."
+msgstr ""
+
+#: ../../administration_guide.rst:76
+# b54b779ffe264d118f981c55fe99e7a7
+msgid "api.throttling.interval (in seconds) - Time interval during which the number of API requests is to be counted. When the interval has passed, the API count is reset to 0."
+msgstr ""
+
+#: ../../administration_guide.rst:77
+# a7bea7af86a04d71b340651cadc683c1
+msgid "api.throttling.max - Maximum number of APIs that can be placed within the api.throttling.interval period."
+msgstr ""
+
+#: ../../administration_guide.rst:78
+# 83fa5f527dd84379bd9b795c5b5312c6
+msgid "api.throttling.cachesize - Cache size for storing API counters. Use a value higher than the total number of accounts managed by the cloud. One cache entry is needed for each account, to store the running API total for that account."
+msgstr ""
+
+#: ../../administration_guide.rst:81
+# 20c51c7e8faf419484e834d822f70c51
+msgid "Limitations on API Throttling"
+msgstr ""
+
+#: ../../administration_guide.rst:83
+# 71af836eabc940d5bb07abee65674cb7
+msgid "The following limitations exist in the current implementation of this feature:"
+msgstr ""
+
+#: ../../administration_guide.rst:85
+# 9e18534ecf064499bb0a36dc67ac205b
+msgid "In a deployment with multiple Management Servers, the cache is not synchronized across them. In this case, CloudStack might not be able to ensure that only the exact desired number of API requests are allowed. In the worst case, the number of API calls that might be allowed is (number of Management Servers) * (api.throttling.max)."
+msgstr ""
+
+#: ../../administration_guide.rst:86
+# a96908c8874b46d9b7c8178344780dc7
+msgid "The API commands resetApiLimit and getApiLimit are limited to the Management Server where the API is invoked."
+msgstr ""
+
+#: ../../administration_guide.rst:89
+# 93858f39b7614989bc3678c8cd1df365
+msgid "HA-Enabled Virtual Machines"
+msgstr ""
+
+#: ../../administration_guide.rst:91
+# 0d6415d5b5574039a38efe8b1de02cf6
+msgid "The user can specify a virtual machine as HA-enabled. By default, all virtual router VMs and Elastic Load Balancing VMs are automatically configured as HA-enabled. When an HA-enabled VM crashes, CloudStack detects the crash and restarts the VM automatically within the same Availability Zone. HA is never performed across different Availability Zones. CloudStack has a conservative policy towards restarting VMs and ensures that there will never be two instances of the same VM running at the same time. The Management Server attempts to start the VM on another Host in the same cluster."
+msgstr ""
+
+#: ../../administration_guide.rst:93
+# 486b5760db6f46c3af439c515638845f
+msgid "VM HA is not supported when the VM is using local storage."
+msgstr ""
+
+#: ../../administration_guide.rst:96
+# f75f84bdde994ee38e2355c7c09804cb
+msgid "Dedicated HA Hosts"
+msgstr ""
+
+#: ../../administration_guide.rst:98
+# 4afa4063f74d44709ca6f06c01f4ef5e
+msgid "One or more hosts can be designated for use only by HA-enabled VMs that are restarting due to a host failure. Setting up a pool of such dedicated HA hosts as the recovery destination for all HA-enabled VMs is useful to:"
+msgstr ""
+
+#: ../../administration_guide.rst:100
+# c85d9a411f3d445fa32d5756aa4eb8b0
+msgid "Make it easier to determine which VMs have been restarted as part of the CloudStack high-availability function. If a VM is running on a dedicated HA host, then it must be an HA-enabled VM whose original host failed. (With one exception: It is possible for an administrator to manually migrate any VM to a dedicated HA host.)."
+msgstr ""
+
+#: ../../administration_guide.rst:101
+# e8278e9aa42f4badb54a36dcf4bbb83f
+msgid "Keep HA-enabled VMs from restarting on hosts which may be reserved for other purposes."
+msgstr ""
+
+#: ../../administration_guide.rst:103
+# b601599b35184733b326c909fcd39e4c
+msgid "The dedicated HA option is set through a special host tag when the host is created. To allow the administrator to dedicate hosts to only HA-enabled VMs, set the global configuration variable ha.tag to the desired tag (for example, \"ha_host\"), and restart the Management Server. Enter the value in the Host Tags field when adding the host(s) that you want to dedicate to HA-enabled VMs."
+msgstr ""
+
+#: ../../administration_guide.rst:106
+# 04fc21b488b04cbeb84c04decd054192
+msgid "Primary Storage Outage and Data Loss"
+msgstr ""
+
+#: ../../administration_guide.rst:108
+# abba717b117a4182a128d7d3da4ca9e5
+msgid "When a primary storage outage occurs the hypervisor immediately stops all VMs stored on that storage device. Guests that are marked for HA will be restarted as soon as practical when the primary storage comes back on line. With NFS, the hypervisor may allow the virtual machines to continue running depending on the nature of the issue. For example, an NFS hang will cause the guest VMs to be suspended until storage connectivity is restored.Primary storage is not designed to be backed up. Individual volumes in primary storage can be backed up using snapshots."
+msgstr ""
+
+#: ../../administration_guide.rst:111
+# 58deb58752c8404f988211162156aafe
+msgid "Secondary Storage Outage and Data Loss"
+msgstr ""
+
+#: ../../administration_guide.rst:113
+# c131fb29bcb44bac876dfd75bd2da66f
+msgid "For a Zone that has only one secondary storage server, a secondary storage outage will have feature level impact to the system but will not impact running guest VMs. It may become impossible to create a VM with the selected template for a user. A user may also not be able to save snapshots or examine/restore saved snapshots. These features will automatically be available when the secondary storage comes back online."
+msgstr ""
+
+#: ../../administration_guide.rst:115
+# 3f319f23eed9475f90dd4375c5b143e9
+msgid "Secondary storage data loss will impact recently added user data including templates, snapshots, and ISO images. Secondary storage should be backed up periodically. Multiple secondary storage servers can be provisioned within each zone to increase the scalability of the system."
+msgstr ""
+
+#: ../../administration_guide.rst:118
+# 63431ac28ab94015bc3d22a2c9aa5588
+msgid "Managing System VMs"
+msgstr ""
+
+#: ../../administration_guide.rst:120
+# 9cc6d4d767c94824b178fe69f6d3cdd6
+msgid "CloudStack uses several types of system virtual machines to perform tasks in the cloud. In general CloudStack manages these system VMs and creates, starts, and stops them as needed based on scale and immediate needs. However, the administrator should be aware of them and their roles to assist in debugging issues."
+msgstr ""
+
+#: ../../administration_guide.rst:122
+# 266cccfbc6e745ffacd810b2ff7f20c6
+msgid "You can configure the system.vm.random.password parameter to create a random system VM password to ensure higher security. If you reset the value for system.vm.random.password to true and restart the Management Server, a random password is generated and stored encrypted in the database. You can view the decrypted password under the system.vm.password global parameter on the CloudStack UI or by calling the listConfigurations API."
+msgstr ""
+
+#: ../../administration_guide.rst:125
+# 6e644c2ed32b473cb4385b23cefe3063
+msgid "The System VM Template"
+msgstr ""
+
+#: ../../administration_guide.rst:127
+# dae55d4f72894cdfb4f76d76684dcc89
+msgid "The System VMs come from a single template. The System VM has the following characteristics:"
+msgstr ""
+
+#: ../../administration_guide.rst:129
+# 4ca2782f2c2a47999695afbc38836c65
+msgid "Debian 6.0 (\"Squeeze\"), 2.6.32 kernel with the latest security patches from the Debian security APT repository"
+msgstr ""
+
+#: ../../administration_guide.rst:130
+# 3c22e6bff3f74fd9a021e96bae35f25f
+msgid "Has a minimal set of packages installed thereby reducing the attack surface"
+msgstr ""
+
+#: ../../administration_guide.rst:131
+# ea7e6186b6c0472098727daa064a051b
+msgid "32-bit for enhanced performance on Xen/VMWare"
+msgstr ""
+
+#: ../../administration_guide.rst:132
+# d9a9609f2bff4a49bdf88a77257782dd
+msgid "pvops kernel with Xen PV drivers, KVM virtio drivers, and VMware tools for optimum performance on all hypervisors"
+msgstr ""
+
+#: ../../administration_guide.rst:133
+# 99dccc1bfff645c8a364e8e49f0f6c21
+msgid "Xen tools inclusion allows performance monitoring"
+msgstr ""
+
+#: ../../administration_guide.rst:134
+# 50f216bb2fc0492c84ab67700014248e
+msgid "Latest versions of HAProxy, iptables, IPsec, and Apache from debian repository ensures improved security and speed"
+msgstr ""
+
+#: ../../administration_guide.rst:135
+# d114044a0adb4170a56fb3c8c214d032
+msgid "Latest version of JRE from Sun/Oracle ensures improved security and speed"
+msgstr ""
+
+#: ../../administration_guide.rst:138
+# 6a535f3f13ad438d9c47d244bdd057fa
+msgid "Accessing System VMs"
+msgstr ""
+
+#: ../../administration_guide.rst:140
+# 7a5c16c43c6247e48e18cd3e7fcd6495
+msgid "It may sometimes be necessary to access System VMs for diagnostics of certain issues, for example if you are experiencing SSVM (Secondary Storage VM) connection issues. Use the steps below in order to connect to the SSH console of a running System VM."
+msgstr ""
+
+#: ../../administration_guide.rst:142
+# f13f9e8ecc4148f18b10202f85506f55
+msgid "Accessing System VMs over the network requires the use of private keys and connecting to System VMs SSH Daemon on port 3922. XenServer/KVM Hypervisors store this key at /root/.ssh/id_rsa.cloud on each CloudStack agent. To access System VMs running on ESXi, the key is stored on the management server at /var/lib/cloudstack/management/.ssh/id_rsa."
+msgstr ""
+
+#: ../../administration_guide.rst:144
+# 1e8067437ee2421db9b197daa00bae7c
+msgid "Find the details of the System VM #. Log in with admin privileges to the CloudStack UI. #. Click Infrastructure, then System VMs, and then click the name of a running VM. #. Take a note of the 'Host', 'Private IP Address' and 'Link Local IP Address' of the System VM you wish to access."
+msgstr ""
+
+#: ../../administration_guide.rst:148
+# bd2ce6ef46d04462a075510c7534980b
+msgid "XenServer/KVM Hypervisors #. Connect to the Host of which the System VM is running. #. SSH to the 'Link Local IP Address' of the System VM from the Host on which the VM is running."
+msgstr ""
+
+#: ../../administration_guide.rst:151
+# 6433ce3a240d4b2b9c627bd2a5de1dfe
+msgid "Format: ssh -i <path-to-private-key> <link-local-ip> -p 3922 Example: root@faith:~# ssh -i /root/.ssh/id_rsa.cloud 169.254.3.93 -p 3922"
+msgstr ""
+
+#: ../../administration_guide.rst:153
+# de9f86caeb63454e8c576f34193cf7ab
+msgid "ESXi Hypervisors #. Connect to your CloudStack Management Server. #. ESXi users should SSH to the private IP address of the System VM."
+msgstr ""
+
+#: ../../administration_guide.rst:156
+# dcc9b190ecda432bbde1662354d32bef
+msgid "Format: ssh -i <path-to-private-key> <vm-private-ip> -p 3922 Example: root@management:~# ssh -i /var/lib/cloudstack/management/.ssh/id_rsa 172.16.0.250 -p 3922"
+msgstr ""
+
+#: ../../administration_guide.rst:160
+# 2e86ae8ea7464bbd9beeb726acb8b043
+msgid "Multiple System VM Support for VMware"
+msgstr ""
+
+#: ../../administration_guide.rst:162
+# 561c949006c243cf961bff0f079dfe07
+msgid "Every CloudStack zone has single System VM for template processing tasks such as downloading templates, uploading templates, and uploading ISOs. In a zone where VMware is being used, additional System VMs can be launched to process VMware-specific tasks such as taking snapshots and creating private templates. The CloudStack management server launches additional System VMs for VMware-specific tasks as the load increases. The management server monitors and weights all commands sent to these System VMs and performs dynamic load balancing and scaling-up of more System VMs."
+msgstr ""
+
+#: ../../administration_guide.rst:165
+# 912e4a1374ac4bf2925b070cb244ce2a
+msgid "Console Proxy"
+msgstr ""
+
+#: ../../administration_guide.rst:167
+# 22ad7a0de1064dda80e4f083405157f6
+msgid "The Console Proxy is a type of System Virtual Machine that has a role in presenting a console view via the web UI. It connects the user’s browser to the VNC port made available via the hypervisor for the console of the guest. Both the administrator and end user web UIs offer a console connection."
+msgstr ""
+
+#: ../../administration_guide.rst:169
+# e5867fc657414edaa8f94d3deee5fd49
+msgid "Clicking a console icon brings up a new window. The AJAX code downloaded into that window refers to the public IP address of a console proxy VM. There is exactly one public IP address allocated per console proxy VM. The AJAX application connects to this IP. The console proxy then proxies the connection to the VNC port for the requested VM on the Host hosting the guest."
+msgstr ""
+
+#: ../../administration_guide.rst:171
+# fea1c6871dc84d9a921bc61b226fa67b
+msgid "The console proxy VM will periodically report its active session count to the Management Server. The default reporting interval is five seconds. This can be changed through standard Management Server configuration with the parameter consoleproxy.loadscan.interval."
+msgstr ""
+
+#: ../../administration_guide.rst:173
+# f93efafb07bb4c65af3fd841829ed70d
+msgid "Assignment of guest VM to console proxy is determined by first determining if the guest VM has a previous session associated with a console proxy. If it does, the Management Server will assign the guest VM to the target Console Proxy VM regardless of the load on the proxy VM. Failing that, the first available running Console Proxy VM that has the capacity to handle new sessions is used."
+msgstr ""
+
+#: ../../administration_guide.rst:175
+# 79a72a9b6fba4469a648e9e7b4bca111
+msgid "Console proxies can be restarted by administrators but this will interrupt existing console sessions for users."
+msgstr ""
+
+#: ../../administration_guide.rst:178
+# 839f885b3021494684f423b34ea819ce
+msgid "Using a SSL Certificate for the Console Proxy"
+msgstr ""
+
+#: ../../administration_guide.rst:180
+# 13867cd7762344ab9077f325f8730cfa
+msgid "The console viewing functionality uses a dynamic DNS service under the domain name realhostip.com to assist in providing SSL security to console sessions. The console proxy is assigned a public IP address. In order to avoid browser warnings for mismatched SSL certificates, the URL for the new console window is set to the form of https://aaa-bbb-ccc-ddd.realhostip.com. You will see this URL during console session creation. CloudStack includes the realhostip.com SSL certificate in the console proxy VM. Of course, CloudStack cannot know about the DNS A records for our customers' public IPs prior to shipping the software. CloudStack therefore runs a dynamic DNS server that is authoritative for the realhostip.com domain. It maps the aaa-bbb-ccc-ddd part of the DNS name to the IP address aaa.bbb.ccc.ddd on lookups. This allows the browser to correctly connect to the console proxy's public IP, where it then expects and receives a SSL certificate for realhostip.com, and SSL is set up without browser warnings."
+msgstr ""
+
+#: ../../administration_guide.rst:183
+# 7bc985d7c4fa46998631086a174c7e33
+msgid "Changing the Console Proxy SSL Certificate and Domain"
+msgstr ""
+
+#: ../../administration_guide.rst:185
+# be495135cea0497eabd43f1977563093
+msgid "If the administrator prefers, it is possible for the URL of the customer's console session to show a domain other than realhostip.com. The administrator can customize the displayed domain by selecting a different domain and uploading a new SSL certificate and private key. The domain must run a DNS service that is capable of resolving queries for addresses of the form aaa-bbb-ccc-ddd.your.domain to an IPv4 IP address in the form aaa.bbb.ccc.ddd, for example, 202.8.44.1. To change the console proxy domain, SSL certificate, and private key:"
+msgstr ""
+
+#: ../../administration_guide.rst:187
+# 6e1c3859863545bca1234725d578d62c
+msgid "Set up dynamic name resolution or populate all possible DNS names in your public IP range into your existing DNS server with the format aaa-bbb-ccc-ddd.company.com -> aaa.bbb.ccc.ddd."
+msgstr ""
+
+#: ../../administration_guide.rst:188
+# ea592a9486d243eb998954bfcc5621cf
+msgid "Generate the private key and certificate signing request (CSR). When you are using openssl to generate private/public key pairs and CSRs, for the private key that you are going to paste into the CloudStack UI, be sure to convert it into PKCS#8 format."
+msgstr ""
+
+#: ../../administration_guide.rst:190
+# 75aacc2da9c4408caa2777a4b4c9a49d
+msgid "Generate a new 2048-bit private key::"
+msgstr ""
+
+#: ../../administration_guide.rst:192
+# a047f4c4f4ec402c926de521dd46a5cc
+msgid "openssl genrsa -des3 -out yourprivate.key 2048"
+msgstr ""
+
+#: ../../administration_guide.rst:194
+# 54f81ed070be40d48f5bed678a7eb8ed
+msgid "Generate a new certificate CSR::"
+msgstr ""
+
+#: ../../administration_guide.rst:196
+# 4260ff8e5ab7400cb292e890d7b0aa9d
+msgid "openssl req -new -key yourprivate.key -out yourcertificate.csr"
+msgstr ""
+
+#: ../../administration_guide.rst:198
+# a8c4e79660e34691a4a73a719fb9eb31
+msgid "Head to the website of your favorite trusted Certificate Authority, purchase an SSL certificate, and submit the CSR. You should receive a valid certificate in return"
+msgstr ""
+
+#: ../../administration_guide.rst:199
+# 29bb21dc37ce46f78fffa06e4b71302a
+msgid "Convert your private key format into PKCS#8 encrypted format.::"
+msgstr ""
+
+#: ../../administration_guide.rst:201
+# a2fa3e01cb89457190182d716691c200
+msgid "openssl pkcs8 -topk8 -in yourprivate.key -out yourprivate.pkcs8.encrypted.key"
+msgstr ""
+
+#: ../../administration_guide.rst:203
+# b62ad584d36048da8a20f050f4a18f85
+msgid "Convert your PKCS#8 encrypted private key into the PKCS#8 format that is compliant with CloudStack::"
+msgstr ""
+
+#: ../../administration_guide.rst:205
+# a5ccd5855fb5436696cb211da2ee0ba3
+msgid "openssl pkcs8 -in yourprivate.pkcs8.encrypted.key -out yourprivate.pkcs8.key"
+msgstr ""
+
+#: ../../administration_guide.rst:207
+# 7d5fd6db293b4d33afe9046cb296bb4d
+msgid "In the Update SSL Certificate screen of the CloudStack UI, paste the following: *. The certificate you've just generated. *. The private key you've just generated. *. The desired new domain name; for example, company.com"
+msgstr ""
+
+#: ../../administration_guide.rst:212
+# 6d79a146218c4624b5cf981d5bff6257
+msgid "4. The desired new domain name; for example, company.com This stops all currently running console proxy VMs, then restarts them with the new certificate and key. Users might notice a brief interruption in console availability."
+msgstr ""
+
+#: ../../administration_guide.rst:215
+# 8e998b147518419b8c5503db597b2855
+msgid "The Management Server generates URLs of the form \"aaa-bbb-ccc-ddd.company.com\" after this change is made. The new console requests will be served with the new DNS domain name, certificate, and key."
+msgstr ""
+
+#: ../../administration_guide.rst:218
+# d2d3d433bf244542bd961449d46e5899
+msgid "Virtual Router"
+msgstr ""
+
+#: ../../administration_guide.rst:220
+# 9b86999a5c224420bd803344df34468f
+msgid "The virtual router is a type of System Virtual Machine. The virtual router is one of the most frequently used service providers in CloudStack. The end user has no direct access to the virtual router. Users can ping the virtual router and take actions that affect it (such as setting up port forwarding), but users do not have SSH access into the virtual router."
+msgstr ""
+
+#: ../../administration_guide.rst:222
+# a70cb88cc6e3420cabb4f6491fc94ac2
+msgid "Virtual routers can be restarted by administrators, but this will interrupt public network access and other services for end users. A basic test in debugging networking issues is to attempt to ping the virtual router from a guest VM. Some of the characteristics of the virtual router are determined by its associated system service offering.."
+msgstr ""
+
+#: ../../administration_guide.rst:225
+# 1a9122077ee64356a9bba962146fa923
+msgid "Configuring the Virtual Router"
+msgstr ""
+
+#: ../../administration_guide.rst:227
+# 7580f3cac07348bc846c961a3f909830
+msgid "You can set the following: *. IP range *. Supported network services *. Default domain name for the network serviced by the virtual router *. Gateway IP address *. How often CloudStack fetches network usage statistics from CloudStack virtual routers. If you want to collect traffic metering data from the virtual router, set the global configuration parameter router.stats.interval. If you are not using the virtual router to gather network usage statistics, set it to 0."
+msgstr ""
+
+#: ../../administration_guide.rst:235
+# d6b114ce9869442589bdf6a3497ec9f2
+msgid "Upgrading a Virtual Router with System Service Offerings"
+msgstr ""
+
+#: ../../administration_guide.rst:237
+# e32118155eeb466d8480f0c1b7dd3722
+msgid "When CloudStack creates a virtual router, it uses default settings which are defined in a default system service offering. See Section 8.2, “System Service Offerings”. All the virtual routers in a single guest network use the same system service offering. You can upgrade the capabilities of the virtual router by creating and applying a custom system service offering. Define your custom system service offering. Associate the system service offering with a network offering. Apply the network offering to the network where you want the virtual routers to use the new system service offering."
+msgstr ""
+
+#: ../../administration_guide.rst:243
+# 601dda89c2494c4ab1bd253484d3e712
+msgid "Best Practices for Virtual Routers"
+msgstr ""
+
+#: ../../administration_guide.rst:245
+# 7a7205873af44801aeda6f66a69b801d
+msgid "Restarting a virtual router from a hypervisor console deletes all the iptables rules. To work around this issue, stop the virtual router and start it from the CloudStack UI."
+msgstr ""
+
+#: ../../administration_guide.rst:246
+# 454b3914655c456cad86c222d18f6b0c
+msgid "Do not use the destroyRouter API when only one router is available in the network, because restartNetwork API with the cleanup=false parameter can't recreate it later. If you want to destroy and recreate the single router available in the network, use the restartNetwork API with the cleanup=true parameter."
+msgstr ""
+
+#: ../../administration_guide.rst:249
+# 06dc6516cdef42669857d3cfe718cdcd
+msgid "Secondary Storage VM"
+msgstr ""
+
+#: ../../administration_guide.rst:251
+# 62c65c2618d843f9b268de2c88c8be0a
+msgid "In addition to the hosts, CloudStack’s Secondary Storage VM mounts and writes to secondary storage. Submissions to secondary storage go through the Secondary Storage VM. The Secondary Storage VM can retrieve templates and ISO images from URLs using a variety of protocols. The secondary storage VM provides a background task that takes care of a variety of secondary storage activities: downloading a new template to a Zone, copying templates between Zones, and snapshot backups. The administrator can log in to the secondary storage VM if needed."
+msgstr ""
+
+#: ../../administration_guide.rst:258
+# b2b7431b44ed44b98582c98087d894a7
+msgid "Storage Administration"
+msgstr ""
+
+#: ../../administration_guide.rst:261
+# 4d40f40b40294722a88f1949a46cbde9
+msgid "Hypervisor Host Management"
+msgstr ""
+
+#: ../../administration_guide.rst:264
+# 9a05a7311fa54e3e9926dc5f7cd573a3
+msgid "Maintenance mode"
+msgstr ""
+
+#: ../../administration_guide.rst:266
+# 0a40fb0dc55148c8b9150737a3838c80
+msgid "Maintenance mode makes a host unavailable to have new virtual machines allocated to it. It also starts a process by which running virtual machines are live migrated to other available hosts within the same cluster. It should be noted that the live migration is not universally perfect, and you may end up with recalcitrant virtual machines which are unable to be live migrated. This can be due to lack of hypervisor-specific tooling or other problems."
+msgstr ""
+
+#: ../../administration_guide.rst:269
+# 49b847172c8b4366b82efcce5987d880
+msgid "vCenter and Maintenance mode"
+msgstr ""
+
+#: ../../administration_guide.rst:271
+# 034dd713a7d44a43825529cca70afb32
+msgid "To enter maintenance mode on a vCenter host, both vCenter and CloudStack must be used in concert. CloudStack and vCenter have separate maintenance modes that work closely together."
+msgstr ""
+
+#: ../../administration_guide.rst:273
+# ffa262f627384c329ab46dfe92cb40cc
+msgid "Place the host into CloudStack's \"scheduled maintenance\" mode. This does not invoke the vCenter maintenance mode, but only causes VMs to be migrated off the host When the CloudStack maintenance mode is requested, the host first moves into the Prepare for Maintenance state. In this state it cannot be the target of new guest VM starts. Then all VMs will be migrated off the server. Live migration will be used to move VMs off the host. This allows the guests to be migrated to other hosts with no disruption to the guests. After this migration is completed, the host will enter the Ready for Maintenance mode."
+msgstr ""
+
+#: ../../administration_guide.rst:274
+# 75b75474bea1490ea5ea35271fd988a7
+msgid "Wait for the \"Ready for Maintenance\" indicator to appear in the UI."
+msgstr ""
+
+#: ../../administration_guide.rst:275
+# 3be72549ff1f4fd4a3c3b471f1a9865d
+msgid "Now use vCenter to perform whatever actions are necessary to maintain the host. During this time, the host cannot be the target of new VM allocations."
+msgstr ""
+
+#: ../../administration_guide.rst:276
+# 0c977a03a8644901bc53be37b0312ad1
+msgid "When the maintenance tasks are complete, take the host out of maintenance mode as follows: a. First use vCenter to exit the vCenter maintenance mode. This makes the host ready for CloudStack to reactivate it. b. Then use CloudStack's administrator UI to cancel the CloudStack maintenance mode When the host comes back online, the VMs that were migrated off of it may be migrated back to it manually and new VMs can be added."
+msgstr ""
+
+#: ../../administration_guide.rst:281
+# 6c1a9c2e7ff1400daa889815e4ffb33d
+msgid "XenServer Maintenance Mode"
+msgstr ""
+
+#: ../../administration_guide.rst:283
+# 805f4ccfdd5e40e88e3ccdd57585f19e
+msgid "XenServer, you can take a server offline temporarily by using the Maintenance Mode feature in XenCenter. When you place a server into Maintenance Mode, all running VMs are automatically migrated from it to another host in the same pool. If the server is the pool master, a new master will also be selected for the pool. While a server is Maintenance Mode, you cannot create or start any VMs on it."
+msgstr ""
+
+#: ../../administration_guide.rst:286
+# bcf2b628e6944e33bab4fb118d72de69
+msgid "To place a XenServer host in Maintenace Mode"
+msgstr ""
+
+#: ../../administration_guide.rst:288
+# be9fc81b21864113b444bcdfa60d8575
+msgid "In the Resources pane, select the server, then do one of the following: *. Right-click, then click Enter Maintenance Mode on the shortcut menu. *. On the Server menu, click Enter Maintenance Mode."
+msgstr ""
+
+#: ../../administration_guide.rst:291
+# d8fa3fc85b964c7981677d1619752eb0
+msgid "Click Enter Maintenance Mode."
+msgstr ""
+
+#: ../../administration_guide.rst:293
+# c0374cf7ce0d48559f5120e3d205f078
+msgid "The server's status in the Resources pane shows when all running VMs have been successfully migrated off the server."
+msgstr ""
+
+#: ../../administration_guide.rst:296
+# 1e19387e9ad04b7d94c1a7cf05e3a773
+msgid "To take a Xenserver host out of Maintenance mode"
+msgstr ""
+
+#: ../../administration_guide.rst:298
+# 94d2cbc337c64bdf8d607a5df92e98a5
+msgid "In the Resources pane, select the server, then do one of the following: *Right-click, then click Exit Maintenance Mode on the shortcut menu. *On the Server menu, click Exit Maintenance Mode."
+msgstr ""
+
+#: ../../administration_guide.rst:301
+# c9326e7208a64ca684a56a38cc7aa332
+msgid "Click Exit Maintenance Mode."
+msgstr ""
+
+#: ../../administration_guide.rst:304
+# ec570b7fa796494eafbaf074c90f322e
+msgid "Disabling and enabling Zones, Pods, and Clusters"
+msgstr ""
+
+#: ../../administration_guide.rst:306
+# 5694f1e98fe849d297e898a5da8648ac
+msgid "You can enable or disable a zone, pod, or cluster without permanently removing it from the cloud. This is useful for maintenance or when there are problems that make a portion of the cloud infrastructure unreliable. No new allocations will be made to a disabled zone, pod, or cluster until its state is returned to Enabled. When a zone, pod, or cluster is first added to the cloud, it is Disabled by default. To disable and enable a zone, pod, or cluster:"
+msgstr ""
+
+#: ../../administration_guide.rst:309
+# 83dc1490b2104f3bbf4e3639c0430c61
+msgid "Log in to the CloudStack UI as administrator"
+msgstr ""
+
+#: ../../administration_guide.rst:310
+#: ../../administration_guide.rst:431
+# 3ed8e3e52e234f45b1c0f052ca458bcc
+# cd6f4bb9146e4e9a9018c3066dacab5b
+msgid "In the left navigation bar, click Infrastructure."
+msgstr ""
+
+#: ../../administration_guide.rst:311
+# 5e006224fa21497ea7151f8cd9aae1bb
+msgid "In Zones, click View More."
+msgstr ""
+
+#: ../../administration_guide.rst:312
+# 4d77f0e634da42b9ae2447f2fd463d88
+msgid "If you are disabling or enabling a zone, find the name of the zone in the list, and click the Enable/Disable button."
+msgstr ""
+
+#: ../../administration_guide.rst:313
+# 6b2d8b9b33b444d7a0810e78cd39367d
+msgid "If you are disabling or enabling a pod or cluster, click the name of the zone that contains the pod or cluster."
+msgstr ""
+
+#: ../../administration_guide.rst:314
+# f3afc7444ff340848e9db06e1c2344e5
+msgid "Click the Compute tab."
+msgstr ""
+
+#: ../../administration_guide.rst:315
+# dbd6f2cda70a423e8fce05cbf8e07f34
+msgid "In the Pods or Clusters node of the diagram, click View All."
+msgstr ""
+
+#: ../../administration_guide.rst:316
+# 8b38f319abc447e880ee490e347ca82a
+msgid "Click the pod or cluster name in the list."
+msgstr ""
+
+#: ../../administration_guide.rst:317
+# fe5bc552f0c64f7797c894cf1412d2a7
+msgid "Click the Enable/Disable button."
+msgstr ""
+
+#: ../../administration_guide.rst:320
+# 96b1b42987f04136b94d358fe109e27d
+msgid "Removing hypervisor hosts"
+msgstr ""
+
+#: ../../administration_guide.rst:322
+# 21b14acd77c843d6b304b5e5ada65b2c
+msgid "Hosts can be removed from the cloud as needed. The procedure to remove a host depends on the hypervisor type."
+msgstr ""
+
+#: ../../administration_guide.rst:325
+# 5764a1f3b5504905ab2716b487b14b73
+msgid "Removing XenServer and KVM Hosts"
+msgstr ""
+
+#: ../../administration_guide.rst:326
+# 64851f97d4864165a918d783aacf2146
+msgid "A node cannot be removed from a cluster until it has been placed in maintenance mode. This will ensure that all of the VMs on it have been migrated to other Hosts. To remove a Host from CloudStack:"
+msgstr ""
+
+#: ../../administration_guide.rst:328
+# 8501b1b8ed96490c8f082644861760be
+msgid "Place the node in maintenance mode."
+msgstr ""
+
+#: ../../administration_guide.rst:329
+# 742504a2363043eda29d9583a580bbba
+msgid "For KVM, stop the cloud-agent service."
+msgstr ""
+
+#: ../../administration_guide.rst:330
+# 25e529a1ed534077b4554684f796e60a
+msgid "Use the UI option to remove the node."
+msgstr ""
+
+#: ../../administration_guide.rst:331
+# 3748d1e9df464087a1ffe1ff96240883
+msgid "Then you may power down the Host, re-use its IP address, re-install it, etc"
+msgstr ""
+
+#: ../../administration_guide.rst:334
+# 89d630d304df4b6da185b6f8838b61b9
+msgid "Removing vSphere Hosts"
+msgstr ""
+
+#: ../../administration_guide.rst:335
+# 1219da8f0bd7440190e8d553858df5f4
+msgid "To remove this type of host, first place it in maintenance mode, as described above. Then use CloudStack to remove the host. CloudStack will not direct commands to a host that has been removed using CloudStack. However, the host may still exist in the vCenter cluster."
+msgstr ""
+
+#: ../../administration_guide.rst:338
+# a0f69abb2cf4444c99110f98389cafc3
+msgid "Changing hypervisor host password"
+msgstr ""
+
+#: ../../administration_guide.rst:339
+# f2496529c2a74ac4bc7b4b7c41a8871c
+msgid "The password for a XenServer Node, KVM Node, or vSphere Node may be changed in the database. Note that all Nodes in a Cluster must have the same password. To change a hosts password:"
+msgstr ""
+
+#: ../../administration_guide.rst:342
+# 52f8f40fb2b042d395ff895d8275629a
+msgid "Identify all hosts in the cluster."
+msgstr ""
+
+#: ../../administration_guide.rst:343
+# ebc1674d6b164834ab5680e033835ee3
+msgid "Change the password on all hosts in the cluster. Now the password for the host and the password known to CloudStack will not match. Operations on the cluster will fail until the two passwords match."
+msgstr ""
+
+#: ../../administration_guide.rst:344
+# 5364fca0ca7e4a3c918da14795d570eb
+msgid "Get the list of host IDs for the host in the cluster where you are changing the password. You will need to access the database to determine these host IDs. For each hostname \"h\" (or vSphere cluster) that you are changing the password for, execute: ::"
+msgstr ""
+
+#: ../../administration_guide.rst:346
+# 5f9a5267e03246a0b8a4fe18c602cb11
+msgid "mysql> select id from cloud.host where name like '%h%';"
+msgstr ""
+
+#: ../../administration_guide.rst:348
+# 4d1c5ebe23a94d6d91adabbb787b83c9
+msgid "Update the passwords for the host in the database. In this example, we change the passwords for hosts with IDs 5, 10, and 12 to \"password\".::"
+msgstr ""
+
+#: ../../administration_guide.rst:350
+# 44c4b8a1b4874a33885b01d27e877d63
+msgid "mysql> update cloud.host set password='password' where id=5 or id=10 or id=12;"
+msgstr ""
+
+#: ../../administration_guide.rst:353
+# e80d3d60b8b24290920db5afafb13f4c
+msgid "Overprovisioning and Service Offering Limits"
+msgstr ""
+
+#: ../../administration_guide.rst:355
+# 1883429edbe74fdd8a5fb620aec5fdb6
+msgid "CPU and memory (RAM) over-provisioning factors can be set for each cluster to change the number of VMs that can run on each host in the cluster. This helps optimize the use of resources. By increasing the over-provisioning ratio, more resource capacity will be used. If the ratio is set to 1, no over-provisioning is done."
+msgstr ""
+
+#: ../../administration_guide.rst:357
+# 37b343a408374b90a7a4000a86cf66c1
+msgid "The administrator can also set global default over-provisioning ratios in the cpu.overprovisioning.factor and mem.overprovisioning.factor global configuration variables. The default value of these variables is 1: over-provisioning is turned off by default. Over-provisioning ratios are dynamically substituted in CloudStack's capacity calculations. For example:::"
+msgstr ""
+
+#: ../../administration_guide.rst:367
+# 10a7f91d1b664361837ca349ac15d8fe
+msgid "The administrator can specify a memory over-provisioning ratio, and can specify both CPU and memory over-provisioning ratios on a per-cluster basis. In any given cloud, the optimum number of VMs for each host is affected by such things as the hypervisor, storage, and hardware configuration. These may be different for each cluster in the same cloud. A single global over-provisioning setting can not provide the best utilization for all the different clusters in the cloud. It has to be set for the lowest common denominator. The per-cluster setting provides a finer granularity for better utilization of resources, no matter where the CloudStack placement algorithm decides to place a VM."
+msgstr ""
+
+#: ../../administration_guide.rst:370
+# b0413938593f4a7786b951b21e507d09
+msgid "The overprovisioning settings can be used along with dedicated resources (assigning a specific cluster to an account) to effectively offer different levels of service to different accounts. For example, an account paying for a more expensive level of service could be assigned to a dedicated cluster with an over-provisioning ratio of 1, and a lower-paying account to a cluster with a ratio of 2."
+msgstr ""
+
+#: ../../administration_guide.rst:372
+# 1aaa3fd0e30b4b059a45d437ea210c2e
+msgid "When a new host is added to a cluster, CloudStack will assume the host has the capability to perform the CPU and RAM over-provisioning which is configured for that cluster. It is up to the administrator to be sure the host is actually suitable for the level of over-provisioning which has been set."
+msgstr ""
+
+#: ../../administration_guide.rst:375
+# 69e7d2a62c294b1387f1bc52a47e9a2a
+msgid "Limitations on over-provisioning in KVM and XenServer"
+msgstr ""
+
+#: ../../administration_guide.rst:377
+# d0da750d0eac48eca9e90d923eebab99
+msgid "In XenServer, due to a constraint of this hypervisor, you can not use an over-provisioning factor greater than 4."
+msgstr ""
+
+#: ../../administration_guide.rst:379
+# cb6f018a43e24fea81857c044855d950
+msgid "KVM can not manage memory allocation to VMs dynamically. CloudStack sets the minimum and maximum amount of memory that a VM can use. The hypervisor adjusts the memory within the set limits based on the memory contention."
+msgstr ""
+
+#: ../../administration_guide.rst:382
+# fe616dbc701e4b61a912343f7be00b58
+msgid "Requirements for Over-Provisioning"
+msgstr ""
+
+#: ../../administration_guide.rst:384
+# 445d78119e204479b74e8418f43a6d37
+msgid "Several prerequisites are required in order for over-provisioning to function properly. The feature is dependent on the OS type, hypervisor capabilities, and certain scripts. It is the administrator's responsibility to ensure that these requirements are met."
+msgstr ""
+
+#: ../../administration_guide.rst:387
+# 0ffbd97c59c2417e8a097daf7b7d19c5
+msgid "Balloon Driver"
+msgstr ""
+
+#: ../../administration_guide.rst:389
+# 499993d9952a44ec935372610be1ba69
+msgid "All VMs should have a balloon driver installed in them. The hypervisor communicates with the balloon driver to free up and make the memory available to a VM."
+msgstr ""
+
+#: ../../administration_guide.rst:392
+#: ../../administration_guide.rst:412
+# 4b2a1ef88e894648b0ee154892e11076
+# 631a9ce321b249d8b30164201011194f
+msgid "XenServer"
+msgstr ""
+
+#: ../../administration_guide.rst:394
+# e5a221eef356494a85f9ff179af25612
+msgid "The balloon driver can be found as a part of xen pv or PVHVM drivers. The xen pvhvm drivers are included in upstream linux kernels 2.6.36+."
+msgstr ""
+
+#: ../../administration_guide.rst:397
+# 2e279386f6e64c04b48f7683628a149e
+msgid "VMware"
+msgstr ""
+
+#: ../../administration_guide.rst:399
+# 90e5b561b31e44a6b8d4ab785d75cfc2
+msgid "The balloon driver can be found as a part of the VMware tools. All the VMs that are deployed in a over-provisioned cluster should have the VMware tools installed."
+msgstr ""
+
+#: ../../administration_guide.rst:402
+# 17b7036f18dc4a279cbd09dc97d887b6
+msgid "KVM"
+msgstr ""
+
+#: ../../administration_guide.rst:404
+# 90644866fa4f42ba8eb2772327104c08
+msgid "All VMs are required to support the virtio drivers. These drivers are installed in all Linux kernel versions 2.6.25 and greater. The administrator must set CONFIG_VIRTIO_BALLOON=y in the virtio configuration."
+msgstr ""
+
+#: ../../administration_guide.rst:407
+# fb51035c29d44f61a1cd1ca69db4f08c
+msgid "Hypervisor capabilities"
+msgstr ""
+
+#: ../../administration_guide.rst:409
+# 3dc6760bd76a49fb82e221c82c02a49a
+msgid "The hypervisor must be capable of using the memory ballooning."
+msgstr ""
+
+#: ../../administration_guide.rst:414
+# a2c2cbb7fc304f1eaedc4f80bc0080a7
+msgid "The DMC (Dynamic Memory Control) capability of the hypervisor should be enabled. Only XenServer Advanced and above versions have this feature."
+msgstr ""
+
+#: ../../administration_guide.rst:417
+# 69e523e5c1a54ce6b70499c8e815d2df
+msgid "VMware, KVM"
+msgstr ""
+
+#: ../../administration_guide.rst:419
+# 4b9a57bcf0c44c0881b43f78263e659a
+msgid "Memory ballooning is supported by default."
+msgstr ""
+
+#: ../../administration_guide.rst:422
+# 842b46aac75e4b55bc95a2884df153b1
+msgid "Setting Over-Provisioning Rations"
+msgstr ""
+
+#: ../../administration_guide.rst:424
+# 8d093dbea4db42028ab4bf0469d67452
+msgid "There are two ways the root admin can set CPU and RAM over-provisioning ratios. First, the global configuration settings cpu.overprovisioning.factor and mem.overprovisioning.factor will be applied when a new cluster is created. Later, the ratios can be modified for an existing cluster."
+msgstr ""
+
+#: ../../administration_guide.rst:426
+# d585ebbb38104db185a30519f122ef38
+msgid "Only VMs deployed after the change are affected by the new setting. If you want VMs deployed before the change to adopt the new over-provisioning ratio, you must stop and restart the VMs. When this is done, CloudStack recalculates or scales the used and reserved capacities based on the new over-provisioning ratios, to ensure that CloudStack is correctly tracking the amount of free capacity."
+msgstr ""
+
+#: ../../administration_guide.rst:428
+# b3bf39b26142443c92ac98f1aa4e7be4
+msgid "To change the over-provisioning ratios for an existing cluster:"
+msgstr ""
+
+#: ../../administration_guide.rst:430
+# 95630036ec0e4f9ba1f10054990ba84d
+msgid "Log in as administrator to the CloudStack UI."
+msgstr ""
+
+#: ../../administration_guide.rst:432
+# a64dd51e12c547658db1ade7de98ebd2
+msgid "Under Clusters, click View All."
+msgstr ""
+
+#: ../../administration_guide.rst:433
+# 23c09f71b4e04bad89d9fc8af656468c
+msgid "Select the cluster you want to work with, and click the Edit button."
+msgstr ""
+
+#: ../../administration_guide.rst:434
+# 0e804d9f17db4c8a981a54fd41556317
+msgid "Fill in your desired over-provisioning multipliers in the fields CPU overcommit ratio and RAM overcommit ratio. The value which is intially shown in these fields is the default value inherited from the global configuration settings."
+msgstr ""
+
+#: ../../administration_guide.rst:437
+# c2d182c3388a4abda55289726d7ffcd7
+msgid "Service Offering Limits and Over-Provisioning"
+msgstr ""
+
+#: ../../administration_guide.rst:439
+# 35ebc55bb645476192b0b7676f94c260
+msgid "Service offering limits (e.g. 1 GHz, 1 core) are strictly enforced for core count. For example, a guest with a service offering of one core will have only one core available to it regardless of other activity on the Host."
+msgstr ""
+
+#: ../../administration_guide.rst:441
+# 35b941c26c5e4016b305ed1742023a82
+msgid "Service offering limits for gigahertz are enforced only in the presence of contention for CPU resources. For example, suppose that a guest was created with a service offering of 1 GHz on a Host that has 2 GHz cores, and that guest is the only guest running on the Host. The guest will have the full 2 GHz available to it. When multiple guests are attempting to use the CPU a weighting factor is used to schedule CPU resources. The weight is based on the clock speed in the service offering. Guests receive a CPU allocation that is proportionate to the GHz in the service offering. For example, a guest created from a 2 GHz service offering will receive twice the CPU allocation as a guest created from a 1 GHz service offering. CloudStack does not perform memory over-provisioning."
+msgstr ""
+

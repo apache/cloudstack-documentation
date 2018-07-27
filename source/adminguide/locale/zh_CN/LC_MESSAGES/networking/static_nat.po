@@ -1,0 +1,95 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:06+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 89295dfc645a421eac4401834f1b5564
+#: ../../networking/static_nat.rst:18
+msgid "Static NAT"
+msgstr "静态 NAT"
+
+# c3b2d053fab944578298ac1adf46e76e
+#: ../../networking/static_nat.rst:20
+msgid ""
+"A static NAT rule maps a public IP address to the private IP address of a VM"
+" in order to allow Internet traffic into the VM. The public IP address "
+"always remains the same, which is why it is called static NAT. This section "
+"tells how to enable or disable static NAT for a particular IP address."
+msgstr ""
+
+# ffe605639e6844fa8170c65805372b4c
+#: ../../networking/static_nat.rst:28
+msgid "Enabling or Disabling Static NAT"
+msgstr "启用或禁用静态NAT"
+
+# 311e1bb870dd43bb98cd7ee6a01f42ca
+#: ../../networking/static_nat.rst:30
+msgid ""
+"If port forwarding rules are already in effect for an IP address, you cannot"
+" enable static NAT to that IP."
+msgstr "如果该公网IP上已经有端口转发规则，则不允许再启用静态NAT。"
+
+# b89fc2e081874b24b0ad50ed843837e9
+#: ../../networking/static_nat.rst:33
+msgid ""
+"If a guest VM is part of more than one network, static NAT rules will "
+"function only if they are defined on the default network."
+msgstr "如果用户VM存在多个网络，则静态NAT规则仅在默认网络上定义时生效。"
+
+# e6dabe6070464d23926137799673505a
+#: ../../networking/static_nat.rst:36
+msgid "Log in to the CloudStack UI as an administrator or end user."
+msgstr "使用管理员或者终端用户账号登录CloudStack UI。"
+
+# 726614a43cbf4c448770c40822676059
+#: ../../networking/static_nat.rst:38
+msgid "In the left navigation, choose Network."
+msgstr "在左侧的导航栏，选择网络。"
+
+# 71505d3318714907a3abd5319833b78e
+#: ../../networking/static_nat.rst:40
+msgid "Click the name of the network where you want to work with."
+msgstr "点击拟修改的网络名称。"
+
+# 0898722d18384a89a217a7a8e7cb6fbf
+#: ../../networking/static_nat.rst:42
+msgid "Click View IP Addresses."
+msgstr "点击查看IP地址。"
+
+# 5e916ccbf7c94237b104827f38f2ca6a
+#: ../../networking/static_nat.rst:44
+msgid "Click the IP address you want to work with."
+msgstr "点击你要修改的IP地址"
+
+# 4f5018aad8f14212a2d0c17d955b197a
+#: ../../networking/static_nat.rst:46
+msgid "Click the Static NAT |enabledisablenat.png| button."
+msgstr "点击静态NAT按钮。 |enabledisablenat.png| "
+
+# 001cc2e543c345afb265ff300a5435ca
+#: ../../networking/static_nat.rst:48
+msgid ""
+"The button toggles between Enable and Disable, depending on whether static "
+"NAT is currently enabled for the IP address."
+msgstr "该按钮在启用和禁用之间切换，这取决于IP地址是否已经启用了静态NAT。"
+
+# 91178f93f90f4135b40823266a6ecb4e
+#: ../../networking/static_nat.rst:51
+msgid ""
+"If you are enabling static NAT, a dialog appears where you can choose the "
+"destination VM and click Apply."
+msgstr "如果是启用静态NAT，会出现一个对话框让您选择目标VM然后点击应用。"

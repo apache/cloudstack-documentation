@@ -1,0 +1,38 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache CloudStack
+# This file is distributed under the same license as the Apache CloudStack Release Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Release Notes 4.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-31 10:50-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../index.rst:22
+# 7d5bf8f1976649478c6426b1d3aef1d5
+msgid "Welcome to Apache CloudStack Release Notes"
+msgstr ""
+
+#: ../../index.rst:24
+# c1a368cd41964089b29311f960268dd8
+msgid "This section describes the operating systems, browsers, and hypervisors that have been newly tested and certified compatible with CloudStack 4.3. Most earlier OS and hypervisor versions are also still supported for use with 4.3 It might work well on other platforms, but the platforms listed below are the ones that are specifically tested against and are more likely to be able to help troubleshoot if you run into any issues."
+msgstr ""
+
+#: ../../index.rst:32
+# 598272357f4545e0a3698227daf4d4c5
+msgid "This document contains information specific to this release of CloudStack, including upgrade instructions from prior releases, new features added to CloudStack, API changes, and issues fixed in the release. For installation instructions, please see the `Installation Guide <http://cloudstack-installation.readthedocs.org/en/latest/>`__. For usage and administration instructions, please see the `CloudStack Administrator's Guide <http://cloudstack-administration.readthedocs.org/en/latest/>`__."
+msgstr ""
+
+#: ../../index.rst:38
+# 742b63f90051452a841b8b2bb2e0a8c6
+msgid "Contents:"
+msgstr ""
+

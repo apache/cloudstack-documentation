@@ -1,0 +1,1554 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:04+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# cf61f319f9464e6a8d50baac31e9b5ec
+#: ../../templates.rst:18
+msgid "Working with Templates"
+msgstr "使用模板"
+
+# 9fd79a40a20d4709abcae61ed6a93dfd
+#: ../../templates.rst:20
+msgid ""
+"A template is a reusable configuration for virtual machines. When users "
+"launch VMs, they can choose from a list of templates in CloudStack."
+msgstr "模板相当于虚拟机的重用配置。当用户创建虚拟机时能从CloudStack的模板列表中选择一个。"
+
+# 882ddad869e440869d4f74c92ab41271
+#: ../../templates.rst:23
+msgid ""
+"Specifically, a template is a virtual disk image that includes one of a "
+"variety of operating systems, optional additional software such as office "
+"applications, and settings such as access control to determine who can use "
+"the template. Each template is associated with a particular type of "
+"hypervisor, which is specified when the template is added to CloudStack."
+msgstr "特殊情况下，模板可以是一个包含一个或多个操作系统的虚拟磁盘镜像，你可以选择性的安装另外的软件，比如office应用并设置访问控制来决定谁能使用这个模板。每个模板对应一个特殊类型的虚拟机，此类虚拟机在将模板添加入CloudStack时指定。"
+
+# 100cd7a983eb4961b368c8ba7734c42d
+#: ../../templates.rst:30
+msgid ""
+"CloudStack ships with a default template. In order to present more choices "
+"to users, CloudStack administrators and users can create templates and add "
+"them to CloudStack."
+msgstr "CloudStack附带一个默认模板。为了向用户呈现出更多选择，CloudStack的管理员和用户能创建模板并添加到CloudStack中。"
+
+# 18309d4f55464acabeff92b1bab9055f
+#: ../../templates.rst:36
+msgid "Creating Templates: Overview"
+msgstr "创建模板概览"
+
+# 51d039ce8ec945faabf8f8999b3d3c0f
+#: ../../templates.rst:38
+msgid ""
+"CloudStack ships with a default template for the CentOS operating system. "
+"There are a variety of ways to add more templates. Administrators and end "
+"users can add templates. The typical sequence of events is:"
+msgstr "CloudStack默认已经有了一个带CentOS系统的默认模板。有许多添加更多模板的方法，管理员和普通用户均能添加。一般是这样的顺序："
+
+# 06dcc3e2b2554e33bbfdf892226179bd
+#: ../../templates.rst:43
+msgid ""
+"Launch a VM instance that has the operating system you want. Make any other "
+"desired configuration changes to the VM."
+msgstr "运行一个带有你需要的操作系统的虚拟机实例，并进行一些你期望的设置。"
+
+# 991daad714364dbdb6c7429365bfb041
+#: ../../templates.rst:46
+msgid "Stop the VM."
+msgstr "停止VM。"
+
+# 284657ff1abc49e09a72598a4a379a00
+#: ../../templates.rst:48
+msgid "Convert the volume into a template."
+msgstr "将卷转换为模板。"
+
+# ee2b8742854b46679adc6fced33914ab
+#: ../../templates.rst:50
+msgid ""
+"There are other ways to add templates to CloudStack. For example, you can "
+"take a snapshot of the VM's volume and create a template from the snapshot, "
+"or import a VHD from another system into CloudStack."
+msgstr "还有其他方法向CloudStack中添加模板。比如你可以对虚机磁盘卷做个快照然后通过这个快照创建模板，或者从另一个系统导入一个VHD到CloudStack。"
+
+# 7dee2cf1359f4fcdb0bc7f03150b7582
+#: ../../templates.rst:54
+msgid ""
+"The various techniques for creating templates are described in the next few "
+"sections."
+msgstr "接下来的几节中将继续讲述各种创建模板的技术。"
+
+# 9fa8a8480b0345fd8fa7ccd71dcf1b0c
+#: ../../templates.rst:59
+msgid "Requirements for Templates"
+msgstr "模板的需求"
+
+# cb14c5b032c24423959c7044dc64c47f
+#: ../../templates.rst:61
+msgid ""
+"For XenServer, install PV drivers / Xen tools on each template that you "
+"create. This will enable live migration and clean guest shutdown."
+msgstr "对于 XenServer, 在每一个你创建的模板上安装 PV 驱动 / Xen tools。 这将使动态迁移和干净的宾客关机成为可能。"
+
+# f69f5344e03e49e78a793d4ca605d703
+#: ../../templates.rst:64
+msgid ""
+"For vSphere, install VMware Tools on each template that you create. This "
+"will enable console view to work properly."
+msgstr "对于 vSphere, 在每一个你创建的模板上安装VMware 工具。这将使控制台视图能够正常工作。"
+
+# edd05ad541bd4f498f39bb0645713513
+#: ../../templates.rst:69
+msgid "Best Practices for Templates"
+msgstr "模板最佳实践"
+
+# fd430ee9ee634ec9bf53dfcec6786ee3
+#: ../../templates.rst:71
+msgid ""
+"If you plan to use large templates (100 GB or larger), be sure you have a "
+"10-gigabit network to support the large templates. A slower network can lead"
+" to timeouts and other errors when large templates are used."
+msgstr "如果你计划使用大的模板(100 GB 或更大)，确保你有10g 的网络以支持大的模板。 当大的模板被使用时，较慢的网络可能导致超时及其它错误。"
+
+# 4405e8f642174cb3afc031cd7fdb4dd4
+#: ../../templates.rst:77
+msgid "The Default Template"
+msgstr "默认模版"
+
+# 1f4b4121eca94788a949ff8bbb9b6377
+#: ../../templates.rst:79
+msgid ""
+"CloudStack includes a CentOS template. This template is downloaded by the "
+"Secondary Storage VM after the primary and secondary storage are configured."
+" You can use this template in your production deployment or you can delete "
+"it and use custom templates."
+msgstr "CloudStack包含一个CentOS 模版。当主存储和二级存储配置完成后，这个模版会由二级存储虚拟机下载。可以在生产部署中使用这个模版，也可以删除掉它，使用自定义的模版。"
+
+# a5936c6c63214301b0a732ab8a848614
+#: ../../templates.rst:84
+msgid "The root password for the default template is \"password\"."
+msgstr "默认模版的root用户密码是“password”。"
+
+# 56f17d0ded4f4175b6a8c78f5e04b44f
+#: ../../templates.rst:86
+msgid ""
+"A default template is provided for each of XenServer, KVM, and vSphere. The "
+"templates that are downloaded depend on the hypervisor type that is "
+"available in your cloud. Each template is approximately 2.5 GB physical "
+"size."
+msgstr "为XenServer，KVM和vSphere各提供了一个默认模板。下载的模板取决于你的云中使用的hypervisor类型。每个模板大概占用2.5GB的存储空间。"
+
+# 5c9065097a2b42dbb7b454a66807e888
+#: ../../templates.rst:91
+msgid ""
+"The default template includes the standard iptables rules, which will block "
+"most access to the template excluding ssh."
+msgstr "默认模版包括标准的iptables 规则，会阻止除了ssh以外的其他访问。"
+
+# 466a67f6a17249d19212da0a1d4ae915
+#: ../../templates.rst:123
+msgid "Private and Public Templates"
+msgstr "私有模板和公共模板"
+
+# 9c4cef26750347d693d5d9d2abc33ab3
+#: ../../templates.rst:125
+msgid ""
+"When a user creates a template, it can be designated private or public."
+msgstr "用户创建模板时可选择模板为公有还是私有。"
+
+# 0a5c2d13d7de4c8696c17de766c7ff8e
+#: ../../templates.rst:127
+msgid ""
+"Private templates are only available to the user who created them. By "
+"default, an uploaded template is private."
+msgstr "私有模板只对创建者可用。默认上传的模板都是私有的。"
+
+# 28c6ea956b7145bf87d5c591a262ed56
+#: ../../templates.rst:130
+msgid ""
+"When a user marks a template as “public,” the template becomes available to "
+"all users in all accounts in the user's domain, as well as users in any "
+"other domains that have access to the Zone where the template is stored. "
+"This depends on whether the Zone, in turn, was defined as private or public."
+" A private Zone is assigned to a single domain, and a public Zone is "
+"accessible to any domain. If a public template is created in a private Zone,"
+" it is available only to users in the domain assigned to that Zone. If a "
+"public template is created in a public Zone, it is available to all users in"
+" all domains."
+msgstr "当用户将模板标识为“公有”，该模板不但能让该用户域中所有账户中的所有用户使用，还可以让能访问存储该模板的区域的其他域中用户使用。这取决于zone是设置成公用还是私有。私有区域被分配到一个单一的域，而公共区域能被任何域访问。"
+
+# 8cc9490673de43a29b0fa3b899a796c0
+#: ../../templates.rst:142
+msgid "Creating a Template from an Existing Virtual Machine"
+msgstr "通过已存在的虚拟机创建模板"
+
+# 0cd7674a6e674324a8b36a9eef61b924
+#: ../../templates.rst:144
+msgid ""
+"Once you have at least one VM set up in the way you want, you can use it as "
+"the prototype for other VMs."
+msgstr "当你已经有了一台按你的想法已经配置好的虚拟机，你就能以他为原型创建别的虚拟机。"
+
+# e16345095f804e34ba10cdf1772864c5
+#: ../../templates.rst:147
+msgid ""
+"Create and start a virtual machine using any of the techniques given in "
+"`“Creating VMs” <virtual_machines.html#creating-vms>`_."
+msgstr "使用 `“创建VMs” <virtual_machines.html#creating-vms>`_给出的方法创建并且开启一个虚拟机。"
+
+# 9ecb6312deb04964a10192717ca021b5
+#: ../../templates.rst:150
+msgid ""
+"Make any desired configuration changes on the running VM, then click Stop."
+msgstr "在虚拟机中做好需要的配置，然后点击按钮关闭该虚拟机。"
+
+# 3bf1cf52e2f44c9bb0cc976b5b3217d4
+#: ../../templates.rst:153
+msgid ""
+"Wait for the VM to stop. When the status shows Stopped, go to the next step."
+msgstr "等待虚拟机关闭。当虚拟机状态显示为“已停止”，执行下一步。"
+
+# 51cee376de054012b33542272d214e67
+#: ../../templates.rst:156
+msgid "Click Create Template and provide the following:"
+msgstr "点击创建模板并填写如下内容："
+
+# 3dc70b806977409392d741e01a49337b
+#: ../../templates.rst:158
+msgid ""
+"**Name and Display Text**. These will be shown in the UI, so choose "
+"something descriptive."
+msgstr "**名称和显示文本**。这些会在UI中显示，所以建议写一些描述信息。"
+
+# b7cb11e24ec1424abcb2fd299d27e6f8
+#: ../../templates.rst:161
+msgid ""
+"**OS Type**. This helps CloudStack and the hypervisor perform certain "
+"operations and make assumptions that improve the performance of the guest. "
+"Select one of the following."
+msgstr "**操作系统类型*:。这有助于CloudStack和Hypervisor执行某些操作并可能提高来宾虚拟机的性能。选择下列之一。"
+
+# b79a71e908b643308ec4fe326a113d06
+# 3a9638381a74458e8dc78d91fcd5d121
+#: ../../templates.rst:165 ../../templates.rst:242
+msgid "If the operating system of the stopped VM is listed, choose it."
+msgstr "如果已停止虚拟机的系统在列表中，选择它。"
+
+# c2046860ca7a420282727c68e7e0bd8d
+# 612b47eacf5a4564b7557383ab6085ff
+#: ../../templates.rst:167 ../../templates.rst:244
+msgid "If the OS type of the stopped VM is not listed, choose Other."
+msgstr "如果已停止虚拟机系统类型不在列表中就选择其他。"
+
+# a132a4db61c047f6843764cb4ad468c3
+#: ../../templates.rst:169
+msgid ""
+"If you want to boot from this template in PV mode, choose Other PV (32-bit) "
+"or Other PV (64-bit). This choice is available only for XenServere:"
+msgstr "如果你打算以PV模式启动该模板，请选择其他PV(32位)或其他PV(64位)。这个选项只对XenServer有效："
+
+# 400f23d7aa30429cadbbcf6d927ea291
+#: ../../templates.rst:174
+msgid ""
+"Generally you should not choose an older version of the OS than the version "
+"in the image. For example, choosing CentOS 5.4 to support a CentOS 6.2 image"
+" will in general not work. In those cases you should choose Other."
+msgstr "通常你不能选择比镜像版本老的OS版本。比如，选择CentOS 5.4来支持CentOS 6.2镜像通常来说是不工作的。在这种情况下，你应该选择其他。"
+
+# a74d603504464359801664a22644ecf1
+# f36349a0b7934f51bc4238b6ce12d3bd
+#: ../../templates.rst:179 ../../templates.rst:266
+msgid ""
+"**Public**. Choose Yes to make this template accessible to all users of this"
+" CloudStack installation. The template will appear in the Community "
+"Templates list. See `“Private and Public Templates” <#private-and-public-"
+"templates>`_."
+msgstr "**公共**。选择是来让CloudStack里面的所有用户都能访问这个模板。模板将会出现在社区模板列表中。请参阅 `“私有和公共模板” <#private-and-public-templates>`_。"
+
+# cad391d15484479f99460980862c7571
+# f596589a997f4443a0ac19eee063c09f
+#: ../../templates.rst:184 ../../templates.rst:258
+msgid ""
+"**Password Enabled**. Choose Yes if your template has the CloudStack "
+"password change script installed. See :ref:`adding-password-management-to-"
+"templates`."
+msgstr "**启用密码**。如果你的模板中安装了CLoudStack密码修改脚本，选择是。请参阅 :ref:`adding-password-management-to-templates`。"
+
+# 0ad3f0f48f50458e8c753d6a087e4736
+#: ../../templates.rst:188
+msgid "Click Add."
+msgstr "点击 添加"
+
+# 7560e86cb7f64b25a24a8adffa210672
+#: ../../templates.rst:190
+msgid ""
+"The new template will be visible in the Templates section when the template "
+"creation process has been completed. The template is then available when "
+"creating a new VM."
+msgstr "当模版创建过程完成后，新模版会出现在模版页面。在创建虚机时就可以使用新模版了。"
+
+# f25db73d631a4cf2b1a90ddbc720ebea
+#: ../../templates.rst:196
+msgid "Creating a Template from a Snapshot"
+msgstr "从一个快照创建一个模板"
+
+# 37c2eb36164e46d982140684d23eccc7
+#: ../../templates.rst:198
+msgid ""
+"If you do not want to stop the VM in order to use the Create Template menu "
+"item (as described in `“Creating a Template from an Existing Virtual "
+"Machine” <#creating-a-template-from-an-existing-virtual-machine>`_), you can"
+" create a template directly from any snapshot through the CloudStack UI."
+msgstr "如果你不想为了使用创建模板菜单项而停止虚拟机(如在`“从已有的虚机创建模板” <#creating-a-template-from-an-existing-virtual-machine>`_中描述的)， 你可以通过CloudStack UI从任何快照直接创建模板。"
+
+# 1fddfc6f75c745558d997e2c6af314cf
+#: ../../templates.rst:206
+msgid "Uploading Templates"
+msgstr "上传模板"
+
+# f50af047d15042849fd3b9d1ea923270
+#: ../../templates.rst:210
+msgid "vSphere Templates and ISOs"
+msgstr "vSphere模板和ISOs"
+
+# 942a210bb20f467b98414c592d71af20
+#: ../../templates.rst:212
+msgid ""
+"If you are uploading a template that was created using vSphere Client, be "
+"sure the OVA file does not contain an ISO. If it does, the deployment of VMs"
+" from the template will fail."
+msgstr "如果你通过vSphere Client上传模板，请确认OVA文件不包含ISO。如果是的话，从模板部署虚拟机将失败。"
+
+# 6b6237e29230422f8b97fbbbc07dffd7
+#: ../../templates.rst:216
+msgid ""
+"Templates are uploaded based on a URL. HTTP is the supported access "
+"protocol. Templates are frequently large files. You can optionally gzip them"
+" to decrease upload times."
+msgstr "模板是使用HTTP协议通过URL来上传的。模板通常都很大。你可以使用gzip压缩它们以缩短上传时间。"
+
+# 40368082877e412c87f9a15e9b28e64a
+#: ../../templates.rst:220
+msgid "To upload a template:"
+msgstr "要上传模板："
+
+# b954f933d2b84ec6bdc9dcf119fd3657
+#: ../../templates.rst:222
+msgid "In the left navigation bar, click Templates."
+msgstr "在左侧的导航栏，点击模板。"
+
+# 8d360dd921b54190850f9eb8bcfd5832
+#: ../../templates.rst:224
+msgid "Click Register Template."
+msgstr "点击注册模板。"
+
+# 641dd9e5a6d24e33ba70513e4c194dde
+#: ../../templates.rst:226
+msgid "Provide the following:"
+msgstr "填写以下内容："
+
+# ee2439f863e4425a9b1d3eed40b451cb
+#: ../../templates.rst:228
+msgid ""
+"**Name and Description**. These will be shown in the UI, so choose something"
+" descriptive."
+msgstr "**名称和显示文本**。这些会在UI中显示，所以建议写一些描述信息。"
+
+# c521e0a0730348a88e0393d8c53e0fd8
+#: ../../templates.rst:231
+msgid ""
+"**URL**. The Management Server will download the file from the specified "
+"URL, such as ``http://my.web.server/filename.vhd.gz``."
+msgstr "**URL**。管理服务器会从指定的URL下载模板，就像 ``http://my.web.server/filename.vhd.gz``。"
+
+# 935dbff52fbc49e2bc3effdfe8343c7f
+#: ../../templates.rst:234
+msgid ""
+"**Zone**. Choose the zone where you want the template to be available, or "
+"All Zones to make it available throughout CloudStack."
+msgstr "**区域**:：选择你希望该模板在到哪个区域可用，或者选择所有区域使该模板在CloudStack中全部区域中可用。"
+
+# ef7a5cbcab564351b11799afe2f3221f
+#: ../../templates.rst:238
+msgid ""
+"**OS Type**: This helps CloudStack and the hypervisor perform certain "
+"operations and make assumptions that improve the performance of the guest. "
+"Select one of the following:"
+msgstr "**操作系统类型*:：这有助于CloudStack和Hypervisor执行某些操作并假设可提高来宾虚拟机的性能。选择下列之一。"
+
+# e179d642fb334f9fa4073821044a5116
+#: ../../templates.rst:247
+msgid ""
+"You should not choose an older version of the OS than the version in the "
+"image. For example, choosing CentOS 5.4 to support a CentOS 6.2 image will "
+"in general not work. In those cases you should choose Other."
+msgstr "你不能选择比镜像版本老的OS版本。比如，选择CentOS 5.4来支持CentOS 6.2镜像通常来说是不工作的。在这种情况下，你应该选择其他。"
+
+# 558b914220d948188698827bc674fa3a
+#: ../../templates.rst:252
+msgid ""
+"**Hypervisor**: The supported hypervisors are listed. Select the desired "
+"one."
+msgstr "**Hypervisor**：列表中显示支持的hypervisors。选择想要的一个。"
+
+# 362c6490da7e426ead7c28ef7bca2f3d
+#: ../../templates.rst:255
+msgid ""
+"**Format**. The format of the template upload file, such as VHD or OVA."
+msgstr "**格式**。上传的模板文件的格式，如VHD或OVA。"
+
+# 475796efd2dd4d64a7897d80ccf02191
+#: ../../templates.rst:262
+msgid ""
+"**Extractable**. Choose Yes if the template is available for extraction. If "
+"this option is selected, end users can download a full image of a template."
+msgstr "**可提取**。如果模板可以被提取请选择是。如果选择了此选项，终端用户可以下载此模板的完全镜。"
+
+# 7f676cb6f6844001ac5af17d480dd595
+#: ../../templates.rst:271
+msgid ""
+"**Featured**. Choose Yes if you would like this template to be more "
+"prominent for users to select. The template will appear in the Featured "
+"Templates list. Only an administrator can make a template Featured."
+msgstr "**精选**: 。如果你想这个用户在选择这个模板时更明显则选择Yes。该模板将出现在精选模板列表中。只有管理员可以设置模板为精选。"
+
+# 4f1b071c71184d61b1e20db9a1408381
+#: ../../templates.rst:278
+msgid "Exporting Templates"
+msgstr "导出模板"
+
+# 07e8cf807f6341c981fd8028383cae01
+#: ../../templates.rst:280
+msgid ""
+"End users and Administrators may export templates from the CloudStack. "
+"Navigate to the template in the UI and choose the Download function from the"
+" Actions menu."
+msgstr "最终用户和管理员可以从CloudStack导出模板。导航到用户界面中的模板并选择动作菜单中的下载功能。"
+
+# ff3b2f1a01194b86a94ca7406e2c9e4c
+#: ../../templates.rst:286
+msgid "Creating a Linux Template"
+msgstr "创建Linux模板"
+
+# 942a09f060a248499ad52006fb12910b
+#: ../../templates.rst:288
+msgid ""
+"Linux templates should be prepared using this documentation in order to "
+"prepare your linux VMs for template deployment. For ease of documentation, "
+"the VM which you are configuring the template on will be referred to as "
+"\"Template Master\". This guide currently covers legacy setups which do not "
+"take advantage of UserData and cloud-init and assumes openssh-server is "
+"installed during installation."
+msgstr "为了准备使用模板部署你的Linux VMs，可以使用此文档来准备Linux模板。对于文档中的情况，你要通过配置模板，这会涉及\"主模板\"。这个指导目前覆盖了传统的安装，但不会涉及用户数据和cloud-init还有假设在装过程中安装了openshh服务。"
+
+# c110f6248b3b4a56a32c3a3c42a213b0
+#: ../../templates.rst:295
+msgid "An overview of the procedure is as follow:"
+msgstr "过程概述如下："
+
+# fccf60393f704035b1c6fceaae12ea12
+#: ../../templates.rst:297
+msgid "Upload your Linux ISO."
+msgstr "上传你的Linux ISO。"
+
+# 0a498b0d37ad4ca29ed96268e032ca4f
+# a70aa21eac0643d2908840edc2bf61b8
+#: ../../templates.rst:299 ../../templates.rst:549
+msgid ""
+"For more information, see `“Adding an ISO” <virtual_machines.html#adding-an-"
+"iso>`_."
+msgstr "更多信息，请参阅 `“添加ISO” <virtual_machines.html#adding-an-iso>`_。"
+
+# a2c6ef939b3644e5a63b94756a7ef72e
+# 949a4ba056404bb29cc67697a1f50b33
+#: ../../templates.rst:302 ../../templates.rst:552
+msgid "Create a VM Instance with this ISO."
+msgstr "使用这个ISO创建VM实例。"
+
+# eb1605dc63014381b489c931a38377e3
+# 6cf1e105b8a542adb4ea1daf3718eb15
+#: ../../templates.rst:304 ../../templates.rst:554
+msgid ""
+"For more information, see `“Creating VMs” <virtual_machines.html#creating-"
+"vms>`_."
+msgstr "更多信息，请参阅 `“创建VMs” <virtual_machines.html#creating-vms>`_。"
+
+# 6e61739ba7024680bdf5d1c3a4fb8ddc
+#: ../../templates.rst:307
+msgid "Prepare the Linux VM"
+msgstr "准备Linux VM"
+
+# 86ecdc3984a446e69db7d31db4b0f355
+#: ../../templates.rst:309
+msgid "Create a template from the VM."
+msgstr "从VM创建模板。"
+
+# e865dcc3232e4f51972fe0f554d58eeb
+#: ../../templates.rst:311
+msgid ""
+"For more information, see `“Creating a Template from an Existing Virtual "
+"Machine” <#creating-a-template-from-an-existing-virtual-machine>`_."
+msgstr "更多信息，请参阅 `“从已有的虚拟机创建模板” <#creating-a-template-from-an-existing-virtual-machine>`_。"
+
+# dce1b0c69ea14188bf5d99e9aa364a4d
+#: ../../templates.rst:316
+msgid "System preparation for Linux"
+msgstr "Linux的系统准备工作"
+
+# 9d4c8a98ec1c466da2893fd12538e3ba
+#: ../../templates.rst:318
+msgid ""
+"The following steps will prepare a basic Linux installation for templating."
+msgstr "下列步骤将会为模板准备一个基本的Linux安装。"
+
+# 3de223a77c284109956a2eef988638db
+#: ../../templates.rst:321
+msgid "**Installation**"
+msgstr "**安装**"
+
+# 4f6808052a554f3cbb8697209cafc2de
+#: ../../templates.rst:323
+msgid ""
+"It is good practice to name your VM something generic during installation, "
+"this will ensure components such as LVM do not appear unique to a machine. "
+"It is recommended that the name of \"localhost\" is used for installation."
+msgstr "通常在安装过程中给VM命名是一个好的做法，这么做能确保某些组件如LVM不会只在一台机器中出现。推荐在在安装过程中使用\"localhost\"命名。"
+
+# ff8376cf4b4b40899df3911a0216a3f8
+#: ../../templates.rst:329
+msgid ""
+"For CentOS, it is necessary to take unique identification out of the "
+"interface configuration file, for this edit /etc/sysconfig/network-scripts"
+"/ifcfg-eth0 and change the content to the following."
+msgstr "对于CentOS，必须要修改网络接口的配置文件，在这里我们编辑/etc/sysconfig/network-scripts/ifcfg-eth0文件，更改下面的内容。"
+
+# f68b6e4efb764f92a1e56ad9ea54f90c
+#: ../../templates.rst:341
+msgid "The next steps updates the packages on the Template Master."
+msgstr "下一步更新主模板中的包。"
+
+# 143c241d86a44e32b496b66a9934ec6a
+# 4de01ffab6a44664b87eb62c32e550a4
+# 141d36e8817e444e94e29f6c889f76d9
+#: ../../templates.rst:343 ../../templates.rst:390 ../../templates.rst:446
+msgid "Ubuntu"
+msgstr "Ubuntu"
+
+# 7b51d3bdb3c2417486c37949b1978dab
+# a37b78dad81f45429074776c11add237
+#: ../../templates.rst:353 ../../templates.rst:453
+msgid "CentOS"
+msgstr "CentOS"
+
+# b6d69c72e22e4f40bd0d7d7bdaa1be7e
+#: ../../templates.rst:361
+msgid "**Password management**"
+msgstr "**密码管理**"
+
+# f71ab72462f5424fbc900751e054d736
+#: ../../templates.rst:364
+msgid ""
+"If preferred, custom users (such as ones created during the Ubuntu "
+"installation) should be removed. First ensure the root user account is "
+"enabled by giving it a password and then login as root to continue."
+msgstr "如果需要，客户(如在Ubuntu的安装过程中创建的用户)应该被移除。首先确认root用户账户是启用的并且使用了密码，然后使用root登录。"
+
+# ef5341894f7e40a4a9c300485f9f1367
+#: ../../templates.rst:373
+msgid ""
+"As root, remove any custom user accounts created during the installation "
+"process."
+msgstr "使用root，移除任何在安装过程中创建的自定义用户账户。"
+
+# a81798014288476da8e256abdea8526b
+#: ../../templates.rst:380
+msgid ""
+"See :ref:`adding-password-management-to-templates` for instructions to setup"
+" the password management script, this will allow CloudStack to change your "
+"root password from the web interface."
+msgstr "关于设置密码管理脚本的相关说明，请参阅 :ref:`adding-password-management-to-templates` ，这样能允许CloudStack通过web界面更改root密码。"
+
+# 9d00097815b24c0ca4034a304afee047
+#: ../../templates.rst:384
+msgid "**Hostname Management**"
+msgstr "**主机名管理**"
+
+# c41219c74c2b4b138cdfd88c986a2a02
+#: ../../templates.rst:386
+msgid ""
+"CentOS configures the hostname by default on boot. Unfortunately Ubuntu does"
+" not have this functionality, for Ubuntu installations use the following "
+"steps."
+msgstr "默认情况下CentOS在启动的时候配置主机名。但是，Ubuntu却没有此功能，对于Ubuntu，安装时使用下面步骤。"
+
+# ad9bf73797c24558b7e106dc2ce8510b
+#: ../../templates.rst:392
+msgid ""
+"The hostname of a Templated VM is set by a custom script in `/etc/dhcp"
+"/dhclient-exit-hooks.d`, this script first checks if the current hostname is"
+" localhost, if true, it will get the host-name, domain-name and fixed-ip "
+"from the DHCP lease file and use those values to set the hostname and append"
+" the `/etc/hosts` file for local hostname resolution. Once this script, or a"
+" user has changed the hostname from localhost, it will no longer adjust "
+"system files regardless of it's new hostname. The script also recreates "
+"openssh-server keys, which should have been deleted before templating (shown"
+" below). Save the following script to `/etc/dhcp/dhclient-exit-"
+"hooks.d/sethostname`, and adjust the permissions."
+msgstr "一个模板化的VM使用`/etc/dhcp/dhclient-exit-hooks.d`中的一个自定义脚本来设置主机名，这个脚本首先检查当前的主机名是是否是hostname，如果是，它将从DHCP租约文件获取host-name，domain-name和fix-ip，并且使用这些值来设置主机名并将其追加到 `/etc/hosts` 文件以用来本地主机名解析。一旦这个脚本或者一个用户从本地改变了主机名，那么它将不再根据新的主机名调整系统文件。此脚本同样也会重建openssh-server keys，这个keys在做模板(如下所示)之前被删除了。保存下面的脚本到`/etc/dhcp/dhclient-exit-hooks.d/sethostname`，并且调整权限。"
+
+# 1f68693847f1433bb6541b70f1abedd5
+#: ../../templates.rst:434
+msgid ""
+"The following steps should be run when you are ready to template your "
+"Template Master. If the Template Master is rebooted during these steps you "
+"will have to run all the steps again. At the end of this process the "
+"Template Master should be shutdown and the template created in order to "
+"create and deploy the final template."
+msgstr "当你准备好做你的主模板的时候请运行下列步骤。如果主模板在这些步骤期间重启了，那么你要重新运行所有的步骤。在这个过程的最后，主模板应该关机并且将其创建为模板，然后再部署。"
+
+# 79b32100447b4464a62f56cf91492a6c
+#: ../../templates.rst:440
+msgid "**Remove the udev persistent device rules**"
+msgstr "**移除udev持久设备规则**"
+
+# 7a1b5554792c4cb1aa676f8e73a843b8
+#: ../../templates.rst:442
+msgid ""
+"This step removes information unique to your Template Master such as network"
+" MAC addresses, lease files and CD block devices, the files are "
+"automatically generated on next boot."
+msgstr "这一步会移除你的主模板的特殊信息，如网络MAC地址，租约信息和CD块设备，这个文件会在下次启动时自动生成。"
+
+# 381e458992444a499e21908b7bf88a68
+#: ../../templates.rst:460
+msgid "**Remove SSH Keys**"
+msgstr "**移除SSH Keys**"
+
+# 9badfc5f4bfa454e8ca0d64a71a11c24
+#: ../../templates.rst:462
+msgid ""
+"This step is to ensure all your Templated VMs do not have the same SSH keys,"
+" which would decrease the security of the machines dramatically."
+msgstr "这步是为了确认所有要作为模板的VMs的SSH Keys都不相同，否则这样会降低虚拟机的安全性。"
+
+# 0d2aa14e20f04c3bb2bad70954a1291a
+#: ../../templates.rst:470
+msgid "**Cleaning log files**"
+msgstr "**清除日志文件**"
+
+# af913fb8f91b484bb83ac0737e1b1d10
+#: ../../templates.rst:472
+msgid "It is good practice to remove old logs from the Template Master."
+msgstr "从主模板移除旧的日志文件是一个好习惯。"
+
+# db125d8aa6cc45c8bdf9340dde1d3d45
+#: ../../templates.rst:481
+msgid "**Setting hostname**"
+msgstr "**设置主机名**"
+
+# 5a2162138fca40088196712b5650f551
+#: ../../templates.rst:483
+msgid ""
+"In order for the Ubuntu DHCP script to function and the CentOS dhclient to "
+"set the VM hostname they both require the Template Master's hostname to be "
+"\"localhost\", run the following commands to change the hostname."
+msgstr "为了Ubuntu DHCP的脚本功能和CentOS dhclient能设置VM主机名，他们都去要设置主模板的主机名设置为“localhost”，运行下面的命令来更改主机名。"
+
+# 3ed2b72c9128441ab39130f547642191
+#: ../../templates.rst:493
+msgid "**Set user password to expire**"
+msgstr "**设置用户密码期限**"
+
+# 10db50989ebe48c4a10ebdefa260c489
+#: ../../templates.rst:495
+msgid ""
+"This step forces the user to change the password of the VM after the "
+"template has been deployed."
+msgstr "这步是要在模板部署之后强制用户更改VM的密码。"
+
+# abe301956bd54c1c86c35fca1411ece6
+#: ../../templates.rst:502
+msgid "**Clearing User History**"
+msgstr "**清除用户历史**"
+
+# 9b6183972b934b91be6da40e93a1c12a
+#: ../../templates.rst:504
+msgid "The next step clears the bash commands you have just run."
+msgstr "下一步来清除你曾经运行过的bash命令。"
+
+# b8a76342290b46209f3bf8c468dc5cee
+#: ../../templates.rst:511
+msgid "**Shutdown the VM**"
+msgstr "**关闭VM**"
+
+# f92b1a930b3e4d859616309b9db518e1
+#: ../../templates.rst:513
+msgid "Your now ready to shutdown your Template Master and create a template!"
+msgstr "现在你可以关闭你的主模板并且创建模板了！"
+
+# 43e271d15b2742238d231b3f7fe85ed1
+#: ../../templates.rst:520
+msgid "**Create the template!**"
+msgstr "**创建模板！**"
+
+# 1db89306e7ae4b99b486fb9d7c783da4
+#: ../../templates.rst:522
+msgid ""
+"You are now ready to create the template, for more information see "
+"`“Creating a Template from an Existing Virtual Machine” <#creating-a"
+"-template-from-an-existing-virtual-machine>`_."
+msgstr "现在你可以创建模板了，更多信息请参阅 `“从已存在的虚拟机创建模板” <#creating-a-template-from-an-existing-virtual-machine>`_。"
+
+# 43f673483bbc490ca475ad5e0e1f1736
+#: ../../templates.rst:527
+msgid ""
+"Templated VMs for both Ubuntu and CentOS may require a reboot after "
+"provisioning in order to pickup the hostname."
+msgstr "通过Ubuntu和CentOS的模板分发的虚机可能需要重启才让主机名生效。"
+
+# 96fe0ca1217f4c6789bb7ef7bf304036
+#: ../../templates.rst:532
+msgid "Creating a Windows Template"
+msgstr "创建Windows模板"
+
+# dc56a5c13129464f9d23300535eedbcc
+#: ../../templates.rst:534
+msgid ""
+"Windows templates must be prepared with Sysprep before they can be "
+"provisioned on multiple machines. Sysprep allows you to create a generic "
+"Windows template and avoid any possible SID conflicts."
+msgstr "Windows模板在分发多个虚拟机的之前必须使用Sysprep初始化。Sysprep允许你创建一个通用的Windows模板和避免任何可能的SID冲突。"
+
+# fcbe31f9497c46618be1ae04f1c300d2
+#: ../../templates.rst:539
+msgid ""
+"(XenServer) Windows VMs running on XenServer require PV drivers, which may "
+"be provided in the template or added after the VM is created. The PV drivers"
+" are necessary for essential management functions such as mounting "
+"additional volumes and ISO images, live migration, and graceful shutdown."
+msgstr "(XenServer)XXenServer上运行的Windows VMs需要安装PV驱动，它可能在模板中或在创建完VM后添加。PV驱动对于基本的管理功能是必要的，比如挂载额外的卷和ISO镜像、在线迁移和正常关机。"
+
+# 6918a5f84f9e483484479aa24d4ec044
+#: ../../templates.rst:545
+msgid "An overview of the procedure is as follows:"
+msgstr "过程概述如下："
+
+# c48d96b9ff9d430780c7eefe88c19a2d
+#: ../../templates.rst:547
+msgid "Upload your Windows ISO."
+msgstr "上传你的Windows ISO。"
+
+# c29e3a4c4aec4418a525b07f70e30657
+#: ../../templates.rst:557
+msgid ""
+"Follow the steps in Sysprep for Windows Server 2008 R2 (below) or Sysprep "
+"for Windows Server 2003 R2, depending on your version of Windows Server"
+msgstr "按照你所使用的WIndows Server版本进行Windows Server 2008 R2(下面的)或者Windows Server 2003 R2中Sysprep的操作步骤。"
+
+# d526a7794b20490094eb4688b02c0a58
+#: ../../templates.rst:561
+msgid ""
+"The preparation steps are complete. Now you can actually create the template"
+" as described in Creating the Windows Template."
+msgstr "准本工作完成了。现在你可以按照创建Windows模板中描述的来创建模板。"
+
+# 9e309b24a2eb479e878115e7e5af8cd0
+#: ../../templates.rst:566
+msgid "System Preparation for Windows Server 2008 R2"
+msgstr "为Windows Server 2008 R2进行系统准备"
+
+# a195817082c4472ea5bb4e287b2b8718
+#: ../../templates.rst:568
+msgid ""
+"For Windows 2008 R2, you run Windows System Image Manager to create a custom"
+" sysprep response XML file. Windows System Image Manager is installed as "
+"part of the Windows Automated Installation Kit (AIK). Windows AIK can be "
+"downloaded from `Microsoft Download Center <http://www.microsoft.com/en-"
+"us/download/details.aspx?id=9085>`_."
+msgstr "对于Windows 2008 R2，你运行Windows系统镜像管理来创建一个自定义的sysprep应答XML文件。Windows系统镜像管理作为Windows Automated Installation Kit (AIK)的一部分安装在系统中。Windows AIK可以从 `微软下载中心 <http://www.microsoft.com/en-us/download/details.aspx?id=9085>`_下载到。"
+
+# 8add2ef3ee0741feb9b1575421ee590d
+#: ../../templates.rst:574
+msgid "Use the following steps to run sysprep for Windows 2008 R2:"
+msgstr "按照以下步骤运行Windows 2008 R2的sysprep："
+
+# 0e82209c29214738a91cd3233c54314c
+#: ../../templates.rst:577
+msgid ""
+"The steps outlined here are derived from the excellent guide by Charity "
+"Shelbourne, originally published at `Windows Server 2008 Sysprep Mini-Setup."
+" <http://blogs.technet.com/askcore/archive/2008/10/31/automating-the-oobe-"
+"process-during-windows-server-2008-sysprep-mini-setup.aspx>`_"
+msgstr "这些步骤的概述来源于Charity Shelbourne一个非常棒的指导，发布在 `Windows Server 2008 Sysprep Mini-Setup. <http://blogs.technet.com/askcore/archive/2008/10/31/automating-the-oobe-process-during-windows-server-2008-sysprep-mini-setup.aspx>`_。"
+
+# 9392d5c10c02447f82b7413a71b09128
+#: ../../templates.rst:582
+msgid "Download and install the Windows AIK"
+msgstr "下载和安装Windows AIK"
+
+# a4389660d8ad4d1b8c036e5a312acf49
+#: ../../templates.rst:585
+msgid ""
+"Windows AIK should not be installed on the Windows 2008 R2 VM you just "
+"created. Windows AIK should not be part of the template you create. It is "
+"only used to create the sysprep answer file."
+msgstr "刚刚创建的Windows 2008 R2上面并没有安装Windows AIK。Windows AIK不是你创建的模板中的一部分。它仅仅用于创建sysprep应答文件。"
+
+# b6b2049c23774943958f7539fc0624db
+#: ../../templates.rst:589
+msgid ""
+"Copy the install.wim file in the \\\\sources directory of the Windows 2008 "
+"R2 installation DVD to the hard disk. This is a very large file and may take"
+" a long time to copy. Windows AIK requires the WIM file to be writable."
+msgstr "在\\\\Windows 2008 R2安装DVD中的源目录复制install.wim文件到本地硬盘。这是一个非常大的文件可能会复制较长时间。Windows AIK要求WIM文件是可写的。"
+
+# 6a1367c35ec54816823cc2f821fb42c3
+#: ../../templates.rst:594
+msgid ""
+"Start the Windows System Image Manager, which is part of the Windows AIK."
+msgstr "打开Windows系统镜像管理器。"
+
+# 210d191e2b2540c6986358e0c0b9c87d
+#: ../../templates.rst:597
+msgid ""
+"In the Windows Image pane, right click the Select a Windows image or catalog"
+" file option to load the install.wim file you just copied."
+msgstr "在Windows镜像面板，右击选择一个Windows镜像或编录文件选项来读取你刚刚复制的install.wim文件。"
+
+# 2ae1354725354401b1c6774b56210b30
+#: ../../templates.rst:600
+msgid "Select the Windows 2008 R2 Edition."
+msgstr "选择Windows 2008 R2版本。"
+
+# a4139f632731431fa6c278ed49a402a3
+#: ../../templates.rst:602
+msgid ""
+"You may be prompted with a warning that the catalog file cannot be opened. "
+"Click Yes to create a new catalog file."
+msgstr "你可能会收到一个警告提示说不能打开编录文件。点击是来创建一个新的编录文件。"
+
+# 6daadc2945704fdbae1a77fab0ef5843
+#: ../../templates.rst:605
+msgid "In the Answer File pane, right click to create a new answer file."
+msgstr "在应答文件面板，右击来创建一个新的应答文件。"
+
+# 0d84d28c59424fc39b5a2f36f3dd6bfd
+#: ../../templates.rst:607
+msgid ""
+"Generate the answer file from the Windows System Image Manager using the "
+"following steps:"
+msgstr "使用以下步骤从Windows系统镜像管理器生成应答文件："
+
+# fed0398c42684441a6958c5be21f5c07
+#: ../../templates.rst:610
+msgid ""
+"The first page you need to automate is the Language and Country or Region "
+"Selection page. To automate this, expand Components in your Windows Image "
+"pane, right-click and add the Microsoft-Windows-International-Core setting "
+"to Pass 7 oobeSystem. In your Answer File pane, configure the InputLocale, "
+"SystemLocale, UILanguage, and UserLocale with the appropriate settings for "
+"your language and country or region. Should you have a question about any of"
+" these settings, you can right-click on the specific setting and select "
+"Help. This will open the appropriate CHM help file with more information, "
+"including examples on the setting you are attempting to configure."
+msgstr "第一个页面你必须让语言和国家或位置选择页面是自动的。要使这个自动化，请在你的Windows 镜像面板扩展组件，右击Microsoft-Windows-International-Core添加设置以传送 7 oobeSystem。在你的应答文件面板中，为语言和国家或位置用适当的设置配置InputLocale、SystemLocale、UILanguage、和UserLocale。你可能对这些设置有疑问，你可以指定一个设置右击选择帮助。这将打开对应的CHM帮助文件，这里面包括了与你尝试配置的设置相关的一些示例。"
+
+# e1b641ce1c5d42e0bc8e530c840f89c0
+#: ../../templates.rst:622
+msgid "|sysmanager.png|"
+msgstr "|sysmanager.png|"
+
+# fd41b3e0931141e5971248dfb811dc0a
+#: ../../templates.rst:624
+msgid ""
+"You need to automate the Software License Terms Selection page, otherwise "
+"known as the End-User License Agreement (EULA). To do this, expand the "
+"Microsoft-Windows-Shell-Setup component. High-light the OOBE setting, and "
+"add the setting to the Pass 7 oobeSystem. In Settings, set HideEULAPage "
+"true."
+msgstr "你需要将软件授权选择页配置为自动进行，这不是众所周知的EULA。为此，展开Microsoft-Windows-Shell-Setup组件，选中OOBE 设置，将此设置加入到Pass 7 oobeSystem中去。在设置中，将HideEULAPage 设置为true。"
+
+# 72f9459967ad49cdaebc5ac0cf7e0940
+#: ../../templates.rst:630
+msgid "|software-license.png|"
+msgstr "|software-license.png|"
+
+# d818473f321c4c2594fbc0d903e86837
+#: ../../templates.rst:632
+msgid ""
+"Make sure the license key is properly set. If you use MAK key, you can just "
+"enter the MAK key on the Windows 2008 R2 VM. You need not input the MAK into"
+" the Windows System Image Manager. If you use KMS host for activation you "
+"need not enter the Product Key. Details of Windows Volume Activation can be "
+"found at `http://technet.microsoft.com/en-us/library/bb892849.aspx "
+"<http://technet.microsoft.com/en-us/library/bb892849.aspx>`_"
+msgstr "确保恰当的设置了序列号。如果使用MAK的话，可以在Windows2008R2的虚拟机上输入MAK。并不需要将MAK输入到Windows映像管理器中。如果你使用KMS主机进行激活，则不需要输入产品序列号。Windows卷激活的详细信息可以在http://technet.microsoft.com/en-us/library/bb892849.aspx 上查看。"
+
+# 0941ea38dbb84c5ab3a37e64ff29e6d1
+#: ../../templates.rst:640
+msgid ""
+"You need to automate is the Change Administrator Password page. Expand the "
+"Microsoft-Windows-Shell-Setup component (if it is not still expanded), "
+"expand UserAccounts, right-click on AdministratorPassword, and add the "
+"setting to the Pass 7 oobeSystem configuration pass of your answer file. "
+"Under Settings, specify a password next to Value."
+msgstr "类似机械化的操作还有更改管理员密码页。展开Microsoft-Windows-Shell-Setup组件（如果没有展开的话），展开用户账户，右键点击管理员密码，添加设置到Pass 7 oobeSystem配置，在设置中，指定一个密码。"
+
+# 8092f90cf8784fc0bc8408b84b547e18
+#: ../../templates.rst:647
+msgid "|change-admin-password.png|"
+msgstr "|change-admin-password.png|"
+
+# e7e1281b1ae04398b43ab9c70d0f8370
+#: ../../templates.rst:649
+msgid ""
+"You may read the AIK documentation and set many more options that suit your "
+"deployment. The steps above are the minimum needed to make Windows "
+"unattended setup work."
+msgstr "可能会需要阅读AIK文档并设置多个选项来适合你的部署。以上的步骤至少需要使windows脱离建立网络的过程。"
+
+# 9461bfba70d24cebb27c1d65ea4bdcfa
+#: ../../templates.rst:653
+msgid ""
+"Save the answer file as unattend.xml. You can ignore the warning messages "
+"that appear in the validation window."
+msgstr "将答案文件保存为unattend.xml，可以忽略验证窗口中的警告信息。"
+
+# e03af6631f444bac834875feb1551d93
+#: ../../templates.rst:656
+msgid ""
+"Copy the unattend.xml file into the c:\\\\windows\\\\system32\\\\sysprep "
+"directory of the Windows 2008 R2 Virtual Machine"
+msgstr "将unattend.xml文件拷贝到Windows 2008 R2 虚拟机的c:\\\\windows\\\\system32\\\\sysprep 文件夹下，"
+
+# f25b60a2d1c64b00ab525ccb2ca1488e
+#: ../../templates.rst:659
+msgid ""
+"Once you place the unattend.xml file in c:\\\\windows\\\\system32\\\\sysprep"
+" directory, you run the sysprep tool as follows:"
+msgstr "一旦将unattend.xml文件放到 c:\\\\windows\\\\system32\\\\sysprep文件夹下，则按以下步骤运行sysprep工具："
+
+# c8ba22aeffd14733b20fd2ddadb189dd
+#: ../../templates.rst:668
+msgid ""
+"The Windows 2008 R2 VM will automatically shut down after sysprep is "
+"complete."
+msgstr "Windows 2008 R2虚拟机在sysprep完成后，会自动关闭。"
+
+# 8d4d691768fd4d2a9d131f80a0af05cc
+#: ../../templates.rst:673
+msgid "System Preparation for Windows Server 2003 R2"
+msgstr "针对Windows Server 2003R2的系统准备"
+
+# 25fcbd475b3842f69219e1db506c148d
+#: ../../templates.rst:675
+msgid ""
+"Earlier versions of Windows have a different sysprep tool. Follow these "
+"steps for Windows Server 2003 R2."
+msgstr "早期的windows版本有个不同的sysprep的工具，按照这些步骤准备Windows Server 2003 R2。"
+
+# e4b387caeb524e64b8e43a7256ad002b
+#: ../../templates.rst:678
+msgid ""
+"Extract the content of \\\\support\\\\tools\\\\deploy.cab on the Windows "
+"installation CD into a directory called c:\\\\sysprep on the Windows 2003 R2"
+" VM."
+msgstr "从Windows 安装CD中提取\\\\support\\\\tools\\\\deploy.cab到WIndows 2003 R2 虚拟机中的此目录 c:\\\\sysprep。"
+
+# 678e1857aae14091ad3954e190199112
+#: ../../templates.rst:682
+msgid "Run c:\\\\sysprep\\\\setupmgr.exe to create the sysprep.inf file."
+msgstr "运行 c:\\\\sysprep\\\\setupmgr.exe 来创建syprep.inf文件。"
+
+# eaaddf71b1e144ba9354ecdc3e61237f
+#: ../../templates.rst:684
+msgid "Select Create New to create a new Answer File."
+msgstr "选择创建新的来创建一个新的应答文件。"
+
+# 3a59447b097e4d6a8bbef6303be9c428
+#: ../../templates.rst:686
+msgid "Enter “Sysprep setup” for the Type of Setup."
+msgstr "安装的类型选择 “Sysprep 安装”"
+
+# 511f5fa4a9e04084a2344c13153944c3
+#: ../../templates.rst:688
+msgid "Select the appropriate OS version and edition."
+msgstr "选择合适的OS版本"
+
+# c36d76222fa14fe39dfdd33baf171555
+#: ../../templates.rst:690
+msgid ""
+"On the License Agreement screen, select “Yes fully automate the "
+"installation”."
+msgstr "在许可协议界面，选择\"是，完全自动安装\""
+
+# 42eac0aa963c4b138bba5785ecc4a9ab
+#: ../../templates.rst:693
+msgid "Provide your name and organization."
+msgstr "提供你的名称和组织。"
+
+# 923d7a62003b4bb28c6fdcec04988da5
+#: ../../templates.rst:695
+msgid "Leave display settings at default."
+msgstr "保留显示设置为默认。"
+
+# 28ff1531e0574780b26bbcdab535f18d
+#: ../../templates.rst:697
+msgid "Set the appropriate time zone."
+msgstr "设置合适的时区。"
+
+# c166a631d91d4ec5ba1fe55fb27e9071
+#: ../../templates.rst:699
+msgid "Provide your product key."
+msgstr "提供你的产品key。"
+
+# bb448a5c8bad409b910a983aafc7e7e5
+#: ../../templates.rst:701
+msgid "Select an appropriate license mode for your deployment"
+msgstr "给你的部署选择一个合适的许可模式。"
+
+# 5961b7acd3964ece89961a88ac1c9e49
+#: ../../templates.rst:703
+msgid "Select “Automatically generate computer name”."
+msgstr "选择\"自动生成计算机名\"。"
+
+# ee71045d980c48c3b4229992144775db
+#: ../../templates.rst:705
+msgid ""
+"Type a default administrator password. If you enable the password reset "
+"feature, the users will not actually use this password. This password will "
+"be reset by the instance manager after the guest boots up."
+msgstr "输入一个默认的管理员密码。如果你启用了密码重置功能，用户实际上将不会使用这个密码。在来宾虚机启动之后实例管理器会重置密码。"
+
+# 662f974f66a84b258158cc6d888d31ff
+#: ../../templates.rst:710
+msgid "Leave Network Components at “Typical Settings”."
+msgstr "网络组件使用\"典型设置\"。"
+
+# b382f00fffc54d2092dea46275ce07e0
+#: ../../templates.rst:712
+msgid "Select the “WORKGROUP” option."
+msgstr "选择“WORKGROUP”选项。"
+
+# 864a8297271a4b9c9310a8e580d93f85
+#: ../../templates.rst:714
+msgid "Leave Telephony options at default."
+msgstr "电话服务使用默认。"
+
+# f9104d77ee794b999a52c430bde6f5e0
+#: ../../templates.rst:716
+msgid "Select appropriate Regional Settings."
+msgstr "选择合适的区域设置。"
+
+# 7a038c948aee40caad5fdbd408680a4e
+#: ../../templates.rst:718
+msgid "Select appropriate language settings."
+msgstr "选择合适的语言选项。"
+
+# 8fe7a793a4b149fc8b2c04b222bb95ff
+#: ../../templates.rst:720
+msgid "Do not install printers."
+msgstr "不要安装打印机。"
+
+# 0bd5cf14d63149e8a68370eb7b35c1b5
+#: ../../templates.rst:722
+msgid "Do not specify “Run Once commands”."
+msgstr "不要指定\"运行一次\"。"
+
+# 05694b63059140748f90c4a339c83a2e
+#: ../../templates.rst:724
+msgid "You need not specify an identification string."
+msgstr "你不必指定标示字符串。"
+
+# a48d1b90a9bc405daa8af11e577a21dc
+#: ../../templates.rst:726
+msgid "Save the Answer File as c:\\\\sysprep\\\\sysprep.inf."
+msgstr "将应答文件保存到c:\\\\sysprep\\\\sysprep.inf。"
+
+# a2f33c40df224c318576f392e89a029e
+#: ../../templates.rst:728
+msgid "Run the following command to sysprep the image:"
+msgstr "运行以下命令行来sysprep镜像："
+
+# 47370d15208e44779af8dc395473c3ab
+#: ../../templates.rst:734
+msgid "After this step the machine will automatically shut down"
+msgstr "在这个步骤之后，虚拟机会自动关机。"
+
+# 6a05bb80ea29400084b33d565fcc1600
+#: ../../templates.rst:738
+msgid "Importing Amazon Machine Images"
+msgstr "导入Amazon Machine Images"
+
+# eaa1897518c8471ca61593a7b64fd3e2
+#: ../../templates.rst:740
+msgid ""
+"The following procedures describe how to import an Amazon Machine Image "
+"(AMI) into CloudStack when using the XenServer hypervisor."
+msgstr "以下过程描述了当使用XenServer hypervisor时，如何导入一个AMI到Cloudstack中。"
+
+# f83727180aee4a54aa1735df061a32d3
+#: ../../templates.rst:743
+msgid ""
+"Assume you have an AMI file and this file is called CentOS\\_6.2\\_x64. "
+"Assume further that you are working on a CentOS host. If the AMI is a Fedora"
+" image, you need to be working on a Fedora host initially."
+msgstr "假定你有一个叫做CentOS\\_6.2|_x64的AMI文件。假定未来你将工作在CentOS主机上。如果AMI是一个Fedora镜像，你需要将它立即安装到Fedora主机上。"
+
+# d52c5657eb014680ba5dcb4cd793964b
+#: ../../templates.rst:747
+msgid ""
+"You need to have a XenServer host with a file-based storage repository "
+"(either a local ext3 SR or an NFS SR) to convert to a VHD once the image "
+"file has been customized on the Centos/Fedora host."
+msgstr "一旦镜像文件在CentOS/Fedora主机上自定义完毕，你必须有一台使用文件存储库(本地ext3 SR或者NFS SP)的XenServer主机将其转换VHD。"
+
+# c6369502d5ec442bba824ba9ebd3399f
+#: ../../templates.rst:752
+msgid ""
+"When copying and pasting a command, be sure the command has pasted as a "
+"single line before executing. Some document viewers may introduce unwanted "
+"line breaks in copied text."
+msgstr "当复制和粘贴命令时，请确保没有多余的换行符，因为一些文档查看器可能会在复制时加上换行符。"
+
+# b12f0319181043b6ace0737e16ca933e
+#: ../../templates.rst:756
+msgid "To import an AMI:"
+msgstr "导入一个AMI:"
+
+# 516bca51c4054cb9a0a7c70f455cfb50
+#: ../../templates.rst:758
+msgid "Set up loopback on image file:"
+msgstr "建立在镜像文件上的回滚"
+
+# c40cb6ea1f3a41dbbdfca02adc87b77a
+#: ../../templates.rst:765
+msgid ""
+"Install the kernel-xen package into the image. This downloads the PV kernel "
+"and ramdisk to the image."
+msgstr "安装kernel-xen包到镜像文件中。下载PV内核和ramdisk到镜像中。"
+
+# 0cf205e0b1214bfd85b81840483a7e11
+#: ../../templates.rst:772
+msgid "Create a grub entry in /boot/grub/grub.conf."
+msgstr "在 /boot/grub/grub.conf中创建一个引导。"
+
+# ea05e45228434e6eb41f8d92afdcb402
+#: ../../templates.rst:780
+msgid ""
+"Determine the name of the PV kernel that has been installed into the image."
+msgstr "终止已经安装到镜像文件中的PV内核名称"
+
+# 3395c5bd2c424bf08e6b7c6e789b89b8
+#: ../../templates.rst:793
+msgid ""
+"Xen kernels/ramdisk always end with \"xen\". For the kernel version you "
+"choose, there has to be an entry for that version under lib/modules, there "
+"has to be an initrd and vmlinuz corresponding to that. Above, the only "
+"kernel that satisfies this condition is 2.6.18-164.15.1.el5xen."
+msgstr "Xen的kernels/ramdisk通常以“xen\"结尾。在lib/modules中选择相应的内核版本，intrd和vmlinuz将作出相应的反应.综上，唯一要求的条件是版本为2.6.18-164.15.1.el5xen。"
+
+# cd3138f8605141a1a0ef5f9ae345c8cc
+#: ../../templates.rst:799
+msgid ""
+"Based on your findings, create an entry in the grub.conf file. Below is an "
+"example entry."
+msgstr "根据你要找的内容，在grub.conf文件中创建一个入口。以下为入口例子。"
+
+# 82b126faf726428faa043e59b48fab5c
+#: ../../templates.rst:812
+msgid ""
+"Edit etc/fstab, changing “sda1” to “xvda” and changing “sdb” to “xvdb”."
+msgstr "编辑 etc/fstab,将”sda1“改为”xvda\"并将“sdb\"改为”xbdb\"."
+
+# 158d080ac2c845c089c610cf10e51f6e
+#: ../../templates.rst:824
+msgid ""
+"Enable login via the console. The default console device in a XenServer "
+"system is xvc0. Ensure that etc/inittab and etc/securetty have the following"
+" lines respectively:"
+msgstr "通过终端开启登陆。在默认终端设备XenServer系统上的是xvc0.确定在etc/inittab和etc/securetty中有以下各自的行："
+
+# 78c0483458064433a5dcf14ba528eb3e
+#: ../../templates.rst:835
+msgid ""
+"Ensure the ramdisk supports PV disk and PV network. Customize this for the "
+"kernel version you have determined above."
+msgstr "确保虚拟盘支持PV磁盘和PV网络。为你之前选择好的kernel版本自定义这些。"
+
+# c5985961045c4177b2d3d8f684fbd61b
+#: ../../templates.rst:845
+msgid "Change the password."
+msgstr "修改密码"
+
+# a26809b7f44741e898c17da609bbd7fd
+#: ../../templates.rst:855
+msgid "Exit out of chroot."
+msgstr "退出chroot"
+
+# 3fc6a7c5bbaf414da8d8a91f9f2e1056
+#: ../../templates.rst:861
+msgid ""
+"Check `etc/ssh/sshd_config` for lines allowing ssh login using a password."
+msgstr "检查 `etc/ssh/sshd_config`中关于允许在ssh登录时使用密码的相关行。"
+
+# 664c645f17104a9689c80c1722a33864
+#: ../../templates.rst:870
+msgid ""
+"If you need the template to be enabled to reset passwords from the "
+"CloudStack UI or API, install the password change script into the image at "
+"this point. See :ref:`adding-password-management-to-templates`."
+msgstr "如果你需要通过CloudStack· UI或API启用重置模板的密码功能，在镜像中安装密码更改脚本。相关内容请参考:ref:`adding-password-management-to-templates`。"
+
+# a4f18c75d1074dd2b110ac78ffe5265f
+#: ../../templates.rst:874
+msgid "Unmount and delete loopback mount."
+msgstr "卸载或删除loopback挂载。"
+
+# 8edfb6c75d614771b3b350cbc348a938
+#: ../../templates.rst:881
+msgid ""
+"Copy the image file to your XenServer host's file-based storage repository. "
+"In the example below, the Xenserver is \"xenhost\". This XenServer has an "
+"NFS repository whose uuid is a9c5b8c8-536b-a193-a6dc-51af3e5ff799."
+msgstr "复制镜像文件到XenServer主机的文件存储库。在下面的例子中，XenServer是\"xenhost\"。这个XenServer有一个UUID为a9c5b8c8-536b-a193-a6dc-51af3e5ff799的NFS库。"
+
+# 0dc1d9510e784714bcdec1384e8755f1
+#: ../../templates.rst:890
+msgid "Log in to the Xenserver and create a VDI the same size as the image."
+msgstr "登录到XenServer然后创建一个与镜像同样大小的VDI。"
+
+# 4e8f8e659e434bc5a3f36dc2fd9f822d
+#: ../../templates.rst:900
+msgid "Import the image file into the VDI. This may take 10–20 minutes."
+msgstr "将镜像导入到VDI中。这可能会花费10-20分钟。"
+
+# 0b58122603704ebda3d2342ee6515ff7
+#: ../../templates.rst:906
+msgid ""
+"Locate a the VHD file. This is the file with the VDI’s UUID as its name. "
+"Compress it and upload it to your web server."
+msgstr "找到这个VHD文件。它的名字是以VDI的UUID命名的。压缩并上床至你的web服务器。"
+
+# 7691e9d11b8b49d29aec196fe6cb380c
+#: ../../templates.rst:916
+msgid "Converting a Hyper-V VM to a Template"
+msgstr "将Hyper-V的VM转换为模板"
+
+# 3edfac90ab644da58894eab904cc447c
+#: ../../templates.rst:918
+msgid ""
+"To convert a Hyper-V VM to a XenServer-compatible CloudStack template, you "
+"will need a standalone XenServer host with an attached NFS VHD SR. Use "
+"whatever XenServer version you are using with CloudStack, but use XenCenter "
+"5.6 FP1 or SP2 (it is backwards compatible to 5.6). Additionally, it may "
+"help to have an attached NFS ISO SR."
+msgstr "要转换Hyper-V的VM到兼容XenServer的CloudStack模板，你需要一个独立的添加了NFS VHD SR的XenServer主机。无论使用CloudStack管理哪个版本XenServer，但必须是XenCenter 5.6 FP1或SP2(它向下兼容5.6)。另外，添加了NFS ISO SR是有帮助的。"
+
+# b65f920f7aa24af9b850a9b006b20069
+#: ../../templates.rst:924
+msgid ""
+"For Linux VMs, you may need to do some preparation in Hyper-V before trying "
+"to get the VM to work in XenServer. Clone the VM and work on the clone if "
+"you still want to use the VM in Hyper-V. Uninstall Hyper-V Integration "
+"Components and check for any references to device names in /etc/fstab:"
+msgstr "对于Linux VMs，在尝试让VM在XenServer中工作之前你可能必须在Hyper-V做一些准备工作。如果你仍然想要在Hyper-V中使用这个VM的话，克隆这个VM然后在克隆的虚机上操作。卸载Hyper-V集成组件然后检查任何/etc/fstab中涉及的相关设备名称："
+
+# 163cf95a7ec7444d8308e6f3915b94f7
+#: ../../templates.rst:930
+msgid ""
+"From the linux\\_ic/drivers/dist directory, run make uninstall (where "
+"\"linux\\_ic\" is the path to the copied Hyper-V Integration Components "
+"files)."
+msgstr "从 linux\\_ic/drivers/dist 目录中，运行make uninstall(\"linux\\_ic\" 是复制的Hyper-V集成组件的路径)。"
+
+# 32eb47eefa0b4af493237f82dd0f08e1
+#: ../../templates.rst:934
+msgid ""
+"Restore the original initrd from backup in /boot/ (the backup is named "
+"\\*.backup0)."
+msgstr "从备份/boot/ 恢复原始的文件系统(备份名称为 \\*.backup0)。"
+
+# b7363d0658ff4efcb9bdf4657296d185
+#: ../../templates.rst:937
+msgid "Remove the \"hdX=noprobe\" entries from /boot/grub/menu.lst."
+msgstr "从 /boot/grub/menu.lst移除 \"hdX=noprobe\" 。"
+
+# f8878c3d06ea47b0b8c1cfaf1721f34b
+#: ../../templates.rst:939
+msgid ""
+"Check /etc/fstab for any partitions mounted by device name. Change those "
+"entries (if any) to mount by LABEL or UUID. You can get that information "
+"with the blkid command."
+msgstr "通过名称从 /etc/fstab中检查任何挂载的分区。将这些条目(如果有)改成使用LABEL或者UUID挂载。你能通过 blkid命令获得这些信息。"
+
+# 685ac8156ffb427f853074d04df8be85
+#: ../../templates.rst:943
+msgid ""
+"The next step is make sure the VM is not running in Hyper-V, then get the "
+"VHD into XenServer. There are two options for doing this."
+msgstr "下一步请确保Hyper-V中的这个VM没有运行，然后把VHD送至XenServer。有两个选择。"
+
+# 2a0e0f2e121b4d30bb10710db99fd9cb
+#: ../../templates.rst:946
+msgid "Option one:"
+msgstr "选项一："
+
+# 7006009b5d4d452d9a3936d365133d47
+#: ../../templates.rst:948
+msgid ""
+"Import the VHD using XenCenter. In XenCenter, go to Tools>Virtual Appliance "
+"Tools>Disk Image Import."
+msgstr "使用XenCenter导入VHD。在XenCenter中，找到Tools>Virtual Appliance Tools>Disk Image Import。"
+
+# 0b382531327d4323aa4983bacc4ed07f
+# d535d0d741a64664bf63603df9967f1f
+#: ../../templates.rst:951 ../../templates.rst:963
+msgid "Choose the VHD, then click Next."
+msgstr "选择VHD，然后点击下一步。"
+
+# 2a052e079f674601944c0ba73a344456
+#: ../../templates.rst:953
+msgid ""
+"Name the VM, choose the NFS VHD SR under Storage, enable \"Run Operating "
+"System Fixups\" and choose the NFS ISO SR."
+msgstr "给VM起个名字，在Storage下选择 NFS VHD SR，启用\"Run Operating System Fixups\" 然后选择NFS ISO SR。"
+
+# cc2978604a5d4e41bc9bf810c2d56de3
+#: ../../templates.rst:956
+msgid "Click Next, then Finish. A VM should be created."
+msgstr "点击下一步 完成。完成虚拟机创建。"
+
+# 67a0e0a79a8a4361a4a7a54ce0f7d4bb
+#: ../../templates.rst:958
+msgid "Option two:"
+msgstr "选项二："
+
+# 30a1d3fd83154d909f816cbdb7f05e1e
+#: ../../templates.rst:960
+msgid ""
+"Run XenConvert, under From choose VHD, under To choose XenServer. Click "
+"Next."
+msgstr "运行 XenConvert ,选择 VHD,选择 XenServer,点击下一步。"
+
+# a00bf9e6d260466fbec3fa0226669cdb
+#: ../../templates.rst:965
+msgid "Input the XenServer host info, then click Next."
+msgstr "输入XenServer主机信息，点击下一步。"
+
+# 44711d8c01324ee79a30d8ce8b327a78
+#: ../../templates.rst:967
+msgid "Name the VM, then click Next, then Convert. A VM should be created."
+msgstr "输入VM名称，点击“下一步”，点击“转换”。VM应该就创建了。"
+
+# 92901943e7874fb1a3d951cd238e0711
+#: ../../templates.rst:969
+msgid ""
+"Once you have a VM created from the Hyper-V VHD, prepare it using the "
+"following steps:"
+msgstr "一旦你完成从hyper-v VHD到虚拟机的创建，准备使用以下步骤："
+
+# 86356c840f4d4588a591dc27d244bfca
+#: ../../templates.rst:972
+msgid "Boot the VM, uninstall Hyper-V Integration Services, and reboot."
+msgstr "启动虚拟机，卸载Hyper-V集成服务，并重新启动。"
+
+# b7695ac5e06a43afb682c51148ea61a2
+#: ../../templates.rst:974
+msgid "Install XenServer Tools, then reboot."
+msgstr "安装XenServer Tools，然后重新启动。"
+
+# 35c3a56ed699450c91f45bdba9627f4c
+#: ../../templates.rst:976
+msgid ""
+"Prepare the VM as desired. For example, run sysprep on Windows VMs. See "
+"`“Creating a Windows Template” <#creating-a-windows-template>`_."
+msgstr "按需要准备VM。例如在Windows VM上执行sysprep。请参阅 `“创建Windows模板” <#creating-a-windows-template>`_。"
+
+# 35897d5ecf6144a88204cb836ee76084
+#: ../../templates.rst:980
+msgid ""
+"Either option above will create a VM in HVM mode. This is fine for Windows "
+"VMs, but Linux VMs may not perform optimally. Converting a Linux VM to PV "
+"mode will require additional steps and will vary by distribution."
+msgstr "以上任一选项将在HVM模式下创建一个VM。对于Windows虚拟机来说这是很好的，但Linux的虚拟机可能无法达到最佳性能。要转换Linux虚拟机到PV模式，对于不同的发行版本将需要额外的步骤。"
+
+# e4c0e0e192034e3b9e9439d79eae9bb3
+#: ../../templates.rst:985
+msgid ""
+"Shut down the VM and copy the VHD from the NFS storage to a web server; for "
+"example, mount the NFS share on the web server and copy it, or from the "
+"XenServer host use sftp or scp to upload it to the web server."
+msgstr "关闭虚拟机，从NFS存储拷贝VHD到一个web服务器；比如，在web服务器上挂载NFS共享然后拷贝它，或者是在XenServer主机上用sftp或scp将VHD上传到web服务器。"
+
+# 96fa0ff0b9e842af9381d561f9534955
+#: ../../templates.rst:990
+msgid "In CloudStack, create a new template using the following values:"
+msgstr "在 CloudStack中，使用以下值创建一个新的模板："
+
+# 713fe06958f947ecb69e69b7d6b4d85e
+#: ../../templates.rst:992
+msgid "URL. Give the URL for the VHD"
+msgstr "URL。给VHD指定URL。"
+
+# 4af6eb652e6744cca4ac135718ee31e2
+#: ../../templates.rst:994
+msgid ""
+"OS Type. Use the appropriate OS. For PV mode on CentOS, choose Other PV "
+"(32-bit) or Other PV (64-bit). This choice is available only for XenServer."
+msgstr "OS类型。使用适当的OS。对于CentOS的PV模式来说，选择其他PV (32位)或其他PV(64位)。这个选项仅适用于XenServer。"
+
+# 2d17699c6d72457e94c849e9369be071
+#: ../../templates.rst:998
+msgid "Hypervisor. XenServer"
+msgstr "Hypervisor。XenServer"
+
+# 0fe80c0299054980a5b04cae8c3a89c4
+#: ../../templates.rst:1000
+msgid "Format. VHD"
+msgstr "格式。VHD"
+
+# 0a2022d596764dda94ee0b8c61a7b8f6
+#: ../../templates.rst:1002
+msgid "The template will be created, and you can create instances from it."
+msgstr "模板就创建好了，然后你可以通过它创建实例。"
+
+# 4a48b7a200f84177bc4c2935b3cb7020
+#: ../../templates.rst:1008
+msgid "Adding Password Management to Your Templates"
+msgstr "给你的模板添加密码管理"
+
+# c24c604a1aa648859c9853bd23207c13
+#: ../../templates.rst:1010
+msgid ""
+"CloudStack provides an optional password reset feature that allows users to "
+"set a temporary admin or root password as well as reset the existing admin "
+"or root password from the CloudStack UI."
+msgstr "CloudStack提供了可选的密码重置功能，该功能允许用户在CloudStack UI上设置临时的admin或root密码，也可以重置现有的admin或root密码。"
+
+# 217ddf1185f5412999996969e470b02e
+#: ../../templates.rst:1014
+msgid ""
+"To enable the Reset Password feature, you will need to download an "
+"additional script to patch your template. When you later upload the template"
+" into CloudStack, you can specify whether reset admin/root password feature "
+"should be enabled for this template."
+msgstr "为启用密码重置功能，您需要下载额外的脚本到模版上。当您之后在CloudStack中添加模版时，您可以指定该模版是否启用重置admin或root密码的功能。"
+
+# bed2001bd6fd4768808ffe617fb80007
+#: ../../templates.rst:1019
+msgid ""
+"The password management feature works always resets the account password on "
+"instance boot. The script does an HTTP call to the virtual router to "
+"retrieve the account password that should be set. As long as the virtual "
+"router is accessible the guest will have access to the account password that"
+" should be used. When the user requests a password reset the management "
+"server generates and sends a new password to the virtual router for the "
+"account. Thus an instance reboot is necessary to effect any password "
+"changes."
+msgstr "密码管理功能总是在虚机启动时重置账号的密码。该脚本通过对虚拟路由器的HTTP调用，获取需要重置的账号密码。启动时，只要虚拟路由器可以访问，虚机就可以获得应该设置的账号密码。当用户请求密码重置时，管理服务器会生成新密码，并发送到虚拟路由器。因而，虚机需要重启新密码才能生效。"
+
+# 6294578d1b274e62ad53e3b5b90dba5e
+#: ../../templates.rst:1028
+msgid ""
+"If the script is unable to contact the virtual router during instance boot "
+"it will not set the password but boot will continue normally."
+msgstr "在虚机重启时，如果脚本不能连接到虚拟路由器，则密码不会被重置，但启动过程还会继续正常执行。"
+
+# 19d468fa67b84dc4ad8a85a6c367545c
+#: ../../templates.rst:1033
+msgid "Linux OS Installation"
+msgstr "Linux系统安装"
+
+# 8dafc3143daa4624ac256c0d1deebdb3
+#: ../../templates.rst:1035
+msgid "Use the following steps to begin the Linux OS installation:"
+msgstr "使用一下步骤开始Linux系统的安装："
+
+# 4cc0194e2b4049d186735606a395ff0c
+#: ../../templates.rst:1037
+msgid "Download the script file cloud-set-guest-password:"
+msgstr "下载cloud-set-guest-password脚本文件："
+
+# 7dfc38f9a99c4d0bbb5007329350693e
+#: ../../templates.rst:1039
+msgid ""
+"`http://download.cloud.com/templates/4.2/bindir/cloud-set-guest-password.in "
+"<http://download.cloud.com/templates/4.2/bindir/cloud-set-guest-"
+"password.in>`_"
+msgstr "`http://download.cloud.com/templates/4.2/bindir/cloud-set-guest-password.in <http://download.cloud.com/templates/4.2/bindir/cloud-set-guest-password.in>`_"
+
+# 6eead5e6602446c78f65d37e092b049f
+#: ../../templates.rst:1042
+msgid "Copy this file to /etc/init.d."
+msgstr "拷贝本文件到 /etc/init.d 。"
+
+# 2819cf0c972f4042931c612b737e8f1d
+#: ../../templates.rst:1044
+msgid "On some Linux distributions, copy the file to ``/etc/rc.d/init.d``."
+msgstr "在某些linux发行版拷贝此文件到 ``/etc/rc.d/init.d``。"
+
+# f914b404aef44aa1a7fbc43160c833b3
+#: ../../templates.rst:1046
+msgid "Run the following command to make the script executable:"
+msgstr "执行以下命令使脚本可执行："
+
+# ae8119d7538749fb95c1ce6ac6541c59
+#: ../../templates.rst:1052
+msgid ""
+"Depending on the Linux distribution, continue with the appropriate step."
+msgstr "根据不同的Linux发行版，选择适当的步骤继续。"
+
+# c85e239054a542e88bb0030af7cb7a19
+#: ../../templates.rst:1055
+msgid "On Fedora, CentOS/RHEL, and Debian, run:"
+msgstr "在Fedora,CentOS/RHEL和Debian上运行："
+
+# e83101bd5fd3442f817ec22d010edc3e
+#: ../../templates.rst:1063
+msgid "Windows OS Installation"
+msgstr "Windows OS 安装"
+
+# c40beb0a6d5c466c994729dba2d4b12e
+#: ../../templates.rst:1065
+msgid ""
+"Download the installer, CloudInstanceManager.msi, from the `Download page "
+"<http://sourceforge.net/projects/cloudstack/files/Password%20Management%20Scripts/CloudInstanceManager.msi/download>`_"
+" and run the installer in the newly created Windows VM."
+msgstr "从`下载页<http://sourceforge.net/projects/cloudstack/files/Password%20Management%20Scripts/CloudInstanceManager.msi/download>`_ 下载安装程序CloudInstanceManager.msi，并在新创建的Windows 虚拟机中运行安装程序。"
+
+# 56df3bfa3de0447b9f0a0b4f02a1fb4c
+#: ../../templates.rst:1071
+msgid "Deleting Templates"
+msgstr "删除模板"
+
+# 2d005d50f15746f793e20a2343fe6e29
+#: ../../templates.rst:1073
+msgid ""
+"Templates may be deleted. In general, when a template spans multiple Zones, "
+"only the copy that is selected for deletion will be deleted; the same "
+"template in other Zones will not be deleted. The provided CentOS template is"
+" an exception to this. If the provided CentOS template is deleted, it will "
+"be deleted from all Zones."
+msgstr "模板可以被删除。在一般情况下，当一个模板跨越多个区域，只有被选中的副本才会被删除，在其他区域相同的模板将不会被删除。CentOS的模板是一个例外。如果所提供的CentOS的模板被删除，它从所有区域都将被删除。"
+
+# 4ddffe7d5d2b4f14814054eea2d8fd47
+#: ../../templates.rst:1079
+msgid ""
+"When templates are deleted, the VMs instantiated from them will continue to "
+"run. However, new VMs cannot be created based on the deleted template."
+msgstr "当删除模板时，从它们中产生的虚拟机实例将继续运行。然而，新的虚拟机不能在被删除模板的基础上创建。"

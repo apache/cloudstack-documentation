@@ -1,0 +1,726 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: 2014-06-30 10:26+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-installation-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 43451b40e15f4f98aff4d4219ca70733
+#: ../../hypervisor/lxc.rst:18
+msgid "LXC Installation and Configuration"
+msgstr "LXC安装和配置"
+
+# 93d6379819944090af5901bb1c1c0d79
+#: ../../hypervisor/lxc.rst:21
+msgid "System Requirements for LXC Hosts"
+msgstr "LXC主机的系统要求"
+
+# bb261276bb104960bb09b70bc7e46061
+#: ../../hypervisor/lxc.rst:23
+msgid ""
+"LXC requires the Linux kernel cgroups functionality which is available "
+"starting 2.6.24. Although you are not required to run these distributions, "
+"the following are recommended:"
+msgstr "LXC要求Linux kernel 2.6.24开始引入的 cgroups功能。尽管不需要运行所有的发行版，但是建议下列的版本："
+
+# d68380379bdd49a1891a93478283a52c
+#: ../../hypervisor/lxc.rst:27
+msgid "CentOS / RHEL: 6.3"
+msgstr "CentOS / RHEL: 6.3"
+
+# d13b3427477849a8882c7a2be2c75654
+#: ../../hypervisor/lxc.rst:29
+msgid "Ubuntu: 12.04(.1)"
+msgstr "Ubuntu: 12.04(.1)"
+
+# e29f5b26524649c9b046398ff037ce23
+#: ../../hypervisor/lxc.rst:31
+msgid ""
+"The main requirement for LXC hypervisors is the libvirt and Qemu version. No"
+" matter what Linux distribution you are using, make sure the following "
+"requirements are met:"
+msgstr "LXC hypervisor 要求libvirt和Qemu的版本。无论使用哪种Linux发行版，请确保满足以下要求："
+
+# 94b1feafb27b4459bed9dd9a2a052c0f
+# baeb40fab6b14df39610ec212fe63108
+#: ../../hypervisor/lxc.rst:35 ../../hypervisor/lxc.rst:43
+msgid "libvirt: 1.0.0 or higher"
+msgstr "libvirt: 1.0.0或更高"
+
+# cad5b5564070411fb6182cd0ad878821
+#: ../../hypervisor/lxc.rst:37
+msgid "Qemu/KVM: 1.0 or higher"
+msgstr "Qemu/KVM: 1.0 或更高版本"
+
+# 14a04946a13a4d7b967c651ed282a8a1
+#: ../../hypervisor/lxc.rst:39
+msgid ""
+"The default bridge in CloudStack is the Linux native bridge implementation "
+"(bridge module). CloudStack includes an option to work with OpenVswitch, the"
+" requirements are listed below"
+msgstr "CloudStack中的默认使用Linux本身的桥接(bridge模块)方式实现。也可选择在CloudStack中使用OpenVswitch，具体要求如下："
+
+# 50b69be40a954cff921f60a6a771059b
+#: ../../hypervisor/lxc.rst:45
+msgid "openvswitch: 1.7.1 or higher"
+msgstr "openvswitch: 1.7.1或更高版本"
+
+# a1ade5134faf4baf99ac999ab1f26788
+#: ../../hypervisor/lxc.rst:47
+msgid "In addition, the following hardware requirements apply:"
+msgstr "此外，硬件要求如下："
+
+# d15ebc2eead24a9fb2b115ac5127ac1a
+#: ../../hypervisor/lxc.rst:49
+msgid ""
+"Within a single cluster, the hosts must be of the same distribution version."
+msgstr "同一集群中主机必须使用相同版本的Linux系统。"
+
+# 9a162b24f7fd499c9793ac22d8cd360f
+#: ../../hypervisor/lxc.rst:52
+msgid ""
+"All hosts within a cluster must be homogenous. The CPUs must be of the same "
+"type, count, and feature flags."
+msgstr "同一群集中的所有节点架构必须一致。CPU的型号、数量和功能参数必须相同。"
+
+# cd66e1991f8b4d80b5267dda55cec2a8
+#: ../../hypervisor/lxc.rst:55
+msgid "Must support HVM (Intel-VT or AMD-V enabled)"
+msgstr "必须支持HVM(Intel-VT或者AMD-V)"
+
+# 717b8bb8d1a742d3a0abef21e3f17b90
+#: ../../hypervisor/lxc.rst:57
+msgid "64-bit x86 CPU (more cores results in better performance)"
+msgstr "64位x86 CPU(多核性能更佳)"
+
+# 348214c7e23d48889b3b01488710391f
+#: ../../hypervisor/lxc.rst:59
+msgid "4 GB of memory"
+msgstr "4GB 内存"
+
+# 4443612c88374256a08ca5fe5b53af70
+#: ../../hypervisor/lxc.rst:61
+msgid "At least 1 NIC"
+msgstr "至少一块网卡"
+
+# 1e16cfc2f05e4c219030609a9486327f
+#: ../../hypervisor/lxc.rst:63
+msgid ""
+"When you deploy CloudStack, the hypervisor host must not have any VMs "
+"already running"
+msgstr "在部署CloudStack时，Hypervisor主机不能运行任何虚拟机"
+
+# 5c575160ed0446838d1cdebcd70cc5b1
+#: ../../hypervisor/lxc.rst:68
+msgid "LXC Installation Overview"
+msgstr "LXC安装概述"
+
+# f252d45b9213468d9646dc4f539523fa
+#: ../../hypervisor/lxc.rst:70
+msgid ""
+"LXC does not have any native system VMs, instead KVM will be used to run "
+"system VMs. This means that your host will need to support both LXC and KVM,"
+" thus most of the installation and configuration will be identical to the "
+"KVM installation. The material in this section doesn't duplicate KVM "
+"installation docs. It provides the CloudStack-specific steps that are needed"
+" to prepare a KVM host to work with CloudStack."
+msgstr "LXC没有任何本地系统VMs，而KVM需要运行系统VMs。意思为主机需要同时支持LXC和KVM。因此，大部分的安装和配置跟KVM的安装一样。本章节不会复述KVM的安装。这里我们只会给出使KVM与CloudStack协同工作的一些特有的步骤。"
+
+# 99cca852be7249bd8ea16dc52a8b405e
+#: ../../hypervisor/lxc.rst:78
+msgid ""
+"Before continuing, make sure that you have applied the latest updates to "
+"your host."
+msgstr "在我们开始之前，请确保所有的主机都安装了最新的更新包。"
+
+# 7a72cc592a1f4a5cb0cacebf3883d960
+#: ../../hypervisor/lxc.rst:82
+msgid ""
+"It is NOT recommended to run services on this host not controlled by "
+"CloudStack."
+msgstr "不建议在主机中运行与CloudStack无关的服务。"
+
+# d6f4000ff3874464bb929b7fb2e49dcc
+#: ../../hypervisor/lxc.rst:85
+msgid "The procedure for installing an LXC Host is:"
+msgstr "安装LXC主机步骤："
+
+# 3957e2eca5b1450fa2cdac31e4c4baa9
+# d3b55c0bf6044446b80d37400ebc93b9
+#: ../../hypervisor/lxc.rst:87 ../../hypervisor/lxc.rst:97
+msgid "Prepare the Operating System"
+msgstr "准备操作系统"
+
+# 055e7a4b9b6f40098143553e04e75142
+#: ../../hypervisor/lxc.rst:89
+msgid "Install and configure libvirt"
+msgstr "安装和配置libvirt"
+
+# 3d012316e0e548a898752588ad9f8ea6
+#: ../../hypervisor/lxc.rst:91
+msgid "Configure Security Policies (AppArmor and SELinux)"
+msgstr "配置安全策略 (AppArmor 和 SELinux)"
+
+# 64413c2cb08e4dc4b057fd257e1e983e
+# 8ef5b6b2388141729517cc4fefd87440
+#: ../../hypervisor/lxc.rst:93 ../../hypervisor/lxc.rst:140
+msgid "Install and configure the Agent"
+msgstr "安装和配置Agent"
+
+# 8466bfaf482d4d6599658d9411867dea
+#: ../../hypervisor/lxc.rst:99
+msgid ""
+"The OS of the Host must be prepared to host the CloudStack Agent and run KVM"
+" instances."
+msgstr "主机的操作系统必须为运行CloudStack Agent和KVM实例做些准备。"
+
+# 75c2b7bef1834d809a1804dc83d2e1fa
+#: ../../hypervisor/lxc.rst:102
+msgid "Log in to your OS as root."
+msgstr "使用root用户登录操作系统。"
+
+# b9dccd7b46514913be1eb8e7b074ac01
+#: ../../hypervisor/lxc.rst:104
+msgid "Check for a fully qualified hostname."
+msgstr "检查FQN完全合格/限定主机名。"
+
+# 95a324234f074b9991a1c506af6239c2
+#: ../../hypervisor/lxc.rst:110
+msgid ""
+"This should return a fully qualified hostname such as "
+"\"kvm1.lab.example.org\". If it does not, edit /etc/hosts so that it does."
+msgstr "该命令会返回完全合格/限定主机名，例如\"kvm1.lab.example.org\"。如果没有，请编辑 /etc/hosts。"
+
+# abcfdb639b3c48e994b3f12ffb1cada1
+#: ../../hypervisor/lxc.rst:114
+msgid "Make sure that the machine can reach the Internet."
+msgstr "确保机器可以连接到互联网."
+
+# de73cc85f6bb44e788c9ea8d31d6a6ad
+#: ../../hypervisor/lxc.rst:120
+msgid "Turn on NTP for time synchronization."
+msgstr "启用NTP服务以确保时间同步."
+
+# 9d75eb82ba9f45178754d7a1b28c6a52
+#: ../../hypervisor/lxc.rst:123
+msgid ""
+"NTP is required to synchronize the clocks of the servers in your cloud. "
+"Unsynchronized clocks can cause unexpected problems."
+msgstr "NTP服务用来同步云中的服务器时间。时间不同步会带来意想不到的问题。"
+
+# 05286054f8844c638f951a6f8fb5b85e
+#: ../../hypervisor/lxc.rst:126
+msgid "Install NTP"
+msgstr "安装NTP"
+
+# bbe6d187091b41178985da38a664feb3
+#: ../../hypervisor/lxc.rst:136
+msgid "Repeat all of these steps on every hypervisor host."
+msgstr "在所有主机中重复上述步骤。"
+
+# 045c7ecca5a246ff9218024c3f3ae129
+#: ../../hypervisor/lxc.rst:142
+msgid ""
+"To manage LXC instances on the host CloudStack uses a Agent. This Agent "
+"communicates with the Management server and controls all the instances on "
+"the host."
+msgstr "CloudStack使用代理管理LXC实例。管理服务器与代理通信并控制主机中所有实例。"
+
+# c201aad8986d46c891235c1b0db5cd06
+#: ../../hypervisor/lxc.rst:146
+msgid "First we start by installing the agent:"
+msgstr "首先我们安装Agent："
+
+# 415c53c92754469eb9cc8121af962ecf
+# fb5081e503f74e6995e63f1dd73d384d
+# 67c12bc85b6c4cd28de0f5dfaf696bf0
+#: ../../hypervisor/lxc.rst:148 ../../hypervisor/lxc.rst:260
+#: ../../hypervisor/lxc.rst:296
+msgid "In RHEL or CentOS:"
+msgstr "在RHEL/CentOS上:"
+
+# d1b500c6b3bb470f8ad07118cc13a0bf
+# 69d3e8a5b14a4d32a55350bfa8b6f12a
+#: ../../hypervisor/lxc.rst:154 ../../hypervisor/lxc.rst:266
+msgid "In Ubuntu:"
+msgstr "在Ubuntu上:"
+
+# 04df1ba82d804c3e93844dbf7cdd829d
+#: ../../hypervisor/lxc.rst:160
+msgid ""
+"Next step is to update the Agent configuration setttings. The settings are "
+"in ``/etc/cloudstack/agent/agent.properties``"
+msgstr "接下来更新代理配置。在 ``/etc/cloudstack/agent/agent.properties`` 中配置"
+
+# 3948b221adf748639788b545bdd0e3a7
+#: ../../hypervisor/lxc.rst:163
+msgid "Set the Agent to run in LXC mode:"
+msgstr "设置代理运行在LXC模式下："
+
+# cb52c2209b544fd8a09751340ec83214
+#: ../../hypervisor/lxc.rst:169
+msgid ""
+"Optional: If you would like to use direct networking (instead of the default"
+" bridge networking), configure these lines:"
+msgstr "可选项：如果想使用直连网络(代替默认的桥接网络)，配置如下行："
+
+# 6d6647d83e8145d28e4220e85924d010
+# c8b990ebe5d445a78252e84e2c4e5652
+#: ../../hypervisor/lxc.rst:184 ../../hypervisor/lxc.rst:667
+msgid ""
+"The host is now ready to be added to a cluster. This is covered in a later "
+"section, see :ref:`adding-a-host`. It is recommended that you continue to "
+"read the documentation before adding the host!"
+msgstr "现在主机已经为加入群集做好准备。后面的章节有介绍，请参阅 :ref:`adding-a-host`。强烈建议在添加主机之前阅读此部分内容。"
+
+# cacd4ea9375c4864a2c9fb041bb4bc7c
+#: ../../hypervisor/lxc.rst:191
+msgid "Install and Configure libvirt"
+msgstr "安装和配置libvirt"
+
+# b0f7e7f7680e490eacb65fb0cb1b98c6
+#: ../../hypervisor/lxc.rst:193
+msgid ""
+"CloudStack uses libvirt for managing virtual machines. Therefore it is vital"
+" that libvirt is configured correctly. Libvirt is a dependency of "
+"cloudstack-agent and should already be installed."
+msgstr "CloudStack使用libvirt管理虚拟机。因此正确地配置libvirt至关重要。CloudStack-agent依赖于Libvirt，应提前安装完毕。"
+
+# f54bd7715b5441f687683613bff00956
+#: ../../hypervisor/lxc.rst:197
+msgid ""
+"In order to have live migration working libvirt has to listen for unsecured "
+"TCP connections. We also need to turn off libvirts attempt to use Multicast "
+"DNS advertising. Both of these settings are in "
+"``/etc/libvirt/libvirtd.conf``"
+msgstr "为了实现动态迁移libvirt需要监听不可靠的TCP连接。还要关闭libvirts尝试使用组播DNS进行广播。这些都可以在 /etc/libvirt/libvirtd.conf文件中进行配置。"
+
+# 7307dff0578a4767a3b5fa1812366060
+#: ../../hypervisor/lxc.rst:202
+msgid "Set the following parameters:"
+msgstr "设定下列参数："
+
+# 15b53ac02e8d44e0aa89579320fcdb63
+#: ../../hypervisor/lxc.rst:224
+msgid ""
+"Turning on \"listen\\_tcp\" in libvirtd.conf is not enough, we have to "
+"change the parameters as well:"
+msgstr "除了在libvirtd.conf中打开\"listen_tcp\"以外，我们还必须修改/etc/sysconfig/libvirtd中的参数:"
+
+# 48d050262fe84becbb7e6c94efc4dfba
+#: ../../hypervisor/lxc.rst:227
+msgid "On RHEL or CentOS modify ``/etc/sysconfig/libvirtd``:"
+msgstr "在RHEL或者CentOS中修改 ``/etc/sysconfig/libvirtd``："
+
+# 76e8b6056dc84935aaf0ca036b0155ee
+#: ../../hypervisor/lxc.rst:229
+msgid "Uncomment the following line:"
+msgstr "取消如下行的注释："
+
+# f3a3573b89414eb4a4d76ebbe98300d9
+#: ../../hypervisor/lxc.rst:235
+msgid "On Ubuntu: modify ``/etc/default/libvirt-bin``"
+msgstr "在Ubuntu中:修改 ``/etc/default/libvirt-bin`` "
+
+# dd99331d08b34cb7acceb95817539208
+#: ../../hypervisor/lxc.rst:237
+msgid "Add \"-l\" to the following line"
+msgstr "在下列行添加 \"-l\""
+
+# 0322d77ee56e454c9351e115b1a8a45d
+#: ../../hypervisor/lxc.rst:243
+msgid "so it looks like:"
+msgstr "如下所示:"
+
+# 6334d52ad51a4fc69fc58128e38f2319
+#: ../../hypervisor/lxc.rst:249
+msgid ""
+"In order to have the VNC Console work we have to make sure it will bind on "
+"0.0.0.0. We do this by editing ``/etc/libvirt/qemu.conf``"
+msgstr "为了VNC控制台正常工作，必须确保该参数绑定在0.0.0.0上。通过编辑 ``/etc/libvirt/qemu.conf``实现。"
+
+# 27259d3d47ab4f929936de05e3d77118
+#: ../../hypervisor/lxc.rst:252
+msgid "Make sure this parameter is set:"
+msgstr "请确保这个参数配置为："
+
+# 314400b666db4e16b3133e7ddb4aa140
+#: ../../hypervisor/lxc.rst:258
+msgid "Restart libvirt"
+msgstr "重启libvirt服务"
+
+# 4d9c0c7846c0455b97268a20ec9eb588
+#: ../../hypervisor/lxc.rst:274
+msgid "Configure the Security Policies"
+msgstr "配置安全策略"
+
+# c9864510ba8d4a5183f23a8c14f94563
+#: ../../hypervisor/lxc.rst:276
+msgid ""
+"CloudStack does various things which can be blocked by security mechanisms "
+"like AppArmor and SELinux. These have to be disabled to ensure the Agent has"
+" all the required permissions."
+msgstr "CloudStack的会被例如AppArmor和SELinux的安全机制阻止。必须关闭安全机制并确保 Agent具有所必需的权限。"
+
+# 19dce9911cb5468e8ecca028cc3629d0
+#: ../../hypervisor/lxc.rst:280
+msgid "Configure SELinux (RHEL and CentOS)"
+msgstr "配置SELinux（RHEL和CentOS）："
+
+# c7bde8f0637b4bc0b30d695a9148ea26
+#: ../../hypervisor/lxc.rst:282
+msgid ""
+"Check to see whether SELinux is installed on your machine. If not, you can "
+"skip this section."
+msgstr "检查你的机器是否安装了SELinux。如果没有，请跳过此部分。"
+
+# 4153e72e86e54e569528229e10430c13
+#: ../../hypervisor/lxc.rst:285
+msgid ""
+"In RHEL or CentOS, SELinux is installed and enabled by default. You can "
+"verify this with:"
+msgstr "在RHEL或者CentOS中，SELinux是默认安装并启动的。你可以使用如下命令验证："
+
+# bcc78a8cd2f343dead2d193b7d56bf2e
+#: ../../hypervisor/lxc.rst:292
+msgid ""
+"Set the SELINUX variable in ``/etc/selinux/config`` to \"permissive\". This "
+"ensures that the permissive setting will be maintained after a system "
+"reboot."
+msgstr "在 ``/etc/selinux/config`` 中设置SELINUX变量值为 \"permissive\"。这样能确保对SELinux的设置在系统重启之后依然生效。"
+
+# 43e21420401741e2997b97701eff333e
+#: ../../hypervisor/lxc.rst:302
+msgid "Change the following line"
+msgstr "查找如下行"
+
+# 90ead7a947fc40daabdafad6a1b988fb
+#: ../../hypervisor/lxc.rst:308
+msgid "to this"
+msgstr "修改为"
+
+# 3040526ce2ff4279bafd31876dd69d4a
+#: ../../hypervisor/lxc.rst:314
+msgid ""
+"Then set SELinux to permissive starting immediately, without requiring a "
+"system reboot."
+msgstr "然后使SELinux立即运行于permissive模式，无需重新启动系统。"
+
+# 52396bdef51d440f9db42978c93847dc
+#: ../../hypervisor/lxc.rst:321
+msgid "Configure Apparmor (Ubuntu)"
+msgstr "配置AppArmor(Ubuntu)"
+
+# 19599a1513614b4f984636e98ee6d2f1
+#: ../../hypervisor/lxc.rst:323
+msgid ""
+"Check to see whether AppArmor is installed on your machine. If not, you can "
+"skip this section."
+msgstr "检查你的机器中是否安装了AppArmor。如果没有，请跳过此部分。"
+
+# 7c0035c7f5ec4b07ba0088564f98754e
+#: ../../hypervisor/lxc.rst:326
+msgid ""
+"In Ubuntu AppArmor is installed and enabled by default. You can verify this "
+"with:"
+msgstr "Ubuntu中默认安装并启动AppArmor。使用如下命令验证："
+
+# 4d576628709d47f38d097a74e45b5aa4
+#: ../../hypervisor/lxc.rst:333
+msgid "Disable the AppArmor profiles for libvirt"
+msgstr "在AppArmor配置文件中禁用libvirt"
+
+# 4182b6b7d26b46b99feff257f01b0b19
+#: ../../hypervisor/lxc.rst:353
+msgid "Configure the network bridges"
+msgstr "配置网络桥接"
+
+# c4f546fe4c1d46b0a68265d339df86ff
+#: ../../hypervisor/lxc.rst:356
+msgid ""
+"This is a very important section, please make sure you read this thoroughly."
+msgstr "本章节非常重要，请务必彻底理解。"
+
+# e0a8dbc6e7e9410fa60dd28738b69792
+#: ../../hypervisor/lxc.rst:359
+msgid ""
+"This section details how to configure bridges using the native "
+"implementation in Linux. Please refer to the next section if you intend to "
+"use OpenVswitch"
+msgstr "本章节详细介绍了如何使用Linux自带的软件配置桥接网络。如果要使用OpenVswitch，请看下一章节。"
+
+# 7dfb485a01f249d39f5527e0c4c36cf9
+#: ../../hypervisor/lxc.rst:363
+msgid ""
+"In order to forward traffic to your instances you will need at least two "
+"bridges: *public* and *private*."
+msgstr "为了转发流量到实例，至少需要两个桥接网络： *public* 和 *private*。"
+
+# 9948a8e0c4ca41c38a570931fd602edc
+#: ../../hypervisor/lxc.rst:366
+msgid ""
+"By default these bridges are called *cloudbr0* and *cloudbr1*, but you do "
+"have to make sure they are available on each hypervisor."
+msgstr " 默认情况下，这些桥接被称为*cloudbr0*和*cloudbr1*，但必须确保他们在每个hypervisor上都是可用的。"
+
+# dcbc1defc34f4793b6b6f08e1434ee90
+#: ../../hypervisor/lxc.rst:369
+msgid ""
+"The most important factor is that you keep the configuration consistent on "
+"all your hypervisors."
+msgstr "最重要的因素是所有hypervisors上的配置要保持一致。"
+
+# bc77d68b01c842caaba9c228953c9c9a
+#: ../../hypervisor/lxc.rst:374
+msgid "Network example"
+msgstr "网络示例"
+
+# d445133ac7514f30b223a361e185bca3
+#: ../../hypervisor/lxc.rst:376
+msgid ""
+"There are many ways to configure your network. In the Basic networking mode "
+"you should have two (V)LAN's, one for your private network and one for the "
+"public network."
+msgstr "配置网络有很多方法。在基本网络模式中你应该拥有2个 (V)LAN，一个用于管理网络，一个用于公共网络。"
+
+# 7fcbe3dbd5e24cc78a454b43046db3dc
+#: ../../hypervisor/lxc.rst:380
+msgid ""
+"We assume that the hypervisor has one NIC (eth0) with three tagged VLAN's:"
+msgstr "假设hypervisor中的网卡(eth0)有3个VLAN标签："
+
+# 79f9905e712d4477ad6f1242de95100a
+#: ../../hypervisor/lxc.rst:383
+msgid "VLAN 100 for management of the hypervisor"
+msgstr "VLAN 100 作为hypervisor的管理网络"
+
+# ae33b27f9bac420195c64c0770a86cd0
+#: ../../hypervisor/lxc.rst:385
+msgid "VLAN 200 for public network of the instances (cloudbr0)"
+msgstr " VLAN 200 作为实例的公共网络 (cloudbr0)"
+
+# fa09f2d8754547ca8140ba9117584838
+#: ../../hypervisor/lxc.rst:387
+msgid "VLAN 300 for private network of the instances (cloudbr1)"
+msgstr "VLAN 300 作为实例的专用网络 (cloudbr1)"
+
+# 6b19d1a474714e77a49083b08d8a70ad
+#: ../../hypervisor/lxc.rst:389
+msgid ""
+"On VLAN 100 we give the Hypervisor the IP-Address 192.168.42.11/24 with the "
+"gateway 192.168.42.1"
+msgstr "在VLAN 100 中，配置Hypervisor的IP为 192.168.42.11/24，网关为192.168.42.1"
+
+# 66e4325554bd44839b00ff46222bb488
+#: ../../hypervisor/lxc.rst:393
+msgid ""
+"The Hypervisor and Management server don't have to be in the same subnet!"
+msgstr "Hypervisor与管理服务器不需要在同一个子网！"
+
+# 0c38727f3c5145db8ac92b2df423f9f3
+#: ../../hypervisor/lxc.rst:396
+msgid "Configuring the network bridges"
+msgstr "配置网络桥接"
+
+# 87f57c9a5f394d4f9d55876ad8bbf7b5
+#: ../../hypervisor/lxc.rst:398
+msgid ""
+"It depends on the distribution you are using how to configure these, below "
+"you'll find examples for RHEL/CentOS and Ubuntu."
+msgstr "配置方式取决于发行版类型，下面给出RHEL/CentOS和Ubuntu的配置示例。"
+
+# 66be5e9df4cc4265a1e9b7b608fe271a
+#: ../../hypervisor/lxc.rst:402
+msgid ""
+"The goal is to have two bridges called 'cloudbr0' and 'cloudbr1' after this "
+"section. This should be used as a guideline only. The exact configuration "
+"will depend on your network layout."
+msgstr "本章节的目标是配置两个名为 'cloudbr0'和'cloudbr1'的桥接网络。这仅仅是指导性的，实际情况还要取决于你的网络布局。"
+
+# 77f72e31b31c4ff48abfeab14d5c4b81
+#: ../../hypervisor/lxc.rst:408
+msgid "Configure in RHEL or CentOS"
+msgstr "在RHEL或CentOS中配置："
+
+# 5cd8006226944c75823d3fc69513965f
+#: ../../hypervisor/lxc.rst:410
+msgid ""
+"The required packages were installed when libvirt was installed, we can "
+"proceed to configuring the network."
+msgstr "网络桥接所需的软件在安装libvirt时就已被安装，继续配置网络。"
+
+# 3c73eb0802d2412eba4716e54ae34079
+#: ../../hypervisor/lxc.rst:413
+msgid "First we configure eth0"
+msgstr "首先配置eth0："
+
+# 19f74e9662c943b2b0d717aa2d8e80bf
+#: ../../hypervisor/lxc.rst:419
+msgid "Make sure it looks similar to:"
+msgstr "确保内容如下所示："
+
+# e751abe2e0124ba9b0f542abd413a2d0
+#: ../../hypervisor/lxc.rst:430
+msgid "We now have to configure the three VLAN interfaces:"
+msgstr "现在配置3个VLAN接口："
+
+# 821a8f3fb92d431e8be2f46a196c35bb
+#: ../../hypervisor/lxc.rst:479
+msgid ""
+"Now we have the VLAN interfaces configured we can add the bridges on top of "
+"them."
+msgstr "配置VLAN接口以便能够附加桥接网络。"
+
+# 755eeca19e1e4bd98aff0dd3a0c00845
+#: ../../hypervisor/lxc.rst:486
+msgid "Now we just configure it is a plain bridge without an IP-Address"
+msgstr "现在只配置一个没有IP的桥接。"
+
+# b04314407fb64b85844b09abb048169b
+#: ../../hypervisor/lxc.rst:499
+msgid "We do the same for cloudbr1"
+msgstr "同样建立cloudbr1"
+
+# ec7d49c23ca9494d9ae4d1fd87a835cb
+# 3495886017224d39aa2c595d960a7ef1
+#: ../../hypervisor/lxc.rst:516 ../../hypervisor/lxc.rst:566
+msgid ""
+"With this configuration you should be able to restart the network, although "
+"a reboot is recommended to see if everything works properly."
+msgstr "配置完成之后重启网络，通过重启检查一切是否正常。"
+
+# 3b0ccd039c8d42b4a0e5d7b35d533763
+# 16b5ca319946407fb1a833f3f566ad4c
+#: ../../hypervisor/lxc.rst:520 ../../hypervisor/lxc.rst:570
+msgid ""
+"Make sure you have an alternative way like IPMI or ILO to reach the machine "
+"in case you made a configuration error and the network stops functioning!"
+msgstr "在发生配置错误和网络故障的时，请确保可以能通过其他方式例如IPMI或ILO连接到服务器。"
+
+# 33fce556fd75408baf0d8f252c1c4aa9
+#: ../../hypervisor/lxc.rst:525
+msgid "Configure in Ubuntu"
+msgstr "在Ubuntu中配置："
+
+# 57356f0b3a6b48878fc6cc570d10d516
+#: ../../hypervisor/lxc.rst:527
+msgid ""
+"All the required packages were installed when you installed libvirt, so we "
+"only have to configure the network."
+msgstr "在安装libvirt时所需的其他软件也会被安装，所以只需配置网络即可。"
+
+# bde1178e96404b77bb9b9c18c923aa2e
+#: ../../hypervisor/lxc.rst:534
+msgid "Modify the interfaces file to look like this:"
+msgstr "如下所示修改接口文件："
+
+# d5065122bf4a4f5c83dedf6baa1c2306
+#: ../../hypervisor/lxc.rst:575
+msgid "Configuring the firewall"
+msgstr "配置防火墙"
+
+# 2749450a561548e3b39d03e1a9af0672
+#: ../../hypervisor/lxc.rst:577
+msgid ""
+"The hypervisor needs to be able to communicate with other hypervisors and "
+"the management server needs to be able to reach the hypervisor."
+msgstr "hypervisor之间和hypervisor与管理服务器之间要能够通讯。"
+
+# c76bea5d16c743f88d76b477d69bf172
+#: ../../hypervisor/lxc.rst:580
+msgid ""
+"In order to do so we have to open the following TCP ports (if you are using "
+"a firewall):"
+msgstr "为了达到这个目的，我们需要开通以下TCP端口(如果使用防火墙)："
+
+# e0a0a271492c47a0b549ec0fa2319108
+#: ../../hypervisor/lxc.rst:583
+msgid "22 (SSH)"
+msgstr "22 (SSH)"
+
+# 0d0046b470a24b35a6bbbb93e416d8ea
+#: ../../hypervisor/lxc.rst:585
+msgid "1798"
+msgstr "1798"
+
+# 9d1fa0fdb4ef48c0ad4b41556ca20e9d
+#: ../../hypervisor/lxc.rst:587
+msgid "16509 (libvirt)"
+msgstr "16509 (libvirt)"
+
+# e5d29bf0b5604b418180606c2d4826e4
+#: ../../hypervisor/lxc.rst:589
+msgid "5900 - 6100 (VNC consoles)"
+msgstr "5900 - 6100 (VNC 控制台)"
+
+# 53bdbd256dd44308a212a48b8de7be9c
+#: ../../hypervisor/lxc.rst:591
+msgid "49152 - 49216 (libvirt live migration)"
+msgstr "49152 - 49216 (libvirt在线迁移)"
+
+# e1b82341b7f14145ae2b1be829bcdf18
+#: ../../hypervisor/lxc.rst:593
+msgid ""
+"It depends on the firewall you are using how to open these ports. Below "
+"you'll find examples how to open these ports in RHEL/CentOS and Ubuntu."
+msgstr "如何打开这些端口取决于你使用的发行版本。在RHEL/CentOS 及Ubuntu中的示例如下。"
+
+# eadaeb9bb6514298924b9fb479ddb280
+#: ../../hypervisor/lxc.rst:598
+msgid "Open ports in RHEL/CentOS"
+msgstr "在RHEL/CentOS中打开端口"
+
+# dbd7938f1a764dfe9159e9eaa1119863
+#: ../../hypervisor/lxc.rst:600
+msgid ""
+"RHEL and CentOS use iptables for firewalling the system, you can open extra "
+"ports by executing the following iptable commands:"
+msgstr "RHEL 及 CentOS使用iptables作为防火墙，执行以下iptables命令来开启端口："
+
+# d20a63121d8d4a90b51c2e5eb1dc1b8e
+#: ../../hypervisor/lxc.rst:623
+msgid ""
+"These iptable settings are not persistent accross reboots, we have to save "
+"them first."
+msgstr "这些iptables配置并不会持久保存，重启之后将会消失，我们必须手动保存这些配置。"
+
+# 43b24147a3aa400f940581bae2f54fb3
+#: ../../hypervisor/lxc.rst:632
+msgid "Open ports in Ubuntu"
+msgstr "在Ubuntu中打开端口："
+
+# dbd52c7373bd40008b953dc3d9b13496
+#: ../../hypervisor/lxc.rst:634
+msgid ""
+"The default firewall under Ubuntu is UFW (Uncomplicated FireWall), which is "
+"a Python wrapper around iptables."
+msgstr "Ubuntu中的默认防火墙是UFW(Uncomplicated FireWall)，使用Python围绕iptables进行包装。"
+
+# 34381e08303c46de9cb9a2ba59cc3026
+#: ../../hypervisor/lxc.rst:637
+msgid "To open the required ports, execute the following commands:"
+msgstr "要打开所需端口，请执行以下命令："
+
+# 36b32007e54b471f951bbd763f7a7d04
+#: ../../hypervisor/lxc.rst:660
+msgid ""
+"By default UFW is not enabled on Ubuntu. Executing these commands with the "
+"firewall disabled does not enable the firewall."
+msgstr "默认情况下，Ubuntu中并未启用UFW。在关闭情况下执行这些命令并不能启用防火墙。"
+
+# 1f96f5667281430689c6573d520ffbbc
+#: ../../hypervisor/lxc.rst:665
+msgid "Add the host to CloudStack"
+msgstr "添加主机到CloudStack"

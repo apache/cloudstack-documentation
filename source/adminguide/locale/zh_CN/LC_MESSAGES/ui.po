@@ -1,0 +1,265 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:04+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 823af79fce60474780309ce761b8cbb3
+#: ../../ui.rst:18
+msgid "User Interface"
+msgstr "用户界面"
+
+# a41f3714ea474cafa002318580d95e84
+#: ../../ui.rst:21
+msgid "Log In to the UI"
+msgstr "登陆到用户界面"
+
+# aab161d8e0fa441c97c979ad5befdaf2
+#: ../../ui.rst:23
+msgid ""
+"CloudStack provides a web-based UI that can be used by both administrators "
+"and end users. The appropriate version of the UI is displayed depending on "
+"the credentials used to log in. The UI is available in popular browsers "
+"including IE7, IE8, IE9, Firefox 3.5+, Firefox 4, Safari 4, and Safari 5. "
+"The URL is: (substitute your own management server IP address)"
+msgstr "CloudStack提供一个基于web的UI，管理员和终端用户能够使用这个界面。用户界面版本依赖于登陆时使用的凭证不同而不同。用户界面是适用于大多数流行的浏览器包括IE7,IE8,IE9,Firefox3.5+,Firefox4,Safari4,和Safari5。URL是:(用你自己的管理控制服务器IP地址代替)"
+
+# 5757c519124e45b4b91631b922360a4c
+#: ../../ui.rst:34
+msgid ""
+"On a fresh Management Server installation, a guided tour splash screen "
+"appears. On later visits, you’ll see a login screen where you specify the "
+"following to proceed to your Dashboard:"
+msgstr "如果管理服务器是全新的安装,。那么会出现一个安装向导。在稍后的访问中,，你将看到一个登录界面,，你需要通过用户名和密码登入来查看你的仪表盘."
+
+# 192d35e05058441db921256f04a28daf
+#: ../../ui.rst:38
+msgid ""
+"Username -> The user ID of your account. The default username is admin."
+msgstr "用户名 -> 你账号的用户ID。默认用户名是admin。"
+
+# 7ca04676225345a3a4d7e9f05fa900b9
+#: ../../ui.rst:40
+msgid ""
+"Password -> The password associated with the user ID. The password for the "
+"default username is password."
+msgstr "密码 -> 用户ID对应的密码。默认用户名的密码是password。"
+
+# fff9c234e7724e1aa8a5ca63b9cbc714
+#: ../../ui.rst:43
+msgid "Domain -> If you are a root user, leave this field blank."
+msgstr "域 -> 如果你是root用户，此处留空即可。"
+
+# f7cc367a3acb49149809ad5212740659
+#: ../../ui.rst:45
+msgid ""
+"If you are a user in the sub-domains, enter the full path to the domain, "
+"excluding the root domain."
+msgstr "如果你是一个子域用户，在域中输入完全路径，不包括根域。"
+
+# 2716e01ce2b446be9cf2b3c098897945
+#: ../../ui.rst:48
+msgid ""
+"For example, suppose multiple levels are created under the root domain, such"
+" as Comp1/hr. The users in the Comp1 domain should enter Comp1 in the Domain"
+" field, whereas the users in the Comp1/sales domain should enter "
+"Comp1/sales."
+msgstr "例如，假设在根域下建立了多个层级，像Comp1/hr，在Comp1域的用户在域字段处应该输入Comp1，在Comp1/sales域的用户应该输入Comp1/sales。"
+
+# dab31f7d62b846799291e80598d3534d
+#: ../../ui.rst:53
+msgid ""
+"For more guidance about the choices that appear when you log in to this UI, "
+"see Logging In as the Root Administrator."
+msgstr "更多关于当你登录这个界面时选项的指导，参照作为根管理员登录。"
+
+# f89e19a4f46d49d3899770c2d8d858ae
+#: ../../ui.rst:58
+msgid "End User's UI Overview"
+msgstr "最终用户界面概览"
+
+# fab0b6e0d255493e9c1a1800bffbd107
+#: ../../ui.rst:60
+msgid ""
+"The CloudStack UI helps users of cloud infrastructure to view and use their "
+"cloud resources, including virtual machines, templates and ISOs, data "
+"volumes and snapshots, guest networks, and IP addresses. If the user is a "
+"member or administrator of one or more CloudStack projects, the UI can "
+"provide a project-oriented view."
+msgstr "CloudStack用户界面帮助云基础设施的用户查看和使用他们的云资源，包括虚拟机、模板和ISO、数据卷和快照、宾客网络，以及IP 地址。如果用户是一个或多个CloudStack项目的成员或管理员，用户界面能提供一个面向项目的视图。"
+
+# 03bffb509d6342f09a88c6c18b4a0041
+#: ../../ui.rst:68
+msgid "Root Administrator's UI Overview"
+msgstr "根管理员界面的概述"
+
+# f46ea02636f0416ab79e48c05c194422
+#: ../../ui.rst:70
+msgid ""
+"The CloudStack UI helps the CloudStack administrator provision, view, and "
+"manage the cloud infrastructure, domains, user accounts, projects, and "
+"configuration settings. The first time you start the UI after a fresh "
+"Management Server installation, you can choose to follow a guided tour to "
+"provision your cloud infrastructure. On subsequent logins, the dashboard of "
+"the logged-in user appears. The various links in this screen and the "
+"navigation bar on the left provide access to a variety of administrative "
+"functions. The root administrator can also use the UI to perform all the "
+"same tasks that are present in the end-user’s UI."
+msgstr "CloudStack界面帮助CloudStack管理员配置、查看和管理云的基础设施、用户域、账号、项目和配置。当一个全新的管理服务器安装完成后，在第一次启动界面的时候，可以选择根随引导步骤配置云的基础设施。当再次登录时，会显示当前登录用户的仪表板。在这个页面有很多的连接，可以通过左边的导航栏访问各种管理功能。根管理员也可以使用界面像最终用户一样来执行所有的功能。 "
+
+# 2010e004d6354a46899b6e0a6177a36a
+#: ../../ui.rst:82
+msgid "Logging In as the Root Administrator"
+msgstr "作为根管理员登录"
+
+# beb82ae526444b67b6c2baff8c7901a7
+#: ../../ui.rst:84
+msgid ""
+"After the Management Server software is installed and running, you can run "
+"the CloudStack user interface. This UI is there to help you provision, view,"
+" and manage your cloud infrastructure."
+msgstr "在管理服务器软件安装并且运行后, 你就可以运行CloudStack的用户界面.了。在这里通过UI，可以供给、查看并管理你的云基础架构。"
+
+# 6beabdba74e7408e8fcc8ffa226a704e
+# 8c7e2423aea64ae6b5b2f13c8c000895
+#: ../../ui.rst:88 ../../ui.rst:151
+msgid ""
+"Open your favorite Web browser and go to this URL. Substitute the IP address"
+" of your own Management Server:"
+msgstr "打开你自己喜欢的浏览器并访问这个URL。请把IP地址替换成你自己的管理服务器的IP。"
+
+# 5afc8c800bcb4248a79f7b7dc8ea6173
+#: ../../ui.rst:95
+msgid ""
+"After logging into a fresh Management Server installation, a guided tour "
+"splash screen appears. On later visits, you’ll be taken directly into the "
+"Dashboard."
+msgstr "初次登录管理服务器时，会出现一个向导启动画面。后续访问时，您会直接进入控制面板。"
+
+# a27fd5db6a0d41dbb4d17954889871c7
+#: ../../ui.rst:99
+msgid "If you see the first-time splash screen, choose one of the following."
+msgstr "如果你看到第一次的向导屏幕, 可以选择下面步骤之一进行。"
+
+# f9579429faa6431a9cc007c91af49e61
+#: ../../ui.rst:101
+msgid ""
+"**Continue with basic setup.** Choose this if you're just trying CloudStack,"
+" and you want a guided walkthrough of the simplest possible configuration so"
+" that you can get started right away. We'll help you set up a cloud with the"
+" following features: a single machine that runs CloudStack software and uses"
+" NFS to provide storage; a single machine running VMs under the XenServer or"
+" KVM hypervisor; and a shared public network."
+msgstr "**继续执行基本安装。**如果你仅仅是想体验CloudStack，请选择这个，并且这样你可以马上开始跟着向导进行简单的配置。我们将帮助你建立一个有以下功能的云：一个运行CloudStack软件的机器和使用NFS协议的存储；一个运行VMs的XenServer或KVM hypervisor的服务器；一个共享的公有网络。"
+
+# 8a24a6a0c06f440087e093cad917bffb
+#: ../../ui.rst:109
+msgid ""
+"The prompts in this guided tour should give you all the information you "
+"need, but if you want just a bit more detail, you can follow along in the "
+"Trial Installation Guide."
+msgstr "安装向导的提示会给你需要的所有信息。但如果你需要更多的详细信息，你可以按照试用安装向导进行。"
+
+# 81d70c27e4d842afbbdc4f74e0c19acb
+#: ../../ui.rst:113
+msgid ""
+"**I have used CloudStack before.** Choose this if you have already gone "
+"through a design phase and planned a more sophisticated deployment, or you "
+"are ready to start scaling up a trial cloud that you set up earlier with the"
+" basic setup screens. In the Administrator UI, you can start using the more "
+"powerful features of CloudStack, such as advanced VLAN networking, high "
+"availability, additional network elements such as load balancers and "
+"firewalls, and support for multiple hypervisors including Citrix XenServer, "
+"KVM, and VMware vSphere."
+msgstr "**我之前用过CloudStack。** 如果您已经完成设计阶段，计划部署一个复杂CloudStack云，或是准备对用基础安装向导搭建的试验云进行扩展，请选择此项。在管理员UI中，您可以使用CloudStack中更强大的功能，例如高级VLAN网络、高可用、负载均衡器和防火墙等额外网络设备，以及支持Citrix XenServer、KVM、VMware vSphere等多种虚拟化平台。"
+
+# 031ecbafb6b14054869c6a4202b5c1fd
+#: ../../ui.rst:123
+msgid "The root administrator Dashboard appears."
+msgstr "根管理员的仪表盘显示出来。"
+
+# 7d9e4e036dec429db9386110482d17fa
+#: ../../ui.rst:125
+msgid ""
+"You should set a new root administrator password. If you chose basic setup, "
+"you’ll be prompted to create a new password right away. If you chose "
+"experienced user, use the steps in :ref:`changing-root-password`."
+msgstr "你应该为根管理员设置一个新的密码。如果你选择基础设置。将会提示你立即创建一个新的密码。如果你选择有经验的用户，请选择:ref:`changing-root-password`里的步骤。"
+
+# 812d903dc8bc4cf5a98f694baeb328a0
+#: ../../ui.rst:130
+msgid ""
+"You are logging in as the root administrator. This account manages the "
+"CloudStack deployment, including physical infrastructure. The root "
+"administrator can modify configuration settings to change basic "
+"functionality, create or delete user accounts, and take many actions that "
+"should be performed only by an authorized person. Please change the default "
+"password to a new, unique password."
+msgstr "使用根管理员登录。这个账号管理CloudStack的部署，包括物理架构。根管理员可以通过更改配置来变更基本的功能，创建或删除用户账号，以及其它许多只有被授权的用户执行的操作。请更改默认的密码，确保其唯一性和安全性。"
+
+# b350994b6904403db6d30d524f0eed32
+#: ../../ui.rst:140
+msgid "Changing the Root Password"
+msgstr "更改Root密码"
+
+# 3a06c8a9892b4cbeaac7e2dec367ddd7
+#: ../../ui.rst:142
+msgid ""
+"During installation and ongoing cloud administration, you will need to log "
+"in to the UI as the root administrator. The root administrator account "
+"manages the CloudStack deployment, including physical infrastructure. The "
+"root administrator can modify configuration settings to change basic "
+"functionality, create or delete user accounts, and take many actions that "
+"should be performed only by an authorized person. When first installing "
+"CloudStack, be sure to change the default password to a new, unique value."
+msgstr "在云的安装及后续管理过程中，您需要用根管理员登录UI。根管理员账号管理着CloudStack的部署以及物理设施。根管理员可以修改系统配置，改变基本功能，创建和删除用户账号，以及其他仅限于已授权人员执行的操作。在初始安CloudStack时，请务必修改默认密码为新的较独特的密码。"
+
+# 7057f98c0cb94bceb1dc66c14a0b5802
+#: ../../ui.rst:158
+msgid ""
+"Log in to the UI using the current root user ID and password. The default is"
+" admin, password."
+msgstr "使用当前root用户的ID和口令登录UI。缺省为admin，pawword。"
+
+# fdf104279af341739d24347f0e1fce4e
+#: ../../ui.rst:161
+msgid "Click Accounts."
+msgstr "点击帐户。"
+
+# c12c934bf488453e9c209dcf140e5b22
+#: ../../ui.rst:163
+msgid "Click the admin account name."
+msgstr "点击管理员帐号名。"
+
+# 9941a672247948c09ee39a2119dcbb22
+#: ../../ui.rst:165
+msgid "Click View Users."
+msgstr "点击查看用户。"
+
+# 482e7c8a3e904702a4089d4643cdae41
+#: ../../ui.rst:167
+msgid "Click the admin user name."
+msgstr "点击管理员用户名。"
+
+# ae46b97a741b49e4b1c2422f074135e9
+#: ../../ui.rst:169
+msgid "Click the Change Password button. |change-password.png|"
+msgstr "点击更改密码按钮。 |change-password.png|"
+
+# 9ba47399deaa4e378669ad789c0a47c0
+#: ../../ui.rst:171
+msgid "Type the new password, and click OK."
+msgstr "输入新密码，然后点击确认。"

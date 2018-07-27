@@ -1,0 +1,65 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:06+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# cea4bcb571304273bc04b67f139f0140
+#: ../../networking/multiple_ip_ranges.rst:18
+msgid "About Multiple IP Ranges"
+msgstr "关于多IP范围"
+
+# fb1aec1297a645198cd0ecbc09f187eb
+#: ../../networking/multiple_ip_ranges.rst:20
+msgid "The feature can only be implemented on IPv4 addresses."
+msgstr "这些功能仅能在IPV4的地址是实现。"
+
+# 3180ea2f13aa4565a8715d959ef1148d
+#: ../../networking/multiple_ip_ranges.rst:22
+msgid ""
+"CloudStack provides you with the flexibility to add guest IP ranges from "
+"different subnets in Basic zones and security groups-enabled Advanced zones."
+" For security groups-enabled Advanced zones, it implies multiple subnets can"
+" be added to the same VLAN. With the addition of this feature, you will be "
+"able to add IP address ranges from the same subnet or from a different one "
+"when IP address are exhausted. This would in turn allows you to employ "
+"higher number of subnets and thus reduce the address management overhead. To"
+" support this feature, the capability of ``createVlanIpRange`` API is "
+"extended to add IP ranges also from a different subnet."
+msgstr "在基础区域以及高级区域的开启安全组，CloudStack能够让你从不同的子网添加来宾IP范围。对于高级区域的开启安全组，多个子网可被加至同一个VLAN。随着此功能的增加，当IP地址耗尽时，你能够从同一个子网或从不同的子网添加IP范围。这会允许你添加更多的子网，因此减少了了地址管理的问题。为支持这一特性，创建VLANIP范围的API被加以扩展，这样就能从不同的子网添加IP范围"
+
+# d1d9636b0fd14b508f2570b3d7f5b7a2
+#: ../../networking/multiple_ip_ranges.rst:33
+msgid ""
+"Ensure that you manually configure the gateway of the new subnet before "
+"adding the IP range. Note that CloudStack supports only one gateway for a "
+"subnet; overlapping subnets are not currently supported."
+msgstr "确实在添加IP范围前，手动配置了子网的网关。注意，CloudStack仅支持一个子网有一个网关。不支持重叠的子网。"
+
+# b1ed3bd81dfa4662bcf9ab17817d99e5
+#: ../../networking/multiple_ip_ranges.rst:37
+msgid ""
+"Use the ``deleteVlanRange`` API to delete IP ranges. This operation fails if"
+" an IP from the remove range is in use. If the remove range contains the IP "
+"address on which the DHCP server is running, CloudStack acquires a new IP "
+"from the same subnet. If no IP is available in the subnet, the remove "
+"operation fails."
+msgstr "使用删除VLAN范围的API删除IP范围。如果拟删除的IP在被使用时，此操作会失败。如果删除的范围包含DHCP服务器拟分配的IP地址CloudStack会从同一个子网下获取新的IP。如果在子网内没有可供利用的IP时，删除操作会失败。"
+
+# 5c66e6ebd5cc42728bccf16a99764a94
+#: ../../networking/multiple_ip_ranges.rst:43
+msgid "This feature is supported on KVM, xenServer, and VMware hypervisors."
+msgstr "在KVM, xenServer以及VMware虚拟机中，都支持这项功能。 "

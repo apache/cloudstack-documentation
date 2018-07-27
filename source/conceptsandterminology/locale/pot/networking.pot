@@ -1,0 +1,1940 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache CloudStack
+# This file is distributed under the same license as the Apache CloudStack package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack 4.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-31 13:49-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../networking/autoscale_without_netscaler.rst:2
+# 6d7543ab9fc046888af483d6a88b3fea
+msgid "Configuring AutoScale without using NetScaler"
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:4
+# c9d0712245864f35982f232729bae189
+msgid "This feature is currently only available on the master branch and will be released in the 4.4 release."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:7
+# c06b36bcc0e945ed8ec5e832340e956d
+msgid "What is AutoScaling?"
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:9
+# 9ef0e0f6d684458099daa4e2cbd8604b
+msgid "AutoScaling allows you to scale your back-end services or application VMs up or down seamlessly and automatically according to the conditions you define. With AutoScaling enabled, you can ensure that the number of VMs you are using seamlessly scale up when demand increases, and automatically decreases when demand subsides. Thus it helps you save compute costs by terminating underused VMs automatically and launching new VMs when you need them, without the need for manual intervention."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:12
+# d507077958d348a6a693de6775bfe989
+msgid "Hypervisor support"
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:14
+# f9b069efcb974b079122d2c95723e601
+msgid "At that time, AutoScaling without NetScaler only supports for Xenserver. We are working to support KVM also."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:17
+#: ../../networking/midonet.rst:46
+#: ../../networking/nicira-plugin.rst:54
+#: ../../networking/ovs-plugin.rst:51
+# d15bd6b6f1064d51bfaf9e80a5565e96
+# 642427380e4746dc891e7fc38b37579c
+# 7f80ef902c494483b24d6d578c1d80d6
+# e49601d54ace43859a71cb43a746b49c
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:19
+# a3a685cf58fd4c9da4004b4f0ecfc871
+msgid "Before you configure an AutoScale rule, consider the following:"
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:21
+# f58b7e2821534230a2dd48d7c0439189
+msgid "Ensure that the necessary template is prepared before configuring AutoScale. Firstly you must install the PV-driver, which helps Xenserver collect performance parameters (CPU and memory) into VMs. Beside, When a VM is deployed by using a template and when it comes up, the application should be up and running."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:24
+# bd06b9d81c444e9ebf31854526b8c67f
+msgid "Configuration"
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:26
+# f5b4b5fcd129488a826127aefa0a2c4a
+msgid "Specify the following:"
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:30
+# 12cb34f03c3d4ef8b03fbd8a70bacc25
+msgid "Template: A template consists of a base OS image and application. A template is used to provision the new instance of an application on a scaleup action. When a VM is deployed from a template, the VM can start taking the traffic from the load balancer without any admin intervention. For example, if the VM is deployed for a Web service, it should have the Web server running, the database connected, and so on."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:32
+# 417240213f024697b69eceede3796359
+msgid "Compute offering: A predefined set of virtual hardware attributes, including CPU speed, number of CPUs, and RAM size, that the user can select when creating a new virtual machine instance. Choose one of the compute offerings to be used while provisioning a VM instance as part of scaleup action."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:34
+# 4bcdcc4590a84f1385fa772041cea3cc
+msgid "Min Instance: The minimum number of active VM instances that is assigned to a load balancing rule. The active VM instances are the application instances that are up and serving the traffic, and are being load balanced. This parameter ensures that a load balancing rule has at least the configured number of active VM instances are available to serve the traffic."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:36
+# d0c371a515394389bb7add6a02f00eb4
+msgid "Max Instance: Maximum number of active VM instances that should be assigned to a load balancing rule. This parameter defines the upper limit of active VM instances that can be assigned to a load balancing rule."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:38
+# 80fcbe70099f4105a927b595228409e4
+msgid "Specifying a large value for the maximum instance parameter might result in provisioning large number of VM instances, which in turn leads to a single load balancing rule exhausting the VM instances limit specified at the account or domain level."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:40
+# b8283e1247a741a988e15d29da160851
+msgid "Specify the following scale-up and scale-down policies:"
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:42
+# b2806defc678481a8198f37f837b7904
+msgid "Duration: The duration, in seconds, for which the conditions you specify must be true to trigger a scaleup action. The conditions defined should hold true for the entire duration you specify for an AutoScale action to be invoked."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:44
+# 31426b6f769148b2bef529c22ca6553b
+msgid "Counter: The performance counters expose the state of the monitored instances. We added two new counter to work with that feature:"
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:46
+# 526679bfa9d3462180ab853fa20f8680
+msgid "Linux User CPU [native] - percentage"
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:47
+# bdb11da3ca3c45a082b4acc27901d16c
+msgid "Linux User RAM [native] - percentage"
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:49
+# a04a71965cb04316be4c79fdb9244b25
+msgid "Remember to choose one of them. If you choose anything else, the autoscaling will not work."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:51
+# 966b02f38d1f4928b5c562133bf8a0fe
+msgid "Operator: The following five relational operators are supported in AutoScale feature: Greater than, Less than, Less than or equal to, Greater than or equal to, and Equal to."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:53
+# 64b33fb24e6f4bf280e7d0137f7de18b
+msgid "Threshold: Threshold value to be used for the counter. Once the counter defined above breaches the threshold value, the AutoScale feature initiates a scaleup or scaledown action."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:55
+# 80ff783a33004fb9b41f00e516ca4b5f
+msgid "Add: Click Add to add the condition."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:57
+# c9330ee4e4ec4a0fab4fba627aef3692
+msgid "Additionally, if you want to configure the advanced settings, click Show advanced settings, and specify the following:"
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:59
+# 81ad44e324de4a7981892ca55611000e
+msgid "Polling interval: Frequency in which the conditions, combination of counter, operator and threshold, are to be evaluated before taking a scale up or down action. The default polling interval is 30 seconds."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:61
+# 6269ce68ba3644a7aef1617b8a06b037
+msgid "Quiet Time: This is the cool down period after an AutoScale action is initiated. The time includes the time taken to complete provisioning a VM instance from its template and the time taken by an application to be ready to serve traffic. This quiet time allows the fleet to come up to a stable state before any action can take place. The default is 300 seconds."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:63
+# c6e65c1812814496bd1282ec97c7df0c
+msgid "Destroy VM Grace Period: The duration in seconds, after a scaledown action is initiated, to wait before the VM is destroyed as part of scaledown action. This is to ensure graceful close of any pending sessions or transactions being served by the VM marked for destroy. The default is 120 seconds."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:65
+# 6a90629fb18546df9eef77cb74d6d15e
+msgid "Apply: Click Apply to create the AutoScale configuration."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:68
+# ba9c7c2d58454a53940874911d9edefe
+msgid "Disabling and Enabling an AutoScale Configuration"
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:70
+# 58935b9d39ad4fdaaf8cc7d4a8a4c69b
+msgid "If you want to perform any maintenance operation on the AutoScale VM instances, disable the AutoScale configuration. When the AutoScale configuration is disabled, no scaleup or scaledown action is performed. You can use this downtime for the maintenance activities. To disable the AutoScale configuration, click the Disable AutoScale button."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:72
+# 3e4ba6cb6d1b4bc79688675cbe57c75b
+msgid "The button toggles between enable and disable, depending on whether AutoScale is currently enabled or not. After the maintenance operations are done, you can enable the AutoScale configuration back. To enable, open the AutoScale configuration page again, then click the Enable AutoScale button."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:75
+# 9ce87103773042ca88fd9b14d20ffe70
+msgid "Updating an AutoScale Configuration"
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:77
+# c9cea96d124b46f4ab55f5b5b212453b
+msgid "You can update the various parameters and add or delete the conditions in a scaleup or scaledown rule. Before you update an AutoScale configuration, ensure that you disable the AutoScale load balancer rule by clicking the Disable AutoScale button. After you modify the required AutoScale parameters, click Apply. To apply the new AutoScale policies, open the AutoScale configuration page again, then click the Enable AutoScale button."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:81
+# 6738decbbf98438eaf0a2fc8f5d260d6
+msgid "Runtime Considerations"
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:83
+# 217b68ea35fc4cf2a5ad264d0e24f2db
+msgid "An administrator should not assign a VM to a load balancing rule which is configured for AutoScale."
+msgstr ""
+
+#: ../../networking/autoscale_without_netscaler.rst:85
+# 7ea14773c17b47cc98fb83abe744e19e
+msgid "Making API calls outside the context of AutoScale, such as destroyVM, on an autoscaled VM leaves the load balancing configuration in an inconsistent state. Though VM is destroyed from the load balancer rule, it continues be showed as a service assigned to a rule inside the context of AutoScale."
+msgstr ""
+
+#: ../../networking/ipv6.rst:2
+# 9063c69b83cc4675b677f47968689ba7
+msgid "IPv6 Support in CloudStack"
+msgstr ""
+
+#: ../../networking/ipv6.rst:4
+# 41c57b3d50204fb7963f34ab1d591afd
+msgid "CloudStack supports Internet Protocol version 6 (IPv6), the recent version of the Internet Protocol (IP) that defines routing the network traffic. IPv6 uses a 128-bit address that exponentially expands the current address space that is available to the users. IPv6 addresses consist of eight groups of four hexadecimal digits separated by colons, for example, 5001:0dt8:83a3:1012:1000:8s2e:0870:7454. CloudStack supports IPv6 for public IPs in shared networks. With IPv6 support, VMs in shared networks can obtain both IPv4 and IPv6 addresses from the DHCP server. You can deploy VMs either in a IPv6 or IPv4 network, or in a dual network environment. If IPv6 network is used, the VM generates a link-local IPv6 address by itself, and receives a stateful IPv6 address from the DHCPv6 server."
+msgstr ""
+
+#: ../../networking/ipv6.rst:17
+# 79ebb2325f5b4e8e8cac37bfa0d04fa5
+msgid "IPv6 is supported only on KVM and XenServer hypervisors. The IPv6 support is only an experimental feature."
+msgstr ""
+
+#: ../../networking/ipv6.rst:20
+# 53b327c0565745c58193a2a636f6b508
+msgid "Here's the sequence of events when IPv6 is used:"
+msgstr ""
+
+#: ../../networking/ipv6.rst:24
+# 8a26e433fd0b476792d0bf704b27cdcf
+msgid "The administrator creates an IPv6 shared network in an advanced zone."
+msgstr ""
+
+#: ../../networking/ipv6.rst:28
+# bae33a2f19004456a2ab80520bf87e3f
+msgid "The user deploys a VM in an IPv6 shared network."
+msgstr ""
+
+#: ../../networking/ipv6.rst:32
+# d94e348fb434423788634e5ad292b053
+msgid "The user VM generates an IPv6 link local address by itself, and gets an IPv6 global or site local address through DHCPv6."
+msgstr ""
+
+#: ../../networking/ipv6.rst:37
+# 2251bd2a3fae426e8c8833a37fb1e8ed
+msgid "Prerequisites and Guidelines"
+msgstr ""
+
+#: ../../networking/ipv6.rst:39
+# b0a1bb7836c9452d92a65788bee8b8a3
+msgid "Consider the following:"
+msgstr ""
+
+#: ../../networking/ipv6.rst:43
+# afe38a72dbd14cdeb4d9dc752f130e59
+msgid "CIDR size must be 64 for IPv6 networks."
+msgstr ""
+
+#: ../../networking/ipv6.rst:47
+# c8ea1b7c1a9c49539151a78f22659658
+msgid "The DHCP client of the guest VMs should support generating DUID based on Link-layer Address (DUID- LL). DUID-LL derives from the MAC address of guest VMs, and therefore the user VM can be identified by using DUID. See `Dynamic Host Configuration Protocol for IPv6 <http://tools.ietf.org/html/rfc3315>`__\\ for more information."
+msgstr ""
+
+#: ../../networking/ipv6.rst:55
+# 8ddad136696547268df22d1813bf7ed4
+msgid "The gateway of the guest network generates Router Advisement and Response messages to Router Solicitation. The M (Managed Address Configuration) flag of Router Advisement should enable stateful IP address configuration. Set the M flag to where the end nodes receive their IPv6 addresses from the DHCPv6 server as opposed to the router or switch."
+msgstr ""
+
+#: ../../networking/ipv6.rst:62
+# 018ea1acf74f45559953f36b219c962f
+msgid "The M flag is the 1-bit Managed Address Configuration flag for Router"
+msgstr ""
+
+#: ../../networking/ipv6.rst:63
+# 0fe982af1fb44ffa95b13393cb6bcd97
+msgid "Advisement. When set, Dynamic Host Configuration Protocol (DHCPv6) is available for address configuration in addition to any IPs set by using stateless address auto-configuration."
+msgstr ""
+
+#: ../../networking/ipv6.rst:69
+# 93db14f646d24aa5acffca5d20338975
+msgid "Use the System VM template exclusively designed to support IPv6. Download the System VM template from `http://cloudstack.apt-get.eu/systemvm/ <http://cloudstack.apt-get.eu/systemvm/>`__."
+msgstr ""
+
+#: ../../networking/ipv6.rst:75
+# 516cb011d5914d10b3c49e9796299f74
+msgid "The concept of Default Network applies to IPv6 networks. However, unlike IPv4 CloudStack does not control the routing information of IPv6 in shared network; the choice of Default Network will not affect the routing in the user VM."
+msgstr ""
+
+#: ../../networking/ipv6.rst:82
+# e72596a773f14d379a92ec92afa10cce
+msgid "In a multiple shared network, the default route is set by the rack router, rather than the DHCP server, which is out of CloudStack control. Therefore, in order for the user VM to get only the default route from the default NIC, modify the configuration of the user VM, and set non-default NIC's ``accept_ra`` to 0 explicitly. The ``accept_ra`` parameter accepts Router Advertisements and auto-configure ``/proc/sys/net/ipv6/conf/interface`` with received data."
+msgstr ""
+
+#: ../../networking/ipv6.rst:92
+# dcaf10acb3f34de380f2eec1b9170253
+msgid "Limitations of IPv6 in CloudStack"
+msgstr ""
+
+#: ../../networking/ipv6.rst:94
+# fb2bfd214ac547ff97ee00d937f01b02
+msgid "The following are not yet supported:"
+msgstr ""
+
+#: ../../networking/ipv6.rst:98
+# db335d19e6c047379e156b18f9d937f4
+msgid "Security groups"
+msgstr ""
+
+#: ../../networking/ipv6.rst:102
+# a3ea0a4439b1496fb507520690094baf
+msgid "Userdata and metadata"
+msgstr ""
+
+#: ../../networking/ipv6.rst:106
+# 6b8f88ad9ab547138fbd3e9f40c83d7f
+msgid "Passwords"
+msgstr ""
+
+#: ../../networking/ipv6.rst:109
+# 0d4771d5873a429984066fed90876c50
+msgid "Guest VM Configuration for DHCPv6"
+msgstr ""
+
+#: ../../networking/ipv6.rst:111
+# 01d0d92255b34c64a62845f02b8a8a4e
+msgid "For the guest VMs to get IPv6 address, run dhclient command manually on each of the VMs. Use DUID-LL to set up dhclient."
+msgstr ""
+
+#: ../../networking/ipv6.rst:114
+# f81673230f4447d680980559d7175a57
+msgid "The IPv6 address is lost when a VM is stopped and started. Therefore,"
+msgstr ""
+
+#: ../../networking/ipv6.rst:115
+# bb68d3447803467fa644192f3ee97415
+msgid "use the same procedure to get an IPv6 address when a VM is stopped and started."
+msgstr ""
+
+#: ../../networking/ipv6.rst:120
+# 1ac57146ad144c0e889d7f366e9df765
+msgid "Set up dhclient by using DUID-LL."
+msgstr ""
+
+#: ../../networking/ipv6.rst:122
+# cca1077553b14ea588e13553ca5d6a15
+msgid "Perform the following for DHCP Client 4.2 and above:"
+msgstr ""
+
+#: ../../networking/ipv6.rst:126
+# 8fdbfe4d8c434120b67eb59e81d51d8b
+msgid "Run the following command on the selected VM to get the dhcpv6 offer from VR:"
+msgstr ""
+
+#: ../../networking/ipv6.rst:133
+# 656eff7b6ce241928e7a9cb840be833e
+msgid "Perform the following for DHCP Client 4.1:"
+msgstr ""
+
+#: ../../networking/ipv6.rst:137
+# a4d789246cad41a1b4d23bd3ed929217
+msgid "Open the following to the dhclient configuration file:"
+msgstr ""
+
+#: ../../networking/ipv6.rst:145
+# 77af02d23c8e47f3b22d8d204a1870ae
+msgid "Add the following to the dhclient configuration file:"
+msgstr ""
+
+#: ../../networking/ipv6.rst:153
+# 21b6ea25a4a748cf8e91acdaf3003e19
+msgid "Get IPv6 address from DHCP server as part of the system or network restart."
+msgstr ""
+
+#: ../../networking/ipv6.rst:156
+# b6c0f47d45b34e44acaaca779414b9cd
+msgid "Based on the operating systems, perform the following:"
+msgstr ""
+
+#: ../../networking/ipv6.rst:158
+# ccd975fe312049fd896c38cc020b3fa9
+msgid "On CentOS 6.2:"
+msgstr ""
+
+#: ../../networking/ipv6.rst:162
+# 0b3572ab3af943e48535af636ead58c5
+msgid "Open the Ethernet interface configuration file:"
+msgstr ""
+
+#: ../../networking/ipv6.rst:168
+# b65f97c19a704a6d9d47de7c27b6c154
+msgid "The ``ifcfg-eth0`` file controls the first NIC in a system."
+msgstr ""
+
+#: ../../networking/ipv6.rst:172
+#: ../../networking/ipv6.rst:197
+#: ../../networking/ipv6.rst:218
+# b294b17bb15c4c6e93597ac4fb108b8f
+# 0afbae1c0d984242acfb32d4639fb73d
+# 796e2de0cb9a4194ab47d7f51f720614
+msgid "Make the necessary configuration changes, as given below:"
+msgstr ""
+
+#: ../../networking/ipv6.rst:189
+#: ../../networking/ipv6.rst:210
+# 9f45f88d1d0543bcb315e99481fddf64
+# e374feefe5c04ff09a138d5020e42aa9
+msgid "Open the following:"
+msgstr ""
+
+#: ../../networking/ipv6.rst:206
+# f72a159dff2c4923a6fb4cdc96baefdd
+msgid "On Ubuntu 12.10"
+msgstr ""
+
+#: ../../networking/midonet.rst:2
+# f4e5c6a4da61434aa40dd7ba93484347
+msgid "The MidoNet Plugin"
+msgstr ""
+
+#: ../../networking/midonet.rst:5
+# 5b3351f0b1bc467ab6133d431de2a226
+msgid "Introduction to the MidoNet Plugin"
+msgstr ""
+
+#: ../../networking/midonet.rst:7
+# 43f5b5c6fc1241dfb632510a30e519ae
+msgid "The MidoNet plugin allows CloudStack to use the MidoNet virtualized networking solution as a provider for CloudStack networks and services. For more information on MidoNet and how it works, see http://www.midokura.com/midonet/."
+msgstr ""
+
+#: ../../networking/midonet.rst:13
+# c889a6c491c042388e4a20497669eb79
+msgid "Features of the MidoNet Plugin"
+msgstr ""
+
+#: ../../networking/midonet.rst:15
+# 835bde43c8534aefac5e1ccd81e317f4
+msgid "In CloudStack 4.2.0 only the KVM hypervisor is supported for use in combination with MidoNet."
+msgstr ""
+
+#: ../../networking/midonet.rst:18
+# cb53a8ffabf047298535ec3e31beb1ad
+msgid "In CloudStack release 4.2.0 this plugin supports several services in the Advanced Isolated network mode."
+msgstr ""
+
+#: ../../networking/midonet.rst:21
+# 5408bf0f7ed04335a07c1ac3f3448d26
+msgid "When tenants create new isolated layer 3 networks, instead of spinning up extra Virtual Router VMs, the relevant L3 elements (routers etc) are created in the MidoNet virtual topology by making the appropriate calls to the MidoNet API. Instead of using VLANs, isolation is provided by MidoNet."
+msgstr ""
+
+#: ../../networking/midonet.rst:27
+# 08c1c37a1bbd47dc96340d462ad72de6
+msgid "Aside from the above service (Connectivity), several extra features are supported in the 4.2.0 release:"
+msgstr ""
+
+#: ../../networking/midonet.rst:30
+#: ../../networking/nicira-plugin.rst:135
+#: ../../networking/nicira-plugin.rst:171
+#: ../../networking/nicira-plugin.rst:249
+#: ../../networking/ovs-plugin.rst:165
+#: ../../networking/ovs-plugin.rst:201
+# 49b7d4c5843d48e6a4d1903891dae0d5
+# ce613877293142fcb602392053011779
+# ef05554567b64823a676c47eb718aca1
+# 2d54607e20174f57bb939e3a4e34290b
+# 6785cd841d124fba8786fbffe6cddc8e
+# 19964c1d31624c81bece37d61d6b9f12
+msgid "DHCP"
+msgstr ""
+
+#: ../../networking/midonet.rst:32
+# 0114445c01474c868169c1cc09fcf6a3
+msgid "Firewall (ingress)"
+msgstr ""
+
+#: ../../networking/midonet.rst:34
+#: ../../networking/nicira-plugin.rst:23
+#: ../../networking/nicira-plugin.rst:145
+#: ../../networking/nicira-plugin.rst:177
+#: ../../networking/nicira-plugin.rst:257
+#: ../../networking/ovs-plugin.rst:175
+#: ../../networking/ovs-plugin.rst:207
+# cc25fff9d5124386ade225fd5bd434b9
+# 114e75dc258c41639ef45e1509e70e6a
+# 756d3782de384f7fa56ece273f820f1f
+# a59f45b448464b9c901841cb1c22fa73
+# 112c6589b3f0476fa047e31ff811c08a
+# 8ee18467dfbd4b41a9978d7b19ef330c
+# aaf6aab6d1244928b9202443ed4ef6b5
+msgid "Source NAT"
+msgstr ""
+
+#: ../../networking/midonet.rst:36
+#: ../../networking/nicira-plugin.rst:25
+#: ../../networking/nicira-plugin.rst:147
+#: ../../networking/nicira-plugin.rst:179
+#: ../../networking/nicira-plugin.rst:259
+#: ../../networking/ovs-plugin.rst:22
+#: ../../networking/ovs-plugin.rst:177
+#: ../../networking/ovs-plugin.rst:209
+# 5b959f094f524c5bad49148c2f11da16
+# bcacdbd92685435e8f2a5df1a1dd3b88
+# c13412cc9cce43e7a004eae8f13befe2
+# 85c67b794ccd46c0b46abaebd7630ec5
+# 0f45e03e929e49058061a4a2e0443085
+# bd9381baaa4d4fb7b4c942427d3ea4f3
+# f4d9288c69e545b1a9259940ea478a01
+# 1f40ca7af9414412b7526701cf836922
+msgid "Static NAT"
+msgstr ""
+
+#: ../../networking/midonet.rst:38
+#: ../../networking/nicira-plugin.rst:27
+#: ../../networking/ovs-plugin.rst:24
+# 0de776336a694f4dafd899038007d024
+# 992479d12e61499ca18b368c020bc4f1
+# 513cd51fab824f0cacb77ff2a6753ed0
+msgid "Port Forwarding"
+msgstr ""
+
+#: ../../networking/midonet.rst:40
+# 5ecfd1fd0fc6494988c5a472673fbc7d
+msgid "The plugin has been tested with MidoNet version 12.12. (Caddo)."
+msgstr ""
+
+#: ../../networking/midonet.rst:43
+# b8b2387b8d4b4e849ba66caea5e01c81
+msgid "Using the MidoNet Plugin"
+msgstr ""
+
+#: ../../networking/midonet.rst:48
+# 2668ec6a367641e69ff49062e49ce7e6
+msgid "In order to use the MidoNet plugin, the compute hosts must be running the MidoNet Agent, and the MidoNet API server must be available. Please consult the MidoNet User Guide for more information. The following section describes the CloudStack side setup."
+msgstr ""
+
+#: ../../networking/midonet.rst:53
+# 99b96e8acec34a0d8d7c21d78e2703fd
+msgid "CloudStack needs to have at least one physical network with the isolation method set to \"MIDO\". This network should be enabled for the Guest and Public traffic types."
+msgstr ""
+
+#: ../../networking/midonet.rst:57
+# 8b171ca5cb9e484397531f31e7b4d842
+msgid "Next, we need to set the following CloudStack settings under \"Global Settings\" in the UI:"
+msgstr ""
+
+#: ../../networking/midonet.rst:61
+# b69a22dee5ce48f4938914d6c4377874
+msgid "Setting Name"
+msgstr ""
+
+#: ../../networking/midonet.rst:61
+# db6dfe91d7fc49a7a23c8ec6f5589d9b
+msgid "Description"
+msgstr ""
+
+#: ../../networking/midonet.rst:61
+# 8ce816e9b802465f8f5f6375c4bda427
+msgid "Example"
+msgstr ""
+
+#: ../../networking/midonet.rst:63
+# 9b5539562d8347e5a40e744f9b8086e7
+msgid "midonet.apiserver.address"
+msgstr ""
+
+#: ../../networking/midonet.rst:63
+# a95222e0e61e4a3c9b250cd37d5cf298
+msgid "Specify the address at which the Midonet API server can be contacted"
+msgstr ""
+
+#: ../../networking/midonet.rst:63
+# 4188583e5177441b9821e4f5f89578a2
+msgid "http://192.168.1.144:8081/midolmanj-mgmt"
+msgstr ""
+
+#: ../../networking/midonet.rst:65
+# 665afa499ac44b54a7a8c0e53a749d66
+msgid "midonet.providerrouter.id"
+msgstr ""
+
+#: ../../networking/midonet.rst:65
+# 78c4feefb6d543d1ba12f3992e48e7fa
+msgid "Specifies the UUID of the Midonet provider router"
+msgstr ""
+
+#: ../../networking/midonet.rst:65
+# f7035c39c3a04d189249f37810cd413f
+msgid "d7c5e6a3-e2f4-426b-b728-b7ce6a0448e5"
+msgstr ""
+
+#: ../../networking/midonet.rst:68
+# 65914ae089bc4ab6ad82c66df94e9d49
+msgid "Table: CloudStack settings"
+msgstr ""
+
+#: ../../networking/midonet.rst:70
+# 20e830daf68a461a81d396114ad184ec
+msgid "We also want MidoNet to take care of public traffic, so in *componentContext.xml* we need to replace this line:"
+msgstr ""
+
+#: ../../networking/midonet.rst:78
+# 00b49b309af944c58397a9f4dbf0ff2a
+msgid "With this:"
+msgstr ""
+
+#: ../../networking/midonet.rst:85
+# 6c11d6b3c68e4451a5ca2b6c31e2c584
+msgid "On the compute host, MidoNet takes advantage of per-traffic type VIF driver support in CloudStack KVM."
+msgstr ""
+
+#: ../../networking/midonet.rst:88
+# d02ca0b479ba4720b56679504af434b7
+msgid "In agent.properties, we set the following to make MidoNet take care of Guest and Public traffic:"
+msgstr ""
+
+#: ../../networking/midonet.rst:96
+# 29db8f221b5641ea84be16cfdf0202f0
+msgid "This is explained further in MidoNet User Guide."
+msgstr ""
+
+#: ../../networking/midonet.rst:99
+# 3a516331b1ea440298354c98069645bb
+msgid "Enabling the MidoNet service provider via the UI"
+msgstr ""
+
+#: ../../networking/midonet.rst:101
+# 830c1e31051e44c98c0f34a05952b2f7
+msgid "To allow CloudStack to use the MidoNet Plugin the network service provider needs to be enabled on the physical network."
+msgstr ""
+
+#: ../../networking/midonet.rst:104
+# cb5416ba9cad4f6b82d36a759957167f
+msgid "The steps to enable via the UI are as follows:"
+msgstr ""
+
+#: ../../networking/midonet.rst:106
+# 3c9f034a471d460fa1e78d7fc0d23038
+msgid "In the left navbar, click Infrastructure"
+msgstr ""
+
+#: ../../networking/midonet.rst:108
+# bcb7494347d2406d87ebd01a0c91fb20
+msgid "In Zones, click View All"
+msgstr ""
+
+#: ../../networking/midonet.rst:110
+# 95f2fb5dc5884524a69094143f6bb76d
+msgid "Click the name of the Zone on which you are setting up MidoNet"
+msgstr ""
+
+#: ../../networking/midonet.rst:112
+# 188fd04a8ae145fda2c3a8c890d5462e
+msgid "Click the Physical Network tab"
+msgstr ""
+
+#: ../../networking/midonet.rst:114
+# 1e542d7390884d2bad2f3c47877542b1
+msgid "Click the Name of the Network on which you are setting up MidoNet"
+msgstr ""
+
+#: ../../networking/midonet.rst:116
+# aaaf74a3d52b42ebae8f4e88c8b40355
+msgid "Click Configure on the Network Service Providers box"
+msgstr ""
+
+#: ../../networking/midonet.rst:118
+# 04d5bfd6646f4a97989e347474116368
+msgid "Click on the name MidoNet"
+msgstr ""
+
+#: ../../networking/midonet.rst:120
+# 642adc3b1cf44faab16425e912c923f5
+msgid "Click the Enable Provider button in the Network tab"
+msgstr ""
+
+#: ../../networking/midonet.rst:123
+# cf7eda3b5d3f4866846e763c3caf4b70
+msgid "Enabling the MidoNet service provider via the API"
+msgstr ""
+
+#: ../../networking/midonet.rst:125
+# c59c00a7fa6f46119faf3eca40367b44
+msgid "To enable via the API, use the following API calls:"
+msgstr ""
+
+#: ../../networking/midonet.rst:127
+# 8282ec8f110b4fe89bffca6181a46725
+msgid "*addNetworkServiceProvider*"
+msgstr ""
+
+#: ../../networking/midonet.rst:129
+# 60147b795fda499aa9cf7558014d88d5
+msgid "name = \"MidoNet\""
+msgstr ""
+
+#: ../../networking/midonet.rst:131
+# bcc67ccf4214467e8e400256884b5a51
+msgid "physicalnetworkid = <the uuid of the physical network>"
+msgstr ""
+
+#: ../../networking/midonet.rst:133
+# ea8ad1ea1ce440f293268c6ce2be6c7d
+msgid "*updateNetworkServiceProvider*"
+msgstr ""
+
+#: ../../networking/midonet.rst:135
+# 4415a0b5d7c345c297f91727eda61212
+msgid "id = <the provider uuid returned by the previous call>"
+msgstr ""
+
+#: ../../networking/midonet.rst:137
+# df55f4d520bf4f90a9d0988e752af678
+msgid "state = \"Enabled\""
+msgstr ""
+
+#: ../../networking/midonet.rst:140
+#: ../../networking/nicira-plugin.rst:338
+#: ../../networking/ovs-plugin.rst:226
+# dfc989938200446f8f7792e0488afccf
+# 82db7e6f7b3144439a90257872b027ff
+# 05f9bc2018e743d09a919067bab537a8
+msgid "Revision History"
+msgstr ""
+
+#: ../../networking/midonet.rst:142
+# 65c949887213426e8c750fcc37c11160
+msgid "0-0 Wed Mar 13 2013 Dave Cahill dcahill@midokura.com Documentation created for 4.2.0 version of the MidoNet Plugin"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:2
+# 5a81d39c1e9e4666b11b0d2062315f8b
+msgid "The Nicira NVP Plugin"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:5
+# cb5aa76e8916452dbe92065c109fda58
+msgid "Introduction to the Nicira NVP Plugin"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:7
+# 0c134c3d04de4ba49f31e0c3f0108144
+msgid "The Nicira NVP plugin adds Nicira NVP as one of the available SDN implementations in CloudStack. With the plugin an exisiting Nicira NVP setup can be used by CloudStack to implement isolated guest networks and to provide additional services like routing and NAT."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:13
+# 5d2369e469d14a4d9cf445bcd893c1cc
+msgid "Features of the Nicira NVP Plugin"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:15
+# 6aff4bc970e04090b584058d98f39113
+msgid "The following table lists the CloudStack network services provided by the Nicira NVP Plugin."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:19
+#: ../../networking/ovs-plugin.rst:18
+# 618aa9ed3ee14e63890a722f29d34f8f
+# 0b2e8bbc17194ce1a6f82dd96bd13b78
+msgid "Network Service"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:19
+#: ../../networking/nicira-plugin.rst:38
+#: ../../networking/ovs-plugin.rst:18
+#: ../../networking/ovs-plugin.rst:37
+# d3962c8e69d44b74bd77cd1c575b7792
+# 8328a42be97a41c8aa575ee34b6fcf9b
+# dba6e8a2bae44ea484d6c5fe146e30f1
+# a31335a8c7454a1a8dd94f2772c9b0b2
+msgid "CloudStack version"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:19
+# f5d14881fe124e5ebcc4ac0f736bfbf8
+msgid "NVP version"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:21
+#: ../../networking/nicira-plugin.rst:151
+#: ../../networking/nicira-plugin.rst:183
+#: ../../networking/nicira-plugin.rst:265
+#: ../../networking/ovs-plugin.rst:20
+#: ../../networking/ovs-plugin.rst:181
+#: ../../networking/ovs-plugin.rst:215
+# 31df7547b72748daaa738f7796b5d45f
+# c61de43323664b898739f2d79f6353a2
+# be88317c512544d79d822bf5bcb8c7cc
+# 63f4305ccce749aa98ab4fca8ad01a7e
+# d08c3df5e050478e9e467de862f6212f
+# 7756125b529445188dfa228957dea3d5
+# 51b720e6b5b24589aafe127499b9815a
+msgid "Virtual Networking"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:21
+#: ../../networking/nicira-plugin.rst:40
+#: ../../networking/ovs-plugin.rst:20
+#: ../../networking/ovs-plugin.rst:39
+# 1f8de4ae2cf948f784c605ef8accd105
+# 1afbc018f09c416797709cef931c5b78
+# e2b0698af48b47659311b5f9c8c7d735
+# 2ccb535cbc8444d7b5f09a2531fad22a
+msgid ">= 4.0"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:21
+# 45109fe45d4c41c09733a1c206754e23
+msgid ">= 2.2.1"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:23
+#: ../../networking/nicira-plugin.rst:25
+#: ../../networking/nicira-plugin.rst:27
+#: ../../networking/nicira-plugin.rst:42
+# 7ab01a4140024745b65ddd03be090f5c
+# 574293701d7844b1971e1f620a2d75ac
+# 19f979d2da69435e9c609234c0ed80a1
+# 2754366ea78e49f78fb7f27bc85da121
+msgid ">= 4.1"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:23
+#: ../../networking/nicira-plugin.rst:25
+#: ../../networking/nicira-plugin.rst:27
+# 62a2875bd16e44409061c004560b584e
+# 1f25483790be4a13aa0f8d5d1c9516dc
+# e06ac671db424fee844691f37c4a0b4a
+msgid ">= 3.0.1"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:30
+#: ../../networking/ovs-plugin.rst:29
+# e54b61fd04a34850aa0d2c8836e91428
+# 03569648f6cf400a81547171df27afe6
+msgid "Table: Supported Services"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:32
+#: ../../networking/ovs-plugin.rst:31
+# fe134237dd3c41eeaf00bf7b5e90cd0b
+# 1e2ef00d06a148a7a074c4e8ad341963
+msgid "The Virtual Networking service was originally called 'Connectivity' in CloudStack 4.0"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:35
+# ed15aa5806314c3fb2f34341ec69e7b2
+msgid "The following hypervisors are supported by the Nicira NVP Plugin."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:38
+#: ../../networking/ovs-plugin.rst:37
+#: ../../networking/vxlan.rst:15
+# 6e79e2b14d884902adec144d58c0615b
+# 9dade5da23f44b52abad25189603005b
+# e127c87468024894ad783fbe0121c009
+msgid "Hypervisor"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:40
+#: ../../networking/ovs-plugin.rst:39
+# e5da1a2aebc84c168d9f5a3429e7be98
+# 8d14a15a62954f4587194401c7aa71d4
+msgid "XenServer"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:42
+#: ../../networking/ovs-plugin.rst:41
+#: ../../networking/vxlan.rst:15
+# 41413a228a0741fd8b8f0d7d541f1373
+# b0ff6e7152884e1792c9c977f7204b5d
+# f9510dd06b0040de93865b0d84796393
+msgid "KVM"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:45
+#: ../../networking/ovs-plugin.rst:44
+# d81b53ff53a44951a380e29b9c6db7df
+# 7196efd73f5a4c01bc053a00bc2e4d97
+msgid "Table: Supported Hypervisors"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:47
+# f63025ea491548c1bed572ab06439e2f
+msgid "Please refer to the Nicira NVP configuration guide on how to prepare the hypervisors for Nicira NVP integration."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:51
+# a0c72bc47354485cb25a1cf0d6b73bbb
+msgid "Configuring the Nicira NVP Plugin"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:56
+# 93da17b4cc344e97bf764847d0e20f12
+msgid "Before enabling the Nicira NVP plugin the NVP Controller needs to be configured. Please review the NVP User Guide on how to do that."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:59
+# 13a1a3abe3da4254bccf580f00103ca7
+msgid "Make sure you have the following information ready:"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:61
+# 524d6581dc15405f9b3304a7403faf24
+msgid "The IP address of the NVP Controller"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:63
+# a533d9652e3443849a8c2f21a6abd1a0
+msgid "The username to access the API"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:65
+# 70aa49763ae14501bffaf353e46ad140
+msgid "The password to access the API"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:67
+# dd7aa1c5a8b14a6ea68ab52a9bbc00c0
+msgid "The UUID of the Transport Zone that contains the hypervisors in this Zone"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:70
+# 1ecd9bc2a14b4726a1a7eec1331ba0ea
+msgid "The UUID of the Gateway Service used to provide router and NAT services."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:74
+# e25bf818aecf40409312b9add51d8914
+msgid "The gateway service uuid is optional and is used for Layer 3 services only (SourceNat, StaticNat and PortForwarding)"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:78
+#: ../../networking/ovs-plugin.rst:62
+# be1fb34770334288bc4f3e86eac3448e
+# a9d10c0c1d5b46ebb765172d5a41e610
+msgid "Zone Configuration"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:80
+# 245e6e002d5c4d448ca331c29392751f
+msgid "CloudStack needs to have at least one physical network with the isolation method set to \"STT\". This network should be enabled for the Guest traffic type."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:84
+# 6d8d7a099e344032b83c39376904b5c0
+msgid "The Guest traffic type should be configured with the traffic label that matches the name of the Integration Bridge on the hypervisor. See the Nicira NVP User Guide for more details on how to set this up in XenServer or KVM."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:94
+#: ../../networking/ovs-plugin.rst:141
+# 5adf72459a4d481a8a809a15a643954a
+# 3c583190756a4b1d8480134c93515228
+msgid "Enabling the service provider"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:96
+# f48b20ae59ea49ff8ab3e6b842c2f77f
+msgid "The Nicira NVP provider is disabled by default. Navigate to the \"Network Service Providers\" configuration of the physical network with the STT isolation type. Navigate to the Nicira NVP provider and press the \"Enable Provider\" button."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:101
+# d9006bf7e42e4a4caffb126799e04756
+msgid "CloudStack 4.0 does not have the UI interface to configure the Nicira NVP plugin. Configuration needs to be done using the API directly."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:110
+# 9d2d62d686ae4d9f83a1a1e9083c7974
+msgid "Device Management"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:112
+# cb620ac34ed6482f8820f59b902fdf9b
+msgid "In CloudStack a Nicira NVP setup is considered a \"device\" that can be added and removed from a physical network. To complete the configuration of the Nicira NVP plugin a device needs to be added to the physical network. Press the \"Add NVP Controller\" button on the provider panel and enter the configuration details."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:123
+#: ../../networking/ovs-plugin.rst:153
+# c68f6f105758477bb153fa55a6d89824
+# 541f0595f05f4f6b848945774fa978e6
+msgid "Network Offerings"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:125
+# c110a9dda09c4f5cbd4fe818ae3f9bd3
+msgid "Using the Nicira NVP plugin requires a network offering with Virtual Networking enabled and configured to use the NiciraNvp element. Typical use cases combine services from the Virtual Router appliance and the Nicira NVP plugin."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:131
+#: ../../networking/nicira-plugin.rst:169
+#: ../../networking/nicira-plugin.rst:245
+#: ../../networking/ovs-plugin.rst:161
+#: ../../networking/ovs-plugin.rst:199
+# d11f5b34530745449796c4378664d8f9
+# 1151cc3e359e4f3caf7029ad0e23ba9e
+# bae2c53a24aa4438a52b5425973327b5
+# abbb6c562b014227b3953d4cd5268e48
+# 6b44ce13956d476db147cbd7a82cb152
+msgid "Service"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:131
+#: ../../networking/nicira-plugin.rst:169
+#: ../../networking/nicira-plugin.rst:245
+#: ../../networking/ovs-plugin.rst:161
+#: ../../networking/ovs-plugin.rst:199
+# b7143394676041f3bc4c8ad0a8469195
+# fe1bb58eda974fc7abd9738556c892b1
+# ba2cc68f1ecc4542a40d411546b65af4
+# cf717075d6d74475b45d0fc2cd2058c5
+# 4d2a2b9215ef410ea5ebb21ad692af05
+msgid "Provider"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:133
+#: ../../networking/nicira-plugin.rst:247
+#: ../../networking/ovs-plugin.rst:163
+# b65b3ee91ca34d20946f693ce05d4034
+# 969ee76a22ee4bc5afeb620adbb41223
+# 7c03de44f9ec4344b9f9c7de192971cd
+msgid "VPN"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:133
+#: ../../networking/nicira-plugin.rst:135
+#: ../../networking/nicira-plugin.rst:137
+#: ../../networking/nicira-plugin.rst:139
+#: ../../networking/nicira-plugin.rst:141
+#: ../../networking/nicira-plugin.rst:143
+#: ../../networking/nicira-plugin.rst:145
+#: ../../networking/nicira-plugin.rst:147
+#: ../../networking/nicira-plugin.rst:149
+#: ../../networking/nicira-plugin.rst:171
+#: ../../networking/nicira-plugin.rst:173
+#: ../../networking/nicira-plugin.rst:175
+#: ../../networking/ovs-plugin.rst:163
+#: ../../networking/ovs-plugin.rst:165
+#: ../../networking/ovs-plugin.rst:167
+#: ../../networking/ovs-plugin.rst:169
+#: ../../networking/ovs-plugin.rst:173
+#: ../../networking/ovs-plugin.rst:175
+#: ../../networking/ovs-plugin.rst:201
+#: ../../networking/ovs-plugin.rst:203
+#: ../../networking/ovs-plugin.rst:205
+#: ../../networking/ovs-plugin.rst:207
+# 6bb38e5eff67483a80799e862b90a124
+# 777951d5dbd4419ca2a25e414bcc7591
+# d10b1e05ea064c9a91819119c8cbda9e
+# bf47cc26fa794985a7bf910d61248b21
+# e931c891651d43fcb8d27a57e0f7e8f9
+# 019b3d5bd11b48f2b10509ba58a380df
+# 5d337fd5e0d74eafbd860b79f190f32f
+# c6ca2df243a4423baf7a00847b8c50e2
+# 22ea972bf5064cf48bdbd8beab4574aa
+# 3af8c5a80e49430599c7f126f3b0c751
+# 0e0e35ffd2524ac4a956dc4bfb162948
+# 4a7f16dcf0434ae79b3dc9057050c06e
+# 1144b076cb5d4db99bb36f56afae9bac
+# 0a20026bac144d6ea321101034e427b0
+# 13f8ccfb544e4830b5ecd3b27c7ae757
+# 75f20c559a4e41dc9d6d4bd593a12e36
+# 57c3fd888a914375a37f95535d6d4a6b
+# 15446ee0c8e048898567bb5032a49f59
+# 25700ed7799f4cdca6f2685c84ea0fea
+# 9a644998b5e74fd9a41b518199f5ce34
+# c4e514a822f844f7bbd003be750ccac8
+# 27a0898b87144cb29250777f16082d9a
+msgid "VirtualRouter"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:137
+#: ../../networking/nicira-plugin.rst:173
+#: ../../networking/nicira-plugin.rst:251
+#: ../../networking/ovs-plugin.rst:167
+#: ../../networking/ovs-plugin.rst:203
+# bc5830c742c04ccb932d4a21bf61dfba
+# b5e769e11e364694ae8495a6f8141407
+# d68ae4be18c4489a8d7ad5dc21a239da
+# ad8f4409b4734bad99428c468d656f20
+# 28d60e4ec08644959d354bed45917592
+msgid "DNS"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:139
+#: ../../networking/ovs-plugin.rst:169
+# 5dbbf495e13c479486e733c1aaaee2b8
+# 20a037a6abbb429a975af056016135fa
+msgid "Firewall"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:141
+#: ../../networking/nicira-plugin.rst:253
+#: ../../networking/ovs-plugin.rst:171
+# dc7afd6a74b1471a8e123e41c26453fa
+# 5559e64b2a46440e8aa9901e19d33b92
+# f40748c9c69c4dc1bfce45c3fe98659d
+msgid "Load Balancer"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:143
+#: ../../networking/nicira-plugin.rst:175
+#: ../../networking/nicira-plugin.rst:255
+#: ../../networking/ovs-plugin.rst:173
+#: ../../networking/ovs-plugin.rst:205
+# b62a7e934b13466bbdfe5ad26d1dbf53
+# 885b162963ad48e6974ccd23426f57fa
+# 5fac16f4f2194d50a920361031fbc661
+# 5b5f0ec76735461b9a446a11ec469eb9
+# 0d6707ddaca049cfa168740106127322
+msgid "User Data"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:149
+#: ../../networking/nicira-plugin.rst:181
+#: ../../networking/nicira-plugin.rst:261
+#: ../../networking/ovs-plugin.rst:179
+#: ../../networking/ovs-plugin.rst:211
+# 8b82c6fa4c9c4cddb6f4c1ca8c0683a6
+# 065e08db00404b8f89b223fe90ab1b29
+# 1bb7705e53734ad99e28325655bcc586
+# 09d688dc773945f98c75862ba10ed000
+# a80e84a19fd946c3be08c3473e496973
+msgid "Post Forwarding"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:151
+#: ../../networking/nicira-plugin.rst:177
+#: ../../networking/nicira-plugin.rst:179
+#: ../../networking/nicira-plugin.rst:181
+#: ../../networking/nicira-plugin.rst:183
+#: ../../networking/nicira-plugin.rst:265
+#: ../../networking/nicira-plugin.rst:316
+# f79e81a377e24effb74f5f89551e3549
+# 3852e0bc80634ce7b88f50163b68d857
+# 87727014789943899c8e78513637d1ab
+# edd6581341c1480cbec0aa25d03d72b0
+# 2c64489bc4fe49dba21a248db0edf772
+# 50340451a1ad4b558a855a411fa9f9d0
+# 31ec210d01c5430cb7b65e64fc559a17
+msgid "NiciraNVP"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:154
+#: ../../networking/ovs-plugin.rst:184
+# d1bd6cbe9f5d42068d72ff50c7e82d79
+# c3f06b80ac50400aa7add1dbc7d55308
+msgid "Table: Isolated network offering with regular services from the Virtual Router."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:162
+# a78995044b664d38884f6e91114bc873
+msgid "The tag in the network offering should be set to the name of the physical network with the NVP provider."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:165
+#: ../../networking/ovs-plugin.rst:195
+# 1a00a98b97234956860ea67999daa3db
+# d5005e0409714e719720bdd204ef72ff
+msgid "Isolated network with network services. The virtual router is still required to provide network services like dns and dhcp."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:186
+#: ../../networking/ovs-plugin.rst:218
+# da5d426b8c74472aad063a8c695c4fd0
+# 38eeebf828e94e64b0973ab2a5940847
+msgid "Table: Isolated network offering with network services"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:189
+# 96d160fe57ea4da6a6f718f3daf6338d
+msgid "Using the Nicira NVP plugin with VPC"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:192
+# d1ec478dd3074e4e9c7b29606ea10ee6
+msgid "Supported VPC features"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:194
+# ba8e48822f2a46ca80ff6b208f107ca5
+msgid "The Nicira NVP plugin supports CloudStack VPC to a certain extent. Starting with CloudStack version 4.1 VPCs can be deployed using NVP isolated networks."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:198
+# d5f40344da8041c09b3571801e9ba1f2
+msgid "It is not possible to use a Nicira NVP Logical Router for as a VPC Router"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:201
+# f1c3905dd9c840398de7c1409b3357b8
+msgid "It is not possible to connect a private gateway using a Nicira NVP Logical Switch"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:205
+# 7065f8a39b504e49b39858dab512b447
+msgid "VPC Offering with Nicira NVP"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:207
+# 89ff2e7e4c8c49df8a8a155f80f6f70f
+msgid "To allow a VPC to use the Nicira NVP plugin to provision networks, a new VPC offering needs to be created which allows the Virtual Networking service to be implemented by NiciraNVP."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:211
+# bda837a0d67e4989ae3c409c9d35c475
+msgid "This is not currently possible with the UI. The API does provide the proper calls to create a VPC offering with Virtual Networking enabled. However due to a limitation in the 4.1 API it is not possible to select the provider for this network service. To configure the VPC offering with the NiciraNVP provider edit the database table 'vpc\\_offering\\_service\\_map' and change the provider to NiciraNvp for the service 'Connectivity'"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:219
+# ac4f3b0154084c0483a97ad89415e100
+msgid "It is also possible to update the default VPC offering by adding a row to the 'vpc\\_offering\\_service\\_map' with service 'Connectivity' and provider 'NiciraNvp'"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:228
+# 543b60828f814713b96ae87fc487ea48
+msgid "When creating a new VPC offering please note that the UI does not allow you to select a VPC offering yet. The VPC needs to be created using the API with the offering UUID."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:233
+# 22a1220a7f2c48968771c9d2290d2a02
+msgid "VPC Network Offerings"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:235
+# a08bef2a55e34b0e90b0626b1996943a
+msgid "The VPC needs specific network offerings with the VPC flag enabled. Otherwise these network offerings are identical to regular network offerings. To allow VPC networks with a Nicira NVP isolated network the offerings need to support the Virtual Networking service with the NiciraNVP provider."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:241
+# a385bb41b1aa473c9c44ad9b14c49d11
+msgid "In a typical configuration two network offerings need to be created. One with the loadbalancing service enabled and one without loadbalancing."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:247
+#: ../../networking/nicira-plugin.rst:249
+#: ../../networking/nicira-plugin.rst:251
+#: ../../networking/nicira-plugin.rst:253
+#: ../../networking/nicira-plugin.rst:255
+#: ../../networking/nicira-plugin.rst:257
+#: ../../networking/nicira-plugin.rst:259
+#: ../../networking/nicira-plugin.rst:261
+#: ../../networking/nicira-plugin.rst:263
+# d07087f1c69c455a834109561b0cfde2
+# 6530274146874b219df8e4775e3f6034
+# 5be193885d0b4645a68639153a591dcf
+# 9e3399ae187d4a58aff25d7c81205a34
+# 8a4e3ab19ca741e89aefb76bb9ba5ba7
+# 06565101b5a74ab48d6b91266e6ac9b1
+# 2e35b697aa564ccdbd28a8b573cd6c20
+# 31060b1bfc784f7085e25206b8ccd85b
+# 0980ef0687a8410c86496abb6b3e8a06
+msgid "VpcVirtualRouter"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:263
+# 00c30e3971c14821ae0ed06455eb5709
+msgid "NetworkACL"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:268
+# 519a6c52784246919dee03ed6e35eb4b
+msgid "Table: VPC Network Offering with Loadbalancing"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:271
+# 3a5f7b0d37ed456692acd60a4715d5c4
+msgid "Troubleshooting the Nicira NVP Plugin"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:274
+# 3fd7e8170bb64421911c19a02274bd53
+msgid "UUID References"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:276
+# 789d734c55d84be699048adbabf4dad3
+msgid "The plugin maintains several references in the CloudStack database to items created on the NVP Controller."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:279
+# edea32c3b89046ffa67ed4aea6bb7a6f
+msgid "Every guest network that is created will have its broadcast type set to Lswitch and if the network is in state \"Implemented\", the broadcast URI will have the UUID of the Logical Switch that was created for this network on the NVP Controller."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:284
+# 6b8e3360507443389cc13e1cd24a7fc2
+msgid "The Nics that are connected to one of the Logical Switches will have their Logical Switch Port UUID listed in the nicira\\_nvp\\_nic\\_map table"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:287
+# 1cebca6fd8304afe97371edf8d995d7e
+msgid "All devices created on the NVP Controller will have a tag set to domain-account of the owner of the network, this string can be used to search for items in the NVP Controller."
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:292
+# 6af46290da7d4824b2d5b357097fbd61
+msgid "Database tables"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:294
+# d5f5219626854f709e657fcd621767a6
+msgid "The following tables are added to the cloud database for the Nicira NVP Plugin"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:298
+#: ../../networking/nicira-plugin.rst:310
+#: ../../networking/nicira-plugin.rst:326
+# 53c8b3b2f25c4f47bbb53c7db9196b51
+# 0c142416faf547e4a149fa19d4a29f34
+# af2397e101774456b392ae473a8ac616
+msgid "id"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:298
+#: ../../networking/nicira-plugin.rst:310
+#: ../../networking/nicira-plugin.rst:326
+# 42bc0a25597f4099acca8c07abb0d47f
+# 6b9bf4f773774fccae37b49f7f45179d
+# ef7b099241fd44889d8af022a2c0d408
+msgid "auto incrementing id"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:300
+# a33c26507ef541d784a022a6d515e0f5
+msgid "logicalswitch"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:300
+# 75292eb7b6194cc9a7d194e1faec0388
+msgid "uuid of the logical switch this port is connected to"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:302
+# 668bf5ade1a2492b9cf0f6a15d1aa8b8
+msgid "logicalswitchport"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:302
+# 094b2c0685c34d8698ea4121fc4a88eb
+msgid "uuid of the logical switch port for this nic"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:304
+# cdb4155d3476483aa07c869bc8ac78b6
+msgid "nic"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:304
+# caecd436ae884261a3bfadede5ab9dce
+msgid "the CloudStack uuid for this nic, reference to the nics table"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:307
+# 6c10a96d48d84ae8b9190cb8c626b697
+msgid "Table: nicira\\_nvp\\_nic\\_map"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:312
+# 6eb2d75abc814d21b629814fbac9664e
+msgid "uuid"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:312
+# 34350d0d06cf4418b61a4cbe92abdf05
+msgid "UUID identifying this device"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:314
+# 935c6786ee0048d99f0c9dcb139ed85a
+msgid "physical\\_network\\_id"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:314
+# ea440688d7f643f6b11b83ca3a040128
+msgid "the physical network this device is configured on"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:316
+# cd3800860ac044f898a3245467008af5
+msgid "provider\\_name"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:318
+# 87bc5c5f703b4270a808133d3860792e
+msgid "device\\_name"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:318
+# 97ca0c7c7ea74734830b00d6ee3b614e
+msgid "display name for this device"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:320
+# 2baacc960233427e91829af5f967d22a
+msgid "host\\_id"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:320
+# 7d1bc27e2b5e4329864c15cca9089af6
+msgid "reference to the host table with the device configuration"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:323
+# f71a43d6ec914205a351c27e9432fa1b
+msgid "Table: external\\_nicira\\_nvp\\_devices"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:328
+# 30f1c62a6bc3479eaa3fca1c99a342cb
+msgid "logicalrouter\\_uuid"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:328
+# 24fc0e08e3844c049250201f0f5a6943
+msgid "uuid of the logical router"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:330
+# b654ff3c1d7b40ffb8cd27a0e5eb292f
+msgid "network\\_id"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:330
+# 5e919015c2e44058b7abcca55fdba0b3
+msgid "id of the network this router is linked to"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:333
+# 70287e5e55d24b1ab49f44b0dbb4f0f8
+msgid "Table: nicira\\_nvp\\_router\\_map"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:335
+# dde40d6b8f274f58b2ee49ac2d5e8ca1
+msgid "nicira\\_nvp\\_router\\_map is only available in CloudStack 4.1 and above"
+msgstr ""
+
+#: ../../networking/nicira-plugin.rst:340
+# 3698c81ecf44478bb41133498b56e83f
+msgid "0-0 Wed Oct 03 2012 Hugo Trippaers hugo@apache.org Documentation created for 4.0.0-incubating version of the NVP Plugin 1-0 Wed May 22 2013 Hugo Trippaers hugo@apache.org Documentation updated for CloudStack 4.1.0"
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:2
+# 0c186222f32b4bbda715262783ba3cf7
+msgid "The OVS Plugin"
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:5
+# 8063b6a753804137b6b5a38c53764c89
+msgid "Introduction to the OVS Plugin"
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:7
+# 738b7d7d38ef40d097cb25594387ba11
+msgid "The OVS plugin is the native SDN implementations in CloudStack, using GRE isolation method. The plugin can be used by CloudStack to implement isolated guest networks and to provide additional services like NAT, port forwarding and load balancing."
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:12
+# 8738288471674363afa921ecbaec1867
+msgid "Features of the OVS Plugin"
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:14
+# e2c0a6c8d2a54c11ab038aea7437ee1c
+msgid "The following table lists the CloudStack network services provided by the OVS Plugin."
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:22
+#: ../../networking/ovs-plugin.rst:24
+#: ../../networking/ovs-plugin.rst:26
+#: ../../networking/ovs-plugin.rst:41
+# 94b705d1919f42dc93ee3bde143cc9e4
+# a8bcd55c8af9483bab85a27e2e858463
+# c5adedbd9c034eebb5de1bd95a2782ad
+# d66b2462d1d74e5dba6272e9ca905e7b
+msgid ">= 4.3"
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:26
+#: ../../networking/ovs-plugin.rst:213
+# 1c98b0381c96437a88b133d8ac4fc504
+# 3870fad2a1c2490e91bada596aa92f94
+msgid "Load Balancing"
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:34
+# ab32a538a9b2476abf00b78f369ad247
+msgid "The following hypervisors are supported by the OVS Plugin."
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:48
+# d1f299f091ce45a3b5596dc0a9a978f1
+msgid "Configuring the OVS Plugin"
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:53
+# a5997f6fd754488ba5c92e4603cf1c1f
+msgid "Before enabling the OVS plugin the hypervisor needs to be install OpenvSwitch. Default, XenServer has already installed OpenvSwitch. However, you must install OpenvSwitch manually on KVM. CentOS 6.4 and OpenvSwitch 1.10 are recommended."
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:55
+# 42c5d4f701cd475f82263345ed2643f8
+msgid "KVM hypervisor:"
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:57
+# ff6b9ce75064465faf40f28294a4a4d2
+msgid "CentOS 6.4 is recommended."
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:58
+# aec6d4e64ef34c9785419abc0d40a4ff
+msgid "To make sure that the native bridge module will not interfere with openvSwitch the bridge module should be added to the blacklist. See the modprobe documentation for your distribution on where to find the blacklist. Make sure the module is not loaded either by rebooting or executing rmmod bridge before executing next steps."
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:64
+# 59bc3e26166b49929ac57352426c0e1b
+msgid "CloudStack needs to have at least one physical network with the isolation method set to “GRE”. This network should be enabled for the Guest traffic type."
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:69
+# 577a289d75244f688fe34676d433f6cf
+msgid "With KVM, the traffic type should be configured with the traffic label that matches the name of the Integration Bridge on the hypervisor. For example, you should set the traffic label as following: - Management & Storage traffic: cloudbr0 - Guest & Public traffic: cloudbr1 See KVM networking configuration guide for more detail."
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:81
+# 37d246b9af8c4143b25810d171f5673e
+msgid "Agent Configuration"
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:83
+# e95ef7c66b834737824020929e57a510
+msgid "Only for KVM hypervisor"
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:85
+# 198013b8c9c5432ab8c266399deacab1
+msgid "Configure network interfaces:"
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:133
+# 9af721992b2946409aef0299c78bef7e
+msgid "Edit /etc/cloudstack/agent/agent.properties"
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:143
+# 682ec9ff48d647e7a1202dcef28c0ee7
+msgid "The OVS provider is disabled by default. Navigate to the \"Network Service Providers\" configuration of the physical network with the GRE isolation type. Navigate to the OVS provider and press the \"Enable Provider\" button."
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:155
+# 840e28ff519d454cb23bab644b4b6ec2
+msgid "Using the OVS plugin requires a network offering with Virtual Networking enabled and configured to use the OVS element. Typical use cases combine services from the Virtual Router appliance and the OVS plugin."
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:171
+#: ../../networking/ovs-plugin.rst:177
+#: ../../networking/ovs-plugin.rst:179
+#: ../../networking/ovs-plugin.rst:181
+#: ../../networking/ovs-plugin.rst:209
+#: ../../networking/ovs-plugin.rst:211
+#: ../../networking/ovs-plugin.rst:213
+#: ../../networking/ovs-plugin.rst:215
+# 1d3b225edb8b482d8c582f632dc71313
+# ebdef897609040a283a250c5c1eb4151
+# b6ca83ff9ff7470ebc1a3af094449997
+# 32cdce0ada9d4fad837c1757dfe00cb6
+# cb5fd652d72044879d30e2b4818b3f15
+# c84ee4d20f7c48c488cbb6ed7a552ab3
+# dcc48e27341c45c2a35622f24fd2e194
+# f8560d7a491c4087a8e64879c3cb7d16
+msgid "OVS"
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:192
+# 849b742162ee49498b9dd99abddfcda0
+msgid "The tag in the network offering should be set to the name of the physical network with the OVS provider."
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:221
+# 231676daf7d6469585cec8201d618078
+msgid "Using the OVS plugin with VPC"
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:223
+# aa4e41d6c1444a668af3748de69e5281
+msgid "OVS plugin does not work with VPC at that time"
+msgstr ""
+
+#: ../../networking/ovs-plugin.rst:228
+# f8d4fdca37ad453c9e9d478e4bcd1e63
+msgid "0-0 Mon Dec 2 2013 Nguyen Anh Tu tuna@apache.org Documentation created for 4.3.0 version of the OVS Plugin"
+msgstr ""
+
+#: ../../networking/vxlan.rst:2
+# aba9a0debf774aa0944cb432adf8ef5d
+msgid "The VXLAN Plugin"
+msgstr ""
+
+#: ../../networking/vxlan.rst:5
+# 7e47773835b34f62b638c9063c13ac0d
+msgid "System Requirements for VXLAN"
+msgstr ""
+
+#: ../../networking/vxlan.rst:7
+# 0856b955a54e4897a16abb275756a9fd
+msgid "In PRODUCT 4.X.0, this plugin only supports the KVM hypervisor with the standard linux bridge."
+msgstr ""
+
+#: ../../networking/vxlan.rst:10
+# 3d2b1751d05a45d9a07403171f7f5925
+msgid "The following table lists the requirements for the hypervisor."
+msgstr ""
+
+#: ../../networking/vxlan.rst:13
+# cf661800742e45b78795a27fc183b902
+msgid "Item"
+msgstr ""
+
+#: ../../networking/vxlan.rst:13
+# 819ffab2f6da41e09ffcda38bcfe555e
+msgid "Requirement"
+msgstr ""
+
+#: ../../networking/vxlan.rst:13
+#: ../../networking/vxlan.rst:30
+# 43dad0f458fd4256af5210266203e63e
+# c2000a1583f74039ba4e81e33d1bfb4f
+msgid "Note"
+msgstr ""
+
+#: ../../networking/vxlan.rst:15
+# e5bde3c30dc5441eb12a4ec4b45e7060
+msgid "OvsVifDriver is not supported by this plugin in PRODUCT 4.X, use BridgeVifDriver (default)."
+msgstr ""
+
+#: ../../networking/vxlan.rst:17
+# 3911379ce0704038bd265efc35b968d5
+msgid "Linux kernel"
+msgstr ""
+
+#: ../../networking/vxlan.rst:17
+# 0481712b141d4f3e94139b17db34afd5
+msgid "version >= 3.7, VXLAN kernel module enabled"
+msgstr ""
+
+#: ../../networking/vxlan.rst:17
+# 09493271ea8b4c26b832bf6444ecc41c
+msgid "It is recommended to use kernel >=3.9, since Linux kernel categorizes the VXLAN driver as experimental <3.9."
+msgstr ""
+
+#: ../../networking/vxlan.rst:19
+# 5aeec29ada874c7399081093439a08b4
+msgid "iproute2"
+msgstr ""
+
+#: ../../networking/vxlan.rst:19
+# e8eb5592e8704feb9938a222c6bd37a9
+msgid "matches kernel version"
+msgstr ""
+
+#: ../../networking/vxlan.rst:22
+# 752c3ff3115d4533938927673fc8256e
+msgid "Table: Hypervisor Requirement for VXLAN"
+msgstr ""
+
+#: ../../networking/vxlan.rst:25
+# 972f006525e946c7a239d2ebaecca487
+msgid "Linux Distributions that meet the requirements"
+msgstr ""
+
+#: ../../networking/vxlan.rst:27
+# db3d7314090e428dbd26878e44b96698
+msgid "The following table lists distributions which meet requirements."
+msgstr ""
+
+#: ../../networking/vxlan.rst:30
+# e489f83c058d4843b0edddf4d5f7ed80
+msgid "Distribution"
+msgstr ""
+
+#: ../../networking/vxlan.rst:30
+# a6be099619614c06ac446220c77210a8
+msgid "Release Version"
+msgstr ""
+
+#: ../../networking/vxlan.rst:30
+# 7aa86d66ab7f4d9c8cf8188e6f9f021f
+msgid "Kernel Version (Date confirmed)"
+msgstr ""
+
+#: ../../networking/vxlan.rst:32
+# e9ecad2cccc74cb7aa00b46a5e3a0570
+msgid "Ubuntu"
+msgstr ""
+
+#: ../../networking/vxlan.rst:32
+# edbdd7c57081462e8d40ef0d9656151d
+msgid "13.04"
+msgstr ""
+
+#: ../../networking/vxlan.rst:32
+# 29f1312a9ae74bb99e6a7ec4c3693240
+msgid "3.8.0 (2013/07/23)"
+msgstr ""
+
+#: ../../networking/vxlan.rst:34
+# 5cd45188355b4d0eb21163ec4a720324
+msgid "Fedora"
+msgstr ""
+
+#: ../../networking/vxlan.rst:34
+# 34d9f4bac41e4a0691bcc15d3ee2468a
+msgid ">= 17"
+msgstr ""
+
+#: ../../networking/vxlan.rst:34
+# daff7db17c0042bb9cf674241df52912
+msgid "3.9.10 (2013/07/23)"
+msgstr ""
+
+#: ../../networking/vxlan.rst:34
+# 3008367b713047198803fa848a0ee4db
+msgid "Latest kernel packages are available in \"update\" repository."
+msgstr ""
+
+#: ../../networking/vxlan.rst:36
+# a2d7c1bb423341cca75ddda74037bdb1
+msgid "CentOS"
+msgstr ""
+
+#: ../../networking/vxlan.rst:36
+# 02acedd346e5464dbc4493b0f3ff205b
+msgid ">= 6.5"
+msgstr ""
+
+#: ../../networking/vxlan.rst:36
+# f87b94fed04c4aa6a0022f519a578d18
+msgid "2.6.32-431.3.1.el6.x86\\_64 (2014/01/21)"
+msgstr ""
+
+#: ../../networking/vxlan.rst:39
+# 164f35e12f76425285cbc95de79c38e9
+msgid "Table: List of Linux distributions which meet the hypervisor requirements"
+msgstr ""
+
+#: ../../networking/vxlan.rst:43
+# eca34e237e7347a982fefa12a663cc49
+msgid "Check the capability of your system"
+msgstr ""
+
+#: ../../networking/vxlan.rst:45
+# 23645375c0fe4e68a7096b4418965490
+msgid "To check the capability of your system, execute the following commands."
+msgstr ""
+
+#: ../../networking/vxlan.rst:59
+# 08ea45b15b224cedbd7c5b25ee9d8fb2
+msgid "Advanced: Build kernel and iproute2"
+msgstr ""
+
+#: ../../networking/vxlan.rst:61
+# 50467500d4d54ffe8e06d413c70fc679
+msgid "Even if your system doesn't support VXLAN, you can compile the kernel and iproute2 by yourself. The following procedure is an example for CentOS 6.4."
+msgstr ""
+
+#: ../../networking/vxlan.rst:66
+# 3cbc89b3e65049b5a8af5067dfd3b12f
+msgid "Build kernel"
+msgstr ""
+
+#: ../../networking/vxlan.rst:116
+# 96113e7068244ddcbc74d0628b23b864
+msgid "Build iproute2"
+msgstr ""
+
+#: ../../networking/vxlan.rst:134
+# 13971197a0884005b1bbec7e88751a55
+msgid "Please use rebuild kernel and tools at your own risk."
+msgstr ""
+
+#: ../../networking/vxlan.rst:137
+# 6082e428d1cb4b658d787c71d0ad1dd5
+msgid "Configure PRODUCT to use VXLAN Plugin"
+msgstr ""
+
+#: ../../networking/vxlan.rst:140
+# 51018b2e8a20496c95143f40c4c2e7b1
+msgid "Configure hypervisor"
+msgstr ""
+
+#: ../../networking/vxlan.rst:143
+# 1bda3ef5767243159c1f32723071aedf
+msgid "Configure hypervisor: KVM"
+msgstr ""
+
+#: ../../networking/vxlan.rst:145
+# 0b30975586c54132a8722bffbd37f88d
+msgid "In addition to \"KVM Hypervisor Host Installation\" in \"PRODUCT Installation Guide\", you have to configure the following item on the host."
+msgstr ""
+
+#: ../../networking/vxlan.rst:150
+# e86c1c67cbc246b284db4bdc68b79c64
+msgid "Create bridge interface with IPv4 address"
+msgstr ""
+
+#: ../../networking/vxlan.rst:152
+# 6856ea7ca74549fb91a97823fda39f40
+msgid "This plugin requires an IPv4 address on the KVM host to terminate and originate VXLAN traffic. The address should be assinged to a physical interface or a bridge interface bound to a physical interface. Both a private address or a public address are fine for the purpose. It is not required to be in the same subnet for all hypervisors in a zone, but they should be able to reach each other via IP multicast with UDP/8472 port. A name of a physical interface or a name of a bridge interface bound to a physical interface can be used as a traffic label. Physical interface name fits for almost all cases, but if physical interface name differs per host, you may use a bridge to set a same name. If you would like to use a bridge name as a traffic label, you may create a bridge in this way."
+msgstr ""
+
+#: ../../networking/vxlan.rst:165
+# 43bd2f0570fd4eaab96d1220d515286a
+msgid "Let ``cloudbr1`` be the bridge interface for the instances' private network."
+msgstr ""
+
+#: ../../networking/vxlan.rst:169
+#: ../../networking/vxlan.rst:288
+# 8ee47f12c6e140c29727a53e1411a9ff
+# a92bdc6a59d1445bb35f02ae1bbf2ff8
+msgid "Configure in RHEL or CentOS"
+msgstr ""
+
+#: ../../networking/vxlan.rst:171
+# 625b6babbbe14c7297b1db229a8e1bae
+msgid "When you configured the ``cloudbr1`` interface as below,"
+msgstr ""
+
+#: ../../networking/vxlan.rst:190
+#: ../../networking/vxlan.rst:246
+# 904e121f26a14fde81c4de98e7b24c0e
+# 6cf0b410f0a8449d8e65149baf7ce094
+msgid "you would change the configuration similar to below."
+msgstr ""
+
+#: ../../networking/vxlan.rst:207
+#: ../../networking/vxlan.rst:318
+# db9a28a25978461db08f0fdf995ea8c3
+# 00e194cf8c824537a2b5b8e26458dd30
+msgid "Configure in Ubuntu"
+msgstr ""
+
+#: ../../networking/vxlan.rst:209
+# 2a74cc1f2afd4082bdbf0ba50f6a629f
+msgid "When you configured ``cloudbr1`` as below,"
+msgstr ""
+
+#: ../../networking/vxlan.rst:282
+# cbe3d7f5a83f4d898797c7e80eb79049
+msgid "Configure iptables to pass XVLAN packets"
+msgstr ""
+
+#: ../../networking/vxlan.rst:284
+# 2f4c96bb0b4e40dfbdab9874f6891a33
+msgid "Since VXLAN uses UDP packet to forward encapsulated the L2 frames, UDP/8472 port must be opened."
+msgstr ""
+
+#: ../../networking/vxlan.rst:290
+# 22017b1c949f41099cfc19e25c2322c1
+msgid "RHEL and CentOS use iptables for firewalling the system, you can open extra ports by executing the following iptable commands:"
+msgstr ""
+
+#: ../../networking/vxlan.rst:298
+# 494b6216726d4b41ac1143c03c93ede2
+msgid "These iptable settings are not persistent accross reboots, we have to save them first."
+msgstr ""
+
+#: ../../networking/vxlan.rst:306
+#: ../../networking/vxlan.rst:332
+# e4c7fa92a9c0468e8da1450958c88fba
+# 65ea92e3dff5470387625254bb1c42db
+msgid "With this configuration you should be able to restart the network, although a reboot is recommended to see if everything works properly."
+msgstr ""
+
+#: ../../networking/vxlan.rst:315
+#: ../../networking/vxlan.rst:341
+# 2d1c77a3ce254c0eb8fac95e5895d8ae
+# 765412ce099b4da18bc65bc977dacabd
+msgid "Make sure you have an alternative way like IPMI or ILO to reach the machine in case you made a configuration error and the network stops functioning!"
+msgstr ""
+
+#: ../../networking/vxlan.rst:320
+# 854fd1560d9344e8ac82043d2db28452
+msgid "The default firewall under Ubuntu is UFW (Uncomplicated FireWall), which is a Python wrapper around iptables."
+msgstr ""
+
+#: ../../networking/vxlan.rst:323
+# f90c18bbf2c14a2394917bc8afb0d9fe
+msgid "To open the required ports, execute the following commands:"
+msgstr ""
+
+#: ../../networking/vxlan.rst:330
+# 88a38bd1e33c46929e6fc18a9447362a
+msgid "By default UFW is not enabled on Ubuntu. Executing these commands with the firewall disabled does not enable the firewall."
+msgstr ""
+
+#: ../../networking/vxlan.rst:344
+# 55f975bbaf7f4dffa989e42598176360
+msgid "Setup zone using VXLAN"
+msgstr ""
+
+#: ../../networking/vxlan.rst:346
+# 151a7ea2c74744eeb7e1c0a2c6efa55e
+msgid "In almost all parts of zone setup, you can just follow the advanced zone setup istruction in \"PRODUCT Installation Guide\" to use this plugin. It is not required to add a network element nor to reconfigure the network offering. The only thing you have to do is configure the physical network to use VXLAN as the isolation method for Guest Network."
+msgstr ""
+
+#: ../../networking/vxlan.rst:353
+# b98161ffc6e94d978fedfabfa111e148
+msgid "Configure the physical network"
+msgstr ""
+
+#: ../../networking/vxlan.rst:357
+# 90b276bf94d1402aa0ee2596f2721705
+msgid "CloudStack needs to have one physical network for Guest Traffic with the isolation method set to \"VXLAN\"."
+msgstr ""
+
+#: ../../networking/vxlan.rst:362
+# 280cd3cc511c4f9da067fdd49db6975c
+msgid "Guest Network traffic label should be the name of the physical interface or the name of the bridge interface and the bridge interface and they should have an IPv4 address. See ? for details."
+msgstr ""
+
+#: ../../networking/vxlan.rst:367
+# d5a846d9f8a148b49d60346f4b1adfb5
+msgid "Configure the guest traffic"
+msgstr ""
+
+#: ../../networking/vxlan.rst:371
+# c1b08286a7fc47958c0620ea96d11201
+msgid "Specify a range of VNIs you would like to use for carrying guest network traffic."
+msgstr ""
+
+#: ../../networking/vxlan.rst:374
+# aa3c048fba4b4a53a4bb2e3016f33a1f
+msgid "VNI must be unique per zone and no duplicate VNIs can exist in the zone. Exercise care when designing your VNI allocation policy."
+msgstr ""
+

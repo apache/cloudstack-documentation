@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:06+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 3d0c16ad63444261b9694623c2402727
+#: ../../networking/networking_in_pod.rst:18
+msgid "Networking in a Pod"
+msgstr "一个提供点里的网络"
+
+# 6f94486d31ee45b8a15da0d2a1c080ca
+#: ../../networking/networking_in_pod.rst:20
+msgid ""
+"The figure below illustrates network setup within a single pod. The hosts "
+"are connected to a pod-level switch. At a minimum, the hosts should have one"
+" physical uplink to each switch. Bonded NICs are supported as well. The pod-"
+"level switch is a pair of redundant gigabit switches with 10 G uplinks."
+msgstr "下图演示了一个单提供点的网络配置。主机均连接到提供点层级的交换机。每一个主机至少有一个物理网卡连接到交换机。当然，这种环境也支持网卡绑定。提供点层级的交换机由两个1000M冗余组成，它们通过10G线路上联。"
+
+# d14ee305eeed479b95127d50242ce7f9
+#: ../../networking/networking_in_pod.rst:26
+msgid "|networksinglepod.png|"
+msgstr "|networksinglepod.png|"
+
+# 6c63d1a963fe4751bb6a3efcc28ec07b
+#: ../../networking/networking_in_pod.rst:28
+msgid "Servers are connected as follows:"
+msgstr "服务器以如下形式连接："
+
+# cab4d0a9b3874148b142ec81b8916ab3
+#: ../../networking/networking_in_pod.rst:30
+msgid ""
+"Storage devices are connected to only the network that carries management "
+"traffic."
+msgstr "存储设备只与管理网络连接。"
+
+# a01f83aa00be44768e404b928746539d
+#: ../../networking/networking_in_pod.rst:33
+msgid ""
+"Hosts are connected to networks for both management traffic and public "
+"traffic."
+msgstr "主机同时与管理网络和公共网络连接。"
+
+# 7cc32b192f154001a6b37b93bf141c79
+#: ../../networking/networking_in_pod.rst:36
+msgid ""
+"Hosts are also connected to one or more networks carrying guest traffic."
+msgstr "主机也与一个或多个来宾网络连接。"
+
+# afe45e02d11f436b92bc4752de309aa2
+#: ../../networking/networking_in_pod.rst:39
+msgid ""
+"We recommend the use of multiple physical Ethernet cards to implement each "
+"network interface as well as redundant switch fabric in order to maximize "
+"throughput and improve reliability."
+msgstr "我们推荐用多个物理网卡以改进性能，也推荐用冗余的光纤交换机以改进网络可靠性。"

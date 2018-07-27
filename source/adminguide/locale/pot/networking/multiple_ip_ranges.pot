@@ -1,0 +1,48 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../networking/multiple_ip_ranges.rst:18
+# cea4bcb571304273bc04b67f139f0140
+msgid "About Multiple IP Ranges"
+msgstr ""
+
+#: ../../networking/multiple_ip_ranges.rst:20
+# fb1aec1297a645198cd0ecbc09f187eb
+msgid "The feature can only be implemented on IPv4 addresses."
+msgstr ""
+
+#: ../../networking/multiple_ip_ranges.rst:22
+# 3180ea2f13aa4565a8715d959ef1148d
+msgid "CloudStack provides you with the flexibility to add guest IP ranges from different subnets in Basic zones and security groups-enabled Advanced zones. For security groups-enabled Advanced zones, it implies multiple subnets can be added to the same VLAN. With the addition of this feature, you will be able to add IP address ranges from the same subnet or from a different one when IP address are exhausted. This would in turn allows you to employ higher number of subnets and thus reduce the address management overhead. To support this feature, the capability of ``createVlanIpRange`` API is extended to add IP ranges also from a different subnet."
+msgstr ""
+
+#: ../../networking/multiple_ip_ranges.rst:33
+# d1d9636b0fd14b508f2570b3d7f5b7a2
+msgid "Ensure that you manually configure the gateway of the new subnet before adding the IP range. Note that CloudStack supports only one gateway for a subnet; overlapping subnets are not currently supported."
+msgstr ""
+
+#: ../../networking/multiple_ip_ranges.rst:37
+# b1ed3bd81dfa4662bcf9ab17817d99e5
+msgid "Use the ``deleteVlanRange`` API to delete IP ranges. This operation fails if an IP from the remove range is in use. If the remove range contains the IP address on which the DHCP server is running, CloudStack acquires a new IP from the same subnet. If no IP is available in the subnet, the remove operation fails."
+msgstr ""
+
+#: ../../networking/multiple_ip_ranges.rst:43
+# 5c66e6ebd5cc42728bccf16a99764a94
+msgid "This feature is supported on KVM, xenServer, and VMware hypervisors."
+msgstr ""
+

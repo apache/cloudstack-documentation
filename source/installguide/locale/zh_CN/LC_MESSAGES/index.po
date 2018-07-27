@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: 2014-06-30 10:23+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-installation-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 982ed5120e594d65bcff280a0398f5af
+#: ../../index.rst:23
+msgid "Welcome to CloudStack Installation Documentation"
+msgstr "欢迎阅读CloudStack安装文档"
+
+# 1f1f369df4b645e0bbda82cf077bdbd6
+#: ../../index.rst:29
+msgid ""
+"We are in the process of changing documentation format as well as hosting "
+"mechanism. Please be patient with us as we migrate our entire documentation "
+"to this new setup."
+msgstr ""
+
+# b3e6055f64164ee0b851226b5573bfb3
+#: ../../index.rst:33
+msgid ""
+"This is the Apache CloudStack installation guide, for the Documentation "
+"home, the administrator guide or the Release-Notes please see:"
+msgstr ""
+
+# b643ff53ad664a829c30729664d2ad00
+#: ../../index.rst:36
+msgid "`Documentation home <http://docs.cloudstack.apache.org>`_"
+msgstr "`文档 主页 <http://docs.cloudstack.apache.org>`_"
+
+# 2cf98f8dcdff4610b15031a039d4c5c6
+#: ../../index.rst:38
+msgid ""
+"`Administration Guide <http://docs.cloudstack.apache.org/projects"
+"/cloudstack-administration>`_"
+msgstr "`管理指南 <http://docs.cloudstack.apache.org/projects/cloudstack-administration>`_"
+
+# a98ac35a7f2b4cf9b3090ff68dc12650
+#: ../../index.rst:41
+msgid ""
+"`Release Notes <http://docs.cloudstack.apache.org/projects/cloudstack-"
+"release-notes>`_"
+msgstr "`发行说明 <http://docs.cloudstack.apache.org/projects/cloudstack-release-notes>`_"
+
+# 86316507b4b44a5a96cfdb3721f97bd4
+#: ../../index.rst:45
+msgid ""
+"In this guide we first go through some design and architectural choices_ to "
+"build your cloud. Then we dive into a single node quick start guide_ to give"
+" you a feel for the installation process. The source installation steps_ are"
+" given in the follow-on section for people who want to build their own "
+"packages. Otherwise you can use the general installation_ which makes use of"
+" community maintained package repositories. The rest of the guide goes "
+"through the configuration_ of the data-center and the setup of the network_,"
+" storage_ and hypervisors_."
+msgstr ""
+
+# df08cf7ea88245c086043ad57af8e8ac
+#: ../../index.rst:60
+msgid "Choosing a Deployment Architecture"
+msgstr "选择部署架构"
+
+# dbccc2fe994c4999b821643c7bde3eb3
+#: ../../index.rst:70
+msgid "Quick Installation Guide"
+msgstr "快速安装指南"
+
+# a05a3c5a35ca46418756c797e93cdc38
+#: ../../index.rst:80
+msgid "Source Installation"
+msgstr "源码安装"
+
+# 42b62bda8da0413d80b6718dab581b66
+#: ../../index.rst:90
+msgid "General Installation"
+msgstr "常规安装"
+
+# e9c99f765efc4b4396d3d68516bd9f05
+#: ../../index.rst:100
+msgid "Configuration"
+msgstr "配置"
+
+# e126703be1d04fb1a536bbecd12daafa
+#: ../../index.rst:110
+msgid "Hypervisor Setup"
+msgstr ""
+
+# 64d7386116784ddfbfaee06209c06377
+#: ../../index.rst:121
+msgid "Network Setup"
+msgstr "网络设置"
+
+# ca4526f59f884297b45db3c6d92cd6a6
+#: ../../index.rst:131
+msgid "Storage Setup"
+msgstr "存储设置"
+
+# a7129d9d6924487eb5056763f614e703
+#: ../../index.rst:139
+msgid "Optional Installation"
+msgstr "可选安装"

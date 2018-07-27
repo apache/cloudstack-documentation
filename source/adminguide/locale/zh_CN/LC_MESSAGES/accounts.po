@@ -1,0 +1,550 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:03+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# bdc151e73be141a8ad0b4190c3102939
+#: ../../accounts.rst:18
+msgid "Managing Accounts, Users and Domains"
+msgstr "管理账户，用户和域"
+
+# a49422e951994e72894009f0fc5cc963
+#: ../../accounts.rst:21
+msgid "Accounts, Users, and Domains"
+msgstr "账户，用户，域"
+
+# 7316ca3f637249cbbf2f29bd75791600
+#: ../../accounts.rst:24
+msgid "Accounts"
+msgstr "账户"
+
+# 7544ce31af194b279c9dcfb7ae37d3cc
+#: ../../accounts.rst:26
+msgid ""
+"An account typically represents a customer of the service provider or a "
+"department in a large organization. Multiple users can exist in an account."
+msgstr "一个账户通常代表一个客户的服务提供者或一个大组织中的一个部门。一个账户可存在多个用户。"
+
+# e758840629a8483ba31892ff437911e1
+#: ../../accounts.rst:32
+msgid "Domains"
+msgstr "域"
+
+# 3e28d2a36b0642c08a698f6a4426e72c
+#: ../../accounts.rst:34
+msgid ""
+"Accounts are grouped by domains. Domains usually contain multiple accounts "
+"that have some logical relationship to each other and a set of delegated "
+"administrators with some authority over the domain and its subdomains. For "
+"example, a service provider with several resellers could create a domain for"
+" each reseller."
+msgstr "帐户通常按域进行分组。域中经常包含多个账户，这些账户间存在一些逻辑上关系和一系列该域和其子域下的委派的管理员（这段的意思就是说在逻辑上域下可以有管理员，子域下也可以有管理员）。比如，一个服务提供商可有多个分销商这样的服务提供商就能为每一个分销商创建一个域"
+
+# 79060520f2e046868f58925f3f2efc01
+#: ../../accounts.rst:40
+msgid ""
+"For each account created, the Cloud installation creates three different "
+"types of user accounts: root administrator, domain administrator, and user."
+msgstr "对于每个账户的创建,Cloud的安装过程中创建了三种不同类型的用户账户：根管理员，域管理员，普通用户。"
+
+# 341bf7792d884c2d8180600a07351f62
+#: ../../accounts.rst:46
+msgid "Users"
+msgstr "普通用户"
+
+# 8efee3ca63e44a4098ff5086e58f1249
+#: ../../accounts.rst:48
+msgid ""
+"Users are like aliases in the account. Users in the same account are not "
+"isolated from each other, but they are isolated from users in other "
+"accounts. Most installations need not surface the notion of users; they just"
+" have one user per account. The same user cannot belong to multiple "
+"accounts."
+msgstr "用户就像是账户的别名。在同一账户下的用户彼此之间并非隔离的。但是他们与不同账户下的用户是相互隔离的。大多数安装不需要用户的表面概念；他们只是每一个帐户的用户。同一用户不能属于多个帐户。"
+
+# 67a573904306470f87a1f3f6ad52a15f
+#: ../../accounts.rst:54
+msgid ""
+"Username is unique in a domain across accounts in that domain. The same "
+"username can exist in other domains, including sub-domains. Domain name can "
+"repeat only if the full pathname from root is unique. For example, you can "
+"create root/d1, as well as root/foo/d1, and root/sales/d1."
+msgstr "多个账户中的用户名在域中应该是唯一的。相同的用户名能在其他的域中存在，包括子域。域名只有在全路径名唯一的时候才能重复。比如，你能创建一个root/d1，也可以创建root/foo/d1和root/sales/d1。"
+
+# af85977a7aeb4aff9010bde059e08b23
+#: ../../accounts.rst:59
+msgid ""
+"Administrators are accounts with special privileges in the system. There may"
+" be multiple administrators in the system. Administrators can create or "
+"delete other administrators, and change the password for any user in the "
+"system."
+msgstr "管理员在系统中是拥有特权的账户。可能有多个管理员在系统中，管理员能创建删除其他管理员，并且修改系统中任意用户的密码。"
+
+# 8613eb42958647fba87ae1b922d58740
+#: ../../accounts.rst:66
+msgid "Domain Administrators"
+msgstr "域管理员"
+
+# 901efdb2c8554033b865587a48a319f9
+#: ../../accounts.rst:68
+msgid ""
+"Domain administrators can perform administrative operations for users who "
+"belong to that domain. Domain administrators do not have visibility into "
+"physical servers or other domains."
+msgstr "域管理员可以对属于该域的用户进行管理操作。域管理员在物理服务器或其他域中不可见。"
+
+# 5922a532b5814e479301a7d697eb8854
+#: ../../accounts.rst:74
+msgid "Root Administrator"
+msgstr "根管理员"
+
+# 20be104d0a134bab92309e774b538dd4
+#: ../../accounts.rst:76
+msgid ""
+"Root administrators have complete access to the system, including managing "
+"templates, service offerings, customer care administrators, and domains"
+msgstr "根管理员拥有系统完全访问权限，包括管理模板，服务方案，客户服务管理员和域。"
+
+# 7f9e7eaa9c5b4eaba5575b81514d4040
+#: ../../accounts.rst:82
+msgid "Resource Ownership"
+msgstr "资源所有权"
+
+# 3fad6f5edfb34464b707419ce6b7b4a6
+#: ../../accounts.rst:84
+msgid ""
+"Resources belong to the account, not individual users in that account. For "
+"example, billing, resource limits, and so on are maintained by the account, "
+"not the users. A user can operate on any resource in the account provided "
+"the user has privileges for that operation. The privileges are determined by"
+" the role. A root administrator can change the ownership of any virtual "
+"machine from one account to any other account by using the "
+"assignVirtualMachine API. A domain or sub-domain administrator can do the "
+"same for VMs within the domain from one account to any other account in the "
+"domain or any of its sub-domains."
+msgstr "资源属于帐户，而不是帐户中的单个用户。例如，账单、资源限制等由帐户维护，而不是用户维护。用户有权限操作任何在帐户中提供的资源。权限有角色决定。根管理员通过使用assignVirtualMachine API可以将任何虚拟机的所有权从一个帐户调整到另一个帐户。域或子域管理员可以对域中的VMs做同样的操作，包括子域。"
+
+# f25ec45041cd435d83eaf32720407dd4
+#: ../../accounts.rst:96
+msgid "Dedicating Resources to Accounts and Domains"
+msgstr "给帐户和域分配专用资源"
+
+# 8a6427fc034647e681a14ca03224406c
+#: ../../accounts.rst:98
+msgid ""
+"The root administrator can dedicate resources to a specific domain or "
+"account that needs private infrastructure for additional security or "
+"performance guarantees. A zone, pod, cluster, or host can be reserved by the"
+" root administrator for a specific domain or account. Only users in that "
+"domain or its subdomain may use the infrastructure. For example, only users "
+"in a given domain can create guests in a zone dedicated to that domain."
+msgstr "根管理员可以将资源分配给指定的域或为了保证额外的安全或性能从而需要单独基础架构帐户。为了一个指定的域或账号，区域、机架、群集或者主机可以被根管理员保留。只有域或它的子域中的用户可以使用这个基础架构。比如，只有域中的用户可以在其中的区域中创建来宾虚机。"
+
+# 13b20e92d1144d5da1089384a9ce4e59
+#: ../../accounts.rst:106
+msgid "There are several types of dedication available:"
+msgstr "这里有几种有效的分配方式："
+
+# a62e7433baeb444386932b41fe5601fa
+#: ../../accounts.rst:108
+msgid ""
+"Explicit dedication. A zone, pod, cluster, or host is dedicated to an "
+"account or domain by the root administrator during initial deployment and "
+"configuration."
+msgstr "明确的专用。根管理员在初始部署和配置期间给一个帐户或者域分配了一个区域、机架、群集或者主机。"
+
+# 29fbffa86cfd49b4aa29ea7d373eaa03
+#: ../../accounts.rst:112
+msgid ""
+"Strict implicit dedication. A host will not be shared across multiple "
+"accounts. For example, strict implicit dedication is useful for deployment "
+"of certain types of applications, such as desktops, where no host can be "
+"shared between different accounts without violating the desktop software's "
+"terms of license."
+msgstr "严格的潜在专用：一个主机禁止通过多个账号共享。例如，严格私自共享对于部署的某些应用是有用处的，像没有软件授权主机不能在不同账号间进行桌面共享。"
+
+# a821acd0f71541708e12788d2fbc5d75
+#: ../../accounts.rst:118
+msgid ""
+"Preferred implicit dedication. The VM will be deployed in dedicated "
+"infrastructure if possible. Otherwise, the VM can be deployed in shared "
+"infrastructure."
+msgstr "优先的潜在专用。如果可以的话，VM会被部署在专用的基础架构中。否则，VM可被部署在共享基础架构中。"
+
+# b498c9fe36a94f2588d7a9e4494a761d
+#: ../../accounts.rst:124
+msgid "How to Dedicate a Zone, Cluster, Pod, or Host to an Account or Domain"
+msgstr "如何给帐户或者域指定一个区域、群集、机架或者主机"
+
+# 62ce22c4d6f346b79218ff7a937ee3e2
+#: ../../accounts.rst:126
+msgid ""
+"For explicit dedication: When deploying a new zone, pod, cluster, or host, "
+"the root administrator can click the Dedicated checkbox, then choose a "
+"domain or account to own the resource."
+msgstr "对于明确的专用：当部署一个新的区域、机架、群集或者主机的时候，根管理员可以点击Dedicated选框，然后选择域或者帐户来拥有这些资源。"
+
+# 9dfe3b7a9e87411d9694c32c5e4f891e
+#: ../../accounts.rst:130
+msgid ""
+"To explicitly dedicate an existing zone, pod, cluster, or host: log in as "
+"the root admin, find the resource in the UI, and click the Dedicate button. "
+"|button to dedicate a zone, pod,cluster, or host|"
+msgstr "对于明确的专用一个已存在的区域、机架、群集或者主机：使用根管理员登录，在UI中找到资源，然后点击Dedicate按钮。|button to dedicate a zone, pod,cluster, or host|"
+
+# 90707af3ed2b4e6fa7875e9bdd890252
+#: ../../accounts.rst:134
+msgid ""
+"For implicit dedication: The administrator creates a compute service "
+"offering and in the Deployment Planner field, chooses "
+"ImplicitDedicationPlanner. Then in Planner Mode, the administrator specifies"
+" either Strict or Preferred, depending on whether it is permissible to allow"
+" some use of shared resources when dedicated resources are not available. "
+"Whenever a user creates a VM based on this service offering, it is allocated"
+" on one of the dedicated hosts."
+msgstr "对于隐式的专用：管理员创建的计算服务方案和在部署规划区域选择ImplicitDedicationPlanner。然后在规划模型中，管理员按照是否允许一些人当没有专用资源可用的时候使用共享资源来选择严格的或者优先的。无论何时，用户基于这个服务方案创建的VM都会位于专用主机。"
+
+# fda3697ce3a4454da72edbe9f02b3564
+#: ../../accounts.rst:144
+msgid "How to Use Dedicated Hosts"
+msgstr "如何使用专用主机"
+
+# cfd0e245a5a2498b9fa7c89160957ffe
+#: ../../accounts.rst:146
+msgid ""
+"To use an explicitly dedicated host, use the explicit-dedicated type of "
+"affinity group (see `“Affinity Groups” <virtual_machines.html#affinity-"
+"groups>`_). For example, when creating a new VM, an end user can choose to "
+"place it on dedicated infrastructure. This operation will succeed only if "
+"some infrastructure has already been assigned as dedicated to the user's "
+"account or domain."
+msgstr "要使用明确专用主机，在关联组 (参阅 `“关联组” <virtual_machines.html#affinity-groups>`_)中选择explicit-dedicated 类型。比如，当创建新VM的时候，终端用户可以选择将其运行在专用基础架构上。如果一些基础架构已经被分配给专用的用户帐号或域，那么这个操作才能成功。"
+
+# 86abbd3940f34e96a1ad71a01dc6339d
+#: ../../accounts.rst:155
+msgid "Behavior of Dedicated Hosts, Clusters, Pods, and Zones"
+msgstr "专用主机、群集、机架和区域的行为"
+
+# a9963e63da4e48f2a2b7b7fdad96ba29
+#: ../../accounts.rst:157
+msgid ""
+"The administrator can live migrate VMs away from dedicated hosts if desired,"
+" whether the destination is a host reserved for a different account/domain "
+"or a host that is shared (not dedicated to any particular account or "
+"domain). CloudStack will generate an alert, but the operation is allowed."
+msgstr "管理员可以将VMs从专用主机上迁移到任何想要的地方，不管目标主机是不同帐号/域专用的还是共享的主机(不对任何特殊帐号或域专用)。CloudStack将生成一个警告，不过操作还是允许的。"
+
+# a9a8992734b0490aac5bd5e5efa45483
+#: ../../accounts.rst:163
+msgid ""
+"Dedicated hosts can be used in conjunction with host tags. If both a host "
+"tag and dedication are requested, the VM will be placed only on a host that "
+"meets both requirements. If there is no dedicated resource available to that"
+" user that also has the host tag requested by the user, then the VM will not"
+" deploy."
+msgstr "专用主机可用主机标签连接。如果同时需要主机标签和专用，那么VM将只会在匹配所有需求的主机上运行。如果没有专用资源可用于这类用户，那么VM就不会被不部署。"
+
+# 694b1842b07049c094a79e240c2db934
+#: ../../accounts.rst:169
+msgid ""
+"If you delete an account or domain, any hosts, clusters, pods, and zones "
+"that were dedicated to it are freed up. They will now be available to be "
+"shared by any account or domain, or the administrator may choose to re-"
+"dedicate them to a different account or domain."
+msgstr "如果你删除了一个指定了专用资源的帐号或者域，那么其中的任何主机、群集、机架和区域就会被释放。它们会变成可被任何帐户或者域共享，或者管理员可选择重新把它们指定给不同的帐号或域。"
+
+# 9676e7d49a4247c0bd41a3d53e7482a1
+#: ../../accounts.rst:174
+msgid ""
+"System VMs and virtual routers affect the behavior of host dedication. "
+"System VMs and virtual routers are owned by the CloudStack system account, "
+"and they can be deployed on any host. They do not adhere to explicit "
+"dedication. The presence of system vms and virtual routers on a host makes "
+"it unsuitable for strict implicit dedication. The host can not be used for "
+"strict implicit dedication, because the host already has VMs of a specific "
+"account (the default system account). However, a host with system VMs or "
+"virtual routers can be used for preferred implicit dedication."
+msgstr "系统VMs和虚拟路由器影响专用主机的行为。系统VMs和虚拟路由器由CloudStack系统账号拥有，并且它们可在任何主机上部署。它们不会伴随着明确专用主机。主机上的系统虚机和虚拟路由器使其不再适合作为严格的潜在专用主机。主机之所以不能用于严格的潜在专用主机，是因为主机已经有针对帐号(默认系统账号)的VMs。尽管如此，运行着系统VMs或虚拟路由器的主机可以被用于优先的潜在专用。"
+
+# c3ac9b9cb46f4fa7b6ea8d96adc7111e
+#: ../../accounts.rst:186
+msgid "Using an LDAP Server for User Authentication"
+msgstr "使用LDAP服务器用于用户验证"
+
+# 4c358cdbd0ef4ea8bae9aa240f1b4e4a
+#: ../../accounts.rst:188
+msgid ""
+"You can use an external LDAP server such as Microsoft Active Directory or "
+"ApacheDS to authenticate CloudStack end-users. Just map CloudStack accounts "
+"to the corresponding LDAP accounts using a query filter. The query filter is"
+" written using the query syntax of the particular LDAP server, and can "
+"include special wildcard characters provided by CloudStack for matching "
+"common values such as the user’s email address and name. CloudStack will "
+"search the external LDAP directory tree starting at a specified base "
+"directory and return the distinguished name (DN) and password of the "
+"matching user. This information along with the given password is used to "
+"authenticate the user.."
+msgstr "你可以使用一个外部LDAP服务器，例如微软活动目录或ApacheDS进行CloudStack的终端用户验证。仅仅使用查询过滤器映射CloudStack账户与对应的LDAP帐户。查询过滤器是使用查询语法写的特别的LDAP服务器，可以包括用CloudStack提供的特殊通配符匹配通用的像用户的电子邮件地址和名称这种值。CloudStack将在外部LDAP目录树中从一个指定的基目搜索录并返回专有名称(DN)和密码匹配用户。这个信息以及给定的密码是用于验证用户。。"
+
+# 14c749c7da61408588c8e8cdaa11796c
+#: ../../accounts.rst:199
+msgid ""
+"To set up LDAP authentication in CloudStack, call the CloudStack API command"
+" ldapConfig and provide the following:"
+msgstr "在CloudStack中设置LDAP验证，调用CloudStack API指令ldapConfig，并提供如下："
+
+# c4708aa56b75423080f17f84ec2a37a4
+#: ../../accounts.rst:202
+msgid "Hostname or IP address and listening port of the LDAP server"
+msgstr "LDAP服务器的主机名或IP地址和监听端口"
+
+# ff4d11fcc40f4d5c86ce032c3d6e6a76
+#: ../../accounts.rst:204
+msgid "Base directory and query filter"
+msgstr "基本目录和查询过滤器"
+
+# 0b5fce75930e49b19cf1d00062c78539
+#: ../../accounts.rst:206
+msgid ""
+"Search user DN credentials, which give CloudStack permission to search on "
+"the LDAP server"
+msgstr "搜索用户DN 凭证，这个凭证是授予CloudStack允许搜索LDAP服务器上的凭证"
+
+# c3d66516470141c3af861a4b24f45150
+#: ../../accounts.rst:209
+msgid "SSL keystore and password, if SSL is used"
+msgstr "SSL密钥库和密码，如果使用了SSL"
+
+# 6e565fd7b02d4a97b86b380e839f129f
+#: ../../accounts.rst:213
+msgid "Example LDAP Configuration Commands"
+msgstr "LDAP配置命令示例"
+
+# ee72e29a6b33456684ebcbfd012c075a
+#: ../../accounts.rst:215
+msgid ""
+"To understand the examples in this section, you need to know the basic "
+"concepts behind calling the CloudStack API, which are explained in the "
+"Developer’s Guide."
+msgstr "为了明白本章节的示例， 你需要知道调用CloudStack API的基本概念，这在开发者文档中有讲解。"
+
+# 065e58a0d0f74c8d84670251cf00c487
+#: ../../accounts.rst:219
+msgid ""
+"The following shows an example invocation of ldapConfig with an ApacheDS "
+"LDAP server"
+msgstr "以下展示了通过ApacheDS LDAP服务器调用 ldapConfig命令的示例"
+
+# 31d88144f8004adf8efd11cf7f9db7bd
+#: ../../accounts.rst:226
+msgid ""
+"The command must be URL-encoded. Here is the same example without the URL "
+"encoding:"
+msgstr "命令调用的URL必须进行编码. 这里是一个没有进行URL编码的示例："
+
+# 884cde7f5dbd499ba1c28ff09380c692
+#: ../../accounts.rst:244
+msgid ""
+"The following shows a similar command for Active Directory. Here, the search"
+" base is the testing group within a company, and the users are matched up "
+"based on email address."
+msgstr "以下展示了与活动目录类似的命令。这里，搜索是基于一个公司的测试组，用户是根据邮件地址进行查找。"
+
+# d2675a267aa34f4ea3fe2bba2300b61c
+#: ../../accounts.rst:252
+msgid ""
+"The next few sections explain some of the concepts you will need to know "
+"when filling out the ldapConfig parameters."
+msgstr "接下来的几个章节解释了当填写ldapConfig参数时你需要知道的一些概念。"
+
+# befdce0cfd624549844139c917a82bb4
+#: ../../accounts.rst:257
+msgid "Search Base"
+msgstr "搜索基础目录"
+
+# 1522f19d5a2a4e35a8bedc5d147a1af1
+#: ../../accounts.rst:259
+msgid ""
+"An LDAP query is relative to a given node of the LDAP directory tree, called"
+" the search base. The search base is the distinguished name (DN) of a level "
+"of the directory tree below which all users can be found. The users can be "
+"in the immediate base directory or in some subdirectory. The search base may"
+" be equivalent to the organization, group, or domain name. The syntax for "
+"writing a DN varies depending on which LDAP server you are using. A full "
+"discussion of distinguished names is outside the scope of our documentation."
+" The following table shows some examples of search bases to find users in "
+"the testing department.."
+msgstr "LDAP查询与一个LDAP目录树中的节点有关，称之为做搜索基础目录。搜索基础目录是目录库中的一级的distinguished name(DN)，在这里能找到所有用户。用户可以直属于根目录或者一些子目录。搜索基础目录可能是组织、组或者域用户名。用于写DN变量的语法取决于你所使用的LDAP服务。再深入全面的讨论distinguished names超出了我们文档的范围。以下表格中展示了一些在搜索基础目录中查找测试部门中用户的示例。"
+
+# 3649e87915d24059beec30463e0abd10
+# eb0f32160dd24b21991c2f454df60742
+#: ../../accounts.rst:270 ../../accounts.rst:328
+msgid "LDAP Server"
+msgstr "LDAP服务器"
+
+# d8fb5f498afb4ee1aa6669b39f1e34be
+#: ../../accounts.rst:270
+msgid "Example Search Base DN"
+msgstr "搜索基本DN示例"
+
+# 2e421fc0d49d4a819b31999dc3cae2e0
+# a0327a00878d45dab6dc0bc777814674
+#: ../../accounts.rst:272 ../../accounts.rst:330
+msgid "ApacheDS"
+msgstr "ApacheDS"
+
+# 6c854d5e6cdd4e3aadda7dd9be769a53
+#: ../../accounts.rst:272
+msgid "OU=testing, O=project"
+msgstr "OU=testing, O=project"
+
+# a1fbaf989c584a248386911c51fd2fba
+# c776e850eb3e4d64b262a32a9d302bfb
+#: ../../accounts.rst:273 ../../accounts.rst:331
+msgid "Active Directory"
+msgstr "Active Directory"
+
+# 5d0095ff2d7044e7b60bc1754210dd3c
+#: ../../accounts.rst:273
+msgid "OU=testing, DC=company"
+msgstr "OU=testing, DC=company"
+
+# 8309dae488944f0aae3e84a8e1a97ac3
+#: ../../accounts.rst:278
+msgid "Query Filter"
+msgstr "查询过滤"
+
+# c523dbbf5dd94c62a2e3927a8f3123dc
+#: ../../accounts.rst:280
+msgid ""
+"The query filter is used to find a mapped user in the external LDAP server. "
+"The query filter should uniquely map the CloudStack user to LDAP user for a "
+"meaningful authentication. For more information about query filter syntax, "
+"consult the documentation for your LDAP server."
+msgstr "查询过滤器用于在外部LDAP服务器中查找一个映射的用户。为实现有效认证，查询过滤器应该将CloudStack的用户唯一映射到LDAP用户。关于查询过滤器的语法，请参考您使用的LDAP服务器文档。"
+
+# f4f9c13ceefa4163962bd3cfab257852
+#: ../../accounts.rst:285
+msgid "The CloudStack query filter wildcards are:"
+msgstr "CloudStack查询过滤的通配符有:"
+
+# bab683973b9045339c8df3488bc5dd1c
+#: ../../accounts.rst:288
+msgid "Query Filter Wildcard"
+msgstr "查询过滤通配符"
+
+# a94af335cc864d9a962f1fb9b7b5f72c
+#: ../../accounts.rst:288
+msgid "Description"
+msgstr "描述"
+
+# 334393ba6786415e91a2ed1a22d26adb
+#: ../../accounts.rst:290
+msgid "%u"
+msgstr "%u"
+
+# 151cd28e952d4ff98ff9d1544698ccb8
+#: ../../accounts.rst:290
+msgid "User name"
+msgstr "用户名"
+
+# f1f86cbcf39e412fb298da7653a123d3
+#: ../../accounts.rst:291
+msgid "%e"
+msgstr "%e"
+
+# fdf52531788c41fabb814f45f07b178a
+#: ../../accounts.rst:291
+msgid "Email address"
+msgstr "邮件地址"
+
+# 6e5b529e3da248ee85f1e20f81bd8e1c
+#: ../../accounts.rst:292
+msgid "%n"
+msgstr "%n"
+
+# 4704eb3b3e494ad3bc2105d98a3c84a9
+#: ../../accounts.rst:292
+msgid "First and last name"
+msgstr "姓名"
+
+# 51612c6475e246f7b7d8a156605a2323
+#: ../../accounts.rst:295
+msgid ""
+"The following examples assume you are using Active Directory, and refer to "
+"user attributes from the Active Directory schema."
+msgstr "下面的示例假设你使用活动目录, 并从活动目录架构中获得用户属性."
+
+# d853815e3f894dcdbb92be883305dc5b
+#: ../../accounts.rst:298
+msgid "If the CloudStack user name is the same as the LDAP user ID:"
+msgstr "如果 CloudStack 的用户名与LDAP中的用户ID一致:"
+
+# d0bb623240d0410eb8d70ed22ba5a2f8
+#: ../../accounts.rst:304
+msgid "If the CloudStack user name is the LDAP display name:"
+msgstr "如果CloudStack的用户名是LDAP中的显示名字："
+
+# 0a96c3c2516946c1b4260fd4d4d6ffb7
+#: ../../accounts.rst:310
+msgid "To find a user by email address:"
+msgstr "使用邮件地址查找用户:"
+
+# 5b63c901fb5a4d208df8e362234d1cba
+#: ../../accounts.rst:318
+msgid "Search User Bind DN"
+msgstr "搜索用户绑定的DN"
+
+# 92769f4cb5be444cab0bcb685ebe1cc4
+#: ../../accounts.rst:320
+msgid ""
+"The bind DN is the user on the external LDAP server permitted to search the "
+"LDAP directory within the defined search base. When the DN is returned, the "
+"DN and passed password are used to authenticate the CloudStack user with an "
+"LDAP bind. A full discussion of bind DNs is outside the scope of our "
+"documentation. The following table shows some examples of bind DNs."
+msgstr "bind DN是位于外部被允许在定义的搜索基础目录中搜索LDAP目录的LDAP服务器上的用户。当DN返回值的时候，DN和通过的密码就与LDAPbind一起被用于验证CloudStack 用户。再深入完全的讨论bind DNs超出了文档的范围。下面的表格展示了一些bind DNs的实例。"
+
+# 7fcc45a0be9241b09a01d2287541d652
+#: ../../accounts.rst:328
+msgid "Example Bind DN"
+msgstr "绑定DN示例"
+
+# b4c0b2f84be54e32820cac392b6c9c75
+#: ../../accounts.rst:330
+msgid "CN=Administrator,DC=testing,OU=project,OU=org"
+msgstr "CN=Administrator,DC=testing,OU=project,OU=org"
+
+# 46e145ddbc9f47e08b21fa2631ed9fa7
+#: ../../accounts.rst:331
+msgid "CN=Administrator, OU=testing, DC=company, DC=com"
+msgstr "CN=Administrator, OU=testing, DC=company, DC=com"
+
+# cbaaf7054abf480eb88b336ba62a097b
+#: ../../accounts.rst:336
+msgid "SSL Keystore Path and Password"
+msgstr "SSL 密钥库路径和密码"
+
+# 8a6a84c57cc144edb9a20e63c71ddedc
+#: ../../accounts.rst:338
+msgid ""
+"If the LDAP server requires SSL, you need to enable it in the ldapConfig "
+"command by setting the parameters ssl, truststore, and truststorepass. "
+"Before enabling SSL for ldapConfig, you need to get the certificate which "
+"the LDAP server is using and add it to a trusted keystore. You will need to "
+"know the path to the keystore and the password."
+msgstr "如果LDAP 服务器要求SSL， 你需要在ldapConfig命令中通过设置参数ssl, truststore和truststorepass使其生效。在使SSL 对ldapConfig 生效之前，你需要得到LDAP服务器在使用的证书并把它加到被信任的密钥库中。你将需要知道到密钥库和密码的路径。"

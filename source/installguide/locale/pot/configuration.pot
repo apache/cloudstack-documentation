@@ -1,0 +1,2550 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../configuration.rst:18
+# 8162e4079fb94ebdb46db436be09b2e4
+msgid "Configuring your CloudStack Installation"
+msgstr ""
+
+#: ../../configuration.rst:20
+# b181cecde5914223835b875145432152
+msgid "This section tells how to add regions, zones, pods, clusters, hosts, storage, and networks to your cloud. If you are unfamiliar with these entities, please begin by looking through `*Cloud Infrastructure Concepts* <http://docs.cloudstack.apache.org/en/latest/concepts.html#cloud-infrastructure-concepts>`_."
+msgstr ""
+
+#: ../../configuration.rst:27
+# 54b40504af90400fa71b9e8b2a0ff779
+msgid "Overview of Provisioning Steps"
+msgstr ""
+
+#: ../../configuration.rst:29
+# 0985357f77e64604b889f263d397930e
+msgid "After the Management Server is installed and running, you can add the compute resources for it to manage. For an overview of how a CloudStack cloud infrastructure is organized, see `“Cloud Infrastructure Overview” <http://docs.cloudstack.apache.org/en/latest/concepts.html#cloud-infrastructure-overview>`_."
+msgstr ""
+
+#: ../../configuration.rst:34
+# c51bc6ff615c4c7b924e0cdabbb11db7
+msgid "To provision the cloud infrastructure, or to scale it up at any time, follow these procedures:"
+msgstr ""
+
+#: ../../configuration.rst:37
+# adf3e4efe0234c6496a1f43d465cd491
+msgid "Define regions (optional). See :ref:`adding-regions`."
+msgstr ""
+
+#: ../../configuration.rst:39
+# 261036fb021e4c5cb2788a51756216ad
+msgid "Add a zone to the region. See :ref:`adding-a-zone`."
+msgstr ""
+
+#: ../../configuration.rst:41
+# dee74c2b0f1a45999f72be907610fd56
+msgid "Add more pods to the zone (optional). See :ref:`adding-a-pod`."
+msgstr ""
+
+#: ../../configuration.rst:43
+# 1196cbbf547c4332aab26253e7429eed
+msgid "Add more clusters to the pod (optional). See :ref:`adding-a-cluster`."
+msgstr ""
+
+#: ../../configuration.rst:45
+# f82489ac595141efaffd718950339e04
+msgid "Add more hosts to the cluster (optional). See :ref:`adding-a-host`."
+msgstr ""
+
+#: ../../configuration.rst:47
+# 4597369285a14d2bbaa5aaeee7043950
+msgid "Add primary storage to the cluster. See :ref:`add-primary-storage`."
+msgstr ""
+
+#: ../../configuration.rst:49
+# d5616551e06641f2bfef5c1aa5ad09b8
+msgid "Add secondary storage to the zone. See :ref:`add-secondary-storage`."
+msgstr ""
+
+#: ../../configuration.rst:51
+# 730a702a42a041f0a604685b09ab09b2
+msgid "Initialize and test the new cloud. See :ref:`initialize-and-test`."
+msgstr ""
+
+#: ../../configuration.rst:53
+# 095a8c4cdac64dd2825fe0ea089804f6
+msgid "When you have finished these steps, you will have a deployment with the following basic structure:"
+msgstr ""
+
+#: ../../configuration.rst:56
+# bdc17df1e28847748e2b0111f5095ab4
+msgid "|provisioning-overview.png: Conceptual overview of a basic deployment|"
+msgstr ""
+
+#: ../../configuration.rst:62
+# bda13ba72d2e4352ad3a1a99d42006c5
+msgid "Adding Regions (optional)"
+msgstr ""
+
+#: ../../configuration.rst:64
+# 5ce04786ce7a453faaa361f1cf6e76e0
+msgid "Grouping your cloud resources into geographic regions is an optional step when provisioning the cloud. For an overview of regions, see `“About Regions” <http://docs.cloudstack.apache.org/en/latest/concepts.html#about-regions>`_."
+msgstr ""
+
+#: ../../configuration.rst:70
+# 43d3ccf2438e462083e530a02e77edc4
+msgid "The First Region: The Default Region"
+msgstr ""
+
+#: ../../configuration.rst:72
+# 3a4d5136ebdf43759e77bd764570aa1f
+msgid "If you do not take action to define regions, then all the zones in your cloud will be automatically grouped into a single default region. This region is assigned the region ID of 1. You can change the name or URL of the default region by displaying the region in the CloudStack UI and clicking the Edit button."
+msgstr ""
+
+#: ../../configuration.rst:80
+# 1b21128d567445d99c07ff46ba4489ff
+msgid "Adding a Region"
+msgstr ""
+
+#: ../../configuration.rst:82
+# 0a5ed06cff2b46419d89cc8a8bdaf915
+msgid "Use these steps to add a second region in addition to the default region."
+msgstr ""
+
+#: ../../configuration.rst:85
+# 0066030160fb4c0aa122d704f26443ad
+msgid "Each region has its own CloudStack instance. Therefore, the first step of creating a new region is to install the Management Server software, on one or more nodes, in the geographic area where you want to set up the new region. Use the steps in the Installation guide. When you come to the step where you set up the database, use the additional command-line flag ``-r <region_id>`` to set a region ID for the new region. The default region is automatically assigned a region ID of 1, so your first additional region might be region 2."
+msgstr ""
+
+#: ../../configuration.rst:98
+# 1d3a3e7282744ac8b1b9fe66fdad230b
+msgid "By the end of the installation procedure, the Management Server should have been started. Be sure that the Management Server installation was successful and complete."
+msgstr ""
+
+#: ../../configuration.rst:102
+# 89e04051a9a648f78a6906817c6298c1
+msgid "Now add the new region to region 1 in CloudStack."
+msgstr ""
+
+#: ../../configuration.rst:104
+# f0bcb3e213ef430881043b8f6b6ec9c2
+msgid "Log in to CloudStack in the first region as root administrator (that is, log in to <region.1.IP.address>:8080/client)."
+msgstr ""
+
+#: ../../configuration.rst:107
+#: ../../configuration.rst:243
+# 719d94ee47d34246b6f101d4ec172902
+# ad4e5a27680944198ef6d847d4bb0192
+msgid "In the left navigation bar, click Regions."
+msgstr ""
+
+#: ../../configuration.rst:109
+# fc94a12b43334f31a8dd65b85b0db964
+msgid "Click Add Region. In the dialog, fill in the following fields:"
+msgstr ""
+
+#: ../../configuration.rst:111
+# 855f2d8079f54a53848390b3e1e85d00
+msgid "ID. A unique identifying number. Use the same number you set in the database during Management Server installation in the new region; for example, 2."
+msgstr ""
+
+#: ../../configuration.rst:115
+# 2dff505d499e42dab8161f715a1c3ba2
+msgid "Name. Give the new region a descriptive name."
+msgstr ""
+
+#: ../../configuration.rst:117
+# 27ad51a0cc564f31b01d1396fd32b638
+msgid "Endpoint. The URL where you can log in to the Management Server in the new region. This has the format <region.2.IP.address>:8080/client."
+msgstr ""
+
+#: ../../configuration.rst:121
+# b3cf11ce84394be6bb0a5cb5c376ce3c
+msgid "Now perform the same procedure in reverse. Log in to region 2, and add region 1."
+msgstr ""
+
+#: ../../configuration.rst:124
+# 602a3773c4814a20a2c30488a1c18f79
+msgid "Copy the account, user, and domain tables from the region 1 database to the region 2 database."
+msgstr ""
+
+#: ../../configuration.rst:127
+#: ../../configuration.rst:202
+# fc4a95280143441fbcc8e6433a301cd1
+# 15839cafaf4f45298afa516f28712b88
+msgid "In the following commands, it is assumed that you have set the root password on the database, which is a CloudStack recommended best practice. Substitute your own MySQL root password."
+msgstr ""
+
+#: ../../configuration.rst:131
+#: ../../configuration.rst:206
+# 5a32436730e4465eb2edc7735a4eaef5
+# 11c4185460654630a87bb504e9c4603c
+msgid "First, run this command to copy the contents of the database:"
+msgstr ""
+
+#: ../../configuration.rst:137
+# 9b75a55461054a1bad3abbe6817b2f65
+msgid "Then run this command to put the data onto the region 2 database:"
+msgstr ""
+
+#: ../../configuration.rst:143
+# 80e5d3db9d2c450a88e53a4be8726923
+msgid "Remove project accounts. Run these commands on the region 2 database:"
+msgstr ""
+
+#: ../../configuration.rst:149
+#: ../../configuration.rst:225
+# 53caa00c3c5145de985c2b13b464b5ae
+# a631ba3cfeb94702915925f0a54f37f9
+msgid "Set the default zone as null:"
+msgstr ""
+
+#: ../../configuration.rst:155
+# 44128fa3ccb44f93a3ec3959b63e55d6
+msgid "Restart the Management Servers in region 2."
+msgstr ""
+
+#: ../../configuration.rst:159
+# b139e5a1fca145a59015dd8b26f2c103
+msgid "Adding Third and Subsequent Regions"
+msgstr ""
+
+#: ../../configuration.rst:161
+# 4b26a84e5c944c01b6cb0bdbf2d96dce
+msgid "To add the third region, and subsequent additional regions, the steps are similar to those for adding the second region. However, you must repeat certain steps additional times for each additional region:"
+msgstr ""
+
+#: ../../configuration.rst:165
+# ffe5c28b1b87436ea5a2f7e84af47bc6
+msgid "Install CloudStack in each additional region. Set the region ID for each region during the database setup step."
+msgstr ""
+
+#: ../../configuration.rst:172
+# bdeafa42b2cc4c2991a4d0d58d70ccbd
+msgid "Once the Management Server is running, add your new region to all existing regions by repeatedly using the Add Region button in the UI. For example, if you were adding region 3:"
+msgstr ""
+
+#: ../../configuration.rst:176
+# aa7dd2e45a4e493bbbc4e9a50428dd39
+msgid "Log in to CloudStack in the first region as root administrator (that is, log in to <region.1.IP.address>:8080/client), and add a region with ID 3, the name of region 3, and the endpoint <region.3.IP.address>:8080/client."
+msgstr ""
+
+#: ../../configuration.rst:181
+# f071890bec3045a6ae288a2c8e906bc8
+msgid "Log in to CloudStack in the second region as root administrator (that is, log in to <region.2.IP.address>:8080/client), and add a region with ID 3, the name of region 3, and the endpoint <region.3.IP.address>:8080/client."
+msgstr ""
+
+#: ../../configuration.rst:186
+# 421cc6da57a94b80997a5ef13cf5acfe
+msgid "Repeat the procedure in reverse to add all existing regions to the new region. For example, for the third region, add the other two existing regions:"
+msgstr ""
+
+#: ../../configuration.rst:190
+# cf1c2389f44d4a86b432cb480580e449
+msgid "Log in to CloudStack in the third region as root administrator (that is, log in to <region.3.IP.address>:8080/client)."
+msgstr ""
+
+#: ../../configuration.rst:193
+# ada88e8be6134f4ebfb9702b645c2504
+msgid "Add a region with ID 1, the name of region 1, and the endpoint <region.1.IP.address>:8080/client."
+msgstr ""
+
+#: ../../configuration.rst:196
+# 9d6d9ac96a174313b0d904d9b1fc65a5
+msgid "Add a region with ID 2, the name of region 2, and the endpoint <region.2.IP.address>:8080/client."
+msgstr ""
+
+#: ../../configuration.rst:199
+# d1c9041bd9774c38982ce11e14463815
+msgid "Copy the account, user, and domain tables from any existing region's database to the new region's database."
+msgstr ""
+
+#: ../../configuration.rst:212
+# 33652ef5006f4edeb7d088b9756b6510
+msgid "Then run this command to put the data onto the new region's database. For example, for region 3:"
+msgstr ""
+
+#: ../../configuration.rst:219
+# 1c3b113d8791401cb0dcdfd3c2fc5a86
+msgid "Remove project accounts. Run these commands on the region 3 database:"
+msgstr ""
+
+#: ../../configuration.rst:231
+# b5ba88de9f22473f84da99081e799f53
+msgid "Restart the Management Servers in the new region."
+msgstr ""
+
+#: ../../configuration.rst:235
+# a9948baaa88f4e959dc8c37b39ddc029
+msgid "Deleting a Region"
+msgstr ""
+
+#: ../../configuration.rst:237
+# 14abc08462004cfda32c9789f06c7b22
+msgid "Log in to each of the other regions, navigate to the one you want to delete, and click Remove Region. For example, to remove the third region in a 3-region cloud:"
+msgstr ""
+
+#: ../../configuration.rst:241
+# 57df6d2d4970438faabdc8614ba6e67a
+msgid "Log in to <region.1.IP.address>:8080/client."
+msgstr ""
+
+#: ../../configuration.rst:245
+# 8028bf784ece4e7daf62cb170b120169
+msgid "Click the name of the region you want to delete."
+msgstr ""
+
+#: ../../configuration.rst:247
+# b2fc750526434ae6a7ced783693b40e4
+msgid "Click the Remove Region button."
+msgstr ""
+
+#: ../../configuration.rst:249
+# 49d26bc1e7244453b51002e2c2ccd48e
+msgid "Repeat these steps for <region.2.IP.address>:8080/client."
+msgstr ""
+
+#: ../../configuration.rst:255
+# dfa99864651448d495ba56e8c8be435e
+msgid "Adding a Zone"
+msgstr ""
+
+#: ../../configuration.rst:257
+# 774412c06e41450181b4ce9c74727ddc
+msgid "When you add a new zone, you will be prompted to configure the zone’s physical network and add the first pod, cluster, host, primary storage, and secondary storage."
+msgstr ""
+
+#: ../../configuration.rst:261
+# 49e4a1629dd0416499eb13760cd38d1b
+msgid "Log in to the CloudStack UI as the root administrator. See `“Log In to the UI” <http://docs.cloudstack.apache.org/projects/cloudstack-administration/en/latest/ui.html#log-in-to-the-ui>`_."
+msgstr ""
+
+#: ../../configuration.rst:263
+# d6902134301b4889ad289a5806abf1e4
+msgid "In the left navigation, choose Infrastructure."
+msgstr ""
+
+#: ../../configuration.rst:265
+# ade8f3f94c154f1c89537d25e3fd7379
+msgid "On Zones, click View More."
+msgstr ""
+
+#: ../../configuration.rst:267
+# 912e3cd3fe35426abc8c5283086fc5c2
+msgid "Click Add Zone. The zone creation wizard will appear."
+msgstr ""
+
+#: ../../configuration.rst:269
+# c04973210d4243a5a4e97bd2c6e9fe02
+msgid "Choose one of the following network types:"
+msgstr ""
+
+#: ../../configuration.rst:271
+# 28de3b1d237b4562ab0e114352a9d17a
+msgid "**Basic.** For AWS-style networking. Provides a single network where each VM instance is assigned an IP directly from the network. Guest isolation can be provided through layer-3 means such as security groups (IP address source filtering)."
+msgstr ""
+
+#: ../../configuration.rst:276
+# c30938018fd3423d9da33dc59b76f9f5
+msgid "**Advanced.** For more sophisticated network topologies. This network model provides the most flexibility in defining guest networks and providing custom network offerings such as firewall, VPN, or load balancer support."
+msgstr ""
+
+#: ../../configuration.rst:281
+# 03a0589bdc4a49528ac92074d0a70776
+msgid "The rest of the steps differ depending on whether you chose Basic or Advanced. Continue with the steps that apply to you:"
+msgstr ""
+
+#: ../../configuration.rst:284
+# bff1cc1731ca4cdb859052b81a3fa2c8
+msgid "`“Basic Zone Configuration” <#basic-zone-configuration>`_"
+msgstr ""
+
+#: ../../configuration.rst:286
+# 2dd7cac463554ed4bde0647d38500a5f
+msgid "`“Advanced Zone Configuration” <#advanced-zone-configuration>`_"
+msgstr ""
+
+#: ../../configuration.rst:290
+# cb4a637d5ad242448420fd13df8a7e29
+msgid "Basic Zone Configuration"
+msgstr ""
+
+#: ../../configuration.rst:292
+# dffcb46170814a6aaf35cf251f10287a
+msgid "After you select Basic in the Add Zone wizard and click Next, you will be asked to enter the following details. Then click Next."
+msgstr ""
+
+#: ../../configuration.rst:295
+#: ../../configuration.rst:514
+# 28f1173455e549d4ac7adf938a40c70c
+# ecac47e28b5d4834bee99838438a221c
+msgid "**Name.** A name for the zone."
+msgstr ""
+
+#: ../../configuration.rst:297
+#: ../../configuration.rst:516
+# 4fcd0ce95f0b4136934d20a7007a5165
+# 2f1157bfaa2c475985f1902f67db381c
+msgid "**DNS 1 and 2.** These are DNS servers for use by guest VMs in the zone. These DNS servers will be accessed via the public network you will add later. The public IP addresses for the zone must have a route to the DNS server named here."
+msgstr ""
+
+#: ../../configuration.rst:302
+# 4808ff4052234d66ac6543bf631b8b83
+msgid "**Internal DNS 1 and Internal DNS 2.** These are DNS servers for use by system VMs in the zone (these are VMs used by CloudStack itself, such as virtual routers, console proxies, and Secondary Storage VMs.) These DNS servers will be accessed via the management traffic network interface of the System VMs. The private IP address you provide for the pods must have a route to the internal DNS server named here."
+msgstr ""
+
+#: ../../configuration.rst:310
+#: ../../configuration.rst:538
+# 05f039680a9649d59b7c565c57e22f06
+# 21fe556029bb4e01962ab112ac9768f4
+msgid "**Hypervisor.** (Introduced in version 3.0.1) Choose the hypervisor for the first cluster in the zone. You can add clusters with different hypervisors later, after you finish adding the zone."
+msgstr ""
+
+#: ../../configuration.rst:315
+# c00029912e7046949d6766c29a38336e
+msgid "**Network Offering.** Your choice here determines what network services will be available on the network for guest VMs."
+msgstr ""
+
+#: ../../configuration.rst:319
+# e3fe221d9a044cc18fd23016249ec1cc
+msgid "Network Offering"
+msgstr ""
+
+#: ../../configuration.rst:319
+# 0c9256246d864525a6d27a188b8e926d
+msgid "Description"
+msgstr ""
+
+#: ../../configuration.rst:321
+# 17becb3e858a4876942de300eef4c2bf
+msgid "DefaultSharedNetworkOfferingWithSGService"
+msgstr ""
+
+#: ../../configuration.rst:321
+# 6657626819c84e93af54d41c8cc692fe
+msgid "If you want to enable security groups for guest traffic isolation, choose this. (See Using Security Groups to                                                              Control Traffic to VMs.)"
+msgstr ""
+
+#: ../../configuration.rst:322
+# af8f6480878642e78421c05628436d07
+msgid "DefaultSharedNetworkOffering"
+msgstr ""
+
+#: ../../configuration.rst:322
+# 4cd8c72bfb834f82bd91743d1ac74e53
+msgid "If you do not need security groups, choose this."
+msgstr ""
+
+#: ../../configuration.rst:323
+# 702d31b78c8146c284f36761d3ae4129
+msgid "DefaultSharedNetscalerEIPandELBNetworkOffering"
+msgstr ""
+
+#: ../../configuration.rst:323
+# 4bd344a4652e48bc956cf57fd1aa5404
+msgid "If you have installed a Citrix NetScaler appliance as part of your zone network, and you will be using its Elastic                                                         IP and Elastic Load Balancing features, choose this. With the EIP and ELB features, a basic zone with security                                                             groups enabled can offer 1:1 static NAT and load balancing."
+msgstr ""
+
+#: ../../configuration.rst:327
+#: ../../configuration.rst:529
+# 0b90574172fb4e7cbac4151d6526f593
+# 6d30529dd4ac40c19bb562424065502c
+msgid "**Network Domain.** (Optional) If you want to assign a special domain name to the guest VM network, specify the DNS suffix."
+msgstr ""
+
+#: ../../configuration.rst:330
+#: ../../configuration.rst:543
+# 9036e7c5033747d283076f98506ccb51
+# 815323d66e34477eab427c9fdfed1c83
+msgid "**Public.** A public zone is available to all users. A zone that is not public will be assigned to a particular domain. Only users in that domain will be allowed to create guest VMs in this zone."
+msgstr ""
+
+#: ../../configuration.rst:334
+#: ../../configuration.rst:547
+# 21d7ccd878e94405b989441562b0599b
+# a9e870bbb6004173be4bfa18835bcb70
+msgid "Choose which traffic types will be carried by the physical network."
+msgstr ""
+
+#: ../../configuration.rst:336
+# bc24ee0196bb4ef9aab22883c8434456
+msgid "The traffic types are management, public, guest, and storage traffic. For more information about the types, roll over the icons to display their tool tips, or see Basic Zone Network Traffic Types. This screen starts out with some traffic types already assigned. To add more, drag and drop traffic types onto the network. You can also change the network name if desired."
+msgstr ""
+
+#: ../../configuration.rst:343
+# 48f3ce0bb26d4d94963acae89c848fa2
+msgid "Assign a network traffic label to each traffic type on the physical network. These labels must match the labels you have already defined on the hypervisor host. To assign each label, click the Edit button under the traffic type icon. A popup dialog appears where you can type the label, then click OK."
+msgstr ""
+
+#: ../../configuration.rst:349
+#: ../../configuration.rst:568
+# 078e7952b6574b6684e5495207335bec
+# 46d267d97c60451a88ceeeb647987e77
+msgid "These traffic labels will be defined only for the hypervisor selected for the first cluster. For all other hypervisors, the labels can be configured after the zone is created."
+msgstr ""
+
+#: ../../configuration.rst:353
+#: ../../configuration.rst:583
+# 4ee547a64dce4459ae3b5d914984b125
+# 0e5056a8e6fc4f5cb200cda3d7a2525c
+msgid "Click Next."
+msgstr ""
+
+#: ../../configuration.rst:355
+# 0c8ac4ed983c46f4b288584ac8bdf37b
+msgid "(NetScaler only) If you chose the network offering for NetScaler, you have an additional screen to fill out. Provide the requested details to set up the NetScaler, then click Next."
+msgstr ""
+
+#: ../../configuration.rst:359
+# c40cb3f0ffff4013b271dc76dddcf958
+msgid "**IP address.** The NSIP (NetScaler IP) address of the NetScaler device."
+msgstr ""
+
+#: ../../configuration.rst:362
+# 8ea7e4f0a7ef4614b9fbbac8d8fd2d8a
+msgid "**Username/Password.** The authentication credentials to access the device. CloudStack uses these credentials to access the device."
+msgstr ""
+
+#: ../../configuration.rst:366
+# ee173abcc1e54f3d9917adc4936e9b97
+msgid "**Type.** NetScaler device type that is being added. It could be NetScaler VPX, NetScaler MPX, or NetScaler SDX. For a comparison of the types, see About Using a NetScaler Load Balancer."
+msgstr ""
+
+#: ../../configuration.rst:370
+# 8531937f377e40e9b877f0205da08b18
+msgid "**Public interface.** Interface of NetScaler that is configured to be part of the public network."
+msgstr ""
+
+#: ../../configuration.rst:373
+# fa6bf0c0d9d24792afde4c7cfc17a1c3
+msgid "**Private interface.** Interface of NetScaler that is configured to be part of the private network."
+msgstr ""
+
+#: ../../configuration.rst:376
+# badd0cf691644807ad806889ad40db32
+msgid "**Number of retries.** Number of times to attempt a command on the device before considering the operation failed. Default is 2."
+msgstr ""
+
+#: ../../configuration.rst:379
+# 3544f121bc064e29a3a27f191cee9f84
+msgid "**Capacity.** Number of guest networks/accounts that will share this NetScaler device."
+msgstr ""
+
+#: ../../configuration.rst:382
+# 8332d9e920fe463a8dca1db0f77f8583
+msgid "**Dedicated.** When marked as dedicated, this device will be dedicated to a single account. When Dedicated is checked, the value in the Capacity field has no significance – implicitly, its value is 1."
+msgstr ""
+
+#: ../../configuration.rst:387
+# 34827b0bfdd34781b875e6887bebfc75
+msgid "(NetScaler only) Configure the IP range for public traffic. The IPs in this range will be used for the static NAT capability which you enabled by selecting the network offering for NetScaler with EIP and ELB. Enter the following details, then click Add. If desired, you can repeat this step to add more IP ranges. When done, click Next."
+msgstr ""
+
+#: ../../configuration.rst:393
+#: ../../configuration.rst:589
+# 635dae2c5e9a4fc78b1708c6ebf80460
+# f179dd4093cc42efbe89a0c52531a934
+msgid "**Gateway.** The gateway in use for these IP addresses."
+msgstr ""
+
+#: ../../configuration.rst:395
+#: ../../configuration.rst:591
+# 7022d1ca2ebb4f0d82e4bd5af7ad38c8
+# ade1edfc41014640bbaf07a8cb6d7a30
+msgid "**Netmask.** The netmask associated with this IP range."
+msgstr ""
+
+#: ../../configuration.rst:397
+#: ../../configuration.rst:593
+# 7bfb9d769b874eed8399dd1dce773692
+# cea91ee2b41f476093dd8e6cb6c464a4
+msgid "**VLAN.** The VLAN that will be used for public traffic."
+msgstr ""
+
+#: ../../configuration.rst:399
+# f13431658b2445c48bca7d494a057961
+msgid "**Start IP/End IP.** A range of IP addresses that are assumed to be accessible from the Internet and will be allocated for access to guest VMs."
+msgstr ""
+
+#: ../../configuration.rst:403
+#: ../../configuration.rst:599
+# c608789049734f06a202678e647078ea
+# cb65d7f39c6d43b5878166ff469a9336
+msgid "In a new zone, CloudStack adds the first pod for you. You can always add more pods later. For an overview of what a pod is, see `“About Pods” <http://docs.cloudstack.apache.org/en/latest/concepts.html?highlight=about%20pods#about-pods>`_."
+msgstr ""
+
+#: ../../configuration.rst:407
+#: ../../configuration.rst:603
+# 133a33d409fd46a1af933404a8b7cd37
+# ca67116d4f464703befcd3acaf5541fa
+msgid "To configure the first pod, enter the following, then click Next:"
+msgstr ""
+
+#: ../../configuration.rst:409
+#: ../../configuration.rst:605
+# 731b1cd2a3a24733a2509db423e05a3f
+# ef9297fe5b3b4a60a47310045adc4a7d
+msgid "**Pod Name.** A name for the pod."
+msgstr ""
+
+#: ../../configuration.rst:411
+#: ../../configuration.rst:607
+# 06e37281b36442f09653c54f71fd6baa
+# 26c99791b3424045afcfdc3461c2e273
+msgid "**Reserved system gateway.** The gateway for the hosts in that pod."
+msgstr ""
+
+#: ../../configuration.rst:414
+#: ../../configuration.rst:610
+# e043e1605e4740d0b7ae424058ccf656
+# 8668dd9e73bc45b5b4963e201aaa426f
+msgid "**Reserved system netmask.** The network prefix that defines the pod's subnet. Use CIDR notation."
+msgstr ""
+
+#: ../../configuration.rst:417
+#: ../../configuration.rst:790
+# 2d2d591fcc7b4b5f9a841fc3625685e4
+# cf5db04d254d4fdca2d3083d47ed4820
+msgid "**Start/End Reserved System IP.** The IP range in the management network that CloudStack uses to manage various system VMs, such as Secondary Storage VMs, Console Proxy VMs, and DHCP. For more information, see System Reserved IP Addresses."
+msgstr ""
+
+#: ../../configuration.rst:422
+# dc5d7a38ccf54de5b4ba93d50d497df8
+msgid "Configure the network for guest traffic. Provide the following, then click Next:"
+msgstr ""
+
+#: ../../configuration.rst:425
+# ec278db6dee347a3b0b7ccd5199fb75e
+msgid "**Guest gateway.** The gateway that the guests should use."
+msgstr ""
+
+#: ../../configuration.rst:427
+# e08dd136c0db40c4919d4e09e251a450
+msgid "**Guest netmask.** The netmask in use on the subnet the guests will use."
+msgstr ""
+
+#: ../../configuration.rst:430
+# d7beb7ec370b474688190302620f092d
+msgid "**Guest start IP/End IP.** Enter the first and last IP addresses that define a range that CloudStack can assign to guests."
+msgstr ""
+
+#: ../../configuration.rst:433
+# 21367aec79504bf6b0523f8b8ff518c9
+msgid "We strongly recommend the use of multiple NICs. If multiple NICs are used, they may be in a different subnet."
+msgstr ""
+
+#: ../../configuration.rst:436
+# aae6aaee21bf4878b935bad1cc640b4e
+msgid "If one NIC is used, these IPs should be in the same CIDR as the pod CIDR."
+msgstr ""
+
+#: ../../configuration.rst:439
+# 760580b3523b4418a99099137bb67922
+msgid "In a new pod, CloudStack adds the first cluster for you. You can always add more clusters later. For an overview of what a cluster is, see About Clusters."
+msgstr ""
+
+#: ../../configuration.rst:443
+#: ../../configuration.rst:627
+# 44c7f5931d5e4e35b85d85089a2cf0e2
+# 0b9c98c65d92481ab54bf4e8ed5ba5a8
+msgid "To configure the first cluster, enter the following, then click Next:"
+msgstr ""
+
+#: ../../configuration.rst:445
+# 51c6cb2616384dc2a2fdde4178e35993
+msgid "**Hypervisor.** (Version 3.0.0 only; in 3.0.1, this field is read only) Choose the type of hypervisor software that all hosts in this cluster will run. If you choose VMware, additional fields appear so you can give information about a vSphere cluster. For vSphere servers, we recommend creating the cluster of hosts in vCenter and then adding the entire cluster to CloudStack. See Add Cluster: vSphere."
+msgstr ""
+
+#: ../../configuration.rst:453
+#: ../../configuration.rst:637
+# 0a1f5e7d557a445fbd943a2375f81ce9
+# 2616a88c400442bc8a9ff5fb9fd7ce49
+msgid "**Cluster name.** Enter a name for the cluster. This can be text of your choosing and is not used by CloudStack."
+msgstr ""
+
+#: ../../configuration.rst:456
+# f215a4cf027b40eea80996afea404e88
+msgid "In a new cluster, CloudStack adds the first host for you. You can always add more hosts later. For an overview of what a host is, see About Hosts."
+msgstr ""
+
+#: ../../configuration.rst:461
+# a4958ea1500c4d65a7ec65554fb9c8f0
+msgid "When you add a hypervisor host to CloudStack, the host must not have any VMs already running."
+msgstr ""
+
+#: ../../configuration.rst:464
+#: ../../configuration.rst:648
+# a7aa2568c3144be19c371ba08be4bf6d
+# 7686b9f224ea40b48d2c4c7b3d64e15b
+msgid "Before you can configure the host, you need to install the hypervisor software on the host. You will need to know which version of the hypervisor software version is supported by CloudStack and what additional configuration is required to ensure the host will work with CloudStack. To find these installation details, see:"
+msgstr ""
+
+#: ../../configuration.rst:470
+# 4866dcbbc18a4c9e96b993ed1e536f29
+msgid "Citrix XenServer Installation and Configuration"
+msgstr ""
+
+#: ../../configuration.rst:472
+#: ../../configuration.rst:656
+# 876393f442894c6389d1edf6e6ebc213
+# 7cbfdd4d4aad40cfbcf4aea9c9fd6ce2
+msgid "VMware vSphere Installation and Configuration"
+msgstr ""
+
+#: ../../configuration.rst:474
+# 93504af6c05b46fcb6ccc59cd48de0d0
+msgid "KVM vSphere Installation and Configuration"
+msgstr ""
+
+#: ../../configuration.rst:476
+#: ../../configuration.rst:660
+# 5e077e29fb7446a6bda46732cc0eb453
+# 2d6f19cf4a334139b27e4f7a94b8bf92
+msgid "To configure the first host, enter the following, then click Next:"
+msgstr ""
+
+#: ../../configuration.rst:478
+#: ../../configuration.rst:662
+# 0e194db1641a4be2ae5d6ed3f2d27575
+# b7727092534b455e924a0b5ddfa9ec69
+msgid "**Host Name.** The DNS name or IP address of the host."
+msgstr ""
+
+#: ../../configuration.rst:480
+# 1af10b11095449a496d9b3304652ba03
+msgid "**Username.** The username is root."
+msgstr ""
+
+#: ../../configuration.rst:482
+#: ../../configuration.rst:666
+# 98f8e09abbc547ca994b5156f2dbcaa6
+# 4623683d93bf4b02a802a809c6786faf
+msgid "**Password.** This is the password for the user named above (from your XenServer or KVM install)."
+msgstr ""
+
+#: ../../configuration.rst:485
+# 258ef7abb2b447ebb6cce1508920d12b
+msgid "**Host Tags.** (Optional) Any labels that you use to categorize hosts for ease of maintenance. For example, you can set this to the cloud's HA tag (set in the ha.tag global configuration parameter) if you want this host to be used only for VMs with the \"high availability\" feature enabled. For more information, see HA-Enabled Virtual Machines as well as HA for Hosts."
+msgstr ""
+
+#: ../../configuration.rst:492
+# 55ee6f53cea246bda767b3f91ed77753
+msgid "In a new cluster, CloudStack adds the first primary storage server for you. You can always add more servers later. For an overview of what primary storage is, see About Primary Storage."
+msgstr ""
+
+#: ../../configuration.rst:496
+#: ../../configuration.rst:682
+# 33955d5773764a229a1faa4ba31636a8
+# f58343456b724277b2179ea70214dd8e
+msgid "To configure the first primary storage server, enter the following, then click Next:"
+msgstr ""
+
+#: ../../configuration.rst:499
+#: ../../configuration.rst:685
+#: ../../configuration.rst:1180
+# 882e651ffb4f487196c12a9ecbd5b66c
+# 02cefa6c9ff44810b682b0420f16e4c3
+# 7b2c3d9c2fa347bbb7ae181ee559419e
+msgid "**Name.** The name of the storage device."
+msgstr ""
+
+#: ../../configuration.rst:501
+# 9108c1607da247cb819f2b3dd2b94186
+msgid "**Protocol.** For XenServer, choose either NFS, iSCSI, or PreSetup. For KVM, choose NFS, SharedMountPoint,CLVM, or RBD. For vSphere choose either VMFS (iSCSI or FiberChannel) or NFS. The remaining fields in the screen vary depending on what you choose here."
+msgstr ""
+
+#: ../../configuration.rst:509
+# a95cec57590f4eb9bb5720ab7fb7809c
+msgid "Advanced Zone Configuration"
+msgstr ""
+
+#: ../../configuration.rst:511
+# e9085595c59b47d59920970c045cd7ae
+msgid "After you select Advanced in the Add Zone wizard and click Next, you will be asked to enter the following details. Then click Next."
+msgstr ""
+
+#: ../../configuration.rst:521
+# a584fb17ef794dad83499d140687e136
+msgid "**Internal DNS 1 and Internal DNS 2.** These are DNS servers for use by system VMs in the zone(these are VMs used by CloudStack itself, such as virtual routers, console proxies,and Secondary Storage VMs.) These DNS servers will be accessed via the management traffic network interface of the System VMs. The private IP address you provide for the pods must have a route to the internal DNS server named here."
+msgstr ""
+
+#: ../../configuration.rst:532
+# 7f5a0f00682d4f05af43eb2dcc7c60fb
+msgid "**Guest CIDR.** This is the CIDR that describes the IP addresses in use in the guest virtual networks in this zone. For example, 10.1.1.0/24. As a matter of good practice you should set different CIDRs for different zones. This will make it easier to set up VPNs between networks in different zones."
+msgstr ""
+
+#: ../../configuration.rst:549
+# fbaf58d0ff1649dd8a0f05537743c882
+msgid "The traffic types are management, public, guest, and storage traffic. For more information about the types, roll over the icons to display their tool tips, or see `“Advanced Zone Network Traffic Types” <http://docs.cloudstack.apache.org/en/latest/concepts.html?highlight=about%20pods#advanced-zone-network-traffic-types>`_. This screenstarts out with one network already configured. If you have multiple physical networks, you need to add more. Drag and drop traffic types onto a greyed-out network and it will become active. You can move the traffic icons from one network to another; for example, if the default traffic types shown for Network 1 do not match your actual setup, you can move them down. You can also change the network names if desired."
+msgstr ""
+
+#: ../../configuration.rst:561
+# a1c899d9956d4667a5fa43596d6d8f70
+msgid "(Introduced in version 3.0.1) Assign a network traffic label to each traffic type on each physical network. These labels must match the labels you have already defined on the hypervisor host. To assign each label, click the Edit button under the traffic type icon within each physical network. A popup dialog appears where you can type the label, then click OK."
+msgstr ""
+
+#: ../../configuration.rst:572
+# 805792aff6994e028ce9205047e477f1
+msgid "(VMware only) If you have enabled Nexus dvSwitch in the environment, you must specify the corresponding Ethernet port profile names as network traffic label for each traffic type on the physical network. For more information on Nexus dvSwitch, see Configuring a vSphere Cluster with Nexus 1000v Virtual Switch in the Installation Guide. If you have enabled VMware dvSwitch in the environment, you must specify the corresponding Switch name as network traffic label for each traffic type on the physical network. For more information, see Configuring a VMware Datacenter with VMware Distributed Virtual Switch in the Installation Guide."
+msgstr ""
+
+#: ../../configuration.rst:585
+# 2df839852be644778c41107b53c0eef8
+msgid "Configure the IP range for public Internet traffic. Enter the following details, then click Add. If desired, you can repeat this step to add more public Internet IP ranges. When done, click Next."
+msgstr ""
+
+#: ../../configuration.rst:595
+# 4854b23855194f6a95f455049a970d9c
+msgid "**Start IP/End IP.** A range of IP addresses that are assumed to be accessible from the Internet and will be allocated for access to guest networks."
+msgstr ""
+
+#: ../../configuration.rst:613
+# b27b5e010eb64430b9cc36887f0155ab
+msgid "**Start/End Reserved System IP.** The IP range in the management network that CloudStack uses to manage various system VMs, such as Secondary Storage VMs, Console Proxy VMs, and DHCP. For more information, see `“System Reserved IP Addresses” <http://docs.cloudstack.apache.org/en/latest/concepts.html?highlight=about%20pods#id4>`_."
+msgstr ""
+
+#: ../../configuration.rst:619
+# 6d27295ebf7948e6a7c0b2138ca9fa39
+msgid "Specify a range of VLAN IDs to carry guest traffic for each physical network (see VLAN Allocation Example ), then click Next."
+msgstr ""
+
+#: ../../configuration.rst:622
+# 58ec28ce7043492ab818e135bd5ad764
+msgid "In a new pod, CloudStack adds the first cluster for you. You can always add more clusters later. For an overview of what a cluster is, see `“About Clusters” <http://docs.cloudstack.apache.org/en/latest/concepts.html?highlight=about%20pods#about-clusters>`_."
+msgstr ""
+
+#: ../../configuration.rst:629
+# c4117492d58e4cc7a95877d4420c0f77
+msgid "**Hypervisor.** (Version 3.0.0 only; in 3.0.1, this field is read only) Choose the type of hypervisor software that all hosts in this cluster will run. If you choose VMware, additional fields appear so you can give information about a vSphere cluster. For vSphere servers, we recommend creating the cluster of hosts in vCenter and then adding the entire cluster to CloudStack. See Add Cluster: vSphere ."
+msgstr ""
+
+#: ../../configuration.rst:640
+# a33530a965844729a700ddcafd654cab
+msgid "In a new cluster, CloudStack adds the first host for you. You can always add more hosts later. For an overview of what a host is, see `“About Hosts” <http://docs.cloudstack.apache.org/en/latest/concepts.html?highlight=about%20pods#about-hosts>`_."
+msgstr ""
+
+#: ../../configuration.rst:645
+# 70099c0bbf4c4ab79b74ce130e472676
+msgid "When you deploy CloudStack, the hypervisor host must not have any VMs already running."
+msgstr ""
+
+#: ../../configuration.rst:654
+# 969595946df24f7b9a30efd4829ce89d
+msgid "Citrix XenServer Installation for CloudStack"
+msgstr ""
+
+#: ../../configuration.rst:658
+# 2286f6a6c02c44fca23c04f2d6e05175
+msgid "KVM Installation and Configuration"
+msgstr ""
+
+#: ../../configuration.rst:664
+# 9263f822255744319df0264ecd6cf42b
+msgid "**Username.** Usually root."
+msgstr ""
+
+#: ../../configuration.rst:669
+# 617da6e8e7dc42cc94c5649b11b4f94e
+msgid "**Host Tags.** (Optional) Any labels that you use to categorize hosts for ease of maintenance. For example, you can set to the cloud's HA tag (set in the ha.tag global configuration parameter) if you want this host to be used only for VMs with the \"high availability\" feature enabled. For more information, see HA-Enabled Virtual Machines as well as HA for Hosts, both in the Administration Guide."
+msgstr ""
+
+#: ../../configuration.rst:677
+# d405480d45fa4402a325beac9b7a9b35
+msgid "In a new cluster, CloudStack adds the first primary storage server for you. You can always add more servers later. For an overview of what primary storage is, see `“About Primary Storage” <http://docs.cloudstack.apache.org/en/latest/concepts.html?highlight=about%20pods#about-primary-storage>`_."
+msgstr ""
+
+#: ../../configuration.rst:687
+# ef6c13fd4cd641ebb3914aa5bcfd4b5e
+msgid "**Protocol.** For XenServer, choose either NFS, iSCSI, or PreSetup. For KVM, choose NFS, SharedMountPoint, CLVM, and RBD. For vSphere choose either VMFS (iSCSI or FiberChannel) or NFS. The remaining fields in the screen vary depending on what you choose here."
+msgstr ""
+
+#: ../../configuration.rst:694
+# dbd90d6e53d34d4cad8f2c3a097f5917
+msgid "NFS"
+msgstr ""
+
+#: ../../configuration.rst:694
+#: ../../configuration.rst:702
+#: ../../configuration.rst:713
+# d905c0e524884434bbce1a596ab9e8ae
+# adc6172c6fb94c9e808ea5729ec0015e
+# 9564e49540d445a6a796666072388c85
+msgid "**Server.** The IP address or DNS name of the storage device."
+msgstr ""
+
+#: ../../configuration.rst:696
+#: ../../configuration.rst:757
+# 50bc8991790d4273aa59efd2d73b42f2
+# 8920e004ba914957be0b285c5b9566a0
+msgid "**Path.** The exported path from the server."
+msgstr ""
+
+#: ../../configuration.rst:698
+#: ../../configuration.rst:709
+#: ../../configuration.rst:718
+#: ../../configuration.rst:725
+#: ../../configuration.rst:735
+# 66e08a767e8e407c91c01e0b57c9c4d5
+# b827c64c04014e0ca658487659b87b6e
+# 8f3262da3e114bf5bf62741b9284b984
+# b147800ccb4948659610f3b243d04b72
+# 669620fc4f1a4de9b9b00aeddbf9432a
+msgid "**Tags (optional).** The comma-separated list of tags for this storage device. It should be an equivalent set or superset of the tags on your disk offerings."
+msgstr ""
+
+#: ../../configuration.rst:702
+# fffee6632fb244ef9ee793f9ea6fae65
+msgid "iSCSI"
+msgstr ""
+
+#: ../../configuration.rst:704
+# cab8f091a9bd419abee44664e284f629
+msgid "**Target IQN.** The IQN of the target. For example, iqn.1986-03.com.sun:02:01ec9bb549-1271378984."
+msgstr ""
+
+#: ../../configuration.rst:707
+# 66b75a8b32674947875a04ab9de122c9
+msgid "**Lun.** The LUN number. For example, 3."
+msgstr ""
+
+#: ../../configuration.rst:713
+# 604eb8fc1cff40e5bb3760beef6766f0
+msgid "preSetup"
+msgstr ""
+
+#: ../../configuration.rst:715
+# b99f246bfc974f48933179b70c1d0668
+msgid "**SR Name-Label.** Enter the name-label of the SR that has been set up outside CloudStack."
+msgstr ""
+
+#: ../../configuration.rst:722
+# b1b68aca6c6c4ff2bc13b7e384154ed7
+msgid "SharedMountPoint"
+msgstr ""
+
+#: ../../configuration.rst:722
+# a2563f947f8142b9a8ba024d822e6d8f
+msgid "**Path.** The path on each host that is where this primary storage is mounted. For example, \"/mnt/primary\"."
+msgstr ""
+
+#: ../../configuration.rst:729
+# abbb3c959ada42e28ca5963f413c6f36
+msgid "VMFS"
+msgstr ""
+
+#: ../../configuration.rst:729
+# 4ec550d124a34334868e01b615fd7cf8
+msgid "**Server.** The IP address or DNS name of the vCenter server."
+msgstr ""
+
+#: ../../configuration.rst:731
+# daadb05d2bbb451c921f7924eafc3bba
+msgid "**Path.** A combination of the datacenter name and the datastore name. The format is \"/\" datacenter name \"/\" datastore name. For example, \"/cloud.dc.VM/cluster1datastore\"."
+msgstr ""
+
+#: ../../configuration.rst:741
+#: ../../configuration.rst:1230
+# cc85beb87ff14852b2e9293f8884c708
+# 3c79b79a17014af1bc0392d7137b940b
+msgid "The tag sets on primary storage across clusters in a Zone must be identical. For example, if cluster A provides primary storage that has tags T1 and T2, all other clusters in the Zone must also provide primary storage that has tags T1 and T2."
+msgstr ""
+
+#: ../../configuration.rst:746
+# 77dd355c1a1b48318b9b054f5698f6db
+msgid "In a new zone, CloudStack adds the first secondary storage server for you. For an overview of what secondary storage is, see `“About Secondary Storage” <http://docs.cloudstack.apache.org/en/latest/concepts.html?highlight=about%20pods#about-secondary-storage>`_."
+msgstr ""
+
+#: ../../configuration.rst:750
+# 9ffcbb5748c44307afcb86b84bef2bd8
+msgid "Before you can fill out this screen, you need to prepare the secondary storage by setting up NFS shares and installing the latest CloudStack System VM template. See Adding Secondary Storage :"
+msgstr ""
+
+#: ../../configuration.rst:754
+# fcc9a36dd6c749198217088bf5381ee2
+msgid "**NFS Server.** The IP address of the server or fully qualified domain name of the server."
+msgstr ""
+
+#: ../../configuration.rst:759
+# d656e3c4d2c14785a91388ffd2a2e0da
+msgid "Click Launch."
+msgstr ""
+
+#: ../../configuration.rst:765
+# e5249101b498485c840bf4c9715351d8
+msgid "Adding a Pod"
+msgstr ""
+
+#: ../../configuration.rst:767
+# 80ce36fa017948b38ec42cdabd458282
+msgid "When you created a new zone, CloudStack adds the first pod for you. You can add more pods at any time using the procedure in this section."
+msgstr ""
+
+#: ../../configuration.rst:770
+# 1a095154f142425dbfdaedb0e4ea3a1b
+msgid "Log in to the CloudStack UI. See `“Log In to the UI” <http://docs.cloudstack.apache.org/projects/cloudstack-administration/en/latest/ui.html#log-in-to-the-ui>`_."
+msgstr ""
+
+#: ../../configuration.rst:773
+# 4b20a9fd84f2479a9b463179b2c04d3c
+msgid "In the left navigation, choose Infrastructure. In Zones, click View More, then click the zone to which you want to add a pod."
+msgstr ""
+
+#: ../../configuration.rst:776
+# 1ceafce4645345f8984ba3e1f562f435
+msgid "Click the Compute and Storage tab. In the Pods node of the diagram, click View All."
+msgstr ""
+
+#: ../../configuration.rst:779
+# 3c5e8d963225430ca2e31368837c3d6a
+msgid "Click Add Pod."
+msgstr ""
+
+#: ../../configuration.rst:781
+# 8209d5987fa14c1fa7d44d186705d0c9
+msgid "Enter the following details in the dialog."
+msgstr ""
+
+#: ../../configuration.rst:783
+# d3f7f6f5ca814cc3b14a99cd76ae042d
+msgid "**Name.** The name of the pod."
+msgstr ""
+
+#: ../../configuration.rst:785
+# f7c4912b240c487eaa879e309615b020
+msgid "**Gateway.** The gateway for the hosts in that pod."
+msgstr ""
+
+#: ../../configuration.rst:787
+# 914c5b1a1c8c4530999080d4c89912e6
+msgid "**Netmask.** The network prefix that defines the pod's subnet. Use CIDR notation."
+msgstr ""
+
+#: ../../configuration.rst:795
+#: ../../configuration.rst:830
+#: ../../configuration.rst:1235
+# 80f5b85272584772b1caa17474ea4863
+# ba52d2639a9a44a394ac0e6d13cbbfff
+# 35b375637fca46aabc7848985f6ba3da
+msgid "Click OK."
+msgstr ""
+
+#: ../../configuration.rst:801
+# f12f333c032e4bf6b2906a933d4da17e
+msgid "Adding a Cluster"
+msgstr ""
+
+#: ../../configuration.rst:803
+# 77eccc1ced604f3482969b1b37ac94f7
+msgid "You need to tell CloudStack about the hosts that it will manage. Hosts exist inside clusters, so before you begin adding hosts to the cloud, you must add at least one cluster."
+msgstr ""
+
+#: ../../configuration.rst:809
+# 2541d85ea4c64120ba7c1d1bbdb0de54
+msgid "Add Cluster: KVM or XenServer"
+msgstr ""
+
+#: ../../configuration.rst:811
+# a19c5e6d471b43ce9df963073e844a41
+msgid "These steps assume you have already installed the hypervisor on the hosts and logged in to the CloudStack UI."
+msgstr ""
+
+#: ../../configuration.rst:814
+#: ../../configuration.rst:863
+# 0076f4bb3d004b4ba430db294c83e5c6
+# 39ab1bc8c27845f2b2df2deb2c47d959
+msgid "In the left navigation, choose Infrastructure. In Zones, click View More, then click the zone in which you want to add the cluster."
+msgstr ""
+
+#: ../../configuration.rst:817
+#: ../../configuration.rst:1162
+# f5468a45f1584146b9c21637e83ead16
+# 709bb466c6b74ab1a145f5edd5aa1cc6
+msgid "Click the Compute tab."
+msgstr ""
+
+#: ../../configuration.rst:819
+# 9c5dcf9e60b74076b98428a9785acffa
+msgid "In the Clusters node of the diagram, click View All."
+msgstr ""
+
+#: ../../configuration.rst:821
+#: ../../configuration.rst:871
+# 4ff74ef29511451d84f51b7112d91396
+# 3b57564e3ea441e2a8ba501a340267ca
+msgid "Click Add Cluster."
+msgstr ""
+
+#: ../../configuration.rst:823
+# 5fe5d5e811774dc483d55f29b28b461c
+msgid "Choose the hypervisor type for this cluster."
+msgstr ""
+
+#: ../../configuration.rst:825
+# 6e00c60f805341cdbfb1583ad80b4c52
+msgid "Choose the pod in which you want to create the cluster."
+msgstr ""
+
+#: ../../configuration.rst:827
+# f214b054a5844ee380b80bc55b6e9123
+msgid "Enter a name for the cluster. This can be text of your choosing and is not used by CloudStack."
+msgstr ""
+
+#: ../../configuration.rst:834
+# 1edfca4aeda94b35b4981b9ea1898063
+msgid "Add Cluster: vSphere"
+msgstr ""
+
+#: ../../configuration.rst:836
+# f22ee86140014d7b9d84b11a6b68a5a2
+msgid "Host management for vSphere is done through a combination of vCenter and the CloudStack admin UI. CloudStack requires that all hosts be in a CloudStack cluster, but the cluster may consist of a single host. As an administrator you must decide if you would like to use clusters of one host or of multiple hosts. Clusters of multiple hosts allow for features like live migration. Clusters also require shared storage such as NFS or iSCSI."
+msgstr ""
+
+#: ../../configuration.rst:844
+# 5f108c515fe845f9b12bb18f429e0ea5
+msgid "For vSphere servers, we recommend creating the cluster of hosts in vCenter and then adding the entire cluster to CloudStack. Follow these requirements:"
+msgstr ""
+
+#: ../../configuration.rst:848
+# 14090efdfc144ee89b2517b48c3cd083
+msgid "Do not put more than 8 hosts in a vSphere cluster"
+msgstr ""
+
+#: ../../configuration.rst:850
+# 6d06725de8a447bd97bcb18b2abffed6
+msgid "Make sure the hypervisor hosts do not have any VMs already running before you add them to CloudStack."
+msgstr ""
+
+#: ../../configuration.rst:853
+# 71a61ae689b14010a3cb30b15dbb6ab4
+msgid "To add a vSphere cluster to CloudStack:"
+msgstr ""
+
+#: ../../configuration.rst:855
+# 4aa19eb63fce44d992c239dc22b644c1
+msgid "Create the cluster of hosts in vCenter. Follow the vCenter instructions to do this. You will create a cluster that looks something like this in vCenter."
+msgstr ""
+
+#: ../../configuration.rst:859
+# f5002325d11f467ebc09a540ab289dc0
+msgid "|vsphereclient.png: vSphere client|"
+msgstr ""
+
+#: ../../configuration.rst:861
+# 2b550bfb1de24c2491dfb5e097ddfc06
+msgid "Log in to the UI."
+msgstr ""
+
+#: ../../configuration.rst:866
+# 2ebc1409a3524a92806ce241e7ade87c
+msgid "Click the Compute tab, and click View All on Pods. Choose the pod to which you want to add the cluster."
+msgstr ""
+
+#: ../../configuration.rst:869
+# 7ea5c0a4d69542b68fdc461c256fc48d
+msgid "Click View Clusters."
+msgstr ""
+
+#: ../../configuration.rst:873
+# 49994ac34ee547f48952a29df8e41fcb
+msgid "In Hypervisor, choose VMware."
+msgstr ""
+
+#: ../../configuration.rst:875
+# eedcbf466c594bd7b3fd86bfe04241b1
+msgid "Provide the following information in the dialog. The fields below make reference to the values from vCenter."
+msgstr ""
+
+#: ../../configuration.rst:878
+# 89c59dc2d27e4303ae86550eed8821f6
+msgid "|addcluster.png: add a cluster|"
+msgstr ""
+
+#: ../../configuration.rst:880
+# 853a36fa7aba43bb89623403046e9971
+msgid "**Cluster Name**: Enter the name of the cluster you created in vCenter. For example, \"cloud.cluster.2.2.1\""
+msgstr ""
+
+#: ../../configuration.rst:883
+# 80bdf696d0944d3b82144716a5c808b5
+msgid "**vCenter Username**: Enter the username that CloudStack should use to connect to vCenter. This user must have all the administrative privileges."
+msgstr ""
+
+#: ../../configuration.rst:887
+# bea1b4e2088642d5b0b8aac382efa2dd
+msgid "**CPU overcommit ratio**: Enter the CPU overcommit ratio for the cluster. The value you enter determines the CPU consumption of each VM in the selected cluster. By increasing the over-provisioning ratio, more resource capacity will be used. If no value is specified, the value is defaulted to 1, which implies no over-provisioning is done."
+msgstr ""
+
+#: ../../configuration.rst:894
+# 0d13e425b64444619a542ae57d648966
+msgid "**RAM overcommit ratio**: Enter the RAM overcommit ratio for the cluster. The value you enter determines the memory consumption of each VM in the selected cluster. By increasing the over-provisioning ratio, more resource capacity will be used. If no value is specified, the value is defaulted to 1, which implies no over-provisioning is done."
+msgstr ""
+
+#: ../../configuration.rst:901
+# c5e25f8ee3a543a19ffec688a6731589
+msgid "**vCenter Host**: Enter the hostname or IP address of the vCenter server."
+msgstr ""
+
+#: ../../configuration.rst:904
+# 0a0d7a14d3624f1fbfa7507c8e4b35e9
+msgid "**vCenter Password**: Enter the password for the user named above."
+msgstr ""
+
+#: ../../configuration.rst:906
+# 10d54005fb6448748362e84d4f269999
+msgid "**vCenter Datacenter**: Enter the vCenter datacenter that the cluster is in. For example, \"cloud.dc.VM\"."
+msgstr ""
+
+#: ../../configuration.rst:909
+# 286a6873beb04a32af8b8b30acee427c
+msgid "**Override Public Traffic**: Enable this option to override the zone-wide public traffic for the cluster you are creating."
+msgstr ""
+
+#: ../../configuration.rst:912
+# 3a820c902ce946538b1e2514136264dc
+msgid "**Public Traffic vSwitch Type**: This option is displayed only if you enable the Override Public Traffic option. Select a desirable switch. If the vmware.use.dvswitch global parameter is true, the default option will be VMware vNetwork Distributed Virtual Switch."
+msgstr ""
+
+#: ../../configuration.rst:917
+#: ../../configuration.rst:939
+# cee24debf6244e6ab8f2960f82cf02dc
+# 28a4eb955bf748c3a88d2d89ce8c5074
+msgid "If you have enabled Nexus dvSwitch in the environment, the following parameters for dvSwitch configuration are displayed:"
+msgstr ""
+
+#: ../../configuration.rst:920
+#: ../../configuration.rst:942
+# d2da6ea28c614ba38eb47ed7e3077ae0
+# 8e33cb040d534b0fa0d115e687ed7610
+msgid "Nexus dvSwitch IP Address: The IP address of the Nexus VSM appliance."
+msgstr ""
+
+#: ../../configuration.rst:923
+#: ../../configuration.rst:945
+# e80bc1882c6c476fa8900e09c5b863e3
+# df90310163a24464b7c5b02335487fdb
+msgid "Nexus dvSwitch Username: The username required to access the Nexus VSM appliance."
+msgstr ""
+
+#: ../../configuration.rst:926
+#: ../../configuration.rst:948
+# f8aeaf74318541b7b199a22f1215f4db
+# f403066f05f9414a8fef9581e1f63c46
+msgid "Nexus dvSwitch Password: The password associated with the username specified above."
+msgstr ""
+
+#: ../../configuration.rst:929
+# b2c37a024feb4704b1af4daaf9f7d7dc
+msgid "**Override Guest Traffic**: Enable this option to override the zone-wide guest traffic for the cluster you are creating."
+msgstr ""
+
+#: ../../configuration.rst:932
+# 94030e337615408390ee4c90fa68dc1f
+msgid "**Guest Traffic vSwitch Type**: This option is displayed only if you enable the Override Guest Traffic option. Select a desirable switch."
+msgstr ""
+
+#: ../../configuration.rst:936
+# 079f9e30e5664e1a85085b94865eb456
+msgid "If the vmware.use.dvswitch global parameter is true, the default option will be VMware vNetwork Distributed Virtual Switch."
+msgstr ""
+
+#: ../../configuration.rst:951
+# baa8eb555037420bb51856abdd7fe8f2
+msgid "There might be a slight delay while the cluster is provisioned. It will automatically display in the UI."
+msgstr ""
+
+#: ../../configuration.rst:958
+# e1f90b62159d4513baedd2e01440755a
+msgid "Adding a Host"
+msgstr ""
+
+#: ../../configuration.rst:960
+# 0923b6cb19c147c7b758d17ba052cb1f
+msgid "Before adding a host to the CloudStack configuration, you must first install your chosen hypervisor on the host. CloudStack can manage hosts running VMs under a variety of hypervisors."
+msgstr ""
+
+#: ../../configuration.rst:964
+# 5bf89c193bf649468f17106c9cc7dc79
+msgid "The CloudStack Installation Guide provides instructions on how to install each supported hypervisor and configure it for use with CloudStack. See the appropriate section in the Installation Guide for information about which version of your chosen hypervisor is supported, as well as crucial additional steps to configure the hypervisor hosts for use with CloudStack."
+msgstr ""
+
+#: ../../configuration.rst:972
+# ff2e79d3bba8422d8b74b3a78eb133a7
+msgid "Be sure you have performed the additional CloudStack-specific configuration steps described in the hypervisor installation section for your particular hypervisor."
+msgstr ""
+
+#: ../../configuration.rst:976
+# ecd653992432482b93207c1b1d4b1503
+msgid "Now add the hypervisor host to CloudStack. The technique to use varies depending on the hypervisor."
+msgstr ""
+
+#: ../../configuration.rst:979
+# 22d66ee649304664855c3570b38b51c3
+msgid ":ref:`adding-a-host-xenserver-kvm`"
+msgstr ""
+
+#: ../../configuration.rst:981
+# 04cf8556d81441d9915194885f3f28c8
+msgid ":ref:`adding-a-host-vsphere`"
+msgstr ""
+
+#: ../../configuration.rst:987
+# 1d939abd524b4701b1f7ba65cfb70da2
+msgid "Adding a Host (XenServer or KVM)"
+msgstr ""
+
+#: ../../configuration.rst:989
+# af116bf381dc4f9ea38ec2f5625bc8a5
+msgid "XenServer and KVM hosts can be added to a cluster at any time."
+msgstr ""
+
+#: ../../configuration.rst:993
+# e59027be4a9846a9845b33dd15d6649a
+msgid "Requirements for XenServer and KVM Hosts"
+msgstr ""
+
+#: ../../configuration.rst:996
+# e6025f03b3ce477c9d135377a7894528
+msgid "Make sure the hypervisor host does not have any VMs already running before you add it to CloudStack."
+msgstr ""
+
+#: ../../configuration.rst:999
+# a7d22455a14846d98f150dbeeae218f0
+msgid "Configuration requirements:"
+msgstr ""
+
+#: ../../configuration.rst:1001
+# e5160a3fa2ec40919c557a6935f3fe1f
+msgid "Each cluster must contain only hosts with the identical hypervisor."
+msgstr ""
+
+#: ../../configuration.rst:1003
+# cdfb38a316e3459e9e52ea228402b66c
+msgid "For XenServer, do not put more than 8 hosts in a cluster."
+msgstr ""
+
+#: ../../configuration.rst:1005
+# b4a9938b72044be7bd458f16ed719e81
+msgid "For KVM, do not put more than 16 hosts in a cluster."
+msgstr ""
+
+#: ../../configuration.rst:1007
+# 2f1baf980a734a43baf993d791d4d8c5
+msgid "For hardware requirements, see the installation section for your hypervisor in the CloudStack Installation Guide."
+msgstr ""
+
+#: ../../configuration.rst:1012
+# 5b7b02ee375a45adaad6da800cd483c3
+msgid "XenServer Host Additional Requirements"
+msgstr ""
+
+#: ../../configuration.rst:1014
+# 27ea0fe70f034e44a3904e6c7ca6afa4
+msgid "If network bonding is in use, the administrator must cable the new host identically to other hosts in the cluster."
+msgstr ""
+
+#: ../../configuration.rst:1017
+# 05d3932560e04019b3bdb344f870f538
+msgid "For all additional hosts to be added to the cluster, run the following command. This will cause the host to join the master in a XenServer pool."
+msgstr ""
+
+#: ../../configuration.rst:1026
+# 286ea98fd2d747c483da6d96983d5c9f
+msgid "When copying and pasting a command, be sure the command has pasted as a single line before executing. Some document viewers may introduce unwanted line breaks in copied text."
+msgstr ""
+
+#: ../../configuration.rst:1030
+# 354fed2a8e2a4333a32b9a35786ca935
+msgid "With all hosts added to the XenServer pool, run the cloud-setup-bond script. This script will complete the configuration and setup of the bonds on the new hosts in the cluster."
+msgstr ""
+
+#: ../../configuration.rst:1034
+# c4cd2afe3b934ce8b2621d0b9e82c2d2
+msgid "Copy the script from the Management Server in /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-setup-bonding.sh to the master host and ensure it is executable."
+msgstr ""
+
+#: ../../configuration.rst:1038
+# 0e532bee249b496b88f2c7475bdf97f8
+msgid "Run the script:"
+msgstr ""
+
+#: ../../configuration.rst:1046
+# e7009690c4b6478ba5f35649f9e09436
+msgid "KVM Host Additional Requirements"
+msgstr ""
+
+#: ../../configuration.rst:1048
+# 37a3fd672bc54d768a466c6ba3dae54f
+msgid "If shared mountpoint storage is in use, the administrator should ensure that the new host has all the same mountpoints (with storage mounted) as the other hosts in the cluster."
+msgstr ""
+
+#: ../../configuration.rst:1052
+# 710951bf6c5a4eed831cc19f7be18c01
+msgid "Make sure the new host has the same network configuration (guest, private, and public network) as other hosts in the cluster."
+msgstr ""
+
+#: ../../configuration.rst:1055
+# 7a50d92cb76b43c68381d14e04aed486
+msgid "If you are using OpenVswitch bridges edit the file agent.properties on the KVM host and set the parameter network.bridge.type to openvswitch before adding the host to CloudStack"
+msgstr ""
+
+#: ../../configuration.rst:1061
+# 332d12a13d1f4216b74187cf129bc664
+msgid "Adding a XenServer or KVM Host"
+msgstr ""
+
+#: ../../configuration.rst:1063
+# cfba9ce6e7f14afebd66671f11feaacf
+msgid "If you have not already done so, install the hypervisor software on the host. You will need to know which version of the hypervisor software version is supported by CloudStack and what additional configuration is required to ensure the host will work with CloudStack. To find these installation details, see the appropriate section for your hypervisor in the CloudStack Installation Guide."
+msgstr ""
+
+#: ../../configuration.rst:1070
+# 377e41a476e54f4c82f0d00d304e2693
+msgid "Log in to the CloudStack UI as administrator."
+msgstr ""
+
+#: ../../configuration.rst:1072
+# 7ac765edde2443be9069abb07cd4d0db
+msgid "In the left navigation, choose Infrastructure. In Zones, click View More, then click the zone in which you want to add the host."
+msgstr ""
+
+#: ../../configuration.rst:1075
+# a4431e8197e24d1f8565b3bb92bca888
+msgid "Click the Compute tab. In the Clusters node, click View All."
+msgstr ""
+
+#: ../../configuration.rst:1077
+# 362b6eed173f4b5f8f7b38ebe0958336
+msgid "Click the cluster where you want to add the host."
+msgstr ""
+
+#: ../../configuration.rst:1079
+# effdebcf4be849f2962ad4550751244d
+msgid "Click View Hosts."
+msgstr ""
+
+#: ../../configuration.rst:1081
+# 4c39fa71f4fc425abb83949d1b5ed506
+msgid "Click Add Host."
+msgstr ""
+
+#: ../../configuration.rst:1083
+# 5ffcb71d5a1b46ebabc4fcf190e75753
+msgid "Provide the following information."
+msgstr ""
+
+#: ../../configuration.rst:1085
+# 88888fd494694d8d8075b9131573228f
+msgid "Host Name. The DNS name or IP address of the host."
+msgstr ""
+
+#: ../../configuration.rst:1087
+# c26fe06e5a564c628de75c1d4fe93d68
+msgid "Username. Usually root."
+msgstr ""
+
+#: ../../configuration.rst:1089
+# 2b09fc60175b45d5b24a1c0574fc275f
+msgid "Password. This is the password for the user from your XenServer or KVM install)."
+msgstr ""
+
+#: ../../configuration.rst:1092
+# 6b228c164605432b8fbf4c3345a73413
+msgid "Host Tags (Optional). Any labels that you use to categorize hosts for ease of maintenance. For example, you can set to the cloud's HA tag (set in the ha.tag global configuration parameter) if you want this host to be used only for VMs with the \"high availability\" feature enabled. For more information, see HA-Enabled Virtual Machines as well as HA for Hosts."
+msgstr ""
+
+#: ../../configuration.rst:1099
+# 9be1b413f34f45e2871035d35715659a
+msgid "There may be a slight delay while the host is provisioned. It should automatically display in the UI."
+msgstr ""
+
+#: ../../configuration.rst:1102
+# cdc3acb163fc410bbca13f2bd37b0775
+msgid "Repeat for additional hosts."
+msgstr ""
+
+#: ../../configuration.rst:1108
+# fb2b5c33309149d1b6b0d0ac9e73c5fb
+msgid "Adding a Host (vSphere)"
+msgstr ""
+
+#: ../../configuration.rst:1110
+# be6b7ef5fe374f84ac9e6e487404ab78
+msgid "For vSphere servers, we recommend creating the cluster of hosts in vCenter and then adding the entire cluster to CloudStack. See Add Cluster: vSphere."
+msgstr ""
+
+#: ../../configuration.rst:1118
+# 99be6cf56ded43aba5cd4d8e19f0ace3
+msgid "Add Primary Storage"
+msgstr ""
+
+#: ../../configuration.rst:1121
+# 22065a62af1642d3bc3ea2ed32396bac
+msgid "System Requirements for Primary Storage"
+msgstr ""
+
+#: ../../configuration.rst:1123
+# 936b5d62d1b14484a4b62a45ed972c59
+msgid "Hardware requirements:"
+msgstr ""
+
+#: ../../configuration.rst:1125
+# f209dd840aec4701bdad045e39dc292e
+msgid "Any standards-compliant iSCSI, SMB, or NFS server that is supported by the underlying hypervisor."
+msgstr ""
+
+#: ../../configuration.rst:1128
+# e3547549b19e48af957483aebd01db56
+msgid "The storage server should be a machine with a large number of disks. The disks should ideally be managed by a hardware RAID controller."
+msgstr ""
+
+#: ../../configuration.rst:1131
+# c31ea6b6b7bc46d98ae721c07b56b50e
+msgid "Minimum required capacity depends on your needs."
+msgstr ""
+
+#: ../../configuration.rst:1133
+# cdb1be7fc7ea4f5b973a9b1c27463a6d
+msgid "When setting up primary storage, follow these restrictions:"
+msgstr ""
+
+#: ../../configuration.rst:1135
+# 42e4d357c3b747ec85130e77229e624a
+msgid "Primary storage cannot be added until a host has been added to the cluster."
+msgstr ""
+
+#: ../../configuration.rst:1138
+# fc583ad97a214096a21288c09b52d080
+msgid "If you do not provision shared primary storage, you must set the global configuration parameter system.vm.local.storage.required to true, or else you will not be able to start VMs."
+msgstr ""
+
+#: ../../configuration.rst:1144
+# 3533708ed0ae435cb0a572d791d9715e
+msgid "Adding Primary Storage"
+msgstr ""
+
+#: ../../configuration.rst:1146
+# 0fae53d8c0214c6bb4e92841b8ee4a48
+msgid "When you create a new zone, the first primary storage is added as part of that procedure. You can add primary storage servers at any time, such as when adding a new cluster or adding more servers to an existing cluster."
+msgstr ""
+
+#: ../../configuration.rst:1152
+# e015632ceea7426b8ca21a4fc905bb1e
+msgid "When using preallocated storage for primary storage, be sure there is nothing on the storage (ex. you have an empty SAN volume or an empty NFS share). Adding the storage to CloudStack will destroy any existing data."
+msgstr ""
+
+#: ../../configuration.rst:1156
+# 2a0ed458d44e4e95ab93c42eb3a9e935
+msgid "Log in to the CloudStack UI (see `“Log In to the UI” <http://docs.cloudstack.apache.org/projects/cloudstack-administration/en/latest/ui.html#log-in-to-the-ui>`_)."
+msgstr ""
+
+#: ../../configuration.rst:1158
+# d5b688c69e784146b9ac0e214c8fe44c
+msgid "In the left navigation, choose Infrastructure. In Zones, click View More, then click the zone in which you want to add the primary storage."
+msgstr ""
+
+#: ../../configuration.rst:1164
+# 1cddd71de6ba4353ab0be25462528358
+msgid "In the Primary Storage node of the diagram, click View All."
+msgstr ""
+
+#: ../../configuration.rst:1166
+# d541d83b2a194e519a9ec5df1d98f5b4
+msgid "Click Add Primary Storage."
+msgstr ""
+
+#: ../../configuration.rst:1168
+# 5c4a040452d54b77942c8ddae2c6210f
+msgid "Provide the following information in the dialog. The information required varies depending on your choice in Protocol."
+msgstr ""
+
+#: ../../configuration.rst:1171
+# a693b4b9924b4fa096e546299abb3d47
+msgid "**Scope.** Indicate whether the storage is available to all hosts in the zone or only to hosts in a single cluster."
+msgstr ""
+
+#: ../../configuration.rst:1174
+# a142f32de5b64983965c23101102bdfc
+msgid "**Pod.** (Visible only if you choose Cluster in the Scope field.) The pod for the storage device."
+msgstr ""
+
+#: ../../configuration.rst:1177
+# fc4673c08bee49338a23afc73b035a4f
+msgid "**Cluster.** (Visible only if you choose Cluster in the Scope field.) The cluster for the storage device."
+msgstr ""
+
+#: ../../configuration.rst:1182
+# dd1e29093388466db29061c47fcc2a91
+msgid "**Protocol.** For XenServer, choose either NFS, iSCSI, or PreSetup. For KVM, choose NFS or SharedMountPoint. For vSphere choose either VMFS (iSCSI or FiberChannel) or NFS. For Hyper-V, choose SMB."
+msgstr ""
+
+#: ../../configuration.rst:1187
+# 5b60e8a893084a1abc56eeaee597e47b
+msgid "**Server (for NFS, iSCSI, or PreSetup).** The IP address or DNS name of the storage device."
+msgstr ""
+
+#: ../../configuration.rst:1190
+# b65c77d90f5f418e847f3a93e35cb8f9
+msgid "**Server (for VMFS).** The IP address or DNS name of the vCenter server."
+msgstr ""
+
+#: ../../configuration.rst:1193
+# 363c9c97e53944328628fd2634c615d4
+msgid "**Path (for NFS).** In NFS this is the exported path from the server."
+msgstr ""
+
+#: ../../configuration.rst:1196
+# 56943b019adc4b9f8a0ed93f8cdf51b4
+msgid "**Path (for VMFS).** In vSphere this is a combination of the datacenter name and the datastore name. The format is \"/\" datacenter name \"/\" datastore name. For example, \"/cloud.dc.VM/cluster1datastore\"."
+msgstr ""
+
+#: ../../configuration.rst:1201
+# 2414d9e1191e42bd8fb5c9fdf39bbbd8
+msgid "**Path (for SharedMountPoint).** With KVM this is the path on each host that is where this primary storage is mounted. For example, \"/mnt/primary\"."
+msgstr ""
+
+#: ../../configuration.rst:1205
+# 2517e36ce3a1410ab5c1978f5ac89313
+msgid "**SMB Username** (for SMB/CIFS): Applicable only if you select SMB/CIFS provider. The username of the account which has the necessary permissions to the SMB shares. The user must be part of the Hyper-V administrator group."
+msgstr ""
+
+#: ../../configuration.rst:1210
+# 58a4a5cad3794a3bac1f01f92fd63e80
+msgid "**SMB Password** (for SMB/CIFS): Applicable only if you select SMB/CIFS provider. The password associated with the account."
+msgstr ""
+
+#: ../../configuration.rst:1213
+# 497f1a89318e48a9ad2c06c57111cd9f
+msgid "**SMB Domain**\\ (for SMB/CIFS): Applicable only if you select SMB/CIFS provider. The Active Directory domain that the SMB share is a part of."
+msgstr ""
+
+#: ../../configuration.rst:1217
+# 2cdf053d64574ee1a6b5879f0ef2807d
+msgid "**SR Name-Label (for PreSetup).** Enter the name-label of the SR that has been set up outside CloudStack."
+msgstr ""
+
+#: ../../configuration.rst:1220
+# dd903e9085d84fd8afb2fce49b2357f6
+msgid "**Target IQN (for iSCSI).** In iSCSI this is the IQN of the target. For example, iqn.1986-03.com.sun:02:01ec9bb549-1271378984."
+msgstr ""
+
+#: ../../configuration.rst:1223
+# dd7a4bfc0eea4a3dab03d2bafa973633
+msgid "**Lun # (for iSCSI).** In iSCSI this is the LUN number. For example, 3."
+msgstr ""
+
+#: ../../configuration.rst:1226
+# 9023364ebc994f959f08b6819c1c4ce6
+msgid "**Tags (optional).** The comma-separated list of tags for this storage device. It should be an equivalent set or superset of the tags on your disk offerings.."
+msgstr ""
+
+#: ../../configuration.rst:1239
+# 824ace5e85574e4fb81a6c834d657113
+msgid "Configuring a Storage Plug-in"
+msgstr ""
+
+#: ../../configuration.rst:1242
+# 0bf9f4ce03274fa99551db2eef02d467
+msgid "Primary storage that is based on a custom plug-in (ex. SolidFire) must be added through the CloudStack API (described later in this section). There is no support at this time through the CloudStack UI to add this type of primary storage (although most of its features are available through the CloudStack UI)."
+msgstr ""
+
+#: ../../configuration.rst:1249
+# a1da9fd485b44080b384938a6f55a7bd
+msgid "The SolidFire storage plug-in for CloudStack is part of the standard CloudStack install. There is no additional work required to add this component."
+msgstr ""
+
+#: ../../configuration.rst:1253
+# 891dd35a6f6b4cf184d16023fd87a83b
+msgid "Adding primary storage that is based on the SolidFire plug-in enables CloudStack to provide hard quality-of-service (QoS) guarantees."
+msgstr ""
+
+#: ../../configuration.rst:1256
+# 0218d86dac264ce88dc1b3293defc50a
+msgid "When used with Compute or Disk Offerings, an administrator is able to build an environment in which a root or data disk that a user creates leads to the dynamic creation of a SolidFire volume, which has guaranteed performance. Such a SolidFire volume is associated with one (and only ever one) CloudStack volume, so performance of the CloudStack volume does not vary depending on how heavily other tenants are using the system."
+msgstr ""
+
+#: ../../configuration.rst:1264
+# febca3ed36dc41f0bfe48a3170c1b282
+msgid "The createStoragePool API has been augmented to support plugable storage providers. The following is a list of parameters to use when adding storage to CloudStack that is based on the SolidFire plug-in:"
+msgstr ""
+
+#: ../../configuration.rst:1268
+# 8b10cd104059470bbfbdf014d3db7d1a
+msgid "command=createStoragePool"
+msgstr ""
+
+#: ../../configuration.rst:1270
+# b7c687d8637946898d1be0a46f742a61
+msgid "scope=zone"
+msgstr ""
+
+#: ../../configuration.rst:1272
+# 051d3b0d6e7440218edb1ce012c5ba48
+msgid "zoneId=[your zone id]"
+msgstr ""
+
+#: ../../configuration.rst:1274
+# 43e497e6ee76487cb7ef8d43079af1da
+msgid "name=[name for primary storage]"
+msgstr ""
+
+#: ../../configuration.rst:1276
+# 041976b0584443e5852b0af71eefdb18
+msgid "hypervisor=Any"
+msgstr ""
+
+#: ../../configuration.rst:1278
+# 62f2f914fb8544d5b835ee85bff60f35
+msgid "provider=SolidFire"
+msgstr ""
+
+#: ../../configuration.rst:1280
+# fcf5466edf494d04957dec9bdfa80299
+msgid "capacityIops=[whole number of IOPS from the SAN to give to CloudStack]"
+msgstr ""
+
+#: ../../configuration.rst:1283
+# 7c4387f9055e4517907fb3bce403cfd0
+msgid "capacityBytes=[whole number of bytes from the SAN to give to CloudStack]"
+msgstr ""
+
+#: ../../configuration.rst:1286
+# be0d75f4832646b88d313275708519bf
+msgid "The url parameter is somewhat unique in that its value can contain additional key/value pairs."
+msgstr ""
+
+#: ../../configuration.rst:1289
+# ac8214aa1a4146599e36ab6ab7c8d513
+msgid "url=[key/value pairs detailed below (values are URL encoded; for example, '=' is represented as '%3D')]"
+msgstr ""
+
+#: ../../configuration.rst:1292
+# c35760dbaf9c43e9a3fcba4f07941070
+msgid "MVIP%3D[Management Virtual IP Address] (can be suffixed with :[port number])"
+msgstr ""
+
+#: ../../configuration.rst:1295
+# eec7163645c94befa2b06ef23adf72d1
+msgid "SVIP%3D[Storage Virtual IP Address] (can be suffixed with :[port number])"
+msgstr ""
+
+#: ../../configuration.rst:1298
+# 69688776153943ed92994665eb48f4fb
+msgid "clusterAdminUsername%3D[cluster admin's username]"
+msgstr ""
+
+#: ../../configuration.rst:1300
+# 660c410694f04bb6a9e49b2f10fb19a5
+msgid "clusterAdminPassword%3D[cluster admin's password]"
+msgstr ""
+
+#: ../../configuration.rst:1302
+# 2f276967210246a7ac29632c437fba98
+msgid "clusterDefaultMinIops%3D[Min IOPS (whole number) to set for a volume; used if Min IOPS is not specified by administrator or user]"
+msgstr ""
+
+#: ../../configuration.rst:1305
+# 503ba3b359a54f4e903c183ec3a434dc
+msgid "clusterDefaultMaxIops%3D[Max IOPS (whole number) to set for a volume; used if Max IOPS is not specified by administrator or user]"
+msgstr ""
+
+#: ../../configuration.rst:1308
+# bff592567afe42e79eab78de3a4527e8
+msgid "clusterDefaultBurstIopsPercentOfMaxIops%3D[Burst IOPS is determined by (Min IOPS \\* clusterDefaultBurstIopsPercentOfMaxIops parameter) (can be a decimal value)]"
+msgstr ""
+
+#: ../../configuration.rst:1316
+# 7f326e7c95a643b5b8f3266987762c9f
+msgid "Add Secondary Storage"
+msgstr ""
+
+#: ../../configuration.rst:1319
+# adab0eb1bee64891b05c676c8825b984
+msgid "System Requirements for Secondary Storage"
+msgstr ""
+
+#: ../../configuration.rst:1321
+# 968a6fc6d0b648b9ad73e20f83ba3013
+msgid "NFS storage appliance or Linux NFS server"
+msgstr ""
+
+#: ../../configuration.rst:1323
+# e9b6a1101247444e8248486d4e144757
+msgid "SMB/CIFS (Hyper-V)"
+msgstr ""
+
+#: ../../configuration.rst:1325
+# 31aa6daa1e434c0db6e1ea96877e6fc9
+msgid "(Optional) OpenStack Object Storage (Swift) (see http://swift.openstack.org)"
+msgstr ""
+
+#: ../../configuration.rst:1328
+# 93eb696e8c9a4372a49348a82bba481e
+msgid "100GB minimum capacity"
+msgstr ""
+
+#: ../../configuration.rst:1330
+# 5d6728fa692e41a186cc029252118288
+msgid "A secondary storage device must be located in the same zone as the guest VMs it serves."
+msgstr ""
+
+#: ../../configuration.rst:1333
+# 9e55bb037b5d4b35b720ef57d16556a8
+msgid "Each Secondary Storage server must be available to all hosts in the zone."
+msgstr ""
+
+#: ../../configuration.rst:1338
+# e0c736eae790448ba73388e3c5b2d47f
+msgid "Adding Secondary Storage"
+msgstr ""
+
+#: ../../configuration.rst:1340
+# 6791f9d69f3f4cee83ddb30891d2e653
+msgid "When you create a new zone, the first secondary storage is added as part of that procedure. You can add secondary storage servers at any time to add more servers to an existing zone."
+msgstr ""
+
+#: ../../configuration.rst:1345
+# 4de26231899b4a91a5b618eaf80f76ba
+msgid "Ensure that nothing is stored on the server. Adding the server to CloudStack will destroy any existing data."
+msgstr ""
+
+#: ../../configuration.rst:1348
+# 0f96c75bcfaa4992b32facf1bf9c77ed
+msgid "To prepare for the zone-based Secondary Staging Store, you should have created and mounted an NFS share during Management Server installation. See `“Prepare NFS Shares” <installation.html#prepare-nfs-shares>`_."
+msgstr ""
+
+#: ../../configuration.rst:1353
+# 8b7e2a3c48fc4c57a7d8c5571f9338a3
+msgid "If you are using an Hyper-V host, ensure that you have created a SMB share."
+msgstr ""
+
+#: ../../configuration.rst:1356
+# 48e97ef4b1a54f518c793652ddec6ef8
+msgid "Make sure you prepared the system VM template during Management Server installation. See `“Prepare the System VM Template” <installation.html#prepare-the-system-vm-template>`_."
+msgstr ""
+
+#: ../../configuration.rst:1360
+#: ../../configuration.rst:1418
+# fb775865c0094c848195fc8e5e81dfe0
+# e77ca2fba1984e23a35ca22a521e66f7
+msgid "Log in to the CloudStack UI as root administrator."
+msgstr ""
+
+#: ../../configuration.rst:1362
+#: ../../configuration.rst:1420
+# bf288714744446b487c5d03e8d5c284f
+# 54721a0f604d4c89b7b287778eac8b4a
+msgid "In the left navigation bar, click Infrastructure."
+msgstr ""
+
+#: ../../configuration.rst:1364
+#: ../../configuration.rst:1422
+# 802486b1694646e592a9dc6a6e069a21
+# dd93f372389045b9ade68ce6bf035f54
+msgid "In Secondary Storage, click View All."
+msgstr ""
+
+#: ../../configuration.rst:1366
+# 5e56801815014372ae7b840a6124f920
+msgid "Click Add Secondary Storage."
+msgstr ""
+
+#: ../../configuration.rst:1368
+# 5b0960edebc74650950d33271c9f6db6
+msgid "Fill in the following fields:"
+msgstr ""
+
+#: ../../configuration.rst:1370
+# 8bb375e8f43347d8844effcc6cf2a994
+msgid "Name. Give the storage a descriptive name."
+msgstr ""
+
+#: ../../configuration.rst:1372
+# d672a62914804d9e85d1c3055b9bcddf
+msgid "Provider. Choose S3, Swift, NFS, or CIFS then fill in the related fields which appear. The fields will vary depending on the storage provider; for more information, consult the provider's documentation (such as the S3 or Swift website). NFS can be used for zone-based storage, and the others for region-wide storage. For Hyper-V, select SMB/CIFS."
+msgstr ""
+
+#: ../../configuration.rst:1380
+# 085cebda2756421d88eabe0fd1ed189e
+msgid "Heterogeneous Secondary Storage is not supported in Regions. You can use only a single NFS, S3, or Swift account per region."
+msgstr ""
+
+#: ../../configuration.rst:1383
+# 4c63cfbb89234aa9994880b6d7035475
+msgid "Create NFS Secondary Staging Store. This box must always be checked."
+msgstr ""
+
+#: ../../configuration.rst:1387
+# 82935d6da92341a5bc95411b32007c5c
+msgid "Even if the UI allows you to uncheck this box, do not do so. This checkbox and the three fields below it must be filled in. Even when Swift or S3 is used as the secondary storage provider, an NFS staging storage in each zone is still required."
+msgstr ""
+
+#: ../../configuration.rst:1392
+#: ../../configuration.rst:1430
+# 5c87b1fdcb6c46648fb4bfad3fc595e6
+# 96945a3298924faea7c59f3ddc805b91
+msgid "Zone. The zone where the NFS Secondary Staging Store is to be located."
+msgstr ""
+
+#: ../../configuration.rst:1395
+# 3d532bad74854b83840c13235fc5eaf3
+msgid "**SMB Username**: Applicable only if you select SMB/CIFS provider. The username of the account which has the necessary permissions to the SMB shares. The user must be part of the Hyper-V administrator group."
+msgstr ""
+
+#: ../../configuration.rst:1400
+# d11b35aafdad49d09e6595709ab4a869
+msgid "**SMB Password**: Applicable only if you select SMB/CIFS provider. The password associated with the account."
+msgstr ""
+
+#: ../../configuration.rst:1403
+# 0cc268fbd62a46339fc88eceb8dadb38
+msgid "**SMB Domain**: Applicable only if you select SMB/CIFS provider. The Active Directory domain that the SMB share is a part of."
+msgstr ""
+
+#: ../../configuration.rst:1406
+#: ../../configuration.rst:1433
+# b3462457dd174443aa00bc93eaebe853
+# 470e248f89d14eeb8eb098c79f29f52c
+msgid "NFS server. The name of the zone's Secondary Staging Store."
+msgstr ""
+
+#: ../../configuration.rst:1408
+#: ../../configuration.rst:1435
+# adf27bcea0504f11988812eb85a20283
+# 29251115675e4ebd9e95bb8e2be474ec
+msgid "Path. The path to the zone's Secondary Staging Store."
+msgstr ""
+
+#: ../../configuration.rst:1412
+# f1a67ebb7bfc4b9bba233d814a3633e7
+msgid "Adding an NFS Secondary Staging Store for Each Zone"
+msgstr ""
+
+#: ../../configuration.rst:1414
+# 592852d3ff9741b592dfb8c0155bea22
+msgid "Every zone must have at least one NFS store provisioned; multiple NFS servers are allowed per zone. To provision an NFS Staging Store for a zone:"
+msgstr ""
+
+#: ../../configuration.rst:1424
+# 78eec05d08f24414bcb7cd50390349f9
+msgid "In Select View, choose Secondary Staging Store."
+msgstr ""
+
+#: ../../configuration.rst:1426
+# 58099b56975e4d6595fd3021bdba2d25
+msgid "Click the Add NFS Secondary Staging Store button."
+msgstr ""
+
+#: ../../configuration.rst:1428
+# 8d5db72403274211adc4e4ca5885cd63
+msgid "Fill out the dialog box fields, then click OK:"
+msgstr ""
+
+#: ../../configuration.rst:1441
+# b36dbe0441734c5d88e226b8cb6d73ca
+msgid "Initialize and Test"
+msgstr ""
+
+#: ../../configuration.rst:1443
+# f68866b9b3734b33aff7025c4fc36a2b
+msgid "After everything is configured, CloudStack will perform its initialization. This can take 30 minutes or more, depending on the speed of your network. When the initialization has completed successfully, the administrator's Dashboard should be displayed in the CloudStack UI."
+msgstr ""
+
+#: ../../configuration.rst:1448
+# e9f3a393a1774f74b5055f413c96a747
+msgid "Verify that the system is ready. In the left navigation bar, select Templates. Click on the CentOS 5.5 (64bit) no Gui (KVM) template. Check to be sure that the status is \"Download Complete.\" Do not proceed to the next step until this status is displayed."
+msgstr ""
+
+#: ../../configuration.rst:1453
+# 9765684b94244895a421d49deaf567ba
+msgid "Go to the Instances tab, and filter by My Instances."
+msgstr ""
+
+#: ../../configuration.rst:1455
+# 2880f3b150d14b459c557af5ec08546d
+msgid "Click Add Instance and follow the steps in the wizard."
+msgstr ""
+
+#: ../../configuration.rst:1457
+# 2afad971b41d4de4a246ba67d4ae812b
+msgid "Choose the zone you just added."
+msgstr ""
+
+#: ../../configuration.rst:1459
+# 0fc7a9665e7e4723a768ff8dc31cced5
+msgid "In the template selection, choose the template to use in the VM. If this is a fresh installation, likely only the provided CentOS template is available."
+msgstr ""
+
+#: ../../configuration.rst:1463
+# 888d93deca4d435aa3abbc602cd21a5f
+msgid "Select a service offering. Be sure that the hardware you have allows starting the selected service offering."
+msgstr ""
+
+#: ../../configuration.rst:1466
+# c9f44c62d2c042eabda1609a020f52c0
+msgid "In data disk offering, if desired, add another data disk. This is a second volume that will be available to but not mounted in the guest. For example, in Linux on XenServer you will see /dev/xvdb in the guest after rebooting the VM. A reboot is not required if you have a PV-enabled OS kernel in use."
+msgstr ""
+
+#: ../../configuration.rst:1472
+# 1d8ed73580834715bab5475f01fde220
+msgid "In default network, choose the primary network for the guest. In a trial installation, you would have only one option here."
+msgstr ""
+
+#: ../../configuration.rst:1475
+# 7381b9b824f64589ac04f8704896713f
+msgid "Optionally give your VM a name and a group. Use any descriptive text you would like."
+msgstr ""
+
+#: ../../configuration.rst:1478
+# 25155fbd928c415db082ad68cac73582
+msgid "Click Launch VM. Your VM will be created and started. It might take some time to download the template and complete the VM startup. You can watch the VMâ€™s progress in the Instances screen."
+msgstr ""
+
+#: ../../configuration.rst:1483
+# 33d66d1adbea4bb7a5979aac637d27bc
+msgid "To use the VM, click the View Console button. |ConsoleButton.png: button to launch a console|"
+msgstr ""
+
+#: ../../configuration.rst:1486
+# 6b8361d98cfe4efba50da0878b03cbbc
+msgid "For more information about using VMs, including instructions for how to allow incoming network traffic to the VM, start, stop, and delete VMs, and move a VM from one host to another, see Working With Virtual Machines in the Administratorâ€™s Guide."
+msgstr ""
+
+#: ../../configuration.rst:1491
+# 4bbb4febddf9404f9f1bb947098bd130
+msgid "Congratulations! You have successfully completed a CloudStack Installation."
+msgstr ""
+
+#: ../../configuration.rst:1494
+# f80667053e0249a3abd24b4f2b6db3ed
+msgid "If you decide to grow your deployment, you can add more hosts, primary storage, zones, pods, and clusters."
+msgstr ""
+
+#: ../../configuration.rst:1499
+# c560c1abbc0943729e4be7ed366f3f45
+msgid "Configuration Parameters"
+msgstr ""
+
+#: ../../configuration.rst:1502
+# 2a5e0238a6744532890adbf1f51cbfc2
+msgid "About Configuration Parameters"
+msgstr ""
+
+#: ../../configuration.rst:1504
+# 003cadc1a22543e181b420d3216ee3ca
+msgid "CloudStack provides a variety of settings you can use to set limits, configure features, and enable or disable features in the cloud. Once your Management Server is running, you might need to set some of these configuration parameters, depending on what optional features you are setting up. You can set default values at the global level, which will be in effect throughout the cloud unless you override them at a lower level. You can make local settings, which will override the global configuration parameter values, at the level of an account, zone, cluster, or primary storage."
+msgstr ""
+
+#: ../../configuration.rst:1514
+# e6d2272ffdc04a15b3b2e5a0b39a5a6e
+msgid "The documentation for each CloudStack feature should direct you to the names of the applicable parameters. The following table shows a few of the more useful parameters."
+msgstr ""
+
+#: ../../configuration.rst:1519
+#: ../../configuration.rst:1593
+#: ../../configuration.rst:1593
+# 48a9586522fe49a684a986663433d564
+# 92079ae000394a18a79504e41961233c
+# 43f27ae0b01e46e98172965dd387907d
+msgid "Field"
+msgstr ""
+
+#: ../../configuration.rst:1519
+#: ../../configuration.rst:1593
+# 2a703e9880154ddf91d1a384bfe8d684
+# 4dd2b3b2879b471388bcb2004313500a
+msgid "Value"
+msgstr ""
+
+#: ../../configuration.rst:1521
+# a510f43a421343dea533527f4084051d
+msgid "management.network.cidr"
+msgstr ""
+
+#: ../../configuration.rst:1521
+# dccbf6a2a6274bd1befec5e03859ae5d
+msgid "A CIDR that describes the network that the management CIDRs reside on. This                                        variable must be set for deployments that use vSphere. It is recommended to be                                     set for other deployments as well. Example: 192.168.3.0/24."
+msgstr ""
+
+#: ../../configuration.rst:1522
+# b5e4676da208492e872933356f38f626
+msgid "xen.setup.multipath"
+msgstr ""
+
+#: ../../configuration.rst:1522
+# cb8c5e8921894a34868af73e9e9b8a6f
+msgid "For XenServer nodes, this is a true/false variable that instructs CloudStack to                                    enable iSCSI multipath on the XenServer Hosts when they are added. This                                            defaults to false. Set it to true if you would like CloudStack to enable                                           multipath.If this is true for a NFS-based deployment multipath will still be                                       enabled on the XenServer host. However, this does not impact NFS operation and                                     is harmless."
+msgstr ""
+
+#: ../../configuration.rst:1523
+# df8f08a8bb804a5fb28c80c3fa316708
+msgid "secstorage.allowed.internal.sites"
+msgstr ""
+
+#: ../../configuration.rst:1523
+# b415c6a677b249d9ba32483249809b8a
+msgid "This is used to protect your internal network from rogue attempts to download                                      arbitrary files using the template download feature. This is a comma-separated                                     list of CIDRs. If a requested URL matches any of these CIDRs the Secondary                                         Storage VM will use the private network interface to fetch the URL. Other URLs                                     will go through the public interface. We suggest you set this to 1 or 2                                            hardened internal machines where you keep your templates. For example, set it                                      to 192.168.1.66/32."
+msgstr ""
+
+#: ../../configuration.rst:1524
+# bca7b73b39f34d68bfc7b3a8b02028c9
+msgid "use.local.storage"
+msgstr ""
+
+#: ../../configuration.rst:1524
+# c403da3bca8c422cb0030472d7fdd0dd
+msgid "Determines whether CloudStack will use storage that is local to the Host for                                       data disks, templates, and snapshots. By default CloudStack will not use this                                      storage. You should change this to true if you want to use local storage and                                       you understand the reliability and feature drawbacks to choosing local storage."
+msgstr ""
+
+#: ../../configuration.rst:1525
+# 273f3dc9d0b24674a052d86df2f932f7
+msgid "host"
+msgstr ""
+
+#: ../../configuration.rst:1525
+# 47bba12b42d54d46be9901d1f8cf8ca5
+msgid "This is the IP address of the Management Server. If you are using multiple                                         Management Servers you should enter a load balanced IP address that is                                             reachable via the private network."
+msgstr ""
+
+#: ../../configuration.rst:1526
+# d310c3c87f234eceb4271591bd4d899f
+msgid "default.page.size"
+msgstr ""
+
+#: ../../configuration.rst:1526
+# 3a7b21e756ed4f3284a2a188ca0a0ec1
+msgid "Maximum number of items per page that can be returned by a CloudStack API                                          command. The limit applies at the cloud level and can vary from cloud to cloud.                                    You can override this with a lower value on a particular API call by using the                                     page and pagesize API command parameters. For more information, see the                                            Developer's Guide. Default: 500."
+msgstr ""
+
+#: ../../configuration.rst:1527
+# 8d6b4fb28115479a9cb70f843801f6aa
+msgid "ha.tag"
+msgstr ""
+
+#: ../../configuration.rst:1527
+# cb3deb2df4004607a2e04b50afda2e63
+msgid "The label you want to use throughout the cloud to designate certain hosts as                                       dedicated HA hosts. These hosts will be used only for HA-enabled VMs that are                                      restarting due to the failure of another host. For example, you could set this                                     to ha\\_host. Specify the ha.tag value asa host tag when you add a new host to                                      the cloud."
+msgstr ""
+
+#: ../../configuration.rst:1528
+# 556fde03303d42ffb220b102b2210dfc
+msgid "vmware.vcenter.session.timeout"
+msgstr ""
+
+#: ../../configuration.rst:1528
+# cf142a0831c24cd29e0879d24191c09a
+msgid "Determines the vCenter session timeout value by using this parameter. The                                          default value is 20 minutes. Increase the timeout value to avoid timeout errors                                    in VMware deployments because certain VMware operations take more than 20                                          minutes."
+msgstr ""
+
+#: ../../configuration.rst:1533
+# 08eca151e89148068e96234ee8efccac
+msgid "Setting Global Configuration Parameters"
+msgstr ""
+
+#: ../../configuration.rst:1535
+# 2a6efc4eeb824e30b5d0a10540c63b55
+msgid "Use the following steps to set global configuration parameters. These values will be the defaults in effect throughout your CloudStack deployment."
+msgstr ""
+
+#: ../../configuration.rst:1539
+#: ../../configuration.rst:1566
+# ac0242e31c474dd29a9b24db5556bf48
+# e7461b5a426d4c808698cd33f7adfccd
+msgid "Log in to the UI as administrator."
+msgstr ""
+
+#: ../../configuration.rst:1541
+# 1b4a8289f9be4367b5464454566ebf4b
+msgid "In the left navigation bar, click Global Settings."
+msgstr ""
+
+#: ../../configuration.rst:1543
+# e82df7307c7f415ab94db7b575b470ce
+msgid "In Select View, choose one of the following:"
+msgstr ""
+
+#: ../../configuration.rst:1545
+# a0142617fa364a99bda590a8e64a934b
+msgid "Global Settings. This displays a list of the parameters with brief descriptions and current values."
+msgstr ""
+
+#: ../../configuration.rst:1548
+# 6047b505f5ab4a81a7fc7b399792b08f
+msgid "Hypervisor Capabilities. This displays a list of hypervisor versions with the maximum number of guests supported for each."
+msgstr ""
+
+#: ../../configuration.rst:1551
+#: ../../configuration.rst:1579
+# 47e638389ccc47d895ad51b8865b67ed
+# 6621f931d1314dcb991dbfed946145d4
+msgid "Use the search box to narrow down the list to those you are interested in."
+msgstr ""
+
+#: ../../configuration.rst:1554
+# 274dfcd501c64b7db7ba5376b4dffe31
+msgid "In the Actions column, click the Edit icon to modify a value. If you are viewing Hypervisor Capabilities, you must click the name of the hypervisor first to display the editing screen."
+msgstr ""
+
+#: ../../configuration.rst:1560
+# c211ee2e26b44d7ebd0c28660e867d35
+msgid "Setting Local Configuration Parameters"
+msgstr ""
+
+#: ../../configuration.rst:1562
+# fce0255430b2475aa263b8ca924cf857
+msgid "Use the following steps to set local configuration parameters for an account, zone, cluster, or primary storage. These values will override the global configuration settings."
+msgstr ""
+
+#: ../../configuration.rst:1568
+# 4d858a0c5a24407ab000370a24eccf0e
+msgid "In the left navigation bar, click Infrastructure or Accounts, depending on where you want to set a value."
+msgstr ""
+
+#: ../../configuration.rst:1571
+# d9cd0d62e3444c7c8fe947bfd1473243
+msgid "Find the name of the particular resource that you want to work with. For example, if you are in Infrastructure, click View All on the Zones, Clusters, or Primary Storage area."
+msgstr ""
+
+#: ../../configuration.rst:1575
+# f33422e144174bf49c2e2e93d9b70b2c
+msgid "Click the name of the resource where you want to set a limit."
+msgstr ""
+
+#: ../../configuration.rst:1577
+# 0c15b68fadd743d5938a20e850c355d7
+msgid "Click the Settings tab."
+msgstr ""
+
+#: ../../configuration.rst:1582
+# fb206dd4787047d6956ce47dace0fd46
+msgid "In the Actions column, click the Edit icon to modify a value."
+msgstr ""
+
+#: ../../configuration.rst:1586
+# e52abd333a034d37b1bb7cba1e32a42b
+msgid "Granular Global Configuration Parameters"
+msgstr ""
+
+#: ../../configuration.rst:1588
+# 20898527299948338ada5e13d94049bb
+msgid "The following global configuration parameters have been made more granular. The parameters are listed under three different scopes: account, cluster, and zone."
+msgstr ""
+
+#: ../../configuration.rst:1595
+#: ../../configuration.rst:1596
+#: ../../configuration.rst:1597
+#: ../../configuration.rst:1598
+# 8df2d6b3d1314a8aae8b1eb457648aff
+# a882525fba6542feb9112de1d3e305e8
+# 65d5144f4743413bb5a8c1757b6f3cef
+# 43b5bc4715d24f18b9bd42535f46cf70
+msgid "account"
+msgstr ""
+
+#: ../../configuration.rst:1595
+# a9df3278553c49a3849dc3e22fe08b2d
+msgid "remote.access.vpn.client.iprange"
+msgstr ""
+
+#: ../../configuration.rst:1595
+# 2c2997c2ad20401da80596c3cc6d70be
+msgid "The range of IPs to be allocated to remotely access the VPN clients. The first IP in the range is                                                                                                          used by the VPN server."
+msgstr ""
+
+#: ../../configuration.rst:1596
+# 46f406836e5f47789c7308cbc24461f1
+msgid "allow.public.user.templates"
+msgstr ""
+
+#: ../../configuration.rst:1596
+# 231c392623f04972aab04a526f80765f
+msgid "If false, users will not be able to create public templates."
+msgstr ""
+
+#: ../../configuration.rst:1597
+# 56f5fe2656b14d2ba0b1ad180fd5d5bd
+msgid "use.system.public.ips"
+msgstr ""
+
+#: ../../configuration.rst:1597
+# fb9862501ef4410dae60a5aa8a2ffc1b
+msgid "If true and if an account has one or more dedicated public IP ranges, IPs are                                                                                                                              acquired from the system pool after all the IPs dedicated to the account have been consumed."
+msgstr ""
+
+#: ../../configuration.rst:1598
+# e7e69d39fefd4be28bfc71ef64d7d997
+msgid "use.system.guest.vlans"
+msgstr ""
+
+#: ../../configuration.rst:1598
+# c001c1a0314e49c2a7b1b3dcfd668036
+msgid "If true and if an account has one or more dedicated guest VLAN ranges, VLANs are allocated from the                                                                                                        system pool after all the VLANs dedicated to the account have been consumed."
+msgstr ""
+
+#: ../../configuration.rst:1599
+#: ../../configuration.rst:1600
+#: ../../configuration.rst:1601
+#: ../../configuration.rst:1602
+#: ../../configuration.rst:1603
+#: ../../configuration.rst:1604
+#: ../../configuration.rst:1605
+#: ../../configuration.rst:1607
+#: ../../configuration.rst:1608
+#: ../../configuration.rst:1609
+# 6c8238a6074241b7a25073b38624b975
+# 9647b4f636d242e6b7c8253a4c845cf4
+# db3bde4fcc0c4d8981cde4b9c39ecc90
+# bddc63e51e324877be7710d594e2d149
+# 266ad0b0880c46cbbeac7f7e4e84a5df
+# edfcec1ab75641a487fbfc282f0ad518
+# 054e4713ecb94c12b29863f7f33a85c3
+# 4d2c7029c357490dae1ee56ac89c4269
+# 0e147f13a16a46f7b47a443dd1cd52a9
+# 35235cd387734a709b01e8062eceab67
+msgid "cluster"
+msgstr ""
+
+#: ../../configuration.rst:1599
+# 27e3e5dccb0b42eba3b866f31745c2c4
+msgid "cluster.storage.allocated.capacity.notificationthreshold"
+msgstr ""
+
+#: ../../configuration.rst:1599
+# bb2047027ddf4928a0585e4088ce1f29
+msgid "The percentage, as a value between 0 and 1, of allocated storage utilization                                                                                                                               above which alerts are sent that the storage is below the threshold."
+msgstr ""
+
+#: ../../configuration.rst:1600
+# cf6962e471014b2e84dc9ff1fb372c82
+msgid "cluster.storage.capacity.notificationthreshold"
+msgstr ""
+
+#: ../../configuration.rst:1600
+# 217cf10ba30b47208d2ed0dab490eb7a
+msgid "The percentage, as a value between 0 and 1, of storage utilization above which alerts are sent that the available storage is below                                                                         the threshold."
+msgstr ""
+
+#: ../../configuration.rst:1601
+# a802fd66c6ca40ea862ad41ad7784119
+msgid "cluster.cpu.allocated.capacity.notificationthreshold"
+msgstr ""
+
+#: ../../configuration.rst:1601
+# 148d3709a3094f71b1c39d5cc62bdef7
+msgid "The percentage, as a value between 0 and 1, of cpu utilization above which alerts are sent that the available CPU is below the                                                                             threshold."
+msgstr ""
+
+#: ../../configuration.rst:1602
+# 64f69d16efcb436da37e48eb1da8f50b
+msgid "cluster.memory.allocated.capacity.notificationthreshold"
+msgstr ""
+
+#: ../../configuration.rst:1602
+# 1f20a8d48c184fde84620cea1abfd5df
+msgid "The percentage, as a value between 0 and 1, of memory utilization above which alerts are sent that the available memory is below the                                                                       threshold."
+msgstr ""
+
+#: ../../configuration.rst:1603
+# d428c8f86cbe464587f88a9ebdbdcff0
+msgid "cluster.cpu.allocated.capacity.disablethreshold"
+msgstr ""
+
+#: ../../configuration.rst:1603
+# 8b66e72376894917b7cdfc704e5be44e
+msgid "The percentage, as a value between 0 and 1, of CPU utilization above which allocators will disable that cluster from further usage.                                                                        Keep the corresponding notification threshold lower than this value to be notified beforehand."
+msgstr ""
+
+#: ../../configuration.rst:1604
+# 4b250edddaca4cb683468f061af9d819
+msgid "cluster.memory.allocated.capacity.disablethreshold"
+msgstr ""
+
+#: ../../configuration.rst:1604
+# f3b5f79db1cf46e0abbdd19505b30618
+msgid "The percentage, as a value between 0 and 1, of memory utilization above which allocators will disable that cluster from further                                                                            usage. Keep the corresponding notification threshold lower than this value to be notified beforehand."
+msgstr ""
+
+#: ../../configuration.rst:1605
+# e3d747cbc77546ad928288bc0678580f
+msgid "cpu.overprovisioning.factor"
+msgstr ""
+
+#: ../../configuration.rst:1605
+# cb9a9903057f4089a0f74e7d00af0b09
+msgid "Used for CPU over-provisioning calculation; the available CPU will be the mathematical product of actualCpuCapacity and cpu.overprovisioning.factor."
+msgstr ""
+
+#: ../../configuration.rst:1607
+# 6529835959d14a30a5a02c1dab090203
+msgid "mem.overprovisioning.factor"
+msgstr ""
+
+#: ../../configuration.rst:1607
+# fae6e1ba37794435b586197424421ea0
+msgid "Used for memory over-provisioning calculation."
+msgstr ""
+
+#: ../../configuration.rst:1608
+# fe09a1bfd6994765a0a0686ad370ac69
+msgid "vmware.reserve.cpu"
+msgstr ""
+
+#: ../../configuration.rst:1608
+# 8e7c7caa5bec451783153beae186b804
+msgid "Specify whether or not to reserve CPU when not over-provisioning; In case of CPU over-provisioning, CPU is always reserved."
+msgstr ""
+
+#: ../../configuration.rst:1609
+# d26aa6adac65454ba1ec4fb45c0b5e98
+msgid "vmware.reserve.mem"
+msgstr ""
+
+#: ../../configuration.rst:1609
+# 7fabfb4457fc4f0abf33ffdb09d96f51
+msgid "Specify whether or not to reserve memory when not over-provisioning; In case of memory over-provisioning memory is always reserved."
+msgstr ""
+
+#: ../../configuration.rst:1610
+#: ../../configuration.rst:1612
+#: ../../configuration.rst:1613
+#: ../../configuration.rst:1614
+#: ../../configuration.rst:1615
+#: ../../configuration.rst:1616
+#: ../../configuration.rst:1617
+#: ../../configuration.rst:1618
+#: ../../configuration.rst:1619
+#: ../../configuration.rst:1620
+#: ../../configuration.rst:1621
+# a21b783631704c9b81e3d29fabd9eaff
+# 0806344139bf4b4991de4bd62a3d5ff7
+# e97c440818654e929cb9accc4b0771ee
+# 9d135e71fe5d4eb58e98e8e80401579a
+# 46ed061677414c09b777017b1c2abfc2
+# a0ab2163da2946d686483044d5ca46cd
+# 4647de7d27814699b224fba9a40e5ad2
+# 3ba7ea4a85234737a51cef71da7e07b9
+# 166d0813c0f148288a2803b974241529
+# 95b6358dfd9d45b2a8dbbd2c42531a01
+# 585a49ffc9ad4fbea5f6701f266ee9ec
+msgid "zone"
+msgstr ""
+
+#: ../../configuration.rst:1610
+# 196f60d63c6d46808c9d6bcc2f4c3885
+msgid "pool.storage.allocated.capacity.disablethreshold"
+msgstr ""
+
+#: ../../configuration.rst:1610
+# c04d61f4e28a4f789c84cb900c6cf0a9
+msgid "The percentage, as a value between 0 and 1, of allocated storage utilization above which allocators will disable that pool because the available allocated storage is below the threshold."
+msgstr ""
+
+#: ../../configuration.rst:1612
+# c738bf8adc7443b4ba523dea06552c19
+msgid "pool.storage.capacity.disablethreshold"
+msgstr ""
+
+#: ../../configuration.rst:1612
+# dac4310f42c2420ab725e8ca920ccfa0
+msgid "The percentage, as a value between 0 and 1, of storage utilization above which allocators will disable the pool because the available                                                                      storage capacity is below the threshold."
+msgstr ""
+
+#: ../../configuration.rst:1613
+# 6edca2b7fcf44a3595a76537c70880f9
+msgid "storage.overprovisioning.factor"
+msgstr ""
+
+#: ../../configuration.rst:1613
+# 8eba02c107c9484093dd79cf0ee65f89
+msgid "Used for storage over-provisioning calculation; available storage will be the mathematical product of actualStorageSize and                                                                                storage.overprovisioning.factor."
+msgstr ""
+
+#: ../../configuration.rst:1614
+# 9169218f4a2e46e5a8c1c1815238ed9f
+msgid "network.throttling.rate"
+msgstr ""
+
+#: ../../configuration.rst:1614
+# f2cbdfbd49734ffeb7941d05ea8b652b
+msgid "Default data transfer rate in megabits per second allowed in a network."
+msgstr ""
+
+#: ../../configuration.rst:1615
+# ef89e33bf0fd437ea3415cd3d61baba3
+msgid "guest.domain.suffix"
+msgstr ""
+
+#: ../../configuration.rst:1615
+# 30e0fdc26dd1489f86f794370cb4a3ba
+msgid "Default domain name for VMs inside a virtual networks with a router."
+msgstr ""
+
+#: ../../configuration.rst:1616
+# ef39613bc0cf446a9fff88679ae47b0a
+msgid "router.template.xen"
+msgstr ""
+
+#: ../../configuration.rst:1616
+# c419c741cae548769dd227875d563022
+msgid "Name of the default router template on Xenserver."
+msgstr ""
+
+#: ../../configuration.rst:1617
+# 0d23eeec7546470da479531c87189b4d
+msgid "router.template.kvm"
+msgstr ""
+
+#: ../../configuration.rst:1617
+# baf932ce269f42588943f7fdb4ec5234
+msgid "Name of the default router template on KVM."
+msgstr ""
+
+#: ../../configuration.rst:1618
+# 2bc3e93d62f2457c8cbb8bbdcf4cf5ac
+msgid "router.template.vmware"
+msgstr ""
+
+#: ../../configuration.rst:1618
+# 9e6fcedba1f04fdab8a8542ea32d036f
+msgid "Name of the default router template on VMware."
+msgstr ""
+
+#: ../../configuration.rst:1619
+# 82a78e88325744e592b8bee2fce00ea7
+msgid "enable.dynamic.scale.vm"
+msgstr ""
+
+#: ../../configuration.rst:1619
+# 58f5d9335ab549a79f28e17a2c562056
+msgid "Enable or diable dynamically scaling of a VM."
+msgstr ""
+
+#: ../../configuration.rst:1620
+# 0ac19d4f17914e60ab366c0b230b7076
+msgid "use.external.dns"
+msgstr ""
+
+#: ../../configuration.rst:1620
+# 82b4dbaa5fec492986ebfd7d4bf76954
+msgid "Bypass internal DNS, and use the external DNS1 and DNS2"
+msgstr ""
+
+#: ../../configuration.rst:1621
+# c8177a7ac4ea4c07bf0c16f2833e48bf
+msgid "blacklisted.routes"
+msgstr ""
+
+#: ../../configuration.rst:1621
+# d9441a44a1824e80804bbbe62fd7f531
+msgid "Routes that are blacklisted cannot be used for creating static routes for a VPC Private Gateway."
+msgstr ""
+

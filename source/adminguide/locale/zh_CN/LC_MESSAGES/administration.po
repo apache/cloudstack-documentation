@@ -1,0 +1,95 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:04+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 29cfff43a2514946ad4c3499ebefbed6
+#: ../../administration.rst:18
+msgid "User Services"
+msgstr "用户服务"
+
+# d7001feee3bd4b298a4c17869c0c45dc
+#: ../../administration.rst:20
+msgid ""
+"In addition to the physical and logical infrastructure of your cloud and the"
+" CloudStack software and servers, you also need a layer of user services so "
+"that people can actually make use of the cloud. This means not just a user "
+"UI, but a set of options and resources that users can choose from, such as "
+"templates for creating virtual machines, disk storage, and more. If you are "
+"running a commercial service, you will be keeping track of what services and"
+" resources users are consuming and charging them for that usage. Even if you"
+" do not charge anything for people to use your cloud – say, if the users are"
+" strictly internal to your organization, or just friends who are sharing "
+"your cloud – you can still keep track of what services they use and how much"
+" of them."
+msgstr "除了云中的物理和逻辑基础设施以及 CloudStack 软件和服务器，你还需要一个用户服务层以便让人们能够真正利用云。这不仅仅意味这一个用户界面，而是一组用户可选择的选项和资源，如通过模版创建虚拟机，磁盘存储等等。如果您正在运行一个商业服务，您将可以跟踪服务和用户资源的使用以及使用计费情况。即使你不对使用云的人收费，-比如说，用户是你的内部组织，或只是你的朋友共享你的云 - 你仍然可以跟踪他们所使用的服务以及有多少人。"
+
+# 8691c3078d2741dabb85f469a7b58373
+#: ../../administration.rst:34
+msgid "Service Offerings, Disk Offerings, Network Offerings, and Templates"
+msgstr "服务方案，磁盘方案，网络方案和模版"
+
+# 82a1a03c5a234653b024700134d18169
+#: ../../administration.rst:36
+msgid ""
+"A user creating a new instance can make a variety of choices about its "
+"characteristics and capabilities. CloudStack provides several ways to "
+"present users with choices when creating a new instance:"
+msgstr "用户可以根据不同的功能和特性来创建新的实例，CloudStack提供了几种方法供用户选择以便创建一个新的实例:"
+
+# 5b79acf1c4034cf09e56634938cbfd33
+#: ../../administration.rst:40
+msgid ""
+"Service Offerings, defined by the CloudStack administrator, provide a choice"
+" of CPU speed, number of CPUs, RAM size, tags on the root disk, and other "
+"choices. See Creating a New Compute Offering."
+msgstr "服务方案，由CloudStack管理员定义，提供了CPU速率，CPU核数，内存大小，根磁盘标签等多种选项供选择。可参阅创建新的计算方案。"
+
+# d71f7d3d0dda4061838347d6fc7e35fc
+#: ../../administration.rst:44
+msgid ""
+"Disk Offerings, defined by the CloudStack administrator, provide a choice of"
+" disk size and IOPS (Quality of Service) for primary data storage. See "
+"Creating a New Disk Offering."
+msgstr "磁盘方案，由CloudStack管理员定义，针对主数据存储提供磁盘大小和IOPS(QOS)等选项供选择。可参阅创建新的磁盘方案。"
+
+# c00720676a8a4c4a9d423dd5f5743f4c
+#: ../../administration.rst:48
+msgid ""
+"Network Offerings, defined by the CloudStack administrator, describe the "
+"feature set that is available to end users from the virtual router or "
+"external networking devices on a given guest network. See Network Offerings."
+msgstr "网络方案，由 CloudStack 管理员定义，约定来宾网络中虚拟路由器或外部网络设备提供给终端用户可用的功能描述集。"
+
+# 169ad751a60e44929103a91c102ac2a2
+#: ../../administration.rst:53
+msgid ""
+"Templates, defined by the CloudStack administrator or by any CloudStack "
+"user, are the base OS images that the user can choose from when creating a "
+"new instance. For example, CloudStack includes CentOS as a template. See "
+"Working with Templates."
+msgstr "模版，由CloudStack管理员或其他CloudStack用户定义，用户创建新的实例时可选择的基本操作系统镜像。例如，CloudStack中包含的CentOS模版。可参阅使用模版。"
+
+# 81b027ebc2094409b6f28288660792c7
+#: ../../administration.rst:58
+msgid ""
+"In addition to these choices that are provided for users, there is another "
+"type of service offering which is available only to the CloudStack root "
+"administrator, and is used for configuring virtual infrastructure resources."
+" For more information, see Upgrading a Virtual Router with System Service "
+"Offerings."
+msgstr "除了给用户提供了这些选择，还有另一种类型的服务方案只提供给CloudStack管理员，用于配置虚拟基础设施资源。欲了解更多信息，请参阅使用系统服务方案升级虚拟路由器。"

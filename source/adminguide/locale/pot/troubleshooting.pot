@@ -1,0 +1,383 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../troubleshooting.rst:18
+# 453abc0964244620ab303e8bbdd16340
+msgid "TroubleShooting"
+msgstr ""
+
+#: ../../troubleshooting.rst:21
+# b90eea0457d64f3cb90be7deabcaa0c3
+msgid "Working with Server Logs"
+msgstr ""
+
+#: ../../troubleshooting.rst:23
+# 9d89b655688d4af2bfc8302c8a0c9134
+msgid "The CloudStack Management Server logs all web site, middle tier, and database activities for diagnostics purposes in `/var/log/cloudstack/management/`. The CloudStack logs a variety of error messages. We recommend this command to find the problematic output in the Management Server log:."
+msgstr ""
+
+#: ../../troubleshooting.rst:30
+# 3fc8e92bb3a741c3bd3a67d67cf0e9a3
+msgid "When copying and pasting a command, be sure the command has pasted as a single line before executing. Some document viewers may introduce unwanted line breaks in copied text."
+msgstr ""
+
+#: ../../troubleshooting.rst:38
+# 845cfc971cf84bbca9edce162a942ad2
+msgid "The CloudStack processes requests with a Job ID. If you find an error in the logs and you are interested in debugging the issue you can grep for this job ID in the management server log. For example, suppose that you find the following ERROR message:"
+msgstr ""
+
+#: ../../troubleshooting.rst:47
+# f7529d9ff27a4e27bdad7d8a6435087a
+msgid "Note that the job ID is 1076. You can track back the events relating to job 1076 with the following grep:"
+msgstr ""
+
+#: ../../troubleshooting.rst:54
+# 4da5450950cc43b79b6d4391e28f4f41
+msgid "The CloudStack Agent Server logs its activities in `/var/log/cloudstack/agent/`."
+msgstr ""
+
+#: ../../troubleshooting.rst:58
+# ba4670a0c5444406a2eb230cb99333d5
+msgid "Data Loss on Exported Primary Storage"
+msgstr ""
+
+#: ../../troubleshooting.rst:61
+#: ../../troubleshooting.rst:99
+#: ../../troubleshooting.rst:140
+#: ../../troubleshooting.rst:162
+#: ../../troubleshooting.rst:185
+#: ../../troubleshooting.rst:219
+# b0ef204b69a54f32bd49070c4b9b6a91
+# 96d811275eea4240af38ec923db3c739
+# 03085fe48e6f4b379bcb1b827fff32d4
+# 83a83346af6342ae960e60c796e896d3
+# dc69c8f4922e4f69a378d3a16a609df7
+# 3970143e5afb4c03a4b3aed0f9e50fc7
+msgid "Symptom"
+msgstr ""
+
+#: ../../troubleshooting.rst:63
+# a5727b8982354aaeb9aaa3eaccf41ef9
+msgid "Loss of existing data on primary storage which has been exposed as a Linux NFS server export on an iSCSI volume."
+msgstr ""
+
+#: ../../troubleshooting.rst:68
+#: ../../troubleshooting.rst:106
+#: ../../troubleshooting.rst:146
+#: ../../troubleshooting.rst:168
+#: ../../troubleshooting.rst:197
+#: ../../troubleshooting.rst:226
+# 77646ea81e804cb9ada6c17c6289cbbe
+# e5b68ba31d5948388069cf4e01357332
+# 48d47c0902414b5194a1d38398971eb6
+# 8c13e9a8446c49ef90ae29a314ee0d33
+# 8a80e812487d4bf6b38f6cdc6feddae0
+# 350e1aaa22b5432f8065bdf94cc27e02
+msgid "Cause"
+msgstr ""
+
+#: ../../troubleshooting.rst:70
+# 8ca868ba6d9349e6b0d83564a152f19e
+msgid "It is possible that a client from outside the intended pool has mounted the storage. When this occurs, the LVM is wiped and all data in the volume is lost"
+msgstr ""
+
+#: ../../troubleshooting.rst:76
+#: ../../troubleshooting.rst:112
+#: ../../troubleshooting.rst:153
+#: ../../troubleshooting.rst:176
+#: ../../troubleshooting.rst:207
+#: ../../troubleshooting.rst:235
+# 4934510ae4ce4c79a0ed5d6ee26fea0a
+# df9bd94f2f95481f93b741b643baedfb
+# 5d33b8b45f404f25abcb9d3fbfeafb70
+# 044a6cc8e613432ab218a02d3bbde2a1
+# 4445e221c952428fb2585060c4540dee
+# 7c3b4d63c42d4990999e96195fe72cca
+msgid "Solution"
+msgstr ""
+
+#: ../../troubleshooting.rst:78
+# 990ebb2f5e854a479d94d06df1280a15
+msgid "When setting up LUN exports, restrict the range of IP addresses that are allowed access by specifying a subnet mask. For example:"
+msgstr ""
+
+#: ../../troubleshooting.rst:85
+# 17f9dff87a0b4b848b2938ad46c42bfc
+msgid "Adjust the above command to suit your deployment needs."
+msgstr ""
+
+#: ../../troubleshooting.rst:89
+# 9dd74bb044b640dcb1b4e410db1a44e2
+msgid "More Information"
+msgstr ""
+
+#: ../../troubleshooting.rst:91
+# 6c10365641b54f549e84579ccb8d4fe2
+msgid "See the export procedure in the \"Secondary Storage\" section of the CloudStack Installation Guide"
+msgstr ""
+
+#: ../../troubleshooting.rst:96
+# 08ecc200c09045599e0c1f960186fdc4
+msgid "Recovering a Lost Virtual Router"
+msgstr ""
+
+#: ../../troubleshooting.rst:101
+# db28bc81f196417980c31fd2d4b63f29
+msgid "A virtual router is running, but the host is disconnected. A virtual router no longer functions as expected."
+msgstr ""
+
+#: ../../troubleshooting.rst:108
+# a6ac53ae9be44b4e8b3602647222e9ac
+msgid "The Virtual router is lost or down."
+msgstr ""
+
+#: ../../troubleshooting.rst:114
+# 1bd58bc5e2314d0cbf2e0059b096bf0a
+msgid "If you are sure that a virtual router is down forever, or no longer functions as expected, destroy it. You must create one afresh while keeping the backup router up and running (it is assumed this is in a redundant router setup):"
+msgstr ""
+
+#: ../../troubleshooting.rst:119
+# 19e8516bc79a4b7faeb2645670f3a6a1
+msgid "Force stop the router. Use the stopRouter API with forced=true parameter to do so."
+msgstr ""
+
+#: ../../troubleshooting.rst:122
+# 340f24e153484784bc1cf3b493c32ea3
+msgid "Before you continue with destroying this router, ensure that the backup router is running. Otherwise the network connection will be lost."
+msgstr ""
+
+#: ../../troubleshooting.rst:126
+# c2db1e8bd10547bfacb3e2d044ca6d06
+msgid "Destroy the router by using the destroyRouter API."
+msgstr ""
+
+#: ../../troubleshooting.rst:128
+# af3e07ca34034b49b6dba68eb7da16f3
+msgid "Recreate the missing router by using the restartNetwork API with cleanup=false parameter. For more information about redundant router setup, see Creating a New Network Offering."
+msgstr ""
+
+#: ../../troubleshooting.rst:132
+# 25bdb5c7a6a7454ea25d62c3f0a02c57
+msgid "For more information about the API syntax, see the API Reference at `http://cloudstack.apache.org/docs/api/ <http://cloudstack.apache.org/docs/api/>`_."
+msgstr ""
+
+#: ../../troubleshooting.rst:137
+# d1a32a2023024c72907911b8c7757cae
+msgid "Maintenance mode not working on vCenter"
+msgstr ""
+
+#: ../../troubleshooting.rst:142
+# bd6813f30ddc4a0da8cf13b7725c9748
+msgid "Host was placed in maintenance mode, but still appears live in vCenter."
+msgstr ""
+
+#: ../../troubleshooting.rst:148
+# 7241c889dd0842189f0c38eda241d14b
+msgid "The CloudStack administrator UI was used to place the host in scheduled maintenance mode. This mode is separate from vCenter's maintenance mode."
+msgstr ""
+
+#: ../../troubleshooting.rst:155
+# a959d82ede064a89ad631ce910f8f7df
+msgid "Use vCenter to place the host in maintenance mode."
+msgstr ""
+
+#: ../../troubleshooting.rst:159
+# f3c4a03f0b5042009b2e858d5b259496
+msgid "Unable to deploy VMs from uploaded vSphere template"
+msgstr ""
+
+#: ../../troubleshooting.rst:164
+# f0d6310e9be647eda1506c7161d33a8b
+msgid "When attempting to create a VM, the VM will not deploy."
+msgstr ""
+
+#: ../../troubleshooting.rst:170
+# 82efe5f025f8468c99e720b0e00c067e
+msgid "If the template was created by uploading an OVA file that was created using vSphere Client, it is possible the OVA contained an ISO image. If it does, the deployment of VMs from the template will fail."
+msgstr ""
+
+#: ../../troubleshooting.rst:178
+# c61b5fec4b5d4b75afac37386a78b766
+msgid "Remove the ISO and re-upload the template."
+msgstr ""
+
+#: ../../troubleshooting.rst:182
+# 7d4b56be6f504129860c6d5c12fd73d5
+msgid "Unable to power on virtual machine on VMware"
+msgstr ""
+
+#: ../../troubleshooting.rst:187
+# bb0c46e2f09647f9a260c9e676f72afb
+msgid "Virtual machine does not power on. You might see errors like:"
+msgstr ""
+
+#: ../../troubleshooting.rst:189
+# 92c768be206b4267bb993ce6b1b74d77
+msgid "Unable to open Swap File"
+msgstr ""
+
+#: ../../troubleshooting.rst:191
+# a63cf9eda829479b835aff2d3b017460
+msgid "Unable to access a file since it is locked"
+msgstr ""
+
+#: ../../troubleshooting.rst:193
+# 0deea4202b4b41d9a4fab5ae3dad09bf
+msgid "Unable to access Virtual machine configuration"
+msgstr ""
+
+#: ../../troubleshooting.rst:199
+# 0605d083a0fa4569ad92e3ea1cfe6634
+msgid "A known issue on VMware machines. ESX hosts lock certain critical virtual machine files and file systems to prevent concurrent changes. Sometimes the files are not unlocked when the virtual machine is powered off. When a virtual machine attempts to power on, it can not access these critical files, and the virtual machine is unable to power on."
+msgstr ""
+
+#: ../../troubleshooting.rst:209
+# 177329a9571d49b5bce7dc8d84731724
+msgid "See the following:"
+msgstr ""
+
+#: ../../troubleshooting.rst:211
+# 344210667a0d414a89c35ba8bce56ca0
+msgid "`VMware Knowledge Base Article <http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=10051/>`_"
+msgstr ""
+
+#: ../../troubleshooting.rst:216
+# 7e82b8b3093b42cfb1088af2632abacf
+msgid "Load balancer rules fail after changing network offering"
+msgstr ""
+
+#: ../../troubleshooting.rst:221
+# 8feb8c6245fb490d835881b4996a3504
+msgid "After changing the network offering on a network, load balancer rules stop working."
+msgstr ""
+
+#: ../../troubleshooting.rst:228
+# dea9609b31dc4131b77505535e3aca09
+msgid "Load balancing rules were created while using a network service offering that includes an external load balancer device such as NetScaler, and later the network service offering changed to one that uses the CloudStack virtual router."
+msgstr ""
+
+#: ../../troubleshooting.rst:237
+# e344e7e16a5145ee9dfeb6c9057e6cb6
+msgid "Create a firewall rule on the virtual router for each of your existing load balancing rules so that they continue to function."
+msgstr ""
+
+#: ../../troubleshooting.rst:242
+# 8bc5100986b347c1a08bbeb52b64f7f7
+msgid "Troubleshooting Internet Traffic"
+msgstr ""
+
+#: ../../troubleshooting.rst:244
+# 5f383b9190f34ebcbdd6bb92b713ee21
+msgid "Below are a few troubleshooting steps to check whats going wrong with your network..."
+msgstr ""
+
+#: ../../troubleshooting.rst:249
+# 07599df9fe734016810667b0edbc9a49
+msgid "Trouble Shooting Steps"
+msgstr ""
+
+#: ../../troubleshooting.rst:251
+# 1a82d41b488b46c2bef892a561b3756c
+msgid "The switches have to be configured correctly to pass VLAN traffic. You can verify if VLAN traffic is working by bringing up a tagged interface on the hosts and pinging between them as below..."
+msgstr ""
+
+#: ../../troubleshooting.rst:255
+# 6b44f2f662ed49199d66820be6f6de02
+msgid "On *host1 (kvm1)*"
+msgstr ""
+
+#: ../../troubleshooting.rst:263
+# 5120295551574a56817a504f54bfe602
+msgid "On *host2 (kvm2)*"
+msgstr ""
+
+#: ../../troubleshooting.rst:271
+# 417a511656394e62ab6533726322a54e
+msgid "If the pings dont work, run *tcpdump(8)* all over the place to check who is gobbling up the packets. Ultimately, if the switches are not configured correctly, CloudStack networking wont work so fix the physical networking issues before you proceed to the next steps"
+msgstr ""
+
+#: ../../troubleshooting.rst:276
+# 63be4a452fb043e1ad03834e2b6afc37
+msgid "Ensure `Traffic Labels <http://cloudstack.apache.org/docs/en-US/Apache_CloudStack/4.2.0/html/Installation_Guide/about-physical-networks.html>`_ are set for the Zone."
+msgstr ""
+
+#: ../../troubleshooting.rst:278
+# 997b8cf202374996adfbc66cf272e85d
+msgid "Traffic labels need to be set for all hypervisors including XenServer, KVM and VMware types. You can configure traffic labels when you creating a new zone from the *Add Zone Wizard*."
+msgstr ""
+
+#: ../../troubleshooting.rst:284
+# 7f2757fe05a54b7890d5b634724bd166
+msgid "On an existing zone, you can modify the traffic labels by going to *Infrastructure, Zones, Physical Network* tab."
+msgstr ""
+
+#: ../../troubleshooting.rst:289
+# de6b7290f1874731bab19679f2b1c123
+msgid "List labels using *CloudMonkey*"
+msgstr ""
+
+#: ../../troubleshooting.rst:321
+# d7be5d89abc2416a81c2e11ae80e5c5e
+msgid "KVM traffic labels require to be named as *\"cloudbr0\"*, *\"cloudbr2\"*, *\"cloudbrN\"* etc and the corresponding bridge must exist on the KVM hosts. If you create labels/bridges with any other names, CloudStack (atleast earlier versions did) seems to ignore them. CloudStack does not create the physical bridges on the KVM hosts, you need to create them **before** before adding the host to Cloudstack."
+msgstr ""
+
+#: ../../troubleshooting.rst:340
+# 4d5d185d16bb4379b29d90b15b9e9855
+msgid "The Virtual Router, SSVM, CPVM *public* interface would be bridged to a physical interface on the host. In the example below, *cloudbr0* is the public interface and CloudStack has correctly created the virtual interfaces bridge. This virtual interface to physical interface mapping is done automatically by CloudStack using the traffic label settings for the Zone. If you have provided correct settings and still dont have a working working Internet, check the switching layer before you debug any further. You can verify traffic using tcpdump on the virtual, physical and bridge interfaces."
+msgstr ""
+
+#: ../../troubleshooting.rst:372
+# f261f43d727440edbeaf4c36ca611f7c
+msgid "Pre-create labels on the XenServer Hosts. Similar to KVM bridge setup, traffic labels must also be pre-created on the XenServer hosts before adding them to CloudStack."
+msgstr ""
+
+#: ../../troubleshooting.rst:385
+# e75bf706d6a745c9a94ee34516e86d1f
+msgid "The Internet would be accessible from both the SSVM and CPVM instances by default. Their public IPs will also be directly pingable from the Internet. Please note that these test would work only if your switches and traffic labels are configured correctly for your environment. If your SSVM/CPVM cant reach the Internet, its very unlikely that the Virtual Router (VR) can also the reach the Internet suggesting that its either a switching issue or incorrectly assigned traffic labels. Fix the SSVM/CPVM issues before you debug VR issues."
+msgstr ""
+
+#: ../../troubleshooting.rst:417
+# c1f11bc2b9ea470382b5f863e8d1a146
+msgid "The Virtual Router (VR) should also be able to reach the Internet without having any Egress rules. The Egress rules only control forwarded traffic and not traffic that originates on the VR itself."
+msgstr ""
+
+#: ../../troubleshooting.rst:432
+# fd961e75e43d4c48a4b779ef136e1d12
+msgid "However, the Virtual Router's (VR) Source NAT Public IP address **WONT** be reachable until appropriate Ingress rules are in place. You can add *Ingress* rules under *Network, Guest Network, IP Address, Firewall* setting page."
+msgstr ""
+
+#: ../../troubleshooting.rst:439
+# 7a1ba3d03cd64a0cb60486d361453ebd
+msgid "The VM Instances by default wont be able to access the Internet. Add Egress rules to permit traffic."
+msgstr ""
+
+#: ../../troubleshooting.rst:444
+# 2d798a14dcd149af8197080268c1b12b
+msgid "Some users have reported that flushing IPTables rules (or changing routes) on the SSVM, CPVM or the Virtual Router makes the Internet work. This is not expected behaviour and suggests that your networking settings are incorrect. No IPtables/route changes are required on the SSVM, CPVM or the VR. Go back and double check all your settings."
+msgstr ""
+
+#: ../../troubleshooting.rst:451
+# e14dab36e181467a9fd09fb6d0283176
+msgid "In a vast majority of the cases, the problem has turned out to be at the switching layer where the L3 switches were configured incorrectly."
+msgstr ""
+
+#: ../../troubleshooting.rst:454
+# 5fff1dc7083a4412a9e4051f2e239180
+msgid "This section was contibuted by Shanker Balan and was originally published on `Shapeblue's blog <http://shankerbalan.net/blog/internet-not-working-on-cloudstack-vms/>`_"
+msgstr ""
+

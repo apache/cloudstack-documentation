@@ -1,0 +1,383 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache CloudStack
+# This file is distributed under the same license as the Apache CloudStack package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack 4.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-31 13:49-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../ansible.rst:2
+# 1859d2f68f21412b8db2824edfae907f
+msgid "Deploying CloudStack with Ansible"
+msgstr ""
+
+#: ../../ansible.rst:4
+# 6e30eb00e6aa452eb537f0340f2f7556
+msgid "In this article, `Paul Angus <https://twitter.com/CloudyAngus>`__ Cloud Architect at ShapeBlue takes a look at using Ansible to Deploy an Apache CloudStack cloud."
+msgstr ""
+
+#: ../../ansible.rst:9
+# 17351fc3621b4e56afb679f57b7eb2fc
+msgid "What is Ansible"
+msgstr ""
+
+#: ../../ansible.rst:11
+# e0cbed0b5b6f4f81ac4a47ef3b9fcbec
+msgid "Ansible is a deployment and configuration management tool similar in intent to Chef and Puppet. It allows (usually) DevOps teams to orchestrate the deployment and configuration of their environments without having to re-write custom scripts to make changes."
+msgstr ""
+
+#: ../../ansible.rst:16
+# 9ac502daf71441a5add7f1779cb19b62
+msgid "Like Chef and Puppet, Ansible is designed to be idempotent, these means that you determine the state you want a host to be in and Ansible will decide if it needs to act in order to achieve that state."
+msgstr ""
+
+#: ../../ansible.rst:21
+# 91a4a9ec711e4564a704919e51ad288a
+msgid "There’s already Chef and Puppet, so what’s the fuss about Ansible?"
+msgstr ""
+
+#: ../../ansible.rst:23
+# 85246b43e8e4405b97abc46c4c48ad1c
+msgid "Let’s take it as a given that configuration management makes life much easier (and is quite cool), Ansible only needs an SSH connection to the hosts that you’re going to manage to get started. While Ansible requires Python 2.4 or greater to on the host you’re going to manage in order to leverage the vast majority of its functionality, it is able to connect to hosts which don’t have Python installed in order to then install Python, so it’s not really a problem. This greatly simplifies the deployment procedure for hosts, avoiding the need to pre-install agents onto the clients before the configuration management can take over."
+msgstr ""
+
+#: ../../ansible.rst:33
+# f9c8d470e48a46a3bf54200afc699d6d
+msgid "Ansible will allow you to connect as any user to a managed host (with that user’s privileges) or by using public/private keys – allowing fully automated management."
+msgstr ""
+
+#: ../../ansible.rst:37
+# e4cd5c2b100b42f287d4ff22be7e0154
+msgid "There also doesn’t need to be a central server to run everything, as long as your playbooks and inventories are in-sync you can create as many Ansible servers as you need (generally a bit of Git pushing and pulling will do the trick)."
+msgstr ""
+
+#: ../../ansible.rst:42
+# e0edcb5a78fb43e69bef735a58ee8659
+msgid "Finally – its structure and language is pretty simple and clean. I’ve found it a bit tricky to get the syntax correct for variables in some circumstances, but otherwise I’ve found it one of the easier tools to get my head around."
+msgstr ""
+
+#: ../../ansible.rst:48
+# f7e6bae4e21c4e209fc35954999298f2
+msgid "So let’s see something"
+msgstr ""
+
+#: ../../ansible.rst:50
+# 8ab9c7fec0dc4be49ad4e125357f4d7a
+msgid "For this example we’re going to create an Ansible server which will then deploy a CloudStack server. Both of these servers will be CentOS 6.4 virtual machines."
+msgstr ""
+
+#: ../../ansible.rst:55
+# 5f0e94b7659b4d409b333b789158e84e
+msgid "Installing Ansible"
+msgstr ""
+
+#: ../../ansible.rst:57
+# 915043a5d8904bb7aa64f2dde8a92391
+msgid "Installing Ansible is blessedly easy. We generally prefer to use CentOS so to install Ansible you run the following commands on the Ansible server."
+msgstr ""
+
+#: ../../ansible.rst:66
+# 36f217057d324ed58620a8813c3eabef
+msgid "And that’s it."
+msgstr ""
+
+#: ../../ansible.rst:68
+# cf61954055d44444975ccf8a7a78a916
+msgid "*(There is a commercial version which has more features such as callback to request configurations and a RESTful API and also support. The installation of this is different)*"
+msgstr ""
+
+#: ../../ansible.rst:72
+# 9363f0968af64b6aa46bb5905cf4251a
+msgid "By default Ansible uses /etc/ansible to store your playbooks, I tend to move it, but there’s no real problem with using the default location. Create yourself a little directory structure to get started with. The documentation recommends something like this:"
+msgstr ""
+
+#: ../../ansible.rst:79
+# 9868b1e2ebd24ceab9858c7787e9ccba
+msgid "Playbooks"
+msgstr ""
+
+#: ../../ansible.rst:81
+# 0d8e95c78ba84d22bf1b0ee3038508ea
+msgid "Ansible uses playbooks to specify the state in which you wish the target host to be in to be able to accomplish its role. Ansible playbooks are written in YAML format."
+msgstr ""
+
+#: ../../ansible.rst:86
+# a1f7c79f3f724cdba81c303040553b5e
+msgid "Modules"
+msgstr ""
+
+#: ../../ansible.rst:88
+# 564296611bdb46e6a8bd0a38db4b8e01
+msgid "To get Ansible to do things you specify the hosts a playbook will act upon and then call modules and supply arguments which determine what Ansible will do to those hosts."
+msgstr ""
+
+#: ../../ansible.rst:92
+# ebb846fa6db14f94b4b7a4cc98607749
+msgid "To keep things simple, this example is a cut-down version of a full deployment. This example creates a single management server with a local MySQL server and assumes you have your secondary storage already provisioned somewhere. For this example I’m also not going to include securing the MySQL server, configuring NTP or using Ansible to configure the networking on the hosts either. Although normally we’d use Ansible to do exactly that."
+msgstr ""
+
+#: ../../ansible.rst:100
+# d040b1b00b08437fafc87fa3320b0e4a
+msgid "The pre-requisites to this CloudStack build are:"
+msgstr ""
+
+#: ../../ansible.rst:102
+# cce9101b609045a2b3f394516d45093e
+msgid "A CentOS 6.4 host to install CloudStack on"
+msgstr ""
+
+#: ../../ansible.rst:103
+# e207a3f7f037488ea1b6328c91e33806
+msgid "An IP address already assigned on the ACS management host"
+msgstr ""
+
+#: ../../ansible.rst:104
+# fe440835a2a74cf48eb7c18ea908839e
+msgid "The ACS management host should have a resolvable FQDN (either through DNS or the host file on the ACS management host)"
+msgstr ""
+
+#: ../../ansible.rst:106
+# 41450f1731f14a729024313ec6a710fe
+msgid "Internet connectivity on the ACS management host"
+msgstr ""
+
+#: ../../ansible.rst:109
+# b5ddaceb1e764f74b2813ea96969445c
+msgid "Planning"
+msgstr ""
+
+#: ../../ansible.rst:111
+# 013969c7e2b9492db82e2d33164297c4
+msgid "The first step I use is to list all of the tasks I think I’ll need and group them or split them into logical blocks. So for this deployment of CloudStack I’d start with:"
+msgstr ""
+
+#: ../../ansible.rst:115
+# dd9e1395ccef429988e3e88376d858e7
+msgid "Configure selinux"
+msgstr ""
+
+#: ../../ansible.rst:116
+# 99b8406503ab4f12aae62a87d020722b
+msgid "(libselinux-python required for Ansible to work with selinux enabled hosts)"
+msgstr ""
+
+#: ../../ansible.rst:118
+# db945f8d47d0492a9162d0b8c17b048c
+msgid "Install and configure MySQL"
+msgstr ""
+
+#: ../../ansible.rst:119
+# d53d2720f9634906b3db980400d04d91
+msgid "(Python MySQL-DB required for Ansible MySQL module)"
+msgstr ""
+
+#: ../../ansible.rst:120
+# 7d22acf5b782426c8bcf68228188559b
+msgid "Install cloud-client"
+msgstr ""
+
+#: ../../ansible.rst:121
+# e2bcdc7a20274f28a27eec8996498c23
+msgid "Seed secondary storage"
+msgstr ""
+
+#: ../../ansible.rst:123
+# be33c86aba4945c585fce7c88942d496
+msgid "Ansible is built around the idea of hosts having roles, so generally you would group or manage your hosts by their roles. So now to create some roles for these tasks"
+msgstr ""
+
+#: ../../ansible.rst:127
+# e13ff16771754ed485d9e2c92d16debc
+msgid "I’ve created:"
+msgstr ""
+
+#: ../../ansible.rst:129
+# 7935027693af496e861255a6bc772036
+msgid "cloudstack-manager"
+msgstr ""
+
+#: ../../ansible.rst:130
+# 99590b1bc4024a08b0c0f182dbc60ef8
+msgid "mysql"
+msgstr ""
+
+#: ../../ansible.rst:132
+# a18f24daf8924855a44a9d0e633c94fc
+msgid "First up we need to tell Ansible where to find our CloudStack management host. In the root Ansible directory there is a file called ‘hosts’ (/etc/Ansible/hosts) add a section like this:"
+msgstr ""
+
+#: ../../ansible.rst:141
+# 7b170fd6a43342619530fb0aeee059d2
+msgid "where xxx.xxx.xxx.xxx is the ip address of your ACS management host."
+msgstr ""
+
+#: ../../ansible.rst:144
+# 144ffdd76bc148f39f790ada64cd4fc0
+msgid "MySQL"
+msgstr ""
+
+#: ../../ansible.rst:146
+# d7a41e7d8b9744e385f2a53ad29f8fdd
+msgid "So let’s start with the MySQL server.  We’ll need to create a task within the mysql role directory called main.yml. The ‘task’ in this case to have MySQL running and configured on the target host. The contents of the file will look like this:"
+msgstr ""
+
+#: ../../ansible.rst:207
+# 26122051675049278058cecdb173238d
+msgid "This needs to be saved as `/etc/ansible/roles/mysql/tasks/main.yml`"
+msgstr ""
+
+#: ../../ansible.rst:209
+# b896847dc3d748e6813c7bad10be7b4b
+msgid "As explained earlier, this playbook in fact describes the state of the host rather than setting out commands to be run. For instance, we specify certain lines which must be in the my.cnf file and allow Ansible to decide whether or not it needs to add them."
+msgstr ""
+
+#: ../../ansible.rst:214
+# 09f9988a7cc441068987429418680739
+msgid "Most of the modules are self-explanatory once you see them, but to run through them briefly;"
+msgstr ""
+
+#: ../../ansible.rst:217
+# 5c1e4a497ed64e27ace8c66aa718abf8
+msgid "The ‘yum’ module is used to specify which packages are required, the ‘service’ module controls the running of services, while the ‘mysql\\_user’ module controls mysql user configuration. The ‘lineinfile’ module controls the contents in a file."
+msgstr ""
+
+#: ../../ansible.rst:222
+# f9b01f4c803e4686b8176db909562c4b
+msgid "We have a couple of variables which need declaring.  You could do that within this playbook or its ‘parent’ playbook, or as a higher level variable. I’m going to declare them in a higher level playbook. More on this later."
+msgstr ""
+
+#: ../../ansible.rst:227
+# b129bd6c3c1f4252acbf6e3ab39da0d8
+msgid "That’s enough to provision a MySQL server. Now for the management server."
+msgstr ""
+
+#: ../../ansible.rst:232
+# e2a69788c8914660a4e7ec5a1da788fc
+msgid "CloudStack Management server service"
+msgstr ""
+
+#: ../../ansible.rst:234
+# f86e9d9aed5f4b688eeab2232617abf4
+msgid "For the management server role we create a main.yml task like this:"
+msgstr ""
+
+#: ../../ansible.rst:268
+# 374da105e3c441a993c731bb823d37ef
+msgid "Save this as `/etc/ansible/roles/cloudstack-management/tasks/main.yml`"
+msgstr ""
+
+#: ../../ansible.rst:270
+# 81313977c7c34c23b2bee532e64d64b8
+msgid "Now we have some new elements to deal with. The Ansible template module uses Jinja2 based templating.  As we’re doing a simplified example here, the Jinja template for the cloudstack.repo won’t have any variables in it, so it would simply look like this:"
+msgstr ""
+
+#: ../../ansible.rst:283
+# 780fbe6357154bcf831d03abbffa1a0c
+msgid "This is saved in `/etc/ansible/roles/cloudstack-manager/templates/cloudstack.repo.j2`"
+msgstr ""
+
+#: ../../ansible.rst:285
+# 0e150c1a3bd147d783217e662e64a456
+msgid "That gives us the packages installed, we need to set up the database. To do this I’ve created a separate task called setupdb.yml"
+msgstr ""
+
+#: ../../ansible.rst:297
+# f140c48ee40e495bbf6e4f00451188a7
+msgid "Save this as: `/etc/ansible/roles/cloudstack-management/tasks/setupdb.yml`"
+msgstr ""
+
+#: ../../ansible.rst:299
+# ab0ad808c1b74a0da1d3701114d7d265
+msgid "As there isn’t (as yet) a CloudStack module, Ansible doesn’t inherently know whether or not the databases have already been provisioned, therefore this step is not currently idempotent and will overwrite any previously provisioned databases."
+msgstr ""
+
+#: ../../ansible.rst:304
+# 61bbd93955ed4ef680b0005e6fe4c4db
+msgid "There are some more variables here for us to declare later."
+msgstr ""
+
+#: ../../ansible.rst:308
+# 907d082c8f834643a0a0d47f85ed7853
+msgid "System VM Templates:"
+msgstr ""
+
+#: ../../ansible.rst:311
+# 892ba69b5c9e4077b755762af5b353c0
+msgid "Finally we would want to seed the system VM templates into the secondary storage.  The playbook for this would look as follows:"
+msgstr ""
+
+#: ../../ansible.rst:335
+# 245722e5625e41b3be3d67384dbd309b
+msgid "Save this as `/etc/ansible/roles/cloudstack-manager/tasks/seedstorage.yml`"
+msgstr ""
+
+#: ../../ansible.rst:337
+# b224369b3afb4d0ab4107842e7794d39
+msgid "Again, there isn’t a CloudStack module so Ansible will always run this even if the secondary storage already has the templates in it."
+msgstr ""
+
+#: ../../ansible.rst:342
+# 5ebfbb97903b40ba85dc1668a1618296
+msgid "Bringing it all together"
+msgstr ""
+
+#: ../../ansible.rst:344
+# c265f43e11a743239b94833df8f80ba4
+msgid "Ansible can use playbooks which run other playbooks, this allows us to group these playbooks together and declare variables across all of the individual playbooks. So in the Ansible playbook directory create a file called deploy-cloudstack.yml, which would look like this:"
+msgstr ""
+
+#: ../../ansible.rst:373
+# 5451f71073da4c428c19974c633cda87
+msgid "Save this as `/etc/ansible/deploy-cloudstack.yml`  inserting the IP address and path for your secondary storage and changing the passwords if you wish to."
+msgstr ""
+
+#: ../../ansible.rst:379
+# 51f57532edfe47a3bf340a6ef3ec8005
+msgid "To run this go to the Ansible directory (cd /etc/ansible ) and run:"
+msgstr ""
+
+#: ../../ansible.rst:385
+# 7f15fe37a51a461ebd1554bd3b9b606c
+msgid "‘-k’ tells Ansible to ask you for the root password to connect to the remote host."
+msgstr ""
+
+#: ../../ansible.rst:388
+# 0eb541457f53444395a4f37fcf63cbea
+msgid "Now log in to the CloudStack UI on the new management server."
+msgstr ""
+
+#: ../../ansible.rst:393
+# 7adf17b4cc68467c9cbc81ee862c3753
+msgid "How is this example different from a production deployment?"
+msgstr ""
+
+#: ../../ansible.rst:395
+# 55f1b360102642c992d5a63319701117
+msgid "In a production deployment, the Ansible playbooks would configure multiple management servers connected to master/slave replicating MySQL databases along with any other infrastructure components required and deploy and configure the hypervisor hosts. We would also have a dedicated file describing the hosts in the environment and a dedicated file containing variables which describe the environment."
+msgstr ""
+
+#: ../../ansible.rst:402
+# 9767e9a1a97c49f99bdbb781b67a14b4
+msgid "The advantage of using a configuration management tool such as Ansible is that we can specify components like the MySQL database VIP once and use it multiple times when configuring the MySQL server itself and other components which need to use that information."
+msgstr ""
+
+#: ../../ansible.rst:409
+# 95500bea3a42402b9097acfd1246c320
+msgid "Acknowledgements"
+msgstr ""
+
+#: ../../ansible.rst:411
+# b26a941e90e445beab8646793a36fe57
+msgid "Thanks to Shanker Balan for introducing me to Ansible and a load of handy hints along the way."
+msgstr ""
+

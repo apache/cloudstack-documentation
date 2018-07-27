@@ -1,0 +1,411 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:04+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 0defb3a9608c4824b34ed35d916fd0c4
+#: ../../events.rst:18
+msgid "Event Notification"
+msgstr "事件通知"
+
+# 37ebc4e9b0b148daaab42c65d71cc834
+#: ../../events.rst:20
+msgid ""
+"An event is essentially a significant or meaningful change in the state of "
+"both virtual and physical resources associated with a cloud environment. "
+"Events are used by monitoring systems, usage and billing systems, or any "
+"other event-driven workflow systems to discern a pattern and make the right "
+"business decision. In CloudStack an event could be a state change of virtual"
+" or physical resources, an action performed by an user (action events), or "
+"policy based events (alerts)."
+msgstr "事件本质上是与云环境相关的虚拟和物理资源的状态显著或有意义的变化。事件用于监控系统，使用率和计费系统，或者是用于辨别模式和做出正确商业决定的其他任何事件驱动工作流系统。在 CloudStack 中的事件可以是虚拟或物理资源的状态变化，用户（操作事件）执行的操作，或基于策略的事件（警告）。"
+
+# 82bc7c30085140f89344da554ad386a3
+#: ../../events.rst:30
+msgid "Event Logs"
+msgstr "事件日志"
+
+# c1d54e6d1a2d4cd6888ad99bf943ed83
+#: ../../events.rst:32
+msgid ""
+"There are two types of events logged in the CloudStack Event Log. Standard "
+"events log the success or failure of an event and can be used to identify "
+"jobs or processes that have failed. There are also long running job events. "
+"Events for asynchronous jobs log when a job is scheduled, when it starts, "
+"and when it completes. Other long running synchronous jobs log when a job "
+"starts, and when it completes. Long running synchronous and asynchronous "
+"event logs can be used to gain more information on the status of a pending "
+"job or can be used to identify a job that is hanging or has not started. The"
+" following sections provide more information on these events.."
+msgstr "这里有两种类型的事件记录在&PRODUCT;事件日志。标准事件记录一个事件的成功或失败，并且可以用于鉴别哪些是已经失败的任务或进程。这里也记录长时间运行任务事件。异步任务的制定，启动，完成这些事件都被记录。长时间运行的同步和异步事件日志可用于获取挂起任务更多的状态信息，也可以用来识别任务是被挂起或还未开始。以下各节提供有关这些事件的详细信息。"
+
+# 127295678f0c4cf084cf737444f11087
+#: ../../events.rst:45
+msgid "Notification"
+msgstr "通知"
+
+# a669e3079b7e41d1a82dd149bf00b011
+#: ../../events.rst:47
+msgid ""
+"Event notification framework provides a means for the Management Server "
+"components to publish and subscribe to CloudStack events. Event notification"
+" is achieved by implementing the concept of event bus abstraction in the "
+"Management Server. An event bus is introduced in the Management Server that "
+"allows the CloudStack components and extension plug-ins to subscribe to the "
+"events by using the Advanced Message Queuing Protocol (AMQP) client. In "
+"CloudStack, a default implementation of event bus is provided as a plug-in "
+"that uses the RabbitMQ AMQP client. The AMQP client pushes the published "
+"events to a compatible AMQP server. Therefore all the CloudStack events are "
+"published to an exchange in the AMQP server."
+msgstr "事件通知框架提供一种手段来管理管理服务器组件来发布和订阅 CloudStack 中的事件。事件通知是通过实现事件总线抽象的管理服务器的概念来实现。事件总线的管理服务器，允许 CloudStack 中的组件和扩展插件通过使用高级消息队列协议（AMQP）客户端订阅事件的介绍。在 CloudStack 中，事件总线默认通过一个使用Rabbit MQAMQP 客户端 的插件实现。AMQP 客户端推送发布事件到兼容 AMQP 服务器。因此，所有的 CloudStack 中的事件发布到 AMQP 服务器中交换 。"
+
+# e41f3e4f6450467da27fc6dc4ebb2788
+#: ../../events.rst:59
+msgid ""
+"A new event for state change, resource state change, is introduced as part "
+"of Event notification framework. Every resource, such as user VM, volume, "
+"NIC, network, public IP, snapshot, and template, is associated with a state "
+"machine and generates events as part of the state change. That implies that "
+"a change in the state of a resource results in a state change event, and the"
+" event is published in the corresponding state machine on the event bus. All"
+" the CloudStack events (alerts, action events, usage events) and the "
+"additional category of resource state change events, are published on to the"
+" events bus."
+msgstr "状态变化，资源状态变化的新事件作为事件通知架构的一部分被引入。每个资源，例如用户VM，卷VM，网卡，网络，公共IP，快照以及模板，使用机器状态和常规事件被关联起来作为状态变化的一部分。这意味着，一个资源状态的变化产生了一个状态变化事件，并且该事件被公布到相应的状态事件总线。所有的  CloudStack 事件（报警，动作事件，使用事件）和 资源状态变化事件的附加条目将被公布到事件总线。"
+
+# 4aaf02080d184ab387923b45f39d5762
+#: ../../events.rst:71
+msgid "Use Cases"
+msgstr "使用案例"
+
+# f7b5a1de0f014d2eabfe925d0c5c4e95
+#: ../../events.rst:73
+msgid "The following are some of the use cases:"
+msgstr "以下是一些使用场景："
+
+# 9be82bc2fe244fef9851d9adb481fdaf
+#: ../../events.rst:75
+msgid ""
+"Usage or Billing Engines: A third-party cloud usage solution can implement a"
+" plug-in that can connects to CloudStack to subscribe to CloudStack events "
+"and generate usage data. The usage data is consumed by their usage software."
+msgstr "使用率或计费引擎：第三方云使用的解决方案可以实现一个插件，它可以连接到 CloudStack 中订阅 CloudStack 中的事件并产生使用率数据。使用率数据是它们的使用的软件消耗。"
+
+# 2585685666874f3f8795c70fe2671356
+#: ../../events.rst:80
+msgid ""
+"AMQP plug-in can place all the events on the a message queue, then a AMQP "
+"message broker can provide topic-based notification to the subscribers."
+msgstr "AMQP的插件可以存放消息队列中的所有事件，然后一个AMQP消息代理可以提供基于主题的通知订阅者。"
+
+# ff10e0227bc04e2f86f15c3c534b7c47
+#: ../../events.rst:84
+msgid ""
+"Publish and Subscribe notification service can be implemented as a pluggable"
+" service in CloudStack that can provide rich set of APIs for event "
+"notification, such as topics-based subscription and notification. "
+"Additionally, the pluggable service can deal with multi-tenancy, "
+"authentication, and authorization issues."
+msgstr "AMQP的插件可以存放所有事件在一个消息队列中，然后AMQP打乱的\n发布和订阅通知服务可以作为一个可插拔的服务，在CloudStack中该服务可以为事件通知提供丰富的API集，如主题为标题的主题和通知。此外，可插拔服务可以处理多租户，认证，授权issues.age代理，并提供基于主题的订阅通知。"
+
+# bdc9ac2f935c456fbd3778ddef6c91cf
+#: ../../events.rst:92
+msgid "Configuration"
+msgstr "配置"
+
+# c2514aa04f964044bd2bd630f31b4d3f
+#: ../../events.rst:94
+msgid ""
+"As a CloudStack administrator, perform the following one-time configuration "
+"to enable event notification framework. At run time no changes can control "
+"the behaviour."
+msgstr "作为一个  CloudStack 管理员，执行下列一次性配置启用事件通知框架。在运行时不能修改控件行为。"
+
+# e94d4200515d4f15adbc52ca3bbf8c54
+#: ../../events.rst:98
+msgid "Open ``'componentContext.xml``."
+msgstr "打开 `` componentContext.xml ``."
+
+# e2bbf37abe854d6cb8384bdd3c9d72b9
+#: ../../events.rst:100
+msgid "Define a bean named ``eventNotificationBus`` as follows:"
+msgstr "按照以下实例顶一个叫做 “ eventNotificationBus ” 的实体： "
+
+# 47bce54d52714df7bafac2b6d04dd816
+#: ../../events.rst:102
+msgid "name : Specify a name for the bean."
+msgstr "名字：为实体指定一个名字。"
+
+# 4317cb3aa0fd4c7fa3f0e637f6cfea48
+#: ../../events.rst:104
+msgid "server : The name or the IP address of the RabbitMQ AMQP server."
+msgstr "服务器： RabbitMQ AMQP 的名字或IP地址"
+
+# 0f6561172d38446db99181316f50e667
+#: ../../events.rst:106
+msgid "port : The port on which RabbitMQ server is running."
+msgstr "端口 : RabbitMQ服务器运行端口."
+
+# 7ff0aa3ff7af48fbbf4651a2d8e5f34d
+#: ../../events.rst:108
+msgid ""
+"username : The username associated with the account to access the RabbitMQ "
+"server."
+msgstr "用户名： 用户名关联访问 RabbitMQ 服务器的账号。"
+
+# 7193c434eaab44eda2d7d9b2b86c675d
+#: ../../events.rst:111
+msgid ""
+"password : The password associated with the username of the account to "
+"access the RabbitMQ server."
+msgstr "密码： 密码关联访问 RabbitMQ 服务器账号的用户名。"
+
+# f765ea7d69504610a98a95fdb802fe32
+#: ../../events.rst:114
+msgid ""
+"exchange : The exchange name on the RabbitMQ server where CloudStack events "
+"are published."
+msgstr "交流：其中 CloudStack 中事件发布的 RabbitMQ 的服务器上的交流名称。"
+
+# 7ba933b1d4ec41c1a20f2cdca4275405
+#: ../../events.rst:117
+msgid "A sample bean is given below:"
+msgstr "下面给出一个实体实例："
+
+# 07a04a0f79804e938092a93f3180770a
+#: ../../events.rst:130
+msgid ""
+"The ``eventNotificationBus`` bean represents the "
+"``org.apache.cloudstack.mom.rabbitmq.RabbitMQEventBus`` class."
+msgstr " `` eventNotificationBus ``  表示 ` `org.apache.cloudstack.mom.rabbitmq.RabbitMQEventBus ``  类"
+
+# 83cdf82ae8c34a238d181c5bbaef30dd
+#: ../../events.rst:133
+msgid "Restart the Management Server."
+msgstr "重启管理服务器。"
+
+# 573b41c4def247f6981e828da7f54f82
+#: ../../events.rst:137
+msgid "Standard Events"
+msgstr "标准事件"
+
+# f503981d0a764de49d4acc01c70d6126
+# 9212f9cd71b542899ac8256d4a51026d
+#: ../../events.rst:139 ../../events.rst:161
+msgid "The events log records three types of standard events."
+msgstr "事件日志记录三种类型的标准事件"
+
+# fab87560ba674752808dacaf3abfc44a
+# 94b40a1c0c98456399293f6a38102385
+#: ../../events.rst:141 ../../events.rst:163
+msgid ""
+"INFO. This event is generated when an operation has been successfully "
+"performed."
+msgstr "通知：当一个操作被成功执行产生事件。"
+
+# 49450fc963104f569e80611ac7179829
+# 13438410decf4526b0381dc44062ba76
+#: ../../events.rst:144 ../../events.rst:166
+msgid "WARN. This event is generated in the following circumstances."
+msgstr "警告：以下状况产生该事件。"
+
+# c6197efc809f4a67baf05aa139cb10f5
+# a16599807269441f8f1799ae29968e11
+#: ../../events.rst:146 ../../events.rst:168
+msgid "When a network is disconnected while monitoring a template download."
+msgstr "监控模板下载的同时网络被断开"
+
+# 0e060afef9e84640b3c2da38436691e2
+# 019e604962174d4492cca7be02ad2647
+#: ../../events.rst:149 ../../events.rst:171
+msgid "When a template download is abandoned."
+msgstr "模板下载被放弃"
+
+# 8b3eabd5fcc0406bb83abe3863261df9
+# 19ccb6eebbc1446a8cb47056d2ad0274
+#: ../../events.rst:151 ../../events.rst:173
+msgid ""
+"When an issue on the storage server causes the volumes to fail over to the "
+"mirror storage server."
+msgstr "当存储服务器上的问题会导致卷故障转移到镜像存储服务器。"
+
+# 96793fba6d294c98bd8dcde72d0d9f49
+# 0b487b0c814145438366a847c93c52d8
+#: ../../events.rst:154 ../../events.rst:176
+msgid ""
+"ERROR. This event is generated when an operation has not been successfully "
+"performed"
+msgstr "错误：当操作没有成功执行产生该事件"
+
+# b1c1824ddd304288bd0803e80d482bb9
+#: ../../events.rst:159
+msgid "Long Running Job Events"
+msgstr "长事件运行任务事件"
+
+# ffb5ee0896674a62a567e634fc725510
+#: ../../events.rst:181
+msgid "Event Log Queries"
+msgstr "事件记录查询"
+
+# 0c75a642e72943e0bb28642902590c9b
+#: ../../events.rst:183
+msgid ""
+"Database logs can be queried from the user interface. The list of events "
+"captured by the system includes:"
+msgstr "可以通过用户接口查询数据库日志。系统收集了以下列表事件："
+
+# fe735d1b0444472aa47e381cd00eec61
+#: ../../events.rst:186
+msgid "Virtual machine creation, deletion, and on-going management operations"
+msgstr "虚拟机创建，删除，以及持续管理操作"
+
+# e331126149b64023bf0e7655bbcb2991
+#: ../../events.rst:189
+msgid "Virtual router creation, deletion, and on-going management operations"
+msgstr "虚拟路由器创建，删除，以及持续管理操作"
+
+# 33b99484fca246c48ceff95aac8b52d2
+#: ../../events.rst:191
+msgid "Template creation and deletion"
+msgstr "模板创建和删除"
+
+# 7969071933104816945f05e9f3a597e3
+#: ../../events.rst:193
+msgid "Network/load balancer rules creation and deletion"
+msgstr "网络/压力 负载规则创建和删除"
+
+# 91ecfa5192134ffeafe5043cff29432a
+#: ../../events.rst:195
+msgid "Storage volume creation and deletion"
+msgstr "存储卷创建和和删除"
+
+# b0c0672f35af4003870943a16b461337
+#: ../../events.rst:197
+msgid "User login and logout"
+msgstr "用户登录注销"
+
+# 57cfb09e85c842b581f3a0f38609a9c4
+#: ../../events.rst:201
+msgid "Deleting and Archiving Events and Alerts"
+msgstr "删除和归档事件警告"
+
+# b4160055fbd946979df299cf40a75777
+#: ../../events.rst:203
+msgid ""
+"CloudStack provides you the ability to delete or archive the existing alerts"
+" and events that you no longer want to implement. You can regularly delete "
+"or archive any alerts or events that you cannot, or do not want to resolve "
+"from the database."
+msgstr "CloudStack 提供你删除或归档那些再也不使用的现存警告和事件的能力。您可以定期删除或存档的任何那些您不能或不想从数据库来解决的警报或事件，"
+
+# 7bdab572982c4739808182e94b589c7e
+#: ../../events.rst:208
+msgid ""
+"You can delete or archive individual alerts or events either directly by "
+"using the Quickview or by using the Details page. If you want to delete "
+"multiple alerts or events at the same time, you can use the respective "
+"context menu. You can delete alerts or events by category for a time period."
+" For example, you can select categories such as **USER.LOGOUT**, "
+"**VM.DESTROY**, **VM.AG.UPDATE**, **CONFIGURATION.VALUE.EDI**, and so on. "
+"You can also view the number of events or alerts archived or deleted."
+msgstr "您可以通过快速查看或详情页面直接删除或归档个别警报或事件。如果你想同时删除多个警报或事件，您可以分别使用相应的快捷菜单。您可以按类别删除某个时期的警报或事件。例如，您可以选择诸如 ** USER.LOGOUT**，** VM.DESTROY**，** VM.AG.UPDATE**，** CONFIGURATION.VALUE.EDI** 等类别，依此类推。您还可以查看事件和警报归档或删除的数量。"
+
+# cf46cdd4536a4a93912df2f4e88af8a1
+#: ../../events.rst:217
+msgid ""
+"In order to support the delete or archive alerts, the following global "
+"parameters have been added:"
+msgstr "为了支持删除或归档报警，增加了以下全局参数："
+
+# 19ff2e090cf24d30aeacde33ec972af1
+#: ../../events.rst:220
+msgid ""
+"**alert.purge.delay**: The alerts older than specified number of days are "
+"purged. Set the value to 0 to never purge alerts automatically."
+msgstr " **alert.purge.delay** : 指定报警大于多少天被销毁。设置值为0将永不自动销毁"
+
+# e3ccfdc51da14488bc9e44623c64d707
+#: ../../events.rst:223
+msgid ""
+"**alert.purge.interval**: The interval in seconds to wait before running the"
+" alert purge thread. The default is 86400 seconds (one day)."
+msgstr " **alert.purge.interval** : 执行销毁线程后等待间隔秒数. 默认值是86400秒 ( 1天 )."
+
+# a6eda71ad15940c2b58724ff74f97e26
+#: ../../events.rst:228
+msgid ""
+"Archived alerts or events cannot be viewed in the UI or by using the API. "
+"They are maintained in the database for auditing or compliance purposes."
+msgstr "不能同通过UI 或 API 来归档报警或者事件。它们都存放在数据库中用于升级或其他目的。"
+
+# 7c40293965f24130896768ea8223a152
+#: ../../events.rst:234
+msgid "Permissions"
+msgstr "许可"
+
+# e43e679e6a304ae1b78e11f56bed12b2
+#: ../../events.rst:236
+msgid "Consider the following:"
+msgstr "参考以下几点："
+
+# c5bd820d9a5e487b9440609da1e22551
+#: ../../events.rst:238
+msgid "The root admin can delete or archive one or multiple alerts or events."
+msgstr "root 管理 可以删除或归档一个或多个警告事件"
+
+# 51b4fa6e53064c7088052c69d7a1b4fe
+#: ../../events.rst:241
+msgid ""
+"The domain admin or end user can delete or archive one or multiple events."
+msgstr "域关乎或终端用户可以删除或归档一个或多个警告事件"
+
+# bea2b3dcb4bb41468a31793133ffeb06
+#: ../../events.rst:246
+msgid "Procedure"
+msgstr "步骤"
+
+# aa16543921984837a7f59142ad2df67d
+#: ../../events.rst:248
+msgid "Log in as administrator to the CloudStack UI."
+msgstr "使用管理员登录到CloudStack管理界面。"
+
+# f8b2ec5bdbf749d2bf704ff20c063c89
+#: ../../events.rst:250
+msgid "In the left navigation, click Events."
+msgstr "在左侧导航栏中，点击事件。"
+
+# 5519a86ae5b04a68b972ee88e37deffe
+#: ../../events.rst:252
+msgid "Perform either of the following:"
+msgstr "请执行下列操作之一： "
+
+# fd1193e3ff83466aa226d4834dea269d
+#: ../../events.rst:254
+msgid ""
+"To archive events, click Archive Events, and specify event type and date."
+msgstr "归档事件，点击 归档事件，并指定事件类型和日期。"
+
+# abfda9e22c7f42f3a4ff488ff755e59e
+#: ../../events.rst:257
+msgid ""
+"To archive events, click Delete Events, and specify event type and date."
+msgstr "归档事件，点击  删除事件，并指定事件类型和日期。"
+
+# 58b630d17160410ab6757d134aa17a62
+#: ../../events.rst:260
+msgid "Click OK."
+msgstr "点击确定。"

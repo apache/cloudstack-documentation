@@ -1,0 +1,180 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:06+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# aaae14dc309846cf90268bd429550032
+#: ../../networking/multiple_subnets_in_shared_network.rst:18
+msgid "Multiple Subnets in Shared Network"
+msgstr "共享网络中的多子网"
+
+# e1e0546c06b44b948781bf1b155376b6
+#: ../../networking/multiple_subnets_in_shared_network.rst:20
+msgid ""
+"CloudStack provides you with the flexibility to add guest IP ranges from "
+"different subnets in Basic zones and security groups-enabled Advanced zones."
+" For security groups-enabled Advanced zones, it implies multiple subnets can"
+" be added to the same VLAN. With the addition of this feature, you will be "
+"able to add IP address ranges from the same subnet or from a different one "
+"when IP address are exhausted. This would in turn allows you to employ "
+"higher number of subnets and thus reduce the address management overhead. "
+"You can delete the IP ranges you have added."
+msgstr "CloudStack为你提供了在基本zones和启用了安全组的高级zones不同的子网中灵活的添加来宾IP段功能 。在启用了安全组的高级zones中，这意味着多子网可以被添加到同一个VLAN。这个特性还意味着，当IP地址用尽的时候，你可以从同一个子网或从不同的子网添加IP地址范围。这将允许你使用更多的子网，降低地址管理工作量。你也可以删除已经添加的IP地址范围。"
+
+# d651b6e4b73a4c8897943f492f553be4
+#: ../../networking/multiple_subnets_in_shared_network.rst:32
+msgid "Prerequisites and Guidelines"
+msgstr "先决条件和指南"
+
+# 321b92f77c9e47b581323b300949d477
+#: ../../networking/multiple_subnets_in_shared_network.rst:34
+msgid "This feature can only be implemented:"
+msgstr "这个特性只能被实现在："
+
+# 693a867b887b40c39f9112ee79a514f3
+#: ../../networking/multiple_subnets_in_shared_network.rst:36
+msgid "on IPv4 addresses"
+msgstr "IPv4地址"
+
+# d4bb9088f4ce439bb4aa86f2d6ca1226
+#: ../../networking/multiple_subnets_in_shared_network.rst:38
+msgid "if virtual router is the DHCP provider"
+msgstr "如果虚拟路由是由DHCP提供的"
+
+# b4bb01b3421b4a26af052b41ef2e9c74
+#: ../../networking/multiple_subnets_in_shared_network.rst:40
+msgid "on KVM, xenServer, and VMware hypervisors"
+msgstr "在KVM，XenServer和VMware hypervisors"
+
+# 3ce0b6127bed4c878204268e02519b5f
+#: ../../networking/multiple_subnets_in_shared_network.rst:42
+msgid ""
+"Manually configure the gateway of the new subnet before adding the IP range."
+msgstr "在添加IP范围之前，手动配置新子网的网关。"
+
+# 92e9da161e084fd09cbd7a34e3a8ea59
+#: ../../networking/multiple_subnets_in_shared_network.rst:45
+msgid ""
+"CloudStack supports only one gateway for a subnet; overlapping subnets are "
+"not currently supported"
+msgstr "CloudStack只支持一个子网对应一个网关；交叉子网目前不支持。"
+
+# 0ccc8eb511c649519820d407c101fb3f
+#: ../../networking/multiple_subnets_in_shared_network.rst:50
+msgid "Adding Multiple Subnets to a Shared Network"
+msgstr "给共享网络添加多子网"
+
+# 402388a40d1c4432adf97dcb94bc7e0a
+#: ../../networking/multiple_subnets_in_shared_network.rst:52
+msgid "Log in to the CloudStack UI as an administrator or end user."
+msgstr "使用管理员或者终端用户账号登录CloudStack UI。"
+
+# c062e6ebc0b74be185c8e192c237a3d8
+#: ../../networking/multiple_subnets_in_shared_network.rst:54
+msgid "In the left navigation, choose Infrastructure."
+msgstr "在左边的导航，选择基础架构。"
+
+# 9d6f09662ceb452bb8bf26c21696a7ff
+#: ../../networking/multiple_subnets_in_shared_network.rst:56
+msgid ""
+"On Zones, click View More, then click the zone to which you want to work "
+"with.."
+msgstr "在Zones上，点击查看更多，然后点击你要进行操作的zone.."
+
+# 9a6c131e8dee4829a34a534324f96d6a
+#: ../../networking/multiple_subnets_in_shared_network.rst:59
+msgid "Click Physical Network."
+msgstr "点击物理网络。"
+
+# 412cf2ea6b7c4fc9a45dcfabca044210
+#: ../../networking/multiple_subnets_in_shared_network.rst:61
+msgid "In the Guest node of the diagram, click Configure."
+msgstr "在图中的来宾节点上，点击配置"
+
+# 20271a4db3304ebd986eefb0dbe2304b
+#: ../../networking/multiple_subnets_in_shared_network.rst:63
+msgid "Click Networks."
+msgstr "点击网络。"
+
+# d4d67c51b96a441984f094dad7440b53
+#: ../../networking/multiple_subnets_in_shared_network.rst:65
+msgid "Select the networks you want to work with."
+msgstr "选择你想要操作的网络。"
+
+# dbda223b46514614bc24a96cbd967579
+#: ../../networking/multiple_subnets_in_shared_network.rst:67
+msgid "Click View IP Ranges."
+msgstr "点击查看IP范围。"
+
+# fd40e95e0dcc4b37ac83ea1764ccd1c5
+#: ../../networking/multiple_subnets_in_shared_network.rst:69
+msgid "Click Add IP Range."
+msgstr "点击添加IP范围。"
+
+# e57818339fdd4bea80a587551ff3bb27
+#: ../../networking/multiple_subnets_in_shared_network.rst:71
+msgid "The Add IP Range dialog is displayed, as follows:"
+msgstr "显示的添加IP范围对话框如下："
+
+# 1adf38c68dd04551aeded2194d8d3bfb
+#: ../../networking/multiple_subnets_in_shared_network.rst:73
+msgid "|add-ip-range.png|"
+msgstr "|add-ip-range.png|"
+
+# 8d5c0e4efe1742f7988a60fe55223d66
+#: ../../networking/multiple_subnets_in_shared_network.rst:75
+msgid "Specify the following:"
+msgstr "指定以下信息："
+
+# c5bd70e2ab5748e18b8bc2840088a41e
+#: ../../networking/multiple_subnets_in_shared_network.rst:77
+msgid "All the fields are mandatory."
+msgstr "所有的区域必须填写的。"
+
+# cefcd378eaf44ae5b0c6aaa2809a4fe4
+#: ../../networking/multiple_subnets_in_shared_network.rst:79
+msgid ""
+"**Gateway**: The gateway for the tier you create. Ensure that the gateway is"
+" within the Super CIDR range that you specified while creating the VPC, and "
+"is not overlapped with the CIDR of any existing tier within the VPC."
+msgstr "**网关**：你创建网络层的网关。确保网关在你创建VPC时指定的超级CIDR范围内，并且不能与已存在VPC的任何网络层的CIDR重叠。"
+
+# d63b707e5f374d5d807b5749f9cc44ad
+#: ../../networking/multiple_subnets_in_shared_network.rst:84
+msgid "**Netmask**: The netmask for the tier you create."
+msgstr "**子网掩码**：你创建的网络层的子网掩码。"
+
+# f5d499f2a9fa4a859f8563d9b68b29a3
+#: ../../networking/multiple_subnets_in_shared_network.rst:86
+msgid ""
+"For example, if the VPC CIDR is 10.0.0.0/16 and the network tier CIDR is "
+"10.0.1.0/24, the gateway of the tier is 10.0.1.1, and the netmask of the "
+"tier is 255.255.255.0."
+msgstr "比如，如果VPC CIDR是10.0.0.0/16并且该网络层CIDR是10.0.1.0/24，那么这个网络层的网关是10.0.1.1，子网掩码是255.255.255.0."
+
+# 4aeabf0b77244ea994e1c9a3587421a7
+#: ../../networking/multiple_subnets_in_shared_network.rst:90
+msgid ""
+"**Start IP/ End IP**: A range of IP addresses that are accessible from the "
+"Internet and will be allocated to guest VMs. Enter the first and last IP "
+"addresses that define a range that CloudStack can assign to guest VMs ."
+msgstr "**起始/结束IP**：从互联网获得的和将被分配给来宾VMsIP地址范围。输入第一个和最后一个IP地址，该地址范围定义的是CloudStack能分配给来宾VMs的范围。"
+
+# c54dd19ac3fc4b1abe5c8e2ba6021969
+#: ../../networking/multiple_subnets_in_shared_network.rst:95
+msgid "Click OK."
+msgstr "点击确定。"

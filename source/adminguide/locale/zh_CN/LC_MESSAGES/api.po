@@ -1,0 +1,154 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:04+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 7499b008b97e41b59d4cdc3835758f36
+#: ../../api.rst:18
+msgid "CloudStack API"
+msgstr "CloudStack API"
+
+# 7a40beffc6484f108ad5202cb2a4e7c3
+#: ../../api.rst:20
+msgid ""
+"The CloudStack API is a low level API that has been used to implement the "
+"CloudStack web UIs. It is also a good basis for implementing other popular "
+"APIs such as EC2/S3 and emerging DMTF standards."
+msgstr "CloudStack API 是可以被用来实现CloudStack Web UI的底层API。这是良好的基础使其提供比如EC2和S3和新兴的DMTF标准等受欢迎的API。"
+
+# 0e4247f81b8a4a83afa84f323d2697b9
+#: ../../api.rst:24
+msgid ""
+"Many CloudStack API calls are asynchronous. These will return a Job ID "
+"immediately when called. This Job ID can be used to query the status of the "
+"job later. Also, status calls on impacted resources will provide some "
+"indication of their state."
+msgstr "大多CloudStack的API调用都是异步的. 在调用时它们将立即返回一个任务ID。这个任务ID稍后可以用于查询任务状态。此外，状态调用会在资源受影响时提供一些状态指示。"
+
+# dc0b3fef72b74085a24d7e0c15cb227d
+#: ../../api.rst:29
+msgid ""
+"The API has a REST-like query basis and returns results in XML or JSON."
+msgstr "API基于类似REST的查询, 可以返回XML或JSON格式."
+
+# 1f57015e966c480795b141ba3f87b86a
+#: ../../api.rst:31
+msgid ""
+"See `the Developer’s Guide "
+"<https://cwiki.apache.org/confluence/display/CLOUDSTACK/Development+101>`_ "
+"and `the API Reference <http://cloudstack.apache.org/docs/api/>`_."
+msgstr "参阅  `开发指南 <https://cwiki.apache.org/confluence/display/CLOUDSTACK/Development+101>`_ 和 `参考API <http://cloudstack.apache.org/docs/api/>`_."
+
+# de3d35bb699f45f495251ceb69a2c238
+#: ../../api.rst:36
+msgid "Provisioning and Authentication API"
+msgstr "配置和认证API"
+
+# c8eb593d2c654d8db8d5ce7791bedd07
+#: ../../api.rst:38
+msgid ""
+"CloudStack expects that a customer will have their own user provisioning "
+"infrastructure. It provides APIs to integrate with these existing systems "
+"where the systems call out to CloudStack to add/remove users.."
+msgstr "CloudStack期望客户都会有自己的用户提供基础设施。它提供的API可与这些现有系统集成，通过外部调用CloudStack添加/删除用户。"
+
+# f37cbbabb4af4c76977b51277f5cefa3
+#: ../../api.rst:42
+msgid ""
+"CloudStack supports pluggable authenticators. By default, CloudStack assumes"
+" it is provisioned with the user’s password, and as a result authentication "
+"is done locally. However, external authentication is possible as well. For "
+"example, see Using an LDAP Server for User Authentication."
+msgstr "CloudStack支持插件类型的身份验证. 默认情况下, CloudStack假定自身提供用户密码，作为本地的验证方式. 但也可以使用外部验证。 例如, 参阅使用LDAP服务器进行用户验证。"
+
+# a1cd31f63e9a4fe6869e80cdd8f2274f
+#: ../../api.rst:50
+msgid "User Data and Meta Data"
+msgstr "用户数据和元数据"
+
+# 8adea5c3508040cfb6f8475bc1f2f96c
+#: ../../api.rst:52
+msgid ""
+"CloudStack provides API access to attach up to 32KB of user data to a "
+"deployed VM. Deployed VMs also have access to instance metadata via the "
+"virtual router."
+msgstr "CloudStack提供的API访问在部署VM时可附加多达32KB的用户数据。部署虚拟机也可以通过虚拟路由器访问实例的元数据。"
+
+# 11a9a59d3f23401d8c639b7767af0a94
+#: ../../api.rst:56
+msgid ""
+"User data can be accessed once the IP address of the virtual router is "
+"known. Once the IP address is known, use the following steps to access the "
+"user data:"
+msgstr "一旦得知虚拟路由的IP便可以访问用户数据。得到IP地址后使用如下步骤访问用户数据："
+
+# 0b14bfd2cf6c41a98f39a406fdb83868
+#: ../../api.rst:60
+msgid "Run the following command to find the virtual router."
+msgstr "执行如下命令查找虚拟路由器。"
+
+# e0144a29051543d1aba1d5b18d18e033
+#: ../../api.rst:66
+msgid ""
+"Access user data by running the following command using the result of the "
+"above command"
+msgstr "通过上述命令的结果运行如下命令访问用户数据"
+
+# 8ebc1946ef8840c4b4c99d6194576997
+#: ../../api.rst:73
+msgid ""
+"Meta Data can be accessed similarly, using a URL of the form "
+"http://10.1.1.1/latest/meta-data/{metadata type}. (For backwards "
+"compatibility, the previous URL http://10.1.1.1/latest/{metadata type} is "
+"also supported.) For metadata type, use one of the following:"
+msgstr "元数据同样可以被访问，使用URL表单 http://10.1.1.1/latest/meta-data/{元数据类型} 。 (为了向后兼容，之前的URL也同样支持 http://10.1.1.1/latest/{元数据类型} 。) 关于元数据类型，请使用以下方法之一："
+
+# bed0120874a643b1b9d59bd6a4e9e404
+#: ../../api.rst:78
+msgid "service-offering. A description of the VMs service offering"
+msgstr "service-offering。VM服务方案的描述。"
+
+# 71b8d766955140c3b512c2a9318fa115
+#: ../../api.rst:80
+msgid "availability-zone. The Zone name"
+msgstr "availability-zone。区域名称"
+
+# 2a80730691bb49e0b69de28d14feea03
+#: ../../api.rst:82
+msgid "local-ipv4. The guest IP of the VM"
+msgstr "local-ipv4。VM的来宾地址"
+
+# 6f5c73e35f714f0f83b7c799a46c499f
+#: ../../api.rst:84
+msgid "local-hostname. The hostname of the VM"
+msgstr "local-hostname。VM的主机名"
+
+# ad4c5b53b2844aa9b7518ea0165e3c5a
+#: ../../api.rst:86
+msgid ""
+"public-ipv4. The first public IP for the router. (E.g. the first IP of eth2)"
+msgstr "public-ipv4。第一个IP为路由器的IP。 (E.g. eth2为第一个IP)"
+
+# 53db659838e1499c86e3674db658bbdb
+#: ../../api.rst:89
+msgid "public-hostname. This is the same as public-ipv4"
+msgstr "public-hostname。与public-ipv4相同"
+
+# 760946f739514ea5be9f4c114716b1ba
+#: ../../api.rst:91
+msgid "instance-id. The instance name of the VM"
+msgstr "instance-id。VM实例的名称"

@@ -1,0 +1,163 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:06+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 4083b4f8962d4ce2add5a637beceaf4d
+#: ../../networking/persistent_networks.rst:18
+msgid "Persistent Networks"
+msgstr "持久化网络"
+
+# 5157cfe530594f5f954a8a8e1525ce10
+#: ../../networking/persistent_networks.rst:20
+msgid ""
+"The network that you can provision without having to deploy any VMs on it is"
+" called a persistent network. A persistent network can be part of a VPC or a"
+" non-VPC environment."
+msgstr "在不部署任何VM的情况下就初始化好的网络称为持久化网络。持久化网络可以是VPC的一部分，也可以不是。"
+
+# 469fa7c5517f4f82b49e9015b0027b0f
+#: ../../networking/persistent_networks.rst:24
+msgid ""
+"When you create other types of network, a network is only a database entry "
+"until the first VM is created on that network. When the first VM is created,"
+" a VLAN ID is assigned and the network is provisioned. Also, when the last "
+"VM is destroyed, the VLAN ID is released and the network is no longer "
+"available. With the addition of persistent network, you will have the "
+"ability to create a network in CloudStack in which physical devices can be "
+"deployed without having to run any VMs. Additionally, you can deploy "
+"physical devices on that network."
+msgstr "在您创建其它类型的网络时，在网络中第一台VM创建之前，该网络仅是数据库的一条记录。当第一个VM创建时，网络会指定一个VLAN ID并初始化。同样，当网络中最后一个VM销毁后，VLAN ID会被释放，这样该网络就不再可用。通过使用持久化网络，您就有能力在不部署VM的情况下在&PRODUCT;中创建一个网络用来部署物理设备。而且，您可以在该网络中部署物理设备。"
+
+# 87f88f46858c41ba96f785b7c3122342
+#: ../../networking/persistent_networks.rst:33
+msgid ""
+"One of the advantages of having a persistent network is that you can create "
+"a VPC with a tier consisting of only physical devices. For example, you "
+"might create a VPC for a three-tier application, deploy VMs for Web and "
+"Application tier, and use physical machines for the Database tier. Another "
+"use case is that if you are providing services by using physical hardware, "
+"you can define the network as persistent and therefore even if all its VMs "
+"are destroyed the services will not be discontinued."
+msgstr "使用持久化网络的一个优点是您可以创建具有一个只包含物理设备的层的VPC。例如，您可以为一个三层应用创建一个VPC，在Web层和应用层部署VM，在数据库层使用物理机器。另一个使用场景为如果您使用物理硬件提供网络服务，您可以定义网络为持久化的。这样即便网络中所有VM都销毁了，服务还可以继续提供。"
+
+# 68622842a6474e23b5b4ace4928a7f02
+#: ../../networking/persistent_networks.rst:44
+msgid "Persistent Network Considerations"
+msgstr "持久化网络的考虑事项"
+
+# bd289a0ef0dc4ef1b5a6acb8b9ad0c38
+#: ../../networking/persistent_networks.rst:46
+msgid "Persistent network is designed for isolated networks."
+msgstr "Persistent网络是为隔离网络而设计的。"
+
+# 10b2b9266df84efcb8fb9002316e3f11
+#: ../../networking/persistent_networks.rst:48
+msgid "All default network offerings are non-persistent."
+msgstr "所有默认网络方案都不是持久化的。"
+
+# d9e8d354f6bc4b6f8194156ed112a537
+#: ../../networking/persistent_networks.rst:50
+msgid ""
+"A network offering cannot be editable because changing it affects the "
+"behavior of the existing networks that were created using this network "
+"offering."
+msgstr "网络方案的持久化选项不可编辑。因为修改该选项会影响使用该网络方案创建的已有网络的行为。"
+
+# 80b8615033b54141b06d3d7a311809bf
+#: ../../networking/persistent_networks.rst:54
+msgid ""
+"When you create a guest network, the network offering that you select "
+"defines the network persistence. This in turn depends on whether persistent "
+"network is enabled in the selected network offering."
+msgstr "当您创建客户网络时，您选择的网络方案定义了该网络的持久化。反过来，这依赖于选择的网络方案是否启用持久化网络。"
+
+# 5e5d6fc784af4dec8e15481000f5125f
+#: ../../networking/persistent_networks.rst:58
+msgid ""
+"An existing network can be made persistent by changing its network offering "
+"to an offering that has the Persistent option enabled. While setting this "
+"property, even if the network has no running VMs, the network is "
+"provisioned."
+msgstr "通过修改使用的网络方案为启用持久化的方案，现有网络可以变为持久化。在设置该属性时，即便网络中没有运行的VM，该网络也会初始化。"
+
+# 30e1aaa119a34adcb9a57e513d705745
+#: ../../networking/persistent_networks.rst:63
+msgid ""
+"An existing network can be made non-persistent by changing its network "
+"offering to an offering that has the Persistent option disabled. If the "
+"network has no running VMs, during the next network garbage collection run "
+"the network is shut down."
+msgstr "通过修改使用的网络方案为禁用持久化的方案，现有网络可以变为非持久化。如果网络中没有运行的VM，在下次网络垃圾回收运行时，该网络会被关闭。"
+
+# 1fafa4f8c2e8475e984703fe2e4c29ba
+#: ../../networking/persistent_networks.rst:68
+msgid ""
+"When the last VM on a network is destroyed, the network garbage collector "
+"checks if the network offering associated with the network is persistent, "
+"and shuts down the network only if it is non-persistent."
+msgstr "当网络中最后一台VM销毁时，网络垃圾回收器会检查该网络的网络方案是否为持久化，若不是持久化，则会关闭网络。"
+
+# 6302571eba5d408687957bd3759816c3
+#: ../../networking/persistent_networks.rst:75
+msgid "Creating a Persistent Guest Network"
+msgstr "创建一个Persistent客户网络"
+
+# c3876e9bd8d449b489101f5ac1bae458
+#: ../../networking/persistent_networks.rst:77
+msgid "To create a persistent network, perform the following:"
+msgstr "要创建一个Persistent网络，请按如下操作："
+
+# 99fe5f5c722844089e5bdbcdadb22fc0
+#: ../../networking/persistent_networks.rst:79
+msgid "Create a network offering with the Persistent option enabled."
+msgstr "创建一个Persistent选项启用的网络方案。"
+
+# 16d2470643ab4777a40f35f26a9de70c
+#: ../../networking/persistent_networks.rst:81
+msgid ""
+"See `\"Creating a New Network Offering\" <networking.html#creating-a-new-"
+"network-offering>`_."
+msgstr "请参考`\"创建一个新的网络方案\" <networking.html#creating-a-new-network-offering>`_."
+
+# 267c8937d18548498e620897ef0e587e
+#: ../../networking/persistent_networks.rst:84
+msgid "Select Network from the left navigation pane."
+msgstr "从左边的导航栏里选择网络。"
+
+# bc4568a29a4149c797c11839057e9538
+#: ../../networking/persistent_networks.rst:86
+msgid ""
+"Select the guest network that you want to offer this network service to."
+msgstr "选择你希望提供此网络方案服务的客户网络。"
+
+# ecdb6f1a35444f46acd9620f3305b060
+#: ../../networking/persistent_networks.rst:89
+msgid "Click the Edit button."
+msgstr "点击编辑按钮。"
+
+# 5bda22ffd010416cb80b2848179d18fa
+#: ../../networking/persistent_networks.rst:91
+msgid ""
+"From the Network Offering drop-down, select the persistent network offering "
+"you have just created."
+msgstr "在网络方案下拉列表里，选择你刚才创建的persistent网络方案。"
+
+# fd7fed942171405cb30c3ea00f4111cb
+#: ../../networking/persistent_networks.rst:94
+msgid "Click OK."
+msgstr "点击确定。"

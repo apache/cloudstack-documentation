@@ -1,0 +1,238 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:18
+# 25e21d9bd50e4db29764c09ec3255ea1
+msgid "IP Reservation in Isolated Guest Networks"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:20
+# f043acb1e27b49aebecf48876dca90d4
+msgid "In isolated guest networks, a part of the guest IP address space can be reserved for non-CloudStack VMs or physical servers. To do so, you configure a range of Reserved IP addresses by specifying the CIDR when a guest network is in Implemented state. If your customers wish to have non-CloudStack controlled VMs or physical servers on the same network, they can share a part of the IP address space that is primarily provided to the guest network."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:28
+# fe77cb19c33a475f9389f57e62e466e0
+msgid "In an Advanced zone, an IP address range or a CIDR is assigned to a network when the network is defined. The CloudStack virtual router acts as the DHCP server and uses CIDR for assigning IP addresses to the guest VMs. If you decide to reserve CIDR for non-CloudStack purposes, you can specify a part of the IP address range or the CIDR that should only be allocated by the DHCP service of the virtual router to the guest VMs created in CloudStack. The remaining IPs in that network are called Reserved IP Range. When IP reservation is configured, the administrator can add additional VMs or physical servers that are not part of CloudStack to the same network and assign them the Reserved IP addresses. CloudStack guest VMs cannot acquire IPs from the Reserved IP Range."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:43
+# 9428ab05bfce48cb9dce92078998854c
+msgid "IP Reservation Considerations"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:45
+# 5780d0b48e6f44cbb972018a31489ebb
+msgid "Consider the following before you reserve an IP range for non-CloudStack machines:"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:48
+# cc50e370af0c450588c711e282c0ac93
+msgid "IP Reservation is supported only in Isolated networks."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:50
+# 9543f099f9de4fc3a8a815cd3cb04f40
+msgid "IP Reservation can be applied only when the network is in Implemented state."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:53
+# c7bc13975b37474299e4a7a65c56ed75
+msgid "No IP Reservation is done by default."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:55
+# f7a970b25ef94f48bc75a5c8a5fd0a0c
+msgid "Guest VM CIDR you specify must be a subset of the network CIDR."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:57
+# a96a64591c4d498ca7c95b1458def6f3
+msgid "Specify a valid Guest VM CIDR. IP Reservation is applied only if no active IPs exist outside the Guest VM CIDR."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:60
+# 0710411bb18c4764970dffcc49fe5dab
+msgid "You cannot apply IP Reservation if any VM is alloted with an IP address that is outside the Guest VM CIDR."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:63
+# ba005fe1c84e4e5d8d8b2f2cbd904deb
+msgid "To reset an existing IP Reservation, apply IP reservation by specifying the value of network CIDR in the CIDR field."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:66
+# 23bef4e190a54c2298a52b3acb439c57
+msgid "For example, the following table describes three scenarios of guest network creation:"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:70
+# fd80ccd9ee7947c6a41f35a77766ba87
+msgid "Case"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:70
+# 1b0d9124efce41c8bf2ff9c04f471053
+msgid "CIDR"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:70
+# 340cf6747d6449b09015c49437828468
+msgid "Network CIDR"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:70
+# ca9e89e3707343c6a6bb2e2c52dc4acd
+msgid "Reserved IP Range for Non-CloudStack VMs"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:70
+# e1395f7f735643f98e49f71acb302533
+msgid "Description"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:72
+# bfc721eb783042dbbd4049d97eeae50c
+msgid "1"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:72
+#: ../../networking/ip_reservation_in_guest_networks.rst:73
+#: ../../networking/ip_reservation_in_guest_networks.rst:76
+# 07110191079642298d8d53f83f4a6fe7
+# a0e61e48b84a4bb297fead377ce043cf
+# d64231917df74c5189732a5fedd1d141
+msgid "10.1.1.0/24"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:72
+#: ../../networking/ip_reservation_in_guest_networks.rst:72
+#: ../../networking/ip_reservation_in_guest_networks.rst:76
+#: ../../networking/ip_reservation_in_guest_networks.rst:76
+# 865ea8d88306424bab506a500520c22e
+# 184b1eac870b483f910546a5d5b37906
+# 70f4868471d54ac882b8093eb1db9f74
+# 3c040050888741f09b3cee5a8482aca4
+msgid "None"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:72
+# 24e526351c7b4686b16e030bc869d399
+msgid "No IP Reservation."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:73
+# 81f560cf3b4c47bbb2b781add102de88
+msgid "2"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:73
+# 725f92aed0d44be3bb5865f246acc29d
+msgid "10.1.1.0/26"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:73
+# 02e4012c8ce94d95a0c5e4d5088637fd
+msgid "10.1.1.64 to 10.1.1.254"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:73
+# 8fe36bed92d2475bbdd0fa903eb8c54b
+msgid "IP Reservation configured by the UpdateNetwork API with guestvmcidr=10.1.1.0/26 or enter 10.1.1.0/26 in the CIDR field in the UI."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:76
+# e2c363737b654228a0ac0581ba4c55c8
+msgid "3"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:76
+# 139e9ad2489d40738198ebfac4b14c45
+msgid "Removing IP Reservation by the UpdateNetwork API with guestvmcidr=10.1.1.0/24 or enter 10.1.1.0/24 in the CIDR field in the UI."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:83
+# 43bbd9a15792420cb8b1e694ad792cf2
+msgid "Limitations"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:85
+# 1ed6f796d3f04ed0b5c96512bc673c25
+msgid "The IP Reservation is not supported if active IPs that are found outside the Guest VM CIDR."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:88
+# 28ed30440a3543f6b7744261f3f5c2e0
+msgid "Upgrading network offering which causes a change in CIDR (such as upgrading an offering with no external devices to one with external devices) IP Reservation becomes void if any. Reconfigure IP Reservation in the new re-implemeted network."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:95
+# f9aacfd3f1a94c7c8d3ca0910da962a9
+msgid "Best Practices"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:97
+# c5d0950bef8a49ce9b373d64fcf22b86
+msgid "Apply IP Reservation to the guest network as soon as the network state changes to Implemented. If you apply reservation soon after the first guest VM is deployed, lesser conflicts occurs while applying reservation."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:104
+# 636d85b86d5a460788a233fd1cb49014
+msgid "Reserving an IP Range"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:106
+# 34eb58849cb141e9898291a434cc05ba
+msgid "Log in to the CloudStack UI as an administrator or end user."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:108
+# 3dc484e1bd5145259125fe0fcf8ccf8c
+msgid "In the left navigation, choose Network."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:110
+# e4559a4e7ddf4812890314b955dae344
+msgid "Click the name of the network you want to modify."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:112
+# 9119b8d7ea884da4b996f8a191d30e0b
+msgid "In the Details tab, click Edit. |ip-edit-icon.png|"
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:114
+# 31eaf6bfc27e465e950da4b920fbad80
+msgid "The CIDR field changes to editable one."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:116
+# f29831c8666d45218af0ae6769e46fff
+msgid "In CIDR, specify the Guest VM CIDR."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:118
+# 41acec1236df4ddbad427f23127244b1
+msgid "Click Apply."
+msgstr ""
+
+#: ../../networking/ip_reservation_in_guest_networks.rst:120
+# 8213a6fd8f414bd2b710a4ee77b167ae
+msgid "Wait for the update to complete. The Network CIDR and the Reserved IP Range are displayed on the Details page."
+msgstr ""
+

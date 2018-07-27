@@ -1,0 +1,497 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:04+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 453abc0964244620ab303e8bbdd16340
+#: ../../troubleshooting.rst:18
+msgid "TroubleShooting"
+msgstr "故障排查"
+
+# b90eea0457d64f3cb90be7deabcaa0c3
+#: ../../troubleshooting.rst:21
+msgid "Working with Server Logs"
+msgstr "使用服务器日志"
+
+# 9d89b655688d4af2bfc8302c8a0c9134
+#: ../../troubleshooting.rst:23
+msgid ""
+"The CloudStack Management Server logs all web site, middle tier, and "
+"database activities for diagnostics purposes in "
+"`/var/log/cloudstack/management/`. The CloudStack logs a variety of error "
+"messages. We recommend this command to find the problematic output in the "
+"Management Server log:."
+msgstr "为了方便诊断系统，CloudStack 管理服务器在目录/var/log/cloud/management/下记录了所有网站、中间层和数据库的活动。CloudStack 会记录各种出错信息。我们推荐使用下述命令从管理服务器日志中寻找有问题的输出日志："
+
+# 3fc8e92bb3a741c3bd3a67d67cf0e9a3
+#: ../../troubleshooting.rst:30
+msgid ""
+"When copying and pasting a command, be sure the command has pasted as a "
+"single line before executing. Some document viewers may introduce unwanted "
+"line breaks in copied text."
+msgstr "当复制和粘贴命令时，请确保没有多余的换行符，因为一些文档查看器可能会在复制时加上换行符。"
+
+# 845cfc971cf84bbca9edce162a942ad2
+#: ../../troubleshooting.rst:38
+msgid ""
+"The CloudStack processes requests with a Job ID. If you find an error in the"
+" logs and you are interested in debugging the issue you can grep for this "
+"job ID in the management server log. For example, suppose that you find the "
+"following ERROR message:"
+msgstr "CloudStack处理请求时会生成一个任务ID。如果您发现了日志中的某个错误，然后想调试该问题，您可以在管理服务器日志中grep这个任务ID。例如，假设您发现了以下的ERROR信息："
+
+# f7529d9ff27a4e27bdad7d8a6435087a
+#: ../../troubleshooting.rst:47
+msgid ""
+"Note that the job ID is 1076. You can track back the events relating to job "
+"1076 with the following grep:"
+msgstr "注意到任务ID是1076。你可以追踪返回事件的相近任务1076按照以下grep:"
+
+# 4da5450950cc43b79b6d4391e28f4f41
+#: ../../troubleshooting.rst:54
+msgid ""
+"The CloudStack Agent Server logs its activities in "
+"`/var/log/cloudstack/agent/`."
+msgstr "CloudStack代理服务器在 `/var/log/cloudstack/agent/`记录了它的活动。"
+
+# ba4670a0c5444406a2eb230cb99333d5
+#: ../../troubleshooting.rst:58
+msgid "Data Loss on Exported Primary Storage"
+msgstr "在导出主存储时的数据丢失"
+
+# b0ef204b69a54f32bd49070c4b9b6a91
+# 96d811275eea4240af38ec923db3c739
+# 03085fe48e6f4b379bcb1b827fff32d4
+# 83a83346af6342ae960e60c796e896d3
+# dc69c8f4922e4f69a378d3a16a609df7
+# 3970143e5afb4c03a4b3aed0f9e50fc7
+#: ../../troubleshooting.rst:61 ../../troubleshooting.rst:99
+#: ../../troubleshooting.rst:140 ../../troubleshooting.rst:162
+#: ../../troubleshooting.rst:185 ../../troubleshooting.rst:219
+msgid "Symptom"
+msgstr "症状"
+
+# a5727b8982354aaeb9aaa3eaccf41ef9
+#: ../../troubleshooting.rst:63
+msgid ""
+"Loss of existing data on primary storage which has been exposed as a Linux "
+"NFS server export on an iSCSI volume."
+msgstr "主存储的已有数据丢失。该主存储是用iSCSI卷导出的一个Linux NFS服务器输出。"
+
+# 77646ea81e804cb9ada6c17c6289cbbe
+# e5b68ba31d5948388069cf4e01357332
+# 48d47c0902414b5194a1d38398971eb6
+# 8c13e9a8446c49ef90ae29a314ee0d33
+# 8a80e812487d4bf6b38f6cdc6feddae0
+# 350e1aaa22b5432f8065bdf94cc27e02
+#: ../../troubleshooting.rst:68 ../../troubleshooting.rst:106
+#: ../../troubleshooting.rst:146 ../../troubleshooting.rst:168
+#: ../../troubleshooting.rst:197 ../../troubleshooting.rst:226
+msgid "Cause"
+msgstr "原因"
+
+# 8ca868ba6d9349e6b0d83564a152f19e
+#: ../../troubleshooting.rst:70
+msgid ""
+"It is possible that a client from outside the intended pool has mounted the "
+"storage. When this occurs, the LVM is wiped and all data in the volume is "
+"lost"
+msgstr "可能的原因是存储池之外的某个客户端挂载了该存储。如果发生了这种情况，LVM会被擦除，该卷上的所有数据都会丢失。"
+
+# 4934510ae4ce4c79a0ed5d6ee26fea0a
+# df9bd94f2f95481f93b741b643baedfb
+# 5d33b8b45f404f25abcb9d3fbfeafb70
+# 044a6cc8e613432ab218a02d3bbde2a1
+# 4445e221c952428fb2585060c4540dee
+# 7c3b4d63c42d4990999e96195fe72cca
+#: ../../troubleshooting.rst:76 ../../troubleshooting.rst:112
+#: ../../troubleshooting.rst:153 ../../troubleshooting.rst:176
+#: ../../troubleshooting.rst:207 ../../troubleshooting.rst:235
+msgid "Solution"
+msgstr "解决方案"
+
+# 990ebb2f5e854a479d94d06df1280a15
+#: ../../troubleshooting.rst:78
+msgid ""
+"When setting up LUN exports, restrict the range of IP addresses that are "
+"allowed access by specifying a subnet mask. For example:"
+msgstr "配置LUN输出时，通过指定子网掩码来限制可以访问存储的IP地址范围。例如："
+
+# 17f9dff87a0b4b848b2938ad46c42bfc
+#: ../../troubleshooting.rst:85
+msgid "Adjust the above command to suit your deployment needs."
+msgstr "根据你的部署需求，调整如上参数。"
+
+# 9dd74bb044b640dcb1b4e410db1a44e2
+#: ../../troubleshooting.rst:89
+msgid "More Information"
+msgstr "更多信息"
+
+# 6c10365641b54f549e84579ccb8d4fe2
+#: ../../troubleshooting.rst:91
+msgid ""
+"See the export procedure in the \"Secondary Storage\" section of the "
+"CloudStack Installation Guide"
+msgstr "请参考CloudStack安装指南的“辅助存储”章节中的导出过程。"
+
+# 08ecc200c09045599e0c1f960186fdc4
+#: ../../troubleshooting.rst:96
+msgid "Recovering a Lost Virtual Router"
+msgstr "恢复丢失的虚拟路由器"
+
+# db28bc81f196417980c31fd2d4b63f29
+#: ../../troubleshooting.rst:101
+msgid ""
+"A virtual router is running, but the host is disconnected. A virtual router "
+"no longer functions as expected."
+msgstr "虚拟路由器是运行着的，但主机失去连接。虚拟路由器不再按期望工作。"
+
+# a6ac53ae9be44b4e8b3602647222e9ac
+#: ../../troubleshooting.rst:108
+msgid "The Virtual router is lost or down."
+msgstr "虚拟路由器丢失或宕机。"
+
+# 1bd58bc5e2314d0cbf2e0059b096bf0a
+#: ../../troubleshooting.rst:114
+msgid ""
+"If you are sure that a virtual router is down forever, or no longer "
+"functions as expected, destroy it. You must create one afresh while keeping "
+"the backup router up and running (it is assumed this is in a redundant "
+"router setup):"
+msgstr "如果您确定虚拟路由器宕机了，或不再正常工作，请销毁它。您必须再建一个新的，此时备份路由器应保持运行(假定在使用冗余路由器配置的情况下)。"
+
+# 19e8516bc79a4b7faeb2645670f3a6a1
+#: ../../troubleshooting.rst:119
+msgid ""
+"Force stop the router. Use the stopRouter API with forced=true parameter to "
+"do so."
+msgstr "强制停止虚拟路由器。请使用带参数forced=true的stopRouter API执行该步。"
+
+# 340f24e153484784bc1cf3b493c32ea3
+#: ../../troubleshooting.rst:122
+msgid ""
+"Before you continue with destroying this router, ensure that the backup "
+"router is running. Otherwise the network connection will be lost."
+msgstr "在销毁虚拟路由器之前，请确保备份路由器正常运行。否则用户的网络连接将中断。"
+
+# c2db1e8bd10547bfacb3e2d044ca6d06
+#: ../../troubleshooting.rst:126
+msgid "Destroy the router by using the destroyRouter API."
+msgstr "使用destroyRouter API销毁该虚拟路由器。"
+
+# af3e07ca34034b49b6dba68eb7da16f3
+#: ../../troubleshooting.rst:128
+msgid ""
+"Recreate the missing router by using the restartNetwork API with "
+"cleanup=false parameter. For more information about redundant router setup, "
+"see Creating a New Network Offering."
+msgstr "使用restartNetwork API（参数cleanup=false）重建丢失的虚拟路由器。关于冗余虚拟路由器的配置，请参考创建新的网络方案。"
+
+# 25bdb5c7a6a7454ea25d62c3f0a02c57
+#: ../../troubleshooting.rst:132
+msgid ""
+"For more information about the API syntax, see the API Reference at "
+"`http://cloudstack.apache.org/docs/api/ "
+"<http://cloudstack.apache.org/docs/api/>`_."
+msgstr "关于更多的API语法信息，参见API参考`http://cloudstack.apache.org/docs/api/ <http://cloudstack.apache.org/docs/api/>`_。"
+
+# d1a32a2023024c72907911b8c7757cae
+#: ../../troubleshooting.rst:137
+msgid "Maintenance mode not working on vCenter"
+msgstr "维护模式没在vCenter中生效"
+
+# bd6813f30ddc4a0da8cf13b7725c9748
+#: ../../troubleshooting.rst:142
+msgid ""
+"Host was placed in maintenance mode, but still appears live in vCenter."
+msgstr "主机已经置为维护模式，但在vCenter中还是活动的。"
+
+# 7241c889dd0842189f0c38eda241d14b
+#: ../../troubleshooting.rst:148
+msgid ""
+"The CloudStack administrator UI was used to place the host in scheduled "
+"maintenance mode. This mode is separate from vCenter's maintenance mode."
+msgstr "CloudStack管理员用户界面使用日程中的主机维护模式。该模式与vCenter的维护模式无关。"
+
+# a959d82ede064a89ad631ce910f8f7df
+#: ../../troubleshooting.rst:155
+msgid "Use vCenter to place the host in maintenance mode."
+msgstr "请使用vCenter将主机置为维护模式。"
+
+# f3c4a03f0b5042009b2e858d5b259496
+#: ../../troubleshooting.rst:159
+msgid "Unable to deploy VMs from uploaded vSphere template"
+msgstr "无法从上传的vSphere模板部署虚拟机"
+
+# f0d6310e9be647eda1506c7161d33a8b
+#: ../../troubleshooting.rst:164
+msgid "When attempting to create a VM, the VM will not deploy."
+msgstr "当试图创建一个虚拟机，虚拟机将无法部署。"
+
+# 82efe5f025f8468c99e720b0e00c067e
+#: ../../troubleshooting.rst:170
+msgid ""
+"If the template was created by uploading an OVA file that was created using "
+"vSphere Client, it is possible the OVA contained an ISO image. If it does, "
+"the deployment of VMs from the template will fail."
+msgstr "如果模板通过上传OVA文件创建，而OVA文件是使用vSphere Client创建的，可能OVA中包含ISO镜像。如果是的话，从模板部署虚拟机将失败。"
+
+# c61b5fec4b5d4b75afac37386a78b766
+#: ../../troubleshooting.rst:178
+msgid "Remove the ISO and re-upload the template."
+msgstr "移除ISO并重新上传模板。"
+
+# 7d4b56be6f504129860c6d5c12fd73d5
+#: ../../troubleshooting.rst:182
+msgid "Unable to power on virtual machine on VMware"
+msgstr "无法启动VMware的虚机"
+
+# bb0c46e2f09647f9a260c9e676f72afb
+#: ../../troubleshooting.rst:187
+msgid "Virtual machine does not power on. You might see errors like:"
+msgstr "虚机不能启动。可能出现以下错误："
+
+# 92c768be206b4267bb993ce6b1b74d77
+#: ../../troubleshooting.rst:189
+msgid "Unable to open Swap File"
+msgstr "不能打开交换文件"
+
+# a63cf9eda829479b835aff2d3b017460
+#: ../../troubleshooting.rst:191
+msgid "Unable to access a file since it is locked"
+msgstr "不能访问文件，因为文件被锁定"
+
+# 0deea4202b4b41d9a4fab5ae3dad09bf
+#: ../../troubleshooting.rst:193
+msgid "Unable to access Virtual machine configuration"
+msgstr "不能访问虚机配置"
+
+# 0605d083a0fa4569ad92e3ea1cfe6634
+#: ../../troubleshooting.rst:199
+msgid ""
+"A known issue on VMware machines. ESX hosts lock certain critical virtual "
+"machine files and file systems to prevent concurrent changes. Sometimes the "
+"files are not unlocked when the virtual machine is powered off. When a "
+"virtual machine attempts to power on, it can not access these critical "
+"files, and the virtual machine is unable to power on."
+msgstr "这是VMware机器的已知问题。为防止并发修改，ESX主机会锁定特定的关键虚机文件和文件系统。有时，虚机关机时没有解锁这些文件。当虚机再次开机时，由于不能访问这些关键文件，虚机就不能启动。"
+
+# 177329a9571d49b5bce7dc8d84731724
+#: ../../troubleshooting.rst:209
+msgid "See the following:"
+msgstr "参见："
+
+# 344210667a0d414a89c35ba8bce56ca0
+#: ../../troubleshooting.rst:211
+msgid ""
+"`VMware Knowledge Base Article "
+"<http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=10051/>`_"
+msgstr "`VMware Knowledge Base Article <http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=10051/>`_"
+
+# 7e82b8b3093b42cfb1088af2632abacf
+#: ../../troubleshooting.rst:216
+msgid "Load balancer rules fail after changing network offering"
+msgstr "改变网络方案后负载均衡规则失效"
+
+# 8feb8c6245fb490d835881b4996a3504
+#: ../../troubleshooting.rst:221
+msgid ""
+"After changing the network offering on a network, load balancer rules stop "
+"working."
+msgstr "修改网络的网络方案后，负载均衡规则不再生效。"
+
+# dea9609b31dc4131b77505535e3aca09
+#: ../../troubleshooting.rst:228
+msgid ""
+"Load balancing rules were created while using a network service offering "
+"that includes an external load balancer device such as NetScaler, and later "
+"the network service offering changed to one that uses the CloudStack virtual"
+" router."
+msgstr "负载均衡规则创建时使用的是包含外部负载均衡器，例如NetScaler的网络方案，后来改为使用CloudStack虚拟路由器的网络方案。"
+
+# e344e7e16a5145ee9dfeb6c9057e6cb6
+#: ../../troubleshooting.rst:237
+msgid ""
+"Create a firewall rule on the virtual router for each of your existing load "
+"balancing rules so that they continue to function."
+msgstr "针对每条已有的负载均衡规则，在虚拟路由器上创建相同的防火墙规则，以便规则继续生效。"
+
+# 8bc5100986b347c1a08bbeb52b64f7f7
+#: ../../troubleshooting.rst:242
+msgid "Troubleshooting Internet Traffic"
+msgstr "故障排查网络传输"
+
+# 5f383b9190f34ebcbdd6bb92b713ee21
+#: ../../troubleshooting.rst:244
+msgid ""
+"Below are a few troubleshooting steps to check whats going wrong with your "
+"network..."
+msgstr "在下列故障排查步骤中检验你网络中出现的故障..."
+
+# 07599df9fe734016810667b0edbc9a49
+#: ../../troubleshooting.rst:249
+msgid "Trouble Shooting Steps"
+msgstr "故障排查步骤"
+
+# 1a82d41b488b46c2bef892a561b3756c
+#: ../../troubleshooting.rst:251
+msgid ""
+"The switches have to be configured correctly to pass VLAN traffic. You can "
+"verify if VLAN traffic is working by bringing up a tagged interface on the "
+"hosts and pinging between them as below..."
+msgstr "交换机上可以完成正确的配置VLAN通信。你可以辨别主机上的VLAN是否通讯通过提出标记接口，并在上述两个VLAN中使用ping命令。"
+
+# 6b44f2f662ed49199d66820be6f6de02
+#: ../../troubleshooting.rst:255
+msgid "On *host1 (kvm1)*"
+msgstr "在*host1 (kvm1)*上"
+
+# 5120295551574a56817a504f54bfe602
+#: ../../troubleshooting.rst:263
+msgid "On *host2 (kvm2)*"
+msgstr "在*host2 (kvm2)*上"
+
+# 417a511656394e62ab6533726322a54e
+#: ../../troubleshooting.rst:271
+msgid ""
+"If the pings dont work, run *tcpdump(8)* all over the place to check who is "
+"gobbling up the packets. Ultimately, if the switches are not configured "
+"correctly, CloudStack networking wont work so fix the physical networking "
+"issues before you proceed to the next steps"
+msgstr "如果ping不通，运行 *tcpdump(8)*在所有VLAN上检查丢失的数据包。最终，如果交换机配置失败，CloudStack网络将无法工作，所以在处理下一部前要确定物理网络设备的问题。"
+
+# 63be4a452fb043e1ad03834e2b6afc37
+#: ../../troubleshooting.rst:276
+msgid ""
+"Ensure `Traffic Labels <http://cloudstack.apache.org/docs/en-"
+"US/Apache_CloudStack/4.2.0/html/Installation_Guide/about-physical-"
+"networks.html>`_ are set for the Zone."
+msgstr "确保 `流量标签 <http://cloudstack.apache.org/docs/en-US/Apache_CloudStack/4.2.0/html/Installation_Guide/about-physical-networks.html>`_ 已经设置在域中。 "
+
+# 997b8cf202374996adfbc66cf272e85d
+#: ../../troubleshooting.rst:278
+msgid ""
+"Traffic labels need to be set for all hypervisors including XenServer, KVM "
+"and VMware types. You can configure traffic labels when you creating a new "
+"zone from the *Add Zone Wizard*."
+msgstr "流量标签需要在包括XenServer，KVM和VMwarel在内的所有类型的hypervisors设置。当你从*Add Zone Wizard*创建一个域时，你可以配置流量标签。"
+
+# 7f2757fe05a54b7890d5b634724bd166
+#: ../../troubleshooting.rst:284
+msgid ""
+"On an existing zone, you can modify the traffic labels by going to "
+"*Infrastructure, Zones, Physical Network* tab."
+msgstr "在一个已经存在的域总，你可以通过*Add Zone Wizard*修改流量标签。"
+
+# de6b7290f1874731bab19679f2b1c123
+#: ../../troubleshooting.rst:289
+msgid "List labels using *CloudMonkey*"
+msgstr "列出正在使用的*CloudMonkey*"
+
+# d7be5d89abc2416a81c2e11ae80e5c5e
+#: ../../troubleshooting.rst:321
+msgid ""
+"KVM traffic labels require to be named as *\"cloudbr0\"*, *\"cloudbr2\"*, "
+"*\"cloudbrN\"* etc and the corresponding bridge must exist on the KVM hosts."
+" If you create labels/bridges with any other names, CloudStack (atleast "
+"earlier versions did) seems to ignore them. CloudStack does not create the "
+"physical bridges on the KVM hosts, you need to create them **before** before"
+" adding the host to Cloudstack."
+msgstr "KVM流量标签要求被命名为*\"cloudbr0\"*, *\"cloudbr2\"*, *\"cloudbrN\"* 等而且响应桥必须在KVM主机上。如果你以其他名字命名标记/桥，CloudStack(至少是较早版本)将会忽略它。CloudStack不能再KVM主机上创建物理桥，你需要在向CloudStackt添加主机前 **before**创建它们。"
+
+# 4d5d185d16bb4379b29d90b15b9e9855
+#: ../../troubleshooting.rst:340
+msgid ""
+"The Virtual Router, SSVM, CPVM *public* interface would be bridged to a "
+"physical interface on the host. In the example below, *cloudbr0* is the "
+"public interface and CloudStack has correctly created the virtual interfaces"
+" bridge. This virtual interface to physical interface mapping is done "
+"automatically by CloudStack using the traffic label settings for the Zone. "
+"If you have provided correct settings and still dont have a working working "
+"Internet, check the switching layer before you debug any further. You can "
+"verify traffic using tcpdump on the virtual, physical and bridge interfaces."
+msgstr "虚拟路由，SSVM,CPVM *public*接口将被桥接到主机的物理接口上。在下例中， *cloudbr0*是公共接口，CloudStack将创建虚拟接口桥。这个虚拟接口到物理接口映射式CloudStack用设置在域中的流量标签自动设置的。如果你提供争取的设置，但仍不能在网络上工作，在下一步调试前检查下交换层的设备。你可以在虚拟，物理和桥设备上使用tcpdump证实流量。"
+
+# f261f43d727440edbeaf4c36ca611f7c
+#: ../../troubleshooting.rst:372
+msgid ""
+"Pre-create labels on the XenServer Hosts. Similar to KVM bridge setup, "
+"traffic labels must also be pre-created on the XenServer hosts before adding"
+" them to CloudStack."
+msgstr "在XenServer上预先创建标签。类似于KVM桥启动，流量标签必须在加入CloudStack的XenServer主机上提前创建。"
+
+# e75bf706d6a745c9a94ee34516e86d1f
+#: ../../troubleshooting.rst:385
+msgid ""
+"The Internet would be accessible from both the SSVM and CPVM instances by "
+"default. Their public IPs will also be directly pingable from the Internet. "
+"Please note that these test would work only if your switches and traffic "
+"labels are configured correctly for your environment. If your SSVM/CPVM cant"
+" reach the Internet, its very unlikely that the Virtual Router (VR) can also"
+" the reach the Internet suggesting that its either a switching issue or "
+"incorrectly assigned traffic labels. Fix the SSVM/CPVM issues before you "
+"debug VR issues."
+msgstr "网络将会从SSVM和CPVM实例上默认获取。它们的公共IP也将会直接由网络ping通。请注意一下这些测试仅在交换机或者流量标签已被成功配置在你的环境中实现。如果你的  SSVM/CPVM可以连接到Internet, 它非常不同于虚拟路由器(VR)也可以连接到Internet,建议可能是交换时的问题或者是错误分配了流量标签。确定SSVM/CPVM的问题前请先调试VR问题。"
+
+# c1f11bc2b9ea470382b5f863e8d1a146
+#: ../../troubleshooting.rst:417
+msgid ""
+"The Virtual Router (VR) should also be able to reach the Internet without "
+"having any Egress rules. The Egress rules only control forwarded traffic and"
+" not traffic that originates on the VR itself."
+msgstr "除非有些Egress规则，Virtual Router(VR)也是不能到达Internet。Egress规则仅控制VR自身的通讯与否。"
+
+# fd961e75e43d4c48a4b779ef136e1d12
+#: ../../troubleshooting.rst:432
+msgid ""
+"However, the Virtual Router's (VR) Source NAT Public IP address **WONT** be "
+"reachable until appropriate Ingress rules are in place. You can add "
+"*Ingress* rules under *Network, Guest Network, IP Address, Firewall* setting"
+" page."
+msgstr "尽管如此，Virtual Router(VR) Source NAT Pulic IP地址除非有近似的Ingress规则在此，要么**WONT** 达到。你可以添加 *Ingress* rules under *Network, Guest Network, IP Address, Firewall* 设置页。"
+
+# 7a1ba3d03cd64a0cb60486d361453ebd
+#: ../../troubleshooting.rst:439
+msgid ""
+"The VM Instances by default wont be able to access the Internet. Add Egress "
+"rules to permit traffic."
+msgstr "默认的VM Instances不能够连接Internet。添加Egress规则后可允许连接。"
+
+# 2d798a14dcd149af8197080268c1b12b
+#: ../../troubleshooting.rst:444
+msgid ""
+"Some users have reported that flushing IPTables rules (or changing routes) "
+"on the SSVM, CPVM or the Virtual Router makes the Internet work. This is not"
+" expected behaviour and suggests that your networking settings are "
+"incorrect. No IPtables/route changes are required on the SSVM, CPVM or the "
+"VR. Go back and double check all your settings."
+msgstr "一些用户报告在SSVM，CPVM或者是Vir Router刷新IPTables规则(或改变路由)可以使Internet工作。这不是系统期望的行为并建议这样的网络设置是错误的。SSVM,CPVM或者是VR上没有要求IPtables/route改变。回去重新检查你所有的设置吧。"
+
+# e14dab36e181467a9fd09fb6d0283176
+#: ../../troubleshooting.rst:451
+msgid ""
+"In a vast majority of the cases, the problem has turned out to be at the "
+"switching layer where the L3 switches were configured incorrectly."
+msgstr "在海量的实例中，问题会出现在交换层，原因是L3的配置错误."
+
+# 5fff1dc7083a4412a9e4051f2e239180
+#: ../../troubleshooting.rst:454
+msgid ""
+"This section was contibuted by Shanker Balan and was originally published on"
+" `Shapeblue's blog <http://shankerbalan.net/blog/internet-not-working-on-"
+"cloudstack-vms/>`_"
+msgstr "这些内容有Shanker Balan贡献，其原文发布在`Shapeblue'博客中<http://shankerbalan.net/blog/internet-not-working-on-cloudstack-vms/>`_"

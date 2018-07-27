@@ -1,0 +1,362 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:06+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# cbc2c710bdfe4a52822f6acf8381d1dd
+#: ../../networking/multiple_guest_networks.rst:18
+msgid "Using Multiple Guest Networks"
+msgstr "使用多个来宾网络"
+
+# 43824860271641cabc92b4e2fea91b0d
+#: ../../networking/multiple_guest_networks.rst:20
+msgid ""
+"In zones that use advanced networking, additional networks for guest traffic"
+" may be added at any time after the initial installation. You can also "
+"customize the domain name associated with the network by specifying a DNS "
+"suffix for each network."
+msgstr "在使用高级网络的资源域里, 额外的来宾网络可以在初始安装后任何时间添加. 你还可以通过指定DNS后缀为每个网络自定义关联的域名."
+
+# e7a7a8ebce174e439d282d7c86c23ffc
+#: ../../networking/multiple_guest_networks.rst:25
+msgid ""
+"A VM's networks are defined at VM creation time. A VM cannot add or remove "
+"networks after it has been created, although the user can go into the guest "
+"and remove the IP address from the NIC on a particular network."
+msgstr "一个虚机的网络在其创建时定义. 当一个虚机创建以后, 就不能对其网络添加删除, 即便用户可以进入客户虚机删除指定网卡的IP地址."
+
+# c1facfd27f164a849bd7151e92129d58
+#: ../../networking/multiple_guest_networks.rst:30
+msgid ""
+"Each VM has just one default network. The virtual router's DHCP reply will "
+"set the guest's default gateway as that for the default network. Multiple "
+"non-default networks may be added to a guest in addition to the single, "
+"required default network. The administrator can control which networks are "
+"available as the default network."
+msgstr "每一个虚机只有一个默认的网络. 在这个默认网络里, 虚拟路由器的DHCP响应将设置客户的默认网关. 除了单一,必须的默认网络, 多个非默认的网络也可以添加到客户虚机里. 管理员可以控制哪个网络作为默认的网络."
+
+# 008bbd9e609541888208d792dda845fd
+#: ../../networking/multiple_guest_networks.rst:36
+msgid ""
+"Additional networks can either be available to all accounts or be assigned "
+"to a specific account. Networks that are available to all accounts are zone-"
+"wide. Any user with access to the zone can create a VM with access to that "
+"network. These zone-wide networks provide little or no isolation between "
+"guests.Networks that are assigned to a specific account provide strong "
+"isolation."
+msgstr "附加的网络可以给所有账户使用或者分配给特定的账户. 对所有账户都可用的网络在整个资源域有效. 任何可以访问这个资源域的用户都可以使用这个网络创建虚机. 这些资源域一级的网络基本不提供客户之间的隔离. 分配给特定帐户的网络提供强制隔离的功能."
+
+# e8b12ba98b314fcca6f8659fdffe0e5a
+#: ../../networking/multiple_guest_networks.rst:45
+msgid "Adding an Additional Guest Network"
+msgstr "增添一个虚拟机的网络"
+
+# fc94885acfb44c089b5b955040cda635
+# e90f66fa32fb4ac0bdd48def8833e52d
+# 443695bf438a4240b9c354d9c66f2292
+# dc150422f8d8498e81ccfa11cc7daf5f
+# f4162f2a3af54aee90b80a9efec6523f
+#: ../../networking/multiple_guest_networks.rst:47
+#: ../../networking/multiple_guest_networks.rst:97
+#: ../../networking/multiple_guest_networks.rst:135
+#: ../../networking/multiple_guest_networks.rst:153
+#: ../../networking/multiple_guest_networks.rst:173
+msgid "Log in to the CloudStack UI as an administrator or end user."
+msgstr "使用管理员或者终端用户账号登录CloudStack UI。"
+
+# e9d2f3becfba421592c540e757fe27e8
+# 1e2cad5b28aa4f56bfee80c03c969d5c
+#: ../../networking/multiple_guest_networks.rst:49
+#: ../../networking/multiple_guest_networks.rst:179
+msgid "In the left navigation, choose Network."
+msgstr "在左侧的导航栏，选择网络。"
+
+# 4e88ac1dcf2144278c13cac5cf518978
+#: ../../networking/multiple_guest_networks.rst:51
+msgid "Click Add guest network. Provide the following information:"
+msgstr "地阿基添加来宾网络。提供以下信息："
+
+# 752dce8be6894794b7f10719d33214c9
+#: ../../networking/multiple_guest_networks.rst:53
+msgid "**Name**: The name of the network. This will be user-visible."
+msgstr "**Name**：网络的名称。对于最终用户可见。"
+
+# 68d2d60b814f4b48805d73f511a0c3f4
+#: ../../networking/multiple_guest_networks.rst:55
+msgid ""
+"**Display Text**: The description of the network. This will be user-visible."
+msgstr "**Display Text**:网络的描述信息。对于最终用户可见。"
+
+# 2e28d86b3670448ea924597e1a6eafbb
+#: ../../networking/multiple_guest_networks.rst:58
+msgid ""
+"**Zone**. The name of the zone this network applies to. Each zone is a "
+"broadcast domain, and therefore each zone has a different IP range for the "
+"guest network. The administrator must configure the IP range for each zone."
+msgstr "**Zone**：此网络所应用到zone的名称。每个zone都是一个广播域，因此每个zone中的来宾网络都有不同的IP范围。管理员必须为每个zone配置IP范围。"
+
+# 783fa5ad4bb94a898e27fb2fb400ce30
+#: ../../networking/multiple_guest_networks.rst:63
+msgid ""
+"**Network offering**: If the administrator has configured multiple network "
+"offerings, select the one you want to use for this network."
+msgstr "**Network offering**: 如果管理员已经配置了多个网络，选择一个你想使用的。"
+
+# e6d0251f520945198846d9589071d11c
+#: ../../networking/multiple_guest_networks.rst:67
+msgid "**Guest Gateway**: The gateway that the guests should use."
+msgstr "**Guest Gateway**: 来宾网络的网关。"
+
+# 82e7d212928549ba947dfe5e04919372
+#: ../../networking/multiple_guest_networks.rst:69
+msgid ""
+"**Guest Netmask**: The netmask in use on the subnet the guests will use."
+msgstr "**Guest Netmask**: 来宾网络的子网掩码。"
+
+# 333d9595d92b4dbc9842d746d1dd8448
+#: ../../networking/multiple_guest_networks.rst:72
+msgid "Click Create."
+msgstr "点击创建。"
+
+# cadd27c83ef84c9e9ce49c9ce9e5d8ca
+#: ../../networking/multiple_guest_networks.rst:76
+msgid "Reconfiguring Networks in VMs"
+msgstr "在VMs中重新配置网络"
+
+# 38552d30397849ea975e0b5d28fd31a0
+#: ../../networking/multiple_guest_networks.rst:78
+msgid ""
+"CloudStack provides you the ability to move VMs between networks and "
+"reconfigure a VM's network. You can remove a VM from a network and add to a "
+"new network. You can also change the default network of a virtual machine. "
+"With this functionality, hybrid or traditional server loads can be "
+"accommodated with ease."
+msgstr "CloudStack能让你在不同网络间移动VMs和重新配置VM的网络。你可以从一个网络中移除一个VM，再将其移动到另一个网络。你同样可以修改虚拟机的默认我拿过来，使用这个功能，混合和传统的服务器负载可以被轻松缓解。"
+
+# 205bea0ed92e4de594873aa8e5ad9d45
+#: ../../networking/multiple_guest_networks.rst:84
+msgid "This feature is supported on XenServer, VMware, and KVM hypervisors."
+msgstr "XenServer、VMware和KVM hypervisors支持这个特性。"
+
+# 7d8b8d41cfa04ea0b337a64b1206ae92
+#: ../../networking/multiple_guest_networks.rst:88
+msgid "Prerequisites"
+msgstr "先决条件"
+
+# bd4145a5e8ae4ca29cd7bdd5b1aab637
+#: ../../networking/multiple_guest_networks.rst:90
+msgid ""
+"Ensure that vm-tools are running on guest VMs for adding or removing "
+"networks to work on VMware hypervisor."
+msgstr "确保虚拟机上安装了vm-tools以便通过VMware hypervisor添加或移除网络。"
+
+# 42b8d9502ed54485bde4210b8fdbb499
+#: ../../networking/multiple_guest_networks.rst:95
+msgid "Adding a Network"
+msgstr "添加网络"
+
+# c398a820cb1648bc8799135cbaa74b1b
+# d48f631728b44c90be3cb811c9cd0505
+# 37c98038af7f4dc6a120b05e4e13c555
+#: ../../networking/multiple_guest_networks.rst:99
+#: ../../networking/multiple_guest_networks.rst:137
+#: ../../networking/multiple_guest_networks.rst:155
+msgid "In the left navigation, click Instances."
+msgstr "在左侧的导航菜单中，点击实例。"
+
+# b25bff80ed07457f9b1f926c0a58cc6c
+# 39876863e78d47378acdd305a1e22606
+# 2f4e1895d207479597c89b7b137794df
+#: ../../networking/multiple_guest_networks.rst:101
+#: ../../networking/multiple_guest_networks.rst:139
+#: ../../networking/multiple_guest_networks.rst:157
+msgid "Choose the VM that you want to work with."
+msgstr "选择你要处理的VM。"
+
+# 00b5baacd9084cd580b5fc02a2eb93fb
+# cd7d2fceff8d47d5b392be059b471ab9
+# 3f13993fdab542d6b8318cc2fe353acb
+#: ../../networking/multiple_guest_networks.rst:103
+#: ../../networking/multiple_guest_networks.rst:141
+#: ../../networking/multiple_guest_networks.rst:159
+msgid "Click the NICs tab."
+msgstr "点击网络适配器标签。"
+
+# 47b1307c53ed41dfbe754e5141219451
+#: ../../networking/multiple_guest_networks.rst:105
+msgid "Click Add network to VM."
+msgstr "将网络添加到 VM"
+
+# ebd8002977894bed935a5229f868dc66
+#: ../../networking/multiple_guest_networks.rst:107
+msgid "The Add network to VM dialog is displayed."
+msgstr "显示添加网络对话框。"
+
+# fa83b310f8904d8587c3dfdc52cacbad
+#: ../../networking/multiple_guest_networks.rst:109
+msgid ""
+"In the drop-down list, select the network that you would like to add this VM"
+" to."
+msgstr "在下拉列表里选择你要添加给VM的网络。"
+
+# dd48bfa27d7345aa87c6b7e63a358160
+#: ../../networking/multiple_guest_networks.rst:112
+msgid ""
+"A new NIC is added for this network. You can view the following details in "
+"the NICs page:"
+msgstr "这样就为这个网络添加了一个新网卡。你可以在网卡页面查看下列信息："
+
+# 6463c065bc1943008470d1edad582974
+#: ../../networking/multiple_guest_networks.rst:115
+msgid "ID"
+msgstr "ID"
+
+# 9420ad95bce443da9b81765885249155
+#: ../../networking/multiple_guest_networks.rst:117
+msgid "Network Name"
+msgstr "网络名称"
+
+# f846a9f3d938451198081772cc74cb85
+#: ../../networking/multiple_guest_networks.rst:119
+msgid "Type"
+msgstr "类型"
+
+# 8592916e5acf4e70bafbdbda7c00c614
+#: ../../networking/multiple_guest_networks.rst:121
+msgid "IP Address"
+msgstr "IP地址"
+
+# c75427419ce04483b71df9bd261c2fbd
+#: ../../networking/multiple_guest_networks.rst:123
+msgid "Gateway"
+msgstr "网关"
+
+# d008ddbc8a054a27ae521d3e3b8a4013
+#: ../../networking/multiple_guest_networks.rst:125
+msgid "Netmask"
+msgstr "子网掩码"
+
+# 41cff6439a0b42b5abab39913bc773bb
+#: ../../networking/multiple_guest_networks.rst:127
+msgid "Is default"
+msgstr "默认的"
+
+# cb23bf06693941579c5993219c416bb8
+#: ../../networking/multiple_guest_networks.rst:129
+msgid "CIDR (for IPv6)"
+msgstr "CIDR（IPv6）"
+
+# bce02b8426584ab693112a2a3eaa69a4
+#: ../../networking/multiple_guest_networks.rst:133
+msgid "Removing a Network"
+msgstr "移除网络"
+
+# ca1c1c7c1c9d4ff8aaca289a38a6f7c0
+#: ../../networking/multiple_guest_networks.rst:143
+msgid "Locate the NIC you want to remove."
+msgstr "找到你要移除的网卡上。"
+
+# 85a4e2e7437642f18635fa647891d856
+#: ../../networking/multiple_guest_networks.rst:145
+msgid "Click Remove NIC button. |remove-nic.png|"
+msgstr "点击移除网卡按钮。|remove-nic.png|"
+
+# ffa7cf9f06374be19a3b64261219cdc1
+# 5597778b6dec4d1fac608939422f4a00
+#: ../../networking/multiple_guest_networks.rst:147
+#: ../../networking/multiple_guest_networks.rst:165
+msgid "Click Yes to confirm."
+msgstr "点击Yes确认。"
+
+# 78a6b76d558e43c18b80b80d9ae29567
+#: ../../networking/multiple_guest_networks.rst:151
+msgid "Selecting the Default Network"
+msgstr "选择默认网络"
+
+# d548799e04664a74b122217c8b65678f
+#: ../../networking/multiple_guest_networks.rst:161
+msgid "Locate the NIC you want to work with."
+msgstr "找到你想要的网卡。"
+
+# 43217c75ff3e4ac885b27d575f4c47ee
+#: ../../networking/multiple_guest_networks.rst:163
+msgid "Click the Set default NIC button. |set-default-nic.png|."
+msgstr "点击设置为默认网卡按钮。 |set-default-nic.png|."
+
+# fea27f4c1e3f45e89b4b9439c9affb16
+#: ../../networking/multiple_guest_networks.rst:168
+msgid "Changing the Network Offering on a Guest Network"
+msgstr "在来宾网络上更改网络方案"
+
+# 9de4858c24814a74a54559f2494b3a89
+#: ../../networking/multiple_guest_networks.rst:170
+msgid ""
+"A user or administrator can change the network offering that is associated "
+"with an existing guest network."
+msgstr "用户或者管理员可以更改与之相关的来宾网络的网络方案。"
+
+# 7c551d2e95a241b48be8ce6603506ab3
+#: ../../networking/multiple_guest_networks.rst:175
+msgid ""
+"If you are changing from a network offering that uses the CloudStack virtual"
+" router to one that uses external devices as network service providers, you "
+"must first stop all the VMs on the network."
+msgstr "如果你将使用CloudStack虚拟路由的一个网络方案改成使用公共网络设备作为网络服务商，那么你必须先关掉该网络中的所有虚机。"
+
+# c67df95acd7f48b18f620634af845488
+#: ../../networking/multiple_guest_networks.rst:181
+msgid "Click the name of the network you want to modify."
+msgstr "点击你要修改的网络名称。"
+
+# fb679c3a524c4c4a837fe24566e3a12b
+#: ../../networking/multiple_guest_networks.rst:183
+msgid "In the Details tab, click Edit. |edit-icon.png|"
+msgstr "在  详细  页签，点击 编辑按钮。|edit-icon.png|"
+
+# 4afa43a2ac5b46f29ad42d421235b01d
+#: ../../networking/multiple_guest_networks.rst:185
+msgid ""
+"In Network Offering, choose the new network offering, then click Apply."
+msgstr "在网络方案中，选择新的网络方案，然后点击应用。"
+
+# 6a7280bbaba74bfb8b6622ac7832cf5c
+#: ../../networking/multiple_guest_networks.rst:188
+msgid ""
+"A prompt is displayed asking whether you want to keep the existing CIDR. "
+"This is to let you know that if you change the network offering, the CIDR "
+"will be affected."
+msgstr "这时会有一个提示问你是否保持已存在的CIDR不变。这是让你了解如果你改变网络了方案，那么CIDR会受到影响。"
+
+# 42e2f2150b07464bbdf35bc0c30edd91
+#: ../../networking/multiple_guest_networks.rst:192
+msgid ""
+"If you upgrade between virtual router as a provider and an external network "
+"device as provider, acknowledge the change of CIDR to continue, so choose "
+"Yes."
+msgstr "如果你将虚拟路由升级到外网设备，在看到变更CIDR以继续时，请选择Yes。"
+
+# 3b240e38bc11456095069b1622cc917f
+#: ../../networking/multiple_guest_networks.rst:196
+msgid ""
+"Wait for the update to complete. Don't try to restart VMs until the network "
+"change is complete."
+msgstr "等待更新完成。在网络变更完成之前不要试图重启虚拟机。"
+
+# a6db1505b17b48e1ae1063872635e2bb
+#: ../../networking/multiple_guest_networks.rst:199
+msgid "If you stopped any VMs, restart them."
+msgstr "如果你停止了任何VMs，请重启他们。"

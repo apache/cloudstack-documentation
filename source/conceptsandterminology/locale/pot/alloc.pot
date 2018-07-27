@@ -1,0 +1,409 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache CloudStack
+# This file is distributed under the same license as the Apache CloudStack package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack 4.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-31 13:49-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../alloc.rst:2
+# b24b21f06cc04967a756901f0d0e77cb
+msgid "Allocators"
+msgstr ""
+
+#: ../../alloc.rst:4
+# 89923eb3bf724b2e92cc7759fbd32e24
+msgid "CloudStack enables administrators to write custom allocators that will choose the Host to place a new guest and the storage host from which to allocate guest virtual disk images."
+msgstr ""
+
+#: ../../alloc.rst:8
+# adab67c72cee443ea0a9fd7a032019e1
+msgid "These are following categories of allocators currently supported:"
+msgstr ""
+
+#: ../../alloc.rst:10
+# 4cdc118725374ee9ba93e57fa19bd227
+msgid "HostAllocators - Allows you to create custom rules to determine which physical host to allocate the guest virtual machines on."
+msgstr ""
+
+#: ../../alloc.rst:13
+# 44ca87f9ea7b4395b5a77aba97b5f8dc
+msgid "StoragePoolAllocators - Allows you to create custom rules to determine which storage pool to allocate the guest virtual machines on."
+msgstr ""
+
+#: ../../alloc.rst:18
+# 6c45cb067c19470da4aeb3e1a20e7e6b
+msgid "Implementing a custom HostAllocator"
+msgstr ""
+
+#: ../../alloc.rst:20
+# 0b22e37a87484153896f253084682a27
+msgid "HostAllocators are written by extending com.cloud.agent.manager.allocator.HostAllocator interface."
+msgstr ""
+
+#: ../../alloc.rst:24
+# 9d13e0b0954e44ffb4460f1f6e76ce3b
+msgid "HostAllocator Interface"
+msgstr ""
+
+#: ../../alloc.rst:26
+# ebabcdc234ab4c7bbf51975a632bea1d
+msgid "The interface defines the following two methods."
+msgstr ""
+
+#: ../../alloc.rst:53
+# b7e66f063c6f489a811321cfc2adbe49
+msgid "A custom HostAllocator can be written by implementing the ‘allocateTo’ method"
+msgstr ""
+
+#: ../../alloc.rst:57
+# 8e50e53c1b264c018cacc95a7a595be9
+msgid "Input Parameters for the method ‘HostAllocator :: allocateTo’"
+msgstr ""
+
+#: ../../alloc.rst:59
+#: ../../alloc.rst:205
+# 101cff90e33d45349e556f5acb90097d
+# f7743f3c0bab4b85a9a542e74fb0fc79
+msgid "*com.cloud.vm.VirtualMachineProfile vmProfile*"
+msgstr ""
+
+#: ../../alloc.rst:61
+#: ../../alloc.rst:207
+# 500f68497c304bb398a46d0f2c71cb82
+# a93dfc81e89e40049463bcf61823d254
+msgid "VirtualMachineProfile describes one virtual machine. This allows the adapters like Allocators to process the information in the virtual machine and make determinations on what the virtual machine profile should look like before it is actually started on the hypervisor."
+msgstr ""
+
+#: ../../alloc.rst:66
+# 7bb65f8cf85c40249c4c86e4013ebb08
+msgid "HostAllocators can make use of the following information present in the VirtualMachineProfile:"
+msgstr ""
+
+#: ../../alloc.rst:69
+# ab33f4550b4b4f5398dae9ff967613e7
+msgid "The ServiceOffering that specifies configuration like requested CPU speed, RAM etc necessary for the guest VM."
+msgstr ""
+
+#: ../../alloc.rst:72
+#: ../../alloc.rst:218
+# 8a58c120af2d48a5891cbebf324799a1
+# 66bd396fb4e04a1d87abd92a050c6ea1
+msgid "The VirtualMachineTemplate, the template to be used to start the VM."
+msgstr ""
+
+#: ../../alloc.rst:74
+#: ../../alloc.rst:220
+# 00608807ab6f46499f2a0479d4c9f5ec
+# 6431648fde024c25b24826374f86a887
+msgid "*com.cloud.deploy.DeploymentPlan plan*"
+msgstr ""
+
+#: ../../alloc.rst:76
+#: ../../alloc.rst:222
+# e5dd1566033a4a7cbdbe5e874416dbac
+# 6e2d9db891cc4a9e9840ceb384aaa5f0
+msgid "DeploymentPlan should specify:"
+msgstr ""
+
+#: ../../alloc.rst:78
+#: ../../alloc.rst:224
+# 7516a5bc7a9a4162a650275c5cd52a60
+# 7bcc7157b86045ebb6ecb62127995eeb
+msgid "dataCenterId: The data center the VM should deploy in"
+msgstr ""
+
+#: ../../alloc.rst:80
+# 9acd60a116b94beea25811ec07007a22
+msgid "podId: The pod the Vm should deploy in; null if no preference"
+msgstr ""
+
+#: ../../alloc.rst:82
+#: ../../alloc.rst:228
+# 81ba4443812c44e7ae390dde322cd2f0
+# f8ef1a4988214cbd84faa3bd3c7bb4d8
+msgid "clusterId: The cluster the VM should deploy in; null if no preference"
+msgstr ""
+
+#: ../../alloc.rst:84
+#: ../../alloc.rst:230
+# 1e9ad629bf7546baa1ef733ff7649794
+# 7d31ebe319f04eae8fc914f0d9b15dfd
+msgid "poolId: The storage pool the VM should be created in; null if no preference"
+msgstr ""
+
+#: ../../alloc.rst:87
+# a56db2027fc14fe8851adbb0d20f4bb3
+msgid "*com.cloud.host.Host.Type type*"
+msgstr ""
+
+#: ../../alloc.rst:89
+# 117330d5149346e893940824a7cc0f13
+msgid "Type of the Host needed for this guest VM. Currently com.cloud.host.Host.Type interface defines the following Host types:"
+msgstr ""
+
+#: ../../alloc.rst:92
+# f4c862266e0748c3b82a54cc3cf4e11b
+msgid "Storage"
+msgstr ""
+
+#: ../../alloc.rst:94
+# 5e8cacd550d34cbf9f4a2331d9047508
+msgid "Routing"
+msgstr ""
+
+#: ../../alloc.rst:96
+# c2c7fa103b0d42d9a048b9ba94539d7e
+msgid "SecondaryStorage"
+msgstr ""
+
+#: ../../alloc.rst:98
+# 7039d6864f4641c88b963761815441d9
+msgid "ConsoleProxy"
+msgstr ""
+
+#: ../../alloc.rst:100
+# 188966fdb5ea4866b645a73c1f46203e
+msgid "ExternalFirewall"
+msgstr ""
+
+#: ../../alloc.rst:102
+# 886ce574c22f470b86d2e2dabc4dedf8
+msgid "ExternalLoadBalancer"
+msgstr ""
+
+#: ../../alloc.rst:104
+#: ../../alloc.rst:233
+# 98d8618b11f4418394a49756ee34f0d1
+# 73004922ca734363a23b1828058ada96
+msgid "*com.cloud.deploy.DeploymentPlanner.ExcludeList avoid*"
+msgstr ""
+
+#: ../../alloc.rst:106
+# 3e92b2a746b94fe28d77bcf0dc7cd07d
+msgid "The ExcludeList specifies what datacenters, pods, clusters, hosts, storagePools should not be considered for allocating this guest VM. HostAllocators should avoid the hosts that are mentioned in ExcludeList.hostIds."
+msgstr ""
+
+#: ../../alloc.rst:111
+#: ../../alloc.rst:240
+# 448bc6d6adae4fdcb730025e56873627
+# 40756f9187a944b2b7d94c9d1382494f
+msgid "Set Long dcIds;"
+msgstr ""
+
+#: ../../alloc.rst:113
+#: ../../alloc.rst:242
+# d2504f426a0049d0ace9b214c6bd7953
+# 6140ffc617dc4a2985bfb74a278d41b9
+msgid "Set Long podIds;"
+msgstr ""
+
+#: ../../alloc.rst:115
+#: ../../alloc.rst:244
+# 8aa146a476c7463595b14b96873a20e3
+# 86deaf0d209249dfa759b338c46ac0be
+msgid "Set Long clusterIds;"
+msgstr ""
+
+#: ../../alloc.rst:117
+#: ../../alloc.rst:246
+# 9fdc441f089941d5943c1136f1b86e2a
+# 610a66aed6e64b46be125b1294931664
+msgid "Set Long hostIds;"
+msgstr ""
+
+#: ../../alloc.rst:119
+#: ../../alloc.rst:248
+# b5399df37cd7423883f64b670d07cf47
+# ebe7497409b8407a9fee2cd3565ba6db
+msgid "Set Long poolIds;"
+msgstr ""
+
+#: ../../alloc.rst:121
+#: ../../alloc.rst:250
+# 4d44cc93626b4131bb652953a2560628
+# ea297796ac634038b897f044d98d9bad
+msgid "*int returnUpTo*"
+msgstr ""
+
+#: ../../alloc.rst:123
+# 4afa7f5bef3c4ae583c38ffb62a765f9
+msgid "This specifies return up to that many available hosts for this guest VM."
+msgstr ""
+
+#: ../../alloc.rst:125
+# eab39d31cb4247efb1538ccb5bf6c7ba
+msgid "To get all possible hosts, set this value to -1."
+msgstr ""
+
+#: ../../alloc.rst:128
+# 3224e4b69b424d29ba834cc170599b1e
+msgid "Reference HostAllocator implementation"
+msgstr ""
+
+#: ../../alloc.rst:130
+# 44a1d6e9f79d426b9d3fc47dac17f086
+msgid "Refer com.cloud.agent.manager.allocator.impl.FirstFitAllocator that implements the HostAllocator interface. This allocator checks available hosts in the specified datacenter, Pod, Cluster and considering the given ServiceOffering requirements."
+msgstr ""
+
+#: ../../alloc.rst:135
+# 5562696f2a6e4158b2317f8674a65764
+msgid "If returnUpTo = 1, this allocator would return the first Host that fits the requirements of the guest VM."
+msgstr ""
+
+#: ../../alloc.rst:139
+# 354cd895a9f1419f951f2d2dbb480147
+msgid "Loading a custom HostAllocator"
+msgstr ""
+
+#: ../../alloc.rst:141
+# 54e588e1b5a242c79a961cf83b931c9a
+msgid "Write a custom HostAllocator class, implementing the interface described above."
+msgstr ""
+
+#: ../../alloc.rst:144
+#: ../../alloc.rst:273
+# f9c0a0a8e19b463ead48dd0f181efe00
+# 25506beab7514a94b9a14938e4a568bf
+msgid "Package the code into a JAR file and make the JAR available in the classpath of the Management Server/tomcat."
+msgstr ""
+
+#: ../../alloc.rst:147
+#: ../../alloc.rst:276
+# 4af2d8a69dee48cd8a7c3ccfbac5631c
+# 928c5259176f4c829c12d2c3e07b307b
+msgid "Modify the components.xml and components-premium.xml files found in /client/ tomcatconf as follows."
+msgstr ""
+
+#: ../../alloc.rst:150
+# 840bb1bb0bab49d3a0ac320ed3041f64
+msgid "Search for ‘HostAllocator’ in these files."
+msgstr ""
+
+#: ../../alloc.rst:159
+# c835db1603ac49fbadd6d4e7d60dbad8
+msgid "Replace the FirstFitAllocator with your class name. Optionally, you can change the name of the adapter as well."
+msgstr ""
+
+#: ../../alloc.rst:162
+#: ../../alloc.rst:290
+# 85c3d7ba304941cfa509a7b52f2bd205
+# f95ca1d23efe456ab39d2e725a2036a0
+msgid "Restart the Management Server."
+msgstr ""
+
+#: ../../alloc.rst:165
+# 15bff855293d4273b95a3b617b5df378
+msgid "Implementing a custom StoragePoolAllocator"
+msgstr ""
+
+#: ../../alloc.rst:167
+# 73bf3330eb4f417ab2560cc855d3cc6d
+msgid "StoragePoolAllocators are written by extending com.cloud.storage.allocator. StoragePoolAllocator interface."
+msgstr ""
+
+#: ../../alloc.rst:171
+# a94ec7aeb9984f75b53356320e64d512
+msgid "StoragePoolAllocator Interface"
+msgstr ""
+
+#: ../../alloc.rst:173
+# 95dffe7e76f944b09ba93c62a7e293f1
+msgid "A custom StoragePoolAllocator can be written by implementing the ‘allocateTo’ method."
+msgstr ""
+
+#: ../../alloc.rst:191
+# 5d8387e6a7894494aeca6ddeb48b53ff
+msgid "This interface also contains some other methods to support some legacy code. However your custom allocator can extend the existing com.cloud.storage.allocator. AbstractStoragePoolAllocator. This class provides default implementation for all the other interface methods."
+msgstr ""
+
+#: ../../alloc.rst:197
+# 34b5c706a80b43819ad96e48f36ec5d4
+msgid "Input Parameters for the method ‘StoragePoolAllocator :: allocateTo’"
+msgstr ""
+
+#: ../../alloc.rst:199
+# b3487e08c96843719a022eb9c673d711
+msgid "*com.cloud.vm.DiskProfile dskCh*"
+msgstr ""
+
+#: ../../alloc.rst:201
+# aba86c4ec9ec4269b17b4b00cfe428a6
+msgid "DiskCharacteristics describes a disk and what functionality is required from it. It specifies the storage pool tags if any to be used while searching for a storage pool."
+msgstr ""
+
+#: ../../alloc.rst:212
+# e09f9104505143559febc21f3b4a8d3b
+msgid "StoragePoolAllocators can make use of the following information present in the VirtualMachineProfile:"
+msgstr ""
+
+#: ../../alloc.rst:215
+# 456e11be56f04f1a8fe2f16c00df57f8
+msgid "The VirtualMachine instance that specifies properties of the guest VM."
+msgstr ""
+
+#: ../../alloc.rst:226
+# 76cafb6cdcd649f78d4f82df21085297
+msgid "podId: The pod the VM should deploy in; null if no preference"
+msgstr ""
+
+#: ../../alloc.rst:235
+# 7c73dbba2b6440949b2b97677bb271cc
+msgid "The ExcludeList specifies what datacenters, pods, clusters, hosts, storagePools should not be considered for allocating this guest VM. StoragePoolAllocators should avoid the pools that are mentioned in ExcludeList.poolIds"
+msgstr ""
+
+#: ../../alloc.rst:252
+# 21093c1b8fb642689c24b0232e85c441
+msgid "This specifies return up to that many available pools for this guest VM"
+msgstr ""
+
+#: ../../alloc.rst:254
+# 12487cb7610942068f5cec67e00e73dd
+msgid "To get all possible pools, set this value to -1"
+msgstr ""
+
+#: ../../alloc.rst:257
+# 88ed7f8e81914e3681b4391f15d60939
+msgid "Reference StoragePoolAllocator implementation"
+msgstr ""
+
+#: ../../alloc.rst:259
+# 3808521ba2eb425db2239e0fe1d0789b
+msgid "Refer com.cloud.storage.allocator.FirstFitStoragePoolAllocator that implements the StoragePoolAllocator interface. This allocator checks available pools in the specified datacenter, Pod, Cluster and considering the given DiskProfile characteristics."
+msgstr ""
+
+#: ../../alloc.rst:264
+# f50dfc1dbce44eddbe27be2f26df3ac7
+msgid "If returnUpTo = 1, this allocator would return the first Storage Pool that fits the requirements of the guest VM."
+msgstr ""
+
+#: ../../alloc.rst:268
+# 9c246f19fb0f49918c77cf5f2b5d6119
+msgid "Loading a custom StoragePoolAllocator"
+msgstr ""
+
+#: ../../alloc.rst:270
+# 5fc036623a834bd792b5e222c530c9fb
+msgid "Write a custom StoragePoolAllocator class, implementing the interface described above."
+msgstr ""
+
+#: ../../alloc.rst:279
+# f74bddd68a3b40169de9e67da02f8edc
+msgid "Search for ‘StoragePoolAllocator’ in these files."
+msgstr ""
+
+#: ../../alloc.rst:287
+# 33990be5d35e4bcb83bf38a712d31e58
+msgid "Replace the FirstFitStoragePoolAllocator with your class name. Optionally, you can change the name of the adapter as well."
+msgstr ""
+

@@ -1,0 +1,809 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../service_offerings.rst:18
+# 003ddcd4027d44e1bae1560113612be3
+msgid "Service Offerings"
+msgstr ""
+
+#: ../../service_offerings.rst:20
+# db77c1944ac947e79b5c76bac2c1cc4d
+msgid "In addition to the physical and logical infrastructure of your cloud and the CloudStack software and servers, you also need a layer of user services so that people can actually make use of the cloud. This means not just a user UI, but a set of options and resources that users can choose from, such as templates for creating virtual machines, disk storage, and more. If you are running a commercial service, you will be keeping track of what services and resources users are consuming and charging them for that usage. Even if you do not charge anything for people to use your cloud – say, if the users are strictly internal to your organization, or just friends who are sharing your cloud – you can still keep track of what services they use and how much of them."
+msgstr ""
+
+#: ../../service_offerings.rst:34
+# eac4f2f6a6f346d991640acd102c8d0f
+msgid "Service Offerings, Disk Offerings, Network Offerings, and Templates"
+msgstr ""
+
+#: ../../service_offerings.rst:36
+# f620092a7ebb41d79ed21c4a5c81d56c
+msgid "A user creating a new instance can make a variety of choices about its characteristics and capabilities. CloudStack provides several ways to present users with choices when creating a new instance:"
+msgstr ""
+
+#: ../../service_offerings.rst:40
+# ab361873de2144c095169458d8a25cb1
+msgid "Service Offerings, defined by the CloudStack administrator, provide a choice of CPU speed, number of CPUs, RAM size, tags on the root disk, and other choices. See Creating a New Compute Offering."
+msgstr ""
+
+#: ../../service_offerings.rst:44
+# 1044e18059f346f9ac414afad0f176ff
+msgid "Disk Offerings, defined by the CloudStack administrator, provide a choice of disk size and IOPS (Quality of Service) for primary data storage. See Creating a New Disk Offering."
+msgstr ""
+
+#: ../../service_offerings.rst:48
+# 8fa5935f6811416784633a016e64dff9
+msgid "Network Offerings, defined by the CloudStack administrator, describe the feature set that is available to end users from the virtual router or external networking devices on a given guest network. See Network Offerings."
+msgstr ""
+
+#: ../../service_offerings.rst:53
+# 0e8bd7f2f14a4d698ef10eb8f7bd3059
+msgid "Templates, defined by the CloudStack administrator or by any CloudStack user, are the base OS images that the user can choose from when creating a new instance. For example, CloudStack includes CentOS as a template. See Working with Templates."
+msgstr ""
+
+#: ../../service_offerings.rst:58
+# 52afe58166814f258c3426dd55249f7d
+msgid "In addition to these choices that are provided for users, there is another type of service offering which is available only to the CloudStack root administrator, and is used for configuring virtual infrastructure resources. For more information, see Upgrading a Virtual Router with System Service Offerings."
+msgstr ""
+
+#: ../../service_offerings.rst:66
+# b05b989a07394a3eafabebb48aeaa29b
+msgid "Compute and Disk Service Offerings"
+msgstr ""
+
+#: ../../service_offerings.rst:68
+# 494d86b3d06340ab855b7df7a298410a
+msgid "A service offering is a set of virtual hardware features such as CPU core count and speed, memory, and disk size. The CloudStack administrator can set up various offerings, and then end users choose from the available offerings when they create a new VM. Based on the user’s selected offering, CloudStack emits usage records that can be integrated with billing systems."
+msgstr ""
+
+#: ../../service_offerings.rst:75
+# d5a6cbcc11594496b3347a195f561c03
+msgid "Some characteristics of service offerings must be defined by the CloudStack administrator, and others can be left undefined so that the end-user can enter their own desired values. This is useful to reduce the number of offerings the CloudStack administrator has to define. Instead of defining a compute offering for every imaginable combination of values that a user might want, the administrator can define offerings that provide some flexibility to the users and can serve as the basis for several different VM configurations."
+msgstr ""
+
+#: ../../service_offerings.rst:84
+# 57a11b0d87cd4cb6bd64aa2c1b61db19
+msgid "A service offering includes the following elements:"
+msgstr ""
+
+#: ../../service_offerings.rst:86
+# 314c7c80394a45fe9bd7869f420d84b0
+msgid "CPU, memory, and network resource guarantees"
+msgstr ""
+
+#: ../../service_offerings.rst:88
+# b88f65b187394191a414ccf797fb3c8a
+msgid "How resources are metered"
+msgstr ""
+
+#: ../../service_offerings.rst:90
+# 0f00c0ffe83246cdbebaae3ad3295fb6
+msgid "How the resource usage is charged"
+msgstr ""
+
+#: ../../service_offerings.rst:92
+# 168105b5e4554db0b0cb46f61c6763c3
+msgid "How often the charges are generated"
+msgstr ""
+
+#: ../../service_offerings.rst:94
+# 4ed86a2b44c647c4991679260cf019f9
+msgid "For example, one service offering might allow users to create a virtual machine instance that is equivalent to a 1 GHz Intel® Core™ 2 CPU, with 1 GB memory at $0.20/hour, with network traffic metered at $0.10/GB."
+msgstr ""
+
+#: ../../service_offerings.rst:98
+# c41f30feb0b442d4b39c95168d4ea2cc
+msgid "CloudStack separates service offerings into compute offerings and disk offerings. The compute service offering specifies:"
+msgstr ""
+
+#: ../../service_offerings.rst:101
+# 03b79e1695f6418596fbf3dfdae6fdf5
+msgid "Guest CPU (optional). If not defined by the CloudStack administrator, users can pick the CPU attributes."
+msgstr ""
+
+#: ../../service_offerings.rst:104
+# a9484632eacc49aaaa151b0462236017
+msgid "Guest RAM (optional). If not defined by the CloudStack administrator, users can pick the RAM."
+msgstr ""
+
+#: ../../service_offerings.rst:107
+# 8566fe8312914c68bedcb2c81b3c0c7b
+msgid "Guest Networking type (virtual or direct)"
+msgstr ""
+
+#: ../../service_offerings.rst:109
+# 083cf96ec0c24344baef88ec1b1b562b
+msgid "Tags on the root disk"
+msgstr ""
+
+#: ../../service_offerings.rst:111
+# 49478998f1fc4c37a9278a56f4e95eac
+msgid "The disk offering specifies:"
+msgstr ""
+
+#: ../../service_offerings.rst:113
+# e819601d04c3430f97d349bc00ef953b
+msgid "Disk size (optional). If not defined by the CloudStack administrator, users can pick the disk size."
+msgstr ""
+
+#: ../../service_offerings.rst:116
+# a4d4936154c4482d889d800ccf8426ef
+msgid "Tags on the data disk"
+msgstr ""
+
+#: ../../service_offerings.rst:120
+# a561332470b74e3e90cdf9bcabe2317e
+msgid "Custom Compute Offering"
+msgstr ""
+
+#: ../../service_offerings.rst:122
+# 55f34a846c444887ad4349ad37fe65f8
+msgid "CloudStack provides you the flexibility to specify the desired values for the number of CPU, CPU speed, and memory while deploying a VM. As an admin, you create a Compute Offering by marking it as custom, and the users will be able to customize this dynamic Compute Offering by specifying the memory, and CPU at the time of VM creation or upgrade. Custom Compute Offering is same as the normal Compute Offering except that the values of the dynamic parameters will be set to zeros in the given set of templates. Use this offering to deploy VM by specifying custom values for the dynamic parameters. Memory, CPU and number of CPUs are considered as dynamic parameters."
+msgstr ""
+
+#: ../../service_offerings.rst:133
+# 50cd9056418842c08eb28fdce54e3deb
+msgid "Dynamic Compute Offerings can be used in following cases: deploying a VM, changing the compute offering of a stopped VM and running VMs, which is nothing but scaling up. To support this feature a new field, Custom, has been added to the Create Compute Offering page. If the Custom field is checked, the user will be able to create a custom Compute Offering by filling in the desired values for number of CPU, CPU speed, and memory. See ? for more information on this."
+msgstr ""
+
+#: ../../service_offerings.rst:141
+# efbe01f182224e6a96c59f3165e87c47
+msgid "*Recording Usage Events for Dynamically Assigned Resources*."
+msgstr ""
+
+#: ../../service_offerings.rst:143
+# b098284613414134b2cd3e2527db633b
+msgid "To support this feature, usage events has been enhanced to register events for dynamically assigned resources. Usage events are registered when a VM is created from a custom compute offering, and upon changing the compute offering of a stopped or running VM. The values of the parameters, such as CPU, speed, RAM are recorded."
+msgstr ""
+
+#: ../../service_offerings.rst:151
+# 64a1b09cdfbd4e95b1fcdf2ba0db010b
+msgid "Creating a New Compute Offering"
+msgstr ""
+
+#: ../../service_offerings.rst:153
+# a989d37873d84df993d59a7d089d7cdd
+msgid "To create a new compute offering:"
+msgstr ""
+
+#: ../../service_offerings.rst:155
+#: ../../service_offerings.rst:276
+#: ../../service_offerings.rst:375
+# cd40916e685345c99849ac58022fd684
+# 3f783f61450b417ea824bafee21771db
+# a464ec4a658b4d9884f389505fe3ad18
+msgid "Log in with admin privileges to the CloudStack UI."
+msgstr ""
+
+#: ../../service_offerings.rst:157
+#: ../../service_offerings.rst:278
+#: ../../service_offerings.rst:377
+# 430fa2ee248b407f9d4085fb63dd7d77
+# 999d0aeef65e43539cf25bcb3f791342
+# b51af425528d45d6b50797a303b9badc
+msgid "In the left navigation bar, click Service Offerings."
+msgstr ""
+
+#: ../../service_offerings.rst:159
+# 9d93f2c8859741418b99ea21160f5717
+msgid "In Select Offering, choose Compute Offering."
+msgstr ""
+
+#: ../../service_offerings.rst:161
+# 7167eb3ab24d4bba83156b7b67a2474a
+msgid "Click Add Compute Offering."
+msgstr ""
+
+#: ../../service_offerings.rst:163
+#: ../../service_offerings.rst:284
+#: ../../service_offerings.rst:383
+# d66b1055632049b3be191768ce8d3f6f
+# 8282a7241f674568b997c0dcd2b08b88
+# 22f14b2d47e140ae9fa9f96c736f51f5
+msgid "In the dialog, make the following choices:"
+msgstr ""
+
+#: ../../service_offerings.rst:165
+# 248a64cf597a40f29490a97743581cae
+msgid "**Name**: Any desired name for the service offering."
+msgstr ""
+
+#: ../../service_offerings.rst:167
+# 16069fbe3c51423eba16ddfb98cd4dd2
+msgid "**Description**: A short description of the offering that can be displayed to users"
+msgstr ""
+
+#: ../../service_offerings.rst:170
+# 347237d86b124a00be0d69850897539d
+msgid "**Storage type**: The type of disk that should be allocated. Local allocates from storage attached directly to the host where the system VM is running. Shared allocates from storage accessible via NFS."
+msgstr ""
+
+#: ../../service_offerings.rst:175
+# 2740734abb894968ad28ec481f8be6f8
+msgid "**Custom**: Custom compute offerings can be used in following cases: deploying a VM, changing the compute offering of a stopped VM and running VMs, which is nothing but scaling up."
+msgstr ""
+
+#: ../../service_offerings.rst:179
+# ca83dc70a28544378533fd9391d96e06
+msgid "If the Custom field is checked, the end-user must fill in the desired values for number of CPU, CPU speed, and RAM Memory when using a custom compute offering. When you check this box, those three input fields are hidden in the dialog box."
+msgstr ""
+
+#: ../../service_offerings.rst:184
+# 8ca7932a8f254ece814179f9c5690c71
+msgid "**# of CPU cores**: The number of cores which should be allocated to a system VM with this offering. If Custom is checked, this field does not appear."
+msgstr ""
+
+#: ../../service_offerings.rst:188
+# 179de46f279a47c38263160519e05bc8
+msgid "**CPU (in MHz)**: The CPU speed of the cores that the system VM is allocated. For example, “2000” would provide for a 2 GHz clock. If Custom is checked, this field does not appear."
+msgstr ""
+
+#: ../../service_offerings.rst:192
+# b4862e3476024139a5791b56f164bf54
+msgid "**Memory (in MB)**: The amount of memory in megabytes that the system VM should be allocated. For example, “2048” would provide for a 2 GB RAM allocation. If Custom is checked, this field does not appear."
+msgstr ""
+
+#: ../../service_offerings.rst:197
+# 75b2531b57c743c1b6077813a925c97c
+msgid "**Network Rate**: Allowed data transfer rate in MB per second."
+msgstr ""
+
+#: ../../service_offerings.rst:199
+# d8427006117040188afa00c409a53e9c
+msgid "**Disk Read Rate**: Allowed disk read rate in bits per second."
+msgstr ""
+
+#: ../../service_offerings.rst:201
+# d7c08f798b324b0fa241b2bc293d9fe1
+msgid "**Disk Write Rate**: Allowed disk write rate in bits per second."
+msgstr ""
+
+#: ../../service_offerings.rst:203
+# 657abd8d993d47f98da0e15c0842aadd
+msgid "**Disk Read Rate**: Allowed disk read rate in IOPS (input/output operations per second)."
+msgstr ""
+
+#: ../../service_offerings.rst:206
+# 41c2fbc1baef42c6b5df3e05a520019a
+msgid "**Disk Write Rate**: Allowed disk write rate in IOPS (input/output operations per second)."
+msgstr ""
+
+#: ../../service_offerings.rst:209
+# 1ec28ce24ead4f2486f7368ade10a4e8
+msgid "**Offer HA**: If yes, the administrator can choose to have the system VM be monitored and as highly available as possible."
+msgstr ""
+
+#: ../../service_offerings.rst:212
+# 6d4c0c7c0d8548e3825edabb5d73d731
+msgid "**Storage Tags**: The tags that should be associated with the primary storage used by the system VM."
+msgstr ""
+
+#: ../../service_offerings.rst:215
+# b730850e604446d89aba06366e8302be
+msgid "**Host Tags**: (Optional) Any tags that you use to organize your hosts"
+msgstr ""
+
+#: ../../service_offerings.rst:218
+# 6fb3e5e926cc49038912a81d7d3c1a1c
+msgid "**CPU cap**: Whether to limit the level of CPU usage even if spare capacity is available."
+msgstr ""
+
+#: ../../service_offerings.rst:221
+# 5eff635b882c422680849b6f7d511fdb
+msgid "**Public**: Indicate whether the service offering should be available all domains or only some domains. Choose Yes to make it available to all domains. Choose No to limit the scope to a subdomain; CloudStack will then prompt for the subdomain's name."
+msgstr ""
+
+#: ../../service_offerings.rst:226
+# d401f5f62aaa4778bce3429d100a06de
+msgid "**isVolatile**: If checked, VMs created from this service offering will have their root disks reset upon reboot. This is useful for secure environments that need a fresh start on every boot and for desktops that should not retain state."
+msgstr ""
+
+#: ../../service_offerings.rst:231
+# 7ea10a7203db4d629ba1fc7dfd120b28
+msgid "**Deployment Planner**: Choose the technique that you would like CloudStack to use when deploying VMs based on this service offering."
+msgstr ""
+
+#: ../../service_offerings.rst:235
+# 09d1468dffad438fa4266aa82987ce0e
+msgid "First Fit places new VMs on the first host that is found having sufficient capacity to support the VM's requirements."
+msgstr ""
+
+#: ../../service_offerings.rst:238
+# 9a877ddb3dab4ad69db6b5c7627dd22c
+msgid "User Dispersing makes the best effort to evenly distribute VMs belonging to the same account on different clusters or pods."
+msgstr ""
+
+#: ../../service_offerings.rst:241
+# e2716f72710c4569899cebc9a22840ab
+msgid "User Concentrated prefers to deploy VMs belonging to the same account within a single pod."
+msgstr ""
+
+#: ../../service_offerings.rst:244
+# 5e285b8b246b49bbb76fdf939e1dc838
+msgid "Implicit Dedication will deploy VMs on private infrastructure that is dedicated to a specific domain or account. If you choose this planner, then you must also pick a value for Planner Mode. See `“Dedicating Resources to Accounts and Domains” <accounts.html#dedicating-resources-to-accounts-and-domains>`_."
+msgstr ""
+
+#: ../../service_offerings.rst:250
+# 6e9b2cfece7840a3a281d17fbf4d19cd
+msgid "Bare Metal is used with bare metal hosts. See Bare Metal Installation in the Installation Guide."
+msgstr ""
+
+#: ../../service_offerings.rst:253
+# 3a40b2888d8b4d0bb06501a2d726411d
+msgid "**Planner Mode**: Used when ImplicitDedicationPlanner is selected in the previous field. The planner mode determines how VMs will be deployed on private infrastructure that is dedicated to a single domain or account."
+msgstr ""
+
+#: ../../service_offerings.rst:258
+# 8c6a6d1601d5409f9cf07e89162fe229
+msgid "Strict: A host will not be shared across multiple accounts. For example, strict implicit dedication is useful for deployment of certain types of applications, such as desktops, where no host can be shared between different accounts without violating the desktop software's terms of license."
+msgstr ""
+
+#: ../../service_offerings.rst:264
+# 36d35c740f134708ade301fc640503d9
+msgid "Preferred: The VM will be deployed in dedicated infrastructure if possible. Otherwise, the VM can be deployed in shared infrastructure."
+msgstr ""
+
+#: ../../service_offerings.rst:268
+#: ../../service_offerings.rst:333
+#: ../../service_offerings.rst:426
+# 094aad8be1574fa385667bebf06ed3b6
+# 857fa2723e0b4bf4916f435ba0604892
+# ac56513abaae4c1895b390a2f0333ab0
+msgid "Click Add."
+msgstr ""
+
+#: ../../service_offerings.rst:272
+# 1a46fadd2f3a42c68b8cdeef05745eca
+msgid "Creating a New Disk Offering"
+msgstr ""
+
+#: ../../service_offerings.rst:274
+# 06fce5a6dad94dfa84eed86ae00ec617
+msgid "To create a new disk offering:"
+msgstr ""
+
+#: ../../service_offerings.rst:280
+# d3eb3c404772407da39449916e1953ca
+msgid "In Select Offering, choose Disk Offering."
+msgstr ""
+
+#: ../../service_offerings.rst:282
+# da2d57c6d441495685b440392d59c162
+msgid "Click Add Disk Offering."
+msgstr ""
+
+#: ../../service_offerings.rst:286
+# d178f97b76c84de0bfd097ef93c110d3
+msgid "Name. Any desired name for the disk offering."
+msgstr ""
+
+#: ../../service_offerings.rst:288
+#: ../../service_offerings.rst:387
+# efaecce14927441aa329961c4d485567
+# e7bfb9a5943b405a8cae32d04743b528
+msgid "Description. A short description of the offering that can be displayed to users"
+msgstr ""
+
+#: ../../service_offerings.rst:291
+# 4f1a836b18b74aaf94d4ad7e5b83152c
+msgid "Custom Disk Size. If checked, the user can set their own disk size. If not checked, the root administrator must define a value in Disk Size."
+msgstr ""
+
+#: ../../service_offerings.rst:295
+# 5663fa2cb649450db44f795449d5dd9f
+msgid "Disk Size. Appears only if Custom Disk Size is not selected. Define the volume size in GB."
+msgstr ""
+
+#: ../../service_offerings.rst:298
+# d06aab69bbd44359a42d1eaebcb4ca5a
+msgid "QoS Type. Three options: Empty (no Quality of Service), hypervisor (rate limiting enforced on the hypervisor side), and storage (guaranteed minimum and maximum IOPS enforced on the storage side). If leveraging QoS, make sure that the hypervisor or storage system supports this feature."
+msgstr ""
+
+#: ../../service_offerings.rst:304
+# 665e3b5c270e42979195e2837591595b
+msgid "Custom IOPS. If checked, the user can set their own IOPS. If not checked, the root administrator can define values. If the root admin does not set values when using storage QoS, default values are used (the defauls can be overridden if the proper parameters are passed into CloudStack when creating the primary storage in question)."
+msgstr ""
+
+#: ../../service_offerings.rst:311
+# 3fdd090110144e8fae3a8a6d77e6e426
+msgid "Min IOPS. Appears only if storage QoS is to be used. Set a guaranteed minimum number of IOPS to be enforced on the storage side."
+msgstr ""
+
+#: ../../service_offerings.rst:315
+# 5f904e8920db455192f6af78633b6f22
+msgid "Max IOPS. Appears only if storage QoS is to be used. Set a maximum number of IOPS to be enforced on the storage side (the system may go above this limit in certain circumstances for short intervals)."
+msgstr ""
+
+#: ../../service_offerings.rst:319
+# ea14b97cc586470c8be3da25ef0a3ae1
+msgid "(Optional)Storage Tags. The tags that should be associated with the primary storage for this disk. Tags are a comma separated list of attributes of the storage. For example \"ssd,blue\". Tags are also added on Primary Storage. CloudStack matches tags on a disk offering to tags on the storage. If a tag is present on a disk offering that tag (or tags) must also be present on Primary Storage for the volume to be provisioned. If no such primary storage exists, allocation from the disk offering will fail.."
+msgstr ""
+
+#: ../../service_offerings.rst:328
+#: ../../service_offerings.rst:421
+# dda851b25a4c44ae92e6890fb2542e04
+# 5034af57e1514329ba054bf08be12e5a
+msgid "Public. Indicate whether the service offering should be available all domains or only some domains. Choose Yes to make it available to all domains. Choose No to limit the scope to a subdomain; CloudStack will then prompt for the subdomain's name."
+msgstr ""
+
+#: ../../service_offerings.rst:337
+# 5c44a4ba4c074c4caf886309d1aba4f1
+msgid "Modifying or Deleting a Service Offering"
+msgstr ""
+
+#: ../../service_offerings.rst:339
+# 5aab86d5c8e443609a4613d0073f7314
+msgid "Service offerings cannot be changed once created. This applies to both compute offerings and disk offerings."
+msgstr ""
+
+#: ../../service_offerings.rst:342
+# 1bab2fd909c74ac299118dcd6c9848b4
+msgid "A service offering can be deleted. If it is no longer in use, it is deleted immediately and permanently. If the service offering is still in use, it will remain in the database until all the virtual machines referencing it have been deleted. After deletion by the administrator, a service offering will not be available to end users that are creating new instances."
+msgstr ""
+
+#: ../../service_offerings.rst:351
+# 0f1e4fe248f24ff6b4e4f47ef4a4ef55
+msgid "System Service Offerings"
+msgstr ""
+
+#: ../../service_offerings.rst:353
+# 007749e74de54391b1664b4166e80259
+msgid "System service offerings provide a choice of CPU speed, number of CPUs, tags, and RAM size, just as other service offerings do. But rather than being used for virtual machine instances and exposed to users, system service offerings are used to change the default properties of virtual routers, console proxies, and other system VMs. System service offerings are visible only to the CloudStack root administrator. CloudStack provides default system service offerings. The CloudStack root administrator can create additional custom system service offerings."
+msgstr ""
+
+#: ../../service_offerings.rst:362
+# 4201666336094c93ae198477756df881
+msgid "When CloudStack creates a virtual router for a guest network, it uses default settings which are defined in the system service offering associated with the network offering. You can upgrade the capabilities of the virtual router by applying a new network offering that contains a different system service offering. All virtual routers in that network will begin using the settings from the new service offering."
+msgstr ""
+
+#: ../../service_offerings.rst:371
+# f91e393f388b4e6481cd8a71e7f79278
+msgid "Creating a New System Service Offering"
+msgstr ""
+
+#: ../../service_offerings.rst:373
+# 0d2bc72cb0364a098544d79a257c89d8
+msgid "To create a system service offering:"
+msgstr ""
+
+#: ../../service_offerings.rst:379
+# 6e5e507b5bf94c149b3113e07ca5ce03
+msgid "In Select Offering, choose System Offering."
+msgstr ""
+
+#: ../../service_offerings.rst:381
+# 42a35e0d5b5e434f8fa210dfa25c0edf
+msgid "Click Add System Service Offering."
+msgstr ""
+
+#: ../../service_offerings.rst:385
+# c20bf047c83a44d89017825a2228c46d
+msgid "Name. Any desired name for the system offering."
+msgstr ""
+
+#: ../../service_offerings.rst:390
+# 1d970335d51e46ac9bda9c706759ba65
+msgid "System VM Type. Select the type of system virtual machine that this offering is intended to support."
+msgstr ""
+
+#: ../../service_offerings.rst:393
+# 8086a4f1336049c19479206b751d04ea
+msgid "Storage type. The type of disk that should be allocated. Local allocates from storage attached directly to the host where the system VM is running. Shared allocates from storage accessible via NFS."
+msgstr ""
+
+#: ../../service_offerings.rst:398
+# 913ba08b0770492cba53d3d247655710
+msgid "# of CPU cores. The number of cores which should be allocated to a system VM with this offering"
+msgstr ""
+
+#: ../../service_offerings.rst:401
+# fb5a2f7abf0a4e18b7847db64d898bc2
+msgid "CPU (in MHz). The CPU speed of the cores that the system VM is allocated. For example, \"2000\" would provide for a 2 GHz clock."
+msgstr ""
+
+#: ../../service_offerings.rst:404
+# de2eaf45f59b471b9d37d34ab02ce6e2
+msgid "Memory (in MB). The amount of memory in megabytes that the system VM should be allocated. For example, \"2048\" would provide for a 2 GB RAM allocation."
+msgstr ""
+
+#: ../../service_offerings.rst:408
+# c1d2470c7b62430481a4de61c2356410
+msgid "Network Rate. Allowed data transfer rate in MB per second."
+msgstr ""
+
+#: ../../service_offerings.rst:410
+# a7d7af4efcf94e478441f58eb4ab9ec1
+msgid "Offer HA. If yes, the administrator can choose to have the system VM be monitored and as highly available as possible."
+msgstr ""
+
+#: ../../service_offerings.rst:413
+# 41c4d5f0752e44e98e557a65b65a14c0
+msgid "Storage Tags. The tags that should be associated with the primary storage used by the system VM."
+msgstr ""
+
+#: ../../service_offerings.rst:416
+# 22cd45b0933841f3bf3106245a42af05
+msgid "Host Tags. (Optional) Any tags that you use to organize your hosts"
+msgstr ""
+
+#: ../../service_offerings.rst:418
+# c8df696c132647959ca16dcad278053e
+msgid "CPU cap. Whether to limit the level of CPU usage even if spare capacity is available."
+msgstr ""
+
+#: ../../service_offerings.rst:430
+# 53c64783d59d4debb2c9c1ebe4a0bb7d
+msgid "Network Throttling"
+msgstr ""
+
+#: ../../service_offerings.rst:432
+# 26cf64df6529406f922adcedb9234f9f
+msgid "Network throttling is the process of controlling the network access and bandwidth usage based on certain rules. CloudStack controls this behaviour of the guest networks in the cloud by using the network rate parameter. This parameter is defined as the default data transfer rate in Mbps (Megabits Per Second) allowed in a guest network. It defines the upper limits for network utilization. If the current utilization is below the allowed upper limits, access is granted, else revoked."
+msgstr ""
+
+#: ../../service_offerings.rst:440
+# 27806198975d424082e8dab6ce49f0b4
+msgid "You can throttle the network bandwidth either to control the usage above a certain limit for some accounts, or to control network congestion in a large cloud environment. The network rate for your cloud can be configured on the following:"
+msgstr ""
+
+#: ../../service_offerings.rst:445
+# 7432018ff67f4894a723bdca6bff087b
+msgid "Network Offering"
+msgstr ""
+
+#: ../../service_offerings.rst:447
+# 506188e4ff414063a2491e10c81e51c9
+msgid "Service Offering"
+msgstr ""
+
+#: ../../service_offerings.rst:449
+# 320ac2d073ce4bf5af25029badc0cdb4
+msgid "Global parameter"
+msgstr ""
+
+#: ../../service_offerings.rst:451
+# 9c2fc1907fa34cf7b21cefc002bff096
+msgid "If network rate is set to NULL in service offering, the value provided in the vm.network.throttling.rate global parameter is applied. If the value is set to NULL for network offering, the value provided in the network.throttling.rate global parameter is considered."
+msgstr ""
+
+#: ../../service_offerings.rst:456
+# 70d2185fb70847edb5c332fb612484e7
+msgid "For the default public, storage, and management networks, network rate is set to 0. This implies that the public, storage, and management networks will have unlimited bandwidth by default. For default guest networks, network rate is set to NULL. In this case, network rate is defaulted to the global parameter value."
+msgstr ""
+
+#: ../../service_offerings.rst:462
+# 88f665be2f3e4cfd87c6d89ae2b118ef
+msgid "The following table gives you an overview of how network rate is applied on different types of networks in CloudStack."
+msgstr ""
+
+#: ../../service_offerings.rst:466
+# 2df7571b44394db29aa0803e1bd515ae
+msgid "Networks"
+msgstr ""
+
+#: ../../service_offerings.rst:466
+# 30beee005ab04cb3947aa3a093695d15
+msgid "Network Rate Is Taken from"
+msgstr ""
+
+#: ../../service_offerings.rst:468
+# 2d1b0256284f4e9196bed7491709337e
+msgid "Guest network of Virtual Router"
+msgstr ""
+
+#: ../../service_offerings.rst:468
+#: ../../service_offerings.rst:469
+# 710cff98d40d47b1b4691f4ef4cc0ed7
+# 7301bab7c1654ab09e4495741b32f409
+msgid "Guest Network Offering"
+msgstr ""
+
+#: ../../service_offerings.rst:469
+# b9550d4e593644f7997ae2b59833d30e
+msgid "Public network of Virtual Router"
+msgstr ""
+
+#: ../../service_offerings.rst:470
+# 5fbb2616fe4146139b5adddf90e140c5
+msgid "Storage network of Secondary Storage VM"
+msgstr ""
+
+#: ../../service_offerings.rst:470
+#: ../../service_offerings.rst:471
+#: ../../service_offerings.rst:472
+#: ../../service_offerings.rst:473
+#: ../../service_offerings.rst:474
+#: ../../service_offerings.rst:475
+#: ../../service_offerings.rst:476
+#: ../../service_offerings.rst:477
+# 149bbe361c7b4f85bc046a55d9a0147e
+# f68c6d576d58455194ee074721af9ab1
+# 6767654cd1d74942a8dc4a4a997c0e62
+# 9784131010fd47ce8cbdf1d9b322bdd6
+# fcb50bbb01464259bf0060a49547950f
+# 3499985b0b95428c8cf13bdceeacae5c
+# 9eb605f5c4204f7a93451b0af6b0ac63
+# a5eff8a6947548b99a5e9c63a24f4890
+msgid "System Network Offering"
+msgstr ""
+
+#: ../../service_offerings.rst:471
+# d0e8015a02d74f79a085327db997c47a
+msgid "Management network of Secondary Storage VM"
+msgstr ""
+
+#: ../../service_offerings.rst:472
+# 5ec6da9e6d934d9fad3bede5813f70f9
+msgid "Storage network of Console Proxy VM"
+msgstr ""
+
+#: ../../service_offerings.rst:473
+# 4cf8b23c38354b708cd82d9c7e31ff03
+msgid "Management network of Console Proxy VM"
+msgstr ""
+
+#: ../../service_offerings.rst:474
+# 2ff0726b224449c08b32d13597df71a7
+msgid "Storage network of Virtual Router"
+msgstr ""
+
+#: ../../service_offerings.rst:475
+# 91083f647e9345d4a21912156d7990dd
+msgid "Management network of Virtual Router"
+msgstr ""
+
+#: ../../service_offerings.rst:476
+# 20a8e9d21dda41208554a4065467ea8e
+msgid "Public network of Secondary Storage VM"
+msgstr ""
+
+#: ../../service_offerings.rst:477
+# 801f07af30a34b239adb18ef1edcd47c
+msgid "Public network of Console Proxy VM"
+msgstr ""
+
+#: ../../service_offerings.rst:478
+# 860138dcf0344072bed2a8184a5336c7
+msgid "Default network of a guest VM"
+msgstr ""
+
+#: ../../service_offerings.rst:478
+# a6f07fe2acf94351951e197227848984
+msgid "Compute Offering"
+msgstr ""
+
+#: ../../service_offerings.rst:479
+# bb5e6134192f48038cbdfcc8141882da
+msgid "Additional networks of a guest VM"
+msgstr ""
+
+#: ../../service_offerings.rst:479
+# 9cdc4ff5ef2e42b39986c9157d856fc7
+msgid "Corresponding Network Offerings"
+msgstr ""
+
+#: ../../service_offerings.rst:482
+# 82ee01b4006f4ba48baf48b75381dac7
+msgid "A guest VM must have a default network, and can also have many additional networks. Depending on various parameters, such as the host and virtual switch used, you can observe a difference in the network rate in your cloud. For example, on a VMware host the actual network rate varies based on where they are configured (compute offering, network offering, or both); the network type (shared or isolated); and traffic direction (ingress or egress)."
+msgstr ""
+
+#: ../../service_offerings.rst:490
+# a3a45b2e646846f984140407ef18cd47
+msgid "The network rate set for a network offering used by a particular network in CloudStack is used for the traffic shaping policy of a port group, for example: port group A, for that network: a particular subnet or VLAN on the actual network. The virtual routers for that network connects to the port group A, and by default instances in that network connects to this port group. However, if an instance is deployed with a compute offering with the network rate set, and if this rate is used for the traffic shaping policy of another port group for the network, for example port group B, then instances using this compute offering are connected to the port group B, instead of connecting to port group A."
+msgstr ""
+
+#: ../../service_offerings.rst:501
+# 439cfd7a4cdd405c9eb7e554009d476e
+msgid "The traffic shaping policy on standard port groups in VMware only applies to the egress traffic, and the net effect depends on the type of network used in CloudStack. In shared networks, ingress traffic is unlimited for CloudStack, and egress traffic is limited to the rate that applies to the port group used by the instance if any. If the compute offering has a network rate configured, this rate applies to the egress traffic, otherwise the network rate set for the network offering applies. For isolated networks, the network rate set for the network offering, if any, effectively applies to the ingress traffic. This is mainly because the network rate set for the network offering applies to the egress traffic from the virtual router to the instance. The egress traffic is limited by the rate that applies to the port group used by the instance if any, similar to shared networks."
+msgstr ""
+
+#: ../../service_offerings.rst:515
+# 1a67086f74d24fdca3d3c8ddc160b6a1
+msgid "For example:"
+msgstr ""
+
+#: ../../service_offerings.rst:517
+# 1ef70fcdcb7742dd9f1e68d72b62bab8
+msgid "Network rate of network offering = 10 Mbps"
+msgstr ""
+
+#: ../../service_offerings.rst:519
+# 4aed36fd4b1e47b994e240a5180902f7
+msgid "Network rate of compute offering = 200 Mbps"
+msgstr ""
+
+#: ../../service_offerings.rst:521
+# 728d67e125214dc69bcb42e87a0bd8ae
+msgid "In shared networks, ingress traffic will not be limited for CloudStack, while egress traffic will be limited to 200 Mbps. In an isolated network, ingress traffic will be limited to 10 Mbps and egress to 200 Mbps."
+msgstr ""
+
+#: ../../service_offerings.rst:528
+# c18fc63ba86d45f6a4a69c240bcbd863
+msgid "Changing the Default System Offering for System VMs"
+msgstr ""
+
+#: ../../service_offerings.rst:530
+# dce8139f2a074eda9f35ccab7be40838
+msgid "You can manually change the system offering for a particular System VM. Additionally, as a CloudStack administrator, you can also change the default system offering used for System VMs."
+msgstr ""
+
+#: ../../service_offerings.rst:534
+# d7758b140e8f4c8ea68093fe1bd87309
+msgid "Create a new system offering."
+msgstr ""
+
+#: ../../service_offerings.rst:536
+# 60b70b45018c4c8398470022264172b3
+msgid "For more information, see Creating a New System Service Offering."
+msgstr ""
+
+#: ../../service_offerings.rst:538
+# c8a9263bb9974a9fb39e3ce36805a635
+msgid "Back up the database:"
+msgstr ""
+
+#: ../../service_offerings.rst:544
+# 7a52c92add7a4ae696f4727651be9ba4
+msgid "Open an MySQL prompt:"
+msgstr ""
+
+#: ../../service_offerings.rst:550
+# 51c46ec1b2844020aea4f791b5a5950e
+msgid "Run the following queries on the cloud database."
+msgstr ""
+
+#: ../../service_offerings.rst:552
+# 6ee5a9e0f1d249749376ed26cf656f31
+msgid "In the disk\\_offering table, identify the original default offering and the new offering you want to use by default."
+msgstr ""
+
+#: ../../service_offerings.rst:555
+# 2611865e94844c71b289c6243b7a2e4c
+msgid "Take a note of the ID of the new offering."
+msgstr ""
+
+#: ../../service_offerings.rst:561
+# 31118e91861d48389cbab25fa138f75e
+msgid "For the original default offering, set the value of unique\\_name to NULL."
+msgstr ""
+
+#: ../../service_offerings.rst:568
+# 04fa9b26725d4ca09b7fd864838698ac
+msgid "Ensure that you use the correct value for the ID."
+msgstr ""
+
+#: ../../service_offerings.rst:570
+# 8884980ed2d74f3ab78d5bfec97e5861
+msgid "For the new offering that you want to use by default, set the value of unique\\_name as follows:"
+msgstr ""
+
+#: ../../service_offerings.rst:573
+# bc246e06f82a4bc2a0d1c4ba3aad6618
+msgid "For the default Console Proxy VM (CPVM) offering,set unique\\_name to 'Cloud.com-ConsoleProxy'. For the default Secondary Storage VM (SSVM) offering, set unique\\_name to 'Cloud.com-SecondaryStorage'. For example:"
+msgstr ""
+
+#: ../../service_offerings.rst:582
+# aebfd61c6ee344829f0ec8db45c37d75
+msgid "Restart CloudStack Management Server. Restarting is required because the default offerings are loaded into the memory at startup."
+msgstr ""
+
+#: ../../service_offerings.rst:589
+# 9f700ce4ec00451991c06d4850686fa9
+msgid "Destroy the existing CPVM or SSVM offerings and wait for them to be recreated. The new CPVM or SSVM are configured with the new offering."
+msgstr ""
+

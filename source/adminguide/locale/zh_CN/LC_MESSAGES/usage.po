@@ -1,0 +1,1655 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:05+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# f960d1bdf1ff4edcab85c8de14d937d9
+#: ../../usage.rst:18
+msgid "Working with Usage"
+msgstr "使用服务"
+
+# 15ed9c55a30744308390d710f71e001e
+#: ../../usage.rst:20
+msgid ""
+"The Usage Server is an optional, separately-installed part of CloudStack "
+"that provides aggregated usage records which you can use to create billing "
+"integration for CloudStack. The Usage Server works by taking data from the "
+"events log and creating summary usage records that you can access using the "
+"listUsageRecords API call."
+msgstr "使用服务器是CloudStack一个可选项,分别安装产品的一部分,提供了聚合使用记录您可以使用它来创建计费集成产品。使用服务器通过使用数据从事件日志和创建汇总使用记录,您可以访问使用listUsageRecords API调用。"
+
+# 96a54f49657f4ecb814c7babc3d12cd5
+#: ../../usage.rst:26
+msgid ""
+"The usage records show the amount of resources, such as VM run time or "
+"template storage space, consumed by guest instances."
+msgstr "使用记录显示数量的资源,比如虚拟机运行时间或模板存储空间，以被客人消耗为例。"
+
+# 55c9c7dee78b4ff284f8a3775ee15d80
+#: ../../usage.rst:29
+msgid ""
+"The Usage Server runs at least once per day. It can be configured to run "
+"multiple times per day."
+msgstr "使用服务器运行至少每天一次。它可以被配置为每天多次运行。"
+
+# e3e786135adc456da195d8c62094e4cf
+#: ../../usage.rst:34
+msgid "Configuring the Usage Server"
+msgstr "配置使用服务器"
+
+# 6fb60ef9e16e4db0878d21a3d8ae162b
+#: ../../usage.rst:36
+msgid "To configure the usage server:"
+msgstr "配置使用服务器"
+
+# 5adc62eff1f640a094ea087767a99266
+#: ../../usage.rst:38
+msgid ""
+"Be sure the Usage Server has been installed. This requires extra steps "
+"beyond just installing the CloudStack software. See Installing the Usage "
+"Server (Optional) in the Advanced Installation Guide."
+msgstr "确定使用服务器已经被安装。它要求安装额外的CloudStack软件步骤。参见高级安装手册中的使用服务器（可选）。"
+
+# 79b6062dbd284c60a7d174315e5ddf4f
+#: ../../usage.rst:42
+msgid "Log in to the CloudStack UI as administrator."
+msgstr "作为管理员登录到CloudStack用户界面。"
+
+# 19a9f5fbef3041d9b13807ca7c2cb8b9
+#: ../../usage.rst:44
+msgid "Click Global Settings."
+msgstr "单击全局设置"
+
+# 667e5b8b21924fb69b4fa8afbf76896b
+#: ../../usage.rst:46
+msgid ""
+"In Search, type usage. Find the configuration parameter that controls the "
+"behavior you want to set. See the table below for a description of the "
+"available parameters."
+msgstr "在搜索栏输入 usage。找到no需要改变的配置参数。下表是这些参数的详细描述。"
+
+# 8fa5855d775b43958fe08525d0e94aae
+#: ../../usage.rst:50
+msgid "In Actions, click the Edit icon."
+msgstr "在操作栏点击编辑图标。"
+
+# 63178267fdd94998ab92da5146692648
+#: ../../usage.rst:52
+msgid "Type the desired value and click the Save icon."
+msgstr "输入数值点击保存图标。"
+
+# 5d851f4543c0408f8e57dce0857766a3
+#: ../../usage.rst:54
+msgid ""
+"Restart the Management Server (as usual with any global configuration "
+"change) and also the Usage Server:"
+msgstr "重新启动管理服务器（通常在改变了全局配置之后都要进行这步）并重启使用服务器。"
+
+# b91f29141e0f4cdaaa81be318e86c10e
+#: ../../usage.rst:62
+msgid ""
+"The following table shows the global configuration settings that control the"
+" behavior of the Usage Server."
+msgstr "下表列出了全局配置中控制使用服务器的配置项。"
+
+# 1e76426d14bf4fc6915a0e1c79ef2b9a
+#: ../../usage.rst:65
+msgid "Parameter Name  Description"
+msgstr "参数名描述"
+
+# 668e6317ce104d72ab45c55b9411ea8e
+#: ../../usage.rst:67
+msgid "enable.usage.server  Whether the Usage Server is active."
+msgstr "enable.usage.server是否开启使用服务器。"
+
+# 1fcaf07a4ddb4e8c958cd1b6ef8cfe91
+#: ../../usage.rst:69
+msgid "usage.aggregation.timezone"
+msgstr "usage.aggregation.timezone"
+
+# fb381c2892df4ea7b1c44440f03ba556
+#: ../../usage.rst:71
+msgid ""
+"Time zone of usage records. Set this if the usage records and daily job "
+"execution are in different time zones. For example, with the following "
+"settings, the usage job will run at PST 00:15 and generate usage records for"
+" the 24 hours from 00:00:00 GMT to 23:59:59 GMT:"
+msgstr "记录使用信息所用的时区。如果使用记录和日程工作执行在不同的时区时进行设置。例如，进行下列设置，使用任务运行在PST 00:15和24小时内产生的从00:00:00GMT到23:59:59GMT的使用记录："
+
+# 509f3bce303a4ab7a526dcc19e3c3e50
+#: ../../usage.rst:82
+msgid ""
+"Valid values for the time zone are specified in `Appendix A, *Time Zones* "
+"<http://docs.cloudstack.apache.org/en/latest/dev.html?highlight=time%20zones"
+"#time-zones>`_"
+msgstr "时间域的有效值已经被具体化到 `Appendix A, *Time Zones* 中 <http://docs.cloudstack.apache.org/en/latest/dev.html?highlight=time%20zones#time-zones>`_"
+
+# 3133231b20dd4c9da1fe9fd7d09136a3
+#: ../../usage.rst:85
+msgid "Default: GMT"
+msgstr "默认：GMT"
+
+# 22dabfab93eb4361b26eb9088cad5134
+#: ../../usage.rst:87
+msgid "usage.execution.timezone"
+msgstr "usage.execution.timezone"
+
+# a27f0dcfc71847ee846e80cb1b5c6e66
+#: ../../usage.rst:89
+msgid ""
+"The time zone of usage.stats.job.exec.time. Valid values for the time zone "
+"are specified in `Appendix A, *Time Zones* "
+"<http://docs.cloudstack.apache.org/en/latest/dev.html?highlight=time%20zones"
+"#time-zones>`_"
+msgstr "域时间项usage.stats.job.exec.time。时间域的有效值被具体化在`Appendix A, *Time Zones* <http://docs.cloudstack.apache.org/en/latest/dev.html?highlight=time%20zones#time-zones>`_"
+
+# 101b64630291428aa4dce0f295b51f96
+#: ../../usage.rst:93
+msgid "Default: The time zone of the management server."
+msgstr "默认时区是管理服务器的时区。"
+
+# e5296f4116c949e282dda12b62a2e31b
+#: ../../usage.rst:95
+msgid "usage.sanity.check.interval"
+msgstr "usage.sanity.check.interval"
+
+# 12e3d1486808475ba2d50b4b1f480b20
+#: ../../usage.rst:97
+msgid ""
+"The number of days between sanity checks. Set this in order to periodically "
+"search for records with erroneous data before issuing customer invoices. For"
+" example, this checks for VM usage records created after the VM was "
+"destroyed, and similar checks for templates, volumes, and so on. It also "
+"checks for usage times longer than the aggregation range. If any issue is "
+"found, the alert ALERT\\_TYPE\\_USAGE\\_SANITY\\_RESULT = 21 is sent."
+msgstr "完整性检查时间间隔。设置此值来定期在生成用户账单之前检查出错误的数据。比如，他能检查虚拟机被销毁之后的使用记录和模板，卷等的类似记录。还会检查超过聚合时间的使用时间。如果发生了错误就会发送ALERT_TYPE_USAGE_SANITY_RESULT = 21 警告。"
+
+# d6a51defdc9b4ca1900dca6ee38d488b
+#: ../../usage.rst:105
+msgid "usage.stats.job.aggregation.range"
+msgstr "usage.stats.job.aggregation.range"
+
+# f200ecf1491a41c58c58d607a2030621
+#: ../../usage.rst:107
+msgid ""
+"The time period in minutes between Usage Server processing jobs. For "
+"example, if you set it to 1440, the Usage Server will run once per day. If "
+"you set it to 600, it will run every ten hours. In general, when a Usage "
+"Server job runs, it processes all events generated since usage was last run."
+msgstr "使用服务器执行任务时间间隔（分钟为单位）。比如，如果你将此值设为1440，使用服务器将每天执行一次。如果你将此值设为600，则会10小时执行一次。一般情况下使用服务器执行任务时会继续在上次的使用统计基础上处理所有事件。"
+
+# 3fb2ba9c61a64f54bb226a97eff0e59f
+#: ../../usage.rst:113
+msgid ""
+"There is special handling for the case of 1440 (once per day). In this case "
+"the Usage Server does not necessarily process all records since Usage was "
+"last run. CloudStack assumes that you require processing once per day for "
+"the previous, complete day’s records. For example, if the current day is "
+"October 7, then it is assumed you would like to process records for October "
+"6, from midnight to midnight. CloudStack assumes this “midnight to midnight”"
+" is relative to the usage.execution.timezone."
+msgstr "当值为1440（一天一次）时有点特殊。该情况下，用量服务器并不需要处理上次运行之后的所有事件。&PRODUCT;假定您要一天一次处理昨天的，完成每日记录。例如，如果今天是10月7号，会假定您要处理6号的记录，从0点到24点。CloudStack假定的0点到24点采用的时区为 usage.execution.timezone的值。"
+
+# 657e01fff8404e7086e1a5cd318ed5b9
+#: ../../usage.rst:121
+msgid "Default: 1440"
+msgstr "默认：1440"
+
+# 8e231a3dfe9b4ac494f5ae8dc3e03001
+#: ../../usage.rst:123
+msgid "usage.stats.job.exec.time"
+msgstr "usage.stats.job.exec.time"
+
+# 05f6de4a7dd947ceba3246443c6e2ace
+#: ../../usage.rst:125
+msgid ""
+"The time when the Usage Server processing will start. It is specified in "
+"24-hour format (HH:MM) in the time zone of the server, which should be GMT. "
+"For example, to start the Usage job at 10:30 GMT, enter “10:30”."
+msgstr "使用服务器处理任务的启动时间。采用24小时格式 （HH:MM），时区为服务器的时区，应该为GMT。比如要在GMT时区10:30 启动用量任务，请输入“10:30”"
+
+# 54677f1477574ba58b744ade5f531ddd
+#: ../../usage.rst:129
+msgid ""
+"If usage.stats.job.aggregation.range is also set, and its value is not 1440,"
+" then its value will be added to usage.stats.job.exec.time to get the time "
+"to run the Usage Server job again. This is repeated until 24 hours have "
+"elapsed, and the next day's processing begins again at "
+"usage.stats.job.exec.time."
+msgstr "如果同时设置了usage.stats.job.aggregation.range参数，并且该参数值不是1440，这个值将被添加到usage.stats.job.exec.time到时再次运行使用服务器任务。重复此过程,直到24小时已经过去,第二天到达 usage.stats.job.exec.time处理任务开始。"
+
+# 870bef8e0dc54e1a87ab39acc1c59e7b
+#: ../../usage.rst:135
+msgid "Default: 00:15."
+msgstr "默认：00:15。"
+
+# 3c30b2b9e20f485c8ac878c1c8b62ef5
+#: ../../usage.rst:137
+msgid ""
+"For example, suppose that your server is in GMT, your user population is "
+"predominantly in the East Coast of the United States, and you would like to "
+"process usage records every night at 2 AM local (EST) time. Choose these "
+"settings:"
+msgstr "比如,假设你服务器时区是GMT，你的用户主要在美国东海岸，而你有打算在当地时间（EST）每天凌晨两点执行使用记录统计。选择这些选项："
+
+# 910e4a77b6c34e64ad844e417ab623d5
+#: ../../usage.rst:142
+msgid "enable.usage.server = true"
+msgstr "enable.usage.server = true"
+
+# 078da3cc8569439c9002cbbb7337d936
+#: ../../usage.rst:144
+msgid "usage.execution.timezone = America/New\\_York"
+msgstr "usage.execution.timezone = America/New\\_York"
+
+# 42e66162ae97481083688b89c626c8cc
+#: ../../usage.rst:146
+msgid ""
+"usage.stats.job.exec.time = 07:00. This will run the Usage job at 2:00 AM "
+"EST. Note that this will shift by an hour as the East Coast of the U.S. "
+"enters and exits Daylight Savings Time."
+msgstr "usage.stats.job.exec.time = 07:00。这将会在东部时间2：00执行使用任务。注意考虑进出白昼保存时间在将时间迁移大U.S.东海岸。"
+
+# 5ba2fd5fa7004081a393783418655cdd
+#: ../../usage.rst:150
+msgid "usage.stats.job.aggregation.range = 1440"
+msgstr "usage.stats.job.aggregation.range = 1440"
+
+# 1c9ce06adfa54705878ac2e20fcc8462
+#: ../../usage.rst:152
+msgid ""
+"With this configuration, the Usage job will run every night at 2 AM EST and "
+"will process records for the previous day’s midnight-midnight as defined by "
+"the EST (America/New\\_York) time zone."
+msgstr "在这种配置下，使用任务 会在东部时间每天2 AM执行，同时会如定义的一样以东部时间(美国纽约时间)统计前一天的“午夜到午夜使用记录。”"
+
+# 1e914c7e818e47d8b13676d7f92bbe0b
+#: ../../usage.rst:157
+msgid ""
+"Because the special value 1440 has been used for "
+"usage.stats.job.aggregation.range, the Usage Server will ignore the data "
+"between midnight and 2 AM. That data will be included in the next day's run."
+msgstr "由于在usage.stats.job.aggregation.range中使用特殊值1440，用量服务器将忽略午夜到凌晨2：00之间的数据。这些数据将会包含在第二天的统计中。"
+
+# 40d99d806e4949158aa5ab2e841cfa2a
+#: ../../usage.rst:164
+msgid "Setting Usage Limits"
+msgstr "设置使用限制"
+
+# 579aaca84d1548508b091885f6e9e9da
+#: ../../usage.rst:166
+msgid ""
+"CloudStack provides several administrator control points for capping "
+"resource usage by users. Some of these limits are global configuration "
+"parameters. Others are applied at the ROOT domain and may be overridden on a"
+" per-account basis."
+msgstr "CloudStack提供多个管理员控制点以便控制用户资源使用。其中一些限制是全局配置参数。其他一些应用在root域，并且会覆盖每个账号的基本配置"
+
+# 229ad89efb9c4cb0ab03a6ce99f44f23
+#: ../../usage.rst:173
+msgid "Globally Configured Limits"
+msgstr "全局配置限制"
+
+# e2b6313d1a4d4917a2544b4440379415
+#: ../../usage.rst:175
+msgid ""
+"In a zone, the guest virtual network has a 24 bit CIDR by default. This "
+"limits the guest virtual network to 254 running instances. It can be "
+"adjusted as needed, but this must be done before any instances are created "
+"in the zone. For example, 10.1.1.0/22 would provide for ~1000 addresses."
+msgstr "在一个域中，客户虚拟网络默认有24位CIDR.它限制了客户网络运行上线是254个实例。它可以根据需求调节，但必须在域中实例创建之前。例如，10.1.1.0/22 将提供 ~1000 地址。"
+
+# 84670b12426b4429831f536c401fc323
+#: ../../usage.rst:181
+msgid "The following table lists limits set in the Global Configuration:"
+msgstr "下表列出了设置全局配置的限制："
+
+# 7da9c9f6c4464762b975b5c84e4ebf9c
+# 146d490544914790b152209b009cacb9
+# 1bb822fa0c3e4b7db77988b5cf5efdbd
+# c79e2332c1ba4ad5883126f553ad5388
+#: ../../usage.rst:184 ../../usage.rst:239 ../../usage.rst:343
+#: ../../usage.rst:414
+msgid "Parameter Name"
+msgstr "参数名称"
+
+# 69e6a02d3513471b89dca9419976e56b
+#: ../../usage.rst:184
+msgid "Definition"
+msgstr "定义"
+
+# 8f803160c7ef4b258545cf19783a2cb2
+#: ../../usage.rst:186
+msgid "max.account.public.ips"
+msgstr "max.account.public.ips"
+
+# 33a9e7f75edb450eb385f759769e8a27
+#: ../../usage.rst:186
+msgid "Number of public IP addresses that can be owned by an account"
+msgstr "账户可拥有的公用IP地址个数"
+
+# 9d54d7043dfa4cfdba9892d7b4987d27
+#: ../../usage.rst:188
+msgid "max.account.snapshots"
+msgstr "max.account.snapshots"
+
+# 53e9c6336fc343f58d5d0f0c982ecd16
+#: ../../usage.rst:188
+msgid "Number of snapshots that can exist for an account"
+msgstr "快照的数量存在于一个记述中"
+
+# 6979458b8f824d9ea8eb1a932cb3700a
+#: ../../usage.rst:190
+msgid "max.account.templates"
+msgstr "max.account.templates"
+
+# a450954b78c549129d90f452f3261c83
+#: ../../usage.rst:190
+msgid "Number of templates that can exist for an account"
+msgstr "模板的数量可能存于一个记述中"
+
+# e090c2956d874c139e10f94be47e21bd
+#: ../../usage.rst:192
+msgid "max.account.user.vms"
+msgstr "max.account.user.vms"
+
+# d30280c4822b48cf86341f0c6f0e9f40
+#: ../../usage.rst:192
+msgid "Number of virtual machine instances that can exist for an account"
+msgstr "虚拟机实例的数量也可能存在于一个记述中"
+
+# ecaf59ece9264e429a9664b72c83c9d5
+#: ../../usage.rst:194
+msgid "max.account.volumes"
+msgstr "max.account.volumes"
+
+# 352d53dede964c53adaba408485377bb
+#: ../../usage.rst:194
+msgid "Number of disk volumes that can exist for an account"
+msgstr "磁盘卷的数量也可能存于一个记述中"
+
+# 4855308d9e7f453ca68c4f73a23b7da2
+#: ../../usage.rst:196
+msgid "max.template.iso.size"
+msgstr "max.template.iso.size"
+
+# c3cf19fabb7b41c6bfeda6bfcb0d40c6
+#: ../../usage.rst:196
+msgid "Maximum size for a downloaded template or ISO in GB"
+msgstr "下载的模板或ISO最大的单位是GB"
+
+# e2bd816e02a74341ac3b504ef37abf9b
+#: ../../usage.rst:198
+msgid "max.volume.size.gb"
+msgstr "max.volume.size.gb"
+
+# ac589029cbaa451fb486f219b27caf43
+#: ../../usage.rst:198
+msgid "Maximum size for a volume in GB"
+msgstr "卷的最大单位是GB"
+
+# 3b152b7effc14a2098e6b2f885125e11
+#: ../../usage.rst:200
+msgid "network.throttling.rate"
+msgstr "network.throttling.rate"
+
+# d66b6e2b68304b4d97dae0d72709be2f
+#: ../../usage.rst:200
+msgid ""
+"Default data transfer rate in megabits per second allowed per user "
+"(supported on XenServer)"
+msgstr "默认的传输速率是允许用户按照Mb每秒(支持XenServer)"
+
+# e01d028d0d5643a3a283f12888581998
+#: ../../usage.rst:202
+msgid "snapshot.max.hourly"
+msgstr "snapshot.max.hourly"
+
+# 305a224a1c5946ab949570233597705b
+#: ../../usage.rst:202
+msgid ""
+"Maximum recurring hourly snapshots to be retained for a volume. If the limit"
+" is reached, early snapshots from the start of the hour are deleted so that "
+"newer ones can be saved. This limit does not apply to manual snapshots. If "
+"set to 0, recurring hourly snapshots can not be scheduled"
+msgstr "最大的可再现时时性快照可以保存在卷中。如果数量的限制达到，早期的来自开始阶段的快照就会被删除以使新的快照可以被存储。这种限制方法不支持手工快照。若设为0，可再现性时时快照将没有保存。"
+
+# 7734cc014872464a8d8672c1190ff731
+#: ../../usage.rst:204
+msgid "snapshot.max.daily"
+msgstr "snapshot.max.daily"
+
+# ddca821bebdf4a12a2b4fb3d9e089efe
+#: ../../usage.rst:204
+msgid ""
+"Maximum recurring daily snapshots to be retained for a volume. If the limit "
+"is reached, snapshots from the start of the day are deleted so that newer "
+"ones can be saved. This limit does not apply to manual snapshots. If set to "
+"0, recurring daily snapshots can not be scheduled"
+msgstr "最大的可再现时时性快照可以保存在卷中。如果数量的限制达到，早期的来自开始阶段的快照就会被删除以使新的快照可以被存储。这种限制方法不支持手工快照。若设为0，可再现性时时快照将没有保存。"
+
+# 90b70954860841d5a31b17b85cc10f84
+#: ../../usage.rst:206
+msgid "snapshot.max.weekly"
+msgstr "snapshot.max.weekly"
+
+# 8ee51877c42a40da9039bdc877f388c5
+#: ../../usage.rst:206
+msgid ""
+"Maximum recurring weekly snapshots to be retained for a volume. If the limit"
+" is reached, snapshots from the beginning of the week are deleted so that "
+"newer ones can be saved. This limit does not apply to manual snapshots. If "
+"set to 0, recurring weekly snapshots can not be scheduled"
+msgstr "最大的可再现时时性快照可以保存在卷中。如果数量的限制达到，早期的来自开始阶段的快照就会被删除以使新的快照可以被存储。这种限制方法不支持手工快照。若设为0，可再现性时时快照将没有保存。"
+
+# 65aa1a30aab34f218756e423bac8f482
+#: ../../usage.rst:208
+msgid "snapshot.max.monthly"
+msgstr "snapshot.max.monthly"
+
+# 631eba2a40fe48f3b4f179dfe6e9fdc7
+#: ../../usage.rst:208
+msgid ""
+"Maximum recurring monthly snapshots to be retained for a volume. If the "
+"limit is reached, snapshots from the beginning of the month are deleted so "
+"that newer ones can be saved. This limit does not apply to manual snapshots."
+" If set to 0, recurring monthly snapshots can not be scheduled."
+msgstr "最大的可再现时时性快照可以保存在卷中。如果数量的限制达到，早期的来自开始阶段的快照就会被删除以使新的快照可以被存储。这种限制方法不支持手工快照。若设为0，可再现性时时快照将没有保存。"
+
+# dce0ccf760cb481290483d2e6c7439e4
+#: ../../usage.rst:211
+msgid ""
+"To modify global configuration parameters, use the global configuration "
+"screen in the CloudStack UI. See Setting Global Configuration Parameters"
+msgstr "使用CloudStack中的用户界面中的全局配置界面可以修改全局配置参数。"
+
+# adacfb1bcc74482cbac23e9a14c1803c
+#: ../../usage.rst:216
+msgid "Limiting Resource Usage"
+msgstr "限制资源使用"
+
+# 354d5dde0afe47a982710d8800da3315
+#: ../../usage.rst:218
+msgid ""
+"CloudStack allows you to control resource usage based on the types of "
+"resources, such as CPU, RAM, Primary storage, and Secondary storage. A new "
+"set of resource types has been added to the existing pool of resources to "
+"support the new customization model—need-basis usage, such as large VM or "
+"small VM. The new resource types are now broadly classified as CPU, RAM, "
+"Primary storage, and Secondary storage. The root administrator is able to "
+"impose resource usage limit by the following resource types for Domain, "
+"Project, and Accounts."
+msgstr "CloudStack允许根据资源类型控制资源使用，例如CPU,RAM,主存储，辅助存储。一个新的资源类型集已经被添加到了已经存在的支持新通俗模型的资源池-基于需要使用，例如大型VM或者小型VM.新的资源类型被广泛分类在如CPU,RAM,主存储和辅助存储中。超级管理员能够利用下列资源的使用限制，例如域，项目或者账户。"
+
+# b80deb66aa1244279f48b9e17db7f7a0
+#: ../../usage.rst:227
+msgid "CPUs"
+msgstr "CPUs"
+
+# a7c54e874cae4016b7a1d2a17c5a7a89
+#: ../../usage.rst:229
+msgid "Memory (RAM)"
+msgstr "Memory (RAM)"
+
+# 3db51597d1dd4f328899070b88325384
+#: ../../usage.rst:231
+msgid "Primary Storage (Volumes)"
+msgstr "主存储(卷)"
+
+# 6de9a84059e7408e85e9fdb47dbb341d
+#: ../../usage.rst:233
+msgid "Secondary Storage (Snapshots, Templates, ISOs)"
+msgstr "辅助存储（快照，模板，ISOs）"
+
+# 36f9c552269b44e49eb2f86fa2bd98c8
+#: ../../usage.rst:235
+msgid ""
+"To control the behaviour of this feature, the following configuration "
+"parameters have been added:"
+msgstr "为了控制该特征的行为，以下配置参数已经添加："
+
+# fc46eaac2efd4bf289bbd9025fd78502
+# 160c8719552a4684880d4f4a8ada714c
+# 947dba25316d4d74959935b65c8c5a33
+# 161ab30e9a60413d90729511c5fe9ec1
+#: ../../usage.rst:239 ../../usage.rst:345 ../../usage.rst:416
+#: ../../usage.rst:750
+msgid "Description"
+msgstr "描述"
+
+# 23d6c966c2c94a1f986282a729352f38
+#: ../../usage.rst:241
+msgid "max.account.cpus"
+msgstr "max.account.cpus"
+
+# cdd19d9379ec43648cd224ba64a960dd
+# 2ca1b2c4fdc44e0e940da7f75cb5788b
+#: ../../usage.rst:241 ../../usage.rst:249
+msgid ""
+"Maximum number of CPU cores that can be used for an account. Default is 40."
+msgstr "最大的可以被账户使用的CPU核心个数。默认是40."
+
+# 4979d3f2676e4809a49cc696c48d2f8d
+#: ../../usage.rst:243
+msgid "max.account.ram (MB)"
+msgstr "max.account.ram (MB)"
+
+# f3c0b37fc2ea4617b811cef9791eda3b
+# 00fb0cdbac5b4ad291bc50a5e1219a47
+#: ../../usage.rst:243 ../../usage.rst:251
+msgid "Maximum RAM that can be used for an account. Default is 40960."
+msgstr "最大的可以被账户使用的RMA容量。默认值是40960。"
+
+# 45df7928f7174808a2083dd11add33c0
+#: ../../usage.rst:245
+msgid "max.account.primary.storage (GB)"
+msgstr "max.account.primary.storage (GB)"
+
+# 1ee6c5009abd4668a5dd0a640a18c8ea
+# 254b02916fc34ad6a649c8c990d4f41a
+#: ../../usage.rst:245 ../../usage.rst:253
+msgid ""
+"Maximum primary storage space that can be used for an account. Default is "
+"200."
+msgstr "最大的可以被账户使用的主存储个数。默认是200。"
+
+# cdeb23ce821d4c3196c6ea784f4367b6
+#: ../../usage.rst:247
+msgid "max.account.secondary.storage (GB)"
+msgstr "max.account.secondary.storage (GB)"
+
+# c51c46bd539f4093a4393f2d6d4e9b79
+# 982aa6e78c6f4ecda0f24acd5f6564d3
+#: ../../usage.rst:247 ../../usage.rst:255
+msgid ""
+"Maximum secondary storage space that can be used for an account. Default is "
+"400."
+msgstr "最大的可被账户使用的辅助存储空间。默认是400。"
+
+# 01081c6a660a44f5851d914915a1281b
+#: ../../usage.rst:249
+msgid "max.project.cpus"
+msgstr "max.project.cpus"
+
+# b7aede866d8a41298cf2c284450aea39
+#: ../../usage.rst:251
+msgid "max.project.ram (MB)"
+msgstr "max.project.ram (MB)"
+
+# 6a66f463c8a14145b745751a99ff5412
+#: ../../usage.rst:253
+msgid "max.project.primary.storage (GB)"
+msgstr "max.project.primary.storage (GB)"
+
+# 86d804726f994f5ea14d1a29e97eb968
+#: ../../usage.rst:255
+msgid "max.project.secondary.storage (GB)"
+msgstr "max.project.secondary.storage (GB)"
+
+# 8ea9def42949482d99838f5ebe00a5e2
+#: ../../usage.rst:261
+msgid "User Permission"
+msgstr "用户许可"
+
+# 31b6a320c933489c96b4ce8db09ee012
+#: ../../usage.rst:263
+msgid ""
+"The root administrator, domain administrators and users are able to list "
+"resources. Ensure that proper logs are maintained in the ``vmops.log`` and "
+"``api.log`` files."
+msgstr "超级管理员，域管理员和用户能够列出资源。确保合适的属性日至保存在 ``vmops.log`` 和 ``api.log``文件中。"
+
+# 41b569e3765441d69d540fed030e34e2
+#: ../../usage.rst:267
+msgid ""
+"The root admin will have the privilege to list and update resource limits."
+msgstr "超级管理员将有列出和升级资源限制的特权。"
+
+# 9f791a84c2014d73b5f8b74f287ad010
+#: ../../usage.rst:270
+msgid ""
+"The domain administrators are allowed to list and change these resource "
+"limits only for the sub-domains and accounts under their own domain or the "
+"sub-domains."
+msgstr "域管理员仅允许列出和改变在其拥有的域或者子域的子域和账户的资源限制。"
+
+# df23a35291874e2d9f7af5d93db4dae4
+#: ../../usage.rst:274
+msgid ""
+"The end users will the privilege to list resource limits. Use the "
+"listResourceLimits API."
+msgstr "终端用户拥有改变列出资源限制的特权。使用listResourceLimits API.。"
+
+# 474425750935446e84565dc2a2f561b6
+#: ../../usage.rst:279
+msgid "Limit Usage Considerations"
+msgstr "限制使用注意事项："
+
+# c96935ecfc1545448c6a31bf7e9bcefa
+#: ../../usage.rst:281
+msgid ""
+"Primary or Secondary storage space refers to the stated size of the volume "
+"and not the physical size— the actual consumed size on disk in case of thin "
+"provisioning."
+msgstr "主存储或者辅助存储空间参考启动的容器大小而不是物理容量，实际使用的物理空间要小于提供的空间。"
+
+# 003d62e3a41b4ec0838c1ad1e22ab0c8
+#: ../../usage.rst:285
+msgid ""
+"If the admin reduces the resource limit for an account and set it to less "
+"than the resources that are currently being consumed, the existing "
+"VMs/templates/volumes are not destroyed. Limits are imposed only if the user"
+" under that account tries to execute a new operation using any of these "
+"resources. For example, the existing behavior in the case of a VM are:"
+msgstr "如果管理员为账户减少资源限制，并设置少于目前设定的资源数，已经存在的VM/模板/卷也不会破坏。限制仅在账户中的用户试图使用这些资源执行新的操作时表现出来。例如，在一个VM中倘若存在下列行为："
+
+# 61f14d0421dc4f27885ac8f93946dbe6
+#: ../../usage.rst:292
+msgid ""
+"migrateVirtualMachine: The users under that account will be able to migrate "
+"the running VM into any other host without facing any limit issue."
+msgstr "迁移虚拟机：在账户中的用户试图迁移一个正在运行的VM到任何不面临限制问题的主机。"
+
+# 287edb83794948b4b1509e7c1ed82b17
+#: ../../usage.rst:296
+msgid "recoverVirtualMachine: Destroyed VMs cannot be recovered."
+msgstr "恢复虚拟机：破坏的VM不能被修复。"
+
+# 2b57273cf486489e856ef1a97146d73a
+#: ../../usage.rst:298
+msgid ""
+"For any resource type, if a domain has limit X, sub-domains or accounts "
+"under that domain can have there own limits. However, the sum of resource "
+"allocated to a sub-domain or accounts under the domain at any point of time "
+"should not exceed the value X."
+msgstr "对于更多资源类型，如果一个域存在限制X，这个域的子域或者账户也能也有它们自身的限制。尽管如此，一个子域允许分配的资源总和或者域中账户在任何时间点都不能执行X限制。"
+
+# 9f35315b3f6b4560abe71837984f2ed7
+#: ../../usage.rst:303
+msgid ""
+"For example, if a domain has the CPU limit of 40 and the sub-domain D1 and "
+"account A1 can have limits of 30 each, but at any point of time the resource"
+" allocated to D1 and A1 should not exceed the limit of 40."
+msgstr "例如，当一个域有CPU的限制数量为40，其子域D1和账户A1可以有每个30的限制，但是任何时候分配给D1和A1的资源都不能超过限制40."
+
+# cfc912fe9e294238a5a41841f8636ecf
+#: ../../usage.rst:308
+msgid ""
+"If any operation needs to pass through two of more resource limit check, "
+"then the lower of 2 limits will be enforced, For example: if an account has "
+"the VM limit of 10 and CPU limit of 20, and a user under that account "
+"requests 5 VMs of 4 CPUs each. The user can deploy 5 more VMs because VM "
+"limit is 10. However, the user cannot deploy any more instances because the "
+"CPU limit has been exhausted."
+msgstr "如果一些操作需要通过两个或更多的资源限制核查，最少的两个限制将被执行，例如：如果一个账户有10个限制VM和20个限制CPU,用户在账户中申请每4个CPU5个VM。用户可以部署5个或更多的VM,因为VM的限制个数是10。尽管如此，用户不能部署任何实例，因为CPU的限制已经用尽。"
+
+# fd7e43ba4fc2492cb1117d9f171cb475
+#: ../../usage.rst:317
+msgid "Limiting Resource Usage in a Domain"
+msgstr "在一个域中限制资源使用"
+
+# d7bae8b0c64640aaab9b686ccb641ca1
+#: ../../usage.rst:319
+msgid ""
+"CloudStack allows the configuration of limits on a domain basis. With a "
+"domain limit in place, all users still have their account limits. They are "
+"additionally limited, as a group, to not exceed the resource limits set on "
+"their domain. Domain limits aggregate the usage of all accounts in the "
+"domain as well as all the accounts in all the sub-domains of that domain. "
+"Limits set at the root domain level apply to the sum of resource usage by "
+"the accounts in all the domains and sub-domains below that root domain."
+msgstr "CloudStack允许在一个域基础上配置限制。使用域限制的地点是所有的用户都有其账户的的限制。它们有额外的限制，例如群组，不能执行设置在它们域上的资源限制。域限制聚集了任何域中使用的账户和任何账户的所有域的子域。限制设定在根域层次应用于所有域的账户和子域使用的资源综合都低于根域的限制。"
+
+# 42cc77754b864082aff2b2d5e091fa0f
+#: ../../usage.rst:328
+msgid "To set a domain limit:"
+msgstr "设定一个域限制："
+
+# bb5fc3b2710e4ea59810c1d28209dfc2
+# b83cbc0f83d7410e8b117351958fc591
+#: ../../usage.rst:330 ../../usage.rst:401
+msgid "Log in to the CloudStack UI."
+msgstr "登录到CloudStack的界面"
+
+# 530247f4ca1a4475ae86e656ceff6abb
+#: ../../usage.rst:332
+msgid "In the left navigation tree, click Domains."
+msgstr "在导航栏左侧树中，单击域。"
+
+# a9bff41fd28c435cbb09170c5b103277
+#: ../../usage.rst:334
+msgid ""
+"Select the domain you want to modify. The current domain limits are "
+"displayed."
+msgstr "选择你想修改的域。当前域限制将被显示出来。"
+
+# 519c174598aa4e55b86e899664c75018
+# 182d21886ebb4a09aebb0ef93e1fba63
+#: ../../usage.rst:337 ../../usage.rst:408
+msgid "A value of -1 shows that there is no limit in place."
+msgstr "值为-1表明此处没有任何限制。"
+
+# b83647ec9f344cccbf360b1f8b85c119
+#: ../../usage.rst:339
+msgid "Click the Edit button |editbutton.png|"
+msgstr "单击编辑按钮 |editbutton.png|"
+
+# c209d72330bd40f887995563563a6337
+# 99aa0e22f71d481eb51b72047c456f3a
+#: ../../usage.rst:341 ../../usage.rst:412
+msgid "Edit the following as per your requirement:"
+msgstr "编辑下列每一条要求："
+
+# cd271c3e43ea4c79a12f3f84924b6307
+# f889d8a628fd4b0ba7972855f0dbdc45
+#: ../../usage.rst:347 ../../usage.rst:418
+msgid "Instance Limits"
+msgstr "实例限制："
+
+# 5ef71e88c22848aeb261dfceed3f0ad3
+#: ../../usage.rst:349
+msgid "The number of instances that can be used in a domain."
+msgstr "可以被用在域中的实例的个数"
+
+# 8eb91b3c4b884b1886b84388b430c4b5
+# 50f79b10ffa84d4e8d63df31d54a18bc
+#: ../../usage.rst:351 ../../usage.rst:424
+msgid "Public IP Limits"
+msgstr "公共IP限制"
+
+# 9c123828b8bd44759ea889e13f4ab4bb
+#: ../../usage.rst:353
+msgid "The number of public IP addresses that can be used in a domain."
+msgstr "可以被用在域中的公共IP地址的个数。"
+
+# 682adde29cb64e42b391dcb5e5cdc9ad
+# f9ffeebe6c1a4111ab27c1b8d080143f
+#: ../../usage.rst:355 ../../usage.rst:430
+msgid "Volume Limits"
+msgstr "卷限制"
+
+# 57ca197f678f416c961a36d6a71f9bf5
+#: ../../usage.rst:357
+msgid "The number of disk volumes that can be created in a domain."
+msgstr "可以被创建在雨中的磁盘卷的个数"
+
+# 014dffd5f65443088674d2ee9df38979
+# ae967a3a9a714ab2892d18c80a55f652
+#: ../../usage.rst:359 ../../usage.rst:436
+msgid "Snapshot Limits"
+msgstr "快照限制"
+
+# 11f338d7f95041eaa7b84b9960a9f12f
+#: ../../usage.rst:361
+msgid "The number of snapshots that can be created in a domain."
+msgstr "可以被创建在域中的快照个数"
+
+# 07a01397e2404e18a667da23df9e7bf3
+# 6ba3ca1a17df418cac4387d71ddd7656
+#: ../../usage.rst:363 ../../usage.rst:442
+msgid "Template Limits"
+msgstr "模板限制"
+
+# 6dc70a7ce5ec48f3bcf254b4a20b4145
+#: ../../usage.rst:365
+msgid "The number of templates that can be registered in a domain."
+msgstr "可以在域中注册的模板数量"
+
+# 3bf5c725f231453cb6152f1bade12d17
+# 0b2a474b089d426d850f25818db1d152
+#: ../../usage.rst:367 ../../usage.rst:448
+msgid "VPC limits"
+msgstr "VPC限制"
+
+# 6041d380cc8b460e838d34d542c0fe6f
+#: ../../usage.rst:369
+msgid "The number of VPCs that can be created in a domain."
+msgstr "可以被创建在域中的VPC的个数"
+
+# 6167d0a236e346cdac41980cca4b61a1
+# efac374c510144af805a206947596f0d
+#: ../../usage.rst:371 ../../usage.rst:454
+msgid "CPU limits"
+msgstr "CPU限制"
+
+# c3bb1f4173a04335bd9f9a2aa60ffb7f
+#: ../../usage.rst:373
+msgid "The number of CPU cores that can be used for a domain."
+msgstr "可以在域中使用的CPU核心数。"
+
+# 5b77e8eb1eed4b89a6add832c6efa78d
+# 0f97c6c6f6bd48d49582e4a5773420a0
+#: ../../usage.rst:375 ../../usage.rst:460
+msgid "Memory limits (MB)"
+msgstr "内存限制(MB)"
+
+# 46ff0275d44b492790fbf06cfcc202f9
+#: ../../usage.rst:377
+msgid "The number of RAM that can be used for a domain."
+msgstr "可以在域中使用的RAM数量。"
+
+# cfada3bdc3304c91b6093699cc7aba26
+# e09ca8ab179747818fc4be09918773c3
+#: ../../usage.rst:379 ../../usage.rst:466
+msgid "Primary Storage limits (GB)"
+msgstr "主存储限制(GB)"
+
+# fadd0e1341ce4a40a364f8e7e5cbd720
+#: ../../usage.rst:381
+msgid "The primary storage space that can be used for a domain."
+msgstr "在域中可以使用的主存储空间大小。"
+
+# 94e6ad3512c64a968eba503aae4228e9
+# 88b20b1a22f5450abfd0371827b8a662
+#: ../../usage.rst:383 ../../usage.rst:472
+msgid "Secondary Storage limits (GB)"
+msgstr "辅助存储限制(GB)"
+
+# af7bbd32f2d744bbb6bc8bc38f2a6fff
+#: ../../usage.rst:385
+msgid "The secondary storage space that can be used for a domain."
+msgstr "在域中可使用的辅助存储空间大小。"
+
+# 9c4e390eeaf74125aff2fabb290d7508
+# 8554c878b3db4319b1e9ff271f3f2e16
+#: ../../usage.rst:387 ../../usage.rst:478
+msgid "Click Apply."
+msgstr "点击应用"
+
+# 0aea17dfad1c43818257b74482bdc4ec
+#: ../../usage.rst:391
+msgid "Default Account Resource Limits"
+msgstr "默认账户资源限制"
+
+# 5aec04d06e414d8c85567ee7ad5fa5a2
+#: ../../usage.rst:393
+msgid ""
+"You can limit resource use by accounts. The default limits are set by using "
+"Global configuration parameters, and they affect all accounts within a "
+"cloud. The relevant parameters are those beginning with max.account, for "
+"example: max.account.snapshots."
+msgstr "你可以限制账户使用的资源。默认限制通过全局配置参数设置，它们影响在云中的所有账户。其相关参数开始于max.account,例如:max.account.snapshots。"
+
+# 49c964b0ef8840ef953d87ef3115cf7f
+#: ../../usage.rst:398
+msgid ""
+"To override a default limit for a particular account, set a per-account "
+"resource limit."
+msgstr "对于覆盖一个默认限制的特殊账户，设置per-account资源限制。"
+
+# 7954a55684b74afbb3e48736fb619dfe
+#: ../../usage.rst:403
+msgid "In the left navigation tree, click Accounts."
+msgstr "在导航树左侧，单击账户。"
+
+# 30a0c7b93a044a24b1bbcab3362c9130
+#: ../../usage.rst:405
+msgid ""
+"Select the account you want to modify. The current limits are displayed."
+msgstr "选择你想修改的账户。当前限制将显示出来。"
+
+# 247dcfe79c914ac0a42c2bb5f617c3b2
+#: ../../usage.rst:410
+msgid "Click the Edit button. |editbutton.png|"
+msgstr "单击编辑按钮。|editbutton.png|"
+
+# a5b53a96d84f4cb993b2539562072ba0
+#: ../../usage.rst:420
+msgid "The number of instances that can be used in an account."
+msgstr "在一个账户中可以适用的实例个数。"
+
+# 4f148fb22eeb4cd5867de40af5d6957d
+# f6aef839dc7e4814a93524ac42691632
+# c8a80cc9dabc47b7908b2be9906b47e6
+# b1fc64706b924e37bcdf44b959b1a10b
+# a4c96e4f6931454c803ad5d310dd832a
+# 37ebe0cf9b3644a59962fb5255cd1e7c
+#: ../../usage.rst:422 ../../usage.rst:428 ../../usage.rst:434
+#: ../../usage.rst:440 ../../usage.rst:446 ../../usage.rst:452
+msgid "The default is 20."
+msgstr "默认是20个。"
+
+# b71498e20d9c45f5b4e6246502846b7a
+#: ../../usage.rst:426
+msgid "The number of public IP addresses that can be used in an account."
+msgstr "在账户中可以使用的公共IP地址个数。"
+
+# a7a78f1d32244bd7ae3f36a8706565ec
+#: ../../usage.rst:432
+msgid "The number of disk volumes that can be created in an account."
+msgstr "在账户中可以创建的磁盘卷个数。"
+
+# f22d973606cc4fe68cdf2ef0d22fb7b9
+#: ../../usage.rst:438
+msgid "The number of snapshots that can be created in an account."
+msgstr "在账户中可以创建的快照数量。"
+
+# 78aa50a7ed74400c8d0a3bcc278ed06b
+#: ../../usage.rst:444
+msgid "The number of templates that can be registered in an account."
+msgstr "在账户中可以注册的模板数量。"
+
+# 17544e59335b42c2b1dcb5439be274a4
+#: ../../usage.rst:450
+msgid "The number of VPCs that can be created in an account."
+msgstr "在账户中可以创建的VPC数量。"
+
+# dab1fd7da66d424fa313f0a8da2fd672
+#: ../../usage.rst:456
+msgid "The number of CPU cores that can be used for an account."
+msgstr "在账户中可以使用的CPU内核的个数。"
+
+# f8813118e7014ec4b09e2ce57e9826a0
+#: ../../usage.rst:458
+msgid "The default is 40."
+msgstr "默认是40。"
+
+# 5ee54380b1c7418aa85f1b4aa3d18f5c
+#: ../../usage.rst:462
+msgid "The number of RAM that can be used for an account."
+msgstr "在账户中可以使用的RAM数量。"
+
+# 463fe26a18c747bdba2e4c943174df89
+#: ../../usage.rst:464
+msgid "The default is 40960."
+msgstr "默认值是40960。"
+
+# 483d95c867804bd7a67bd7c5db5d7250
+#: ../../usage.rst:468
+msgid "The primary storage space that can be used for an account."
+msgstr "在账户中可以使用的主存储空间。"
+
+# b5792f85ad5748629247339cddc34442
+#: ../../usage.rst:470
+msgid "The default is 200."
+msgstr "默认是200。"
+
+# cf2794b976cb4597a1c7c46023d92939
+#: ../../usage.rst:474
+msgid "The secondary storage space that can be used for an account."
+msgstr "在账户中可以使用的辅助存储空间。"
+
+# e31012695d1342b893a7afc797d9efc8
+#: ../../usage.rst:476
+msgid "The default is 400."
+msgstr "默认是400。"
+
+# 58fd1b50da564cbfbe626a0c715242a2
+#: ../../usage.rst:482
+msgid "Usage Record Format"
+msgstr "使用记录格式"
+
+# bd6e6ad5dd4441038efbfa8256d54fbb
+#: ../../usage.rst:485
+msgid "Virtual Machine Usage Record Format"
+msgstr "虚拟机使用记录格式"
+
+# f4090312493645f999618d3518704fe4
+#: ../../usage.rst:487
+msgid ""
+"For running and allocated virtual machine usage, the following fields exist "
+"in a usage record:"
+msgstr "对运行或者已分配虚拟机使用，下列字段存在于使用记录中："
+
+# 1ea8ad4e82f849199566823e669d2e60
+# cb746968f7ea4c6eaeae3a8696c37487
+# 800271ae9863449db8b5d5a7a20f41be
+# 40d84f3b7c0243a2b680c8c5ee6fe699
+# b060e5d0dfc94db5a3dc884d3afc9829
+# 34a867e377074d8b8b7a9d16f17250f8
+#: ../../usage.rst:490 ../../usage.rst:531 ../../usage.rst:590
+#: ../../usage.rst:624 ../../usage.rst:685 ../../usage.rst:719
+msgid "account – name of the account"
+msgstr "account--账户的名字"
+
+# 0c884e63b3b6479d8ee0a652be74d5d4
+# 374676d104da4bb795381a260c95ddf1
+# cdf46e85f5ce46b6b29adc8183f20bc5
+# 0afdb6434c584c61acb197cf1a10f04c
+# 871a1002f0e34f38a9d8b6511ac9c04e
+# e13b8b9c705048e583810469fcd0a485
+#: ../../usage.rst:492 ../../usage.rst:533 ../../usage.rst:592
+#: ../../usage.rst:626 ../../usage.rst:687 ../../usage.rst:721
+msgid "accountid – ID of the account"
+msgstr "accountid--账户的ID"
+
+# 422137b0ab2b4696a321d367b6d26f6d
+# 86455aead7614969ab37a2e295a26530
+# 0c7934f2579a497cb68757e53895fe18
+# cd40f5f568ed41969adeb774e54813da
+# bdd3a9da32134e1e8ca88e1d720abcef
+# e797f39fdbc04ecbbbe2bdc559a0b118
+#: ../../usage.rst:494 ../../usage.rst:535 ../../usage.rst:594
+#: ../../usage.rst:628 ../../usage.rst:689 ../../usage.rst:723
+msgid "domainid – ID of the domain in which this account resides"
+msgstr "domainid --在此账户存在的域的 ID"
+
+# d938ef5bbcc140c3a43fe372485e16af
+# 0e8bcce04fb34321a8e64ed6f0511dc6
+# 989ad97f092f4ef38b22b0112e749925
+# a74af98e8b4f4970805d2c13cdf90c37
+# 07ebb7ef423743fa8f659f3ab930b615
+# 7f6481f066a049c68b8df922020b9f23
+#: ../../usage.rst:496 ../../usage.rst:537 ../../usage.rst:596
+#: ../../usage.rst:630 ../../usage.rst:691 ../../usage.rst:725
+msgid "zoneid – Zone where the usage occurred"
+msgstr "zoneid – 使用资源域的ID号"
+
+# 603607ff4edb47e9a79f7310b5606576
+# 54a63f2835ce4ebcab6a5e8f61822468
+# 6c1cd88b31ef47699a96c86e2dc2fd57
+# a97e62aec444404ba90732a66e38ba16
+# 851e49d28b7748bc84040d925da26fc0
+# cdf33c6ee5c24ddd843c0c573f0236c9
+#: ../../usage.rst:498 ../../usage.rst:539 ../../usage.rst:598
+#: ../../usage.rst:632 ../../usage.rst:693 ../../usage.rst:727
+msgid "description – A string describing what the usage record is tracking"
+msgstr "description – 字符描述，用于追查使用量的记录"
+
+# 18c681fd6a6d4db7ac9c8d0c14546df8
+#: ../../usage.rst:500
+msgid ""
+"usage – String representation of the usage, including the units of usage "
+"(e.g. 'Hrs' for VM running time)"
+msgstr "usage – 代表使用量的文字，包括使用量的单位(如 'Hrs'代表虚机运行时间)"
+
+# b56f48c2ce7e4ef8a421781cd8ac72d9
+# 367c8fbc6c3040e1b454649a311e5f24
+# 7a9a014a24af4f13afdf4091e920b2c7
+# 5ea8dfa3838546fea2bc64e05c8c673a
+# 3d7a93e77f944490999348ecfa138347
+# 65753a35c9384d9488a6ba39494069d9
+# 72b65cd48a914780a818c78d2b39df45
+# defb130ed24d43fcbdd05f28d6551b33
+#: ../../usage.rst:503 ../../usage.rst:541 ../../usage.rst:603
+#: ../../usage.rst:637 ../../usage.rst:698 ../../usage.rst:704
+#: ../../usage.rst:732 ../../usage.rst:738
+msgid "usagetype – A number representing the usage type (see Usage Types)"
+msgstr "usagetype – 代表使用量类型的数字 (参见使用量类型)"
+
+# dead7906f5ff49c88d8e41f0a3140bd3
+# 8ee236cbfec44c23a571ce1209509110
+# 51b806027dda42548e0b46c7e5f0c468
+# 2b60dfbda65048239a38cba051b05cd8
+# da840cc63b26444a8154da21e65d5f6b
+# 0f380999106d476eae77a3f78ab9bd69
+#: ../../usage.rst:505 ../../usage.rst:543 ../../usage.rst:605
+#: ../../usage.rst:639 ../../usage.rst:700 ../../usage.rst:734
+msgid "rawusage – A number representing the actual usage in hours"
+msgstr "rawusage – 代表以小时为单位实时使用量的数字"
+
+# e398aeba3cd0401992be1f2f12e5fc91
+# e9e71b3111f84185baca323877a352fd
+# 28490f43f8cd44f4bf26a2abb77429ed
+#: ../../usage.rst:507 ../../usage.rst:708 ../../usage.rst:710
+msgid "virtualMachineId – The ID of the virtual machine"
+msgstr "virtualMachineId – 虚拟服务器的ID号"
+
+# adce21eabe0243be8c394e06dd5f7790
+#: ../../usage.rst:509
+msgid "name – The name of the virtual machine"
+msgstr "name - 虚机名称"
+
+# 6b520c414595424cad27b0ae57527c1f
+#: ../../usage.rst:511
+msgid "offeringid – The ID of the service offering"
+msgstr "offeringid - 计算方案的ID"
+
+# 9329a1f52e57454a9b515f46ce1e110c
+#: ../../usage.rst:513
+msgid ""
+"templateid – The ID of the template or the ID of the parent template. The "
+"parent template value is present when the current template was created from "
+"a volume."
+msgstr "templateid – 模版或父模版的ID。当模版是从磁盘卷创建时，此处会使用父模版的ID。"
+
+# d061eac093024ebb867ea323cb34bbc0
+#: ../../usage.rst:517
+msgid "usageid – Virtual machine"
+msgstr "usageid -- 虚拟机"
+
+# 047ce224b91448ba964e79cc572efd1e
+# db530f7238e94cb295d4cf30edceb4bc
+#: ../../usage.rst:519 ../../usage.rst:611
+msgid "type – Hypervisor"
+msgstr "type - 虚拟化平台"
+
+# 13784faf965d4cae937aa6cdbbb601b3
+# f723716e1445424cbc729bcae6910bae
+# 193cb9ce321c4844bfc67c7421b46b78
+# 3362120577564331af89079c96e60819
+# 48e9160ce71b475d961c452d6984a6fc
+# ed62c302bb274df094275fbf56674a91
+#: ../../usage.rst:521 ../../usage.rst:549 ../../usage.rst:617
+#: ../../usage.rst:650 ../../usage.rst:712 ../../usage.rst:740
+msgid ""
+"startdate, enddate – The range of time for which the usage is aggregated; "
+"see Dates in the Usage Record"
+msgstr "startdate, enddate –一定时间内的使用量总和; 参见 使用量记录中的日期"
+
+# eedaa3906dfd445e8bccefccc0c58cf6
+#: ../../usage.rst:526
+msgid "Network Usage Record Format"
+msgstr "网络用量记录格式"
+
+# a62195cc17e14143a58822cf0c485c0e
+#: ../../usage.rst:528
+msgid ""
+"For network usage (bytes sent/received), the following fields exist in a "
+"usage record."
+msgstr "网络用量(发送/接收字节数)记录中存在以下字段："
+
+# e2aa41ae9fda438280903d7de43e9fa7
+#: ../../usage.rst:545
+msgid "usageid – Device ID (virtual router ID or external device ID)"
+msgstr "usageid - 设备ID(虚拟路由器ID或外部设备ID)"
+
+# cba1335aecd94359b17f04495d757350
+#: ../../usage.rst:547
+msgid "type – Device type (domain router, external load balancer, etc.)"
+msgstr "type - 设备类型(虚拟路由器、外部负载均衡等)"
+
+# f60aa591df79401691c6f36e9a9372cd
+#: ../../usage.rst:554
+msgid "IP Address Usage Record Format"
+msgstr "IP地址使用记录格式"
+
+# 8c83a518ebf94bda95be14bed415fbdd
+#: ../../usage.rst:556
+msgid "For IP address usage the following fields exist in a usage record."
+msgstr "对于IP地址使用下列字段存在于使用记录中。"
+
+# 872facde9d324938a2dc358b6f91d3d6
+# a38435a4207846d386ed6690dbeb757c
+#: ../../usage.rst:558 ../../usage.rst:657
+msgid "account - name of the account"
+msgstr "account - 账户的名称"
+
+# c2361416c29c4fbd838cca88df7fce39
+# bc06c74f16144181bca49330654a8470
+#: ../../usage.rst:560 ../../usage.rst:659
+msgid "accountid - ID of the account"
+msgstr "accountid-账户的ID"
+
+# 7ad667e8f90242c5b4cacb1421dc53a2
+# e6e2d964ef1a4c8b94bc42f08beea530
+#: ../../usage.rst:562 ../../usage.rst:661
+msgid "domainid - ID of the domain in which this account resides"
+msgstr "domainid-本账户具有的鱼的ID"
+
+# c05809fe04764a479c42fe337b8f32a7
+# 051704b34aa84fecb879697aa4461b9c
+#: ../../usage.rst:564 ../../usage.rst:663
+msgid "zoneid - Zone where the usage occurred"
+msgstr "zoneid-已经使用的域ID"
+
+# ef2388373bf042c79862477f5068f84f
+# ac7162ddbf9b4f07a70378f7cb4f1376
+#: ../../usage.rst:566 ../../usage.rst:665
+msgid "description - A string describing what the usage record is tracking"
+msgstr "description – 字符描述追查用量记录"
+
+# 680a2939f1ab4cd0b4c7d7ba19346be0
+#: ../../usage.rst:568
+msgid ""
+"usage - String representation of the usage, including the units of usage"
+msgstr "usage – 代表使用量的字符串，包括使用量的单位 "
+
+# 552772e8c5f745518dc6484ef776e37b
+# 8b658740424143e0804a450732cc90d5
+# 79adc7a2a02248f8a0ee7771272a5624
+#: ../../usage.rst:571 ../../usage.rst:670 ../../usage.rst:676
+msgid "usagetype - A number representing the usage type (see Usage Types)"
+msgstr "usagetype – 代表使用量类型的数字 (参见使用量类型)"
+
+# 565c646fcbed4427bf835e888529e76c
+# af9345ffb0554f0eb0ad166c00406ea8
+#: ../../usage.rst:573 ../../usage.rst:672
+msgid "rawusage - A number representing the actual usage in hours"
+msgstr "rawusage – 代表以小时为单位实时使用量的数字"
+
+# 1ce3b40124484eefb27601e1907f939a
+#: ../../usage.rst:575
+msgid "usageid - IP address ID"
+msgstr "usageid-IP地址ID"
+
+# abfd139b052e4864afc695aba432783c
+# a5cbc24cefb54a2996cf860cf2b1e75c
+#: ../../usage.rst:577 ../../usage.rst:678
+msgid ""
+"startdate, enddate - The range of time for which the usage is aggregated; "
+"see Dates in the Usage Record"
+msgstr "startdate, enddate – 一定时间范围内的用量总和; 参见 用量记录中的日期"
+
+# 7631780188e9474f8a1041b55d0ac20b
+#: ../../usage.rst:580
+msgid "issourcenat - Whether source NAT is enabled for the IP address"
+msgstr "issourcenat - IP地址的NAT资源是否有效"
+
+# 85f7d46f4fd5425cad1b87a37ec9ecf7
+#: ../../usage.rst:582
+msgid "iselastic - True if the IP address is elastic."
+msgstr "iselastic - 如果IP地址是弹性的为True"
+
+# fd56a0a694804aa884be5fdefcfd3320
+#: ../../usage.rst:586
+msgid "Disk Volume Usage Record Format"
+msgstr "磁盘用量记录格式"
+
+# dc66789696474008bbbc81eb24bec679
+#: ../../usage.rst:588
+msgid "For disk volumes, the following fields exist in a usage record."
+msgstr "对于磁盘，用量记录存在下列字段。"
+
+# 4a12e3d8b23f40078657c836a946af1e
+# d33548fd1fe240509c2c86f75c6bd701
+# 38cb41b0bdc94d2e94ee5c3a6492e281
+# 95202bd84a0e4a61991829c07c2c0720
+#: ../../usage.rst:600 ../../usage.rst:634 ../../usage.rst:695
+#: ../../usage.rst:729
+msgid ""
+"usage – String representation of the usage, including the units of usage "
+"(e.g. 'Hrs' for hours)"
+msgstr "usage – 代表使用量的文字，包括使用量的单位 (如 'Hrs'是小时)"
+
+# c2f1554e72084e81892a0b538a19c7f8
+#: ../../usage.rst:607
+msgid "usageid – The volume ID"
+msgstr "usageid - 磁盘ID"
+
+# b7525535c67b49b98b4d922f07293bcb
+# c781024621454a418e050f006e91921c
+#: ../../usage.rst:609 ../../usage.rst:643
+msgid "offeringid – The ID of the disk offering"
+msgstr "offeringid - 磁盘方案的ID"
+
+# 543db09e00804cd787e00be0867a5c6e
+#: ../../usage.rst:613
+msgid "templateid – ROOT template ID"
+msgstr "templateid - 根模版ID"
+
+# f2ab3e39617449bf8a68f1fbc0eb4fbe
+#: ../../usage.rst:615
+msgid "size – The amount of storage allocated"
+msgstr "size - 分配的存储大小"
+
+# e54797d2c60c4441ac584d3abb0f9c77
+#: ../../usage.rst:622
+msgid "Template, ISO, and Snapshot Usage Record Format"
+msgstr "模版、ISO和快照用量记录格式"
+
+# 60eda22a3c7d4756847f64ff53b961e2
+#: ../../usage.rst:641
+msgid "usageid – The ID of the the template, ISO, or snapshot"
+msgstr "usageid - 模版、ISO或快照的ID"
+
+# 3562063eefc04af28187703974e45228
+#: ../../usage.rst:645
+msgid ""
+"templateid – – Included only for templates (usage type 7). Source template "
+"ID."
+msgstr "templateid -- 仅模版（用量类型为7）时包括。源模版ID。"
+
+# 9fbfbc974f184b2983595a2d4fed5cdb
+#: ../../usage.rst:648
+msgid "size – Size of the template, ISO, or snapshot"
+msgstr "size - 模版、ISO或快照的大小"
+
+# aa26900876304f758262788c79483c44
+#: ../../usage.rst:655
+msgid "Load Balancer Policy or Port Forwarding Rule Usage Record Format"
+msgstr "负载均衡策略或端口导向用量记录格式"
+
+# f493ad9446bd4b0d84e50c9937d2b21c
+#: ../../usage.rst:667
+msgid ""
+"usage - String representation of the usage, including the units of usage "
+"(e.g. 'Hrs' for hours)"
+msgstr "usage – 代表使用量的字符串，包括使用量的单位 (如 'Hrs'是小时)"
+
+# 03d262a193f246749d1ed6f6df6d3930
+#: ../../usage.rst:674
+msgid "usageid - ID of the load balancer policy or port forwarding rule"
+msgstr "usageid -负载均衡或端口导向规则ID"
+
+# b01513d3fd8e466ba943f21dd926c03a
+#: ../../usage.rst:683
+msgid "Network Offering Usage Record Format"
+msgstr "网络服务方案用量记录格式"
+
+# d5c5360548e6437882e13f383f854c51
+#: ../../usage.rst:702
+msgid "usageid – ID of the network offering"
+msgstr "usageid – 网络服务方案的ID"
+
+# 1dd0260b113b4149979baeec2b430e69
+#: ../../usage.rst:706
+msgid "offeringid – Network offering ID"
+msgstr "offeringid – 网络服务方案的ID"
+
+# 2e3b410e70064b95997310d4b2f2d6bb
+#: ../../usage.rst:717
+msgid "VPN User Usage Record Format"
+msgstr "VPN用户用量记录格式"
+
+# 78984789b8f74fcb9ae0dc8712b092fa
+#: ../../usage.rst:736
+msgid "usageid – VPN user ID"
+msgstr "usageid - VPN用户ID"
+
+# 371ab2afddac4c8ebe7b59df3a7e3150
+#: ../../usage.rst:745
+msgid "Usage Types"
+msgstr "用量类型"
+
+# bb807347fed448728c3e17662b8b1ebc
+#: ../../usage.rst:747
+msgid "The following table shows all usage types."
+msgstr "下表显示了所有的用量类型。"
+
+# 9d81d10d8b5343f19edc1316cfbf4854
+#: ../../usage.rst:750
+msgid "Type ID"
+msgstr "类型ID"
+
+# e5f69db4f5e44d94804a6a1fa96b3da8
+#: ../../usage.rst:750
+msgid "Type Name"
+msgstr "类型名称"
+
+# 78ead0d9336c42648a3ca740bc0c71c3
+#: ../../usage.rst:752
+msgid "1"
+msgstr "1"
+
+# e747e335348c4f96b8157b30a1f87074
+#: ../../usage.rst:752
+msgid "RUNNING\\_VM"
+msgstr "RUNNING\\_VM"
+
+# 477ac63f7f36460ea08116c949753044
+#: ../../usage.rst:752
+msgid ""
+"Tracks the total running time of a VM per usage record period. If the VM is "
+"upgraded during the usage period, you will get a separate Usage Record for "
+"the new upgraded VM."
+msgstr "追踪VM每个用量记录时期所有运行时间总和。如果VM在用量时期升级，你将会获得新升级后的VM单独的用量记录。"
+
+# 64af61ae9a154740bc59c51cf93b8e50
+#: ../../usage.rst:762
+msgid "2"
+msgstr "2"
+
+# 7e1e8fb7beaf45439e7683227a55abb7
+#: ../../usage.rst:762
+msgid "ALLOCATED\\_VM"
+msgstr "ALLOCATED\\_VM"
+
+# 12dcdffa3a2f4d5faaece0b8ee808625
+#: ../../usage.rst:762
+msgid ""
+"Tracks the total time the VM has been created to the time when it has been "
+"destroyed. This usage type is also useful in determining usage for specific "
+"templates such as Windows-based templates."
+msgstr "追踪VM从创建到销毁的所有时间总和。这个用量类型也是在终止例如 Windows-based模板这样的具体模板用量上是有用的。"
+
+# 56a5110004de419981e5f220ae4e8552
+#: ../../usage.rst:774
+msgid "3"
+msgstr "3"
+
+# 9300fc0a0c054c8cb8cf1c50a798ccfe
+#: ../../usage.rst:774
+msgid "IP\\_ADDRESS"
+msgstr "IP\\_ADDRESS"
+
+# bdd7930fce7d439cac6b82c99e189623
+#: ../../usage.rst:774
+msgid "Tracks the public IP address owned by the account."
+msgstr "追踪拥有公共IP地址的账户"
+
+# 8f41c0480a214679a34ebff91433884a
+#: ../../usage.rst:778
+msgid "4"
+msgstr "4"
+
+# 3468bfe1926344ed8b778f78f298e356
+#: ../../usage.rst:778
+msgid "NETWORK\\_BYTES\\_SENT"
+msgstr "NETWORK\\_BYTES\\_SENT"
+
+# 4fc69e9acd00430db5d7bdd162d53a88
+#: ../../usage.rst:778
+msgid ""
+"Tracks the total number of bytes sent by all the VMs for an account. "
+"Cloud.com does not currently track network traffic per VM."
+msgstr "追踪一个账户发送所有VM的比特的总时间。Cloud.com不仅追踪当前网络传输时的每个VM。"
+
+# 9c0a0d79a0ee491b99fc2f18847a9c29
+#: ../../usage.rst:786
+msgid "5"
+msgstr "5"
+
+# 8053534caf9a43cfbe6f344918e90568
+#: ../../usage.rst:786
+msgid "NETWORK\\_BYTES\\_RECEIVED"
+msgstr "NETWORK\\_BYTES\\_RECEIVED"
+
+# a09f77e6b1d540fdb4c9e398f8042f22
+#: ../../usage.rst:786
+msgid ""
+"Tracks the total number of bytes received by all the VMs for an account. "
+"Cloud.com does not currently track network traffic per VM."
+msgstr "追踪一个账户接受所有VM的比特的总时间。Cloud.com不仅追踪当前网络传输时的每个VM。"
+
+# 5d8944a3cb7d444aa82efaa09053af2d
+#: ../../usage.rst:795
+msgid "6"
+msgstr "6"
+
+# bd9f4acea1a34fb5ada48e39c65e7781
+#: ../../usage.rst:795
+msgid "VOLUME"
+msgstr "VOLUME"
+
+# e39b0cb9d477433db943c1dfbeb90bb5
+#: ../../usage.rst:795
+msgid ""
+"Tracks the total time a disk volume has been created to the time when it has"
+" been destroyed."
+msgstr "追踪磁盘从创建到销毁的总时间。"
+
+# fb74bed3e64f40f4b1b99833cdfb858b
+#: ../../usage.rst:801
+msgid "7"
+msgstr "7"
+
+# 8dbe0a482b8740bcaba3e70100493143
+#: ../../usage.rst:801
+msgid "TEMPLATE"
+msgstr "TEMPLATE"
+
+# e01ba5c82149495a87253a75e8f1ee5c
+#: ../../usage.rst:801
+msgid ""
+"Tracks the total time a template (either created from a snapshot or uploaded"
+" to the cloud) has been created to the time it has been destroyed. The size "
+"of the template is also returned."
+msgstr "追踪模板（包含从快照中创建的或是已经上传到云的）从创建到销毁的总时间。模板的大小也被返回。"
+
+# ea46b251003a4703b4db0e8e9ca83a4a
+#: ../../usage.rst:812
+msgid "8"
+msgstr "8"
+
+# f349c4660c004c8f81133723f6ac350c
+#: ../../usage.rst:812
+msgid "ISO"
+msgstr "ISO"
+
+# 7c32db79c4a944e294459472e67ef9a5
+#: ../../usage.rst:812
+msgid ""
+"Tracks the total time an ISO has been uploaded to the time it has been "
+"removed from the cloud. The size of the ISO is also returned."
+msgstr "追踪ISO在云中从上传到移除的总时间。ISO的大小也被返回。"
+
+# b0dacdf41a1c4d989f2f39ef17257ecc
+#: ../../usage.rst:820
+msgid "9"
+msgstr "9"
+
+# 1405b90e80e34b8381a814756e95d768
+#: ../../usage.rst:820
+msgid "SNAPSHOT"
+msgstr "SNAPSHOT"
+
+# e5fa93c081164375acc3fd52345b1187
+#: ../../usage.rst:820
+msgid ""
+"Tracks the total time from when a snapshot has been created to the time it "
+"have been destroyed."
+msgstr "追踪快照从创建到销毁的总时间。"
+
+# 4f2594d3f1f24d2c9169fcfc149a62e9
+#: ../../usage.rst:826
+msgid "11"
+msgstr "11"
+
+# d37ae3d5c27447e4a1078346d90a373f
+#: ../../usage.rst:826
+msgid "LOAD\\_BALANCER\\_POLICY"
+msgstr "LOAD\\_BALANCER\\_POLICY"
+
+# 024b703ada76417194235a1d10290b53
+#: ../../usage.rst:826
+msgid ""
+"Tracks the total time a load balancer policy has been created to the time it"
+" has been removed. Cloud.com does not track whether a VM has been assigned "
+"to a policy."
+msgstr "追踪负载均衡策略从创建到移除的总时间。Cloud.com不追踪VM是否已经分配到了的策略。"
+
+# 6ebb8ff8421347ba8d0f37e13f9738a1
+#: ../../usage.rst:836
+msgid "12"
+msgstr "12"
+
+# 4f5ff172a156494c910377d3273476ca
+#: ../../usage.rst:836
+msgid "PORT\\_FORWARDING\\_RULE"
+msgstr "PORT\\_FORWARDING\\_RULE"
+
+# 00141f10a4c040fd9c1981d4c44a5d6b
+#: ../../usage.rst:836
+msgid ""
+"Tracks the time from when a port forwarding rule was created until the time "
+"it was removed."
+msgstr "追踪端口导向规则从创建到移除的时间。"
+
+# bc4b98fcdabc461a8ede71b5285838b0
+#: ../../usage.rst:842
+msgid "13"
+msgstr "13"
+
+# 6123d10ab7004c9b943a532e894e2e20
+#: ../../usage.rst:842
+msgid "NETWORK\\_OFFERING"
+msgstr "NETWORK\\_OFFERING"
+
+# ec1c84a50ae5471ba6539ff923b81caa
+#: ../../usage.rst:842
+msgid ""
+"The time from when a network offering was assigned to a VM until it is "
+"removed."
+msgstr "从网络方案分配到VM到移除的时间。"
+
+# 04d219bbd49540e7a4d433b51cb42d2b
+#: ../../usage.rst:847
+msgid "14"
+msgstr "14"
+
+# d70576ee50674251a6ee58e7a072795a
+#: ../../usage.rst:847
+msgid "VPN\\_USERS"
+msgstr "VPN\\_USERS"
+
+# 7031f45ce0894436b7ab77616de3681f
+#: ../../usage.rst:847
+msgid "The time from when a VPN user is created until it is removed."
+msgstr "计时从VPN用户创建时开始，移除时结束。"
+
+# da745a0b82b6445e998e6d31a0f107b7
+#: ../../usage.rst:854
+msgid "Example response from listUsageRecords"
+msgstr "listUsageRecords指令的反应示例："
+
+# 73da4de663384d6ba278d517dc44eeef
+#: ../../usage.rst:856
+msgid ""
+"All CloudStack API requests are submitted in the form of a HTTP GET/POST "
+"with an associated command and any parameters. A request is composed of the "
+"following whether in HTTP or HTTPS:"
+msgstr "所有CloudStack API请求都是以HTTP GET/POST形式提交, 同时附上相关的命令和参数. 无论是HTTP或HTTPS, 一个请求都有以下内容组成:"
+
+# b1267ab3f74744b8966d6c8dce38d38a
+#: ../../usage.rst:888
+msgid "Dates in the Usage Record"
+msgstr "在使用记录中的数据"
+
+# f9638c3a7a0c4939922d9b03330f3a5a
+#: ../../usage.rst:890
+msgid ""
+"Usage records include a start date and an end date. These dates define the "
+"period of time for which the raw usage number was calculated. If daily "
+"aggregation is used, the start date is midnight on the day in question and "
+"the end date is 23:59:59 on the day in question (with one exception; see "
+"below). A virtual machine could have been deployed at noon on that day, "
+"stopped at 6pm on that day, then started up again at 11pm. When usage is "
+"calculated on that day, there will be 7 hours of running VM usage (usage "
+"type 1) and 12 hours of allocated VM usage (usage type 2). If the same "
+"virtual machine runs for the entire next day, there will 24 hours of both "
+"running VM usage (type 1) and allocated VM usage (type 2)."
+msgstr "用量记录包含了开始日期和结束日期。这些日期定义了原始用量数字的统计时间阶段。如果每天统计被使用，开始日期是问题出现的的当天午夜，结束日期是问题(关于异常，参见本内容）出现的当天23:59:59。虚拟机可以被部署到当天正午，在次日6pm,然后在11pm重启。在用量统计的当天，将有7小时运行VM用量(用量类型1)和12个小时分配VM用量(用量类型2)。如果同一个VM完全运行到下一天，将会有24小时的运行VM用量(类型1)和已分配用量(类型2)。"
+
+# aa505995145d4de796ce7a54c69e8c04
+#: ../../usage.rst:902
+msgid ""
+"Note: The start date is not the time a virtual machine was started, and the "
+"end date is not the time when a virtual machine was stopped. The start and "
+"end dates give the time range within which usage was calculated."
+msgstr "注意：开始日期不是虚拟机启动时间，结束日期不是虚拟机停止时间。开始日期和结束日期在用量统计的给定范围内。"
+
+# ffee51b332cd4e589de90c6abf2b8476
+#: ../../usage.rst:907
+msgid ""
+"For network usage, the start date and end date again define the range in "
+"which the number of bytes transferred was calculated. If a user downloads 10"
+" MB and uploads 1 MB in one day, there will be two records, one showing the "
+"10 megabytes received and one showing the 1 megabyte sent."
+msgstr "对于网络用量，开始日期和结束日期定义为一定数量的比特传输统计的时间范围。如果用户一天内下载10MB并上传1M，将会有两个记录，一个显示10MB接受和一个显示1MB发送。"
+
+# de58fb769cc74ed3a62616b4158bd9e8
+#: ../../usage.rst:913
+msgid ""
+"There is one case where the start date and end date do not correspond to "
+"midnight and 11:59:59pm when daily aggregation is used. This occurs only for"
+" network usage records. When the usage server has more than one day's worth "
+"of unprocessed data, the old data will be included in the aggregation "
+"period. The start date in the usage record will show the date and time of "
+"the earliest event. For other types of usage, such as IP addresses and VMs, "
+"the old unprocessed data is not included in daily aggregation."
+msgstr "当每日统计使用时，只有一种情况开始日期和结束日期不响应午夜到11:59:59。它仅发生在网络用量记录。当用量记录服务器有超过一天的未处理数据时，旧数据将被包含在统计区间内。用量记录中的开始日期将显示最早的事件的日期和时间。对于其它类型的用量，例如IP地址和VM,旧的未处理数据是不包含在每日统计中的。"

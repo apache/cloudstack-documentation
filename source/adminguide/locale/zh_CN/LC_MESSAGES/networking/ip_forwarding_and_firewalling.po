@@ -1,0 +1,499 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:05+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 3ec46c2d67cb4acc87705b3f0985e5c8
+#: ../../networking/ip_forwarding_and_firewalling.rst:18
+msgid "IP Forwarding and Firewalling"
+msgstr "IP转发及防火墙"
+
+# 5bb709bf233742ce8f3a83dc5ce7cf26
+#: ../../networking/ip_forwarding_and_firewalling.rst:20
+msgid ""
+"By default, all incoming traffic to the public IP address is rejected. All "
+"outgoing traffic from the guests is also blocked by default."
+msgstr "默认情况下, 所有从公共IP进来的流量都会被拒绝. 所有在来宾网络出去的流量默认也被阻挡。"
+
+# 83f985061e4e4301aa5ce50049ea4565
+#: ../../networking/ip_forwarding_and_firewalling.rst:23
+msgid ""
+"To allow outgoing traffic, follow the procedure in :ref:`egress-fw-rules`."
+msgstr "为了允许外出的流量，遵循:ref:`egress-fw-rules`中的操作步骤。"
+
+# 1328a8040ae7487b8f7ed1dcaaf5a596
+#: ../../networking/ip_forwarding_and_firewalling.rst:25
+msgid ""
+"To allow incoming traffic, users may set up firewall rules and/or port "
+"forwarding rules. For example, you can use a firewall rule to open a range "
+"of ports on the public IP address, such as 33 through 44. Then use port "
+"forwarding rules to direct traffic from individual ports within that range "
+"to specific ports on user VMs. For example, one port forwarding rule could "
+"route incoming traffic on the public IP's port 33 to port 100 on one user "
+"VM's private IP."
+msgstr "为了允许接收到的流量, 用户可以设置一些防火墙规则和/或端口转发规则. 例如, 你可以在公共IP地址上设定防火墙规则来打开一个端口范围, 比如从33到44端口. 然后使用端口转发将流量从这个特定的范围内的端口直接送到指定的用户虚机端口. 例如, 一个端口转发的规则可以将接收的流量从公共IP的33端口到用户虚机私有IP的100端口."
+
+# 88ee727310bb4a5789291e8e48578dab
+#: ../../networking/ip_forwarding_and_firewalling.rst:35
+msgid "Firewall Rules"
+msgstr "防火墙规则"
+
+# 073cb21345c44ce2a3f2ce3446d4ad3a
+#: ../../networking/ip_forwarding_and_firewalling.rst:37
+msgid ""
+"By default, all incoming traffic to the public IP address is rejected by the"
+" firewall. To allow external traffic, you can open firewall ports by "
+"specifying firewall rules. You can optionally specify one or more CIDRs to "
+"filter the source IPs. This is useful when you want to allow only incoming "
+"requests from certain IP addresses."
+msgstr "默认情况下，防火墙拒绝所有流入公共IP的流量。要允许外部流量，你需要制定防火墙规则打开防火墙端口。你可以选择性的制定一个或多个CIDR来过滤来源IP。这在当你只需要允许特定IP请求时会很有用。"
+
+# b43e4fc4f43841c9aebd342bbd60b33d
+#: ../../networking/ip_forwarding_and_firewalling.rst:43
+msgid ""
+"You cannot use firewall rules to open ports for an elastic IP address. When "
+"elastic IP is used, outside access is instead controlled through the use of "
+"security groups. See `\"Adding a Security Group\" <#adding-a-security-"
+"group>`_."
+msgstr "你不能使用防火墙规则打开弹性IP的端口。当弹性IP处在使用状态时，外部的通过请求将被安全组管理。参阅 `\"添加安全组\" <#adding-a-security-group>`_."
+
+# 36b1e8acd3ef4b1cb7a7ffd1f60599c5
+#: ../../networking/ip_forwarding_and_firewalling.rst:48
+msgid ""
+"In an advanced zone, you can also create egress firewall rules by using the "
+"virtual router. For more information, see \":ref:`egress-fw-rules`\"."
+msgstr "在高级Zone中，您也可以用虚拟路由器来创建流出的防火墙规则。更多信息，请查阅\":ref:`egress-fw-rules`\"。"
+
+# 2aeb084c075b4451b0911c2a6baf0f84
+#: ../../networking/ip_forwarding_and_firewalling.rst:51
+msgid ""
+"Firewall rules can be created using the Firewall tab in the Management "
+"Server UI. This tab is not displayed by default when CloudStack is "
+"installed. To display the Firewall tab, the CloudStack administrator must "
+"set the global configuration parameter firewall.rule.ui.enabled to \"true.\""
+msgstr "防火墙规则能在管理服务器的UI中防火墙选项卡里创建，CloudStac安装好以后，这个规则选项卡默认不显示，你需要以管理员身份修改全局变量 firewall.rule.ui.enabled为 \"true\"才能显示。"
+
+# e1408eeb730f4709bbba8852f79807fd
+#: ../../networking/ip_forwarding_and_firewalling.rst:57
+msgid "To create a firewall rule:"
+msgstr "创建防火墙规则："
+
+# 098b22043ec643559c039b39aa24d618
+# f62479b013c241a791c42b8843bd140d
+# c384f1b44804485fba23fe018c16683e
+#: ../../networking/ip_forwarding_and_firewalling.rst:59
+#: ../../networking/ip_forwarding_and_firewalling.rst:132
+#: ../../networking/ip_forwarding_and_firewalling.rst:245
+msgid "Log in to the CloudStack UI as an administrator or end user."
+msgstr "使用管理员或者终端用户账号登录CloudStack UI。"
+
+# a633160d3ee343639365b9067af58eb1
+# c6c7495d464a4262ace3361c7cce9b5b
+#: ../../networking/ip_forwarding_and_firewalling.rst:61
+#: ../../networking/ip_forwarding_and_firewalling.rst:134
+msgid "In the left navigation, choose Network."
+msgstr "在左侧的导航栏，选择网络。"
+
+# ff56e69810c34ee4a08280a7ef06cfbb
+#: ../../networking/ip_forwarding_and_firewalling.rst:63
+msgid "Click the name of the network where you want to work with."
+msgstr "点击拟修改的网络名称。"
+
+# d546be88025a4254b8eecf1f0b16bdf0
+#: ../../networking/ip_forwarding_and_firewalling.rst:65
+msgid "Click View IP Addresses."
+msgstr "点击查看IP地址。"
+
+# 0c60a7fde5644f9188c0bf190c166890
+#: ../../networking/ip_forwarding_and_firewalling.rst:67
+msgid "Click the IP address you want to work with."
+msgstr "点击你要修改的IP地址"
+
+# 0e0775a902554fa68fc54157ed73ed0a
+#: ../../networking/ip_forwarding_and_firewalling.rst:69
+msgid "Click the Configuration tab and fill in the following values."
+msgstr "点击设置选项卡 填入以下值："
+
+# 8bb21f2deca7442683f782de4a83935f
+#: ../../networking/ip_forwarding_and_firewalling.rst:71
+msgid ""
+"**Source CIDR**: (Optional) To accept only traffic from IP addresses within "
+"a particular address block, enter a CIDR or a comma-separated list of CIDRs."
+" Example: 192.168.0.0/22. Leave empty to allow all CIDRs."
+msgstr ""
+
+# 4cb05fbe28ae408a8df34014da711575
+#: ../../networking/ip_forwarding_and_firewalling.rst:76
+msgid "**Protocol**: The communication protocol in use on the opened port(s)."
+msgstr ""
+
+# e59d4d2a187f4510a91409fac5cfb51c
+#: ../../networking/ip_forwarding_and_firewalling.rst:79
+msgid ""
+"**Start Port and End Port**: The port(s) you want to open on the firewall. "
+"If you are opening a single port, use the same number in both fields"
+msgstr ""
+
+# 3274875afce44bbe9d7017bb4e2fc2b2
+#: ../../networking/ip_forwarding_and_firewalling.rst:83
+msgid ""
+"**ICMP Type and ICMP Code**: Used only if Protocol is set to ICMP. Provide "
+"the type and code required by the ICMP protocol to fill out the ICMP header."
+" Refer to ICMP documentation for more details if you are not sure what to "
+"enter"
+msgstr ""
+
+# 41821a610d844daf8255026b71299059
+# 1d39fcb3a5e34d769f89885db9866836
+# 2319658c89b74a0294ce8f0a253a4d53
+#: ../../networking/ip_forwarding_and_firewalling.rst:88
+#: ../../networking/ip_forwarding_and_firewalling.rst:163
+#: ../../networking/ip_forwarding_and_firewalling.rst:276
+msgid "Click Add."
+msgstr "点击 添加"
+
+# eec2e0a57feb4eca85c58ac1b58b228b
+#: ../../networking/ip_forwarding_and_firewalling.rst:94
+msgid "Egress Firewall Rules in an Advanced Zone"
+msgstr "高级区域中的出口防火墙规则"
+
+# 3bae6d1e0fb543beaeb466c40aeddfc3
+#: ../../networking/ip_forwarding_and_firewalling.rst:96
+msgid ""
+"The egress traffic originates from a private network to a public network, "
+"such as the Internet. By default, the egress traffic is blocked in default "
+"network offerings, so no outgoing traffic is allowed from a guest network to"
+" the Internet. However, you can control the egress traffic in an Advanced "
+"zone by creating egress firewall rules. When an egress firewall rule is "
+"applied, the traffic specific to the rule is allowed and the remaining "
+"traffic is blocked. When all the firewall rules are removed the default "
+"policy, Block, is applied."
+msgstr "出口流量起源于从专用网络访问公共网络，例如Internet。默认情况下，在默认网络方案中，出口流量被拒绝，所以没有从来宾网络到Internet的出口流量被允许。不过，你可以通过创建出口防火墙规则来控制高级网络中的出口流量。当出口防火墙规则被应用时，规则指定的流量被允许，其余的流量被阻止。当所有的防火墙规则从默认策略中移除，阻止策略再次被应用。"
+
+# 80fbdba2a681463894376f620458c160
+#: ../../networking/ip_forwarding_and_firewalling.rst:107
+msgid "Prerequisites and Guidelines"
+msgstr "先决条件和指南"
+
+# 998ae537c5664319b836e769ab967fc3
+#: ../../networking/ip_forwarding_and_firewalling.rst:109
+msgid "Consider the following scenarios to apply egress firewall rules:"
+msgstr "应用出口防火墙规则时请思考如下方案："
+
+# 18a68e97f28f4f7898b92513d34e5e26
+#: ../../networking/ip_forwarding_and_firewalling.rst:111
+msgid "Egress firewall rules are supported on Juniper SRX and virtual router."
+msgstr "出口防火墙规则在Jniper SRX和虚拟路由器中均支持。"
+
+# a4eaae6cb4474e5a8182092404f48116
+#: ../../networking/ip_forwarding_and_firewalling.rst:114
+msgid "The egress firewall rules are not supported on shared networks."
+msgstr "共享网络中不支持出口防火墙规则。"
+
+# 85bdd2e7a708485bae147bfa93cdcb1b
+#: ../../networking/ip_forwarding_and_firewalling.rst:116
+msgid ""
+"Allow the egress traffic from specified source CIDR. The Source CIDR is part"
+" of guest network CIDR."
+msgstr "允许特定源CIDR的出口流量。源CIDR是来宾网络CIDR的一部分。"
+
+# d9af348ce95e47a0bae91a55488b1155
+#: ../../networking/ip_forwarding_and_firewalling.rst:119
+msgid "Allow the egress traffic with protocol TCP,UDP,ICMP, or ALL."
+msgstr "允许出口流量的协议为TCP，UDP,ICMP或ALL。"
+
+# 786d85af2e334cf5a8a25fc59dde7cb5
+#: ../../networking/ip_forwarding_and_firewalling.rst:121
+msgid ""
+"Allow the egress traffic with protocol and destination port range. The port "
+"range is specified for TCP, UDP or for ICMP type and code."
+msgstr "允许出口流量协议和目标端口范围。端口范围需要指定TCP，UDP或ICMP类型和代码。"
+
+# 8d9e5fa49cb648a6ad0b917f06176014
+#: ../../networking/ip_forwarding_and_firewalling.rst:124
+msgid ""
+"The default policy is Allow for the new network offerings, whereas on "
+"upgrade existing network offerings with firewall service providers will have"
+" the default egress policy Deny."
+msgstr "新网络方案的默认策略是允许的，然而升级现有的网络方案后，防火墙服务提供商的出口策略默认将是拒绝。"
+
+# ee1ee0417255469abce66dbfd40f9611
+#: ../../networking/ip_forwarding_and_firewalling.rst:130
+msgid "Configuring an Egress Firewall Rule"
+msgstr "配置出口防火墙规则"
+
+# 4d43b047c25a4605acc888b025d376aa
+#: ../../networking/ip_forwarding_and_firewalling.rst:136
+msgid ""
+"In Select view, choose Guest networks, then click the Guest network you "
+"want."
+msgstr "在选择视图中，选择来宾网络，然后点击需要的来宾网络。"
+
+# 4c11dfc739f94ce0995b7c7bdf566e5d
+#: ../../networking/ip_forwarding_and_firewalling.rst:139
+msgid ""
+"To add an egress rule, click the Egress rules tab and fill out the following"
+" fields to specify what type of traffic is allowed to be sent out of VM "
+"instances in this guest network:"
+msgstr "要添加出口策略，点击出口策略选项卡并填写以下字段指定哪种类型的流量在来宾网络中是被允许从VM中实例发送出的。"
+
+# a476fe8da41b43168b89c7b558afcb48
+#: ../../networking/ip_forwarding_and_firewalling.rst:143
+msgid "|egress-firewall-rule.png|"
+msgstr "|egress-firewall-rule.png|"
+
+# d56527f1ac864c5c9d47df9e55c225cf
+#: ../../networking/ip_forwarding_and_firewalling.rst:145
+msgid ""
+"**CIDR**: (Add by CIDR only) To send traffic only to the IP addresses within"
+" a particular address block, enter a CIDR or a comma-separated list of "
+"CIDRs. The CIDR is the base IP address of the destination. For example, "
+"192.168.0.0/22. To allow all CIDRs, set to 0.0.0.0/0."
+msgstr "**CIDR**:(仅通过CIDR添加)为接受来来自特殊地址块的流量，输入一个CIDR，多个时用逗号隔开。CIDR是进入流量的基础IP地址。例如：192.168.0.0/22，为允许所有CIDR，请设为0.0.0.0/0"
+
+# c1e8fac9fa8046d8a9315511c011542e
+#: ../../networking/ip_forwarding_and_firewalling.rst:151
+msgid ""
+"**Protocol**: The networking protocol that VMs uses to send outgoing "
+"traffic. The TCP and UDP protocols are typically used for data exchange and "
+"end-user communications. The ICMP protocol is typically used to send error "
+"messages or network monitoring data."
+msgstr "**协议**: 虚拟机发送流量所使用的网络协议。TCP和UDP通常用于数据交换和用户通讯。ICMP通常用于发送出错信息和网络监控数据。"
+
+# 6b9d46d4c88d48c98d3fa4fcceb60e29
+#: ../../networking/ip_forwarding_and_firewalling.rst:156
+msgid ""
+"**Start Port, End Port**: (TCP, UDP only) A range of listening ports that "
+"are the destination for the outgoing traffic. If you are opening a single "
+"port, use the same number in both fields."
+msgstr "**开始端口，结束端口**: (仅对TCP，UDP)。目的地为进入流量而设的监听端口范围。如果仅开放了单个端口，则在两者的区域中用同一端口。"
+
+# 17c266c56f194132a6fc948f3142e4bc
+#: ../../networking/ip_forwarding_and_firewalling.rst:160
+msgid ""
+"**ICMP Type, ICMP Code**: (ICMP only) The type of message and error code "
+"that are sent."
+msgstr "**ICMP类型**, **ICMP代码** (ICMP only): 信息类型及发送错误的代码。"
+
+# f0100304289f4a67b01e8f6c52976a10
+#: ../../networking/ip_forwarding_and_firewalling.rst:167
+msgid "Configuring the Default Egress Policy"
+msgstr "配置默认出口策略"
+
+# a802326f92404392beacd9675985c106
+#: ../../networking/ip_forwarding_and_firewalling.rst:169
+msgid ""
+"The default egress policy for Isolated guest network is configured by using "
+"Network offering. Use the create network offering option to determine "
+"whether the default policy should be block or allow all the traffic to the "
+"public network from a guest network. Use this network offering to create the"
+" network. If no policy is specified, by default all the traffic is allowed "
+"from the guest network that you create by using this network offering."
+msgstr "通过网络方案配置隔离来宾网络的默认出口策略。通过创建网络方案选项决定来宾网络到公共网络的所有流量在默认策略中是允许或者拒绝。使用该网络方案创建网络。如果没有指定策略，你创建的来宾网络中的所有流量将被允许。"
+
+# 9b5e480b6757449ab8272d3e7a691110
+#: ../../networking/ip_forwarding_and_firewalling.rst:177
+msgid "You have two options: Allow and Deny."
+msgstr "你有两个选择：允许和拒绝。"
+
+# 9b8d4463d6024d8589cc801658fa7bab
+#: ../../networking/ip_forwarding_and_firewalling.rst:180
+msgid "Allow"
+msgstr "允许"
+
+# 01d29e0665f84d548d9f41399d9258d8
+#: ../../networking/ip_forwarding_and_firewalling.rst:182
+msgid ""
+"If you select Allow for a network offering, by default egress traffic is "
+"allowed. However, when an egress rule is configured for a guest network, "
+"rules are applied to block the specified traffic and rest are allowed. If no"
+" egress rules are configured for the network, egress traffic is accepted."
+msgstr "如果你选择网络方案为允许，则默认出口流量被允许。无论如何，当配置了来宾网络的出口规则，规则被应用于阻止特定的流量和允许其他的 。如果网络中没有配置出口规则，则出口流量会被放行。"
+
+# 63816b9551f04933aa99e27cc3dc34f1
+#: ../../networking/ip_forwarding_and_firewalling.rst:189
+msgid "Deny"
+msgstr "拒绝"
+
+# 1952d7735fb746a6834bbdeed4c1eaa9
+#: ../../networking/ip_forwarding_and_firewalling.rst:191
+msgid ""
+"If you select Deny for a network offering, by default egress traffic for the"
+" guest network is blocked. However, when an egress rules is configured for a"
+" guest network, rules are applied to allow the specified traffic. While "
+"implementing a guest network, CloudStack adds the firewall egress rule "
+"specific to the default egress policy for the guest network."
+msgstr "如果你选择网络方案为拒绝，则来宾网络中的默认出口流量将被阻挡。无论如何，当配置了来宾网络的出口规则，规则被应用于允许特定的流量。当实施来宾网络时，CloudStack为来宾网络添加防火墙出口规则指定默认的出口策略。"
+
+# 238db98415e74782937deddd3970b285
+#: ../../networking/ip_forwarding_and_firewalling.rst:198
+msgid "This feature is supported only on virtual router and Juniper SRX."
+msgstr "该特定只支持虚拟路由器和Juniper SRX。"
+
+# e460df960d61405db56e64d21a8c43d7
+#: ../../networking/ip_forwarding_and_firewalling.rst:200
+msgid "Create a network offering with your desirable default egress policy:"
+msgstr "为合适的默认出口策略创建一个网络方案："
+
+# 5271ad0a1d4a4a27aa5597b044b42acf
+#: ../../networking/ip_forwarding_and_firewalling.rst:202
+msgid "Log in with admin privileges to the CloudStack UI."
+msgstr "以管理员权限登录CloudStack用户界面。"
+
+# fd49a59627284ffda66fef7096eaa709
+#: ../../networking/ip_forwarding_and_firewalling.rst:204
+msgid "In the left navigation bar, click Service Offerings."
+msgstr "在左侧导航栏中，点击 服务方案。"
+
+# 7fce8b96f6e64727bb6063766c828bdd
+#: ../../networking/ip_forwarding_and_firewalling.rst:206
+msgid "In Select Offering, choose Network Offering."
+msgstr "在选择方案中，选择网络方案。"
+
+# ef8895c197ff4343b04aecc73b5a9294
+#: ../../networking/ip_forwarding_and_firewalling.rst:208
+msgid "Click Add Network Offering."
+msgstr "点击添加网络方案。"
+
+# abb73d0d766d4d32a4bbe32137193cad
+#: ../../networking/ip_forwarding_and_firewalling.rst:210
+msgid "In the dialog, make necessary choices, including firewall provider."
+msgstr "在对话框中，填写必选项，包括防火墙提供者。"
+
+# 932c30480a1f4e3ea92f06ba4296ae45
+#: ../../networking/ip_forwarding_and_firewalling.rst:213
+msgid "In the Default egress policy field, specify the behaviour."
+msgstr "在默认出口策略选项中，指定行为。"
+
+# 41d012a83e774bdeaeac42e5b44d851c
+#: ../../networking/ip_forwarding_and_firewalling.rst:215
+msgid "Click OK."
+msgstr "点击确定。"
+
+# 5a1192bc5c8a4c3c930879e56c5d58bb
+#: ../../networking/ip_forwarding_and_firewalling.rst:217
+msgid "Create an isolated network by using this network offering."
+msgstr "使用网络方案创建隔离网络。"
+
+# 3918ff66d4914376a4707b9db470a027
+#: ../../networking/ip_forwarding_and_firewalling.rst:219
+msgid ""
+"Based on your selection, the network will have the egress public traffic "
+"blocked or allowed."
+msgstr "根据你的选择，网络的出口公共流量将被拒绝或允许。"
+
+# 29ffedbd547e431f95d82b075df5ea66
+#: ../../networking/ip_forwarding_and_firewalling.rst:224
+msgid "Port Forwarding"
+msgstr "端口转发"
+
+# d9efd9df178e4f7c8d81b2ba24a9fdbb
+#: ../../networking/ip_forwarding_and_firewalling.rst:226
+msgid ""
+"A port forward service is a set of port forwarding rules that define a "
+"policy. A port forward service is then applied to one or more guest VMs. The"
+" guest VM then has its inbound network access managed according to the "
+"policy defined by the port forwarding service. You can optionally specify "
+"one or more CIDRs to filter the source IPs. This is useful when you want to "
+"allow only incoming requests from certain IP addresses to be forwarded."
+msgstr "一个端口转发服务是一系列转发转发规则的集合。一个端口转发服务随后可以应用于一个或多个来宾虚拟机。来宾虚拟机会根据端口转发规则作相关进入端口的管理。你可以定义一个或多个CIDR来过滤源IP地址。当你只希望特定的IP流量进入时是相当有用的。"
+
+# ae4f5d3e4bc24f8584c17c3057688144
+#: ../../networking/ip_forwarding_and_firewalling.rst:234
+msgid ""
+"A guest VM can be in any number of port forward services. Port forward "
+"services can be defined but have no members. If a guest VM is part of more "
+"than one network, port forwarding rules will function only if they are "
+"defined on the default network"
+msgstr "一个客户VM可以在任意数量的端口转发服务中。端口转发服务可以不包含客户VM。如果客户VM在多个网络中，则端口转发仅在默认网络中定义时才生效。"
+
+# 89ce910349884d8ea8a7b4f6aee10613
+#: ../../networking/ip_forwarding_and_firewalling.rst:239
+msgid ""
+"You cannot use port forwarding to open ports for an elastic IP address. When"
+" elastic IP is used, outside access is instead controlled through the use of"
+" security groups. See Security Groups."
+msgstr "您不能使用端口转发打开弹性IP地址的端口。当使用弹性IP时，外部访问是由安全组控制的。参见安全组。"
+
+# 263627f6e1de45999d0e9ab68c8a1a2d
+#: ../../networking/ip_forwarding_and_firewalling.rst:243
+msgid "To set up port forwarding:"
+msgstr "设置端口转发："
+
+# 41c9b9f2473e4b5aa0d8ea3c54e45b1b
+#: ../../networking/ip_forwarding_and_firewalling.rst:247
+msgid ""
+"If you have not already done so, add a public IP address range to a zone in "
+"CloudStack. See Adding a Zone and Pod in the Installation Guide."
+msgstr "如果还没有，请在 CloudStack中为Zone添加公网IP段。参阅 安装指南中的添加Zone和Pod。"
+
+# 2c98fbd961df4ef28a276b3ccf1d53c0
+#: ../../networking/ip_forwarding_and_firewalling.rst:251
+msgid "Add one or more VM instances to CloudStack."
+msgstr "在 CloudStack中创建1台或更多VM。"
+
+# 17a544cc6c8a42cbaef47575f1029173
+#: ../../networking/ip_forwarding_and_firewalling.rst:253
+msgid "In the left navigation bar, click Network."
+msgstr "在左边导航栏，点击网络。"
+
+# ade84b4f63694fadbe6c835b52ba796f
+#: ../../networking/ip_forwarding_and_firewalling.rst:255
+msgid "Click the name of the guest network where the VMs are running."
+msgstr "点击需要操作VM所在的网络名称。"
+
+# 48ab8bf9d7e04ca7a13eaf58eeead278
+#: ../../networking/ip_forwarding_and_firewalling.rst:257
+msgid ""
+"Choose an existing IP address or acquire a new IP address. See `\"Acquiring "
+"a New IP Address\" <#acquiring-a-new-ip-address>`_. Click the name of the IP"
+" address in the list."
+msgstr "选择一个已有的IP或者获取一个新的IP地址。参阅 `\"获取一个新的IP\" <#acquiring-a-new-ip-address>`_.。 点击列表中IP地址的名称。"
+
+# da392889cd304ce8973c2b4b8341665b
+#: ../../networking/ip_forwarding_and_firewalling.rst:261
+msgid "Click the Configuration tab."
+msgstr "点击配置选项卡。"
+
+# 4d02af0497b544d89616ff1ddf286767
+#: ../../networking/ip_forwarding_and_firewalling.rst:263
+msgid "In the Port Forwarding node of the diagram, click View All."
+msgstr "在图表的端口转发节点，点击查看所有。"
+
+# ee9101e2c97447d4b23f89177c60e7ab
+#: ../../networking/ip_forwarding_and_firewalling.rst:265
+msgid "Fill in the following:"
+msgstr "填写以下内容："
+
+# e9d9402255ae405781f85b32409d3654
+#: ../../networking/ip_forwarding_and_firewalling.rst:267
+msgid ""
+"**Public Port**: The port to which public traffic will be addressed on the "
+"IP address you acquired in the previous step."
+msgstr "**公用端口**: 你在前面操作所获取的供公共流量使用的公用IP地址的端口。 "
+
+# bf8d351e8ca649ca9931311f402ea7bc
+#: ../../networking/ip_forwarding_and_firewalling.rst:270
+msgid ""
+"**Private Port**: The port on which the instance is listening for forwarded "
+"public traffic."
+msgstr "**私有端口**: 虚拟机实例将被转发到公共流量的监听端口。"
+
+# 5140efc173fd46e194d6c4827a8a67fc
+#: ../../networking/ip_forwarding_and_firewalling.rst:273
+msgid "**Protocol**: The communication protocol in use between the two ports"
+msgstr ""

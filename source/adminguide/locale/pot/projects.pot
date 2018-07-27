@@ -1,0 +1,600 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../projects.rst:18
+# 4b4ac9e9d63047e88707cfbcf936a425
+msgid "Using Projects to Organize Users and Resources"
+msgstr ""
+
+#: ../../projects.rst:21
+# dd53e71c97984e29944fd5f92845fc70
+msgid "Overview of Projects"
+msgstr ""
+
+#: ../../projects.rst:23
+# 9ad708c803064abcbaa0ba5c9d5efe55
+msgid "Projects are used to organize people and resources. CloudStack users within a single domain can group themselves into project teams so they can collaborate and share virtual resources such as VMs, snapshots, templates, data disks, and IP addresses. CloudStack tracks resource usage per project as well as per user, so the usage can be billed to either a user account or a project. For example, a private cloud within a software company might have all members of the QA department assigned to one project, so the company can track the resources used in testing while the project members can more easily isolate their efforts from other users of the same cloud"
+msgstr ""
+
+#: ../../projects.rst:34
+# df157ec524304800a9ced5d428bd234c
+msgid "You can configure CloudStack to allow any user to create a new project, or you can restrict that ability to just CloudStack administrators. Once you have created a project, you become that project’s administrator, and you can add others within your domain to the project. CloudStack can be set up either so that you can add people directly to a project, or so that you have to send an invitation which the recipient must accept. Project members can view and manage all virtual resources created by anyone in the project (for example, share VMs). A user can be a member of any number of projects and can switch views in the CloudStack UI to show only project-related information, such as project VMs, fellow project members, project-related alerts, and so on."
+msgstr ""
+
+#: ../../projects.rst:46
+# d29f7ae31802463281f05dac9610d8d2
+msgid "The project administrator can pass on the role to another project member. The project administrator can also add more members, remove members from the project, set new resource limits (as long as they are below the global defaults set by the CloudStack administrator), and delete the project. When the administrator removes a member from the project, resources created by that user, such as VM instances, remain with the project. This brings us to the subject of resource ownership and which resources can be used by a project."
+msgstr ""
+
+#: ../../projects.rst:55
+# dde002b5830f493b94778605a4014583
+msgid "Resources created within a project are owned by the project, not by any particular CloudStack account, and they can be used only within the project. A user who belongs to one or more projects can still create resources outside of those projects, and those resources belong to the user’s account; they will not be counted against the project’s usage or resource limits. You can create project-level networks to isolate traffic within the project and provide network services such as port forwarding, load balancing, VPN, and static NAT. A project can also make use of certain types of resources from outside the project, if those resources are shared. For example, a shared network or public template is available to any project in the domain. A project can get access to a private template if the template’s owner will grant permission. A project can use any service offering or disk offering available in its domain; however, you can not create private service and disk offerings at the project level.."
+msgstr ""
+
+#: ../../projects.rst:73
+# 847217dcf84349fc9c5c719bfde3ec7f
+msgid "Configuring Projects"
+msgstr ""
+
+#: ../../projects.rst:75
+# 8a115b7683d3463087791eaed5a40d85
+msgid "Before CloudStack users start using projects, the CloudStack administrator must set up various systems to support them, including membership invitations, limits on project resources, and controls on who can create projects."
+msgstr ""
+
+#: ../../projects.rst:82
+# 327e0569d0c44de5b93b9f7e446920cc
+msgid "Setting Up Invitations"
+msgstr ""
+
+#: ../../projects.rst:84
+# 3e242eb556ee478cb2f58ad9f6d5ce85
+msgid "CloudStack can be set up either so that project administrators can add people directly to a project, or so that it is necessary to send an invitation which the recipient must accept. The invitation can be sent by email or through the user’s CloudStack account. If you want administrators to use invitations to add members to projects, turn on and set up the invitations feature in CloudStack."
+msgstr ""
+
+#: ../../projects.rst:91
+#: ../../projects.rst:158
+#: ../../projects.rst:177
+#: ../../projects.rst:214
+#: ../../projects.rst:242
+# 8e48e6338f444e73898549bf0932c731
+# 2309d4b19c6d404181b591f4f6d205fc
+# 2e84d8cc479e4cf0af43cd20e4fa190b
+# ccfea269215f463d9fe35998c9494c53
+# 8c0130530bbe4c28b429436a6d8e61c9
+msgid "Log in as administrator to the CloudStack UI."
+msgstr ""
+
+#: ../../projects.rst:93
+#: ../../projects.rst:179
+#: ../../projects.rst:216
+# e539c47bc6254e2c8a1382c03574a8c0
+# c7df097745ac41e1ab3b12f5ede84582
+# 989f33da3208451a8bcb145c25a7d1c9
+msgid "In the left navigation, click Global Settings."
+msgstr ""
+
+#: ../../projects.rst:95
+# 37e43d6f62be443998cb185f24333cdf
+msgid "In the search box, type project and click the search button. |Searches projects|"
+msgstr ""
+
+#: ../../projects.rst:98
+# e42abfd82e134939b6d5b7d2fed2f4cc
+msgid "In the search results, you can see a few other parameters you need to set to control how invitations behave. The table below shows global configuration parameters related to project invitations. Click the edit button to set each parameter."
+msgstr ""
+
+#: ../../projects.rst:104
+# 9a803ec0fbce49a1bfcbdcb1961d9fe9
+msgid "Configuration Parameters"
+msgstr ""
+
+#: ../../projects.rst:104
+# 2eb9f6fe8d7148b99a39f5ba5c0b8acf
+msgid "Description"
+msgstr ""
+
+#: ../../projects.rst:106
+# 8f015394c22643a89189371d0708f414
+msgid "project.invite.required"
+msgstr ""
+
+#: ../../projects.rst:106
+# 3f3e2860eff34ffaad4d84f57b53f46d
+msgid "Set to true to turn on the invitations feature."
+msgstr ""
+
+#: ../../projects.rst:108
+# c3dd124564eb4178a6f272ed89393757
+msgid "project.email.sender"
+msgstr ""
+
+#: ../../projects.rst:108
+# 1c83afe8caa5414181a01e7c8e31627f
+msgid "The email address to show in the From field of invitation emails."
+msgstr ""
+
+#: ../../projects.rst:110
+# 31cb407a37cc40c79b6cdb1c8171c153
+msgid "project.invite.timeout"
+msgstr ""
+
+#: ../../projects.rst:110
+# 1ff23ba5f3174049a1f067acd434fa47
+msgid "Amount of time to allow for a new member to respond to the invitation."
+msgstr ""
+
+#: ../../projects.rst:112
+# 9daf130db7394b60aae7266b51a04ff6
+msgid "project.smtp.host"
+msgstr ""
+
+#: ../../projects.rst:112
+# dd464c374e9049c4995f6ea455014f6a
+msgid "Name of the host that acts as an email server to handle invitations."
+msgstr ""
+
+#: ../../projects.rst:114
+# 89967c84b58c4a69af3b1718861da2b1
+msgid "project.smtp.password"
+msgstr ""
+
+#: ../../projects.rst:114
+# 1815f51cddd147efb8c9cd0bf2fb66dd
+msgid "(Optional) Password required by the SMTP server. You must also set project.smtp.username and set project.smtp.useAuth to true."
+msgstr ""
+
+#: ../../projects.rst:116
+# bb3f4cd97d8c4c5881aaded19029f405
+msgid "project.smtp.port"
+msgstr ""
+
+#: ../../projects.rst:116
+# 30ad11730ae14fc5a8a26e34a244704d
+msgid "SMTP server’s listening port."
+msgstr ""
+
+#: ../../projects.rst:118
+# 1e41abde08fb4385ad49ccdd91e5d856
+msgid "project.smtp.useAuth"
+msgstr ""
+
+#: ../../projects.rst:118
+# 41fc2bf9b98d4dd7af52e18e21334a4a
+msgid "Set to true if the SMTP server requires a username and password."
+msgstr ""
+
+#: ../../projects.rst:120
+# d22498c945d14f65bd0892d1a3bbb4ab
+msgid "project.smtp.username"
+msgstr ""
+
+#: ../../projects.rst:120
+# a025e0ccc7b641c8b1c1c18d0884a7e8
+msgid "(Optional) User name required by the SMTP server for authentication. You must also set project.smtp.password and set project.smtp.useAuth to true.."
+msgstr ""
+
+#: ../../projects.rst:123
+# 5a399b5498814feb8d1d90ac249c0f06
+msgid "Restart the Management Server:"
+msgstr ""
+
+#: ../../projects.rst:130
+# cc25b73903da4b3eb00ef5dca983a9b6
+msgid "Setting Resource Limits for Projects"
+msgstr ""
+
+#: ../../projects.rst:132
+# 4554a70f1086483a8feea5f0c15eafd0
+msgid "The CloudStack administrator can set global default limits to control the amount of resources that can be owned by each project in the cloud. This serves to prevent uncontrolled usage of resources such as snapshots, IP addresses, and virtual machine instances. Domain administrators can override these resource limits for individual projects with their domains, as long as the new limits are below the global defaults set by the CloudStack root administrator. The root administrator can also set lower resource limits for any project in the cloud"
+msgstr ""
+
+#: ../../projects.rst:143
+# 87c2e78e1e344c2fa0e550443ff641e3
+msgid "Setting Per-Project Resource Limits"
+msgstr ""
+
+#: ../../projects.rst:145
+# 7e81041e8a9147bd84fde49f3f569465
+msgid "The CloudStack root administrator or the domain administrator of the domain where the project resides can set new resource limits for an individual project. The project owner can set resource limits only if the owner is also a domain or root administrator."
+msgstr ""
+
+#: ../../projects.rst:150
+# 47029644eddd41d1b4647b5332d9c061
+msgid "The new limits must be below the global default limits set by the CloudStack administrator (as described in `“Setting Resource Limits for Projects” <#setting-resource-limits-for-projects>`_). If the project already owns more of a given type of resource than the new maximum, the resources are not affected; however, the project can not add any new resources of that type until the total drops below the new limit."
+msgstr ""
+
+#: ../../projects.rst:160
+#: ../../projects.rst:244
+#: ../../projects.rst:284
+#: ../../projects.rst:328
+#: ../../projects.rst:350
+#: ../../projects.rst:380
+# f22a47ab0c5948e6b1e37d8a2ea696c9
+# e197ae8d631c487694852e4f6de2552f
+# befd6ea180404a3bb8cc85b535ec7a84
+# c2260b29d8b94395b2be966c4a99333d
+# 322b7293e93f44dcb5b9d2b201132963
+# 9f3d412110854b50a846dbdbcf15d67a
+msgid "In the left navigation, click Projects."
+msgstr ""
+
+#: ../../projects.rst:162
+#: ../../projects.rst:286
+#: ../../projects.rst:330
+#: ../../projects.rst:382
+# 028c250e7e6144e2a78bcb28aeb20c20
+# 2eb7b64a81f44d6381ff74cb4876454f
+# ced1ffd77bfc4a769d87a1e02b4f605b
+# c52047f8f2064bb2a2e81d5aa52a4c86
+msgid "In Select View, choose Projects."
+msgstr ""
+
+#: ../../projects.rst:164
+#: ../../projects.rst:288
+#: ../../projects.rst:332
+# af4be7e8b89f4da08c1391967263e362
+# dc1fc36ced6d4c48984c0a599e2893ba
+# 79ab804df9234bd0af6b4f89d1b545b5
+msgid "Click the name of the project you want to work with."
+msgstr ""
+
+#: ../../projects.rst:166
+# 5e274b4f574149edaa1899709a04a1d3
+msgid "Click the Resources tab. This tab lists the current maximum amount that the project is allowed to own for each type of resource."
+msgstr ""
+
+#: ../../projects.rst:169
+# b0861fc478514256ad0ca41e6184ba3a
+msgid "Type new values for one or more resources."
+msgstr ""
+
+#: ../../projects.rst:171
+# 363f4b7e52b04d4ba5bf081c3c51dc8a
+msgid "Click Apply."
+msgstr ""
+
+#: ../../projects.rst:175
+# 7263280c84454f05be8680c02efbd4c3
+msgid "Setting the Global Project Resource Limits"
+msgstr ""
+
+#: ../../projects.rst:181
+# 81a908897f4d4aacb979288d14e8f4ad
+msgid "In the search box, type max.projects and click the search button."
+msgstr ""
+
+#: ../../projects.rst:183
+# 7a132176784548a1bb80edb054b486b9
+msgid "In the search results, you will see the parameters you can use to set per-project maximum resource amounts that apply to all projects in the cloud. No project can have more resources, but an individual project can have lower limits. Click the edit button to set each parameter. |Edits parameters|"
+msgstr ""
+
+#: ../../projects.rst:190
+# 241b29e357a047dc890813c8021b8bfa
+msgid "max.project.public.ips"
+msgstr ""
+
+#: ../../projects.rst:190
+# ca118c2a5e6d41b0ae029c8780d99883
+msgid "Maximum number of public IP addresses that can be owned by any project in the cloud. See About Public IP Addresses."
+msgstr ""
+
+#: ../../projects.rst:192
+# 2c1e0ade7edc46ff97ef948312221adb
+msgid "max.project.snapshots"
+msgstr ""
+
+#: ../../projects.rst:192
+# a809d74e8e264f2f8544e96dacf33d1a
+msgid "Maximum number of snapshots that can be owned by any project in the cloud. See Working with Snapshots."
+msgstr ""
+
+#: ../../projects.rst:194
+# 977134a911f844f98a39206991e01c12
+msgid "max.project.templates"
+msgstr ""
+
+#: ../../projects.rst:194
+# 44dcf66c930a42869b7601e0250466ac
+msgid "Maximum number of templates that can be owned by any project in the cloud. See Working with Templates."
+msgstr ""
+
+#: ../../projects.rst:196
+# 9007c476909543678660480c9c5cca8e
+msgid "max.project.uservms"
+msgstr ""
+
+#: ../../projects.rst:196
+# fa7756a39a51499aa79542f6a9aebd0a
+msgid "Maximum number of guest virtual machines that can be owned by any project in the cloud. See Working With Virtual Machines."
+msgstr ""
+
+#: ../../projects.rst:198
+# 4bd44963b3c84bd09612d0c16cb2b21f
+msgid "max.project.volumes"
+msgstr ""
+
+#: ../../projects.rst:198
+# b684120b36d54144b7d6bfd1b9cb26fd
+msgid "Maximum number of data volumes that can be owned by any project in the cloud. See Working with Volumes."
+msgstr ""
+
+#: ../../projects.rst:202
+#: ../../projects.rst:228
+# 0a08e573ccff40ed964877c1e0a25422
+# 30bf816d7d164ebc9a3527bb06dcd0f5
+msgid "Restart the Management Server."
+msgstr ""
+
+#: ../../projects.rst:209
+# 7a9e7b11d9204da7b5e4ae5b0cad6e15
+msgid "Setting Project Creator Permissions"
+msgstr ""
+
+#: ../../projects.rst:211
+# c9583a67341f459c94f3aa76485a5fd8
+msgid "You can configure CloudStack to allow any user to create a new project, or you can restrict that ability to just CloudStack administrators."
+msgstr ""
+
+#: ../../projects.rst:218
+# 0c5d1047bef445548c0c40109d391eca
+msgid "In the search box, type allow.user.create.projects."
+msgstr ""
+
+#: ../../projects.rst:220
+# 44b11d9aac27438eb4bfa70d31759c86
+msgid "Click the edit button to set the parameter. |Edits parameters|"
+msgstr ""
+
+#: ../../projects.rst:222
+# fb277fa119e0496885f889a3ae48d1e7
+msgid "``allow.user.create.projects``"
+msgstr ""
+
+#: ../../projects.rst:224
+# 9cdac884b4f1482599019f9178759604
+msgid "Set to true to allow end users to create projects. Set to false if you want only the CloudStack root administrator and domain administrators to create projects."
+msgstr ""
+
+#: ../../projects.rst:236
+# c36ba31002c74ec98d2dcdec7bd9374e
+msgid "Creating a New Project"
+msgstr ""
+
+#: ../../projects.rst:238
+# 6b62d8460a034f809371e1886bd34e80
+msgid "CloudStack administrators and domain administrators can create projects. If the global configuration parameter allow.user.create.projects is set to true, end users can also create projects."
+msgstr ""
+
+#: ../../projects.rst:246
+# 4a302cfc6cb34ba5baf6615abcae28ec
+msgid "In Select view, click Projects."
+msgstr ""
+
+#: ../../projects.rst:248
+# 520e75eebfb24c338a07edbd8119b8b8
+msgid "Click New Project."
+msgstr ""
+
+#: ../../projects.rst:250
+# 42a42b0b1bb24125b530a8fb28a3b31a
+msgid "Give the project a name and description for display to users, then click Create Project."
+msgstr ""
+
+#: ../../projects.rst:253
+# 2c2486f0447d4f138b5e1c0e8ceace41
+msgid "A screen appears where you can immediately add more members to the project. This is optional. Click Next when you are ready to move on."
+msgstr ""
+
+#: ../../projects.rst:256
+# 2bc3c862668e44e78c5ec777dc974839
+msgid "Click Save."
+msgstr ""
+
+#: ../../projects.rst:260
+# 986f0cb8853a42738eabaab830e43267
+msgid "Adding Members to a Project"
+msgstr ""
+
+#: ../../projects.rst:262
+# 50647c0e69974fbba211aabef3bcda09
+msgid "New members can be added to a project by the project’s administrator, the domain administrator of the domain where the project resides or any parent domain, or the CloudStack root administrator. There are two ways to add members in CloudStack, but only one way is enabled at a time:"
+msgstr ""
+
+#: ../../projects.rst:267
+# ef81123f6c0e4fc3b1c2521f4324fc93
+msgid "If invitations have been enabled, you can send invitations to new members."
+msgstr ""
+
+#: ../../projects.rst:270
+# f7125c407042411f8a4f35feff955784
+msgid "If invitations are not enabled, you can add members directly through the UI."
+msgstr ""
+
+#: ../../projects.rst:275
+# a4433f30587f4374807fa615b7d326cb
+msgid "Sending Project Membership Invitations"
+msgstr ""
+
+#: ../../projects.rst:277
+# 4417ea897e4e418caf7f9050b019b36e
+msgid "Use these steps to add a new member to a project if the invitations feature is enabled in the cloud as described in `“Setting Up Invitations” <#setting-up-invitations>`_. If the invitations feature is not turned on, use the procedure in Adding Project Members From the UI."
+msgstr ""
+
+#: ../../projects.rst:282
+#: ../../projects.rst:326
+#: ../../projects.rst:348
+#: ../../projects.rst:378
+#: ../../projects.rst:402
+# b67c9d2fbb734979be7d9a0b06c83e07
+# 09c3e88bd9394c8ebecf83e40f6dfef9
+# 2b65ac18e6e14d988ed9d105965093b3
+# 0f9433a953604a24aaa3936b6304ff37
+# aaabf61386aa4e90a83121dd76c55ca6
+msgid "Log in to the CloudStack UI."
+msgstr ""
+
+#: ../../projects.rst:290
+# 6848798224324e658909d941615e3c71
+msgid "Click the Invitations tab."
+msgstr ""
+
+#: ../../projects.rst:292
+# 49786f4671bb4afbb13144fb5cdb22de
+msgid "In Add by, select one of the following:"
+msgstr ""
+
+#: ../../projects.rst:294
+# 00420a7de6a943b5bea54e2930363c7b
+msgid "Account – The invitation will appear in the user’s Invitations tab in the Project View. See Using the Project View."
+msgstr ""
+
+#: ../../projects.rst:297
+# 23674aa094d8476181833f1077c82ce9
+msgid "Email – The invitation will be sent to the user’s email address. Each emailed invitation includes a unique code called a token which the recipient will provide back to CloudStack when accepting the invitation. Email invitations will work only if the global parameters related to the SMTP server have been set. See `“Setting Up Invitations” <#setting-up-invitations>`_."
+msgstr ""
+
+#: ../../projects.rst:304
+# 98b4ad1148b94b9ba8e815a3ce4214a8
+msgid "Type the user name or email address of the new member you want to add, and click Invite. Type the CloudStack user name if you chose Account in the previous step. If you chose Email, type the email address. You can invite only people who have an account in this cloud within the same domain as the project. However, you can send the invitation to any email address."
+msgstr ""
+
+#: ../../projects.rst:311
+# 9a6d6ea948754921bbc259b87b29ba60
+msgid "To view and manage the invitations you have sent, return to this tab. When an invitation is accepted, the new member will appear in the project’s Accounts tab."
+msgstr ""
+
+#: ../../projects.rst:317
+# 2cf29d018a2c48a79262e2f02cd30162
+msgid "Adding Project Members From the UI"
+msgstr ""
+
+#: ../../projects.rst:319
+# fdbf78a90732473689bcedc64864415d
+msgid "The steps below tell how to add a new member to a project if the invitations feature is not enabled in the cloud. If the invitations feature is enabled cloud,as described in `“Setting Up Invitations” <#setting-up-invitations>`_, use the procedure in `“Sending Project Membership Invitations” <#sending-project-membership-invitations>`_."
+msgstr ""
+
+#: ../../projects.rst:334
+# 069a956c95384174a82d2d0302f3dfd7
+msgid "Click the Accounts tab. The current members of the project are listed."
+msgstr ""
+
+#: ../../projects.rst:337
+# 7654413243e545579270bc7c8b813727
+msgid "Type the account name of the new member you want to add, and click Add Account. You can add only people who have an account in this cloud and within the same domain as the project."
+msgstr ""
+
+#: ../../projects.rst:343
+# 774bd03942ea4a3ab9023bb4f72b627b
+msgid "Accepting a Membership Invitation"
+msgstr ""
+
+#: ../../projects.rst:345
+# 462eace7144340bc8bc65c06d8056b5d
+msgid "If you have received an invitation to join a CloudStack project, and you want to accept the invitation, follow these steps:"
+msgstr ""
+
+#: ../../projects.rst:352
+# 0196721635cc470094d28372774afeac
+msgid "In Select View, choose Invitations."
+msgstr ""
+
+#: ../../projects.rst:354
+# f5c8ed37ac54486f8d3f20f9129936a9
+msgid "If you see the invitation listed onscreen, click the Accept button."
+msgstr ""
+
+#: ../../projects.rst:356
+# f33506966c894c8eb0f91c35c2d506ee
+msgid "Invitations listed on screen were sent to you using your CloudStack account name."
+msgstr ""
+
+#: ../../projects.rst:359
+# 67733042a89a4b969d73efc5f2fa6e94
+msgid "If you received an email invitation, click the Enter Token button, and provide the project ID and unique ID code (token) from the email."
+msgstr ""
+
+#: ../../projects.rst:364
+# c33bd4e1071f4d9dab4b1d9a3be3f052
+msgid "Suspending or Deleting a Project"
+msgstr ""
+
+#: ../../projects.rst:366
+# b401169d94da465097ecd686cf60ced2
+msgid "When a project is suspended, it retains the resources it owns, but they can no longer be used. No new resources or members can be added to a suspended project."
+msgstr ""
+
+#: ../../projects.rst:370
+# d08b758fd1754360a7334fa51c6067cf
+msgid "When a project is deleted, its resources are destroyed, and member accounts are removed from the project. The project’s status is shown as Disabled pending final deletion."
+msgstr ""
+
+#: ../../projects.rst:374
+# 400db324f49c472881028c92fb1082c8
+msgid "A project can be suspended or deleted by the project administrator, the domain administrator of the domain the project belongs to or of its parent domain, or the CloudStack root administrator."
+msgstr ""
+
+#: ../../projects.rst:384
+# d8a96b11443d49109477879ebdf4e6c1
+msgid "Click the name of the project."
+msgstr ""
+
+#: ../../projects.rst:386
+# 6c5f88a0ad7443cdb4f778b9d3d8da58
+msgid "Click one of the buttons:"
+msgstr ""
+
+#: ../../projects.rst:388
+# 29804834398d400d9518f86f6aadc9ca
+msgid "To delete, use |Removes a project|"
+msgstr ""
+
+#: ../../projects.rst:390
+# 41920e56886b48dbb25f86128a21a0c2
+msgid "To suspend, use |Suspends a project|"
+msgstr ""
+
+#: ../../projects.rst:394
+# fe947634ec70449bb7e58adb8700e805
+msgid "Using the Project View"
+msgstr ""
+
+#: ../../projects.rst:396
+# b2b759558262491e98fb0636eae9bd35
+msgid "If you are a member of a project, you can use CloudStack’s project view to see project members, resources consumed, and more. The project view shows only information related to one project. It is a useful way to filter out other information so you can concentrate on a project status and resources."
+msgstr ""
+
+#: ../../projects.rst:404
+# b2d475dcc43b441da5592c11733cec95
+msgid "Click Project View."
+msgstr ""
+
+#: ../../projects.rst:406
+# 697e02ba1d754fab8d93b30aa2692085
+msgid "The project dashboard appears, showing the project’s VMs, volumes, users, events, network settings, and more. From the dashboard, you can:"
+msgstr ""
+
+#: ../../projects.rst:410
+# 0439e9369d664d92be0b7b1fdb1ca88f
+msgid "Click the Accounts tab to view and manage project members. If you are the project administrator, you can add new members, remove members, or change the role of a member from user to admin. Only one member at a time can have the admin role, so if you set another user’s role to admin, your role will change to regular user."
+msgstr ""
+
+#: ../../projects.rst:417
+# cfe2dfd46e014224a3ec791add73746c
+msgid "(If invitations are enabled) Click the Invitations tab to view and manage invitations that have been sent to new project members but not yet accepted. Pending invitations will remain in this list until the new member accepts, the invitation timeout is reached, or you cancel the invitation."
+msgstr ""
+

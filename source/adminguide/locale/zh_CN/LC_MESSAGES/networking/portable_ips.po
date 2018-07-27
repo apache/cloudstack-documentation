@@ -1,0 +1,233 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:06+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 0d718ef9845940f3b45f93fdedd55a80
+#: ../../networking/portable_ips.rst:18
+msgid "Portable IPs"
+msgstr "端口IP"
+
+# 7dbdc94b3c7148f3a67dd212137b1b78
+#: ../../networking/portable_ips.rst:21
+msgid "About Portable IP"
+msgstr "关于端口IP"
+
+# a4b9041cb1da4c7c9185978b3bd46328
+#: ../../networking/portable_ips.rst:23
+msgid ""
+"Portable IPs in CloudStack are region-level pool of IPs, which are elastic "
+"in nature, that can be transferred across geographically separated zones. As"
+" an administrator, you can provision a pool of portable public IPs at region"
+" level and are available for user consumption. The users can acquire "
+"portable IPs if admin has provisioned portable IPs at the region level they "
+"are part of. These IPs can be use for any service within an advanced zone. "
+"You can also use portable IPs for EIP services in basic zones."
+msgstr "在CloudStack中，端口IP是地域级的IP地址池，其天然具有弹性，亦即可以在地理隔离的区域中进行转发。作为管理员,可以在地域级提供IP地址池供用户使用。如果在用户所属的地域，其管理员提供了端口IP，用户就可以获取此类IP。在高级区域内，这些IP可用于任一服务。也可以在基础区域中为EIP服务使用端口IP。"
+
+# 824ded2676d34d4b8d60fd93b08f58c8
+#: ../../networking/portable_ips.rst:32
+msgid "The salient features of Portable IP are as follows:"
+msgstr "端口IP的主要功能如下："
+
+# 1f57b59fbbbd426b9b2fd6f4dffaa0d2
+#: ../../networking/portable_ips.rst:34
+msgid "IP is statically allocated"
+msgstr "IP是静态分配的。"
+
+# 1759d65d5ed34db283d80b85d56f486a
+#: ../../networking/portable_ips.rst:36
+msgid "IP need not be associated with a network"
+msgstr "IP与网络无关。"
+
+# 6826b76a9eea4332a6c068382f8b050c
+#: ../../networking/portable_ips.rst:38
+msgid "IP association is transferable across networks"
+msgstr "IP关联是可以通过网络转发的。"
+
+# ae7460bc9900474fbf94402165b9cb7e
+#: ../../networking/portable_ips.rst:40
+msgid "IP is transferable across both Basic and Advanced zones"
+msgstr "IP可以在基础区域和高级区域中转发。"
+
+# 770563314c044da6acca6641fce5f500
+#: ../../networking/portable_ips.rst:42
+msgid "IP is transferable across VPC, non-VPC isolated and shared networks"
+msgstr "IP可通过VPC，非VPC隔离和共享网络进行转发。"
+
+# ea55d3113555412f8f8a2bbf4f6b0846
+#: ../../networking/portable_ips.rst:44
+msgid "Portable IP transfer is available only for static NAT."
+msgstr "端口IP转发仅对静态NAT可用。"
+
+# 2ff5ef4c14bb4585a2e7c5c7458d25fe
+#: ../../networking/portable_ips.rst:48
+msgid "Guidelines"
+msgstr "指南"
+
+# 662d9610efd3460aae2192eea97c7bd6
+#: ../../networking/portable_ips.rst:50
+msgid ""
+"Before transferring to another network, ensure that no network rules "
+"(Firewall, Static NAT, Port Forwarding, and so on) exist on that portable "
+"IP."
+msgstr "在转发至另一网络前，确保没有网络规则（如防火墙，静态NAT，端口转发等等）不存在于端口IP。"
+
+# d276865047e64a7f9cdddb63ad28d313
+#: ../../networking/portable_ips.rst:56
+msgid "Configuring Portable IPs"
+msgstr "配置端口IP"
+
+# b085a9f5f2ce4744b86603f26196b283
+# a28f4db3b1734d3c9f0aa6cada34dab5
+#: ../../networking/portable_ips.rst:58 ../../networking/portable_ips.rst:90
+msgid "Log in to the CloudStack UI as an administrator or end user."
+msgstr "使用管理员或者终端用户账号登录CloudStack UI。"
+
+# 2f850a50ddab404d9df06aa0338d6479
+#: ../../networking/portable_ips.rst:60
+msgid "In the left navigation, click Regions."
+msgstr "在左侧导航栏中，点击地域"
+
+# 316a2bbd2c69469597356b663e5135ba
+#: ../../networking/portable_ips.rst:62
+msgid "Choose the Regions that you want to work with."
+msgstr "选择拟修改的地域。"
+
+# c66c2dfa7575447e82396eeff33e1315
+#: ../../networking/portable_ips.rst:64
+msgid "Click View Portable IP."
+msgstr "点击查看端口IP"
+
+# cd5798170b724d0abe4461ee8779eded
+#: ../../networking/portable_ips.rst:66
+msgid "Click Portable IP Range."
+msgstr "点击端口IP范围"
+
+# 09d0a8e2201a44acbe61f89c2ebdba6b
+#: ../../networking/portable_ips.rst:68
+msgid "The Add Portable IP Range window is displayed."
+msgstr "会出现 添加端口IP范围的窗口"
+
+# 9c9681bfaca543f09522720f86b05c3b
+#: ../../networking/portable_ips.rst:70
+msgid "Specify the following:"
+msgstr "指定以下信息："
+
+# 2832d8a453bf4a27a01dfbe6ade2c252
+#: ../../networking/portable_ips.rst:72
+msgid ""
+"**Start IP/ End IP**: A range of IP addresses that are accessible from the "
+"Internet and will be allocated to guest VMs. Enter the first and last IP "
+"addresses that define a range that CloudStack can assign to guest VMs."
+msgstr "**起始IP/结束IP**: 从Internet可以访问的一个IP地址范围，将会分配给客户虚拟机。输入起始IP以及结束IP，定义CloudStack指定给客户虚拟机的IP范围。"
+
+# ea589b30c39d429c86fd50fe49515dd7
+#: ../../networking/portable_ips.rst:77
+msgid ""
+"**Gateway**: The gateway in use for the Portable IP addresses you are "
+"configuring."
+msgstr "**网关**: 配置端口IP地址所使用的网关。"
+
+# 9d8360b75a254007b307c9ba1341550d
+#: ../../networking/portable_ips.rst:80
+msgid "**Netmask**: The netmask associated with the Portable IP range."
+msgstr "**掩码**: 与端口IP范围关联的掩码。"
+
+# 60ed534104ce48fdb9586f72c61b379f
+#: ../../networking/portable_ips.rst:82
+msgid "**VLAN**: The VLAN that will be used for public traffic."
+msgstr "**VLAN**: 公共流量拟使用的VLAN。"
+
+# 8615e1020e2747f0ba31cd4cb186a010
+#: ../../networking/portable_ips.rst:84
+msgid "Click OK."
+msgstr "点击确定。"
+
+# d88ec64c255243049a67ed2616530031
+#: ../../networking/portable_ips.rst:88
+msgid "Acquiring a Portable IP"
+msgstr "获取端口IP。"
+
+# b933b6d78fe94153a35b24d2ccfd8e06
+#: ../../networking/portable_ips.rst:92
+msgid "In the left navigation, choose Network."
+msgstr "在左侧的导航栏，选择网络。"
+
+# 2f46ac57574a4ff3833cd3af46386463
+#: ../../networking/portable_ips.rst:94
+msgid "Click the name of the network where you want to work with."
+msgstr "点击拟修改的网络名称。"
+
+# a7dc83315ae746af830094d45cfe7c11
+#: ../../networking/portable_ips.rst:96
+msgid "Click View IP Addresses."
+msgstr "点击查看IP地址。"
+
+# 64b8eac8ac21402293c2fff5d435a7eb
+#: ../../networking/portable_ips.rst:98
+msgid "Click Acquire New IP."
+msgstr "点击获取新IP。"
+
+# 4a739787a6194df09e032797d1fe0911
+#: ../../networking/portable_ips.rst:100
+msgid "The Acquire New IP window is displayed."
+msgstr "获取新IP的窗口会出现。"
+
+# c8424da0e97a443f9d01fab04339184f
+#: ../../networking/portable_ips.rst:102
+msgid "Specify whether you want cross-zone IP or not."
+msgstr "说明是否需要IP跨区。"
+
+# 222f964df0914c01bf92a5a5f461d4cc
+#: ../../networking/portable_ips.rst:104
+msgid "Click Yes in the confirmation dialog."
+msgstr "在确认对话框中点击确定。"
+
+# 97dbf547785f4b1aaea165efca4b50a9
+#: ../../networking/portable_ips.rst:106
+msgid ""
+"Within a few moments, the new IP address should appear with the state "
+"Allocated. You can now use the IP address in port forwarding or static NAT "
+"rules."
+msgstr "稍等一会，新的IP地址会出现，状态栏为会显示为分配。现在可以在端口转发或静态NAT规则中使用此IP地址了。"
+
+# b84bba5db56047ba9dcd10cad9a14c3a
+#: ../../networking/portable_ips.rst:112
+msgid "Transferring Portable IP"
+msgstr "便携式IP"
+
+# f9ff7b7ea0d541a2bb6530a633a01f8b
+#: ../../networking/portable_ips.rst:114
+msgid ""
+"An IP can be transferred from one network to another only if Static NAT is "
+"enabled. However, when a portable IP is associated with a network, you can "
+"use it for any service in the network."
+msgstr "IP要从一个网络转换至另一网络的话，只需启用静态NAT。但是，当一个portable IP对应一个网络的时候，你可以在网络中为任何服务使用它 。"
+
+# 2112dfc5676e4e7fbeb783e1bdbafb8d
+#: ../../networking/portable_ips.rst:118
+msgid ""
+"To transfer a portable IP across the networks, execute the following API:"
+msgstr "要跨网络转换一个portable IP，执行下列API："
+
+# 794e73bb89214a29bc9257f2fc58c178
+#: ../../networking/portable_ips.rst:125
+msgid ""
+"Replace the UUID with appropriate UUID. For example, if you want to transfer"
+" a portable IP to network X and VM Y in a network, execute the following:"
+msgstr "用正确的UUID替换此处的UUID。比如，如果你想转换一个portable IP至X网络和一个网络中的VM Y，请执行下列操作："

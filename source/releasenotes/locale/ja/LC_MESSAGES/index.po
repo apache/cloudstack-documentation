@@ -1,0 +1,52 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache CloudStack
+# This file is distributed under the same license as the Apache CloudStack Release Notes package.
+# 
+# Translators:
+# sebgoa <runseb@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Release Notes RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-05 14:09+0100\n"
+"PO-Revision-Date: 2014-03-31 18:33+0000\n"
+"Last-Translator: sebgoa <runseb@gmail.com>\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/apache-cloudstack-release-notes-rtd/language/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 208f4a89b044435a92aea7c8b4300a6a
+#: ../../source/index.rst:22
+msgid "Welcome to Apache CloudStack Release Notes"
+msgstr "Apache CloudStack リリースノートへようこそ"
+
+# 3419fa4841bb4c5b8a97aa893918cd10
+#: ../../source/index.rst:24
+msgid ""
+"This section describes the operating systems, browsers, and hypervisors that"
+" have been newly tested and certified compatible with CloudStack 4.3. Most "
+"earlier OS and hypervisor versions are also still supported for use with 4.3"
+" It might work well on other platforms, but the platforms listed below are "
+"the ones that are specifically tested against and are more likely to be able"
+" to help troubleshoot if you run into any issues."
+msgstr "この章では CloudStack 4.3 で新しくテストされ保証されているオペレーティングシステム、ブラウザ、ハイパーバイザーに関して記述しています。これまでの OS や ハイパーバイザーのバージョンの多くは引き続き 4.3 でサポートされ他のプラットフォームより安定して動作するでしょう。しかし以下に示されているプラットフォームは注力してテストされており何らかの問題が発生した際にトラブルシューティングを支援する可能性が高いものです。"
+
+# 5556135be49b4842a8386379fc3f66e4
+#: ../../source/index.rst:32
+msgid ""
+"This document contains information specific to this release of CloudStack, "
+"including upgrade instructions from prior releases, new features added to "
+"CloudStack, API changes, and issues fixed in the release. For installation "
+"instructions, please see the `Installation Guide <http://cloudstack-"
+"installation.readthedocs.org/en/latest/>`__. For usage and administration "
+"instructions, please see the `CloudStack Administrator's Guide <http"
+"://cloudstack-administration.readthedocs.org/en/latest/>`__."
+msgstr "このドキュメントは本 CloudStack リリースの特定情報を含んでおり、以前のバージョンからのアップグレード方法、CloudStack に追加された新機能、API の変更点、修正された問題が含まれます。インストール方法に関しては `インストールガイド <http://cloudstack-installation.readthedocs.org/en/latest/>`__.  を参照してください。使い方と管理方法に関しては `CloudStack 管理者ガイド <http://cloudstack-administration.readthedocs.org/en/latest/>`__.   を参照してください。"
+
+# a0536e5ac6e44bf2a3fb53a10aaac844
+#: ../../source/index.rst:38
+msgid "Contents:"
+msgstr "コンテンツ:"

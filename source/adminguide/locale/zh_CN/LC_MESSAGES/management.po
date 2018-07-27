@@ -1,0 +1,602 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:04+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 36cc316d379647279da05d191cf9e9b5
+#: ../../management.rst:18
+msgid "Managing the Cloud"
+msgstr "管理云"
+
+# 0dc09dfbe9e34a9cb51831005d8fc025
+#: ../../management.rst:21
+msgid "Using Tags to Organize Resources in the Cloud"
+msgstr "在云中使用Tags来组织资源。"
+
+# 3ead5d7ddceb4d98a278abeeed0683c2
+#: ../../management.rst:23
+msgid ""
+"A tag is a key-value pair that stores metadata about a resource in the "
+"cloud. Tags are useful for categorizing resources. For example, you can tag "
+"a user VM with a value that indicates the user's city of residence. In this "
+"case, the key would be \"city\" and the value might be \"Toronto\" or "
+"\"Tokyo.\" You can then request CloudStack to find all resources that have a"
+" given tag; for example, VMs for users in a given city."
+msgstr "标签是一类存储云中资源元数据的键值对。其主要用来分类资源，例如，可以将一个用户的虚拟机打上标签，以表明用户所在的城市。在这个例子中，键就是城市，而值可能是Toronto或是Tokyo。可以让cloudstack发现所有打上标签的资源。例如，发现指定城市里用户的虚拟机。"
+
+# 6388318fab6c44f58fd92b854f510717
+#: ../../management.rst:30
+msgid ""
+"You can tag a user virtual machine, volume, snapshot, guest network, "
+"template, ISO, firewall rule, port forwarding rule, public IP address, "
+"security group, load balancer rule, project, VPC, network ACL, or static "
+"route. You can not tag a remote access VPN."
+msgstr "可以给用户虚拟机，磁盘卷，快照，来宾网络，模板，ISO镜像，防火墙规则，端口转发规则，公共IP地址，安全组，负载均衡规则，项目，VPC，网络访问列表或者静态路由器等等，都打上标签。但不能给远程登录VPN打上标签。"
+
+# 87e95cabe82f4b7f86c2cd1cc303b912
+#: ../../management.rst:35
+msgid ""
+"You can work with tags through the UI or through the API commands "
+"createTags, deleteTags, and listTags. You can define multiple tags for each "
+"resource. There is no limit on the number of tags you can define. Each tag "
+"can be up to 255 characters long. Users can define tags on the resources "
+"they own, and administrators can define tags on any resources in the cloud."
+msgstr "可以通过CloudStack的界面或者API来创建标签，删除标签或者列出标签。也可以为每一个资源定义多个标签。没有数量的限制。并且，每个标签可以达到255个字符的长度。用户可以定义自己拥有的资源的标签，而管理员可以定义云中所有资源的标签。"
+
+# c2db56ab546245ec9d37ccf72573c16c
+#: ../../management.rst:42
+msgid ""
+"An optional input parameter, \"tags,\" exists on many of the list\\* API "
+"commands. The following example shows how to use this new parameter to find "
+"all the volumes having tag region=canada OR tag city=Toronto:"
+msgstr "一个可选的输入参数，标签，存在于多个API中。下面的例子展示了如何应用这个新参数来查找带有 地域=加拿大或城市=多伦多 标签的所有磁盘卷。"
+
+# 0d735394ca9f48f8a4ef3c5d0a25741d
+#: ../../management.rst:55
+msgid "The following API commands have the \"tags\" input parameter:"
+msgstr "下面的API命令具有以下输入参数："
+
+# 6d986331aa5d4971bab13111a8471d36
+#: ../../management.rst:57
+msgid "listVirtualMachines"
+msgstr "listVirtualMachines"
+
+# b0e2702f6aed49a8831ae5c2983a18c9
+#: ../../management.rst:59
+msgid "listVolumes"
+msgstr "listVolumes"
+
+# 97c53594680a4cecb64e3f1a5ea2a2f3
+#: ../../management.rst:61
+msgid "listSnapshots"
+msgstr "listSnapshots"
+
+# 0217180a24604d579084142d07f11299
+#: ../../management.rst:63
+msgid "listNetworks"
+msgstr "listNetworks"
+
+# dcf958a652304820818033fc441226e7
+#: ../../management.rst:65
+msgid "listTemplates"
+msgstr "listTemplates"
+
+# 296660956a3b4ce5b02c4c7f1272e889
+#: ../../management.rst:67
+msgid "listIsos"
+msgstr "listIsos"
+
+# 69e88bee17394199a778180f3304fbf0
+#: ../../management.rst:69
+msgid "listFirewallRules"
+msgstr "listFirewallRules"
+
+# 7954e7afc0334bc7bfcf16492195bb49
+#: ../../management.rst:71
+msgid "listPortForwardingRules"
+msgstr "listPortForwardingRules"
+
+# d273e10141d84eecbdc74ec901700d11
+#: ../../management.rst:73
+msgid "listPublicIpAddresses"
+msgstr "listPublicIpAddresses"
+
+# b3e40262a34d4590bed84b8d5fc62798
+#: ../../management.rst:75
+msgid "listSecurityGroups"
+msgstr "listSecurityGroups"
+
+# e8f6e365e1da4b499d6b852d6c3e1162
+#: ../../management.rst:77
+msgid "listLoadBalancerRules"
+msgstr "listLoadBalancerRules"
+
+# 3c8faeeede5147fb911f022fd5858210
+#: ../../management.rst:79
+msgid "listProjects"
+msgstr "listProjects"
+
+# a9805315805e4d75b977c3428bcde48a
+#: ../../management.rst:81
+msgid "listVPCs"
+msgstr "listVPCs"
+
+# bfab0c32d8364cd9a3e762e7992888f1
+#: ../../management.rst:83
+msgid "listNetworkACLs"
+msgstr "listNetworkACLs"
+
+# 46fab81fefa1469eb87698342b0f045e
+#: ../../management.rst:85
+msgid "listStaticRoutes"
+msgstr "listStaticRoutes"
+
+# 489808dcb1c9407cbe2bd271c02ce89a
+#: ../../management.rst:89
+msgid "Reporting CPU Sockets"
+msgstr "CPU Sockets报表"
+
+# 7d8f4e987714451e9db1c9e749f8b1ca
+#: ../../management.rst:91
+msgid ""
+"PRODUCT manages different types of hosts that contains one or more physical "
+"CPU sockets. CPU socket is considered as a unit of measure used for "
+"licensing and billing cloud infrastructure. PRODUCT provides both UI and API"
+" support to collect the CPU socket statistics for billing purpose. The "
+"Infrastructure tab has a new tab for CPU sockets. You can view the "
+"statistics for CPU sockets managed by PRODUCT, which in turn reflects the "
+"size of the cloud. The CPU Socket page will give you the number of hosts and"
+" sockets used for each host type."
+msgstr "生产环境管理着包含一个多个物理CPU端口的不同类型的主机。CPU端口可以看作是一个测量单元，用来授权或制定云架构。生产环境提供UI和API支持来收集CPU端口统计，供订单使用。在架构选项中，有一个新的CPU端口项。可以查看生产环境管理的CPU端口统计数据，这些数据能够反映云的大小。CPU端口页会展示每一主机类型的主机数量及端口数。"
+
+# dec087784ccd48c49189c3f0ed1811a9
+#: ../../management.rst:100
+msgid "Log in to the PRODUCT UI."
+msgstr "登录到CloudStack用户界面。"
+
+# 012d9d141d8745a48fd182b1cab1f8f1
+#: ../../management.rst:102
+msgid "In the left navigation bar, click Infrastructure."
+msgstr "在左侧导航栏中，点击基础架构"
+
+# 991d040f4ccc467f87019591608beea8
+#: ../../management.rst:104
+msgid "On CPU Sockets, click View all."
+msgstr "在CPU Sockets中，点击查看全部。"
+
+# 1f3a30df3d8746f291bc00e761d59f3e
+#: ../../management.rst:106
+msgid ""
+"The CPU Socket page is displayed. The page shows the number of hosts and CPU"
+" sockets based on hypervisor types."
+msgstr "显示CPU插槽页。此页会显示主机数量以及基于虚拟机类型的CPU插槽数量。"
+
+# 3d662bf06abc42bd951d16844faada76
+#: ../../management.rst:111
+msgid "Changing the Database Configuration"
+msgstr "更改数据库配置"
+
+# 638ca3cbc00844789edafb4eb0e60df5
+#: ../../management.rst:113
+msgid ""
+"The CloudStack Management Server stores database configuration information "
+"(e.g., hostname, port, credentials) in the file "
+"``/etc/cloudstack/management/db.properties``. To effect a change, edit this "
+"file on each Management Server, then restart the Management Server."
+msgstr "CloudStack管理服务器存储了数据库配置信息（如主机名，端口，凭证），这些信息在/etc/cloudstack/management/db.properties文件中，为使更改生效，编辑每个管理服务器上的此文件，然后重启管理服务器"
+
+# a0530bddfe5a47a69ac27ef0a2c38a2e
+#: ../../management.rst:119
+msgid "Changing the Database Password"
+msgstr "更改数据库密码"
+
+# 6ede044a32ac422baed2cd80afc2e114
+#: ../../management.rst:121
+msgid ""
+"You may need to change the password for the MySQL account used by "
+"CloudStack. If so, you'll need to change the password in MySQL, and then add"
+" the encrypted password to ``/etc/cloudstack/management/db.properties``."
+msgstr "可能会需要更改CloudStack使用的mysql账户密码。如果要更改，需要在MySQL中更改密码，同时要将加密的密码加入到/etc/cloudstack/management/db.properties文件中。"
+
+# 803fea7347b74457808913e8d34560e4
+#: ../../management.rst:126
+msgid ""
+"Before changing the password, you'll need to stop CloudStack's management "
+"server and the usage engine if you've deployed that component."
+msgstr "在更改密码之前，需要停止CloudStack管理服务器，如果部署了使用引擎，也需要关闭使用引擎。"
+
+# 83b051e006ce4a898817788447a54253
+#: ../../management.rst:135
+msgid ""
+"Next, you'll update the password for the CloudStack user on the MySQL "
+"server."
+msgstr "接下来，你将在MySQL服务器上更新CloudStack的用户密码。"
+
+# a6ed0f9a1e5f41d9883e8ab8e6ed7157
+#: ../../management.rst:142
+msgid "At the MySQL shell, you'll change the password and flush privileges:"
+msgstr "在MySQL命令行下，你将更改密码并且刷新权限："
+
+# 5042ed8fa23b4aa6bf244fb7e8d21d0b
+#: ../../management.rst:150
+msgid ""
+"The next step is to encrypt the password and copy the encrypted password to "
+"CloudStack's database configuration "
+"(``/etc/cloudstack/management/db.properties``)."
+msgstr "下一步是加密密码然后拷贝加密后的密码到CloudStack的数据库配置中(``/etc/cloudstack/management/db.properties``)。"
+
+# 08fe5ba4a2844019b7c34948af80d3e9
+#: ../../management.rst:160
+msgid "File encryption type"
+msgstr "文件加密类型"
+
+# a985e48a20754561ae6daee44e6d79a8
+#: ../../management.rst:162
+msgid ""
+"Note that this is for the file encryption type. If you're using the web "
+"encryption type then you'll use "
+"password=\"management\\_server\\_secret\\_key\""
+msgstr "请注意这是给文件加密类型准备的。如果你使用web加密类型，那么你要使用password=\"management\\_server\\_secret\\_key\""
+
+# 41348185b9bc4aa59d47266350f37bea
+#: ../../management.rst:166
+msgid ""
+"Now, you'll update ``/etc/cloudstack/management/db.properties`` with the new"
+" ciphertext. Open ``/etc/cloudstack/management/db.properties`` in a text "
+"editor, and update these parameters:"
+msgstr "现在，你会在 ``/etc/cloudstack/management/db.properties`` 中更新心的密文。使用文本编辑器打开``/etc/cloudstack/management/db.properties`` ，然后更新这些参数："
+
+# 3224048da0604d5e8ff7b22550451ce5
+#: ../../management.rst:175
+msgid ""
+"After copying the new password over, you can now start CloudStack (and the "
+"usage engine, if necessary)."
+msgstr "在复制新的密码过去之后，你可以启动CloudStack了(如果需要的话，还有用量引擎)。"
+
+# b42158e718f44c4ab881833d2dbc0929
+#: ../../management.rst:185
+msgid "Administrator Alerts"
+msgstr "管理员告警信息"
+
+# f35a6a1c63244c84b73055d401027bf8
+#: ../../management.rst:187
+msgid ""
+"The system provides alerts and events to help with the management of the "
+"cloud. Alerts are notices to an administrator, generally delivered by "
+"e-mail, notifying the administrator that an error has occurred in the cloud."
+" Alert behavior is configurable."
+msgstr "系统提供告警和事件用以帮助云的管理。告警通知管理员，一般用邮件发送，提醒管理员云中有错误发生。告警的行为可以进行配置。"
+
+# ff3195bd128540cca761c8b00697d461
+#: ../../management.rst:192
+msgid ""
+"Events track all of the user and administrator actions in the cloud. For "
+"example, every guest VM start creates an associated event. Events are stored"
+" in the Management Server’s database."
+msgstr "事件会追踪云中所有用户和管理员的操作事件。比如，每个客户虚拟机的启动会建立一个对应的事件。每个时间都存储在管理节点的数据库中。"
+
+# 6b6c7d267ebc4ecdba5787f75ed95d52
+#: ../../management.rst:196
+msgid ""
+"Emails will be sent to administrators under the following circumstances:"
+msgstr "在以下情况，系统会发送邮件给管理员："
+
+# 239b319d590244788e6be621087e695a
+#: ../../management.rst:198
+msgid ""
+"The Management Server cluster runs low on CPU, memory, or storage resources"
+msgstr "管理节点集群中CPU，内存或者存储资源的可用量低。"
+
+# 11bbb0a3f5de4024ac7e944c1603e026
+#: ../../management.rst:201
+msgid ""
+"The Management Server loses heartbeat from a Host for more than 3 minutes"
+msgstr "管理节点和主机之间的心跳检查丢失超过3分钟。"
+
+# f6a69a83f8bb45a193d273cbd63ac7bd
+#: ../../management.rst:204
+msgid "The Host cluster runs low on CPU, memory, or storage resources"
+msgstr "主机集群中CPU，内存或者存储资源的可用量低。"
+
+# 267b4ae8b12e42d69f646aa22992388d
+#: ../../management.rst:208
+msgid "Sending Alerts to External SNMP and Syslog Managers"
+msgstr "将警告发送给外部的SNMP和Syslog管理器"
+
+# 030acb1fc907414196ead65866a918b0
+#: ../../management.rst:210
+msgid ""
+"In addition to showing administrator alerts on the Dashboard in the "
+"CloudStack UI and sending them in email, CloudStack can also send the same "
+"alerts to external SNMP or Syslog management software. This is useful if you"
+" prefer to use an SNMP or Syslog manager to monitor your cloud."
+msgstr "除了在CloudStack UI中的仪表板上给管理员显示警告和发送电子邮件之外，CloudStack还可以发送同样的警告给外部的SNMP或者Syslog管理软件。如果你更愿意使用SNMP或者Syslog管理器来监视你的云的话，那这么做很有用。"
+
+# ae64dcb892834822b7480195c2882a8c
+#: ../../management.rst:216
+msgid "The alerts which can be sent are:"
+msgstr "可以发送的警告有："
+
+# 814ff89fb6f444fc96a8b87a532bc28f
+#: ../../management.rst:218
+msgid ""
+"The following is the list of alert type numbers. The current alerts can be "
+"found by calling listAlerts."
+msgstr "以下是告警类型的列表。当前告警可以通过调用listAlerts得知。"
+
+# cac2d1c9d3a34cb29f25fc81630f96dc
+#: ../../management.rst:330
+msgid ""
+"You can also display the most up to date list by calling the API command "
+"``listAlerts``."
+msgstr "通过调用API命令 ``listAlerts``，你还可以显示最新的列表。"
+
+# 0ead10e6a3664baf84b6199d70dfb243
+#: ../../management.rst:334
+msgid "SNMP Alert Details"
+msgstr "SNMP警告详情"
+
+# 77c8d073d21f41859f495f2b0120f7ef
+#: ../../management.rst:336
+msgid "The supported protocol is SNMP version 2."
+msgstr "支持SNMP v2。"
+
+# 164535e01fe54071916fc21626d662af
+#: ../../management.rst:338
+msgid ""
+"Each SNMP trap contains the following information: message, podId, "
+"dataCenterId, clusterId, and generationTime."
+msgstr "每个SNMP陷阱报错以下信息：message、podId、dataCenterId、clusterId和generationTime。"
+
+# be99b465676b4d13ae21a9bd33ff94ef
+#: ../../management.rst:343
+msgid "Syslog Alert Details"
+msgstr "Syslog警报详情"
+
+# 653fb8fc18ea4f17ab01fe630ed6783b
+#: ../../management.rst:345
+msgid ""
+"CloudStack generates a syslog message for every alert. Each syslog message "
+"incudes the fields alertType, message, podId, dataCenterId, and clusterId, "
+"in the following format. If any field does not have a valid value, it will "
+"not be included."
+msgstr "CloudStack为每个警告生成一个syslog信息。每个syslog信息包含下列格式的字段alertType、message、podId、dataCenterId和clusterId。如果任何字段没有有效值的话，它将不会包含在内。"
+
+# 7c74aa344fe948a39e5bff24928b78fa
+#: ../../management.rst:354
+msgid "For example:"
+msgstr "例如："
+
+# b3bcf49651e44cc189085099c9309174
+#: ../../management.rst:361
+msgid "Configuring SNMP and Syslog Managers"
+msgstr "配置SNMP和Syslog日志管理"
+
+# b5638ebd1bd5442ab77995897186ed0c
+#: ../../management.rst:363
+msgid ""
+"To configure one or more SNMP managers or Syslog managers to receive alerts "
+"from CloudStack:"
+msgstr "要配置一个或多个SNMP管理器或者Syslog管理器来接收来自CloudStack 的警告："
+
+# 377884390b154436a6ce3913008b664c
+#: ../../management.rst:366
+msgid ""
+"For an SNMP manager, install the CloudStack MIB file on your SNMP manager "
+"system. This maps the SNMP OIDs to trap types that can be more easily read "
+"by users. The file must be publicly available. For more information on how "
+"to install this file, consult the documentation provided with the SNMP "
+"manager."
+msgstr "对于SNMP管理器，一个安装在你的SNMP管理系统上安装的CloudStack MIB文件。它映射SNMP OIDs到陷阱类型，目的让用户更容易阅读。这个文件必须是公开的。关于如何安装这个文件的更多信息，参阅SNMP管理器提供的文档。"
+
+# a32632406531434cbf5c4c261b1f69b6
+#: ../../management.rst:372
+msgid "Edit the file /etc/cloudstack/management/log4j-cloud.xml."
+msgstr "编辑 /etc/cloudstack/management/log4j-cloud.xml文件。"
+
+# 8ba1745b7c924d888e2595a379d2db32
+#: ../../management.rst:378
+msgid ""
+"Add an entry using the syntax shown below. Follow the appropriate example "
+"depending on whether you are adding an SNMP manager or a Syslog manager. To "
+"specify multiple external managers, separate the IP addresses and other "
+"configuration values with commas (,)."
+msgstr "使用下面给出的语法添加一个条目。选择你是要添加一个SNMP管理器还是一个Syslog管理器，然后按照适当的示例操作。要指定多个外部管理器，使用逗号(,)将IP地址和其他配置值隔开。"
+
+# 6cd8468c57974817b400436e8e445394
+#: ../../management.rst:384
+msgid ""
+"The recommended maximum number of SNMP or Syslog managers is 20 for each."
+msgstr "SNMP或Syslog管理器推荐的最大值是20。"
+
+# d399f22c73ea4836a3776bd53493aaf9
+#: ../../management.rst:387
+msgid ""
+"The following example shows how to configure two SNMP managers at IP "
+"addresses 10.1.1.1 and 10.1.1.2. Substitute your own IP addresses, ports, "
+"and communities. Do not change the other values (name, threshold, class, and"
+" layout values)."
+msgstr "下面的例子展示了如果配置两个IP分别为10.1.1.1和10.1.1.2的SNMP管理器。在实际使用中请替换成你的IP、ports和communities。不要改变其他值(name、threshold、class和layout值)。"
+
+# 57b464a769fd4128a163f5613f5f1c96
+#: ../../management.rst:405
+msgid ""
+"The following example shows how to configure two Syslog managers at IP "
+"addresses 10.1.1.1 and 10.1.1.2. Substitute your own IP addresses. You can "
+"set Facility to any syslog-defined value, such as LOCAL0 - LOCAL7. Do not "
+"change the other values."
+msgstr "下面的例子展示了如果配置两个IP分别为10.1.1.1和10.1.1.2的Syslog管理器。在实际是使用中请替换成你的IP。你可以设置Facility为任何syslog-defined的值，如 LOCAL0 - LOCAL7。不要改变其他的值。"
+
+# 9ac4b5f945144653a9fb6df9185afba4
+#: ../../management.rst:421
+msgid ""
+"If your cloud has multiple Management Server nodes, repeat these steps to "
+"edit log4j-cloud.xml on every instance."
+msgstr "如果你的云有多个管理服务器节点，在编辑每个节点中log4j-cloud.xml的时候，重复这些步骤。"
+
+# d82882ad1f8e447fb1ddbf2141ca0f1e
+#: ../../management.rst:424
+msgid ""
+"If you have made these changes while the Management Server is running, wait "
+"a few minutes for the change to take effect."
+msgstr "当管理服务器正在运行的时候，你做了这些变更，等待一会让变更生效。"
+
+# c74a110e35d5496db9637e208ca69f0c
+#: ../../management.rst:427
+msgid ""
+"**Troubleshooting:** If no alerts appear at the configured SNMP or Syslog "
+"manager after a reasonable amount of time, it is likely that there is an "
+"error in the syntax of the <appender> entry in log4j-cloud.xml. Check to be "
+"sure that the format and settings are correct."
+msgstr "**排错：**如果一段之后，在配置的SNMP或者Syslog管理器中没有警告出现，那么log4j-cloud.xml中<appender>的语法可能有错误。检查并确定格式和设置都是正确的。"
+
+# 6e66a0c8054b4278923a1680c1d13f92
+#: ../../management.rst:435
+msgid "Deleting an SNMP or Syslog Manager"
+msgstr "删除SNMP或Syslog日志管理"
+
+# daed36b7b2304574be3a327f0fdaae34
+#: ../../management.rst:437
+msgid ""
+"To remove an external SNMP manager or Syslog manager so that it no longer "
+"receives alerts from CloudStack, remove the corresponding entry from the "
+"file ``/etc/cloudstack/management/log4j-cloud.xml``."
+msgstr "要移除一个外部SNMP管理器或者Syslog管理器以便它不再接收来自CloudStack 的警告，请删除``/etc/cloudstack/management/log4j-cloud.xml``文件中对应的条目。"
+
+# 13024d28ec5a4e0d9d54dc264f048c4c
+#: ../../management.rst:443
+msgid "Customizing the Network Domain Name"
+msgstr "自定义网络域名"
+
+# 47fe94d226e941e8971730847123ac7e
+#: ../../management.rst:445
+msgid ""
+"The root administrator can optionally assign a custom DNS suffix at the "
+"level of a network, account, domain, zone, or entire CloudStack "
+"installation, and a domain administrator can do so within their own domain. "
+"To specify a custom domain name and put it into effect, follow these steps."
+msgstr "根管理员在网络, 帐户，域， 资源域以及整个CloudStack级别可选择设置DNS后缀，域管理员可以在自己的域做这样的设置。要自定义域名并使其有效, 请按照下面的步骤操作。"
+
+# 12a0d889b85a42dfb2f7a37556be8592
+#: ../../management.rst:451
+msgid "Set the DNS suffix at the desired scope"
+msgstr "在所需的范围内设置DNS后缀"
+
+# 8f9f57e29f9c404d9930091f8630a427
+#: ../../management.rst:453
+msgid ""
+"At the network level, the DNS suffix can be assigned through the UI when "
+"creating a new network, as described in `“Adding an Additional Guest "
+"Network” <networking2#adding-an-additional-guest-network>`_ or with the "
+"updateNetwork command in the CloudStack API."
+msgstr "在网络级别中, DNS后缀可以通过UI在创建新的网络时设置, 这些在 `“添加额外的来宾网络” <networking2#adding-an-additional-guest-network>`_ 或CloudStack API的updateNetwork命令中都有描述."
+
+# c091289d2eee46e89ea79afc752a76bf
+#: ../../management.rst:459
+msgid ""
+"At the account, domain, or zone level, the DNS suffix can be assigned with "
+"the appropriate CloudStack API commands: createAccount, editAccount, "
+"createDomain, editDomain, createZone, or editZone."
+msgstr "在帐户、域或者区域级别，DNS后缀可以由以下CloudStack API命令：createAccount、editAccount、createDomain、editDomain、createZone或editZone指定。"
+
+# 3aa8bfbb66e6499eaf26bd3d496d6bf8
+#: ../../management.rst:464
+msgid ""
+"At the global level, use the configuration parameter guest.domain.suffix. "
+"You can also use the CloudStack API command updateConfiguration. After "
+"modifying this global configuration, restart the Management Server to put "
+"the new setting into effect."
+msgstr "在全局级别中，使用配置参数guest.domain.suffix。你也可以使用CloudStack API命令updateConfiguration。当更改了这个全局配置后，重启管理服务器的服务以便新的设置有效。"
+
+# ea55aed82e8440d191210e6219afd4b4
+#: ../../management.rst:469
+msgid ""
+"To make the new DNS suffix take effect for an existing network, call the "
+"CloudStack API command updateNetwork. This step is not necessary when the "
+"DNS suffix was specified while creating a new network."
+msgstr "为了使你的新DNS后缀对已经存在的网络有效，你需要调用CloudStack API命令updateNetwork。对于DNS后缀已经更改后新建的网络这一步不是必需的。"
+
+# c4c8780f62264aef9166fb7abb03b23d
+#: ../../management.rst:473
+msgid ""
+"The source of the network domain that is used depends on the following "
+"rules."
+msgstr "你使用的网络域的源取决于下面的一些规则。"
+
+# ed54e22f6c384a979fdd24525a23d6f4
+#: ../../management.rst:476
+msgid ""
+"For all networks, if a network domain is specified as part of a network's "
+"own configuration, that value is used."
+msgstr "对于所有的网络，如果网络域作为这个网络自己配置的一部分，那这个网络域的值会被使用。"
+
+# b62736506f044912b7508f5bcfca6b0b
+#: ../../management.rst:479
+msgid ""
+"For an account-specific network, the network domain specified for the "
+"account is used. If none is specified, the system looks for a value in the "
+"domain, zone, and global configuration, in that order."
+msgstr "对于账户指定的网络，为这个账户指定的网域会被使用。如果没有指定，系统会按照域，区域和全局配置的顺序查找网域的值。"
+
+# e4424d33ec9549389255552629bbdd2a
+#: ../../management.rst:483
+msgid ""
+"For a domain-specific network, the network domain specified for the domain "
+"is used. If none is specified, the system looks for a value in the zone and "
+"global configuration, in that order."
+msgstr "对于域指定的网络, 为这个域指定的网络域名会被使用. 如果没有指定, 系统会区域和全局配置中按顺序查找网络域名的值."
+
+# 3d1ebf272ba647ef8f54fcd126b4806c
+#: ../../management.rst:487
+msgid ""
+"For a zone-specific network, the network domain specified for the zone is "
+"used. If none is specified, the system looks for a value in the global "
+"configuration."
+msgstr "对于区域指定的网络, 为这个域指定的网络域名会被使用. 如果没有指定, 系统会在全局配置里查找网络域名的值."
+
+# b6795b367f9a4a56bd542d1303ef6706
+#: ../../management.rst:493
+msgid "Stopping and Restarting the Management Server"
+msgstr "停止和重启管理服务"
+
+# bbd28a885afc4bd6918951b631b80c85
+#: ../../management.rst:495
+msgid ""
+"The root administrator will need to stop and restart the Management Server "
+"from time to time."
+msgstr "超级管理员需要经常性的关闭和重启管理服务。"
+
+# 0d670244a1804343a1935015f8eaa6fb
+#: ../../management.rst:498
+msgid ""
+"For example, after changing a global configuration parameter, a restart is "
+"required. If you have multiple Management Server nodes, restart all of them "
+"to put the new parameter value into effect consistently throughout the "
+"cloud.."
+msgstr "例如，修改全局配置参数之后，要求重启管理服务器。如果您有多个管理服务器节点，请全部重启，以便使新参数值在整个云中生效。"
+
+# 180fc3fdda44467f97b04959693747c5
+#: ../../management.rst:503
+msgid ""
+"To stop the Management Server, issue the following command at the operating "
+"system prompt on the Management Server node:"
+msgstr "要停止管理服务，在管理服务节点所在的操作系统中运行如下命令："
+
+# 02d90290579d496098aed77584f7a2d3
+#: ../../management.rst:510
+msgid "To start the Management Server:"
+msgstr "启动管理服务："

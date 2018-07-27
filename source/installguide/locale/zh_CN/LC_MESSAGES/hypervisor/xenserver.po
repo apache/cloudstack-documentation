@@ -1,0 +1,1237 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: 2014-06-30 10:27+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-installation-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# dbca5e0c19df40c290465114f3559dec
+#: ../../hypervisor/xenserver.rst:18
+msgid "Citrix XenServer Installation for CloudStack"
+msgstr "为CloudStack安装Citrix XenServer"
+
+# cd47a83746ac418dbc9077979249b7da
+#: ../../hypervisor/xenserver.rst:20
+msgid ""
+"If you want to use the Citrix XenServer hypervisor to run guest virtual "
+"machines, install XenServer 6.0 or XenServer 6.0.2 on the host(s) in your "
+"cloud. For an initial installation, follow the steps below. If you have "
+"previously installed XenServer and want to upgrade to another version, see "
+":ref:`upgrading-xenserver-version`."
+msgstr "如果你想用Citrix XenServer作为hypervisor运行虚拟机，安装XenServer 6.0或XenServer 6.0.2版本。你需要按照以下步骤来完成初次安装。如果你想从之前的旧版本升级，请参阅 :ref:`upgrading-xenserver-version`。"
+
+# d9ee0495584b4a8298e517da8fdc3057
+#: ../../hypervisor/xenserver.rst:28
+msgid "System Requirements for XenServer Hosts"
+msgstr "XenServer主机的系统要求"
+
+# 3d5008ea44354966853d8d381ed7891a
+#: ../../hypervisor/xenserver.rst:30
+msgid ""
+"The host must be certified as compatible with one of the following. See the "
+"Citrix Hardware Compatibility Guide: `http://hcl.xensource.com "
+"<http://hcl.xensource.com>`_"
+msgstr "主机必须通过下列任一版本的兼容性认证。请查看Citrix硬件兼容性指导: `http://hcl.xensource.com <http://hcl.xensource.com>`_"
+
+# 8314770679cb4bc99d30a72aef396428
+#: ../../hypervisor/xenserver.rst:34
+msgid "XenServer 5.6 SP2"
+msgstr "XenServer 5.6 SP2"
+
+# 24946ee9574b4a6791b00328377a2b5a
+#: ../../hypervisor/xenserver.rst:35
+msgid "XenServer 6.0"
+msgstr "XenServer 6.0"
+
+# 7c1b9ee9639c4610aad50db7807788f8
+#: ../../hypervisor/xenserver.rst:36
+msgid "XenServer 6.0.2"
+msgstr "XenServer 6.0.2"
+
+# 9baf931e48934c4c8c54669d292e0f87
+#: ../../hypervisor/xenserver.rst:37
+msgid "XenServer 6.1.0"
+msgstr "XenServer 6.1.0"
+
+# 7ee33d4c2fd7471fafb3a3bcb6352a7e
+#: ../../hypervisor/xenserver.rst:38
+msgid "XenServer 6.2.0"
+msgstr "XenServer 6.2.0"
+
+# 5dee06ed5f2f472f9e0979ddbb241a63
+#: ../../hypervisor/xenserver.rst:40
+msgid ""
+"You must re-install Citrix XenServer if you are going to re-use a host from "
+"a previous install."
+msgstr "如果你想使用以前装的某台主机,你必须重新安装Citrix XenServer."
+
+# 80cb092fd1e84cd48850208d4ba0bbf5
+#: ../../hypervisor/xenserver.rst:43
+msgid "Must support HVM (Intel-VT or AMD-V enabled)"
+msgstr "必须支持HVM(Intel-VT或者AMD-V)"
+
+# bab4879deea84fe697e8b924ffd8fb1c
+#: ../../hypervisor/xenserver.rst:45
+msgid ""
+"Be sure all the hotfixes provided by the hypervisor vendor are applied. "
+"Track the release of hypervisor patches through your hypervisor vendor’s "
+"support channel, and apply patches as soon as possible after they are "
+"released. CloudStack will not track or notify you of required hypervisor "
+"patches. It is essential that your hosts are completely up to date with the "
+"provided hypervisor patches. The hypervisor vendor is likely to refuse to "
+"support any system that is not up to date with patches."
+msgstr "确保安装了所有系统补丁供应商提供的所有系统补丁。请随时关注供应商的技术支持渠道，一旦发布补丁，请尽快打上补丁。CloudStack不会跟踪或提醒你安装这些程序。安装最新的补丁对主机至关重要。虚拟化供应商可能不会对过期的系统提供技术支持。"
+
+# 7be511b75f274a11877a89c4e5b4442a
+#: ../../hypervisor/xenserver.rst:54
+msgid ""
+"All hosts within a cluster must be homogeneous. The CPUs must be of the same"
+" type, count, and feature flags."
+msgstr "集群中的主机必须是相同架构。CPU的型号、数量和功能参数必须相同。"
+
+# f1598069d3724215b893587629e5a745
+#: ../../hypervisor/xenserver.rst:57
+msgid "Must support HVM (Intel-VT or AMD-V enabled in BIOS)"
+msgstr "必须支持HVM（BIOS中要打开Intel-VT或者AMD-V）"
+
+# 136e934524c54e44a1dc5daa197a36c1
+#: ../../hypervisor/xenserver.rst:59
+msgid "64-bit x86 CPU (more cores results in better performance)"
+msgstr "64位x86 CPU(多核性能更佳)"
+
+# a06b5cab48ca4c9d86747442230f0613
+#: ../../hypervisor/xenserver.rst:61
+msgid "Hardware virtualization support required"
+msgstr "硬件虚拟化支持"
+
+# 3d9b7de9d5cb4e629ef6589132428cb0
+#: ../../hypervisor/xenserver.rst:63
+msgid "4 GB of memory"
+msgstr "4GB 内存"
+
+# e3a33fc842e74c2191c11b46d1e11d6e
+#: ../../hypervisor/xenserver.rst:65
+msgid "36 GB of local disk"
+msgstr "36GB本地磁盘空间"
+
+# a7120f278e3a48f7a1957e666d4539fc
+#: ../../hypervisor/xenserver.rst:67
+msgid "At least 1 NIC"
+msgstr "至少一块网卡"
+
+# a2ea178b475547d899a7a72ae1ae9761
+#: ../../hypervisor/xenserver.rst:69
+msgid "Statically allocated IP Address"
+msgstr "静态分配的IP"
+
+# 829b6839c66d461b9f1692bb1a42e0a3
+#: ../../hypervisor/xenserver.rst:71
+msgid ""
+"When you deploy CloudStack, the hypervisor host must not have any VMs "
+"already running"
+msgstr "在部署CloudStack时，Hypervisor主机不能运行任何虚拟机"
+
+# 593acf4d53964830be70c33d03648380
+#: ../../hypervisor/xenserver.rst:75
+msgid ""
+"The lack of up-do-date hotfixes can lead to data corruption and lost VMs."
+msgstr "缺乏最新补丁更新可能会导致数据和虚拟机丢失。"
+
+# 10efea9818be4d9fb0c4a1f8128f964e
+#: ../../hypervisor/xenserver.rst:79
+msgid "XenServer Installation Steps"
+msgstr "XenServer安装步骤"
+
+# a2c7219af86147eeab5c37bd51222363
+#: ../../hypervisor/xenserver.rst:81
+msgid ""
+"From `https://www.citrix.com/English/ss/downloads/ "
+"<https://www.citrix.com/English/ss/downloads/>`_, download the appropriate "
+"version of XenServer for your CloudStack version (see `\"System Requirements"
+" for XenServer Hosts\" <#system-requirements-for-xenserver-hosts>`_). "
+"Install it using the Citrix XenServer Installation Guide."
+msgstr " 从 `https://www.citrix.com/English/ss/downloads/ <https://www.citrix.com/English/ss/downloads/>`_下载适合CloudStack的XenServer版本 (查看 `\"XenServer主机的系统要求\" <#system-requirements-for-xenserver-hosts>`_)。使用XenServer安装向导安装XenServer。"
+
+# 48628175cf1b4e66a6889e16ec013033
+#: ../../hypervisor/xenserver.rst:88
+msgid "Older Versions of XenServer:"
+msgstr "较旧版本的XenServer："
+
+# b9b29c0fa89c4656ab70adbb2a99e673
+#: ../../hypervisor/xenserver.rst:90
+msgid ""
+"Note that you can download the most recent release of XenServer without "
+"having a Citrix account. If you wish to download older versions, you will "
+"need to create an account and look through the download archives."
+msgstr "下载最新版本的XenServer不需要使用Citrix账户。如果你要下载旧版本的XenServer，你需要注册一个账户。"
+
+# 2feb5a48073c4e2e9fe034ed56a4384d
+#: ../../hypervisor/xenserver.rst:97
+msgid "Configure XenServer dom0 Memory"
+msgstr "配置XenServer dom0内存"
+
+# 07ce15cab19948cc8331905b67b44d32
+#: ../../hypervisor/xenserver.rst:99
+msgid ""
+"Configure the XenServer dom0 settings to allocate more memory to dom0. This "
+"can enable XenServer to handle larger numbers of virtual machines. We "
+"recommend 2940 MB of RAM for XenServer dom0. For instructions on how to do "
+"this, see `http://support.citrix.com/article/CTX126531 "
+"<http://support.citrix.com/article/CTX126531>`_. The article refers to "
+"XenServer 5.6, but the same information applies to XenServer 6.0."
+msgstr "配置XenServer dom0占用更大的内存可以使XenServer运行更多的虚拟机。我们建议修改为2940MB。如何来做这些更改，请看 `http://support.citrix.com/article/CTX126531 <http://support.citrix.com/article/CTX126531>`_。这篇文档是针对XenServer 5.6的，但同样适用于XenServer6.0。"
+
+# 5e0c0f29a1814ea5875442853353fe5e
+#: ../../hypervisor/xenserver.rst:108
+msgid "Username and Password"
+msgstr "用户名和密码"
+
+# 6f2532ac7db843db93d53f391ae6d733
+#: ../../hypervisor/xenserver.rst:110
+msgid ""
+"All XenServers in a cluster must have the same username and password as "
+"configured in CloudStack."
+msgstr "CloudStack中同一群集下的所有XenServer主机必须拥有同样的用户名和密码。"
+
+# 941b9509be3746249f736aec017baf1f
+#: ../../hypervisor/xenserver.rst:115
+msgid "Time Synchronization"
+msgstr "时间同步"
+
+# 0a006397adbf45fd9e71c3dc58c59a20
+#: ../../hypervisor/xenserver.rst:117
+msgid ""
+"The host must be set to use NTP. All hosts in a pod must have the same time."
+msgstr "主机必须配置NTP。同一提供点中的所有主机时间必须相同。"
+
+# 17ff16e49de74a14a14e94a5e972d414
+#: ../../hypervisor/xenserver.rst:120
+msgid "Install NTP."
+msgstr "安装NTP."
+
+# 6fa27a22869648db88edf8eed39beca0
+#: ../../hypervisor/xenserver.rst:126
+msgid "Edit the NTP configuration file to point to your NTP server."
+msgstr "编辑NTP配置文件指定NTP服务器。"
+
+# 0536cc30cd854673bfb3aacf080a0fc6
+#: ../../hypervisor/xenserver.rst:132
+msgid ""
+"Add one or more server lines in this file with the names of the NTP servers "
+"you want to use. For example:"
+msgstr "在文件中添加一行或多行你想使用的服务器地址. 例如:"
+
+# 8ed85f477b5d41d584b84da677111ac8
+#: ../../hypervisor/xenserver.rst:142
+msgid "Restart the NTP client."
+msgstr "重启NTP客户端。"
+
+# ed2a3d2d19dc4679bf6153406fa541bd
+#: ../../hypervisor/xenserver.rst:148
+msgid "Make sure NTP will start again upon reboot."
+msgstr "确保机器重启之后NTP会自动启动。"
+
+# a8af271b25314a23bb268e7969c44be2
+#: ../../hypervisor/xenserver.rst:156
+msgid "Install CloudStack XenServer Support Package (CSP)"
+msgstr "安装 CloudStack XenServer 支持包(CSP)"
+
+# 0f869b8baf314029ba6e3249f3f31919
+#: ../../hypervisor/xenserver.rst:158
+msgid "(Optional)"
+msgstr "(可选)"
+
+# ef8e6914984045fe820f2142f5801c32
+#: ../../hypervisor/xenserver.rst:160
+msgid ""
+"To enable security groups, elastic load balancing, and elastic IP on "
+"XenServer, download and install the CloudStack XenServer Support Package "
+"(CSP). After installing XenServer, perform the following additional steps on"
+" each XenServer host."
+msgstr "要在XenServer上启用安全组、弹性负载均衡和弹性IP，请下载安装CloudStack XenServer支持包(CSP)。安装完XenServer之后，在每台XenServer主机上执行下列步骤。"
+
+# a8fc4362d3c348039963da1e1f0b41b4
+#: ../../hypervisor/xenserver.rst:165
+msgid "**For XenServer 6.1:**"
+msgstr ""
+
+# e208ea52210e4bec8f264922573855e2
+#: ../../hypervisor/xenserver.rst:167
+msgid "CSP functionality is already present in XenServer 6.1"
+msgstr ""
+
+# 378f2f6ca35b4ce4a72152f22948e64d
+#: ../../hypervisor/xenserver.rst:169
+msgid "Run the below command"
+msgstr ""
+
+# 68eac0ca1dc94b6181a9a3f9e81fa493
+#: ../../hypervisor/xenserver.rst:175
+msgid "update sysctl.conf with the following"
+msgstr ""
+
+# 69cb332c88bf4c2c82d7ab3b9f7b2799
+#: ../../hypervisor/xenserver.rst:186
+msgid "**For XenServer 6.0.2, 6.0, 5.6 SP2:**"
+msgstr ""
+
+# 03b2b8ea0626476a8c58d7cc9e4db68e
+#: ../../hypervisor/xenserver.rst:188
+msgid ""
+"Download the CSP software onto the XenServer host from one of the following "
+"links:"
+msgstr "请从下列链接之一下载CSP至XenServer主机："
+
+# bd00d11ce1cc45b8a45cef5f93e3d5eb
+#: ../../hypervisor/xenserver.rst:191
+msgid "For XenServer 6.0.2:"
+msgstr "适用于XenServer 6.0.2："
+
+# c7d858231a3142109c09bfcc3340078b
+#: ../../hypervisor/xenserver.rst:193
+msgid ""
+"`http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz "
+"<http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-"
+"supp.tgz>`_"
+msgstr "`http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz>`_"
+
+# 2cbbc4bcdcdd42d0816a6b2df748a0d6
+#: ../../hypervisor/xenserver.rst:196
+msgid "For XenServer 5.6 SP2:"
+msgstr "适用于XenServer 5.6 SP2:"
+
+# beac106ea20e420cae0ca5acb450646b
+#: ../../hypervisor/xenserver.rst:198
+msgid ""
+"`http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz "
+"<http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz>`_"
+msgstr "`http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz>`_"
+
+# 62cd9713906c45dc96254605c7134b11
+#: ../../hypervisor/xenserver.rst:201
+msgid "For XenServer 6.0:"
+msgstr "适用于XenServer 6.0:"
+
+# 998fd323b14c42149cc6633f4df39b83
+#: ../../hypervisor/xenserver.rst:203
+msgid ""
+"`http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz "
+"<http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz>`_"
+msgstr "`http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz>`_"
+
+# 50f6122c6c5e42dbb34f5942e788bd76
+#: ../../hypervisor/xenserver.rst:207
+msgid "Extract the file:"
+msgstr "解压文件："
+
+# afb359e6c1b34048bffed17d2dd50caf
+# d6743dae63394bbfb8c9281a2b807b79
+#: ../../hypervisor/xenserver.rst:213 ../../hypervisor/xenserver.rst:762
+msgid "Run the following script:"
+msgstr "执行下列脚本："
+
+# acac1637a03046aa8d18547ccc4bca4b
+#: ../../hypervisor/xenserver.rst:219
+msgid ""
+"If the XenServer host is part of a zone that uses basic networking, disable "
+"Open vSwitch (OVS):"
+msgstr "如果XenServer主机所在的区域使用的是基本网络模式 ，请禁用Open vSwitch (OVS):"
+
+# 3a99c0b1de854d158eda0ad17722a6a4
+#: ../../hypervisor/xenserver.rst:226
+msgid "Restart the host machine when prompted."
+msgstr "操作完成之后重启主机。"
+
+# de44be78fbb74675b797aa1c8d77d5f4
+#: ../../hypervisor/xenserver.rst:228
+msgid "The XenServer host is now ready to be added to CloudStack."
+msgstr "现在可以在CloudStack中添加XenServer。"
+
+# c7f7f8a7ee21490c87265ac50b0f82fa
+#: ../../hypervisor/xenserver.rst:232
+msgid "Primary Storage Setup for XenServer"
+msgstr "为XenServer配置主存储"
+
+# acb57e34a8e44c068d9bda2fa8784ab6
+#: ../../hypervisor/xenserver.rst:234
+msgid ""
+"CloudStack natively supports NFS, iSCSI and local storage. If you are using "
+"one of these storage types, there is no need to create the XenServer Storage"
+" Repository (\"SR\")."
+msgstr "CloudStack原生支持NFS，iSCSI和本地存储。如果使用其中的一种存储类型，则不需要创建XenServer存储库(\"SR\")。"
+
+# 2d42f9931e424e16b90373f6e29342e8
+#: ../../hypervisor/xenserver.rst:238
+msgid ""
+"If, however, you would like to use storage connected via some other "
+"technology, such as FiberChannel, you must set up the SR yourself. To do so,"
+" perform the following steps. If you have your hosts in a XenServer pool, "
+"perform the steps on the master node. If you are working with a single "
+"XenServer which is not part of a cluster, perform the steps on that "
+"XenServer."
+msgstr "但是，如果你想使用其他技术的存储，如FC存储，你必须自行设置SR。请按以下步骤操作来设置SR。如果你要设置的主机存在于XenServer池中，请在master主机上执行这些操作。如果是单台节点主机，则在该XenServer主机上操作即可。"
+
+# 56d99586bd3a4a558b7bb66ad8d45ca0
+#: ../../hypervisor/xenserver.rst:245
+msgid ""
+"Connect FiberChannel cable to all hosts in the cluster and to the "
+"FiberChannel storage host."
+msgstr "通过光纤通道将集群中的所有主机连接至光纤存储设备"
+
+# 8cd5013ce09d4df3b88eb92833ec5ec8
+#: ../../hypervisor/xenserver.rst:248
+msgid ""
+"Rescan the SCSI bus. Either use the following command or use XenCenter to "
+"perform an HBA rescan."
+msgstr "重新扫描SCSI总线。使用下列命令或者在XenCenter中使用HBA rescan按钮来完成扫描。"
+
+# bacd282ff359414aaa9442a987f5c298
+#: ../../hypervisor/xenserver.rst:255
+msgid "Repeat step 2 on every host."
+msgstr "在所有主机上重复步骤2."
+
+# cd620af66c684a0e89322909e82369f4
+#: ../../hypervisor/xenserver.rst:257
+msgid "Check to be sure you see the new SCSI disk."
+msgstr "检查确保已经识别到新的SCSI磁盘。"
+
+# 8318145d9f754f2cba3dc478f5fac2bb
+#: ../../hypervisor/xenserver.rst:263
+msgid ""
+"The output should look like this, although the specific file name will be "
+"different (scsi-<scsiID>):"
+msgstr "输出结果如下所示，指定的文件名稍许不同(scsi-<scsiID>):"
+
+# 1cd57220dc34464b9985019c2bc74209
+#: ../../hypervisor/xenserver.rst:271
+msgid "Repeat step 4 on every host."
+msgstr "在所有主机上重复步骤4"
+
+# ab7f1cb3586b43148fc804bf9f9a6785
+#: ../../hypervisor/xenserver.rst:273
+msgid ""
+"On the storage server, run this command to get a unique ID for the new SR."
+msgstr "在存储服务器中，运行下列命令获取新添加SR的唯一ID标识。"
+
+# f68f1582ab2645ff91819eb14ea37ebf
+#: ../../hypervisor/xenserver.rst:280
+msgid ""
+"The output should look like this, although the specific ID will be "
+"different:"
+msgstr "输出结果如下所示，指定的ID不同："
+
+# 12c7ee94b650422dac6fa14fc9a7d775
+#: ../../hypervisor/xenserver.rst:287
+msgid ""
+"Create the FiberChannel SR. In name-label, use the unique ID you just "
+"generated."
+msgstr "创建FC SR 。在name-label中，输入刚才获取的ID。"
+
+# e369b17cd1df40b3aa0cce96c1974a36
+#: ../../hypervisor/xenserver.rst:296
+msgid ""
+"This command returns a unique ID for the SR, like the following example "
+"(your ID will be different):"
+msgstr "这条命令会获取SR的ID，以下面为例（你的UUID不同）："
+
+# 23f181a0244c4e4b980acb6e64e29d3b
+#: ../../hypervisor/xenserver.rst:303
+msgid ""
+"To create a human-readable description for the SR, use the following "
+"command. In uuid, use the SR ID returned by the previous command. In name-"
+"description, set whatever friendly text you prefer."
+msgstr "使用下面的命令为SR创建通俗易懂的描述, uuid参数使用使用之前命令返回的SR ID. 在名称描述中，设置任何你自己喜欢的描述。"
+
+# 4323c9a63c6540b4a16886f29d0a1ec5
+#: ../../hypervisor/xenserver.rst:311
+msgid ""
+"Make note of the values you will need when you add this storage to "
+"CloudStack later (see `\"Add Primary Storage\" <configuration.html#add-"
+"primary-storage>`_). In the Add Primary Storage dialog, in Protocol, you "
+"will choose PreSetup. In SR Name-Label, you will enter the name-label you "
+"set earlier (in this example, e6849e96-86c3-4f2c-8fcc-350cc711be3d)."
+msgstr "记录这些值，之后在CloudStack中添加存储时会用到(查看 `\"添加主存储\" <configuration.html#add-primary-storage>`_)。在添加主存储对话框中的协议一项，选择PreSetup。在SR Name-Label中，输入之前设置的 name-label（在本示例中为e6849e96-86c3-4f2c-8fcc-350cc711be3d）。"
+
+# c99025edebad4540ba6b2b1d9b20ed10
+#: ../../hypervisor/xenserver.rst:318
+msgid ""
+"(Optional) If you want to enable multipath I/O on a FiberChannel SAN, refer "
+"to the documentation provided by the SAN vendor."
+msgstr "(可选)如果想在FC SAN上启用多路径I/O，请参考SAN供应商提供的文档。"
+
+# 32342d3a35f54066ade7572169b52896
+#: ../../hypervisor/xenserver.rst:323
+msgid "iSCSI Multipath Setup for XenServer (Optional)"
+msgstr "XenServer iSCSI多路径设置（可选）"
+
+# e2cf4ffa587b4372969e274849f484ee
+#: ../../hypervisor/xenserver.rst:325
+msgid ""
+"When setting up the storage repository on a Citrix XenServer, you can enable"
+" multipath I/O, which uses redundant physical components to provide greater "
+"reliability in the connection between the server and the SAN. To enable "
+"multipathing, use a SAN solution that is supported for Citrix servers and "
+"follow the procedures in Citrix documentation. The following links provide a"
+" starting point:"
+msgstr "在Citrix XenServer上配置存储库时，你可以启用多路径I/O，它是通过在服务器与SAN设备之间提供冗余的物理组件实现，提供了更高的可靠性。要启用多路径，请使用 XenServer文档中提供的SAN驱动程序。从下面链接开始："
+
+# 3849959c9c354656a9a9daafc5c5dbed
+#: ../../hypervisor/xenserver.rst:332
+msgid ""
+"`http://support.citrix.com/article/CTX118791 "
+"<http://support.citrix.com/article/CTX118791>`_"
+msgstr "`http://support.citrix.com/article/CTX118791 <http://support.citrix.com/article/CTX118791>`_"
+
+# 8a118ac63a7f41b8b60968177ca6b343
+#: ../../hypervisor/xenserver.rst:335
+msgid ""
+"`http://support.citrix.com/article/CTX125403 "
+"<http://support.citrix.com/article/CTX125403>`_"
+msgstr "`http://support.citrix.com/article/CTX125403 <http://support.citrix.com/article/CTX125403>`_"
+
+# d3f63182749e40fd86184084f5cc529b
+#: ../../hypervisor/xenserver.rst:338
+msgid ""
+"You can also ask your SAN vendor for advice about setting up your Citrix "
+"repository for multipathing."
+msgstr "你同样可以咨询SAN提供商提供关于配置Citrix存储库多路径的建议。"
+
+# 11df997f92b94313a59c0deac4d901ee
+#: ../../hypervisor/xenserver.rst:341
+msgid ""
+"Make note of the values you will need when you add this storage to the "
+"CloudStack later (see `\"Add Primary Storage\" <configuration.html#add-"
+"primary-storage>`_). In the Add Primary Storage dialog, in Protocol, you "
+"will choose PreSetup. In SR Name-Label, you will enter the same name used to"
+" create the SR."
+msgstr "记录这些值，之后在CloudStack中添加存储时将会用到(查看 `\"添加主存储\" <configuration.html#add-primary-storage>`_)。在添加主存储对话框中的协议一项，选择PreSetup。在SR Name-Label中，输入之前创建的SR名称。"
+
+# de3e8779fcb54068a8684c6ae2a20a69
+#: ../../hypervisor/xenserver.rst:347
+msgid ""
+"If you encounter difficulty, address the support team for the SAN provided "
+"by your vendor. If they are not able to solve your issue, see Contacting "
+"Support."
+msgstr "如果遇到任何困难, 请通过SAN供应商团队获得支持. 如果仍然无法解决你的问题, 请联系技术支持."
+
+# b62346b563314a04b2892d0d30ebafc9
+#: ../../hypervisor/xenserver.rst:353
+msgid "Physical Networking Setup for XenServer"
+msgstr "XenServer物理网络设置"
+
+# b07a74e5a82a42dfaa85655a392fc5a1
+#: ../../hypervisor/xenserver.rst:355
+msgid ""
+"Once XenServer has been installed, you may need to do some additional "
+"network configuration. At this point in the installation, you should have a "
+"plan for what NICs the host will have and what traffic each NIC will carry. "
+"The NICs should be cabled as necessary to implement your plan."
+msgstr "XenServer安装完成后， 需要对网络做一些额外的设置。此时， 你应该对主机上的网卡及每个网络传输的流量有一个整体规划。网络连接必须满足你的规划."
+
+# e67a8a2a93f44a4182d4d83db27837bb
+#: ../../hypervisor/xenserver.rst:361
+msgid ""
+"If you plan on using NIC bonding, the NICs on all hosts in the cluster must "
+"be cabled exactly the same. For example, if eth0 is in the private bond on "
+"one host in a cluster, then eth0 must be in the private bond on all hosts in"
+" the cluster."
+msgstr "如果你计划使用网卡绑定，那么所有主机上的网卡的连接必须相同。比如，如果群集中的一台主机eth0为专用绑定，那么其他主机上的eth0也必须为专用绑定。"
+
+# c8f114e421254029bfcc786da1e4f069
+#: ../../hypervisor/xenserver.rst:366
+msgid ""
+"The IP address assigned for the management network interface must be static."
+" It can be set on the host itself or obtained via static DHCP."
+msgstr "分配给管理网络的IP必须是静态IP。它可以通过DHCP保留或者在主机上指定。"
+
+# 4ea2dcd3445945e494146eea4f434ebe
+#: ../../hypervisor/xenserver.rst:369
+msgid ""
+"CloudStack configures network traffic of various types to use different NICs"
+" or bonds on the XenServer host. You can control this process and provide "
+"input to the Management Server through the use of XenServer network name "
+"labels. The name labels are placed on physical interfaces or bonds and "
+"configured in CloudStack. In some simple cases the name labels are not "
+"required."
+msgstr "CloudStack使用XenServer上的不同网卡或绑定来配置不同流量类型。你可以在管理服务器上通过输入XenServer适配器标签来控制这些流量。CloudStack中的标签名称就是物理接口或绑定的名称。在简单的网络中，可以不填写标签。"
+
+# d4647179170b4228990c4233187a27f0
+#: ../../hypervisor/xenserver.rst:376
+msgid ""
+"When configuring networks in a XenServer environment, network traffic labels"
+" must be properly configured to ensure that the virtual interfaces are "
+"created by CloudStack are bound to the correct physical device. The name-"
+"label of the XenServer network must match the XenServer traffic label "
+"specified while creating the CloudStack network. This is set by running the "
+"following command:"
+msgstr "在XenServer环境中配置网络时，必须正确的配置网络流量标签，确保CloudStack将虚拟接口绑定到正确的物理设备上。XenServer的网络标签必须与配置CloudStack的网络时指定的XenServer流量标签一致。运行以下命令来设置："
+
+# c06c60c71a7f4bca8a451f0b7283cfda
+#: ../../hypervisor/xenserver.rst:389
+msgid ""
+"Configuring Public Network with a Dedicated NIC for XenServer (Optional)"
+msgstr "使用专用的XenServer网卡来配置公用网络（可选）"
+
+# 6e7e724c968a42a3a8b427928f42cb98
+#: ../../hypervisor/xenserver.rst:391
+msgid ""
+"CloudStack supports the use of a second NIC (or bonded pair of NICs, "
+"described in :ref:`nic-bonding-for-xenserver`) for the public network. If "
+"bonding is not used, the public network can be on any NIC and can be on "
+"different NICs on the hosts in a cluster. For example, the public network "
+"can be on eth0 on node A and eth1 on node B. However, the XenServer name-"
+"label for the public network must be identical across all hosts. The "
+"following examples set the network label to \"cloud-public\". After the "
+"management server is installed and running you must configure it with the "
+"name of the chosen network label (e.g. \"cloud-public\"); this is discussed "
+"in `\"Management Server Installation\" <installation.html#management-server-"
+"installation>`_."
+msgstr "CloudStack支持公共网络使用第二块网卡(或者是2块网卡绑定，在 :ref:`nic-bonding-for-xenserver` 有描述)。如果没有使用绑定，公共网络可以使用群集中不同主机上的不同网卡。比如，公共网络可以使用节点A上的eth0和节点B上的eth1。但是，用于公共网络的名称标签在所有主机上必须一致。举个例子，我们在XenServer上设定了网络标签\"cloud-public\"。在安装完管理服务器之后，你必须使用( \"cloud-public\")作为对应的CloudStack的网络流量标签；这个在 `\"管理服务器的安装\" <installation.html#management-server-installation>`_中有介绍。"
+
+# 0a920576e6984f1684ffa04b4cedee14
+#: ../../hypervisor/xenserver.rst:403
+msgid ""
+"If you are using two NICs bonded together to create a public network, see "
+":ref:`nic-bonding-for-xenserver`."
+msgstr "如果你使用双网卡绑定作为公共网络，请参阅 :ref:`nic-bonding-for-xenserver`。"
+
+# c29eb136da7f472bb9092308209f4874
+#: ../../hypervisor/xenserver.rst:406
+msgid ""
+"If you are using a single dedicated NIC to provide public network access, "
+"follow this procedure on each new host that is added to CloudStack before "
+"adding the host."
+msgstr "如果你指定单网卡作为公共网络，在加入CloudStack环境之前按照下面的流程配置每个主机。"
+
+# b6c2fcbca5784ac58cb4d766831c1feb
+#: ../../hypervisor/xenserver.rst:410
+msgid ""
+"Run xe network-list and find the public network. This is usually attached to"
+" the NIC that is public. Once you find the network make note of its UUID. "
+"Call this <UUID-Public>."
+msgstr "运行xe network-list，查找公共网络。通常它的名字就是public。找到之后记录UUID。可以称之为<UUID-Public>。"
+
+# 7771ef8019cf477aab4f4ea6e54dc19f
+#: ../../hypervisor/xenserver.rst:414
+msgid "Run the following command."
+msgstr "运行以下命令。"
+
+# 8b08df411b014c2fb09ab7803d37e385
+#: ../../hypervisor/xenserver.rst:422
+msgid "Configuring Multiple Guest Networks for XenServer (Optional)"
+msgstr "XenServer配置多个来宾网络(可选)"
+
+# ae3d74bbbeb6474caa1aabf43ce3350d
+#: ../../hypervisor/xenserver.rst:424
+msgid ""
+"CloudStack supports the use of multiple guest networks with the XenServer "
+"hypervisor. Each network is assigned a name-label in XenServer. For example,"
+" you might have two networks with the labels \"cloud-guest\" and \"cloud-"
+"guest2\". After the management server is installed and running, you must add"
+" the networks and use these labels so that CloudStack is aware of the "
+"networks."
+msgstr "CloudStack支持在XenServer上使用多个来宾网络。在XenServer中为每个网络都被分配名称标签。例如，你可能有两个名称分别为\"cloud-guest\"和\"cloud-guest2\"的网络。在配置好管理服务器并且运行后，你必须使用这些标签将这些网络添加到CloudStack中，以便CloudStack能够识别到这些网络。"
+
+# 445fbda3e6e241b49943d5a3bbae731e
+#: ../../hypervisor/xenserver.rst:431
+msgid ""
+"Follow this procedure on each new host before adding the host to CloudStack:"
+msgstr "在将主机添加到CloudStack之前，请在每个新主机上执行以下操作："
+
+# ad021bb20dfc411ca2a0b4f6c7bb1976
+#: ../../hypervisor/xenserver.rst:434
+msgid ""
+"Run xe network-list and find one of the guest networks. Once you find the "
+"network make note of its UUID. Call this <UUID-Guest>."
+msgstr "运行xe network-list，找出来宾网络。并记录UUID。可以称为<UUID-Guest>。"
+
+# 5c54bddb03ab41988d164862d3e8ca4a
+#: ../../hypervisor/xenserver.rst:437
+msgid ""
+"Run the following command, substituting your own name-label and uuid values."
+msgstr "运行下面的命令, 替换你自己的名称标签和UUID."
+
+# 66309bb437094b1d9bbb0774c232de9a
+#: ../../hypervisor/xenserver.rst:444
+msgid ""
+"Repeat these steps for each additional guest network, using a different "
+"name-label and uuid each time."
+msgstr "对每个额外的来宾网络都重复这些步骤，注意每次要使用不同的名称标签和UUID。"
+
+# 355487377b08418899e9ec50ac78ae2f
+#: ../../hypervisor/xenserver.rst:449
+msgid "Separate Storage Network for XenServer (Optional)"
+msgstr "XenServer设置单独的存储网络(可选)"
+
+# 589c7e9b7fb048aea788093e27195cf2
+#: ../../hypervisor/xenserver.rst:451
+msgid ""
+"You can optionally set up a separate storage network. This should be done "
+"first on the host, before implementing the bonding steps below. This can be "
+"done using one or two available NICs. With two NICs bonding may be done as "
+"above. It is the administrator's responsibility to set up a separate storage"
+" network."
+msgstr "在绑定网卡之前，你可以有选择的配置一个独立的存储网络。使用1到2个网卡，上述给出了两块网卡绑定的示例。配置一个独立的存储网络是管理的职责。"
+
+# 61490e5df97948629bbb83dda64d4aa9
+#: ../../hypervisor/xenserver.rst:457
+msgid ""
+"Give the storage network a different name-label than what will be given for "
+"other networks."
+msgstr "为存储网络设置一个与其他网络不同的名称标签。"
+
+# 164d8afca329462b9c5943496322bcf0
+#: ../../hypervisor/xenserver.rst:460
+msgid ""
+"For the separate storage network to work correctly, it must be the only "
+"interface that can ping the primary storage device's IP address. For "
+"example, if eth0 is the management network NIC, ping -I eth0 <primary "
+"storage device IP> must fail. In all deployments, secondary storage devices "
+"must be pingable from the management network NIC or bond. If a secondary "
+"storage device has been placed on the storage network, it must also be "
+"pingable via the storage network NIC or bond on the hosts as well."
+msgstr "让独立的存储网络工作正常，必须可以通过它的接口ping通主存储设备的IP。比如，如果eth0是管理网络的网卡，ping -I eth0 <primary storage device IP>必须是不通的。在所有的部署环境里，通过管理网络必须能ping通辅助存储设备的IP。如果辅助存储设备是在存储网络中，那么通过存储网络同样也要能ping通它。"
+
+# 90f24bd320174d1fac607e00a9e983f8
+#: ../../hypervisor/xenserver.rst:469
+msgid ""
+"You can set up two separate storage networks as well. For example, if you "
+"intend to implement iSCSI multipath, dedicate two non-bonded NICs to "
+"multipath. Each of the two networks needs a unique name-label."
+msgstr "你可以设置两个独立的存储网络。例如，使用两块独立网卡实现iSCSI多路径。当然，两个网络都需要自己的名称标签。"
+
+# 61c2f4816fdb42d5b6cc3c6d2ca18ca8
+#: ../../hypervisor/xenserver.rst:473
+msgid ""
+"If no bonding is done, the administrator must set up and name-label the "
+"separate storage network on all hosts (masters and slaves)."
+msgstr "如果没有做绑定，管理员必须为所有主机上(主、从节点)的存储网络设置名称标签。"
+
+# 00dbbb5d1bcd4becb0dec5b47340f83d
+#: ../../hypervisor/xenserver.rst:476
+msgid ""
+"Here is an example to set up eth5 to access a storage network on "
+"172.16.0.0/24."
+msgstr "此处示例配置eth5访问172.16.0.0/24的存储网络。"
+
+# 185e1a599c604803a54446ba74b35dc9
+#: ../../hypervisor/xenserver.rst:490
+msgid "NIC Bonding for XenServer (Optional)"
+msgstr "XenServer中的网卡绑定（可选）"
+
+# caf6aa9edc614274af0ef31881fe03ca
+#: ../../hypervisor/xenserver.rst:492
+msgid ""
+"XenServer supports Source Level Balancing (SLB) NIC bonding. Two NICs can be"
+" bonded together to carry public, private, and guest traffic, or some "
+"combination of these. Separate storage networks are also possible. Here are "
+"some example supported configurations:"
+msgstr "XenServer支持Source Level Balancing (SLB) NIC绑定。两块网卡可被绑定在一起承载公共网络、管理网络和来宾网络流量，或这些网络的组合。单独的存储网络同样可以。以下是一些配置的示例："
+
+# 44d7cdc70d4541e4b8b66e39293c57c5
+#: ../../hypervisor/xenserver.rst:497
+msgid "2 NICs on private, 2 NICs on public, 2 NICs on storage"
+msgstr "管理网络使用2块网卡，公共网络使用2块网卡，存储网络使用2块网卡"
+
+# 7dbbc60ca898461991faac0752ccb9b6
+#: ../../hypervisor/xenserver.rst:499
+msgid "2 NICs on private, 1 NIC on public, storage uses management network"
+msgstr "管理网络使用2块网卡，公共网络使用1块网卡，存储共用管理网络"
+
+# 933cb0b64cdc4b93b709825c7f872083
+#: ../../hypervisor/xenserver.rst:501
+msgid "2 NICs on private, 2 NICs on public, storage uses management network"
+msgstr "管理网络使用2块网卡，共用网络使用2块网卡，存储共用管理网络"
+
+# aa2cdc325ff64d6dbeb15a9db3815249
+#: ../../hypervisor/xenserver.rst:503
+msgid "1 NIC for private, public, and storage"
+msgstr "管理网络，公共网络，存储网络使用一块网卡"
+
+# a5c691fdc14644f1938a3d7e0616e209
+#: ../../hypervisor/xenserver.rst:505
+msgid "All NIC bonding is optional."
+msgstr "所有的网卡绑定都是可选的"
+
+# ce37792754e74070b0880c3c27ca5b6d
+#: ../../hypervisor/xenserver.rst:507
+msgid ""
+"XenServer expects all nodes in a cluster will have the same network cabling "
+"and same bonds implemented. In an installation the master will be the first "
+"host that was added to the cluster and the slave hosts will be all "
+"subsequent hosts added to the cluster. The bonds present on the master set "
+"the expectation for hosts added to the cluster later. The procedure to set "
+"up bonds on the master and slaves are different, and are described below. "
+"There are several important implications of this:"
+msgstr "XenServer期望群集中所有的节点都拥有相同的网络布线，以及相同的绑定。在安装完成后第一台主机将成为Master，而随后加入到群集中的其他主机都将成为Slave。Master主机上的网卡绑定设置会覆盖其他主机的网络配置。在Master和Slaver上设置网卡绑定的步骤不同，重点包括几个部分："
+
+# 31e309b5aea94e1982a0745fa2f8d163
+#: ../../hypervisor/xenserver.rst:515
+msgid ""
+"You must set bonds on the first host added to a cluster. Then you must use "
+"xe commands as below to establish the same bonds in the second and "
+"subsequent hosts added to a cluster."
+msgstr "必须在添加至群集的第一台主机上设置网卡绑定。然后必须使用如下的xe命令，使第二台和随后添加至该群集的主机上自动配置与Master主机相同的网卡绑定。"
+
+# dc53904a0ade40e8996b6379af74299d
+#: ../../hypervisor/xenserver.rst:519
+msgid ""
+"Slave hosts in a cluster must be cabled exactly the same as the master. For "
+"example, if eth0 is in the private bond on the master, it must be in the "
+"management network for added slave hosts."
+msgstr "群集中的Slave主机必须与Master主机拥有完全相同的布线。例如，如果eth0在群集中的主机上的专用网络绑定中，那么eth0必须在群集中的所有主机上专用网络绑定中。"
+
+# 5a1e3289d6064e239e1ac513d07d53c7
+#: ../../hypervisor/xenserver.rst:525
+msgid "Management Network Bonding"
+msgstr "管理网络绑定"
+
+# d6933d9eedc548ea911d1c03954c8cc8
+#: ../../hypervisor/xenserver.rst:527
+msgid ""
+"The administrator must bond the management network NICs prior to adding the "
+"host to CloudStack."
+msgstr "在将主机添加至CloudStack之前管理员必须绑定管理网络的网卡。"
+
+# 990edf34545641be9105fff2e790fa8e
+#: ../../hypervisor/xenserver.rst:532
+msgid "Creating a Private Bond on the First Host in the Cluster"
+msgstr "在群集的第一台主机中创建专用绑定"
+
+# bef555ea56e644ee824b3211d285a5dc
+#: ../../hypervisor/xenserver.rst:534
+msgid ""
+"Use the following steps to create a bond in XenServer. These steps should be"
+" run on only the first host in a cluster. This example creates the cloud-"
+"private network with two physical NICs (eth0 and eth1) bonded into it."
+msgstr "使用下述步骤在XenServer上创建网卡绑定。这些步骤只在群集中第一台主机上运行即可。本示例为cloud-private网络绑定了两块物理网卡(eth0和eth1)。"
+
+# 76d14a97770b48e3b7573b8df3d95987
+# 83ee5c43bfdf49078158dc0ede74e1cb
+#: ../../hypervisor/xenserver.rst:539 ../../hypervisor/xenserver.rst:583
+msgid "Find the physical NICs that you want to bond together."
+msgstr "找到想要绑定在一起的物理网卡。"
+
+# 19647e91e4064b26bcf46ae5ccdb7654
+#: ../../hypervisor/xenserver.rst:546
+msgid ""
+"These command shows the eth0 and eth1 NICs and their UUIDs. Substitute the "
+"ethX devices of your choice. Call the UUID's returned by the above command "
+"slave1-UUID and slave2-UUID."
+msgstr "如上命令显示了eth0、eth1和对应的UUID。并替换你的网卡编号。上述命令返回的UUID称为slave1-UUID和slave2-UUID。"
+
+# eb485b7e38044135bbafec10517e6fda
+#: ../../hypervisor/xenserver.rst:550
+msgid ""
+"Create a new network for the bond. For example, a new network with name "
+"\"cloud-private\"."
+msgstr "为该绑定创建一个新的网络。例如，一个名为“cloud-public”的新网络。"
+
+# 4426249063674de991301445df08c8af
+#: ../../hypervisor/xenserver.rst:553
+msgid ""
+"**This label is important. CloudStack looks for a network by a name you "
+"configure. You must use the same name-label for all hosts in the cloud for "
+"the management network.**"
+msgstr "**标签非常重要。因为CloudStack根据配置的名称查找网络。必须对云中所有主机的管理网络使用同样的名称标签（name-label）。**"
+
+# 10a8ca3e627f42039cde96aa311c2e24
+#: ../../hypervisor/xenserver.rst:563
+msgid ""
+"Now you have a bonded pair that can be recognized by CloudStack as the "
+"management network."
+msgstr "现在有了可以被CloudStack识别为管理网络的网卡绑定。"
+
+# 8237b2020d164e25afdf235b117e0226
+#: ../../hypervisor/xenserver.rst:568
+msgid "Public Network Bonding"
+msgstr "公共网络网卡绑定"
+
+# c0b0ed9d574d4595b6bccb839df5a9d6
+#: ../../hypervisor/xenserver.rst:570
+msgid ""
+"Bonding can be implemented on a separate, public network. The administrator "
+"is responsible for creating a bond for the public network if that network "
+"will be bonded and will be separate from the management network."
+msgstr "可以在单独的公共网络上执行绑定。管理员可以将使用网卡绑定的公共网络与管理网络区分开。"
+
+# 49b1405549674b47892be73abf90bb90
+#: ../../hypervisor/xenserver.rst:577
+msgid "Creating a Public Bond on the First Host in the Cluster"
+msgstr "在集群的第一台主机上创建公共网络网卡绑定"
+
+# 80ceb8eb4f324fa288b049d1b412d166
+#: ../../hypervisor/xenserver.rst:579
+msgid ""
+"These steps should be run on only the first host in a cluster. This example "
+"creates the cloud-public network with two physical NICs (eth2 and eth3) "
+"bonded into it."
+msgstr "以下步骤仅在群集的第一台主机中运行。本示例为cloud-public绑定了两块物理网卡(eth2和eth3)。"
+
+# e9ee4656a26c4e429fa44a19deca4697
+#: ../../hypervisor/xenserver.rst:590
+msgid ""
+"These command shows the eth2 and eth3 NICs and their UUIDs. Substitute the "
+"ethX devices of your choice. Call the UUID's returned by the above command "
+"slave1-UUID and slave2-UUID."
+msgstr "以上命令显示了eth2、eth3和对应的UUID。替换你的网卡编号。将上述命令返回的UUID称为slave1-UUID和slave2-UUID。"
+
+# ecd21d8abed7420cbdb7722f7d3bbcf6
+#: ../../hypervisor/xenserver.rst:594
+msgid ""
+"Create a new network for the bond. For example, a new network with name "
+"\"cloud-public\"."
+msgstr "为网卡绑定创建一个新的网络。比如，一个名为\"cloud-public\"的新网络。"
+
+# f2ccf39a444949779ea15c87c23f1102
+#: ../../hypervisor/xenserver.rst:597
+msgid ""
+"**This label is important. CloudStack looks for a network by a name you "
+"configure. You must use the same name-label for all hosts in the cloud for "
+"the public network.**"
+msgstr "**该标签非常重要。因为CloudStack根据配置的名称来查找网络。必须对云中所有物理主机的公共网络使用同样的名称标签（name-label）。**"
+
+# c63c4fffe13c41e3857c2d5a7037324d
+#: ../../hypervisor/xenserver.rst:607
+msgid ""
+"Now you have a bonded pair that can be recognized by CloudStack as the "
+"public network."
+msgstr "现在有了被CloudStack识别为公共网络的网卡绑定。"
+
+# 4571fae00d22423c977f157626730a6b
+#: ../../hypervisor/xenserver.rst:612
+msgid "Adding More Hosts to the Cluster"
+msgstr "在群集中添加更多主机"
+
+# bb7f4bc061df424882aa108cec051dde
+#: ../../hypervisor/xenserver.rst:614
+msgid ""
+"With the bonds (if any) established on the master, you should add "
+"additional, slave hosts. Run the following command for all additional hosts "
+"to be added to the cluster. This will cause the host to join the master in a"
+" single XenServer pool."
+msgstr "在master主机添加了(任何)绑定网卡的基础上，可以添加其他的slave主机。对所有添加至群集的其他主机执行下面的命令。他的作用是将这些主机都加入master所在的同一个XenServer池中。"
+
+# 2e3ff343227f43eca63a765a974c4e58
+#: ../../hypervisor/xenserver.rst:626
+msgid "Complete the Bonding Setup Across the Cluster"
+msgstr "完成群集内的绑定设置"
+
+# e54d6baf9f4a4630ae0802e0e114130f
+#: ../../hypervisor/xenserver.rst:628
+msgid ""
+"With all hosts added to the pool, run the cloud-setup-bond script. This "
+"script will complete the configuration and set up of the bonds across all "
+"hosts in the cluster."
+msgstr "所有主机添加至资源池后，运行 cloud-setup-bond脚本。此脚本将配置群集中所有主机的网卡绑定。"
+
+# 27800d5ec6e44bdcb75245bf193bfda2
+#: ../../hypervisor/xenserver.rst:632
+msgid ""
+"Copy the script from the Management Server in /usr/share/cloudstack-"
+"common/scripts/vm/hypervisor/xenserver/cloud-setup-bonding.sh to the master "
+"host and ensure it is executable."
+msgstr "将管理服务器中/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-setup-bonding.sh拷贝到master主机中并确认该脚本可执行。"
+
+# ed41f3f65d3f49209bba272a3b1c0922
+#: ../../hypervisor/xenserver.rst:636
+msgid "Run the script:"
+msgstr "运行脚本："
+
+# 30dd45661f474b9f9d626aa8df7052e5
+#: ../../hypervisor/xenserver.rst:642
+msgid "Now the bonds are set up and configured properly across the cluster."
+msgstr "现在，群集内所有主机的网卡绑定都已配置正确。"
+
+# 06329e8ef297453d9fbe11b802a02387
+#: ../../hypervisor/xenserver.rst:648
+msgid "Upgrading XenServer Versions"
+msgstr "升级XenServer版本"
+
+# 7ae8e3b4c5e745e7b43ab29f5129e0cf
+#: ../../hypervisor/xenserver.rst:650
+msgid ""
+"This section tells how to upgrade XenServer software on CloudStack hosts. "
+"The actual upgrade is described in XenServer documentation, but there are "
+"some additional steps you must perform before and after the upgrade."
+msgstr "本章节介绍了如何升级CloudStack环境中的XenServer。实际升级的操作在XenServer文档中有详细描述，但是在升级前后有些额外的步骤必须执行。"
+
+# a49d855e0fec4ddfb046814a7a02bc58
+#: ../../hypervisor/xenserver.rst:656
+msgid ""
+"Be sure the hardware is certified compatible with the new version of "
+"XenServer."
+msgstr "确保硬件可以被新版本XenServer支持。"
+
+# dee99a5634554dc4b7188ab5c5aedc45
+#: ../../hypervisor/xenserver.rst:659
+msgid "To upgrade XenServer:"
+msgstr "升级XenServer："
+
+# c58f7ac2d954400395df0861156c145b
+#: ../../hypervisor/xenserver.rst:661
+msgid "Upgrade the database. On the Management Server node:"
+msgstr "升级数据库。在管理服务器节点上："
+
+# a680a343ad5b4dc0900df3a60f835ead
+#: ../../hypervisor/xenserver.rst:663
+msgid "Back up the database:"
+msgstr "备份数据库："
+
+# 22c201339a64428aba4b9ed4256a473e
+#: ../../hypervisor/xenserver.rst:670
+msgid ""
+"You might need to change the OS type settings for VMs running on the "
+"upgraded hosts."
+msgstr "需要更改升级后的主机中虚拟机的操作系统类型。"
+
+# b4e5d659dfde45c7bf1279a03e48b5c1
+#: ../../hypervisor/xenserver.rst:673
+msgid ""
+"If you upgraded from XenServer 5.6 GA to XenServer 5.6 SP2, change any VMs "
+"that have the OS type CentOS 5.5 (32-bit), Oracle Enterprise Linux 5.5 "
+"(32-bit), or Red Hat Enterprise Linux 5.5 (32-bit) to Other Linux (32-bit). "
+"Change any VMs that have the 64-bit versions of these same OS types to Other"
+" Linux (64-bit)."
+msgstr "如果是从XenServer 5.6 GA 升级到XenServer 5.6 SP2，更改虚机操作系统类型CentOS 5.5 (32-bit), Oracle Enterprise Linux 5.5 (32-bit)或者Red Hat Enterprise Linux 5.5 (32-bit)为Other Linux (32-bit)。同样这些虚机的64位版本操作系统类型也要改为Other Linux (64-bit)。"
+
+# 7573f70d77e248e5a4d430bd16631bbe
+#: ../../hypervisor/xenserver.rst:680
+msgid ""
+"If you upgraded from XenServer 5.6 SP2 to XenServer 6.0.2, change any VMs "
+"that have the OS type CentOS 5.6 (32-bit), CentOS 5.7 (32-bit), Oracle "
+"Enterprise Linux 5.6 (32-bit), Oracle Enterprise Linux 5.7 (32-bit), Red Hat"
+" Enterprise Linux 5.6 (32-bit) , or Red Hat Enterprise Linux 5.7 (32-bit) to"
+" Other Linux (32-bit). Change any VMs that have the 64-bit versions of these"
+" same OS types to Other Linux (64-bit)."
+msgstr "如果是从XenServer 5.6 SP2升级到XenServer 6.0.2，更改虚拟操作系统类型CentOS 5.6 (32-bit), CentOS 5.7 (32-bit), Oracle Enterprise Linux 5.6 (32-bit), Oracle Enterprise Linux 5.7 (32-bit), Red Hat Enterprise Linux 5.6 (32-bit)或者Red Hat Enterprise Linux 5.7 (32-bit)为Other Linux (32-bit)。同样这些虚机的64位版本操作系统类型也要改为Other Linux (64-bit)。"
+
+# ecee533ad8dd40ecbab222880d5502e4
+#: ../../hypervisor/xenserver.rst:688
+msgid ""
+"If you upgraded from XenServer 5.6 to XenServer 6.0.2, do all of the above."
+msgstr "如果从XenServer 5.6升级到XenServer 6.0.2，需完成以上所有操作。"
+
+# 92dd0b5b05d349f5b31a218ef5053b51
+#: ../../hypervisor/xenserver.rst:691
+msgid ""
+"Restart the Management Server and Usage Server. You only need to do this "
+"once for all clusters."
+msgstr "重启管理服务和Usage服务. 只需为所有的集群做一次这样的操作。"
+
+# 609fce92c5004d349ce69313e8b259d1
+#: ../../hypervisor/xenserver.rst:699
+msgid "Disconnect the XenServer cluster from CloudStack."
+msgstr "在CloudStack中断开XenServer群集连接。"
+
+# a0e0ba7425e84cc4b3c558e55e6ba6c1
+# 9a532ffafa924e14bfdcd5a3f893f796
+#: ../../hypervisor/xenserver.rst:701 ../../hypervisor/xenserver.rst:803
+msgid "Log in to the CloudStack UI as root."
+msgstr "使用admin账户登录CloudStack管理界面。"
+
+# cfa57057adf34d20ad28ea73d14ef535
+#: ../../hypervisor/xenserver.rst:703
+msgid "Navigate to the XenServer cluster, and click Actions – Unmanage."
+msgstr "导航至XenServer群集，点击操作-取消管理。"
+
+# 5d95636b239e4667b4933027c8a99a25
+#: ../../hypervisor/xenserver.rst:705
+msgid "Watch the cluster status until it shows Unmanaged."
+msgstr "查看群集状态直到显示未受管理。"
+
+# 80449684af9d499095d5d868770d0e7b
+#: ../../hypervisor/xenserver.rst:707
+msgid ""
+"Log in to one of the hosts in the cluster, and run this command to clean up "
+"the VLAN:"
+msgstr "登录到群集中的任意一台主机，运行下面的命令清除VLAN信息："
+
+# d785d08cf59f499398b8f029d5186b94
+#: ../../hypervisor/xenserver.rst:714
+msgid "Still logged in to the host, run the upgrade preparation script:"
+msgstr "仍旧在这台已经登录的主机中，运行下面的升级准备脚本："
+
+# 31f5837f129648c9a08eca9c059eb78c
+#: ../../hypervisor/xenserver.rst:720
+msgid ""
+"Troubleshooting: If you see the error \"can't eject CD,\" log in to the VM "
+"and umount the CD, then run the script again."
+msgstr "故障排除：如果看到 \"can't eject CD,\" 错误，请登录到虚拟机将光盘卸载，并重新运行脚本。"
+
+# 715d2f02ed1c47c589935a7f3b1dafa3
+#: ../../hypervisor/xenserver.rst:723
+msgid ""
+"Upgrade the XenServer software on all hosts in the cluster. Upgrade the "
+"master first."
+msgstr "升级群集中所有的XenServer主机。首先升级master节点。"
+
+# d16b76e393814c10b8ce59d9d571f9a4
+#: ../../hypervisor/xenserver.rst:726
+msgid ""
+"Live migrate all VMs on this host to other hosts. See the instructions for "
+"live migration in the Administrator's Guide."
+msgstr "将该主机上的所有虚拟机动态迁移到其他主机。请参照管理指南了解动态迁移指导。"
+
+# 2abd9a8c661b47fc8eee237cf9108f92
+#: ../../hypervisor/xenserver.rst:729
+msgid ""
+"Troubleshooting: You might see the following error when you migrate a VM:"
+msgstr "故障排除：迁移虚拟机时可能会遇到下面的错误："
+
+# b23537b0d5f942ccb71f8849c129899d
+#: ../../hypervisor/xenserver.rst:738
+msgid "To solve this issue, run the following:"
+msgstr "解决这个问题，请运行下面的命令："
+
+# d92194b697694bd2b8152cfa36773892
+#: ../../hypervisor/xenserver.rst:744
+msgid "Reboot the host."
+msgstr "重启主机。"
+
+# 34903a18372648c9b8b6d06d03d0e02c
+#: ../../hypervisor/xenserver.rst:746
+msgid ""
+"Upgrade to the newer version of XenServer. Use the steps in XenServer "
+"documentation."
+msgstr "要升级更新版本的XenServer。请执行XenServer文档中的步骤。"
+
+# 573adf7c44514928894306fcf3566a98
+#: ../../hypervisor/xenserver.rst:749
+msgid ""
+"After the upgrade is complete, copy the following files from the management "
+"server to this host, in the directory locations shown below:"
+msgstr "在升级完成之后，将下列文件从管理服务器复制到这台主机，文件所在路径如下："
+
+# 18eb28018d324049916e1e1a4b9b1680
+#: ../../hypervisor/xenserver.rst:754
+msgid "Copy this Management Server file"
+msgstr "复制管理服务器的文件"
+
+# 37bd1b6db08741b39cf4840e83ad9279
+#: ../../hypervisor/xenserver.rst:754
+msgid "To this location on the XenServer host"
+msgstr "复制到XenServer主机的路径"
+
+# 77c4c74d05ee4ed084fecb4d94f0038e
+#: ../../hypervisor/xenserver.rst:756
+msgid ""
+"/usr/share/cloudstack-"
+"common/scripts/vm/hypervisor/xenserver/xenserver60/NFSSR.py"
+msgstr "/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/xenserver60/NFSSR.py"
+
+# 5d5d441f185b4da39acede52092ab729
+#: ../../hypervisor/xenserver.rst:756
+msgid "/opt/xensource/sm/NFSSR.py"
+msgstr "/opt/xensource/sm/NFSSR.py"
+
+# b9569d25b25c47589eb352b2f26b96d8
+#: ../../hypervisor/xenserver.rst:757
+msgid ""
+"/usr/share/cloudstack-"
+"common/scripts/vm/hypervisor/xenserver/setupxenserver.sh"
+msgstr "/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/setupxenserver.sh"
+
+# 8ccdd7cb7c6d4213ba0d257d2adfcf42
+#: ../../hypervisor/xenserver.rst:757
+msgid "/opt/xensource/bin/setupxenserver.sh"
+msgstr "/opt/xensource/bin/setupxenserver.sh"
+
+# 70be8fbba5fe4f9d81dbe6ffe68ca9fa
+#: ../../hypervisor/xenserver.rst:758
+msgid ""
+"/usr/share/cloudstack-"
+"common/scripts/vm/hypervisor/xenserver/make\\_migratable.sh"
+msgstr "/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/make\\_migratable.sh"
+
+# 9545ac4a5e554ac0856980527ee37e93
+#: ../../hypervisor/xenserver.rst:758
+msgid "/opt/xensource/bin/make\\_migratable.sh"
+msgstr "/opt/xensource/bin/make\\_migratable.sh"
+
+# d5729618b07f45fa871e57a5cdd5cb11
+#: ../../hypervisor/xenserver.rst:759
+msgid ""
+"/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-clean-"
+"vlan.sh"
+msgstr "/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-clean-vlan.sh"
+
+# 0af33abd27be47cf9afd563a8049f92f
+#: ../../hypervisor/xenserver.rst:759
+msgid "/opt/xensource/bin/cloud-clean-vlan.sh"
+msgstr "/opt/xensource/bin/cloud-clean-vlan.sh"
+
+# 57e220ee90da43a18a72c97fb44f4642
+#: ../../hypervisor/xenserver.rst:768
+msgid ""
+"Troubleshooting: If you see the following error message, you can safely "
+"ignore it."
+msgstr "故障排除：如果看到下面的错误信息，可以忽略它。"
+
+# 7d8ccf199424413ca7d2c6ace78d8d25
+#: ../../hypervisor/xenserver.rst:775
+msgid ""
+"Plug in the storage repositories (physical block devices) to the XenServer "
+"host:"
+msgstr "将XenServer主机连接至存储库(物理的块设备)："
+
+# 03e1d3926bc546a5af37036f806b6776
+#: ../../hypervisor/xenserver.rst:783
+msgid ""
+"If you add a host to this XenServer pool, you need to migrate all VMs on "
+"this host to other hosts, and eject this host from XenServer pool."
+msgstr "如果添加一台主机到这个XenServer资源池中，你必须将这台主机上的所有的虚机迁移到其他主机，然后将这台主机从原来的XenServer资源池中移除。"
+
+# 9e79d6523b9b4c6982d7f0df8b920625
+#: ../../hypervisor/xenserver.rst:786
+msgid ""
+"Repeat these steps to upgrade every host in the cluster to the same version "
+"of XenServer."
+msgstr "重复这些步骤，将每台主机都升级到相同的XenServer版本。"
+
+# 0f820c2f7c49419ea8cce858406d9043
+#: ../../hypervisor/xenserver.rst:789
+msgid ""
+"Run the following command on one host in the XenServer cluster to clean up "
+"the host tags:"
+msgstr "在XenServer群集中的一台主机上运行下面命令来清除主机标签："
+
+# 742db1ba5463410a9d82cc3a89bb7199
+#: ../../hypervisor/xenserver.rst:797
+msgid ""
+"When copying and pasting a command, be sure the command has pasted as a "
+"single line before executing. Some document viewers may introduce unwanted "
+"line breaks in copied text."
+msgstr "当复制和粘贴命令时，请确保没有多余的换行符，因为一些文档查看器可能会在复制时加上换行符。"
+
+# 5432c32d5f10462dbd868cbbbddc88f4
+#: ../../hypervisor/xenserver.rst:801
+msgid "Reconnect the XenServer cluster to CloudStack."
+msgstr "在CloudStack中重新连接XenServer群集。"
+
+# 21a80cdb8f254573809173ca433e813e
+#: ../../hypervisor/xenserver.rst:805
+msgid "Navigate to the XenServer cluster, and click Actions – Manage."
+msgstr "在XenServer群集导航页中，点击操作-管理。"
+
+# feaf793c4bb243358fe6893a23769add
+#: ../../hypervisor/xenserver.rst:807
+msgid "Watch the status to see that all the hosts come up."
+msgstr "查看状态以确保所有的主机都恢复正常."
+
+# 228283144fa14ff9b751f39e8007043f
+#: ../../hypervisor/xenserver.rst:809
+msgid "After all hosts are up, run the following on one host in the cluster:"
+msgstr "当所有的主机都是运行状态后, 在集群中的一台主机上运行下列的命令:"

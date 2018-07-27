@@ -1,0 +1,1681 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../hypervisor/vsphere.rst:18
+# 19b014507cf143c0bfc2d6b2fdbeca56
+msgid "VMware vSphere Installation and Configuration"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:20
+# 87c85380b4b94a7393cc229882265b58
+msgid "If you want to use the VMware vSphere hypervisor to run guest virtual machines, install vSphere on the host(s) in your cloud."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:25
+# 3d2c763f10b74d00ae6672f6d8a6ee22
+msgid "System Requirements for vSphere Hosts"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:29
+# a69a6b7374d64da3a42115a99aad0d8e
+msgid "Software requirements:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:31
+# 817453f34d1d4ce7adcd829ee2c4469e
+msgid "vSphere and vCenter, both version 4.1 or 5.0."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:33
+# 307a9f42a4ba44c4ae53ae2a46440a92
+msgid "vSphere Standard is recommended. Note however that customers need to consider the CPU constraints in place with vSphere licensing. See `http://www.vmware.com/files/pdf/vsphere\\_pricing.pdf <http://www.vmware.com/files/pdf/vsphere_pricing.pdf>`_ and discuss with your VMware sales representative."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:39
+# 0f24943e5a384c2fb7c8d181a5df1d27
+msgid "vCenter Server Standard is recommended."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:41
+# 11cf8def2a0e4ca6b35b4141c27541d3
+msgid "Be sure all the hotfixes provided by the hypervisor vendor are applied. Track the release of hypervisor patches through your hypervisor vendor's support channel, and apply patches as soon as possible after they are released. CloudStack will not track or notify you of required hypervisor patches. It is essential that your hosts are completely up to date with the provided hypervisor patches. The hypervisor vendor is likely to refuse to support any system that is not up to date with patches."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:51
+# 433a750f49e34f96a6568a12d3d5fd74
+msgid "Apply All Necessary Hotfixes. The lack of up-do-date hotfixes can lead to data corruption and lost VMs."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:56
+# cfbe010033704d72879d2e1a83fd3751
+msgid "Hardware requirements:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:58
+# b0649e717356409293c4567e656821af
+msgid "The host must be certified as compatible with vSphere. See the VMware Hardware Compatibility Guide at `http://www.vmware.com/resources/compatibility/search.php <http://www.vmware.com/resources/compatibility/search.php>`_."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:63
+# 7bc3ed3794fb40418371381be3db54c4
+msgid "All hosts must be 64-bit and must support HVM (Intel-VT or AMD-V enabled)."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:66
+# 0a5dabc432dc454396baf7e656897fe6
+msgid "All hosts within a cluster must be homogenous. That means the CPUs must be of the same type, count, and feature flags."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:69
+# 94cea4d65ee249be9661ee4a95356c3d
+msgid "64-bit x86 CPU (more cores results in better performance)"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:71
+# f25b466cb54f42b58faa3675162df14f
+msgid "Hardware virtualization support required"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:73
+# 3eedde6532fd4545af478f114efb0aa6
+msgid "4 GB of memory"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:75
+# 23b705dbe90b4ffda152518b41ce6fee
+msgid "36 GB of local disk"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:77
+# 1e1c717f723448de883b57b168c19a59
+msgid "At least 1 NIC"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:79
+# 3bc46abe138d48eeb9586740ba9e5d00
+msgid "Statically allocated IP Address"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:83
+# adf685e0308e4394aceccfcdb1c3e923
+msgid "vCenter Server requirements:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:85
+# 06ac32e7e8c04f65b302040e55a2a908
+msgid "Processor - 2 CPUs 2.0GHz or higher Intel or AMD x86 processors. Processor requirements may be higher if the database runs on the same machine."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:89
+# 271c70d35c104435b5350721391ffed9
+msgid "Memory - 3GB RAM. RAM requirements may be higher if your database runs on the same machine."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:92
+# 720bf6b73cd1449fb7ae868c3286012c
+msgid "Disk storage - 2GB. Disk requirements may be higher if your database runs on the same machine."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:95
+# 6f4ab896b8f049448d2141390cd6e6cb
+msgid "Microsoft SQL Server 2005 Express disk requirements. The bundled database requires up to 2GB free disk space to decompress the installation archive."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:99
+# 9474159ca7834a10864479073a1bf0d3
+msgid "Networking - 1Gbit or 10Gbit."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:101
+# 38899761f45d434f8c9fb7a5d24ec00e
+msgid "For more information, see `\"vCenter Server and the vSphere Client Hardware Requirements\" <http://pubs.vmware.com/vsp40/wwhelp/wwhimpl/js/html/wwhelp.htm#href=install/c_vc_hw.html>`_."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:106
+# 43340509b56641c28387c6a0b718a9a2
+msgid "Other requirements:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:108
+# c0ca168c59964efc9aa79369ee7a8104
+msgid "VMware vCenter Standard Edition 4.1 or 5.0 must be installed and available to manage the vSphere hosts."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:111
+# 0ba8fe6d64854dac84850796d0c84f0b
+msgid "vCenter must be configured to use the standard port 443 so that it can communicate with the CloudStack Management Server."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:114
+# 311e91fb341e4d30a649ba13d80e2e72
+msgid "You must re-install VMware ESXi if you are going to re-use a host from a previous install."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:117
+# c5dcee58723d4fa1b707fecaede37c0e
+msgid "CloudStack requires VMware vSphere 4.1 or 5.0. VMware vSphere 4.0 is not supported."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:120
+# d988a28be0c94e3b9935e2025d0475d0
+msgid "All hosts must be 64-bit and must support HVM (Intel-VT or AMD-V enabled). All hosts within a cluster must be homogeneous. That means the CPUs must be of the same type, count, and feature flags."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:124
+# f830e27a969e413b831620b0907e346f
+msgid "The CloudStack management network must not be configured as a separate virtual network. The CloudStack management network is the same as the vCenter management network, and will inherit its configuration. See :ref:`configure-vcenter-management-network`."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:129
+# eac2d87ef82b4063864397fe3ac48213
+msgid "CloudStack requires ESXi. ESX is not supported."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:131
+# 397732aa4a884edbab1fec4290fceae4
+msgid "All resources used for CloudStack must be used for CloudStack only. CloudStack cannot share instance of ESXi or storage with other management consoles. Do not share the same storage volumes that will be used by CloudStack with a different set of ESXi servers that are not managed by CloudStack."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:137
+# 483d1d73b54a40d78329af14748fd831
+msgid "Put all target ESXi hypervisors in a cluster in a separate Datacenter in vCenter."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:140
+# 8151eb61ba874bc8a60d05b0c751a321
+msgid "The cluster that will be managed by CloudStack should not contain any VMs. Do not run the management server, vCenter or any other VMs on the cluster that is designated for CloudStack use. Create a separate cluster for use of CloudStack and make sure that they are no VMs in this cluster."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:146
+# 2bcc13091d3947dc9e7801b766452c80
+msgid "All the required VLANS must be trunked into all network switches that are connected to the ESXi hypervisor hosts. These would include the VLANS for Management, Storage, vMotion, and guest VLANs. The guest VLAN (used in Advanced Networking; see Network Setup) is a contiguous range of VLANs that will be managed by CloudStack."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:154
+# 12d708e9230b4cf2a6eec95bc47de138
+msgid "Preparation Checklist for VMware"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:156
+# f9a24ff6b44f49d198fbee57859227b1
+msgid "For a smoother installation, gather the following information before you start:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:159
+# 7c40a197d95543d5b09db63ac46a3ff7
+msgid "Information listed in :ref:`vcenter-checklist`"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:161
+# 985e27ff41074586a10f90781fc9434b
+msgid "Information listed in :ref:`networking-checklist-for-vmware`"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:167
+# 7bbac620f96b4b238ced330b74d07b49
+msgid "vCenter Checklist"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:169
+# 04e3ab33127443328f019f7d08a250d6
+msgid "You will need the following information about vCenter."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:172
+# 230ef95a22cb40c2ac102a9798f69d50
+msgid "vCenter Requirement"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:172
+#: ../../hypervisor/vsphere.rst:189
+#: ../../hypervisor/vsphere.rst:459
+# 52d76ece5b4a44309c219d371f7ddd03
+# 82bd8117216b4dec8f2d3946d40f445c
+# 28ee056cc5ba4ffa9d14464a46e34f3a
+msgid "Notes"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:174
+# e6d6093156eb4c89a795c492963fceed
+msgid "vCenter User"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:174
+# 55d86b0382d0488e9e1392ae0a228a03
+msgid "This user must have admin privileges."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:175
+# 21fb181b5dc444fd8fd758ae9a39ba95
+msgid "vCenter User Password"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:175
+# 6be77420b0d6471a926b242982798b63
+msgid "Password for the above user."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:176
+# 79ba83eb3964471ba6ea6718fde7cb34
+msgid "vCenter Datacenter Name"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:176
+# 2fd0d6ea1f9a4c85b81d4276deb2c9b8
+msgid "Name of the datacenter."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:177
+# 3150bf92a4a347e5aa40a8fe765140b6
+msgid "vCenter Cluster Name"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:177
+# 4da7406ee21a41999d49265263a3d330
+msgid "Name of the cluster."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:184
+# f06da8e5f04e4715a3428b02687006a5
+msgid "Networking Checklist for VMware"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:186
+# 0b5d8b8b8030478490415117b971cc1d
+msgid "You will need the following information about VLAN."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:189
+# d18a8dbf3b5a4e37a6b4a9082e8d9b9a
+msgid "VLAN Information"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:191
+# a18ba1020be54125a1a83ecae1b4a59d
+msgid "ESXi VLAN"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:191
+# 7552379727114564bb1a6005a0bc0b5a
+msgid "VLAN on which all your ESXi hypervisors reside."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:192
+# 94167adee63f4adda49e8511ecf154c2
+msgid "ESXI VLAN IP Address"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:192
+# 96b5d173daa14cb686b8df6e2af6eda3
+msgid "IP Address Range in the ESXi VLAN. One address per Virtual Router is used from this range."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:193
+# 61a0a647d1304c7592fee8b73395ac5e
+msgid "ESXi VLAN IP Gateway"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:194
+# 502e2adfefd54290b787aba3d70a6a3c
+msgid "ESXi VLAN Netmask"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:195
+# 3d862fcd0d14490fb29acd36a2958c5d
+msgid "Management Server VLAN"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:195
+# ce8231bbfb6f4f86b212bfa7912ce3fb
+msgid "VLAN on which the CloudStack Management server is installed."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:196
+# 924ddf7763994ebfbd0a15b603bc22d5
+msgid "Public VLAN"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:196
+# 3f3fdc9789c048b49167a98f52acc5dc
+msgid "VLAN for the Public Network."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:197
+# ee0b4346c9ad482786c589e1947e8ce8
+msgid "Public VLAN Gateway"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:198
+# 093927bfb8494060b58a6be1d37571a3
+msgid "Public VLAN Netmask"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:199
+# 48b1d1223c1942f486b2e81fd85701ba
+msgid "Public VLAN IP Address Range"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:199
+# fafd189f95f0456fa23cbebd9f3ed266
+msgid "Range of Public IP Addresses available for CloudStack use. These addresses will be used for virtual router on CloudStack to route private traffic to external networks."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:202
+# 8eb456b1619c4753be00cf585593cc7e
+msgid "VLAN Range for Customer use"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:202
+# dad2013c354145e5b820dc70ef56e99c
+msgid "A contiguous range of non-routable VLANs. One VLAN will be assigned for each customer."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:208
+# 55066669b6874439b121073b06ac7faa
+msgid "vSphere Installation Steps"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:210
+# 9254e8523b3f4c3aad496a3e1776451f
+msgid "If you haven't already, you'll need to download and purchase vSphere from the VMware Website (`https://www.vmware.com/tryvmware/index.php?p=vmware-vsphere&lp=1 <https://www.vmware.com/tryvmware/index.php?p=vmware-vsphere&lp=1>`_) and install it by following the VMware vSphere Installation Guide."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:215
+# b9235024292f46faacee1b73c71ce9c9
+msgid "Following installation, perform the following configuration, which are described in the next few sections:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:219
+# 10d7af3e4cef499aa1fa230b12ce67e0
+msgid "Required"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:219
+# 906de2717fd64b5c87584e6807af120e
+msgid "Optional"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:221
+# b461abbf9e42401da9600e4666054caa
+msgid "ESXi host setup"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:221
+# a672baaf4ca64f66ba7b0a4aa2b9c820
+msgid "NIC bonding"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:222
+# 15b07c50f2814ef5a9b9fe3e6054c7ef
+msgid "Configure host physical networking,virtual switch, vCenter Management Network, and extended port range"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:222
+# 82afddb1d1534689ac6a034abc9ad969
+msgid "Multipath storage"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:223
+# 908c7c0df32a4091b51fa92198fd58da
+msgid "Prepare storage for iSCSI"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:224
+# a92c6507ae414e5f9a0ec8ff2545209e
+msgid "Configure clusters in vCenter and add hosts to them, or add hosts without clusters to vCenter"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:229
+# a5fd230588934d9a949707390d10c3cd
+msgid "ESXi Host setup"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:231
+# 4560ac7e0a014d70bbfe865d8cd78abd
+msgid "All ESXi hosts should enable CPU hardware virtualization support in BIOS. Please note hardware virtualization support is not enabled by default on most servers."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:237
+# 4ecccb36e87644d3a98414f9f939fdc5
+msgid "Physical Host Networking"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:239
+# 24de9cbfdd0a4277a359684f50fb2ca7
+msgid "You should have a plan for cabling the vSphere hosts. Proper network configuration is required before adding a vSphere host to CloudStack. To configure an ESXi host, you can use vClient to add it as standalone host to vCenter first. Once you see the host appearing in the vCenter inventory tree, click the host node in the inventory tree, and navigate to the Configuration tab."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:246
+# 1221f7c6183a439e9db5dfe5282e491a
+msgid "|vspherephysicalnetwork.png: vSphere client|"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:248
+# 814e620809104bd1bd43c8b8d28445ad
+msgid "In the host configuration tab, click the \"Hardware/Networking\" link to bring up the networking configuration page as above."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:253
+# 6bb1a1da1840400f9cd0ea1a73f0c12a
+msgid "Configure Virtual Switch"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:255
+# b867b4246fc449979584e901e0fac0fb
+msgid "A default virtual switch vSwitch0 is created. CloudStack requires all ESXi hosts in the cloud to use the same set of virtual switch names. If you change the default virtual switch name, you will need to configure one or more CloudStack configuration variables as well."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:262
+# cfa8f6a17984452ba1aabf882f8c3d42
+msgid "Separating Traffic"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:264
+# 69b7df288a684ae0b55024da82f5e8fc
+msgid "CloudStack allows you to use vCenter to configure three separate networks per ESXi host. These networks are identified by the name of the vSwitch they are connected to. The allowed networks for configuration are public (for traffic to/from the public internet), guest (for guest-guest traffic), and private (for management and usually storage traffic). You can use the default virtual switch for all three, or create one or two other vSwitches for those traffic types."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:272
+# bf95ebb6ddf44a5cbf07c996d8a660f3
+msgid "If you want to separate traffic in this way you should first create and configure vSwitches in vCenter according to the vCenter instructions. Take note of the vSwitch names you have used for each traffic type. You will configure CloudStack to use these vSwitches."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:279
+# bc3f5581dea54034ae73ec0a942e180c
+msgid "Increasing Ports"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:281
+# 88f709156fa8484b902282de91c0793f
+msgid "By default a virtual switch on ESXi hosts is created with 56 ports. We recommend setting it to 4088, the maximum number of ports allowed. To do that, click the \"Properties...\" link for virtual switch (note this is not the Properties link for Networking)."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:286
+# 4e01bfffde3c422aa7fcdddc74de892f
+msgid "|vsphereincreaseports.png: vSphere client|"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:288
+# 11994bd16f5a45a383d33894daaa0f53
+msgid "In vSwitch properties dialog, select the vSwitch and click Edit. You should see the following dialog:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:291
+# f64cba4600314bd89382d82cd5d37e5a
+msgid "|vspherevswitchproperties.png: vSphere client|"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:293
+# 5216577220b34c2980dadbd02476e716
+msgid "In this dialog, you can change the number of switch ports. After you've done that, ESXi hosts are required to reboot in order for the setting to take effect."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:301
+# 0ad4145d13e84c828a62f3d1b613dbd3
+msgid "Configure vCenter Management Network"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:303
+# 55856f0ddbed407eae0a6e859a61f73d
+msgid "In the vSwitch properties dialog box, you may see a vCenter management network. This same network will also be used as the CloudStack management network. CloudStack requires the vCenter management network to be configured properly. Select the management network item in the dialog, then click Edit."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:309
+# 07fa2b72b0564cb89199ffcab114a7ee
+msgid "|vspheremgtnetwork.png: vSphere client|"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:311
+# 00017c3e4d5e4506808936e3c52b70fd
+msgid "Make sure the following values are set:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:313
+# 383a238254dd4a109140ddd990c2ced7
+msgid "VLAN ID set to the desired ID"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:315
+# 92318eb7b2c544b08843c50e90bfb36c
+msgid "vMotion enabled."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:317
+# d6f57109f2fa4226a9ff5372703acb79
+msgid "Management traffic enabled."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:319
+# 44d67b07355843239d874a52581251b0
+msgid "If the ESXi hosts have multiple VMKernel ports, and ESXi is not using the default value \"Management Network\" as the management network name, you must follow these guidelines to configure the management network port group so that CloudStack can find it:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:324
+# 9bb53b01739a4056995c0d4a8ca8d472
+msgid "Use one label for the management network port across all ESXi hosts."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:326
+# 9a73da845a73437891672f0ca961eba4
+msgid "In the CloudStack UI, go to Configuration - Global Settings and set vmware.management.portgroup to the management network label from the ESXi hosts."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:332
+# b6695dde2a9e4023ab181aa0b7f43ddf
+msgid "Extend Port Range for CloudStack Console Proxy"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:334
+# 8acd9f9a7fd74d82b305dd73462cb96d
+msgid "(Applies only to VMware vSphere version 4.x)"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:336
+# 3ca5d828266843f981f791b128eaa6a4
+msgid "You need to extend the range of firewall ports that the console proxy works with on the hosts. This is to enable the console proxy to work with VMware-based VMs. The default additional port range is 59000-60000. To extend the port range, log in to the VMware ESX service console on each host and run the following commands:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:349
+# 1f25aa96ef604ce8acd3ae301b49add1
+msgid "Configure NIC Bonding for vSphere"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:351
+# b3ba21794a784430bc2e6d8755c2a5d6
+msgid "NIC bonding on vSphere hosts may be done according to the vSphere installation guide."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:356
+# 57eca85918594e28af92c0453eb88f9e
+msgid "Configuring a vSphere Cluster with Nexus 1000v Virtual Switch"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:358
+# c41be8a6fd7a495a9f3fc72a6f572fc1
+msgid "CloudStack supports Cisco Nexus 1000v dvSwitch (Distributed Virtual Switch) for virtual network configuration in a VMware vSphere environment. This section helps you configure a vSphere cluster with Nexus 1000v virtual switch in a VMware vCenter environment. For information on creating a vSphere cluster, see `\"VMware vSphere Installation and Configuration\" <#vmware-vsphere-installation-and-configuration>`_"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:368
+# fd98cbd7bb554d358747d066d0beb7ec
+msgid "About Cisco Nexus 1000v Distributed Virtual Switch"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:370
+# 59712fc0b9b3480680eab3fc5438d7d6
+msgid "The Cisco Nexus 1000V virtual switch is a software-based virtual machine access switch for VMware vSphere environments. It can span multiple hosts running VMware ESXi 4.0 and later. A Nexus virtual switch consists of two components: the Virtual Supervisor Module (VSM) and the Virtual Ethernet Module (VEM). The VSM is a virtual appliance that acts as the switch's supervisor. It controls multiple VEMs as a single network device. The VSM is installed independent of the VEM and is deployed in redundancy mode as pairs or as a standalone appliance. The VEM is installed on each VMware ESXi server to provide packet-forwarding capability. It provides each virtual machine with dedicated switch ports. This VSM-VEM architecture is analogous to a physical Cisco switch's supervisor (standalone or configured in high-availability mode) and multiple linecards architecture."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:384
+# f739316e27a14ab39ad8ab22ae8e3d33
+msgid "Nexus 1000v switch uses vEthernet port profiles to simplify network provisioning for virtual machines. There are two types of port profiles: Ethernet port profile and vEthernet port profile. The Ethernet port profile is applied to the physical uplink ports-the NIC ports of the physical NIC adapter on an ESXi server. The vEthernet port profile is associated with the virtual NIC (vNIC) that is plumbed on a guest VM on the ESXi server. The port profiles help the network administrators define network policies which can be reused for new virtual machines. The Ethernet port profiles are created on the VSM and are represented as port groups on the vCenter server."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:397
+#: ../../hypervisor/vsphere.rst:715
+# de9fe88270bf4403afa9e22b05f73471
+# 5d365a93c5e949efb76d86e0763cbad3
+msgid "Prerequisites and Guidelines"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:399
+# 7c2f20207c414d7d819f7e0e5d408552
+msgid "This section discusses prerequisites and guidelines for using Nexus virtual switch in CloudStack. Before configuring Nexus virtual switch, ensure that your system meets the following requirements:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:403
+# 6069bf189abd4043952218eb4c6136a7
+msgid "A cluster of servers (ESXi 4.1 or later) is configured in the vCenter."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:406
+# f86fc439aeb543e4a45e2c8bbdfd9510
+msgid "Each cluster managed by CloudStack is the only cluster in its vCenter datacenter."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:409
+# 26d3882e3f964a7ba7e2079ae88133a1
+msgid "A Cisco Nexus 1000v virtual switch is installed to serve the datacenter that contains the vCenter cluster. This ensures that CloudStack doesn't have to deal with dynamic migration of virtual adapters or networks across other existing virtual switches. See `Cisco Nexus 1000V Installation and Upgrade Guide <http://www.cisco.com/en/US/docs/switches/datacenter/nexus1000/sw/4_2_1_s_v_1_5_1/install_upgrade/vsm_vem/guide/n1000v_installupgrade.html>`_ for guidelines on how to install the Nexus 1000v VSM and VEM modules."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:417
+# 985ff8e2082f419d8d77119acefbfa01
+msgid "The Nexus 1000v VSM is not deployed on a vSphere host that is managed by CloudStack."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:420
+# affd3445b0854e7ab5ffbef4fa7b9db4
+msgid "When the maximum number of VEM modules per VSM instance is reached, an additional VSM instance is created before introducing any more ESXi hosts. The limit is 64 VEM modules for each VSM instance."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:424
+# e95f2908159b4be0820e8620c94c70c5
+msgid "CloudStack expects that the Management Network of the ESXi host is configured on the standard vSwitch and searches for it in the standard vSwitch. Therefore, ensure that you do not migrate the management network to Nexus 1000v virtual switch during configuration."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:430
+# 7f74225fb2604754a58806809f2c65c1
+msgid "All information given in :ref:`nexus-vswift-preconf`"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:436
+# 0ab3b61d4a674fb5ba50354f165cf6e9
+msgid "Nexus 1000v Virtual Switch Preconfiguration"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:439
+#: ../../hypervisor/vsphere.rst:737
+# 2af119d57464425ea16e15da99bba2c2
+# 6067502710ad439c97b2463c8710b803
+msgid "Preparation Checklist"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:441
+# 70d29993a857439d8efb48c089332053
+msgid "For a smoother configuration of Nexus 1000v switch, gather the following information before you start:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:444
+# 12d946312911404db67cdfccc6dcfe14
+msgid "vCenter credentials"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:446
+# 568485eb210d406098935f8d5ab9b909
+msgid "Nexus 1000v VSM IP address"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:448
+# a593926b86d04d3a8de54de3c70a9174
+msgid "Nexus 1000v VSM Credentials"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:450
+# ff2a8c3138eb40fbbb40579586e678bf
+msgid "Ethernet port profile names"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:454
+# 4a63ecb799f24c29a04447e5da4130a5
+msgid "vCenter Credentials Checklist"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:456
+# 12069bcb02154859beac5cf397ecee61
+msgid "You will need the following information about vCenter:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:459
+# b2dc772426244f1f87b143366ecfd94a
+msgid "Nexus vSwitch Requirements"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:459
+# ca1d082b962346c5b7e77314fa8f5339
+msgid "Value"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:461
+# 3e9df2480b0d45c7a1888a94ab74b561
+msgid "vCenter IP"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:461
+# 799d10a2870e4192b304caa3220a3c8c
+msgid "The IP address of the vCenter."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:462
+# 373aace450dd4118b5260a922177871d
+msgid "Secure HTTP Port Number"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:462
+# bf406db42c3b4a0985b822dc6f559fe9
+msgid "443"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:462
+# 78925de645d8445ab775646afbe88bac
+msgid "Port 443 is configured by default; however, you can change the port if needed."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:463
+# 7130dcb862384a349e76cb8cd106e8e2
+msgid "vCenter User ID"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:463
+# 3c850f22d89f4e009b761127783ecdbd
+msgid "The vCenter user with administrator-level privileges. The vCenter User ID is required when you configure the virtual switch in CloudStack."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:465
+#: ../../hypervisor/vsphere.rst:658
+#: ../../hypervisor/vsphere.rst:870
+# 12125993392649a481f3650dc5288a6e
+# 0bd5bef46f9b4c6094ac26305cdfaa3f
+# aa87c00699724716b0aee7487275d581
+msgid "vCenter Password"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:465
+# 0e4340b43fb04f7891cf7c7acc4ec52d
+msgid "The password for the vCenter user specified above. The password for this vCenter user is required when you configure the switch in CloudStack."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:471
+# c78db2020a3c495b810c84656515f5a0
+msgid "Network Configuration Checklist"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:473
+# 8685bc23de794287bde9bc32baf13f10
+msgid "The following information specified in the Nexus Configure Networking screen is displayed in the Details tab of the Nexus dvSwitch in the CloudStack UI:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:477
+# 5ecd7125924d4e3291abfd544471236f
+msgid "**Control Port Group VLAN ID** The VLAN ID of the Control Port Group. The control VLAN is used for communication between the VSM and the VEMs."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:481
+# 5f52a9e500cc4927a981a052e73bac88
+msgid "**Management Port Group VLAN ID** The VLAN ID of the Management Port Group. The management VLAN corresponds to the mgmt0 interface that is used to establish and maintain the connection between the VSM and VMware vCenter Server."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:486
+# 709fb407f7f7478ea5db1f47f795d42e
+msgid "**Packet Port Group VLAN ID** The VLAN ID of the Packet Port Group. The packet VLAN forwards relevant data packets from the VEMs to the VSM."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:491
+# ee94ad5da5e44bd8a01b0a8b8d1f08f7
+msgid "The VLANs used for control, packet, and management port groups can be the same."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:494
+# 1d2af92735dc4899b13bb4fc697442f3
+msgid "For more information, see `Cisco Nexus 1000V Getting Started Guide <http://www.cisco.com/en/US/docs/switches/datacenter/nexus1000/sw/4_2_1_s_v_1_4_b/getting_started/configuration/guide/n1000v_gsg.pdf>`_."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:499
+# a9b85e88b0e54ef7bfa6227318fcadd8
+msgid "VSM Configuration Checklist"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:501
+# 409e4da026e84021900be9e9944f3530
+msgid "You will need the following VSM configuration parameters:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:503
+# b2c7beaf3b174e24ae88c155d2eaf8bb
+msgid "**Admin Name and Password** The admin name and password to connect to the VSM appliance. You must specify these credentials while configuring Nexus virtual switch."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:507
+# c42b39990d6e4d0589467d0a4ff5be4c
+msgid "**Management IP Address** This is the IP address of the VSM appliance. This is the IP address you specify in the virtual switch IP Address field while configuting Nexus virtual switch."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:512
+# 26a1722f2c004284958a7d40035272d8
+msgid "**SSL** Should be set to Enable.Always enable SSL. SSH is usually enabled by default during the VSM installation. However, check whether the SSH connection to the VSM is working, without which CloudStack failes to connect to the VSM."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:519
+# 62e601792f00490dbb068dab317eacb1
+msgid "Creating a Port Profile"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:521
+# 4c8ad78e43824c658d06ce2ab03a001f
+msgid "Whether you create a Basic or Advanced zone configuration, ensure that you always create an Ethernet port profile on the VSM after you install it and before you create the zone."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:525
+# 7208a4d7c533445d986522ab1512d4bf
+msgid "The Ethernet port profile created to represent the physical network or networks used by an Advanced zone configuration trunk all the VLANs including guest VLANs, the VLANs that serve the native VLAN, and the packet/control/data/management VLANs of the VSM."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:531
+# a8f769a137704cb5b1e211dbd40311d3
+msgid "The Ethernet port profile created for a Basic zone configuration does not trunk the guest VLANs because the guest VMs do not get their own VLANs provisioned on their network interfaces in a Basic zone."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:536
+# e5eb4252f80244b298e78778099d1fc0
+msgid "An Ethernet port profile configured on the Nexus 1000v virtual switch should not use in its set of system VLANs, or any of the VLANs configured or intended to be configured for use towards VMs or VM resources in the CloudStack environment."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:541
+# d75d1e3b4d5e4861816052de95cd1077
+msgid "You do not have to create any vEthernet port profiles – CloudStack does that during VM deployment."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:544
+# defb84f8c1a843f49799fb10a14be23e
+msgid "Ensure that you create required port profiles to be used by CloudStack for different traffic types of CloudStack, such as Management traffic, Guest traffic, Storage traffic, and Public traffic. The physical networks configured during zone creation should have a one-to-one relation with the Ethernet port profiles."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:550
+# 0e5328f3a23c4e29bfca23e34fcf89e4
+msgid "|vmwarenexusportprofile.png: vSphere client|"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:552
+# 70e2a8e74f5a4a1f9e0541bf48f85614
+msgid "For information on creating a port profile, see `Cisco Nexus 1000V Port Profile Configuration Guide <http://www.cisco.com/en/US/docs/switches/datacenter/nexus1000/sw/4_2_1_s_v_1_4_a/port_profile/configuration/guide/n1000v_port_profile.html>`_."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:558
+# 0bf9d88c6b9f41fd886a6707af18171a
+msgid "Assigning Physical NIC Adapters"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:560
+# af30a3508a1749d78432b57d276bbdb3
+msgid "Assign ESXi host's physical NIC adapters, which correspond to each physical network, to the port profiles. In each ESXi host that is part of the vCenter cluster, observe the physical networks assigned to each port profile and note down the names of the port profile for future use. This mapping information helps you when configuring physical networks during the zone configuration on CloudStack. These Ethernet port profile names are later specified as VMware Traffic Labels for different traffic types when configuring physical networks during the zone configuration. For more information on configuring physical networks, see `\"Configuring a vSphere Cluster with Nexus 1000v Virtual Switch\" <#configuring-a-vsphere-cluster-with-nexus-1000v-virtual-switch>`_."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:574
+# 4d643ffbee4341e4bb88d373ef58d4cb
+msgid "Adding VLAN Ranges"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:576
+# baf83061abab4c29997a363586a2456f
+msgid "Determine the public VLAN, System VLAN, and Guest VLANs to be used by the CloudStack. Ensure that you add them to the port profile database. Corresponding to each physical network, add the VLAN range to port profiles. In the VSM command prompt, run the switchport trunk allowed vlan<range> command to add the VLAN ranges to the port profile."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:582
+#: ../../hypervisor/vsphere.rst:597
+# a2316a806eeb4659aee14888d7a2fdac
+# 4709d5c62ddc4858afce5f4c10779904
+msgid "For example:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:588
+# b6f0345378ec46c3b728d82ee05d286b
+msgid "In this example, the allowed VLANs added are 1, 140-147, and 196-203"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:590
+# 11887130246943b5831c94500ad2baf5
+msgid "You must also add all the public and private VLANs or VLAN ranges to the switch. This range is the VLAN range you specify in your zone."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:594
+# 330d6aad437046f89b9b68dd7beeb679
+msgid "Before you run the vlan command, ensure that the configuration mode is enabled in Nexus 1000v virtual switch."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:599
+# 22f63b04c60d40dea935e52d90e87e7e
+msgid "If you want the VLAN 200 to be used on the switch, run the following command:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:606
+# ba4c025b07cf4124a3cdd1f31a23eb96
+msgid "If you want the VLAN range 1350-1750 to be used on the switch, run the following command:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:613
+# c199b4ffbd1f477285c999898c2ddd1d
+msgid "Refer to Cisco Nexus 1000V Command Reference of specific product version."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:618
+# fef738594c2b491dba8d52bd4a2af5c6
+msgid "Enabling Nexus Virtual Switch in CloudStack"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:620
+# d5d3e75b340e49b59882b4fd17efbeee
+msgid "To make a CloudStack deployment Nexus enabled, you must set the vmware.use.nexus.vswitch parameter true by using the Global Settings page in the CloudStack UI. Unless this parameter is set to \"true\" and restart the management server, you cannot see any UI options specific to Nexus virtual switch, and CloudStack ignores the Nexus virtual switch specific parameters specified in the AddTrafficTypeCmd, UpdateTrafficTypeCmd, and AddClusterCmd API calls."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:628
+# 66954393333444d693e53f7f88f33806
+msgid "Unless the CloudStack global parameter \"vmware.use.nexus.vswitch\" is set to \"true\", CloudStack by default uses VMware standard vSwitch for virtual network infrastructure. In this release, CloudStack doesn’t support configuring virtual networks in a deployment with a mix of standard vSwitch and Nexus 1000v virtual switch. The deployment can have either standard vSwitch or Nexus 1000v virtual switch."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:637
+# 089aca1a3d354287b5a5f5e3e85a6ac4
+msgid "Configuring Nexus 1000v Virtual Switch in CloudStack"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:639
+# 9a68575001b243859acad74ffa452cb3
+msgid "You can configure Nexus dvSwitch by adding the necessary resources while the zone is being created."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:642
+# 08ba8e10fe624f36bab2f344bcbfdc6d
+msgid "|vmwarenexusaddcluster.png: vmware nexus add cluster|"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:644
+# 5666435e9e184603bfede5e1d03e45c9
+msgid "After the zone is created, if you want to create an additional cluster along with Nexus 1000v virtual switch in the existing zone, use the Add Cluster option. For information on creating a cluster, see `\"Add Cluster: vSphere\" <configuration.html#add-cluster-vsphere>`_."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:649
+# 9f2cbaf16fa54d839d9df5ead1a87d4a
+msgid "In both these cases, you must specify the following parameters to configure Nexus virtual switch:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:653
+# f3eae50b0b494bfe81d9c26c4d91d2f6
+msgid "Parameters"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:653
+# 206d2e47feb14f26af5aa0ba5190283d
+msgid "Description"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:655
+#: ../../hypervisor/vsphere.rst:867
+# f3ce0a1026ad443fb1d31fd83fb6fb89
+# d7c8e2c264fb4986bd9ae232d6bdc8da
+msgid "Cluster Name"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:655
+# ec69a6aaa2e74f97902c75e7e75e9414
+msgid "Enter the name of the cluster you created in vCenter. For example,\"cloud.cluster\"."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:656
+#: ../../hypervisor/vsphere.rst:868
+# c1336620763a40f5912677193b00e7d2
+# 5471d0cfd4dd4a1cad1890577ec16d27
+msgid "vCenter Host"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:656
+# 83d4fc5d91a2434b8dbd5e459e856481
+msgid "Enter the host name or the IP address of the vCenter host where you have deployed the Nexus virtual switch."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:657
+#: ../../hypervisor/vsphere.rst:869
+# a59ea53f5ed34aeeae67a62d22d9ef45
+# 50604ed2276e4b07a2245efe817a0e82
+msgid "vCenter User name"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:657
+#: ../../hypervisor/vsphere.rst:869
+# 15cbe8d043134a98844515d429dc2ce4
+# 3d920505b2f94257aa4fae956cce9e60
+msgid "Enter the username that CloudStack should use to connect to vCenter. This user must have all administrative privileges."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:658
+#: ../../hypervisor/vsphere.rst:870
+# 72ddd267d0934d71807a5b8f29fcc40b
+# 3d09dd4ec9ca450ab9b2843f5fe568f7
+msgid "Enter the password for the user named above."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:659
+#: ../../hypervisor/vsphere.rst:871
+# 3455a7e1a6ed43d9a04ca83e129c5605
+# 89d73f2b5187411dbeca10e98407d28a
+msgid "vCenter Datacenter"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:659
+# b8c64f99941045ba939c00ac64b8577e
+msgid "Enter the vCenter datacenter that the cluster is in. For example, \"cloud.dc.VM\"."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:660
+# 2e1f46464eb742eaa8decef9cc02ee1c
+msgid "Nexus dvSwitch IP Address"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:660
+# 0d935b2ec87d43d8ba91c44f85ab3926
+msgid "The IP address of the VSM component of the Nexus 1000v virtual switch."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:661
+# 506b21479dd245b59972e5235fe090f8
+msgid "Nexus dvSwitch Username"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:661
+# 51d92f490444448b97636510fda22234
+msgid "The admin name to connect to the VSM appliance."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:662
+# d1f48e314d0c4a60b778e89e3e5218c7
+msgid "Nexus dvSwitch Password"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:662
+# 2bf18eee4392452e9e2ce45d3f35ffdf
+msgid "The corresponding password for the admin user specified above."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:667
+# cb27a7f0d42d41a5869093a5664932cc
+msgid "Removing Nexus Virtual Switch"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:669
+# 3661bb5b60a640dfb27da936b1ae3f3f
+msgid "In the vCenter datacenter that is served by the Nexus virtual switch, ensure that you delete all the hosts in the corresponding cluster."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:672
+# 72b8f0831f1840fba93593a47a3cb31d
+msgid "Log in with Admin permissions to the CloudStack administrator UI."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:674
+# a6a80236805f46a289eaf13d946c887a
+msgid "In the left navigation bar, select Infrastructure."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:676
+# bf58c4e0621740cfa25ee56a211059e4
+msgid "In the Infrastructure page, click View all under Clusters."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:678
+# 5e2de301945c4c99a089b6d4ccbb97f5
+msgid "Select the cluster where you want to remove the virtual switch."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:680
+# 8d08ef2d67b24e79a1fd91c3b5c80ac6
+msgid "In the dvSwitch tab, click the name of the virtual switch."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:682
+# e8ab3fb5e03a46a8806229a38548cd5e
+msgid "In the Details page, click Delete Nexus dvSwitch icon. |DeleteButton.png: button to delete dvSwitch|"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:685
+# dab3c1f885254b0d8a52701b537c16a1
+msgid "Click Yes in the confirmation dialog box."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:689
+# 5c6a715aab294507b509f8b2c8510cd1
+msgid "Configuring a VMware Datacenter with VMware Distributed Virtual Switch"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:691
+# 9929cd85206a4959b9c3daabc7fab873
+msgid "CloudStack supports VMware vNetwork Distributed Switch (VDS) for virtual network configuration in a VMware vSphere environment. This section helps you configure VMware VDS in a CloudStack deployment. Each vCenter server instance can support up to 128 VDS instances and each VDS instance can manage up to 500 VMware hosts."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:699
+# 90d5b5ea40d340a18482d06a12eab802
+msgid "About VMware Distributed Virtual Switch"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:701
+# d608c0175d0c4cdda5a1cafa7067caab
+msgid "VMware VDS is an aggregation of host-level virtual switches on a VMware vCenter server. VDS abstracts the configuration of individual virtual switches that span across a large number of hosts, and enables centralized provisioning, administration, and monitoring for your entire datacenter from a centralized interface. In effect, a VDS acts as a single virtual switch at the datacenter level and manages networking for a number of hosts in a datacenter from a centralized VMware vCenter server. Each VDS maintains network runtime state for VMs as they move across multiple hosts, enabling inline monitoring and centralized firewall services. A VDS can be deployed with or without Virtual Standard Switch and a Nexus 1000V virtual switch."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:717
+# f8c27f93dc7c49a0b45ea450643011b8
+msgid "VMware VDS is supported only on Public and Guest traffic in CloudStack."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:720
+# 2451bd65c3414c12b60281d4c965ed9e
+msgid "VMware VDS does not support multiple VDS per traffic type. If a user has many VDS switches, only one can be used for Guest traffic and another one for Public traffic."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:724
+# 1a4762ba91d54eb7b6a18b38c7977b88
+msgid "Additional switches of any type can be added for each cluster in the same zone. While adding the clusters with different switch type, traffic labels is overridden at the cluster level."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:728
+# 698c3a1075c44ad6b44b983353e9c5bd
+msgid "Management and Storage network does not support VDS. Therefore, use Standard Switch for these networks."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:731
+# d0e5f6fb89294c3f992992b8be90c4c3
+msgid "When you remove a guest network, the corresponding dvportgroup will not be removed on the vCenter. You must manually delete them on the vCenter."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:739
+# d9ec908d24a74999a2250196f948e921
+msgid "For a smoother configuration of VMware VDS, note down the VDS name you have added in the datacenter before you start:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:742
+# 0285bb1ef7114be98e589ae304a4aaf4
+msgid "|vds-name.png: Name of the dvSwitch as specified in the vCenter.|"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:744
+# a198446dde7b4bb4b8d32ade0d379e5d
+msgid "Use this VDS name in the following:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:746
+# ce7a25d8824b439e989df3a4ec7d6ef4
+msgid "The switch name in the Edit traffic label dialog while configuring a public and guest traffic during zone creation."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:749
+# 93f0bed990174313b9ae6b524fe267f8
+msgid "During a zone creation, ensure that you select VMware vNetwork Distributed Virtual Switch when you configure guest and public traffic type."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:753
+# 5c1aa18eab3146b6a6f65b96c8deaaca
+msgid "|traffic-type.png|"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:755
+# 990772b4742749958e08c6337b848941
+msgid "The Public Traffic vSwitch Type field when you add a VMware VDS-enabled cluster."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:758
+# 5d9ac3f1d63b462e9501e015548b5af0
+msgid "The switch name in the traffic label while updating the switch type in a zone."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:761
+# 194c1dd122b7499b9058fb68380a5c3b
+msgid "Traffic label format in the last case is [[\"Name of vSwitch/dvSwitch/EthernetPortProfile\"][,\"VLAN ID\"[,\"vSwitch Type\"]]]"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:764
+# d4465ec982c94832ad7802b80686d0d1
+msgid "The possible values for traffic labels are:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:766
+# 83829438bd2d4e5e81d7cea6cfdc2119
+msgid "empty string"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:768
+# 089b868403e34bf385680a0275f453d9
+msgid "dvSwitch0"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:770
+# 8b132cc7e95e45b2927b570ef7790872
+msgid "dvSwitch0,200"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:772
+# f7e7251340ed4d489fd76000a902ab3e
+msgid "dvSwitch1,300,vmwaredvs"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:774
+# ffffef07a554452b989817589b59299f
+msgid "myEthernetPortProfile,,nexusdvs"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:776
+# 374b8ec5b0114570a8bc2db1e26e1432
+msgid "dvSwitch0,,vmwaredvs"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:779
+# e062d1b7e19e4a5ea9cd173bc474c7f9
+msgid "The three fields to fill in are:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:781
+# b665494425f24293b1cbd8c18d88376e
+msgid "Name of the virtual / distributed virtual switch at vCenter."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:783
+# 64772a813ddb414aad487db7177d70d9
+msgid "The default value depends on the type of virtual switch:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:785
+# 0504f575abf04fbab918eb97fc3c23e5
+msgid "**vSwitch0**: If type of virtual switch is VMware vNetwork Standard virtual switch"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:788
+# d037b0c2a7774a86950c4337ccb8c737
+msgid "**dvSwitch0**: If type of virtual switch is VMware vNetwork Distributed virtual switch"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:791
+# b8bb2c95e98643c5a8416c7cacb4ed84
+msgid "**epp0**: If type of virtual switch is Cisco Nexus 1000v Distributed virtual switch"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:794
+# 37bea26e77904c918293b7794b8435fe
+msgid "VLAN ID to be used for this traffic wherever applicable."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:796
+# 74cab27934ab4664a4ef799aaabc26fa
+msgid "This field would be used for only public traffic as of now. In case of guest traffic this field would be ignored and could be left empty for guest traffic. By default empty string would be assumed which translates to untagged VLAN for that specific traffic type."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:801
+# ecac63913296423c96e60c6fcd70b23c
+msgid "Type of virtual switch. Specified as string."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:803
+# 736dcefb710d4eb8ad8ecdafc967ad7b
+msgid "Possible valid values are vmwaredvs, vmwaresvs, nexusdvs."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:805
+# 0ee50e36ae9a42ea93fad5da64772d2a
+msgid "**vmwaresvs**: Represents VMware vNetwork Standard virtual switch"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:807
+# c3412e427322421db59d72ed3a1af1da
+msgid "**vmwaredvs**: Represents VMware vNetwork distributed virtual switch"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:809
+# 86ab94faa29a4292811f32d8ef417a43
+msgid "**nexusdvs**: Represents Cisco Nexus 1000v distributed virtual switch."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:811
+# b6c929f8a3d94c4ba2b89f14d3454074
+msgid "If nothing specified (left empty), zone-level default virtual switchwould be defaulted, based on the value of global parameter you specify."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:814
+# 259ad555197c427b92b871cf9099c6e9
+msgid "Following are the global configuration parameters:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:816
+# ba94337b1d8f418b9b792ff195a188b1
+msgid "**vmware.use.dvswitch**: Set to true to enable any kind (VMware DVS and Cisco Nexus 1000v) of distributed virtual switch in a CloudStack deployment. If set to false, the virtual switch that can be used in that CloudStack deployment is Standard virtual switch."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:821
+# 1f0d3c297b1b44caa71c066007cc1f42
+msgid "**vmware.use.nexus.vswitch**: This parameter is ignored if vmware.use.dvswitch is set to false. Set to true to enable Cisco Nexus 1000v distributed virtual switch in a CloudStack deployment."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:827
+# 118ddca276544558a4e2202c55e634fd
+msgid "Enabling Virtual Distributed Switch in CloudStack"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:829
+# 82143bb642f94e2aa2cac07ffc264086
+msgid "To make a CloudStack deployment VDS enabled, set the vmware.use.dvswitch parameter to true by using the Global Settings page in the CloudStack UI and restart the Management Server. Unless you enable the vmware.use.dvswitch parameter, you cannot see any UI options specific to VDS, and CloudStack ignores the VDS-specific parameters that you specify. Additionally, CloudStack uses VDS for virtual network infrastructure if the value of vmware.use.dvswitch parameter is true and the value of vmware.use.nexus.dvswitch parameter is false. Another global parameter that defines VDS configuration is vmware.ports.per.dvportgroup. This is the default number of ports per VMware dvPortGroup in a VMware environment. Default value is 256. This number directly associated with the number of guest network you can create."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:843
+# 402c2275d5ad4f3797ca2a376401aee2
+msgid "CloudStack supports orchestration of virtual networks in a deployment with a mix of Virtual Distributed Switch, Standard Virtual Switch and Nexus 1000v Virtual Switch."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:849
+# 6811c0b0e8df461d9e2e43e42a23020c
+msgid "Configuring Distributed Virtual Switch in CloudStack"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:851
+# 8c7c27c152754a3496e49f3e867403e7
+msgid "You can configure VDS by adding the necessary resources while a zone is created."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:854
+# 5c9df8759a344053862dcd9c629277cf
+msgid "Alternatively, at the cluster level, you can create an additional cluster with VDS enabled in the existing zone. Use the Add Cluster option. For information as given in `“Add Cluster: vSphere” <configuration.html#add-cluster-vsphere>`_."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:859
+# e0af0a758b7d4f03a1f5a83ae7e53aca
+msgid "In both these cases, you must specify the following parameters to configure VDS:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:862
+# 68137fa71ec145fc8a3dbdc1dde90e0a
+msgid "|dvSwitchConfig.png: Configuring dvSwitch|"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:865
+# c44708acf56642f6bdc0e41399c84ccc
+msgid "Parameters Description"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:867
+# e9d2fae4cc094bf29e7470348646862a
+msgid "Enter the name of the cluster you created in vCenter. For example, \"cloudcluster\"."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:868
+# 2eb58724f9dc40b78cb1261c45a8425a
+msgid "Enter the name or the IP address of the vCenter host where you have deployed the VMware VDS."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:871
+# 64ad16bd9476459999c67afeec2a76cd
+msgid "Enter the vCenter datacenter that the cluster is in. For example, \"clouddcVM\"."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:872
+# 519c5255a7714ab5ae2d130ea2ac0b09
+msgid "Override Public Traffic"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:872
+# 834881d8791d4560ba8fcba7d3478f6d
+msgid "Enable this option to override the zone-wide public traffic for the cluster you are creating."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:873
+# 380dfef8c1844f399f2cbd5c09d3e6ee
+msgid "Public Traffic vSwitch Type"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:873
+# 444137a9e330418b808e55cf02a62e97
+msgid "This option is displayed only if you enable the Override Public Traffic option. Select VMware vNetwork Distributed Virtual Switch. If the vmware.use.dvswitch global parameter is true, the default option will be VMware vNetwork Distributed Virtual Switch."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:874
+# 5396ef53dbdc46828b829c10118c7ca9
+msgid "Public Traffic vSwitch Name"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:874
+# 8d69112f1cb240ed98549493d13e6775
+msgid "Name of virtual switch to be used for the public traffic."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:875
+# 08c372cbcf0c4ae2a6bf96d5b5877d5f
+msgid "Override Guest Traffic"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:875
+# bfb400fd3046492f9c0e679af6725e95
+msgid "Enable the option to override the zone-wide guest traffic for the cluster you are creating."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:876
+# c393048d168a4e74851ea171593bff47
+msgid "Guest Traffic vSwitch Type"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:876
+# 20a6787434c649b8b9804b209e8217d9
+msgid "This option is displayed only if you enable the Override Guest Traffic option. Select VMware vNetwork Distributed Virtual Switch. If the vmware.use.dvswitch global parameter is true, the default option will be VMware vNetwork Distributed Virtual Switch."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:877
+# 8e911ae658a54e38bc94d44bd7360a60
+msgid "Guest Traffic vSwitch Name"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:877
+# e2fef73d36884fc18391b02ba8492fed
+msgid "Name of virtual switch to be used for guest traffic."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:882
+# fdd69bb3d44f4bcd9f56db1a98842617
+msgid "Storage Preparation for vSphere (iSCSI only)"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:884
+# 8617abba6dbc4534ad13b17929bb8816
+msgid "Use of iSCSI requires preparatory work in vCenter. You must add an iSCSI target and create an iSCSI datastore."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:887
+# cd8def1af119474099d424fa51348782
+msgid "If you are using NFS, skip this section."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:891
+# 965c53dfd68549dcb2ff3d7b6f5b8ef6
+msgid "Enable iSCSI initiator for ESXi hosts"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:893
+# f31d653b97a34904bba9418166f4d27f
+msgid "In vCenter, go to hosts and Clusters/Configuration, and click Storage Adapters link. You will see:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:896
+# c2db82b7ad84447c90bc1361acb6fe26
+msgid "|vmwareiscsiinitiator.png: iscsi initiator|"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:898
+# b0f077089acc4b47bc0e81c18ef873bc
+msgid "Select iSCSI software adapter and click Properties."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:900
+# 5ff6af603a254d62a64459f283531878
+msgid "|vmwareiscsiinitiatorproperties.png: iscsi initiator properties|"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:902
+# 4fc6bd69f5a74997a26a8ed8ff4a635d
+msgid "Click the Configure... button."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:904
+# d1a7febad60a4c72a88effb69663d334
+msgid "|vmwareiscsigeneral.png: iscsi general|"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:906
+# b542942a98b04d3fb1009c9cfbeea698
+msgid "Check Enabled to enable the initiator."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:908
+# 426af842784e4c0bb8e14ec9948ff60c
+msgid "Click OK to save."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:912
+# 668e7a8543bd45448ad0db8ae303bfc0
+msgid "Add iSCSI target"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:914
+# 8c293602e55f48578e49ba85c6b7bc72
+msgid "Under the properties dialog, add the iSCSI target info:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:916
+# ca9d056dfd584f658d8c3561ca8e94ac
+msgid "|vmwareiscsitargetadd.png: iscsi target add|"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:918
+# 48e3de1952584a7f83fdb8878b2e3309
+msgid "Repeat these steps for all ESXi hosts in the cluster."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:922
+# 5b7a2a4bd27d4e45ab60e0356f72d8a0
+msgid "Create an iSCSI datastore"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:924
+# 6e4943dc8eb04b0b839ba66174f1a7f7
+msgid "You should now create a VMFS datastore. Follow these steps to do so:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:926
+# 57cc6fe8445d4065b6d918ab122558aa
+msgid "Select Home/Inventory/Datastores."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:928
+# 0c8e6407c16c420c8ab924f07074c3f0
+msgid "Right click on the datacenter node."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:930
+# 33637d5c54c84c10bd4fddce9500d1db
+msgid "Choose Add Datastore... command."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:932
+# 10b59ee6f67f4fe18245206491765fa2
+msgid "Follow the wizard to create a iSCSI datastore."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:934
+# beb1bd72d9054c1aa2929c5f5bb46268
+msgid "This procedure should be done on one host in the cluster. It is not necessary to do this on all hosts."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:937
+# fddbde67076a489fae8ac3a07ba72a4e
+msgid "|vmwareiscsidatastore.png: iscsi datastore|"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:941
+# 720bb6a6678e4d048a7cb2fb20b5f00f
+msgid "Multipathing for vSphere (Optional)"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:943
+# f6110e7830f74e37b59a9ed7e75cc697
+msgid "Storage multipathing on vSphere nodes may be done according to the vSphere installation guide."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:948
+# 90bf6e714b424e1cb0f0727e69bd91bd
+msgid "Add Hosts or Configure Clusters (vSphere)"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:950
+# 34c741b108a3471086a9877f848c219a
+msgid "Use vCenter to create a vCenter cluster and add your desired hosts to the cluster. You will later add the entire cluster to CloudStack. (see `“Add Cluster: vSphere” <configuration.html#add-cluster-vsphere>`_)."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:956
+# e222980c86f646a6b7847d19c943d01e
+msgid "Applying Hotfixes to a VMware vSphere Host"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:958
+# afbce7caade34557b5de0efd81ac8337
+msgid "Disconnect the VMware vSphere cluster from CloudStack. It should remain disconnected long enough to apply the hotfix on the host."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:961
+#: ../../hypervisor/vsphere.rst:989
+# c3e9304bebf74cec95280a42ff6c47bc
+# 93ca13f83e884aa6bc68dca551cd9c85
+msgid "Log in to the CloudStack UI as root."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:963
+# ae093003e8e54de3bd3685570562d010
+msgid "See `“Log In to the UI” <http://docs.cloudstack.apache.org/projects/cloudstack-administration/en/latest/ui.html#log-in-to-the-ui>`_."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:966
+# ab2de97e73f842718ecd3a5c0517a46f
+msgid "Navigate to the VMware cluster, click Actions, and select Unmanage."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:969
+# 291849fb997541a392eb9c265469db83
+msgid "Watch the cluster status until it shows Unmanaged."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:971
+# d36d95821f7349bdbeb6146d69609d26
+msgid "Perform the following on each of the ESXi hosts in the cluster:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:973
+# 1596207414164387b33d50a83ace4f1d
+msgid "Move each of the ESXi hosts in the cluster to maintenance mode."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:975
+# 0f443a13d2214787aace57dbe095be32
+msgid "Ensure that all the VMs are migrated to other hosts in that cluster."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:978
+# 993a0bfff5d949d79160c8a611af7d45
+msgid "If there is only one host in that cluster, shutdown all the VMs and move the host into maintenance mode."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:981
+# 549ba78fd15b49e081bd0e3212261dc1
+msgid "Apply the patch on the ESXi host."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:983
+# c7418a0d9f414399a6e7b5d7281c5cd5
+msgid "Restart the host if prompted."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:985
+# 7882f2dc5f704ad2a2ae6b6fe2ef0fb0
+msgid "Cancel the maintenance mode on the host."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:987
+# 27eaeff783e845fba9f5550da792fe4d
+msgid "Reconnect the cluster to CloudStack:"
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:991
+# dafd6eb321c643db98f259663c789c70
+msgid "Navigate to the VMware cluster, click Actions, and select Manage."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:993
+# bdbbffe72d294cdbadc09334b9549fdb
+msgid "Watch the status to see that all the hosts come up. It might take several minutes for the hosts to come up."
+msgstr ""
+
+#: ../../hypervisor/vsphere.rst:996
+# 61accad423f64d2b90044cac762efc57
+msgid "Alternatively, verify the host state is properly synchronized and updated in the CloudStack database."
+msgstr ""
+

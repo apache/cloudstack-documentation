@@ -1,0 +1,265 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../networking/security_groups.rst:18
+# b67087ae536e4b77ac5668f8f3f73ba8
+msgid "Security Groups"
+msgstr ""
+
+#: ../../networking/security_groups.rst:21
+# 1397d3fadf7d45779a890fb7156cf142
+msgid "About Security Groups"
+msgstr ""
+
+#: ../../networking/security_groups.rst:23
+# 965e0935679141b0bc89e0d82dc1cff8
+msgid "Security groups provide a way to isolate traffic to VMs. A security group is a group of VMs that filter their incoming and outgoing traffic according to a set of rules, called ingress and egress rules. These rules filter network traffic according to the IP address that is attempting to communicate with the VM. Security groups are particularly useful in zones that use basic networking, because there is a single guest network for all guest VMs. In advanced zones, security groups are supported only on the KVM hypervisor."
+msgstr ""
+
+#: ../../networking/security_groups.rst:33
+# 7cc1c024596546c4837b5e09cef7f7db
+msgid "In a zone that uses advanced networking, you can instead define multiple guest networks to isolate traffic to VMs."
+msgstr ""
+
+#: ../../networking/security_groups.rst:36
+# bd8429af9a564cd398104231d1bfc2d9
+msgid "Each CloudStack account comes with a default security group that denies all inbound traffic and allows all outbound traffic. The default security group can be modified so that all new VMs inherit some other desired set of rules."
+msgstr ""
+
+#: ../../networking/security_groups.rst:41
+# 3eb3f0e93cf04d8a9c2a967e8ff3a11c
+msgid "Any CloudStack user can set up any number of additional security groups. When a new VM is launched, it is assigned to the default security group unless another user-defined security group is specified. A VM can be a member of any number of security groups. Once a VM is assigned to a security group, it remains in that group for its entire lifetime; you can not move a running VM from one security group to another."
+msgstr ""
+
+#: ../../networking/security_groups.rst:48
+# 1d91c7babdd54f38b62e9e65788a8a7c
+msgid "You can modify a security group by deleting or adding any number of ingress and egress rules. When you do, the new rules apply to all VMs in the group, whether running or stopped."
+msgstr ""
+
+#: ../../networking/security_groups.rst:52
+# f705f2a195b240f49ffc0cbe9aaa253a
+msgid "If no ingress rules are specified, then no traffic will be allowed in, except for responses to any traffic that has been allowed out through an egress rule."
+msgstr ""
+
+#: ../../networking/security_groups.rst:58
+# 7fa1798aea704a55b545171eb64a16bd
+msgid "Adding a Security Group"
+msgstr ""
+
+#: ../../networking/security_groups.rst:60
+# f7cc763899ad4df99b9e927ef37eabb4
+msgid "A user or administrator can define a new security group."
+msgstr ""
+
+#: ../../networking/security_groups.rst:62
+#: ../../networking/security_groups.rst:124
+# a026f1875e7f4cec8447b013bf2d7a78
+# 27e30ee65cbe485bb8e7370a38b75281
+msgid "Log in to the CloudStack UI as an administrator or end user."
+msgstr ""
+
+#: ../../networking/security_groups.rst:64
+# 344ee6a79a674e88a4a61b24b0a01b42
+msgid "In the left navigation, choose Network."
+msgstr ""
+
+#: ../../networking/security_groups.rst:66
+# 07579af87ecd4f1d8bd6e66835cb2958
+msgid "In Select view, choose Security Groups."
+msgstr ""
+
+#: ../../networking/security_groups.rst:68
+# 23507439460f427cb5be523f65e254fb
+msgid "Click Add Security Group."
+msgstr ""
+
+#: ../../networking/security_groups.rst:70
+# a530b7d59d194fb18081a92d396a272a
+msgid "Provide a name and description."
+msgstr ""
+
+#: ../../networking/security_groups.rst:72
+# 237fc184482448589b8a2eb7c3c70e76
+msgid "Click OK."
+msgstr ""
+
+#: ../../networking/security_groups.rst:74
+# 34ea82240e9c456ab55ff2f0d5756566
+msgid "The new security group appears in the Security Groups Details tab."
+msgstr ""
+
+#: ../../networking/security_groups.rst:76
+# df20adfc9c2e43b9b56c6f1119a9d73f
+msgid "To make the security group useful, continue to Adding Ingress and Egress Rules to a Security Group."
+msgstr ""
+
+#: ../../networking/security_groups.rst:81
+# 0a506fc7186b4a0c8a15ae463c4793e1
+msgid "Security Groups in Advanced Zones (KVM Only)"
+msgstr ""
+
+#: ../../networking/security_groups.rst:83
+# b2a6fb8be2384189ae73c2430ce94159
+msgid "CloudStack provides the ability to use security groups to provide isolation between guests on a single shared, zone-wide network in an advanced zone where KVM is the hypervisor. Using security groups in advanced zones rather than multiple VLANs allows a greater range of options for setting up guest isolation in a cloud."
+msgstr ""
+
+#: ../../networking/security_groups.rst:91
+# 180782afad3643f1ba9672b7f6da72b3
+msgid "Limitations"
+msgstr ""
+
+#: ../../networking/security_groups.rst:93
+# 133ba38a19484e2e9122631ab38446fa
+msgid "The following are not supported for this feature:"
+msgstr ""
+
+#: ../../networking/security_groups.rst:95
+# 7c46f4b3ab9f405b8ba2b599ffc1985e
+msgid "Two IP ranges with the same VLAN and different gateway or netmask in security group-enabled shared network."
+msgstr ""
+
+#: ../../networking/security_groups.rst:98
+# 25d83dec92f045bda786a85257b3e1d1
+msgid "Two IP ranges with the same VLAN and different gateway or netmask in account-specific shared networks."
+msgstr ""
+
+#: ../../networking/security_groups.rst:101
+# 529f72b64c464f0cbbe8b287e8258f1a
+msgid "Multiple VLAN ranges in security group-enabled shared network."
+msgstr ""
+
+#: ../../networking/security_groups.rst:103
+# c9ffb5f82e6b45778e4e1b83b29ed310
+msgid "Multiple VLAN ranges in account-specific shared networks."
+msgstr ""
+
+#: ../../networking/security_groups.rst:105
+# 8488c958047d450bb250b38d098bc214
+msgid "Security groups must be enabled in the zone in order for this feature to be used."
+msgstr ""
+
+#: ../../networking/security_groups.rst:110
+# 6c5be222e8184b8ab28d3019648e9990
+msgid "Enabling Security Groups"
+msgstr ""
+
+#: ../../networking/security_groups.rst:112
+# b6b2af559254408ba42336e7fddf32e6
+msgid "In order for security groups to function in a zone, the security groups feature must first be enabled for the zone. The administrator can do this when creating a new zone, by selecting a network offering that includes security groups. The procedure is described in Basic Zone Configuration in the Advanced Installation Guide. The administrator can not enable security groups for an existing zone, only when creating a new zone."
+msgstr ""
+
+#: ../../networking/security_groups.rst:122
+# e09d51e1a259488eab79d1fb28954b59
+msgid "Adding Ingress and Egress Rules to a Security Group"
+msgstr ""
+
+#: ../../networking/security_groups.rst:126
+# b24e5ca705b84ea4a6c0511ef2244936
+msgid "In the left navigation, choose Network"
+msgstr ""
+
+#: ../../networking/security_groups.rst:128
+# e6e52ad277a249ebb052f48c14687e98
+msgid "In Select view, choose Security Groups, then click the security group you want."
+msgstr ""
+
+#: ../../networking/security_groups.rst:131
+# 4563cb9609194e7b8bfe401fa3b6219e
+msgid "To add an ingress rule, click the Ingress Rules tab and fill out the following fields to specify what network traffic is allowed into VM instances in this security group. If no ingress rules are specified, then no traffic will be allowed in, except for responses to any traffic that has been allowed out through an egress rule."
+msgstr ""
+
+#: ../../networking/security_groups.rst:137
+# a4934e5b794b41469ff66677df530f64
+msgid "**Add by CIDR/Account**. Indicate whether the source of the traffic will be defined by IP address (CIDR) or an existing security group in a CloudStack account (Account). Choose Account if you want to allow incoming traffic from all VMs in another security group"
+msgstr ""
+
+#: ../../networking/security_groups.rst:143
+# 38c863d52b6c4f3b900f9268d71a3167
+msgid "**Protocol**. The networking protocol that sources will use to send traffic to the security group. TCP and UDP are typically used for data exchange and end-user communications. ICMP is typically used to send error messages or network monitoring data."
+msgstr ""
+
+#: ../../networking/security_groups.rst:148
+# bcb96d430c8649f483335f10c670e649
+msgid "**Start Port, End Port**. (TCP, UDP only) A range of listening ports that are the destination for the incoming traffic. If you are opening a single port, use the same number in both fields."
+msgstr ""
+
+#: ../../networking/security_groups.rst:152
+# 6c1ac4c3fb7e476a8eba891bbf1fa14e
+msgid "**ICMP Type, ICMP Code**. (ICMP only) The type of message and error code that will be accepted."
+msgstr ""
+
+#: ../../networking/security_groups.rst:155
+# 6d982263975e486e8e1b13fe56a83ed0
+msgid "**CIDR**. (Add by CIDR only) To accept only traffic from IP addresses within a particular address block, enter a CIDR or a comma-separated list of CIDRs. The CIDR is the base IP address of the incoming traffic. For example, 192.168.0.0/22. To allow all CIDRs, set to 0.0.0.0/0."
+msgstr ""
+
+#: ../../networking/security_groups.rst:161
+# 10e7f63d3cf94152a51416bc737199ed
+msgid "**Account, Security Group**. (Add by Account only) To accept only traffic from another security group, enter the CloudStack account and name of a security group that has already been defined in that account. To allow traffic between VMs within the security group you are editing now, enter the same name you used in step 7."
+msgstr ""
+
+#: ../../networking/security_groups.rst:167
+# 9d70746377c24fdb80bdb73145dda1fe
+msgid "The following example allows inbound HTTP access from anywhere:"
+msgstr ""
+
+#: ../../networking/security_groups.rst:169
+# f1fa895a70e745a182f076db946d9d16
+msgid "|httpaccess.png|"
+msgstr ""
+
+#: ../../networking/security_groups.rst:171
+# 25c1f9eee689482ab0a99049e45c6ceb
+msgid "To add an egress rule, click the Egress Rules tab and fill out the following fields to specify what type of traffic is allowed to be sent out of VM instances in this security group. If no egress rules are specified, then all traffic will be allowed out. Once egress rules are specified, the following types of traffic are allowed out: traffic specified in egress rules; queries to DNS and DHCP servers; and responses to any traffic that has been allowed in through an ingress rule"
+msgstr ""
+
+#: ../../networking/security_groups.rst:180
+# 83bfb97418d545549c3ea5c0a17c5985
+msgid "**Add by CIDR/Account**. Indicate whether the destination of the traffic will be defined by IP address (CIDR) or an existing security group in a CloudStack account (Account). Choose Account if you want to allow outgoing traffic to all VMs in another security group."
+msgstr ""
+
+#: ../../networking/security_groups.rst:186
+# f175b78e34494795b301760a7fd5168f
+msgid "**Protocol**. The networking protocol that VMs will use to send outgoing traffic. TCP and UDP are typically used for data exchange and end-user communications. ICMP is typically used to send error messages or network monitoring data."
+msgstr ""
+
+#: ../../networking/security_groups.rst:191
+# 31089018bb9f47e4941651c91b2bd90c
+msgid "**Start Port, End Port**. (TCP, UDP only) A range of listening ports that are the destination for the outgoing traffic. If you are opening a single port, use the same number in both fields."
+msgstr ""
+
+#: ../../networking/security_groups.rst:195
+# 96661f61b9b54d448e5e7be7ba933296
+msgid "**ICMP Type, ICMP Code**. (ICMP only) The type of message and error code that will be sent"
+msgstr ""
+
+#: ../../networking/security_groups.rst:198
+# 7e52dd9e52524ea98f0bcf7ff00116ac
+msgid "**CIDR**. (Add by CIDR only) To send traffic only to IP addresses within a particular address block, enter a CIDR or a comma-separated list of CIDRs. The CIDR is the base IP address of the destination. For example, 192.168.0.0/22. To allow all CIDRs, set to 0.0.0.0/0."
+msgstr ""
+
+#: ../../networking/security_groups.rst:204
+# 40e0b1515ef948adb1a42642f73f490d
+msgid "**Account, Security Group**. (Add by Account only) To allow traffic to be sent to another security group, enter the CloudStack account and name of a security group that has already been defined in that account. To allow traffic between VMs within the security group you are editing now, enter its name."
+msgstr ""
+
+#: ../../networking/security_groups.rst:210
+# 39febf06883a4d248d1ac5ad19510065
+msgid "Click Add."
+msgstr ""
+

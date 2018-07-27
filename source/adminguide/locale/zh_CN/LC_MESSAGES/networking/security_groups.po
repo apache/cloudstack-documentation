@@ -1,0 +1,366 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:06+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# b67087ae536e4b77ac5668f8f3f73ba8
+#: ../../networking/security_groups.rst:18
+msgid "Security Groups"
+msgstr "安全组"
+
+# 1397d3fadf7d45779a890fb7156cf142
+#: ../../networking/security_groups.rst:21
+msgid "About Security Groups"
+msgstr "关于安全组"
+
+# 965e0935679141b0bc89e0d82dc1cff8
+#: ../../networking/security_groups.rst:23
+msgid ""
+"Security groups provide a way to isolate traffic to VMs. A security group is"
+" a group of VMs that filter their incoming and outgoing traffic according to"
+" a set of rules, called ingress and egress rules. These rules filter network"
+" traffic according to the IP address that is attempting to communicate with "
+"the VM. Security groups are particularly useful in zones that use basic "
+"networking, because there is a single guest network for all guest VMs. In "
+"advanced zones, security groups are supported only on the KVM hypervisor."
+msgstr "安全组提供一种方法来隔离VMs流量。一个安全组是一组依照设置名为入口规则和出口规则来过滤他们进出流量的VMs，这些规则依靠与VM通讯的IP地址来过滤网络流量。安全组在使用基础网络的zones中尤为重要，因为这里只有一个来宾网络。在高级zones中，只有KVM hypervisor支持安全组。"
+
+# 7cc1c024596546c4837b5e09cef7f7db
+#: ../../networking/security_groups.rst:33
+msgid ""
+"In a zone that uses advanced networking, you can instead define multiple "
+"guest networks to isolate traffic to VMs."
+msgstr "在一个使用高级网络的zone中，你可以改为定义多个来宾网络隔离流量至VMs。"
+
+# bd8429af9a564cd398104231d1bfc2d9
+#: ../../networking/security_groups.rst:36
+msgid ""
+"Each CloudStack account comes with a default security group that denies all "
+"inbound traffic and allows all outbound traffic. The default security group "
+"can be modified so that all new VMs inherit some other desired set of rules."
+msgstr "每个CloudStack账号匹配一个拒绝所有入站流量和允许所有出口流量的默认安全组 。可以编辑默认的安全组以便所有新VMs的策略继承一些的想要的设置。"
+
+# 3eb3f0e93cf04d8a9c2a967e8ff3a11c
+#: ../../networking/security_groups.rst:41
+msgid ""
+"Any CloudStack user can set up any number of additional security groups. "
+"When a new VM is launched, it is assigned to the default security group "
+"unless another user-defined security group is specified. A VM can be a "
+"member of any number of security groups. Once a VM is assigned to a security"
+" group, it remains in that group for its entire lifetime; you can not move a"
+" running VM from one security group to another."
+msgstr "任何CloudStack用户可以增加任意数量的安全组。当一个新的VM运行起来的时候，它会被添加到默认安全组除非其他用户指定了其他安全组。一个VM可以是任何安全组的成员。一旦VM被添加到一个安全组，它会继承这个组的生命周期；你不能移动一台正在运行的VM到其他安全组。"
+
+# 1d91c7babdd54f38b62e9e65788a8a7c
+#: ../../networking/security_groups.rst:48
+msgid ""
+"You can modify a security group by deleting or adding any number of ingress "
+"and egress rules. When you do, the new rules apply to all VMs in the group, "
+"whether running or stopped."
+msgstr "你可以通过删除或添加任意的入口和出口策略来修改一个安全组。当你这么做的时候，新的策略会应用到组中的所有VMs，无论是运行的还是关机的。"
+
+# f705f2a195b240f49ffc0cbe9aaa253a
+#: ../../networking/security_groups.rst:52
+msgid ""
+"If no ingress rules are specified, then no traffic will be allowed in, "
+"except for responses to any traffic that has been allowed out through an "
+"egress rule."
+msgstr "如果没有指定入口规则，那么流量会被禁止，除了已经允许通过一个出口规则响应任何流量 。"
+
+# 7fa1798aea704a55b545171eb64a16bd
+#: ../../networking/security_groups.rst:58
+msgid "Adding a Security Group"
+msgstr "添加一个安全组"
+
+# f7cc763899ad4df99b9e927ef37eabb4
+#: ../../networking/security_groups.rst:60
+msgid "A user or administrator can define a new security group."
+msgstr "一个用户或者管理员能定义一个新的安全组。"
+
+# a026f1875e7f4cec8447b013bf2d7a78
+# 27e30ee65cbe485bb8e7370a38b75281
+#: ../../networking/security_groups.rst:62
+#: ../../networking/security_groups.rst:124
+msgid "Log in to the CloudStack UI as an administrator or end user."
+msgstr "使用管理员或者终端用户账号登录CloudStack UI。"
+
+# 344ee6a79a674e88a4a61b24b0a01b42
+#: ../../networking/security_groups.rst:64
+msgid "In the left navigation, choose Network."
+msgstr "在左侧的导航栏，选择网络。"
+
+# 07579af87ecd4f1d8bd6e66835cb2958
+#: ../../networking/security_groups.rst:66
+msgid "In Select view, choose Security Groups."
+msgstr "在选择视图中，选择安全组。"
+
+# 23507439460f427cb5be523f65e254fb
+#: ../../networking/security_groups.rst:68
+msgid "Click Add Security Group."
+msgstr "点击添加安全组。"
+
+# a530b7d59d194fb18081a92d396a272a
+#: ../../networking/security_groups.rst:70
+msgid "Provide a name and description."
+msgstr "提供一个名称和描述。"
+
+# 237fc184482448589b8a2eb7c3c70e76
+#: ../../networking/security_groups.rst:72
+msgid "Click OK."
+msgstr "点击确定。"
+
+# 34ea82240e9c456ab55ff2f0d5756566
+#: ../../networking/security_groups.rst:74
+msgid "The new security group appears in the Security Groups Details tab."
+msgstr "新的安全组出现在安全组详细信息标签中。"
+
+# df20adfc9c2e43b9b56c6f1119a9d73f
+#: ../../networking/security_groups.rst:76
+msgid ""
+"To make the security group useful, continue to Adding Ingress and Egress "
+"Rules to a Security Group."
+msgstr "要使安全组生效，继续给这个安全组添加入口和出口策略。"
+
+# 0a506fc7186b4a0c8a15ae463c4793e1
+#: ../../networking/security_groups.rst:81
+msgid "Security Groups in Advanced Zones (KVM Only)"
+msgstr "高级区域中的安全组（只针对KVM）"
+
+# b2a6fb8be2384189ae73c2430ce94159
+#: ../../networking/security_groups.rst:83
+msgid ""
+"CloudStack provides the ability to use security groups to provide isolation "
+"between guests on a single shared, zone-wide network in an advanced zone "
+"where KVM is the hypervisor. Using security groups in advanced zones rather "
+"than multiple VLANs allows a greater range of options for setting up guest "
+"isolation in a cloud."
+msgstr "以KVM作为虚拟机时，在单共享广域的网络内，CloudStack可以通过安全组来隔离客户。通过使用安全组而不是多VLAN，可以在云中隔离客户时具有更高的灵活性"
+
+# 180782afad3643f1ba9672b7f6da72b3
+#: ../../networking/security_groups.rst:91
+msgid "Limitations"
+msgstr "局限性"
+
+# 133ba38a19484e2e9122631ab38446fa
+#: ../../networking/security_groups.rst:93
+msgid "The following are not supported for this feature:"
+msgstr "下列不支持此功能："
+
+# 7c46f4b3ab9f405b8ba2b599ffc1985e
+#: ../../networking/security_groups.rst:95
+msgid ""
+"Two IP ranges with the same VLAN and different gateway or netmask in "
+"security group-enabled shared network."
+msgstr "在开启了安全组的共享网络内，同一VLAN内具有不同网关或掩码的二个IP范围，"
+
+# 25d83dec92f045bda786a85257b3e1d1
+#: ../../networking/security_groups.rst:98
+msgid ""
+"Two IP ranges with the same VLAN and different gateway or netmask in "
+"account-specific shared networks."
+msgstr "在共享网络的特殊帐户内，同一VLAN内具有不同网关或掩码的二个IP范围"
+
+# 529f72b64c464f0cbbe8b287e8258f1a
+#: ../../networking/security_groups.rst:101
+msgid "Multiple VLAN ranges in security group-enabled shared network."
+msgstr "在开启了安全组共享网络的多VLAN范围"
+
+# c9ffb5f82e6b45778e4e1b83b29ed310
+#: ../../networking/security_groups.rst:103
+msgid "Multiple VLAN ranges in account-specific shared networks."
+msgstr "在共享网络的特殊帐户内，多个VLAN范围"
+
+# 8488c958047d450bb250b38d098bc214
+#: ../../networking/security_groups.rst:105
+msgid ""
+"Security groups must be enabled in the zone in order for this feature to be "
+"used."
+msgstr "为使用此特性，在区域内必须开启安全组"
+
+# 6c5be222e8184b8ab28d3019648e9990
+#: ../../networking/security_groups.rst:110
+msgid "Enabling Security Groups"
+msgstr "开启安全组"
+
+# b6b2af559254408ba42336e7fddf32e6
+#: ../../networking/security_groups.rst:112
+msgid ""
+"In order for security groups to function in a zone, the security groups "
+"feature must first be enabled for the zone. The administrator can do this "
+"when creating a new zone, by selecting a network offering that includes "
+"security groups. The procedure is described in Basic Zone Configuration in "
+"the Advanced Installation Guide. The administrator can not enable security "
+"groups for an existing zone, only when creating a new zone."
+msgstr "使用安全组功能之前，必须先在Zone中启用安全组功能。系统管理员可以在创建一个新的Zone时，通过选择带‘安全组’功能的网络方案进行启用。在高级安装指南的基本Zone配置中有该过程的详细描述。系统管理员不能对现有Zone启用安全组，只能在新建Zone时启用。"
+
+# e09d51e1a259488eab79d1fb28954b59
+#: ../../networking/security_groups.rst:122
+msgid "Adding Ingress and Egress Rules to a Security Group"
+msgstr "对安全组添加入口出口规则"
+
+# b24e5ca705b84ea4a6c0511ef2244936
+#: ../../networking/security_groups.rst:126
+msgid "In the left navigation, choose Network"
+msgstr "在左侧的导航栏，选择网络"
+
+# e6e52ad277a249ebb052f48c14687e98
+#: ../../networking/security_groups.rst:128
+msgid ""
+"In Select view, choose Security Groups, then click the security group you "
+"want."
+msgstr ""
+
+# 4563cb9609194e7b8bfe401fa3b6219e
+#: ../../networking/security_groups.rst:131
+msgid ""
+"To add an ingress rule, click the Ingress Rules tab and fill out the "
+"following fields to specify what network traffic is allowed into VM "
+"instances in this security group. If no ingress rules are specified, then no"
+" traffic will be allowed in, except for responses to any traffic that has "
+"been allowed out through an egress rule."
+msgstr "为增加入口规则，点击入口规则并填写相应内容，以说明在此安全组内何种网络流量可以到达虚拟机实例。如果没有说明入口规则，则不会允许流量进入。也就只有出口规允许的流量了。"
+
+# a4934e5b794b41469ff66677df530f64
+#: ../../networking/security_groups.rst:137
+msgid ""
+"**Add by CIDR/Account**. Indicate whether the source of the traffic will be "
+"defined by IP address (CIDR) or an existing security group in a CloudStack "
+"account (Account). Choose Account if you want to allow incoming traffic from"
+" all VMs in another security group"
+msgstr "**通过CIDR帐户添加**. 表明在CloudStack帐户中是否有CIDR定义的流量来源或是已存在的安全组。如果允许来自另一安全组的所有虚拟机的流量进入，则添加此帐户。"
+
+# 38c863d52b6c4f3b900f9268d71a3167
+#: ../../networking/security_groups.rst:143
+msgid ""
+"**Protocol**. The networking protocol that sources will use to send traffic "
+"to the security group. TCP and UDP are typically used for data exchange and "
+"end-user communications. ICMP is typically used to send error messages or "
+"network monitoring data."
+msgstr "**协议**. 发送源会使用网络协议来发送流量到安全组。TCP和UDP是典型的二种用来数据交换和终端用户交流的协议。ICMP则用来发送错误信息或网络监控数据"
+
+# bcb96d430c8649f483335f10c670e649
+#: ../../networking/security_groups.rst:148
+msgid ""
+"**Start Port, End Port**. (TCP, UDP only) A range of listening ports that "
+"are the destination for the incoming traffic. If you are opening a single "
+"port, use the same number in both fields."
+msgstr "**开始端口，结束端口**. (仅对TCP，UDP)。目的地为进入流量而设的监听端口范围。如果仅开放了单个端口，则在两者的区域中用同一端口。"
+
+# 6c1ac4c3fb7e476a8eba891bbf1fa14e
+#: ../../networking/security_groups.rst:152
+msgid ""
+"**ICMP Type, ICMP Code**. (ICMP only) The type of message and error code "
+"that will be accepted."
+msgstr "**ICMP类型，ICMP编码**. (仅对ICMP)。接受的信息及错误码的类型。"
+
+# 6d982263975e486e8e1b13fe56a83ed0
+#: ../../networking/security_groups.rst:155
+msgid ""
+"**CIDR**. (Add by CIDR only) To accept only traffic from IP addresses within"
+" a particular address block, enter a CIDR or a comma-separated list of "
+"CIDRs. The CIDR is the base IP address of the incoming traffic. For example,"
+" 192.168.0.0/22. To allow all CIDRs, set to 0.0.0.0/0."
+msgstr "**CIDR**. (仅通过CIDR添加)。为接受来来自特殊地址块的流量，输入一个CIDR，多个时用逗号隔开。CIDR是进入流量的基础IP地址。例如：192.168.0.0/22，为允许所有CIDR，请设为0.0.0.0/0"
+
+# 10e7f63d3cf94152a51416bc737199ed
+#: ../../networking/security_groups.rst:161
+msgid ""
+"**Account, Security Group**. (Add by Account only) To accept only traffic "
+"from another security group, enter the CloudStack account and name of a "
+"security group that has already been defined in that account. To allow "
+"traffic between VMs within the security group you are editing now, enter the"
+" same name you used in step 7."
+msgstr "**帐户，安全组**. (仅通过帐户添加)。为接受来自另一安全组的流量，输入一个CloudStack帐户和在此帐户中已经定义的安全组的名字。为允许你正在编辑的安全组内虚拟机之间的流量，输入你在第7步使用的相同的名字。"
+
+# 9d70746377c24fdb80bdb73145dda1fe
+#: ../../networking/security_groups.rst:167
+msgid "The following example allows inbound HTTP access from anywhere:"
+msgstr "下面这个例子允许内部任何地方的HTTP访问"
+
+# f1fa895a70e745a182f076db946d9d16
+#: ../../networking/security_groups.rst:169
+msgid "|httpaccess.png|"
+msgstr "|httpaccess.png|"
+
+# 25c1f9eee689482ab0a99049e45c6ceb
+#: ../../networking/security_groups.rst:171
+msgid ""
+"To add an egress rule, click the Egress Rules tab and fill out the following"
+" fields to specify what type of traffic is allowed to be sent out of VM "
+"instances in this security group. If no egress rules are specified, then all"
+" traffic will be allowed out. Once egress rules are specified, the following"
+" types of traffic are allowed out: traffic specified in egress rules; "
+"queries to DNS and DHCP servers; and responses to any traffic that has been "
+"allowed in through an ingress rule"
+msgstr "为添加一个出口规则，点击出口规则并填写以下内容，以说明在此安全组内的虚拟机，被允许哪一类型的流量送出。如果出口规则没有说明，所以的流量都被允许出去一旦进行了说明，则以下流量可以允许出去：在出口规则中进行说明的，查询DNS和DHCP服务器的，响应来自入口规则允许进入的流量的"
+
+# 83bfb97418d545549c3ea5c0a17c5985
+#: ../../networking/security_groups.rst:180
+msgid ""
+"**Add by CIDR/Account**. Indicate whether the destination of the traffic "
+"will be defined by IP address (CIDR) or an existing security group in a "
+"CloudStack account (Account). Choose Account if you want to allow outgoing "
+"traffic to all VMs in another security group."
+msgstr "**通过CIDR帐户添加**. 表明流量目的地是否已通过IP地址(CIDR)定义或是CloudStack帐户(Account)内存在的安全组。选择帐户，以允许流量到其安全组内所有虚拟机"
+
+# f175b78e34494795b301760a7fd5168f
+#: ../../networking/security_groups.rst:186
+msgid ""
+"**Protocol**. The networking protocol that VMs will use to send outgoing "
+"traffic. TCP and UDP are typically used for data exchange and end-user "
+"communications. ICMP is typically used to send error messages or network "
+"monitoring data."
+msgstr "**协议**. 虚拟机发送流量需要的协议。TCP和UDP是典型的二种用来数据交换和终端用户交流的协议。ICMP则用来发送错误信息或网络监控数据"
+
+# 31089018bb9f47e4941651c91b2bd90c
+#: ../../networking/security_groups.rst:191
+msgid ""
+"**Start Port, End Port**. (TCP, UDP only) A range of listening ports that "
+"are the destination for the outgoing traffic. If you are opening a single "
+"port, use the same number in both fields."
+msgstr "**开始端口，结束端口**. (仅对TCP，UDP) 。目的地为进入流量而设的监听端口范围。如果仅开放了单个端口，则在两者的区域中用同一端口。"
+
+# 96661f61b9b54d448e5e7be7ba933296
+#: ../../networking/security_groups.rst:195
+msgid ""
+"**ICMP Type, ICMP Code**. (ICMP only) The type of message and error code "
+"that will be sent"
+msgstr "**ICMP类型，ICMP编码**. (仅对ICMP) 。信息及错误码的类型。"
+
+# 7e52dd9e52524ea98f0bcf7ff00116ac
+#: ../../networking/security_groups.rst:198
+msgid ""
+"**CIDR**. (Add by CIDR only) To send traffic only to IP addresses within a "
+"particular address block, enter a CIDR or a comma-separated list of CIDRs. "
+"The CIDR is the base IP address of the destination. For example, "
+"192.168.0.0/22. To allow all CIDRs, set to 0.0.0.0/0."
+msgstr "**CIDR**. (仅通过CIDR添加) 。为接受来来自特殊地址块的流量，输入一个CIDR，多个时用逗号隔开。CIDR是进入流量的基础IP地址。例如：192.168.0.0/22，为允许所有CIDR，请设为0.0.0.0/0"
+
+# 40e0b1515ef948adb1a42642f73f490d
+#: ../../networking/security_groups.rst:204
+msgid ""
+"**Account, Security Group**. (Add by Account only) To allow traffic to be "
+"sent to another security group, enter the CloudStack account and name of a "
+"security group that has already been defined in that account. To allow "
+"traffic between VMs within the security group you are editing now, enter its"
+" name."
+msgstr "**帐户，安全组**. (仅通过帐户添加) 。为接受来自另一安全组的流量，输入一个CloudStack帐户和在此帐户中已经定义的安全组的名字。为允许你正在编辑的安全组内虚拟机之间的流量，输入名字。"
+
+# 39febf06883a4d248d1ac5ad19510065
+#: ../../networking/security_groups.rst:210
+msgid "Click Add."
+msgstr "点击 添加"

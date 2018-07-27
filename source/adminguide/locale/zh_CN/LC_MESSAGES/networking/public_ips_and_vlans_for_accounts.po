@@ -1,0 +1,286 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:06+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# e16ce84ab27a470389c600bd7f1937e6
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:18
+msgid "Reserving Public IP Addresses and VLANs for Accounts"
+msgstr "为账户预留公共IP地址及VLANS"
+
+# d20bf40a65964aee8e9477cfb99a8d76
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:20
+msgid ""
+"CloudStack provides you the ability to reserve a set of public IP addresses "
+"and VLANs exclusively for an account. During zone creation, you can continue"
+" defining a set of VLANs and multiple public IP ranges. This feature extends"
+" the functionality to enable you to dedicate a fixed set of VLANs and guest "
+"IP addresses for a tenant."
+msgstr "CloudStack可以让你能够独立的为账户预留一部分公共IP地址和VLANS。在创建区域阶段，你可以继续定义一部分VLANS以及多个公共IP范围。这种功能扩展特性可以让你能够为客户预留固定的一部分VLAN和客户IP地址"
+
+# e0cd381debc1495fa88b0bed963e8b16
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:26
+msgid ""
+"Note that if an account has consumed all the VLANs and IPs dedicated to it, "
+"the account can acquire two more resources from the system. CloudStack "
+"provides the root admin with two configuration parameter to modify this "
+"default behavior: use.system.public.ips and use.system.guest.vlans. These "
+"global parameters enable the root admin to disallow an account from "
+"acquiring public IPs and guest VLANs from the system, if the account has "
+"dedicated resources and these dedicated resources have all been consumed. "
+"Both these configurations are configurable at the account level."
+msgstr "注意，如果一个账户使用了所有分配给他的VLAN和IP，这个账户可以从系统获得二个以上的资源。CloudStack为根管理员提供了二个参数可以进行控制，分别是use.system.public.ips和use.system.guest.vlans。当一个账户分配了资源并且这些资源已经被消耗掉时，这二个全局参数可以使根管理员拒绝此账户从公共IP和来宾VLAN获取资源。二个配置都能在帐户级别进行配置。"
+
+# baef2538501f4f729cd5b4f69fbbefaa
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:36
+msgid "This feature provides you the following capabilities:"
+msgstr "这些特性可提供以下的功能："
+
+# 4e16f6283a6e4f389b44d3af88cc4364
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:38
+msgid ""
+"Reserve a VLAN range and public IP address range from an Advanced zone and "
+"assign it to an account"
+msgstr "从一个高级区域中预留一个VLAN范围和公共IP地址，并可以将其指定给一个账户。"
+
+# c67672fcea6c4ae69a5c3c7d8fbd6a33
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:41
+msgid "Disassociate a VLAN and public IP address range from an account"
+msgstr "将一个VLAN和IP地址从一个账户解除联系。"
+
+# 8451f0b840ab420cb1589fcc1572e6c0
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:43
+msgid "View the number of public IP addresses allocated to an account"
+msgstr "查看分配给帐户的公共IP地址。"
+
+# 2a183b234d9c44b8b99fa31594f06e38
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:45
+msgid ""
+"Check whether the required range is available and is conforms to account "
+"limits."
+msgstr "检查需要的范围是否可用并且要符合帐户限制。"
+
+# be8cff382a7748e4a75c68c3f8aa3dd7
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:48
+msgid "The maximum IPs per account limit cannot be superseded."
+msgstr "不能超过每个账户最大的IP限制数。"
+
+# 17f5e888607c4537816aa2f2e8b7c363
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:52
+msgid "Dedicating IP Address Ranges to an Account"
+msgstr "分配IP地址给一个账户"
+
+# 5409cfc1bd6f4b41bdd23eee4d6b9396
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:54
+msgid "Log in to the CloudStack UI as administrator."
+msgstr "作为管理员登录到CloudStack用户界面。"
+
+# b8615267486a44ff8ee964b26529f16d
+# ba51a55851504a869dc0f28d293993ad
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:56
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:126
+msgid "In the left navigation bar, click Infrastructure."
+msgstr "在左侧导航栏中，点击基础架构"
+
+# b1c57a90f0c843c4906f95e699dd7d13
+# 2a38ee721dc8442f850ff993fa52de59
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:58
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:128
+msgid "In Zones, click View All."
+msgstr "在区域中，点击查看全部"
+
+# defb870416a14ff0a7ea37bf68b8e890
+# 207025dba9b843299213868bf721e0d2
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:60
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:130
+msgid "Choose the zone you want to work with."
+msgstr "选择你要设置的区域。"
+
+# 04eaa49757a64adf830002153cf8db20
+# cea8888967a844ccbb283c973f4b9482
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:62
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:132
+msgid "Click the Physical Network tab."
+msgstr "点击物理网络标签卡。"
+
+# fd016a6c74fa4aceb46c592a01f82621
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:64
+msgid "In the Public node of the diagram, click Configure."
+msgstr "在图的公共节点上，点击配置。"
+
+# abe4deb76feb40fd9fa6dd1461e1dec3
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:66
+msgid "Click the IP Ranges tab."
+msgstr "点击IP范围页签。"
+
+# 3686de2bd0e24c578fb64abcd3b86fbc
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:68
+msgid ""
+"You can either assign an existing IP range to an account, or create a new IP"
+" range and assign to an account."
+msgstr "或者指定一个已经的IP范围给帐户，或创建一个新的IP范围并指定给一个帐户。"
+
+# 90bc5a3040c541cb95831323867cee7d
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:71
+msgid "To assign an existing IP range to an account, perform the following:"
+msgstr "要指定一个已有IP范围给帐户，按以下操作进行"
+
+# 196250a3ddc54abc978d437ea8ba3f96
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:73
+msgid "Locate the IP range you want to work with."
+msgstr "确定需要分配的IP范围"
+
+# 0a707d3297ad4ccfa38f80baa7690816
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:75
+msgid "Click Add Account |addAccount-icon.png| button."
+msgstr "点击添加帐户按钮。|addAccount-icon.png| "
+
+# 3aaf2af3bb8f4c9485ae2e0ada7aee73
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:77
+msgid "The Add Account dialog is displayed."
+msgstr "会弹出添加帐户对话框。"
+
+# b99e236f412f4946af47669c8d62396e
+# eedc80b2aa5c4c8696da4d4b51a28179
+# 39b98908344542aeb2e40bdbf9550571
+# f6dc925b4c634b9fa0523254d12380bb
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:79
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:89
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:107
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:142
+msgid "Specify the following:"
+msgstr "指定以下信息："
+
+# 64e4bf3c9f034ef4adb32087be1bc7aa
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:81
+msgid ""
+"**Account**: The account to which you want to assign the IP address range."
+msgstr "**帐户**: 即需要指定IP地址范围的帐户"
+
+# d15ca620e8154bf9ad213a256496e6e0
+# 09ac68b8a6f24e84b36a726d6058809b
+# f8da528d9cdd447fb262d7ca5542308f
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:84
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:112
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:150
+msgid "**Domain**: The domain associated with the account."
+msgstr "**域**: 与帐户关联的域名"
+
+# 06d6686b378e4a22a762e94353aee862
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:86
+msgid "To create a new IP range and assign an account, perform the following:"
+msgstr "要指定一个新的IP范围给帐户，按以下操作进行"
+
+# dd52a8808d1b44e7ba133f213439d71d
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:91
+msgid "**Gateway**"
+msgstr "**网关**"
+
+# 781ca41349a949cca28101dfea1676d5
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:93
+msgid "**Netmask**"
+msgstr "**掩码**"
+
+# 1b745bfb0a6443e1a0f947860308e044
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:95
+msgid "**VLAN**"
+msgstr "**VLAN**"
+
+# 9526ce220e2941459d408f259d6e9b30
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:97
+msgid "**Start IP**"
+msgstr "**起始IP**"
+
+# a55c7588b51f4a84afa7fa78fc58ed5e
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:99
+msgid "**End IP**"
+msgstr "**结束IP**"
+
+# 9282436854274ee485b8c2df6ba7f342
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:101
+msgid "**Account**: Perform the following:"
+msgstr "**帐户**: 按以下操作进行："
+
+# 678fa43c9d524b8fbb3ca453d599d6f1
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:103
+msgid "Click Account."
+msgstr "点击帐户"
+
+# 58e785cf6c3f4544af852a60e9ff4639
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:105
+msgid "The Add Account page is displayed."
+msgstr "会显示添加帐户页"
+
+# c1b6c5a339b940b7907cfc3fd14b35d6
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:109
+msgid ""
+"**Account**: The account to which you want to assign an IP address range."
+msgstr ""
+
+# e54b45158ec1469392091a64574cbb55
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:115
+msgid "Click OK."
+msgstr "点击确定。"
+
+# cbf3d4473399404684b33c48a92e0148
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:117
+msgid "Click Add."
+msgstr "点击 添加"
+
+# 8d933442217c4288b95b7ed71f57b95f
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:121
+msgid "Dedicating VLAN Ranges to an Account"
+msgstr "确定需要分配的IP范围"
+
+# d7e1ce8c0be24d57b606cd1a7b4ac29e
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:123
+msgid ""
+"After the CloudStack Management Server is installed, log in to the "
+"CloudStack UI as administrator."
+msgstr "安装好CloudStack管理端后，使用管理员帐号登录CloudStack用户界面。"
+
+# 68317dc975da4182878b75c19ec73b1e
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:134
+msgid "In the Guest node of the diagram, click Configure."
+msgstr "在图中的来宾节点上，点击配置"
+
+# de0ffdc9f48d4d068a50a53f85c49cea
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:136
+msgid "Select the Dedicated VLAN Ranges tab."
+msgstr "选择分配VLAN范围页签"
+
+# d7319cdb148746849dba29b0a020ce01
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:138
+msgid "Click Dedicate VLAN Range."
+msgstr "点击分配VLAN范围"
+
+# 6037b47944d9429aad5df0dd7981dace
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:140
+msgid "The Dedicate VLAN Range dialog is displayed."
+msgstr "会弹出分配VLAN对话框。"
+
+# 564cf1e324b54969924910efd7c3f00b
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:144
+msgid "**VLAN Range**: The VLAN range that you want to assign to an account."
+msgstr ""
+
+# b2c4b566d49c4a3b99b3268f4e867233
+#: ../../networking/public_ips_and_vlans_for_accounts.rst:147
+msgid ""
+"**Account**: The account to which you want to assign the selected VLAN "
+"range."
+msgstr ""

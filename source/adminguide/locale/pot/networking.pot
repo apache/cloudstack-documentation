@@ -1,0 +1,765 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../networking.rst:18
+# e178ac0be7b0492e8a2edc6ed9be7a7b
+msgid "Setting Up Networking for Users"
+msgstr ""
+
+#: ../../networking.rst:21
+# 04f3cd2def1648f2a118dc72cdd5a592
+msgid "Overview of Setting Up Networking for Users"
+msgstr ""
+
+#: ../../networking.rst:23
+# 60188130ecb74037bd537749bcaf4750
+msgid "People using cloud infrastructure have a variety of needs and preferences when it comes to the networking services provided by the cloud. As a CloudStack administrator, you can do the following things to set up networking for your users:"
+msgstr ""
+
+#: ../../networking.rst:28
+# fb8952bb97144229abe5a477941ae76a
+msgid "Set up physical networks in zones"
+msgstr ""
+
+#: ../../networking.rst:30
+# 8dd6941ef2c54c6bbabf956d9eb0680a
+msgid "Set up several different providers for the same service on a single physical network (for example, both Cisco and Juniper firewalls)"
+msgstr ""
+
+#: ../../networking.rst:33
+# d4c8d144d71e47c7b10f71c182941308
+msgid "Bundle different types of network services into network offerings, so users can choose the desired network services for any given virtual machine"
+msgstr ""
+
+#: ../../networking.rst:37
+# f5309ffd41a14f77a9dd77113c106332
+msgid "Add new network offerings as time goes on so end users can upgrade to a better class of service on their network"
+msgstr ""
+
+#: ../../networking.rst:40
+# 13b07adc896a416793148e27ab919b13
+msgid "Provide more ways for a network to be accessed by a user, such as through a project of which the user is a member"
+msgstr ""
+
+#: ../../networking.rst:45
+# 75c4f2f501724f68be26715201e81f13
+msgid "About Virtual Networks"
+msgstr ""
+
+#: ../../networking.rst:47
+# 6e8b5c92233f49618f96673822e130e6
+msgid "A virtual network is a logical construct that enables multi-tenancy on a single physical network. In CloudStack a virtual network can be shared or isolated."
+msgstr ""
+
+#: ../../networking.rst:53
+# e96b2f098a274b148edc9883c7424a27
+msgid "Isolated Networks"
+msgstr ""
+
+#: ../../networking.rst:55
+# 3358619f0382468a9d2f2aea99522408
+msgid "An isolated network can be accessed only by virtual machines of a single account. Isolated networks have the following properties."
+msgstr ""
+
+#: ../../networking.rst:58
+# c84b0ce76be64977bad2361a036a55cf
+msgid "Resources such as VLAN are allocated and garbage collected dynamically"
+msgstr ""
+
+#: ../../networking.rst:61
+# 3eb29ededba94d0dbcb168491b1acda6
+msgid "There is one network offering for the entire network"
+msgstr ""
+
+#: ../../networking.rst:63
+# ff059c44a53e4765b488337444f9fd70
+msgid "The network offering can be upgraded or downgraded but it is for the entire network"
+msgstr ""
+
+#: ../../networking.rst:66
+# d147367777724c05a61626c7756aae05
+msgid "For more information, see `“Configure Guest Traffic in an Advanced Zone” <networking2.html#configure-guest-traffic-in-an-advanced-zone>`_."
+msgstr ""
+
+#: ../../networking.rst:71
+# 9cb58dfba63248058b6e4c2370250e1f
+msgid "Shared Networks"
+msgstr ""
+
+#: ../../networking.rst:73
+# 4b159336d5054af78283deb65966e56d
+msgid "A shared network can be accessed by virtual machines that belong to many different accounts. Network Isolation on shared networks is accomplished by using techniques such as security groups, which is supported only in Basic zones in CloudStack 3.0.3 and later versions."
+msgstr ""
+
+#: ../../networking.rst:78
+# 0eed59cfbc8447e98bc84e58489e3ae7
+msgid "Shared Networks are created by the administrator"
+msgstr ""
+
+#: ../../networking.rst:80
+# b29eadf838f449549e16a2e745f711af
+msgid "Shared Networks can be designated to a certain domain"
+msgstr ""
+
+#: ../../networking.rst:82
+# 956864b9c95e4fb98178b4a0ad4918d3
+msgid "Shared Network resources such as VLAN and physical network that it maps to are designated by the administrator"
+msgstr ""
+
+#: ../../networking.rst:85
+# a9b84145482e4171bdf228084a5d51f4
+msgid "Shared Networks can be isolated by security groups"
+msgstr ""
+
+#: ../../networking.rst:87
+# 345abc742c6749aeb975b3453c70c387
+msgid "Public Network is a shared network that is not shown to the end users"
+msgstr ""
+
+#: ../../networking.rst:89
+# 743e27f0ef1d415180cce8da2bb79724
+msgid "Source NAT per zone is not supported in Shared Network when the service provider is virtual router. However, Source NAT per account is supported. For information, see `“Configuring a Shared Guest Network” <networking2.html#configuring-a-shared-guest-network>`_."
+msgstr ""
+
+#: ../../networking.rst:96
+# dfed0497ec374d71927a32da736f6b28
+msgid "Runtime Allocation of Virtual Network Resources"
+msgstr ""
+
+#: ../../networking.rst:98
+# 33c1cc37caa3449d8a22888ee5706153
+msgid "When you define a new virtual network, all your settings for that network are stored in CloudStack. The actual network resources are activated only when the first virtual machine starts in the network. When all virtual machines have left the virtual network, the network resources are garbage collected so they can be allocated again. This helps to conserve network resources."
+msgstr ""
+
+#: ../../networking.rst:107
+# c7699333b3c747f09b34f3a541caa725
+msgid "Network Service Providers"
+msgstr ""
+
+#: ../../networking.rst:110
+# 90bd799fd2444d978136f72070afd1ca
+msgid "For the most up-to-date list of supported network service providers, see the CloudStack UI or call `listNetworkServiceProviders`."
+msgstr ""
+
+#: ../../networking.rst:113
+# 3f97bb088f7240d99034a78ca6adf65f
+msgid "A service provider (also called a network element) is hardware or virtual appliance that makes a network service possible; for example, a firewall appliance can be installed in the cloud to provide firewall service. On a single network, multiple providers can provide the same network service. For example, a firewall service may be provided by Cisco or Juniper devices in the same physical network."
+msgstr ""
+
+#: ../../networking.rst:120
+# e52ed5139a664c31acccd845de73897d
+msgid "You can have multiple instances of the same service provider in a network (say, more than one Juniper SRX device)."
+msgstr ""
+
+#: ../../networking.rst:123
+# 013a36e42a254aaa98b7e3ad9ea97db8
+msgid "If different providers are set up to provide the same service on the network, the administrator can create network offerings so users can specify which network service provider they prefer (along with the other choices offered in network offerings). Otherwise, CloudStack will choose which provider to use whenever the service is called for."
+msgstr ""
+
+#: ../../networking.rst:129
+# eb5e7f69942b448f906dc822400a348c
+msgid "*Supported Network Service Providers*"
+msgstr ""
+
+#: ../../networking.rst:131
+# d43ecfbdacb84dac9d6ffe5229f277a3
+msgid "CloudStack ships with an internal list of the supported service providers, and you can choose from this list when creating a network offering."
+msgstr ""
+
+#: ../../networking.rst:136
+# 5dd3d24c6aa149cd8be77c9e90e924fa
+msgid "Virtual Router"
+msgstr ""
+
+#: ../../networking.rst:136
+# 8f9be66568214ef19761bdd0b1e87a0a
+msgid "Citrix NetScaler"
+msgstr ""
+
+#: ../../networking.rst:136
+# dccb0ff066124e7ca8f1f4b1df9b566a
+msgid "Juniper SRX"
+msgstr ""
+
+#: ../../networking.rst:136
+# b6c9b2cf119641999eeded8e8069824f
+msgid "F5 BigIP"
+msgstr ""
+
+#: ../../networking.rst:136
+# 4eec0320581e47cea2b8b9a6eb5c5b70
+msgid "Host based (KVM/Xen)"
+msgstr ""
+
+#: ../../networking.rst:139
+# 2c2f1239e908471a929feb91a02e08dd
+msgid "Remote Access VPN"
+msgstr ""
+
+#: ../../networking.rst:139
+#: ../../networking.rst:141
+#: ../../networking.rst:143
+#: ../../networking.rst:143
+#: ../../networking.rst:145
+#: ../../networking.rst:145
+#: ../../networking.rst:145
+#: ../../networking.rst:147
+#: ../../networking.rst:149
+#: ../../networking.rst:151
+#: ../../networking.rst:151
+#: ../../networking.rst:153
+#: ../../networking.rst:153
+#: ../../networking.rst:153
+#: ../../networking.rst:155
+#: ../../networking.rst:155
+# 3ae9d08f24164c359e5553b13dd96db0
+# 0c7c9adabf9449babcb4553e3a59b52b
+# 411fef44341e42758013621c4a23b6b6
+# 6c934e881e7849368f5400433ea69f81
+# 1fc336068db6481183d8a01c5746f5e0
+# 8a397af8cc344e41b52173b2d9bce329
+# 8a7faf6012614a33a03fce7b63e06032
+# f4b01e6ad27f435bbe4aa4b14adc6cd9
+# 60fc90d0645a4e70a2b43c269d7d92ab
+# 72abbb0d60bb43e7ac7ca73f206aa8dd
+# 3f6508ced2f04ac2adcd337ac022d6b0
+# 5492ba67a1304fdb9b75910ef384ac85
+# 1b2c1c6af0814e59bd1d64623dec20d6
+# 76efa1585e2241eaaae3e5a45da37007
+# 933c860bae084ab4846ad9f7270712aa
+# c38c824dc105481f82f564a1071efb74
+msgid "Yes"
+msgstr ""
+
+#: ../../networking.rst:139
+#: ../../networking.rst:139
+#: ../../networking.rst:139
+#: ../../networking.rst:139
+#: ../../networking.rst:141
+#: ../../networking.rst:141
+#: ../../networking.rst:141
+#: ../../networking.rst:141
+#: ../../networking.rst:143
+#: ../../networking.rst:143
+#: ../../networking.rst:143
+#: ../../networking.rst:145
+#: ../../networking.rst:145
+#: ../../networking.rst:147
+#: ../../networking.rst:147
+#: ../../networking.rst:147
+#: ../../networking.rst:147
+#: ../../networking.rst:149
+#: ../../networking.rst:149
+#: ../../networking.rst:149
+#: ../../networking.rst:149
+#: ../../networking.rst:151
+#: ../../networking.rst:151
+#: ../../networking.rst:151
+#: ../../networking.rst:153
+#: ../../networking.rst:153
+#: ../../networking.rst:155
+#: ../../networking.rst:155
+#: ../../networking.rst:155
+# d7b2c2af7ecd47769b0c7bb3013e1bbd
+# beb488a16e4646b3aa87280ad9216415
+# ad48bd439e3148fa94443e2df8acd5a1
+# 5151e216286b45c3b574d6658543a92c
+# ebc177c1de7040e687bb410d7c258141
+# c4efe853b93e471b814a74e0ed31f17d
+# e8ffc6413ca549d69b9a74e6508574d1
+# 8245b2e9c1934761a766679012c0a805
+# 16ec8446477c4c68aabd30136ee67fc0
+# 8a8f9ec35bea40f1853aba71a675887e
+# ec884b7505904c66b59ae39b287f3682
+# a1222a93d01240518b5a74fc57aee793
+# e4317cd2542d43ab90a5f054e18a7e58
+# 82eb13cd8e6a4c14828982cb7c145778
+# fdceedef2f9e43bbbb62a4fb09483cf2
+# 10e8e962affb46bd999d66cae4c189c0
+# 0c5c555a0d3748ac9a84b51b0aaff10a
+# 07903eb7e9fc46fbb91c64c77357409f
+# 98c2b214043b41dea4181a3d1d4726d8
+# ce61ff1d67ff4e90a5a5a722d0fef5f0
+# ded424a7c1b345f398e02e70edea8a5a
+# 9feb3d9ea53b45c5a8e95492710b7124
+# 562866fe2ede4c5f838067549ca5b4bd
+# f21d80c3b07e4fd69b54807235ed3cdb
+# e2d5fa4c2d874e8e90d4022e41f6a3ef
+# 4f7bcdd07de343638f1983951581d2a9
+# 6491fc2c462b4ae5ace77aa2cb534435
+# 248462887faa478ab6a39350b06d8262
+# 5f0d4dc5583a4a2eab7336f826b54b67
+msgid "No"
+msgstr ""
+
+#: ../../networking.rst:141
+# ab9d28c06dcf43d6b43310410d730272
+msgid "DNS/DHCP/User Data"
+msgstr ""
+
+#: ../../networking.rst:143
+#: ../../networking.rst:180
+#: ../../networking.rst:288
+# ec9a836945d54daa80b2790549b0e124
+# 98b80ddeb60c417e839a5e695b989f52
+# 155333ae90b64d45959ef29649a45d44
+msgid "Firewall"
+msgstr ""
+
+#: ../../networking.rst:145
+#: ../../networking.rst:178
+# ec3524d24a7c47479fbc5f696c94c8ba
+# 5d871878b8f6400babacd35334ff571b
+msgid "Load Balancing"
+msgstr ""
+
+#: ../../networking.rst:147
+# e9f00e30da4347368893885b9ebf0951
+msgid "Elastic IP"
+msgstr ""
+
+#: ../../networking.rst:149
+# 2665ea2a6b90470e81ee706892bc8f12
+msgid "Elastic LB"
+msgstr ""
+
+#: ../../networking.rst:151
+#: ../../networking.rst:172
+#: ../../networking.rst:289
+# b07356b446e34c669846ad2c208ed183
+# 522b28c564644bf68213f95712c5b120
+# 2177095ff4a24da29d588bb4cd3c2f4a
+msgid "Source NAT"
+msgstr ""
+
+#: ../../networking.rst:153
+#: ../../networking.rst:174
+#: ../../networking.rst:292
+# eea6bbfe102d498e8fed5cb73cc69b0d
+# c02a1aa3d43f4cde9668b0c049f5ca68
+# fdd23b4cdd3f4aa4a540bf84253e6a5b
+msgid "Static NAT"
+msgstr ""
+
+#: ../../networking.rst:155
+#: ../../networking.rst:176
+#: ../../networking.rst:295
+# b4c037f8d0f1486a8b571d432c94dfc2
+# 218d3d03262e42b2aff11ea6d99f0a49
+# 3ec6fc2e436743f7bf4b9704948e4af3
+msgid "Port Forwarding"
+msgstr ""
+
+#: ../../networking.rst:160
+# 479f4b962b404a428355bb406c787cd9
+msgid "Network Offerings"
+msgstr ""
+
+#: ../../networking.rst:163
+# 25cda5fdd680428d82d9dc0b90b9da3f
+msgid "For the most up-to-date list of supported network services, see the CloudStack UI or call listNetworkServices."
+msgstr ""
+
+#: ../../networking.rst:166
+# 746c329fee3d40298682a774fc0e1ce0
+msgid "A network offering is a named set of network services, such as:"
+msgstr ""
+
+#: ../../networking.rst:168
+#: ../../networking.rst:283
+# 1f84716ebc364d34a628de273bfae124
+# 50ebc53bb5124166b60910b97ac86bc4
+msgid "DHCP"
+msgstr ""
+
+#: ../../networking.rst:170
+#: ../../networking.rst:284
+# 883e0ebe77d94552b3e24415615a7bd9
+# 206e31a90b27475a957f3a6347b7e15d
+msgid "DNS"
+msgstr ""
+
+#: ../../networking.rst:182
+#: ../../networking.rst:298
+# c7ba4a3ce199420a8e1ffa59b6b5aa77
+# e018337607ad4a9d90fe4ef3ab26189e
+msgid "VPN"
+msgstr ""
+
+#: ../../networking.rst:184
+# 0c8566ee7245401e89972f62635febae
+msgid "(Optional) Name one of several available providers to use for a given service, such as Juniper for the firewall"
+msgstr ""
+
+#: ../../networking.rst:187
+# 010067ad73c94e95ad457ead1a816c4e
+msgid "(Optional) Network tag to specify which physical network to use"
+msgstr ""
+
+#: ../../networking.rst:189
+# 27fc0e1384a041e280aad1d5c6497be1
+msgid "When creating a new VM, the user chooses one of the available network offerings, and that determines which network services the VM can use."
+msgstr ""
+
+#: ../../networking.rst:192
+# f0629abea4a3489ab43c6616754295d7
+msgid "The CloudStack administrator can create any number of custom network offerings, in addition to the default network offerings provided by CloudStack. By creating multiple custom network offerings, you can set up your cloud to offer different classes of service on a single multi-tenant physical network. For example, while the underlying physical wiring may be the same for two tenants, tenant A may only need simple firewall protection for their website, while tenant B may be running a web server farm and require a scalable firewall solution, load balancing solution, and alternate networks for accessing the database backend."
+msgstr ""
+
+#: ../../networking.rst:204
+# f84d6b9ac9d44d159518d14cc74cef39
+msgid "If you create load balancing rules while using a network service offering that includes an external load balancer device such as NetScaler, and later change the network service offering to one that uses the CloudStack virtual router, you must create a firewall rule on the virtual router for each of your existing load balancing rules so that they continue to function."
+msgstr ""
+
+#: ../../networking.rst:211
+# 6a193ad193634184b47093dfab78d48b
+msgid "When creating a new virtual network, the CloudStack administrator chooses which network offering to enable for that network. Each virtual network is associated with one network offering. A virtual network can be upgraded or downgraded by changing its associated network offering. If you do this, be sure to reprogram the physical network to match."
+msgstr ""
+
+#: ../../networking.rst:217
+# 514547d261a44dbba069882e1163a863
+msgid "CloudStack also has internal network offerings for use by CloudStack system VMs. These network offerings are not visible to users but can be modified by administrators."
+msgstr ""
+
+#: ../../networking.rst:223
+# 9eab025e1e0b4102aabc5ed825ad3513
+msgid "Creating a New Network Offering"
+msgstr ""
+
+#: ../../networking.rst:225
+# 101c5c58b3164f2d91d7c068fa2ddc13
+msgid "To create a network offering:"
+msgstr ""
+
+#: ../../networking.rst:227
+# ad144ea208224f0ba8bfd3d268ebaa1a
+msgid "Log in with admin privileges to the CloudStack UI."
+msgstr ""
+
+#: ../../networking.rst:229
+# 7183c1c87f1e4a549609755e3b609e22
+msgid "In the left navigation bar, click Service Offerings."
+msgstr ""
+
+#: ../../networking.rst:231
+# 22b7bae2bee145399e00d289bccc7917
+msgid "In Select Offering, choose Network Offering."
+msgstr ""
+
+#: ../../networking.rst:233
+# ef1169d122904044a6c0246757cbbb46
+msgid "Click Add Network Offering."
+msgstr ""
+
+#: ../../networking.rst:235
+# 3479c8e9a5ef4f458aa9a86725ea9a15
+msgid "In the dialog, make the following choices:"
+msgstr ""
+
+#: ../../networking.rst:237
+# b9faa7d006ed43108fcd33897fea3a5f
+msgid "**Name**. Any desired name for the network offering."
+msgstr ""
+
+#: ../../networking.rst:239
+# 28d48401d7c74f61a6251f06e8e33ea5
+msgid "**Description**. A short description of the offering that can be displayed to users."
+msgstr ""
+
+#: ../../networking.rst:242
+# a81d203163fd41108b4ed24231b5c84d
+msgid "**Network Rate**. Allowed data transfer rate in MB per second."
+msgstr ""
+
+#: ../../networking.rst:244
+# bf34e4c1410c487c81e21d82564c0ceb
+msgid "**Guest Type**. Choose whether the guest network is isolated or shared."
+msgstr ""
+
+#: ../../networking.rst:247
+# 636bbcf4e8ff4e89bc5a3263fa3152fd
+msgid "For a description of this term, see `“About Virtual Networks” <#about-virtual-networks>`_."
+msgstr ""
+
+#: ../../networking.rst:250
+# d9e50bd69812476c975c4eb28509a054
+msgid "**Persistent**. Indicate whether the guest network is persistent or not. The network that you can provision without having to deploy a VM on it is termed persistent network. For more information, see `“Persistent Networks” <networking2.html#persistent-networks>`_."
+msgstr ""
+
+#: ../../networking.rst:256
+# a78fcf61c20941b4a0074b52d456b4fb
+msgid "**Specify VLAN**. (Isolated guest networks only) Indicate whether a VLAN could be specified when this offering is used. If you select this option and later use this network offering while creating a VPC tier or an isolated network, you will be able to specify a VLAN ID for the network you create."
+msgstr ""
+
+#: ../../networking.rst:262
+# 0c356efbc6b1453083e1df0e795cfc3f
+msgid "**VPC**. This option indicate whether the guest network is Virtual Private Cloud-enabled. A Virtual Private Cloud (VPC) is a private, isolated part of CloudStack. A VPC can have its own virtual network topology that resembles a traditional physical network. For more information on VPCs, see `“About Virtual Private Clouds” <networking2.html#about-virtual-private-clouds>`_."
+msgstr ""
+
+#: ../../networking.rst:269
+# 99699a8ca7b8442b9273331bf3721599
+msgid "**Supported Services**. Select one or more of the possible network services. For some services, you must also choose the service provider; for example, if you select Load Balancer, you can choose the CloudStack virtual router or any other load balancers that have been configured in the cloud. Depending on which services you choose, additional fields may appear in the rest of the dialog box."
+msgstr ""
+
+#: ../../networking.rst:277
+# 92f1a16c1ffe4ceb84808c9ba972cbd4
+msgid "Based on the guest network type selected, you can see the following supported services:"
+msgstr ""
+
+#: ../../networking.rst:281
+# 88a57a6470eb454ba571d8fde5632a82
+msgid "Supported Services"
+msgstr ""
+
+#: ../../networking.rst:281
+# d4aa55848ef645639458f908896ac697
+msgid "Description"
+msgstr ""
+
+#: ../../networking.rst:281
+# f8724e6bbae14251ae83b23169d9420f
+msgid "Isolated"
+msgstr ""
+
+#: ../../networking.rst:281
+# 23bd72f8680a493682d6741602166846
+msgid "Shared"
+msgstr ""
+
+#: ../../networking.rst:283
+#: ../../networking.rst:284
+# b488c5b17c004a7b88b330efbc3bc05f
+# 9817c5466dbe4abf99c2de124120bbed
+msgid "For more information, see `“DNS and DHCP” <networking2.html#dns-and-dhcp>`_."
+msgstr ""
+
+#: ../../networking.rst:283
+#: ../../networking.rst:283
+#: ../../networking.rst:284
+#: ../../networking.rst:284
+#: ../../networking.rst:285
+#: ../../networking.rst:285
+#: ../../networking.rst:288
+#: ../../networking.rst:288
+#: ../../networking.rst:289
+#: ../../networking.rst:289
+#: ../../networking.rst:292
+#: ../../networking.rst:292
+#: ../../networking.rst:295
+#: ../../networking.rst:298
+#: ../../networking.rst:300
+#: ../../networking.rst:302
+#: ../../networking.rst:304
+# c4875cd1ba3341f0801c282d362f1d24
+# d065a3aee4944733bff2d01f26b75c7f
+# 9f736e032cce456ebb4f77be38b5e58f
+# 7df1ac5d383948bd84380b75c4e098af
+# 3ba5059895ef4d1c85924407662447ee
+# 3e841c3844b94853b7a8aaaed25cd4ad
+# c77eeef8c5314be099fb3716d3445a66
+# 25f106d12a764b078bb2b6524ad18215
+# f63379e1fe44403bb4b003d91fc04f93
+# 4f4951219e654f71ba852ba5238e8851
+# 15ddd915917341cb80019e9b900a4731
+# 8dacf6aaa0704e9db73a0126c94e16e5
+# 50e87369ed7e48e29d7cb426767a5ed8
+# c1b167740f9e43c2a17a96fbf65930bf
+# 22a23c6ed73740b8a269adc46484bd2a
+# bb47b4ce2443499aa4f5308fec5ed187
+# 8754a866d8d14c92a6556744cf012422
+msgid "Supported"
+msgstr ""
+
+#: ../../networking.rst:285
+# 50819151ad5442aeb2570677b2632a46
+msgid "Load Balancer"
+msgstr ""
+
+#: ../../networking.rst:285
+# b9edc8827ba44d2db0f62206a215e670
+msgid "If you select Load Balancer, you can choose the CloudStack virtual router or any other load balancers that have been configured in the cloud."
+msgstr ""
+
+#: ../../networking.rst:288
+# 2e489054cb1e4a35ac3e90f70c1f1255
+msgid "For more information, see the Administration Guide."
+msgstr ""
+
+#: ../../networking.rst:289
+# 8e117eda9d13423c93e568f0818cc4d9
+msgid "If you select Source NAT, you can choose the CloudStack virtual router or any other Source NAT providers that have been configured in the cloud."
+msgstr ""
+
+#: ../../networking.rst:292
+# aba8109b051a46d89785cb597e382503
+msgid "If you select Static NAT, you can choose the CloudStack virtual router or any other Static NAT providers that have been configured in the cloud."
+msgstr ""
+
+#: ../../networking.rst:295
+# d932fb3f0c49487e8fb03f47c8ec3137
+msgid "If you select Port Forwarding, you can choose the CloudStack virtual router or any other Port Forwarding providers that have been configured in the cloud."
+msgstr ""
+
+#: ../../networking.rst:295
+#: ../../networking.rst:298
+#: ../../networking.rst:300
+#: ../../networking.rst:302
+#: ../../networking.rst:304
+# ba3080b2df494a6194c5a4ec14bd1410
+# 5c07262385d1478c927953b93692e644
+# 23f57ac958b34548a1c2d23a776e1da8
+# c3490a0f19134b8b886f204a4794c427
+# 111a4f3a414c443cb13dcb958326620f
+msgid "Not Supported"
+msgstr ""
+
+#: ../../networking.rst:298
+# ab512b24e90a4f0fbeff2872914232bf
+msgid "For more information, see `“Remote Access VPN” <networking2.html#remote-access-vpn>`_."
+msgstr ""
+
+#: ../../networking.rst:300
+# bc836dbec7dd41098535b7062953abf7
+msgid "User Data"
+msgstr ""
+
+#: ../../networking.rst:300
+# 2ee92986a8924dd1a8704e477e3ce1a6
+msgid "For more information, see `“User Data and Meta Data” <api.html#user-data-and-meta-data>`_."
+msgstr ""
+
+#: ../../networking.rst:302
+# c84e2a3c0cb2440f96442843325bf941
+msgid "Network ACL"
+msgstr ""
+
+#: ../../networking.rst:302
+# 1a00657b608e45b9b31d17dedf1209d9
+msgid "For more information, see `“Configuring Network Access Control List” <networking2.html#configuring-network-access-control-list>`_."
+msgstr ""
+
+#: ../../networking.rst:304
+# 72b47ce7c25a4820af0c52549a594235
+msgid "Security Groups"
+msgstr ""
+
+#: ../../networking.rst:304
+# 08f3a340905b433990695bcc9c4fdd28
+msgid "For more information, see `“Adding a Security Group” <networking2.html#adding-a-security-group>`_."
+msgstr ""
+
+#: ../../networking.rst:309
+# e235b3337dbb400c90ecee3f5837fde2
+msgid "**System Offering**. If the service provider for any of the services selected in Supported Services is a virtual router, the System Offering field appears. Choose the system service offering that you want virtual routers to use in this network. For example, if you selected Load Balancer in Supported Services and selected a virtual router to provide load balancing, the System Offering field appears so you can choose between the CloudStack default system service offering and any custom system service offerings that have been defined by the CloudStack root administrator."
+msgstr ""
+
+#: ../../networking.rst:319
+# 34b519afb51c4d1f9b1718b0f32cb527
+msgid "For more information, see `“System Service Offerings” <service_offerings.html#system-service-offerings>`_."
+msgstr ""
+
+#: ../../networking.rst:322
+# 66fb3b1df7164cd6bc37c61a61367d73
+msgid "**LB Isolation**: Specify what type of load balancer isolation you want for the network: Shared or Dedicated."
+msgstr ""
+
+#: ../../networking.rst:325
+# a07b6242746142e18198a5bf7356254f
+msgid "**Dedicated**: If you select dedicated LB isolation, a dedicated load balancer device is assigned for the network from the pool of dedicated load balancer devices provisioned in the zone. If no sufficient dedicated load balancer devices are available in the zone, network creation fails. Dedicated device is a good choice for the high-traffic networks that make full use of the device's resources."
+msgstr ""
+
+#: ../../networking.rst:333
+# 1481728f6860436790f1bbdf1de1b4d0
+msgid "**Shared**: If you select shared LB isolation, a shared load balancer device is assigned for the network from the pool of shared load balancer devices provisioned in the zone. While provisioning CloudStack picks the shared load balancer device that is used by the least number of accounts. Once the device reaches its maximum capacity, the device will not be allocated to a new account."
+msgstr ""
+
+#: ../../networking.rst:341
+# 232eced6797144d7b6cb941627e8d2e6
+msgid "**Mode**: You can select either Inline mode or Side by Side mode:"
+msgstr ""
+
+#: ../../networking.rst:343
+# 7684aca0c54c44fb9871f784de706a13
+msgid "**Inline mode**: Supported only for Juniper SRX firewall and BigF5 load balancer devices. In inline mode, a firewall device is placed in front of a load balancing device. The firewall acts as the gateway for all the incoming traffic, then redirect the load balancing traffic to the load balancer behind it. The load balancer in this case will not have the direct access to the public network."
+msgstr ""
+
+#: ../../networking.rst:351
+# a5a609bdc196450fb249b0fed2b62618
+msgid "**Side by Side**: In side by side mode, a firewall device is deployed in parallel with the load balancer device. So the traffic to the load balancer public IP is not routed through the firewall, and therefore, is exposed to the public network."
+msgstr ""
+
+#: ../../networking.rst:356
+# fddae68fcb5145e68976043eb707eed5
+msgid "**Associate Public IP**: Select this option if you want to assign a public IP address to the VMs deployed in the guest network. This option is available only if"
+msgstr ""
+
+#: ../../networking.rst:360
+# b6cedd774fb4418b8c7f09c30e492ac5
+msgid "Guest network is shared."
+msgstr ""
+
+#: ../../networking.rst:362
+# c011835f1c314df2afcb840630a7ff99
+msgid "StaticNAT is enabled."
+msgstr ""
+
+#: ../../networking.rst:364
+# fcd9521a7c684aaaaacf045798eaaf33
+msgid "Elastic IP is enabled."
+msgstr ""
+
+#: ../../networking.rst:366
+# 9818049dc1484f41b94a2c0c3904838d
+msgid "For information on Elastic IP, see `“About Elastic IP” <networking2.html#about-elastic-ip>`_."
+msgstr ""
+
+#: ../../networking.rst:369
+# 6c9c68a68ab14d30a00460dd3b13f8a6
+msgid "**Redundant router capability**: Available only when Virtual Router is selected as the Source NAT provider. Select this option if you want to use two virtual routers in the network for uninterrupted connection: one operating as the master virtual router and the other as the backup. The master virtual router receives requests from and sends responses to the user’s VM. The backup virtual router is activated only when the master is down. After the failover, the backup becomes the master virtual router. CloudStack deploys the routers on different hosts to ensure reliability if one host is down."
+msgstr ""
+
+#: ../../networking.rst:380
+# e5994ec5233c4a979624fa1fc8593822
+msgid "**Conserve mode**: Indicate whether to use conserve mode. In this mode, network resources are allocated only when the first virtual machine starts in the network. When conservative mode is off, the public IP can only be used for a single service. For example, a public IP used for a port forwarding rule cannot be used for defining other services, such as StaticNAT or load balancing. When the conserve mode is on, you can define more than one service on the same public IP."
+msgstr ""
+
+#: ../../networking.rst:390
+# 6a2faa335b6b42588d747ac83fc4770b
+msgid "If StaticNAT is enabled, irrespective of the status of the conserve mode, no port forwarding or load balancing rule can be created for the IP. However, you can add the firewall rules by using the createFirewallRule command."
+msgstr ""
+
+#: ../../networking.rst:395
+# 029a76d3e8444e15981d3fda29b8982e
+msgid "**Tags**: Network tag to specify which physical network to use."
+msgstr ""
+
+#: ../../networking.rst:397
+# e0d7d2460dba47d29922d3dcf0d16dc5
+msgid "**Default egress policy**: Configure the default policy for firewall egress rules. Options are Allow and Deny. Default is Allow if no egress policy is specified, which indicates that all the egress traffic is accepted when a guest network is created from this offering."
+msgstr ""
+
+#: ../../networking.rst:403
+# 6cf9fba73dda48b8801d8608ce2f52a4
+msgid "To block the egress traffic for a guest network, select Deny. In this case, when you configure an egress rules for an isolated guest network, rules are added to allow the specified traffic."
+msgstr ""
+
+#: ../../networking.rst:407
+# fcfc7b9313f94bbda5ac1afbd8168f7c
+msgid "Click Add."
+msgstr ""
+

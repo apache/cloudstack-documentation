@@ -1,0 +1,1224 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../installation.rst:18
+# a4c7e830381745529dad6a0b1d27abc8
+msgid "Installation"
+msgstr ""
+
+#: ../../installation.rst:21
+# 08b24c18afac496395e10054c9cf0e71
+msgid "Who Should Read This"
+msgstr ""
+
+#: ../../installation.rst:23
+# d5a90994aea94deab277060989225b05
+msgid "For those who have already gone through a design phase and planned a more sophisticated deployment, or those who are ready to start scaling up a trial installation. With the following procedures, you can start using the more powerful features of CloudStack, such as advanced VLAN networking, high availability, additional network elements such as load balancers and firewalls, and support for multiple hypervisors including Citrix XenServer, KVM, and VMware vSphere."
+msgstr ""
+
+#: ../../installation.rst:33
+# e7eb83f865c242ae89ad4c8ae65ed988
+msgid "Overview of Installation Steps"
+msgstr ""
+
+#: ../../installation.rst:35
+# fc6cbd3f722e496ca3d7a1716a44bc03
+msgid "For anything more than a simple trial installation, you will need guidance for a variety of configuration choices. It is strongly recommended that you read the following:"
+msgstr ""
+
+#: ../../installation.rst:39
+# 718aecc72e104a2997aba969ae4564c4
+msgid "Choosing a Deployment Architecture"
+msgstr ""
+
+#: ../../installation.rst:41
+# cd6d4bbfdbcb4ae0953b3b36d308c7f5
+msgid "Choosing a Hypervisor: Supported Features"
+msgstr ""
+
+#: ../../installation.rst:43
+# 2a0787f9ba6d4b13ba9574e2a6334c2f
+msgid "Network Setup"
+msgstr ""
+
+#: ../../installation.rst:45
+# f606c83b98e54324a4376e39edcd5e20
+msgid "Storage Setup"
+msgstr ""
+
+#: ../../installation.rst:47
+# 75e8e878e0284aeeb3f52820e7b675eb
+msgid "Best Practices"
+msgstr ""
+
+#: ../../installation.rst:49
+# c1ad793994b9421295f7503b7488274c
+msgid "Make sure you have the required hardware ready. See :ref:`minimum-system-requirements`"
+msgstr ""
+
+#: ../../installation.rst:52
+# f5dba433b73f4e4b985060a388b195f0
+msgid "Install the Management Server (choose single-node or multi-node). See :ref:`adding-a-zone`"
+msgstr ""
+
+#: ../../installation.rst:55
+# 58ea8b1ced9547bfa75c75859ac799cc
+msgid "Log in to the UI. See `*User Interface* <http://docs.cloudstack.apache.org/projects/cloudstack-administration/en/latest/ui.html#log-in-to-the-ui>`_"
+msgstr ""
+
+#: ../../installation.rst:58
+# d05317e5c0ee48f6b90a44c8b2fcf367
+msgid "Add a zone. Includes the first pod, cluster, and host. See :ref:`adding-a-host`"
+msgstr ""
+
+#: ../../installation.rst:61
+# b534b474577b4160ba2cd604d9d52532
+msgid "Add more pods (optional). See :ref:`adding-a-pod`"
+msgstr ""
+
+#: ../../installation.rst:63
+# 299d7e46a3df47ac8e42ee1933e4f29a
+msgid "Add more clusters (optional). See :ref:`adding-a-cluster`"
+msgstr ""
+
+#: ../../installation.rst:65
+# dedefe67789b49af8ace78432dfc2868
+msgid "Add more hosts (optional). See :ref:`adding-a-host`"
+msgstr ""
+
+#: ../../installation.rst:67
+# 920aa393f8604a648a3f4303e57d1775
+msgid "Add more primary storage (optional). See :ref:`add-primary-storage`"
+msgstr ""
+
+#: ../../installation.rst:69
+# da3f95f402c24f0aa74c36350d5ec371
+msgid "Add more secondary storage (optional). See :ref:`add-secondary-storage`"
+msgstr ""
+
+#: ../../installation.rst:71
+# 310612dae82445ae8be69f78801a9750
+msgid "Try using the cloud. See :ref:`initialize-and-test`"
+msgstr ""
+
+#: ../../installation.rst:77
+# 482c0b3104aa43dfb72e0a4f853e1463
+msgid "Minimum System Requirements"
+msgstr ""
+
+#: ../../installation.rst:80
+# ea094f27fd264abe88f63697eb32c463
+msgid "Management Server, Database, and Storage System Requirements"
+msgstr ""
+
+#: ../../installation.rst:82
+# 910332017d854085a74ff0715162f1b2
+msgid "The machines that will run the Management Server and MySQL database must meet the following requirements. The same machines can also be used to provide primary and secondary storage, such as via localdisk or NFS. The Management Server may be placed on a virtual machine."
+msgstr ""
+
+#: ../../installation.rst:87
+# 8e4f1eb139534c4ca4d93f7537dd3fa7
+msgid "Operating system:"
+msgstr ""
+
+#: ../../installation.rst:89
+# 29b8ae9600b245fe9c60f040f52adfa5
+msgid "Preferred: CentOS/RHEL 6.3+ or Ubuntu 14.04(.1)"
+msgstr ""
+
+#: ../../installation.rst:91
+#: ../../installation.rst:114
+# 24d4cd50a00945eb98763313d2f65f17
+# 1c5c18472c5644a89e3aecc627b13b6c
+msgid "64-bit x86 CPU (more cores results in better performance)"
+msgstr ""
+
+#: ../../installation.rst:93
+#: ../../installation.rst:118
+# 851608c72118406792e449b1d8c7b83a
+# 4f02c321329446d5815a250b05fe2778
+msgid "4 GB of memory"
+msgstr ""
+
+#: ../../installation.rst:95
+# 4d8ce09b8a0542e892df38be3af682bf
+msgid "250 GB of local disk (more results in better capability; 500 GB recommended)"
+msgstr ""
+
+#: ../../installation.rst:98
+#: ../../installation.rst:122
+# 165ce3c523d64e48b04f71ebd0996dd9
+# 4ab891d3ef9f4fdda64c88a8120a9205
+msgid "At least 1 NIC"
+msgstr ""
+
+#: ../../installation.rst:100
+# 1ada394b4bf74ee5a1152e0e725fd331
+msgid "Statically allocated IP address"
+msgstr ""
+
+#: ../../installation.rst:102
+# 230435b75353467b84290fa91c4c08b8
+msgid "Fully qualified domain name as returned by the hostname command"
+msgstr ""
+
+#: ../../installation.rst:106
+# 69ac02bcef5348719f0240d8836e0006
+msgid "Host/Hypervisor System Requirements"
+msgstr ""
+
+#: ../../installation.rst:108
+# 1820da09a6ae428f9ae4bd3ce16ef3c5
+msgid "The host is where the cloud services run in the form of guest virtual machines. Each host is one machine that meets the following requirements:"
+msgstr ""
+
+#: ../../installation.rst:112
+# 8eecb5d0a6ee40a395e47f52168d5d20
+msgid "Must support HVM (Intel-VT or AMD-V enabled)."
+msgstr ""
+
+#: ../../installation.rst:116
+# c6343d4def954507b56afb34ef637859
+msgid "Hardware virtualization support required"
+msgstr ""
+
+#: ../../installation.rst:120
+# 292a0c2480e44ec4a30cbc5689aa828a
+msgid "36 GB of local disk"
+msgstr ""
+
+#: ../../installation.rst:125
+# 951d1eb038d94e3bac57bdfcc52377af
+msgid "If DHCP is used for hosts, ensure that no conflict occurs between DHCP server used for these hosts and the DHCP router created by CloudStack."
+msgstr ""
+
+#: ../../installation.rst:128
+# 142b536acb8941f29e7b44145c079dfa
+msgid "Latest hotfixes applied to hypervisor software"
+msgstr ""
+
+#: ../../installation.rst:130
+# 9815b650b1b94eba9ad10c4684f5cb0a
+msgid "When you deploy CloudStack, the hypervisor host must not have any VMs already running"
+msgstr ""
+
+#: ../../installation.rst:133
+# 56e1f4ebe58147f5abd5c96844f64bb5
+msgid "All hosts within a cluster must be homogeneous. The CPUs must be of the same type, count, and feature flags."
+msgstr ""
+
+#: ../../installation.rst:136
+# 00933a4ac68a4d19b25c5a6eb58c517e
+msgid "Hosts have additional requirements depending on the hypervisor. See the requirements listed at the top of the Installation section for your chosen hypervisor:"
+msgstr ""
+
+#: ../../installation.rst:141
+# 962bf99b90fa4d2a8edf81295e1df42a
+msgid "Be sure you fulfill the additional hypervisor requirements and installation steps provided in this Guide. Hypervisor hosts must be properly prepared to work with CloudStack. For example, the requirements for XenServer are listed under Citrix XenServer Installation."
+msgstr ""
+
+#: ../../installation.rst:148
+# 124105e82a0647a994481c09b2a6e3fd
+msgid "Configure package repository"
+msgstr ""
+
+#: ../../installation.rst:150
+# cd54d36f52df4a02bd4ee88dbaa9ac5d
+msgid "CloudStack is only distributed from source from the official mirrors. However, members of the CloudStack community may build convenience binaries so that users can install Apache CloudStack without needing to build from source."
+msgstr ""
+
+#: ../../installation.rst:155
+# a904edd1fa324be999f28aad8271c6e3
+msgid "If you didn't follow the steps to build your own packages from source in the sections for `“Building RPMs from Source” <building_from_source.html#building-rpms-from-source>`_ or `“Building DEB packages” <building_from_source.html#building-deb-packages>`_ you may find pre-built DEB and RPM packages for your convenience linked from the `downloads <http://cloudstack.apache.org/downloads.html>`_ page."
+msgstr ""
+
+#: ../../installation.rst:163
+# 2cd5d4a70be54d9fad1ee09ac0a59781
+msgid "These repositories contain both the Management Server and KVM Hypervisor packages."
+msgstr ""
+
+#: ../../installation.rst:168
+# ea53cfd031f54c11b1c35976f3e3ce76
+msgid "DEB package repository"
+msgstr ""
+
+#: ../../installation.rst:170
+# d5c18e89ae43496093da2abe5de613ad
+msgid "You can add a DEB package repository to your apt sources with the following commands. Please note that only packages for Ubuntu 14.04 LTS (trusty) and Ubuntu 16.04 (Xenial)are being built at this time. DISCLAIMER: Ubuntu 12.04 (Precise) is no longer supported."
+msgstr ""
+
+#: ../../installation.rst:174
+# 80c95c86ec504d6ea8771c2c09678dce
+msgid "Use your preferred editor and open (or create) ``/etc/apt/sources.list.d/cloudstack.list``. Add the community provided repository to the file:"
+msgstr ""
+
+#: ../../installation.rst:182
+# 4e809dbba4344fe3bbe0c803b417c4a5
+msgid "We now have to add the public key to the trusted keys."
+msgstr ""
+
+#: ../../installation.rst:188
+# 3308e4a303fa4e109dfe4f012bb673a1
+msgid "Now update your local apt cache."
+msgstr ""
+
+#: ../../installation.rst:194
+# 499fecdd520c470e9e64923350071343
+msgid "Your DEB package repository should now be configured and ready for use."
+msgstr ""
+
+#: ../../installation.rst:198
+# 4201a19d82ec40359482777eca721afe
+msgid "RPM package repository"
+msgstr ""
+
+#: ../../installation.rst:200
+# a8e0ee6a46fe473f84e190a7a84274a9
+msgid "There is a RPM package repository for CloudStack so you can easily install on RHEL based platforms."
+msgstr ""
+
+#: ../../installation.rst:203
+# 0c1bb2bafcf9461ebb5cd59ead93db9f
+msgid "If you're using an RPM-based system, you'll want to add the Yum repository so that you can install CloudStack with Yum."
+msgstr ""
+
+#: ../../installation.rst:206
+# 562991c4185349599619509cfbce173d
+msgid "Yum repository information is found under ``/etc/yum.repos.d``. You'll see several ``.repo`` files in this directory, each one denoting a specific repository."
+msgstr ""
+
+#: ../../installation.rst:210
+# e49d0a5613af49f69d54163f32b5f898
+msgid "To add the CloudStack repository, create ``/etc/yum.repos.d/cloudstack.repo`` and insert the following information."
+msgstr ""
+
+#: ../../installation.rst:222
+# d78ed0190d354e4bac2f1c82b8c21dd9
+msgid "Now you should be able to install CloudStack using Yum."
+msgstr ""
+
+#: ../../installation.rst:226
+# 37094bccdf5f4a6db4dc73588c0d1bc4
+msgid "Management Server Installation"
+msgstr ""
+
+#: ../../installation.rst:229
+# f57b33dd6c14414ab5c880b0b9a0c438
+msgid "Management Server Installation Overview"
+msgstr ""
+
+#: ../../installation.rst:231
+# 5273d79a7d1f4a12ac19c6d2fdff6406
+msgid "This section describes installing the Management Server. There are two slightly different installation flows, depending on how many Management Server nodes will be in your cloud:"
+msgstr ""
+
+#: ../../installation.rst:235
+# e05140db89854adbaa7419d25e9dc6ce
+msgid "A single Management Server node, with MySQL on the same node."
+msgstr ""
+
+#: ../../installation.rst:237
+# 06bdcc369df244f99ad92914eb680347
+msgid "Multiple Management Server nodes, with MySQL on a node separate from the Management Servers."
+msgstr ""
+
+#: ../../installation.rst:240
+# e4b810d71c474f4f98cb64eb346d7404
+msgid "In either case, each machine must meet the system requirements described in System Requirements."
+msgstr ""
+
+#: ../../installation.rst:244
+# 8c6a890d62c94b3c805523d0e55b6b45
+msgid "For the sake of security, be sure the public Internet can not access port 8096 or port 8250 on the Management Server."
+msgstr ""
+
+#: ../../installation.rst:247
+# 346be7547c7f40ac94d3fd4d11d242b8
+msgid "The procedure for installing the Management Server is:"
+msgstr ""
+
+#: ../../installation.rst:249
+#: ../../installation.rst:265
+# f5dab499f03647d4b215ac7dc00d2cc8
+# 1d99cd2343054c51bc38e14ba435eef4
+msgid "Prepare the Operating System"
+msgstr ""
+
+#: ../../installation.rst:251
+# 4eb68311296e426493a33ddad4958fd8
+msgid "(XenServer only) Download and install vhd-util."
+msgstr ""
+
+#: ../../installation.rst:253
+# 55d017a2eb3048f1a6e12d9af9ebdc95
+msgid "Install the First Management Server"
+msgstr ""
+
+#: ../../installation.rst:255
+# be88182cc4d841e884f72dc58d0c597b
+msgid "Install and Configure the MySQL database"
+msgstr ""
+
+#: ../../installation.rst:257
+#: ../../installation.rst:835
+# 4c17f8202a1a463589bea6ccc1e5da82
+# e69fe8462a0d4dfc9884fe69c7555783
+msgid "Prepare NFS Shares"
+msgstr ""
+
+#: ../../installation.rst:259
+# e5c5a79c1bbb41a5a37c13f1bcb2269b
+msgid "Prepare and Start Additional Management Servers (optional)"
+msgstr ""
+
+#: ../../installation.rst:261
+#: ../../installation.rst:1124
+# bb0613b20bae44ec8ea0d6cf3daf54d7
+# 72e55f8870934e6c8f91c0d9a02b53a0
+msgid "Prepare the System VM Template"
+msgstr ""
+
+#: ../../installation.rst:267
+# b185c81663174e87aec00ebea42b6106
+msgid "The OS must be prepared to host the Management Server using the following steps. These steps must be performed on each Management Server node."
+msgstr ""
+
+#: ../../installation.rst:271
+# ad31e2f017254bf4a8bc4b18ed1eb333
+msgid "Log in to your OS as root."
+msgstr ""
+
+#: ../../installation.rst:273
+# f68b5990a29e47a49e5576f3448ae36a
+msgid "Check for a fully qualified hostname."
+msgstr ""
+
+#: ../../installation.rst:279
+# 68c1a1f0f21745aeb403104055ac4fa9
+msgid "This should return a fully qualified hostname such as \"management1.lab.example.org\". If it does not, edit /etc/hosts so that it does."
+msgstr ""
+
+#: ../../installation.rst:283
+# 462aa5bfa1ed4426a0fe8fee25f76011
+msgid "Make sure that the machine can reach the Internet."
+msgstr ""
+
+#: ../../installation.rst:289
+# 5b249851325348f5a05df2a11b1a9605
+msgid "Turn on NTP for time synchronization."
+msgstr ""
+
+#: ../../installation.rst:292
+# e81842c1ee6c4557856769bb6a36922d
+msgid "NTP is required to synchronize the clocks of the servers in your cloud."
+msgstr ""
+
+#: ../../installation.rst:294
+# 1ff32df950c6457084e12020a249a243
+msgid "Install NTP."
+msgstr ""
+
+#: ../../installation.rst:304
+# dbe1f8c7f9d8488598b40da7132bc863
+msgid "Repeat all of these steps on every host where the Management Server will be installed."
+msgstr ""
+
+#: ../../installation.rst:309
+# 332fe2c7d34f46a2b229fc215761f6c4
+msgid "Install the Management Server on the First Host"
+msgstr ""
+
+#: ../../installation.rst:311
+# 8f353218baed48e4be6f9ca53b9c2541
+msgid "The first step in installation, whether you are installing the Management Server on one host or many, is to install the software on a single node."
+msgstr ""
+
+#: ../../installation.rst:316
+# 2a1b09c8c09641489db8c0d49c04ae16
+msgid "If you are planning to install the Management Server on multiple nodes for high availability, do not proceed to the additional nodes yet. That step will come later."
+msgstr ""
+
+#: ../../installation.rst:320
+# 407f24df1ba44541821f28c24576289f
+msgid "The CloudStack Management server can be installed using either RPM or DEB packages. These packages will depend on everything you need to run the Management server."
+msgstr ""
+
+#: ../../installation.rst:326
+# de7dec2f592640af80d9557e78bdc3af
+msgid "Install on CentOS/RHEL"
+msgstr ""
+
+#: ../../installation.rst:328
+# 0f47773dda6d44e5a36844163a8642b9
+msgid "We start by installing the required packages:"
+msgstr ""
+
+#: ../../installation.rst:336
+# d2538978382d4b47b1f84bc381b1009f
+msgid "Install on Ubuntu"
+msgstr ""
+
+#: ../../installation.rst:344
+# 47bc07e11dac4257b9ce54f511342915
+msgid "There is a known bug in the 4.3.0 release. You need to install an additional package by hand:"
+msgstr ""
+
+#: ../../installation.rst:350
+# aef5f1918b994df1a0da2b55407ba85f
+msgid "This bug has been fixed in master and upcoming 4.4 release and will also be fixed in bug fix releases 4.3.x"
+msgstr ""
+
+#: ../../installation.rst:353
+# 7db6de4cc37d43b8acb33c19898ce6f8
+msgid "Downloading vhd-util"
+msgstr ""
+
+#: ../../installation.rst:355
+# 39d5d2480cea49508d2a2589ef174eca
+msgid "This procedure is required only for installations where XenServer is installed on the hypervisor hosts."
+msgstr ""
+
+#: ../../installation.rst:358
+# d212ae279e594ea4a9b82dde3342f509
+msgid "Before setting up the Management Server, download vhd-util from `vhd-util <http://download.cloud.com.s3.amazonaws.com/tools/vhd-util>`_."
+msgstr ""
+
+#: ../../installation.rst:361
+# d4c4d9a792ec46bbacc984b02fa8dd22
+msgid "If the Management Server is RHEL or CentOS, copy vhd-util to `/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver`"
+msgstr ""
+
+#: ../../installation.rst:364
+# dcbc45d4730e482291fc719820a2e074
+msgid "If the Management Server is Ubuntu, copy vhd-util to `/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver`"
+msgstr ""
+
+#: ../../installation.rst:369
+# 3d000babaab44343b6203aec8596c5e6
+msgid "Install the database server"
+msgstr ""
+
+#: ../../installation.rst:371
+# f88a65610c204fafb3a2491316300137
+msgid "The CloudStack management server uses a MySQL database server to store its data. When you are installing the management server on a single node, you can install the MySQL server locally. For an installation that has multiple management server nodes, we assume the MySQL database also runs on a separate node."
+msgstr ""
+
+#: ../../installation.rst:377
+# fde5a5bd27424be7b529dc9a04291fc4
+msgid "CloudStack has been tested with MySQL 5.1 and 5.5. These versions are included in RHEL/CentOS and Ubuntu."
+msgstr ""
+
+#: ../../installation.rst:382
+# bdd992ca70fe4dff8367622ecd75f731
+msgid "Install the Database on the Management Server Node"
+msgstr ""
+
+#: ../../installation.rst:384
+# 7f0fe4eec48240e28d602ad0745156b6
+msgid "This section describes how to install MySQL on the same machine with the Management Server. This technique is intended for a simple deployment that has a single Management Server node. If you have a multi-node Management Server deployment, you will typically use a separate node for MySQL. See :ref:`install-database-on-separate-node`."
+msgstr ""
+
+#: ../../installation.rst:390
+# 9da9fd0e78644a6f90cc13c5f7629147
+msgid "Install MySQL from the package repository of your distribution:"
+msgstr ""
+
+#: ../../installation.rst:400
+# 423988f38bfe4c029c64f905b8083873
+msgid "Open the MySQL configuration file. The configuration file is ``/etc/my.cnf`` or ``/etc/mysql/my.cnf``, depending on your OS."
+msgstr ""
+
+#: ../../installation.rst:403
+# 69b009a70f9d489d86c665723f326565
+msgid "Insert the following lines in the [mysqld] section."
+msgstr ""
+
+#: ../../installation.rst:405
+# 7c240032679b427986b382f408c4d867
+msgid "You can put these lines below the datadir line. The max\\_connections parameter should be set to 350 multiplied by the number of Management Servers you are deploying. This example assumes one Management Server."
+msgstr ""
+
+#: ../../installation.rst:411
+# 462e4aec3ff248dfa67155a3766e4759
+msgid "On Ubuntu, you can also create a file `/etc/mysql/conf.d/cloudstack.cnf` and add these directives there. Don't forget to add [mysqld] on the first line of the file."
+msgstr ""
+
+#: ../../installation.rst:423
+#: ../../installation.rst:617
+# 64fd4122c8bd4334bb74dcb6e90272b9
+# 84765c6978a447f7b510dc7a3e4444bb
+msgid "Start or restart MySQL to put the new configuration into effect."
+msgstr ""
+
+#: ../../installation.rst:425
+#: ../../installation.rst:619
+# 724040c0968d4dff95c8d7be03f4017e
+# 8c620289a7ff44589e7c44bc264acaf1
+msgid "On RHEL/CentOS, MySQL doesn't automatically start after installation. Start it manually."
+msgstr ""
+
+#: ../../installation.rst:432
+#: ../../installation.rst:626
+# caa5b484b77844f0bd0826937ee49bc6
+# 6a9edbbfcf6d4c12a0b49cfb8a7417a2
+msgid "On Ubuntu, restart MySQL."
+msgstr ""
+
+#: ../../installation.rst:438
+#: ../../installation.rst:632
+# f61c8b0000f1424c9f2c13630125db20
+# 81d86aeab96741c4854e00bd76a9d650
+msgid "(CentOS and RHEL only; not required on Ubuntu)"
+msgstr ""
+
+#: ../../installation.rst:441
+# 49d05484300842749affe75f5a57fc78
+msgid "On RHEL and CentOS, MySQL does not set a root password by default. It is very strongly recommended that you set a root password as a security precaution."
+msgstr ""
+
+#: ../../installation.rst:445
+# 35126d196cb44db896a7da2f35f0219c
+msgid "Run the following command to secure your installation. You can answer \"Y\" to all questions."
+msgstr ""
+
+#: ../../installation.rst:452
+# 4c6efd3f31564d4e8c184fa2b19e2370
+msgid "CloudStack can be blocked by security mechanisms, such as SELinux. Disable SELinux to ensure + that the Agent has all the required permissions."
+msgstr ""
+
+#: ../../installation.rst:456
+# c736e2910bf746f29b59b481a266efd5
+msgid "Configure SELinux (RHEL and CentOS):"
+msgstr ""
+
+#: ../../installation.rst:458
+# 8d44b0228538457fb684938443b8a184
+msgid "Check whether SELinux is installed on your machine. If not, you can skip this section."
+msgstr ""
+
+#: ../../installation.rst:461
+# f4dda09e82f14c94b0380640a6a92eaa
+msgid "In RHEL or CentOS, SELinux is installed and enabled by default. You can verify this with:"
+msgstr ""
+
+#: ../../installation.rst:468
+# c9420ac318f6432fb6feb232be65d8cc
+msgid "Set the SELINUX variable in ``/etc/selinux/config`` to \"permissive\". This ensures that the permissive setting will be maintained after a system reboot."
+msgstr ""
+
+#: ../../installation.rst:472
+# 7bf236cb6e324d0b8b23ca6a50acfcdd
+msgid "In RHEL or CentOS:"
+msgstr ""
+
+#: ../../installation.rst:478
+# fe3458a445a247c18078c567d5c3c24c
+msgid "Change the following line"
+msgstr ""
+
+#: ../../installation.rst:484
+# af316e719579454392ce08b885fa3f1c
+msgid "to this:"
+msgstr ""
+
+#: ../../installation.rst:490
+# 348280635d374eeabd020521c3079beb
+msgid "Set SELinux to permissive starting immediately, without requiring a system reboot."
+msgstr ""
+
+#: ../../installation.rst:497
+# 65a33b90a9fc4a7b95bbf4db213365cb
+msgid "Set up the database. The following command creates the \"cloud\" user on the database."
+msgstr ""
+
+#: ../../installation.rst:500
+# aa653b538c1649a4ab4c8182d62d2ae4
+msgid "In dbpassword, specify the password to be assigned to the \"cloud\" user. You can choose to provide no password although that is not recommended."
+msgstr ""
+
+#: ../../installation.rst:504
+# 0fff4e85bcaa43d7a53ddf5f641899a8
+msgid "In deploy-as, specify the username and password of the user deploying the database. In the following command, it is assumed the root user is deploying the database and creating the \"cloud\" user."
+msgstr ""
+
+#: ../../installation.rst:509
+#: ../../installation.rst:683
+# 6e76a4c5d00b40f9a2591a882b9cf7e3
+# 232603c49f9b470fadd4497980b040ea
+msgid "(Optional) For encryption\\_type, use file or web to indicate the technique used to pass in the database encryption password. Default: file. See :ref:`about-password-key-encryption`."
+msgstr ""
+
+#: ../../installation.rst:513
+# c484241ea1734f64b2ee605c25ff4f55
+msgid "(Optional) For management\\_server\\_key, substitute the default key that is used to encrypt confidential parameters in the CloudStack properties file. Default: password. It is highly recommended that you replace this with a more secure value. See :ref:`about-password-key-encryption`."
+msgstr ""
+
+#: ../../installation.rst:519
+#: ../../installation.rst:693
+# a116bdc1b4f146618c07383056276b2f
+# c84567a232924a2a93426fbde5c68e5c
+msgid "(Optional) For database\\_key, substitute the default key that is used to encrypt confidential parameters in the CloudStack database. Default: password. It is highly recommended that you replace this with a more secure value. See :ref:`about-password-key-encryption`."
+msgstr ""
+
+#: ../../installation.rst:525
+#: ../../installation.rst:699
+# d51435b1acbb403ea778782c88c09cd9
+# 3c2f5d31ed014299b6b2ad61d8d02606
+msgid "(Optional) For management\\_server\\_ip, you may explicitly specify cluster management server node IP. If not specified, the local IP address will be used."
+msgstr ""
+
+#: ../../installation.rst:538
+#: ../../installation.rst:712
+# 8781d85265da4df69b6b1161f9981921
+# f3bfbf8b741844379f95923b4b686ba8
+msgid "When this script is finished, you should see a message like “Successfully initialized the database.”"
+msgstr ""
+
+#: ../../installation.rst:542
+# a6cf1c3f7291407581e5da12486d3a20
+msgid "If the script is unable to connect to the MySQL database, check the \"localhost\" loopback address in ``/etc/hosts``. It should be pointing to the IPv4 loopback address \"127.0.0.1\" and not the IPv6 loopback address ``::1``. Alternatively, reconfigure MySQL to bind to the IPv6 loopback interface."
+msgstr ""
+
+#: ../../installation.rst:548
+# 33b221f992cd42cab21181c9205890e7
+msgid "If you are running the KVM hypervisor on the same machine with the Management Server, edit /etc/sudoers and add the following line:"
+msgstr ""
+
+#: ../../installation.rst:555
+# 52aa8c1267b94037ad3d9615231fbca4
+msgid "Now that the database is set up, you can finish configuring the OS for the Management Server. This command will set up iptables, sudoers, and start the Management Server."
+msgstr ""
+
+#: ../../installation.rst:563
+# 08f36fb116e642ba89ca4e2d95dec848
+msgid "You should see the message “CloudStack Management Server setup is done.”"
+msgstr ""
+
+#: ../../installation.rst:570
+# 7d221b73028543c9a2b47b117237997f
+msgid "Install the Database on a Separate Node"
+msgstr ""
+
+#: ../../installation.rst:572
+# eb04195ea5644ab59b8df4dcd32f8d0b
+msgid "This section describes how to install MySQL on a standalone machine, separate from the Management Server. This technique is intended for a deployment that includes several Management Server nodes. If you have a single-node Management Server deployment, you will typically use the same node for MySQL. See `“Install the Database on the Management Server Node” <#install-the-database-on-the-management-server-node>`_."
+msgstr ""
+
+#: ../../installation.rst:580
+# cb57860521b44243b4452bd9da079744
+msgid "The management server doesn't require a specific distribution for the MySQL node. You can use a distribution or Operating System of your choice. Using the same distribution as the management server is recommended, but not required. See `“Management Server, Database, and Storage System Requirements” <#management-server-database-and-storage-system-requirements>`_."
+msgstr ""
+
+#: ../../installation.rst:586
+# 49b51b3e92d447188645fdf39e28feab
+msgid "Install MySQL from the package repository from your distribution:"
+msgstr ""
+
+#: ../../installation.rst:596
+# ae7d0f661888443dbeda2f242e3e4bc3
+msgid "Edit the MySQL configuration (/etc/my.cnf or /etc/mysql/my.cnf, depending on your OS) and insert the following lines in the [mysqld] section. You can put these lines below the datadir line. The max\\_connections parameter should be set to 350 multiplied by the number of Management Servers you are deploying. This example assumes two Management Servers."
+msgstr ""
+
+#: ../../installation.rst:604
+# ea07aaf2f2094827919c3f7f9d1c8115
+msgid "On Ubuntu, you can also create /etc/mysql/conf.d/cloudstack.cnf file and add these directives there. Don't forget to add [mysqld] on the first line of the file."
+msgstr ""
+
+#: ../../installation.rst:635
+# 181c50670cde4667bbbf5930fb3c854b
+msgid "On RHEL and CentOS, MySQL does not set a root password by default. It is very strongly recommended that you set a root password as a security precaution. Run the following command to secure your installation. You can answer \"Y\" to all questions except \"Disallow root login remotely?\". Remote root login is required to set up the databases."
+msgstr ""
+
+#: ../../installation.rst:645
+# 278c2f9ed64442a580cb6c385b7793d6
+msgid "If a firewall is present on the system, open TCP port 3306 so external MySQL connections can be established."
+msgstr ""
+
+#: ../../installation.rst:648
+# 16ce3ea613174067b6edf85fa82a0323
+msgid "On Ubuntu, UFW is the default firewall. Open the port with this command:"
+msgstr ""
+
+#: ../../installation.rst:655
+# 11cda3fbfc934a199874ab207473898e
+msgid "On RHEL/CentOS:"
+msgstr ""
+
+#: ../../installation.rst:657
+# f0b20f4dbb6849c0963c4affbbba6ae9
+msgid "Edit the /etc/sysconfig/iptables file and add the following line at the beginning of the INPUT chain."
+msgstr ""
+
+#: ../../installation.rst:664
+# 0bf0dca831b0441fa3a376a3bcccfb78
+msgid "Now reload the iptables rules."
+msgstr ""
+
+#: ../../installation.rst:670
+# 6513db9f42b8495ca96090e285daa673
+msgid "Return to the root shell on your first Management Server."
+msgstr ""
+
+#: ../../installation.rst:672
+# a2317a3c06f342058c12a67eb8b69383
+msgid "Set up the database. The following command creates the cloud user on the database."
+msgstr ""
+
+#: ../../installation.rst:675
+# 5430f655d0e244fe8921c41ed892882f
+msgid "In dbpassword, specify the password to be assigned to the cloud user. You can choose to provide no password."
+msgstr ""
+
+#: ../../installation.rst:678
+# b10e601516ba4ba8ad5cf0a277d811e2
+msgid "In deploy-as, specify the username and password of the user deploying the database. In the following command, it is assumed the root user is deploying the database and creating the cloud user."
+msgstr ""
+
+#: ../../installation.rst:687
+# 9e82de1fc39e465b8b0b66c224c19483
+msgid "(Optional) For management\\_server\\_key, substitute the default key that is used to encrypt confidential parameters in the CloudStack properties file. Default: password. It is highly recommended that you replace this with a more secure value. See About Password and Key Encryption."
+msgstr ""
+
+#: ../../installation.rst:719
+# 13de6a8d8fe341028c60b6f04beb31b0
+msgid "About Password and Key Encryption"
+msgstr ""
+
+#: ../../installation.rst:721
+# 45fbacb318674ad8b9217f0ca90da414
+msgid "CloudStack stores several sensitive passwords and secret keys that are used to provide security. These values are always automatically encrypted:"
+msgstr ""
+
+#: ../../installation.rst:725
+# 6ad55d0faad740589f3152b45a9670d1
+msgid "Database secret key"
+msgstr ""
+
+#: ../../installation.rst:727
+# e25d10cf49454d89a0301335e4aa2c93
+msgid "Database password"
+msgstr ""
+
+#: ../../installation.rst:729
+# c73f9cf443a745509d548cecae66c1fd
+msgid "SSH keys"
+msgstr ""
+
+#: ../../installation.rst:731
+# d042f272678f4ca3a91d02bf058c6ffc
+msgid "Compute node root password"
+msgstr ""
+
+#: ../../installation.rst:733
+# d70e7fde8c6e4353a2e5a31b6b15a0ff
+msgid "VPN password"
+msgstr ""
+
+#: ../../installation.rst:735
+# a91d0ab04c504168a4f86e9e1cd8f588
+msgid "User API secret key"
+msgstr ""
+
+#: ../../installation.rst:737
+# 7c756f6f0e374ae9a1d2b96c1de9c2a0
+msgid "VNC password"
+msgstr ""
+
+#: ../../installation.rst:739
+# 3ced5a13cc124b328c89685af71bddfc
+msgid "CloudStack uses the Java Simplified Encryption (JASYPT) library. The data values are encrypted and decrypted using a database secret key, which is stored in one of CloudStack’s internal properties files along with the database password. The other encrypted values listed above, such as SSH keys, are in the CloudStack internal database."
+msgstr ""
+
+#: ../../installation.rst:745
+# 024c2c3bfb28412392653a45cfe7debe
+msgid "Of course, the database secret key itself can not be stored in the open – it must be encrypted. How then does CloudStack read it? A second secret key must be provided from an external source during Management Server startup. This key can be provided in one of two ways: loaded from a file or provided by the CloudStack administrator. The CloudStack database has a configuration setting that lets it know which of these methods will be used. If the encryption type is set to \"file,\" the key must be in a file in a known location. If the encryption type is set to \"web,\" the administrator runs the utility com.cloud.utils.crypt.EncryptionSecretKeySender, which relays the key to the Management Server over a known port."
+msgstr ""
+
+#: ../../installation.rst:757
+# 6a3a9b0c66e04e64b4c6d34a4a17bb3b
+msgid "The encryption type, database secret key, and Management Server secret key are set during CloudStack installation. They are all parameters to the CloudStack database setup script (cloudstack-setup-databases). The default values are file, password, and password. It is, of course, highly recommended that you change these to more secure keys."
+msgstr ""
+
+#: ../../installation.rst:765
+# 511008e5d7e640eea756268a06c19eb0
+msgid "Changing the Default Password Encryption"
+msgstr ""
+
+#: ../../installation.rst:767
+# ca4f4a81740849cdb9d61f0a33af6605
+msgid "Passwords are encoded when creating or updating users. CloudStack allows you to determine the default encoding and authentication mechanism for admin and user logins. Two new configurable lists have been introduced—userPasswordEncoders and userAuthenticators. userPasswordEncoders allows you to configure the order of preference for encoding passwords, whereas userAuthenticators allows you to configure the order in which authentication schemes are invoked to validate user passwords."
+msgstr ""
+
+#: ../../installation.rst:776
+# 78d6cb8f6ce74a82accf0327cbc8375d
+msgid "Additionally, the plain text user authenticator has been modified not to convert supplied passwords to their md5 sums before checking them with the database entries. It performs a simple string comparison between retrieved and supplied login passwords instead of comparing the retrieved md5 hash of the stored password against the supplied md5 hash of the password because clients no longer hash the password. The following method determines what encoding scheme is used to encode the password supplied during user creation or modification."
+msgstr ""
+
+#: ../../installation.rst:785
+# f6b78ffccd494c30be0c5efac1ab44a9
+msgid "When a new user is created, the user password is encoded by using the first valid encoder loaded as per the sequence specified in the ``UserPasswordEncoders`` property in the ``ComponentContext.xml`` or ``nonossComponentContext.xml`` files. The order of authentication schemes is determined by the ``UserAuthenticators`` property in the same files. If Non-OSS components, such as VMware environments, are to be deployed, modify the ``UserPasswordEncoders`` and ``UserAuthenticators`` lists in the ``nonossComponentContext.xml`` file, for OSS environments, such as XenServer or KVM, modify the ``ComponentContext.xml`` file. It is recommended to make uniform changes across both the files. When a new authenticator or encoder is added, you can add them to this list. While doing so, ensure that the new authenticator or encoder is specified as a bean in both these files. The administrator can change the ordering of both these properties as preferred to change the order of schemes. Modify the following list properties available in ``client/tomcatconf/nonossComponentContext.xml.in`` or ``client/tomcatconf/componentContext.xml.in`` as applicable, to the desired order:"
+msgstr ""
+
+#: ../../installation.rst:823
+# 2fcac5693d444b38b51c1e5e74dc7110
+msgid "In the above default ordering, SHA256Salt is used first for ``UserPasswordEncoders``. If the module is found and encoding returns a valid value, the encoded password is stored in the user table's password column. If it fails for any reason, the MD5UserAuthenticator will be tried next, and the order continues. For ``UserAuthenticators``, SHA256Salt authentication is tried first. If it succeeds, the user is logged into the Management server. If it fails, md5 is tried next, and attempts continues until any of them succeeds and the user logs in . If none of them works, the user is returned an invalid credential message."
+msgstr ""
+
+#: ../../installation.rst:837
+# 707a625494ae450a987664e845dc1092
+msgid "CloudStack needs a place to keep primary and secondary storage (see Cloud Infrastructure Overview). Both of these can be NFS shares. This section tells how to set up the NFS shares before adding the storage to CloudStack."
+msgstr ""
+
+#: ../../installation.rst:843
+# 0ffaec4550964c9b81b5988488ee74fa
+msgid "NFS is not the only option for primary or secondary storage. For example, you may use Ceph RBD, GlusterFS, iSCSI, and others. The choice of storage system will depend on the choice of hypervisor and whether you are dealing with primary or secondary storage."
+msgstr ""
+
+#: ../../installation.rst:848
+# d636505b4eb949d49b6786e451926f86
+msgid "The requirements for primary and secondary storage are described in:"
+msgstr ""
+
+#: ../../installation.rst:850
+# 4d264009140f4e119313dbaaf55114a5
+msgid "`“About Primary Storage” <http://docs.cloudstack.apache.org/en/latest/concepts.html#about-primary-storage>`_"
+msgstr ""
+
+#: ../../installation.rst:853
+# ed5e2e20e6ca432b95c1e7e204bd4f6a
+msgid "`“About Secondary Storage” <http://docs.cloudstack.apache.org/en/latest/concepts.html#about-secondary-storage>`_"
+msgstr ""
+
+#: ../../installation.rst:856
+# 91c1900704fd4d91b018dd2e441ce1a5
+msgid "A production installation typically uses a separate NFS server. See :ref:`using-a-separage-nfs-server`."
+msgstr ""
+
+#: ../../installation.rst:859
+# 54dae30e742c45e0bab2066517190be8
+msgid "You can also use the Management Server node as the NFS server. This is more typical of a trial installation, but is technically possible in a larger deployment. See :ref:`using-the-management-server-as-the-nfs-server`."
+msgstr ""
+
+#: ../../installation.rst:867
+# feabaaeb53214becbece68200ee0ca7f
+msgid "Using a Separate NFS Server"
+msgstr ""
+
+#: ../../installation.rst:869
+# aeb8dd69baf144c4a1df1c6f07faaec9
+msgid "This section tells how to set up NFS shares for secondary and (optionally) primary storage on an NFS server running on a separate node from the Management Server."
+msgstr ""
+
+#: ../../installation.rst:873
+#: ../../installation.rst:934
+# f25edd950f514c5fb151e7877de7ab99
+# d24aef1ed1ac409589504fe7ef5cdb29
+msgid "The exact commands for the following steps may vary depending on your operating system version."
+msgstr ""
+
+#: ../../installation.rst:877
+# bff14968bd214c0c895eda46fc9c45ff
+msgid "(KVM only) Ensure that no volume is already mounted at your NFS mount point."
+msgstr ""
+
+#: ../../installation.rst:879
+# bd33e779304a4c5a81b690637431ef5b
+msgid "On the storage server, create an NFS share for secondary storage and, if you are using NFS for primary storage as well, create a second NFS share. For example:"
+msgstr ""
+
+#: ../../installation.rst:888
+#: ../../installation.rst:951
+# 0d4f698defbb458b8ffdb5ff3dd584e0
+# ce9561250f074471a254c55f6d07c6c9
+msgid "To configure the new directories as NFS exports, edit /etc/exports. Export the NFS share(s) with rw,async,no\\_root\\_squash,no\\_subtree\\_check. For example:"
+msgstr ""
+
+#: ../../installation.rst:896
+#: ../../installation.rst:959
+# 01cfe9dc640a44f6b99cb2c58b04c173
+# 98487e7ffdaf4dac9f71cb0719b6c684
+msgid "Insert the following line."
+msgstr ""
+
+#: ../../installation.rst:902
+#: ../../installation.rst:965
+# 94ecddfb2f174696aa885e7caf1c7f5f
+# 01225b1fb90847ec8b8b089ef57ef205
+msgid "Export the /export directory."
+msgstr ""
+
+#: ../../installation.rst:908
+# ecf40e05b66948e587495e8c9b46f371
+msgid "On the management server, create a mount point for secondary storage. For example:"
+msgstr ""
+
+#: ../../installation.rst:915
+# 95a0283dd26a46928e258568441e3d29
+msgid "Mount the secondary storage on your Management Server. Replace the example NFS server name and NFS share paths below with your own."
+msgstr ""
+
+#: ../../installation.rst:926
+# 98dfcbe6dbc44fc39d0d5c0f91a45503
+msgid "Using the Management Server as the NFS Server"
+msgstr ""
+
+#: ../../installation.rst:928
+# a4b1c2a1b2bd4729afc842b2675effa2
+msgid "This section tells how to set up NFS shares for primary and secondary storage on the same node with the Management Server. This is more typical of a trial installation, but is technically possible in a larger deployment. It is assumed that you will have less than 16TB of storage on the host."
+msgstr ""
+
+#: ../../installation.rst:937
+# 640cef0f4b154773ae29c9366515551d
+msgid "On RHEL/CentOS systems, you'll need to install the nfs-utils package:"
+msgstr ""
+
+#: ../../installation.rst:943
+# e152db6773384cfb9b5fa8d9849cd959
+msgid "On the Management Server host, create two directories that you will use for primary and secondary storage. For example:"
+msgstr ""
+
+#: ../../installation.rst:971
+# fad7bb568f4f4071b3685bb833739ef0
+msgid "Edit the /etc/sysconfig/nfs file."
+msgstr ""
+
+#: ../../installation.rst:977
+# 19d379a8922248c4bb8e975ab8238b30
+msgid "Uncomment the following lines:"
+msgstr ""
+
+#: ../../installation.rst:988
+# d39f9b7efd104412bb59b14b784ea816
+msgid "Edit the /etc/sysconfig/iptables file."
+msgstr ""
+
+#: ../../installation.rst:994
+# 0c25a4130a4f43aabbf389c386a783c5
+msgid "Add the following lines at the beginning of the INPUT chain, where <NETWORK> is the network that you'll be using:"
+msgstr ""
+
+#: ../../installation.rst:1011
+# 918152dcb1464ec3aa11d25e4df65ac0
+msgid "Run the following commands:"
+msgstr ""
+
+#: ../../installation.rst:1018
+# 8d7934cc7a674dc19677d0cca7b03f94
+msgid "If NFS v4 communication is used between client and server, add your domain to /etc/idmapd.conf on both the hypervisor host and Management Server."
+msgstr ""
+
+#: ../../installation.rst:1026
+# 553ce0f07b7b4689b7b85036357ca826
+msgid "Remove the character # from the beginning of the Domain line in idmapd.conf and replace the value in the file with your own domain. In the example below, the domain is company.com."
+msgstr ""
+
+#: ../../installation.rst:1034
+# 340dd6777da046a397391290dfe94ebb
+msgid "Reboot the Management Server host."
+msgstr ""
+
+#: ../../installation.rst:1036
+# 9b857a533abc42eea805251524f28b97
+msgid "Two NFS shares called /export/primary and /export/secondary are now set up."
+msgstr ""
+
+#: ../../installation.rst:1039
+# 0cf24cf59b9f4a5dbbdb2c51c7775ad5
+msgid "It is recommended that you test to be sure the previous steps have been successful."
+msgstr ""
+
+#: ../../installation.rst:1042
+# cbaa4d9e49e74255b3290e9820d55ef3
+msgid "Log in to the hypervisor host."
+msgstr ""
+
+#: ../../installation.rst:1044
+# 30e95a69d0a94a719e40f41b7a0bd06f
+msgid "Be sure NFS and rpcbind are running. The commands might be different depending on your OS. For example:"
+msgstr ""
+
+#: ../../installation.rst:1055
+# eef0133ebeee4897a60b1e510c32b865
+msgid "Log back in to the hypervisor host and try to mount the /export directories. For example, substitute your own management server name:"
+msgstr ""
+
+#: ../../installation.rst:1070
+# 945ffae66da941eea53781a93218bc1c
+msgid "Prepare and Start Additional Management Servers"
+msgstr ""
+
+#: ../../installation.rst:1072
+# d30a2d1b35064949905881c761a8c32f
+msgid "For your second and subsequent Management Servers, you will install the Management Server software, connect it to the database, and set up the OS for the Management Server."
+msgstr ""
+
+#: ../../installation.rst:1076
+# 386574bc8a1942f1a013e2260e7ec892
+msgid "Perform the steps in `“Prepare the Operating System” <#prepare-the-operating-system>`_ and `“Building RPMs from Source” <building_from_source.html#building-rpms-from-source>`_ or `“Building DEB packages” <building_from_source.html#building-deb-packages>`_ as appropriate."
+msgstr ""
+
+#: ../../installation.rst:1082
+# 9516fb7c54fc446ab76267a90611e209
+msgid "This step is required only for installations where XenServer is installed on the hypervisor hosts."
+msgstr ""
+
+#: ../../installation.rst:1085
+# 60bd480d13124c16b4c8774b8abd5439
+msgid "Download vhd-util from `vhd-util <http://download.cloud.com.s3.amazonaws.com/tools/vhd-util>`_"
+msgstr ""
+
+#: ../../installation.rst:1088
+# 3b0ff1adaf804ec4b60b43307747e306
+msgid "Copy vhd-util to /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver."
+msgstr ""
+
+#: ../../installation.rst:1091
+# 7a0ee162adde4c378073eeafb4a655f2
+msgid "Ensure that necessary services are started and set to start on boot."
+msgstr ""
+
+#: ../../installation.rst:1100
+# 24f30a5c2b9347fabde885434d2e78ed
+msgid "Configure the database client. Note the absence of the --deploy-as argument in this case. (For more details about the arguments to this command, see :ref:`install-database-on-separate-node`.)"
+msgstr ""
+
+#: ../../installation.rst:1108
+# 23d438dc604d4fd8a118a19e36271c4c
+msgid "Configure the OS and start the Management Server:"
+msgstr ""
+
+#: ../../installation.rst:1114
+# fdcd15f0de9849368878cc14f5725df2
+msgid "The Management Server on this node should now be running."
+msgstr ""
+
+#: ../../installation.rst:1116
+# 460f1039702f42858ad204d933e5758a
+msgid "Repeat these steps on each additional Management Server."
+msgstr ""
+
+#: ../../installation.rst:1118
+# c73ab983e4b14d3faa16deaaf4ab7520
+msgid "Be sure to configure a load balancer for the Management Servers. See `“Management Server Load Balancing” <http://docs.cloudstack.apache.org/en/latest/administration_guide.html?highlight=management%20server%20load#management-server-load-balancing>`_."
+msgstr ""
+
+#: ../../installation.rst:1126
+# 85b606d2b0044935b6e9fd3b1af045b3
+msgid "Secondary storage must be seeded with a template that is used for CloudStack system VMs."
+msgstr ""
+
+#: ../../installation.rst:1130
+# 4029e03b5ab24a4a88751a9c1a018ea2
+msgid "When copying and pasting a command, be sure the command has pasted as a single line before executing. Some document viewers may introduce unwanted line breaks in copied text."
+msgstr ""
+
+#: ../../installation.rst:1134
+# cbf94fb3cbf14df48bfb47c0dd21af6f
+msgid "On the Management Server, run one or more of the following cloud-install-sys-tmplt commands to retrieve and decompress the system VM template. Run the command for each hypervisor type that you expect end users to run in this Zone."
+msgstr ""
+
+#: ../../installation.rst:1139
+# e7bff9caa9f84e8c848d4d19b0daba94
+msgid "If your secondary storage mount point is not named /mnt/secondary, substitute your own mount point name."
+msgstr ""
+
+#: ../../installation.rst:1142
+# b4aef1ef071f4b71a00b3f645a1a228f
+msgid "If you set the CloudStack database encryption type to \"web\" when you set up the database, you must now add the parameter -s <management-server-secret-key>. See :ref:`about-password-key-encryption`."
+msgstr ""
+
+#: ../../installation.rst:1146
+# 5b51c5731c5740238035e396516eea52
+msgid "This process will require approximately 5 GB of free space on the local file system and up to 30 minutes each time it runs."
+msgstr ""
+
+#: ../../installation.rst:1149
+# fbc4137a3c07458cb016857d765e8e8b
+msgid "For Hyper-V"
+msgstr ""
+
+#: ../../installation.rst:1155
+# 42d30039e33e4a5c89d13a11b25f2545
+msgid "For XenServer:"
+msgstr ""
+
+#: ../../installation.rst:1161
+# 8a428eb947444e7f8a53951d031cfd23
+msgid "For vSphere:"
+msgstr ""
+
+#: ../../installation.rst:1167
+# 4ebe05af6f144d5b92d47b0a04c3669e
+msgid "For KVM:"
+msgstr ""
+
+#: ../../installation.rst:1173
+# 74cd4b53c2a04c45a2eec8761ae5ef2d
+msgid "For LXC:"
+msgstr ""
+
+#: ../../installation.rst:1179
+# 88ddfa6d01ea4de4a01489ecaa5809b1
+msgid "On Ubuntu, use the following path instead:"
+msgstr ""
+
+#: ../../installation.rst:1185
+# f288b19ac3584ac7a502423d40a8558c
+msgid "If you are using a separate NFS server, perform this step. If you are using the Management Server as the NFS server, you MUST NOT perform this step."
+msgstr ""
+
+#: ../../installation.rst:1189
+# 631bd8031bcf47d3a5e8dff1fd222d47
+msgid "When the script has finished, unmount secondary storage and remove the created directory."
+msgstr ""
+
+#: ../../installation.rst:1197
+# 3534852d9cc24d0dbc62b391e336cf0c
+msgid "Repeat these steps for each secondary storage server."
+msgstr ""
+
+#: ../../installation.rst:1201
+# a6cf95cb9f38452bbd3598d0c01df2cc
+msgid "Installation Complete! Next Steps"
+msgstr ""
+
+#: ../../installation.rst:1203
+# 6294cacb33fa4969b3bf3bc985881f83
+msgid "Congratulations! You have now installed CloudStack Management Server and the database it uses to persist system data."
+msgstr ""
+
+#: ../../installation.rst:1206
+# 482158ea55144603a694e07d25bb404b
+msgid "|installation-complete.png: Finished installs with single Management Server and multiple Management Servers|"
+msgstr ""
+
+#: ../../installation.rst:1209
+# bdf25769af294a0ea01aafc7a30ad5c1
+msgid "What should you do next?"
+msgstr ""
+
+#: ../../installation.rst:1211
+# e9e84870ee234e5f960460ac41635237
+msgid "Even without adding any cloud infrastructure, you can run the UI to get a feel for what's offered and how you will interact with CloudStack on an ongoing basis. See Log In to the UI."
+msgstr ""
+
+#: ../../installation.rst:1215
+# f1bed9af0dd54d0dbd297f8615f6d35e
+msgid "When you're ready, add the cloud infrastructure and try running some virtual machines on it, so you can watch how CloudStack manages the infrastructure. See Provision Your Cloud Infrastructure."
+msgstr ""
+

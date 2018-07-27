@@ -1,0 +1,78 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache CloudStack
+# This file is distributed under the same license as the Apache CloudStack package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack 4.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-31 13:49-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../index.rst:7
+# 23c03bcc367d4722babe767a2ded0a0a
+msgid "Welcome to CloudStack Documentation !"
+msgstr ""
+
+#: ../../index.rst:12
+# 3351811001dc4ad88fd1c24e26edc842
+msgid "We are in the process of changing documentation format as well as hosting mechanism. Please be patient with us as we migrate our entire documentation to this new setup."
+msgstr ""
+
+#: ../../index.rst:16
+# 0c1f1b982e1f4ea0ab2e59763b54e0af
+msgid "Introduction"
+msgstr ""
+
+#: ../../index.rst:24
+# e5a4d610461549f2b9e9052a9bd37144
+msgid "Navigating the docs"
+msgstr ""
+
+#: ../../index.rst:26
+# b6ac1efdb8e346ad887e3d1bca3353cf
+msgid "Now that you have gone over the basic concepts of CloudStack you are ready to dive into the installation and operation."
+msgstr ""
+
+#: ../../index.rst:28
+# cbfe4ed11b86453ba3a3afc35075b554
+msgid "See the `Installation Guide <http://docs.cloudstack.apache.org/projects/cloudstack-installation>`_"
+msgstr ""
+
+#: ../../index.rst:30
+# 5fede185b96b42dea9024c0107dc3cbd
+msgid "See the `Administration Guide <http://docs.cloudstack.apache.org/projects/cloudstack-administration>`_"
+msgstr ""
+
+#: ../../index.rst:32
+# 0e4c89a1c62a42c687b191be08fce2bd
+msgid "See the `Release Notes <http://docs.cloudstack.apache.org/projects/cloudstack-release-notes>`_"
+msgstr ""
+
+#: ../../index.rst:34
+# ceeeb54aa3c144398acf5e519ee0948d
+msgid "Below you will find very specific documentation on advanced networking_ which you can skip if you are just getting started."
+msgstr ""
+
+#: ../../index.rst:36
+# bbf8a8d000f444838cea0bbca7cba655
+msgid "Developers will also find below a short developers_ guide."
+msgstr ""
+
+#: ../../index.rst:41
+# 8f8db100dd114a79a5c5ccb6e82fb3b9
+msgid "Advanced Networking Guides"
+msgstr ""
+
+#: ../../index.rst:56
+# 0fbbad32147342afad57da40b4b35f6d
+msgid "Developers Guide"
+msgstr ""
+

@@ -1,0 +1,1095 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: 2014-06-30 10:26+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-installation-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# ebeb1b4a092d444ea21ba9ad826adffe
+#: ../../hypervisor/kvm.rst:18
+msgid "KVM Hypervisor Host Installation"
+msgstr "KVM  Hypervisor主机安装"
+
+# 97cb5ce75570443fb1ad7cf720fdab2a
+#: ../../hypervisor/kvm.rst:21
+msgid "System Requirements for KVM Hypervisor Hosts"
+msgstr "KVM Hypervisor 主机系统要求"
+
+# 9e938eeaf34e4bacb41261551600a15d
+#: ../../hypervisor/kvm.rst:23
+msgid ""
+"KVM is included with a variety of Linux-based operating systems. Although "
+"you are not required to run these distributions, the following are "
+"recommended:"
+msgstr "KVM包含在多种基于Linux的操作系统中。尽管不作要求，但是我们推荐以下发行版："
+
+# 01060377fba240b98bfb3214ded11e8c
+#: ../../hypervisor/kvm.rst:27
+msgid "CentOS / RHEL: 6.3"
+msgstr "CentOS / RHEL: 6.3"
+
+# c65d0ad029984ec697cc18cf30a3cadc
+#: ../../hypervisor/kvm.rst:29
+msgid "Ubuntu: 12.04(.1)"
+msgstr "Ubuntu: 12.04(.1)"
+
+# 2c83e5c69a214b408332608c4f0cd35c
+#: ../../hypervisor/kvm.rst:31
+msgid ""
+"The main requirement for KVM hypervisors is the libvirt and Qemu version. No"
+" matter what Linux distribution you are using, make sure the following "
+"requirements are met:"
+msgstr "KVM hypervisors主要要求在于libvirt和Qemu版本。不管您使用何种Linux版本，请确保满足以下要求："
+
+# 41d119144cb04445888526ae22eaff17
+#: ../../hypervisor/kvm.rst:35
+msgid "libvirt: 0.9.4 or higher"
+msgstr "libvirt: 0.9.4 或更高版本"
+
+# c01a69a6ea624526aed8eb093c9580c7
+#: ../../hypervisor/kvm.rst:37
+msgid "Qemu/KVM: 1.0 or higher"
+msgstr "Qemu/KVM: 1.0 或更高版本"
+
+# 651ec4f15bf24d0ca383e80951a6ab85
+#: ../../hypervisor/kvm.rst:39
+msgid ""
+"The default bridge in CloudStack is the Linux native bridge implementation "
+"(bridge module). CloudStack includes an option to work with OpenVswitch, the"
+" requirements are listed below"
+msgstr "CloudStack中的默认使用Linux本身的桥接(bridge模块)方式实现。也可选择在CloudStack中使用OpenVswitch，具体要求如下："
+
+# 38d4ca03c8c24e2c9d6cd87e5c0b1d17
+#: ../../hypervisor/kvm.rst:43
+msgid "libvirt: 0.9.11 or higher"
+msgstr "libvirt: 0.9.11 或更高版本"
+
+# 55b8b19e86c9462297d454cf0f32bb13
+#: ../../hypervisor/kvm.rst:45
+msgid "openvswitch: 1.7.1 or higher"
+msgstr "openvswitch: 1.7.1或更高版本"
+
+# 8bb45c3db83e4685a2f5f9b56c255a67
+#: ../../hypervisor/kvm.rst:47
+msgid "In addition, the following hardware requirements apply:"
+msgstr "此外，硬件要求如下："
+
+# a3affcf8d2194e6ca7031037e7498bea
+#: ../../hypervisor/kvm.rst:49
+msgid ""
+"Within a single cluster, the hosts must be of the same distribution version."
+msgstr "同一集群中主机必须使用相同版本的Linux系统。"
+
+# fc001eaf8fb842d7adbbf5bb977be8fd
+#: ../../hypervisor/kvm.rst:52
+msgid ""
+"All hosts within a cluster must be homogenous. The CPUs must be of the same "
+"type, count, and feature flags."
+msgstr "同一群集中的所有节点架构必须一致。CPU的型号、数量和功能参数必须相同。"
+
+# 040002ad5b674b0c821aa9750f44d966
+#: ../../hypervisor/kvm.rst:55
+msgid "Must support HVM (Intel-VT or AMD-V enabled)"
+msgstr "必须支持HVM(Intel-VT或者AMD-V)"
+
+# 430eb7a34d084edc906c29088ecd022d
+#: ../../hypervisor/kvm.rst:57
+msgid "64-bit x86 CPU (more cores results in better performance)"
+msgstr "64位x86 CPU(多核性能更佳)"
+
+# 7a5ab30337ea4ad3911e07092171034c
+#: ../../hypervisor/kvm.rst:59
+msgid "4 GB of memory"
+msgstr "4GB 内存"
+
+# 54804b801477441396a656d1f55ce683
+#: ../../hypervisor/kvm.rst:61
+msgid "At least 1 NIC"
+msgstr "至少一块网卡"
+
+# 3d590f343f0c40e8a3ead4dd2fe2fa47
+#: ../../hypervisor/kvm.rst:63
+msgid ""
+"When you deploy CloudStack, the hypervisor host must not have any VMs "
+"already running"
+msgstr "在部署CloudStack时，Hypervisor主机不能运行任何虚拟机"
+
+# 8b68c1fe985341dcb44b491222fc84ad
+#: ../../hypervisor/kvm.rst:68
+msgid "KVM Installation Overview"
+msgstr "KVM安装概述"
+
+# b9ec75165d5f4c29afccc0e271256a34
+#: ../../hypervisor/kvm.rst:70
+msgid ""
+"If you want to use the Linux Kernel Virtual Machine (KVM) hypervisor to run "
+"guest virtual machines, install KVM on the host(s) in your cloud. The "
+"material in this section doesn't duplicate KVM installation docs. It "
+"provides the CloudStack-specific steps that are needed to prepare a KVM host"
+" to work with CloudStack."
+msgstr "如果你想使用 KVM hypervisor来运行虚拟机，请在你的云环境中安装KVM主机。本章节不会复述KVM的安装文档。它提供了KVM主机与CloudStack协同工作所要准备特有的步骤。"
+
+# f5be326bc3d74ee58f731bc68b96b0fb
+#: ../../hypervisor/kvm.rst:77
+msgid ""
+"Before continuing, make sure that you have applied the latest updates to "
+"your host."
+msgstr "在我们开始之前，请确保所有的主机都安装了最新的更新包。"
+
+# 4e04ebf1f4b34b6cafaa81b1db7348cb
+#: ../../hypervisor/kvm.rst:81
+msgid ""
+"It is NOT recommended to run services on this host not controlled by "
+"CloudStack."
+msgstr "不建议在主机中运行与CloudStack无关的服务。"
+
+# 05cc9620411849a395036ae746c8c8ab
+#: ../../hypervisor/kvm.rst:84
+msgid "The procedure for installing a KVM Hypervisor Host is:"
+msgstr "安装KVM主机的过程："
+
+# 6021037c1bdc4f11a0e777ddb5074991
+# 2587ced26d8445e89dc4b8dc2392793f
+#: ../../hypervisor/kvm.rst:86 ../../hypervisor/kvm.rst:96
+msgid "Prepare the Operating System"
+msgstr "准备操作系统"
+
+# 3e3ad1c9b475475d8c6d84148d8a187b
+#: ../../hypervisor/kvm.rst:88
+msgid "Install and configure libvirt"
+msgstr "安装和配置libvirt"
+
+# bfef16f0f0344071beb3918d9b215e58
+#: ../../hypervisor/kvm.rst:90
+msgid "Configure Security Policies (AppArmor and SELinux)"
+msgstr "配置安全策略 (AppArmor 和 SELinux)"
+
+# 4343245b910e46b2889fad1a299a3a6d
+# 13ebc121a8db4e73b1da322e022b044e
+#: ../../hypervisor/kvm.rst:92 ../../hypervisor/kvm.rst:139
+msgid "Install and configure the Agent"
+msgstr "安装和配置Agent"
+
+# 0da476eb6feb4293aff700a82bfb838e
+#: ../../hypervisor/kvm.rst:98
+msgid ""
+"The OS of the Host must be prepared to host the CloudStack Agent and run KVM"
+" instances."
+msgstr "主机的操作系统必须为运行CloudStack Agent和KVM实例做些准备。"
+
+# bdd309f671e84b25b03a65509e8f6b42
+#: ../../hypervisor/kvm.rst:101
+msgid "Log in to your OS as root."
+msgstr "使用root用户登录操作系统。"
+
+# 2994046162c749719c61badf46ac4ad3
+#: ../../hypervisor/kvm.rst:103
+msgid "Check for a fully qualified hostname."
+msgstr "检查FQN完全合格/限定主机名。"
+
+# 7140e2b27dea40f8b406eb3c53a6926a
+#: ../../hypervisor/kvm.rst:109
+msgid ""
+"This should return a fully qualified hostname such as "
+"\"kvm1.lab.example.org\". If it does not, edit /etc/hosts so that it does."
+msgstr "该命令会返回完全合格/限定主机名，例如\"kvm1.lab.example.org\"。如果没有，请编辑 /etc/hosts。"
+
+# d097f223788942dca1e0f0e3a835719d
+#: ../../hypervisor/kvm.rst:113
+msgid "Make sure that the machine can reach the Internet."
+msgstr "确保机器可以连接到互联网."
+
+# e9e925f675b24298904628fe8d5d3e22
+#: ../../hypervisor/kvm.rst:119
+msgid "Turn on NTP for time synchronization."
+msgstr "启用NTP服务以确保时间同步."
+
+# e0e2735eb1544cbea55afc3efd41e42e
+#: ../../hypervisor/kvm.rst:122
+msgid ""
+"NTP is required to synchronize the clocks of the servers in your cloud. "
+"Unsynchronized clocks can cause unexpected problems."
+msgstr "NTP服务用来同步云中的服务器时间。时间不同步会带来意想不到的问题。"
+
+# fd84cef5844c4bb4861e1a723be7b730
+#: ../../hypervisor/kvm.rst:125
+msgid "Install NTP"
+msgstr "安装NTP"
+
+# 43ee16ce469842bdb337c3e50b34061c
+#: ../../hypervisor/kvm.rst:135
+msgid "Repeat all of these steps on every hypervisor host."
+msgstr "在所有主机中重复上述步骤。"
+
+# 5fe0d335c6f646c987b8e7f2c3c9176d
+#: ../../hypervisor/kvm.rst:141
+msgid ""
+"To manage KVM instances on the host CloudStack uses a Agent. This Agent "
+"communicates with the Management server and controls all the instances on "
+"the host."
+msgstr "CloudStack使用Agent来管理KVM实例。Agent与管理服务器通讯并控制主机上所有的虚拟机。"
+
+# 6e696930e763476fabe3f4eee7ff4119
+#: ../../hypervisor/kvm.rst:145
+msgid "First we start by installing the agent:"
+msgstr "首先我们安装Agent："
+
+# 707c5512b9c244b29a78dff8a4299a43
+# 1640e85f451b43bf9287ea34e03d19d0
+# 7296990676914572906f8131a2c931ca
+#: ../../hypervisor/kvm.rst:147 ../../hypervisor/kvm.rst:297
+#: ../../hypervisor/kvm.rst:333
+msgid "In RHEL or CentOS:"
+msgstr "在RHEL/CentOS上:"
+
+# b558c002a308451c962adfba860db12a
+# c6cfcfd744df46039292c75ce9c00344
+#: ../../hypervisor/kvm.rst:153 ../../hypervisor/kvm.rst:303
+msgid "In Ubuntu:"
+msgstr "在Ubuntu上:"
+
+# 996e7f4699cf4e99812ef4193d0f5522
+# 0066de97fb884b43b6b6e86bdc4a8d19
+#: ../../hypervisor/kvm.rst:159 ../../hypervisor/kvm.rst:880
+msgid ""
+"The host is now ready to be added to a cluster. This is covered in a later "
+"section, see :ref:`adding-a-host`. It is recommended that you continue to "
+"read the documentation before adding the host!"
+msgstr "现在主机已经为加入群集做好准备。后面的章节有介绍，请参阅 :ref:`adding-a-host`。强烈建议在添加主机之前阅读此部分内容。"
+
+# 4896f6ced9d2426d815ed0b39e1f2f4a
+#: ../../hypervisor/kvm.rst:166
+msgid "Configure CPU model for KVM guest (Optional)"
+msgstr "配置KVM虚拟机的CPU型号(可选)"
+
+# 20ff9499c4f34a21932f12ab3ace15d5
+#: ../../hypervisor/kvm.rst:168
+msgid ""
+"In additional,the CloudStack Agent allows host administrator to control the "
+"guest CPU model which is exposed to KVM instances. By default, the CPU model"
+" of KVM instance is likely QEMU Virtual CPU version x.x.x with least CPU "
+"features exposed. There are a couple of reasons to specify the CPU model:"
+msgstr "此外，CloudStack Agent允许主机管理员控制KVM实例中的CPU型号。默认情况下，KVM实例的CPU型号为只有少数CPU特性且版本为xxx的QEMU Virtual CPU。指定CPU型号有几个原因："
+
+# 6e0e4449f4ec4464a09f85e60e4370ed
+#: ../../hypervisor/kvm.rst:174
+msgid ""
+"To maximise performance of instances by exposing new host CPU features to "
+"the KVM instances;"
+msgstr "通过主机CPU的特性最大化提升KVM实例的性能；"
+
+# c7628f91810a40ccb39bcf8305be59da
+#: ../../hypervisor/kvm.rst:177
+msgid ""
+"To ensure a consistent default CPU across all machines,removing reliance of "
+"variable QEMU defaults;"
+msgstr "确保所有机器的默认CPU保持一致，消除对QEMU变量的依赖。"
+
+# c7ea77c20a4345ba96d87413aa516fb5
+#: ../../hypervisor/kvm.rst:180
+msgid ""
+"For the most part it will be sufficient for the host administrator to "
+"specify the guest CPU config in the per-host configuration file "
+"(/etc/cloudstack/agent/agent.properties). This will be achieved by "
+"introducing two new configuration parameters:"
+msgstr "在大多数情况下,主机管理员需要每个主机配置文件(/etc/cloudstack/agent/agent.properties)中指定guest虚拟机的CPU配置。这将通过引入两个新的配置参数来实现："
+
+# b49256d2460d47f688c7624e3f4e6a72
+#: ../../hypervisor/kvm.rst:190
+msgid "There are three choices to fulfill the cpu model changes:"
+msgstr "更改CPU型号有三个选择："
+
+# 07a33361eda847d59a1ac15adc6af65f
+#: ../../hypervisor/kvm.rst:192
+msgid ""
+"**custom:** you can explicitly specify one of the supported named model in "
+"/usr/share/libvirt/cpu\\_map.xml"
+msgstr "**custom:** 您可以指定一个在/usr/share/libvirt/cpu\\_map.xml文件中所支持的型号名称。"
+
+# 6282d4279ada4fb88884fea8fd73cd06
+#: ../../hypervisor/kvm.rst:195
+msgid ""
+"**host-model:** libvirt will identify the CPU model in "
+"/usr/share/libvirt/cpu\\_map.xml which most closely matches the host, and "
+"then request additional CPU flags to complete the match. This should give "
+"close to maximum functionality/performance, which maintaining good "
+"reliability/compatibility if the guest is migrated to another host with "
+"slightly different host CPUs."
+msgstr "**host-model:** libvirt可以识别出在/usr/share/libvirt/cpu\\_map.xml中与主机最接近的CPU型号，然后请求其他的CPU flags完成匹配。如果虚拟机迁移到其他CPU稍有不同的主机中，保持好的可靠性/兼容性能提供最多的功能和最大限度提示的性能。"
+
+# f8b3348db3b04cfaa45ddadb3e295515
+#: ../../hypervisor/kvm.rst:202
+msgid ""
+"**host-passthrough:** libvirt will tell KVM to passthrough the host CPU with"
+" no modifications. The difference to host-model, instead of just matching "
+"feature flags, every last detail of the host CPU is matched. This gives "
+"absolutely best performance, and can be important to some apps which check "
+"low level CPU details, but it comes at a cost with respect to migration: the"
+" guest can only be migrated to an exactly matching host CPU."
+msgstr "**host-passthrough:** libvirt 会告诉KVM没有修改过CPU passthrough的主机。与host-model的差别是不仅匹配flags特性，还要匹配CPU的每一个特性。他能提供最好的性能， 同时对一些检查CPU底层特性的应用程序很重要，但这样会带来一些迁移的代价：虚拟机只会迁移到CPU完全匹配的主机上。"
+
+# 47f1633a109745c68733dbe0a7ba9ce9
+#: ../../hypervisor/kvm.rst:210
+msgid "Here are some examples:"
+msgstr "这里有一些示例："
+
+# d710e6fa4277486c8d61b2f169b7f2b3
+#: ../../hypervisor/kvm.rst:212
+msgid "custom"
+msgstr "custom"
+
+# f5b710b35db840c7affadc4299dae2e5
+#: ../../hypervisor/kvm.rst:219
+msgid "host-model"
+msgstr "host-model"
+
+# aecbb45afbe5482aa5532e1d54f55842
+#: ../../hypervisor/kvm.rst:225
+msgid "host-passthrough"
+msgstr "host-passthrough"
+
+# fb86e9deb45745bd9fac900c4f7e7ec6
+#: ../../hypervisor/kvm.rst:232
+msgid ""
+"host-passthrough may lead to migration failure,if you have this problem, you"
+" should use host-model or custom"
+msgstr ""
+
+# 00afd93377104391bc056ba2988ad1d5
+#: ../../hypervisor/kvm.rst:237
+msgid "Install and Configure libvirt"
+msgstr "安装和配置libvirt"
+
+# ac5f3de595104874aca72f9e3e908bb2
+#: ../../hypervisor/kvm.rst:239
+msgid ""
+"CloudStack uses libvirt for managing virtual machines. Therefore it is vital"
+" that libvirt is configured correctly. Libvirt is a dependency of "
+"cloudstack-agent and should already be installed."
+msgstr "CloudStack使用libvirt管理虚拟机。因此正确地配置libvirt至关重要。CloudStack-agent依赖于Libvirt，应提前安装完毕。"
+
+# ed8dd766459147cbb85ff50d90c4b80e
+#: ../../hypervisor/kvm.rst:243
+msgid ""
+"In order to have live migration working libvirt has to listen for unsecured "
+"TCP connections. We also need to turn off libvirts attempt to use Multicast "
+"DNS advertising. Both of these settings are in "
+"``/etc/libvirt/libvirtd.conf``"
+msgstr "为了实现动态迁移libvirt需要监听不可靠的TCP连接。还要关闭libvirts尝试使用组播DNS进行广播。这些都可以在 /etc/libvirt/libvirtd.conf文件中进行配置。"
+
+# 25fdfe15f0fd4e42a8859066fd10be16
+#: ../../hypervisor/kvm.rst:248
+msgid "Set the following parameters:"
+msgstr "设定下列参数："
+
+# b077d28a7fb14c0da6df9ced98d909bd
+#: ../../hypervisor/kvm.rst:270
+msgid ""
+"Turning on \"listen\\_tcp\" in libvirtd.conf is not enough, we have to "
+"change the parameters as well:"
+msgstr "除了在libvirtd.conf中打开\"listen_tcp\"以外，我们还必须修改/etc/sysconfig/libvirtd中的参数:"
+
+# fe5a6a536a154770ac58fbf4ace2ce6e
+#: ../../hypervisor/kvm.rst:273
+msgid "On RHEL or CentOS modify ``/etc/sysconfig/libvirtd``:"
+msgstr "在RHEL或者CentOS中修改 ``/etc/sysconfig/libvirtd``："
+
+# d50d8ab0ec584f1bbdc8af56f6265ffc
+#: ../../hypervisor/kvm.rst:275
+msgid "Uncomment the following line:"
+msgstr "取消如下行的注释："
+
+# 3f26c856207e4381bf305695a8a1b875
+#: ../../hypervisor/kvm.rst:281
+msgid "On Ubuntu: modify ``/etc/default/libvirt-bin``"
+msgstr "在Ubuntu中:修改 ``/etc/default/libvirt-bin`` "
+
+# 6115b7018d9740c4913aacc4a4c661b2
+#: ../../hypervisor/kvm.rst:283
+msgid "Add \"-l\" to the following line"
+msgstr "在下列行添加 \"-l\""
+
+# fcea59d4e03647eeaeaa3ac4932357ac
+#: ../../hypervisor/kvm.rst:289
+msgid "so it looks like:"
+msgstr "如下所示:"
+
+# a61d4201e47640b197fdfbcd22c10e63
+#: ../../hypervisor/kvm.rst:295
+msgid "Restart libvirt"
+msgstr "重启libvirt服务"
+
+# f5d8d474c64344d19b502d403b56e5ac
+#: ../../hypervisor/kvm.rst:311
+msgid "Configure the Security Policies"
+msgstr "配置安全策略"
+
+# a4cdda146bad44b39bbc09b937240984
+#: ../../hypervisor/kvm.rst:313
+msgid ""
+"CloudStack does various things which can be blocked by security mechanisms "
+"like AppArmor and SELinux. These have to be disabled to ensure the Agent has"
+" all the required permissions."
+msgstr "CloudStack的会被例如AppArmor和SELinux的安全机制阻止。必须关闭安全机制并确保 Agent具有所必需的权限。"
+
+# 4b7a44bcec124017bf23bc0dd76e7428
+#: ../../hypervisor/kvm.rst:317
+msgid "Configure SELinux (RHEL and CentOS)"
+msgstr "配置SELinux（RHEL和CentOS）："
+
+# fc143c3fe742401a9106eafabea70c57
+#: ../../hypervisor/kvm.rst:319
+msgid ""
+"Check to see whether SELinux is installed on your machine. If not, you can "
+"skip this section."
+msgstr "检查你的机器是否安装了SELinux。如果没有，请跳过此部分。"
+
+# 2b54567dbb364fddb556f971dd10b551
+#: ../../hypervisor/kvm.rst:322
+msgid ""
+"In RHEL or CentOS, SELinux is installed and enabled by default. You can "
+"verify this with:"
+msgstr "在RHEL或者CentOS中，SELinux是默认安装并启动的。你可以使用如下命令验证："
+
+# 80c7202620bb48148e037b74df42ee70
+#: ../../hypervisor/kvm.rst:329
+msgid ""
+"Set the SELINUX variable in ``/etc/selinux/config`` to \"permissive\". This "
+"ensures that the permissive setting will be maintained after a system "
+"reboot."
+msgstr "在 ``/etc/selinux/config`` 中设置SELINUX变量值为 \"permissive\"。这样能确保对SELinux的设置在系统重启之后依然生效。"
+
+# 4cad5c113a6d40c78b1deced30e96b20
+#: ../../hypervisor/kvm.rst:339
+msgid "Change the following line"
+msgstr "查找如下行"
+
+# c97ebe4c24c3452b87cde950fe2fc4c8
+#: ../../hypervisor/kvm.rst:345
+msgid "to this"
+msgstr "修改为"
+
+# 1fe4df6a30c94763bdb8884755fdcdce
+#: ../../hypervisor/kvm.rst:351
+msgid ""
+"Then set SELinux to permissive starting immediately, without requiring a "
+"system reboot."
+msgstr "然后使SELinux立即运行于permissive模式，无需重新启动系统。"
+
+# 0af84eecf2664f6cb9301604df585e10
+#: ../../hypervisor/kvm.rst:358
+msgid "Configure Apparmor (Ubuntu)"
+msgstr "配置AppArmor(Ubuntu)"
+
+# fc4f77ded77f4d28afca68609461f0bb
+#: ../../hypervisor/kvm.rst:360
+msgid ""
+"Check to see whether AppArmor is installed on your machine. If not, you can "
+"skip this section."
+msgstr "检查你的机器中是否安装了AppArmor。如果没有，请跳过此部分。"
+
+# 04268552313d40f3a6be6f7a36fa99fe
+#: ../../hypervisor/kvm.rst:363
+msgid ""
+"In Ubuntu AppArmor is installed and enabled by default. You can verify this "
+"with:"
+msgstr "Ubuntu中默认安装并启动AppArmor。使用如下命令验证："
+
+# 6fd96cf6f5224881a383a21dd3963718
+#: ../../hypervisor/kvm.rst:370
+msgid "Disable the AppArmor profiles for libvirt"
+msgstr "在AppArmor配置文件中禁用libvirt"
+
+# af0b6b3d14164b38bb854739db62c3f5
+#: ../../hypervisor/kvm.rst:390
+msgid "Configure the network bridges"
+msgstr "配置网络桥接"
+
+# fa37fe8e08ec4f3a956c501d3aa88019
+# 4fa42c30b73c4240b8836f967070df3a
+#: ../../hypervisor/kvm.rst:393 ../../hypervisor/kvm.rst:616
+msgid ""
+"This is a very important section, please make sure you read this thoroughly."
+msgstr "本章节非常重要，请务必彻底理解。"
+
+# 9ec0bad9717b478889252f4b10b4ebf0
+#: ../../hypervisor/kvm.rst:396
+msgid ""
+"This section details how to configure bridges using the native "
+"implementation in Linux. Please refer to the next section if you intend to "
+"use OpenVswitch"
+msgstr "本章节详细介绍了如何使用Linux自带的软件配置桥接网络。如果要使用OpenVswitch，请看下一章节。"
+
+# f6707b5fbc3f4ea2a4baa8b33756195f
+# bbbbeeb75efc49bbb12e571702c69490
+#: ../../hypervisor/kvm.rst:400 ../../hypervisor/kvm.rst:618
+msgid ""
+"In order to forward traffic to your instances you will need at least two "
+"bridges: *public* and *private*."
+msgstr "为了转发流量到实例，至少需要两个桥接网络： *public* 和 *private*。"
+
+# 3bcaf96162614d5a990b65c272e2627f
+# 70d93337f9884c43b723d19f188000c6
+#: ../../hypervisor/kvm.rst:403 ../../hypervisor/kvm.rst:621
+msgid ""
+"By default these bridges are called *cloudbr0* and *cloudbr1*, but you do "
+"have to make sure they are available on each hypervisor."
+msgstr " 默认情况下，这些桥接被称为*cloudbr0*和*cloudbr1*，但必须确保他们在每个hypervisor上都是可用的。"
+
+# 965691e1a7d742b4a8c0360d6c31e2f6
+# d4d5af0a56be4b0093be521d30e2f4c2
+#: ../../hypervisor/kvm.rst:406 ../../hypervisor/kvm.rst:624
+msgid ""
+"The most important factor is that you keep the configuration consistent on "
+"all your hypervisors."
+msgstr "最重要的因素是所有hypervisors上的配置要保持一致。"
+
+# 8457ada239b24dc388b653310867751e
+# 9e68314d8d8e4f319f85e5d12ec665dc
+#: ../../hypervisor/kvm.rst:411 ../../hypervisor/kvm.rst:643
+msgid "Network example"
+msgstr "网络示例"
+
+# 4de6b0928811452f9123e93380d47402
+# 49e2abb08c79429e8e2a48cb9f02907d
+#: ../../hypervisor/kvm.rst:413 ../../hypervisor/kvm.rst:645
+msgid ""
+"There are many ways to configure your network. In the Basic networking mode "
+"you should have two (V)LAN's, one for your private network and one for the "
+"public network."
+msgstr "配置网络有很多方法。在基本网络模式中你应该拥有2个 (V)LAN，一个用于管理网络，一个用于公共网络。"
+
+# 39d4d3c7755c40b5aea4cebdad65af1b
+# c6f350d0cfec4016ac48462e94a09728
+#: ../../hypervisor/kvm.rst:417 ../../hypervisor/kvm.rst:649
+msgid ""
+"We assume that the hypervisor has one NIC (eth0) with three tagged VLAN's:"
+msgstr "假设hypervisor中的网卡(eth0)有3个VLAN标签："
+
+# e682c9d170fd475da9c2a680bb5099ff
+# d38b80c792834c7c8649626ad41e9300
+#: ../../hypervisor/kvm.rst:420 ../../hypervisor/kvm.rst:652
+msgid "VLAN 100 for management of the hypervisor"
+msgstr "VLAN 100 作为hypervisor的管理网络"
+
+# d25eda691ed1435c880ed6c76b1fef81
+# 1022b2a4fd5848dda685cfe71fd18690
+#: ../../hypervisor/kvm.rst:422 ../../hypervisor/kvm.rst:654
+msgid "VLAN 200 for public network of the instances (cloudbr0)"
+msgstr " VLAN 200 作为实例的公共网络 (cloudbr0)"
+
+# e0eff3d36bba429288abf8657deeb28e
+# f3b7f72de0094b6e9210605736fa23c8
+#: ../../hypervisor/kvm.rst:424 ../../hypervisor/kvm.rst:656
+msgid "VLAN 300 for private network of the instances (cloudbr1)"
+msgstr "VLAN 300 作为实例的专用网络 (cloudbr1)"
+
+# 514a4f72f28c4c58baeea8b592b75c8e
+# 970bdad2851e4d399cdecca76cbbc302
+#: ../../hypervisor/kvm.rst:426 ../../hypervisor/kvm.rst:658
+msgid ""
+"On VLAN 100 we give the Hypervisor the IP-Address 192.168.42.11/24 with the "
+"gateway 192.168.42.1"
+msgstr "在VLAN 100 中，配置Hypervisor的IP为 192.168.42.11/24，网关为192.168.42.1"
+
+# 79adcf25d3a54f778ec9459d0384cb62
+# a686fb2b0fd345d2905f28066f0e0638
+#: ../../hypervisor/kvm.rst:430 ../../hypervisor/kvm.rst:662
+msgid ""
+"The Hypervisor and Management server don't have to be in the same subnet!"
+msgstr "Hypervisor与管理服务器不需要在同一个子网！"
+
+# 83141e4d1ee040d3b63247777f709a6d
+# 5ded57bbb4074546af86d97ade2a6269
+#: ../../hypervisor/kvm.rst:434 ../../hypervisor/kvm.rst:666
+msgid "Configuring the network bridges"
+msgstr "配置网络桥接"
+
+# 660eb10d8f0c4ed399ee7571538e7b6e
+#: ../../hypervisor/kvm.rst:436
+msgid ""
+"It depends on the distribution you are using how to configure these, below "
+"you'll find examples for RHEL/CentOS and Ubuntu."
+msgstr "配置方式取决于发行版类型，下面给出RHEL/CentOS和Ubuntu的配置示例。"
+
+# 89c3fb6c97034c75836101354c78230f
+#: ../../hypervisor/kvm.rst:440
+msgid ""
+"The goal is to have two bridges called 'cloudbr0' and 'cloudbr1' after this "
+"section. This should be used as a guideline only. The exact configuration "
+"will depend on your network layout."
+msgstr "本章节的目标是配置两个名为 'cloudbr0'和'cloudbr1'的桥接网络。这仅仅是指导性的，实际情况还要取决于你的网络布局。"
+
+# 77ee68f2056d43219edea55da8fa4914
+# be99a34a26fd4b958c9fd807e0dd34af
+#: ../../hypervisor/kvm.rst:446 ../../hypervisor/kvm.rst:698
+msgid "Configure in RHEL or CentOS"
+msgstr "在RHEL或CentOS中配置："
+
+# 300927ecc5b44fc88b3d0354324b833a
+#: ../../hypervisor/kvm.rst:448
+msgid ""
+"The required packages were installed when libvirt was installed, we can "
+"proceed to configuring the network."
+msgstr "网络桥接所需的软件在安装libvirt时就已被安装，继续配置网络。"
+
+# 0979f7549d3d40109f7541534976337c
+# c06eae41831f473c95f89897f4086011
+#: ../../hypervisor/kvm.rst:451 ../../hypervisor/kvm.rst:703
+msgid "First we configure eth0"
+msgstr "首先配置eth0："
+
+# 36f103232df444d4851ddb29018cf8e7
+# 9cc8329e54ac46d4844dba0b2f07de57
+#: ../../hypervisor/kvm.rst:457 ../../hypervisor/kvm.rst:709
+msgid "Make sure it looks similar to:"
+msgstr "确保内容如下所示："
+
+# 0a69c047e9904d2fa4430ed750a2a62d
+#: ../../hypervisor/kvm.rst:468
+msgid "We now have to configure the three VLAN interfaces:"
+msgstr "现在配置3个VLAN接口："
+
+# 121e20a6f2bf43c8b4cb4b59090ad9d5
+#: ../../hypervisor/kvm.rst:517
+msgid ""
+"Now we have the VLAN interfaces configured we can add the bridges on top of "
+"them."
+msgstr "配置VLAN接口以便能够附加桥接网络。"
+
+# 3199cc44a9af4582a29269e946521a03
+#: ../../hypervisor/kvm.rst:524
+msgid "Now we just configure it is a plain bridge without an IP-Address"
+msgstr "现在只配置一个没有IP的桥接。"
+
+# 981070114a5a4114bd174bbab7b8879d
+#: ../../hypervisor/kvm.rst:537
+msgid "We do the same for cloudbr1"
+msgstr "同样建立cloudbr1"
+
+# 9627142b8e984eed84e51f657f8c8241
+# 681bc847b70f47e3ad4630bda2af753a
+# 520007e753694508964c00ca3c481d61
+#: ../../hypervisor/kvm.rst:554 ../../hypervisor/kvm.rst:604
+#: ../../hypervisor/kvm.rst:779
+msgid ""
+"With this configuration you should be able to restart the network, although "
+"a reboot is recommended to see if everything works properly."
+msgstr "配置完成之后重启网络，通过重启检查一切是否正常。"
+
+# 2448b2982d304a79862fe2914c61de64
+# ad16f054466d48dd871757fa669c4df4
+# fa84321526ca43df86de9ecd44cf9461
+#: ../../hypervisor/kvm.rst:558 ../../hypervisor/kvm.rst:608
+#: ../../hypervisor/kvm.rst:783
+msgid ""
+"Make sure you have an alternative way like IPMI or ILO to reach the machine "
+"in case you made a configuration error and the network stops functioning!"
+msgstr "在发生配置错误和网络故障的时，请确保可以能通过其他方式例如IPMI或ILO连接到服务器。"
+
+# fe3ac0a755274b3a9dddb7d07949ede0
+#: ../../hypervisor/kvm.rst:563
+msgid "Configure in Ubuntu"
+msgstr "在Ubuntu中配置："
+
+# b098a8a9d90247ab9111fbca07e65fa0
+#: ../../hypervisor/kvm.rst:565
+msgid ""
+"All the required packages were installed when you installed libvirt, so we "
+"only have to configure the network."
+msgstr "在安装libvirt时所需的其他软件也会被安装，所以只需配置网络即可。"
+
+# 81e2e66c3d79430dbadab3f14cd7d21f
+#: ../../hypervisor/kvm.rst:572
+msgid "Modify the interfaces file to look like this:"
+msgstr "如下所示修改接口文件："
+
+# 48b97fd377be47ce94716c2a129def60
+#: ../../hypervisor/kvm.rst:613
+msgid "Configure the network using OpenVswitch"
+msgstr "配置使用OpenVswitch网络"
+
+# f755f1c1367b4e49a1a3ea5b0052c263
+#: ../../hypervisor/kvm.rst:629
+msgid "Preparing"
+msgstr "准备"
+
+# 1cd9101e47b3400c8e51f0979708da0d
+#: ../../hypervisor/kvm.rst:631
+msgid ""
+"To make sure that the native bridge module will not interfere with "
+"openvswitch the bridge module should be added to the blacklist. See the "
+"modprobe documentation for your distribution on where to find the blacklist."
+" Make sure the module is not loaded either by rebooting or executing rmmod "
+"bridge before executing next steps."
+msgstr "将系统自带的网络桥接模块加入黑名单，确保该模块不会与openvswitch模块冲突。请参阅你所使用发行版的modprobe文档并找到黑名单。确保该模块不会在重启时自动加载或在下一操作步骤之前卸载该桥接模块。"
+
+# 50c9cb6dd4434f198ed2252ec1caa0e4
+#: ../../hypervisor/kvm.rst:637
+msgid ""
+"The network configurations below depend on the ifup-ovs and ifdown-ovs "
+"scripts which are part of the openvswitch installation. They should be "
+"installed in /etc/sysconfig/network-scripts/"
+msgstr "以下网络配置依赖ifup-ovs和ifdown-ovs脚本，安装openvswitch后会提供该脚本。安装路径为位/etc/sysconfig/network-scripts/。"
+
+# 68030dc6b78845d59b796851b9829bdf
+#: ../../hypervisor/kvm.rst:668
+msgid ""
+"It depends on the distribution you are using how to configure these, below "
+"you'll find examples for RHEL/CentOS."
+msgstr "如何配置这些文件取决于你使用的发行版本，在下面的内容中会提供RHEL/CentOS下的示例。"
+
+# dfc1c63e9eee4272b51c488615bafe37
+#: ../../hypervisor/kvm.rst:672
+msgid ""
+"The goal is to have three bridges called 'mgmt0', 'cloudbr0' and 'cloudbr1' "
+"after this section. This should be used as a guideline only. The exact "
+"configuration will depend on your network layout."
+msgstr "本章节的目标是设置三个名为'mgmt0', 'cloudbr0'和'cloudbr1' 桥接网络。这仅仅是指导性的，实际情况还要取决于你的网络状况。"
+
+# c26ca789face40d2a6f9e4779a9d5f95
+#: ../../hypervisor/kvm.rst:678
+msgid "Configure OpenVswitch"
+msgstr "配置OpenVswitch"
+
+# 9c03a4fe0070433f867cd736e4f3c8fc
+#: ../../hypervisor/kvm.rst:680
+msgid ""
+"The network interfaces using OpenVswitch are created using the ovs-vsctl "
+"command. This command will configure the interfaces and persist them to the "
+"OpenVswitch database."
+msgstr "使用ovs-vsctl命令创建基于OpenVswitch的网络接口。该命令将配置此接口并将信息保存在OpenVswitch数据库中。"
+
+# cdfe3c8fcb434b6783bc0d370d417746
+#: ../../hypervisor/kvm.rst:684
+msgid ""
+"First we create a main bridge connected to the eth0 interface. Next we "
+"create three fake bridges, each connected to a specific vlan tag."
+msgstr "首先我们创建一个连接至eth0接口的主桥接。然后我们创建三个虚拟桥接，每个桥接都连接指定的VLAN。"
+
+# 880d846a8d5b4184a46ae53df77519c2
+#: ../../hypervisor/kvm.rst:700
+msgid ""
+"The required packages were installed when openvswitch and libvirt were "
+"installed, we can proceed to configuring the network."
+msgstr "所需的安装包在安装openvswitch和libvirt的时就已经安装，继续配置网络。"
+
+# 1962691daa974f51baaafc174a030561
+#: ../../hypervisor/kvm.rst:720
+msgid "We have to configure the base bridge with the trunk."
+msgstr "必须将基础桥接配置为trunk模式。"
+
+# ff14886892454831bf1869e2433a3d04
+#: ../../hypervisor/kvm.rst:735
+msgid "We now have to configure the three VLAN bridges:"
+msgstr "现在对三个VLAN桥接进行配置："
+
+# c9890b410c3340338a04badf11f3ef7f
+#: ../../hypervisor/kvm.rst:788
+msgid "Configuring the firewall"
+msgstr "配置防火墙"
+
+# 10dd274736004147a298a91ec2274c1b
+#: ../../hypervisor/kvm.rst:790
+msgid ""
+"The hypervisor needs to be able to communicate with other hypervisors and "
+"the management server needs to be able to reach the hypervisor."
+msgstr "hypervisor之间和hypervisor与管理服务器之间要能够通讯。"
+
+# 7b384a27e3f042949ce580b2ac4cbe02
+#: ../../hypervisor/kvm.rst:793
+msgid ""
+"In order to do so we have to open the following TCP ports (if you are using "
+"a firewall):"
+msgstr "为了达到这个目的，我们需要开通以下TCP端口(如果使用防火墙)："
+
+# ae053a79c1ef4aa98ebbfa9979dd1dbe
+#: ../../hypervisor/kvm.rst:796
+msgid "22 (SSH)"
+msgstr "22 (SSH)"
+
+# 68c5bface9c34c46bccfa6f10934745a
+#: ../../hypervisor/kvm.rst:798
+msgid "1798"
+msgstr "1798"
+
+# caf73c191ae44a9694814826ff704533
+#: ../../hypervisor/kvm.rst:800
+msgid "16509 (libvirt)"
+msgstr "16509 (libvirt)"
+
+# b41b07df7a30461099d417c16b50b745
+#: ../../hypervisor/kvm.rst:802
+msgid "5900 - 6100 (VNC consoles)"
+msgstr "5900 - 6100 (VNC 控制台)"
+
+# 443df083cb0e49a7a098b6903196471d
+#: ../../hypervisor/kvm.rst:804
+msgid "49152 - 49216 (libvirt live migration)"
+msgstr "49152 - 49216 (libvirt在线迁移)"
+
+# 087989f68dae411cb79ce11da6c9408d
+#: ../../hypervisor/kvm.rst:806
+msgid ""
+"It depends on the firewall you are using how to open these ports. Below "
+"you'll find examples how to open these ports in RHEL/CentOS and Ubuntu."
+msgstr "如何打开这些端口取决于你使用的发行版本。在RHEL/CentOS 及Ubuntu中的示例如下。"
+
+# 2c327652a9ad4b51b8da0b683a481c88
+#: ../../hypervisor/kvm.rst:811
+msgid "Open ports in RHEL/CentOS"
+msgstr "在RHEL/CentOS中打开端口"
+
+# 2c67238eeb0c4181b34a32c059cb47cc
+#: ../../hypervisor/kvm.rst:813
+msgid ""
+"RHEL and CentOS use iptables for firewalling the system, you can open extra "
+"ports by executing the following iptable commands:"
+msgstr "RHEL 及 CentOS使用iptables作为防火墙，执行以下iptables命令来开启端口："
+
+# f47cb1aac5b0422ea1409fd01b64e2db
+#: ../../hypervisor/kvm.rst:836
+msgid ""
+"These iptable settings are not persistent accross reboots, we have to save "
+"them first."
+msgstr "这些iptables配置并不会持久保存，重启之后将会消失，我们必须手动保存这些配置。"
+
+# 8da3ddd17dd24cb8a254b0000f2b336b
+#: ../../hypervisor/kvm.rst:845
+msgid "Open ports in Ubuntu"
+msgstr "在Ubuntu中打开端口："
+
+# f59b31a8288b46c8b52ee009069cb2e3
+#: ../../hypervisor/kvm.rst:847
+msgid ""
+"The default firewall under Ubuntu is UFW (Uncomplicated FireWall), which is "
+"a Python wrapper around iptables."
+msgstr "Ubuntu中的默认防火墙是UFW(Uncomplicated FireWall)，使用Python围绕iptables进行包装。"
+
+# eec901cef5c246699d66ddd141a20525
+#: ../../hypervisor/kvm.rst:850
+msgid "To open the required ports, execute the following commands:"
+msgstr "要打开所需端口，请执行以下命令："
+
+# 1e32d61867d64456a033a80cfee8590c
+#: ../../hypervisor/kvm.rst:873
+msgid ""
+"By default UFW is not enabled on Ubuntu. Executing these commands with the "
+"firewall disabled does not enable the firewall."
+msgstr "默认情况下，Ubuntu中并未启用UFW。在关闭情况下执行这些命令并不能启用防火墙。"
+
+# c72a2dc53e534e2d895ad8057ea4275e
+#: ../../hypervisor/kvm.rst:878
+msgid "Add the host to CloudStack"
+msgstr "添加主机到CloudStack"
+
+# fcd5e62f095c42fba18d4cbe3326670c
+#: ../../hypervisor/kvm.rst:887
+msgid "Hypervisor Support for Primary Storage"
+msgstr "Hypervisor对主存储的支持"
+
+# 9439e0974f4043eeae2c168c73f556f9
+#: ../../hypervisor/kvm.rst:889
+msgid ""
+"The following table shows storage options and parameters for different "
+"hypervisors."
+msgstr "下表显示了针对不同Hypervisors的存储选项和参数。"
+
+# 55db4812fcd04f2087654f0e21be25e7
+#: ../../hypervisor/kvm.rst:893
+msgid "Primary Storage Type"
+msgstr "主存储类型"
+
+# 6c7ef9363a364e16a04e878d23b376cd
+#: ../../hypervisor/kvm.rst:893
+msgid "vSphere"
+msgstr "vSphere"
+
+# 15bb927dd6e5452baba08ee6cd4f6fc6
+#: ../../hypervisor/kvm.rst:893
+msgid "XenServer"
+msgstr "XenServer"
+
+# b37df2a6784a4006a3e30f6ba3a152e7
+#: ../../hypervisor/kvm.rst:893
+msgid "KVM"
+msgstr "KVM"
+
+# fb1d3866f13b4aa19aacc4f30c8109a8
+#: ../../hypervisor/kvm.rst:893
+msgid "Hyper-V"
+msgstr "Hyper-V"
+
+# c16b38c01e4c483db9a695a6632b0efc
+#: ../../hypervisor/kvm.rst:895
+msgid "****Format for Disks, Templates, and Snapshots****"
+msgstr "****磁盘、模板和快照的格式****"
+
+# de345eec1a6642c1891986bf02de6ba0
+#: ../../hypervisor/kvm.rst:895
+msgid "VMDK"
+msgstr "VMDK"
+
+# b2a6d313cb904d3694a2f0b3725a5abe
+# 10092f74d840420da35b6fd6ad62897c
+#: ../../hypervisor/kvm.rst:895 ../../hypervisor/kvm.rst:895
+msgid "VHD"
+msgstr "VHD"
+
+# 68973e57f36742069e1944c60a5e9d2b
+#: ../../hypervisor/kvm.rst:895
+msgid "QCOW2"
+msgstr "QCOW2"
+
+# 2c4cf6dfb59e4089b98a864d2eed2072
+#: ../../hypervisor/kvm.rst:896
+msgid "**iSCSI support**"
+msgstr "**支持iSCSI**"
+
+# 83856e4273e1423fab6ce9e0d1ef763d
+# eff62e1ba15c4299aa34e91768fe41df
+#: ../../hypervisor/kvm.rst:896 ../../hypervisor/kvm.rst:897
+msgid "VMFS"
+msgstr "VMFS"
+
+# b5f17ceae06e4b3287087f1dd7e66447
+#: ../../hypervisor/kvm.rst:896
+msgid "CLVM"
+msgstr "CLVM"
+
+# 6fbeac22a7e4426f8288199c5562c19f
+# 06d3800e38854ad1a4c7e5ab1524a5cc
+#: ../../hypervisor/kvm.rst:896 ../../hypervisor/kvm.rst:897
+msgid "Yes, via Shared Mountpoint"
+msgstr "支持，通过Shared Mountpoint"
+
+# af2d92292dc74c1abe3e5be57d4de4de
+# 17923230b7c44ceea8772df6b93a60c7
+# 66d3a2da649747e69d76e2660f83db68
+# 840ad9a22ad645e9aaff9e7fa55d9a5c
+# 64c610239b92429d9192534e52fa9e22
+# 4f751bb0b08e4ef997175c7226f79375
+# aaf3b18e181144bc8aa036fc05b1026e
+#: ../../hypervisor/kvm.rst:896 ../../hypervisor/kvm.rst:897
+#: ../../hypervisor/kvm.rst:898 ../../hypervisor/kvm.rst:900
+#: ../../hypervisor/kvm.rst:901 ../../hypervisor/kvm.rst:901
+#: ../../hypervisor/kvm.rst:901
+msgid "No"
+msgstr "否"
+
+# 8cf40c3629c54e4dadbda79cd412ea32
+#: ../../hypervisor/kvm.rst:897
+msgid "**Fiber Channel support**"
+msgstr "**支持FC**"
+
+# 0b5e9c2691d7495db0a1b19153a02377
+#: ../../hypervisor/kvm.rst:897
+msgid "Yes, via Existing SR"
+msgstr "支持，通过已有的SR"
+
+# adc9d9dd71c14470a95c7d08135de0dd
+#: ../../hypervisor/kvm.rst:898
+msgid "**NFS support**"
+msgstr "**支持NFS**"
+
+# ae13c4f842284dab8d25f1f2ef0464d4
+# 2bb33766eba942379a1bd7a229f0c9d3
+# bf75790d687b41a9a2fcc365c05b9b3b
+# 496e32a0a3b2457296ae8edde8e193cf
+# 786d4d9a9c87491999c0d890e5644480
+# bbb64e36851e4f408eece5ed45631e18
+# e7e50588bdea47c3b818586bb0794eec
+# 650dd8bed795460cacca69919ed9d8a3
+#: ../../hypervisor/kvm.rst:898 ../../hypervisor/kvm.rst:898
+#: ../../hypervisor/kvm.rst:898 ../../hypervisor/kvm.rst:899
+#: ../../hypervisor/kvm.rst:899 ../../hypervisor/kvm.rst:899
+#: ../../hypervisor/kvm.rst:899 ../../hypervisor/kvm.rst:901
+msgid "Yes"
+msgstr "是"
+
+# f601b6265f2e49d580e7e0f6c2207938
+#: ../../hypervisor/kvm.rst:899
+msgid "**Local storage support**"
+msgstr "**支持本地存储**"
+
+# a448b2c9463248a5bbf0e8b12899dafd
+#: ../../hypervisor/kvm.rst:900
+msgid "**Storage over-provisioning**"
+msgstr "**存储超配**"
+
+# 5fa8702121894c74a47d11039d9067d9
+#: ../../hypervisor/kvm.rst:900
+msgid "NFS and iSCSI"
+msgstr "NFS 和 iSCSI"
+
+# a8c25f4b466d4e5490d53e22ff3fa4f9
+# 984909a8061340f4a6cd15e77e58780b
+#: ../../hypervisor/kvm.rst:900 ../../hypervisor/kvm.rst:900
+msgid "NFS"
+msgstr "NFS"
+
+# 60e22f5e001a46b6950958a9b77c066b
+#: ../../hypervisor/kvm.rst:901
+msgid "**SMB/CIFS**"
+msgstr "**SMB/CIFS**"
+
+# 1512c02954e2429784f5187cc45a1208
+#: ../../hypervisor/kvm.rst:904
+msgid ""
+"XenServer uses a clustered LVM system to store VM images on iSCSI and Fiber "
+"Channel volumes and does not support over-provisioning in the hypervisor. "
+"The storage server itself, however, can support thin-provisioning. As a "
+"result the CloudStack can still support storage over-provisioning by running"
+" on thin-provisioned storage volumes."
+msgstr "XenServer通过在iSCSI和FC卷上使用集群化的LVM系统来存储VM镜像，并且不支持存储超配。尽管存储本身支持自动精简配置。不过CloudStack仍然支持在有自动精简配置的存储卷上使用存储超配。"
+
+# 50dbdfaeac8b4368ab25d9c54267ae1d
+#: ../../hypervisor/kvm.rst:910
+msgid ""
+"KVM supports \"Shared Mountpoint\" storage. A shared mountpoint is a file "
+"system path local to each server in a given cluster. The path must be the "
+"same across all Hosts in the cluster, for example /mnt/primary1. This shared"
+" mountpoint is assumed to be a clustered filesystem such as OCFS2. In this "
+"case the CloudStack does not attempt to mount or unmount the storage as is "
+"done with NFS. The CloudStack requires that the administrator insure that "
+"the storage is available"
+msgstr "KVM支持 \"Shared Mountpoint\"存储。Shared Mountpoint是群集中每个服务器本地文件系统中的一个路径。群集所有主机中的该路径必须一致，比如/mnt/primary1。并假设Shared Mountpoint是一个集群文件系统如OCFS2。在这种情况下，CloudStack不会把它当做NFS存储去尝试挂载或卸载。CloudStack需要管理员确保该存储是可用的。"
+
+# 3fa95266f86e48d39c7f54a98632534a
+#: ../../hypervisor/kvm.rst:918
+msgid ""
+"With NFS storage, CloudStack manages the overprovisioning. In this case the "
+"global configuration parameter storage.overprovisioning.factor controls the "
+"degree of overprovisioning. This is independent of hypervisor type."
+msgstr "在NFS存储中，CloudStack管理超配。这种情况下，使用全局配置参数storage.overprovisioning.factor来控制超配的范围。且不受hyperviso类型约束。"
+
+# d2a34f2d9f4d46759111d884ef353dbf
+#: ../../hypervisor/kvm.rst:923
+msgid ""
+"Local storage is an option for primary storage for vSphere, XenServer, and "
+"KVM. When the local disk option is enabled, a local disk storage pool is "
+"automatically created on each host. To use local storage for the System "
+"Virtual Machines (such as the Virtual Router), set "
+"system.vm.use.local.storage to true in global configuration."
+msgstr "在vSphere, XenServer和KVM中，本地存储是一个可选项。当选择了使用本地存储，所有主机会自动创建本地存储池。想要系统虚拟机 (例如虚拟路由器)使用本地存储，请设置全局配置参数system.vm.use.local.storage为true."
+
+# 5422f4222d5a454babfb7eb7e81822e4
+#: ../../hypervisor/kvm.rst:929
+msgid ""
+"CloudStack supports multiple primary storage pools in a Cluster. For "
+"example, you could provision 2 NFS servers in primary storage. Or you could "
+"provision 1 iSCSI LUN initially and then add a second iSCSI LUN when the "
+"first approaches capacity."
+msgstr "CloudStack支持在一个群集内有多个主存储池。比如，使用2个NFS服务器提供主存储。或原有的1个iSCSI LUN达到一定容量时再添加第二个iSCSI LUN。"

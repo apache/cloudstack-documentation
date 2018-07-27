@@ -1,0 +1,128 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../index.rst:23
+# 84926a62ef4145eb8258fb18cc990020
+msgid "Welcome to CloudStack Administration Documentation"
+msgstr ""
+
+#: ../../index.rst:29
+# 17401d6f4fa445e288e17f050447db52
+msgid "We are in the process of changing documentation format as well as hosting mechanism. Please be patient with us as we migrate our entire documentation to this new setup."
+msgstr ""
+
+#: ../../index.rst:32
+# 3ed721b0cbc84d29b41f1f88c145794b
+msgid "This guide is aimed at Administrators of a CloudStack based Cloud, for Release Notes, Installation and General introduction to CloudStack see the following guides:"
+msgstr ""
+
+#: ../../index.rst:36
+# 6bdec416d5864e24a626b2a1672d12fc
+msgid "`Documentation Start <http://docs.cloudstack.apache.org>`_"
+msgstr ""
+
+#: ../../index.rst:38
+# 59647f13b4c6495bb231941872f8615c
+msgid "`Installation Guide <http://docs.cloudstack.apache.org/projects/cloudstack-installation>`_"
+msgstr ""
+
+#: ../../index.rst:40
+# 3cb4b38db39a4954baa74c5207e46806
+msgid "`Release Notes <http://docs.cloudstack.apache.org/projects/cloudstack-release-notes>`_"
+msgstr ""
+
+#: ../../index.rst:44
+# 62705a3d035f4c9894e165081f5341b0
+msgid "User Interface"
+msgstr ""
+
+#: ../../index.rst:53
+# 253ae3a9066e4b22aa50e77c73b69357
+msgid "Managing Accounts, Users and Domains"
+msgstr ""
+
+#: ../../index.rst:62
+# bb51dd2b7b6d4b6287d5b832dd1ef9f3
+msgid "Using Projects to Organize User Resources"
+msgstr ""
+
+#: ../../index.rst:70
+# fcbcd54779cb4d14b7c28ea8e525c2ff
+msgid "Service Offerings"
+msgstr ""
+
+#: ../../index.rst:79
+# 2fed4745955e4e73b1b3bd6c4664a015
+msgid "Setting up Networking for Users"
+msgstr ""
+
+#: ../../index.rst:88
+# 37cb22ac86ef4acb9c046bc1dc7f7de4
+msgid "Working with Virtual Machines"
+msgstr ""
+
+#: ../../index.rst:97
+# 625c8add441e4edeac86a1ec4f792cec
+msgid "Working with Templates"
+msgstr ""
+
+#: ../../index.rst:106
+# 7ad29a9c67c74560b24731372d219e23
+msgid "Working with Hosts"
+msgstr ""
+
+#: ../../index.rst:115
+# a3332c4666934361ad83c88e6946f7f7
+msgid "Working with Storage"
+msgstr ""
+
+#: ../../index.rst:124
+# f2f20fd23af44019b1f0578d399c9ecc
+msgid "Working with System Virtual Machines"
+msgstr ""
+
+#: ../../index.rst:133
+# 73fe247fe2a14cf08be624ae4f8d5926
+msgid "Working with Usage"
+msgstr ""
+
+#: ../../index.rst:142
+# 5d20c3a9b5124254a155ba5a519c85ca
+msgid "Managing Networks and Traffic"
+msgstr ""
+
+#: ../../index.rst:151
+# c591434a39994a6fa8546f4b1115eb07
+msgid "Managing the Cloud"
+msgstr ""
+
+#: ../../index.rst:160
+# 1ffdcf555b9a45d58d6a0e3b4d670037
+msgid "System Reliability and Availability"
+msgstr ""
+
+#: ../../index.rst:169
+# 8422886b2cfe4b9c9d2adf3afd86f37f
+msgid "Tuning"
+msgstr ""
+
+#: ../../index.rst:178
+# c05956039d98457abe5c11b6f7661b23
+msgid "Events and Troubleshooting"
+msgstr ""
+

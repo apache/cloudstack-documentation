@@ -1,0 +1,290 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../storage_setup.rst:18
+# d6b2b3302e474c2ca46f28b9bee03734
+msgid "Storage Setup"
+msgstr ""
+
+#: ../../storage_setup.rst:20
+# 7752c36da35f479d9c03995e830ae253
+msgid "CloudStack is designed to work with a wide variety of commodity and enterprise-grade storage. Local disk may be used as well, if supported by the selected hypervisor. Storage type support for guest virtual disks differs based on hypervisor selection."
+msgstr ""
+
+#: ../../storage_setup.rst:26
+# 538f0beb0b4e4e2a9983e312661eb54f
+msgid "Storage Type"
+msgstr ""
+
+#: ../../storage_setup.rst:26
+# 18b92c5cd5074bb4b06534aff95e18c8
+msgid "XenServer"
+msgstr ""
+
+#: ../../storage_setup.rst:26
+# 6ed9b0e44342476a9dbbdbf4e4b917fe
+msgid "vSphere"
+msgstr ""
+
+#: ../../storage_setup.rst:26
+# ac3ca3b0a1c641a3bc1de1a92146eb91
+msgid "KVM"
+msgstr ""
+
+#: ../../storage_setup.rst:28
+# 03e3922684d94f63abcc832e20828d0d
+msgid "NFS"
+msgstr ""
+
+#: ../../storage_setup.rst:28
+#: ../../storage_setup.rst:28
+#: ../../storage_setup.rst:28
+#: ../../storage_setup.rst:29
+#: ../../storage_setup.rst:30
+#: ../../storage_setup.rst:31
+#: ../../storage_setup.rst:31
+#: ../../storage_setup.rst:31
+# 3b99a671b8ab4908aea8b3e783a22b19
+# 5c64989b5d4b4b0e8b086335877bdcf9
+# efa230d191b5477f887a61486039d99e
+# 53b67c59114241cb81ae1f4bcd7bdf26
+# 02d62854fef943e88ea4d32d21e23ffb
+# 0bcd3eeecde3461a98be48e06880b63e
+# 69437bfe66f8494cb9119f1ac4f3751a
+# 02613a70f2594d3bb3d1192ff3e520d5
+msgid "Supported"
+msgstr ""
+
+#: ../../storage_setup.rst:29
+# bc6393ab53db4060bb65171cc25a14b2
+msgid "iSCSI"
+msgstr ""
+
+#: ../../storage_setup.rst:29
+# 5e75eb74e709489cb5160ea8d55c040c
+msgid "Supported via VMFS"
+msgstr ""
+
+#: ../../storage_setup.rst:29
+#: ../../storage_setup.rst:30
+# cae1e3af97e747cf8adf4fc7edd27ea4
+# bcf642ada6354a428f7e09abac6608b5
+msgid "Supported via Clustered Filesystems"
+msgstr ""
+
+#: ../../storage_setup.rst:30
+# 6996e2e99e9048ce97d0e6f5fb931f60
+msgid "Fiber Channel"
+msgstr ""
+
+#: ../../storage_setup.rst:30
+# 019efc65f57148479631b63195d36314
+msgid "Supported via Pre-existing SR"
+msgstr ""
+
+#: ../../storage_setup.rst:31
+# 32746b62e4f8487cb0c808a966bfb210
+msgid "Local Disk"
+msgstr ""
+
+#: ../../storage_setup.rst:34
+# 6e8fd34eb56f4473abecb174650042c8
+msgid "The use of the Cluster Logical Volume Manager (CLVM) for KVM is not officially supported with CloudStack."
+msgstr ""
+
+#: ../../storage_setup.rst:39
+# 052dba62e53b4928a4316a9e7e9a7718
+msgid "Small-Scale Setup"
+msgstr ""
+
+#: ../../storage_setup.rst:41
+# ba74f151dee944c59ecb4711a133a657
+msgid "In a small-scale setup, a single NFS server can function as both primary and secondary storage. The NFS server just needs to export two separate shares, one for primary storage and the other for secondary storage."
+msgstr ""
+
+#: ../../storage_setup.rst:47
+# 115b100b50994f4bbe369e5a89b5081d
+msgid "Secondary Storage"
+msgstr ""
+
+#: ../../storage_setup.rst:49
+# bdbd2ecb612e4c6d833f2a4803d9efc0
+msgid "CloudStack is designed to work with any scalable secondary storage system. The only requirement is the secondary storage system supports the NFS protocol."
+msgstr ""
+
+#: ../../storage_setup.rst:54
+# dd9865baaf564c74b74a86e19447d21b
+msgid "The storage server should be a machine with a large number of disks. The disks should ideally be managed by a hardware RAID controller. Modern hardware RAID controllers support hot plug functionality independent of the operating system so you can replace faulty disks without impacting the running operating system."
+msgstr ""
+
+#: ../../storage_setup.rst:62
+# 81888613f5f6470cb75302dcb4c8dc22
+msgid "Example Configurations"
+msgstr ""
+
+#: ../../storage_setup.rst:64
+# 15dfab7b505743acb78118d48e6a1df0
+msgid "In this section we go through a few examples of how to set up storage to work properly on a few types of NFS and iSCSI storage systems."
+msgstr ""
+
+#: ../../storage_setup.rst:69
+# 800bb50ed8b643849918b01277052e7c
+msgid "Linux NFS on Local Disks and DAS"
+msgstr ""
+
+#: ../../storage_setup.rst:71
+# f2fcb96d0dea4baf8e482525c0dd8245
+msgid "This section describes how to configure an NFS export on a standard Linux installation. The exact commands might vary depending on the operating system version."
+msgstr ""
+
+#: ../../storage_setup.rst:75
+# cf13fcc5fa0b4939a8e8574245d1a1e5
+msgid "Install the RHEL/CentOS distribution on the storage server."
+msgstr ""
+
+#: ../../storage_setup.rst:77
+# 005b8dd262fd4a4388849d5e56b1a54f
+msgid "If the root volume is more than 2 TB in size, create a smaller boot volume to install RHEL/CentOS. A root volume of 20 GB should be sufficient."
+msgstr ""
+
+#: ../../storage_setup.rst:81
+# 217ac8a1620b4bb993b70343ef9cd6ab
+msgid "After the system is installed, create a directory called /export. This can each be a directory in the root partition itself or a mount point for a large disk volume."
+msgstr ""
+
+#: ../../storage_setup.rst:85
+# e51ba40cb56b42aea266a196d1886b28
+msgid "If you have more than 16TB of storage on one host, create multiple EXT3 file systems and multiple NFS exports. Individual EXT3 file systems cannot exceed 16TB."
+msgstr ""
+
+#: ../../storage_setup.rst:89
+# f9ecc678c0a946ada4722e2f84868013
+msgid "After /export directory is created, run the following command to configure it as an NFS export."
+msgstr ""
+
+#: ../../storage_setup.rst:96
+# 166a5ad4eace4ee1acac57e77772e301
+msgid "Adjust the above command to suit your deployment needs."
+msgstr ""
+
+#: ../../storage_setup.rst:98
+# c6efefc3bb214750a1aa110365bfb7c4
+msgid "**Limiting NFS export.** It is highly recommended that you limit the NFS export to a particular subnet by specifying a subnet mask (e.g.,”192.168.1.0/24”). By allowing access from only within the expected cluster, you avoid having non-pool member mount the storage. The limit you place must include the management network(s) and the storage network(s). If the two are the same network then one CIDR is sufficient. If you have a separate storage network you must provide separate CIDR’s for both or one CIDR that is broad enough to span both."
+msgstr ""
+
+#: ../../storage_setup.rst:108
+#: ../../storage_setup.rst:236
+# 2dee02ec08f44c6eb41bbd83267e69b6
+# daffef1e68c1468ca3f7396f5436cf19
+msgid "The following is an example with separate CIDRs:"
+msgstr ""
+
+#: ../../storage_setup.rst:114
+#: ../../storage_setup.rst:242
+# 314c4d57ade04b589bb9cc53855854f0
+# 302894e6d4d8419dadbee7187c9761e3
+msgid "**Removing the async flag.** The async flag improves performance by allowing the NFS server to respond before writes are committed to the disk. Remove the async flag in your mission critical production deployment."
+msgstr ""
+
+#: ../../storage_setup.rst:119
+# fc530cedf53646ef8383509ca79aaf46
+msgid "Run the following command to enable NFS service."
+msgstr ""
+
+#: ../../storage_setup.rst:125
+# 43b62119fea74c9585550f73f8f82558
+msgid "Edit the /etc/sysconfig/nfs file and uncomment the following lines."
+msgstr ""
+
+#: ../../storage_setup.rst:136
+# 1d4f8831fb8f493bbf0d2102a2d94333
+msgid "Edit the /etc/sysconfig/iptables file and add the following lines at the beginning of the INPUT chain."
+msgstr ""
+
+#: ../../storage_setup.rst:153
+# 9b07e0f5f1b4436083b1b95549bd51cc
+msgid "Reboot the server."
+msgstr ""
+
+#: ../../storage_setup.rst:155
+# e020d0f272694579a5ba76a20f504882
+msgid "An NFS share called /export is now set up."
+msgstr ""
+
+#: ../../storage_setup.rst:158
+# 954bd15449384ef982eb066148bede4e
+msgid "When copying and pasting a command, be sure the command has pasted as a single line before executing. Some document viewers may introduce unwanted line breaks in copied text."
+msgstr ""
+
+#: ../../storage_setup.rst:164
+# 57361739f18248a8a389947c9bc2cad2
+msgid "Linux NFS on iSCSI"
+msgstr ""
+
+#: ../../storage_setup.rst:166
+# 2b54e23d9a61475595ca9e0e83867e12
+msgid "Use the following steps to set up a Linux NFS server export on an iSCSI volume. These steps apply to RHEL/CentOS 5 distributions."
+msgstr ""
+
+#: ../../storage_setup.rst:169
+# f1286e7f062d4b9aa981184cc7501688
+msgid "Install iscsiadm."
+msgstr ""
+
+#: ../../storage_setup.rst:178
+# 346450ad74ac4b19964ee166ad4c9d20
+msgid "Discover the iSCSI target."
+msgstr ""
+
+#: ../../storage_setup.rst:184
+#: ../../storage_setup.rst:196
+# 6274d39a5e6845259cc61a75836241fe
+# 78922f43acdd4b6ca556c8c6094a1816
+msgid "For example:"
+msgstr ""
+
+#: ../../storage_setup.rst:190
+# aa60b340ef47437486a5520511933ff9
+msgid "Log in."
+msgstr ""
+
+#: ../../storage_setup.rst:202
+# ee970ba277924184bb6d07662f86710c
+msgid "Discover the SCSI disk. For example:"
+msgstr ""
+
+#: ../../storage_setup.rst:209
+# a27db3a17e254b7f81d044d888ed5d83
+msgid "Format the disk as ext3 and mount the volume."
+msgstr ""
+
+#: ../../storage_setup.rst:217
+# 73c6a94d549942489bcac311f27242ee
+msgid "Add the disk to /etc/fstab to make sure it gets mounted on boot."
+msgstr ""
+
+#: ../../storage_setup.rst:223
+# b401c3dd18284c72bef05b03f96de014
+msgid "Now you can set up /export as an NFS share."
+msgstr ""
+
+#: ../../storage_setup.rst:225
+# ac62ebcca250423f8b0a8c1c4d2ea5f3
+msgid "**Limiting NFS export.** In order to avoid data loss, it is highly recommended that you limit the NFS export to a particular subnet by specifying a subnet mask (e.g.,”192.168.1.0/24”). By allowing access from only within the expected cluster, you avoid having non-pool member mount the storage and inadvertently delete all its data. The limit you place must include the management network(s) and the storage network(s). If the two are the same network then one CIDR is sufficient. If you have a separate storage network you must provide separate CIDRs for both or one CIDR that is broad enough to span both."
+msgstr ""
+

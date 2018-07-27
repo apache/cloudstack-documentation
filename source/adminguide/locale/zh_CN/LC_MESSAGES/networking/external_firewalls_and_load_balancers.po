@@ -1,0 +1,1056 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:05+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 9b2c57c96864404ab39ea18532184a3c
+#: ../../networking/external_firewalls_and_load_balancers.rst:18
+msgid "External Firewalls and Load Balancers"
+msgstr "外部防火墙及负载均衡"
+
+# 406fa3a599d74b6fb0f6a893d839784a
+#: ../../networking/external_firewalls_and_load_balancers.rst:20
+msgid ""
+"CloudStack is capable of replacing its Virtual Router with an external "
+"Juniper SRX device and an optional external NetScaler or F5 load balancer "
+"for gateway and load balancing services. In this case, the VMs use the SRX "
+"as their gateway."
+msgstr "CloudStack允许通过外部的Jniper SRX 设备和外部NetScaler设备或网关负载均衡设备和负载均衡服务。在此情形下，虚拟机使用SRX作为网关。"
+
+# e50bcd9fe60e430d85efc883354624a5
+#: ../../networking/external_firewalls_and_load_balancers.rst:27
+msgid "About Using a NetScaler Load Balancer"
+msgstr "关于使用NetScaler负载均衡器"
+
+# 1cf32061da5449a2a6dc5887c27b0d72
+#: ../../networking/external_firewalls_and_load_balancers.rst:29
+msgid ""
+"Citrix NetScaler is supported as an external network element for load "
+"balancing in zones that use isolated networking in advanced zones. Set up an"
+" external load balancer when you want to provide load balancing through "
+"means other than CloudStack's provided virtual router."
+msgstr "在区域中，或高级区域使用隔离网络时，CloudStack支持思杰的NetScaler作为外部网络设备元素作为负责均衡。拟通过其他方案提供负载均衡而不是CloudStack的虚拟路由器时，就可以建立一个外部负载均衡器"
+
+# 188f8456b75c41ffadbc92d637327f54
+#: ../../networking/external_firewalls_and_load_balancers.rst:35
+msgid ""
+"In a Basic zone, load balancing service is supported only if Elastic IP or "
+"Elastic LB services are enabled."
+msgstr "在基础区域中，仅在弹性IP或弹性负载均衡服务开启时，才支持负载均衡服务"
+
+# 7189603a0b934b4b8f4de77ccc774586
+#: ../../networking/external_firewalls_and_load_balancers.rst:38
+msgid ""
+"When NetScaler load balancer is used to provide EIP or ELB services in a "
+"Basic zone, ensure that all guest VM traffic must enter and exit through the"
+" NetScaler device. When inbound traffic goes through the NetScaler device, "
+"traffic is routed by using the NAT protocol depending on the EIP/ELB "
+"configured on the public IP to the private IP. The traffic that is "
+"originated from the guest VMs usually goes through the layer 3 router. To "
+"ensure that outbound traffic goes through NetScaler device providing "
+"EIP/ELB, layer 3 router must have a policy-based routing. A policy-based "
+"route must be set up so that all traffic originated from the guest VM's are "
+"directed to NetScaler device. This is required to ensure that the outbound "
+"traffic from the guest VM's is routed to a public IP by using NAT.For more "
+"information on Elastic IP, see `\"About Elastic IP\" <#about-elastic-ip>`_."
+msgstr "在基础域中使用NetScaler负载均衡提供EIP或ELB服务时，确保所有的客户虚拟机流量必须通过NetScaler设备进出。当入流量通过NetScaler设备时流量通过使用NAT协议被路由，此NAT协议依赖于公共IP到私有IP的配置。来自客户虚拟机的流量通常要经过3层路由器，为确保出流量通过提供EIP/ELB的NetScaler设备，3层路由器，必须具有基础策略。必有设立一个具有基础策略的路由器可保证所有客户机的流量都能转向NetScaler设备。这也需要确保客户虚拟机的出流量通过使用NAT被路由到公共IP。关于EIP的更多信息，参看`\"关于EIP\" <#about-elastic-ip>`_."
+
+# baddaa181f054bb5b0b41e5dcce1387e
+#: ../../networking/external_firewalls_and_load_balancers.rst:52
+msgid ""
+"The NetScaler can be set up in direct (outside the firewall) mode. It must "
+"be added before any load balancing rules are deployed on guest VMs in the "
+"zone."
+msgstr "NetScaler可以设置成直通模式。它必须在区域中部署客户虚拟机负载均衡规则之前加入。"
+
+# 263c8a9eb9d147ad91ae71970d65bd41
+#: ../../networking/external_firewalls_and_load_balancers.rst:56
+msgid ""
+"The functional behavior of the NetScaler with CloudStack is the same as "
+"described in the CloudStack documentation for using an F5 external load "
+"balancer. The only exception is that the F5 supports routing domains, and "
+"NetScaler does not. NetScaler can not yet be used as a firewall."
+msgstr "CloudStack中NetScaler的功能作用与CloudStack文档中说明的使用F5 外部负载均衡器的功能作用相同。一点差别就是，F5支持路由域名，而NetScaler无此功能。NetScaler也不可以用作防火墙。"
+
+# 79187d2fbfa743c39e8c524304235dc2
+#: ../../networking/external_firewalls_and_load_balancers.rst:61
+msgid ""
+"To install and enable an external load balancer for CloudStack management, "
+"see External Guest Load Balancer Integration in the Installation Guide."
+msgstr "为CLOUDSTACK管理端安装和启用外部负载均衡功能，参阅安装文档里的外部客户负载均衡。"
+
+# d3c851ee525b49599c01646d4d1e2dd5
+#: ../../networking/external_firewalls_and_load_balancers.rst:65
+msgid ""
+"The Citrix NetScaler comes in three varieties. The following summarizes how "
+"these variants are treated in CloudStack."
+msgstr ""
+
+# 64aec7c1c44049498dcf6c10b4fa5605
+#: ../../networking/external_firewalls_and_load_balancers.rst:68
+msgid "**MPX**"
+msgstr ""
+
+# b8df1ce8dfa14d8c8ecc441c6f71748f
+#: ../../networking/external_firewalls_and_load_balancers.rst:70
+msgid ""
+"Physical appliance. Capable of deep packet inspection. Can act as "
+"application firewall and load balancer"
+msgstr "物理应用。能够进行深度数据包检测。可作为防火墙和负载均衡应用。"
+
+# 3a1ec0e897e34118a0fbeb78f64a544a
+#: ../../networking/external_firewalls_and_load_balancers.rst:73
+msgid ""
+"In advanced zones, load balancer functionality fully supported without "
+"limitation. In basic zones, static NAT, elastic IP (EIP), and elastic load "
+"balancing (ELB) are also provided."
+msgstr "在高级区域中，完全支持负载均衡功能，没有限制。在基础区域中，也提供静态NAT，EIP，ELB功能。"
+
+# 68d5e27c550d40cd921b14324d33692a
+#: ../../networking/external_firewalls_and_load_balancers.rst:77
+msgid "**VPX**"
+msgstr ""
+
+# 886b66d79fd049739f35d53684946f35
+#: ../../networking/external_firewalls_and_load_balancers.rst:79
+msgid ""
+"Virtual appliance. Can run as VM on XenServer, ESXi, and Hyper-V "
+"hypervisors. Same functionality as MPX"
+msgstr "虚拟应用，可以运行在XenServer，ESXi以及Hyper-V上虚拟机上。与MPX功能相同。"
+
+# acdf8d15b2b740579349caa99d8ff14f
+#: ../../networking/external_firewalls_and_load_balancers.rst:82
+msgid ""
+"Supported on ESXi and XenServer. Same functional support as for MPX. "
+"CloudStack will treat VPX and MPX as the same device type."
+msgstr "在ESXi和XenServer上支持。对MPX也支持一些功能。CloudStack将VPX和MPX作为同一类型的设备看待。"
+
+# 632775a416fd40bfb11895ae39b883e9
+#: ../../networking/external_firewalls_and_load_balancers.rst:85
+msgid "**SDX**"
+msgstr ""
+
+# 94896445c73d42c7a8a8b30da3d762a9
+#: ../../networking/external_firewalls_and_load_balancers.rst:87
+msgid ""
+"Physical appliance. Can create multiple fully isolated VPX instances on a "
+"single appliance to support multi-tenant usage"
+msgstr "物理应用。可以在单个应用上创建多个完全隔离的VPX实例，以支持多客户使用。"
+
+# 7272ab89523e416fba357a4ceb24b459
+#: ../../networking/external_firewalls_and_load_balancers.rst:90
+msgid ""
+"CloudStack will dynamically provision, configure, and manage the life cycle "
+"of VPX instances on the SDX. Provisioned instances are added into CloudStack"
+" automatically - no manual configuration by the administrator is required. "
+"Once a VPX instance is added into CloudStack, it is treated the same as a "
+"VPX on an ESXi host."
+msgstr "CloudStack会动态分配，配置，管理在SDX上的虚拟机实例的生命周期。分配的实例会自动加入到CloudStack，不需要管理员进行手动配置。一旦一个VPX实例加入到CloudStack，将会认为是ESXi主机上的一个VPX。"
+
+# e712ff0906b7463083ac7a8f9b19847c
+#: ../../networking/external_firewalls_and_load_balancers.rst:98
+msgid "Configuring SNMP Community String on a RHEL Server"
+msgstr "在RHEL服务器上配置SNMP社区字符串"
+
+# a0e11ba7efae4e63a0cd9eb015162722
+#: ../../networking/external_firewalls_and_load_balancers.rst:100
+msgid ""
+"The SNMP Community string is similar to a user id or password that provides "
+"access to a network device, such as router. This string is sent along with "
+"all SNMP requests. If the community string is correct, the device responds "
+"with the requested information. If the community string is incorrect, the "
+"device discards the request and does not respond."
+msgstr "SNMP社区字符串类似于用户ID或用户密码，用来登录网络设备，如路由器。这类字符串随着所有的SNMP请求发送。如果社区字符串正确，设备将反馈相应的字符串若不正确，设备将丢弃请求，不进行处理。"
+
+# d9a8fc53fc4949bda74cb44fbcb04146
+#: ../../networking/external_firewalls_and_load_balancers.rst:106
+msgid ""
+"The NetScaler device uses SNMP to communicate with the VMs. You must install"
+" SNMP and configure SNMP Community string for a secure communication between"
+" the NetScaler device and the RHEL machine."
+msgstr "NetScaler设备使用SNMP与虚拟机进行通讯。为保证NetScaler设备与RHEL机器之间安全的通讯，必须安装并配置社区字符串。"
+
+# 9f7d96642a9b435ab7687ecf88e6f6de
+#: ../../networking/external_firewalls_and_load_balancers.rst:110
+msgid ""
+"Ensure that you installed SNMP on RedHat. If not, run the following command:"
+msgstr "确保在RedHat上安装了SNMP，如果没有，执行以下命令:"
+
+# 657a8fba85b14585be4a9165ba95128b
+#: ../../networking/external_firewalls_and_load_balancers.rst:117
+msgid ""
+"Edit the /etc/snmp/snmpd.conf file to allow the SNMP polling from the "
+"NetScaler device."
+msgstr "编辑/etc/snmp/snmpd.conf 文件，以允许来自NetScaler设备的SNMP查询"
+
+# 752d34a607b64dbea0348f5551d5cebc
+#: ../../networking/external_firewalls_and_load_balancers.rst:120
+msgid ""
+"Map the community name into a security name (local and mynetwork, depending "
+"on where the request is coming from):"
+msgstr "映射社区名到一个安全的名字（本地，我的网络，依赖于其来源）"
+
+# 07b1fa6ac91c4aa186c434d633b0384e
+#: ../../networking/external_firewalls_and_load_balancers.rst:124
+msgid ""
+"Use a strong password instead of public when you edit the following table."
+msgstr "编辑下表时，使用一个强密码"
+
+# f8acb0abc31c4fd0ab9300c705ba1f72
+#: ../../networking/external_firewalls_and_load_balancers.rst:133
+msgid "Setting to 0.0.0.0 allows all IPs to poll the NetScaler server."
+msgstr "设置0.0.0.0以允许所有的IP都可以查询NetScaler设备"
+
+# 327a4b1c1e4d429c83dc1e1628f8376a
+#: ../../networking/external_firewalls_and_load_balancers.rst:135
+msgid "Map the security names into group names:"
+msgstr "映射一个安全名到组名"
+
+# 193cbe00950147958924521840ba4405
+#: ../../networking/external_firewalls_and_load_balancers.rst:145
+msgid "Create a view to allow the groups to have the permission to:"
+msgstr "创建一个视图，以允许组有权限执行："
+
+# 39191ba80aa24e32898e8a79892fb7cf
+#: ../../networking/external_firewalls_and_load_balancers.rst:151
+msgid ""
+"Grant access with different write permissions to the two groups to the view "
+"you created."
+msgstr "授权不同的写权限给二个组及你创建的视图"
+
+# ca08ac1ab89442c9a42c7d59efa70e6b
+#: ../../networking/external_firewalls_and_load_balancers.rst:160
+msgid "Unblock SNMP in iptables."
+msgstr "在iptalbes中解除对SNMP的锁定。"
+
+# f161affb624f4139be0750f3dc19f505
+#: ../../networking/external_firewalls_and_load_balancers.rst:166
+msgid "Start the SNMP service:"
+msgstr "开启SNMP服务："
+
+# 60eb8801ebf44b97b3b4cc63348013b6
+#: ../../networking/external_firewalls_and_load_balancers.rst:172
+msgid ""
+"Ensure that the SNMP service is started automatically during the system "
+"startup:"
+msgstr "确保在系统启动时，SNMP服务能够自动启动。"
+
+# 8893688efc574dbfba90b00df9f467bd
+#: ../../networking/external_firewalls_and_load_balancers.rst:181
+msgid "Initial Setup of External Firewalls and Load Balancers"
+msgstr "初始化安装外部防火墙和负载均衡"
+
+# 2149019287d549649f77e49102f3a8e2
+#: ../../networking/external_firewalls_and_load_balancers.rst:183
+msgid ""
+"When the first VM is created for a new account, CloudStack programs the "
+"external firewall and load balancer to work with the VM. The following "
+"objects are created on the firewall:"
+msgstr "当为一个新帐户创建一个虚拟机时，CloudStack会设置程序以让外部防火墙和负载均衡与虚拟机共同工作。会在防火墙上创建以下对象："
+
+# 7bec0089c55040c9bcc3b75a4ce9ae0b
+#: ../../networking/external_firewalls_and_load_balancers.rst:187
+msgid ""
+"A new logical interface to connect to the account's private VLAN. The "
+"interface IP is always the first IP of the account's private subnet (e.g. "
+"10.1.1.1)."
+msgstr "一个新的逻辑接口，用以连接帐户的私有VLAN。接口的IP通常是私有帐户私有子网的第一个IP。"
+
+# 5d690ff5c70b4951a41d9ccf663e1e5d
+#: ../../networking/external_firewalls_and_load_balancers.rst:191
+msgid ""
+"A source NAT rule that forwards all outgoing traffic from the account's "
+"private VLAN to the public Internet, using the account's public IP address "
+"as the source address"
+msgstr "一个源NAT规则转发帐户从私有VLAN到公共网络的的出口流量，使用帐户的公共IP地址作为源地址。"
+
+# a8b478c2d3334a0aa56507a774978095
+#: ../../networking/external_firewalls_and_load_balancers.rst:195
+msgid ""
+"A firewall filter counter that measures the number of bytes of outgoing "
+"traffic for the account"
+msgstr "防火墙过滤计数器计量帐户出口流量的字节数"
+
+# 438d673ffaa3412c98761796e1c9043c
+#: ../../networking/external_firewalls_and_load_balancers.rst:198
+msgid "The following objects are created on the load balancer:"
+msgstr "以下对象会在负载均衡上创建："
+
+# 07491865d4a3476293c53ae24c343c78
+#: ../../networking/external_firewalls_and_load_balancers.rst:200
+msgid "A new VLAN that matches the account's provisioned Zone VLAN"
+msgstr "匹配帐户区域VLAN的私有VLAN。"
+
+# 3691e62805b34e95acd2ff232154ca0d
+#: ../../networking/external_firewalls_and_load_balancers.rst:202
+msgid ""
+"A self IP for the VLAN. This is always the second IP of the account's "
+"private subnet (e.g. 10.1.1.2)."
+msgstr "一个VLAN的自有IP。经常是帐户私有子网的第二个IP。"
+
+# 1e387fca9feb4a08825eb2dfe3547fb0
+#: ../../networking/external_firewalls_and_load_balancers.rst:207
+msgid "Ongoing Configuration of External Firewalls and Load Balancers"
+msgstr "继续配置外部防火墙和负载均衡"
+
+# 133336c3018e4957ba148ad3a8f85ed4
+#: ../../networking/external_firewalls_and_load_balancers.rst:209
+msgid ""
+"Additional user actions (e.g. setting a port forward) will cause further "
+"programming of the firewall and load balancer. A user may request additional"
+" public IP addresses and forward traffic received at these IPs to specific "
+"VMs. This is accomplished by enabling static NAT for a public IP address, "
+"assigning the IP to a VM, and specifying a set of protocols and port ranges "
+"to open. When a static NAT rule is created, CloudStack programs the zone's "
+"external firewall with the following objects:"
+msgstr "增加的用户行为(如设置端口转发)会引起防火墙和负载均衡的程序化。一个用户可以请求增加公共IP地址以及转发使用此公共IP地址的虚拟机接受到的流量。这是通过静态NAT功能完成的，静态NAT将一个公共IP地址映射给一个虚拟机，并指定一组特定协议，开放一组特定端口。当静态NAT建立好之后，CLOUDSTACK会在区域的外部防火墙上通过程序定制如下对象："
+
+# cfcd0d08f25142019221555a1a499683
+#: ../../networking/external_firewalls_and_load_balancers.rst:218
+msgid ""
+"A static NAT rule that maps the public IP address to the private IP address "
+"of a VM."
+msgstr "一条静态NAT规则将虚拟机的私有IP地址映射到公共IP地址。"
+
+# 76e196b931384143a2f1b65467f003dd
+#: ../../networking/external_firewalls_and_load_balancers.rst:221
+msgid ""
+"A security policy that allows traffic within the set of protocols and port "
+"ranges that are specified."
+msgstr "一个安全策略可以允许说明的协议和端口范围内的流量通过。"
+
+# b6b755f7fb5a4d4d9495bfe3b0eac10e
+#: ../../networking/external_firewalls_and_load_balancers.rst:224
+msgid ""
+"A firewall filter counter that measures the number of bytes of incoming "
+"traffic to the public IP."
+msgstr "防火墙过滤计数器计量到达此公共IP的流量"
+
+# 077fa026b5954737b4af75e98a4dd1e8
+#: ../../networking/external_firewalls_and_load_balancers.rst:227
+msgid ""
+"The number of incoming and outgoing bytes through source NAT, static NAT, "
+"and load balancing rules is measured and saved on each external element. "
+"This data is collected on a regular basis and stored in the CloudStack "
+"database."
+msgstr "通过源NAT，静态NAT以及负载均衡规则进出的字节数均被计量并保存在每一个外部设备中。按一定的规则对这些数据进行收集，并将其存储在CloudStack的数据库中。"
+
+# a882754de1c64a389513a78637f3325d
+#: ../../networking/external_firewalls_and_load_balancers.rst:234
+msgid "Load Balancer Rules"
+msgstr "负载均衡规则"
+
+# 9b95ee51dc6e4026905b950584948d63
+#: ../../networking/external_firewalls_and_load_balancers.rst:236
+msgid ""
+"A CloudStack user or administrator may create load balancing rules that "
+"balance traffic received at a public IP to one or more VMs. A user creates a"
+" rule, specifies an algorithm, and assigns the rule to a set of VMs."
+msgstr "一个CloudStack的用户或管理员可以创建负载均衡规则以平衡一个公共IP地址收到的针对一个或多个虚拟机的外部流量。一个用户可以创建一条规则，说明一个算法，并将其指定给一部分虚拟机。"
+
+# 7ac5de99c5694e0b89ceb6d4c39e0dfb
+#: ../../networking/external_firewalls_and_load_balancers.rst:242
+msgid ""
+"If you create load balancing rules while using a network service offering "
+"that includes an external load balancer device such as NetScaler, and later "
+"change the network service offering to one that uses the CloudStack virtual "
+"router, you must create a firewall rule on the virtual router for each of "
+"your existing load balancing rules so that they continue to function."
+msgstr "如果你创建了一个负载均衡规则且使用包括外部负载均衡设备的网络服务方案，如包括NetScaler，但随后将网络方案改成使用CloudStack的虚拟路由器，则你必须在虚拟路由器上创建一个防火墙规则，这些防火墙规则与已经设置的负载均衡规则一一对应，只有这样，才能使那些负载均衡规则继续起作用。"
+
+# b09aa6c58aa84b8f89b3293a64ca17fd
+#: ../../networking/external_firewalls_and_load_balancers.rst:253
+msgid "Adding a Load Balancer Rule"
+msgstr "增加一条负载均衡规则"
+
+# 1bc40a00c2f341118db65e97bbbcf986
+#: ../../networking/external_firewalls_and_load_balancers.rst:255
+msgid "Log in to the CloudStack UI as an administrator or end user."
+msgstr "使用管理员或者终端用户账号登录CloudStack UI。"
+
+# 57f7d8a61234427abc813c4208e84192
+#: ../../networking/external_firewalls_and_load_balancers.rst:257
+msgid "In the left navigation, choose Network."
+msgstr "在左侧的导航栏，选择网络。"
+
+# d947318aba7746718816eb5c7e29e9b1
+#: ../../networking/external_firewalls_and_load_balancers.rst:259
+msgid ""
+"Click the name of the network where you want to load balance the traffic."
+msgstr "点击拟进行负载均衡的网络名称"
+
+# 20fc7dedf2cf482d94d8977ac64c6b0d
+#: ../../networking/external_firewalls_and_load_balancers.rst:262
+msgid "Click View IP Addresses."
+msgstr "点击查看IP地址。"
+
+# aff4544b414847af82ceceb0bd4e3b55
+#: ../../networking/external_firewalls_and_load_balancers.rst:264
+msgid ""
+"Click the IP address for which you want to create the rule, then click the "
+"Configuration tab."
+msgstr "点击你希望创建规则的IP地址，然后点击配置"
+
+# a84c70dc6b4f4d7c8f5a2d1f82b59355
+#: ../../networking/external_firewalls_and_load_balancers.rst:267
+msgid "In the Load Balancing node of the diagram, click View All."
+msgstr "在图的负载均衡节点点上，点击 查看全部。"
+
+# 698c929938644fa88bcaa781f68ea4e7
+#: ../../networking/external_firewalls_and_load_balancers.rst:269
+msgid ""
+"In a Basic zone, you can also create a load balancing rule without acquiring"
+" or selecting an IP address. CloudStack internally assign an IP when you "
+"create the load balancing rule, which is listed in the IP Addresses page "
+"when the rule is created."
+msgstr "在基础区域中，在不需要或不选择IP的条件下，你可以创建一条负载均衡规则。当你创建负载均衡规则时，CloudStack会内部指定一个IP地址。当规则创建完成时，IP地址会在IP地址页列出来。"
+
+# 2991ed0062324ee88859d10be3c6d280
+#: ../../networking/external_firewalls_and_load_balancers.rst:274
+msgid ""
+"To do that, select the name of the network, then click Add Load Balancer "
+"tab. Continue with #7."
+msgstr "为此，选择网络名称，点击 增加负载均衡。按#7继续进行配置。"
+
+# f62541afe2764660ba42de5ab1903be0
+#: ../../networking/external_firewalls_and_load_balancers.rst:277
+msgid "Fill in the following:"
+msgstr "填写以下内容："
+
+# 9d106d6a229045acbfc2622c0c395bd9
+#: ../../networking/external_firewalls_and_load_balancers.rst:279
+msgid "**Name**: A name for the load balancer rule."
+msgstr "**名称**: 负载均衡规则的名称。"
+
+# 75090eb93c0c438fbb12cc3c26d20ef9
+#: ../../networking/external_firewalls_and_load_balancers.rst:281
+msgid "**Public Port**: The port receiving incoming traffic to be balanced."
+msgstr "**公共端口**: 这个端口接受到负载均衡的进入流量。"
+
+# 61dc53b8703148608a98d96de9b2f3f7
+#: ../../networking/external_firewalls_and_load_balancers.rst:284
+msgid ""
+"**Private Port**: The port that the VMs will use to receive the traffic."
+msgstr "**私有端口**: 虚拟机会使用此端口接收流量。"
+
+# 9e98c799101c44728527da77d95553ee
+#: ../../networking/external_firewalls_and_load_balancers.rst:287
+msgid ""
+"**Algorithm**: Choose the load balancing algorithm you want CloudStack to "
+"use. CloudStack supports a variety of well-known algorithms. If you are not "
+"familiar with these choices, you will find plenty of information about them "
+"on the Internet."
+msgstr "**算法**: 选择让CloudStack使用的负载均衡算法。CloudStack各类已知的算法，如果不熟悉那些选项，通过goole搜索会发现大量信息。"
+
+# 1fc198ccbf4e4718beba8aaec97b2a38
+#: ../../networking/external_firewalls_and_load_balancers.rst:292
+msgid ""
+"**Stickiness**: (Optional) Click Configure and choose the algorithm for the "
+"stickiness policy. See Sticky Session Policies for Load Balancer Rules."
+msgstr "**粘性**: (可选) 点击配置，为粘性策略选择一个算法。可参见为负载均衡规则制定的粘性会话策略。"
+
+# 8d672e758cc24f2da82cbdd82c83ea21
+#: ../../networking/external_firewalls_and_load_balancers.rst:296
+msgid ""
+"**AutoScale**: Click Configure and complete the AutoScale configuration as "
+"explained in :ref:`conf-autoscale`."
+msgstr "**自动缩放**：点击配置完成自动缩放配置，在 :ref:`conf-autoscale`中有介绍。"
+
+# 33ab79892f344fde975f3d6c32cd9b12
+#: ../../networking/external_firewalls_and_load_balancers.rst:299
+msgid ""
+"**Health Check**: (Optional; NetScaler load balancers only) Click Configure "
+"and fill in the characteristics of the health check policy. See :ref"
+":`health-check`."
+msgstr "**健康检查**：(可选，只针对NetScaler的负载均衡设备)点击配置并填写健康检查特性，参见15.16.5.3 负载均衡规则的健康检查。参见 :ref:`health-check`."
+
+# d643db9463b745c7ac1f19daad8358dd
+#: ../../networking/external_firewalls_and_load_balancers.rst:303
+msgid ""
+"**Ping path (Optional)**: Sequence of destinations to which to send health "
+"check queries. Default: / (all)."
+msgstr "**ping 路径(可选)**: 需要发送健康检查的目的地顺序。默认：/ (all)。"
+
+# b33a72d1050241329dd52806584f0b49
+#: ../../networking/external_firewalls_and_load_balancers.rst:306
+msgid ""
+"**Response time (Optional)**: How long to wait for a response from the "
+"health check (2 - 60 seconds). Default: 5 seconds."
+msgstr "**响应时间(可选)**:  从健康检查返回的响应时间(2-60秒)，默认为5秒。"
+
+# 885f1763ea71493ea93ba841259240b3
+#: ../../networking/external_firewalls_and_load_balancers.rst:309
+msgid ""
+"**Interval time (Optional)**: Amount of time between health checks (1 second"
+" - 5 minutes). Default value is set in the global configuration parameter "
+"lbrule\\_health check\\_time\\_interval."
+msgstr "**间隔时间(可选)**: 健康检查的间隔时间(1秒-5分)）。默认值在全局参数 lbrule\\_health check\\_time\\_interval"
+
+# 82dd529deb534e00b11b709fad1a829f
+#: ../../networking/external_firewalls_and_load_balancers.rst:314
+msgid ""
+"**Healthy threshold (Optional)**: Number of consecutive health check "
+"successes that are required before declaring an instance healthy. Default: "
+"2."
+msgstr "**健康阀值(可选)**: 在声明一个实例健康之前，连续健康检查成功的次数。默认为2."
+
+# 8c946ad8aa9b402ba1d7808681a90216
+#: ../../networking/external_firewalls_and_load_balancers.rst:318
+msgid ""
+"**Unhealthy threshold (Optional)**: Number of consecutive health check "
+"failures that are required before declaring an instance unhealthy. Default: "
+"10."
+msgstr "**不健康阀值(可选)**: 在声音一个实例不健康之前连续健康检查失败的次数。默认为10。"
+
+# 8bd4120f80ff41368605d05b647ee837
+#: ../../networking/external_firewalls_and_load_balancers.rst:322
+msgid ""
+"Click Add VMs, then select two or more VMs that will divide the load of "
+"incoming traffic, and click Apply."
+msgstr "点击添加虚拟机，选择拟分散进入流量的二个或多个虚拟机，点击应用。"
+
+# 9720f8ded014448394288000a5c40217
+#: ../../networking/external_firewalls_and_load_balancers.rst:325
+msgid ""
+"The new load balancer rule appears in the list. You can repeat these steps "
+"to add more load balancer rules for this IP address."
+msgstr "在列表中会出现新加的负载均衡规则。可以重复以上步骤以对此IP增加更多的负载均衡规则。"
+
+# 3ccedfb3a9324eb1860d1924ac909e3a
+#: ../../networking/external_firewalls_and_load_balancers.rst:330
+msgid "Sticky Session Policies for Load Balancer Rules"
+msgstr "为负载均衡规则制定的粘性会话策略。"
+
+# b33d98749eb5488a8a02cad61861c752
+#: ../../networking/external_firewalls_and_load_balancers.rst:332
+msgid ""
+"Sticky sessions are used in Web-based applications to ensure continued "
+"availability of information across the multiple requests in a user's "
+"session. For example, if a shopper is filling a cart, you need to remember "
+"what has been purchased so far. The concept of \"stickiness\" is also "
+"referred to as persistence or maintaining state."
+msgstr "粘性会话应用于基于网页的应用中，以确保在用户的会话中，对用户的多种请求持续提供信息。例如，购物者正在向购物车中增加东西，则需要记住到目前为止已买的东西。粘性的概念也指持久发现或维护状态。"
+
+# 68678f9c4f934ed796779a0d4121e91a
+#: ../../networking/external_firewalls_and_load_balancers.rst:338
+msgid ""
+"Any load balancer rule defined in CloudStack can have a stickiness policy. "
+"The policy consists of a name, stickiness method, and parameters. The "
+"parameters are name-value pairs or flags, which are defined by the load "
+"balancer vendor. The stickiness method could be load balancer-generated "
+"cookie, application-generated cookie, or source-based. In the source-based "
+"method, the source IP address is used to identify the user and locate the "
+"user's stored data. In the other methods, cookies are used. The cookie "
+"generated by the load balancer or application is included in request and "
+"response URLs to create persistence. The cookie name can be specified by the"
+" administrator or automatically generated. A variety of options are provided"
+" to control the exact behavior of cookies, such as how they are generated "
+"and whether they are cached."
+msgstr "在CloudStack中定义的任何负载均衡规则，都可以具有粘性策略。策略有名字，粘性方法以及参数组成。参数是成对的值-名或标志，这些由负载均衡提供商进行定义。粘发现方法可以加载负载均衡设备产生的cookie，应用生产的cookie，或基于源产生的cookie。在基于源的方法中，源IP地址被用来区分用户和定位用户存储的数据。在其他方法中，则使用cookie。由负载均衡或应用产生的cookie，包含在请求或响应的url中，以产生持久性。cookie的名称可以有管理员指定或自动产生。提供了多种选择来准确控制cookie行为。诸如如何产生的以及是否进行缓存。"
+
+# bb05b34273814acfb053cac6ffdfe917
+#: ../../networking/external_firewalls_and_load_balancers.rst:352
+msgid ""
+"For the most up to date list of available stickiness methods, see the "
+"CloudStack UI or call listNetworks and check the SupportedStickinessMethods "
+"capability."
+msgstr "对于多数粘性方法变量列表，可以参看CloudStack UI或者调用网络列表，并检查粘性方法支持能力。"
+
+# 35aba1c4298e4ecdaaa750f3375b4be2
+#: ../../networking/external_firewalls_and_load_balancers.rst:360
+msgid "Health Checks for Load Balancer Rules"
+msgstr "负载均衡规则的健康检查。"
+
+# d9cc398640dc410ea5c44e614e8d82cd
+#: ../../networking/external_firewalls_and_load_balancers.rst:362
+msgid "(NetScaler load balancer only; requires NetScaler version 10.0)"
+msgstr "（仅对NetScaler负载均衡设备，需要NetScaler版本10.0以上。）"
+
+# 13a5a45067f34a0b8387527dfaa9d0ce
+#: ../../networking/external_firewalls_and_load_balancers.rst:364
+msgid ""
+"Health checks are used in load-balanced applications to ensure that requests"
+" are forwarded only to running, available services. When creating a load "
+"balancer rule, you can specify a health check policy. This is in addition to"
+" specifying the stickiness policy, algorithm, and other load balancer rule "
+"options. You can configure one health check policy per load balancer rule."
+msgstr "负载均衡应用中的健康检查，能够确保转发需求运行，服务可用。当创建一个负载均衡规则里，你可以指定一个健康检查策略。这是对粘性策略，算法，其他负载均衡设备规则的附加说明。可以为每一条负载均衡设备进行配置。"
+
+# 507b3dcc2fbd48a18c5ae46dcb37b341
+#: ../../networking/external_firewalls_and_load_balancers.rst:371
+msgid ""
+"Any load balancer rule defined on a NetScaler load balancer in CloudStack "
+"can have a health check policy. The policy consists of a ping path, "
+"thresholds to define \"healthy\" and \"unhealthy\" states, health check "
+"frequency, and timeout wait interval."
+msgstr "在CloudStackk中的NetScaler负载均衡设备定义的任一负载均衡规则都可以有一条健康检查策略。该策略有ping路径，定义健康或非健康状态的阀值，健康检查频率以及等待超时间隔。"
+
+# 35f78e270b3e47749e7a677486944ac1
+#: ../../networking/external_firewalls_and_load_balancers.rst:376
+msgid ""
+"When a health check policy is in effect, the load balancer will stop "
+"forwarding requests to any resources that are found to be unhealthy. If the "
+"resource later becomes available again, the periodic health check will "
+"discover it, and the resource will once again be added to the pool of "
+"resources that can receive requests from the load balancer. At any given "
+"time, the most recent result of the health check is displayed in the UI. For"
+" any VM that is attached to a load balancer rule with a health check "
+"configured, the state will be shown as UP or DOWN in the UI depending on the"
+" result of the most recent health check."
+msgstr "当健康检查策略生效时，负载均衡被发现处于非健康状态时，会停止转发到源的任何请求。如果随后资源变为可用，周期性进行的健康检查就会发现，此资源就会再一次被添加至从负载均衡器收到的请求资源池里。任一时刻，最近的健康检查结果会显示在UI中。对绑定了负载均衡规则的虚拟机，且此规则配置了健康检查，依据最近的检查，状态会显示为正常或失败。"
+
+# bdff04e42c3943e38c182443f757f743
+#: ../../networking/external_firewalls_and_load_balancers.rst:386
+msgid "You can delete or modify existing health check policies."
+msgstr "可以删除或修改存在的健康检查策略。"
+
+# eef49f2114c344a58739dcf8f68aac70
+#: ../../networking/external_firewalls_and_load_balancers.rst:388
+msgid ""
+"To configure how often the health check is performed by default, use the "
+"global configuration setting healthcheck.update.interval (default value is "
+"600 seconds). You can override this value for an individual health check "
+"policy."
+msgstr "为配置默认的健康检查执行频率，通过全局配置参数 healthcheck.update.interval进行设备，默认值是600秒。可以根据需要进行设置此值。"
+
+# 6f13b2ca1fd74ad2a09363a9de9dfa54
+#: ../../networking/external_firewalls_and_load_balancers.rst:393
+msgid ""
+"For details on how to set a health check policy using the UI, see :ref"
+":`adding-lb-rule`."
+msgstr "如何通过UI进行健康检查策略的设置，可参看 :ref:`adding-lb-rule`。"
+
+# 6f66a1def18847c0ba2eec5214f58bc4
+#: ../../networking/external_firewalls_and_load_balancers.rst:400
+msgid "Configuring AutoScale"
+msgstr "配置自缩放"
+
+# 1d10105f71d4436ca70e813d83aa587d
+#: ../../networking/external_firewalls_and_load_balancers.rst:402
+msgid ""
+"AutoScaling allows you to scale your back-end services or application VMs up"
+" or down seamlessly and automatically according to the conditions you "
+"define. With AutoScaling enabled, you can ensure that the number of VMs you "
+"are using seamlessly scale up when demand increases, and automatically "
+"decreases when demand subsides. Thus it helps you save compute costs by "
+"terminating underused VMs automatically and launching new VMs when you need "
+"them, without the need for manual intervention."
+msgstr "自缩放允许你能够根据定义的条件进行无缝且自动的增加或减少后端服务或应用虚拟机。当开启自缩放时，可以确保在需求增加时，无缝的增加正在使用虚拟机的数量。因此他会通过关闭未使用的虚拟机或者需要时开启新的虚拟机，从而节省你的计算成本。这些操作，都不需要手动干预。"
+
+# f916e1ba803d4d5f93f20a1fc650704f
+#: ../../networking/external_firewalls_and_load_balancers.rst:410
+msgid ""
+"NetScaler AutoScaling is designed to seamlessly launch or terminate VMs "
+"based on user-defined conditions. Conditions for triggering a scaleup or "
+"scaledown action can vary from a simple use case like monitoring the CPU "
+"usage of a server to a complex use case of monitoring a combination of "
+"server's responsiveness and its CPU usage. For example, you can configure "
+"AutoScaling to launch an additional VM whenever CPU usage exceeds 80 percent"
+" for 15 minutes, or to remove a VM whenever CPU usage is less than 20 "
+"percent for 30 minutes."
+msgstr "NetScaler的自缩放定义为基于用户定义的条件，无缝的开启或关闭虚拟机。触发扩大或缩小行为的条件从监控服务器cpu的使用率的单一用例到监控服务器响应及cpu使用率的组合用例，各不相同。例如，你可以一个自缩放，能够在CPU使用超过80%持续15分钟时启动一个新的虚拟机，或CPU使用率低于20%持续30分钟时，移除一个虚拟机。"
+
+# fa4167d0761945e6b5552ddc195aa1cb
+#: ../../networking/external_firewalls_and_load_balancers.rst:419
+msgid ""
+"CloudStack uses the NetScaler load balancer to monitor all aspects of a "
+"system's health and work in unison with CloudStack to initiate scale-up or "
+"scale-down actions."
+msgstr "CloudStack使用NetScaler负载均衡器来监控系统健康的各方面，并与CloudStack共同工作以初始化扩大或缩小的行为。"
+
+# 25cc6eeee03544bead38d29ffde91c33
+#: ../../networking/external_firewalls_and_load_balancers.rst:424
+msgid ""
+"AutoScale is supported on NetScaler Release 10 Build 74.4006.e and beyond."
+msgstr "自缩放在NetScaler发布的10版本以上适用。（Build 74.4006.e 及以上）"
+
+# f97b092a261142629f674c1cf40ee949
+#: ../../networking/external_firewalls_and_load_balancers.rst:428
+msgid "Prerequisites"
+msgstr "先决条件"
+
+# 0c697f756785488aaa591aa8b9a921cc
+#: ../../networking/external_firewalls_and_load_balancers.rst:430
+msgid "Before you configure an AutoScale rule, consider the following:"
+msgstr "在配置自缩放前，需要考虑以下几点："
+
+# 8229cf3ea2d24a22bc9707f8f142ca5e
+#: ../../networking/external_firewalls_and_load_balancers.rst:432
+msgid ""
+"Ensure that the necessary template is prepared before configuring AutoScale."
+" When a VM is deployed by using a template and when it comes up, the "
+"application should be up and running."
+msgstr "确保在配置自缩放时有必需的模板。当使用模板部署虚拟机并使虚拟机启动时，应用能够起动并运行。"
+
+# a3b170baceb44749ba1bc8c05a2d5b1c
+#: ../../networking/external_firewalls_and_load_balancers.rst:437
+msgid ""
+"If the application is not running, the NetScaler device considers the VM as "
+"ineffective and continues provisioning the VMs unconditionally until the "
+"resource limit is exhausted."
+msgstr "如果应用没有运行，NetScaler设备会认为虚拟机无效并持续无条件的创建虚拟机，直到资源耗尽。"
+
+# df32d04c33ca462ea54e7d716b2d8ffe
+#: ../../networking/external_firewalls_and_load_balancers.rst:441
+msgid ""
+"Deploy the templates you prepared. Ensure that the applications come up on "
+"the first boot and is ready to take the traffic. Observe the time requires "
+"to deploy the template. Consider this time when you specify the quiet time "
+"while configuring AutoScale."
+msgstr "部署准备好的模板。确保应用在第一次启动时能够开启并准备好接管流量。观察部署模板需要的时间。在配置自缩放时，要考虑这段时间。"
+
+# e416b95063a0497fa2b7ca6430c0957c
+#: ../../networking/external_firewalls_and_load_balancers.rst:446
+msgid ""
+"The AutoScale feature supports the SNMP counters that can be used to define "
+"conditions for taking scale up or scale down actions. To monitor the SNMP-"
+"based counter, ensure that the SNMP agent is installed in the template used "
+"for creating the AutoScale VMs, and the SNMP operations work with the "
+"configured SNMP community and port by using standard SNMP managers. For "
+"example, see `\"Configuring SNMP Community String on a RHELServer\" "
+"<#configuring-snmp-community-string-on-a-rhel-server>`_ to configure SNMP on"
+" a RHEL machine."
+msgstr ""
+
+# 0ac0707e74464bd0840f60e335716a25
+#: ../../networking/external_firewalls_and_load_balancers.rst:456
+msgid ""
+"Ensure that the endpointe.url parameter present in the Global Settings is "
+"set to the Management Server API URL. For example, "
+"``http://10.102.102.22:8080/client/api``. In a multi-node Management Server "
+"deployment, use the virtual IP address configured in the load balancer for "
+"the management server's cluster. Additionally, ensure that the NetScaler "
+"device has access to this IP address to provide AutoScale support."
+msgstr "确保在全局配置中的结束点地址参数已设置为管理服务器的API地址。例如：``http://10.102.102.22:8080/client/api``。 在多管理节点的部署中，使用配置在负载均衡器上的虚拟IP地址作为管理服务器集群的IP地址。此外，确保NetScaler设备有读取为提供自缩放而配置的IP地址的权限。"
+
+# f8d93cd584a54fd8b2a72143d4107323
+#: ../../networking/external_firewalls_and_load_balancers.rst:464
+msgid ""
+"If you update the endpointe.url, disable the AutoScale functionality of the "
+"load balancer rules in the system, then enable them back to reflect the "
+"changes. For more information see :ref:`update-autoscale`."
+msgstr "如果更新了endpointe.url，在系统自动负载均衡器规则里，先关闭自缩放功能随后再开启，以应用此更新。。更多信息，参见 :ref:`update-autoscale`。"
+
+# f4e671d2a1814ee7936944319291f882
+#: ../../networking/external_firewalls_and_load_balancers.rst:468
+msgid ""
+"If the API Key and Secret Key are regenerated for an AutoScale user, ensure "
+"that the AutoScale functionality of the load balancers that the user "
+"participates in are disabled and then enabled to reflect the configuration "
+"changes in the NetScaler."
+msgstr "如果为自缩放用户生成了API值和秘钥，确保用户参与的负载均衡器的自缩放功能先关闭，再开启，以应用NetScaler配置的变化。"
+
+# 1def24ca3fcf4a9984043a4339307137
+#: ../../networking/external_firewalls_and_load_balancers.rst:473
+msgid ""
+"In an advanced Zone, ensure that at least one VM should be present before "
+"configuring a load balancer rule with AutoScale. Having one VM in the "
+"network ensures that the network is in implemented state for configuring "
+"AutoScale."
+msgstr "在高级区域中，在配置带自缩放的负载均衡规则时，确保至少要有一个虚拟机。在网络中存在一个虚拟机，可保证在配置自缩放时，网络处于使用状态。"
+
+# d722fd21fbb64e1f8fe5c04b72d39a29
+#: ../../networking/external_firewalls_and_load_balancers.rst:480
+msgid "Configuration"
+msgstr "配置"
+
+# aa34165bbbed4360bb6cebfc7b978d91
+#: ../../networking/external_firewalls_and_load_balancers.rst:482
+msgid "Specify the following:"
+msgstr "指定以下信息："
+
+# 306046475ddb4e789bc88bc1633cdc73
+#: ../../networking/external_firewalls_and_load_balancers.rst:484
+msgid "|autoscaleateconfig.png|"
+msgstr "|autoscaleateconfig.png|"
+
+# 951132877c0f4870b67560ae8035c8eb
+#: ../../networking/external_firewalls_and_load_balancers.rst:486
+msgid ""
+"**Template**: A template consists of a base OS image and application. A "
+"template is used to provision the new instance of an application on a "
+"scaleup action. When a VM is deployed from a template, the VM can start "
+"taking the traffic from the load balancer without any admin intervention. "
+"For example, if the VM is deployed for a Web service, it should have the Web"
+" server running, the database connected, and so on."
+msgstr "**模板**: 模板由基本的操作系统镜像和应用组成。在自缩放动作中，模板用来提供一个应用的新的实例。当从模板部署虚拟机时，虚拟机在管理员不干预的情形下开始从负载均衡器那里接管流量。例如，如果虚拟机部署为WEB服务应用，则虚拟机上的WEB服务器应该在运行，并且连接了数据库，等等。"
+
+# 313bdbb8a05e46239d80664ae76a92cf
+#: ../../networking/external_firewalls_and_load_balancers.rst:494
+msgid ""
+"**Compute offering**: A predefined set of virtual hardware attributes, "
+"including CPU speed, number of CPUs, and RAM size, that the user can select "
+"when creating a new virtual machine instance. Choose one of the compute "
+"offerings to be used while provisioning a VM instance as part of scaleup "
+"action."
+msgstr "**计算方案**: 一个预定义的虚拟硬件资源集，包括CPU速度，CPU数量，RAM，用户在创建虚拟时可以选择这些。选择一个计算方案作为提供虚拟机实例中自缩放行为的一部分。"
+
+# cd0d1d8ce17d439eb9c360d182e61bc0
+#: ../../networking/external_firewalls_and_load_balancers.rst:500
+msgid ""
+"**Min Instance**: The minimum number of active VM instances that is assigned"
+" to a load balancing rule. The active VM instances are the application "
+"instances that are up and serving the traffic, and are being load balanced. "
+"This parameter ensures that a load balancing rule has at least the "
+"configured number of active VM instances are available to serve the traffic."
+msgstr "**最小实例**: 指定给负载均衡规则活动的虚拟机实例的最小数量，活动的虚拟机实例是开启的应用实例，并服务于流量和负载均衡。这个参数确保负载均衡规则拥有至少一个配置的活动虚拟机实例，并且能够服务于流量。"
+
+# b883f060ac0a4b669952542845307113
+#: ../../networking/external_firewalls_and_load_balancers.rst:508
+msgid ""
+"If an application, such as SAP, running on a VM instance is down for some "
+"reason, the VM is then not counted as part of Min Instance parameter, and "
+"the AutoScale feature initiates a scaleup action if the number of active VM "
+"instances is below the configured value. Similarly, when an application "
+"instance comes up from its earlier down state, this application instance is "
+"counted as part of the active instance count and the AutoScale process "
+"initiates a scaledown action when the active instance count breaches the Max"
+" instance value."
+msgstr "如果一个应用程序，比如SAP，它运行在一个VM实例上，但是VM因为某些原因宕机了，那么这个VM没有被算成是Min实例的一部分，并且如果这些活动的VM实例是下面配置的数值，那么自动扩展功能启动一个扩展的动作。同样的，当应用程序实例从宕机的状态恢复了以后，这个应用程序实例会被算为活动实例计数的一部分，并且当活动实例计数超出Max实例数值的时候，自动扩展启动一个缩减动作。"
+
+# 1062b529c80542fe9f49822dc8e1226b
+#: ../../networking/external_firewalls_and_load_balancers.rst:518
+msgid ""
+"**Max Instance**: Maximum number of active VM instances that **should be "
+"assigned to**\\ a load balancing rule. This parameter defines the upper "
+"limit of active VM instances that can be assigned to a load balancing rule."
+msgstr "**最大实例数**：最大数量的**应该被指派到**\\ 一条负载均衡策略的活动VM实例。这个参数定义了能被指派到一条负载均衡策略的活动VM实例的上限。"
+
+# 2f6f81ae0f294d00be1d4501c00d3ef4
+#: ../../networking/external_firewalls_and_load_balancers.rst:523
+msgid ""
+"Specifying a large value for the maximum instance parameter might result in "
+"provisioning large number of VM instances, which in turn leads to a single "
+"load balancing rule exhausting the VM instances limit specified at the "
+"account or domain level."
+msgstr "给最大量实例参数指定一个大的值可能引发大量VM实例的分发，这个过程会导致一个负载均衡策略耗尽账户或者域级别下VM实例指定的限制。"
+
+# 80e14b2eba9f4b31bf0f73a8fb4665ac
+#: ../../networking/external_firewalls_and_load_balancers.rst:529
+msgid ""
+"If an application, such as SAP, running on a VM instance is down for some "
+"reason, the VM is not counted as part of Max Instance parameter. So there "
+"may be scenarios where the number of VMs provisioned for a scaleup action "
+"might be more than the configured Max Instance value. Once the application "
+"instances in the VMs are up from an earlier down state, the AutoScale "
+"feature starts aligning to the configured Max Instance value."
+msgstr "如果一个应用程序，比如SAP，它运行在一个VM实例上，但是VM因为某些原因宕机了，那么这个VM没有被算成是Max实例的一部分。所以这个情况中为扩展动作分发的VMs数量可能会超过配置的MAX实例数值。一旦这个VMs中的应用程序实例从先前的宕机中恢复的时候，自动扩展功能就会校正Max实例的数值。"
+
+# c05f5503e8994d1bbe38126fc1652574
+#: ../../networking/external_firewalls_and_load_balancers.rst:537
+msgid "Specify the following scale-up and scale-down policies:"
+msgstr "指定下列扩展和缩减的策略："
+
+# 8b8ee965cf5f45e4a993ef5a61584ee7
+#: ../../networking/external_firewalls_and_load_balancers.rst:539
+msgid ""
+"**Duration**: The duration, in seconds, for which the conditions you specify"
+" must be true to trigger a scaleup action. The conditions defined should "
+"hold true for the entire duration you specify for an AutoScale action to be "
+"invoked."
+msgstr "**持续**：持续，以秒为单位，你必须指定条件为true以触发一个扩展动作。这个条件定义的是为了触发一个自动扩展动作，你指定的全部持续值应保持为true。"
+
+# aef0e1b396cc4f4aa88ea919926bc457
+#: ../../networking/external_firewalls_and_load_balancers.rst:544
+msgid ""
+"**Counter**: The performance counters expose the state of the monitored "
+"instances. By default, CloudStack offers four performance counters: Three "
+"SNMP counters and one NetScaler counter. The SNMP counters are Linux User "
+"CPU, Linux System CPU, and Linux CPU Idle. The NetScaler counter is "
+"ResponseTime. The root administrator can add additional counters into "
+"CloudStack by using the CloudStack API."
+msgstr "**计数器**：性能计数器直接体现了被监视实例的状态。默认情况下，CloudStack提供了4个性能计数器：3个SNMP计数器和1个NetScaler计数器。SNMP计数器是Linux User CPU、Linux System CPU和Linux CPU Idle。NetScaler计数器是ResponseTime。root管理员能够使用CloudStack API给CloudStack添加额外的计数器。"
+
+# e13329c9be684765967ad40f1ed75b4e
+#: ../../networking/external_firewalls_and_load_balancers.rst:551
+msgid ""
+"**Operator**: The following five relational operators are supported in "
+"AutoScale feature: Greater than, Less than, Less than or equal to, Greater "
+"than or equal to, and Equal to."
+msgstr "**运算符**：自动扩展功能支持下列5种关系型运算符：大于、小于、小于或等于、大于或等于和等于。"
+
+# 736606eaa3ac4622b52ed0ab0545ba37
+#: ../../networking/external_firewalls_and_load_balancers.rst:555
+msgid ""
+"**Threshold**: Threshold value to be used for the counter. Once the counter "
+"defined above breaches the threshold value, the AutoScale feature initiates "
+"a scaleup or scaledown action."
+msgstr "**阈值**：阈值用于计数器。一旦上面计数器中定义的值超出阈值，自动扩展功能会启动扩展或者缩减动作。"
+
+# e74122a065ed4373a7c1291eb1291e64
+#: ../../networking/external_firewalls_and_load_balancers.rst:559
+msgid "**Add**: Click Add to add the condition."
+msgstr "**添加**:：点击添加来添加条件。"
+
+# 7d05f0a9ea384a5790999dfcd7fd3647
+#: ../../networking/external_firewalls_and_load_balancers.rst:561
+msgid ""
+"Additionally, if you want to configure the advanced settings, click Show "
+"advanced settings, and specify the following:"
+msgstr "另外，如果你想配置高级设置，点击显示高级设置，接着指定下列参数："
+
+# 9e8ccf2af53541eea6450c116ba10b0a
+#: ../../networking/external_firewalls_and_load_balancers.rst:564
+msgid ""
+"**Polling interval**: Frequency in which the conditions, combination of "
+"counter, operator and threshold, are to be evaluated before taking a scale "
+"up or down action. The default polling interval is 30 seconds."
+msgstr "**轮询间隔**：组合计数器，运算和阈值这几个条件的频率在触发扩展和缩减动作之前都要被评估。默认的轮询间隔是30秒。"
+
+# 9a0a8077043d427ba02f39207e648c16
+#: ../../networking/external_firewalls_and_load_balancers.rst:569
+msgid ""
+"**Quiet Time**: This is the cool down period after an AutoScale action is "
+"initiated. The time includes the time taken to complete provisioning a VM "
+"instance from its template and the time taken by an application to be ready "
+"to serve traffic. This quiet time allows the fleet to come up to a stable "
+"state before any action can take place. The default is 300 seconds."
+msgstr "**平静期**：这是自动扩展动作被触发之后的冷静期。这个时间包括完成从模板分发一个VM实例的时间和一个应用程序准备好提供服务的时间。平静期允许机群在发生任何动作之前进入稳定状态。默认值是300秒。"
+
+# d562af8950534ba78cfad860812c91af
+#: ../../networking/external_firewalls_and_load_balancers.rst:576
+msgid ""
+"**Destroy VM Grace Period**: The duration in seconds, after a scaledown "
+"action is initiated, to wait before the VM is destroyed as part of scaledown"
+" action. This is to ensure graceful close of any pending sessions or "
+"transactions being served by the VM marked for destroy. The default is 120 "
+"seconds."
+msgstr "**VM销毁宽限期**：此宽限期以秒计算，在一个缩减动作运行之后，在VMs被视为缩减动作的一部分从而销毁之前的等待时间。它保证了能够彻底关闭任何服务于被标记为销毁的VM的挂起中的进程或者事务。默认值是120秒。"
+
+# b74500ed7cdc4d5e984c9d01a17d6cae
+#: ../../networking/external_firewalls_and_load_balancers.rst:582
+msgid ""
+"**Security Groups**: Security groups provide a way to isolate traffic to the"
+" VM instances. A security group is a group of VMs that filter their incoming"
+" and outgoing traffic according to a set of rules, called ingress and egress"
+" rules. These rules filter network traffic according to the IP address that "
+"is attempting to communicate with the VM."
+msgstr "**安全组**：安全组提供一种方法来隔离VMs流量。一个安全组是一组依照设置名为入口规则和出口规则来过滤他们进出流量的VMs，这些规则依靠与VM通讯的IP地址来过滤网络流量。"
+
+# 6e921b5c683943bf8e306cb4cd731b76
+#: ../../networking/external_firewalls_and_load_balancers.rst:589
+msgid ""
+"**Disk Offerings**: A predefined set of disk size for primary data storage."
+msgstr "**磁盘方案**：一组预定义的主数据存储磁盘大小。"
+
+# 8eeeb8c4bf1749e6b405081fce9318ca
+#: ../../networking/external_firewalls_and_load_balancers.rst:592
+msgid ""
+"**SNMP Community**: The SNMP community string to be used by the NetScaler "
+"device to query the configured counter value from the provisioned VM "
+"instances. Default is public."
+msgstr "**SNMP 联系**：SNMP 联系字符串被用于NetScaler设备从分发的VM实例中查询已配置的计数器的值。默认是public。"
+
+# 63d93ca18c5245e3aa630d743d5b1fff
+#: ../../networking/external_firewalls_and_load_balancers.rst:596
+msgid ""
+"**SNMP Port**: The port number on which the SNMP agent that run on the "
+"provisioned VMs is listening. Default port is 161."
+msgstr "**SNMP端口**：运行在已分发的VMs上的SNMP代理端口号。默认的端口是161."
+
+# 8e4ead8319ea470ba2e3a6183acf7ce2
+#: ../../networking/external_firewalls_and_load_balancers.rst:599
+msgid ""
+"**User**: This is the user that the NetScaler device use to invoke scaleup "
+"and scaledown API calls to the cloud. If no option is specified, the user "
+"who configures AutoScaling is applied. Specify another user name to "
+"override."
+msgstr "**用户**：在云中NetScaler设备中用于发起扩展和缩减API调用的用户。如果没有指定选项，那么该用户被配置为自动扩展。指定其他用户名可以覆盖此配置。"
+
+# c5ab8b8578de4f5b8e2aa37c414525aa
+#: ../../networking/external_firewalls_and_load_balancers.rst:604
+msgid "**Apply**: Click Apply to create the AutoScale configuration."
+msgstr "**应用**：点击应用创建自动扩展配置。"
+
+# 3d6ec42e045a4082a8798bec5791982a
+#: ../../networking/external_firewalls_and_load_balancers.rst:608
+msgid "Disabling and Enabling an AutoScale Configuration"
+msgstr "禁止和启用自动扩展配置"
+
+# ec5c758cc62a40e587a4b6c4fddb434f
+#: ../../networking/external_firewalls_and_load_balancers.rst:610
+msgid ""
+"If you want to perform any maintenance operation on the AutoScale VM "
+"instances, disable the AutoScale configuration. When the AutoScale "
+"configuration is disabled, no scaleup or scaledown action is performed. You "
+"can use this downtime for the maintenance activities. To disable the "
+"AutoScale configuration, click the Disable AutoScale |EnableDisable.png| "
+"button."
+msgstr "如果你想对一个自动扩展VM实例执行任何维护操作，请禁用自动扩展配置。当自动扩展配置被禁用，扩展和缩减动作不会执行。你可以利用停机时间进行维护活动。要禁用自动扩展配置，点击禁用自动扩展按钮 |EnableDisable.png|。"
+
+# 0a60f936b205455c98dceed77b11df3c
+#: ../../networking/external_firewalls_and_load_balancers.rst:616
+msgid ""
+"The button toggles between enable and disable, depending on whether "
+"AutoScale is currently enabled or not. After the maintenance operations are "
+"done, you can enable the AutoScale configuration back. To enable, open the "
+"AutoScale configuration page again, then click the Enable AutoScale "
+"|EnableDisable.png| button."
+msgstr "这个按钮是启用和禁止的切换开关，取决于当前是否启用了自动扩展。在执行完维护操作以后，你可以启用回自动扩展配置。要启用，请再次打开自动扩展配置页面，然后点击启用自动扩展按钮|EnableDisable.png|。"
+
+# f4bb71e85bd344b89fdcb3239a0f51f8
+#: ../../networking/external_firewalls_and_load_balancers.rst:626
+msgid "Updating an AutoScale Configuration"
+msgstr "更新自动扩展配置"
+
+# 3bf60f14a73d43869794736b33b5aa5b
+#: ../../networking/external_firewalls_and_load_balancers.rst:628
+msgid ""
+"You can update the various parameters and add or delete the conditions in a "
+"scaleup or scaledown rule. Before you update an AutoScale configuration, "
+"ensure that you disable the AutoScale load balancer rule by clicking the "
+"Disable AutoScale button."
+msgstr "你可以更新各种参数和添加或者删除扩展或缩减策略中的条件。在你更新自动扩展配置之前，请确保你已经通过点击禁止自动扩展按钮禁止了自动扩展负载均衡策略。"
+
+# f9665a6811b3410ba434ca755c6451f6
+#: ../../networking/external_firewalls_and_load_balancers.rst:633
+msgid ""
+"After you modify the required AutoScale parameters, click Apply. To apply "
+"the new AutoScale policies, open the AutoScale configuration page again, "
+"then click the Enable AutoScale button."
+msgstr "在你修改了所需的自动扩展参数之后，点击应用。要应新的自动扩展策略，再次打开自动扩展配置页面，然后点击启用自动扩展按钮。"
+
+# debb34a5766f45ca8759a81e6401dc05
+#: ../../networking/external_firewalls_and_load_balancers.rst:639
+msgid "Runtime Considerations"
+msgstr "运行时注意事项"
+
+# 57af5a07b00746d1b071d2eb6e80fea1
+#: ../../networking/external_firewalls_and_load_balancers.rst:641
+msgid ""
+"An administrator should not assign a VM to a load balancing rule which is "
+"configured for AutoScale."
+msgstr "管理员不应该分配VM到配置为AutoScale的负载均衡规则中。"
+
+# 7df6035fc7ca442bbbb5d7bd0ea0428b
+#: ../../networking/external_firewalls_and_load_balancers.rst:644
+msgid ""
+"Before a VM provisioning is completed if NetScaler is shutdown or restarted,"
+" the provisioned VM cannot be a part of the load balancing rule though the "
+"intent was to assign it to a load balancing rule. To workaround, rename the "
+"AutoScale provisioned VMs based on the rule name or ID so at any point of "
+"time the VMs can be reconciled to its load balancing rule."
+msgstr "在分配虚拟机到一个负载均衡的规则配置完成前如果NetScaler被关闭或重启，则配置的虚拟机不能成为负载均衡规则的一部分。要解决此问题，重命名基于AutoScale配置的虚拟机名称或ID，以便在任何时间点负载平衡规则可以调节该虚拟机。"
+
+# 0eca9ec603bb4fc28eaabd868afa3e27
+#: ../../networking/external_firewalls_and_load_balancers.rst:651
+msgid ""
+"Making API calls outside the context of AutoScale, such as destroyVM, on an "
+"autoscaled VM leaves the load balancing configuration in an inconsistent "
+"state. Though VM is destroyed from the load balancer rule, NetScaler "
+"continues to show the VM as a service assigned to a rule."
+msgstr "在自动扩展上下文之外使用API调用，如destroyVM，那么自动扩展下的VM会处于负载均衡配置冲突状态中。虽然VM被负载均衡策略所销毁，但NetScaler仍然会把VM作为一个设备分配一条策略。"

@@ -1,0 +1,789 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:05+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# dcd5b9f2eedc4d1682f64e174cd2cef7
+#: ../../networking/global_server_load_balancing.rst:18
+msgid "Global Server Load Balancing Support"
+msgstr "全局服务器负载均衡 支持"
+
+# 6cf6d74b4dde4e5fb05f41ae52822a4a
+#: ../../networking/global_server_load_balancing.rst:20
+msgid ""
+"CloudStack supports Global Server Load Balancing (GSLB) functionalities to "
+"provide business continuity, and enable seamless resource movement within a "
+"CloudStack environment. CloudStack achieve this by extending its "
+"functionality of integrating with NetScaler Application Delivery Controller "
+"(ADC), which also provides various GSLB capabilities, such as disaster "
+"recovery and load balancing. The DNS redirection technique is used to "
+"achieve GSLB in CloudStack."
+msgstr "CLOUDSTACK支持全局服务器负载均衡 (GSLB) 功能以提供可持续的商业运营。GSLB可以在CLOUDSTACK环境中实现资源的无缝迁移。CLOUDSTACK通过集成NetScaler应用交付控制器 (ADC)来提供GSLB功能，ADC可以提供各种各样的GSLB能力，比如灾难恢复，负载均衡。CLOUDSTACK在实现GSLB功能进，使用了DNS重定向技术。"
+
+# 7396fe0f91a94dcf8d73474623b3c975
+#: ../../networking/global_server_load_balancing.rst:28
+msgid ""
+"In order to support this functionality, region level services and service "
+"provider are introduced. A new service 'GSLB' is introduced as a region "
+"level service. The GSLB service provider is introduced that will provider "
+"the GSLB service. Currently, NetScaler is the supported GSLB provider in "
+"CloudStack. GSLB functionality works in an Active-Active data center "
+"environment."
+msgstr "为了支持这个功能，引进了地域级别的服务和服务提供者。引进了一项新服务“GSLB”作为地域级别的服务。该GSLB服务提供者介绍将提供GSLB服务。目前，CloudStack中NetScaler可作为GSLB提供者。 GSLB功能工作在Active-Active数据中心环境。"
+
+# c1b8feb53b76438681b08acf77c25440
+#: ../../networking/global_server_load_balancing.rst:37
+msgid "About Global Server Load Balancing"
+msgstr "关于全局服务器负载均衡"
+
+# e03a6a1a69b640308c22260d5737533b
+#: ../../networking/global_server_load_balancing.rst:39
+msgid ""
+"Global Server Load Balancing (GSLB) is an extension of load balancing "
+"functionality, which is highly efficient in avoiding downtime. Based on the "
+"nature of deployment, GSLB represents a set of technologies that is used for"
+" various purposes, such as load sharing, disaster recovery, performance, and"
+" legal obligations. With GSLB, workloads can be distributed across multiple "
+"data centers situated at geographically separated locations. GSLB can also "
+"provide an alternate location for accessing a resource in the event of a "
+"failure, or to provide a means of shifting traffic easily to simplify "
+"maintenance, or both."
+msgstr "全局服务器负载均衡(GSLB)是负载均衡功能的扩展，为了高效的避免停机时间。基于部署的性质，GSLB代表一组技术的集合，用于各种用途，如负载均衡，灾难恢复，性能，和法定义务。使用GSLB，工作负载可以分布在位于不同地理位置的多个数据中心。 GSLB也可以用于在发生故障时访问资源的另一个备用位置，或对流量提供了简易的维护方式，或两者兼得。"
+
+# ba32175058a043b081e7045d04a34334
+#: ../../networking/global_server_load_balancing.rst:51
+msgid "Components of GSLB"
+msgstr "GSLB服务组件"
+
+# 8282609b9ff24cd980a31ea858744fba
+#: ../../networking/global_server_load_balancing.rst:53
+msgid "A typical GSLB environment is comprised of the following components:"
+msgstr "一个典型的GSLB环境由以下服务组件组成："
+
+# 0c4b0b08a37346789443744bef960c26
+#: ../../networking/global_server_load_balancing.rst:55
+msgid ""
+"**GSLB Site**: In CloudStack terminology, GSLB sites are represented by "
+"zones that are mapped to data centers, each of which has various network "
+"appliances. Each GSLB site is managed by a NetScaler appliance that is local"
+" to that site. Each of these appliances treats its own site as the local "
+"site and all other sites, managed by other appliances, as remote sites. It "
+"is the central entity in a GSLB deployment, and is represented by a name and"
+" an IP address."
+msgstr "**GSLB站点**：在CloudStack专业术语中，GSLB站点表现为映射至数据中心的zones，每个GSLB有多个网络设备。每个GSLB站点由一个位于站点中的NetScaler设备管理。每个NetScaler设备将他管理的站点视为本地站点，并且由其他NetScaler设备管理的站点视为远程站点。在GSLB部署中它是一个中央实体，具体表现为一个名称和一个IP地址。"
+
+# e6f8317f00944a5faf27bf059374e211
+#: ../../networking/global_server_load_balancing.rst:63
+msgid ""
+"**GSLB Services**: A GSLB service is typically represented by a load "
+"balancing or content switching virtual server. In a GSLB environment, you "
+"can have a local as well as remote GSLB services. A local GSLB service "
+"represents a local load balancing or content switching virtual server. A "
+"remote GSLB service is the one configured at one of the other sites in the "
+"GSLB setup. At each site in the GSLB setup, you can create one local GSLB "
+"service and any number of remote GSLB services."
+msgstr "**GSLB服务**：GSLB服务表现为典型的负载均衡或者内容交换虚拟服务器。在一个GSLB环境中，你可以有本地及远程GSLB服务。本地GSLB服务表现为一个本地负载均衡或者内容交换虚拟服务器。远程GSLB服务是配置在GSLB设置中的其他站点。在每个站点中的GSLB设置里，你可以创建一个本地GSLB服务和任意数量的远程GSLB服务。"
+
+# 0d6074d67e874afaafcced32aa2dcad8
+#: ../../networking/global_server_load_balancing.rst:72
+msgid ""
+"**GSLB Virtual Servers**: A GSLB virtual server refers to one or more GSLB "
+"services and balances traffic between traffic across the VMs in multiple "
+"zones by using the CloudStack functionality. It evaluates the configured "
+"GSLB methods or algorithms to select a GSLB service to which to send the "
+"client requests. One or more virtual servers from different zones are bound "
+"to the GSLB virtual server. GSLB virtual server does not have a public IP "
+"associated with it, instead it will have a FQDN DNS name."
+msgstr "**GSLB虚拟服务器**：GSLB虚拟服务器指的是一个或多个GSLB服务和平衡跨越多个使用CloudStack功能的zones之间VMs的流量。它通过评估配置的GSLB方法或者算法来选择一个GSLB服务发送客户端请求。来自不同zone的一个或多个虚拟服务器被绑定到GSLB虚拟服务器上。GSLB虚拟服务器没有对应的公共IP，只有一个FQDN DNS名称。"
+
+# 25269a15ffaf4c48880b969ed8e8ff0b
+#: ../../networking/global_server_load_balancing.rst:81
+msgid ""
+"**Load Balancing or Content Switching Virtual Servers**: According to Citrix"
+" NetScaler terminology, a load balancing or content switching virtual server"
+" represents one or many servers on the local network. Clients send their "
+"requests to the load balancing or content switching virtual server's virtual"
+" IP (VIP) address, and the virtual server balances the load across the local"
+" servers. After a GSLB virtual server selects a GSLB service representing "
+"either a local or a remote load balancing or content switching virtual "
+"server, the client sends the request to that virtual server's VIP address."
+msgstr "**负载均衡或内容交换虚拟服务器**：依照Citrix NetScaler的专业术语，一个负载均衡或者内容交换虚拟服务器表现为本地网络上的一个或多个服务器。客户端发送他们的请求至负载均衡或内容交换虚拟服务器IP(VIP)地址，并且由虚拟服务器平衡本地服务器之间的负载。在GSLB虚拟服务器选择了一个基于本地或者远程负载均衡或者内容交换虚拟服务器的GSLB服务之后，客户端发送请求至虚拟服务器的VIP地址。"
+
+# a4ae12735c574a18995202afba84a585
+#: ../../networking/global_server_load_balancing.rst:91
+msgid ""
+"**DNS VIPs**: DNS virtual IP represents a load balancing DNS virtual server "
+"on the GSLB service provider. The DNS requests for domains for which the "
+"GSLB service provider is authoritative can be sent to a DNS VIP."
+msgstr "**DNS VIPs**：DNS虚拟IP是一个在GSLB服务供应者上的DNS负载均衡虚拟服务器。在有GSLB服务提供者的域中的DNS请求会被发送至一个DNS VIP。"
+
+# 18dae232ea054aad8beb56723f2e9d6d
+#: ../../networking/global_server_load_balancing.rst:96
+msgid ""
+"**Authoritative DNS**: ADNS (Authoritative Domain Name Server) is a service "
+"that provides actual answer to DNS queries, such as web site IP address. In "
+"a GSLB environment, an ADNS service responds only to DNS requests for "
+"domains for which the GSLB service provider is authoritative. When an ADNS "
+"service is configured, the service provider owns that IP address and "
+"advertises it. When you create an ADNS service, the NetScaler responds to "
+"DNS queries on the configured ADNS service IP and port."
+msgstr "**权威DNS**：ADNS(权威域名称服务器)是一个为DNS请求提供真实响应的服务，比如web站点IP地址。在GSLB环境中，一个ADNS服务只响应权威的GSLB服务提供者所在域的DNS请求。当配置了一个ADNS服务，该服务的提供者即拥有该服务IP并且广播它。当你创建一个ADNS服务的时候，NetScaler通过配置的ADNS服务IP和端口响应DNS请求。"
+
+# 9efb5a6ae20d45eab31e7fe7ffc87eab
+#: ../../networking/global_server_load_balancing.rst:107
+msgid "How Does GSLB Works in CloudStack?"
+msgstr "在CloudStack中，GSLB的工作原理是什么？"
+
+# daac6a57d97c4caebd3fa5d2f5f27324
+#: ../../networking/global_server_load_balancing.rst:109
+msgid ""
+"Global server load balancing is used to manage the traffic flow to a web "
+"site hosted on two separate zones that ideally are in different geographic "
+"locations. The following is an illustration of how GLSB functionality is "
+"provided in CloudStack: An organization, xyztelco, has set up a public cloud"
+" that spans two zones, Zone-1 and Zone-2, across geographically separated "
+"data centers that are managed by CloudStack. Tenant-A of the cloud launches "
+"a highly available solution by using xyztelco cloud. For that purpose, they "
+"launch two instances each in both the zones: VM1 and VM2 in Zone-1 and VM5 "
+"and VM6 in Zone-2. Tenant-A acquires a public IP, IP-1 in Zone-1, and "
+"configures a load balancer rule to load balance the traffic between VM1 and "
+"VM2 instances. CloudStack orchestrates setting up a virtual server on the LB"
+" service provider in Zone-1. Virtual server 1 that is set up on the LB "
+"service provider in Zone-1 represents a publicly accessible virtual server "
+"that client reaches at IP-1. The client traffic to virtual server 1 at IP-1 "
+"will be load balanced across VM1 and VM2 instances."
+msgstr "全局服务器负载均衡-GSLB-用于在不同地域的不同独立区域之间管理WEB服务器的访问流量。以下是CLOUDSTACK中提供的GSLB功能图示：EXZTELCO这个组织用CLOUDSTACK在不同的数据中心部署一个公有云，此云环境包括两个区域，Zone-1 和Zone-2。XYZTELCO里有租户A需要部署一个高可用方案。为了达到此目标，他们分别在两个区域里部署了两个虚拟机实例：Zone-1中有VM1和VM2，Zone-2中有VM5和VM6。租户A在Zone-1中得到一个公网IP-IP-1，并且在VM1和VM2之间配置了负载均衡规则。CLOUDSTACK 编排系统在 Zone-1中LB服务上设置了一个虚拟服务器-Virtual server 1 。客户端对-IP-1的访问会到达Virtual server 1，此虚拟服务器再将流量转发到VM1和VM2上进行流量负载均衡。"
+
+# ab85065c7a794a62bb64bb4d17ff62c9
+#: ../../networking/global_server_load_balancing.rst:126
+msgid ""
+"Tenant-A acquires another public IP, IP-2 in Zone-2 and sets up a load "
+"balancer rule to load balance the traffic between VM5 and VM6 instances. "
+"Similarly in Zone-2, CloudStack orchestrates setting up a virtual server on "
+"the LB service provider. Virtual server 2 that is setup on the LB service "
+"provider in Zone-2 represents a publicly accessible virtual server that "
+"client reaches at IP-2. The client traffic that reaches virtual server 2 at "
+"IP-2 is load balanced across VM5 and VM6 instances. At this point Tenant-A "
+"has the service enabled in both the zones, but has no means to set up a "
+"disaster recovery plan if one of the zone fails. Additionally, there is no "
+"way for Tenant-A to load balance the traffic intelligently to one of the "
+"zones based on load, proximity and so on. The cloud administrator of "
+"xyztelco provisions a GSLB service provider to both the zones. A GSLB "
+"provider is typically an ADC that has the ability to act as an ADNS "
+"(Authoritative Domain Name Server) and has the mechanism to monitor health "
+"of virtual servers both at local and remote sites. The cloud admin enables "
+"GSLB as a service to the tenants that use zones 1 and 2."
+msgstr "租户A在Zone-2中得到一个公网IP-IP-2，并且在VM5和VM6之间配置了负载均衡规则。CLOUDSTACK 编排系统在 Zone-2中LB服务上设置了一个虚拟服务器-Virtual server 2 。客户端对-IP-2的访问会到达Virtual server 2，此虚拟服务器再将流量转发到VM5和VM6上进行流量负载均衡。此时，租户A在两个区域里都启用了服务，但是，无法在这种环境下部署灾难恢复计划，也无法更智能在区域内使用负载均衡。要解决这些问题，XYZTELCO云管理员可以在两个区域内启用GSLB服务，一个GSLB服务通常是一个具有ADNS(认证域名服务器)能力的ADC，并且具有监测本地和远程站点健康状况的手段。云管理员可以在ZONE 1和2中为租户启用GSLB服务。"
+
+# 16e02bcf2da14fd48ec4af740ccfc445
+#: ../../networking/global_server_load_balancing.rst:144
+msgid "|gslb.png|"
+msgstr "|gslb.png|"
+
+# 7f93cb0f9f2e4bc58cfc7f308c019bda
+#: ../../networking/global_server_load_balancing.rst:146
+msgid ""
+"Tenant-A wishes to leverage the GSLB service provided by the xyztelco cloud."
+" Tenant-A configures a GSLB rule to load balance traffic across virtual "
+"server 1 at Zone-1 and virtual server 2 at Zone-2. The domain name is "
+"provided as A.xyztelco.com. CloudStack orchestrates setting up GSLB virtual "
+"server 1 on the GSLB service provider at Zone-1. CloudStack binds virtual "
+"server 1 of Zone-1 and virtual server 2 of Zone-2 to GLSB virtual server 1. "
+"GSLB virtual server 1 is configured to start monitoring the health of "
+"virtual server 1 and 2 in Zone-1. CloudStack will also orchestrate setting "
+"up GSLB virtual server 2 on GSLB service provider at Zone-2. CloudStack will"
+" bind virtual server 1 of Zone-1 and virtual server 2 of Zone-2 to GLSB "
+"virtual server 2. GSLB virtual server 2 is configured to start monitoring "
+"the health of virtual server 1 and 2. CloudStack will bind the domain "
+"A.xyztelco.com to both the GSLB virtual server 1 and 2. At this point, "
+"Tenant-A service will be globally reachable at A.xyztelco.com. The private "
+"DNS server for the domain xyztelcom.com is configured by the admin out-of-"
+"band to resolve the domain A.xyztelco.com to the GSLB providers at both the "
+"zones, which are configured as ADNS for the domain A.xyztelco.com. A client "
+"when sends a DNS request to resolve A.xyztelcom.com, will eventually get DNS"
+" delegation to the address of GSLB providers at zone 1 and 2. A client DNS "
+"request will be received by the GSLB provider. The GSLB provider, depending "
+"on the domain for which it needs to resolve, will pick up the GSLB virtual "
+"server associated with the domain. Depending on the health of the virtual "
+"servers being load balanced, DNS request for the domain will be resolved to "
+"the public IP associated with the selected virtual server."
+msgstr "租户- A希望利用由xyztelco cloud提供的GSLB服务。租户-A配置了一个GSLB规则对Zone-1中的虚拟服务器1和Zone-2中的虚拟服务器2提供流量负载均衡。假设域名是A.xyztelco.com 。CloudStack中协调设置GSLB服务提供者Zone-1中的GSLB虚拟服务器1。 CloudStack绑定Zone-1中的虚拟服务器1和Zone-2中的虚拟服务器2到GSLB虚拟服务器1。CloudStack也将协调设置GSLB服务提供者Zone-2中的GSLB虚拟服务器2.CloudStack绑定Zone-1中的虚拟服务器1和Zone-2中的虚拟服务器2到GSLB虚拟服务器2.GSLB虚拟服务器2配置为开始监视虚拟服务器1和2的健康。CloudStack中会绑定域名A.xyztelco.com到GSLB虚拟服务器1和2。在这一点上，租户-A的服务将在全球范围内可达于A.xyztelco.com。域名xyztelcom.com的专用DNS服务器，被管理员配置为外带管理，由两个区域的GSLB提供者对域名A.xyztelco.com提供解析。它将被配置为域名A.xyztelco.com的ADNS。当客户端请求解析A.xyztelcom.com域名时，将最终由DNS指派到GSLB提供者Zone 1 和Zone2。客户DNS请求将被GSLB提供者接获。GSLB提供者，根据需要解析的域名，将获得与域名关联的GSLB虚拟服务器。根据用于负载均衡的虚拟服务器的运行健康状况，域名DNS请求将被解析到所选择关联的虚拟服务器中。"
+
+# dcd79b8e29a442d098cb8090a4527144
+#: ../../networking/global_server_load_balancing.rst:175
+msgid "Configuring GSLB"
+msgstr "配置GSLB"
+
+# af3fb04e787447d9976ebb989e847e3d
+#: ../../networking/global_server_load_balancing.rst:177
+msgid ""
+"To configure a GSLB deployment, you must first configure a standard load "
+"balancing setup for each zone. This enables you to balance load across the "
+"different servers in each zone in the region. Then on the NetScaler side, "
+"configure both NetScaler appliances that you plan to add to each zone as "
+"authoritative DNS (ADNS) servers. Next, create a GSLB site for each zone, "
+"configure GSLB virtual servers for each site, create GLSB services, and bind"
+" the GSLB services to the GSLB virtual servers. Finally, bind the domain to "
+"the GSLB virtual servers. The GSLB configurations on the two appliances at "
+"the two different zones are identical, although each sites load-balancing "
+"configuration is specific to that site."
+msgstr "要配置GSLB的部署，您必须首先为每个区域配置一个标准的负载平衡设置。这使您能够在该地域中每个区域的不同服务器之间进行负载均衡。然后在NetScaler方面，配置您计划添加到每个区域作为权威DNS(ADNS)服务器的两个NetScaler应用。接下来，为每个区域创建GSLB站点、配置GSLB虚拟服务器、创建GSLB服务并绑定GSLB服务到GSLB虚拟服务器中。最后，绑定该域到GSLB虚拟服务器。两个应用的GSLB配置在两个不同区域中是完全相同的，尽管每个网站的负载均衡配置特定于该网站。"
+
+# f12e3e8dd3114cc6ab5febf7d770620a
+#: ../../networking/global_server_load_balancing.rst:189
+msgid ""
+"Perform the following as a cloud administrator. As per the example given "
+"above, the administrator of xyztelco is the one who sets up GSLB:"
+msgstr "作为云管理员执行以下操作。按照上面给出的例子中，由管理员xyztelco设置GSLB："
+
+# 9579cd3756414bb59e03052c3c4807de
+#: ../../networking/global_server_load_balancing.rst:192
+msgid ""
+"In the cloud.dns.name global parameter, specify the DNS name of your "
+"tenant's cloud that make use of the GSLB service."
+msgstr "在全局变量 cloud.dns.name中，为您租户云定义DNS名称并供GSLB服务使用。"
+
+# e675df400e4c40079a4b8ac2c3a3a007
+#: ../../networking/global_server_load_balancing.rst:195
+msgid ""
+"On the NetScaler side, configure GSLB as given in `Configuring Global Server"
+" Load Balancing (GSLB) <http://support.citrix.com/proddocs/topic/netscaler-"
+"traffic-management-10-map/ns-gslb-config-con.html>`_:"
+msgstr "在NetScaler方面，给出GSLB配置  `配置全局服务器负载均衡 (GSLB)<http://support.citrix.com/proddocs/topic/netscaler-traffic-management-10-map/ns-gslb-config-con.html>`_:"
+
+# 8366d0a33b5d4328b32668eee7db43a7
+#: ../../networking/global_server_load_balancing.rst:199
+msgid "Configuring a standard load balancing setup."
+msgstr "配置一个标准的负载均衡设置。"
+
+# 652a6e0d3f25435bad8a3a37ff14f6de
+#: ../../networking/global_server_load_balancing.rst:201
+msgid ""
+"Configure Authoritative DNS, as explained in `Configuring an Authoritative "
+"DNS Service <http://support.citrix.com/proddocs/topic/netscaler-traffic-"
+"management-10-map/ns-gslb-config-adns-svc-tsk.html>`_."
+msgstr "配置权威DNS，如下解释 `配置权威的DNS服务 <http://support.citrix.com/proddocs/topic/netscaler-traffic-management-10-map/ns-gslb-config-adns-svc-tsk.html>`__."
+
+# eb1be7170a664c05818eea4cebcd652c
+#: ../../networking/global_server_load_balancing.rst:205
+msgid ""
+"Configure a GSLB site with site name formed from the domain name details."
+msgstr "由域名详细信息配置一个GSLB站点和站点名称。"
+
+# af0e9c7b27f545b9a2532edf6109ddf3
+#: ../../networking/global_server_load_balancing.rst:208
+msgid "Configure a GSLB site with the site name formed from the domain name."
+msgstr "由域名配置一个GSLB站点和站点名称。"
+
+# 6c3c9b0f00314c219b51b9ea4a817b37
+#: ../../networking/global_server_load_balancing.rst:211
+msgid ""
+"As per the example given above, the site names are A.xyztelco.com and "
+"B.xyztelco.com."
+msgstr "按照上面给出的例子，站点名称为 A.xyztelco.com 和 B.xyztelco.com"
+
+# 8bc45e9126194d24824f0e0e2d92ca1b
+#: ../../networking/global_server_load_balancing.rst:214
+msgid ""
+"For more information, see `Configuring a Basic GSLB Site "
+"<http://support.citrix.com/proddocs/topic/netscaler-traffic-"
+"management-10-map/ns-gslb-config-basic-site-tsk.html>`_."
+msgstr "更多信息，请参阅 `配置基本的GSLB站点 <http://support.citrix.com/proddocs/topic/netscaler-traffic-management-10-map/ns-gslb-config-basic-site-tsk.html>`__."
+
+# 7276993a8c1f4f089886c5bfce5f4f6e
+#: ../../networking/global_server_load_balancing.rst:217
+msgid "Configure a GSLB virtual server."
+msgstr "配置GSLB虚拟服务器。"
+
+# 8d0c82c139184d3992209af4d2e54a6c
+#: ../../networking/global_server_load_balancing.rst:219
+msgid ""
+"For more information, see `Configuring a GSLB Virtual Server "
+"<http://support.citrix.com/proddocs/topic/netscaler-traffic-"
+"management-10-map/ns-gslb-config-vsvr-tsk.html>`_."
+msgstr "更多信息，请参阅 `配置GSLB虚拟服务器 <http://support.citrix.com/proddocs/topic/netscaler-traffic-management-10-map/ns-gslb-config-vsvr-tsk.html>`__."
+
+# 7db75bd72fa44709ab7adb82ba26f318
+#: ../../networking/global_server_load_balancing.rst:222
+msgid "Configure a GSLB service for each virtual server."
+msgstr "为每个虚拟服务器配置GSLB服务。"
+
+# 7dd4d9aa1c394ed6859a00b0331f3e5b
+#: ../../networking/global_server_load_balancing.rst:224
+msgid ""
+"For more information, see `Configuring a GSLB Service "
+"<http://support.citrix.com/proddocs/topic/netscaler-traffic-"
+"management-10-map/ns-gslb-config-svc-tsk.html>`_."
+msgstr "更多信息，请参阅 `配置GSLB服务 <http://support.citrix.com/proddocs/topic/netscaler-traffic-management-10-map/ns-gslb-config-svc-tsk.html>`__."
+
+# 30745365545f4cbca1a5ff6fa73a495f
+#: ../../networking/global_server_load_balancing.rst:227
+msgid "Bind the GSLB services to the GSLB virtual server."
+msgstr "绑定GSLB服务到GSLB虚拟服务器。"
+
+# f5c32c764b0c44cc9b430cd2c74f5a0b
+#: ../../networking/global_server_load_balancing.rst:229
+msgid ""
+"For more information, see `Binding GSLB Services to a GSLB Virtual Server "
+"<http://support.citrix.com/proddocs/topic/netscaler-traffic-"
+"management-10-map/ns-gslb-bind-svc-vsvr-tsk.html>`_."
+msgstr "更多信息，请参阅 `绑定GSLB服务到GSLB虚拟服务器 <http://support.citrix.com/proddocs/topic/netscaler-traffic-management-10-map/ns-gslb-bind-svc-vsvr-tsk.html>`__."
+
+# 74f55b2693404f1d8b46b1960f0987db
+#: ../../networking/global_server_load_balancing.rst:232
+msgid ""
+"Bind domain name to GSLB virtual server. Domain name is obtained from the "
+"domain details."
+msgstr "绑定GSLB域名到GSLB虚拟服务器。从域的详细信息中获得域名。"
+
+# 012a1ab7ff7b422995e21b6709b4c6b3
+#: ../../networking/global_server_load_balancing.rst:235
+msgid ""
+"For more information, see `Binding a Domain to a GSLB Virtual Server "
+"<http://support.citrix.com/proddocs/topic/netscaler-traffic-"
+"management-10-map/ns-gslb-bind-dom-vsvr-tsk.html>`_."
+msgstr "更多信息，请参阅  `绑定GSLB域名到GSLB虚拟服务器 <http://support.citrix.com/proddocs/topic/netscaler-traffic-management-10-map/ns-gslb-bind-dom-vsvr-tsk.html>`__."
+
+# efe8d44a7dc84347bdc932507e0cf417
+#: ../../networking/global_server_load_balancing.rst:238
+msgid ""
+"In each zone that are participating in GSLB, add GSLB-enabled NetScaler "
+"device."
+msgstr "在每个参与GSLB的区域内，添加启用GSLB功能的NetScaler设备。"
+
+# b4176a11b248487686fbfb80d484f72d
+#: ../../networking/global_server_load_balancing.rst:241
+msgid "For more information, see :ref:`enabling-gslb-in-ns`."
+msgstr "更多信息请参考 :ref:`enabling-gslb-in-ns`."
+
+# 8fc3da50593741b9863599aee89587e8
+#: ../../networking/global_server_load_balancing.rst:243
+msgid "As a domain administrator/ user perform the following:"
+msgstr "以域管理员/用户执行以下操作："
+
+# 8c1293eb2d3746e8abb219c5c4cb7290
+#: ../../networking/global_server_load_balancing.rst:245
+msgid "Add a GSLB rule on both the sites."
+msgstr "在两个站点中添加GSLB规则。"
+
+# a78f47a38a364e859b24e482f8eab174
+#: ../../networking/global_server_load_balancing.rst:247
+msgid "See \":ref:`adding-gslb-rule`\"."
+msgstr "参考\":ref:`adding-gslb-rule`\"."
+
+# 17e3b59ea95e4eb39b1290cea67e4801
+#: ../../networking/global_server_load_balancing.rst:249
+msgid "Assign load balancer rules."
+msgstr "分配负载均衡规则。"
+
+# d37f5840c4d34fa9aa990a0bb0610af9
+#: ../../networking/global_server_load_balancing.rst:251
+msgid "See \":ref:`assigning-lb-rule-gslb`\"."
+msgstr "参考\":ref:`assigning-lb-rule-gslb`\"."
+
+# 2553447c986746b582a9f8b495396c3b
+#: ../../networking/global_server_load_balancing.rst:255
+msgid "Prerequisites and Guidelines"
+msgstr "先决条件和指南"
+
+# 8627b5c519f04c4bb75b82af96f25418
+#: ../../networking/global_server_load_balancing.rst:257
+msgid "The GSLB functionality is supported both Basic and Advanced zones."
+msgstr "GSLB功能支持基本和高级区域。"
+
+# c2b5f208b13f4b07b6755c0a53fa1104
+#: ../../networking/global_server_load_balancing.rst:259
+msgid "GSLB is added as a new network service."
+msgstr "GSLB是新添加的网络服务。"
+
+# 3c6e0da5ecd148d599a35191c7e92678
+#: ../../networking/global_server_load_balancing.rst:261
+msgid "GSLB service provider can be added to a physical network in a zone."
+msgstr "GSLB服务提供者可以被添加至区域中的物理网络。"
+
+# 6c159f1bc2224bb2b35dd03ec51bc6b1
+#: ../../networking/global_server_load_balancing.rst:263
+msgid ""
+"The admin is allowed to enable or disable GSLB functionality at region "
+"level."
+msgstr "管理员允许开启或禁用地域级别的GSLB功能。"
+
+# 6367e49f50d0418c92b7b6fc7cc91a39
+#: ../../networking/global_server_load_balancing.rst:266
+msgid "The admin is allowed to configure a zone as GSLB capable or enabled."
+msgstr "管理员具有启用或配置区域为GSLB的能力"
+
+# a66b5c6d51534ab492d244d518221776
+#: ../../networking/global_server_load_balancing.rst:268
+msgid ""
+"A zone shall be considered as GSLB capable only if a GSLB service provider "
+"is provisioned in the zone."
+msgstr "只有在GSLB服务提供者提供的区域中，该区域才被视为有GSLB能力。"
+
+# 0ea762e8718b465eaacf40a6118c8f7f
+#: ../../networking/global_server_load_balancing.rst:271
+msgid ""
+"When users have VMs deployed in multiple availability zones which are GSLB "
+"enabled, they can use the GSLB functionality to load balance traffic across "
+"the VMs in multiple zones."
+msgstr "当用户的VMs部署在启用GSLB功能的多个可用区域中时，他们可以使用GSLB功能在多个区域中将VM的流量进行负载均衡。"
+
+# ed2130b4027e41e3833699a89ff82708
+#: ../../networking/global_server_load_balancing.rst:275
+msgid ""
+"The users can use GSLB to load balance across the VMs across zones in a "
+"region only if the admin has enabled GSLB in that region."
+msgstr "如果管理员在地域中启用了GSLB，用户可以使用GSLB对地狱中的所有区域的VMs进行负载均衡。"
+
+# 1b374fea614b459eb39cfbe4f20478c9
+#: ../../networking/global_server_load_balancing.rst:278
+msgid ""
+"The users can load balance traffic across the availability zones in the same"
+" region or different regions."
+msgstr "用户可以为同一个区域或不同地域间可用的区域流量进行负载均衡。"
+
+# 62da6f878356420f9becc6fffbe1ae6d
+#: ../../networking/global_server_load_balancing.rst:281
+msgid "The admin can configure DNS name for the entire cloud."
+msgstr "管理员可以为整个云配置DNS名称。"
+
+# 799fe9490296493e9d86d0ea8cdc9297
+#: ../../networking/global_server_load_balancing.rst:283
+msgid ""
+"The users can specify an unique name across the cloud for a globally load "
+"balanced service. The provided name is used as the domain name under the DNS"
+" name associated with the cloud."
+msgstr "用户可以为云中的全局负载均衡服务指定一个唯一的名称。所提供名称的域名相当于云的DNS名称。"
+
+# 1d6c20de63954971a720227985a74433
+#: ../../networking/global_server_load_balancing.rst:287
+msgid ""
+"The user-provided name along with the admin-provided DNS name is used to "
+"produce a globally resolvable FQDN for the globally load balanced service of"
+" the user. For example, if the admin has configured xyztelco.com as the DNS "
+"name for the cloud, and user specifies 'foo' for the GSLB virtual service, "
+"then the FQDN name of the GSLB virtual service is foo.xyztelco.com."
+msgstr "用户提供的名称与管理员提供的DNS名称一起为用户的全局负载均衡服务产生一个全局解析的FQDN。例如，如果管理员已经配置xyztelco.com为云中的DNS名称，以及用户为GSLB虚拟服务器指定的名称为'foo'，那么GSLB虚拟服务器的FQDN名称是foo.xyztelco.com。"
+
+# a7817e36fe2c4ea58737d1a5ae3db30b
+#: ../../networking/global_server_load_balancing.rst:294
+msgid ""
+"While setting up GSLB, users can select a load balancing method, such as "
+"round robin, for using across the zones that are part of GSLB."
+msgstr "设置GSLB时，用户可以为GSLB跨区域的一部分选择负载均衡方式，例如 round robin。"
+
+# 971bcd7f3cf24bbbb424a020cc7c06a4
+#: ../../networking/global_server_load_balancing.rst:297
+msgid ""
+"The user shall be able to set weight to zone-level virtual server. Weight "
+"shall be considered by the load balancing method for distributing the "
+"traffic."
+msgstr "用户应能设置区域级虚拟服务器的权重。负载均衡在分配流量时会考虑该权重。"
+
+# 6f3d31dca71d4b608fa90d1eb73ecee2
+#: ../../networking/global_server_load_balancing.rst:301
+msgid ""
+"The GSLB functionality shall support session persistence, where series of "
+"client requests for particular domain name is sent to a virtual server on "
+"the same zone."
+msgstr "该GSLB功能必须支持会话持久性，特定域名的一系列客户端请求被发送到同一个区域中的虚拟服务器上。"
+
+# bfaf6196eae343259864ac2443ff5746
+#: ../../networking/global_server_load_balancing.rst:305
+msgid "Statistics is collected from each GSLB virtual server."
+msgstr "从每个GSLB虚拟服务器中收集统计数据。"
+
+# d2f3468cd4ac44d58c53e731e50e35dd
+#: ../../networking/global_server_load_balancing.rst:311
+msgid "Enabling GSLB in NetScaler"
+msgstr "开启NetScaler的GSLB"
+
+# d51d618416764b5c843fc13bfd2dfa6d
+#: ../../networking/global_server_load_balancing.rst:313
+msgid "In each zone, add GSLB-enabled NetScaler device for load balancing."
+msgstr "在每个区域中，添加启用GSLB的NetScaler设备提供负载均衡。"
+
+# 91d1d3b496c34b179f0b865500b6bf93
+#: ../../networking/global_server_load_balancing.rst:315
+msgid "Log in as administrator to the CloudStack UI."
+msgstr "使用管理员登录到CloudStack管理界面。"
+
+# cc1ae38bffd84c058812510e8495b73f
+#: ../../networking/global_server_load_balancing.rst:317
+msgid "In the left navigation bar, click Infrastructure."
+msgstr "在左侧导航栏中，点击基础架构"
+
+# 46ba7c7f81d04aa78f0c04d3d045bc8a
+#: ../../networking/global_server_load_balancing.rst:319
+msgid "In Zones, click View More."
+msgstr "点击区域中的查看更多。"
+
+# 1feb8d2e09014d9989264c48ece8fc81
+#: ../../networking/global_server_load_balancing.rst:321
+msgid "Choose the zone you want to work with."
+msgstr "选择你要设置的区域。"
+
+# 82a50383b1124be48db8d0c5721e9f13
+#: ../../networking/global_server_load_balancing.rst:323
+msgid ""
+"Click the Physical Network tab, then click the name of the physical network."
+msgstr "点击物理网络选项卡，然后点击物理网络的名称。"
+
+# 75224089389e4bee8e89a1caf1dc5880
+#: ../../networking/global_server_load_balancing.rst:326
+msgid "In the Network Service Providers node of the diagram, click Configure."
+msgstr "点击示意图'网络服务提供程序'中的配置"
+
+# 410a9b626bf9412a9f482c2df1aac784
+#: ../../networking/global_server_load_balancing.rst:329
+msgid "You might have to scroll down to see this."
+msgstr "你可能需要向下滚动才能看到。"
+
+# 1d32a851fb92436c8e045ccc828641f4
+#: ../../networking/global_server_load_balancing.rst:331
+msgid "Click NetScaler."
+msgstr "点击NetScaler."
+
+# af72e8614fc44c60af3004624dba03b1
+#: ../../networking/global_server_load_balancing.rst:333
+msgid "Click Add NetScaler device and provide the following:"
+msgstr "点击添加NetScaler设备并提供如下信息："
+
+# 6290f4f42d054ac28661b16c5366b62f
+#: ../../networking/global_server_load_balancing.rst:335
+msgid "For NetScaler:"
+msgstr "对于NetScaler:"
+
+# 8e09b55d68a849d089029f2c893e3e97
+#: ../../networking/global_server_load_balancing.rst:337
+msgid "**IP Address**: The IP address of the SDX."
+msgstr "**IP地址**: SDX的IP地址。"
+
+# 9b9b4165d2ee4e64b3b0b04390702686
+#: ../../networking/global_server_load_balancing.rst:339
+msgid ""
+"**Username/Password**: The authentication credentials to access the device. "
+"CloudStack uses these credentials to access the device."
+msgstr "**用户名/密码.** 访问此设备的认证许可。CloudStack使用这些认证信息访问此设备。"
+
+# 212ab71ac16a49309da99e2870717faa
+#: ../../networking/global_server_load_balancing.rst:343
+msgid ""
+"**Type**: The type of device that is being added. It could be F5 Big Ip Load"
+" Balancer, NetScaler VPX, NetScaler MPX, or NetScaler SDX. For a comparison "
+"of the NetScaler types, see the CloudStack Administration Guide."
+msgstr "**类型**：添加设备的类型。可以是F5 BigIP负载均衡器、NetScaler VPX、NetScaler MPX或 NetScaler SDX等设备。关于NetScaler的类型比较，请参阅CloudStack管理指南。"
+
+# 3d72c6cb5cbb49418002a5e3acf1617c
+#: ../../networking/global_server_load_balancing.rst:348
+msgid ""
+"**Public interface**: Interface of device that is configured to be part of "
+"the public network."
+msgstr "**公共接口**: 配置为公共网络部分的设备接口。"
+
+# 5bbed919dc2c45008af4312d028cfbd7
+#: ../../networking/global_server_load_balancing.rst:351
+msgid ""
+"**Private interface**: Interface of device that is configured to be part of "
+"the private network."
+msgstr "**专用接口**: 配置为专用网络部分的设备接口。"
+
+# fb82ba2e06e34aaf9ab8e8fa8362b43d
+#: ../../networking/global_server_load_balancing.rst:354
+msgid "**GSLB service**: Select this option."
+msgstr "**GSLB 服务**:选择该选项。"
+
+# 8a1e3ad262934da086878740aefca5fc
+#: ../../networking/global_server_load_balancing.rst:356
+msgid ""
+"**GSLB service Public IP**: The public IP address of the NAT translator for "
+"a GSLB service that is on a private network."
+msgstr "**GSLB 服务公共IP**:在专用网络中，为GSLB服务提供NAT转换的公共IP地址。"
+
+# 5ca3fc19dd8e4706872b9e3af0652c2f
+#: ../../networking/global_server_load_balancing.rst:359
+msgid "**GSLB service Private IP**: The private IP of the GSLB service."
+msgstr "**GSLB 服务专用IP**: GSLB服务的专用IP地址。"
+
+# 8f1a8fd9ec814e02970f7edf85c8fad1
+#: ../../networking/global_server_load_balancing.rst:361
+msgid ""
+"**Number of Retries**. Number of times to attempt a command on the device "
+"before considering the operation failed. Default is 2."
+msgstr "**重试次数** 尝试控制设备失败时重试的次数，默认为2次。"
+
+# 2416b7a9e5fa43fdb27834cb7e46253b
+#: ../../networking/global_server_load_balancing.rst:364
+msgid "**Capacity**: The number of networks the device can handle."
+msgstr "**容量**：该设备能处理的网络数量。"
+
+# c9166740fb2747a7abd4ae6c0851aabc
+#: ../../networking/global_server_load_balancing.rst:366
+msgid ""
+"**Dedicated**: When marked as dedicated, this device will be dedicated to a "
+"single account. When Dedicated is checked, the value in the Capacity field "
+"has no significance implicitly, its value is 1."
+msgstr "**专用**: 当标记为专用后，这个设备只对单个帐号专用。该选项被勾选后，容量选项就没有了实际意义且值会被置为1。"
+
+# e7f874eb36ba4cd380f7a50d5bff8909
+#: ../../networking/global_server_load_balancing.rst:371
+msgid "Click OK."
+msgstr "点击确定。"
+
+# d1556618bd5d4d18862c048d52694dd4
+#: ../../networking/global_server_load_balancing.rst:377
+msgid "Adding a GSLB Rule"
+msgstr "添加 GSLB规则"
+
+# c06bbbd0cb824ecc8ef3d7956571f739
+# 2b618c03ffb14afb99d7e63813820288
+#: ../../networking/global_server_load_balancing.rst:379
+#: ../../networking/global_server_load_balancing.rst:423
+msgid "Log in to the CloudStack UI as a domain administrator or user."
+msgstr "使用管理员或者用户账号登录CloudStack UI。"
+
+# 3b04d23a46774662bbca98318323a71e
+# 62eb7d6a5d9b4256bde0fcafb9f42b7f
+#: ../../networking/global_server_load_balancing.rst:381
+#: ../../networking/global_server_load_balancing.rst:425
+msgid "In the left navigation pane, click Region."
+msgstr "在左边的导航栏里，点击区域（为文档翻译中地域的概念，英文为region，下同）"
+
+# 940f5610d0484910bf9e9ba31728be30
+# 581952b854514ed78884cc712ee4ec94
+#: ../../networking/global_server_load_balancing.rst:383
+#: ../../networking/global_server_load_balancing.rst:427
+msgid "Select the region for which you want to create a GSLB rule."
+msgstr "选择你想创建GSLB规则的地域。"
+
+# fc1d362cc95a4668b2a24c7c0f488348
+# 8519e9d4ad6d46989865460e20b186b6
+#: ../../networking/global_server_load_balancing.rst:385
+#: ../../networking/global_server_load_balancing.rst:429
+msgid "In the Details tab, click View GSLB."
+msgstr "在详细选项卡中，点击查看GSLB。"
+
+# f59a742f9f1b4f37b6f0bc0b062028d6
+#: ../../networking/global_server_load_balancing.rst:387
+msgid "Click Add GSLB."
+msgstr "点击添加GSLB。"
+
+# ca546577015a45af8ddcdc3d2ad22f3a
+#: ../../networking/global_server_load_balancing.rst:389
+msgid "The Add GSLB page is displayed as follows:"
+msgstr "添加GSLB页面显示如下："
+
+# b0b6437c269342ff9099b6da9a6d5b9f
+#: ../../networking/global_server_load_balancing.rst:391
+msgid "|gslb-add.png|"
+msgstr "|gslb-add.png|"
+
+# 767ce39d9a094fda85465381d3a93bad
+#: ../../networking/global_server_load_balancing.rst:393
+msgid "Specify the following:"
+msgstr "指定以下信息："
+
+# affa9e59440b4f4e9e6428e887d12582
+#: ../../networking/global_server_load_balancing.rst:395
+msgid "**Name**: Name for the GSLB rule."
+msgstr "**名称**: GSLB规则的名称。"
+
+# 82b72cbf0f8949fdab2de931138620c5
+#: ../../networking/global_server_load_balancing.rst:397
+msgid ""
+"**Description**: (Optional) A short description of the GSLB rule that can be"
+" displayed to users."
+msgstr "**描述**: (可选)为用户提供一个简短的GSLB规则描述。 "
+
+# 8a6b82bfcd3a469c838315b17f4cd014
+#: ../../networking/global_server_load_balancing.rst:400
+msgid "**GSLB Domain Name**: A preferred domain name for the service."
+msgstr "**GSLB 域名**: 首选的域名服务。"
+
+# ff5539d5f09f48bc80c0cf9dc83dcca0
+#: ../../networking/global_server_load_balancing.rst:402
+msgid ""
+"**Algorithm**: (Optional) The algorithm to use to load balance the traffic "
+"across the zones. The options are Round Robin, Least Connection, and "
+"Proximity."
+msgstr "**算法**: (可选) 用于跨区域流量负载均衡的算法。可选项为 Round Robin, Least Connection, 和Proximity."
+
+# b07f4dffc105427389bb8e089a71f9f0
+#: ../../networking/global_server_load_balancing.rst:406
+msgid ""
+"**Service Type**: The transport protocol to use for GSLB. The options are "
+"TCP and UDP."
+msgstr "**服务类型**: GSLB使用的传输协议。可选项为TCP和UDP。"
+
+# 03ffe3890f5c4ea79836cfa0cc96986f
+#: ../../networking/global_server_load_balancing.rst:409
+msgid ""
+"**Domain**: (Optional) The domain for which you want to create the GSLB "
+"rule."
+msgstr "**域**: (可选)  你想要创建GSLB规则的域。"
+
+# 5d0367f6567241968e5d6cac6f8ab34b
+#: ../../networking/global_server_load_balancing.rst:412
+msgid ""
+"**Account**: (Optional) The account on which you want to apply the GSLB "
+"rule."
+msgstr "**账户**: (可选)  应用GSLB规则的账户。"
+
+# 0161504934d746e39b05e6b50e264faf
+# 8c377e12f8494a009d5eed7e06824fe3
+#: ../../networking/global_server_load_balancing.rst:415
+#: ../../networking/global_server_load_balancing.rst:439
+msgid "Click OK to confirm."
+msgstr "点击确定。"
+
+# f61c6b78ef4940129243771e21d78f4c
+#: ../../networking/global_server_load_balancing.rst:421
+msgid "Assigning Load Balancing Rules to GSLB"
+msgstr "为GSLB分配负载均衡规则"
+
+# 54cc7b916ceb420584020f5ff230b79c
+#: ../../networking/global_server_load_balancing.rst:431
+msgid "Select the desired GSLB."
+msgstr "选择所需的GSLB。"
+
+# 5e2a1bf3adfc41bab4bea1a489f9bda1
+#: ../../networking/global_server_load_balancing.rst:433
+msgid "Click view assigned load balancing."
+msgstr "点击已分配的负载均衡视图。"
+
+# 269db9ca8770495f9c5bc08491e61bc6
+#: ../../networking/global_server_load_balancing.rst:435
+msgid "Click assign more load balancing."
+msgstr "点击分配更多负载平衡"
+
+# eceeb5fccdfa4cac904ef8fb945242c9
+#: ../../networking/global_server_load_balancing.rst:437
+msgid "Select the load balancing rule you have created for the zone."
+msgstr "选择你将为区域创建的负载均衡规则。"
+
+# d8792daad4a94b4589452d5b61f75cd9
+#: ../../networking/global_server_load_balancing.rst:443
+msgid "Known Limitation"
+msgstr "已知的局限性"
+
+# 7424fdf000e3479c910e72fbbaaa0169
+#: ../../networking/global_server_load_balancing.rst:445
+msgid ""
+"Currently, CloudStack does not support orchestration of services across the "
+"zones. The notion of services and service providers in region are to be "
+"introduced."
+msgstr "目前，CloudStack并不支持跨区域的服务编排。将引入服务的概念和地域服务提供者。"

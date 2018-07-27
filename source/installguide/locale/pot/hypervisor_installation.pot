@@ -1,0 +1,4221 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-31 14:02-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../hypervisor_installation.rst:17
+# a5b708b1c7f34ebeb40e555178227b10
+msgid "Hypervisor Installation"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:20
+# c97e1fa112814a849f7cd08e8f9d3c1e
+msgid "KVM Hypervisor Host Installation"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:23
+# 106ceeb500c947a88931ac644e73431d
+msgid "System Requirements for KVM Hypervisor Hosts"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:25
+# afa4fe6e1df94ebeb7668c1cabb0ff0c
+msgid "KVM is included with a variety of Linux-based operating systems. Although you are not required to run these distributions, the following are recommended:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:31
+#: ../../hypervisor_installation.rst:3327
+# 34c3bdfde3da4f2d9c34601a86f0afcf
+# a161e18b507540c096810a8ec29ef317
+msgid "CentOS / RHEL: 6.3"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:35
+#: ../../hypervisor_installation.rst:3331
+# 4ffd025eb47e4537b6eb5007d2b80629
+# 57d072c73c204d6e81f858aa46f60667
+msgid "Ubuntu: 12.04(.1)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:37
+# 7decad4017784f2f96f7030e58f6f239
+msgid "The main requirement for KVM hypervisors is the libvirt and Qemu version. No matter what Linux distribution you are using, make sure the following requirements are met:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:43
+# aee585bafb434d2dbe9d2579ab1dcad5
+msgid "libvirt: 0.9.4 or higher"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:47
+#: ../../hypervisor_installation.rst:3343
+# 008a79408bb34d52bf92873b8905dad3
+# 6364b35d5cdd483f87928821946c3f34
+msgid "Qemu/KVM: 1.0 or higher"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:49
+#: ../../hypervisor_installation.rst:3345
+# 4bc408d879ad447baa475bfd0808aa65
+# 3dbbe376cdd24657968196a32f21fda6
+msgid "The default bridge in CloudStack is the Linux native bridge implementation (bridge module). CloudStack includes an option to work with OpenVswitch, the requirements are listed below"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:55
+# 34be33c099374c35aa8784190733b87c
+msgid "libvirt: 0.9.11 or higher"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:59
+#: ../../hypervisor_installation.rst:3355
+# 7d3d628565264bc69adb04e77462b5b0
+# 4b4d3c51f3b746ed96a5bd61749758f4
+msgid "openvswitch: 1.7.1 or higher"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:61
+#: ../../hypervisor_installation.rst:3357
+# 6b26016e861b4aaaba05f3bd8c98f682
+# 1e2e540227304e14b7a8406969608a5e
+msgid "In addition, the following hardware requirements apply:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:65
+#: ../../hypervisor_installation.rst:3361
+# 322d406c43f64403bf5e8acfad80318d
+# 49490f42aa554579a0169795b8fec7cf
+msgid "Within a single cluster, the hosts must be of the same distribution version."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:70
+#: ../../hypervisor_installation.rst:3366
+# 86c9ea55ffec4f399b8e7918b7bb43d0
+# e392215de57d4843958e657b3d6d64c7
+msgid "All hosts within a cluster must be homogenous. The CPUs must be of the same type, count, and feature flags."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:75
+#: ../../hypervisor_installation.rst:1027
+#: ../../hypervisor_installation.rst:3371
+# e6544c9e2bed4d36a8b7bf5e2b040667
+# 405d986c35fd4e35bba0d7ea5664327b
+# b176112062f840bf8e4293cb2b6dd440
+msgid "Must support HVM (Intel-VT or AMD-V enabled)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:79
+#: ../../hypervisor_installation.rst:1051
+#: ../../hypervisor_installation.rst:2263
+#: ../../hypervisor_installation.rst:3375
+# fe8c3dec4f5e48af82d6a1cf4d35c0fa
+# 222e2e6b7d72437fa9d1e291b1abae33
+# b6a567096cf14ce7a86b7cab8cd8a120
+# d2f00762290a412aada0abbdddc35042
+msgid "64-bit x86 CPU (more cores results in better performance)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:83
+#: ../../hypervisor_installation.rst:1059
+#: ../../hypervisor_installation.rst:2271
+#: ../../hypervisor_installation.rst:3379
+# 8a4b47d3dc3a44c584fbd97dcf25a5a0
+# 14006a14fa284ce6ba19f360f889a0bc
+# 6d7b9af582894902a3e1095cfa7f02fe
+# 130dbc2bf67d4a5687f09f35f760a482
+msgid "4 GB of memory"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:87
+#: ../../hypervisor_installation.rst:1067
+#: ../../hypervisor_installation.rst:2279
+#: ../../hypervisor_installation.rst:3383
+# e8bd701c4ef947078dfed764bd5fc6d9
+# 656d673c698d4b118d21cc9362a8e5dd
+# 947d8b3ed1974720a911fdb6b44d4d36
+# a4a079db675c46938452f27bc17e3e68
+msgid "At least 1 NIC"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:91
+#: ../../hypervisor_installation.rst:1075
+#: ../../hypervisor_installation.rst:3387
+# 3444db1dcb1f47258e2772864b74a072
+# 0d176e6f680c42f88456e42ff3bbc75c
+# eaf19bdaaac2446a9eba73346cfb272c
+msgid "When you deploy CloudStack, the hypervisor host must not have any VMs already running"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:95
+# b090156a97514e25ae92874eabc12ebe
+msgid "KVM Installation Overview"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:97
+# 3c994a4c8bb44c3db12d9d1a91d88511
+msgid "If you want to use the Linux Kernel Virtual Machine (KVM) hypervisor to run guest virtual machines, install KVM on the host(s) in your cloud. The material in this section doesn't duplicate KVM installation docs. It provides the CloudStack-specific steps that are needed to prepare a KVM host to work with CloudStack."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:105
+#: ../../hypervisor_installation.rst:3400
+# 0ae1e0787a0a4b35bb60e6ce2270b93c
+# fbbc0d73551e4738b0780bf7ae39b794
+msgid "Before continuing, make sure that you have applied the latest updates to your host."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:109
+#: ../../hypervisor_installation.rst:3402
+# 3f404325440b43e8929f971c948bddd2
+# cdf930cc6f4f48cfbfa886bcea0c6c5c
+msgid "It is NOT recommended to run services on this host not controlled by CloudStack."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:111
+# b4d910e8d72742e2992a140e0bbb07f9
+msgid "The procedure for installing a KVM Hypervisor Host is:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:115
+#: ../../hypervisor_installation.rst:130
+#: ../../hypervisor_installation.rst:3408
+#: ../../hypervisor_installation.rst:3423
+# f72c15c1878f4826b773a10ca9d09132
+# a5027d0749d5434b8990a4ce07b63190
+# cd85e26dfec64b0e85060beb3e51e135
+# 3f58fd5515bf4d7c95f3972fecc77a0f
+msgid "Prepare the Operating System"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:119
+#: ../../hypervisor_installation.rst:3412
+# 2a8a33c0f29c40b2823be72c0a3ebbb4
+# c6bed6d3e6b248daa4040d12455fe55a
+msgid "Install and configure libvirt"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:123
+#: ../../hypervisor_installation.rst:3416
+# 1642991c8fbd4e90ac67a46c59e515a5
+# a94fc5d5847b4a85b0f6d0ee714b7b1f
+msgid "Configure Security Policies (AppArmor and SELinux)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:127
+#: ../../hypervisor_installation.rst:185
+#: ../../hypervisor_installation.rst:3420
+#: ../../hypervisor_installation.rst:3477
+# 1ed5a01ec0704f2eb18b408abd6cae9c
+# 52a64dac3f794d7d9402c6f757812a16
+# 0bf1c9bf0fa048cdb0bffdde08d78760
+# 0902ea5204d74d8faa9db44b32e93779
+msgid "Install and configure the Agent"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:132
+#: ../../hypervisor_installation.rst:3425
+# 54165d82f02949c887291da9ef9385f7
+# 887757221dec4140950e28424103418d
+msgid "The OS of the Host must be prepared to host the CloudStack Agent and run KVM instances."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:137
+#: ../../hypervisor_installation.rst:3430
+# 3b1313122c04424eb3c0f4dea9099319
+# 209d2e9fe5a54af0a434c6fe42d67c94
+msgid "Log in to your OS as root."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:141
+#: ../../hypervisor_installation.rst:3434
+# faa86bd264934b1b8bab5914670677e8
+# ec55ce15def44bbea72ff6f68842becc
+msgid "Check for a fully qualified hostname."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:147
+#: ../../hypervisor_installation.rst:3440
+# 6e562892fc814c038043db4120089438
+# f775086cc87b40dab6aac8299ca88571
+msgid "This should return a fully qualified hostname such as \"kvm1.lab.example.org\". If it does not, edit /etc/hosts so that it does."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:153
+#: ../../hypervisor_installation.rst:3446
+# e009ff0ecafd4666a742d5af03d2309e
+# f85f5a8126094c72a1740ac354fc6e2f
+msgid "Make sure that the machine can reach the Internet."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:161
+#: ../../hypervisor_installation.rst:3454
+# 56ca23a905364937bac5cf61701e8a09
+# de0710f8ee154254b3d424dc19901a33
+msgid "Turn on NTP for time synchronization."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:165
+#: ../../hypervisor_installation.rst:3457
+# 0d18ab8873cc4b938d65ea7d9503d2f3
+# 2281cb7bd1ab44d0a18d9a382ae614d7
+msgid "NTP is required to synchronize the clocks of the servers in your cloud. Unsynchronized clocks can cause unexpected problems."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:170
+#: ../../hypervisor_installation.rst:3462
+# 65aa5ea952b94cb3bcd5151c59496e4d
+# fb7ee24bb05540f9859ba3b87f03487c
+msgid "Install NTP"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:182
+#: ../../hypervisor_installation.rst:3474
+# e93ea97e77314f19b564fc3d5e981897
+# c859b30acde9440ca4835511741c38ac
+msgid "Repeat all of these steps on every hypervisor host."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:187
+# ea49f1e757d443beb13b7434fc7a6337
+msgid "To manage KVM instances on the host CloudStack uses a Agent. This Agent communicates with the Management server and controls all the instances on the host."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:191
+#: ../../hypervisor_installation.rst:3483
+# 34eb5632982c49a7ad56d679b8897bad
+# 84ca527264e445eb9b6965300ff5a67a
+msgid "First we start by installing the agent:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:193
+#: ../../hypervisor_installation.rst:361
+#: ../../hypervisor_installation.rst:402
+#: ../../hypervisor_installation.rst:3485
+#: ../../hypervisor_installation.rst:3608
+#: ../../hypervisor_installation.rst:3649
+# d894051a1aa4420482cd5ecf26baf9b9
+# e209192de68d4bdb9b3cb14f77c59b1a
+# 0e50e758e1bd45628f4eee81cae74b1d
+# eb677ec246e749239198c0ef7edd5ff4
+# e2c94bf547f64410916a38d7e7fdd670
+# e86cca2d481a47539eef5083baa6edda
+msgid "In RHEL or CentOS:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:199
+#: ../../hypervisor_installation.rst:367
+#: ../../hypervisor_installation.rst:3491
+#: ../../hypervisor_installation.rst:3614
+# 3b6758b2ccb445b5be94a8dfc7ebd0a2
+# ade0da3eeb2941c49b1186cd22d03202
+# 0f363f2af00f4b159318dab564862baa
+# a14254a637a742dfa6d89b25b9b24656
+msgid "In Ubuntu:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:205
+#: ../../hypervisor_installation.rst:943
+#: ../../hypervisor_installation.rst:3525
+#: ../../hypervisor_installation.rst:4024
+# d096d4acc81e4e60834b9a24af414019
+# 8bd1adc0e2a34211956f1b708f3c9724
+# 1e3a5fd3b85f4bce9244ebdcc0b999ed
+# 78185f32c03c498db18b23abd0426910
+msgid "The host is now ready to be added to a cluster. This is covered in a later section, see :ref:`adding-a-host`. It is recommended that you continue to read the documentation before adding the host!"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:211
+# af1b91fcf7484085b389fb8d502edcd6
+msgid "Configure CPU model for KVM guest (Optional)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:213
+# 7fdc1820edee46fca04097cd36443ade
+msgid "In additional,the CloudStack Agent allows host administrator to control the guest CPU model which is exposed to KVM instances. By default, the CPU model of KVM instance is likely QEMU Virtual CPU version x.x.x with least CPU features exposed. There are a couple of reasons to specify the CPU model:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:221
+# 55671888c52e4644b97eb76e5b37321a
+msgid "To maximise performance of instances by exposing new host CPU features to the KVM instances;"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:226
+# 0076cb899b89481ba3c5032e2156b23a
+msgid "To ensure a consistent default CPU across all machines,removing reliance of variable QEMU defaults;"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:229
+# 06f0cd9e4f7148f2bf5661eb3a4bbb30
+msgid "For the most part it will be sufficient for the host administrator to specify the guest CPU config in the per-host configuration file (/etc/cloudstack/agent/agent.properties). This will be achieved by introducing two new configuration parameters:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:239
+# 1a1c88bead1d4b90b16007da2a8049af
+msgid "There are three choices to fulfill the cpu model changes:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:243
+# 171cebf0991b4c7d82b4254c0b0a6fe7
+msgid "**custom:** you can explicitly specify one of the supported named model in /usr/share/libvirt/cpu\\_map.xml"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:248
+# ef3286604260487387d6ef81752d3ff4
+msgid "**host-model:** libvirt will identify the CPU model in /usr/share/libvirt/cpu\\_map.xml which most closely matches the host, and then request additional CPU flags to complete the match. This should give close to maximum functionality/performance, which maintaining good reliability/compatibility if the guest is migrated to another host with slightly different host CPUs."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:257
+# 80a634dd2c22483fb09655f8c07ff193
+msgid "**host-passthrough:** libvirt will tell KVM to passthrough the host CPU with no modifications. The difference to host-model, instead of just matching feature flags, every last detail of the host CPU is matched. This gives absolutely best performance, and can be important to some apps which check low level CPU details, but it comes at a cost with respect to migration: the guest can only be migrated to an exactly matching host CPU."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:265
+# f58590a9696548528006493b8c7ae197
+msgid "Here are some examples:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:269
+# 42ef165ce6ad4a9e9fa71eb044611a1b
+msgid "custom"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:278
+# 91ceb895db0b4234a51b32614603068e
+msgid "host-model"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:286
+# 9eed04f7453b40529c43301d1de02fb8
+msgid "host-passthrough"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:292
+# dfb22be926364168a84d5cb0b7e44b35
+msgid "host-passthrough may lead to migration failure,if you have this problem,you should use host-model or custom"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:295
+#: ../../hypervisor_installation.rst:3531
+# a5e533a4e79649c2ac3ce750357ee34a
+# 4d3de60d913b41398d75fad799393017
+msgid "Install and Configure libvirt"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:297
+#: ../../hypervisor_installation.rst:3533
+# bf3b3baffb30458eae7af5d56a51a573
+# fd165c09e19c4204af9a194d9e0209fb
+msgid "CloudStack uses libvirt for managing virtual machines. Therefore it is vital that libvirt is configured correctly. Libvirt is a dependency of cloudstack-agent and should already be installed."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:303
+#: ../../hypervisor_installation.rst:3539
+# ff42e0ea9cf64b509d310c0071086352
+# 5b89b062abbe4cc89b7fd10ece8eb9e8
+msgid "In order to have live migration working libvirt has to listen for unsecured TCP connections. We also need to turn off libvirts attempt to use Multicast DNS advertising. Both of these settings are in ``/etc/libvirt/libvirtd.conf``"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:308
+#: ../../hypervisor_installation.rst:3544
+# 9d2c6d97644043c98a8afdfca63ce7ba
+# 62f76e0671a940e38a4ad3785ad3829e
+msgid "Set the following parameters:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:332
+#: ../../hypervisor_installation.rst:3568
+# 7bf432c121e6497e815bce7ac5f768c2
+# 5c250e445c544d819ef81c56946c9817
+msgid "Turning on \"listen\\_tcp\" in libvirtd.conf is not enough, we have to change the parameters as well:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:335
+#: ../../hypervisor_installation.rst:3571
+# dff877a089444785a919c9a4ddc1505b
+# 09f64fb99e4f4746998fccfb45d8ffbe
+msgid "On RHEL or CentOS modify ``/etc/sysconfig/libvirtd``:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:337
+#: ../../hypervisor_installation.rst:3573
+# dc8b92c2767f4d3aa010cafa32e0ffc0
+# 5137041fbceb450dafdafdd8050d781b
+msgid "Uncomment the following line:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:343
+#: ../../hypervisor_installation.rst:3579
+# f8fa69e0aaf0441ebbd5376315dde649
+# 2c026065c68143c7abdc5ca2fc2436ea
+msgid "On Ubuntu: modify ``/etc/default/libvirt-bin``"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:345
+#: ../../hypervisor_installation.rst:3581
+# b1e0a030287c4eb99b535ef0a0e008cd
+# e7c84f512f6b40c5ae74177fcbef4e7b
+msgid "Add \"-l\" to the following line"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:351
+#: ../../hypervisor_installation.rst:3587
+# fb23df2bb85243918f17fce3511a292f
+# 3f9045ba6c8042cd95dbf7cfaf068566
+msgid "so it looks like:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:359
+#: ../../hypervisor_installation.rst:3606
+# e9f3700ad8c545ec9162775958e52903
+# 12a8cf99f91a4bfebfef63061401b984
+msgid "Restart libvirt"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:374
+#: ../../hypervisor_installation.rst:3621
+# 8a64baac6d7643dda067b886a5c80ae3
+# 396a781a4a1d4985aa57fc33ab909171
+msgid "Configure the Security Policies"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:376
+#: ../../hypervisor_installation.rst:3623
+# 071b22fa7fe84b5184dcaee305d367f9
+# ba196eddcd1a4db0b3bc5debca46897c
+msgid "CloudStack does various things which can be blocked by security mechanisms like AppArmor and SELinux. These have to be disabled to ensure the Agent has all the required permissions."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:382
+#: ../../hypervisor_installation.rst:3629
+# 66c0547791744ea9a1bf3f4b86157e56
+# a13c1564e14a40a98d164cdc3bfad868
+msgid "Configure SELinux (RHEL and CentOS)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:386
+#: ../../hypervisor_installation.rst:3633
+# ad5bbcda3fb94378926b1b5e5c49fef5
+# 3bc6b9a75a864efca77472f3a7083402
+msgid "Check to see whether SELinux is installed on your machine. If not, you can skip this section."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:389
+#: ../../hypervisor_installation.rst:3636
+# 186d81a15e7149da89ee20ce59cc48dc
+# 51df5058cd4f43938789667b0444df12
+msgid "In RHEL or CentOS, SELinux is installed and enabled by default. You can verify this with:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:398
+#: ../../hypervisor_installation.rst:3645
+# 5c9517056a764377bd38722748343a49
+# 47aa2dbec53247e09633898939b840d7
+msgid "Set the SELINUX variable in ``/etc/selinux/config`` to \"permissive\". This ensures that the permissive setting will be maintained after a system reboot."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:408
+#: ../../hypervisor_installation.rst:3655
+# 93857dbce0f54cb68f9fda82a8cd692c
+# 34854b97c968469aa89f9b69611024e4
+msgid "Change the following line"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:414
+#: ../../hypervisor_installation.rst:3661
+# 0e1313c89e3b415ebee6bbc8671f120a
+# fb6153f02ea1423088ece2501fda504f
+msgid "to this"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:422
+#: ../../hypervisor_installation.rst:3669
+# 29a646ccf1ad4545bac2923aabe1b97c
+# 80ca6532afc24061b27c23b6118bdf65
+msgid "Then set SELinux to permissive starting immediately, without requiring a system reboot."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:431
+#: ../../hypervisor_installation.rst:3678
+# 5ce95d10c98449d7b6f2c0ac20da948c
+# c3cf4cecfad547a8a307e334e4503f59
+msgid "Configure Apparmor (Ubuntu)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:435
+#: ../../hypervisor_installation.rst:3682
+# 87b92b4c575e4c95813f1e9af3b04d77
+# 07b7d10f1b3e49d8952e5b635b7eca2a
+msgid "Check to see whether AppArmor is installed on your machine. If not, you can skip this section."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:438
+#: ../../hypervisor_installation.rst:3685
+# 50e7a0a081684c489805ccda2c5717d6
+# 491c0892c7ef48b18767fafac079a62b
+msgid "In Ubuntu AppArmor is installed and enabled by default. You can verify this with:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:447
+#: ../../hypervisor_installation.rst:3694
+# 8e560cd81d0544eb8f9bb401145dea8e
+# 26d2ddef7e5f4c29a57ab9455120b3f3
+msgid "Disable the AppArmor profiles for libvirt"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:466
+#: ../../hypervisor_installation.rst:3713
+# 930e8f602c664befbf6c46bcea1cbe7e
+# 5a5ec5e627f84217a2de1c1a9692d83d
+msgid "Configure the network bridges"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:468
+#: ../../hypervisor_installation.rst:680
+#: ../../hypervisor_installation.rst:3715
+# bccb9ebfa523410e95ffbeec12d8b4df
+# c27b62ef62564bce8bbcdebbbc78a2e6
+# eaf1d1b6a92b4d26923b5a26f2d8f6e3
+msgid "This is a very important section, please make sure you read this thoroughly."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:470
+#: ../../hypervisor_installation.rst:3718
+# 37ea1b1181cf4de494d126cdc40a801d
+# 0c2793bb0202408da6ef10e2b99b6eaa
+msgid "This section details how to configure bridges using the native implementation in Linux. Please refer to the next section if you intend to use OpenVswitch"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:472
+#: ../../hypervisor_installation.rst:682
+#: ../../hypervisor_installation.rst:3720
+# 2bf55b978c5a475ebcd65da90eb6386a
+# 994c7b0b85ac4fd4957bf9212cb5afbd
+# 40d0ecab11134b1f984bf6d89271cbd4
+msgid "In order to forward traffic to your instances you will need at least two bridges: *public* and *private*."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:475
+#: ../../hypervisor_installation.rst:685
+#: ../../hypervisor_installation.rst:3723
+# 68eec8c1d0fd4c34a086b108e1ba4a0b
+# 9785a42437c44a48932befa909c24f05
+# b2947b2e839f4cf9a79ddafa66b1b8e0
+msgid "By default these bridges are called *cloudbr0* and *cloudbr1*, but you do have to make sure they are available on each hypervisor."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:478
+#: ../../hypervisor_installation.rst:688
+#: ../../hypervisor_installation.rst:3726
+# fd73cf9a6c174db1a1d0a7a7b0febf8f
+# c6b6935f5a0241319a435306ff08f613
+# d7f8015ac99a49b7a8f2bdd03074f25e
+msgid "The most important factor is that you keep the configuration consistent on all your hypervisors."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:482
+#: ../../hypervisor_installation.rst:705
+#: ../../hypervisor_installation.rst:3730
+# aecc917b1cfc4ae0829bf38e71b146a1
+# dcd1dd91023f487bac62a498068bc7d3
+# 61678fddd1354bc299cc7a3f18060a1b
+msgid "Network example"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:484
+#: ../../hypervisor_installation.rst:707
+#: ../../hypervisor_installation.rst:3732
+# fcb6675f3cbf47bd84f39d85c831b62c
+# 6446967b0b204707837f42e08d7b998a
+# 116a752e270144b9ae56210887f4ad80
+msgid "There are many ways to configure your network. In the Basic networking mode you should have two (V)LAN's, one for your private network and one for the public network."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:488
+#: ../../hypervisor_installation.rst:711
+#: ../../hypervisor_installation.rst:3736
+# 15d921dedb524980b41aafbd170bec51
+# 7956438fead040698f6cced9c78a2b6c
+# 8eefa91987504ceb9f915423bd9cd7ee
+msgid "We assume that the hypervisor has one NIC (eth0) with three tagged VLAN's:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:493
+#: ../../hypervisor_installation.rst:716
+#: ../../hypervisor_installation.rst:3741
+# 0877467f5181444597ffc59798a984c2
+# e05717e09bf44963b799a357f63d06c0
+# 9c3b52a0f37349628d7e9863b22f7586
+msgid "VLAN 100 for management of the hypervisor"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:497
+#: ../../hypervisor_installation.rst:720
+#: ../../hypervisor_installation.rst:3745
+# d0358c8e6e704280a94d8154520cc512
+# 9d4164a76748495290ea59d97dfde5f0
+# 7db7cbd5fdbd485cab9d24025b7d7812
+msgid "VLAN 200 for public network of the instances (cloudbr0)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:501
+#: ../../hypervisor_installation.rst:724
+#: ../../hypervisor_installation.rst:3749
+# 1f92bbd42f4848b7824c11163deccdce
+# 386e672345ad4798b937956aa78f982d
+# bca715eb0552403c97ecabf386e7ba9c
+msgid "VLAN 300 for private network of the instances (cloudbr1)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:503
+#: ../../hypervisor_installation.rst:726
+#: ../../hypervisor_installation.rst:3751
+# aa94795c65f344c89c206c32fe15d941
+# 48a286c49f7441b19ed5ef3435348d59
+# dc43104aac9543c78fafa5f30dffaa8b
+msgid "On VLAN 100 we give the Hypervisor the IP-Address 192.168.42.11/24 with the gateway 192.168.42.1"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:506
+#: ../../hypervisor_installation.rst:729
+#: ../../hypervisor_installation.rst:3754
+# 6d48a58cd57f46238b8aaf12909c69d1
+# b8bb257a296c4bed98f1dad806ad5ba1
+# 900d19465df34526bfc636edfdb5534c
+msgid "The Hypervisor and Management server don't have to be in the same subnet!"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:509
+#: ../../hypervisor_installation.rst:732
+#: ../../hypervisor_installation.rst:3757
+# c32119ed14d44cb8bc32676656b99910
+# d879c320747d4850b1c5bacdd29a1669
+# 83f2160f524f43cf869a63489a608275
+msgid "Configuring the network bridges"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:511
+#: ../../hypervisor_installation.rst:3759
+# a80e5f8891a44a56affd76a4611c1785
+# c623ed65e9ba45b89f407ce4339a56e1
+msgid "It depends on the distribution you are using how to configure these, below you'll find examples for RHEL/CentOS and Ubuntu."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:514
+#: ../../hypervisor_installation.rst:3762
+# 1bb4087b2e5548119e9075fa05467ff9
+# 1992bd1a538a4e87aff11f08a30811ca
+msgid "The goal is to have two bridges called 'cloudbr0' and 'cloudbr1' after this section. This should be used as a guideline only. The exact configuration will depend on your network layout."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:517
+#: ../../hypervisor_installation.rst:759
+#: ../../hypervisor_installation.rst:3765
+# adab06c881724079959a8ae96aa924d0
+# 4978f5c0d9024cceb5523422d9f6e3c3
+# b5304e1cd17b43d49387c9e1f0dc4600
+msgid "Configure in RHEL or CentOS"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:519
+#: ../../hypervisor_installation.rst:3767
+# 95d2aaf4ea374d68ab231cf69aa771db
+# 6ee3e4cd4ddd42eda7adf6a56c2de197
+msgid "The required packages were installed when libvirt was installed, we can proceed to configuring the network."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:522
+#: ../../hypervisor_installation.rst:764
+#: ../../hypervisor_installation.rst:3770
+# 029a729a30a646bb882fa28fc6f4faf5
+# 13fa6771f34e4579bc8dba5e243a4011
+# d8e2cd1aa3de4613894102d0d8dfc562
+msgid "First we configure eth0"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:528
+#: ../../hypervisor_installation.rst:770
+#: ../../hypervisor_installation.rst:3776
+# dfdfd4f9776841959c87e33436d420ff
+# a055bef8a0304bf0827ea85c3116ff08
+# 175ef63f2d0e4d568e5df9298b56ef1f
+msgid "Make sure it looks similar to:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:539
+#: ../../hypervisor_installation.rst:3787
+# aa158cdf890f4a73aa02cee971b29325
+# 937d87800fba4c0c93874a7e1764bf85
+msgid "We now have to configure the three VLAN interfaces:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:588
+#: ../../hypervisor_installation.rst:3836
+# 476469f3cb3a44b0b7782a599edaaf84
+# 9fcd4bb8ee1f4977b938630771b1dab2
+msgid "Now we have the VLAN interfaces configured we can add the bridges on top of them."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:595
+#: ../../hypervisor_installation.rst:3843
+# d77a52bf367046fdbce73058d169f265
+# d2eac1f518d24368b764df3e08aacb22
+msgid "Now we just configure it is a plain bridge without an IP-Address"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:608
+#: ../../hypervisor_installation.rst:3856
+# 0188228d5cff43fc939e85ab6c002118
+# 39f78adfcd624290b0564d41b3447db2
+msgid "We do the same for cloudbr1"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:625
+#: ../../hypervisor_installation.rst:672
+#: ../../hypervisor_installation.rst:840
+#: ../../hypervisor_installation.rst:3873
+#: ../../hypervisor_installation.rst:3920
+# 218608446e8e45528b00bea4c57ebab9
+# f929fa3761b04167bda58c3a6f67cbfa
+# cdec6d4dfc5f4e95a212712a3bc64a61
+# dde4ad6a203a4cd58b6fe12d2f745b30
+# 2210405cea3845758c377fea3f5a3a2e
+msgid "With this configuration you should be able to restart the network, although a reboot is recommended to see if everything works properly."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:628
+#: ../../hypervisor_installation.rst:675
+#: ../../hypervisor_installation.rst:843
+#: ../../hypervisor_installation.rst:3876
+#: ../../hypervisor_installation.rst:3923
+# 9ced5c3d4eeb4f27b12cd0cb9f044a90
+# b88351fb9a7b43b09d7230cb38ae4c58
+# 1f463bc97d1147db85bec0e461319336
+# de08a3e8c75f461ea791f59685988cb5
+# a0974a28a6fa4008ae279ad0685d47f5
+msgid "Make sure you have an alternative way like IPMI or ILO to reach the machine in case you made a configuration error and the network stops functioning!"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:631
+#: ../../hypervisor_installation.rst:3879
+# 17acbbca1f3345849046fa6c4ebed4fc
+# 8cdc0e43e63641789dc4bd075c3d0bc3
+msgid "Configure in Ubuntu"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:633
+#: ../../hypervisor_installation.rst:3881
+# 41f30048a88c4bb993a0d890f181b28d
+# 93e837e2bf274c668eee8f0a619c4a5d
+msgid "All the required packages were installed when you installed libvirt, so we only have to configure the network."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:640
+#: ../../hypervisor_installation.rst:3888
+# 01fb8740e0b9423d8b655864775af54e
+# 262554e455a648fabdf442b6e301f259
+msgid "Modify the interfaces file to look like this:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:678
+# e332c16e171f47169b256805eafe7615
+msgid "Configure the network using OpenVswitch"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:692
+# aa202fe73fee4c45827aa38313f60aec
+msgid "Preparing"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:694
+# eca14b3123854338ba1f14a14829b739
+msgid "To make sure that the native bridge module will not interfere with openvswitch the bridge module should be added to the blacklist. See the modprobe documentation for your distribution on where to find the blacklist. Make sure the module is not loaded either by rebooting or executing rmmod bridge before executing next steps."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:700
+# bf7a4c48ba2a4e4fa616e9e4415abcc7
+msgid "The network configurations below depend on the ifup-ovs and ifdown-ovs scripts which are part of the openvswitch installation. They should be installed in /etc/sysconfig/network-scripts/"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:734
+# 4d690db0a1544fd29d71656ec0ffcefd
+msgid "It depends on the distribution you are using how to configure these, below you'll find examples for RHEL/CentOS."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:737
+# ee8734ea127c4e8f8b66e5c4dea71bbf
+msgid "The goal is to have three bridges called 'mgmt0', 'cloudbr0' and 'cloudbr1' after this section. This should be used as a guideline only. The exact configuration will depend on your network layout."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:740
+# a74c6627f02043d5be917f12e7d0b263
+msgid "Configure OpenVswitch"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:742
+# e34d3c3a549a4b5e90ffd8f8afa33b07
+msgid "The network interfaces using OpenVswitch are created using the ovs-vsctl command. This command will configure the interfaces and persist them to the OpenVswitch database."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:746
+# fc0396cdb2c247b4ba0851d2b478d8c9
+msgid "First we create a main bridge connected to the eth0 interface. Next we create three fake bridges, each connected to a specific vlan tag."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:761
+# 02df0e7f19b4486bbaada2d6b794b9ad
+msgid "The required packages were installed when openvswitch and libvirt were installed, we can proceed to configuring the network."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:781
+# afab5f01a1714f0cb60ff9eed2db599d
+msgid "We have to configure the base bridge with the trunk."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:796
+# e104896bad1742b5b84682172fbd9b32
+msgid "We now have to configure the three VLAN bridges:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:846
+#: ../../hypervisor_installation.rst:3926
+# 3564d9d50ea44f139e404791fd72f0af
+# 02fce31af22c4ed5abbd727f13ad05f0
+msgid "Configuring the firewall"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:848
+#: ../../hypervisor_installation.rst:3928
+# 2db1d0f133da4a66a7b2907acedd42a9
+# 5b0f650e2d114047a0415b7ea57f3251
+msgid "The hypervisor needs to be able to communicate with other hypervisors and the management server needs to be able to reach the hypervisor."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:851
+#: ../../hypervisor_installation.rst:3931
+# 935242b052ff490e9ad7270b8ddce890
+# 8c950a2e6b57475fa7752ffa9ed1e5bd
+msgid "In order to do so we have to open the following TCP ports (if you are using a firewall):"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:856
+#: ../../hypervisor_installation.rst:3936
+# cb69e4cdb8684774badfb4574559faa0
+# ae914c26a05444f9837e3ea892d275e2
+msgid "22 (SSH)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:860
+#: ../../hypervisor_installation.rst:3940
+# 3807a267ba4b47248846cb82be68d71e
+# 8d4a188d4a5c42408f9a9da6c952d345
+msgid "1798"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:864
+#: ../../hypervisor_installation.rst:3944
+# 87b8b1e5c9924af5b368bcbb7d2e8148
+# 130a835b7e534e1aad8b66a350c80a9c
+msgid "16509 (libvirt)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:868
+#: ../../hypervisor_installation.rst:3948
+# eb66ea04a90b4b46bd6c5529c74201b7
+# 332c2e7a9cdc40909b84e4bb4a550a92
+msgid "5900 - 6100 (VNC consoles)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:872
+#: ../../hypervisor_installation.rst:3952
+# a65af6b9acbf47a08b1f7222b105fd4f
+# 709185e3e76045d6a3a6d0df2f61efb3
+msgid "49152 - 49216 (libvirt live migration)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:874
+#: ../../hypervisor_installation.rst:3954
+# aa084591023a46ccb4cea81e8cc0baea
+# bc3288c0a792458c9d188c275d27a458
+msgid "It depends on the firewall you are using how to open these ports. Below you'll find examples how to open these ports in RHEL/CentOS and Ubuntu."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:878
+#: ../../hypervisor_installation.rst:3958
+# 7129650cbfc6416d8d015c4a64781ac8
+# 65d598aa7b414f5393a37799d4c2c1a2
+msgid "Open ports in RHEL/CentOS"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:880
+#: ../../hypervisor_installation.rst:3960
+# bb6efe14098442169446a2cfaf0ddfa0
+# e5bb8f2688ff41b98cf556f60758aa87
+msgid "RHEL and CentOS use iptables for firewalling the system, you can open extra ports by executing the following iptable commands:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:903
+#: ../../hypervisor_installation.rst:3983
+# d68286a4499a42d0af59d58cf3307ce8
+# cabb0609f32c4af983aec749c9a3bde6
+msgid "These iptable settings are not persistent accross reboots, we have to save them first."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:911
+#: ../../hypervisor_installation.rst:3991
+# 307b4260b7a74cd392d59bb3418c7eb8
+# a54b92341f454cf3aee68b8a07bd8108
+msgid "Open ports in Ubuntu"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:913
+#: ../../hypervisor_installation.rst:3993
+# 8f7697ea5cda4eeeae5602b276f55313
+# ca6e09ab840f496fa590a392c3c0fcb1
+msgid "The default firewall under Ubuntu is UFW (Uncomplicated FireWall), which is a Python wrapper around iptables."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:916
+#: ../../hypervisor_installation.rst:3996
+# 036e661454dd43b6bcf5724a4cfc8e21
+# 63b5466496e643e5adac39e7c08d34f7
+msgid "To open the required ports, execute the following commands:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:938
+#: ../../hypervisor_installation.rst:4019
+# d199e9f02aa34c2e998aba25484840c8
+# f7ee2acc10334a4bb43bb2cb66688c77
+msgid "By default UFW is not enabled on Ubuntu. Executing these commands with the firewall disabled does not enable the firewall."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:941
+#: ../../hypervisor_installation.rst:4022
+# f6fb4b8f7864465a8e8b2c9c726ec59c
+# 16dd0d2c501d4beea5ff4ef875698cd4
+msgid "Add the host to CloudStack"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:949
+# 870fb106f927434690fac18321ce0e59
+msgid "Hypervisor Support for Primary Storage"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:951
+# 11b373255a32403a97695fb159fd09d9
+msgid "The following table shows storage options and parameters for different hypervisors."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:955
+# 71d9dffcec0844acb2949eb60cea1944
+msgid "Primary Storage Type"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:955
+# 0b37e00477ab432691d060c0c73f3257
+msgid "vSphere"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:955
+# 7129c9b88c17431f9d16cb9947a677a7
+msgid "XenServer"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:955
+# 71094f1d15124724a6a0e6213b1d6daf
+msgid "KVM"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:955
+#: ../../hypervisor_installation.rst:1963
+# 09568b1f16e7426cab559aa9770bb87e
+# cfd57be6b2324793bc6c05ad29e6f751
+msgid "Hyper-V"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:957
+# 7046ca99b00143a18a1ac6585ea583d5
+msgid "****Format for Disks, Templates, and Snapshots****"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:957
+# 5ab36f207b4146588dd7917af86aa5b7
+msgid "VMDK"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:957
+#: ../../hypervisor_installation.rst:957
+# 1d7d1640e1344432b8b4c9f64e6e3de5
+# e52e9c78a0de4ad8960d9ed8d6604e7d
+msgid "VHD"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:957
+# 73411b9629ba423fa63a082dc31e04af
+msgid "QCOW2"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:958
+# e66d4e3fef6549cd950eb5a969eaec5a
+msgid "**iSCSI support**"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:958
+#: ../../hypervisor_installation.rst:959
+# 6791f19ffe8c492383fd9e09030fe664
+# 9f409f8d387c4d46becc2b3ee6499050
+msgid "VMFS"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:958
+# 6a8d18eb6310463b8b26ce7341385c5d
+msgid "CLVM"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:958
+#: ../../hypervisor_installation.rst:959
+# 155ee7758b3b41aabd23851828723f07
+# 9b26e9f40b634c0d9829308022399474
+msgid "Yes, via Shared Mountpoint"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:958
+#: ../../hypervisor_installation.rst:959
+#: ../../hypervisor_installation.rst:960
+#: ../../hypervisor_installation.rst:962
+#: ../../hypervisor_installation.rst:963
+#: ../../hypervisor_installation.rst:963
+#: ../../hypervisor_installation.rst:963
+# ebeb1e87b3f440c0a9fa499698356297
+# 0b052a6c7d9a489ba64df2bf64913d0d
+# 3111e9e35d434428bd654afbef6e4661
+# 90ea1419362d4e61bdbbde02d29a56a9
+# 67db36f9276b461a9f2dc0a6c75a84f3
+# 48b9e13cfdf048599e7c03490006ccb4
+# 16b7d2f7dac94f76a225e10445cf619f
+msgid "No"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:959
+# 7d8573527e8a4bfba998b4d3ddf99bb7
+msgid "**Fiber Channel support**"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:959
+# 451dcefc9c6c470491dfea9998e24809
+msgid "Yes, via Existing SR"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:960
+# d36f043836cb43d9b60ee86d2ad41f62
+msgid "**NFS support**"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:960
+#: ../../hypervisor_installation.rst:960
+#: ../../hypervisor_installation.rst:960
+#: ../../hypervisor_installation.rst:961
+#: ../../hypervisor_installation.rst:961
+#: ../../hypervisor_installation.rst:961
+#: ../../hypervisor_installation.rst:961
+#: ../../hypervisor_installation.rst:963
+# 50ad2c0fcf9644c9a4a7c65f8ddcb5fa
+# b7dc2cbb224a4aa886eb6e569412cc82
+# 80a2fd8cf583437ebb542a1d060a0042
+# d06590ec3fc948149d7dd2172c4f6b06
+# be7e08adfd054b1ba87844c789deb247
+# f29c49b5074b4c57a993f973a89e4c78
+# 54d3e136689647ed8412737ac2ba6b93
+# 140e1d436e5343bf99920962e3cb2fc0
+msgid "Yes"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:961
+# ac8413ce909b4b7395fadd007b26c9ff
+msgid "**Local storage support**"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:962
+# 24ab7203b4c943739c6926678f0d0803
+msgid "**Storage over-provisioning**"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:962
+# e2e7fabe2be14351b704696cea18fa20
+msgid "NFS and iSCSI"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:962
+#: ../../hypervisor_installation.rst:962
+# 39253a1a6513430b8e09aaf5098c74ef
+# 42778c796f7740bf85e16e509c1496f4
+msgid "NFS"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:963
+# b9588ec4a2be4b1696503c5e85cc3a84
+msgid "**SMB/CIFS**"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:966
+# 7644794bf16d47c18ed02b558352bea1
+msgid "XenServer uses a clustered LVM system to store VM images on iSCSI and Fiber Channel volumes and does not support over-provisioning in the hypervisor. The storage server itself, however, can support thin-provisioning. As a result the CloudStack can still support storage over-provisioning by running on thin-provisioned storage volumes."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:972
+# d20bddfa830e48d99978bd5eab502169
+msgid "KVM supports \"Shared Mountpoint\" storage. A shared mountpoint is a file system path local to each server in a given cluster. The path must be the same across all Hosts in the cluster, for example /mnt/primary1. This shared mountpoint is assumed to be a clustered filesystem such as OCFS2. In this case the CloudStack does not attempt to mount or unmount the storage as is done with NFS. The CloudStack requires that the administrator insure that the storage is available"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:980
+# 8cc2529993044886a2edc38f568aa43d
+msgid "With NFS storage, CloudStack manages the overprovisioning. In this case the global configuration parameter storage.overprovisioning.factor controls the degree of overprovisioning. This is independent of hypervisor type."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:985
+# b1c2b65035cd42b5b242d8245827be53
+msgid "Local storage is an option for primary storage for vSphere, XenServer, and KVM. When the local disk option is enabled, a local disk storage pool is automatically created on each host. To use local storage for the System Virtual Machines (such as the Virtual Router), set system.vm.use.local.storage to true in global configuration."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:991
+# 2874ceeecfc747368a0daa2f4b670a8d
+msgid "CloudStack supports multiple primary storage pools in a Cluster. For example, you could provision 2 NFS servers in primary storage. Or you could provision 1 iSCSI LUN initially and then add a second iSCSI LUN when the first approaches capacity."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:997
+# bb8410c437ae4dfc83006d467deab5ee
+msgid "Citrix XenServer Installation for CloudStack"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:999
+# f039a87fd91f4cf5af82b5a0d0e14279
+msgid "If you want to use the Citrix XenServer hypervisor to run guest virtual machines, install XenServer 6.0 or XenServer 6.0.2 on the host(s) in your cloud. For an initial installation, follow the steps below. If you have previously installed XenServer and want to upgrade to another version, see :ref:`upgrading-xenserver-version`."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1006
+# 1393db47eb314f93ac51b5df28608757
+msgid "System Requirements for XenServer Hosts"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1010
+# cee59e8c9fbe4466b998c22c775285aa
+msgid "The host must be certified as compatible with one of the following. See the Citrix Hardware Compatibility Guide: `http://hcl.xensource.com <http://hcl.xensource.com>`_"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1014
+# f3b55d603c69440cac3ff406039da6fa
+msgid "XenServer 5.6 SP2"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1015
+# be0e05f590c548658fc054e3b7c183c4
+msgid "XenServer 6.0"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1016
+# 859b34a50d8a47b98924d9bc9e66bf34
+msgid "XenServer 6.0.2"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1017
+# f62ad598aa04405db735768bcd28f3cb
+msgid "XenServer 6.1.0"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1018
+# 1ef19600bf954890ba8ab95144a9dbe9
+msgid "XenServer 6.2.0"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1022
+# 7f67c993b17a4b25a8b436331132a38b
+msgid "You must re-install Citrix XenServer if you are going to re-use a host from a previous install."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1031
+# 79b4544cf3614dd7a7be4fb67c18c3cc
+msgid "Be sure all the hotfixes provided by the hypervisor vendor are applied. Track the release of hypervisor patches through your hypervisor vendor’s support channel, and apply patches as soon as possible after they are released. CloudStack will not track or notify you of required hypervisor patches. It is essential that your hosts are completely up to date with the provided hypervisor patches. The hypervisor vendor is likely to refuse to support any system that is not up to date with patches."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1042
+# 00bde44b482f4ea297f009d4d8544f68
+msgid "All hosts within a cluster must be homogeneous. The CPUs must be of the same type, count, and feature flags."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1047
+# 1cc62dcb812144349e992ef157bc7f1e
+msgid "Must support HVM (Intel-VT or AMD-V enabled in BIOS)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1055
+#: ../../hypervisor_installation.rst:2267
+# 7f48c8f440f3456a9675ec430f73fa14
+# 91c80a6655bf4e15999366adc5579b63
+msgid "Hardware virtualization support required"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1063
+#: ../../hypervisor_installation.rst:2275
+# edf681afdf084f4d95b31b905feef83e
+# b0c94baa01744e5d9a09a5a1a9be638f
+msgid "36 GB of local disk"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1071
+#: ../../hypervisor_installation.rst:2283
+# 2627aa6551664c18b24d53f01d85fdc9
+# 7d643f0e7d854677adf01b1b91684194
+msgid "Statically allocated IP Address"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1078
+# 86b1054dd7df47728888bb09e899e58e
+msgid "The lack of up-do-date hotfixes can lead to data corruption and lost VMs."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1081
+# ffb7f7e0b7d54edd842322b6dbd130bc
+msgid "XenServer Installation Steps"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1085
+# d29bd0f1992445e7bfe899ec7fdcd3bc
+msgid "From `https://www.citrix.com/English/ss/downloads/ <https://www.citrix.com/English/ss/downloads/>`_, download the appropriate version of XenServer for your CloudStack version (see `\"System Requirements for XenServer Hosts\" <#system-requirements-for-xenserver-hosts>`_). Install it using the Citrix XenServer Installation Guide."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1091
+# e4ff84caeefa4cdb9ff96d78ed4795bc
+msgid "Older Versions of XenServer:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1093
+# dfbef4c3b3e74946805482a145c437ea
+msgid "Note that you can download the most recent release of XenServer without having a Citrix account. If you wish to download older versions, you will need to create an account and look through the download archives."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1099
+# a1f3be6636a2457095084a99017c2bef
+msgid "Configure XenServer dom0 Memory"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1101
+# 3d95fa3b3a0e4b1eb92dd506d58da069
+msgid "Configure the XenServer dom0 settings to allocate more memory to dom0. This can enable XenServer to handle larger numbers of virtual machines. We recommend 2940 MB of RAM for XenServer dom0. For instructions on how to do this, see `http://support.citrix.com/article/CTX126531 <http://support.citrix.com/article/CTX126531>`_. The article refers to XenServer 5.6, but the same information applies to XenServer 6.0."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1110
+# 9e46ff13cb284bb9bdfbe4141e984bc3
+msgid "Username and Password"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1112
+# 47b11d036dff42a990eebaab43d6265b
+msgid "All XenServers in a cluster must have the same username and password as configured in CloudStack."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1116
+# 04e9a76db62743b99541eca7808c3339
+msgid "Time Synchronization"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1118
+# 9fa198ee495f4b84b0bba7fd628e2e92
+msgid "The host must be set to use NTP. All hosts in a pod must have the same time."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1123
+# 4726eec6f10347b99a5e8076a1285988
+msgid "Install NTP."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1131
+# 5682aee95db547028f5e82cd70b046d7
+msgid "Edit the NTP configuration file to point to your NTP server."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1137
+# 1ce6772b97fb4129b0a526a33bfd18fa
+msgid "Add one or more server lines in this file with the names of the NTP servers you want to use. For example:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1149
+# 69791d782a3541ca94d6c4751ec78f1f
+msgid "Restart the NTP client."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1157
+# 3b608298222445408c6e4d00c8b36707
+msgid "Make sure NTP will start again upon reboot."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1165
+# 0fcd0d55ec7049b69a3427a227e67180
+msgid "Install CloudStack XenServer Support Package (CSP)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1167
+# ae16a3a52b0343d8b17bdbe5440015f1
+msgid "(Optional)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1169
+# 030bdd1824914aac90fb1170106765ba
+msgid "To enable security groups, elastic load balancing, and elastic IP on XenServer, download and install the CloudStack XenServer Support Package (CSP). After installing XenServer, perform the following additional steps on each XenServer host."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1176
+# 41fcedb714c14a428ca6a9efe5a1d42f
+msgid "Download the CSP software onto the XenServer host from one of the following links:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1179
+# f29bec21956d4917be7874f1b6a4177e
+msgid "For XenServer 6.0.2:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1181
+# 54880e3acb4945b4ae3d3fb251252130
+msgid "`http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz>`_"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1183
+# 4405c659cea34cb2895c0f43693473f1
+msgid "For XenServer 5.6 SP2:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1185
+# b1533b01dec04d8ea37cb07d541d8013
+msgid "`http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz>`_"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1187
+# 994df5c8945149b7b8663a2e603fc847
+msgid "For XenServer 6.0:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1189
+# bc80c4fa363248c292882b511d90808a
+msgid "`http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz>`_"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1193
+# 09db532336c943caa7e4713f7f57deaa
+msgid "Extract the file:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1201
+#: ../../hypervisor_installation.rst:1825
+# 08830377e2e845879acf2acd9cb55ecf
+# aa4d385951184c16a90f45c0c3c5137a
+msgid "Run the following script:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1209
+# 72924509d484445a81886c53211f2d14
+msgid "If the XenServer host is part of a zone that uses basic networking, disable Open vSwitch (OVS):"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1216
+# adb679b9cadf4ab587ebaa643690988a
+msgid "Restart the host machine when prompted."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1218
+# bd826e8c78c04cf2ac613043dd1aa8ef
+msgid "The XenServer host is now ready to be added to CloudStack."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1221
+# 4d2cc4a9829c43c79dffee9dffb52d68
+msgid "Primary Storage Setup for XenServer"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1223
+# b0cc4d49e6d34d9db259e314792c0177
+msgid "CloudStack natively supports NFS, iSCSI and local storage. If you are using one of these storage types, there is no need to create the XenServer Storage Repository (\"SR\")."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1227
+# a62837dbc9e1484d9a2ec93a3f386570
+msgid "If, however, you would like to use storage connected via some other technology, such as FiberChannel, you must set up the SR yourself. To do so, perform the following steps. If you have your hosts in a XenServer pool, perform the steps on the master node. If you are working with a single XenServer which is not part of a cluster, perform the steps on that XenServer."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1236
+# 81eef0c2ce0249b3a2530d8dd37184b8
+msgid "Connect FiberChannel cable to all hosts in the cluster and to the FiberChannel storage host."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1241
+# b7ae02e3677b4008a1be03a37f030f35
+msgid "Rescan the SCSI bus. Either use the following command or use XenCenter to perform an HBA rescan."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1250
+# 0476baafcfbc4751a7b674d69113d59f
+msgid "Repeat step 2 on every host."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1254
+# 02f48106fb6144b7b2382f5073d07199
+msgid "Check to be sure you see the new SCSI disk."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1260
+# 37c8fa1fc8f84752a31863e7c7d8120d
+msgid "The output should look like this, although the specific file name will be different (scsi-<scsiID>):"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1270
+# d30a16069dcf439f859e28c39d871bdb
+msgid "Repeat step 4 on every host."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1274
+# d057bb9cd0164ff2af5b7b284a2f70bc
+msgid "On the storage server, run this command to get a unique ID for the new SR."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1281
+# 78a081f2a72e4bea8db0fd3c3d5789df
+msgid "The output should look like this, although the specific ID will be different:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1290
+# faf5a8ab93ff4086828b6dc2491f0fd4
+msgid "Create the FiberChannel SR. In name-label, use the unique ID you just generated."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1299
+# c1a12adfd4e246b9ad5592e39b85708c
+msgid "This command returns a unique ID for the SR, like the following example (your ID will be different):"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1308
+# f32c1d33fc9f40779169b42513227c6b
+msgid "To create a human-readable description for the SR, use the following command. In uuid, use the SR ID returned by the previous command. In name-description, set whatever friendly text you prefer."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1316
+# b754f3a8e4df433090a93bb35257fecd
+msgid "Make note of the values you will need when you add this storage to CloudStack later (see `\"Add Primary Storage\" <configuration.html#add-primary-storage>`_). In the Add Primary Storage dialog, in Protocol, you will choose PreSetup. In SR Name-Label, you will enter the name-label you set earlier (in this example, e6849e96-86c3-4f2c-8fcc-350cc711be3d)."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1324
+# bb2c0a059376456fb6bca7407c545e10
+msgid "(Optional) If you want to enable multipath I/O on a FiberChannel SAN, refer to the documentation provided by the SAN vendor."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1328
+# f948cd8634034bd188d213da27d061f1
+msgid "iSCSI Multipath Setup for XenServer (Optional)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1330
+# 2f15691307f84faaade1ec0f85382c0a
+msgid "When setting up the storage repository on a Citrix XenServer, you can enable multipath I/O, which uses redundant physical components to provide greater reliability in the connection between the server and the SAN. To enable multipathing, use a SAN solution that is supported for Citrix servers and follow the procedures in Citrix documentation. The following links provide a starting point:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1339
+# c3e151c53ba543aa9a5c48cd1282a74b
+msgid "`http://support.citrix.com/article/CTX118791 <http://support.citrix.com/article/CTX118791>`_"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1343
+# 341d6153e8204ea697144d7f714fd80d
+msgid "`http://support.citrix.com/article/CTX125403 <http://support.citrix.com/article/CTX125403>`_"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1345
+# d88b03c3c9134875a81d6f6fcda13a65
+msgid "You can also ask your SAN vendor for advice about setting up your Citrix repository for multipathing."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1348
+# 01ad0cb79f9448c48d411af178ff801e
+msgid "Make note of the values you will need when you add this storage to the CloudStack later (see `\"Add Primary Storage\" <configuration.html#add-primary-storage>`_). In the Add Primary Storage dialog, in Protocol, you will choose PreSetup. In SR Name-Label, you will enter the same name used to create the SR."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1353
+# d447c7f93a09485c9104d3e0c6f30ed4
+msgid "If you encounter difficulty, address the support team for the SAN provided by your vendor. If they are not able to solve your issue, see Contacting Support."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1358
+# 3462935ca70247d4ad640ed9fc026627
+msgid "Physical Networking Setup for XenServer"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1360
+# 96146639e1894252a9993fb4085347e3
+msgid "Once XenServer has been installed, you may need to do some additional network configuration. At this point in the installation, you should have a plan for what NICs the host will have and what traffic each NIC will carry. The NICs should be cabled as necessary to implement your plan."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1366
+# f28bb641121f436ca9f8198d73026c0c
+msgid "If you plan on using NIC bonding, the NICs on all hosts in the cluster must be cabled exactly the same. For example, if eth0 is in the private bond on one host in a cluster, then eth0 must be in the private bond on all hosts in the cluster."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1371
+# b85094b7061646f493d481b41f4f5d9b
+msgid "The IP address assigned for the management network interface must be static. It can be set on the host itself or obtained via static DHCP."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1374
+# f4eaab06e1894ba28c9a3ee1c8fd19e2
+msgid "CloudStack configures network traffic of various types to use different NICs or bonds on the XenServer host. You can control this process and provide input to the Management Server through the use of XenServer network name labels. The name labels are placed on physical interfaces or bonds and configured in CloudStack. In some simple cases the name labels are not required."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1381
+# de56a32c98eb4628a39e7d67f51d4762
+msgid "When configuring networks in a XenServer environment, network traffic labels must be properly configured to ensure that the virtual interfaces are created by CloudStack are bound to the correct physical device. The name-label of the XenServer network must match the XenServer traffic label specified while creating the CloudStack network. This is set by running the following command:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1393
+# 615cf9185dd24899b715f67bf68619ce
+msgid "Configuring Public Network with a Dedicated NIC for XenServer (Optional)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1395
+# 3c82b6119dda4300b8573ec15d8e2700
+msgid "CloudStack supports the use of a second NIC (or bonded pair of NICs, described in :ref:`nic-bonding-for-xenserver`) for the public network. If bonding is not used, the public network can be on any NIC and can be on different NICs on the hosts in a cluster. For example, the public network can be on eth0 on node A and eth1 on node B. However, the XenServer name-label for the public network must be identical across all hosts. The following examples set the network label to \"cloud-public\". After the management server is installed and running you must configure it with the name of the chosen network label (e.g. \"cloud-public\"); this is discussed in `\"Management Server Installation\" <installation.html#management-server-installation>`_."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1406
+# 110691d610d44e6abc3b85a434281c45
+msgid "If you are using two NICs bonded together to create a public network, see :ref:`nic-bonding-for-xenserver`."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1409
+# 5eeb0c63f90641ba8ae5b6652fb43ac5
+msgid "If you are using a single dedicated NIC to provide public network access, follow this procedure on each new host that is added to CloudStack before adding the host."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1415
+# 06ff995c8cd147ecbee8398ae114eb8f
+msgid "Run xe network-list and find the public network. This is usually attached to the NIC that is public. Once you find the network make note of its UUID. Call this <UUID-Public>."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1421
+# bd31c6c93f934071bb6a514d4b1b50ca
+msgid "Run the following command."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1428
+# d2be307f51684ed299d0d6b382616d08
+msgid "Configuring Multiple Guest Networks for XenServer (Optional)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1430
+# 52d7d8db9ce2409e83475cdad3955a33
+msgid "CloudStack supports the use of multiple guest networks with the XenServer hypervisor. Each network is assigned a name-label in XenServer. For example, you might have two networks with the labels \"cloud-guest\" and \"cloud-guest2\". After the management server is installed and running, you must add the networks and use these labels so that CloudStack is aware of the networks."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1437
+# 8a5be9e0828c4730b3dcb0b852e2220f
+msgid "Follow this procedure on each new host before adding the host to CloudStack:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1442
+# 3634bb596dba4e22b7ea59c50eb2f1ef
+msgid "Run xe network-list and find one of the guest networks. Once you find the network make note of its UUID. Call this <UUID-Guest>."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1447
+# 786c3d9e0de241399b68a3ab7c3069cc
+msgid "Run the following command, substituting your own name-label and uuid values."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1456
+# 562afb7e19cf4d4381e2ec0f140e5e61
+msgid "Repeat these steps for each additional guest network, using a different name-label and uuid each time."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1460
+# 41b48003990c4afdb4b6b8a96f1513cd
+msgid "Separate Storage Network for XenServer (Optional)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1462
+# d1c730db57c24a7da597f35913fe72f0
+msgid "You can optionally set up a separate storage network. This should be done first on the host, before implementing the bonding steps below. This can be done using one or two available NICs. With two NICs bonding may be done as above. It is the administrator's responsibility to set up a separate storage network."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1468
+# 5077124054fc4ba3b593435b5bd5b709
+msgid "Give the storage network a different name-label than what will be given for other networks."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1471
+# 2c93ae198ee746f7b38008dc9aaa2b63
+msgid "For the separate storage network to work correctly, it must be the only interface that can ping the primary storage device's IP address. For example, if eth0 is the management network NIC, ping -I eth0 <primary storage device IP> must fail. In all deployments, secondary storage devices must be pingable from the management network NIC or bond. If a secondary storage device has been placed on the storage network, it must also be pingable via the storage network NIC or bond on the hosts as well."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1480
+# 5dc74fbf37884dd1a441515d7ccb3739
+msgid "You can set up two separate storage networks as well. For example, if you intend to implement iSCSI multipath, dedicate two non-bonded NICs to multipath. Each of the two networks needs a unique name-label."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1484
+# 21486bfc4a50447a974137680f2e8750
+msgid "If no bonding is done, the administrator must set up and name-label the separate storage network on all hosts (masters and slaves)."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1487
+# e74b734827c148e4abf67add41daf5fa
+msgid "Here is an example to set up eth5 to access a storage network on 172.16.0.0/24."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1500
+# 4c8478c9b0404061b4f0eb4cf916b145
+msgid "NIC Bonding for XenServer (Optional)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1502
+# dc0584c53b15404da1bd19bd6ee782bf
+msgid "XenServer supports Source Level Balancing (SLB) NIC bonding. Two NICs can be bonded together to carry public, private, and guest traffic, or some combination of these. Separate storage networks are also possible. Here are some example supported configurations:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1509
+# 585023d3f7b24463a959419863701154
+msgid "2 NICs on private, 2 NICs on public, 2 NICs on storage"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1513
+# 85ce9960f5f64e7e81103c42a25c7992
+msgid "2 NICs on private, 1 NIC on public, storage uses management network"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1517
+# 766a18c82a444b0f9940f362c82e2922
+msgid "2 NICs on private, 2 NICs on public, storage uses management network"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1521
+# a559ff80b0a94e9799389702be54cf19
+msgid "1 NIC for private, public, and storage"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1523
+# b92a690f72754add8ee271cf1ba240f1
+msgid "All NIC bonding is optional."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1525
+# 26835cc7c2844c809af0dc5a4cfc4742
+msgid "XenServer expects all nodes in a cluster will have the same network cabling and same bonds implemented. In an installation the master will be the first host that was added to the cluster and the slave hosts will be all subsequent hosts added to the cluster. The bonds present on the master set the expectation for hosts added to the cluster later. The procedure to set up bonds on the master and slaves are different, and are described below. There are several important implications of this:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1535
+# 422eb3cde8234e3a8e6269cdb3548d5a
+msgid "You must set bonds on the first host added to a cluster. Then you must use xe commands as below to establish the same bonds in the second and subsequent hosts added to a cluster."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1541
+# c3572859ed994bf79cccdac0dc036ada
+msgid "Slave hosts in a cluster must be cabled exactly the same as the master. For example, if eth0 is in the private bond on the master, it must be in the management network for added slave hosts."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1546
+# 50715edffb014ce094ecfdcfc1429bc7
+msgid "Management Network Bonding"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1548
+# 355923780aac48ae87b6a24963efcbab
+msgid "The administrator must bond the management network NICs prior to adding the host to CloudStack."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1552
+# 241a3f2bb47549c1b613bc5468c732d1
+msgid "Creating a Private Bond on the First Host in the Cluster"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1554
+# b0b878648bc34dd3b949b2492db4ebe7
+msgid "Use the following steps to create a bond in XenServer. These steps should be run on only the first host in a cluster. This example creates the cloud-private network with two physical NICs (eth0 and eth1) bonded into it."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1561
+#: ../../hypervisor_installation.rst:1607
+# c818433917984f208742d7624945c715
+# c273eb3061e74432b57d9077c627c6ea
+msgid "Find the physical NICs that you want to bond together."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1568
+# 913da62e00594d7d9256568a0966482a
+msgid "These command shows the eth0 and eth1 NICs and their UUIDs. Substitute the ethX devices of your choice. Call the UUID's returned by the above command slave1-UUID and slave2-UUID."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1574
+# 5f7804ba516044498b79880642b90e2c
+msgid "Create a new network for the bond. For example, a new network with name \"cloud-private\"."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1577
+# d2ccc4ae2a144c8b9d8337cc227fb222
+msgid "**This label is important. CloudStack looks for a network by a name you configure. You must use the same name-label for all hosts in the cloud for the management network.**"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1587
+# f3b50a468a3e4e83813f2acba6062bd8
+msgid "Now you have a bonded pair that can be recognized by CloudStack as the management network."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1591
+# cf64cccd2bb745bcaaddd7b531fbc539
+msgid "Public Network Bonding"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1593
+# f999c0e7062f47cf9e78cd29a0554039
+msgid "Bonding can be implemented on a separate, public network. The administrator is responsible for creating a bond for the public network if that network will be bonded and will be separate from the management network."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1599
+# 0242521ca5b94ecfa005cd45513c5d1f
+msgid "Creating a Public Bond on the First Host in the Cluster"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1601
+# 3582283d68284b5fb85af54cb569eaca
+msgid "These steps should be run on only the first host in a cluster. This example creates the cloud-public network with two physical NICs (eth2 and eth3) bonded into it."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1614
+# 525068448771408183ac84f1a5d006be
+msgid "These command shows the eth2 and eth3 NICs and their UUIDs. Substitute the ethX devices of your choice. Call the UUID's returned by the above command slave1-UUID and slave2-UUID."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1620
+# b9e69c9100564b88b43f6779621e12c4
+msgid "Create a new network for the bond. For example, a new network with name \"cloud-public\"."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1623
+# d4f75d2fc44545eaa191a59720d7ac1c
+msgid "**This label is important. CloudStack looks for a network by a name you configure. You must use the same name-label for all hosts in the cloud for the public network.**"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1633
+# f11b8de48bbf4fc6895b7bb33f52a308
+msgid "Now you have a bonded pair that can be recognized by CloudStack as the public network."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1637
+# 08c0b83d57f64624a7fa7bb0b057d887
+msgid "Adding More Hosts to the Cluster"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1639
+# 7b998653c91d417d9920cdf8a2b62752
+msgid "With the bonds (if any) established on the master, you should add additional, slave hosts. Run the following command for all additional hosts to be added to the cluster. This will cause the host to join the master in a single XenServer pool."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1650
+# 46fa7303d5604b5aa8d3a61679d51e47
+msgid "Complete the Bonding Setup Across the Cluster"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1652
+# 53dea66729854ace9b2af4bdfc78c1ca
+msgid "With all hosts added to the pool, run the cloud-setup-bond script. This script will complete the configuration and set up of the bonds across all hosts in the cluster."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1658
+# cd69e7cc948c43ffa11698a2390cf986
+msgid "Copy the script from the Management Server in /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-setup-bonding.sh to the master host and ensure it is executable."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1664
+# 3b7ac5520f0e464aa6c2c0dcb9f61233
+msgid "Run the script:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1670
+# 878fb7127a004f419b95241af6bee8ae
+msgid "Now the bonds are set up and configured properly across the cluster."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1675
+# 6b4c5561ec7e4237b7dc17126c581b6a
+msgid "Upgrading XenServer Versions"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1677
+# cfc09c589fb540b0b0a1bec122afd5ff
+msgid "This section tells how to upgrade XenServer software on CloudStack hosts. The actual upgrade is described in XenServer documentation, but there are some additional steps you must perform before and after the upgrade."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1682
+# 2376fd5b927644c8b4b846ad245f3688
+msgid "Be sure the hardware is certified compatible with the new version of XenServer."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1684
+# 942358ec8cfb439aa09b3a2faf54e73c
+msgid "To upgrade XenServer:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1688
+# e1b8b830b03645a7ab9cc4e5d534e1d1
+msgid "Upgrade the database. On the Management Server node:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1692
+# 8b47371c505b4b43a8e836e8d1747528
+msgid "Back up the database:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1701
+# 99f965b30fe24ab8bfff83358a44964e
+msgid "You might need to change the OS type settings for VMs running on the upgraded hosts."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1706
+# ffcbd17272014822acea38cfefd3e547
+msgid "If you upgraded from XenServer 5.6 GA to XenServer 5.6 SP2, change any VMs that have the OS type CentOS 5.5 (32-bit), Oracle Enterprise Linux 5.5 (32-bit), or Red Hat Enterprise Linux 5.5 (32-bit) to Other Linux (32-bit). Change any VMs that have the 64-bit versions of these same OS types to Other Linux (64-bit)."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1715
+# 733596d54def49918fe6659885ae3c7b
+msgid "If you upgraded from XenServer 5.6 SP2 to XenServer 6.0.2, change any VMs that have the OS type CentOS 5.6 (32-bit), CentOS 5.7 (32-bit), Oracle Enterprise Linux 5.6 (32-bit), Oracle Enterprise Linux 5.7 (32-bit), Red Hat Enterprise Linux 5.6 (32-bit) , or Red Hat Enterprise Linux 5.7 (32-bit) to Other Linux (32-bit). Change any VMs that have the 64-bit versions of these same OS types to Other Linux (64-bit)."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1725
+# 14f2e711450e4ff58dd3149c1fdab21d
+msgid "If you upgraded from XenServer 5.6 to XenServer 6.0.2, do all of the above."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1730
+# f2619c1d24c74437a167e2d44d5253c7
+msgid "Restart the Management Server and Usage Server. You only need to do this once for all clusters."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1740
+# fc348fb3fda64c95883a94a886676f1d
+msgid "Disconnect the XenServer cluster from CloudStack."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1744
+#: ../../hypervisor_installation.rst:1874
+#: ../../hypervisor_installation.rst:3252
+#: ../../hypervisor_installation.rst:3301
+# 7f794481fc044e789630a36cdbfdf41f
+# f65c913be82f4fe09eb132c2c6dc033a
+# ca114347489c453a8cbd54f9520a6500
+# 21a397aa7b7d4f23ad83b33343dc8cd7
+msgid "Log in to the CloudStack UI as root."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1748
+# 7153d29a4b934e7bb7b4150b35a8b3e5
+msgid "Navigate to the XenServer cluster, and click Actions – Unmanage."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1752
+#: ../../hypervisor_installation.rst:3263
+# b860ab2de3c14f0da775023c03a393ed
+# 08c7c9f1bbca4dac9ca9abb2d901954f
+msgid "Watch the cluster status until it shows Unmanaged."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1756
+# f527402053e54831b67ae8daef6083c5
+msgid "Log in to one of the hosts in the cluster, and run this command to clean up the VLAN:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1765
+# b42f28a2c2fb4455a41e6372a470f6a9
+msgid "Still logged in to the host, run the upgrade preparation script:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1771
+# f6179b84964541bb846a719b3663189e
+msgid "Troubleshooting: If you see the error \"can't eject CD,\" log in to the VM and umount the CD, then run the script again."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1776
+# d7a81f24da0d4fd0b589ebfcfcd71784
+msgid "Upgrade the XenServer software on all hosts in the cluster. Upgrade the master first."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1781
+# 11d3dd98878f4fe08f96c16e5df8c6ac
+msgid "Live migrate all VMs on this host to other hosts. See the instructions for live migration in the Administrator's Guide."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1784
+# 1bdb8f184a494eb4969abf3ba696ed19
+msgid "Troubleshooting: You might see the following error when you migrate a VM:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1793
+# 6ad7bdb81aca465a9b5938d726550c76
+msgid "To solve this issue, run the following:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1801
+# 9676fe491f5740eaba74cd4060ed35f4
+msgid "Reboot the host."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1805
+# 383661aa66db407a8dd6f313e2acc4f4
+msgid "Upgrade to the newer version of XenServer. Use the steps in XenServer documentation."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1810
+# ef1bce7a4ef44573a6106976c04c4c45
+msgid "After the upgrade is complete, copy the following files from the management server to this host, in the directory locations shown below:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1815
+# 64ccf69ad9eb4dfeb17c080ada99de6f
+msgid "Copy this Management Server file"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1815
+# 32e9ec87a68946b5b2705187b2201880
+msgid "To this location on the XenServer host"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1817
+# d008b2ce2b484b0aa482d6df64c2b74e
+msgid "/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/xenserver60/NFSSR.py"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1817
+# e6b5a2e9d2684509ba864a23c275056f
+msgid "/opt/xensource/sm/NFSSR.py"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1818
+# d5f8132be2874a02b0853331d25286ed
+msgid "/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/setupxenserver.sh"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1818
+# 2393c9fde5964bcdb21f54931c5cd007
+msgid "/opt/xensource/bin/setupxenserver.sh"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1819
+# 7a478317154146aa933ae7193c133e0a
+msgid "/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/make\\_migratable.sh"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1819
+# 36d9f18cee164a5c9551ab66b058f0e5
+msgid "/opt/xensource/bin/make\\_migratable.sh"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1820
+# 5e031eb5f37f4b42a7a0357a9e963dde
+msgid "/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-clean-vlan.sh"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1820
+# 12cd3626b3954c23be38e95e7059b7dc
+msgid "/opt/xensource/bin/cloud-clean-vlan.sh"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1831
+# 0b7bb106fe444196ae32f10b125d51bb
+msgid "Troubleshooting: If you see the following error message, you can safely ignore it."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1840
+# 84fc84c6930a40b88488984ff6c9112c
+msgid "Plug in the storage repositories (physical block devices) to the XenServer host:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1847
+# d796a15c920847c7a8251c995526c02d
+msgid "If you add a host to this XenServer pool, you need to migrate all VMs on this host to other hosts, and eject this host from XenServer pool."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1851
+# f9bd9295e2b84bf2879c1ecbc602c44a
+msgid "Repeat these steps to upgrade every host in the cluster to the same version of XenServer."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1856
+# 8e37aa52a47547be82d24895b65f09f4
+msgid "Run the following command on one host in the XenServer cluster to clean up the host tags:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1864
+# 8cf9d53037984028bce163054acb29f2
+msgid "When copying and pasting a command, be sure the command has pasted as a single line before executing. Some document viewers may introduce unwanted line breaks in copied text."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1870
+# 3e06a5a1b257415a9ede2507a47d0877
+msgid "Reconnect the XenServer cluster to CloudStack."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1878
+# 950820df270d40ebb2b49296c30a9a53
+msgid "Navigate to the XenServer cluster, and click Actions – Manage."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1882
+# 662b5d4d23744762922ae112f5e61b84
+msgid "Watch the status to see that all the hosts come up."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1886
+# 1b7befb539434c7db47239456ba7213e
+msgid "After all hosts are up, run the following on one host in the cluster:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1893
+# d3a523f2e69a478bb90498d681b0178b
+msgid "Installing Hyper-V for CloudStack"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1895
+# b93fc39d5763433cb59938b5f75dd607
+msgid "If you want to use Hyper-V hypervisor to run guest virtual machines, install Hyper-V on the hosts in your cloud. The instructions in this section doesn't duplicate Hyper-V Installation documentation. It provides the CloudStack-specific steps that are needed to prepare a Hyper-V host to work with CloudStack."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1902
+# 2038da390b6848a0b3cc3fedef1a9d2c
+msgid "System Requirements for Hyper-V Hypervisor Hosts"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1905
+# fc724f9178b64868879b74a411d95ef5
+msgid "Supported Operating Systems for Hyper-V Hosts"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1909
+# 1a5519a64e134b1a91a658145276f6ed
+msgid "Windows Server 2012 R2 Standard"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1913
+# ee081eb7e4004f578c7da357ca3b65e2
+msgid "Windows Server 2012 R2 Datacenter"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1917
+# cd21b1eeb72340979622e7783f646d92
+msgid "Hyper-V 2012 R2"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1920
+# 0d65d540ddce44ad8a88d9484e834d25
+msgid "Minimum System Requirements for Hyper-V Hosts"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1924
+# ff261434dbf442899d95fec9961fdf73
+msgid "1.4 GHz 64-bit processor with hardware-assisted virtualization."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1928
+# 8213417edf9244ab8b88ea0831f4c865
+msgid "800 MB of RAM"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1932
+# bf16d06d9e7244b6bbb96e7b56e71357
+msgid "32 GB of disk space"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1936
+# 82c14f0ba5cc44b689942c4b99564fff
+msgid "Gigabit (10/100/1000baseT) Ethernet adapter"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1939
+# 51556185e39644d8a4bf6f8f7afa2861
+msgid "Supported Storage"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1943
+# 5beb17ae25a34423bc3a3e369212ec3f
+msgid "Primary Storage: Server Message Block (SMB) Version 3, Local"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1947
+# 55d3704fad27499b92347d61e7deb72a
+msgid "Secondary Storage: SMB"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1950
+# 703eb2b0e6fc40bcbda49bace0d0fb75
+msgid "Preparation Checklist for Hyper-V"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1952
+#: ../../hypervisor_installation.rst:2388
+# 419613931af84db383a87503c76f013c
+# 487f37bf5b724be48da1842d6f4f189e
+msgid "For a smoother installation, gather the following information before you start:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1955
+# 2c101932aa3e4ca28fdcb6f78b2628f0
+msgid "Hyper-V Requirements"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1957
+#: ../../hypervisor_installation.rst:2715
+# a2108b6906c5463a9d62d10304f6f7c0
+# 7df31f594d084182a124fa1a5963c2e2
+msgid "Value"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1959
+#: ../../hypervisor_installation.rst:2900
+# 8c30f2b9669c4b839800c9fde5954476
+# e536631fc460428f82d0797650809db6
+msgid "Description"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1961
+# 9e31d44efe0d40bc8987a7f1b9a7560a
+msgid "Server Roles"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1965
+# 4de7af81dfc04ce89ecb35699251c666
+msgid "After the Windows Server 2012 R2 installation, ensure that Hyper-V is selected from Server Roles. For more information, see `Installing Hyper-V <http://technet.microsoft.com/en-us/library/jj134187.aspx#BKMK_Step2>`_."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1968
+# 644571f95331448f97fe445ae9ee8de9
+msgid "Share Location"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1970
+# 636f796bb2ad45c5a5de2c9166505359
+msgid "New folders in the /Share directory"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1972
+# 2b338e212cc74f149db217553b6b692f
+msgid "Ensure that folders are created for Primary and Secondary storage. The SMB share and the hosts should be part of the same domain."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1975
+# 7a6f754da1ec458ca9eae5c017e0ab52
+msgid "If you are using Windows SMB share, the location of the file share for the Hyper-V deployment will be the new folder created in the \\\\Shares on the selected volume. You can create sub-folders for both CloudStack Primary and Secondary storage within the share location. When you select the profile for the file shares, ensure that you select SMB Share -Applications. This creates the file shares with settings appropriate for Hyper-V."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1983
+# cfec42b2cfec42d7b8ffbd8e69cb8561
+msgid "Domain and Hosts"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1985
+# 40eb688b68184a569a98d100afc12873
+msgid "Hosts should be part of the same Active Directory domain."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1987
+# 6f43f5b3150444fd8d107a12fcebadb0
+msgid "Hyper-V Users"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1989
+# 571279354d664c0c9db4d00e780060ab
+msgid "Full control"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1991
+# d4526dd1a8b24a46b8a12c3188d43a1a
+msgid "Full control on the SMB file share."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1993
+# 3619e03fbf014ba3a55f9a8cbbeeb5b0
+msgid "Virtual Switch"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:1995
+#: ../../hypervisor_installation.rst:2166
+# f63f68f216ba4cabb3a183f2539b2134
+# b7c90a0b793c4c48847a27c21d2b64ac
+msgid "If you are using Hyper-V 2012 R2, manually create an external virtual switch before adding the host to CloudStack. If the Hyper-V host is added to the Hyper-V manager, select the host, then click Virtual Switch Manager, then New Virtual Switch. In the External Network, select the desired NIC adapter and click Apply."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2001
+#: ../../hypervisor_installation.rst:2172
+# 6d95d36bac3c4cc899af98614236b0d5
+# 4a0f7c13f957472b93f453ba6e2c6f23
+msgid "If you are using Windows 2012 R2, virtual switch is created automatically."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2004
+# eedd8450f79a4f919ecbd025523beb7a
+msgid "Virtual Switch Name"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2006
+# 705abed5f4e34a2abcdd893c5a585841
+msgid "Take a note of the name of the virtual switch. You need to specify that when configuring CloudStack physical network labels."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2009
+# 96e118a8d6fb4e349ebee12448d428ae
+msgid "Hyper-V Domain Users"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2013
+# 2183c3c5058d46e781cfa2009b5b8cce
+msgid "Add the Hyper-V domain users to the Hyper-V Administrators group."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2017
+# 9f4d174e848040d582531a73056893bd
+msgid "A domain user should have full control on the SMB share that is exported for primary and secondary storage."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2022
+# 99de63ae54c54e0db4b82c316b7e78b2
+msgid "This domain user should be part of the Hyper-V Administrators and Local Administrators group on the Hyper-V hosts that are to be managed by CloudStack."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2028
+# 720fe08852e24e4b9a6af71ba0163e18
+msgid "The Hyper-V Agent service runs with the credentials of this domain user account."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2033
+# 0eec174a2c2b4b95b04019df219554d5
+msgid "Specify the credential of the domain user while adding a host to CloudStack so that it can manage it."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2038
+# 6ff787bf1b1e4267996f97a752a180da
+msgid "Specify the credential of the domain user while adding a shared SMB primary or secondary storage."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2041
+#: ../../hypervisor_installation.rst:2043
+#: ../../hypervisor_installation.rst:2049
+#: ../../hypervisor_installation.rst:2057
+# 08280d229e5a44209e52e6419ea17724
+# 4af21332db304a9b999b0669c5879f16
+# 171afe1cdf5340aaa079bba3c9efaa37
+# a3ca202c8d9242048feefb736684fcbe
+msgid "Migration"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2045
+# a72a460265644d92b134252e4a8e9ebe
+msgid "Enable Migration."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2047
+# c879e91d8d184c89b88542de1d7530f5
+msgid "For more information, see `Configuring Live Migration <http://technet.microsoft.com/en-us/library/jj134199.aspx>`_."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2051
+# ddeb2003fe114629bfe83180bfd7434b
+msgid "Delegation"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2053
+# e71e2a9eda1e4d77add23d88c3649f26
+msgid "If you want to use Live Migration, enable Delegation. Enable the following services of other hosts participating in Live Migration: CIFS and Microsoft Virtual System Migration Service."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2059
+# d71ba16c4ffa4178b6486c322b550c53
+msgid "Kerberos"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2061
+# 508a39fb29bc4d71b5102e437945f05d
+msgid "Enable Kerberos for Live Migration."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2063
+# 419a33d7988c41c5b9675ff28fbc4f83
+msgid "Network Access Permission for Dial-in"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2065
+# ac2e195eee054de98c1b29c3a4572263
+msgid "Allow access"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2067
+# ccb25d6540064b70906fd1068efdd8ab
+msgid "Allow access for Dial-in connections."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2070
+# a5c5c4383ba54e519a134d29069914d5
+msgid "Hyper-V Installation Steps"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2074
+# 99fb9754d8c345af83eb13fef2ad291d
+msgid "Download the operating system from `Windows Server 2012 R2 <http://technet.microsoft.com/en-us/windowsserver/hh534429>`_."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2078
+# e8f16051cb8e4e6f9930fdd8e88a5125
+msgid "Install it on the host as given in `Install and Deploy Windows Server 2012 R2 <http://technet.microsoft.com/library/hh831620>`_."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2082
+# fe9f3b143dcc4f37858c02e57756925f
+msgid "Post installation, ensure that you enable Hyper-V role in the server."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2086
+# e8768a97fb33405e9e4edadcd6473632
+msgid "If no Active Directory domain exists in your deployment, create one and add users to the domain."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2091
+# 9db1342fa13d4f0b8507c35a17a7a308
+msgid "In the Active Directory domain, ensure that all the Hyper-v hosts are added so that all the hosts are part of the domain."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2096
+# c7e961b111f74d8d9cd8bcb3c74e3ef9
+msgid "Add the domain user to the following groups on the Hyper-V host: Hyper-V Administrators and Local Administrators."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2101
+# 9df5b6c415874cb883224314c9e20535
+msgid "Installing the CloudStack Agent on a Hyper-V Host"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2103
+# 8a5b9b9c5a6749c8a37c402622c2fa74
+msgid "The Hyper-V Agent helps CloudStack perform operations on the Hyper-V hosts. This Agent communicates with the Management Server and controls all the instances on the host. Each Hyper-V host must have the Hyper-V Agent installed on it for successful interaction between the host and CloudStack. The Hyper-V Agent runs as a Windows service. Install the Agent on each host using the following steps."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2110
+# 47de8548d8d141569c4665678df1976c
+msgid "CloudStack Management Server communicates with Hyper-V Agent by using HTTPS. For secure communication between the Management Server and the host, install a self-signed certificate on port 8250."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2115
+# 16689e77021c459b9b2fb8ac046290b9
+msgid "The Agent installer automatically perform this operation. You have not selected this option during the Agent installation, it can also be done manually as given in step 1."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2119
+# 3b0ee4121a5e4bb1ac39974e02a6da46
+msgid "Create and add a self-signed SSL certificate on port 8250:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2123
+# 884ff72564e24ca5b278ddc37b37a0c5
+msgid "Create A self-signed SSL certificate:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2129
+# 4e30082071c043499c064e67980e167e
+msgid "This command creates the self-signed certificate and add that to the certificate store ``LocalMachine\\My``."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2134
+# 1b6139e4fef04fa9a4b68f34f9fb85b3
+msgid "Add the created certificate to port 8250 for https communication:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2140
+# 96581439bebc46468b7bf6846881ea0a
+msgid "Thumbprint is the thumbprint of the certificate you created."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2144
+# 47858b43d7b74ce8afa4368788b0c514
+msgid "Build the CloudStack Agent for Hyper-V as given in `Building CloudStack Hyper-V Agent <https://cwiki.apache.org/confluence/display/CLOUDSTACK/Creating+Hyperv+Agent+Installer>`__."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2150
+# 0aa2346be94a42638e7fc6ea9cdbeb91
+msgid "As an administrator, run the installer."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2154
+# 0d17e4d0f5284921b771f773cb0356fe
+msgid "Provide the Hyper-V admin credentials when prompted."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2156
+# 5d834f623db14558b8eeda52cfe973a4
+msgid "When the agent installation is finished, the agent runs as a service on the host machine."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2160
+# 31461c4200094300b939e83c48affcbf
+msgid "Physical Network Configuration for Hyper-V"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2162
+# 869e4b869e4241038151ead9ffae6ab5
+msgid "You should have a plan for how the hosts will be cabled and which physical NICs will carry what types of traffic. By default, CloudStack will use the device that is used for the default route."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2176
+# b114113246f94742ac60bd1331c5d976
+msgid "Storage Preparation for Hyper-V (Optional)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2178
+# 506240beff9d4e2d9cfa7bc22a95d5f3
+msgid "CloudStack allows administrators to set up shared Primary Storage and Secondary Storage that uses SMB."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2183
+# dd424079b5f94f9581d499ab92498b1a
+msgid "Create a SMB storage and expose it over SMB Version 3."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2185
+# 616667a633f54bcdb3ca3bc0090bf3a9
+msgid "For more information, see `Deploying Hyper-V over SMB <http://technet.microsoft.com/en-us/library/jj134187.aspx>`_."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2187
+# d1f47f8ed99f43008e763770fe26cbfb
+msgid "You can also create and export SMB share using Windows. After the Windows Server 2012 R2 installation, select File and Storage Services from Server Roles to create an SMB file share. For more information, see `Creating an SMB File Share Using Server Manager <http://technet.microsoft.com/en-us/library/jj134187.aspx#BKMK_Step3>`_."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2194
+# 719f8c1fe9e0467299d8d1cfeea8f097
+msgid "Add the SMB share to the Active Directory domain."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2196
+# 16b6241ff51c43208f9ac1cdabf59ef1
+msgid "The SMB share and the hosts managed by CloudStack need to be in the same domain. However, the storage should be accessible from the Management Server with the domain user privileges."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2202
+# 079ed026cdb94e58ba4ab2ea29fae3f7
+msgid "While adding storage to CloudStack, ensure that the correct domain, and credentials are supplied. This user should be able to access the storage from the Management Server."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2207
+# 160301917c8340169daad29cbd70f33c
+msgid "VMware vSphere Installation and Configuration"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2209
+# b11df8a743bc40e0985ade1b95bb1552
+msgid "If you want to use the VMware vSphere hypervisor to run guest virtual machines, install vSphere on the host(s) in your cloud."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2213
+# 3d9610f8babc47a180e75af13f6672b9
+msgid "System Requirements for vSphere Hosts"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2216
+# 470fc59fd16240b480948999f7843a6d
+msgid "Software requirements:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2220
+# 9183ed2e4d2a458791ebbe4949777c1e
+msgid "vSphere and vCenter, both version 4.1 or 5.0."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2222
+# 766663a5920b45398c7575a5e9e38ff6
+msgid "vSphere Standard is recommended. Note however that customers need to consider the CPU constraints in place with vSphere licensing. See `http://www.vmware.com/files/pdf/vsphere\\_pricing.pdf <http://www.vmware.com/files/pdf/vsphere_pricing.pdf>`_ and discuss with your VMware sales representative."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2227
+# f1661195861840288269ea1202e9b89e
+msgid "vCenter Server Standard is recommended."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2231
+# 285b4b4fca1a4889a32a95763f40cbe3
+msgid "Be sure all the hotfixes provided by the hypervisor vendor are applied. Track the release of hypervisor patches through your hypervisor vendor's support channel, and apply patches as soon as possible after they are released. CloudStack will not track or notify you of required hypervisor patches. It is essential that your hosts are completely up to date with the provided hypervisor patches. The hypervisor vendor is likely to refuse to support any system that is not up to date with patches."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2240
+# fea907bc006c4462af1e5c66fff27418
+msgid "Apply All Necessary Hotfixes. The lack of up-do-date hotfixes can lead to data corruption and lost VMs."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2243
+# 0e3d7163cdaa45efb1a1de9c1d840c70
+msgid "Hardware requirements:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2247
+# c2829bd33bf44fcb92b5e6aeca93fe3d
+msgid "The host must be certified as compatible with vSphere. See the VMware Hardware Compatibility Guide at `http://www.vmware.com/resources/compatibility/search.php <http://www.vmware.com/resources/compatibility/search.php>`_."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2253
+# 90885bc4493d423b802629ca42671470
+msgid "All hosts must be 64-bit and must support HVM (Intel-VT or AMD-V enabled)."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2258
+# 444698b909b14c1bafa79d28ca6d0e0c
+msgid "All hosts within a cluster must be homogenous. That means the CPUs must be of the same type, count, and feature flags."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2286
+# 026389f5c21248f094a1988283f9ceaa
+msgid "vCenter Server requirements:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2290
+# 898e1faee1144e9b8fb1ae76627f710a
+msgid "Processor - 2 CPUs 2.0GHz or higher Intel or AMD x86 processors. Processor requirements may be higher if the database runs on the same machine."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2296
+# b912675600f2430a96805b275c1f1569
+msgid "Memory - 3GB RAM. RAM requirements may be higher if your database runs on the same machine."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2301
+# ff655342fa17404384b080f9a3991839
+msgid "Disk storage - 2GB. Disk requirements may be higher if your database runs on the same machine."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2306
+# 34c75fcd20d44f5ab2bfaa95be9c7646
+msgid "Microsoft SQL Server 2005 Express disk requirements. The bundled database requires up to 2GB free disk space to decompress the installation archive."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2312
+# 0699f7fd865549849d921d930b9fa7ea
+msgid "Networking - 1Gbit or 10Gbit."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2314
+# cef076dcedee4a24b9b3ec51ef9ee68f
+msgid "For more information, see `\"vCenter Server and the vSphere Client Hardware Requirements\" <http://pubs.vmware.com/vsp40/wwhelp/wwhimpl/js/html/wwhelp.htm#href=install/c_vc_hw.html>`_."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2317
+# 66ca94319c714dc4a9216ea740c56b40
+msgid "Other requirements:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2321
+# c76079dbdb8c48af90c236f2d0baa787
+msgid "VMware vCenter Standard Edition 4.1 or 5.0 must be installed and available to manage the vSphere hosts."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2326
+# 07375471238a4fa0a0f29e14060188ab
+msgid "vCenter must be configured to use the standard port 443 so that it can communicate with the CloudStack Management Server."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2331
+# fa50c73129ea428e839debdffdc10099
+msgid "You must re-install VMware ESXi if you are going to re-use a host from a previous install."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2336
+# 5d54cd6b7cda47869cebff7b876565d1
+msgid "CloudStack requires VMware vSphere 4.1 or 5.0. VMware vSphere 4.0 is not supported."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2341
+# 15bdac339f71483d96232a6684a05f38
+msgid "All hosts must be 64-bit and must support HVM (Intel-VT or AMD-V enabled). All hosts within a cluster must be homogeneous. That means the CPUs must be of the same type, count, and feature flags."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2347
+# 3320ef7bcf874235ad145cfe38f4f21d
+msgid "The CloudStack management network must not be configured as a separate virtual network. The CloudStack management network is the same as the vCenter management network, and will inherit its configuration. See :ref:`configure-vcenter-management-network`."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2354
+# b7b26fdba3ba429a9b554e95c7aea05a
+msgid "CloudStack requires ESXi. ESX is not supported."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2358
+# 807a6a01a8cb40bb9ddafcf3d4f6e055
+msgid "All resources used for CloudStack must be used for CloudStack only. CloudStack cannot share instance of ESXi or storage with other management consoles. Do not share the same storage volumes that will be used by CloudStack with a different set of ESXi servers that are not managed by CloudStack."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2366
+# 76ba09bd8f5d4ab69dfa682a87e2f2e7
+msgid "Put all target ESXi hypervisors in a cluster in a separate Datacenter in vCenter."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2371
+# 57a49ec20ce243989933f66ba4d87eed
+msgid "The cluster that will be managed by CloudStack should not contain any VMs. Do not run the management server, vCenter or any other VMs on the cluster that is designated for CloudStack use. Create a separate cluster for use of CloudStack and make sure that they are no VMs in this cluster."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2379
+# 6fd4edef52d2463fa27009ad3626e5fa
+msgid "All the required VLANS must be trunked into all network switches that are connected to the ESXi hypervisor hosts. These would include the VLANS for Management, Storage, vMotion, and guest VLANs. The guest VLAN (used in Advanced Networking; see Network Setup) is a contiguous range of VLANs that will be managed by CloudStack."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2386
+# 5b9b5d9bb49f48c790d3d7975da36b97
+msgid "Preparation Checklist for VMware"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2393
+# 874ada2598f94f90bbb7ea1051a0fc8e
+msgid "Information listed in :ref:`vcenter-checklist`"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2397
+# c8657d9c46a84e94b59a49ebfeceb4cd
+msgid "Information listed in :ref:`networking-checklist-for-vmware`"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2402
+# d25566ef8de84fd9ba474e9c493effb9
+msgid "vCenter Checklist"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2404
+# d47240a593424a1cb059bcc359843fb6
+msgid "You will need the following information about vCenter."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2407
+# ad424c3b64d84058957622e7ccb34e2f
+msgid "vCenter Requirement"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2407
+#: ../../hypervisor_installation.rst:2423
+#: ../../hypervisor_installation.rst:2715
+# aa42ada253634235831462bb3b3a5a5a
+# 6971b4e11acf438191565fdff1f8ce8d
+# bc087c8de60d40f191079b58516386bc
+msgid "Notes"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2409
+# 3615f6d25ad94970828a9bf159bc7a33
+msgid "vCenter User"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2409
+# 9c1c7400557045389a7acb14690f4c62
+msgid "This user must have admin privileges."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2410
+# 7bf8f233cd574453b441875c1fbc344e
+msgid "vCenter User Password"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2410
+# 936bd3768ff3435cb10fa077957eb873
+msgid "Password for the above user."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2411
+# 6fe51d4e1ca14592b03fcae9bf28db36
+msgid "vCenter Datacenter Name"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2411
+# e32c306acc384d02b3d67c109698f082
+msgid "Name of the datacenter."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2412
+# 50068ce776c541ca8a56a9a1475d34ec
+msgid "vCenter Cluster Name"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2412
+# a6bf766a42e04a9185b699474ee058d3
+msgid "Name of the cluster."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2418
+# 8956e9c5f49e48da99562ae0cf8b5697
+msgid "Networking Checklist for VMware"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2420
+# 56e3476f8f4e40fa97acfa540fa0a79a
+msgid "You will need the following information about VLAN."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2423
+# 9cc0357ae70f44829be639ba80443de3
+msgid "VLAN Information"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2425
+# f08b03cbe30347b4bc3ea89dfa2faca6
+msgid "ESXi VLAN"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2425
+# 18957fe16bfc40a18dfba9f47792be6b
+msgid "VLAN on which all your ESXi hypervisors reside."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2426
+# a5c6d87944d44ba8abb37262b7ac9ae1
+msgid "ESXI VLAN IP Address"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2426
+# 3c0852bce08f43928a28be17866c883b
+msgid "IP Address Range in the ESXi VLAN. One address per Virtual Router is used from this range."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2427
+# 788afe1854b74f6480fb9dcb08317b37
+msgid "ESXi VLAN IP Gateway"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2428
+# bacedb178b3f4b95a2644000683e5540
+msgid "ESXi VLAN Netmask"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2429
+# 4d4785e85cef4d06b971d1c0d7e275ad
+msgid "Management Server VLAN"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2429
+# 01e4e85ca9534e50803fe477a0556770
+msgid "VLAN on which the CloudStack Management server is installed."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2430
+# a6572d2d1cc14b38a161ef09f9ba2e72
+msgid "Public VLAN"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2430
+# 0c60da1f668640db9432f89beeebcfdc
+msgid "VLAN for the Public Network."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2431
+# 4525e1b8f6f141ae8d9225392c099184
+msgid "Public VLAN Gateway"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2432
+# 32104578607045e38f78075c77df1e63
+msgid "Public VLAN Netmask"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2433
+# 57123c0a394241c6a639de412ffb9b8f
+msgid "Public VLAN IP Address Range"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2433
+# 932e6245886a44928cf95b929f3e6735
+msgid "Range of Public IP Addresses available for CloudStack use. These addresses will be used for virtual router on CloudStack to route private traffic to external networks."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2436
+# 0200790a79464d739ec724252e076ed3
+msgid "VLAN Range for Customer use"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2436
+# 15e968a010ac44c5ae838310d7b27d7e
+msgid "A contiguous range of non-routable VLANs. One VLAN will be assigned for each customer."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2442
+# bce73cc0c26e46fdb3ad7c900ead3c2e
+msgid "vSphere Installation Steps"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2446
+# 08bd5d58d94f4362976973d3b3c71f1a
+msgid "If you haven't already, you'll need to download and purchase vSphere from the VMware Website (`https://www.vmware.com/tryvmware/index.php?p=vmware-vsphere&lp=1 <https://www.vmware.com/tryvmware/index.php?p=vmware-vsphere&lp=1>`_) and install it by following the VMware vSphere Installation Guide."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2453
+# 2ef333c7f2f54869bbd02d3235194cec
+msgid "Following installation, perform the following configuration, which are described in the next few sections:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2457
+# d396f645a258483aa100dd126802bed6
+msgid "Required"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2457
+# 3a47305e100d4c5ab944fb0fb97c58d3
+msgid "Optional"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2459
+# 99ddd825c54741ec930bc538c64459f0
+msgid "ESXi host setup"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2459
+# 32420a57854f4107b19dc23c22c16b51
+msgid "NIC bonding"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2460
+# 88aad3fa642f4dc29607367b57b8c766
+msgid "Configure host physical networking,virtual switch, vCenter Management Network, and extended port range"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2460
+# 5406679428f94ce0b5ef1336e5ce693a
+msgid "Multipath storage"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2461
+# 7a4bde3b86a141e5bcd9b6627e56b47a
+msgid "Prepare storage for iSCSI"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2462
+# a4f0a1b396ad4b818fcb8fae9d2a3845
+msgid "Configure clusters in vCenter and add hosts to them, or add hosts without clusters to vCenter"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2466
+# 66a1da1529c64722bbe6a32e6a09b81e
+msgid "ESXi Host setup"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2468
+# d2206ae8b8b0405a82421a944b690f6f
+msgid "All ESXi hosts should enable CPU hardware virtualization support in BIOS. Please note hardware virtualization support is not enabled by default on most servers."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2473
+# 823edf72601b46f9b41f1f0331025b0e
+msgid "Physical Host Networking"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2475
+# 65fdae591c2a496aaf6f4432c910b4e6
+msgid "You should have a plan for cabling the vSphere hosts. Proper network configuration is required before adding a vSphere host to CloudStack. To configure an ESXi host, you can use vClient to add it as standalone host to vCenter first. Once you see the host appearing in the vCenter inventory tree, click the host node in the inventory tree, and navigate to the Configuration tab."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2482
+# 08dd99eb935744d5a55a302fd892936d
+msgid "|vspherephysicalnetwork.png: vSphere client|"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2484
+# e80e2656108441bcbec60c3069da6b89
+msgid "In the host configuration tab, click the \"Hardware/Networking\" link to bring up the networking configuration page as above."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2488
+# 3b5704fb76c04adf9b622f63103e009a
+msgid "Configure Virtual Switch"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2490
+# d08703f6feb244bd95ae9b14321f374a
+msgid "A default virtual switch vSwitch0 is created. CloudStack requires all ESXi hosts in the cloud to use the same set of virtual switch names. If you change the default virtual switch name, you will need to configure one or more CloudStack configuration variables as well."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2496
+# 2a8a290d8bc24c6e9efe5ebf03605fe1
+msgid "Separating Traffic"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2498
+# 81f6d7108ad046f58db096bb486a7c45
+msgid "CloudStack allows you to use vCenter to configure three separate networks per ESXi host. These networks are identified by the name of the vSwitch they are connected to. The allowed networks for configuration are public (for traffic to/from the public internet), guest (for guest-guest traffic), and private (for management and usually storage traffic). You can use the default virtual switch for all three, or create one or two other vSwitches for those traffic types."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2506
+# e01fb6b864ae4591a6040e3227eb3981
+msgid "If you want to separate traffic in this way you should first create and configure vSwitches in vCenter according to the vCenter instructions. Take note of the vSwitch names you have used for each traffic type. You will configure CloudStack to use these vSwitches."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2512
+# c101a9ffcc8a41ed9d941197df3790d6
+msgid "Increasing Ports"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2514
+# 67408afd6515434a8dc9b58d7b1096c2
+msgid "By default a virtual switch on ESXi hosts is created with 56 ports. We recommend setting it to 4088, the maximum number of ports allowed. To do that, click the \"Properties...\" link for virtual switch (note this is not the Properties link for Networking)."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2519
+# 91a0ee49c11047d69398dc65246ee508
+msgid "|vsphereincreaseports.png: vSphere client|"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2521
+# 1b199b2c7fb64a27867df7bf2aa8ae31
+msgid "In vSwitch properties dialog, select the vSwitch and click Edit. You should see the following dialog:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2524
+# 1553cfe713e84e788e2d8d9138ddc93c
+msgid "|vspherevswitchproperties.png: vSphere client|"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2526
+# 30c0ae1e71ec432faf1aa6694a4de217
+msgid "In this dialog, you can change the number of switch ports. After you've done that, ESXi hosts are required to reboot in order for the setting to take effect."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2533
+# 0ea01f09979f42be9b806229aa47d2c4
+msgid "Configure vCenter Management Network"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2535
+# 116d1ea7700444689448850f261cfded
+msgid "In the vSwitch properties dialog box, you may see a vCenter management network. This same network will also be used as the CloudStack management network. CloudStack requires the vCenter management network to be configured properly. Select the management network item in the dialog, then click Edit."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2541
+# 7ff1766a196f4699991eda06e976010c
+msgid "|vspheremgtnetwork.png: vSphere client|"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2543
+# bac7d94e1edb4ea5806db13d09308ac2
+msgid "Make sure the following values are set:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2547
+# af96ead47c0044bab364251d55a3b39e
+msgid "VLAN ID set to the desired ID"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2551
+# 1d8c4f1ed0514af0a756aec83a565956
+msgid "vMotion enabled."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2555
+# 4d00a385859641e4917ec59ea57048fd
+msgid "Management traffic enabled."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2557
+# 66d1840538c14c96b4d59ff3e61e856a
+msgid "If the ESXi hosts have multiple VMKernel ports, and ESXi is not using the default value \"Management Network\" as the management network name, you must follow these guidelines to configure the management network port group so that CloudStack can find it:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2564
+# fc2b617df8894bd39a8f053b76a2c07c
+msgid "Use one label for the management network port across all ESXi hosts."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2568
+# fd1df578b83c4074ac776d883517aacb
+msgid "In the CloudStack UI, go to Configuration - Global Settings and set vmware.management.portgroup to the management network label from the ESXi hosts."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2573
+# 81513937dabd42b49f17e4ed85786228
+msgid "Extend Port Range for CloudStack Console Proxy"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2575
+# 1a1fc60e2c5144a7ba1e80d0b9efb926
+msgid "(Applies only to VMware vSphere version 4.x)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2577
+# 53fef3ce43cd4997b29df5bdb6832385
+msgid "You need to extend the range of firewall ports that the console proxy works with on the hosts. This is to enable the console proxy to work with VMware-based VMs. The default additional port range is 59000-60000. To extend the port range, log in to the VMware ESX service console on each host and run the following commands:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2589
+# afe1b7c25f5f4cc3946340f3837f839d
+msgid "Configure NIC Bonding for vSphere"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2591
+# 5c37fa38c442475bace70197c0dd9b82
+msgid "NIC bonding on vSphere hosts may be done according to the vSphere installation guide."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2595
+# 5d2db778b8a94adab782e09977ec5ecd
+msgid "Configuring a vSphere Cluster with Nexus 1000v Virtual Switch"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2597
+# f36bc73d81314d9f8325fc0986b97ed1
+msgid "CloudStack supports Cisco Nexus 1000v dvSwitch (Distributed Virtual Switch) for virtual network configuration in a VMware vSphere environment. This section helps you configure a vSphere cluster with Nexus 1000v virtual switch in a VMware vCenter environment. For information on creating a vSphere cluster, see `\"VMware vSphere Installation and Configuration\" <#vmware-vsphere-installation-and-configuration>`_"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2605
+# 8cd1db7c783547a2a369cc85671b0ba0
+msgid "About Cisco Nexus 1000v Distributed Virtual Switch"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2607
+# 947f78705b1647ff8b04e6efaafcc588
+msgid "The Cisco Nexus 1000V virtual switch is a software-based virtual machine access switch for VMware vSphere environments. It can span multiple hosts running VMware ESXi 4.0 and later. A Nexus virtual switch consists of two components: the Virtual Supervisor Module (VSM) and the Virtual Ethernet Module (VEM). The VSM is a virtual appliance that acts as the switch's supervisor. It controls multiple VEMs as a single network device. The VSM is installed independent of the VEM and is deployed in redundancy mode as pairs or as a standalone appliance. The VEM is installed on each VMware ESXi server to provide packet-forwarding capability. It provides each virtual machine with dedicated switch ports. This VSM-VEM architecture is analogous to a physical Cisco switch's supervisor (standalone or configured in high-availability mode) and multiple linecards architecture."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2621
+# 16d69055a2814aa2b3f82537e3376cbf
+msgid "Nexus 1000v switch uses vEthernet port profiles to simplify network provisioning for virtual machines. There are two types of port profiles: Ethernet port profile and vEthernet port profile. The Ethernet port profile is applied to the physical uplink ports-the NIC ports of the physical NIC adapter on an ESXi server. The vEthernet port profile is associated with the virtual NIC (vNIC) that is plumbed on a guest VM on the ESXi server. The port profiles help the network administrators define network policies which can be reused for new virtual machines. The Ethernet port profiles are created on the VSM and are represented as port groups on the vCenter server."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2633
+#: ../../hypervisor_installation.rst:2973
+# 009d2fffa5a74d6e8aae5724bc65a70b
+# 91b00accca5d4628b0755e4faa99f297
+msgid "Prerequisites and Guidelines"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2635
+# ce47ce0ab3f14e90b733df2c0ccf976c
+msgid "This section discusses prerequisites and guidelines for using Nexus virtual switch in CloudStack. Before configuring Nexus virtual switch, ensure that your system meets the following requirements:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2641
+# 388fab6909d346c29c55cf3802467fdd
+msgid "A cluster of servers (ESXi 4.1 or later) is configured in the vCenter."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2646
+# bb51ba76272e459b82769c8b10669f33
+msgid "Each cluster managed by CloudStack is the only cluster in its vCenter datacenter."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2651
+# ceb54b37abe64691b732b2f56ab9ab63
+msgid "A Cisco Nexus 1000v virtual switch is installed to serve the datacenter that contains the vCenter cluster. This ensures that CloudStack doesn't have to deal with dynamic migration of virtual adapters or networks across other existing virtual switches. See `Cisco Nexus 1000V Installation and Upgrade Guide <http://www.cisco.com/en/US/docs/switches/datacenter/nexus1000/sw/4_2_1_s_v_1_5_1/install_upgrade/vsm_vem/guide/n1000v_installupgrade.html>`_ for guidelines on how to install the Nexus 1000v VSM and VEM modules."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2661
+# c4b648c345f24f0d93caa617a1e02bf2
+msgid "The Nexus 1000v VSM is not deployed on a vSphere host that is managed by CloudStack."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2666
+# 9af74a7957b14acf9dea9343a65d4943
+msgid "When the maximum number of VEM modules per VSM instance is reached, an additional VSM instance is created before introducing any more ESXi hosts. The limit is 64 VEM modules for each VSM instance."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2672
+# 39bd095c73454da08cce69cebec4758c
+msgid "CloudStack expects that the Management Network of the ESXi host is configured on the standard vSwitch and searches for it in the standard vSwitch. Therefore, ensure that you do not migrate the management network to Nexus 1000v virtual switch during configuration."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2680
+# caeae4aefa224fe2946967d990a1f653
+msgid "All information given in :ref:`nexus-vswift-preconf`"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2685
+# 079c03e1a1c44b2585e0589bc13ec419
+msgid "Nexus 1000v Virtual Switch Preconfiguration"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2688
+#: ../../hypervisor_installation.rst:3004
+# 441a8321399140988319b96b0ed4a8d3
+# e1e5b967f4b4437dbb584f3d5bb2d0d2
+msgid "Preparation Checklist"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2690
+# a96df263b385459a91eba41537978fec
+msgid "For a smoother configuration of Nexus 1000v switch, gather the following information before you start:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2695
+# 031db7ac24b54428a167d5b7a115d517
+msgid "vCenter credentials"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2699
+# fe90f49382904b8aa51038d5a04a39b7
+msgid "Nexus 1000v VSM IP address"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2703
+# fe0fcf8dfab84007a11117c9ecd6935d
+msgid "Nexus 1000v VSM Credentials"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2707
+# 8cc68bc6d66a435ca7b8ad006683ddb8
+msgid "Ethernet port profile names"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2710
+# 1f929872354448a28565fcce6d00abc7
+msgid "vCenter Credentials Checklist"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2712
+# 8bb7ea505c874ab7b4c1866085d8e700
+msgid "You will need the following information about vCenter:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2715
+# f9ed8bcf6a9f4377b0199b7c80d0bcb5
+msgid "Nexus vSwitch Requirements"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2717
+# c7823fb897be48eea6800becf44337e5
+msgid "vCenter IP"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2717
+# e823090f879940bea3b4b84e7e3ee726
+msgid "The IP address of the vCenter."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2718
+# f0ef18ebb58145568d1a700d6e00b9ef
+msgid "Secure HTTP Port Number"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2718
+# c50252838678465788afb4692dec2d53
+msgid "443"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2718
+# 7a4f9f24e38c433697be3155d918783c
+msgid "Port 443 is configured by default; however, you can change the port if needed."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2719
+# f9b688a1b9244b69a767dc296906d23d
+msgid "vCenter User ID"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2719
+# 5e8d79b6521145388c4acb0517d5b88b
+msgid "The vCenter user with administrator-level privileges. The vCenter User ID is required when you configure the virtual switch in CloudStack."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2721
+#: ../../hypervisor_installation.rst:2905
+#: ../../hypervisor_installation.rst:3145
+# b881179cb7264cc7abb9f35738264468
+# 6a7716e4718d42a8aa250d486b60691f
+# cbc788e4d5b24d609a80d80085a406e1
+msgid "vCenter Password"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2721
+# 77b0f1f8ba5c480688d7a4645318e29d
+msgid "The password for the vCenter user specified above. The password for this vCenter user is required when you configure the switch in CloudStack."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2727
+# 8adc4bbec2994f9daf8ad28a283f8f22
+msgid "Network Configuration Checklist"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2729
+# 723fe067d062435dae8004f1fb6111f0
+msgid "The following information specified in the Nexus Configure Networking screen is displayed in the Details tab of the Nexus dvSwitch in the CloudStack UI:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2734
+# 98f99df6ba884d35a1903c0020ff3cf4
+msgid "**Control Port Group VLAN ID**"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2734
+# 18759fe2370349c88c9b9eca286d6597
+msgid "The VLAN ID of the Control Port Group. The control VLAN is used for communication between the VSM and the VEMs."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2737
+# c573b97a9ef44290a7ed29c338f0b166
+msgid "**Management Port Group VLAN ID**"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2737
+# 89706bc807174ca68e67f578f1665a75
+msgid "The VLAN ID of the Management Port Group. The management VLAN corresponds to the mgmt0 interface that is used to establish and maintain the connection between the VSM and VMware vCenter Server."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2740
+# 05d78f3b91a54226ae7d80ad9b32e5f2
+msgid "**Packet Port Group VLAN ID**"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2740
+# efdbd0ef1fcc42379e1eeecc7403ee3c
+msgid "The VLAN ID of the Packet Port Group. The packet VLAN forwards relevant data packets from the VEMs to the VSM."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2742
+# 15475826735146f0abd95387015ba490
+msgid "The VLANs used for control, packet, and management port groups can be the same."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2744
+# e340a47da8624b4b883780b3d2a5a9d9
+msgid "For more information, see `Cisco Nexus 1000V Getting Started Guide <http://www.cisco.com/en/US/docs/switches/datacenter/nexus1000/sw/4_2_1_s_v_1_4_b/getting_started/configuration/guide/n1000v_gsg.pdf>`_."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2747
+# da3e2e028d7c450a901bf4831cc1d365
+msgid "VSM Configuration Checklist"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2749
+# 587a4baf238946f48ee6e7bd04fd1b07
+msgid "You will need the following VSM configuration parameters:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2751
+# 5256914261474454b2f9537dd4f2be04
+msgid "**Admin Name and Password**"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2752
+# 4fc4d247bb37403eb2789f39d793866b
+msgid "The admin name and password to connect to the VSM appliance. You must specify these credentials while configuring Nexus virtual switch."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2753
+# 5e96418f205547fb8d770ccb7168d497
+msgid "**Management IP Address**"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2754
+# 7febd6557b3742e9a3d478672eba6cad
+msgid "This is the IP address of the VSM appliance. This is the IP address you specify in the virtual switch IP Address field while configuting Nexus virtual switch."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2758
+# 2cd219755aca4177a241670f4b4b7872
+msgid "**SSL**"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2756
+# cab1502c5d5d4221873f13e86168b3d3
+msgid "Should be set to Enable.Always enable SSL. SSH is usually enabled by default during the VSM installation. However, check whether the SSH connection to the VSM is working, without which CloudStack failes to connect to the VSM."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2761
+# 747a5560bbed48598ec8fb9ad2739dde
+msgid "Creating a Port Profile"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2765
+# 915567df98f3440f9c869a266292bebf
+msgid "Whether you create a Basic or Advanced zone configuration, ensure that you always create an Ethernet port profile on the VSM after you install it and before you create the zone."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2771
+# f27be294146746dd92354b86a70b9a34
+msgid "The Ethernet port profile created to represent the physical network or networks used by an Advanced zone configuration trunk all the VLANs including guest VLANs, the VLANs that serve the native VLAN, and the packet/control/data/management VLANs of the VSM."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2779
+# 14dcf98b714a4de493d3bd65c53e07b5
+msgid "The Ethernet port profile created for a Basic zone configuration does not trunk the guest VLANs because the guest VMs do not get their own VLANs provisioned on their network interfaces in a Basic zone."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2786
+# acc04f3bc9a547b0919324a8ed1430d4
+msgid "An Ethernet port profile configured on the Nexus 1000v virtual switch should not use in its set of system VLANs, or any of the VLANs configured or intended to be configured for use towards VMs or VM resources in the CloudStack environment."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2793
+# ddaca8ac1441456ebd7e21dcc838b22c
+msgid "You do not have to create any vEthernet port profiles – CloudStack does that during VM deployment."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2798
+# 380f259b08904003bff09f8cbc797634
+msgid "Ensure that you create required port profiles to be used by CloudStack for different traffic types of CloudStack, such as Management traffic, Guest traffic, Storage traffic, and Public traffic. The physical networks configured during zone creation should have a one-to-one relation with the Ethernet port profiles."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2804
+# a082dd98813f48b293e64d2a86f4c8a9
+msgid "|vmwarenexusportprofile.png: vSphere client|"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2806
+# f47a376ee3134e19a877759d2cddeec3
+msgid "For information on creating a port profile, see `Cisco Nexus 1000V Port Profile Configuration Guide <http://www.cisco.com/en/US/docs/switches/datacenter/nexus1000/sw/4_2_1_s_v_1_4_a/port_profile/configuration/guide/n1000v_port_profile.html>`_."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2811
+# 7150678d8ad84958ad15325b7e295635
+msgid "Assigning Physical NIC Adapters"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2813
+# 0fcc662360f24246aa89af9504290713
+msgid "Assign ESXi host's physical NIC adapters, which correspond to each physical network, to the port profiles. In each ESXi host that is part of the vCenter cluster, observe the physical networks assigned to each port profile and note down the names of the port profile for future use. This mapping information helps you when configuring physical networks during the zone configuration on CloudStack. These Ethernet port profile names are later specified as VMware Traffic Labels for different traffic types when configuring physical networks during the zone configuration. For more information on configuring physical networks, see `\"Configuring a vSphere Cluster with Nexus 1000v Virtual Switch\" <#configuring-a-vsphere-cluster-with-nexus-1000v-virtual-switch>`_."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2825
+# bfdb4a3f2d1d498e8ea20b009ae3b41f
+msgid "Adding VLAN Ranges"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2827
+# ab086d39a6454950a4c821d832b8d0a6
+msgid "Determine the public VLAN, System VLAN, and Guest VLANs to be used by the CloudStack. Ensure that you add them to the port profile database. Corresponding to each physical network, add the VLAN range to port profiles. In the VSM command prompt, run the switchport trunk allowed vlan<range> command to add the VLAN ranges to the port profile."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2833
+#: ../../hypervisor_installation.rst:2846
+# 829a113f6355423c978bf7cca25f0a01
+# f2317ad7ae7148679ecc16cb7353da3b
+msgid "For example:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2839
+# 04401fdeab2f4ee4a97429af971bbd04
+msgid "In this example, the allowed VLANs added are 1, 140-147, and 196-203"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2841
+# c9d7e8243d494833b060ec436ef511f7
+msgid "You must also add all the public and private VLANs or VLAN ranges to the switch. This range is the VLAN range you specify in your zone."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2844
+# 963d8b9051d24f069022dea1d22daf9e
+msgid "Before you run the vlan command, ensure that the configuration mode is enabled in Nexus 1000v virtual switch."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2848
+# 51f537d407aa4bfa944be0d00b48f772
+msgid "If you want the VLAN 200 to be used on the switch, run the following command:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2855
+# cac6cabf1e994fea9fcc690bb4cb85d8
+msgid "If you want the VLAN range 1350-1750 to be used on the switch, run the following command:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2862
+# 2c87fe767ced4157a5a91a878982cd3b
+msgid "Refer to Cisco Nexus 1000V Command Reference of specific product version."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2866
+# e20558d2c83e4921a2ae5a4942fbf6a4
+msgid "Enabling Nexus Virtual Switch in CloudStack"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2868
+# 2f23da65b54842d7a760a7cb75dc5384
+msgid "To make a CloudStack deployment Nexus enabled, you must set the vmware.use.nexus.vswitch parameter true by using the Global Settings page in the CloudStack UI. Unless this parameter is set to \"true\" and restart the management server, you cannot see any UI options specific to Nexus virtual switch, and CloudStack ignores the Nexus virtual switch specific parameters specified in the AddTrafficTypeCmd, UpdateTrafficTypeCmd, and AddClusterCmd API calls."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2876
+# 2a1bbcac40824582944f6987b96e18bd
+msgid "Unless the CloudStack global parameter \"vmware.use.nexus.vswitch\" is set to \"true\", CloudStack by default uses VMware standard vSwitch for virtual network infrastructure. In this release, CloudStack doesn’t support configuring virtual networks in a deployment with a mix of standard vSwitch and Nexus 1000v virtual switch. The deployment can have either standard vSwitch or Nexus 1000v virtual switch."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2884
+# b01aa0230c104b8dbc702f5106681b86
+msgid "Configuring Nexus 1000v Virtual Switch in CloudStack"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2886
+# 55b47a1924834ab9bcf05fc1d5f2830f
+msgid "You can configure Nexus dvSwitch by adding the necessary resources while the zone is being created."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2889
+# ab30cc7f205a4b968f9d107cb9e536fc
+msgid "|vmwarenexusaddcluster.png: vmware nexus add cluster|"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2891
+# 3a6d505f9c0e4e06ad20d61688e9d360
+msgid "After the zone is created, if you want to create an additional cluster along with Nexus 1000v virtual switch in the existing zone, use the Add Cluster option. For information on creating a cluster, see `\"Add Cluster: vSphere\" <configuration.html#add-cluster-vsphere>`_."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2896
+# ea487fd695374472b3cc28afaf8b7935
+msgid "In both these cases, you must specify the following parameters to configure Nexus virtual switch:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2900
+# 2f10aacae6b943778d44f84d722c4c40
+msgid "Parameters"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2902
+#: ../../hypervisor_installation.rst:3142
+# 954a0fcef76244e59ff7157df2ce9236
+# 6c098c5af55c4ef2832ddb1ea22a7756
+msgid "Cluster Name"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2902
+# cba6000d144e4dec8b5a6d503214b04e
+msgid "Enter the name of the cluster you created in vCenter. For example,\"cloud.cluster\"."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2903
+#: ../../hypervisor_installation.rst:3143
+# 5a2734feab1d4c3899f219dc7e0bc047
+# cb1115f5a4e6459f9d59941f73399499
+msgid "vCenter Host"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2903
+# a270577295e947aeb4f510cc1671250b
+msgid "Enter the host name or the IP address of the vCenter host where you have deployed the Nexus virtual switch."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2904
+#: ../../hypervisor_installation.rst:3144
+# 43b78f2519cd43a592186b681bbd758a
+# aca846fafd164bbfafb28f1bc1d23abd
+msgid "vCenter User name"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2904
+#: ../../hypervisor_installation.rst:3144
+# 7a017d72974241b181fa5e3cded99ba7
+# ff313f1172d84c6fb6ecc0ba3c6c01ca
+msgid "Enter the username that CloudStack should use to connect to vCenter. This user must have all administrative privileges."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2905
+#: ../../hypervisor_installation.rst:3145
+# fb40ce7817f34578a3644c0af373813e
+# ba61f2c3473c412c95dbaa2f80ece441
+msgid "Enter the password for the user named above."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2906
+#: ../../hypervisor_installation.rst:3146
+# ab8a34c645a042d69e48fc3f7dc9bd46
+# e15b104af30843118d478ff6a77775a8
+msgid "vCenter Datacenter"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2906
+# d5b61a5f9b5a4a35a74aee094bd31df8
+msgid "Enter the vCenter datacenter that the cluster is in. For example, \"cloud.dc.VM\"."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2907
+# dafa148e3c364171aa16aebbd2a377d6
+msgid "Nexus dvSwitch IP Address"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2907
+# 1f7fcac4b6f54bb9988b6c7b28d765ac
+msgid "The IP address of the VSM component of the Nexus 1000v virtual switch."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2908
+# 00db776b96ea48e0a3eb5546f466392d
+msgid "Nexus dvSwitch Username"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2908
+# 42df2254c26a49ed9a0b25aadf0ace64
+msgid "The admin name to connect to the VSM appliance."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2909
+# ae881d805b02440bab9e62dcf0a807d8
+msgid "Nexus dvSwitch Password"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2909
+# fd192f54264b48918f39207ffb2da278
+msgid "The corresponding password for the admin user specified above."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2914
+# a1357edc605446acb820b979fb132d55
+msgid "Removing Nexus Virtual Switch"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2918
+# 09e2100542c640edbdf96af9d9029316
+msgid "In the vCenter datacenter that is served by the Nexus virtual switch, ensure that you delete all the hosts in the corresponding cluster."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2923
+# 141ee7173de14b2da44ea1708fa069f9
+msgid "Log in with Admin permissions to the CloudStack administrator UI."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2927
+# 7eee8789554c4d4393308c741352fa3f
+msgid "In the left navigation bar, select Infrastructure."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2931
+# 89db573e47724516be8db76bc1b1164d
+msgid "In the Infrastructure page, click View all under Clusters."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2935
+# fb174283e4aa42b08b34858e58f6e083
+msgid "Select the cluster where you want to remove the virtual switch."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2939
+# 527fc95732794445bdd79834dcb5a64c
+msgid "In the dvSwitch tab, click the name of the virtual switch."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2943
+# fecadbb783ed4a7fb44b7fefef7c8c51
+msgid "In the Details page, click Delete Nexus dvSwitch icon. |DeleteButton.png: button to delete dvSwitch|"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2946
+# 3110096d69604bf2a4f702eb6e1756bb
+msgid "Click Yes in the confirmation dialog box."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2949
+# 48610fff03ad42cb851d18020b200ba2
+msgid "Configuring a VMware Datacenter with VMware Distributed Virtual Switch"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2951
+# b31d6d27a7d849239fde0b1173228bf4
+msgid "CloudStack supports VMware vNetwork Distributed Switch (VDS) for virtual network configuration in a VMware vSphere environment. This section helps you configure VMware VDS in a CloudStack deployment. Each vCenter server instance can support up to 128 VDS instances and each VDS instance can manage up to 500 VMware hosts."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2958
+# be70e6f87324407c9bf757efec52fa28
+msgid "About VMware Distributed Virtual Switch"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2960
+# 9e77fcbc39f04ef98d83c991e2f6fe29
+msgid "VMware VDS is an aggregation of host-level virtual switches on a VMware vCenter server. VDS abstracts the configuration of individual virtual switches that span across a large number of hosts, and enables centralized provisioning, administration, and monitoring for your entire datacenter from a centralized interface. In effect, a VDS acts as a single virtual switch at the datacenter level and manages networking for a number of hosts in a datacenter from a centralized VMware vCenter server. Each VDS maintains network runtime state for VMs as they move across multiple hosts, enabling inline monitoring and centralized firewall services. A VDS can be deployed with or without Virtual Standard Switch and a Nexus 1000V virtual switch."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2977
+# 365a2690501340d78bc366fad0eaac7f
+msgid "VMware VDS is supported only on Public and Guest traffic in CloudStack."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2982
+# db4195c57675402cbf5f2b8cfbf5a452
+msgid "VMware VDS does not support multiple VDS per traffic type. If a user has many VDS switches, only one can be used for Guest traffic and another one for Public traffic."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2988
+# 7ddee82f457e4e40972b79a0f45b6dfc
+msgid "Additional switches of any type can be added for each cluster in the same zone. While adding the clusters with different switch type, traffic labels is overridden at the cluster level."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2994
+# d5aec4e86dcd42178120945c7ffb2ffb
+msgid "Management and Storage network does not support VDS. Therefore, use Standard Switch for these networks."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:2999
+# e246769436bd49aeb25ed0a009f987a1
+msgid "When you remove a guest network, the corresponding dvportgroup will not be removed on the vCenter. You must manually delete them on the vCenter."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3006
+# 54eddf463262482a8c3dad6f5f2ae247
+msgid "For a smoother configuration of VMware VDS, note down the VDS name you have added in the datacenter before you start:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3009
+# 9cc248efd6174d1f95fcb79364dfe324
+msgid "|vds-name.png: Name of the dvSwitch as specified in the vCenter.|"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3011
+# e7d07e6efc854a6f91160737fc2dc730
+msgid "Use this VDS name in the following:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3015
+# 3b63424161524f9da4420d0fd98dcda4
+msgid "The switch name in the Edit traffic label dialog while configuring a public and guest traffic during zone creation."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3018
+# cc1e2b04ea1b412a9180f77ac2930ad1
+msgid "During a zone creation, ensure that you select VMware vNetwork Distributed Virtual Switch when you configure guest and public traffic type."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3022
+# 28c7098972e44723819b9108289414b9
+msgid "|traffic-type.png|"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3026
+# 0d77c0b1eab14dca879d121804431960
+msgid "The Public Traffic vSwitch Type field when you add a VMware VDS-enabled cluster."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3031
+# 929135e8bf4d4f4a97a4db420a38dfd9
+msgid "The switch name in the traffic label while updating the switch type in a zone."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3034
+# 366e9be0e6a0468d952b3f9f3f3306b0
+msgid "Traffic label format in the last case is [[\"Name of vSwitch/dvSwitch/EthernetPortProfile\"][,\"VLAN ID\"[,\"vSwitch Type\"]]]"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3036
+# eaba03f24031461693648bd7a76b3ec6
+msgid "The possible values for traffic labels are:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3040
+# 61df80b370aa491484457725b12a1694
+msgid "empty string"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3044
+# d6793cc7e2eb4556a8cce089bb5fb7ba
+msgid "dvSwitch0"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3048
+# b3f4e9ec50d242d0981bd4164476a989
+msgid "dvSwitch0,200"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3052
+# d1044d22ffaa4efbb6917233f25d33e7
+msgid "dvSwitch1,300,vmwaredvs"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3056
+# fe1f3e03cabb4594be05f4694247828e
+msgid "myEthernetPortProfile,,nexusdvs"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3060
+# b0f992c1c506410f99034c1590b1b36d
+msgid "dvSwitch0,,vmwaredvs"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3063
+# 0643bee72bf9427097e841fa867a1b1d
+msgid "The three fields to fill in are:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3067
+# 4e1d4397308e4b2784978fa2b399204e
+msgid "Name of the virtual / distributed virtual switch at vCenter."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3069
+# 0ea48308f4034803ace1fbce08fa1fd4
+msgid "The default value depends on the type of virtual switch:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3071
+# 06091102df12426db15a2fa2294255cc
+msgid "**vSwitch0**: If type of virtual switch is VMware vNetwork Standard virtual switch"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3073
+# 2342c2b4f9554a848bfd6e018bda4ca8
+msgid "**dvSwitch0**: If type of virtual switch is VMware vNetwork Distributed virtual switch"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3075
+# fc80358ec4c344b19e3b1396a4fe3f2b
+msgid "**epp0**: If type of virtual switch is Cisco Nexus 1000v Distributed virtual switch"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3079
+# f9653fff8e2a4dfe9f57984ea973effd
+msgid "VLAN ID to be used for this traffic wherever applicable."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3081
+# 1f6e646a6ba742bebf304d510d52ec4b
+msgid "This field would be used for only public traffic as of now. In case of guest traffic this field would be ignored and could be left empty for guest traffic. By default empty string would be assumed which translates to untagged VLAN for that specific traffic type."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3085
+# 5b4d56e3828a431fb972d1a30cbb5993
+msgid "Type of virtual switch. Specified as string."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3087
+# 34474cbb49e5499fb1e02724466f1dd4
+msgid "Possible valid values are vmwaredvs, vmwaresvs, nexusdvs."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3089
+# 8178f6130ecb48baaea165ae9e8b0846
+msgid "**vmwaresvs**: Represents VMware vNetwork Standard virtual switch"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3091
+# a651a8e73a224d75a56b6c95f2997e8f
+msgid "**vmwaredvs**: Represents VMware vNetwork distributed virtual switch"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3093
+# 6b485445cf314856bf788804ac1279f0
+msgid "**nexusdvs**: Represents Cisco Nexus 1000v distributed virtual switch."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3095
+# 2d56af8dccba48b2b2d17ffd03843c42
+msgid "If nothing specified (left empty), zone-level default virtual switchwould be defaulted, based on the value of global parameter you specify."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3097
+# 3835c2ef7574443589a59537ac4b5ee1
+msgid "Following are the global configuration parameters:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3099
+# 14d738f065094961bd6549867db82e73
+msgid "**vmware.use.dvswitch**: Set to true to enable any kind (VMware DVS and Cisco Nexus 1000v) of distributed virtual switch in a CloudStack deployment. If set to false, the virtual switch that can be used in that CloudStack deployment is Standard virtual switch."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3101
+# ec24241206114feba067a6c3b0ecf676
+msgid "**vmware.use.nexus.vswitch**: This parameter is ignored if vmware.use.dvswitch is set to false. Set to true to enable Cisco Nexus 1000v distributed virtual switch in a CloudStack deployment."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3104
+# e0c3306fd9204cee84716a8bb08ebf9a
+msgid "Enabling Virtual Distributed Switch in CloudStack"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3106
+# 64c49f56242149a085fb175bfd6b2536
+msgid "To make a CloudStack deployment VDS enabled, set the vmware.use.dvswitch parameter to true by using the Global Settings page in the CloudStack UI and restart the Management Server. Unless you enable the vmware.use.dvswitch parameter, you cannot see any UI options specific to VDS, and CloudStack ignores the VDS-specific parameters that you specify. Additionally, CloudStack uses VDS for virtual network infrastructure if the value of vmware.use.dvswitch parameter is true and the value of vmware.use.nexus.dvswitch parameter is false. Another global parameter that defines VDS configuration is vmware.ports.per.dvportgroup. This is the default number of ports per VMware dvPortGroup in a VMware environment. Default value is 256. This number directly associated with the number of guest network you can create."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3120
+# e5f3b06f38324241a2052677a1dad016
+msgid "CloudStack supports orchestration of virtual networks in a deployment with a mix of Virtual Distributed Switch, Standard Virtual Switch and Nexus 1000v Virtual Switch."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3125
+# 37f6094d78df4e1aa3500f2b84650486
+msgid "Configuring Distributed Virtual Switch in CloudStack"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3127
+# 3bc24235a56b49a18dd705133f2de55b
+msgid "You can configure VDS by adding the necessary resources while a zone is created."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3130
+# c3a360b9f4564ac1abb2197484db4e3c
+msgid "Alternatively, at the cluster level, you can create an additional cluster with VDS enabled in the existing zone. Use the Add Cluster option. For information as given in `“Add Cluster: vSphere” <configuration.html#add-cluster-vsphere>`_."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3134
+# 479bfd3ed9a447da942d9b9ac2a2fdc2
+msgid "In both these cases, you must specify the following parameters to configure VDS:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3137
+# ebf6c05366ba437e921f5903665ed973
+msgid "|dvSwitchConfig.png: Configuring dvSwitch|"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3140
+# 09b1c441a46c49469130fa72f3614964
+msgid "Parameters Description"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3142
+# 708394a025b4492ab6e327dc380958e7
+msgid "Enter the name of the cluster you created in vCenter. For example, \"cloudcluster\"."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3143
+# d6c67ed27d304002a729b1628fb70fa0
+msgid "Enter the name or the IP address of the vCenter host where you have deployed the VMware VDS."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3146
+# 683d246203ba4cf8b5fd0d8e85bd640e
+msgid "Enter the vCenter datacenter that the cluster is in. For example, \"clouddcVM\"."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3147
+# 9fb1a295d3cf4ccf86187b7b78cf93b2
+msgid "Override Public Traffic"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3147
+# ea178483ff274a928f854444818454a2
+msgid "Enable this option to override the zone-wide public traffic for the cluster you are creating."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3148
+# 250b987e45194b0b9cb86b6b9fb5e336
+msgid "Public Traffic vSwitch Type"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3148
+# b367523933b940aeaec12800a746a45d
+msgid "This option is displayed only if you enable the Override Public Traffic option. Select VMware vNetwork Distributed Virtual Switch. If the vmware.use.dvswitch global parameter is true, the default option will be VMware vNetwork Distributed Virtual Switch."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3149
+# 29cb482d8776432b8c99b7e4c79cbe12
+msgid "Public Traffic vSwitch Name"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3149
+# 086236537a4f4fc1a5440d11b0fca364
+msgid "Name of virtual switch to be used for the public traffic."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3150
+# 704199c7e7eb4f1398126a60a08794de
+msgid "Override Guest Traffic"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3150
+# 8f90f04bd418418f9eadbd9c926cb76f
+msgid "Enable the option to override the zone-wide guest traffic for the cluster you are creating."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3151
+# 899928be044a48258741946368d91dcb
+msgid "Guest Traffic vSwitch Type"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3151
+# 6ddc80e638ab4ec8a613165199a028b0
+msgid "This option is displayed only if you enable the Override Guest Traffic option. Select VMware vNetwork Distributed Virtual Switch. If the vmware.use.dvswitch global parameter is true, the default option will be VMware vNetwork Distributed Virtual Switch."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3152
+# 5e253936428944ae8e8a5ebfadeea77a
+msgid "Guest Traffic vSwitch Name"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3152
+# 15215df1285d4b2985dfa06f3c8819ea
+msgid "Name of virtual switch to be used for guest traffic."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3157
+# 774f8b0295a24386bce8cafe1f15f999
+msgid "Storage Preparation for vSphere (iSCSI only)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3159
+# ba00d524d9b244f2b911edffa0f8ded8
+msgid "Use of iSCSI requires preparatory work in vCenter. You must add an iSCSI target and create an iSCSI datastore."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3162
+# 8de2dece46ff46c8bac0bbd1e48b778d
+msgid "If you are using NFS, skip this section."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3165
+# fc698c19eb8549ed98ec961c04d753e1
+msgid "Enable iSCSI initiator for ESXi hosts"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3169
+# 34512553af0249bea54fc8b9585cd5fa
+msgid "In vCenter, go to hosts and Clusters/Configuration, and click Storage Adapters link. You will see:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3172
+# 684af7b07b1a459fb4e36ed78a8a83e6
+msgid "|vmwareiscsiinitiator.png: iscsi initiator|"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3176
+# 88e4da9927b54ee1a9a6654aa6d39aa3
+msgid "Select iSCSI software adapter and click Properties."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3178
+# 2e32277888274a049d00699208d7bc97
+msgid "|vmwareiscsiinitiatorproperties.png: iscsi initiator properties|"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3182
+# 8da2aa000a374d80acff80053a7e341f
+msgid "Click the Configure... button."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3184
+# 59b2ef32cfdd4082b497b9cb05555129
+msgid "|vmwareiscsigeneral.png: iscsi general|"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3188
+# e1eceaf44d2644f18076f265f4360592
+msgid "Check Enabled to enable the initiator."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3192
+# e1263727e0d64a2ab200698db27ee1a3
+msgid "Click OK to save."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3195
+# a210655c2dff4ddcb276836b8603412d
+msgid "Add iSCSI target"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3197
+# abb57513fb3244288ea5ce00445f8f28
+msgid "Under the properties dialog, add the iSCSI target info:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3199
+# 4954b59047ab4ba29e2d92e3865b0fda
+msgid "|vmwareiscsitargetadd.png: iscsi target add|"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3201
+# 88ca6dc96bb9499f9d1c7abcaff20aa3
+msgid "Repeat these steps for all ESXi hosts in the cluster."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3204
+# 8bd62c3be43c48d493e98576eefe23f8
+msgid "Create an iSCSI datastore"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3206
+# c548bf48a3674abb83e7b473c8e3f84f
+msgid "You should now create a VMFS datastore. Follow these steps to do so:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3210
+# c518b88e8ecd4da09c536f9d74b508d3
+msgid "Select Home/Inventory/Datastores."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3214
+# cdb74717625a427aa3c4a7ba5f93aee1
+msgid "Right click on the datacenter node."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3218
+# 3d0a816c956442cf8c5b1f81c174ee22
+msgid "Choose Add Datastore... command."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3222
+# 19ad87337cb14cf585faf240d0ee2832
+msgid "Follow the wizard to create a iSCSI datastore."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3224
+# 7948a9ab7759441cbca06015f98026f0
+msgid "This procedure should be done on one host in the cluster. It is not necessary to do this on all hosts."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3227
+# cfb21f6f84204119bd99ba701e71a839
+msgid "|vmwareiscsidatastore.png: iscsi datastore|"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3230
+# 05536385fb5d4f589729735e6a15863a
+msgid "Multipathing for vSphere (Optional)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3232
+# 815ee00c2ff84bffb47b6cab9a634126
+msgid "Storage multipathing on vSphere nodes may be done according to the vSphere installation guide."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3236
+# 58b67a39f15e42eea22e40e779bc98ae
+msgid "Add Hosts or Configure Clusters (vSphere)"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3238
+# 0f8ce9626c69404f8406c300f622fb16
+msgid "Use vCenter to create a vCenter cluster and add your desired hosts to the cluster. You will later add the entire cluster to CloudStack. (see `“Add Cluster: vSphere” <configuration.html#add-cluster-vsphere>`_)."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3243
+# 7e7aadc035da44249de56ae7db92234a
+msgid "Applying Hotfixes to a VMware vSphere Host"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3247
+# 74dba888d905486db0290fbfb7d772f6
+msgid "Disconnect the VMware vSphere cluster from CloudStack. It should remain disconnected long enough to apply the hotfix on the host."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3254
+# da103b2f65c547b3ab083fc895aab582
+msgid "See `“Log In to the UI” <http://docs.cloudstack.apache.org/projects/cloudstack-administration/en/latest/ui.html#log-in-to-the-ui>`_."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3258
+# 7eeb8799b8aa4cc69456b839d9136ad7
+msgid "Navigate to the VMware cluster, click Actions, and select Unmanage."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3267
+# d9e060820ffb4eb4b154fad98fd3ffa6
+msgid "Perform the following on each of the ESXi hosts in the cluster:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3271
+# d9e7f843369e4a78b51521805078baf0
+msgid "Move each of the ESXi hosts in the cluster to maintenance mode."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3275
+# 9bc4f3ee334e40db91a24562dd6845cd
+msgid "Ensure that all the VMs are migrated to other hosts in that cluster."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3280
+# 3ba2bffbc5e84ef3b01cae9d2dde0b71
+msgid "If there is only one host in that cluster, shutdown all the VMs and move the host into maintenance mode."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3285
+# 6f64d848a8d64604844df448df999fe1
+msgid "Apply the patch on the ESXi host."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3289
+# 9c8782c75494411594d8b4faff7fbb1d
+msgid "Restart the host if prompted."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3293
+# 25e36bd88cc24b0383e1b00df74727ad
+msgid "Cancel the maintenance mode on the host."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3297
+# aaff92bbaee04efbbe1d87fdb627fcbf
+msgid "Reconnect the cluster to CloudStack:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3305
+# da1d669463434dc087c342d31407e02f
+msgid "Navigate to the VMware cluster, click Actions, and select Manage."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3309
+# fdb2ca3517e249e792bc1e09f0dcdf74
+msgid "Watch the status to see that all the hosts come up. It might take several minutes for the hosts to come up."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3312
+# 9cb4b470519146d4993237038291de2a
+msgid "Alternatively, verify the host state is properly synchronized and updated in the CloudStack database."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3316
+# ed31c9f3cf034bde88229da9ab4c4346
+msgid "LXC Installation and Configuration"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3319
+# 8b616c9ac2f844a4a829952baa39a8d0
+msgid "System Requirements for LXC Hosts"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3321
+# 219a7faad8ee431a8c64dfb3c12b2006
+msgid "LXC requires the Linux kernel cgroups functionality which is available starting 2.6.24. Although you are not required to run these distributions, the following are recommended:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3333
+# 5a6c2e85c2114428bfbb1d20f74e4205
+msgid "The main requirement for LXC hypervisors is the libvirt and Qemu version. No matter what Linux distribution you are using, make sure the following requirements are met:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3339
+#: ../../hypervisor_installation.rst:3351
+# d7670075be644f0f80515c081452803e
+# 40888512180848d2809af703d71e45d4
+msgid "libvirt: 1.0.0 or higher"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3391
+# be2989bd0e4c4180acf1abe0c0506e16
+msgid "LXC Installation Overview"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3393
+# 03fc8905df0d492d9aa9667071f355fc
+msgid "LXC does not have any native system VMs, instead KVM will be used to run system VMs. This means that your host will need to support both LXC and KVM, thus most of the installation and configuration will be identical to the KVM installation. The material in this section doesn't duplicate KVM installation docs. It provides the CloudStack-specific steps that are needed to prepare a KVM host to work with CloudStack."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3404
+# 2b1366e9b99546e58720ccf100d16276
+msgid "The procedure for installing an LXC Host is:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3479
+# 84a60e9ea64b44d09cda82651720fefe
+msgid "To manage LXC instances on the host CloudStack uses a Agent. This Agent communicates with the Management server and controls all the instances on the host."
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3497
+# 6e8937e78ff6442db35604533d058b4a
+msgid "Next step is to update the Agent configuration setttings. The settings are in ``/etc/cloudstack/agent/agent.properties``"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3502
+# 7aeff42329424749810bdfb5dd405477
+msgid "Set the Agent to run in LXC mode:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3510
+# ac8184a4dc794aba9e64574610cfe257
+msgid "Optional: If you would like to use direct networking (instead of the default bridge networking), configure these lines:"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3595
+# 195b19dc40204c8b94d2cb8e43198e2e
+msgid "In order to have the VNC Console work we have to make sure it will bind on 0.0.0.0. We do this by editing ``/etc/libvirt/qemu.conf``"
+msgstr ""
+
+#: ../../hypervisor_installation.rst:3598
+# 48827fdb267f46b3be0c06af135ba563
+msgid "Make sure this parameter is set:"
+msgstr ""
+

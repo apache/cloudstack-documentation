@@ -1,0 +1,1106 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../storage.rst:18
+# 32b44221e38d43c08f57ce3a72c53f03
+msgid "Working with Storage"
+msgstr ""
+
+#: ../../storage.rst:21
+# 10d8b20690d442af8af5376748e600e0
+msgid "Storage Overview"
+msgstr ""
+
+#: ../../storage.rst:23
+# 59f0d86b537245ecb2688c84730ca29a
+msgid "CloudStack defines two types of storage: primary and secondary. Primary storage can be accessed by either iSCSI or NFS. Additionally, direct attached storage may be used for primary storage. Secondary storage is always accessed using NFS."
+msgstr ""
+
+#: ../../storage.rst:28
+# 20876e254ad044ddaa6b6090751c79d2
+msgid "There is no ephemeral storage in CloudStack. All volumes on all nodes are persistent."
+msgstr ""
+
+#: ../../storage.rst:33
+# bf8fb32949b941d98036a5312e70d5a4
+msgid "Primary Storage"
+msgstr ""
+
+#: ../../storage.rst:35
+# d56fc829e85b469dae70016a093f1050
+msgid "This section gives concepts and technical details about CloudStack primary storage. For information about how to install and configure primary storage through the CloudStack UI, see the Installation Guide."
+msgstr ""
+
+#: ../../storage.rst:39
+# 950476049a7645b887c0f50e0a4d1f27
+msgid "`“About Primary Storage” <http://docs.cloudstack.apache.org/en/latest/concepts.html#about-primary-storage>`_"
+msgstr ""
+
+#: ../../storage.rst:43
+# c26af650001f4c28b6d9803b7efde40e
+msgid "Best Practices for Primary Storage"
+msgstr ""
+
+#: ../../storage.rst:45
+# 6f52e89385424e26a23b25f5784a3491
+msgid "The speed of primary storage will impact guest performance. If possible, choose smaller, higher RPM drives or SSDs for primary storage."
+msgstr ""
+
+#: ../../storage.rst:49
+# f8f87fc7d7e4415b831b34939cbe9b12
+msgid "There are two ways CloudStack can leverage primary storage:"
+msgstr ""
+
+#: ../../storage.rst:51
+# 52ac4abe89dd4b3586b61386e9b5b0e5
+msgid "Static: This is CloudStack's traditional way of handling storage. In this model, a preallocated amount of storage (ex. a volume from a SAN) is given to CloudStack. CloudStack then permits many of its volumes to be created on this storage (can be root and/or data disks). If using this technique, ensure that nothing is stored on the storage. Adding the storage to CloudStack will destroy any existing data."
+msgstr ""
+
+#: ../../storage.rst:59
+# 813a87ee26ba4259a5c3ef52a1b0ef5a
+msgid "Dynamic: This is a newer way for CloudStack to manage storage. In this model, a storage system (rather than a preallocated amount of storage) is given to CloudStack. CloudStack, working in concert with a storage plug-in, dynamically creates volumes on the storage system and each volume on the storage system maps to a single CloudStack volume. This is highly useful for features such as storage Quality of Service. Currently this feature is supported for data disks (Disk Offerings)."
+msgstr ""
+
+#: ../../storage.rst:70
+# f97cbc96312f49aba2a6bab0d1e1b2a4
+msgid "Runtime Behavior of Primary Storage"
+msgstr ""
+
+#: ../../storage.rst:72
+# 5bf02a65cf3a40df9e7e165fd9ecd864
+msgid "Root volumes are created automatically when a virtual machine is created. Root volumes are deleted when the VM is destroyed. Data volumes can be created and dynamically attached to VMs. Data volumes are not deleted when VMs are destroyed."
+msgstr ""
+
+#: ../../storage.rst:77
+# 80ad3630b276444cac7f5324ecf5a326
+msgid "Administrators should monitor the capacity of primary storage devices and add additional primary storage as needed. See the Advanced Installation Guide."
+msgstr ""
+
+#: ../../storage.rst:81
+# 073d4376c5e04c77bbfdba19e134418c
+msgid "Administrators add primary storage to the system by creating a CloudStack storage pool. Each storage pool is associated with a cluster or a zone."
+msgstr ""
+
+#: ../../storage.rst:85
+# 79ff1a8b27224fff8510e3a5ce37a304
+msgid "With regards to data disks, when a user executes a Disk Offering to create a data disk, the information is initially written to the CloudStack database only. Upon the first request that the data disk be attached to a VM, CloudStack determines what storage to place the volume on and space is taken from that storage (either from preallocated storage or from a storage system (ex. a SAN), depending on how the primary storage was added to CloudStack)."
+msgstr ""
+
+#: ../../storage.rst:95
+# 03d9238ac1b44704b10a3c6cbc9a194c
+msgid "Hypervisor Support for Primary Storage"
+msgstr ""
+
+#: ../../storage.rst:97
+# f9043e1c7c614dcab5cc48b83c777751
+msgid "The following table shows storage options and parameters for different hypervisors."
+msgstr ""
+
+#: ../../storage.rst:101
+# df81aa4abfe0426f8ea7b5d76689b532
+msgid "Storage media \\\\ hypervisor"
+msgstr ""
+
+#: ../../storage.rst:101
+#: ../../storage.rst:709
+# 21dd8b1cdc0d40dc8559cbcf4fbfab3d
+# 6e7b702add314a16a42c7e999147c3c9
+msgid "VMware vSphere"
+msgstr ""
+
+#: ../../storage.rst:101
+#: ../../storage.rst:709
+# 95085080f31c48d7a3c6eeb26d596976
+# fd649d92db414b198a27e37febfdfe07
+msgid "Citrix XenServer"
+msgstr ""
+
+#: ../../storage.rst:101
+#: ../../storage.rst:332
+#: ../../storage.rst:709
+# 94199ee2b07049529bc3e9c2b7eb8707
+# 7b0dbf552cc34bb0ac898f31180f3a83
+# 3f78f67d3c14490da80f847d2a00fc5d
+msgid "KVM"
+msgstr ""
+
+#: ../../storage.rst:101
+# b63b5cf8a70b492f82138dc7fd0b3d4f
+msgid "Hyper-V"
+msgstr ""
+
+#: ../../storage.rst:103
+# 6b911e3d65954475be2786623c89bfee
+msgid "**Format for Disks, Templates, and Snapshots**"
+msgstr ""
+
+#: ../../storage.rst:103
+# 597a7a22248749eab119febe7cad0654
+msgid "VMDK"
+msgstr ""
+
+#: ../../storage.rst:103
+#: ../../storage.rst:330
+# dcb226ea6af24150b270ebd0e57ce0d6
+# 06b1f702f7ae492c9259258d6cdb9bba
+msgid "VHD"
+msgstr ""
+
+#: ../../storage.rst:103
+#: ../../storage.rst:332
+# 3c8131f767e745659f09e7635e52de1d
+# 891d2deb650249bdaaa476d91cedea41
+msgid "QCOW2"
+msgstr ""
+
+#: ../../storage.rst:103
+# 0ef733d6419b49ddb03a35218b141dad
+msgid "VHD Snapshots are not supported."
+msgstr ""
+
+#: ../../storage.rst:105
+# 366c31ae3c524e20bcbff9f5b0f33865
+msgid "**iSCSI support**"
+msgstr ""
+
+#: ../../storage.rst:105
+#: ../../storage.rst:106
+# 169329b4d94f4d5a9a71e806fc6493ee
+# eb8734785e1e4253ae29efadaea66c18
+msgid "VMFS"
+msgstr ""
+
+#: ../../storage.rst:105
+# 439fbab809dc46b291a52de0067fb0f5
+msgid "Clustered LVM"
+msgstr ""
+
+#: ../../storage.rst:105
+#: ../../storage.rst:106
+# 7166fec7c32746bea34118f3db301ae6
+# aa36e5087ca64a9590ad2b643c91d5f7
+msgid "Yes, via Shared Mountpoint"
+msgstr ""
+
+#: ../../storage.rst:105
+#: ../../storage.rst:106
+#: ../../storage.rst:107
+#: ../../storage.rst:109
+#: ../../storage.rst:110
+#: ../../storage.rst:110
+#: ../../storage.rst:110
+#: ../../storage.rst:711
+#: ../../storage.rst:711
+# 03d269fc73bc48348ab1896256774ae1
+# ce5af21795294bc697ba5aa4474636da
+# 785a027864c94241bdfc6686ade2836e
+# 3099d25cace04a4788cd2531e69b4710
+# 2e285148115d4a2da6cae3f373aba27f
+# 895e4b1ff76840cc94de98328f387f6f
+# 8353d798b3004fb5bbd003df12fac8a2
+# 9695a4455edd45c899785834ba6fef74
+# 7857cd4194be451faa95e02696061cf8
+msgid "No"
+msgstr ""
+
+#: ../../storage.rst:106
+# b70b0d5267be474c85b0240f24b6a2b9
+msgid "**Fiber Channel support**"
+msgstr ""
+
+#: ../../storage.rst:106
+# 443c6e664d6b46a9a0f879410a6e1aa7
+msgid "Yes, via Existing SR"
+msgstr ""
+
+#: ../../storage.rst:107
+# b46dc3d64ece43109c0051e5fc0d66e5
+msgid "**NFS support**"
+msgstr ""
+
+#: ../../storage.rst:107
+#: ../../storage.rst:107
+#: ../../storage.rst:107
+#: ../../storage.rst:108
+#: ../../storage.rst:108
+#: ../../storage.rst:108
+#: ../../storage.rst:108
+#: ../../storage.rst:110
+#: ../../storage.rst:711
+# ac7f31ad38674dd5bd5040d072b67e09
+# de71afbac6cb457caff9416ed30e2d9c
+# 12e7d7ffb19d4610a624484aaffeebf2
+# 10601f00b2d54ae1833a5b8cf47428ea
+# cfade3e6b2824c0b8ae1ddfc34d36e9a
+# 4b311bb6db4b41779b0c525c589c00a7
+# 6ab3b70adba24666a78774746ccfabad
+# bed48ae68b8e4818aad52abb69bbc24b
+# 11121f7bcfdc45db85459a8f12982e26
+msgid "Yes"
+msgstr ""
+
+#: ../../storage.rst:108
+# 8c9b266cc80241eda65595fd19a54dc7
+msgid "**Local storage support**"
+msgstr ""
+
+#: ../../storage.rst:109
+# 1b48c07eb50544109f66a49c39c5d38c
+msgid "**Storage over-provisioning**"
+msgstr ""
+
+#: ../../storage.rst:109
+# 36ee1094090c495d95a6a7650892ffae
+msgid "NFS and iSCSI"
+msgstr ""
+
+#: ../../storage.rst:109
+#: ../../storage.rst:109
+# 565842e982394810bcd8454836b9b271
+# bb172a9d571244538e501ba593025cd6
+msgid "NFS"
+msgstr ""
+
+#: ../../storage.rst:110
+# a5915b6a85a64a268e5a1e41080fa835
+msgid "**SMB/CIFS**"
+msgstr ""
+
+#: ../../storage.rst:113
+# 8f37dda63c1a49f084a39311ad775fd6
+msgid "XenServer uses a clustered LVM system to store VM images on iSCSI and Fiber Channel volumes and does not support over-provisioning in the hypervisor. The storage server itself, however, can support thin-provisioning. As a result the CloudStack can still support storage over-provisioning by running on thin-provisioned storage volumes."
+msgstr ""
+
+#: ../../storage.rst:119
+# d8bfde747fd541bcb2d1f62d1d2ddd9c
+msgid "KVM supports \"Shared Mountpoint\" storage. A shared mountpoint is a file system path local to each server in a given cluster. The path must be the same across all Hosts in the cluster, for example /mnt/primary1. This shared mountpoint is assumed to be a clustered filesystem such as OCFS2. In this case the CloudStack does not attempt to mount or unmount the storage as is done with NFS. The CloudStack requires that the administrator insure that the storage is available"
+msgstr ""
+
+#: ../../storage.rst:127
+# 80ebb012a77045e9b3a5a47d82cef42c
+msgid "With NFS storage, CloudStack manages the overprovisioning. In this case the global configuration parameter storage.overprovisioning.factor controls the degree of overprovisioning. This is independent of hypervisor type."
+msgstr ""
+
+#: ../../storage.rst:132
+# 46f7d4fdff4d4ea996d136375ac93805
+msgid "Local storage is an option for primary storage for vSphere, XenServer, and KVM. When the local disk option is enabled, a local disk storage pool is automatically created on each host. To use local storage for the System Virtual Machines (such as the Virtual Router), set system.vm.use.local.storage to true in global configuration."
+msgstr ""
+
+#: ../../storage.rst:138
+# 84339fc995ab461cb30e853b024629a4
+msgid "CloudStack supports multiple primary storage pools in a Cluster. For example, you could provision 2 NFS servers in primary storage. Or you could provision 1 iSCSI LUN initially and then add a second iSCSI LUN when the first approaches capacity."
+msgstr ""
+
+#: ../../storage.rst:145
+# 16767f52da5e4a3ea351cb7c2208207a
+msgid "Storage Tags"
+msgstr ""
+
+#: ../../storage.rst:147
+# d0ffba1bad5942adaca099b572104c63
+msgid "Storage may be \"tagged\". A tag is a text string attribute associated with primary storage, a Disk Offering, or a Service Offering. Tags allow administrators to provide additional information about the storage. For example, that is a \"SSD\" or it is \"slow\". Tags are not interpreted by CloudStack. They are matched against tags placed on service and disk offerings. CloudStack requires all tags on service and disk offerings to exist on the primary storage before it allocates root or data disks on the primary storage. Service and disk offering tags are used to identify the requirements of the storage that those offerings have. For example, the high end service offering may require \"fast\" for its root disk volume."
+msgstr ""
+
+#: ../../storage.rst:159
+# 81b0523239f34456bfe222f88c9520e0
+msgid "The interaction between tags, allocation, and volume copying across clusters and pods can be complex. To simplify the situation, use the same set of tags on the primary storage for all clusters in a pod. Even if different devices are used to present those tags, the set of exposed tags can be the same."
+msgstr ""
+
+#: ../../storage.rst:167
+# b85907f2a2a546ae9312b9c9d9a443e3
+msgid "Maintenance Mode for Primary Storage"
+msgstr ""
+
+#: ../../storage.rst:169
+# 0e84968be86b4971b80b0b9f4f141840
+msgid "Primary storage may be placed into maintenance mode. This is useful, for example, to replace faulty RAM in a storage device. Maintenance mode for a storage device will first stop any new guests from being provisioned on the storage device. Then it will stop all guests that have any volume on that storage device. When all such guests are stopped the storage device is in maintenance mode and may be shut down. When the storage device is online again you may cancel maintenance mode for the device. The CloudStack will bring the device back online and attempt to start all guests that were running at the time of the entry into maintenance mode."
+msgstr ""
+
+#: ../../storage.rst:182
+# 67a803ad730347ec9a5e5667d7ceadfa
+msgid "Secondary Storage"
+msgstr ""
+
+#: ../../storage.rst:184
+# d48d908ab2384420a19689dfc1957c12
+msgid "This section gives concepts and technical details about CloudStack secondary storage. For information about how to install and configure secondary storage through the CloudStack UI, see the Advanced Installation Guide."
+msgstr ""
+
+#: ../../storage.rst:189
+# 4c9b91f3c5dd4d8a83a8c2706ac95f41
+msgid "`“About Secondary Storage” <http://docs.cloudstack.apache.org/en/latest/concepts.html#about-secondary-storage>`_"
+msgstr ""
+
+#: ../../storage.rst:193
+# 6ca82acb4184482298cdd589b41fdd16
+msgid "Working With Volumes"
+msgstr ""
+
+#: ../../storage.rst:195
+# d8b653a972c54421a4405a011c4ca3e7
+msgid "A volume provides storage to a guest VM. The volume can provide for a root disk or an additional data disk. CloudStack supports additional volumes for guest VMs."
+msgstr ""
+
+#: ../../storage.rst:199
+# 2197b194989d434ca7e999eb0f6cfaa9
+msgid "Volumes are created for a specific hypervisor type. A volume that has been attached to guest using one hypervisor type (e.g, XenServer) may not be attached to a guest that is using another hypervisor type, for example:vSphere, KVM. This is because the different hypervisors use different disk image formats."
+msgstr ""
+
+#: ../../storage.rst:205
+# 6d23b58657fd41c2aba08ac7ae7eaabe
+msgid "CloudStack defines a volume as a unit of storage available to a guest VM. Volumes are either root disks or data disks. The root disk has \"/\" in the file system and is usually the boot device. Data disks provide for additional storage, for example: \"/opt\" or \"D:\". Every guest VM has a root disk, and VMs can also optionally have a data disk. End users can mount multiple data disks to guest VMs. Users choose data disks from the disk offerings created by administrators. The user can create a template from a volume as well; this is the standard procedure for private template creation. Volumes are hypervisor-specific: a volume from one hypervisor type may not be used on a guest of another hypervisor type."
+msgstr ""
+
+#: ../../storage.rst:217
+# 0dfd84618eba4890bd79fdde4a5681c2
+msgid "CloudStack supports attaching up to 13 data disks to a VM on XenServer hypervisor versions 6.0 and above. For the VMs on other hypervisor types, the data disk limit is 6."
+msgstr ""
+
+#: ../../storage.rst:223
+# f423c15d3d884dd295629f532792322b
+msgid "Creating a New Volume"
+msgstr ""
+
+#: ../../storage.rst:225
+# 288ba1fb3a644f05a3cd4b08e05b1524
+msgid "You can add more data disk volumes to a guest VM at any time, up to the limits of your storage capacity. Both CloudStack administrators and users can add volumes to VM instances. When you create a new volume, it is stored as an entity in CloudStack, but the actual storage resources are not allocated on the physical storage device until you attach the volume. This optimization allows the CloudStack to provision the volume nearest to the guest that will use it when the first attachment is made."
+msgstr ""
+
+#: ../../storage.rst:235
+# 09420f12f6d84b9ebe5882b8a922b802
+msgid "Using Local Storage for Data Volumes"
+msgstr ""
+
+#: ../../storage.rst:237
+# 87d84c3ad80f4c65ae01116db8e49f5b
+msgid "You can create data volumes on local storage (supported with XenServer, KVM, and VMware). The data volume is placed on the same host as the VM instance that is attached to the data volume. These local data volumes can be attached to virtual machines, detached, re-attached, and deleted just as with the other types of data volume."
+msgstr ""
+
+#: ../../storage.rst:243
+# 2092c3e84a0040c88df79f6600d12b26
+msgid "Local storage is ideal for scenarios where persistence of data volumes and HA is not required. Some of the benefits include reduced disk I/O latency and cost reduction from using inexpensive local disks."
+msgstr ""
+
+#: ../../storage.rst:247
+# 24091baabed046c79bbde0f55cc59de6
+msgid "In order for local volumes to be used, the feature must be enabled for the zone."
+msgstr ""
+
+#: ../../storage.rst:250
+# a3fc0fa189a444759468f8645397fc0a
+msgid "You can create a data disk offering for local storage. When a user creates a new VM, they can select this disk offering in order to cause the data disk volume to be placed in local storage."
+msgstr ""
+
+#: ../../storage.rst:254
+# 2884a62219544ddea52e40fbabdfc590
+msgid "You can not migrate a VM that has a volume in local storage to a different host, nor migrate the volume itself away to a different host. If you want to put a host into maintenance mode, you must first stop any VMs with local data volumes on that host."
+msgstr ""
+
+#: ../../storage.rst:261
+# 427238ca555946cc8792695ca92136df
+msgid "To Create a New Volume"
+msgstr ""
+
+#: ../../storage.rst:263
+#: ../../storage.rst:357
+#: ../../storage.rst:390
+#: ../../storage.rst:456
+#: ../../storage.rst:477
+#: ../../storage.rst:506
+#: ../../storage.rst:562
+# 70f2f0de47b04a1cbb185fe77792e139
+# 629422b536114a33be189acc56c6cc01
+# 541ad7fafe48443d97a67692a359748c
+# b61f2bef29ea454bb44952aebc53c22c
+# 0e5cea32ef9848a0a96a9ede62313c86
+# 8e3b1d8db33d44fabb0894f24d17d358
+# e35965b604404bef9f199b32675ad907
+msgid "Log in to the CloudStack UI as a user or admin."
+msgstr ""
+
+#: ../../storage.rst:265
+#: ../../storage.rst:312
+#: ../../storage.rst:564
+#: ../../storage.rst:664
+# 146d31151f5e442c8b76e9ef512eac29
+# 11db8955c3494f43b8d2e1bc13a914df
+# 54c24ff429df4622aa1ce17ff0817663
+# f9babc8c9c9941049be79d67a3c60c82
+msgid "In the left navigation bar, click Storage."
+msgstr ""
+
+#: ../../storage.rst:267
+#: ../../storage.rst:361
+#: ../../storage.rst:566
+# 9df84607b2a94838bb6739342d1e0bd7
+# 1f30687ee1374b74bb647174e701cc9b
+# 47fcd7e70cc34717b426f9bf08a626c8
+msgid "In Select View, choose Volumes."
+msgstr ""
+
+#: ../../storage.rst:269
+# d9affc0389314e7cadbe9e0340e6bddd
+msgid "To create a new volume, click Add Volume, provide the following details, and click OK."
+msgstr ""
+
+#: ../../storage.rst:272
+# 8aa967b67394416b9971e9986853fc0e
+msgid "Name. Give the volume a unique name so you can find it later."
+msgstr ""
+
+#: ../../storage.rst:274
+# b95f18a10ac946d8bb6e4424522125a5
+msgid "Availability Zone. Where do you want the storage to reside? This should be close to the VM that will use the volume."
+msgstr ""
+
+#: ../../storage.rst:277
+# 55b275ed6b1b4c7e965e8d9c3fc64d99
+msgid "Disk Offering. Choose the characteristics of the storage."
+msgstr ""
+
+#: ../../storage.rst:279
+# 75cbb5f7984642d8a86bb71c3f274c52
+msgid "The new volume appears in the list of volumes with the state “Allocated.” The volume data is stored in CloudStack, but the volume is not yet ready for use"
+msgstr ""
+
+#: ../../storage.rst:283
+# 97a7e13d891c4ab78df0cd8ebcafdfc7
+msgid "To start using the volume, continue to Attaching a Volume"
+msgstr ""
+
+#: ../../storage.rst:287
+# 890dc04ff24f497186a44bb7d537412d
+msgid "Uploading an Existing Volume to a Virtual Machine"
+msgstr ""
+
+#: ../../storage.rst:289
+# 17f14f4d6eec4e609b6e183abaa18556
+msgid "Existing data can be made accessible to a virtual machine. This is called uploading a volume to the VM. For example, this is useful to upload data from a local file system and attach it to a VM. Root administrators, domain administrators, and end users can all upload existing volumes to VMs."
+msgstr ""
+
+#: ../../storage.rst:295
+# f18a289b1dae403cb4a540ec6280499b
+msgid "The upload is performed using HTTP. The uploaded volume is placed in the zone's secondary storage"
+msgstr ""
+
+#: ../../storage.rst:298
+# e22b07fc396b4455bf886c103b353298
+msgid "You cannot upload a volume if the preconfigured volume limit has already been reached. The default limit for the cloud is set in the global configuration parameter max.account.volumes, but administrators can also set per-domain limits that are different from the global default. See Setting Usage Limits"
+msgstr ""
+
+#: ../../storage.rst:304
+# e8b13fa3aadd48cca116ddff3d8ac16a
+msgid "To upload a volume:"
+msgstr ""
+
+#: ../../storage.rst:306
+# 2032475f0e514f0d87b48fde37cfda03
+msgid "(Optional) Create an MD5 hash (checksum) of the disk image file that you are going to upload. After uploading the data disk, CloudStack will use this value to verify that no data corruption has occurred."
+msgstr ""
+
+#: ../../storage.rst:310
+# 0fc87857d60e4b6e8d2d80130b6dd64d
+msgid "Log in to the CloudStack UI as an administrator or user"
+msgstr ""
+
+#: ../../storage.rst:314
+# cfa804b4dc5e4b539613e1693f19c041
+msgid "Click Upload Volume."
+msgstr ""
+
+#: ../../storage.rst:316
+# b664bc425cd54ca4917358c8830843e7
+msgid "Provide the following:"
+msgstr ""
+
+#: ../../storage.rst:318
+# 33a6b2a32f3646e98a44862cba5bea26
+msgid "Name and Description. Any desired name and a brief description that can be shown in the UI."
+msgstr ""
+
+#: ../../storage.rst:321
+# 1c773983c9a14bda81f657b9831390d5
+msgid "Availability Zone. Choose the zone where you want to store the volume. VMs running on hosts in this zone can attach the volume."
+msgstr ""
+
+#: ../../storage.rst:324
+# d0263e16ccf649a88f3265f9cbd34b80
+msgid "Format. Choose one of the following to indicate the disk image format of the volume."
+msgstr ""
+
+#: ../../storage.rst:328
+# 9e62f8681cf6466c87525f623ab74761
+msgid "Hypervisor"
+msgstr ""
+
+#: ../../storage.rst:328
+# 18fa4b974ece4a8fae34fccd9062dc6a
+msgid "Disk Image Format"
+msgstr ""
+
+#: ../../storage.rst:330
+# fd430608386e4e7db755bcbf9a932e8a
+msgid "XenServer"
+msgstr ""
+
+#: ../../storage.rst:331
+# 6e5d75ea06c7464cb4ec871161a4a108
+msgid "VMware"
+msgstr ""
+
+#: ../../storage.rst:331
+# 01efef53521d4f8189c939afdd9c1cbb
+msgid "OVA"
+msgstr ""
+
+#: ../../storage.rst:335
+# 9e300c5607d34ce6837b1817e414992a
+msgid "URL. The secure HTTP or HTTPS URL that CloudStack can use to access your disk. The type of file at the URL must match the value chosen in Format. For example, if Format is VHD, the URL might look like the following:"
+msgstr ""
+
+#: ../../storage.rst:340
+# 82d85bc5e5704af5a3256a92d5c02114
+msgid "``http://yourFileServerIP/userdata/myDataDisk.vhd``"
+msgstr ""
+
+#: ../../storage.rst:342
+# 2a1e40703cff43efba2d4349b3a16219
+msgid "MD5 checksum. (Optional) Use the hash that you created in step 1."
+msgstr ""
+
+#: ../../storage.rst:344
+# c13069ba6499470eb80792d35b8177e5
+msgid "Wait until the status of the volume shows that the upload is complete. Click Instances - Volumes, find the name you specified in step 5, and make sure the status is Uploaded."
+msgstr ""
+
+#: ../../storage.rst:350
+# 0fd449f8d801478d84a4b2700da5e8b6
+msgid "Attaching a Volume"
+msgstr ""
+
+#: ../../storage.rst:352
+# da2f32e627974c378217daaed2a05282
+msgid "You can attach a volume to a guest VM to provide extra disk storage. Attach a volume when you first create a new volume, when you are moving an existing volume from one VM to another, or after you have migrated a volume from one storage pool to another."
+msgstr ""
+
+#: ../../storage.rst:359
+# e98f959945e047bc950d507b756c28e7
+msgid "In the left navigation, click Storage."
+msgstr ""
+
+#: ../../storage.rst:363
+# 4334745af8f24f039eba4f0736befe7f
+msgid "Click the volume name in the Volumes list, then click the Attach Disk button |AttachDiskButton.png|"
+msgstr ""
+
+#: ../../storage.rst:366
+# 0840d7b567f84dbcbf9820547c2e68b2
+msgid "In the Instance popup, choose the VM to which you want to attach the volume. You will only see instances to which you are allowed to attach volumes; for example, a user will see only instances created by that user, but the administrator will have more choices."
+msgstr ""
+
+#: ../../storage.rst:371
+# 6e680f84bdb84267a7d2d60e4e7fcdf9
+msgid "When the volume has been attached, you should be able to see it by clicking Instances, the instance name, and View Volumes."
+msgstr ""
+
+#: ../../storage.rst:376
+# dc8f48c99c24477fa1924ef7a1fb28dc
+msgid "Detaching and Moving Volumes"
+msgstr ""
+
+#: ../../storage.rst:379
+# 988a57d9e81b49e6be5b37db8f4970c2
+msgid "This procedure is different from moving volumes from one storage pool to another as described in `“VM Storage Migration” <#vm-storage-migration>`_."
+msgstr ""
+
+#: ../../storage.rst:383
+# 87a675231744495a92d09e12337edda0
+msgid "A volume can be detached from a guest VM and attached to another guest. Both CloudStack administrators and users can detach volumes from VMs and move them to other VMs."
+msgstr ""
+
+#: ../../storage.rst:387
+# f3a14cfb3fe242fd95952025a2f91323
+msgid "If the two VMs are in different clusters, and the volume is large, it may take several minutes for the volume to be moved to the new VM."
+msgstr ""
+
+#: ../../storage.rst:392
+# 8c279d5d59154e34b12465e6c1b2088a
+msgid "In the left navigation bar, click Storage, and choose Volumes in Select View. Alternatively, if you know which VM the volume is attached to, you can click Instances, click the VM name, and click View Volumes."
+msgstr ""
+
+#: ../../storage.rst:397
+# 02ba88b018e140248a056d426fd7c9ea
+msgid "Click the name of the volume you want to detach, then click the Detach Disk button. |DetachDiskButton.png|"
+msgstr ""
+
+#: ../../storage.rst:400
+# 2ef3b0f777434eb58770702236698b0d
+msgid "To move the volume to another VM, follow the steps in `“Attaching a Volume” <#attaching-a-volume>`_."
+msgstr ""
+
+#: ../../storage.rst:405
+# 7bce94ec5cda4cfd9031d62fa230127d
+msgid "VM Storage Migration"
+msgstr ""
+
+#: ../../storage.rst:407
+# 1bc602fbceb14e5ab29eb5e9189ae80d
+msgid "Supported in XenServer, KVM, and VMware."
+msgstr ""
+
+#: ../../storage.rst:410
+# 8183ae7d15c748109dabfa42d80894c4
+msgid "This procedure is different from moving disk volumes from one VM to another as described in `“Detaching and Moving Volumes” <#detaching-and-moving-volumes>`_."
+msgstr ""
+
+#: ../../storage.rst:414
+# 1124cbad549d456f858d2dd00e5689b4
+msgid "You can migrate a virtual machine’s root disk volume or any additional data disk volume from one storage pool to another in the same zone."
+msgstr ""
+
+#: ../../storage.rst:417
+# cb9592a82bf84a7c8393f53e9e18ef77
+msgid "You can use the storage migration feature to achieve some commonly desired administration goals, such as balancing the load on storage pools and increasing the reliability of virtual machines by moving them away from any storage pool that is experiencing issues."
+msgstr ""
+
+#: ../../storage.rst:422
+# a2bcc01e8bd8426dba63dd8846123778
+msgid "On XenServer and VMware, live migration of VM storage is enabled through CloudStack support for XenMotion and vMotion. Live storage migration allows VMs to be moved from one host to another, where the VMs are not located on storage shared between the two hosts. It provides the option to live migrate a VM’s disks along with the VM itself. It is possible to migrate a VM from one XenServer resource pool / VMware cluster to another, or to migrate a VM whose disks are on local storage, or even to migrate a VM’s disks from one storage repository to another, all while the VM is running."
+msgstr ""
+
+#: ../../storage.rst:433
+# ebbd4f4ab1654020b6c6bd65f6c8bf34
+msgid "Because of a limitation in VMware, live migration of storage for a VM is allowed only if the source and target storage pool are accessible to the source host; that is, the host where the VM is running when the live migration operation is requested."
+msgstr ""
+
+#: ../../storage.rst:440
+# ebbe88108b474e6fbcb0bf7db34d5473
+msgid "Migrating a Data Volume to a New Storage Pool"
+msgstr ""
+
+#: ../../storage.rst:442
+# c5d71980858c4c34a0fa4c90024e9f49
+msgid "There are two situations when you might want to migrate a disk:"
+msgstr ""
+
+#: ../../storage.rst:444
+# 787fcb424e3a474794856b6e4c36294a
+msgid "Move the disk to new storage, but leave it attached to the same running VM."
+msgstr ""
+
+#: ../../storage.rst:447
+# d3a83f9da3984d7285731f35b1577f61
+msgid "Detach the disk from its current VM, move it to new storage, and attach it to a new VM."
+msgstr ""
+
+#: ../../storage.rst:452
+# 47132cdecc7e40bdbe0b73b197292474
+msgid "Migrating Storage For a Running VM"
+msgstr ""
+
+#: ../../storage.rst:454
+# 49fb8bbee6ed48a0a77ef96befb12bde
+msgid "(Supported on XenServer and VMware)"
+msgstr ""
+
+#: ../../storage.rst:458
+# 22e57c1b2aa74b2681ccf49f19103618
+msgid "In the left navigation bar, click Instances, click the VM name, and click View Volumes."
+msgstr ""
+
+#: ../../storage.rst:461
+# afc084613de9415cb23e3125751a0dbe
+msgid "Click the volume you want to migrate."
+msgstr ""
+
+#: ../../storage.rst:463
+#: ../../storage.rst:479
+# 162037fc56d042c085a994af770ebe2c
+# 35b4f135a003412db306d5c378f6f2b8
+msgid "Detach the disk from the VM. See `“Detaching and Moving Volumes” <#detaching-and-moving-volumes>`_ but skip the “reattach” step at the end. You will do that after migrating to new storage."
+msgstr ""
+
+#: ../../storage.rst:467
+#: ../../storage.rst:483
+# bc76fcc2fe05464dbd69894e5d2d4746
+# d3951fd18db542b9b7fa617306a1f07c
+msgid "Click the Migrate Volume button |Migrateinstance.png| and choose the destination from the dropdown list."
+msgstr ""
+
+#: ../../storage.rst:470
+# 98ce5d9b63084686a8b2a0c0ad1bf658
+msgid "Watch for the volume status to change to Migrating, then back to Ready."
+msgstr ""
+
+#: ../../storage.rst:475
+# f5d81aecca72450bac7269a86bf20b26
+msgid "Migrating Storage and Attaching to a Different VM"
+msgstr ""
+
+#: ../../storage.rst:486
+# 614797ab3f9a44f08c275e1f6ed61f13
+msgid "Watch for the volume status to change to Migrating, then back to Ready. You can find the volume by clicking Storage in the left navigation bar. Make sure that Volumes is displayed at the top of the window, in the Select View dropdown."
+msgstr ""
+
+#: ../../storage.rst:491
+# 5dafaedc6390428eb94978091d3808ad
+msgid "Attach the volume to any desired VM running in the same cluster as the new storage server. See `“Attaching a Volume” <#attaching-a-volume>`_"
+msgstr ""
+
+#: ../../storage.rst:497
+# 2b29f819fd9f4a61b39cd73dbc205e65
+msgid "Migrating a VM Root Volume to a New Storage Pool"
+msgstr ""
+
+#: ../../storage.rst:499
+# 2fdc3aca153f473fac5ef5e7ba874b2a
+msgid "(XenServer, VMware) You can live migrate a VM's root disk from one storage pool to another, without stopping the VM first."
+msgstr ""
+
+#: ../../storage.rst:502
+# f6a2cc4f4e2c40ce85564e77487a6051
+msgid "(KVM) When migrating the root disk volume, the VM must first be stopped, and users can not access the VM. After migration is complete, the VM can be restarted."
+msgstr ""
+
+#: ../../storage.rst:508
+# 99e0360f9cff4f3595658d757416655e
+msgid "In the left navigation bar, click Instances, and click the VM name."
+msgstr ""
+
+#: ../../storage.rst:510
+# 40a52b70ece74eeb83347bcca88c58c0
+msgid "(KVM only) Stop the VM."
+msgstr ""
+
+#: ../../storage.rst:512
+# 918eb301d15e4e369656d3ab9c3eb850
+msgid "Click the Migrate button |Migrateinstance.png| and choose the destination from the dropdown list."
+msgstr ""
+
+#: ../../storage.rst:516
+# d43200e809304acdad782782547fe7b0
+msgid "If the VM's storage has to be migrated along with the VM, this will be noted in the host list. CloudStack will take care of the storage migration for you."
+msgstr ""
+
+#: ../../storage.rst:520
+# 7e0343377d674714bb987eed30d9687e
+msgid "Watch for the volume status to change to Migrating, then back to Running (or Stopped, in the case of KVM). This can take some time."
+msgstr ""
+
+#: ../../storage.rst:523
+# cf995ac6b00e4ede877a0a869d35d0c3
+msgid "(KVM only) Restart the VM."
+msgstr ""
+
+#: ../../storage.rst:527
+# fe6a0aed97e24cd7a80e1e10b113296f
+msgid "Resizing Volumes"
+msgstr ""
+
+#: ../../storage.rst:529
+# d5de1d251de94750aef7188031910714
+msgid "CloudStack provides the ability to resize data disks; CloudStack controls volume size by using disk offerings. This provides CloudStack administrators with the flexibility to choose how much space they want to make available to the end users. Volumes within the disk offerings with the same storage tag can be resized. For example, if you only want to offer 10, 50, and 100 GB offerings, the allowed resize should stay within those limits. That implies if you define a 10 GB, a 50 GB and a 100 GB disk offerings, a user can upgrade from 10 GB to 50 GB, or 50 GB to 100 GB. If you create a custom-sized disk offering, then you have the option to resize the volume by specifying a new, larger size."
+msgstr ""
+
+#: ../../storage.rst:540
+# 6111e137df7f47a99f428cab9e407bda
+msgid "Additionally, using the resizeVolume API, a data volume can be moved from a static disk offering to a custom disk offering with the size specified. This functionality allows those who might be billing by certain volume sizes or disk offerings to stick to that model, while providing the flexibility to migrate to whatever custom size necessary."
+msgstr ""
+
+#: ../../storage.rst:546
+# c25a67ebb3344e2c951583bec9826b9e
+msgid "This feature is supported on KVM, XenServer, and VMware hosts. However, shrinking volumes is not supported on VMware hosts."
+msgstr ""
+
+#: ../../storage.rst:549
+# f3d3d1c66a9a46a49a97000ce2d104ee
+msgid "Before you try to resize a volume, consider the following:"
+msgstr ""
+
+#: ../../storage.rst:551
+# 1c0434424baf4f79a95622559c9119b2
+msgid "The VMs associated with the volume are stopped."
+msgstr ""
+
+#: ../../storage.rst:553
+# bb545d0a9cf34f5e864a5b016d15775d
+msgid "The data disks associated with the volume are removed."
+msgstr ""
+
+#: ../../storage.rst:555
+# 157e4971d3784646a5df1fc2c27026fa
+msgid "When a volume is shrunk, the disk associated with it is simply truncated, and doing so would put its content at risk of data loss. Therefore, resize any partitions or file systems before you shrink a data disk so that all the data is moved off from that disk."
+msgstr ""
+
+#: ../../storage.rst:560
+# ea92d28ccffe4acbb40da15110829f69
+msgid "To resize a volume:"
+msgstr ""
+
+#: ../../storage.rst:568
+# 4bcbe35ab7f749c49a97fc0b69386143
+msgid "Select the volume name in the Volumes list, then click the Resize Volume button |resize-volume-icon.png|"
+msgstr ""
+
+#: ../../storage.rst:571
+# 7e6057281d384902b45704d88725b3b2
+msgid "In the Resize Volume pop-up, choose desired characteristics for the storage."
+msgstr ""
+
+#: ../../storage.rst:574
+# 837580ae5e7d422eb6d54ca24b547f32
+msgid "|resize-volume.png|"
+msgstr ""
+
+#: ../../storage.rst:576
+# 2a4fef4505014a8c9cee37ce70dc08a3
+msgid "If you select Custom Disk, specify a custom size."
+msgstr ""
+
+#: ../../storage.rst:578
+# 0f0109182c0345099ae713929c4c1f4d
+msgid "Click Shrink OK to confirm that you are reducing the size of a volume."
+msgstr ""
+
+#: ../../storage.rst:581
+# 86a5314fba614528805c75a1ce993c5b
+msgid "This parameter protects against inadvertent shrinking of a disk, which might lead to the risk of data loss. You must sign off that you know what you are doing."
+msgstr ""
+
+#: ../../storage.rst:585
+# fa1e5898785847d0acd130136d2b3e4b
+msgid "Click OK."
+msgstr ""
+
+#: ../../storage.rst:589
+# 7416d78fc57b4a21a1c5a748c35efa62
+msgid "Reset VM to New Root Disk on Reboot"
+msgstr ""
+
+#: ../../storage.rst:591
+# aa266ce7558249a58dc21c85bbe527c1
+msgid "You can specify that you want to discard the root disk and create a new one whenever a given VM is rebooted. This is useful for secure environments that need a fresh start on every boot and for desktops that should not retain state. The IP address of the VM will not change due to this operation."
+msgstr ""
+
+#: ../../storage.rst:597
+# f4a034b658174e23b49d8a0dae7faf9d
+msgid "**To enable root disk reset on VM reboot:**"
+msgstr ""
+
+#: ../../storage.rst:599
+# 0d8e7c9c2b4b461bb00b40c89b19ca07
+msgid "When creating a new service offering, set the parameter isVolatile to True. VMs created from this service offering will have their disks reset upon reboot. See `“Creating a New Compute Offering” <service_offerings.html#creating-a-new-compute-offering>`_."
+msgstr ""
+
+#: ../../storage.rst:606
+# 80b7517a265a468a91758a97f1049265
+msgid "Volume Deletion and Garbage Collection"
+msgstr ""
+
+#: ../../storage.rst:608
+# 97ddeaa6235d4294ace130e1f8fd97c0
+msgid "The deletion of a volume does not delete the snapshots that have been created from the volume"
+msgstr ""
+
+#: ../../storage.rst:611
+# 0050f5041dd04b1dbeff8201bd20e44e
+msgid "When a VM is destroyed, data disk volumes that are attached to the VM are not deleted."
+msgstr ""
+
+#: ../../storage.rst:614
+# f3a035c41fca41908db4d1f0f724f360
+msgid "Volumes are permanently destroyed using a garbage collection process. The global configuration variables expunge.delay and expunge.interval determine when the physical deletion of volumes will occur."
+msgstr ""
+
+#: ../../storage.rst:618
+# e4eb84092e8b4ea9a1a97fecac24acbb
+msgid "`expunge.delay`: determines how old the volume must be before it is destroyed, in seconds"
+msgstr ""
+
+#: ../../storage.rst:621
+# 7564390647064858ac8aa5f26279afe5
+msgid "`expunge.interval`: determines how often to run the garbage collection check"
+msgstr ""
+
+#: ../../storage.rst:624
+# 000948d93f8f4cdba6f8fbab90adf234
+msgid "Administrators should adjust these values depending on site policies around data retention."
+msgstr ""
+
+#: ../../storage.rst:629
+# a8d6b53bbfe04f9198da340f624d7b85
+msgid "Working with Volume Snapshots"
+msgstr ""
+
+#: ../../storage.rst:631
+#: ../../storage.rst:676
+# 86801042196e4703adde0a0f8f421cc2
+# ecd40cf685aa497094053129489ffa6d
+msgid "(Supported for the following hypervisors: **XenServer**, **VMware vSphere**, and **KVM**)"
+msgstr ""
+
+#: ../../storage.rst:634
+# 084599a159574408809d1cfaa15f2160
+msgid "CloudStack supports snapshots of disk volumes. Snapshots are a point-in-time capture of virtual machine disks. Memory and CPU states are not captured. If you are using the Oracle VM hypervisor, you can not take snapshots, since OVM does not support them."
+msgstr ""
+
+#: ../../storage.rst:639
+# bd4b18a4d2374e20ae0af95dad8d53e5
+msgid "Snapshots may be taken for volumes, including both root and data disks (except when the Oracle VM hypervisor is used, which does not support snapshots). The administrator places a limit on the number of stored snapshots per user. Users can create new volumes from the snapshot for recovery of particular files and they can create templates from snapshots to boot from a restored disk."
+msgstr ""
+
+#: ../../storage.rst:646
+# 61d7db60070b43a4a6a950e12598da22
+msgid "Users can create snapshots manually or by setting up automatic recurring snapshot policies. Users can also create disk volumes from snapshots, which may be attached to a VM like any other disk volume. Snapshots of both root disks and data disks are supported. However, CloudStack does not currently support booting a VM from a recovered root disk. A disk recovered from snapshot of a root disk is treated as a regular data disk; the data on recovered disk can be accessed by attaching the disk to a VM."
+msgstr ""
+
+#: ../../storage.rst:655
+# 42324227e8644e9dae9c6866285da289
+msgid "A completed snapshot is copied from primary storage to secondary storage, where it is stored until deleted or purged by newer snapshot."
+msgstr ""
+
+#: ../../storage.rst:660
+# 6d4012e38675491e950c4095403168d4
+msgid "How to Snapshot a Volume"
+msgstr ""
+
+#: ../../storage.rst:662
+# c8a3e39ed65148c1b2db5692449e3ec0
+msgid "Log in to the CloudStack UI as a user or administrator."
+msgstr ""
+
+#: ../../storage.rst:666
+# ee26042497e54259b376064aafe9cebf
+msgid "In Select View, be sure Volumes is selected."
+msgstr ""
+
+#: ../../storage.rst:668
+# 2f05b064d8b245a99e010a0f45f944e2
+msgid "Click the name of the volume you want to snapshot."
+msgstr ""
+
+#: ../../storage.rst:670
+# b4d7d4eaa5a149f0812cdddc1fd45a61
+msgid "Click the Snapshot button. |SnapshotButton.png|"
+msgstr ""
+
+#: ../../storage.rst:674
+# 6daa1fb5225e4efe8672fc86408e7055
+msgid "Automatic Snapshot Creation and Retention"
+msgstr ""
+
+#: ../../storage.rst:679
+# 01044207c30b40148eedee96353f6ad9
+msgid "Users can set up a recurring snapshot policy to automatically create multiple snapshots of a disk at regular intervals. Snapshots can be created on an hourly, daily, weekly, or monthly interval. One snapshot policy can be set up per disk volume. For example, a user can set up a daily snapshot at 02:30."
+msgstr ""
+
+#: ../../storage.rst:685
+# bc81c587ad8b4032b27d61690390e258
+msgid "With each snapshot schedule, users can also specify the number of scheduled snapshots to be retained. Older snapshots that exceed the retention limit are automatically deleted. This user-defined limit must be equal to or lower than the global limit set by the CloudStack administrator. See `“Globally Configured Limits” <usage.html#globally-configured-limits>`_. The limit applies only to those snapshots that are taken as part of an automatic recurring snapshot policy. Additional manual snapshots can be created and retained."
+msgstr ""
+
+#: ../../storage.rst:697
+# 4d944a9ae89444379355fd0f48bd592a
+msgid "Incremental Snapshots and Backup"
+msgstr ""
+
+#: ../../storage.rst:699
+# d0114a6db3e54775a44f58bd333b2916
+msgid "Snapshots are created on primary storage where a disk resides. After a snapshot is created, it is immediately backed up to secondary storage and removed from primary storage for optimal utilization of space on primary storage."
+msgstr ""
+
+#: ../../storage.rst:704
+# 1c3dce8473ed47388f4d6175b8e34c81
+msgid "CloudStack does incremental backups for some hypervisors. When incremental backups are supported, every N backup is a full backup."
+msgstr ""
+
+#: ../../storage.rst:711
+# 4559fc5082f543d6b1cdacaa46ed5a23
+msgid "Support incremental backup"
+msgstr ""
+
+#: ../../storage.rst:716
+# 1c981e7b2c7b445a9061e36444287afb
+msgid "Volume Status"
+msgstr ""
+
+#: ../../storage.rst:718
+# b7db2aabc187479797c7424c5a1bb1f8
+msgid "When a snapshot operation is triggered by means of a recurring snapshot policy, a snapshot is skipped if a volume has remained inactive since its last snapshot was taken. A volume is considered to be inactive if it is either detached or attached to a VM that is not running. CloudStack ensures that at least one snapshot is taken since the volume last became inactive."
+msgstr ""
+
+#: ../../storage.rst:725
+# b5a7b1b8f3fe4e47a40bc594491a0643
+msgid "When a snapshot is taken manually, a snapshot is always created regardless of whether a volume has been active or not."
+msgstr ""
+
+#: ../../storage.rst:730
+# e8778a84f2d142489ea29fa0793066b1
+msgid "Snapshot Restore"
+msgstr ""
+
+#: ../../storage.rst:732
+# 4bcf574b0e484b7ebf81324e87069f67
+msgid "There are two paths to restoring snapshots. Users can create a volume from the snapshot. The volume can then be mounted to a VM and files recovered as needed. Alternatively, a template may be created from the snapshot of a root disk. The user can then boot a VM from this template to effect recovery of the root disk."
+msgstr ""
+
+#: ../../storage.rst:740
+# cf46f177e13341079bac27a54806636b
+msgid "Snapshot Job Throttling"
+msgstr ""
+
+#: ../../storage.rst:742
+# 6ba670f617a541788c30476794cde2c6
+msgid "When a snapshot of a virtual machine is requested, the snapshot job runs on the same host where the VM is running or, in the case of a stopped VM, the host where it ran last. If many snapshots are requested for VMs on a single host, this can lead to problems with too many snapshot jobs overwhelming the resources of the host."
+msgstr ""
+
+#: ../../storage.rst:748
+# aedc3df480554bd59de19f4c4ba17dff
+msgid "To address this situation, the cloud's root administrator can throttle how many snapshot jobs are executed simultaneously on the hosts in the cloud by using the global configuration setting concurrent.snapshots.threshold.perhost. By using this setting, the administrator can better ensure that snapshot jobs do not time out and hypervisor hosts do not experience performance issues due to hosts being overloaded with too many snapshot requests."
+msgstr ""
+
+#: ../../storage.rst:756
+# 9a43b07f0da64addaa4eb478d80b82a2
+msgid "Set concurrent.snapshots.threshold.perhost to a value that represents a best guess about how many snapshot jobs the hypervisor hosts can execute at one time, given the current resources of the hosts and the number of VMs running on the hosts. If a given host has more snapshot requests, the additional requests are placed in a waiting queue. No new snapshot jobs will start until the number of currently executing snapshot jobs falls below the configured limit."
+msgstr ""
+
+#: ../../storage.rst:764
+# 2fd65be78bf841d9911d51c1de67cd86
+msgid "The admin can also set job.expire.minutes to place a maximum on how long a snapshot request will wait in the queue. If this limit is reached, the snapshot request fails and returns an error message."
+msgstr ""
+
+#: ../../storage.rst:770
+# 45b8545120ba486ca2cbee08b18502d3
+msgid "VMware Volume Snapshot Performance"
+msgstr ""
+
+#: ../../storage.rst:772
+# aa81997f26a64d1399b138ae79ae8ab7
+msgid "When you take a snapshot of a data or root volume on VMware, CloudStack uses an efficient storage technique to improve performance."
+msgstr ""
+
+#: ../../storage.rst:775
+# edf5b2aae9f54e098d3b6627c10fe21d
+msgid "A snapshot is not immediately exported from vCenter to a mounted NFS share and packaged into an OVA file format. This operation would consume time and resources. Instead, the original file formats (e.g., VMDK) provided by vCenter are retained. An OVA file will only be created as needed, on demand. To generate the OVA, CloudStack uses information in a properties file (\\*.ova.meta) which it stored along with the original snapshot data."
+msgstr ""
+
+#: ../../storage.rst:784
+# c2bf4f95ccfe40aea4c948e5145c1e45
+msgid "For upgrading customers: This process applies only to newly created snapshots after upgrade to CloudStack 4.2. Snapshots that have already been taken and stored in OVA format will continue to exist in that format, and will continue to work as expected."
+msgstr ""
+

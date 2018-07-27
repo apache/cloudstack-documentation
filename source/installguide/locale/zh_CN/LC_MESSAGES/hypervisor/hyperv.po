@@ -1,0 +1,538 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: 2014-06-30 10:26+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-installation-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# a5185d38ad2e4f6cbc35116341dccf23
+#: ../../hypervisor/hyperv.rst:18
+msgid "Hyper-V Installation and Configuration"
+msgstr ""
+
+# d110647269414479b7fb035bfdcdd6f6
+#: ../../hypervisor/hyperv.rst:20
+msgid ""
+"If you want to use Hyper-V hypervisor to run guest virtual machines, install"
+" Hyper-V on the hosts in your cloud. The instructions in this section "
+"doesn't duplicate Hyper-V Installation documentation. It provides the "
+"CloudStack-specific steps that are needed to prepare a Hyper-V host to work "
+"with CloudStack."
+msgstr "如果你想使用 Hyper-V hypervisor来运行虚拟机，请在你的云环境中安装Hyper-V。本章节指导不会复制Hyper-V安装文档中的内容。它提供了让Hyper-V与CloudStack协同工作的一些特有的步骤。"
+
+# f65dfc47347b4c348baf2a6336cacf5b
+#: ../../hypervisor/hyperv.rst:28
+msgid "System Requirements for Hyper-V Hypervisor Hosts"
+msgstr "Hyper-V主机的系统要求"
+
+# 7a236efba2054d4ba58d9ecdaaf20a09
+#: ../../hypervisor/hyperv.rst:32
+msgid "Supported Operating Systems for Hyper-V Hosts"
+msgstr "Hyper-V主机所支持的操作系统"
+
+# bcd4ae34d08a497bad4e1b389059ec7d
+#: ../../hypervisor/hyperv.rst:34
+msgid "Windows Server 2012 R2 Standard"
+msgstr "Windows Server 2012 R2 Standard"
+
+# 680742a637b2491cbe7f3677dca729ba
+#: ../../hypervisor/hyperv.rst:36
+msgid "Windows Server 2012 R2 Datacenter"
+msgstr "Windows Server 2012 R2 Datacenter"
+
+# ccbfedc695de4f1fa589f6b2274d49a1
+#: ../../hypervisor/hyperv.rst:38
+msgid "Hyper-V 2012 R2"
+msgstr "Hyper-V 2012 R2"
+
+# f9d4e4e9531e4e13910e7f9bcf4f6231
+#: ../../hypervisor/hyperv.rst:42
+msgid "Minimum System Requirements for Hyper-V Hosts"
+msgstr "Hyper-V主机的最低要求"
+
+# cd76d4e704da43a2bf46b4a1ca1206a9
+#: ../../hypervisor/hyperv.rst:44
+msgid "1.4 GHz 64-bit processor with hardware-assisted virtualization."
+msgstr "支持硬件辅助虚拟化的1.4 GHz 64-bit CPU"
+
+# d66329292d3e4d679ddd534dcb5b56b1
+#: ../../hypervisor/hyperv.rst:46
+msgid "800 MB of RAM"
+msgstr "800MB内存"
+
+# c68a1b515138408e8b48078375c35450
+#: ../../hypervisor/hyperv.rst:48
+msgid "32 GB of disk space"
+msgstr "32GB本地磁盘空间"
+
+# 1924b40a1ea34af985c514e7e00fcf07
+#: ../../hypervisor/hyperv.rst:50
+msgid "Gigabit (10/100/1000baseT) Ethernet adapter"
+msgstr "Gigabit (10/100/1000baseT)网卡"
+
+# 5b9c638983de4946816feb1dfe06f7a3
+#: ../../hypervisor/hyperv.rst:54
+msgid "Supported Storage"
+msgstr "支持的存储"
+
+# 5501dc718ec148a1b106d7eac8e01f89
+#: ../../hypervisor/hyperv.rst:56
+msgid "Primary Storage: Server Message Block (SMB) Version 3, Local"
+msgstr "主存储：SMB v3，本地存储"
+
+# d98826167d964496b31bc798ae8ad5a8
+#: ../../hypervisor/hyperv.rst:58
+msgid "Secondary Storage: SMB"
+msgstr "辅助存储：SMB"
+
+# 51e903e68fa44cc987b6c2ad08dbeb36
+#: ../../hypervisor/hyperv.rst:62
+msgid "Preparation Checklist for Hyper-V"
+msgstr "Hyper-V的准备工作清单"
+
+# 556e9ae21bb747fe83f5e90bf14d165b
+#: ../../hypervisor/hyperv.rst:64
+msgid ""
+"For a smoother installation, gather the following information before you "
+"start:"
+msgstr "为了能顺利地安装，在安装之前请收集以下信息："
+
+# 5e62ce48e3304d90a1e5f41a3c4bd74c
+#: ../../hypervisor/hyperv.rst:68
+msgid "Hyper-V Requiremen ts"
+msgstr ""
+
+# d69ee48d947543d6a0b0d9b680e79b99
+#: ../../hypervisor/hyperv.rst:68
+msgid "Value"
+msgstr "值"
+
+# 020b9f3298894f29adbb932ddaefd9e4
+#: ../../hypervisor/hyperv.rst:68
+msgid "Description"
+msgstr "描述"
+
+# a4ae60478f084501bf98804259ca31c7
+#: ../../hypervisor/hyperv.rst:72
+msgid "Server Roles"
+msgstr "服务器角色"
+
+# 92022baf55eb439499536554f1c93bc6
+#: ../../hypervisor/hyperv.rst:72
+msgid "Hyper-V"
+msgstr "Hyper-V"
+
+# 85cc74d52bf447b59ad5a8fb8f528075
+#: ../../hypervisor/hyperv.rst:72
+msgid ""
+"After the Windows Server 2012 R2 installation, ensure that Hyper-V is "
+"selected from Server Roles. For more information, see `Installing Hyper-V "
+"<http://technet.microsoft.com/en-us/library/ jj134187.aspx#BKMK_Step2>`__."
+msgstr ""
+
+# 19d59b3dace14c519959ecfa3f73fbca
+#: ../../hypervisor/hyperv.rst:78
+msgid "Share Location"
+msgstr "共享位置"
+
+# 6de5f24d299b4e90a4266202e2e60a6c
+#: ../../hypervisor/hyperv.rst:78
+msgid "New folders in the /Share director y"
+msgstr ""
+
+# 81267131a3fc4d27bf3bcfa5702952c3
+#: ../../hypervisor/hyperv.rst:78
+msgid ""
+"Ensure that folders are created for Primary and Secondary storage. The SMB "
+"share and the hosts should be part of the same domain."
+msgstr "确保为主存储和辅助存储创建了文件夹。SMB共享和主机应该在同一个域内。"
+
+# 22eb1d2d75ef4c2b898ba205496f1923
+#: ../../hypervisor/hyperv.rst:82
+msgid ""
+"If you are using Windows SMB share, the location of the file share for the "
+"Hyper-V deployment will be the new folder created in the \\\\Shares on the "
+"selected volume. You can create sub-folders for both PRODUCT Primary and "
+"Secondary storage within the share location. When you select the profile for"
+" the file shares, ensure that you select SMB Share -Applications. This "
+"creates the file shares with settings appropriate for Hyper-V."
+msgstr ""
+
+# 4ffc82e6d7e845dfa1b880966b6d4564
+#: ../../hypervisor/hyperv.rst:92
+msgid "Domain and Hosts"
+msgstr "域和主机"
+
+# a9f0efdf8d5a493d82c08b429664d7b1
+#: ../../hypervisor/hyperv.rst:92
+msgid "Hosts should be part of the same Active Directory domain."
+msgstr "主机都应该加入AD域。"
+
+# a92cae038f1a46f789f2c08a44dcd92c
+#: ../../hypervisor/hyperv.rst:95
+msgid "Hyper-V Users"
+msgstr "Hyper-V用户"
+
+# 97f0324a2e62434a98f3f91e9478e6f4
+#: ../../hypervisor/hyperv.rst:95
+msgid "Full control"
+msgstr "完全控制权限"
+
+# 0bcab591e0f042dc8574a8c57b363303
+#: ../../hypervisor/hyperv.rst:95
+msgid "Full control on the SMB file share."
+msgstr "SMB文件共享有完全控制权限"
+
+# ee9dcfd392f84b7790d3017d9a958d69
+#: ../../hypervisor/hyperv.rst:98
+msgid "Virtual Switch"
+msgstr "虚拟交换机"
+
+# 84b516f8c0844014922eb947cca2b078
+#: ../../hypervisor/hyperv.rst:98
+msgid ""
+"If you are using Hyper-V 2012 R2, manually create an external virtual switch"
+" before adding the host to PRODUCT. If the Hyper-V host is added to the "
+"Hyper-V manager, select the host, then click Virtual Switch Manager, then "
+"New Virtual Switch. In the External Network, select the desired NIC adapter "
+"and click Apply."
+msgstr ""
+
+# 02cd2a7fcf2e4b109e8c6ca41162ea8c
+# 985a36a6ae43480081c0d0b588f48aad
+#: ../../hypervisor/hyperv.rst:106 ../../hypervisor/hyperv.rst:237
+msgid ""
+"If you are using Windows 2012 R2, virtual switch is created automatically."
+msgstr "如果使用Windows 2012 R2，虚拟交换机会自动创建。"
+
+# 7c5051f047ec44a491a9a65e006d5f80
+#: ../../hypervisor/hyperv.rst:109
+msgid "Virtual Switch Name"
+msgstr "虚拟交换机名称"
+
+# cfebf27404b04a1799cecac6f0d87e84
+#: ../../hypervisor/hyperv.rst:109
+msgid ""
+"Take a note of the name of the virtual switch. You need to specify that when"
+" configuring PRODUCT physical network labels."
+msgstr ""
+
+# ad1036d7fef9481ca332cd4247790520
+#: ../../hypervisor/hyperv.rst:113
+msgid "Hyper-V Domain Users"
+msgstr "Hyper-V 域用户"
+
+# 4c2560df94de47199684bb4acfd7808b
+#: ../../hypervisor/hyperv.rst:113
+msgid "Add the Hyper-V domain users to the Hyper-V Administrators group."
+msgstr "将Hyper-V域用户添加到Hyper-V管理员组中。"
+
+# 6571afa7b1d446baaebeff5f13b1e3e8
+#: ../../hypervisor/hyperv.rst:116
+msgid ""
+"A domain user should have full control on the SMB share that is exported for"
+" primary and secondary storage."
+msgstr "域用户应该对提供主存储和辅助存储的SMB共享拥有完全控制权限。"
+
+# b88a4f4ee49d4182aff6ba298990d862
+#: ../../hypervisor/hyperv.rst:120
+msgid ""
+"This domain user should be part of the Hyper-V Administrators and Local "
+"Administrators group on the Hyper-V hosts that are to be managed by PRODUCT."
+msgstr ""
+
+# a99dc8722cb14924894d5b59a0f7a3bb
+#: ../../hypervisor/hyperv.rst:125
+msgid ""
+"The Hyper-V Agent service runs with the credentials of this domain user "
+"account."
+msgstr "Hyper-V代理服务使用域用户账号身份运行。"
+
+# 39ee910d4ba544e2b28f18e65ac8a889
+#: ../../hypervisor/hyperv.rst:128
+msgid ""
+"Specify the credential of the domain user while adding a host to PRODUCT so "
+"that it can manage it."
+msgstr ""
+
+# 2c879cedc51b41c9ac25284b8676b011
+#: ../../hypervisor/hyperv.rst:132
+msgid ""
+"Specify the credential of the domain user while adding a shared SMB primary "
+"or secondary storage."
+msgstr "在添加SMB共享的主存储或者辅助存储时请指定域用户凭证。"
+
+# a9e85836b0a04d6794af8975a728757c
+# 6cf6d3303dc24afba8c72b0ac1f61aa5
+# 1399d631b8b94a1b935d4e56999a727a
+#: ../../hypervisor/hyperv.rst:136 ../../hypervisor/hyperv.rst:139
+#: ../../hypervisor/hyperv.rst:144
+msgid "Migration"
+msgstr "迁移"
+
+# 9b65f73f4def43419096db3143353cdd
+#: ../../hypervisor/hyperv.rst:136
+msgid "Migratio n"
+msgstr ""
+
+# dc9b9f2328ac4f3ebb5725c452140827
+#: ../../hypervisor/hyperv.rst:136
+msgid "Enable Migration."
+msgstr "启用迁移。"
+
+# 516666dbd8874b3ca81518e553176a9f
+#: ../../hypervisor/hyperv.rst:139
+msgid "Delegati on"
+msgstr ""
+
+# af14af2a223b4526acb445f35ff387fe
+#: ../../hypervisor/hyperv.rst:139
+msgid ""
+"If you want to use Live Migration, enable Delegation. Enable the following "
+"services of other hosts participating in Live Migration: CIFS and Microsoft "
+"Virtual System Migration Service."
+msgstr "如果想使用在线迁移，请启用指派。请在使用在线迁移的主机上启用下列服务：CIFS和Microsoft Virtual System Migration Service。"
+
+# a44c5e1eebd24499a9a3c60210231d65
+#: ../../hypervisor/hyperv.rst:144
+msgid "Kerberos"
+msgstr "Kerberos"
+
+# dfad3d88e2c44f009ba6a629d2d11e09
+#: ../../hypervisor/hyperv.rst:144
+msgid "Enable Kerberos for Live Migration."
+msgstr "为在线迁移启用Kerberos。"
+
+# 8a1e170e190d499ca5cca07a1df60781
+#: ../../hypervisor/hyperv.rst:146
+msgid "Network Access Permission for Dial-in"
+msgstr "拨号访问网络权限"
+
+# 25fcf66d3708461798a6ccaae50eaf2e
+#: ../../hypervisor/hyperv.rst:146
+msgid "Allow access"
+msgstr "允许访问"
+
+# c278cbf02bda42f8a6dd149a89346803
+#: ../../hypervisor/hyperv.rst:146
+msgid "Allow access for Dial-in connections."
+msgstr "允许拨号连接访问"
+
+# ee52be753a9f4e339af5f44dbd6ae389
+#: ../../hypervisor/hyperv.rst:155
+msgid "Hyper-V Installation Steps"
+msgstr "Hyper-V安装步骤"
+
+# 5e6a34d960324a189dba8dafc3199b3f
+#: ../../hypervisor/hyperv.rst:157
+msgid ""
+"Download the operating system from `Windows Server 2012 R2 "
+"<http://technet.microsoft.com/en-us/windowsserver/hh534429>`_."
+msgstr "下载操作系统 `Windows Server 2012 R2 <http://technet.microsoft.com/en-us/windowsserver/hh534429>`_ 。"
+
+# ffa1994b12b44c7aad4386869fd9fcf3
+#: ../../hypervisor/hyperv.rst:160
+msgid ""
+"Install it on the host as given in `Install and Deploy Windows Server 2012 "
+"R2 <http://technet.microsoft.com/library/hh831620>`_."
+msgstr "按照 `Install and Deploy Windows Server 2012 R2 <http://technet.microsoft.com/library/hh831620>`_ 安装操作系统。"
+
+# a13474286278439686c5ee1893cd2bb1
+#: ../../hypervisor/hyperv.rst:163
+msgid "Post installation, ensure that you enable Hyper-V role in the server."
+msgstr "安装后，请确保安装Hyper-V角色。"
+
+# 7879473d0a8c43d0b28378281f2486d9
+#: ../../hypervisor/hyperv.rst:165
+msgid ""
+"If no Active Directory domain exists in your deployment, create one and add "
+"users to the domain."
+msgstr "如果当前环境中没有使用AD域，请部署AD域并添加域用户。"
+
+# 470dd82226bd40d19ad39f3ebe2389c2
+#: ../../hypervisor/hyperv.rst:168
+msgid ""
+"In the Active Directory domain, ensure that all the Hyper-v hosts are added "
+"so that all the hosts are part of the domain."
+msgstr "如果存在AD域，确保所有的Hyper-V主机都加入了域。"
+
+# da2cd8c727fa4b4bad3c78af98264cb0
+#: ../../hypervisor/hyperv.rst:171
+msgid ""
+"Add the domain user to the following groups on the Hyper-V host: Hyper-V "
+"Administrators and Local Administrators."
+msgstr "添加域用户到下列Hyper-V主机的用户组中： Hyper-V Administrators和Local Administrators。"
+
+# 4643f2a8b84e4e2ebbe709f5ffe25c84
+#: ../../hypervisor/hyperv.rst:176
+msgid "Installing the CloudStack Agent on a Hyper-V Host"
+msgstr "在Hyper-V主机中安装CloudStack代理"
+
+# 3ab695eb9dee461ea69f8078437525b4
+#: ../../hypervisor/hyperv.rst:178
+msgid ""
+"The Hyper-V Agent helps CloudStack perform operations on the Hyper-V hosts. "
+"This Agent communicates with the Management Server and controls all the "
+"instances on the host. Each Hyper-V host must have the Hyper-V Agent "
+"installed on it for successful interaction between the host and CloudStack. "
+"The Hyper-V Agent runs as a Windows service. Install the Agent on each host "
+"using the following steps."
+msgstr "Hyper-V代理帮助CloudStack操作Hyper-V主机。代理与管理服务器通讯并控制主机上的所有实例。为了让主机与CloudStack之间成功的进行交互，每个Hyper-V主机必须安装Hyper-V代理。Hyper-V代理作为Windows的系统服务运行。按照下里的步骤在每台主机上安装Agent。"
+
+# 481e02540708427aae673f5e8c5c81c0
+#: ../../hypervisor/hyperv.rst:185
+msgid ""
+"CloudStack Management Server communicates with Hyper-V Agent by using HTTPS."
+" For secure communication between the Management Server and the host, "
+"install a self-signed certificate on port 8250."
+msgstr "CloudStack管理服务器使用HTTPS与Hyper-V代理通讯。为了使管理服务器与主机之间能够使用加密通讯，请在8250端口上绑定自签名证书。"
+
+# 79d9ee71e1814e18ae066a37a64ccf0f
+#: ../../hypervisor/hyperv.rst:190
+msgid ""
+"The Agent installer automatically perform this operation. You have not "
+"selected this option during the Agent installation, it can also be done "
+"manually as given in step 1."
+msgstr "代理的安装程序会自动执行这个操作。在代理的安装过程中可以不选择该选项，它可以在步骤1中手动操作。"
+
+# 9e04f652b33b4fdaa6d33622de1f6c16
+#: ../../hypervisor/hyperv.rst:194
+msgid "Create and add a self-signed SSL certificate on port 8250:"
+msgstr "为8250端口创建并添加一个自签名证书："
+
+# 71791cb8679f449ea9810f71aea6642a
+#: ../../hypervisor/hyperv.rst:196
+msgid "Create A self-signed SSL certificate:"
+msgstr "创建一个自签名证书："
+
+# bf728cee5a7a4b65b04ede76db396b30
+#: ../../hypervisor/hyperv.rst:202
+msgid ""
+"This command creates the self-signed certificate and add that to the "
+"certificate store ``LocalMachine\\My``."
+msgstr "该命令创建一个自签名证书并将添加到 ``LocalMachine\\My`` 证书区域。"
+
+# f464d4439cc44510b140754a2c06e458
+#: ../../hypervisor/hyperv.rst:205
+msgid "Add the created certificate to port 8250 for https communication:"
+msgstr "将创建好的证书绑定到https通信的8250端口："
+
+# 870daf8bb8194bc5872d413d1cdea8a0
+#: ../../hypervisor/hyperv.rst:211
+msgid "Thumbprint is the thumbprint of the certificate you created."
+msgstr "Thumbprint是你创建证书的指纹。"
+
+# 43b892a6de7040a1b7465f30523308d8
+#: ../../hypervisor/hyperv.rst:213
+msgid ""
+"Build the CloudStack Agent for Hyper-V as given in `Building CloudStack "
+"Hyper-V Agent "
+"<https://cwiki.apache.org/confluence/display/CLOUDSTACK/Creating+Hyperv+Agent+Installer>`__."
+msgstr "按照 `编辑 CloudStack Hyper-V 代理 <https://cwiki.apache.org/confluence/display/CLOUDSTACK/Creating+Hyperv+Agent+Installer>`__编译CloudStack代理程序。"
+
+# 947a2a5df4c84a128f9d8fae319c8153
+#: ../../hypervisor/hyperv.rst:216
+msgid "As an administrator, run the installer."
+msgstr "以管理员权限运行安装。"
+
+# 19b6346a3cb94ec59710f84565f8f65c
+#: ../../hypervisor/hyperv.rst:218
+msgid "Provide the Hyper-V admin credentials when prompted."
+msgstr "在对话框中输入Hyper-V管理员凭证。"
+
+# f254b72c1df64645831780947bef0830
+#: ../../hypervisor/hyperv.rst:220
+msgid ""
+"When the agent installation is finished, the agent runs as a service on the "
+"host machine."
+msgstr "当代理安装完成之后，代理已经作为系统服务启动了。"
+
+# 1a5dd8f4c84b4b2aa53baa0f573b51ce
+#: ../../hypervisor/hyperv.rst:225
+msgid "Physical Network Configuration for Hyper-V"
+msgstr "为Hyper-V配置物理网络"
+
+# 380cb814510b419697ab9623d9466f8e
+#: ../../hypervisor/hyperv.rst:227
+msgid ""
+"You should have a plan for how the hosts will be cabled and which physical "
+"NICs will carry what types of traffic. By default, CloudStack will use the "
+"device that is used for the default route."
+msgstr "需要先对主机连线以及网卡绑定哪种流量做出规划。默认情况下，CloudStack将正在被使用的设备作为默认路由。"
+
+# d473bf7504d0430ca53e00c7294017bc
+#: ../../hypervisor/hyperv.rst:231
+msgid ""
+"If you are using Hyper-V 2012 R2, manually create an external virtual switch"
+" before adding the host to CloudStack. If the Hyper-V host is added to the "
+"Hyper-V manager, select the host, then click Virtual Switch Manager, then "
+"New Virtual Switch. In the External Network, select the desired NIC adapter "
+"and click Apply."
+msgstr "如果你使用Hyper-V 2012 R2，在将主机添加到CloudStack中之前，请手动创建一个外部网络虚拟交换机。如果Hyper-V管理器已经添加了Hyper-V主机，选择该主机，然后点击虚拟交换机管理器，新建虚拟交换机。在外部网络，选择所需的网卡然后点击应用。 "
+
+# 7f2f77fa086a4dba967596b9382888ed
+#: ../../hypervisor/hyperv.rst:242
+msgid "Storage Preparation for Hyper-V (Optional)"
+msgstr "为Hyper-V准备存储（可选）"
+
+# b30ee4d30a1341bc8d882e9053000bd4
+#: ../../hypervisor/hyperv.rst:244
+msgid ""
+"CloudStack allows administrators to set up shared Primary Storage and "
+"Secondary Storage that uses SMB."
+msgstr "CloudStack允许管理员使用SMB共享作为主存储和辅助存储。"
+
+# 4caaf6cc083841b2aeaf487f0f1ec4a0
+#: ../../hypervisor/hyperv.rst:247
+msgid "Create a SMB storage and expose it over SMB Version 3."
+msgstr "创建一个使用SMB v3协议的SMB存储"
+
+# d49322cf1c1d4f8d8c9ceed36c959d0f
+#: ../../hypervisor/hyperv.rst:249
+msgid ""
+"For more information, see `Deploying Hyper-V over SMB "
+"<http://technet.microsoft.com/en-us/library/jj134187.aspx>`_."
+msgstr "更多信息，请参考 `部署基于SMB的Hyper-V <http://technet.microsoft.com/en-us/library/jj134187.aspx>`_."
+
+# 9aefadf6e86e499c98acbb5785e98930
+#: ../../hypervisor/hyperv.rst:252
+msgid ""
+"You can also create and export SMB share using Windows. After the Windows "
+"Server 2012 R2 installation, select File and Storage Services from Server "
+"Roles to create an SMB file share. For more information, see `Creating an "
+"SMB File Share Using Server Manager <http://technet.microsoft.com/en-"
+"us/library/jj134187.aspx#BKMK_Step3>`_."
+msgstr "同样可以使用Windows创建并发布SMB共享。在Windows Server 2012 R2安装完成之后，在服务器角色中选择安装文件和存储服务以便创建SMB文件共享。更多信息，请参考 `通过使用服务器管理器 (SM) 创建 SMB 文件共享系统 <http://technet.microsoft.com/zh-cn/library/jj134187.aspx#BKMK_Step3>`_。"
+
+# 484e3791c2844730a548c8da780b2bf4
+#: ../../hypervisor/hyperv.rst:258
+msgid "Add the SMB share to the Active Directory domain."
+msgstr "在AD域中添加SMB共享。"
+
+# 1917261171b047b58051d75066e5fb9a
+#: ../../hypervisor/hyperv.rst:260
+msgid ""
+"The SMB share and the hosts managed by CloudStack need to be in the same "
+"domain. However, the storage should be accessible from the Management Server"
+" with the domain user privileges."
+msgstr "SMB共享和通过CloudStack管理的主机必须在同一个域内。管理服务器可以使用域用户凭证访问存储。"
+
+# 5c7bf0eee6784b07ba689b0964ebdb37
+#: ../../hypervisor/hyperv.rst:264
+msgid ""
+"While adding storage to CloudStack, ensure that the correct domain, and "
+"credentials are supplied. This user should be able to access the storage "
+"from the Management Server."
+msgstr "在CloudStack中添加存储时，请确保提供的域和凭证是正确的。确保用户可以通过管理服务器访问存储。"

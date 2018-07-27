@@ -1,0 +1,1215 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../templates.rst:18
+# cf61f319f9464e6a8d50baac31e9b5ec
+msgid "Working with Templates"
+msgstr ""
+
+#: ../../templates.rst:20
+# 9fd79a40a20d4709abcae61ed6a93dfd
+msgid "A template is a reusable configuration for virtual machines. When users launch VMs, they can choose from a list of templates in CloudStack."
+msgstr ""
+
+#: ../../templates.rst:23
+# 882ddad869e440869d4f74c92ab41271
+msgid "Specifically, a template is a virtual disk image that includes one of a variety of operating systems, optional additional software such as office applications, and settings such as access control to determine who can use the template. Each template is associated with a particular type of hypervisor, which is specified when the template is added to CloudStack."
+msgstr ""
+
+#: ../../templates.rst:30
+# 100cd7a983eb4961b368c8ba7734c42d
+msgid "CloudStack ships with a default template. In order to present more choices to users, CloudStack administrators and users can create templates and add them to CloudStack."
+msgstr ""
+
+#: ../../templates.rst:36
+# 18309d4f55464acabeff92b1bab9055f
+msgid "Creating Templates: Overview"
+msgstr ""
+
+#: ../../templates.rst:38
+# 51d039ce8ec945faabf8f8999b3d3c0f
+msgid "CloudStack ships with a default template for the CentOS operating system. There are a variety of ways to add more templates. Administrators and end users can add templates. The typical sequence of events is:"
+msgstr ""
+
+#: ../../templates.rst:43
+# 06dcc3e2b2554e33bbfdf892226179bd
+msgid "Launch a VM instance that has the operating system you want. Make any other desired configuration changes to the VM."
+msgstr ""
+
+#: ../../templates.rst:46
+# 991daad714364dbdb6c7429365bfb041
+msgid "Stop the VM."
+msgstr ""
+
+#: ../../templates.rst:48
+# 284657ff1abc49e09a72598a4a379a00
+msgid "Convert the volume into a template."
+msgstr ""
+
+#: ../../templates.rst:50
+# ee2b8742854b46679adc6fced33914ab
+msgid "There are other ways to add templates to CloudStack. For example, you can take a snapshot of the VM's volume and create a template from the snapshot, or import a VHD from another system into CloudStack."
+msgstr ""
+
+#: ../../templates.rst:54
+# 7dee2cf1359f4fcdb0bc7f03150b7582
+msgid "The various techniques for creating templates are described in the next few sections."
+msgstr ""
+
+#: ../../templates.rst:59
+# 9fa8a8480b0345fd8fa7ccd71dcf1b0c
+msgid "Requirements for Templates"
+msgstr ""
+
+#: ../../templates.rst:61
+# cb14c5b032c24423959c7044dc64c47f
+msgid "For XenServer, install PV drivers / Xen tools on each template that you create. This will enable live migration and clean guest shutdown."
+msgstr ""
+
+#: ../../templates.rst:64
+# f69f5344e03e49e78a793d4ca605d703
+msgid "For vSphere, install VMware Tools on each template that you create. This will enable console view to work properly."
+msgstr ""
+
+#: ../../templates.rst:69
+# edd05ad541bd4f498f39bb0645713513
+msgid "Best Practices for Templates"
+msgstr ""
+
+#: ../../templates.rst:71
+# fd430ee9ee634ec9bf53dfcec6786ee3
+msgid "If you plan to use large templates (100 GB or larger), be sure you have a 10-gigabit network to support the large templates. A slower network can lead to timeouts and other errors when large templates are used."
+msgstr ""
+
+#: ../../templates.rst:77
+# 4405e8f642174cb3afc031cd7fdb4dd4
+msgid "The Default Template"
+msgstr ""
+
+#: ../../templates.rst:79
+# 1f4b4121eca94788a949ff8bbb9b6377
+msgid "CloudStack includes a CentOS template. This template is downloaded by the Secondary Storage VM after the primary and secondary storage are configured. You can use this template in your production deployment or you can delete it and use custom templates."
+msgstr ""
+
+#: ../../templates.rst:84
+# a5936c6c63214301b0a732ab8a848614
+msgid "The root password for the default template is \"password\"."
+msgstr ""
+
+#: ../../templates.rst:86
+# 56f17d0ded4f4175b6a8c78f5e04b44f
+msgid "A default template is provided for each of XenServer, KVM, and vSphere. The templates that are downloaded depend on the hypervisor type that is available in your cloud. Each template is approximately 2.5 GB physical size."
+msgstr ""
+
+#: ../../templates.rst:91
+# 5c9065097a2b42dbb7b454a66807e888
+msgid "The default template includes the standard iptables rules, which will block most access to the template excluding ssh."
+msgstr ""
+
+#: ../../templates.rst:123
+# 466a67f6a17249d19212da0a1d4ae915
+msgid "Private and Public Templates"
+msgstr ""
+
+#: ../../templates.rst:125
+# 9c4cef26750347d693d5d9d2abc33ab3
+msgid "When a user creates a template, it can be designated private or public."
+msgstr ""
+
+#: ../../templates.rst:127
+# 0a5c2d13d7de4c8696c17de766c7ff8e
+msgid "Private templates are only available to the user who created them. By default, an uploaded template is private."
+msgstr ""
+
+#: ../../templates.rst:130
+# 28c6ea956b7145bf87d5c591a262ed56
+msgid "When a user marks a template as “public,” the template becomes available to all users in all accounts in the user's domain, as well as users in any other domains that have access to the Zone where the template is stored. This depends on whether the Zone, in turn, was defined as private or public. A private Zone is assigned to a single domain, and a public Zone is accessible to any domain. If a public template is created in a private Zone, it is available only to users in the domain assigned to that Zone. If a public template is created in a public Zone, it is available to all users in all domains."
+msgstr ""
+
+#: ../../templates.rst:142
+# 8cc9490673de43a29b0fa3b899a796c0
+msgid "Creating a Template from an Existing Virtual Machine"
+msgstr ""
+
+#: ../../templates.rst:144
+# 0cd7674a6e674324a8b36a9eef61b924
+msgid "Once you have at least one VM set up in the way you want, you can use it as the prototype for other VMs."
+msgstr ""
+
+#: ../../templates.rst:147
+# e16345095f804e34ba10cdf1772864c5
+msgid "Create and start a virtual machine using any of the techniques given in `“Creating VMs” <virtual_machines.html#creating-vms>`_."
+msgstr ""
+
+#: ../../templates.rst:150
+# 9ecb6312deb04964a10192717ca021b5
+msgid "Make any desired configuration changes on the running VM, then click Stop."
+msgstr ""
+
+#: ../../templates.rst:153
+# 3bf1cf52e2f44c9bb0cc976b5b3217d4
+msgid "Wait for the VM to stop. When the status shows Stopped, go to the next step."
+msgstr ""
+
+#: ../../templates.rst:156
+# 51cee376de054012b33542272d214e67
+msgid "Click Create Template and provide the following:"
+msgstr ""
+
+#: ../../templates.rst:158
+# 3dc70b806977409392d741e01a49337b
+msgid "**Name and Display Text**. These will be shown in the UI, so choose something descriptive."
+msgstr ""
+
+#: ../../templates.rst:161
+# b7cb11e24ec1424abcb2fd299d27e6f8
+msgid "**OS Type**. This helps CloudStack and the hypervisor perform certain operations and make assumptions that improve the performance of the guest. Select one of the following."
+msgstr ""
+
+#: ../../templates.rst:165
+#: ../../templates.rst:242
+# b79a71e908b643308ec4fe326a113d06
+# 3a9638381a74458e8dc78d91fcd5d121
+msgid "If the operating system of the stopped VM is listed, choose it."
+msgstr ""
+
+#: ../../templates.rst:167
+#: ../../templates.rst:244
+# c2046860ca7a420282727c68e7e0bd8d
+# 612b47eacf5a4564b7557383ab6085ff
+msgid "If the OS type of the stopped VM is not listed, choose Other."
+msgstr ""
+
+#: ../../templates.rst:169
+# a132a4db61c047f6843764cb4ad468c3
+msgid "If you want to boot from this template in PV mode, choose Other PV (32-bit) or Other PV (64-bit). This choice is available only for XenServere:"
+msgstr ""
+
+#: ../../templates.rst:174
+# 400f23d7aa30429cadbbcf6d927ea291
+msgid "Generally you should not choose an older version of the OS than the version in the image. For example, choosing CentOS 5.4 to support a CentOS 6.2 image will in general not work. In those cases you should choose Other."
+msgstr ""
+
+#: ../../templates.rst:179
+#: ../../templates.rst:266
+# a74d603504464359801664a22644ecf1
+# f36349a0b7934f51bc4238b6ce12d3bd
+msgid "**Public**. Choose Yes to make this template accessible to all users of this CloudStack installation. The template will appear in the Community Templates list. See `“Private and Public Templates” <#private-and-public-templates>`_."
+msgstr ""
+
+#: ../../templates.rst:184
+#: ../../templates.rst:258
+# cad391d15484479f99460980862c7571
+# f596589a997f4443a0ac19eee063c09f
+msgid "**Password Enabled**. Choose Yes if your template has the CloudStack password change script installed. See :ref:`adding-password-management-to-templates`."
+msgstr ""
+
+#: ../../templates.rst:188
+# 0ad3f0f48f50458e8c753d6a087e4736
+msgid "Click Add."
+msgstr ""
+
+#: ../../templates.rst:190
+# 7560e86cb7f64b25a24a8adffa210672
+msgid "The new template will be visible in the Templates section when the template creation process has been completed. The template is then available when creating a new VM."
+msgstr ""
+
+#: ../../templates.rst:196
+# f25db73d631a4cf2b1a90ddbc720ebea
+msgid "Creating a Template from a Snapshot"
+msgstr ""
+
+#: ../../templates.rst:198
+# 37c2eb36164e46d982140684d23eccc7
+msgid "If you do not want to stop the VM in order to use the Create Template menu item (as described in `“Creating a Template from an Existing Virtual Machine” <#creating-a-template-from-an-existing-virtual-machine>`_), you can create a template directly from any snapshot through the CloudStack UI."
+msgstr ""
+
+#: ../../templates.rst:206
+# 1fddfc6f75c745558d997e2c6af314cf
+msgid "Uploading Templates"
+msgstr ""
+
+#: ../../templates.rst:210
+# f50af047d15042849fd3b9d1ea923270
+msgid "vSphere Templates and ISOs"
+msgstr ""
+
+#: ../../templates.rst:212
+# 942a210bb20f467b98414c592d71af20
+msgid "If you are uploading a template that was created using vSphere Client, be sure the OVA file does not contain an ISO. If it does, the deployment of VMs from the template will fail."
+msgstr ""
+
+#: ../../templates.rst:216
+# 6b6237e29230422f8b97fbbbc07dffd7
+msgid "Templates are uploaded based on a URL. HTTP is the supported access protocol. Templates are frequently large files. You can optionally gzip them to decrease upload times."
+msgstr ""
+
+#: ../../templates.rst:220
+# 40368082877e412c87f9a15e9b28e64a
+msgid "To upload a template:"
+msgstr ""
+
+#: ../../templates.rst:222
+# b954f933d2b84ec6bdc9dcf119fd3657
+msgid "In the left navigation bar, click Templates."
+msgstr ""
+
+#: ../../templates.rst:224
+# 8d360dd921b54190850f9eb8bcfd5832
+msgid "Click Register Template."
+msgstr ""
+
+#: ../../templates.rst:226
+# 641dd9e5a6d24e33ba70513e4c194dde
+msgid "Provide the following:"
+msgstr ""
+
+#: ../../templates.rst:228
+# ee2439f863e4425a9b1d3eed40b451cb
+msgid "**Name and Description**. These will be shown in the UI, so choose something descriptive."
+msgstr ""
+
+#: ../../templates.rst:231
+# c521e0a0730348a88e0393d8c53e0fd8
+msgid "**URL**. The Management Server will download the file from the specified URL, such as ``http://my.web.server/filename.vhd.gz``."
+msgstr ""
+
+#: ../../templates.rst:234
+# 935dbff52fbc49e2bc3effdfe8343c7f
+msgid "**Zone**. Choose the zone where you want the template to be available, or All Zones to make it available throughout CloudStack."
+msgstr ""
+
+#: ../../templates.rst:238
+# ef7a5cbcab564351b11799afe2f3221f
+msgid "**OS Type**: This helps CloudStack and the hypervisor perform certain operations and make assumptions that improve the performance of the guest. Select one of the following:"
+msgstr ""
+
+#: ../../templates.rst:247
+# e179d642fb334f9fa4073821044a5116
+msgid "You should not choose an older version of the OS than the version in the image. For example, choosing CentOS 5.4 to support a CentOS 6.2 image will in general not work. In those cases you should choose Other."
+msgstr ""
+
+#: ../../templates.rst:252
+# 558b914220d948188698827bc674fa3a
+msgid "**Hypervisor**: The supported hypervisors are listed. Select the desired one."
+msgstr ""
+
+#: ../../templates.rst:255
+# 362c6490da7e426ead7c28ef7bca2f3d
+msgid "**Format**. The format of the template upload file, such as VHD or OVA."
+msgstr ""
+
+#: ../../templates.rst:262
+# 475796efd2dd4d64a7897d80ccf02191
+msgid "**Extractable**. Choose Yes if the template is available for extraction. If this option is selected, end users can download a full image of a template."
+msgstr ""
+
+#: ../../templates.rst:271
+# 7f676cb6f6844001ac5af17d480dd595
+msgid "**Featured**. Choose Yes if you would like this template to be more prominent for users to select. The template will appear in the Featured Templates list. Only an administrator can make a template Featured."
+msgstr ""
+
+#: ../../templates.rst:278
+# 4f1b071c71184d61b1e20db9a1408381
+msgid "Exporting Templates"
+msgstr ""
+
+#: ../../templates.rst:280
+# 07e8cf807f6341c981fd8028383cae01
+msgid "End users and Administrators may export templates from the CloudStack. Navigate to the template in the UI and choose the Download function from the Actions menu."
+msgstr ""
+
+#: ../../templates.rst:286
+# ff3b2f1a01194b86a94ca7406e2c9e4c
+msgid "Creating a Linux Template"
+msgstr ""
+
+#: ../../templates.rst:288
+# 942a09f060a248499ad52006fb12910b
+msgid "Linux templates should be prepared using this documentation in order to prepare your linux VMs for template deployment. For ease of documentation, the VM which you are configuring the template on will be referred to as \"Template Master\". This guide currently covers legacy setups which do not take advantage of UserData and cloud-init and assumes openssh-server is installed during installation."
+msgstr ""
+
+#: ../../templates.rst:295
+# c110f6248b3b4a56a32c3a3c42a213b0
+msgid "An overview of the procedure is as follow:"
+msgstr ""
+
+#: ../../templates.rst:297
+# fccf60393f704035b1c6fceaae12ea12
+msgid "Upload your Linux ISO."
+msgstr ""
+
+#: ../../templates.rst:299
+#: ../../templates.rst:549
+# 0a498b0d37ad4ca29ed96268e032ca4f
+# a70aa21eac0643d2908840edc2bf61b8
+msgid "For more information, see `“Adding an ISO” <virtual_machines.html#adding-an-iso>`_."
+msgstr ""
+
+#: ../../templates.rst:302
+#: ../../templates.rst:552
+# a2c6ef939b3644e5a63b94756a7ef72e
+# 949a4ba056404bb29cc67697a1f50b33
+msgid "Create a VM Instance with this ISO."
+msgstr ""
+
+#: ../../templates.rst:304
+#: ../../templates.rst:554
+# eb1605dc63014381b489c931a38377e3
+# 6cf1e105b8a542adb4ea1daf3718eb15
+msgid "For more information, see `“Creating VMs” <virtual_machines.html#creating-vms>`_."
+msgstr ""
+
+#: ../../templates.rst:307
+# 6e61739ba7024680bdf5d1c3a4fb8ddc
+msgid "Prepare the Linux VM"
+msgstr ""
+
+#: ../../templates.rst:309
+# 86ecdc3984a446e69db7d31db4b0f355
+msgid "Create a template from the VM."
+msgstr ""
+
+#: ../../templates.rst:311
+# e865dcc3232e4f51972fe0f554d58eeb
+msgid "For more information, see `“Creating a Template from an Existing Virtual Machine” <#creating-a-template-from-an-existing-virtual-machine>`_."
+msgstr ""
+
+#: ../../templates.rst:316
+# dce1b0c69ea14188bf5d99e9aa364a4d
+msgid "System preparation for Linux"
+msgstr ""
+
+#: ../../templates.rst:318
+# 9d4c8a98ec1c466da2893fd12538e3ba
+msgid "The following steps will prepare a basic Linux installation for templating."
+msgstr ""
+
+#: ../../templates.rst:321
+# 3de223a77c284109956a2eef988638db
+msgid "**Installation**"
+msgstr ""
+
+#: ../../templates.rst:323
+# 4f6808052a554f3cbb8697209cafc2de
+msgid "It is good practice to name your VM something generic during installation, this will ensure components such as LVM do not appear unique to a machine. It is recommended that the name of \"localhost\" is used for installation."
+msgstr ""
+
+#: ../../templates.rst:329
+# ff8376cf4b4b40899df3911a0216a3f8
+msgid "For CentOS, it is necessary to take unique identification out of the interface configuration file, for this edit /etc/sysconfig/network-scripts/ifcfg-eth0 and change the content to the following."
+msgstr ""
+
+#: ../../templates.rst:341
+# f68b6e4efb764f92a1e56ad9ea54f90c
+msgid "The next steps updates the packages on the Template Master."
+msgstr ""
+
+#: ../../templates.rst:343
+#: ../../templates.rst:390
+#: ../../templates.rst:446
+# 143c241d86a44e32b496b66a9934ec6a
+# 4de01ffab6a44664b87eb62c32e550a4
+# 141d36e8817e444e94e29f6c889f76d9
+msgid "Ubuntu"
+msgstr ""
+
+#: ../../templates.rst:353
+#: ../../templates.rst:453
+# 7b51d3bdb3c2417486c37949b1978dab
+# a37b78dad81f45429074776c11add237
+msgid "CentOS"
+msgstr ""
+
+#: ../../templates.rst:361
+# b6d69c72e22e4f40bd0d7d7bdaa1be7e
+msgid "**Password management**"
+msgstr ""
+
+#: ../../templates.rst:364
+# f71ab72462f5424fbc900751e054d736
+msgid "If preferred, custom users (such as ones created during the Ubuntu installation) should be removed. First ensure the root user account is enabled by giving it a password and then login as root to continue."
+msgstr ""
+
+#: ../../templates.rst:373
+# ef5341894f7e40a4a9c300485f9f1367
+msgid "As root, remove any custom user accounts created during the installation process."
+msgstr ""
+
+#: ../../templates.rst:380
+# a81798014288476da8e256abdea8526b
+msgid "See :ref:`adding-password-management-to-templates` for instructions to setup the password management script, this will allow CloudStack to change your root password from the web interface."
+msgstr ""
+
+#: ../../templates.rst:384
+# 9d00097815b24c0ca4034a304afee047
+msgid "**Hostname Management**"
+msgstr ""
+
+#: ../../templates.rst:386
+# c41219c74c2b4b138cdfd88c986a2a02
+msgid "CentOS configures the hostname by default on boot. Unfortunately Ubuntu does not have this functionality, for Ubuntu installations use the following steps."
+msgstr ""
+
+#: ../../templates.rst:392
+# ad9bf73797c24558b7e106dc2ce8510b
+msgid "The hostname of a Templated VM is set by a custom script in `/etc/dhcp/dhclient-exit-hooks.d`, this script first checks if the current hostname is localhost, if true, it will get the host-name, domain-name and fixed-ip from the DHCP lease file and use those values to set the hostname and append the `/etc/hosts` file for local hostname resolution. Once this script, or a user has changed the hostname from localhost, it will no longer adjust system files regardless of it's new hostname. The script also recreates openssh-server keys, which should have been deleted before templating (shown below). Save the following script to `/etc/dhcp/dhclient-exit-hooks.d/sethostname`, and adjust the permissions."
+msgstr ""
+
+#: ../../templates.rst:434
+# 1f68693847f1433bb6541b70f1abedd5
+msgid "The following steps should be run when you are ready to template your Template Master. If the Template Master is rebooted during these steps you will have to run all the steps again. At the end of this process the Template Master should be shutdown and the template created in order to create and deploy the final template."
+msgstr ""
+
+#: ../../templates.rst:440
+# 79b32100447b4464a62f56cf91492a6c
+msgid "**Remove the udev persistent device rules**"
+msgstr ""
+
+#: ../../templates.rst:442
+# 7a1b5554792c4cb1aa676f8e73a843b8
+msgid "This step removes information unique to your Template Master such as network MAC addresses, lease files and CD block devices, the files are automatically generated on next boot."
+msgstr ""
+
+#: ../../templates.rst:460
+# 381e458992444a499e21908b7bf88a68
+msgid "**Remove SSH Keys**"
+msgstr ""
+
+#: ../../templates.rst:462
+# 9badfc5f4bfa454e8ca0d64a71a11c24
+msgid "This step is to ensure all your Templated VMs do not have the same SSH keys, which would decrease the security of the machines dramatically."
+msgstr ""
+
+#: ../../templates.rst:470
+# 0d2aa14e20f04c3bb2bad70954a1291a
+msgid "**Cleaning log files**"
+msgstr ""
+
+#: ../../templates.rst:472
+# af913fb8f91b484bb83ac0737e1b1d10
+msgid "It is good practice to remove old logs from the Template Master."
+msgstr ""
+
+#: ../../templates.rst:481
+# db125d8aa6cc45c8bdf9340dde1d3d45
+msgid "**Setting hostname**"
+msgstr ""
+
+#: ../../templates.rst:483
+# 5a2162138fca40088196712b5650f551
+msgid "In order for the Ubuntu DHCP script to function and the CentOS dhclient to set the VM hostname they both require the Template Master's hostname to be \"localhost\", run the following commands to change the hostname."
+msgstr ""
+
+#: ../../templates.rst:493
+# 3ed2b72c9128441ab39130f547642191
+msgid "**Set user password to expire**"
+msgstr ""
+
+#: ../../templates.rst:495
+# 10db50989ebe48c4a10ebdefa260c489
+msgid "This step forces the user to change the password of the VM after the template has been deployed."
+msgstr ""
+
+#: ../../templates.rst:502
+# abe301956bd54c1c86c35fca1411ece6
+msgid "**Clearing User History**"
+msgstr ""
+
+#: ../../templates.rst:504
+# 9b6183972b934b91be6da40e93a1c12a
+msgid "The next step clears the bash commands you have just run."
+msgstr ""
+
+#: ../../templates.rst:511
+# b8a76342290b46209f3bf8c468dc5cee
+msgid "**Shutdown the VM**"
+msgstr ""
+
+#: ../../templates.rst:513
+# f92b1a930b3e4d859616309b9db518e1
+msgid "Your now ready to shutdown your Template Master and create a template!"
+msgstr ""
+
+#: ../../templates.rst:520
+# 43e271d15b2742238d231b3f7fe85ed1
+msgid "**Create the template!**"
+msgstr ""
+
+#: ../../templates.rst:522
+# 1db89306e7ae4b99b486fb9d7c783da4
+msgid "You are now ready to create the template, for more information see `“Creating a Template from an Existing Virtual Machine” <#creating-a-template-from-an-existing-virtual-machine>`_."
+msgstr ""
+
+#: ../../templates.rst:527
+# 43f673483bbc490ca475ad5e0e1f1736
+msgid "Templated VMs for both Ubuntu and CentOS may require a reboot after provisioning in order to pickup the hostname."
+msgstr ""
+
+#: ../../templates.rst:532
+# 96fe0ca1217f4c6789bb7ef7bf304036
+msgid "Creating a Windows Template"
+msgstr ""
+
+#: ../../templates.rst:534
+# dc56a5c13129464f9d23300535eedbcc
+msgid "Windows templates must be prepared with Sysprep before they can be provisioned on multiple machines. Sysprep allows you to create a generic Windows template and avoid any possible SID conflicts."
+msgstr ""
+
+#: ../../templates.rst:539
+# fcbe31f9497c46618be1ae04f1c300d2
+msgid "(XenServer) Windows VMs running on XenServer require PV drivers, which may be provided in the template or added after the VM is created. The PV drivers are necessary for essential management functions such as mounting additional volumes and ISO images, live migration, and graceful shutdown."
+msgstr ""
+
+#: ../../templates.rst:545
+# 6918a5f84f9e483484479aa24d4ec044
+msgid "An overview of the procedure is as follows:"
+msgstr ""
+
+#: ../../templates.rst:547
+# c48d96b9ff9d430780c7eefe88c19a2d
+msgid "Upload your Windows ISO."
+msgstr ""
+
+#: ../../templates.rst:557
+# c29e3a4c4aec4418a525b07f70e30657
+msgid "Follow the steps in Sysprep for Windows Server 2008 R2 (below) or Sysprep for Windows Server 2003 R2, depending on your version of Windows Server"
+msgstr ""
+
+#: ../../templates.rst:561
+# d526a7794b20490094eb4688b02c0a58
+msgid "The preparation steps are complete. Now you can actually create the template as described in Creating the Windows Template."
+msgstr ""
+
+#: ../../templates.rst:566
+# 9e309b24a2eb479e878115e7e5af8cd0
+msgid "System Preparation for Windows Server 2008 R2"
+msgstr ""
+
+#: ../../templates.rst:568
+# a195817082c4472ea5bb4e287b2b8718
+msgid "For Windows 2008 R2, you run Windows System Image Manager to create a custom sysprep response XML file. Windows System Image Manager is installed as part of the Windows Automated Installation Kit (AIK). Windows AIK can be downloaded from `Microsoft Download Center <http://www.microsoft.com/en-us/download/details.aspx?id=9085>`_."
+msgstr ""
+
+#: ../../templates.rst:574
+# 8add2ef3ee0741feb9b1575421ee590d
+msgid "Use the following steps to run sysprep for Windows 2008 R2:"
+msgstr ""
+
+#: ../../templates.rst:577
+# 0e82209c29214738a91cd3233c54314c
+msgid "The steps outlined here are derived from the excellent guide by Charity Shelbourne, originally published at `Windows Server 2008 Sysprep Mini-Setup. <http://blogs.technet.com/askcore/archive/2008/10/31/automating-the-oobe-process-during-windows-server-2008-sysprep-mini-setup.aspx>`_"
+msgstr ""
+
+#: ../../templates.rst:582
+# 9392d5c10c02447f82b7413a71b09128
+msgid "Download and install the Windows AIK"
+msgstr ""
+
+#: ../../templates.rst:585
+# a4389660d8ad4d1b8c036e5a312acf49
+msgid "Windows AIK should not be installed on the Windows 2008 R2 VM you just created. Windows AIK should not be part of the template you create. It is only used to create the sysprep answer file."
+msgstr ""
+
+#: ../../templates.rst:589
+# b6b2049c23774943958f7539fc0624db
+msgid "Copy the install.wim file in the \\\\sources directory of the Windows 2008 R2 installation DVD to the hard disk. This is a very large file and may take a long time to copy. Windows AIK requires the WIM file to be writable."
+msgstr ""
+
+#: ../../templates.rst:594
+# 6a1367c35ec54816823cc2f821fb42c3
+msgid "Start the Windows System Image Manager, which is part of the Windows AIK."
+msgstr ""
+
+#: ../../templates.rst:597
+# 210d191e2b2540c6986358e0c0b9c87d
+msgid "In the Windows Image pane, right click the Select a Windows image or catalog file option to load the install.wim file you just copied."
+msgstr ""
+
+#: ../../templates.rst:600
+# 2ae1354725354401b1c6774b56210b30
+msgid "Select the Windows 2008 R2 Edition."
+msgstr ""
+
+#: ../../templates.rst:602
+# a4139f632731431fa6c278ed49a402a3
+msgid "You may be prompted with a warning that the catalog file cannot be opened. Click Yes to create a new catalog file."
+msgstr ""
+
+#: ../../templates.rst:605
+# 6daadc2945704fdbae1a77fab0ef5843
+msgid "In the Answer File pane, right click to create a new answer file."
+msgstr ""
+
+#: ../../templates.rst:607
+# 0d84d28c59424fc39b5a2f36f3dd6bfd
+msgid "Generate the answer file from the Windows System Image Manager using the following steps:"
+msgstr ""
+
+#: ../../templates.rst:610
+# fed0398c42684441a6958c5be21f5c07
+msgid "The first page you need to automate is the Language and Country or Region Selection page. To automate this, expand Components in your Windows Image pane, right-click and add the Microsoft-Windows-International-Core setting to Pass 7 oobeSystem. In your Answer File pane, configure the InputLocale, SystemLocale, UILanguage, and UserLocale with the appropriate settings for your language and country or region. Should you have a question about any of these settings, you can right-click on the specific setting and select Help. This will open the appropriate CHM help file with more information, including examples on the setting you are attempting to configure."
+msgstr ""
+
+#: ../../templates.rst:622
+# e1b641ce1c5d42e0bc8e530c840f89c0
+msgid "|sysmanager.png|"
+msgstr ""
+
+#: ../../templates.rst:624
+# fd41b3e0931141e5971248dfb811dc0a
+msgid "You need to automate the Software License Terms Selection page, otherwise known as the End-User License Agreement (EULA). To do this, expand the Microsoft-Windows-Shell-Setup component. High-light the OOBE setting, and add the setting to the Pass 7 oobeSystem. In Settings, set HideEULAPage true."
+msgstr ""
+
+#: ../../templates.rst:630
+# 72f9459967ad49cdaebc5ac0cf7e0940
+msgid "|software-license.png|"
+msgstr ""
+
+#: ../../templates.rst:632
+# d818473f321c4c2594fbc0d903e86837
+msgid "Make sure the license key is properly set. If you use MAK key, you can just enter the MAK key on the Windows 2008 R2 VM. You need not input the MAK into the Windows System Image Manager. If you use KMS host for activation you need not enter the Product Key. Details of Windows Volume Activation can be found at `http://technet.microsoft.com/en-us/library/bb892849.aspx <http://technet.microsoft.com/en-us/library/bb892849.aspx>`_"
+msgstr ""
+
+#: ../../templates.rst:640
+# 0941ea38dbb84c5ab3a37e64ff29e6d1
+msgid "You need to automate is the Change Administrator Password page. Expand the Microsoft-Windows-Shell-Setup component (if it is not still expanded), expand UserAccounts, right-click on AdministratorPassword, and add the setting to the Pass 7 oobeSystem configuration pass of your answer file. Under Settings, specify a password next to Value."
+msgstr ""
+
+#: ../../templates.rst:647
+# 8092f90cf8784fc0bc8408b84b547e18
+msgid "|change-admin-password.png|"
+msgstr ""
+
+#: ../../templates.rst:649
+# e7e1281b1ae04398b43ab9c70d0f8370
+msgid "You may read the AIK documentation and set many more options that suit your deployment. The steps above are the minimum needed to make Windows unattended setup work."
+msgstr ""
+
+#: ../../templates.rst:653
+# 9461bfba70d24cebb27c1d65ea4bdcfa
+msgid "Save the answer file as unattend.xml. You can ignore the warning messages that appear in the validation window."
+msgstr ""
+
+#: ../../templates.rst:656
+# e03af6631f444bac834875feb1551d93
+msgid "Copy the unattend.xml file into the c:\\\\windows\\\\system32\\\\sysprep directory of the Windows 2008 R2 Virtual Machine"
+msgstr ""
+
+#: ../../templates.rst:659
+# f25b60a2d1c64b00ab525ccb2ca1488e
+msgid "Once you place the unattend.xml file in c:\\\\windows\\\\system32\\\\sysprep directory, you run the sysprep tool as follows:"
+msgstr ""
+
+#: ../../templates.rst:668
+# c8ba22aeffd14733b20fd2ddadb189dd
+msgid "The Windows 2008 R2 VM will automatically shut down after sysprep is complete."
+msgstr ""
+
+#: ../../templates.rst:673
+# 8d4d691768fd4d2a9d131f80a0af05cc
+msgid "System Preparation for Windows Server 2003 R2"
+msgstr ""
+
+#: ../../templates.rst:675
+# 25fcbd475b3842f69219e1db506c148d
+msgid "Earlier versions of Windows have a different sysprep tool. Follow these steps for Windows Server 2003 R2."
+msgstr ""
+
+#: ../../templates.rst:678
+# e4b387caeb524e64b8e43a7256ad002b
+msgid "Extract the content of \\\\support\\\\tools\\\\deploy.cab on the Windows installation CD into a directory called c:\\\\sysprep on the Windows 2003 R2 VM."
+msgstr ""
+
+#: ../../templates.rst:682
+# 678e1857aae14091ad3954e190199112
+msgid "Run c:\\\\sysprep\\\\setupmgr.exe to create the sysprep.inf file."
+msgstr ""
+
+#: ../../templates.rst:684
+# eaaddf71b1e144ba9354ecdc3e61237f
+msgid "Select Create New to create a new Answer File."
+msgstr ""
+
+#: ../../templates.rst:686
+# 3a59447b097e4d6a8bbef6303be9c428
+msgid "Enter “Sysprep setup” for the Type of Setup."
+msgstr ""
+
+#: ../../templates.rst:688
+# 511f5fa4a9e04084a2344c13153944c3
+msgid "Select the appropriate OS version and edition."
+msgstr ""
+
+#: ../../templates.rst:690
+# c36d76222fa14fe39dfdd33baf171555
+msgid "On the License Agreement screen, select “Yes fully automate the installation”."
+msgstr ""
+
+#: ../../templates.rst:693
+# 42eac0aa963c4b138bba5785ecc4a9ab
+msgid "Provide your name and organization."
+msgstr ""
+
+#: ../../templates.rst:695
+# 923d7a62003b4bb28c6fdcec04988da5
+msgid "Leave display settings at default."
+msgstr ""
+
+#: ../../templates.rst:697
+# 28ff1531e0574780b26bbcdab535f18d
+msgid "Set the appropriate time zone."
+msgstr ""
+
+#: ../../templates.rst:699
+# c166a631d91d4ec5ba1fe55fb27e9071
+msgid "Provide your product key."
+msgstr ""
+
+#: ../../templates.rst:701
+# bb448a5c8bad409b910a983aafc7e7e5
+msgid "Select an appropriate license mode for your deployment"
+msgstr ""
+
+#: ../../templates.rst:703
+# 5961b7acd3964ece89961a88ac1c9e49
+msgid "Select “Automatically generate computer name”."
+msgstr ""
+
+#: ../../templates.rst:705
+# ee71045d980c48c3b4229992144775db
+msgid "Type a default administrator password. If you enable the password reset feature, the users will not actually use this password. This password will be reset by the instance manager after the guest boots up."
+msgstr ""
+
+#: ../../templates.rst:710
+# 662f974f66a84b258158cc6d888d31ff
+msgid "Leave Network Components at “Typical Settings”."
+msgstr ""
+
+#: ../../templates.rst:712
+# b382f00fffc54d2092dea46275ce07e0
+msgid "Select the “WORKGROUP” option."
+msgstr ""
+
+#: ../../templates.rst:714
+# 864a8297271a4b9c9310a8e580d93f85
+msgid "Leave Telephony options at default."
+msgstr ""
+
+#: ../../templates.rst:716
+# f9104d77ee794b999a52c430bde6f5e0
+msgid "Select appropriate Regional Settings."
+msgstr ""
+
+#: ../../templates.rst:718
+# 7a038c948aee40caad5fdbd408680a4e
+msgid "Select appropriate language settings."
+msgstr ""
+
+#: ../../templates.rst:720
+# 8fe7a793a4b149fc8b2c04b222bb95ff
+msgid "Do not install printers."
+msgstr ""
+
+#: ../../templates.rst:722
+# 0bd5cf14d63149e8a68370eb7b35c1b5
+msgid "Do not specify “Run Once commands”."
+msgstr ""
+
+#: ../../templates.rst:724
+# 05694b63059140748f90c4a339c83a2e
+msgid "You need not specify an identification string."
+msgstr ""
+
+#: ../../templates.rst:726
+# a48d1b90a9bc405daa8af11e577a21dc
+msgid "Save the Answer File as c:\\\\sysprep\\\\sysprep.inf."
+msgstr ""
+
+#: ../../templates.rst:728
+# a2f33c40df224c318576f392e89a029e
+msgid "Run the following command to sysprep the image:"
+msgstr ""
+
+#: ../../templates.rst:734
+# 47370d15208e44779af8dc395473c3ab
+msgid "After this step the machine will automatically shut down"
+msgstr ""
+
+#: ../../templates.rst:738
+# 6a05bb80ea29400084b33d565fcc1600
+msgid "Importing Amazon Machine Images"
+msgstr ""
+
+#: ../../templates.rst:740
+# eaa1897518c8471ca61593a7b64fd3e2
+msgid "The following procedures describe how to import an Amazon Machine Image (AMI) into CloudStack when using the XenServer hypervisor."
+msgstr ""
+
+#: ../../templates.rst:743
+# f83727180aee4a54aa1735df061a32d3
+msgid "Assume you have an AMI file and this file is called CentOS\\_6.2\\_x64. Assume further that you are working on a CentOS host. If the AMI is a Fedora image, you need to be working on a Fedora host initially."
+msgstr ""
+
+#: ../../templates.rst:747
+# d52c5657eb014680ba5dcb4cd793964b
+msgid "You need to have a XenServer host with a file-based storage repository (either a local ext3 SR or an NFS SR) to convert to a VHD once the image file has been customized on the Centos/Fedora host."
+msgstr ""
+
+#: ../../templates.rst:752
+# c6369502d5ec442bba824ba9ebd3399f
+msgid "When copying and pasting a command, be sure the command has pasted as a single line before executing. Some document viewers may introduce unwanted line breaks in copied text."
+msgstr ""
+
+#: ../../templates.rst:756
+# b12f0319181043b6ace0737e16ca933e
+msgid "To import an AMI:"
+msgstr ""
+
+#: ../../templates.rst:758
+# 516bca51c4054cb9a0a7c70f455cfb50
+msgid "Set up loopback on image file:"
+msgstr ""
+
+#: ../../templates.rst:765
+# c40cb6ea1f3a41dbbdfca02adc87b77a
+msgid "Install the kernel-xen package into the image. This downloads the PV kernel and ramdisk to the image."
+msgstr ""
+
+#: ../../templates.rst:772
+# 0cf205e0b1214bfd85b81840483a7e11
+msgid "Create a grub entry in /boot/grub/grub.conf."
+msgstr ""
+
+#: ../../templates.rst:780
+# ea05e45228434e6eb41f8d92afdcb402
+msgid "Determine the name of the PV kernel that has been installed into the image."
+msgstr ""
+
+#: ../../templates.rst:793
+# 3395c5bd2c424bf08e6b7c6e789b89b8
+msgid "Xen kernels/ramdisk always end with \"xen\". For the kernel version you choose, there has to be an entry for that version under lib/modules, there has to be an initrd and vmlinuz corresponding to that. Above, the only kernel that satisfies this condition is 2.6.18-164.15.1.el5xen."
+msgstr ""
+
+#: ../../templates.rst:799
+# cd3138f8605141a1a0ef5f9ae345c8cc
+msgid "Based on your findings, create an entry in the grub.conf file. Below is an example entry."
+msgstr ""
+
+#: ../../templates.rst:812
+# 82b126faf726428faa043e59b48fab5c
+msgid "Edit etc/fstab, changing “sda1” to “xvda” and changing “sdb” to “xvdb”."
+msgstr ""
+
+#: ../../templates.rst:824
+# 158d080ac2c845c089c610cf10e51f6e
+msgid "Enable login via the console. The default console device in a XenServer system is xvc0. Ensure that etc/inittab and etc/securetty have the following lines respectively:"
+msgstr ""
+
+#: ../../templates.rst:835
+# 78c0483458064433a5dcf14ba528eb3e
+msgid "Ensure the ramdisk supports PV disk and PV network. Customize this for the kernel version you have determined above."
+msgstr ""
+
+#: ../../templates.rst:845
+# c5985961045c4177b2d3d8f684fbd61b
+msgid "Change the password."
+msgstr ""
+
+#: ../../templates.rst:855
+# a26809b7f44741e898c17da609bbd7fd
+msgid "Exit out of chroot."
+msgstr ""
+
+#: ../../templates.rst:861
+# 3fc6a7c5bbaf414da8d8a91f9f2e1056
+msgid "Check `etc/ssh/sshd_config` for lines allowing ssh login using a password."
+msgstr ""
+
+#: ../../templates.rst:870
+# 664c645f17104a9689c80c1722a33864
+msgid "If you need the template to be enabled to reset passwords from the CloudStack UI or API, install the password change script into the image at this point. See :ref:`adding-password-management-to-templates`."
+msgstr ""
+
+#: ../../templates.rst:874
+# a4f18c75d1074dd2b110ac78ffe5265f
+msgid "Unmount and delete loopback mount."
+msgstr ""
+
+#: ../../templates.rst:881
+# 8edfb6c75d614771b3b350cbc348a938
+msgid "Copy the image file to your XenServer host's file-based storage repository. In the example below, the Xenserver is \"xenhost\". This XenServer has an NFS repository whose uuid is a9c5b8c8-536b-a193-a6dc-51af3e5ff799."
+msgstr ""
+
+#: ../../templates.rst:890
+# 0dc1d9510e784714bcdec1384e8755f1
+msgid "Log in to the Xenserver and create a VDI the same size as the image."
+msgstr ""
+
+#: ../../templates.rst:900
+# 4e8f8e659e434bc5a3f36dc2fd9f822d
+msgid "Import the image file into the VDI. This may take 10–20 minutes."
+msgstr ""
+
+#: ../../templates.rst:906
+# 0b58122603704ebda3d2342ee6515ff7
+msgid "Locate a the VHD file. This is the file with the VDI’s UUID as its name. Compress it and upload it to your web server."
+msgstr ""
+
+#: ../../templates.rst:916
+# 7691e9d11b8b49d29aec196fe6cb380c
+msgid "Converting a Hyper-V VM to a Template"
+msgstr ""
+
+#: ../../templates.rst:918
+# 3edfac90ab644da58894eab904cc447c
+msgid "To convert a Hyper-V VM to a XenServer-compatible CloudStack template, you will need a standalone XenServer host with an attached NFS VHD SR. Use whatever XenServer version you are using with CloudStack, but use XenCenter 5.6 FP1 or SP2 (it is backwards compatible to 5.6). Additionally, it may help to have an attached NFS ISO SR."
+msgstr ""
+
+#: ../../templates.rst:924
+# b65f920f7aa24af9b850a9b006b20069
+msgid "For Linux VMs, you may need to do some preparation in Hyper-V before trying to get the VM to work in XenServer. Clone the VM and work on the clone if you still want to use the VM in Hyper-V. Uninstall Hyper-V Integration Components and check for any references to device names in /etc/fstab:"
+msgstr ""
+
+#: ../../templates.rst:930
+# 163cf95a7ec7444d8308e6f3915b94f7
+msgid "From the linux\\_ic/drivers/dist directory, run make uninstall (where \"linux\\_ic\" is the path to the copied Hyper-V Integration Components files)."
+msgstr ""
+
+#: ../../templates.rst:934
+# 32eb47eefa0b4af493237f82dd0f08e1
+msgid "Restore the original initrd from backup in /boot/ (the backup is named \\*.backup0)."
+msgstr ""
+
+#: ../../templates.rst:937
+# b7363d0658ff4efcb9bdf4657296d185
+msgid "Remove the \"hdX=noprobe\" entries from /boot/grub/menu.lst."
+msgstr ""
+
+#: ../../templates.rst:939
+# f8878c3d06ea47b0b8c1cfaf1721f34b
+msgid "Check /etc/fstab for any partitions mounted by device name. Change those entries (if any) to mount by LABEL or UUID. You can get that information with the blkid command."
+msgstr ""
+
+#: ../../templates.rst:943
+# 685ac8156ffb427f853074d04df8be85
+msgid "The next step is make sure the VM is not running in Hyper-V, then get the VHD into XenServer. There are two options for doing this."
+msgstr ""
+
+#: ../../templates.rst:946
+# 2a0e0f2e121b4d30bb10710db99fd9cb
+msgid "Option one:"
+msgstr ""
+
+#: ../../templates.rst:948
+# 7006009b5d4d452d9a3936d365133d47
+msgid "Import the VHD using XenCenter. In XenCenter, go to Tools>Virtual Appliance Tools>Disk Image Import."
+msgstr ""
+
+#: ../../templates.rst:951
+#: ../../templates.rst:963
+# 0b382531327d4323aa4983bacc4ed07f
+# d535d0d741a64664bf63603df9967f1f
+msgid "Choose the VHD, then click Next."
+msgstr ""
+
+#: ../../templates.rst:953
+# 2a052e079f674601944c0ba73a344456
+msgid "Name the VM, choose the NFS VHD SR under Storage, enable \"Run Operating System Fixups\" and choose the NFS ISO SR."
+msgstr ""
+
+#: ../../templates.rst:956
+# cc2978604a5d4e41bc9bf810c2d56de3
+msgid "Click Next, then Finish. A VM should be created."
+msgstr ""
+
+#: ../../templates.rst:958
+# 67a0e0a79a8a4361a4a7a54ce0f7d4bb
+msgid "Option two:"
+msgstr ""
+
+#: ../../templates.rst:960
+# 30a1d3fd83154d909f816cbdb7f05e1e
+msgid "Run XenConvert, under From choose VHD, under To choose XenServer. Click Next."
+msgstr ""
+
+#: ../../templates.rst:965
+# a00bf9e6d260466fbec3fa0226669cdb
+msgid "Input the XenServer host info, then click Next."
+msgstr ""
+
+#: ../../templates.rst:967
+# 44711d8c01324ee79a30d8ce8b327a78
+msgid "Name the VM, then click Next, then Convert. A VM should be created."
+msgstr ""
+
+#: ../../templates.rst:969
+# 92901943e7874fb1a3d951cd238e0711
+msgid "Once you have a VM created from the Hyper-V VHD, prepare it using the following steps:"
+msgstr ""
+
+#: ../../templates.rst:972
+# 86356c840f4d4588a591dc27d244bfca
+msgid "Boot the VM, uninstall Hyper-V Integration Services, and reboot."
+msgstr ""
+
+#: ../../templates.rst:974
+# b7695ac5e06a43afb682c51148ea61a2
+msgid "Install XenServer Tools, then reboot."
+msgstr ""
+
+#: ../../templates.rst:976
+# 35c3a56ed699450c91f45bdba9627f4c
+msgid "Prepare the VM as desired. For example, run sysprep on Windows VMs. See `“Creating a Windows Template” <#creating-a-windows-template>`_."
+msgstr ""
+
+#: ../../templates.rst:980
+# 35897d5ecf6144a88204cb836ee76084
+msgid "Either option above will create a VM in HVM mode. This is fine for Windows VMs, but Linux VMs may not perform optimally. Converting a Linux VM to PV mode will require additional steps and will vary by distribution."
+msgstr ""
+
+#: ../../templates.rst:985
+# e4c0e0e192034e3b9e9439d79eae9bb3
+msgid "Shut down the VM and copy the VHD from the NFS storage to a web server; for example, mount the NFS share on the web server and copy it, or from the XenServer host use sftp or scp to upload it to the web server."
+msgstr ""
+
+#: ../../templates.rst:990
+# 96fa0ff0b9e842af9381d561f9534955
+msgid "In CloudStack, create a new template using the following values:"
+msgstr ""
+
+#: ../../templates.rst:992
+# 713fe06958f947ecb69e69b7d6b4d85e
+msgid "URL. Give the URL for the VHD"
+msgstr ""
+
+#: ../../templates.rst:994
+# 4af6eb652e6744cca4ac135718ee31e2
+msgid "OS Type. Use the appropriate OS. For PV mode on CentOS, choose Other PV (32-bit) or Other PV (64-bit). This choice is available only for XenServer."
+msgstr ""
+
+#: ../../templates.rst:998
+# 2d17699c6d72457e94c849e9369be071
+msgid "Hypervisor. XenServer"
+msgstr ""
+
+#: ../../templates.rst:1000
+# 0fe80c0299054980a5b04cae8c3a89c4
+msgid "Format. VHD"
+msgstr ""
+
+#: ../../templates.rst:1002
+# 0a2022d596764dda94ee0b8c61a7b8f6
+msgid "The template will be created, and you can create instances from it."
+msgstr ""
+
+#: ../../templates.rst:1008
+# 4a48b7a200f84177bc4c2935b3cb7020
+msgid "Adding Password Management to Your Templates"
+msgstr ""
+
+#: ../../templates.rst:1010
+# c24c604a1aa648859c9853bd23207c13
+msgid "CloudStack provides an optional password reset feature that allows users to set a temporary admin or root password as well as reset the existing admin or root password from the CloudStack UI."
+msgstr ""
+
+#: ../../templates.rst:1014
+# 217ddf1185f5412999996969e470b02e
+msgid "To enable the Reset Password feature, you will need to download an additional script to patch your template. When you later upload the template into CloudStack, you can specify whether reset admin/root password feature should be enabled for this template."
+msgstr ""
+
+#: ../../templates.rst:1019
+# bed2001bd6fd4768808ffe617fb80007
+msgid "The password management feature works always resets the account password on instance boot. The script does an HTTP call to the virtual router to retrieve the account password that should be set. As long as the virtual router is accessible the guest will have access to the account password that should be used. When the user requests a password reset the management server generates and sends a new password to the virtual router for the account. Thus an instance reboot is necessary to effect any password changes."
+msgstr ""
+
+#: ../../templates.rst:1028
+# 6294578d1b274e62ad53e3b5b90dba5e
+msgid "If the script is unable to contact the virtual router during instance boot it will not set the password but boot will continue normally."
+msgstr ""
+
+#: ../../templates.rst:1033
+# 19d468fa67b84dc4ad8a85a6c367545c
+msgid "Linux OS Installation"
+msgstr ""
+
+#: ../../templates.rst:1035
+# 8dafc3143daa4624ac256c0d1deebdb3
+msgid "Use the following steps to begin the Linux OS installation:"
+msgstr ""
+
+#: ../../templates.rst:1037
+# 4cc0194e2b4049d186735606a395ff0c
+msgid "Download the script file cloud-set-guest-password:"
+msgstr ""
+
+#: ../../templates.rst:1039
+# 7dfc38f9a99c4d0bbb5007329350693e
+msgid "`http://download.cloud.com/templates/4.2/bindir/cloud-set-guest-password.in <http://download.cloud.com/templates/4.2/bindir/cloud-set-guest-password.in>`_"
+msgstr ""
+
+#: ../../templates.rst:1042
+# 6eead5e6602446c78f65d37e092b049f
+msgid "Copy this file to /etc/init.d."
+msgstr ""
+
+#: ../../templates.rst:1044
+# 2819cf0c972f4042931c612b737e8f1d
+msgid "On some Linux distributions, copy the file to ``/etc/rc.d/init.d``."
+msgstr ""
+
+#: ../../templates.rst:1046
+# f914b404aef44aa1a7fbc43160c833b3
+msgid "Run the following command to make the script executable:"
+msgstr ""
+
+#: ../../templates.rst:1052
+# ae8119d7538749fb95c1ce6ac6541c59
+msgid "Depending on the Linux distribution, continue with the appropriate step."
+msgstr ""
+
+#: ../../templates.rst:1055
+# c85e239054a542e88bb0030af7cb7a19
+msgid "On Fedora, CentOS/RHEL, and Debian, run:"
+msgstr ""
+
+#: ../../templates.rst:1063
+# e83101bd5fd3442f817ec22d010edc3e
+msgid "Windows OS Installation"
+msgstr ""
+
+#: ../../templates.rst:1065
+# c40beb0a6d5c466c994729dba2d4b12e
+msgid "Download the installer, CloudInstanceManager.msi, from the `Download page <http://sourceforge.net/projects/cloudstack/files/Password%20Management%20Scripts/CloudInstanceManager.msi/download>`_ and run the installer in the newly created Windows VM."
+msgstr ""
+
+#: ../../templates.rst:1071
+# 56df3bfa3de0447b9f0a0b4f02a1fb4c
+msgid "Deleting Templates"
+msgstr ""
+
+#: ../../templates.rst:1073
+# 2d005d50f15746f793e20a2343fe6e29
+msgid "Templates may be deleted. In general, when a template spans multiple Zones, only the copy that is selected for deletion will be deleted; the same template in other Zones will not be deleted. The provided CentOS template is an exception to this. If the provided CentOS template is deleted, it will be deleted from all Zones."
+msgstr ""
+
+#: ../../templates.rst:1079
+# 4ddffe7d5d2b4f14814054eea2d8fd47
+msgid "When templates are deleted, the VMs instantiated from them will continue to run. However, new VMs cannot be created based on the deleted template."
+msgstr ""
+

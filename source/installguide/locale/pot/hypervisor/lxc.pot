@@ -1,0 +1,621 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../hypervisor/lxc.rst:18
+# 43451b40e15f4f98aff4d4219ca70733
+msgid "LXC Installation and Configuration"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:21
+# 93d6379819944090af5901bb1c1c0d79
+msgid "System Requirements for LXC Hosts"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:23
+# bb261276bb104960bb09b70bc7e46061
+msgid "LXC requires the Linux kernel cgroups functionality which is available starting 2.6.24. Although you are not required to run these distributions, the following are recommended:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:27
+# d68380379bdd49a1891a93478283a52c
+msgid "CentOS / RHEL: 6.3"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:29
+# d13b3427477849a8882c7a2be2c75654
+msgid "Ubuntu: 12.04(.1)"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:31
+# e29f5b26524649c9b046398ff037ce23
+msgid "The main requirement for LXC hypervisors is the libvirt and Qemu version. No matter what Linux distribution you are using, make sure the following requirements are met:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:35
+#: ../../hypervisor/lxc.rst:43
+# 94b1feafb27b4459bed9dd9a2a052c0f
+# baeb40fab6b14df39610ec212fe63108
+msgid "libvirt: 1.0.0 or higher"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:37
+# cad5b5564070411fb6182cd0ad878821
+msgid "Qemu/KVM: 1.0 or higher"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:39
+# 14a04946a13a4d7b967c651ed282a8a1
+msgid "The default bridge in CloudStack is the Linux native bridge implementation (bridge module). CloudStack includes an option to work with OpenVswitch, the requirements are listed below"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:45
+# 50b69be40a954cff921f60a6a771059b
+msgid "openvswitch: 1.7.1 or higher"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:47
+# a1ade5134faf4baf99ac999ab1f26788
+msgid "In addition, the following hardware requirements apply:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:49
+# d15ebc2eead24a9fb2b115ac5127ac1a
+msgid "Within a single cluster, the hosts must be of the same distribution version."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:52
+# 9a162b24f7fd499c9793ac22d8cd360f
+msgid "All hosts within a cluster must be homogenous. The CPUs must be of the same type, count, and feature flags."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:55
+# cd66e1991f8b4d80b5267dda55cec2a8
+msgid "Must support HVM (Intel-VT or AMD-V enabled)"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:57
+# 717b8bb8d1a742d3a0abef21e3f17b90
+msgid "64-bit x86 CPU (more cores results in better performance)"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:59
+# 348214c7e23d48889b3b01488710391f
+msgid "4 GB of memory"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:61
+# 4443612c88374256a08ca5fe5b53af70
+msgid "At least 1 NIC"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:63
+# 1e16cfc2f05e4c219030609a9486327f
+msgid "When you deploy CloudStack, the hypervisor host must not have any VMs already running"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:68
+# 5c575160ed0446838d1cdebcd70cc5b1
+msgid "LXC Installation Overview"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:70
+# f252d45b9213468d9646dc4f539523fa
+msgid "LXC does not have any native system VMs, instead KVM will be used to run system VMs. This means that your host will need to support both LXC and KVM, thus most of the installation and configuration will be identical to the KVM installation. The material in this section doesn't duplicate KVM installation docs. It provides the CloudStack-specific steps that are needed to prepare a KVM host to work with CloudStack."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:78
+# 99cca852be7249bd8ea16dc52a8b405e
+msgid "Before continuing, make sure that you have applied the latest updates to your host."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:82
+# 7a72cc592a1f4a5cb0cacebf3883d960
+msgid "It is NOT recommended to run services on this host not controlled by CloudStack."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:85
+# d6f4000ff3874464bb929b7fb2e49dcc
+msgid "The procedure for installing an LXC Host is:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:87
+#: ../../hypervisor/lxc.rst:97
+# 3957e2eca5b1450fa2cdac31e4c4baa9
+# d3b55c0bf6044446b80d37400ebc93b9
+msgid "Prepare the Operating System"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:89
+# 055e7a4b9b6f40098143553e04e75142
+msgid "Install and configure libvirt"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:91
+# 3d012316e0e548a898752588ad9f8ea6
+msgid "Configure Security Policies (AppArmor and SELinux)"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:93
+#: ../../hypervisor/lxc.rst:140
+# 64413c2cb08e4dc4b057fd257e1e983e
+# 8ef5b6b2388141729517cc4fefd87440
+msgid "Install and configure the Agent"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:99
+# 8466bfaf482d4d6599658d9411867dea
+msgid "The OS of the Host must be prepared to host the CloudStack Agent and run KVM instances."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:102
+# 75c2b7bef1834d809a1804dc83d2e1fa
+msgid "Log in to your OS as root."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:104
+# b9dccd7b46514913be1eb8e7b074ac01
+msgid "Check for a fully qualified hostname."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:110
+# 95a324234f074b9991a1c506af6239c2
+msgid "This should return a fully qualified hostname such as \"kvm1.lab.example.org\". If it does not, edit /etc/hosts so that it does."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:114
+# abcfdb639b3c48e994b3f12ffb1cada1
+msgid "Make sure that the machine can reach the Internet."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:120
+# de73cc85f6bb44e788c9ea8d31d6a6ad
+msgid "Turn on NTP for time synchronization."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:123
+# 9d75eb82ba9f45178754d7a1b28c6a52
+msgid "NTP is required to synchronize the clocks of the servers in your cloud. Unsynchronized clocks can cause unexpected problems."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:126
+# 05286054f8844c638f951a6f8fb5b85e
+msgid "Install NTP"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:136
+# bbe6d187091b41178985da38a664feb3
+msgid "Repeat all of these steps on every hypervisor host."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:142
+# 045c7ecca5a246ff9218024c3f3ae129
+msgid "To manage LXC instances on the host CloudStack uses a Agent. This Agent communicates with the Management server and controls all the instances on the host."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:146
+# c201aad8986d46c891235c1b0db5cd06
+msgid "First we start by installing the agent:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:148
+#: ../../hypervisor/lxc.rst:260
+#: ../../hypervisor/lxc.rst:296
+# 415c53c92754469eb9cc8121af962ecf
+# fb5081e503f74e6995e63f1dd73d384d
+# 67c12bc85b6c4cd28de0f5dfaf696bf0
+msgid "In RHEL or CentOS:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:154
+#: ../../hypervisor/lxc.rst:266
+# d1b500c6b3bb470f8ad07118cc13a0bf
+# 69d3e8a5b14a4d32a55350bfa8b6f12a
+msgid "In Ubuntu:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:160
+# 04df1ba82d804c3e93844dbf7cdd829d
+msgid "Next step is to update the Agent configuration setttings. The settings are in ``/etc/cloudstack/agent/agent.properties``"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:163
+# 3948b221adf748639788b545bdd0e3a7
+msgid "Set the Agent to run in LXC mode:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:169
+# cb52c2209b544fd8a09751340ec83214
+msgid "Optional: If you would like to use direct networking (instead of the default bridge networking), configure these lines:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:184
+#: ../../hypervisor/lxc.rst:667
+# 6d6647d83e8145d28e4220e85924d010
+# c8b990ebe5d445a78252e84e2c4e5652
+msgid "The host is now ready to be added to a cluster. This is covered in a later section, see :ref:`adding-a-host`. It is recommended that you continue to read the documentation before adding the host!"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:191
+# cacd4ea9375c4864a2c9fb041bb4bc7c
+msgid "Install and Configure libvirt"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:193
+# b0f7e7f7680e490eacb65fb0cb1b98c6
+msgid "CloudStack uses libvirt for managing virtual machines. Therefore it is vital that libvirt is configured correctly. Libvirt is a dependency of cloudstack-agent and should already be installed."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:197
+# f54bd7715b5441f687683613bff00956
+msgid "In order to have live migration working libvirt has to listen for unsecured TCP connections. We also need to turn off libvirts attempt to use Multicast DNS advertising. Both of these settings are in ``/etc/libvirt/libvirtd.conf``"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:202
+# 7307dff0578a4767a3b5fa1812366060
+msgid "Set the following parameters:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:224
+# 15b53ac02e8d44e0aa89579320fcdb63
+msgid "Turning on \"listen\\_tcp\" in libvirtd.conf is not enough, we have to change the parameters as well:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:227
+# 48d050262fe84becbb7e6c94efc4dfba
+msgid "On RHEL or CentOS modify ``/etc/sysconfig/libvirtd``:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:229
+# 76e8b6056dc84935aaf0ca036b0155ee
+msgid "Uncomment the following line:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:235
+# f3a3573b89414eb4a4d76ebbe98300d9
+msgid "On Ubuntu: modify ``/etc/default/libvirt-bin``"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:237
+# dd99331d08b34cb7acceb95817539208
+msgid "Add \"-l\" to the following line"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:243
+# 0322d77ee56e454c9351e115b1a8a45d
+msgid "so it looks like:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:249
+# 6334d52ad51a4fc69fc58128e38f2319
+msgid "In order to have the VNC Console work we have to make sure it will bind on 0.0.0.0. We do this by editing ``/etc/libvirt/qemu.conf``"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:252
+# 27259d3d47ab4f929936de05e3d77118
+msgid "Make sure this parameter is set:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:258
+# 314400b666db4e16b3133e7ddb4aa140
+msgid "Restart libvirt"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:274
+# 4d9c0c7846c0455b97268a20ec9eb588
+msgid "Configure the Security Policies"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:276
+# c9864510ba8d4a5183f23a8c14f94563
+msgid "CloudStack does various things which can be blocked by security mechanisms like AppArmor and SELinux. These have to be disabled to ensure the Agent has all the required permissions."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:280
+# 19dce9911cb5468e8ecca028cc3629d0
+msgid "Configure SELinux (RHEL and CentOS)"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:282
+# c7bde8f0637b4bc0b30d695a9148ea26
+msgid "Check to see whether SELinux is installed on your machine. If not, you can skip this section."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:285
+# 4153e72e86e54e569528229e10430c13
+msgid "In RHEL or CentOS, SELinux is installed and enabled by default. You can verify this with:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:292
+# bcc78a8cd2f343dead2d193b7d56bf2e
+msgid "Set the SELINUX variable in ``/etc/selinux/config`` to \"permissive\". This ensures that the permissive setting will be maintained after a system reboot."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:302
+# 43e21420401741e2997b97701eff333e
+msgid "Change the following line"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:308
+# 90ead7a947fc40daabdafad6a1b988fb
+msgid "to this"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:314
+# 3040526ce2ff4279bafd31876dd69d4a
+msgid "Then set SELinux to permissive starting immediately, without requiring a system reboot."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:321
+# 52396bdef51d440f9db42978c93847dc
+msgid "Configure Apparmor (Ubuntu)"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:323
+# 19599a1513614b4f984636e98ee6d2f1
+msgid "Check to see whether AppArmor is installed on your machine. If not, you can skip this section."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:326
+# 7c0035c7f5ec4b07ba0088564f98754e
+msgid "In Ubuntu AppArmor is installed and enabled by default. You can verify this with:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:333
+# 4d576628709d47f38d097a74e45b5aa4
+msgid "Disable the AppArmor profiles for libvirt"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:353
+# 4182b6b7d26b46b99feff257f01b0b19
+msgid "Configure the network bridges"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:356
+# c4f546fe4c1d46b0a68265d339df86ff
+msgid "This is a very important section, please make sure you read this thoroughly."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:359
+# e0a8dbc6e7e9410fa60dd28738b69792
+msgid "This section details how to configure bridges using the native implementation in Linux. Please refer to the next section if you intend to use OpenVswitch"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:363
+# 7dfb485a01f249d39f5527e0c4c36cf9
+msgid "In order to forward traffic to your instances you will need at least two bridges: *public* and *private*."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:366
+# 9948a8e0c4ca41c38a570931fd602edc
+msgid "By default these bridges are called *cloudbr0* and *cloudbr1*, but you do have to make sure they are available on each hypervisor."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:369
+# dcbc1defc34f4793b6b6f08e1434ee90
+msgid "The most important factor is that you keep the configuration consistent on all your hypervisors."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:374
+# bc77d68b01c842caaba9c228953c9c9a
+msgid "Network example"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:376
+# d445133ac7514f30b223a361e185bca3
+msgid "There are many ways to configure your network. In the Basic networking mode you should have two (V)LAN's, one for your private network and one for the public network."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:380
+# 7fcbe3dbd5e24cc78a454b43046db3dc
+msgid "We assume that the hypervisor has one NIC (eth0) with three tagged VLAN's:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:383
+# 79f9905e712d4477ad6f1242de95100a
+msgid "VLAN 100 for management of the hypervisor"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:385
+# ae33b27f9bac420195c64c0770a86cd0
+msgid "VLAN 200 for public network of the instances (cloudbr0)"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:387
+# fa09f2d8754547ca8140ba9117584838
+msgid "VLAN 300 for private network of the instances (cloudbr1)"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:389
+# 6b19d1a474714e77a49083b08d8a70ad
+msgid "On VLAN 100 we give the Hypervisor the IP-Address 192.168.42.11/24 with the gateway 192.168.42.1"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:393
+# 66e4325554bd44839b00ff46222bb488
+msgid "The Hypervisor and Management server don't have to be in the same subnet!"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:396
+# 0c38727f3c5145db8ac92b2df423f9f3
+msgid "Configuring the network bridges"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:398
+# 87f57c9a5f394d4f9d55876ad8bbf7b5
+msgid "It depends on the distribution you are using how to configure these, below you'll find examples for RHEL/CentOS and Ubuntu."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:402
+# 66be5e9df4cc4265a1e9b7b608fe271a
+msgid "The goal is to have two bridges called 'cloudbr0' and 'cloudbr1' after this section. This should be used as a guideline only. The exact configuration will depend on your network layout."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:408
+# 77f72e31b31c4ff48abfeab14d5c4b81
+msgid "Configure in RHEL or CentOS"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:410
+# 5cd8006226944c75823d3fc69513965f
+msgid "The required packages were installed when libvirt was installed, we can proceed to configuring the network."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:413
+# 3c73eb0802d2412eba4716e54ae34079
+msgid "First we configure eth0"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:419
+# 19f74e9662c943b2b0d717aa2d8e80bf
+msgid "Make sure it looks similar to:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:430
+# e751abe2e0124ba9b0f542abd413a2d0
+msgid "We now have to configure the three VLAN interfaces:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:479
+# 821a8f3fb92d431e8be2f46a196c35bb
+msgid "Now we have the VLAN interfaces configured we can add the bridges on top of them."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:486
+# 755eeca19e1e4bd98aff0dd3a0c00845
+msgid "Now we just configure it is a plain bridge without an IP-Address"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:499
+# b04314407fb64b85844b09abb048169b
+msgid "We do the same for cloudbr1"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:516
+#: ../../hypervisor/lxc.rst:566
+# ec7d49c23ca9494d9ae4d1fd87a835cb
+# 3495886017224d39aa2c595d960a7ef1
+msgid "With this configuration you should be able to restart the network, although a reboot is recommended to see if everything works properly."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:520
+#: ../../hypervisor/lxc.rst:570
+# 3b0ccd039c8d42b4a0e5d7b35d533763
+# 16b5ca319946407fb1a833f3f566ad4c
+msgid "Make sure you have an alternative way like IPMI or ILO to reach the machine in case you made a configuration error and the network stops functioning!"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:525
+# 33fce556fd75408baf0d8f252c1c4aa9
+msgid "Configure in Ubuntu"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:527
+# 57356f0b3a6b48878fc6cc570d10d516
+msgid "All the required packages were installed when you installed libvirt, so we only have to configure the network."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:534
+# bde1178e96404b77bb9b9c18c923aa2e
+msgid "Modify the interfaces file to look like this:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:575
+# d5065122bf4a4f5c83dedf6baa1c2306
+msgid "Configuring the firewall"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:577
+# 2749450a561548e3b39d03e1a9af0672
+msgid "The hypervisor needs to be able to communicate with other hypervisors and the management server needs to be able to reach the hypervisor."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:580
+# c76bea5d16c743f88d76b477d69bf172
+msgid "In order to do so we have to open the following TCP ports (if you are using a firewall):"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:583
+# e0a0a271492c47a0b549ec0fa2319108
+msgid "22 (SSH)"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:585
+# 0d0046b470a24b35a6bbbb93e416d8ea
+msgid "1798"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:587
+# 9d1fa0fdb4ef48c0ad4b41556ca20e9d
+msgid "16509 (libvirt)"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:589
+# e5d29bf0b5604b418180606c2d4826e4
+msgid "5900 - 6100 (VNC consoles)"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:591
+# 53bdbd256dd44308a212a48b8de7be9c
+msgid "49152 - 49216 (libvirt live migration)"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:593
+# e1b82341b7f14145ae2b1be829bcdf18
+msgid "It depends on the firewall you are using how to open these ports. Below you'll find examples how to open these ports in RHEL/CentOS and Ubuntu."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:598
+# eadaeb9bb6514298924b9fb479ddb280
+msgid "Open ports in RHEL/CentOS"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:600
+# dbd7938f1a764dfe9159e9eaa1119863
+msgid "RHEL and CentOS use iptables for firewalling the system, you can open extra ports by executing the following iptable commands:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:623
+# d20a63121d8d4a90b51c2e5eb1dc1b8e
+msgid "These iptable settings are not persistent accross reboots, we have to save them first."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:632
+# 43b24147a3aa400f940581bae2f54fb3
+msgid "Open ports in Ubuntu"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:634
+# dbd52c7373bd40008b953dc3d9b13496
+msgid "The default firewall under Ubuntu is UFW (Uncomplicated FireWall), which is a Python wrapper around iptables."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:637
+# 34381e08303c46de9cb9a2ba59cc3026
+msgid "To open the required ports, execute the following commands:"
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:660
+# 36b32007e54b471f951bbd763f7a7d04
+msgid "By default UFW is not enabled on Ubuntu. Executing these commands with the firewall disabled does not enable the firewall."
+msgstr ""
+
+#: ../../hypervisor/lxc.rst:665
+# 1f96f5667281430689c6573d520ffbbc
+msgid "Add the host to CloudStack"
+msgstr ""
+

@@ -1,0 +1,273 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:18
+# 2ce5e59640934ab387652df180ce1583
+msgid "Isolation in Advanced Zone Using Private VLAN"
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:20
+# 813ada1771994469abac6b243cbc4ed6
+msgid "Isolation of guest traffic in shared networks can be achieved by using Private VLANs (PVLAN). PVLANs provide Layer 2 isolation between ports within the same VLAN. In a PVLAN-enabled shared network, a user VM cannot reach other user VM though they can reach the DHCP server and gateway, this would in turn allow users to control traffic within a network and help them deploy multiple applications without communication between application as well as prevent communication with other users' VMs."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:29
+# 1f6fb3f08ede4dbcbd7c9017afd047dd
+msgid "Isolate VMs in a shared networks by using Private VLANs."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:31
+# c578b86e668046b18652e81289fd1811
+msgid "Supported on KVM, XenServer, and VMware hypervisors"
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:33
+# f410d2d58c4b4e91b95fec05d57cf0b8
+msgid "PVLAN-enabled shared network can be a part of multiple networks of a guest VM."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:38
+# 23d9d81e853644d8a8e311853c02a801
+msgid "About Private VLAN"
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:40
+# a83e1c8b0ee2433b8776507d78fdd2b4
+msgid "In an Ethernet switch, a VLAN is a broadcast domain where hosts can establish direct communication with each another at Layer 2. Private VLAN is designed as an extension of VLAN standard to add further segmentation of the logical broadcast domain. A regular VLAN is a single broadcast domain, whereas a private VLAN partitions a larger VLAN broadcast domain into smaller sub-domains. A sub-domain is represented by a pair of VLANs: a Primary VLAN and a Secondary VLAN. The original VLAN that is being divided into smaller groups is called Primary, which implies that all VLAN pairs in a private VLAN share the same Primary VLAN. All the secondary VLANs exist only inside the Primary. Each Secondary VLAN has a specific VLAN ID associated to it, which differentiates one sub-domain from another."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:53
+# 4b8abf8fe1534c228333ad081037a150
+msgid "Three types of ports exist in a private VLAN domain, which essentially determine the behaviour of the participating hosts. Each ports will have its own unique set of rules, which regulate a connected host's ability to communicate with other connected host within the same private VLAN domain. Configure each host that is part of a PVLAN pair can be by using one of these three port designation:"
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:60
+# d369217099d04739b0c778e20ac02897
+msgid "**Promiscuous**: A promiscuous port can communicate with all the interfaces, including the community and isolated host ports that belong to the secondary VLANs. In Promiscuous mode, hosts are connected to promiscuous ports and are able to communicate directly with resources on both primary and secondary VLAN. Routers, DHCP servers, and other trusted devices are typically attached to promiscuous ports."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:68
+# 1e0c762b123d404eaedebd33003ad75b
+msgid "**Isolated VLANs**: The ports within an isolated VLAN cannot communicate with each other at the layer-2 level. The hosts that are connected to Isolated ports can directly communicate only with the Promiscuous resources. If your customer device needs to have access only to a gateway router, attach it to an isolated port."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:74
+# 15e3128ebacd47afb6aa943d0f2a5df1
+msgid "**Community VLANs**: The ports within a community VLAN can communicate with each other and with the promiscuous ports, but they cannot communicate with the ports in other communities at the layer-2 level. In a Community mode, direct communication is permitted only with the hosts in the same community and those that are connected to the Primary PVLAN in promiscuous mode. If your customer has two devices that need to be isolated from other customers' devices, but to be able to communicate among themselves, deploy them in community ports."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:84
+# 6a977183f6864375ada79a287e63bab3
+msgid "For further reading:"
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:86
+# ca791914bab54854b0b9c5cfdbb20be8
+msgid "`Understanding Private VLANs <http://www.cisco.com/en/US/docs/switches/lan/catalyst3750/software/release/12.2_25_see/configuration/guide/swpvlan.html#wp1038379>`_"
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:89
+# e676f05feb9a46d6974a4ed7048edad2
+msgid "`Cisco Systems' Private VLANs: Scalable Security in a Multi-Client Environment <http://tools.ietf.org/html/rfc5517>`_"
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:92
+# d5429c82db8a47aa82c6bf7602605f93
+msgid "`Private VLAN (PVLAN) on vNetwork Distributed Switch - Concept Overview (1010691) <http://kb.vmware.com>`_"
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:97
+# ad67b66852ee445b847bec89936c0d02
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:99
+# 1f2367cd590b456b9590a9b2616c8ad5
+msgid "Use a PVLAN supported switch."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:101
+# f2c1161babac465c93d8ff531d97174d
+msgid "See `Private VLAN Catalyst Switch Support Matrix <http://www.cisco.com/en/US/products/hw/switches/ps708/products_tech_note09186a0080094830.shtml>`_ for more information."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:105
+# d6805374b5244b3da5f5a39bbb521739
+msgid "All the layer 2 switches, which are PVLAN-aware, are connected to each other, and one of them is connected to a router. All the ports connected to the host would be configured in trunk mode. Open Management VLAN, Primary VLAN (public) and Secondary Isolated VLAN ports. Configure the switch port connected to the router in PVLAN promiscuous trunk mode, which would translate an isolated VLAN to primary VLAN for the PVLAN-unaware router."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:113
+# 3afd52bf2fa3442b8f0721d8bca53715
+msgid "Note that only Cisco Catalyst 4500 has the PVLAN promiscuous trunk mode to connect both normal VLAN and PVLAN to a PVLAN-unaware switch. For the other Catalyst PVLAN support switch, connect the switch to upper switch by using cables, one each for a PVLAN pair."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:118
+# 5ce2b463414844099564cd171152b994
+msgid "Configure private VLAN on your physical switches out-of-band."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:120
+# 2cd1aebdb79742a3ab786e439ef69d89
+msgid "Before you use PVLAN on XenServer and KVM, enable Open vSwitch (OVS)."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:123
+# 23029ff5d87847c3b9a551d1755aae1a
+msgid "OVS on XenServer and KVM does not support PVLAN natively. Therefore, CloudStack managed to simulate PVLAN on OVS for XenServer and KVM by modifying the flow table."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:129
+# 1ab529fe7a53485da31a8085c5fc8181
+msgid "Creating a PVLAN-Enabled Guest Network"
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:131
+# 73811e0470e04b63a31d32549a8c882b
+msgid "Log in to the CloudStack UI as administrator."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:133
+# f987d4525be34ae986962e374a48197f
+msgid "In the left navigation, choose Infrastructure."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:135
+# 81a7cad61d0c43e3989e9742e6efb902
+msgid "On Zones, click View More."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:137
+# 62eb1c2209d34440987b38dc999dad75
+msgid "Click the zone to which you want to add a guest network."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:139
+# aeaece1bb557450383b2b0c0930b8d39
+msgid "Click the Physical Network tab."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:141
+# bdccf5bb73ce4a58b074c7db9f09db19
+msgid "Click the physical network you want to work with."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:143
+# d325d3d79e0e41fd9ce93131ae2ea76a
+msgid "On the Guest node of the diagram, click Configure."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:145
+# 3254ff32eecc4e9b9ac57fc4f2219acd
+msgid "Click the Network tab."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:147
+# fdd056f25bee447e98028c9301071fd7
+msgid "Click Add guest network."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:149
+# f58f17bd25284897abbe7df71fc2c3fb
+msgid "The Add guest network window is displayed."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:151
+# 5e421fb492504766a709b728f4fc51e5
+msgid "Specify the following:"
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:153
+# 606686347ca84fbc9a83c5f46c31d8ea
+msgid "**Name**: The name of the network. This will be visible to the user."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:156
+# 73bbe5e4075e43f39b388b8b267c5401
+msgid "**Description**: The short description of the network that can be displayed to users."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:159
+# 17a0fe7f48cc4af3bbe7b8e52b6f6d1b
+msgid "**VLAN ID**: The unique ID of the VLAN."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:161
+# 1656d47de54d42a788bc34e0a0c5f2e4
+msgid "**Secondary Isolated VLAN ID**: The unique ID of the Secondary Isolated VLAN."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:164
+# 22e09670bce14054b1c11ce5ff049ba5
+msgid "For the description on Secondary Isolated VLAN, see `About Private VLAN\" <#about-private-vlan>`_."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:167
+# 38765c8ae24048dba72826d07d096afe
+msgid "**Scope**: The available scopes are Domain, Account, Project, and All."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:170
+# 90706772c0084832b86742ce99f99d6e
+msgid "**Domain**: Selecting Domain limits the scope of this guest network to the domain you specify. The network will not be available for other domains. If you select Subdomain Access, the guest network is available to all the sub domains within the selected domain."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:176
+# 7e174e9b956f4f2784d5196f1a30439f
+msgid "**Account**: The account for which the guest network is being created for. You must specify the domain the account belongs to."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:180
+# d8216708afb2490c97e3cca13b2752dd
+msgid "**Project**: The project for which the guest network is being created for. You must specify the domain the project belongs to."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:184
+# 3aa0f96be4f84d1bae1f1744b108dff8
+msgid "**All**: The guest network is available for all the domains, account, projects within the selected zone."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:187
+# 339b47c6f0f94ca4a221c0f592e92d5b
+msgid "**Network Offering**: If the administrator has configured multiple network offerings, select the one you want to use for this network."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:191
+# ae2111debd664f179fe8eb3b251587ff
+msgid "**Gateway**: The gateway that the guests should use."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:193
+# df6c332c5f7e427d867dcef1784c0731
+msgid "**Netmask**: The netmask in use on the subnet the guests will use."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:195
+# 5331fd382d74450c957ad9e5fa46a095
+msgid "**IP Range**: A range of IP addresses that are accessible from the Internet and are assigned to the guest VMs."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:198
+# 6be7da6ede894331ad2082717f19c89d
+msgid "**Network Domain**: A custom DNS suffix at the level of a network. If you want to assign a special domain name to the guest VM network, specify a DNS suffix."
+msgstr ""
+
+#: ../../networking/isolation_in_advanced_zone_with_vlan.rst:202
+# 0f106d1db97249348138b9cf76182524
+msgid "Click OK to confirm."
+msgstr ""
+

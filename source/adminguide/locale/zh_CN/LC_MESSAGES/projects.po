@@ -1,0 +1,755 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:04+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 4b4ac9e9d63047e88707cfbcf936a425
+#: ../../projects.rst:18
+msgid "Using Projects to Organize Users and Resources"
+msgstr "使用项目来管理用户和资源。"
+
+# dd53e71c97984e29944fd5f92845fc70
+#: ../../projects.rst:21
+msgid "Overview of Projects"
+msgstr "项目概览"
+
+# 9ad708c803064abcbaa0ba5c9d5efe55
+#: ../../projects.rst:23
+msgid ""
+"Projects are used to organize people and resources. CloudStack users within "
+"a single domain can group themselves into project teams so they can "
+"collaborate and share virtual resources such as VMs, snapshots, templates, "
+"data disks, and IP addresses. CloudStack tracks resource usage per project "
+"as well as per user, so the usage can be billed to either a user account or "
+"a project. For example, a private cloud within a software company might have"
+" all members of the QA department assigned to one project, so the company "
+"can track the resources used in testing while the project members can more "
+"easily isolate their efforts from other users of the same cloud"
+msgstr "项目用来管理用户和资源。处于单独域中的CloudStack用户可以自组，他们可以集中并分享虚拟资源，如VM、快照、模板、磁盘、IP地址等。CloudStack可以像跟踪每个用户一样跟踪每个项目的资源，所以可以按照用户或者项目对资源使用收费。例如，一个软件公司的私有云可能将所有QA部门的员工分配到一个项目，当需要在测试中区分同一云中该项目组员工的贡献时，测试中的资源跟踪将变的容易。"
+
+# df157ec524304800a9ced5d428bd234c
+#: ../../projects.rst:34
+msgid ""
+"You can configure CloudStack to allow any user to create a new project, or "
+"you can restrict that ability to just CloudStack administrators. Once you "
+"have created a project, you become that project’s administrator, and you can"
+" add others within your domain to the project. CloudStack can be set up "
+"either so that you can add people directly to a project, or so that you have"
+" to send an invitation which the recipient must accept. Project members can "
+"view and manage all virtual resources created by anyone in the project (for "
+"example, share VMs). A user can be a member of any number of projects and "
+"can switch views in the CloudStack UI to show only project-related "
+"information, such as project VMs, fellow project members, project-related "
+"alerts, and so on."
+msgstr "你可以配置 CloudStack允许任何用户创建项目，或者你也可以只允许CloudStack管理员进行此项操作。一旦你创建了项目，你就成为项目管理员，你可以将域中的其他用户加入到项目。CloudStack可以设置成将用户直接加入项目或者向接受者发送邀请。项目组成员可以浏览和管理项目中的所有虚拟资源（例如，共享VM）。一个用户可以属于任何项目组，并可在CloudStack界面中切换只与项目相关的信息，如项目VM，项目成员，项目相关警告等。"
+
+# d29f7ae31802463281f05dac9610d8d2
+#: ../../projects.rst:46
+msgid ""
+"The project administrator can pass on the role to another project member. "
+"The project administrator can also add more members, remove members from the"
+" project, set new resource limits (as long as they are below the global "
+"defaults set by the CloudStack administrator), and delete the project. When "
+"the administrator removes a member from the project, resources created by "
+"that user, such as VM instances, remain with the project. This brings us to "
+"the subject of resource ownership and which resources can be used by a "
+"project."
+msgstr "项目管理员可以将角色传递给项目另外的成员。项目管理员也可以添加、删除项目成员，设置新的资源限制（只要在CloudStack管理员默认的全局设置范围之内），删除项目。当管理员将成员移出项目，那个成员所创建的资源，如VM实例，仍旧在项目中。这将我们带到了资源归属以及项目可用资源的课题下."
+
+# dde002b5830f493b94778605a4014583
+#: ../../projects.rst:55
+msgid ""
+"Resources created within a project are owned by the project, not by any "
+"particular CloudStack account, and they can be used only within the project."
+" A user who belongs to one or more projects can still create resources "
+"outside of those projects, and those resources belong to the user’s account;"
+" they will not be counted against the project’s usage or resource limits. "
+"You can create project-level networks to isolate traffic within the project "
+"and provide network services such as port forwarding, load balancing, VPN, "
+"and static NAT. A project can also make use of certain types of resources "
+"from outside the project, if those resources are shared. For example, a "
+"shared network or public template is available to any project in the domain."
+" A project can get access to a private template if the template’s owner will"
+" grant permission. A project can use any service offering or disk offering "
+"available in its domain; however, you can not create private service and "
+"disk offerings at the project level.."
+msgstr "项目内创建的资源为项目所有，不属于任何特殊的CloudStack帐户，仅能在项目内使用。属于一个或多个项目的用户扔可在这些项目之外创建资源，这些资源属于这个用户帐户；与项目使用和资源限制并不冲突。你可以在项目内创建项目级的网络来隔离流量，并提供网络服务，如端口转发，负载均衡，VPN，静态NAT。项目也可以在项目之外使用特定资源，只要这些资源是共享的。例如，域中的共享网络，公用模板对任何项目都是可用的。模板所有者如果赋予权限，项目也可以使用私有模板。项目可以使用域中设置的服务方案或磁盘方案；然后，你无法在项目层级创建私有服务和磁盘方案。"
+
+# 847217dcf84349fc9c5c719bfde3ec7f
+#: ../../projects.rst:73
+msgid "Configuring Projects"
+msgstr "配置项目"
+
+# 8a115b7683d3463087791eaed5a40d85
+#: ../../projects.rst:75
+msgid ""
+"Before CloudStack users start using projects, the CloudStack administrator "
+"must set up various systems to support them, including membership "
+"invitations, limits on project resources, and controls on who can create "
+"projects."
+msgstr "在CloudStack用户使用项目前，CloudStack管理员必须设置不同的系统以支持它们，包括成员身份邀请，项目资源的限制，以及对谁可以创建项目的控制。"
+
+# 327e0569d0c44de5b93b9f7e446920cc
+#: ../../projects.rst:82
+msgid "Setting Up Invitations"
+msgstr "设置邀请"
+
+# 3e242eb556ee478cb2f58ad9f6d5ce85
+#: ../../projects.rst:84
+msgid ""
+"CloudStack can be set up either so that project administrators can add "
+"people directly to a project, or so that it is necessary to send an "
+"invitation which the recipient must accept. The invitation can be sent by "
+"email or through the user’s CloudStack account. If you want administrators "
+"to use invitations to add members to projects, turn on and set up the "
+"invitations feature in CloudStack."
+msgstr "CloudStack可以设置成项目管理员直接添加用户或者向接受者发送邀请。邀请可以通过邮件或者用户的CloudStack帐户。如果你希望管理员使用邀请来添加项目成员，那么打开并设置CloudStack中的邀请属性。"
+
+# 8e48e6338f444e73898549bf0932c731
+# 2309d4b19c6d404181b591f4f6d205fc
+# 2e84d8cc479e4cf0af43cd20e4fa190b
+# ccfea269215f463d9fe35998c9494c53
+# 8c0130530bbe4c28b429436a6d8e61c9
+#: ../../projects.rst:91 ../../projects.rst:158 ../../projects.rst:177
+#: ../../projects.rst:214 ../../projects.rst:242
+msgid "Log in as administrator to the CloudStack UI."
+msgstr "使用管理员登录到CloudStack管理界面。"
+
+# e539c47bc6254e2c8a1382c03574a8c0
+# c7df097745ac41e1ab3b12f5ede84582
+# 989f33da3208451a8bcb145c25a7d1c9
+#: ../../projects.rst:93 ../../projects.rst:179 ../../projects.rst:216
+msgid "In the left navigation, click Global Settings."
+msgstr "在左侧导航栏，点击 全局设置"
+
+# 37e43d6f62be443998cb185f24333cdf
+#: ../../projects.rst:95
+msgid ""
+"In the search box, type project and click the search button. |Searches "
+"projects|"
+msgstr "在搜索栏中，输入项目，点击搜索按钮。 |搜索项目|"
+
+# e42abfd82e134939b6d5b7d2fed2f4cc
+#: ../../projects.rst:98
+msgid ""
+"In the search results, you can see a few other parameters you need to set to"
+" control how invitations behave. The table below shows global configuration "
+"parameters related to project invitations. Click the edit button to set each"
+" parameter."
+msgstr "在搜索结果中，你还需要设置一些其他的参数来控制邀请行为。下表所示的是全局配置参数中与项目邀请相关的部分，点击编辑按钮设置每个参数。"
+
+# 9a803ec0fbce49a1bfcbdcb1961d9fe9
+#: ../../projects.rst:104
+msgid "Configuration Parameters"
+msgstr "配置参数"
+
+# 2eb9f6fe8d7148b99a39f5ba5c0b8acf
+#: ../../projects.rst:104
+msgid "Description"
+msgstr "描述"
+
+# 8f015394c22643a89189371d0708f414
+#: ../../projects.rst:106
+msgid "project.invite.required"
+msgstr "project.invite.required"
+
+# 3f3e2860eff34ffaad4d84f57b53f46d
+#: ../../projects.rst:106
+msgid "Set to true to turn on the invitations feature."
+msgstr "将值设置为 true以打开邀请特性。"
+
+# c3dd124564eb4178a6f272ed89393757
+#: ../../projects.rst:108
+msgid "project.email.sender"
+msgstr "project.email.sender"
+
+# 1c83afe8caa5414181a01e7c8e31627f
+#: ../../projects.rst:108
+msgid "The email address to show in the From field of invitation emails."
+msgstr "邀请邮件中填入发送区域的邮件地址。"
+
+# 31cb407a37cc40c79b6cdb1c8171c153
+#: ../../projects.rst:110
+msgid "project.invite.timeout"
+msgstr "project.invite.timeout"
+
+# 1ff23ba5f3174049a1f067acd434fa47
+#: ../../projects.rst:110
+msgid "Amount of time to allow for a new member to respond to the invitation."
+msgstr "新成员对于邀请的允许响应时间。"
+
+# 9daf130db7394b60aae7266b51a04ff6
+#: ../../projects.rst:112
+msgid "project.smtp.host"
+msgstr "project.smtp.host"
+
+# dd464c374e9049c4995f6ea455014f6a
+#: ../../projects.rst:112
+msgid "Name of the host that acts as an email server to handle invitations."
+msgstr "作为处理邀请的邮件服务器的主机名。"
+
+# 89967c84b58c4a69af3b1718861da2b1
+#: ../../projects.rst:114
+msgid "project.smtp.password"
+msgstr "project.smtp.password"
+
+# 1815f51cddd147efb8c9cd0bf2fb66dd
+#: ../../projects.rst:114
+msgid ""
+"(Optional) Password required by the SMTP server. You must also set "
+"project.smtp.username and set project.smtp.useAuth to true."
+msgstr "(可选)SMTP服务器要求的密码。你必须将project.smtp.username和project.smtp.useAuth也设置为true。"
+
+# bb3f4cd97d8c4c5881aaded19029f405
+#: ../../projects.rst:116
+msgid "project.smtp.port"
+msgstr "project.smtp.port"
+
+# 30ad11730ae14fc5a8a26e34a244704d
+#: ../../projects.rst:116
+msgid "SMTP server’s listening port."
+msgstr "SMTP服务器的监听端口。"
+
+# 1e41abde08fb4385ad49ccdd91e5d856
+#: ../../projects.rst:118
+msgid "project.smtp.useAuth"
+msgstr "project.smtp.useAuth"
+
+# 41fc2bf9b98d4dd7af52e18e21334a4a
+#: ../../projects.rst:118
+msgid "Set to true if the SMTP server requires a username and password."
+msgstr "如果SMTP服务器需要用户名和密码，则设置为true"
+
+# d22498c945d14f65bd0892d1a3bbb4ab
+#: ../../projects.rst:120
+msgid "project.smtp.username"
+msgstr "project.smtp.username"
+
+# a025e0ccc7b641c8b1c1c18d0884a7e8
+#: ../../projects.rst:120
+msgid ""
+"(Optional) User name required by the SMTP server for authentication. You "
+"must also set project.smtp.password and set project.smtp.useAuth to true.."
+msgstr "(可选) 用于SMTPU认证的用户名。必须将project.smtp.password 和project.smtp.useAuth也设置为true。"
+
+# 5a399b5498814feb8d1d90ac249c0f06
+#: ../../projects.rst:123
+msgid "Restart the Management Server:"
+msgstr "重启管理服务器："
+
+# cc25b73903da4b3eb00ef5dca983a9b6
+#: ../../projects.rst:130
+msgid "Setting Resource Limits for Projects"
+msgstr "设置项目的资源限制"
+
+# 4554a70f1086483a8feea5f0c15eafd0
+#: ../../projects.rst:132
+msgid ""
+"The CloudStack administrator can set global default limits to control the "
+"amount of resources that can be owned by each project in the cloud. This "
+"serves to prevent uncontrolled usage of resources such as snapshots, IP "
+"addresses, and virtual machine instances. Domain administrators can override"
+" these resource limits for individual projects with their domains, as long "
+"as the new limits are below the global defaults set by the CloudStack root "
+"administrator. The root administrator can also set lower resource limits for"
+" any project in the cloud"
+msgstr "CloudStack管理员可以设置全局默认限制来控制云中每个项目可拥有的资源量。该服务用来限制不可控的资源使用，如快照，IP地址，虚拟机实例。域管理员在域中可以覆盖个人项目中的这些资源限制，只要这些限制在CloudStack根管理员的全局默认限制范围内。CloudStack根管理员可以为云中的任何项目设置更低的资源限制。"
+
+# 87c2e78e1e344c2fa0e550443ff641e3
+#: ../../projects.rst:143
+msgid "Setting Per-Project Resource Limits"
+msgstr "按项目设置资源限制"
+
+# 7e81041e8a9147bd84fde49f3f569465
+#: ../../projects.rst:145
+msgid ""
+"The CloudStack root administrator or the domain administrator of the domain "
+"where the project resides can set new resource limits for an individual "
+"project. The project owner can set resource limits only if the owner is also"
+" a domain or root administrator."
+msgstr " CloudStack系统管理员和项目所在域的域管理员可以设置单个项目的资源限制。项目所有者只有在其同时为域或系统管理员的情况下才能设置资源限制。"
+
+# 47029644eddd41d1b4647b5332d9c061
+#: ../../projects.rst:150
+msgid ""
+"The new limits must be below the global default limits set by the CloudStack"
+" administrator (as described in `“Setting Resource Limits for Projects” "
+"<#setting-resource-limits-for-projects>`_). If the project already owns more"
+" of a given type of resource than the new maximum, the resources are not "
+"affected; however, the project can not add any new resources of that type "
+"until the total drops below the new limit."
+msgstr "新限制值必须小于 CloudStack系统管理员设置的全局限制值（参见`“设置项目的资源限制” <#setting-resource-limits-for-projects>`_）。如果项目中的某种资源数量已经超过了新限制值，现有资源不受影响。然而，该项目将不能再添加该类型的新资源，直到资源数低于新限制值。"
+
+# f22a47ab0c5948e6b1e37d8a2ea696c9
+# e197ae8d631c487694852e4f6de2552f
+# befd6ea180404a3bb8cc85b535ec7a84
+# c2260b29d8b94395b2be966c4a99333d
+# 322b7293e93f44dcb5b9d2b201132963
+# 9f3d412110854b50a846dbdbcf15d67a
+#: ../../projects.rst:160 ../../projects.rst:244 ../../projects.rst:284
+#: ../../projects.rst:328 ../../projects.rst:350 ../../projects.rst:380
+msgid "In the left navigation, click Projects."
+msgstr "在左侧导航栏点击项目。"
+
+# 028c250e7e6144e2a78bcb28aeb20c20
+# 2eb7b64a81f44d6381ff74cb4876454f
+# ced1ffd77bfc4a769d87a1e02b4f605b
+# c52047f8f2064bb2a2e81d5aa52a4c86
+#: ../../projects.rst:162 ../../projects.rst:286 ../../projects.rst:330
+#: ../../projects.rst:382
+msgid "In Select View, choose Projects."
+msgstr "在选择视图选择项目。"
+
+# af4be7e8b89f4da08c1391967263e362
+# dc1fc36ced6d4c48984c0a599e2893ba
+# 79ab804df9234bd0af6b4f89d1b545b5
+#: ../../projects.rst:164 ../../projects.rst:288 ../../projects.rst:332
+msgid "Click the name of the project you want to work with."
+msgstr "点击您要操作的项目名称。"
+
+# 5e274b4f574149edaa1899709a04a1d3
+#: ../../projects.rst:166
+msgid ""
+"Click the Resources tab. This tab lists the current maximum amount that the "
+"project is allowed to own for each type of resource."
+msgstr "点击资源页。该页列出了项目当前可拥有的各类资源的最大数量。"
+
+# b0861fc478514256ad0ca41e6184ba3a
+#: ../../projects.rst:169
+msgid "Type new values for one or more resources."
+msgstr "为一种或几种资源输入新值。"
+
+# 363f4b7e52b04d4ba5bf081c3c51dc8a
+#: ../../projects.rst:171
+msgid "Click Apply."
+msgstr "点击应用"
+
+# 7263280c84454f05be8680c02efbd4c3
+#: ../../projects.rst:175
+msgid "Setting the Global Project Resource Limits"
+msgstr "设置全局项目资源限制"
+
+# 81a908897f4d4aacb979288d14e8f4ad
+#: ../../projects.rst:181
+msgid "In the search box, type max.projects and click the search button."
+msgstr "在搜索栏输入“max.projects”，点击搜索按钮。"
+
+# 7a132176784548a1bb80edb054b486b9
+#: ../../projects.rst:183
+msgid ""
+"In the search results, you will see the parameters you can use to set per-"
+"project maximum resource amounts that apply to all projects in the cloud. No"
+" project can have more resources, but an individual project can have lower "
+"limits. Click the edit button to set each parameter. |Edits parameters|"
+msgstr "在搜索结果中，你可以看到应用于云中所有项目的参数，你可以使用它们设置每个项目的最大资源量。没有项目能拥有更多资源，但个人项目能拥有更低的限制。点击编辑按钮设置每个参数。|编辑参数|"
+
+# 241b29e357a047dc890813c8021b8bfa
+#: ../../projects.rst:190
+msgid "max.project.public.ips"
+msgstr "max.project.public.ips"
+
+# ca118c2a5e6d41b0ae029c8780d99883
+#: ../../projects.rst:190
+msgid ""
+"Maximum number of public IP addresses that can be owned by any project in "
+"the cloud. See About Public IP Addresses."
+msgstr "项目拥有的公共IP最大值，参看公共IP地址。"
+
+# 2c1e0ade7edc46ff97ef948312221adb
+#: ../../projects.rst:192
+msgid "max.project.snapshots"
+msgstr "max.project.snapshots"
+
+# a809d74e8e264f2f8544e96dacf33d1a
+#: ../../projects.rst:192
+msgid ""
+"Maximum number of snapshots that can be owned by any project in the cloud. "
+"See Working with Snapshots."
+msgstr "项目可拥有的最大快照数。参看工作相关快照。"
+
+# 977134a911f844f98a39206991e01c12
+#: ../../projects.rst:194
+msgid "max.project.templates"
+msgstr "max.project.templates"
+
+# 44dcf66c930a42869b7601e0250466ac
+#: ../../projects.rst:194
+msgid ""
+"Maximum number of templates that can be owned by any project in the cloud. "
+"See Working with Templates."
+msgstr "项目可拥有的最大模板数。参看工作相关模板。"
+
+# 9007c476909543678660480c9c5cca8e
+#: ../../projects.rst:196
+msgid "max.project.uservms"
+msgstr "max.project.uservms"
+
+# fa7756a39a51499aa79542f6a9aebd0a
+#: ../../projects.rst:196
+msgid ""
+"Maximum number of guest virtual machines that can be owned by any project in"
+" the cloud. See Working With Virtual Machines."
+msgstr "项目中的虚拟客户机最大数目。参看工作相关虚拟机。"
+
+# 4bd44963b3c84bd09612d0c16cb2b21f
+#: ../../projects.rst:198
+msgid "max.project.volumes"
+msgstr "max.project.volumes"
+
+# b684120b36d54144b7d6bfd1b9cb26fd
+#: ../../projects.rst:198
+msgid ""
+"Maximum number of data volumes that can be owned by any project in the "
+"cloud. See Working with Volumes."
+msgstr "项目中所拥有的最大数据卷数，参看工作相关卷。"
+
+# 0a08e573ccff40ed964877c1e0a25422
+# 30bf816d7d164ebc9a3527bb06dcd0f5
+#: ../../projects.rst:202 ../../projects.rst:228
+msgid "Restart the Management Server."
+msgstr "重启管理服务器。"
+
+# 7a9e7b11d9204da7b5e4ae5b0cad6e15
+#: ../../projects.rst:209
+msgid "Setting Project Creator Permissions"
+msgstr "设置项目创建许可"
+
+# c9583a67341f459c94f3aa76485a5fd8
+#: ../../projects.rst:211
+msgid ""
+"You can configure CloudStack to allow any user to create a new project, or "
+"you can restrict that ability to just CloudStack administrators."
+msgstr "你可以配置 CloudStack允许所有用户创建新项目，或限制只有 CloudStack管理员具备此项能力。"
+
+# 0c5d1047bef445548c0c40109d391eca
+#: ../../projects.rst:218
+msgid "In the search box, type allow.user.create.projects."
+msgstr "在搜索框中，输入allow.user.create.projects。"
+
+# 44b11d9aac27438eb4bfa70d31759c86
+#: ../../projects.rst:220
+msgid "Click the edit button to set the parameter. |Edits parameters|"
+msgstr "点击编辑按钮设置参数。|编辑参数|"
+
+# fb277fa119e0496885f889a3ae48d1e7
+#: ../../projects.rst:222
+msgid "``allow.user.create.projects``"
+msgstr "``allow.user.create.projects``"
+
+# 9cdac884b4f1482599019f9178759604
+#: ../../projects.rst:224
+msgid ""
+"Set to true to allow end users to create projects. Set to false if you want "
+"only the CloudStack root administrator and domain administrators to create "
+"projects."
+msgstr "设置为true以允许端用户创建项目。设置为false如果你仅希望CloudStack根管理员和域管理员创建项目。"
+
+# c36ba31002c74ec98d2dcdec7bd9374e
+#: ../../projects.rst:236
+msgid "Creating a New Project"
+msgstr "创建新项目"
+
+# 6b62d8460a034f809371e1886bd34e80
+#: ../../projects.rst:238
+msgid ""
+"CloudStack administrators and domain administrators can create projects. If "
+"the global configuration parameter allow.user.create.projects is set to "
+"true, end users can also create projects."
+msgstr "CloudStack系统管理员和域管理员能创建项目。如果全局变量allow.user.create.projects设置为true，终端用户也能创建项目。"
+
+# 4a302cfc6cb34ba5baf6615abcae28ec
+#: ../../projects.rst:246
+msgid "In Select view, click Projects."
+msgstr "在选择视图点击项目。"
+
+# 520e75eebfb24c338a07edbd8119b8b8
+#: ../../projects.rst:248
+msgid "Click New Project."
+msgstr "点击新建项目。"
+
+# 42a42b0b1bb24125b530a8fb28a3b31a
+#: ../../projects.rst:250
+msgid ""
+"Give the project a name and description for display to users, then click "
+"Create Project."
+msgstr "为项目命名并添加描述，然后点击创建项目。"
+
+# 2c2486f0447d4f138b5e1c0e8ceace41
+#: ../../projects.rst:253
+msgid ""
+"A screen appears where you can immediately add more members to the project. "
+"This is optional. Click Next when you are ready to move on."
+msgstr "会出现一个界面，你可以很快的添加更多成员到项目中，此步可选。当你准备好继续，点击下一步。"
+
+# 2bc3c862668e44e78c5ec777dc974839
+#: ../../projects.rst:256
+msgid "Click Save."
+msgstr "点击保存。"
+
+# 986f0cb8853a42738eabaab830e43267
+#: ../../projects.rst:260
+msgid "Adding Members to a Project"
+msgstr "添加成员到一个项目"
+
+# 50647c0e69974fbba211aabef3bcda09
+#: ../../projects.rst:262
+msgid ""
+"New members can be added to a project by the project’s administrator, the "
+"domain administrator of the domain where the project resides or any parent "
+"domain, or the CloudStack root administrator. There are two ways to add "
+"members in CloudStack, but only one way is enabled at a time:"
+msgstr "项目管理员、项目所属域的域及其父域的管理员，CloudStack根管理员均可以添加新成员。CloudStack有两种方法可以添加成员，但每次只能使能一种："
+
+# ef81123f6c0e4fc3b1c2521f4324fc93
+#: ../../projects.rst:267
+msgid ""
+"If invitations have been enabled, you can send invitations to new members."
+msgstr "如果邀请已被使能，你可以向新成员发送邀请。"
+
+# f7125c407042411f8a4f35feff955784
+#: ../../projects.rst:270
+msgid ""
+"If invitations are not enabled, you can add members directly through the UI."
+msgstr "如果邀请未被使能，你可以直接通过界面添加成员。"
+
+# a4433f30587f4374807fa615b7d326cb
+#: ../../projects.rst:275
+msgid "Sending Project Membership Invitations"
+msgstr "发送项目成员关系邀请"
+
+# 4417ea897e4e418caf7f9050b019b36e
+#: ../../projects.rst:277
+msgid ""
+"Use these steps to add a new member to a project if the invitations feature "
+"is enabled in the cloud as described in `“Setting Up Invitations” <#setting-"
+"up-invitations>`_. If the invitations feature is not turned on, use the "
+"procedure in Adding Project Members From the UI."
+msgstr "如果邀请特性按照 `“设置邀请” <#设置邀请>`_中描述的方式被打开，使用这些步骤添加项目成员。如果邀请特性没有被打开，使用在界面中添加项目成员的步骤。"
+
+# b67c9d2fbb734979be7d9a0b06c83e07
+# 09c3e88bd9394c8ebecf83e40f6dfef9
+# 2b65ac18e6e14d988ed9d105965093b3
+# 0f9433a953604a24aaa3936b6304ff37
+# aaabf61386aa4e90a83121dd76c55ca6
+#: ../../projects.rst:282 ../../projects.rst:326 ../../projects.rst:348
+#: ../../projects.rst:378 ../../projects.rst:402
+msgid "Log in to the CloudStack UI."
+msgstr "登录到CloudStack的界面"
+
+# 6848798224324e658909d941615e3c71
+#: ../../projects.rst:290
+msgid "Click the Invitations tab."
+msgstr "点击邀请标签。"
+
+# 49786f4671bb4afbb13144fb5cdb22de
+#: ../../projects.rst:292
+msgid "In Add by, select one of the following:"
+msgstr "在添加中，选择以下其中一个："
+
+# 00420a7de6a943b5bea54e2930363c7b
+#: ../../projects.rst:294
+msgid ""
+"Account – The invitation will appear in the user’s Invitations tab in the "
+"Project View. See Using the Project View."
+msgstr "帐户 – 邀请将出现在用户项目概览的邀请标签中。参见使用项目概览。"
+
+# 23674aa094d8476181833f1077c82ce9
+#: ../../projects.rst:297
+msgid ""
+"Email – The invitation will be sent to the user’s email address. Each "
+"emailed invitation includes a unique code called a token which the recipient"
+" will provide back to CloudStack when accepting the invitation. Email "
+"invitations will work only if the global parameters related to the SMTP "
+"server have been set. See `“Setting Up Invitations” <#setting-up-"
+"invitations>`_."
+msgstr "邮件 – 邀请将发送到用户的邮箱地址。每个被发送的邀请中包含一个唯一的编码，称为令牌，当接收者接受邀请时需要向 CloudStack提供此令牌。只有当SMTP服务器相关的参数设置完毕后，邮件邀请才能工作。参见`“设置邀请” <#setting-up-invitations>`_。"
+
+# 98b4ad1148b94b9ba8e815a3ce4214a8
+#: ../../projects.rst:304
+msgid ""
+"Type the user name or email address of the new member you want to add, and "
+"click Invite. Type the CloudStack user name if you chose Account in the "
+"previous step. If you chose Email, type the email address. You can invite "
+"only people who have an account in this cloud within the same domain as the "
+"project. However, you can send the invitation to any email address."
+msgstr "输入想要添加的新用户的用户名称或邮件地址，点击邀请。如果你在前述步骤中选择了帐户那么输入CloudStack用户名。如果你选择了邮箱，那么输入邮箱地址，你只能邀请在云中拥有帐户并在与项目组同一域中的用户。然而，你可以向任何邮箱发送邀请。"
+
+# 9a6d6ea948754921bbc259b87b29ba60
+#: ../../projects.rst:311
+msgid ""
+"To view and manage the invitations you have sent, return to this tab. When "
+"an invitation is accepted, the new member will appear in the project’s "
+"Accounts tab."
+msgstr "为了浏览和管理你所发送的邀请，返回到这个标签。当邀请被接受，新成员将显示在项目帐户标签中。"
+
+# 2cf29d018a2c48a79262e2f02cd30162
+#: ../../projects.rst:317
+msgid "Adding Project Members From the UI"
+msgstr "在界面中添加项目成员"
+
+# fdbf78a90732473689bcedc64864415d
+#: ../../projects.rst:319
+msgid ""
+"The steps below tell how to add a new member to a project if the invitations"
+" feature is not enabled in the cloud. If the invitations feature is enabled "
+"cloud,as described in `“Setting Up Invitations” <#setting-up-invitations>`_,"
+" use the procedure in `“Sending Project Membership Invitations” <#sending-"
+"project-membership-invitations>`_."
+msgstr "下面的步骤介绍在邀请特性未使能的情况下如何添加项目新成员。如果邀请特性已按照 `“设置邀请” <#设置邀请>`_在云中被使能，那么使用 `“发送项目成员关系邀请” <#发送项目成员关系邀请>`_中的步骤。"
+
+# 069a956c95384174a82d2d0302f3dfd7
+#: ../../projects.rst:334
+msgid "Click the Accounts tab. The current members of the project are listed."
+msgstr "点击项目按钮，项目目前的成员将被列表显示。"
+
+# 7654413243e545579270bc7c8b813727
+#: ../../projects.rst:337
+msgid ""
+"Type the account name of the new member you want to add, and click Add "
+"Account. You can add only people who have an account in this cloud and "
+"within the same domain as the project."
+msgstr "输入你想添加的新成员帐户名称，点击添加帐户。你只能添加云中已有并与项目存在于相同域中的帐户。"
+
+# 774bd03942ea4a3ab9023bb4f72b627b
+#: ../../projects.rst:343
+msgid "Accepting a Membership Invitation"
+msgstr "接受成员关系邀请"
+
+# 462eace7144340bc8bc65c06d8056b5d
+#: ../../projects.rst:345
+msgid ""
+"If you have received an invitation to join a CloudStack project, and you "
+"want to accept the invitation, follow these steps:"
+msgstr "如果你收到了一个加入CloudStack项目的邀请，并希望接受邀请，请按照以下步骤："
+
+# 0196721635cc470094d28372774afeac
+#: ../../projects.rst:352
+msgid "In Select View, choose Invitations."
+msgstr "在选择概览，选择邀请。"
+
+# f5c8ed37ac54486f8d3f20f9129936a9
+#: ../../projects.rst:354
+msgid "If you see the invitation listed onscreen, click the Accept button."
+msgstr "如果你看到有邀请列表显示，点击接受按钮。"
+
+# f33506966c894c8eb0f91c35c2d506ee
+#: ../../projects.rst:356
+msgid ""
+"Invitations listed on screen were sent to you using your CloudStack account "
+"name."
+msgstr "屏幕上所显示的邀请是通过你的CloudStack帐户发送的。"
+
+# 67733042a89a4b969d73efc5f2fa6e94
+#: ../../projects.rst:359
+msgid ""
+"If you received an email invitation, click the Enter Token button, and "
+"provide the project ID and unique ID code (token) from the email."
+msgstr "如果你收到的是邮件邀请，点击输入令牌按钮，提供邮件中的项目ID和唯一的ID编码（令牌）。"
+
+# c33bd4e1071f4d9dab4b1d9a3be3f052
+#: ../../projects.rst:364
+msgid "Suspending or Deleting a Project"
+msgstr "挂起或删除项目"
+
+# b401169d94da465097ecd686cf60ced2
+#: ../../projects.rst:366
+msgid ""
+"When a project is suspended, it retains the resources it owns, but they can "
+"no longer be used. No new resources or members can be added to a suspended "
+"project."
+msgstr "当项目被挂起，它仍保有资源，但这些资源不能被使用。新资源及用户不能被加入到挂起的项目。"
+
+# d08b758fd1754360a7334fa51c6067cf
+#: ../../projects.rst:370
+msgid ""
+"When a project is deleted, its resources are destroyed, and member accounts "
+"are removed from the project. The project’s status is shown as Disabled "
+"pending final deletion."
+msgstr "当项目被删除，资源将被销毁，成员帐户也从项目中移除。项目状态被显示为禁止有待最后删除。"
+
+# 400db324f49c472881028c92fb1082c8
+#: ../../projects.rst:374
+msgid ""
+"A project can be suspended or deleted by the project administrator, the "
+"domain administrator of the domain the project belongs to or of its parent "
+"domain, or the CloudStack root administrator."
+msgstr "项目可以被管理员，项目所属的域及其父域管理员， CloudStack根管理员挂起或删除，"
+
+# d8a96b11443d49109477879ebdf4e6c1
+#: ../../projects.rst:384
+msgid "Click the name of the project."
+msgstr "点击项目名称。"
+
+# 6c5f88a0ad7443cdb4f778b9d3d8da58
+#: ../../projects.rst:386
+msgid "Click one of the buttons:"
+msgstr "点击以下按钮："
+
+# 29804834398d400d9518f86f6aadc9ca
+#: ../../projects.rst:388
+msgid "To delete, use |Removes a project|"
+msgstr "使用 |移除项目|进行删除"
+
+# 41920e56886b48dbb25f86128a21a0c2
+#: ../../projects.rst:390
+msgid "To suspend, use |Suspends a project|"
+msgstr "使用 |挂起项目|进行挂起"
+
+# fe947634ec70449bb7e58adb8700e805
+#: ../../projects.rst:394
+msgid "Using the Project View"
+msgstr "使用项目概览"
+
+# b2b759558262491e98fb0636eae9bd35
+#: ../../projects.rst:396
+msgid ""
+"If you are a member of a project, you can use CloudStack’s project view to "
+"see project members, resources consumed, and more. The project view shows "
+"only information related to one project. It is a useful way to filter out "
+"other information so you can concentrate on a project status and resources."
+msgstr "如果你是项目成员，你可以通过CloudStack项目概览查看项目成员，资源消耗等。项目概览仅显示与一个项目相关的信息，从众多信息中筛选出项目状态及资源，这是种有效的方法。"
+
+# b2d475dcc43b441da5592c11733cec95
+#: ../../projects.rst:404
+msgid "Click Project View."
+msgstr "点击项目概览。"
+
+# 697e02ba1d754fab8d93b30aa2692085
+#: ../../projects.rst:406
+msgid ""
+"The project dashboard appears, showing the project’s VMs, volumes, users, "
+"events, network settings, and more. From the dashboard, you can:"
+msgstr "出现项目控制板，显示项目VM，卷，用户，事件，网络设置等，在控制板中，你可以："
+
+# 0439e9369d664d92be0b7b1fdb1ca88f
+#: ../../projects.rst:410
+msgid ""
+"Click the Accounts tab to view and manage project members. If you are the "
+"project administrator, you can add new members, remove members, or change "
+"the role of a member from user to admin. Only one member at a time can have "
+"the admin role, so if you set another user’s role to admin, your role will "
+"change to regular user."
+msgstr "点击帐户按钮浏览和管理项目成员。如果你是项目管理员，你可以添加新成员，或者将成员从用户改为管理员。每次只有一名成员能成为管理员，如果你将另外的用户设置为管理员，你将成为普通用户。"
+
+# cfe2dfd46e014224a3ec791add73746c
+#: ../../projects.rst:417
+msgid ""
+"(If invitations are enabled) Click the Invitations tab to view and manage "
+"invitations that have been sent to new project members but not yet accepted."
+" Pending invitations will remain in this list until the new member accepts, "
+"the invitation timeout is reached, or you cancel the invitation."
+msgstr "(如果邀请已被使能)点击邀请按钮来浏览或管理已经想新项目成员发出未被接受的邀请。有待确认的邀请将一直在列表中知道被新成员接受，或邀请时间超时，或你取消了邀请。"

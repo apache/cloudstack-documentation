@@ -1,0 +1,528 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache CloudStack
+# This file is distributed under the same license as the Apache CloudStack package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack 4.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-31 13:49-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../developer_guide.rst:2
+# bb72baa2a42c478fa65fa1c9b410f0b6
+msgid "CloudStack Installation from Source for Developers"
+msgstr ""
+
+#: ../../developer_guide.rst:4
+# d5339eb5aa3a4e4797040c45829f7a12
+msgid "This book is aimed at CloudStack developers who need to build the code. These instructions are valid on a Ubuntu 12.04 and CentOS 6.4 systems and were tested with the 4.2 release of Apache CloudStack, please adapt them if you are on a different operating system or using a newer/older version of CloudStack. This book is composed of the following sections:"
+msgstr ""
+
+#: ../../developer_guide.rst:10
+# 2513ed5b50064ad5baea6e2d6ca56667
+msgid "Installation of the prerequisites"
+msgstr ""
+
+#: ../../developer_guide.rst:11
+# b609f7feda6e484ab28214d803d9ddb4
+msgid "Compiling and installation from source"
+msgstr ""
+
+#: ../../developer_guide.rst:12
+# 04a3de1bd1d548b5a551870f1087bba4
+msgid "Using the CloudStack simulator"
+msgstr ""
+
+#: ../../developer_guide.rst:13
+# df71d1f0b01c4b44a75c4d216cd5f03f
+msgid "Installation with DevCloud the CloudStack sandbox"
+msgstr ""
+
+#: ../../developer_guide.rst:14
+# fecac2ddc3b4418588b49180b4d1e60b
+msgid "Building your own packages"
+msgstr ""
+
+#: ../../developer_guide.rst:15
+#: ../../developer_guide.rst:458
+# fc80af4f6f25482088389dc04fc822c8
+# f6c0d2e4f50d4f1a8ce2a237d8fa69e2
+msgid "The CloudStack API"
+msgstr ""
+
+#: ../../developer_guide.rst:16
+#: ../../developer_guide.rst:596
+# 2956ea125ee24f14a451fd03a284d663
+# f78027510f8a487f8d4e8bf274978c61
+msgid "Testing the AWS API interface"
+msgstr ""
+
+#: ../../developer_guide.rst:20
+# 74ac0a26ef2e4fad99f218beafca959b
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../developer_guide.rst:22
+# d62a80da8f72450fb3042984efc65381
+msgid "In this section we'll look at installing the dependencies you'll need for Apache CloudStack development."
+msgstr ""
+
+#: ../../developer_guide.rst:26
+# 1293735d08304e438df4d231fd9a602c
+msgid "On Ubuntu 12.04"
+msgstr ""
+
+#: ../../developer_guide.rst:28
+#: ../../developer_guide.rst:105
+# d1ad39d0193e4fdfb1b38a70a5409bfd
+# be623c5672e64a878c69313bd57bf97d
+msgid "First update and upgrade your system:"
+msgstr ""
+
+#: ../../developer_guide.rst:35
+# 515cc3ee920143b0a86beef63bd6d782
+msgid "NTP might already be installed, check it with ``service ntp status``. If it's not then install NTP to synchronize the clocks:"
+msgstr ""
+
+#: ../../developer_guide.rst:42
+#: ../../developer_guide.rst:118
+# 4a52a01411eb42b98e46f94978008eb4
+# 2c13eaff12c04b18af30f899add0eb45
+msgid "Install ``openjdk``. As we're using Linux, OpenJDK is our first choice."
+msgstr ""
+
+#: ../../developer_guide.rst:48
+# f04daa6be11c45beae58c455901d8f6c
+msgid "Install ``tomcat6``, note that the new version of tomcat on `Ubuntu <http://packages.ubuntu.com/precise/all/tomcat6>`__ is the 6.0.35 version."
+msgstr ""
+
+#: ../../developer_guide.rst:56
+#: ../../developer_guide.rst:141
+# 35da40eb45c84d80bce02f7e347c27f7
+# 9b90bffd5d744e20acf7be0491b4ce65
+msgid "Next, we'll install MySQL if it's not already present on the system."
+msgstr ""
+
+#: ../../developer_guide.rst:62
+#: ../../developer_guide.rst:147
+# e26c79313e5e4528aba516b8b8ece9d8
+# d8fb218502874578a85a5b15da88c447
+msgid "Remember to set the correct ``mysql`` password in the CloudStack properties file. Mysql should be running but you can check it's status with:"
+msgstr ""
+
+#: ../../developer_guide.rst:70
+# 706465b6a843445099c5b27e7d83a8d7
+msgid "Developers wanting to build CloudStack from source will want to install the following additional packages. If you dont' want to build from source just jump to the next section."
+msgstr ""
+
+#: ../../developer_guide.rst:74
+#: ../../developer_guide.rst:155
+# f2054657f7a740a3a913c84c8b106f75
+# fdc1c399ba0c41d49fdd4f90b0a4b203
+msgid "Install ``git`` to later clone the CloudStack source code:"
+msgstr ""
+
+#: ../../developer_guide.rst:80
+# 36e58aa93a534a019dcd4bb2d179b1dc
+msgid "Install ``Maven`` to later build CloudStack"
+msgstr ""
+
+#: ../../developer_guide.rst:86
+#: ../../developer_guide.rst:185
+# 266630e646c14f149a80a8080bc4a605
+# b362ed17e6ea43919b1119134acbee67
+msgid "This should have installed Maven 3.0, check the version number with ``mvn --version``"
+msgstr ""
+
+#: ../../developer_guide.rst:89
+#: ../../developer_guide.rst:188
+# 0b84891f11754ca1b6aa57d307b41da0
+# 7eea27fb13d64a71afe4098449f7941a
+msgid "A little bit of Python can be used (e.g simulator), install the Python package management tools:"
+msgstr ""
+
+#: ../../developer_guide.rst:96
+#: ../../developer_guide.rst:207
+# f241bf5ebf2b426c8ca5da09dd3c2926
+# 872eab2916d24aa2b16ef1dec59b6ae4
+msgid "Finally install ``mkisofs`` with:"
+msgstr ""
+
+#: ../../developer_guide.rst:103
+# 4c8d5bdb7efc4ad297090744e0b5041b
+msgid "On centOS 6.4"
+msgstr ""
+
+#: ../../developer_guide.rst:112
+# 7bf47463418146c19a2a78e6eb8c704a
+msgid "If not already installed, install NTP for clock synchornization"
+msgstr ""
+
+#: ../../developer_guide.rst:124
+# 3eb3a55c55a64e89bf977cacab10742b
+msgid "Install ``tomcat6``, note that the version of tomcat6 in the default CentOS 6.4 repo is 6.0.24, so we will grab the 6.0.35 version. The 6.0.24 version will be installed anyway as a dependency to cloudstack."
+msgstr ""
+
+#: ../../developer_guide.rst:133
+# 152fbd52e1674b388c1563eee33ac833
+msgid "Setup tomcat6 system wide by creating a file ``/etc/profile.d/tomcat.sh`` with the following content:"
+msgstr ""
+
+#: ../../developer_guide.rst:161
+# 890e6701f64c4b778299fbb766c03a08
+msgid "Install ``Maven`` to later build CloudStack. Grab the 3.0.5 release from the Maven `website <http://maven.apache.org/download.cgi>`__"
+msgstr ""
+
+#: ../../developer_guide.rst:171
+# e4f4020b65d54bcca21983184d1ebf14
+msgid "Setup Maven system wide by creating a ``/etc/profile.d/maven.sh`` file with the following content:"
+msgstr ""
+
+#: ../../developer_guide.rst:179
+# 93a2a4707fbb4f3c9dca441314ef0f5b
+msgid "Log out and log in again and you will have maven in your PATH:"
+msgstr ""
+
+#: ../../developer_guide.rst:195
+# 705ab873d8594008836944d2fdb91ad0
+msgid "To install python-pip you might want to setup the Extra Packages for Enterprise Linux (EPEL) repo"
+msgstr ""
+
+#: ../../developer_guide.rst:204
+# 54199fd0c3f14def8421b213f70c72cd
+msgid "Then update you repository cache ``yum update`` and install pip ``yum -y install python-pip``"
+msgstr ""
+
+#: ../../developer_guide.rst:215
+# 436a0377e85244e6a89d96d94c6beef9
+msgid "Installing from Source"
+msgstr ""
+
+#: ../../developer_guide.rst:217
+# b4b0b7748d0e448b9c381f7675f7806b
+msgid "CloudStack uses git for source version control, if you know little about `git <http://book.git-scm.com/>`__ is a good start. Once you have git setup on your machine, pull the source with:"
+msgstr ""
+
+#: ../../developer_guide.rst:225
+# 959ab8583f1c488096ee96002d7430bb
+msgid "To build the latest stable release:"
+msgstr ""
+
+#: ../../developer_guide.rst:231
+# 32c17b3a428d4f13a0424591bc786dbb
+msgid "To compile Apache CloudStack, go to the cloudstack source folder and run:"
+msgstr ""
+
+#: ../../developer_guide.rst:238
+# 0a54ef76f0e64d71b6a360f37d44a53f
+msgid "If you want to skip the tests add ``-DskipTests`` to the command above. Do NOT use ``-Dmaven.test.skip=true`` because that will break the build."
+msgstr ""
+
+#: ../../developer_guide.rst:241
+# f0271a41ba4f45f690af10f47502929e
+msgid "You will have made sure to set the proper db password in ``utils/conf/db.properties``"
+msgstr ""
+
+#: ../../developer_guide.rst:244
+# 54b58ef51d8e4ad285647fe474a79982
+msgid "Deploy the database next:"
+msgstr ""
+
+#: ../../developer_guide.rst:250
+# 2122fb6f613d43a781c2f4007e3fd921
+msgid "Run Apache CloudStack with jetty for testing. Note that ``tomcat`` maybe be running on port 8080, stop it before you use ``jetty``"
+msgstr ""
+
+#: ../../developer_guide.rst:257
+# 5b053ff2ea4742869f84d9168092cd85
+msgid "Log Into Apache CloudStack:"
+msgstr ""
+
+#: ../../developer_guide.rst:259
+# 0257fca9cb6a4e7cb348b6a94d6c5c16
+msgid "Open your Web browser and use this URL to connect to CloudStack:"
+msgstr ""
+
+#: ../../developer_guide.rst:265
+# 3c66106a410a484db9f40c126c10d71f
+msgid "Replace ``localhost`` with the IP of your management server if need be."
+msgstr ""
+
+#: ../../developer_guide.rst:267
+# 0bb7c9cacc68411b8f2531ede4d1864d
+msgid "If you have iptables enabled, you may have to open the ports used by CloudStack. Specifically, ports 8080, 8250, and 9090."
+msgstr ""
+
+#: ../../developer_guide.rst:269
+# 66464a03df3a4a21898be477a7ba82ce
+msgid "You can now start configuring a Zone, playing with the API. Of course we did not setup any infrastructure, there is no storage, no hypervisors...etc. However you can run tests using the simulator. The following section shows you how to use the simulator so that you don't have to setup a physical infrastructure."
+msgstr ""
+
+#: ../../developer_guide.rst:276
+# 7b8da57d07b6433591f284e715d12591
+msgid "Using the Simulator"
+msgstr ""
+
+#: ../../developer_guide.rst:278
+# c5a7fd74375f49ba9b6ac5f20c8b62a3
+msgid "CloudStack comes with a simulator based on Python bindings called *Marvin*. Marvin is available in the CloudStack source code or on Pypi. With Marvin you can simulate your data center infrastructure by providing CloudStack with a configuration file that defines the number of zones/pods/clusters/hosts, types of storage etc. You can then develop and test the CloudStack management server *as if* it was managing your production infrastructure."
+msgstr ""
+
+#: ../../developer_guide.rst:286
+# 910cc167b7ea42cdaf3c2c8194ae8a2b
+msgid "Do a clean build:"
+msgstr ""
+
+#: ../../developer_guide.rst:292
+# 60dfd43a808f43efa474d6c33f97a310
+msgid "Deploy the database:"
+msgstr ""
+
+#: ../../developer_guide.rst:299
+# c2ddf475c9a4458095381fdf5b36b7c8
+msgid "Install marvin. Note that you will need to have installed ``pip`` properly in the prerequisites step."
+msgstr ""
+
+#: ../../developer_guide.rst:306
+# 1dc977631ad34ca7a239c5ecbb85e4ee
+msgid "Stop jetty (from any previous runs)"
+msgstr ""
+
+#: ../../developer_guide.rst:312
+# e2356af9ad664188b84f183581bee912
+msgid "Start jetty"
+msgstr ""
+
+#: ../../developer_guide.rst:318
+# 81afb780da8545b6acc1c20b0e58af14
+msgid "Setup a basic zone with Marvin. In a separate shell://"
+msgstr ""
+
+#: ../../developer_guide.rst:324
+# 1c70455811e54629bfd79ac64c3fc76a
+msgid "At this stage log in the CloudStack management server at http://localhost:8080/client with the credentials admin/password, you should see a fully configured basic zone infrastructure. To simulate an advanced zone replace ``basic.cfg`` with ``advanced.cfg``."
+msgstr ""
+
+#: ../../developer_guide.rst:329
+# fc4686e3709d491c95f3817ca634b9aa
+msgid "You can now run integration tests, use the API etc..."
+msgstr ""
+
+#: ../../developer_guide.rst:332
+# f43ce08473a443e0bce6cb55638ff6fb
+msgid "Using DevCloud"
+msgstr ""
+
+#: ../../developer_guide.rst:334
+# d99c1e63a66443539d663a0cba7beca0
+msgid "The Installing from source section will only get you to the point of runnign the management server, it does not get you any hypervisors. The simulator section gets you a simulated datacenter for testing. With DevCloud you can run at least one hypervisor and add it to your management server the way you would a real physical machine."
+msgstr ""
+
+#: ../../developer_guide.rst:340
+# 168253f881c04354b99dca74e7f5b0f1
+msgid "`DevCloud <https://cwiki.apache.org/confluence/display/CLOUDSTACK/DevCloud>`__ is the CloudStack sandbox, the standard version is a VirtualBox based image. There is also a KVM based image for it. Here we only show steps with the VirtualBox image. For KVM see the `wiki <https://cwiki.apache.org/confluence/display/CLOUDSTACK/devcloud-kvm>`__."
+msgstr ""
+
+#: ../../developer_guide.rst:346
+# 356c77a0078f47408537fe8f1e31d6dd
+msgid "\\*\\* DevCloud Pre-requisites"
+msgstr ""
+
+#: ../../developer_guide.rst:348
+# 11bd2fad2f484f2f8b8c6b7ed60b1250
+msgid "Install `VirtualBox <http://www.virtualbox.org>`__ on your machine"
+msgstr ""
+
+#: ../../developer_guide.rst:350
+# d7bc0d03f3444e498f06a605608b9052
+msgid "Run VirtualBox and under >Preferences create a *host-only interface* on which you disable the DHCP server"
+msgstr ""
+
+#: ../../developer_guide.rst:353
+# 5c0b9c8ea6014082898304ea288ea1cf
+msgid "Download the DevCloud `image <http://people.apache.org/~bhaisaab/cloudstack/devcloud/devcloud2.ova>`__"
+msgstr ""
+
+#: ../../developer_guide.rst:356
+# e0a8e6ff6f5e4fcf9e0249f0ba785ecc
+msgid "In VirtualBox, under File > Import Appliance import the DevCloud image."
+msgstr ""
+
+#: ../../developer_guide.rst:359
+# c4ddca1ab8fd40938573ab654fbc2169
+msgid "Verify the settings under > Settings and check the ``enable PAE`` option in the processor menu"
+msgstr ""
+
+#: ../../developer_guide.rst:362
+# 086a74de91ec46829227fe969cbf8b0c
+msgid "Once the VM has booted try to ``ssh`` to it with credentials: ``root/password``"
+msgstr ""
+
+#: ../../developer_guide.rst:365
+# 5306cafba5b649ff96137347bd6739cf
+msgid "ssh root@192.168.56.10"
+msgstr ""
+
+#: ../../developer_guide.rst:368
+# ba0b24b4a7914152bf9c97b90f0456d9
+msgid "Adding DevCloud as an Hypervisor"
+msgstr ""
+
+#: ../../developer_guide.rst:370
+# 90a83e4e6fc246f383835f00daea0315
+msgid "Picking up from a clean build:"
+msgstr ""
+
+#: ../../developer_guide.rst:377
+# 18e7f5520af948fd9f6cd2215ddd2b4f
+msgid "At this stage install marvin similarly than with the simulator:"
+msgstr ""
+
+#: ../../developer_guide.rst:383
+# 4081a35f553c4690b8c41bed96c20e81
+msgid "Start the management server"
+msgstr ""
+
+#: ../../developer_guide.rst:389
+# cd9dceaaa6d3449f8260f7987d24e0e4
+msgid "Then you are going to configure CloudStack to use the running DevCloud instance:"
+msgstr ""
+
+#: ../../developer_guide.rst:397
+# 2a20e453295741e0addd797848f68254
+msgid "If you are curious, check the ``devcloud.cfg`` file and see how the data center is defined: 1 Zone, 1 Pod, 1 Cluster, 1 Host, 1 primary Storage, 1 Seondary Storage, all provided by Devcloud."
+msgstr ""
+
+#: ../../developer_guide.rst:401
+# 287ad3cc0fc64288a0f2cae9770decb2
+msgid "You can now log in the management server at ``http://localhost:8080/client`` and start experimenting with the UI or the API."
+msgstr ""
+
+#: ../../developer_guide.rst:405
+# a35e6fa14ec84e00acef35655b70837a
+msgid "Do note that the management server is running in your local machine and that DevCloud is used only as a n Hypervisor. You could potentially run the management server within DevCloud as well, or memory granted, run multiple DevClouds."
+msgstr ""
+
+#: ../../developer_guide.rst:411
+# 0b216797731e464fb1daa87f7f9dce1c
+msgid "Building Packages"
+msgstr ""
+
+#: ../../developer_guide.rst:413
+# aa52ec9b95b94fff98aeb64a23855ff5
+msgid "Working from source is necessary when developing CloudStack. As mentioned earlier this is not primarily intended for users. However some may want to modify the code for their own use and specific infrastructure. The may also need to build their own packages for security reasons and due to network connectivity constraints. This section shows you the gist of how to build packages. We assume that the reader will know how to create a repository to serve this packages. The complete documentation is available on the `website <http://cloudstack.apache.org/docs/en-US/Apache_CloudStack/4.2.0/html/Installation_Guide/sect-source-builddebs.html>`__"
+msgstr ""
+
+#: ../../developer_guide.rst:423
+# 2dc15f1c96914156a0e85887844d8a90
+msgid "To build debian packages you will need couple extra packages that we did not need to install for source compilation:"
+msgstr ""
+
+#: ../../developer_guide.rst:431
+# e0134f646f2b416ca19265ef188af9a7
+msgid "Then build the packages with:"
+msgstr ""
+
+#: ../../developer_guide.rst:437
+# 7fc94e8e24f64ccbb9a5f7e2a1a0fefc
+msgid "One directory up from the CloudStack root dir you will find:"
+msgstr ""
+
+#: ../../developer_guide.rst:452
+# 9e40c2af8b5d4ff088904366476f5d4b
+msgid "Of course the community provides a repository for these packages and you can use it instead of building your own packages and putting them in your own repo. Instructions on how to use this community repository are available in the installation book."
+msgstr ""
+
+#: ../../developer_guide.rst:460
+# 7c104d4cd0fe475e863b91f53449a5c5
+msgid "The CloudStack API is a query based API using http that return results in XML or JSON. It is used to implement the default web UI. This API is not a standard like `OGF OCCI <http://www.ogf.org/gf/group_info/view.php?group=occi-wg>`__ or `DMTF CIMI <http://dmtf.org/standards/cloud>`__ but is easy to learn. Mapping exists between the AWS API and the CloudStack API as will be seen in the next section. Recently a Google Compute Engine interface was also developed that maps the GCE REST API to the CloudStack API described here. The API `docs <http://cloudstack.apache.org/docs/api/>`__ are a good start to learn the extent of the API. Multiple clients exist on `github <https://github.com/search?q=cloudstack+client&ref=cmdform>`__ to use this API, you should be able to find one in your favorite language. The reference documentation for the API and changes that might occur from version to version is availble `on-line <http://cloudstack.apache.org/docs/en-US/Apache_CloudStack/4.1.1/html/Developers_Guide/index.html>`__. This short section is aimed at providing a quick summary to give you a base understanding of how to use this API. As a quick start, a good way to explore the API is to navigate the dashboard with a firebug console (or similar developer console) to study the queries."
+msgstr ""
+
+#: ../../developer_guide.rst:481
+# 0bcb8dd851254f9b9b0240917b405d84
+msgid "In a succint statement, the CloudStack query API can be used via http GET requests made against your cloud endpoint (e.g http://localhost:8080/client/api). The API name is passed using the ``command`` key and the various parameters for this API call are passed as key value pairs. The request is signed using the access key and secret key of the user making the call. Some calls are synchronous while some are asynchronous, this is documented in the API `docs <http://cloudstack.apache.org/docs/api/>`__. Asynchronous calls return a ``jobid``, the status and result of a job can be queried with the ``queryAsyncJobResult`` call. Let's get started and give an example of calling the ``listUsers`` API in Python."
+msgstr ""
+
+#: ../../developer_guide.rst:493
+# cb1f2074fce34b94ad77db3be1d917ce
+msgid "First you will need to generate keys to make requests. Going through the dashboard, go under ``Accounts`` select the appropriate account then click on ``Show Users`` select the intended users and generate keys using the ``Generate Keys`` icon. You will see an ``API Key`` and ``Secret Key`` field being generated. The keys will be of the form:"
+msgstr ""
+
+#: ../../developer_guide.rst:504
+# f06d2f79776845b69c69945a988dc02d
+msgid "Open a Python shell and import the basic modules necessary to make the request. Do note that this request could be made many different ways, this is just a low level example. The ``urllib*`` modules are used to make the http request and do url encoding. The ``hashlib`` module gives us the sha1 hash function. It used to geenrate the ``hmac`` (Keyed Hashing for Message Authentication) using the secretkey. The result is encoded using the ``base64`` module."
+msgstr ""
+
+#: ../../developer_guide.rst:524
+# 1bc86523e28745838203bfdeacc85364
+msgid "Define the endpoint of the Cloud, the command that you want to execute, the type of the response (i.e XML or JSON) and the keys of the user. Note that we do not put the secretkey in our request dictionary because it is only used to compute the hmac."
+msgstr ""
+
+#: ../../developer_guide.rst:538
+# 4096823c52da4b9d97971621c6bbdee5
+msgid "Build the base request string, the combination of all the key/pairs of the request, url encoded and joined with ampersand."
+msgstr ""
+
+#: ../../developer_guide.rst:547
+# 475167fa6f4f4187bc62b8c7b7dac9e1
+msgid "Compute the signature with hmac, do a 64 bit encoding and a url encoding, the string used for the signature is similar to the base request string shown above but the keys/values are lower cased and joined in a sorted order"
+msgstr ""
+
+#: ../../developer_guide.rst:568
+# e8ab8e0b9eaf4b9183fd8784025e5828
+msgid "Finally, build the entire string by joining the baseurl, the request str and the signature. Then do an http GET:"
+msgstr ""
+
+#: ../../developer_guide.rst:586
+# 34385cfcf355434bbfec59e948728211
+msgid "All the clients that you will find on github will implement this signature technique, you should not have to do it by hand. Now that you have explored the API through the UI and that you understand how to make low level calls, pick your favorite client of use `CloudMonkey <https://pypi.python.org/pypi/cloudmonkey/>`__. CloudMonkey is a sub-project of Apache CloudStack and gives operators/developers the ability to use any of the API methods. It has nice auto-completion and help feature as well as an API discovery mechanism since 4.2."
+msgstr ""
+
+#: ../../developer_guide.rst:598
+# 4bf1c04a89934aca9d24a5a585888739
+msgid "While the native CloudStack API is not a standard, CloudStack provides a AWS EC2 compatible interface. It has the great advantage that existing tools written with EC2 libraries can be re-used against a CloudStack based cloud. In the installation books we described how to run this interface from installing packages. In this section we show you how to compile the interface with ``maven`` and test it with Python boto module."
+msgstr ""
+
+#: ../../developer_guide.rst:606
+# a7d617f55dc447a49c45f903bced3aa6
+msgid "Starting from a running management server (with DevCloud for instance), start the AWS API interface in a separate shell with:"
+msgstr ""
+
+#: ../../developer_guide.rst:613
+# aa447203e885410e967cab647e8fa684
+msgid "Log into the CloudStack UI ``http://localhost:8080/client``, go to *Service Offerings* and edit one of the compute offerings to have the name ``m1.small`` or any of the other AWS EC2 instance types."
+msgstr ""
+
+#: ../../developer_guide.rst:617
+# 84e4d20e634f4ceab2d6ae95fe0bc920
+msgid "With access and secret keys generated for a user you should now be able to use Python `Boto <http://docs.pythonboto.org/en/latest/>`__ module:"
+msgstr ""
+
+#: ../../developer_guide.rst:636
+# 662e136af4714221a6a0414e4e68f928
+msgid "Note the new ``api_version`` number in the connection object and also note that there was no user registration to make like in previous CloudStack releases."
+msgstr ""
+
+#: ../../developer_guide.rst:641
+# b2bbf2564c724ebe98d0ac08c0ec5e58
+msgid "Conclusions"
+msgstr ""
+
+#: ../../developer_guide.rst:643
+# 590c4edda76644fe9a6410b6b2cb10fd
+msgid "CloudStack is a mostly Java application running with Tomcat and Mysql. It consists of a management server and depending on the hypervisors being used, an agent installed on the hypervisor farm. To complete a Cloud infrastructure however you will also need some Zone wide storage a.k.a Secondary Storage and some Cluster wide storage a.k.a Primary storage. The choice of hypervisor, storage solution and type of Zone (i.e Basic vs. Advanced) will dictate how complex your installation can be. As a quick start, you might want to consider KVM+NFS and a Basic Zone."
+msgstr ""
+
+#: ../../developer_guide.rst:653
+# 035523d6dcd4492cb920fdd912716794
+msgid "If you've run into any problems with this, please ask on the cloudstack-dev `mailing list </mailing-lists.html>`__."
+msgstr ""
+

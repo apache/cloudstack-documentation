@@ -1,0 +1,332 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../events.rst:18
+# 0defb3a9608c4824b34ed35d916fd0c4
+msgid "Event Notification"
+msgstr ""
+
+#: ../../events.rst:20
+# 37ebc4e9b0b148daaab42c65d71cc834
+msgid "An event is essentially a significant or meaningful change in the state of both virtual and physical resources associated with a cloud environment. Events are used by monitoring systems, usage and billing systems, or any other event-driven workflow systems to discern a pattern and make the right business decision. In CloudStack an event could be a state change of virtual or physical resources, an action performed by an user (action events), or policy based events (alerts)."
+msgstr ""
+
+#: ../../events.rst:30
+# 82bc7c30085140f89344da554ad386a3
+msgid "Event Logs"
+msgstr ""
+
+#: ../../events.rst:32
+# c1d54e6d1a2d4cd6888ad99bf943ed83
+msgid "There are two types of events logged in the CloudStack Event Log. Standard events log the success or failure of an event and can be used to identify jobs or processes that have failed. There are also long running job events. Events for asynchronous jobs log when a job is scheduled, when it starts, and when it completes. Other long running synchronous jobs log when a job starts, and when it completes. Long running synchronous and asynchronous event logs can be used to gain more information on the status of a pending job or can be used to identify a job that is hanging or has not started. The following sections provide more information on these events.."
+msgstr ""
+
+#: ../../events.rst:45
+# 127295678f0c4cf084cf737444f11087
+msgid "Notification"
+msgstr ""
+
+#: ../../events.rst:47
+# a669e3079b7e41d1a82dd149bf00b011
+msgid "Event notification framework provides a means for the Management Server components to publish and subscribe to CloudStack events. Event notification is achieved by implementing the concept of event bus abstraction in the Management Server. An event bus is introduced in the Management Server that allows the CloudStack components and extension plug-ins to subscribe to the events by using the Advanced Message Queuing Protocol (AMQP) client. In CloudStack, a default implementation of event bus is provided as a plug-in that uses the RabbitMQ AMQP client. The AMQP client pushes the published events to a compatible AMQP server. Therefore all the CloudStack events are published to an exchange in the AMQP server."
+msgstr ""
+
+#: ../../events.rst:59
+# e41f3e4f6450467da27fc6dc4ebb2788
+msgid "A new event for state change, resource state change, is introduced as part of Event notification framework. Every resource, such as user VM, volume, NIC, network, public IP, snapshot, and template, is associated with a state machine and generates events as part of the state change. That implies that a change in the state of a resource results in a state change event, and the event is published in the corresponding state machine on the event bus. All the CloudStack events (alerts, action events, usage events) and the additional category of resource state change events, are published on to the events bus."
+msgstr ""
+
+#: ../../events.rst:71
+# 4aaf02080d184ab387923b45f39d5762
+msgid "Use Cases"
+msgstr ""
+
+#: ../../events.rst:73
+# f7b5a1de0f014d2eabfe925d0c5c4e95
+msgid "The following are some of the use cases:"
+msgstr ""
+
+#: ../../events.rst:75
+# 9be82bc2fe244fef9851d9adb481fdaf
+msgid "Usage or Billing Engines: A third-party cloud usage solution can implement a plug-in that can connects to CloudStack to subscribe to CloudStack events and generate usage data. The usage data is consumed by their usage software."
+msgstr ""
+
+#: ../../events.rst:80
+# 2585685666874f3f8795c70fe2671356
+msgid "AMQP plug-in can place all the events on the a message queue, then a AMQP message broker can provide topic-based notification to the subscribers."
+msgstr ""
+
+#: ../../events.rst:84
+# ff10e0227bc04e2f86f15c3c534b7c47
+msgid "Publish and Subscribe notification service can be implemented as a pluggable service in CloudStack that can provide rich set of APIs for event notification, such as topics-based subscription and notification. Additionally, the pluggable service can deal with multi-tenancy, authentication, and authorization issues."
+msgstr ""
+
+#: ../../events.rst:92
+# bdc9ac2f935c456fbd3778ddef6c91cf
+msgid "Configuration"
+msgstr ""
+
+#: ../../events.rst:94
+# c2514aa04f964044bd2bd630f31b4d3f
+msgid "As a CloudStack administrator, perform the following one-time configuration to enable event notification framework. At run time no changes can control the behaviour."
+msgstr ""
+
+#: ../../events.rst:98
+# e94d4200515d4f15adbc52ca3bbf8c54
+msgid "Open ``'componentContext.xml``."
+msgstr ""
+
+#: ../../events.rst:100
+# e2bbf37abe854d6cb8384bdd3c9d72b9
+msgid "Define a bean named ``eventNotificationBus`` as follows:"
+msgstr ""
+
+#: ../../events.rst:102
+# 47bce54d52714df7bafac2b6d04dd816
+msgid "name : Specify a name for the bean."
+msgstr ""
+
+#: ../../events.rst:104
+# 4317cb3aa0fd4c7fa3f0e637f6cfea48
+msgid "server : The name or the IP address of the RabbitMQ AMQP server."
+msgstr ""
+
+#: ../../events.rst:106
+# 0f6561172d38446db99181316f50e667
+msgid "port : The port on which RabbitMQ server is running."
+msgstr ""
+
+#: ../../events.rst:108
+# 7ff0aa3ff7af48fbbf4651a2d8e5f34d
+msgid "username : The username associated with the account to access the RabbitMQ server."
+msgstr ""
+
+#: ../../events.rst:111
+# 7193c434eaab44eda2d7d9b2b86c675d
+msgid "password : The password associated with the username of the account to access the RabbitMQ server."
+msgstr ""
+
+#: ../../events.rst:114
+# f765ea7d69504610a98a95fdb802fe32
+msgid "exchange : The exchange name on the RabbitMQ server where CloudStack events are published."
+msgstr ""
+
+#: ../../events.rst:117
+# 7ba933b1d4ec41c1a20f2cdca4275405
+msgid "A sample bean is given below:"
+msgstr ""
+
+#: ../../events.rst:130
+# 07a04a0f79804e938092a93f3180770a
+msgid "The ``eventNotificationBus`` bean represents the ``org.apache.cloudstack.mom.rabbitmq.RabbitMQEventBus`` class."
+msgstr ""
+
+#: ../../events.rst:133
+# 83cdf82ae8c34a238d181c5bbaef30dd
+msgid "Restart the Management Server."
+msgstr ""
+
+#: ../../events.rst:137
+# 573b41c4def247f6981e828da7f54f82
+msgid "Standard Events"
+msgstr ""
+
+#: ../../events.rst:139
+#: ../../events.rst:161
+# f503981d0a764de49d4acc01c70d6126
+# 9212f9cd71b542899ac8256d4a51026d
+msgid "The events log records three types of standard events."
+msgstr ""
+
+#: ../../events.rst:141
+#: ../../events.rst:163
+# fab87560ba674752808dacaf3abfc44a
+# 94b40a1c0c98456399293f6a38102385
+msgid "INFO. This event is generated when an operation has been successfully performed."
+msgstr ""
+
+#: ../../events.rst:144
+#: ../../events.rst:166
+# 49450fc963104f569e80611ac7179829
+# 13438410decf4526b0381dc44062ba76
+msgid "WARN. This event is generated in the following circumstances."
+msgstr ""
+
+#: ../../events.rst:146
+#: ../../events.rst:168
+# c6197efc809f4a67baf05aa139cb10f5
+# a16599807269441f8f1799ae29968e11
+msgid "When a network is disconnected while monitoring a template download."
+msgstr ""
+
+#: ../../events.rst:149
+#: ../../events.rst:171
+# 0e060afef9e84640b3c2da38436691e2
+# 019e604962174d4492cca7be02ad2647
+msgid "When a template download is abandoned."
+msgstr ""
+
+#: ../../events.rst:151
+#: ../../events.rst:173
+# 8b3eabd5fcc0406bb83abe3863261df9
+# 19ccb6eebbc1446a8cb47056d2ad0274
+msgid "When an issue on the storage server causes the volumes to fail over to the mirror storage server."
+msgstr ""
+
+#: ../../events.rst:154
+#: ../../events.rst:176
+# 96793fba6d294c98bd8dcde72d0d9f49
+# 0b487b0c814145438366a847c93c52d8
+msgid "ERROR. This event is generated when an operation has not been successfully performed"
+msgstr ""
+
+#: ../../events.rst:159
+# b1c1824ddd304288bd0803e80d482bb9
+msgid "Long Running Job Events"
+msgstr ""
+
+#: ../../events.rst:181
+# ffb5ee0896674a62a567e634fc725510
+msgid "Event Log Queries"
+msgstr ""
+
+#: ../../events.rst:183
+# 0c75a642e72943e0bb28642902590c9b
+msgid "Database logs can be queried from the user interface. The list of events captured by the system includes:"
+msgstr ""
+
+#: ../../events.rst:186
+# fe735d1b0444472aa47e381cd00eec61
+msgid "Virtual machine creation, deletion, and on-going management operations"
+msgstr ""
+
+#: ../../events.rst:189
+# e331126149b64023bf0e7655bbcb2991
+msgid "Virtual router creation, deletion, and on-going management operations"
+msgstr ""
+
+#: ../../events.rst:191
+# 33b99484fca246c48ceff95aac8b52d2
+msgid "Template creation and deletion"
+msgstr ""
+
+#: ../../events.rst:193
+# 7969071933104816945f05e9f3a597e3
+msgid "Network/load balancer rules creation and deletion"
+msgstr ""
+
+#: ../../events.rst:195
+# 91ecfa5192134ffeafe5043cff29432a
+msgid "Storage volume creation and deletion"
+msgstr ""
+
+#: ../../events.rst:197
+# b0c0672f35af4003870943a16b461337
+msgid "User login and logout"
+msgstr ""
+
+#: ../../events.rst:201
+# 57cfb09e85c842b581f3a0f38609a9c4
+msgid "Deleting and Archiving Events and Alerts"
+msgstr ""
+
+#: ../../events.rst:203
+# b4160055fbd946979df299cf40a75777
+msgid "CloudStack provides you the ability to delete or archive the existing alerts and events that you no longer want to implement. You can regularly delete or archive any alerts or events that you cannot, or do not want to resolve from the database."
+msgstr ""
+
+#: ../../events.rst:208
+# 7bdab572982c4739808182e94b589c7e
+msgid "You can delete or archive individual alerts or events either directly by using the Quickview or by using the Details page. If you want to delete multiple alerts or events at the same time, you can use the respective context menu. You can delete alerts or events by category for a time period. For example, you can select categories such as **USER.LOGOUT**, **VM.DESTROY**, **VM.AG.UPDATE**, **CONFIGURATION.VALUE.EDI**, and so on. You can also view the number of events or alerts archived or deleted."
+msgstr ""
+
+#: ../../events.rst:217
+# cf46cdd4536a4a93912df2f4e88af8a1
+msgid "In order to support the delete or archive alerts, the following global parameters have been added:"
+msgstr ""
+
+#: ../../events.rst:220
+# 19ff2e090cf24d30aeacde33ec972af1
+msgid "**alert.purge.delay**: The alerts older than specified number of days are purged. Set the value to 0 to never purge alerts automatically."
+msgstr ""
+
+#: ../../events.rst:223
+# e3ccfdc51da14488bc9e44623c64d707
+msgid "**alert.purge.interval**: The interval in seconds to wait before running the alert purge thread. The default is 86400 seconds (one day)."
+msgstr ""
+
+#: ../../events.rst:228
+# a6eda71ad15940c2b58724ff74f97e26
+msgid "Archived alerts or events cannot be viewed in the UI or by using the API. They are maintained in the database for auditing or compliance purposes."
+msgstr ""
+
+#: ../../events.rst:234
+# 7c40293965f24130896768ea8223a152
+msgid "Permissions"
+msgstr ""
+
+#: ../../events.rst:236
+# e43e679e6a304ae1b78e11f56bed12b2
+msgid "Consider the following:"
+msgstr ""
+
+#: ../../events.rst:238
+# c5bd820d9a5e487b9440609da1e22551
+msgid "The root admin can delete or archive one or multiple alerts or events."
+msgstr ""
+
+#: ../../events.rst:241
+# 51b4fa6e53064c7088052c69d7a1b4fe
+msgid "The domain admin or end user can delete or archive one or multiple events."
+msgstr ""
+
+#: ../../events.rst:246
+# bea2b3dcb4bb41468a31793133ffeb06
+msgid "Procedure"
+msgstr ""
+
+#: ../../events.rst:248
+# aa16543921984837a7f59142ad2df67d
+msgid "Log in as administrator to the CloudStack UI."
+msgstr ""
+
+#: ../../events.rst:250
+# f8b2ec5bdbf749d2bf704ff20c063c89
+msgid "In the left navigation, click Events."
+msgstr ""
+
+#: ../../events.rst:252
+# 5519a86ae5b04a68b972ee88e37deffe
+msgid "Perform either of the following:"
+msgstr ""
+
+#: ../../events.rst:254
+# fd1193e3ff83466aa226d4834dea269d
+msgid "To archive events, click Archive Events, and specify event type and date."
+msgstr ""
+
+#: ../../events.rst:257
+# abfda9e22c7f42f3a4ff488ff755e59e
+msgid "To archive events, click Delete Events, and specify event type and date."
+msgstr ""
+
+#: ../../events.rst:260
+# 58b630d17160410ab6757d134aa17a62
+msgid "Click OK."
+msgstr ""
+

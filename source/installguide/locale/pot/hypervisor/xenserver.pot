@@ -1,0 +1,944 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../hypervisor/xenserver.rst:18
+# dbca5e0c19df40c290465114f3559dec
+msgid "Citrix XenServer Installation for CloudStack"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:20
+# cd47a83746ac418dbc9077979249b7da
+msgid "If you want to use the Citrix XenServer hypervisor to run guest virtual machines, install XenServer 6.0 or XenServer 6.0.2 on the host(s) in your cloud. For an initial installation, follow the steps below. If you have previously installed XenServer and want to upgrade to another version, see :ref:`upgrading-xenserver-version`."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:28
+# d9ee0495584b4a8298e517da8fdc3057
+msgid "System Requirements for XenServer Hosts"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:30
+# 3d5008ea44354966853d8d381ed7891a
+msgid "The host must be certified as compatible with one of the following. See the Citrix Hardware Compatibility Guide: `http://hcl.xensource.com <http://hcl.xensource.com>`_"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:34
+# 8314770679cb4bc99d30a72aef396428
+msgid "XenServer 5.6 SP2"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:35
+# 24946ee9574b4a6791b00328377a2b5a
+msgid "XenServer 6.0"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:36
+# 7c1b9ee9639c4610aad50db7807788f8
+msgid "XenServer 6.0.2"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:37
+# 9baf931e48934c4c8c54669d292e0f87
+msgid "XenServer 6.1.0"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:38
+# 7ee33d4c2fd7471fafb3a3bcb6352a7e
+msgid "XenServer 6.2.0"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:40
+# 5dee06ed5f2f472f9e0979ddbb241a63
+msgid "You must re-install Citrix XenServer if you are going to re-use a host from a previous install."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:43
+# 80cb092fd1e84cd48850208d4ba0bbf5
+msgid "Must support HVM (Intel-VT or AMD-V enabled)"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:45
+# bab4879deea84fe697e8b924ffd8fb1c
+msgid "Be sure all the hotfixes provided by the hypervisor vendor are applied. Track the release of hypervisor patches through your hypervisor vendor’s support channel, and apply patches as soon as possible after they are released. CloudStack will not track or notify you of required hypervisor patches. It is essential that your hosts are completely up to date with the provided hypervisor patches. The hypervisor vendor is likely to refuse to support any system that is not up to date with patches."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:54
+# 7be511b75f274a11877a89c4e5b4442a
+msgid "All hosts within a cluster must be homogeneous. The CPUs must be of the same type, count, and feature flags."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:57
+# f1598069d3724215b893587629e5a745
+msgid "Must support HVM (Intel-VT or AMD-V enabled in BIOS)"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:59
+# 136e934524c54e44a1dc5daa197a36c1
+msgid "64-bit x86 CPU (more cores results in better performance)"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:61
+# a06b5cab48ca4c9d86747442230f0613
+msgid "Hardware virtualization support required"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:63
+# 3d9b7de9d5cb4e629ef6589132428cb0
+msgid "4 GB of memory"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:65
+# e3a33fc842e74c2191c11b46d1e11d6e
+msgid "36 GB of local disk"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:67
+# a7120f278e3a48f7a1957e666d4539fc
+msgid "At least 1 NIC"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:69
+# a2ea178b475547d899a7a72ae1ae9761
+msgid "Statically allocated IP Address"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:71
+# 829b6839c66d461b9f1692bb1a42e0a3
+msgid "When you deploy CloudStack, the hypervisor host must not have any VMs already running"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:75
+# 593acf4d53964830be70c33d03648380
+msgid "The lack of up-do-date hotfixes can lead to data corruption and lost VMs."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:79
+# 10efea9818be4d9fb0c4a1f8128f964e
+msgid "XenServer Installation Steps"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:81
+# a2c7219af86147eeab5c37bd51222363
+msgid "From `https://www.citrix.com/English/ss/downloads/ <https://www.citrix.com/English/ss/downloads/>`_, download the appropriate version of XenServer for your CloudStack version (see `\"System Requirements for XenServer Hosts\" <#system-requirements-for-xenserver-hosts>`_). Install it using the Citrix XenServer Installation Guide."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:88
+# 48628175cf1b4e66a6889e16ec013033
+msgid "Older Versions of XenServer:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:90
+# b9b29c0fa89c4656ab70adbb2a99e673
+msgid "Note that you can download the most recent release of XenServer without having a Citrix account. If you wish to download older versions, you will need to create an account and look through the download archives."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:97
+# 2feb5a48073c4e2e9fe034ed56a4384d
+msgid "Configure XenServer dom0 Memory"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:99
+# 07ce15cab19948cc8331905b67b44d32
+msgid "Configure the XenServer dom0 settings to allocate more memory to dom0. This can enable XenServer to handle larger numbers of virtual machines. We recommend 2940 MB of RAM for XenServer dom0. For instructions on how to do this, see `http://support.citrix.com/article/CTX126531 <http://support.citrix.com/article/CTX126531>`_. The article refers to XenServer 5.6, but the same information applies to XenServer 6.0."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:108
+# 5e0c0f29a1814ea5875442853353fe5e
+msgid "Username and Password"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:110
+# 6f2532ac7db843db93d53f391ae6d733
+msgid "All XenServers in a cluster must have the same username and password as configured in CloudStack."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:115
+# 941b9509be3746249f736aec017baf1f
+msgid "Time Synchronization"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:117
+# 0a006397adbf45fd9e71c3dc58c59a20
+msgid "The host must be set to use NTP. All hosts in a pod must have the same time."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:120
+# 17ff16e49de74a14a14e94a5e972d414
+msgid "Install NTP."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:126
+# 6fa27a22869648db88edf8eed39beca0
+msgid "Edit the NTP configuration file to point to your NTP server."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:132
+# 0536cc30cd854673bfb3aacf080a0fc6
+msgid "Add one or more server lines in this file with the names of the NTP servers you want to use. For example:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:142
+# 8ed85f477b5d41d584b84da677111ac8
+msgid "Restart the NTP client."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:148
+# ed2a3d2d19dc4679bf6153406fa541bd
+msgid "Make sure NTP will start again upon reboot."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:156
+# a8af271b25314a23bb268e7969c44be2
+msgid "Install CloudStack XenServer Support Package (CSP)"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:158
+# 0f869b8baf314029ba6e3249f3f31919
+msgid "(Optional)"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:160
+# ef8e6914984045fe820f2142f5801c32
+msgid "To enable security groups, elastic load balancing, and elastic IP on XenServer, download and install the CloudStack XenServer Support Package (CSP). After installing XenServer, perform the following additional steps on each XenServer host."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:165
+# a8fc4362d3c348039963da1e1f0b41b4
+msgid "**For XenServer 6.1:**"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:167
+# e208ea52210e4bec8f264922573855e2
+msgid "CSP functionality is already present in XenServer 6.1"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:169
+# 378f2f6ca35b4ce4a72152f22948e64d
+msgid "Run the below command"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:175
+# 68eac0ca1dc94b6181a9a3f9e81fa493
+msgid "update sysctl.conf with the following"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:186
+# 69cb332c88bf4c2c82d7ab3b9f7b2799
+msgid "**For XenServer 6.0.2, 6.0, 5.6 SP2:**"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:188
+# 03b2b8ea0626476a8c58d7cc9e4db68e
+msgid "Download the CSP software onto the XenServer host from one of the following links:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:191
+# bd00d11ce1cc45b8a45cef5f93e3d5eb
+msgid "For XenServer 6.0.2:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:193
+# c7d858231a3142109c09bfcc3340078b
+msgid "`http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz>`_"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:196
+# 2cbbc4bcdcdd42d0816a6b2df748a0d6
+msgid "For XenServer 5.6 SP2:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:198
+# beac106ea20e420cae0ca5acb450646b
+msgid "`http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz>`_"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:201
+# 62cd9713906c45dc96254605c7134b11
+msgid "For XenServer 6.0:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:203
+# 998fd323b14c42149cc6633f4df39b83
+msgid "`http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz>`_"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:207
+# 50f6122c6c5e42dbb34f5942e788bd76
+msgid "Extract the file:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:213
+#: ../../hypervisor/xenserver.rst:762
+# afb359e6c1b34048bffed17d2dd50caf
+# d6743dae63394bbfb8c9281a2b807b79
+msgid "Run the following script:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:219
+# acac1637a03046aa8d18547ccc4bca4b
+msgid "If the XenServer host is part of a zone that uses basic networking, disable Open vSwitch (OVS):"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:226
+# 3a99c0b1de854d158eda0ad17722a6a4
+msgid "Restart the host machine when prompted."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:228
+# de44be78fbb74675b797aa1c8d77d5f4
+msgid "The XenServer host is now ready to be added to CloudStack."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:232
+# c7f7f8a7ee21490c87265ac50b0f82fa
+msgid "Primary Storage Setup for XenServer"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:234
+# acb57e34a8e44c068d9bda2fa8784ab6
+msgid "CloudStack natively supports NFS, iSCSI and local storage. If you are using one of these storage types, there is no need to create the XenServer Storage Repository (\"SR\")."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:238
+# 2d42f9931e424e16b90373f6e29342e8
+msgid "If, however, you would like to use storage connected via some other technology, such as FiberChannel, you must set up the SR yourself. To do so, perform the following steps. If you have your hosts in a XenServer pool, perform the steps on the master node. If you are working with a single XenServer which is not part of a cluster, perform the steps on that XenServer."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:245
+# 56d99586bd3a4a558b7bb66ad8d45ca0
+msgid "Connect FiberChannel cable to all hosts in the cluster and to the FiberChannel storage host."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:248
+# 8cd5013ce09d4df3b88eb92833ec5ec8
+msgid "Rescan the SCSI bus. Either use the following command or use XenCenter to perform an HBA rescan."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:255
+# bacd282ff359414aaa9442a987f5c298
+msgid "Repeat step 2 on every host."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:257
+# cd620af66c684a0e89322909e82369f4
+msgid "Check to be sure you see the new SCSI disk."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:263
+# 8318145d9f754f2cba3dc478f5fac2bb
+msgid "The output should look like this, although the specific file name will be different (scsi-<scsiID>):"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:271
+# 1cd57220dc34464b9985019c2bc74209
+msgid "Repeat step 4 on every host."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:273
+# ab7f1cb3586b43148fc804bf9f9a6785
+msgid "On the storage server, run this command to get a unique ID for the new SR."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:280
+# f68f1582ab2645ff91819eb14ea37ebf
+msgid "The output should look like this, although the specific ID will be different:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:287
+# 12c7ee94b650422dac6fa14fc9a7d775
+msgid "Create the FiberChannel SR. In name-label, use the unique ID you just generated."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:296
+# e369b17cd1df40b3aa0cce96c1974a36
+msgid "This command returns a unique ID for the SR, like the following example (your ID will be different):"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:303
+# 23f181a0244c4e4b980acb6e64e29d3b
+msgid "To create a human-readable description for the SR, use the following command. In uuid, use the SR ID returned by the previous command. In name-description, set whatever friendly text you prefer."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:311
+# 4323c9a63c6540b4a16886f29d0a1ec5
+msgid "Make note of the values you will need when you add this storage to CloudStack later (see `\"Add Primary Storage\" <configuration.html#add-primary-storage>`_). In the Add Primary Storage dialog, in Protocol, you will choose PreSetup. In SR Name-Label, you will enter the name-label you set earlier (in this example, e6849e96-86c3-4f2c-8fcc-350cc711be3d)."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:318
+# c99025edebad4540ba6b2b1d9b20ed10
+msgid "(Optional) If you want to enable multipath I/O on a FiberChannel SAN, refer to the documentation provided by the SAN vendor."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:323
+# 32342d3a35f54066ade7572169b52896
+msgid "iSCSI Multipath Setup for XenServer (Optional)"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:325
+# e2cf4ffa587b4372969e274849f484ee
+msgid "When setting up the storage repository on a Citrix XenServer, you can enable multipath I/O, which uses redundant physical components to provide greater reliability in the connection between the server and the SAN. To enable multipathing, use a SAN solution that is supported for Citrix servers and follow the procedures in Citrix documentation. The following links provide a starting point:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:332
+# 3849959c9c354656a9a9daafc5c5dbed
+msgid "`http://support.citrix.com/article/CTX118791 <http://support.citrix.com/article/CTX118791>`_"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:335
+# 8a118ac63a7f41b8b60968177ca6b343
+msgid "`http://support.citrix.com/article/CTX125403 <http://support.citrix.com/article/CTX125403>`_"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:338
+# d3f63182749e40fd86184084f5cc529b
+msgid "You can also ask your SAN vendor for advice about setting up your Citrix repository for multipathing."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:341
+# 11df997f92b94313a59c0deac4d901ee
+msgid "Make note of the values you will need when you add this storage to the CloudStack later (see `\"Add Primary Storage\" <configuration.html#add-primary-storage>`_). In the Add Primary Storage dialog, in Protocol, you will choose PreSetup. In SR Name-Label, you will enter the same name used to create the SR."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:347
+# de3e8779fcb54068a8684c6ae2a20a69
+msgid "If you encounter difficulty, address the support team for the SAN provided by your vendor. If they are not able to solve your issue, see Contacting Support."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:353
+# b62346b563314a04b2892d0d30ebafc9
+msgid "Physical Networking Setup for XenServer"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:355
+# b07a74e5a82a42dfaa85655a392fc5a1
+msgid "Once XenServer has been installed, you may need to do some additional network configuration. At this point in the installation, you should have a plan for what NICs the host will have and what traffic each NIC will carry. The NICs should be cabled as necessary to implement your plan."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:361
+# e67a8a2a93f44a4182d4d83db27837bb
+msgid "If you plan on using NIC bonding, the NICs on all hosts in the cluster must be cabled exactly the same. For example, if eth0 is in the private bond on one host in a cluster, then eth0 must be in the private bond on all hosts in the cluster."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:366
+# c8f114e421254029bfcc786da1e4f069
+msgid "The IP address assigned for the management network interface must be static. It can be set on the host itself or obtained via static DHCP."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:369
+# 4ea2dcd3445945e494146eea4f434ebe
+msgid "CloudStack configures network traffic of various types to use different NICs or bonds on the XenServer host. You can control this process and provide input to the Management Server through the use of XenServer network name labels. The name labels are placed on physical interfaces or bonds and configured in CloudStack. In some simple cases the name labels are not required."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:376
+# d4647179170b4228990c4233187a27f0
+msgid "When configuring networks in a XenServer environment, network traffic labels must be properly configured to ensure that the virtual interfaces are created by CloudStack are bound to the correct physical device. The name-label of the XenServer network must match the XenServer traffic label specified while creating the CloudStack network. This is set by running the following command:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:389
+# c06c60c71a7f4bca8a451f0b7283cfda
+msgid "Configuring Public Network with a Dedicated NIC for XenServer (Optional)"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:391
+# 6e7e724c968a42a3a8b427928f42cb98
+msgid "CloudStack supports the use of a second NIC (or bonded pair of NICs, described in :ref:`nic-bonding-for-xenserver`) for the public network. If bonding is not used, the public network can be on any NIC and can be on different NICs on the hosts in a cluster. For example, the public network can be on eth0 on node A and eth1 on node B. However, the XenServer name-label for the public network must be identical across all hosts. The following examples set the network label to \"cloud-public\". After the management server is installed and running you must configure it with the name of the chosen network label (e.g. \"cloud-public\"); this is discussed in `\"Management Server Installation\" <installation.html#management-server-installation>`_."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:403
+# 0a920576e6984f1684ffa04b4cedee14
+msgid "If you are using two NICs bonded together to create a public network, see :ref:`nic-bonding-for-xenserver`."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:406
+# c29eb136da7f472bb9092308209f4874
+msgid "If you are using a single dedicated NIC to provide public network access, follow this procedure on each new host that is added to CloudStack before adding the host."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:410
+# b6c2fcbca5784ac58cb4d766831c1feb
+msgid "Run xe network-list and find the public network. This is usually attached to the NIC that is public. Once you find the network make note of its UUID. Call this <UUID-Public>."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:414
+# 7771ef8019cf477aab4f4ea6e54dc19f
+msgid "Run the following command."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:422
+# 8b08df411b014c2fb09ab7803d37e385
+msgid "Configuring Multiple Guest Networks for XenServer (Optional)"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:424
+# ae3d74bbbeb6474caa1aabf43ce3350d
+msgid "CloudStack supports the use of multiple guest networks with the XenServer hypervisor. Each network is assigned a name-label in XenServer. For example, you might have two networks with the labels \"cloud-guest\" and \"cloud-guest2\". After the management server is installed and running, you must add the networks and use these labels so that CloudStack is aware of the networks."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:431
+# 445fbda3e6e241b49943d5a3bbae731e
+msgid "Follow this procedure on each new host before adding the host to CloudStack:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:434
+# ad021bb20dfc411ca2a0b4f6c7bb1976
+msgid "Run xe network-list and find one of the guest networks. Once you find the network make note of its UUID. Call this <UUID-Guest>."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:437
+# 5c54bddb03ab41988d164862d3e8ca4a
+msgid "Run the following command, substituting your own name-label and uuid values."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:444
+# 66309bb437094b1d9bbb0774c232de9a
+msgid "Repeat these steps for each additional guest network, using a different name-label and uuid each time."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:449
+# 355487377b08418899e9ec50ac78ae2f
+msgid "Separate Storage Network for XenServer (Optional)"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:451
+# 589c7e9b7fb048aea788093e27195cf2
+msgid "You can optionally set up a separate storage network. This should be done first on the host, before implementing the bonding steps below. This can be done using one or two available NICs. With two NICs bonding may be done as above. It is the administrator's responsibility to set up a separate storage network."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:457
+# 61490e5df97948629bbb83dda64d4aa9
+msgid "Give the storage network a different name-label than what will be given for other networks."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:460
+# 164d8afca329462b9c5943496322bcf0
+msgid "For the separate storage network to work correctly, it must be the only interface that can ping the primary storage device's IP address. For example, if eth0 is the management network NIC, ping -I eth0 <primary storage device IP> must fail. In all deployments, secondary storage devices must be pingable from the management network NIC or bond. If a secondary storage device has been placed on the storage network, it must also be pingable via the storage network NIC or bond on the hosts as well."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:469
+# 90f24bd320174d1fac607e00a9e983f8
+msgid "You can set up two separate storage networks as well. For example, if you intend to implement iSCSI multipath, dedicate two non-bonded NICs to multipath. Each of the two networks needs a unique name-label."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:473
+# 61c2f4816fdb42d5b6cc3c6d2ca18ca8
+msgid "If no bonding is done, the administrator must set up and name-label the separate storage network on all hosts (masters and slaves)."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:476
+# 00dbbb5d1bcd4becb0dec5b47340f83d
+msgid "Here is an example to set up eth5 to access a storage network on 172.16.0.0/24."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:490
+# 185e1a599c604803a54446ba74b35dc9
+msgid "NIC Bonding for XenServer (Optional)"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:492
+# caf6aa9edc614274af0ef31881fe03ca
+msgid "XenServer supports Source Level Balancing (SLB) NIC bonding. Two NICs can be bonded together to carry public, private, and guest traffic, or some combination of these. Separate storage networks are also possible. Here are some example supported configurations:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:497
+# 44d7cdc70d4541e4b8b66e39293c57c5
+msgid "2 NICs on private, 2 NICs on public, 2 NICs on storage"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:499
+# 7dbbc60ca898461991faac0752ccb9b6
+msgid "2 NICs on private, 1 NIC on public, storage uses management network"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:501
+# 933cb0b64cdc4b93b709825c7f872083
+msgid "2 NICs on private, 2 NICs on public, storage uses management network"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:503
+# aa2cdc325ff64d6dbeb15a9db3815249
+msgid "1 NIC for private, public, and storage"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:505
+# a5c691fdc14644f1938a3d7e0616e209
+msgid "All NIC bonding is optional."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:507
+# ce37792754e74070b0880c3c27ca5b6d
+msgid "XenServer expects all nodes in a cluster will have the same network cabling and same bonds implemented. In an installation the master will be the first host that was added to the cluster and the slave hosts will be all subsequent hosts added to the cluster. The bonds present on the master set the expectation for hosts added to the cluster later. The procedure to set up bonds on the master and slaves are different, and are described below. There are several important implications of this:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:515
+# 31e309b5aea94e1982a0745fa2f8d163
+msgid "You must set bonds on the first host added to a cluster. Then you must use xe commands as below to establish the same bonds in the second and subsequent hosts added to a cluster."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:519
+# dc53904a0ade40e8996b6379af74299d
+msgid "Slave hosts in a cluster must be cabled exactly the same as the master. For example, if eth0 is in the private bond on the master, it must be in the management network for added slave hosts."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:525
+# 5a1e3289d6064e239e1ac513d07d53c7
+msgid "Management Network Bonding"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:527
+# d6933d9eedc548ea911d1c03954c8cc8
+msgid "The administrator must bond the management network NICs prior to adding the host to CloudStack."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:532
+# 990edf34545641be9105fff2e790fa8e
+msgid "Creating a Private Bond on the First Host in the Cluster"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:534
+# bef555ea56e644ee824b3211d285a5dc
+msgid "Use the following steps to create a bond in XenServer. These steps should be run on only the first host in a cluster. This example creates the cloud-private network with two physical NICs (eth0 and eth1) bonded into it."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:539
+#: ../../hypervisor/xenserver.rst:583
+# 76d14a97770b48e3b7573b8df3d95987
+# 83ee5c43bfdf49078158dc0ede74e1cb
+msgid "Find the physical NICs that you want to bond together."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:546
+# 19647e91e4064b26bcf46ae5ccdb7654
+msgid "These command shows the eth0 and eth1 NICs and their UUIDs. Substitute the ethX devices of your choice. Call the UUID's returned by the above command slave1-UUID and slave2-UUID."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:550
+# eb485b7e38044135bbafec10517e6fda
+msgid "Create a new network for the bond. For example, a new network with name \"cloud-private\"."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:553
+# 4426249063674de991301445df08c8af
+msgid "**This label is important. CloudStack looks for a network by a name you configure. You must use the same name-label for all hosts in the cloud for the management network.**"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:563
+# 10a8ca3e627f42039cde96aa311c2e24
+msgid "Now you have a bonded pair that can be recognized by CloudStack as the management network."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:568
+# 8237b2020d164e25afdf235b117e0226
+msgid "Public Network Bonding"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:570
+# c0b0ed9d574d4595b6bccb839df5a9d6
+msgid "Bonding can be implemented on a separate, public network. The administrator is responsible for creating a bond for the public network if that network will be bonded and will be separate from the management network."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:577
+# 49b1405549674b47892be73abf90bb90
+msgid "Creating a Public Bond on the First Host in the Cluster"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:579
+# 80ceb8eb4f324fa288b049d1b412d166
+msgid "These steps should be run on only the first host in a cluster. This example creates the cloud-public network with two physical NICs (eth2 and eth3) bonded into it."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:590
+# e9ee4656a26c4e429fa44a19deca4697
+msgid "These command shows the eth2 and eth3 NICs and their UUIDs. Substitute the ethX devices of your choice. Call the UUID's returned by the above command slave1-UUID and slave2-UUID."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:594
+# ecd21d8abed7420cbdb7722f7d3bbcf6
+msgid "Create a new network for the bond. For example, a new network with name \"cloud-public\"."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:597
+# f2ccf39a444949779ea15c87c23f1102
+msgid "**This label is important. CloudStack looks for a network by a name you configure. You must use the same name-label for all hosts in the cloud for the public network.**"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:607
+# c63c4fffe13c41e3857c2d5a7037324d
+msgid "Now you have a bonded pair that can be recognized by CloudStack as the public network."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:612
+# 4571fae00d22423c977f157626730a6b
+msgid "Adding More Hosts to the Cluster"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:614
+# bb7f4bc061df424882aa108cec051dde
+msgid "With the bonds (if any) established on the master, you should add additional, slave hosts. Run the following command for all additional hosts to be added to the cluster. This will cause the host to join the master in a single XenServer pool."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:626
+# 2e3ff343227f43eca63a765a974c4e58
+msgid "Complete the Bonding Setup Across the Cluster"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:628
+# e54d6baf9f4a4630ae0802e0e114130f
+msgid "With all hosts added to the pool, run the cloud-setup-bond script. This script will complete the configuration and set up of the bonds across all hosts in the cluster."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:632
+# 27800d5ec6e44bdcb75245bf193bfda2
+msgid "Copy the script from the Management Server in /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-setup-bonding.sh to the master host and ensure it is executable."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:636
+# ed41f3f65d3f49209bba272a3b1c0922
+msgid "Run the script:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:642
+# 30dd45661f474b9f9d626aa8df7052e5
+msgid "Now the bonds are set up and configured properly across the cluster."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:648
+# 06329e8ef297453d9fbe11b802a02387
+msgid "Upgrading XenServer Versions"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:650
+# 7ae8e3b4c5e745e7b43ab29f5129e0cf
+msgid "This section tells how to upgrade XenServer software on CloudStack hosts. The actual upgrade is described in XenServer documentation, but there are some additional steps you must perform before and after the upgrade."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:656
+# a49d855e0fec4ddfb046814a7a02bc58
+msgid "Be sure the hardware is certified compatible with the new version of XenServer."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:659
+# dee99a5634554dc4b7188ab5c5aedc45
+msgid "To upgrade XenServer:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:661
+# c58f7ac2d954400395df0861156c145b
+msgid "Upgrade the database. On the Management Server node:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:663
+# a680a343ad5b4dc0900df3a60f835ead
+msgid "Back up the database:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:670
+# 22c201339a64428aba4b9ed4256a473e
+msgid "You might need to change the OS type settings for VMs running on the upgraded hosts."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:673
+# b4e5d659dfde45c7bf1279a03e48b5c1
+msgid "If you upgraded from XenServer 5.6 GA to XenServer 5.6 SP2, change any VMs that have the OS type CentOS 5.5 (32-bit), Oracle Enterprise Linux 5.5 (32-bit), or Red Hat Enterprise Linux 5.5 (32-bit) to Other Linux (32-bit). Change any VMs that have the 64-bit versions of these same OS types to Other Linux (64-bit)."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:680
+# 7573f70d77e248e5a4d430bd16631bbe
+msgid "If you upgraded from XenServer 5.6 SP2 to XenServer 6.0.2, change any VMs that have the OS type CentOS 5.6 (32-bit), CentOS 5.7 (32-bit), Oracle Enterprise Linux 5.6 (32-bit), Oracle Enterprise Linux 5.7 (32-bit), Red Hat Enterprise Linux 5.6 (32-bit) , or Red Hat Enterprise Linux 5.7 (32-bit) to Other Linux (32-bit). Change any VMs that have the 64-bit versions of these same OS types to Other Linux (64-bit)."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:688
+# ecee533ad8dd40ecbab222880d5502e4
+msgid "If you upgraded from XenServer 5.6 to XenServer 6.0.2, do all of the above."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:691
+# 92dd0b5b05d349f5b31a218ef5053b51
+msgid "Restart the Management Server and Usage Server. You only need to do this once for all clusters."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:699
+# 609fce92c5004d349ce69313e8b259d1
+msgid "Disconnect the XenServer cluster from CloudStack."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:701
+#: ../../hypervisor/xenserver.rst:803
+# a0e0ba7425e84cc4b3c558e55e6ba6c1
+# 9a532ffafa924e14bfdcd5a3f893f796
+msgid "Log in to the CloudStack UI as root."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:703
+# cfa57057adf34d20ad28ea73d14ef535
+msgid "Navigate to the XenServer cluster, and click Actions – Unmanage."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:705
+# 5d95636b239e4667b4933027c8a99a25
+msgid "Watch the cluster status until it shows Unmanaged."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:707
+# 80449684af9d499095d5d868770d0e7b
+msgid "Log in to one of the hosts in the cluster, and run this command to clean up the VLAN:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:714
+# d785d08cf59f499398b8f029d5186b94
+msgid "Still logged in to the host, run the upgrade preparation script:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:720
+# 31f5837f129648c9a08eca9c059eb78c
+msgid "Troubleshooting: If you see the error \"can't eject CD,\" log in to the VM and umount the CD, then run the script again."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:723
+# 715d2f02ed1c47c589935a7f3b1dafa3
+msgid "Upgrade the XenServer software on all hosts in the cluster. Upgrade the master first."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:726
+# d16b76e393814c10b8ce59d9d571f9a4
+msgid "Live migrate all VMs on this host to other hosts. See the instructions for live migration in the Administrator's Guide."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:729
+# 2abd9a8c661b47fc8eee237cf9108f92
+msgid "Troubleshooting: You might see the following error when you migrate a VM:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:738
+# b23537b0d5f942ccb71f8849c129899d
+msgid "To solve this issue, run the following:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:744
+# d92194b697694bd2b8152cfa36773892
+msgid "Reboot the host."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:746
+# 34903a18372648c9b8b6d06d03d0e02c
+msgid "Upgrade to the newer version of XenServer. Use the steps in XenServer documentation."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:749
+# 573adf7c44514928894306fcf3566a98
+msgid "After the upgrade is complete, copy the following files from the management server to this host, in the directory locations shown below:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:754
+# 18eb28018d324049916e1e1a4b9b1680
+msgid "Copy this Management Server file"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:754
+# 37bd1b6db08741b39cf4840e83ad9279
+msgid "To this location on the XenServer host"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:756
+# 77c4c74d05ee4ed084fecb4d94f0038e
+msgid "/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/xenserver60/NFSSR.py"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:756
+# 5d5d441f185b4da39acede52092ab729
+msgid "/opt/xensource/sm/NFSSR.py"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:757
+# b9569d25b25c47589eb352b2f26b96d8
+msgid "/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/setupxenserver.sh"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:757
+# 8ccdd7cb7c6d4213ba0d257d2adfcf42
+msgid "/opt/xensource/bin/setupxenserver.sh"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:758
+# 70be8fbba5fe4f9d81dbe6ffe68ca9fa
+msgid "/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/make\\_migratable.sh"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:758
+# 9545ac4a5e554ac0856980527ee37e93
+msgid "/opt/xensource/bin/make\\_migratable.sh"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:759
+# d5729618b07f45fa871e57a5cdd5cb11
+msgid "/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-clean-vlan.sh"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:759
+# 0af33abd27be47cf9afd563a8049f92f
+msgid "/opt/xensource/bin/cloud-clean-vlan.sh"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:768
+# 57e220ee90da43a18a72c97fb44f4642
+msgid "Troubleshooting: If you see the following error message, you can safely ignore it."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:775
+# 7d8ccf199424413ca7d2c6ace78d8d25
+msgid "Plug in the storage repositories (physical block devices) to the XenServer host:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:783
+# 03e1d3926bc546a5af37036f806b6776
+msgid "If you add a host to this XenServer pool, you need to migrate all VMs on this host to other hosts, and eject this host from XenServer pool."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:786
+# 9e79d6523b9b4c6982d7f0df8b920625
+msgid "Repeat these steps to upgrade every host in the cluster to the same version of XenServer."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:789
+# 0f820c2f7c49419ea8cce858406d9043
+msgid "Run the following command on one host in the XenServer cluster to clean up the host tags:"
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:797
+# 742db1ba5463410a9d82cc3a89bb7199
+msgid "When copying and pasting a command, be sure the command has pasted as a single line before executing. Some document viewers may introduce unwanted line breaks in copied text."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:801
+# 5432c32d5f10462dbd868cbbbddc88f4
+msgid "Reconnect the XenServer cluster to CloudStack."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:805
+# 21a80cdb8f254573809173ca433e813e
+msgid "Navigate to the XenServer cluster, and click Actions – Manage."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:807
+# feaf793c4bb243358fe6893a23769add
+msgid "Watch the status to see that all the hosts come up."
+msgstr ""
+
+#: ../../hypervisor/xenserver.rst:809
+# 228283144fa14ff9b751f39e8007043f
+msgid "After all hosts are up, run the following on one host in the cluster:"
+msgstr ""
+

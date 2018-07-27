@@ -1,0 +1,949 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../hypervisor/kvm.rst:18
+# ebeb1b4a092d444ea21ba9ad826adffe
+msgid "KVM Hypervisor Host Installation"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:21
+# 97cb5ce75570443fb1ad7cf720fdab2a
+msgid "System Requirements for KVM Hypervisor Hosts"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:23
+# 9e938eeaf34e4bacb41261551600a15d
+msgid "KVM is included with a variety of Linux-based operating systems. Although you are not required to run these distributions, the following are recommended:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:27
+# 01060377fba240b98bfb3214ded11e8c
+msgid "CentOS / RHEL: 6.3"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:29
+# c65d0ad029984ec697cc18cf30a3cadc
+msgid "Ubuntu: 12.04(.1)"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:31
+# 2c83e5c69a214b408332608c4f0cd35c
+msgid "The main requirement for KVM hypervisors is the libvirt and Qemu version. No matter what Linux distribution you are using, make sure the following requirements are met:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:35
+# 41d119144cb04445888526ae22eaff17
+msgid "libvirt: 0.9.4 or higher"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:37
+# c01a69a6ea624526aed8eb093c9580c7
+msgid "Qemu/KVM: 1.0 or higher"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:39
+# 651ec4f15bf24d0ca383e80951a6ab85
+msgid "The default bridge in CloudStack is the Linux native bridge implementation (bridge module). CloudStack includes an option to work with OpenVswitch, the requirements are listed below"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:43
+# 38d4ca03c8c24e2c9d6cd87e5c0b1d17
+msgid "libvirt: 0.9.11 or higher"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:45
+# 55b8b19e86c9462297d454cf0f32bb13
+msgid "openvswitch: 1.7.1 or higher"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:47
+# 8bb45c3db83e4685a2f5f9b56c255a67
+msgid "In addition, the following hardware requirements apply:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:49
+# a3affcf8d2194e6ca7031037e7498bea
+msgid "Within a single cluster, the hosts must be of the same distribution version."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:52
+# fc001eaf8fb842d7adbbf5bb977be8fd
+msgid "All hosts within a cluster must be homogenous. The CPUs must be of the same type, count, and feature flags."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:55
+# 040002ad5b674b0c821aa9750f44d966
+msgid "Must support HVM (Intel-VT or AMD-V enabled)"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:57
+# 430eb7a34d084edc906c29088ecd022d
+msgid "64-bit x86 CPU (more cores results in better performance)"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:59
+# 7a5ab30337ea4ad3911e07092171034c
+msgid "4 GB of memory"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:61
+# 54804b801477441396a656d1f55ce683
+msgid "At least 1 NIC"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:63
+# 3d590f343f0c40e8a3ead4dd2fe2fa47
+msgid "When you deploy CloudStack, the hypervisor host must not have any VMs already running"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:68
+# 8b68c1fe985341dcb44b491222fc84ad
+msgid "KVM Installation Overview"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:70
+# b9ec75165d5f4c29afccc0e271256a34
+msgid "If you want to use the Linux Kernel Virtual Machine (KVM) hypervisor to run guest virtual machines, install KVM on the host(s) in your cloud. The material in this section doesn't duplicate KVM installation docs. It provides the CloudStack-specific steps that are needed to prepare a KVM host to work with CloudStack."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:77
+# f5be326bc3d74ee58f731bc68b96b0fb
+msgid "Before continuing, make sure that you have applied the latest updates to your host."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:81
+# 4e04ebf1f4b34b6cafaa81b1db7348cb
+msgid "It is NOT recommended to run services on this host not controlled by CloudStack."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:84
+# 05cc9620411849a395036ae746c8c8ab
+msgid "The procedure for installing a KVM Hypervisor Host is:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:86
+#: ../../hypervisor/kvm.rst:96
+# 6021037c1bdc4f11a0e777ddb5074991
+# 2587ced26d8445e89dc4b8dc2392793f
+msgid "Prepare the Operating System"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:88
+# 3e3ad1c9b475475d8c6d84148d8a187b
+msgid "Install and configure libvirt"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:90
+# bfef16f0f0344071beb3918d9b215e58
+msgid "Configure Security Policies (AppArmor and SELinux)"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:92
+#: ../../hypervisor/kvm.rst:139
+# 4343245b910e46b2889fad1a299a3a6d
+# 13ebc121a8db4e73b1da322e022b044e
+msgid "Install and configure the Agent"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:98
+# 0da476eb6feb4293aff700a82bfb838e
+msgid "The OS of the Host must be prepared to host the CloudStack Agent and run KVM instances."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:101
+# bdd309f671e84b25b03a65509e8f6b42
+msgid "Log in to your OS as root."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:103
+# 2994046162c749719c61badf46ac4ad3
+msgid "Check for a fully qualified hostname."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:109
+# 7140e2b27dea40f8b406eb3c53a6926a
+msgid "This should return a fully qualified hostname such as \"kvm1.lab.example.org\". If it does not, edit /etc/hosts so that it does."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:113
+# d097f223788942dca1e0f0e3a835719d
+msgid "Make sure that the machine can reach the Internet."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:119
+# e9e925f675b24298904628fe8d5d3e22
+msgid "Turn on NTP for time synchronization."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:122
+# e0e2735eb1544cbea55afc3efd41e42e
+msgid "NTP is required to synchronize the clocks of the servers in your cloud. Unsynchronized clocks can cause unexpected problems."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:125
+# fd84cef5844c4bb4861e1a723be7b730
+msgid "Install NTP"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:135
+# 43ee16ce469842bdb337c3e50b34061c
+msgid "Repeat all of these steps on every hypervisor host."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:141
+# 5fe0d335c6f646c987b8e7f2c3c9176d
+msgid "To manage KVM instances on the host CloudStack uses a Agent. This Agent communicates with the Management server and controls all the instances on the host."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:145
+# 6e696930e763476fabe3f4eee7ff4119
+msgid "First we start by installing the agent:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:147
+#: ../../hypervisor/kvm.rst:297
+#: ../../hypervisor/kvm.rst:333
+# 707c5512b9c244b29a78dff8a4299a43
+# 1640e85f451b43bf9287ea34e03d19d0
+# 7296990676914572906f8131a2c931ca
+msgid "In RHEL or CentOS:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:153
+#: ../../hypervisor/kvm.rst:303
+# b558c002a308451c962adfba860db12a
+# c6cfcfd744df46039292c75ce9c00344
+msgid "In Ubuntu:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:159
+#: ../../hypervisor/kvm.rst:880
+# 996e7f4699cf4e99812ef4193d0f5522
+# 0066de97fb884b43b6b6e86bdc4a8d19
+msgid "The host is now ready to be added to a cluster. This is covered in a later section, see :ref:`adding-a-host`. It is recommended that you continue to read the documentation before adding the host!"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:166
+# 4896f6ced9d2426d815ed0b39e1f2f4a
+msgid "Configure CPU model for KVM guest (Optional)"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:168
+# 20ff9499c4f34a21932f12ab3ace15d5
+msgid "In additional,the CloudStack Agent allows host administrator to control the guest CPU model which is exposed to KVM instances. By default, the CPU model of KVM instance is likely QEMU Virtual CPU version x.x.x with least CPU features exposed. There are a couple of reasons to specify the CPU model:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:174
+# 6e0e4449f4ec4464a09f85e60e4370ed
+msgid "To maximise performance of instances by exposing new host CPU features to the KVM instances;"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:177
+# c7628f91810a40ccb39bcf8305be59da
+msgid "To ensure a consistent default CPU across all machines,removing reliance of variable QEMU defaults;"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:180
+# c7ea77c20a4345ba96d87413aa516fb5
+msgid "For the most part it will be sufficient for the host administrator to specify the guest CPU config in the per-host configuration file (/etc/cloudstack/agent/agent.properties). This will be achieved by introducing two new configuration parameters:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:190
+# b49256d2460d47f688c7624e3f4e6a72
+msgid "There are three choices to fulfill the cpu model changes:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:192
+# 07a33361eda847d59a1ac15adc6af65f
+msgid "**custom:** you can explicitly specify one of the supported named model in /usr/share/libvirt/cpu\\_map.xml"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:195
+# 6282d4279ada4fb88884fea8fd73cd06
+msgid "**host-model:** libvirt will identify the CPU model in /usr/share/libvirt/cpu\\_map.xml which most closely matches the host, and then request additional CPU flags to complete the match. This should give close to maximum functionality/performance, which maintaining good reliability/compatibility if the guest is migrated to another host with slightly different host CPUs."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:202
+# f8b3348db3b04cfaa45ddadb3e295515
+msgid "**host-passthrough:** libvirt will tell KVM to passthrough the host CPU with no modifications. The difference to host-model, instead of just matching feature flags, every last detail of the host CPU is matched. This gives absolutely best performance, and can be important to some apps which check low level CPU details, but it comes at a cost with respect to migration: the guest can only be migrated to an exactly matching host CPU."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:210
+# 47f1633a109745c68733dbe0a7ba9ce9
+msgid "Here are some examples:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:212
+# d710e6fa4277486c8d61b2f169b7f2b3
+msgid "custom"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:219
+# f5b710b35db840c7affadc4299dae2e5
+msgid "host-model"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:225
+# aecbb45afbe5482aa5532e1d54f55842
+msgid "host-passthrough"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:232
+# fb86e9deb45745bd9fac900c4f7e7ec6
+msgid "host-passthrough may lead to migration failure,if you have this problem, you should use host-model or custom"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:237
+# 00afd93377104391bc056ba2988ad1d5
+msgid "Install and Configure libvirt"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:239
+# ac5f3de595104874aca72f9e3e908bb2
+msgid "CloudStack uses libvirt for managing virtual machines. Therefore it is vital that libvirt is configured correctly. Libvirt is a dependency of cloudstack-agent and should already be installed."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:243
+# ed8dd766459147cbb85ff50d90c4b80e
+msgid "In order to have live migration working libvirt has to listen for unsecured TCP connections. We also need to turn off libvirts attempt to use Multicast DNS advertising. Both of these settings are in ``/etc/libvirt/libvirtd.conf``"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:248
+# 25fdfe15f0fd4e42a8859066fd10be16
+msgid "Set the following parameters:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:270
+# b077d28a7fb14c0da6df9ced98d909bd
+msgid "Turning on \"listen\\_tcp\" in libvirtd.conf is not enough, we have to change the parameters as well:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:273
+# fe5a6a536a154770ac58fbf4ace2ce6e
+msgid "On RHEL or CentOS modify ``/etc/sysconfig/libvirtd``:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:275
+# d50d8ab0ec584f1bbdc8af56f6265ffc
+msgid "Uncomment the following line:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:281
+# 3f26c856207e4381bf305695a8a1b875
+msgid "On Ubuntu: modify ``/etc/default/libvirt-bin``"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:283
+# 6115b7018d9740c4913aacc4a4c661b2
+msgid "Add \"-l\" to the following line"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:289
+# fcea59d4e03647eeaeaa3ac4932357ac
+msgid "so it looks like:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:295
+# a61d4201e47640b197fdfbcd22c10e63
+msgid "Restart libvirt"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:311
+# f5d8d474c64344d19b502d403b56e5ac
+msgid "Configure the Security Policies"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:313
+# a4cdda146bad44b39bbc09b937240984
+msgid "CloudStack does various things which can be blocked by security mechanisms like AppArmor and SELinux. These have to be disabled to ensure the Agent has all the required permissions."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:317
+# 4b7a44bcec124017bf23bc0dd76e7428
+msgid "Configure SELinux (RHEL and CentOS)"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:319
+# fc143c3fe742401a9106eafabea70c57
+msgid "Check to see whether SELinux is installed on your machine. If not, you can skip this section."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:322
+# 2b54567dbb364fddb556f971dd10b551
+msgid "In RHEL or CentOS, SELinux is installed and enabled by default. You can verify this with:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:329
+# 80c7202620bb48148e037b74df42ee70
+msgid "Set the SELINUX variable in ``/etc/selinux/config`` to \"permissive\". This ensures that the permissive setting will be maintained after a system reboot."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:339
+# 4cad5c113a6d40c78b1deced30e96b20
+msgid "Change the following line"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:345
+# c97ebe4c24c3452b87cde950fe2fc4c8
+msgid "to this"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:351
+# 1fe4df6a30c94763bdb8884755fdcdce
+msgid "Then set SELinux to permissive starting immediately, without requiring a system reboot."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:358
+# 0af84eecf2664f6cb9301604df585e10
+msgid "Configure Apparmor (Ubuntu)"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:360
+# fc4f77ded77f4d28afca68609461f0bb
+msgid "Check to see whether AppArmor is installed on your machine. If not, you can skip this section."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:363
+# 04268552313d40f3a6be6f7a36fa99fe
+msgid "In Ubuntu AppArmor is installed and enabled by default. You can verify this with:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:370
+# 6fd96cf6f5224881a383a21dd3963718
+msgid "Disable the AppArmor profiles for libvirt"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:390
+# af0b6b3d14164b38bb854739db62c3f5
+msgid "Configure the network bridges"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:393
+#: ../../hypervisor/kvm.rst:616
+# fa37fe8e08ec4f3a956c501d3aa88019
+# 4fa42c30b73c4240b8836f967070df3a
+msgid "This is a very important section, please make sure you read this thoroughly."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:396
+# 9ec0bad9717b478889252f4b10b4ebf0
+msgid "This section details how to configure bridges using the native implementation in Linux. Please refer to the next section if you intend to use OpenVswitch"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:400
+#: ../../hypervisor/kvm.rst:618
+# f6707b5fbc3f4ea2a4baa8b33756195f
+# bbbbeeb75efc49bbb12e571702c69490
+msgid "In order to forward traffic to your instances you will need at least two bridges: *public* and *private*."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:403
+#: ../../hypervisor/kvm.rst:621
+# 3bcaf96162614d5a990b65c272e2627f
+# 70d93337f9884c43b723d19f188000c6
+msgid "By default these bridges are called *cloudbr0* and *cloudbr1*, but you do have to make sure they are available on each hypervisor."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:406
+#: ../../hypervisor/kvm.rst:624
+# 965691e1a7d742b4a8c0360d6c31e2f6
+# d4d5af0a56be4b0093be521d30e2f4c2
+msgid "The most important factor is that you keep the configuration consistent on all your hypervisors."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:411
+#: ../../hypervisor/kvm.rst:643
+# 8457ada239b24dc388b653310867751e
+# 9e68314d8d8e4f319f85e5d12ec665dc
+msgid "Network example"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:413
+#: ../../hypervisor/kvm.rst:645
+# 4de6b0928811452f9123e93380d47402
+# 49e2abb08c79429e8e2a48cb9f02907d
+msgid "There are many ways to configure your network. In the Basic networking mode you should have two (V)LAN's, one for your private network and one for the public network."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:417
+#: ../../hypervisor/kvm.rst:649
+# 39d4d3c7755c40b5aea4cebdad65af1b
+# c6f350d0cfec4016ac48462e94a09728
+msgid "We assume that the hypervisor has one NIC (eth0) with three tagged VLAN's:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:420
+#: ../../hypervisor/kvm.rst:652
+# e682c9d170fd475da9c2a680bb5099ff
+# d38b80c792834c7c8649626ad41e9300
+msgid "VLAN 100 for management of the hypervisor"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:422
+#: ../../hypervisor/kvm.rst:654
+# d25eda691ed1435c880ed6c76b1fef81
+# 1022b2a4fd5848dda685cfe71fd18690
+msgid "VLAN 200 for public network of the instances (cloudbr0)"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:424
+#: ../../hypervisor/kvm.rst:656
+# e0eff3d36bba429288abf8657deeb28e
+# f3b7f72de0094b6e9210605736fa23c8
+msgid "VLAN 300 for private network of the instances (cloudbr1)"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:426
+#: ../../hypervisor/kvm.rst:658
+# 514a4f72f28c4c58baeea8b592b75c8e
+# 970bdad2851e4d399cdecca76cbbc302
+msgid "On VLAN 100 we give the Hypervisor the IP-Address 192.168.42.11/24 with the gateway 192.168.42.1"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:430
+#: ../../hypervisor/kvm.rst:662
+# 79adcf25d3a54f778ec9459d0384cb62
+# a686fb2b0fd345d2905f28066f0e0638
+msgid "The Hypervisor and Management server don't have to be in the same subnet!"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:434
+#: ../../hypervisor/kvm.rst:666
+# 83141e4d1ee040d3b63247777f709a6d
+# 5ded57bbb4074546af86d97ade2a6269
+msgid "Configuring the network bridges"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:436
+# 660eb10d8f0c4ed399ee7571538e7b6e
+msgid "It depends on the distribution you are using how to configure these, below you'll find examples for RHEL/CentOS and Ubuntu."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:440
+# 89c3fb6c97034c75836101354c78230f
+msgid "The goal is to have two bridges called 'cloudbr0' and 'cloudbr1' after this section. This should be used as a guideline only. The exact configuration will depend on your network layout."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:446
+#: ../../hypervisor/kvm.rst:698
+# 77ee68f2056d43219edea55da8fa4914
+# be99a34a26fd4b958c9fd807e0dd34af
+msgid "Configure in RHEL or CentOS"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:448
+# 300927ecc5b44fc88b3d0354324b833a
+msgid "The required packages were installed when libvirt was installed, we can proceed to configuring the network."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:451
+#: ../../hypervisor/kvm.rst:703
+# 0979f7549d3d40109f7541534976337c
+# c06eae41831f473c95f89897f4086011
+msgid "First we configure eth0"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:457
+#: ../../hypervisor/kvm.rst:709
+# 36f103232df444d4851ddb29018cf8e7
+# 9cc8329e54ac46d4844dba0b2f07de57
+msgid "Make sure it looks similar to:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:468
+# 0a69c047e9904d2fa4430ed750a2a62d
+msgid "We now have to configure the three VLAN interfaces:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:517
+# 121e20a6f2bf43c8b4cb4b59090ad9d5
+msgid "Now we have the VLAN interfaces configured we can add the bridges on top of them."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:524
+# 3199cc44a9af4582a29269e946521a03
+msgid "Now we just configure it is a plain bridge without an IP-Address"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:537
+# 981070114a5a4114bd174bbab7b8879d
+msgid "We do the same for cloudbr1"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:554
+#: ../../hypervisor/kvm.rst:604
+#: ../../hypervisor/kvm.rst:779
+# 9627142b8e984eed84e51f657f8c8241
+# 681bc847b70f47e3ad4630bda2af753a
+# 520007e753694508964c00ca3c481d61
+msgid "With this configuration you should be able to restart the network, although a reboot is recommended to see if everything works properly."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:558
+#: ../../hypervisor/kvm.rst:608
+#: ../../hypervisor/kvm.rst:783
+# 2448b2982d304a79862fe2914c61de64
+# ad16f054466d48dd871757fa669c4df4
+# fa84321526ca43df86de9ecd44cf9461
+msgid "Make sure you have an alternative way like IPMI or ILO to reach the machine in case you made a configuration error and the network stops functioning!"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:563
+# fe3ac0a755274b3a9dddb7d07949ede0
+msgid "Configure in Ubuntu"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:565
+# b098a8a9d90247ab9111fbca07e65fa0
+msgid "All the required packages were installed when you installed libvirt, so we only have to configure the network."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:572
+# 81e2e66c3d79430dbadab3f14cd7d21f
+msgid "Modify the interfaces file to look like this:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:613
+# 48b97fd377be47ce94716c2a129def60
+msgid "Configure the network using OpenVswitch"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:629
+# f755f1c1367b4e49a1a3ea5b0052c263
+msgid "Preparing"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:631
+# 1cd9101e47b3400c8e51f0979708da0d
+msgid "To make sure that the native bridge module will not interfere with openvswitch the bridge module should be added to the blacklist. See the modprobe documentation for your distribution on where to find the blacklist. Make sure the module is not loaded either by rebooting or executing rmmod bridge before executing next steps."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:637
+# 50c9cb6dd4434f198ed2252ec1caa0e4
+msgid "The network configurations below depend on the ifup-ovs and ifdown-ovs scripts which are part of the openvswitch installation. They should be installed in /etc/sysconfig/network-scripts/"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:668
+# 68030dc6b78845d59b796851b9829bdf
+msgid "It depends on the distribution you are using how to configure these, below you'll find examples for RHEL/CentOS."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:672
+# dfc1c63e9eee4272b51c488615bafe37
+msgid "The goal is to have three bridges called 'mgmt0', 'cloudbr0' and 'cloudbr1' after this section. This should be used as a guideline only. The exact configuration will depend on your network layout."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:678
+# c26ca789face40d2a6f9e4779a9d5f95
+msgid "Configure OpenVswitch"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:680
+# 9c03a4fe0070433f867cd736e4f3c8fc
+msgid "The network interfaces using OpenVswitch are created using the ovs-vsctl command. This command will configure the interfaces and persist them to the OpenVswitch database."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:684
+# cdfe3c8fcb434b6783bc0d370d417746
+msgid "First we create a main bridge connected to the eth0 interface. Next we create three fake bridges, each connected to a specific vlan tag."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:700
+# 880d846a8d5b4184a46ae53df77519c2
+msgid "The required packages were installed when openvswitch and libvirt were installed, we can proceed to configuring the network."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:720
+# 1962691daa974f51baaafc174a030561
+msgid "We have to configure the base bridge with the trunk."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:735
+# ff14886892454831bf1869e2433a3d04
+msgid "We now have to configure the three VLAN bridges:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:788
+# c9890b410c3340338a04badf11f3ef7f
+msgid "Configuring the firewall"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:790
+# 10dd274736004147a298a91ec2274c1b
+msgid "The hypervisor needs to be able to communicate with other hypervisors and the management server needs to be able to reach the hypervisor."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:793
+# 7b384a27e3f042949ce580b2ac4cbe02
+msgid "In order to do so we have to open the following TCP ports (if you are using a firewall):"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:796
+# ae053a79c1ef4aa98ebbfa9979dd1dbe
+msgid "22 (SSH)"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:798
+# 68c5bface9c34c46bccfa6f10934745a
+msgid "1798"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:800
+# caf73c191ae44a9694814826ff704533
+msgid "16509 (libvirt)"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:802
+# b41b07df7a30461099d417c16b50b745
+msgid "5900 - 6100 (VNC consoles)"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:804
+# 443df083cb0e49a7a098b6903196471d
+msgid "49152 - 49216 (libvirt live migration)"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:806
+# 087989f68dae411cb79ce11da6c9408d
+msgid "It depends on the firewall you are using how to open these ports. Below you'll find examples how to open these ports in RHEL/CentOS and Ubuntu."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:811
+# 2c327652a9ad4b51b8da0b683a481c88
+msgid "Open ports in RHEL/CentOS"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:813
+# 2c67238eeb0c4181b34a32c059cb47cc
+msgid "RHEL and CentOS use iptables for firewalling the system, you can open extra ports by executing the following iptable commands:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:836
+# f47cb1aac5b0422ea1409fd01b64e2db
+msgid "These iptable settings are not persistent accross reboots, we have to save them first."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:845
+# 8da3ddd17dd24cb8a254b0000f2b336b
+msgid "Open ports in Ubuntu"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:847
+# f59b31a8288b46c8b52ee009069cb2e3
+msgid "The default firewall under Ubuntu is UFW (Uncomplicated FireWall), which is a Python wrapper around iptables."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:850
+# eec901cef5c246699d66ddd141a20525
+msgid "To open the required ports, execute the following commands:"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:873
+# 1e32d61867d64456a033a80cfee8590c
+msgid "By default UFW is not enabled on Ubuntu. Executing these commands with the firewall disabled does not enable the firewall."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:878
+# c72a2dc53e534e2d895ad8057ea4275e
+msgid "Add the host to CloudStack"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:887
+# fcd5e62f095c42fba18d4cbe3326670c
+msgid "Hypervisor Support for Primary Storage"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:889
+# 9439e0974f4043eeae2c168c73f556f9
+msgid "The following table shows storage options and parameters for different hypervisors."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:893
+# 55db4812fcd04f2087654f0e21be25e7
+msgid "Primary Storage Type"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:893
+# 6c7ef9363a364e16a04e878d23b376cd
+msgid "vSphere"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:893
+# 15bb927dd6e5452baba08ee6cd4f6fc6
+msgid "XenServer"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:893
+# b37df2a6784a4006a3e30f6ba3a152e7
+msgid "KVM"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:893
+# fb1d3866f13b4aa19aacc4f30c8109a8
+msgid "Hyper-V"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:895
+# c16b38c01e4c483db9a695a6632b0efc
+msgid "****Format for Disks, Templates, and Snapshots****"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:895
+# de345eec1a6642c1891986bf02de6ba0
+msgid "VMDK"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:895
+#: ../../hypervisor/kvm.rst:895
+# b2a6d313cb904d3694a2f0b3725a5abe
+# 10092f74d840420da35b6fd6ad62897c
+msgid "VHD"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:895
+# 68973e57f36742069e1944c60a5e9d2b
+msgid "QCOW2"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:896
+# 2c4cf6dfb59e4089b98a864d2eed2072
+msgid "**iSCSI support**"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:896
+#: ../../hypervisor/kvm.rst:897
+# 83856e4273e1423fab6ce9e0d1ef763d
+# eff62e1ba15c4299aa34e91768fe41df
+msgid "VMFS"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:896
+# b5f17ceae06e4b3287087f1dd7e66447
+msgid "CLVM"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:896
+#: ../../hypervisor/kvm.rst:897
+# 6fbeac22a7e4426f8288199c5562c19f
+# 06d3800e38854ad1a4c7e5ab1524a5cc
+msgid "Yes, via Shared Mountpoint"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:896
+#: ../../hypervisor/kvm.rst:897
+#: ../../hypervisor/kvm.rst:898
+#: ../../hypervisor/kvm.rst:900
+#: ../../hypervisor/kvm.rst:901
+#: ../../hypervisor/kvm.rst:901
+#: ../../hypervisor/kvm.rst:901
+# af2d92292dc74c1abe3e5be57d4de4de
+# 17923230b7c44ceea8772df6b93a60c7
+# 66d3a2da649747e69d76e2660f83db68
+# 840ad9a22ad645e9aaff9e7fa55d9a5c
+# 64c610239b92429d9192534e52fa9e22
+# 4f751bb0b08e4ef997175c7226f79375
+# aaf3b18e181144bc8aa036fc05b1026e
+msgid "No"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:897
+# 8cf40c3629c54e4dadbda79cd412ea32
+msgid "**Fiber Channel support**"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:897
+# 0b5e9c2691d7495db0a1b19153a02377
+msgid "Yes, via Existing SR"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:898
+# adc9d9dd71c14470a95c7d08135de0dd
+msgid "**NFS support**"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:898
+#: ../../hypervisor/kvm.rst:898
+#: ../../hypervisor/kvm.rst:898
+#: ../../hypervisor/kvm.rst:899
+#: ../../hypervisor/kvm.rst:899
+#: ../../hypervisor/kvm.rst:899
+#: ../../hypervisor/kvm.rst:899
+#: ../../hypervisor/kvm.rst:901
+# ae13c4f842284dab8d25f1f2ef0464d4
+# 2bb33766eba942379a1bd7a229f0c9d3
+# bf75790d687b41a9a2fcc365c05b9b3b
+# 496e32a0a3b2457296ae8edde8e193cf
+# 786d4d9a9c87491999c0d890e5644480
+# bbb64e36851e4f408eece5ed45631e18
+# e7e50588bdea47c3b818586bb0794eec
+# 650dd8bed795460cacca69919ed9d8a3
+msgid "Yes"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:899
+# f601b6265f2e49d580e7e0f6c2207938
+msgid "**Local storage support**"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:900
+# a448b2c9463248a5bbf0e8b12899dafd
+msgid "**Storage over-provisioning**"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:900
+# 5fa8702121894c74a47d11039d9067d9
+msgid "NFS and iSCSI"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:900
+#: ../../hypervisor/kvm.rst:900
+# a8c25f4b466d4e5490d53e22ff3fa4f9
+# 984909a8061340f4a6cd15e77e58780b
+msgid "NFS"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:901
+# 60e22f5e001a46b6950958a9b77c066b
+msgid "**SMB/CIFS**"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:904
+# 1512c02954e2429784f5187cc45a1208
+msgid "XenServer uses a clustered LVM system to store VM images on iSCSI and Fiber Channel volumes and does not support over-provisioning in the hypervisor. The storage server itself, however, can support thin-provisioning. As a result the CloudStack can still support storage over-provisioning by running on thin-provisioned storage volumes."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:910
+# 50dbdfaeac8b4368ab25d9c54267ae1d
+msgid "KVM supports \"Shared Mountpoint\" storage. A shared mountpoint is a file system path local to each server in a given cluster. The path must be the same across all Hosts in the cluster, for example /mnt/primary1. This shared mountpoint is assumed to be a clustered filesystem such as OCFS2. In this case the CloudStack does not attempt to mount or unmount the storage as is done with NFS. The CloudStack requires that the administrator insure that the storage is available"
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:918
+# 3fa95266f86e48d39c7f54a98632534a
+msgid "With NFS storage, CloudStack manages the overprovisioning. In this case the global configuration parameter storage.overprovisioning.factor controls the degree of overprovisioning. This is independent of hypervisor type."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:923
+# d2a34f2d9f4d46759111d884ef353dbf
+msgid "Local storage is an option for primary storage for vSphere, XenServer, and KVM. When the local disk option is enabled, a local disk storage pool is automatically created on each host. To use local storage for the System Virtual Machines (such as the Virtual Router), set system.vm.use.local.storage to true in global configuration."
+msgstr ""
+
+#: ../../hypervisor/kvm.rst:929
+# 5422f4222d5a454babfb7eb7e81822e4
+msgid "CloudStack supports multiple primary storage pools in a Cluster. For example, you could provision 2 NFS servers in primary storage. Or you could provision 1 iSCSI LUN initially and then add a second iSCSI LUN when the first approaches capacity."
+msgstr ""
+

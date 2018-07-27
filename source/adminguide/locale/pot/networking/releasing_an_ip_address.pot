@@ -1,0 +1,58 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../networking/releasing_an_ip_address.rst:18
+# c50d06f60c5d483ba5f4799c50384e9c
+msgid "Releasing an IP Address"
+msgstr ""
+
+#: ../../networking/releasing_an_ip_address.rst:20
+# 3a245bdefb444425ad5f7bd6a1ea5de2
+msgid "When the last rule for an IP address is removed, you can release that IP address. The IP address still belongs to the VPC; however, it can be picked up for any guest network again."
+msgstr ""
+
+#: ../../networking/releasing_an_ip_address.rst:24
+# 99e24197740148e683aa3ffad5870800
+msgid "Log in to the CloudStack UI as an administrator or end user."
+msgstr ""
+
+#: ../../networking/releasing_an_ip_address.rst:26
+# da80f79b21a846878018930987c87ffd
+msgid "In the left navigation, choose Network."
+msgstr ""
+
+#: ../../networking/releasing_an_ip_address.rst:28
+# 24863c020eb04ba9808fc2e0f24e0760
+msgid "Click the name of the network where you want to work with."
+msgstr ""
+
+#: ../../networking/releasing_an_ip_address.rst:30
+# 1e70144ba5394954a2c92850335b7555
+msgid "Click View IP Addresses."
+msgstr ""
+
+#: ../../networking/releasing_an_ip_address.rst:32
+# 3f542514484849b1bfde31aa95ec3a25
+msgid "Click the IP address you want to release."
+msgstr ""
+
+#: ../../networking/releasing_an_ip_address.rst:34
+# 7851cee0ec9c4ea3a8d5309aa5f84d40
+msgid "Click the Release IP button. |ReleaseIPButton.png|"
+msgstr ""
+

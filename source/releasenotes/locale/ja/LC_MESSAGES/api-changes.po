@@ -1,0 +1,270 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache CloudStack
+# This file is distributed under the same license as the Apache CloudStack Release Notes package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Release Notes RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-05 14:09+0100\n"
+"PO-Revision-Date: 2014-03-31 15:24+0000\n"
+"Last-Translator: sebgoa <runseb@gmail.com>\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/apache-cloudstack-release-notes-rtd/language/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# d9094117b9964d349a7faf2e57c9e3e4
+#: ../../source/api-changes.rst:17
+msgid "API Changes Introduced in 4.3"
+msgstr ""
+
+# b12ab6bdaa534a33917a061983581f3d
+#: ../../source/api-changes.rst:20
+msgid "Hyper-V"
+msgstr ""
+
+# 5aefde4b6f004c51945b0044d3740217
+# 5b056d9023be4a86ab05195dcfdaca95
+# 11210537ee5147e59056c56b59e42f08
+# a810ec26333c4a3f9d700c3b81485296
+# 9d26f67529d64c698626ee8dc9c400d8
+#: ../../source/api-changes.rst:23 ../../source/api-changes.rst:34
+#: ../../source/api-changes.rst:46 ../../source/api-changes.rst:61
+#: ../../source/api-changes.rst:85
+msgid "API"
+msgstr ""
+
+# 99bd0d75ced643cb80cb4ec4299c35b3
+# f8bd81df2af8470b9990f9897b493d71
+# ccf6333be50b4c05bc93bbae46a92439
+# ddbf27df21c648a28eb25e9d7eff816f
+# 5b062ec9909a408891111c5f7bed4cc1
+#: ../../source/api-changes.rst:23 ../../source/api-changes.rst:34
+#: ../../source/api-changes.rst:46 ../../source/api-changes.rst:61
+#: ../../source/api-changes.rst:85
+msgid "Description"
+msgstr "説明"
+
+# 365a2382c8444d81b8f280e3a681dd69
+#: ../../source/api-changes.rst:25
+msgid "addPrimaryStorage"
+msgstr ""
+
+# 6edcdba9172a4af5b7219da22dd43f75
+# 19400171550b4ef0a53f052b64df6877
+#: ../../source/api-changes.rst:25 ../../source/api-changes.rst:27
+msgid "To this existing API, the following field has been added: smb"
+msgstr ""
+
+# 827fbd70c10347729fb8c779b0b47b0a
+#: ../../source/api-changes.rst:27
+msgid "addImageStore"
+msgstr ""
+
+# 43782ead911e421ca6adb962a7c77dfd
+#: ../../source/api-changes.rst:31
+msgid "Reporting CPU Sockets"
+msgstr ""
+
+# e5ab7c9d1f94448eac6d593130aa05b9
+#: ../../source/api-changes.rst:36
+msgid "listhost"
+msgstr ""
+
+# 45ac5fb2b2c24e7b8187531b170e411f
+#: ../../source/api-changes.rst:36
+msgid ""
+"To this existing API, the following request parameter has been added: "
+"hypervisor."
+msgstr ""
+
+# 05c23488f1864eaaa96b7c997ec9f949
+#: ../../source/api-changes.rst:39
+msgid "The new response parameter added is: cpusockets"
+msgstr ""
+
+# 32af8e6f5a6a4ae2a48b4d533da1f219
+#: ../../source/api-changes.rst:43
+msgid "Publishing Alerts Using the Web ROOT Admin API"
+msgstr ""
+
+# 0372a1c85ea74e5d846c667a271c9562
+#: ../../source/api-changes.rst:48
+msgid "generateAlert"
+msgstr ""
+
+# 32f8078ad6cf4ce4b2bc6bd829054359
+#: ../../source/api-changes.rst:48
+msgid ""
+"A new API has been added to generate and publish alerts for usage services. "
+"The usage services can be installed on a different host or the same host "
+"where the Management Server is running. This API is available only to the "
+"Root Admin."
+msgstr ""
+
+# 0598acaf5d4541a48f2abef70d0c2a97
+#: ../../source/api-changes.rst:53
+msgid "listAlerts"
+msgstr ""
+
+# 66573b271ddd4dcebe751b1dd443d7d6
+#: ../../source/api-changes.rst:53
+msgid ""
+"To this existing API, a new response parameter has been added: name. An "
+"alert can be searched on the basis of alert name."
+msgstr ""
+
+# 057d779d43db49b083cebe754abc8653
+#: ../../source/api-changes.rst:58
+msgid "Dynamic Compute Offering"
+msgstr ""
+
+# 23dbcf83d85544d6a77f7cee9d20a495
+#: ../../source/api-changes.rst:63
+msgid "DeployVM"
+msgstr ""
+
+# b3a16a57e3444e9eb9b133e1c7aae502
+# 0c1b450d88ee41a29d3940fb4dbe446e
+# 5af7afdab9124e4ab6ab30535e91cfca
+# 47210117aa364a6fa3f3fe116994fd9d
+# 8ddafba6eab243e3a9f3c40cafc47506
+#: ../../source/api-changes.rst:63 ../../source/api-changes.rst:66
+#: ../../source/api-changes.rst:69 ../../source/api-changes.rst:73
+#: ../../source/api-changes.rst:76
+msgid ""
+"To this existing API, the following request parameter has been added: "
+"details."
+msgstr ""
+
+# 697e61df898e41468a4bb34915c0a2c5
+#: ../../source/api-changes.rst:66
+msgid "ScaleVM"
+msgstr ""
+
+# deb002fc84ca4df181cbcf23666cfeee
+#: ../../source/api-changes.rst:69
+msgid "ScaleSystemVM"
+msgstr ""
+
+# 8eba0c13bb83496cb7f98a4e8d9ab6fc
+#: ../../source/api-changes.rst:73
+msgid "UpgradeVM"
+msgstr ""
+
+# 77f58f648f6b4cc7ba29e1483185c1d8
+#: ../../source/api-changes.rst:76
+msgid "UpgradeSystemVM"
+msgstr ""
+
+# ba68c7e577064f13b98947ef5477eb20
+#: ../../source/api-changes.rst:82
+msgid "Enhanced Upgrade for Virtual Routers"
+msgstr ""
+
+# 84fb8face38d49189fec55cbc8b5dce1
+#: ../../source/api-changes.rst:87
+msgid "upgradeRouterTemplate"
+msgstr ""
+
+# 79fe85f7d8804dccb880a1608b426cdd
+#: ../../source/api-changes.rst:87
+msgid "This is a new API which has been added in this release."
+msgstr ""
+
+# fbbbb874ceab4379a5172a20af2e61fe
+#: ../../source/api-changes.rst:89
+msgid "The following are the request parameters:"
+msgstr ""
+
+# 65599f3691cf4130a9806c3d5ad95120
+#: ../../source/api-changes.rst:91
+msgid "id: Upgrade the specified VR"
+msgstr ""
+
+# fc78e916a3b7421b9c4c97e6684da339
+#: ../../source/api-changes.rst:93
+msgid "zone\\_id : Upgrade the VRs in the specified zone."
+msgstr ""
+
+# 8a8c04a211af421587e828e9922fbfb7
+#: ../../source/api-changes.rst:95
+msgid "pod\\_id : Upgrade the VRs in the specified pod."
+msgstr ""
+
+# 80cbde982e394ef6a0e347e9ab6332e0
+#: ../../source/api-changes.rst:97
+msgid "cluster\\_id : Upgrade the VRs in the specified cluster."
+msgstr ""
+
+# 5a8aa0e5cc3941c894873dc6c6425acd
+#: ../../source/api-changes.rst:99
+msgid "domain\\_id : Upgrade the VRs belonging to the specified domain."
+msgstr ""
+
+# d91d1a80b9d34a70b28fcc1785f7328c
+#: ../../source/api-changes.rst:102
+msgid "account\\_id : Upgrade the VRs belonging to the specified account."
+msgstr ""
+
+# 638ab1630ae8470cb15bbbbb045a6260
+#: ../../source/api-changes.rst:106
+msgid "listRouters"
+msgstr ""
+
+# 4fe7967e4fd445c682ddea876504ca8c
+#: ../../source/api-changes.rst:106
+msgid ""
+"For this existing API, the following request parameters has been added:"
+msgstr ""
+
+# e301f86659fa42e4a51f4a7999592c53
+#: ../../source/api-changes.rst:109
+msgid "version: Lists routers by specified version."
+msgstr ""
+
+# 86f961243ddc49dd88459e0ff937132d
+#: ../../source/api-changes.rst:111
+msgid "zone\\_id : lists routers in specified zone."
+msgstr ""
+
+# 3cf021b43806427992de1d916bb4b3ba
+#: ../../source/api-changes.rst:113
+msgid "pod\\_id : Lists routers in the specified pod."
+msgstr ""
+
+# 285dde45b78a44a682ce3c68f5c74bbc
+#: ../../source/api-changes.rst:115
+msgid "cluster\\_id : Lists routers in the specified cluster."
+msgstr ""
+
+# 063f3aa2737340dba9d8093fdda068d7
+#: ../../source/api-changes.rst:117
+msgid "domain\\_id : Lists routers owned by specified domain."
+msgstr ""
+
+# f08534c64c0e4cf4a756b327179d92ba
+#: ../../source/api-changes.rst:119
+msgid "account: Lists routers owned by specified account."
+msgstr ""
+
+# 28e790d3d2074de488c9a83d654e75be
+#: ../../source/api-changes.rst:121
+msgid "The following response parameters has been added:"
+msgstr ""
+
+# e3472c1cbe7b4ed884ea7122265172bb
+#: ../../source/api-changes.rst:123
+msgid "version : (String) The router version. For example, 4.3.0."
+msgstr ""
+
+# 3609a98e83f947cb983ed97c651cd607
+#: ../../source/api-changes.rst:125
+msgid ""
+"requiresupgrade: (Boolean) The flag to indicate if the router template "
+"requires an upgrade."
+msgstr ""

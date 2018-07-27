@@ -1,0 +1,341 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: 2014-06-30 10:25+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-installation-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# d6b2b3302e474c2ca46f28b9bee03734
+#: ../../storage_setup.rst:18
+msgid "Storage Setup"
+msgstr "存储设置"
+
+# 7752c36da35f479d9c03995e830ae253
+#: ../../storage_setup.rst:20
+msgid ""
+"CloudStack is designed to work with a wide variety of commodity and "
+"enterprise-grade storage. Local disk may be used as well, if supported by "
+"the selected hypervisor. Storage type support for guest virtual disks "
+"differs based on hypervisor selection."
+msgstr "CloudStack被设计为可以支持广泛的商业级和企业级存储设备。如果所选的hypervisor支持，也可以使用本地存储。 所支持的虚拟磁盘类型取决于不同的hypervisor。"
+
+# 538f0beb0b4e4e2a9983e312661eb54f
+#: ../../storage_setup.rst:26
+msgid "Storage Type"
+msgstr "存储类型"
+
+# 18b92c5cd5074bb4b06534aff95e18c8
+#: ../../storage_setup.rst:26
+msgid "XenServer"
+msgstr "XenServer"
+
+# 6ed9b0e44342476a9dbbdbf4e4b917fe
+#: ../../storage_setup.rst:26
+msgid "vSphere"
+msgstr "vSphere"
+
+# ac3ca3b0a1c641a3bc1de1a92146eb91
+#: ../../storage_setup.rst:26
+msgid "KVM"
+msgstr "KVM"
+
+# 03e3922684d94f63abcc832e20828d0d
+#: ../../storage_setup.rst:28
+msgid "NFS"
+msgstr "NFS"
+
+# 3b99a671b8ab4908aea8b3e783a22b19
+# 5c64989b5d4b4b0e8b086335877bdcf9
+# efa230d191b5477f887a61486039d99e
+# 53b67c59114241cb81ae1f4bcd7bdf26
+# 02d62854fef943e88ea4d32d21e23ffb
+# 0bcd3eeecde3461a98be48e06880b63e
+# 69437bfe66f8494cb9119f1ac4f3751a
+# 02613a70f2594d3bb3d1192ff3e520d5
+#: ../../storage_setup.rst:28 ../../storage_setup.rst:28
+#: ../../storage_setup.rst:28 ../../storage_setup.rst:29
+#: ../../storage_setup.rst:30 ../../storage_setup.rst:31
+#: ../../storage_setup.rst:31 ../../storage_setup.rst:31
+msgid "Supported"
+msgstr "支持"
+
+# bc6393ab53db4060bb65171cc25a14b2
+#: ../../storage_setup.rst:29
+msgid "iSCSI"
+msgstr "iSCSI"
+
+# 5e75eb74e709489cb5160ea8d55c040c
+#: ../../storage_setup.rst:29
+msgid "Supported via VMFS"
+msgstr "通过VMFS支持"
+
+# cae1e3af97e747cf8adf4fc7edd27ea4
+# bcf642ada6354a428f7e09abac6608b5
+#: ../../storage_setup.rst:29 ../../storage_setup.rst:30
+msgid "Supported via Clustered Filesystems"
+msgstr "通过集群文件系统支持"
+
+# 6996e2e99e9048ce97d0e6f5fb931f60
+#: ../../storage_setup.rst:30
+msgid "Fiber Channel"
+msgstr "Fiber Channel"
+
+# 019efc65f57148479631b63195d36314
+#: ../../storage_setup.rst:30
+msgid "Supported via Pre-existing SR"
+msgstr "通过Pre-existing SR支持"
+
+# 32746b62e4f8487cb0c808a966bfb210
+#: ../../storage_setup.rst:31
+msgid "Local Disk"
+msgstr "本地磁盘"
+
+# 6e8fd34eb56f4473abecb174650042c8
+#: ../../storage_setup.rst:34
+msgid ""
+"The use of the Cluster Logical Volume Manager (CLVM) for KVM is not "
+"officially supported with CloudStack."
+msgstr "针对KVM使用集群逻辑卷管理器(CLVM)，不受CloudStack官方支持。"
+
+# 052dba62e53b4928a4316a9e7e9a7718
+#: ../../storage_setup.rst:39
+msgid "Small-Scale Setup"
+msgstr "小规模设置"
+
+# ba74f151dee944c59ecb4711a133a657
+#: ../../storage_setup.rst:41
+msgid ""
+"In a small-scale setup, a single NFS server can function as both primary and"
+" secondary storage. The NFS server just needs to export two separate shares,"
+" one for primary storage and the other for secondary storage."
+msgstr "在小规模设置中，一个NFS服务器可以同时作为主存储和辅助存储。只需要NFS服务器有两个独立的共享目录，一个用于主存储，另一个用于辅助存储。"
+
+# 115b100b50994f4bbe369e5a89b5081d
+#: ../../storage_setup.rst:47
+msgid "Secondary Storage"
+msgstr "辅助存储"
+
+# bdbd2ecb612e4c6d833f2a4803d9efc0
+#: ../../storage_setup.rst:49
+msgid ""
+"CloudStack is designed to work with any scalable secondary storage system. "
+"The only requirement is the secondary storage system supports the NFS "
+"protocol."
+msgstr "CloudStack被设计为支持多种可扩展的辅助存储系统。唯一的要求就是辅助存储系统支持NFS协议。"
+
+# dd9865baaf564c74b74a86e19447d21b
+#: ../../storage_setup.rst:54
+msgid ""
+"The storage server should be a machine with a large number of disks. The "
+"disks should ideally be managed by a hardware RAID controller. Modern "
+"hardware RAID controllers support hot plug functionality independent of the "
+"operating system so you can replace faulty disks without impacting the "
+"running operating system."
+msgstr ""
+
+# 81888613f5f6470cb75302dcb4c8dc22
+#: ../../storage_setup.rst:62
+msgid "Example Configurations"
+msgstr "配置实例"
+
+# 15dfab7b505743acb78118d48e6a1df0
+#: ../../storage_setup.rst:64
+msgid ""
+"In this section we go through a few examples of how to set up storage to "
+"work properly on a few types of NFS and iSCSI storage systems."
+msgstr "在本节中我们将通过几个实例说明，如何设置存储并使NFS和iSCSI存储系统正常工作。"
+
+# 800bb50ed8b643849918b01277052e7c
+#: ../../storage_setup.rst:69
+msgid "Linux NFS on Local Disks and DAS"
+msgstr "基于本地硬盘和DAS的NFS服务"
+
+# f2fcb96d0dea4baf8e482525c0dd8245
+#: ../../storage_setup.rst:71
+msgid ""
+"This section describes how to configure an NFS export on a standard Linux "
+"installation. The exact commands might vary depending on the operating "
+"system version."
+msgstr "本节描述如何在一个标准的Linux系统中配置NFS输出。具体的命令取决于操作系统版本。"
+
+# cf13fcc5fa0b4939a8e8574245d1a1e5
+#: ../../storage_setup.rst:75
+msgid "Install the RHEL/CentOS distribution on the storage server."
+msgstr "在存储服务器上安装RHEL/CentOS 发行版"
+
+# 005b8dd262fd4a4388849d5e56b1a54f
+#: ../../storage_setup.rst:77
+msgid ""
+"If the root volume is more than 2 TB in size, create a smaller boot volume "
+"to install RHEL/CentOS. A root volume of 20 GB should be sufficient."
+msgstr "如果根卷的大小超过2TB，创建一个小点的启动卷用于安装RHEL/CentOS，根分区保留20GB就足够了。"
+
+# 217ac8a1620b4bb993b70343ef9cd6ab
+#: ../../storage_setup.rst:81
+msgid ""
+"After the system is installed, create a directory called /export. This can "
+"each be a directory in the root partition itself or a mount point for a "
+"large disk volume."
+msgstr "系统安装好以后，创建一个名为 /export的目录。可以在根分区下创建，或者挂载一个较大的磁盘卷。"
+
+# e51ba40cb56b42aea266a196d1886b28
+#: ../../storage_setup.rst:85
+msgid ""
+"If you have more than 16TB of storage on one host, create multiple EXT3 file"
+" systems and multiple NFS exports. Individual EXT3 file systems cannot "
+"exceed 16TB."
+msgstr "如果你在一台主机上有超过16TB的存储空间， 则创建多个EXT3文件系统和多个NFS输出，单个EXT3文件系统不能超过16TB。 "
+
+# f9ecc678c0a946ada4722e2f84868013
+#: ../../storage_setup.rst:89
+msgid ""
+"After /export directory is created, run the following command to configure "
+"it as an NFS export."
+msgstr "/export目录创建后，运行如下命令配置NFS输出。"
+
+# 166a5ad4eace4ee1acac57e77772e301
+#: ../../storage_setup.rst:96
+msgid "Adjust the above command to suit your deployment needs."
+msgstr "根据你的部署需求，调整如上参数。"
+
+# c6efefc3bb214750a1aa110365bfb7c4
+#: ../../storage_setup.rst:98
+msgid ""
+"**Limiting NFS export.** It is highly recommended that you limit the NFS "
+"export to a particular subnet by specifying a subnet mask "
+"(e.g.,”192.168.1.0/24”). By allowing access from only within the expected "
+"cluster, you avoid having non-pool member mount the storage. The limit you "
+"place must include the management network(s) and the storage network(s). If "
+"the two are the same network then one CIDR is sufficient. If you have a "
+"separate storage network you must provide separate CIDR’s for both or one "
+"CIDR that is broad enough to span both."
+msgstr "**限制NFS输出.** 强烈建议通过指定子网掩码来限制NFS访问权限，（例如“192.168.1.0/24”）。只允许规定的集群才能访问， 避免非集群成员访问。 且管理网络和存储网络必须能够访问；如果2个网络相同，那么一个CIDR就足够了。 如果你是单独的存储网络那么必须提供独立的CIDR或者一个足够大的CIDR可以包含它们2个。"
+
+# 2dee02ec08f44c6eb41bbd83267e69b6
+# daffef1e68c1468ca3f7396f5436cf19
+#: ../../storage_setup.rst:108 ../../storage_setup.rst:236
+msgid "The following is an example with separate CIDRs:"
+msgstr "下面是一个分隔的CIDRs的示例："
+
+# 314c4d57ade04b589bb9cc53855854f0
+# 302894e6d4d8419dadbee7187c9761e3
+#: ../../storage_setup.rst:114 ../../storage_setup.rst:242
+msgid ""
+"**Removing the async flag.** The async flag improves performance by allowing"
+" the NFS server to respond before writes are committed to the disk. Remove "
+"the async flag in your mission critical production deployment."
+msgstr "**移除async异步标记.** 标志允许NFS服务器在提交并写入磁盘操作前就先返回相应，来提高性能。请在关键生产部署中移除异步标志。"
+
+# fc530cedf53646ef8383509ca79aaf46
+#: ../../storage_setup.rst:119
+msgid "Run the following command to enable NFS service."
+msgstr "运行下面的命令启动NFS服务。"
+
+# 43b62119fea74c9585550f73f8f82558
+#: ../../storage_setup.rst:125
+msgid "Edit the /etc/sysconfig/nfs file and uncomment the following lines."
+msgstr "编辑/etc/sysconfig/nfs，并取消如下行的注释。"
+
+# 1d4f8831fb8f493bbf0d2102a2d94333
+#: ../../storage_setup.rst:136
+msgid ""
+"Edit the /etc/sysconfig/iptables file and add the following lines at the "
+"beginning of the INPUT chain."
+msgstr "编辑/etc/sysconfig/iptables，添加如下行的记录到INPUT链的开始部分。"
+
+# 9b07e0f5f1b4436083b1b95549bd51cc
+#: ../../storage_setup.rst:153
+msgid "Reboot the server."
+msgstr "重启服务"
+
+# e020d0f272694579a5ba76a20f504882
+#: ../../storage_setup.rst:155
+msgid "An NFS share called /export is now set up."
+msgstr "NFS共享目录/export已经被创建"
+
+# 954bd15449384ef982eb066148bede4e
+#: ../../storage_setup.rst:158
+msgid ""
+"When copying and pasting a command, be sure the command has pasted as a "
+"single line before executing. Some document viewers may introduce unwanted "
+"line breaks in copied text."
+msgstr "当复制和粘贴命令时，请确保没有多余的换行符，因为一些文档查看器可能会在复制时加上换行符。"
+
+# 57361739f18248a8a389947c9bc2cad2
+#: ../../storage_setup.rst:164
+msgid "Linux NFS on iSCSI"
+msgstr "基于iSCSI的NFS服务"
+
+# 2b54e23d9a61475595ca9e0e83867e12
+#: ../../storage_setup.rst:166
+msgid ""
+"Use the following steps to set up a Linux NFS server export on an iSCSI "
+"volume. These steps apply to RHEL/CentOS 5 distributions."
+msgstr "使用以下步骤创建基于iSCSI卷的NFS服务。这些步骤适用于RHEL/CentOS 5发行版。"
+
+# f1286e7f062d4b9aa981184cc7501688
+#: ../../storage_setup.rst:169
+msgid "Install iscsiadm."
+msgstr "安装iscsiadm。"
+
+# 346450ad74ac4b19964ee166ad4c9d20
+#: ../../storage_setup.rst:178
+msgid "Discover the iSCSI target."
+msgstr "发现ISCSI target。"
+
+# 6274d39a5e6845259cc61a75836241fe
+# 78922f43acdd4b6ca556c8c6094a1816
+#: ../../storage_setup.rst:184 ../../storage_setup.rst:196
+msgid "For example:"
+msgstr "例如："
+
+# aa60b340ef47437486a5520511933ff9
+#: ../../storage_setup.rst:190
+msgid "Log in."
+msgstr "登录"
+
+# ee970ba277924184bb6d07662f86710c
+#: ../../storage_setup.rst:202
+msgid "Discover the SCSI disk. For example:"
+msgstr "发现SCSI磁盘，例如："
+
+# a27db3a17e254b7f81d044d888ed5d83
+#: ../../storage_setup.rst:209
+msgid "Format the disk as ext3 and mount the volume."
+msgstr "格式化磁盘为ext3类型并挂载卷。"
+
+# 73c6a94d549942489bcac311f27242ee
+#: ../../storage_setup.rst:217
+msgid "Add the disk to /etc/fstab to make sure it gets mounted on boot."
+msgstr "添加磁盘到/etc/fstab并确保在启动时能被挂载。"
+
+# b401c3dd18284c72bef05b03f96de014
+#: ../../storage_setup.rst:223
+msgid "Now you can set up /export as an NFS share."
+msgstr "现在你可以建立/export共享目录"
+
+# ac62ebcca250423f8b0a8c1c4d2ea5f3
+#: ../../storage_setup.rst:225
+msgid ""
+"**Limiting NFS export.** In order to avoid data loss, it is highly "
+"recommended that you limit the NFS export to a particular subnet by "
+"specifying a subnet mask (e.g.,”192.168.1.0/24”). By allowing access from "
+"only within the expected cluster, you avoid having non-pool member mount the"
+" storage and inadvertently delete all its data. The limit you place must "
+"include the management network(s) and the storage network(s). If the two are"
+" the same network then one CIDR is sufficient. If you have a separate "
+"storage network you must provide separate CIDRs for both or one CIDR that is"
+" broad enough to span both."
+msgstr "**限制NFS输出.** 强烈建议通过特定的子网和掩码限制NFS访问权限(例如”192.168.1.0/24”)， 只允许规定的集群才能访问， 避免非集群成员访问并非故意的情况下删除所有数据。 且管理网络和存储网络必须能够访问；如果2个网络相同，那么一个CIDR就足够了。 如果你是单独的存储网络那么必须提供独立的CIDR或者一个足够大的CIDR可以包含它们2个。"

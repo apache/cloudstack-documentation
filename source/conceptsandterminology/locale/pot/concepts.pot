@@ -1,0 +1,1181 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache CloudStack
+# This file is distributed under the same license as the Apache CloudStack package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack 4.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-31 13:49-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../concepts.rst:17
+# ff38df278b6b427bbcc0ae8629300425
+msgid "Concepts and Terminology"
+msgstr ""
+
+#: ../../concepts.rst:20
+# 987b7e9834864335a292b23b7606342e
+msgid "What is Apache CloudStack?"
+msgstr ""
+
+#: ../../concepts.rst:22
+# 6a80177e5b404ca29f3615856b3d4a04
+msgid "Apache CloudStack is an open source Infrastructure-as-a-Service platform that manages and orchestrates pools of storage, network, and computer resources to build a public or private IaaS compute cloud."
+msgstr ""
+
+#: ../../concepts.rst:26
+# cd99442cc2de4607a6e68ee786158ed2
+msgid "With CloudStack you can:"
+msgstr ""
+
+#: ../../concepts.rst:28
+# 5f469cd298a84339b85ef95dc9ecd9f0
+msgid "Set up an on-demand elastic cloud computing service."
+msgstr ""
+
+#: ../../concepts.rst:29
+# f049916f533a4760aab64b754de21b0c
+msgid "Allow end-users to provision resources"
+msgstr ""
+
+#: ../../concepts.rst:32
+# e5df4fdaa57241ba861ec065ad290a8a
+msgid "What can Apache CloudStack do?"
+msgstr ""
+
+#: ../../concepts.rst:35
+# b32ee3c0a8b04a219624f36f45a80294
+msgid "Multiple Hypervisor Support"
+msgstr ""
+
+#: ../../concepts.rst:37
+# b2e92c0efc86485ea0a439a293873fc4
+msgid "CloudStack works with a variety of hypervisors and hypervisor-like technologies. A single cloud can contain multiple hypervisor implementations. As of the current release CloudStack supports:"
+msgstr ""
+
+#: ../../concepts.rst:41
+# 9a8cf08e323f44ca8d021cfeab657895
+msgid "vSphere (via vCenter)"
+msgstr ""
+
+#: ../../concepts.rst:42
+# 3d49790c67b943a69aa298d7269a1182
+msgid "KVM"
+msgstr ""
+
+#: ../../concepts.rst:43
+# 181151d4c9b74cf59ab1e9107275c932
+msgid "Xenserver"
+msgstr ""
+
+#: ../../concepts.rst:44
+# b556e16fe3ae461db6af3d65b7a1f610
+msgid "LXC"
+msgstr ""
+
+#: ../../concepts.rst:45
+# 79e7d36bd64245359e12a587e6274d52
+msgid "BareMetal (via IPMI)"
+msgstr ""
+
+#: ../../concepts.rst:48
+# 3182482cabe247af9482c3762fef3017
+msgid "Massively Scalable Infrastructure Management"
+msgstr ""
+
+#: ../../concepts.rst:50
+# 589db3182dac49e398ea50a422f61063
+msgid "CloudStack can manage tens of thousands of physical servers installed in geographically distributed datacenters. The management server scales near-linearly eliminating the need for cluster-level management servers. Maintenance or other outages of the management server can occur without affecting the virtual machines running in the cloud."
+msgstr ""
+
+#: ../../concepts.rst:56
+# f36ad8bee3e44cc2a4452cc4d88c412d
+msgid "Automatic Cloud Configuration Management"
+msgstr ""
+
+#: ../../concepts.rst:58
+# 954df973e0c04df59010d279b937d870
+msgid "CloudStack automatically configures the network and storage settings for each virtual machine deployment. Internally, a pool of virtual appliances support the operation of configuration of the cloud itself. These appliances offer services such as firewalling, routing, DHCP, VPN, console proxy, storage acces, and storage replication. The extensive use of horizontally scalable virtual machines simplifies the installation and ongoing operation of a cloud."
+msgstr ""
+
+#: ../../concepts.rst:65
+# 9b74733aa28741a7b6964e1807a72a8d
+msgid "Graphical User Interface"
+msgstr ""
+
+#: ../../concepts.rst:67
+# b55d7ad93d7f43c0a0654409b017e085
+msgid "CloudStack offers an administrators web interface used for provisioning and managing the cloud, as well as an end-user's Web interface, used for running VMs and managing VM templates. The UI can be customized to reflect the desired service provider or enterprise look and feel."
+msgstr ""
+
+#: ../../concepts.rst:72
+# 13e4ba5fb045431c96bd6a6bfb9b0c47
+msgid "API"
+msgstr ""
+
+#: ../../concepts.rst:74
+# 4cca4c0057904d119293daf854c492f9
+msgid "CloudStack provides a REST-like API for the operation, management and use of the cloud."
+msgstr ""
+
+#: ../../concepts.rst:77
+# 907642e40be7483abe15bd11b1d0d2bd
+msgid "AWS EC2 API Support"
+msgstr ""
+
+#: ../../concepts.rst:79
+# b4859925ffba4cb7bcb78e512b2e12f2
+msgid "CloudStack provides an EC2 API translation layer to permit the common EC2 tools to be used in the use of a CloudStack cloud."
+msgstr ""
+
+#: ../../concepts.rst:83
+# 9ca0dfd02bab44a5b2876118360bdec5
+msgid "High Availability"
+msgstr ""
+
+#: ../../concepts.rst:85
+# abc3111162074f78a5f125d52fbd39ed
+msgid "CloudStack has a number of features to increase the availability of the system. The Management Server itself may be deployed in a multi-node installation where the servers are load balanced. MySQL may be configured to use replication to provide for failover in the event of database loss. For the hosts, CloudStack supports NIC bonding and the use of separate networks for storage as well as iSCSI Multipath."
+msgstr ""
+
+#: ../../concepts.rst:91
+# 65f38b6a98244d4792c02eeccaa2d263
+msgid "Deployment Architecture Overview"
+msgstr ""
+
+#: ../../concepts.rst:93
+# f7691551cecf4795845273b7644abc9c
+msgid "Generally speaking, most CloudStack deployments consist of the management server and the resources to be managed. During deployment you inform the management server of the resources to be managed, such as IP address blocks, storage devices, hypervisors, and VLANs."
+msgstr ""
+
+#: ../../concepts.rst:97
+# 387390681232476cbc3cb6d9a688e686
+msgid "The minimum installation consists of one machine running the CloudStack Management Server and another machine to act as the cloud infrastructure (in this case, a very simple infrastructure consisting of one host running hypervisor software). In its smallest deployment, a single machine can act as both the Management Server and the hypervisor host (using the KVM hypervisor)."
+msgstr ""
+
+#: ../../concepts.rst:104
+# 10ca735f9c5c46fca39647ac1347679d
+msgid "A more full-featured installation consists of a highly-available multi-node Management Server installation and up to tens of thousands of hosts using any of severa  networking technologies."
+msgstr ""
+
+#: ../../concepts.rst:108
+# b8652ea0066c4053b12682ffc7f30bef
+msgid "Management Server Overview"
+msgstr ""
+
+#: ../../concepts.rst:110
+# 240ebb34afe94a58a48015d44079f040
+msgid "The management server orchestrates and allocates the resources in your cloud deployment."
+msgstr ""
+
+#: ../../concepts.rst:112
+# 2f94d5a92bab47fdb3859bebfb9afbdc
+msgid "The management server typically runs on a dedicated machine or as a virtual machine.  It controls allocation of virtual machines to hosts and assigns storage and IP addresses to the virtual machine instances. The Management Server runs in an Apache Tomcat container and requires a MySQL database for persistence."
+msgstr ""
+
+#: ../../concepts.rst:116
+# 8d0f35882eb24bc5a9c08c78e5602f5c
+msgid "The management server:"
+msgstr ""
+
+#: ../../concepts.rst:118
+# 4652f2e494364fbcb4839028180aba00
+msgid "Provides the web interface for both the adminstrator and end user."
+msgstr ""
+
+#: ../../concepts.rst:119
+# 74adcdb7447943d1b1104f8eb37ea363
+msgid "Provides the API interfaces for both the CloudStack API as well as the EC2 interface."
+msgstr ""
+
+#: ../../concepts.rst:120
+# 6d0efeb2362f4c7ca1aada6c7440bfe0
+msgid "Manages the assignment of guest VMs to a specific compute resource"
+msgstr ""
+
+#: ../../concepts.rst:121
+# b03e3bd8fdf548c9944fc3cbe1bb9cf6
+msgid "Manages the assignment of public and private IP addresses."
+msgstr ""
+
+#: ../../concepts.rst:122
+# 6c8133776eff4190a0c969b1055aa3f9
+msgid "Allocates storage during the VM instantiation process."
+msgstr ""
+
+#: ../../concepts.rst:123
+# 11de99b9ee284066b17ec2fde6453b3d
+msgid "Manages snapshots, disk images (templates), and ISO images."
+msgstr ""
+
+#: ../../concepts.rst:124
+# 108fdcfb117d44c9b11484184f31c574
+msgid "Provides a single point of configuration for your cloud."
+msgstr ""
+
+#: ../../concepts.rst:127
+# 300f4224ac2c4a568eca39a7a357259c
+msgid "Cloud Infrastructure Overview"
+msgstr ""
+
+#: ../../concepts.rst:129
+# b091b998016d49d0ace3cdc25e5b6162
+msgid "Resources within the cloud are managed as follows:"
+msgstr ""
+
+#: ../../concepts.rst:131
+# 335c3f2f7ec1419e9cd654c116d3eb4d
+msgid "Regions: A collection of one or more geographically proximate zones managed by one or more management servers."
+msgstr ""
+
+#: ../../concepts.rst:132
+# 7a077b2a461042058ee95b2d8841bd4b
+msgid "Zones: Typically, a zone is equivalent to a single datacenter. A zone consists of one or more pods and secondary storage."
+msgstr ""
+
+#: ../../concepts.rst:133
+# 32477360a735403d9ca2bc7e91cd0a54
+msgid "Pods: A pod is usually a rack, or row of racks that includes a layer-2 switch and one or more clusters."
+msgstr ""
+
+#: ../../concepts.rst:134
+# d33af50f42ee45deb987f9d2ade53d3b
+msgid "Clusters: A cluster consists of one or more homogenous hosts and primary storage."
+msgstr ""
+
+#: ../../concepts.rst:135
+# 7e093aff5e3e4a00b8f88936620ba58f
+msgid "Host: A single compute node within a cluster; often a hypervisor."
+msgstr ""
+
+#: ../../concepts.rst:136
+# 2bf7c321a3654f468a29cb08b28a73ac
+msgid "Primary Storage: A storage resource typically provided to a single cluster for the actual running of instance disk images. (Zone-wide primary storage is an option, though not typically used.)"
+msgstr ""
+
+#: ../../concepts.rst:137
+# b06340fcd44f47b4a40c4938b7341f94
+msgid "Secondary Storage: A zone-wide resource which stores disk templates, ISO images, and snapshots."
+msgstr ""
+
+#: ../../concepts.rst:140
+# e9cf76fee1ec498689b0ff20dc126e6e
+msgid "Networking Overview"
+msgstr ""
+
+#: ../../concepts.rst:142
+# c467409211f94b9687be3a2b1bfad489
+msgid "CloudStack offers many types of networking, but they typically fall into one of two scenarios:"
+msgstr ""
+
+#: ../../concepts.rst:144
+# 0821d08ee93b4d2bb76708b03c48edbd
+msgid "Basic: Most analogous to AWS-classic style networking. Provides a single flat layer-2 network where guest isolation is provided at layer-3 by the hypervisors bridge device."
+msgstr ""
+
+#: ../../concepts.rst:145
+# f3617b6f83354f55b99b92296dde725e
+msgid "Advanced: This typically uses layer-2 isolation such as VLANs, though this category also includes SDN technologies such as Nicira NVP."
+msgstr ""
+
+#: ../../concepts.rst:148
+# 62d443310175475fb835841598392342
+msgid "Cloud Infrastructure Concepts"
+msgstr ""
+
+#: ../../concepts.rst:151
+# 59126a61842545aaa3d96c7df0083839
+msgid "Regions"
+msgstr ""
+
+#: ../../concepts.rst:153
+#: ../../concepts.rst:402
+# 8e46c2fc89f347aaa6f615b273af1310
+# 4ad01c974c564a24b124ceb41761b136
+msgid "To increase reliability of the cloud, you can optionally group resources into multiple geographic regions. A region is the largest available organizational unit within a CloudStack deployment. A region is made up of several availability zones, where each zone is roughly equivalent to a datacenter. Each region is controlled by its own cluster of Management Servers, running in one of the zones. The zones in a region are typically located in close geographical proximity. Regions are a useful technique for providing fault tolerance and disaster recovery."
+msgstr ""
+
+#: ../../concepts.rst:159
+#: ../../concepts.rst:411
+# f6701bba7648406e948b876a1ba58a27
+# 6058afa6bec24d22a3cbc7a92907bff2
+msgid "By grouping zones into regions, the cloud can achieve higher availability and scalability. User accounts can span regions, so that users can deploy VMs in multiple, widely-dispersed regions. Even if one of the regions becomes unavailable, the services are still available to the end-user through VMs deployed in another region. And by grouping communities of zones under their own nearby Management Servers, the latency of communications within the cloud is reduced compared to managing widely-dispersed zones from a single central Management Server."
+msgstr ""
+
+#: ../../concepts.rst:165
+#: ../../concepts.rst:420
+# c561a80250434a22aedb0c4c6a4cfca9
+# 9e21ac69dc3443a4941d601f7b41f710
+msgid "Usage records can also be consolidated and tracked at the region level, creating reports or invoices for each geographic region."
+msgstr ""
+
+#: ../../concepts.rst:169
+#: ../../concepts.rst:425
+# 5cea4050a14f4de3aeb38b46a59ecf7d
+# b2ff55bd20544ec8bd4e3c24e6fd70e5
+msgid "Regions are visible to the end user. When a user starts a guest VM on a particular CloudStack Management Server, the user is implicitly selecting that region for their guest. Users might also be required to copy their private templates to additional regions to enable creation of guest VMs using their templates in those regions."
+msgstr ""
+
+#: ../../concepts.rst:174
+# 627923ada10e4c1d9789a4f0e7f2ccda
+msgid "Zones"
+msgstr ""
+
+#: ../../concepts.rst:176
+#: ../../concepts.rst:434
+# befd4aa4b3dd4d3595caf74ccc51913d
+# 657a047026eb4fc5a89e6adc6a503ce5
+msgid "A zone is the second largest organizational unit within a CloudStack deployment. A zone typically corresponds to a single datacenter, although it is permissible to have multiple zones in a datacenter. The benefit of organizing infrastructure into zones is to provide physical isolation and redundancy. For example, each zone can have its own power supply and network uplink, and the zones can be widely separated geographically (though this is not required)."
+msgstr ""
+
+#: ../../concepts.rst:181
+#: ../../concepts.rst:442
+# 6ac4581b29d346ea80c2ca28ac1cc9f3
+# 34a3804509f94e56983cbab9a7da8f08
+msgid "A zone consists of:"
+msgstr ""
+
+#: ../../concepts.rst:183
+#: ../../concepts.rst:446
+# a2a93c49ced7443d83c7142de3b2a3c0
+# 77fe19c6a8914f919c7c7b4480fb997c
+msgid "One or more pods. Each pod contains one or more clusters of hosts and one or more primary storage servers."
+msgstr ""
+
+#: ../../concepts.rst:184
+#: ../../concepts.rst:451
+# 54cd3d09a9564596820af0c2f8b797bb
+# 93dac9bd873040cbada20aa49f354fcc
+msgid "A zone may contain one or more primary storage servers, which are shared by all the pods in the zone."
+msgstr ""
+
+#: ../../concepts.rst:185
+#: ../../concepts.rst:456
+# 8d1c7e07b86444689288ea82e3aa0030
+# 30a6aa1442b8422f8104af67f4b60826
+msgid "Secondary storage, which is shared by all the pods in the zone."
+msgstr ""
+
+#: ../../concepts.rst:189
+#: ../../concepts.rst:460
+# e909b5cd25384b6aa06daffc782174fb
+# de76395efb94465997ef2167d697a2d2
+msgid "Zones are visible to the end user. When a user starts a guest VM, the user must select a zone for their guest. Users might also be required to copy their private templates to additional zones to enable creation of guest VMs using their templates in those zones."
+msgstr ""
+
+#: ../../concepts.rst:193
+#: ../../concepts.rst:465
+# a9272fa6b4eb48c6ad285e9101107348
+# fa18323b0b154fbebcebfbb7bab34110
+msgid "Zones can be public or private. Public zones are visible to all users. This means that any user may create a guest in that zone. Private zones are reserved for a specific domain. Only users in that domain or its subdomains may create guests in that zone."
+msgstr ""
+
+#: ../../concepts.rst:197
+#: ../../concepts.rst:470
+# 4c4175c4e26e463d85b384047c1d8e3e
+# a0e4c6875a6c40768a31d50fc7abd630
+msgid "Hosts in the same zone are directly accessible to each other without having to go through a firewall. Hosts in different zones can access each other through statically configured VPN tunnels."
+msgstr ""
+
+#: ../../concepts.rst:200
+#: ../../concepts.rst:474
+# 95fe6ba9ef1b41e782dd2e013f9d2f50
+# b36589880a184eaf9d929db8343b3c07
+msgid "For each zone, the administrator must decide the following."
+msgstr ""
+
+#: ../../concepts.rst:202
+#: ../../concepts.rst:478
+# 42fc2b04eee74bc09c075228d211be72
+# befd465185ff45ffa60c9c045efec837
+msgid "How many pods to place in each zone."
+msgstr ""
+
+#: ../../concepts.rst:203
+#: ../../concepts.rst:482
+# 4dc60d42d89a49b4aaad76ad544427b1
+# 7c2885cf066c4472b4bf878e2b9df225
+msgid "How many clusters to place in each pod."
+msgstr ""
+
+#: ../../concepts.rst:204
+#: ../../concepts.rst:486
+# 65e4c970f3e84dd3a17cc9a4914851d8
+# 9aeacb01116544fdaffe228e91991884
+msgid "How many hosts to place in each cluster."
+msgstr ""
+
+#: ../../concepts.rst:205
+#: ../../concepts.rst:490
+# f1bc4eba9d894b9eb9cc2a80b5ddb82b
+# a25998f735d641f0a212c2a16614ef2f
+msgid "(Optional) How many primary storage servers to place in each zone and total capacity for these storage servers."
+msgstr ""
+
+#: ../../concepts.rst:206
+#: ../../concepts.rst:495
+# 4636b44eada0412e872b0aa5af561d30
+# b87141f2b24d4e11ac49523c0d11b5f1
+msgid "How many primary storage servers to place in each cluster and total capacity for these storage servers."
+msgstr ""
+
+#: ../../concepts.rst:207
+#: ../../concepts.rst:500
+# 1d0a58823e334c73bfc38780900b48f3
+# 6bd68b9edccd42059714a8901af3daac
+msgid "How much secondary storage to deploy in a zone."
+msgstr ""
+
+#: ../../concepts.rst:209
+#: ../../concepts.rst:506
+# e8eea81aa4f44f4ea7f4222b67b8c089
+# 6b6f3bde7fec42df8cb8a6dc2affde8d
+msgid "In order to support zone-wide functions for VMware, CloudStack is aware of VMware Datacenters and can map each Datacenter to a CloudStack zone. To enable features like storage live migration and zone-wide primary storage for VMware hosts, CloudStack has to make sure that a zone contains only a single VMware Datacenter. Therefore, when you are creating a new CloudStack zone, you can select a VMware Datacenter for the zone. If you are provisioning multiple VMware Datacenters, each one will be set up as a single zone in CloudStack."
+msgstr ""
+
+#: ../../concepts.rst:216
+# 173494bd553249c39dcf3a1c12004242
+msgid "Pods"
+msgstr ""
+
+#: ../../concepts.rst:218
+# 9e239f33815b400a9afc4ca6a60cd8b1
+msgid "A pod often represents a single rack or row of racks. Hosts in the same pod are in the same subnet. A pod is the second-largest organizational unit within a CloudStack deployment. Pods are contained within zones. Each zone can contain one or more pods. A pod consists of one or more clusters of hosts and one or more primary storage servers. Pods are not visible to the end user."
+msgstr ""
+
+#: ../../concepts.rst:226
+# 9d49a4c915274ae88d14c5470f3cfc23
+msgid "Clusters"
+msgstr ""
+
+#: ../../concepts.rst:228
+# f3bef6825da94521ac3bc7880437d870
+msgid "A cluster consists of one or more hosts and one or more primary storage resources."
+msgstr ""
+
+#: ../../concepts.rst:230
+# 186f42983c01472b9bdb24347e815860
+msgid "A cluster provides a way to group hosts. To be precise, a cluster is a XenServer server pool, a set of KVM servers, or a VMware cluster preconfigured in vCenter. The hosts in a cluster should all have identical hardware, run the same hypervisor, are on the same subnet, and access the same shared primary storage. Virtual machine instances (VMs) can be live-migrated from one host to another within the same cluster, without interrupting service to the user."
+msgstr ""
+
+#: ../../concepts.rst:235
+# 4ef41b7c4493491d97e7520dfbb30e0b
+msgid "The size of the cluster is limited by the underlying hypervisor, although the CloudStack recommends less in most cases; see Best Practices."
+msgstr ""
+
+#: ../../concepts.rst:237
+#: ../../concepts.rst:555
+# 4bd7939a698c4b01b082b24a8b558dee
+# dcc625b8d81c4a7ebf62c75b0b9d8bf4
+msgid "Even when local storage is used exclusively, clusters are still required organizationally, even if there is just one host per cluster."
+msgstr ""
+
+#: ../../concepts.rst:239
+#: ../../concepts.rst:558
+# 068d2e011a0a4368915669d0468b364f
+# 412c8e80c5454415bc755f5805748fbb
+msgid "When VMware is used, every VMware cluster is managed by a vCenter server. An Administrator must register the vCenter server with CloudStack. There may be multiple vCenter servers per zone. Each vCenter server may manage multiple VMware clusters."
+msgstr ""
+
+#: ../../concepts.rst:243
+# e12a2e41a6a04a0c8c2a3c68c7859819
+msgid "Hosts"
+msgstr ""
+
+#: ../../concepts.rst:245
+# 6db43fe675294bdd8fde6a9a20828633
+msgid "A host is a single physical computer. Hosts provide the computing resources that run the guest machines."
+msgstr ""
+
+#: ../../concepts.rst:247
+# 30f88a20767d405385974a2927010c8b
+msgid "The host is the smallest organizational unit within a CloudStack deployment and are not visible to an end user."
+msgstr ""
+
+#: ../../concepts.rst:251
+# de600353067c4e9498a2ac9999fc8d02
+msgid "Primary Storage"
+msgstr ""
+
+#: ../../concepts.rst:253
+# 350198ae9ce54694a6bdba01506da107
+msgid "Primary storage is associated with a cluster and/or a zone. It stores the disk volumes for all of the VMs running on hosts in that cluster. You can add multiple primary storage servers to a cluster or a zone (at least one is required at the cluster level). Primary storage is typically located close to the hosts for increased performance. CloudStack manages the allocation of guest virtual disks to particular primary storage devices."
+msgstr ""
+
+#: ../../concepts.rst:258
+# c057cc657d3c4c7a86217ff789836ed7
+msgid "Primary storage can be either static or dynamic. Static primary storage is what CloudStack has traditionally supported. In this model, the administrator must present CloudStack with a certain amount of preallocated storage (ex. a volume from a SAN) and CloudStack can place many of its volumes on this storage. In the newer, dynamic model, the administrator can present CloudStack with a storage system itself (i.e. a SAN). CloudStack, working in concert with a plug-in developed for that storage system, can dynamically create volumes on the storage system. A valuable use for this ability is Quality of Service (QoS). If a volume created in CloudStack can be backed by a dedicated volume on a SAN (i.e. a one-to-one mapping between a SAN volume and a CloudStack volume) and the SAN provides QoS functionality, then CloudStack can also orchestrate storage QoS."
+msgstr ""
+
+#: ../../concepts.rst:267
+# 8a6a29004f7a48709a1a3d41399d49ec
+msgid "CloudStack is designed to work with all standards-compliant iSCSI and NFS servers that are supported by the underlying hypervisor"
+msgstr ""
+
+#: ../../concepts.rst:269
+# e5eb6c77e9ab45499723e6a4e4c6c27b
+msgid "You may also use local disks as secondary storage, though naturally they don't support live migration."
+msgstr ""
+
+#: ../../concepts.rst:272
+# 4499a9e52aa140a19473933eba3de16a
+msgid "Secondary Storage"
+msgstr ""
+
+#: ../../concepts.rst:274
+#: ../../concepts.rst:671
+# b34204827cfa4c779a1ffced2aa92966
+# 18608ded92924bbf96719cc289392636
+msgid "Secondary storage stores the following:"
+msgstr ""
+
+#: ../../concepts.rst:276
+#: ../../concepts.rst:675
+# 7bc4f80d01b5421db9ae4aeafd947957
+# 167d579993404a03bdb768d3e2b539fd
+msgid "Templates — OS images that can be used to boot VMs and can include additional configuration information, such as installed applications"
+msgstr ""
+
+#: ../../concepts.rst:277
+#: ../../concepts.rst:680
+# 5d98b266bb7245d580a56f8482c39262
+# 0b521b2715f340b7845c94b5fb9cdfd4
+msgid "ISO images — disc images containing data or bootable media for operating systems"
+msgstr ""
+
+#: ../../concepts.rst:278
+#: ../../concepts.rst:685
+# 889bfdad47d64b1fa536a8f40327e0a3
+# 301a1b6d4f6e453d81190810735d3a31
+msgid "Disk volume snapshots — saved copies of VM data which can be used for data recovery or to create new templates"
+msgstr ""
+
+#: ../../concepts.rst:280
+# f05dcac39d704557a0f970fc82cbaf2a
+msgid "The items in secondary storage are available to all hosts in the scope of the secondary storage, which may be defined as per zone or per region. CloudStack supports both NFS and Object Storage supporting either the AWS S3 API or the Swift API as a backing store for Secondary Storage."
+msgstr ""
+
+#: ../../concepts.rst:285
+# 08cfb9856b0a491a8b80bc7aca0e3656
+msgid "Physical Networks"
+msgstr ""
+
+#: ../../concepts.rst:287
+# 4e976e231c45495abc1b5a8f3c17a35d
+msgid "One or more physical networks can be associated with each zone. The physical network typically corresponds to a physical NIC on the host. Each physical network can carry one or more types of network traffic. The choices of traffic type for each network vary depending on your network choices."
+msgstr ""
+
+#: ../../concepts.rst:291
+# 2bad69755ad4458c9fd7b719a88583f2
+msgid "A physical network is the actual network hardware and wiring in a zone. A zone can have multiple physical networks."
+msgstr ""
+
+#: ../../concepts.rst:293
+# 8dc1bebd2d62453f86443cd1b1ed64f2
+msgid "An administrator can:"
+msgstr ""
+
+#: ../../concepts.rst:294
+#: ../../concepts.rst:730
+# 673e055e17e449dcb0ab7cf4e312eb87
+# 4e613ff0b38f47518010324627f2f97b
+msgid "Add/Remove/Update physical networks in a zone"
+msgstr ""
+
+#: ../../concepts.rst:295
+#: ../../concepts.rst:734
+# 6139f902423b47d5b552ae8c19fbcb9c
+# abfd546cfd074ee59013001e4049007a
+msgid "Configure VLANs on the physical network"
+msgstr ""
+
+#: ../../concepts.rst:296
+#: ../../concepts.rst:738
+# 6965d16293b1455c96af0cf908e27b24
+# a09235b0dc774dca9a55392cc7169fe4
+msgid "Configure a name so the network can be recognized by hypervisors"
+msgstr ""
+
+#: ../../concepts.rst:297
+#: ../../concepts.rst:742
+# a0487172ebf546bbbeb1f3df2f50803a
+# c7ab9b29c64b41ba969d89046a76446c
+msgid "Configure the service providers (firewalls, load balancers, etc.) available on a physical network"
+msgstr ""
+
+#: ../../concepts.rst:298
+# b06a129c42574e568380dc64dae12288
+msgid "Configure the IP addresses available to a physical network"
+msgstr ""
+
+#: ../../concepts.rst:299
+#: ../../concepts.rst:751
+# 644023d6849e4861bab38317f62597e8
+# 203d396f0f254b709f521965921090ad
+msgid "Specify what type of traffic is carried on the physical network, as well as other properties like network speed"
+msgstr ""
+
+#: ../../concepts.rst:302
+# 716989fb6e6f4b9b9d99d9c945a6ce82
+msgid "Basic Zone Network Types"
+msgstr ""
+
+#: ../../concepts.rst:304
+#: ../../concepts.rst:757
+# 7e70c69401c3482b88aa41e69bdd57f0
+# a9a7d4c0251b4e36adfbe567da895890
+msgid "When basic networking is used, there can be only one physical network in the zone. That physical network carries the following traffic types:"
+msgstr ""
+
+#: ../../concepts.rst:306
+# 3ac12abeccbd494bad6d9245e62c5422
+msgid "Guest: When end users run VMs, they generate guest traffic. The guest VMs communicate with each other over a network that can be referred to as the guest network. Each pod in a basic zone is a broadcast domain, and therefore each pod has a different IP range for the guest network. The administrator must configure the IP range for each pod."
+msgstr ""
+
+#: ../../concepts.rst:307
+# bff3dd3f0f654c659142572359fae389
+msgid "Management: When CloudStack's internal resources communicate with each other, they generate management traffic. This includes communication between hosts, system VMs (VMs used by CloudStack to perform various tasks in the cloud), and any other component that communicates directly with the CloudStack Management Server. You must configure the IP range for the system VMs to use."
+msgstr ""
+
+#: ../../concepts.rst:308
+# a44d404aec22436cad1c2299d1bbd4a3
+msgid "Public: Public traffic is generated when VMs in the cloud access the Internet. Publicly accessible IPs must be allocated for this purpose. End users can use the CloudStack UI to acquire these IPs to implement NAT between their guest network and the public network, as described in Acquiring a New IP Address."
+msgstr ""
+
+#: ../../concepts.rst:309
+# 42a656c708254cf6a1496e932c0ff068
+msgid "Storage: While labeled \"storage\" this is specifically about secondary storage, and doesn't affect traffic for primary storage. This includes traffic such as VM templates and snapshots, which is sent between the secondary storage VM and secondary storage servers. CloudStack uses a separate Network Interface Controller (NIC) named storage NIC for storage network traffic. Use of a storage NIC that always operates on a high bandwidth network allows fast template and snapshot copying. You must configure the IP range to use for the storage network."
+msgstr ""
+
+#: ../../concepts.rst:311
+#: ../../concepts.rst:802
+# da1af1bd6d90428b849863c866cb558c
+# 191007504ed74f12a036b7b4aa80eb02
+msgid "In a basic network, configuring the physical network is fairly straightforward. In most cases, you only need to configure one guest network to carry traffic that is generated by guest VMs. If you use a NetScaler load balancer and enable its elastic IP and elastic load balancing (EIP and ELB) features, you must also configure a network to carry public traffic. CloudStack takes care of presenting the necessary network configuration steps to you in the UI when you add a new zone."
+msgstr ""
+
+#: ../../concepts.rst:317
+#: ../../concepts.rst:811
+# 52ed9564f5564301b8ca7f7a28d52230
+# 7f7851b143664a31bc5ad1359cd44999
+msgid "Basic Zone Guest IP Addresses"
+msgstr ""
+
+#: ../../concepts.rst:319
+#: ../../concepts.rst:813
+# 7cdc690d38a74425b1fa34daa7d4dc53
+# 3b96868afb964f30b8e97dc558e5d353
+msgid "When basic networking is used, CloudStack will assign IP addresses in the CIDR of the pod to the guests in that pod. The administrator must add a Direct IP range on the pod for this purpose. These IPs are in the same VLAN as the hosts."
+msgstr ""
+
+#: ../../concepts.rst:323
+# c30cdaafea804e4b9de562c8c9caa9cc
+msgid "Advanced Zone Network Types"
+msgstr ""
+
+#: ../../concepts.rst:325
+# fcc04e4ceff84117b3e53bee51437f89
+msgid "When advanced networking is used, there can be multiple physical networks in the zone. Each physical network can carry one or more traffic types, and you need to let CloudStack know which type of network traffic you want each network to carry."
+msgstr ""
+
+#: ../../concepts.rst:328
+# 5a0e6b3314644c8dbef972f02423c28d
+msgid "The traffic types in an advanced zone are:"
+msgstr ""
+
+#: ../../concepts.rst:330
+# 90065dd487b34a26b77e5cc55ed0b4f4
+msgid "**Guest**: When end users run VMs, they generate guest traffic. The guest VMs communicate with each other over a network that can be referred to as the guest network. This network can be isolated or shared. In an isolated guest network, the administrator needs to reserve VLAN ranges to provide isolation for each CloudStack account’s network (potentially a large number of VLANs). In a shared guest network, all guest VMs share a single network."
+msgstr ""
+
+#: ../../concepts.rst:331
+# d2eb0c505d0342ddb32f2ea044d23de6
+msgid "**Management**: When CloudStack’s internal resources communicate with each other, they generate management traffic. This includes communication between hosts, system VMs (VMs used by CloudStack to perform various tasks in the cloud), and any other component that communicates directly with the CloudStack Management Server. You must configure the IP range for the system VMs to use."
+msgstr ""
+
+#: ../../concepts.rst:332
+# a2a81b57809f4d1d8155613824407cfb
+msgid "**Public**: Public traffic is generated when VMs in the cloud access the Internet. Publicly accessible IPs must be allocated for this purpose. End users can use the CloudStack UI to acquire these IPs to implement NAT between their guest network and the public network, as described in “Acquiring a New IP Address” in the Administration Guide."
+msgstr ""
+
+#: ../../concepts.rst:333
+# cc48dcce460248a09e15337063a76c63
+msgid "**Storage**: While labeled \"storage\" this is specifically about secondary storage, and doesn't affect traffic for primary storage. This includes traffic such as VM templates and snapshots, which is sent between the secondary storage VM and secondary storage servers. CloudStack uses a separate Network Interface Controller (NIC) named storage NIC for storage network traffic. Use of a storage NIC that always operates on a high bandwidth network allows fast template and snapshot copying. You must configure the IP range to use for the storage network."
+msgstr ""
+
+#: ../../concepts.rst:335
+# 59b04a547a534553b2b5574c99c8946f
+msgid "These traffic types can each be on a separate physical network, or they can be combined with certain restrictions."
+msgstr ""
+
+#: ../../concepts.rst:338
+#: ../../concepts.rst:872
+# 581125884ee848b19adc4c4310344c2c
+# 6ca1da8a16104aee9f75283327a76b31
+msgid "Advanced Zone Guest IP Addresses"
+msgstr ""
+
+#: ../../concepts.rst:340
+#: ../../concepts.rst:874
+# 5fb5522293ec4ebf836f183a1c0724fb
+# 76db0a52e18245018be54f6193d9ab7d
+msgid "When advanced networking is used, the administrator can create additional networks for use by the guests. These networks can span the zone and be available to all accounts, or they can be scoped to a single account, in which case only the named account may create guests that attach to these networks. The networks are defined by a VLAN ID, IP range, and gateway. The administrator may provision thousands of these networks if desired. Additionally, the administrator can reserve a part of the IP address space for non-CloudStack VMs and servers."
+msgstr ""
+
+#: ../../concepts.rst:347
+#: ../../concepts.rst:884
+# d892c1cc5ef94dd2a238710fcc62b3f3
+# d3231b1597e54924af2efe64f2752996
+msgid "Advanced Zone Public IP Addresses"
+msgstr ""
+
+#: ../../concepts.rst:349
+# 48529282c66f4e818c596eac0b22f4dc
+msgid "In an advanced network, Public IP addresses are typically on one or more dedicated VLANs and are routed or NATed to guest VMs."
+msgstr ""
+
+#: ../../concepts.rst:352
+#: ../../concepts.rst:895
+# bef5f9b7dcf848d5a23e159598861bde
+# 21efd19a0a61497e903a5c90ac00c17a
+msgid "System Reserved IP Addresses"
+msgstr ""
+
+#: ../../concepts.rst:354
+#: ../../concepts.rst:897
+# 4e508c81014d4e29887a3293b9782831
+# 6e227bc9e49e4306a7fa72e1b0475ad0
+msgid "In each zone, you need to configure a range of reserved IP addresses for the management network. This network carries communication between the CloudStack Management Server and various system VMs, such as Secondary Storage VMs, Console Proxy VMs, and DHCP."
+msgstr ""
+
+#: ../../concepts.rst:357
+#: ../../concepts.rst:902
+# d385f28804a049149e1dc7d64f1b8b78
+# 3264c18fd3ca489c96c9bf34f7e08f47
+msgid "The reserved IP addresses must be unique across the cloud. You cannot, for example, have a host in one zone which has the same private IP address as a host in another zone."
+msgstr ""
+
+#: ../../concepts.rst:360
+#: ../../concepts.rst:906
+# 8bd3ab39146d465fb707abed820432bf
+# d78c6b7284f8455e8e2708bd1ddb8f31
+msgid "The hosts in a pod are assigned private IP addresses. These are typically RFC1918 addresses. The Console Proxy and Secondary Storage system VMs are also allocated private IP addresses in the CIDR of the pod that they are created in."
+msgstr ""
+
+#: ../../concepts.rst:363
+# ddc8e2a3b2324070a33acc6eae3de7bf
+msgid "Make sure computing servers and Management Servers use IP addresses outside of the System Reserved IP range. In example, suppose the System Reserved IP range starts at 192.168.154.2 and ends at 192.168.154.7. CloudStack can use .2 to .7 for System VMs. This leaves the rest of the pod CIDR, from .8 to .254, for the Management Server and hypervisor hosts."
+msgstr ""
+
+#: ../../concepts.rst:368
+# eca6adde7164436e95f9f0b7ca27f3d2
+msgid "In all zones"
+msgstr ""
+
+#: ../../concepts.rst:370
+#: ../../concepts.rst:920
+# 805296fd2460493e9da6efef11a237d8
+# 97254c396f974c28899a695da5a256bc
+msgid "Provide private IPs for the system in each pod and provision them in CloudStack."
+msgstr ""
+
+#: ../../concepts.rst:372
+#: ../../concepts.rst:923
+# dd17defbc77844f3ae99664b2dd14669
+# 9d974eb2e59d418e95c8cab21c4cb765
+msgid "For KVM and XenServer, the recommended number of private IPs per pod is one per host. If you expect a pod to grow, add enough private IPs now to accommodate the growth."
+msgstr ""
+
+#: ../../concepts.rst:376
+# 201c6ab211a6483299774ba062c21759
+msgid "In a zone that uses advanced networking"
+msgstr ""
+
+#: ../../concepts.rst:378
+#: ../../concepts.rst:929
+# b83e478a382d49189d28f20d21deefb3
+# 7d09c246921c4149a7e2cf0b1354861b
+msgid "For zones with advanced networking, we recommend provisioning enough private IPs for your total number of customers, plus enough for the required CloudStack System VMs. Typically, about 10 additional IPs are required for the System VMs. For more information about System VMs, see the section on working with SystemVMs in the Administrator's Guide."
+msgstr ""
+
+#: ../../concepts.rst:382
+#: ../../concepts.rst:935
+# 007bfa0acd5a48689fc6a288169b4152
+# 21bf97bde5264f9f8d6b8c7b250e8559
+msgid "When advanced networking is being used, the number of private IP addresses available in each pod varies depending on which hypervisor is running on the nodes in that pod. Citrix XenServer and KVM use link-local addresses, which in theory provide more than 65,000 private IP addresses within the address block. As the pod grows over time, this should be more than enough for any reasonable number of hosts as well as IP addresses for guest virtual routers. VMWare ESXi, by contrast uses any administrator-specified subnetting scheme, and the typical administrator provides only 255 IPs per pod. Since these are shared by physical machines, the guest virtual router, and other entities, it is possible to run out of private IPs when scaling up a pod whose nodes are running ESXi."
+msgstr ""
+
+#: ../../concepts.rst:390
+#: ../../concepts.rst:948
+# 87751541797d455d9a8895a446a4c699
+# fd6f72eb0ae04120aec4b9d55dc8e9d3
+msgid "To ensure adequate headroom to scale private IP space in an ESXi pod that uses advanced networking, use one or both of the following techniques:"
+msgstr ""
+
+#: ../../concepts.rst:392
+#: ../../concepts.rst:954
+# 27d54cfd61944602a6e4c1a6620312e2
+# 0c5aa832bb5d431c9a6bcf25d0ceb6cb
+msgid "Specify a larger CIDR block for the subnet. A subnet mask with a /20 suffix will provide more than 4,000 IP addresses."
+msgstr ""
+
+#: ../../concepts.rst:393
+# 670cb02dfb504639b0c10af5a1b05736
+msgid "Create multiple pods, each with its own subnet. In example, if you create 10 pods and each pod has 255 IPs, this will provide 2,550 IP addresses."
+msgstr ""
+
+#: ../../concepts.rst:397
+# 48f643ed242e4501b8761273a71ee960
+msgid "CloudStack Terminology"
+msgstr ""
+
+#: ../../concepts.rst:400
+# 7f83b27f3b074d4798ba28ebaa8e9dc5
+msgid "About Regions"
+msgstr ""
+
+#: ../../concepts.rst:423
+# 77489477fc9c4ac182a3e03f1cdd9a6d
+msgid "|region-overview.png: Nested structure of a region.|"
+msgstr ""
+
+#: ../../concepts.rst:432
+# 8c52014de7f74a86a087cdd0b524c3bd
+msgid "About Zones"
+msgstr ""
+
+#: ../../concepts.rst:458
+# c2a0e65f22b04f279dadce7331a885e2
+msgid "|zone-overview.png: Nested structure of a simple zone.|"
+msgstr ""
+
+#: ../../concepts.rst:502
+# 9b94cbd4c96c462caa6d4012880e39d2
+msgid "When you add a new zone using the CloudStack UI, you will be prompted to configure the zone’s physical network and add the first pod, cluster, host, primary storage, and secondary storage."
+msgstr ""
+
+#: ../../concepts.rst:517
+# dba480aeca244d718b2d6ebcafea03e9
+msgid "If you are upgrading from a previous CloudStack version, and your existing deployment contains a zone with clusters from multiple VMware Datacenters, that zone will not be forcibly migrated to the new model. It will continue to function as before. However, any new zone-wide operations, such as zone-wide primary storage and live storage migration, will not be available in that zone."
+msgstr ""
+
+#: ../../concepts.rst:520
+# 54db4ee812af4afeb4022ba56f6042c2
+msgid "About Pods"
+msgstr ""
+
+#: ../../concepts.rst:522
+# aae3ab7a910741328f9dea985ae6c141
+msgid "A pod often represents a single rack. Hosts in the same pod are in the same subnet. A pod is the third-largest organizational unit within a CloudStack deployment. Pods are contained within zones. Each zone can contain one or more pods. A pod consists of one or more clusters of hosts and one or more primary storage servers. Pods are not visible to the end user."
+msgstr ""
+
+#: ../../concepts.rst:529
+# 4c861ca60e304b1fb87ad569764097d7
+msgid "|pod-overview.png: Nested structure of a simple pod|"
+msgstr ""
+
+#: ../../concepts.rst:532
+# 096b727fd7444148a2c51998c1132116
+msgid "About Clusters"
+msgstr ""
+
+#: ../../concepts.rst:534
+# d8d6efc761534d708ee129f70a0e5cc5
+msgid "A cluster provides a way to group hosts. To be precise, a cluster is a XenServer server pool, a set of KVM servers, , or a VMware cluster preconfigured in vCenter. The hosts in a cluster all have identical hardware, run the same hypervisor, are on the same subnet, and access the same shared primary storage. Virtual machine instances (VMs) can be live-migrated from one host to another within the same cluster, without interrupting service to the user."
+msgstr ""
+
+#: ../../concepts.rst:542
+# 7351147d578e4ecda91e712f39534df2
+msgid "A cluster is the fourth-largest organizational unit within a CloudStack deployment. Clusters are contained within pods, and pods are contained within zones. Size of the cluster is limited by the underlying hypervisor, although the CloudStack recommends less in most cases; see Best Practices."
+msgstr ""
+
+#: ../../concepts.rst:548
+# f4244191ac2a41058ff5d2202e0aaa51
+msgid "A cluster consists of one or more hosts and one or more primary storage servers."
+msgstr ""
+
+#: ../../concepts.rst:551
+# 0b0cb15f7bec487eb3099ea1c494db01
+msgid "|cluster-overview.png: Structure of a simple cluster|"
+msgstr ""
+
+#: ../../concepts.rst:553
+# 3ee369925fad4ae2b64b0d10eeeae914
+msgid "CloudStack allows multiple clusters in a cloud deployment."
+msgstr ""
+
+#: ../../concepts.rst:564
+# 3a0b47da5f2b4880a1e6c5463b4138f7
+msgid "About Hosts"
+msgstr ""
+
+#: ../../concepts.rst:566
+# 205fdc6d2c01429b9ed6756a4b980ded
+msgid "A host is a single computer. Hosts provide the computing resources that run guest virtual machines. Each host has hypervisor software installed on it to manage the guest VMs. For example, a host can be a Citrix XenServer server, a Linux KVM-enabled server, an ESXi server, or a Windows Hyper-V server."
+msgstr ""
+
+#: ../../concepts.rst:572
+# 97449427b2834b5a910f749370834a3c
+msgid "The host is the smallest organizational unit within a CloudStack deployment. Hosts are contained within clusters, clusters are contained within pods, pods are contained within zones, and zones can be contained within regions."
+msgstr ""
+
+#: ../../concepts.rst:577
+# 58a7f1c53f844ff292a15d04befeb5ce
+msgid "Hosts in a CloudStack deployment:"
+msgstr ""
+
+#: ../../concepts.rst:581
+# f671a906b30a42e1a516954f4e20c606
+msgid "Provide the CPU, memory, storage, and networking resources needed to host the virtual machines"
+msgstr ""
+
+#: ../../concepts.rst:586
+# 765e1241863645eba92568a45ac677f4
+msgid "Interconnect using a high bandwidth TCP/IP network and connect to the Internet"
+msgstr ""
+
+#: ../../concepts.rst:591
+# 5820e8689f01475b9e873d5dc6179a6f
+msgid "May reside in multiple data centers across different geographic locations"
+msgstr ""
+
+#: ../../concepts.rst:596
+# 062511e0a1fa417bad68cce103d84666
+msgid "May have different capacities (different CPU speeds, different amounts of RAM, etc.), although the hosts within a cluster must all be homogeneous"
+msgstr ""
+
+#: ../../concepts.rst:600
+# 23aec79990ea417598eea7c77847a775
+msgid "Additional hosts can be added at any time to provide more capacity for guest VMs."
+msgstr ""
+
+#: ../../concepts.rst:603
+# e1adace21ae0456dbcf93531f4957248
+msgid "CloudStack automatically detects the amount of CPU and memory resources provided by the hosts."
+msgstr ""
+
+#: ../../concepts.rst:606
+# e6b130b004b7446aa1601c31a04ec880
+msgid "Hosts are not visible to the end user. An end user cannot determine which host their guest has been assigned to."
+msgstr ""
+
+#: ../../concepts.rst:609
+# 855a204e524044c0b8b0966e23500edc
+msgid "For a host to function in CloudStack, you must do the following:"
+msgstr ""
+
+#: ../../concepts.rst:613
+# 8a6eda274c124ba7a819d60409feda29
+msgid "Install hypervisor software on the host"
+msgstr ""
+
+#: ../../concepts.rst:617
+# 05c37b7642704df08b323c1676a611ef
+msgid "Assign an IP address to the host"
+msgstr ""
+
+#: ../../concepts.rst:621
+# b5a14bffa6c0494094b1437abbdffb24
+msgid "Ensure the host is connected to the CloudStack Management Server."
+msgstr ""
+
+#: ../../concepts.rst:624
+# 0461535a3ff54eb890711bd518df5a2f
+msgid "About Primary Storage"
+msgstr ""
+
+#: ../../concepts.rst:626
+# 61eabe7827a34e75a9280dc9d6ae6a01
+msgid "Primary storage is associated with a cluster or (in KVM and VMware) a zone, and it stores the disk volumes for all the VMs running on hosts."
+msgstr ""
+
+#: ../../concepts.rst:629
+# 8a0469a7335942a787a9af2154ccfd35
+msgid "You can add multiple primary storage servers to a cluster or zone. At least one is required. It is typically located close to the hosts for increased performance. CloudStack manages the allocation of guest virtual disks to particular primary storage devices."
+msgstr ""
+
+#: ../../concepts.rst:634
+# e8bd1c7d24f44522bf5c9321d36534eb
+msgid "It is useful to set up zone-wide primary storage when you want to avoid extra data copy operations. With cluster-based primary storage, data in the primary storage is directly available only to VMs within that cluster. If a VM in a different cluster needs some of the data, it must be copied from one cluster to another, using the zone's secondary storage as an intermediate step. This operation can be unnecessarily time-consuming."
+msgstr ""
+
+#: ../../concepts.rst:642
+# c7f83a84661a43f2b010ab9aef5cca67
+msgid "For Hyper-V, SMB/CIFS storage is supported. Note that Zone-wide Primary Storage is not supported in Hyper-V."
+msgstr ""
+
+#: ../../concepts.rst:645
+# b634131439874a00a2ee27850bce0321
+msgid "CloudStack is designed to work with all standards-compliant iSCSI and NFS servers that are supported by the underlying hypervisor, including, for example:"
+msgstr ""
+
+#: ../../concepts.rst:651
+# 679f58d91ca547b381015341a15876e7
+msgid "SolidFire for iSCSI"
+msgstr ""
+
+#: ../../concepts.rst:655
+# 0074b93405934cd9af05d2d7dee1eff7
+msgid "Dell EqualLogic™ for iSCSI"
+msgstr ""
+
+#: ../../concepts.rst:659
+# 7bbec1e2cd6d4562a07d26dc3729c274
+msgid "Network Appliances filers for NFS and iSCSI"
+msgstr ""
+
+#: ../../concepts.rst:663
+# 09fab1fa10654e6fb7cd7d11c6bfc186
+msgid "Scale Computing for NFS"
+msgstr ""
+
+#: ../../concepts.rst:665
+# 3538437e1d8841d68caca6d2cfc38a49
+msgid "If you intend to use only local disk for your installation, you can skip adding separate primary storage."
+msgstr ""
+
+#: ../../concepts.rst:669
+# ad3da3f468ca4f31b1ad424695d356d6
+msgid "About Secondary Storage"
+msgstr ""
+
+#: ../../concepts.rst:688
+# 75d27a88966c4c6dae20b8fa670b8993
+msgid "The items in secondary storage are available to all hosts in the scope of the secondary storage, which may be defined as per zone or per region."
+msgstr ""
+
+#: ../../concepts.rst:692
+# ed4098415be54095b396714cb7c514c3
+msgid "To make items in secondary storage available to all hosts throughout the cloud, you can add object storage in addition to the zone-based NFS Secondary Staging Store. It is not necessary to copy templates and snapshots from one zone to another, as would be required when using zone NFS alone. Everything is available everywhere."
+msgstr ""
+
+#: ../../concepts.rst:698
+# 79c26db02f0249f8b6c794319a0ea2b1
+msgid "For Hyper-V hosts, SMB/CIFS storage is supported."
+msgstr ""
+
+#: ../../concepts.rst:700
+# 913e44de9bcd4ad39ef301e44f9f4912
+msgid "CloudStack provides plugins that enable both OpenStack Object Storage (Swift, `swift.openstack.org <http://swift.openstack.org>`__) and Amazon Simple Storage Service (S3) object storage. When using one of these storage plugins, you configure Swift or S3 storage for the entire CloudStack, then set up the NFS Secondary Staging Store for each zone. The NFS storage in each zone acts as a staging area through which all templates and other secondary storage data pass before being forwarded to Swift or S3. The backing object storage acts as a cloud-wide resource, making templates and other data available to any zone in the cloud."
+msgstr ""
+
+#: ../../concepts.rst:713
+# 923b43f36d6a43779d097362df5eeecc
+msgid "Heterogeneous Secondary Storage is not supported in Regions. For example, you cannot set up multiple zones, one using NFS secondary and the other using S3 or Swift secondary."
+msgstr ""
+
+#: ../../concepts.rst:716
+# 61ac7438b69a4a86af94a1bf2fe64fe3
+msgid "About Physical Networks"
+msgstr ""
+
+#: ../../concepts.rst:718
+# 4dcdb324118640269de7380c6bee06f1
+msgid "Part of adding a zone is setting up the physical network. One or (in an advanced zone) more physical networks can be associated with each zone. The network corresponds to a NIC on the hypervisor host. Each physical network can carry one or more types of network traffic. The choices of traffic type for each network vary depending on whether you are creating a zone with basic networking or advanced networking."
+msgstr ""
+
+#: ../../concepts.rst:725
+# f7b77ed223b4433987d4702a01fb8c47
+msgid "A physical network is the actual network hardware and wiring in a zone. A zone can have multiple physical networks. An administrator can:"
+msgstr ""
+
+#: ../../concepts.rst:747
+# 24d09735b0ca4143ad8978d89842d154
+msgid "Configure the IP addresses trunked to a physical network"
+msgstr ""
+
+#: ../../concepts.rst:755
+# bd87d1fd70d34ff3958228f36bf6538e
+msgid "Basic Zone Network Traffic Types"
+msgstr ""
+
+#: ../../concepts.rst:762
+# a9dadbb1895845ecaffeb810b06b7ec8
+msgid "Guest. When end users run VMs, they generate guest traffic. The guest VMs communicate with each other over a network that can be referred to as the guest network. Each pod in a basic zone is a broadcast domain, and therefore each pod has a different IP range for the guest network. The administrator must configure the IP range for each pod."
+msgstr ""
+
+#: ../../concepts.rst:770
+# dc406b9190ce4cc48f7f4b3443ff4cda
+msgid "Management. When CloudStack's internal resources communicate with each other, they generate management traffic. This includes communication between hosts, system VMs (VMs used by CloudStack to perform various tasks in the cloud), and any other component that communicates directly with the CloudStack Management Server. You must configure the IP range for the system VMs to use."
+msgstr ""
+
+#: ../../concepts.rst:779
+# 39db7e6a26f746ceb0672acda7fd8080
+msgid "We strongly recommend the use of separate NICs for management traffic and guest traffic."
+msgstr ""
+
+#: ../../concepts.rst:784
+# 3ee341c4481d464d9ade2fe2546540d8
+msgid "Public. Public traffic is generated when VMs in the cloud access the Internet. Publicly accessible IPs must be allocated for this purpose. End users can use the CloudStack UI to acquire these IPs to implement NAT between their guest network and the public network, as described in Acquiring a New IP Address."
+msgstr ""
+
+#: ../../concepts.rst:792
+#: ../../concepts.rst:856
+# 9f0a166f4cdd4eaba88ff44521189e57
+# d61ccfa4d6b6457189863747e25fe247
+msgid "Storage. While labeled \"storage\" this is specifically about secondary storage, and doesn't affect traffic for primary storage. This includes traffic such as VM templates and snapshots, which is sent between the secondary storage VM and secondary storage servers. CloudStack uses a separate Network Interface Controller (NIC) named storage NIC for storage network traffic. Use of a storage NIC that always operates on a high bandwidth network allows fast template and snapshot copying. You must configure the IP range to use for the storage network."
+msgstr ""
+
+#: ../../concepts.rst:819
+# c58251d2d6c34f4eaef1b3e7b07bee7b
+msgid "Advanced Zone Network Traffic Types"
+msgstr ""
+
+#: ../../concepts.rst:821
+# 64b15543219244289efe314f52a850aa
+msgid "When advanced networking is used, there can be multiple physical networks in the zone. Each physical network can carry one or more traffic types, and you need to let CloudStack know which type of network traffic you want each network to carry. The traffic types in an advanced zone are:"
+msgstr ""
+
+#: ../../concepts.rst:829
+# 6d72677dcf1d4796a4ed9b8e2bfd36c7
+msgid "Guest. When end users run VMs, they generate guest traffic. The guest VMs communicate with each other over a network that can be referred to as the guest network. This network can be isolated or shared. In an isolated guest network, the administrator needs to reserve VLAN ranges to provide isolation for each CloudStack account’s network (potentially a large number of VLANs). In a shared guest network, all guest VMs share a single network."
+msgstr ""
+
+#: ../../concepts.rst:839
+# 00a3aa2f55574d10ac98903ab4705480
+msgid "Management. When CloudStack’s internal resources communicate with each other, they generate management traffic. This includes communication between hosts, system VMs (VMs used by CloudStack to perform various tasks in the cloud), and any other component that communicates directly with the CloudStack Management Server. You must configure the IP range for the system VMs to use."
+msgstr ""
+
+#: ../../concepts.rst:848
+# b04011567f254066b55ed823e80437c1
+msgid "Public. Public traffic is generated when VMs in the cloud access the Internet. Publicly accessible IPs must be allocated for this purpose. End users can use the CloudStack UI to acquire these IPs to implement NAT between their guest network and the public network, as described in “Acquiring a New IP Address” in the Administration Guide."
+msgstr ""
+
+#: ../../concepts.rst:866
+# c0e1e92bce5348458d8da10a51171774
+msgid "These traffic types can each be on a separate physical network, or they can be combined with certain restrictions. When you use the Add Zone wizard in the UI to create a new zone, you are guided into making only valid choices."
+msgstr ""
+
+#: ../../concepts.rst:886
+# db963f68933d4705bbfd94377585e0e5
+msgid "When advanced networking is used, the administrator can create additional networks for use by the guests. These networks can span the zone and be available to all accounts, or they can be scoped to a single account, in which case only the named account may create guests that attach to these networks. The networks are defined by a VLAN ID, IP range, and gateway. The administrator may provision thousands of these networks if desired."
+msgstr ""
+
+#: ../../concepts.rst:911
+# fb0ea82f51c14b77915b642a9480bc28
+msgid "Make sure computing servers and Management Servers use IP addresses outside of the System Reserved IP range. For example, suppose the System Reserved IP range starts at 192.168.154.2 and ends at 192.168.154.7. CloudStack can use .2 to .7 for System VMs. This leaves the rest of the pod CIDR, from .8 to .254, for the Management Server and hypervisor hosts."
+msgstr ""
+
+#: ../../concepts.rst:918
+# e772bcd2076945f1803767331cb65080
+msgid "**In all zones:**"
+msgstr ""
+
+#: ../../concepts.rst:927
+# 5cd0b2295fe54192bdb8dbae7d2e902a
+msgid "**In a zone that uses advanced networking:**"
+msgstr ""
+
+#: ../../concepts.rst:959
+# 6851d74b7aa544dda60f5c0e80f5a2db
+msgid "Create multiple pods, each with its own subnet. For example, if you create 10 pods and each pod has 255 IPs, this will provide 2,550 IP addresses."
+msgstr ""
+

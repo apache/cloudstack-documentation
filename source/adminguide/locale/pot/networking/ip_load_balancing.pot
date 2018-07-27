@@ -1,0 +1,48 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../networking/ip_load_balancing.rst:18
+# 974ac2a4e2dd4641920f5361833b3e12
+msgid "IP Load Balancing"
+msgstr ""
+
+#: ../../networking/ip_load_balancing.rst:20
+# 7eaede5161a04e0cbb6a4b15fc2de3b2
+msgid "The user may choose to associate the same public IP for multiple guests. CloudStack implements a TCP-level load balancer with the following policies."
+msgstr ""
+
+#: ../../networking/ip_load_balancing.rst:24
+# 8c044fa0f1714d63815a08d7a658b08d
+msgid "Round-robin"
+msgstr ""
+
+#: ../../networking/ip_load_balancing.rst:26
+# 6732c79a9ecf4eec91f6ddea4d55833a
+msgid "Least connection"
+msgstr ""
+
+#: ../../networking/ip_load_balancing.rst:28
+# 28c3b6fa228545e382ed84cceaf1666a
+msgid "Source IP"
+msgstr ""
+
+#: ../../networking/ip_load_balancing.rst:30
+# 0eac6f2afde349909f9ee8d0148a99b6
+msgid "This is similar to port forwarding but the destination may be multiple IP addresses."
+msgstr ""
+

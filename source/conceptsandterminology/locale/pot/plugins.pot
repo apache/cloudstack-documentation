@@ -1,0 +1,783 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache CloudStack
+# This file is distributed under the same license as the Apache CloudStack package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack 4.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-31 13:49-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../plugins.rst:2
+# 379a7814be5a45bcadcc0fd536656b4f
+msgid "Plugins"
+msgstr ""
+
+#: ../../plugins.rst:6
+# 276ba73433bd44b49f3176b4fdcaf5a9
+msgid "Storage Plugins"
+msgstr ""
+
+#: ../../plugins.rst:8
+# 358954e5ae1b4bca9b9314f8cbd00da8
+msgid "This section gives an outline of how to implement a plugin to integrate a third-party storage provider. For details and an example, you will need to read the code."
+msgstr ""
+
+#: ../../plugins.rst:12
+# bcbf1c53396a440f8f0a50ed5591f57b
+msgid "Example code is available at: `plugins/storage/volume/sample`"
+msgstr ""
+
+#: ../../plugins.rst:14
+# 7943819f1f8a49bfb21b6aedfc6864dd
+msgid "Third party storage providers can integrate with CloudStack to provide either primary storage or secondary storage. For example, CloudStack provides plugins for Amazon Simple Storage Service (S3) or OpenStack Object Storage (Swift). The S3 plugin can be used for any object storage that supports the Amazon S3 interface."
+msgstr ""
+
+#: ../../plugins.rst:20
+# e8a7044f1e9642cea286930007548cff
+msgid "Additional third party object storages that do not support the S3 interface can be integrated with CloudStack by writing plugin software that uses the object storage plugin framework. Several new interfaces are available so that storage providers can develop vendor-specific plugins based on well-defined contracts that can be seamlessly managed by CloudStack."
+msgstr ""
+
+#: ../../plugins.rst:27
+# 0a515957cb6e4b4bbe92c1331577f84f
+msgid "Artifacts such as templates, ISOs and snapshots are kept in storage which CloudStack refers to as secondary storage. To improve scalability and performance, as when a number of hosts access secondary storage concurrently, object storage can be used for secondary storage. Object storage can also provide built-in high availability capability. When using object storage, access to secondary storage data can be made available across multiple zones in a region. This is a huge benefit, as it is no longer necessary to copy templates, snapshots etc. across zones as would be needed in an environment using only zone-based NFS storage."
+msgstr ""
+
+#: ../../plugins.rst:37
+# 6648eb6e267b443f83e38ff557fa9dcd
+msgid "The user enables a storage plugin through the UI. A new dialog box choice is offered to select the storage provider. Depending on which provider is selected, additional input fields may appear so that the user can provide the additional details required by that provider, such as a user name and password for a third-party storage account."
+msgstr ""
+
+#: ../../plugins.rst:44
+# 79590964b2d94df7b8ee961a9f0e1c77
+msgid "Overview of How to Write a Storage Plugin"
+msgstr ""
+
+#: ../../plugins.rst:46
+# 81da42c9a3fd43a6ae81de0def33d980
+msgid "To add a third-party storage option to CloudStack, follow these general steps (explained in more detail later in this section):"
+msgstr ""
+
+#: ../../plugins.rst:49
+# a59f1b6a6401428b8df44ef5c815b529
+msgid "Implement the following interfaces in Java:"
+msgstr ""
+
+#: ../../plugins.rst:51
+# d4706d7bd37f4ecfb17e700d567de04b
+msgid "DataStoreDriver"
+msgstr ""
+
+#: ../../plugins.rst:53
+# 4059bcbbcc9f42aea6d8eaaff7e19d45
+msgid "DataStoreLifecycle"
+msgstr ""
+
+#: ../../plugins.rst:55
+# cd23139c1ca9496f95616a6447c7982f
+msgid "DataStoreProvider"
+msgstr ""
+
+#: ../../plugins.rst:57
+# 0b42430ad6754a7cb5d98d5ef1b9cfbb
+msgid "VMSnapshotStrategy (if you want to customize the VM snapshot functionality)"
+msgstr ""
+
+#: ../../plugins.rst:60
+# 58743ad0ef874f8a82ec02659f100b2c
+msgid "Hardcode your plugin's required additional input fields into the code for the Add Secondary Storage or Add Primary Storage dialog box."
+msgstr ""
+
+#: ../../plugins.rst:63
+# 3db5b1bcf41c43d2b41395ec10bb9f0a
+msgid "Place your .jar file in `plugins/storage/volume/` or `plugins/storage/image/`."
+msgstr ""
+
+#: ../../plugins.rst:65
+# cb55ad5ab266458ca52e817fff92e46c
+msgid "Edit `/client/tomcatconf/componentContext.xml.in`."
+msgstr ""
+
+#: ../../plugins.rst:67
+# eb20fc9877d64f35ab554e9466f4658f
+msgid "Edit `client/pom.xml`."
+msgstr ""
+
+#: ../../plugins.rst:70
+# 9688b201ec7a44d9bec3f68a3834f661
+msgid "Implementing DataStoreDriver"
+msgstr ""
+
+#: ../../plugins.rst:72
+# 6b45021dacd74b4db08570aca747baaf
+msgid "DataStoreDriver contains the code that CloudStack will use to provision the object store, when needed."
+msgstr ""
+
+#: ../../plugins.rst:75
+#: ../../plugins.rst:99
+#: ../../plugins.rst:118
+# 110e2faf453d4019acc78dc1de958e03
+# 50d2a350ffdd446ebed3501451547a93
+# 36623b0788e84ae7b8fe9cbaa8793214
+msgid "You must implement the following methods:"
+msgstr ""
+
+#: ../../plugins.rst:77
+# 978b91799e7a441483f89ee5094951c7
+msgid "getTO()"
+msgstr ""
+
+#: ../../plugins.rst:79
+# c5f4d5267f494a3d8103694ff97230cc
+msgid "getStoreTO()"
+msgstr ""
+
+#: ../../plugins.rst:81
+# ceab640d5f294e33b654eeb341a236f6
+msgid "createAsync()"
+msgstr ""
+
+#: ../../plugins.rst:83
+# d40f5f65b6c142e3982b32e617d13ee1
+msgid "deleteAsync()"
+msgstr ""
+
+#: ../../plugins.rst:85
+#: ../../plugins.rst:135
+# 1c581d60ec8f437b946609e5005d4615
+# 6ee9c079baf14294b50ac646b0b17148
+msgid "The following methods are optional:"
+msgstr ""
+
+#: ../../plugins.rst:87
+# a4ddd58fad6a4efab4f54031b45b1895
+msgid "resize()"
+msgstr ""
+
+#: ../../plugins.rst:89
+# 07a3e3904a8f4e23ab9d2719ceadc3bb
+msgid "canCopy() is optional. If you set it to true, then you must implement copyAsync()."
+msgstr ""
+
+#: ../../plugins.rst:93
+# dfa07e5db908457d8cf4ab3ea629351f
+msgid "Implementing DataStoreLifecycle"
+msgstr ""
+
+#: ../../plugins.rst:95
+# 3508baad34c349f18bee1a469dbdd2f4
+msgid "DataStoreLifecycle contains the code to manage the storage operations for ongoing use of the storage. Several operations are needed, like create, maintenance mode, delete, etc."
+msgstr ""
+
+#: ../../plugins.rst:101
+# be7eccc5cbf94427ab62c3ac621e0904
+msgid "initialize()"
+msgstr ""
+
+#: ../../plugins.rst:103
+# 05c12b7857f9409a85b667444db0bf4b
+msgid "maintain()"
+msgstr ""
+
+#: ../../plugins.rst:105
+# e2cdf5a6cbfc40df9637fbd1625d0739
+msgid "cancelMaintain()"
+msgstr ""
+
+#: ../../plugins.rst:107
+# c531bef6c8934f778fd67919afa4e0b2
+msgid "deleteDataStore()"
+msgstr ""
+
+#: ../../plugins.rst:109
+# a37c6307cd0243c795a40ca093011f09
+msgid "Implement one of the attach\\*() methods depending on what scope you want the storage to have: attachHost(), attachCluster(), or attachZone()."
+msgstr ""
+
+#: ../../plugins.rst:114
+# 8dfafd1749a144f7889ee0f225b66288
+msgid "Implementing DataStoreProvider"
+msgstr ""
+
+#: ../../plugins.rst:116
+# b7400386153243b39742ffb719dda277
+msgid "DataStoreProvider contains the main code of the data store."
+msgstr ""
+
+#: ../../plugins.rst:120
+# d46222d7926a42f19c4b4716e4afc608
+msgid "getDatastoreLifeCycle()"
+msgstr ""
+
+#: ../../plugins.rst:122
+# a69737a8b6ab40d39e67a74c899e5574
+msgid "getDataStoreDriver()"
+msgstr ""
+
+#: ../../plugins.rst:124
+# ce12672ec9844f7c8d88a9d3871e8bdd
+msgid "getTypes(). Returns one or more types of storage for which this data store provider can be used. For secondary object storage, return IMAGE, and for a Secondary Staging Store, return ImageCache."
+msgstr ""
+
+#: ../../plugins.rst:128
+# 683ccb9981724336886a1597876d99da
+msgid "configure(). First initialize the lifecycle implementation and the driver implementation, then call registerDriver() to register the new object store provider instance with CloudStack."
+msgstr ""
+
+#: ../../plugins.rst:132
+# 6eae2e2f3984408d83382a7e643ac1ea
+msgid "getName(). Returns the unique name of your provider; for example, this can be used to get the name to display in the UI."
+msgstr ""
+
+#: ../../plugins.rst:137
+# 1d479396becb4f31907471b9247b47cf
+msgid "getHostListener() is optional; it's for monitoring the status of the host."
+msgstr ""
+
+#: ../../plugins.rst:141
+# 52eaa6fa0b484432a9bd1bbc77a5c37d
+msgid "Implementing VMSnapshotStrategy"
+msgstr ""
+
+#: ../../plugins.rst:143
+# 9ad0037ad86d4a1b8d1f135cefbbc6c5
+msgid "VMSnapshotStrategy has the following methods:"
+msgstr ""
+
+#: ../../plugins.rst:145
+# 20970991ba784f3b9d54cf1cfe12f8e6
+msgid "takeVMSnapshot()"
+msgstr ""
+
+#: ../../plugins.rst:147
+# 9bff86587100420e93573c9bee23e992
+msgid "deleteVMSnapshot()"
+msgstr ""
+
+#: ../../plugins.rst:149
+# 3a52e11272284484a6e72f035dee36c8
+msgid "revertVMSnapshot()"
+msgstr ""
+
+#: ../../plugins.rst:151
+# f3306e4fc05f4c4fb6065e8be9ae7790
+msgid "canHandle(). For a given VM snapshot, tells whether this implementation of VMSnapshotStrategy can handle it."
+msgstr ""
+
+#: ../../plugins.rst:155
+# 992261ff6c7e418da8e50ffc311bdd92
+msgid "Place the .jar File in the Right Directory"
+msgstr ""
+
+#: ../../plugins.rst:157
+# 525e7141d0414c5990833d09bda59b48
+msgid "For a secondary storage plugin, place your .jar file here:"
+msgstr ""
+
+#: ../../plugins.rst:163
+# 95400fb6d085440797180cf692b4bf94
+msgid "For a primary storage plugin, place your .jar file here:"
+msgstr ""
+
+#: ../../plugins.rst:170
+# f9bace45b78d4ca1b3581f1978438637
+msgid "Edit Configuration Files"
+msgstr ""
+
+#: ../../plugins.rst:172
+# 076d6a8e32c547ef9774ce76b6956107
+msgid "First, edit the following file tell CloudStack to include your .jar file. Add a line to this file to tell the CloudStack Management Server that it now has a dependency on your code:"
+msgstr ""
+
+#: ../../plugins.rst:180
+# 41863713ce5b44af8daa29b52ea9b884
+msgid "Place some facts about your code in the following file so CloudStack can run it:"
+msgstr ""
+
+#: ../../plugins.rst:187
+# b918b6ed56d140ff8013cb47574e0e42
+msgid "In the section “Deployment configurations of various adapters,” add this:"
+msgstr ""
+
+#: ../../plugins.rst:194
+# 30190892871c43188cf466ccd65f65d7
+msgid "In the section “Storage Providers,” add this:"
+msgstr ""
+
+#: ../../plugins.rst:203
+# 2ae7b51840ee4af992fc223832fc4671
+msgid "Minimum Required Interfaces"
+msgstr ""
+
+#: ../../plugins.rst:205
+# 8b945071a1ca4028a8e4d66b660e9a37
+msgid "The classes, interfaces, and methods used by CloudStack from the Amazon Web Services (AWS) Java SDK are listed in this section. An object storage that supports the S3 interface is minimally required to support the below in order to be compatible with CloudStack."
+msgstr ""
+
+#: ../../plugins.rst:211
+# 608dc2680b3647418a090b59602e0fae
+msgid "Interface AmazonS3"
+msgstr ""
+
+#: ../../plugins.rst:213
+# aee399034a2f4543badc14a61f4c271d
+msgid "http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3.html"
+msgstr ""
+
+#: ../../plugins.rst:216
+#: ../../plugins.rst:292
+#: ../../plugins.rst:305
+# 524902fe6335491e90113db2e7dcf32c
+# e98040534c694fa79fa31e2055d1952d
+# 14a01140525943f992129262e3d80f7d
+msgid "Modifier and Type"
+msgstr ""
+
+#: ../../plugins.rst:216
+#: ../../plugins.rst:292
+#: ../../plugins.rst:305
+# 425d6aa0a9064b96a9ca0885a619c38d
+# f6a0c9e17a6243779f44932ea5a23c89
+# 9a049f576a8e4962950b98430348d2a4
+msgid "Method and Description"
+msgstr ""
+
+#: ../../plugins.rst:219
+# dab6c8ccc228474bbdee27d4828d4f54
+msgid "Bucket"
+msgstr ""
+
+#: ../../plugins.rst:219
+# b5245e58b4104653874763bf3ebc456b
+msgid "createBucket(String bucketName)"
+msgstr ""
+
+#: ../../plugins.rst:221
+# 098525d2951148a3ab0b98ccc0daa468
+msgid "Creates a new Amazon S3 bucket with the specified name in the default (US) region, Region.US\\_Standard."
+msgstr ""
+
+#: ../../plugins.rst:224
+#: ../../plugins.rst:246
+#: ../../plugins.rst:275
+#: ../../plugins.rst:279
+# 10e1e53e84814a759d18a529af6afb21
+# 19df007e41794cdcb5068190dc725b50
+# 9b936bfde7324c11bc53237bee0ab743
+# f9e2310af56643ea89a85e7a49179a42
+msgid "void"
+msgstr ""
+
+#: ../../plugins.rst:224
+# d0edd5f0784c4d0d80b649435413969c
+msgid "deleteObject(String bucketName, String key)"
+msgstr ""
+
+#: ../../plugins.rst:226
+# b000a048de2c4b73a38deb0f3453329e
+msgid "Deletes the specified object in the specified bucket."
+msgstr ""
+
+#: ../../plugins.rst:228
+# 93db5db5c5d04b14996eee4cced36b84
+msgid "ObjectMetadata"
+msgstr ""
+
+#: ../../plugins.rst:228
+# 6c36346fa1884122b6103c28b5d4bdd7
+msgid "getObject(GetObjectRequest getObjectRequest, File destinationFile)"
+msgstr ""
+
+#: ../../plugins.rst:231
+# 733bb2a121894a158b4dbed604144383
+msgid "Gets the object metadata for the object stored in Amazon S3 under the specified bucket and key, and saves the object contents to the specified file."
+msgstr ""
+
+#: ../../plugins.rst:235
+# 69058f54f58342d094836ad752e4d4e7
+msgid "S3Object"
+msgstr ""
+
+#: ../../plugins.rst:235
+# 8e4699041a0a403594cff314173bad13
+msgid "getObject(String bucketName, String key)"
+msgstr ""
+
+#: ../../plugins.rst:237
+# 565e5ccbf07643d8bdb2e31697118021
+msgid "Gets the object stored in Amazon S3 under the specified bucket and key."
+msgstr ""
+
+#: ../../plugins.rst:240
+# e434609fbde942f7b2667a2bd2b74526
+msgid "URL"
+msgstr ""
+
+#: ../../plugins.rst:240
+# 0049113021404c0398d28d0090fc4e86
+msgid "generatePresignedUrl(String bucketName, String key, Date expiration, HttpMethod method)"
+msgstr ""
+
+#: ../../plugins.rst:243
+# 4a6a23c7ae664c61a5d54eab6c49bddd
+msgid "Returns a pre-signed URL for accessing an Amazon S3 resource."
+msgstr ""
+
+#: ../../plugins.rst:246
+# 904cfc6f8c244f8fbfc859e381069663
+msgid "deleteBucket(String bucketName)"
+msgstr ""
+
+#: ../../plugins.rst:248
+# e1dac24bb0e14b4697219c79b113fd7f
+msgid "Deletes the specified bucket."
+msgstr ""
+
+#: ../../plugins.rst:250
+# 8cdb948275894bdb97c1b8b5f6e249ed
+msgid "List<Bucket>"
+msgstr ""
+
+#: ../../plugins.rst:250
+# 4948cb9aa0fe47b5a0b4133c51aac5ae
+msgid "listBuckets()"
+msgstr ""
+
+#: ../../plugins.rst:252
+# a7f7c254dfc743e6986d6f87157e8ca1
+msgid "Returns a list of all Amazon S3 buckets that the authenticated sender of the request owns."
+msgstr ""
+
+#: ../../plugins.rst:255
+# 3e40fd85e1734299b80d1a20543aa634
+msgid "ObjectListing"
+msgstr ""
+
+#: ../../plugins.rst:255
+# bb216e1e97f64c06b56d8b5d63f55e6f
+msgid "listObjects(String bucketName, String prefix)"
+msgstr ""
+
+#: ../../plugins.rst:257
+# 410a7878aa1a423a8924f0639fd9d503
+msgid "Returns a list of summary information about the objects in the specified bucket."
+msgstr ""
+
+#: ../../plugins.rst:260
+#: ../../plugins.rst:264
+#: ../../plugins.rst:269
+# c9d4c91129ea44d3b04bc4fec6625e45
+# bdebb85f1c164924b617faf009556842
+# 07c5d99ac05a4fa288989e3abc26136a
+msgid "PutObjectResult"
+msgstr ""
+
+#: ../../plugins.rst:260
+# a026c1f32bfb4bb5880c29ae0a65e253
+msgid "putObject(PutObjectRequest putObjectRequest)"
+msgstr ""
+
+#: ../../plugins.rst:262
+# 4f55cf31f4d241e1822a673575690fd8
+msgid "Uploads a new object to the specified Amazon S3 bucket."
+msgstr ""
+
+#: ../../plugins.rst:264
+# 3bc33b26a775484088543c50ccd242b9
+msgid "putObject(String bucketName, String key, File file)"
+msgstr ""
+
+#: ../../plugins.rst:266
+# 7da2800a6855410ba7aba90d4eb247f9
+msgid "Uploads the specified file to Amazon S3 under the specified bucket and key name."
+msgstr ""
+
+#: ../../plugins.rst:269
+# 84b1447f696947f188e49d20266ab31a
+msgid "putObject(String bucketName, String key, InputStream input, ObjectMetadata metadata)"
+msgstr ""
+
+#: ../../plugins.rst:272
+# ffd50b9c64944d7c94b59db13f429502
+msgid "Uploads the specified input stream and object metadata to Amazon S3 under the specified bucket and key name."
+msgstr ""
+
+#: ../../plugins.rst:275
+# 6ff9f7752d544dce87370cff755b5c04
+msgid "setEndpoint(String endpoint)"
+msgstr ""
+
+#: ../../plugins.rst:277
+# bb223a72df024071bd3fcf9a104ea867
+msgid "Overrides the default endpoint for this client."
+msgstr ""
+
+#: ../../plugins.rst:279
+# a1c7af6f2ced47df89b4f06a106004ea
+msgid "setObjectAcl(String bucketName, String key, CannedAccessControlList acl)"
+msgstr ""
+
+#: ../../plugins.rst:282
+# fc1eb83daba44fb8b3d7c874b1b78eb4
+msgid "Sets the CannedAccessControlList for the specified object in Amazon S3 using one of the pre-configured CannedAccessControlLists."
+msgstr ""
+
+#: ../../plugins.rst:287
+# 0ca9dc98fa69442da459049fa130bb3e
+msgid "*Class TransferManager*"
+msgstr ""
+
+#: ../../plugins.rst:289
+# af0a0cd7fe054fa0b429690eb93d7f08
+msgid "http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/transfer/TransferManager.html"
+msgstr ""
+
+#: ../../plugins.rst:295
+#: ../../plugins.rst:308
+# 3bf5fd4667e14704827091487cba6732
+# 063f2d2856ac430f82e49cb6a131a104
+msgid "Upload"
+msgstr ""
+
+#: ../../plugins.rst:295
+#: ../../plugins.rst:308
+# 85985bdb07bb4407ac643217da6cc939
+# bcb6b7381776465fbad331f3a2f1fa72
+msgid "upload(PutObjectRequest putObjectRequest)"
+msgstr ""
+
+#: ../../plugins.rst:297
+#: ../../plugins.rst:310
+# bae421e1a5db4ee7a2dab5d554ec7198
+# aa005a5c26e74b76a91b4f14cefed7b1
+msgid "Schedules a new transfer to upload data to Amazon S3."
+msgstr ""
+
+#: ../../plugins.rst:300
+# 62992df00ab34f92971b3885d85b3bfc
+msgid "*Class PutObjectRequest*"
+msgstr ""
+
+#: ../../plugins.rst:302
+# e6c803af72274ebc9580b6a7f60bdb67
+msgid "http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/model/PutObjectRequest.html"
+msgstr ""
+
+#: ../../plugins.rst:315
+# 047cb9e48a3d481c934d16c02bd9a87d
+msgid "Third Party UI Plugins"
+msgstr ""
+
+#: ../../plugins.rst:317
+# be7d0e07285f4351bda1ceb9a1fb337b
+msgid "Using the new third-party plugin framework, you can write and install extensions to CloudStack. The installed and enabled plugins will appear in the UI alongside the other features. The code for the plugin is simply placed in a special directory within CloudStack’s installed code at any time after CloudStack installation. The new plugin appears only when it is enabled by the cloud administrator."
+msgstr ""
+
+#: ../../plugins.rst:328
+# 21c50cf0d5564016b44442790fe84fb1
+msgid "The left navigation bar of the CloudStack UI has a new Plugins button to help you work with UI plugins."
+msgstr ""
+
+#: ../../plugins.rst:332
+# 3181ee393ee54ca0bec634ac6c3ff3ff
+msgid "How to Write a Plugin: Overview"
+msgstr ""
+
+#: ../../plugins.rst:334
+# 7e214f0cab7b4e82bc7b17125b4d573d
+msgid "The basic procedure for writing a plugin is:"
+msgstr ""
+
+#: ../../plugins.rst:336
+# 08098d9c051a422f9f119e12fb801b90
+msgid "Write the code and create the other files needed. You will need the plugin code itself (in Javascript), a thumbnail image, the plugin listing, and a CSS file."
+msgstr ""
+
+#: ../../plugins.rst:344
+# 23807d67ae0347b3bf61aac8b62dab08
+msgid "All UI plugins have the following set of files:"
+msgstr ""
+
+#: ../../plugins.rst:359
+# 26387214ce7d4db38de919e4af305edc
+msgid "The same files must also be present at `/tomcat/webapps/client/plugins`."
+msgstr ""
+
+#: ../../plugins.rst:362
+# 88678459528c45bcb71214b6c06cbe00
+msgid "The CloudStack administrator adds the folder containing your plugin code under the CloudStack PLUGINS folder."
+msgstr ""
+
+#: ../../plugins.rst:369
+# b7a4f78ddc254478acac9a6d4896db7f
+msgid "The administrator also adds the name of your plugin to the plugin.js file in the PLUGINS folder."
+msgstr ""
+
+#: ../../plugins.rst:376
+# b4a1e6dcbbe943b7b02eff49df570e25
+msgid "The next time the user refreshes the UI in the browser, your plugin will appear in the left navigation bar."
+msgstr ""
+
+#: ../../plugins.rst:384
+# ad4d6a6816c34431bad231e9fdf8b2c4
+msgid "How to Write a Plugin: Implementation Details"
+msgstr ""
+
+#: ../../plugins.rst:386
+# 32860106c46f407caa5037981b45fd0a
+msgid "This section requires an understanding of JavaScript and the CloudStack API. You don't need knowledge of specific frameworks for this tutorial (jQuery, etc.), since the CloudStack UI handles the front-end rendering for you."
+msgstr ""
+
+#: ../../plugins.rst:391
+# d43ce7e869b44abb8aa8ced854031f33
+msgid "There is much more to the CloudStack UI framework than can be described here. The UI is very flexible to handle many use cases, so there are countless options and variations. The best reference right now is to read the existing code for the main UI, which is in the /ui folder. Plugins are written in a very similar way to the main UI."
+msgstr ""
+
+#: ../../plugins.rst:397
+# c983b0a3b2e34f47891a7f3e21d300aa
+msgid "**Create the directory to hold your plugin.**"
+msgstr ""
+
+#: ../../plugins.rst:399
+# 7fcc90ae1483437c8452ecd3a63cb12e
+msgid "All plugins are composed of set of required files in the directory /ui/plugins/pluginID, where pluginID is a short name for your plugin. It's recommended that you prefix your folder name (for example, bfMyPlugin) to avoid naming conflicts with other people's plugins."
+msgstr ""
+
+#: ../../plugins.rst:405
+# cea645979e1e42dfa9fb8a4e6c835b14
+msgid "In this example, the plugin is named csMyFirstPlugin."
+msgstr ""
+
+#: ../../plugins.rst:418
+# dac80f13146d46d69f6024199420a5f1
+msgid "**Change to your new plugin directory.**"
+msgstr ""
+
+#: ../../plugins.rst:425
+# 4649d30c029947efb26e9689fe4d0a42
+msgid "**Set up the listing.**"
+msgstr ""
+
+#: ../../plugins.rst:427
+# da3530d14f3141bf8fd825e1d590183a
+msgid "Add the file `config.js`, using your favorite editor."
+msgstr ""
+
+#: ../../plugins.rst:433
+# 7a6b02d1946d4f2293b3fec3d21d8545
+msgid "Add the following content to config.js. This information will be displayed on the plugin listing page in the UI:"
+msgstr ""
+
+#: ../../plugins.rst:449
+# e5bb9ce4c369479cbe7cc590e7865105
+msgid "**Add a new main section.**"
+msgstr ""
+
+#: ../../plugins.rst:451
+# c6a54f8b6b2542779303438bf225ead2
+msgid "Add the file csMyFirstPlugin.js, using your favorite editor."
+msgstr ""
+
+#: ../../plugins.rst:457
+# e9a74896a2564517ab0b1cad702af069
+msgid "Add the following content to csMyFirstPlugin.js:"
+msgstr ""
+
+#: ../../plugins.rst:477
+# 6b508943154f4a91ad9212145454b729
+msgid "**Register the plugin.**"
+msgstr ""
+
+#: ../../plugins.rst:479
+# 99232d63e1574ee0a219e4f47db26c12
+msgid "You now have the minimal content needed to run the plugin, so you can activate the plugin in the UI by adding it to plugins.js. First, edit the file:"
+msgstr ""
+
+#: ../../plugins.rst:489
+# aecc1460eb7a4f39bfc2974ccbd9c8df
+msgid "Now add the following to plugins.js:"
+msgstr ""
+
+#: ../../plugins.rst:500
+# dda46490dded4befab18cc890e4a8685
+msgid "**Check the plugin in the UI.**"
+msgstr ""
+
+#: ../../plugins.rst:502
+# 64676cd9d1b945ccbb61f2660ad70c96
+msgid "First, copy all the plugin code that you have created so far to `/tomcat/webapps/client/plugins`. Then refresh the browser and click Plugins in the side navigation bar. You should see your new plugin."
+msgstr ""
+
+#: ../../plugins.rst:506
+# 3b028f17d2f94b28966e30fe979808a7
+msgid "**Make the plugin do something.**"
+msgstr ""
+
+#: ../../plugins.rst:508
+# 6c65b20c7e6f487ca68539eab0b480d3
+msgid "Right now, you just have placeholder content in the new plugin. It's time to add real code. In this example, you will write a basic list view, which renders data from an API call. You will list all virtual machines owned by the logged-in user. To do this, replace the 'show' function in the plugin code with a 'listView' block, containing the required syntax for a list view. To get the data, use the listVirtualMachines API call. Without any parameters, it will return VMs only for your active user. Use the provided 'apiCall' helper method to handle the server call. Of course, you are free to use any other method for making the AJAX call (for example, jQuery's $.ajax method)."
+msgstr ""
+
+#: ../../plugins.rst:520
+# 813e82c6e71c4a11b86c8fcb1997906b
+msgid "First, open your plugin's JavaScript source file in your favorite editor:"
+msgstr ""
+
+#: ../../plugins.rst:529
+# 2d33a542619b4d55a0e9f87a9516a1dd
+msgid "Add the following code in csMyFirstPlugin.js:"
+msgstr ""
+
+#: ../../plugins.rst:573
+# 436498903a8348ca82d0c2b7e7c474bd
+msgid "**Test the plugin.**"
+msgstr ""
+
+#: ../../plugins.rst:575
+# fc6df374ec774dcca802ea34ff7af4c1
+msgid "First, copy all the plugin code that you have created so far to `/tomcat/webapps/client/plugins`. Then refresh the browser. You can see that your placeholder content was replaced with a list table, containing 4 columns of virtual machine data."
+msgstr ""
+
+#: ../../plugins.rst:580
+# ac308906d1774a4181bf17b00da818ea
+msgid "**Add an action button.**"
+msgstr ""
+
+#: ../../plugins.rst:582
+# 83bd0fe3cefa45a393d1a3ff21a4ce34
+msgid "Let's add an action button to the list view, which will reboot the VM. To do this, add an actions block under listView. After specifying the correct format, the actions will appear automatically to the right of each row of data."
+msgstr ""
+
+#: ../../plugins.rst:592
+# 7d22cbd6ab2c4a4da120584e0b7e9dfb
+msgid "Now add the following new code in csMyFirstPlugin.js. (The dots ... show where we have omitted some existing code for the sake of space. Don't actually cut and paste that part):"
+msgstr ""
+
+#: ../../plugins.rst:677
+# 5acc3c90549c46adaff6a95a22b18e8d
+msgid "**Add the thumbnail icon.**"
+msgstr ""
+
+#: ../../plugins.rst:679
+# 645ff826822448548982c45e8aa9e189
+msgid "Create an icon file; it should be square, about 50x50 pixels, and named `icon.png`. Copy it into the same directory with your plugin code: `cloudstack/ui/plugins/csMyFirstPlugin/icon.png`."
+msgstr ""
+
+#: ../../plugins.rst:683
+# dc9c9e24edb440f6a5daefbe14510efe
+msgid "**Add the stylesheet.**"
+msgstr ""
+
+#: ../../plugins.rst:685
+# 176437827f1047cbbfb1eb8b39f7f054
+msgid "Create a CSS file, with the same name as your `.js` file. Copy it into the same directory with your plugin code: `cloudstack/ui/plugins/csMyFirstPlugin/csMyFirstPlugin.css`."
+msgstr ""
+

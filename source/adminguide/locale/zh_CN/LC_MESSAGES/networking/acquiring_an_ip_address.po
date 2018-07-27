@@ -1,0 +1,80 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:05+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# aec0c098f53f452cb8665fc7b69cd182
+#: ../../networking/acquiring_an_ip_address.rst:18
+msgid "Acquiring a New IP Address"
+msgstr "获得一个新的IP地址"
+
+# 6113064b39bc4682869acf44286131ad
+#: ../../networking/acquiring_an_ip_address.rst:20
+msgid "Log in to the CloudStack UI as an administrator or end user."
+msgstr "使用管理员或者终端用户账号登录CloudStack UI。"
+
+# ccc7a493b9b940c2b706c15e852b3e93
+#: ../../networking/acquiring_an_ip_address.rst:22
+msgid "In the left navigation, choose Network."
+msgstr "在左侧的导航栏，选择网络。"
+
+# 9a6973f9449e4414a4643a6da352263e
+#: ../../networking/acquiring_an_ip_address.rst:24
+msgid "Click the name of the network where you want to work with."
+msgstr "点击拟修改的网络名称。"
+
+# beaa083fcce64bb48e44a47c9b4ab745
+#: ../../networking/acquiring_an_ip_address.rst:26
+msgid "Click View IP Addresses."
+msgstr "点击查看IP地址。"
+
+# 76867ce630364509a651c09137cab94e
+#: ../../networking/acquiring_an_ip_address.rst:28
+msgid "Click Acquire New IP."
+msgstr "点击获取新IP。"
+
+# 35698ea68aa24ff79ce9dc09c1d12caf
+#: ../../networking/acquiring_an_ip_address.rst:30
+msgid "The Acquire New IP window is displayed."
+msgstr "获取新IP的窗口会出现。"
+
+# 4819ef07622d41fd818aef83d9752ac2
+#: ../../networking/acquiring_an_ip_address.rst:32
+msgid "Specify whether you want cross-zone IP or not."
+msgstr "说明是否需要IP跨区。"
+
+# 342295d34e8e4252b2850d040aca7909
+#: ../../networking/acquiring_an_ip_address.rst:34
+msgid ""
+"If you want Portable IP click Yes in the confirmation dialog. If you want a "
+"normal Public IP click No."
+msgstr "如果你想作为 Portable IP则在确认窗口中点击Yes，如果你想作为正常的公共IP则点击No。"
+
+# 9a4837aaa4c940b78c8aa311245b748a
+#: ../../networking/acquiring_an_ip_address.rst:37
+msgid ""
+"For more information on Portable IP, see `\"Portable IPs\" <#portable-"
+"ips>`_."
+msgstr "关于便携式IP的更多信息，查看 `\"便携式IP\" <#portable-ips>`_."
+
+# 2ee8ad57fe20463893a86f3fe6eb669f
+#: ../../networking/acquiring_an_ip_address.rst:40
+msgid ""
+"Within a few moments, the new IP address should appear with the state "
+"Allocated. You can now use the IP address in port forwarding or static NAT "
+"rules."
+msgstr "稍等一会，新的IP地址会出现，状态栏为会显示为分配。现在可以在端口转发或静态NAT规则中使用此IP地址了。"

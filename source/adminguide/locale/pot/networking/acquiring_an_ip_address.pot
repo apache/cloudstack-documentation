@@ -1,0 +1,73 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../networking/acquiring_an_ip_address.rst:18
+# aec0c098f53f452cb8665fc7b69cd182
+msgid "Acquiring a New IP Address"
+msgstr ""
+
+#: ../../networking/acquiring_an_ip_address.rst:20
+# 6113064b39bc4682869acf44286131ad
+msgid "Log in to the CloudStack UI as an administrator or end user."
+msgstr ""
+
+#: ../../networking/acquiring_an_ip_address.rst:22
+# ccc7a493b9b940c2b706c15e852b3e93
+msgid "In the left navigation, choose Network."
+msgstr ""
+
+#: ../../networking/acquiring_an_ip_address.rst:24
+# 9a6973f9449e4414a4643a6da352263e
+msgid "Click the name of the network where you want to work with."
+msgstr ""
+
+#: ../../networking/acquiring_an_ip_address.rst:26
+# beaa083fcce64bb48e44a47c9b4ab745
+msgid "Click View IP Addresses."
+msgstr ""
+
+#: ../../networking/acquiring_an_ip_address.rst:28
+# 76867ce630364509a651c09137cab94e
+msgid "Click Acquire New IP."
+msgstr ""
+
+#: ../../networking/acquiring_an_ip_address.rst:30
+# 35698ea68aa24ff79ce9dc09c1d12caf
+msgid "The Acquire New IP window is displayed."
+msgstr ""
+
+#: ../../networking/acquiring_an_ip_address.rst:32
+# 4819ef07622d41fd818aef83d9752ac2
+msgid "Specify whether you want cross-zone IP or not."
+msgstr ""
+
+#: ../../networking/acquiring_an_ip_address.rst:34
+# 342295d34e8e4252b2850d040aca7909
+msgid "If you want Portable IP click Yes in the confirmation dialog. If you want a normal Public IP click No."
+msgstr ""
+
+#: ../../networking/acquiring_an_ip_address.rst:37
+# 9a4837aaa4c940b78c8aa311245b748a
+msgid "For more information on Portable IP, see `\"Portable IPs\" <#portable-ips>`_."
+msgstr ""
+
+#: ../../networking/acquiring_an_ip_address.rst:40
+# 2ee8ad57fe20463893a86f3fe6eb669f
+msgid "Within a few moments, the new IP address should appear with the state Allocated. You can now use the IP address in port forwarding or static NAT rules."
+msgstr ""
+

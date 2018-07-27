@@ -1,0 +1,648 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2014, Apache Software Foundation
+# This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Installation RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 11:42+0200\n"
+"PO-Revision-Date: 2014-06-30 10:22+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-installation-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 2c4ff27205844a38ba74b1ffed7d0d4c
+#: ../../choosing_deployment_architecture.rst:18
+msgid "Choosing a Deployment Architecture"
+msgstr "选择部署架构"
+
+# b26daf37d81247238775fca77b416ae2
+#: ../../choosing_deployment_architecture.rst:20
+msgid ""
+"The architecture used in a deployment will vary depending on the size and "
+"purpose of the deployment. This section contains examples of deployment "
+"architecture, including a small-scale deployment useful for test and trial "
+"deployments and a fully-redundant large-scale setup for production "
+"deployments."
+msgstr "部署CloudStack的具体架构会因规模及用途的不同而变化。这一章节会包含一些典型的部署构架：用于测试和试验的小型架构，以及用于生产环境的大型全冗余架构。"
+
+# 2f09e208c05a4a5aa8f3c9f87ed50c25
+#: ../../choosing_deployment_architecture.rst:28
+msgid "Small-Scale Deployment"
+msgstr "小型部署"
+
+# 068dcc56cbd24a0083450026b9402fd6
+#: ../../choosing_deployment_architecture.rst:30
+msgid "|Small-Scale Deployment|"
+msgstr "|Small-Scale Deployment|"
+
+# 97e93e20540547229fc5d499cd5d3fc5
+#: ../../choosing_deployment_architecture.rst:32
+msgid ""
+"This diagram illustrates the network architecture of a small-scale "
+"CloudStack deployment."
+msgstr "这个图演示了CloudStack在小型部署时的网络结构。"
+
+# d0e9d1cd6d02485fbb7569bbcac7691f
+#: ../../choosing_deployment_architecture.rst:35
+msgid ""
+"A firewall provides a connection to the Internet. The firewall is configured"
+" in NAT mode. The firewall forwards HTTP requests and API calls from the "
+"Internet to the Management Server. The Management Server resides on the "
+"management network."
+msgstr "防火墙提供了到Internet的连接.此防火墙被配置成NAT模式，它会将来自Internet的HTTP访问和API调用转发到管理服务器。而管理服务器的网络属于管理网络。"
+
+# 3a9520fd64a74db8b3fc06b9204f08a2
+#: ../../choosing_deployment_architecture.rst:40
+msgid "A layer-2 switch connects all physical servers and storage."
+msgstr "一个二层交换机连接所有的物理服务器和存储服务器。"
+
+# cd028d62b82f44ffbe0173ee7583fdee
+#: ../../choosing_deployment_architecture.rst:42
+msgid ""
+"A single NFS server functions as both the primary and secondary storage."
+msgstr "单一的NFS服务器需要能同时提供主存储和辅助存储。"
+
+# de231b4108f546bc9a6ce6fc4468768c
+#: ../../choosing_deployment_architecture.rst:45
+msgid "The Management Server is connected to the management network."
+msgstr "管理服务器连接至管理网络"
+
+# 361b0a48cf54455a94238a38750ee7b9
+#: ../../choosing_deployment_architecture.rst:49
+msgid "Large-Scale Redundant Setup"
+msgstr "大规模冗余设置"
+
+# 38cdbfb68cca4fd8bc4df9bc1ecd694a
+#: ../../choosing_deployment_architecture.rst:51
+msgid "|Large-Scale Redundant Setup|"
+msgstr "|Large-Scale Redundant Setup|"
+
+# 0933dd6019474cfc97b03f67506bc999
+#: ../../choosing_deployment_architecture.rst:53
+msgid ""
+"This diagram illustrates the network architecture of a large-scale "
+"CloudStack deployment."
+msgstr "这个图演示了CloudStack在大规模部署时的网络结构。"
+
+# e3f81067d12242558eaf4684bb364861
+#: ../../choosing_deployment_architecture.rst:56
+msgid ""
+"A layer-3 switching layer is at the core of the data center. A router "
+"redundancy protocol like VRRP should be deployed. Typically high-end core "
+"switches also include firewall modules. Separate firewall appliances may "
+"also be used if the layer-3 switch does not have integrated firewall "
+"capabilities. The firewalls are configured in NAT mode. The firewalls "
+"provide the following functions:"
+msgstr "三层交换层处于数据机房的核心位置。应该部署类似VRRP的冗余路由协议实现设备热备份。通常，高端的核心交换机上包含防火墙模块。如果三层交换机上没有集成防火墙功能，也可以使用独立防火墙设备。防火墙一般会配置成NAT模式，它能提供如下功能："
+
+# a68bb7cb39bd42afa4d9e29f84fa3457
+#: ../../choosing_deployment_architecture.rst:63
+msgid ""
+"Forwards HTTP requests and API calls from the Internet to the Management "
+"Server. The Management Server resides on the management network."
+msgstr "将来自Internet的HTTP访问和API调用转发到管理节点服务器。管理服务器的网络属于管理网络."
+
+# 69f7f256ee7341c98affe498692cd667
+#: ../../choosing_deployment_architecture.rst:67
+msgid ""
+"When the cloud spans multiple zones, the firewalls should enable site-to-"
+"site VPN such that servers in different zones can directly reach each other."
+msgstr "当云跨越多个区域（Zone）时，防火墙之间应该启用site-to-site VPN，以便让不同区域中的服务器之间可以直接互通。"
+
+# b779613fe6004e40bb248aaeb76d8bc3
+#: ../../choosing_deployment_architecture.rst:71
+msgid ""
+"A layer-2 access switch layer is established for each pod. Multiple switches"
+" can be stacked to increase port count. In either case, redundant pairs of "
+"layer-2 switches should be deployed."
+msgstr "layer-2的接入交换层连接到每个提供点（POD），也可以用多个交换机堆叠来增加端口数量。无论哪种情况下，都应该部署冗余的二层交换机。"
+
+# 2032fc16630e41529475a4622c4fb9a2
+#: ../../choosing_deployment_architecture.rst:75
+msgid ""
+"The Management Server cluster (including front-end load balancers, "
+"Management Server nodes, and the MySQL database) is connected to the "
+"management network through a pair of load balancers."
+msgstr "管理服务器集群(包括前端负载均衡节点，管理节点及MYSQL数据库节点)通过两个负载均衡节点接入管理网络。"
+
+# cbcfb563ab554774b485b977d456e814
+#: ../../choosing_deployment_architecture.rst:79
+msgid "Secondary storage servers are connected to the management network."
+msgstr "辅助存储服务器接入管理网络。"
+
+# ed99b388e7464d338ce1e290c13e3e7b
+#: ../../choosing_deployment_architecture.rst:81
+msgid ""
+"Each pod contains storage and computing servers. Each storage and computing "
+"server should have redundant NICs connected to separate layer-2 access "
+"switches."
+msgstr "每一个机柜提供点（POD）包括存储和计算节点服务器。每一个存储和计算节点服务器都需要有冗余网卡连接到不同的 layer-2 接入交换机上。"
+
+# 741500f6260941e79f28d53a5986fc43
+#: ../../choosing_deployment_architecture.rst:87
+msgid "Separate Storage Network"
+msgstr "独立的存储网络"
+
+# 1ef36fbcddb24180bf412b41f03bcbc4
+#: ../../choosing_deployment_architecture.rst:89
+msgid ""
+"In the large-scale redundant setup described in the previous section, "
+"storage traffic can overload the management network. A separate storage "
+"network is optional for deployments. Storage protocols such as iSCSI are "
+"sensitive to network delays. A separate storage network ensures guest "
+"network traffic contention does not impact storage performance."
+msgstr "在前面章节中，提及了大规模冗余部署，存储的数据流量过大可能使得管理网络过载。部署时可选择将存储网络分离出来。存储协议如iSCSI，对网络延迟非常敏感。独立的存储网络能够使其不受来宾网络流量波动的影响。"
+
+# b813bc439dea4888b8dddbc9122afe9a
+#: ../../choosing_deployment_architecture.rst:97
+msgid "Multi-Node Management Server"
+msgstr "多节点管理服务器"
+
+# 35591778160a4e25a505e5dcd507198f
+#: ../../choosing_deployment_architecture.rst:99
+msgid ""
+"The CloudStack Management Server is deployed on one or more front-end "
+"servers connected to a single MySQL database. Optionally a pair of hardware "
+"load balancers distributes requests from the web. A backup management server"
+" set may be deployed using MySQL replication at a remote site to add DR "
+"capabilities."
+msgstr "CloudStack管理服务器可以部署一个或多个前端服务器并连接单一的MySQL数据库。可视需求使用一对硬件负载均衡对Web请求进行分流。另一备份管理节点可使用远端站点的MySQL复制数据以增加灾难恢复能力。"
+
+# faff12b3c7c142f59b2a12926ab7c9f7
+#: ../../choosing_deployment_architecture.rst:105
+msgid "|Multi-Node Management Server|"
+msgstr "|Multi-Node Management Server|"
+
+# ee629ff1681e4b38bfddfac64b76c7d6
+#: ../../choosing_deployment_architecture.rst:107
+msgid "The administrator must decide the following."
+msgstr "系统管理人员必须决定如下事项："
+
+# 3e9822c46e86433cb6d9f4ecbbacda1e
+#: ../../choosing_deployment_architecture.rst:109
+msgid "Whether or not load balancers will be used."
+msgstr "是否需要使用负载均衡器。"
+
+# ab341a95aac3496581377672055b241d
+#: ../../choosing_deployment_architecture.rst:111
+msgid "How many Management Servers will be deployed."
+msgstr "需要部署多少台管理节点服务器。"
+
+# 2dbc1c3c22db42958e785984f5ef93e4
+#: ../../choosing_deployment_architecture.rst:113
+msgid ""
+"Whether MySQL replication will be deployed to enable disaster recovery."
+msgstr "如何部署MYSQL复制以便启用灾难恢复。"
+
+# 4858e0bbf6f14d6b990948aacc6e0b74
+#: ../../choosing_deployment_architecture.rst:118
+msgid "Multi-Site Deployment"
+msgstr "多站点部署"
+
+# 31bb0ebb88974050a79e6f0aec7c6778
+#: ../../choosing_deployment_architecture.rst:120
+msgid ""
+"The CloudStack platform scales well into multiple sites through the use of "
+"zones. The following diagram shows an example of a multi-site deployment."
+msgstr "运用CloudStack的区域技术可以很容易的将其扩散为多站点模式。下图就显示了一个多站点部署的示例"
+
+# 72c760ffa57b48a0a2ce31a545672acb
+#: ../../choosing_deployment_architecture.rst:124
+msgid "|Example Of A Multi-Site Deployment|"
+msgstr "|Example Of A Multi-Site Deployment|"
+
+# 3680185677f54baeb03396c0c6e6b91b
+#: ../../choosing_deployment_architecture.rst:126
+msgid ""
+"Data Center 1 houses the primary Management Server as well as zone 1. The "
+"MySQL database is replicated in real time to the secondary Management Server"
+" installation in Data Center 2."
+msgstr "在数据中心1内有主管理节点和区域1。MySQL数据库实时复制到数据中心2内的辅助管理节点中。"
+
+# 44f2f283a3dd4992ba843cd1a6ad29b9
+#: ../../choosing_deployment_architecture.rst:130
+msgid "|Separate Storage Network|"
+msgstr "|Separate Storage Network|"
+
+# 85a51dc8edc24f37b0483d2b5d46a1dd
+#: ../../choosing_deployment_architecture.rst:132
+msgid ""
+"This diagram illustrates a setup with a separate storage network. Each "
+"server has four NICs, two connected to pod-level network switches and two "
+"connected to storage network switches."
+msgstr "这个图展示了使用独立存储网络的设计。每一个物理服务器有四块网卡，其中两块连接到提供点级别的交换机，而另外两块网卡连接到用于存储网络的交换机。"
+
+# 56c244202346479080d0963357ce6a01
+#: ../../choosing_deployment_architecture.rst:136
+msgid "There are two ways to configure the storage network:"
+msgstr "有两种方式配置存储网络："
+
+# 774def02c93d4401aa0961c701e2a346
+#: ../../choosing_deployment_architecture.rst:138
+msgid ""
+"Bonded NIC and redundant switches can be deployed for NFS. In NFS "
+"deployments, redundant switches and bonded NICs still result in one network "
+"(one CIDR block+ default gateway address)."
+msgstr "为NFS配置网卡绑定和冗余交换机。在NFS部署中，冗余的交换机和网卡绑定仍然处于同一网络。(同一个CIDR 段 + 默认网关地址)"
+
+# 42c329aa74164a2a91b1cb061a594df0
+#: ../../choosing_deployment_architecture.rst:142
+msgid ""
+"iSCSI can take advantage of two separate storage networks (two CIDR blocks "
+"each with its own default gateway). Multipath iSCSI client can failover and "
+"load balance between separate storage networks."
+msgstr "iSCSI能同时利用两个独立的存储网络(两个拥有各自默认网关的不同CIDR段)。支持iSCSI多路径的客户端能在两个独立的存储网络中实现故障切换和负载均衡。"
+
+# 709e7b87aca14df39855bc39efbde210
+#: ../../choosing_deployment_architecture.rst:146
+msgid "|NIC Bonding And Multipath I/O|"
+msgstr "|NIC Bonding And Multipath I/O|"
+
+# b9cd0b7d1c614f24855cf4e9755e9070
+#: ../../choosing_deployment_architecture.rst:148
+msgid ""
+"This diagram illustrates the differences between NIC bonding and Multipath "
+"I/O (MPIO). NIC bonding configuration involves only one network. MPIO "
+"involves two separate networks."
+msgstr "此图展示了网卡绑定与多路径IO(MPIO)之间的区别，网卡绑定的配置仅涉及一个网段，MPIO涉及两个独立的网段。"
+
+# 36df70c98ae746549452fa36e1ca87e3
+#: ../../choosing_deployment_architecture.rst:154
+msgid "Choosing a Hypervisor"
+msgstr "选择Hypervisor"
+
+# f236302a8db24c13a141a20573581062
+#: ../../choosing_deployment_architecture.rst:156
+msgid ""
+"CloudStack supports many popular hypervisors. Your cloud can consist "
+"entirely of hosts running a single hypervisor, or you can use multiple "
+"hypervisors. Each cluster of hosts must run the same hypervisor."
+msgstr "CloudStack支持多种流行的Hypervisor，你可以在所有的主机上使用一种，也可以使用不同的Hypervisor，但在同一个群集内的主机必须使用相同的Hypervisor。"
+
+# ebd33f6eb3b64168ac6543a23dac1afd
+#: ../../choosing_deployment_architecture.rst:160
+msgid ""
+"You might already have an installed base of nodes running a particular "
+"hypervisor, in which case, your choice of hypervisor has already been made. "
+"If you are starting from scratch, you need to decide what hypervisor "
+"software best suits your needs. A discussion of the relative advantages of "
+"each hypervisor is outside the scope of our documentation. However, it will "
+"help you to know which features of each hypervisor are supported by "
+"CloudStack. The following table provides this information."
+msgstr "你可能已经安装并运行了特定的hypervisor节点，在这种情况下，你的Hypervisor选择已经确定了。如果还处于初步规划阶段，那么就需要决定那种Hypervisor能切合你的需求。各种Hypervisor的利弊讨论不在本文档之列。但无论如何，CloudStack可以支持每种Hypervisor的那些功能的详细信息还是能够帮到你的。下面的表格就提供了这些信息："
+
+# 6095a38fe5eb4ce7acbb1c158db98231
+#: ../../choosing_deployment_architecture.rst:169
+msgid "Feature"
+msgstr "功能特点"
+
+# 4a7ee7865ca548379bf859592ddb19f8
+#: ../../choosing_deployment_architecture.rst:169
+msgid "XenServer 6.0.2"
+msgstr "XenServer 6.0.2"
+
+# 09198080ae1c486ebd9470b6c99b387f
+#: ../../choosing_deployment_architecture.rst:169
+msgid "vSphere 4.1/5.0"
+msgstr "vSphere 4.1/5.0"
+
+# 1870d6331a364df4a087d4f6f3368ab9
+#: ../../choosing_deployment_architecture.rst:169
+msgid "KVM - RHEL 6.2"
+msgstr "KVM - RHEL 6.2"
+
+# d3c9ece508424f81897e3280902508b0
+#: ../../choosing_deployment_architecture.rst:169
+msgid "Bare Metal"
+msgstr "裸设备"
+
+# 970a9d80bc134222b3218d026302891b
+#: ../../choosing_deployment_architecture.rst:171
+msgid "Network Throttling"
+msgstr "网络限速"
+
+# 4fec162cda76433cb982cfc313dcdbe6
+# 1f8cc79d716140189e60a08ebf4687bf
+# 91a8ee2ecce64c71b1eecf843f67deed
+# 2989a051bcd34ea987938c8a7e30b013
+# 9cbaf270ddd6408c8101622f74c7b266
+# 12e9d689493a44049c4874afa2dbadd3
+# f9a1370f394c49a8967531ffb6e1b423
+# 91b5581980864170b9693104a2f61d3c
+# c231f1df091e4ceeb60e89845db5f10b
+# 2852be6028ec46659ae8bf5cac551b29
+# 755b64ababd34e04b82a384d357fc6e4
+# 3e558e80e7bc4878b80739772dfb4a06
+# 227928dd0cf1488b873ce21a5b4842d2
+# 6ca963616f6a42098fed6641c7711e35
+# f36be7f0603b44f5aa77a248d3a97e5e
+# 996c7caeb3384d93be1ce49f570cb8ce
+# 5d9e3cabc113463e8b6c3fb75b182456
+# 159c98b022e14645bef4499b7c0c0235
+# f55810d73d0246b38a1495e4af5ec4bc
+# 0867769fdd5046d0832752148daf908d
+# c25243683e1449f0b89ee3d3b1881025
+# 87e8128b3ae84f228c87a33a892a23ec
+# 9fc4d908264143e682ddec06aaafe205
+# 0bb1aaf47c0543659d4e09d9f91cd185
+#: ../../choosing_deployment_architecture.rst:171
+#: ../../choosing_deployment_architecture.rst:171
+#: ../../choosing_deployment_architecture.rst:172
+#: ../../choosing_deployment_architecture.rst:172
+#: ../../choosing_deployment_architecture.rst:173
+#: ../../choosing_deployment_architecture.rst:173
+#: ../../choosing_deployment_architecture.rst:173
+#: ../../choosing_deployment_architecture.rst:174
+#: ../../choosing_deployment_architecture.rst:174
+#: ../../choosing_deployment_architecture.rst:174
+#: ../../choosing_deployment_architecture.rst:175
+#: ../../choosing_deployment_architecture.rst:175
+#: ../../choosing_deployment_architecture.rst:175
+#: ../../choosing_deployment_architecture.rst:175
+#: ../../choosing_deployment_architecture.rst:176
+#: ../../choosing_deployment_architecture.rst:176
+#: ../../choosing_deployment_architecture.rst:177
+#: ../../choosing_deployment_architecture.rst:177
+#: ../../choosing_deployment_architecture.rst:177
+#: ../../choosing_deployment_architecture.rst:180
+#: ../../choosing_deployment_architecture.rst:180
+#: ../../choosing_deployment_architecture.rst:180
+#: ../../choosing_deployment_architecture.rst:181
+#: ../../choosing_deployment_architecture.rst:181
+msgid "Yes"
+msgstr "是"
+
+# 3cb5cc62ebb54cae80640aabea621255
+# 86b2047f134d4b8a8af64d25bea97315
+# 5ca5465c16114b58ab0aaaf014969e31
+# fc76b86618fb433780039d59ce9cf302
+# 0cd9cc48eb624d829d99923f98ab2d5f
+# 748e481678464f27b851cb867b2d78b2
+# 1215b1b0f7e44472adcf474168869721
+# db4ae4f299a14dd097a941a94920c9c0
+# c8744cfc965e4794935294c98d6aae14
+#: ../../choosing_deployment_architecture.rst:171
+#: ../../choosing_deployment_architecture.rst:172
+#: ../../choosing_deployment_architecture.rst:172
+#: ../../choosing_deployment_architecture.rst:178
+#: ../../choosing_deployment_architecture.rst:178
+#: ../../choosing_deployment_architecture.rst:178
+#: ../../choosing_deployment_architecture.rst:179
+#: ../../choosing_deployment_architecture.rst:179
+#: ../../choosing_deployment_architecture.rst:181
+msgid "No"
+msgstr "否"
+
+# 63afe958cfa44895bc62e896586ee40f
+# 199baf6fe3444dd48443901731e0ad62
+# ece293ab433448bd95772d3de229bcf6
+# fc04754e8df54fd7b280d1e2d9973a9f
+# 258bacf04ab349cc80b6f7d9ec2c0d7b
+# 9d861363c0d54ccb831b9a52f67834f6
+# be8b43bee82341ce8c679239ccd5e71e
+# 89c3130f25d348d1abc3081a0a033720
+# cfcd30df2f204091be6335cf2b116e44
+#: ../../choosing_deployment_architecture.rst:171
+#: ../../choosing_deployment_architecture.rst:173
+#: ../../choosing_deployment_architecture.rst:174
+#: ../../choosing_deployment_architecture.rst:176
+#: ../../choosing_deployment_architecture.rst:177
+#: ../../choosing_deployment_architecture.rst:178
+#: ../../choosing_deployment_architecture.rst:179
+#: ../../choosing_deployment_architecture.rst:180
+#: ../../choosing_deployment_architecture.rst:181
+msgid "N/A"
+msgstr "无"
+
+# 6f727e19a82c4be4b3d885ee30c3bd5e
+#: ../../choosing_deployment_architecture.rst:172
+msgid "Security groups in zones that use basic networking"
+msgstr "在区域内用于基本网络模式的安全组"
+
+# 97e1ffe107c74bd4846cf646d1b9543e
+#: ../../choosing_deployment_architecture.rst:173
+msgid "iSCSI"
+msgstr "iSCSI"
+
+# 2ea33b37f3de4e91b56a3f97d94654b7
+#: ../../choosing_deployment_architecture.rst:174
+msgid "FibreChannel"
+msgstr "光纤通道"
+
+# b1c9732e6c15420a87ad6e0dd96052ef
+#: ../../choosing_deployment_architecture.rst:175
+msgid "Local Disk"
+msgstr "本地磁盘"
+
+# 490c55011c344c2cad34b7ed6f88fade
+#: ../../choosing_deployment_architecture.rst:176
+msgid "HA"
+msgstr "高可用"
+
+# 1aa446ba2cf44112bb3b742a8435bc70
+#: ../../choosing_deployment_architecture.rst:176
+msgid "Yes (Native)"
+msgstr "是（原生）"
+
+# d46bd32966d54085a61343d211a063d1
+#: ../../choosing_deployment_architecture.rst:177
+msgid "Snapshots of local disk"
+msgstr "本地磁盘快照"
+
+# 954f1dc69e8945f9a3e8d1363d10feb9
+#: ../../choosing_deployment_architecture.rst:178
+msgid "Local disk as data disk"
+msgstr "用本地盘作为数据磁盘"
+
+# e31cc2bd3ce340ae9976c8166beb44cb
+#: ../../choosing_deployment_architecture.rst:179
+msgid "Work load balancing"
+msgstr "工作负载均衡"
+
+# 9b6952490df5422e8c9dc96b96e06914
+#: ../../choosing_deployment_architecture.rst:179
+msgid "DRS"
+msgstr "DRS-分布式资源调度"
+
+# 276af5d2a4d94ebdb3319fbbe859a74e
+#: ../../choosing_deployment_architecture.rst:180
+msgid "Manual live migration of VMs from host to host"
+msgstr "手工在主机之间进行虚拟机的热迁移"
+
+# a6ffb0bdac29407e86b5edc37f932c8c
+#: ../../choosing_deployment_architecture.rst:181
+msgid ""
+"Conserve management traffic IP address by using link local network to "
+"communicate with virtual router"
+msgstr "使用本地链路与虚拟路由器（VR）直接通讯来保护管理网络的IP流量"
+
+# eb354934ad0c4f1e92a9aa56494e083e
+#: ../../choosing_deployment_architecture.rst:186
+msgid "Best Practices"
+msgstr "最佳实践"
+
+# 42fc8f2d41c548c0b39e0f03816bd496
+#: ../../choosing_deployment_architecture.rst:188
+msgid ""
+"Deploying a cloud is challenging. There are many different technology "
+"choices to make, and CloudStack is flexible enough in its configuration that"
+" there are many possible ways to combine and configure the chosen "
+"technology. This section contains suggestions and requirements about cloud "
+"deployments."
+msgstr "部署云计算服务是一项挑战。这需要在很多不同的技术之间做出选择，CLOUDSTACK以其配置灵活性可以使用很多种方法将不同的技术进行整合和配置。这个章节包含了一些在云计算部署中的建议及需求。"
+
+# 68e273347ac34898aaaddc10df7c5d4d
+#: ../../choosing_deployment_architecture.rst:194
+msgid ""
+"These should be treated as suggestions and not absolutes. However, we do "
+"encourage anyone planning to build a cloud outside of these guidelines to "
+"seek guidance and advice on the project mailing lists."
+msgstr "这些内容应该被视为建议而不是绝对性的。然而，我们鼓励想要部署云计算的朋友们，除了这些建议内容之外，最好从CLOUDSTACK的项目邮件列表中获取更多建议指南性内容。"
+
+# ba21db935b174028b86bb1e6442669d7
+#: ../../choosing_deployment_architecture.rst:200
+msgid "Process Best Practices"
+msgstr "实施最佳实践"
+
+# cefb1b21faf04019abc16cccabd19d30
+#: ../../choosing_deployment_architecture.rst:202
+msgid ""
+"A staging system that models the production environment is strongly advised."
+" It is critical if customizations have been applied to CloudStack."
+msgstr "强烈建议在系统部署至生产环境之前，有一个完全模拟生产环境的集成系统。对于已经在CloudStack中做了自定义修改的系统来说，更为重要了。"
+
+# ea64ea072f3746d2b3463aafdc14532b
+#: ../../choosing_deployment_architecture.rst:206
+msgid ""
+"Allow adequate time for installation, a beta, and learning the system. "
+"Installs with basic networking can be done in hours. Installs with advanced "
+"networking usually take several days for the first attempt, with complicated"
+" installations taking longer. For a full production system, allow at least "
+"4-8 weeks for a beta to work through all of the integration issues. You can "
+"get help from fellow users on the cloudstack-users mailing list."
+msgstr "应该为安装，学习和测试系统预留充足的时间。简单网络模式的安装可以在几个小时内完成。但首次尝试安装高级网络模式通常需要花费几天的时间，完全安装则需要更长的时间。正式生产环境上线前，通常需要4-8周用以排除集成过程中的问题，你也可从cloudstack-users的邮件列表里得到更多帮助。"
+
+# 67f17d3accb24ff48c29830624f9a607
+#: ../../choosing_deployment_architecture.rst:216
+msgid "Setup Best Practices"
+msgstr "最佳实践安装"
+
+# 81402254fd3a4dd888d02f4a884a1d0b
+#: ../../choosing_deployment_architecture.rst:218
+msgid ""
+"Each host should be configured to accept connections only from well-known "
+"entities such as the CloudStack Management Server or your network monitoring"
+" software."
+msgstr "每一个主机都应该配置为只接受已知设备的连接，如CLOUDSTACK管理节点或相关的网络监控软件。"
+
+# 7481cf7faac5484b8339bb8e4d75b6c8
+#: ../../choosing_deployment_architecture.rst:222
+msgid ""
+"Use multiple clusters per pod if you need to achieve a certain switch "
+"density."
+msgstr "如果需要达到一定的高密度，可以在每个机柜提供点里部署多个集群。"
+
+# fd7badb077d04065b340d43fd79a4eec
+#: ../../choosing_deployment_architecture.rst:225
+msgid ""
+"Primary storage mountpoints or LUNs should not exceed 6 TB in size. It is "
+"better to have multiple smaller primary storage elements per cluster than "
+"one large one."
+msgstr "主存储的挂载点或是LUN不应超过6TB大小。每个集群中使用多个小一些的主存储比只用一个超大主存储的效果要好。"
+
+# 6ed9bc75682247bfbc913cf9df8e21f1
+#: ../../choosing_deployment_architecture.rst:229
+msgid ""
+"When exporting shares on primary storage, avoid data loss by restricting the"
+" range of IP addresses that can access the storage. See \"Linux NFS on Local"
+" Disks and DAS\" or \"Linux NFS on iSCSI\"."
+msgstr "在主存储上输出共享数据时，可用限制访问IP地址的方法避免数据丢失。更多详情，可参考\"Linux NFS on Local Disks and DAS\" \"Linux NFS on iSCSI\"这些章节。 "
+
+# 5e4ab60bb7e7405180895617b9a6efe1
+#: ../../choosing_deployment_architecture.rst:233
+msgid ""
+"NIC bonding is straightforward to implement and provides increased "
+"reliability."
+msgstr "网卡绑定技术可以明显的增加系统的可靠性。"
+
+# ff514643a50b4a478172c6dbe1a9befe
+#: ../../choosing_deployment_architecture.rst:236
+msgid ""
+"10G networks are generally recommended for storage access when larger "
+"servers that can support relatively more VMs are used."
+msgstr "当有大量服务器支持相当多的虚拟机时，推荐在存储访问的网络上采用将10G的带宽。"
+
+# 570bde20d1b84f1ea78c02bab25c0f7d
+#: ../../choosing_deployment_architecture.rst:239
+msgid ""
+"Host capacity should generally be modeled in terms of RAM for the guests. "
+"Storage and CPU may be overprovisioned. RAM may not. RAM is usually the "
+"limiting factor in capacity designs."
+msgstr "主机可创建的虚拟机的能力，主要取决于提供给客户虚拟机的内存。因为主机的存储和CPU均可超配，但内存却基本不可以。所以内存是在系统容量设计时的主要限制因素。"
+
+# 1910d3f68a634d0fb53fdd5f4bde6b8e
+#: ../../choosing_deployment_architecture.rst:243
+msgid ""
+"(XenServer) Configure the XenServer dom0 settings to allocate more memory to"
+" dom0. This can enable XenServer to handle larger numbers of virtual "
+"machines. We recommend 2940 MB of RAM for XenServer dom0. For instructions "
+"on how to do this, see `http://support.citrix.com/article/CTX126531 "
+"<http://support.citrix.com/article/CTX126531>`_. The article refers to "
+"XenServer 5.6, but the same information applies to XenServer 6.0."
+msgstr "(XenServer)可以为Xenserver的dom0分配更多的内存来让其支持更多的虚拟机。我们推荐为dom0设置的内存数值为2940 MB。至于具体操作，可以参见如下URL：`http://support.citrix.com/article/CTX126531 <http://support.citrix.com/article/CTX126531>`_。这篇文章可同时适用于XenServer 5.6和6.0版本。"
+
+# c33ddae286b44338ab9b330c918e8e39
+#: ../../choosing_deployment_architecture.rst:254
+msgid "Maintenance Best Practices"
+msgstr "维护最佳实践"
+
+# ae92610bc5164452b9e9527e5f3a8eec
+#: ../../choosing_deployment_architecture.rst:256
+msgid ""
+"Monitor host disk space. Many host failures occur because the host's root "
+"disk fills up from logs that were not rotated adequately."
+msgstr "监视主机的磁盘空间。很多主机故障的原因都是日志将主机的硬盘空间占满导致的。"
+
+# 731977493e6d46559ca32f493189b8f4
+#: ../../choosing_deployment_architecture.rst:259
+msgid ""
+"Monitor the total number of VM instances in each cluster, and disable "
+"allocation to the cluster if the total is approaching the maximum that the "
+"hypervisor can handle. Be sure to leave a safety margin to allow for the "
+"possibility of one or more hosts failing, which would increase the VM load "
+"on the other hosts as the VMs are redeployed. Consult the documentation for "
+"your chosen hypervisor to find the maximum permitted number of VMs per host,"
+" then use CloudStack global configuration settings to set this as the "
+"default limit. Monitor the VM activity in each cluster and keep the total "
+"number of VMs below a safe level that allows for the occasional host "
+"failure. For example, if there are N hosts in the cluster, and you want to "
+"allow for one host in the cluster to be down at any given time, the total "
+"number of VM instances you can permit in the cluster is at most (N-1) \\* "
+"(per-host-limit). Once a cluster reaches this number of VMs, use the "
+"CloudStack UI to disable allocation to the cluster."
+msgstr "要监控每个集群里的虚拟机总量，如果达到了hypervisor所能承受的最大虚拟机数量时，就要禁止向此集群分配虚机。并且，要确定预留一定的安全迁移容量，以防止群集中有主机故障，这将增大其他主机运行虚拟机压力，就像是重新部署一批虚拟机一样。咨询你选择 hypervisor的文档，找到每台主机所能支持的最大虚拟机数量，并将此数值作为默认限制配置在CLOUDSTACK的全局设置里。监控每个群集中虚拟机的活动，保持虚拟机数量在安全线内，以防止偶然的主机故障。例如：如果集群里有N个主机，如果要让集群中一主机在任意时间停机，那么，此集群最多允许的虚拟机数量值为：(N-1) \\* (每宿主机最大虚拟量数量限值)。一旦达到此数量，必须在CLOUDSTACK的UI里禁止向此群集增加新的虚拟机。"
+
+# edcacc73b0b64b318b84f0f38e00e8d9
+#: ../../choosing_deployment_architecture.rst:276
+msgid ""
+"The lack of up-do-date hotfixes can lead to data corruption and lost VMs."
+msgstr "缺乏最新补丁更新可能会导致数据和虚拟机丢失。"
+
+# 07e8bf01dab44bb2b1ab4f52a8be4264
+#: ../../choosing_deployment_architecture.rst:278
+msgid ""
+"Be sure all the hotfixes provided by the hypervisor vendor are applied. "
+"Track the release of hypervisor patches through your hypervisor vendor’s "
+"support channel, and apply patches as soon as possible after they are "
+"released. CloudStack will not track or notify you of required hypervisor "
+"patches. It is essential that your hosts are completely up to date with the "
+"provided hypervisor patches. The hypervisor vendor is likely to refuse to "
+"support any system that is not up to date with patches."
+msgstr "确保安装了所有系统补丁供应商提供的所有系统补丁。请随时关注供应商的技术支持渠道，一旦发布补丁，请尽快打上补丁。CloudStack不会跟踪或提醒你安装这些程序。安装最新的补丁对主机至关重要。虚拟化供应商可能不会对过期的系统提供技术支持。"

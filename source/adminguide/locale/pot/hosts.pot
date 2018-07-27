@@ -1,0 +1,828 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../hosts.rst:18
+# d162d1d06fd7403885aaa50b51be64cf
+msgid "Working with Hosts"
+msgstr ""
+
+#: ../../hosts.rst:21
+# 6c9e070451664a89a2bab7d9dcb4892e
+msgid "Adding Hosts"
+msgstr ""
+
+#: ../../hosts.rst:23
+# 0fea464db7a843f6930b135daf0f6eef
+msgid "Additional hosts can be added at any time to provide more capacity for guest VMs. For requirements and instructions, see `“Adding a Host” <http://docs.cloudstack.apache.org/projects/cloudstack-installation/en/latest/configuration.html#adding-a-host>`_."
+msgstr ""
+
+#: ../../hosts.rst:29
+# 8d309023c45240b78a9ddce49978e18c
+msgid "Scheduled Maintenance and Maintenance Mode for Hosts"
+msgstr ""
+
+#: ../../hosts.rst:31
+# 7a2b019ac10a47c39de133fdc1a06f3d
+msgid "You can place a host into maintenance mode. When maintenance mode is activated, the host becomes unavailable to receive new guest VMs, and the guest VMs already running on the host are seamlessly migrated to another host not in maintenance mode. This migration uses live migration technology and does not interrupt the execution of the guest."
+msgstr ""
+
+#: ../../hosts.rst:39
+# af2fbe9bb8ff4ab29c19fbb7dc7d6a2b
+msgid "vCenter and Maintenance Mode"
+msgstr ""
+
+#: ../../hosts.rst:41
+# d2d9b481634d47499c874f1781439746
+msgid "To enter maintenance mode on a vCenter host, both vCenter and CloudStack must be used in concert. CloudStack and vCenter have separate maintenance modes that work closely together."
+msgstr ""
+
+#: ../../hosts.rst:45
+# 1757e266dc494d81be5c3b51608b8507
+msgid "Place the host into CloudStack's \"scheduled maintenance\" mode. This does not invoke the vCenter maintenance mode, but only causes VMs to be migrated off the host"
+msgstr ""
+
+#: ../../hosts.rst:49
+# d96d3c3231d445ffbe5379d2f572a864
+msgid "When the CloudStack maintenance mode is requested, the host first moves into the Prepare for Maintenance state. In this state it cannot be the target of new guest VM starts. Then all VMs will be migrated off the server. Live migration will be used to move VMs off the host. This allows the guests to be migrated to other hosts with no disruption to the guests. After this migration is completed, the host will enter the Ready for Maintenance mode."
+msgstr ""
+
+#: ../../hosts.rst:57
+# a0302fba3abb4768b9ea6456150d1e34
+msgid "Wait for the \"Ready for Maintenance\" indicator to appear in the UI."
+msgstr ""
+
+#: ../../hosts.rst:59
+# bb2fe5471107450db78672f18f6c459b
+msgid "Now use vCenter to perform whatever actions are necessary to maintain the host. During this time, the host cannot be the target of new VM allocations."
+msgstr ""
+
+#: ../../hosts.rst:63
+# 465e081898184a07a0da7751a1b9540b
+msgid "When the maintenance tasks are complete, take the host out of maintenance mode as follows:"
+msgstr ""
+
+#: ../../hosts.rst:66
+# d513b1610d3f4e3c94c36672598225ef
+msgid "First use vCenter to exit the vCenter maintenance mode."
+msgstr ""
+
+#: ../../hosts.rst:68
+# 20604374352a49e78c96fc359907798b
+msgid "This makes the host ready for CloudStack to reactivate it."
+msgstr ""
+
+#: ../../hosts.rst:70
+# 268a4bfa21584498b9c29213e959d532
+msgid "Then use CloudStack's administrator UI to cancel the CloudStack maintenance mode"
+msgstr ""
+
+#: ../../hosts.rst:73
+# 473e00df4c58462d9df612fdba5c4996
+msgid "When the host comes back online, the VMs that were migrated off of it may be migrated back to it manually and new VMs can be added."
+msgstr ""
+
+#: ../../hosts.rst:78
+# 8026febd757948bdb38b4f85cbd4c425
+msgid "XenServer and Maintenance Mode"
+msgstr ""
+
+#: ../../hosts.rst:80
+# 38555be75efd4fed91c3479a883493d1
+msgid "For XenServer, you can take a server offline temporarily by using the Maintenance Mode feature in XenCenter. When you place a server into Maintenance Mode, all running VMs are automatically migrated from it to another host in the same pool. If the server is the pool master, a new master will also be selected for the pool. While a server is Maintenance Mode, you cannot create or start any VMs on it."
+msgstr ""
+
+#: ../../hosts.rst:87
+# 456e5e6e17bf41909c0b487227d097cd
+msgid "**To place a server in Maintenance Mode:**"
+msgstr ""
+
+#: ../../hosts.rst:89
+#: ../../hosts.rst:104
+# 5de27d0060754518bf21cd3ed27ed05a
+# 568c45e59b4f4b2294d24752311a5022
+msgid "In the Resources pane, select the server, then do one of the following:"
+msgstr ""
+
+#: ../../hosts.rst:92
+# a31b8242b89b4b24a48e8d242ed46718
+msgid "Right-click, then click Enter Maintenance Mode on the shortcut menu."
+msgstr ""
+
+#: ../../hosts.rst:95
+# 1e90893580c44442be56fd686ba4aab4
+msgid "On the Server menu, click Enter Maintenance Mode."
+msgstr ""
+
+#: ../../hosts.rst:97
+# 95cf013b55004f2486b693b9a9bdb52d
+msgid "Click Enter Maintenance Mode."
+msgstr ""
+
+#: ../../hosts.rst:99
+# e9120c5408d94ba89b65157b49de36ae
+msgid "The server's status in the Resources pane shows when all running VMs have been successfully migrated off the server."
+msgstr ""
+
+#: ../../hosts.rst:102
+# c8ae2b6b96814aa8a04dc2ceebbacabb
+msgid "**To take a server out of Maintenance Mode:**"
+msgstr ""
+
+#: ../../hosts.rst:107
+# ae539b7f53ce42e8b161a38c897302a8
+msgid "Right-click, then click Exit Maintenance Mode on the shortcut menu."
+msgstr ""
+
+#: ../../hosts.rst:110
+# ee115cfaf80446f49c0e9fae828c783e
+msgid "On the Server menu, click Exit Maintenance Mode."
+msgstr ""
+
+#: ../../hosts.rst:112
+# 7edbfea17cdb4c4a85766a3d46ccf8da
+msgid "Click Exit Maintenance Mode."
+msgstr ""
+
+#: ../../hosts.rst:116
+# e6edc76480294c5faf6518aaf5f6aacb
+msgid "Disabling and Enabling Zones, Pods, and Clusters"
+msgstr ""
+
+#: ../../hosts.rst:118
+# 144624e6273f4b5c94ed3f88c8fc95e3
+msgid "You can enable or disable a zone, pod, or cluster without permanently removing it from the cloud. This is useful for maintenance or when there are problems that make a portion of the cloud infrastructure unreliable. No new allocations will be made to a disabled zone, pod, or cluster until its state is returned to Enabled. When a zone, pod, or cluster is first added to the cloud, it is Disabled by default."
+msgstr ""
+
+#: ../../hosts.rst:125
+# 9fbfab10c6be45a3bd2f6c231c6737bb
+msgid "To disable and enable a zone, pod, or cluster:"
+msgstr ""
+
+#: ../../hosts.rst:127
+# 71e22a46ce644865b910006aaa048a8d
+msgid "Log in to the CloudStack UI as administrator"
+msgstr ""
+
+#: ../../hosts.rst:129
+#: ../../hosts.rst:404
+# 50c0cd124fa643fdbbc561152e0dbabf
+# e16a19456eb441b4ab3cf57ec846a391
+msgid "In the left navigation bar, click Infrastructure."
+msgstr ""
+
+#: ../../hosts.rst:131
+# 11fd25d319484ab2b87f09c842be5134
+msgid "In Zones, click View More."
+msgstr ""
+
+#: ../../hosts.rst:133
+# c9caf60acf104601bc0f0f946d22b0c5
+msgid "If you are disabling or enabling a zone, find the name of the zone in the list, and click the Enable/Disable button. |enable-disable.png|"
+msgstr ""
+
+#: ../../hosts.rst:136
+# 222f496a2d1e456589a79442f4ed34a5
+msgid "If you are disabling or enabling a pod or cluster, click the name of the zone that contains the pod or cluster."
+msgstr ""
+
+#: ../../hosts.rst:139
+# 8de91492f6c848dca361c3822956148a
+msgid "Click the Compute tab."
+msgstr ""
+
+#: ../../hosts.rst:141
+# 260854995dc747e8b0224b78525f9646
+msgid "In the Pods or Clusters node of the diagram, click View All."
+msgstr ""
+
+#: ../../hosts.rst:143
+# 5496ff56c1c74d689c2d2453c38b4708
+msgid "Click the pod or cluster name in the list."
+msgstr ""
+
+#: ../../hosts.rst:145
+# 893e62d5abbf47a38a0dd2c1a53d6a5a
+msgid "Click the Enable/Disable button. |enable-disable.png|"
+msgstr ""
+
+#: ../../hosts.rst:149
+# 8f3d3ce8e0c64e67aea7a02d485fb245
+msgid "Removing Hosts"
+msgstr ""
+
+#: ../../hosts.rst:151
+# 984b62f5ee574b5fa2921a9c51086739
+msgid "Hosts can be removed from the cloud as needed. The procedure to remove a host depends on the hypervisor type."
+msgstr ""
+
+#: ../../hosts.rst:156
+# 65240cc22f554f09bdc03200b95bd05d
+msgid "Removing XenServer and KVM Hosts"
+msgstr ""
+
+#: ../../hosts.rst:158
+# 879cec7da3564798aa9e0d864809678d
+msgid "A node cannot be removed from a cluster until it has been placed in maintenance mode. This will ensure that all of the VMs on it have been migrated to other Hosts. To remove a Host from the cloud:"
+msgstr ""
+
+#: ../../hosts.rst:162
+# 7b965bf8884a4bcba98b12aab945722c
+msgid "Place the node in maintenance mode."
+msgstr ""
+
+#: ../../hosts.rst:164
+# 1301a77070374e238eb438818854da08
+msgid "See `“Scheduled Maintenance and Maintenance Mode for Hosts” <#scheduled-maintenance-and-maintenance-mode-for-hosts>`_."
+msgstr ""
+
+#: ../../hosts.rst:167
+# 6cb63d9356e643f1b3e032a8056a89ee
+msgid "For KVM, stop the cloud-agent service."
+msgstr ""
+
+#: ../../hosts.rst:169
+# 3a90c7e2a9224f36b01d73a1df4cd39c
+msgid "Use the UI option to remove the node."
+msgstr ""
+
+#: ../../hosts.rst:171
+# 400a182ceace4cef87ffe6c731ea45cd
+msgid "Then you may power down the Host, re-use its IP address, re-install it, etc"
+msgstr ""
+
+#: ../../hosts.rst:176
+# b9297a05564a41f8aa6995f8f1e2265a
+msgid "Removing vSphere Hosts"
+msgstr ""
+
+#: ../../hosts.rst:178
+# c32ebbedc8304707ab76b57248d80fee
+msgid "To remove this type of host, first place it in maintenance mode, as described in `“Scheduled Maintenance and Maintenance Mode for Hosts” <#scheduled-maintenance-and-maintenance-mode-for-hosts>`_. Then use CloudStack to remove the host. CloudStack will not direct commands to a host that has been removed using CloudStack. However, the host may still exist in the vCenter cluster."
+msgstr ""
+
+#: ../../hosts.rst:187
+# dd4d1c612fb44dc195061dd566beec5e
+msgid "Re-Installing Hosts"
+msgstr ""
+
+#: ../../hosts.rst:189
+# 0ee9288a566b4631b2e8f680cfbe5b47
+msgid "You can re-install a host after placing it in maintenance mode and then removing it. If a host is down and cannot be placed in maintenance mode, it should still be removed before the re-install."
+msgstr ""
+
+#: ../../hosts.rst:195
+# c85fb73c99e34c10b3289143d58b305b
+msgid "Maintaining Hypervisors on Hosts"
+msgstr ""
+
+#: ../../hosts.rst:197
+# af548f5aa95e4755a881574a77d625fd
+msgid "When running hypervisor software on hosts, be sure all the hotfixes provided by the hypervisor vendor are applied. Track the release of hypervisor patches through your hypervisor vendor’s support channel, and apply patches as soon as possible after they are released. CloudStack will not track or notify you of required hypervisor patches. It is essential that your hosts are completely up to date with the provided hypervisor patches. The hypervisor vendor is likely to refuse to support any system that is not up to date with patches."
+msgstr ""
+
+#: ../../hosts.rst:207
+# fb13ff2e1e1c478e8ee99dbb7a71c69d
+msgid "The lack of up-do-date hotfixes can lead to data corruption and lost VMs."
+msgstr ""
+
+#: ../../hosts.rst:209
+# 0132d3f953a446e7af2712c1f7f204d9
+msgid "(XenServer) For more information, see `Highly Recommended Hotfixes for XenServer in the CloudStack Knowledge Base <http://docs.cloudstack.org/Knowledge_Base/Possible_VM_corruption_if_XenServer_Hotfix_is_not_Applied/Highly_Recommended_Hotfixes_for_XenServer_5.6_SP2>`_."
+msgstr ""
+
+#: ../../hosts.rst:215
+# a2b8576f632f48e8b6556fe7958a2b4e
+msgid "Changing Host Password"
+msgstr ""
+
+#: ../../hosts.rst:217
+# 026b9758a8234d5d82e1fd3c20d9f9d6
+msgid "The password for a XenServer Node, KVM Node, or vSphere Node may be changed in the database. Note that all Nodes in a Cluster must have the same password."
+msgstr ""
+
+#: ../../hosts.rst:221
+# d662651348254d968559ee61ec677c9d
+msgid "To change a Node's password:"
+msgstr ""
+
+#: ../../hosts.rst:223
+# eac8c72d0110440e8d47f458d4dfa691
+msgid "Identify all hosts in the cluster."
+msgstr ""
+
+#: ../../hosts.rst:225
+# 6c429aa99fc44f4e85ed4eda61090335
+msgid "Change the password on all hosts in the cluster. Now the password for the host and the password known to CloudStack will not match. Operations on the cluster will fail until the two passwords match."
+msgstr ""
+
+#: ../../hosts.rst:229
+# bd29f4605f0b40a9822294fd0cba68e4
+msgid "Get the list of host IDs for the host in the cluster where you are changing the password. You will need to access the database to determine these host IDs. For each hostname \"h\" (or vSphere cluster) that you are changing the password for, execute:"
+msgstr ""
+
+#: ../../hosts.rst:238
+# ae93d4bde54f48ef9b96126a36220883
+msgid "This should return a single ID. Record the set of such IDs for these hosts."
+msgstr ""
+
+#: ../../hosts.rst:241
+# 6e33a985c6204813a3beec13959e029a
+msgid "Update the passwords for the host in the database. In this example, we change the passwords for hosts with IDs 5, 10, and 12 to \"password\"."
+msgstr ""
+
+#: ../../hosts.rst:251
+# 36d8dc7ed9b3447a819222bfb445bd10
+msgid "Over-Provisioning and Service Offering Limits"
+msgstr ""
+
+#: ../../hosts.rst:253
+# 3e5ec1fcb0cf49fda1383c022d23de87
+msgid "(Supported for XenServer, KVM, and VMware)"
+msgstr ""
+
+#: ../../hosts.rst:255
+# 3633dc63fade45ad8b1bc222bb9ad425
+msgid "CPU and memory (RAM) over-provisioning factors can be set for each cluster to change the number of VMs that can run on each host in the cluster. This helps optimize the use of resources. By increasing the over-provisioning ratio, more resource capacity will be used. If the ratio is set to 1, no over-provisioning is done."
+msgstr ""
+
+#: ../../hosts.rst:261
+# 43467fc7868049cab2d4374ff0094af1
+msgid "The administrator can also set global default over-provisioning ratios in the cpu.overprovisioning.factor and mem.overprovisioning.factor global configuration variables. The default value of these variables is 1: over-provisioning is turned off by default."
+msgstr ""
+
+#: ../../hosts.rst:266
+# 253e39db71ed47619ec617fb7a5397ac
+msgid "Over-provisioning ratios are dynamically substituted in CloudStack's capacity calculations. For example:"
+msgstr ""
+
+#: ../../hosts.rst:269
+# 48cbfebf2e804785ba7f9631cb010778
+msgid "Capacity = 2 GB Over-provisioning factor = 2 Capacity after over-provisioning = 4 GB"
+msgstr ""
+
+#: ../../hosts.rst:273
+# af111e47b7cc4e53825770d523defc61
+msgid "With this configuration, suppose you deploy 3 VMs of 1 GB each:"
+msgstr ""
+
+#: ../../hosts.rst:275
+# 851386252faa45d69618b89e2ff7ba8e
+msgid "Used = 3 GB Free = 1 GB"
+msgstr ""
+
+#: ../../hosts.rst:278
+# fdd299fb9bed44d696ed49d97cd8779d
+msgid "The administrator can specify a memory over-provisioning ratio, and can specify both CPU and memory over-provisioning ratios on a per-cluster basis."
+msgstr ""
+
+#: ../../hosts.rst:282
+# 13239c1da0164d2e88a9275d8083e8aa
+msgid "In any given cloud, the optimum number of VMs for each host is affected by such things as the hypervisor, storage, and hardware configuration. These may be different for each cluster in the same cloud. A single global over-provisioning setting can not provide the best utilization for all the different clusters in the cloud. It has to be set for the lowest common denominator. The per-cluster setting provides a finer granularity for better utilization of resources, no matter where the CloudStack placement algorithm decides to place a VM."
+msgstr ""
+
+#: ../../hosts.rst:291
+# 14bb9814011f4bb6972aeb18939b2e6c
+msgid "The overprovisioning settings can be used along with dedicated resources (assigning a specific cluster to an account) to effectively offer different levels of service to different accounts. For example, an account paying for a more expensive level of service could be assigned to a dedicated cluster with an over-provisioning ratio of 1, and a lower-paying account to a cluster with a ratio of 2."
+msgstr ""
+
+#: ../../hosts.rst:298
+# a04ae50db280409bacc1c0752456eb1b
+msgid "When a new host is added to a cluster, CloudStack will assume the host has the capability to perform the CPU and RAM over-provisioning which is configured for that cluster. It is up to the administrator to be sure the host is actually suitable for the level of over-provisioning which has been set."
+msgstr ""
+
+#: ../../hosts.rst:306
+# bc9d355b0e014b5ab9fd367c9e80ab24
+msgid "Limitations on Over-Provisioning in XenServer and KVM"
+msgstr ""
+
+#: ../../hosts.rst:308
+#: ../../hosts.rst:416
+# c556b8018bbd4fee9f244adf40b4f51d
+# 536dc98cafb74355b90a4bea9be01f99
+msgid "In XenServer, due to a constraint of this hypervisor, you can not use an over-provisioning factor greater than 4."
+msgstr ""
+
+#: ../../hosts.rst:311
+# a9dd662370ca407596ca9fa0b313a3af
+msgid "The KVM hypervisor can not manage memory allocation to VMs dynamically. CloudStack sets the minimum and maximum amount of memory that a VM can use. The hypervisor adjusts the memory within the set limits based on the memory contention."
+msgstr ""
+
+#: ../../hosts.rst:318
+# 4eb1b9a8ad484a8fa8cb381ce6b52eb2
+msgid "Requirements for Over-Provisioning"
+msgstr ""
+
+#: ../../hosts.rst:320
+# b5394f77c74e479980f2f996e9f81251
+msgid "Several prerequisites are required in order for over-provisioning to function properly. The feature is dependent on the OS type, hypervisor capabilities, and certain scripts. It is the administrator's responsibility to ensure that these requirements are met."
+msgstr ""
+
+#: ../../hosts.rst:327
+# 4fc500a083b4403998ada5877b9d0de0
+msgid "Balloon Driver"
+msgstr ""
+
+#: ../../hosts.rst:329
+# 9e1eb0f5b30a4a9cbebcf773c16bf440
+msgid "All VMs should have a balloon driver installed in them. The hypervisor communicates with the balloon driver to free up and make the memory available to a VM."
+msgstr ""
+
+#: ../../hosts.rst:335
+#: ../../hosts.rst:365
+# 588dfd76655d44b999fcc554493271ee
+# 876a75ef59a549349b25f46f2f3fc8bf
+msgid "XenServer"
+msgstr ""
+
+#: ../../hosts.rst:337
+# cc2308bc95464b93a3dc5631c6edb411
+msgid "The balloon driver can be found as a part of xen pv or PVHVM drivers. The xen pvhvm drivers are included in upstream linux kernels 2.6.36+."
+msgstr ""
+
+#: ../../hosts.rst:342
+# db7f94775ac3401c8e7da496601ce4d7
+msgid "VMware"
+msgstr ""
+
+#: ../../hosts.rst:344
+# db5f8890af6c435aa86e4c6106f0d83e
+msgid "The balloon driver can be found as a part of the VMware tools. All the VMs that are deployed in a over-provisioned cluster should have the VMware tools installed."
+msgstr ""
+
+#: ../../hosts.rst:350
+# e051f09fe032421881651a264ec5562c
+msgid "KVM"
+msgstr ""
+
+#: ../../hosts.rst:352
+# 9c51a6068b774e919cd552b525963bef
+msgid "All VMs are required to support the virtio drivers. These drivers are installed in all Linux kernel versions 2.6.25 and greater. The administrator must set CONFIG\\_VIRTIO\\_BALLOON=y in the virtio configuration."
+msgstr ""
+
+#: ../../hosts.rst:359
+# c8150c4e5af743bd8897bbd116c538d7
+msgid "Hypervisor capabilities"
+msgstr ""
+
+#: ../../hosts.rst:361
+# efc1f0769cdf44d0aee285aed27c7e0f
+msgid "The hypervisor must be capable of using the memory ballooning."
+msgstr ""
+
+#: ../../hosts.rst:367
+# 8b282cb5f7914088be3b38b87b604492
+msgid "The DMC (Dynamic Memory Control) capability of the hypervisor should be enabled. Only XenServer Advanced and above versions have this feature."
+msgstr ""
+
+#: ../../hosts.rst:372
+# 11e7b221209c4b97ab044dbbb6c53b0e
+msgid "VMware, KVM"
+msgstr ""
+
+#: ../../hosts.rst:374
+# c289bebec04c474c9497ce81216e04f1
+msgid "Memory ballooning is supported by default."
+msgstr ""
+
+#: ../../hosts.rst:378
+# fd73c49bd922450fb7a771ebb8586d6d
+msgid "Setting Over-Provisioning Ratios"
+msgstr ""
+
+#: ../../hosts.rst:380
+# 7d8bbd43174f499a98270e1aad9301bd
+msgid "There are two ways the root admin can set CPU and RAM over-provisioning ratios. First, the global configuration settings cpu.overprovisioning.factor and mem.overprovisioning.factor will be applied when a new cluster is created. Later, the ratios can be modified for an existing cluster."
+msgstr ""
+
+#: ../../hosts.rst:386
+# 6930197d999a4c1bb3e8bca13bb10c00
+msgid "Only VMs deployed after the change are affected by the new setting. If you want VMs deployed before the change to adopt the new over-provisioning ratio, you must stop and restart the VMs. When this is done, CloudStack recalculates or scales the used and reserved capacities based on the new over-provisioning ratios, to ensure that CloudStack is correctly tracking the amount of free capacity."
+msgstr ""
+
+#: ../../hosts.rst:394
+# fe4660151e234650980661b9975d4c77
+msgid "It is safer not to deploy additional new VMs while the capacity recalculation is underway, in case the new values for available capacity are not high enough to accommodate the new VMs. Just wait for the new used/available values to become available, to be sure there is room for all the new VMs you want."
+msgstr ""
+
+#: ../../hosts.rst:400
+# 443b0ee66d0b40bdad6e11ac6c4eb123
+msgid "To change the over-provisioning ratios for an existing cluster:"
+msgstr ""
+
+#: ../../hosts.rst:402
+# b796b807352f4f8285fca177e9417577
+msgid "Log in as administrator to the CloudStack UI."
+msgstr ""
+
+#: ../../hosts.rst:406
+# 450e03bbb9974112bec16a0dca62c829
+msgid "Under Clusters, click View All."
+msgstr ""
+
+#: ../../hosts.rst:408
+# dc9598fec6f74c74a82c2311ff962b5d
+msgid "Select the cluster you want to work with, and click the Edit button."
+msgstr ""
+
+#: ../../hosts.rst:410
+# 4574765089c64df0a53ffd4b0d9052a0
+msgid "Fill in your desired over-provisioning multipliers in the fields CPU overcommit ratio and RAM overcommit ratio. The value which is intially shown in these fields is the default value inherited from the global configuration settings."
+msgstr ""
+
+#: ../../hosts.rst:421
+# 2652eabbfcd64f92bab0644f7cddd8d6
+msgid "Service Offering Limits and Over-Provisioning"
+msgstr ""
+
+#: ../../hosts.rst:423
+# d88ad9813f6448ec9277039383ab3f86
+msgid "Service offering limits (e.g. 1 GHz, 1 core) are strictly enforced for core count. For example, a guest with a service offering of one core will have only one core available to it regardless of other activity on the Host."
+msgstr ""
+
+#: ../../hosts.rst:428
+# 0a5fa05e882e493f8d41201840eb0cd9
+msgid "Service offering limits for gigahertz are enforced only in the presence of contention for CPU resources. For example, suppose that a guest was created with a service offering of 1 GHz on a Host that has 2 GHz cores, and that guest is the only guest running on the Host. The guest will have the full 2 GHz available to it. When multiple guests are attempting to use the CPU a weighting factor is used to schedule CPU resources. The weight is based on the clock speed in the service offering. Guests receive a CPU allocation that is proportionate to the GHz in the service offering. For example, a guest created from a 2 GHz service offering will receive twice the CPU allocation as a guest created from a 1 GHz service offering. CloudStack does not perform memory over-provisioning."
+msgstr ""
+
+#: ../../hosts.rst:442
+# 86b75c2fbf034662ac3133fe63acefea
+msgid "VLAN Provisioning"
+msgstr ""
+
+#: ../../hosts.rst:444
+# 9d66a1eb7d4d4d88818d5d5d00bb285a
+msgid "CloudStack automatically creates and destroys interfaces bridged to VLANs on the hosts. In general the administrator does not need to manage this process."
+msgstr ""
+
+#: ../../hosts.rst:448
+# 7cfe38c7368a44d1b920f68fbb7e2b5e
+msgid "CloudStack manages VLANs differently based on hypervisor type. For XenServer or KVM, the VLANs are created on only the hosts where they will be used and then they are destroyed when all guests that require them have been terminated or moved to another host."
+msgstr ""
+
+#: ../../hosts.rst:453
+# a681bdc643fc41a49688c3a833dce9ac
+msgid "For vSphere the VLANs are provisioned on all hosts in the cluster even if there is no guest running on a particular Host that requires the VLAN. This allows the administrator to perform live migration and other functions in vCenter without having to create the VLAN on the destination Host. Additionally, the VLANs are not removed from the Hosts when they are no longer needed."
+msgstr ""
+
+#: ../../hosts.rst:460
+# 162b7ae68b2d41db83c3bc6d32e86e6b
+msgid "You can use the same VLANs on different physical networks provided that each physical network has its own underlying layer-2 infrastructure, such as switches. For example, you can specify VLAN range 500 to 1000 while deploying physical networks A and B in an Advanced zone setup. This capability allows you to set up an additional layer-2 physical infrastructure on a different physical NIC and use the same set of VLANs if you run out of VLANs. Another advantage is that you can use the same set of IPs for different customers, each one with their own routers and the guest networks on different physical NICs."
+msgstr ""
+
+#: ../../hosts.rst:472
+# d4316f84d139424ab25c6fb9292b2840
+msgid "VLAN Allocation Example"
+msgstr ""
+
+#: ../../hosts.rst:474
+# ea6edc6b827c4791a53ea10997662dae
+msgid "VLANs are required for public and guest traffic. The following is an example of a VLAN allocation scheme:"
+msgstr ""
+
+#: ../../hosts.rst:478
+# 558c3d372c85421390186a570da26dee
+msgid "VLAN IDs"
+msgstr ""
+
+#: ../../hosts.rst:478
+# b6c7ef27f668454dbb5adb9a9c190c98
+msgid "Traffic type"
+msgstr ""
+
+#: ../../hosts.rst:478
+# 2dc30077851f4826beeaeb3c808e6452
+msgid "Scope"
+msgstr ""
+
+#: ../../hosts.rst:480
+# 46e966a312a047cfa77c7292aaba1fdb
+msgid "less than 500"
+msgstr ""
+
+#: ../../hosts.rst:480
+# c6ffd280911a498f99904379cc538935
+msgid "Management traffic."
+msgstr ""
+
+#: ../../hosts.rst:480
+# bb76ee312d884069ac0a101cfc2680d2
+msgid "Reserved for administrative purposes.  CloudStack software can access this, hypervisors, system VMs."
+msgstr ""
+
+#: ../../hosts.rst:481
+# 1307c25d94c447a08ebf7b1f47d76fa7
+msgid "500-599"
+msgstr ""
+
+#: ../../hosts.rst:481
+# fb79eefe00ad444eaf660e4c6c7571b7
+msgid "VLAN carrying public traffic."
+msgstr ""
+
+#: ../../hosts.rst:481
+# 0c7d0d0d68c94f5f889f1e32dcb564cb
+msgid "CloudStack accounts."
+msgstr ""
+
+#: ../../hosts.rst:482
+# 9ab975c827154ebd84ab2f50936736b8
+msgid "600-799"
+msgstr ""
+
+#: ../../hosts.rst:482
+#: ../../hosts.rst:483
+# e33f1854a40043ed9d323fa1f1a3519d
+# 1dfa7469eec44ea6b03b34b9c6f7504e
+msgid "VLANs carrying guest traffic."
+msgstr ""
+
+#: ../../hosts.rst:482
+# e10058e68df14ced9dda12d02876f4c4
+msgid "CloudStack accounts. Account-specific VLAN is chosen from this pool."
+msgstr ""
+
+#: ../../hosts.rst:483
+# 26028e0cc17c46ceae4008c85730b970
+msgid "800-899"
+msgstr ""
+
+#: ../../hosts.rst:483
+# a894ab0d32654721aa09284c57bbabc4
+msgid "CloudStack accounts. Account-specific VLAN chosen by CloudStack admin to assign to that account."
+msgstr ""
+
+#: ../../hosts.rst:484
+# 4a297ddc517048fab79c4a44c5ad0b99
+msgid "900-999"
+msgstr ""
+
+#: ../../hosts.rst:484
+# 404678aaa64349f8924466d04c12db32
+msgid "VLAN carrying guest traffic"
+msgstr ""
+
+#: ../../hosts.rst:484
+# 185277c2c47d409cb9ec68e3f03ceddc
+msgid "CloudStack accounts. Can be scoped by project, domain, or all accounts."
+msgstr ""
+
+#: ../../hosts.rst:485
+# 5032da4e90be448f905a4ee48df7d8ed
+msgid "greater than 1000"
+msgstr ""
+
+#: ../../hosts.rst:485
+# af16d28d60df4d84b3951c37a78f02bc
+msgid "Reserved for future use"
+msgstr ""
+
+#: ../../hosts.rst:490
+# ef44b9e8dc084564a01254fc196c3b9e
+msgid "Adding Non Contiguous VLAN Ranges"
+msgstr ""
+
+#: ../../hosts.rst:492
+# 5b73c96b899144be9a84d12c7ed11d55
+msgid "CloudStack provides you with the flexibility to add non contiguous VLAN ranges to your network. The administrator can either update an existing VLAN range or add multiple non contiguous VLAN ranges while creating a zone. You can also use the UpdatephysicalNetwork API to extend the VLAN range."
+msgstr ""
+
+#: ../../hosts.rst:498
+# 957172517a6845a3915b26e7b95812d0
+msgid "Log in to the CloudStack UI as an administrator or end user."
+msgstr ""
+
+#: ../../hosts.rst:500
+# cb713605543d4f8eb0ffd5bec494839d
+msgid "Ensure that the VLAN range does not already exist."
+msgstr ""
+
+#: ../../hosts.rst:502
+# 6543749bf38741be83173b69828b1f49
+msgid "In the left navigation, choose Infrastructure."
+msgstr ""
+
+#: ../../hosts.rst:504
+# 7bd96bd6e7fd4c94bd7be28295bd46de
+msgid "On Zones, click View More, then click the zone to which you want to work with."
+msgstr ""
+
+#: ../../hosts.rst:507
+# 29ea322032104b06880f1204aa29a145
+msgid "Click Physical Network."
+msgstr ""
+
+#: ../../hosts.rst:509
+# a6e5a25d6929406594577a6b3f074454
+msgid "In the Guest node of the diagram, click Configure."
+msgstr ""
+
+#: ../../hosts.rst:511
+# b85881c793b045978846d5eb97408757
+msgid "Click Edit |edit-icon.png|."
+msgstr ""
+
+#: ../../hosts.rst:513
+# 061af0a695ad4e1abcd195287ee6e0ef
+msgid "The VLAN Ranges field now is editable."
+msgstr ""
+
+#: ../../hosts.rst:515
+# 131fadb281474dc597e34d3fe0d6d444
+msgid "Specify the start and end of the VLAN range in comma-separated list."
+msgstr ""
+
+#: ../../hosts.rst:517
+# aaf0146792d5487297eff314b521c053
+msgid "Specify all the VLANs you want to use, VLANs not specified will be removed if you are adding new ranges to the existing list."
+msgstr ""
+
+#: ../../hosts.rst:520
+# d7cd1af070644a71ae33b79fbc724b87
+msgid "Click Apply."
+msgstr ""
+
+#: ../../hosts.rst:524
+# 9685350eac754d8c889dc8da19292529
+msgid "Assigning VLANs to Isolated Networks"
+msgstr ""
+
+#: ../../hosts.rst:526
+# 31001908f2bd40018f7b77a9001e50c7
+msgid "CloudStack provides you the ability to control VLAN assignment to Isolated networks. As a Root admin, you can assign a VLAN ID when a network is created, just the way it's done for Shared networks."
+msgstr ""
+
+#: ../../hosts.rst:530
+# 47af367fd0e74e9c98c07d5fd93d9a6a
+msgid "The former behaviour also is supported — VLAN is randomly allocated to a network from the VNET range of the physical network when the network turns to Implemented state. The VLAN is released back to the VNET pool when the network shuts down as a part of the Network Garbage Collection. The VLAN can be re-used either by the same network when it is implemented again, or by any other network. On each subsequent implementation of a network, a new VLAN can be assigned."
+msgstr ""
+
+#: ../../hosts.rst:538
+# 1ba6d80370024ab596ffd9d4ae6294cc
+msgid "Only the Root admin can assign VLANs because the regular users or domain admin are not aware of the physical network topology. They cannot even view what VLAN is assigned to a network."
+msgstr ""
+
+#: ../../hosts.rst:542
+# f8d82f2f80da4f4fbdef3b4308538511
+msgid "To enable you to assign VLANs to Isolated networks,"
+msgstr ""
+
+#: ../../hosts.rst:544
+# 51e781fd8ac2474f896774fe185ff585
+msgid "Create a network offering by specifying the following:"
+msgstr ""
+
+#: ../../hosts.rst:546
+# 38ae271a7f7f4855a4353c109d01d761
+msgid "**Guest Type**: Select Isolated."
+msgstr ""
+
+#: ../../hosts.rst:548
+# 136f37de7a6f4b1ead01c213603a4a47
+msgid "**Specify VLAN**: Select the option."
+msgstr ""
+
+#: ../../hosts.rst:550
+# ba4c14a8b3d94e1fbeccb6afd28ec4ad
+msgid "For more information, see the CloudStack Installation Guide."
+msgstr ""
+
+#: ../../hosts.rst:552
+# 42fbeadc772741cdb88549a149bef4c4
+msgid "Using this network offering, create a network."
+msgstr ""
+
+#: ../../hosts.rst:554
+# b08c9effb9bf43ecb0e42699daf88922
+msgid "You can create a VPC tier or an Isolated network."
+msgstr ""
+
+#: ../../hosts.rst:556
+# d1ae253e49f3473a9ee2ed29b8447270
+msgid "Specify the VLAN when you create the network."
+msgstr ""
+
+#: ../../hosts.rst:558
+# d4c5557c8994473ba6ca182dc7149c44
+msgid "When VLAN is specified, a CIDR and gateway are assigned to this network and the state is changed to Setup. In this state, the network will not be garbage collected."
+msgstr ""
+
+#: ../../hosts.rst:563
+# 89369b26917b4d54ad28290b37c59b53
+msgid "You cannot change a VLAN once it's assigned to the network. The VLAN remains with the network for its entire life cycle."
+msgstr ""
+

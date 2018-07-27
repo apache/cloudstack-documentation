@@ -1,0 +1,165 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration RTD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: 2014-06-30 12:06+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/apache-cloudstack-administration-rtd/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# 80e46ffc92914befa1e1b6bb37ae48e0
+#: ../../networking/multiple_ips_on_single_nic.rst:18
+msgid "Configuring Multiple IP Addresses on a Single NIC"
+msgstr "在单网卡配置多个IP地址"
+
+# e552e4b860e64b83bd63e053002d0187
+#: ../../networking/multiple_ips_on_single_nic.rst:20
+msgid ""
+"CloudStack provides you the ability to associate multiple private IP "
+"addresses per guest VM NIC. In addition to the primary IP, you can assign "
+"additional IPs to the guest VM NIC. This feature is supported on all the "
+"network configurations: Basic, Advanced, and VPC. Security Groups, Static "
+"NAT and Port forwarding services are supported on these additional IPs."
+msgstr "CloudStack能够让你给每个客户虚拟机网卡配置多个私有IP地址，除主IP地址外，你可以指定额外的IP地址到客户虚拟机网卡。在所有的网络配置中，如基础配置，高级配置，VPC，均支持这一功能。安全组，静态NAT及端口转发服务在额外的IP地址上也都被支持。"
+
+# 37ec7f1162de4309afcd34ea7bc9af66
+#: ../../networking/multiple_ips_on_single_nic.rst:27
+msgid ""
+"As always, you can specify an IP from the guest subnet; if not specified, an"
+" IP is automatically picked up from the guest VM subnet. You can view the "
+"IPs associated with for each guest VM NICs on the UI. You can apply NAT on "
+"these additional guest IPs by using network configuration option in the "
+"CloudStack UI. You must specify the NIC to which the IP should be "
+"associated."
+msgstr "当然，你也可以从来宾子网中指定一个IP，如果没有指定，将会从来宾虚拟机子网中自动选择一个。可以从UI中查看每一个与来宾虚拟机网卡关联的IP地址。也可以在CloudStack界面中通过网络配置选项在那些额外的来宾虚拟机上应用NAT。但必须指明网卡与哪一个IP关联。"
+
+# 9a035e888c1245098bf6a6b97754c398
+#: ../../networking/multiple_ips_on_single_nic.rst:34
+msgid ""
+"This feature is supported on XenServer, KVM, and VMware hypervisors. Note "
+"that Basic zone security groups are not supported on VMware."
+msgstr "在XenServer，KVM和VMware虚拟机中，都支持这些功能。注意，VMware不支持基础区域的安全组。"
+
+# e65e3e62dc4a4301b7c488f06bbe696d
+#: ../../networking/multiple_ips_on_single_nic.rst:39
+msgid "Use Cases"
+msgstr "使用案例"
+
+# 11ad1c7201dd4368b51c2686f4f6c436
+#: ../../networking/multiple_ips_on_single_nic.rst:41
+msgid "Some of the use cases are described below:"
+msgstr "一些使用案例见以下描述"
+
+# bad26d93f70a454ea65fe8d314c5fb5f
+#: ../../networking/multiple_ips_on_single_nic.rst:43
+msgid ""
+"Network devices, such as firewalls and load balancers, generally work best "
+"when they have access to multiple IP addresses on the network interface."
+msgstr "网络设备，如防火墙或负责均衡设备，一般来讲，当他们在网络接口上接入更多的IP地址时，他们能够更好的工作。"
+
+# 95be93b5a22541cf8e3a65154ae683cc
+#: ../../networking/multiple_ips_on_single_nic.rst:47
+msgid ""
+"Moving private IP addresses between interfaces or instances. Applications "
+"that are bound to specific IP addresses can be moved between instances."
+msgstr "在接口和实例中迁移IP地址。绑定到特定IP地址的应用可以在实例中迁移。"
+
+# 9ee757e7b88f4aa2a87ccd4771a324d2
+#: ../../networking/multiple_ips_on_single_nic.rst:51
+msgid ""
+"Hosting multiple SSL Websites on a single instance. You can install multiple"
+" SSL certificates on a single instance, each associated with a distinct IP "
+"address."
+msgstr "在单个实例上开启多个SSL网站。可以在单个实例上安装多个SSL认证，每一个认证都关联一个单独的IP地址。"
+
+# 4edd1f589e2e49829a8738af942f1449
+#: ../../networking/multiple_ips_on_single_nic.rst:57
+msgid "Guidelines"
+msgstr "指南"
+
+# 54a52619c6484653a0d95be689657a85
+#: ../../networking/multiple_ips_on_single_nic.rst:59
+msgid ""
+"To prevent IP conflict, configure different subnets when multiple networks "
+"are connected to the same VM."
+msgstr "为防止IP冲突，当多个网络连接至同一个虚拟机时，要配置不同的子网。"
+
+# 2e55027ec0ce4ce6b87130453ca2ea69
+#: ../../networking/multiple_ips_on_single_nic.rst:64
+msgid "Assigning Additional IPs to a VM"
+msgstr "指定额外的IP给虚拟机"
+
+# 24aaa9f9fd734b1d9b775ad1342d31b2
+#: ../../networking/multiple_ips_on_single_nic.rst:66
+msgid "Log in to the CloudStack UI."
+msgstr "登录到CloudStack的界面"
+
+# 51fd921471ee488bb728f102e439c19e
+#: ../../networking/multiple_ips_on_single_nic.rst:68
+msgid "In the left navigation bar, click Instances."
+msgstr "在左侧导航栏，点击实例"
+
+# f0efc1c51c2a471498620eb3d6313aa6
+#: ../../networking/multiple_ips_on_single_nic.rst:70
+msgid "Click the name of the instance you want to work with."
+msgstr "点击拟配置的实例"
+
+# 17a62e09249f4a3fac5b78b1ee42aa11
+#: ../../networking/multiple_ips_on_single_nic.rst:72
+msgid "In the Details tab, click NICs."
+msgstr "在详细 页签，点击网卡"
+
+# 815af55e9e6e475ea2139c0ee79838c8
+#: ../../networking/multiple_ips_on_single_nic.rst:74
+msgid "Click View Secondary IPs."
+msgstr "点击查看二级地址"
+
+# edd4eb38ff964d91901201733864317e
+#: ../../networking/multiple_ips_on_single_nic.rst:76
+msgid ""
+"Click Acquire New Secondary IP, and click Yes in the confirmation dialog."
+msgstr "点击获取新二级IP，在确认对话框点击确定。"
+
+# a243effbef704447bf0f0a2d5bdc0a86
+#: ../../networking/multiple_ips_on_single_nic.rst:79
+msgid ""
+"You need to configure the IP on the guest VM NIC manually. CloudStack will "
+"not automatically configure the acquired IP address on the VM. Ensure that "
+"the IP address configuration persist on VM reboot."
+msgstr "需要手动配置来宾虚拟机的网卡。在虚拟机上，CloudStack不会自动配置获取IP。确保在虚拟机重启IP地址配置仍有效。"
+
+# 92b50e481e5943af8db0036e562bcf45
+#: ../../networking/multiple_ips_on_single_nic.rst:83
+msgid ""
+"Within a few moments, the new IP address should appear with the state "
+"Allocated. You can now use the IP address in Port Forwarding or StaticNAT "
+"rules."
+msgstr "稍等一会，新的IP地址会出现，状态栏为会显示为分配。现在可以在端口转发或静态NAT规则中使用此IP地址了。"
+
+# 8ce45ae597644592be9f68b1b9a50693
+#: ../../networking/multiple_ips_on_single_nic.rst:89
+msgid "Port Forwarding and StaticNAT Services Changes"
+msgstr "更改端口转发和静态NAT服务"
+
+# 707c305e2e104709866aebe9741b3891
+#: ../../networking/multiple_ips_on_single_nic.rst:91
+msgid ""
+"Because multiple IPs can be associated per NIC, you are allowed to select a "
+"desired IP for the Port Forwarding and StaticNAT services. The default is "
+"the primary IP. To enable this functionality, an extra optional parameter "
+"'vmguestip' is added to the Port forwarding and StaticNAT APIs "
+"(enableStaticNat, createIpForwardingRule) to indicate on what IP address NAT"
+" need to be configured. If vmguestip is passed, NAT is configured on the "
+"specified private IP of the VM. if not passed, NAT is configured on the "
+"primary IP of the VM."
+msgstr "因为每一个网卡都可关联至多IP，CloudStack可以允许为端口转发及静态NAT服务选择一个目标IP。默认为主IP。为开启此功能，另一个可选的配置参数  虚拟机来宾IP 需要被加至端口转发及静态NAT 的API中去（开启静态NAT，创建IP端口转发），以示IP地址NAT需要配置。如果虚拟机来宾IP 没有设置，NAT会配置在虚拟机的私有IP上，如果设置了，NAT会配置在虚拟机的主IP上。"

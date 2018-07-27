@@ -1,0 +1,190 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 
+# This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Apache CloudStack Administration Documentation 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-30 12:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../ui.rst:18
+# 823af79fce60474780309ce761b8cbb3
+msgid "User Interface"
+msgstr ""
+
+#: ../../ui.rst:21
+# a41f3714ea474cafa002318580d95e84
+msgid "Log In to the UI"
+msgstr ""
+
+#: ../../ui.rst:23
+# aab161d8e0fa441c97c979ad5befdaf2
+msgid "CloudStack provides a web-based UI that can be used by both administrators and end users. The appropriate version of the UI is displayed depending on the credentials used to log in. The UI is available in popular browsers including IE7, IE8, IE9, Firefox 3.5+, Firefox 4, Safari 4, and Safari 5. The URL is: (substitute your own management server IP address)"
+msgstr ""
+
+#: ../../ui.rst:34
+# 5757c519124e45b4b91631b922360a4c
+msgid "On a fresh Management Server installation, a guided tour splash screen appears. On later visits, you’ll see a login screen where you specify the following to proceed to your Dashboard:"
+msgstr ""
+
+#: ../../ui.rst:38
+# 192d35e05058441db921256f04a28daf
+msgid "Username -> The user ID of your account. The default username is admin."
+msgstr ""
+
+#: ../../ui.rst:40
+# 7ca04676225345a3a4d7e9f05fa900b9
+msgid "Password -> The password associated with the user ID. The password for the default username is password."
+msgstr ""
+
+#: ../../ui.rst:43
+# fff9c234e7724e1aa8a5ca63b9cbc714
+msgid "Domain -> If you are a root user, leave this field blank."
+msgstr ""
+
+#: ../../ui.rst:45
+# f7cc367a3acb49149809ad5212740659
+msgid "If you are a user in the sub-domains, enter the full path to the domain, excluding the root domain."
+msgstr ""
+
+#: ../../ui.rst:48
+# 2716e01ce2b446be9cf2b3c098897945
+msgid "For example, suppose multiple levels are created under the root domain, such as Comp1/hr. The users in the Comp1 domain should enter Comp1 in the Domain field, whereas the users in the Comp1/sales domain should enter Comp1/sales."
+msgstr ""
+
+#: ../../ui.rst:53
+# dab31f7d62b846799291e80598d3534d
+msgid "For more guidance about the choices that appear when you log in to this UI, see Logging In as the Root Administrator."
+msgstr ""
+
+#: ../../ui.rst:58
+# f89e19a4f46d49d3899770c2d8d858ae
+msgid "End User's UI Overview"
+msgstr ""
+
+#: ../../ui.rst:60
+# fab0b6e0d255493e9c1a1800bffbd107
+msgid "The CloudStack UI helps users of cloud infrastructure to view and use their cloud resources, including virtual machines, templates and ISOs, data volumes and snapshots, guest networks, and IP addresses. If the user is a member or administrator of one or more CloudStack projects, the UI can provide a project-oriented view."
+msgstr ""
+
+#: ../../ui.rst:68
+# 03bffb509d6342f09a88c6c18b4a0041
+msgid "Root Administrator's UI Overview"
+msgstr ""
+
+#: ../../ui.rst:70
+# f46ea02636f0416ab79e48c05c194422
+msgid "The CloudStack UI helps the CloudStack administrator provision, view, and manage the cloud infrastructure, domains, user accounts, projects, and configuration settings. The first time you start the UI after a fresh Management Server installation, you can choose to follow a guided tour to provision your cloud infrastructure. On subsequent logins, the dashboard of the logged-in user appears. The various links in this screen and the navigation bar on the left provide access to a variety of administrative functions. The root administrator can also use the UI to perform all the same tasks that are present in the end-user’s UI."
+msgstr ""
+
+#: ../../ui.rst:82
+# 2010e004d6354a46899b6e0a6177a36a
+msgid "Logging In as the Root Administrator"
+msgstr ""
+
+#: ../../ui.rst:84
+# beb82ae526444b67b6c2baff8c7901a7
+msgid "After the Management Server software is installed and running, you can run the CloudStack user interface. This UI is there to help you provision, view, and manage your cloud infrastructure."
+msgstr ""
+
+#: ../../ui.rst:88
+#: ../../ui.rst:151
+# 6beabdba74e7408e8fcc8ffa226a704e
+# 8c7e2423aea64ae6b5b2f13c8c000895
+msgid "Open your favorite Web browser and go to this URL. Substitute the IP address of your own Management Server:"
+msgstr ""
+
+#: ../../ui.rst:95
+# 5afc8c800bcb4248a79f7b7dc8ea6173
+msgid "After logging into a fresh Management Server installation, a guided tour splash screen appears. On later visits, you’ll be taken directly into the Dashboard."
+msgstr ""
+
+#: ../../ui.rst:99
+# a27fd5db6a0d41dbb4d17954889871c7
+msgid "If you see the first-time splash screen, choose one of the following."
+msgstr ""
+
+#: ../../ui.rst:101
+# f9579429faa6431a9cc007c91af49e61
+msgid "**Continue with basic setup.** Choose this if you're just trying CloudStack, and you want a guided walkthrough of the simplest possible configuration so that you can get started right away. We'll help you set up a cloud with the following features: a single machine that runs CloudStack software and uses NFS to provide storage; a single machine running VMs under the XenServer or KVM hypervisor; and a shared public network."
+msgstr ""
+
+#: ../../ui.rst:109
+# 8a24a6a0c06f440087e093cad917bffb
+msgid "The prompts in this guided tour should give you all the information you need, but if you want just a bit more detail, you can follow along in the Trial Installation Guide."
+msgstr ""
+
+#: ../../ui.rst:113
+# 81d70c27e4d842afbbdc4f74e0c19acb
+msgid "**I have used CloudStack before.** Choose this if you have already gone through a design phase and planned a more sophisticated deployment, or you are ready to start scaling up a trial cloud that you set up earlier with the basic setup screens. In the Administrator UI, you can start using the more powerful features of CloudStack, such as advanced VLAN networking, high availability, additional network elements such as load balancers and firewalls, and support for multiple hypervisors including Citrix XenServer, KVM, and VMware vSphere."
+msgstr ""
+
+#: ../../ui.rst:123
+# 031ecbafb6b14054869c6a4202b5c1fd
+msgid "The root administrator Dashboard appears."
+msgstr ""
+
+#: ../../ui.rst:125
+# 7d9e4e036dec429db9386110482d17fa
+msgid "You should set a new root administrator password. If you chose basic setup, you’ll be prompted to create a new password right away. If you chose experienced user, use the steps in :ref:`changing-root-password`."
+msgstr ""
+
+#: ../../ui.rst:130
+# 812d903dc8bc4cf5a98f694baeb328a0
+msgid "You are logging in as the root administrator. This account manages the CloudStack deployment, including physical infrastructure. The root administrator can modify configuration settings to change basic functionality, create or delete user accounts, and take many actions that should be performed only by an authorized person. Please change the default password to a new, unique password."
+msgstr ""
+
+#: ../../ui.rst:140
+# b350994b6904403db6d30d524f0eed32
+msgid "Changing the Root Password"
+msgstr ""
+
+#: ../../ui.rst:142
+# 3a06c8a9892b4cbeaac7e2dec367ddd7
+msgid "During installation and ongoing cloud administration, you will need to log in to the UI as the root administrator. The root administrator account manages the CloudStack deployment, including physical infrastructure. The root administrator can modify configuration settings to change basic functionality, create or delete user accounts, and take many actions that should be performed only by an authorized person. When first installing CloudStack, be sure to change the default password to a new, unique value."
+msgstr ""
+
+#: ../../ui.rst:158
+# 7057f98c0cb94bceb1dc66c14a0b5802
+msgid "Log in to the UI using the current root user ID and password. The default is admin, password."
+msgstr ""
+
+#: ../../ui.rst:161
+# fdf104279af341739d24347f0e1fce4e
+msgid "Click Accounts."
+msgstr ""
+
+#: ../../ui.rst:163
+# c12c934bf488453e9c209dcf140e5b22
+msgid "Click the admin account name."
+msgstr ""
+
+#: ../../ui.rst:165
+# 9941a672247948c09ee39a2119dcbb22
+msgid "Click View Users."
+msgstr ""
+
+#: ../../ui.rst:167
+# 482e7c8a3e904702a4089d4643cdae41
+msgid "Click the admin user name."
+msgstr ""
+
+#: ../../ui.rst:169
+# ae46b97a741b49e4b1c2422f074135e9
+msgid "Click the Change Password button. |change-password.png|"
+msgstr ""
+
+#: ../../ui.rst:171
+# 9ba47399deaa4e378669ad789c0a47c0
+msgid "Type the new password, and click OK."
+msgstr ""
+
