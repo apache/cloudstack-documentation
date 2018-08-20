@@ -279,15 +279,19 @@ or ApacheDS to authenticate CloudStack end-users. CloudStack will search
 the external LDAP directory tree starting at a specified base directory
 and gets user info such as first name, last name, email and username.
 
+Starting with CloudStack 4.11, an ldap connection per domain can be
+defined.
+
 To authenticate, username and password entered by the user are used.
 Cloudstack does a search for a user with the given username. If it
 exists, it does a bind request with DN and password.
 
 To set up LDAP authentication in CloudStack, call the CloudStack API
 command ``addLdapConfiguration`` and provide Hostname or IP address
-and listening port of the LDAP server. You could configure multiple
-servers as well. These are expected to be replicas. If one fails,
-the next one is used.
+and listening port of the LDAP server. Optionally a domain id can be
+given for the domain for which this LDP connection is valid. You could
+configure multiple servers as well. These are expected to be
+replicas. If one fails, the next one is used.
 
 The following global configurations should also be configured (the
 default values are for openldap)
