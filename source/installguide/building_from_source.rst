@@ -348,7 +348,7 @@ Linux.
 
 .. parsed-literal::
 
-   # yum install java-1.8.0-openjdk-devel.x86_64 genisoimage mysql mysql-server ws-commons-util MySQL-python createrepo
+   # yum install java-1.8.0-openjdk-devel.x86_64 genisoimage mysql mysql-server ws-commons-util MySQL-python python-setuptools createrepo
 
 Next, you'll need to install build-time dependencies for CloudStack with
 Maven. We're using Maven 3, so you'll want to grab `Maven 3.0.5 (Binary tar.gz)
