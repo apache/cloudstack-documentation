@@ -79,3 +79,4 @@ providing networking features for guest traffic.
 
 .. include:: networking/palo_alto_config.rst
 
+.. include:: networking/additional_networking_features.rst
