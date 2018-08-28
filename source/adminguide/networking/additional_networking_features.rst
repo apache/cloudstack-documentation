@@ -25,13 +25,13 @@ Feature Overview:
 =================
 
 -  This feature applies to KVM hosts.
--  KVM utilised under CloudStack uses the standard Libvirt hook script behaviour outlined in https://libvirt.org/hooks.html.
+-  KVM utilised under CloudStack uses the standard Libvirt hook script behaviour as outlined in the Libvirt documentation page `hooks`_.
 -  During the install of the KVM CloudStack agent, the Libvirt hook script "/etc/libvirt/hooks/qemu", referred to as the qemu script hereafter is installed. 
 -  This is a python script that carries out network management tasks every time a VM is started, stopped or migrated, as per the Libvirt hooks specification.
 -  Custom network configuration tasks can be done at the same time as the qemu script is called.
 -  Since the tasks in question are user-specific, they cannot be included in the CloudStack-provided qemu script.
 
--  The Libvirt documentation page https://libvirt.org/hooks.html#qemu describes the parameters that can be passed to the qemu script, based on what actions KVM and Libvirt are carrying out on each VM: 'prepare', 'start', 'started', 'stopped', 'release', 'migrate', 'restore', 'reconnect' and 'attach'.
+-  The Libvirt documentation page `qemu`_ describes the parameters that can be passed to the qemu script, based on what actions KVM and Libvirt are carrying out on each VM: 'prepare', 'start', 'started', 'stopped', 'release', 'migrate', 'restore', 'reconnect' and 'attach'.
 
 The KVM Libvirt Hook script allows for:
 =======================================
@@ -45,7 +45,7 @@ Usage:
 ======
 
 -  The cloudstack-agent package will install the qemu script in the /etc/libvirt/hooks directory of Libvirt.
--  The documentation page: https://libvirt.org/hooks.html#arguments describes the arguments that can be passed to the qemu script. 
+-  The Libvirt documentation page `arguments`_ describes the arguments that can be passed to the qemu script. 
 -  The input arguments are: 
 
     #. Name of the object involved in the operation, or '-' if there is none. For example, the name of a guest being started.
@@ -114,3 +114,7 @@ Custom Script Execution Configuration:
 
 -  In shell custom scripts include #!/bin/bash in the first line of the file so that the script will be executed with bash.
 -  In Python custom scripts include #!/usr/bin/python in the first line of the file so that the script will be executed with python.
+
+.. _`hooks`: https://libvirt.org/hooks.html
+.. _`qemu`: https://libvirt.org/hooks.html#qemu
+.. _`arguments`: https://libvirt.org/hooks.html#arguments
