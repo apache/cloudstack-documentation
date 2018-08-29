@@ -78,5 +78,3 @@ providing networking features for guest traffic.
 .. include:: networking/persistent_networks.rst
 
 .. include:: networking/palo_alto_config.rst
-
-.. include:: networking/additional_networking_features.rst
