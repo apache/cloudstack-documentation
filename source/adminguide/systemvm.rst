@@ -552,3 +552,25 @@ The administrator can log in to the secondary storage VM if needed.
    :alt: Updating Console Proxy SSL Certificate
 .. |vr-upgrade.png| image:: /_static/images/vr-upgrade.png
    :alt: Button to upgrade VR to use the new template.
+
+Troubleshoot networks from System VMs
+-------------------------------------
+
+
+For troubleshooting of network issues in CloudStack hosted networks, CloudStack allows
+the administrator to execute network-utility commands (ping, traceroute or arping)
+remotely on system VMs.
+
+To run either a ping, traceroute or arping through the CloudStack UI:
+
+#. As an administrator, log in to the CloudStack UI.
+
+#. Navigate to Infrastructure > System VMs or Virtual Routers.
+
+#. Click on the Run Diagnostics button. |run-diagnostics-icon.png|
+
+#. A form will pop up similar to this;
+      |diagnostics-form.png|
+
+#. Fill in the details and click OK.
+
