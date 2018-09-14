@@ -81,7 +81,7 @@ Contributing to the documentation
 Initial setup of your fork
 --------------------------
 
-In your browser, navigate to: https://github.com/apache/cloudstack-docs-install
+In your browser, navigate to: https://github.com/apache/cloudstack-documentation
 
 Fork this repository by clicking on the 'Fork' button on the top right hand side.  The fork will happen and you will be taken to your own fork of the repository.  On the right hand side of the page of your fork, under 'HTTPS clone URL', copy the URL to your clipboard by clicking the the clipboard just right of the URL.
 
@@ -89,9 +89,9 @@ On your computer, follow these steps to setup a local repository for working on 
 
 .. code:: bash
 
-   $ git clone https://github.com/YOUR_ACCOUNT/cloudstack-docs-install.git
+   $ git clone https://github.com/YOUR_ACCOUNT/cloudstack-documentation.git
    $ cd cloudstack-docs-install
-   $ git remote add upstream https://github.com/apache/cloudstack-docs-install.git
+   $ git remote add upstream https://github.com/apache/cloudstack-documentation.git
    $ git checkout master
    $ git fetch upstream
    $ git merge upstream/master
@@ -155,7 +155,7 @@ Now that the `dev` branch has been pushed to your GitHub repository, you can ini
 
 To initiate the pull request, do the following:
 
-#. Navigate your browser to your forked repository: https://github.com/YOUR_ACCOUNT/cloudstack-docs-install
+#. Navigate your browser to your forked repository: https://github.com/YOUR_ACCOUNT/cloudstack-documentation
 
 #. Click the new button called 'Compare & pull request' that showed up just above the main area in your forked repository
 
