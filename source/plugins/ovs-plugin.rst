@@ -267,6 +267,93 @@ Using the OVS plugin with VPC
 OVS plugin does not work with VPC at that time
 
 
+DPDK Support
+------------------------------
+
+Since version 4.12 it is possible to enable DPDK support on CloudStack along with the OVS plugin.
+
+Agent configuration
+~~~~~~~~~~~~~~~~~~~
+
+-  Edit /etc/cloudstack/agent/agent.properties to append DPDK support on ovs-vstcl commands for port creations
+
+   ::
+      
+      openvswitch.dpdk.enable=true
+
+Use DPDK on VM deployments
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+Users are able to pass extra configurations as part of the 'deployVirtualMachine' API method.
+These extra configurations are included on the resulting XML domain of the virtual machine.
+
+Additional VM configuration
+"""""""""""""""""""""""""""
+The 'deployVirtualMachine' API method accepts a URL UTF-8 string encoded parameter 'extraconfig'.
+
+Parameter is decoded following these rules:
+
+- There could be multiple XML sections, separated by a new line
+- Each section can be named, setting a title ending on ':' at the first line
+- Double quotes instead of single quotes should be used
+- Configurations are persisted as VM details, with the key: 'extraconfig-TITLE' or 'extraconfig-N' where N is a number.
+
+-  Example:
+
+   - In order to pass the below extra configuration to the VM, named 'config-1'
+
+   ::
+      
+      config-1:
+      <tag>
+         <inner-tag>VALUE</inner-tag>
+      </tag>
+
+   - The 'extraconfig' parameter should receive the UTF-8 URL encoded string:
+
+   ::
+      
+      config-1%3A%0A%3Ctag%3E%0A%20%20%20%3Cinner-tag%3EVALUE%3C%2Finner-tag%3E%0A%3C%2Ftag%3E
+
+DPDK required configuration
+"""""""""""""""""""""""""""
+
+-  Set the global configuration to 'true' (as global setting or account setting)
+
+   ::
+      
+      enable.additional.vm.configuration
+
+-  Generate the UTF-8 URL encoded additional configuration to enable huge pages and NUMA, examples below:
+
+   ::
+      
+      dpdk-hugepages:
+      <memoryBacking>
+         <hugepages>
+         </hugepages>
+      </memoryBacking>
+
+      dpdk-numa:
+      <cpu mode="host-passthrough">
+         <numa>
+            <cell id="0" cpus="0" memory="9437184" unit="KiB" memAccess="shared"/>
+         </numa>
+      </cpu>
+
+- Pass the 'extraconfig' parameter to 'deployVirtualMachine' or 'updateVirtualMachine' API methods
+
+   ::
+      
+      dpdk-hugepages%3A%0A%3CmemoryBacking%3E%0A%20%20%20%3Chugepages%3E%0A%20%20%20%20%3C%2Fhugepages%3E%0A%3C%2FmemoryBacking%3E%0A%0Adpdk-numa%3A%0A%3Ccpu%20mode%3D%22host-passthrough%22%3E%0A%20%20%20%3Cnuma%3E%0A%20%20%20%20%20%20%20%3Ccell%20id%3D%220%22%20cpus%3D%220%22%20memory%3D%229437184%22%20unit%3D%22KiB%22%20memAccess%3D%22shared%22%2F%3E%0A%20%20%20%3C%2Fnuma%3E%0A%3C%2Fcpu%3E%0A
+
+- Additionally, users can pass extra configuration named 'dpdk-interface-source' as a special case to reference the dpdkvhostuser port. Example below:
+
+   ::
+      
+      dpdk-interface-source:
+      <source type="unix" path="/var/run/openvswitch/vhost-user-1" mode="client"/>
+
+
 Revision History
 ----------------
 
