@@ -340,11 +340,11 @@ DPDK required configuration
          </numa>
       </cpu>
 
-- Pass the 'extraconfig' parameter to 'deployVirtualMachine' or 'updateVirtualMachine' API methods
+- Pass the 'extraconfig' parameter to 'deployVirtualMachine' or 'updateVirtualMachine' API methods as a single UTF-8 URL encoded string containing multiple extra configurations (as shown above). Note: if multiple extra configurations are needed, follow the example above and add new sections separated by an empty line, encode the whole string and pass it as a single string to the APIs as 'extraconfig' parameter.
 
    ::
       
-      dpdk-hugepages%3A%0A%3CmemoryBacking%3E%0A%20%20%20%3Chugepages%3E%0A%20%20%20%20%3C%2Fhugepages%3E%0A%3C%2FmemoryBacking%3E%0A%0Adpdk-numa%3A%0A%3Ccpu%20mode%3D%22host-passthrough%22%3E%0A%20%20%20%3Cnuma%3E%0A%20%20%20%20%20%20%20%3Ccell%20id%3D%220%22%20cpus%3D%220%22%20memory%3D%229437184%22%20unit%3D%22KiB%22%20memAccess%3D%22shared%22%2F%3E%0A%20%20%20%3C%2Fnuma%3E%0A%3C%2Fcpu%3E%0A
+      deployVirtualMachine extraconfig=dpdk-hugepages%3A%0A%3CmemoryBacking%3E%0A%20%20%20%3Chugepages%3E%0A%20%20%20%20%3C%2Fhugepages%3E%0A%3C%2FmemoryBacking%3E%0A%0Adpdk-numa%3A%0A%3Ccpu%20mode%3D%22host-passthrough%22%3E%0A%20%20%20%3Cnuma%3E%0A%20%20%20%20%20%20%20%3Ccell%20id%3D%220%22%20cpus%3D%220%22%20memory%3D%229437184%22%20unit%3D%22KiB%22%20memAccess%3D%22shared%22%2F%3E%0A%20%20%20%3C%2Fnuma%3E%0A%3C%2Fcpu%3E%0A
 
 - Additionally, users can pass extra configuration named 'dpdk-interface-source' as a special case to reference the dpdkvhostuser port. Example below:
 
