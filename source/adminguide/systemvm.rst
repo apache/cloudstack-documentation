@@ -552,3 +552,44 @@ The administrator can log in to the secondary storage VM if needed.
    :alt: Updating Console Proxy SSL Certificate
 .. |vr-upgrade.png| image:: /_static/images/vr-upgrade.png
    :alt: Button to upgrade VR to use the new template.
+
+Troubleshoot networks from System VMs
+-------------------------------------
+.. |run-diagnostics-icon.png| image:: /_static/images/run-diagnostics-icon.png
+.. |diagnostics-form.png| image:: /_static/images/diagnostics-form.png
+
+For troubleshooting of network issues in CloudStack hosted networks, CloudStack allows
+the administrator to execute network-utility commands (ping, traceroute or arping)
+remotely on system VMs.
+
+To run either a ping, traceroute or arping through the CloudStack UI:
+
+#. As an administrator, log in to the CloudStack UI.
+
+#. Navigate to Infrastructure > System VMs or Virtual Routers.
+
+#. Click on the Run Diagnostics button. |run-diagnostics-icon.png|
+
+#. A form will pop up similar to this;
+      |diagnostics-form.png|
+#. Fill in the details and click OK.
+
+The Extra Args parameter is for specifying command line optional parameters
+as one would when executing any of the tools from the terminal or command line.
+
+The supported versions are Debian 9 based since system VMs are built using the
+same Debian 9 based templates.
+
+| See:
+| Traceroute(1): https://manpages.debian.org/stretch/traceroute/traceroute.1.en.html
+| Ping(8): https://manpages.debian.org/stretch/iputils-ping/ping.8.en.html
+| Arping(8): https://manpages.debian.org/stretch/arping/arping.8.en.html
+
+
+Non-Alphanumeric characters (metacharacters) are not allowed for this parameter
+except for the “-“ and the “.”. Any metacharacter supplied will immediately result
+in an immediate termination of the command and report back to the operator that an illegal character was passed
+
+
+
+
