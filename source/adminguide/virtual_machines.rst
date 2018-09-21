@@ -827,7 +827,7 @@ To delete a virtual machine:
 
 #. Click the Destroy Instance button. |Destroyinstance.png|
 
-#. Optionally, select whether to expunge the VM, or to delete any attached volumes.
+#. Optionally both expunging and the deletion of any attached volumes can be enabled.
 
 
 Working with ISOs
