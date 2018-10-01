@@ -275,11 +275,12 @@ Since version 4.12 it is possible to enable DPDK support on CloudStack along wit
 Agent configuration
 ~~~~~~~~~~~~~~~~~~~
 
--  Edit /etc/cloudstack/agent/agent.properties to append DPDK support on ovs-vstcl commands for port creations
+-  Edit /etc/cloudstack/agent/agent.properties to enable DPDK support on ovs-vstcl commands for port creations as well as the path to OVS ports (usually: /var/run/openvswitch)
 
    ::
       
       openvswitch.dpdk.enable=true
+      openvswitch.dpdk.ovs.path=OVS_PATH
 
 Use DPDK on VM deployments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -346,13 +347,16 @@ DPDK required configuration
       
       deployVirtualMachine extraconfig=dpdk-hugepages%3A%0A%3CmemoryBacking%3E%0A%20%20%20%3Chugepages%3E%0A%20%20%20%20%3C%2Fhugepages%3E%0A%3C%2FmemoryBacking%3E%0A%0Adpdk-numa%3A%0A%3Ccpu%20mode%3D%22host-passthrough%22%3E%0A%20%20%20%3Cnuma%3E%0A%20%20%20%20%20%20%20%3Ccell%20id%3D%220%22%20cpus%3D%220%22%20memory%3D%229437184%22%20unit%3D%22KiB%22%20memAccess%3D%22shared%22%2F%3E%0A%20%20%20%3C%2Fnuma%3E%0A%3C%2Fcpu%3E%0A
 
-- Additionally, users can pass extra configuration named 'dpdk-interface-source' as a special case to reference the dpdkvhostuser port. Example below:
+- Additionally, users can pass extra configuration named 'dpdk-interface-TAG' to be included on VMs interfaces definition. Example below:
 
    ::
       
-      dpdk-interface-source:
-      <source type="unix" path="/var/run/openvswitch/vhost-user-1" mode="client"/>
+      dpdk-interface-model:
+      <model type='virtio'/>
 
+DPDK ports
+""""""""""
+CloudStack creates ports with DPDK support using the reserved prefix: "csdpdk-".
 
 Revision History
 ----------------
