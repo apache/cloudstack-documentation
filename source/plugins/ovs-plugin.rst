@@ -279,7 +279,7 @@ Agent configuration
 
    ::
       
-      openvswitch.dpdk.enable=true
+      openvswitch.dpdk.enabled=true
       openvswitch.dpdk.ovs.path=OVS_PATH
 
 Use DPDK on VM deployments
