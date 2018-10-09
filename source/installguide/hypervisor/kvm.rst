@@ -1091,13 +1091,13 @@ installed on all of your KVM hosts.
 As this package often is not available in standard distribution repos, you will need
 to install the package from your preferred source. 
 
-Live Migration
+Volume snapshots
 ^^^^^^^^^^^^^^
-CloudStack uses the qemu-img to perform live migrations.  In CentOS > 6.3, the qemu-img
+CloudStack uses the qemu-img to perform snapshots.  In CentOS >= 6.5, the qemu-img
 supplied by RedHat/CentOS ceased to include a '-s' switch which performs snapshots. The
 '-s' switch has been restored in latest CentOS/RHEL 7.x versions.
 
-In order to be able to perform live migrations on CentOS 6.x (greater than 6.3) you must
+In order to be able to perform volume snapshots on CentOS 6.x (greater than 6.4) you must
 replace your version of qemu-img with one which has been patched to include the '-s'
 switch.
 
