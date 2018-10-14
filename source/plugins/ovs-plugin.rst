@@ -275,20 +275,27 @@ Since version 4.12 it is possible to enable DPDK support on CloudStack along wit
 Agent configuration
 ~~~~~~~~~~~~~~~~~~~
 
--  Edit /etc/cloudstack/agent/agent.properties to append DPDK support on ovs-vstcl commands for port creations
+-  Edit /etc/cloudstack/agent/agent.properties to enable DPDK support on the agent and on ovs-vstcl commands for port creations as well as the path to OVS ports (usually: /var/run/openvswitch)
 
    ::
       
-      openvswitch.dpdk.enable=true
+      openvswitch.dpdk.enabled=true
+      openvswitch.dpdk.ovs.path=OVS_PATH
 
-Use DPDK on VM deployments
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-Users are able to pass extra configurations as part of the 'deployVirtualMachine' API method.
-These extra configurations are included on the resulting XML domain of the virtual machine.
+Agent should be restarted for actions to take effect.
 
-Additional VM configuration
-"""""""""""""""""""""""""""
-The 'deployVirtualMachine' API method accepts a URL UTF-8 string encoded parameter 'extraconfig'.
+Additional VM configurations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In order to enable DPDK on VM deployments, users should pass addition configuration to VMs. The required configurations are listed on the next section. Administrators can allow users to pass additional configurations to their VMs by the account scoped setting:
+
+::
+      
+      enable.additional.vm.configuration
+
+Users are able to pass extra configurations as part of the 'deployVirtualMachine' or 'updateVirtualMachine' API methods.
+These extra configurations are included on the resulting XML domain of the virtual machine and are also persisted on CloudStack database as details on the 'user_vm_details' table.
+
+The 'deployVirtualMachine' and 'updateVirtualMachine' API methods accept a URL UTF-8 string encoded parameter 'extraconfig'.
 
 Parameter is decoded following these rules:
 
@@ -297,25 +304,29 @@ Parameter is decoded following these rules:
 - Double quotes instead of single quotes should be used
 - Configurations are persisted as VM details, with the key: 'extraconfig-TITLE' or 'extraconfig-N' where N is a number.
 
--  Example:
+Example:
 
-   - In order to pass the below extra configuration to the VM, named 'config-1'
+In order to pass the below extra configuration to the VM, named 'config-1'
 
-   ::
+::
       
       config-1:
       <tag>
          <inner-tag>VALUE</inner-tag>
       </tag>
 
-   - The 'extraconfig' parameter should receive the UTF-8 URL encoded string:
+The 'extraconfig' parameter should receive the UTF-8 URL encoded string:
 
-   ::
+::
       
       config-1%3A%0A%3Ctag%3E%0A%20%20%20%3Cinner-tag%3EVALUE%3C%2Finner-tag%3E%0A%3C%2Ftag%3E
 
-DPDK required configuration
-"""""""""""""""""""""""""""
+On 'user_vm_details' table the additional configuration is persisted with key: 'extraconfig-config-1'
+
+
+Additional configurations to enable DPDK on VMs 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+To enable DPDK on VM deployments:
 
 -  Set the global configuration to 'true' (as global setting or account setting)
 
@@ -346,13 +357,29 @@ DPDK required configuration
       
       deployVirtualMachine extraconfig=dpdk-hugepages%3A%0A%3CmemoryBacking%3E%0A%20%20%20%3Chugepages%3E%0A%20%20%20%20%3C%2Fhugepages%3E%0A%3C%2FmemoryBacking%3E%0A%0Adpdk-numa%3A%0A%3Ccpu%20mode%3D%22host-passthrough%22%3E%0A%20%20%20%3Cnuma%3E%0A%20%20%20%20%20%20%20%3Ccell%20id%3D%220%22%20cpus%3D%220%22%20memory%3D%229437184%22%20unit%3D%22KiB%22%20memAccess%3D%22shared%22%2F%3E%0A%20%20%20%3C%2Fnuma%3E%0A%3C%2Fcpu%3E%0A
 
-- Additionally, users can pass extra configuration named 'dpdk-interface-source' as a special case to reference the dpdkvhostuser port. Example below:
+- Additionally, users can pass extra configuration named 'dpdk-interface-TAG' to be included on VMs interfaces definition. Example below:
 
    ::
       
-      dpdk-interface-source:
-      <source type="unix" path="/var/run/openvswitch/vhost-user-1" mode="client"/>
+      dpdk-interface-model:
+      <model type='virtio'/>
 
+DPDK ports
+~~~~~~~~~~
+When VM is created or started, CloudStack creates ports with DPDK support with format: "csdpdk-N" where N is a number, incremented on new ports creation. This port is set into the 'source' property of the 'interface' tag on the XML domain of the VM, prepended by the value of the OVS path set on the property:
+
+::
+
+      openvswitch.dpdk.ovs.path=OVS_PATH
+
+That would set interfaces to type 'vhostuser' and reference the ports created in the XML domain of the VMs as:
+
+::
+
+      <interface type='vhostuser'>
+         <source type="unix" path="<OVS_PATH>/<port_name>" mode="client"/>
+         ...
+      </interface>
 
 Revision History
 ----------------
