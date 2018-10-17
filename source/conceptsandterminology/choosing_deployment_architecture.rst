@@ -168,7 +168,7 @@ supported by CloudStack. The following table provides this information.
 +----------------------------------+-----------+--------------+------------+-----+--------+------------+
 | Feature                          | XenServer | vSphere      | KVM - RHEL | LXC | HyperV | Bare Metal |
 +==================================+===========+==============+============+=====+========+============+
-| Network Throttling               | Yes       | Yes          | No         | No  | ?      | N/A        |
+| Network Throttling               | Yes       | Yes          | Yes        | No  | ?      | N/A        |
 +----------------------------------+-----------+--------------+------------+-----+--------+------------+
 | Security groups in zones that use| Yes       | No           | Yes        | Yes | ?      | No         |
 | basic networking                 |           |              |            |     |        |            |
