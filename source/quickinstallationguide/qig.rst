@@ -34,7 +34,7 @@ High level overview of the process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This runbook will focus on building a CloudStack cloud using KVM on CentOS 
-6.8 with NFS storage on a flat layer-2 network utilizing layer-3 network 
+7.5 with NFS storage on a flat layer-2 network utilizing layer-3 network 
 isolation (aka Security Groups), and doing it all on a single piece of 
 hardware.
 
@@ -53,8 +53,8 @@ To complete this runbook you'll need the following items:
 
 #. At least one computer which supports and has enabled hardware virtualization.
 
-#. The `CentOS 6.8 x86_64 minimal install CD 
-   <http://mirrors.kernel.org/centos/6/isos/x86_64/>`_
+#. An `CentOS 7.5 x86_64 install ISO, on bootable media 
+   <http://mirrors.kernel.org/centos/7/isos/x86_64/>`_
 
 #. A /24 network with the gateway being at xxx.xxx.xxx.1, no DHCP should be on 
    this network and none of the computers running CloudStack will have a 
@@ -71,14 +71,23 @@ CloudStack. We will go over the steps to prepare now.
 Operating System
 ~~~~~~~~~~~~~~~~
 
-Using the CentOS 6.8 x86_64 minimal install ISO, you'll need to install CentOS 6 
+Using the CentOS 7.5 x86_64 install ISO, you'll need to install CentOS 7 
 on your hardware. The defaults will generally be acceptable for this 
-installation.
+installation. You may want to configure network configuration during
+setup - either using the guidelines below, or using a standard access
+configuration which we will modify later.
 
-Once this installation is complete, you'll want to connect to your freshly 
-installed machine via SSH as the root user. Note that you should not allow 
-root logins in a production environment, so be sure to turn off remote logins 
-once you have finished the installation and configuration.
+Once this installation is complete, you'll want to gain access to your
+server - through SSH (if network is configured) or connected peripherals.
+Note that you should not allow remote root logins in a production
+environment, so be sure to turn off this feature once the installation
+and configuration is complete. 
+
+If your network interface was configured to grant the server internet
+access, it is always wise to update the system before starting: 
+
+.. parsed-literal::
+   # yum -y upgrade
 
 
 .. _conf-network:
@@ -86,44 +95,15 @@ once you have finished the installation and configuration.
 Configuring the network
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-By default the network will not come up on your hardware and you will need to 
-configure it to work in your environment. Since we specified that there will 
-be no DHCP server in this environment we will be manually configuring your 
-network interface. We will assume, for the purposes of this exercise, that 
-eth0 is the only network interface that will be connected and used.
+Unless you have configured it during install, which will not be covered by
+this guide, the network interface will not come up on your hardware and you
+will need to configure it to work in your environment. Since we specified 
+that there will be no DHCP server in this environment we will be manually 
+configuring your network interface. 
 
-Connecting via the console you should login as root. Check the file 
-/etc/sysconfig/network-scripts/ifcfg-eth0, it will look like this by default:
-
-::
-
-   DEVICE="eth0"
-   HWADDR="52:54:00:B9:A6:C0"
-   NM_CONTROLLED="yes"
-   ONBOOT="no"
-
-Unfortunately, this configuration will not permit you to connect to the 
-network, and is also unsuitable for our purposes with CloudStack. We want to 
-configure that file so that it specifies the IP address, netmask, etc., as 
-shown in the following example:
-
-.. note:: 
-   You should not use the Hardware Address (aka the MAC address) from our 
-   example for your configuration. It is network interface specific, so you 
-   should keep the address already provided in the HWADDR directive.
-
-:: 
-
-   DEVICE=eth0
-   HWADDR=52:54:00:B9:A6:C0
-   NM_CONTROLLED=no
-   ONBOOT=yes
-   BOOTPROTO=none
-   IPADDR=172.16.10.2
-   NETMASK=255.255.255.0
-   GATEWAY=172.16.10.1
-   DNS1=8.8.8.8
-   DNS2=8.8.4.4
+Connecting via the console you should login as root. We will start by creating
+the bridge that Cloudstack will use for networking. Create and open
+/etc/sysconfig/network-scripts/ifcfg-cloudbr0 and add the following settings:
 
 .. note:: 
    IP Addressing - Throughout this document we are assuming that you will have 
@@ -131,15 +111,67 @@ shown in the following example:
    network. However, we are assuming that you will match the machine address 
    that we are using. Thus we may use 172.16.10.2 and because you might be 
    using the 192.168.55.0/24 network you would use 192.168.55.2
+   
+::
+
+   DEVICE=cloudbr0
+   TYPE=Bridge
+   ONBOOT=yes
+   BOOTPROTO=none
+   IPV6INIT=no
+   IPV6_AUTOCONF=no
+   DELAY=5
+   IPADDR=172.16.10.2
+   GATEWAY=172.16.10.1
+   NETMASK=255.255.255.0
+   DNS1=8.8.8.8
+   DNS2=8.8.4.4
+
+Save the configuration and exit. We will then edit the interface so that it
+makes use of this bridge. Enter this command to find your interfaces: 
+
+.. note::
+   CentOS 7 has implemented 'Predictable Network Interface Names<https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/>'_ and as such, 
+   the following instructions will depend on your configuration, and interface
+   names are used only for the sake of simplicity.
+
+.. parsed-literal::
+   # ls /etc/sysconfig/network-scripts | grep ifcfg
+   
+This should return three results: ifcfg-lo, ifcfg-cloudbr0, and ifcfg-enp3s0. The first being loopback and the second being the interface we've just created, open ifcfg-enp3s0. Replace it's current configuration with the following: 
+
+::
+   TYPE=Ethernet
+   PROXY_METHOD=none
+   BROWSER_ONLY=no
+   BOOTPROTO=none
+   DEFROUTE=yes
+   IPV6INIT=no
+   NAME=enp5s0
+   UUID=26f024e6-1113-416e-b319-58ebec347886
+   DEVICE=enp3s0
+   ONBOOT=yes
+   BRIDGE=cloudbr0
+
+ 
+   
+   .. note:: 
+   You should not use the Hardware Address (aka the MAC address, or UUID) from our 
+   example for your configuration. It is network interface specific, so you 
+   should keep the address already provided in the UUID directive.
+
+
 
 Now that we have the configuration files properly set up, we need to run a few 
 commands to start up the network: 
 
 .. parsed-literal::
 
-   # chkconfig network on
+   # systemctl enable network
 
-   # service network start
+   # systemctl restart network
+   
+Note that if you were connected through SSH, you will be temporarily (~5 seconds depending on hardware) disconnected. If the disconnection lasts, there was an error in configuration.
 
 
 .. _conf-hostname:
@@ -174,7 +206,7 @@ After you've modified that file, go ahead and restart the network using:
 
 .. parsed-literal::
 
-   # service network restart
+   # systemctl restart network
 
 Now recheck with the hostname --fqdn command and ensure that it returns a FQDN 
 response
@@ -231,8 +263,8 @@ to enable it and set it to start on boot as follows:
 
 .. parsed-literal::
 
-   # chkconfig ntpd on
-   # service ntpd start
+   # systemctl enable ntpd
+   # systemctl start ntpd
 
 
 .. _qigconf-pkg-repo:
@@ -247,7 +279,8 @@ We need to configure the machine to use a CloudStack package repository.
    no 'official' binaries available. The full installation guide describes how 
    to take the source release and generate RPMs and and yum repository. This 
    guide attempts to keep things as simple as possible, and thus we are using 
-   one of the community-provided yum repositories.
+   one of the community-provided yum repositories. Furthermore, this example 
+   assumes a 4.11 Cloudstack install - substitute versions as needed.
 
 To add the CloudStack repository, create /etc/yum.repos.d/cloudstack.repo and 
 insert the following information.
@@ -256,7 +289,7 @@ insert the following information.
 
    [cloudstack]
    name=cloudstack
-   baseurl=http://download.cloudstack.org/centos/6/|version|/
+   baseurl=http://download.cloudstack.org/centos/7/4.11/
    enabled=1
    gpgcheck=0
 
@@ -290,13 +323,13 @@ appropriately on them with the following commands:
    # mkdir -p /export/primary
    # mkdir /export/secondary
 
-CentOS 6.x releases use NFSv4 by default. NFSv4 requires that domain setting 
+CentOS 7.x releases use NFSv4 by default. NFSv4 requires that domain setting 
 matches on all clients. In our case, the domain is cloud.priv, so ensure that 
 the domain setting in /etc/idmapd.conf is uncommented and set as follows:
 Domain = cloud.priv
 
-Now you'll need uncomment the configuration values in the file 
-/etc/sysconfig/nfs
+Now you'll need to add the configuration values at the bottom in the file 
+/etc/sysconfig/nfs (or merely uncomment and set them)
 
 .. parsed-literal::
 
@@ -308,37 +341,50 @@ Now you'll need uncomment the configuration values in the file
    STATD_OUTGOING_PORT=2020
 
 Now we need to configure the firewall to permit incoming NFS connections. 
-Edit the file /etc/sysconfig/iptables
+Create firewalldnfs.sh, and add the following content to it: 
 
 .. parsed-literal::
 
-   -A INPUT -s 172.16.10.0/24 -m state --state NEW -p udp --dport 111 -j ACCEPT
-   -A INPUT -s 172.16.10.0/24 -m state --state NEW -p tcp --dport 111 -j ACCEPT
-   -A INPUT -s 172.16.10.0/24 -m state --state NEW -p tcp --dport 2049 -j ACCEPT
-   -A INPUT -s 172.16.10.0/24 -m state --state NEW -p tcp --dport 32803 -j ACCEPT
-   -A INPUT -s 172.16.10.0/24 -m state --state NEW -p udp --dport 32769 -j ACCEPT
-   -A INPUT -s 172.16.10.0/24 -m state --state NEW -p tcp --dport 892 -j ACCEPT
-   -A INPUT -s 172.16.10.0/24 -m state --state NEW -p udp --dport 892 -j ACCEPT
-   -A INPUT -s 172.16.10.0/24 -m state --state NEW -p tcp --dport 875 -j ACCEPT
-   -A INPUT -s 172.16.10.0/24 -m state --state NEW -p udp --dport 875 -j ACCEPT
-   -A INPUT -s 172.16.10.0/24 -m state --state NEW -p tcp --dport 662 -j ACCEPT
-   -A INPUT -s 172.16.10.0/24 -m state --state NEW -p udp --dport 662 -j ACCEPT
+   #!/bin/bash
 
-Now you can restart the iptables service with the following command:
+   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 10 -m state --state ESTABLISHED,RELATED -j ACCEPT
+   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 20 -p icmp -j ACCEPT
+   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 30 -i lo -j ACCEPT
+   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 40 -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 50 -j REJECT --reject-with icmp-host-prohibited
+   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 60 -j REJECT --reject-with icmp-host-prohibited
+   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 70 -s 204.168.1.0/24 -m state --state NEW -p udp --dport 111 -j ACCEPT
+   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 80 -s 204.168.1.0/24 -m state --state NEW -p tcp --dport 111 -j ACCEPT
+   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 90 -s 204.168.1.0/24 -m state --state NEW -p tcp --dport 2049 -j ACCEPT
+   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 100 -s 204.168.1.0/24 -m state --state NEW -p tcp --dport 32803 -j ACCEPT
+   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 110 -s 204.168.1.0/24 -m state --state NEW -p udp --dport 32769 -j ACCEPT
+   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 120 -s 204.168.1.0/24 -m state --state NEW -p tcp --dport 892 -j ACCEPT
+   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 130 -s 204.168.1.0/24 -m state --state NEW -p udp --dport 892 -j ACCEPT
+   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 140 -s 204.168.1.0/24 -m state --state NEW -p tcp --dport 875 -j ACCEPT
+   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 150 -s 204.168.1.0/24 -m state --state NEW -p udp --dport 875 -j ACCEPT
+   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 160 -s 204.168.1.0/24 -m state --state NEW -p tcp --dport 662 -j ACCEPT
+   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 170 -s 204.168.1.0/24 -m state --state NEW -p udp --dport 662 -j ACCEPT
+   firewall-cmd --runtime-to-permanent
+   firewall-cmd --reload
+
+Then use the following command to make it executable, and execute it: 
 
 .. parsed-literal::
-
-   # service iptables restart
+   #chmod +x firewalldnfs.sh
+   
+   #bash firewalldnfs.sh
+   
+You should see a whole series of "success" messages appearing. Anything different means there was an error. 
 
 We now need to configure the nfs service to start on boot and actually start 
 it on the host by executing the following commands:
 
 .. parsed-literal::
 
-   # service rpcbind start
-   # service nfs start
-   # chkconfig rpcbind on
-   # chkconfig nfs on
+   # systemctl enable rpcbind
+   # systemctl enable nfs
+   # systemctl start rpcbind
+   # systemctl start nfs
 
 
 Management Server Installation
@@ -352,6 +398,13 @@ Database Installation and Configuration
 
 We'll start with installing MySQL and configuring some options to ensure it 
 runs well with CloudStack. 
+
+First, as CentOS 7 no longer provides the MySQL binaries, we need to add a repository: 
+
+.. parsed-literal::
+   # wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+   # rpm -ivh mysql-community-release-el7-5.noarch.rpm
+   # yum -y update
 
 Install by running the following command: 
 
@@ -376,8 +429,8 @@ start on boot as follows:
 
 .. parsed-literal:: 
 
-   # service mysqld start
-   # chkconfig mysqld on
+   # systemctl enable mysqld
+   # systemctl start mysqld
 
 
 MySQL connector Installation
@@ -453,7 +506,7 @@ the system VMs images.
   
    /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt \
    -m /export/secondary \
-   -u http://download.cloudstack.org/systemvm/4.6/systemvm64template-4.6.0-kvm.qcow2.bz2 \
+   -u http://download.cloudstack.org/systemvm/4.11/systemvmtemplate-4.11.0-kvm.qcow2.bz2 \
    -h kvm -F
 
 
@@ -555,7 +608,7 @@ and should already be installed.
 
    .. parsed-literal::
 
-      # service libvirtd restart
+      # systemctl restart libvirtd
 
 
 KVM configuration complete
@@ -692,4 +745,3 @@ Now, click Launch and your cloud should begin setup - it may take several
 minutes depending on your internet connection speed for setup to finalize.
 
 That's it, you are done with installation of your Apache CloudStack cloud.
-
