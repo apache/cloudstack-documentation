@@ -613,6 +613,9 @@ Parameters Changed API Commands
 |                                             | - ``datadiskofferinglist`` (optional)                                          |
 |                                             | - ``dhcpoptionsnetworklist`` (optional)                                        |
 |                                             | - ``macaddress`` (optional)                                                    |
+|                                             | - ``podid`` (optional)                                                         |
+|                                             | - ``clusterid`` (optional)                                                     |
+|                                             | - ``hostid`` (optional)                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``listVlanIpRanges``                        | **Response:**                                                                  |
@@ -1014,5 +1017,12 @@ Parameters Changed API Commands
 |                                             | - ``volumeids``                                                                |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-
-
+| ``startVirtualMachine``                     | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``podid`` (optional)                                                         |
+|                                             | - ``clusterid`` (optional)                                                     |
+|                                             | - ``hostid`` (optional)                                                        |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+

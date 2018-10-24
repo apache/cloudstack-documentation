@@ -185,7 +185,7 @@ To create a VM from a template:
 
 #. Click Add Instance.
 
-#. Select a zone.
+#. Select a zone. Admin users also have to option to select a pod, cluster or host.
 
 #. Select a template, then follow the steps in the wizard. For more
    information about how the templates came to be in this list, see
@@ -215,7 +215,7 @@ To create a VM from an ISO:
 
 #. Click Add Instance.
 
-#. Select a zone.
+#. Select a zone. Admin users also have to option to select a pod, cluster or host.
 
 #. Select ISO Boot, and follow the steps in the wizard.
 
@@ -263,6 +263,8 @@ Once a VM instance is created, you can stop, restart, or delete it as
 needed. In the CloudStack UI, click Instances, select the VM, and use
 the Stop, Start, Reboot, and Destroy buttons.
 
+When starting a VM, admin users have the option to specify a pod, cluster, or host.
+
 
 Assigning VMs to Hosts
 ----------------------
@@ -287,6 +289,10 @@ There are several ways:
    second host. This reduces power consumption in the cloud. Horizontal
    allocation places a guest on each host in a round-robin fashion. This
    may yield better performance to the guests in some cases.
+
+-  Admin users preferences. Administrators have to option to specify a
+   pod, cluster, or host to run the VM in. CloudStack will then select
+   a host within the given infrastructure.
 
 -  End user preferences. Users can not control exactly which host will
    run a given VM instance, but they can specify a zone for the VM.
