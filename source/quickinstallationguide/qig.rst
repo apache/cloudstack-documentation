@@ -117,7 +117,7 @@ the bridge that Cloudstack will use for networking. Create and open
    DEVICE=cloudbr0
    TYPE=Bridge
    ONBOOT=yes
-   BOOTPROTO=none
+   BOOTPROTO=static
    IPV6INIT=no
    IPV6_AUTOCONF=no
    DELAY=5
@@ -126,6 +126,10 @@ the bridge that Cloudstack will use for networking. Create and open
    NETMASK=255.255.255.0
    DNS1=8.8.8.8
    DNS2=8.8.4.4
+   DELAY=0
+   STP=yes
+   USERCTL=no
+   NM_CONTROLLED=no
 
 Save the configuration and exit. We will then edit the interface so that it
 makes use of this bridge. Enter this command to find your interfaces: 
