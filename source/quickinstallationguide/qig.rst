@@ -1,6 +1,6 @@
 .. Licensed to the Apache Software Foundation (ASF) under one
    or more contributor license agreements.  See the NOTICE file
-   distributed with this work for additional information#
+   distributed with this work for additional information
    regarding copyright ownership.  The ASF licenses this file
    to you under the Apache License, Version 2.0 (the
    "License"); you may not use this file except in compliance
@@ -344,41 +344,16 @@ Now you'll need to add the configuration values at the bottom in the file
    STATD_PORT=662
    STATD_OUTGOING_PORT=2020
 
-Now we need to configure the firewall to permit incoming NFS connections. 
-Create firewalldnfs.sh, and add the following content to it: 
+Now we need to disable the firewall, so that it will not block connections.
+.. note::
+   Configuration of the firewall on CentOS7 is beyond the purview of this
+   guide.
+   
+To do so, simply use the following two commands: 
 
 .. parsed-literal::
-
-   #!/bin/bash
-
-   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 10 -m state --state ESTABLISHED,RELATED -j ACCEPT
-   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 20 -p icmp -j ACCEPT
-   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 30 -i lo -j ACCEPT
-   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 40 -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
-   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 50 -j REJECT --reject-with icmp-host-prohibited
-   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 60 -j REJECT --reject-with icmp-host-prohibited
-   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 70 -s 204.168.1.0/24 -m state --state NEW -p udp --dport 111 -j ACCEPT
-   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 80 -s 204.168.1.0/24 -m state --state NEW -p tcp --dport 111 -j ACCEPT
-   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 90 -s 204.168.1.0/24 -m state --state NEW -p tcp --dport 2049 -j ACCEPT
-   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 100 -s 204.168.1.0/24 -m state --state NEW -p tcp --dport 32803 -j ACCEPT
-   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 110 -s 204.168.1.0/24 -m state --state NEW -p udp --dport 32769 -j ACCEPT
-   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 120 -s 204.168.1.0/24 -m state --state NEW -p tcp --dport 892 -j ACCEPT
-   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 130 -s 204.168.1.0/24 -m state --state NEW -p udp --dport 892 -j ACCEPT
-   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 140 -s 204.168.1.0/24 -m state --state NEW -p tcp --dport 875 -j ACCEPT
-   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 150 -s 204.168.1.0/24 -m state --state NEW -p udp --dport 875 -j ACCEPT
-   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 160 -s 204.168.1.0/24 -m state --state NEW -p tcp --dport 662 -j ACCEPT
-   firewall-cmd --direct --add-rule ipv4 filter INPUT_direct 170 -s 204.168.1.0/24 -m state --state NEW -p udp --dport 662 -j ACCEPT
-   firewall-cmd --runtime-to-permanent
-   firewall-cmd --reload
-
-Then use the following command to make it executable, and execute it: 
-
-.. parsed-literal::
-   #chmod +x firewalldnfs.sh
-   
-   #bash firewalldnfs.sh
-   
-You should see a whole series of "success" messages appearing. Anything different means there was an error. 
+   # systemctl stop firewalld
+   # systemctl disable firewalld
 
 We now need to configure the nfs service to start on boot and actually start 
 it on the host by executing the following commands:
