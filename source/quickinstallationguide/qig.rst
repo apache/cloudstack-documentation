@@ -144,7 +144,8 @@ makes use of this bridge. Enter this command to find your interfaces:
    
 This should return three results: ifcfg-lo, ifcfg-cloudbr0, and ifcfg-enp3s0. The first being loopback and the second being the interface we've just created, open ifcfg-enp3s0. Replace it's current configuration with the following: 
 
-::
+
+.. parsed-literal::
    TYPE=Ethernet
    PROXY_METHOD=none
    BROWSER_ONLY=no
@@ -158,8 +159,7 @@ This should return three results: ifcfg-lo, ifcfg-cloudbr0, and ifcfg-enp3s0. Th
    BRIDGE=cloudbr0
 
  
-   
-   .. note:: 
+.. note:: 
    You should not use the Hardware Address (aka the MAC address, or UUID) from our 
    example for your configuration. It is network interface specific, so you 
    should keep the address already provided in the UUID directive.
