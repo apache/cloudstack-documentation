@@ -132,18 +132,12 @@ the bridge that Cloudstack will use for networking. Create and open
    NM_CONTROLLED=no
 
 Save the configuration and exit. We will then edit the interface so that it
-makes use of this bridge. Enter this command to find your interfaces: 
+makes use of this bridge.
+   
+Open the configuration file of your interaface and configure it as follows: 
 
 .. note::
-   CentOS 7 has implemented 'Predictable Network Interface Names<https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/>'_ and as such, 
-   the following instructions will depend on your configuration, and interface
-   names are used only for the sake of simplicity.
-
-.. parsed-literal::
-   # ls /etc/sysconfig/network-scripts | grep ifcfg
-   
-This should return three results: ifcfg-lo, ifcfg-cloudbr0, and ifcfg-enp3s0. The first being loopback and the second being the interface we've just created, open ifcfg-enp3s0. Replace it's current configuration with the following: 
-
+   Interface name used as example only. Replace eth0 with your default ethernet interface name.
 
 .. parsed-literal::
    TYPE=Ethernet
@@ -152,9 +146,9 @@ This should return three results: ifcfg-lo, ifcfg-cloudbr0, and ifcfg-enp3s0. Th
    BOOTPROTO=none
    DEFROUTE=yes
    IPV6INIT=no
-   NAME=enp5s0
+   NAME=eth0
    UUID=26f024e6-1113-416e-b319-58ebec347886
-   DEVICE=enp3s0
+   DEVICE=eth0
    ONBOOT=yes
    BRIDGE=cloudbr0
 
