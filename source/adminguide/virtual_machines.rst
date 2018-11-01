@@ -809,6 +809,13 @@ To manually live migrate a virtual machine
 
 #. Click OK.
 
+.. note:: 
+      (KVM) If the VM's storage has to be migrated along with the VM, from a mounted NFS storage pool to a cluster-wide mounted NFS storage pool, then the 'migrateVirtualMachineWithVolume' API has to be used. There is no UI integration for this feature.
+
+      (CloudMonkey) > migrate virtualmachinewithvolume virtualmachineid=<virtual machine uuid> hostid=<destination host uuid> migrateto[i].volume=<virtual machine volume number i uuid> migrateto[i].pool=<destination storage pool uuid for volume number i>
+
+      where i in [0,..,N] and N = number of volumes of the virtual machine
+
 
 Deleting VMs
 ------------
