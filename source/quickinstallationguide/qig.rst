@@ -369,7 +369,19 @@ section:
    innodb_lock_wait_timeout=600
    max_connections=350
    log-bin=mysql-bin
-   binlog-format = 'ROW' 
+   binlog-format = 'ROW'
+
+.. note::
+For Ubuntu 16.04 and later, make sure you specify a ``server-id`` in your ``.cnf`` file for binary logging. Set the     ``server-id`` according to your database setup.
+    
+::
+
+   server-id=master-01
+   innodb_rollback_on_timeout=1
+   innodb_lock_wait_timeout=600
+   max_connections=350
+   log-bin=mysql-bin
+   binlog-format = 'ROW'
 
 Now that MySQL is properly configured we can start it and configure it to 
 start on boot as follows:
