@@ -150,7 +150,7 @@ steps are a guide to implementing MySQL replication.
    assumes that master and slave run on the 172.16.1.0/24 network.
 
    .. sourcecode: bash
-
+   .. parsed-literal::
       # mysql -u root
       mysql> create user 'cloud-repl'@'172.16.1.%' identified by 'password';
       mysql> grant replication slave on *.* TO 'cloud-repl'@'172.16.1.%';
