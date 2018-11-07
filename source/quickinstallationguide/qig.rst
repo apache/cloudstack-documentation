@@ -104,27 +104,43 @@ Connecting via the console you should login as root. Check the file
 
 Unfortunately, this configuration will not permit you to connect to the 
 network, and is also unsuitable for our purposes with CloudStack. We want to 
-configure that file so that it specifies the IP address, netmask, etc., as 
-shown in the following example:
+configure that file so that it specifies the IP address, netmask, etc. We will 
+edit the eth0 interface and make it part of bridge named "cloudbr0" as shown in the
+following example:
 
 .. note:: 
    You should not use the Hardware Address (aka the MAC address) from our 
    example for your configuration. It is network interface specific, so you 
    should keep the address already provided in the HWADDR directive.
 
+vi /etc/sysconfig/network-scripts/ifcfg-eth0
 :: 
 
    DEVICE=eth0
-   HWADDR=52:54:00:B9:A6:C0
-   NM_CONTROLLED=no
+   HWADDR=00:04:xx:xx:xx:xx
    ONBOOT=yes
    BOOTPROTO=none
+   TYPE=Ethernet
+   BRIDGE=cloudbr0
+
+vi /etc/sysconfig/network-scripts/ifcfg-cloudbr0
+
+::
+
+   DEVICE=cloudbr0
+   TYPE=Bridge
+   ONBOOT=yes
+   BOOTPROTO=none
+   IPV6INIT=no
+   IPV6_AUTOCONF=no
+   DELAY=5
    IPADDR=172.16.10.2
    NETMASK=255.255.255.0
    GATEWAY=172.16.10.1
    DNS1=8.8.8.8
    DNS2=8.8.4.4
-
+   STP=yes
+   
 .. note:: 
    IP Addressing - Throughout this document we are assuming that you will have 
    a /24 network for your CloudStack implementation. This can be any RFC 1918 
