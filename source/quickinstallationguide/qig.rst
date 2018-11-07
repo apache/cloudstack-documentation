@@ -141,18 +141,13 @@ Open the configuration file of your interaface and configure it as follows:
 
 .. parsed-literal::
    TYPE=Ethernet
-   PROXY_METHOD=none
-   BROWSER_ONLY=no
    BOOTPROTO=none
    DEFROUTE=yes
-   IPV6INIT=no
    NAME=eth0
-   UUID=26f024e6-1113-416e-b319-58ebec347886
    DEVICE=eth0
    ONBOOT=yes
    BRIDGE=cloudbr0
 
- 
 .. note:: 
    You should not use the Hardware Address (aka the MAC address, or UUID) from our 
    example for your configuration. It is network interface specific, so you 
@@ -395,7 +390,19 @@ section:
    innodb_lock_wait_timeout=600
    max_connections=350
    log-bin=mysql-bin
-   binlog-format = 'ROW' 
+   binlog-format = 'ROW'
+
+.. note::
+For Ubuntu 16.04 and later, make sure you specify a ``server-id`` in your ``.cnf`` file for binary logging. Set the     ``server-id`` according to your database setup.
+    
+::
+
+   server-id=master-01
+   innodb_rollback_on_timeout=1
+   innodb_lock_wait_timeout=600
+   max_connections=350
+   log-bin=mysql-bin
+   binlog-format = 'ROW'
 
 Now that MySQL is properly configured we can start it and configure it to 
 start on boot as follows:

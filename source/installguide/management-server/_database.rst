@@ -62,6 +62,18 @@ MySQL. See :ref:`install-database-on-separate-node`.
       max_connections=350
       log-bin=mysql-bin
       binlog-format = 'ROW'
+      
+   .. note::
+      For Ubuntu 16.04 and later, make sure you specify a ``server-id`` in your ``.cnf`` file for binary logging. Set the         ``server-id`` according to your database setup.
+    
+   .. parsed-literal::
+   
+      server-id=master-01
+      innodb_rollback_on_timeout=1
+      innodb_lock_wait_timeout=600
+      max_connections=350
+      log-bin=mysql-bin
+      binlog-format = 'ROW'
 
    .. note:: 
       You can also create a file ``/etc/mysql/conf.d/cloudstack.cnf`` 
