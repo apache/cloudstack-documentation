@@ -192,9 +192,6 @@ packages. If not, skip to hypervisors section :ref:`upg_hyp_410`.
    yum repository, substitute your own URL for the ones used in these examples.
 
 
-.. include:: _mysql_connector.rst
-
-
 .. _rpm-repo410:
 
 CloudStack RPM repository

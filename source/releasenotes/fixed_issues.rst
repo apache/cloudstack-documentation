@@ -18,11 +18,267 @@
 Issues Fixed in |release|
 =========================
 
-Apache CloudStack uses `Jira <https://issues.apache.org/jira/browse/CLOUDSTACK>`_ 
+Apache CloudStack now uses GitHub <https://github.com/apache/cloudstack/issues>`_ 
+to track its issues. links to the GitHub pull requests have been included at the end
+of each section. 
+
+Apache CloudStack previously used `Jira <https://issues.apache.org/jira/browse/CLOUDSTACK>`_ 
 to track its issues and `Github <https://github.com/apache/cloudstack/pulls>`_ for 
 pull requests. All new features and bugs for |version| have been merged through
 Github pull requests.  A subset of these changes are tracked in Jira, which have a 
 standard naming convention of "CLOUDSTACK-NNNN" where "NNNN" is the issue number.
+
+
+Issues Fixed in 4.11.2.0
+------------------------
+
+.. cssclass:: table-striped table-bordered table-hover
+
+
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| Version                 | Github   | Type          | Priority | Description                                                |
++=========================+==========+===============+==========+============================================================+
+| 4.11.2.0                | `#3021`_ |               |          | Skip network migration tests for not supported hypervisors |
+|                         |          |               |          | instead of failing                                         |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#3022`_ |               |          | systemvmtemplate: update debian 9.6 iso url and checksum   |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#3012`_ |               |          | CLOUDSTACK-3009: Fixed resource calculation CPU, RAM for   |
+|                         |          |               |          | accounts.                                                  |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#3018`_ |               |          | Prevent error on GroupAnswers on VR creation               |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#3007`_ |               |          | Add missing ConfigDrive entries on existing zones after    |
+|                         |          |               |          | upgrade                                                    |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2980`_ |               |          | [4.11] Fix set initial reservation on public IP ranges     |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#3010`_ |               |          | Fix DirectNetworkGuru canHandle checks for lowercase       |
+|                         |          |               |          | isolation methods                                          |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2984`_ |               |          | kvm: reset KVM host on heartbeat failure                   |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2928`_ |               |          | Migrating VM from ISO failures                             |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2979`_ |               |          | vr: defer was broken in VR because of json name change     |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2927`_ |               |          | server: fix unwanted txn commit warning messages           |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2923`_ |               |          | Improved perfomance on creating VM (KVM)                   |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2926`_ |               |          | network: on rolling restart force stop old routers         |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2915`_ |               |          | packaging: install plugins at                              |
+|                         |          |               |          | /usr/share/cloudstack-management/lib                       |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2916`_ |               |          | systemvm: Ensure cloud service reboots after failure       |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2907`_ |               |          | client: mgmt server listen default to 0.0.0.0              |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2911`_ |               |          | Unify templates/ISOs checksum API output                   |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2900`_ |               |          | network: Allow ability to disable rolling restart feature  |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2904`_ |               |          | agent: Fixes #2899 on shutdown don't allow server          |
+|                         |          |               |          | reconnection                                               |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2902`_ |               |          | Add checksum sanity validation on template registration    |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2903`_ |               |          | Set http level to INFO as default                          |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2892`_ |               |          | vr: memory and swap optimizations                          |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2876`_ |               |          | PULL_REQUEST_TEMPLATE: simplify and remove unpopular       |
+|                         |          |               |          | sections                                                   |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2888`_ |               |          | router: Fixes #2719 program VR nics by device id order for |
+|                         |          |               |          | VPC                                                        |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2889`_ |               |          | Fixes: #2881 Improve Exception message                     |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2884`_ |               |          | add date to usage server logs                              |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2879`_ |               |          | ca: Fixes #2877 mgmt server cert should have all addrs of  |
+|                         |          |               |          | default nic                                                |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2878`_ |               |          | Fixed Issue 2868, libvirt resize notify failure            |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2875`_ |               |          | CertUtils: export private key to pem format correctly      |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2866`_ |               |          | systemvm: baremetal-vr: reduce memory usage                |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2743`_ |               |          | CLOUDSTACK-10380: Fix startvm giving another pw after pw   |
+|                         |          |               |          | reset                                                      |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2860`_ |               |          | packaging: Fixes #2857 don't overwrite agent logrotate     |
+|                         |          |               |          | config                                                     |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2859`_ |               |          | agent: Fixes #2858 agent LB not working                    |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2855`_ |               |          | systemvm: export $TYPE before patching ssvm/cpvm           |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2852`_ |               |          | Make networkofferingid required in migrateNetwork          |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2846`_ |               |          | Fix PowerReportMissing for new VRs                         |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2840`_ |               |          | Fix for Vmware full clones update                          |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2799`_ |               |          | systemvmtemplate: new 4.11.2 template and fixes            |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2829`_ |               |          | CLOUDSTACK-9473: storage pool capacity check when volume   |
+|                         |          |               |          | is resized or migrated                                     |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2824`_ |               |          | Fix SystemVMs running in Xen HVM mode are not configured   |
+|                         |          |               |          | (#2760)                                                    |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2836`_ |               |          | Volume snapshot recurring schedule not showing             |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2825`_ |               |          | expunge if flag is set                                     |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2832`_ |               |          | Bigger partiton table for SVM & ambigous redirect bugfix   |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2806`_ |               |          | ajusting dict to pass on if tests later on code, in this   |
+|                         |          |               |          | way arping i?                                              |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2819`_ |               |          | KVM hook script include                                    |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2091`_ |               |          | CLOUDSTACK-8609: [VMware] VM is not accessible after       |
+|                         |          |               |          | migration across clusters                                  |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2815`_ |               |          | display translation labels as html instead of plain text   |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2722`_ |               |          | CLOUDSTACK-10310 Fix KVM reboot on storage issue           |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2810`_ |               |          | Project drop-down refresh data fix                         |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2809`_ |               |          | Backport Update DBCP version to 4.11                       |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2811`_ |               |          | Fix a typo in                                              |
+|                         |          |               |          | server/src/com/cloud/vm/UserVmManagerImpl.java             |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2776`_ |               |          | Issue 2774: Changed the implementation of                  |
+|                         |          |               |          | isVolumeOnManagedStorage(VolumeInfo) to?                   |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2794`_ |               |          | vmware: reboot VR after mac updates                        |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2790`_ |               |          | add height sizing to detail view so that it renders all    |
+|                         |          |               |          | detail items                                               |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2788`_ |               |          | data table header cursor type and title                    |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2785`_ |               |          | change dashboard events cursor to default to prevent user  |
+|                         |          |               |          | confusion                                                  |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2784`_ |               |          | insert plugin css files before custom.css file             |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2782`_ |               |          | add ipaddress input field to 'Add network to VM' form      |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2791`_ |               |          | router: Fixes #2789 fix proper mark based packet routing   |
+|                         |          |               |          | across interfaces                                          |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2792`_ |               |          | Fix issue when multiple cidrs with different sizes are     |
+|                         |          |               |          | assigned on a VR                                           |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2781`_ |               |          | hvm checkbox visibility                                    |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2775`_ |               |          | Fix typo in ISO url                                        |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2778`_ |               |          | reset ssh key pair visibility                              |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2769`_ |               |          | Fix config drive iso path on Vmware                        |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2747`_ |               |          | systemvm: Update ISO URLs to the latest                    |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2734`_ |               |          | Fix invalid consoleproxy url after upgrade                 |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2767`_ |               |          | storage traffic type reset ui fix                          |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2757`_ |               |          | register template kvm context ui fix                       |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2709`_ |               |          | check volumes for state when retrieving pool for           |
+|                         |          |               |          | configDrive creation                                       |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2728`_ |               |          | Consistence POM version for 4.11.x.y                       |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+| 4.11.2.0                | `#2727`_ |               |          | maven: bump up vmware sdk jar to 6.7                       |
++-------------------------+----------+---------------+----------+------------------------------------------------------------+
+
+71 Issues listed
+
+GitHub links to listed issues:
+
+.. _`#3021`: https://github.com/apache/cloudstack/pull/3021 
+.. _`#3022`: https://github.com/apache/cloudstack/pull/3022 
+.. _`#3012`: https://github.com/apache/cloudstack/pull/3012 
+.. _`#3018`: https://github.com/apache/cloudstack/pull/3018 
+.. _`#3007`: https://github.com/apache/cloudstack/pull/3007 
+.. _`#2980`: https://github.com/apache/cloudstack/pull/2980 
+.. _`#3010`: https://github.com/apache/cloudstack/pull/3010 
+.. _`#2984`: https://github.com/apache/cloudstack/pull/2984 
+.. _`#2928`: https://github.com/apache/cloudstack/pull/2928 
+.. _`#2979`: https://github.com/apache/cloudstack/pull/2979 
+.. _`#2927`: https://github.com/apache/cloudstack/pull/2927 
+.. _`#2923`: https://github.com/apache/cloudstack/pull/2923 
+.. _`#2926`: https://github.com/apache/cloudstack/pull/2926 
+.. _`#2915`: https://github.com/apache/cloudstack/pull/2915 
+.. _`#2916`: https://github.com/apache/cloudstack/pull/2916 
+.. _`#2907`: https://github.com/apache/cloudstack/pull/2907 
+.. _`#2911`: https://github.com/apache/cloudstack/pull/2911 
+.. _`#2900`: https://github.com/apache/cloudstack/pull/2900 
+.. _`#2904`: https://github.com/apache/cloudstack/pull/2904 
+.. _`#2902`: https://github.com/apache/cloudstack/pull/2902 
+.. _`#2903`: https://github.com/apache/cloudstack/pull/2903 
+.. _`#2892`: https://github.com/apache/cloudstack/pull/2892 
+.. _`#2876`: https://github.com/apache/cloudstack/pull/2876 
+.. _`#2888`: https://github.com/apache/cloudstack/pull/2888 
+.. _`#2889`: https://github.com/apache/cloudstack/pull/2889 
+.. _`#2884`: https://github.com/apache/cloudstack/pull/2884 
+.. _`#2879`: https://github.com/apache/cloudstack/pull/2879 
+.. _`#2878`: https://github.com/apache/cloudstack/pull/2878 
+.. _`#2875`: https://github.com/apache/cloudstack/pull/2875 
+.. _`#2866`: https://github.com/apache/cloudstack/pull/2866 
+.. _`#2743`: https://github.com/apache/cloudstack/pull/2743 
+.. _`#2860`: https://github.com/apache/cloudstack/pull/2860 
+.. _`#2859`: https://github.com/apache/cloudstack/pull/2859 
+.. _`#2855`: https://github.com/apache/cloudstack/pull/2855 
+.. _`#2852`: https://github.com/apache/cloudstack/pull/2852 
+.. _`#2846`: https://github.com/apache/cloudstack/pull/2846 
+.. _`#2840`: https://github.com/apache/cloudstack/pull/2840 
+.. _`#2799`: https://github.com/apache/cloudstack/pull/2799 
+.. _`#2829`: https://github.com/apache/cloudstack/pull/2829 
+.. _`#2824`: https://github.com/apache/cloudstack/pull/2824 
+.. _`#2836`: https://github.com/apache/cloudstack/pull/2836 
+.. _`#2825`: https://github.com/apache/cloudstack/pull/2825 
+.. _`#2832`: https://github.com/apache/cloudstack/pull/2832 
+.. _`#2806`: https://github.com/apache/cloudstack/pull/2806 
+.. _`#2819`: https://github.com/apache/cloudstack/pull/2819 
+.. _`#2091`: https://github.com/apache/cloudstack/pull/2091 
+.. _`#2815`: https://github.com/apache/cloudstack/pull/2815 
+.. _`#2722`: https://github.com/apache/cloudstack/pull/2722 
+.. _`#2810`: https://github.com/apache/cloudstack/pull/2810 
+.. _`#2809`: https://github.com/apache/cloudstack/pull/2809 
+.. _`#2811`: https://github.com/apache/cloudstack/pull/2811 
+.. _`#2776`: https://github.com/apache/cloudstack/pull/2776 
+.. _`#2794`: https://github.com/apache/cloudstack/pull/2794 
+.. _`#2790`: https://github.com/apache/cloudstack/pull/2790 
+.. _`#2788`: https://github.com/apache/cloudstack/pull/2788 
+.. _`#2785`: https://github.com/apache/cloudstack/pull/2785 
+.. _`#2784`: https://github.com/apache/cloudstack/pull/2784 
+.. _`#2782`: https://github.com/apache/cloudstack/pull/2782 
+.. _`#2791`: https://github.com/apache/cloudstack/pull/2791 
+.. _`#2792`: https://github.com/apache/cloudstack/pull/2792 
+.. _`#2781`: https://github.com/apache/cloudstack/pull/2781 
+.. _`#2775`: https://github.com/apache/cloudstack/pull/2775 
+.. _`#2778`: https://github.com/apache/cloudstack/pull/2778 
+.. _`#2769`: https://github.com/apache/cloudstack/pull/2769 
+.. _`#2747`: https://github.com/apache/cloudstack/pull/2747 
+.. _`#2734`: https://github.com/apache/cloudstack/pull/2734 
+.. _`#2767`: https://github.com/apache/cloudstack/pull/2767 
+.. _`#2757`: https://github.com/apache/cloudstack/pull/2757 
+.. _`#2709`: https://github.com/apache/cloudstack/pull/2709 
+.. _`#2728`: https://github.com/apache/cloudstack/pull/2728 
+.. _`#2727`: https://github.com/apache/cloudstack/pull/2727 
+
 
 
 Issues Fixed in 4.11.1.0
