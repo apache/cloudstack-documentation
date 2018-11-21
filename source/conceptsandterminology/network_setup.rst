@@ -968,7 +968,7 @@ CloudStack’s integration with inMon Traffic Sentinel.
 Traffic Sentinel is a network traffic usage data collection package.
 CloudStack can feed statistics from Traffic Sentinel into its own usage
 records, providing a basis for billing users of cloud infrastructure.
-Traffic Sentinel uses the traffic monitoring protocol sFlow. Routers
+Traffic Sentinel uses the traffic monitoring protocol sFlow. Routers
 and switches generate sFlow records and provide them for collection by
 Traffic Sentinel, then CloudStack queries the Traffic Sentinel database
 to obtain this information
