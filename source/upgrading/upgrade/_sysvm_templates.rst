@@ -101,7 +101,7 @@ Update System-VM templates
    |            |                                                            |
    |            | Format: OVA                                                |
    |            |                                                            |
-   |            | OS Type: Other Linux 64-bit (or Debian 8.0 or 9.0 64-bit)  |
+   |            | OS Type: Other Linux 64-bit                                |
    |            |                                                            |
    |            | Extractable: no                                            |
    |            |                                                            |
