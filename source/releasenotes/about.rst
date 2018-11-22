@@ -17,6 +17,13 @@
 What's New in |release|
 =======================
 
+What's New in 4.11.2.0
+----------------------
+
+The new |release| version is a |version| maintainance release containing over 70
+fixes and improvements on the 4.11.1.0 release.
+
+
 What's New in 4.11.1.0
 ----------------------
 
