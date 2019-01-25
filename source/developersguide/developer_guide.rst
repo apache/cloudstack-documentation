@@ -139,12 +139,6 @@ Install ``openjdk``. As we're using Linux, OpenJDK is our first choice.
 
    apt-get install openjdk-8-jdk
 
-Install ``tomcat8``
-
-::
-
-   apt-get install tomcat8
-
 Next, we'll install MySQL if it's not already present on the system.
 
 ::
