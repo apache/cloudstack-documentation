@@ -75,6 +75,12 @@ Install ``tomcat6``, note that the new version of tomcat on
 
 ::
 
+   apt-get install tomcat6
+
+Next, we'll install MySQL if it's not already present on the system.
+
+::
+
    apt-get install mysql-server
 
 Remember to set the correct ``mysql`` password in the CloudStack
