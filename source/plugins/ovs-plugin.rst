@@ -364,6 +364,36 @@ To enable DPDK on VM deployments:
       dpdk-interface-model:
       <model type='virtio'/>
 
+Additional configurations on service offerings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is also possible to avoid passing additional configuration on each VM deployment, but setting these configurations on a service offering, and those are passed to the VM. To create a service offering with additional configurations, pass each key/value pair as service offering details on service offering creation, with keys starting with the "extraconfig" keyword, and each value an URL UTF-8 encoded string. For example:
+
+::
+   
+   create serviceoffering name=<NAME> displaytext=<NAME> serviceofferingdetails[0].key=extraconfig-dpdk-hugepages serviceofferingdetails[0].value=%3CmemoryBacking%3E%20%3Chugepages%2F%3E%20%3C%2FmemoryBacking%3E serviceofferingdetails[1].key=extraconfig-dpdk-numa serviceofferingdetails[1].value=%3Ccpu%20mode%3D%22host-passthrough%22%3E%20%3Cnuma%3E%20%3Ccell%20id%3D%220%22%20cpus%3D%220%22%20memory%3D%229437184%22%20unit%3D%22KiB%22%20memAccess%3D%22shared%22%2F%3E%20%3C%2Fnuma%3E%20%3C%2Fcpu%3E
+
+Additional configurations are stored as service offering details.
+
+DPDK vHost User mode selection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is also possible to pass the DPDK vHost User mode as a service offering detail with key: "DPDK-VHOSTUSER" and values: "client" or "server". The following table illustrates the expected behaviour on DPDK ports and VM guest interfaces.
+
+By default, the server mode is assumed if it is not passed as a service offering detail.
+
++----------------------+------------------------+-------------------------+
+| DPDK vHost User Mode | OVS port creation type | VM guest interface mode |
++======================+========================+=========================+
+| server               | dpdkvhostuser          |           client        |
++----------------------+------------------------+-------------------------+
+| client               | dpdkvhostuserclient    |           server        |
++----------------------+------------------------+-------------------------+
+
+::
+   
+   create serviceoffering name=<NAME> displaytext=<NAME> serviceofferingdetails[0].key=DPDK-VHOSTUSER serviceofferingdetails[0].value=client serviceofferingdetails[1].key=extraconfig-dpdk-hugepages serviceofferingdetails[1].value=%3CmemoryBacking%3E%20%3Chugepages%2F%3E%20%3C%2FmemoryBacking%3E serviceofferingdetails[2].key=extraconfig-dpdk-numa serviceofferingdetails[2].value=%3Ccpu%20mode%3D%22host-passthrough%22%3E%20%3Cnuma%3E%20%3Ccell%20id%3D%220%22%20cpus%3D%220%22%20memory%3D%229437184%22%20unit%3D%22KiB%22%20memAccess%3D%22shared%22%2F%3E%20%3C%2Fnuma%3E%20%3C%2Fcpu%3E
+
 DPDK ports
 ~~~~~~~~~~
 When VM is created or started, CloudStack creates ports with DPDK support with format: "csdpdk-N" where N is a number, incremented on new ports creation. This port is set into the 'source' property of the 'interface' tag on the XML domain of the VM, prepended by the value of the OVS path set on the property:
@@ -377,7 +407,7 @@ That would set interfaces to type 'vhostuser' and reference the ports created in
 ::
 
       <interface type='vhostuser'>
-         <source type="unix" path="<OVS_PATH>/<port_name>" mode="client"/>
+         <source type="unix" path="<OVS_PATH>/<port_name>" .../>
          ...
       </interface>
 
