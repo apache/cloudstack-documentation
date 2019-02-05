@@ -113,22 +113,6 @@ server.properties file at /etc/cloudstack/management/ location:
 For storing certificates, admins can create and configure a java keystore file
 and configure the same in the server.properties file as illustrated above.
 
-Disable Vulnerable TLS Algorithms
----------------------------------
-
-The default JRE installation used for the CloudStack management server can be
-configured to disable vulnerable TLS algorithms such as TLSv1, TLSv1.1 etc.
-To do this, you can define or override the jdk.tls.disabledAlgorithms setting
-in the JRE's java.security file typically at
-$JRE_HOME/lib/security/java.security:
-
-   .. parsed-literal::
-
-      jdk.tls.disabledAlgorithms=SSLv2Hello, SSLv3, TLSv1, TLSv1.1, DH keySize < 128, RSA keySize < 128, DES keySize < 128, SHA1 keySize < 128, MD5 keySize < 128, RC4
-
-After configuring above settings, restart the management server to disable TLS
-versions for CloudStack management server ports 8250 (agent server) and 8443
-(Jetty/HTTPS server).
 
 Database Replication (Optional)
 -------------------------------
