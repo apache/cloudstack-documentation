@@ -308,7 +308,7 @@ as well.
 
 .. parsed-literal::
 
-   $ sudo apt-get install dpkg-dev
+   $ sudo apt-get install dpkg-dev apt-utils
 
 The next step is to copy the DEBs to the directory where they can be
 served over HTTP. We'll use ``/var/www/cloudstack/repo`` in the
@@ -319,15 +319,18 @@ examples, but change the directory to whatever works for you.
    $ sudo mkdir -p /var/www/cloudstack/repo/binary
    $ sudo cp \*.deb /var/www/cloudstack/repo/binary
    $ cd /var/www/cloudstack/repo/binary
-   $ sudo sh -c 'dpkg-scanpackages . /dev/null | tee Packages | gzip -9 > Packages.gz'
+   $ sudo dpkg-scanpackages . /dev/null > Packages
+   $ sudo gzip -9k Packages
+   $ sudo apt-ftparchive release . > Release
 
 .. note::
 
    You can safely ignore the warning about a missing override file.
 
-Now you should have all of the DEB packages and ``Packages.gz`` in the
-``binary`` directory and available over HTTP. (You may want to use
-``wget`` or ``curl`` to test this before moving on to the next step.)
+Now you should have all of the DEB packages, ``Packages``,
+``Packages.gz`` and ``Release`` in the ``binary`` directory and
+available over HTTP. (You may want to use ``wget`` or ``curl``
+to test this before moving on to the next step.)
 
 
 Configuring your machines to use the APT repository
