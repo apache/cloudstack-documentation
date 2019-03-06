@@ -101,6 +101,11 @@ will need to configure it to work in your environment. Since we specified
 that there will be no DHCP server in this environment we will be manually 
 configuring your network interface. 
 
+Before going any further, make sure that "brctl" is installed and available:
+
+.. parsed-literal::
+   # yum install bridge-utils -y
+
 Connecting via the console you should login as root. We will start by creating
 the bridge that Cloudstack will use for networking. Create and open
 /etc/sysconfig/network-scripts/ifcfg-cloudbr0 and add the following settings:
@@ -126,7 +131,6 @@ the bridge that Cloudstack will use for networking. Create and open
    NETMASK=255.255.255.0
    DNS1=8.8.8.8
    DNS2=8.8.4.4
-   DELAY=0
    STP=yes
    USERCTL=no
    NM_CONTROLLED=no
