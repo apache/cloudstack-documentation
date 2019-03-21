@@ -101,6 +101,11 @@ will need to configure it to work in your environment. Since we specified
 that there will be no DHCP server in this environment we will be manually 
 configuring your network interface. 
 
+Before going any further, make sure that "brctl" is installed and available:
+
+.. parsed-literal::
+   # yum install bridge-utils -y
+
 Connecting via the console you should login as root. We will start by creating
 the bridge that Cloudstack will use for networking. Create and open
 /etc/sysconfig/network-scripts/ifcfg-cloudbr0 and add the following settings:
@@ -126,7 +131,6 @@ the bridge that Cloudstack will use for networking. Create and open
    NETMASK=255.255.255.0
    DNS1=8.8.8.8
    DNS2=8.8.4.4
-   DELAY=0
    STP=yes
    USERCTL=no
    NM_CONTROLLED=no
@@ -390,7 +394,19 @@ section:
    innodb_lock_wait_timeout=600
    max_connections=350
    log-bin=mysql-bin
-   binlog-format = 'ROW' 
+   binlog-format = 'ROW'
+
+.. note::
+For Ubuntu 16.04 and later, make sure you specify a ``server-id`` in your ``.cnf`` file for binary logging. Set the     ``server-id`` according to your database setup.
+    
+::
+
+   server-id=master-01
+   innodb_rollback_on_timeout=1
+   innodb_lock_wait_timeout=600
+   max_connections=350
+   log-bin=mysql-bin
+   binlog-format = 'ROW'
 
 Now that MySQL is properly configured we can start it and configure it to 
 start on boot as follows:
@@ -474,7 +490,7 @@ the system VMs images.
   
    /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt \
    -m /export/secondary \
-   -u http://download.cloudstack.org/systemvm/4.6/systemvm64template-4.6.0-kvm.qcow2.bz2 \
+   -u http://download.cloudstack.org/systemvm/4.11/systemvmtemplate-4.11.2-kvm.qcow2.bz2 \
    -h kvm -F
 
 
@@ -559,7 +575,7 @@ and should already be installed.
    
       listen_tls = 0
       listen_tcp = 1
-      tcp_port = "16059"
+      tcp_port = "16509"
       auth_tcp = "none"
       mdns_adv = 0
 
