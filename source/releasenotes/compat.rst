@@ -26,7 +26,7 @@ indicate compatibility with CentOS 6.2, 6.1 and so on.
 
 -  RHEL versions 6.3, 6.5, 6.6 and 7.0
 -  CentOS versions 6.8, 7
--  Ubuntu 14.04, 16.04, 17.04 LTS
+-  Ubuntu 14.04, 16.04, 18.04 LTS
 
 Software Requirements
 ~~~~~~~~~~~~~~~~~~~~~
