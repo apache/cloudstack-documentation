@@ -24,9 +24,9 @@ copyright = '2018, Apache Foundation'
 author = 'Apache CloudStack Project'
 
 # The short X.Y version
-version = '4.11'
+version = '4.12'
 # The full version, including alpha/beta/rc tags
-release = '4.11.2.0'
+release = '4.12.0.0'
 
 rst_epilog = """
 .. include:: /_global.rst 
