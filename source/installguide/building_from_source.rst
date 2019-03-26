@@ -225,14 +225,11 @@ Add a new yum repo ``/etc/yum.repos.d/mysql.repo``:
    [mysql-community]
    name=MySQL Community connectors
    baseurl=http://repo.mysql.com/yum/mysql-connectors-community/el/$releasever/$basearch/
+   gpgkey=http://repo.mysql.com/RPM-GPG-KEY-mysql
    enabled=1
    gpgcheck=1
 
-Import GPG public key from MySQL:
-
 .. parsed-literal::
-
-   rpm --import http://repo.mysql.com/RPM-GPG-KEY-mysql
 
 Install mysql-connector
 
