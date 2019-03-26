@@ -16,8 +16,8 @@
 
 What's New in |release|
 =======================
-Version 4.12.0.0 is a non-LTS release adding multiple features for those who want to access a fresh CloudStack prior to our next LTS.
-Version 4.12.0.0 combines 12 months of work, adds +200 commits, with multiple new features and fixes.
+Version |release| is a non-LTS release adding multiple features for those who want to access a fresh CloudStack prior to our next LTS.
+|release| combines 12 months of work and adds +200 commits, with multiple new features and fixes.
 
 Some of the changes are presented in this quick summary (this is not a complete list):
 
