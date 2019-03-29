@@ -16,7 +16,7 @@
 
 What's New in |release|
 =======================
-Version |release| is a non-LTS release adding multiple features for those who want to access a fresh CloudStack prior to our next LTS.
+Version |release| is a |version| non-LTS release adding multiple features for those who want to access a fresh CloudStack prior to our next LTS.
 |release| combines 12 months of work and adds +200 commits, with multiple new features and fixes.
 
 Some of the changes are presented in this quick summary (this is not a complete list):
