@@ -24,7 +24,6 @@ Some of the changes are presented in this quick summary (this is not a complete 
 * Drop support for Ubuntu 14.04
 * Allow users of all types to create L2 networks
 * keystore: don't restart systemvm cloud.service post cert
-* Copy template to target KVM host if needed when migrating local <> local storage
 * Add back ability to disable backup of snapshot to secondary
 * API: add command to list management servers
 * UI: Fix "Migrate instance to another host" popup modal
@@ -53,8 +52,10 @@ Some of the changes are presented in this quick summary (this is not a complete 
 * KVM: Use 'ip route show default 0.0.0.0/0' to find the default gateway
 * KVM: Add KVM Guest OS mapping for Windows Server 2019
 * KVM: Enable DPDK support on KVM
+* KVM: Allow KVM VM live migration with ROOT volume on file storage type
 * Prevent corner case for infinite PrepareForMaintenance
-* Enhance bypass vlan overlap checkAllow KVM VM live migration with ROOT volume on file storage type
+* Enhance bypass vlan overlap check
+* Improved support for Java 8 for building artifacts/modules, packaging, and in
 * Destroy VM also removes volumes
 * Users are able to change/edit the protocol of an ACL rule
 * allows to remove local primary storage
