@@ -21,15 +21,10 @@ Version |release| is a |version| non-LTS release adding multiple features for th
 
 Some of the changes are presented in this quick summary (this is not a complete list):
 
+* Drop support for Ubuntu 14.04
 * Allow users of all types to create L2 networks
-* systemd: Fix -Dpid arg passing to systemd usage service
-* Add back ability to disable backup of snapshot to
 * keystore: don't restart systemvm cloud.service post cert
-* Keep iotune section in the VM's XML after live migration
 * Copy template to target KVM host if needed when migrating local <> local storage
-* systemd: fix services to allow TLS configurations via
-* java.security.ciphers
-* feature: add libvirt / qemu io bursting
 * Add back ability to disable backup of snapshot to secondary
 * API: add command to list management servers
 * UI: Fix "Migrate instance to another host" popup modal
@@ -52,6 +47,7 @@ Some of the changes are presented in this quick summary (this is not a complete 
 * KVM: Security Group enhancements and refactor old code
 * KVM: Properly report available memory to Management Server
 * KVM: Add influxdb to statscollector
+* KVM: add libvirt / qemu IO bursting
 * KVM: Refactory VXLAN script and add IPv6 support
 * KVM: Set amount of queues for Virtio SCSI driver to vCPU of Instance
 * KVM: Use 'ip route show default 0.0.0.0/0' to find the default gateway
@@ -62,12 +58,10 @@ Some of the changes are presented in this quick summary (this is not a complete 
 * Destroy VM also removes volumes
 * Users are able to change/edit the protocol of an ACL rule
 * allows to remove local primary storage
-* Allow password enabled for iso (#2745)
 * Support requesting a specific IPv4 address in Basic Networking during Instance creation
 * Adding zone disablement during deletion of the range
 * Display mac address in nic detail view
 * Cleanup methods, classes, and POMs
-
 
 What's New in 4.11.2.0
 ----------------------
