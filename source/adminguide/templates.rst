@@ -278,7 +278,7 @@ Uploading Templates from local computer
 
 It's also possible to upload already prepared template from your local computer.
 Steps are similar as when Uploading template from remote HTTP server, except that you need to choose local template file from your PC.
-For this kind feature to work, your SSVMs must be supporting HTTPS (for more info please visit `“Using a SSL Certificate for the Console Proxy” 
+For this feature to work, your SSVMs must be supporting HTTPS (for more info please visit `“Using a SSL Certificate for the Console Proxy” 
 <systemvm.html#using-a-ssl-certificate-for-the-console-proxy>`_.)
 
 Exporting Templates
