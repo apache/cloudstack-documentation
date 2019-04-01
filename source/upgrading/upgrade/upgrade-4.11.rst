@@ -14,7 +14,7 @@
     under the License.
 
 
-.. |version_to_upgrade| replace:: 4.11.0.0 or 4.11.1
+.. |version_to_upgrade| replace:: 4.11.x
 
 Upgrade Instruction from |version_to_upgrade|
 =============================================
