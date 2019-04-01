@@ -377,8 +377,19 @@ Additional configurations are stored as service offering details.
 
 DPDK vHost User mode selection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The vHost user mode describes a client/server model between Openvswitch along with DPDK and QEMU, in which one acts as client while the other as server. The server creates and manages the vHost user sockets and the client connects to the sockets created by the server:
 
-It is also possible to pass the DPDK vHost User mode as a service offering detail with key: "DPDK-VHOSTUSER" and values: "client" or "server". The following table illustrates the expected behaviour on DPDK ports and VM guest interfaces.
+- DPDK vHost user server mode:
+   - Is the default configuration.
+   - OVS with DPDK acts as the server, while QEMU acts as the client.
+   - The port types used are: dpdkvhostuser
+
+- DPDK vHost user client mode:
+   - OVS with DPDK acts as the client and QEMU acts as the server.
+   - If Openvswitch is restarted then the sockets can reconnect to the existing sockets on the server, and normal connectivity can be resumed.
+   - The port types used are: dpdkvhostuserclient
+
+It is possible to pass the DPDK vHost User mode as a service offering detail with key: "DPDK-VHOSTUSER" and values: "client" or "server". The following table illustrates the expected behaviour on DPDK ports and VM guest interfaces.
 
 By default, the server mode is assumed if it is not passed as a service offering detail.
 
