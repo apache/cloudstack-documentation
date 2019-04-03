@@ -273,7 +273,7 @@ To upload a template:
       the Featured Templates list. Only an administrator can make a
       template Featured.
 
-Uploading Templates from local computer
+Uploading Templates from a local computer
 -------------------------------------------
 
 It's also possible to upload already prepared template from your local computer.
