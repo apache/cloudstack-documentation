@@ -201,7 +201,7 @@ you can create a template directly from any snapshot through the
 CloudStack UI.
 
 
-Uploading Templates from remote HTTP server
+Uploading Templates from a remote HTTP server
 -------------------------------------------
 
 
