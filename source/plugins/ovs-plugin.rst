@@ -272,6 +272,8 @@ DPDK Support
 
 Since version 4.12 it is possible to enable DPDK support on CloudStack along with the OVS plugin.
 
+.. _Agent configuration for DPDK support:
+
 Agent configuration
 ~~~~~~~~~~~~~~~~~~~
 
@@ -364,17 +366,6 @@ To enable DPDK on VM deployments:
       dpdk-interface-model:
       <model type='virtio'/>
 
-Additional configurations on service offerings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-It is also possible to avoid passing additional configuration on each VM deployment, but setting these configurations on a service offering, and those are passed to the VM. To create a service offering with additional configurations, pass each key/value pair as service offering details on service offering creation, with keys starting with the "extraconfig" keyword, and each value an URL UTF-8 encoded string. For example:
-
-::
-   
-   create serviceoffering name=<NAME> displaytext=<NAME> serviceofferingdetails[0].key=extraconfig-dpdk-hugepages serviceofferingdetails[0].value=%3CmemoryBacking%3E%20%3Chugepages%2F%3E%20%3C%2FmemoryBacking%3E serviceofferingdetails[1].key=extraconfig-dpdk-numa serviceofferingdetails[1].value=%3Ccpu%20mode%3D%22host-passthrough%22%3E%20%3Cnuma%3E%20%3Ccell%20id%3D%220%22%20cpus%3D%220%22%20memory%3D%229437184%22%20unit%3D%22KiB%22%20memAccess%3D%22shared%22%2F%3E%20%3C%2Fnuma%3E%20%3C%2Fcpu%3E
-
-Additional configurations are stored as service offering details.
-
 DPDK vHost User mode selection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The vHost user mode describes a client/server model between Openvswitch along with DPDK and QEMU, in which one acts as client while the other as server. The server creates and manages the vHost user sockets and the client connects to the sockets created by the server:
@@ -389,7 +380,21 @@ The vHost user mode describes a client/server model between Openvswitch along wi
    - If Openvswitch is restarted then the sockets can reconnect to the existing sockets on the server, and normal connectivity can be resumed.
    - The port types used are: dpdkvhostuserclient
 
-It is possible to pass the DPDK vHost User mode as a service offering detail with key: "DPDK-VHOSTUSER" and values: "client" or "server". The following table illustrates the expected behaviour on DPDK ports and VM guest interfaces.
+Applying additional configurations via service offerings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is possible to avoid passing additional configuration on each VM deployment, but setting these configurations on a service offering, and those are passed to the VM.
+
+- To create a service offering with additional configurations, pass each key/value pair as service offering details on service offering creation, with keys starting with the "extraconfig" keyword, and each value an URL UTF-8 encoded string.
+- Additional configurations are stored as service offering details
+
+For example, applying DPDK additional configurations via service offering:
+
+::
+   
+   create serviceoffering name=<NAME> displaytext=<NAME> serviceofferingdetails[0].key=extraconfig-dpdk-hugepages serviceofferingdetails[0].value=%3CmemoryBacking%3E%20%3Chugepages%2F%3E%20%3C%2FmemoryBacking%3E serviceofferingdetails[1].key=extraconfig-dpdk-numa serviceofferingdetails[1].value=%3Ccpu%20mode%3D%22host-passthrough%22%3E%20%3Cnuma%3E%20%3Ccell%20id%3D%220%22%20cpus%3D%220%22%20memory%3D%229437184%22%20unit%3D%22KiB%22%20memAccess%3D%22shared%22%2F%3E%20%3C%2Fnuma%3E%20%3C%2Fcpu%3E
+
+The preferred DPDK vHost User Mode must be passed as a service offering detail, with special key name: "DPDK-VHOSTUSER". Possible values are: "client" or "server". The following table illustrates the expected behaviour on DPDK ports and VM guest interfaces.
 
 By default, the server mode is assumed if it is not passed as a service offering detail.
 
@@ -421,6 +426,8 @@ That would set interfaces to type 'vhostuser' and reference the ports created in
          <source type="unix" path="<OVS_PATH>/<port_name>" .../>
          ...
       </interface>
+
+Note that the OVS_PATH property is required, as explained on `Agent configuration for DPDK support`_. For example, when OVS_PATH is set to the default path for Openvswitch (/var/run/openvswitch), interfaces will reference created ports on: /var/run/openvswitch/<port_name>
 
 Revision History
 ----------------
