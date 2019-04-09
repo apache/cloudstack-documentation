@@ -92,14 +92,26 @@ SSL (Optional)
 --------------
 
 CloudStack provides HTTP access in its default installation. There are a
-number of technologies and sites which choose to implement SSL. As a
+number of technologies and sites which choose to implement SSL/TLS. As a
 result, we have left CloudStack to expose HTTP under the assumption that
 a site will implement its typical practice.
 
-CloudStack uses Tomcat as its servlet container. For sites that would
-like CloudStack to terminate the SSL session, Tomcat’s SSL access may be
-enabled. Tomcat SSL configuration is described at
-http://tomcat.apache.org/tomcat-6.0-doc/ssl-howto.html.
+CloudStack 4.9 and above uses embedded Jetty as its servlet container. For sites
+that would like CloudStack to terminate the SSL session, HTTPS can be enabled
+by configuring the https-related settings in CloudStack management server's
+server.properties file at /etc/cloudstack/management/ location:
+
+   .. parsed-literal::
+
+      # For management server to pickup these configuration settings, the configured
+      # keystore file should exists and be readable by the management server.
+      https.enable=true
+      https.port=8443
+      https.keystore=/etc/cloudstack/management/cloud.jks
+      https.keystore.password=vmops.com
+
+For storing certificates, admins can create and configure a java keystore file
+and configure the same in the server.properties file as illustrated above.
 
 
 Database Replication (Optional)

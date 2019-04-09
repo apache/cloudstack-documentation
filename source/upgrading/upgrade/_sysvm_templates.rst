@@ -37,9 +37,9 @@ Update System-VM templates
    +------------+------------------------------------------------------------+
    | Hypervisor | Description                                                |
    +============+============================================================+
-   | XenServer  | Name: systemvm-xenserver-4.11.1                            |
+   | XenServer  | Name: |sysvm64-name-xen|                                   |
    |            |                                                            |
-   |            | Description: systemvm-xenserver-4.11.1                     |
+   |            | Description: |sysvm64-name-xen|                            |
    |            |                                                            |
    |            | URL: |sysvm64-url-xen|                                     |
    |            |                                                            |
@@ -63,9 +63,9 @@ Update System-VM templates
    |            |                                                            |
    |            | Routing: no                                                |
    +------------+------------------------------------------------------------+
-   | KVM        | Name: systemvm-kvm-4.11.1                                  |
+   | KVM        | Name: |sysvm64-name-kvm|                                   |
    |            |                                                            |
-   |            | Description: systemvm-kvm-4.11.1                           |
+   |            | Description: |sysvm64-name-kvm|                            |
    |            |                                                            |
    |            | URL: |sysvm64-url-kvm|                                     |  
    |            |                                                            |
@@ -89,9 +89,9 @@ Update System-VM templates
    |            |                                                            |
    |            | Routing: no                                                |
    +------------+------------------------------------------------------------+
-   | VMware     | Name: systemvm-vmware-4.11.1                               |
+   | VMware     | Name: |sysvm64-name-vmware|                                |
    |            |                                                            |
-   |            | Description: systemvm-vmware-4.11.1                        |
+   |            | Description: |sysvm64-name-vmware|                         |
    |            |                                                            |
    |            | URL: |sysvm64-url-vmware|                                  |
    |            |                                                            |
@@ -101,7 +101,7 @@ Update System-VM templates
    |            |                                                            |
    |            | Format: OVA                                                |
    |            |                                                            |
-   |            | OS Type: Other Linux 64-bit (or Debian 8.0 or 9.0 64-bit)  |
+   |            | OS Type: Other Linux 64-bit                                |
    |            |                                                            |
    |            | Extractable: no                                            |
    |            |                                                            |
@@ -113,9 +113,9 @@ Update System-VM templates
    |            |                                                            |
    |            | Routing: no                                                |
    +------------+------------------------------------------------------------+
-   | HyperV     | Name: systemvm-hyperv-4.11.1                               |
+   | HyperV     | Name: |sysvm64-name-hyperv|                                |
    |            |                                                            |
-   |            | Description: systemvm-hyperv-4.11.1                        |
+   |            | Description: |sysvm64-name-hyperv|                         |
    |            |                                                            |
    |            | URL: |sysvm64-url-hyperv|                                  |
    |            |                                                            |

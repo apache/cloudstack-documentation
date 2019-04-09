@@ -45,7 +45,7 @@ CloudStack system VMs.
 
          /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt \
          -m /mnt/secondary \
-         -u http://download.cloudstack.org/systemvm/4.11/systemvmtemplate-4.11.1-hyperv.vhd.zip \
+         -u |sysvm64-url-hyperv| \
          -h hyperv \
          -s <optional-management-server-secret-key> \
          -F
@@ -56,7 +56,7 @@ CloudStack system VMs.
 
          /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt \
          -m /mnt/secondary \
-         -u http://download.cloudstack.org/systemvm/4.11/systemvmtemplate-4.11.1-xen.vhd.bz2 \
+         -u |sysvm64-url-xen| \
          -h xenserver \
          -s <optional-management-server-secret-key> \
          -F
@@ -67,7 +67,7 @@ CloudStack system VMs.
 
          /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt \
          -m /mnt/secondary \
-         -u http://download.cloudstack.org/systemvm/4.11/systemvmtemplate-4.11.1-vmware.ova \
+         -u |sysvm64-url-vmware| \
          -h vmware \
          -s <optional-management-server-secret-key> \
          -F
@@ -78,7 +78,7 @@ CloudStack system VMs.
 
          /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt \
          -m /mnt/secondary \
-         -u http://download.cloudstack.org/systemvm/4.11/systemvmtemplate-4.11.1-kvm.qcow2.bz2 \
+         -u |sysvm64-name-kvm| \
          -h kvm \
          -s <optional-management-server-secret-key> \
          -F
@@ -89,7 +89,7 @@ CloudStack system VMs.
 
          /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt \
          -m /mnt/secondary \
-         -u http://download.cloudstack.org/systemvm/4.11/systemvmtemplate-4.11.1-kvm.qcow2.bz2 \
+         -u |sysvm64-name-kvm| \
          -h lxc \
          -s <optional-management-server-secret-key> \
          -F
@@ -100,7 +100,7 @@ CloudStack system VMs.
 
          /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt \
          -m /mnt/secondary \
-         -u http://download.cloudstack.org/systemvm/4.11/systemvmtemplate-4.11.0-ovm.raw.bz2 \
+         -u |sysvm64-url-ovm| \
          -h ovm3 \
          -s <optional-management-server-secret-key> \
          -F
