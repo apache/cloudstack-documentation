@@ -88,6 +88,24 @@ Basic zones in CloudStack 3.0.3 and later versions.
    Network” <networking2.html#configuring-a-shared-guest-network>`_.
 
 
+L2 Networks
+~~~~~~~~~~~
+
+L2 networks provide network isolation without any other services.  This
+means that there will be no virtual router.  It is assumed that the end
+user will have their own IPAM in place, or that they will statically assign 
+IP addresses.
+
+-  L2 networks can be created by the end users, however network offerings
+   which allow the network creator to specify a VLAN can only be created
+   by the root admins.
+
+-  CloudStack does not assign IP addresses to VMs.
+
+-  Userdata and metadata can be passed to the VM using a config drive
+   (which must be enabled in the network service offering)
+
+
 Runtime Allocation of Virtual Network Resources
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
