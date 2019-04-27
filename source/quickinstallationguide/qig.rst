@@ -138,7 +138,7 @@ the bridge that Cloudstack will use for networking. Create and open
 Save the configuration and exit. We will then edit the interface so that it
 makes use of this bridge.
    
-Open the configuration file of your interaface and configure it as follows: 
+Open the configuration file of your interface and configure it as follows: 
 
 .. note::
    Interface name used as example only. Replace eth0 with your default ethernet interface name.
