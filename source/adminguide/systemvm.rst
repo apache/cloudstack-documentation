@@ -17,9 +17,7 @@
    :alt: Updating Console Proxy SSL Certificate
 .. |vr-upgrade.png| image:: /_static/images/vr-upgrade.png
    :alt: Button to upgrade VR to use the new template.
-.. |vr-upgrade.png| image:: /_static/images/vr-upgrade.png
-   :alt: Button to upgrade VR to use the new template.
-.. |getDiagnosticsData_icon.png| image:: /_static/images/getDiagnosticsData_icon
+.. |getDiagnosticsData_icon.png| image:: /_static/images/getDiagnosticsData_icon.png
    :alt: getDiagnosticsData icon
 
 
@@ -279,6 +277,7 @@ so the new SSVM and CPVM with new certificates are created.
 
 Load-balancing Console Proxies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 An alternative to using dynamic DNS or creating a range of DNS entries 
 as described in the last section would be to create a SSL certificate
 for a specific domain name, configure CloudStack to use that particular
@@ -588,7 +587,9 @@ SSVM - ‘diagnostics.data.ssvm.defaults’
 
 
 Global Settings for getDiagnosticsData
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. cssclass:: table-striped table-bordered table-hover
 
 +------------------------------------+------------------------------------------------------------------------------------------+--------------------+
 | Setting                            | Description                                                                              | Default Value      |
@@ -612,7 +613,7 @@ Global Settings for getDiagnosticsData
 
 
 getDiagnosticsData Garbage Collection
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The garbage collector is configured to run as a background process according to a period specified by the ‘diagnostics.data.gc.interval’ setting. 
 It goes through every Image Store in the Zone and looks for files under the directory ‘diagnostics_data’, it computes the file age in milliseconds 
@@ -620,8 +621,8 @@ for every file found and compares against that against the value set by the ‘d
 creation date and ‘now’ is greater or equal to this value, then file is considered old and is deleted from the Image Store.
 
 
-Troubleshoot networks from System VMs
--------------------------------------
+Troubleshooting networks from System VMs
+-----------------------------------------
 .. |run-diagnostics-icon.png| image:: /_static/images/run-diagnostics-icon.png
 .. |diagnostics-form.png| image:: /_static/images/diagnostics-form.png
 
@@ -656,6 +657,3 @@ same Debian 9 based templates.
 Non-Alphanumeric characters (metacharacters) are not allowed for this parameter
 except for the “-“ and the “.”. Any metacharacter supplied will immediately result
 in an immediate termination of the command and report back to the operator that an illegal character was passed
-
-
-
