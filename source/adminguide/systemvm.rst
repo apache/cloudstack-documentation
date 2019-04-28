@@ -586,22 +586,30 @@ CPVM - ‘diagnostics.data.cpvm.defaults’
 SSVM - ‘diagnostics.data.ssvm.defaults’
   [IPTABLES], [IFCONFIG], [ROUTE], /usr/local/cloud/systemvm/conf/agent.properties, /usr/local/cloud/systemvm/conf/consoleproxy.properties, /var/log/cloud.log
 
+
 Global Settings for getDiagnosticsData
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-+------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
-| Setting                            | Description                                                                                                                                                                                                  | Default Value      |
-+====================================+==============================================================================================================================================================================================================+====================+
-| diagnostics.data.gc.enable         | Enable the garbage collector background task to delete old files from secondary storage. Requires management server restart                                                                                  | True               |
-+------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
-| diagnostics.data.gc.interval       | The interval at which the garbage collector background tasks in seconds. Requires management server restart                                                                                                  | 86400 (Once a day) |
-+------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
-| diagnostics.data.retrieval.timeout | Overall system VM script execution time out in seconds. Does not require management server restart.                                                                                                          | 3600               |
-+------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
-| diagnostics.data.max.file.age      | Sets the maximum time in seconds a file can stay in secondary storage before it is deleted.                                                                                                                  | 86400 (1 day)      |
-+------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
-| diagnostics.data.disable.threshold | Sets the secondary storage disk utilisation percentage for file retrieval. Used to look for suitable secondary storage with enough space, otherwise an exception is thrown when no secondary store is found. | 0.95 (95 %)        |
-+------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
++------------------------------------+------------------------------------------------------------------------------------------+--------------------+
+| Setting                            | Description                                                                              | Default Value      |
++====================================+==========================================================================================+====================+
+| diagnostics.data.gc.enable         | Enable the garbage collector background task to delete old files from secondary storage. | True               | 
+|                                    | Requires management server restart                                                       |                    |
++------------------------------------+------------------------------------------------------------------------------------------+--------------------+
+| diagnostics.data.gc.interval       | The interval at which the garbage collector background tasks in seconds.                 | 86400 (Once a day) |
+|                                    | Requires management server restart                                                       |                    |
++------------------------------------+------------------------------------------------------------------------------------------+--------------------+
+| diagnostics.data.retrieval.timeout | Overall system VM script execution time out in seconds. Does not require                 | 3600               |
+|                                    | management server restart.                                                               |                    |
++------------------------------------+------------------------------------------------------------------------------------------+--------------------+
+| diagnostics.data.max.file.age      | Sets the maximum time in seconds a file can stay in secondary storage before             | 86400 (1 day)      |
+|                                    | it is deleted.                                                                           |                    |
++------------------------------------+------------------------------------------------------------------------------------------+--------------------+
+| diagnostics.data.disable.threshold | Sets the secondary storage disk utilisation percentage for file retrieval. Used to look  | 0.95 (95 %)        |
+|                                    | for suitable secondary storage  with enough space, otherwise an exception is thrown      |                    |
+|                                    | when no secondary store is found                                                         |                    |
++------------------------------------+------------------------------------------------------------------------------------------+--------------------+
+
 
 getDiagnosticsData Garbage Collection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
