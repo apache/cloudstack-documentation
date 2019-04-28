@@ -553,6 +553,62 @@ The administrator can log in to the secondary storage VM if needed.
 .. |vr-upgrade.png| image:: /_static/images/vr-upgrade.png
    :alt: Button to upgrade VR to use the new template.
 
+
+Troubleshooting System VMs (getDiagnosticsData)
+-----------------------------------------------
+
+In order to aid System VM troubleshooting, you can use the API getDiagnosticsData, with the 
+arguments targetid=uuid or optionally the absolute location of any files that you want returned to you.
+The data is compressed into a single tarball and stored on secondary storage. A URL which maps to tarball
+on secondary storage via the SSVM is returned by the API/UI.  The tarball can then be downloaded via the
+provided link.
+
+In the UI, the getDiagnosticsData API can be leveraged by clicking on the get diagnostics data icon which
+will be visible on the instance page of each system vm.
+
+If no additional parameters are passed, the files returned are determined by global settings set for
+each system type.
+
+When a configuration value is in square brackets such as [iptables], a script is run on the system vm to
+collect that data at the data is not natively available as a file.
+
+Below is the default (global settings) configuration data which is returned for each System VM type.
+
+VR - 'diagnostics.data.vr.defaults’
+  [IPTABLES], [IFCONFIG], [ROUTE], /etc/dnsmasq.conf, /etc/resolv.conf, /etc/haproxy.conf, /etc/hosts.conf, /etcdnsmaq-resolv.conf, /var/log/cloud.log, /var/log/routerServiceMonitor.log, /var/log/dnsmasq.log
+
+CPVM - ‘diagnostics.data.cpvm.defaults’
+  [IPTABLES], [IFCONFIG], [ROUTE], /usr/local/cloud/systemvm/conf/agent.properties, /usr/local/cloud/systemvm/conf/consoleproxy.properties, /var/log/cloud.log
+
+SSVM - ‘diagnostics.data.ssvm.defaults’
+  [IPTABLES], [IFCONFIG], [ROUTE], /usr/local/cloud/systemvm/conf/agent.properties, /usr/local/cloud/systemvm/conf/consoleproxy.properties, /var/log/cloud.log
+
+Global Settings for getDiagnosticsData
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
++------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
+| Setting                            | Description                                                                                                                                                                                                       | Default Value      |
++====================================+===================================================================================================================================================================================================================+====================+
+| diagnostics.data.gc.enable         | Enable the garbage collector background task to delete old   files from secondary storage.  Requires   management server restart                                                                                  | True               |
++------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
+| diagnostics.data.gc.interval       | The interval at which the garbage collector background   tasks in seconds. Requires management server restart                                                                                                     | 86400 (Once a day) |
++------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
+| diagnostics.data.retrieval.timeout | Overall system VM script execution time out in seconds.   Does not require management server restart.                                                                                                             | 3600               |
++------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
+| diagnostics.data.max.file.age      | Sets the maximum time in seconds a file can stay in   secondary storage before it is deleted.                                                                                                                     | 86400 (1 day)      |
++------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
+| diagnostics.data.disable.threshold | Sets the secondary storage disk utilisation percentage for   file retrieval. Used to look for suitable secondary storage  with enough space, otherwise an exception   is thrown when no secondary store is found. | 0.95 (95 %)        |
++------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+
+
+getDiagnosticsData Garbage Collection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The garbage collector is configured to run as a background process according to a period specified by the ‘diagnostics.data.gc.interval’ setting. 
+It goes through every Image Store in the Zone and looks for files under the directory ‘diagnostics_data’, it computes the file age in milliseconds 
+for every file found and compares against that against the value set by the ‘diagnostics.data.max.file.age’. If the difference between the file 
+creation date and ‘now’ is greater or equal to this value, then file is considered old and is deleted from the Image Store.
+
+
 Troubleshoot networks from System VMs
 -------------------------------------
 .. |run-diagnostics-icon.png| image:: /_static/images/run-diagnostics-icon.png
