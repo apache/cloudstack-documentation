@@ -317,19 +317,19 @@ cloudstack-agent and should already be installed.
 
       env libvirtd_opts="-d -l"
 
-   On Ubuntu 16.04: just modify ``/etc/default/libvirt-bin``
+   On Ubuntu 16.04: just modify ``/etc/init/libvirt-bin.conf``
 
-   Uncomment and change the following line
+   Add "-l" to the following line
 
    .. parsed-literal::
 
-      #env libvirtd_opts=""
+      env libvirtd_opts="-d"
 
    so it looks like:
 
    .. parsed-literal::
 
-      env libvirtd_opts="-l"
+      env libvirtd_opts="-d -l"
 
 
 

@@ -13,6 +13,13 @@
    specific language governing permissions and limitations
    under the License.
 
+.. |update-ssl.png| image:: /_static/images/update-ssl.png
+   :alt: Updating Console Proxy SSL Certificate
+.. |vr-upgrade.png| image:: /_static/images/vr-upgrade.png
+   :alt: Button to upgrade VR to use the new template.
+.. |getDiagnosticsData_icon.png| image:: /_static/images/getDiagnosticsData_icon.png
+   :alt: getDiagnosticsData icon
+
 
 CloudStack uses several types of system virtual machines to perform
 tasks in the cloud. In general CloudStack manages these system VMs and
@@ -270,6 +277,7 @@ so the new SSVM and CPVM with new certificates are created.
 
 Load-balancing Console Proxies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 An alternative to using dynamic DNS or creating a range of DNS entries 
 as described in the last section would be to create a SSL certificate
 for a specific domain name, configure CloudStack to use that particular
@@ -548,13 +556,73 @@ Zone, copying templates between Zones, and snapshot backups.
 The administrator can log in to the secondary storage VM if needed.
 
 
-.. |update-ssl.png| image:: /_static/images/update-ssl.png
-   :alt: Updating Console Proxy SSL Certificate
-.. |vr-upgrade.png| image:: /_static/images/vr-upgrade.png
-   :alt: Button to upgrade VR to use the new template.
+Troubleshooting System VMs (getDiagnosticsData)
+-----------------------------------------------
 
-Troubleshoot networks from System VMs
--------------------------------------
+In order to aid System VM troubleshooting, you can use the API getDiagnosticsData, with the 
+arguments targetid=uuid or optionally the absolute location of any files that you want returned to you.
+The data is compressed into a single tarball and stored on secondary storage. A URL which maps to tarball
+on secondary storage via the SSVM is returned by the API/UI.  The tarball can then be downloaded via the
+provided link.
+
+In the UI, the getDiagnosticsData API can be leveraged by clicking on the get diagnostics data icon which
+will be visible on the instance page of each system vm. |getDiagnosticsData_icon.png|
+
+If no additional parameters are passed, the files returned are determined by global settings set for
+each system type.
+
+When a configuration value is in square brackets such as [iptables], a script is run on the system vm to
+collect that data at the data is not natively available as a file.
+
+Below is the default (global settings) configuration data which is returned for each System VM type.
+
+VR - 'diagnostics.data.vr.defaults’
+  [IPTABLES], [IFCONFIG], [ROUTE], /etc/dnsmasq.conf, /etc/resolv.conf, /etc/haproxy.conf, /etc/hosts.conf, /etcdnsmaq-resolv.conf, /var/log/cloud.log, /var/log/routerServiceMonitor.log, /var/log/dnsmasq.log
+
+CPVM - ‘diagnostics.data.cpvm.defaults’
+  [IPTABLES], [IFCONFIG], [ROUTE], /usr/local/cloud/systemvm/conf/agent.properties, /usr/local/cloud/systemvm/conf/consoleproxy.properties, /var/log/cloud.log
+
+SSVM - ‘diagnostics.data.ssvm.defaults’
+  [IPTABLES], [IFCONFIG], [ROUTE], /usr/local/cloud/systemvm/conf/agent.properties, /usr/local/cloud/systemvm/conf/consoleproxy.properties, /var/log/cloud.log
+
+
+Global Settings for getDiagnosticsData
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. cssclass:: table-striped table-bordered table-hover
+
++------------------------------------+------------------------------------------------------------------------------------------+--------------------+
+| Setting                            | Description                                                                              | Default Value      |
++====================================+==========================================================================================+====================+
+| diagnostics.data.gc.enable         | Enable the garbage collector background task to delete old files from secondary storage. | True               | 
+|                                    | Requires management server restart                                                       |                    |
++------------------------------------+------------------------------------------------------------------------------------------+--------------------+
+| diagnostics.data.gc.interval       | The interval at which the garbage collector background tasks in seconds.                 | 86400 (Once a day) |
+|                                    | Requires management server restart                                                       |                    |
++------------------------------------+------------------------------------------------------------------------------------------+--------------------+
+| diagnostics.data.retrieval.timeout | Overall system VM script execution time out in seconds. Does not require                 | 3600               |
+|                                    | management server restart.                                                               |                    |
++------------------------------------+------------------------------------------------------------------------------------------+--------------------+
+| diagnostics.data.max.file.age      | Sets the maximum time in seconds a file can stay in secondary storage before             | 86400 (1 day)      |
+|                                    | it is deleted.                                                                           |                    |
++------------------------------------+------------------------------------------------------------------------------------------+--------------------+
+| diagnostics.data.disable.threshold | Sets the secondary storage disk utilisation percentage for file retrieval. Used to look  | 0.95 (95 %)        |
+|                                    | for suitable secondary storage  with enough space, otherwise an exception is thrown      |                    |
+|                                    | when no secondary store is found                                                         |                    |
++------------------------------------+------------------------------------------------------------------------------------------+--------------------+
+
+
+getDiagnosticsData Garbage Collection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The garbage collector is configured to run as a background process according to a period specified by the ‘diagnostics.data.gc.interval’ setting. 
+It goes through every Image Store in the Zone and looks for files under the directory ‘diagnostics_data’, it computes the file age in milliseconds 
+for every file found and compares against that against the value set by the ‘diagnostics.data.max.file.age’. If the difference between the file 
+creation date and ‘now’ is greater or equal to this value, then file is considered old and is deleted from the Image Store.
+
+
+Troubleshooting networks from System VMs
+-----------------------------------------
 .. |run-diagnostics-icon.png| image:: /_static/images/run-diagnostics-icon.png
 .. |diagnostics-form.png| image:: /_static/images/diagnostics-form.png
 
@@ -589,7 +657,3 @@ same Debian 9 based templates.
 Non-Alphanumeric characters (metacharacters) are not allowed for this parameter
 except for the “-“ and the “.”. Any metacharacter supplied will immediately result
 in an immediate termination of the command and report back to the operator that an illegal character was passed
-
-
-
-

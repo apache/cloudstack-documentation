@@ -14,7 +14,7 @@
     under the License.
 
 
-.. |version_to_upgrade| replace:: 4.11.x
+.. |version_to_upgrade| replace:: 4.11.0.0
 
 Upgrade Instruction from |version_to_upgrade|
 =============================================
@@ -121,6 +121,9 @@ each system with CloudStack packages. This means all management
 servers, and any hosts that have the KVM agent. (No changes should
 be necessary for hosts that are running VMware or Xen.)
 
+
+.. include:: _java_8_ubuntu.rst
+
 .. _apt-repo411:
 
 CloudStack apt repository
@@ -184,6 +187,9 @@ packages. If not, skip to hypervisors section :ref:`upg_hyp_411`.
    yum repository, substitute your own URL for the ones used in these examples.
 
 
+.. include:: _mysql_connector.rst
+
+
 .. _rpm-repo411:
 
 CloudStack RPM repository
@@ -238,14 +244,17 @@ read as appropriate for your |version| repository.
 
 .. _upg_hyp_411:
 
-Upgrade Hypervisors
--------------------
-
-
 Hypervisor: XenServer
-^^^^^^^^^^^^^^^^^^^^^
+---------------------
 
-No additional steps are required wrt for XenServer Hypervisor for this upgrade.
+**(XenServer only)** Copy vhd-utils file on CloudStack management servers.
+Copy the file `vhd-utils <http://download.cloudstack.org/tools/vhd-util>`_
+to ``/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver``.
+
+.. parsed-literal::
+
+   wget -P /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver \
+   http://download.cloudstack.org/tools/vhd-util
 
 
 Hypervisor: VMware
@@ -255,17 +264,78 @@ Hypervisor: VMware
    For VMware hypervisor CloudStack management server packages must be
    build using "noredist". Refer to :ref:`building-noredist`.
 
+**(VMware only)** Additional steps are required for each VMware cluster.
+These steps will not affect running guests in the cloud. These steps
+are required only for clouds using VMware clusters:
 
-No additional steps are requried for the VMware Hypervisor for this upgrade.
+#. Stop the Management Server:
+
+   .. parsed-literal::
+
+      $ sudo service cloudstack-management stop
+
+#. Generate the encrypted equivalent of your vCenter password:
+
+   .. parsed-literal::
+
+      $ java -classpath /usr/share/cloudstack-common/lib/jasypt-1.9.2.jar org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI encrypt.sh input="_your_vCenter_password_" password="`cat /etc/cloudstack/management/key`" verbose=false
+
+Store the output from this step, we need to add this in
+cluster\_details table and vmware\_data\_center tables in place of
+the plain text password
+
+#. Find the ID of the row of cluster\_details table that you have to
+   update:
+
+   .. parsed-literal::
+
+      $ mysql -u <username> -p<password>
+
+   .. parsed-literal::
+
+      select * from cloud.cluster_details;
+
+#. Update the plain text password with the encrypted one
+
+   .. parsed-literal::
+
+      update cloud.cluster_details set value = '_ciphertext_from_step_1_'
+      where id = _id_from_step_2_;
+
+#. Confirm that the table is updated:
+
+   .. parsed-literal::
+
+      select * from cloud.cluster_details;
+
+#. Find the ID of the correct row of vmware\_data\_center that you
+    want to update
+
+   .. parsed-literal::
+
+      select * from cloud.vmware_data_center;
+
+#. update the plain text password with the encrypted one:
+
+   .. parsed-literal::
+
+      update cloud.vmware_data_center set password = '_ciphertext_from_step_1_'
+      where id = _id_from_step_5_;
+
+#. Confirm that the table is updated:
+
+   .. parsed-literal::
+
+      select * from cloud.vmware_data_center;
 
 
 .. _kvm411:
 
 Hypervisor: KVM
-^^^^^^^^^^^^^^^
+---------------
 
 KVM on Ubuntu
-""""""""""""""
+^^^^^^^^^^^^^
 
 (KVM only) Additional steps are required for each KVM host. These
 steps will not affect running guests in the cloud. These steps are
@@ -303,7 +373,7 @@ hosts.
 
 
 KVM on CentOS/RHEL
-"""""""""""""""""""
+^^^^^^^^^^^^^^^^^^
 For KVM hosts, upgrade the ``cloudstack-agent`` package
 
 #. Configure the :ref:`rpm-repo411` as detailed above.
