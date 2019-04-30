@@ -180,14 +180,9 @@ Install Python MySQL connector using the official MySQL packages repository.
 MySQL connector APT repository
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. note::
-
-   Procedure below should work for Ubuntu 14.04 and 16.04.
-   For Ubuntu 18.04, please read later below.
-
 Install the following package provided by MySQL to enable official repositories:
 
-.. note::
+.. note:
 
    If the download fails check the current version number. The version available may
    have been updated.
@@ -204,16 +199,6 @@ Make sure to activate the repository for MySQL connectors.
    sudo apt-get update
    sudo apt-get install mysql-connector-python   
 
-.. note::
-   Below is given a bit different procedure if you are compiling on Ubuntu 18.04
-
-Due to default python version changes (and some others) in Ubuntu 18.04 version, we will need to install python 2.7, python-mysql.connector from Universe repo (instead from official MySQL repo) and later make sure we are using Java 8, since Java 10 comes as default
-
-.. parsed-literal::
-
-   apt-add-repository universe
-   apt-get install python-mysql.connector python-setuptools dh-systemd
-   (installs python 2.7 with needed dependencies)
 
 MySQL connector RPM repository
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -225,11 +210,14 @@ Add a new yum repo ``/etc/yum.repos.d/mysql.repo``:
    [mysql-community]
    name=MySQL Community connectors
    baseurl=http://repo.mysql.com/yum/mysql-connectors-community/el/$releasever/$basearch/
-   gpgkey=http://repo.mysql.com/RPM-GPG-KEY-mysql
    enabled=1
    gpgcheck=1
 
+Import GPG public key from MySQL:
+
 .. parsed-literal::
+
+   rpm --import http://repo.mysql.com/RPM-GPG-KEY-mysql
 
 Install mysql-connector
 
@@ -251,11 +239,6 @@ several other dependencies. Note that we recommend using Maven 3.
    $ sudo apt-get install python-software-properties
    $ sudo apt-get update
    $ sudo apt-get install debhelper openjdk-8-jdk libws-commons-util-java genisoimage libcommons-codec-java libcommons-httpclient-java liblog4j1.2-java maven
-   
-.. note::
-
-If on Ubuntu 18.04, in above command, please replace "python-software-properties" with "software-properties-common"
-If on Ubuntu 18.04, above command will install both Java 10 and Java 8, so make sure to switch to Java8 with "update-alternatives --config java" - otherwise you will get errors during dependency check and code compiling.
 
 While we have defined, and you have presumably already installed the
 bootstrap prerequisites, there are a number of build time prerequisites

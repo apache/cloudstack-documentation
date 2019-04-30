@@ -16,65 +16,11 @@
 
 What's New in |release|
 =======================
-Version |release| is a |version| non-LTS release adding multiple features for those who want to access a fresh CloudStack prior to our next LTS.
-|release| combines 12 months of work and adds +200 commits, with multiple new features and fixes.
-
-Some of the changes are presented in this quick summary (this is not a complete list):
-
-* Drop support for Ubuntu 14.04
-* Allow users of all types to create L2 networks
-* keystore: don't restart systemvm cloud.service post cert
-* Add back ability to disable backup of snapshot to secondary
-* API: add command to list management servers
-* UI: Fix "Migrate instance to another host" popup modal
-* UI: Fix issue with verification of ipv4/ipv6 address.
-* UI: Fix UI bug: Create Network Offering Popup has no fields
-* UI: Update jquery and related libraries
-* network: Offerings do not have to have Security Grouping enabled
-* Vmware offline migration
-* IP address acquired with associate ip address is marked as source nat
-* ipv6: allow Secondary IPv6 addresses to be EUI-64
-* ipv6: Send userdata to Virtual Router if IPv6 is enabled
-* ipv6: Calculate IPv6 address instead of fetching one from a pool
-* ipv6: Advanced Networking Security Groups are supported
-* ipv6: Allow specification of IPv6 details when creating Basic network
-* Enable remote debugging for the management server, usage server, and KVM agent
-* Security Group: add secondary ips to the correct ipset based on ip family (4.11)
-* Security Group: add secondary ips to the correct ipset
-* XenServer: fix Security Groups 'vmops' script
-* XenServer: Support online storage migration from non-managed to managed storage
-* KVM: Security Group enhancements and refactor old code
-* KVM: Properly report available memory to Management Server
-* KVM: Add influxdb to statscollector
-* KVM: add libvirt / qemu IO bursting
-* KVM: Refactory VXLAN script and add IPv6 support
-* KVM: Set amount of queues for Virtio SCSI driver to vCPU of Instance
-* KVM: Use 'ip route show default 0.0.0.0/0' to find the default gateway
-* KVM: Add KVM Guest OS mapping for Windows Server 2019
-* KVM: Enable DPDK support on KVM
-* KVM: Allow KVM VM live migration with ROOT volume on file storage type
-* Prevent corner case for infinite PrepareForMaintenance
-* Enhance bypass vlan overlap check
-* Improved support for Java 8 for building artifacts/modules, packaging, and in
-* Destroy VM also removes volumes
-* Users are able to change/edit the protocol of an ACL rule
-* allows to remove local primary storage
-* Support requesting a specific IPv4 address in Basic Networking during Instance creation
-* Adding zone disablement during deletion of the range
-* Display mac address in nic detail view
-* Cleanup methods, classes, and POMs
-
-What's New in 4.11.2.0
-----------------------
-
-The new 4.11.2.0 version is a 4.11 maintainance release containing over 70
-fixes and improvements on the 4.11.1.0 release.
-
 
 What's New in 4.11.1.0
 ----------------------
 
-The new 4.11.1.0 version is a 4.11 maintainance release containing over 140
+The new |release| version is a |version| maintainance release containing over 140
 fixes and improvements on the 4.11.0.0 release.
 
 These include the speeding up of virtual router deployments and fixes for corner cases
