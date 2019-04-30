@@ -272,6 +272,8 @@ DPDK Support
 
 Since version 4.12 it is possible to enable DPDK support on CloudStack along with the OVS plugin.
 
+.. _Agent configuration for DPDK support:
+
 Agent configuration
 ~~~~~~~~~~~~~~~~~~~
 
@@ -364,6 +366,50 @@ To enable DPDK on VM deployments:
       dpdk-interface-model:
       <model type='virtio'/>
 
+DPDK vHost User mode selection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The vHost user mode describes a client/server model between Openvswitch along with DPDK and QEMU, in which one acts as client while the other as server. The server creates and manages the vHost user sockets and the client connects to the sockets created by the server:
+
+- DPDK vHost user server mode:
+   - Is the default configuration.
+   - OVS with DPDK acts as the server, while QEMU acts as the client.
+   - The port types used are: dpdkvhostuser
+
+- DPDK vHost user client mode:
+   - OVS with DPDK acts as the client and QEMU acts as the server.
+   - If Openvswitch is restarted then the sockets can reconnect to the existing sockets on the server, and normal connectivity can be resumed.
+   - The port types used are: dpdkvhostuserclient
+
+Applying additional configurations via service offerings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is possible to avoid passing additional configuration on each VM deployment, but setting these configurations on a service offering, and those are passed to the VM.
+
+- To create a service offering with additional configurations, pass each key/value pair as service offering details on service offering creation, with keys starting with the "extraconfig" keyword, and each value an URL UTF-8 encoded string.
+- Additional configurations are stored as service offering details
+
+For example, applying DPDK additional configurations via service offering:
+
+::
+   
+   create serviceoffering name=<NAME> displaytext=<NAME> serviceofferingdetails[0].key=extraconfig-dpdk-hugepages serviceofferingdetails[0].value=%3CmemoryBacking%3E%20%3Chugepages%2F%3E%20%3C%2FmemoryBacking%3E serviceofferingdetails[1].key=extraconfig-dpdk-numa serviceofferingdetails[1].value=%3Ccpu%20mode%3D%22host-passthrough%22%3E%20%3Cnuma%3E%20%3Ccell%20id%3D%220%22%20cpus%3D%220%22%20memory%3D%229437184%22%20unit%3D%22KiB%22%20memAccess%3D%22shared%22%2F%3E%20%3C%2Fnuma%3E%20%3C%2Fcpu%3E
+
+The preferred DPDK vHost User Mode must be passed as a service offering detail, with special key name: "DPDK-VHOSTUSER". Possible values are: "client" or "server". The following table illustrates the expected behaviour on DPDK ports and VM guest interfaces.
+
+By default, the server mode is assumed if it is not passed as a service offering detail.
+
++----------------------+------------------------+-------------------------+
+| DPDK vHost User Mode | OVS port creation type | VM guest interface mode |
++======================+========================+=========================+
+| server               | dpdkvhostuser          |           client        |
++----------------------+------------------------+-------------------------+
+| client               | dpdkvhostuserclient    |           server        |
++----------------------+------------------------+-------------------------+
+
+::
+   
+   create serviceoffering name=<NAME> displaytext=<NAME> serviceofferingdetails[0].key=DPDK-VHOSTUSER serviceofferingdetails[0].value=client serviceofferingdetails[1].key=extraconfig-dpdk-hugepages serviceofferingdetails[1].value=%3CmemoryBacking%3E%20%3Chugepages%2F%3E%20%3C%2FmemoryBacking%3E serviceofferingdetails[2].key=extraconfig-dpdk-numa serviceofferingdetails[2].value=%3Ccpu%20mode%3D%22host-passthrough%22%3E%20%3Cnuma%3E%20%3Ccell%20id%3D%220%22%20cpus%3D%220%22%20memory%3D%229437184%22%20unit%3D%22KiB%22%20memAccess%3D%22shared%22%2F%3E%20%3C%2Fnuma%3E%20%3C%2Fcpu%3E
+
 DPDK ports
 ~~~~~~~~~~
 When VM is created or started, CloudStack creates ports with DPDK support with format: "csdpdk-N" where N is a number, incremented on new ports creation. This port is set into the 'source' property of the 'interface' tag on the XML domain of the VM, prepended by the value of the OVS path set on the property:
@@ -377,9 +423,11 @@ That would set interfaces to type 'vhostuser' and reference the ports created in
 ::
 
       <interface type='vhostuser'>
-         <source type="unix" path="<OVS_PATH>/<port_name>" mode="client"/>
+         <source type="unix" path="<OVS_PATH>/<port_name>" .../>
          ...
       </interface>
+
+Note that the OVS_PATH property is required, as explained on `Agent configuration for DPDK support`_. For example, when OVS_PATH is set to the default path for Openvswitch (/var/run/openvswitch), interfaces will reference created ports on: /var/run/openvswitch/<port_name>
 
 Revision History
 ----------------

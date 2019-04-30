@@ -255,7 +255,7 @@ encoding:
 
 .. parsed-literal::
       
-   >>> sig_str='&'.join(['='.join([k.lower(),urllib.quote_plus(request[k].lower().replace('+','%20'))])for k in sorted(request.iterkeys())]) 
+   >>> sig_str='&'.join(['='.join([k.lower(),urllib.quote_plus(request[k]).lower().replace('+','%20')])for k in sorted(request.iterkeys())]) 
    >>> sig_str 'apikey=plgwjfzk4gys3momtvmjuvg-x-jlwlnfauj9gabbbf9edm-kaymmailqzzq1elzlyq_u38zcm0bewzgudp66mg&command=listusers&response=json'
    >>> sig=hmac.new(secretkey,sig_str,hashlib.sha1)
    >>> sig

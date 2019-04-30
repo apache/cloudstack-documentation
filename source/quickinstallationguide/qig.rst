@@ -141,6 +141,7 @@ vi /etc/sysconfig/network-scripts/ifcfg-cloudbr0
    DNS2=8.8.4.4
    STP=yes
    
+
 .. note:: 
    IP Addressing - Throughout this document we are assuming that you will have 
    a /24 network for your CloudStack implementation. This can be any RFC 1918 
