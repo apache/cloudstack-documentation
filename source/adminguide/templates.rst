@@ -202,7 +202,7 @@ CloudStack UI.
 
 
 Uploading Templates from a remote HTTP server
--------------------------------------------
+---------------------------------------------
 
 
 
