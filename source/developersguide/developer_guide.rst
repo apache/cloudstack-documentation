@@ -424,7 +424,7 @@ advanced zone replace ``basic.cfg`` with ``advanced.cfg``.
 You can now run integration tests, use the API etc...
 
 Installing version 4.11 from Source
-----------------------------------
+-----------------------------------
 
 CloudStack uses git for source version control, if you know little about
 `git <http://book.git-scm.com/>`__ is a good start. Once you have git

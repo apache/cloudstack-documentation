@@ -340,7 +340,7 @@ cloudstack-agent and should already be installed.
 
    .. parsed-literal::
 
-      $ service libvirtd restart
+        $ service libvirtd restart
 
    In Ubuntu:
 
@@ -398,6 +398,7 @@ ensure the Agent has all the required permissions.
          $ setenforce permissive
 
 #. Configure Apparmor (Ubuntu)
+
 
    #. Check to see whether AppArmor is installed on your machine. If
       not, you can skip this section.
@@ -1080,6 +1081,8 @@ To open the required ports, execute the following commands:
 
 Additional Packages Required for Features
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 Secondary Storage Bypass
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1091,8 +1094,10 @@ installed on all of your KVM hosts.
 As this package often is not available in standard distribution repos, you will need
 to install the package from your preferred source. 
 
+
 Volume snapshots
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
+
 CloudStack uses the qemu-img to perform snapshots.  In CentOS >= 6.5, the qemu-img
 supplied by RedHat/CentOS ceased to include a '-s' switch which performs snapshots. The
 '-s' switch has been restored in latest CentOS/RHEL 7.x versions.
