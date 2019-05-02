@@ -205,6 +205,7 @@ Make sure to activate the repository for MySQL connectors.
    sudo apt-get install mysql-connector-python   
 
 .. note::
+
    Below is given a bit different procedure if you are compiling on Ubuntu 18.04
 
 Due to default python version changes (and some others) in Ubuntu 18.04 version, we will need to install python 2.7, python-mysql.connector from Universe repo (instead from official MySQL repo) and later make sure we are using Java 8, since Java 10 comes as default
@@ -229,8 +230,6 @@ Add a new yum repo ``/etc/yum.repos.d/mysql.repo``:
    enabled=1
    gpgcheck=1
 
-.. parsed-literal::
-
 Install mysql-connector
 
 .. parsed-literal::
@@ -254,8 +253,8 @@ several other dependencies. Note that we recommend using Maven 3.
    
 .. note::
 
-If on Ubuntu 18.04, in above command, please replace "python-software-properties" with "software-properties-common"
-If on Ubuntu 18.04, above command will install both Java 10 and Java 8, so make sure to switch to Java8 with "update-alternatives --config java" - otherwise you will get errors during dependency check and code compiling.
+   If on Ubuntu 18.04, in above command, please replace "python-software-properties" with "software-properties-common"
+   If on Ubuntu 18.04, above command will install both Java 10 and Java 8, so make sure to switch to Java8 with "update-alternatives --config java" - otherwise you will get errors during dependency check and code compiling.
 
 While we have defined, and you have presumably already installed the
 bootstrap prerequisites, there are a number of build time prerequisites

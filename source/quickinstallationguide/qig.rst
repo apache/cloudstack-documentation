@@ -338,13 +338,16 @@ Now you'll need to add the configuration values at the bottom in the file
    STATD_OUTGOING_PORT=2020
 
 Now we need to disable the firewall, so that it will not block connections.
+
 .. note::
+
    Configuration of the firewall on CentOS7 is beyond the purview of this
    guide.
    
 To do so, simply use the following two commands: 
 
 .. parsed-literal::
+
    # systemctl stop firewalld
    # systemctl disable firewalld
 
@@ -388,7 +391,7 @@ With MySQL now installed we need to make a few configuration changes to
 /etc/my.cnf. Specifically we need to add the following options to the [mysqld] 
 section:
 
-::
+.. parsed-literal::
 
    innodb_rollback_on_timeout=1
    innodb_lock_wait_timeout=600
@@ -397,9 +400,10 @@ section:
    binlog-format = 'ROW'
 
 .. note::
-For Ubuntu 16.04 and later, make sure you specify a ``server-id`` in your ``.cnf`` file for binary logging. Set the     ``server-id`` according to your database setup.
+
+   For Ubuntu 16.04 and later, make sure you specify a ``server-id`` in your ``.cnf`` file for binary logging. Set the     ``server-id`` according to your database setup.
     
-::
+.. parsed-literal::
 
    server-id=master-01
    innodb_rollback_on_timeout=1
