@@ -166,8 +166,8 @@ supported by CloudStack. The following table provides this information.
 .. cssclass:: table-striped table-bordered table-hover
 
 +-----------------------------------+-----------+----------+--------+-----+--------+-------+
-| Feature                           | XenServer | vSphere  |  KVM   | LXC | HyperV | Bare  |
-|                                   |           |          | (RHEL) |     |        | Metal |
+| Feature                           | XenServer | vSphere  | KVM -  | LXC | HyperV | Bare  |
+|                                   |           |          | RHEL   |     |        | Metal |
 +===================================+===========+==========+========+=====+========+=======+
 | Network Throttling                | Yes       | Yes      | Yes    | No  | ?      | N/A   |
 +-----------------------------------+-----------+----------+--------+-----+--------+-------+
