@@ -77,18 +77,17 @@ node.
 #. Turn on NTP for time synchronization.
 
    .. note::
-      NTP is required to synchronize the clocks of the servers in your cloud.
+      An NTP daemon is required to synchronize the clocks of the servers in your cloud.
 
-   Install NTP.
-
-   .. parsed-literal::
-
-      yum install ntp
+   Install chrony.
 
    .. parsed-literal::
 
-      sudo apt-get install openntpd
+      yum install chrony
+
+   .. parsed-literal::
+
+      sudo apt install chrony
 
 #. Repeat all of these steps on every host where the Management Server
    will be installed.
-
