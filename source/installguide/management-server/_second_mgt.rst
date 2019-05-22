@@ -22,9 +22,9 @@ OS for the Management Server.
 
 #. Perform the steps in `“Prepare the Operating System” 
    <#prepare-the-operating-system>`_ and `“Building RPMs from Source” 
-   <building_from_source.html#building-rpms-from-source>`_ or 
+   <building_from_source.html#building-rpms-from-source>`__ or 
    `“Building DEB packages” 
-   <building_from_source.html#building-deb-packages>`_ as appropriate.
+   <building_from_source.html#building-deb-packages>`__ as appropriate.
 
 #. This step is required only for installations where XenServer is
    installed on the hypervisor hosts.
