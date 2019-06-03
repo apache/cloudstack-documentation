@@ -286,6 +286,12 @@ Agent configuration
 
 Agent should be restarted for actions to take effect.
 
+When the host agent connects to the management server, it sends the list of hosts capabilities. When DPDK support is enabled on the host, the capability with name 'dpdk' is sent to the management server. The list of host capabilities are persisted on the 'capabilities' column on 'hosts' table, and can be retrieved by the 'listHosts' API method:
+
+::
+      
+      list hosts id=HOST_ID filter=capabilities
+
 Additional VM configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In order to enable DPDK on VM deployments, users should pass addition configuration to VMs. The required configurations are listed on the next section. Administrators can allow users to pass additional configurations to their VMs by the account scoped setting:
@@ -409,6 +415,21 @@ By default, the server mode is assumed if it is not passed as a service offering
 ::
    
    create serviceoffering name=<NAME> displaytext=<NAME> serviceofferingdetails[0].key=DPDK-VHOSTUSER serviceofferingdetails[0].value=client serviceofferingdetails[1].key=extraconfig-dpdk-hugepages serviceofferingdetails[1].value=%3CmemoryBacking%3E%20%3Chugepages%2F%3E%20%3C%2FmemoryBacking%3E serviceofferingdetails[2].key=extraconfig-dpdk-numa serviceofferingdetails[2].value=%3Ccpu%20mode%3D%22host-passthrough%22%3E%20%3Cnuma%3E%20%3Ccell%20id%3D%220%22%20cpus%3D%220%22%20memory%3D%229437184%22%20unit%3D%22KiB%22%20memAccess%3D%22shared%22%2F%3E%20%3C%2Fnuma%3E%20%3C%2Fcpu%3E
+
+DPDK VMs live migrations
+~~~~~~~~~~~~~~~~~~~~~~~~
+It is possible to perform live migrations of DPDK enabled VMs since CloudStack version 4.13. DPDK enabled VMs can be migrated between hosts in the same cluster which are both DPDK enabled.
+
+CloudStack determinates that a VM is a DPDK enabled VM when the following conditions are met:
+
+- The VM is a user VM
+- The VM state is Running
+- The host in which the VM is running is a DPDK enabled host (i.e. host contains the 'dpdk' capability as part of its capabilities. Check `Agent configuration for DPDK support`_.)
+- The VM acquires the DPDK required configurations via VM details or service offering details. DPDK required additional configurations are additional configurations with name:
+   - 'extraconfig-dpdk-numa'
+   - 'extraconfig-dpdk-hugepages'
+
+DPDK enabled VMs can only be migrated between DPDK enabled hosts. Therefore the 'findHostsForMigration' API method excludes non-DPDK enabled hosts from the list of suitable hosts to migrate DPDK enabled VMs.
 
 DPDK ports
 ~~~~~~~~~~
