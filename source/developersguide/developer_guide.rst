@@ -18,9 +18,8 @@ CloudStack Installation from GIT repo for Developers
 ====================================================
 
 This guide is aimed at CloudStack developers who need to build the code.
-These instructions are valid on a Ubuntu 12.04 and CentOS 6.4 systems
-and were tested with the 4.2 release of Apache CloudStack. Instructions
-adapted for Ubuntu 18.04 and CloudStack 4.11 are also available. Please
+These instructions are valid on a Ubuntu 18.04 and CentOS 7 systems
+and were tested with the 4.11 release of Apache CloudStack.  Please
 adapt them if you are on a different operating system or using a newer/older
 version of CloudStack. This book is composed of the following sections:
 
@@ -45,265 +44,34 @@ Prerequisites
 In this section we'll look at installing the dependencies you'll need
 for Apache CloudStack development.
 
+To build and test CloudStack from source you will need the following
+installed:
+* jdk 8+ (openjdk-8-jdk)
+* maven 3+
+* git
+* python-pip
+* python-setuptools
+* mkisofs
+* A MySql Server
 
-On Ubuntu 12.04
-~~~~~~~~~~~~~~~
-
-First update and upgrade your system:
-
-::
-
-   apt-get update 
-   apt-get upgrade
-
-NTP might already be installed, check it with ``service ntp status``. If
-it's not then install NTP to synchronize the clocks:
-
-::
-
-   apt-get install openntpd
-
-Install ``openjdk``. As we're using Linux, OpenJDK is our first choice.
+Example Ubuntu 18.04
+~~~~~~~~~~~~~~~~~~~~
 
 ::
 
-   apt-get install openjdk-7-jdk
+   apt update
+   apt install openjdk-8-jdk-headless maven git python-pip mkisofs git mysql-server
 
-Install ``tomcat6``, note that the new version of tomcat on
-`Ubuntu <http://packages.ubuntu.com/precise/all/tomcat6>`__ is the
-6.0.35 version.
-
-::
-
-   apt-get install tomcat6
-
-Next, we'll install MySQL if it's not already present on the system.
+Example CentOS 7
+~~~~~~~~~~~~~~~~
 
 ::
 
-   apt-get install mysql-server
-
-Remember to set the correct ``mysql`` password in the CloudStack
-properties file. Mysql should be running but you can check it's status
-with:
-
-::
-
-   service mysql status
-
-Developers wanting to build CloudStack from source will want to install
-the following additional packages. If you dont' want to build from
-source just jump to the next section.
-
-Install ``git`` to later clone the CloudStack source code:
-
-::
-
-   apt-get install git
-
-Install ``Maven`` to later build CloudStack
-
-::
-
-   apt-get install maven
-
-This should have installed Maven 3.0, check the version number with
-``mvn --version``
-
-A little bit of Python can be used (e.g simulator), install the Python
-package management tools:
-
-::
-
-   apt-get install python-pip python-setuptools
-
-Finally install ``mkisofs`` with:
-
-::
-
-   apt-get install genisoimage
-
-On Ubuntu 18.04
-~~~~~~~~~~~~~~~
-
-Run apt-get update to fetch the latest package list from the repo
-
-::
-
-   apt-get update
-
-NTP might already be installed, check it with ``service ntp status``. If
-it's not then install NTP to synchronize the clocks:
-
-::
-
-   apt-get install openntpd
-
-Install ``openjdk``. As we're using Linux, OpenJDK is our first choice.
-
-::
-
-   apt-get install openjdk-8-jdk
-
-Next, we'll install MySQL if it's not already present on the system.
-
-::
-
-   apt-get install mysql-server
-
-Remember to set the correct ``mysql`` password in the CloudStack
-properties file. Mysql should be running but you can check it's status
-with:
-
-::
-
-   service mysql status
-
-Developers wanting to build CloudStack from source will want to install
-the following additional packages. If you dont' want to build from
-source just jump to the next section.
-
-Install ``git`` to later clone the CloudStack source code:
-
-::
-
-   apt-get install git
-
-Install ``Maven`` to later build CloudStack
-
-::
-
-   apt-get install maven
-
-This should have installed Maven 3.0, check the version number with
-``mvn --version``
-
-A little bit of Python can be used (e.g simulator), install the Python
-package management tools:
-
-::
-
-   apt-get install python-pip python-setuptools
-
-Finally install ``mkisofs`` with:
-
-::
-
-   apt-get install genisoimage
-
-On CentOS 6.4
-~~~~~~~~~~~~~
-
-First update and upgrade your system:
-
-::
-
-   yum -y update
-   yum -y upgrade
-
-If not already installed, install NTP for clock synchornization
-
-::
-
-   yum -y install ntp
-
-Install ``openjdk``. As we're using Linux, OpenJDK is our first choice.
-
-::
-
-   yum -y install java-1.7.0-openjdk-devel
-
-Install ``tomcat6``, note that the version of tomcat6 in the default
-CentOS 6.4 repo is 6.0.24, so we will grab the 6.0.35 version. The
-6.0.24 version will be installed anyway as a dependency to cloudstack.
-
-::
-
-   wget https://archive.apache.org/dist/tomcat/tomcat-6/v6.0.35/bin/apache-tomcat-6.0.35.tar.gz
-   tar xzvf apache-tomcat-6.0.35.tar.gz -C /usr/local
-
-Setup tomcat6 system wide by creating a file
-``/etc/profile.d/tomcat.sh`` with the following content:
-
-::
-
-   export CATALINA_BASE=/usr/local/apache-tomcat-6.0.35
-   export CATALINA_HOME=/usr/local/apache-tomcat-6.0.35
-
-Next, we'll install MySQL if it's not already present on the system.
-
-::
-
-   yum -y install mysql mysql-server
-
-Remember to set the correct ``mysql`` password in the CloudStack
-properties file. Mysql should be running but you can check it's status
-with:
-
-::
-
-   service mysqld status
-
-Install ``git`` to later clone the CloudStack source code:
-
-::
-
-   yum -y install git
-
-Install ``Maven`` to later build CloudStack. Grab the 3.0.5 release from
-the Maven `website <http://maven.apache.org/download.cgi>`__
-
-::
-
-   wget http://mirror.cc.columbia.edu/pub/software/apache/maven/maven-3/3.0.5/binaries/apache-maven-3.0.5-bin.tar.gz
-   tar xzf apache-maven-3.0.5-bin.tar.gz -C /usr/local
-   cd /usr/local
-   ln -s apache-maven-3.0.5 maven
-
-Setup Maven system wide by creating a ``/etc/profile.d/maven.sh`` file
-with the following content:
-
-::
-
-   export M2_HOME=/usr/local/maven
-   export PATH=${M2_HOME}/bin:${PATH}
-
-Log out and log in again and you will have maven in your PATH:
-
-::
-
-   mvn --version
-
-This should have installed Maven 3.0, check the version number with
-``mvn --version``
-
-A little bit of Python can be used (e.g simulator), install the Python
-package management tools:
-
-::
-
-   yum -y install python-setuptools
-
-To install python-pip you might want to setup the Extra Packages for
-Enterprise Linux (EPEL) repo
-
-::
-
-   cd /tmp
-   wget http://mirror-fpt-telecom.fpt.net/fedora/epel/6/i386/epel-release-6-8.noarch.rpm
-   rpm -ivh epel-release-6-8.noarch.rpm
-
-Then update you repository cache ``yum update`` and install pip
-``yum -y install python-pip``
-
-Finally install ``mkisofs`` with:
-
-::
-
-   yum -y install genisoimage
-
-
-Installing version 4.8 from Source
+   yum install -y epel-release
+   yum localinstall -y http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+   yum install -y java-1.8.0-openjdk-devel maven python-setuptools python-pip genisoimage git mysql-community-server
+
+Installing CloudStack from Source
 ----------------------------------
 
 CloudStack uses git for source version control, if you know little about
@@ -312,147 +80,13 @@ setup on your machine, pull the source with:
 
 ::
 
-   git clone https://git-wip-us.apache.org/repos/asf/cloudstack.git
+   git clone https://github.com/apache/cloudstack.git
 
-To build the latest stable release:
-
-::
-
-   git checkout 4.8
-
-To compile Apache CloudStack, go to the cloudstack source folder and
-run:
+To build a stable release, checkout the branch for that version:
 
 ::
 
-   mvn -Pdeveloper,systemvm clean install
-
-If you want to skip the tests add ``-DskipTests`` to the command above. 
-Do NOT use ``-Dmaven.test.skip=true`` because that will break the build.
-
-You will have made sure to set the proper db password in
-``utils/conf/db.properties``
-
-Deploy the database next:
-
-::
-
-   mvn -P developer -pl developer -Ddeploydb
-
-Run Apache CloudStack with jetty for testing. Note that ``tomcat`` maybe
-be running on port 8080, stop it before you use ``jetty``
-
-::
-
-   mvn -pl :cloud-client-ui jetty:run
-
-Log Into Apache CloudStack:
-
-Open your Web browser and use this URL to connect to CloudStack:
-
-::
-
-   http://localhost:8080/client/
-
-Replace ``localhost`` with the IP of your management server if need be.
-
-.. note:: 
-   If you have iptables enabled, you may have to open the ports used by 
-   CloudStack. Specifically, ports 8080, 8250, and 9090.
-
-You can now start configuring a Zone, playing with the API. Of course we
-did not setup any infrastructure, there is no storage, no
-hypervisors...etc. However you can run tests using the simulator. The
-following section shows you how to use the simulator so that you don't
-have to setup a physical infrastructure.
-
-
-Using the Simulator
--------------------
-
-CloudStack comes with a simulator based on Python bindings called
-*Marvin*. Marvin is available in the CloudStack source code or on Pypi.
-With Marvin you can simulate your data center infrastructure by
-providing CloudStack with a configuration file that defines the number
-of zones/pods/clusters/hosts, types of storage etc. You can then develop
-and test the CloudStack management server *as if* it was managing your
-production infrastructure.
-
-Do a clean build:
-
-::
-
-   mvn -Pdeveloper -Dsimulator -DskipTests clean install
-
-Deploy the database:
-
-::
-
-   mvn -Pdeveloper -pl developer -Ddeploydb
-   mvn -Pdeveloper -pl developer -Ddeploydb-simulator
-
-Install marvin. Note that you will need to have installed ``pip``
-properly in the prerequisites step.
-
-::
-
-   pip install tools/marvin/dist/Marvin-|release|.tar.gz
-
-Stop jetty (from any previous runs)
-
-::
-
-   mvn -pl :cloud-client-ui jetty:stop
-
-Start jetty
-
-::
-
-   mvn -pl client jetty:run
-
-Setup a basic zone with Marvin. In a separate shell://
-
-::
-
-   mvn -Pdeveloper,marvin.setup -Dmarvin.config=setup/dev/basic.cfg -pl :cloud-marvin integration-test
-
-At this stage log in the CloudStack management server at
-http://localhost:8080/client with the credentials admin/password, you
-should see a fully configured basic zone infrastructure. To simulate an
-advanced zone replace ``basic.cfg`` with ``advanced.cfg``.
-
-You can now run integration tests, use the API etc...
-
-Installing version 4.11 from Source
------------------------------------
-
-CloudStack uses git for source version control, if you know little about
-`git <http://book.git-scm.com/>`__ is a good start. Once you have git
-setup on your machine, pull the source with:
-
-::
-
-   git clone https://git-wip-us.apache.org/repos/asf/cloudstack.git
-
-To build the latest stable release:
-
-::
-
-   git checkout 4.11
-
-Make sure you are using java 8. On Ubuntu you can run the following commands.
-To list available java installations:
-
-::
-
-   sudo update-java-alternatives -l
-
-To switch to java 8:
-
-::
-
-   sudo update-java-alternatives -s java-1.8.0-openjdk-amd64
-
+   git checkout 4.11.2
 
 To compile Apache CloudStack, go to the cloudstack source folder and
 run:
@@ -464,26 +98,16 @@ run:
 If you want to skip the tests add ``-DskipTests`` to the command above.
 Do NOT use ``-Dmaven.test.skip=true`` because that will break the build.
 
-The default installation of mysql is configured not to allow non root users to
-connect as root. This can be changed by running the following commands:
+If you have set a root mysql password, you will need to adjust the password in
+``utils/conf/db.properties``
 
-::
-
-   sudo -i mysql
-   ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
-   exit
-
-Before deploying the database you will have to make sure to set the proper db
-passwords in ``utils/conf/db.properties``
-
-Next, deploy the database:
+Deploy the database next:
 
 ::
 
    mvn -P developer -pl developer -Ddeploydb
 
-Run Apache CloudStack with jetty for testing. Note that ``tomcat`` maybe
-be running on port 8080, stop it before you use ``jetty``
+Run Apache CloudStack with jetty for testing
 
 ::
 
@@ -513,58 +137,72 @@ have to setup a physical infrastructure.
 Using the Simulator
 -------------------
 
-CloudStack comes with a simulator based on Python bindings called
-*Marvin*. Marvin is available in the CloudStack source code or on Pypi.
-With Marvin you can simulate your data center infrastructure by
-providing CloudStack with a configuration file that defines the number
-of zones/pods/clusters/hosts, types of storage etc. You can then develop
-and test the CloudStack management server *as if* it was managing your
-production infrastructure.
+CloudStack comes with a simulator for hosts, VMs and network infrastructure,
+allowing you to use the CloudStack management server without using real
+servers.  It also comes with Marvin, which can create a set of
+infrastructure based on a configuration file that defines the number
+of zones/pods/clusters/hosts, types of storage etc.  Marvin combined with
+the simulator enable you to develop and test the CloudStack management server
+*as if* it was managing production infrastructure.
 
-Do a clean build:
+Stop jetty (from any previous runs, if running)
+
+::
+
+   mvn -pl :cloud-client-ui jetty:stop
+
+Do a clean build with the simulator option enabled:
 
 ::
 
    mvn -Pdeveloper -Dsimulator -DskipTests clean install
 
-Deploy the database:
+Deploy the database (skip first line if you did this earlier):
 
 ::
 
    mvn -Pdeveloper -pl developer -Ddeploydb
    mvn -Pdeveloper -pl developer -Ddeploydb-simulator
 
-Install marvin. Note that you will need to have installed ``pip``
-properly in the prerequisites step.
+Start jetty with the simulator enabled
 
 ::
 
-   pip install tools/marvin/dist/Marvin-|release|.tar.gz
+   mvn -Dsimulator -Dorg.eclipse.jetty.annotations.maxWait=120 -pl :cloud-client-ui jetty:run
 
-Stop jetty (from any previous runs)
-
-::
-
-   mvn -pl :cloud-client-ui jetty:stop
-
-Start jetty
+Setup a basic or advanced zone with Marvin. In a separate shell://
 
 ::
 
-   mvn -Dsimulator -Dorg.eclipse.jetty.annotations.maxWait=120 -pl cloud-client-ui jetty:run
-
-Setup a basic zone with Marvin. In a separate shell://
-
-::
-
+   python tools/marvin/marvin/deployDataCenter.py -i setup/dev/basic.cfg
+   OR
    python tools/marvin/marvin/deployDataCenter.py -i setup/dev/advanced.cfg
 
 At this stage log in the CloudStack management server at
 http://localhost:8080/client with the credentials admin/password, you
-should see a fully configured advanced zone infrastructure. To simulate a
-basic zone replace ``advanced.cfg`` with ``basic.cfg``.
+should see a fully configured zone infrastructure.
 
-You can now run integration tests, use the API etc...
+You can now run integration tests, use the API etc.
+
+Building non-free Packages
+--------------------------
+
+Certain CloudStack packages are not built by default because they depend on
+libraries without redistribution rights.  To build these, you need to install
+the dependencies manually.
+
+::
+
+   git clone https://github.com/rhtyd/cloudstack-nonoss
+   cd cloudstack-nonoss
+   ./install-non-oss.sh
+
+You can then build and run CloudStack as normal by adding the `-Dnodist` flag
+to build and run lines, e.g.
+
+::
+
+   mvn -Dsimulator -Dnoredist -Dorg.eclipse.jetty.annotations.maxWait=120 -pl :cloud-client-ui jetty:run
 
 Using DevCloud
 --------------
@@ -588,7 +226,7 @@ with the VirtualBox image. For KVM see the
 #. Run VirtualBox and under >Preferences create a *host-only interface*
    on which you disable the DHCP server
 
-#. Download the DevCloud `image 
+#. Download the DevCloud `image
    <http://people.apache.org/~bhaisaab/cloudstack/devcloud/devcloud2.ova>`__
 
 #. In VirtualBox, under File > Import Appliance import the DevCloud
@@ -657,7 +295,8 @@ infrastructure. The may also need to build their own packages for
 security reasons and due to network connectivity constraints. This
 section shows you the gist of how to build packages. We assume that the
 reader will know how to create a repository to serve this packages. The
-complete documentation is available in the :ref:`building_deb_packages` section.
+complete documentation is available in the :ref:`building_deb_packages`
+section.
 
 To build debian packages you will need couple extra packages that we did
 not need to install for source compilation:
@@ -753,7 +392,7 @@ encoded using the ``base64`` module.
 ::
 
    $python
-   Python 2.7.3 (default, Nov 17 2012, 19:54:34) 
+   Python 2.7.3 (default, Nov 17 2012, 19:54:34)
    [GCC 4.2.1 Compatible Apple Clang 4.1 ((tags/Apple/clang-421.11.66))] on darwin
    Type "help", "copyright", "credits" or "license" for more information.
    >>> import urllib2
@@ -792,7 +431,7 @@ joined in a sorted order
 
 ::
 
-   >>> sig_str='&'.join(['='.join([k.lower(),urllib.quote_plus(request[k].lower().replace('+','%20'))])for k in sorted(request.iterkeys())]) 
+   >>> sig_str='&'.join(['='.join([k.lower(),urllib.quote_plus(request[k].lower().replace('+','%20'))])for k in sorted(request.iterkeys())])
    >>> sig_str
    'apikey=plgwjfzk4gys3momtvmjuvg-x-jlwlnfauj9gabbbf9edm-kaymmailqzzq1elzlyq_u38zcm0bewzgudp66mg&command=listusers&response=json'
    >>> sig=hmac.new(secretkey,sig_str,hashlib.sha1).digest()
@@ -817,9 +456,9 @@ and the signature. Then do an http GET:
    >>> res=urllib2.urlopen(req)
    >>> res.read()
    {
-      "listusersresponse" : { 
+      "listusersresponse" : {
          "count":1 ,
-         "user" : [  
+         "user" : [
             {
                "id":"7ed6d5da-93b2-4545-a502-23d20b48ef2a",
                "username":"admin",
@@ -838,7 +477,6 @@ and the signature. Then do an http GET:
          ]
       }
    }
-                                                      
 
 All the clients that you will find on github will implement this
 signature technique, you should not have to do it by hand. Now that you
@@ -899,7 +537,7 @@ CloudStack releases.
 Conclusions
 -----------
 
-CloudStack is a mostly Java application running with Tomcat and Mysql.
+CloudStack is a mostly Java application running with Jetty and Mysql.
 It consists of a management server and depending on the hypervisors
 being used, an agent installed on the hypervisor farm. To complete a
 Cloud infrastructure however you will also need some Zone wide storage
@@ -910,4 +548,4 @@ be. As a quick start, you might want to consider KVM+NFS and a Basic
 Zone.
 
 If you've run into any problems with this, please ask on the
-cloudstack-dev `mailing list </mailing-lists.html>`__.
+cloudstack-dev `mailing list <http://cloudstack.apache.org/mailing-lists.html>`__.
