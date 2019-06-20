@@ -22,7 +22,11 @@ The Usage Server is an optional, separately-installed part of CloudStack
 that provides aggregated usage records which you can use to create
 billing integration for CloudStack. The Usage Server works by taking
 data from the events log and creating summary usage records that you can
-access using the listUsageRecords API call.
+access using the listUsageRecords API call. Starting version 4.13 and above,
+the usage records description returned by the listUsageRecords API call
+will use CloudStack resource UUIDs instead of internal database IDs. To get
+description in the old format, an API parameter "oldformat" is introduced
+which is false by default.
 
 The usage records show the amount of resources, such as VM run time or
 template storage space, consumed by guest instances.
