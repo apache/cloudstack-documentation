@@ -1,4 +1,4 @@
-.. Licensed to the Apache Software Foundation (ASF) under one
+	.. Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
     distributed with this work for additional information#
     regarding copyright ownership.  The ASF licenses this file
@@ -14,7 +14,7 @@
     under the License.
 
 
-.. |version_to_upgrade| replace:: 4.11.0.0 or 4.11.1
+.. |version_to_upgrade| replace:: 4.11.0 - 4.11.2
 
 Upgrade Instruction from |version_to_upgrade|
 =============================================
@@ -205,7 +205,7 @@ This file should have content similar to the following:
 
    [apache-cloudstack]
    name=Apache CloudStack
-   baseurl=http://download.cloudstack.org/centos/6/4.10/
+   baseurl=http://download.cloudstack.org/centos/7/4.11/
    enabled=1
    gpgcheck=0
 
