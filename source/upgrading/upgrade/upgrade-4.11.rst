@@ -205,12 +205,16 @@ This file should have content similar to the following:
 
    [apache-cloudstack]
    name=Apache CloudStack
-   baseurl=http://download.cloudstack.org/centos/6/4.10/
+   baseurl=http://download.cloudstack.org/centos/6/4.11/
    enabled=1
    gpgcheck=0
 
 If you are using the community provided package repository, change
-the base url to ``http://download.cloudstack.org/centos/$releasever/|version|/``.
+the base url to:
+
+.. parsed-literal::
+
+   http://download.cloudstack.org/centos/$releasever/|version|/
 
 Setup the GPG public key if you wish to enable ``gpgcheck=1``:
 
