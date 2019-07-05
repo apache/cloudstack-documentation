@@ -216,8 +216,11 @@ This file should have content similar to the following:
    enabled=1
    gpgcheck=0
 
-If you are using the community provided package repository, change
-the base url to ``http://download.cloudstack.org/centos/$releasever/4.9/``.
+If you are using the community provided package repository, change the base url to:
+
+.. parsed-literal::
+
+   http://download.cloudstack.org/centos/$releasever/|version|/
 
 Setup the GPG public key if you wish to enable ``gpgcheck=1``:
 
