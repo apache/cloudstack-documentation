@@ -22,6 +22,8 @@ is used by the cloud-sysvmadm script at the end of the upgrade
 procedure. For information about how to set this parameter, see :ref:`configuration parameters <configuration-parameters>`
 Changing this parameter will require management server restart. Also
 make sure port 8096 is open in your local host firewall to do this.
+Please note that the integration.api.port (8096) is unauthenticated
+port and must not be open for public access.
 
 There is a script that will do this for you, all you need to do is
 run the script and supply the IP address for your MySQL instance and
