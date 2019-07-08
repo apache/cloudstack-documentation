@@ -242,7 +242,9 @@ Here are some examples:
    host-passthrough may lead to migration failure,if you have this problem,
    you should use host-model or custom. guest.cpu.features will force cpu features
    as a required policy so make sure to put only those features that are provided
-   by the host CPU.
+   by the host CPU. As your kvm cluster needs to be made up of homogenous nodes anyway
+   (see System Requirements), it might make most sense to use guest.cpu.mode=host-model
+   or guest.cpu.mode=host-passthrough.
 
 Install and Configure libvirt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
