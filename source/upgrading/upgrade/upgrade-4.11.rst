@@ -14,7 +14,7 @@
     under the License.
 
 
-.. |version_to_upgrade| replace:: 4.11.0.0 or 4.11.1
+.. |version_to_upgrade| replace:: 4.11.0 - 4.11.2
 
 Upgrade Instruction from |version_to_upgrade|
 =============================================
@@ -205,12 +205,15 @@ This file should have content similar to the following:
 
    [apache-cloudstack]
    name=Apache CloudStack
-   baseurl=http://download.cloudstack.org/centos/6/4.10/
+   baseurl=http://download.cloudstack.org/centos/7/4.11/
    enabled=1
    gpgcheck=0
 
-If you are using the community provided package repository, change
-the base url to ``http://download.cloudstack.org/centos/$releasever/|version|/``.
+If you are using the community provided package repository, change the base url to:
+
+.. parsed-literal::
+
+   http://download.cloudstack.org/centos/$releasever/|version|/
 
 Setup the GPG public key if you wish to enable ``gpgcheck=1``:
 
