@@ -16,6 +16,11 @@
 .. |compute_offering_dialog.png| image:: /_static/images/compute_offering_dialog.png
    :alt: Compute offering dialog box
 
+.. |update-service-offering-button.jpg| image:: /_static/images/update-service-offering-button.jpg
+   :alt: Update offering access button
+
+.. |edit-icon.png| image:: /_static/images/edit-icon.png
+   :alt: edit offering button
 
 In addition to the physical and logical infrastructure of your cloud and
 the CloudStack software and servers, you also need a layer of user services
@@ -236,7 +241,7 @@ To create a new compute offering:
    -  **CPU cap**: Whether to limit the level of CPU usage even if spare
       capacity is available.
 
-   -  **Public**: Indicate whether the service offering should be
+   -  **Public**: Indicate whether the compute offering should be
       available all domains or only some domains. Choose Yes to make it
       available to all domains. Choose No to limit the scope to one or more
       domains.  When 'Public' is set to 'no' a multi-selection list box is
@@ -336,28 +341,28 @@ To create a new disk offering:
    -  **Disk Size**: Appears only if Custom Disk Size is not selected.
       Define the volume size in GB (2^30 1GB = 1,073,741,824 Bytes).
 
-   -  **QoS Type**: Three options: Empty (no Quality of Service), hypervisor
+   -  **QoS Type** [2]_: Three options: Empty (no Quality of Service), hypervisor
       (rate limiting enforced on the hypervisor side), and storage
       (guaranteed minimum and maximum IOPS enforced on the storage
       side). If leveraging QoS, make sure that the hypervisor or storage
       system supports this feature.
 
-   -  **Custom IOPS**: If checked, the user can set their own IOPS. If not
+   -  **Custom IOPS** [2]_: If checked, the user can set their own IOPS. If not
       checked, the root administrator can define values. If the root
       admin does not set values when using storage QoS, default values
       are used (the defauls can be overridden if the proper parameters
       are passed into CloudStack when creating the primary storage in
       question).
 
-   -  **Min IOPS**: Appears only if storage QoS is to be used. Set a
+   -  **Min IOPS** [2]_: Appears only if storage QoS is to be used. Set a
       guaranteed minimum number of IOPS to be enforced on the storage
       side.
 
-   -  **Max IOPS**: Appears only if storage QoS is to be used. Set a maximum
+   -  **Max IOPS** [2]_: Appears only if storage QoS is to be used. Set a maximum
       number of IOPS to be enforced on the storage side (the system may
       go above this limit in certain circumstances for short intervals).
 
-   -  **Hypervisor Snapshot Reserve**: For managed storage only. This is
+   -  **Hypervisor Snapshot Reserve** [2]_: For managed storage only. This is
       a value that is a percentage of the size of the data disk. For example:
       if the data disk is 20 GB and Hypervisor Snapshot Reserve is 200%, the
       storage volume that backs the storage repository (XenServer) or
@@ -374,19 +379,27 @@ To create a new disk offering:
       Storage for the volume to be provisioned. If no such primary
       storage exists, allocation from the disk offering will fail..
 
-   -  **Public**: Indicate whether the service offering should be available
-      all domains or only some domains. Choose Yes to make it available
-      to all domains. Choose No to limit the scope to a subdomain;
-      CloudStack will then prompt for the subdomain's name.
+   -  **Public**: Indicate whether the disk offering should be
+      available all domains or only some domains. Choose Yes to make it
+      available to all domains. Choose No to limit the scope to one or more
+      domains.  When 'Public' is set to 'no' a multi-selection list box is
+      displayed. One or more domains can be selected from this list box.
 
 #. Click Add.
+
+.. [2] These options are dependant on the capabilities of the hypervisor or the shared storage system which the VMs are on.
+   If the hypervisor or underlying storage don't support a particular capability in the offering, the setting will have no effect.
 
 
 Modifying or Deleting a Service Offering
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Service offerings cannot be changed once created. This applies to both
-compute offerings and disk offerings.
+Service offerings cannot be materially changed once created. This applies to 
+both compute offerings and disk offerings.  However their name, description 
+and scope can be modified. To edit the name or description navigate to the
+service offering's detail page and click on the edit icon |edit-icon.png|. 
+To alter the scope (zones and domains) that an offering is available in
+click on the update offering access button |update-service-offering-button.jpg|.
 
 A service offering can be deleted. If it is no longer in use, it is
 deleted immediately and permanently. If the service offering is still in
