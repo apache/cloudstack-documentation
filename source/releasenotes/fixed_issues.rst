@@ -28,6 +28,9 @@ pull requests. All new features and bugs for |version| have been merged through
 Github pull requests.  A subset of these changes are tracked in Jira, which have a 
 standard naming convention of "CLOUDSTACK-NNNN" where "NNNN" is the issue number.
 
+Issues Fixed in 4.12.0.0
+------------------------
+
 Issues fixed aiming milestones 4.11.3.0 and 4.12.0.0 (branches 4.11 and 4.12)
 
 .. cssclass:: table-striped table-bordered table-hover
@@ -886,6 +889,186 @@ Issues fixed aiming milestones 4.11.3.0 and 4.12.0.0 (branches 4.11 and 4.12)
 .. _`#2457`: https://github.com/apache/cloudstack/pull/2457
 .. _`#2456`: https://github.com/apache/cloudstack/pull/2456
 .. _`#2432`: https://github.com/apache/cloudstack/pull/2432
+
+Issues Fixed in 4.11.3.0
+------------------------
+
+.. cssclass:: table-striped table-bordered table-hover
+
+
++-------------------------+----------+------------------------------------------------------------+
+| Version                 | Github   | Description                                                |
++=========================+==========+============================================================+
+| 4.11.3.0                | `#3381`_ | schema: add 4.11.2 to 4.11.3 systemvmtemplate upgrade path |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3075`_ | KVM: Prevent regenerating keystore on provisionCertificate |
+|                         |          | API                                                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3373`_ | router: support multi-homed VMs in VPC                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3366`_ | Fix rule duplication with static NAT rules                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3194`_ | Suspending a VM before snapshot deletion (see PR #3193)    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3370`_ | ssvm: apply MTU value on storage/management nic if         |
+|                         |          | available                                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#2995`_ | KVM: Improvements on upload direct download certificates   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3351`_ | Have persistent DHCP leases file on VRs and cleanup        |
+|                         |          | /etc/hosts on VM deletion                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3310`_ | Fix removing static NAT rules with Juniper SRX             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3361`_ | Fix 4.11 VR Issues with Multiple Public Subnets            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3206`_ | server: allow dedicate ip range to a domain if ips are     |
+|                         |          | used by an account in the domain                           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3205`_ | server: update dhcp configurations in vrs while update     |
+|                         |          | default nic of running vms                                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3362`_ | vmware: fix potential NPE when memory hotplug capability   |
+|                         |          | is checked                                                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3338`_ | ui: fix enable static nat only towards first nic and not   |
+|                         |          | on any other interface                                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3359`_ | Ui: Reset multiselect actions when refreshing listView in  |
+|                         |          | Instance page                                              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3342`_ | VPC: Fail to restart VPC with cleanup if there are         |
+|                         |          | multiple public IPs in different subnets                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3348`_ | fix duplicate tag exception as CloudRuntimeException       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3333`_ | server: ssh-keygen in PEM format and reduce main systemvm  |
+|                         |          | patching script                                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3239`_ | KVM: Fix agents dont reconnect post maintenance            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3278`_ | systemvm: new qemu-guest-agent based patching for KVM      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3276`_ | Allow VM that has never started to have volumes attached   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3204`_ | server: Fix exception while update domain resource count   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3269`_ | packaging: systemctl daemon-reload after agent install or  |
+|                         |          | upgrade                                                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3266`_ | packaging: don't skip unit tests while building packages   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3238`_ | client: don't disable TLSv1, TLSv1.1 by default that       |
+|                         |          | breaks VMware env                                          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#2869`_ | Fix some Marvin smoke tests                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3158`_ | Allow users of all types to create L2 networks             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3210`_ | systemd: Fix -Dpid arg passing to systemd usage service    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3163`_ | systemd: fix services to allow TLS configurations via      |
+|                         |          | java.security.ciphers                                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3122`_ | Add back ability to disable backup of snapshot to          |
+|                         |          | secondary                                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3139`_ | packaging: management default file cleanup                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3134`_ | keystore: don't restart systemvm cloud.service post cert   |
+|                         |          | import                                                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3105`_ | VmwareStorageLayoutHelper throws StackOverflowError fix    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3095`_ | Prevent corner case for infinite PrepareForMaintenance     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3106`_ | marvin: add missing test data for test_migration smoketest |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3098`_ | Add support for keyword in listSSHKeyPairs command search  |
+|                         |          | (#2920)                                                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#2894`_ | api: don't throttle api discovery for listApis command     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3024`_ | travis: fail fast if --with-marvin fails with nose         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3005`_ | Discover tags field on superclass of API responses         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3076`_ | security: increase keystore setup/import timeout           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3030`_ | correct permissions in spec file and fix class path        |
+|                         |          | specified variable                                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3066`_ | API: move ostypeid from DB id to DB uuid, backports #2528  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3037`_ | kvm: when untagged vxlan is used, use the default          |
+|                         |          | guest/public bridge                                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#2990`_ | Security Group: add secondary ips to the correct ipset     |
+|                         |          | based on ip family (4.11)                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3055`_ | marvin: add missing default test data                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3038`_ | surefire: ignore system classloader to make tests run      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3021`_ | Skip network migration tests for not supported hypervisors |
+|                         |          | instead of failing                                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.11.3.0                | `#3417   | schema: add 4.11.2 to 4.11.3 systemvmtemplate upgrade path |
++-------------------------+----------+------------------------------------------------------------+
+
+
+48 Issues listed
+
+GitHub links to listed issues:
+
+.. _`#3381`: https://github.com/apache/cloudstack/pull/3381 
+.. _`#3075`: https://github.com/apache/cloudstack/pull/3075 
+.. _`#3373`: https://github.com/apache/cloudstack/pull/3373 
+.. _`#3366`: https://github.com/apache/cloudstack/pull/3366 
+.. _`#3194`: https://github.com/apache/cloudstack/pull/3194 
+.. _`#3370`: https://github.com/apache/cloudstack/pull/3370 
+.. _`#2995`: https://github.com/apache/cloudstack/pull/2995 
+.. _`#3351`: https://github.com/apache/cloudstack/pull/3351 
+.. _`#3310`: https://github.com/apache/cloudstack/pull/3310 
+.. _`#3361`: https://github.com/apache/cloudstack/pull/3361 
+.. _`#3206`: https://github.com/apache/cloudstack/pull/3206 
+.. _`#3205`: https://github.com/apache/cloudstack/pull/3205 
+.. _`#3362`: https://github.com/apache/cloudstack/pull/3362 
+.. _`#3338`: https://github.com/apache/cloudstack/pull/3338 
+.. _`#3359`: https://github.com/apache/cloudstack/pull/3359 
+.. _`#3342`: https://github.com/apache/cloudstack/pull/3342 
+.. _`#3348`: https://github.com/apache/cloudstack/pull/3348 
+.. _`#3333`: https://github.com/apache/cloudstack/pull/3333 
+.. _`#3239`: https://github.com/apache/cloudstack/pull/3239 
+.. _`#3278`: https://github.com/apache/cloudstack/pull/3278 
+.. _`#3276`: https://github.com/apache/cloudstack/pull/3276 
+.. _`#3204`: https://github.com/apache/cloudstack/pull/3204 
+.. _`#3269`: https://github.com/apache/cloudstack/pull/3269 
+.. _`#3266`: https://github.com/apache/cloudstack/pull/3266 
+.. _`#3238`: https://github.com/apache/cloudstack/pull/3238 
+.. _`#2869`: https://github.com/apache/cloudstack/pull/2869 
+.. _`#3158`: https://github.com/apache/cloudstack/pull/3158 
+.. _`#3210`: https://github.com/apache/cloudstack/pull/3210 
+.. _`#3163`: https://github.com/apache/cloudstack/pull/3163 
+.. _`#3122`: https://github.com/apache/cloudstack/pull/3122 
+.. _`#3139`: https://github.com/apache/cloudstack/pull/3139 
+.. _`#3134`: https://github.com/apache/cloudstack/pull/3134 
+.. _`#3105`: https://github.com/apache/cloudstack/pull/3105 
+.. _`#3095`: https://github.com/apache/cloudstack/pull/3095 
+.. _`#3106`: https://github.com/apache/cloudstack/pull/3106 
+.. _`#3098`: https://github.com/apache/cloudstack/pull/3098 
+.. _`#2894`: https://github.com/apache/cloudstack/pull/2894 
+.. _`#3024`: https://github.com/apache/cloudstack/pull/3024 
+.. _`#3005`: https://github.com/apache/cloudstack/pull/3005 
+.. _`#3076`: https://github.com/apache/cloudstack/pull/3076 
+.. _`#3030`: https://github.com/apache/cloudstack/pull/3030 
+.. _`#3066`: https://github.com/apache/cloudstack/pull/3066 
+.. _`#3037`: https://github.com/apache/cloudstack/pull/3037 
+.. _`#2990`: https://github.com/apache/cloudstack/pull/2990 
+.. _`#3055`: https://github.com/apache/cloudstack/pull/3055 
+.. _`#3038`: https://github.com/apache/cloudstack/pull/3038 
+.. _`#3021`: https://github.com/apache/cloudstack/pull/3021
+.. _`#3417`: https://github.com/apache/cloudstack/pull/3417
 
 
 Issues Fixed in 4.11.2.0

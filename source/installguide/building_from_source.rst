@@ -304,7 +304,7 @@ as well.
 
 .. parsed-literal::
 
-   $ sudo apt-get install dpkg-dev
+   $ sudo apt-get install dpkg-dev apt-utils
 
 The next step is to copy the DEBs to the directory where they can be
 served over HTTP. We'll use ``/var/www/cloudstack/repo`` in the
@@ -315,15 +315,53 @@ examples, but change the directory to whatever works for you.
    $ sudo mkdir -p /var/www/cloudstack/repo/binary
    $ sudo cp \*.deb /var/www/cloudstack/repo/binary
    $ cd /var/www/cloudstack/repo/binary
-   $ sudo sh -c 'dpkg-scanpackages . /dev/null | tee Packages | gzip -9 > Packages.gz'
+   $ sudo dpkg-scanpackages . /dev/null > Packages
+   $ sudo gzip -9k Packages
+   $ sudo apt-ftparchive release . > Release
 
 .. note::
 
    You can safely ignore the warning about a missing override file.
 
-Now you should have all of the DEB packages and ``Packages.gz`` in the
-``binary`` directory and available over HTTP. (You may want to use
-``wget`` or ``curl`` to test this before moving on to the next step.)
+Now you should have all of the DEB packages, ``Packages``,
+``Packages.gz`` and ``Release`` in the ``binary`` directory and
+available over HTTP. (You may want to use ``wget`` or ``curl``
+to test this before moving on to the next step.)
+
+
+Repository signing
+~~~~~~~~~~~~~~~~~~
+
+The following step is optional.
+
+The repository we just created will work without cryptographic
+signatures, but it's always better to sign your releases if you can.
+
+Install GnuPG first:
+
+.. parsed-literal::
+
+   $ sudo apt-get install gpg
+
+Set up a signing key if you don't have one yet.
+If you already have a suitable key, skip this step.
+
+.. parsed-literal::
+
+   $ sudo gpg --default-new-key-algo rsa4096 --gen-key
+
+Generate the repository signatures. Replace ${YOUR_KEY_ID} with the
+key ID of the key you created above.
+
+.. parsed-literal::
+
+   $ sudo rm -fr Release.gpg InRelease
+   $ sudo gpg --default-key ${YOUR_KEY_ID} -abs -o Release.gpg Release
+   $ sudo gpg --default-key ${YOUR_KEY_ID} --clearsign -o InRelease Release
+   $ sudo gpg --output KEY.gpg --armor --export ${YOUR_KEY_ID}
+
+Store the ``Release.gpg`` and ``InRelease`` as well as KEY.gpg on your
+HTTP server.
 
 
 Configuring your machines to use the APT repository
@@ -338,6 +376,13 @@ line:
 .. parsed-literal::
 
    deb http://server.url/cloudstack/repo/binary ./
+
+If you signed your Release file with GnuPG, import the signing key
+on your target system first.
+
+.. parsed-literal::
+
+   $ wget -q -O - http://server.url/cloudstack/repo/binary/KEY.gpg | sudo apt-key add -
 
 Now that you have the repository info in place, you'll want to run
 another update so that APT knows where to find the CloudStack packages.

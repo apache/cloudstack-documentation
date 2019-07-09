@@ -19,14 +19,13 @@ Update System-VM templates
 --------------------------
 
 #. While running the existing |version_to_upgrade| system, log in to the UI as 
-   root administrator.
+   the root administrator.
 
 #. In the left navigation bar, click Templates.
 
 #. In Select view, click Templates.
 
 #. Click Register template.
-
    The Register template dialog box is displayed.
 
 #. In the Register template dialog box, specify the following values

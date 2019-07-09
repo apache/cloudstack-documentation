@@ -24,6 +24,7 @@
 .. |documentation_home| replace:: http://docs.cloudstack.apache.org/
 
 .. Latest version systemvm template name
+
 .. |sysvm64-name-xen|    replace:: systemvm-xenserver-4.13.0
 .. |sysvm64-name-kvm|    replace:: systemvm-kvm-4.13.0
 .. |sysvm64-name-vmware| replace:: systemvm-vmware-4.13.0

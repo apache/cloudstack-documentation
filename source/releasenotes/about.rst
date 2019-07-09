@@ -64,6 +64,15 @@ Some of the changes are presented in this quick summary (this is not a complete 
 * Display mac address in nic detail view
 * Cleanup methods, classes, and POMs
 
+
+What's New in 4.11.3.0
+----------------------
+
+The new |release| version is a |version| maintainance release containing almost 50
+fixes and improvements on the 4.11.2.0 release.
+
+
+
 What's New in 4.11.2.0
 ----------------------
 
