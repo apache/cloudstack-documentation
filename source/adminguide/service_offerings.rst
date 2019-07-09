@@ -13,6 +13,9 @@
    specific language governing permissions and limitations
    under the License.
 
+.. |compute_offering_dialog.png| image:: /_static/images/compute_offering_dialog.png
+   :alt: Compute offering dialog box
+
 
 In addition to the physical and logical infrastructure of your cloud and
 the CloudStack software and servers, you also need a layer of user services
@@ -69,14 +72,20 @@ available offerings when they create a new VM. Based on the user’s
 selected offering, CloudStack emits usage records that can be integrated
 with billing systems.
 
-Some characteristics of service offerings must be defined by the CloudStack
-administrator, and others can be left undefined so that the end-user can
-enter their own desired values. This is useful to reduce the number of
-offerings the CloudStack administrator has to define. Instead of defining a
-compute offering for every imaginable combination of values that a user
+Compute offerings may be "fixed", "custom constrained" or "custom unconstrained".
+
+In fixed offering the Number of CPUs, Memory and CPU frequecy in each service
+offerings are predefined by the CloudStack administrator, in custom unconstrained
+offerings they are left undefined so that the end-user can enter their own desired
+values when creating a guest instance. Since 4.13 custom constrained offerings have
+been introduced to allow the end-user to enter the number of CPUs and memory
+required within constraints set by the administrator.  The constraints can be 
+different for different custom constrained offerings.  This is useful to reduce 
+the number of offerings the CloudStack administrator has to define; Instead of
+defining acompute offering for every imaginable combination of values that a user
 might want, the administrator can define offerings that provide some
 flexibility to the users and can serve as the basis for several
-different VM configurations.
+different VM configurations.  
 
 A service offering includes the following elements:
 
@@ -113,39 +122,18 @@ The disk offering specifies:
 -  Tags on the data disk
 
 
-Custom Compute Offering
-~~~~~~~~~~~~~~~~~~~~~~~
-
-CloudStack provides you the flexibility to specify the desired values for
-the number of CPU, CPU speed, and memory while deploying a VM. As an
-admin, you create a Compute Offering by marking it as custom, and the
-users will be able to customize this dynamic Compute Offering by
-specifying the memory, and CPU at the time of VM creation or upgrade.
-Custom Compute Offering is same as the normal Compute Offering except
-that the values of the dynamic parameters will be set to zeros in the
-given set of templates. Use this offering to deploy VM by specifying
-custom values for the dynamic parameters. Memory, CPU and number of CPUs
-are considered as dynamic parameters.
-
-Dynamic Compute Offerings can be used in following cases: deploying a
-VM, changing the compute offering of a stopped VM and running VMs, which
-is nothing but scaling up. To support this feature a new field, Custom,
-has been added to the Create Compute Offering page. If the Custom field
-is checked, the user will be able to create a custom Compute Offering by
-filling in the desired values for number of CPU, CPU speed, and memory.
-See ? for more information on this.
-
-*Recording Usage Events for Dynamically Assigned Resources*.
-
-To support this feature, usage events has been enhanced to register
-events for dynamically assigned resources. Usage events are registered
-when a VM is created from a custom compute offering, and upon changing
+To support the custom offerings, usage events register events for dynamically 
+assigned resources. Usage events are registered when a VM is created 
+from a custom compute offering, and upon changing
 the compute offering of a stopped or running VM. The values of the
 parameters, such as CPU, speed, RAM are recorded.
 
 
 Creating a New Compute Offering
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|compute_offering_dialog.png|
+
 
 To create a new compute offering:
 
@@ -169,9 +157,13 @@ To create a new compute offering:
       system VM is running. Shared allocates from storage accessible via
       NFS.
 
-   -  **Custom**: Custom compute offerings can be used in following
+   -  **Provisioning type**: The type of disk that should be allocated. 
+      Local
+
+
+   -  **Compute Offering Type**: Custom compute offerings can be used in following
       cases: deploying a VM, changing the compute offering of a stopped
-      VM and running VMs, which is nothing but scaling up.
+      VM and running VMs.
 
       If the Custom field is checked, the end-user must fill in the
       desired values for number of CPU, CPU speed, and RAM Memory when
@@ -193,41 +185,41 @@ To create a new compute offering:
 
    -  **Network Rate**: Allowed data transfer rate in MB per second.
 
-   -  **Disk Read Rate**: Allowed disk read rate in bits per second.
+   -  **Disk Read Rate** [1]_: Allowed disk read rate in bits per second.
 
-   -  **Disk Write Rate**: Allowed disk write rate in bits per second.
+   -  **Disk Write Rate** [1]_: Allowed disk write rate in bits per second.
 
-   -  **Disk Read Rate**: Allowed disk read rate in IOPS (input/output
+   -  **Disk Read Rate** [1]_: Allowed disk read rate in IOPS (input/output
       operations per second).
 
-   -  **Disk Write Rate**: Allowed disk write rate in IOPS (input/output
+   -  **Disk Write Rate** [1]_: Allowed disk write rate in IOPS (input/output
       operations per second).
 
    -  **Offer HA**: If yes, the administrator can choose to have the
       system VM be monitored and as highly available as possible.
 
-   -  **QoS Type**: Three options: Empty (no Quality of Service), hypervisor
+   -  **QoS Type** [1]_: Three options: Empty (no Quality of Service), hypervisor
       (rate limiting enforced on the hypervisor side), and storage
       (guaranteed minimum and maximum IOPS enforced on the storage
       side). If leveraging QoS, make sure that the hypervisor or storage
       system supports this feature.
 
-   -  **Custom IOPS**: If checked, the user can set their own IOPS. If not
+   -  **Custom IOPS** [1]_: If checked, the user can set their own IOPS. If not
       checked, the root administrator can define values. If the root
       admin does not set values when using storage QoS, default values
       are used (the defauls can be overridden if the proper parameters
       are passed into CloudStack when creating the primary storage in
       question).
 
-   -  **Min IOPS**: Appears only if storage QoS is to be used. Set a
+   -  **Min IOPS** [1]_: Appears only if storage QoS is to be used. Set a
       guaranteed minimum number of IOPS to be enforced on the storage
       side.
 
-   -  **Max IOPS**: Appears only if storage QoS is to be used. Set a maximum
+   -  **Max IOPS** [1]_: Appears only if storage QoS is to be used. Set a maximum
       number of IOPS to be enforced on the storage side (the system may
       go above this limit in certain circumstances for short intervals).
 
-   -  **Hypervisor Snapshot Reserve**: For managed storage only. This is
+   -  **Hypervisor Snapshot Reserve** [1]_: For managed storage only. This is
       a value that is a percentage of the size of the root disk. For example:
       if the root disk is 20 GB and Hypervisor Snapshot Reserve is 200%, the
       storage volume that backs the storage repository (XenServer) or
@@ -246,8 +238,9 @@ To create a new compute offering:
 
    -  **Public**: Indicate whether the service offering should be
       available all domains or only some domains. Choose Yes to make it
-      available to all domains. Choose No to limit the scope to a
-      subdomain; CloudStack will then prompt for the subdomain's name.
+      available to all domains. Choose No to limit the scope to one or more
+      domains.  When 'Public' is set to 'no' a multi-selection list box is
+      displayed. One or more domains can be selected from this list box.
 
    -  **isVolatile**: If checked, VMs created from this service offering
       will have their root disks reset upon reboot. This is useful for
@@ -258,43 +251,40 @@ To create a new compute offering:
       CloudStack to use when deploying VMs based on this service
       offering.
 
-      First Fit places new VMs on the first host that is found having
-      sufficient capacity to support the VM's requirements.
+      - First Fit places new VMs on the first host that is found having
+        sufficient capacity to support the VM's requirements.
 
-      User Dispersing makes the best effort to evenly distribute VMs
-      belonging to the same account on different clusters or pods.
+      - User Dispersing makes the best effort to evenly distribute VMs
+        belonging to the same account on different clusters or pods.
 
-      User Concentrated prefers to deploy VMs belonging to the same
-      account within a single pod.
+      - User Concentrated prefers to deploy VMs belonging to the same
+        account within a single pod.
 
-      Implicit Dedication will deploy VMs on private infrastructure that
-      is dedicated to a specific domain or account. If you choose this
-      planner, then you must also pick a value for Planner Mode. See
-      `“Dedicating Resources to Accounts and Domains” 
-      <accounts.html#dedicating-resources-to-accounts-and-domains>`_.
+      - Implicit Dedication will deploy VMs on private infrastructure that
+        is dedicated to a specific domain or account. If you choose this
+        planner, then you must also pick a value for Planner Mode. See
+        `Dedicating Resources to Accounts and Domains <accounts.html#dedicating-resources-to-accounts-and-domains>`_.
 
-      Bare Metal is used with bare metal hosts. See Bare Metal
-      Installation in the Installation Guide.
+      - Bare Metal is used with bare metal hosts. See Bare Metal
+        Installation in the Installation Guide.
 
    -  **Planner Mode**: Used when ImplicitDedicationPlanner is selected
       in the previous field. The planner mode determines how VMs will be
       deployed on private infrastructure that is dedicated to a single
       domain or account.
 
-      Strict: A host will not be shared across multiple accounts. For
-      example, strict implicit dedication is useful for deployment of
-      certain types of applications, such as desktops, where no host can
-      be shared between different accounts without violating the desktop
-      software's terms of license.
+      - Strict: A host will not be shared across multiple accounts. For
+        example, strict implicit dedication is useful for deployment of
+        certain types of applications, such as desktops, where no host can
+        be shared between different accounts without violating the desktop
+        software's terms of license.
 
-      Preferred: The VM will be deployed in dedicated infrastructure if
-      possible. Otherwise, the VM can be deployed in shared
-      infrastructure.
+      - Preferred: The VM will be deployed in dedicated infrastructure if
+        possible. Otherwise, the VM can be deployed in shared infrastructure.
 
-   -  **GPU**: Assign a physical GPU(GPU-passthrough) or a portion of a physicalGPU
-       GPU card(vGPU) to the guest VM. It allows graphical applications to run on the VM. 
-       Select the card from the supported list of cards.
-
+   -  **GPU**: Assign a physical GPU(GPU-passthrough) or a portion of a physical
+      GPU card (vGPU) to the guest VM. It allows graphical applications to run on the VM. 
+      Select the card from the supported list of cards.
       The options given are NVIDIA GRID K1 and NVIDIA GRID K2. These are vGPU
       capable cards that allow multiple vGPUs on a single physical GPU. If you
       want to use a card other than these, follow the instructions in the
@@ -304,7 +294,6 @@ To create a new compute offering:
    -  **vGPU Type**: Represents the type of virtual GPU to be assigned to a
       guest VM. In this case, only a portion of a physical GPU card (vGPU) is
       assigned to the guest VM.
-
       Additionally, the **passthrough vGPU** type is defined to represent a physical GPU
       device. A **passthrough vGPU** can directly be assigned to a single guest VM.
       In this case, a physical GPU device is exclusively allotted to a single
@@ -312,6 +301,12 @@ To create a new compute offering:
 
 
 #. Click Add.
+
+
+
+.. [1] These options are dependant on the capabilities of the hypervisor or the shared storage system which the VMs are on.
+   If the hypervisor or underlying storage don't support a particular capability in the offering, the setting will have no effect.
+
 
 
 Creating a New Disk Offering
