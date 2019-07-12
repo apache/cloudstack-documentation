@@ -18,12 +18,18 @@
 Once you've upgraded the packages on your management servers, you'll
 need to restart the system VMs. Ensure that the admin port is set to
 8096 by using the "integration.api.port" global parameter. This port
-is used by the cloud-sysvmadm script at the end of the upgrade
+is used by the cloudstack-sysvmadm script at the end of the upgrade
 procedure. For information about how to set this parameter, see :ref:`configuration parameters <configuration-parameters>`
-Changing this parameter will require management server restart. Also
-make sure port 8096 is open in your local host firewall to do this.
-Please note that the integration.api.port (8096) is unauthenticated
-port and must not be open for public access.
+Changing this parameter will require management server restart.
+
+If you run the cloudstack-sysvmadm script from outside the management
+server, make sure port 8096 is open in your local host firewall.
+
+.. warning::
+
+   Never allow access to port 8096 from the public internet! The
+   management server accepts API calls without authentication on this
+   port, which can pose a serious security risk.
 
 There is a script that will do this for you, all you need to do is
 run the script and supply the IP address for your MySQL instance and
@@ -50,5 +56,9 @@ The output to ``sysvm.log`` will look something like this:
    Done stopping and starting console proxy vm(s).
    Stopping and starting 4 running routing vm(s)...
    Done restarting router(s).
+
+After the upgrade process is complete, you can disable unauthenticated
+API access again by setting "integration.api.port" to 0.
+Don't forget to restart the management server afterwards.
 
 .. sub-section included in upgrade notes.
