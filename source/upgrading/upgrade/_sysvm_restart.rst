@@ -20,7 +20,7 @@ need to restart the system VMs. Ensure that the admin port is set to
 8096 by using the "integration.api.port" global parameter. This port
 is used by the cloudstack-sysvmadm script at the end of the upgrade
 procedure. For information about how to set this parameter, see :ref:`configuration parameters <configuration-parameters>`
-Changing this parameter will require management server restart.
+Changing this parameter will require a management server restart.
 
 If you run the cloudstack-sysvmadm script from outside the management
 server, make sure port 8096 is open in your local host firewall.
