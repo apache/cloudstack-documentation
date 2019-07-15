@@ -205,12 +205,11 @@ This file should have content similar to the following:
 
    [apache-cloudstack]
    name=Apache CloudStack
-   baseurl=http://download.cloudstack.org/centos/6/4.11/
+   baseurl=http://download.cloudstack.org/centos/7/4.11/
    enabled=1
    gpgcheck=0
 
-If you are using the community provided package repository, change
-the base url to:
+If you are using the community provided package repository, change the base url to:
 
 .. parsed-literal::
 

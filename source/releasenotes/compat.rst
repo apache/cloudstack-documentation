@@ -94,20 +94,19 @@ best results, one of the following browsers recommended:
 Notice Of Management OSes and Hypervisors to be Deprecated
 ----------------------------------------------------------
 
-The following hypervisors will no longer be tested from the first release AFTER
-1st June 2018. And will be removed from the CloudStack codebase from the first 
-release after 1st November 2018.
+The following hypervisors will no longer be supported in the next release
 
 -  XenServer 6.2
 -  XenServer 6.5
 -  vSphere 5.0
 -  vSphere 5.1
-
-The following hypervisors will no longer be tested from the first release AFTER
-1st February 2019. And will be removed from the CloudStack codebase from the first 
-release after 1st July 2019.
-
 -  vSphere 5.5
+-  CentOS (KVM) 6.x
+
+The following Management Server Operating Systems will no longer be supported in the next release
+
+-  CentOS 6.x
+
 
 Please see `CloudStack Wiki <https://cwiki.apache.org/confluence/display/CLOUDSTACK/Hypervisor+and+Management+Server+OS+EOL+Dates>`_ 
 for details.
