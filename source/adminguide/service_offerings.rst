@@ -249,9 +249,9 @@ To create a new compute offering:
       capacity is available.
 
    -  **Public**: Indicate whether the compute offering should be
-      available all domains or only some domains. Choose Yes to make it
+      available to all domains or only some domains. Choose Yes to make it
       available to all domains. Choose No to limit the scope to one or more
-      domains.
+      specific domains.
 
    -  **isVolatile**: If checked, VMs created from this service offering
       will have their root disks reset upon reboot. This is useful for
@@ -315,8 +315,7 @@ To create a new compute offering:
       list box will be displayed. One or more domains can be selected from 
       this list box by holding down the control key and clicking on the desired domains.
       
-
-   -  **Zone**: This controls which zones a compute offering is available.  'All zones' or 
+   -  **Zone**: This controls which zones a compute offering is available in. 'All zones' or 
       only specific zones can be selected.  One or more zones can be selected from 
       this list box by holding down the control key and clicking on the desired zones.
 
@@ -395,18 +394,17 @@ To create a new disk offering:
       Storage for the volume to be provisioned. If no such primary
       storage exists, allocation from the disk offering will fail..
 
-   -  **Public**: Indicate whether the disk offering should be
-      available all domains or only some domains. Choose Yes to make it
+   -  **Public**: Indicates whether the disk offering should be
+      available to all domains or only some domains. Choose Yes to make it
       available to all domains. Choose No to limit the scope to one or more
-      domains.
+      specific domains.
 
    -  **Domain**: This is only visible When 'Public' is unchecked. When visible, this 
       controls the domains which will be able to use this compute offering. A multi-selection
       list box will be displayed. One or more domains can be selected from 
       this list box by holding down the control key and selecting the desired domains.
-      
 
-   -  **Zone**: This controls which zones a compute offering is available in.  'All zones' or 
+   -  **Zone**: This controls which zones a disk offering is available in.  'All zones' or 
       only specific zones can be selected.  One or more zones can be selected from 
       this list box by holding down the control key and selecting the desired zones.
 
