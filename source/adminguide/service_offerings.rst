@@ -87,7 +87,7 @@ been introduced to allow the end-user to enter the number of CPUs and memory
 required within constraints set by the administrator.  The constraints can be 
 different for different custom constrained offerings.  This is useful to reduce 
 the number of offerings the CloudStack administrator has to define; Instead of
-defining acompute offering for every imaginable combination of values that a user
+defining a compute offering for every imaginable combination of values that a user
 might want, the administrator can define offerings that provide some
 flexibility to the users and can serve as the basis for several
 different VM configurations.  
@@ -166,27 +166,33 @@ To create a new compute offering:
       Local
 
 
-   -  **Compute Offering Type**: Custom compute offerings can be used in following
-      cases: deploying a VM, changing the compute offering of a stopped
-      VM and running VMs.
-
-      If the Custom field is checked, the end-user must fill in the
-      desired values for number of CPU, CPU speed, and RAM Memory when
-      using a custom compute offering. When you check this box, those
-      three input fields are hidden in the dialog box.
+   -  **Compute Offering Type**: The amount of freedom that the end user
+      has to customise the compute power that their instance has when using this
+      compute offering.  The options are; Fixed offering - user has no 
+      ability to customise, Custom constrained - user has some latitude
+      to customise the compute within parameters set by the offering, 
+      Custom unconstrained - user can set any values that they wish.
+      'Custom constrained' is recommended over 'Custom unconstrained'
+      
 
    -  **# of CPU cores**: The number of cores which should be allocated
-      to a system VM with this offering. If Custom is checked, this
-      field does not appear.
+      to a system VM with this offering. If 'Custom unconstrained' is checked, this
+      field does not appear. If 'Custom constrained' is checked, the admin will
+      be asked to enter the minimum and maximum number of CPUs that a user
+      can request.
 
-   -  **CPU (in MHz)**: The CPU speed of the cores that the system VM is
+   -  **CPU (in MHz)**: The CPU speed of the cores that the guest instance is
       allocated. For example, “2000” would provide for a 2 GHz clock. If
-      Custom is checked, this field does not appear.
+      Custom is checked, this field does not appear (only enforced if CPU 
+      cap is selected).  This value is also used as a share value to give VMs
+      relative priority when a hypervisor host is over-provisioned.
 
    -  **Memory (in MB)**: The amount of memory in megabytes that the
       system VM should be allocated. For example, “2048” would provide
-      for a 2 GB RAM allocation. If Custom is checked, this field does
-      not appear.
+      for a 2 GB RAM allocation. If 'Custom unconstrained' is checked, this field does
+      not appear. If 'Custom constrained' is checked, the admin will
+      be asked to enter the minimum and maximum amount of RAM that a user
+      can request.
 
    -  **Network Rate**: Allowed data transfer rate in MB per second.
 
@@ -244,8 +250,7 @@ To create a new compute offering:
    -  **Public**: Indicate whether the compute offering should be
       available all domains or only some domains. Choose Yes to make it
       available to all domains. Choose No to limit the scope to one or more
-      domains.  When 'Public' is set to 'no' a multi-selection list box is
-      displayed. One or more domains can be selected from this list box.
+      domains.
 
    -  **isVolatile**: If checked, VMs created from this service offering
       will have their root disks reset upon reboot. This is useful for
@@ -303,6 +308,16 @@ To create a new compute offering:
       device. A **passthrough vGPU** can directly be assigned to a single guest VM.
       In this case, a physical GPU device is exclusively allotted to a single
       guest VM.
+
+   -  **Domain**: This is only visible When 'Public' is unchecked. When visible, this 
+      controls the domains which will be able to use this compute offering. A multi-selection
+      list box will be displayed. One or more domains can be selected from 
+      this list box by holding down the control key and clicking on the desired domains.
+      
+
+   -  **Zone**: This controls which zones a compute offering is available.  'All zones' or 
+      only specific zones can be selected.  One or more zones can be selected from 
+      this list box by holding down the control key and clicking on the desired zones.
 
 
 #. Click Add.
@@ -382,8 +397,17 @@ To create a new disk offering:
    -  **Public**: Indicate whether the disk offering should be
       available all domains or only some domains. Choose Yes to make it
       available to all domains. Choose No to limit the scope to one or more
-      domains.  When 'Public' is set to 'no' a multi-selection list box is
-      displayed. One or more domains can be selected from this list box.
+      domains.
+
+   -  **Domain**: This is only visible When 'Public' is unchecked. When visible, this 
+      controls the domains which will be able to use this compute offering. A multi-selection
+      list box will be displayed. One or more domains can be selected from 
+      this list box by holding down the control key and clicking on the desired domains.
+      
+
+   -  **Zone**: This controls which zones a compute offering is available.  'All zones' or 
+      only specific zones can be selected.  One or more zones can be selected from 
+      this list box by holding down the control key and clicking on the desired zones.
 
 #. Click Add.
 
