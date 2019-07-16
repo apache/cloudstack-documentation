@@ -340,41 +340,40 @@ To create a network offering:
    -  **LB Isolation**: Specify what type of load balancer isolation you
       want for the network: Shared or Dedicated.
 
-      **Dedicated**: If you select dedicated LB isolation, a dedicated
-      load balancer device is assigned for the network from the pool of
-      dedicated load balancer devices provisioned in the zone. If no
-      sufficient dedicated load balancer devices are available in the
-      zone, network creation fails. Dedicated device is a good choice
-      for the high-traffic networks that make full use of the device's
-      resources.
+      - **Dedicated**: If you select dedicated LB isolation, a dedicated
+        load balancer device is assigned for the network from the pool of
+        dedicated load balancer devices provisioned in the zone. If no
+        sufficient dedicated load balancer devices are available in the
+        zone, network creation fails. Dedicated device is a good choice
+        for the high-traffic networks that make full use of the device's
+        resources.
 
-      **Shared**: If you select shared LB isolation, a shared load
-      balancer device is assigned for the network from the pool of
-      shared load balancer devices provisioned in the zone. While
-      provisioning CloudStack picks the shared load balancer device that
-      is used by the least number of accounts. Once the device reaches
-      its maximum capacity, the device will not be allocated to a new
-      account.
+      - **Shared**: If you select shared LB isolation, a shared load
+        balancer device is assigned for the network from the pool of
+        shared load balancer devices provisioned in the zone. While
+        provisioning CloudStack picks the shared load balancer device that
+        is used by the least number of accounts. Once the device reaches
+        its maximum capacity, the device will not be allocated to a new
+        account.
 
    -  **Mode**: You can select either Inline mode or Side by Side mode:
 
-      **Inline mode**: Supported only for Juniper SRX firewall and BigF5
-      load balancer devices. In inline mode, a firewall device is placed
-      in front of a load balancing device. The firewall acts as the
-      gateway for all the incoming traffic, then redirect the load
-      balancing traffic to the load balancer behind it. The load
-      balancer in this case will not have the direct access to the
-      public network.
-
-      **Side by Side**: In side by side mode, a firewall device is
-      deployed in parallel with the load balancer device. So the traffic
-      to the load balancer public IP is not routed through the firewall,
-      and therefore, is exposed to the public network.
+      - **Inline mode**: Supported only for Juniper SRX firewall and BigF5
+        load balancer devices. In inline mode, a firewall device is placed
+        in front of a load balancing device. The firewall acts as the
+        gateway for all the incoming traffic, then redirect the load
+        balancing traffic to the load balancer behind it. The load
+        balancer in this case will not have the direct access to the
+        public network.
+  
+      - **Side by Side**: In side by side mode, a firewall device is
+        deployed in parallel with the load balancer device. So the traffic
+        to the load balancer public IP is not routed through the firewall,
+        and therefore, is exposed to the public network.
 
    -  **Associate Public IP**: Select this option if you want to assign
       a public IP address to the VMs deployed in the guest network. This
       option is available only if
-
       -  Guest network is shared.
 
       -  StaticNAT is enabled.
@@ -421,6 +420,21 @@ To create a network offering:
       To block the egress traffic for a guest network, select Deny. In
       this case, when you configure an egress rules for an isolated
       guest network, rules are added to allow the specified traffic.
+
+    - **Public**: Indicate whether the network offering should be available to
+      all domains or only some domains. Choose Yes to make it available to 
+      all domains. Choose No to limit the scope to one or more domains.
+
+    - **Domain**: This is only visible When ‘Public’ is unchecked. When visible,
+      this controls the domains which will be able to use this network offering. 
+      A multi-selection list box will be displayed. One or more domains can be 
+      selected from this list box by holding down the control key and selecting 
+      the desired domains.
+
+    - **Zone**: This controls which zones a network offering is available in. 
+      ‘All zones’ or only specific zones can be selected. One or more zones can be 
+      selected from this list box by holding down the control key and selecting 
+      the desired zones.
 
 #. Click Add.
 
