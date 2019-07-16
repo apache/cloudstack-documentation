@@ -469,43 +469,43 @@ To create a system service offering:
 
 #. In the dialog, make the following choices:
 
-   -  Name. Any desired name for the system offering.
+   -  **Name**: Any desired name for the system offering.
 
-   -  Description. A short description of the offering that can be
+   -  **Description**: A short description of the offering that can be
       displayed to users
 
-   -  System VM Type. Select the type of system virtual machine that
+   -  **System VM Type**: Select the type of system virtual machine that
       this offering is intended to support.
 
-   -  Storage type. The type of disk that should be allocated. Local
+   -  **Storage type**: The type of disk that should be allocated. Local
       allocates from storage attached directly to the host where the
       system VM is running. Shared allocates from storage accessible via
       NFS.
 
-   -  # of CPU cores. The number of cores which should be allocated to a
+   -  **# of CPU cores**: The number of cores which should be allocated to a
       system VM with this offering
 
-   -  CPU (in MHz). The CPU speed of the cores that the system VM is
+   -  **CPU (in MHz)**: The CPU speed of the cores that the system VM is
       allocated. For example, "2000" would provide for a 2 GHz clock.
 
-   -  Memory (in MB). The amount of memory in megabytes that the system
+   -  **Memory (in MB)**: The amount of memory in megabytes that the system
       VM should be allocated. For example, "2048" would provide for a 2
       GB RAM allocation.
 
-   -  Network Rate. Allowed data transfer rate in MB per second.
+   -  **Network Rate**: Allowed data transfer rate in MB per second.
 
-   -  Offer HA. If yes, the administrator can choose to have the system
+   -  **Offer HA**: If yes, the administrator can choose to have the system
       VM be monitored and as highly available as possible.
 
-   -  Storage Tags. The tags that should be associated with the primary
+   -  **Storage Tags**: The tags that should be associated with the primary
       storage used by the system VM.
 
-   -  Host Tags. (Optional) Any tags that you use to organize your hosts
+   -  **Host Tags**: (Optional) Any tags that you use to organize your hosts
 
-   -  CPU cap. Whether to limit the level of CPU usage even if spare
+   -  **CPU cap**: Whether to limit the level of CPU usage even if spare
       capacity is available.
 
-   -  Public. Indicate whether the service offering should be available
+   -  **Public**: Indicate whether the service offering should be available
       all domains or only some domains. Choose Yes to make it available
       to all domains. Choose No to limit the scope to a subdomain;
       CloudStack will then prompt for the subdomain's name.
@@ -604,7 +604,6 @@ the instance if any, similar to shared networks.
 For example:
 
 Network rate of network offering = 10 Mbps
-
 Network rate of compute offering = 200 Mbps
 
 In shared networks, ingress traffic will not be limited for CloudStack,
