@@ -262,36 +262,36 @@ To create a new compute offering:
       CloudStack to use when deploying VMs based on this service
       offering.
 
-      - First Fit places new VMs on the first host that is found having
-        sufficient capacity to support the VM's requirements.
+      -  **First Fit**: places new VMs on the first host that is found having
+         sufficient capacity to support the VM's requirements.
 
-      - User Dispersing makes the best effort to evenly distribute VMs
-        belonging to the same account on different clusters or pods.
+      -  **User Dispersing**: makes the best effort to evenly distribute VMs
+         belonging to the same account on different clusters or pods.
 
-      - User Concentrated prefers to deploy VMs belonging to the same
-        account within a single pod.
+      -  **User Concentrated**: prefers to deploy VMs belonging to the same
+         account within a single pod.
 
-      - Implicit Dedication will deploy VMs on private infrastructure that
-        is dedicated to a specific domain or account. If you choose this
-        planner, then you must also pick a value for Planner Mode. See
-        `Dedicating Resources to Accounts and Domains <accounts.html#dedicating-resources-to-accounts-and-domains>`_.
+      -  **Implicit Dedication**: will deploy VMs on private infrastructure that
+         is dedicated to a specific domain or account. If you choose this
+         planner, then you must also pick a value for Planner Mode. See
+         `Dedicating Resources to Accounts and Domains <accounts.html#dedicating-resources-to-accounts-and-domains>`_.
 
-      - Bare Metal is used with bare metal hosts. See Bare Metal
-        Installation in the Installation Guide.
+      -  **Bare Metal**: is used with bare metal hosts. See Bare Metal
+         Installation in the Installation Guide.
 
    -  **Planner Mode**: Used when ImplicitDedicationPlanner is selected
       in the previous field. The planner mode determines how VMs will be
       deployed on private infrastructure that is dedicated to a single
       domain or account.
 
-      - Strict: A host will not be shared across multiple accounts. For
-        example, strict implicit dedication is useful for deployment of
-        certain types of applications, such as desktops, where no host can
-        be shared between different accounts without violating the desktop
-        software's terms of license.
+      -  Strict: A host will not be shared across multiple accounts. For
+         example, strict implicit dedication is useful for deployment of
+         certain types of applications, such as desktops, where no host can
+         be shared between different accounts without violating the desktop
+         software's terms of license.
 
-      - Preferred: The VM will be deployed in dedicated infrastructure if
-        possible. Otherwise, the VM can be deployed in shared infrastructure.
+      -  Preferred: The VM will be deployed in dedicated infrastructure if
+         possible. Otherwise, the VM can be deployed in shared infrastructure.
 
    -  **GPU**: Assign a physical GPU(GPU-passthrough) or a portion of a physical
       GPU card (vGPU) to the guest VM. It allows graphical applications to run on the VM. 
