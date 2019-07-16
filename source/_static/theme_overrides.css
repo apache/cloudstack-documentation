@@ -11,6 +11,10 @@
     overflow: visible;
 }
 
+.rst-content li {
+    padding-top: 4px;
+}
+
 /*
 div[class^="highlight"] pre {
   font-size:10px

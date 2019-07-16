@@ -402,12 +402,12 @@ To create a new disk offering:
    -  **Domain**: This is only visible When 'Public' is unchecked. When visible, this 
       controls the domains which will be able to use this compute offering. A multi-selection
       list box will be displayed. One or more domains can be selected from 
-      this list box by holding down the control key and clicking on the desired domains.
+      this list box by holding down the control key and selecting the desired domains.
       
 
-   -  **Zone**: This controls which zones a compute offering is available.  'All zones' or 
+   -  **Zone**: This controls which zones a compute offering is available in.  'All zones' or 
       only specific zones can be selected.  One or more zones can be selected from 
-      this list box by holding down the control key and clicking on the desired zones.
+      this list box by holding down the control key and selecting the desired zones.
 
 #. Click Add.
 
