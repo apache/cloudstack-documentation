@@ -13,9 +13,6 @@
    specific language governing permissions and limitations
    under the License.
 
-.. |compute_offering_dialog.png| image:: /_static/images/compute_offering_dialog.png
-   :alt: Compute offering dialog box
-
 .. |update-service-offering-button.jpg| image:: /_static/images/update-service-offering-button.jpg
    :alt: Update offering access button
 
@@ -137,7 +134,11 @@ parameters, such as CPU, speed, RAM are recorded.
 Creating a New Compute Offering
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|compute_offering_dialog.png|
+.. image:: /_static/images/compute_offering_dialog.png
+   :width: 400px
+   :align: center
+   :alt: Compute offering dialog box
+
 
 
 To create a new compute offering:
