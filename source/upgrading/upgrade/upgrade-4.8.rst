@@ -222,7 +222,6 @@ If you are using the community provided package repository, change the base url 
 
    http://download.cloudstack.org/centos/$releasever/|version|/
 
-
 Setup the GPG public key if you wish to enable ``gpgcheck=1``:
 
 .. parsed-literal::
