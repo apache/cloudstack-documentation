@@ -166,34 +166,35 @@ To create a new compute offering:
    -  **Provisioning type**: The type of disk that should be allocated. 
       Local
 
-
    -  **Compute Offering Type**: The amount of freedom that the end user
       has to customise the compute power that their instance has when using this
       compute offering.  The options are; Fixed offering - user has no 
       ability to customise, Custom constrained - user has some latitude
       to customise the compute within parameters set by the offering, 
-      Custom unconstrained - user can set any values that they wish.
-      'Custom constrained' is recommended over 'Custom unconstrained'
+      Custom unconstrained - user can set any values that they wish
+      'Custom constrained' is recommended over 'Custom unconstrained' as
+      it enables the admin to set some boundaries.
       
-
    -  **# of CPU cores**: The number of cores which should be allocated
-      to a system VM with this offering. If 'Custom unconstrained' is checked, this
-      field does not appear. If 'Custom constrained' is checked, the admin will
+      to a system VM with this offering. If 'Custom constrained' is checked, the admin will
       be asked to enter the minimum and maximum number of CPUs that a user
-      can request.
+      can request. If 'Custom unconstrained' is checked, this
+      field does not appear as the user will be prompted to enter a value when creating their guest instance.
 
    -  **CPU (in MHz)**: The CPU speed of the cores that the guest instance is
-      allocated. For example, “2000” would provide for a 2 GHz clock. If
-      Custom is checked, this field does not appear (only enforced if CPU 
-      cap is selected).  This value is also used as a share value to give VMs
-      relative priority when a hypervisor host is over-provisioned.
+      allocated. For example, “2000” would provide a 2GHz CPU clock speed. 
+      **This setting only used if CPU cap is selected.**
+      This value is also passed to the hypervisor as a share value to give VMs
+      relative priority when a hypervisor host is over-provisioned. 
+      If 'Custom unconstrained' is checked this field does not appear as the user
+      will be prompted to enter a value when creating their guest instance.
 
    -  **Memory (in MB)**: The amount of memory in megabytes that the
       system VM should be allocated. For example, “2048” would provide
-      for a 2 GB RAM allocation. If 'Custom unconstrained' is checked, this field does
-      not appear. If 'Custom constrained' is checked, the admin will
+      a 2 GB RAM allocation. If 'Custom constrained' is selected, the admin will
       be asked to enter the minimum and maximum amount of RAM that a user
-      can request.
+      can request. If 'Custom unconstrained' is selected, this field does
+      not appear as the user will be prompted to enter a value when creating their guest instance.
 
    -  **Network Rate**: Allowed data transfer rate in MB per second.
 
