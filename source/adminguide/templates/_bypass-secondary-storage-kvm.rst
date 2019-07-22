@@ -21,7 +21,7 @@ Bypassing Secondary Storage For KVM templates
 
 CloudStack provides an additional way to register and use templates on KVM.
 
-Instead of registering a template and use secondary storage as cache, it is possible to bypass secondary storage on KVM templates registration. At deployment time, the template is downloaded directly to primary storage avoiding the copy from secondary storage.
+Instead of registering a template and storing it on secondary storage, the user can opt to skip downloading the template to secondary storage for KVM at template registration. At deployment time, the template is downloaded directly to primary storage from the registered source, instead of being copied from secondary storage.
 
 Supported protocols: HTTP/HTTPS, NFS and metalinks. The protocol is obtained from the template URL.
 
