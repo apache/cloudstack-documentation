@@ -41,7 +41,7 @@ To enable this option for a template:
 
 After the template is registered, it is automatically available for VM deployments.
 
-Uploading certificates for direct downloads
+Uploading Certificates for Direct Downloads
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For HTTPS direct downloads, the KVM hosts on a zone should need certificates.
 
