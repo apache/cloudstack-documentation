@@ -16,7 +16,7 @@
 
 .. _bypass-secondary-storage-kvm:
 
-Bypassing Secondary Storage on KVM templates
+Bypassing Secondary Storage For KVM templates
 --------------------------------------------
 
 CloudStack provides an optional way to register and use templates on KVM.
