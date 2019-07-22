@@ -35,7 +35,7 @@ To enable this option for a template:
 
    |kvm-direct-download.png|
 
-   -  **Direct Download**. It will be shown in the UI when KVM is selected as hypervisor. Choose Yes for enabling the bypassing secondary storage option.
+   -  **Direct Download**. This option will be shown in the UI when KVM is selected as the hypervisor. Choose Yes to enable the bypassing secondary storage option.
 
    -  **Checksum**. Optional field. If this field is populated, the checksum is compared to the downloaded template checksum when the template is downloaded to primary storage at deployment time.
 
