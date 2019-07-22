@@ -43,7 +43,7 @@ After the template is registered, it is automatically available for VM deploymen
 
 Uploading Certificates for Direct Downloads
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For direct downloads over HTTPS, the KVM hosts must have valid certificates.
+For direct downloads over HTTPS, the KVM hosts must have valid certificates. These certificates can be either self-signed or signed and will allow the KVM hosts to access the templates/ISOs and download them.
 
 CloudStack provides some APIs to handle certificates for direct downloads:
 
