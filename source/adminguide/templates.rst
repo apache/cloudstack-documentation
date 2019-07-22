@@ -273,6 +273,8 @@ To upload a template:
       the Featured Templates list. Only an administrator can make a
       template Featured.
 
+.. include:: templates/_bypass-secondary-storage-kvm.rst
+
 Uploading Templates from a local computer
 -------------------------------------------
 
@@ -319,3 +321,4 @@ template.
    :alt: Depicts hiding the EULA page.
 .. |change-admin-password.png| image:: /_static/images/change-admin-password.png
    :alt: Depicts changing the administrator password
+.. |kvm-direct-download.png| image:: /_static/images/kvm-direct-download.png
