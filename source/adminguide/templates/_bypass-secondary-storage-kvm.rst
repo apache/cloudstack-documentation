@@ -43,7 +43,7 @@ After the template is registered, it is automatically available for VM deploymen
 
 Uploading Certificates for Direct Downloads
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For HTTPS direct downloads, the KVM hosts on a zone should need certificates.
+For direct downloads over HTTPS, the KVM hosts must have valid certificates.
 
 CloudStack provides some APIs to handle certificates for direct downloads:
 
@@ -77,14 +77,14 @@ CloudStack provides some APIs to handle certificates for direct downloads:
 
          upload templatedirectdownloadcertificate hypervisor=KVM name=CERTIFICATE_ALIAS zoneid=ZONE_ID certificate=CERTIFICATE_FORMATTED hostid=HOST_ID
 
-Certificates for direct downloads synchronization task
+Syncronising Certificates for Direct Downloads
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Certificates are uploaded to the running hosts in a zone at a certain moment. However, the number of running hosts may change and new hosts added to the zone may not include the certificate uploaded to the rest of the hosts.
+As new hosts may be added to a zone which do not include a certificate which was previously uploaded to pre-existing hosts.
 
-CloudStack provides a way to synchronize certificates across all the running hosts on each zone. The global setting 'direct.download.certificate.background.task.interval' defines the interval in which the synchronization task will run. This task will:
+CloudStack provides a way to synchronize certificates across all the connected hosts in each zone. The global setting 'direct.download.certificate.background.task.interval' defines the interval in which the synchronization task will run. This task will:
 
 - Iterate through each enabled zone
-- Get the running hosts in a zone
-- Check which hosts need the certificates which have been already uploaded to other hosts
+- Enumerate the connected hosts in a zone
+- Check which hosts are missing the certificates which have been already uploaded to other hosts
 - Upload missing certificates to hosts
