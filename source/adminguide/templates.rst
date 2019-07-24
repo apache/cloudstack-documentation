@@ -327,3 +327,6 @@ template.
 .. |change-admin-password.png| image:: /_static/images/change-admin-password.png
    :alt: Depicts changing the administrator password
 .. |kvm-direct-download.png| image:: /_static/images/kvm-direct-download.png
+.. |upload-iso-from-local.png| image:: /_static/images/upload-iso-from-local.png
+   :alt: Upload ISO from local
+
