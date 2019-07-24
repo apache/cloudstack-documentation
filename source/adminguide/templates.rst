@@ -208,10 +208,10 @@ Uploading Templates from a remote HTTP server
 
 vSphere Templates and ISOs
 --------------------------
-
-If you are uploading a template that was created using vSphere Client,
-be sure the OVA file does not contain an ISO. If it does, the deployment
-of VMs from the template will fail.
+.. warning:: 
+      If you are uploading a template that was created using vSphere Client,
+      be sure the OVA file does not contain an ISO. If it does, the deployment
+      of VMs from the template will fail
 
 Templates are uploaded based on a URL. HTTP is the supported access
 protocol. Templates are frequently large files. You can optionally gzip
