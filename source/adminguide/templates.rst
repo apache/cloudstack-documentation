@@ -281,7 +281,8 @@ Uploading Templates and ISOs from a local computer
 It's also possible to upload an already prepared template or an ISO from your local computer.
 The steps are similar as when Uploading a template/ISO from a remote HTTP server, except that you need to choose a local template/ISO file from your PC.
 For this feature to work, your SSVMs must be supporting HTTPS (for more info please visit `“Using a SSL Certificate for the Console Proxy” 
-<systemvm.html#using-a-ssl-certificate-for-the-console-proxy>`_.)
+<systemvm.html#using-a-ssl-certificate-for-the-console-proxy>`_).
+
 Example GUI dialog of uploading (ISO) from local (browser) is given below:
 
 |upload-iso-from-local.png|
