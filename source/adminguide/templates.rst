@@ -208,10 +208,10 @@ Uploading Templates from a remote HTTP server
 
 vSphere Templates and ISOs
 --------------------------
-
-If you are uploading a template that was created using vSphere Client,
-be sure the OVA file does not contain an ISO. If it does, the deployment
-of VMs from the template will fail.
+.. warning:: 
+      If you are uploading a template that was created using vSphere Client,
+      be sure the OVA file does not contain an ISO. If it does, the deployment
+      of VMs from the template will fail
 
 Templates are uploaded based on a URL. HTTP is the supported access
 protocol. Templates are frequently large files. You can optionally gzip
@@ -275,13 +275,19 @@ To upload a template:
 
 .. include:: templates/_bypass-secondary-storage-kvm.rst
 
-Uploading Templates from a local computer
+Uploading Templates and ISOs from a local computer
 -------------------------------------------
 
-It's also possible to upload an already prepared template from your local computer.
-The steps are similar as when Uploading a template from a remote HTTP server, except that you need to choose a local template file from your PC.
+It's also possible to upload an already prepared template or an ISO from your local computer.
+The steps are similar as when Uploading a template/ISO from a remote HTTP server, except that you need to choose a local template/ISO file from your PC.
 For this feature to work, your SSVMs must be supporting HTTPS (for more info please visit `“Using a SSL Certificate for the Console Proxy” 
-<systemvm.html#using-a-ssl-certificate-for-the-console-proxy>`_.)
+<systemvm.html#using-a-ssl-certificate-for-the-console-proxy>`_).
+
+Example GUI dialog of uploading (ISO) from local (browser) is given below:
+
+|upload-iso-from-local.png|
+
+
 
 Exporting Templates
 -------------------
@@ -322,3 +328,6 @@ template.
 .. |change-admin-password.png| image:: /_static/images/change-admin-password.png
    :alt: Depicts changing the administrator password
 .. |kvm-direct-download.png| image:: /_static/images/kvm-direct-download.png
+.. |upload-iso-from-local.png| image:: /_static/images/upload-iso-from-local.png
+   :alt: Upload ISO from local
+
