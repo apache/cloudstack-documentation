@@ -237,7 +237,7 @@ offerings whose disk size is equal or bigger than the size of the snapshot).
 |volume-from-snap.PNG|
 
 When creating a new volume from an existing DATA volume snapshot, Disk offering
-associated with the snapshots (inherited from the original volume), is assigned
+associated with the snapshots (inherited from the original volume) is assigned
 to the new volume.
 
 Using Local Storage for Data Volumes
