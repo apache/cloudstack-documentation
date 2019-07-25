@@ -105,6 +105,10 @@ IP addresses.
 -  Userdata and metadata can be passed to the VM using a config drive
    (which must be enabled in the network service offering)
 
+Example GUI dialog box (for a regular user account) is shown below:
+
+|L2-networks-gui.JPG|
+
 
 Runtime Allocation of Virtual Network Resources
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -438,3 +442,5 @@ To create a network offering:
 
 #. Click Add.
 
+.. |L2-networks-gui.JPG| image:: /_static/images/L2-networks-gui.JPG
+   :alt: Creating L2 network from GUI
