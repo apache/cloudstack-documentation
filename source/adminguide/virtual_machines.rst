@@ -1344,7 +1344,56 @@ CloudStack follows the below sequence of operations to provide GPU/vGPU support 
     
       GPU resources are released automatically when you stop a VM. Once the destroy VM is successful, CloudStack will make a resource call to the host to get the remaining GPU capacity in the card and update the database accordingly.
 
-   
+
+VM Metrics
+----------
+VM metrics (a.k.a. Instance Metrics in the UI) are there to show basic CPU, RAM, Storage and Network statistics of a VM. Metrics are collected via the background tasks. For different kind of VM metrics (CPU/RAM, Storage, Network) there are different background tasks, which are controlled via couple of global configuration settings parameters as shown below
+
+.. cssclass:: table-striped table-bordered table-hover
+
+=========================== ============================= ========================
+Global Configs              Stats Command                 Values collected
+=========================== ============================= ========================
+volume.stats.interval       GetVmDiskStatsCommand ???     r/w io/s and bytes/sec ??? shown in the Volume Metrics in the gui ???
+vm.disk.stats.interval      GetVmDiskStatsCommand ???     physical size (and calculated utilization)shown in the Volume Metrics in gui ???
+vm.network.stats.interval	 GetVmNetworkStatsCommand ???  Network read/write, for each NIC or... ?
+vm.stats.interval	          ???                           CPU and Memory only ???
+storage.stats.interval	    ???                           ???
+host.stats.interval	       ???                           ??? 
+=========================== ============================= ========================
+Some of above are NOT related to "Instance metrics" and I will move them acordingly - but let's do writeup here first.
+
+We have "some" IO read/write shown on the different places, but with completely different numbers...
+
+- On Instance Metrics page
+  - While testing on VMware, I noticed this is ever increasing number going into 20.000-30.000 and it seemed to be summary of all VM volume's last IOPS (as observed on Volume Metrics for that VM) but...
+  - While testing on latest master/KVM - I see 700 IOPS here - but when checking *Volume Metrics* -it shows 29 iops for empty DATA disk and 7500 IOPS for ROOT disk (idle VM!)
+  - So it seems incosistent and definitvely needs explanation - and if we are showing acumulated over time iops on Instance View, this doesn't make any sense ?
+- On Statistic tab of the VM - showing the same number as in the "Instance Metric" page
+- what are IOPS shown on the Instance Metrics tab (Statistics tab of specific Instance)
+  - Just ROOT disk or summary of all disks
+  - Accumulated over time or just the ones gathered last time
+- What are the IOPS in the Volume Metrics view - average per second obtained from hypervisor OR "current" IOPS as reported by hypervisor
+
+
+Disk read/write bytes are shown on the
+
+- Instance Statistics tab (Disk Read (Bytes) and Disk Write (Bytes))
+- No other place (not even in Volume Metrics)
+- What does this number represents
+    - Bytes read/write per second  OR summary of all read/write bytes done so far ever (or from the moment VM booted).
+    - Is it for just the ROOT volume always, or is it summary of all VM's volumes metrics
+    
+CPU/RAM statistics
+
+- Can we confirm those are just the "current" values as reported by hypervisor at the time of collection (i.e. not some average or in other way math-digested values)
+
+VM NETWORK statistics
+
+- Network read / Network write - present on the "Statistics" tab of specific VM, those are different than...
+- Network Usage Read/Write - present on the Instance Metrics page - those are different than above
+- What are each of those 2 representing - single NIC network read/write of that VM - OR sum of all NICs of a VM ?
+- Are these "current" values as reported by hypervisor or accumulated over time (from the VM boot time?)
    
 .. |basic-deployment.png| image:: /_static/images/basic-deployment.png
    :alt: Basic two-machine CloudStack deployment
