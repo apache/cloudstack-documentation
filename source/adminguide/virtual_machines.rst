@@ -1352,9 +1352,9 @@ VM Instance Settings
 Each user VM has a set of "details" associated with it (as visible via listVirtualMachine API call) - those "details" are shown on the "Settings" tab of the VM in the GUI (words "setting(s)" and "detail(s)" are here used interchangeably). 
 
 The Settings tab is always present/visible, but settings can be changed only when the VM is in a Stopped state. 
-Some VM details/settings can be hidden via "user.vm.blacklisted.details" global setting (you can find below the list of those hidden by default)
+Some VM details/settings can be hidden via "user.vm.blacklisted.details" global setting (you can find below the list of those hidden by default).
 
-When adding a new setting or modifying the existing ones, setting names are shown/offered in a drop-down list, as well as their possible values (with the exception of boolean or numerical values)
+When adding a new setting or modifying the existing ones, setting names are shown/offered in a drop-down list, as well as their possible values (with the exception of boolean or numerical values).
 
 Read-only details/settings that are hidden by default:
 
@@ -1363,7 +1363,7 @@ Read-only details/settings that are hidden by default:
 - memoryOvercommitRatio 
 - Message.ReservedCapacityFreed.Flag
 
-Example list of settings as well as their possible values are shown on the images below:
+An example list of settings as well as their possible values are shown on the images below:
 
 |vm-settings-dropdown-list.PNG|
 (VMware hypervisor)
