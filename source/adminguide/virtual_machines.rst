@@ -1345,7 +1345,40 @@ CloudStack follows the below sequence of operations to provide GPU/vGPU support 
       GPU resources are released automatically when you stop a VM. Once the destroy VM is successful, CloudStack will make a resource call to the host to get the remaining GPU capacity in the card and update the database accordingly.
 
    
-   
+  
+VM Instance Settings
+~~~~~~~~~~~~~~~~~~~~
+
+Each user VM has a set of "details" associated with it (as visible via listVirtualMachine API call) - those "details" are shown on the "Settings" tab of the VM in the GUI (words "setting(s)" and "detail(s)" are here used interchangeably). 
+
+The Settings tab is always present/visible, but settings can be changed only when the VM is in a Stopped state. 
+Some VM details/settings can be hidden via "user.vm.blacklisted.details" global setting (you can find below the list of those hidden by default).
+
+When adding a new setting or modifying the existing ones, setting names are shown/offered in a drop-down list, as well as their possible values (with the exception of boolean or numerical values).
+
+Read-only details/settings that are hidden by default:
+
+- rootdisksize
+- cpuOvercommitRatio 
+- memoryOvercommitRatio 
+- Message.ReservedCapacityFreed.Flag
+
+An example list of settings as well as their possible values are shown on the images below:
+
+|vm-settings-dropdown-list.PNG|
+(VMware hypervisor)
+
+|vm-settings-values-dropdown-list.PNG|
+(VMware disk controllers)
+
+|vm-settings-values1-dropdown-list.PNG|
+(VMware NIC models)
+
+|vm-settings-values-dropdown-KVM-list.PNG|
+(KVM disk controllers)
+
+
+    
 .. |basic-deployment.png| image:: /_static/images/basic-deployment.png
    :alt: Basic two-machine CloudStack deployment
 .. |VMSnapshotButton.png| image:: /_static/images/VMSnapshotButton.png
@@ -1369,3 +1402,11 @@ CloudStack follows the below sequence of operations to provide GPU/vGPU support 
    :alt: depicts adding an iso image
 .. |StopButton.png| image:: /_static/images/stop-instance-icon.png
    :alt: depicts adding an iso image
+.. |vm-settings-dropdown-list.PNG| image:: /_static/images/vm-settings-dropdown-list.PNG
+   :alt: List of possible VMware settings
+.. |vm-settings-values-dropdown-list.PNG| image:: /_static/images/vm-settings-values-dropdown-list.PNG
+   :alt: List of possible VMware disk controllers
+.. |vm-settings-values1-dropdown-list.PNG| image:: /_static/images/vm-settings-values1-dropdown-list.PNG
+   :alt: List of possible VMware NIC models
+.. |vm-settings-values-dropdown-KVM-list.PNG| image:: /_static/images/vm-settings-values-dropdown-KVM-list.PNG
+   :alt: List of possible KVM disk controllers
