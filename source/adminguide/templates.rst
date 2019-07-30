@@ -304,28 +304,36 @@ When adding or removing permissions to/from a template, it is required to specif
 Global setting "allow.user.view.all.domain.accounts" has a default value of "false". This makes sure that when the user wants to share a template via GUI, he will not be shown the list of all accounts in his domain and he will need to know the name of the destination account with which he is sharing the template. This makes sense in public clouds where each account of a single domain is a different tenant/customer and privacy is imperative. In this case, the user will be presented with an input field to enter the account name, as on the images below:
 
 |template-permissions-update-manually-1.PNG|
+
 Sharing the template with account "user2"
 
 |template-permissions-update-manually-2.PNG|
+
 Revoking permissions from account "user2"
 
 But in environments where privacy within a domain is not an issue, setting "allow.user.view.all.domain.accounts" setting to "true" will make sure that the user, who is sharing the template, will be presented a more user-friendly multi-select list, listing all the accounts in his domain. This is shown in the images below;
 
 |template-permissions-update-1.PNG|
+
 Sharing the template with just account "user8"
 
 |template-permissions-update-2.PNG|
+
 Sharing template with 2 specific projects
 
 |template-permissions-update-3.PNG|
+
 Revoking permissions from account "user8"
 
 |template-permissions-update-4.PNG|
+
 Revoking permissions from both projects previously added
+
 
 Finally, template permissions can be reset:
 
-|template-permissions-update-5.PNG"
+|template-permissions-update-5.PNG|
+
 Resetting (removing all) permissions
 
 Exporting Templates
