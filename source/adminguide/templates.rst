@@ -293,7 +293,7 @@ Example GUI dialog of uploading Template/ISO from local (browser) is given below
 
 |upload-iso-from-local.png|
 
-Note that uploading multi-disk templates is also supported
+Note that uploading multi-disk templates is also supported.
 
 
 Exporting Templates
