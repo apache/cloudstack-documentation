@@ -272,8 +272,12 @@ To upload a template:
       more prominent for users to select. The template will appear in
       the Featured Templates list. Only an administrator can make a
       template Featured.
+      
+Note that uploading multi-disk templates is also supported.
 
 .. include:: templates/_bypass-secondary-storage-kvm.rst
+
+
 
 Uploading Templates and ISOs from a local computer
 -------------------------------------------
@@ -289,8 +293,7 @@ Example GUI dialog of uploading Template/ISO from local (browser) is given below
 
 |upload-iso-from-local.png|
 
-
-
+Note that uploading multi-disk templates is also supported
 
 
 Exporting Templates
