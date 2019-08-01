@@ -272,8 +272,12 @@ To upload a template:
       more prominent for users to select. The template will appear in
       the Featured Templates list. Only an administrator can make a
       template Featured.
+      
+Note that uploading multi-disk templates is also supported.
 
 .. include:: templates/_bypass-secondary-storage-kvm.rst
+
+
 
 Uploading Templates and ISOs from a local computer
 -------------------------------------------
@@ -283,10 +287,13 @@ The steps are similar as when Uploading a template/ISO from a remote HTTP server
 For this feature to work, your SSVMs must be supporting HTTPS (for more info please visit `“Using a SSL Certificate for the Console Proxy” 
 <systemvm.html#using-a-ssl-certificate-for-the-console-proxy>`_).
 
-Example GUI dialog of uploading (ISO) from local (browser) is given below:
+Example GUI dialog of uploading Template/ISO from local (browser) is given below:
+
+|template-upload-from-local.PNG|
 
 |upload-iso-from-local.png|
 
+Note that uploading multi-disk templates is also supported.
 
 
 Exporting Templates
@@ -330,4 +337,5 @@ template.
 .. |kvm-direct-download.png| image:: /_static/images/kvm-direct-download.png
 .. |upload-iso-from-local.png| image:: /_static/images/upload-iso-from-local.png
    :alt: Upload ISO from local
-
+.. |template-upload-from-local.PNG| image:: /_static/images/template-upload-from-local.PNG
+   :alt: Upload Template from local
