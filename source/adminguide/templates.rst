@@ -343,6 +343,10 @@ Finally, template permissions can be reset:
 
 Resetting (removing all) permissions
 
+.. warning:: 
+      Project-owned templates are not supported to be shared outside of 
+      the Project, and if attempted to do so, a proper error message is shown.
+
 Exporting Templates
 -------------------
 
