@@ -416,7 +416,7 @@ To delete an affinity group:
 Virtual Machine Snapshots
 -------------------------
 
-(Supported on VMware and XenServer)
+(Supported on VMware, XenServer and KVM partially)
 
 In addition to the existing CloudStack ability to snapshot individual VM
 volumes, you can take a VM snapshot to preserve all the VM's data
@@ -440,6 +440,13 @@ becomes a parent, and the new snapshot is its child. It is possible to
 create a long chain of these parent/child snapshots, which amount to a
 "redo" record leading from the current state of the VM back to the
 original.
+
+After VM snapshots are created, they can be tagged with a key/value pair,
+like many other resources in CloudStack.
+
+KVM supports VM snapshots when using NFS shared storage. If raw block storage
+is used (i.e. Ceph), then VM snapshots are not possible, since there is no possibility
+to write RAM memory content anywhere.
 
 If you need more information about VM snapshots on VMware, check out the
 VMware documentation and the VMware Knowledge Base, especially
@@ -475,22 +482,14 @@ The cloud administrator can use global configuration variables to
 control the behavior of VM snapshots. To set these variables, go through
 the Global Settings area of the CloudStack UI.
 
-Configuration Setting Name
+.. cssclass:: table-striped table-bordered table-hover
 
-Description
-
-vmsnapshots.max
-
-The maximum number of VM snapshots that can be saved for any given
-virtual machine in the cloud. The total possible number of VM snapshots
-in the cloud is (number of VMs) \* vmsnapshots.max. If the number of
-snapshots for any VM ever hits the maximum, the older ones are removed
-by the snapshot expunge job.
-
-vmsnapshot.create.wait
-
-Number of seconds to wait for a snapshot job to succeed before declaring
-failure and issuing an error.
+====================== ========================
+Configuration          Description       Type
+====================== ========================
+vmsnapshots.max        The maximum number of VM snapshots that can be saved for any given virtual machine in the cloud. The total possible number of VM snapshots in the cloud is (number of VMs) \* vmsnapshots.max. If the number of snapshots for any VM ever hits the maximum, the older ones are removed by the snapshot expunge job
+vmsnapshot.create.wait Number of seconds to wait for a snapshot job to succeed before declaring failure and issuing an error.
+====================== ========================
 
 
 Using VM Snapshots
