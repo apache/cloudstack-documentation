@@ -302,13 +302,13 @@ When adding a template, the owner can choose to make template public or to keep 
 
 Currently, the template owner can share his template with:
   - other accounts inside his own domain (i.e. can't share the template with other accounts in the subdomain of his domain or any other domains)
-  - projects where he belongs to (i.e. if he is the owner/creator or projects of other users where he has been joined)
+  - projects where he belongs to (i.e. projects where he is the owner/creator or other projects where he has been joined)
 
 Template permissions can be changed via updateTemplatePermissions API call or via GUI. It is supported to add, remove or reset (remove all) template permissions.
 
 When adding or removing permissions to/from a template, it is required to specify account/project name which is being added/removed from the template permissions. 
 
-Global setting "allow.user.view.all.domain.accounts" has a default value of "false". This makes sure that when the user wants to share a template via GUI, he will not be shown the list of all accounts in his domain and he will need to know the name of the destination account with which he is sharing the template. This makes sense in public clouds where each account of a single domain is a different tenant/customer and privacy is imperative. In this case, the user will be presented with an input field to enter the account name, as on the images below:
+Global setting "allow.user.view.all.domain.accounts" has a default value of "false". This makes sure that when a regular user (of a "User" role) wants to share a template via GUI, he will not be shown the list of all accounts in his domain and he will need to know the name of the destination account with which he is sharing the template. This makes sense in public clouds where each account of a single domain is a different tenant/customer and privacy is imperative. In this case, the user will be presented with an input field to enter the account name, as on the images below:
 
 |template-permissions-update-manually-1.PNG|
 
