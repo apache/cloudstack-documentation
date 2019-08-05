@@ -652,12 +652,12 @@ both root disks and data disks are supported. However, CloudStack does
 not currently support booting a VM from a recovered root disk. A disk
 recovered from snapshot of a root disk is treated as a regular data
 disk; the data on recovered disk can be accessed by attaching the disk
-to a VM. Exception to this is when using KVM with NFS - with this setup,
+to a VM. An exception to this is when using KVM with NFS - with this setup,
 both root and data volumes can be restored to their previous state.
 
 A completed snapshot is copied from primary storage to secondary
 storage, where it is stored until deleted or purged by newer snapshot.
-The copy process can optionally be asynchronous (parameter asynbackupc=true)
+The copy process can optionally be asynchronous (parameter asyncbackup=true)
 meaning that API call will complete once the snapshot is created initially 
 on the Primary Storage, and after that the snapshot will be copied in the
 background to the Secondary Storage.
