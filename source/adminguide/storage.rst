@@ -763,7 +763,9 @@ There are two paths to restoring snapshots. Users can create a volume
 from the snapshot. The volume can then be mounted to a VM and files
 recovered as needed. Alternatively, a template may be created from the
 snapshot of a root disk. The user can then boot a VM from this template
-to effect recovery of the root disk.
+to effect recovery of the root disk. An exception to this is when using
+KVM with NFS - with this setup, original root or data volume can be restored
+to its previous state.
 
 
 Snapshot Job Throttling
