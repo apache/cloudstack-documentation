@@ -652,11 +652,39 @@ both root disks and data disks are supported. However, CloudStack does
 not currently support booting a VM from a recovered root disk. A disk
 recovered from snapshot of a root disk is treated as a regular data
 disk; the data on recovered disk can be accessed by attaching the disk
-to a VM.
+to a VM. Exception to this is when using KVM with NFS - with this setup,
+both root and data volumes can be restored to their previous state.
 
 A completed snapshot is copied from primary storage to secondary
 storage, where it is stored until deleted or purged by newer snapshot.
+The copy process can optionally be asynchronous (parameter asynbackupc=true)
+meaning that API call will complete once the snapshot is created initially 
+on the Primary Storage, and after that the snapshot will be copied in the
+background to the Secondary Storage.
 
+Volume snapshot can have tags associated with it. With a manual volume snapshot,
+tags can be set during the creation of the snapshot, or can be added (and removed)
+later during the lifetime of the snapshot, as shown below.
+
+|snap-tags-1.PNG|
+
+Adding tags during snapshot creation
+
+|snap-tags-2.PNG|
+
+Existing tags are visible and new ones can be added
+
+Tags can be also added to the snapshot policies (scheduled snapshots)
+and all the snapshots produced by that snapshot policy will have the same
+tags associated with it. This is shown on the images below.
+
+|snap-policy-tag-1.PNG|
+
+Adding tags when creating a snapshot policy
+
+|snap-policy-tag-2.PNG|
+
+Snaps produced by the snapshot policy have the same tags
 
 How to Snapshot a Volume
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -802,3 +830,11 @@ snapshot data.
    :alt: Detach Disk Button.
 .. |Migrateinstance.png| image:: /_static/images/migrate-instance.png
    :alt: button to migrate a volume.
+.. |snap-tags-1.PNG| image:: /_static/images/snap-tags-1.PNG
+   :alt: Adding tags while creating a snapshot  
+.. |snap-tags-2.PNG| image:: /_static/images/snap-tags-2.PNG
+   :alt: Tags can be added after a snapshot is created
+.. |snap-policy-tag-1.PNG| image:: /_static/images/snap-policy-tag-1.PNG
+   :alt: Setting tags on the snapshot policy
+.. |snap-policy-tag-2.PNG| image:: /_static/images/snap-policy-tag-2.PNG
+   :alt: Tags can be added after the snapshot policy is created.
