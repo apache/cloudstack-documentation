@@ -638,22 +638,21 @@ point-in-time capture of virtual machine disks. Memory and CPU states
 are not captured. If you are using the Oracle VM hypervisor, you can not
 take snapshots, since OVM does not support them.
 
-Snapshots may be taken for volumes, including both root and data disks
-(except when the Oracle VM hypervisor is used, which does not support
-snapshots). The administrator places a limit on the number of stored
-snapshots per user. Users can create new volumes from the snapshot for
-recovery of particular files and they can create templates from
-snapshots to boot from a restored disk.
+Snapshots may be taken for volumes, including both root and data disks.
+The administrator places a limit on the number of stored snapshots per user.
+Users can create new data volumes from the snapshot for recovery of particular
+files and they can create templates from snapshots in order to create a new VM
+with restored volume.
 
 Users can create snapshots manually or by setting up automatic recurring
 snapshot policies. Users can also create disk volumes from snapshots,
 which may be attached to a VM like any other disk volume. Snapshots of
-both root disks and data disks are supported. However, CloudStack does
-not currently support booting a VM from a recovered root disk. A disk
-recovered from snapshot of a root disk is treated as a regular data
-disk; the data on recovered disk can be accessed by attaching the disk
-to a VM. An exception to this is when using KVM with NFS - with this setup,
-both root and data volumes can be restored to their previous state.
+both root disks and data disks are supported. As explained previously, 
+both root and data disk snapshots can be used to create a data volume
+or a template from a snapshot, but it's not possible to restore the 
+original VM's volume from a snapshot. An exception to this is when using
+KVM with NFS - with this setup, original root ordata volume can be restored
+to its previous state.
 
 A completed snapshot is copied from primary storage to secondary
 storage, where it is stored until deleted or purged by newer snapshot.
@@ -663,7 +662,7 @@ on the Primary Storage, and after that the snapshot will be copied in the
 background to the Secondary Storage.
 
 Volume snapshot can have tags associated with it. With a manual volume snapshot,
-tags can be set during the creation of the snapshot, or can be added (and removed)
+tags can be set during the creation of the snapshot, or can be added (or removed)
 later during the lifetime of the snapshot, as shown below.
 
 |snap-tags-1.PNG|
