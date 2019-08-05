@@ -416,7 +416,7 @@ To delete an affinity group:
 Virtual Machine Snapshots
 -------------------------
 
-(Supported on VMware, XenServer and KVM partially)
+(Supported on VMware, XenServer and KVM (NFS only))
 
 In addition to the existing CloudStack ability to snapshot individual VM
 volumes, you can take a VM snapshot to preserve all the VM's data
