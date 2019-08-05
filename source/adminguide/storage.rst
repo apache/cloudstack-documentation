@@ -651,7 +651,7 @@ both root disks and data disks are supported. As explained previously,
 both root and data disk snapshots can be used to create a data volume
 or a template from a snapshot, but it's not possible to restore the 
 original VM's volume from a snapshot. An exception to this is when using
-KVM with NFS - with this setup, original root ordata volume can be restored
+KVM with NFS - with this setup, original root or data volume can be restored
 to its previous state.
 
 A completed snapshot is copied from primary storage to secondary
