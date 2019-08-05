@@ -207,7 +207,7 @@ Uploading Templates from a remote HTTP server
 
 
 vSphere Templates and ISOs
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. warning:: 
       If you are uploading a template that was created using vSphere Client,
       be sure the OVA file does not contain an ISO. If it does, the deployment
@@ -295,6 +295,57 @@ Example GUI dialog of uploading Template/ISO from local (browser) is given below
 
 Note that uploading multi-disk templates is also supported.
 
+Sharing templates with other accounts/projects
+----------------------------------------------
+
+When adding a template, the owner can choose to make template public or to keep it private. Once the template is created, the owner can choose to share this template so that other accounts/projects can also use the template. 
+
+Currently, the template owner can share his template with:
+  - other accounts inside his own domain (i.e. can't share the template with other accounts in the subdomain of his domain or any other domains)
+  - projects where he belongs to (i.e. projects where he is the owner/creator or other projects where he has been joined)
+
+Template permissions can be changed via updateTemplatePermissions API call or via GUI. It is supported to add, remove or reset (remove all) template permissions.
+
+When adding or removing permissions to/from a template, it is required to specify account/project name which is being added/removed from the template permissions. 
+
+Global setting "allow.user.view.all.domain.accounts" has a default value of "false". This makes sure that when a regular user (of a "User" role) wants to share a template via GUI, he will not be shown the list of all accounts in his domain and he will need to know the name of the destination account with which he is sharing the template. This makes sense in public clouds where each account of a single domain is a different tenant/customer and privacy is imperative. In this case, the user will be presented with an input field to enter the account name, as on the images below:
+
+|template-permissions-update-manually-1.PNG|
+
+Sharing the template with account "user2"
+
+|template-permissions-update-manually-2.PNG|
+
+Revoking permissions from account "user2"
+
+But in environments where privacy within a domain is not an issue, setting "allow.user.view.all.domain.accounts" setting to "true" will make sure that the user, who is sharing the template, will be presented a more user-friendly multi-select list, listing all the accounts in his domain. This is shown in the images below;
+
+|template-permissions-update-1.PNG|
+
+Sharing the template with just account "user8"
+
+|template-permissions-update-2.PNG|
+
+Sharing template with 2 specific projects
+
+|template-permissions-update-3.PNG|
+
+Revoking permissions from account "user8"
+
+|template-permissions-update-4.PNG|
+
+Revoking permissions from both projects previously added
+
+
+Finally, template permissions can be reset:
+
+|template-permissions-update-5.PNG|
+
+Resetting (removing all) permissions
+
+.. warning:: 
+      Project-owned templates are not supported to be shared outside of 
+      the Project, and if attempted to do so, a proper error message is shown.
 
 Exporting Templates
 -------------------
@@ -339,3 +390,17 @@ template.
    :alt: Upload ISO from local
 .. |template-upload-from-local.PNG| image:: /_static/images/template-upload-from-local.PNG
    :alt: Upload Template from local
+.. |template-permissions-update-manually-1.PNG| image:: /_static/images/template-permissions-update-manually-1.PNG
+   :alt: USharing template with account "user2"
+.. |template-permissions-update-manually-2.PNG| image:: /_static/images/template-permissions-update-manually-2.PNG
+   :alt: Revoking permissions from account "user2"
+.. |template-permissions-update-1.PNG| image:: /_static/images/template-permissions-update-1.PNG
+   :alt: Sharing template with just account "user8"
+.. |template-permissions-update-2.PNG| image:: /_static/images/template-permissions-update-2.PNG
+   :alt: Sharing template with 2 specific projects
+.. |template-permissions-update-3.PNG| image:: /_static/images/template-permissions-update-3.PNG
+   :alt: Revoking permissins from account "user8"
+.. |template-permissions-update-4.PNG| image:: /_static/images/template-permissions-update-4.PNG
+   :alt: Revoking permsissons from both projects previously added
+.. |template-permissions-update-5.PNG| image:: /_static/images/template-permissions-update-5.PNG
+   :alt: Reseting (removing all) permissions
