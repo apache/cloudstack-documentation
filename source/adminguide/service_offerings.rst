@@ -63,7 +63,7 @@ root administrator, and is used for configuring virtual infrastructure
 resources. For more information, see Upgrading a Virtual Router with 
 System Service Offerings.
 
-Compute offering, disk offering, network offering and VPC offering cab be
+Compute offering, disk offering, network offering and VPC offering can be
 linked (made available to) specific domain(s) and zone(s) or to all domains/zones.
 Existing offerings can be updated with updateServiceOffering, updateDiskOffering, 
 updateNetworkOffering and updateVpcOffering API calls, by passing "domainid" and
