@@ -284,7 +284,12 @@ defined. In this domain autosync per account can be configured,
 keeping the users in the domain up to date with their group membership
 in LDAP.
 
-.. Note:: A caveat with this is that ApacheDS does not yet support the virtual 'memberOf' attribute needed to check if a user moved to another account. Microsoft AD and OpenLDAP as well as OpenDJ do support this. It is a planned feature for ApacheDS that can be tracked in https://issues.apache.org/jira/browse/DIRSERVER-1844.
+.. Note:: A caveat with this is that ApacheDS does not yet support the
+          virtual 'memberOf' attribute needed to check if a user moved
+          to another account. Microsoft AD and OpenLDAP as well as
+          OpenDJ do support this. It is a planned feature for ApacheDS
+          that can be tracked in
+          https://issues.apache.org/jira/browse/DIRSERVER-1844.
 
 There are now three ways to link LDAP users to CloudStack users. These
 three ways where developed as extensions on top of each other.
@@ -308,10 +313,10 @@ the user are used.
 
        #. The authentication result from LAP is honoured.
 
-#. **autoimport**. A domain is configured to import any user if it does
-   not yet exist in that domain. For these users a account by the same
-   name as the user is created on the fly and the user is created in
-   that account.
+#. **autoimport**. A domain is configured to import any user if it
+   does not yet exist in that domain. For these users a account by the
+   same name as the user is created on the fly and the user is created
+   in that account.
 
        #. If the domain is configured to be used with LDAP,
 
@@ -363,7 +368,6 @@ the user are used.
 
        #. If a CloudStack user exists but is not in the appropriate
           account its credentials will be moved.
-
 
 To set up LDAP authentication in CloudStack, call the CloudStack API
 command ``addLdapConfiguration`` and provide Hostname or IP address
