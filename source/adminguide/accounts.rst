@@ -365,7 +365,6 @@ the user are used.
        #. If no CloudStack user exists it is created in the
           appropriate account.
 
-
        #. If a CloudStack user exists but is not in the appropriate
           account its credentials will be moved.
 
