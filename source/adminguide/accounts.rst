@@ -279,17 +279,63 @@ or ApacheDS to authenticate CloudStack end-users. CloudStack will search
 the external LDAP directory tree starting at a specified base directory
 and gets user info such as first name, last name, email and username.
 
-Starting with CloudStack 4.11, an ldap connection per domain can be
-defined.
+Starting with CloudStack 4.11, an LDAP connection per domain can be
+defined. In this domain autosync per account can be confirgured,
+keeping the users in the domain up to date with their group membership
+in LDAP.
+.. Note:: A caveat with this is that ApacheDS does not yet support the
+virtual 'memberOf' attribute needed to check if a user moved to
+another account. MicrosoftAD and openldap as well as openDJ do support
+this. It is a planned feature for ApacheDS that can be tracked in
+https://issues.apache.org/jira/browse/DIRSERVER-1844.
 
-To authenticate, username and password entered by the user are used.
-Cloudstack does a search for a user with the given username. If it
-exists, it does a bind request with DN and password.
+There are now three ways to link LDAP users to cloudstack users. These
+three ways where developed as estensions to each other.
+
+#. manual import. A user is explicitely mapped to a daomain/account
+   and created as a user in that account
+
+     To authenticate, username and password entered by the user are
+     used.  Cloudstack does a search for a user with the given
+     username. If it exists, it does a bind request with DN and
+     password.
+
+#. autoimport. A domain is configured to import any user if it does
+   not yet exist in that domain. For these users a account by the same
+   name as the user is created on the fly and the user is created in
+   that account.
+
+     To authenticate, domain, username and password entered by the
+     user are used.  If the domain is configured to be used with LDAP,
+     Cloudstack does a bind request with DN and password. If it exists
+     and authenticates it checks if a user with the given username
+     exists. If it doesn't exists, a account/user will be created with
+     the username as names for both account and user.
+
+#. autosync. A domain is configured to use a LDAP server and in this
+   domain a number of accounts are 'mapped' against LDAP-groups. Any
+   user that is in one of thos accounts will be checked against the
+   current state of LDAP and if they exist they will be asserted to be
+   in the right account according to their LDAP-group. If they do not
+   exist in LDAP they will be disabled in cloudstack.
+
+     To authenticate, domain, username and password entered by the
+     user are used. If the domain is configured to be used by LDAP,
+     Cloudstack does a bind request with DNv and password. If it
+     exists and authenticates it is checked that it's memberships are
+     precisely one of the configured accounts. If it is not precisely
+     one the account is disabled and authetication fails. If it is
+     precisely one it checks if there is a current Cloudstack
+     user. Next it checks if the current user is in the account that
+     is configured against the returned group and if not the user is
+     moved to the right group. If no user yet exists in cloudstack it
+     is created in the appropriate account.
+
 
 To set up LDAP authentication in CloudStack, call the CloudStack API
 command ``addLdapConfiguration`` and provide Hostname or IP address
 and listening port of the LDAP server. Optionally a domain id can be
-given for the domain for which this LDP connection is valid. You could
+given for the domain for which this LDAP connection is valid. You could
 configure multiple servers as well. These are expected to be
 replicas. If one fails, the next one is used.
 
