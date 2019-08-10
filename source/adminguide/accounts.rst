@@ -326,10 +326,10 @@ the user are used.
           the entered password.
 
        #. If LDAP authentication checks out, CloudStack checks if the
-          authenticated user exists in the domain it they try to log
+          authenticated user exists in the domain it is trying to log
           on to.
 
-          #. If it exists it is ensured to be enabled
+          #. If the user exists in CloudStack, it is ensured to be enabled
 
           #. if it doesn't exist it is created in a new account with
              the username as names for both account and user.
@@ -345,19 +345,19 @@ the user are used.
    in the right account according to their LDAP group. If they do not
    exist in LDAP they will be disabled in CloudStack.
 
-       #. If the domain is configured to be used by LDAP.
+       #. If the domain is configured to be used by LDAP,
 
        #. CloudStack searches for it in LDAP by the configured
           'ldap.username.attribute'.
 
-       #. if an LDAP user is found is found, it is checked for
+       #. if an LDAP user is found, it is checked for
           memberships of mapped account, i.e. accounts for which LDAP
           groups are configured.
 
           #. if the LDAP user has 0, 2 or more memberships the account
              is disabled and authentication fails.
 
-       #. CloudStack than does a bind request with the returned
+       #. CloudStack then does a bind request with the returned
           principal for that LDAP user and the entered password.
 
        #. if no CloudStack user exists it is created in the
