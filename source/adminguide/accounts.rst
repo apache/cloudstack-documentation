@@ -293,14 +293,14 @@ To authenticate, in all three cases username and password entered by
 the user are used.
 
 #. **manual import**. A user is explicitely mapped to a domain/account
-   and created as a user in that account
+   and created as a user in that account.
 
        #. CloudStack does a search for a user with the given username.
 
        #. If it exists, it checks if the user is enabled.
 
        #. If the user is enabled, CloudStack searches for it in LDAP
-          by the configured 'ldap.username.attribute'.
+          by the configured ``ldap.username.attribute``.
 
        #. If the LDAP user is found, CloudStack does a bind request
           with the returned principal for that LDAP user and the
