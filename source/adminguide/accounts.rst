@@ -283,6 +283,7 @@ Starting with CloudStack 4.11, an LDAP connection per domain can be
 defined. In this domain autosync per account can be configured,
 keeping the users in the domain up to date with their group membership
 in LDAP.
+
 .. Note:: A caveat with this is that ApacheDS does not yet support the
 virtual 'memberOf' attribute needed to check if a user moved to
 another account. Microsoft AD and OpenLDAP as well as OpenDJ do support
