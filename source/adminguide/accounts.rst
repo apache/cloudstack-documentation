@@ -284,11 +284,7 @@ defined. In this domain autosync per account can be configured,
 keeping the users in the domain up to date with their group membership
 in LDAP.
 
-.. Note:: A caveat with this is that ApacheDS does not yet support the
-virtual 'memberOf' attribute needed to check if a user moved to
-another account. Microsoft AD and OpenLDAP as well as OpenDJ do support
-this. It is a planned feature for ApacheDS that can be tracked in
-https://issues.apache.org/jira/browse/DIRSERVER-1844.
+.. Note:: A caveat with this is that ApacheDS does not yet support the virtual 'memberOf' attribute needed to check if a user moved to another account. Microsoft AD and OpenLDAP as well as OpenDJ do support this. It is a planned feature for ApacheDS that can be tracked in https://issues.apache.org/jira/browse/DIRSERVER-1844.
 
 There are now three ways to link LDAP users to CloudStack users. These
 three ways where developed as extensions on top of each other.
