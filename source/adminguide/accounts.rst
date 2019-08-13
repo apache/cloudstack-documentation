@@ -296,23 +296,23 @@ three ways where developed as extensions on top of each other.
 To authenticate, in all three cases username and password entered by
 the user are used.
 
-#. manual import. A user is explicitely mapped to a domain/account
+#. **manual import**. A user is explicitely mapped to a domain/account
    and created as a user in that account
 
        #. CloudStack does a search for a user with the given username.
 
-       #. If it exists, it checks if the user is enabled
+       #. If it exists, it checks if the user is enabled.
 
-       #. if the user is enabled, CloudStack searches for it in LDAP
+       #. If the user is enabled, CloudStack searches for it in LDAP
           by the configured 'ldap.username.attribute'.
 
-       #. if the LDAP user is found, CloudStack does a bind request
+       #. If the LDAP user is found, CloudStack does a bind request
           with the returned principal for that LDAP user and the
           entered password.
 
-       #. the authentication result from LAP is honoured.
+       #. The authentication result from LAP is honoured.
 
-#. autoimport. A domain is configured to import any user if it does
+#. **autoimport**. A domain is configured to import any user if it does
    not yet exist in that domain. For these users a account by the same
    name as the user is created on the fly and the user is created in
    that account.
@@ -320,9 +320,9 @@ the user are used.
        #. If the domain is configured to be used with LDAP,
 
        #. CloudStack searches for it in LDAP by the configured
-          'ldap.username.attribute'.
+          ``ldap.username.attribute``.
 
-       #. if an LDAP user is found is found, CloudStack does a bind
+       #. If an LDAP user is found is found, CloudStack does a bind
           request with the returned principal for that LDAP user and
           the entered password.
 
@@ -332,14 +332,14 @@ the user are used.
 
           #. If the user exists in CloudStack, it is ensured to be enabled
 
-          #. if it doesn't exist it is created in a new account with
+          #. If it doesn't exist it is created in a new account with
              the username as names for both account and user.
 
        #. In case authentication fails the user will be disabled in
           cloudstack after the configured
-          'incorrect.login.attempts.allowed' number of attempts.
+          ``incorrect.login.attempts.allowed`` number of attempts.
 
-#. autosync. A domain is configured to use a LDAP server and in this
+#. **autosync**. A domain is configured to use a LDAP server and in this
    domain a number of accounts are 'mapped' against LDAP groups. Any
    user that is in one of these configured accounts will be checked against the
    current state of LDAP and if they exist they will be asserted to be
@@ -349,23 +349,23 @@ the user are used.
        #. If the domain is configured to be used by LDAP,
 
        #. CloudStack searches for it in LDAP by the configured
-          'ldap.username.attribute'.
+          ``ldap.username.attribute``.
 
-       #. if an LDAP user is found, it is checked for
+       #. If an LDAP user is found, it is checked for
           memberships of mapped account, i.e. accounts for which LDAP
           groups are configured.
 
-          #. if the LDAP user has 0, 2 or more memberships the account
+          #. If the LDAP user has 0, 2 or more memberships the account
              is disabled and authentication fails.
 
        #. CloudStack then does a bind request with the returned
           principal for that LDAP user and the entered password.
 
-       #. if no CloudStack user exists it is created in the
+       #. If no CloudStack user exists it is created in the
           appropriate account.
 
 
-       #. if a CloudStack user exists but is not in the appropriate
+       #. If a CloudStack user exists but is not in the appropriate
           account its credentials will be moved.
 
 
