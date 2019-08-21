@@ -194,6 +194,9 @@ To create a VM from a template:
 #. Be sure that the hardware you have allows starting the selected
    service offering.
 
+   .. note:: 
+      Vmware only: if the selected template contains OVF properties, the wizard displays these properties so you can populate them.
+
 #. Click Submit and your VM will be created and started.
 
    .. note:: 

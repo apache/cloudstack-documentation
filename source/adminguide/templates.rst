@@ -275,6 +275,11 @@ To upload a template:
       
 Note that uploading multi-disk templates is also supported.
 
+.. note:: 
+            Templates corresponding to appliances with OVF properties (vApp options) are also supported. CloudStack stores OVF template properties on database after successful template installation. After the template is ready, these properties are displayed by selecting the template, and clicking on the 'OVF Properties' tab
+
+
+
 .. include:: templates/_bypass-secondary-storage-kvm.rst
 
 
