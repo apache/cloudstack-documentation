@@ -276,7 +276,7 @@ To upload a template:
 Note that uploading multi-disk templates is also supported.
 
 .. note:: 
-            Templates corresponding to appliances with'static properties' in the OVF (such as virtual appliances) are also supported. CloudStack stores any template properties in the OVF in the database after successful template installation. Once the template is ready, these properties are viewed by selecting the template and clicking on the 'OVF Properties' tab.
+            Templates corresponding to appliances with 'static properties' in the OVF (such as virtual appliances) are also supported. CloudStack stores any template properties in the OVF in the database after successful template installation. Once the template is ready, these properties are viewed by selecting the template and clicking on the 'OVF Properties' tab.
 
 
 
