@@ -195,7 +195,7 @@ To create a VM from a template:
    service offering.
 
    .. note:: 
-      Vmware only: if the selected template contains OVF properties, the wizard displays these properties so you can populate them.
+      VMware only: if the selected template OVF contains static properties, the wizard displays these properties so you can populate them.
 
 #. Click Submit and your VM will be created and started.
 
