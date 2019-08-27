@@ -481,13 +481,13 @@ which opens a dialog and the selected users can be imported.
    :align:   center
 
 
-You could also use api commands: ``listLdapUsers``, ``ldapCreateAccount`` and
-``importLdapUsers``.
+You could also use api commands:
+``listLdapUsers``, to list users in LDAP that could or would be imported in CloudStack
+``ldapCreateAccount``, to manually create a user in a specific account
+``importLdapUsers``, to batch import users from LDAP
 
 Once LDAP is enabled, the users will not be allowed to changed password
 directly in CloudStack.
-
-
 
 .. |button to dedicate a zone, pod,cluster, or host| image:: /_static/images/dedicate-resource-button.png
 
