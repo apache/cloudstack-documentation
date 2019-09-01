@@ -633,35 +633,35 @@ Working with Volume Snapshots
 (Supported for the following hypervisors: **XenServer**, **VMware
 vSphere**, and **KVM**)
 
-CloudStack supports snapshots of disk volumes. Snapshots are a
+CloudStack supports snapshots of disk volumes. Volume snapshots are a
 point-in-time capture of virtual machine disks. Memory and CPU states
 are not captured. If you are using the Oracle VM hypervisor, you can not
 take snapshots, since OVM does not support them.
 
-Snapshots may be taken for volumes, including both root and data disks.
-The administrator places a limit on the number of stored snapshots per user.
-Users can create new data volumes from the snapshot for recovery of particular
-files and they can create templates from snapshots in order to create a new VM
-with restored volume.
+Snapshots may be taken for both root and data disks. An administrator can 
+place a limit on the number of stored snapshots per user.
+Users can create new data volumes from a snapshot for the recovery of particular
+files or they can create a templates from a snapshot in order to create new VMs
+from the volume (snapshot) image.
 
-Users can create snapshots manually or by setting up automatic recurring
-snapshot policies. Users can also create disk volumes from snapshots,
-which may be attached to a VM like any other disk volume. Snapshots of
-both root disks and data disks are supported. As explained previously, 
-both root and data disk snapshots can be used to create a data volume
-or a template from a snapshot, but it's not possible to restore the 
-original VM's volume from a snapshot. An exception to this is when using
-KVM with NFS - with this setup, original root or data volume can be restored
-to its previous state.
+Users can create snapshots manually or by setting up an automatically recurring
+snapshot schedule.  It is not currently possible to restore a VM to a volume snapshot
+state. An exception to this is when using KVM with NFS - with this setup, original 
+root or data volume can be restored to its previous state.
 
-A completed snapshot is copied from primary storage to secondary
-storage, where it is stored until deleted or purged by newer snapshot.
-The copy process can optionally be asynchronous (parameter asyncbackup=true)
-meaning that API call will complete once the snapshot is created initially 
-on the Primary Storage, and after that the snapshot will be copied in the
-background to the Secondary Storage.
+A completed snapshot is copied from primary storage to a randomly assigned secondary
+storage pool within the same zone as the original volume, where it is stored long-term. 
+Snapshots can be explicitly deleted or a 
+limit can be set on the number of snapshots that are kept in a scheduled snaphot
+series. In this case CloudStack will handle the deletion of the oldest snapshot
+when necessary.
 
-Volume snapshot can have tags associated with it. With a manual volume snapshot,
+The copy process can optionally be asynchronous (parameter asyncbackup=true),
+meaning that CloudStack will report the job complete once the snapshot is initially created
+on the Primary Storage, the snapshot will then be copied in the
+background to Secondary Storage.
+
+Volume snapshots can have tags associated with them. With a manual volume snapshot,
 tags can be set during the creation of the snapshot, or can be added (or removed)
 later during the lifetime of the snapshot, as shown below.
 
@@ -706,7 +706,7 @@ Automatic Snapshot Creation and Retention
 vSphere**, and **KVM**)
 
 Users can set up a recurring snapshot policy to automatically create
-multiple snapshots of a disk at regular intervals. Snapshots can be
+a snapshot of a disk at regular intervals. Snapshots can be
 created on an hourly, daily, weekly, or monthly interval. One snapshot
 policy can be set up per disk volume. For example, a user can set up a
 daily snapshot at 02:30.
