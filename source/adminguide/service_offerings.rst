@@ -63,20 +63,26 @@ root administrator, and is used for configuring virtual infrastructure
 resources. For more information, see Upgrading a Virtual Router with 
 System Service Offerings.
 
-Compute offering, disk offering, network offering and VPC offering can be
-linked (made available to) specific domain(s) and zone(s) or to all domains/zones.
-Existing offerings can be updated with updateServiceOffering, updateDiskOffering, 
+Scope
+~~~~~~
+
+Since version 4.13; compute offerings, disk offerings, network offerings and VPC offerings can be
+scoped to (made available in) combinations of specific domain(s) and zone(s) or to all domains and zones.
+
+Existing offerings can be updated via the UI or via the updateServiceOffering, updateDiskOffering, 
 updateNetworkOffering and updateVpcOffering API calls, by passing "domainid" and
-"zoneid" parameters. To make a domain-specific offering public with root admin access,
-“domainid=public” can be passed in the API call. To make a zone-specific offering available
-for all zones with root admin access, “zoneid=all” can be passed in the API call.
-Domain-admins can update service or compute offerings. However, they cannot change zones
-for the offerings specified for their domain or subdomains. They cannot change the name, display text,
-sort-key for offerings specified for their domains/subdomains and for other 
-domains which are not child domain for them. They can change domains (within 
-their subdomains) for the offerings specified for their domains/subdomains, 
-even if the offering is also specified for other domains which are not child 
-domain for them as such domains will not be affected by the update operation
+"zoneid" parameters.
+
+A root admin can change a domain-specific offering to a public one via the UI, or
+by passing “domainid=public” in the updateServiceOffering API call. To make a 
+zone-specific offering available for all zones, a root admin should include 
+“zoneid=all” in the API call or carry out the operation via the UI.
+
+Domain-admins have a limited scope to update service or compute offerings. They cannot 
+change the zone(s) in which the offerings are available, and they cannot change 
+the name, display text or sort-key for offerings. They can change the domain(s) 
+which an offering is available in, if the offering's scope is limited to only 
+domains and/or subdomains for which the domain admin is the admin.
 
 
 Compute and Disk Service Offerings
