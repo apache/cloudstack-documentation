@@ -48,7 +48,7 @@ and VMware with vSphere.
 
    .. note:: It is now required to enable HA on the XenServer pool in order to recover from a pool-master failure. Please refer to the `XenServer documentation <http://docs.vmd.citrix.com/XenServer/6.5.0/1.0/en_gb/>`_.
 
--  VMware versions 5.0 Update 3, 5.1 Update 3, 5.5 Update 3b, 6.0 Update 2, and 6.5 GA
+-  VMware versions 5.0 Update 3, 5.1 Update 3, 5.5 Update 3b, 6.0 Update 2, 6.5 GA and 6.7
 -  LXC Host Containers on RHEL 7
 -  Windows Server 2012 R2 (with Hyper-V Role enabled)
 -  Hyper-V 2012 R2
