@@ -48,7 +48,9 @@ and VMware with vSphere.
 
    .. note:: It is now required to enable HA on the XenServer pool in order to recover from a pool-master failure. Please refer to the `XenServer documentation <http://docs.vmd.citrix.com/XenServer/6.5.0/1.0/en_gb/>`_.
 
--  VMware versions 5.0 Update 3, 5.1 Update 3, 5.5 Update 3b, 6.0 Update 2, 6.5 GA and 6.7
+-  VMware versions 5.0, 5.1, 5.5, 6.0, 6.5 and 6.7
+   .. note:: There is a known issue in 6.7u1 (https://kb.vmware.com/s/article/67315) which blocks some 
+      CloudStack cloning operations. The use of linked clones is known to be effected.
 -  LXC Host Containers on RHEL 7
 -  Windows Server 2012 R2 (with Hyper-V Role enabled)
 -  Hyper-V 2012 R2
