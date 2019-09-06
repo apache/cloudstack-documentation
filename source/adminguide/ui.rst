@@ -239,7 +239,7 @@ Notice short keyboard names (based on country code)
 
 |instance-metrics-customized-view.JPG|
 
-Notice missing "Zone" column
+Notice "Zone" column is hidden
 
 
 |volume-metrics-customized-view.JPG|
