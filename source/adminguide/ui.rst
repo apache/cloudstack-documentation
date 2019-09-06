@@ -244,7 +244,7 @@ Notice missing "Zone" column
 
 |volume-metrics-customized-view.JPG|
 
-Notice missing "Utilisation" column
+Notice "Utilisation" column is hidden
 
 
 
