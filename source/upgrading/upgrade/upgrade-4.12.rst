@@ -38,7 +38,11 @@ Upgrade Steps:
 #. Upgrade CloudStack management server(s)
 #. Update hypervisors specific dependencies
 
-.. include:: _sysvm_templates.rst
+.. THIS LINE COMMENTED OUT AS NOT REQUIRED FOR 4.13
+    include:: _sysvm_templates.rst
+
+.. note::
+    System VM Template upgrade is not required when upgrading from |version_to_upgrade| to |release|.
 
 Packages repository
 -------------------
@@ -290,7 +294,7 @@ hosts.
       $ sudo apt-get upgrade cloudstack-agent
 
 #. Verify that the file ``/etc/cloudstack/agent/environment.properties`` has a
-    line that reads:
+   line that reads:
 
    .. parsed-literal::
 

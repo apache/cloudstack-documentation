@@ -43,7 +43,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   fixed_issues
+   changes
 
 
 .. toctree::
@@ -56,10 +56,3 @@ Contents:
    :maxdepth: 2
 
    api-changes
-
-
-.. toctree::
-   :maxdepth: 2
-
-   known_issues   
- 
