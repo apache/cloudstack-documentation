@@ -194,6 +194,11 @@ To create a VM from a template:
 #. Be sure that the hardware you have allows starting the selected
    service offering.
 
+   .. note:: 
+      VMware only: If the selected template OVF contains static properties, the wizard will display these properties. Static 
+      properties do not have the concept of required and optional fields . Therefore CloudStack is not able
+      to enforce the population of 'important fields'.
+
 #. Click Submit and your VM will be created and started.
 
    .. note:: 

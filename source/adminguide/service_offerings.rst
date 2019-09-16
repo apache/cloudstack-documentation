@@ -57,11 +57,32 @@ present users with choices when creating a new instance:
    creating a new instance. For example, CloudStack includes CentOS as a
    template. See Working with Templates.
 
-In addition to these choices that are provided for users, there is
+In addition to these choices that are provided for users, there is 
 another type of service offering which is available only to the CloudStack
-root administrator, and is used for configuring virtual infrastructure
-resources. For more information, see Upgrading a Virtual Router with
+root administrator, and is used for configuring virtual infrastructure 
+resources. For more information, see Upgrading a Virtual Router with 
 System Service Offerings.
+
+Scope
+~~~~~~
+
+Since version 4.13; compute offerings, disk offerings, network offerings and VPC offerings can be
+scoped to (made available in) combinations of specific domain(s) and zone(s) or to all domains and zones.
+
+Existing offerings can be updated via the UI or via the updateServiceOffering, updateDiskOffering, 
+updateNetworkOffering and updateVpcOffering API calls, by passing "domainid" and
+"zoneid" parameters.
+
+A root admin can change a domain-specific offering to a public one via the UI, or
+by passing “domainid=public” in the updateServiceOffering API call. To make a 
+zone-specific offering available for all zones, a root admin should include 
+“zoneid=all” in the API call or carry out the operation via the UI.
+
+Domain-admins have a limited scope to update service or compute offerings. They cannot 
+change the zone(s) in which the offerings are available, and they cannot change 
+the name, display text or sort-key for offerings. They can change the domain(s) 
+which an offering is available in, if the offering's scope is limited to only 
+domains and/or subdomains for which the domain admin is the admin.
 
 
 Compute and Disk Service Offerings
