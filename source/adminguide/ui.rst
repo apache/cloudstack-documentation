@@ -205,7 +205,7 @@ This is the default config.js content (comments ommitted for brevity):
       }
    };
 
-Example of a changed confi.js file, is given bellow, as well as the apropriate screenshots which reflect (most of) those changes. Make sure that you are logged in as end user account.
+Example of a changed config.js file is given bellow, as well as the apropriate screenshots which reflect (most of) those changes. Make sure that you are logged in as end user account.
 
 .. code:: javascript
 
