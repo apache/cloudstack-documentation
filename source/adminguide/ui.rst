@@ -169,5 +169,93 @@ new, unique value.
 #. Type the new password, and click OK.
 
 
+Modifying the UI
+----------------
+
+Root Administrators can modify some aspect of the UI, like:
+
+   -  Changing the keyboard names/labels (in the "Add Instance" wizard only)
+   -  Changing the text and the title in the "About" dialog box
+   -  Changing the Help link
+   -  Changing the application title on the browser tab
+   -  Hiding some columns in the Instance Metrics and Volume Metrics tables/views
+ 
+This can be done by editing the file "/usr/share/cloudstack-management/webapp/config.js" on your management server(s).
+After the file change, you do need to clear your browser cache. Hiding columns in Instance Metrics and Volume Metrics tables/views is only applicable to end users - i.e. those are always visible to Root Administrators.
+
+This is the default config.js content (comments ommitted for brevity):
+
+.. code:: javascript
+
+   cloudStackOptions = {
+      aboutText: "label.app.name", // This is the text shown in the 'About' box
+      aboutTitle: "label.about.app", // This is the Application 'Title' shown in the 'About' box
+      docTitle: "label.app.name", // This is the Application 'Title' shown on browser tab.
+      helpURL: "http://docs.cloudstack.apache.org/", // This is the URL that opens when users click Help
+      keyboardOptions: {
+         "us": "label.standard.us.keyboard",
+         "uk": "label.uk.keyboard",
+         "fr": "label.french.azerty.keyboard",
+         "jp": "label.japanese.keyboard",
+         "sc": "label.simplified.chinese.keyboard"
+      },
+      hiddenFields: { // Fields to be hidden only for users in the tables below
+         "metrics.instances": [], // Options - "name", "state", "ipaddress", "zonename", "cpuused", "memused", "network", "disk"
+         "metrics.volumes": [] // Options - "name", "state", "vmname", "sizegb", "physicalsize", "utilization", "storagetype", "storage"
+      }
+   };
+
+Example of a changed config.js file is given bellow, as well as the apropriate screenshots which reflect (most of) those changes. Make sure that you are logged in as end user account.
+
+.. code:: javascript
+
+   cloudStackOptions = {
+      aboutText: "Custom About text!", // This is the text shown in the 'About' box
+      aboutTitle: "Custom About Title!", // This is the Application 'Title' shown in the 'About' box
+      docTitle: "MyCloud", // This is the Application 'Title' shown on browser tab.
+      helpURL: "http://help.mycloud.com/", // This is the URL that opens when users click Help
+      keyboardOptions: {
+         "us": "US",
+         "uk": "UK",
+         "fr": "FR",
+         "jp": "JP",
+         "sc": "CN"
+      },
+      hiddenFields: { // Fields to be hidden only for users in the tables below
+         "metrics.instances": ["zonename"], // Options - "name", "state", "ipaddress", "zonename", "cpuused", "memused", "network", "disk"
+         "metrics.volumes": ["utilization"] // Options - "name", "state", "vmname", "sizegb", "physicalsize", "utilization", "storagetype", "storage"
+      }
+   };
+
+|about-cloudstack-customized.JPG|
+
+Notice custom title and text
+
+
+|add-instance-keyboards-customized.JPG|
+
+Notice short keyboard names (based on country code)
+
+
+|instance-metrics-customized-view.JPG|
+
+Notice "Zone" column is hidden
+
+
+|volume-metrics-customized-view.JPG|
+
+Notice "Utilisation" column is hidden
+
+
+
+
 .. |change-password.png| image:: /_static/images/change-password.png
    :alt: button to change a user's password
+.. |volume-metrics-customized-view.JPG| image:: /_static/images/volume-metrics-customized-view.JPG
+   :alt: Notice missing "Utilisation" column
+.. |instance-metrics-customized-view.JPG| image:: /_static/images/instance-metrics-customized-view.JPG
+   :alt: Notice missing "Zone" column
+.. |about-cloudstack-customized.JPG| image:: /_static/images/about-cloudstack-customized.JPG
+   :alt: Notice custom title and text   
+.. |add-instance-keyboards-customized.JPG| image:: /_static/images/add-instance-keyboards-customized.JPG
+   :alt: Notice short keyboard names (based on country code)   
