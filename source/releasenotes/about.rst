@@ -19,9 +19,18 @@ What's New in |release|
 Version |release| is a |version| LTS release adding almost 200 new features, enhancements and fixes 
 since 4.12. 
 
-Highlights include; Enhancements to the scoping of disk, network and compute offerings and a new type
-of custom offering. Improvements to memory usage in System VMs.  DPDK support has been enhanced to 
-include support for live migration and vHost User mode.  Support has also been aded for vSphere OVA 
-templates which contain additional static data, such as network appliances.
+Apache CloudStack |release| is a |version| LTS release nearly 200 new features, enhancements and fixes since 4.12, such as enhanced hypervisor support, performance increases and more user configurable controls.  Highlights include:
 
-|release| combines 12 months of work and adds +200 commits, with multiple new features and fixes.
+•	Supporting configuration of virtualised appliances
+•	VMware 6.7 support
+•	Increased granularity & control of instance  deployment
+•	Improvements in system VM performance 
+•	Allow live migration of DPDK enabled instances
+•	More flexible UI branding 
+•	Allowing users to create layer 2 network offerings
+
+
+The full list of new features can be found in the project release notes at http://docs.cloudstack.apache.org/en/4.13.0.0/releasenotes/changes.html
+
+Apache CloudStack powers numerous elastic Cloud computing services, including solutions that have ranked as Gartner Magic Quadrant leaders. Highlighted in the Forrester Q4 2017 Enterprise Open Source Cloud Adoption report, Apache CloudStack "sits beneath hundreds of service provider clouds", including Fortune 5 multinational corporations. A list of known Apache CloudStack users are available at http://cloudstack.apache.org/users.html
+
