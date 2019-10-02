@@ -31,9 +31,6 @@ release.  Please read through all sections carefully before starting.
 .. note::
    For information on the API changes and issues fixed in this release, please see the Release Notes section of the documentation
 
-.. note::
-   This release introduces new guest operating systems and related hypervisor OS mappings. Please remove any custom OSes/mappings prior to upgrading and then re-add any that are still missing after the upgrade.
-
 
 Contents:
 
