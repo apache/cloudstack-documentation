@@ -45,6 +45,8 @@ http://markmail.org/message/f42kqr3mx4r4hgih
 
 .. include:: _sysvm_templates.rst
 
+.. include:: _custom_guest_os_notice.rst
+
 Packages repository
 -------------------
 
