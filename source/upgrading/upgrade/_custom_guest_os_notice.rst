@@ -23,8 +23,8 @@ important to remove any Guest OS mappings that were manually added
 by the cloud operator, in order to ensure a successful upgrade.
 If needed, those custom Guest OS mappings can be added after the upgrade.
 That means that any custom added rows in the *guest_os*, *guest_os_hypervisor*, 
-*guest_os_details* and *guest_os_category*, should be removed prior to the upgrade,
-and added later if needed.
+*guest_os_details* and *guest_os_category* database tables, should be removed 
+prior to the upgrade, and added later if needed.
 
 .. note::
       Manually added guest OS mappings will usually break the upgrade process.
