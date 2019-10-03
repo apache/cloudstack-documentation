@@ -41,6 +41,8 @@ Upgrade Steps:
 
 .. include:: _sysvm_templates.rst
 
+.. include:: _custom_guest_os_notice.rst
+
 Packages repository
 -------------------
 
