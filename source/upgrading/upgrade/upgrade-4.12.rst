@@ -33,17 +33,19 @@ working on a production system.
 
 Upgrade Steps:
 
+#. Upload the |sysvm64-version| System VM template if not already using it.
 #. Backup CloudStack database (MySQL)
 #. Add package repository for MySQL connector
 #. Upgrade CloudStack management server(s)
 #. Update hypervisors specific dependencies
 
-.. THIS LINE COMMENTED OUT AS NOT REQUIRED FOR 4.13
-    include:: _sysvm_templates.rst
+.. warning::
+    If you are not already using the |sysvm64-version| System VM template you will need to 
+    upgrade your System VM template prior to performing the upgrade of the 
+    CloudStack packages.
 
-.. note::
-    System VM Template upgrade is not required when upgrading from |version_to_upgrade| to |release|.
-    
+.. include:: _sysvm_templates.rst
+
 .. include:: _custom_guest_os_notice.rst
 
 Packages repository
