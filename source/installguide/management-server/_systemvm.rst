@@ -78,7 +78,7 @@ CloudStack system VMs.
 
          /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt \
          -m /mnt/secondary \
-         -u |sysvm64-name-kvm| \
+         -u |sysvm64-url-kvm| \
          -h kvm \
          -s <optional-management-server-secret-key> \
          -F
@@ -89,7 +89,7 @@ CloudStack system VMs.
 
          /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt \
          -m /mnt/secondary \
-         -u |sysvm64-name-kvm| \
+         -u |sysvm64-url-kvm| \
          -h lxc \
          -s <optional-management-server-secret-key> \
          -F
