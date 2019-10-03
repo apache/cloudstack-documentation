@@ -43,6 +43,8 @@ Upgrade Steps:
 
 .. note::
     System VM Template upgrade is not required when upgrading from |version_to_upgrade| to |release|.
+    
+.. include:: _custom_guest_os_notice.rst
 
 Packages repository
 -------------------
