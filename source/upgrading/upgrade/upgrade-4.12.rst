@@ -33,11 +33,14 @@ working on a production system.
 
 Upgrade Steps:
 
+#. Check any customisations and integrations
 #. Upload the |sysvm64-version| System VM template if not already using it.
 #. Backup CloudStack database (MySQL)
 #. Add package repository for MySQL connector
 #. Upgrade CloudStack management server(s)
 #. Update hypervisors specific dependencies
+
+.. include:: _customisation_warnings.rst
 
 .. warning::
     If you are not already using the |sysvm64-version| System VM template you will need to 
@@ -45,8 +48,6 @@ Upgrade Steps:
     CloudStack packages.
 
 .. include:: _sysvm_templates.rst
-
-.. include:: _custom_guest_os_notice.rst
 
 Packages repository
 -------------------

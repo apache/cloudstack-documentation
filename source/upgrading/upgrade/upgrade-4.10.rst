@@ -34,6 +34,8 @@ working on a production system.
 
 Upgrade Steps:
 
+#. Check any customisations and integrations
+#. Upload the |sysvm64-version| System VM template if not already using it.
 #. Backup CloudStack database (MySQL)
 #. Add package repository for MySQL connector
 #. Upgrade CloudStack management server(s)
@@ -43,9 +45,14 @@ Apache CloudStack 4.10.0.0 users who are upgrading to 4.11.0.0 should read the
 following discussion and workaround for a db-upgrade issue:
 http://markmail.org/message/f42kqr3mx4r4hgih
 
-.. include:: _sysvm_templates.rst
+.. include:: _customisation_warnings.rst
 
-.. include:: _custom_guest_os_notice.rst
+.. warning::
+    If you are not already using the |sysvm64-version| System VM template you will need to 
+    upgrade your System VM template prior to performing the upgrade of the 
+    CloudStack packages.
+
+.. include:: _sysvm_templates.rst
 
 Packages repository
 -------------------
