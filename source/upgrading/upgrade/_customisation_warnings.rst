@@ -16,7 +16,7 @@
 .. sub-section included in upgrade notes.
 
 CloudStack Customisations
-==========================
+--------------------------
 
 There are a number of ways in which administrators can customise CloudStack.  During an
 upgrade a number of these could be overidden.  Therefore steps should be taken to ensure
@@ -24,7 +24,7 @@ that they can be restored after the upgrade is completed.
 
 
 Guest OS mappings
-------------------
+##################
 
 A new CloudStack release often brings caompatibility with new hypervisors; and therefore 
 new Guest OS mappings. An API is provided to manually add guest OSes and the
@@ -44,7 +44,7 @@ prior to the upgrade, and added later if needed.
 
 
 Customised CCS
----------------
+###############
 
 If you have altered the CSS files in order to customise the appearance of the CloudStack UI,
 you should make a backup copy as the installed CSS files are likely to be overwritten during
@@ -55,14 +55,14 @@ reapply your changes to the new files as the new versions may contain changes to
 elements or have new entries to support new UI elements.
 
 Plugins
---------
+#######
 
 If you have 3rd party plugins installed, you should back your plugins directories and the
 plugins.js file.  While the plugins directories *should* remain untouched, the plugins.js
 file is likely to be overwritten.
 
 3rd Party Integrations
-------------------------
+#######################
 
 CloudStack is put through extensive regression testing during a release cycle, however 
 the numerous 3rd party integrations which are available cannot all be tested by the 
