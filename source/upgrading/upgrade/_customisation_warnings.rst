@@ -43,7 +43,7 @@ prior to the upgrade, and added later if needed.
       Manually added guest OS mappings can cause the upgrade process to fail.
 
 
-Customised CCS
+Customised CSS
 ###############
 
 If you have altered the CSS files in order to customise the appearance of the CloudStack UI,
