@@ -147,7 +147,7 @@ This file should have one line, which contains:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu precise 4.10
+   deb http://download.cloudstack.org/ubuntu precise 4.12
 
 We'll change it to point to the new package repository:
 
@@ -191,7 +191,7 @@ CentOS/RHEL
 ##############
 
 If you are using CentOS or RHEL, follow this procedure to upgrade your
-packages. If not, skip to hypervisors section :ref:`upg_hyp_411`.
+packages. If not, skip to hypervisors section :ref:`upg_hyp_412`.
 
 .. note::
    **Community Packages:** This section assumes you're using the community
