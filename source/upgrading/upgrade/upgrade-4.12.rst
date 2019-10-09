@@ -66,7 +66,7 @@ Create RPM or Debian packages (as appropriate) and a repository from
 the |release| source, or check the Apache CloudStack downloads page at
 http://cloudstack.apache.org/downloads.html
 for package repositories supplied by community members. You will need
-them for :ref:`ubuntu411` or :ref:`rhel411` and :ref:`kvm411` hosts upgrade.
+them for :ref:`ubuntu412` or :ref:`rhel412` and :ref:`kvm412` hosts upgrade.
 
 Instructions for creating packages from the CloudStack source are in the
 `CloudStack Installation Guide`_.
