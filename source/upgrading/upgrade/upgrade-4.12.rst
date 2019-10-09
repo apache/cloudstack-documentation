@@ -40,7 +40,7 @@ Overview of Upgrade Steps:
 #. Backup CloudStack database (MySQL)
 #. Upgrade 1st CloudStack management server
 #. Update hypervisors specific dependencies
-#. Restart 1st management sserver
+#. Restart 1st management server
 #. Check that your upgraded environment works as expected
 #. Upgrade and restart the remaining management servers
 
