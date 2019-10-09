@@ -19,16 +19,16 @@ CloudStack Customisations
 --------------------------
 
 There are a number of ways in which administrators can customise CloudStack.  During an
-upgrade a number of these could be overidden.  Therefore steps should be taken to ensure
+upgrade, a number of these could be overridden.  Therefore steps should be taken to ensure
 that they can be restored after the upgrade is completed.
 
 
 Guest OS mappings
 ##################
 
-A new CloudStack release often brings caompatibility with new hypervisors; and therefore 
+A new CloudStack release often brings compatibility with new hypervisors, and therefore 
 new Guest OS mappings. An API is provided to manually add guest OSes and the
-relevant hypervisor mappings, however there is a high probablity that manually 
+relevant hypervisor mappings, however, there is a high probability that manually 
 added guest OSes and/or mappings would conflict with guest OSes and/or mappings
 added as part of a version upgrade.
 
@@ -66,7 +66,7 @@ file is likely to be overwritten.
 
 CloudStack is put through extensive regression testing during a release cycle, however 
 the numerous 3rd party integrations which are available cannot all be tested by the 
-community nor indeed may the community know about many of them.  Therefore it is essential
-that you verfy that your integrations will continue to work after an upgrade through thorough
+community nor indeed may the community know about many of them. Therefore it is essential
+that you verify that your integrations will continue to work after an upgrade through thorough
 testing and checking with the vendor/supplier of your integrations.
 
