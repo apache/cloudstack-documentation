@@ -148,7 +148,7 @@ This file should have one line, which contains:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu precise 4.10
+   deb http://download.cloudstack.org/ubuntu precise 4.11
 
 We'll change it to point to the new package repository:
 
@@ -185,8 +185,8 @@ read as appropriate for your |version| repository.
       $ sudo apt-get upgrade cloudstack-usage
 
 
-.. _rhel412:
-.. _rpm-repo412:
+.. _rhel411:
+.. _rpm-repo411:
 
 CentOS/RHEL
 ##############
