@@ -57,7 +57,7 @@ elements or have new entries to support new UI elements.
 Plugins
 #######
 
-If you have 3rd party plugins installed, you should back your plugins directories and the
+If you have 3rd party plugins installed, you should backup your plugins directories and the
 plugins.js file.  While the plugins directories *should* remain untouched, the plugins.js
 file is likely to be overwritten.
 
