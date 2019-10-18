@@ -55,9 +55,9 @@ Overview of Upgrade Steps:
     CloudStack packages.
     
 .. warning::
-    Even if you are currently running a *clean* CloudStack 4.11.3, you will need to explicitely register the 
-    |sysvm64-version| System VM template. If you are running 4.11.3 which was upgraded from some of the previous versions,
-    you don't need to register a new |sysvm64-version| template.
+    Even if you are currently running a **clean** install of CloudStack 4.11.3, you will need to explicitely register the 
+    |sysvm64-version| System VM template. If you are running CloudStack 4.11.3 that was upgraded from some of the previous versions,
+    you don't need to register a new |sysvm64-version| System VM template.
 
 .. include:: _sysvm_templates.rst
 
