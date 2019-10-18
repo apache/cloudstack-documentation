@@ -53,6 +53,10 @@ Overview of Upgrade Steps:
     If you are not already using the |sysvm64-version| System VM template you will need to 
     upgrade your System VM template prior to performing the upgrade of the 
     CloudStack packages.
+    
+.. warning::
+    Even if you are currently running CloudStack 4.11.3, you will need to explicitely register the 
+    |sysvm64-version| System VM template.
 
 .. include:: _sysvm_templates.rst
 
