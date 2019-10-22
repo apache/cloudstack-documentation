@@ -236,7 +236,7 @@ offerings whose disk size is equal or bigger than the size of the snapshot).
 
 |volume-from-snap.PNG|
 
-When creating a new volume from an existing DATA volume snapshot, Disk offering
+When creating a new volume from an existing DATA volume snapshot, the disk offering
 associated with the snapshots (inherited from the original volume) is assigned
 to the new volume.
 
