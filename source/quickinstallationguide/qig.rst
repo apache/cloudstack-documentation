@@ -421,33 +421,6 @@ start on boot as follows:
    # systemctl start mysqld
 
 
-MySQL connector Installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Install Python MySQL connector using the official MySQL packages repository.
-Create the file ``/etc/yum.repos.d/mysql.repo`` with the following content:
-
-.. parsed-literal::
-
-   [mysql-connectors-community]
-   name=MySQL Community connectors
-   baseurl=http://repo.mysql.com/yum/mysql-connectors-community/el/$releasever/$basearch/
-   enabled=1
-   gpgcheck=1
-
-Import GPG public key from MySQL:
-
-.. parsed-literal::
-
-   rpm --import http://repo.mysql.com/RPM-GPG-KEY-mysql
-
-Install mysql-connector
-
-.. parsed-literal::
-
-   yum install mysql-connector-python
-
-
 Installation
 ~~~~~~~~~~~~
 
