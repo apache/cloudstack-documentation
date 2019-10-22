@@ -277,7 +277,7 @@ We need to configure the machine to use a CloudStack package repository.
    to take the source release and generate RPMs and and yum repository. This 
    guide attempts to keep things as simple as possible, and thus we are using 
    one of the community-provided yum repositories. Furthermore, this example 
-   assumes a 4.11 Cloudstack install - substitute versions as needed.
+   assumes a 4.13 Cloudstack install - substitute versions as needed.
 
 To add the CloudStack repository, create /etc/yum.repos.d/cloudstack.repo and 
 insert the following information.
@@ -286,7 +286,7 @@ insert the following information.
 
    [cloudstack]
    name=cloudstack
-   baseurl=http://download.cloudstack.org/centos/7/4.11/
+   baseurl=http://download.cloudstack.org/centos/7/4.13/
    enabled=1
    gpgcheck=0
 
@@ -467,7 +467,7 @@ the system VMs images.
   
    /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt \
    -m /export/secondary \
-   -u http://download.cloudstack.org/systemvm/4.11/systemvmtemplate-4.11.2-kvm.qcow2.bz2 \
+   -u http://download.cloudstack.org/systemvm/4.11/systemvmtemplate-4.11.3-kvm.qcow2.bz2 \
    -h kvm -F
 
 
