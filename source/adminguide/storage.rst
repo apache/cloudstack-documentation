@@ -231,7 +231,7 @@ volume. This optimization allows the CloudStack to provision the volume
 nearest to the guest that will use it when the first attachment is made.
 
 When creating a new volume from an existing ROOT volume snapshot,
-it is required to explicitely define a Disk offering (UI will offer only Disk
+it is required to explicitly define a Disk offering (UI will offer only Disk
 offerings whose disk size is equal or bigger than the size of the snapshot).
 
 |volume-from-snap.PNG|
