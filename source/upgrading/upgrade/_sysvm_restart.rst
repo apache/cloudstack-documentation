@@ -21,10 +21,11 @@ from the new systemVM template version.
 
 .. note::
 
-   Restarting system VMs can be done in different ways ways. You can use script
-   "cloudstack-sysvmadm" which is provided with CloudStack, or do manual restart of system VMs
-   or do it via 3rd party tools such as Ansible.
+   Restarting system VMs can be done in different ways. You can use script
+   "cloudstack-sysvmadm" which is provided with CloudStack, or do a manual restart of system VMs
+   or do it by using third-party tools such as Ansible.
    Below we are giving instructions for using the "cloudstack-sysvmadm" script.
+
 
 Ensure that the admin port is set to
 8096 by using the "integration.api.port" global parameter. This port
