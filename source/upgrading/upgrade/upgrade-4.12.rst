@@ -31,13 +31,21 @@ working on a production system.
     The following upgrade instructions should be performed regardless of
     hypervisor type.
 
-Upgrade Steps:
+Overview of Upgrade Steps:
+----------------------------
 
+#. Check any customisations and integrations
 #. Upload the |sysvm64-version| System VM template if not already using it.
+#. Stop all running management servers
 #. Backup CloudStack database (MySQL)
-#. Add package repository for MySQL connector
-#. Upgrade CloudStack management server(s)
+#. Upgrade 1st CloudStack management server
 #. Update hypervisors specific dependencies
+#. Restart 1st management server
+#. Check that your upgraded environment works as expected
+#. Upgrade and restart the remaining management servers
+
+
+.. include:: _customisation_warnings.rst
 
 .. warning::
     If you are not already using the |sysvm64-version| System VM template you will need to 
@@ -45,7 +53,6 @@ Upgrade Steps:
     CloudStack packages.
 
 .. include:: _sysvm_templates.rst
-
 
 Packages repository
 -------------------
@@ -59,7 +66,7 @@ Create RPM or Debian packages (as appropriate) and a repository from
 the |release| source, or check the Apache CloudStack downloads page at
 http://cloudstack.apache.org/downloads.html
 for package repositories supplied by community members. You will need
-them for :ref:`ubuntu411` or :ref:`rhel411` and :ref:`kvm411` hosts upgrade.
+them for :ref:`ubuntu412` or :ref:`rhel412` and :ref:`kvm412` hosts upgrade.
 
 Instructions for creating packages from the CloudStack source are in the
 `CloudStack Installation Guide`_.
@@ -109,10 +116,14 @@ Backup current database
       $ mysql -u cloud -p -e 'update cloud.storage_pool set path="/var/lib/libvirt/images" where path="/var/lib/libvirt/images/"';
 
 
-.. _ubuntu411:
+.. _ubuntu412:
+.. _apt-repo412:
 
-Management Server on Ubuntu
----------------------------
+Management Server
+-----------------
+
+Ubuntu
+######
 
 If you are using Ubuntu, follow this procedure to upgrade your packages. If
 not, skip to step :ref:`rhel411`.
@@ -127,10 +138,7 @@ each system with CloudStack packages. This means all management
 servers, and any hosts that have the KVM agent. (No changes should
 be necessary for hosts that are running VMware or Xen.)
 
-.. _apt-repo411:
 
-CloudStack apt repository
-^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Start by opening ``/etc/apt/sources.list.d/cloudstack.list`` on
 any systems that have CloudStack packages installed.
@@ -139,7 +147,7 @@ This file should have one line, which contains:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu precise 4.10
+   deb http://download.cloudstack.org/ubuntu precise 4.12
 
 We'll change it to point to the new package repository:
 
@@ -176,24 +184,19 @@ read as appropriate for your |version| repository.
       $ sudo apt-get upgrade cloudstack-usage
 
 
-.. _rhel411:
+.. _rhel412:
+.. _rpm-repo412:
 
-Management Server on CentOS/RHEL
---------------------------------
+CentOS/RHEL
+##############
 
 If you are using CentOS or RHEL, follow this procedure to upgrade your
-packages. If not, skip to hypervisors section :ref:`upg_hyp_411`.
+packages. If not, skip to hypervisors section :ref:`upg_hyp_412`.
 
 .. note::
    **Community Packages:** This section assumes you're using the community
    supplied packages for CloudStack. If you've created your own packages and
    yum repository, substitute your own URL for the ones used in these examples.
-
-
-.. _rpm-repo411:
-
-CloudStack RPM repository
-^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The first order of business will be to change the yum repository
 for each system with CloudStack packages. This means all
@@ -246,20 +249,20 @@ read as appropriate for your |version| repository.
 
       $ sudo yum upgrade cloudstack-usage
 
-.. _upg_hyp_411:
+.. _upg_hyp_412:
 
 Upgrade Hypervisors
 -------------------
 
-
 Hypervisor: XenServer
-^^^^^^^^^^^^^^^^^^^^^
+#####################
+
 
 No additional steps are required wrt for XenServer Hypervisor for this upgrade.
 
 
 Hypervisor: VMware
-------------------
+###################
 
 .. warning::
    For VMware hypervisor CloudStack management server packages must be
@@ -269,10 +272,10 @@ Hypervisor: VMware
 No additional steps are requried for the VMware Hypervisor for this upgrade.
 
 
-.. _kvm411:
+.. _kvm412:
 
 Hypervisor: KVM
-^^^^^^^^^^^^^^^
+#################
 
 KVM on Ubuntu
 """"""""""""""
@@ -314,6 +317,7 @@ hosts.
 
 KVM on CentOS/RHEL
 """""""""""""""""""
+
 For KVM hosts, upgrade the ``cloudstack-agent`` package
 
 #. Configure the :ref:`rpm-repo411` as detailed above.
