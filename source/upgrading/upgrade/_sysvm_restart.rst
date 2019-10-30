@@ -16,7 +16,17 @@
 .. sub-section included in upgrade notes.
 
 Once you've upgraded the packages on your management servers, you'll
-need to restart the system VMs. Ensure that the admin port is set to
+need to restart the system VMs in order for those VMs to be rebuilt 
+from the new systemVM template version.
+
+.. note::
+
+   Restarting system VMs can be done in different ways ways. You can use script
+   "cloudstack-sysvmadm" which is provided with CloudStack, or do manual restart of system VMs
+   or do it via 3rd party tools such as Ansible.
+   Below we are giving instructions for using the "cloudstack-sysvmadm" script.
+
+Ensure that the admin port is set to
 8096 by using the "integration.api.port" global parameter. This port
 is used by the cloudstack-sysvmadm script at the end of the upgrade
 procedure. For information about how to set this parameter, see :ref:`configuration parameters <configuration-parameters>`
