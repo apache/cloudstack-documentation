@@ -34,12 +34,24 @@ working on a production system.
 
 Upgrade Steps:
 
+#. Check any customisations and integrations
+#. Upload the |sysvm64-version| System VM template if not already using it.
+#. Stop all running management servers
 #. Backup CloudStack database (MySQL)
-#. Install new systemvm template
 #. Add package repository for MySQL connector
 #. Upgrade CloudStack management server(s)
 #. Update hypervisors specific dependencies
 
+
+
+.. include:: _customisation_warnings.rst
+
+.. warning::
+    If you are not already using the |sysvm64-version| System VM template you will need to 
+    upgrade your System VM template prior to performing the upgrade of the 
+    CloudStack packages.
+
+.. include:: _sysvm_templates.rst
 
 Packages repository
 -------------------
@@ -57,9 +69,6 @@ them for :ref:`ubuntu45` or :ref:`rhel45` and :ref:`kvm45` hosts upgrade.
 
 Instructions for creating packages from the CloudStack source are in the 
 `CloudStack Installation Guide`_.
-
-.. include:: _sysvm_templates.rst
-
 
 Database Preparation
 --------------------
@@ -141,11 +150,14 @@ This file should have one line, which contains:
 
    deb http://download.cloudstack.org/ubuntu precise 4.5
 
+Ubuntu 12.04 Precise is not supported with CloudStack |release|,
+so make sure to have updated your management servers to Xenial or Bionic first.
+
 We'll change it to point to the new package repository:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu precise 4.9
+   deb http://download.cloudstack.org/ubuntu bionic 4.13
 
 Setup the public key for the above repository:
 
@@ -218,7 +230,7 @@ This file should have content similar to the following:
    gpgcheck=0
 
 If you are using the community provided package repository, change
-the base url to ``http://download.cloudstack.org/centos/$releasever/4.9/``.
+the base url to ``http://download.cloudstack.org/centos/$releasever/4.13/``.
 
 Setup the GPG public key if you wish to enable ``gpgcheck=1``:
 
