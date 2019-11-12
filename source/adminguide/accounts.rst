@@ -381,7 +381,7 @@ replicas. If one fails, the next one is used.
 	                                    port=389\
 					    domainid=12345678-90ab-cdef-fedc-ba0987654321
 
-When LDAP is used for manual import you are done by now and the
+This is all that is required to enable the manual importing of LDAP users, the 
 LisLdapUsers API can be used to query for users to import.
 
 For the auto import method, a CloudStack Domain needs to be linked to
