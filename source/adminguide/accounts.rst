@@ -314,7 +314,7 @@ the user are used.
        #. The authentication result from LAP is honoured.
 
 #. **autoimport**. A domain is configured to import any user if it
-   does not yet exist in that domain. For these users a account by the
+   does not yet exist in that domain. For these users, an account in the
    same name as the user is created on the fly and the user is created
    in that account.
 
