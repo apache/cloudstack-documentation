@@ -384,7 +384,7 @@ replicas. If one fails, the next one is used.
 When LDAP is used for manual import you are done by now and the
 LisLdapUsers API can be used to query for users to import.
 
-For the auto import method an CloudStack Domain needs to be linked to
+For the auto import method, a CloudStack Domain needs to be linked to
 Ldap. For instance
 
 .. code:: bash
