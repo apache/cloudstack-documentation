@@ -315,7 +315,7 @@ the user are used.
 
 #. **autoimport**. A domain is configured to import any user if it
    does not yet exist in that domain. For these users, an account in the
-   same name as the user is created on the fly and the user is created
+   same name as the user is automatically created  and the user is created
    in that account.
 
        #. If the domain is configured to be used with LDAP,
