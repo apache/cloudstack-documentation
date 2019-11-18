@@ -227,6 +227,16 @@ To create a VM from an ISO:
 #. Click Submit and your VM will be created and started.
 
 
+Importing VMs
+-------------
+
+Virtual machines that have been created out of band, directly from hypervisor can be imported in CloudStack(currently only for VMware). Import action can only be performed by administrator and only using API. Following APIs can be used while importing unmanaged virtual machines:
+
+-  listUnmanagedInstances - to list unmanaged virtual machines for a cluster.
+
+-  importUnmanagedInstance - to import an unmanaged virtual machine into CloudStack.
+
+
 Accessing VMs
 -------------
 
