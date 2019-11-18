@@ -241,12 +241,14 @@ listUnmanagedInstances
 
 This API will list all unmanaged VMs for a given cluster. Optionally, the vSphere name for an existing unmanaged VM can be given to retrieve VM details. The API will filter all CloudStack managed VMs, and will also filter templates that show up as VMs on vCenter.
 
-Request parameters
+Request parameters:
+
 .. parsed-literal::
    clusterid (CloudStack UUID of cluster)
    name (vSphere instance name)
 
-Response
+Response:
+
 .. parsed-literal::
    clusterid
    hostid
@@ -280,6 +282,7 @@ importUnmanagedInstance
 This API will import an existing unmanaged VM into CloudStack for a given cluster and VM name. The service offering for the VM, disk offerings for volumes and networks for NICs of the VM can also be mapped. Some optional parameters such as: account, projectid, domainid, hostname, details, etc. can also be given. Appropriate networks, service offering and disk offerings need to be present before import and cannot be created on the fly during the API call.
 
 Request parameters:
+
 .. parsed-literal::
    clusterid (CloudStack UUID of cluster)
    name (vSphere instance name)
@@ -297,6 +300,7 @@ Request parameters:
    details (Map for VM details)
    migrateallowed (VM and its volumes are allowed to migrate to different host/storage pool when offering tags conflict with host/storage pool)
 
+Response:
 
 .. parsed-literal::
    Same response as that of deployVirtualMachine API.
