@@ -332,6 +332,37 @@ Requirements for importUnmanagedInstance API
 #. After importing a running VM, it is required to stop and start the VM via CloudStack, in other to be able to access the console of a VM.
 
 
+Discovery of Existing Networks (for VMware)
+'''''''''''''''''''''''''''''''''''''''''''
+
+A Python 3 based script (discover_networks.py) can be found under vm/hypervisor/vmware directory in the CloudStack scripts install location. For most operating systems, CloudStack installs scripts at /usr/share/cloudstack-common/. It leverages VMware’s pyvmomi library (https://github.com/vmware/pyvmomi) and allows listing all networks for a vCenter host or cluster which have at least one virtual machine attached to them. The script will iterate through such networks and will report following parameters for them:
+
+.. parsed-literal::
+   cluster (vCenter Cluster belongs to)
+   host (vCenter Host belongs to)
+   portgroup (Portgroup of the network)
+   switch (Switch to which network is connected)
+   virtualmachines (Virtual machines that are currently connect in network alongwith their NIC device details)
+   vlanid (VLAN ID of the nework)
+
+Script can take the following arguments:
+
+.. parsed-literal::
+   -h, --help show this help message and exit
+   -s HOST, --host HOST vSphere service to connect to
+   -o PORT, --port PORT Port to connect on
+   -u USER, --user USER User name to use
+   -p PASSWORD, --password PASSWORD Password to use
+   -c CLUSTER, --cluster CLUSTER Cluster for listing network
+   -S, --disable_ssl_verification Disable ssl host certificate verification
+   -d, --debug Debug log messages
+
+.. note::
+   To run this script host machine should have Python 3 and module `pyvmomi` installled.
+   Python binaries: https://www.python.org/downloads/
+   Install instructions for pyvmomi: https://github.com/vmware/pyvmomi#installing 
+
+
 Accessing VMs
 -------------
 
