@@ -556,6 +556,70 @@ snapshot:
    have to manually delete the snapshots in this case.
 
 
+Virtual Machine Backups
+-----------------------
+
+CloudStack 4.14 version and above introduces a new backup and recovery framework
+that provides CloudStack users the ability to backup their guest VMs for
+recovery purposes, in case they suffer a hardware or software issue with their
+instances or the underlying infrastructure. This framework allows CloudStack to
+be integrated with backup and recovery providers, as pluggable solutions. Each
+provider should implement the backup and recovery methods provided by the
+framework in their own way.
+
+The current implementation supports the following hypervisors and providers:
+
+- VMware with Veeam Backup and Recovery
+
+Configuring Backup and Recovery
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The cloud administrator can use global configuration variables to
+control the behavior of B&R feature. To set these variables, go through
+the Global Settings area of the CloudStack UI.
+
+- backup.framework.enabled: (default: false) Setting to enable or disable the feature.
+- backup.framework.provider.plugin: (default: dummy) The backup provider (plugin) name. For example: 'dummy' and 'veeam'. This is a zone specific setting.
+- backup.framework.sync.interval': (default: 300) B&R background sync task internal in seconds that performs metrics/usage stats collection, backup metadata syncup and scheduling of backups.
+
+Veeam Backup and Recovery plugin specific settings: (all are zone specific settings)
+
+- backup.plugin.veeam.url: (default: http://localhost:9399/api/) Veeam B&R server URL
+- backup.plugin.veeam.username: (default: administrator) Veeam B&R server username
+- backup.plugin.veeam.password: (default: P@ssword123) Veeam B&R server password
+- backup.plugin.veeam.validate.ssl: (default: false) Whether to validate Veeam B&R server (SSL/TLS) connection while making API requests
+- backup.plugin.veeam.request.timeout: (default: 300) Veeam B&R API request timeout in seconds
+
+TODO: working with backup offerings and providers
+listBackupProviders: lists available backup provider plugins
+listBackupProviderOfferings: lists external backup policy/offering from a provider
+importBackupProviderOfferings: allows importing of an external backup policy/offering to CloudStack as a backup offering
+listBackupOfferings: lists CloudStack's backup offerings (searching via keyword, and pagination supported)
+deleteBackupOffering: deletes a backup offering by its ID
+
+Using VM Backups
+~~~~~~~~~~~~~~~~
+
+TODO: working with backups
+
+assignVirtualMachineToBackupOffering: adds a VM to a backup offering (returns backup object)
+removeVirtualMachineFromBackupOffering: removes a VM from a backup offering (returns success object), a forced=true parameter can be passed as for Veeam B&R provider this is needed which also removes VM from the Veeam Job deletes any backups
+
+TODO: configuring backup schedules
+
+createBackupSchedule: creates a backup schedule for a VM
+updateBackupSchedule: updates backup schedule
+listBackupSchedule: returns backup schedule of a VM if defined
+deleteBackupSchedule: deletes backup schedule of a VM
+
+TODO: backup lifecycle tasks
+
+createBackup: creates an adhoc backup for a VM
+deleteVMBackup: deletes a VM backup (not support for per restore point for Veeam, it should use the removeVMFromBackupOffering API)
+listBackups: lists backups
+restoreBackup: restore a previous VM backup in-place of a stopped or destroyed VM
+restoreVolumeFromBackup: restore and attach a backed-up volume (of a VM backup) to a specified VM
+
 Changing the VM Name, OS, or Group
 ----------------------------------
 
