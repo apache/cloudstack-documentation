@@ -40,9 +40,9 @@ Supported Secondary VLAN types
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Of the three types of Private VLAN (promiscuous, community and isolated),
-CloudStack supports **one promiscuous** PVLAN and **one isolated** PVLAN **per
-primary VLAN**.  Ergo, community PVLANs are not currently supported.
-PVLANs are only currently supported on shared networks.
+CloudStack supports **one promiscuous** PVLAN, **one isolated** PVLAN and **multiple community** PVLANs **per
+primary VLAN**. 
+PVLANs are currently supported on shared and layer 2 networks.
 The PVLAN concept is supported on KVM (when using OVS), XenServer (when using OVS), and VMware hypervisors
 
    .. note:: 
@@ -77,23 +77,34 @@ Prerequisites
 -  Before you use PVLAN on XenServer and KVM, enable Open vSwitch (OVS).
 
 
-Creating a PVLAN-Enabled Shared Network
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Creating a PVLAN-Enabled Network
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For a general description of how to create a shared netowrk see `"configuring a shared guest network" <#configuring-a-shared-guest-network>`_.
+PVLAN-enabled networks can be either shared or layer 2 networks.
 
-On top of the parameters required to create a *normal* shared network, the following
+For a general description of how to create a shared network see `"configuring a shared guest network" <#configuring-a-shared-guest-network>`_.
+
+On top of the parameters required to create a *normal* shared or layer 2 network, the following
 parameters must be set:
 
 -  **VLAN ID**: The unique ID of the primary VLAN that you want to use.
 
--  **Secondary Isolated VLAN ID**:
+-  **Secondary Isolated VLAN ID**: The PVLAN ID to use within the primary VLAN.
 
-   - For a **promiscuous** PVLAN, set this to the same VLAN ID as the primary VLAN
-     that the promiscuous PVLAN will be inside.
-   - For an **isolated** PVLAN, set this to the PVLAN ID which you wish to use
-     inside the primary VLAN.
+-  **PVLAN Type**: The PVLAN type corresponding to the PVLAN ID to use within the primary VLAN.
 
+Creating a PVLAN-enabled network can be done in multiple ways depending on the PVLAN type:
+
+   - For a **promiscuous** PVLAN:
+      - Set the secondary VLAN ID to the same VLAN ID as the primary VLAN that the promiscuous PVLAN will be inside, or
+      - Set the PVLAN type to "Promiscuous" and do not set the secondary VLAN ID.
+
+   - For an **isolated** PVLAN:
+      - Set the secondary VLAN ID to the PVLAN ID which you wish to use inside the primary VLAN, or
+      - Set the PVLAN type to "Isolated" and set the secondary VLAN ID to the PVLAN ID which you wish to use inside the primary VLAN.
+
+   - For a **community** PVLAN:
+      - Set the PVLAN type to "Community" and set the secondary VLAN ID to the PVLAN ID which you wish to use inside the primary VLAN.
 
 .. |pvlans.png| image:: /_static/images/pvlans.png
    :alt: Diagram of PVLAN communications
