@@ -50,6 +50,9 @@ The PVLAN concept is supported on KVM (when using OVS), XenServer (when using OV
       CloudStack managed to simulate PVLAN on OVS for XenServer and KVM by
       modifying the flow table.
 
+   .. note:: 
+      Community PVLANs are only currently supported on VMware hypervisors.
+
 Prerequisites
 ~~~~~~~~~~~~~
 
