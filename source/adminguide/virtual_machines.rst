@@ -612,10 +612,15 @@ backups. Users are only allowed to list and consume available backup offerings
 for a zone.
 
 List of supported APIs:
+
 - listBackupProviders: lists available backup provider plugins
+
 - listBackupProviderOfferings: lists external backup policy/offering from a provider
+
 - importBackupProviderOfferings: allows importing of an external backup policy/offering to CloudStack as a backup offering
+
 - listBackupOfferings: lists CloudStack's backup offerings (searching via keyword, and pagination supported)
+
 - deleteBackupOffering: deletes a backup offering by its ID
 
 Using VM Backups
@@ -635,16 +640,27 @@ not exist. User may however restore a specific volume from a VM backup and attac
 that volume to a specified VM.
 
 Supported APIs:
+
 - assignVirtualMachineToBackupOffering: adds a VM to a backup offering.
+
 - removeVirtualMachineFromBackupOffering: removes a VM from a backup offering, if forced `true` parameter is passed this may also remove any and all the backups of a VM associated with a backup offering.
+
 - createBackupSchedule: creates a backup schedule for a VM.
+
 - updateBackupSchedule: updates backup schedule.
+
 - listBackupSchedule: returns backup schedule of a VM if defined.
+
 - deleteBackupSchedule: deletes backup schedule of a VM.
+
 - createBackup: creates an adhoc backup for a VM.
+
 - deleteVMBackup: deletes a VM backup (not support for per restore point for Veeam).
+
 - listBackups: lists backups.
+
 - restoreBackup: restore a previous VM backup in-place of a stopped or destroyed VM.
+
 - restoreVolumeFromBackup: restore and attach a backed-up volume (of a VM backup) to a specified VM.
 
 Changing the VM Name, OS, or Group
