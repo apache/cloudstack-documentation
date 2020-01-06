@@ -14,7 +14,7 @@
    under the License.
  
 About Backup And Recovery
-==========================
+--------------------------
 
 CloudStack version 4.14 introduces a new Backup and Recovery (B&R) framework that
 provides CloudStack with users the ability to back up their guest VMs for recovery
@@ -32,7 +32,7 @@ See the Veeam Backup and Recovery plugin documentation for plugin specific infor
 :ref:`Veeam Backup and Recovery Plugin`
 
 Backup and Recovery Concepts
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Backup and recovery has been designed to support two modes:
 
@@ -56,7 +56,7 @@ Adhoc and user scheduled backups are created and managed in the same fashion as 
 
 
 Configuring Backup and Recovery
-================================
+--------------------------------
 
 The cloud administrator can use global configuration variables to
 control the behavior of B&R feature. To set these variables, go through
@@ -73,14 +73,14 @@ backup.framework.sync.interval    Background sync task internal in seconds that 
 ================================= ========================
 
 Plugin specific settings
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Each backup and recovery plugin is likely to have settings specific to that plugin.  Refer to the CloudStack documentation
 for your plugin for details on how to configure those settings.
 
 
 Backup Offerings
-=================
+------------------
 
 Admins can import an external provider's backup offerings using UI or API for a
 particular zone, as well as manage a backup offering's lifecyle. Admins can also
@@ -89,7 +89,7 @@ backups. Users can list and consume the imported backup offerings, only root adm
 delete offerings.
 
 Supported APIs:
-----------------
+~~~~~~~~~~~~~~~~ 
 
 - **listBackupProviders**: lists available backup provider plugins
 - **listBackupProviderOfferings**: lists external backup policy/offering from a provider
@@ -112,10 +112,10 @@ To import a backup provider offering;
    |B&R-backup_offering_policy.jpg|  |B&R-backup_offering.jpg|
 
 Creating VM Backups
-=====================
+---------------------
 
 SLA/Policy Based backups
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 With the backup and recovery feature enabled for a zone, users simply add and 
 remove a VM from a backup offering.
@@ -123,7 +123,7 @@ remove a VM from a backup offering.
 |B&R-assignOffering.jpg|
 
 Adhoc and Scheduled Backups
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For backup offerings that allow ad-hoc user backups and user-defined backup
 schedules, user will be allowed to define a backup schedule for a VM that is
@@ -145,7 +145,7 @@ Then set the time and frequency of the backups, click 'Configure' and then 'Clos
 |B&R-BackupScheduleEntry.jpg|
 
 Restoring VM Backups
-=====================
+---------------------
 
 Users will need to stop a VM to restore to any existing VM backup, restoration
 of an expunged VM will not restore nics and recovery any network which may/may
@@ -153,7 +153,7 @@ not exist. User may however restore a specific volume from a VM backup and attac
 that volume to a specified VM.
 
 Supported APIs:
-----------------
+~~~~~~~~~~~~~~~~
 
 - **assignVirtualMachineToBackupOffering**: adds a VM to a backup offering.
 - **removeVirtualMachineFromBackupOffering**: removes a VM from a backup offering, if forced `true` parameter is passed this may also
