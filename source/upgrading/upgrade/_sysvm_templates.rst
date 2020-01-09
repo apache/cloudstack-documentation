@@ -48,9 +48,7 @@ Update System-VM templates
    |            |                                                            |
    |            | Format: VHD                                                |
    |            |                                                            |
-   |            | OS Type: Debian GNU/Linux 7.0 (64-bit) (or the             |
-   |            | highest Debian release number available in the             |
-   |            | dropdown)                                                  |
+   |            | OS Type: Other Linux 64-bit                                |
    |            |                                                            |
    |            | Extractable: no                                            |
    |            |                                                            |
@@ -74,7 +72,7 @@ Update System-VM templates
    |            |                                                            |
    |            | Format: QCOW2                                              |
    |            |                                                            |
-   |            | OS Type: Debian GNU/Linux 7.0 (64-bit) (or the             |
+   |            | OS Type: Debian GNU/Linux 9.0 (64-bit) (or the             |
    |            | highest Debian release number available in the             |
    |            | dropdown)                                                  |
    |            |                                                            |
@@ -124,7 +122,7 @@ Update System-VM templates
    |            |                                                            |
    |            | Format: VHD                                                |
    |            |                                                            |
-   |            | OS Type: Debian GNU/Linux 7.0 (64-bit) (or the             |
+   |            | OS Type: Debian GNU/Linux 9.0 (64-bit) (or the             |
    |            | highest Debian release number available in the             |
    |            | dropdown)                                                  |
    |            |                                                            |
