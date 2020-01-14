@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Apache CloudStack'
-copyright = '2018, Apache Foundation'
+copyright = '2020, Apache Foundation'
 author = 'Apache CloudStack Project'
 
 # The short X.Y version

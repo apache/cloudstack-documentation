@@ -147,13 +147,13 @@ This file should have one line, which contains:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu precise 4.12
+   deb http://download.cloudstack.org/ubuntu bionic 4.12
 
 We'll change it to point to the new package repository:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu precise |version|
+   deb http://download.cloudstack.org/ubuntu bionic |version|
 
 Setup the public key for the above repository:
 
@@ -214,7 +214,7 @@ This file should have content similar to the following:
 
    [apache-cloudstack]
    name=Apache CloudStack
-   baseurl=http://download.cloudstack.org/centos/6/4.12/
+   baseurl=http://download.cloudstack.org/centos/7/4.12/
    enabled=1
    gpgcheck=0
 
