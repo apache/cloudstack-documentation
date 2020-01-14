@@ -53,3 +53,7 @@
 .. |software-license.png| image:: /_static/images/software-license.png
 .. |change-admin-password.png| image:: /_static/images/change-admin-password.png
 .. |menu_acs_logo| image:: /_static/acslogo.png
+
+.. |br| raw:: html
+
+   <br/>
