@@ -66,7 +66,7 @@ Create RPM or Debian packages (as appropriate) and a repository from
 the |release| source, or check the Apache CloudStack downloads page at
 http://cloudstack.apache.org/downloads.html
 for package repositories supplied by community members. You will need
-them for :ref:`ubuntu412` or :ref:`rhel412` and :ref:`kvm412` hosts upgrade.
+them for :ref:`ubuntu413` or :ref:`rhel413` and :ref:`kvm413` hosts upgrade.
 
 Instructions for creating packages from the CloudStack source are in the
 `CloudStack Installation Guide`_.
@@ -116,8 +116,8 @@ Backup current database
       $ mysql -u cloud -p -e 'update cloud.storage_pool set path="/var/lib/libvirt/images" where path="/var/lib/libvirt/images/"';
 
 
-.. _ubuntu412:
-.. _apt-repo412:
+.. _ubuntu413:
+.. _apt-repo413:
 
 Management Server
 -----------------
@@ -126,7 +126,7 @@ Ubuntu
 ######
 
 If you are using Ubuntu, follow this procedure to upgrade your packages. If
-not, skip to step :ref:`rhel411`.
+not, skip to step :ref:`rhel413`.
 
 .. note::
    **Community Packages:** This section assumes you're using the community
@@ -147,7 +147,7 @@ This file should have one line, which contains:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu precise 4.12
+   deb http://download.cloudstack.org/ubuntu precise 4.13
 
 We'll change it to point to the new package repository:
 
@@ -184,14 +184,14 @@ read as appropriate for your |version| repository.
       $ sudo apt-get upgrade cloudstack-usage
 
 
-.. _rhel412:
-.. _rpm-repo412:
+.. _rhel413:
+.. _rpm-repo413:
 
 CentOS/RHEL
 ##############
 
 If you are using CentOS or RHEL, follow this procedure to upgrade your
-packages. If not, skip to hypervisors section :ref:`upg_hyp_412`.
+packages. If not, skip to hypervisors section :ref:`upg_hyp_413`.
 
 .. note::
    **Community Packages:** This section assumes you're using the community
@@ -214,7 +214,7 @@ This file should have content similar to the following:
 
    [apache-cloudstack]
    name=Apache CloudStack
-   baseurl=http://download.cloudstack.org/centos/6/4.12/
+   baseurl=http://download.cloudstack.org/centos/7/4.13/
    enabled=1
    gpgcheck=0
 
@@ -249,7 +249,7 @@ read as appropriate for your |version| repository.
 
       $ sudo yum upgrade cloudstack-usage
 
-.. _upg_hyp_412:
+.. _upg_hyp_413:
 
 Upgrade Hypervisors
 -------------------
@@ -272,7 +272,7 @@ Hypervisor: VMware
 No additional steps are requried for the VMware Hypervisor for this upgrade.
 
 
-.. _kvm412:
+.. _kvm413:
 
 Hypervisor: KVM
 #################
@@ -285,7 +285,7 @@ steps will not affect running guests in the cloud. These steps are
 required only for clouds using KVM as hosts and only on the KVM
 hosts.
 
-#. Configure the :ref:`APT repo <apt-repo411>` as detailed above.
+#. Configure the :ref:`APT repo <apt-repo413>` as detailed above.
 
 #. Stop the running agent.
 
@@ -320,7 +320,7 @@ KVM on CentOS/RHEL
 
 For KVM hosts, upgrade the ``cloudstack-agent`` package
 
-#. Configure the :ref:`rpm-repo411` as detailed above.
+#. Configure the :ref:`rpm-repo413` as detailed above.
 
    .. parsed-literal::
 
