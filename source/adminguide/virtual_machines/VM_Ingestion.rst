@@ -232,7 +232,7 @@ Host and Storage Tags
 When the **migrateallowed** parameter is set to true, if the host or storage tags in the compute/disk offerings are incompatible with the current host and/or
 storage pool(s), CloudStack will migrate the VM and its volumes to a suitable host and storage pool.
 
-When migrateallowed is false and there is a conflict, an appropriate error will be returned.
+When **migrateallowed** is false and there is a conflict, an appropriate error will be returned.
 
 Migration is supported for both running and stopped VMs. Live-migration is supported for running imported VM. When a stopped VM is imported, CloudStack will migrate
 VM to a suitable host when it is restarted.
