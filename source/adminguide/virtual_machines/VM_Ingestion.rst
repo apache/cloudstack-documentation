@@ -145,7 +145,7 @@ attach the instance in CloudStack need to already exist in CloudStack also the s
 also the storage which you wish the instance to be on after importing must already have been added to CloudStack.
 
 VMs can be imported to isolated, shared or L2 networks.  VMs can also be imported and then automatically migrated to storage in accordance with
-service offerings using the *migrateAllowed* API parameter.
+service offerings using the *migrateallowed* API parameter.
 
 Dummy Template
 ~~~~~~~~~~~~~~~~~~~~
