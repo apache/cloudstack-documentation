@@ -389,13 +389,13 @@ an unexpected reason. For example:
 
 The following services are monitored in a VR:
 
--  DNS
+-  DNS (dnsmasq)
 
--  HA Proxy
+-  HAProxy (haproxy)
 
--  SSH
+-  SSH (sshd)
 
--  Apache Web Server
+-  Apache Web Server (apache2)
 
 The following networks are supported:
 
@@ -403,10 +403,16 @@ The following networks are supported:
 
 -  Shared Networks in both Advanced and Basic zone
 
-   .. note:: VPC networks are not supported
+-  VPC (as of CloudStack 4.14)
 
 This feature is supported on the following hypervisors: XenServer,
 VMware, and KVM.
+
+Log file /var/log/routerServiceMonitor.log contains the actions undertaken/attempted by the service monitoring script (i.e. trying to restart a stopped service).
+
+As of CloudStack 4.14, the internval at which the service monitoring script runs is no more hardcoded to 3 minutes???, but is instead controlled via global setting router.health.checks.basic.interval and/or ??? router.health.checks.advanced.interval?
+@anurag to advise/correct please
+
 
 
 Enhanced Upgrade for Virtual Routers
