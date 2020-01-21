@@ -484,7 +484,7 @@ This is achieved as follows:
    b. The health check script can be in any language but executable (use 'chmod a+x')
    within '/root/health_checks/' directory. The placed script must do the following: 
       #. Accept a command line parameter for check type (basic or advanced) - this
-       parameter is sent by the internal cron job in the VR (/etc/cron.d/process)
+      parameter is sent by the internal cron job in the VR (/etc/cron.d/process)
       
       #. Proceed and perform checks as per the check type - basic or advanced
       
@@ -496,8 +496,9 @@ This is achieved as follows:
       #. exit with status of 0 if check was successful and exit with status of 1 if 
       check has failed
 
-      .. note:: 
-         #!/bin/bash if [$1 == ‘advanced’] { do advance checks and print any message to STDOUT }         
+      .. code:: bash
+
+         #!/bin/bash if [$1 == ‘advanced’] { do advance checks and print any message to STDOUT }                  
          else if [$1 == ‘basic’] { do basic checks and print any message to STDOUT } exit(0) if pass or exit(1) if failure
 
       #. i.e. if the script is intended to be i.e. a basic check, it must checks 
