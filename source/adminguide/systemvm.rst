@@ -385,7 +385,7 @@ an unexpected reason. For example:
 .. note:: 
    Only those services with daemons are monitored. The services that are 
    failed due to errors in the service/daemon configuration file cannot 
-   be restarted by the Monitoring tool. VPC networks are not supported.
+   be restarted by the Monitoring tool. VPC Networks are supported from 4.14
 
 The following services are monitored in a VR:
 
@@ -427,7 +427,8 @@ definable intervals. The split is made this way as the advanced health checks
 are considerably more expensive. The health checks will be available on-demand 
 via API as well as scheduled.
 
-The following tests are covered: · Basic connectivity from the management server to the virtual router
+The following tests are covered: · Basic connectivity from the management server 
+to the virtual router
 
 -  Basic connectivity to virtual router its interfaces' gateways
 
@@ -448,93 +449,170 @@ The following tests are covered: · Basic connectivity from the management serve
     #.  HAproxy config matches mgmt server DB records
 
     #.  VR Version against current version
-    
+
 
 This happens in the following steps:
 
-1. Management server periodically pushes data to each running virtual router including schedule intervals, tests to skip, some configuration for LB, VMs, Gateways, etc.
+1. Management server periodically pushes data to each running virtual router 
+including schedule intervals, tests to skip, some configuration for LB, VMs, 
+Gateways, etc.
 
-2. Basic and advanced tests as scheduled as per the intervals in the data sent by Management server. Each run of checks populates it’s results and saves it within the router at ‘/root/basic_monitor_results.json’ and '/root/advance_monitor_results.json’. Each run of checks also keeps track of the start time, end time, and duration of test run for better understanding.
+2. Basic and advanced tests as scheduled as per the intervals in the data sent 
+by Management server. Each run of checks populates it’s results and saves it 
+within the router at ‘/root/basic_monitor_results.json’ and 
+'/root/advance_monitor_results.json’. Each run of checks also keeps 
+track of the start time, end time, and duration of test run for better 
+understanding.
 
-3. Each test is also available on demand via ' getRouterHealthCheckResults' API added with the patch. The API can be executed from CLI and UI as per the mocks in this document. Performing fresh checks is expensive and will cause management server doing the following:
+3. Each test is also available on demand via ' getRouterHealthCheckResults' 
+API added with the patch. The API can be executed from CLI and UI. Performing 
+fresh checks is expensive and will cause management server doing the following:
 
-a. Refresh the data from Management server records on the router for verification (repeat of step 1),
+   a. Refresh the data from Management server records on the router for 
+   verification (repeat of step 1),
 
-b. Run all the checks of both basic and advanced type,
+   b. Run all the checks of both basic and advanced type,
 
-c. Fetch the result of the health check from router to be sent back in response.
+   c. Fetch the result of the health check from router to be sent back in response.
 
-4. The patch also supports custom health checks with custom systemVM templates. This is achieved as follows:
+4. The patch also supports custom health checks with custom systemVM templates. 
+This is achieved as follows:
 
-a. Each executable script placed in '/root/health_scripts/' is considered an independent health check and is executed on each scheduled or on demand health check run.
+   a. Each executable script placed in '/root/health_scripts/' is considered an 
+   independent health check and is executed on each scheduled or on demand health check run.
 
-b. The health check script can be in any language but executable (use 'chmod a+x') within '/root/health_checks/' directory. The placed script must do the following: i. Accept a command line parameter for check type (basic or advanced) - this parameter is sent by the internal cron job in the VR (/etc/cron.d/process)
+   b. The health check script can be in any language but executable (use 'chmod a+x')
+    within '/root/health_checks/' directory. The placed script must do the following: 
+      #. Accept a command line parameter for check type (basic or advanced) - this
+       parameter is sent by the internal cron job in the VR (/etc/cron.d/process)
+      
+      #. Proceed and perform checks as per the check type - basic or advanced
+      
+      #. In order to be recognized as a health check and displayed in the list of health 
+      checks results, it must print some message to STDOUT which is passed back as message 
+      to management server - if the script doesn’t return anything on its STDOUT, it 
+      will not be registered as a health check/displayed in the list of the health check results
 
-ii. Proceed and perform checks as per the check type - basic or advanced
+      #. exit with status of 0 if check was successful and exit with status of 1 if 
+      check has failed
 
-iii. In order to be recognized as a health check and displayed in the list of health checks results, it must print some message to STDOUT which is passed back as message to management server - if the script doesn’t return anything on its STDOUT, it will not be registered as a health check/displayed in the list of the health check results
+      .. sample scrip:: 
+         #!/bin/bash if [$1 == ‘advanced’] { do advance checks and print any message to STDOUT }
+         else if [$1 == ‘basic’] { do basic checks and print any message to STDOUT } exit(0) if pass or exit(1) if failure
 
-iv. exit with status of 0 if check was successful and exit with status of 1 if check has failed
+      #. i.e. if the script is intended to be i.e. a basic check, it must checks 
+      for the presence of the 'basic' as the first parameter sent to it, and execute the 
+      wanted commands and print some output to STDOUT; otherwise if it receives 'advanced' 
+      as the first parameter, it should not execute any commands/logic nor print anything to STDOUT
 
-v. Example : #!/bin/bash if [$1 == ‘advanced’] { do advance checks and print any message to STDOUT }
+5. There are 9 health check scripts written in default systemvm template in '/root/health_checks/' 
+folder. These indicate the health checks described in executive summary.
 
-else if [$1 == ‘basic’] { do basic checks and print any message to STDOUT } exit(0) if pass or exit(1) if failure
+6. The management server will connect periodically to each virtual router to confirm that the 
+checks are running as scheduled, and retrieve the results of those checks. Any failing checks 
+present in ``router.health.checks.failures.to.restart.vr`` will cause the VR to be recreated. 
+On each check management server will persist only the last executed check results in its database.
 
-vi. i.e. if the script is intended to be i.e. a basic check, it must checks for the presence of the “basic” as the first parameter sent to it, and execute the wanted commands and print some output to STDOUT; otherwise if it receives “advanced” as the first parameter, it should not execute any commands/logic nor print anything to STDOUT
+7. UI parses the returned health check results and shows the router 'Health Check' 
+column in 'Failed'/'Passed' if there are health check failures of any type.
 
-5. There are 9 health check scripts written in default systemvm template in '/root/health_checks/' folder. These indicate the health checks described in executive summary.
+Following global configs have been added for configuring health checks:
 
-6. The management server will connect periodically to each virtual router to confirm that the checks are running as scheduled, and retrieve the results of those checks. Any failing checks present in "router.health.checks.failures.to.restart.vr" will cause the VR to be recreated. On each check management server will persist only the last executed check results in its database.
+   - ``router.health.checks.enabled`` - If true, router health checks are allowed 
+   to be executed and read. If false, all scheduled checks and API calls for on 
+   demand checks are disabled. Default is true.
 
-7. UI parses the returned health check results and shows the router in 'Alert' state if there are health check failures of any type.
+   - ``router.health.checks.basic.interval`` - Interval in minutes at which basic 
+   router health checks are performed. If set to 0, no tests are scheduled. Default 
+   is 3 mins as per the pre 4.14 monitor services.
 
-Following global configs were added for configuring health checks:
+   - ``router.health.checks.advanced.interval`` - Interval in minutes at which 
+   advanced router health checks are performed. If set to 0, no tests are scheduled. 
+   Default value is 10 minutes.
 
-· "router.health.checks.enabled" - If true, router health checks are allowed to be executed and read. If false, all scheduled checks and API calls for on demand checks are disabled. Default is true.
+   - ``router.health.checks.config.refresh.interval`` - Interval in minutes at which
+    router health checks config - such as scheduling intervals, excluded checks, etc 
+    is updated on virtual routers by the management server. This value should be 
+    sufficiently high (like 2x) from the router.health.checks.basic.interval and 
+    router.health.checks.advanced.interval so that there is time between new results 
+    generation for passed data. Default is 10 mins.
 
-· "router.health.checks.basic.interval" - Interval in minutes at which basic router health checks are performed. If set to 0, no tests are scheduled. Default is 3 mins as per the existing monitor services.
+   - ``router.health.checks.results.fetch.interval`` - Interval in minutes at which 
+   router health checks results are fetched by management server. On each result fetch, 
+   management server evaluates need to recreate VR as per configuration of 
+   'router.health.checks.failures.to.recreate.vr'. This value should be sufficiently 
+   high (like 2x) from the 'router.health.checks.basic.interval' and 
+   'router.health.checks.advanced.interval' so that there is time between new 
+   results generation and fetch.
 
-· "router.health.checks.advanced.interval" - Interval in minutes at which advanced router health checks are performed. If set to 0, no tests are scheduled. Default value is 10 minutes.
+   - ``router.health.checks.failures.to.recreate.vr`` - Health checks failures defined 
+   by this config are the checks that should cause router recreation. If empty the 
+   recreate is not attempted for any health check failure. Possible values are comma 
+   separated script names from systemvm’s /root/health_scripts/ (namely - cpu_usage_check.py, 
+   dhcp_check.py, disk_space_check.py, dns_check.py, gateways_check.py, haproxy_check.py, 
+   iptables_check.py, memory_usage_check.py, router_version_check.py), connectivity.test 
+   or services (namely - loadbalancing.service, webserver.service, dhcp.service)
 
-· "router.health.checks.config.refresh.interval" - Interval in minutes at which router health checks config - such as scheduling intervals, excluded checks, etc is updated on virtual routers by the management server. This value should be sufficiently high (like 2x) from the router.health.checks.basic.interval and router.health.checks.advanced.interval so that there is time between new results generation for passed data. Default is 10 mins.
+   - ``router.health.checks.to.exclude`` - Health checks that should be excluded when 
+   executing scheduled checks on the router. This can be a comma separated list of 
+   script names placed in the '/root/health_checks/' folder. Currently the following 
+   scripts are placed in default systemvm template - cpu_usage_check.py, 
+   disk_space_check.py, gateways_check.py, iptables_check.py, router_version_check.py, 
+   dhcp_check.py, dns_check.py, haproxy_check.py, memory_usage_check.py.
 
-· "router.health.checks.results.fetch.interval" - Interval in minutes at which router health checks results are fetched by management server. On each result fetch, management server evaluates need to recreate VR as per configuration of router.health.checks.failures.to.recreate.vr. This value should be sufficiently high (like 2x) from the router.health.checks.basic.interval and router.health.checks.advanced.interval so that there is time between new results generation and fetch.
+   - ``router.health.checks.free.disk.space.threshold`` - Free disk space threshold 
+   (in MB) on VR below which the check is considered a failure. Default is 100MB.
 
-· "router.health.checks.failures.to.recreate.vr" - Health checks failures defined by this config are the checks that should cause router recreation. If empty the recreate is not attempted for any health
+   - ``router.health.checks.max.cpu.usage.threshold`` - Max CPU Usage threshold as 
+   % above which check is considered a failure.
 
-check failure. Possible values are comma separated script names from systemvm’s /root/health_scripts/ (namely - cpu_usage_check.py, dhcp_check.py, disk_space_check.py, dns_check.py, gateways_check.py, haproxy_check.py, iptables_check.py, memory_usage_check.py, router_version_check.py), connectivity.test or services (namely - loadbalancing.service, webserver.service, dhcp.service)
+   - ``router.health.checks.max.memory.usage.threshold`` - Max Memory Usage threshold
+    as % above which check is considered a failure.
 
-· "router.health.checks.to.exclude" - Health checks that should be excluded when executing scheduled checks on the router. This can be a comma separated list of script names placed in the '/root/health_checks/' folder. Currently the following scripts are placed in default systemvm template - cpu_usage_check.py, disk_space_check.py, gateways_check.py, iptables_check.py, router_version_check.py, dhcp_check.py, dns_check.py, haproxy_check.py, memory_usage_check.py.
-
-· "router.health.checks.free.disk.space.threshold" - Free disk space threshold (in MB) on VR below which the check is considered a failure. Default is 100MB.
-
-· "router.health.checks.max.cpu.usage.threshold" - Max CPU Usage threshold as % above which check is considered a failure.
-
-· "router.health.checks.max.memory.usage.threshold" - Max Memory Usage threshold as % above which check is considered a failure.
-
-The scripts for following health checks are provided in '/root/health_checks/'. These are not exhaustive and can be modified for covering other scenarios not covered. Details of individual checks:
+The scripts for following health checks are provided in '/root/health_checks/'. These 
+are not exhaustive and can be modified for covering other scenarios not covered. 
+Details of individual checks:
 
 1. Basic checks:
 
-a. Services check (ssh, dnsmasq, httpd, haproxy)– this check is still done as per existing monitorServices.py script and any services not running are attempted to be restarted.
+   a. Services check (ssh, dnsmasq, httpd, haproxy)– this check is still done as 
+   per existing monitorServices.py script and any services not running are attempted 
+   to be restarted.
 
-b. Disk space check against a threshold – python's ' statvfs' module is used to retrieve statistics and compare with the configured threshold given by management server.
+   b. Disk space check against a threshold – python's ' statvfs' module is used to 
+   retrieve statistics and compare with the configured threshold given by 
+   management server.
 
-c. CPU usage check against a threshold – we use 'top' utility to retrieve idle CPU and compare that with the configured max CPU usage threshold given by management server.
+   c. CPU usage check against a threshold – we use 'top' utility to retrieve idle 
+   CPU and compare that with the configured max CPU usage threshold given by management
+   server.
 
-d. Memory usage check against a threshold – we use 'free' utility to get the used memory and compare that with the configured max memory usage threshold.
+   d. Memory usage check against a threshold – we use 'free' utility to get the 
+   used memory and compare that with the configured max memory usage threshold.
 
-e. Router template and scripts version check – is done by comparing the contents of the '/etc/cloudstack-release' and '/var/cache/cloud/cloud-scripts-signature' with the data given by management server.
+   e. Router template and scripts version check – is done by comparing the contents 
+   of the '/etc/cloudstack-release' and '/var/cache/cloud/cloud-scripts-signature' 
+   with the data given by management server.
 
-f. Connectivity to the gateways from router – this is done by analysing the success or failure of ping to the gateway IPs given by management server.
+   f. Connectivity to the gateways from router – this is done by analysing the success 
+   or failure of ping to the gateway IPs given by management server.
 
 2. Advanced checks:
 
-a. DNS config match against MS – this is checked by comparing entries of '/etc/hosts' on the VR and VM records passed by management server.
+   a. DNS config match against MS – this is checked by comparing entries of '/etc/hosts' 
+   on the VR and VM records passed by management server.
 
-b. DHCP config match against MS – this is checked by comparing entries of '/etc/dhcphosts.txt' on the VR with the VM entries passed by management server. c. HA Proxy config match against MS (internal LB and public LB) - this is checked by verifying the max connections, and entries for each load balancing rule in the '/etc/haproxy/haproxy.cfg' file. We do not check for stickiness properties yet.
+   b. DHCP config match against MS – this is checked by comparing entries of 
+   '/etc/dhcphosts.txt' on the VR with the VM entries passed by management server. 
+   
+   c. HA Proxy config match against MS (internal LB and public LB) - this is checked 
+   by verifying the max connections, and entries for each load balancing rule in the 
+   '/etc/haproxy/haproxy.cfg' file. We do not check for stickiness properties yet.
 
-d. Port forwarding match against MS in iptables. - this is checked by verifying IPs and ports in the 'iptables-save' command output against an expected list of entries from management server.
+   d. Port forwarding match against MS in iptables. - this is checked by verifying 
+   IPs and ports in the 'iptables-save' command output against an expected list of 
+   entries from management server.
+
 
 Enhanced Upgrade for Virtual Routers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
