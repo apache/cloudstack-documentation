@@ -483,6 +483,7 @@ This is achieved as follows:
 
    b. The health check script can be in any language but executable (use 'chmod a+x')
    within '/root/health_checks/' directory. The placed script must do the following: 
+   
       #. Accept a command line parameter for check type (basic or advanced) - this
       parameter is sent by the internal cron job in the VR (/etc/cron.d/process)
       
