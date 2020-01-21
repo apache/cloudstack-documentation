@@ -482,7 +482,7 @@ This is achieved as follows:
    independent health check and is executed on each scheduled or on demand health check run.
 
    b. The health check script can be in any language but executable (use 'chmod a+x')
-    within '/root/health_checks/' directory. The placed script must do the following: 
+   within '/root/health_checks/' directory. The placed script must do the following: 
       #. Accept a command line parameter for check type (basic or advanced) - this
        parameter is sent by the internal cron job in the VR (/etc/cron.d/process)
       
@@ -496,8 +496,8 @@ This is achieved as follows:
       #. exit with status of 0 if check was successful and exit with status of 1 if 
       check has failed
 
-      .. sample scrip:: 
-         #!/bin/bash if [$1 == ‘advanced’] { do advance checks and print any message to STDOUT }
+      .. note:: 
+         #!/bin/bash if [$1 == ‘advanced’] { do advance checks and print any message to STDOUT }         
          else if [$1 == ‘basic’] { do basic checks and print any message to STDOUT } exit(0) if pass or exit(1) if failure
 
       #. i.e. if the script is intended to be i.e. a basic check, it must checks 
@@ -531,11 +531,11 @@ Following global configs have been added for configuring health checks:
    Default value is 10 minutes.
 
    - ``router.health.checks.config.refresh.interval`` - Interval in minutes at which
-    router health checks config - such as scheduling intervals, excluded checks, etc 
-    is updated on virtual routers by the management server. This value should be 
-    sufficiently high (like 2x) from the router.health.checks.basic.interval and 
-    router.health.checks.advanced.interval so that there is time between new results 
-    generation for passed data. Default is 10 mins.
+   router health checks config - such as scheduling intervals, excluded checks, etc 
+   is updated on virtual routers by the management server. This value should be 
+   sufficiently high (like 2x) from the router.health.checks.basic.interval and 
+   router.health.checks.advanced.interval so that there is time between new results 
+   generation for passed data. Default is 10 mins.
 
    - ``router.health.checks.results.fetch.interval`` - Interval in minutes at which 
    router health checks results are fetched by management server. On each result fetch, 
@@ -567,7 +567,7 @@ Following global configs have been added for configuring health checks:
    % above which check is considered a failure.
 
    - ``router.health.checks.max.memory.usage.threshold`` - Max Memory Usage threshold
-    as % above which check is considered a failure.
+   as % above which check is considered a failure.
 
 The scripts for following health checks are provided in '/root/health_checks/'. These 
 are not exhaustive and can be modified for covering other scenarios not covered. 
