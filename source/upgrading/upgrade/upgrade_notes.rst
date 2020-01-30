@@ -18,15 +18,28 @@ General Upgrade Notes
 =====================
 
 
-Java version upgraded to Java 1.8
+Java version upgraded to Java 1.11
 ---------------------------------
 
-As of Apache CloudStack 4.10, Java version required is 1.8 for the
+As of Apache CloudStack 4.14, Java version required is 1.11 for the
 management-server, cloudstack-usage, KVM agent and system-VMs.
 
 
-.. include:: _java_8_ubuntu.rst
+.. include:: _java_version.rst
 
+UI Deprecation Notice
+---------------------
+
+The current jQuery-based CloudStack UI will be `deprecated
+<http://markmail.org/message/vxnskmwhfaagnm4r/>`_ in the next Apache CloudStack
+major release and removed in the subsequent future releases.
+
+`Primate <https://github.com/apache/cloudstack-primate/>`_ will ship as the
+modern UI for future Apache CloudStack releases. Users are encouraged to `test
+<https://github.com/apache/cloudstack-primate/wiki/Migrating-to-Primate/>`_
+Primate, report bugs and give feedback to the `dev community
+<http://cloudstack.apache.org/mailing-lists.html>`_ with this release of Apache
+CloudStack.
 
 Migrating to dynamic roles feature
 ----------------------------------
@@ -95,12 +108,3 @@ added in CloudStack's db.properties file:
    db.cloud.driver=jdbc:mysql
 
    db.usage.driver=jdbc:mysql
-
-
-Other Notes
------------
-
-If you are experiencing CloudStack UI issues, please consider upgrading your
-tomcat instance to version 6.0.43  (tested version, but earlier versions prior
-to 6.0.37 might work as well), to address the tomcat response issues caused by
-latency between the browser/client and CloudStack Management server.

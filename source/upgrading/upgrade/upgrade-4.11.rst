@@ -51,6 +51,8 @@ Overview of Upgrade Steps:
 
 .. include:: _sysvm_templates.rst
 
+.. include:: _java_version.rst
+
 Packages repository
 -------------------
 

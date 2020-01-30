@@ -41,6 +41,8 @@ Upgrade Steps:
 
 .. include:: _sysvm_templates.rst
 
+.. include:: _java_version.rst
+
 Packages repository
 -------------------
 
@@ -109,7 +111,6 @@ be necessary for hosts that are running VMware or Xen.)
 
 .. _apt-repo48:
 
-.. include:: _java_8_ubuntu.rst
 
 CloudStack apt repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -59,6 +59,8 @@ http://markmail.org/message/f42kqr3mx4r4hgih
 
 .. include:: _sysvm_templates.rst
 
+.. include:: _java_version.rst
+
 Packages repository
 -------------------
 
@@ -129,7 +131,6 @@ each system with CloudStack packages. This means all management
 servers, and any hosts that have the KVM agent. (No changes should
 be necessary for hosts that are running VMware or Xen.)
 
-.. include:: _java_8_ubuntu.rst
 
 Start by opening ``/etc/apt/sources.list.d/cloudstack.list`` on
 any systems that have CloudStack packages installed.
