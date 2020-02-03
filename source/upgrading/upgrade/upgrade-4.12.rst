@@ -112,7 +112,7 @@ Ubuntu
 ######
 
 If you are using Ubuntu, follow this procedure to upgrade your packages. If
-not, skip to step :ref:`rhel411`.
+not, skip to step :ref:`rhel412`.
 
 .. note::
    **Community Packages:** This section assumes you're using the community
@@ -271,7 +271,7 @@ steps will not affect running guests in the cloud. These steps are
 required only for clouds using KVM as hosts and only on the KVM
 hosts.
 
-#. Configure the :ref:`APT repo <apt-repo411>` as detailed above.
+#. Configure the :ref:`APT repo <apt-repo412>` as detailed above.
 
 #. Stop the running agent.
 
@@ -306,7 +306,7 @@ KVM on CentOS/RHEL
 
 For KVM hosts, upgrade the ``cloudstack-agent`` package
 
-#. Configure the :ref:`rpm-repo411` as detailed above.
+#. Configure the :ref:`rpm-repo412` as detailed above.
 
    .. parsed-literal::
 
