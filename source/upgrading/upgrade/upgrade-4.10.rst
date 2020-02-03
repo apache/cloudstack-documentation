@@ -147,6 +147,8 @@ We'll change it to point to the new package repository:
 
    deb http://download.cloudstack.org/ubuntu precise |version|
 
+Please note that CloudStack |version| doesn't support Ubuntu 12.04/Precise and it's recommended to upgrade to Ubuntu 18.04
+
 Setup the public key for the above repository:
 
 .. parsed-literal::
@@ -216,6 +218,8 @@ If you are using the community provided package repository, change the base url 
 .. parsed-literal::
 
    http://download.cloudstack.org/centos/$releasever/|version|/
+
+Please note that CloudStack |version| doesn't support CentOS 6 and it's recommended to upgrade to CentOS 7.
 
 Setup the GPG public key if you wish to enable ``gpgcheck=1``:
 
