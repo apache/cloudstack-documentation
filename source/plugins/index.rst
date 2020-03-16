@@ -37,4 +37,5 @@ This is the Apache CloudStack Plugins guide. This section gives information for 
    ovs-plugin
    ipv6
    quota
+   cloudstack-kubernetes-service
 
