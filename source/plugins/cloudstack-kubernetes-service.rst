@@ -58,10 +58,14 @@ Additionally, pre-built, community ISOs for different Kubernetes versions are al
 http://download.cloudstack.org/cks/
 http://packages.shapeblue.com/cks/
 
+|cks-versions.png|
+
 Working with Kubernetes supported version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Once the ISO has been built for a desired Kubernetes version, it can be added by the admin in the service for cluster deployment using both the UI and API. The UI provides the following form to add new supported version:
+
+|cks-add-version-form.png|
 
 addKubernetesSupportedVersion API can be used by an admin to add a new supported version for the service. It takes following input parameters:
 
@@ -134,10 +138,14 @@ Managing Kubernetes clusters
 
 For Kubernetes cluster management, the service provides create, stop, start, scale, upgrade and delete APIs and similar features in the UI.
 
+|cks-clusters.png|
+
 Creating a new Kubernetes cluster
 ##################################
 
 New Kubernetes clusters can be create using API or from UI. User will be provided with a Add Kubernetes Cluster form as shown below,
+
+|cks-create-cluster-form.png|
 
 createKubernetesCluster API can be used to create new Kubernetes cluster. It takes following parameters as input,
 
@@ -200,14 +208,14 @@ On successful creation, the new cluster will be automatically started and will s
 Stopping Kubernetes cluster
 ############################
 
-A running Kubernetes cluster can be stopped using both the API and action icon from UI. action icon is shown for a running cluster in the UI.
+A running Kubernetes cluster can be stopped using both the API and |cks-stop-action.png| action icon from UI. action icon is shown for a running cluster in the UI.
 
 stopKubernetesCluster can be used to stop a running cluster. It takes id of the cluster as the input parameter.
 
 Starting a stopped Kubernetes cluster
 ######################################
 
-A stopped Kubernetes cluster can be started using both API and the action icon from UI. action icon is shown for a stopped cluster in the UI.
+A stopped Kubernetes cluster can be started using both API and the |cks-start-action.png| action icon from UI. action icon is shown for a stopped cluster in the UI.
 
 startKubernetesCluster can be used to start a stopped cluster. It takes id of the cluster as the input parameter.
 
@@ -216,7 +224,9 @@ When the service fails to start a stopped cluster, the cluster will show in Aler
 Scaling Kubernetes cluster
 ###########################
 
-A running or stopped Kubernetes cluster can be scaled using both API and UI. action icon is shown for a running cluster in the UI which opens the form shown below,
+A running or stopped Kubernetes cluster can be scaled using both API and UI. |cks-scale-action.png| action icon is shown for a running cluster in the UI which opens the form shown below,
+
+|cks-scale-cluster-form.png|
 
 scaleKubernetesCluster API can be used to scale a running (or stopped cluster) for a desired cluster size and service offering. It takes following parameters as input,
 
@@ -232,12 +242,15 @@ Note: Only upscaling is supported while scaling clusters for service offering.
 Upgrading Kubernetes cluster
 #############################
 
-A running Kubernetes cluster can be upgraded using both API and UI. action icon is shown for a running cluster in the UI which opens the form shown below,
+A running Kubernetes cluster can be upgraded using both API and UI. |cks-upgrade-action.png| action icon is shown for a running cluster in the UI which opens the form shown below,
+
+|cks-upgrade-cluster-form.png|
+
 upgradeKubernetesCluster API can be used to upgrade a running cluster. It takes following parameters as input:
 
-· id (the ID of the Kubernetes cluster to be upgraded; Required)
-
-· kubernetesversionid (Kubernetes version with which cluster to be launched; Required)
+.. parsed-literal::
+   - **id** (the ID of the Kubernetes cluster to be upgraded; Required)
+   - **kubernetesversionid** (Kubernetes version with which cluster to be launched; Required)
 
 When the service fails upgrade the cluster, the cluster will show in Alert state else it will show in Running state.
 
@@ -246,7 +259,7 @@ When the service fails upgrade the cluster, the cluster will show in Alert state
 Deleting Kubernetes cluster
 ############################
 
-Both UI and API can be used to delete a created Kubernetes cluster. action icon will be available in UI to delete a cluster.
+Both UI and API can be used to delete a created Kubernetes cluster. |cks-delete-action.png| action icon will be available in UI to delete a cluster.
 
 deleteKubernetesCluster can be used to delete a cluster. It takes id of the cluster as the input parameter.
 
@@ -254,6 +267,8 @@ The Kubernetes service runs a background state scanner process which regularly c
 
 Working with Kubernetes cluster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|cks-cluster-details-tab.png|
 
 Once a Kubernetes cluster is created successfully and it is running state, it can be accessed using kubectl tool using cluster’s kubeconfig file. The web dashboard can be accessed by running local proxy using kubectl. Deployments in the cluster can be done using kubectl or web dashboard. More about deployment in Kubernetes here: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 
@@ -273,6 +288,8 @@ The service while creating a cluster automatically deploys dashboard for the clu
 
 Instructions for accessing the dashboard for a running cluster will be shown in the Access tab in the UI. Essentially, the user needs to run a local proxy first using kubectl and kubecofig file for the cluster to access the dashboard. For secure login, the service doesn’t enable kubeconfig based login for the dashboard. Token-based access is enabled and kubectl can be used to access service account secret token.
 
+|cks-cluster-access-tab.png|
+
 The following command can be used, while passing the correct path to kubeconfig file, to run proxy:
 
 #. kubectl --kubeconfig /custom/path/kube.config proxy
@@ -281,6 +298,38 @@ Once the proxy is running user can open the following URL in the browser to open
 
 #. http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
 
+|cks-cluster-dashboard.png|
+
 Token for dashboard login can be retrieved using following command kubectl --kubeconfig /custom/path/kube.config describe secret $(kubectl --
 
-#. kubeconfig /custom/path/kube.config get secrets -n kubernetes-dashboard | grep kubernetes-dashboard-token | awk '{print $1}') -n kubernetes-dashboard 
+#. kubeconfig /custom/path/kube.config get secrets -n kubernetes-dashboard | grep kubernetes-dashboard-token | awk '{print $1}') -n kubernetes-dashboard
+
+
+.. |cks-add-version-form.png| image:: /_static/images/cks-add-version-form.png
+   :alt: Add Kubernetes Supported Version form.
+.. |cks-cluster-access-tab.png| image:: /_static/images/cks-cluster-access-tab.png
+   :alt: Kubernetes cluster access tab.
+.. |cks-cluster-dashboard.png| image:: /_static/images/cks-cluster-dashboard.png
+   :alt: Kubernetes cluster dashboard.
+.. |cks-cluster-details-tab.png| image:: /_static/images/cks-cluster-details-tab.png
+   :alt: Kubernetes details tab.
+.. |cks-clusters.png| image:: /_static/images/cks-clusters.png
+   :alt: Kubernetes clusters list.
+.. |cks-create-cluster-form.png| image:: /_static/images/cks-create-cluster-form.png
+   :alt: Create Kubernetes Cluster form.
+.. |cks-delete-action.png| image:: /_static/images/cks-delete-action.png
+   :alt: Delete action icon.
+.. |cks-kube-config-action.png| image:: /_static/images/cks-kube-config-action.png
+   :alt: Download kube-config action icon.
+.. |cks-scale-action.png| image:: /_static/images/cks-scale-action.png
+   :alt: Scale action icon.
+.. |cks-scale-cluster-form.png| image:: /_static/images/cks-scale-cluster-form.png
+   :alt: Scale Kubernetes Cluster form.
+.. |cks-start-action.png| image:: /_static/images/cks-start-action.png
+   :alt: Start action icon.
+.. |cks-stop-action.png| image:: /_static/images/cks-stop-action.png
+   :alt: Stop action icon.
+.. |cks-upgrade-action.png| image:: /_static/images/cks-upgrade-action.png
+   :alt: Upgrade action icon.
+.. |cks-upgrade-cluster-form.png| image:: /_static/images/cks-upgrade-cluster-form.png
+   :alt: Upgrade Kubernetes Cluster form.
