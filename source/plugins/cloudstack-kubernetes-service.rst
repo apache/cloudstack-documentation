@@ -58,10 +58,11 @@ Additionally, pre-built, community ISOs for different Kubernetes versions are al
 http://download.cloudstack.org/cks/
 http://packages.shapeblue.com/cks/
 
-|cks-versions.png|
-
 Working with Kubernetes supported version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Adding supported Kubernetes version
+####################################
 
 Once the ISO has been built for a desired Kubernetes version, it can be added by the admin in the service for cluster deployment using both the UI and API. The UI provides the following form to add new supported version:
 
@@ -80,30 +81,41 @@ addKubernetesSupportedVersion API can be used by an admin to add a new supported
 .. parsed-literal::
    > add kubernetessupportedversion name=v1.13.2 semanticversion=1.13.2 url=http://172.20.0.1/files/setup-1.13.2.iso zoneid=34d23dd5-5ced-4e8b-9b0a-835a0b8ae2a6 mincpunumber=2 minmemory=2048
    {
-   "kubernetessupportedversion": {
-     "id": "6668e999-fe6c-4a91-88d8-d10bcf280d02",
-     "isoid": "78d45e9b-a482-46f4-8cbc-cf7964564b85",
-     "isoname": "v1.13.2-Kubernetes-Binaries-ISO",
-     "isostate": "Active",
-     "semanticversion": "1.13.2",
-     "name": "v1.13.2",
-     "supportsha": false,
-     "zoneid": "34d23dd5-5ced-4e8b-9b0a-835a0b8ae2a6",
-     "zonename": "KVM-advzone1"
-     "mincpunumber": 2
-     "minmemory": 2048
+      "kubernetessupportedversion": {
+      "id": "6668e999-fe6c-4a91-88d8-d10bcf280d02",
+      "isoid": "78d45e9b-a482-46f4-8cbc-cf7964564b85",
+      "isoname": "v1.13.2-Kubernetes-Binaries-ISO",
+      "isostate": "Active",
+      "semanticversion": "1.13.2",
+      "name": "v1.13.2",
+      "supportsha": false,
+      "zoneid": "34d23dd5-5ced-4e8b-9b0a-835a0b8ae2a6",
+      "zonename": "KVM-advzone1"
+      "mincpunumber": 2
+      "minmemory": 2048
+      }
    }
-}
 
 The minimum Kubernetes version that can be added in the service is 1.11. At present, v1.17 and above might not work due to their incompatibility with weave-net plugin.
 
-listKubernetesSupportedVersion API can be used to list existing supported versions. It takes id parameter as input to list details of a single supported version.
+Listing supported Kubernetes versions
+######################################
+
+listKubernetesSupportedVersion API can be used to list existing supported versions. id parameter can be passed as input to list details of a single supported version.
+
+|cks-versions.png|
+
+Updating supported Kubernetes version
+######################################
 
 updateKubernetesSupportedVersion API can be used by admins to update an existing supported version to set their state enabled or disabled. Supported versions with disabled state cannot be used for deploying Kubernetes clusters. It takes following input parameters,
 
 .. parsed-literal::
    - **id** (the ID of the Kubernetes supported version)
    - **state** (the state of the Kubernetes supported version)
+
+Deleting supported Kubernetes version
+######################################
 
 deleteKubernetesSupportedVersion API has been provided for admins to delete an existing supported version if it is not used by any Kubernetes cluster in the service. id parameter of the API can be used to pass Kubernetes version to be deleted.
 
@@ -137,8 +149,6 @@ Managing Kubernetes clusters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For Kubernetes cluster management, the service provides create, stop, start, scale, upgrade and delete APIs and similar features in the UI.
-
-|cks-clusters.png|
 
 Creating a new Kubernetes cluster
 ##################################
@@ -204,6 +214,13 @@ On successful creation, the new cluster will be automatically started and will s
 .. note::
    - For CoreOS, a minimum of 2 cores of CPU and 2GB of RAM is needed for deployment. Therefore, the serviceofferingid parameter of createKuberntesCluster API must be provided with the ID of such compute offerings that conform to these requirements.
    - Private docker registry related parameters of createKubentesCluster API (dockerregistryusername, dockerregistryusername, dockerregistryurl, dockerregistryemail) provides an experimental functionality. To use them during cluster deployment value for global setting, cloud.kubernetes.cluster.experimental.features.enabled, must be set as true by admin beforehand.
+
+Listing Kubernetes clusters
+############################
+
+listKubernetesCluster API can be used to list existing Kubernetes clusters. id parameter can be passed as input to list details of a single supported version.
+
+|cks-clusters.png|
 
 Stopping Kubernetes cluster
 ############################
@@ -333,3 +350,5 @@ Token for dashboard login can be retrieved using following command kubectl --kub
    :alt: Upgrade action icon.
 .. |cks-upgrade-cluster-form.png| image:: /_static/images/cks-upgrade-cluster-form.png
    :alt: Upgrade Kubernetes Cluster form.
+.. |cks-versions.png| image:: /_static/images/cks-versions.png
+   :alt: Supported Kubernetes versions list.
