@@ -213,7 +213,7 @@ On successful creation, the new cluster will be automatically started and will s
 
 .. note::
    - For CoreOS, a minimum of 2 cores of CPU and 2GB of RAM is needed for deployment. Therefore, the serviceofferingid parameter of createKuberntesCluster API must be provided with the ID of such compute offerings that conform to these requirements.
-   - Private docker registry related parameters of createKubentesCluster API (dockerregistryusername, dockerregistryusername, dockerregistryurl, dockerregistryemail) provides an experimental functionality. To use them during cluster deployment value for global setting, cloud.kubernetes.cluster.experimental.features.enabled, must be set as true by admin beforehand.
+   - Private docker registry related parameters of createKubentesCluster API (dockerregistryusername, dockerregistryusername, dockerregistryurl, dockerregistryemail) provides experimental functionality. To use them during cluster deployment value for global setting, cloud.kubernetes.cluster.experimental.features.enabled, must be set as true by admin beforehand.
 
 Listing Kubernetes clusters
 ############################
@@ -252,7 +252,7 @@ scaleKubernetesCluster API can be used to scale a running (or stopped cluster) f
    - **serviceofferingid** (the ID of the new service offering for the virtual machines in the cluster)
    - **size** (number of Kubernetes cluster worker nodes)
 
-Only running Kubernetes clusters can be scaled for size. When the service fails to scale the cluster, the cluster will show in Alert state else it will show in Running state.
+Only running Kubernetes clusters can be scaled for size. When the service fails to scale the cluster, the cluster will show in Alert state else if the scaling is successfull cluster will show up in Running state.
 
 Note: Only upscaling is supported while scaling clusters for service offering.
 
@@ -269,7 +269,7 @@ upgradeKubernetesCluster API can be used to upgrade a running cluster. It takes 
    - **id** (the ID of the Kubernetes cluster to be upgraded; Required)
    - **kubernetesversionid** (Kubernetes version with which cluster to be launched; Required)
 
-When the service fails upgrade the cluster, the cluster will show in Alert state else it will show in Running state.
+When the service fails to upgrade the cluster, the cluster will show in Alert state. If the upgrade has been successful cluster will show in Running state.
 
 .. note:: Kubernetes can be upgraded from one MINOR version to the next MINOR version, or between PATCH versions of the same MINOR. That is, you cannot skip MINOR versions when you upgrade. For example, you can upgrade from 1.y to 1.y+1, but not from 1.y to 1.y+2. Therefore, service can upgrade running clusters in the similar manner only.
 
