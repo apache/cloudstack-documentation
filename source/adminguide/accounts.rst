@@ -43,7 +43,7 @@ delegated administrators with some authority over the domain and its
 subdomains. For example, a service provider with several resellers could
 create a domain for each reseller.
 
-For each account created, the Cloud installation creates three different
+For each domain created, the Cloud installation creates three different
 types of user accounts: root administrator, domain administrator, and
 user.
 
