@@ -286,7 +286,7 @@ insert the following information.
 
    [cloudstack]
    name=cloudstack
-   baseurl=http://download.cloudstack.org/centos/7/4.11/
+   baseurl=http://download.cloudstack.org/centos/7/4.13/
    enabled=1
    gpgcheck=0
 
@@ -448,6 +448,13 @@ Install mysql-connector
    yum install mysql-connector-python
 
 
+Install python-dns
+
+.. parsed-literal::
+
+   yum -y install epel-release
+   yum -y install python-dns
+
 Installation
 ~~~~~~~~~~~~
 
@@ -457,6 +464,13 @@ following command:
 .. parsed-literal::
 
    # yum -y install cloudstack-management
+
+Please note: There are issues with using mysql-connector-java-8.0.19-1.el7, to
+install mysql-connector-java-5.1.25-3.el7 execute the following command:
+
+.. parsed-literal::
+
+   # yum -y install mysql-connector-java-5.1.25-3.el7
 
 With the application itself installed we can now setup the database, we'll do 
 that with the following command and options:
@@ -494,7 +508,7 @@ the system VMs images.
   
    /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt \
    -m /export/secondary \
-   -u http://download.cloudstack.org/systemvm/4.11/systemvmtemplate-4.11.2-kvm.qcow2.bz2 \
+   -u http://download.cloudstack.org/systemvm/4.11/systemvmtemplate-4.11.3-kvm.qcow2.bz2 \
    -h kvm -F
 
 
