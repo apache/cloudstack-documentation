@@ -300,20 +300,23 @@ Example GUI dialog of uploading Template/ISO from local (browser) is given below
 
 Note that uploading multi-disk templates is also supported.
 
-Sharing templates with other accounts/projects
+Sharing templates and ISOs with other accounts/projects
 ----------------------------------------------
 
-When adding a template, the owner can choose to make template public or to keep it private. Once the template is created, the owner can choose to share this template so that other accounts/projects can also use the template. 
+When adding a template/ISO, the owner can choose to make template/ISO public or to keep it private. Once the template/ISO is created, the owner can choose to share this template/ISO so that other accounts/projects can also use the template/ISO. 
 
-Currently, the template owner can share his template with:
-  - other accounts inside his own domain (i.e. can't share the template with other accounts in the subdomain of his domain or any other domains)
+Currently, the owner can share his template/ISO with:
+  - other accounts inside his own domain (i.e. can't share the template/ISO with other accounts in the subdomain of his domain or any other domains)
   - projects where he belongs to (i.e. projects where he is the owner/creator or other projects where he has been joined)
 
-Template permissions can be changed via updateTemplatePermissions API call or via GUI. It is supported to add, remove or reset (remove all) template permissions.
+Template/ISO permissions can be changed via updateTemplatePermissions/updateIsoPermissions API call or via GUI. It is supported to add, remove or reset (remove all) template/ISO permissions.
 
-When adding or removing permissions to/from a template, it is required to specify account/project name which is being added/removed from the template permissions. 
+When adding or removing permissions to/from a template/ISO, it is required to specify account/project name which is being added/removed from the template/ISO permissions. 
 
-Global setting "allow.user.view.all.domain.accounts" has a default value of "false". This makes sure that when a regular user (of a "User" role) wants to share a template via GUI, he will not be shown the list of all accounts in his domain and he will need to know the name of the destination account with which he is sharing the template. This makes sense in public clouds where each account of a single domain is a different tenant/customer and privacy is imperative. In this case, the user will be presented with an input field to enter the account name, as on the images below:
+Global setting "allow.user.view.all.domain.accounts" has a default value of "false". This makes sure that when a regular user (of a "User" role) wants to share a template/ISO via GUI, he will not be shown the list of all accounts in his domain and he will need to know the name of the destination account with which he is sharing the template/ISO. This makes sense in public clouds where each account of a single domain is a different tenant/customer and privacy is imperative. In this case, the user will be presented with an input field to enter the account name, as on the images below:
+
+.. warning:: 
+      The images displayed below refer to template permissions, but the same applies for ISO permissions.
 
 |template-permissions-update-manually-1.PNG|
 
