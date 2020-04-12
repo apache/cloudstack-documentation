@@ -34,7 +34,7 @@ High level overview of the process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This runbook will focus on building a CloudStack cloud using KVM on CentOS 
-7.5 with NFS storage on a flat layer-2 network utilizing layer-3 network 
+7.7 with NFS storage on a flat layer-2 network utilizing layer-3 network 
 isolation (aka Security Groups), and doing it all on a single piece of 
 hardware.
 
@@ -53,7 +53,7 @@ To complete this runbook you'll need the following items:
 
 #. At least one computer which supports and has enabled hardware virtualization.
 
-#. An `CentOS 7.5 x86_64 install ISO, on bootable media 
+#. An `CentOS 7.7 x86_64 install ISO, on bootable media 
    <http://mirrors.kernel.org/centos/7/isos/x86_64/>`_
 
 #. A /24 network with the gateway being at xxx.xxx.xxx.1, no DHCP should be on 
@@ -71,9 +71,9 @@ CloudStack. We will go over the steps to prepare now.
 Operating System
 ~~~~~~~~~~~~~~~~
 
-Using the CentOS 7.5 x86_64 install ISO, you'll need to install CentOS 7 
+Using the CentOS 7.7 x86_64 install ISO, you'll need to install CentOS 7 
 on your hardware. The defaults will generally be acceptable for this 
-installation. You may want to configure network configuration during
+installation. You may want to configure netwok configuration during
 setup - either using the guidelines below, or using a standard access
 configuration which we will modify later.
 
@@ -277,7 +277,7 @@ We need to configure the machine to use a CloudStack package repository.
    to take the source release and generate RPMs and and yum repository. This 
    guide attempts to keep things as simple as possible, and thus we are using 
    one of the community-provided yum repositories. Furthermore, this example 
-   assumes a 4.11 Cloudstack install - substitute versions as needed.
+   assumes a 4.14 Cloudstack install - substitute versions as needed.
 
 To add the CloudStack repository, create /etc/yum.repos.d/cloudstack.repo and 
 insert the following information.
@@ -286,7 +286,7 @@ insert the following information.
 
    [cloudstack]
    name=cloudstack
-   baseurl=http://download.cloudstack.org/centos/7/4.11/
+   baseurl=http://download.cloudstack.org/centos/7/4.14/
    enabled=1
    gpgcheck=0
 
@@ -494,7 +494,7 @@ the system VMs images.
   
    /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt \
    -m /export/secondary \
-   -u http://download.cloudstack.org/systemvm/4.11/systemvmtemplate-4.11.2-kvm.qcow2.bz2 \
+   -u http://download.cloudstack.org/systemvm/4.14/systemvmtemplate-4.14.0-kvm.qcow2.bz2 \
    -h kvm -F
 
 
