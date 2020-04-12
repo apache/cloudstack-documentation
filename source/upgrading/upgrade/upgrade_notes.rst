@@ -18,10 +18,10 @@ General Upgrade Notes
 =====================
 
 
-Java version upgraded to Java 1.11
+Java version upgraded to Java 11
 ---------------------------------
 
-As of Apache CloudStack 4.14, Java version required is 1.11 for the
+As of Apache CloudStack 4.14, Java version required is 11 for the
 management-server, cloudstack-usage, KVM agent and system-VMs.
 
 
