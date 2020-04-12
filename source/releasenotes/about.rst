@@ -16,21 +16,26 @@
 
 What's New in |release|
 =======================
-Version |release| is a |version| LTS release adding almost 200 new features, enhancements and fixes 
-since 4.12. 
+Version |release| is a |version| LTS release adding almost *XXX* new features, enhancements and fixes 
+since 4.13. 
 
-Apache CloudStack |release| is a |version| LTS release nearly 200 new features, enhancements and fixes since 4.12, such as enhanced hypervisor support, performance increases and more user configurable controls.  Highlights include:
+Apache CloudStack |release| is a |version| LTS release with nearly 200 new features, enhancements and fixes since 4.13, such as enhanced hypervisor support, performance increases and more user configurable controls.  Highlights include:
 
-•	Supporting configuration of virtualised appliances
-•	VMware 6.7 support
-•	Increased granularity & control of instance  deployment
-•	Improvements in system VM performance 
-•	Allow live migration of DPDK enabled instances
-•	More flexible UI branding 
-•	Allowing users to create layer 2 network offerings
+•	New modern UI (Project Primate, Technical preview)
+•	Backup and Recovery framework [VMware]
+•	VM ingestion [VMware]
+•	L2 network PVLAN enhancements [VMware]
+•	CloudStack Kubernetes Service
+•	UEFI support
+•	KVM rolling maintenance
+•	Enable Direct Download for systemVM templates [KMV]
+•	Template Direct Download support for Local and SharedMountPoint storages [KVM]
+•	VR health checks
+•	Download logs and diagnostics data from SSVM/CPVM/VRs
+•	Enable additional configuration metadata to virtual machines
 
 
-The full list of new features can be found in the project release notes at http://docs.cloudstack.apache.org/en/4.13.0.0/releasenotes/changes.html
+The full list of new features can be found in the project release notes at http://docs.cloudstack.apache.org/en/4.14.0.0/releasenotes/changes.html
 
 Apache CloudStack powers numerous elastic Cloud computing services, including solutions that have ranked as Gartner Magic Quadrant leaders. Highlighted in the Forrester Q4 2017 Enterprise Open Source Cloud Adoption report, Apache CloudStack "sits beneath hundreds of service provider clouds", including Fortune 5 multinational corporations. A list of known Apache CloudStack users are available at http://cloudstack.apache.org/users.html
 
