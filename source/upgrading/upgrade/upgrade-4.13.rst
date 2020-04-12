@@ -133,13 +133,15 @@ This file should have one line, which contains:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu precise 4.13
+   deb http://download.cloudstack.org/ubuntu bionic 4.13
 
 We'll change it to point to the new package repository:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu precise |version|
+   deb http://download.cloudstack.org/ubuntu bionic |version|
+   
+
 
 Setup the public key for the above repository:
 
@@ -244,7 +246,7 @@ Hypervisor: XenServer
 #####################
 
 
-No additional steps are required wrt for XenServer Hypervisor for this upgrade.
+No additional steps are required for XenServer Hypervisor for this upgrade.
 
 
 Hypervisor: VMware
