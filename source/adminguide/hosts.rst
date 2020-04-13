@@ -845,3 +845,124 @@ Custom Script Execution Configuration
 .. _`hooks`: https://libvirt.org/hooks.html
 .. _`qemu`: https://libvirt.org/hooks.html#qemu
 .. _`arguments`: https://libvirt.org/hooks.html#arguments
+
+
+KVM Rolling Maintenance
+-----------------------
+
+Overview
+~~~~~~~~
+
+CloudStack provides a flexible framework for automating the upgrade or patch process of KVM hosts within a zone, pod or cluster by executing custom scripts. These scripts are executed in the context of a stage. Each stage defines only one custom script to be executed.
+
+There are four stages in the KVM rolling maintenance process:
+
+#. Pre-Flight stage: Pre-flight script runs on hosts before commencing the rolling maintenance. If pre-flight check scripts return an error from any host, then rolling maintenance will be cancelled with no actions taken, and an error returned. If there are no pre-flight scripts defined, then no checks will be done from the hosts.
+
+#. Pre-Maintenace stage: Pre-maintenance script runs before a specific host is put into maintenance. If no pre-maintenance script is defined, or if the pre-flight script on a given host determines no pre-maintenance is required on that host, then no pre-maintenance actions will be taken, and the management server will move straight to putting the host in maintenance followed by requesting that the agent runs the maintenance script.
+
+#. Maintenance stage: Maintenance script runs after a host has been put into maintenance. If no maintenance script is defined, or if the pre-flight or pre-maintenance scripts determine that no maintenance is required, then the host will not be put into maintenance, and the completion of the pre-maintenance scripts will signal the end of all maintenance tasks and the KVM agent will hand the host back to the management server. Once the maintenance scripts have signalled that it has completed, the host agent will signal to the management server that the maintenance tasks have completed, and therefore the host is ready to exit maintenance mode and any 'information' which was collected (such as processing times) will be returned to the management server.
+
+#. Post-Maintenance stage: Post-maintenance script is expected to perform validation after the host exits maintenance. These scripts will help to detect any problem during the maintenance process, including reboots or restarts within scripts.
+
+.. note:: 
+   Pre-flight and pre-maintenance scripts’ execution can determine if the maintenance stage is not required for a host. The special exit code = 70 on a pre-flight or pre-maintenance script will let CloudStack know that the maintenance stage is not required for a host.
+
+Administrators must define only one script per stage. In case a stage does not contain a script, it is skipped, continuing with the next stage. Administrators are responsible for defining and copying scripts into the hosts
+
+.. note::
+   The administrator will be responsible for the maintenance and copying of the hook scripts across all KVM hosts.
+
+On all the KVM hosts to undergo rolling maintenance, there are two types of script execution approaches:
+
+· Systemd service executor: This approach uses a systemd service to invoke a script execution. Once a script finishes its execution, it will write content to a file, which the agent reads and sends back the result to the management server.
+
+· Agent executor: The CloudStack agent invokes a script execution within the JVM. In case the agent is stopped or restarted, the management server will assume the stage was completed when the agent reconnects. This approach does not keep the state in a file.
+
+Configuration
+~~~~~~~~~~~~~
+
+The rolling maintenance process can be configured through the following global settings in the management server:
+
+· ``kvm.rolling.maintenance.stage.timeout``: Defines the timeout (in seconds) for rolling maintenance stage update from hosts to the management servers. The default value is 1800. This timeout is observed per stage.
+
+· ``kvm.rolling.maintenance.ping.interval``: Defines the ping interval (in seconds) between management server and hosts performing stages during rolling maintenance. The management server checks for updates from the hosts every ‘ping interval’ seconds. The default value is 10.
+
+· ``kvm.rolling.maintenance.wait.maintenance.timeout``: Defines the timeout (in seconds) to wait for a host preparing to enter maintenance mode as part of a rolling maintenance process. The default value is 1800.
+
+On each KVM host, the administrator must indicate the directory in which the scripts have been defined, be editing the ``agent.properties`` file, adding the property:
+
+- ``rolling.maintenance.hooks.dir=<SCRIPTS_DIR>``
+
+Optionally, the administrator can decide to use a systemd executor for the rolling maintenance scripts on each host (enabled by default) or disabling it, allowing to invoke the scripts through the agent execution. Systemd service execution can be disabled by adding this property on ``agent.properties``:
+
+- ``rolling.maintenance.service.executor.disabled=true``
+
+Usage
+~~~~~
+
+An administrator can invoke a rolling maintenance process by the ``startRollingMaintenance`` API or through the UI, by selecting one or more zones, pods, clusters or hosts.
+
+The ``startRollingMaintenance`` API accepts the following parameters:
+
+- ``hostids``, ``clusterids``, ``podids`` and ``zoneids`` are mutually exclusive, and only one of them must be passed. Each of the mentioned parameters expects a list of ids of the entity that it defines.
+
+· ``forced``: optional boolean parameter, false by default. When enabled, does not stop iterating through hosts in case of any error in the rolling maintenance process.
+
+· ``timeout``: optional parameter, defines a timeout in seconds for a stage to be completed in a host. This parameter takes precedence over the timeout defined in the global setting ``kvm.rolling.maintenance.stage.timeout``.
+
+.. note::
+   The timeout (defined by the API parameter or by the global setting) must be greater or equal than the ping interval defined by the global setting ‘kvm.rolling.maintenance.ping.interval’. In case the timeout is lower than the ping interval, the API does not start any maintenance actions and fails fast with a descriptive message.
+
+· ``payload``: optional string parameter, adds extra arguments to be passed to the scripts on each stage. The string set as parameter is used to invoke each of the scripts involved in the rolling maintenance process for each stage, by appending the payload at the end of the script invocation.
+
+.. note::
+   The payload parameter is appended at the end of each stage script execution. This allows the administrator to define scripts that can accept parameters and pass them through the payload parameter to each stage execution. For example: defining the payload parameter to “param1=val1 param2=val2” will pass both parameter to each stage execution, similar to execute: ‘./script param1=val1 param2=val2’.
+
+
+In the UI, the administrator must select one or multiple zones, pods, clusters or hosts and click the button: |kvm-rolling-maintenance.png|
+
+
+.. |kvm-rolling-maintenance.png| image:: /_static/images/kvm-rolling-maintenance.png
+
+Process
+~~~~~~~
+
+Before attempting any maintenance actions, pre-flight checks are performed on every host:
+
+#. The management server performs capacity checks to ensure that every host in the specified scope can be set into maintenance. These checks include host tags, affinity groups and compute checks
+
+#. The pre-flight scripts are executed on each host. If any of these scripts fail, then no action is performed unless the ‘force’ parameter is enabled.
+
+The pre-flight script may signal that no maintenance is needed on the host. In that case, the host is skipped from the rolling maintenance hosts iteration.
+
+Once pre-flight checks pass, then the management server iterates through each host in the selected scope and sends a command to execute each of the rest of the stages in order. The hosts in the selected scope are grouped by clusters, therefore all the hosts in a cluster are processed before processing the hosts of a different cluster. The management server iterates through hosts in each cluster on the selected scope and does the following:
+
+- Disables the cluster (if it has not been disabled previously) · The existence of the maintenance script on the host is checked (this check is performed only for the maintenance script, not for the rest of the stages)
+
+   - If the host does not contain a maintenance script, then the host is skipped and the iteration continues with the next host in the cluster.
+   
+-  Execute pre maintenance script (if any) before entering maintenance mode.
+
+   -  The pre-maintenance script may signal that no maintenance is needed on the host. In that case, the host is skipped and the iteration continues with the next host in the cluster.
+
+   -  In case the pre-maintenance script fails and the ‘forced’ parameter is not set, then the rolling maintenance process fails and an error is reported. If the ‘forced’ parameter is set, the host is skipped and the iteration continues with the next host in the cluster
+
+-  Capacity checks are recalculated, to verify that the host can enter maintenance mode.
+
+   .. note::
+      Before recalculating the capacity, the capacity is updated, similar to performing a listCapacity API execution, setting the ‘fetchLatest’ parameter to true
+
+· The host enters maintenance mode (throwing an error if the host does not enter maintenance after ‘kvm.rolling.maintenance.wait.maintenance.timeout’ seconds)
+
+· Execute maintenance script (if any) while the host is in maintenance.
+
+   - In case the maintenance script fails and the ‘forced’ parameter is not set, the rolling maintenance process fails, maintenance mode is cancelled and an error is reported. If the ‘forced’ parameter is set, the host is skipped and the iteration continues with the next host in the cluster
+
+· Cancel maintenance mode
+
+· Execute post maintenace script (if any) after cancelling maintenance mode.
+
+   - In case the post-maintenance script fails and the ‘forced’ parameter is not set, then the rolling maintenance process fails and an error is reported. If the ‘forced’ parameter is set, the host is skipped and the iteration continues with the next host in the cluster
+
+· Enable the cluster that has been disabled, after all the hosts in the cluster have been processed, or in case an error has occurred.
