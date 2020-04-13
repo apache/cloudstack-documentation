@@ -28,13 +28,17 @@ Enabling the Kubernetes Service
 
 The Kubernetes Service plugin is disabled by default. To enable it, go to Global Settings and set the following global configuration to true:
 
-#. cloud.kubernetes.service.enabled
+.. parsed-literal::
+
+   cloud.kubernetes.service.enabled
 
 Restart the Management Server to enable the set configuration values.
 
-#. service cloudstack-management restart
+.. parsed-literal::
 
-#. service cloudstack-usage restart
+   # service cloudstack-management restart
+
+   # service cloudstack-usage restart
 
 Once the Kubernetes service is running the new APIs will become accessible and the UI will start show a Kubernetes Service tab.
 
@@ -47,11 +51,15 @@ A script named create-kubernetes-binaries-iso.sh has been provided in the clouds
 
 Usage:
 
-#. ./create-kubernetes-binaries-iso.sh OUTPUT_PATH KUBERNETES_VERSION CNI_VERSION CRICTL_VERSION WEAVENET_NETWORK_YAML_CONFIG DASHBOARD_YAML_CONFIG
+.. parsed-literal::
+
+   # ./create-kubernetes-binaries-iso.sh OUTPUT_PATH KUBERNETES_VERSION CNI_VERSION CRICTL_VERSION WEAVENET_NETWORK_YAML_CONFIG DASHBOARD_YAML_CONFIG
 
 Eg:
 
-#. ./create-binaries-iso.sh ./ 1.12.5 0.7.1 1.12.0 "https://cloud.weave.works/k8s/net?k8s-version=1.12.5" https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta1/aio/deploy/recommended.yaml
+.. parsed-literal::
+
+   # ./create-binaries-iso.sh ./ 1.12.5 0.7.1 1.12.0 "https://cloud.weave.works/k8s/net?k8s-version=1.12.5" https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta1/aio/deploy/recommended.yaml
 
 Additionally, pre-built, community ISOs for different Kubernetes versions are also available at:
 
@@ -131,13 +139,17 @@ This provides functionality to create Kubernetes clusters for Shared, Isolated a
 
 The following Global Setting value must be set to the name of Template to be used for deploying node virtual machines while creating a Kubernetes cluster:
 
-#. cloud.kubernetes.cluster.template.name
+.. parsed-literal::
+
+   cloud.kubernetes.cluster.template.name
 
 CoreOS templates for CloudStack can be found here, http://dl.openvm.eu/cloudstack/coreos/x86_64/
 
 The following Global Setting value must be set to the name of Network Offering to be used for creating a new network when no network has been selected while creating a Kubernetes cluster:
 
-#. cloud.kubernetes.cluster.network.offering
+.. parsed-literal::
+
+   cloud.kubernetes.cluster.network.offering
 
 A new network offering named DefaultNetworkOfferingforKubernetesService has been added since 4.14.0
 
@@ -309,17 +321,23 @@ Instructions for accessing the dashboard for a running cluster will be shown in 
 
 The following command can be used, while passing the correct path to kubeconfig file, to run proxy:
 
-#. kubectl --kubeconfig /custom/path/kube.config proxy
+.. parsed-literal::
+
+   # kubectl --kubeconfig /custom/path/kube.config proxy
 
 Once the proxy is running user can open the following URL in the browser to open the dashboard,
 
-#. http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+.. parsed-literal::
+
+   http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
 
 |cks-cluster-dashboard.png|
 
-Token for dashboard login can be retrieved using following command kubectl --kubeconfig /custom/path/kube.config describe secret $(kubectl --
+Token for dashboard login can be retrieved using following command
 
-#. kubeconfig /custom/path/kube.config get secrets -n kubernetes-dashboard | grep kubernetes-dashboard-token | awk '{print $1}') -n kubernetes-dashboard
+.. parsed-literal::
+
+   # kubectl --kubeconfig /custom/path/kube.config describe secret $(kubectl --kubeconfig /custom/path/kube.config get secrets -n kubernetes-dashboard | grep kubernetes-dashboard-token | awk '{print $1}') -n kubernetes-dashboard
 
 
 .. |cks-add-version-form.png| image:: /_static/images/cks-add-version-form.png
