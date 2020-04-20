@@ -20,7 +20,7 @@ Supported OS Versions for Management Server
 -------------------------------------------
 
 This section lists the operating systems that are supported for running
-CloudStack Management Server. .
+CloudStack Management Server.
 
 -  RHEL versions 7.x
 -  CentOS versions 7.x
@@ -30,7 +30,7 @@ Software Requirements
 ~~~~~~~~~~~~~~~~~~~~~
 
 -  Java JRE 11
--  MySQL 5.6, 5.7 (RHEL 7)
+-  MySQL 5.5, 5.6, 5.7
 
 Supported Hypervisor Versions
 -----------------------------
@@ -38,8 +38,8 @@ Supported Hypervisor Versions
 CloudStack supports three hypervisor families, XenServer with XAPI, KVM,
 and VMware with vSphere.
 
--  CentOS 7.x with KVM (
--  Ubuntu 16.04LTS, 18.04LTS with KVM
+-  CentOS 7.x with KVM
+-  Ubuntu 16.04 LTS, 18.04 LTS with KVM
 -  Red Hat Enterprise Linux 7.x with KVM
 -  XenServer versions 7.0, 7.1, 7.2, 7.4, 7.5 with latest hotfixes, XCP-ng 7.4, 7.6
 
@@ -47,7 +47,7 @@ and VMware with vSphere.
 
 -  VMware versions 6.0, 6.5 and 6.7 (tested up to 6.7 U3)
 
-   .. note:: There is a known issue in 6.7u1 (https://kb.vmware.com/s/article/67315) which blocks some CloudStack cloning operations. The use of linked clones is known to be effected.
+   .. note:: There is a known issue in 6.7 U1 (https://kb.vmware.com/s/article/67315) which blocks some CloudStack cloning operations. The use of linked clones is known to be effected.
 
 -  LXC Host Containers on RHEL 7
 -  Windows Server 2012 R2 (with Hyper-V Role enabled)
