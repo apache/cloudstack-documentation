@@ -137,11 +137,14 @@ The Kubernetes service provides the functionality of running and managing Kubern
 
 This provides functionality to create Kubernetes clusters for Shared, Isolated and VPC networks in CloudStack, but such networks must be accessible to the CloudStack management server for provisioning virtual machines on the cluster. Template and default network offering must be set Global Settings for the service to create Kubernetes clusters.
 
-The following Global Setting value must be set to the name of Template to be used for deploying node virtual machines while creating a Kubernetes cluster:
+The following Global Settings value must be set to the name of Template to be used for deploying node virtual machines for the respective hypervisor while creating a Kubernetes cluster:
 
 .. parsed-literal::
 
-   cloud.kubernetes.cluster.template.name
+   - **cloud.kubernetes.cluster.template.name.hyperv** (Name of the template to be used for creating Kubernetes cluster nodes on HyperV)
+   - **cloud.kubernetes.cluster.template.name.kvm** (Name of the template to be used for creating Kubernetes cluster nodes on KVM)
+   - **cloud.kubernetes.cluster.template.name.vmware** (Name of the template to be used for creating Kubernetes cluster nodes on VMware)
+   - **cloud.kubernetes.cluster.template.name.xenserver** (Name of the template to be used for creating Kubernetes cluster nodes on Xenserver)
 
 CoreOS templates for CloudStack can be found here, http://dl.openvm.eu/cloudstack/coreos/x86_64/
 
