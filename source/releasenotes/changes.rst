@@ -13,8 +13,12 @@
    specific language governing permissions and limitations
    under the License.
 
-Issues fixed in 4.13.1.0
+Issues Fixed in 4.13.1.0
 ========================
+
+
+Issues Fixed in 4.13.1.0
+------------------------
 
 .. cssclass:: table-striped table-bordered table-hover
 
