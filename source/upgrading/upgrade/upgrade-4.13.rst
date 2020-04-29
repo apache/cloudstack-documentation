@@ -47,7 +47,7 @@ Overview of Upgrade Steps:
 .. include:: _customisation_warnings.rst
 
 .. warning::
-    CloudStack |version| uses the same systemVM templates as |version_to_upgrade|,
+    CloudStack |release| uses the same systemVM templates as |version_to_upgrade|,
     so there is no need for a new systemVM template.
 
 
