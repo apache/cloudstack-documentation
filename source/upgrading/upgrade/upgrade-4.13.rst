@@ -132,7 +132,7 @@ not, skip to step :ref:`rhel413`.
 
 The first order of business will be to change the sources list for
 each system with CloudStack packages. This means all management
-servers, and any hosts that have the KVM agent. (No changes should
+servers, and any hosts that have the KVM agent (no changes should
 be necessary for hosts that are running VMware or Xen.)
 
 
@@ -183,10 +183,8 @@ packages. If not, skip to hypervisors section :ref:`upg_hyp_413`.
 
 The first order of business will be to change the yum repository
 for each system with CloudStack packages. This means all
-management servers, and any hosts that have the KVM agent.
-
-(No changes should be necessary for hosts that are running VMware
-or Xen.)
+management servers, and any hosts that have the KVM agent (no changes
+should be necessary for hosts that are running VMware or Xen.)
 
 Confirm your ``/etc/yum.repos.d/cloudstack.repo`` file on
 any systems that have CloudStack packages installed points to version 4.13.
