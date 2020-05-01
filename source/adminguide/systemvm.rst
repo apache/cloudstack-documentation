@@ -410,8 +410,7 @@ VMware, and KVM.
 
 Log file /var/log/routerServiceMonitor.log contains the actions undertaken/attempted by the service monitoring script (i.e. trying to restart a stopped service).
 
-As of CloudStack 4.14, the internval at which the service monitoring script runs is no more hardcoded to 3 minutes???, but is instead controlled via global setting router.health.checks.basic.interval and/or ??? router.health.checks.advanced.interval?
-@anurag to advise/correct please
+As of CloudStack 4.14, the internval at which the service monitoring script runs is no more hardcoded to 3 minutes, but is instead controlled via global setting router.health.checks.basic.interval.
 
 
 
