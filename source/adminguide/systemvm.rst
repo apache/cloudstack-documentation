@@ -385,7 +385,7 @@ an unexpected reason. For example:
 .. note:: 
    Only those services with daemons are monitored. The services that are 
    failed due to errors in the service/daemon configuration file cannot 
-   be restarted by the Monitoring tool. VPC networks are not supported.
+   be restarted by the Monitoring tool.
 
 The following services are monitored in a VR:
 
