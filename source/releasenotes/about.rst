@@ -16,21 +16,10 @@
 
 What's New in |release|
 =======================
+Version |release| is a |version| LTS release adding almost 200 new features, enhancements and fixes 
+since 4.12. 
 
-
-What's New in 4.13.1.0
-----------------------
-
-The new 4.13.1.0 version is a 4.13 maintenance release containing almost 100
-fixes and improvements on the 4.13.0.0 release.
-
-
-What's New in 4.13.0.0
-----------------------
-
-Version 4.13.0.0 includes almost 200 new features, enhancements and fixes since 4.12. 
-
-Apache CloudStack 4.13.0.0 is a 4.13 LTS release with nearly 200 new features, enhancements and fixes since 4.12, such as enhanced hypervisor support, performance increases and more user configurable controls.  Highlights include:
+Apache CloudStack |release| is a |version| LTS release nearly 200 new features, enhancements and fixes since 4.12, such as enhanced hypervisor support, performance increases and more user configurable controls.  Highlights include:
 
 •	Supporting configuration of virtualised appliances
 •	VMware 6.7 support
