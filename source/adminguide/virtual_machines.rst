@@ -14,9 +14,6 @@
    under the License.
    
 
-Working with Virtual Machines
-=============================
-
 About Working with Virtual Machines
 -----------------------------------
 
