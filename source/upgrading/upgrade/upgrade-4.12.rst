@@ -343,3 +343,8 @@ Restart management services
    .. parsed-literal::
 
       $ sudo service cloudstack-usage start
+
+System-VMs and Virtual-Routers
+------------------------------
+
+.. include:: _sysvm_restart.rst

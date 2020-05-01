@@ -18,7 +18,8 @@
 Upgrade Instruction from |version_to_upgrade|
 =============================================
 
-This section will guide you from CloudStack |version_to_upgrade| to latest
+
+This section will show you how to upgrade from CloudStack |version_to_upgrade| to latest
 CloudStack |release|.
 
 Any steps that are hypervisor-specific will be called out with a note.
@@ -121,13 +122,12 @@ not, skip to step :ref:`rhel413`.
 
 The first order of business will be to change the sources list for
 each system with CloudStack packages. This means all management
-servers, and any hosts that have the KVM agent. (No changes should
+servers, and any hosts that have the KVM agent (no changes should
 be necessary for hosts that are running VMware or Xen.)
 
+Make sure that your ``/etc/apt/sources.list.d/cloudstack.list`` file on
+any systems that have CloudStack packages installed points to version 4.13
 
-
-Start by opening ``/etc/apt/sources.list.d/cloudstack.list`` on
-any systems that have CloudStack packages installed.
 
 This file should have one line, which contains:
 
@@ -141,7 +141,6 @@ We'll change it to point to the new package repository:
 
    deb http://download.cloudstack.org/ubuntu bionic |version|
    
-
 
 Setup the public key for the above repository:
 
@@ -188,13 +187,13 @@ packages. If not, skip to hypervisors section :ref:`upg_hyp_413`.
 
 The first order of business will be to change the yum repository
 for each system with CloudStack packages. This means all
-management servers, and any hosts that have the KVM agent.
 
-(No changes should be necessary for hosts that are running VMware
-or Xen.)
+management servers, and any hosts that have the KVM agent (no changes
+should be necessary for hosts that are running VMware or Xen.)
 
-Start by opening ``/etc/yum.repos.d/cloudstack.repo`` on any
-systems that have CloudStack packages installed.
+Confirm your ``/etc/yum.repos.d/cloudstack.repo`` file on
+any systems that have CloudStack packages installed points to version 4.13.
+
 
 This file should have content similar to the following:
 
@@ -202,16 +201,9 @@ This file should have content similar to the following:
 
    [apache-cloudstack]
    name=Apache CloudStack
-   baseurl=http://download.cloudstack.org/centos/7/4.13/
+   baseurl=http://download.cloudstack.org/centos/7/4.14/
    enabled=1
    gpgcheck=0
-
-If you are using the community provided package repository, change
-the base url to:
-
-.. parsed-literal::
-
-   http://download.cloudstack.org/centos/$releasever/|version|/
 
 Setup the GPG public key if you wish to enable ``gpgcheck=1``:
 
@@ -219,10 +211,6 @@ Setup the GPG public key if you wish to enable ``gpgcheck=1``:
 
    rpm --import http://download.cloudstack.org/RPM-GPG-KEY
 
-
-
-If you're using your own package repository, change this line to
-read as appropriate for your |version| repository.
 
 #. Now that you have the repository configured, it's time to upgrade the
    ``cloudstack-management``.
