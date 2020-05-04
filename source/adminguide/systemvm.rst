@@ -385,17 +385,17 @@ an unexpected reason. For example:
 .. note:: 
    Only those services with daemons are monitored. The services that are 
    failed due to errors in the service/daemon configuration file cannot 
-   be restarted by the Monitoring tool. VPC networks are not supported.
+   be restarted by the Monitoring tool.
 
 The following services are monitored in a VR:
 
--  DNS
+-  DNS (dnsmasq)
 
--  HA Proxy
+-  HAProxy (haproxy)
 
--  SSH
+-  SSH (sshd)
 
--  Apache Web Server
+-  Apache Web Server (apache2)
 
 The following networks are supported:
 
@@ -403,10 +403,15 @@ The following networks are supported:
 
 -  Shared Networks in both Advanced and Basic zone
 
-   .. note:: VPC networks are not supported
+-  VPC (as of CloudStack 4.14)
 
 This feature is supported on the following hypervisors: XenServer,
 VMware, and KVM.
+
+Log file /var/log/routerServiceMonitor.log contains the actions undertaken/attempted by the service monitoring script (i.e. trying to restart a stopped service).
+
+As of CloudStack 4.14, the internval at which the service monitoring script runs is no more hardcoded to 3 minutes, but is instead controlled via global setting router.health.checks.basic.interval.
+
 
 
 Enhanced Upgrade for Virtual Routers

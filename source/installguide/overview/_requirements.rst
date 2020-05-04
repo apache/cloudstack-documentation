@@ -29,7 +29,7 @@ Management Server may be placed on a virtual machine.
 
 -  Operating system:
 
-   -  Preferred: CentOS/RHEL 7.2+, CentOS/RHEL 6.8+ or Ubuntu 14.04(.2) or higher
+   -  Preferred: CentOS/RHEL 7.2+ or Ubuntu 16.04(.2) or higher
 
 -  64-bit x86 CPU (more cores results in better performance)
 

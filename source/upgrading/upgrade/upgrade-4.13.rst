@@ -13,12 +13,13 @@
     specific language governing permissions and limitations
     under the License.
 
-.. |version_to_upgrade| replace:: 4.12.x
+.. |version_to_upgrade| replace:: 4.13.x
 
 Upgrade Instruction from |version_to_upgrade|
 =============================================
 
-This section will guide you from CloudStack |version_to_upgrade| to latest
+
+This section will show you how to upgrade from CloudStack |version_to_upgrade| to latest
 CloudStack |release|.
 
 Any steps that are hypervisor-specific will be called out with a note.
@@ -68,7 +69,7 @@ Create RPM or Debian packages (as appropriate) and a repository from
 the |release| source, or check the Apache CloudStack downloads page at
 http://cloudstack.apache.org/downloads.html
 for package repositories supplied by community members. You will need
-them for :ref:`ubuntu412` or :ref:`rhel412` and :ref:`kvm412` hosts upgrade.
+them for :ref:`ubuntu413` or :ref:`rhel413` and :ref:`kvm413` hosts upgrade.
 
 Instructions for creating packages from the CloudStack source are in the
 `CloudStack Installation Guide`_.
@@ -102,8 +103,8 @@ Backup current database
       $ mysqldump -u root -p cloud_usage > cloud_usage-backup_`date '+%Y-%m-%d'`.sql
 
 
-.. _ubuntu412:
-.. _apt-repo412:
+.. _ubuntu413:
+.. _apt-repo413:
 
 Management Server
 -----------------
@@ -112,7 +113,7 @@ Ubuntu
 ######
 
 If you are using Ubuntu, follow this procedure to upgrade your packages. If
-not, skip to step :ref:`rhel412`.
+not, skip to step :ref:`rhel413`.
 
 .. note::
    **Community Packages:** This section assumes you're using the community
@@ -121,25 +122,25 @@ not, skip to step :ref:`rhel412`.
 
 The first order of business will be to change the sources list for
 each system with CloudStack packages. This means all management
-servers, and any hosts that have the KVM agent. (No changes should
+servers, and any hosts that have the KVM agent (no changes should
 be necessary for hosts that are running VMware or Xen.)
 
+Make sure that your ``/etc/apt/sources.list.d/cloudstack.list`` file on
+any systems that have CloudStack packages installed points to version 4.13
 
-
-Start by opening ``/etc/apt/sources.list.d/cloudstack.list`` on
-any systems that have CloudStack packages installed.
 
 This file should have one line, which contains:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu bionic 4.12
+   deb http://download.cloudstack.org/ubuntu bionic 4.13
 
 We'll change it to point to the new package repository:
 
 .. parsed-literal::
 
    deb http://download.cloudstack.org/ubuntu bionic |version|
+   
 
 Setup the public key for the above repository:
 
@@ -170,14 +171,14 @@ read as appropriate for your |version| repository.
       $ sudo apt-get upgrade cloudstack-usage
 
 
-.. _rhel412:
-.. _rpm-repo412:
+.. _rhel413:
+.. _rpm-repo413:
 
 CentOS/RHEL
 ##############
 
 If you are using CentOS or RHEL, follow this procedure to upgrade your
-packages. If not, skip to hypervisors section :ref:`upg_hyp_412`.
+packages. If not, skip to hypervisors section :ref:`upg_hyp_413`.
 
 .. note::
    **Community Packages:** This section assumes you're using the community
@@ -186,13 +187,13 @@ packages. If not, skip to hypervisors section :ref:`upg_hyp_412`.
 
 The first order of business will be to change the yum repository
 for each system with CloudStack packages. This means all
-management servers, and any hosts that have the KVM agent.
 
-(No changes should be necessary for hosts that are running VMware
-or Xen.)
+management servers, and any hosts that have the KVM agent (no changes
+should be necessary for hosts that are running VMware or Xen.)
 
-Start by opening ``/etc/yum.repos.d/cloudstack.repo`` on any
-systems that have CloudStack packages installed.
+Confirm your ``/etc/yum.repos.d/cloudstack.repo`` file on
+any systems that have CloudStack packages installed points to version 4.13.
+
 
 This file should have content similar to the following:
 
@@ -200,16 +201,9 @@ This file should have content similar to the following:
 
    [apache-cloudstack]
    name=Apache CloudStack
-   baseurl=http://download.cloudstack.org/centos/7/4.12/
+   baseurl=http://download.cloudstack.org/centos/7/4.14/
    enabled=1
    gpgcheck=0
-
-If you are using the community provided package repository, change
-the base url to:
-
-.. parsed-literal::
-
-   http://download.cloudstack.org/centos/$releasever/|version|/
 
 Setup the GPG public key if you wish to enable ``gpgcheck=1``:
 
@@ -217,10 +211,6 @@ Setup the GPG public key if you wish to enable ``gpgcheck=1``:
 
    rpm --import http://download.cloudstack.org/RPM-GPG-KEY
 
-
-
-If you're using your own package repository, change this line to
-read as appropriate for your |version| repository.
 
 #. Now that you have the repository configured, it's time to upgrade the
    ``cloudstack-management``.
@@ -235,7 +225,7 @@ read as appropriate for your |version| repository.
 
       $ sudo yum upgrade cloudstack-usage
 
-.. _upg_hyp_412:
+.. _upg_hyp_413:
 
 Upgrade Hypervisors
 -------------------
@@ -244,7 +234,7 @@ Hypervisor: XenServer
 #####################
 
 
-No additional steps are required wrt for XenServer Hypervisor for this upgrade.
+No additional steps are required for XenServer Hypervisor for this upgrade.
 
 
 Hypervisor: VMware
@@ -258,7 +248,7 @@ Hypervisor: VMware
 No additional steps are requried for the VMware Hypervisor for this upgrade.
 
 
-.. _kvm412:
+.. _kvm413:
 
 Hypervisor: KVM
 #################
@@ -271,7 +261,7 @@ steps will not affect running guests in the cloud. These steps are
 required only for clouds using KVM as hosts and only on the KVM
 hosts.
 
-#. Configure the :ref:`APT repo <apt-repo412>` as detailed above.
+#. Configure the :ref:`APT repo <apt-repo413>` as detailed above.
 
 #. Stop the running agent.
 
@@ -306,7 +296,7 @@ KVM on CentOS/RHEL
 
 For KVM hosts, upgrade the ``cloudstack-agent`` package
 
-#. Configure the :ref:`rpm-repo412` as detailed above.
+#. Configure the :ref:`rpm-repo413` as detailed above.
 
    .. parsed-literal::
 

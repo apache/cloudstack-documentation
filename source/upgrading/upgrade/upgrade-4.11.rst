@@ -50,19 +50,13 @@ Overview of Upgrade Steps:
 .. include:: _customisation_warnings.rst
 
 .. warning::
-    If you have not registered the 4.11.3 System VM templates for your hypervisors,
-    you will need to register them prior to performing the upgrade of the CloudStack
-    packages. This includes those currently running a **clean** install of CloudStack 4.11.3 (ie you
-    did not upgrade from another version to reach 4.11.3), you will still need to 
-    explicitly register the 4.11.3 System VM template(s), you will not however need
-    to restart the existing system VMs. 
-    
-    If you are running an instance of CloudStack 4.11.3
-    that was upgraded from a the previous versions,
-    you will already have explicitly registered the 4.11.3 System VM template(s) and
-    need not do it again.
+    If you are not already using the |sysvm64-version| System VM template you will need to 
+    upgrade your System VM template prior to performing the upgrade of the 
+    CloudStack packages.
 
 .. include:: _sysvm_templates.rst
+
+.. include:: _java_version.rst
 
 Packages repository
 -------------------
@@ -106,24 +100,8 @@ Backup current database
 
    .. parsed-literal::
 
-      $ mysqldump -u root -p cloud > cloud-backup_`date '+%Y-%m-%d'`.sql
+      $ mysqldump -u root -p -R cloud > cloud-backup_`date '+%Y-%m-%d'`.sql
       $ mysqldump -u root -p cloud_usage > cloud_usage-backup_`date '+%Y-%m-%d'`.sql
-
-#. **(KVM Only)** If primary storage of type local storage is in use, the
-   path for this storage needs to be verified to ensure it passes new
-   validation. Check local storage by querying the cloud.storage\_pool
-   table:
-
-   .. parsed-literal::
-
-      $ mysql -u cloud -p -e "select id,name,path from cloud.storage_pool where pool_type='Filesystem'"
-
-   If local storage paths are found to have a trailing forward slash,
-   remove it:
-
-   .. parsed-literal::
-
-      $ mysql -u cloud -p -e 'update cloud.storage_pool set path="/var/lib/libvirt/images" where path="/var/lib/libvirt/images/"';
 
 
 .. _ubuntu411:
@@ -347,7 +325,6 @@ For KVM hosts, upgrade the ``cloudstack-agent`` package
    .. parsed-literal::
 
       $ sudo service cloudstack-agent stop
-      $ sudo killall jsvc
       $ sudo service cloudstack-agent start
 
 
@@ -365,3 +342,8 @@ Restart management services
    .. parsed-literal::
 
       $ sudo service cloudstack-usage start
+
+System-VMs and Virtual-Routers
+------------------------------
+
+.. include:: _sysvm_restart.rst

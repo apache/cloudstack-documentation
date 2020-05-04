@@ -16,6 +16,7 @@
 
 What's New in |release|
 =======================
+
 Version |release| is a |version| LTS release adding almost *XXX* new features, enhancements and fixes 
 since 4.13. 
 
