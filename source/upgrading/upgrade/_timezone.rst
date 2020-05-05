@@ -16,7 +16,7 @@
 .. sub-section included in upgrade notes.
 
 Time zone requirements
-----------------------
+######################
 
 As of CloudStack 4.14,  you must explicitly configure time zone either in the MySQL server or JDBC driver (db.properties).
 In previous CloudStack versions, UTC time zone was assumed by default (all event's have UTC time stamps), so
