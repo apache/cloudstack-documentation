@@ -103,13 +103,13 @@ Backup current database
       $ mysqldump -u root -p cloud_usage > cloud_usage-backup_`date '+%Y-%m-%d'`.sql
 
 
-.. include:: _timezone.rst
-
 .. _ubuntu413:
 .. _apt-repo413:
 
 Management Server
 -----------------
+
+.. include:: _timezone.rst
 
 Ubuntu
 ######
