@@ -88,6 +88,51 @@ of memory.
 
 #. Restart the Management Server.
 
+Accessing System VMs
+--------------------
+
+It may sometimes be necessary to access System VMs for diagnostics of certain 
+issues, for example if you are experiencing SSVM (Secondary Storage VM) 
+connection issues. Use the steps below in order to connect to the SSH console 
+of a running System VM.
+
+Accessing System VMs over the network requires the use of private keys and 
+connecting to System VMs SSH Daemon on port 3922. XenServer/KVM Hypervisors 
+store this key at /root/.ssh/id_rsa.cloud on each CloudStack agent. To access 
+System VMs running on ESXi, the key is stored on the management server at 
+/var/lib/cloudstack/management/.ssh/id_rsa.
+
+
+#. Find the details of the System VM
+
+   #. Log in with admin privileges to the CloudStack UI.
+
+   #. Click Infrastructure, then System VMs, and then click the name of a 
+      running VM.
+
+   #. Take a note of the 'Host', 'Private IP Address' and 'Link Local IP 
+      Address' of the System VM you wish to access.
+
+#. XenServer/KVM Hypervisors
+
+   #. Connect to the Host of which the System VM is running.
+
+   #. SSH to the 'Link Local IP Address' of the System VM from the Host on 
+      which the VM is running.
+
+      Format: ssh -i <path-to-private-key> <link-local-ip> -p 3922
+
+      Example: root@kvm01:~# ssh -i /root/.ssh/id_rsa.cloud 169.254.3.93 -p 3922
+
+#. ESXi Hypervisors
+
+   #. Connect to your CloudStack Management Server.
+
+   #. ESXi users should SSH to the private IP address of the System VM.
+
+      Format: ssh -i <path-to-private-key> <vm-private-ip> -p 3922
+
+      Example: root@management:~# ssh -i /var/lib/cloudstack/management/.ssh/id_rsa 172.16.0.250 -p 3922
 
 Multiple System VM Support for VMware
 -------------------------------------
