@@ -30,4 +30,3 @@ to the "db.cloud.url.params=" and "db.usage.url.params=" lines.  Example lines, 
    db.cloud.url.params=prepStmtCacheSize=517&cachePrepStmts=true&sessionVariables=sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'&serverTimezone=UTC
    db.usage.url.params=serverTimezone=UTC
 
-If you want time stamps in DB to use a different time zone, please make sure to test this thoroughly in test environment.
