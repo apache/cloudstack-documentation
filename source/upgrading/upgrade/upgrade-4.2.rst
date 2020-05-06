@@ -96,6 +96,8 @@ Management Server Ubuntu
 If you are using Ubuntu, follow this procedure to upgrade your packages. If 
 not, skip to step :ref:`rhel42`.
 
+.. include:: _timezone.rst
+
 .. note:: 
    **Community Packages:** This section assumes you're using the community 
    supplied packages for CloudStack. If you've created your own packages and 
@@ -163,6 +165,8 @@ Management Server CentOS/RHEL
 
 If you are using CentOS or RHEL, follow this procedure to upgrade your 
 packages. If not, skip to hypervisors section :ref:`upg_hyp_42`.
+
+.. include:: _timezone.rst
 
 .. note:: 
    **Community Packages:** This section assumes you're using the community 
