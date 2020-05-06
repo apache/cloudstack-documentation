@@ -679,6 +679,20 @@ How to Snapshot a Volume
 
 #. Click the Snapshot button. |SnapshotButton.png|
 
+KVM volume Snapshot specifics
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In recent CloudStack versions, by default, a volume snapshots for a running VM is disabled
+due to a possible volume corruption that can occur while volume snapshot is
+deleted. To enable making a volume snapshots while the VM
+is running, the global setting 'kvm.snapshot.enabled' must be set to 'True'.
+The way the volume snapshot is now created has been changed. 
+Under the hood, first, a full VM snapshot is taken - this means that during the taking of
+the VM snapshot the VM will be in the "Paused" state (while RAM memory is being written to the
+QCOW2 file), which means that VM will be unavailable from the network point of view.
+When the VM snapshot is created, VM is unpaused/resumed, the single volume snapshot is exported
+to the Secondary Storage, and then the VM snapshots is removed from the VM.
+
 
 Automatic Snapshot Creation and Retention
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
