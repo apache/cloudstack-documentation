@@ -685,6 +685,7 @@ KVM volume Snapshot specifics
 In recent CloudStack versions, by default, creating a volume snapshot for a running VM is disabled
 due to a possible volume corruption in certain cases. To enable creating a volume snapshots while the VM
 is running, the global setting 'kvm.snapshot.enabled' must be set to 'True'.
+
 The volume snapshot creation has changed in recent versions:
 
 Under the hood, first, a full VM snapshot is taken - this means that during the taking of
