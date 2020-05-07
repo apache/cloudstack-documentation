@@ -39,6 +39,8 @@ Overview of Upgrade Steps:
 #. Upload the |sysvm64-version| System VM template if not already using it.
 #. Stop all running management servers
 #. Backup CloudStack database (MySQL)
+#. Confirm you Java versions
+#. Add "serverTimezone=UTC" to your "db.properties"
 #. Upgrade 1st CloudStack management server
 #. Update hypervisors specific dependencies
 #. Restart 1st management server
@@ -56,8 +58,6 @@ Overview of Upgrade Steps:
 
 .. include:: _sysvm_templates.rst
 
-.. include:: _java_version.rst
-
 Packages repository
 -------------------
 
@@ -70,7 +70,7 @@ Create RPM or Debian packages (as appropriate) and a repository from
 the |release| source, or check the Apache CloudStack downloads page at
 http://cloudstack.apache.org/downloads.html
 for package repositories supplied by community members. You will need
-them for :ref:`ubuntu413` or :ref:`rhel413` and :ref:`kvm413` hosts upgrade.
+them for :ref:`ubuntu413` or :ref:`kvm413` hosts upgrade.
 
 Instructions for creating packages from the CloudStack source are in the
 `CloudStack Installation Guide`_.
@@ -110,6 +110,7 @@ Backup current database
 Management Server
 -----------------
 
+.. include:: _java_version.rst
 .. include:: _timezone.rst
 
 Ubuntu
@@ -191,7 +192,7 @@ This file should have content similar to the following:
 
    [apache-cloudstack]
    name=Apache CloudStack
-   baseurl=http://download.cloudstack.org/centos/7/|version|/
+   baseurl=http://download.cloudstack.org/centos/$releasever/|version|/
    enabled=1
    gpgcheck=0
 
@@ -230,8 +231,8 @@ Hypervisor: VMware
 ###################
 
 .. warning::
-   For VMware hypervisor CloudStack management server packages must be
-   build using "noredist". Refer to :ref:`building-noredist`.
+   For VMware hypervisor, CloudStack management server packages must be
+   built using "noredist". Refer to :ref:`building-noredist`.
 
 
 No additional steps are requried for the VMware Hypervisor for this upgrade.
