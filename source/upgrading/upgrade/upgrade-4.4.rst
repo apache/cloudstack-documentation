@@ -60,6 +60,8 @@ Instructions for creating packages from the CloudStack source are in the
 
 .. include:: _sysvm_templates.rst
 
+.. include:: _java_version.rst
+
 
 Database Preparation
 --------------------
@@ -89,22 +91,6 @@ Backup current database
       $ mysqldump -u root -p cloud > cloud-backup_`date '+%Y-%m-%d'`.sql
       $ mysqldump -u root -p cloud_usage > cloud_usage-backup_`date '+%Y-%m-%d'`.sql
 
-#. **(KVM Only)** If primary storage of type local storage is in use, the
-   path for this storage needs to be verified to ensure it passes new
-   validation. Check local storage by querying the cloud.storage\_pool
-   table:
-
-   .. parsed-literal::
-
-      $ mysql -u cloud -p -e "select id,name,path from cloud.storage_pool where pool_type='Filesystem'"
-
-   If local storage paths are found to have a trailing forward slash,
-   remove it:
-
-   .. parsed-literal::
-
-      $ mysql -u cloud -p -e 'update cloud.storage_pool set path="/var/lib/libvirt/images" where path="/var/lib/libvirt/images/"';
-
 
 .. _ubuntu44:
 
@@ -113,6 +99,8 @@ Management Server on Ubuntu
 
 If you are using Ubuntu, follow this procedure to upgrade your packages. If 
 not, skip to step :ref:`rhel44`.
+
+.. include:: _timezone.rst
 
 .. note:: 
    **Community Packages:** This section assumes you're using the community
@@ -127,7 +115,6 @@ be necessary for hosts that are running VMware or Xen.)
 
 .. _apt-repo44:
 
-.. include:: _java_8_ubuntu.rst
 
 CloudStack apt repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -183,6 +170,8 @@ Management Server on CentOS/RHEL
 
 If you are using CentOS or RHEL, follow this procedure to upgrade your 
 packages. If not, skip to hypervisors section :ref:`upg_hyp_44`.
+
+.. include:: _timezone.rst
 
 .. note:: 
    **Community Packages:** This section assumes you're using the community
@@ -404,7 +393,6 @@ For KVM hosts, upgrade the ``cloudstack-agent`` package
    .. parsed-literal::
 
       $ sudo service cloudstack-agent stop
-      $ sudo killall jsvc
       $ sudo service cloudstack-agent start
 
 

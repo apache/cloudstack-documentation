@@ -53,13 +53,10 @@ Overview of Upgrade Steps:
     If you are not already using the |sysvm64-version| System VM template you will need to 
     upgrade your System VM template prior to performing the upgrade of the 
     CloudStack packages.
-    
-.. warning::
-    Even if you are currently running a **clean** install of CloudStack 4.11.3, you will need to explicitely register the 
-    |sysvm64-version| System VM template. If you are running CloudStack 4.11.3 that was upgraded from some of the previous versions,
-    you don't need to register a new |sysvm64-version| System VM template.
 
 .. include:: _sysvm_templates.rst
+
+.. include:: _java_version.rst
 
 Packages repository
 -------------------
@@ -103,24 +100,8 @@ Backup current database
 
    .. parsed-literal::
 
-      $ mysqldump -u root -p cloud > cloud-backup_`date '+%Y-%m-%d'`.sql
+      $ mysqldump -u root -p -R cloud > cloud-backup_`date '+%Y-%m-%d'`.sql
       $ mysqldump -u root -p cloud_usage > cloud_usage-backup_`date '+%Y-%m-%d'`.sql
-
-#. **(KVM Only)** If primary storage of type local storage is in use, the
-   path for this storage needs to be verified to ensure it passes new
-   validation. Check local storage by querying the cloud.storage\_pool
-   table:
-
-   .. parsed-literal::
-
-      $ mysql -u cloud -p -e "select id,name,path from cloud.storage_pool where pool_type='Filesystem'"
-
-   If local storage paths are found to have a trailing forward slash,
-   remove it:
-
-   .. parsed-literal::
-
-      $ mysql -u cloud -p -e 'update cloud.storage_pool set path="/var/lib/libvirt/images" where path="/var/lib/libvirt/images/"';
 
 
 .. _ubuntu411:
@@ -128,6 +109,8 @@ Backup current database
 
 Management Server
 -----------------
+
+.. include:: _timezone.rst
 
 Ubuntu
 ######
@@ -344,7 +327,6 @@ For KVM hosts, upgrade the ``cloudstack-agent`` package
    .. parsed-literal::
 
       $ sudo service cloudstack-agent stop
-      $ sudo killall jsvc
       $ sudo service cloudstack-agent start
 
 

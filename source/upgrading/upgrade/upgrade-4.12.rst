@@ -54,6 +54,8 @@ Overview of Upgrade Steps:
 
 .. include:: _sysvm_templates.rst
 
+.. include:: _java_version.rst
+
 Packages repository
 -------------------
 
@@ -96,24 +98,8 @@ Backup current database
 
    .. parsed-literal::
 
-      $ mysqldump -u root -p cloud > cloud-backup_`date '+%Y-%m-%d'`.sql
+      $ mysqldump -u root -p -R cloud > cloud-backup_`date '+%Y-%m-%d'`.sql
       $ mysqldump -u root -p cloud_usage > cloud_usage-backup_`date '+%Y-%m-%d'`.sql
-
-#. **(KVM Only)** If primary storage of type local storage is in use, the
-   path for this storage needs to be verified to ensure it passes new
-   validation. Check local storage by querying the cloud.storage\_pool
-   table:
-
-   .. parsed-literal::
-
-      $ mysql -u cloud -p -e "select id,name,path from cloud.storage_pool where pool_type='Filesystem'"
-
-   If local storage paths are found to have a trailing forward slash,
-   remove it:
-
-   .. parsed-literal::
-
-      $ mysql -u cloud -p -e 'update cloud.storage_pool set path="/var/lib/libvirt/images" where path="/var/lib/libvirt/images/"';
 
 
 .. _ubuntu412:
@@ -122,11 +108,13 @@ Backup current database
 Management Server
 -----------------
 
+.. include:: _timezone.rst
+
 Ubuntu
 ######
 
 If you are using Ubuntu, follow this procedure to upgrade your packages. If
-not, skip to step :ref:`rhel411`.
+not, skip to step :ref:`rhel412`.
 
 .. note::
    **Community Packages:** This section assumes you're using the community
@@ -147,13 +135,13 @@ This file should have one line, which contains:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu precise 4.12
+   deb http://download.cloudstack.org/ubuntu bionic 4.12
 
 We'll change it to point to the new package repository:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu precise |version|
+   deb http://download.cloudstack.org/ubuntu bionic |version|
 
 Setup the public key for the above repository:
 
@@ -214,7 +202,7 @@ This file should have content similar to the following:
 
    [apache-cloudstack]
    name=Apache CloudStack
-   baseurl=http://download.cloudstack.org/centos/6/4.12/
+   baseurl=http://download.cloudstack.org/centos/7/4.12/
    enabled=1
    gpgcheck=0
 
@@ -285,7 +273,7 @@ steps will not affect running guests in the cloud. These steps are
 required only for clouds using KVM as hosts and only on the KVM
 hosts.
 
-#. Configure the :ref:`APT repo <apt-repo411>` as detailed above.
+#. Configure the :ref:`APT repo <apt-repo412>` as detailed above.
 
 #. Stop the running agent.
 
@@ -320,7 +308,7 @@ KVM on CentOS/RHEL
 
 For KVM hosts, upgrade the ``cloudstack-agent`` package
 
-#. Configure the :ref:`rpm-repo411` as detailed above.
+#. Configure the :ref:`rpm-repo412` as detailed above.
 
    .. parsed-literal::
 
@@ -340,7 +328,6 @@ For KVM hosts, upgrade the ``cloudstack-agent`` package
    .. parsed-literal::
 
       $ sudo service cloudstack-agent stop
-      $ sudo killall jsvc
       $ sudo service cloudstack-agent start
 
 

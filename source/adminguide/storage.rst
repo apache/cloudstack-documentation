@@ -230,6 +230,15 @@ are not allocated on the physical storage device until you attach the
 volume. This optimization allows the CloudStack to provision the volume
 nearest to the guest that will use it when the first attachment is made.
 
+When creating a new volume from an existing ROOT volume snapshot,
+it is required to explicitly define a Disk offering (UI will offer only Disk
+offerings whose disk size is equal or bigger than the size of the snapshot).
+
+|volume-from-snap.PNG|
+
+When creating a new volume from an existing DATA volume snapshot, the disk offering
+associated with the snapshots (inherited from the original volume) is assigned
+to the new volume.
 
 Using Local Storage for Data Volumes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -657,7 +666,6 @@ to a VM.
 A completed snapshot is copied from primary storage to secondary
 storage, where it is stored until deleted or purged by newer snapshot.
 
-
 How to Snapshot a Volume
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -670,6 +678,21 @@ How to Snapshot a Volume
 #. Click the name of the volume you want to snapshot.
 
 #. Click the Snapshot button. |SnapshotButton.png|
+
+KVM volume Snapshot specifics
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In recent CloudStack versions, by default, creating a volume snapshot for a running VM is disabled
+due to a possible volume corruption in certain cases. To enable creating a volume snapshots while the VM
+is running, the global setting 'kvm.snapshot.enabled' must be set to 'True'.
+
+The volume snapshot creation has changed in recent versions:
+
+Under the hood, first, a full VM snapshot is taken - this means that during the taking of
+the VM snapshot the VM will be in the "Paused" state (while RAM memory is being written to the
+QCOW2 file), which means that VM will be unavailable from the network point of view.
+When the VM snapshot is created, VM is unpaused/resumed, the single volume snapshot is exported
+to the Secondary Storage, and then the VM snapshots is removed from the VM.
 
 
 Automatic Snapshot Creation and Retention
@@ -802,3 +825,5 @@ snapshot data.
    :alt: Detach Disk Button.
 .. |Migrateinstance.png| image:: /_static/images/migrate-instance.png
    :alt: button to migrate a volume.
+.. |volume-from-snap.PNG| image:: /_static/images/volume-from-snap.PNG
+   :alt: Offering is needed when creating a volume from the ROOT volume snapshot.   

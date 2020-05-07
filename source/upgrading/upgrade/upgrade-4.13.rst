@@ -18,6 +18,7 @@
 Upgrade Instruction from |version_to_upgrade|
 =============================================
 
+
 This section will show you how to upgrade from CloudStack |version_to_upgrade| to latest
 CloudStack |release|.
 
@@ -35,6 +36,7 @@ Overview of Upgrade Steps:
 ----------------------------
 
 #. Check any customisations and integrations
+#. Upload the |sysvm64-version| System VM template if not already using it.
 #. Stop all running management servers
 #. Backup CloudStack database (MySQL)
 #. Upgrade 1st CloudStack management server
@@ -47,9 +49,14 @@ Overview of Upgrade Steps:
 .. include:: _customisation_warnings.rst
 
 .. warning::
-    CloudStack |release| uses the same systemVM templates as |version_to_upgrade|,
-    so there is no need for a new systemVM template.
 
+    If you are not already using the |sysvm64-version| System VM template you will need to 
+    upgrade your System VM template prior to performing the upgrade of the 
+    CloudStack packages.
+
+.. include:: _sysvm_templates.rst
+
+.. include:: _java_version.rst
 
 Packages repository
 -------------------
@@ -93,24 +100,8 @@ Backup current database
 
    .. parsed-literal::
 
-      $ mysqldump -u root -p cloud > cloud-backup_`date '+%Y-%m-%d'`.sql
+      $ mysqldump -u root -p -R cloud > cloud-backup_`date '+%Y-%m-%d'`.sql
       $ mysqldump -u root -p cloud_usage > cloud_usage-backup_`date '+%Y-%m-%d'`.sql
-
-#. **(KVM Only)** If primary storage of type local storage is in use, the
-   path for this storage needs to be verified to ensure it passes new
-   validation. Check local storage by querying the cloud.storage\_pool
-   table:
-
-   .. parsed-literal::
-
-      $ mysql -u cloud -p -e "select id,name,path from cloud.storage_pool where pool_type='Filesystem'"
-
-   If local storage paths are found to have a trailing forward slash,
-   remove it:
-
-   .. parsed-literal::
-
-      $ mysql -u cloud -p -e 'update cloud.storage_pool set path="/var/lib/libvirt/images" where path="/var/lib/libvirt/images/"';
 
 
 .. _ubuntu413:
@@ -118,6 +109,8 @@ Backup current database
 
 Management Server
 -----------------
+
+.. include:: _timezone.rst
 
 Ubuntu
 ######
@@ -135,17 +128,20 @@ each system with CloudStack packages. This means all management
 servers, and any hosts that have the KVM agent (no changes should
 be necessary for hosts that are running VMware or Xen.)
 
-
-
-Make sure that your ``/etc/apt/sources.list.d/cloudstack.list`` file on
-any systems that have CloudStack packages installed points to version 4.13
+Edit your ``/etc/apt/sources.list.d/cloudstack.list`` file on
+any systems that have CloudStack packages installed to points to version |version|
 
 This file should have one line, which contains:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu precise 4.13
+   deb http://download.cloudstack.org/ubuntu bionic|version|
 
+Setup the public key for the above repository:
+
+.. parsed-literal::
+
+   wget -qO - http://download.cloudstack.org/release.asc | sudo apt-key add -
 
 #. Now update your apt package list:
 
@@ -168,7 +164,7 @@ This file should have one line, which contains:
 
 
 .. _rhel413:
-.. _fpo413:
+.. _rpm-repo413:
 
 CentOS/RHEL
 ##############
@@ -186,8 +182,8 @@ for each system with CloudStack packages. This means all
 management servers, and any hosts that have the KVM agent (no changes
 should be necessary for hosts that are running VMware or Xen.)
 
-Confirm your ``/etc/yum.repos.d/cloudstack.repo`` file on
-any systems that have CloudStack packages installed points to version 4.13.
+Change your ``/etc/yum.repos.d/cloudstack.repo`` file on
+any systems that have CloudStack packages installed to points to version |version|.
 
 This file should have content similar to the following:
 
@@ -195,7 +191,7 @@ This file should have content similar to the following:
 
    [apache-cloudstack]
    name=Apache CloudStack
-   baseurl=http://download.cloudstack.org/centos/7/4.13/
+   baseurl=http://download.cloudstack.org/centos/7/|version|/
    enabled=1
    gpgcheck=0
 
@@ -309,7 +305,6 @@ For KVM hosts, upgrade the ``cloudstack-agent`` package
    .. parsed-literal::
 
       $ sudo service cloudstack-agent stop
-      $ sudo killall jsvc
       $ sudo service cloudstack-agent start
 
 
@@ -327,3 +322,8 @@ Restart management services
    .. parsed-literal::
 
       $ sudo service cloudstack-usage start
+
+System-VMs and Virtual-Routers
+------------------------------
+
+.. include:: _sysvm_restart.rst
