@@ -51,7 +51,6 @@ Overview of Upgrade Steps:
 .. include:: _customisation_warnings.rst
 
 .. warning::
-
     If you are not already using the |sysvm64-version| System VM template you will need to 
     upgrade your System VM template prior to performing the upgrade of the 
     CloudStack packages.
