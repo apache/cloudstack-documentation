@@ -135,7 +135,7 @@ This file should have one line, which contains:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu bionic|version|
+   deb http://download.cloudstack.org/ubuntu bionic |version|
 
 Setup the public key for the above repository:
 
