@@ -871,7 +871,7 @@ There are four stages in the KVM rolling maintenance process:
 Administrators must define only one script per stage. In case a stage does not contain a script, it is skipped, continuing with the next stage. Administrators are responsible for defining and copying scripts into the hosts
 
 .. note::
-   The administrator will be responsible for the maintenance and copying of the hook scripts across all KVM hosts.
+   The administrator will be responsible for the maintenance and copying of the scripts across all KVM hosts.
 
 On all the KVM hosts to undergo rolling maintenance, there are two types of script execution approaches:
 
