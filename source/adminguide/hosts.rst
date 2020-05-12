@@ -960,7 +960,7 @@ The management server iterates through hosts in each cluster on the selected sco
 
 - The host is instructed to enter the maintenance mode. If the host doesn't enter the maintenance mode after ‘kvm.rolling.maintenance.wait.maintenance.timeout’ seconds an exception is thrown and the API will stop executing, but the host may eventually reach the maintenance mode as this is out of the control of the rolling maintenance API/code.
 
-· Execute maintenance script (if any) while the host is in maintenance.
+- Execute maintenance script (if any) while the host is in maintenance.
 
   - In case the maintenance script fails and the ‘forced’ parameter is not set, the rolling maintenance process fails, maintenance mode is cancelled and an error is reported. If the ‘forced’ parameter is set, the host is skipped and the iteration continues with the next host in the cluster
 
