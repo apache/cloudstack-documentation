@@ -24,6 +24,7 @@ Apache CloudStack |release| is a |version| LTS release with over 200 new feature
 
 •	New modern UI (Project Primate, Technical preview)
 •	Backup and Recovery framework [VMware]
+•	Backup and Recovery Provider for Veeam [VMware]
 •	VM ingestion [VMware]
 •	L2 network PVLAN enhancements [VMware]
 •	CloudStack Kubernetes Service
