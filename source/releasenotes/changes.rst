@@ -13,14 +13,345 @@
    specific language governing permissions and limitations
    under the License.
 
+Issues Fixed in 4.13.1.0
+========================
 
 
-Changes in |release| since 4.12
-===============================
+Issues Fixed in 4.13.1.0
+------------------------
 
-Apache CloudStack now uses GitHub <https://github.com/apache/cloudstack/issues>`_ 
-to track its issues. links to the GitHub pull requests have been included at the end
-of each section. 
+.. cssclass:: table-striped table-bordered table-hover
+
++-------------------------+----------+------------------------------------------------------------+
+| Version                 | Github   | Description                                                |
++=========================+==========+============================================================+
+| 4.13.1.0                | `#4042`_ | Fixed guest vlan range going missing when using zone       |
+|                         |          | wizard                                                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#4043`_ | Volume deleted during cold migration if Secondary Storage  |
+|                         |          | over 90% full                                              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#4033`_ | kvm: suspend/resume in deleting vm snapshot on kvm         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3969`_ | Snapshot deletion issues                                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#4025`_ | server: Cannot list affinity group if there are hosts      |
+|                         |          | dedicated to domain                                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#4002`_ | server: Search zone-wide storage pool when allocation      |
+|                         |          | algothrim is firstfitleastconsumed                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#4005`_ | Fixed create template from snapshot never returning        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3995`_ | UI bug fix: Cannot deploy VM from ISO                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3993`_ | Fixes raw templates not downloading                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3977`_ | With basic zone and VMware hypervisor, VR fails to start   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3973`_ | systemd dependency on db                                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3989`_ | server: export full response view for zones response for   |
+|                         |          | root admin                                                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3971`_ | Updated upgrade path                                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3932`_ | Prevent overflow on StatsCollector.java                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3948`_ | server: password is not displayed when reinstall a vm or   |
+|                         |          | reset ssh key                                              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3943`_ | vr: fix password server run with empty gateway in isolated |
+|                         |          | network with RVRs                                          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3651`_ | Fix simulator docker db deploy issue (apache#3397)         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3947`_ | server: fix database exception while searching network     |
+|                         |          | offerings                                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3935`_ | Fix VM with ISO attached migration issue                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3924`_ | Fixed error on data volumes lager than 2.14TB when         |
+|                         |          | creating instances on VMware                               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3911`_ | kvm: fix/optimize propogating configs                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3847`_ | VR: Fix Redundant VRouter guest network on wrong interface |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3898`_ | vrouter: reload keepalived instead of restart and fix      |
+|                         |          | password server issues when add/remove vpc tier            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3907`_ | Allow port 80/8080 accessible only from guest network      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3916`_ | server: fix issue while list ssh keypairs by keyword       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3913`_ | Fix dhcp infinite lease time                               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3904`_ | Avoid duplicate alerts when router state changes           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3903`_ | VR: Send VM password to all Running VRs in network/vpc     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3894`_ | api: Fix count and item issues returned by list APIs       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3905`_ | Fix network rules issue if default egress policy is Allow  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3491`_ | KVM: Propagating changes on host parameters to the agents  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3879`_ | kvm: Enable virtio drivers based on guest os display name  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3884`_ | kvm: fix exception in volume stats after storage migration |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3864`_ | Ignore site to site vpn status check on internallbvm       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3871`_ | Fixed duplicate id error when creating VM work jobs        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3873`_ | Fixed root volume resize from ui                           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3876`_ | server: use host record related to a ssvm/cpvm             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3870`_ | systemvm: list systemvm does not return agent state and    |
+|                         |          | version                                                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3854`_ | Install python-dnspython or python-dns to fix issue with   |
+|                         |          | cloudstack-setup-management                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3865`_ | Fixed default text missing from network selection on       |
+|                         |          | instance wizard                                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3857`_ | vr: add missing rule for port forwarding rule in vpc       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3851`_ | vpc: set traffic type of private gateway IP to Public to   |
+|                         |          | fix keepalived misconfiguration                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3867`_ | Usage event to store zone id while uploading template and  |
+|                         |          | volume                                                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3861`_ | test: check more connectivity in test_privategw_acl.py     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3803`_ | Bug fix : set restart_required to 0 after restarting       |
+|                         |          | network                                                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3791`_ | server: fix checking disk offering access for snapshot     |
+|                         |          | volume                                                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3832`_ | ui bug fix: cannot assign vms to internal lb in VPC        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3855`_ | kvm: Fix router migration issue when router has            |
+|                         |          | control/public nics onother physical network than guest    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3383`_ | template: copy md5 mismatch                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3819`_ | Clean up inactive iscsi sessions when VMs get moved due to |
+|                         |          | crashes                                                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3604`_ | Fix Policy Based Routing for private gateway static routes |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3840`_ | Fix listing management server by parameters                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3834`_ | Fix: The metrics view API response is not super-set of     |
+|                         |          | resources response keys                                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3848`_ | vr: fix vr in unknown state (more)                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3726`_ | vrouter: reload haproxy when cfg file is updated           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3846`_ | Fix for "Impossible to edit domain settings in UI"         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3845`_ | travis: use https based maven repo mirror                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3761`_ | [FIX] [BACKPORT] [4.13] Rethrow takeVMSnapshot() exception |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3758`_ | server: Fix NPE while update displayvm on vm with dynamic  |
+|                         |          | service offering                                           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3728`_ | server: double check host capacity when start/migrate a vm |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3727`_ | server: Capacity check should take vms in Migrating state  |
+|                         |          | into calculation                                           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3477`_ | RvR: Set up metadata/password/dhcp server on gateway IP    |
+|                         |          | instead of guest IP in RVR                                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3825`_ | fixed inconsistency of IP on VR when VR is destroyed and   |
+|                         |          | recrea…                                                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3759`_ | server: fix resource count error when upgrade a vm         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3806`_ | python/c++ formatting in java corrected                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3795`_ | Agent lb on svm                                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3776`_ | Add missing HA config keys                                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3778`_ | Endless settings on templates and instances                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3743`_ | only update powerstate if sure it is the latest            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3682`_ | ui: fix migrate host form no host popup                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3658`_ | client: fix for jetty session timeout                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3662`_ | Increase DHCP lease time to infinite                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3793`_ | ui: fix for truncated name for project accounts            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3597`_ | kvm: Logrotate should not touch agent.log                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3721`_ | network: cleanup dhcp/dns entries while remove a nic from  |
+|                         |          | vm                                                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3715`_ | break session only on illegal origin                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3755`_ | Added zone check for attach iso                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3729`_ | config: add isdynamic flag in configuration response       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3733`_ | filter hosts to query on zone wide storage                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3747`_ | convert protocal names to be found as labels               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3754`_ | Once again allow a VM to be on multiple networks from VPCs |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3767`_ | create template from snapshot regression (partly reverted) |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3765`_ | Honour promiscuous mode from networkOffering               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3617`_ | [KVM] Agent LB Fix: Connections from disabled KVM host     |
+|                         |          | agents are refused                                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3640`_ | consoleproxy: Enable console for vms in Stopping/Migrating |
+|                         |          | state                                                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3635`_ | server: acquire IPv4 address when add secondary IP to nic  |
+|                         |          | if IP is not specified                                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3636`_ | kvm: fix issue that network rules for secondary IPs are    |
+|                         |          | not applied                                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3678`_ | vpc: fix acl rule with protocol number is not applied      |
+|                         |          | correctly in vpc vr                                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3605`_ | fix issue #3590 'Revert Ceph/RBD Snapshot'                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3612`_ | systemvm: for ip route show command don't use the throw    |
+|                         |          | command                                                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3666`_ | snapshot failure diagnostics unhidden                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3620`_ | Small additional NuageVsp cleanups (#3146)                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3648`_ | Security Group: limit returns in get_bridge_physdev to 1   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3627`_ | server: Do NOT cleanup dhcp and dns when stop a vm         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3608`_ | server: Cleanup dhcp and dns entries only on expunging VM  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3574`_ | `service is-active` output check for "failed"              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.13.1.0                | `#3582`_ | systemvmtemplate: Fix Debian 9 iso url                     |
++-------------------------+----------+------------------------------------------------------------+
+97 Issues listed
+
+.. _`#4042`: https://github.com/apache/cloudstack/pull/4042
+.. _`#4043`: https://github.com/apache/cloudstack/pull/4043
+.. _`#4033`: https://github.com/apache/cloudstack/pull/4033
+.. _`#3969`: https://github.com/apache/cloudstack/pull/3969
+.. _`#4025`: https://github.com/apache/cloudstack/pull/4025
+.. _`#4002`: https://github.com/apache/cloudstack/pull/4002
+.. _`#4005`: https://github.com/apache/cloudstack/pull/4005
+.. _`#3995`: https://github.com/apache/cloudstack/pull/3995
+.. _`#3993`: https://github.com/apache/cloudstack/pull/3993
+.. _`#3977`: https://github.com/apache/cloudstack/pull/3977
+.. _`#3973`: https://github.com/apache/cloudstack/pull/3973
+.. _`#3989`: https://github.com/apache/cloudstack/pull/3989
+.. _`#3971`: https://github.com/apache/cloudstack/pull/3971
+.. _`#3932`: https://github.com/apache/cloudstack/pull/3932
+.. _`#3948`: https://github.com/apache/cloudstack/pull/3948
+.. _`#3943`: https://github.com/apache/cloudstack/pull/3943
+.. _`#3651`: https://github.com/apache/cloudstack/pull/3651
+.. _`#3947`: https://github.com/apache/cloudstack/pull/3947
+.. _`#3935`: https://github.com/apache/cloudstack/pull/3935
+.. _`#3924`: https://github.com/apache/cloudstack/pull/3924
+.. _`#3911`: https://github.com/apache/cloudstack/pull/3911
+.. _`#3847`: https://github.com/apache/cloudstack/pull/3847
+.. _`#3898`: https://github.com/apache/cloudstack/pull/3898
+.. _`#3907`: https://github.com/apache/cloudstack/pull/3907
+.. _`#3916`: https://github.com/apache/cloudstack/pull/3916
+.. _`#3913`: https://github.com/apache/cloudstack/pull/3913
+.. _`#3904`: https://github.com/apache/cloudstack/pull/3904
+.. _`#3903`: https://github.com/apache/cloudstack/pull/3903
+.. _`#3894`: https://github.com/apache/cloudstack/pull/3894
+.. _`#3905`: https://github.com/apache/cloudstack/pull/3905
+.. _`#3491`: https://github.com/apache/cloudstack/pull/3491
+.. _`#3879`: https://github.com/apache/cloudstack/pull/3879
+.. _`#3884`: https://github.com/apache/cloudstack/pull/3884
+.. _`#3864`: https://github.com/apache/cloudstack/pull/3864
+.. _`#3871`: https://github.com/apache/cloudstack/pull/3871
+.. _`#3873`: https://github.com/apache/cloudstack/pull/3873
+.. _`#3876`: https://github.com/apache/cloudstack/pull/3876
+.. _`#3870`: https://github.com/apache/cloudstack/pull/3870
+.. _`#3854`: https://github.com/apache/cloudstack/pull/3854
+.. _`#3865`: https://github.com/apache/cloudstack/pull/3865
+.. _`#3857`: https://github.com/apache/cloudstack/pull/3857
+.. _`#3851`: https://github.com/apache/cloudstack/pull/3851
+.. _`#3867`: https://github.com/apache/cloudstack/pull/3867
+.. _`#3861`: https://github.com/apache/cloudstack/pull/3861
+.. _`#3803`: https://github.com/apache/cloudstack/pull/3803
+.. _`#3791`: https://github.com/apache/cloudstack/pull/3791
+.. _`#3832`: https://github.com/apache/cloudstack/pull/3832
+.. _`#3855`: https://github.com/apache/cloudstack/pull/3855
+.. _`#3383`: https://github.com/apache/cloudstack/pull/3383
+.. _`#3819`: https://github.com/apache/cloudstack/pull/3819
+.. _`#3604`: https://github.com/apache/cloudstack/pull/3604
+.. _`#3840`: https://github.com/apache/cloudstack/pull/3840
+.. _`#3834`: https://github.com/apache/cloudstack/pull/3834
+.. _`#3848`: https://github.com/apache/cloudstack/pull/3848
+.. _`#3726`: https://github.com/apache/cloudstack/pull/3726
+.. _`#3846`: https://github.com/apache/cloudstack/pull/3846
+.. _`#3845`: https://github.com/apache/cloudstack/pull/3845
+.. _`#3761`: https://github.com/apache/cloudstack/pull/3761
+.. _`#3758`: https://github.com/apache/cloudstack/pull/3758
+.. _`#3728`: https://github.com/apache/cloudstack/pull/3728
+.. _`#3727`: https://github.com/apache/cloudstack/pull/3727
+.. _`#3477`: https://github.com/apache/cloudstack/pull/3477
+.. _`#3825`: https://github.com/apache/cloudstack/pull/3825
+.. _`#3759`: https://github.com/apache/cloudstack/pull/3759
+.. _`#3806`: https://github.com/apache/cloudstack/pull/3806
+.. _`#3795`: https://github.com/apache/cloudstack/pull/3795
+.. _`#3776`: https://github.com/apache/cloudstack/pull/3776
+.. _`#3778`: https://github.com/apache/cloudstack/pull/3778
+.. _`#3743`: https://github.com/apache/cloudstack/pull/3743
+.. _`#3682`: https://github.com/apache/cloudstack/pull/3682
+.. _`#3658`: https://github.com/apache/cloudstack/pull/3658
+.. _`#3662`: https://github.com/apache/cloudstack/pull/3662
+.. _`#3793`: https://github.com/apache/cloudstack/pull/3793
+.. _`#3597`: https://github.com/apache/cloudstack/pull/3597
+.. _`#3721`: https://github.com/apache/cloudstack/pull/3721
+.. _`#3715`: https://github.com/apache/cloudstack/pull/3715
+.. _`#3755`: https://github.com/apache/cloudstack/pull/3755
+.. _`#3729`: https://github.com/apache/cloudstack/pull/3729
+.. _`#3733`: https://github.com/apache/cloudstack/pull/3733
+.. _`#3747`: https://github.com/apache/cloudstack/pull/3747
+.. _`#3754`: https://github.com/apache/cloudstack/pull/3754
+.. _`#3767`: https://github.com/apache/cloudstack/pull/3767
+.. _`#3765`: https://github.com/apache/cloudstack/pull/3765
+.. _`#3617`: https://github.com/apache/cloudstack/pull/3617
+.. _`#3640`: https://github.com/apache/cloudstack/pull/3640
+.. _`#3635`: https://github.com/apache/cloudstack/pull/3635
+.. _`#3636`: https://github.com/apache/cloudstack/pull/3636
+.. _`#3678`: https://github.com/apache/cloudstack/pull/3678
+.. _`#3605`: https://github.com/apache/cloudstack/pull/3605
+.. _`#3612`: https://github.com/apache/cloudstack/pull/3612
+.. _`#3666`: https://github.com/apache/cloudstack/pull/3666
+.. _`#3620`: https://github.com/apache/cloudstack/pull/3620
+.. _`#3648`: https://github.com/apache/cloudstack/pull/3648
+.. _`#3627`: https://github.com/apache/cloudstack/pull/3627
+.. _`#3608`: https://github.com/apache/cloudstack/pull/3608
+.. _`#3574`: https://github.com/apache/cloudstack/pull/3574
+.. _`#3582`: https://github.com/apache/cloudstack/pull/3582
+
+Changes in 4.13.0.0 since 4.12.0.0
+===================================
 
 
 .. cssclass:: table-striped table-bordered table-hover

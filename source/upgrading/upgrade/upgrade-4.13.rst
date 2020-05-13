@@ -13,14 +13,14 @@
     specific language governing permissions and limitations
     under the License.
 
-
-.. |version_to_upgrade| replace:: 4.9.x
+.. |version_to_upgrade| replace:: 4.13.x
 
 Upgrade Instruction from |version_to_upgrade|
 =============================================
 
-This section will guide you from CloudStack |version_to_upgrade| to CloudStack
-|release|.
+
+This section will show you how to upgrade from CloudStack |version_to_upgrade| to latest
+CloudStack |release|.
 
 Any steps that are hypervisor-specific will be called out with a note.
 
@@ -37,14 +37,15 @@ Overview of Upgrade Steps:
 
 #. Check any customisations and integrations
 #. Upload the |sysvm64-version| System VM template if not already using it.
+#. Confirm Java 11 is the default Java version
 #. Stop all running management servers
 #. Backup CloudStack database (MySQL)
+#. Add "serverTimezone=UTC" to your "db.properties"
 #. Upgrade 1st CloudStack management server
 #. Update hypervisors specific dependencies
-#. Restart 1st management sserver
+#. Restart 1st management server
 #. Check that your upgraded environment works as expected
 #. Upgrade and restart the remaining management servers
-
 
 
 .. include:: _customisation_warnings.rst
@@ -70,11 +71,10 @@ Create RPM or Debian packages (as appropriate) and a repository from
 the |release| source, or check the Apache CloudStack downloads page at
 http://cloudstack.apache.org/downloads.html
 for package repositories supplied by community members. You will need
-them for :ref:`ubuntu49` or :ref:`rhel49` and :ref:`kvm49` hosts upgrade.
+them for :ref:`ubuntu413` or :ref:`kvm413` hosts upgrade.
 
 Instructions for creating packages from the CloudStack source are in the
 `CloudStack Installation Guide`_.
-
 
 Database Preparation
 --------------------
@@ -105,8 +105,8 @@ Backup current database
       $ mysqldump -u root -p cloud_usage > cloud_usage-backup_`date '+%Y-%m-%d'`.sql
 
 
-.. _ubuntu49:
-.. _apt-repo49:
+.. _ubuntu413:
+.. _apt-repo413:
 
 Management Server
 -----------------
@@ -117,7 +117,7 @@ Ubuntu
 ######
 
 If you are using Ubuntu, follow this procedure to upgrade your packages. If
-not, skip to step :ref:`rhel49`.
+not, skip to step :ref:`rhel413`.
 
 .. note::
    **Community Packages:** This section assumes you're using the community
@@ -126,33 +126,23 @@ not, skip to step :ref:`rhel49`.
 
 The first order of business will be to change the sources list for
 each system with CloudStack packages. This means all management
-servers, and any hosts that have the KVM agent. (No changes should
+servers, and any hosts that have the KVM agent (no changes should
 be necessary for hosts that are running VMware or Xen.)
 
-
-Start by opening ``/etc/apt/sources.list.d/cloudstack.list`` on
-any systems that have CloudStack packages installed.
+Edit your ``/etc/apt/sources.list.d/cloudstack.list`` file on
+any systems that have CloudStack packages installed to points to version |version|
 
 This file should have one line, which contains:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu precise 4.9
-
-We'll change it to point to the new package repository:
-
-.. parsed-literal::
-
-   deb http://download.cloudstack.org/ubuntu precise |version|
+   deb http://download.cloudstack.org/ubuntu bionic |version|
 
 Setup the public key for the above repository:
 
 .. parsed-literal::
 
    wget -qO - http://download.cloudstack.org/release.asc | sudo apt-key add -
-
-If you're using your own package repository, change this line to
-read as appropriate for your |version| repository.
 
 #. Now update your apt package list:
 
@@ -174,32 +164,27 @@ read as appropriate for your |version| repository.
       $ sudo apt-get upgrade cloudstack-usage
 
 
-.. _rhel49:
-.. _rpm-repo49:
+.. _rhel413:
+.. _rpm-repo413:
 
 CentOS/RHEL
 ##############
 
 If you are using CentOS or RHEL, follow this procedure to upgrade your
-packages. If not, skip to hypervisors section :ref:`upg_hyp_49`.
+packages. If not, skip to hypervisors section :ref:`upg_hyp_413`.
 
 .. note::
    **Community Packages:** This section assumes you're using the community
    supplied packages for CloudStack. If you've created your own packages and
    yum repository, substitute your own URL for the ones used in these examples.
 
-
-.. include:: _mysql_connector.rst
-
 The first order of business will be to change the yum repository
 for each system with CloudStack packages. This means all
-management servers, and any hosts that have the KVM agent.
+management servers, and any hosts that have the KVM agent (no changes
+should be necessary for hosts that are running VMware or Xen.)
 
-(No changes should be necessary for hosts that are running VMware
-or Xen.)
-
-Start by opening ``/etc/yum.repos.d/cloudstack.repo`` on any
-systems that have CloudStack packages installed.
+Change your ``/etc/yum.repos.d/cloudstack.repo`` file on
+any systems that have CloudStack packages installed to points to version |version|.
 
 This file should have content similar to the following:
 
@@ -207,26 +192,15 @@ This file should have content similar to the following:
 
    [apache-cloudstack]
    name=Apache CloudStack
-   baseurl=http://download.cloudstack.org/centos/6/4.9/
+   baseurl=http://download.cloudstack.org/centos/$releasever/|version|/
    enabled=1
    gpgcheck=0
-
-If you are using the community provided package repository, change the base url to:
-
-.. parsed-literal::
-
-   http://download.cloudstack.org/centos/$releasever/|version|/
 
 Setup the GPG public key if you wish to enable ``gpgcheck=1``:
 
 .. parsed-literal::
 
    rpm --import http://download.cloudstack.org/RPM-GPG-KEY
-
-
-
-If you're using your own package repository, change this line to
-read as appropriate for your |version| repository.
 
 #. Now that you have the repository configured, it's time to upgrade the
    ``cloudstack-management``.
@@ -241,7 +215,7 @@ read as appropriate for your |version| repository.
 
       $ sudo yum upgrade cloudstack-usage
 
-.. _upg_hyp_49:
+.. _upg_hyp_413:
 
 Upgrade Hypervisors
 -------------------
@@ -249,89 +223,22 @@ Upgrade Hypervisors
 Hypervisor: XenServer
 #####################
 
-**(XenServer only)** Copy vhd-utils file on CloudStack management servers.
-Copy the file `vhd-utils <http://download.cloudstack.org/tools/vhd-util>`_
-to ``/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver``.
 
-.. parsed-literal::
+No additional steps are required for XenServer Hypervisor for this upgrade.
 
-   wget -P /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver \
-   http://download.cloudstack.org/tools/vhd-util
 
 Hypervisor: VMware
 ###################
 
 .. warning::
-   For VMware hypervisor CloudStack management server packages must be
-   build using "noredist". Refer to :ref:`building-noredist`
-
-**(VMware only)** Additional steps are required for each VMware cluster.
-These steps will not affect running guests in the cloud. These steps
-are required only for clouds using VMware clusters:
-
-#. Stop the Management Server:
-
-   .. parsed-literal::
-
-      $ sudo service cloudstack-management stop
-
-#. Generate the encrypted equivalent of your vCenter password:
-
-   .. parsed-literal::
-
-      $ java -classpath /usr/share/cloudstack-common/lib/jasypt-1.9.2.jar org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI encrypt.sh input="_your_vCenter_password_" password="`cat /etc/cloudstack/management/key`" verbose=false
-
-Store the output from this step, we need to add this in
-cluster\_details table and vmware\_data\_center tables in place of
-the plain text password
-
-#. Find the ID of the row of cluster\_details table that you have to
-   update:
-
-   .. parsed-literal::
-
-      $ mysql -u <username> -p<password>
-
-   .. parsed-literal::
-
-      select * from cloud.cluster_details;
-
-#. Update the plain text password with the encrypted one
-
-   .. parsed-literal::
-
-      update cloud.cluster_details set value = '_ciphertext_from_step_1_'
-      where id = _id_from_step_2_;
-
-#. Confirm that the table is updated:
-
-   .. parsed-literal::
-
-      select * from cloud.cluster_details;
-
-#. Find the ID of the correct row of vmware\_data\_center that you
-    want to update
-
-   .. parsed-literal::
-
-      select * from cloud.vmware_data_center;
-
-#. update the plain text password with the encrypted one:
-
-   .. parsed-literal::
-
-      update cloud.vmware_data_center set password = '_ciphertext_from_step_1_'
-      where id = _id_from_step_5_;
-
-#. Confirm that the table is updated:
-
-   .. parsed-literal::
-
-      select * from cloud.vmware_data_center;
+   For VMware hypervisor, CloudStack management server packages must be
+   built using "noredist". Refer to :ref:`building-noredist`.
 
 
-.. _kvm49:
+No additional steps are requried for the VMware Hypervisor for this upgrade.
 
+
+.. _kvm413:
 
 Hypervisor: KVM
 #################
@@ -344,7 +251,7 @@ steps will not affect running guests in the cloud. These steps are
 required only for clouds using KVM as hosts and only on the KVM
 hosts.
 
-#. Configure the :ref:`APT repo <apt-repo49>` as detailed above.
+#. Configure the :ref:`APT repo <apt-repo413>` as detailed above.
 
 #. Stop the running agent.
 
@@ -359,7 +266,7 @@ hosts.
       $ sudo apt-get upgrade cloudstack-agent
 
 #. Verify that the file ``/etc/cloudstack/agent/environment.properties`` has a
-    line that reads:
+   line that reads:
 
    .. parsed-literal::
 
@@ -379,7 +286,7 @@ KVM on CentOS/RHEL
 
 For KVM hosts, upgrade the ``cloudstack-agent`` package
 
-#. Configure the :ref:`rpm-repo49` as detailed above.
+#. Configure the :ref:`rpm-repo413` as detailed above.
 
    .. parsed-literal::
 
@@ -416,7 +323,6 @@ Restart management services
    .. parsed-literal::
 
       $ sudo service cloudstack-usage start
-
 
 System-VMs and Virtual-Routers
 ------------------------------
