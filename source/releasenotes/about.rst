@@ -17,7 +17,7 @@
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is a |version| LTS release with over 15 new features, and over 200 enhancements and fixes since 4.13.  Highlights include:
+Apache CloudStack |release| is a |version| LTS release with over 15 major new features, and over 200 enhancements and fixes since 4.13.  Highlights include:
 
 •	New modern UI (Project Primate, Technical preview)
 •	Backup and Recovery framework
@@ -28,7 +28,6 @@ Apache CloudStack |release| is a |version| LTS release with over 15 new features
 •	UEFI support
 •	KVM rolling maintenance
 •	Enable Direct Download for systemVM templates
-•	Template Direct Download support for Local and SharedMountPoint storages
 •	VR health checks
 •	Download logs and diagnostics data from SSVM/CPVM/VRs
 •	Enable additional configuration metadata to virtual machines
