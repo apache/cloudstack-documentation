@@ -23,15 +23,15 @@ since 4.13.
 Apache CloudStack |release| is a |version| LTS release with over 200 new features, enhancements and fixes since 4.13, such as enhanced hypervisor support, performance increases and more user configurable controls.  Highlights include:
 
 •	New modern UI (Project Primate, Technical preview)
-•	Backup and Recovery framework [VMware]
-•	Backup and Recovery Provider for Veeam [VMware]
-•	VM ingestion [VMware]
-•	L2 network PVLAN enhancements [VMware]
+•	Backup and Recovery framework
+•	Backup and Recovery Provider for Veeam
+•	VM ingestion
+•	L2 network PVLAN enhancements
 •	CloudStack Kubernetes Service
 •	UEFI support
 •	KVM rolling maintenance
-•	Enable Direct Download for systemVM templates [KMV]
-•	Template Direct Download support for Local and SharedMountPoint storages [KVM]
+•	Enable Direct Download for systemVM templates
+•	Template Direct Download support for Local and SharedMountPoint storages
 •	VR health checks
 •	Download logs and diagnostics data from SSVM/CPVM/VRs
 •	Enable additional configuration metadata to virtual machines
