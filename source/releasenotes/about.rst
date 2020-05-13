@@ -17,10 +17,7 @@
 What's New in |release|
 =======================
 
-Version |release| is a |version| LTS release adding almost *XXX* new features, enhancements and fixes 
-since 4.13. 
-
-Apache CloudStack |release| is a |version| LTS release with over 200 new features, enhancements and fixes since 4.13, such as enhanced hypervisor support, performance increases and more user configurable controls.  Highlights include:
+Apache CloudStack |release| is a |version| LTS release with over 15 new features, and over 200 enhancements and fixes since 4.13.  Highlights include:
 
 •	New modern UI (Project Primate, Technical preview)
 •	Backup and Recovery framework
