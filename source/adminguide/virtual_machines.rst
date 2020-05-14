@@ -712,7 +712,7 @@ To delete an affinity group:
 
 
 Changing a VM's Base Image
-----------------------------
+--------------------------
 
 Every VM is created from a base image, which is a template or ISO which
 has been created and stored in CloudStack. Both cloud administrators and
@@ -745,7 +745,7 @@ already in use by the VM.
 
 
 Advanced VM Instance Settings
--------------------------------
+-----------------------------
 
 Each user VM has a set of "details" associated with it (as visible via listVirtualMachine API call) - those "details" are shown on the "Settings" tab of the VM in the GUI (words "setting(s)" and "detail(s)" are here used interchangeably). 
 
@@ -777,7 +777,7 @@ An example list of settings as well as their possible values are shown on the im
 
 
 Virtual Machine Snapshots
-==========================
+=========================
 
 (Supported on VMware, XenServer and KVM (NFS only))
 
@@ -818,7 +818,7 @@ VMware documentation and the VMware Knowledge Base, especially
 
 
 Limitations on VM Snapshots
-----------------------------
+---------------------------
 
 -  If a VM has some stored snapshots, you can't attach new volume to the
    VM or delete any existing volumes. If you change the volumes on the
@@ -839,7 +839,7 @@ Limitations on VM Snapshots
 
 
 Configuring VM Snapshots
---------------------------
+------------------------
 
 The cloud administrator can use global configuration variables to
 control the behavior of VM snapshots. To set these variables, go through
@@ -856,7 +856,7 @@ vmsnapshot.create.wait Number of seconds to wait for a snapshot job to succeed b
 
 
 Using VM Snapshots
---------------------
+------------------
 
 To create a VM snapshot using the CloudStack UI:
 
@@ -920,16 +920,13 @@ Importing Virtual Machines
 .. include:: virtual_machines/VM_Ingestion.rst
 
 
-
 Virtual Machine Backups (Backup and Recovery Feature)
-======================================================
+=====================================================
 
 .. include:: backup_and_recovery.rst
 
-
-
 Using SSH Keys for Authentication
-===================================
+=================================
 
 In addition to the username and password authentication, CloudStack
 supports using SSH keys to log in to the cloud infrastructure for
@@ -942,7 +939,7 @@ files. Using a single SSH key pair, you can manage multiple instances.
 
 
 Creating an Instance Template that Supports SSH Keys
---------------------------------------------------------
+----------------------------------------------------
 
 Create an instance template that supports SSH Keys.
 
@@ -980,7 +977,7 @@ Create an instance template that supports SSH Keys.
 
 
 Creating the SSH Keypair
---------------------------
+------------------------
 
 You must make a call to the createSSHKeyPair api method. You can either
 use the CloudStack Python API library or the curl commands to make the
@@ -1039,13 +1036,13 @@ keypair called "keypair-doc" for the admin account in the root domain:
 
 
 Creating an Instance
-----------------------
+--------------------
 
 After you save the SSH keypair file, you must create an instance by
-using the template that you created at `Section 5.2.1, “ Creating an
+using the template that you created at `Section 5.2.1, “ Creating an
 Instance Template that Supports SSH Keys” <#create-ssh-template>`__.
 Ensure that you use the same SSH key name that you created at
-`Section 5.2.2, “Creating the SSH Keypair” <#create-ssh-keypair>`__.
+`Section 5.2.2, “Creating the SSH Keypair” <#create-ssh-keypair>`__.
 
 .. note:: 
    You cannot create the instance by using the GUI at this time and 
@@ -1079,7 +1076,7 @@ The -i parameter tells the ssh client to use a ssh key found at
 
 
 Resetting SSH Keys
---------------------------
+------------------
 
 With the API command resetSSHKeyForVirtualMachine, a user can set or
 reset the SSH keypair assigned to a virtual machine. A lost or
@@ -1091,7 +1088,7 @@ call resetSSHKeyForVirtualMachine.
 
 
 Assigning GPU/vGPU to Guest VMs
-=================================
+===============================
 
 CloudStack can deploy guest VMs with Graphics Processing Unit (GPU) or Virtual
 Graphics Processing Unit (vGPU) capabilities on XenServer hosts. At the time of
@@ -1145,7 +1142,7 @@ CloudStack provides you with the following capabilities:
   in case of GRID cards, and capacity of the cards.
 
 Prerequisites and System Requirements
-------------------------------------------
+-------------------------------------
 
 Before proceeding, ensure that you have these prerequisites:
 
@@ -1194,7 +1191,7 @@ Before continuing with configuration, consider the following:
 - Notification thresholds for GPU resource is not supported.
 
 Supported GPU Devices
-------------------------
+---------------------
 
 .. cssclass:: table-striped table-bordered table-hover
 

@@ -59,6 +59,8 @@ http://markmail.org/message/f42kqr3mx4r4hgih
 
 .. include:: _sysvm_templates.rst
 
+.. include:: _java_version.rst
+
 Packages repository
 -------------------
 
@@ -102,24 +104,8 @@ Backup current database
 
    .. parsed-literal::
 
-      $ mysqldump -u root -p cloud > cloud-backup_`date '+%Y-%m-%d'`.sql
+      $ mysqldump -u root -p -R cloud > cloud-backup_`date '+%Y-%m-%d'`.sql
       $ mysqldump -u root -p cloud_usage > cloud_usage-backup_`date '+%Y-%m-%d'`.sql
-
-#. **(KVM Only)** If primary storage of type local storage is in use, the
-   path for this storage needs to be verified to ensure it passes new
-   validation. Check local storage by querying the cloud.storage\_pool
-   table:
-
-   .. parsed-literal::
-
-      $ mysql -u cloud -p -e "select id,name,path from cloud.storage_pool where pool_type='Filesystem'"
-
-   If local storage paths are found to have a trailing forward slash,
-   remove it:
-
-   .. parsed-literal::
-
-      $ mysql -u cloud -p -e 'update cloud.storage_pool set path="/var/lib/libvirt/images" where path="/var/lib/libvirt/images/"';
 
 
 .. _ubuntu410:
@@ -127,6 +113,8 @@ Backup current database
 
 Management Server
 -----------------
+
+.. include:: _timezone.rst
 
 Ubuntu
 ######
@@ -145,7 +133,6 @@ each system with CloudStack packages. This means all management
 servers, and any hosts that have the KVM agent. (No changes should
 be necessary for hosts that are running VMware or Xen.)
 
-.. include:: _java_8_ubuntu.rst
 
 Start by opening ``/etc/apt/sources.list.d/cloudstack.list`` on
 any systems that have CloudStack packages installed.
@@ -161,6 +148,8 @@ We'll change it to point to the new package repository:
 .. parsed-literal::
 
    deb http://download.cloudstack.org/ubuntu precise |version|
+
+Please note that CloudStack |version| doesn't support Ubuntu 12.04/Precise and it's recommended to upgrade to Ubuntu 18.04
 
 Setup the public key for the above repository:
 
@@ -231,6 +220,8 @@ If you are using the community provided package repository, change the base url 
 .. parsed-literal::
 
    http://download.cloudstack.org/centos/$releasever/|version|/
+
+Please note that CloudStack |version| doesn't support CentOS 6 and it's recommended to upgrade to CentOS 7.
 
 Setup the GPG public key if you wish to enable ``gpgcheck=1``:
 
@@ -414,7 +405,6 @@ For KVM hosts, upgrade the ``cloudstack-agent`` package
    .. parsed-literal::
 
       $ sudo service cloudstack-agent stop
-      $ sudo killall jsvc
       $ sudo service cloudstack-agent start
 
 
@@ -432,3 +422,8 @@ Restart management services
    .. parsed-literal::
 
       $ sudo service cloudstack-usage start
+      
+System-VMs and Virtual-Routers
+------------------------------
+
+.. include:: _sysvm_restart.rst
