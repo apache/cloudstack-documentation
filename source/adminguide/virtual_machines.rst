@@ -13,9 +13,8 @@
    specific language governing permissions and limitations
    under the License.
    
-
 About Working with Virtual Machines
------------------------------------
+===================================
 
 CloudStack provides administrators with complete control over the
 lifecycle of all guest VMs executing in the cloud. CloudStack provides
@@ -68,96 +67,46 @@ CloudStack will restart it. To shut down an HA-enabled VM, you must go
 through the CloudStack UI or API.
 
 
-Best Practices for Virtual Machines
------------------------------------
 
-For VMs to work as expected and provide excellent service, follow these 
-guidelines.
+.. note::
+   **Monitor VMs for Max Capacity**
 
+   The CloudStack administrator should monitor the total number of VM
+   instances in each cluster, and disable allocation to the cluster if the
+   total is approaching the maximum that the hypervisor can handle. Be sure
+   to leave a safety margin to allow for the possibility of one or more
+   hosts failing, which would increase the VM load on the other hosts as
+   the VMs are automatically redeployed. Consult the documentation for your
+   chosen hypervisor to find the maximum permitted number of VMs per host,
+   then use CloudStack global configuration settings to set this as the
+   default limit. Monitor the VM activity in each cluster at all times.
+   Keep the total number of VMs below a safe level that allows for the
+   occasional host failure. For example, if there are N hosts in the
+   cluster, and you want to allow for one host in the cluster to be down at
+   any given time, the total number of VM instances you can permit in the
+   cluster is at most (N-1) \* (per-host-limit). Once a cluster reaches
+   this number of VMs, use the CloudStack UI to disable allocation of more
+   VMs to the cluster.
 
-Monitor VMs for Max Capacity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The CloudStack administrator should monitor the total number of VM
-instances in each cluster, and disable allocation to the cluster if the
-total is approaching the maximum that the hypervisor can handle. Be sure
-to leave a safety margin to allow for the possibility of one or more
-hosts failing, which would increase the VM load on the other hosts as
-the VMs are automatically redeployed. Consult the documentation for your
-chosen hypervisor to find the maximum permitted number of VMs per host,
-then use CloudStack global configuration settings to set this as the
-default limit. Monitor the VM activity in each cluster at all times.
-Keep the total number of VMs below a safe level that allows for the
-occasional host failure. For example, if there are N hosts in the
-cluster, and you want to allow for one host in the cluster to be down at
-any given time, the total number of VM instances you can permit in the
-cluster is at most (N-1) \* (per-host-limit). Once a cluster reaches
-this number of VMs, use the CloudStack UI to disable allocation of more
-VMs to the cluster.
-
-
-Install Required Tools and Drivers
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Be sure the following are installed on each VM:
-
--  For XenServer, install PV drivers and Xen tools on each VM. This will
-   enable live migration and clean guest shutdown. Xen tools are
-   required in order for dynamic CPU and RAM scaling to work.
-
--  For vSphere, install VMware Tools on each VM. This will enable
-   console view to work properly. VMware Tools are required in order for
-   dynamic CPU and RAM scaling to work.
-
-To be sure that Xen tools or VMware Tools is installed, use one of the
-following techniques:
-
--  Create each VM from a template that already has the tools installed;
-   or,
-
--  When registering a new template, the administrator or user can
-   indicate whether tools are installed on the template. This can be
-   done through the UI or using the updateTemplate API; or,
-
--  If a user deploys a virtual machine with a template that does not
-   have Xen tools or VMware Tools, and later installs the tools on the
-   VM, then the user can inform CloudStack using the
-   updateVirtualMachine API. After installing the tools and updating the
-   virtual machine, stop and start the VM.
 
 
 VM Lifecycle
-------------
+============
 
 Virtual machines can be in the following states:
 
-|basic-deployment.png|
+- Created
+- Running
+- Stopped
+- Destroyed
+- Expunged
 
-Once a virtual machine is destroyed, it cannot be recovered. All the
-resources used by the virtual machine will be reclaimed by the system.
-This includes the virtual machine’s IP address.
+With the intermediate states of
 
-A stop will attempt to gracefully shut down the operating system, which
-typically involves terminating all the running applications. If the
-operation system cannot be stopped, it will be forcefully terminated.
-This has the same effect as pulling the power cord to a physical
-machine.
-
-A reboot is a stop followed by a start.
-
-CloudStack preserves the state of the virtual machine hard disk until
-the machine is destroyed.
-
-A running virtual machine may fail because of hardware or network
-issues. A failed virtual machine is in the down state.
-
-The system places the virtual machine into the down state if it does not
-receive the heartbeat from the hypervisor for three minutes.
-
-The user can manually restart the virtual machine from the down state.
-
-The system will start the virtual machine from the down state
-automatically if the virtual machine is marked as HA-enabled.
+- Creating
+- Starting
+- Stopping
+- Expunging
 
 
 Creating VMs
@@ -205,7 +154,9 @@ To create a VM from a template:
 To create a VM from an ISO:
 
 .. note:: 
-   (XenServer) Windows VMs running on XenServer require PV drivers, 
+   **XenServer** 
+
+   Windows VMs running on XenServer require PV drivers, 
    which may be provided in the template or added after the VM is 
    created. The PV drivers are necessary for essential management 
    functions such as mounting additional volumes and ISO images, 
@@ -222,6 +173,37 @@ To create a VM from an ISO:
 #. Select ISO Boot, and follow the steps in the wizard.
 
 #. Click Submit and your VM will be created and started.
+
+
+
+Install Required Tools and Drivers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Be sure the following are installed on each VM:
+
+-  For XenServer, install PV drivers and Xen tools on each VM. This will
+   enable live migration and clean guest shutdown. Xen tools are
+   required in order for dynamic CPU and RAM scaling to work.
+
+-  For vSphere, install VMware Tools on each VM. This will enable
+   console view to work properly. VMware Tools are required in order for
+   dynamic CPU and RAM scaling to work.
+
+To be sure that Xen tools or VMware Tools is installed, use one of the
+following techniques:
+
+-  Create each VM from a template that already has the tools installed;
+   or,
+
+-  When registering a new template, the administrator or user can
+   indicate whether tools are installed on the template. This can be
+   done through the UI or using the updateTemplate API; or,
+
+-  If a user deploys a virtual machine with a template that does not
+   have Xen tools or VMware Tools, and later installs the tools on the
+   VM, then the user can inform CloudStack using the
+   updateVirtualMachine API. After installing the tools and updating the
+   virtual machine, stop and start the VM.
 
 
 Accessing VMs
@@ -265,296 +247,53 @@ Once a VM instance is created, you can stop, restart, or delete it as
 needed. In the CloudStack UI, click Instances, select the VM, and use
 the Stop, Start, Reboot, and Destroy buttons.
 
+A stop will attempt to gracefully shut down the operating system, via 
+an ACPI 'stop' command which is similar to pressing the soft power switch
+on a physical server. If the operating system cannot be stopped, it will
+be forcefully terminated. This has the same effect as pulling out the power
+cord from a physical machine.
+
+A reboot should not be considered as a stop followed by a start. In CloudStack,
+a start command reconfigures the virtual machine to the stored parameters in 
+CloudStack's database.  The reboot process does not do this.
+
 When starting a VM, admin users have the option to specify a pod, cluster, or host.
 
 
-Assigning VMs to Hosts
-----------------------
-
-At any point in time, each virtual machine instance is running on a
-single host. How does CloudStack determine which host to place a VM on?
-There are several ways:
-
--  Automatic default host allocation. CloudStack can automatically pick
-   the most appropriate host to run each virtual machine.
-
--  Instance type preferences. CloudStack administrators can specify that
-   certain hosts should have a preference for particular types of guest
-   instances. For example, an administrator could state that a host
-   should have a preference to run Windows guests. The default host
-   allocator will attempt to place guests of that OS type on such hosts
-   first. If no such host is available, the allocator will place the
-   instance wherever there is sufficient physical capacity.
-
--  Vertical and horizontal allocation. Vertical allocation consumes all
-   the resources of a given host before allocating any guests on a
-   second host. This reduces power consumption in the cloud. Horizontal
-   allocation places a guest on each host in a round-robin fashion. This
-   may yield better performance to the guests in some cases.
-
--  Admin users preferences. Administrators have the option to specify a
-   pod, cluster, or host to run the VM in. CloudStack will then select
-   a host within the given infrastructure.
-
--  End user preferences. Users can not control exactly which host will
-   run a given VM instance, but they can specify a zone for the VM.
-   CloudStack is then restricted to allocating the VM only to one of the
-   hosts in that zone.
-
--  Host tags. The administrator can assign tags to hosts. These tags can
-   be used to specify which host a VM should use. The CloudStack
-   administrator decides whether to define host tags, then create a
-   service offering using those tags and offer it to the user.
-
--  Affinity groups. By defining affinity groups and assigning VMs to
-   them, the user or administrator can influence (but not dictate) which
-   VMs should run on separate hosts. This feature is to let users
-   specify that certain VMs won't be on the same host.
-
--  CloudStack also provides a pluggable interface for adding new
-   allocators. These custom allocators can provide any policy the
-   administrator desires.
-
-
-Affinity Groups
-~~~~~~~~~~~~~~~
-
-By defining affinity groups and assigning VMs to them, the user or
-administrator can influence (but not dictate) which VMs should run on
-separate hosts. This feature is to let users specify that VMs with the
-same “host anti-affinity” type won’t be on the same host. This serves to
-increase fault tolerance. If a host fails, another VM offering the same
-service (for example, hosting the user's website) is still up and
-running on another host.
-
-The scope of an affinity group is per user account.
-
-
-Creating a New Affinity Group
-'''''''''''''''''''''''''''''
-
-To add an affinity group:
-
-#. Log in to the CloudStack UI as an administrator or user.
-
-#. In the left navigation bar, click Affinity Groups.
-
-#. Click Add affinity group. In the dialog box, fill in the following
-   fields:
-
-   -  Name. Give the group a name.
-
-   -  Description. Any desired text to tell more about the purpose of
-      the group.
-
-   -  Type. The only supported type shipped with CloudStack is Host
-      Anti-Affinity. This indicates that the VMs in this group should
-      avoid being placed on the same host with each other. If you see
-      other types in this list, it means that your installation of
-      CloudStack has been extended with customized affinity group
-      plugins.
-
-
-Assign a New VM to an Affinity Group
-''''''''''''''''''''''''''''''''''''
-
-To assign a new VM to an affinity group:
-
--  Create the VM as usual, as described in `“Creating
-   VMs” <virtual_machines.html#creating-vms>`_. In the Add Instance 
-   wizard, there is a new Affinity tab where you can select the 
-   affinity group.
-
-
-Change Affinity Group for an Existing VM
-''''''''''''''''''''''''''''''''''''''''
-
-To assign an existing VM to an affinity group:
-
-#. Log in to the CloudStack UI as an administrator or user.
-
-#. In the left navigation bar, click Instances.
-
-#. Click the name of the VM you want to work with.
-
-#. Stop the VM by clicking the Stop button.
-
-#. Click the Change Affinity button. |change-affinity-button.png|
-
-
-View Members of an Affinity Group
-'''''''''''''''''''''''''''''''''
-
-To see which VMs are currently assigned to a particular affinity group:
-
-#. In the left navigation bar, click Affinity Groups.
-
-#. Click the name of the group you are interested in.
-
-#. Click View Instances. The members of the group are listed.
-
-   From here, you can click the name of any VM in the list to access all
-   its details and controls.
-
-
-Delete an Affinity Group
-''''''''''''''''''''''''
-
-To delete an affinity group:
-
-#. In the left navigation bar, click Affinity Groups.
-
-#. Click the name of the group you are interested in.
-
-#. Click Delete.
-
-   Any VM that is a member of the affinity group will be disassociated
-   from the group. The former group members will continue to run
-   normally on the current hosts, but if the VM is restarted, it will no
-   longer follow the host allocation rules from its former affinity
-   group.
-
-
-Virtual Machine Snapshots
+Deleting VMs
 -------------------------
 
-(Supported on VMware, XenServer and KVM (NFS only))
+Users can delete their own virtual machines. A running virtual machine
+will be abruptly stopped before it is deleted. Administrators can delete
+any virtual machines.
 
-In addition to the existing CloudStack ability to snapshot individual VM
-volumes, you can take a VM snapshot to preserve all the VM's data
-volumes as well as (optionally) its CPU/memory state. This is useful for
-quick restore of a VM. For example, you can snapshot a VM, then make
-changes such as software upgrades. If anything goes wrong, simply
-restore the VM to its previous state using the previously saved VM
-snapshot.
+To delete a virtual machine:
 
-The snapshot is created using the hypervisor's native snapshot facility.
-The VM snapshot includes not only the data volumes, but optionally also
-whether the VM is running or turned off (CPU state) and the memory
-contents. The snapshot is stored in CloudStack's primary storage.
+#. Log in to the CloudStack UI as a user or admin.
 
-VM snapshots can have a parent/child relationship. Each successive
-snapshot of the same VM is the child of the snapshot that came before
-it. Each time you take an additional snapshot of the same VM, it saves
-only the differences between the current state of the VM and the state
-stored in the most recent previous snapshot. The previous snapshot
-becomes a parent, and the new snapshot is its child. It is possible to
-create a long chain of these parent/child snapshots, which amount to a
-"redo" record leading from the current state of the VM back to the
-original.
+#. In the left navigation, click Instances.
 
-After VM snapshots are created, they can be tagged with a key/value pair,
-like many other resources in CloudStack.
+#. Choose the VM that you want to delete.
 
-KVM supports VM snapshots when using NFS shared storage. If raw block storage
-is used (i.e. Ceph), then VM snapshots are not possible, since there is no possibility
-to write RAM memory content anywhere.
+#. Click the Destroy Instance button. |Destroyinstance.png|
 
-If you need more information about VM snapshots on VMware, check out the
-VMware documentation and the VMware Knowledge Base, especially
-`Understanding virtual machine snapshots 
-<http://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&externalId=1015180>`_.
+#. Optionally both expunging and the deletion of any attached volumes can be enabled.
 
+When a virtual machine is **destroyed**, it can no longer be seen by the end user,
+however, it can be seen (and recovered) by a root admin.  In this state it still 
+consumes logical resources.  Global settings control the maximum time from a VM
+being destroyed, to the physical disks being removed. When the VM and its rooot disk
+have been deleted, the VM is said to have been expunged.
 
-Limitations on VM Snapshots
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Once a virtual machine is **expunged**, it cannot be recovered. All the
+resources used by the virtual machine will be reclaimed by the system,
+This includes the virtual machine’s IP address.  
 
--  If a VM has some stored snapshots, you can't attach new volume to the
-   VM or delete any existing volumes. If you change the volumes on the
-   VM, it would become impossible to restore the VM snapshot which was
-   created with the previous volume structure. If you want to attach a
-   volume to such a VM, first delete its snapshots.
-
--  VM snapshots which include both data volumes and memory can't be kept
-   if you change the VM's service offering. Any existing VM snapshots of
-   this type will be discarded.
-
--  You can't make a VM snapshot at the same time as you are taking a
-   volume snapshot.
-
--  You should use only CloudStack to create VM snapshots on hosts
-   managed by CloudStack. Any snapshots that you make directly on the
-   hypervisor will not be tracked in CloudStack.
-
-
-Configuring VM Snapshots
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-The cloud administrator can use global configuration variables to
-control the behavior of VM snapshots. To set these variables, go through
-the Global Settings area of the CloudStack UI.
-
-.. cssclass:: table-striped table-bordered table-hover
-
-====================== ========================
-Configuration          Description       Type
-====================== ========================
-vmsnapshots.max        The maximum number of VM snapshots that can be saved for any given virtual machine in the cloud. The total possible number of VM snapshots in the cloud is (number of VMs) \* vmsnapshots.max. If the number of snapshots for any VM ever hits the maximum, the older ones are removed by the snapshot expunge job
-vmsnapshot.create.wait Number of seconds to wait for a snapshot job to succeed before declaring failure and issuing an error.
-====================== ========================
-
-
-Using VM Snapshots
-~~~~~~~~~~~~~~~~~~
-
-To create a VM snapshot using the CloudStack UI:
-
-#. Log in to the CloudStack UI as a user or administrator.
-
-#. Click Instances.
-
-#. Click the name of the VM you want to snapshot.
-
-#. Click the Take VM Snapshot button. |VMSnapshotButton.png|
-
-   .. note:: 
-      If a snapshot is already in progress, then clicking this button 
-      will have no effect.
-
-#. Provide a name and description. These will be displayed in the VM
-   Snapshots list.
-
-#. (For running VMs only) If you want to include the VM's memory in the
-   snapshot, click the Memory checkbox. This saves the CPU and memory
-   state of the virtual machine. If you don't check this box, then only
-   the current state of the VM disk is saved. Checking this box makes
-   the snapshot take longer.
-
-#. Quiesce VM: check this box if you want to quiesce the file system on
-   the VM before taking the snapshot. Not supported on XenServer when
-   used with CloudStack-provided primary storage.
-
-   When this option is used with CloudStack-provided primary storage,
-   the quiesce operation is performed by the underlying hypervisor
-   (VMware is supported). When used with another primary storage
-   vendor's plugin, the quiesce operation is provided according to the
-   vendor's implementation.
-
-#. Click OK.
-
-To delete a snapshot or restore a VM to the state saved in a particular
-snapshot:
-
-#. Navigate to the VM as described in the earlier steps.
-
-#. Click View VM Snapshots.
-
-#. In the list of snapshots, click the name of the snapshot you want to
-   work with.
-
-#. Depending on what you want to do:
-
-   To delete the snapshot, click the Delete button. |delete-button.png|
-
-   To revert to the snapshot, click the Revert button. |revert-vm.png|
-
-.. note:: 
-   VM snapshots are deleted automatically when a VM is destroyed. You don't 
-   have to manually delete the snapshots in this case.
-
+Managing Virtual Machines
+=========================
 
 Changing the VM Name, OS, or Group
-----------------------------------
+-------------------------------------
 
 After a VM is created, you can modify the display name, operating
 system, and the group it belongs to.
@@ -584,7 +323,7 @@ To access a VM through the CloudStack UI:
 
 
 Appending a Display Name to the Guest VM’s Internal Name
---------------------------------------------------------
+----------------------------------------------------------
 
 Every guest VM has an internal name. The host uses the internal name to
 identify the guest VMs. CloudStack gives you an option to provide a
@@ -619,7 +358,7 @@ No                            False                   UUID                 i-<us
 
 
 Changing the Service Offering for a VM
---------------------------------------
+----------------------------------------
 
 To upgrade or downgrade the level of compute resources available to a
 virtual machine, you can change the VM's compute offering.
@@ -824,177 +563,156 @@ To manually live migrate a virtual machine
       where i in [0,..,N] and N = number of volumes of the virtual machine
 
 
-Deleting VMs
-------------
 
-Users can delete their own virtual machines. A running virtual machine
-will be abruptly stopped before it is deleted. Administrators can delete
-any virtual machines.
+Assigning VMs to Hosts
+----------------------
 
-To delete a virtual machine:
+At any point in time, each virtual machine instance is running on a
+single host. How does CloudStack determine which host to place a VM on?
+There are several ways:
 
-#. Log in to the CloudStack UI as a user or admin.
+-  Automatic default host allocation. CloudStack can automatically pick
+   the most appropriate host to run each virtual machine.
 
-#. In the left navigation, click Instances.
+-  Instance type preferences. CloudStack administrators can specify that
+   certain hosts should have a preference for particular types of guest
+   instances. For example, an administrator could state that a host
+   should have a preference to run Windows guests. The default host
+   allocator will attempt to place guests of that OS type on such hosts
+   first. If no such host is available, the allocator will place the
+   instance wherever there is sufficient physical capacity.
 
-#. Choose the VM that you want to delete.
+-  Vertical and horizontal allocation. Vertical allocation consumes all
+   the resources of a given host before allocating any guests on a
+   second host. This reduces power consumption in the cloud. Horizontal
+   allocation places a guest on each host in a round-robin fashion. This
+   may yield better performance to the guests in some cases.
 
-#. Click the Destroy Instance button. |Destroyinstance.png|
+-  Admin users preferences. Administrators have the option to specify a
+   pod, cluster, or host to run the VM in. CloudStack will then select
+   a host within the given infrastructure.
 
-#. Optionally both expunging and the deletion of any attached volumes can be enabled.
+-  End user preferences. Users can not control exactly which host will
+   run a given VM instance, but they can specify a zone for the VM.
+   CloudStack is then restricted to allocating the VM only to one of the
+   hosts in that zone.
 
+-  Host tags. The administrator can assign tags to hosts. These tags can
+   be used to specify which host a VM should use. The CloudStack
+   administrator decides whether to define host tags, then create a
+   service offering using those tags and offer it to the user.
 
-Working with ISOs
------------------
+-  Affinity groups. By defining affinity groups and assigning VMs to
+   them, the user or administrator can influence (but not dictate) which
+   VMs should run on separate hosts. This feature is to let users
+   specify that certain VMs won't be on the same host.
 
-CloudStack supports ISOs and their attachment to guest VMs. An ISO is a
-read-only file that has an ISO/CD-ROM style file system. Users can
-upload their own ISOs and mount them on their guest VMs.
-
-ISOs are uploaded based on a URL. HTTP is the supported protocol. Once
-the ISO is available via HTTP specify an upload URL such as
-http://my.web.server/filename.iso.
-
-ISOs may be public or private, like templates.ISOs are not
-hypervisor-specific. That is, a guest on vSphere can mount the exact
-same image that a guest on KVM can mount.
-
-ISO images may be stored in the system and made available with a privacy
-level similar to templates. ISO images are classified as either bootable
-or not bootable. A bootable ISO image is one that contains an OS image.
-CloudStack allows a user to boot a guest VM off of an ISO image. Users
-can also attach ISO images to guest VMs. For example, this enables
-installing PV drivers into Windows. ISO images are not
-hypervisor-specific.
-
-
-Adding an ISO
-~~~~~~~~~~~~~
-
-To make additional operating system or other software available for use
-with guest VMs, you can add an ISO. The ISO is typically thought of as
-an operating system image, but you can also add ISOs for other types of
-software, such as desktop applications that you want to be installed as
-part of a template.
-
-#. Log in to the CloudStack UI as an administrator or end user.
-
-#. In the left navigation bar, click Templates.
-
-#. In Select View, choose ISOs.
-
-#. Click Add ISO.
-
-#. In the Add ISO screen, provide the following:
-
-   -  **Name**: Short name for the ISO image. For example, CentOS 6.2
-      64-bit.
-
-   -  **Description**: Display test for the ISO image. For example,
-      CentOS 6.2 64-bit.
-
-   -  **URL**: The URL that hosts the ISO image. The Management Server
-      must be able to access this location via HTTP. If needed you can
-      place the ISO image directly on the Management Server
-
-   -  **Zone**: Choose the zone where you want the ISO to be available,
-      or All Zones to make it available throughout CloudStack.
-
-   -  **Bootable**: Whether or not a guest could boot off this ISO
-      image. For example, a CentOS ISO is bootable, a Microsoft Office
-      ISO is not bootable.
-
-   -  **OS Type**: This helps CloudStack and the hypervisor perform
-      certain operations and make assumptions that improve the
-      performance of the guest. Select one of the following.
-
-      -  If the operating system of your desired ISO image is listed,
-         choose it.
-
-      -  If the OS Type of the ISO is not listed or if the ISO is not
-         bootable, choose Other.
-
-      -  (XenServer only) If you want to boot from this ISO in PV mode,
-         choose Other PV (32-bit) or Other PV (64-bit)
-
-      -  (KVM only) If you choose an OS that is PV-enabled, the VMs
-         created from this ISO will have a SCSI (virtio) root disk. If
-         the OS is not PV-enabled, the VMs will have an IDE root disk.
-         The PV-enabled types are:
-
-         -  Fedora 13
-
-         -  Fedora 12
-
-         -  Fedora 11
-
-         -  Fedora 10
-
-         -  Fedora 9
-
-         -  Other PV
-
-         -  Debian GNU/Linux
-
-         -  CentOS 5.3
-
-         -  CentOS 5.4
-
-         -  CentOS 5.5
-
-         -  Red Hat Enterprise Linux 5.3
-
-         -  Red Hat Enterprise Linux 5.4
-
-         -  Red Hat Enterprise Linux 5.5
-
-         -  Red Hat Enterprise Linux 6
-
-      .. note:: 
-         It is not recommended to choose an older version of the OS than 
-         the version in the image. For example, choosing CentOS 5.4 to 
-         support a CentOS 6.2 image will usually not work. In these 
-         cases, choose Other.
-
-   -  **Extractable**: Choose Yes if the ISO should be available for
-      extraction.
-
-   -  **Public**: Choose Yes if this ISO should be available to other
-      users.
-
-   -  **Featured**: Choose Yes if you would like this ISO to be more
-      prominent for users to select. The ISO will appear in the Featured
-      ISOs list. Only an administrator can make an ISO Featured.
-
-#. Click OK.
-
-   The Management Server will download the ISO. Depending on the size of
-   the ISO, this may take a long time. The ISO status column will
-   display Ready once it has been successfully downloaded into secondary
-   storage. Clicking Refresh updates the download percentage.
-
-#. **Important**: Wait for the ISO to finish downloading. If you move on
-   to the next task and try to use the ISO right away, it will appear to
-   fail. The entire ISO must be available before CloudStack can work
-   with it.
+-  CloudStack also provides a pluggable interface for adding new
+   allocators. These custom allocators can provide any policy the
+   administrator desires.
 
 
-Attaching an ISO to a VM
-~~~~~~~~~~~~~~~~~~~~~~~~
+Affinity Groups
+~~~~~~~~~~~~~~~
 
-#. In the left navigation, click Instances.
+By defining affinity groups and assigning VMs to them, the user or
+administrator can influence (but not dictate) which VMs should run on
+separate hosts. This feature is to let users specify that VMs with the
+same “host anti-affinity” type won’t be on the same host. This serves to
+increase fault tolerance. If a host fails, another VM offering the same
+service (for example, hosting the user's website) is still up and
+running on another host.
 
-#. Choose the virtual machine you want to work with.
+The scope of an affinity group is per user account.
 
-#. Click the Attach ISO button. |iso.png|
 
-#. In the Attach ISO dialog box, select the desired ISO.
+Creating a New Affinity Group
+'''''''''''''''''''''''''''''
 
-#. Click OK.
+To add an affinity group:
+
+#. Log in to the CloudStack UI as an administrator or user.
+
+#. In the left navigation bar, click Affinity Groups.
+
+#. Click Add affinity group. In the dialog box, fill in the following
+   fields:
+
+   -  Name. Give the group a name.
+
+   -  Description. Any desired text to tell more about the purpose of
+      the group.
+
+   -  Type. The only supported type shipped with CloudStack is Host
+      Anti-Affinity. This indicates that the VMs in this group should
+      avoid being placed on the same host with each other. If you see
+      other types in this list, it means that your installation of
+      CloudStack has been extended with customized affinity group
+      plugins.
+
+
+Assign a New VM to an Affinity Group
+''''''''''''''''''''''''''''''''''''
+
+To assign a new VM to an affinity group:
+
+-  Create the VM as usual, as described in `“Creating
+   VMs” <virtual_machines.html#creating-vms>`_. In the Add Instance 
+   wizard, there is a new Affinity tab where you can select the 
+   affinity group.
+
+
+Change Affinity Group for an Existing VM
+''''''''''''''''''''''''''''''''''''''''
+
+To assign an existing VM to an affinity group:
+
+#. Log in to the CloudStack UI as an administrator or user.
+
+#. In the left navigation bar, click Instances.
+
+#. Click the name of the VM you want to work with.
+
+#. Stop the VM by clicking the Stop button.
+
+#. Click the Change Affinity button. |change-affinity-button.png|
+
+
+View Members of an Affinity Group
+'''''''''''''''''''''''''''''''''
+
+To see which VMs are currently assigned to a particular affinity group:
+
+#. In the left navigation bar, click Affinity Groups.
+
+#. Click the name of the group you are interested in.
+
+#. Click View Instances. The members of the group are listed.
+
+   From here, you can click the name of any VM in the list to access all
+   its details and controls.
+
+
+Delete an Affinity Group
+''''''''''''''''''''''''
+
+To delete an affinity group:
+
+#. In the left navigation bar, click Affinity Groups.
+
+#. Click the name of the group you are interested in.
+
+#. Click Delete.
+
+   Any VM that is a member of the affinity group will be disassociated
+   from the group. The former group members will continue to run
+   normally on the current hosts, but if the VM is restarted, it will no
+   longer follow the host allocation rules from its former affinity
+   group.
 
 
 Changing a VM's Base Image
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------
 
 Every VM is created from a base image, which is a template or ISO which
 has been created and stored in CloudStack. Both cloud administrators and
@@ -1026,8 +744,183 @@ destroyed and recreated, but from the same template or ISO that was
 already in use by the VM.
 
 
+Advanced VM Instance Settings
+-----------------------------
+
+Each user VM has a set of "details" associated with it (as visible via listVirtualMachine API call) - those "details" are shown on the "Settings" tab of the VM in the GUI (words "setting(s)" and "detail(s)" are here used interchangeably). 
+
+The Settings tab is always present/visible, but settings can be changed only when the VM is in a Stopped state. 
+Some VM details/settings can be hidden via "user.vm.blacklisted.details" global setting (you can find below the list of those hidden by default).
+
+When adding a new setting or modifying the existing ones, setting names are shown/offered in a drop-down list, as well as their possible values (with the exception of boolean or numerical values).
+
+Read-only details/settings that are hidden by default:
+
+- rootdisksize
+- cpuOvercommitRatio 
+- memoryOvercommitRatio 
+- Message.ReservedCapacityFreed.Flag
+
+An example list of settings as well as their possible values are shown on the images below:
+
+|vm-settings-dropdown-list.PNG|
+(VMware hypervisor)
+
+|vm-settings-values-dropdown-list.PNG|
+(VMware disk controllers)
+
+|vm-settings-values1-dropdown-list.PNG|
+(VMware NIC models)
+
+|vm-settings-values-dropdown-KVM-list.PNG|
+(KVM disk controllers)
+
+
+Virtual Machine Snapshots
+=========================
+
+(Supported on VMware, XenServer and KVM (NFS only))
+
+In addition to the existing CloudStack ability to snapshot individual VM
+volumes, you can take a VM snapshot to preserve all the VM's data
+volumes as well as (optionally) its CPU/memory state. This is useful for
+quick restore of a VM. For example, you can snapshot a VM, then make
+changes such as software upgrades. If anything goes wrong, simply
+restore the VM to its previous state using the previously saved VM
+snapshot.
+
+The snapshot is created using the hypervisor's native snapshot facility.
+The VM snapshot includes not only the data volumes, but optionally also
+whether the VM is running or turned off (CPU state) and the memory
+contents. The snapshot is stored in CloudStack's primary storage.
+
+VM snapshots can have a parent/child relationship. Each successive
+snapshot of the same VM is the child of the snapshot that came before
+it. Each time you take an additional snapshot of the same VM, it saves
+only the differences between the current state of the VM and the state
+stored in the most recent previous snapshot. The previous snapshot
+becomes a parent, and the new snapshot is its child. It is possible to
+create a long chain of these parent/child snapshots, which amount to a
+"redo" record leading from the current state of the VM back to the
+original.
+
+After VM snapshots are created, they can be tagged with a key/value pair,
+like many other resources in CloudStack.
+
+KVM supports VM snapshots when using NFS shared storage. If raw block storage
+is used (i.e. Ceph), then VM snapshots are not possible, since there is no possibility
+to write RAM memory content anywhere.
+
+If you need more information about VM snapshots on VMware, check out the
+VMware documentation and the VMware Knowledge Base, especially
+`Understanding virtual machine snapshots 
+<http://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&externalId=1015180>`_.
+
+
+Limitations on VM Snapshots
+---------------------------
+
+-  If a VM has some stored snapshots, you can't attach new volume to the
+   VM or delete any existing volumes. If you change the volumes on the
+   VM, it would become impossible to restore the VM snapshot which was
+   created with the previous volume structure. If you want to attach a
+   volume to such a VM, first delete its snapshots.
+
+-  VM snapshots which include both data volumes and memory can't be kept
+   if you change the VM's service offering. Any existing VM snapshots of
+   this type will be discarded.
+
+-  You can't make a VM snapshot at the same time as you are taking a
+   volume snapshot.
+
+-  You should use only CloudStack to create VM snapshots on hosts
+   managed by CloudStack. Any snapshots that you make directly on the
+   hypervisor will not be tracked in CloudStack.
+
+
+Configuring VM Snapshots
+------------------------
+
+The cloud administrator can use global configuration variables to
+control the behavior of VM snapshots. To set these variables, go through
+the Global Settings area of the CloudStack UI.
+
+.. cssclass:: table-striped table-bordered table-hover
+
+====================== ========================
+Configuration          Description       Type
+====================== ========================
+vmsnapshots.max        The maximum number of VM snapshots that can be saved for any given virtual machine in the cloud. The total possible number of VM snapshots in the cloud is (number of VMs) \* vmsnapshots.max. If the number of snapshots for any VM ever hits the maximum, the older ones are removed by the snapshot expunge job
+vmsnapshot.create.wait Number of seconds to wait for a snapshot job to succeed before declaring failure and issuing an error.
+====================== ========================
+
+
+Using VM Snapshots
+------------------
+
+To create a VM snapshot using the CloudStack UI:
+
+#. Log in to the CloudStack UI as a user or administrator.
+
+#. Click Instances.
+
+#. Click the name of the VM you want to snapshot.
+
+#. Click the Take VM Snapshot button. |VMSnapshotButton.png|
+
+   .. note:: 
+      If a snapshot is already in progress, then clicking this button 
+      will have no effect.
+
+#. Provide a name and description. These will be displayed in the VM
+   Snapshots list.
+
+#. (For running VMs only) If you want to include the VM's memory in the
+   snapshot, click the Memory checkbox. This saves the CPU and memory
+   state of the virtual machine. If you don't check this box, then only
+   the current state of the VM disk is saved. Checking this box makes
+   the snapshot take longer.
+
+#. Quiesce VM: check this box if you want to quiesce the file system on
+   the VM before taking the snapshot. Not supported on XenServer when
+   used with CloudStack-provided primary storage.
+
+   When this option is used with CloudStack-provided primary storage,
+   the quiesce operation is performed by the underlying hypervisor
+   (VMware is supported). When used with another primary storage
+   vendor's plugin, the quiesce operation is provided according to the
+   vendor's implementation.
+
+#. Click OK.
+
+To delete a snapshot or restore a VM to the state saved in a particular
+snapshot:
+
+#. Navigate to the VM as described in the earlier steps.
+
+#. Click View VM Snapshots.
+
+#. In the list of snapshots, click the name of the snapshot you want to
+   work with.
+
+#. Depending on what you want to do:
+
+   To delete the snapshot, click the Delete button. |delete-button.png|
+
+   To revert to the snapshot, click the Revert button. |revert-vm.png|
+
+.. note:: 
+   VM snapshots are deleted automatically when a VM is destroyed. You don't 
+   have to manually delete the snapshots in this case.
+
+
+Virtual Machine Backups (Backup and Recovery Feature)
+=====================================================
+
+.. include:: backup_and_recovery.rst
+
 Using SSH Keys for Authentication
----------------------------------
+=================================
 
 In addition to the username and password authentication, CloudStack
 supports using SSH keys to log in to the cloud infrastructure for
@@ -1040,7 +933,7 @@ files. Using a single SSH key pair, you can manage multiple instances.
 
 
 Creating an Instance Template that Supports SSH Keys
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------
 
 Create an instance template that supports SSH Keys.
 
@@ -1078,7 +971,7 @@ Create an instance template that supports SSH Keys.
 
 
 Creating the SSH Keypair
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
 You must make a call to the createSSHKeyPair api method. You can either
 use the CloudStack Python API library or the curl commands to make the
@@ -1137,7 +1030,7 @@ keypair called "keypair-doc" for the admin account in the root domain:
 
 
 Creating an Instance
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 After you save the SSH keypair file, you must create an instance by
 using the template that you created at `Section 5.2.1, “ Creating an
@@ -1161,7 +1054,7 @@ environment.
 
 
 Logging In Using the SSH Keypair
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------
 
 To test your SSH key generation is successful, check whether you can log
 in to the cloud setup.
@@ -1177,7 +1070,7 @@ The -i parameter tells the ssh client to use a ssh key found at
 
 
 Resetting SSH Keys
-~~~~~~~~~~~~~~~~~~
+------------------
 
 With the API command resetSSHKeyForVirtualMachine, a user can set or
 reset the SSH keypair assigned to a virtual machine. A lost or
@@ -1189,7 +1082,7 @@ call resetSSHKeyForVirtualMachine.
 
 
 Assigning GPU/vGPU to Guest VMs
--------------------------------
+===============================
 
 CloudStack can deploy guest VMs with Graphics Processing Unit (GPU) or Virtual
 Graphics Processing Unit (vGPU) capabilities on XenServer hosts. At the time of
@@ -1243,7 +1136,7 @@ CloudStack provides you with the following capabilities:
   in case of GRID cards, and capacity of the cards.
 
 Prerequisites and System Requirements
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------
 
 Before proceeding, ensure that you have these prerequisites:
 
@@ -1292,7 +1185,7 @@ Before continuing with configuration, consider the following:
 - Notification thresholds for GPU resource is not supported.
 
 Supported GPU Devices
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -1312,7 +1205,7 @@ vGPU        - GRID K100
 =========== ========================
 
 GPU/vGPU Assignment Workflow
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 
 CloudStack follows the below sequence of operations to provide GPU/vGPU support for VMs:
@@ -1345,43 +1238,9 @@ CloudStack follows the below sequence of operations to provide GPU/vGPU support 
     
       GPU resources are released automatically when you stop a VM. Once the destroy VM is successful, CloudStack will make a resource call to the host to get the remaining GPU capacity in the card and update the database accordingly.
 
-   
-  
-VM Instance Settings
-~~~~~~~~~~~~~~~~~~~~
-
-Each user VM has a set of "details" associated with it (as visible via listVirtualMachine API call) - those "details" are shown on the "Settings" tab of the VM in the GUI (words "setting(s)" and "detail(s)" are here used interchangeably). 
-
-The Settings tab is always present/visible, but settings can be changed only when the VM is in a Stopped state. 
-Some VM details/settings can be hidden via "user.vm.blacklisted.details" global setting (you can find below the list of those hidden by default).
-
-When adding a new setting or modifying the existing ones, setting names are shown/offered in a drop-down list, as well as their possible values (with the exception of boolean or numerical values).
-
-Read-only details/settings that are hidden by default:
-
-- rootdisksize
-- cpuOvercommitRatio 
-- memoryOvercommitRatio 
-- Message.ReservedCapacityFreed.Flag
-
-An example list of settings as well as their possible values are shown on the images below:
-
-|vm-settings-dropdown-list.PNG|
-(VMware hypervisor)
-
-|vm-settings-values-dropdown-list.PNG|
-(VMware disk controllers)
-
-|vm-settings-values1-dropdown-list.PNG|
-(VMware NIC models)
-
-|vm-settings-values-dropdown-KVM-list.PNG|
-(KVM disk controllers)
-
-
-    
-.. |basic-deployment.png| image:: /_static/images/basic-deployment.png
-   :alt: Basic two-machine CloudStack deployment
+       
+.. |vm-lifecycle.png| image:: /_static/images/vm-lifecycle.png
+   :alt: Virtual Machine State Model
 .. |VMSnapshotButton.png| image:: /_static/images/VMSnapshotButton.png
    :alt: button to restart a VPC
 .. |delete-button.png| image:: /_static/images/delete-button.png
