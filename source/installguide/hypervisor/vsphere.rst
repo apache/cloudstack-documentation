@@ -865,8 +865,7 @@ created.
 
 Alternatively, at the cluster level, you can create an additional
 cluster with VDS enabled in the existing zone. Use the Add Cluster
-option. For information as given in `“Add Cluster: vSphere” 
-<configuration.html#add-cluster-vsphere>`_.
+option. For information as given in :ref:`adding-a-cluster`.
 
 In both these cases, you must specify the following parameters to
 configure VDS:
