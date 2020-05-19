@@ -962,7 +962,7 @@ Add Hosts or Configure Clusters (vSphere)
 
 Use vCenter to create a vCenter cluster and add your desired hosts to
 the cluster. You will later add the entire cluster to CloudStack. (see
-`“Add Cluster: vSphere” <configuration.html#add-cluster-vsphere>`_).
+:ref:`adding-a-cluster`).
 
 
 Applying Hotfixes to a VMware vSphere Host
