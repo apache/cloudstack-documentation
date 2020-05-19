@@ -654,7 +654,7 @@ the zone is being created.
 After the zone is created, if you want to create an additional cluster
 along with Nexus 1000v virtual switch in the existing zone, use the Add
 Cluster option. For information on creating a cluster, see
-`"Add Cluster: vSphere" <configuration.html#adding-a-cluster>`_.
+:ref:`adding-a-cluster`.
 
 In both these cases, you must specify the following parameters to
 configure Nexus virtual switch:
