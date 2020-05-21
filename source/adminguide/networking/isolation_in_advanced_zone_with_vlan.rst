@@ -103,7 +103,7 @@ Creating a PVLAN-enabled network can be done in multiple ways depending on the P
       - Set the PVLAN type to "Promiscuous" and do not set the secondary VLAN ID.
 
    - For an **isolated** PVLAN:
-      - Set the secondary VLAN ID to the PVLAN ID which you wish to use inside the primary VLAN, or
+      - Set the secondary VLAN ID to the PVLAN ID which you wish to use inside the primary VLAN (available only via API, not UI), or
       - Set the PVLAN type to "Isolated" and set the secondary VLAN ID to the PVLAN ID which you wish to use inside the primary VLAN.
 
    - For a **community** PVLAN:
