@@ -32,7 +32,7 @@ those unmanaged VMs via the importUnmanagedInstance API so that they become Clou
 Use Cases and General Usage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ability to import VMs allows Cloud operators (both public and private) on onboard new tenants simply and quickly,
+The ability to import VMs allows Cloud operators (both public and private) to onboard new tenants simply and quickly,
 with the minimum amount disk IO. But also can be used in disaster recovery scenarios at remote sites (if storage is
 replicated) and in the recreation of VMs which have been backed up (part of the code is indeed used in
 CloudStack's Backup and Recovery feature).
