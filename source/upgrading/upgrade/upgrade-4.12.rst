@@ -299,15 +299,6 @@ hosts.
 
       $ sudo apt-get upgrade cloudstack-agent
 
-#. Verify that the file ``/etc/cloudstack/agent/environment.properties`` has a
-   line that reads:
-
-   .. parsed-literal::
-
-      paths.script=/usr/share/cloudstack-common
-
-   If not, add the line.
-
 #. Start the agent.
 
    .. parsed-literal::
@@ -325,15 +316,6 @@ For KVM hosts, upgrade the ``cloudstack-agent`` package
    .. parsed-literal::
 
       $ sudo yum upgrade cloudstack-agent
-
-#. Verify that the file ``/etc/cloudstack/agent/environment.properties`` has a
-   line that reads:
-
-   .. parsed-literal::
-
-      paths.script=/usr/share/cloudstack-common
-
-   If not, add the line.
 
 #. Restart the agent:
 
@@ -358,3 +340,8 @@ Restart management services
    .. parsed-literal::
 
       $ sudo service cloudstack-usage start
+
+System-VMs and Virtual-Routers
+------------------------------
+
+.. include:: _sysvm_restart.rst
