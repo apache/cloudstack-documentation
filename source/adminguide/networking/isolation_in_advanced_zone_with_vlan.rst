@@ -99,7 +99,7 @@ parameters must be set:
 Creating a PVLAN-enabled network can be done in multiple ways depending on the PVLAN type:
 
    - For a **promiscuous** PVLAN:
-      - Set the secondary VLAN ID to the same VLAN ID as the primary VLAN that the promiscuous PVLAN will be inside, or
+      - Set the secondary VLAN ID to the same VLAN ID as the primary VLAN that the promiscuous PVLAN will be inside (available only via API, not UI), or
       - Set the PVLAN type to "Promiscuous" and do not set the secondary VLAN ID.
 
    - For an **isolated** PVLAN:
