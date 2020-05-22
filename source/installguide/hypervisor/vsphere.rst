@@ -28,7 +28,7 @@ System Requirements for vSphere Hosts
 Software requirements:
 ^^^^^^^^^^^^^^^^^^^^^^
 
--  vSphere and vCenter, versions 4.1, 5.0, 5.1 or 5.5.
+-  vSphere and vCenter, versions 5.5, 6.0, 6.5 or 6.7.
 
    vSphere Standard is recommended. Note however that customers need to
    consider the CPU constraints in place with vSphere licensing. See
