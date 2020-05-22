@@ -282,11 +282,11 @@ We need to configure the machine to use a CloudStack package repository.
 To add the CloudStack repository, create /etc/yum.repos.d/cloudstack.repo and 
 insert the following information.
 
-::
+.. parsed-literal::
 
    [cloudstack]
    name=cloudstack
-   baseurl=http://download.cloudstack.org/centos/7/|version|/
+   baseurl=http://download.cloudstack.org/centos/$releasev/|version|/
    enabled=1
    gpgcheck=0
 
