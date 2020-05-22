@@ -42,11 +42,6 @@ Information can also be found at CloudStack's wiki https://cwiki.apache.org/conf
    plugins/index
    releasenotes/index
 
-.. toctree::
-   :caption: Primate Documentation:
-
-   primate/index
-   Primate on Github <https://github.com/apache/cloudstack-primate>
 
 .. toctree::
    :caption: Other Documentation:
