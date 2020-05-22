@@ -286,7 +286,7 @@ insert the following information.
 
    [cloudstack]
    name=cloudstack
-   baseurl=http://download.cloudstack.org/centos/$releasev/|version|/
+   baseurl=http://download.cloudstack.org/centos/$releasever/|version|/
    enabled=1
    gpgcheck=0
 
