@@ -43,9 +43,8 @@ delegated administrators with some authority over the domain and its
 subdomains. For example, a service provider with several resellers could
 create a domain for each reseller.
 
-For each account created, the Cloud installation creates three different
-types of user accounts: root administrator, domain administrator, and
-user.
+Beside the Root Administrator type of account (available in the root domain only), two different types
+of accounts can be created for each domain:  Domain Administrator and User.
 
 
 Users
@@ -284,7 +283,12 @@ defined. In this domain autosync per account can be configured,
 keeping the users in the domain up to date with their group membership
 in LDAP.
 
-.. Note:: A caveat with this is that ApacheDS does not yet support the virtual 'memberOf' attribute needed to check if a user moved to another account. Microsoft AD and OpenLDAP as well as OpenDJ do support this. It is a planned feature for ApacheDS that can be tracked in https://issues.apache.org/jira/browse/DIRSERVER-1844.
+.. Note:: A caveat with this is that ApacheDS does not yet support the
+          virtual 'memberOf' attribute needed to check if a user moved
+          to another account. Microsoft AD and OpenLDAP as well as
+          OpenDJ do support this. It is a planned feature for ApacheDS
+          that can be tracked in
+          https://issues.apache.org/jira/browse/DIRSERVER-1844.
 
 There are now three ways to link LDAP users to CloudStack users. These
 three ways where developed as extensions on top of each other.
@@ -308,10 +312,10 @@ the user are used.
 
        #. The authentication result from LAP is honoured.
 
-#. **autoimport**. A domain is configured to import any user if it does
-   not yet exist in that domain. For these users a account by the same
-   name as the user is created on the fly and the user is created in
-   that account.
+#. **autoimport**. A domain is configured to import any user if it
+   does not yet exist in that domain. For these users, an account in the
+   same name as the user is automatically created  and the user is created
+   in that account.
 
        #. If the domain is configured to be used with LDAP,
 
@@ -360,20 +364,65 @@ the user are used.
        #. If no CloudStack user exists it is created in the
           appropriate account.
 
-
        #. If a CloudStack user exists but is not in the appropriate
           account its credentials will be moved.
-
 
 To set up LDAP authentication in CloudStack, call the CloudStack API
 command ``addLdapConfiguration`` and provide Hostname or IP address
 and listening port of the LDAP server. Optionally a domain id can be
 given for the domain for which this LDAP connection is valid. You could
-configure multiple servers as well. These are expected to be
+configure multiple servers as well, for the same domain. These are expected to be
 replicas. If one fails, the next one is used.
 
-The following global configurations should also be configured (the
-default values are for openldap)
+.. code:: bash
+
+	  cloudmonkey add ldapconfiguration hostname=localhost\
+	                                    port=389\
+					    domainid=12345678-90ab-cdef-fedc-ba0987654321
+
+This is all that is required to enable the manual importing of LDAP users, the 
+LisLdapUsers API can be used to query for users to import.
+
+For the auto import method, a CloudStack Domain needs to be linked to
+LDAP. For instance
+
+.. code:: bash
+
+          cloudmonkey link domaintoldap domainid=12345678-90ab-cdef-fedc-ba0987654321\
+                                        accounttype=2\
+                                        ldapdomain="ou=people,dc=cloudstack,dc=apache,dc=org"\
+	                                type=OU
+
+When you want to use auto sync, no domain is linked to ldap but one or
+more accounts. Within a CloudStack domain one needs to link accounts
+to LDAP groups. The linkage of the domain is implicit and nit needed
+to be applied through the API call described above.
+
+.. code:: bash
+
+   #!/bin/bash
+   [ -z "$LDAP1PASSWORD" -o -z "$LDAP2PASSWORD" ] && exit 1
+   ROOTDOMAIN=`cloudmonkey -d json list domains name=ROOT filter=id | jq .domain[0].id`
+
+   # mapping domain and account(s) from ldap server 1
+   MAPPEDDOMAIN1=`cloudmonkey -d json create domain name=mappedDomain1 parentdomainid=$ROOTDOMAIN | jq .domain.id`
+   cloudmonkey -d json add ldapconfiguration hostname=10.1.2.5 port=389 domainid=$MAPPEDDOMAIN1
+   cloudmonkey -d json update configuration domainid=$MAPPEDDOMAIN1 name="ldap.basedn" value="dc=cloudstack,dc=apache,dc=org"
+   cloudmonkey -d json update configuration domainid=$MAPPEDDOMAIN1 name='ldap.bind.principal' value='cn=admin,dc=cloudstack,dc=apache,dc=org'
+   cloudmonkey -d json update configuration domainid=$MAPPEDDOMAIN1 name='ldap.bind.password' value=$LDAP1PASSWORD
+   cloudmonkey -d json update configuration domainid=$MAPPEDDOMAIN1 name='ldap.search.group.principle' value='cn=AcsAccessGroup,dc=cloudstack,dc=apache,dc=org'
+   cloudmonkey -d json update configuration domainid=$MAPPEDDOMAIN1 name='ldap.user.memberof.attribute' value='memberOf'
+
+   cloudmonkey -d json ldap createaccount account='seniors' accounttype=2 domainid=$MAPPEDDOMAIN1 username=guru
+   cloudmonkey -d json link accounttoldap account='seniors' accounttype=2 domainid=$MAPPEDDOMAIN1 ldapdomain='cn=AcsSeniorAdmins,ou=AcsGroups,dc=cloudstack,dc=apache,dc=org' type=GROUP
+   cloudmonkey -d json ldap createaccount account='juniors' accounttype=0 domainid=$MAPPEDDOMAIN1 username=bystander
+   cloudmonkey -d json link accounttoldap account='juniors' accounttype=0 domainid=$MAPPEDDOMAIN1 ldapdomain='cn=AcsJuniorAdmins,ou=AcsGroups,dc=cloudstack,dc=apache,dc=org' type=GROUP
+
+
+
+In addition to those shown in the example script above, the following
+configuration items can be configured (the default values are for
+openldap)
 
 -  ``ldap.basedn``:	Sets the basedn for LDAP. Ex: **OU=APAC,DC=company,DC=com**
 
@@ -431,13 +480,13 @@ which opens a dialog and the selected users can be imported.
    :align:   center
 
 
-You could also use api commands: ``listLdapUsers``, ``ldapCreateAccount`` and
-``importLdapUsers``.
+You could also use api commands:
+``listLdapUsers``, to list users in LDAP that could or would be imported in CloudStack
+``ldapCreateAccount``, to manually create a user in a specific account
+``importLdapUsers``, to batch import users from LDAP
 
 Once LDAP is enabled, the users will not be allowed to changed password
 directly in CloudStack.
-
-
 
 .. |button to dedicate a zone, pod,cluster, or host| image:: /_static/images/dedicate-resource-button.png
 
