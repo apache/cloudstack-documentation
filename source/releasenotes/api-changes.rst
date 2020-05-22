@@ -13,13 +13,9 @@
    specific language governing permissions and limitations
    under the License.
 
-API Changes Introduced in |release|
+API Changes Introduced in 4.13.0.0
 ===================================
 For the complete list of API commands and params consult the `CloudStack Apidocs`_.
-
-.. note:: 
-
-   The 4.12 API commands stayed as the 4.11.
 
 
 New API Commands

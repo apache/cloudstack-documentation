@@ -654,7 +654,7 @@ the zone is being created.
 After the zone is created, if you want to create an additional cluster
 along with Nexus 1000v virtual switch in the existing zone, use the Add
 Cluster option. For information on creating a cluster, see
-`"Add Cluster: vSphere" <configuration.html#add-cluster-vsphere>`_.
+:ref:`adding-a-cluster`.
 
 In both these cases, you must specify the following parameters to
 configure Nexus virtual switch:
@@ -865,8 +865,7 @@ created.
 
 Alternatively, at the cluster level, you can create an additional
 cluster with VDS enabled in the existing zone. Use the Add Cluster
-option. For information as given in `“Add Cluster: vSphere” 
-<configuration.html#add-cluster-vsphere>`_.
+option. For information as given in :ref:`adding-a-cluster`.
 
 In both these cases, you must specify the following parameters to
 configure VDS:
@@ -963,7 +962,7 @@ Add Hosts or Configure Clusters (vSphere)
 
 Use vCenter to create a vCenter cluster and add your desired hosts to
 the cluster. You will later add the entire cluster to CloudStack. (see
-`“Add Cluster: vSphere” <configuration.html#add-cluster-vsphere>`_).
+:ref:`adding-a-cluster`).
 
 
 Applying Hotfixes to a VMware vSphere Host
