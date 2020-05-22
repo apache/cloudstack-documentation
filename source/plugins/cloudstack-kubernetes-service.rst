@@ -15,9 +15,9 @@ CloudStack Kubernetes Service
 
 The Kubernetes Service plugin adds Kubernetes integration to CloudStack. The plugin is disabled by default and an admin can enable it using a Global Setting. It enables users to run containerized services using Kubernetes clusters.
 
-Kubernetes Service plugin uses a CoreOS based template for node VMs for the Kubernetes cluster. CoreOS has been used as it provides docker installation and networking rules needed for Kubernetes by default. In future, different guest OSes might be used. For installation of Kubernetes binaries on cluster nodes, a binaries ISO can be created for a particular Kubernetes version, and can be added as a supported version by an admin. This allows faster, offline installation of Kubernetes binaries and docker images along with support for adding multiple versions of Kubernetes for upgrades and running different clusters.
+Kubernetes Service plugin uses a CoreOS based template for node VMs for the Kubernetes cluster. CoreOS has been used as it provides docker installation and networking rules needed for Kubernetes by default. In future, different guest OSes might be used. For installation of Kubernetes binaries on cluster nodes, a binaries ISO is used for each Kubernetes version to be made available via CloudStack. This allows faster, offline installation of Kubernetes binaries and docker images along with support for adding multiple versions of Kubernetes for upgrades and running different clusters.
 
-For deployment and setup of Kubernetes on cluster nodes, the plugin uses the Kubernetes tool, kubeadm. kubeadm is the command-line tool for easily provisioning a secure Kubernetes cluster on top of physical or cloud servers or virtual machines. Under the hood, master node(s) of the cluster starts a Kubernetes cluster using kubeadm init command with a custom token, and worker nodes join this Kubernetes cluster using kubeadm join command with the same token. More about kubeadm here: https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/. Weave Net CNI provider plugin is used for cluster networking. More about Weave Net provide plugin here: https://www.weave.works/docs/net/latest/kubernetes/kube-addon/.
+For deployment and setup of Kubernetes on cluster nodes, the plugin uses the Kubernetes tool, 'kubeadm'. kubeadm is the command-line tool for easily provisioning a secure Kubernetes cluster on top of physical or cloud servers or virtual machines. Under the hood, master node(s) of the cluster starts a Kubernetes cluster using kubeadm init command with a custom token, and worker nodes join this Kubernetes cluster using kubeadm join command with the same token. More about kubeadm here: https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/. Weave Net CNI provider plugin is used for cluster networking. More about Weave Net provide plugin here: https://www.weave.works/docs/net/latest/kubernetes/kube-addon/.
 
 To access the Kubernetes dashboard securely, the plugin provides access to kubeconfig file data which uses the Kubernetes tool kubectl to run a local proxy and thereby access the dashboard. More about kubectl here: https://kubernetes.io/docs/reference/kubectl/overview/
 
@@ -45,7 +45,12 @@ Once the Kubernetes service is running the new APIs will become accessible and t
 Kubernetes Supported Versions
 ------------------------------
 
-The service provides the functionality to manage multiple supported Kubernetes versions. Management can be via both UI and API. A supported version corresponds to a specific Kubernetes version for which an ISO has been packaged (using the script provided) that contains Kubernetes binaries and docker images for the Kubernetes version. Once an ISO is created for a Kubernetes version it can be added in the service and other CRUD operations can be performed using both the UI and API. Using a pre-packaged ISO containing required binaries and docker images allows faster provisioning on the node virtual machines of a Kubernetes cluster. Complete offline provisioning of the Kubernetes cluster is not supported at present as kubeadm init command needs active Internet access.
+The Kubernetes service provides the functionality to manage multiple supported Kubernetes versions. Management can be via both UI and API. A supported version corresponds to a specific Kubernetes version for which an ISO has been uploaded. Pre-built, community ISOs for different Kubernetes versions are available at:
+
+http://download.cloudstack.org/cks/
+http://packages.shapeblue.com/cks/
+
+A script is provided (see below) to add other Kubernetes versions. Once an ISO is created for a Kubernetes version it can be added in the service and other CRUD operations can be performed using both the UI and API. Using a pre-packaged ISO containing required binaries and docker images allows faster provisioning on the node virtual machines of a Kubernetes cluster. Complete offline provisioning of the Kubernetes cluster is not supported at present as the kubeadm init command needs active Internet access.
 
 A script named create-kubernetes-binaries-iso.sh has been provided in the cloudstack-common package for creating a new setup ISO with the desired version of Kubernetes binaries and corresponding docker images.
 
@@ -60,11 +65,6 @@ Eg:
 .. parsed-literal::
 
    # ./create-binaries-iso.sh ./ 1.12.5 0.7.1 1.12.0 "https://cloud.weave.works/k8s/net?k8s-version=1.12.5" https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta1/aio/deploy/recommended.yaml
-
-Additionally, pre-built, community ISOs for different Kubernetes versions are also available at:
-
-http://download.cloudstack.org/cks/
-http://packages.shapeblue.com/cks/
 
 Working with Kubernetes supported version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
