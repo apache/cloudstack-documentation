@@ -10,7 +10,7 @@
    governing permissions and limitations under the License.
 
 
-CloudStack Kubernetes Service 
+CloudStack Kubernetes Service
 ==============================
 
 The Kubernetes Service plugin adds Kubernetes integration to CloudStack. The plugin is disabled by default and an admin can enable it using a Global Setting. It enables users to run containerized services using Kubernetes clusters.
@@ -47,8 +47,8 @@ Kubernetes Supported Versions
 
 The Kubernetes service provides the functionality to manage multiple supported Kubernetes versions. Management can be via both UI and API. A supported version corresponds to a specific Kubernetes version for which an ISO has been uploaded. Pre-built, community ISOs for different Kubernetes versions are available at:
 
-http://download.cloudstack.org/cks/
-http://packages.shapeblue.com/cks/
+- http://download.cloudstack.org/cks/
+- http://packages.shapeblue.com/cks/
 
 A script is provided (see below) to add other Kubernetes versions. Once an ISO is created for a Kubernetes version it can be added in the service and other CRUD operations can be performed using both the UI and API. Using a pre-packaged ISO containing required binaries and docker images allows faster provisioning on the node virtual machines of a Kubernetes cluster. Complete offline provisioning of the Kubernetes cluster is not supported at present as the kubeadm init command needs active Internet access.
 
@@ -78,13 +78,14 @@ Once the ISO has been built for a desired Kubernetes version, it can be added by
 
 addKubernetesSupportedVersion API can be used by an admin to add a new supported version for the service. It takes following input parameters:
 
-.. parsed-literal::
-   - **name** (the name of the Kubernetes supported version) · semanticversion (the semantic version of the Kubernetes release in MAJOR.MINOR.PATCH format. More about semantic versioning here: https://semver.org/ Required)
-   - **zoneid** (the ID of the zone in which Kubernetes supported version will be available)
-   - **url** (the URL of the binaries ISO for Kubernetes supported version)
-   - **checksum** (the checksum value of the binaries ISO)
-   - **mincpunumber** (the minimum number of CPUs to be set with the Kubernetes supported version)
-   - **minmemory** (the minimum RAM size in MB to be set with the Kubernetes supported version)
+- **name** (the name of the Kubernetes supported version) · semanticversion (the semantic version of the Kubernetes release in MAJOR.MINOR.PATCH format. More about semantic versioning here: https://semver.org/ Required)
+- **zoneid** (the ID of the zone in which Kubernetes supported version will be available)
+- **url** (the URL of the binaries ISO for Kubernetes supported version)
+- **checksum** (the checksum value of the binaries ISO)
+- **mincpunumber** (the minimum number of CPUs to be set with the Kubernetes supported version)
+- **minmemory** (the minimum RAM size in MB to be set with the Kubernetes supported version)
+
+For example:
 
 .. parsed-literal::
    > add kubernetessupportedversion name=v1.13.2 semanticversion=1.13.2 url=http://172.20.0.1/files/setup-1.13.2.iso zoneid=34d23dd5-5ced-4e8b-9b0a-835a0b8ae2a6 mincpunumber=2 minmemory=2048
@@ -118,9 +119,8 @@ Updating supported Kubernetes version
 
 updateKubernetesSupportedVersion API can be used by admins to update an existing supported version to set their state enabled or disabled. Supported versions with disabled state cannot be used for deploying Kubernetes clusters. It takes following input parameters,
 
-.. parsed-literal::
-   - **id** (the ID of the Kubernetes supported version)
-   - **state** (the state of the Kubernetes supported version)
+- **id** (the ID of the Kubernetes supported version)
+- **state** (the state of the Kubernetes supported version)
 
 Deleting supported Kubernetes version
 ######################################
@@ -139,12 +139,10 @@ This provides functionality to create Kubernetes clusters for Shared, Isolated a
 
 The following Global Settings value must be set to the name of Template to be used for deploying node virtual machines for the respective hypervisor while creating a Kubernetes cluster:
 
-.. parsed-literal::
-
-   - **cloud.kubernetes.cluster.template.name.hyperv** (Name of the template to be used for creating Kubernetes cluster nodes on HyperV)
-   - **cloud.kubernetes.cluster.template.name.kvm** (Name of the template to be used for creating Kubernetes cluster nodes on KVM)
-   - **cloud.kubernetes.cluster.template.name.vmware** (Name of the template to be used for creating Kubernetes cluster nodes on VMware)
-   - **cloud.kubernetes.cluster.template.name.xenserver** (Name of the template to be used for creating Kubernetes cluster nodes on Xenserver)
+- **cloud.kubernetes.cluster.template.name.hyperv** (Name of the template to be used for creating Kubernetes cluster nodes on HyperV)
+- **cloud.kubernetes.cluster.template.name.kvm** (Name of the template to be used for creating Kubernetes cluster nodes on KVM)
+- **cloud.kubernetes.cluster.template.name.vmware** (Name of the template to be used for creating Kubernetes cluster nodes on VMware)
+- **cloud.kubernetes.cluster.template.name.xenserver** (Name of the template to be used for creating Kubernetes cluster nodes on Xenserver)
 
 CoreOS templates for CloudStack can be found here, http://dl.openvm.eu/cloudstack/coreos/x86_64/
 
@@ -174,24 +172,25 @@ New Kubernetes clusters can be create using API or from UI. User will be provide
 
 createKubernetesCluster API can be used to create new Kubernetes cluster. It takes following parameters as input,
 
-.. parsed-literal::
-   - **name** (name for the Kubernetes cluster; Required)
-   - **description** (description for the Kubernetes cluster; Required)
-   - **zoneid** (availability zone in which Kubernetes cluster to be launched; Required)
-   - **kubernetesversionid** (Kubernetes version with which cluster to be launched; Required)
-   - **serviceofferingid (the ID of the service offering for the virtual machines in the cluster; Required)
-   - **account** (an optional account for the virtual machine. Must be used with domainId)
-   - **domainid** (an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used)
-   - **projectid** (Deploy cluster for the project)
-   - **networkid** (Network in which Kubernetes cluster is to be launched)
-   - **keypair** (name of the ssh key pair used to login to the virtual machines)
-   - **masternodes** (number of Kubernetes cluster master nodes, default is 1) externalloadbalanceripaddress (external load balancer IP address while using shared network with Kubernetes HA cluster)
-   - **size** (number of Kubernetes cluster worker nodes; Required)
-   - **noderootdisksize** (root disk size of root disk for each node)
-   - **dockerregistryusername** (username for the docker image private registry; Experimental)
-   - **dockerregistrypassword** (password for the docker image private registry; Experimental)
-   - **dockerregistryurl** (URL for the docker image private registry; Experimental)
-   - **dockerregistryemail** (email of the docker image private registry user; Experimental)
+- **name** (name for the Kubernetes cluster; Required)
+- **description** (description for the Kubernetes cluster; Required)
+- **zoneid** (availability zone in which Kubernetes cluster to be launched; Required)
+- **kubernetesversionid** (Kubernetes version with which cluster to be launched; Required)
+- **serviceofferingid** (the ID of the service offering for the virtual machines in the cluster; Required)
+- **account** (an optional account for the virtual machine. Must be used with domainId)
+- **domainid** (an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used)
+- **projectid** (Deploy cluster for the project)
+- **networkid** (Network in which Kubernetes cluster is to be launched)
+- **keypair** (name of the ssh key pair used to login to the virtual machines)
+- **masternodes** (number of Kubernetes cluster master nodes, default is 1) externalloadbalanceripaddress (external load balancer IP address while using shared network with Kubernetes HA cluster)
+- **size** (number of Kubernetes cluster worker nodes; Required)
+- **noderootdisksize** (root disk size of root disk for each node)
+- **dockerregistryusername** (username for the docker image private registry; Experimental)
+- **dockerregistrypassword** (password for the docker image private registry; Experimental)
+- **dockerregistryurl** (URL for the docker image private registry; Experimental)
+- **dockerregistryemail** (email of the docker image private registry user; Experimental)
+
+For example:
 
 .. parsed-literal::
    > create kubernetescluster name=Test description=Test-Cluster zoneid=34d23dd5-5ced-4e8b-9b0a-835a0b8ae2a6 size=1 noderootdisksize=10 serviceofferingid=a4f280a1-9122-40a8-8f0c-3adb91060f2a kubernetesversionid=6668e999-fe6c-4a91-88d8-d10bcf280d02
@@ -262,10 +261,9 @@ A running or stopped Kubernetes cluster can be scaled using both API and UI. |ck
 
 scaleKubernetesCluster API can be used to scale a running (or stopped cluster) for a desired cluster size and service offering. It takes following parameters as input,
 
-.. parsed-literal::
-   - **id** (the ID of the Kubernetes cluster to be scaled; Required)
-   - **serviceofferingid** (the ID of the new service offering for the virtual machines in the cluster)
-   - **size** (number of Kubernetes cluster worker nodes)
+- **id** (the ID of the Kubernetes cluster to be scaled; Required)
+- **serviceofferingid** (the ID of the new service offering for the virtual machines in the cluster)
+- **size** (number of Kubernetes cluster worker nodes)
 
 Only running Kubernetes clusters can be scaled for size. When the service fails to scale the cluster, the cluster will show in Alert state else if the scaling is successfull cluster will show up in Running state.
 
@@ -280,9 +278,8 @@ A running Kubernetes cluster can be upgraded using both API and UI. |cks-upgrade
 
 upgradeKubernetesCluster API can be used to upgrade a running cluster. It takes following parameters as input:
 
-.. parsed-literal::
-   - **id** (the ID of the Kubernetes cluster to be upgraded; Required)
-   - **kubernetesversionid** (Kubernetes version with which cluster to be launched; Required)
+- **id** (the ID of the Kubernetes cluster to be upgraded; Required)
+- **kubernetesversionid** (Kubernetes version with which cluster to be launched; Required)
 
 When the service fails to upgrade the cluster, the cluster will show in Alert state. If the upgrade has been successful cluster will show in Running state.
 
