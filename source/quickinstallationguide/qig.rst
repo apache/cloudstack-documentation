@@ -426,7 +426,7 @@ MySQL connector Installation
 Previously, we used to install Python and Java MySQL connectors using the official MySQL packages repository.
 Due to the version changes and introduced incompatibility in versions 8.x of those packages,
 it's advised to disable installing these packages from the MySQL repository (which we previously added)
-and install older versions of these packages.
+and install older versions instead.
 
 Edit the file ``/etc/yum.repos.d/mysql-community.repo`` to add the line 
 "exclude=mysql-connector-python,mysql-connector-java" under the ``[mysql-connectors-community]``
