@@ -33,7 +33,7 @@ get you up and running with CloudStack with a minimum amount of trouble.
 High level overview of the process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This runbook will focus on building a CloudStack cloud using KVM on CentOS 
+This guide will focus on building a CloudStack cloud using KVM on CentOS 
 7.7 with NFS storage on a flat layer-2 network utilizing layer-3 network 
 isolation (aka Security Groups), and doing it all on a single piece of 
 hardware.
@@ -73,7 +73,7 @@ Operating System
 
 Using the CentOS 7.7 x86_64 install ISO, you'll need to install CentOS 7 
 on your hardware. The defaults will generally be acceptable for this 
-installation. You may want to configure netwok configuration during
+installation. You may want to configure network configuration during
 setup - either using the guidelines below, or using a standard access
 configuration which we will modify later.
 
@@ -277,7 +277,7 @@ We need to configure the machine to use a CloudStack package repository.
    to take the source release and generate RPMs and and yum repository. This 
    guide attempts to keep things as simple as possible, and thus we are using 
    one of the community-provided yum repositories. Furthermore, this example 
-   assumes a 4.14 Cloudstack install - substitute versions as needed.
+   assumes a |release| Cloudstack install - substitute versions as needed.
 
 To add the CloudStack repository, create /etc/yum.repos.d/cloudstack.repo and 
 insert the following information.
@@ -286,7 +286,7 @@ insert the following information.
 
    [cloudstack]
    name=cloudstack
-   baseurl=http://download.cloudstack.org/centos/7/4.14/
+   baseurl=http://download.cloudstack.org/centos/$releasev/|version|/
    enabled=1
    gpgcheck=0
 
@@ -374,7 +374,8 @@ Database Installation and Configuration
 We'll start with installing MySQL and configuring some options to ensure it 
 runs well with CloudStack. 
 
-First, as CentOS 7 no longer provides the MySQL binaries, we need to add a repository: 
+First, as CentOS 7 no longer provides the MySQL binaries, we need to add a MySQL community repository,
+that will provide MySQL Server (and the Python MySQL connector later) : 
 
 .. parsed-literal::
    # wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
@@ -420,39 +421,17 @@ start on boot as follows:
    # systemctl start mysqld
 
 
-MySQL connector Installation
+MySQL Connector Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Previously, we used to install Python and Java MySQL connectors using the official MySQL packages repository.
-Due to the version changes and introduced incompatibility in versions 8.x of those packages,
-it's advised to disable installing these packages from the MySQL repository (which we previously added)
-and install older versions instead.
-
-Edit the file ``/etc/yum.repos.d/mysql-community.repo`` to add the line 
-"exclude=mysql-connector-python,mysql-connector-java" under the ``[mysql-connectors-community]``
-section of the repo file, so that it looks similar to the below:
-
-.. parsed-literal::
-
-   [mysql-connectors-community]
-   name=MySQL Connectors Community
-   baseurl=http://repo.mysql.com/yum/mysql-connectors-community/el/7/$basearch/
-   enabled=1
-   gpgcheck=1
-   gpgkey=file:/etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
-   **exclude=mysql-connector-python,mysql-connector-java**
-
-We'll proceed with installing ``mysql-connector-java`` from the Base CentOS repo,
-while the ``mysql-connector-python`` will be installed from the Epel repo: 
+Install Python MySQL connector from the MySQL community repository (which we've added previously):
 
 .. parsed-literal:: 
 
-   # yum -y install epel-release
-   # yum -y install mysql-connector-java mysql-connector-python
+   # yum -y install mysql-connector-python
    
-Please ensure that the installed version are older than 8.x (i.e. the current 
-mysql-connector-java version from Epel is 1.1.6, while the mysql-connector-python
-version is 5.1.25)
+Please note that the previously required ``mysql-connector-java`` library is now bundled with CloudStack
+Management server and is no more required to be installed separately.
 
 Installation
 ~~~~~~~~~~~~
@@ -500,7 +479,7 @@ the system VMs images.
   
    /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt \
    -m /export/secondary \
-   -u http://download.cloudstack.org/systemvm/4.14/systemvmtemplate-4.14.0-kvm.qcow2.bz2 \
+   -u |sysvm64-url-kvm| \
    -h kvm -F
 
 
