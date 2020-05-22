@@ -33,8 +33,8 @@ get you up and running with CloudStack with a minimum amount of trouble.
 High level overview of the process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This runbook will focus on building a CloudStack cloud using KVM on CentOS 
-7.5 with NFS storage on a flat layer-2 network utilizing layer-3 network 
+This guide will focus on building a CloudStack cloud using KVM on CentOS 
+7.7 with NFS storage on a flat layer-2 network utilizing layer-3 network 
 isolation (aka Security Groups), and doing it all on a single piece of 
 hardware.
 
@@ -49,11 +49,11 @@ virtual machines.
 Prerequisites
 ~~~~~~~~~~~~~
 
-To complete this runbook you'll need the following items:
+To complete this guide you'll need the following items:
 
 #. At least one computer which supports and has enabled hardware virtualization.
 
-#. An `CentOS 7.5 x86_64 install ISO, on bootable media 
+#. An `CentOS 7.7 x86_64 install ISO, on bootable media 
    <http://mirrors.kernel.org/centos/7/isos/x86_64/>`_
 
 #. A /24 network with the gateway being at xxx.xxx.xxx.1, no DHCP should be on 
@@ -71,7 +71,7 @@ CloudStack. We will go over the steps to prepare now.
 Operating System
 ~~~~~~~~~~~~~~~~
 
-Using the CentOS 7.5 x86_64 install ISO, you'll need to install CentOS 7 
+Using the CentOS 7.7 x86_64 install ISO, you'll need to install CentOS 7 
 on your hardware. The defaults will generally be acceptable for this 
 installation. You may want to configure network configuration during
 setup - either using the guidelines below, or using a standard access
@@ -101,10 +101,10 @@ will need to configure it to work in your environment. Since we specified
 that there will be no DHCP server in this environment we will be manually 
 configuring your network interface. 
 
-Before going any further, make sure that "brctl" is installed and available:
+Before going any further, make sure that "brctl" and "net-tools" are installed and available:
 
 .. parsed-literal::
-   # yum install bridge-utils -y
+   # yum install bridge-utils net-tools -y
 
 Connecting via the console you should login as root. We will start by creating
 the bridge that Cloudstack will use for networking. Create and open
@@ -277,7 +277,7 @@ We need to configure the machine to use a CloudStack package repository.
    to take the source release and generate RPMs and and yum repository. This 
    guide attempts to keep things as simple as possible, and thus we are using 
    one of the community-provided yum repositories. Furthermore, this example 
-   assumes a 4.11 Cloudstack install - substitute versions as needed.
+   assumes a |release| Cloudstack install - substitute versions as needed.
 
 To add the CloudStack repository, create /etc/yum.repos.d/cloudstack.repo and 
 insert the following information.
@@ -286,7 +286,7 @@ insert the following information.
 
    [cloudstack]
    name=cloudstack
-   baseurl=http://download.cloudstack.org/centos/7/4.11/
+   baseurl=http://download.cloudstack.org/centos/7/|version|/
    enabled=1
    gpgcheck=0
 
@@ -379,7 +379,6 @@ First, as CentOS 7 no longer provides the MySQL binaries, we need to add a repos
 .. parsed-literal::
    # wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
    # rpm -ivh mysql-community-release-el7-5.noarch.rpm
-   # yum -y update
 
 Install by running the following command: 
 
@@ -424,29 +423,34 @@ start on boot as follows:
 MySQL connector Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Install Python MySQL connector using the official MySQL packages repository.
-Create the file ``/etc/yum.repos.d/mysql.repo`` with the following content:
+Previously, we used to install Python and Java MySQL connectors using the official MySQL packages repository.
+Due to the version changes and introduced incompatibility in versions 8.x of those packages,
+it's advised to disable installing these packages from the MySQL repository (which we previously added)
+and install older versions instead.
+
+Edit the file ``/etc/yum.repos.d/mysql-community.repo`` to add the line 
+"exclude=mysql-connector-python,mysql-connector-java" under the ``[mysql-connectors-community]``
+section of the repo file, so that it looks similar to the below:
 
 .. parsed-literal::
 
    [mysql-connectors-community]
-   name=MySQL Community connectors
-   baseurl=http://repo.mysql.com/yum/mysql-connectors-community/el/$releasever/$basearch/
+   name=MySQL Connectors Community
+   baseurl=http://repo.mysql.com/yum/mysql-connectors-community/el/7/$basearch/
    enabled=1
    gpgcheck=1
+   gpgkey=file:/etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+   **exclude=mysql-connector-python,mysql-connector-java**
 
-Import GPG public key from MySQL:
+We'll proceed with installing ``mysql-connector-java`` from the Base CentOS repo,
+while the ``mysql-connector-python`` will be installed from the Epel repo: 
 
-.. parsed-literal::
-
-   rpm --import http://repo.mysql.com/RPM-GPG-KEY-mysql
-
-Install mysql-connector
-
-.. parsed-literal::
-
-   yum install mysql-connector-python
-
+   yum -y install epel-release
+   yum install mysql-connector-java mysql-connector-python
+   
+Please ensure that the installed version are older than 8.x (i.e. the current 
+mysql-connector-java version from Epel is 1.1.6, while the mysql-connector-python
+version is 5.1.25)
 
 Installation
 ~~~~~~~~~~~~
