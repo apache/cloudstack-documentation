@@ -52,15 +52,15 @@ Overview of Upgrade Steps:
 .. warning::
     If you have not registered the 4.11.3 System VM templates for your hypervisors,
     you will need to register them prior to performing the upgrade of the CloudStack
-    packages. This includes those currently running a **clean** install of CloudStack 4.11.3 (ie you
-    did not upgrade from another version to reach 4.11.3), you will still need to 
-    explicitly register the 4.11.3 System VM template(s), you will not however need
+    packages. This includes those currently running a **clean** install of CloudStack 4.11.3 (i.e. you
+    did not upgrade from another version to reach 4.11.3) - you will still need to 
+    explicitly register the 4.11.3 System VM template(s), but you will not need
     to restart the existing system VMs. 
     
     If you are running an instance of CloudStack 4.11.3
     that was upgraded from a the previous versions,
     you will already have explicitly registered the 4.11.3 System VM template(s) and
-    need not do it again.
+    need not to do it again.
 
 .. include:: _sysvm_templates.rst
 
