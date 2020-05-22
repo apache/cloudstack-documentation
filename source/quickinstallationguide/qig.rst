@@ -451,7 +451,7 @@ is the selected/active one (in case you had a previous Java version already inst
 
       $ alternatives --config java
       
-Make sure that the Java 11 is the chosen one.
+Make sure that Java 11 is the chosen one.
 
 With the application itself installed we can now setup the database, we'll do 
 that with the following command and options:
