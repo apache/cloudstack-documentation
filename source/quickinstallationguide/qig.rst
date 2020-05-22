@@ -445,8 +445,10 @@ section of the repo file, so that it looks similar to the below:
 We'll proceed with installing ``mysql-connector-java`` from the Base CentOS repo,
 while the ``mysql-connector-python`` will be installed from the Epel repo: 
 
-   yum -y install epel-release
-   yum install mysql-connector-java mysql-connector-python
+.. parsed-literal:: 
+
+   # yum -y install epel-release
+   # yum -y install mysql-connector-java mysql-connector-python
    
 Please ensure that the installed version are older than 8.x (i.e. the current 
 mysql-connector-java version from Epel is 1.1.6, while the mysql-connector-python
