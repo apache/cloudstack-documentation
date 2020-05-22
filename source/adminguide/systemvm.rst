@@ -192,7 +192,7 @@ Using a SSL Certificate for the Console Proxy
 
 By default, the console viewing functionality uses plaintext HTTP. In 
 any production environment, the console proxy connection should be
-encrypted via SSL at the mininum.
+encrypted via SSL at the minimum.
 
 A CloudStack administrator has 2 ways to secure the console proxy
 communication with SSL:
@@ -241,7 +241,7 @@ proxy domain, SSL certificate, and private key:
 
          openssl req -new -key yourprivate.key -out yourcertificate.csr
 
-   #. Head to the website of your favorite trusted Certificate
+   #. Head to the website of your favourite trusted Certificate
       Authority, purchase an SSL certificate, and submit the CSR. You
       should receive a valid certificate in return
 
@@ -304,11 +304,11 @@ If you still have problems and folowing errors in management.log while destroyin
 - Unable to build keystore for CPVMCertificate due to CertificateException
 - Cold not find and construct a valid SSL certificate
 
-that means that still some of the Root/intermediate/server certificates or the key is not in a good format, or incorrectly encoded or multiply Root CA/Intemediate CA present in database by mistake.
+that means that still some of the Root/intermediate/server certificates or the key is not in a good format, or incorrectly encoded or multiply Root CA/Intermediate CA present in database by mistake.
 
 Other way to renew Certificates (Root,Intermediates,Server certificates and key) - although not recommended
 unless you fill comfortable - is to directly edit the database,
-while still respect the main requirement that the private key is PKCS8 encoded, while Root CA, Intemediate and Server certificates
+while still respect the main requirement that the private key is PKCS8 encoded, while Root CA, Intermediate and Server certificates
 are still in default PEM format (no URL encoding needed here).
 After editing the database, please restart management server, and destroy SSVM and CPVM after that,
 so the new SSVM and CPVM with new certificates are created.
@@ -456,7 +456,7 @@ VMware, and KVM.
 Log file /var/log/routerServiceMonitor.log contains the actions undertaken/attempted
 by the service monitoring script (i.e. trying to restart a stopped service).
 
-As of CloudStack 4.14, the internval at which the service monitoring script runs
+As of CloudStack 4.14, the interval at which the service monitoring script runs
 is no more hardcoded to 3 minutes, but is instead controlled via 
 global setting router.health.checks.basic.interval.
 
@@ -840,7 +840,3 @@ same Debian 9 based templates.
 Non-Alphanumeric characters (metacharacters) are not allowed for this parameter
 except for the “-“ and the “.”. Any metacharacter supplied will immediately result
 in an immediate termination of the command and report back to the operator that an illegal character was passed
-
-
-
-
