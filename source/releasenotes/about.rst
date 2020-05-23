@@ -49,7 +49,7 @@ UI Deprecation Notice
 ---------------------
 
 A modern UI for Apache CloudStack - Primate has been proposed, a technical preview of which
-can be evaluated with this release. Please see the `Primate install guide <installguide/primate.html>`.
+can be evaluated with this release. Please see the `Primate install guide <installguide/primate.html>`_.
 
 The current legacy UI will be deprecated in the next CloudStack major release which will ship
 Primate GA and in later CloudStack major release the legacy UI will be removed.
