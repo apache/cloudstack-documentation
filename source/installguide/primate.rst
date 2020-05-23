@@ -54,8 +54,8 @@ and creates navigation and views based on that.
 - API auto-discovery (listApis enabled)
 - All modern browsers that are `ES5-compliant <https://github.com/vuejs/vue#browser-compatibility>`_
 
-While in theory Primate can work with any older version of CloudStack however
-several Primate list views require API pagination support some of which are
+In theory Primate can work with any older version of CloudStack.
+However, several Primate list views require API pagination support, some of which are
 available starting Apache CloudStack 4.13.1.0.
 
 Installation on CentOS
@@ -157,7 +157,7 @@ Known Issues and Missing Features
 - Authorisation management for SAML users
 - Filter by feature for searching
 - Guest network LB support for SSL certificate
-- Not all translations are not fully migrated from legacy UI to Primate.
+- Not all translations are fully migrated from legacy UI to Primate.
 - Feature and enhancements added in 4.14 except CloudStack Kubernetes Service and Backup and Recovery
 
 Please also refer to open issues on https://github.com/apache/cloudstack-primate/issues
