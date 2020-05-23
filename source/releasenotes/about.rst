@@ -18,10 +18,10 @@ What's New in |release|
 =======================
 
 
-What's New in 4.13.1.0
+What's New in |release|
 ----------------------
 
-The new 4.13.1.0 version is a 4.13 maintenance release containing almost 100
+The new |release| version is a 4.13 maintenance release containing almost 100
 fixes and improvements on the 4.13.0.0 release.
 
 
@@ -49,7 +49,7 @@ UI Deprecation Notice
 ---------------------
 
 A modern UI for Apache CloudStack - Primate has been proposed, a technical preview of which
-can be evaluated with this release. Please see the Primate install guide :ref:`_primate-install-guide`.
+can be evaluated with this release. Please see the `Primate install guide <installguide/primate.html>`.
 
 The current legacy UI will be deprecated in the next CloudStack major release which will ship
 Primate GA and in later CloudStack major release the legacy UI will be removed.
