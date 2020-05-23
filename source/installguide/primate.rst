@@ -20,7 +20,7 @@ Primate Guide
 What is Primate?
 ~~~~~~~~~~~~~~~~
 
-Apache CloudStack Primate is a modern role-based progressive UI based on VueJS
+Apache CloudStack Primate is a modern role-based progressive UI based on Vue.js
 and Ant Design for Apache CloudStack.
 
 .. image:: https://raw.githubusercontent.com/apache/cloudstack-primate/master/docs/screenshot-dashboard.png
@@ -29,19 +29,33 @@ and Ant Design for Apache CloudStack.
    :align: left
 
 With Apache CloudStack 4.14, a technical preview of Primate is proposed that
-users can evaluate. The technical preview release is not officially voted
+users can evaluate. The technical preview release is not an officially voted
 release by the Apache CloudStack project but offers a snapshot build of Primate
 for users for testing and evaluation. The official Primate GA is expected with
-the next CloudStack release where the legacy UI will be depreciated, and the
-legacy UI will be removed in eventual major releases.
+the next CloudStack release where the legacy UI will be deprecated, and the
+legacy UI will be removed in an eventual major CloudStack release.
 
 .. parsed-literal::
 
     NOTE: Primate tech-preview is not suitable to run in production environments.
 
 `User participation in the community mailing lists
-<http://cloudstack.apache.org/mailing-lists.html>`_ is encouraged and users may
+<http://cloudstack.apache.org/mailing-lists.html>`_ is encouraged. Users may
 also log issues on Github https://github.com/apache/cloudstack-primate/issues
+
+Requirements
+~~~~~~~~~~~~
+
+Primate uses API auto-discovery to discover APIs allowed for a logged-in user
+and creates navigation and views based on that.
+
+- Apache CloudStack 4.13.1.0 or later
+- API auto-discovery (listApis enabled)
+- All modern browsers that are `ES5-compliant <https://github.com/vuejs/vue#browser-compatibility>`_
+
+While in theory Primate can work with any older version of CloudStack however
+several Primate list views require API pagination support some of which are
+available starting Apache CloudStack 4.13.1.0.
 
 Installation on CentOS
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -51,7 +65,7 @@ following Primate tech-preview repository:
 
 .. parsed-literal::
 
-    rpm --import http://packages.shapeblue.com/release.asc
+    rpm --import https://download.cloudstack.org/primate/release.asc
     cat << EOF > /etc/yum.repos.d/cloudstack-primate-tech-preview.repo
     [cloudstack-primate-tech-preview]
     name=cloudstack
@@ -67,9 +81,9 @@ Next, install Primate:
 
     yum install cloudstack-primate
 
-Note: there is no need to restart management server post-installation, Primate
-can be accessed on management-server-host:8080/client/primate in any modern
-browser.
+Note: there is no need to restart management server post-installation, and
+after installation the UI can be accessed on
+management-server-host:8080/client/primate using any modern browser.
 
 Installation on Ubuntu
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -88,9 +102,9 @@ Next, install Primate:
     apt-get update
     apt-get install cloudstack-primate
 
-Note: there is no need to restart management server post-installation, Primate
-can be accessed on management-server-host:8080/client/primate in any modern
-browser.
+Note: there is no need to restart management server post-installation, and
+after installation the UI can be accessed on
+management-server-host:8080/client/primate using any modern browser.
 
 Using Archive
 ~~~~~~~~~~~~~
@@ -131,8 +145,8 @@ Example nginx config:
         }
     }
 
-Known Issues and Limitations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Known Issues and Missing Features
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Support for network service providers
 - Support for S3 based secondary storage
