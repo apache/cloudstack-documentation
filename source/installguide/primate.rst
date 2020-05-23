@@ -13,6 +13,7 @@
    specific language governing permissions and limitations
    under the License.
 
+:ref:`primate-install-guide`
 
 Primate Guide
 =============
@@ -42,8 +43,6 @@ legacy UI will be removed in an eventual major CloudStack release.
 `User participation in the community mailing lists
 <http://cloudstack.apache.org/mailing-lists.html>`_ is encouraged. Users may
 also log issues on Github https://github.com/apache/cloudstack-primate/issues
-
-:ref:`primate-install-guide`
 
 Requirements
 ~~~~~~~~~~~~
