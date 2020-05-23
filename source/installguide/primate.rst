@@ -43,6 +43,8 @@ legacy UI will be removed in an eventual major CloudStack release.
 <http://cloudstack.apache.org/mailing-lists.html>`_ is encouraged. Users may
 also log issues on Github https://github.com/apache/cloudstack-primate/issues
 
+:ref:`primate-install-guide`
+
 Requirements
 ~~~~~~~~~~~~
 
