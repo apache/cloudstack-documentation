@@ -55,6 +55,7 @@ and VMware with vSphere.
 -  Oracle VM 3.0+
 -  Bare metal hosts are supported, which have no hypervisor. These hosts
    can run the following operating systems:
+   
    -  Fedora 17
    -  Ubuntu 12.04
 
