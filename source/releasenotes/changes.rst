@@ -18,7 +18,7 @@
 Changes in |release| since 4.13
 ===============================
 
-Apache CloudStack now uses GitHub <https://github.com/apache/cloudstack/issues>`_ 
+Apache CloudStack uses GitHub <https://github.com/apache/cloudstack/issues>`_ 
 to track its issues.
 
 
