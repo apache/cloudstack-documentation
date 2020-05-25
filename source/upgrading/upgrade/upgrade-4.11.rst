@@ -110,6 +110,8 @@ Backup current database
 Management Server
 -----------------
 
+.. include:: _timezone.rst
+
 Ubuntu
 ######
 
@@ -284,15 +286,6 @@ hosts.
 
       $ sudo apt-get upgrade cloudstack-agent
 
-#. Verify that the file ``/etc/cloudstack/agent/environment.properties`` has a
-    line that reads:
-
-   .. parsed-literal::
-
-      paths.script=/usr/share/cloudstack-common
-
-   If not, add the line.
-
 #. Start the agent.
 
    .. parsed-literal::
@@ -310,15 +303,6 @@ For KVM hosts, upgrade the ``cloudstack-agent`` package
    .. parsed-literal::
 
       $ sudo yum upgrade cloudstack-agent
-
-#. Verify that the file ``/etc/cloudstack/agent/environment.properties`` has a
-   line that reads:
-
-   .. parsed-literal::
-
-      paths.script=/usr/share/cloudstack-common
-
-   If not, add the line.
 
 #. Restart the agent:
 

@@ -81,8 +81,8 @@ Working with Virtual Machines
    virtual_machines
 
 
-Working with Templates
-----------------------
+Working with Templates & ISOs
+------------------------------
 
 .. toctree::
    :maxdepth: 4

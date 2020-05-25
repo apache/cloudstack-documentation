@@ -46,3 +46,11 @@ The full list of new features can be found in the project release notes at http:
 
 Apache CloudStack powers numerous elastic Cloud computing services, including solutions that have ranked as Gartner Magic Quadrant leaders. Highlighted in the Forrester Q4 2017 Enterprise Open Source Cloud Adoption report, Apache CloudStack "sits beneath hundreds of service provider clouds", including Fortune 5 multinational corporations. A list of known Apache CloudStack users are available at http://cloudstack.apache.org/users.html
 
+New Modern UI / old UI Deprecation Notice
+------------------------------------------
+
+A modern UI for Apache CloudStack - Primate has been proposed, a technical preview of which
+can be evaluated with this release. Please see the `Primate install guide <../installguide/primate.html>`_.
+
+The current legacy UI will be deprecated in the next CloudStack major release which will ship
+Primate GA and in later CloudStack major release the legacy UI will be removed.

@@ -37,8 +37,10 @@ Overview of Upgrade Steps:
 
 #. Check any customisations and integrations
 #. Upload the |sysvm64-version| System VM template if not already using it.
+#. Confirm Java 11 is the default Java version
 #. Stop all running management servers
 #. Backup CloudStack database (MySQL)
+#. Add "serverTimezone=UTC" to your "db.properties"
 #. Upgrade 1st CloudStack management server
 #. Update hypervisors specific dependencies
 #. Restart 1st management server
@@ -69,7 +71,7 @@ Create RPM or Debian packages (as appropriate) and a repository from
 the |release| source, or check the Apache CloudStack downloads page at
 http://cloudstack.apache.org/downloads.html
 for package repositories supplied by community members. You will need
-them for :ref:`ubuntu413` or :ref:`rhel413` and :ref:`kvm413` hosts upgrade.
+them for :ref:`ubuntu413` or :ref:`kvm413` hosts upgrade.
 
 Instructions for creating packages from the CloudStack source are in the
 `CloudStack Installation Guide`_.
@@ -109,6 +111,8 @@ Backup current database
 Management Server
 -----------------
 
+.. include:: _timezone.rst
+
 Ubuntu
 ######
 
@@ -125,31 +129,20 @@ each system with CloudStack packages. This means all management
 servers, and any hosts that have the KVM agent (no changes should
 be necessary for hosts that are running VMware or Xen.)
 
-Make sure that your ``/etc/apt/sources.list.d/cloudstack.list`` file on
-any systems that have CloudStack packages installed points to version 4.13
-
+Edit your ``/etc/apt/sources.list.d/cloudstack.list`` file on
+any systems that have CloudStack packages installed to points to version |version|
 
 This file should have one line, which contains:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu bionic 4.13
-
-We'll change it to point to the new package repository:
-
-.. parsed-literal::
-
    deb http://download.cloudstack.org/ubuntu bionic |version|
-   
 
 Setup the public key for the above repository:
 
 .. parsed-literal::
 
    wget -qO - http://download.cloudstack.org/release.asc | sudo apt-key add -
-
-If you're using your own package repository, change this line to
-read as appropriate for your |version| repository.
 
 #. Now update your apt package list:
 
@@ -187,13 +180,11 @@ packages. If not, skip to hypervisors section :ref:`upg_hyp_413`.
 
 The first order of business will be to change the yum repository
 for each system with CloudStack packages. This means all
-
 management servers, and any hosts that have the KVM agent (no changes
 should be necessary for hosts that are running VMware or Xen.)
 
-Confirm your ``/etc/yum.repos.d/cloudstack.repo`` file on
-any systems that have CloudStack packages installed points to version 4.13.
-
+Change your ``/etc/yum.repos.d/cloudstack.repo`` file on
+any systems that have CloudStack packages installed to points to version |version|.
 
 This file should have content similar to the following:
 
@@ -201,7 +192,7 @@ This file should have content similar to the following:
 
    [apache-cloudstack]
    name=Apache CloudStack
-   baseurl=http://download.cloudstack.org/centos/7/4.14/
+   baseurl=http://download.cloudstack.org/centos/$releasever/|version|/
    enabled=1
    gpgcheck=0
 
@@ -210,7 +201,6 @@ Setup the GPG public key if you wish to enable ``gpgcheck=1``:
 .. parsed-literal::
 
    rpm --import http://download.cloudstack.org/RPM-GPG-KEY
-
 
 #. Now that you have the repository configured, it's time to upgrade the
    ``cloudstack-management``.
@@ -241,8 +231,8 @@ Hypervisor: VMware
 ###################
 
 .. warning::
-   For VMware hypervisor CloudStack management server packages must be
-   build using "noredist". Refer to :ref:`building-noredist`.
+   For VMware hypervisor, CloudStack management server packages must be
+   built using "noredist". Refer to :ref:`building-noredist`.
 
 
 No additional steps are requried for the VMware Hypervisor for this upgrade.
@@ -275,15 +265,6 @@ hosts.
 
       $ sudo apt-get upgrade cloudstack-agent
 
-#. Verify that the file ``/etc/cloudstack/agent/environment.properties`` has a
-   line that reads:
-
-   .. parsed-literal::
-
-      paths.script=/usr/share/cloudstack-common
-
-   If not, add the line.
-
 #. Start the agent.
 
    .. parsed-literal::
@@ -301,15 +282,6 @@ For KVM hosts, upgrade the ``cloudstack-agent`` package
    .. parsed-literal::
 
       $ sudo yum upgrade cloudstack-agent
-
-#. Verify that the file ``/etc/cloudstack/agent/environment.properties`` has a
-   line that reads:
-
-   .. parsed-literal::
-
-      paths.script=/usr/share/cloudstack-common
-
-   If not, add the line.
 
 #. Restart the agent:
 

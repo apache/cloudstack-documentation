@@ -47,6 +47,16 @@ General Installation
    management-server/index
 
 
+.. _primate:
+
+Primate Installation
+--------------------
+.. toctree::
+   :maxdepth: 2
+
+   primate
+
+
 .. _configuration:
 
 Configuration
