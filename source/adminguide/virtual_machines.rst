@@ -914,6 +914,12 @@ snapshot:
    have to manually delete the snapshots in this case.
 
 
+Importing Virtual Machines
+===========================
+
+.. include:: virtual_machines/VM_Ingestion.rst
+
+
 Virtual Machine Backups (Backup and Recovery Feature)
 =====================================================
 
@@ -1033,10 +1039,10 @@ Creating an Instance
 --------------------
 
 After you save the SSH keypair file, you must create an instance by
-using the template that you created at `Section 5.2.1, “ Creating an
+using the template that you created at `Section 5.2.1, “ Creating an
 Instance Template that Supports SSH Keys” <#create-ssh-template>`__.
 Ensure that you use the same SSH key name that you created at
-`Section 5.2.2, “Creating the SSH Keypair” <#create-ssh-keypair>`__.
+`Section 5.2.2, “Creating the SSH Keypair” <#create-ssh-keypair>`__.
 
 .. note:: 
    You cannot create the instance by using the GUI at this time and 
