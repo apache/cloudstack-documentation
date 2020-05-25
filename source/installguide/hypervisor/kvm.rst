@@ -26,7 +26,7 @@ are recommended:
 
 -  CentOS / RHEL: 7.X
 
--  Ubuntu: 14.04
+-  Ubuntu: 16.04
 
 The main requirement for KVM hypervisors is the libvirt and Qemu
 version. No matter what Linux distribution you are using, make sure the
@@ -34,7 +34,7 @@ following requirements are met:
 
 -  libvirt: 1.2.0 or higher
 
--  Qemu/KVM: 2.0 or higher
+-  Qemu/KVM: 1.5 or higher (2.5 or higher recommended)
 
 The default bridge in CloudStack is the Linux native bridge
 implementation (bridge module). CloudStack includes an option to work
@@ -134,6 +134,11 @@ KVM instances.
 
 #. Repeat all of these steps on every hypervisor host.
 
+.. warning::
+   CloudStack |version| requires Java 11 JRE. Installing CloudStack agent will
+   automatically install Java 11, but it's good to explicitly confirm that the Java 11 
+   is the selected/active one (in case you had a previous Java version already installed)
+   with ``alternatives --config java``, after CloudStack agent is installed.
 
 Install and configure the Agent
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
