@@ -28,7 +28,7 @@ System Requirements for vSphere Hosts
 Software requirements:
 ^^^^^^^^^^^^^^^^^^^^^^
 
--  vSphere and vCenter, versions 5.5, 6.0, 6.5 or 6.7.
+-  vSphere and vCenter, versions 6.0, 6.5 or 6.7.
 
    vSphere Standard is recommended. Note however that customers need to
    consider the CPU constraints in place with vSphere licensing. See
@@ -105,7 +105,7 @@ Requirements" <http://pubs.vmware.com/vsp40/wwhelp/wwhimpl/js/html/wwhelp.htm#hr
 Other requirements:
 ^^^^^^^^^^^^^^^^^^^
 
--  VMware vCenter Standard Edition 4.1, 5.0, 5.1 or 5.5 must be installed and
+-  VMware vCenter Standard Edition 6.0, 6.5 or 6.7 must be installed and
    available to manage the vSphere hosts.
 
 -  vCenter must be configured to use the standard port 443 so that it
@@ -114,7 +114,7 @@ Other requirements:
 -  You must re-install VMware ESXi if you are going to re-use a host
    from a previous install.
 
--  CloudStack requires VMware vSphere 4.1, 5.0, 5.1 or 5.5. VMware vSphere 4.0 is
+-  CloudStack requires VMware vSphere 6.0, 6.5 or 6.7. VMware vSphere 5.5 and older
    not supported.
 
 -  All hosts must be 64-bit and must support HVM (Intel-VT or AMD-V
