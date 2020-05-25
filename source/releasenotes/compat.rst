@@ -43,7 +43,7 @@ and VMware with vSphere.
 -  Red Hat Enterprise Linux 7.x with KVM
 -  XenServer versions 7.0, 7.1, 7.2, 7.4, 7.5 with latest hotfixes, XCP-ng 7.4, 7.6
 
-   .. note:: It is now required to enable HA on the XenServer pool in order to recover from a pool-master failure. Please refer to the `XenServer documentation <http://docs.vmd.citrix.com/XenServer/6.5.0/1.0/en_gb/>`_.
+   .. note:: It is now required to enable HA on the XenServer pool in order to recover from a pool-master failure. Please refer to the `XenServer documentation <https://docs.citrix.com/en-us/xencenter/7-1/pools-ha-enable.html>`_.
 
 -  VMware versions 6.0, 6.5 and 6.7 (tested up to 6.7 U3)
 
@@ -55,12 +55,8 @@ and VMware with vSphere.
 -  Oracle VM 3.0+
 -  Bare metal hosts are supported, which have no hypervisor. These hosts
    can run the following operating systems:
-
    -  Fedora 17
    -  Ubuntu 12.04
-
-For more information, see the Hypervisor Compatibility Matrix in the
-`CloudStack Installation Guide`_.
 
 
 Supported External Devices
