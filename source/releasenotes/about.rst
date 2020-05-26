@@ -52,9 +52,9 @@ New User Interface & Depreciation notice of existing UI
 Cloudstack 4.14 ships with a Technical Preview of a new, modern User Interface (project Primate) . This technical preview can be used by users & operators of Cloudstack environments for evaluation & testing purposes. With version 4.14, the existing UI remains the supported UI for production environments.
 However, with the 4.14 release, the Apache Cloudstack community will stop taking feature requests for new functionality in the existing UI. All new functionality will be developed against the new UI.
 
-
 The next LTS release (likely to be version 4.15) of Apache Cloudstack will ship with the production release of the new UI. It will also be the last version of CloudStack to ship with the old UI. This release will also have the final deprecation notice for the old UI.
 
 In the following release (likely to be 4.16), the old UI will be deprecated.
 
-`Primate install guide <../installguide/primate.html>`_
+Please see `Primate install guide <../installguide/primate.html>`_
+
