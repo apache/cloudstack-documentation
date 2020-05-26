@@ -46,11 +46,16 @@ The full list of new features can be found in the project release notes at http:
 
 Apache CloudStack powers numerous elastic Cloud computing services, including solutions that have ranked as Gartner Magic Quadrant leaders. Highlighted in the Forrester Q4 2017 Enterprise Open Source Cloud Adoption report, Apache CloudStack "sits beneath hundreds of service provider clouds", including Fortune 5 multinational corporations. A list of known Apache CloudStack users are available at http://cloudstack.apache.org/users.html
 
-New Modern UI / Old UI Deprecation Notice
-=========================================
+New User Interface & Depreciation notice of existing UI
+=======================================================
 
-A modern UI for Apache CloudStack - Primate has been proposed, a technical preview of which
-can be evaluated with this release. Please see the `Primate install guide <../installguide/primate.html>`_.
+Cloudstack 4.14 ships with a Technical Preview of a new, modern User Interface (project Primate) . This technical preview can be used by users & operators of Cloudstack environments for evaluation & testing purposes. With version 4.14, the existing UI remains the supported UI for production environments.
+However, with the 4.14 release, the Apache Cloudstack community will stop taking feature requests for new functionality in the existing UI. All new functionality will be developed against the new UI.
 
-The current legacy UI will be deprecated in the next CloudStack major release which will ship
-Primate GA and in later CloudStack major release the legacy UI will be removed.
+
+The next LTS release (likely to be version 4.15) of Apache Cloudstack will ship with the production release of the new UI. It will also be the last version of CloudStack to ship with the old UI. This release will also have the final deprecation notice for the old UI.
+
+In the following release (likely to be 4.16), the old UI will be deprecated.
+
+Please see `Primate install guide <../installguide/primate.html>`_
+
