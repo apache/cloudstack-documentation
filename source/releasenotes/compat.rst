@@ -52,7 +52,7 @@ and VMware with vSphere.
 
    .. note:: There is a known issue in 6.7u1 (https://kb.vmware.com/s/article/67315) which blocks some CloudStack cloning operations. The use of linked clones is known to be effected.
 
-   .. note:: There is a known issue in 6.7 U3 - 6.7 U3f where a mailformed OVA could crash vCenter services (for more information see `here <https://mail-archives.apache.org/mod_mbox/cloudstack-users/202005.mbox/%3CCAMvtBPNQqbe0XEsHyjFMror7HRvj-c%3DfEe7y12NfCDQSFTYgqQ%40mail.gmail.com%3E>`). To avoid the issue, make sure to use 6.7 U3g or later.
+   .. note:: There is a known issue in 6.7 U3 - 6.7 U3f where a mailformed OVA could crash vCenter services (for more information see `here <https://mail-archives.apache.org/mod_mbox/cloudstack-users/202005.mbox/%3CCAMvtBPNQqbe0XEsHyjFMror7HRvj-c%3DfEe7y12NfCDQSFTYgqQ%40mail.gmail.com%3E>`_). To avoid the issue, make sure to use 6.7 U3g or later.
    
 -  LXC Host Containers on RHEL 7
 -  Windows Server 2012 R2 (with Hyper-V Role enabled)
