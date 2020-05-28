@@ -84,6 +84,18 @@ possible to determine the user-data server from a DHCP lease.
       # curl http://10.1.1.1/latest/user-data
 
 
+Fetching user-data via the API
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+User-data is not included with the normal VM state for historic reasons.
+To read out the base64-encoded user-data via the API, use the `getVirtualMachineUserData <http://cloudstack.apache.org/docs/api/apidocs-4.14/user/getVirtualMachineUserData.html>`_
+API call:
+
+.. code:: bash
+
+   cmk get virtualmachineuserdata virtualmachineid=8fd996b6-a102-11ea-ba47-23394b299ae9
+
+
 Using cloud-init
 ~~~~~~~~~~~~~~~~
 
