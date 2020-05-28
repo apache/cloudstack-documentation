@@ -39,13 +39,14 @@ http://docs.cloudstack.apache.org/en/4.14.0.0/releasenotes/changes.html
 
 .. important::
    This version of CloudStack allows control over the visibility of the DNS services provided
-   by the Virtual Router in Shared networks. By default CloudStack allows DNS requires via the
+   by the Virtual Router in Shared networks. By default CloudStack allows DNS queries via the
    Guest interface from any IP address. This allows for the DNS resolution of guest VMs on the
    Shared network by services outside of the shared network. While this can be useful, it can
    also be an issue on Shared Networks which are using Internet routable/public (i.e. non-RFC1918)
    IP addresses as the DNS service is then queriable from the public internet at large. A new
    global setting "expose.dns.externally" has been added (with a default value of "true" in
-   order to keep backward compatibility). If you wish to disable public access to the DNS services
+   order to keep backward compatibility) which limits the source of DNS queries to hosts on the
+   Shared Network guest subnet. If you wish to disable public access to the DNS services
    running on Virtual Routers, set the value to "false" and recreate the related Virtual Routers.
 
 Apache CloudStack powers numerous elastic Cloud computing services, including solutions that have
