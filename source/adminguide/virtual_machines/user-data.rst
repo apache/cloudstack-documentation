@@ -45,8 +45,8 @@ User-data is available from the URL ``http://data-server./latest/user-data``
 and can be fetched via curl or other HTTP client.
 
 It is also possible to fetch VM metadata from the same service, via the URL
-``http://10.1.1.1/latest/{metadata type}``.  For backwards compatibility,
-the previous URL ``http://10.1.1.1/latest/{metadata type}`` is also supported.
+``http://data-server./latest/{metadata type}``.  For backwards compatibility,
+the previous URL ``http://data-server./latest/{metadata type}`` is also supported.
 
 For metadata type, use one of the following:
 
