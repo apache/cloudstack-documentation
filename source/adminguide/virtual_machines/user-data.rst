@@ -17,35 +17,38 @@
 User-Data and Meta-Data
 -----------------------
 
-CloudStack provides API access to attach up to 2KB of data after base64 encoding
-to a deployed VM. Using HTTP POST(via POST body), you can send up to 32K of data
-after base64 encoding. Deployed VMs also have access to instance metadata via
-the virtual router.
+CloudStack provides APIs to attach up to 32KB of user-data to a deployed VM.
 
-Create virtual machine thru the API: `deployVirtualMachine <http://cloudstack.apache.org/docs/api/apidocs-4.5/user/deployVirtualMachine.html>`_
-using the parameter ``userdata=`` to include user-data formated in
-`base64 <https://www.base64encode.org/>`_.
+There are two CloudStack APIs that can be used to store user-data:
+`deployVirtualMachine <http://cloudstack.apache.org/docs/api/apidocs-4.14/user/deployVirtualMachine.html>`_
+and
+`updateVirtualMachine <http://cloudstack.apache.org/docs/api/apidocs-4.14/user/updateVirtualMachine.html>`_
+They both support the parameter ``userdata=``. The value for this parameter
+must be `base64 <https://www.base64encode.org/>`_-encoded.
 
-Accessed user-data from VM. Once the IP address of the virtual router is
-known, use the following steps to retrieve user-data:
+HTTP GET parameters are limited to a length of 2048 bytes, but it is possible
+to store larger user-data blobs by sending them in the body via HTTP POST
+instead of GET.
 
-#. Run the following command to find the virtual router.
+From inside the VM, the user-data is accessible via the virtual router,
+if the UserData service is enabled on the network offering.
 
-   .. code:: bash
+If you are using the DNS service of the virtual router, a special hostname
+called `data-server.` is provided, that will point to a valid user-data server.
 
-      # cat /var/lib/dhcp/dhclient.eth0.leases | grep dhcp-server-identifier | tail -1
+Otherwise you have to determine the virtual router address via other means,
+such as DHCP leases. Be careful to scan all routers if you have multiple
+networks attached to a VM, in case not all of them have the UserData service
+enabled.
 
-#. Access user-data by running the following command using the result of
-   the above command
+User-data is available from the URL ``http://data-server./latest/user-data``
+and can be fetched via curl or other HTTP client.
 
-   .. code:: bash
+It is also possible to fetch VM metadata from the same service, via the URL
+``http://10.1.1.1/latest/{metadata type}``.  For backwards compatibility,
+the previous URL ``http://10.1.1.1/latest/{metadata type}`` is also supported.
 
-      # curl http://10.1.1.1/latest/user-data
-
-Meta Data can be accessed similarly, using a URL of the form
-``http://10.1.1.1/latest/meta-data/{metadata type}``. (For backwards
-compatibility, the previous URL ``http://10.1.1.1/latest/{metadata type}``
-is also supported.) For metadata type, use one of the following:
+For metadata type, use one of the following:
 
 -  ``service-offering``. A description of the VMs service offering
 
@@ -55,23 +58,41 @@ is also supported.) For metadata type, use one of the following:
 
 -  ``local-hostname``. The hostname of the VM
 
--  ``public-ipv4``. The first public IP for the router. (E.g. the first IP
-   of eth2)
+-  ``public-ipv4``. The first public IP for the router.
 
 -  ``public-hostname``. This is the same as public-ipv4
 
 -  ``instance-id``. The instance name of the VM
 
 
-Using Cloud-Init
+Determining the virtual router address without DNS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If can't or don't want to use the virtual router's DNS service, it's also
+possible to determine the user-data server from a DHCP lease.
+
+#. Run the following command to find the virtual router.
+
+   .. code:: bash
+
+      # cat /var/lib/dhclient/dhclient-eth0.leases | grep dhcp-server-identifier | tail -1
+
+#. Access the data-server via its IP
+
+   .. code:: bash
+
+      # curl http://10.1.1.1/latest/user-data
+
+
+Using cloud-init
 ~~~~~~~~~~~~~~~~
 
-`Cloud-Init <https://cloudinit.readthedocs.org/en/latest>`_ can be use to access
-an interpret user-data from virtual machines. Cloud-Init be installed into 
-templates and also require CloudStack password and sshkey scripts (:ref:`adding-password-management-to-templates` and `using ssh keys <virtual_machines.html#using-ssh-keys-for-authentication>`_). User password management and 
-``resetSSHKeyForVirtualMachine`` API are not yet supported by cloud-init.
+`cloud-init <https://cloudinit.readthedocs.org/en/latest>`_ can be used to access
+and interpret user-data inside virtual machines. If you install cloud-init into your
+VM templates, it will allow you to store SSH keys and user passwords on each new
+VM deployment automatically (:ref:`adding-password-management-to-templates` and `using ssh keys <virtual_machines.html#using-ssh-keys-for-authentication>`_).
 
-#. Install cloud-init package into a template:
+#. Install cloud-init package into a VM template:
 
    .. code:: bash
 
@@ -79,7 +100,7 @@ templates and also require CloudStack password and sshkey scripts (:ref:`adding-
         or
       $ sudo apt-get install cloud-init
 
-#. Create datasource configuration file: ``/etc/cloud/cloud.cfg.d/99_cloudstack.cfg``
+#. Create a datasource configuration file in the VM template: ``/etc/cloud/cloud.cfg.d/99_cloudstack.cfg``
 
    .. code:: yaml
 
@@ -90,13 +111,16 @@ templates and also require CloudStack password and sshkey scripts (:ref:`adding-
         - CloudStack
 
 
-user-data example
-~~~~~~~~~~~~~~~~~
+Custom user-data example
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-This example use cloud-init to Upgrade Operating-System of the newly created VM:
+This example uses cloud-init to automatically update all OS packages on the first launch.
 
-.. code:: yaml 
+#. Create user-data and encode in base64:
 
+.. code:: bash
+
+   base64 <<EOF
    #cloud-config
    
    # Upgrade the instance on first boot
@@ -105,15 +129,18 @@ This example use cloud-init to Upgrade Operating-System of the newly created VM:
    # Default: false
    # Aliases: apt_upgrade
    package_upgrade: true
-
-
-base64 formated:
+   EOF
+   
+#. Deploy a VM with this user-data:
 
 .. code:: bash
 
-   I2Nsb3VkLWNvbmZpZw0KDQojIFVwZ3JhZGUgdGhlIGluc3RhbmNlIG9uIGZpcnN0IGJvb3QNCiMgKGllIHJ1biBhcHQtZ2V0IHVwZ3JhZGUpDQojDQojIERlZmF1bHQ6IGZhbHNlDQojIEFsaWFzZXM6IGFwdF91cGdyYWRlDQpwYWNrYWdlX3VwZ3JhZGU6IHRydWUNCg==
+   cmk deploy virtualmachine name=..... userdata=I2Nsb3VkLWNvbmZpZw0KDQojIFVwZ3JhZGUgdGhlIGluc3RhbmNlIG9uIGZpcnN0IGJvb3QNCiMgKGllIHJ1biBhcHQtZ2V0IHVwZ3JhZGUpDQojDQojIERlZmF1bHQ6IGZhbHNlDQojIEFsaWFzZXM6IGFwdF91cGdyYWRlDQpwYWNrYWdlX3VwZ3JhZGU6IHRydWUNCg==
 
-Refer to `Cloud-Init CloudStack datasource <http://cloudinit.readthedocs.org/en/latest/topics/datasources.html#cloudstack>`_
-documentation for latest capabilities. Cloud-Init and Cloud-Init CloudStack
+
+Disclaimer
+~~~~~~~~~~
+
+Refer to the `cloud-init CloudStack datasource <http://cloudinit.readthedocs.org/en/latest/topics/datasources.html#cloudstack>`_
+documentation for latest capabilities. cloud-init and the cloud-init CloudStack
 datasource are not supported by Apache CloudStack community.
-
