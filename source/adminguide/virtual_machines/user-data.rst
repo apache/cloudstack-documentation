@@ -24,7 +24,8 @@ There are two CloudStack APIs that can be used to store user-data:
 and
 `updateVirtualMachine <http://cloudstack.apache.org/docs/api/apidocs-4.14/user/updateVirtualMachine.html>`_
 They both support the parameter ``userdata=``. The value for this parameter
-must be `base64 <https://www.base64encode.org/>`_-encoded.
+must be a `base64 <https://www.base64encode.org/>`_-encoded multi-part MIME
+message. See further below for an example of what this should look like.
 
 HTTP GET parameters are limited to a length of 2048 bytes, but it is possible
 to store larger user-data blobs by sending them in the body via HTTP POST
@@ -128,11 +129,20 @@ Custom user-data example
 
 This example uses cloud-init to automatically update all OS packages on the first launch.
 
-#. Create user-data and encode in base64:
+#. Create user-data, wrapped into a multi-part MIME message and encoded in base64:
 
 .. code:: bash
 
    base64 <<EOF
+   Content-Type: multipart/mixed; boundary="//"
+   MIME-Version: 1.0
+   
+   --//
+   Content-Type: text/cloud-config; charset="us-ascii"
+   MIME-Version: 1.0
+   Content-Transfer-Encoding: 7bit
+   Content-Disposition: attachment; filename="cloud-config.txt"
+   
    #cloud-config
    
    # Upgrade the instance on first boot
@@ -147,7 +157,7 @@ This example uses cloud-init to automatically update all OS packages on the firs
 
 .. code:: bash
 
-   cmk deploy virtualmachine name=..... userdata=I2Nsb3VkLWNvbmZpZw0KDQojIFVwZ3JhZGUgdGhlIGluc3RhbmNlIG9uIGZpcnN0IGJvb3QNCiMgKGllIHJ1biBhcHQtZ2V0IHVwZ3JhZGUpDQojDQojIERlZmF1bHQ6IGZhbHNlDQojIEFsaWFzZXM6IGFwdF91cGdyYWRlDQpwYWNrYWdlX3VwZ3JhZGU6IHRydWUNCg==
+   cmk deploy virtualmachine name=..... userdata=Q29udGVudC1UeXBlOiBtdWx0aXBhcnQvbWl4ZWQ7IGJvdW5kYXJ5PSIvLyIKTUlNRS1WZXJzaW9uOiAxLjAKCi0tLy8KQ29udGVudC1UeXBlOiB0ZXh0L2Nsb3VkLWNvbmZpZzsgY2hhcnNldD0idXMtYXNjaWkiCk1JTUUtVmVyc2lvbjogMS4wCkNvbnRlbnQtVHJhbnNmZXItRW5jb2Rpbmc6IDdiaXQKQ29udGVudC1EaXNwb3NpdGlvbjogYXR0YWNobWVudDsgZmlsZW5hbWU9ImNsb3VkLWNvbmZpZy50eHQiCgojY2xvdWQtY29uZmlnCgojIFVwZ3JhZGUgdGhlIGluc3RhbmNlIG9uIGZpcnN0IGJvb3QKIyAoaWUgcnVuIGFwdC1nZXQgdXBncmFkZSkKIwojIERlZmF1bHQ6IGZhbHNlCiMgQWxpYXNlczogYXB0X3VwZ3JhZGUKcGFja2FnZV91cGdyYWRlOiB0cnVlCg==
 
 
 Disclaimer
