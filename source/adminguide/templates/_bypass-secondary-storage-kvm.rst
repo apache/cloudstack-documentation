@@ -17,7 +17,7 @@
 .. _bypass-secondary-storage-kvm:
 
 Bypassing Secondary Storage For KVM templates
---------------------------------------------
+---------------------------------------------
 
 CloudStack provides an additional way to register and use templates on KVM.
 
@@ -40,6 +40,13 @@ To enable this option for a template:
    -  **Checksum**. Optional field. If this field is populated, the checksum is compared to the downloaded template checksum when the template is downloaded to primary storage at deployment time.
 
 After the template is registered, it is automatically available for VM deployments.
+
+From CloudStack 4.14.0, system VM also support direct download templates. An administrator can register a new system VM template as ROUTING or USER type with the direct download flag, and it can be changed to SYSTEM type during the upgrade or by out-of-band database changes. Type of newly registered template can be changed to SYSTEM in the database using a SQL query similar to:
+
+.. code:: bash
+
+      UPDATE cloud.vm_template SET type=’SYSTEM’ WHERE uuid=’UUID_OF_NEW_TEMPLATE’;
+
 
 Uploading Certificates for Direct Downloads
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -78,7 +85,7 @@ CloudStack provides some APIs to handle certificates for direct downloads:
          upload templatedirectdownloadcertificate hypervisor=KVM name=CERTIFICATE_ALIAS zoneid=ZONE_ID certificate=CERTIFICATE_FORMATTED hostid=HOST_ID
 
 Syncronising Certificates for Direct Downloads
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As new hosts may be added to a zone which do not include a certificate which was previously uploaded to pre-existing hosts.
 
@@ -88,3 +95,14 @@ CloudStack provides a way to synchronize certificates across all the connected h
 - Enumerate the connected hosts in a zone
 - Check which hosts are missing the certificates which have been already uploaded to other hosts
 - Upload missing certificates to hosts
+
+Direct Download Timeouts
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+With 4.14.0, ability to configure different timeout values for the direct downloading of templates has been added. Three new global settings have been added for this:
+
+- **direct.download.connect.timeout** - Connection establishment timeout in milliseconds for direct download. Default value: 5000 milliseconds.
+
+- **direct.download.socket.timeout** - Socket timeout (SO_TIMEOUT) in milliseconds for direct download. Default value: 5000 milliseconds.
+
+- **direct.download.connection.request.timeout** - Requesting a connection from connection manager timeout in milliseconds for direct download. Default value: 5000 milliseconds. This setting is hidden and not visible in UI.
