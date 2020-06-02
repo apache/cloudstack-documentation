@@ -41,7 +41,7 @@ To enable this option for a template:
 
 After the template is registered, it is automatically available for VM deployments.
 
-From CloudStack 4.14.0, system VM also support direct download templates. An administrator can register a new system VM template as ROUTING or USER type with the direct download flag, and it can be changed to SYSTEM type during the upgrade or by out-of-band database changes. Type of newly registered template can be changed to SYSTEM in the database using a SQL query similar to:
+From CloudStack 4.14.0, system VM templates also support direct download. An administrator can register a new system VM template as ROUTING or USER type with the direct download flag, and it can be changed to SYSTEM type during the upgrade or by out-of-band database changes. Type of newly registered template can be changed to SYSTEM in the database using a SQL query similar to:
 
 .. code:: bash
 
