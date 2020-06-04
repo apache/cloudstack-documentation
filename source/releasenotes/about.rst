@@ -46,6 +46,12 @@ The full list of new features can be found in the project release notes at http:
 
 Apache CloudStack powers numerous elastic Cloud computing services, including solutions that have ranked as Gartner Magic Quadrant leaders. Highlighted in the Forrester Q4 2017 Enterprise Open Source Cloud Adoption report, Apache CloudStack "sits beneath hundreds of service provider clouds", including Fortune 5 multinational corporations. A list of known Apache CloudStack users are available at http://cloudstack.apache.org/users.html
 
+Libvirt Python Dependency on KVM and CentOS
+===========================================
+
+For CentOS users using the security groups feature on KVM need to install
+epel-release and python36-libvirt package.
+
 New User Interface & Depreciation notice of existing UI
 =======================================================
 

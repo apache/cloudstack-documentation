@@ -153,6 +153,7 @@ In RHEL or CentOS:
 
 .. parsed-literal::
 
+   $ yum install -y epel-release
    $ yum install cloudstack-agent
 
 In Ubuntu:
