@@ -536,6 +536,7 @@ afterwards we'll need to configure a few things.
 
 .. parsed-literal::
 
+   # yum -y install epel-release
    # yum -y install cloudstack-agent
 
 
