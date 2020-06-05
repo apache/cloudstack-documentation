@@ -49,8 +49,7 @@ Apache CloudStack powers numerous elastic Cloud computing services, including so
 Libvirt Python Dependency on KVM and CentOS
 ===========================================
 
-For CentOS users using the security groups feature on KVM need to install
-epel-release and python36-libvirt package.
+For CentOS users using the security groups feature on KVM it is needed to install the epel-release and python36-libvirt packages.
 
 New User Interface & Depreciation notice of existing UI
 =======================================================
@@ -64,4 +63,3 @@ The next LTS release (likely to be version 4.15) of Apache Cloudstack will ship 
 In the following release (likely to be 4.16), the old UI will be deprecated.
 
 Please see `Primate install guide <../installguide/primate.html>`_
-
