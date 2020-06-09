@@ -342,8 +342,7 @@ Extend Port Range for CloudStack Console Proxy
 In production environments (large number of VMs), 
 it's needed to extend the range of firewall ports that the console proxy
 works with on the hosts. The default additional port range is 50000-50999
- - see global settings ``vmware.additional.vnc.portrange.size``
- and ``vmware.additional.vnc.portrange.start``.
+(see global settings ``vmware.additional.vnc.portrange.size`` and ``vmware.additional.vnc.portrange.start``).
  
 Change global setting ``vmware.additional.vnc.portrange.size`` to i.e "10000" and restart the 
 management-server service on each management server.
