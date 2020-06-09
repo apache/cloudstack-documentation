@@ -374,7 +374,8 @@ by adding the following lines just above the "exit 0" line.:
    esxcli network firewall refresh
 
 This will ensure the needed firewall rules are applied on boot of ESXi hosts.
-Repeat the same commands that were just added to local.sh``
+
+Repeat the same commands that were just added to ``local.sh`` script:
 
 .. parsed-literal::
 
@@ -398,7 +399,7 @@ Repeat the same commands that were just added to local.sh``
    EOF
    esxcli network firewall refresh
    
-Run the script ``/sbin/auto-backup.sh``
+Run the script ``/sbin/auto-backup.sh`` and then logout from each ESXi host.
 
 Configure NIC Bonding for vSphere
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
