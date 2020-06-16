@@ -17,7 +17,7 @@ Unmanaging Virtual Machines via API
 
 Administrators are able to unmanage guest virtual machines from CloudStack. Once unmanaged, CloudStack can no longer monitor, control or administer the provisioning and orchestration related operations on a virtual machine.
 
-To unmanage a guest virtual machine, an administrator must invoke the unmnageVirtualMachine API passing the ID of the virtual machine to unmanage. The API has the following preconditions:
+To unmanage a guest virtual machine, an administrator must invoke the unmanageVirtualMachine API passing the ID of the virtual machine to unmanage. The API has the following preconditions:
 
 - The virtual machine must not be destroyed
 - The virtual machine state must be 'Running’ or ‘Stopped’
@@ -31,7 +31,7 @@ The API execution will perform the following pre-checks, failing if they are not
 .. note:: This is currently only available for **vSphere** clusters.
 
 
-Preserving unmanaged virtual machine NICS
+Preserving unmanaged virtual machine NICs
 -----------------------------------------
 
 The zone setting: unmanage.vm.preserve.nics can be used to preserve virtual machine NICs and its MAC addresses after unmanaging them. If set to true, the virtual machine NICs (and their MAC addresses) are preserved when unmanaging it. Otherwise, NICs are removed and MAC addresses can be reassigned.
@@ -48,7 +48,8 @@ Unmanaging virtual machine actions
 
 - Clean up virtual machine volumes in the CloudStack database
 
-- Clean up virtual machine snapshots in the CloudStack database (if any) · Revoke host access to any managed volumes attached to the VM
+- Clean up virtual machine snapshots in the CloudStack database (if any)
+- Revoke host access to any managed volumes attached to the VM (applicable to managed storage only)
 
 - Clean up the virtual machine from the following:
 
@@ -58,7 +59,7 @@ Unmanaging virtual machine actions
 
    - Remove firewall rules for the virtual machine (if any)
 
-   - Remove forwarding rules for the virtual machine (if any)
+   - Remove port forwarding rules for the virtual machine (if any)
 
    - Remove load balancing rules for the virtual machine (if any)
 
@@ -66,7 +67,7 @@ Unmanaging virtual machine actions
 
    - Remove the virtual machine from affinity groups (if any)
 
-- Set VM details as removed in the CloudStack database
+- Remove VM details from the CloudStack database
 
 - Decrement the account resources count for volumes and virtual machines
 
@@ -74,8 +75,8 @@ Unmanaging virtual machine actions
 
    - For volumes destroyed, with type: ‘VOLUME.DELETE’
 
-   - For virtual machine snapshots destroyed (if any), with type: ‘VMSNAPSHOT.DELETE’
+   - For virtual machine snapshots destroyed (if any), with type: ‘VMSNAPSHOT.DELETE’ and 'VMSNAPSHOT.OFF_PRIMARY'
    
    - For virtual machine NICs destroyed: with type: ‘NETWORK.OFFERING.REMOVE’
    
-   - For the virtual machine being unmanaged: stopped and destroyed usage events (similar as the generated usage events when expunging a virtual machine), with types: ‘VM.STOP’ and ‘VM.DESTROY
+   - For the virtual machine being unmanaged: stopped and destroyed usage events (similar to the generated usage events when expunging a virtual machine), with types: ‘VM.STOP’ and ‘VM.DESTROY', unless the VM has been already stopped before being unmanaged and in this case only ‘VM.DESTROY' is generated.
