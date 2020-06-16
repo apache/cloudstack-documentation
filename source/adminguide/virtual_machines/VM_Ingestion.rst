@@ -13,22 +13,6 @@
    specific language governing permissions and limitations
    under the License.
 
-About Importing VMs
---------------------
-
-Unmanaged Virtual Machines
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-As of ACS 4.14, CloudStack has the concept of **unmanaged** virtual machines.  These are virtual machines that are on CloudStack
-managed hosts, but that are not in CloudStack's database and therefore CloudStack cannot control (manage) then in any way.  Previously,
-such VMs could exist, but CloudStack did not 'see' them (their existence *would* be reported in logs as unrecognised VMs).
-
-From ACS 4.14 onwards, CloudStack is able to list these VMs via the listUnmanagedInstances API command and then import (also known as ingest)
-those unmanaged VMs via the importUnmanagedInstance API so that they become CloudStack managed guest instances
-
-.. note:: This is currently only available for **vSphere** clusters.
-
-
 Use Cases and General Usage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
