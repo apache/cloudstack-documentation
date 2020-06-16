@@ -107,12 +107,14 @@ importUnmanagedInstance API
    - **projectid**
    - **templateid**
    - **serviceofferingid**
-   - **diskofferingid** (UUID of disk offering for root disk)
    - **nicnetworklist** (Map for NIC ID and corresponding Network UUID)
    - **nicipaddresslist** (Map for NIC ID and corresponding IP address)
    - **datadiskofferinglist** (Map for data disk ID and corresponding disk offering UUID)
    - **details** (Map for VM details)
    - **migrateallowed** (VM and its volumes are allowed to migrate to different host/storage pool when offering tags conflict with host/storage pool)
+   - **forced** (True to override existing VM NICS with existing MAC address in case it exists, false by default)
+
+.. note:: The `forced` parameter is false by default and prevents importing a VM which has a NIC containing a MAC address that has been previously assigned by CloudStack. If it is set to true, the NICs with MAC addresses which already exist in the CloudStack database have the existing MAC addresses reassigned to its NICs.
 
 **Response**:
 
