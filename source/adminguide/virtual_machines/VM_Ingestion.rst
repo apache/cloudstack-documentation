@@ -13,22 +13,6 @@
    specific language governing permissions and limitations
    under the License.
 
-About Importing VMs
---------------------
-
-Unmanaged Virtual Machines
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-As of ACS 4.14, CloudStack has the concept of **unmanaged** virtual machines.  These are virtual machines that are on CloudStack
-managed hosts, but that are not in CloudStack's database and therefore CloudStack cannot control (manage) then in any way.  Previously,
-such VMs could exist, but CloudStack did not 'see' them (their existence *would* be reported in logs as unrecognised VMs).
-
-From ACS 4.14 onwards, CloudStack is able to list these VMs via the listUnmanagedInstances API command and then import (also known as ingest)
-those unmanaged VMs via the importUnmanagedInstance API so that they become CloudStack managed guest instances
-
-.. note:: This is currently only available for **vSphere** clusters.
-
-
 Use Cases and General Usage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -123,12 +107,14 @@ importUnmanagedInstance API
    - **projectid**
    - **templateid**
    - **serviceofferingid**
-   - **diskofferingid** (UUID of disk offering for root disk)
    - **nicnetworklist** (Map for NIC ID and corresponding Network UUID)
    - **nicipaddresslist** (Map for NIC ID and corresponding IP address)
    - **datadiskofferinglist** (Map for data disk ID and corresponding disk offering UUID)
    - **details** (Map for VM details)
    - **migrateallowed** (VM and its volumes are allowed to migrate to different host/storage pool when offering tags conflict with host/storage pool)
+   - **forced** (If true, a VM is imported despite some of its NIC's MAC addresses being already present)
+
+.. note:: The `forced` parameter is false by default and prevents importing a VM which has a NIC containing a MAC address that has been previously assigned by CloudStack. If it is set to true, the NICs with MAC addresses which already exist in the CloudStack database have the existing MAC addresses reassigned to its NICs.
 
 **Response**:
 

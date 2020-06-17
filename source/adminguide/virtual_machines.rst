@@ -913,6 +913,11 @@ snapshot:
    VM snapshots are deleted automatically when a VM is destroyed. You don't 
    have to manually delete the snapshots in this case.
 
+Unmanaging Virtual Machines
+===========================
+
+.. include:: virtual_machines/unmanage_vms.rst
+
 
 Importing Virtual Machines
 ===========================
