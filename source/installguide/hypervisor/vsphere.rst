@@ -347,7 +347,7 @@ works with on the hosts. The default additional port range is 50000-50999
 Change global setting ``vmware.additional.vnc.portrange.size`` to i.e "10000" and restart the 
 management-server service on each management server.
 Add those additional ports to the ESXi firewall on each host.
-Log via SSH to every VMware ESX host and edit file ``/etc/rc.local.d/local.sh``
+Log in via SSH to every VMware ESXi host and edit the file ``/etc/rc.local.d/local.sh``
 by adding the following lines just above the "exit 0" line.:
 
 .. parsed-literal::
