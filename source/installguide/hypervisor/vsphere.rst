@@ -374,7 +374,7 @@ by adding the following lines just above the "exit 0" line.:
 
 This will ensure the needed firewall rules are applied on boot of ESXi hosts.
 
-Repeat the same commands that were just added to ``local.sh`` script:
+To make the change on the running host, repeat the commands that were just added to ``local.sh`` script, at the shell command line:
 
 .. parsed-literal::
 
