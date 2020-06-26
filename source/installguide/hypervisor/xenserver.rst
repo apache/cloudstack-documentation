@@ -713,7 +713,7 @@ To upgrade XenServer:
 
       # . /opt/cloud/bin/cloud-clean-vlan.sh
 
-#. Still logged in to the host, run the upgrade preparation script:
+#. Still logged in to the host, run the upgrade preparation script which will ensure that all existing VLANs and networks are propagated to all hosts, eject all ISO from all VMs and also "fake" presence of PV drivers on PV VMs - all of this, to enable VM live migration between hosts later:
 
    .. parsed-literal::
 
@@ -757,17 +757,16 @@ To upgrade XenServer:
       =================================================================================   =======================================
       Copy this Management Server file                                                    To this location on the XenServer host
       =================================================================================   =======================================
-      /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/xenserver60/NFSSR.py   /opt/xensource/sm/NFSSR.py
-      /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/setupxenserver.sh      /opt/xensource/bin/setupxenserver.sh
-      /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/make\_migratable.sh    /opt/xensource/bin/make\_migratable.sh
-      /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-clean-vlan.sh    /opt/xensource/bin/cloud-clean-vlan.sh
+      /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/setupxenserver.sh      /opt/cloud/bin/setupxenserver.sh
+      /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/make\_migratable.sh    /opt/cloud/bin/make\_migratable.sh
+      /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-clean-vlan.sh    /opt/cloud/bin/cloud-clean-vlan.sh
       =================================================================================   =======================================
 
-   #. Run the following script:
+   #. Run the following script, which will configure a few things on the freshly upgrade XenServer host (disable IPv6, configure VNC related firewall settings, configure a few network settings, clear the hartbeat file, etc.):
 
       .. parsed-literal::
 
-         # /opt/xensource/bin/setupxenserver.sh
+         # /opt/cloud/bin/setupxenserver.sh
 
       Troubleshooting: If you see the following error message, you can
       safely ignore it.
@@ -791,7 +790,7 @@ To upgrade XenServer:
    version of XenServer.
 
 #. Run the following command on one host in the XenServer cluster to
-   clean up the host tags:
+   clean up the host tags (this will make sure ACS later copies the rest of the required scripts and plugins to each XS host):
 
    .. parsed-literal::
 
