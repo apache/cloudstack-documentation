@@ -711,13 +711,13 @@ To upgrade XenServer:
 
    .. parsed-literal::
 
-      # . /opt/xensource/bin/cloud-clean-vlan.sh
+      # . /opt/cloud/bin/cloud-clean-vlan.sh
 
 #. Still logged in to the host, run the upgrade preparation script:
 
    .. parsed-literal::
 
-      # /opt/xensource/bin/cloud-prepare-upgrade.sh
+      # /opt/cloud/bin/cloud-prepare-upgrade.sh
 
    Troubleshooting: If you see the error "can't eject CD," log in to the
    VM and umount the CD, then run the script again.
@@ -741,7 +741,7 @@ To upgrade XenServer:
 
       .. parsed-literal::
 
-         # /opt/xensource/bin/make_migratable.sh  b6cf79c8-02ee-050b-922f-49583d9f1a14
+         # /opt/cloud/bin/make_migratable.sh  b6cf79c8-02ee-050b-922f-49583d9f1a14
 
    #. Reboot the host.
 
