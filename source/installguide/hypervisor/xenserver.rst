@@ -706,7 +706,8 @@ To upgrade XenServer:
    #. Watch the cluster status until it shows Unmanaged.
 
 #. Log in to one of the hosts in the cluster, and run this command to
-   clean up the VLAN:
+   clean up the VLAN (all VLANs and networks are attempted to be removed, but only
+   the ones with no VIFs/PIFs are actualy removed - i.e. we are doing housekeeping)
 
    .. parsed-literal::
 
