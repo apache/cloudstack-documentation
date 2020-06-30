@@ -700,8 +700,7 @@ To upgrade XenServer:
    Troubleshooting: If you see the error "can't eject CD," log in to the
    VM and umount the CD, then run the script again.
 
-#. Upgrade the XenServer software on all hosts in the cluster. Upgrade the master first. Do NOT put the pool master host into the Maintenance mode as this will 
-    move the pool master role to another host.
+#. Upgrade the XenServer software on all hosts in the cluster. Upgrade the master first. Do NOT put the pool master host into the Maintenance mode as this will move the pool master role to another host.
 
    #. Live migrate all VMs on this host to other hosts. See the
       instructions for live migration in the Administrator's Guide.
@@ -724,11 +723,9 @@ To upgrade XenServer:
    #. Reboot the host.
 
    #. Upgrade to the newer version of XenServer using an ISO file. This will essentially backup the current root partition of the host
-       and install a new version of hypervisor, while preserving the existing VMs and configuration.
-       Use the steps in XenServer documentation.
+and install a new version of hypervisor, while preserving the existing VMs and configuration. Use the steps in XenServer documentation.
 
-   #. After the upgrade is complete and the host boots, create the destination folder "/opt/cloud/bin/" on the host and 
-       copy the following files from the management server to this host, in the directory locations shown below:
+   #. After the upgrade is complete and the host boots, create the destination folder "/opt/cloud/bin/" on the host and copy the following files from the management server to this host, in the directory locations shown below:
 
       .. cssclass:: table-striped table-bordered table-hover
       
