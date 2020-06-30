@@ -700,8 +700,7 @@ To upgrade XenServer:
    Troubleshooting: If you see the error "can't eject CD," log in to the
    VM and umount the CD, then run the script again.
 
-#. Upgrade the XenServer software on all hosts in the cluster. Upgrade
-    the master first. Do NOT put the pool master host into the Maintenance mode as this will 
+#. Upgrade the XenServer software on all hosts in the cluster. Upgrade the master first. Do NOT put the pool master host into the Maintenance mode as this will 
     move the pool master role to another host.
 
    #. Live migrate all VMs on this host to other hosts. See the
