@@ -723,10 +723,10 @@ To upgrade XenServer:
    #. Reboot the host.
 
    #. Upgrade to the newer version of XenServer using an ISO file. This will essentially backup the current root partition
-   of the host and install a new version of hypervisor, while preserving the existing VMs and configuration. Use the steps in XenServer documentation.
+      of the host and install a new version of hypervisor, while preserving the existing VMs and configuration. Use the steps in XenServer documentation.
 
    #. After the upgrade is complete and the host boots, create the destination folder "/opt/cloud/bin/" on the host
-   and copy the following files from the management server to this host, in the directory locations shown below:
+      and copy the following files from the management server to this host, in the directory locations shown below:
 
       .. cssclass:: table-striped table-bordered table-hover
       
@@ -739,7 +739,7 @@ To upgrade XenServer:
       =================================================================================   =======================================
 
    #. Run the following script, which will configure a few things on the freshly upgraded XenServer host
-   (disable IPv6, configure VNC related firewall settings, configure a few network settings, clear the heartbeat file, etc.):
+      (disable IPv6, configure VNC related firewall settings, configure a few network settings, clear the heartbeat file, etc.):
 
       .. parsed-literal::
 
@@ -755,7 +755,7 @@ To upgrade XenServer:
          mv: cannot stat ‘/etc/cron.daily/logrotate’: No such file or directory
 
    #. Plug in the storage repositories (physical block devices) to the
-   XenServer host (although all of them should already be plugged in):
+      XenServer host (although all of them should already be plugged in):
 
       .. parsed-literal::
 
