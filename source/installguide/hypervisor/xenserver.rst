@@ -768,12 +768,14 @@ To upgrade XenServer:
 
          # /opt/cloud/bin/setupxenserver.sh
 
-      Troubleshooting: If you see the following error message, you can
-      safely ignore it.
+      Troubleshooting: If you see the following error messages, you can
+      safely ignore them.
 
       .. parsed-literal::
 
-         mv: cannot stat `/etc/cron.daily/logrotate`: No such file or directory
+         iptables: Bad rule (does a matching rule exist in that chain?).
+         sed: can't read /opt/xensource/libexec/qemu-dm-wrapper: No such file or directory
+         mv: cannot stat ‘/etc/cron.daily/logrotate’: No such file or directory
 
    #. Plug in the storage repositories (physical block devices) to the
       XenServer host:
