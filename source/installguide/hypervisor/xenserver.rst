@@ -757,7 +757,7 @@ To upgrade XenServer:
          mv: cannot stat ‘/etc/cron.daily/logrotate’: No such file or directory
 
    #. Plug in the storage repositories (physical block devices) to the
-       XenServer host (although all of them should be already plugged in):
+       XenServer host (although all of them should already be plugged in):
 
       .. parsed-literal::
 
