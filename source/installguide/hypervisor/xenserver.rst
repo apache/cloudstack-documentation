@@ -655,7 +655,7 @@ Upgrading XenServer Versions
 
 .. note:: 
    This section has been updated and the upgrade steps shown below
-   have been tested with XenServer 6.5 and up (i.e. upgrading from 6.5 o 7.1 and up)
+   have been tested with XenServer 6.5 and up (i.e. upgrading from 6.5 to 7.1 and later)
 
 This section tells how to upgrade XenServer software on CloudStack
 hosts. The actual upgrade is described in XenServer documentation, but
