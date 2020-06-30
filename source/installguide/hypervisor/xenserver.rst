@@ -766,7 +766,7 @@ To upgrade XenServer:
 #. Repeat these steps to upgrade every host in the cluster to the same
    version of XenServer.
 
-#. When al of the hosts are upgraded, run the following command on one host in the XenServer cluster to
+#. When all of the hosts in the pool are upgraded, run the following command on one host in the XenServer cluster to
    clean up the host tags (this will make sure ACS later copies the rest of the required scripts and plugins to each host):
 
    .. parsed-literal::
@@ -784,7 +784,8 @@ To upgrade XenServer:
 
    #. Navigate to the XenServer cluster, and click Actions – Manage.
 
-   #. Watch the status to see that all the hosts come "Up" (it can take a few minutes)
+   #. Watch the status to see that all the hosts come "Up" (it can take a few minutes, as it takes time for CloudStack to copy 
+      all of the required scripts and plugins to the upgraded hosts)
 
 #. Optionally, after all hosts are "Up", run the following on one host in the cluster:
 
