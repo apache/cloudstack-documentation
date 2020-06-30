@@ -782,7 +782,7 @@ To upgrade XenServer:
 
       .. parsed-literal::
 
-         # for pbd in `xe pbd-list currently-attached=false| grep ^uuid | awk '{print $NF}'`; do xe pbd-plug uuid=$pbd ; done
+         # for pbd in $(xe pbd-list currently-attached=false | grep ^uuid | awk '{print $NF}'); do xe pbd-plug uuid=$pbd ; done
 
       .. note:: 
          If you add a host to this XenServer pool, you need to migrate all VMs 
