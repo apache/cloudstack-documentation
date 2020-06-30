@@ -670,7 +670,7 @@ To upgrade XenServer:
 
 #. Disconnect the XenServer cluster from CloudStack.
 
-   #. Log in to the CloudStack UI as root.
+   #. Log in to the CloudStack UI as admin.
 
    #. Navigate to the XenServer cluster, and click Actions – Unmanage.
 
@@ -780,7 +780,7 @@ To upgrade XenServer:
 
 #. Reconnect the XenServer cluster to CloudStack.
 
-   #. Log in to the CloudStack UI as root.
+   #. Log in to the CloudStack UI as admin.
 
    #. Navigate to the XenServer cluster, and click Actions – Manage.
 
