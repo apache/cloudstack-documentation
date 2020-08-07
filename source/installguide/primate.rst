@@ -13,8 +13,6 @@
    specific language governing permissions and limitations
    under the License.
 
-:ref:`primate-install-guide`
-
 Primate Guide
 =============
 
@@ -29,16 +27,8 @@ and Ant Design for Apache CloudStack.
    :alt: alternate text
    :align: left
 
-With Apache CloudStack 4.14, a technical preview of Primate is proposed that
-users can evaluate. The technical preview release is not an officially voted
-release by the Apache CloudStack project but offers a snapshot build of Primate
-for users for testing and evaluation. The official Primate GA is expected with
-the next CloudStack release where the legacy UI will be deprecated, and the
-legacy UI will be removed in an eventual major CloudStack release.
-
-.. parsed-literal::
-
-    NOTE: Primate tech-preview is not suitable to run in production environments.
+Primate GA was released with CloudStack 4.15, where the legacy UI is deprecated,
+and will be removed in an eventual major CloudStack release.
 
 `User participation in the community mailing lists
 <http://cloudstack.apache.org/mailing-lists.html>`_ is encouraged. Users may
@@ -49,28 +39,28 @@ Requirements
 
 Primate uses API auto-discovery to discover APIs allowed for a logged-in user
 and creates navigation and views based on that.
-
-- Apache CloudStack 4.13.1.0 or later
+- Apache CloudStack 4.15 or later
 - API auto-discovery (listApis enabled)
 - All modern browsers that are `ES5-compliant <https://github.com/vuejs/vue#browser-compatibility>`_
 
 In theory Primate can work with any older version of CloudStack.
 However, several Primate list views require API pagination support, some of which are
-available starting Apache CloudStack 4.13.1.0.
+available starting Apache CloudStack 4.15 as well as several other additions which
+might not be available prior to Apache CloudStack 4.15.
 
 Installation on CentOS
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Users running management server (4.13 or above) on CentOS can setup the
-following Primate tech-preview repository:
+Users running management server (4.15 or above) on CentOS can setup the
+following Primate repository:
 
 .. parsed-literal::
 
     rpm --import https://download.cloudstack.org/primate/release.asc
-    cat << EOF > /etc/yum.repos.d/cloudstack-primate-tech-preview.repo
-    [cloudstack-primate-tech-preview]
+    cat << EOF > /etc/yum.repos.d/cloudstack-primate.repo
+    [cloudstack-primate]
     name=cloudstack
-    baseurl=https://download.cloudstack.org/primate/testing/preview/centos/
+    baseurl=https://download.cloudstack.org/primate/centos/
     enabled=1
     gpgcheck=1
     gpgkey=https://download.cloudstack.org/primate/release.asc
@@ -89,12 +79,12 @@ management-server-host:8080/client/primate using any modern browser.
 Installation on Ubuntu
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Users running CloudStack management server (4.13 or above) on Ubuntu can setup the following Primate tech-preview repository:
+Users running CloudStack management server (4.15 or above) on Ubuntu can setup the following Primate repository:
 
 .. parsed-literal::
 
     apt-key adv --keyserver keys.gnupg.net --recv-keys BDF0E176584DF93F
-    echo deb https://download.cloudstack.org/primate/testing/preview/debian / > /etc/apt/sources.list.d/cloudstack-primate-tech-preview.list
+    echo deb https://download.cloudstack.org/primate/debian / > /etc/apt/sources.list.d/cloudstack-primate.list
 
 Next, install Primate:
 
@@ -114,19 +104,19 @@ Primate archives are tarballs of single-page app builds. They can be simply
 downloaded and extracted to the management server webapp directory or hosted
 with a custom webserver.
 
-Users can download the builds from https://download.cloudstack.org/primate/testing/preview/archive/
+Users can download the builds from https://download.cloudstack.org/primate/archive/
 
 Using Docker
 ~~~~~~~~~~~~
 
-Users can use docker builds of the tech preview from https://hub.docker.com/r/apache/cloudstack-primate
+Users can use docker builds of Primate from https://hub.docker.com/r/apache/cloudstack-primate
 
 For example:
 
 .. parsed-literal::
 
-    docker pull apache/cloudstack-primate:tech-preview
-    docker run -ti --rm -p 8080:80 -v $(pwd)/nginx:/etc/nginx/conf.d:ro apache/cloudstack-primate:tech-preview
+    docker pull apache/cloudstack-primate:latest
+    docker run -ti --rm -p 8080:80 -v $(pwd)/nginx:/etc/nginx/conf.d:ro apache/cloudstack-primate:latest
 
 Example nginx config:
 
@@ -282,6 +272,7 @@ The children should have:
 - tabs: array of custom components that will get rendered as tabs in the resource view
 - component: the custom component for rendering the route view default list view (table)
 - actions: arrays of actions/buttons
+- related: a list of associated entitiy types that can be listed via passing the current resource's id as a parameter in their respective list api
 
 Action API
 ~~~~~~~~~~
@@ -293,11 +284,13 @@ The actions defined for a child shows up as a group of buttons on the default au
 - api: The CloudStack API for the action
 - icon: the icon to be displayed from AntD's icon set https://vue.ant.design/components/icon/
 - label: The action button's name
+- message: The action button's confirmation message
 - docHelp: Allows to provide a link to a document to provide details on the action
 - listView: (boolean) whether to show the action button in list view (table)
 - dataView: (boolean) whether to show the action button in resource/data view
 - groupAction: Whether the button supports groupable actions when multiple items are selected in the table
 - args: list of API arguments to render/show on auto-generated action form
+- mapping: The relation of an arg to an api (from which it's id is used as a select-option) or a given hardcoded list of select-options
 - show: function that takes in a records and returns a boolean to control if the action button needs to be shown or hidden
 - popup: (boolean) when true, displays any custom component in a popup modal than in its separate route view
 - component: the custom component to render the action (in a separate route view)
@@ -311,6 +304,7 @@ For example:
               api: 'updateVirtualMachine',
               icon: 'edit',
               label: 'label.action.edit.instance',
+              message: 'message.action.edit.instance',
               docHelp: 'adminguide/virtual_machines.html#changing-the-vm-name-os-or-group',
               dataView: true,
               args: ['name', 'displayname', 'ostypeid', 'isdynamicallyscalable', 'haenable', 'group'],
@@ -318,7 +312,7 @@ For example:
             }
         ]
 
-However, if one's requirement is to perform further operations as part of their form, then a custom Vue component must be defined under the src/views/ folder of the root directory and the defined component must them be imported in the corresponding section's javascript file.
+However, if one's requirement is to perform further operations as part of their form, then a custom Vue component must be defined under the src/views/<component> folder of the root directory and the defined component must them be imported in the corresponding section's javascript file. Examples of how to create such views are available in the cloudstack-primate repository
 
 For example:
 
@@ -388,6 +382,9 @@ Known Issues and Missing Features
 
 - Support for S3 based secondary storage
 - Metrics view cell-colouring
+- List and switch accounts for saml authorised accounts/domain for a logged in SAML user
+- NFS secondary staging storage list/resource view and add/update actions
+- Regions
 - Guest network LB support for SSL certificate
 
 Please also refer to open issues on https://github.com/apache/cloudstack-primate/issues
