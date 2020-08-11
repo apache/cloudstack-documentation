@@ -46,7 +46,8 @@ Project Roles associated with a user or an account of the project,
 it is possible to restrict access of users in a project, i.e., in
 addition to account-level roles, one can further restrict access to
 operations (or APIs) by associating a project-level role to the
-user or account.
+user or account. However, If an account has already been added, one will not
+be able to associate a role a specific user of that account.
 
 **NOTE:** Project Roles work over Account level Roles. If a user/account is
 added to a project without a project role, it would imply that the
