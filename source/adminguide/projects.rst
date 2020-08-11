@@ -53,7 +53,11 @@ added to a project without a project role, it would imply that the
 user / account added will have access to all APIs that are made available
 by the Account level role. If there are no specific deny rules in the
 project role, it would again fallback onto the account-level role to decide
-whether the user has permissions to perform a specific action.
+whether the user has permissions to perform a specific action. It is also to be
+noted that Project roles are restricictive in nature, i.e., to say that, one may
+not allow a user to perform an operation that is NOT allowed at Account level.
+Even if a rule is added at the project level, allowing such an action, it will not
+have any effect as the action will be prohibitted by the Account Role.
 
 
 The project administrator can promote or demote a user in the project.
@@ -310,7 +314,7 @@ not turned on, use the procedure in Adding Project Members From the UI.
 
    You can invite only people who have an account in this cloud within the same domain as the project. However, you can send the invitation to any email address.
 
-5. To view and manage the invitations you have sent, return to this tab.
+#. To view and manage the invitations you have sent, return to this tab.
    When an invitation is accepted, the new member will appear in the
    project’s Accounts tab.
 
