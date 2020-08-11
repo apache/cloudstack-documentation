@@ -46,8 +46,8 @@ Project Roles associated with a user or an account of the project,
 it is possible to restrict access of users in a project, i.e., in
 addition to account-level roles, one can further restrict access to
 operations (or APIs) by associating a project-level role to the
-user or account. However, If an account has already been added, one will not
-be able to associate a role a specific user of that account.
+user or account. However, if an account has already been added, one will not
+be able to associate a role to a specific user of that account.
 
 **NOTE:** Project Roles work over Account level Roles. If a user/account is
 added to a project without a project role, it would imply that the
@@ -55,10 +55,10 @@ user / account added will have access to all APIs that are made available
 by the Account level role. If there are no specific deny rules in the
 project role, it would again fallback onto the account-level role to decide
 whether the user has permissions to perform a specific action. It is also to be
-noted that Project roles are restricictive in nature, i.e., to say that, one may
-not allow a user to perform an operation that is NOT allowed at Account level.
+noted that Project roles are restrictive in nature, i.e., to say that, one may
+not allow a user to perform an operation that is NOT allowed at the Account level.
 Even if a rule is added at the project level, allowing such an action, it will not
-have any effect as the action will be prohibitted by the Account Role.
+have any effect as the action will be prohibited by the Account Role.
 
 
 The project administrator can promote or demote a user in the project.
