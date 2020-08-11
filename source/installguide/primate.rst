@@ -138,9 +138,9 @@ Example nginx config:
 
 Basic Customization in CloudStack Primate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Users can now customize the CloudStack's user interface by means of a configutaion file at /usr/share/cloudstack-management/webapp/primate/config.json can be used to modify the theme, logos, etc. to align to one's requirement.
+Users can now customize the CloudStack's user interface by means of a configuration file at /usr/share/cloudstack-management/webapp/primate/config.json which can be used to modify the theme, logos, etc. to align to one's requirement.
 
-To change the logo,login banner,error page icon, etc. the following details can be editted in config.json:
+To change the logo, login banner, error page icon, etc. the following details can be edited in config.json:
 
 .. parsed-literal::
 
@@ -154,13 +154,13 @@ To change the logo,login banner,error page icon, etc. the following details can 
 
 where,
 
-- logo changes the logo top-left side image.
-- banner changes the login banner image.
-- error.404 change the image of error Page not found.
-- error.403 change the image of error Forbidden.
-- error.500 change the image of error Internal Server Error.
+- logo: changes the logo top-left side image.
+- banner: changes the login banner image.
+- error.404: changes the image of error Page not found.
+- error.403: changes the image of error Forbidden.
+- error.500: changes the image of error Internal Server Error.
 
-Customization of themes is also possible, such as, modifying banner width, general color, etc. Thsi can be done by editting the "theme" section of the config.json file:
+Customization of themes is also possible, such as, modifying banner width, general color, etc. This can be done by editing the "theme" section of the config.json file:
 
 .. parsed-literal::
 
@@ -189,22 +189,22 @@ Customization of themes is also possible, such as, modifying banner width, gener
 
 where,
 
-- @primary-color change the major background color of the page (background button, icon hover, etc).
-- @success-color change success state color.
-- @processing-color change processing state color. Exp: progress status.
-- @warning-color change warning state color.
-- @error-color change error state color.
-- @heading-color change table header color.
-- @text-color change in major text color.
-- @text-color-secondary change of secondary text color (breadcrumb icon).
-- @disabled-color change disable state color (disabled button, switch, etc).
-- @border-color-base change in major border color.
-- @logo-width change the width of the logo top-left side.
-- @logo-height change the height of the logo top-left side.
-- @banner-width changes the width of the login banner.
-- @banner-height changes the height of the login banner.
-- @error-width changes the width of the error image.
-- @error-height changes the height of the error image.
+- @primary-color: changes the major background color of the page (background button, icon hover, etc).
+- @success-color: changes success state color.
+- @processing-color: changes processing state color. Exp: progress status.
+- @warning-color: changes warning state color.
+- @error-color: changes error state color.
+- @heading-color: changes table header color.
+- @text-color: change in major text color.
+- @text-color-secondary: change of secondary text color (breadcrumb icon).
+- @disabled-color: disable state color (disabled button, switch, etc).
+- @border-color-base: change in major border color.
+- @logo-width: change the width of the logo top-left side.
+- @logo-height: change the height of the logo top-left side.
+- @banner-width: changes the width of the login banner.
+- @banner-height: changes the height of the login banner.
+- @error-width: changes the width of the error image.
+- @error-height: changes the height of the error image.
 
 Some assorted primary theme colours:
 
