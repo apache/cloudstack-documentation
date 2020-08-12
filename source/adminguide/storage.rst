@@ -29,7 +29,7 @@ Primary Storage
 ---------------
 
 This section gives technical details about CloudStack
-primary storage. For more information about the concepts behind primary storage 
+primary storage. For more information about the concepts behind primary storage
 see :ref:`about-primary-storage` . For information about how to install and configure
 primary storage through the CloudStack UI, see the in the Installation Guide.
 
@@ -183,6 +183,28 @@ secondary storage. For information about how to install and configure
 secondary storage through the CloudStack UI, see the Advanced
 Installation Guide. about-secondary-storage>`_
 
+Migration of data between secondary storages is now supported. One may choose
+to completely migrate the data or migrate data such that the stores
+are balanced by choosing the appropriate Migration Policy. In order to facilitate
+distributing the migration load, SSVMs are spawned up if a file transfer takes
+more than a defined threshold. Following are the Global setting values to one may
+want to look at before proceeding with the migration task:
+
+
+   +----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Configuration Parameters         | Description                                                                                                                                                            |
+   +==================================+========================================================================================================================================================================+
+   | image.store.imbalance.threshold  | The storage imbalance threshold that is compared with the standard deviation percentage for a storage utilization metric. The value is a percentage in decimal format. |
+   +----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | secstorage.max.migrate.sessions  | The max number of concurrent copy command execution sessions that an SSVM can handle                                                                                   |
+   +----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | max.ssvm.count                   | Number of additional SSVMs to handle migration of data objects concurrently                                                                                            |
+   +----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | max.data.migration.wait.time     | Maximum wait time for a data migration task before spawning a new SSVM                                                                                                 |
+   +----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Secondary storages can also be set to read-only in order to cordon it off
+from being used for storing any further templates, volumes and snapshots.
 
 Working With Volumes
 --------------------
@@ -208,7 +230,7 @@ from a volume as well; this is the standard procedure for private
 template creation. Volumes are hypervisor-specific: a volume from one
 hypervisor type may not be used on a guest of another hypervisor type.
 
-.. note:: 
+.. note::
    CloudStack supports attaching up to
 
    - 13 data disks on XenServer hypervisor versions 6.0 and above,
@@ -386,9 +408,9 @@ volume from one storage pool to another.
 Detaching and Moving Volumes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. note:: 
-   This procedure is different from moving volumes from one storage pool 
-   to another as described in `“VM Storage Migration” 
+.. note::
+   This procedure is different from moving volumes from one storage pool
+   to another as described in `“VM Storage Migration”
    <#vm-storage-migration>`_.
 
 A volume can be detached from a guest VM and attached to another guest.
@@ -417,9 +439,9 @@ VM Storage Migration
 
 Supported in XenServer, KVM, and VMware.
 
-.. note:: 
-   This procedure is different from moving disk volumes from one VM to 
-   another as described in `“Detaching and Moving Volumes” 
+.. note::
+   This procedure is different from moving disk volumes from one VM to
+   another as described in `“Detaching and Moving Volumes”
    <#detaching-and-moving-volumes>`_.
 
 You can migrate a virtual machine’s root disk volume or any additional
@@ -440,10 +462,10 @@ another, or to migrate a VM whose disks are on local storage, or even to
 migrate a VM’s disks from one storage repository to another, all while
 the VM is running.
 
-.. note:: 
-   Because of a limitation in VMware, live migration of storage for a 
-   VM is allowed only if the source and target storage pool are 
-   accessible to the source host; that is, the host where the VM is 
+.. note::
+   Because of a limitation in VMware, live migration of storage for a
+   VM is allowed only if the source and target storage pool are
+   accessible to the source host; that is, the host where the VM is
    running when the live migration operation is requested.
 
 
@@ -475,7 +497,7 @@ Migrating Storage For a Running VM
    Moving Volumes” <#detaching-and-moving-volumes>`_ but skip the “reattach”
    step at the end. You will do that after migrating to new storage.
 
-#. Click the Migrate Volume button |Migrateinstance.png| and choose the 
+#. Click the Migrate Volume button |Migrateinstance.png| and choose the
    destination from the dropdown list.
 
 #. Watch for the volume status to change to Migrating, then back to
@@ -491,7 +513,7 @@ Migrating Storage and Attaching to a Different VM
    Moving Volumes” <#detaching-and-moving-volumes>`_ but skip the “reattach”
    step at the end. You will do that after migrating to new storage.
 
-#. Click the Migrate Volume button |Migrateinstance.png| and choose the 
+#. Click the Migrate Volume button |Migrateinstance.png| and choose the
    destination from the dropdown list.
 
 #. Watch for the volume status to change to Migrating, then back to
@@ -520,12 +542,12 @@ be restarted.
 
 #. (KVM only) Stop the VM.
 
-#. Click the Migrate button |Migrateinstance.png| and choose the 
+#. Click the Migrate button |Migrateinstance.png| and choose the
    destination from the dropdown list.
 
-   .. note:: 
-      If the VM's storage has to be migrated along with the VM, this will 
-      be noted in the host list. CloudStack will take care of the storage 
+   .. note::
+      If the VM's storage has to be migrated along with the VM, this will
+      be noted in the host list. CloudStack will take care of the storage
       migration for you.
 
 #. Watch for the volume status to change to Migrating, then back to
@@ -806,10 +828,10 @@ needed, on demand. To generate the OVA, CloudStack uses information in a
 properties file (\*.ova.meta) which it stored along with the original
 snapshot data.
 
-.. note:: 
-   For upgrading customers: This process applies only to newly created 
-   snapshots after upgrade to CloudStack 4.2. Snapshots that have already 
-   been taken and stored in OVA format will continue to exist in that 
+.. note::
+   For upgrading customers: This process applies only to newly created
+   snapshots after upgrade to CloudStack 4.2. Snapshots that have already
+   been taken and stored in OVA format will continue to exist in that
    format, and will continue to work as expected.
 
 
@@ -826,4 +848,4 @@ snapshot data.
 .. |Migrateinstance.png| image:: /_static/images/migrate-instance.png
    :alt: button to migrate a volume.
 .. |volume-from-snap.PNG| image:: /_static/images/volume-from-snap.PNG
-   :alt: Offering is needed when creating a volume from the ROOT volume snapshot.   
+   :alt: Offering is needed when creating a volume from the ROOT volume snapshot.
