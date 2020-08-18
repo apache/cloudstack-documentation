@@ -227,6 +227,8 @@ repository and following the guide available `here
 Known Issues and Missing Features
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- Basic Zone Deployment is not supported. However actions such as Start / Stop / Snapshot VM, restart network, etc.
+  within a basic zone are supported
 - Support for S3 based secondary storage
 - NFS secondary staging storage list/resource view and add/update actions
 - Regions
