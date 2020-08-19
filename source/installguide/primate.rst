@@ -38,15 +38,16 @@ Requirements
 ~~~~~~~~~~~~
 
 Primate uses API auto-discovery to discover APIs allowed for a logged-in user
-and creates navigation and views based on that.
-- Apache CloudStack 4.15 or later
-- API auto-discovery (listApis enabled)
-- All modern browsers that are `ES5-compliant <https://github.com/vuejs/vue#browser-compatibility>`_
+and creates navigation and views based on that, and requires the following:
 
-In theory Primate can work with any older version of CloudStack.
-However, several Primate list views require API pagination support, some of which are
-available starting Apache CloudStack 4.15 as well as several other additions which
-might not be available prior to Apache CloudStack 4.15.
+- Apache CloudStack 4.15 or later
+- API discovery (listApis) enabled
+- Modern browsers that are `ES5-compliant <https://github.com/vuejs/vue#browser-compatibility>`_
+
+In theory Primate can work with any older version of CloudStack that supports
+API discovery. However, several Primate list views require API pagination support,
+some of which are available starting Apache CloudStack 4.15 as well as several other
+API improvements which may not be available prior to Apache CloudStack 4.15.
 
 Installation on CentOS
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -215,23 +216,24 @@ Some assorted primary theme colours:
 - Green: #52C41A
 - Purple: #722ED1
 
-Advanced Customization
+Advanced Customisation
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Users comfortable with development in JavaScript and VueJS can add / modify additional sections, actions and components
-by building primate from source available on the `cloudstack-primate
+Primate advanced customisation is possible only by changing JavaScript based config
+files which define rules for sections, names, icons, actions and components and by
+building primate from source available on the `cloudstack-primate
 <https://github.com/apache/cloudstack-primate>`_
-repository and following the guide available `here
-<https://github.com/apache/cloudstack-primate/blob/master/docs/development.md>`_
+repository. Advanced customisation may require some experience in JavaScript and VueJS,
+a development and customisation guide is available `here
+<https://github.com/apache/cloudstack-primate/blob/master/docs/development.md>`_.
 
 Known Issues and Missing Features
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Basic Zone Deployment is not supported. However actions such as Start / Stop / Snapshot VM, restart network, etc.
-  within a basic zone are supported
-- Support for S3 based secondary storage
-- NFS secondary staging storage list/resource view and add/update actions
-- Regions
-- Guest network LB support for SSL certificate
+- Deployment of a basic zone is not supported. However, existing basic zones will continue to be supported as well as all the actions and views of various resources within the existing basic zone.
+- Support for S3 based secondary storage.
+- NFS secondary staging storage list/resource view and add/update actions.
+- SSL certificate for Guest network LB rule.
+- Regions.
 
-Please also refer to open issues on https://github.com/apache/cloudstack-primate/issues
+Primate open issues are listed on https://github.com/apache/cloudstack-primate/issues
