@@ -47,6 +47,7 @@ For each account created, the Cloud installation creates three different
 types of user accounts: root administrator, domain administrator, and
 user.
 
+
 Users
 ~~~~~
 
