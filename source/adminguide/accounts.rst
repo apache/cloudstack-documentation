@@ -43,9 +43,9 @@ delegated administrators with some authority over the domain and its
 subdomains. For example, a service provider with several resellers could
 create a domain for each reseller.
 
-Beside the Root Administrator type of account (available in the root domain only), two different types
-of accounts can be created for each domain:  Domain Administrator and User.
-
+For each account created, the Cloud installation creates three different
+types of user accounts: root administrator, domain administrator, and
+user.
 
 Users
 ~~~~~
