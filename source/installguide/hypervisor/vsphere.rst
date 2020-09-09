@@ -339,19 +339,66 @@ port group so that CloudStack can find it:
 Extend Port Range for CloudStack Console Proxy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-(Applies only to VMware vSphere version 4.x)
-
-You need to extend the range of firewall ports that the console proxy
-works with on the hosts. This is to enable the console proxy to work
-with VMware-based VMs. The default additional port range is 59000-60000.
-To extend the port range, log in to the VMware ESX service console on
-each host and run the following commands:
+In production environments (large number of VMs), 
+it's needed to extend the range of firewall ports that the console proxy
+works with on the hosts. The default additional port range is 50000-50999
+(see global settings ``vmware.additional.vnc.portrange.size`` and ``vmware.additional.vnc.portrange.start``).
+ 
+Change global setting ``vmware.additional.vnc.portrange.size`` to i.e "10000" and restart the 
+management-server service on each management server.
+Add those additional ports to the ESXi firewall on each host.
+Log in via SSH to every VMware ESXi host and edit the file ``/etc/rc.local.d/local.sh``
+by adding the following lines just above the "exit 0" line.:
 
 .. parsed-literal::
 
-   esxcfg-firewall -o 59000-60000,tcp,in,vncextras
-   esxcfg-firewall -o 59000-60000,tcp,out,vncextras
+   cat <<EOF > /etc/vmware/firewall/vncAdditionalPorts.xml
+   <ConfigRoot>
+     <service>
+       <id>vncAdditionalPorts</id>
+       <rule id='0000'>
+         <direction>inbound</direction>
+         <protocol>tcp</protocol>
+         <porttype>dst</porttype>
+         <port>
+           <begin>51000</begin>
+           <end>60000</end>
+         </port>
+       </rule>
+       <enabled>true</enabled>
+       <required>false</required>
+     </service>
+   </ConfigRoot>
+   EOF
+   esxcli network firewall refresh
 
+This will ensure the needed firewall rules are applied on boot of ESXi hosts.
+
+To make the change on the running host, repeat the commands that were just added to ``local.sh`` script, at the shell command line:
+
+.. parsed-literal::
+
+   cat <<EOF > /etc/vmware/firewall/vncAdditionalPorts.xml
+   <ConfigRoot>
+     <service>
+       <id>vncAdditionalPorts</id>
+       <rule id='0000'>
+         <direction>inbound</direction>
+         <protocol>tcp</protocol>
+         <porttype>dst</porttype>
+         <port>
+           <begin>51000</begin>
+           <end>60000</end>
+         </port>
+       </rule>
+       <enabled>true</enabled>
+       <required>false</required>
+     </service>
+   </ConfigRoot>
+   EOF
+   esxcli network firewall refresh
+   
+Run the script ``/sbin/auto-backup.sh`` and then logout from each ESXi host.
 
 Configure NIC Bonding for vSphere
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

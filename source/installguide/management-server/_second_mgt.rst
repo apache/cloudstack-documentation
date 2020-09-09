@@ -64,6 +64,12 @@ OS for the Management Server.
 
    The Management Server on this node should now be running.
    If the servlet container is Tomcat7 the argument --tomcat7 must be used.
+   
+   .. warning::
+      On RHEL and CentOS systems, firewalld (installed by default) will override all 
+      iptables rules set by the cloudstack-setup-management script, 
+      so ensure that the firewalld is disabled or ensure the correct firewalld rules
+      are in place to allow traffic to ports 8080, 8250 and 9090 to the management server.
 
 #. Repeat these steps on each additional Management Server.
 
