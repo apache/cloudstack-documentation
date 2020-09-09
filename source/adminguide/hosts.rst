@@ -593,6 +593,13 @@ IPMI 2.0 baseboard controller are supported out of the box with ``IPMITOOL``
 out-of-band management driver in CloudStack that uses ``ipmitool`` for performing
 IPMI 2.0 management operations.
 
+CloudStack also supports Redfish protocol for out-of-band management; Redfish provides an
+HTTP REST API to control servers and has been widely adopted on newer machines.
+The commands supported by CloudStack's Redfish out-of-band driver are the same supported by
+the IPMITOOL driver.
+
+Note: so far CloudStack officially supports Redfish protocol for Dell and Supermicro machines.
+
 Following are some global settings that control various aspects of this feature.
 
 .. cssclass:: table-striped table-bordered table-hover
@@ -605,6 +612,8 @@ outofbandmanagement.ipmitool.interface    lanplus                         The ou
 outofbandmanagement.ipmitool.path         /usr/bin/ipmitool               The out of band management ipmitool path used by the IpmiTool driver
 outofbandmanagement.ipmitool.retries      1                               The out of band management IpmiTool driver retries option -R
 outofbandmanagement.sync.poolsize         50                              The out of band management background sync thread pool size 50
+redfish.ignore.ssl                        true                            Default value is false, ensuring that the client requests validate the certificate when using SSL. If set to true the redfish client will ignore SSL certificate validation when sending requests to a Redfish server.
+redfish.use.https	                      true                            Use HTTPS/SSL for all connections.
 =======================================   =============================   ====================================================================================================
 
 A change in ``outofbandmanagement.sync.poolsize`` settings requires restarting of
