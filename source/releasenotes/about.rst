@@ -17,25 +17,15 @@
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is a |version| LTS release with over 15 major new features, and
-over 200 enhancements and fixes since 4.13.  Highlights include:
+Apache CloudStack |release| is a |version| LTS release with over FIXME major new
+features, and over 100 enhancements and fixes since 4.14.  Highlights include:
 
-•	New modern UI (Project Primate, Technical preview)
-•	Backup and Recovery framework
-•	Backup and Recovery Provider for Veeam
-•	VM ingestion
-•	L2 network PVLAN enhancements
-•	CloudStack Kubernetes Service
-•	UEFI support
-•	KVM rolling maintenance
-•	Enable Direct Download for systemVM templates
-•	VR health checks
-•	Download logs and diagnostics data from SSVM/CPVM/VRs
-•	Enable additional configuration metadata to virtual machines
-
+• New modern UI (Primate, GA release)
+• Support for CentOS8 and Ubuntu 20.04 as management server hosts and KVM hosts
+• FIXME: add rest of new features
 
 The full list of new features can be found in the project release notes at
-http://docs.cloudstack.apache.org/en/4.14.0.0/releasenotes/changes.html
+http://docs.cloudstack.apache.org/en/4.15.0.0/releasenotes/changes.html
 
 .. important::
    This version of CloudStack allows control over the visibility of the DNS services provided
@@ -75,20 +65,16 @@ before adding the KVM host in CloudStack:
    HostKeyAlgorithms=+ssh-dss
    KexAlgorithms=+diffie-hellman-group1-sha1
 
-New User Interface & Depreciation notice of existing UI
+Primate GA and Legacy UI Deprecation and Removal Notice
 =======================================================
 
-Cloudstack 4.14 ships with a Technical Preview of a new, modern User Interface (project Primate).
-This technical preview can be used by users & operators of Cloudstack environments for evaluation
-& testing purposes. With version 4.14, the existing UI remains the supported UI for production environments.
-However, with the 4.14 release, the Apache Cloudstack community will stop taking feature requests
-for new functionality in the existing UI. All new functionality will be developed against the new UI.
-
-The next LTS release (likely to be version 4.15) of Apache Cloudstack will ship
-with the production release of the new UI. It will also be the last version of
-CloudStack to ship with the old UI. This release will also have the final
-deprecation notice for the old UI.
-
-In the following release (likely to be 4.16), the old UI will be deprecated.
+Cloudstack 4.15 ships with the GA release of a new and modern User Interface
+(Primate) which deprecates the current legacy UI. With version 4.15, the
+existing legacy UI (deprecated) along with the new UI (Primate) are the
+supported UI for production environments. In the next 4.16 release, the Apache
+Cloudstack community will remove the legacy UI and only the new UI (Primate)
+will be supported by the Apache CloudStack community moving forward. Users are
+encouraged to implement a migration path towards the new UI (Primate) in their
+production environments.
 
 Please see `Primate install guide <../installguide/primate.html>`_

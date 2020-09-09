@@ -25,19 +25,19 @@
 
 .. Latest version systemvm template name
 
-.. |sysvm64-version|     replace:: 4.14.0
-.. |sysvm64-name-xen|    replace:: systemvm-xenserver-4.14.0
-.. |sysvm64-name-kvm|    replace:: systemvm-kvm-4.14.0
-.. |sysvm64-name-vmware| replace:: systemvm-vmware-4.14.0
-.. |sysvm64-name-hyperv| replace:: systemvm-hyperv-4.14.0
-.. |sysvm64-name-ovm|    replace:: systemvm-ovm-4.14.0
+.. |sysvm64-version|     replace:: 4.15.0
+.. |sysvm64-name-xen|    replace:: systemvm-xenserver-4.15.0
+.. |sysvm64-name-kvm|    replace:: systemvm-kvm-4.15.0
+.. |sysvm64-name-vmware| replace:: systemvm-vmware-4.15.0
+.. |sysvm64-name-hyperv| replace:: systemvm-hyperv-4.15.0
+.. |sysvm64-name-ovm|    replace:: systemvm-ovm-4.15.0
 
 .. Latest version systemvm template URL
-.. |sysvm64-url-xen|    replace:: http://download.cloudstack.org/systemvm/4.14/systemvmtemplate-4.14.0-xen.vhd.bz2
-.. |sysvm64-url-kvm|    replace:: http://download.cloudstack.org/systemvm/4.14/systemvmtemplate-4.14.0-kvm.qcow2.bz2
-.. |sysvm64-url-vmware| replace:: http://download.cloudstack.org/systemvm/4.14/systemvmtemplate-4.14.0-vmware.ova
-.. |sysvm64-url-hyperv| replace:: http://download.cloudstack.org/systemvm/4.14/systemvmtemplate-4.14.0-hyperv.vhd.zip
-.. |sysvm64-url-ovm|    replace:: http://download.cloudstack.org/systemvm/4.14/systemvmtemplate-4.14.0-ovm.raw.bz2
+.. |sysvm64-url-xen|    replace:: http://download.cloudstack.org/systemvm/4.15/systemvmtemplate-4.15.0-xen.vhd.bz2
+.. |sysvm64-url-kvm|    replace:: http://download.cloudstack.org/systemvm/4.15/systemvmtemplate-4.15.0-kvm.qcow2.bz2
+.. |sysvm64-url-vmware| replace:: http://download.cloudstack.org/systemvm/4.15/systemvmtemplate-4.15.0-vmware.ova
+.. |sysvm64-url-hyperv| replace:: http://download.cloudstack.org/systemvm/4.15/systemvmtemplate-4.15.0-hyperv.vhd.zip
+.. |sysvm64-url-ovm|    replace:: http://download.cloudstack.org/systemvm/4.15/systemvmtemplate-4.15.0-ovm.raw.bz2
 
 .. Version specific: 4.5 systemvm template URL
 .. |acs45-sysvm64-url-xen|    replace:: http://download.cloudstack.org/systemvm/4.5/systemvm64template-4.5-xen.vhd.bz2
