@@ -61,6 +61,20 @@ Libvirt Python Dependency on KVM and CentOS
 
 For CentOS users using the security groups feature on KVM it is needed to install the epel-release and python36-libvirt packages.
 
+Workaround for adding newer KVM hosts
+=====================================
+
+Newer GNU/Linux distributions with latest OpenSSH package disables some older
+SSH algorithms and ciphers and newer algorithms are not supported by trilead-ssh
+library used by CloudStack to SSH into KVM hosts during the host-add operation.
+Until the dependency library can support that users can use the following
+workaround in their KVM host's /etc/ssh/sshd_config and restart ssh server
+before adding the KVM host in CloudStack:
+
+   PubkeyAcceptedKeyTypes=+ssh-dss
+   HostKeyAlgorithms=+ssh-dss
+   KexAlgorithms=+diffie-hellman-group1-sha1
+
 New User Interface & Depreciation notice of existing UI
 =======================================================
 
