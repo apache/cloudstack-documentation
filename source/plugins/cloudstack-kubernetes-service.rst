@@ -144,7 +144,7 @@ The following Global Settings value must be set to the name of Template to be us
 - **cloud.kubernetes.cluster.template.name.vmware** (Name of the template to be used for creating Kubernetes cluster nodes on VMware)
 - **cloud.kubernetes.cluster.template.name.xenserver** (Name of the template to be used for creating Kubernetes cluster nodes on Xenserver)
 
-CoreOS templates for CloudStack can be found here, http://dl.openvm.eu/cloudstack/coreos/x86_64/
+Using a CoreOS template is required - you can find CoreOS templates for CloudStack here, http://dl.openvm.eu/cloudstack/coreos/x86_64/
 
 The following Global Setting value must be set to the name of Network Offering to be used for creating a new network when no network has been selected while creating a Kubernetes cluster:
 
