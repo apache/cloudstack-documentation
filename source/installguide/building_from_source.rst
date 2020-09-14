@@ -249,7 +249,7 @@ several other dependencies. Note that we recommend using Maven 3.
    $ sudo apt-get update
    $ sudo apt-get install python-software-properties
    $ sudo apt-get update
-   $ sudo apt-get install debhelper openjdk-8-jdk libws-commons-util-java genisoimage libcommons-codec-java libcommons-httpclient-java liblog4j1.2-java maven
+   $ sudo apt-get install debhelper openjdk-11-jdk libws-commons-util-java genisoimage libcommons-codec-java libcommons-httpclient-java liblog4j1.2-java maven
    
 .. note::
 
@@ -409,7 +409,7 @@ Linux.
 
 .. parsed-literal::
 
-   # yum install java-1.8.0-openjdk-devel.x86_64 genisoimage mysql mysql-server ws-commons-util MySQL-python python-setuptools createrepo
+   # yum install java-11-openjdk-devel genisoimage mysql mysql-server ws-commons-util MySQL-python python-setuptools createrepo
 
 Next, you'll need to install build-time dependencies for CloudStack with
 Maven. We're using Maven 3, so you'll want to grab `Maven 3.0.5 (Binary tar.gz)
