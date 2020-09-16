@@ -814,12 +814,43 @@ like many other resources in CloudStack.
 
 KVM supports VM snapshots when using NFS shared storage. If raw block storage
 is used (i.e. Ceph), then VM snapshots are not possible, since there is no possibility
-to write RAM memory content anywhere.
+to write RAM memory content anywhere. In such cases you can use as an alternative
+:ref:`storage-based-snapshots-kvm`
 
 If you need more information about VM snapshots on VMware, check out the
 VMware documentation and the VMware Knowledge Base, especially
 `Understanding virtual machine snapshots
 <http://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&externalId=1015180>`_.
+
+
+.. _storage-based-snapshots-kvm:
+
+Storage-based VM snapshots on KVM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+CloudStack introduces a new Storage-based VM snapshots on KVM feature that provides
+crash-consistent snapshots of all disks attached to the VM. It employs the underlying storage
+providers’ capability to create/revert/delete disk snapshots. Consistency is obtained by freezing
+the virtual machine before the snapshotting. Memory snapshots are not supported. There are
+no limitations of disk formats - it supports both RAW and QCOW2 formats.
+
+.. note::
+	``freeze`` and ``thaw`` of virtual machine is maintained by the guest agent.
+	``qemu-guest-agent`` has to be installed in the VM.
+
+It is recommended to use this functionality on virtual machines with raw block storages. For
+virtual machines with mixed type of volumes (raw and qcow2 format), the QCOW2 disk will
+be snapshotted with qemu command ``drive-backup`` . This is a point-in-time copy of a block
+device to a new destination (slow operation).
+
+.. note::
+	``snapshot.backup.to.secondary`` must be enabled for volumes on NFS.
+
+When the snapshotting is complete, the virtual machine is thawed.
+
+.. note::
+	``qemu`` version 1.6+ is required.
+	Latest Ubuntu should already cover this, for RHEL/CentOS7 the ``qemu-kvm-ev`` package is required.
 
 
 Limitations on VM Snapshots
@@ -857,6 +888,7 @@ Configuration          Description       Type
 ====================== ========================
 vmsnapshots.max        The maximum number of VM snapshots that can be saved for any given virtual machine in the cloud. The total possible number of VM snapshots in the cloud is (number of VMs) \* vmsnapshots.max. If the number of snapshots for any VM ever hits the maximum, the older ones are removed by the snapshot expunge job
 vmsnapshot.create.wait Number of seconds to wait for a snapshot job to succeed before declaring failure and issuing an error.
+kvm.vmstoragesnapshot.enabled For live snapshot of virtual machine instance on KVM hypervisor without memory. Requieres qemu version 1.6+ (on NFS or Local file system) and qemu-guest-agent installed on guest VM
 ====================== ========================
 
 
