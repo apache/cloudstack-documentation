@@ -20,20 +20,17 @@ Supported OS Versions for Management Server
 -------------------------------------------
 
 This section lists the operating systems that are supported for running
-CloudStack Management Server. Note that specific versions of the
-operating systems are tested, so compatibility with CentOS 6.3 may not
-indicate compatibility with CentOS 6.2, 6.1 and so on.
+CloudStack Management Server.
 
--  RHEL versions 6.3, 6.5, 6.6 and 7.0
--  CentOS versions 6.8, 7
+-  RHEL versions 7.x
+-  CentOS versions 7.x
 -  Ubuntu 16.04 LTS, 18.04 LTS
 
 Software Requirements
 ~~~~~~~~~~~~~~~~~~~~~
 
--  Java JRE 1.8
--  MySQL 5.6, 5.7 (RHEL 7)
--  MySQL 5.1 (RHEL 6.x)
+-  Java JRE 11
+-  MySQL 5.5, 5.6, 5.7
 
 Supported Hypervisor Versions
 -----------------------------
@@ -41,17 +38,19 @@ Supported Hypervisor Versions
 CloudStack supports three hypervisor families, XenServer with XAPI, KVM,
 and VMware with vSphere.
 
--  CentOS 6.2+, 7.0+ with KVM
--  Ubuntu 14.04LTS, 16.04LTS, 18.04LTS with KVM
--  Red Hat Enterprise Linux 6.2 with KVM
--  XenServer versions 6.1, 6.2 SP1, 6.5, 7.0, 7.1, 7.2 with latest hotfixes, XCP-ng 7.4, 7.6
+-  CentOS 7.x with KVM
+-  Ubuntu 16.04 LTS, 18.04 LTS with KVM
+-  Red Hat Enterprise Linux 7.x with KVM
+-  XenServer versions 7.0, 7.1, 7.2, 7.4, 7.5 with latest hotfixes, XCP-ng 7.4, 7.6
 
-   .. note:: It is now required to enable HA on the XenServer pool in order to recover from a pool-master failure. Please refer to the `XenServer documentation <http://docs.vmd.citrix.com/XenServer/6.5.0/1.0/en_gb/>`_.
+   .. note:: It is now required to enable HA on the XenServer pool in order to recover from a pool-master failure. Please refer to the `XenServer documentation <https://docs.citrix.com/en-us/xencenter/7-1/pools-ha-enable.html>`_.
 
--  VMware versions 5.0, 5.1, 5.5, 6.0, 6.5 and 6.7
+-  VMware versions 6.0, 6.5 and 6.7 (tested up to 6.7 U3)
 
-   .. note:: There is a known issue in 6.7u1 (https://kb.vmware.com/s/article/67315) which blocks some CloudStack cloning operations. The use of linked clones is known to be effected.
+   .. note:: There is a known issue in 6.7 U1 (https://kb.vmware.com/s/article/67315) which blocks some CloudStack cloning operations. The use of linked clones is known to be effected.
 
+   .. note:: There is a known issue in 6.7 U3 - 6.7 U3f where a mailformed OVA could crash vCenter services (for more information see `here <https://mail-archives.apache.org/mod_mbox/cloudstack-users/202005.mbox/%3CCAMvtBPNQqbe0XEsHyjFMror7HRvj-c%3DfEe7y12NfCDQSFTYgqQ%40mail.gmail.com%3E>`_). To avoid the issue, make sure to use 6.7 U3g or later.
+   
 -  LXC Host Containers on RHEL 7
 -  Windows Server 2012 R2 (with Hyper-V Role enabled)
 -  Hyper-V 2012 R2
@@ -59,15 +58,8 @@ and VMware with vSphere.
 -  Bare metal hosts are supported, which have no hypervisor. These hosts
    can run the following operating systems:
 
-   -  RHEL or CentOS, v6.2 or 6.3
-
-      .. note:: Use libvirt version 0.9.10 for CentOS 6.3
-
    -  Fedora 17
    -  Ubuntu 12.04
-
-For more information, see the Hypervisor Compatibility Matrix in the
-`CloudStack Installation Guide`_.
 
 
 Supported External Devices
@@ -97,18 +89,20 @@ best results, one of the following browsers recommended:
 Notice Of Management OSes and Hypervisors to be Deprecated
 ----------------------------------------------------------
 
-The following hypervisors will no longer be supported in the next release
+The following hypervisors are no longer be supported in this release
 
 -  XenServer 6.2
 -  XenServer 6.5
 -  vSphere 5.0
 -  vSphere 5.1
 -  vSphere 5.5
--  CentOS (KVM) 6.x
+-  CentOS/RHEL (KVM) 6.x
+-  Ubuntu 14.04
 
-The following Management Server Operating Systems will no longer be supported in the next release
+The following Management Server Operating Systems are no longer supported in this release
 
 -  CentOS 6.x
+-  Ubuntu 14.04
 
 
 Please see `CloudStack Wiki <https://cwiki.apache.org/confluence/display/CLOUDSTACK/Hypervisor+and+Management+Server+OS+EOL+Dates>`_ 

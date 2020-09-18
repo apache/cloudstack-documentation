@@ -13,6 +13,8 @@
    specific language governing permissions and limitations
    under the License.
 
+Working With Templates
+=======================
 
 A template is a reusable configuration for virtual machines. When users
 launch VMs, they can choose from a list of templates in CloudStack.
@@ -300,20 +302,23 @@ Example GUI dialog of uploading Template/ISO from local (browser) is given below
 
 Note that uploading multi-disk templates is also supported.
 
-Sharing templates with other accounts/projects
+Sharing templates and ISOs with other accounts/projects
 ----------------------------------------------
 
-When adding a template, the owner can choose to make template public or to keep it private. Once the template is created, the owner can choose to share this template so that other accounts/projects can also use the template. 
+When adding a template/ISO, the owner can choose to make template/ISO public or to keep it private. Once the template/ISO is created, the owner can choose to share this template/ISO so that other accounts/projects can also use the template/ISO. 
 
-Currently, the template owner can share his template with:
-  - other accounts inside his own domain (i.e. can't share the template with other accounts in the subdomain of his domain or any other domains)
+Currently, the owner can share his template/ISO with:
+  - other accounts inside his own domain (i.e. can't share the template/ISO with other accounts in the subdomain of his domain or any other domains)
   - projects where he belongs to (i.e. projects where he is the owner/creator or other projects where he has been joined)
 
-Template permissions can be changed via updateTemplatePermissions API call or via GUI. It is supported to add, remove or reset (remove all) template permissions.
+Template/ISO permissions can be changed via updateTemplatePermissions/updateIsoPermissions API call or via GUI. It is supported to add, remove or reset (remove all) template/ISO permissions.
 
-When adding or removing permissions to/from a template, it is required to specify account/project name which is being added/removed from the template permissions. 
+When adding or removing permissions to/from a template/ISO, it is required to specify account/project name which is being added/removed from the template/ISO permissions. 
 
-Global setting "allow.user.view.all.domain.accounts" has a default value of "false". This makes sure that when a regular user (of a "User" role) wants to share a template via GUI, he will not be shown the list of all accounts in his domain and he will need to know the name of the destination account with which he is sharing the template. This makes sense in public clouds where each account of a single domain is a different tenant/customer and privacy is imperative. In this case, the user will be presented with an input field to enter the account name, as on the images below:
+Global setting "allow.user.view.all.domain.accounts" has a default value of "false". This makes sure that when a regular user (of a "User" role) wants to share a template/ISO via GUI, he will not be shown the list of all accounts in his domain and he will need to know the name of the destination account with which he is sharing the template/ISO. This makes sense in public clouds where each account of a single domain is a different tenant/customer and privacy is imperative. In this case, the user will be presented with an input field to enter the account name, as on the images below:
+
+.. warning:: 
+      The images displayed below refer to template permissions, but the same applies for ISO permissions.
 
 |template-permissions-update-manually-1.PNG|
 
@@ -382,6 +387,156 @@ deleted, it will be deleted from all Zones.
 When templates are deleted, the VMs instantiated from them will continue
 to run. However, new VMs cannot be created based on the deleted
 template.
+
+Working with ISOs
+===================
+
+CloudStack supports ISOs and their attachment to guest VMs. An ISO is a
+read-only file that has an ISO/CD-ROM style file system. Users can
+upload their own ISOs and mount them on their guest VMs.
+
+ISOs are uploaded based on a URL. HTTP is the supported protocol. Once
+the ISO is available via HTTP specify an upload URL such as
+http://my.web.server/filename.iso.
+
+ISOs may be public or private, like templates.ISOs are not
+hypervisor-specific. That is, a guest on vSphere can mount the exact
+same image that a guest on KVM can mount.
+
+ISO images may be stored in the system and made available with a privacy
+level similar to templates. ISO images are classified as either bootable
+or not bootable. A bootable ISO image is one that contains an OS image.
+CloudStack allows a user to boot a guest VM off of an ISO image. Users
+can also attach ISO images to guest VMs. For example, this enables
+installing PV drivers into Windows. ISO images are not
+hypervisor-specific.
+
+
+Adding an ISO
+---------------
+
+To make additional operating system or other software available for use
+with guest VMs, you can add an ISO. The ISO is typically thought of as
+an operating system image, but you can also add ISOs for other types of
+software, such as desktop applications that you want to be installed as
+part of a template.
+
+#. Log in to the CloudStack UI as an administrator or end user.
+
+#. In the left navigation bar, click Templates.
+
+#. In Select View, choose ISOs.
+
+#. Click Add ISO.
+
+#. In the Add ISO screen, provide the following:
+
+   -  **Name**: Short name for the ISO image. For example, CentOS 6.2
+      64-bit.
+
+   -  **Description**: Display test for the ISO image. For example,
+      CentOS 6.2 64-bit.
+
+   -  **URL**: The URL that hosts the ISO image. The Management Server
+      must be able to access this location via HTTP. If needed you can
+      place the ISO image directly on the Management Server
+
+   -  **Zone**: Choose the zone where you want the ISO to be available,
+      or All Zones to make it available throughout CloudStack.
+
+   -  **Bootable**: Whether or not a guest could boot off this ISO
+      image. For example, a CentOS ISO is bootable, a Microsoft Office
+      ISO is not bootable.
+
+   -  **OS Type**: This helps CloudStack and the hypervisor perform
+      certain operations and make assumptions that improve the
+      performance of the guest. Select one of the following.
+
+      -  If the operating system of your desired ISO image is listed,
+         choose it.
+
+      -  If the OS Type of the ISO is not listed or if the ISO is not
+         bootable, choose Other.
+
+      -  (XenServer only) If you want to boot from this ISO in PV mode,
+         choose Other PV (32-bit) or Other PV (64-bit)
+
+      -  (KVM only) If you choose an OS that is PV-enabled, the VMs
+         created from this ISO will have a SCSI (virtio) root disk. If
+         the OS is not PV-enabled, the VMs will have an IDE root disk.
+         The PV-enabled types are:
+
+         -  Fedora 13
+
+         -  Fedora 12
+
+         -  Fedora 11
+
+         -  Fedora 10
+
+         -  Fedora 9
+
+         -  Other PV
+
+         -  Debian GNU/Linux
+
+         -  CentOS 5.3
+
+         -  CentOS 5.4
+
+         -  CentOS 5.5
+
+         -  Red Hat Enterprise Linux 5.3
+
+         -  Red Hat Enterprise Linux 5.4
+
+         -  Red Hat Enterprise Linux 5.5
+
+         -  Red Hat Enterprise Linux 6
+
+
+      .. note:: 
+         It is not recommended to choose an older version of the OS than 
+         the version in the image. For example, choosing CentOS 5.4 to 
+         support a CentOS 6.2 image will usually not work. In these 
+         cases, choose Other.
+
+   -  **Extractable**: Choose Yes if the ISO should be available for
+      extraction.
+
+   -  **Public**: Choose Yes if this ISO should be available to other
+      users.
+
+   -  **Featured**: Choose Yes if you would like this ISO to be more
+      prominent for users to select. The ISO will appear in the Featured
+      ISOs list. Only an administrator can make an ISO Featured.
+
+#. Click OK.
+
+   The Management Server will download the ISO. Depending on the size of
+   the ISO, this may take a long time. The ISO status column will
+   display Ready once it has been successfully downloaded into secondary
+   storage. Clicking Refresh updates the download percentage.
+
+#. **Important**: Wait for the ISO to finish downloading. If you move on
+   to the next task and try to use the ISO right away, it will appear to
+   fail. The entire ISO must be available before CloudStack can work
+   with it.
+
+
+Attaching an ISO to a VM
+-------------------------
+
+#. In the left navigation, click Instances.
+
+#. Choose the virtual machine you want to work with.
+
+#. Click the Attach ISO button. |iso.png|
+
+#. In the Attach ISO dialog box, select the desired ISO.
+
+#. Click OK.
+
 
 
 .. |sysmanager.png| image:: /_static/images/sysmanager.png

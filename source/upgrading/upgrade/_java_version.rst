@@ -15,17 +15,24 @@
 
 .. sub-section included in upgrade notes.
 
-Java 8 JRE on Ubuntu
---------------------
+Java Version Requirement
+------------------------
 
-CloudStack |version| requires installation of Java 8 JRE from an external PPA
-such as openjdk-r for Ubuntu distributions where the openjdk-8 packages are not
-available from the main repositories such as on Ubuntu 14.04. The PPA can be
-added before installation/upgrade:
+CloudStack |version| requires installation of Java 11 JRE for management server
+and the KVM agent. On installing or upgrading cloudstack-management and/or
+cloudstack-agent packages, please configure Java 11 as the default java
+version using:
+
+   .. parsed-literal::
+
+      $ sudo alternatives --config java
+
+Note: For Ubuntu distributions where the openjdk-11 packages are not available
+from the main repositories, the JRE can be installed from an external PPA such
+as openjdk-r. The PPA can be added before installation/upgrade:
 
    .. parsed-literal::
 
       $ sudo add-apt-repository ppa:openjdk-r/ppa
       $ sudo apt-get update
 
-Users can also choose to install Java 8 distribution from Oracle, or `Xulu-8 <http://repos.azulsystems.com/>`_ OpenJDK distribution from Azul.

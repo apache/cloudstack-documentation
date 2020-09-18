@@ -88,6 +88,51 @@ of memory.
 
 #. Restart the Management Server.
 
+Accessing System VMs
+--------------------
+
+It may sometimes be necessary to access System VMs for diagnostics of certain 
+issues, for example if you are experiencing SSVM (Secondary Storage VM) 
+connection issues. Use the steps below in order to connect to the SSH console 
+of a running System VM.
+
+Accessing System VMs over the network requires the use of private keys and 
+connecting to System VMs SSH Daemon on port 3922. XenServer/KVM Hypervisors 
+store this key at /root/.ssh/id_rsa.cloud on each CloudStack agent. To access 
+System VMs running on ESXi, the key is stored on the management server at 
+/var/lib/cloudstack/management/.ssh/id_rsa.
+
+
+#. Find the details of the System VM
+
+   #. Log in with admin privileges to the CloudStack UI.
+
+   #. Click Infrastructure, then System VMs, and then click the name of a 
+      running VM.
+
+   #. Take a note of the 'Host', 'Private IP Address' and 'Link Local IP 
+      Address' of the System VM you wish to access.
+
+#. XenServer/KVM Hypervisors
+
+   #. Connect to the Host of which the System VM is running.
+
+   #. SSH to the 'Link Local IP Address' of the System VM from the Host on 
+      which the VM is running.
+
+      Format: ssh -i <path-to-private-key> <link-local-ip> -p 3922
+
+      Example: root@kvm01:~# ssh -i /root/.ssh/id_rsa.cloud 169.254.3.93 -p 3922
+
+#. ESXi Hypervisors
+
+   #. Connect to your CloudStack Management Server.
+
+   #. ESXi users should SSH to the private IP address of the System VM.
+
+      Format: ssh -i <path-to-private-key> <vm-private-ip> -p 3922
+
+      Example: root@management:~# ssh -i /var/lib/cloudstack/management/.ssh/id_rsa 172.16.0.250 -p 3922
 
 Multiple System VM Support for VMware
 -------------------------------------
@@ -155,7 +200,7 @@ Using a SSL Certificate for the Console Proxy
 
 By default, the console viewing functionality uses plaintext HTTP. In 
 any production environment, the console proxy connection should be
-encrypted via SSL at the mininum.
+encrypted via SSL at the minimum.
 
 A CloudStack administrator has 2 ways to secure the console proxy
 communication with SSL:
@@ -204,7 +249,7 @@ proxy domain, SSL certificate, and private key:
 
          openssl req -new -key yourprivate.key -out yourcertificate.csr
 
-   #. Head to the website of your favorite trusted Certificate
+   #. Head to the website of your favourite trusted Certificate
       Authority, purchase an SSL certificate, and submit the CSR. You
       should receive a valid certificate in return
 
@@ -267,11 +312,11 @@ If you still have problems and folowing errors in management.log while destroyin
 - Unable to build keystore for CPVMCertificate due to CertificateException
 - Cold not find and construct a valid SSL certificate
 
-that means that still some of the Root/intermediate/server certificates or the key is not in a good format, or incorrectly encoded or multiply Root CA/Intemediate CA present in database by mistake.
+that means that still some of the Root/intermediate/server certificates or the key is not in a good format, or incorrectly encoded or multiply Root CA/Intermediate CA present in database by mistake.
 
 Other way to renew Certificates (Root,Intermediates,Server certificates and key) - although not recommended
 unless you fill comfortable - is to directly edit the database,
-while still respect the main requirement that the private key is PKCS8 encoded, while Root CA, Intemediate and Server certificates
+while still respect the main requirement that the private key is PKCS8 encoded, while Root CA, Intermediate and Server certificates
 are still in default PEM format (no URL encoding needed here).
 After editing the database, please restart management server, and destroy SSVM and CPVM after that,
 so the new SSVM and CPVM with new certificates are created.
@@ -374,7 +419,7 @@ Service Monitoring Tool for Virtual Router
 Various services running on the CloudStack virtual routers can be 
 monitored by using a Service Monitoring tool. The tool ensures that
 services are successfully running until CloudStack deliberately disables 
-them. If a service goes down, the tool automatically restarts the 
+them. If a service goes down, the tool automatically attempts to restart 
 service, and if that does not help bringing up the service, an alert as 
 well as an event is generated indicating the failure. A new global 
 parameter, ``network.router.enableservicemonitoring``, has been 
@@ -393,17 +438,17 @@ an unexpected reason. For example:
 .. note:: 
    Only those services with daemons are monitored. The services that are 
    failed due to errors in the service/daemon configuration file cannot 
-   be restarted by the Monitoring tool. VPC networks are not supported.
+   be restarted by the Monitoring tool. VPC Networks are supported (as of CloudStack 4.14)
 
 The following services are monitored in a VR:
 
--  DNS
+-  DNS (dnsmasq)
 
--  HA Proxy
+-  HAProxy (haproxy)
 
--  SSH
+-  SSH (sshd)
 
--  Apache Web Server
+-  Apache Web Server (apache2)
 
 The following networks are supported:
 
@@ -411,10 +456,216 @@ The following networks are supported:
 
 -  Shared Networks in both Advanced and Basic zone
 
-   .. note:: VPC networks are not supported
+-  VPC (as of CloudStack 4.14)
 
 This feature is supported on the following hypervisors: XenServer,
 VMware, and KVM.
+
+Log file /var/log/routerServiceMonitor.log contains the actions undertaken/attempted
+by the service monitoring script (i.e. trying to restart a stopped service).
+
+As of CloudStack 4.14, the interval at which the service monitoring script runs
+is no more hardcoded to 3 minutes, but is instead controlled via 
+global setting router.health.checks.basic.interval.
+
+
+Health checks for Virtual Router
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to monitoring services as of 4.14 CloudStack adds a framework
+for more extensive health checks. The health checks are split into two 
+categories - basic and advanced. The two categories have their own admin 
+definable intervals. The split is made this way as the advanced health checks 
+are considerably more expensive. The health checks will be available on-demand 
+via API as well as scheduled.
+
+The following tests are covered: · Basic connectivity from the management server 
+to the virtual router
+
+-  Basic connectivity to virtual router its interfaces' gateways
+
+-  Free disk space on virtual router's disk
+
+-  CPU and memory usage
+
+-  Basic VR Sanity checks:
+
+    #.  Ssh/dnsmasq/haproxy/httpd service running
+
+-  Advanced VR Sanity checks:
+
+    #.  DHCP/DNS configuration matches mgmt server DB
+
+    #.  IPtables rules match management server records
+
+    #.  HAproxy config matches mgmt server DB records
+
+    #.  VR Version against current version
+
+
+This happens in the following steps:
+
+1. Management server periodically pushes data to each running virtual router 
+including schedule intervals, tests to skip, some configuration for LB, VMs, 
+Gateways, etc.
+
+2. Basic and advanced tests as scheduled as per the intervals in the data sent 
+by Management server. Each run of checks populates it’s results and saves it 
+within the router at ‘/root/basic_monitor_results.json’ and 
+'/root/advance_monitor_results.json’. Each run of checks also keeps 
+track of the start time, end time, and duration of test run for better 
+understanding.
+
+3. Each test is also available on demand via ' getRouterHealthCheckResults' 
+API added with the patch. The API can be executed from CLI and UI. Performing 
+fresh checks is expensive and will cause management server doing the following:
+
+   a. Refresh the data from Management server records on the router for 
+   verification (repeat of step 1),
+
+   b. Run all the checks of both basic and advanced type,
+
+   c. Fetch the result of the health check from router to be sent back in response.
+
+4. The patch also supports custom health checks with custom systemVM templates. 
+This is achieved as follows:
+
+   a. Each executable script placed in '/root/health_scripts/' is considered an 
+   independent health check and is executed on each scheduled or on demand health check run.
+
+   b. The health check script can be in any language but executable (use 'chmod a+x')
+   within '/root/health_checks/' directory. The placed script must do the following: 
+   
+      #. Accept a command line parameter for check type (basic or advanced) - this
+      parameter is sent by the internal cron job in the VR (/etc/cron.d/process)
+      
+      #. Proceed and perform checks as per the check type - basic or advanced
+      
+      #. In order to be recognized as a health check and displayed in the list of health 
+      checks results, it must print some message to STDOUT which is passed back as message 
+      to management server - if the script doesn’t return anything on its STDOUT, it 
+      will not be registered as a health check/displayed in the list of the health check results
+
+      #. exit with status of 0 if check was successful and exit with status of 1 if 
+      check has failed
+
+      .. code:: bash
+
+         #!/bin/bash if [$1 == ‘advanced’] { do advance checks and print any message to STDOUT }                  
+         else if [$1 == ‘basic’] { do basic checks and print any message to STDOUT } exit(0) if pass or exit(1) if failure
+
+      #. i.e. if the script is intended to be i.e. a basic check, it must checks 
+      for the presence of the 'basic' as the first parameter sent to it, and execute the 
+      wanted commands and print some output to STDOUT; otherwise if it receives 'advanced' 
+      as the first parameter, it should not execute any commands/logic nor print anything to STDOUT
+
+5. There are 9 health check scripts written in default systemvm template in '/root/health_checks/' 
+folder. These indicate the health checks described in executive summary.
+
+6. The management server will connect periodically to each virtual router to confirm that the 
+checks are running as scheduled, and retrieve the results of those checks. Any failing checks 
+present in ``router.health.checks.failures.to.restart.vr`` will cause the VR to be recreated. 
+On each check management server will persist only the last executed check results in its database.
+
+7. UI parses the returned health check results and shows the router 'Health Check' 
+column in 'Failed'/'Passed' if there are health check failures of any type.
+
+Following global configs have been added for configuring health checks:
+
+   - ``router.health.checks.enabled`` - If true, router health checks are allowed 
+   to be executed and read. If false, all scheduled checks and API calls for on 
+   demand checks are disabled. Default is true.
+
+   - ``router.health.checks.basic.interval`` - Interval in minutes at which basic 
+   router health checks are performed. If set to 0, no tests are scheduled. Default 
+   is 3 mins as per the pre 4.14 monitor services.
+
+   - ``router.health.checks.advanced.interval`` - Interval in minutes at which 
+   advanced router health checks are performed. If set to 0, no tests are scheduled. 
+   Default value is 10 minutes.
+
+   - ``router.health.checks.config.refresh.interval`` - Interval in minutes at which
+   router health checks config - such as scheduling intervals, excluded checks, etc 
+   is updated on virtual routers by the management server. This value should be 
+   sufficiently high (like 2x) from the router.health.checks.basic.interval and 
+   router.health.checks.advanced.interval so that there is time between new results 
+   generation for passed data. Default is 10 mins.
+
+   - ``router.health.checks.results.fetch.interval`` - Interval in minutes at which 
+   router health checks results are fetched by management server. On each result fetch, 
+   management server evaluates need to recreate VR as per configuration of 
+   'router.health.checks.failures.to.recreate.vr'. This value should be sufficiently 
+   high (like 2x) from the 'router.health.checks.basic.interval' and 
+   'router.health.checks.advanced.interval' so that there is time between new 
+   results generation and fetch.
+
+   - ``router.health.checks.failures.to.recreate.vr`` - Health checks failures defined 
+   by this config are the checks that should cause router recreation. If empty the 
+   recreate is not attempted for any health check failure. Possible values are comma 
+   separated script names from systemvm’s /root/health_scripts/ (namely - cpu_usage_check.py, 
+   dhcp_check.py, disk_space_check.py, dns_check.py, gateways_check.py, haproxy_check.py, 
+   iptables_check.py, memory_usage_check.py, router_version_check.py), connectivity.test 
+   or services (namely - loadbalancing.service, webserver.service, dhcp.service)
+
+   - ``router.health.checks.to.exclude`` - Health checks that should be excluded when 
+   executing scheduled checks on the router. This can be a comma separated list of 
+   script names placed in the '/root/health_checks/' folder. Currently the following 
+   scripts are placed in default systemvm template - cpu_usage_check.py, 
+   disk_space_check.py, gateways_check.py, iptables_check.py, router_version_check.py, 
+   dhcp_check.py, dns_check.py, haproxy_check.py, memory_usage_check.py.
+
+   - ``router.health.checks.free.disk.space.threshold`` - Free disk space threshold 
+   (in MB) on VR below which the check is considered a failure. Default is 100MB.
+
+   - ``router.health.checks.max.cpu.usage.threshold`` - Max CPU Usage threshold as 
+   % above which check is considered a failure.
+
+   - ``router.health.checks.max.memory.usage.threshold`` - Max Memory Usage threshold
+   as % above which check is considered a failure.
+
+The scripts for following health checks are provided in '/root/health_checks/'. These 
+are not exhaustive and can be modified for covering other scenarios not covered. 
+Details of individual checks:
+
+1. Basic checks:
+
+   a. Services check (ssh, dnsmasq, httpd, haproxy)– this check is still done as 
+   per existing monitorServices.py script and any services not running are attempted 
+   to be restarted.
+
+   b. Disk space check against a threshold – python's ' statvfs' module is used to 
+   retrieve statistics and compare with the configured threshold given by 
+   management server.
+
+   c. CPU usage check against a threshold – we use 'top' utility to retrieve idle 
+   CPU and compare that with the configured max CPU usage threshold given by management
+   server.
+
+   d. Memory usage check against a threshold – we use 'free' utility to get the 
+   used memory and compare that with the configured max memory usage threshold.
+
+   e. Router template and scripts version check – is done by comparing the contents 
+   of the '/etc/cloudstack-release' and '/var/cache/cloud/cloud-scripts-signature' 
+   with the data given by management server.
+
+   f. Connectivity to the gateways from router – this is done by analysing the success 
+   or failure of ping to the gateway IPs given by management server.
+
+2. Advanced checks:
+
+   a. DNS config match against MS – this is checked by comparing entries of '/etc/hosts' 
+   on the VR and VM records passed by management server.
+
+   b. DHCP config match against MS – this is checked by comparing entries of 
+   '/etc/dhcphosts.txt' on the VR with the VM entries passed by management server. 
+   
+   c. HA Proxy config match against MS (internal LB and public LB) - this is checked 
+   by verifying the max connections, and entries for each load balancing rule in the 
+   '/etc/haproxy/haproxy.cfg' file. We do not check for stickiness properties yet.
+
+   d. Port forwarding match against MS in iptables. - this is checked by verifying 
+   IPs and ports in the 'iptables-save' command output against an expected list of 
+   entries from management server.
 
 
 Enhanced Upgrade for Virtual Routers
@@ -597,8 +848,3 @@ same Debian 9 based templates.
 Non-Alphanumeric characters (metacharacters) are not allowed for this parameter
 except for the “-“ and the “.”. Any metacharacter supplied will immediately result
 in an immediate termination of the command and report back to the operator that an illegal character was passed
-
-
-
-
-
