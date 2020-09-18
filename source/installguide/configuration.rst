@@ -1623,7 +1623,7 @@ zone      router.template.kvm                                        Name of the
 zone      router.template.vmware                                     Name of the default router template on VMware.
 zone      enable.dynamic.scale.vm                                    Enable or diable dynamically scaling of a VM.
 zone      use.external.dns                                           Bypass internal DNS, and use the external DNS1 and DNS2
-zone      denylisted.routes                                          Routes that are deny-listed cannot be used for creating static routes for a VPC Private Gateway.
+zone      blacklisted.routes                                         Routes that are blacklisted cannot be used for creating static routes for a VPC Private Gateway.
 ========  =========================================================  ======================================================================================================================================  
 
 
