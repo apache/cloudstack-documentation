@@ -112,12 +112,20 @@ to the VNC port made available via the hypervisor for the console of the
 guest. Both the administrator and end user web UIs offer a console
 connection.
 
-Clicking a console icon brings up a new window. The AJAX code downloaded
+Clicking a console icon brings up a new window. The console viewer
 into that window refers to the public IP address of a console proxy VM.
 There is exactly one public IP address allocated per console proxy VM.
-The AJAX application connects to this IP. The console proxy then proxies
+The viewer application connects to this IP. The console proxy then proxies
 the connection to the VNC port for the requested VM on the Host hosting
 the guest.
+
+Since 4.15, noVNC has been integrated into the console proxy and is the
+default viewer. It inherently supports multiple keyboard layouts configured
+in the guest virtual machine. Additionally, it can scale the display as
+well as paste into the console.
+
+noVNC is set as the default console viewer which be changed via the
+"novnc.console.default" global setting, which is set to true by default.
 
 .. note:: 
    The hypervisors will have many ports assigned to VNC usage so that 
@@ -589,6 +597,7 @@ same Debian 9 based templates.
 Non-Alphanumeric characters (metacharacters) are not allowed for this parameter
 except for the “-“ and the “.”. Any metacharacter supplied will immediately result
 in an immediate termination of the command and report back to the operator that an illegal character was passed
+
 
 
 
