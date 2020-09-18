@@ -833,10 +833,10 @@ Preparing
 ^^^^^^^^^
 
 To make sure that the native bridge module will not interfere with
-openvswitch the bridge module should be added to the blacklist. See the
-modprobe documentation for your distribution on where to find the
-blacklist. Make sure the module is not loaded either by rebooting or
-executing rmmod bridge before executing next steps.
+openvswitch the bridge module should be added to the deny list (likely named
+'blacklist') see the modprobe documentation for your distribution on 
+where to find the deny list. Make sure the module is not loaded either 
+by rebooting or executing rmmod bridge before executing next steps.
 
 The network configurations below depend on the ifup-ovs and ifdown-ovs
 scripts which are part of the openvswitch installation. They should be
