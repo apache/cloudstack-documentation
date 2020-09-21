@@ -697,3 +697,8 @@ default system offering used for System VMs.
 #. Destroy the existing CPVM or SSVM offerings and wait for them to be
    recreated. The new CPVM or SSVM are configured with the new offering.
 
+
+Changing the Default System Offering for Virtual Routers
+---------------------------------------------------
+
+
