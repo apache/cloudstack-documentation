@@ -166,8 +166,13 @@ Customization of themes is also possible, such as, modifying banner width, gener
 .. parsed-literal::
 
     "theme": {
+        "@logo-background-color": "#ffffff",
+        "@navigation-background-color": "#ffffff",
+        "@navigation-text-color": "rgba(0, 0, 0, 0.65)",
         "@primary-color": "#1890ff",
         "@link-color": "#1890ff",
+        "@link-hover-color": "#40a9ff",
+        "@loading-color": "#1890ff",
         "@processing-color": "#1890ff",
         "@success-color": "#52c41a",
         "@warning-color": "#faad14",
@@ -190,7 +195,13 @@ Customization of themes is also possible, such as, modifying banner width, gener
 
 where,
 
+- @logo-background-color changes the logo background color.
+- @navigation-background-color changes the navigation menu background color.
+- @navigation-text-color changes the navigation text color.
 - @primary-color: changes the major background color of the page (background button, icon hover, etc).
+- @link-color changes the link color.
+- @link-hover-color changes the link hover color.
+- @loading-color changes the message loading color and page loading bar at the top page.
 - @success-color: changes success state color.
 - @processing-color: changes processing state color. Exp: progress status.
 - @warning-color: changes warning state color.
