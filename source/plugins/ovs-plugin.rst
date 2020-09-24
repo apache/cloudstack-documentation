@@ -49,6 +49,12 @@ the OVS Plugin.
 Table: Supported Services
 
 .. note::
+   If you wish to use OVS as the default networking backend on Linux,
+   just follow this guide and CloudStack will automatically pick it up
+   based on the configuration in the agent.properties file. This in spite
+   of the OVS Plugin not being shown in the Network Service Providers.
+
+.. note::
    The Virtual Networking service was originally called 'Connectivity'
    in CloudStack 4.0
 
