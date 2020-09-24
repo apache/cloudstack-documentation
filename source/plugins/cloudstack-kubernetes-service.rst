@@ -146,6 +146,9 @@ The following Global Settings value must be set to the name of Template to be us
 
 Using a CoreOS template is required - you can find CoreOS templates for CloudStack here, http://dl.openvm.eu/cloudstack/coreos/x86_64/
 
+.. note::
+   For VMware, CoreOS template must be registered with root disk controller as **pvscsi** and NIC adapter type as **Vmxnet3**.
+
 The following Global Setting value must be set to the name of Network Offering to be used for creating a new network when no network has been selected while creating a Kubernetes cluster:
 
 .. parsed-literal::
