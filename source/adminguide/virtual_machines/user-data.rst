@@ -33,7 +33,7 @@ known, use the following steps to retrieve user-data:
 
    .. code:: bash
 
-      # cat /var/lib/dhclient/dhclient-eth0.leases | grep dhcp-server-identifier | tail -1
+      # cat /var/lib/dhcp/dhclient.eth0.leases | grep dhcp-server-identifier | tail -1
 
 #. Access user-data by running the following command using the result of
    the above command
