@@ -32,17 +32,38 @@ You can configure CloudStack to allow any user to create a new project,
 or you can restrict that ability to just CloudStack administrators. Once
 you have created a project, you become that project’s administrator, and
 you can add others within your domain to the project. CloudStack can be
-set up either so that you can add people directly to a project, or so
-that you have to send an invitation which the recipient must accept.
-Project members can view and manage all virtual resources created by
-anyone in the project (for example, share VMs). A user can be a member
-of any number of projects and can switch views in the CloudStack UI to
-show only project-related information, such as project VMs, fellow
-project members, project-related alerts, and so on.
+set up to either add people directly to a project, or to send an
+invitation which the recipient must accept. Project members can view
+and manage all virtual resources created by anyone in the project
+(for example, share VMs). A user can be a member of any number of projects
+and can switch views in the CloudStack UI to show only project-related information,
+such as project VMs, fellow project members, project-related alerts, and so on.
 
-The project administrator can pass on the role to another project
-member. The project administrator can also add more members, remove
-members from the project, set new resource limits (as long as they are
+From CloudStack 4.15 onwards, it is possible for a project to have
+multiple project administrators and to add/invite specific users of
+an account to a project in addition to adding accounts. By means of
+Project Roles associated with a user or an account of the project,
+it is possible to restrict access of users in a project, i.e., in
+addition to account-level roles, one can further restrict access to
+operations (or APIs) by associating a project-level role to the
+user or account. However, if an account has already been added, one will not
+be able to associate a role to a specific user of that account.
+
+**NOTE:** Project Roles work over Account level Roles. If a user/account is
+added to a project without a project role, it would imply that the
+user / account added will have access to all APIs that are made available
+by the Account level role. If there are no specific deny rules in the
+project role, it would again fallback onto the account-level role to decide
+whether the user has permissions to perform a specific action. It is also to be
+noted that Project roles are restrictive in nature, i.e., to say that, one may
+not allow a user to perform an operation that is NOT allowed at the Account level.
+Even if a rule is added at the project level, allowing such an action, it will not
+have any effect as the action will be prohibited by the Account Role.
+
+
+The project administrator can promote or demote a user in the project.
+The project administrator can also add more members, remove members
+from the project, set new resource limits (as long as they are
 below the global defaults set by the CloudStack administrator), and
 delete the project. When the administrator removes a member from the
 project, resources created by that user, such as VM instances, remain
@@ -63,7 +84,7 @@ is available to any project in the domain. A project can get access to a
 private template if the template’s owner will grant permission. A
 project can use any service offering or disk offering available in its
 domain; however, you can not create private service and disk offerings
-at the project level..
+at the project level.
 
 
 Configuring Projects
@@ -186,7 +207,7 @@ Setting the Global Project Resource Limits
    parameter. |Edits parameters|
 
    .. cssclass:: table-striped table-bordered table-hover
-   
+
    +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
    | max.project.public.ips   | Maximum number of public IP addresses that can be owned by any project in the cloud. See About Public IP Addresses.          |
    +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
@@ -280,34 +301,19 @@ feature is enabled in the cloud as described in `“Setting
 Up Invitations” <#setting-up-invitations>`_. If the invitations feature is
 not turned on, use the procedure in Adding Project Members From the UI.
 
-#. Log in to the CloudStack UI.
+#. Log in to the CloudStack Primate UI.
 
 #. In the left navigation, click Projects.
 
-#. In Select View, choose Projects.
-
 #. Click the name of the project you want to work with.
 
-#. Click the Invitations tab.
+#. Click on the `Add Account to Project` button. This will have 2 tabs, one to add account to the project and the other to add a user to the project. Here, we can specify the:
 
-#. In Add by, select one of the following:
+      - account or user and/or email id of the user to be invited,
+      - (Optional) the Role i.e, Admin or Regular that the user is to be added as, defualts to Regular role,
+      - (Optional) the Project role specifying the list of APIs the user is allowed/ denied access to
 
-   #. Account – The invitation will appear in the user’s Invitations tab
-      in the Project View. See Using the Project View.
-
-   #. Email – The invitation will be sent to the user’s email address.
-      Each emailed invitation includes a unique code called a token
-      which the recipient will provide back to CloudStack when accepting
-      the invitation. Email invitations will work only if the global
-      parameters related to the SMTP server have been set. See
-      `“Setting Up Invitations” <#setting-up-invitations>`_.
-
-#. Type the user name or email address of the new member you want to
-   add, and click Invite. Type the CloudStack user name if you chose
-   Account in the previous step. If you chose Email, type the email
-   address. You can invite only people who have an account in this cloud
-   within the same domain as the project. However, you can send the
-   invitation to any email address.
+   You can invite only people who have an account in this cloud within the same domain as the project. However, you can send the invitation to any email address.
 
 #. To view and manage the invitations you have sent, return to this tab.
    When an invitation is accepted, the new member will appear in the
@@ -332,12 +338,13 @@ Invitations” <#sending-project-membership-invitations>`_.
 
 #. Click the name of the project you want to work with.
 
-#. Click the Accounts tab. The current members of the project are
-   listed.
+#. Click on the `Add Account to Project` button. This will have 2 tabs, one to add account to the project and the other to add a user to the project. Here, we can specify the:
 
-#. Type the account name of the new member you want to add, and click
-   Add Account. You can add only people who have an account in this
-   cloud and within the same domain as the project.
+      - account or user and/or email id of the user to be invited,
+      - (Optional) the Role i.e, Admin or Regular that the user is to be added as, defualts to Regular role,
+      - (Optional) the Project role specifying the list of APIs the user is allowed/ denied access to
+
+#. You can add only people who have an account in this cloud and within the same domain as the project.
 
 
 Accepting a Membership Invitation
@@ -346,11 +353,11 @@ Accepting a Membership Invitation
 If you have received an invitation to join a CloudStack project, and you
 want to accept the invitation, follow these steps:
 
-#. Log in to the CloudStack UI.
+#. Log in to the CloudStack’s Primate UI.
 
 #. In the left navigation, click Projects.
 
-#. In Select View, choose Invitations.
+#. Click on the Project Invitations button
 
 #. If you see the invitation listed onscreen, click the Accept button.
 
@@ -410,12 +417,9 @@ and resources.
 
    -  Click the Accounts tab to view and manage project members. If you
       are the project administrator, you can add new members, remove
-      members, or change the role of a member from user to admin. Only
-      one member at a time can have the admin role, so if you set
-      another user’s role to admin, your role will change to regular
-      user.
+      members, or change the role of a member from user to admin or vice versa.
 
-   -  (If invitations are enabled) Click the Invitations tab to view and
+   -  (If invitations are enabled) Click the Invitations button to view and
       manage invitations that have been sent to new project members but
       not yet accepted. Pending invitations will remain in this list
       until the new member accepts, the invitation timeout is reached,
