@@ -633,6 +633,13 @@ power management actions such as on, off, reset, cycle, soft and status.
 If a host is in maintenance mode, Root admins are still allowed to perform
 power management actions but in the UI a warning is displayed.
 
+.. note::
+  
+  Host HA migration may fail on Centos 8 using the default ipmitool version - 
+  Installing ipmitool-1.8.18-12.el8_1.x86_64.rpm may solve the problem. Make sure to test the 
+  ipmitool on your physical equipment before using the Host HA feature.
+  
+
 .. _host-security:
 
 Security
