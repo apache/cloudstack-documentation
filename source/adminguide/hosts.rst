@@ -635,8 +635,8 @@ power management actions but in the UI a warning is displayed.
 
 .. note::
 
-  Host HA migration may fail on Centos 8 using the default ipmitool version -
-  Installing ipmitool-1.8.18-12.el8_1.x86_64.rpm may solve the problem. Make sure to test the ipmitool on your physical equipment before using the Host HA feature.
+  IPMI based out-of-band management and Host HA may not work on Centos 8 using the default ipmitool version -
+  Installing ipmitool-1.8.18-12.el8_1.x86_64.rpm may solve the problem. Make sure to test the ipmitool on your physical equipment before using the IPMI-based out-of-band management and Host HA features.
 
 .. _host-security:
 
