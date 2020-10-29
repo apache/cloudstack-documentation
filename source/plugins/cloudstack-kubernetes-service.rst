@@ -254,6 +254,26 @@ Only running Kubernetes clusters can be scaled in size. When the service fails t
 
 Note: Only up scaling is supported while scaling clusters for service offering.
 
+Auto-Scaling Kubernetes cluster
+###############################
+
+CloudStack has been officially added to the list of Kubernetes supported `Cloud Provides
+<https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler#deployment>`_
+This allows Kubernetes to dynamically scale the size of the cluster based on the capacity requirements.
+Details on how the cluster-autoscaler works can be found on the official `Kubernetes cluster autoscaler repository
+<https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md>`_
+
+From 4.16, CloudStack supports automated deployment of the cluster autoscaler for Kubernetes Cluster versions 1.16.0 and higher.
+The autoscaler runs as a `cluster-autoscaler` service on the kubernetes cluster consisting of one pod which determines the capacity needs of the cluster.
+
+In order for the autoscaler to communicate with CloudStack, a separate service user **kubeadmin** is created in the same account as the cluster owner.
+The autoscaler uses this user's API keys to get the details of the cluster as well as dynamically scale it. It is imperative that this user
+is not altered or have its keys regenerated.
+
+The cluster-autoscaler can also be manually deployed for supported Kubernetes versions.
+The guide to manually deploying the cluster autoscaler can be found `here
+<https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/cloudstack/README.md>`_
+
 Upgrading Kubernetes cluster
 #############################
 
