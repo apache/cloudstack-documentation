@@ -167,6 +167,8 @@ Customization of themes is also possible, such as, modifying banner width, gener
 
     "theme": {
         "@logo-background-color": "#ffffff",
+        "@project-nav-text-color": "#001529",
+        "@navigation-text-color": "rgba(255, 255, 255, 0.65)",
         "@navigation-background-color": "#ffffff",
         "@navigation-text-color": "rgba(0, 0, 0, 0.65)",
         "@primary-color": "#1890ff",
@@ -196,6 +198,8 @@ Customization of themes is also possible, such as, modifying banner width, gener
 where,
 
 - @logo-background-color changes the logo background color.
+- @project-nav-background-color changes the navigation menu background color of the project .
+- @project-nav-text-color changes the navigation menu background color of the project view.
 - @navigation-background-color changes the navigation menu background color.
 - @navigation-text-color changes the navigation text color.
 - @primary-color: changes the major background color of the page (background button, icon hover, etc).
