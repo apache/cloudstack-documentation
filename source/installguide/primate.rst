@@ -198,7 +198,7 @@ Customization of themes is also possible, such as, modifying banner width, gener
 where,
 
 - @logo-background-color changes the logo background color.
-- @project-nav-background-color changes the navigation menu background color of the project .
+- @project-nav-background-color changes the navigation menu background color of the project.
 - @project-nav-text-color changes the navigation menu background color of the project view.
 - @navigation-background-color changes the navigation menu background color.
 - @navigation-text-color changes the navigation text color.
