@@ -135,6 +135,9 @@ offerings. The compute service offering specifies:
 
 -  Guest Networking type (virtual or direct)
 
+-  Root Disk size (optional). If not defined by CloudStack administrator,
+   users can set a custom Root disk size.
+
 -  Tags on the root disk
 
 The disk offering specifies:
