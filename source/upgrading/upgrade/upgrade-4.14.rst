@@ -51,8 +51,8 @@ Overview of Upgrade Steps:
 .. include:: _customisation_warnings.rst
 
 .. warning::
-    If you are not already using the |sysvm64-version| System VM template you will need to 
-    upgrade your System VM template prior to performing the upgrade of the 
+    If you are not already using the |sysvm64-version| System VM template you will need to
+    upgrade your System VM template prior to performing the upgrade of the
     CloudStack packages.
 
 .. include:: _sysvm_templates.rst
@@ -163,6 +163,12 @@ Setup the public key for the above repository:
 
       $ sudo apt-get upgrade cloudstack-usage
 
+#. Install the new UI (Primate)
+
+   .. parsed-literal::
+
+      $ sudo apt-get install cloudstack-primate
+
 
 .. _rhel414:
 .. _rpm-repo414:
@@ -214,6 +220,12 @@ Setup the GPG public key if you wish to enable ``gpgcheck=1``:
    .. parsed-literal::
 
       $ sudo yum upgrade cloudstack-usage
+
+#. Install the new UI (Primate)
+
+   .. parsed-literal::
+
+      $ sudo yum install cloudstack-primate
 
 .. _upg_hyp_414:
 
