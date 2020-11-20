@@ -812,6 +812,13 @@ The administrator can log in to the secondary storage VM if needed.
 .. |vr-upgrade.png| image:: /_static/images/vr-upgrade.png
    :alt: Button to upgrade VR to use the new template.
 
+Migrating System VMs
+--------------------
+
+System VMs (any of the Console Proxy VM, Secondary Storage VM, Virtual Router or Load Balancer) can be migrated across hosts using migrateSysteVm API or migrate action in the UI. These VMs can be migrated between hosts of the same cluster only.
+
+Since 4.16, for VMware, migration of System VMs can also be done a destination host in a different cluster belonging to the same pod. Storage migration of the stopped System VMs is also supported.
+
 Troubleshoot networks from System VMs
 -------------------------------------
 .. |run-diagnostics-icon.png| image:: /_static/images/run-diagnostics-icon.png
