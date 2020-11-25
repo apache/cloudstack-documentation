@@ -29,6 +29,7 @@ and Ant Design for Apache CloudStack.
 
 Primate GA was released with CloudStack 4.15, where the legacy UI is deprecated,
 and will be removed in an eventual major CloudStack release.
+Each release of Apache CloudStack comes with its own release of Primate as well.
 
 `User participation in the community mailing lists
 <http://cloudstack.apache.org/mailing-lists.html>`_ is encouraged. Users may
@@ -52,7 +53,17 @@ API improvements which may not be available prior to Apache CloudStack 4.15.
 Installation on CentOS
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Users running management server (4.15 or above) on CentOS can setup the
+Users running management server (4.15 or above) can directly install Primate:
+
+.. parsed-literal::
+
+    yum install cloudstack-primate
+
+Note: there is no need to restart management server post-installation, and
+after installation the UI can be accessed on
+management-server-host:8080/client/primate using any modern browser.
+
+To install the latest release of Primate on CentOS, setup the
 following Primate repository:
 
 .. parsed-literal::
@@ -73,14 +84,20 @@ Next, install Primate:
 
     yum install cloudstack-primate
 
-Note: there is no need to restart management server post-installation, and
-after installation the UI can be accessed on
-management-server-host:8080/client/primate using any modern browser.
 
 Installation on Ubuntu
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Users running CloudStack management server (4.15 or above) on Ubuntu can setup the following Primate repository:
+Users running management server (4.15 or above) can directly install Primate
+
+.. parsed-literal::
+
+    apt-get update
+    apt-get install cloudstack-primate
+
+
+To install the latest release of Primate on Ubuntu, setup the
+following Primate repository:
 
 .. parsed-literal::
 
