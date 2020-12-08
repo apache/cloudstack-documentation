@@ -287,6 +287,7 @@ Known Limitations
 ~~~~~~~~~~~~~~~~~
 
 The following features are no longer supported or available:
+
 - Deployment of a basic zone is not supported. However, existing basic zones will continue to be supported as well as all the actions and views of various resources within the existing basic zone.
 - Support for S3 based secondary storage.
 - NFS secondary staging storage list/resource view and add/update actions.
