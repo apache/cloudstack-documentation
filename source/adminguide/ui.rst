@@ -21,9 +21,14 @@ Log In to the UI
 CloudStack provides a web-based UI that can be used by both
 administrators and end users. The appropriate version of the UI is
 displayed depending on the credentials used to log in. The UI is
-available in popular browsers including IE7, IE8, IE9, Firefox 3.5+,
-Firefox 4, Safari 4, and Safari 5. The URL is: (substitute your own
-management server IP address)
+available in all modern popular browsers including Chrome, Firefox, Edge and
+Safari. The UI uses API auto-discovery to discover APIs allowed for a logged-in
+user and creates navigation and views based on that, and requires the following:
+
+- API discovery (listApis) enabled for all roles that must use the UI
+- Modern browsers that are `ES5-compliant <https://github.com/vuejs/vue#browser-compatibility>`_
+
+The URL is: (substitute your own management server IP address)
 
 .. parsed-literal::
 
@@ -64,6 +69,11 @@ the UI can provide a project-oriented view.
 
 Root Administrator's UI Overview
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: https://raw.githubusercontent.com/apache/cloudstack-primate/master/docs/screenshot-dashboard.png
+   :width: 800px
+   :alt: alternate text
+   :align: left
 
 The CloudStack UI helps the CloudStack administrator provision, view,
 and manage the cloud infrastructure, domains, user accounts, projects,
@@ -168,94 +178,120 @@ new, unique value.
 
 #. Type the new password, and click OK.
 
+Basic UI Customization
+~~~~~~~~~~~~~~~~~~~~~~
 
-Modifying the UI
-----------------
+Users can now customize the CloudStack's user interface by means of a configuration file at /usr/share/cloudstack-management/webapp/config.json which can be used to modify the theme, logos, etc. to align to one's requirement.
 
-Root Administrators can modify some aspect of the UI, like:
+To change the logo, login banner, error page icon, etc. the following details can be edited in config.json:
 
-   -  Changing the keyboard names/labels (in the "Add Instance" wizard only)
-   -  Changing the text and the title in the "About" dialog box
-   -  Changing the Help link
-   -  Changing the application title on the browser tab
-   -  Hiding some columns in the Instance Metrics and Volume Metrics tables/views
- 
-This can be done by editing the file "/usr/share/cloudstack-management/webapp/config.js" on your management server(s).
-After the file change, you do need to clear your browser cache. Hiding columns in Instance Metrics and Volume Metrics tables/views is only applicable to end users - i.e. those are always visible to Root Administrators.
+.. parsed-literal::
 
-This is the default config.js content (comments ommitted for brevity):
+    "logo": "assets/logo.svg",
+    "banner": "assets/banner.svg",
+    "error": {
+        "404": "assets/404.png",
+        "403": "assets/403.png",
+        "500": "assets/500.png"
+    }
 
-.. code:: javascript
+where,
 
-   cloudStackOptions = {
-      aboutText: "label.app.name", // This is the text shown in the 'About' box
-      aboutTitle: "label.about.app", // This is the Application 'Title' shown in the 'About' box
-      docTitle: "label.app.name", // This is the Application 'Title' shown on browser tab.
-      helpURL: "http://docs.cloudstack.apache.org/", // This is the URL that opens when users click Help
-      keyboardOptions: {
-         "us": "label.standard.us.keyboard",
-         "uk": "label.uk.keyboard",
-         "fr": "label.french.azerty.keyboard",
-         "jp": "label.japanese.keyboard",
-         "sc": "label.simplified.chinese.keyboard"
-      },
-      hiddenFields: { // Fields to be hidden only for users in the tables below
-         "metrics.instances": [], // Options - "name", "state", "ipaddress", "zonename", "cpuused", "memused", "network", "disk"
-         "metrics.volumes": [] // Options - "name", "state", "vmname", "sizegb", "physicalsize", "utilization", "storagetype", "storage"
-      }
-   };
+- logo: changes the logo top-left side image.
+- banner: changes the login banner image.
+- error.404: changes the image of error Page not found.
+- error.403: changes the image of error Forbidden.
+- error.500: changes the image of error Internal Server Error.
 
-Example of a changed config.js file is given bellow, as well as the apropriate screenshots which reflect (most of) those changes. Make sure that you are logged in as end user account.
+Customization of themes is also possible, such as, modifying banner width, general color, etc. This can be done by editing the "theme" section of the config.json file:
 
-.. code:: javascript
+.. parsed-literal::
 
-   cloudStackOptions = {
-      aboutText: "Custom About text!", // This is the text shown in the 'About' box
-      aboutTitle: "Custom About Title!", // This is the Application 'Title' shown in the 'About' box
-      docTitle: "MyCloud", // This is the Application 'Title' shown on browser tab.
-      helpURL: "http://help.mycloud.com/", // This is the URL that opens when users click Help
-      keyboardOptions: {
-         "us": "US",
-         "uk": "UK",
-         "fr": "FR",
-         "jp": "JP",
-         "sc": "CN"
-      },
-      hiddenFields: { // Fields to be hidden only for users in the tables below
-         "metrics.instances": ["zonename"], // Options - "name", "state", "ipaddress", "zonename", "cpuused", "memused", "network", "disk"
-         "metrics.volumes": ["utilization"] // Options - "name", "state", "vmname", "sizegb", "physicalsize", "utilization", "storagetype", "storage"
-      }
-   };
+    "theme": {
+        "@logo-background-color": "#ffffff",
+        "@project-nav-text-color": "#001529",
+        "@navigation-text-color": "rgba(255, 255, 255, 0.65)",
+        "@navigation-background-color": "#ffffff",
+        "@navigation-text-color": "rgba(0, 0, 0, 0.65)",
+        "@primary-color": "#1890ff",
+        "@link-color": "#1890ff",
+        "@link-hover-color": "#40a9ff",
+        "@loading-color": "#1890ff",
+        "@processing-color": "#1890ff",
+        "@success-color": "#52c41a",
+        "@warning-color": "#faad14",
+        "@error-color": "#f5222d",
+        "@font-size-base": "14px",
+        "@heading-color": "rgba(0, 0, 0, 0.85)",
+        "@text-color": "rgba(0, 0, 0, 0.65)",
+        "@text-color-secondary": "rgba(0, 0, 0, 0.45)",
+        "@disabled-color": "rgba(0, 0, 0, 0.25)",
+        "@border-color-base": "#d9d9d9",
+        "@border-radius-base": "4px",
+        "@box-shadow-base": "0 2px 8px rgba(0, 0, 0, 0.15)",
+        "@logo-width": "256px",
+        "@logo-height": "64px",
+        "@banner-width": "700px",
+        "@banner-height": "110px",
+        "@error-width": "256px",
+        "@error-height": "256px"
+    }
 
-|about-cloudstack-customized.JPG|
+where,
 
-Notice custom title and text
+- @logo-background-color changes the logo background color.
+- @project-nav-background-color changes the navigation menu background color of the project.
+- @project-nav-text-color changes the navigation menu background color of the project view.
+- @navigation-background-color changes the navigation menu background color.
+- @navigation-text-color changes the navigation text color.
+- @primary-color: changes the major background color of the page (background button, icon hover, etc).
+- @link-color changes the link color.
+- @link-hover-color changes the link hover color.
+- @loading-color changes the message loading color and page loading bar at the top page.
+- @success-color: changes success state color.
+- @processing-color: changes processing state color. Exp: progress status.
+- @warning-color: changes warning state color.
+- @error-color: changes error state color.
+- @heading-color: changes table header color.
+- @text-color: change in major text color.
+- @text-color-secondary: change of secondary text color (breadcrumb icon).
+- @disabled-color: disable state color (disabled button, switch, etc).
+- @border-color-base: change in major border color.
+- @logo-width: change the width of the logo top-left side.
+- @logo-height: change the height of the logo top-left side.
+- @banner-width: changes the width of the login banner.
+- @banner-height: changes the height of the login banner.
+- @error-width: changes the width of the error image.
+- @error-height: changes the height of the error image.
 
+Some assorted primary theme colours:
 
-|add-instance-keyboards-customized.JPG|
+- Blue: #1890FF
+- Red: #F5222D
+- Yellow: #FAAD14
+- Cyan: #13C2C2
+- Green: #52C41A
+- Purple: #722ED1
 
-Notice short keyboard names (based on country code)
+Advanced Customisation
+~~~~~~~~~~~~~~~~~~~~~~
 
+The advanced UI customisation is possible only by changing JavaScript based config
+files which define rules for sections, names, icons, actions and components and by
+building the UI from the source available on `github.com/apache/cloudstack
+<https://github.com/apache/cloudstack>`_ repository. Advanced customisation may
+require some experience in JavaScript and VueJS, a development and customisation
+guide in the source repository.
 
-|instance-metrics-customized-view.JPG|
+Known Limitations
+~~~~~~~~~~~~~~~~~
 
-Notice "Zone" column is hidden
-
-
-|volume-metrics-customized-view.JPG|
-
-Notice "Utilisation" column is hidden
-
-
-
+The following features are no longer supported or available:
+- Deployment of a basic zone is not supported. However, existing basic zones will continue to be supported as well as all the actions and views of various resources within the existing basic zone.
+- Support for S3 based secondary storage.
+- NFS secondary staging storage list/resource view and add/update actions.
+- SSL certificate for Guest network LB rule.
+- Regions.
 
 .. |change-password.png| image:: /_static/images/change-password.png
    :alt: button to change a user's password
-.. |volume-metrics-customized-view.JPG| image:: /_static/images/volume-metrics-customized-view.JPG
-   :alt: Notice missing "Utilisation" column
-.. |instance-metrics-customized-view.JPG| image:: /_static/images/instance-metrics-customized-view.JPG
-   :alt: Notice missing "Zone" column
-.. |about-cloudstack-customized.JPG| image:: /_static/images/about-cloudstack-customized.JPG
-   :alt: Notice custom title and text   
-.. |add-instance-keyboards-customized.JPG| image:: /_static/images/add-instance-keyboards-customized.JPG
-   :alt: Notice short keyboard names (based on country code)   
