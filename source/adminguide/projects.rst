@@ -301,7 +301,7 @@ feature is enabled in the cloud as described in `“Setting
 Up Invitations” <#setting-up-invitations>`_. If the invitations feature is
 not turned on, use the procedure in Adding Project Members From the UI.
 
-#. Log in to the CloudStack Primate UI.
+#. Log in to the CloudStack UI.
 
 #. In the left navigation, click Projects.
 
@@ -353,7 +353,7 @@ Accepting a Membership Invitation
 If you have received an invitation to join a CloudStack project, and you
 want to accept the invitation, follow these steps:
 
-#. Log in to the CloudStack’s Primate UI.
+#. Log in to the CloudStack’s UI.
 
 #. In the left navigation, click Projects.
 
