@@ -20,7 +20,7 @@ What's New in |release|
 Apache CloudStack |release| is a |version| LTS release with over FIXME major new
 features, and over 100 enhancements and fixes since 4.14.  Highlights include:
 
-• New modern UI (Primate, GA release)
+• New modern UI (GA release)
 • Support for CentOS8 and Ubuntu 20.04 as management server hosts and KVM hosts
 • FIXME: add rest of new features
 
@@ -65,16 +65,17 @@ before adding the KVM host in CloudStack:
    HostKeyAlgorithms=+ssh-dss
    KexAlgorithms=+diffie-hellman-group1-sha1
 
-Primate GA and Legacy UI Deprecation and Removal Notice
+New UI GA and Legacy UI Deprecation and Removal Notice
 =======================================================
 
-Cloudstack 4.15 ships with the GA release of a new and modern User Interface
-(Primate) which deprecates the current legacy UI. With version 4.15, the
-existing legacy UI (deprecated) along with the new UI (Primate) are the
-supported UI for production environments. In the next 4.16 release, the Apache
-Cloudstack community will remove the legacy UI and only the new UI (Primate)
-will be supported by the Apache CloudStack community moving forward. Users are
-encouraged to implement a migration path towards the new UI (Primate) in their
+Cloudstack 4.15 ships with the GA release of a new and modern User Interface as
+the default UI which deprecates the current legacy UI. With version 4.15, the
+existing legacy UI (deprecated) along with the new UI are the supported UI for
 production environments.
 
-Please see `Primate install guide <../installguide/primate.html>`_
+The default URL <host>:8080/client will serve the new UI and
+<host>:8080/client/legacy will serve the deprecated legacy UI.
+
+In the next release (4.16), the Apache Cloudstack community will remove the legacy
+UI. Users are encouraged to implement a migration path towards deprecating the
+legacy UI in their production environments.
