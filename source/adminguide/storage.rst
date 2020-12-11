@@ -617,6 +617,40 @@ To resize a volume:
 
 #. Click OK.
 
+Root Volume size defined via Service Offering
+~~~~~~~~~~~~~~~~
+
+If a Service Offering is created with a root disk size, then resizing the Root volume is possible only by resizing the VMs service offering.
+
+Service offering Root resizing constrains:
+
+#. Users cannot deploy VMs with custom root disk size when using such offerings
+
+#. Users cannot resize the VM root disk size when using such offerings
+
+#. The Root Volume of such VMs can only be resized when changing to another Service Offering with a Root disk size equals or larger than the current one.
+
+#. Users can change the VM offering to a service offering with a Root size of 0GB (default) and then customize the volume size.
+
+The following table shows possible combinations of Service offering supported resizing based on the offering Root disk size:
+
++---+----------------------------+---------------------------+-------------------------------+
+| # | Service Offering Root size | new Service Offering Root | Does support offering resize? |
++---+----------------------------+---------------------------+-------------------------------+
+| 1 | 0GB (default)              | Any                       | YES                           |
++---+----------------------------+---------------------------+-------------------------------+
+| 2 | 5GB                        | 5GB                       | YES                           |
++---+----------------------------+---------------------------+-------------------------------+
+| 3 | 5GB                        | 10GB                      | YES                           |
++---+----------------------------+---------------------------+-------------------------------+
+| 4 | 10GB                       | 5GB                       | NO                            |
++---+----------------------------+---------------------------+-------------------------------+
+| 5 | Any                        | 0GB                       | YES                           |
++---+----------------------------+---------------------------+-------------------------------+
+
+.. note::
+   Shrinking the Root disk is not supported via the service offering resizing workflow. All the combinations above assume a transition to Root disks with size equals or bigger than the original.
+   Service Offerings with Root size of 0GB do not change the disk size to Zero and indicates that the offering do not enforces a Root disk size.
 
 Reset VM to New Root Disk on Reboot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
