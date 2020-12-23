@@ -83,12 +83,7 @@ templates and also require CloudStack password and sshkey scripts (:ref:`adding-
 
    .. code:: yaml
 
-      datasource:
-        CloudStack: {}
-        None: {}
-      datasource_list:
-        - CloudStack
-
+      datasource_list: [ CloudStack, None ]
 
 user-data example
 ~~~~~~~~~~~~~~~~~
