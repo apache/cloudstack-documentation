@@ -21,7 +21,7 @@ Apache CloudStack |release| is a |version| LTS release with over FIXME major new
 features, and over 100 enhancements and fixes since 4.14.  Highlights include:
 
 • New modern UI (GA release)
-• Support for CentOS8 and Ubuntu 20.04 as management server hosts and KVM hosts
+• Support for CentOS8 and Ubuntu 20.04 as management server hosts and KVM hosts (note: CentOS 8 will EOL in Dec 2021)
 • FIXME: add rest of new features
 
 The full list of new features can be found in the project release notes at
@@ -62,7 +62,9 @@ workaround in their KVM host's /etc/ssh/sshd_config and restart ssh server
 before adding the KVM host in CloudStack:
 
    PubkeyAcceptedKeyTypes=+ssh-dss
+
    HostKeyAlgorithms=+ssh-dss
+
    KexAlgorithms=+diffie-hellman-group1-sha1
 
 New UI GA and Legacy UI Deprecation and Removal Notice
