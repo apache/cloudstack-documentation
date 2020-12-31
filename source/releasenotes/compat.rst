@@ -22,8 +22,8 @@ Supported OS Versions for Management Server
 This section lists the operating systems that are supported for running
 CloudStack Management Server.
 
--  Ubuntu 16.04 LTS, 18.04, 20.04 LTS
--  CentOS versions 7.x, 8.x
+-  Ubuntu 16.04 LTS, 18.04 LTS, 20.04 LTS
+-  CentOS versions 7.x, 8.x (note: CentOS 8 will EOL in Dec 2021)
 -  RHEL versions 7.x, 8.x
 
 Software Requirements
@@ -39,7 +39,7 @@ CloudStack supports three hypervisor families, XenServer with XAPI, KVM,
 and VMware with vSphere.
 
 -  Ubuntu 16.04 LTS, 18.04, 20.04 LTS with KVM
--  CentOS 7.x, 8.x with KVM
+-  CentOS 7.x, 8.x with KVM (note: CentOS 8 will EOL in Dec 2021)
 -  Red Hat Enterprise Linux 7.x, 8.x with KVM
 -  XenServer versions 7.0, 7.1, 7.2, 7.4, 7.5, 8.0 with latest hotfixes, XCP-ng 7.4, 7.6, 8.0, 8.1
 
