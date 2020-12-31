@@ -137,6 +137,9 @@ The Kubernetes service provides the functionality of running and managing Kubern
 
 This provides functionality to create Kubernetes clusters for Shared, Isolated and VPC networks in CloudStack, but such networks must be accessible to the CloudStack management server for provisioning virtual machines on the cluster. Template and default network offering must be set Global Settings for the service to create Kubernetes clusters.
 
+.. note::
+   In case of isolated and VPC networks, if egress rules and ACLs don't allow traffic the setup of the Kubernetes cluster and deployment of pods may fail due to inability of fetching the images from public network.
+
 The following Global Settings value must be set to the name of Template to be used for deploying node virtual machines for the respective hypervisor while creating a Kubernetes cluster:
 
 - **cloud.kubernetes.cluster.template.name.hyperv** (Name of the template to be used for creating Kubernetes cluster nodes on HyperV)
