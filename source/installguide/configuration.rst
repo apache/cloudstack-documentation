@@ -1203,6 +1203,18 @@ cluster.
       host that is where this primary storage is mounted. For example,
       "/mnt/primary".
 
+   -  **RADOS Monitor (for RBD).** With KVM, this is Ceph host domain/IP with
+      port. For example, "round-robin.ceph-cluster.xyz:6789".
+
+   -  **RADOS Pool (for RBD).** With KVM, this is Ceph pool name. For example,
+      "cloudstack".
+
+   -  **RADOS User (for RBD).** With KVM, this is Ceph client user name. For
+      example, "cloudstack".
+
+   -  **RADOS Secret (for RBD).** With KVM, this is the Ceph pool secret
+      authorised for a client username. For example, "AQC3u/JfhipzGBAACiILEFKembN8gTJsIvu6nQ==".
+
    -  **SMB Username** (for SMB/CIFS): Applicable only if you select
       SMB/CIFS provider. The username of the account which has the
       necessary permissions to the SMB shares. The user must be part of
