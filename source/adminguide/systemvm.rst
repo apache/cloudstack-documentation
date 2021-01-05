@@ -817,7 +817,7 @@ Migrating System VMs
 
 System VMs (any of the Console Proxy VM, Secondary Storage VM, Virtual Router or Load Balancer) can be migrated across hosts using migrateSysteVm API or migrate action in the UI. These VMs can be migrated between hosts of the same cluster only.
 
-Since 4.16, for VMware, migration of System VMs can also be done a destination host in a different cluster belonging to the same pod. Storage migration of the stopped System VMs is also supported.
+Since CloudStack 4.16, for VMware, migration of System VMs can also be done to a destination host in a different cluster belonging to the same pod (in case of cluster-wide primary storage pools, this will cause the Root volume of the system VM to be migrated to the appropriate datastore in the new cluster). Storage migration of stopped System VMs is also supported.
 
 Troubleshoot networks from System VMs
 -------------------------------------
