@@ -347,14 +347,14 @@ scenarios.
 
 .. cssclass:: table-striped table-bordered table-hover
 
-============================= ======================= ==================== ===================================== ==========================
-User-Provided Display Name    vm.instancename.flag    Hostname on the VM   Name on vCenter                       Internal Name
-============================= ======================= ==================== ===================================== ==========================
-Yes                           True                    Display name         i-<user\_id>-<vm\_id>-displayName     i-<user\_id>-<vm\_id>-displayName
-No                            True                    UUID                 i-<user\_id>-<vm\_id>-<instance.name> i-<user\_id>-<vm\_id>-<instance.name>
-Yes                           False                   Display name         i-<user\_id>-<vm\_id>-<instance.name> i-<user\_id>-<vm\_id>-<instance.name>
-No                            False                   UUID                 i-<user\_id>-<vm\_id>-<instance.name> i-<user\_id>-<vm\_id>-<instance.name>
-============================= ======================= ==================== ===================================== ==========================
+============================= ======================= ====================== ====================== ====================== ===================================== ==========================
+User-Provided Display Name    vm.instancename.flag    User                   Display Name           Hostname on the VM     Name on vCenter                       Internal Name
+============================= ======================= ====================== ====================== ====================== ===================================== ==========================
+Yes                           True                    Name                   Display name           Name                   i-<user\_id>-<vm\_id>-name            i-<user\_id>-<vm\_id>-name
+No                            True                    <instance.name>-<UUID> <instance.name>-<UUID> <instance.name>-<UUID> i-<user\_id>-<vm\_id>-<instance.name> <instance.name>-<UUID>
+Yes                           False                   Name                   Display name           Name                   i-<user\_id>-<vm\_id>-<instance.name> i-<user\_id>-<vm\_id>-<instance.name>
+No                            False                   <instance.name>-<UUID> <instance.name>-<UUID> <instance.name>-<UUID> i-<user\_id>-<vm\_id>-<instance.name> i-<user\_id>-<vm\_id>-<instance.name>
+============================= ======================= ====================== ====================== ====================== ===================================== ==========================
 
 
 Changing the Service Offering for a VM
