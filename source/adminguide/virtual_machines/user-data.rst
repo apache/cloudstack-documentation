@@ -76,7 +76,7 @@ possible to determine the user-data server from a DHCP lease.
 
    .. code:: bash
 
-      # cat /var/lib/dhclient/dhclient-eth0.leases | grep dhcp-server-identifier | tail -1
+      # cat /var/lib/dhcp/dhclient.eth0.leases | grep dhcp-server-identifier | tail -1
 
 #. Access the data-server via its IP
 
