@@ -20,13 +20,13 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Apache CloudStack'
-copyright = '2012-2020, Apache Foundation'
+copyright = '2012-2021, Apache Foundation'
 author = 'Apache CloudStack Project'
 
 # The short X.Y version
-version = '4.15'
+version = '4.16'
 # The full version, including alpha/beta/rc tags
-release = '4.15.0.0'
+release = '4.16.0.0'
 
 rst_epilog = """
 .. include:: /_global.rst 
