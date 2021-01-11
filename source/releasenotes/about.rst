@@ -30,6 +30,7 @@ features, and over 250 enhancements and fixes since 4.14. Highlights include:
 • VMware full OVF properties support
 • Secondary Storage usage improvements
 • PVLAN support for L2 networks
+• Role-based users in Projects
 • Dynamic roles improvements
 • Boot into BIOS on VMware
 • Redfish OOBM Support
