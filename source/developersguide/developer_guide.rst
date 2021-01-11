@@ -346,7 +346,7 @@ Mapping exists between the AWS API and the CloudStack API as will be
 seen in the next section. Recently a Google Compute Engine interface was
 also developed that maps the GCE REST API to the CloudStack API
 described here. The API
-`docs <http://cloudstack.apache.org/docs/api/>`__ are a good start to
+`docs <https://cloudstack.apache.org/api.html>`__ are a good start to
 learn the extent of the API. Multiple clients exist on
 `github <https://github.com/search?q=cloudstack+client&ref=cmdform>`__
 to use this API, you should be able to find one in your favorite
@@ -365,7 +365,7 @@ http://localhost:8080/client/api). The API name is passed using the
 as key value pairs. The request is signed using the access key and
 secret key of the user making the call. Some calls are synchronous while
 some are asynchronous, this is documented in the API
-`docs <http://cloudstack.apache.org/docs/api/>`__. Asynchronous calls
+`docs <https://cloudstack.apache.org/api.html>`__. Asynchronous calls
 return a ``jobid``, the status and result of a job can be queried with
 the ``queryAsyncJobResult`` call. Let's get started and give an example
 of calling the ``listUsers`` API in Python.

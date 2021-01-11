@@ -64,8 +64,8 @@ API Reference Documentation
 
 You can find all the API reference documentation at the below site:
 
-`http://cloudstack.apache.org/docs/api/ 
-<http://cloudstack.apache.org/docs/api/>`__
+`https://cloudstack.apache.org/api.html 
+<https://cloudstack.apache.org/api.html>`__
 
 
 Making API Requests

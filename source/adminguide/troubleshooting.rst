@@ -130,7 +130,7 @@ cleanup=false parameter. For more information about redundant router
 setup, see Creating a New Network Offering.
 
 For more information about the API syntax, see the API Reference at
-`http://cloudstack.apache.org/docs/api/ <http://cloudstack.apache.org/docs/api/>`_.
+`https://cloudstack.apache.org/api.html <https://cloudstack.apache.org/api.html>`_.
 
 
 Maintenance mode not working on vCenter
