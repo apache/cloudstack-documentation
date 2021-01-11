@@ -17,12 +17,23 @@
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is a |version| LTS release with over FIXME major new
-features, and over 100 enhancements and fixes since 4.14.  Highlights include:
+Apache CloudStack |release| is a |version| LTS release with over 15 major new
+features, and over 250 enhancements and fixes since 4.14. Highlights include:
 
 • New modern UI (GA release)
-• Support for CentOS8 and Ubuntu 20.04 as management server hosts and KVM hosts (note: CentOS 8 will EOL in Dec 2021)
-• FIXME: add rest of new features
+• Support for CentOS8 and Ubuntu 20.04 for management server and KVM hosts (note: CentOS 8 will EOL in Dec 2021)
+• Support for XCP-ng 8.1
+• Support for MySQL 8
+• NoVNC console integration
+• Unmanaging guest VMs
+• VMware advanced storage capabilities (vSAN, vVols, VMFS6, datastore clusters)
+• VMware full OVF properties support
+• Secondary Storage usage improvements
+• PVLAN support for L2 networks
+• Dynamic roles improvements
+• Boot into BIOS on VMware
+• Redfish OOBM Support
+• Human readable sizes in logs
 
 The full list of new features can be found in the project release notes at
 http://docs.cloudstack.apache.org/en/4.15.0.0/releasenotes/changes.html
