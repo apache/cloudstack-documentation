@@ -271,14 +271,15 @@ running:
    $ mvn -P deps
 
 Now that we have resolved the dependencies we can move on to building
-CloudStack and packaging them into DEBs by issuing the following
-command.
+CloudStack and packaging them into DEBs by running the script in ``packaging`` folder:
+
 
 .. parsed-literal::
 
-   $ dpkg-buildpackage -uc -us
+   $ cd packaging/
+   $ ./build-deb.sh
 
-This command will build the following debian packages. You should have
+This script will build the following debian packages. You should have
 all of the following:
 
 .. parsed-literal::
@@ -573,3 +574,11 @@ to build from source.
 #. Once you've built CloudStack with the ``noredist`` profile, you can
    package it using the `“Building RPMs from Source” <#building-rpms-from-source>`_
    or `“Building DEB packages” <#building-deb-packages>`_ instructions.
+
+.. note::
+
+   In case you are building debian packages via script ``packaging/build-deb.sh``, you will need to export the following configuration:
+
+.. parsed-literal::
+
+   $ export ACS_BUILD_OPTS="-Dnoredist -Dnonoss"
