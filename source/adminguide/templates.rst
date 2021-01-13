@@ -249,7 +249,7 @@ To upload a template:
       available, or All Zones to make it available throughout
       CloudStack.
 
-   -  **OS Type**: (Except fo VMware). This helps CloudStack and the hypervisor perform
+   -  **OS Type**: (Except for VMware). This helps CloudStack and the hypervisor perform
       certain operations and make assumptions that improve the
       performance of the guest. Select one of the following:
 
