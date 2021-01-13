@@ -142,9 +142,7 @@ To create a VM from a template:
 
    .. note:: 
       VMware only: If the selected template contains OVF properties, different deployment options or configurations,
-      multiple NICs or end-user license agreements, then the wizard will display these properties. Static 
-      properties do not have the concept of required and optional fields . Therefore CloudStack is not able
-      to enforce the population of 'important fields'.
+      multiple NICs or end-user license agreements, then the wizard will display these properties.
 
 #. Click Submit and your VM will be created and started.
 
@@ -913,6 +911,11 @@ snapshot:
 .. note:: 
    VM snapshots are deleted automatically when a VM is destroyed. You don't 
    have to manually delete the snapshots in this case.
+
+Support for Virtual Appliances
+==============================
+
+.. include:: virtual_machines/virtual_appliances.rst
 
 Unmanaging Virtual Machines
 ===========================
