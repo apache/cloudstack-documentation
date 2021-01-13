@@ -17,7 +17,7 @@ After the user selects a deployment option, CloudStack lists the compute offerin
 deployment options hardware requirements for CPU and memory.
 
 .. note::
-    All the custom unconstrained compute offerings are displayed, but those constrained custom offerings
+    All the custom unconstrained compute offerings are displayed, but only those constrained custom offerings
     in which the maximum or minimum requirements for CPU and memory are supported by the selected deployment option.
 
 .. |vapps-deployment-opts.png| image:: /_static/images/vapps-deployment-opts.png
