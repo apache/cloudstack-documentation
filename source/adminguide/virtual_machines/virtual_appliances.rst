@@ -4,7 +4,13 @@ About Virtual Appliances
 CloudStack allows users to deploy virtual appliances on VMware such as its been made directly though vCenter.
 Vendors of virtual appliances for VMware often produce ‘templates’ of their appliances in an OVA format.
 An OVA file contain disc images, as well as the configuration data of the virtual appliance and also at times a EULA which must be acknowledged.
+
 Virtual Appliances are supported only on VMware.
+
+.. note::
+    Since version 4.15, all the new templates registered are treated as virtual appliance templates.
+
+    To keep the existing functionality, all the templates registered before version 4.15 are not affected by this changes.
 
 Deployment options (configurations)
 -----------------------------------
@@ -52,3 +58,8 @@ If the template contains one or more end-user license agreements, the user must 
 If the license agreements are not accepted, then it is not possible to deploy a virtual appliance.
 
 |vapps-eulas.png|
+
+Advanced deployment settings
+----------------------------
+
+It is not possible to choose the boot type (BIOS, UEFI) and boot mode for virtual appliances. The boot mode and type used by the virtual appliances is defined in the template. 

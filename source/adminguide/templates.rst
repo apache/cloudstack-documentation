@@ -295,7 +295,10 @@ To upload a template:
 Note that uploading multi-disk templates is also supported.
 
 .. note:: 
-            Templates corresponding to appliances with 'static properties' in the OVF (such as virtual appliances) are also supported. CloudStack stores any template properties in the OVF in the database after successful template installation. Once the template is ready, these properties are viewed by selecting the template and clicking on the 'OVF Properties' tab.
+   VMware only: If the selected template contains OVF properties, different deployment options or configurations,
+   multiple NICs or end-user license agreements, then the wizard will display these properties.
+
+   See `“Support for Virtual Appliances” <virtual_machines.html#support-for-virtual-appliances>`_.
 
 
 
@@ -310,6 +313,11 @@ It's also possible to upload an already prepared template or an ISO from your lo
 The steps are similar as when Uploading a template/ISO from a remote HTTP server, except that you need to choose a local template/ISO file from your PC.
 For this feature to work, your SSVMs must be supporting HTTPS (for more info please visit `“Using a SSL Certificate for the Console Proxy” 
 <systemvm.html#using-a-ssl-certificate-for-the-console-proxy>`_).
+
+.. note::
+   Since version 4.15, VMware templates do not allow users or administrators
+   selecting an OS Type when uploading a template. The OS Type is
+   obtained from the template after it is uploaded.
 
 Example GUI dialog of uploading Template/ISO from local (browser) is given below:
 
