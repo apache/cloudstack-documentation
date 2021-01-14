@@ -322,7 +322,7 @@ To access a VM through the CloudStack UI:
 #. Click Apply.
 
 
-Appending VM Name to the Guest VM’s Internal Name
+Appending a Display Name to the Guest VM’s Internal Name
 ----------------------------------------------------------
 
 Every guest VM has an internal name. The host uses the internal name to identify the guest VMs. CloudStack gives you an option to provide a guest VM with a  name. You can set this name as the internal name so that the vCenter can use it to identify the guest VM. A new global parameter, vm.instancename.flag, has now been added to achieve this functionality.
