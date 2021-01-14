@@ -159,7 +159,7 @@ as the prototype for other VMs.
    -  **Name and Display Text**. These will be shown in the UI, so
       choose something descriptive.
 
-   -  **OS Type**. This helps CloudStack and the hypervisor perform
+   -  **OS Type**. (Except for VMware). This helps CloudStack and the hypervisor perform
       certain operations and make assumptions that improve the
       performance of the guest. Select one of the following.
 
@@ -177,6 +177,12 @@ as the prototype for other VMs.
             5.4 to support a CentOS 6.2 image will in general not work. 
             In those cases you should choose Other.
 
+         .. note::
+            Since version 4.15, VMware templates do not allow users or administrators
+            selecting an OS Type when registering a template. The OS Type is
+            obtained from the template after it is registered.
+
+
    -  **Public**. Choose Yes to make this template accessible to all
       users of this CloudStack installation. The template will appear in
       the Community Templates list. See `“Private and
@@ -192,6 +198,12 @@ The new template will be visible in the Templates section when the
 template creation process has been completed. The template is then
 available when creating a new VM.
 
+.. note::
+   Since version 4.15, CloudStack obtains information from the VMware templates
+   automatically at registration time. If a template contains different deployment
+   options (or configurations) as in the case of virtual appliances, then CloudStack
+   display the information required by the template, allowing users or administrators
+   to configure their instances.  
 
 Creating a Template from a Snapshot
 -----------------------------------
@@ -237,7 +249,7 @@ To upload a template:
       available, or All Zones to make it available throughout
       CloudStack.
 
-   -  **OS Type**: This helps CloudStack and the hypervisor perform
+   -  **OS Type**: (Except for VMware). This helps CloudStack and the hypervisor perform
       certain operations and make assumptions that improve the
       performance of the guest. Select one of the following:
 
@@ -250,6 +262,11 @@ To upload a template:
             version in the image. For example, choosing CentOS 5.4 to 
             support a CentOS 6.2 image will in general not work. In 
             those cases you should choose Other.
+
+         .. note::
+            Since version 4.15, VMware templates do not allow users or administrators
+            selecting an OS Type when registering a template. The OS Type is
+            obtained from the template after it is registered.
 
    -  **Hypervisor**: The supported hypervisors are listed. Select the
       desired one.
@@ -278,7 +295,10 @@ To upload a template:
 Note that uploading multi-disk templates is also supported.
 
 .. note:: 
-            Templates corresponding to appliances with 'static properties' in the OVF (such as virtual appliances) are also supported. CloudStack stores any template properties in the OVF in the database after successful template installation. Once the template is ready, these properties are viewed by selecting the template and clicking on the 'OVF Properties' tab.
+   VMware only: If the selected template contains OVF properties, different deployment options or configurations,
+   multiple NICs or end-user license agreements, then the wizard will display these properties.
+
+   See `“Support for Virtual Appliances” <virtual_machines.html#support-for-virtual-appliances>`_.
 
 
 
@@ -293,6 +313,11 @@ It's also possible to upload an already prepared template or an ISO from your lo
 The steps are similar as when Uploading a template/ISO from a remote HTTP server, except that you need to choose a local template/ISO file from your PC.
 For this feature to work, your SSVMs must be supporting HTTPS (for more info please visit `“Using a SSL Certificate for the Console Proxy” 
 <systemvm.html#using-a-ssl-certificate-for-the-console-proxy>`_).
+
+.. note::
+   Since version 4.15, VMware templates do not allow users or administrators
+   selecting an OS Type when uploading a template. The OS Type is
+   obtained from the template after it is uploaded.
 
 Example GUI dialog of uploading Template/ISO from local (browser) is given below:
 
