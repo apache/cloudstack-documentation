@@ -103,7 +103,7 @@ msgstr ""
 
 #: ../../dev.rst:64
 # bcdf9d282f994c9e9cfc62a64151533a
-msgid "`http://cloudstack.apache.org/docs/api/ <http://cloudstack.apache.org/docs/api/>`__"
+msgid "`https://cloudstack.apache.org/api.html <https://cloudstack.apache.org/api.html>`__"
 msgstr ""
 
 #: ../../dev.rst:68

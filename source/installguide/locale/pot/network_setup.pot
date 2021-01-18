@@ -1591,7 +1591,7 @@ msgstr ""
 
 #: ../../network_setup.rst:1001
 # 99d0d664da654239ad897c4d6eb6b08e
-msgid "On CloudStack, add the Traffic Sentinel host by calling the CloudStack API command addTrafficMonitor. Pass in the URL of the Traffic Sentinel as protocol + host + port (optional); for example, http://10.147.28.100:8080. For the addTrafficMonitor command syntax, see the API Reference at `API Documentation <http://cloudstack.apache.org/docs/api/index.html>`_."
+msgid "On CloudStack, add the Traffic Sentinel host by calling the CloudStack API command addTrafficMonitor. Pass in the URL of the Traffic Sentinel as protocol + host + port (optional); for example, http://10.147.28.100:8080. For the addTrafficMonitor command syntax, see the API Reference at `API Documentation <https://cloudstack.apache.org/api.htmlindex.html>`_."
 msgstr ""
 
 #: ../../network_setup.rst:1008

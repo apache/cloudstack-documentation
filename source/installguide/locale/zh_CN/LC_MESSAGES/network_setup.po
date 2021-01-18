@@ -1915,8 +1915,8 @@ msgid ""
 "command addTrafficMonitor. Pass in the URL of the Traffic Sentinel as "
 "protocol + host + port (optional); for example, http://10.147.28.100:8080. "
 "For the addTrafficMonitor command syntax, see the API Reference at `API "
-"Documentation <http://cloudstack.apache.org/docs/api/index.html>`_."
-msgstr "在CloudStack中，使用API中的addTrafficMonitor命令添加流量哨兵主机。传入的流量哨兵URL类似于protocol + host + port (可选)；例如， http://10.147.28.100:8080。 关于addTrafficMonitor命令用法，请参阅API文档 `API Documentation <http://cloudstack.apache.org/docs/api/index.html>`_."
+"Documentation <https://cloudstack.apache.org/api.html>`_."
+msgstr "在CloudStack中，使用API中的addTrafficMonitor命令添加流量哨兵主机。传入的流量哨兵URL类似于protocol + host + port (可选)；例如， http://10.147.28.100:8080。 关于addTrafficMonitor命令用法，请参阅API文档 `API Documentation <https://cloudstack.apache.org/api.html>`_."
 
 # 382c1696b18d4f25a2e2b5b7cb142225
 #: ../../network_setup.rst:1008

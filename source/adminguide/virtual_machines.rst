@@ -141,9 +141,10 @@ To create a VM from a template:
    service offering.
 
    .. note:: 
-      VMware only: If the selected template OVF contains static properties, the wizard will display these properties. Static 
-      properties do not have the concept of required and optional fields . Therefore CloudStack is not able
-      to enforce the population of 'important fields'.
+      VMware only: If the selected template contains OVF properties, different deployment options or configurations,
+      multiple NICs or end-user license agreements, then the wizard will display these properties.
+
+      See `“Support for Virtual Appliances” <virtual_machines.html#support-for-virtual-appliances>`_.
 
 #. Click Submit and your VM will be created and started.
 
@@ -752,6 +753,9 @@ Each user VM has a set of "details" associated with it (as visible via listVirtu
 The Settings tab is always present/visible, but settings can be changed only when the VM is in a Stopped state. 
 Some VM details/settings can be hidden via "user.vm.blacklisted.details" global setting (you can find below the list of those hidden by default).
 
+.. note::
+   Since version 4.15, VMware VM settings for the ROOT disk controller, NIC adapter type and data disk controller are populated automatically with the values inherited from the template.
+
 When adding a new setting or modifying the existing ones, setting names are shown/offered in a drop-down list, as well as their possible values (with the exception of boolean or numerical values).
 
 Read-only details/settings that are hidden by default:
@@ -912,6 +916,11 @@ snapshot:
 .. note:: 
    VM snapshots are deleted automatically when a VM is destroyed. You don't 
    have to manually delete the snapshots in this case.
+
+Support for Virtual Appliances
+==============================
+
+.. include:: virtual_machines/virtual_appliances.rst
 
 Unmanaging Virtual Machines
 ===========================
