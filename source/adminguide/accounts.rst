@@ -102,19 +102,34 @@ to any other account in the domain or any of its sub-domains.
 Using Dynamic Roles
 -------------------
 
-In addition to the four default roles, the dynamic role-based API checker feature
+In addition to the default roles, the dynamic role-based API checker feature
 allows CloudStack root admins to create new roles with customized permissions.
 The allow/deny rules can be configured dynamically during runtime without
 restarting the management server(s).
 
 For backward compatiblity, all roles resolve to one of the four role types:
 admin, resource admin, domain admin and user. A new role can be created using
-the roles tab in the UI and specifying a name, a role type and optionally a
-description.
+the roles tab in the UI and specifying a name, either a role type or ID of existing
+role, and optionally a description. When a new role is created using ID of existing
+role, all the rules of the existing role are copied to the new role and these rules
+can be modified as desired.
 
-Role specific rules can be configured through the rules tab on role specific
-details page. A rule is either an API name or a wildcard string that are one of
-allow or deny permission and optionally a description.
+Role specific rules can be either configured through the rules tab on role specific
+details page or imported from a CSV file while creating a new role with role type.
+A rule is either an API name or a wildcard string that are one of allow or deny
+permission and optionally a description. These rules can be exported to a
+CSV file, name defaulted to “<RoleName>_<RoleType>.csv”.
+
+CSV file format:
+
+.. parsed-literal::
+
+   rule,permission,description
+   <Rule1>,<Permission1>,<Description1>
+   <Rule2>,<Permission2>,<Description2> 
+   <Rule3>,<Permission3>,<Description3>
+   …
+   so on
 
 When a user makes an API request, the backend checks the requested API against
 configured rules (in the order the rules were configured) for the caller
