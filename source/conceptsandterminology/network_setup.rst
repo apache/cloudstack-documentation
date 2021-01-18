@@ -1003,7 +1003,7 @@ To set up the integration between CloudStack and Traffic Sentinel:
    Traffic Sentinel as protocol + host + port (optional); for example,
    http://10.147.28.100:8080. For the addTrafficMonitor command syntax,
    see the API Reference at `API Documentation 
-   <http://cloudstack.apache.org/docs/api/index.html>`_.
+   <https://cloudstack.apache.org/api.html>`_.
 
    For information about how to call the CloudStack API, see the
    Developer’s Guide at the CloudStack API Developer's Guide :ref:`the-api`

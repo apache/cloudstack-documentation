@@ -20,9 +20,9 @@ User-Data and Meta-Data
 CloudStack provides APIs to attach up to 32KB of user-data to a deployed VM.
 
 There are two CloudStack APIs that can be used to store user-data:
-`deployVirtualMachine <http://cloudstack.apache.org/docs/api/apidocs-4.14/user/deployVirtualMachine.html>`_
+`deployVirtualMachine <https://cloudstack.apache.org/docs/api/apidocs-4.14/user/deployVirtualMachine.html>`_
 and
-`updateVirtualMachine <http://cloudstack.apache.org/docs/api/apidocs-4.14/user/updateVirtualMachine.html>`_
+`updateVirtualMachine <https://cloudstack.apache.org/docs/api/apidocs-4.14/user/updateVirtualMachine.html>`_
 They both support the parameter ``userdata=``. The value for this parameter
 must be a `base64 <https://www.base64encode.org/>`_-encoded multi-part MIME
 message. See further below for an example of what this should look like.
@@ -89,7 +89,7 @@ Fetching user-data via the API
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 User-data is not included with the normal VM state for historic reasons.
-To read out the base64-encoded user-data via the API, use the `getVirtualMachineUserData <http://cloudstack.apache.org/docs/api/apidocs-4.14/user/getVirtualMachineUserData.html>`_
+To read out the base64-encoded user-data via the API, use the `getVirtualMachineUserData <https://cloudstack.apache.org/docs/api/apidocs-4.14/user/getVirtualMachineUserData.html>`_
 API call:
 
 .. code:: bash
