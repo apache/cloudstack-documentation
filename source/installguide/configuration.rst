@@ -1182,21 +1182,21 @@ cluster.
 
    -  **Protocol.** For XenServer, choose either NFS, iSCSI, or
       PreSetup. For KVM, choose NFS or SharedMountPoint. For vSphere
-      choose either VMFS (iSCSI or FiberChannel) or NFS. For Hyper-V,
+      choose either NFS, PreSetup (VMFS, vSAN, vVols) or datastorecluster. For Hyper-V,
       choose SMB.
 
    -  **Server (for NFS, iSCSI, or PreSetup).** The IP address or DNS
       name of the storage device.
 
-   -  **Server (for VMFS).** The IP address or DNS name of the vCenter
+   -  **Server (for PreSetup or datastorecluster).** The IP address or DNS name of the vCenter
       server.
 
    -  **Path (for NFS).** In NFS this is the exported path from the
       server.
 
-   -  **Path (for VMFS).** In vSphere this is a combination of the
-      datacenter name and the datastore name. The format is "/"
-      datacenter name "/" datastore name. For example,
+   -  **Path (for PreSetup or datastorecluster).** In vSphere this is a combination of the
+      datacenter name and the datastore or datastore cluster name. The format is "/"
+      datacenter name "/" datastore or datastore cluster name. For example,
       "/cloud.dc.VM/cluster1datastore".
 
    -  **Path (for SharedMountPoint).** With KVM this is the path on each

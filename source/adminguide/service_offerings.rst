@@ -341,6 +341,8 @@ To create a new compute offering:
       only specific zones can be selected.  One or more zones can be selected from 
       this list box by holding down the control key and clicking on the desired zones.
 
+   -  **Storage Policy**: Name of the storage policy defined at vCenter, this is applicable only for VMware.
+      When a specific Zone is selected, one of the storage policies can be selected from the list box.
 
 #. Click Add.
 
@@ -429,6 +431,9 @@ To create a new disk offering:
    -  **Zone**: This controls which zones a disk offering is available in.  'All zones' or 
       only specific zones can be selected.  One or more zones can be selected from 
       this list box by holding down the control key and selecting the desired zones.
+
+   -  **Storage Policy**: Name of the storage policy defined at vCenter, this is applicable only for VMware.
+      When a specific Zone is selected, one of the storage policies can be selected from the list box.
 
 #. Click Add.
 
