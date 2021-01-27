@@ -387,7 +387,7 @@ creating and applying a custom system service offering.
    network, follow the steps in Adding an Additional Guest Network on
    page 66. To change the service offering for existing virtual routers,
    follow the steps in `“Changing the Network Offering on a Guest Network” 
-   <networking2.html#changing-the-network-offering-on-a-guest-network>`_.
+   <advanced_zone_config.html#changing-the-network-offering-on-a-guest-network>`_.
 
 
 Best Practices for Virtual Routers
