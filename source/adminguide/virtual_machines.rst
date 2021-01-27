@@ -322,8 +322,8 @@ To access a VM through the CloudStack UI:
 #. Click Apply.
 
 
-Appending a Display Name to the Guest VM’s Internal Name
-----------------------------------------------------------
+Appending a Name to the Guest VM’s Internal Name
+------------------------------------------------
 
 Every guest VM has an internal name. The host uses the internal name to identify the guest VMs. CloudStack gives you an option to provide a guest VM with a  name. You can set this name as the internal name so that the vCenter can use it to identify the guest VM. A new global parameter, vm.instancename.flag, has now been added to achieve this functionality.
 
@@ -333,14 +333,14 @@ The following table explains how a VM name is displayed in different scenarios.
 
 .. cssclass:: table-striped table-bordered table-hover
 
-============================= ======================= ====================== ====================== ====================== ===================================== ==========================
-User-Provided Display Name    vm.instancename.flag    User                   Display Name           Hostname on the VM     Name on vCenter                       Internal Name
-============================= ======================= ====================== ====================== ====================== ===================================== ==========================
-Yes                           True                    <Name>                 <Display name>         <Name>                 i-<user\_id>-<vm\_id>-<Name>          i-<user\_id>-<vm\_id>-<Name>
-No                            True                    <instance.name>-<UUID> <instance.name>-<UUID> <instance.name>-<UUID> i-<user\_id>-<vm\_id>-<instance.name> <instance.name>-<UUID>
-Yes                           False                   <Name>                 <Display name>         <Name>                 i-<user\_id>-<vm\_id>-<instance.name> i-<user\_id>-<vm\_id>-<instance.name>
-No                            False                   <instance.name>-<UUID> <instance.name>-<UUID> <instance.name>-<UUID> i-<user\_id>-<vm\_id>-<instance.name> i-<user\_id>-<vm\_id>-<instance.name>
-============================= ======================= ====================== ====================== ====================== ===================================== ==========================
+===================== ======================= ====================== ====================== ====================== ===================================== ==========================
+User-Provided Name    vm.instancename.flag    User                   Display Name           Hostname on the VM     Name on vCenter                       Internal Name
+===================== ======================= ====================== ====================== ====================== ===================================== ==========================
+Yes                   True                    <Name>                 <Display name>         <Name>                 i-<user\_id>-<vm\_id>-<Name>          i-<user\_id>-<vm\_id>-<Name>
+No                    True                    <instance.name>-<UUID> <instance.name>-<UUID> <instance.name>-<UUID> i-<user\_id>-<vm\_id>-<instance.name> <instance.name>-<UUID>
+Yes                   False                   <Name>                 <Display name>         <Name>                 i-<user\_id>-<vm\_id>-<instance.name> i-<user\_id>-<vm\_id>-<instance.name>
+No                    False                   <instance.name>-<UUID> <instance.name>-<UUID> <instance.name>-<UUID> i-<user\_id>-<vm\_id>-<instance.name> i-<user\_id>-<vm\_id>-<instance.name>
+===================== ======================= ====================== ====================== ====================== ===================================== ==========================
 
 
 Changing the Service Offering for a VM
