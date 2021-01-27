@@ -302,10 +302,10 @@ To create a network offering:
       =================== ============================================================================ ============= =============
       Supported Services  Description                                                                  Isolated      Shared   
       =================== ============================================================================ ============= =============
-      DHCP                For more information, see `“DNS and DHCP”                                    Supported     Supported
-                           <advanced_zone_config.html#dns-and-dhcp>`_.
-      DNS                 For more information, see `“DNS and DHCP”                                    Supported     Supported
-                           <advanced_zone_config.html#dns-and-dhcp>`_.
+      DHCP                For more information, see `“DNS and                                          Supported     Supported
+                          DHCP” <advanced_zone_config.html#dns-and-dhcp>`_.
+      DNS                 For more information, see `“DNS and                                          Supported     Supported
+                          DHCP”  <advanced_zone_config.html#dns-and-dhcp>`_.
       Load Balancer       If you select Load Balancer, you can choose the CloudStack virtual           Supported     Supported
                           router or any other load balancers that have been configured in
                           the cloud.
@@ -323,8 +323,8 @@ To create a network offering:
                           VPN” <advanced_zone_config.html#remote-access-vpn>`_.
       User Data           For more information, see `“User Data and Meta                               Not Supported Supported
                           Data” <api.html#user-data-and-meta-data>`_.
-      Network ACL         For more information, see `“Configuring Network Access Control List”         Supported     Not Supported
-                           <advanced_zone_config.html#configuring-network-access-control-list>`_.
+      Network ACL         For more information, see `“Configuring Network Access Control               Supported     Not Supported
+                          List” <advanced_zone_config.html#configuring-network-access-control-list>`_.
       Security Groups     For more information, see `“Adding a Security                                Not Supported Supported
                           Group” <advanced_zone_config.html#adding-a-security-group>`_.
       =================== ============================================================================ ============= =============
