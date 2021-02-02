@@ -58,7 +58,7 @@ IP and the guest VM’s private IP. The VM’s original IP address is then
 released and returned to the pool of available public IPs. Optionally,
 you can also decide not to allocate a public IP to a VM in an
 EIP-enabled Basic zone. For more information on Elastic IP, see
-`“About Elastic IP” <advanced_zone_config.html#about-elastic-ip>`_.
+`“About Elastic IP” <networking/elastic_ips.html>`_.
 
 CloudStack cannot distinguish a guest VM that was shut down by the user
 (such as with the “shutdown” command in Linux) from a VM that shut down
