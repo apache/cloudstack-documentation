@@ -271,7 +271,7 @@ To create a network offering:
       or not. The network that you can provision without having to
       deploy a VM on it is termed persistent network. For more
       information, see `“Persistent
-      Networks” <advanced_zone_config.html#persistent-networks>`_.
+      Networks” <networking_and_traffic.html#persistent-networks>`_.
 
    -  **Specify VLAN**. (Isolated guest networks only) Indicate whether
       a VLAN could be specified when this offering is used. If you
