@@ -320,7 +320,7 @@ To create a network offering:
                           virtual router or any other Port Forwarding providers that have
                           been configured in the cloud.
       VPN                 For more information, see `“Remote Access                                    Supported     Not Supported
-                          VPN” <advanced_zone_config.html#remote-access-vpn>`_.
+                          VPN” <networking_and_traffic.html#remote-access-vpn>`_.
       User Data           For more information, see `“User Data and Meta                               Not Supported Supported
                           Data” <api.html#user-data-and-meta-data>`_.
       Network ACL         For more information, see `“Configuring Network Access Control               Supported     Not Supported
