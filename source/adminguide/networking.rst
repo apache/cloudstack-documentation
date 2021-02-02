@@ -324,7 +324,7 @@ To create a network offering:
       User Data           For more information, see `“User Data and Meta                               Not Supported Supported
                           Data” <api.html#user-data-and-meta-data>`_.
       Network ACL         For more information, see `“Configuring Network Access Control               Supported     Not Supported
-                          List” <advanced_zone_config.html#configuring-network-access-control-list>`_.
+                          List” <networking_and_traffic.html#configuring-network-access-control-list>`_.
       Security Groups     For more information, see `“Adding a Security                                Not Supported Supported
                           Group” <advanced_zone_config.html#adding-a-security-group>`_.
       =================== ============================================================================ ============= =============
