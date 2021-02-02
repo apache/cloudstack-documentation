@@ -85,7 +85,7 @@ Basic zones in CloudStack 3.0.3 and later versions.
 -  Source NAT per zone is not supported in Shared Network when the
    service provider is virtual router. However, Source NAT per account
    is supported. For information, see `“Configuring a Shared Guest 
-   Network” <advanced_zone_config.html#configuring-a-shared-guest-network>`_.
+   Network” <networking_and_traffic.html#configuring-a-shared-guest-network>`_.
 
 
 L2 Networks
