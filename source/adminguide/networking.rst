@@ -303,9 +303,9 @@ To create a network offering:
       Supported Services  Description                                                                  Isolated      Shared   
       =================== ============================================================================ ============= =============
       DHCP                For more information, see `“DNS and                                          Supported     Supported
-                          DHCP” <advanced_zone_config.html#dns-and-dhcp>`_.
+                          DHCP” <networking_and_traffic.html#dns-and-dhcp>`_.
       DNS                 For more information, see `“DNS and                                          Supported     Supported
-                          DHCP”  <advanced_zone_config.html#dns-and-dhcp>`_.
+                          DHCP”  <networking_and_traffic.html#dns-and-dhcp>`_.
       Load Balancer       If you select Load Balancer, you can choose the CloudStack virtual           Supported     Supported
                           router or any other load balancers that have been configured in
                           the cloud.
