@@ -284,7 +284,7 @@ To create a network offering:
       isolated part of CloudStack. A VPC can have its own virtual
       network topology that resembles a traditional physical network.
       For more information on VPCs, see `“About Virtual
-      Private Clouds” <advanced_zone_config.html#about-virtual-private-clouds>`_.
+      Private Clouds” <networking_and_traffic.html#about-virtual-private-clouds>`_.
 
    -  **Supported Services**. Select one or more of the possible network
       services. For some services, you must also choose the service
