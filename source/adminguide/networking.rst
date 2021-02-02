@@ -60,7 +60,7 @@ account. Isolated networks have the following properties.
    entire network
 
 For more information, see `“Configure Guest Traffic in an Advanced Zone” 
-<advanced_zone_config.html#configure-guest-traffic-in-an-advanced-zone>`_.
+<networking_and_traffic.html#configure-guest-traffic-in-an-advanced-zone>`_.
 
 
 Shared Networks
