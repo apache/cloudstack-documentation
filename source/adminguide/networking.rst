@@ -326,7 +326,7 @@ To create a network offering:
       Network ACL         For more information, see `“Configuring Network Access Control               Supported     Not Supported
                           List” <networking_and_traffic.html#configuring-network-access-control-list>`_.
       Security Groups     For more information, see `“Adding a Security                                Not Supported Supported
-                          Group” <advanced_zone_config.html#adding-a-security-group>`_.
+                          Group” <networking_and_traffic.html#adding-a-security-group>`_.
       =================== ============================================================================ ============= =============
 
 
