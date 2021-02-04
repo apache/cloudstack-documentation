@@ -60,7 +60,7 @@ account. Isolated networks have the following properties.
    entire network
 
 For more information, see `“Configure Guest Traffic in an Advanced Zone” 
-<networking2.html#configure-guest-traffic-in-an-advanced-zone>`_.
+<networking_and_traffic.html#configure-guest-traffic-in-an-advanced-zone>`_.
 
 
 Shared Networks
@@ -85,7 +85,7 @@ Basic zones in CloudStack 3.0.3 and later versions.
 -  Source NAT per zone is not supported in Shared Network when the
    service provider is virtual router. However, Source NAT per account
    is supported. For information, see `“Configuring a Shared Guest 
-   Network” <networking2.html#configuring-a-shared-guest-network>`_.
+   Network” <networking_and_traffic.html#configuring-a-shared-guest-network>`_.
 
 
 L2 Networks
@@ -271,7 +271,7 @@ To create a network offering:
       or not. The network that you can provision without having to
       deploy a VM on it is termed persistent network. For more
       information, see `“Persistent
-      Networks” <networking2.html#persistent-networks>`_.
+      Networks” <networking_and_traffic.html#persistent-networks>`_.
 
    -  **Specify VLAN**. (Isolated guest networks only) Indicate whether
       a VLAN could be specified when this offering is used. If you
@@ -284,7 +284,7 @@ To create a network offering:
       isolated part of CloudStack. A VPC can have its own virtual
       network topology that resembles a traditional physical network.
       For more information on VPCs, see `“About Virtual
-      Private Clouds” <networking2.html#about-virtual-private-clouds>`_.
+      Private Clouds” <networking_and_traffic.html#about-virtual-private-clouds>`_.
 
    -  **Supported Services**. Select one or more of the possible network
       services. For some services, you must also choose the service
@@ -302,8 +302,10 @@ To create a network offering:
       =================== ============================================================================ ============= =============
       Supported Services  Description                                                                  Isolated      Shared   
       =================== ============================================================================ ============= =============
-      DHCP                For more information, see `“DNS and DHCP” <networking2.html#dns-and-dhcp>`_. Supported     Supported
-      DNS                 For more information, see `“DNS and DHCP” <networking2.html#dns-and-dhcp>`_. Supported     Supported
+      DHCP                For more information, see `“DNS and                                          Supported     Supported
+                          DHCP” <networking_and_traffic.html#dns-and-dhcp>`_.
+      DNS                 For more information, see `“DNS and                                          Supported     Supported
+                          DHCP”  <networking_and_traffic.html#dns-and-dhcp>`_.
       Load Balancer       If you select Load Balancer, you can choose the CloudStack virtual           Supported     Supported
                           router or any other load balancers that have been configured in
                           the cloud.
@@ -318,13 +320,13 @@ To create a network offering:
                           virtual router or any other Port Forwarding providers that have
                           been configured in the cloud.
       VPN                 For more information, see `“Remote Access                                    Supported     Not Supported
-                          VPN” <networking2.html#remote-access-vpn>`_.
+                          VPN” <networking_and_traffic.html#remote-access-vpn>`_.
       User Data           For more information, see `“User Data and Meta                               Not Supported Supported
                           Data” <api.html#user-data-and-meta-data>`_.
-      Network ACL         For more information, see `“Configuring Network Access                       Supported     Not Supported
-                          Control List” <networking2.html#configuring-network-access-control-list>`_.
+      Network ACL         For more information, see `“Configuring Network Access Control List          Supported     Not Supported
+                          ” <networking_and_traffic.html#configuring-network-access-control-list>`_.
       Security Groups     For more information, see `“Adding a Security                                Not Supported Supported
-                          Group” <networking2.html#adding-a-security-group>`_.
+                          Group” <networking_and_traffic.html#adding-a-security-group>`_.
       =================== ============================================================================ ============= =============
 
 
@@ -385,7 +387,7 @@ To create a network offering:
       -  Elastic IP is enabled.
 
       For information on Elastic IP, see `“About Elastic IP” 
-      <networking2.html#about-elastic-ip>`_.
+      <advanced_zone_config.html#about-elastic-ip>`_.
 
    -  **Redundant router capability**: Available only when Virtual
       Router is selected as the Source NAT provider. Select this option

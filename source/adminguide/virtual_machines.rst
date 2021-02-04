@@ -58,7 +58,7 @@ IP and the guest VM’s private IP. The VM’s original IP address is then
 released and returned to the pool of available public IPs. Optionally,
 you can also decide not to allocate a public IP to a VM in an
 EIP-enabled Basic zone. For more information on Elastic IP, see
-`“About Elastic IP” <networking2.html#about-elastic-ip>`_.
+`“About Elastic IP” <networking/elastic_ips.html>`_.
 
 CloudStack cannot distinguish a guest VM that was shut down by the user
 (such as with the “shutdown” command in Linux) from a VM that shut down
@@ -227,7 +227,7 @@ To access a VM directly over the network:
    allows incoming traffic. This depends on what security group you
    picked when creating the VM. In other cases, you can open a port by
    setting up a port forwarding policy. See `“IP
-   Forwarding and Firewalling” <networking2.html#ip-forwarding-and-firewalling>`_.
+   Forwarding and Firewalling” <advanced_zone_config.html#ip-forwarding-and-firewalling>`_.
 
 #. If a port is open but you can not access the VM using ssh, it’s
    possible that ssh is not already enabled on the VM. This will depend
@@ -237,7 +237,7 @@ To access a VM directly over the network:
 
 #. If the network has an external firewall device, you will need to
    create a firewall rule to allow access. See `“IP
-   Forwarding and Firewalling” <networking2.html#ip-forwarding-and-firewalling>`_.
+   Forwarding and Firewalling” <advanced_zone_config.html#ip-forwarding-and-firewalling>`_.
 
 
 Stopping and Starting VMs
