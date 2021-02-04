@@ -344,7 +344,7 @@ The following table explains how a VM name is displayed in different scenarios.
 ======================== ============================ =========================== =========================== ===========================
 
 ================== ==================== ============ ============== ================== ============================ ============================
-User-Provided Name vm.instancename.flag User         Display Name   Hostname on the VM Name on vCenter              Internal Name
+User-Provided Name vm.instancename.flag Name         Display Name   Hostname on the VM Name on vCenter              Internal Name
 ================== ==================== ============ ============== ================== ============================ ============================
 Yes                True                 <Name>       <Display name> <Name>             i-<user\_id>-<vm\_id>-<Name> i-<user\_id>-<vm\_id>-<Name>
 No                 True                 <i.n>-<UUID> <i.n>-<UUID>   <i.n>-<UUID>       <i.n>-<UUID>                 i-<user\_id>-<vm\_id>-<i.n>
