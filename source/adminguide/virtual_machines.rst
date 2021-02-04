@@ -38,8 +38,8 @@ names can be controlled by the user:
 
 .. note:: 
    You can append the display name of a guest VM to its internal name. 
-   For more information, see `“Appending a Display Name to the Guest VM’s 
-   Internal Name” <#appending-a-display-name-to-the-guest-vms-internal-name>`_.
+   For more information, see `“Appending a Name to the Guest VM’s
+   Internal Name” <#appending-a-name-to-the-guest-vms-internal-name>`_.
 
 Guest VMs can be configured to be Highly Available (HA). An HA-enabled
 VM is monitored by the system. If the system detects that the VM is
@@ -342,15 +342,6 @@ The following table explains how a VM name is displayed in different scenarios.
 **Name on vCenter**      i-<user\_id>-<vm\_id>-<Name> <i.n>-<UUID>                i-<user\_id>-<vm\_id>-<i.n> i-<user\_id>-<vm\_id>-<i.n>
 **Internal Name**        i-<user\_id>-<vm\_id>-<Name> i-<user\_id>-<vm\_id>-<i.n> i-<user\_id>-<vm\_id>-<i.n> i-<user\_id>-<vm\_id>-<i.n>
 ======================== ============================ =========================== =========================== ===========================
-
-================== ==================== ============ ============== ================== ============================ ============================
-User-Provided Name vm.instancename.flag Name         Display Name   Hostname on the VM Name on vCenter              Internal Name
-================== ==================== ============ ============== ================== ============================ ============================
-Yes                True                 <Name>       <Display name> <Name>             i-<user\_id>-<vm\_id>-<Name> i-<user\_id>-<vm\_id>-<Name>
-No                 True                 <i.n>-<UUID> <i.n>-<UUID>   <i.n>-<UUID>       <i.n>-<UUID>                 i-<user\_id>-<vm\_id>-<i.n>
-Yes                False                <Name>       <Display name> <Name>             i-<user\_id>-<vm\_id>-<i.n>  i-<user\_id>-<vm\_id>-<i.n>
-No                 False                <i.n>-<UUID> <i.n>-<UUID>   <i.n>-<UUID>       i-<user\_id>-<vm\_id>-<i.n>  i-<user\_id>-<vm\_id>-<i.n>
-================== ==================== ============ ============== ================== ============================ ============================
 
    .. note::
       <i.n> represents the value of global configuration - instance.name
