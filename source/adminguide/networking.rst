@@ -323,8 +323,8 @@ To create a network offering:
                           VPN” <networking_and_traffic.html#remote-access-vpn>`_.
       User Data           For more information, see `“User Data and Meta                               Not Supported Supported
                           Data” <api.html#user-data-and-meta-data>`_.
-      Network ACL         For more information, see `“Configuring Network Access Control               Supported     Not Supported
-                          List” <networking_and_traffic.html#configuring-network-access-control-list>`_.
+      Network ACL         For more information, see `“Configuring Network Access Control List          Supported     Not Supported
+                          ” <networking_and_traffic.html#configuring-network-access-control-list>`_.
       Security Groups     For more information, see `“Adding a Security                                Not Supported Supported
                           Group” <networking_and_traffic.html#adding-a-security-group>`_.
       =================== ============================================================================ ============= =============
