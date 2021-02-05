@@ -387,7 +387,7 @@ To create a network offering:
       -  Elastic IP is enabled.
 
       For information on Elastic IP, see `“About Elastic IP” 
-      <advanced_zone_config.html#about-elastic-ip>`_.
+      <networking/elastic_ips.html>`_.
 
    -  **Redundant router capability**: Available only when Virtual
       Router is selected as the Source NAT provider. Select this option
