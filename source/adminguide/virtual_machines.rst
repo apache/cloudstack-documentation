@@ -38,7 +38,7 @@ names can be controlled by the user:
 
 .. note:: 
    You can append the display name of a guest VM to its internal name. 
-   For more information, see `“Appending a Name to the Guest VM’s
+   For more information, see `“Appending a Name to the Guest VM’s 
    Internal Name” <#appending-a-name-to-the-guest-vms-internal-name>`_.
 
 Guest VMs can be configured to be Highly Available (HA). An HA-enabled
@@ -344,7 +344,7 @@ The following table explains how a VM name is displayed in different scenarios.
 ======================== ============================ =========================== =========================== ===========================
 
    .. note::
-      <i.n> represents the value of global configuration - instance.name
+      <i.n> represents the value of the global configuration - instance.name
 
 
 Changing the Service Offering for a VM
