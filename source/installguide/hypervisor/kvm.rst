@@ -355,7 +355,10 @@ cloudstack-agent and should already be installed.
    .. parsed-literal::
 
       $ service libvirt-bin restart
-
+      
+.. note::
+   Please note that Cloudstack will automatically perform basic configuration of the agent and libvirt when the host is added. This is relevant if you are 
+   planning to automate the deployment and configuration of your KVM hosts.
 
 Configure the Security Policies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
