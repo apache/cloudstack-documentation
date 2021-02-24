@@ -219,7 +219,9 @@ Upgrade Hypervisors
 Hypervisor: XenServer
 #####################
 
-
+Some XenServer/XCP-ng environments may hit a `VBD eject issue with systemvm.iso
+<https://github.com/apache/cloudstack/pull/4525>`_ where the admin needs to
+destroy all systemvms (CPVM, SSVM) before restarting networks with cleanup.
 No additional steps are required for XenServer Hypervisor for this upgrade.
 
 
