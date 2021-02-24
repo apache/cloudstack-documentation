@@ -13,10 +13,411 @@
    specific language governing permissions and limitations
    under the License.
 
+Changes in |release| since 4.14.0.0
+===================================
+
+Apache CloudStack uses GitHub <https://github.com/apache/cloudstack/milestone/15?closed=1>`_ 
+to track its issues.
+
+.. cssclass:: table-striped table-bordered table-hover
 
 
-Changes in |release| since 4.13
-===============================
++-------------------------+----------+------------------------------------------------------------+
+| Version                 | Github   | Description                                                |
++=========================+==========+============================================================+
+| 4.14.1.0                | `#4562`_ | Prevent KVM from performing volume migrations of running   |
+|                         |          | instances                                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4651`_ | marvin: fix test failures when changing service offering   |
+|                         |          | of a VM                                                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4627`_ | VR: fix expunging vm will remove dhcp entries of another   |
+|                         |          | vm in VR                                                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4650`_ | test: hardware required for changeserviceoffering          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4653`_ | Update cloud-setup-databases.in - help message fix         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4655`_ | test: fix checksums for test template                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4601`_ | server: Get vm network/disk statistics and update database |
+|                         |          | per host                                                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4623`_ | server: Fix update capacity for hosts take long time if    |
+|                         |          | there are many service offerings                           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4629`_ | server: prevent update vm read-only details                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4591`_ | server: select root disk based on user input during vm     |
+|                         |          | import                                                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4576`_ | Fix: Use Q35 chipset for UEFI x86_64                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4624`_ | server: fix wrong error message when create isolated       |
+|                         |          | network without SourceNat                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4622`_ | server: add possibility to scale vm to current custom      |
+|                         |          | offerings on UI                                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4602`_ | server: keep networks order and ips while move a vm with   |
+|                         |          | multiple networks                                          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4625`_ | server: throw exception when update vm nic on L2 network   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4633`_ | doc: fix typo in install notes                             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4600`_ | server: fix cannot create vm if another vm with same name  |
+|                         |          | has been added and removed on the network                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4491`_ | fix on changeServiceForVirtualMachine when updating        |
+|                         |          | read/write rate                                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4621`_ | Fixed typo                                                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4580`_ | engine/schema: add upgrade path from 4.14.0.0 to 4.14.1.0  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4557`_ | Fixed instance creation failure on dvswitch when using     |
+|                         |          | vlan id 4095                                               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4529`_ | vr: Ensuring dnsmasq.leases file is populated              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4533`_ | db upgrade: use "create or replace view" instead of "alter |
+|                         |          | view"                                                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4532`_ | apidoc issue                                               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4527`_ | kvm: set cpu topology only if cpucore per socket is set    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4497`_ | kvm: FIX cpucorespersocket is not working on KVM           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4507`_ | Fix failure in validating IP address in case of multiple   |
+|                         |          | Management Servers                                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4501`_ | Disallowing udp for lb rules for haproxy                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4499`_ | Adding cpuallocated percentage and value to host and       |
+|                         |          | hostsformigrationresponse                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4496`_ | kvm: fix router.aggregation.command.each.timeout is reset  |
+|                         |          | to 600 when update other kvm configs                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4495`_ | fix failures with test_multiple_nic_support.py             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4500`_ | Fix hosts for migration count                              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4489`_ | vr: fix python exception when configure VRs                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4467`_ | vpc: fix ips on wrong interfaces after rebooting vpc vrs   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4478`_ | Adding memoryallocatedpercentage & memoryallocatedbytes to |
+|                         |          | HostsResponse & HostsForMigrationResponse                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4466`_ | VR: fix logging is not working and logs are not appended   |
+|                         |          | to /var/log/cloud.log                                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4458`_ | Fix k8s cluster upgrade in shared networks                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4487`_ | accountresponse: Fix domainpath description                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4459`_ | createkubertetesbinariesiso: Saving images in network and  |
+|                         |          | dashboard yaml                                             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4485`_ | Fixing misleading HostMetricsResponse param description    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4461`_ | Fix destroying k8s cluster on shared networks              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4464`_ | Fix IndexOutOfBoundsException when creating basic network  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4442`_ | Preventing port 53 being added as lb rule when dns service |
+|                         |          | is availab…                                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4430`_ | FIX issue in VR if remote access vpn is enabled            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4388`_ | fix NPE in volumes statistics                              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4435`_ | server: fix format error with memorywithoverprovisioning   |
+|                         |          | in list hosts response                                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4429`_ | FIX s2svpn connection stuck on Pending state               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4359`_ | Failed to update host password if username/password is not |
+|                         |          | saved in db                                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4432`_ | Unable to create snapshot from vm snapshot                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#3945`_ | server: update template to another template type           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4367`_ | Remove cpu core from op_host_capacity when host is deleted |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4413`_ | systemvm: fix proc.find in CsProcess.py                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4193`_ | Fix usage record count                                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4412`_ | Validating type parameter and including all types          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4407`_ | packaging: enable Parallel Collector GC for management     |
+|                         |          | server                                                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4377`_ | server: fix issue that vm guest os type is reset after     |
+|                         |          | updatetemplate                                             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4381`_ | kvm: fix wrong VM CPU usage                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4404`_ | scalekubernetesclustercmd: Making id a required field [NPE |
+|                         |          | Fix]                                                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4383`_ | Host is counted twice if it has multiple host tags in      |
+|                         |          | Prometheus exporter                                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4373`_ | Handles creation /var/run/cloud folder for creation of     |
+|                         |          | lock file while modifyvxlan.sh script is run               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4376`_ | server: Fix some cpuspeed issues while create service      |
+|                         |          | offering                                                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4269`_ | cks: assorted fixes, test refactoring                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4338`_ | server: check guest os preference of last host when start  |
+|                         |          | a vm                                                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4190`_ | Broadcast URI not set to vxlan, but vlan (Fix #3040)       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4328`_ | vmware: search unmanaged instances using hypervisor name   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4335`_ | agent: Compare indirect agent lb algorithm when cloudstack |
+|                         |          | agent conn…                                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4319`_ | Fix "data-server" dns entry in /etc/hosts after a new      |
+|                         |          | deployment                                                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4297`_ | Incorrect md5sums for systemVM templates results in        |
+|                         |          | failure to download templates to other image stores        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4291`_ | Manage influxDB Batches avoiding OutOfMemory Exception     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#3996`_ | UI: Hide cpuspeed for custom constrained offering          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#3902`_ | vrouter: Save PlaceHolder nic for VR if network does not   |
+|                         |          | have source nat                                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4288`_ | client: explicitly define SslContextFactory::Server for    |
+|                         |          | https                                                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4274`_ | engine: honour bypass VLAN id/range for L2 networks        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4219`_ | iscsi session cleanup now configurable, filters iscsi      |
+|                         |          | partitions                                                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4275`_ | Display hypervisor type for VM snapshot                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4213`_ | Search vm snapshots using tags                             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4260`_ | cks: fix for null hypervisor type                          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4016`_ | Fixed private gateway can't be deleted                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4253`_ | Fix sed command failure in Mac OS.                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4019`_ | server: Move restoreVM to vm work job queue                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4220`_ | Fix cpuallocated value in findHostsForMIgration api        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4225`_ | vmware: volume utilisation is always zero                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4000`_ | vm: Reset deviceId to fix missing nic with vm              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4116`_ | cks: fix template, deployment issues                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#3952`_ | vrouter: remove a POSTROUTING rule for port forwarding in  |
+|                         |          | VPC router                                                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4214`_ | Bug fixes for primate                                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4226`_ | Removed check on SSLEngine client mode                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4188`_ | Fix snapshots garbage collection                           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4138`_ | Fixed incorrect error message on invalid template type     |
+|                         |          | download                                                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4176`_ | server: Purge all cookies on logout, set /client path on   |
+|                         |          | login                                                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4202`_ | server: don't export B&R APIs if feature is not enabled    |
+|                         |          | globally                                                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4186`_ | Adding pagination for quotaSummary and quotaTariffList     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4001`_ | server: Dedicated hosts should be 'Not Suitable' while     |
+|                         |          | find host for m migration                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4148`_ | server: Do not resize volume of running vm on KVM host if  |
+|                         |          | host is not Up or not Enabled                              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4171`_ | vr: fix backup router health check                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4167`_ | Adding missing fields to API responses                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4164`_ | Adding listall to listLdapConfigurations                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4154`_ | server: fix for wrong affinity group count                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4004`_ | Fixed null pointer and deployment issue on Xenserver with  |
+|                         |          | L2 Guest network with configDrive                          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4132`_ | Fix delete network with no services                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4145`_ | Fixing listVirtualMachinesMetrics to extend ListVMsCmd     |
+|                         |          | instead of ListVMsCmdByAdmin                               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4140`_ | Adding showunique parameter to list templates and isos     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4007`_ | Restarting all networks that needs a restart in a VPC      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4121`_ | server: fix TransactionLegacy DB connection leaks due to   |
+|                         |          | DB switching by B&R thread                                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#3991`_ | Multiple dynamic VM Scaling APIs can create duplicate      |
+|                         |          | usage events for the same time                             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4130`_ | Fixed null pointer after deleting snapshot, GC and cross   |
+|                         |          | cluster vm migration on XCP-NG                             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#3949`_ | Fix: catch CloudRuntimeException in                        |
+|                         |          | LibvirtGetVolumeStatsCommandWrapper.java                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4142`_ | Invalid character encountered in file ui/l10n/pt_BR.js at  |
+|                         |          | line 1134 for encoding UTF-8.                              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#3965`_ | server: Honor vm.destroy.forcestop when expunge a vm       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4079`_ | Fixed HA migrated storage error                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4062`_ | [VMware] Cannot migrate VM on PVLAN shared network         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4123`_ | Improved kvmvmactivitycheck.sh output                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.14.1.0                | `#4124`_ | Missing python3 libvirt bindings                           |
++-------------------------+----------+------------------------------------------------------------+
+
+113 Issues listed
+
+.. _`#4562`: https://github.com/apache/cloudstack/pull/4562 
+.. _`#4651`: https://github.com/apache/cloudstack/pull/4651 
+.. _`#4627`: https://github.com/apache/cloudstack/pull/4627 
+.. _`#4650`: https://github.com/apache/cloudstack/pull/4650 
+.. _`#4653`: https://github.com/apache/cloudstack/pull/4653 
+.. _`#4655`: https://github.com/apache/cloudstack/pull/4655 
+.. _`#4601`: https://github.com/apache/cloudstack/pull/4601 
+.. _`#4623`: https://github.com/apache/cloudstack/pull/4623 
+.. _`#4629`: https://github.com/apache/cloudstack/pull/4629 
+.. _`#4591`: https://github.com/apache/cloudstack/pull/4591 
+.. _`#4576`: https://github.com/apache/cloudstack/pull/4576 
+.. _`#4624`: https://github.com/apache/cloudstack/pull/4624 
+.. _`#4622`: https://github.com/apache/cloudstack/pull/4622 
+.. _`#4602`: https://github.com/apache/cloudstack/pull/4602 
+.. _`#4625`: https://github.com/apache/cloudstack/pull/4625 
+.. _`#4633`: https://github.com/apache/cloudstack/pull/4633 
+.. _`#4600`: https://github.com/apache/cloudstack/pull/4600 
+.. _`#4491`: https://github.com/apache/cloudstack/pull/4491 
+.. _`#4621`: https://github.com/apache/cloudstack/pull/4621 
+.. _`#4580`: https://github.com/apache/cloudstack/pull/4580 
+.. _`#4557`: https://github.com/apache/cloudstack/pull/4557 
+.. _`#4529`: https://github.com/apache/cloudstack/pull/4529 
+.. _`#4533`: https://github.com/apache/cloudstack/pull/4533 
+.. _`#4532`: https://github.com/apache/cloudstack/pull/4532 
+.. _`#4527`: https://github.com/apache/cloudstack/pull/4527 
+.. _`#4497`: https://github.com/apache/cloudstack/pull/4497 
+.. _`#4507`: https://github.com/apache/cloudstack/pull/4507 
+.. _`#4501`: https://github.com/apache/cloudstack/pull/4501 
+.. _`#4499`: https://github.com/apache/cloudstack/pull/4499 
+.. _`#4496`: https://github.com/apache/cloudstack/pull/4496 
+.. _`#4495`: https://github.com/apache/cloudstack/pull/4495 
+.. _`#4500`: https://github.com/apache/cloudstack/pull/4500 
+.. _`#4489`: https://github.com/apache/cloudstack/pull/4489 
+.. _`#4467`: https://github.com/apache/cloudstack/pull/4467 
+.. _`#4478`: https://github.com/apache/cloudstack/pull/4478 
+.. _`#4466`: https://github.com/apache/cloudstack/pull/4466 
+.. _`#4458`: https://github.com/apache/cloudstack/pull/4458 
+.. _`#4487`: https://github.com/apache/cloudstack/pull/4487 
+.. _`#4459`: https://github.com/apache/cloudstack/pull/4459 
+.. _`#4485`: https://github.com/apache/cloudstack/pull/4485 
+.. _`#4461`: https://github.com/apache/cloudstack/pull/4461 
+.. _`#4464`: https://github.com/apache/cloudstack/pull/4464 
+.. _`#4442`: https://github.com/apache/cloudstack/pull/4442 
+.. _`#4430`: https://github.com/apache/cloudstack/pull/4430 
+.. _`#4388`: https://github.com/apache/cloudstack/pull/4388 
+.. _`#4435`: https://github.com/apache/cloudstack/pull/4435 
+.. _`#4429`: https://github.com/apache/cloudstack/pull/4429 
+.. _`#4359`: https://github.com/apache/cloudstack/pull/4359 
+.. _`#4432`: https://github.com/apache/cloudstack/pull/4432 
+.. _`#3945`: https://github.com/apache/cloudstack/pull/3945 
+.. _`#4367`: https://github.com/apache/cloudstack/pull/4367 
+.. _`#4413`: https://github.com/apache/cloudstack/pull/4413 
+.. _`#4193`: https://github.com/apache/cloudstack/pull/4193 
+.. _`#4412`: https://github.com/apache/cloudstack/pull/4412 
+.. _`#4407`: https://github.com/apache/cloudstack/pull/4407 
+.. _`#4377`: https://github.com/apache/cloudstack/pull/4377 
+.. _`#4381`: https://github.com/apache/cloudstack/pull/4381 
+.. _`#4404`: https://github.com/apache/cloudstack/pull/4404 
+.. _`#4383`: https://github.com/apache/cloudstack/pull/4383 
+.. _`#4373`: https://github.com/apache/cloudstack/pull/4373 
+.. _`#4376`: https://github.com/apache/cloudstack/pull/4376 
+.. _`#4269`: https://github.com/apache/cloudstack/pull/4269 
+.. _`#4338`: https://github.com/apache/cloudstack/pull/4338 
+.. _`#4190`: https://github.com/apache/cloudstack/pull/4190 
+.. _`#4328`: https://github.com/apache/cloudstack/pull/4328 
+.. _`#4335`: https://github.com/apache/cloudstack/pull/4335 
+.. _`#4319`: https://github.com/apache/cloudstack/pull/4319 
+.. _`#4297`: https://github.com/apache/cloudstack/pull/4297 
+.. _`#4291`: https://github.com/apache/cloudstack/pull/4291 
+.. _`#3996`: https://github.com/apache/cloudstack/pull/3996 
+.. _`#3902`: https://github.com/apache/cloudstack/pull/3902 
+.. _`#4288`: https://github.com/apache/cloudstack/pull/4288 
+.. _`#4274`: https://github.com/apache/cloudstack/pull/4274 
+.. _`#4219`: https://github.com/apache/cloudstack/pull/4219 
+.. _`#4275`: https://github.com/apache/cloudstack/pull/4275 
+.. _`#4213`: https://github.com/apache/cloudstack/pull/4213 
+.. _`#4260`: https://github.com/apache/cloudstack/pull/4260 
+.. _`#4016`: https://github.com/apache/cloudstack/pull/4016 
+.. _`#4253`: https://github.com/apache/cloudstack/pull/4253 
+.. _`#4019`: https://github.com/apache/cloudstack/pull/4019 
+.. _`#4220`: https://github.com/apache/cloudstack/pull/4220 
+.. _`#4225`: https://github.com/apache/cloudstack/pull/4225 
+.. _`#4000`: https://github.com/apache/cloudstack/pull/4000 
+.. _`#4116`: https://github.com/apache/cloudstack/pull/4116 
+.. _`#3952`: https://github.com/apache/cloudstack/pull/3952 
+.. _`#4214`: https://github.com/apache/cloudstack/pull/4214 
+.. _`#4226`: https://github.com/apache/cloudstack/pull/4226 
+.. _`#4188`: https://github.com/apache/cloudstack/pull/4188 
+.. _`#4138`: https://github.com/apache/cloudstack/pull/4138 
+.. _`#4176`: https://github.com/apache/cloudstack/pull/4176 
+.. _`#4202`: https://github.com/apache/cloudstack/pull/4202 
+.. _`#4186`: https://github.com/apache/cloudstack/pull/4186 
+.. _`#4001`: https://github.com/apache/cloudstack/pull/4001 
+.. _`#4148`: https://github.com/apache/cloudstack/pull/4148 
+.. _`#4171`: https://github.com/apache/cloudstack/pull/4171 
+.. _`#4167`: https://github.com/apache/cloudstack/pull/4167 
+.. _`#4164`: https://github.com/apache/cloudstack/pull/4164 
+.. _`#4154`: https://github.com/apache/cloudstack/pull/4154 
+.. _`#4004`: https://github.com/apache/cloudstack/pull/4004 
+.. _`#4132`: https://github.com/apache/cloudstack/pull/4132 
+.. _`#4145`: https://github.com/apache/cloudstack/pull/4145 
+.. _`#4140`: https://github.com/apache/cloudstack/pull/4140 
+.. _`#4007`: https://github.com/apache/cloudstack/pull/4007 
+.. _`#4121`: https://github.com/apache/cloudstack/pull/4121 
+.. _`#3991`: https://github.com/apache/cloudstack/pull/3991 
+.. _`#4130`: https://github.com/apache/cloudstack/pull/4130 
+.. _`#3949`: https://github.com/apache/cloudstack/pull/3949 
+.. _`#4142`: https://github.com/apache/cloudstack/pull/4142 
+.. _`#3965`: https://github.com/apache/cloudstack/pull/3965 
+.. _`#4079`: https://github.com/apache/cloudstack/pull/4079 
+.. _`#4062`: https://github.com/apache/cloudstack/pull/4062 
+.. _`#4123`: https://github.com/apache/cloudstack/pull/4123 
+.. _`#4124`: https://github.com/apache/cloudstack/pull/4124
+
+Changes in 4.14.0.0 since 4.13
+==============================
 
 Apache CloudStack uses GitHub <https://github.com/apache/cloudstack/issues>`_ 
 to track its issues.

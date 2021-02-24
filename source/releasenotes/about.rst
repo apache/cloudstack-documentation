@@ -17,6 +17,12 @@
 What's New in |release|
 =======================
 
+Apache CloudStack |release| is a 4.14 LTS minor release with over 100 fixes and
+improvements since the 4.14.0.0 release.
+
+What's New in 4.14.0.0
+======================
+
 Apache CloudStack |release| is a |version| LTS release with over 15 major new features, and
 over 200 enhancements and fixes since 4.13.  Highlights include:
 
@@ -32,7 +38,6 @@ over 200 enhancements and fixes since 4.13.  Highlights include:
 •	VR health checks
 •	Download logs and diagnostics data from SSVM/CPVM/VRs
 •	Enable additional configuration metadata to virtual machines
-
 
 The full list of new features can be found in the project release notes at
 http://docs.cloudstack.apache.org/en/4.14.0.0/releasenotes/changes.html
@@ -76,5 +81,3 @@ release of the new UI. It will also be the last version of CloudStack to ship wi
 release will also have the final deprecation notice for the old UI.
 
 In the following release (likely to be 4.16), the old UI will be deprecated.
-
-Please see `Primate install guide <../installguide/primate.html>`_
