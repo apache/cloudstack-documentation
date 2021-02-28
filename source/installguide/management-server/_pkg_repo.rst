@@ -49,6 +49,9 @@ To add the CloudStack repository, create
 ``/etc/yum.repos.d/cloudstack.repo`` and insert the following
 information.
 
+At the moment faulty - not able to connect to https site
+
+
 .. parsed-literal::
 
    [cloudstack]

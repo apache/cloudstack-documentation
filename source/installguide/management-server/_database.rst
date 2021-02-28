@@ -22,8 +22,9 @@ node, you can install the MySQL server locally. For an installation that
 has multiple management server nodes, we assume the MySQL database also
 runs on a separate node.
 
-CloudStack has been tested with MySQL 5.1 and 5.5. These versions are
-included in RHEL/CentOS and Ubuntu.
+CloudStack has been tested with MySQL 5.1 ,5.5 and 8.0. The versions 5.1
+and 5.5 are included in RHEL/CentOS and Ubuntu.
+For MySQL 8.0 please refer to the offical / community repositories of the product.
 
 
 Install the Database on the Management Server Node
@@ -292,6 +293,9 @@ same node for MySQL. See `â€œInstall the Database on the Management Server Nodeâ
    .. parsed-literal::
 
       sudo service mysql restart
+	  
+	.. note::
+	Before performing a reboot please check if mysql is configured to start automatically.
 
 #. (CentOS and RHEL only; not required on Ubuntu)
 
@@ -391,6 +395,4 @@ same node for MySQL. See `â€œInstall the Database on the Management Server Nodeâ
       On RHEL and CentOS systems, firewalld (installed by default) will override all 
       iptables rules set by the cloudstack-setup-management script, 
       so ensure that the firewalld is disabled or ensure the correct firewalld rules
-      are in place to allow traffic to ports 8080, 8250 and 9090 to the management server.
-      
-   
+      are in place to allow traffic to ports 8080, 8250, 8443 and 9090 to the management server.	  

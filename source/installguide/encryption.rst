@@ -54,6 +54,9 @@ must be in a file in a known location. If the encryption type is set to
 com.cloud.utils.crypt.EncryptionSecretKeySender, which relays the key to
 the Management Server over a known port.
 
+Needs some more information about actual usage. web seems to be broken. File works but how and where to store? When is it needed?
+
+
 The encryption type, database secret key, and Management Server secret
 key are set during CloudStack installation. They are all parameters to
 the CloudStack database setup script (cloudstack-setup-databases). The
