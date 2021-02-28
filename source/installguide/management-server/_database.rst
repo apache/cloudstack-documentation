@@ -294,6 +294,9 @@ same node for MySQL. See `â€œInstall the Database on the Management Server Nodeâ
 
       sudo service mysql restart
 
+	.. note::
+	Before performing a reboot of the management server please check if mysql is configured to start automatically.
+	
 #. (CentOS and RHEL only; not required on Ubuntu)
 
    .. warning::
