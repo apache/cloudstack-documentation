@@ -289,7 +289,15 @@ cloudstack-agent and should already be installed.
 #. Turning on "listen\_tcp" in libvirtd.conf is not enough, we have to
    change the parameters as well:
 
-      On Ubuntu 14.04: modify ``/etc/default/libvirt-bin``
+   On RHEL or CentOS modify ``/etc/sysconfig/libvirtd``:
+
+   Uncomment the following line:
+
+   .. parsed-literal::
+
+      #LIBVIRTD_ARGS="--listen"
+
+   On Ubuntu 14.04: modify ``/etc/default/libvirt-bin``
 
    Add "-l" to the following line
 
