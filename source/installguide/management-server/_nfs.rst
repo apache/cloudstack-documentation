@@ -237,12 +237,34 @@ operating system version.
    #. Log back in to the hypervisor host and try to mount the /export
       directories. For example, substitute your own management server
       name:
+	
+		#. Creat directories for testing.
+			
+			..parsed-literal::
+			
+			 mkdir /primary /secondary
+		
+		#. Mount the NFS shares.
+		
+			.. parsed-literal::
+			
+			 mount -t nfs <management-server-name>:/export/primary /primary
+			 mount -t nfs <management-server-name>:/export/secondary /secondary
+		
+		#. Verify that the shares are mounted correctly.
 
-      .. parsed-literal::
+			.. parsed-literal::
+			
+			 findmnt -lo source,target,fstype | grep nfs
+			 
+		#. Unmount the NFS shares.
 
-         mkdir /primary
-         mount -t nfs <management-server-name>:/export/primary
-         umount /primary
-         mkdir /secondary
-         mount -t nfs <management-server-name>:/export/secondary
-         umount /secondary
+			.. parsed-literal::
+			
+			 umount /primary /secondary
+		
+		#.	Remove the beforehand created directories.
+
+			.. parsed-literal::
+			
+			 rm -rf /primary /secondary
