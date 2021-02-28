@@ -13,13 +13,6 @@
    specific language governing permissions and limitations
    under the License.
 
-Prerequisites
---------
-Installation is performed using CentOS Stream 8 installed in the standard Server
-with GUI configuration. Other configurations should be suitable as long as the 
-need functionalitys are availeable.
-
-
 Overview
 --------
 

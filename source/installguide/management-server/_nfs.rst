@@ -151,14 +151,13 @@ operating system version.
       exportfs -a
 
 #. Edit the /etc/sysconfig/nfs file.
-At least for centos8 this needs to be created as it isn't availeabel
 
    .. parsed-literal::
 
       vi /etc/sysconfig/nfs
 
    Uncomment the following lines:
-or add into previously created file
+
    .. parsed-literal::
 
       LOCKD_TCPPORT=32803
@@ -222,8 +221,6 @@ or add into previously created file
 #. It is recommended that you test to be sure the previous steps have
    been successful.
 
-Mark this as optional as it seems a part of the guide
-
    #. Log in to the hypervisor host.
 
    #. Be sure NFS and rpcbind are running. The commands might be
@@ -236,24 +233,16 @@ Mark this as optional as it seems a part of the guide
          chkconfig nfs on
          chkconfig rpcbind on
          reboot
-		
-		For CentOS 8
-		systemctl status nfs-server
-		systemctl status rpcbind
-		
+
    #. Log back in to the hypervisor host and try to mount the /export
       directories. For example, substitute your own management server
       name:
 
       .. parsed-literal::
-		 Create directorys for trial:
-         mkdir /primary /secondary
-		 
-		 Mount NFS-directorys into created directorys
-		 mount -t nfs <management-server-name>:/export/primary /primary #command missing
-         mount -t nfs <management-server-name>:/export/secondary		#command missing         
-		 
-		 findmnt -lo source,target,fstype | grep nfs #shows currently mounted ressourcces filtered for nfs-shares
-         
-		 umount /primary /secondary
 
+         mkdir /primary
+         mount -t nfs <management-server-name>:/export/primary
+         umount /primary
+         mkdir /secondary
+         mount -t nfs <management-server-name>:/export/secondary
+         umount /secondary
