@@ -395,6 +395,6 @@ same node for MySQL. See `â€œInstall the Database on the Management Server Nodeâ
       On RHEL and CentOS systems, firewalld (installed by default) will override all 
       iptables rules set by the cloudstack-setup-management script, 
       so ensure that the firewalld is disabled or ensure the correct firewalld rules
-      are in place to allow traffic to ports 8080, 8250 and 9090 to the management server.
+      are in place to allow traffic to ports 8080, 8250, 8443 and 9090 to the management server.
       
    
