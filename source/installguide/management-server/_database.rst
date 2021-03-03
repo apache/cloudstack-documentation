@@ -24,7 +24,7 @@ runs on a separate node.
 
 CloudStack has been tested with MySQL 5.1, 5.5 and 8.0. The versions 5.1
 and 5.5 are included in RHEL/CentOS and Ubuntu.
-For MySQL 8.0 please refer to the offical / community repositories of the product..
+For MySQL 8.0 please refer to the offical / community repositories of the product.
 
 
 Install the Database on the Management Server Node
@@ -295,7 +295,7 @@ same node for MySQL. See `â€œInstall the Database on the Management Server Nodeâ
       sudo service mysql restart
 
 	.. note::
-	Before performing a reboot of the management server please check if mysql is configured to start automatically.
+	Before performing a reboot of the management server please check if MySQL is configured to start automatically.
 	
 #. (CentOS and RHEL only; not required on Ubuntu)
 
