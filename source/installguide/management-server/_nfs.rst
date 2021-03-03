@@ -238,7 +238,7 @@ operating system version.
       directories. For example, substitute your own management server
       name:
 	
-		#. Creat directories for testing.
+		#. Create directories for testing.
 			
 			..parsed-literal::
 			
