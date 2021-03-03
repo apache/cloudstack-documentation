@@ -693,7 +693,7 @@ Make sure it looks similar to:
    TYPE=Ethernet
    BRIDGE=cloudbr0
 
-We now have to configure the second network-interface:
+We now have to configure the second network-interface for use in guest VLANs:
 
 .. parsed-literal::
 
@@ -1124,4 +1124,3 @@ The host is now ready to be added to a cluster. This is covered in a
 later section, see :ref:`adding-a-host`. It is
 recommended that you continue to read the documentation before adding
 the host!
-
