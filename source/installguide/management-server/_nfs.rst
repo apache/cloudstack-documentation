@@ -239,30 +239,30 @@ operating system version.
       name:
 	
 		#. Create directories for testing.
-			
-			..parsed-literal::
+
+			.. parsed-literal::
 			
 			 mkdir /primary /secondary
-		
+			
 		#. Mount the NFS shares.
-		
+
 			.. parsed-literal::
 			
 			 mount -t nfs <management-server-name>:/export/primary /primary
 			 mount -t nfs <management-server-name>:/export/secondary /secondary
-		
+			
 		#. Verify that the shares are mounted correctly.
 
 			.. parsed-literal::
 			
 			 findmnt -lo source,target,fstype | grep nfs
-			 
+			
 		#. Unmount the NFS shares.
 
 			.. parsed-literal::
 			
 			 umount /primary /secondary
-		
+			
 		#.	Remove the beforehand created directories.
 
 			.. parsed-literal::
