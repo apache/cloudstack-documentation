@@ -647,7 +647,7 @@ Network Example for Advanced Networks
 
 In the Advanced networking mode is most common to have (at least) two physical interfaces per hypervior-host.
 We will use the interface eth0 linked to the bridge 'cloudbr0' using the untagged (native) VLAN for hypervisor management.
-Additionally we configure a the second interface for usage with the bridge 'cloudbr1' for public and guest traffic.
+Additionally we configure the second interface for usage with the bridge 'cloudbr1' for public and guest traffic.
 This time there are no VLANs applied by us - CloudStack will add the VLANs as required during actual use.
 
 We again give the Hypervisor the IP-Address 192.168.42.11/24 with
