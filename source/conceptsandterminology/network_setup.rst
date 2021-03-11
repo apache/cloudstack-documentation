@@ -30,6 +30,11 @@ For AWS-style networking. Provides a single network where guest isolation can
 be provided through layer-3 means such as security groups (IP address source 
 filtering).
 
+.. note::
+   Since release of Cloudstack 4.15 "Basic Networking" is deprecated. Instead use
+   "Advanced Networking" and create a "Shared Network" as described in this
+   documentation.
+
 **Advanced**
 For more sophisticated network topologies. This network model provides the 
 most flexibility in defining guest networks, but requires more configuration 
@@ -460,7 +465,7 @@ Using Cisco ASA 1000v Firewall, Cisco Nexus 1000v dvSwitch, and Cisco VNMC in a 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Guidelines
-'''''''''''
+''''''''''
 
 -  Cisco ASA 1000v firewall is supported only in Isolated Guest
    Networks.

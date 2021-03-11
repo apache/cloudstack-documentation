@@ -505,9 +505,7 @@ About Physical Networks
 Part of adding a zone is setting up the physical network. One or (in an
 advanced zone) more physical networks can be associated with each zone.
 The network corresponds to a NIC on the hypervisor host. Each physical
-network can carry one or more types of network traffic. The choices of
-traffic type for each network vary depending on whether you are creating
-a zone with basic networking or advanced networking.
+network can carry one or more types of network traffic.
 
 A physical network is the actual network hardware and wiring in a zone.
 A zone can have multiple physical networks. An administrator can:
@@ -529,6 +527,11 @@ A zone can have multiple physical networks. An administrator can:
 
 Basic Zone Network Traffic Types
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+   Since release of Cloudstack 4.15 "Basic Networking" is deprecated. Instead use
+   "Advanced Networking" and create a "Shared Network" as described in this
+   documentation.
 
 When basic networking is used, there can be only one physical network in
 the zone. That physical network carries the following traffic types:

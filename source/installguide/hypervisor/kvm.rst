@@ -468,6 +468,11 @@ network mode.  Below are a few simple examples.
 Network example for Basic Networks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. note::
+   Since release of Cloudstack 4.15 "Basic Networking" is deprecated. Instead use
+   "Advanced Networking" and create a "Shared Network" as described in this
+   documentation.
+
 In the Basic networking, all of the guests in a given pod will be on the same VLAN/subnet.
 It is common to use the native (untagged) VLAN for the private/management network, so in
 this example we will have two VLANs, one (native) for your private/management network and one
