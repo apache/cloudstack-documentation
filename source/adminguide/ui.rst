@@ -187,6 +187,10 @@ To change the logo, login banner, error page icon, etc. the following details ca
 
 .. parsed-literal::
 
+    "apiBase": "/client/api",
+    "docBase": "http://docs.cloudstack.apache.org/en/latest",
+    "appTitle": "CloudStack",
+    "footer": "Licensed under the <a href='http://www.apache.org/licenses/' target='_blank'>Apache License</a>, Version 2.0.",
     "logo": "assets/logo.svg",
     "banner": "assets/banner.svg",
     "error": {
@@ -196,7 +200,10 @@ To change the logo, login banner, error page icon, etc. the following details ca
     }
 
 where,
-
+- apiBase: changes the suffix for the API endpoint.
+- docBase: changes the base URL for the documentation.
+- appTitle: changes the title of the portal.
+- footer: changes the footer text.
 - logo: changes the logo top-left side image.
 - banner: changes the login banner image.
 - error.404: changes the image of error Page not found.
@@ -273,6 +280,47 @@ Some assorted primary theme colours:
 - Green: #52C41A
 - Purple: #722ED1
 
+Contextual help documentation URLs can be customized with the help of `docBase` and `docHelpMappings` properties.
+A list of documentation help suffixes in code can be obtained using following command:
+
+.. parsed-literal::
+
+   grep -rnw cloudstack/ui/src/config/section -e 'docHelp:'
+
+Below example shows configuration changes for custom documentation help URLs:
+
+.. parsed-literal::
+
+   {
+      ...
+      "docBase": http://mycustomwebsite.com,
+      ...
+      "docHelpMappings": {
+         "adminguide/virtual_machines.html": "custom_vm_page.html",
+         "adminguide/templates.html": "custom_templates_page.html"
+      },
+      ...
+   }
+
+UI also provides option to show custom plugins by displaying a custom HTML page or service in an iframe. Such plugins can be listed in the config file using `plugins` property.
+Example for adding a custom plugin:
+
+.. parsed-literal::
+
+   {
+      ...
+      plugins: [
+         {
+            "name": "ExamplePlugin",
+            "icon": "appstore",
+            "path": "example.html"
+         }
+      ]
+      ...
+   }
+
+|ui-custom-plugin.png|
+
 Advanced Customisation
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -296,3 +344,6 @@ The following features are no longer supported or available:
 
 .. |change-password.png| image:: /_static/images/change-password.png
    :alt: button to change a user's password
+
+.. |ui-custom-plugin.png| image:: /_static/images/ui-custom-plugin.png
+   :alt: Custom plugin shown in UI with navigation
