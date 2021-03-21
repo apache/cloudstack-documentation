@@ -65,8 +65,9 @@ DEB package repository
 ~~~~~~~~~~~~~~~~~~~~~~
 
 You can add a DEB package repository to your apt sources with the
-following commands. Please note that only packages for Ubuntu 16.04 (Xenial) 
-and Ubuntu 18.04 (Bionic) are being built at this time. Ubuntu 14.04 (Trusty) is no longer supported.
+following commands. Please note that only packages for Ubuntu 20.04 (Focal),
+Ubuntu 18.04 (Bionic) and Ubuntu 16.04 (Xenial) are being built at this time.
+Ubuntu 14.04 (Trusty) is no longer supported.
 
 Use your preferred editor and open (or create)
 ``/etc/apt/sources.list.d/cloudstack.list``. Add the community provided
@@ -74,7 +75,7 @@ repository to the file:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu trusty |version|
+   deb http://download.cloudstack.org/ubuntu focal |version|
 
 We now have to add the public key to the trusted keys.
 
