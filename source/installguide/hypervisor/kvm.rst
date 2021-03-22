@@ -147,6 +147,10 @@ To manage KVM instances on the host CloudStack uses a Agent. This Agent
 communicates with the Management server and controls all the instances
 on the host.
 
+.. note::
+   Depending on your distribution you might need to add the corresponding package repository
+   for CloudStack.
+
 First we start by installing the agent:
 
 In RHEL or CentOS:
