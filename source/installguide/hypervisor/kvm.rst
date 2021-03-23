@@ -464,6 +464,10 @@ changed to be more description.
 There are many ways to configure your networking. Even within the scope of a given 
 network mode.  Below are a few simple examples.
 
+.. note::
+   Since Ubuntu 20.04 the standard for manging network connections is by
+   using NetPlan YAML files. Please refer to the Ubuntu man pages for further
+   information and set up network connections figuratively.
 
 Network example for Basic Networks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -597,11 +601,6 @@ we only have to configure the network.
 .. parsed-literal::
 
    $ vi /etc/network/interfaces
-
-.. note::
-   Since Ubuntu 20.04 the standard for manging network connections is by
-   using NetPlan YAML files. Please refer to the Ubuntu man pages for further
-   information and set up network connections figuratively.
 
 Modify the interfaces file to look like this:
 
@@ -772,11 +771,6 @@ Configure Ubuntu for Advanced Networks
 
 All the required packages were installed when you installed libvirt, so
 we only have to configure the network.
-
-.. note::
-   Since Ubuntu 20.04 the standard for manging network connections is by
-   using NetPlan YAML files. Please refer to the Ubuntu man pages for further
-   information and set up network connections figuratively.
 
 .. parsed-literal::
 
