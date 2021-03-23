@@ -599,8 +599,8 @@ we only have to configure the network.
    $ vi /etc/network/interfaces
 
 .. note::
-   Since Ubuntu 20.04 the standard for mangeing network connections is by
-   useing NetPlan YAML files. Please refer to the Ubuntu man pages for further
+   Since Ubuntu 20.04 the standard for manging network connections is by
+   using NetPlan YAML files. Please refer to the Ubuntu man pages for further
    information and set up network connections figuratively.
 
 Modify the interfaces file to look like this:
@@ -774,8 +774,8 @@ All the required packages were installed when you installed libvirt, so
 we only have to configure the network.
 
 .. note::
-   Since Ubuntu 20.04 the standard for mangeing network connections is by
-   useing NetPlan YAML files. Please refer to the Ubuntu man pages for further
+   Since Ubuntu 20.04 the standard for manging network connections is by
+   using NetPlan YAML files. Please refer to the Ubuntu man pages for further
    information and set up network connections figuratively.
 
 .. parsed-literal::
