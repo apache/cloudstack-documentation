@@ -327,21 +327,21 @@ Appending a Name to the Guest VM’s Internal Name
 
 Every guest VM has an internal name. The host uses the internal name to identify the guest VMs. CloudStack gives you an option to provide a guest VM with a  name. You can set this name as the internal name so that the vCenter can use it to identify the guest VM. A new global parameter, vm.instancename.flag, has now been added to achieve this functionality.
 
-The default format of the internal name is i-<user\_id>-<vm\_id>-<i.n>, where i.n is the value of the global configuration - instance.name. However, If vm.instancename.flag is set to true, and if a name is provided during the creation of a guest VM, the name is appended to the internal name of the guest VM on the host. This makes the internal name format as i-<user\_id>-<vm\_id>-<name>. The default value of vm.instancename.flag is set to false. This feature is intended to make the correlation between instance names and internal names easier in large data center deployments.
+The default format of the internal name is i-<account\_id>-<vm\_id>-<i.n>, where i.n is the value of the global configuration - instance.name. However, If vm.instancename.flag is set to true, and if a name is provided during the creation of a guest VM, the name is appended to the internal name of the guest VM on the host. This makes the internal name format as i-<account\_id>-<vm\_id>-<name>. The default value of vm.instancename.flag is set to false. This feature is intended to make the correlation between instance names and internal names easier in large data center deployments.
 
 The following table explains how a VM name is displayed in different scenarios.
 
 .. cssclass:: table-striped table-bordered table-hover
 
-======================== ============================ =========================== =========================== ===========================
-**User-Provided Name**   Yes                          No                          Yes                         No
-**vm.instancename.flag** True                         True                        False                       False
-**Name**                 <Name>                       <i.n>-<UUID>                <Name>                      <i.n>-<UUID>
-**Display Name**         <Display name>               <i.n>-<UUID>                <Display name>              <i.n>-<UUID>
-**Hostname on the VM**   <Name>                       <i.n>-<UUID>                <Name>                      <i.n>-<UUID>
-**Name on vCenter**      i-<user\_id>-<vm\_id>-<Name> <i.n>-<UUID>                i-<user\_id>-<vm\_id>-<i.n> i-<user\_id>-<vm\_id>-<i.n>
-**Internal Name**        i-<user\_id>-<vm\_id>-<Name> i-<user\_id>-<vm\_id>-<i.n> i-<user\_id>-<vm\_id>-<i.n> i-<user\_id>-<vm\_id>-<i.n>
-======================== ============================ =========================== =========================== ===========================
+======================== =============================== ============================== ============================== ===========================
+**User-Provided Name**   Yes                             No                             Yes                            No
+**vm.instancename.flag** True                            True                           False                          False
+**Name**                 <Name>                          <i.n>-<UUID>                   <Name>                         <i.n>-<UUID>
+**Display Name**         <Display name>                  <i.n>-<UUID>                   <Display name>                 <i.n>-<UUID>
+**Hostname on the VM**   <Name>                          <i.n>-<UUID>                   <Name>                         <i.n>-<UUID>
+**Name on vCenter**      i-<account\_id>-<vm\_id>-<Name> <i.n>-<UUID>                   i-<account\_id>-<vm\_id>-<i.n> i-<account\_id>-<vm\_id>-<i.n>
+**Internal Name**        i-<account\_id>-<vm\_id>-<Name> i-<account\_id>-<vm\_id>-<i.n> i-<account\_id>-<vm\_id>-<i.n> i-<account\_id>-<vm\_id>-<i.n>
+======================== =============================== ============================== ============================== ===========================
 
    .. note::
       <i.n> represents the value of the global configuration - instance.name
