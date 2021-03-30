@@ -678,9 +678,8 @@ Advanced Zone Configuration
 
    -  **Protocol.** For XenServer, choose either NFS, iSCSI, or
       PreSetup. For KVM, choose NFS, SharedMountPoint, CLVM, and RBD.
-      For vSphere choose either VMFS (iSCSI or FiberChannel) or NFS. The
-      remaining fields in the screen vary depending on what you choose
-      here.
+      For vSphere, choose either NFS, PreSetup (VMFS, vSAN, vVols) or datastorecluster.
+      The remaining fields in the screen vary depending on what you choose here.
 
       .. cssclass:: table-striped table-bordered table-hover
 
