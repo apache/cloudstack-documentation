@@ -678,7 +678,7 @@ Advanced Zone Configuration
 
    -  **Protocol.** For XenServer, choose either NFS, iSCSI, or
       PreSetup. For KVM, choose NFS, SharedMountPoint, CLVM, and RBD.
-      For vSphere, choose either NFS, PreSetup (VMFS, vSAN, vVols) or datastorecluster.
+      For vSphere, choose either NFS, PreSetup (VMFS, vSAN, vVols) or DatastoreCluster.
       The remaining fields in the screen vary depending on what you choose here.
 
       .. cssclass:: table-striped table-bordered table-hover
@@ -1181,19 +1181,19 @@ cluster.
 
    -  **Protocol.** For XenServer, choose either NFS, iSCSI, or
       PreSetup. For KVM, choose NFS or SharedMountPoint. For vSphere
-      choose either NFS, PreSetup (VMFS, vSAN, vVols) or datastorecluster. For Hyper-V,
+      choose either NFS, PreSetup (VMFS, vSAN, vVols) or DatastoreCluster. For Hyper-V,
       choose SMB.
 
    -  **Server (for NFS, iSCSI, or PreSetup).** The IP address or DNS
       name of the storage device.
 
-   -  **Server (for PreSetup or datastorecluster).** The IP address or DNS name of the vCenter
+   -  **Server (for PreSetup or DatastoreCluster).** The IP address or DNS name of the vCenter
       server.
 
    -  **Path (for NFS).** In NFS this is the exported path from the
       server.
 
-   -  **Path (for PreSetup or datastorecluster).** In vSphere this is a combination of the
+   -  **Path (for PreSetup or DatastoreCluster).** In vSphere this is a combination of the
       datacenter name and the datastore or datastore cluster name. The format is "/"
       datacenter name "/" datastore or datastore cluster name. For example,
       "/cloud.dc.VM/cluster1datastore".

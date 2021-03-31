@@ -121,11 +121,11 @@ OCFS2. In this case the CloudStack does not attempt to mount or unmount
 the storage as is done with NFS. The CloudStack requires that the
 administrator insure that the storage is available
 
-VMware vSphere supports VMFS5, VMFS6, vSAN, vVols, datastorecluster storage types.
-For datastorecluster storage type, any changes to the datastore cluster
+VMware vSphere supports VMFS5, VMFS6, vSAN, vVols, DatastoreCluster storage types.
+For DatastoreCluster storage type, any changes to the datastore cluster
 at vCenter can be synchronised with CloudStack, like any addition of new
-child datastore to the datastorecluster or removal or existing child datastore
-from the datastorecluster. Synchronisation of datastorecluster happens during
+child datastore to the DatastoreCluster or removal or existing child datastore
+from the DatastoreCluster. Synchronisation of DatastoreCluster happens during
 host connect or storage pool maintenance operations or by calling the API
 syncStoragePool.
 
