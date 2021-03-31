@@ -678,7 +678,7 @@ Advanced Zone Configuration
 
    -  **Protocol.** For XenServer, choose either NFS, iSCSI, or
       PreSetup. For KVM, choose NFS, SharedMountPoint, CLVM, and RBD.
-      For vSphere, choose either NFS, PreSetup (VMFS, vSAN, vVols) or DatastoreCluster.
+      For vSphere, choose either NFS, PreSetup (VMFS - iSCSI/FiberChannel, vSAN, vVols) or DatastoreCluster.
       The remaining fields in the screen vary depending on what you choose here.
 
       .. cssclass:: table-striped table-bordered table-hover
@@ -1181,7 +1181,7 @@ cluster.
 
    -  **Protocol.** For XenServer, choose either NFS, iSCSI, or
       PreSetup. For KVM, choose NFS or SharedMountPoint. For vSphere
-      choose either NFS, PreSetup (VMFS, vSAN, vVols) or DatastoreCluster. For Hyper-V,
+      choose either NFS, PreSetup (VMFS - iSCSI/FiberChannel, vSAN, vVols) or DatastoreCluster. For Hyper-V,
       choose SMB.
 
    -  **Server (for NFS, iSCSI, or PreSetup).** The IP address or DNS
