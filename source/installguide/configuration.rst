@@ -1009,12 +1009,12 @@ If network bonding is in use, the administrator must cable the new host
 identically to other hosts in the cluster.
 
 For all additional hosts to be added to the cluster, run the following
-command. This will cause the host to join the master in a XenServer
+command. This will cause the host to join the primary in a XenServer
 pool.
 
 .. parsed-literal::
 
-   # xe pool-join master-address=[master IP] master-username=root master-password=[your password]
+   # xe pool-join master-address=[primary IP] master-username=root master-password=[your password]
 
 .. note:: 
    When copying and pasting a command, be sure the command has pasted as a 
@@ -1027,7 +1027,7 @@ bonds on the new hosts in the cluster.
 
 #. Copy the script from the Management Server in
    /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-setup-bonding.sh
-   to the master host and ensure it is executable.
+   to the primary host and ensure it is executable.
 
 #. Run the script:
 
@@ -1635,7 +1635,7 @@ zone      router.template.kvm                                        Name of the
 zone      router.template.vmware                                     Name of the default router template on VMware.
 zone      enable.dynamic.scale.vm                                    Enable or diable dynamically scaling of a VM.
 zone      use.external.dns                                           Bypass internal DNS, and use the external DNS1 and DNS2
-zone      blacklisted.routes                                         Routes that are blacklisted cannot be used for creating static routes for a VPC Private Gateway.
+zone      denied.routes                                              Routes that are denied cannot be used for creating static routes for a VPC Private Gateway.
 ========  =========================================================  ======================================================================================================================================  
 
 

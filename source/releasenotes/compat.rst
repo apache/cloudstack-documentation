@@ -43,7 +43,7 @@ and VMware with vSphere.
 -  Red Hat Enterprise Linux 7.x, 8.x with KVM
 -  XenServer versions 7.0, 7.1, 7.2, 7.4, 7.5, 8.0 with latest hotfixes, XCP-ng 7.4, 7.6, 8.0, 8.1
 
-   .. note:: It is now required to enable HA on the XenServer pool in order to recover from a pool-master failure. Please refer to the `XenServer documentation <https://docs.citrix.com/en-us/xencenter/7-1/pools-ha-enable.html>`_.
+   .. note:: It is now required to enable HA on the XenServer pool in order to recover from a pool-primary failure. Please refer to the `XenServer documentation <https://docs.citrix.com/en-us/xencenter/7-1/pools-ha-enable.html>`_.
 
 -  VMware versions 6.5 and 6.7 (tested up to 6.7 U3)
 

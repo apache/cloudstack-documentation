@@ -839,7 +839,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:694
 # eca14b3123854338ba1f14a14829b739
-msgid "To make sure that the native bridge module will not interfere with openvswitch the bridge module should be added to the blacklist. See the modprobe documentation for your distribution on where to find the blacklist. Make sure the module is not loaded either by rebooting or executing rmmod bridge before executing next steps."
+msgid "To make sure that the native bridge module will not interfere with openvswitch the bridge module should be added to the denylist. See the modprobe documentation for your distribution on where to find the denylist. Make sure the module is not loaded either by rebooting or executing rmmod bridge before executing next steps."
 msgstr ""
 
 #: ../../hypervisor_installation.rst:700
@@ -1447,7 +1447,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:1227
 # a62837dbc9e1484d9a2ec93a3f386570
-msgid "If, however, you would like to use storage connected via some other technology, such as FiberChannel, you must set up the SR yourself. To do so, perform the following steps. If you have your hosts in a XenServer pool, perform the steps on the master node. If you are working with a single XenServer which is not part of a cluster, perform the steps on that XenServer."
+msgid "If, however, you would like to use storage connected via some other technology, such as FiberChannel, you must set up the SR yourself. To do so, perform the following steps. If you have your hosts in a XenServer pool, perform the steps on the primary node. If you are working with a single XenServer which is not part of a cluster, perform the steps on that XenServer."
 msgstr ""
 
 #: ../../hypervisor_installation.rst:1236
@@ -1667,7 +1667,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:1484
 # 21486bfc4a50447a974137680f2e8750
-msgid "If no bonding is done, the administrator must set up and name-label the separate storage network on all hosts (masters and slaves)."
+msgid "If no bonding is done, the administrator must set up and name-label the separate storage network on all hosts (primary and secondary)."
 msgstr ""
 
 #: ../../hypervisor_installation.rst:1487
@@ -1712,7 +1712,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:1525
 # 26835cc7c2844c809af0dc5a4cfc4742
-msgid "XenServer expects all nodes in a cluster will have the same network cabling and same bonds implemented. In an installation the master will be the first host that was added to the cluster and the slave hosts will be all subsequent hosts added to the cluster. The bonds present on the master set the expectation for hosts added to the cluster later. The procedure to set up bonds on the master and slaves are different, and are described below. There are several important implications of this:"
+msgid "XenServer expects all nodes in a cluster will have the same network cabling and same bonds implemented. In an installation the primary will be the first host that was added to the cluster and the secondary hosts will be all subsequent hosts added to the cluster. The bonds present on the primary set the expectation for hosts added to the cluster later. The procedure to set up bonds on the primary and secondary are different, and are described below. There are several important implications of this:"
 msgstr ""
 
 #: ../../hypervisor_installation.rst:1535
@@ -1722,7 +1722,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:1541
 # c3572859ed994bf79cccdac0dc036ada
-msgid "Slave hosts in a cluster must be cabled exactly the same as the master. For example, if eth0 is in the private bond on the master, it must be in the management network for added slave hosts."
+msgid "Secondary hosts in a cluster must be cabled exactly the same as the primary. For example, if eth0 is in the private bond on the primary, it must be in the management network for added secondary hosts."
 msgstr ""
 
 #: ../../hypervisor_installation.rst:1546
@@ -1754,7 +1754,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:1568
 # 913da62e00594d7d9256568a0966482a
-msgid "These command shows the eth0 and eth1 NICs and their UUIDs. Substitute the ethX devices of your choice. Call the UUID's returned by the above command slave1-UUID and slave2-UUID."
+msgid "These command shows the eth0 and eth1 NICs and their UUIDs. Substitute the ethX devices of your choice. Call the UUID's returned by the above command secondary1-UUID and secondary2-UUID."
 msgstr ""
 
 #: ../../hypervisor_installation.rst:1574
@@ -1794,7 +1794,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:1614
 # 525068448771408183ac84f1a5d006be
-msgid "These command shows the eth2 and eth3 NICs and their UUIDs. Substitute the ethX devices of your choice. Call the UUID's returned by the above command slave1-UUID and slave2-UUID."
+msgid "These command shows the eth2 and eth3 NICs and their UUIDs. Substitute the ethX devices of your choice. Call the UUID's returned by the above command secondary1-UUID and secondary2-UUID."
 msgstr ""
 
 #: ../../hypervisor_installation.rst:1620
@@ -1819,7 +1819,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:1639
 # 7b998653c91d417d9920cdf8a2b62752
-msgid "With the bonds (if any) established on the master, you should add additional, slave hosts. Run the following command for all additional hosts to be added to the cluster. This will cause the host to join the master in a single XenServer pool."
+msgid "With the bonds (if any) established on the primary, you should add additional, secondary hosts. Run the following command for all additional hosts to be added to the cluster. This will cause the host to join the primary in a single XenServer pool."
 msgstr ""
 
 #: ../../hypervisor_installation.rst:1650
@@ -1834,7 +1834,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:1658
 # cd69e7cc948c43ffa11698a2390cf986
-msgid "Copy the script from the Management Server in /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-setup-bonding.sh to the master host and ensure it is executable."
+msgid "Copy the script from the Management Server in /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-setup-bonding.sh to the primary host and ensure it is executable."
 msgstr ""
 
 #: ../../hypervisor_installation.rst:1664
@@ -1947,7 +1947,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:1776
 # d7a81f24da0d4fd0b589ebfcfcd71784
-msgid "Upgrade the XenServer software on all hosts in the cluster. Upgrade the master first."
+msgid "Upgrade the XenServer software on all hosts in the cluster. Upgrade the primary first."
 msgstr ""
 
 #: ../../hypervisor_installation.rst:1781

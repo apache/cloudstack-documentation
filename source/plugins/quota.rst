@@ -21,7 +21,7 @@ various entities. Quota service extends the functionality of usage server to
 provide a measurement for the resources used by the accounts and domains using a
 common unit referred to as cloud currency in this document. It can be configured
 to ensure that your usage won’t exceed the budget allocated to accounts/domain
-in cloud currency. It will let user know how much of the cloud resources he is
+in cloud currency. It will let users know how much of the cloud resources they are
 using. It will help the cloud admins, if they want, to ensure that a user does
 not go beyond his allocated quota. Per usage cycle if an account is found to be
 exceeding its quota then it is locked. Locking an account means that it will not

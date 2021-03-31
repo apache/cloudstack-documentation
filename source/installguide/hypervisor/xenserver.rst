@@ -239,7 +239,7 @@ XenServer Storage Repository ("SR").
 If, however, you would like to use storage connected via some other
 technology, such as FiberChannel, you must set up the SR yourself. To do
 so, perform the following steps. If you have your hosts in a XenServer
-pool, perform the steps on the master node. If you are working with a
+pool, perform the steps on the primary node. If you are working with a
 single XenServer which is not part of a cluster, perform the steps on
 that XenServer.
 
@@ -472,7 +472,7 @@ you intend to implement iSCSI multipath, dedicate two non-bonded NICs to
 multipath. Each of the two networks needs a unique name-label.
 
 If no bonding is done, the administrator must set up and name-label the
-separate storage network on all hosts (masters and slaves).
+separate storage network on all hosts (primary and secondary).
 
 Here is an example to set up eth5 to access a storage network on
 172.16.0.0/24.
@@ -506,20 +506,20 @@ Here are some example supported configurations:
 All NIC bonding is optional.
 
 XenServer expects all nodes in a cluster will have the same network
-cabling and same bonds implemented. In an installation the master will
-be the first host that was added to the cluster and the slave hosts will
+cabling and same bonds implemented. In an installation the primary will
+be the first host that was added to the cluster and the secondary hosts will
 be all subsequent hosts added to the cluster. The bonds present on the
-master set the expectation for hosts added to the cluster later. The
-procedure to set up bonds on the master and slaves are different, and
+primary set the expectation for hosts added to the cluster later. The
+procedure to set up bonds on the primary and secondary are different, and
 are described below. There are several important implications of this:
 
 -  You must set bonds on the first host added to a cluster. Then you
    must use xe commands as below to establish the same bonds in the
    second and subsequent hosts added to a cluster.
 
--  Slave hosts in a cluster must be cabled exactly the same as the
-   master. For example, if eth0 is in the private bond on the master, it
-   must be in the management network for added slave hosts.
+-  Secondary hosts in a cluster must be cabled exactly the same as the
+   primary. For example, if eth0 is in the private bond on the primary, it
+   must be in the management network for added secondary hosts.
 
 
 Management Network Bonding
@@ -546,7 +546,7 @@ into it.
 
    These command shows the eth0 and eth1 NICs and their UUIDs.
    Substitute the ethX devices of your choice. Call the UUID's returned
-   by the above command slave1-UUID and slave2-UUID.
+   by the above command secondary1-UUID and secondary2-UUID.
 
 #. Create a new network for the bond. For example, a new network with
    name "cloud-private".
@@ -559,7 +559,7 @@ into it.
 
       # xe network-create name-label=cloud-private
       # xe bond-create network-uuid=[uuid of cloud-private created above]
-      pif-uuids=[slave1-uuid],[slave2-uuid]
+      pif-uuids=[secondary1-uuid],[secondary2-uuid]
 
 Now you have a bonded pair that can be recognized by CloudStack as the
 management network.
@@ -590,7 +590,7 @@ and eth3) bonded into it.
 
    These command shows the eth2 and eth3 NICs and their UUIDs.
    Substitute the ethX devices of your choice. Call the UUID's returned
-   by the above command slave1-UUID and slave2-UUID.
+   by the above command secondary1-UUID and secondary2-UUID.
 
 #. Create a new network for the bond. For example, a new network with
    name "cloud-public".
@@ -603,7 +603,7 @@ and eth3) bonded into it.
 
       # xe network-create name-label=cloud-public
       # xe bond-create network-uuid=[uuid of cloud-public created above]
-      pif-uuids=[slave1-uuid],[slave2-uuid]
+      pif-uuids=[secondary1-uuid],[secondary2-uuid]
 
 Now you have a bonded pair that can be recognized by CloudStack as the
 public network.
@@ -612,14 +612,14 @@ public network.
 Adding More Hosts to the Cluster
 ''''''''''''''''''''''''''''''''
 
-With the bonds (if any) established on the master, you should add
-additional, slave hosts. Run the following command for all additional
+With the bonds (if any) established on the primary, you should add
+additional, secondary hosts. Run the following command for all additional
 hosts to be added to the cluster. This will cause the host to join the
-master in a single XenServer pool.
+primary in a single XenServer pool.
 
 .. parsed-literal::
 
-   # xe pool-join master-address=[master IP] master-username=root
+   # xe pool-join master-address=[primary IP] master-username=root
    master-password=[your password]
 
 
@@ -632,7 +632,7 @@ all hosts in the cluster.
 
 #. Copy the script from the Management Server in
    /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-setup-bonding.sh
-   to the master host and ensure it is executable.
+   to the primary host and ensure it is executable.
 
 #. Run the script:
 
@@ -722,7 +722,7 @@ To upgrade XenServer:
    VM and umount the CD, then run the script again.
 
 #. Upgrade the XenServer software on all hosts in the cluster. Upgrade
-   the master first.
+   the primary first.
 
    #. Live migrate all VMs on this host to other hosts. See the
       instructions for live migration in the Administrator's Guide.

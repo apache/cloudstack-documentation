@@ -315,7 +315,7 @@ msgstr ""
 
 #: ../../hypervisor/xenserver.rst:238
 # 2d42f9931e424e16b90373f6e29342e8
-msgid "If, however, you would like to use storage connected via some other technology, such as FiberChannel, you must set up the SR yourself. To do so, perform the following steps. If you have your hosts in a XenServer pool, perform the steps on the master node. If you are working with a single XenServer which is not part of a cluster, perform the steps on that XenServer."
+msgid "If, however, you would like to use storage connected via some other technology, such as FiberChannel, you must set up the SR yourself. To do so, perform the following steps. If you have your hosts in a XenServer pool, perform the steps on the primary node. If you are working with a single XenServer which is not part of a cluster, perform the steps on that XenServer."
 msgstr ""
 
 #: ../../hypervisor/xenserver.rst:245
@@ -535,7 +535,7 @@ msgstr ""
 
 #: ../../hypervisor/xenserver.rst:473
 # 61c2f4816fdb42d5b6cc3c6d2ca18ca8
-msgid "If no bonding is done, the administrator must set up and name-label the separate storage network on all hosts (masters and slaves)."
+msgid "If no bonding is done, the administrator must set up and name-label the separate storage network on all hosts (primary and secondary)."
 msgstr ""
 
 #: ../../hypervisor/xenserver.rst:476
@@ -580,7 +580,7 @@ msgstr ""
 
 #: ../../hypervisor/xenserver.rst:507
 # ce37792754e74070b0880c3c27ca5b6d
-msgid "XenServer expects all nodes in a cluster will have the same network cabling and same bonds implemented. In an installation the master will be the first host that was added to the cluster and the slave hosts will be all subsequent hosts added to the cluster. The bonds present on the master set the expectation for hosts added to the cluster later. The procedure to set up bonds on the master and slaves are different, and are described below. There are several important implications of this:"
+msgid "XenServer expects all nodes in a cluster will have the same network cabling and same bonds implemented. In an installation the primary will be the first host that was added to the cluster and the secondary hosts will be all subsequent hosts added to the cluster. The bonds present on the primary set the expectation for hosts added to the cluster later. The procedure to set up bonds on the primary and secondary are different, and are described below. There are several important implications of this:"
 msgstr ""
 
 #: ../../hypervisor/xenserver.rst:515
@@ -590,7 +590,7 @@ msgstr ""
 
 #: ../../hypervisor/xenserver.rst:519
 # dc53904a0ade40e8996b6379af74299d
-msgid "Slave hosts in a cluster must be cabled exactly the same as the master. For example, if eth0 is in the private bond on the master, it must be in the management network for added slave hosts."
+msgid "Secondary hosts in a cluster must be cabled exactly the same as the primary. For example, if eth0 is in the private bond on the primary, it must be in the management network for added secondary hosts."
 msgstr ""
 
 #: ../../hypervisor/xenserver.rst:525
@@ -622,7 +622,7 @@ msgstr ""
 
 #: ../../hypervisor/xenserver.rst:546
 # 19647e91e4064b26bcf46ae5ccdb7654
-msgid "These command shows the eth0 and eth1 NICs and their UUIDs. Substitute the ethX devices of your choice. Call the UUID's returned by the above command slave1-UUID and slave2-UUID."
+msgid "These command shows the eth0 and eth1 NICs and their UUIDs. Substitute the ethX devices of your choice. Call the UUID's returned by the above command secondary1-UUID and secondary2-UUID."
 msgstr ""
 
 #: ../../hypervisor/xenserver.rst:550
@@ -662,7 +662,7 @@ msgstr ""
 
 #: ../../hypervisor/xenserver.rst:590
 # e9ee4656a26c4e429fa44a19deca4697
-msgid "These command shows the eth2 and eth3 NICs and their UUIDs. Substitute the ethX devices of your choice. Call the UUID's returned by the above command slave1-UUID and slave2-UUID."
+msgid "These command shows the eth2 and eth3 NICs and their UUIDs. Substitute the ethX devices of your choice. Call the UUID's returned by the above command secondary1-UUID and secondary2-UUID."
 msgstr ""
 
 #: ../../hypervisor/xenserver.rst:594
@@ -687,7 +687,7 @@ msgstr ""
 
 #: ../../hypervisor/xenserver.rst:614
 # bb7f4bc061df424882aa108cec051dde
-msgid "With the bonds (if any) established on the master, you should add additional, slave hosts. Run the following command for all additional hosts to be added to the cluster. This will cause the host to join the master in a single XenServer pool."
+msgid "With the bonds (if any) established on the primary, you should add additional, secondary hosts. Run the following command for all additional hosts to be added to the cluster. This will cause the host to join the primary in a single XenServer pool."
 msgstr ""
 
 #: ../../hypervisor/xenserver.rst:626
@@ -702,7 +702,7 @@ msgstr ""
 
 #: ../../hypervisor/xenserver.rst:632
 # 27800d5ec6e44bdcb75245bf193bfda2
-msgid "Copy the script from the Management Server in /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-setup-bonding.sh to the master host and ensure it is executable."
+msgid "Copy the script from the Management Server in /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-setup-bonding.sh to the primary host and ensure it is executable."
 msgstr ""
 
 #: ../../hypervisor/xenserver.rst:636
@@ -809,7 +809,7 @@ msgstr ""
 
 #: ../../hypervisor/xenserver.rst:723
 # 715d2f02ed1c47c589935a7f3b1dafa3
-msgid "Upgrade the XenServer software on all hosts in the cluster. Upgrade the master first."
+msgid "Upgrade the XenServer software on all hosts in the cluster. Upgrade the primary first."
 msgstr ""
 
 #: ../../hypervisor/xenserver.rst:726

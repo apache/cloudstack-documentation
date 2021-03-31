@@ -137,10 +137,10 @@ msgid ""
 "For XenServer, you can take a server offline temporarily by using the "
 "Maintenance Mode feature in XenCenter. When you place a server into "
 "Maintenance Mode, all running VMs are automatically migrated from it to "
-"another host in the same pool. If the server is the pool master, a new "
-"master will also be selected for the pool. While a server is Maintenance "
+"another host in the same pool. If the server is the pool primary, a new "
+"primary will also be selected for the pool. While a server is Maintenance "
 "Mode, you cannot create or start any VMs on it."
-msgstr "对于XenServer，你能够通过使用XenCenter中的维护模式功能将一台服务器临时的离线。当你使一台服务器进入维护模式，所有运行的VMs都会自动的迁移到同一个池中的其他主机上。如果此服务器是池master主机，那么此池会选举一个新的master主机。当一台服务器在维护模式下时，你不能在上面创建或启动任何VMs。"
+msgstr "对于XenServer，你能够通过使用XenCenter中的维护模式功能将一台服务器临时的离线。当你使一台服务器进入维护模式，所有运行的VMs都会自动的迁移到同一个池中的其他主机上。如果此服务器是池primary主机，那么此池会选举一个新的primary主机。当一台服务器在维护模式下时，你不能在上面创建或启动任何VMs。"
 
 # 456e5e6e17bf41909c0b487227d097cd
 #: ../../hosts.rst:87

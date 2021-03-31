@@ -1512,7 +1512,7 @@ msgstr ""
 # 9c4f5494faa54226bfeea797c0d3bcdf
 #: ../../source/rnotes.rst:1826 ../../source/rnotes.rst:2656
 msgid ""
-"On the MySQL master, take a backup of the MySQL databases. We recommend "
+"On the MySQL primary, take a backup of the MySQL databases. We recommend "
 "performing this step even in test upgrades. If there is an issue, this will "
 "assist with debugging."
 msgstr ""
@@ -1899,7 +1899,7 @@ msgstr ""
 #: ../../source/rnotes.rst:2296
 msgid ""
 "Upload the hotfix to the XenServer hosts. Always start with the Xen pool "
-"master, then the slaves. Using your favorite file copy utility (e.g. "
+"primary, then the secondary. Using your favorite file copy utility (e.g. "
 "WinSCP), copy the hotfixes to the host. Place them in a temporary folder "
 "such as /tmp."
 msgstr ""
@@ -1907,7 +1907,7 @@ msgstr ""
 # 95579949c0c0468f9fb5a886c0de0067
 # b9c190b4fd614d0596e6cf2a21762978
 #: ../../source/rnotes.rst:2301 ../../source/rnotes.rst:3278
-msgid "On the Xen pool master, upload the hotfix with this command:"
+msgid "On the Xen pool primary, upload the hotfix with this command:"
 msgstr ""
 
 # 79193bd7beb24dad8e02baea8f8fc9e1
@@ -2123,7 +2123,7 @@ msgstr ""
 # 292dce1c5566443db1f36434502cbe40
 #: ../../source/rnotes.rst:2433 ../../source/rnotes.rst:3402
 msgid ""
-"On each slave host in the Xen pool, repeat these steps, starting from "
+"On each secondary host in the Xen pool, repeat these steps, starting from "
 "\"manually live migrate VMs.\""
 msgstr ""
 
@@ -2532,7 +2532,7 @@ msgstr ""
 #: ../../source/rnotes.rst:3273
 msgid ""
 "Upload the hotfix to the XenServer hosts. Always start with the Xen pool "
-"master, then the slaves. Using your favorite file copy utility (e.g. "
+"primary, then the secondary. Using your favorite file copy utility (e.g. "
 "WinSCP), copy the hotfixes to the host. Place them in a temporary folder "
 "such as /root or /tmp."
 msgstr ""

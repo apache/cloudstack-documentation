@@ -1475,7 +1475,7 @@ msgstr ""
 #: ../../rnotes.rst:2656
 # bda05cf21e784a1cbc68f3bbef5bcf32
 # d35c3cd591f547888c10e4a335ab6d70
-msgid "On the MySQL master, take a backup of the MySQL databases. We recommend performing this step even in test upgrades. If there is an issue, this will assist with debugging."
+msgid "On the MySQL primary, take a backup of the MySQL databases. We recommend performing this step even in test upgrades. If there is an issue, this will assist with debugging."
 msgstr ""
 
 #: ../../rnotes.rst:1830
@@ -1781,14 +1781,14 @@ msgstr ""
 
 #: ../../rnotes.rst:2296
 # 1dbd633d13a444ca8b8afb25a559294a
-msgid "Upload the hotfix to the XenServer hosts. Always start with the Xen pool master, then the slaves. Using your favorite file copy utility (e.g. WinSCP), copy the hotfixes to the host. Place them in a temporary folder such as /tmp."
+msgid "Upload the hotfix to the XenServer hosts. Always start with the Xen pool primary, then the secondary. Using your favorite file copy utility (e.g. WinSCP), copy the hotfixes to the host. Place them in a temporary folder such as /tmp."
 msgstr ""
 
 #: ../../rnotes.rst:2301
 #: ../../rnotes.rst:3278
 # f754e93a062b45bb9fb2cca2c83db68a
 # 6ca0af40b8ed47a6a54b3d5da7418472
-msgid "On the Xen pool master, upload the hotfix with this command:"
+msgid "On the Xen pool primary, upload the hotfix with this command:"
 msgstr ""
 
 #: ../../rnotes.rst:2303
@@ -1984,7 +1984,7 @@ msgstr ""
 #: ../../rnotes.rst:3402
 # 897e2e4a95984933b9a64f63be27747d
 # 83c27089bfe946598169ee4c6e34c066
-msgid "On each slave host in the Xen pool, repeat these steps, starting from \"manually live migrate VMs.\""
+msgid "On each secondary host in the Xen pool, repeat these steps, starting from \"manually live migrate VMs.\""
 msgstr ""
 
 #: ../../rnotes.rst:2436
@@ -2266,7 +2266,7 @@ msgstr ""
 
 #: ../../rnotes.rst:3273
 # d39f60ad6d3b479ca5f80e075fcb7336
-msgid "Upload the hotfix to the XenServer hosts. Always start with the Xen pool master, then the slaves. Using your favorite file copy utility (e.g. WinSCP), copy the hotfixes to the host. Place them in a temporary folder such as /root or /tmp."
+msgid "Upload the hotfix to the XenServer hosts. Always start with the Xen pool primary, then the secondary. Using your favorite file copy utility (e.g. WinSCP), copy the hotfixes to the host. Place them in a temporary folder such as /root or /tmp."
 msgstr ""
 
 #: ../../rnotes.rst:3311

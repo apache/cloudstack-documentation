@@ -392,11 +392,11 @@ To create a network offering:
    -  **Redundant router capability**: Available only when Virtual
       Router is selected as the Source NAT provider. Select this option
       if you want to use two virtual routers in the network for
-      uninterrupted connection: one operating as the master virtual
-      router and the other as the backup. The master virtual router
+      uninterrupted connection: one operating as the primary virtual
+      router and the other as the backup. The primary virtual router
       receives requests from and sends responses to the user’s VM. The
-      backup virtual router is activated only when the master is down.
-      After the failover, the backup becomes the master virtual router.
+      backup virtual router is activated only when the primary is down.
+      After the failover, the backup becomes the primary virtual router.
       CloudStack deploys the routers on different hosts to ensure
       reliability if one host is down.
 

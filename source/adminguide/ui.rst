@@ -70,7 +70,7 @@ the UI can provide a project-oriented view.
 Root Administrator's UI Overview
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: https://raw.githubusercontent.com/apache/cloudstack-primate/master/docs/screenshot-dashboard.png
+.. image:: https://raw.githubusercontent.com/apache/cloudstack-primate/main/docs/screenshot-dashboard.png
    :width: 800px
    :alt: alternate text
    :align: left
