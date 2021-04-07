@@ -281,11 +281,7 @@ Some assorted primary theme colours:
 - Purple: #722ED1
 
 Contextual help documentation URLs can be customized with the help of `docBase` and `docHelpMappings` properties.
-A list of documentation help suffixes in code can be obtained using following command:
-
-.. parsed-literal::
-
-   grep -rnw cloudstack/ui/src/config/section -e 'docHelp:'
+To override a particular documentation URL, a mapping can be added for the URL path in the config. Any documentation URL is formed by combining docBase URL base and a path set in the source code. Adding a mapping for any particular path in the configuration will result in generating documetation URL with overridden path.
 
 Below example shows configuration changes for custom documentation help URLs:
 
@@ -303,7 +299,7 @@ Below example shows configuration changes for custom documentation help URLs:
    }
 
 UI also provides option to show custom plugins by displaying a custom HTML page or service in an iframe. Such plugins can be listed in the config file using `plugins` property.
-Example for adding a custom plugin:
+Example for adding custom plugins:
 
 .. parsed-literal::
 
@@ -314,10 +310,18 @@ Example for adding a custom plugin:
             "name": "ExamplePlugin",
             "icon": "appstore",
             "path": "example.html"
+         },
+         {
+            "name": "ExamplePlugin1",
+            "icon": "appstore",
+            "path": "https://cloudstack.apache.org/"
          }
       ]
       ...
    }
+
+`icon` for the plugin can be chosen from Ant Design icons listed at `Icon - Ant Design Vue https://www.antdv.com/components/icon/`_.
+`path` for a custom html file for the plugin is relative to CloudStack management server's web application directory on the server, i.e., */usr/share/cloudstack-management/webapp*.
 
 |ui-custom-plugin.png|
 
@@ -330,6 +334,15 @@ building the UI from the source available on `github.com/apache/cloudstack
 <https://github.com/apache/cloudstack>`_ repository. Advanced customisation may
 require some experience in JavaScript and VueJS, a development and customisation
 guide in the source repository.
+
+Useful documentations:
+
+- `VueJS Guide <https://vuejs.org/v2/guide/>`_
+- `Vue Ant Design <https://www.antdv.com/docs/vue/introduce/>`_
+- `UI Developer <https://github.com/apache/cloudstack/blob/master/ui/docs>`_
+- `JavaScript ES6 Reference <https://www.tutorialspoint.com/es6/>`_
+- `Introduction to ES6 <https://scrimba.com/g/gintrotoes6>`_
+
 
 Known Limitations
 ~~~~~~~~~~~~~~~~~
