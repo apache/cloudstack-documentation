@@ -281,7 +281,7 @@ Some assorted primary theme colours:
 - Purple: #722ED1
 
 Contextual help documentation URLs can be customized with the help of `docBase` and `docHelpMappings` properties.
-To override a particular documentation URL, a mapping can be added for the URL path in the config. Any documentation URL is formed by combining docBase URL base and a path set in the source code. Adding a mapping for any particular path in the configuration will result in generating documetation URL with overridden path.
+To override a particular documentation URL, a mapping can be added for the URL path in the config. A documentation URL is formed by combining the `docBase` URL base and a path set in the source code. Adding a mapping for any particular path in the configuration will result in generating documetation URL with overridden path.
 
 Below example shows configuration changes for custom documentation help URLs:
 
