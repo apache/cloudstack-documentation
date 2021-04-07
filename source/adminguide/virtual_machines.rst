@@ -38,8 +38,8 @@ names can be controlled by the user:
 
 .. note:: 
    You can append the display name of a guest VM to its internal name. 
-   For more information, see `“Appending a Display Name to the Guest VM’s 
-   Internal Name” <#appending-a-display-name-to-the-guest-vms-internal-name>`_.
+   For more information, see `“Appending a Name to the Guest VM’s 
+   Internal Name” <#appending-a-name-to-the-guest-vms-internal-name>`_.
 
 Guest VMs can be configured to be Highly Available (HA). An HA-enabled
 VM is monitored by the system. If the system detects that the VM is
@@ -323,39 +323,29 @@ To access a VM through the CloudStack UI:
 #. Click Apply.
 
 
-Appending a Display Name to the Guest VM’s Internal Name
-----------------------------------------------------------
+Appending a Name to the Guest VM’s Internal Name
+--------------------------------------------------
 
-Every guest VM has an internal name. The host uses the internal name to
-identify the guest VMs. CloudStack gives you an option to provide a
-guest VM with a display name. You can set this display name as the
-internal name so that the vCenter can use it to identify the guest VM. A
-new global parameter, vm.instancename.flag, has now been added to
-achieve this functionality.
+Every guest VM has an internal name. The host uses the internal name to identify the guest VMs. CloudStack gives you an option to provide a guest VM with a  name. You can set this name as the internal name so that the vCenter can use it to identify the guest VM. A new global parameter, vm.instancename.flag, has now been added to achieve this functionality.
 
-The default format of the internal name is
-i-<user\_id>-<vm\_id>-<instance.name>, where instance.name is a global
-parameter. However, If vm.instancename.flag is set to true, and if a
-display name is provided during the creation of a guest VM, the display
-name is appended to the internal name of the guest VM on the host. This
-makes the internal name format as i-<user\_id>-<vm\_id>-<displayName>.
-The default value of vm.instancename.flag is set to false. This feature
-is intended to make the correlation between instance names and internal
-names easier in large data center deployments.
+The default format of the internal name is i-<account\_id>-<vm\_id>-<i.n>, where i.n is the value of the global configuration - instance.name. However, If vm.instancename.flag is set to true, and if a name is provided during the creation of a guest VM, the name is appended to the internal name of the guest VM on the host. This makes the internal name format as i-<account\_id>-<vm\_id>-<name>. The default value of vm.instancename.flag is set to false. This feature is intended to make the correlation between instance names and internal names easier in large data center deployments.
 
-The following table explains how a VM name is displayed in different
-scenarios.
+The following table explains how a VM name is displayed in different scenarios.
 
 .. cssclass:: table-striped table-bordered table-hover
 
-============================= ======================= ==================== ===================================== ==========================
-User-Provided Display Name    vm.instancename.flag    Hostname on the VM   Name on vCenter                       Internal Name
-============================= ======================= ==================== ===================================== ==========================
-Yes                           True                    Display name         i-<user\_id>-<vm\_id>-displayName     i-<user\_id>-<vm\_id>-displayName
-No                            True                    UUID                 i-<user\_id>-<vm\_id>-<instance.name> i-<user\_id>-<vm\_id>-<instance.name>
-Yes                           False                   Display name         i-<user\_id>-<vm\_id>-<instance.name> i-<user\_id>-<vm\_id>-<instance.name>
-No                            False                   UUID                 i-<user\_id>-<vm\_id>-<instance.name> i-<user\_id>-<vm\_id>-<instance.name>
-============================= ======================= ==================== ===================================== ==========================
+======================== =============================== ============================== ============================== ===========================
+**User-Provided Name**   Yes                             No                             Yes                            No
+**vm.instancename.flag** True                            True                           False                          False
+**Name**                 <Name>                          <i.n>-<UUID>                   <Name>                         <i.n>-<UUID>
+**Display Name**         <Display name>                  <i.n>-<UUID>                   <Display name>                 <i.n>-<UUID>
+**Hostname on the VM**   <Name>                          <i.n>-<UUID>                   <Name>                         <i.n>-<UUID>
+**Name on vCenter**      i-<account\_id>-<vm\_id>-<Name> <i.n>-<UUID>                   i-<account\_id>-<vm\_id>-<i.n> i-<account\_id>-<vm\_id>-<i.n>
+**Internal Name**        i-<account\_id>-<vm\_id>-<Name> i-<account\_id>-<vm\_id>-<i.n> i-<account\_id>-<vm\_id>-<i.n> i-<account\_id>-<vm\_id>-<i.n>
+======================== =============================== ============================== ============================== ===========================
+
+   .. note::
+      <i.n> represents the value of the global configuration - instance.name
 
 
 Changing the Service Offering for a VM
