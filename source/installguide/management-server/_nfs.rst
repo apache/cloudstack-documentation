@@ -25,7 +25,7 @@ CloudStack.
 
 .. note::
    NFS is not the only option for primary or secondary storage. For example, 
-   you may use Ceph RBD, GlusterFS, iSCSI, and others. The choice of storage 
+   you may use Ceph RBD, PowerFlex, GlusterFS, iSCSI, and others. The choice of storage 
    system will depend on the choice of hypervisor and whether you are dealing 
    with primary or secondary storage.
 

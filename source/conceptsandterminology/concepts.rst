@@ -440,6 +440,9 @@ Storage is not supported in Hyper-V.
 Ceph/RBD storage is only supported by the KVM hypervisor. It can be used
 as Zone-wide Primary Storage.
 
+PowerFlex/ScaleIO (v3.5) is only supported by the KVM hypervisor. It can be used
+as Cluster-wide or Zone-wide Primary Storage.
+
 CloudStack is designed to work with all standards-compliant iSCSI and
 NFS servers that are supported by the underlying hypervisor, including,
 for example:
@@ -451,6 +454,8 @@ for example:
 -  Network Appliances filers for NFS and iSCSI
 
 -  Scale Computing for NFS
+
+-  Dell EMC PowerFlex™ (v3.5)
 
 If you intend to use only local disk for your installation, you can skip
 adding separate primary storage.
