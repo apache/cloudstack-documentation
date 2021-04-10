@@ -70,7 +70,7 @@ and Ubuntu 18.04 (Bionic) are being built at this time. Ubuntu 14.04 (Trusty) is
 
 Use your preferred editor and open (or create)
 ``/etc/apt/sources.list.d/cloudstack.list``. Add the community provided
-repository to the file:
+repository to the file (replace "trusty" with "xenial" or "bionic" if it is the case):
 
 .. parsed-literal::
 
