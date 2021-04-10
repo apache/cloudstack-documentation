@@ -374,6 +374,11 @@ on all your hypervisors.
 Network example
 ^^^^^^^^^^^^^^^
 
+.. note::
+   Since release of Cloudstack 4.15 "Basic Networking" is deprecated. Instead use
+   "Advanced Networking" and create a "Shared Network" as described in this
+   documentation.
+
 There are many ways to configure your network. In the Basic networking
 mode you should have two (V)LAN's, one for your private network and one
 for the public network.

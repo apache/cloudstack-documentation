@@ -276,6 +276,11 @@ and secondary storage.
       networks and providing custom network offerings such as firewall,
       VPN, or load balancer support.
 
+.. note::
+   Since release of Cloudstack 4.15 "Basic Networking" is deprecated. Instead use
+   "Advanced Networking" and create a "Shared Network" as described in this
+   documentation.
+
 #. The rest of the steps differ depending on whether you chose Basic or
    Advanced. Continue with the steps that apply to you:
 
