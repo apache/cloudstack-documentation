@@ -603,6 +603,7 @@ For the sake of completeness you should check if KVM is running OK on your machi
       # lsmod | grep kvm
       kvm_intel              55496  0
       kvm                   337772  1 kvm_intel
+      kvm_amd # if you are in AMD cpu
 
 That concludes our installation and configuration of KVM, and we'll now move 
 to using the CloudStack UI for the actual configuration of our cloud.
@@ -670,6 +671,8 @@ information regading a pod. Which is looking for several items.
 #. Gateway - We'll use ``172.16.10.1`` as our gateway
 
 #. Netmask - We'll use ``255.255.255.0``
+
+#. VLAN/VNI Range : ``2-3900``
 
 #. Start/end reserved system IPs - we will use ``172.16.10.10-172.16.10.20``
 
