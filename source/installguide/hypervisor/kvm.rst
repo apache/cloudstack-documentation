@@ -1092,6 +1092,16 @@ To open the required ports, execute the following commands:
 .. note::
    By default UFW is not enabled on Ubuntu. Executing these commands with the
    firewall disabled does not enable the firewall.
+   
+   If you have an issue with ufw while using a bridged connection, 
+   add those two lines at the end of the /etc/ufw/before.rules just before COMMIT
+   
+.. parsed-literal::
+   sudo vi /etc/ufw/before.rules
+   
+.. parsed-literal::
+   -A FORWARD -d 192.168.42.11 -j ACCEPT
+   -A FORWARD -s 192.168.42.11 -j ACCEPT
 
 
 Additional Packages Required for Features
