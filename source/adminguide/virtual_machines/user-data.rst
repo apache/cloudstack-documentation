@@ -117,12 +117,7 @@ VM deployment automatically (:ref:`adding-password-management-to-templates` and 
 
    .. code:: yaml
 
-      datasource:
-        CloudStack: {}
-        None: {}
-      datasource_list:
-        - CloudStack
-
+      datasource_list: [ CloudStack, None ]
 
 Custom user-data example
 ~~~~~~~~~~~~~~~~~~~~~~~~
