@@ -917,10 +917,12 @@ snapshot:
    VM snapshots are deleted automatically when a VM is destroyed. You don't 
    have to manually delete the snapshots in this case.
 
+
 Support for Virtual Appliances
 ==============================
 
 .. include:: virtual_machines/virtual_appliances.rst
+
 
 Unmanaging Virtual Machines
 ===========================
