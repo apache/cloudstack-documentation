@@ -237,7 +237,7 @@ To upload a template:
       available, or All Zones to make it available throughout
       CloudStack.
 
-   - **Read VM settings from OVA**. (VMware only) If selected, the registered template will allow users to deploy VMs as clones of the template, including all their properties, configurations, end-user license agreements, disks, os type, etc. This option allow users to register virtual appliances. See `Support for Virtual Appliances <virtual_machines.html#about-virtual-appliances>`_.
+   - **Read VM settings from OVA**. (VMware only) If selected, the registered template will allow users to deploy VMs as clones of the template, including all their properties, configurations, end-user license agreements, disks, os type, etc. This option allows users to register virtual appliances. See `Support for Virtual Appliances <virtual_machines.html#about-virtual-appliances>`_.
 
       .. note:: 
          When this option is selected the following fields are hidden: Root disk controller, Keyboard type and OS Type. 
