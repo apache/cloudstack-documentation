@@ -61,7 +61,7 @@ Software requirements:
 
    UPDATE cloud.sequence
    SET value = 1000000
-   WHERE name = 'vm_instance_seq'
+   WHERE name = 'vm_instance_seq';
 
 Hardware requirements:
 ^^^^^^^^^^^^^^^^^^^^^^
