@@ -51,6 +51,8 @@ providing networking features for guest traffic.
 
 .. include:: networking/external_firewalls_and_load_balancers.rst
 
+.. include:: networking/load_balancer_customization.rst
+
 .. include:: networking/global_server_load_balancing.rst
 
 .. include:: networking/guest_ip_ranges.rst
