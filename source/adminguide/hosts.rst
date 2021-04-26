@@ -76,8 +76,8 @@ XenServer and Maintenance Mode
 For XenServer, you can take a server offline temporarily by using the
 Maintenance Mode feature in XenCenter. When you place a server into
 Maintenance Mode, all running VMs are automatically migrated from it to
-another host in the same pool. If the server is the pool master, a new
-master will also be selected for the pool. While a server is Maintenance
+another host in the same pool. If the server is the pool primary, a new
+primary will also be selected for the pool. While a server is Maintenance
 Mode, you cannot create or start any VMs on it.
 
 **To place a server in Maintenance Mode:**

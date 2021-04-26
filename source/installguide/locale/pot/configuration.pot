@@ -1354,7 +1354,7 @@ msgstr ""
 
 #: ../../configuration.rst:1017
 # 05d3932560e04019b3bdb344f870f538
-msgid "For all additional hosts to be added to the cluster, run the following command. This will cause the host to join the master in a XenServer pool."
+msgid "For all additional hosts to be added to the cluster, run the following command. This will cause the host to join the primary in a XenServer pool."
 msgstr ""
 
 #: ../../configuration.rst:1026
@@ -1369,7 +1369,7 @@ msgstr ""
 
 #: ../../configuration.rst:1034
 # c4cd2afe3b934ce8b2621d0b9e82c2d2
-msgid "Copy the script from the Management Server in /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-setup-bonding.sh to the master host and ensure it is executable."
+msgid "Copy the script from the Management Server in /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-setup-bonding.sh to the primary host and ensure it is executable."
 msgstr ""
 
 #: ../../configuration.rst:1038
@@ -2540,11 +2540,11 @@ msgstr ""
 
 #: ../../configuration.rst:1621
 # c8177a7ac4ea4c07bf0c16f2833e48bf
-msgid "blacklisted.routes"
+msgid "denied.routes"
 msgstr ""
 
 #: ../../configuration.rst:1621
 # d9441a44a1824e80804bbbe62fd7f531
-msgid "Routes that are blacklisted cannot be used for creating static routes for a VPC Private Gateway."
+msgid "Routes that are denied cannot be used for creating static routes for a VPC Private Gateway."
 msgstr ""
 

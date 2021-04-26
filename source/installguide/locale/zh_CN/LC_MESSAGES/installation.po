@@ -571,7 +571,7 @@ msgstr ""
 # aef5f1918b994df1a0da2b55407ba85f
 #: ../../installation.rst:350
 msgid ""
-"This bug has been fixed in master and upcoming 4.4 release and will also be "
+"This bug has been fixed in main and upcoming 4.4 release and will also be "
 "fixed in bug fix releases 4.3.x"
 msgstr ""
 

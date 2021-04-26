@@ -647,7 +647,7 @@ msgstr ""
 
 #: ../../administration_guide.rst:283
 # 805f4ccfdd5e40e88e3ccdd57585f19e
-msgid "XenServer, you can take a server offline temporarily by using the Maintenance Mode feature in XenCenter. When you place a server into Maintenance Mode, all running VMs are automatically migrated from it to another host in the same pool. If the server is the pool master, a new master will also be selected for the pool. While a server is Maintenance Mode, you cannot create or start any VMs on it."
+msgid "XenServer, you can take a server offline temporarily by using the Maintenance Mode feature in XenCenter. When you place a server into Maintenance Mode, all running VMs are automatically migrated from it to another host in the same pool. If the server is the pool primary, a new primary will also be selected for the pool. While a server is Maintenance Mode, you cannot create or start any VMs on it."
 msgstr ""
 
 #: ../../administration_guide.rst:286

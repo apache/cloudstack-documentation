@@ -13,7 +13,7 @@
    specific language governing permissions and limitations
    under the License.
 
-.. CloudStack Installation Documentation master file, created by
+.. CloudStack Installation Documentation main file, created by
    sphinx-quickstart on Sat Jan 25 15:15:31 2014.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
