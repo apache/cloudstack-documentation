@@ -81,7 +81,7 @@ To enable VPN for a particular network:
 
 #. Click the name of the network you want to work with.
 
-#. Click View IP Addresses.
+#. Click Public IP Addresses.
 
 #. Click one of the displayed IP address names.
 

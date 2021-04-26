@@ -67,16 +67,16 @@ machines:
    network creation:
 
    .. cssclass:: table-striped table-bordered table-hover
-   
+
    ===== ============= ============== ======================================== ========================================================
    Case  CIDR          Network CIDR   Reserved IP Range for Non-CloudStack VMs Description
    ===== ============= ============== ======================================== ========================================================
    1     10.1.1.0/24   None           None                                     No IP Reservation.
    2     10.1.1.0/26   10.1.1.0/24    10.1.1.64 to 10.1.1.254                  IP Reservation configured by the UpdateNetwork API with
-                                                                               guestvmcidr=10.1.1.0/26 or enter 10.1.1.0/26 in the CIDR 
+                                                                               guestvmcidr=10.1.1.0/26 or enter 10.1.1.0/26 in the CIDR
                                                                                field in the UI.
    3     10.1.1.0/24   None           None                                     Removing IP Reservation by the UpdateNetwork API with
-                                                                               guestvmcidr=10.1.1.0/24 or enter 10.1.1.0/24 in the CIDR 
+                                                                               guestvmcidr=10.1.1.0/24 or enter 10.1.1.0/24 in the CIDR
                                                                                field in the UI.
    ===== ============= ============== ======================================== ========================================================
 
@@ -111,9 +111,7 @@ Reserving an IP Range
 
 #. Click the name of the network you want to modify.
 
-#. In the Details tab, click Edit. |ip-edit-icon.png|
-
-   The CIDR field changes to editable one.
+#. Click Edit. |ip-edit-icon.png|
 
 #. In CIDR, specify the Guest VM CIDR.
 

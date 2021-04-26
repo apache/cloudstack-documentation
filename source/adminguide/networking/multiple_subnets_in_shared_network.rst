@@ -53,8 +53,7 @@ Adding Multiple Subnets to a Shared Network
 
 #. In the left navigation, choose Infrastructure.
 
-#. On Zones, click View More, then click the zone to which you want to
-   work with..
+#. Click Zones and select the zone you'd like to modify.
 
 #. Click Physical Network.
 
