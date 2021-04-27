@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 
+# Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -78,7 +78,7 @@ msgstr ""
 
 #: ../../networking/multiple_subnets_in_shared_network.rst:56
 # 9d6f09662ceb452bb8bf26c21696a7ff
-msgid "On Zones, click View More, then click the zone to which you want to work with.."
+msgid "Click Zones and select the zone you'd like to modify.."
 msgstr ""
 
 #: ../../networking/multiple_subnets_in_shared_network.rst:59

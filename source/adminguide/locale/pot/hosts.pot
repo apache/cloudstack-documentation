@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 
+# Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -357,17 +357,21 @@ msgstr ""
 
 #: ../../hosts.rst:255
 # 3633dc63fade45ad8b1bc222bb9ad425
-msgid "CPU and memory (RAM) over-provisioning factors can be set for each cluster to change the number of VMs that can run on each host in the cluster. This helps optimize the use of resources. By increasing the over-provisioning ratio, more resource capacity will be used. If the ratio is set to 1, no over-provisioning is done."
+msgid "CPU and memory (RAM) over-provisioning factors can be set for each
+cluster to change the number of VMs that can run on each host in the
+cluster. This helps optimize the use of resources. By increasing the
+over-provisioning factor, more resource capacity will be used. If the
+factor is set to 1, no over-provisioning is done."
 msgstr ""
 
 #: ../../hosts.rst:261
 # 43467fc7868049cab2d4374ff0094af1
-msgid "The administrator can also set global default over-provisioning ratios in the cpu.overprovisioning.factor and mem.overprovisioning.factor global configuration variables. The default value of these variables is 1: over-provisioning is turned off by default."
+msgid "The administrator can also set global default over-provisioning factors in the cpu.overprovisioning.factor and mem.overprovisioning.factor global configuration variables. The default value of these variables is 1: over-provisioning is turned off by default."
 msgstr ""
 
 #: ../../hosts.rst:266
 # 253e39db71ed47619ec617fb7a5397ac
-msgid "Over-provisioning ratios are dynamically substituted in CloudStack's capacity calculations. For example:"
+msgid "over-provisioning factors are dynamically substituted in CloudStack's capacity calculations. For example:"
 msgstr ""
 
 #: ../../hosts.rst:269
@@ -387,7 +391,7 @@ msgstr ""
 
 #: ../../hosts.rst:278
 # fdd299fb9bed44d696ed49d97cd8779d
-msgid "The administrator can specify a memory over-provisioning ratio, and can specify both CPU and memory over-provisioning ratios on a per-cluster basis."
+msgid "The administrator can specify a memory over-provisioning factor, and can specify both CPU and memory over-provisioning factors on a per-cluster basis."
 msgstr ""
 
 #: ../../hosts.rst:282
@@ -397,7 +401,7 @@ msgstr ""
 
 #: ../../hosts.rst:291
 # 14bb9814011f4bb6972aeb18939b2e6c
-msgid "The overprovisioning settings can be used along with dedicated resources (assigning a specific cluster to an account) to effectively offer different levels of service to different accounts. For example, an account paying for a more expensive level of service could be assigned to a dedicated cluster with an over-provisioning ratio of 1, and a lower-paying account to a cluster with a ratio of 2."
+msgid "The overprovisioning settings can be used along with dedicated resources (assigning a specific cluster to an account) to effectively offer different levels of service to different accounts. For example, an account paying for a more expensive level of service could be assigned to a dedicated cluster with an over-provisioning factor of 1, and a ower-paying account to a cluster with a factor of 2."
 msgstr ""
 
 #: ../../hosts.rst:298
@@ -501,17 +505,17 @@ msgstr ""
 
 #: ../../hosts.rst:378
 # fd73c49bd922450fb7a771ebb8586d6d
-msgid "Setting Over-Provisioning Ratios"
+msgid "Setting over-provisioning factors"
 msgstr ""
 
 #: ../../hosts.rst:380
 # 7d8bbd43174f499a98270e1aad9301bd
-msgid "There are two ways the root admin can set CPU and RAM over-provisioning ratios. First, the global configuration settings cpu.overprovisioning.factor and mem.overprovisioning.factor will be applied when a new cluster is created. Later, the ratios can be modified for an existing cluster."
+msgid "There are two ways the root admin can set CPU and RAM over-provisioning factors. First, the global configuration settings cpu.overprovisioning.factor and mem.overprovisioning.factor will be applied when a new cluster is created. Later, the factors can be modified for an existing cluster."
 msgstr ""
 
 #: ../../hosts.rst:386
 # 6930197d999a4c1bb3e8bca13bb10c00
-msgid "Only VMs deployed after the change are affected by the new setting. If you want VMs deployed before the change to adopt the new over-provisioning ratio, you must stop and restart the VMs. When this is done, CloudStack recalculates or scales the used and reserved capacities based on the new over-provisioning ratios, to ensure that CloudStack is correctly tracking the amount of free capacity."
+msgid "Only VMs deployed after the change are affected by the new setting. If you want VMs deployed before the change to adopt the new over-provisioning factor, you must stop and restart the VMs. When this is done, CloudStack recalculates or scales the used and reserved capacities based on the new over-provisioning factors, to ensure that CloudStack is correctly tracking the amount of free capacity."
 msgstr ""
 
 #: ../../hosts.rst:394
@@ -521,7 +525,7 @@ msgstr ""
 
 #: ../../hosts.rst:400
 # 443b0ee66d0b40bdad6e11ac6c4eb123
-msgid "To change the over-provisioning ratios for an existing cluster:"
+msgid "To change the over-provisioning factors for an existing cluster:"
 msgstr ""
 
 #: ../../hosts.rst:402
@@ -531,17 +535,17 @@ msgstr ""
 
 #: ../../hosts.rst:406
 # 450e03bbb9974112bec16a0dca62c829
-msgid "Under Clusters, click View All."
+msgid "Select Clusters."
 msgstr ""
 
 #: ../../hosts.rst:408
 # dc9598fec6f74c74a82c2311ff962b5d
-msgid "Select the cluster you want to work with, and click the Edit button."
+msgid "Search for overprovisioning."
 msgstr ""
 
 #: ../../hosts.rst:410
 # 4574765089c64df0a53ffd4b0d9052a0
-msgid "Fill in your desired over-provisioning multipliers in the fields CPU overcommit ratio and RAM overcommit ratio. The value which is intially shown in these fields is the default value inherited from the global configuration settings."
+msgid "Fill in your desired over-provisioning multipliers in the fields CPU overcommit factor and RAM overcommit factor. The value which is intially shown in these fields is the default value inherited from the global configuration settings."
 msgstr ""
 
 #: ../../hosts.rst:421
@@ -718,7 +722,7 @@ msgstr ""
 
 #: ../../hosts.rst:504
 # 7bd96bd6e7fd4c94bd7be28295bd46de
-msgid "On Zones, click View More, then click the zone to which you want to work with."
+msgid "Click Zones and select the zone you'd like to modify."
 msgstr ""
 
 #: ../../hosts.rst:507

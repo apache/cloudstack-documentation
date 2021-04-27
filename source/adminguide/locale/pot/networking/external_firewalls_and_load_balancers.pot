@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 
+# Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -288,7 +288,7 @@ msgstr ""
 
 #: ../../networking/external_firewalls_and_load_balancers.rst:262
 # 20fc7dedf2cf482d94d8977ac64c6b0d
-msgid "Click View IP Addresses."
+msgid "Click Public IP Addresses."
 msgstr ""
 
 #: ../../networking/external_firewalls_and_load_balancers.rst:264

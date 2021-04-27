@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -39,7 +39,7 @@ msgstr "点击拟修改的网络名称。"
 
 # beaa083fcce64bb48e44a47c9b4ab745
 #: ../../networking/acquiring_an_ip_address.rst:26
-msgid "Click View IP Addresses."
+msgid "Click Public IP Addresses."
 msgstr "点击查看IP地址。"
 
 # 76867ce630364509a651c09137cab94e

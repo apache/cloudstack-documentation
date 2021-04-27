@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -91,8 +91,7 @@ msgstr "在左边的导航，选择基础架构。"
 # 9d6f09662ceb452bb8bf26c21696a7ff
 #: ../../networking/multiple_subnets_in_shared_network.rst:56
 msgid ""
-"On Zones, click View More, then click the zone to which you want to work "
-"with.."
+Click Zones and select the zone you'd like to modify.
 msgstr "在Zones上，点击查看更多，然后点击你要进行操作的zone.."
 
 # 9a6c131e8dee4829a34a534324f96d6a

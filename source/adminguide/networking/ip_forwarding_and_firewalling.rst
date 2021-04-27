@@ -62,11 +62,11 @@ To create a firewall rule:
 
 #. Click the name of the network where you want to work with.
 
-#. Click View IP Addresses.
+#. Click Public IP Addresses tab.
 
 #. Click the IP address you want to work with.
 
-#. Click the Configuration tab and fill in the following values.
+#. Click the Firewall tab and fill in the following values.
 
    -  **Source CIDR**: (Optional) To accept only traffic from IP
       addresses within a particular address block, enter a CIDR or a
@@ -203,7 +203,7 @@ This feature is supported only on virtual router and Juniper SRX.
 
    #. In the left navigation bar, click Service Offerings.
 
-   #. In Select Offering, choose Network Offering.
+   #. In the left navigation bar, click Service Offerings and choose Network Offering.
 
    #. Click Add Network Offering.
 
@@ -255,12 +255,10 @@ To set up port forwarding:
 #. Click the name of the guest network where the VMs are running.
 
 #. Choose an existing IP address or acquire a new IP address. See
-   `"Acquiring a New IP Address" <#acquiring-a-new-ip-address>`_. 
+   `"Acquiring a New IP Address" <#acquiring-a-new-ip-address>`_.
    Click the name of the IP address in the list.
 
-#. Click the Configuration tab.
-
-#. In the Port Forwarding node of the diagram, click View All.
+#. Click the Port Forwarding tab.
 
 #. Fill in the following:
 

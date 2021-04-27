@@ -12,7 +12,7 @@
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
-   
+
 
 Portable IPs
 ------------
@@ -42,6 +42,12 @@ The salient features of Portable IP are as follows:
 -  IP is transferable across VPC, non-VPC isolated and shared networks
 
 -  Portable IP transfer is available only for static NAT.
+
+.. note::
+   Portable IPs is currently not supported in the new UI.
+   To manage Portable IPs, please directly invoke the
+   respective APIs or use `cloudmonkey <https://github.com/apache/cloudstack-cloudmonkey>`_,
+   the CLI tool for cloudstack
 
 
 Guidelines
@@ -93,7 +99,7 @@ Acquiring a Portable IP
 
 #. Click the name of the network where you want to work with.
 
-#. Click View IP Addresses.
+#. Click Public IP Addresses.
 
 #. Click Acquire New IP.
 

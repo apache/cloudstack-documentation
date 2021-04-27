@@ -69,7 +69,7 @@ Assigning Additional IPs to a VM
 
 #. Click the name of the instance you want to work with.
 
-#. In the Details tab, click NICs.
+#. Click the NICs tab.
 
 #. Click View Secondary IPs.
 

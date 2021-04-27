@@ -12,7 +12,7 @@
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
-   
+
 
 Multiple Subnets in Shared Network
 ----------------------------------
@@ -53,8 +53,7 @@ Adding Multiple Subnets to a Shared Network
 
 #. In the left navigation, choose Infrastructure.
 
-#. On Zones, click View More, then click the zone to which you want to
-   work with..
+#. Click Zones and select the zone you'd like to modify.
 
 #. Click Physical Network.
 
@@ -90,7 +89,11 @@ Adding Multiple Subnets to a Shared Network
    -  **Start IP/ End IP**: A range of IP addresses that are accessible
       from the Internet and will be allocated to guest VMs. Enter the
       first and last IP addresses that define a range that CloudStack
-      can assign to guest VMs .
+      can assign to guest VMs.
+
+   -  **VLAN/VNI**: the ID or VID of the VLAN. If not specified, will be
+      defaulted to the vlan of the network or if vlan of the network is
+      null - to Untagged
 
 #. Click OK.
 

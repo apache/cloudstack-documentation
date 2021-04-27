@@ -43,17 +43,17 @@ configure the base guest network:
 #. Provide the following information:
 
    -  **Name**: The name of the network. This will be user-visible
- 
+
    -  **Display Text**: The description of the network. This will be
       user-visible
- 
+
    -  **Zone**: The zone in which you are configuring the guest network.
- 
+
    -  **Network offering**: If the administrator has configured multiple
       network offerings, select the one you want to use for this network
- 
+
    -  **Guest Gateway**: The gateway that the guests should use
- 
+
    -  **Guest Netmask**: The netmask in use on the subnet the guests
       will use
 

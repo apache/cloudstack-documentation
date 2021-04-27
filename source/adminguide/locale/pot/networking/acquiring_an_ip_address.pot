@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 
+# Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -38,7 +38,7 @@ msgstr ""
 
 #: ../../networking/acquiring_an_ip_address.rst:26
 # beaa083fcce64bb48e44a47c9b4ab745
-msgid "Click View IP Addresses."
+msgid "Click Public IP Addresses."
 msgstr ""
 
 #: ../../networking/acquiring_an_ip_address.rst:28

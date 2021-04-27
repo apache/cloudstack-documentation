@@ -12,7 +12,7 @@
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
-   
+
 
 Global Server Load Balancing Support
 ------------------------------------
@@ -32,6 +32,11 @@ provider the GSLB service. Currently, NetScaler is the supported GSLB
 provider in CloudStack. GSLB functionality works in an Active-Active
 data center environment.
 
+.. note::
+   Global Server Load Balancing is currently not supported in the new UI.
+   To manage Global Server Load Balancing, please directly invoke the
+   respective APIs or use `cloudmonkey <https://github.com/apache/cloudstack-cloudmonkey>`_,
+   the CLI tool for cloudstack
 
 About Global Server Load Balancing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -193,13 +198,13 @@ above, the administrator of xyztelco is the one who sets up GSLB:
    tenant's cloud that make use of the GSLB service.
 
 #. On the NetScaler side, configure GSLB as given in `Configuring Global
-   Server Load Balancing (GSLB) 
+   Server Load Balancing (GSLB)
    <http://support.citrix.com/proddocs/topic/netscaler-traffic-management-10-map/ns-gslb-config-con.html>`_:
 
    #. Configuring a standard load balancing setup.
 
    #. Configure Authoritative DNS, as explained in `Configuring an
-      Authoritative DNS Service 
+      Authoritative DNS Service
       <http://support.citrix.com/proddocs/topic/netscaler-traffic-management-10-map/ns-gslb-config-adns-svc-tsk.html>`_.
 
    #. Configure a GSLB site with site name formed from the domain name
@@ -211,17 +216,17 @@ above, the administrator of xyztelco is the one who sets up GSLB:
       As per the example given above, the site names are A.xyztelco.com
       and B.xyztelco.com.
 
-      For more information, see `Configuring a Basic GSLB Site 
+      For more information, see `Configuring a Basic GSLB Site
       <http://support.citrix.com/proddocs/topic/netscaler-traffic-management-10-map/ns-gslb-config-basic-site-tsk.html>`_.
 
    #. Configure a GSLB virtual server.
 
-      For more information, see `Configuring a GSLB Virtual Server 
+      For more information, see `Configuring a GSLB Virtual Server
       <http://support.citrix.com/proddocs/topic/netscaler-traffic-management-10-map/ns-gslb-config-vsvr-tsk.html>`_.
 
    #. Configure a GSLB service for each virtual server.
 
-      For more information, see `Configuring a GSLB Service 
+      For more information, see `Configuring a GSLB Service
       <http://support.citrix.com/proddocs/topic/netscaler-traffic-management-10-map/ns-gslb-config-svc-tsk.html>`_.
 
    #. Bind the GSLB services to the GSLB virtual server.

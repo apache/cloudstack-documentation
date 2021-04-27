@@ -146,7 +146,7 @@ You will need, at a minimum, the following to compile CloudStack:
 
 #. Maven (version 3)
 
-#. Java (Java 8/OpenJDK 1.8)
+#. Java (Java 11/OpenJDK 1.11)
 
 #. Apache Web Services Common Utilities (ws-commons-util)
 

@@ -48,7 +48,7 @@ Adding an Additional Guest Network
 
 #. In the left navigation, choose Network.
 
-#. Click Add guest network. Provide the following information:
+#. Click Add Network and select the Isolated tab. Provide the following information:
 
    -  **Name**: The name of the network. This will be user-visible.
 
@@ -64,9 +64,9 @@ Adding an Additional Guest Network
       network offerings, select the one you want to use for this
       network.
 
-   -  **Guest Gateway**: The gateway that the guests should use.
+   -  **Gateway**: The gateway that the guests should use.
 
-   -  **Guest Netmask**: The netmask in use on the subnet the guests
+   -  **Netmask**: The netmask in use on the subnet the guests
       will use.
 
 #. Click Create.

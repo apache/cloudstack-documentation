@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 
+# Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -133,12 +133,12 @@ msgstr ""
 
 #: ../../management.rst:91
 # 7d8f4e987714451e9db1c9e749f8b1ca
-msgid "PRODUCT manages different types of hosts that contains one or more physical CPU sockets. CPU socket is considered as a unit of measure used for licensing and billing cloud infrastructure. PRODUCT provides both UI and API support to collect the CPU socket statistics for billing purpose. The Infrastructure tab has a new tab for CPU sockets. You can view the statistics for CPU sockets managed by PRODUCT, which in turn reflects the size of the cloud. The CPU Socket page will give you the number of hosts and sockets used for each host type."
+msgid "Cloudstack manages different types of hosts that contains one or more physical CPU sockets. CPU socket is considered as a unit of measure usedfor licensing and billing cloud infrastructure. Cloudstack provides both UI and API support to collect the CPU socket statistics for billing purpose. The Infrastructure tab has a new tab for CPU sockets. You can view the statistics for CPU sockets managed by Cloudstack, which in turn reflects the size of the cloud. The CPU Socket page will give you the number of hosts and sockets used for each host type."
 msgstr ""
 
 #: ../../management.rst:100
 # dec087784ccd48c49189c3f0ed1811a9
-msgid "Log in to the PRODUCT UI."
+msgid "Log in to the Cloudstack UI."
 msgstr ""
 
 #: ../../management.rst:102

@@ -31,8 +31,8 @@ balancing in zones that use isolated networking in advanced zones. Set
 up an external load balancer when you want to provide load balancing
 through means other than CloudStack's provided virtual router.
 
-.. note:: 
-   In a Basic zone, load balancing service is supported only if 
+.. note::
+   In a Basic zone, load balancing service is supported only if
    Elastic IP or Elastic LB services are enabled.
 
 When NetScaler load balancer is used to provide EIP or ELB services in a
@@ -173,7 +173,7 @@ communication between the NetScaler device and the RHEL machine.
    system startup:
 
    .. code:: bash
-   
+
       chkconfig snmpd on
 
 
@@ -238,7 +238,7 @@ balance traffic received at a public IP to one or more VMs. A user
 creates a rule, specifies an algorithm, and assigns the rule to a set of
 VMs.
 
-.. note:: 
+.. note::
    If you create load balancing rules while using a network service
    offering that includes an external load balancer device such as
    NetScaler, and later change the network service offering to one that
@@ -259,12 +259,11 @@ Adding a Load Balancer Rule
 #. Click the name of the network where you want to load balance the
    traffic.
 
-#. Click View IP Addresses.
+#. Click Public IP Addresses.
 
-#. Click the IP address for which you want to create the rule, then
-   click the Configuration tab.
+#. Click the IP address for which you want to create the rule.
 
-#. In the Load Balancing node of the diagram, click View All.
+#. Click the Load Balancing tab.
 
    In a Basic zone, you can also create a load balancing rule without
    acquiring or selecting an IP address. CloudStack internally assign an
@@ -420,7 +419,7 @@ CloudStack uses the NetScaler load balancer to monitor all aspects of a
 system's health and work in unison with CloudStack to initiate scale-up
 or scale-down actions.
 
-.. note:: 
+.. note::
    AutoScale is supported on NetScaler Release 10 Build 74.4006.e and beyond.
 
 
@@ -433,8 +432,8 @@ Before you configure an AutoScale rule, consider the following:
    AutoScale. When a VM is deployed by using a template and when it
    comes up, the application should be up and running.
 
-   .. note:: 
-      If the application is not running, the NetScaler device considers the 
+   .. note::
+      If the application is not running, the NetScaler device considers the
       VM as ineffective and continues provisioning the VMs unconditionally
       until the resource limit is exhausted.
 
@@ -448,9 +447,9 @@ Before you configure an AutoScale rule, consider the following:
    monitor the SNMP-based counter, ensure that the SNMP agent is
    installed in the template used for creating the AutoScale VMs, and
    the SNMP operations work with the configured SNMP community and port
-   by using standard SNMP managers. For example, see 
-   `"Configuring SNMP Community String on a RHELServer" 
-   <#configuring-snmp-community-string-on-a-rhel-server>`_ 
+   by using standard SNMP managers. For example, see
+   `"Configuring SNMP Community String on a RHELServer"
+   <#configuring-snmp-community-string-on-a-rhel-server>`_
    to configure SNMP on a RHEL machine.
 
 -  Ensure that the endpointe.url parameter present in the Global
@@ -504,7 +503,7 @@ Specify the following:
    rule has at least the configured number of active VM instances are
    available to serve the traffic.
 
-   .. note:: 
+   .. note::
       If an application, such as SAP, running on a VM instance is down for
       some reason, the VM is then not counted as part of Min Instance
       parameter, and the AutoScale feature initiates a scaleup action if
@@ -525,7 +524,7 @@ Specify the following:
    leads to a single load balancing rule exhausting the VM instances
    limit specified at the account or domain level.
 
-   .. note:: 
+   .. note::
       If an application, such as SAP, running on a VM instance is down for
       some reason, the VM is not counted as part of Max Instance parameter.
       So there may be scenarios where the number of VMs provisioned for a

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -115,7 +115,7 @@ msgstr "点击拟修改的网络名称。"
 
 # d546be88025a4254b8eecf1f0b16bdf0
 #: ../../networking/ip_forwarding_and_firewalling.rst:65
-msgid "Click View IP Addresses."
+msgid "Click Public IP Addresses."
 msgstr "点击查看IP地址。"
 
 # 0c60a7fde5644f9188c0bf190c166890
@@ -361,7 +361,7 @@ msgstr "在左侧导航栏中，点击 服务方案。"
 
 # 7fce8b96f6e64727bb6063766c828bdd
 #: ../../networking/ip_forwarding_and_firewalling.rst:206
-msgid "In Select Offering, choose Network Offering."
+msgid "In the left navigation bar, click Service Offerings and choose Network Offering."
 msgstr "在选择方案中，选择网络方案。"
 
 # ef8895c197ff4343b04aecc73b5a9294
