@@ -12,7 +12,7 @@
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
-   
+
 About Working with Virtual Machines
 ===================================
 
@@ -36,9 +36,9 @@ names can be controlled by the user:
 -  Name – host name that the DHCP server assigns to the VM. Can be set
    by the user. Defaults to instance name
 
-.. note:: 
-   You can append the display name of a guest VM to its internal name. 
-   For more information, see `“Appending a Display Name to the Guest VM’s 
+.. note::
+   You can append the display name of a guest VM to its internal name.
+   For more information, see `“Appending a Display Name to the Guest VM’s
    Internal Name” <#appending-a-display-name-to-the-guest-vms-internal-name>`_.
 
 Guest VMs can be configured to be Highly Available (HA). An HA-enabled
@@ -117,10 +117,10 @@ create blank virtual machines. A blank virtual machine is a virtual
 machine without an OS template. Users can attach an ISO file and install
 the OS from the CD/DVD-ROM.
 
-.. note:: 
-   You can create a VM without starting it. You can determine whether the 
-   VM needs to be started as part of the VM deployment. A request parameter, 
-   startVM, in the deployVm API provides this feature. For more information, 
+.. note::
+   You can create a VM without starting it. You can determine whether the
+   VM needs to be started as part of the VM deployment. A request parameter,
+   startVM, in the deployVm API provides this feature. For more information,
    see the Developer's Guide.
 
 To create a VM from a template:
@@ -140,7 +140,7 @@ To create a VM from a template:
 #. Be sure that the hardware you have allows starting the selected
    service offering.
 
-   .. note:: 
+   .. note::
       VMware only: If the selected template contains OVF properties, different deployment options or configurations,
       multiple NICs or end-user license agreements, then the wizard will display these properties.
 
@@ -148,19 +148,19 @@ To create a VM from a template:
 
 #. Click Submit and your VM will be created and started.
 
-   .. note:: 
-      For security reason, the internal name of the VM is visible 
+   .. note::
+      For security reason, the internal name of the VM is visible
       only to the root admin.
 
 To create a VM from an ISO:
 
-.. note:: 
-   **XenServer** 
+.. note::
+   **XenServer**
 
-   Windows VMs running on XenServer require PV drivers, 
-   which may be provided in the template or added after the VM is 
-   created. The PV drivers are necessary for essential management 
-   functions such as mounting additional volumes and ISO images, 
+   Windows VMs running on XenServer require PV drivers,
+   which may be provided in the template or added after the VM is
+   created. The PV drivers are necessary for essential management
+   functions such as mounting additional volumes and ISO images,
    live migration, and graceful shutdown.
 
 #. Log in to the CloudStack UI as an administrator or user.
@@ -248,14 +248,14 @@ Once a VM instance is created, you can stop, restart, or delete it as
 needed. In the CloudStack UI, click Instances, select the VM, and use
 the Stop, Start, Reboot, and Destroy buttons.
 
-A stop will attempt to gracefully shut down the operating system, via 
+A stop will attempt to gracefully shut down the operating system, via
 an ACPI 'stop' command which is similar to pressing the soft power switch
 on a physical server. If the operating system cannot be stopped, it will
 be forcefully terminated. This has the same effect as pulling out the power
 cord from a physical machine.
 
 A reboot should not be considered as a stop followed by a start. In CloudStack,
-a start command reconfigures the virtual machine to the stored parameters in 
+a start command reconfigures the virtual machine to the stored parameters in
 CloudStack's database.  The reboot process does not do this.
 
 When starting a VM, admin users have the option to specify a pod, cluster, or host.
@@ -281,14 +281,14 @@ To delete a virtual machine:
 #. Optionally both expunging and the deletion of any attached volumes can be enabled.
 
 When a virtual machine is **destroyed**, it can no longer be seen by the end user,
-however, it can be seen (and recovered) by a root admin.  In this state it still 
+however, it can be seen (and recovered) by a root admin.  In this state it still
 consumes logical resources.  Global settings control the maximum time from a VM
 being destroyed, to the physical disks being removed. When the VM and its rooot disk
 have been deleted, the VM is said to have been expunged.
 
 Once a virtual machine is **expunged**, it cannot be recovered. All the
 resources used by the virtual machine will be reclaimed by the system,
-This includes the virtual machine’s IP address.  
+This includes the virtual machine’s IP address.
 
 Managing Virtual Machines
 =========================
@@ -549,14 +549,14 @@ To manually live migrate a virtual machine
 #. From the list of suitable hosts, choose the one to which you want to
    move the VM.
 
-   .. note:: 
-      If the VM's storage has to be migrated along with the VM, this will 
-      be noted in the host list. CloudStack will take care of the storage 
+   .. note::
+      If the VM's storage has to be migrated along with the VM, this will
+      be noted in the host list. CloudStack will take care of the storage
       migration for you.
 
 #. Click OK.
 
-.. note:: 
+.. note::
       (KVM) If the VM's storage has to be migrated along with the VM, from a mounted NFS storage pool to a cluster-wide mounted NFS storage pool, then the 'migrateVirtualMachineWithVolume' API has to be used. There is no UI integration for this feature.
 
       (CloudMonkey) > migrate virtualmachinewithvolume virtualmachineid=<virtual machine uuid> hostid=<destination host uuid> migrateto[i].volume=<virtual machine volume number i uuid> migrateto[i].pool=<destination storage pool uuid for volume number i>
@@ -658,8 +658,8 @@ Assign a New VM to an Affinity Group
 To assign a new VM to an affinity group:
 
 -  Create the VM as usual, as described in `“Creating
-   VMs” <virtual_machines.html#creating-vms>`_. In the Add Instance 
-   wizard, there is a new Affinity tab where you can select the 
+   VMs” <virtual_machines.html#creating-vms>`_. In the Add Instance
+   wizard, there is a new Affinity tab where you can select the
    affinity group.
 
 
@@ -748,9 +748,9 @@ already in use by the VM.
 Advanced VM Instance Settings
 -----------------------------
 
-Each user VM has a set of "details" associated with it (as visible via listVirtualMachine API call) - those "details" are shown on the "Settings" tab of the VM in the GUI (words "setting(s)" and "detail(s)" are here used interchangeably). 
+Each user VM has a set of "details" associated with it (as visible via listVirtualMachine API call) - those "details" are shown on the "Settings" tab of the VM in the GUI (words "setting(s)" and "detail(s)" are here used interchangeably).
 
-The Settings tab is always present/visible, but settings can be changed only when the VM is in a Stopped state. 
+The Settings tab is always present/visible, but settings can be changed only when the VM is in a Stopped state.
 Some VM details/settings can be hidden via "user.vm.blacklisted.details" global setting (you can find below the list of those hidden by default).
 
 .. note::
@@ -761,22 +761,22 @@ When adding a new setting or modifying the existing ones, setting names are show
 Read-only details/settings that are hidden by default:
 
 - rootdisksize
-- cpuOvercommitRatio 
-- memoryOvercommitRatio 
+- cpuOvercommitRatio
+- memoryOvercommitRatio
 - Message.ReservedCapacityFreed.Flag
 
 An example list of settings as well as their possible values are shown on the images below:
 
-|vm-settings-dropdown-list.PNG|
+|vm-settings-dropdown-list.png|
 (VMware hypervisor)
 
-|vm-settings-values-dropdown-list.PNG|
+|vm-settings-values-dropdown-list.png|
 (VMware disk controllers)
 
-|vm-settings-values1-dropdown-list.PNG|
+|vm-settings-values1-dropdown-list.png|
 (VMware NIC models)
 
-|vm-settings-values-dropdown-KVM-list.PNG|
+|vm-settings-values-dropdown-KVM-list.png|
 (KVM disk controllers)
 
 
@@ -817,7 +817,7 @@ to write RAM memory content anywhere.
 
 If you need more information about VM snapshots on VMware, check out the
 VMware documentation and the VMware Knowledge Base, especially
-`Understanding virtual machine snapshots 
+`Understanding virtual machine snapshots
 <http://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&externalId=1015180>`_.
 
 
@@ -872,8 +872,8 @@ To create a VM snapshot using the CloudStack UI:
 
 #. Click the Take VM Snapshot button. |VMSnapshotButton.png|
 
-   .. note:: 
-      If a snapshot is already in progress, then clicking this button 
+   .. note::
+      If a snapshot is already in progress, then clicking this button
       will have no effect.
 
 #. Provide a name and description. These will be displayed in the VM
@@ -913,8 +913,8 @@ snapshot:
 
    To revert to the snapshot, click the Revert button. |revert-vm.png|
 
-.. note:: 
-   VM snapshots are deleted automatically when a VM is destroyed. You don't 
+.. note::
+   VM snapshots are deleted automatically when a VM is destroyed. You don't
    have to manually delete the snapshots in this case.
 
 Support for Virtual Appliances
@@ -961,8 +961,8 @@ Create an instance template that supports SSH Keys.
 
    For more information on creating a new instance, see
 
-#. Download the cloudstack script from `The SSH Key Gen Script 
-   <http://sourceforge.net/projects/cloudstack/files/SSH%20Key%20Gen%20Script/>`_ 
+#. Download the cloudstack script from `The SSH Key Gen Script
+   <http://sourceforge.net/projects/cloudstack/files/SSH%20Key%20Gen%20Script/>`_
    to the instance you have created.
 
    .. parsed-literal::
@@ -1000,9 +1000,9 @@ call to the cloudstack api.
 For example, make a call from the cloudstack server to create a SSH
 keypair called "keypair-doc" for the admin account in the root domain:
 
-.. note:: 
-   Ensure that you adjust these values to meet your needs. If you are 
-   making the API call from a different server, your URL/PORT will be 
+.. note::
+   Ensure that you adjust these values to meet your needs. If you are
+   making the API call from a different server, your URL/PORT will be
    different, and you will need to use the API keys.
 
 #. Run the following curl command:
@@ -1058,8 +1058,8 @@ Instance Template that Supports SSH Keys” <#create-ssh-template>`__.
 Ensure that you use the same SSH key name that you created at
 `Section 5.2.2, “Creating the SSH Keypair” <#create-ssh-keypair>`__.
 
-.. note:: 
-   You cannot create the instance by using the GUI at this time and 
+.. note::
+   You cannot create the instance by using the GUI at this time and
    associate the instance with the newly created SSH keypair.
 
 A sample curl command to create a new instance is:
@@ -1162,10 +1162,10 @@ Before proceeding, ensure that you have these prerequisites:
 
 - The vGPU-enabled XenServer 6.2 and later versions.
   For more information, see `Citrix 3D Graphics Pack <https://www.citrix.com/go/private/vgpu.html>`_.
-  
+
 - GPU/vPGU functionality is supported for following HVM guest operating systems:
   For more information, see `Citrix 3D Graphics Pack <https://www.citrix.com/go/private/vgpu.html>`_.
-   
+
 - Windows 7 (x86 and x64)
 
 - Windows Server 2008 R2
@@ -1235,30 +1235,30 @@ CloudStack follows the below sequence of operations to provide GPU/vGPU support 
 
 #. Add the host to CloudStack.
    CloudStack checks if the host is GPU-enabled or not. CloudStack queries the host and detect if it's GPU enabled.
-   
+
 #. Create a compute offering with GPU/vGPU support:
    For more information, see `Creating a New Compute Offering <#creating-a-new-compute-offering>`__..
 
 #. Continue with any of the following operations:
-  
+
    -  Deploy a VM.
-  
+
       Deploy a VM with GPU/vGPU support by selecting appropriate Service Offering. CloudStack decide which host to choose for VM deployment based on following criteria:
-    
+
       - Host has GPU cards in it. In case of vGPU, CloudStack checks if cards have the required vGPU type support and enough capacity available. Having no appropriate hosts results in an InsufficientServerCapacity exception.
-    
-      - Alternately, you can choose to deploy a VM without GPU support, and at a later point, you can change the system offering. You can achieve this by offline upgrade: stop the VM, upgrade the Service Offering to the one with vGPU, then start the VM. 
+
+      - Alternately, you can choose to deploy a VM without GPU support, and at a later point, you can change the system offering. You can achieve this by offline upgrade: stop the VM, upgrade the Service Offering to the one with vGPU, then start the VM.
         In this case, CloudStack gets a list of hosts which have enough capacity to host the VM. If there is a GPU-enabled host, CloudStack reorders this host list and place the GPU-enabled hosts at the bottom of the list.
-  
+
    -  Migrate a VM.
-    
+
       CloudStack searches for hosts available for VM migration, which satisfies GPU requirement. If the host is available, stop the     VM in the current host and perform the VM migration task. If the VM migration is successful, the remaining GPU capacity is     updated for both the hosts accordingly.
-      
+
    -  Destroy a VM.
-    
+
       GPU resources are released automatically when you stop a VM. Once the destroy VM is successful, CloudStack will make a resource call to the host to get the remaining GPU capacity in the card and update the database accordingly.
 
-       
+
 .. |vm-lifecycle.png| image:: /_static/images/vm-lifecycle.png
    :alt: Virtual Machine State Model
 .. |VMSnapshotButton.png| image:: /_static/images/VMSnapshotButton.png
@@ -1282,11 +1282,11 @@ CloudStack follows the below sequence of operations to provide GPU/vGPU support 
    :alt: depicts adding an iso image
 .. |StopButton.png| image:: /_static/images/stop-instance-icon.png
    :alt: depicts adding an iso image
-.. |vm-settings-dropdown-list.PNG| image:: /_static/images/vm-settings-dropdown-list.PNG
+.. |vm-settings-dropdown-list.png| image:: /_static/images/vm-settings-dropdown-list.png
    :alt: List of possible VMware settings
-.. |vm-settings-values-dropdown-list.PNG| image:: /_static/images/vm-settings-values-dropdown-list.PNG
+.. |vm-settings-values-dropdown-list.png| image:: /_static/images/vm-settings-values-dropdown-list.png
    :alt: List of possible VMware disk controllers
-.. |vm-settings-values1-dropdown-list.PNG| image:: /_static/images/vm-settings-values1-dropdown-list.PNG
+.. |vm-settings-values1-dropdown-list.png| image:: /_static/images/vm-settings-values1-dropdown-list.png
    :alt: List of possible VMware NIC models
-.. |vm-settings-values-dropdown-KVM-list.PNG| image:: /_static/images/vm-settings-values-dropdown-KVM-list.PNG
+.. |vm-settings-values-dropdown-KVM-list.png| image:: /_static/images/vm-settings-values-dropdown-KVM-list.png
    :alt: List of possible KVM disk controllers

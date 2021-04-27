@@ -12,7 +12,7 @@
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
-   
+
 
 TroubleShooting
 ===============
@@ -26,7 +26,7 @@ database activities for diagnostics purposes in
 messages. We recommend this command to find the problematic output in
 the Management Server log:.
 
-.. note:: 
+.. note::
    When copying and pasting a command, be sure the command has pasted as a
    single line before executing. Some document viewers may introduce
    unwanted line breaks in copied text.
@@ -208,7 +208,7 @@ Solution
 
 See the following:
 
-`VMware Knowledge Base Article 
+`VMware Knowledge Base Article
 <http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=10051/>`_
 
 
@@ -282,11 +282,11 @@ Trouble Shooting Steps
    .. image:: /_static/images/networking-zone-traffic-labels.png
 
    On an existing zone, you can modify the traffic labels by going to
-   *Infrastructure, Zones, Physical Network* tab.
+   *Infrastructure, Zones, Physical Network, Traffic Types* tab.
 
    .. image:: /_static/images/networking-infra-traffic-labels.png
 
-   List labels using *CloudMonkey* 
+   List labels using *CloudMonkey*
 
    ::
 
@@ -317,7 +317,7 @@ Trouble Shooting Steps
       traffictype = Storage
       xennetworklabel = MGMT
       =========================================================
-  
+
 #. KVM traffic labels require to be named as *"cloudbr0"*, *"cloudbr2"*,
    *"cloudbrN"* etc and the corresponding bridge must exist on the KVM
    hosts. If you create labels/bridges with any other names, CloudStack
@@ -328,13 +328,13 @@ Trouble Shooting Steps
    ::
 
       kvm1 ~$ ifconfig cloudbr0
-      cloudbr0  Link encap:Ethernet  HWaddr 00:0C:29:EF:7D:78  
+      cloudbr0  Link encap:Ethernet  HWaddr 00:0C:29:EF:7D:78
          inet addr:192.168.44.22  Bcast:192.168.44.255  Mask:255.255.255.0
          inet6 addr: fe80::20c:29ff:feef:7d78/64 Scope:Link
          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
          RX packets:92435 errors:0 dropped:0 overruns:0 frame:0
          TX packets:50596 errors:0 dropped:0 overruns:0 carrier:0
-         collisions:0 txqueuelen:0 
+         collisions:0 txqueuelen:0
          RX bytes:94985932 (90.5 MiB)  TX bytes:61635793 (58.7 MiB)
 
 #. The Virtual Router, SSVM, CPVM *public* interface would be bridged to
@@ -375,10 +375,10 @@ Trouble Shooting Steps
 
    ::
 
-      xenserver1 ~$ xe network-list 
+      xenserver1 ~$ xe network-list
       uuid ( RO)                : aaa-bbb-ccc-ddd
                 name-label ( RW): MGMT
-          name-description ( RW): 
+          name-description ( RW):
                     bridge ( RO): xenbr0
 
 
@@ -451,6 +451,6 @@ Trouble Shooting Steps
 In a vast majority of the cases, the problem has turned out to be at the
 switching layer where the L3 switches were configured incorrectly.
 
-This section was contibuted by Shanker Balan and was originally published on 
+This section was contibuted by Shanker Balan and was originally published on
 `Shapeblue's blog <http://shankerbalan.net/blog/internet-not-working-on-cloudstack-vms/>`_
 

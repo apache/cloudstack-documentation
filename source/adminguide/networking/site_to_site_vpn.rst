@@ -26,7 +26,7 @@ The supported endpoints on the remote datacenters are:
 
 -  CloudStack virtual routers
 
-.. note:: 
+.. note::
    In addition to the specific Cisco and Juniper devices listed above, the
    expectation is that any Cisco or Juniper device running on the supported
    operating systems are able to establish VPN connections.
@@ -48,7 +48,7 @@ To set up a Site-to-Site VPN connection, perform the following:
 Creating and Updating a VPN Customer Gateway
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. note:: 
+.. note::
    A VPN customer gateway can be connected to only one VPN gateway at a time.
 
 To add a VPN Customer Gateway:
@@ -79,7 +79,7 @@ To add a VPN Customer Gateway:
       authenticate the customer gateway and the VPC VPN gateway to each
       other. The sequence cannot contain a newline or double-quote.
 
-      .. note:: 
+      .. note::
          The IKE peers (VPN end points) authenticate each other by
          computing and sending a keyed hash of data that includes the
          Preshared key. If the receiving peer is able to create the same
@@ -92,7 +92,7 @@ To add a VPN Customer Gateway:
       AES256, and 3DES. Authentication is accomplished through the
       Preshared Keys.
 
-      .. note:: 
+      .. note::
          The phase-1 is the first phase in the IKE process. In this initial
          negotiation phase, the two VPN endpoints agree on the methods to
          be used to provide security for the underlying IP traffic. The
@@ -112,7 +112,7 @@ To add a VPN Customer Gateway:
       within phase-2. The supported encryption algorithms are AES128,
       AES192, AES256, and 3DES.
 
-      .. note:: 
+      .. note::
          The phase-2 is the second phase in the IKE process. The purpose of
          IKE phase-2 is to negotiate IPSec security associations (SA) to
          set up the IPSec tunnel. In phase-2, new keying material is
@@ -132,7 +132,7 @@ To add a VPN Customer Gateway:
       of the key exchanges increase as the DH groups grow larger, as
       does the time of the exchanges.
 
-      .. note:: 
+      .. note::
          When PFS is turned on, for every negotiation of a new phase-2 SA
          the two gateways must generate a new set of phase-1 keys. This
          adds an extra layer of protection that PFS adds, which ensures if
@@ -153,6 +153,9 @@ To add a VPN Customer Gateway:
       the virtual router to query the liveliness of its IKE peer at
       regular intervals. It's recommended to have the same configuration
       of DPD on both side of VPN connection.
+
+   -  **Force UDP Encapsulation of ESP Packets**: Force Encapsulation for
+      NAT traversal
 
 #. Click OK.
 

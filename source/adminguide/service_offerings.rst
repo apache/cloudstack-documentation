@@ -13,7 +13,7 @@
    specific language governing permissions and limitations
    under the License.
 
-.. |update-service-offering-button.jpg| image:: /_static/images/update-service-offering-button.jpg
+.. |update-service-offering-button.png| image:: /_static/images/update-service-offering-button.png
    :alt: Update offering access button
 
 .. |edit-icon.png| image:: /_static/images/edit-icon.png
@@ -57,10 +57,10 @@ present users with choices when creating a new instance:
    creating a new instance. For example, CloudStack includes CentOS as a
    template. See Working with Templates.
 
-In addition to these choices that are provided for users, there is 
+In addition to these choices that are provided for users, there is
 another type of service offering which is available only to the CloudStack
-root administrator, and is used for configuring virtual infrastructure 
-resources. For more information, see Upgrading a Virtual Router with 
+root administrator, and is used for configuring virtual infrastructure
+resources. For more information, see Upgrading a Virtual Router with
 System Service Offerings.
 
 Scope
@@ -69,19 +69,19 @@ Scope
 Since version 4.13; compute offerings, disk offerings, network offerings and VPC offerings can be
 scoped to (made available in) combinations of specific domain(s) and zone(s) or to all domains and zones.
 
-Existing offerings can be updated via the UI or via the updateServiceOffering, updateDiskOffering, 
+Existing offerings can be updated via the UI or via the updateServiceOffering, updateDiskOffering,
 updateNetworkOffering and updateVpcOffering API calls, by passing "domainid" and
 "zoneid" parameters.
 
 A root admin can change a domain-specific offering to a public one via the UI, or
-by passing “domainid=public” in the updateServiceOffering API call. To make a 
-zone-specific offering available for all zones, a root admin should include 
+by passing “domainid=public” in the updateServiceOffering API call. To make a
+zone-specific offering available for all zones, a root admin should include
 “zoneid=all” in the API call or carry out the operation via the UI.
 
-Domain-admins have a limited scope to update service or compute offerings. They cannot 
-change the zone(s) in which the offerings are available, and they cannot change 
-the name, display text or sort-key for offerings. They can change the domain(s) 
-which an offering is available in, if the offering's scope is limited to only 
+Domain-admins have a limited scope to update service or compute offerings. They cannot
+change the zone(s) in which the offerings are available, and they cannot change
+the name, display text or sort-key for offerings. They can change the domain(s)
+which an offering is available in, if the offering's scope is limited to only
 domains and/or subdomains for which the domain admin is the admin.
 
 
@@ -102,13 +102,13 @@ offerings are predefined by the CloudStack administrator, in custom unconstraine
 offerings they are left undefined so that the end-user can enter their own desired
 values when creating a guest instance. Since 4.13 custom constrained offerings have
 been introduced to allow the end-user to enter the number of CPUs and memory
-required within constraints set by the administrator.  The constraints can be 
-different for different custom constrained offerings.  This is useful to reduce 
+required within constraints set by the administrator.  The constraints can be
+different for different custom constrained offerings.  This is useful to reduce
 the number of offerings the CloudStack administrator has to define; Instead of
 defining a compute offering for every imaginable combination of values that a user
 might want, the administrator can define offerings that provide some
 flexibility to the users and can serve as the basis for several
-different VM configurations.  
+different VM configurations.
 
 A service offering includes the following elements:
 
@@ -148,8 +148,8 @@ The disk offering specifies:
 -  Tags on the data disk
 
 
-To support the custom offerings, usage events register events for dynamically 
-assigned resources. Usage events are registered when a VM is created 
+To support the custom offerings, usage events register events for dynamically
+assigned resources. Usage events are registered when a VM is created
 from a custom compute offering, and upon changing
 the compute offering of a stopped or running VM. The values of the
 parameters, such as CPU, speed, RAM are recorded.
@@ -187,18 +187,18 @@ To create a new compute offering:
       system VM is running. Shared allocates from storage accessible via
       NFS.
 
-   -  **Provisioning type**: The type of disk that should be allocated. 
+   -  **Provisioning type**: The type of disk that should be allocated.
       Local
 
    -  **Compute Offering Type**: The amount of freedom that the end user
       has to customise the compute power that their instance has when using this
-      compute offering.  The options are; Fixed offering - user has no 
+      compute offering.  The options are; Fixed offering - user has no
       ability to customise, Custom constrained - user has some latitude
-      to customise the compute within parameters set by the offering, 
+      to customise the compute within parameters set by the offering,
       Custom unconstrained - user can set any values that they wish
       'Custom constrained' is recommended over 'Custom unconstrained' as
       it enables the admin to set some boundaries.
-      
+
    -  **# of CPU cores**: The number of cores which should be allocated
       to a system VM with this offering. If 'Custom constrained' is checked, the admin will
       be asked to enter the minimum and maximum number of CPUs that a user
@@ -206,10 +206,10 @@ To create a new compute offering:
       field does not appear as the user will be prompted to enter a value when creating their guest instance.
 
    -  **CPU (in MHz)**: The CPU speed of the cores that the guest instance is
-      allocated. For example, “2000” would provide a 2GHz CPU clock speed. 
+      allocated. For example, “2000” would provide a 2GHz CPU clock speed.
       **This setting only used if CPU cap is selected.**
       This value is also passed to the hypervisor as a share value to give VMs
-      relative priority when a hypervisor host is over-provisioned. 
+      relative priority when a hypervisor host is over-provisioned.
       If 'Custom unconstrained' is checked this field does not appear as the user
       will be prompted to enter a value when creating their guest instance.
 
@@ -278,7 +278,7 @@ To create a new compute offering:
       available to all domains. Choose No to limit the scope to one or more
       specific domains.
 
-   -  **isVolatile**: If checked, VMs created from this service offering
+   -  **Volatile**: If checked, VMs created from this service offering
       will have their root disks reset upon reboot. This is useful for
       secure environments that need a fresh start on every boot and for
       desktops that should not retain state.
@@ -319,12 +319,12 @@ To create a new compute offering:
          possible. Otherwise, the VM can be deployed in shared infrastructure.
 
    -  **GPU**: Assign a physical GPU(GPU-passthrough) or a portion of a physical
-      GPU card (vGPU) to the guest VM. It allows graphical applications to run on the VM. 
+      GPU card (vGPU) to the guest VM. It allows graphical applications to run on the VM.
       Select the card from the supported list of cards.
       The options given are NVIDIA GRID K1 and NVIDIA GRID K2. These are vGPU
       capable cards that allow multiple vGPUs on a single physical GPU. If you
       want to use a card other than these, follow the instructions in the
-      **"GPU and vGPU support for CloudStack Guest VMs"** page in the 
+      **"GPU and vGPU support for CloudStack Guest VMs"** page in the
       Cloudstack Version 4.4 Design Docs found in the Cloudstack Wiki.
 
    -  **vGPU Type**: Represents the type of virtual GPU to be assigned to a
@@ -335,13 +335,13 @@ To create a new compute offering:
       In this case, a physical GPU device is exclusively allotted to a single
       guest VM.
 
-   -  **Domain**: This is only visible When 'Public' is unchecked. When visible, this 
+   -  **Domain**: This is only visible When 'Public' is unchecked. When visible, this
       controls the domains which will be able to use this compute offering. A multi-selection
-      list box will be displayed. One or more domains can be selected from 
+      list box will be displayed. One or more domains can be selected from
       this list box by holding down the control key and clicking on the desired domains.
-      
-   -  **Zone**: This controls which zones a compute offering is available in. 'All zones' or 
-      only specific zones can be selected.  One or more zones can be selected from 
+
+   -  **Zone**: This controls which zones a compute offering is available in. 'All zones' or
+      only specific zones can be selected.  One or more zones can be selected from
       this list box by holding down the control key and clicking on the desired zones.
 
    -  **Storage Policy**: Name of the storage policy defined at vCenter, this is applicable only for VMware.
@@ -426,13 +426,13 @@ To create a new disk offering:
       available to all domains. Choose No to limit the scope to one or more
       specific domains.
 
-   -  **Domain**: This is only visible When 'Public' is unchecked. When visible, this 
+   -  **Domain**: This is only visible When 'Public' is unchecked. When visible, this
       controls the domains which will be able to use this compute offering. A multi-selection
-      list box will be displayed. One or more domains can be selected from 
+      list box will be displayed. One or more domains can be selected from
       this list box by holding down the control key and selecting the desired domains.
 
-   -  **Zone**: This controls which zones a disk offering is available in.  'All zones' or 
-      only specific zones can be selected.  One or more zones can be selected from 
+   -  **Zone**: This controls which zones a disk offering is available in.  'All zones' or
+      only specific zones can be selected.  One or more zones can be selected from
       this list box by holding down the control key and selecting the desired zones.
 
    -  **Storage Policy**: Name of the storage policy defined at vCenter, this is applicable only for VMware.
@@ -447,12 +447,12 @@ To create a new disk offering:
 Modifying or Deleting a Service Offering
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Service offerings cannot be materially changed once created. This applies to 
-both compute offerings and disk offerings.  However their name, description 
+Service offerings cannot be materially changed once created. This applies to
+both compute offerings and disk offerings.  However their name, description
 and scope can be modified. To edit the name or description navigate to the
-service offering's detail page and click on the edit icon |edit-icon.png|. 
+service offering's detail page and click on the edit icon |edit-icon.png|.
 To alter the scope (zones and domains) that an offering is available in
-click on the update offering access button |update-service-offering-button.jpg|.
+click on the update offering access button |update-service-offering-button.png|.
 
 A service offering can be deleted. If it is no longer in use, it is
 deleted immediately and permanently. If the service offering is still in

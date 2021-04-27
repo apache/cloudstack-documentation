@@ -12,7 +12,7 @@
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
- 
+
 About Backup And Recovery
 --------------------------
 
@@ -41,7 +41,7 @@ Backup and recovery has been designed to support two modes:
 - Adhoc and user scheduled backups
 
 'SLA' based backups are ones where the Cloud provider (ie the root admin) controls the time, and frequency of a backup scheme.
-A user signs up for a 'Gold' offering, which might give them a RPO of 12 hours and the last 14 backups kept; however the user would not be 
+A user signs up for a 'Gold' offering, which might give them a RPO of 12 hours and the last 14 backups kept; however the user would not be
 allowed to perform additional backups nor set the exact time that these backups took place.  The user might be charged
 a fix rate for these backups regardless of the size of the backups.
 
@@ -89,7 +89,7 @@ backups. Users can list and consume the imported backup offerings, only root adm
 delete offerings.
 
 Supported APIs:
-~~~~~~~~~~~~~~~~ 
+~~~~~~~~~~~~~~~~
 
 - **listBackupProviders**: lists available backup provider plugins
 - **listBackupProviderOfferings**: lists external backup policy/offering from a provider
@@ -109,7 +109,7 @@ To import a backup provider offering;
 #. Enter your user-friendly name and description and select the applicable zone.  The External ID will then be populated with the
    template jobs which CloudStack retrieves from the connected provider.
 
-   |B&R-backup_offering_policy.jpg|  |B&R-backup_offering.jpg|
+   |B&R-backup_offering_policy.png|  |B&R-backup_offering.png|
 
 Creating VM Backups
 ---------------------
@@ -117,10 +117,10 @@ Creating VM Backups
 SLA/Policy Based backups
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-With the backup and recovery feature enabled for a zone, users simply add and 
+With the backup and recovery feature enabled for a zone, users simply add and
 remove a VM from a backup offering.
 
-|B&R-assignOffering.jpg|
+|B&R-assignOffering.png|
 
 Adhoc and Scheduled Backups
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -133,16 +133,16 @@ allowed to add/remove volumes similar to VM snapshots.
 To trigger an adhoc backup of a VM, navigate to the instance and click on the 'Create Backup'
 icon.
 
-|B&R-createBackup.jpg|
+|B&R-createBackup.png|
 
 To setup a recurring backup schedule, navigate to the instance and click on the 'Backup Schedule'
 icon.
 
-|B&R-BackupSchedule.jpg|
+|B&R-BackupSchedule.png|
 
 Then set the time and frequency of the backups, click 'Configure' and then 'Close'
 
-|B&R-BackupScheduleEntry.jpg|
+|B&R-BackupScheduleEntry.png|
 
 Restoring VM Backups
 ---------------------
@@ -169,21 +169,21 @@ Supported APIs:
 - **restoreVolumeFromBackup**: restore and attach a backed-up volume (of a VM backup) to a specified VM.
 
 
-.. |B&R-assignOffering.jpg| image:: /_static/images/B&R-assignOffering.jpg
+.. |B&R-assignOffering.png| image:: /_static/images/B&R-assignOffering.png
    :alt: Assigning an SLA/Policy to a VM.
    :width: 400 px
-.. |B&R-backup_offering_policy.jpg| image:: /_static/images/B&R-backup_offering_policy.jpg
+.. |B&R-backup_offering_policy.png| image:: /_static/images/B&R-backup_offering_policy.png
    :alt: Importing an SLA/Policy offering.
    :width: 300 px
-.. |B&R-backup_offering.jpg| image:: /_static/images/B&R-backup_offering.jpg
+.. |B&R-backup_offering.png| image:: /_static/images/B&R-backup_offering.png
    :alt: Importing a template backup offering.
    :width: 300 px
-.. |B&R-createBackup.jpg| image:: /_static/images/B&R-createBackup.jpg
+.. |B&R-createBackup.png| image:: /_static/images/B&R-createBackup.png
    :alt: Triggering an adhoc backup for a VM.
    :width: 400 px
-.. |B&R-BackupSchedule.jpg| image:: /_static/images/B&R-BackupSchedule.jpg
+.. |B&R-BackupSchedule.png| image:: /_static/images/B&R-BackupSchedule.png
    :alt: Creating a backup schedule for a VM.
    :width: 400 px
-.. |B&R-BackupScheduleEntry.jpg| image:: /_static/images/B&R-BackupScheduleEntry.jpg
+.. |B&R-BackupScheduleEntry.png| image:: /_static/images/B&R-BackupScheduleEntry.png
    :alt: Creating a backup schedule for a VM.
    :width: 400px

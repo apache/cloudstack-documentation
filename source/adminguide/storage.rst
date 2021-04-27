@@ -256,7 +256,7 @@ When creating a new volume from an existing ROOT volume snapshot,
 it is required to explicitly define a Disk offering (UI will offer only Disk
 offerings whose disk size is equal or bigger than the size of the snapshot).
 
-|volume-from-snap.PNG|
+|volume-from-snap.png|
 
 When creating a new volume from an existing DATA volume snapshot, the disk offering
 associated with the snapshots (inherited from the original volume) is assigned
@@ -881,5 +881,5 @@ snapshot data.
    :alt: Detach Disk Button.
 .. |Migrateinstance.png| image:: /_static/images/migrate-instance.png
    :alt: button to migrate a volume.
-.. |volume-from-snap.PNG| image:: /_static/images/volume-from-snap.PNG
+.. |volume-from-snap.png| image:: /_static/images/volume-from-snap.png
    :alt: Offering is needed when creating a volume from the ROOT volume snapshot.
