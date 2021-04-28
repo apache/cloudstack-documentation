@@ -16,7 +16,7 @@
 |MySQL upgrade problems|
    When upgrading newer CloudStack versions on older MySQL versions, some of the upgrade scripts may not apply fully on the database and some changes will be missing in the resulting installation. 
 
-   some versions of mysql dont apply a sql statement like
+   Some versions of MySQL may not apply a SQL statement such as below which can be executed manually by the admin post-upgrade:
    .. parsed-literal::
 ALTER TABLE nics MODIFY COLUMN update_time timestamp DEFAULT CURRENT_TIMESTAMP;
 
