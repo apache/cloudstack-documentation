@@ -14,7 +14,7 @@
    under the License.
 
 |MySQL upgrade problems|
-   When upgrading newer CloudStack versions on older MySQL versions, some of the upgrade scripts may not apply fully on the database and some changes will be missing in the resulting installation. 
+   When upgrading newer CloudStack versions on older MySQL versions, some of the upgrade scripts may not apply fully on the database and some changes may be missing in the resulting installation. 
 
    Some versions of MySQL may not apply a SQL statement such as below which can be executed manually by the admin post-upgrade:
    .. parsed-literal::
