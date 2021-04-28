@@ -20,5 +20,4 @@
    .. parsed-literal::
 ALTER TABLE nics MODIFY COLUMN update_time timestamp DEFAULT CURRENT_TIMESTAMP;
 
-   After the upgrade of CLoudStack and while on one of those versions MySQL, an upgrade to a higher version of MySQL will lead to a broken system.
-   The only remedie know is to apply those columns after the MySQL upgrade.
+   After the upgrade of CloudStack, when some versions of MySQL are upgraded they may require additional corrective SQL queries to applied manually to fix the schema such as those around altering column types as illustrated above.
