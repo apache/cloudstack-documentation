@@ -37,6 +37,7 @@ Contents:
    :maxdepth: 1
  
    MySQL
+   upgrade/valid_source
    upgrade/upgrade-4.14
    upgrade/upgrade-4.13
    upgrade/upgrade-4.12
@@ -54,4 +55,3 @@ Contents:
 ..   upgrade/upgrade-4.0
 ..   upgrade/upgrade-3.0.x
 ..   upgrade/upgrade-2.2.14
-   upgrade/valid_source
