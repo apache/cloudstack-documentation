@@ -31,16 +31,12 @@ release.  Please read through all sections carefully before starting.
 .. note::
    For information on the API changes and issues fixed in this release, please see the Release Notes section of the documentation
 
-.. toctree::
-   :maxdepth: 1
-
-   MySQL
-
 Contents:
 
 .. toctree::
    :maxdepth: 1
  
+   MySQL
    upgrade/upgrade-4.14
    upgrade/upgrade-4.13
    upgrade/upgrade-4.12
