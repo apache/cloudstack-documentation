@@ -185,8 +185,26 @@ Users can now customize the CloudStack's user interface by means of a configurat
 
 To change the logo, login banner, error page icon, etc. the following details can be edited in config.json:
 
+========== ==================================================
+Property   Description
+========== ==================================================
+apiBase    Changes the suffix for the API endpoint
+docBase    Changes the base URL for the documentation
+appTitle   Changes the title of the portal
+footer     Changes the footer text
+logo       Changes the logo top-left side image
+banner     Changes the login banner image
+error.404  Changes the image of error Page not found
+error.403  Changes the image of error Forbidden
+error.500  Changes the image of error Internal Server Error.
+========== ==================================================
+
 .. parsed-literal::
 
+    "apiBase": "/client/api",
+    "docBase": "http://docs.cloudstack.apache.org/en/latest",
+    "appTitle": "CloudStack",
+    "footer": "Licensed under the <a href='http://www.apache.org/licenses/' target='_blank'>Apache License</a>, Version 2.0.",
     "logo": "assets/logo.svg",
     "banner": "assets/banner.svg",
     "error": {
@@ -195,15 +213,36 @@ To change the logo, login banner, error page icon, etc. the following details ca
         "500": "assets/500.png"
     }
 
-where,
 
-- logo: changes the logo top-left side image.
-- banner: changes the login banner image.
-- error.404: changes the image of error Page not found.
-- error.403: changes the image of error Forbidden.
-- error.500: changes the image of error Internal Server Error.
+Customization of themes is also possible, such as, modifying banner width, general color, etc. This can be done by editing the "theme" section of the config.json file. Theme section provides following properties for customization:
 
-Customization of themes is also possible, such as, modifying banner width, general color, etc. This can be done by editing the "theme" section of the config.json file:
+============================= ================================================================
+Property                      Description
+============================= ================================================================
+@logo-background-color        Changes the logo background color
+@project-nav-text-color       Changes the navigation menu background color of the project
+@project-nav-text-color       Changes the navigation menu background color of the project view.
+@navigation-background-color  Changes the navigation menu background color
+@primary-color                Changes the major background color of the page (background button, icon hover, etc).
+@link-color                   Changes the link color
+@link-hover-color             Changes the link hover color
+@loading-color                Changes the message loading color and page loading bar at the top page
+@success-color                Changes success state color
+@processing-color             Changes processing state color. Exp: progress status
+@warning-color                Changes warning state color
+@error-color                  Changes error state color
+@heading-color                Changes table header color
+@text-color                   Change in major text color
+@text-color-secondary         Change of secondary text color (breadcrumb icon)
+@disabled-color               Disable state color (disabled button, switch, etc)
+@border-color-base            Change in major border color
+@logo-width                   Change the width of the logo top-left side
+@logo-height                  Change the height of the logo top-left side
+@banner-width                 Changes the width of the login banner
+@banner-height                Changes the height of the login banner
+@error-width                  Changes the width of the error image
+@error-height                 Changes the height of the error image
+============================= ================================================================
 
 .. parsed-literal::
 
@@ -237,33 +276,6 @@ Customization of themes is also possible, such as, modifying banner width, gener
         "@error-height": "256px"
     }
 
-where,
-
-- @logo-background-color changes the logo background color.
-- @project-nav-background-color changes the navigation menu background color of the project.
-- @project-nav-text-color changes the navigation menu background color of the project view.
-- @navigation-background-color changes the navigation menu background color.
-- @navigation-text-color changes the navigation text color.
-- @primary-color: changes the major background color of the page (background button, icon hover, etc).
-- @link-color changes the link color.
-- @link-hover-color changes the link hover color.
-- @loading-color changes the message loading color and page loading bar at the top page.
-- @success-color: changes success state color.
-- @processing-color: changes processing state color. Exp: progress status.
-- @warning-color: changes warning state color.
-- @error-color: changes error state color.
-- @heading-color: changes table header color.
-- @text-color: change in major text color.
-- @text-color-secondary: change of secondary text color (breadcrumb icon).
-- @disabled-color: disable state color (disabled button, switch, etc).
-- @border-color-base: change in major border color.
-- @logo-width: change the width of the logo top-left side.
-- @logo-height: change the height of the logo top-left side.
-- @banner-width: changes the width of the login banner.
-- @banner-height: changes the height of the login banner.
-- @error-width: changes the width of the error image.
-- @error-height: changes the height of the error image.
-
 Some assorted primary theme colours:
 
 - Blue: #1890FF
@@ -272,6 +284,54 @@ Some assorted primary theme colours:
 - Cyan: #13C2C2
 - Green: #52C41A
 - Purple: #722ED1
+
+Contextual help documentation URLs can be customized with the help of `docBase` and `docHelpMappings` properties.
+To override a particular documentation URL, a mapping can be added for the URL path in the config. A documentation URL is formed by combining the `docBase` URL base and a path set in the source code. Adding a mapping for any particular path in the configuration will result in generating documetation URL with overridden path.
+
+Below example shows configuration changes for custom documentation help URLs:
+
+By default, docBase is set to `http://docs.cloudstack.apache.org/en/latest` and contextual help on Instances page links to `http://docs.cloudstack.apache.org/en/latest/adminguide/virtual_machines.html`.
+To make Instances page link to `http://mycustomwebsite.com/custom_vm_page.html`, docBase can be set to `http://mycustomwebsite.com` and a docHelpMapping can be added for `adminguide/virtual_machines.html` as `custom_vm_page.html`.
+
+.. parsed-literal::
+
+   {
+      ...
+      "docBase": http://mycustomwebsite.com,
+      ...
+      "docHelpMappings": {
+         "adminguide/virtual_machines.html": "custom_vm_page.html",
+         "adminguide/templates.html": "custom_templates_page.html"
+      },
+      ...
+   }
+
+UI also provides option to show custom plugins for displaying custom HTML pages or HTTP services in an iframe. Such plugins can be listed in the config file using `plugins` property.
+Example for adding custom plugins:
+
+.. parsed-literal::
+
+   {
+      ...
+      plugins: [
+         {
+            "name": "ExamplePlugin",
+            "icon": "appstore",
+            "path": "example.html"
+         },
+         {
+            "name": "ExamplePlugin1",
+            "icon": "appstore",
+            "path": "https://cloudstack.apache.org/"
+         }
+      ]
+      ...
+   }
+
+`icon` for the plugin can be chosen from Ant Design icons listed at `Icon - Ant Design Vue https://www.antdv.com/components/icon/`_.
+For displaying a custom HTML in the plugin, HTML file can be stored in the CloudStack management server's web application directory on the server, i.e., */usr/share/cloudstack-management/webapp* and `path` can be set to the name of the file. For displaying a service or a web page, URL can be set as the `path` of the plugin.
+
+|ui-custom-plugin.png|
 
 Advanced Customisation
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -282,6 +342,15 @@ building the UI from the source available on `github.com/apache/cloudstack
 <https://github.com/apache/cloudstack>`_ repository. Advanced customisation may
 require some experience in JavaScript and VueJS, a development and customisation
 guide in the source repository.
+
+Useful documentations:
+
+- `VueJS Guide <https://vuejs.org/v2/guide/>`_
+- `Vue Ant Design <https://www.antdv.com/docs/vue/introduce/>`_
+- `UI Developer <https://github.com/apache/cloudstack/blob/master/ui/docs>`_
+- `JavaScript ES6 Reference <https://www.tutorialspoint.com/es6/>`_
+- `Introduction to ES6 <https://scrimba.com/g/gintrotoes6>`_
+
 
 Known Limitations
 ~~~~~~~~~~~~~~~~~
@@ -296,3 +365,6 @@ The following features are no longer supported or available:
 
 .. |change-password.png| image:: /_static/images/change-password.png
    :alt: button to change a user's password
+
+.. |ui-custom-plugin.png| image:: /_static/images/ui-custom-plugin.png
+   :alt: Custom plugin shown in UI with navigation
