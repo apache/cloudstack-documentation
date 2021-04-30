@@ -14,15 +14,12 @@
    under the License.
 
 |MySQL upgrade problems|
-   When upgrading newer CloudStack versions on older MySQL versions, some of the upgrade scripts may not apply fully on the database and some changes may be missing in the resulting installation. 
+   Users who may upgrade their MySQL server after upgrading to Apache CloudStack 4.15 or later, may need to run the following SQL query to fix an issue with "cloud.nics" table's column type which may lead to exception seen in the management server logs. Users who have already upgraded their MySQL server prior to upgrading to Apache CloudStack 4.15 may not need this as this query runs as part of the 4.14.x to 4.15.0.0 database upgrade path.
 
-   Some versions of MySQL may not apply a SQL statement such as below which can be executed manually by the admin post-upgrade:
    .. parsed-literal::
 ALTER TABLE nics MODIFY COLUMN update_time timestamp DEFAULT CURRENT_TIMESTAMP;
 
-   After the upgrade of CloudStack, when some versions of MySQL are upgraded they may require additional corrective SQL queries to applied manually to fix the schema such as those around altering column types as illustrated above.
+The issue is known to affect the following MySQL server versions:
 
-   Known affected versions:
-
- -  5.7.34
+ -  5.7.34 or later
  -  8+
