@@ -306,7 +306,7 @@ To make Instances page link to `http://mycustomwebsite.com/custom_vm_page.html`,
       ...
    }
 
-UI also provides option to show custom plugins by displaying a custom HTML page or service in an iframe. Such plugins can be listed in the config file using `plugins` property.
+UI also provides option to show custom plugins for displaying custom HTML pages or HTTP services in an iframe. Such plugins can be listed in the config file using `plugins` property.
 Example for adding custom plugins:
 
 .. parsed-literal::
