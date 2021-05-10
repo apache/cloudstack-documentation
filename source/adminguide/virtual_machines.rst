@@ -741,7 +741,7 @@ Advanced VM Instance Settings
 Each user VM has a set of "details" associated with it (as visible via listVirtualMachine API call) - those "details" are shown on the "Settings" tab of the VM in the GUI (words "setting(s)" and "detail(s)" are here used interchangeably).
 
 The Settings tab is always present/visible, but settings can be changed only when the VM is in a Stopped state.
-Some VM details/settings can be hidden for users via "user.vm.blacklisted.details" global setting. VM details/settings can also be made read-only for users using "user.vm.readonly.details" global setting. List of default hidden and read-only details/settings is given below.
+Some VM details/settings can be hidden for users via "user.vm.denied.details" global setting. VM details/settings can also be made read-only for users using "user.vm.readonly.details" global setting. List of default hidden and read-only details/settings is given below.
 
 .. note::
    Since version 4.15, VMware VM settings for the ROOT disk controller, NIC adapter type and data disk controller are populated automatically with the values inherited from the template.

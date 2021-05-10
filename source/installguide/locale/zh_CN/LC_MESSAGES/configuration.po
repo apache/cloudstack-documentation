@@ -3238,12 +3238,12 @@ msgstr "忽略内部DNS，使用外部DNS1和DNS2"
 
 # c8177a7ac4ea4c07bf0c16f2833e48bf
 #: ../../configuration.rst:1621
-msgid "blacklisted.routes"
-msgstr "blacklisted.routes"
+msgid "denied..routes"
+msgstr "denied..routes"
 
 # d9441a44a1824e80804bbbe62fd7f531
 #: ../../configuration.rst:1621
 msgid ""
-"Routes that are blacklisted cannot be used for creating static routes for a "
+"Routes that are denied cannot be used for creating static routes for a "
 "VPC Private Gateway."
 msgstr "黑名单中的路由不能用于虚拟机的私有网关来创建静态路由"
