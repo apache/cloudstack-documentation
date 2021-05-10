@@ -68,7 +68,7 @@ MySQL. See :ref:`install-database-on-separate-node`.
     
    .. parsed-literal::
    
-      server-id=master-01
+      server-id=source-01
       innodb_rollback_on_timeout=1
       innodb_lock_wait_timeout=600
       max_connections=350

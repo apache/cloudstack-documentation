@@ -108,7 +108,7 @@ msgstr ""
 
 #: ../../optional_installation.rst:92
 # 7862ab06634f4e73aea90b6a69fba6d8
-msgid "CloudStack supports database replication from one MySQL node to another. This is achieved using standard MySQL replication. You may want to do this as insurance against MySQL server or storage loss. MySQL replication is implemented using a master/slave model. The master is the node that the Management Servers are configured to use. The slave is a standby node that receives all write operations from the master and applies them to a local, redundant copy of the database. The following steps are a guide to implementing MySQL replication."
+msgid "CloudStack supports database replication from one MySQL node to another. This is achieved using standard MySQL replication. You may want to do this as insurance against MySQL server or storage loss. MySQL replication enables data from one MySQL database server (the source) to be copied to one or more MySQL database servers (the replicas). The source is the node that the Management Servers are configured to use. The replica is a standby node that receives all write operations from the source and applies them to a local, redundant copy of the database. The following steps are a guide to implementing MySQL replication."
 msgstr ""
 
 #: ../../optional_installation.rst:102
@@ -118,17 +118,17 @@ msgstr ""
 
 #: ../../optional_installation.rst:105
 # 8f01c4d5d9e849f7aa21e1fafec88427
-msgid "Ensure that this is a fresh install with no data in the master."
+msgid "Ensure that this is a fresh install with no data in the source server."
 msgstr ""
 
 #: ../../optional_installation.rst:107
 # 3207c0439bb34ea28e96d4ee62ad1c2e
-msgid "Edit my.cnf on the master and add the following in the [mysqld] section below datadir."
+msgid "Edit my.cnf on the source server and add the following in the [mysqld] section below datadir."
 msgstr ""
 
 #: ../../optional_installation.rst:115
 # 5d1dfef940ab48418d921ea6ab2104d5
-msgid "The server\\_id must be unique with respect to other servers. The recommended way to achieve this is to give the master an ID of 1 and each slave a sequential number greater than 1, so that the servers are numbered 1, 2, 3, etc."
+msgid "The server\\_id must be unique with respect to other servers. The recommended way to achieve this is to give the source server an ID of 1 and each replica a sequential number greater than 1, so that the servers are numbered 1, 2, 3, etc."
 msgstr ""
 
 #: ../../optional_installation.rst:120
@@ -143,7 +143,7 @@ msgstr ""
 
 #: ../../optional_installation.rst:132
 # 37951ede2d454f428070c346ebef21fd
-msgid "Create a replication account on the master and give it privileges. We will use the \"cloud-repl\" user with the password \"password\". This assumes that master and slave run on the 172.16.1.0/24 network."
+msgid "Create a replication account on the source server and give it privileges. We will use the \"cloud-repl\" user with the password \"password\". This assumes that source and replica run on the 172.16.1.0/24 network."
 msgstr ""
 
 #: ../../optional_installation.rst:144
@@ -173,12 +173,12 @@ msgstr ""
 
 #: ../../optional_installation.rst:164
 # 3448c24480a343129c3e323c59e1d52f
-msgid "Complete the master setup. Returning to your first session on the master, release the locks and exit MySQL."
+msgid "Complete the source server setup. Returning to your first session on the source server, release the locks and exit MySQL."
 msgstr ""
 
 #: ../../optional_installation.rst:171
 # b756f3987b8345d78bb98a1da0cdf5f0
-msgid "Install and configure the slave. On the slave server, run the following commands."
+msgid "Install and configure the replica. On the replica server, run the following commands."
 msgstr ""
 
 #: ../../optional_installation.rst:179
@@ -198,17 +198,17 @@ msgstr ""
 
 #: ../../optional_installation.rst:200
 # cc3fe860c3244bfaabe3d4c4317c7ac8
-msgid "Instruct the slave to connect to and replicate from the master. Replace the IP address, password, log file, and position with the values you have used in the previous steps."
+msgid "Instruct the replica to connect to and replicate from the source. Replace the IP address, password, log file, and position with the values you have used in the previous steps."
 msgstr ""
 
 #: ../../optional_installation.rst:213
 # 9a9640cbcab74267a00aefe5b61ca112
-msgid "Then start replication on the slave."
+msgid "Then start replication on the replica."
 msgstr ""
 
 #: ../../optional_installation.rst:219
 # a561331155b44e14a5a9540ccfaded76
-msgid "Optionally, open port 3306 on the slave as was done on the master earlier."
+msgid "Optionally, open port 3306 on the replica as was done on the source earlier."
 msgstr ""
 
 #: ../../optional_installation.rst:222
@@ -233,7 +233,7 @@ msgstr ""
 
 #: ../../optional_installation.rst:237
 # df74922f2b5a44b0820337aecbb8703f
-msgid "Change the replica's configuration to be a master and restart it."
+msgid "Change the replica's configuration to be a source and restart it."
 msgstr ""
 
 #: ../../optional_installation.rst:239
