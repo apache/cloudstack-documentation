@@ -450,7 +450,7 @@ msgid ""
 "Linux templates should be prepared using this documentation in order to "
 "prepare your linux VMs for template deployment. For ease of documentation, "
 "the VM which you are configuring the template on will be referred to as "
-"\"Template Master\". This guide currently covers legacy setups which do not "
+"\"Template Primary\". This guide currently covers legacy setups which do not "
 "take advantage of UserData and cloud-init and assumes openssh-server is "
 "installed during installation."
 msgstr "为了准备使用模板部署你的Linux VMs，可以使用此文档来准备Linux模板。对于文档中的情况，你要通过配置模板，这会涉及\"主模板\"。这个指导目前覆盖了传统的安装，但不会涉及用户数据和cloud-init还有假设在装过程中安装了openshh服务。"
@@ -538,7 +538,7 @@ msgstr "对于CentOS，必须要修改网络接口的配置文件，在这里我
 
 # f68b6e4efb764f92a1e56ad9ea54f90c
 #: ../../templates.rst:341
-msgid "The next steps updates the packages on the Template Master."
+msgid "The next steps updates the packages on the Template Primary."
 msgstr "下一步更新主模板中的包。"
 
 # 143c241d86a44e32b496b66a9934ec6a
@@ -614,9 +614,9 @@ msgstr "一个模板化的VM使用`/etc/dhcp/dhclient-exit-hooks.d`中的一个�
 #: ../../templates.rst:434
 msgid ""
 "The following steps should be run when you are ready to template your "
-"Template Master. If the Template Master is rebooted during these steps you "
+"Template Primary. If the Template Primary is rebooted during these steps you "
 "will have to run all the steps again. At the end of this process the "
-"Template Master should be shutdown and the template created in order to "
+"Template Primary should be shutdown and the template created in order to "
 "create and deploy the final template."
 msgstr "当你准备好做你的主模板的时候请运行下列步骤。如果主模板在这些步骤期间重启了，那么你要重新运行所有的步骤。在这个过程的最后，主模板应该关机并且将其创建为模板，然后再部署。"
 
@@ -628,7 +628,7 @@ msgstr "**移除udev持久设备规则**"
 # 7a1b5554792c4cb1aa676f8e73a843b8
 #: ../../templates.rst:442
 msgid ""
-"This step removes information unique to your Template Master such as network"
+"This step removes information unique to your Template Primary such as network"
 " MAC addresses, lease files and CD block devices, the files are "
 "automatically generated on next boot."
 msgstr "这一步会移除你的主模板的特殊信息，如网络MAC地址，租约信息和CD块设备，这个文件会在下次启动时自动生成。"
@@ -652,7 +652,7 @@ msgstr "**清除日志文件**"
 
 # af913fb8f91b484bb83ac0737e1b1d10
 #: ../../templates.rst:472
-msgid "It is good practice to remove old logs from the Template Master."
+msgid "It is good practice to remove old logs from the Template Primary."
 msgstr "从主模板移除旧的日志文件是一个好习惯。"
 
 # db125d8aa6cc45c8bdf9340dde1d3d45
@@ -664,7 +664,7 @@ msgstr "**设置主机名**"
 #: ../../templates.rst:483
 msgid ""
 "In order for the Ubuntu DHCP script to function and the CentOS dhclient to "
-"set the VM hostname they both require the Template Master's hostname to be "
+"set the VM hostname they both require the Template Primary's hostname to be "
 "\"localhost\", run the following commands to change the hostname."
 msgstr "为了Ubuntu DHCP的脚本功能和CentOS dhclient能设置VM主机名，他们都去要设置主模板的主机名设置为“localhost”，运行下面的命令来更改主机名。"
 
@@ -697,7 +697,7 @@ msgstr "**关闭VM**"
 
 # f92b1a930b3e4d859616309b9db518e1
 #: ../../templates.rst:513
-msgid "Your now ready to shutdown your Template Master and create a template!"
+msgid "Your now ready to shutdown your Template Primary and create a template!"
 msgstr "现在你可以关闭你的主模板并且创建模板了！"
 
 # 43e271d15b2742238d231b3f7fe85ed1
