@@ -23,7 +23,7 @@ msgstr ""
 
 #: ../../networking/autoscale_without_netscaler.rst:4
 # c9d0712245864f35982f232729bae189
-msgid "This feature is currently only available on the master branch and will be released in the 4.4 release."
+msgid "This feature is currently only available on the main branch and will be released in the 4.4 release."
 msgstr ""
 
 #: ../../networking/autoscale_without_netscaler.rst:7
