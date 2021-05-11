@@ -454,8 +454,8 @@ For displaying a custom HTML in the plugin, HTML file can be stored in the Cloud
 
 |ui-custom-plugin.png|
 
-Advanced Customisation
-~~~~~~~~~~~~~~~~~~~~~~
+Advanced UI Customisation
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The advanced UI customisation is possible only by changing JavaScript based config
 files which define rules for sections, names, icons, actions and components and by
