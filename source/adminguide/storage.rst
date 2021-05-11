@@ -69,8 +69,7 @@ can be created and dynamically attached to VMs. Data volumes are not
 deleted when VMs are destroyed.
 
 Administrators should monitor the capacity of primary storage devices
-and add additional primary storage as needed. See the Advanced
-Installation Guide.
+and add additional primary storage as needed. See :ref:`add-primary-storage`.
 
 Administrators add primary storage to the system by creating a
 CloudStack storage pool. Each storage pool is associated with a cluster
@@ -180,8 +179,7 @@ Secondary Storage
 
 This section gives concepts and technical details about CloudStack
 secondary storage. For information about how to install and configure
-secondary storage through the CloudStack UI, see the Advanced
-Installation Guide. about-secondary-storage>`_
+secondary storage through the CloudStack UI, see :ref:`add-secondary-storage`.
 
 Migration of data between secondary storages is now supported. One may choose
 to completely migrate the data or migrate data such that the stores
@@ -618,7 +616,7 @@ To resize a volume:
 #. Click OK.
 
 Root Volume size defined via Service Offering
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If a Service Offering is created with a root disk size, then resizing the Root volume is possible only by resizing the VMs service offering.
 
