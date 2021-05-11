@@ -867,6 +867,28 @@ snapshot data.
    format, and will continue to work as expected.
 
 
+Linstor Primary Storage
+~~~~~~~~~~~~~~~~~~~~~~~
+
+LINSTOR is a configuration management system for storage on Linux systems.
+It manages LVM logical volumes and/or ZFS ZVOLs on a cluster of nodes.
+It leverages DRBD for replication between different nodes and to provide block storage devices
+to users and applications. It manages snapshots, encryption and caching of HDD backed data in SSDs via bcache.
+
+LINSTOR can be used as volume storage provider for Cloudstack, it currently only supports KVM hypervisors.
+To get started first setup your LINSTOR cluster according to the `LINSTOR User Guide <https://linbit.com/drbd-user-guide/linstor-guide-1_0-en/>`_
+
+.. note::
+   Make sure a LINSTOR-Satellite is running on all nodes where you want to have a storage provided for you VM's
+   and that the nodes have the exact same node names as the nodes in Cloudstack.
+   Also add a resource group to LINSTOR which you intend to use in Cloudstack.
+
+After you are finished with the LINSTOR cluster setup, you can add a Cloudstack primary storage as any other
+primary storage see :ref:`add-primary-storage`.
+For protocol choose ``Linstor`` and as server specify the controller REST-API URL e.g.: ``http://127.0.0.1:3370``
+and use the resource group name you added in the LINSTOR cluster.
+
+
 .. |AttachDiskButton.png| image:: /_static/images/attach-disk-icon.png
    :alt: Attach Disk Button.
 .. |resize-volume-icon.png| image:: /_static/images/resize-volume-icon.png
