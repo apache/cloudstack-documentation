@@ -23,7 +23,7 @@ common unit referred to as cloud currency in this document. It can be configured
 to ensure that your usage won’t exceed the budget allocated to accounts/domain
 in cloud currency. It will let users know how much of the cloud resources they are
 using. It will help the cloud admins, if they want, to ensure that a user does
-not go beyond his allocated quota. Per usage cycle if an account is found to be
+not go beyond their allocated quota. Per usage cycle if an account is found to be
 exceeding its quota then it is locked. Locking an account means that it will not
 be able to initiate a new resource allocation request, whether it is more
 storage or an additional ip. To unlock an account you need to add more credit to it.

@@ -319,7 +319,7 @@ Sharing templates and ISOs with other accounts/projects
 
 When adding a template/ISO, the owners can choose to make template/ISO public or to keep it private. Once the template/ISO is created, the owners can choose to share this template/ISO so that other accounts/projects can also use the template/ISO. 
 
-Currently, the owners can share his template/ISO with:
+Currently, the owners can share their template/ISO with:
   - other accounts inside their own domain (i.e. can't share the template/ISO with other accounts in the subdomain of their domain or any other domains)
   - projects where they belongs to (i.e. projects where they are the owners/creators or other projects where they have been joined)
 
@@ -327,7 +327,7 @@ Template/ISO permissions can be changed via updateTemplatePermissions/updateIsoP
 
 When adding or removing permissions to/from a template/ISO, it is required to specify account/project name which is being added/removed from the template/ISO permissions. 
 
-Global setting "allow.user.view.all.domain.accounts" has a default value of "false". This makes sure that when the regular users (of a "User" role) wants to share a template/ISO via GUI,  they will not be shown the list of all accounts in his domain and they will need to know the name of the destination account with which they are sharing the template/ISO. This makes sense in public clouds where each account of a single domain is a different tenant/customer and privacy is imperative. In this case, the user will be presented with an input field to enter the account name, as on the images below:
+Global setting "allow.user.view.all.domain.accounts" has a default value of "false". This makes sure that when the regular users (of a "User" role) wants to share a template/ISO via GUI,  they will not be shown the list of all accounts in their domain and they will need to know the name of the destination account with which they are sharing the template/ISO. This makes sense in public clouds where each account of a single domain is a different tenant/customer and privacy is imperative. In this case, the user will be presented with an input field to enter the account name, as on the images below:
 
 .. warning:: 
       The images displayed below refer to template permissions, but the same applies for ISO permissions.
@@ -340,7 +340,7 @@ Sharing the template with account "user2"
 
 Revoking permissions from account "user2"
 
-But in environments where privacy within a domain is not an issue, setting "allow.user.view.all.domain.accounts" setting to "true" will make sure that the user, who is sharing the template, will be presented a more user-friendly multi-select list, listing all the accounts in his domain. This is shown in the images below;
+But in environments where privacy within a domain is not an issue, setting "allow.user.view.all.domain.accounts" setting to "true" will make sure that the user, who is sharing the template, will be presented a more user-friendly multi-select list, listing all the accounts in their domain. This is shown in the images below;
 
 |template-permissions-update-1.PNG|
 
