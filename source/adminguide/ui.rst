@@ -476,7 +476,7 @@ Useful documentations:
 Known Limitations
 ~~~~~~~~~~~~~~~~~
 
-The following features are no longer supported or available in the UI but are still supported at the API level:
+The following features are no longer supported or available in the UI but are still supported at the API level and in the legacy UI:
 
 - Support for S3 based secondary storage.
 - NFS secondary staging storage list/resource view and add/update actions.
