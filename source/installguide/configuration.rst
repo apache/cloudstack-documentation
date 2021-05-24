@@ -276,6 +276,10 @@ and secondary storage.
       networks and providing custom network offerings such as firewall,
       VPN, or load balancer support.
 
+   -  **Security Groups.** You can choose to enable Security Groups in your zone.
+      For further informations regarding Security Groups and there prequesits
+      please refer to the Security Groups section in the documentation.
+
 #. The rest of the steps differ depending on whether you chose Basic or
    Advanced. Continue with the steps that apply to you:
 
@@ -512,36 +516,37 @@ Advanced Zone Configuration
 
    -  **Name.** A name for the zone.
 
-   -  **DNS 1 and 2.** These are DNS servers for use by guest VMs in the
+   -  **DNS 1 and 2.** (DNS 1 obligatory)These are DNS servers for use by guest VMs in the
       zone. These DNS servers will be accessed via the public network
       you will add later. The public IP addresses for the zone must have
       a route to the DNS server named here.
 
-   -  **Internal DNS 1 and Internal DNS 2.** These are DNS servers for
-      use by system VMs in the zone(these are VMs used by CloudStack
-      itself, such as virtual routers, console proxies,and Secondary
-      Storage VMs.) These DNS servers will be accessed via the
-      management traffic network interface of the System VMs. The
-      private IP address you provide for the pods must have a route to
+   -  **Internal DNS 1 and Internal DNS 2.** (DNS 1 obligatory)
+      These are DNS servers for use by system VMs in the zone(these are 
+      VMs used by CloudStack itself, such as virtual routers, console
+      proxies,and Secondary Storage VMs.) These DNS servers will be accessed via the
+      management traffic network interface of the System VMs. The private
+      IP address you provide for the pods must have a route to
       the internal DNS server named here.
 
-   -  **Network Domain.** (Optional) If you want to assign a special
+   -  **Network Domain.** If you want to assign a special
       domain name to the guest VM network, specify the DNS suffix.
 
-   -  **Guest CIDR.** This is the CIDR that describes the IP addresses
-      in use in the guest virtual networks in this zone. For example,
-      10.1.1.0/24. As a matter of good practice you should set different
-      CIDRs for different zones. This will make it easier to set up VPNs
-      between networks in different zones.
+   -  **Hypervisor.** (Obligatory) Choose the hypervisor for the first
+      cluster in the zone. You can add clusters with different hypervisors
+      later, after you finish adding the zone.
 
-   -  **Hypervisor.** (Introduced in version 3.0.1) Choose the
-      hypervisor for the first cluster in the zone. You can add clusters
-      with different hypervisors later, after you finish adding the
-      zone.
+   -  **Dedicated.** A dedicated zone is available to selected users or groups 
+      within a domain. Only specified users or grous in that domain will 
+      be allowed to create guest VMs in this zone.
 
-   -  **Public.** A public zone is available to all users. A zone that
-      is not public will be assigned to a particular domain. Only users
-      in that domain will be allowed to create guest VMs in this zone.
+   -  **Enable local storage for User VMs.** Give the user the opperunity to 
+      provide local storage (physical storage on the host) for User VMs to store data.
+
+   -  **Enable local storage for System VMs.** Give the system the opperunity to 
+      use local storage (physical storage on the hosts) for System VMs.
+	  
+#. Click Next.
 
 #. Choose which traffic types will be carried by the physical network.
 
@@ -580,39 +585,37 @@ Advanced Zone Configuration
 
 #. Click Next.
 
-#. Configure the IP range for public Internet traffic. Enter the
-   following details, then click Add. If desired, you can repeat this
-   step to add more public Internet IP ranges. When done, click Next.
-
-   -  **Gateway.** The gateway in use for these IP addresses.
-
-   -  **Netmask.** The netmask associated with this IP range.
-
-   -  **VLAN.** The VLAN that will be used for public traffic.
-
-   -  **Start IP/End IP.** A range of IP addresses that are assumed to
-      be accessible from the Internet and will be allocated for access
-      to guest networks.
-
 #. In a new zone, CloudStack adds the first pod for you. You can always
    add more pods later. For an overview of what a pod is, see :ref:`about-pods`
 
    To configure the first pod, enter the following, then click Next:
 
-   -  **Pod Name.** A name for the pod.
+   -  **Pod Name.** (Obligatory) A name for the pod.
 
-   -  **Reserved system gateway.** The gateway for the hosts in that
+   -  **Reserved system gateway.** (Obligatory) The gateway for the hosts in that
       pod.
 
-   -  **Reserved system netmask.** The network prefix that defines the
+   -  **Reserved system netmask.** (Obligatory) The network prefix that defines the
       pod's subnet. Use CIDR notation.
 
-   -  **Start/End Reserved System IP.** The IP range in the management
-      network that CloudStack uses to manage various system VMs, such as
-      Secondary Storage VMs, Console Proxy VMs, and DHCP. For more
-      information, see :ref:`about_system_reserved_ip_addresses`
-#. Specify a range of VLAN IDs to carry guest traffic for each physical
-   network (see VLAN Allocation Example ), then click Next.
+   -  **Start/End Reserved System IP.** (Start Reserved System IP - obligatory) 
+      The IP range in the management network that CloudStack uses to manage 
+      various system VMs, such as Secondary Storage VMs, Console Proxy VMs, and DHCP.
+      For more information, see :ref:`about_system_reserved_ip_addresses`
+
+#. Configure the IP range for guest traffic. Guest network traffic is 
+   communication between end-user virtual machines. Enter the
+   following details, then click Add. When done, click Next.
+
+   -  **Guest Gateway.** The gateway in use for these IP addresses.
+
+   -  **Guest Netmask.** The netmask associated with this IP range.
+
+   -  **Guest Start IP/ GuestEnd IP.** A range of IP addresses that are assumed to
+      be accessible from the Internet and will be allocated for access
+      to guest networks.
+
+   -  **VLAN / VNI ID.** The VLAN / VNI ID's that will be used for guest traffic.
 
 #. In a new pod, CloudStack adds the first cluster for you. You can
    always add more clusters later. For an overview of what a cluster is,
@@ -620,15 +623,7 @@ Advanced Zone Configuration
 
    To configure the first cluster, enter the following, then click Next:
 
-   -  **Hypervisor.** (Version 3.0.0 only; in 3.0.1, this field is read
-      only) Choose the type of hypervisor software that all hosts in
-      this cluster will run. If you choose VMware, additional fields
-      appear so you can give information about a vSphere cluster. For
-      vSphere servers, we recommend creating the cluster of hosts in
-      vCenter and then adding the entire cluster to CloudStack. See Add
-      Cluster: vSphere .
-
-   -  **Cluster name.** Enter a name for the cluster. This can be text
+   -  **Cluster name.** (Obligatory) Enter a name for the cluster. This can be text
       of your choosing and is not used by CloudStack.
 
 #. In a new cluster, CloudStack adds the first host for you. You can
@@ -652,14 +647,19 @@ Advanced Zone Configuration
 
    To configure the first host, enter the following, then click Next:
 
-   -  **Host Name.** The DNS name or IP address of the host.
+   -  **Host Name.** (Obligatory) The DNS name or IP address of the host.
 
-   -  **Username.** Usually root.
+   -  **Username.** (Obligatory) Username of a user who has administrator / root privilidges on 
+      the specified host (using Linux-hosts usually root).
 
-   -  **Password.** This is the password for the user named above (from
+   -  **Password.** (Obligatory) This is the password for the user named above (from
       your XenServer or KVM install).
 
-   -  **Host Tags.** (Optional) Any labels that you use to categorize
+   .. note::
+      For security reasons there are ways to use non-adminstrative users for
+      adding a host. Please refer to the hypervisor setup guides for further information.	  
+
+   -  **Host Tags.** Any labels that you use to categorize
       hosts for ease of maintenance. For example, you can set to the
       cloud's HA tag (set in the ha.tag global configuration parameter)
       if you want this host to be used only for VMs with the "high
@@ -674,10 +674,11 @@ Advanced Zone Configuration
    To configure the first primary storage server, enter the following,
    then click Next:
 
-   -  **Name.** The name of the storage device.
+   -  **Name.** (Obligatory) The name of the storage device.
 
-   -  **Protocol.** For XenServer, choose either NFS, iSCSI, or
+   -  **Protocol.** (Obligatory) For XenServer, choose either NFS, iSCSI, or
       PreSetup. For KVM, choose NFS, SharedMountPoint, CLVM, RBD or custom (for PowerFlex).
+
       For vSphere choose either VMFS (iSCSI or FiberChannel) or NFS. The
       remaining fields in the screen vary depending on what you choose
       here.
@@ -685,48 +686,48 @@ Advanced Zone Configuration
       .. cssclass:: table-striped table-bordered table-hover
 
       ===================  ===========================================================================
-      NFS                  -  **Server.** The IP address or DNS name of the storage device.
+      NFS                  -  **Server.** (Obligatory) The IP address or DNS name of the storage device.
 
-                           -  **Path.** The exported path from the server.
+                           -  **Path.** (Obligatory) The exported path from the server.
 
-                           -  **Tags (optional).** The comma-separated list of tags for this
+                           -  **Tags.** The comma-separated list of tags for this
                               storage device. It should be an equivalent set or superset of
                               the tags on your disk offerings.
 
-      iSCSI                -  **Server.** The IP address or DNS name of the storage device.
+      iSCSI                -  **Server.** (Obligatory) The IP address or DNS name of the storage device.
 
-                           -  **Target IQN.** The IQN of the target. For example,
+                           -  **Target IQN.** (Obligatory) The IQN of the target. For example,
                               iqn.1986-03.com.sun:02:01ec9bb549-1271378984.
 
-                           -  **Lun.** The LUN number. For example, 3.
+                           -  **Lun.** (Obligatory) The LUN number. For example, 3.
 
-                           -  **Tags (optional).** The comma-separated list of tags for this
+                           -  **Tags.** The comma-separated list of tags for this
                               storage device. It should be an equivalent set or superset of
                               the tags on your disk offerings.
 
-      preSetup             -  **Server.** The IP address or DNS name of the storage device.
+      preSetup             -  **Server.** (Obligatory) The IP address or DNS name of the storage device.
 
-                           -  **SR Name-Label.** Enter the name-label of the SR that has been
+                           -  **SR Name-Label.** (Obligatory) Enter the name-label of the SR that has been
                               set up outside CloudStack.
 
-                           -  **Tags (optional).** The comma-separated list of tags for this
+                           -  **Tags.** The comma-separated list of tags for this
                               storage device. It should be an equivalent set or superset of
                               the tags on your disk offerings.
 
-      SharedMountPoint     -  **Path.** The path on each host that is where this primary
+      SharedMountPoint     -  **Path.** (Obligatory) The path on each host that is where this primary
                               storage is mounted. For example, "/mnt/primary".
 
-                           -  **Tags (optional).** The comma-separated list of tags for this
+                           -  **Tags.** The comma-separated list of tags for this
                               storage device. It should be an equivalent set or superset of
                               the tags on your disk offerings.
 
-      VMFS                 -  **Server.** The IP address or DNS name of the vCenter server.
+      VMFS                 -  **Server.** (Obligatory) The IP address or DNS name of the vCenter server.
 
-                           -  **Path.** A combination of the datacenter name and the
+                           -  **Path.** (Obligatory) A combination of the datacenter name and the
                               datastore name. The format is "/" datacenter name "/" datastore
                               name. For example, "/cloud.dc.VM/cluster1datastore".
 
-                           -  **Tags (optional).** The comma-separated list of tags for this
+                           -  **Tags.** The comma-separated list of tags for this
                               storage device. It should be an equivalent set or superset of
                               the tags on your disk offerings.
       ===================  ===========================================================================
