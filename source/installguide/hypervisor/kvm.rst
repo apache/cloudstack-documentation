@@ -462,6 +462,12 @@ infrastructure.
 By default these bridges are called *cloudbr0* and *cloudbr1* etc, but this can be 
 changed to be more description. 
 
+.. note::
+   Ensure that the interfaces names to be used for configuring the bridges match one of the following patterns:
+   **'eth*', 'bond*', 'team*', 'vlan*', 'em*', 'p*p*', 'ens*', 'eno*', 'enp*', 'enx*'**.
+
+   Otherwise, the KVM agent will not be able to configure the bridges properly.
+
 .. warning::
    It is essential that you keep the configuration consistent across all of your hypervisors.
 

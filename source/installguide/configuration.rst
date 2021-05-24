@@ -320,11 +320,11 @@ Basic Zone Configuration
       .. cssclass:: table-striped table-bordered table-hover
 
       ===============================================  ===================================================================================================================
-      Network Offering                                 Description 
+      Network Offering                                 Description
       ===============================================  ===================================================================================================================
       DefaultSharedNetworkOfferingWithSGService        If you want to enable security groups for guest traffic isolation, choose this. (See Using Security Groups to                                                              Control Traffic to VMs.)
       DefaultSharedNetworkOffering                     If you do not need security groups, choose this.
-      DefaultSharedNetscalerEIPandELBNetworkOffering   If you have installed a Citrix NetScaler appliance as part of your zone network, and you will be using its Elastic                                                         IP and Elastic Load Balancing features, choose this. With the EIP and ELB features, a basic zone with security                                                             groups enabled can offer 1:1 static NAT and load balancing. 
+      DefaultSharedNetscalerEIPandELBNetworkOffering   If you have installed a Citrix NetScaler appliance as part of your zone network, and you will be using its Elastic                                                         IP and Elastic Load Balancing features, choose this. With the EIP and ELB features, a basic zone with security                                                             groups enabled can offer 1:1 static NAT and load balancing.
       ===============================================  ===================================================================================================================
 
 
@@ -553,8 +553,8 @@ Advanced Zone Configuration
    The traffic types are management, public, guest, and storage traffic.
    For more information about the types, roll over the icons to display
    their tool tips, or see :ref:`about-adv-network-traffic-types`.
-   This screenstarts out with one network already configured. If you have 
-   multiple physical networks, you need to add more. Drag and drop traffic 
+   This screenstarts out with one network already configured. If you have
+   multiple physical networks, you need to add more. Drag and drop traffic
    types onto a greyed-out network and it will become active. You can move the
    traffic icons from one network to another; for example, if the
    default traffic types shown for Network 1 do not match your actual
@@ -679,9 +679,8 @@ Advanced Zone Configuration
    -  **Protocol.** (Obligatory) For XenServer, choose either NFS, iSCSI, or
       PreSetup. For KVM, choose NFS, SharedMountPoint, CLVM, RBD or custom (for PowerFlex).
 
-      For vSphere choose either VMFS (iSCSI or FiberChannel) or NFS. The
-      remaining fields in the screen vary depending on what you choose
-      here.
+      For vSphere, choose either NFS, PreSetup (VMFS - iSCSI/FiberChannel, vSAN, vVols) or DatastoreCluster.
+      The remaining fields in the screen vary depending on what you choose here.
 
       .. cssclass:: table-striped table-bordered table-hover
 
@@ -875,77 +874,20 @@ To add a vSphere cluster to CloudStack:
    -  **Cluster Name**: Enter the name of the cluster you created in
       vCenter. For example, "cloud.cluster.2.2.1"
 
+   -  **vCenter Host**: Enter the hostname or IP address of the vCenter
+      server.
+
    -  **vCenter Username**: Enter the username that CloudStack should
       use to connect to vCenter. This user must have all the
       administrative privileges.
-
-   -  **CPU overcommit ratio**: Enter the CPU overcommit ratio for the
-      cluster. The value you enter determines the CPU consumption of
-      each VM in the selected cluster. By increasing the
-      over-provisioning ratio, more resource capacity will be used. If
-      no value is specified, the value is defaulted to 1, which implies
-      no over-provisioning is done.
-
-   -  **RAM overcommit ratio**: Enter the RAM overcommit ratio for the
-      cluster. The value you enter determines the memory consumption of
-      each VM in the selected cluster. By increasing the
-      over-provisioning ratio, more resource capacity will be used. If
-      no value is specified, the value is defaulted to 1, which implies
-      no over-provisioning is done.
-
-   -  **vCenter Host**: Enter the hostname or IP address of the vCenter
-      server.
 
    -  **vCenter Password**: Enter the password for the user named above.
 
    -  **vCenter Datacenter**: Enter the vCenter datacenter that the
       cluster is in. For example, "cloud.dc.VM".
 
-   -  **Override Public Traffic**: Enable this option to override the
-      zone-wide public traffic for the cluster you are creating.
-
-   -  **Public Traffic vSwitch Type**: This option is displayed only if
-      you enable the Override Public Traffic option. Select a desirable
-      switch. If the vmware.use.dvswitch global parameter is true, the
-      default option will be VMware vNetwork Distributed Virtual Switch.
-
-      If you have enabled Nexus dvSwitch in the environment, the
-      following parameters for dvSwitch configuration are displayed:
-
-      -  Nexus dvSwitch IP Address: The IP address of the Nexus VSM
-         appliance.
-
-      -  Nexus dvSwitch Username: The username required to access the
-         Nexus VSM appliance.
-
-      -  Nexus dvSwitch Password: The password associated with the
-         username specified above.
-
-   -  **Override Guest Traffic**: Enable this option to override the
-      zone-wide guest traffic for the cluster you are creating.
-
-   -  **Guest Traffic vSwitch Type**: This option is displayed only if
-      you enable the Override Guest Traffic option. Select a desirable
-      switch.
-
-      If the vmware.use.dvswitch global parameter is true, the default
-      option will be VMware vNetwork Distributed Virtual Switch.
-
-      If you have enabled Nexus dvSwitch in the environment, the
-      following parameters for dvSwitch configuration are displayed:
-
-      -  Nexus dvSwitch IP Address: The IP address of the Nexus VSM
-         appliance.
-
-      -  Nexus dvSwitch Username: The username required to access the
-         Nexus VSM appliance.
-
-      -  Nexus dvSwitch Password: The password associated with the
-         username specified above.
-
-   -  There might be a slight delay while the cluster is provisioned. It
-      will automatically display in the UI.
-
+   -  **Dedicated**: When marked as dedicated, this device will be dedicated
+      to a single account.
 
 .. _adding-a-host:
 
@@ -964,8 +906,8 @@ Adding a Host
    hypervisor hosts for use with CloudStack.
 
    .. warning::
-      Be sure you have performed the additional CloudStack-specific 
-      configuration steps described in the hypervisor installation section for 
+      Be sure you have performed the additional CloudStack-specific
+      configuration steps described in the hypervisor installation section for
       your particular hypervisor.
 
 #. Now add the hypervisor host to CloudStack. The technique to use
@@ -988,7 +930,7 @@ Requirements for XenServer and KVM Hosts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning::
-   Make sure the hypervisor host does not have any VMs already running before 
+   Make sure the hypervisor host does not have any VMs already running before
    you add it to CloudStack.
 
 Configuration requirements:
@@ -1017,9 +959,9 @@ pool.
 
    # xe pool-join master-address=[master IP] master-username=root master-password=[your password]
 
-.. note:: 
-   When copying and pasting a command, be sure the command has pasted as a 
-   single line before executing. Some document viewers may introduce unwanted 
+.. note::
+   When copying and pasting a command, be sure the command has pasted as a
+   single line before executing. Some document viewers may introduce unwanted
    line breaks in copied text.
 
 With all hosts added to the XenServer pool, run the cloud-setup-bond
@@ -1150,9 +1092,9 @@ of that procedure. You can add primary storage servers at any time, such
 as when adding a new cluster or adding more servers to an existing
 cluster.
 
-.. warning:: 
-   When using preallocated storage for primary storage, be sure there is 
-   nothing on the storage (ex. you have an empty SAN volume or an empty NFS 
+.. warning::
+   When using preallocated storage for primary storage, be sure there is
+   nothing on the storage (ex. you have an empty SAN volume or an empty NFS
    share). Adding the storage to CloudStack will destroy any existing data.
 
 #. Log in to the CloudStack UI :ref:`log-in-to-ui`.
@@ -1183,18 +1125,19 @@ cluster.
 
    -  **Protocol.** For XenServer, choose either NFS, iSCSI, or
       PreSetup. For KVM, choose NFS, SharedMountPoint or custom (for PowerFlex). For vSphere
-      choose either NFS, PreSetup (VMFS, vSAN, vVols) or datastorecluster. For Hyper-V,      choose SMB.
+      choose either NFS, PreSetup (VMFS - iSCSI/FiberChannel, vSAN, vVols) or DatastoreCluster. For Hyper-V,
+      choose SMB.
 
    -  **Server (for NFS, iSCSI, or PreSetup).** The IP address or DNS
       name of the storage device.
 
-   -  **Server (for PreSetup or datastorecluster).** The IP address or DNS name of the vCenter
+   -  **Server (for PreSetup or DatastoreCluster).** The IP address or DNS name of the vCenter
       server.
 
    -  **Path (for NFS).** In NFS this is the exported path from the
       server.
 
-   -  **Path (for PreSetup or datastorecluster).** In vSphere this is a combination of the
+   -  **Path (for PreSetup or DatastoreCluster).** In vSphere this is a combination of the
       datacenter name and the datastore or datastore cluster name. The format is "/"
       datacenter name "/" datastore or datastore cluster name. For example,
       "/cloud.dc.VM/cluster1datastore".
@@ -1252,9 +1195,9 @@ Configuring a Storage Plug-in
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
-   Primary storage that is based on a custom plug-in (ex. SolidFire) must be 
-   added through the CloudStack API (described later in this section). There 
-   is no support at this time through the CloudStack UI to add this type of 
+   Primary storage that is based on a custom plug-in (ex. SolidFire) must be
+   added through the CloudStack API (described later in this section). There
+   is no support at this time through the CloudStack UI to add this type of
    primary storage (although most of its features are available through the
    CloudStack UI).
 
@@ -1263,8 +1206,8 @@ SolidFire Plug-in
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
-   The SolidFire storage plug-in for CloudStack is part of the standard 
-   CloudStack install. There is no additional work required to add this 
+   The SolidFire storage plug-in for CloudStack is part of the standard
+   CloudStack install. There is no additional work required to add this
    component.
 
 Adding primary storage that is based on the SolidFire plug-in enables
@@ -1418,7 +1361,7 @@ of that procedure. You can add secondary storage servers at any time to
 add more servers to an existing zone.
 
 .. warning::
-   Ensure that nothing is stored on the server. Adding the server to 
+   Ensure that nothing is stored on the server. Adding the server to
    CloudStack will destroy any existing data.
 
 #. To prepare for the zone-based Secondary Staging Store, you should
@@ -1429,7 +1372,7 @@ add more servers to an existing zone.
    share.
 
 #. Make sure you prepared the system VM template during Management
-   Server installation. See `“Prepare the System VM Template” 
+   Server installation. See `“Prepare the System VM Template”
    <installation.html#prepare-the-system-vm-template>`_.
 
 #. Log in to the CloudStack UI as root administrator.
@@ -1452,16 +1395,16 @@ add more servers to an existing zone.
       For Hyper-V, select SMB/CIFS.
 
       .. warning::
-         Heterogeneous Secondary Storage is not supported in Regions. You can 
+         Heterogeneous Secondary Storage is not supported in Regions. You can
          use only a single NFS, S3, or Swift account per region.
 
    -  Create NFS Secondary Staging Store. This box must always be
       checked.
 
-      .. warning:: 
-         Even if the UI allows you to uncheck this box, do not do so. This 
-         checkbox and the three fields below it must be filled in. Even when 
-         Swift or S3 is used as the secondary storage provider, an NFS staging 
+      .. warning::
+         Even if the UI allows you to uncheck this box, do not do so. This
+         checkbox and the three fields below it must be filled in. Even when
+         Swift or S3 is used as the secondary storage provider, an NFS staging
          storage in each zone is still required.
 
    -  Zone. The zone where the NFS Secondary Staging Store is to be
@@ -1699,7 +1642,7 @@ zone      router.template.vmware                                     Name of the
 zone      enable.dynamic.scale.vm                                    Enable or diable dynamically scaling of a VM.
 zone      use.external.dns                                           Bypass internal DNS, and use the external DNS1 and DNS2
 zone      blacklisted.routes                                         Routes that are blacklisted cannot be used for creating static routes for a VPC Private Gateway.
-========  =========================================================  ======================================================================================================================================  
+========  =========================================================  ======================================================================================================================================
 
 
 .. |provisioning-overview.png: Conceptual overview of a basic deployment| image:: /_static/images/provisioning-overview.png
