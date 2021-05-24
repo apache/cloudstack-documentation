@@ -464,6 +464,10 @@ changed to be more description.
 There are many ways to configure your networking. Even within the scope of a given 
 network mode.  Below are a few simple examples.
 
+.. note::
+   Since Ubuntu 20.04 the standard for manging network connections is by
+   using NetPlan YAML files. Please refer to the Ubuntu man pages for further
+   information and set up network connections figuratively.
 
 Network example for Basic Networks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -645,11 +649,10 @@ although a reboot is recommended to see if everything works properly.
 Network Example for Advanced Networks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the Advanced networking mode is most common to have (at least) two physical interfaces.
-In this example we will again have the hypervisor management interface on cloudbr0 on the 
-untagged (native) VLAN. But now we will have a bridge on top of our additional interface (eth1)
-for public and guest traffic with no VLANs applied by us - CloudStack will add the VLANs
-as required.
+In the Advanced networking mode is most common to have (at least) two physical interfaces per hypervior-host.
+We will use the interface eth0 linked to the bridge 'cloudbr0' using the untagged (native) VLAN for hypervisor management.
+Additionally we configure the second interface for usage with the bridge 'cloudbr1' for public and guest traffic.
+This time there are no VLANs applied by us - CloudStack will add the VLANs as required during actual use.
 
 We again give the Hypervisor the IP-Address 192.168.42.11/24 with
 the gateway 192.168.42.1
@@ -694,7 +697,7 @@ Make sure it looks similar to:
    TYPE=Ethernet
    BRIDGE=cloudbr0
 
-We now have to configure the VLAN interfaces:
+We now have to configure the second network-interface for use in guest VLANs:
 
 .. parsed-literal::
 
@@ -710,7 +713,7 @@ We now have to configure the VLAN interfaces:
    TYPE=Ethernet
    BRIDGE=cloudbr1
 
-Now we have the VLAN interfaces configured we can add the bridges on top
+Now we have the interfaces configured and can add the bridges on top
 of them.
 
 .. parsed-literal::
@@ -737,7 +740,7 @@ Now we configure cloudbr0 and include the Management IP of the hypervisor.
    NETMASK=255.255.255.0
    STP=yes
 
-We configure cloudbr1 as a plain bridge without an IP address
+We configure 'cloudbr1' as a plain bridge without an IP address or dedicated VLAN configuration.
 
 .. parsed-literal::
 
@@ -1088,6 +1091,16 @@ To open the required ports, execute the following commands:
 .. note::
    By default UFW is not enabled on Ubuntu. Executing these commands with the
    firewall disabled does not enable the firewall.
+   
+   If you have an issue with ufw while using a bridged connection, 
+   add those two lines at the end of the /etc/ufw/before.rules just before COMMIT
+   
+.. parsed-literal::
+   sudo vi /etc/ufw/before.rules
+   
+.. parsed-literal::
+   -A FORWARD -d 192.168.42.11 -j ACCEPT
+   -A FORWARD -s 192.168.42.11 -j ACCEPT
 
 
 Additional Packages Required for Features
@@ -1125,4 +1138,3 @@ The host is now ready to be added to a cluster. This is covered in a
 later section, see :ref:`adding-a-host`. It is
 recommended that you continue to read the documentation before adding
 the host!
-

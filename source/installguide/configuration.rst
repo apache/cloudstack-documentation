@@ -502,7 +502,7 @@ Basic Zone Configuration
    -  **Name.** The name of the storage device.
 
    -  **Protocol.** For XenServer, choose either NFS, iSCSI, or
-      PreSetup. For KVM, choose NFS, SharedMountPoint,CLVM, or RBD. For
+      PreSetup. For KVM, choose NFS, SharedMountPoint,CLVM, RBD or custom (for PowerFlex). For
       vSphere choose either VMFS (iSCSI or FiberChannel) or NFS. The
       remaining fields in the screen vary depending on what you choose
       here.
@@ -677,7 +677,8 @@ Advanced Zone Configuration
    -  **Name.** (Obligatory) The name of the storage device.
 
    -  **Protocol.** (Obligatory) For XenServer, choose either NFS, iSCSI, or
-      PreSetup. For KVM, choose NFS, SharedMountPoint, CLVM, and RBD.
+      PreSetup. For KVM, choose NFS, SharedMountPoint, CLVM, RBD or custom (for PowerFlex).
+
       For vSphere choose either VMFS (iSCSI or FiberChannel) or NFS. The
       remaining fields in the screen vary depending on what you choose
       here.
@@ -1181,9 +1182,8 @@ cluster.
    -  **Name.** The name of the storage device.
 
    -  **Protocol.** For XenServer, choose either NFS, iSCSI, or
-      PreSetup. For KVM, choose NFS or SharedMountPoint. For vSphere
-      choose either NFS, PreSetup (VMFS, vSAN, vVols) or datastorecluster. For Hyper-V,
-      choose SMB.
+      PreSetup. For KVM, choose NFS, SharedMountPoint or custom (for PowerFlex). For vSphere
+      choose either NFS, PreSetup (VMFS, vSAN, vVols) or datastorecluster. For Hyper-V,      choose SMB.
 
    -  **Server (for NFS, iSCSI, or PreSetup).** The IP address or DNS
       name of the storage device.
@@ -1258,6 +1258,10 @@ Configuring a Storage Plug-in
    primary storage (although most of its features are available through the
    CloudStack UI).
 
+
+SolidFire Plug-in
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. note::
    The SolidFire storage plug-in for CloudStack is part of the standard 
    CloudStack install. There is no additional work required to add this 
@@ -1321,6 +1325,65 @@ example, '=' is represented as '%3D')]
 -  clusterDefaultBurstIopsPercentOfMaxIops%3D[Burst IOPS is determined
    by (Min IOPS \* clusterDefaultBurstIopsPercentOfMaxIops parameter)
    (can be a decimal value)]
+
+PowerFlex Plug-in
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This plugin enables Dell EMC PowerFlex™ (v3.5) storage pools as a managed
+primary storage in CloudStack for KVM hypervisor.
+
+The PowerFlex/ScaleIO storage installation/setup and creation of the PowerFlex storage pool is
+out of scope of this document. For PowerFlex storage installation instructions, Refer
+to PowerFlex product documentation:
+https://www.dell.com/support/home/en-in/product-support/product/scaleio/docs.
+
+To know more details about PowerFlex, refer to
+https://cpsdocs.dellemc.com/bundle/PF_KNOW/page/GUID-D6DFA46A-6085-47CE-88A9-B503EFC6CFD2.html.
+
+When this storage pool is used with Compute or Disk Offerings, an administrator is
+able to build an environment in which a root or data disk that a user creates leads
+to the dynamic creation of a PowerFlex volume. This volume has guaranteed performance
+with  the ScaleIO Data Client (SDC) limits specified in the offering using the details
+parameter keys: bandwidthLimitInMbps &iopsLimit (both defaulted to 0 - unlimited).
+Such a PowerFlex volume is associated with one (and only ever one) CloudStack volume,
+so performance of the CloudStack volume does not vary depending on how heavily other
+tenants are using the system. This volume migration is supported across PowerFlex storage
+pools only, which are on same or distinct storage instance.
+
+The createStoragePool API has been augmented to support plugable storage
+providers. The following is a list of parameters to use when adding
+storage to CloudStack that is based on the PowerFlex plug-in:
+
+-  command=createStoragePool
+
+-  scope=[zone | cluster]
+
+-  zoneid=[your zone id]
+
+-  podid=[your pod id, for cluster-wide primary storage]
+
+-  clusterid=[your cluster id, for cluster-wide primary storage]
+
+-  name=[name for primary storage]
+
+-  hypervisor=KVM
+
+-  provider=PowerFlex
+
+-  url=[storage pool url]
+
+The url parameter contains the PowerFlex storage pool details, specifed
+in the following format:
+
+powerflex://<API_USER>:<API_PASSWORD>@<GATEWAY>/<STORAGEPOOL>
+
+-	<API_USER>=[user name for API access to PowerFlex gateway]
+
+-	<API_PASSWORD>=[password for API access to PowerFlex gateway (password is URL encoded for example, '=' is represented as '%3D')]
+
+-	<GATEWAY>=[PowerFlex gateway host]
+
+-	<STORAGEPOOL>=[PowerFlex storage pool name (case sensitive)]
 
 
 .. _add-secondary-storage:
