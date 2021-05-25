@@ -148,6 +148,8 @@ You will need, at a minimum, the following to compile CloudStack:
 
 #. Java (Java 11/OpenJDK 1.11)
 
+#. NodeJS (LTS/12)
+
 #. Apache Web Services Common Utilities (ws-commons-util)
 
 #. MySQL
@@ -254,6 +256,8 @@ several other dependencies. Note that we recommend using Maven 3.
    $ sudo apt-get install python-software-properties
    $ sudo apt-get update
    $ sudo apt-get install debhelper openjdk-11-jdk libws-commons-util-java genisoimage libcommons-codec-java libcommons-httpclient-java liblog4j1.2-java maven
+   $ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+   $ sudo apt-get install -y nodejs
 
 .. note::
 
@@ -414,6 +418,8 @@ Linux.
 .. parsed-literal::
 
    # yum install java-11-openjdk-devel genisoimage mysql mysql-server ws-commons-util MySQL-python python-setuptools createrepo
+   # curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -
+   # yum install nodejs
 
 Next, you'll need to install build-time dependencies for CloudStack with
 Maven. We're using Maven 3, so you'll want to grab `Maven 3.0.5 (Binary tar.gz)
