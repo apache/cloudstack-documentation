@@ -276,6 +276,10 @@ and secondary storage.
       networks and providing custom network offerings such as firewall,
       VPN, or load balancer support.
 
+   -  **Security Groups.** You can choose to enable Security Groups in your zone.
+      For further informations regarding Security Groups and there prequesits
+      please refer to the Security Groups section in the documentation.
+
 #. The rest of the steps differ depending on whether you chose Basic or
    Advanced. Continue with the steps that apply to you:
 
@@ -316,11 +320,11 @@ Basic Zone Configuration
       .. cssclass:: table-striped table-bordered table-hover
 
       ===============================================  ===================================================================================================================
-      Network Offering                                 Description 
+      Network Offering                                 Description
       ===============================================  ===================================================================================================================
       DefaultSharedNetworkOfferingWithSGService        If you want to enable security groups for guest traffic isolation, choose this. (See Using Security Groups to                                                              Control Traffic to VMs.)
       DefaultSharedNetworkOffering                     If you do not need security groups, choose this.
-      DefaultSharedNetscalerEIPandELBNetworkOffering   If you have installed a Citrix NetScaler appliance as part of your zone network, and you will be using its Elastic                                                         IP and Elastic Load Balancing features, choose this. With the EIP and ELB features, a basic zone with security                                                             groups enabled can offer 1:1 static NAT and load balancing. 
+      DefaultSharedNetscalerEIPandELBNetworkOffering   If you have installed a Citrix NetScaler appliance as part of your zone network, and you will be using its Elastic                                                         IP and Elastic Load Balancing features, choose this. With the EIP and ELB features, a basic zone with security                                                             groups enabled can offer 1:1 static NAT and load balancing.
       ===============================================  ===================================================================================================================
 
 
@@ -498,7 +502,7 @@ Basic Zone Configuration
    -  **Name.** The name of the storage device.
 
    -  **Protocol.** For XenServer, choose either NFS, iSCSI, or
-      PreSetup. For KVM, choose NFS, SharedMountPoint,CLVM, or RBD. For
+      PreSetup. For KVM, choose NFS, SharedMountPoint,CLVM, RBD or custom (for PowerFlex). For
       vSphere choose either VMFS (iSCSI or FiberChannel) or NFS. The
       remaining fields in the screen vary depending on what you choose
       here.
@@ -512,44 +516,45 @@ Advanced Zone Configuration
 
    -  **Name.** A name for the zone.
 
-   -  **DNS 1 and 2.** These are DNS servers for use by guest VMs in the
+   -  **DNS 1 and 2.** (DNS 1 obligatory)These are DNS servers for use by guest VMs in the
       zone. These DNS servers will be accessed via the public network
       you will add later. The public IP addresses for the zone must have
       a route to the DNS server named here.
 
-   -  **Internal DNS 1 and Internal DNS 2.** These are DNS servers for
-      use by system VMs in the zone(these are VMs used by CloudStack
-      itself, such as virtual routers, console proxies,and Secondary
-      Storage VMs.) These DNS servers will be accessed via the
-      management traffic network interface of the System VMs. The
-      private IP address you provide for the pods must have a route to
+   -  **Internal DNS 1 and Internal DNS 2.** (DNS 1 obligatory)
+      These are DNS servers for use by system VMs in the zone(these are 
+      VMs used by CloudStack itself, such as virtual routers, console
+      proxies,and Secondary Storage VMs.) These DNS servers will be accessed via the
+      management traffic network interface of the System VMs. The private
+      IP address you provide for the pods must have a route to
       the internal DNS server named here.
 
-   -  **Network Domain.** (Optional) If you want to assign a special
+   -  **Network Domain.** If you want to assign a special
       domain name to the guest VM network, specify the DNS suffix.
 
-   -  **Guest CIDR.** This is the CIDR that describes the IP addresses
-      in use in the guest virtual networks in this zone. For example,
-      10.1.1.0/24. As a matter of good practice you should set different
-      CIDRs for different zones. This will make it easier to set up VPNs
-      between networks in different zones.
+   -  **Hypervisor.** (Obligatory) Choose the hypervisor for the first
+      cluster in the zone. You can add clusters with different hypervisors
+      later, after you finish adding the zone.
 
-   -  **Hypervisor.** (Introduced in version 3.0.1) Choose the
-      hypervisor for the first cluster in the zone. You can add clusters
-      with different hypervisors later, after you finish adding the
-      zone.
+   -  **Dedicated.** A dedicated zone is available to selected users or groups 
+      within a domain. Only specified users or grous in that domain will 
+      be allowed to create guest VMs in this zone.
 
-   -  **Public.** A public zone is available to all users. A zone that
-      is not public will be assigned to a particular domain. Only users
-      in that domain will be allowed to create guest VMs in this zone.
+   -  **Enable local storage for User VMs.** Give the user the opperunity to 
+      provide local storage (physical storage on the host) for User VMs to store data.
+
+   -  **Enable local storage for System VMs.** Give the system the opperunity to 
+      use local storage (physical storage on the hosts) for System VMs.
+	  
+#. Click Next.
 
 #. Choose which traffic types will be carried by the physical network.
 
    The traffic types are management, public, guest, and storage traffic.
    For more information about the types, roll over the icons to display
    their tool tips, or see :ref:`about-adv-network-traffic-types`.
-   This screenstarts out with one network already configured. If you have 
-   multiple physical networks, you need to add more. Drag and drop traffic 
+   This screenstarts out with one network already configured. If you have
+   multiple physical networks, you need to add more. Drag and drop traffic
    types onto a greyed-out network and it will become active. You can move the
    traffic icons from one network to another; for example, if the
    default traffic types shown for Network 1 do not match your actual
@@ -580,39 +585,37 @@ Advanced Zone Configuration
 
 #. Click Next.
 
-#. Configure the IP range for public Internet traffic. Enter the
-   following details, then click Add. If desired, you can repeat this
-   step to add more public Internet IP ranges. When done, click Next.
-
-   -  **Gateway.** The gateway in use for these IP addresses.
-
-   -  **Netmask.** The netmask associated with this IP range.
-
-   -  **VLAN.** The VLAN that will be used for public traffic.
-
-   -  **Start IP/End IP.** A range of IP addresses that are assumed to
-      be accessible from the Internet and will be allocated for access
-      to guest networks.
-
 #. In a new zone, CloudStack adds the first pod for you. You can always
    add more pods later. For an overview of what a pod is, see :ref:`about-pods`
 
    To configure the first pod, enter the following, then click Next:
 
-   -  **Pod Name.** A name for the pod.
+   -  **Pod Name.** (Obligatory) A name for the pod.
 
-   -  **Reserved system gateway.** The gateway for the hosts in that
+   -  **Reserved system gateway.** (Obligatory) The gateway for the hosts in that
       pod.
 
-   -  **Reserved system netmask.** The network prefix that defines the
+   -  **Reserved system netmask.** (Obligatory) The network prefix that defines the
       pod's subnet. Use CIDR notation.
 
-   -  **Start/End Reserved System IP.** The IP range in the management
-      network that CloudStack uses to manage various system VMs, such as
-      Secondary Storage VMs, Console Proxy VMs, and DHCP. For more
-      information, see :ref:`about_system_reserved_ip_addresses`
-#. Specify a range of VLAN IDs to carry guest traffic for each physical
-   network (see VLAN Allocation Example ), then click Next.
+   -  **Start/End Reserved System IP.** (Start Reserved System IP - obligatory) 
+      The IP range in the management network that CloudStack uses to manage 
+      various system VMs, such as Secondary Storage VMs, Console Proxy VMs, and DHCP.
+      For more information, see :ref:`about_system_reserved_ip_addresses`
+
+#. Configure the IP range for guest traffic. Guest network traffic is 
+   communication between end-user virtual machines. Enter the
+   following details, then click Add. When done, click Next.
+
+   -  **Guest Gateway.** The gateway in use for these IP addresses.
+
+   -  **Guest Netmask.** The netmask associated with this IP range.
+
+   -  **Guest Start IP/ GuestEnd IP.** A range of IP addresses that are assumed to
+      be accessible from the Internet and will be allocated for access
+      to guest networks.
+
+   -  **VLAN / VNI ID.** The VLAN / VNI ID's that will be used for guest traffic.
 
 #. In a new pod, CloudStack adds the first cluster for you. You can
    always add more clusters later. For an overview of what a cluster is,
@@ -620,15 +623,7 @@ Advanced Zone Configuration
 
    To configure the first cluster, enter the following, then click Next:
 
-   -  **Hypervisor.** (Version 3.0.0 only; in 3.0.1, this field is read
-      only) Choose the type of hypervisor software that all hosts in
-      this cluster will run. If you choose VMware, additional fields
-      appear so you can give information about a vSphere cluster. For
-      vSphere servers, we recommend creating the cluster of hosts in
-      vCenter and then adding the entire cluster to CloudStack. See Add
-      Cluster: vSphere .
-
-   -  **Cluster name.** Enter a name for the cluster. This can be text
+   -  **Cluster name.** (Obligatory) Enter a name for the cluster. This can be text
       of your choosing and is not used by CloudStack.
 
 #. In a new cluster, CloudStack adds the first host for you. You can
@@ -652,14 +647,19 @@ Advanced Zone Configuration
 
    To configure the first host, enter the following, then click Next:
 
-   -  **Host Name.** The DNS name or IP address of the host.
+   -  **Host Name.** (Obligatory) The DNS name or IP address of the host.
 
-   -  **Username.** Usually root.
+   -  **Username.** (Obligatory) Username of a user who has administrator / root privilidges on 
+      the specified host (using Linux-hosts usually root).
 
-   -  **Password.** This is the password for the user named above (from
+   -  **Password.** (Obligatory) This is the password for the user named above (from
       your XenServer or KVM install).
 
-   -  **Host Tags.** (Optional) Any labels that you use to categorize
+   .. note::
+      For security reasons there are ways to use non-adminstrative users for
+      adding a host. Please refer to the hypervisor setup guides for further information.	  
+
+   -  **Host Tags.** Any labels that you use to categorize
       hosts for ease of maintenance. For example, you can set to the
       cloud's HA tag (set in the ha.tag global configuration parameter)
       if you want this host to be used only for VMs with the "high
@@ -674,59 +674,59 @@ Advanced Zone Configuration
    To configure the first primary storage server, enter the following,
    then click Next:
 
-   -  **Name.** The name of the storage device.
+   -  **Name.** (Obligatory) The name of the storage device.
 
-   -  **Protocol.** For XenServer, choose either NFS, iSCSI, or
-      PreSetup. For KVM, choose NFS, SharedMountPoint, CLVM, and RBD.
-      For vSphere choose either VMFS (iSCSI or FiberChannel) or NFS. The
-      remaining fields in the screen vary depending on what you choose
-      here.
+   -  **Protocol.** (Obligatory) For XenServer, choose either NFS, iSCSI, or
+      PreSetup. For KVM, choose NFS, SharedMountPoint, CLVM, RBD or custom (for PowerFlex).
+
+      For vSphere, choose either NFS, PreSetup (VMFS - iSCSI/FiberChannel, vSAN, vVols) or DatastoreCluster.
+      The remaining fields in the screen vary depending on what you choose here.
 
       .. cssclass:: table-striped table-bordered table-hover
 
       ===================  ===========================================================================
-      NFS                  -  **Server.** The IP address or DNS name of the storage device.
+      NFS                  -  **Server.** (Obligatory) The IP address or DNS name of the storage device.
 
-                           -  **Path.** The exported path from the server.
+                           -  **Path.** (Obligatory) The exported path from the server.
 
-                           -  **Tags (optional).** The comma-separated list of tags for this
+                           -  **Tags.** The comma-separated list of tags for this
                               storage device. It should be an equivalent set or superset of
                               the tags on your disk offerings.
 
-      iSCSI                -  **Server.** The IP address or DNS name of the storage device.
+      iSCSI                -  **Server.** (Obligatory) The IP address or DNS name of the storage device.
 
-                           -  **Target IQN.** The IQN of the target. For example,
+                           -  **Target IQN.** (Obligatory) The IQN of the target. For example,
                               iqn.1986-03.com.sun:02:01ec9bb549-1271378984.
 
-                           -  **Lun.** The LUN number. For example, 3.
+                           -  **Lun.** (Obligatory) The LUN number. For example, 3.
 
-                           -  **Tags (optional).** The comma-separated list of tags for this
+                           -  **Tags.** The comma-separated list of tags for this
                               storage device. It should be an equivalent set or superset of
                               the tags on your disk offerings.
 
-      preSetup             -  **Server.** The IP address or DNS name of the storage device.
+      preSetup             -  **Server.** (Obligatory) The IP address or DNS name of the storage device.
 
-                           -  **SR Name-Label.** Enter the name-label of the SR that has been
+                           -  **SR Name-Label.** (Obligatory) Enter the name-label of the SR that has been
                               set up outside CloudStack.
 
-                           -  **Tags (optional).** The comma-separated list of tags for this
+                           -  **Tags.** The comma-separated list of tags for this
                               storage device. It should be an equivalent set or superset of
                               the tags on your disk offerings.
 
-      SharedMountPoint     -  **Path.** The path on each host that is where this primary
+      SharedMountPoint     -  **Path.** (Obligatory) The path on each host that is where this primary
                               storage is mounted. For example, "/mnt/primary".
 
-                           -  **Tags (optional).** The comma-separated list of tags for this
+                           -  **Tags.** The comma-separated list of tags for this
                               storage device. It should be an equivalent set or superset of
                               the tags on your disk offerings.
 
-      VMFS                 -  **Server.** The IP address or DNS name of the vCenter server.
+      VMFS                 -  **Server.** (Obligatory) The IP address or DNS name of the vCenter server.
 
-                           -  **Path.** A combination of the datacenter name and the
+                           -  **Path.** (Obligatory) A combination of the datacenter name and the
                               datastore name. The format is "/" datacenter name "/" datastore
                               name. For example, "/cloud.dc.VM/cluster1datastore".
 
-                           -  **Tags (optional).** The comma-separated list of tags for this
+                           -  **Tags.** The comma-separated list of tags for this
                               storage device. It should be an equivalent set or superset of
                               the tags on your disk offerings.
       ===================  ===========================================================================
@@ -874,77 +874,20 @@ To add a vSphere cluster to CloudStack:
    -  **Cluster Name**: Enter the name of the cluster you created in
       vCenter. For example, "cloud.cluster.2.2.1"
 
+   -  **vCenter Host**: Enter the hostname or IP address of the vCenter
+      server.
+
    -  **vCenter Username**: Enter the username that CloudStack should
       use to connect to vCenter. This user must have all the
       administrative privileges.
-
-   -  **CPU overcommit ratio**: Enter the CPU overcommit ratio for the
-      cluster. The value you enter determines the CPU consumption of
-      each VM in the selected cluster. By increasing the
-      over-provisioning ratio, more resource capacity will be used. If
-      no value is specified, the value is defaulted to 1, which implies
-      no over-provisioning is done.
-
-   -  **RAM overcommit ratio**: Enter the RAM overcommit ratio for the
-      cluster. The value you enter determines the memory consumption of
-      each VM in the selected cluster. By increasing the
-      over-provisioning ratio, more resource capacity will be used. If
-      no value is specified, the value is defaulted to 1, which implies
-      no over-provisioning is done.
-
-   -  **vCenter Host**: Enter the hostname or IP address of the vCenter
-      server.
 
    -  **vCenter Password**: Enter the password for the user named above.
 
    -  **vCenter Datacenter**: Enter the vCenter datacenter that the
       cluster is in. For example, "cloud.dc.VM".
 
-   -  **Override Public Traffic**: Enable this option to override the
-      zone-wide public traffic for the cluster you are creating.
-
-   -  **Public Traffic vSwitch Type**: This option is displayed only if
-      you enable the Override Public Traffic option. Select a desirable
-      switch. If the vmware.use.dvswitch global parameter is true, the
-      default option will be VMware vNetwork Distributed Virtual Switch.
-
-      If you have enabled Nexus dvSwitch in the environment, the
-      following parameters for dvSwitch configuration are displayed:
-
-      -  Nexus dvSwitch IP Address: The IP address of the Nexus VSM
-         appliance.
-
-      -  Nexus dvSwitch Username: The username required to access the
-         Nexus VSM appliance.
-
-      -  Nexus dvSwitch Password: The password associated with the
-         username specified above.
-
-   -  **Override Guest Traffic**: Enable this option to override the
-      zone-wide guest traffic for the cluster you are creating.
-
-   -  **Guest Traffic vSwitch Type**: This option is displayed only if
-      you enable the Override Guest Traffic option. Select a desirable
-      switch.
-
-      If the vmware.use.dvswitch global parameter is true, the default
-      option will be VMware vNetwork Distributed Virtual Switch.
-
-      If you have enabled Nexus dvSwitch in the environment, the
-      following parameters for dvSwitch configuration are displayed:
-
-      -  Nexus dvSwitch IP Address: The IP address of the Nexus VSM
-         appliance.
-
-      -  Nexus dvSwitch Username: The username required to access the
-         Nexus VSM appliance.
-
-      -  Nexus dvSwitch Password: The password associated with the
-         username specified above.
-
-   -  There might be a slight delay while the cluster is provisioned. It
-      will automatically display in the UI.
-
+   -  **Dedicated**: When marked as dedicated, this device will be dedicated
+      to a single account.
 
 .. _adding-a-host:
 
@@ -963,8 +906,8 @@ Adding a Host
    hypervisor hosts for use with CloudStack.
 
    .. warning::
-      Be sure you have performed the additional CloudStack-specific 
-      configuration steps described in the hypervisor installation section for 
+      Be sure you have performed the additional CloudStack-specific
+      configuration steps described in the hypervisor installation section for
       your particular hypervisor.
 
 #. Now add the hypervisor host to CloudStack. The technique to use
@@ -987,7 +930,7 @@ Requirements for XenServer and KVM Hosts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning::
-   Make sure the hypervisor host does not have any VMs already running before 
+   Make sure the hypervisor host does not have any VMs already running before
    you add it to CloudStack.
 
 Configuration requirements:
@@ -1016,9 +959,9 @@ pool.
 
    # xe pool-join master-address=[master IP] master-username=root master-password=[your password]
 
-.. note:: 
-   When copying and pasting a command, be sure the command has pasted as a 
-   single line before executing. Some document viewers may introduce unwanted 
+.. note::
+   When copying and pasting a command, be sure the command has pasted as a
+   single line before executing. Some document viewers may introduce unwanted
    line breaks in copied text.
 
 With all hosts added to the XenServer pool, run the cloud-setup-bond
@@ -1149,9 +1092,9 @@ of that procedure. You can add primary storage servers at any time, such
 as when adding a new cluster or adding more servers to an existing
 cluster.
 
-.. warning:: 
-   When using preallocated storage for primary storage, be sure there is 
-   nothing on the storage (ex. you have an empty SAN volume or an empty NFS 
+.. warning::
+   When using preallocated storage for primary storage, be sure there is
+   nothing on the storage (ex. you have an empty SAN volume or an empty NFS
    share). Adding the storage to CloudStack will destroy any existing data.
 
 #. Log in to the CloudStack UI :ref:`log-in-to-ui`.
@@ -1181,20 +1124,20 @@ cluster.
    -  **Name.** The name of the storage device.
 
    -  **Protocol.** For XenServer, choose either NFS, iSCSI, or
-      PreSetup. For KVM, choose NFS or SharedMountPoint. For vSphere
-      choose either NFS, PreSetup (VMFS, vSAN, vVols) or datastorecluster. For Hyper-V,
+      PreSetup. For KVM, choose NFS, SharedMountPoint or custom (for PowerFlex). For vSphere
+      choose either NFS, PreSetup (VMFS - iSCSI/FiberChannel, vSAN, vVols) or DatastoreCluster. For Hyper-V,
       choose SMB.
 
    -  **Server (for NFS, iSCSI, or PreSetup).** The IP address or DNS
       name of the storage device.
 
-   -  **Server (for PreSetup or datastorecluster).** The IP address or DNS name of the vCenter
+   -  **Server (for PreSetup or DatastoreCluster).** The IP address or DNS name of the vCenter
       server.
 
    -  **Path (for NFS).** In NFS this is the exported path from the
       server.
 
-   -  **Path (for PreSetup or datastorecluster).** In vSphere this is a combination of the
+   -  **Path (for PreSetup or DatastoreCluster).** In vSphere this is a combination of the
       datacenter name and the datastore or datastore cluster name. The format is "/"
       datacenter name "/" datastore or datastore cluster name. For example,
       "/cloud.dc.VM/cluster1datastore".
@@ -1252,15 +1195,19 @@ Configuring a Storage Plug-in
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
-   Primary storage that is based on a custom plug-in (ex. SolidFire) must be 
-   added through the CloudStack API (described later in this section). There 
-   is no support at this time through the CloudStack UI to add this type of 
+   Primary storage that is based on a custom plug-in (ex. SolidFire) must be
+   added through the CloudStack API (described later in this section). There
+   is no support at this time through the CloudStack UI to add this type of
    primary storage (although most of its features are available through the
    CloudStack UI).
 
+
+SolidFire Plug-in
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. note::
-   The SolidFire storage plug-in for CloudStack is part of the standard 
-   CloudStack install. There is no additional work required to add this 
+   The SolidFire storage plug-in for CloudStack is part of the standard
+   CloudStack install. There is no additional work required to add this
    component.
 
 Adding primary storage that is based on the SolidFire plug-in enables
@@ -1322,6 +1269,65 @@ example, '=' is represented as '%3D')]
    by (Min IOPS \* clusterDefaultBurstIopsPercentOfMaxIops parameter)
    (can be a decimal value)]
 
+PowerFlex Plug-in
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This plugin enables Dell EMC PowerFlex™ (v3.5) storage pools as a managed
+primary storage in CloudStack for KVM hypervisor.
+
+The PowerFlex/ScaleIO storage installation/setup and creation of the PowerFlex storage pool is
+out of scope of this document. For PowerFlex storage installation instructions, Refer
+to PowerFlex product documentation:
+https://www.dell.com/support/home/en-in/product-support/product/scaleio/docs.
+
+To know more details about PowerFlex, refer to
+https://cpsdocs.dellemc.com/bundle/PF_KNOW/page/GUID-D6DFA46A-6085-47CE-88A9-B503EFC6CFD2.html.
+
+When this storage pool is used with Compute or Disk Offerings, an administrator is
+able to build an environment in which a root or data disk that a user creates leads
+to the dynamic creation of a PowerFlex volume. This volume has guaranteed performance
+with  the ScaleIO Data Client (SDC) limits specified in the offering using the details
+parameter keys: bandwidthLimitInMbps &iopsLimit (both defaulted to 0 - unlimited).
+Such a PowerFlex volume is associated with one (and only ever one) CloudStack volume,
+so performance of the CloudStack volume does not vary depending on how heavily other
+tenants are using the system. This volume migration is supported across PowerFlex storage
+pools only, which are on same or distinct storage instance.
+
+The createStoragePool API has been augmented to support plugable storage
+providers. The following is a list of parameters to use when adding
+storage to CloudStack that is based on the PowerFlex plug-in:
+
+-  command=createStoragePool
+
+-  scope=[zone | cluster]
+
+-  zoneid=[your zone id]
+
+-  podid=[your pod id, for cluster-wide primary storage]
+
+-  clusterid=[your cluster id, for cluster-wide primary storage]
+
+-  name=[name for primary storage]
+
+-  hypervisor=KVM
+
+-  provider=PowerFlex
+
+-  url=[storage pool url]
+
+The url parameter contains the PowerFlex storage pool details, specifed
+in the following format:
+
+powerflex://<API_USER>:<API_PASSWORD>@<GATEWAY>/<STORAGEPOOL>
+
+-	<API_USER>=[user name for API access to PowerFlex gateway]
+
+-	<API_PASSWORD>=[password for API access to PowerFlex gateway (password is URL encoded for example, '=' is represented as '%3D')]
+
+-	<GATEWAY>=[PowerFlex gateway host]
+
+-	<STORAGEPOOL>=[PowerFlex storage pool name (case sensitive)]
+
 
 .. _add-secondary-storage:
 
@@ -1355,7 +1361,7 @@ of that procedure. You can add secondary storage servers at any time to
 add more servers to an existing zone.
 
 .. warning::
-   Ensure that nothing is stored on the server. Adding the server to 
+   Ensure that nothing is stored on the server. Adding the server to
    CloudStack will destroy any existing data.
 
 #. To prepare for the zone-based Secondary Staging Store, you should
@@ -1366,7 +1372,7 @@ add more servers to an existing zone.
    share.
 
 #. Make sure you prepared the system VM template during Management
-   Server installation. See `“Prepare the System VM Template” 
+   Server installation. See `“Prepare the System VM Template”
    <installation.html#prepare-the-system-vm-template>`_.
 
 #. Log in to the CloudStack UI as root administrator.
@@ -1389,16 +1395,16 @@ add more servers to an existing zone.
       For Hyper-V, select SMB/CIFS.
 
       .. warning::
-         Heterogeneous Secondary Storage is not supported in Regions. You can 
+         Heterogeneous Secondary Storage is not supported in Regions. You can
          use only a single NFS, S3, or Swift account per region.
 
    -  Create NFS Secondary Staging Store. This box must always be
       checked.
 
-      .. warning:: 
-         Even if the UI allows you to uncheck this box, do not do so. This 
-         checkbox and the three fields below it must be filled in. Even when 
-         Swift or S3 is used as the secondary storage provider, an NFS staging 
+      .. warning::
+         Even if the UI allows you to uncheck this box, do not do so. This
+         checkbox and the three fields below it must be filled in. Even when
+         Swift or S3 is used as the secondary storage provider, an NFS staging
          storage in each zone is still required.
 
    -  Zone. The zone where the NFS Secondary Staging Store is to be
