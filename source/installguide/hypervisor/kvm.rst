@@ -147,6 +147,10 @@ To manage KVM instances on the host CloudStack uses a Agent. This Agent
 communicates with the Management server and controls all the instances
 on the host.
 
+.. note::
+   Depending on your distribution you might need to add the corresponding package repository
+   for CloudStack.
+
 First we start by installing the agent:
 
 In RHEL or CentOS:
@@ -458,6 +462,12 @@ infrastructure.
 By default these bridges are called *cloudbr0* and *cloudbr1* etc, but this can be 
 changed to be more description. 
 
+.. note::
+   Ensure that the interfaces names to be used for configuring the bridges match one of the following patterns:
+   **'eth*', 'bond*', 'team*', 'vlan*', 'em*', 'p*p*', 'ens*', 'eno*', 'enp*', 'enx*'**.
+
+   Otherwise, the KVM agent will not be able to configure the bridges properly.
+
 .. warning::
    It is essential that you keep the configuration consistent across all of your hypervisors.
 
@@ -649,11 +659,10 @@ although a reboot is recommended to see if everything works properly.
 Network Example for Advanced Networks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the Advanced networking mode is most common to have (at least) two physical interfaces.
-In this example we will again have the hypervisor management interface on cloudbr0 on the 
-untagged (native) VLAN. But now we will have a bridge on top of our additional interface (eth1)
-for public and guest traffic with no VLANs applied by us - CloudStack will add the VLANs
-as required.
+In the Advanced networking mode is most common to have (at least) two physical interfaces per hypervior-host.
+We will use the interface eth0 linked to the bridge 'cloudbr0' using the untagged (native) VLAN for hypervisor management.
+Additionally we configure the second interface for usage with the bridge 'cloudbr1' for public and guest traffic.
+This time there are no VLANs applied by us - CloudStack will add the VLANs as required during actual use.
 
 We again give the Hypervisor the IP-Address 192.168.42.11/24 with
 the gateway 192.168.42.1
@@ -698,7 +707,7 @@ Make sure it looks similar to:
    TYPE=Ethernet
    BRIDGE=cloudbr0
 
-We now have to configure the VLAN interfaces:
+We now have to configure the second network-interface for use in guest VLANs:
 
 .. parsed-literal::
 
@@ -714,7 +723,7 @@ We now have to configure the VLAN interfaces:
    TYPE=Ethernet
    BRIDGE=cloudbr1
 
-Now we have the VLAN interfaces configured we can add the bridges on top
+Now we have the interfaces configured and can add the bridges on top
 of them.
 
 .. parsed-literal::
@@ -741,7 +750,7 @@ Now we configure cloudbr0 and include the Management IP of the hypervisor.
    NETMASK=255.255.255.0
    STP=yes
 
-We configure cloudbr1 as a plain bridge without an IP address
+We configure 'cloudbr1' as a plain bridge without an IP address or dedicated VLAN configuration.
 
 .. parsed-literal::
 
@@ -1092,6 +1101,16 @@ To open the required ports, execute the following commands:
 .. note::
    By default UFW is not enabled on Ubuntu. Executing these commands with the
    firewall disabled does not enable the firewall.
+   
+   If you have an issue with ufw while using a bridged connection, 
+   add those two lines at the end of the /etc/ufw/before.rules just before COMMIT
+   
+.. parsed-literal::
+   sudo vi /etc/ufw/before.rules
+   
+.. parsed-literal::
+   -A FORWARD -d 192.168.42.11 -j ACCEPT
+   -A FORWARD -s 192.168.42.11 -j ACCEPT
 
 
 Additional Packages Required for Features
@@ -1129,4 +1148,3 @@ The host is now ready to be added to a cluster. This is covered in a
 later section, see :ref:`adding-a-host`. It is
 recommended that you continue to read the documentation before adding
 the host!
-

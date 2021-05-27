@@ -33,7 +33,7 @@ The VPN user database is shared across all the VPNs created by the
 account owner. All VPN users get access to all VPNs created by the
 account owner.
 
-.. note:: 
+.. note::
    Make sure that not all traffic goes through the VPN. That is, the route
    installed by the VPN should be only for the guest network and not for
    all traffic.
@@ -85,7 +85,9 @@ To enable VPN for a particular network:
 
 #. Click one of the displayed IP address names.
 
-#. Click the Enable VPN button. |vpn-icon.png|
+#. Click the VPN Tab
+
+#. Click the Enable Remote Access VPN. |vpn-icon.png|
 
    The IPsec key is displayed in a popup window.
 
