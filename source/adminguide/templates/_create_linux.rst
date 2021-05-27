@@ -20,9 +20,10 @@ Creating a Linux Template
 Linux templates should be prepared using this documentation in order to
 prepare your linux VMs for template deployment. For ease of
 documentation, the VM which you are configuring the template on will be
-referred to as "Template Master". This guide currently covers legacy
-setups which do not take advantage of UserData and cloud-init and
-assumes openssh-server is installed during installation.
+referred to as "Main Template". The final product, as created and usable
+for deplyoment in Cloudstack, will be referred as "Final Template".
+This guide will cover cloud-init setup.  It is assumed that openssh-server
+is installed during installation.
 
 An overview of the procedure is as follow:
 
@@ -47,204 +48,270 @@ An overview of the procedure is as follow:
 System preparation for Linux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following steps will prepare a basic Linux installation for
-templating.
+The following steps will provide basic Linux installation for
+templating of Centos and Ubuntu.
 
-#. **Installation**
+#. **Install packages and configure cloud-init**
 
-   It is good practice to name your VM something generic during
-   installation, this will ensure components such as LVM do not appear
-   unique to a machine. It is recommended that the name of "localhost"
-   is used for installation.
+   The next step update the packages on the Main Template and install cloud-init.
+   
+   ~  CentOS
+   
+    .. code:: bash
 
+	 yum update -y
+	 yum install -y cloud-init 
+	 reboot
+   
+   ~  Ubuntu
+   
+    .. code:: bash
+
+     sudo -i
+     apt-get update
+     apt-get upgrade -y
+     apt-get install -y acpid ntp cloud-init
+     reboot
+	  
+	Configure cloud-init to run on-boot.
+	
+   ~  CentOS
+   
+    .. code:: bash
+
+     echo "datasource: CloudStack" > /etc/cloud/ds-identify.cfg 
+   
+    ~  Ubuntu
+   
+    .. code:: bash
+
+     echo "datasource_list: [ ConfigDrive, CloudStack, None ]
+     datasource:
+       CloudStack: {}
+       None: {}" > /etc/cloud/cloud.cfg.d/99_cloudstack.cfg
+
+#. **Networking**
+
+   Set template network interface configuration to DHCP so Cloudstack infrastructure can assign one on boot.
+	
    .. warning:: 
-      For CentOS, it is necessary to take unique identification out of the
-      interface configuration file, for this edit
-      /etc/sysconfig/network-scripts/ifcfg-eth0 and change the content to
-      the following. 
+      For CentOS, it is mandatory to take unique identification out of the
+      interface configuration file /etc/sysconfig/network-scripts/ifcfg-eth0. Any entries starting with <VALUE> should be removed.
 
    .. code:: bash
 
-      DEVICE=eth0
+      echo "DEVICE=eth0
       TYPE=Ethernet
       BOOTPROTO=dhcp
-      ONBOOT=yes
-
-   The next steps updates the packages on the Template Master.
-
-   -  Ubuntu
-
-      .. code:: bash
-
-         sudo -i
-         apt-get update
-         apt-get upgrade -y
-         apt-get install -y acpid ntp
-         reboot
-
-   -  CentOS
-
-      .. code:: bash
-
-         ifup eth0
-         yum update -y
-         reboot
-
-#. **Password management**
-
-   .. note:: 
-      If preferred, custom users (such as ones created during the Ubuntu 
-      installation) should be removed. First ensure the root user account 
-      is enabled by giving it a password and then login as root to continue.
-
-   .. code:: bash
-
-      sudo passwd root
-      logout
-
-   As root, remove any custom user accounts created during the
-   installation process.
-
-   .. code:: bash
-
-      deluser myuser --remove-home
-
-   See :ref:`adding-password-management-to-templates` for
-   instructions to setup the password management script, this will allow
-   CloudStack to change your root password from the web interface.
+      ONBOOT=yes" > /etc/sysconfig/network-scripts/ifcfg-eth0
 
 #. **Hostname Management**
 
-   CentOS configures the hostname by default on boot. Unfortunately
-   Ubuntu does not have this functionality, for Ubuntu installations use
-   the following steps.
-
-   -  Ubuntu
-
-      The hostname of a Templated VM is set by a custom script in
-      `/etc/dhcp/dhclient-exit-hooks.d`, this script first checks if the
-      current hostname is localhost, if true, it will get the host-name,
-      domain-name and fixed-ip from the DHCP lease file and use those
-      values to set the hostname and append the `/etc/hosts` file for
-      local hostname resolution. Once this script, or a user has changed
-      the hostname from localhost, it will no longer adjust system files
-      regardless of its new hostname. The script also recreates
-      openssh-server keys, which should have been deleted before
-      templating (shown below). Save the following script to
-      `/etc/dhcp/dhclient-exit-hooks.d/sethostname`, and adjust the
-      permissions.
-
-      .. code:: bash
-
-         #!/bin/sh
-         # dhclient change hostname script for Ubuntu
-         oldhostname=$(hostname -s)
-         if [ $oldhostname = 'localhost' ]
-         then
-             sleep 10 # Wait for configuration to be written to disk
-             hostname=$(cat /var/lib/dhcp/dhclient.eth0.leases  |  awk ' /host-name/ { host = $3 }  END { printf host } ' | sed     's/[";]//g' )
-             fqdn="$hostname.$(cat /var/lib/dhcp/dhclient.eth0.leases  |  awk ' /domain-name/ { domain = $3 }  END { printf     domain } ' | sed 's/[";]//g')"
-             ip=$(cat /var/lib/dhcp/dhclient.eth0.leases  |  awk ' /fixed-address/ { lease = $2 }  END { printf lease } ' | sed     's/[";]//g')
-             echo "cloudstack-hostname: Hostname _localhost_ detected. Changing hostname and adding hosts."
-             printf " Hostname: $hostname\n FQDN: $fqdn\n IP: $ip"
-             # Update /etc/hosts
-             awk -v i="$ip" -v f="$fqdn" -v h="$hostname" "/^127/{x=1} !/^127/ && x { x=0; print i,f,h; } { print $0; }" /etc/hosts > /etc/hosts.dhcp.tmp
-             mv /etc/hosts /etc/hosts.dhcp.bak
-             mv /etc/hosts.dhcp.tmp /etc/hosts
-             # Rename Host
-             echo $hostname > /etc/hostname
-             hostname -b -F /etc/hostname
-             echo $hostname > /proc/sys/kernel/hostname
-             # Recreate SSH2
-             export DEBIAN_FRONTEND=noninteractive
-             dpkg-reconfigure openssh-server
-         fi
-         ### End of Script ###
-         
-         chmod 774  /etc/dhcp/dhclient-exit-hooks.d/sethostname
-
-   .. warning:: 
-      The following steps should be run when you are ready to template 
-      your Template Master. If the Template Master is rebooted during 
-      these steps you will have to run all the steps again. At the end 
-      of this process the Template Master should be shutdown and the 
-      template created in order to create and deploy the final template.
-
-#. **Remove the udev persistent device rules**
-
-   This step removes information unique to your Template Master such as
-   network MAC addresses, lease files and CD block devices, the files
-   are automatically generated on next boot.
-
-   -  Ubuntu
-
-      .. code:: bash
-
-         rm -f /etc/udev/rules.d/70*
-         rm -f /var/lib/dhcp/dhclient.*
-
-   -  CentOS
-
-      .. code:: bash
-
-         rm -f /etc/udev/rules.d/70*
-         rm -f /var/lib/dhclient/*
-
-#. **Remove SSH Keys**
-
-   This step is to ensure all your Templated VMs do not have the same
-   SSH keys, which would decrease the security of the machines
-   dramatically.
+   It is good practice to name the template VM something generic during installation, this will ensure components such as LVM do not appear unique to a machine. It is recommended that the name of "localhost" is used for installation.
 
    .. code:: bash
+
+	   hostname localhost
+	   echo "localhost" > /etc/hostname
+	
+   CentOS configures the hostname by default on boot. Ubuntu does not but cloud-init will do it automatically with no additional cofiguration required.
+
+#. **Password management**
+
+   Cloudstack `set-passwords module <https://cloudinit.readthedocs.io/en/latest/topics/modules.html?highlight=ssh_pwauth#set-passwords>`_ can set a password for each instance created from the Main Template and also allow the user the reset the user password through the GUI. This feature is enabled through communication between the new instance and Cloudstack infrastructure via the cloud-init middleware. 
+   
+   - **Enable set-passwords module on every boot**
+   
+     By default the set-passwords module runs only on first boot, change that to run on every boot.
+   
+     .. code:: bash
+   
+      sudo sed -i s/"set-passwords"/"[set-passwords, always]"/g /etc/cloud/cloud.cfg
+	
+     .. note:: 
+	 
+	  It is a good practice to remove any non root users that come with the OS (such as ones created during the Ubuntu 
+	  installation). First ensure the root user account is enabled by giving it a password and then login as root to continue.
+
+     Once logged in as root, any custom user can be removed.
+
+     .. code:: bash
+
+	  deluser myuser --remove-home
+	
+   - **Specify the managed user**
+   
+     Cloudstack will create the user, set a password and reset it when requested. To do that set the following configuration in /etc/cloud/cloud.cfg.d/80_user.cfg
+		
+     .. code:: bash
+
+	  echo "system_info\:
+	    default_user\:
+	      name: cloud-user	              # this is the username
+		  lock_passwd: false	          # If set to True it will disable password login for this particular user
+		  sudo: [\"ALL=(ALL) ALL\"] 	  # Define user permissions
+	    disable_root: 0	                  # Should OS root user be unavailable (0) or available (1) for remote login
+	    ssh_pwauth: 1	                  # 1 - enables password login functionality; 0 - disables" > /etc/cloud/cloud.cfg.d/80_user.cfg
+
+#. **Partition management**
+	
+   Cloud-init allows detection and resize of one or more existing partitions automatically after reboot. This guide will cover root partition.
+   First install the `Growpart module <https://cloudinit.readthedocs.io/en/latest/topics/modules.html#growpart>`_ as it is not shipped with cloud-init.
+   
+    ~ Centos 
+	
+     .. code:: bash
+	  
+      yum -y install cloud-init cloud-utils-growpart
+	
+    ~ Ubuntu 
+	
+     .. code:: bash
+	  
+      apt-get install cloud-initramfs-growroot -y
+	  
+   - **Detect and extend MBR partitions**
+      
+     Configure growpart module by runnning the following code.
+	 
+    ~ CentOS
+	 
+     .. note::
+	 
+	  /dev/xvda2 is the default root partition if no changes are done during 
+	  CentOS 7 installation. Change the value accordingly if setup is different.
+	  
+     .. code:: bash
+	
+      echo "growpart:
+      mode: auto
+      devices:
+        - \"/dev/xvda2\"
+      ignore_growroot_disabled: false" > /etc/cloud/cloud.cfg.d/50_growpartion.cfg
+
+    ~ Ubuntu
+	 
+     .. note::
+	 
+	  /dev/xvda3 is the default root partition if no changes are done during 
+	  Ubuntu 20 installation. Change the value accordingly if setup is different.
+	   
+     .. code:: bash
+	  
+      echo "growpart:
+      mode: auto
+      devices:
+       - \"/dev/xvda3\"
+      ignore_growroot_disabled: false" > /etc/cloud/cloud.cfg.d/50_growpartion.cfg
+	   
+   - **Extend Physical volume, Volume group and root lvm**
+   
+     After parition is extended the upper layers should be resized as well. This can be achived by automating the CLI commands with cloud-init `bootcmd module <https://cloudinit.readthedocs.io/en/latest/topics/modules.html?highlight=bootcmd#bootcmd>`_ .
+	
+     .. warning::
+      Cloud-init `runcmd module <https://cloudinit.readthedocs.io/en/latest/topics/modules.html?highlight=runcmd#runcmd>`_ frequency
+      syntax does not work as intended. Even if command is entered as *"[ cloud-init-per, always, command ]"* it will still run on first boot only.
+      This is the reason in bootcmd is used in this guide to make sure partition check and resize operations are done on every boot.
+	 
+     ~ CentOS
+	 
+      .. note::
+	 
+	   /dev/centos/root is the default root volume if no changes are done during 
+	   Centos 7 installation. Change the value accordingly if setup is different.
+	   
+      .. code:: bash
+	  
+       echo "bootcmd:
+        - [ cloud-init-per, always, grow_VG, pvresize, /dev/xvda2 ]
+        - [ cloud-init-per, always, grow_LV, lvresize, -l, '+100%FREE', /dev/centos/root ]
+        - [ cloud-init-per, always, grow_FS, xfs_growfs, /dev/centos/root ]" > /etc/cloud/cloud.cfg.d/51_extend_volume.cfg 
+	  
+     ~ Ubuntu
+	 
+      .. note::
+	 
+	   /dev/ubuntu-vg/ubuntu-lv is the default root volume if no changes are done during 
+	   Ubuntu 20 installation. Change the value accordingly if setup is different.
+	   
+      .. code:: bash
+	  
+       echo "bootcmd:
+        - [ cloud-init-per, always, grow_VG, pvresize, /dev/xvda3 ]
+        - [ cloud-init-per, always, grow_LV, lvresize, -l, '+100%FREE', /dev/ubuntu-vg/ubuntu-lv ]
+        - [ cloud-init-per, always, grow_FS, xfs_growfs, /dev/ubuntu-vg/ubuntu-lv ]" > /etc/cloud/cloud.cfg.d/51_extend_volume.cfg
+	   
+#. **Template cleanup**
+    
+   .. warning:: 
+	  Cleanup steps should be run when all Main Template configuration
+	  is done and just before the shutdown step. After shut down Final
+	  template should be created. If the Main Template is started or 
+	  rebooted before Final template creation all cleanup steps will
+	  have to be rerun.
+
+   - **Remove the udev persistent device rules**
+   
+     This step removes information unique to the Main Template such as
+     network MAC addresses, lease files and CD block devices, the files
+     are automatically generated on next boot.
+   
+     ~  CentOS
+
+      .. code:: bash
+
+       rm -f /etc/udev/rules.d/70*
+       rm -f /var/lib/dhclient/*
+	
+     ~  Ubuntu
+
+      .. code:: bash
+
+       rm -f /etc/udev/rules.d/70*
+       rm -f /var/lib/dhcp/dhclient.*
+
+   - **Remove SSH Keys**
+
+     This step is to ensure all Templated VMs do not have the same
+     SSH keys, which would decrease the security of the machines
+     dramatically.
+
+     .. code:: bash
 
       rm -f /etc/ssh/*key*
 
-#. **Cleaning log files**
+   - **Cleaning log files**
 
-   It is good practice to remove old logs from the Template Master.
+     It is good practice to remove old logs from the Main Template.
 
-   .. code:: bash
+     .. code:: bash
 
       cat /dev/null > /var/log/audit/audit.log 2>/dev/null
       cat /dev/null > /var/log/wtmp 2>/dev/null
       logrotate -f /etc/logrotate.conf 2>/dev/null
       rm -f /var/log/*-* /var/log/*.gz 2>/dev/null
 
-#. **Setting hostname**
+   - **Set user password to expire**
 
-   In order for the Ubuntu DHCP script to function and the CentOS
-   dhclient to set the VM hostname they both require the Template
-   Master's hostname to be "localhost", run the following commands to
-   change the hostname.
+     This step forces the user to change the password of the VM after the
+     template has been deployed.
 
-   .. code:: bash
-
-      hostname localhost
-      echo "localhost" > /etc/hostname
-
-#. **Set user password to expire**
-
-   This step forces the user to change the password of the VM after the
-   template has been deployed.
-
-   .. code:: bash
+     .. code:: bash
 
       passwd --expire root
 
-#. **Clearing User History**
+   - **Clearing User History**
 
-   The next step clears the bash commands you have just run.
+     The next step clears the bash commands you have just run.
 
-   .. code:: bash
+    .. code:: bash
 
       history -c
       unset HISTFILE
 
 #. **Shutdown the VM**
 
-   Your now ready to shutdown your Template Master and create a
-   template!
+   Shutdown the Main Template.
 
    .. code:: bash
 
@@ -252,10 +319,6 @@ templating.
 
 #. **Create the template!**
 
-   You are now ready to create the template, for more information see
+   You are now ready to create the Final Template, for more information see
    `“Creating a Template from an Existing Virtual
    Machine” <#creating-a-template-from-an-existing-virtual-machine>`_.
-
-.. note::
-   Templated VMs for both Ubuntu and CentOS may require a reboot after 
-   provisioning in order to pickup the hostname.
