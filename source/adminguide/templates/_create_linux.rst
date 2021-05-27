@@ -73,7 +73,7 @@ templating of Centos and Ubuntu.
      apt-get install -y acpid ntp cloud-init
      reboot
 	  
-	Configure cloud-init to run on-boot.
+   Configure cloud-init to detect Cloudstack data source during runtime.
 	
    ~  CentOS
    
@@ -81,7 +81,7 @@ templating of Centos and Ubuntu.
 
      echo "datasource: CloudStack" > /etc/cloud/ds-identify.cfg 
    
-    ~  Ubuntu
+   ~  Ubuntu
    
     .. code:: bash
 
