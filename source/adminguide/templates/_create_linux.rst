@@ -46,21 +46,20 @@ An overview of the procedure is as follow:
 
 
 System preparation for Linux
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------
 
 The following steps will provide basic Linux installation for
 templating of Centos and Ubuntu.
+	 
+#. **Update OS**
 
-#. **Install packages and configure cloud-init**
-
-   The next step update the packages on the Main Template and install cloud-init.
+   The next step update the packages on the Main Template.
    
    ~  CentOS
    
     .. code:: bash
 
 	 yum update -y
-	 yum install -y cloud-init 
 	 reboot
    
    ~  Ubuntu
@@ -70,26 +69,9 @@ templating of Centos and Ubuntu.
      sudo -i
      apt-get update
      apt-get upgrade -y
-     apt-get install -y acpid ntp cloud-init
+     apt-get install -y acpid ntp
      reboot
-	  
-   Configure cloud-init to detect Cloudstack data source during runtime.
-	
-   ~  CentOS
    
-    .. code:: bash
-
-     echo "datasource: CloudStack" > /etc/cloud/ds-identify.cfg 
-   
-   ~  Ubuntu
-   
-    .. code:: bash
-
-     echo "datasource_list: [ ConfigDrive, CloudStack, None ]
-     datasource:
-       CloudStack: {}
-       None: {}" > /etc/cloud/cloud.cfg.d/99_cloudstack.cfg
-
 #. **Networking**
 
    Set template network interface configuration to DHCP so Cloudstack infrastructure can assign one on boot.
@@ -98,7 +80,9 @@ templating of Centos and Ubuntu.
       For CentOS, it is mandatory to take unique identification out of the
       interface configuration file /etc/sysconfig/network-scripts/ifcfg-eth0. Any entries starting with <VALUE> should be removed.
 
-   .. code:: bash
+    ~ Centos
+	
+     .. code:: bash
 
       echo "DEVICE=eth0
       TYPE=Ethernet
@@ -107,140 +91,33 @@ templating of Centos and Ubuntu.
 
 #. **Hostname Management**
 
-   It is good practice to name the template VM something generic during installation, this will ensure components such as LVM do not appear unique to a machine. It is recommended that the name of "localhost" is used for installation.
+   Set a generic name to the template VM during installation, this will ensure components such as LVM do not appear unique to a machine. It is recommended that the name of "localhost" is used for installation.
 
    .. code:: bash
 
 	   hostname localhost
 	   echo "localhost" > /etc/hostname
-	
-   CentOS configures the hostname by default on boot. Ubuntu does not but cloud-init will do it automatically with no additional cofiguration required.
 
 #. **Password management**
-
-   Cloudstack `set-passwords module <https://cloudinit.readthedocs.io/en/latest/topics/modules.html?highlight=ssh_pwauth#set-passwords>`_ can set a password for each instance created from the Main Template and also allow the user the reset the user password through the GUI. This feature is enabled through communication between the new instance and Cloudstack infrastructure via the cloud-init middleware. 
    
-   - **Enable set-passwords module on every boot**
-   
-     By default the set-passwords module runs only on first boot, change that to run on every boot.
-   
-     .. code:: bash
-   
-      sudo sed -i s/"set-passwords"/"[set-passwords, always]"/g /etc/cloud/cloud.cfg
-	
-     .. note:: 
+   .. note:: 
 	 
-	  It is a good practice to remove any non root users that come with the OS (such as ones created during the Ubuntu 
-	  installation). First ensure the root user account is enabled by giving it a password and then login as root to continue.
+	 It is a good practice to remove any non root users that come with the OS (such as ones created during the Ubuntu 
+	 installation). First ensure the root user account is enabled by giving it a password and then login as root to continue.
 
-     Once logged in as root, any custom user can be removed.
+    Once logged in as root, any custom user can be removed.
 
-     .. code:: bash
+    .. code:: bash
 
-	  deluser myuser --remove-home
-	
-   - **Specify the managed user**
-   
-     Cloudstack will create the user, set a password and reset it when requested. To do that set the following configuration in /etc/cloud/cloud.cfg.d/80_user.cfg
-		
-     .. code:: bash
-
-	  echo "system_info\:
-	    default_user\:
-	      name: cloud-user	              # this is the username
-		  lock_passwd: false	          # If set to True it will disable password login for this particular user
-		  sudo: [\"ALL=(ALL) ALL\"] 	  # Define user permissions
-	    disable_root: 0	                  # Should OS root user be unavailable (0) or available (1) for remote login
-	    ssh_pwauth: 1	                  # 1 - enables password login functionality; 0 - disables" > /etc/cloud/cloud.cfg.d/80_user.cfg
-
+	 deluser myuser --remove-home
+	 
+	 User password management and reset cappabilities in GUI are available with `"Cloud-init integration" <templates.html#cloud-init-integration>`_ .
+	 
 #. **Partition management**
 	
-   Cloud-init allows detection and resize of one or more existing partitions automatically after reboot. This guide will cover root partition.
-   First install the `Growpart module <https://cloudinit.readthedocs.io/en/latest/topics/modules.html#growpart>`_ as it is not shipped with cloud-init.
-   
-    ~ Centos 
+	Volumes can autorextend after reboot when partition is extended in the GUI.
+	This feature is possible with `"Cloud-init integration" <templates.html#cloud-init-integration>`_ .
 	
-     .. code:: bash
-	  
-      yum -y install cloud-init cloud-utils-growpart
-	
-    ~ Ubuntu 
-	
-     .. code:: bash
-	  
-      apt-get install cloud-initramfs-growroot -y
-	  
-   - **Detect and extend MBR partitions**
-      
-     Configure growpart module by runnning the following code.
-	 
-    ~ CentOS
-	 
-     .. note::
-	 
-	  /dev/xvda2 is the default root partition if no changes are done during 
-	  CentOS 7 installation. Change the value accordingly if setup is different.
-	  
-     .. code:: bash
-	
-      echo "growpart:
-      mode: auto
-      devices:
-        - \"/dev/xvda2\"
-      ignore_growroot_disabled: false" > /etc/cloud/cloud.cfg.d/50_growpartion.cfg
-
-    ~ Ubuntu
-	 
-     .. note::
-	 
-	  /dev/xvda3 is the default root partition if no changes are done during 
-	  Ubuntu 20 installation. Change the value accordingly if setup is different.
-	   
-     .. code:: bash
-	  
-      echo "growpart:
-      mode: auto
-      devices:
-       - \"/dev/xvda3\"
-      ignore_growroot_disabled: false" > /etc/cloud/cloud.cfg.d/50_growpartion.cfg
-	   
-   - **Extend Physical volume, Volume group and root lvm**
-   
-     After parition is extended the upper layers should be resized as well. This can be achived by automating the CLI commands with cloud-init `bootcmd module <https://cloudinit.readthedocs.io/en/latest/topics/modules.html?highlight=bootcmd#bootcmd>`_ .
-	
-     .. warning::
-      Cloud-init `runcmd module <https://cloudinit.readthedocs.io/en/latest/topics/modules.html?highlight=runcmd#runcmd>`_ frequency
-      syntax does not work as intended. Even if command is entered as *"[ cloud-init-per, always, command ]"* it will still run on first boot only.
-      This is the reason in bootcmd is used in this guide to make sure partition check and resize operations are done on every boot.
-	 
-     ~ CentOS
-	 
-      .. note::
-	 
-	   /dev/centos/root is the default root volume if no changes are done during 
-	   Centos 7 installation. Change the value accordingly if setup is different.
-	   
-      .. code:: bash
-	  
-       echo "bootcmd:
-        - [ cloud-init-per, always, grow_VG, pvresize, /dev/xvda2 ]
-        - [ cloud-init-per, always, grow_LV, lvresize, -l, '+100%FREE', /dev/centos/root ]
-        - [ cloud-init-per, always, grow_FS, xfs_growfs, /dev/centos/root ]" > /etc/cloud/cloud.cfg.d/51_extend_volume.cfg 
-	  
-     ~ Ubuntu
-	 
-      .. note::
-	 
-	   /dev/ubuntu-vg/ubuntu-lv is the default root volume if no changes are done during 
-	   Ubuntu 20 installation. Change the value accordingly if setup is different.
-	   
-      .. code:: bash
-	  
-       echo "bootcmd:
-        - [ cloud-init-per, always, grow_VG, pvresize, /dev/xvda3 ]
-        - [ cloud-init-per, always, grow_LV, lvresize, -l, '+100%FREE', /dev/ubuntu-vg/ubuntu-lv ]
-        - [ cloud-init-per, always, grow_FS, xfs_growfs, /dev/ubuntu-vg/ubuntu-lv ]" > /etc/cloud/cloud.cfg.d/51_extend_volume.cfg
-	   
 #. **Template cleanup**
     
    .. warning:: 
