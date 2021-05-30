@@ -221,10 +221,3 @@ These features can be implemented in `“Linux template creation process” <tem
 #. **Finalize template**
 
    Proceed with `“Linux template creation process” <templates.html#creating-a-linux-template>`_ continuing with **Template cleanup** step. 
-
-~~~~~~~~~~~~~~~~~~~~~~
-
-Windows with Cloud-init
--------------------
-
-Work in progress...
