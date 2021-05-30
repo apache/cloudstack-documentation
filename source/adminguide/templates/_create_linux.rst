@@ -76,18 +76,19 @@ templating of Centos and Ubuntu.
 
    Set template network interface configuration to DHCP so Cloudstack infrastructure can assign one on boot.
 	
-   .. warning:: 
-      For CentOS, it is mandatory to take unique identification out of the
-      interface configuration file /etc/sysconfig/network-scripts/ifcfg-eth0. Any entries starting with <VALUE> should be removed.
-
-    ~ Centos
+   .. warning::
+   
+     For CentOS, it is mandatory to take unique identification out of the
+     interface configuration file /etc/sysconfig/network-scripts/ifcfg-eth0. Any entries starting with <VALUE> should be removed.
 	
-     .. code:: bash
+   ~ Centos
+	
+    .. code:: bash
 
-      echo "DEVICE=eth0
-      TYPE=Ethernet
-      BOOTPROTO=dhcp
-      ONBOOT=yes" > /etc/sysconfig/network-scripts/ifcfg-eth0
+     echo "DEVICE=eth0
+     TYPE=Ethernet
+     BOOTPROTO=dhcp
+     ONBOOT=yes" > /etc/sysconfig/network-scripts/ifcfg-eth0
 
 #. **Hostname Management**
 
@@ -95,37 +96,41 @@ templating of Centos and Ubuntu.
 
    .. code:: bash
 
-	   hostname localhost
-	   echo "localhost" > /etc/hostname
+	hostname localhost
+	echo "localhost" > /etc/hostname
 
 #. **Password management**
    
    .. note:: 
 	 
-	 It is a good practice to remove any non root users that come with the OS (such as ones created during the Ubuntu 
-	 installation). First ensure the root user account is enabled by giving it a password and then login as root to continue.
+    It is a good practice to remove any non root users that come with the OS (such as ones created during the Ubuntu
+	installation). First ensure the root user account is enabled by giving it a password and then login as root to continue.
 
-    Once logged in as root, any custom user can be removed.
+   Once logged in as root, any custom user can be removed.
 
-    .. code:: bash
+   .. code:: bash
 
-	 deluser myuser --remove-home
+     deluser myuser --remove-home
 	 
-	 User password management and reset cappabilities in GUI are available with `"Cloud-init integration" <templates.html#cloud-init-integration>`_ .
+   User password management and reset cappabilities in GUI are available with `"Cloud-init integration" <templates.html#cloud-init-integration>`_ .
+	 
+#. **SSH-Keys management**
+
+   Cloudstack can create key pair and push certificates to instances. This feature can be opted for through `"Cloud-init integration" <templates.html#cloud-init-integration>`_ .
 	 
 #. **Partition management**
 	
-	Volumes can autorextend after reboot when partition is extended in the GUI.
-	This feature is possible with `"Cloud-init integration" <templates.html#cloud-init-integration>`_ .
+   Volumes can autorextend after reboot when partition is extended in the GUI.
+   This feature is possible with `"Cloud-init integration" <templates.html#cloud-init-integration>`_ .
 	
 #. **Template cleanup**
     
    .. warning:: 
-	  Cleanup steps should be run when all Main Template configuration
-	  is done and just before the shutdown step. After shut down Final
-	  template should be created. If the Main Template is started or 
-	  rebooted before Final template creation all cleanup steps will
-	  have to be rerun.
+   
+	Cleanup steps should be run when all Main Template configuration
+	is done and just before the shutdown step. After shut down Final
+	template should be created. If the Main Template is started or 
+	rebooted before Final template creation all cleanup steps have to be rerun.
 
    - **Remove the udev persistent device rules**
    
