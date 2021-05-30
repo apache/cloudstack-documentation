@@ -103,8 +103,8 @@ templating of Centos and Ubuntu.
    
    .. note:: 
 	 
-    It is a good practice to remove any non root users that come with the OS (such as ones created during the Ubuntu
-	installation). First ensure the root user account is enabled by giving it a password and then login as root to continue.
+    It is a good practice to remove any non root users that come with the OS (such as ones created during the Ubuntu 
+    installation). First ensure the root user account is enabled by giving it a password and then login as root to continue.
 
    Once logged in as root, any custom user can be removed.
 
@@ -112,16 +112,24 @@ templating of Centos and Ubuntu.
 
      deluser myuser --remove-home
 	 
-   User password management and reset cappabilities in GUI are available with `"Cloud-init integration" <templates.html#cloud-init-integration>`_ .
+   User password management and reset cappabilities in GUI are available with:
+   
+   *  via `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_
+   *  `Adding Password Management to Your Templates <templates/_password.html#adding-password-management-to-templates>`_ /Legacy for non systemd systems only/
 	 
 #. **SSH-Keys management**
 
-   Cloudstack can create key pair and push certificates to instances. This feature can be opted for through `"Cloud-init integration" <templates.html#cloud-init-integration>`_ .
+   Cloudstack can create key pair and push certificates to instances. This feature can be opted for through `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_.
 	 
 #. **Partition management**
 	
    Volumes can autorextend after reboot when partition is extended in the GUI.
-   This feature is possible with `"Cloud-init integration" <templates.html#cloud-init-integration>`_ .
+   This feature is possible with `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_.
+   
+#. **User-data feature**
+	
+   Cloudstack can push user-data during instance creation.
+   This feature is possible with `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_.
 	
 #. **Template cleanup**
     

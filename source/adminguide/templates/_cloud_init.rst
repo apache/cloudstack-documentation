@@ -21,7 +21,7 @@ Cloudstack and cloud-init integration provide instances with advanced management
 
 *  Password management
 *  SSH Keys management
-*  Partition autoresize
+*  Partition management
 *  User-data input
 *  `Other modules <https://cloudinit.readthedocs.io/en/latest/topics/modules.html>`_  
 
@@ -109,7 +109,7 @@ These features can be implemented in `“Linux template creation process” <tem
    
     sudo sed -i s/" - ssh$"/" - [ssh, always]"/g /etc/cloud/cloud.cfg
 	  
-#. **Partition autoresize**
+#. **Partition management**
 	
    Cloud-init can detect and resize one or more existing partitions automatically after reboot. This guide will cover root partition and volume.
    First install the `Growpart module <https://cloudinit.readthedocs.io/en/latest/topics/modules.html#growpart>`_ as it is not shipped with cloud-init.
