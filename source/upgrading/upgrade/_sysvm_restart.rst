@@ -26,6 +26,22 @@ from the new systemVM template version.
    or do it by using third-party tools such as Ansible.
    Below we are giving instructions for using the "cloudstack-sysvmadm" script.
 
+Note: When upgrading from older CloudStack environments (for example, 4.9-4.13)
+with XenServer or XCP-ng hosts, some systemvms and virtual routers may not have
+ejected or removed the older systemvm.iso. The old systemvm.iso needs to be
+ejected and removed before new systemvms and virtual routers are (re-)created).
+This issue has been fixed in CloudStack 4.15, older enviroments may need the
+following to be run on the XenServer or XCP-ng pool master:
+
+.. parsed-literal::
+
+   # for vm in $(xe vm-list | grep name-label | sed 's/.*name-label.*: //g'); do
+       if [[ $vm == [rvs]-* ]]; then
+         echo "Attempting systemvm.iso eject and remove for $vm";
+         xe vm-cd-eject vm=$vm;
+         xe vm-cd-remove vm=$vm cd-name=systemvm.iso;
+       fi;
+     done
 
 Ensure that the admin port is set to
 8096 by using the "integration.api.port" global parameter. This port
