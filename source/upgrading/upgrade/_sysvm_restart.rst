@@ -30,7 +30,7 @@ Note: When upgrading from older CloudStack environments (for example, 4.9-4.13)
 with XenServer or XCP-ng hosts, some systemvms and virtual routers may not have
 ejected or removed the older systemvm.iso. The old systemvm.iso needs to be
 ejected and removed before new systemvms and virtual routers are (re-)created).
-This issue has been fixed in CloudStack 4.15, upgrading from older enviroments
+This issue has been fixed in CloudStack 4.15, upgrading from older environments
 may need the following to be run on the XenServer or XCP-ng pool master:
 
 .. parsed-literal::
