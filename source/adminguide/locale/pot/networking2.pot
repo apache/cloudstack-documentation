@@ -5988,12 +5988,12 @@ msgstr ""
 
 #: ../../networking2.rst:5737
 # 4bb61ba3dd1444269d2f517a3d774dac
-msgid "Blacklisting Routes"
+msgid "Denylisting Routes"
 msgstr ""
 
 #: ../../networking2.rst:5739
 # bf15aaf7395c48438bdfb1c5a1b303cd
-msgid "CloudStack enables you to block a list of routes so that they are not assigned to any of the VPC private gateways. Specify the list of routes that you want to blacklist in the ``blacklisted.routes`` global parameter. Note that the parameter update affects only new static route creations. If you block an existing static route, it remains intact and continue functioning. You cannot add a static route if the route is blacklisted for the zone."
+msgid "CloudStack enables you to block a list of routes so that they are not assigned to any of the VPC private gateways. Specify the list of routes that you want to denylist in the ``denied.routes`` global parameter. Note that the parameter update affects only new static route creations. If you block an existing static route, it remains intact and continue functioning. You cannot add a static route if the route is denied for the zone."
 msgstr ""
 
 #: ../../networking2.rst:5748

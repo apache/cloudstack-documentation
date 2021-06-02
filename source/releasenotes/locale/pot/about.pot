@@ -2194,7 +2194,7 @@ msgstr ""
 
 #: ../../about.rst:716
 # c06bebf8a33649ed8131f4b65a442741
-msgid "HA - When the master host is disconnected , the host status contines to remain i..."
+msgid "HA - When the primary host is disconnected , the host status contines to remain i..."
 msgstr ""
 
 #: ../../about.rst:717
@@ -3974,7 +3974,7 @@ msgstr ""
 
 #: ../../about.rst:908
 # e13098ccaa854d3390abfce0d6b31ab9
-msgid "Contrail: Slave compute host restarts when the master compute host is changed to..."
+msgid "Contrail: Secondary compute host restarts when the primary compute host is changed to..."
 msgstr ""
 
 #: ../../about.rst:909

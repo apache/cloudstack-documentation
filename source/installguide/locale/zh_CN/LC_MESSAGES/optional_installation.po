@@ -137,12 +137,13 @@ msgid ""
 "CloudStack supports database replication from one MySQL node to another. "
 "This is achieved using standard MySQL replication. You may want to do this "
 "as insurance against MySQL server or storage loss. MySQL replication is "
-"implemented using a master/slave model. The master is the node that the "
-"Management Servers are configured to use. The slave is a standby node that "
-"receives all write operations from the master and applies them to a local, "
+"enables data from one MySQL database server (the source) to be copied to "
+"one or more MySQL database servers (the replicas). The source is the node that the "
+"Management Servers are configured to use. The replica is a standby node that "
+"receives all write operations from the source and applies them to a local, "
 "redundant copy of the database. The following steps are a guide to "
 "implementing MySQL replication."
-msgstr "CloudStack支持MySQL节点间的数据库复制。这个通过标准的MySQL复制功能来实现。你这样做可能希望防止MySQL服务器或者存储损坏。MySQL复制使用master/slave的模型。master节点是直接为管理服务器所使用。slave节点为备用，接收来自master节点的所有写操作，并将它应用于本地冗余数据库。以下是实施数据库复制的步骤。"
+msgstr "CloudStack支持MySQL节点间的数据库复制。这个通过标准的MySQL复制功能来实现。你这样做可能希望防止MySQL服务器或者存储损坏。MySQL复制使用source/replica的模型。source节点是直接为管理服务器所使用。replica节点为备用，接收来自source节点的所有写操作，并将它应用于本地冗余数据库。以下是实施数据库复制的步骤。"
 
 # b03832e56503442494767e262e0d5266
 #: ../../optional_installation.rst:102
@@ -153,24 +154,24 @@ msgstr "创建复制并不等同于备份策略，你需要另外开发一个有
 
 # 8f01c4d5d9e849f7aa21e1fafec88427
 #: ../../optional_installation.rst:105
-msgid "Ensure that this is a fresh install with no data in the master."
-msgstr "确保这是一个全新安装且没有数据的master数据库节点。"
+msgid "Ensure that this is a fresh install with no data in the source server."
+msgstr "确保这是一个全新安装且没有数据的source server数据库节点。"
 
 # 3207c0439bb34ea28e96d4ee62ad1c2e
 #: ../../optional_installation.rst:107
 msgid ""
-"Edit my.cnf on the master and add the following in the [mysqld] section "
+"Edit my.cnf on the source server and add the following in the [mysqld] section "
 "below datadir."
-msgstr "编辑master数据库的my.cnf，在[mysqld]的datadir下增加如下部分。"
+msgstr "编辑source server数据库的my.cnf，在[mysqld]的datadir下增加如下部分。"
 
 # 5d1dfef940ab48418d921ea6ab2104d5
 #: ../../optional_installation.rst:115
 msgid ""
 "The server\\_id must be unique with respect to other servers. The "
-"recommended way to achieve this is to give the master an ID of 1 and each "
-"slave a sequential number greater than 1, so that the servers are numbered "
+"recommended way to achieve this is to give the source server an ID of 1 and each "
+"replica a sequential number greater than 1, so that the servers are numbered "
 "1, 2, 3, etc."
-msgstr "考虑到其他的服务器，服务器id必须是唯一的。推荐的方式是将master的ID设置为1，后续的每个slave节点序号大于1，使得所有服务器编号如：1，2，3等。"
+msgstr "考虑到其他的服务器，服务器id必须是唯一的。推荐的方式是将source server的ID设置为1，后续的每个replica节点序号大于1，使得所有服务器编号如：1，2，3等。"
 
 # 3b36dc410ff54ea89e014b950f48408a
 #: ../../optional_installation.rst:120
@@ -185,10 +186,10 @@ msgstr "如果是Debian/Ubuntu系统，命令为："
 # 37951ede2d454f428070c346ebef21fd
 #: ../../optional_installation.rst:132
 msgid ""
-"Create a replication account on the master and give it privileges. We will "
+"Create a replication account on the source server and give it privileges. We will "
 "use the \"cloud-repl\" user with the password \"password\". This assumes "
-"that master and slave run on the 172.16.1.0/24 network."
-msgstr "在master上创建一个用于复制的账户，并赋予权限。我们创建用户\"cloud-repl\"，密码为\"password\"。假设master和slave都运行在172.16.1.0/24网段。"
+"that source and replica run on the 172.16.1.0/24 network."
+msgstr "在source server上创建一个用于复制的账户，并赋予权限。我们创建用户\"cloud-repl\"，密码为\"password\"。假设source和replica都运行在172.16.1.0/24网段。"
 
 # f487c49c63214050912b21eef50fb648
 #: ../../optional_installation.rst:144
@@ -218,16 +219,16 @@ msgstr "退出该会话。"
 # 3448c24480a343129c3e323c59e1d52f
 #: ../../optional_installation.rst:164
 msgid ""
-"Complete the master setup. Returning to your first session on the master, "
+"Complete the source server setup. Returning to your first session on the source server, "
 "release the locks and exit MySQL."
-msgstr "完成master安装。返回到master的第一个会话，取消锁定并退出MySQL。"
+msgstr "完成source server安装。返回到source server的第一个会话，取消锁定并退出MySQL。"
 
 # b756f3987b8345d78bb98a1da0cdf5f0
 #: ../../optional_installation.rst:171
 msgid ""
-"Install and configure the slave. On the slave server, run the following "
+"Install and configure the replica. On the replica server, run the following "
 "commands."
-msgstr "安装并配置slave节点。在slave服务器上，运行如下命令。"
+msgstr "安装并配置replica节点。在replica服务器上，运行如下命令。"
 
 # ce5052106169447d867315b4ab5acf5c
 #: ../../optional_installation.rst:179
@@ -249,21 +250,21 @@ msgstr "对于Ubuntu/Debian系统，使用\"mysql.\""
 # cc3fe860c3244bfaabe3d4c4317c7ac8
 #: ../../optional_installation.rst:200
 msgid ""
-"Instruct the slave to connect to and replicate from the master. Replace the "
+"Instruct the replica to connect to and replicate from the source. Replace the "
 "IP address, password, log file, and position with the values you have used "
 "in the previous steps."
-msgstr "引导slave连接master并进行复制。使用上面步骤中得到数据来替换IP地址，密码，日志文件，以及位置点。"
+msgstr "引导replica连接source并进行复制。使用上面步骤中得到数据来替换IP地址，密码，日志文件，以及位置点。"
 
 # 9a9640cbcab74267a00aefe5b61ca112
 #: ../../optional_installation.rst:213
-msgid "Then start replication on the slave."
-msgstr "在slave上启动复制功能。"
+msgid "Then start replication on the replica."
+msgstr "在replica上启动复制功能。"
 
 # a561331155b44e14a5a9540ccfaded76
 #: ../../optional_installation.rst:219
 msgid ""
-"Optionally, open port 3306 on the slave as was done on the master earlier."
-msgstr "在slave上可能需要开启3306端口，就像之前在master上所做的一样。"
+"Optionally, open port 3306 on the replica as was done on the source earlier."
+msgstr "在replica上可能需要开启3306端口，就像之前在source上所做的一样。"
 
 # efdf8223dd9a43a8827dd97444acf8e3
 #: ../../optional_installation.rst:222
@@ -293,8 +294,8 @@ msgstr "停止管理服务器（通过命令：service cloudstack-management sto
 
 # df74922f2b5a44b0820337aecbb8703f
 #: ../../optional_installation.rst:237
-msgid "Change the replica's configuration to be a master and restart it."
-msgstr "将数据库的复本服务器修改为master并重启"
+msgid "Change the replica's configuration to be a source and restart it."
+msgstr "将数据库的复本服务器修改为source并重启"
 
 # 2bc5d7c5cd654d7abc5305542ac56d8d
 #: ../../optional_installation.rst:239

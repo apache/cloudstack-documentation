@@ -89,8 +89,9 @@ KVM hypervisor:
 -  CentOS 6.4 is recommended.
 
 -  To make sure that the native bridge module will not interfere with 
-   openvSwitch the bridge module should be added to the blacklist. See the 
-   modprobe documentation for your distribution on where to find the blacklist. 
+   openvSwitch the bridge module should be added to the denylist. See the 
+   modprobe documentation for your distribution on where to find the denylist
+   (likely named 'denylist'). 
    Make sure the module is not loaded either by rebooting or executing rmmod 
    bridge before executing next steps.
 
