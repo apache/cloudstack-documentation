@@ -16,16 +16,12 @@
 MySQL upgrade problems
 ======================
 
-Users who may upgrade their MySQL server after upgrading to Apache
-CloudStack 4.15 or later, may need to run the following SQL query to
-fix an issue with "cloud.nics" table's column type which may lead to
-exception seen in the management server logs. Users who have already
-upgraded their MySQL server prior to upgrading to Apache CloudStack
-4.15 may not need this as this query runs as part of the 4.14.x to
-4.15.0.0 database upgrade path.
+With certain MySQL versions (see below), issues have been seen with "cloud.nics" table's 
+column type (which was not updated properly during CloudStack upgrades, due to MySQL limitations),
+which eventually may lead to exception seen in the management server logs, causing users to
+not be able to start any VM.
 
-.. note::
-   The issue has not been seen in cases where the database was upgraded while on CloudStack version 4.14.
+The following SQL statement needs to be manually executed in order to fix such issue:
 
    .. parsed-literal::
 ALTER TABLE nics MODIFY COLUMN update_time timestamp DEFAULT CURRENT_TIMESTAMP;
