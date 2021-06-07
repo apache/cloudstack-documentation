@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -457,7 +457,7 @@ msgstr "CPU和内存（RAM）超配直接影响每个群集中主机上可以运
 # 43467fc7868049cab2d4374ff0094af1
 #: ../../hosts.rst:261
 msgid ""
-"The administrator can also set global default over-provisioning ratios in "
+"The administrator can also set global default over-provisioning factors in "
 "the cpu.overprovisioning.factor and mem.overprovisioning.factor global "
 "configuration variables. The default value of these variables is 1: over-"
 "provisioning is turned off by default."
@@ -466,7 +466,7 @@ msgstr "管理员也可以在cpu.overprovisioning.factor和mem.overprovisioning.
 # 253e39db71ed47619ec617fb7a5397ac
 #: ../../hosts.rst:266
 msgid ""
-"Over-provisioning ratios are dynamically substituted in CloudStack's "
+"over-provisioning factors are dynamically substituted in CloudStack's "
 "capacity calculations. For example:"
 msgstr "超配比率是由CloudStack的容量计算器动态调整的。比如："
 
@@ -490,8 +490,8 @@ msgstr "已使用=3GB  空闲=1GB"
 # fdd299fb9bed44d696ed49d97cd8779d
 #: ../../hosts.rst:278
 msgid ""
-"The administrator can specify a memory over-provisioning ratio, and can "
-"specify both CPU and memory over-provisioning ratios on a per-cluster basis."
+"The administrator can specify a memory over-provisioning factor, and can "
+"specify both CPU and memory over-provisioning factors on a per-cluster basis."
 msgstr "管理员可以在每个群集中指定一个内存超配比率，也可以同时指定CPU和内存超配比率。"
 
 # 13239c1da0164d2e88a9275d8083e8aa
@@ -514,7 +514,7 @@ msgid ""
 "(assigning a specific cluster to an account) to effectively offer different "
 "levels of service to different accounts. For example, an account paying for "
 "a more expensive level of service could be assigned to a dedicated cluster "
-"with an over-provisioning ratio of 1, and a lower-paying account to a "
+"with an over-provisioning factor of 1, and a lower-paying account to a "
 "cluster with a ratio of 2."
 msgstr "超配设置和专用资源（对一个账号分配一个特定的群集）一起使用时能对不同用户有效的提供的不同服务级别。比如，一个账号购买了比较高级别的服务，那么分配给他一个超配比率为1的专用群集，购买低级别服务的账号分配一个比率为2的群集。"
 
@@ -645,7 +645,7 @@ msgstr "默认支持内存ballooning。"
 
 # fd73c49bd922450fb7a771ebb8586d6d
 #: ../../hosts.rst:378
-msgid "Setting Over-Provisioning Ratios"
+msgid "Setting over-provisioning factors"
 msgstr "设置存储超配系数"
 
 # 7d8bbd43174f499a98270e1aad9301bd
@@ -664,7 +664,7 @@ msgid ""
 "want VMs deployed before the change to adopt the new over-provisioning "
 "ratio, you must stop and restart the VMs. When this is done, CloudStack "
 "recalculates or scales the used and reserved capacities based on the new "
-"over-provisioning ratios, to ensure that CloudStack is correctly tracking "
+"over-provisioning factors, to ensure that CloudStack is correctly tracking "
 "the amount of free capacity."
 msgstr "只有在变更之后部署VMs，设置才会生效。如果想让变更之前部署的VMs也能继承新的超配比率，你必须重启VMs。当此操作完成之后，CloudStack会重新计算或者调整已使用的资源，并且基于新的超配比率预留出容量，以保证CloudStack正确的掌握了剩余容量的情况。"
 
@@ -680,7 +680,7 @@ msgstr "如果新的可用容量不足以满足新的VMs需求，那么当重新
 
 # 443b0ee66d0b40bdad6e11ac6c4eb123
 #: ../../hosts.rst:400
-msgid "To change the over-provisioning ratios for an existing cluster:"
+msgid "To change the over-provisioning factors for an existing cluster:"
 msgstr "在已存在的群集中更改超配系数："
 
 # b796b807352f4f8285fca177e9417577
@@ -690,19 +690,19 @@ msgstr "使用管理员登录到CloudStack管理界面。"
 
 # 450e03bbb9974112bec16a0dca62c829
 #: ../../hosts.rst:406
-msgid "Under Clusters, click View All."
+msgid "Select Clusters."
 msgstr "在群集页面，点击查看所有。"
 
 # dc9598fec6f74c74a82c2311ff962b5d
 #: ../../hosts.rst:408
-msgid "Select the cluster you want to work with, and click the Edit button."
+msgid "Search for overprovisioning."
 msgstr "选择你要操作的群集，点击编辑按钮。"
 
 # 4574765089c64df0a53ffd4b0d9052a0
 #: ../../hosts.rst:410
 msgid ""
 "Fill in your desired over-provisioning multipliers in the fields CPU "
-"overcommit ratio and RAM overcommit ratio. The value which is intially shown"
+"overcommit factor and RAM overcommit factor. The value which is intially shown"
 " in these fields is the default value inherited from the global "
 "configuration settings."
 msgstr "在CPU overcommit ratio和RAM overcommit ratio区域里填入你希望的超配系数。这里的初始值是从全局配置设置里继承而来的。"
@@ -928,8 +928,7 @@ msgstr "在左边的导航，选择基础架构。"
 # 7bd96bd6e7fd4c94bd7be28295bd46de
 #: ../../hosts.rst:504
 msgid ""
-"On Zones, click View More, then click the zone to which you want to work "
-"with."
+"Click Zones and select the zone you'd like to modify."
 msgstr "在Zones上，点击查看更多，然后点击你要进行操作的zone。"
 
 # 29ea322032104b06880f1204aa29a145

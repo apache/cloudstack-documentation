@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -67,7 +67,7 @@ msgstr "点击拟修改的网络名称。"
 
 # 0898722d18384a89a217a7a8e7cb6fbf
 #: ../../networking/static_nat.rst:42
-msgid "Click View IP Addresses."
+msgid "Click Public IP Addresses."
 msgstr "点击查看IP地址。"
 
 # 5e916ccbf7c94237b104827f38f2ca6a

@@ -12,7 +12,7 @@
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
-   
+
 
 Isolation in Advanced Zone Using Private VLANs
 -----------------------------------------------
@@ -20,7 +20,7 @@ Isolation in Advanced Zone Using Private VLANs
 About PVLANs (Secondary VLANs)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The clasic use-case for PVLANs is a shared backup network, where you wish all users' 
+The clasic use-case for PVLANs is a shared backup network, where you wish all users'
 hosts to be able to communicate with a backup host, but not with each other.
 
    |pvlans.png|
@@ -41,17 +41,14 @@ Supported Secondary VLAN types
 
 Of the three types of Private VLAN (promiscuous, community and isolated),
 CloudStack supports **one promiscuous** PVLAN, **one isolated** PVLAN and **multiple community** PVLANs **per
-primary VLAN**. 
+primary VLAN**.
 PVLANs are currently supported on shared and layer 2 networks.
 The PVLAN concept is supported on KVM (when using OVS), XenServer (when using OVS), and VMware hypervisors
 
-   .. note:: 
+   .. note::
       OVS on XenServer and KVM does not support PVLAN natively. Therefore,
       CloudStack managed to simulate PVLAN on OVS for XenServer and KVM by
       modifying the flow table.
-
-   .. note:: 
-      Community PVLANs are only currently supported on VMware hypervisors.
 
 Prerequisites
 ~~~~~~~~~~~~~
