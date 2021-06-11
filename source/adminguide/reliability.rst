@@ -78,25 +78,8 @@ HA features work with iSCSI or NFS primary storage. HA with local
 storage is not supported.
 
 
-HA for Hosts
-------------
-
-The user can specify a virtual machine as HA-enabled. By default, all
-virtual router VMs and Elastic Load Balancing VMs are automatically
-configured as HA-enabled. When an HA-enabled VM crashes, CloudStack
-detects the crash and restarts the VM automatically within the same
-Availability Zone. HA is never performed across different Availability
-Zones. CloudStack has a conservative policy towards restarting VMs and
-ensures that there will never be two instances of the same VM running at
-the same time. The Management Server attempts to start the VM on another
-Host in the same cluster.
-
-HA features work with iSCSI or NFS primary storage. HA with local
-storage is not supported.
-
-
 Dedicated HA Hosts
-~~~~~~~~~~~~~~~~~~
+------------------
 
 One or more hosts can be designated for use only by HA-enabled VMs that
 are restarting due to a host failure. Setting up a pool of such
@@ -125,6 +108,148 @@ that you want to dedicate to HA-enabled VMs.
    any host in the cloud, the HA-enabled VMs will fail to restart after 
    a crash.
 
+
+HA-Enabled Hosts
+----------------
+
+The user can specify a host as HA-enabled, In the event of a host 
+failure, attemps will be made to recover the failed host by first 
+issuing some OOBM commands. If the host recovery fails the host will be
+fenced and placed into maintenance mode. To restore the host to normal 
+operation, manual intervention would then be required.
+
+Out of band management is a requirement of HA-Enabled hosts and has to be 
+confiured on all intended participating hosts.
+(see `“Out of band management” <hosts.html#out-of-band-management>`_).
+
+Host-HA has granular configuration on a host/cluster/zone level. In a large 
+environment, some hosts from a cluster can be HA-enabled and some not, 
+
+Host-HA uses a state machine design to manage the operations of recovering
+and fencing hosts. The current status of a host is reported when quering a 
+specific host.
+
+Timely health investigations are done on HA-Enabled hosts to monitor for
+any failures. Specific thersholds can be set for failed investigations,
+only when it’s exceeded, will the host transition to a different state.
+
+Host-HA uses both health checks and activity checks to make decisions on 
+recovering and fencing actions. Once determined that the host is in faulty 
+state (health checks failed) it runs activity checks to figure out if there is 
+any disk activity on the VMs running on the specific host.
+
+HA Resource Management Service
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The HA Resource Management Service manages the check/recovery cycle including
+periodic execution, concurrency management, persistence, back pressure and 
+clustering operations. Administrators associate a provider with a partition 
+type (e.g. KVM HA Host provider to clusters) and may override the provider on a
+per-partition (i.e. zone, cluster, or pod) basis. The service operates on all
+resources of the type supported by the provider contained in a partition.
+Administrators can also enable or disable HA operations globally or on a
+per-partition basis.
+
+Only one (1) HA provider per resource type may be specified for a partition.
+Nested HA providers by resource type is not supported (e.g. a pod
+specifying an HA resource provider for hosts and a containing cluster
+specifying a HA resource provider for hosts). The service is designed to be
+opt-in where by only resources with a defined provider and HA enabled will be
+managed.
+
+For each resource in an HA partition, the HA Resource Management Service
+maintains and persists an FSM composed of the following states:
+
+DISABLED:
+The resource is part of a partition where HA operations have been disabled.
+
+AVAILABLE:
+The initial health and eligibility of the resource for HA management is
+currently found to be fine. The resource stays in the AVAILABLE state based on
+the passage of the most recent health check and it's containing partition has
+an HA state of ACTIVE and all the eligibility conditions are met. When
+transitioning to this state, the number of retry attempts is reset.
+
+INELIGIBLE:
+The resource's enclosing partition has an HA state of ACTIVE but its current
+state does not support HA check and/or recovery operations. If it is a single
+host in the cluster for a KVM provider the host will become ineligible as the
+KVM provider requires a neighbouring host to carry on its investigations. Any
+resource in maintenance mode is automatically transitioned to INELIGIBLE.
+
+SUSPECT:
+The resource pending an activity check due to failing its most recent health
+check. If the maximum recovery attempts has been exceeded, the HA state is
+transitioned to FENCED. Otherwise, the node will be scheduled for an activity
+check. When a node fails multiple activity checks/recovery attempts, the
+duration between re-attempts will decay to the maximum interval specified by
+the provider (e.g. first check after 10 seconds, second check after 20 seconds,
+third check after 40 seconds to a maximum interval of 250 seconds).
+
+DEGRADED:
+The resource cannot be managed by the control plane but passed its
+most recent activity check indicating that the resource is still servicing
+end-user requests
+
+CHECKING:
+An activity check is currently being performed on the resource. The HA provider
+defines the number of activity checks must be performed and number of failed
+activity checks required to trigger recovery. If the number of activity checks
+is greater than or equal to the total number of acceptable failures, the HA
+state of the resource is transitioned to RECOVERING causing a recovery attempt.
+If the total number of activity checks has been attempted and number of failure
+is less than the number of acceptable failures, the HA state of the resource
+will be transitioned to DEGRADED. If the number of activity checks is less than
+the total number of required and the number of failures is
+less than the acceptable number of failures, then the HA state of the resource
+is transitioned to SUSPECT – triggering another activity check.
+
+RECOVERING:
+Recovery operations are in-progress to bring the resource back to
+a healthy state. If the recovery operation succeeds, the HA state of the
+resource will be transitioned to INITIALIZING. If the recovery operation fails,
+the HA state of the resource is transitioned to FENCED. Since Recovering is not
+idempotent it is further split into ‘Recovering’ and ‘Recovered’.
+
+FENCED:
+The resource is not operating normally and automated attempts to
+recover it failed. Manual operator intervention is required to recover the
+resource. Since Fenced operation is not idempotent it is further split into
+‘Fencing’ and ‘Fenced’.
+
+When HA is enabled for a partition, the HA state of all contained resources 
+will be transitioned from DISABLED to AVAILABLE. Based on the state models, the
+following failure scenarios and their responses will be handled by the HA 
+resource management service:
+
+- Activity check operation fails on the resource: Provide a semantic in the 
+  activity check protocol to express that an error while performing the 
+  activity check and a reason for the failure (e.g. unable to access the NFS 
+  mount). If the maximum number of activity check attempts has not been 
+  exceeded, the activity check will be retried.
+
+- Slow activity check operation: After a configurable timeout, the HA resource
+  management service abandons the check. The response to this condition would 
+  be the same as a failure to recover the resource.
+
+- Traffic flood due to a large number of resource recoveries: The HA resource 
+  management service must limit the number of concurrent recovery operations 
+  permitted to avoid overwhelming the management server with resource status 
+  updates as recovery operations complete.
+
+- Processor/memory starvation due to large number of activity check 
+  operations: The HA resource management service must limit the number of 
+  concurrent activity check operations permitted per management server to 
+  prevent checks from starving other management server activities of scarce
+  processor and/or memory resources.
+
+- A SUSPECT, CHECKING, or RECOVERING resource passes a health check before the
+  state action completes: The HA resource management service refreshes the HA
+  state of the resource before transition. If it does not match the expected
+  current state, the result of state action is ignored.
+
+For further information around the inner workings of Host HA, please refer
+to the design document at `https://cwiki.apache.org/confluence/display/CLOUDSTACK/Host+HA`
 
 Primary Storage Outage and Data Loss
 ------------------------------------
