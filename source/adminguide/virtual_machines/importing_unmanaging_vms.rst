@@ -13,8 +13,31 @@
    specific language governing permissions and limitations
    under the License.
 
+.. note:: This is currently only available for **vSphere** clusters.
+
+About Unmanaged Virtual Machines
+--------------------------------
+
+As of ACS 4.14, CloudStack has the concept of **unmanaged** virtual machines.  These are virtual machines that are on CloudStack
+managed hosts, but that are not in CloudStack's database and therefore CloudStack cannot control (manage) then in any way.  Previously,
+such VMs could exist, but CloudStack did not 'see' them (their existence *would* be reported in logs as unrecognised VMs).
+
+From ACS 4.14 onwards, CloudStack is able to list these VMs via the listUnmanagedInstances API command and then import (also known as ingest)
+those unmanaged VMs via the importUnmanagedInstance API so that they become CloudStack managed guest instances.
+From ACS 4.16 onwards, importing of the unmanaged VMs can also be carried out within the UI.
+
+From ACS 4.15 onwards, administrators are able to unmanage guest virtual machines.
+
+In the UI, both unmanaged and managed virtual machines or instances are listed in *Tools > Import/Export Instances* section:
+
+   |vm-unmanagedmanaged.png|
+
+
+Importing Unmanaged Virtual Machines
+------------------------------------
+
 Use Cases and General Usage
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ability to import VMs allows Cloud operators (both public and private) to onboard new tenants simply and quickly,
 with the minimum amount disk IO. But also can be used in disaster recovery scenarios at remote sites (if storage is
@@ -39,17 +62,17 @@ To import instances, it is imagined that a Cloud Provider will:
 #. Create a script that will loop through the CSV, sending the importUnmanagedInstance API command with the corresponding
    parameters for each instance being read from the CSV
 
-listUnmanagedInstances API
---------------------------
+Listing unmanaged instances
+---------------------------
 
 Prerequisites to list unmanaged instances (vSphere)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order for CloudStack to list the instances that are not managed by CloudStack on a host/cluster, the host(s) in the vSphere cluster
 must have been added to CloudStack.  The standard prerequisites for adding a host to CloudStack apply.
 
-API
-~~~
+listUnmanagedInstances API
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This API will list all unmanaged VMs for a given cluster. Optionally, the vSphere name for an existing unmanaged
 VM can be given to retrieve VM details. The API will filter all CloudStack managed VMs, and will also filter templates that show up as VMs on vCenter.
@@ -90,10 +113,16 @@ VM can be given to retrieve VM details. The API will filter all CloudStack manag
 
 
 Importing Unmanaged Instances
-------------------------------
+-----------------------------
+
+Administrators can import unmanaged instances either using UI or with the importUnmanagedInstance API.
+
+UI provides the following form for importing the instance when *Import Instance* action is used in *Import/Export Instances* view:
+
+|ImportInstance.png|
 
 importUnmanagedInstance API
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Request parameters**:
 
@@ -124,17 +153,17 @@ importUnmanagedInstance API
 
 
 Prerequisites to Importing Unmanaged Instances (vSphere)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are a few prerequisites to importing unmanaged instances into CloudStack. Largely these are simply that the networks which you are going to
 attach the instance in CloudStack need to already exist in CloudStack also the storage which an unmanaged instance is on (before importing) and
 also the storage which you wish the instance to be on after importing must already have been added to CloudStack.
 
-VMs can be imported to isolated, shared or L2 networks.  VMs can also be imported and then automatically migrated to storage in accordance with
+VMs can be imported to isolated, shared or L2 networks. VMs can also be imported and then automatically migrated to storage in accordance with
 service offerings using the *migrateallowed* API parameter.
 
 Dummy Template
-~~~~~~~~~~~~~~~~~~~~
+##############
 
 The assumption that all guest instances in CloudStack are created from a template or ISO is hardcoded into CloudStack.  This *source* template will
 not exist for instances which have been imported into CloudStack, there for a dummy template has been created in the CloudStack database.  When a
@@ -142,43 +171,13 @@ template ID is not supplied when importing the instance, the built-in dummy temp
 not be possible to 'revert' to the original template unless you specify a **real** template ID.
 
 Offerings and Automatic Mapping
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Networks
-#########
-When importing an instance, CloudStack needs to attach the virtual network interfaces (vNICs) to CloudStack networks.
-vNICs are associated with a network in one of two ways.
-
-#. Automatically (available for L2 and shared networks)
-#. Manual assignment of vNIC to network (ID) as a map if a VM has more that one NIC
-
-In an enterprise, the vast majority of networks will operate as *Layer 2* networks with IP addressing handled by an IPAM system such as Active Directory
-or InfoBlox.  This makes CloudStack's L2 networks the natural choice for a like-for-like migration/on-boarding of VMs.
-
-When importing an instance to a shared or L2 network, CloudStack will automatically look for a CloudStack network that has the same VLAN(s) as the instance's NIC(s)
-is already on.  This can be overridden by providing a network_id for the **'nicnetworklist'** parameter
-
-.. note:: this includes PVLANs on L2 networks.
-
-
-IP Addresses
-##############
-
-To assigning a specific IP address to a NIC, the **'nicipaddresslist'** parameter is used. This parameter should not be used for L2 networks, and is optional for shared networks.
-To ask CloudStack to assign an instance's existing IP when importing, a value of `auto` can be used.
-
-.. parsed-literal:: nicipaddresslist[0].nic=NIC_ID nicipaddresslist[0].ip4Address=auto
-
-Auto-assigning IP addresses requires VMware tools to be on the guest instance (for the IP to be reported to vCenter) and is not supported if an unmanaged VM reports more than one IP
-address associated with its NIC (CloudStack cannot tell which is the primary address).  For instances with more than 1 IP addresses per NIC, pass the first IP address via the import API
-and then add secondary addresses via the **'addIpToNic**' API
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Compute Offerings
-####################
+#################
 
 **Custom vs Fixed Offerings**
-''''''''''''''''''''''''''''''
+'''''''''''''''''''''''''''''
 
 All guest instances in CloudStack must have an associated compute offering.  The import API supports using 'fixed' (ie 2 vCPUs with 2GB RAM
 hardcoded into the offering) and 'custom' (user can choose the number of vCPUs and memory) offerings.  When a custom offering is chosen,
@@ -226,6 +225,36 @@ VM to a suitable host when it is restarted.
 For volumes, live-migration will be carried out for the volumes of a running VM. As per existing CloudStack behaviour, a stopped
 imported VM may not appear in vCenter when its root volume is migrated until the VM is restarted.
 
+Networks
+########
+
+When importing an instance, CloudStack needs to attach the virtual network interfaces (vNICs) to CloudStack networks.
+vNICs are associated with a network in one of two ways.
+
+#. Automatically (available for L2 and shared networks)
+#. Manual assignment of vNIC to network (ID) as a map if a VM has more that one NIC
+
+In an enterprise, the vast majority of networks will operate as *Layer 2* networks with IP addressing handled by an IPAM system such as Active Directory
+or InfoBlox.  This makes CloudStack's L2 networks the natural choice for a like-for-like migration/on-boarding of VMs.
+
+When importing an instance to a shared or L2 network, CloudStack will automatically look for a CloudStack network that has the same VLAN(s) as the instance's NIC(s)
+is already on.  This can be overridden by providing a network_id for the **'nicnetworklist'** parameter
+
+.. note:: this includes PVLANs on L2 networks.
+
+
+IP Addresses
+''''''''''''
+
+To assigning a specific IP address to a NIC, the **'nicipaddresslist'** parameter is used. This parameter should not be used for L2 networks, and is optional for shared networks.
+To ask CloudStack to assign an instance's existing IP when importing, a value of `auto` can be used.
+
+.. parsed-literal:: nicipaddresslist[0].nic=NIC_ID nicipaddresslist[0].ip4Address=auto
+
+Auto-assigning IP addresses requires VMware tools to be on the guest instance (for the IP to be reported to vCenter) and is not supported if an unmanaged VM reports more than one IP
+address associated with its NIC (CloudStack cannot tell which is the primary address).  For instances with more than 1 IP addresses per NIC, pass the first IP address via the import API
+and then add secondary addresses via the **'addIpToNic**' API
+
 
 Registered Operating System
 ###########################
@@ -261,7 +290,7 @@ Other notes for the importUnmanagedInstance API
 
 
 Discovery of Existing Networks (for vSphere)
------------------------------------------------
+--------------------------------------------
 
 To import existing VMs, the networks that they are attached to need to already exist as CloudStack networks.  As an existing environment can have a great many networks which
 need creating, A Python 3 script has been created to enumerate the existing networks.
@@ -291,17 +320,98 @@ The script can take the following arguments:
 
 .. note::
    To run this script host machine should have Python 3 and module *pyvmomi* installed.
-   
+
    Python binaries can be found here: https://www.python.org/downloads/
-   
+
    Install instructions for pyvmomi are here: https://github.com/vmware/pyvmomi#installing
 
 The output of this script can then be used in conjunction with the **'createNetwork'** API to add all of the networks to CloudStack that will be required for a
 successful import.
 
 
+Unmanaging Virtual Machines
+---------------------------
 
-.. |br| raw:: html
+Administrators are able to unmanage guest virtual machines from CloudStack. Once unmanaged, CloudStack can no longer monitor, control or administer the provisioning and orchestration related operations on a virtual machine.
+
+To unmanage a guest virtual machine, an administrator must either use the UI or invoke the unmanageVirtualMachine API passing the ID of the virtual machine to unmanage. The API has the following preconditions:
+
+- The virtual machine must not be destroyed
+- The virtual machine state must be 'Running’ or ‘Stopped’
+- The virtual machine must be a VMware virtual machine
+
+The API execution will perform the following pre-checks, failing if they are not met:
+
+- There are no volume snapshots associated with any of the virtual machine volumes
+- There is no ISO attached to the virtual machine
+
+In the UI, *Unmanage VM* action can be used in virtual machine view. |UnmanageButton.png|
+Alternately, the same operation can also be carried out using *Unmanage Instance* action in *Import/Export Instances* view under the *Tools* section.
+
+|UnmanageInstance.png|
+
+Preserving unmanaged virtual machine NICs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The zone setting: unmanage.vm.preserve.nics can be used to preserve virtual machine NICs and its MAC addresses after unmanaging them. If set to true, the virtual machine NICs (and their MAC addresses) are preserved when unmanaging it. Otherwise, NICs are removed and MAC addresses can be reassigned.
+
+
+Unmanaging virtual machine actions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Clean up virtual machine NICs and deallocate network resources used such as IP addresses and DHCP entries on virtual routers.
+
+   - If ‘unmanage.vm.preserve.nics’ = ‘false’ then the NICs are deallocated and removed from CloudStack
+
+   - If ‘unmanage.vm.preserve.nics’ = ‘true’ then the NICs remain allocated and are not removed from the database. The NIC’s MAC addresses remain preserved and therefore cannot be assigned to any new NIC.
+
+- Clean up virtual machine volumes in the CloudStack database
+
+- Clean up virtual machine snapshots in the CloudStack database (if any)
+- Revoke host access to any managed volumes attached to the VM (applicable to managed storage only)
+
+- Clean up the virtual machine from the following:
+
+   - Remove the virtual machine from security groups (if any)
+
+   - Remove the virtual machine from instance groups (if any)
+
+   - Remove firewall rules for the virtual machine (if any)
+
+   - Remove port forwarding rules for the virtual machine (if any)
+
+   - Remove load balancing rules for the virtual machine (if any)
+
+   - Disable static NAT (if the virtual machine is assigned to it)
+
+   - Remove the virtual machine from affinity groups (if any)
+
+- Remove VM details from the CloudStack database
+
+- Decrement the account resources count for volumes and virtual machines
+
+- Generate usage events:
+
+   - For volumes destroyed, with type: ‘VOLUME.DELETE’
+
+   - For virtual machine snapshots destroyed (if any), with type: ‘VMSNAPSHOT.DELETE’ and 'VMSNAPSHOT.OFF_PRIMARY'
+
+   - For virtual machine NICs destroyed: with type: ‘NETWORK.OFFERING.REMOVE’
+
+   - For the virtual machine being unmanaged: stopped and destroyed usage events (similar to the generated usage events when expunging a virtual machine), with types: ‘VM.STOP’ and ‘VM.DESTROY', unless the VM has been already stopped before being unmanaged and in this case only ‘VM.DESTROY' is generated.
+
 
    <br>
    <br>
+
+.. |ImportInstance.png| image:: /_static/images/vm-importinstance.png
+   :alt: Import Unmanaged Instance.
+   :width: 600 px
+.. |vm-unmanagedmanaged.png| image:: /_static/images/vm-unmanagedmanaged.png
+   :alt: Unmanaged and Managed Instances.
+   :width: 600 px
+.. |UnmanageButton.png| image:: /_static/images/unmanage-instance-icon.png
+   :alt: button to unmanage a VM
+.. |UnmanageInstance.png| image:: /_static/images/vm-unmanage-instance.png
+   :alt: button to unmanage a VM
+   :width: 600 px
