@@ -346,6 +346,7 @@ The API execution will perform the following pre-checks, failing if they are not
 - There is no ISO attached to the virtual machine
 
 In the UI, *Unmanage VM* action can be used in virtual machine view. |UnmanageButton.png|
+
 Alternately, the same operation can also be carried out using *Unmanage Instance* action in *Import/Export Instances* view under the *Tools* section.
 
 |UnmanageInstance.png|
