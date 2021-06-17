@@ -400,6 +400,7 @@ Unmanaging virtual machine actions
 
    - For the virtual machine being unmanaged: stopped and destroyed usage events (similar to the generated usage events when expunging a virtual machine), with types: ‘VM.STOP’ and ‘VM.DESTROY', unless the VM has been already stopped before being unmanaged and in this case only ‘VM.DESTROY' is generated.
 
+.. |br| raw:: html
 
    <br>
    <br>
