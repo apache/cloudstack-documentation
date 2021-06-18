@@ -34,7 +34,7 @@ Examples for relevant features are listed for different distributions.
 Linux with Cloud-init
 ----------------------
 
-These features can be implemented in `“Linux template creation process” <templates.html#creating-a-linux-template>`_. where they are executed just before the **Template cleanup** step.
+These features can be implemented in `“Linux template creation process” <_create_linux.html#creating-a-linux-template>`_. where they are executed just before the **Template cleanup** step.
 
 #. **Install and configure cloud-init**
 
@@ -226,4 +226,4 @@ These features can be implemented in `“Linux template creation process” <tem
 	  
 #. **Finalize template**
 
-   Proceed with `“Linux template creation process” <templates.html#creating-a-linux-template>`_ continuing with **Template cleanup** step. 
+   Proceed with `“Linux template creation process” <_create_linux.html>`_ continuing with **Template cleanup** step.
