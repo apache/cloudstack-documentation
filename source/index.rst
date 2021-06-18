@@ -13,7 +13,7 @@
    specific language governing permissions and limitations
    under the License.
 
-.. Apache CloudStack documentation master file, created by
+.. Apache CloudStack documentation main file, created by
    sphinx-quickstart on Fri Jul 20 17:32:34 2018.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.

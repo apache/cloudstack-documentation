@@ -839,7 +839,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:694
 # eca14b3123854338ba1f14a14829b739
-msgid "To make sure that the native bridge module will not interfere with openvswitch the bridge module should be added to the blacklist. See the modprobe documentation for your distribution on where to find the blacklist. Make sure the module is not loaded either by rebooting or executing rmmod bridge before executing next steps."
+msgid "To make sure that the native bridge module will not interfere with openvswitch the bridge module should be added to the denylist. See the modprobe documentation for your distribution on where to find the denylist. Make sure the module is not loaded either by rebooting or executing rmmod bridge before executing next steps."
 msgstr ""
 
 #: ../../hypervisor_installation.rst:700

@@ -17,8 +17,8 @@
 Configuring AutoScale without using NetScaler
 =============================================
 
-.. warning::
-   This feature is currently only available on the master branch and will be
+.. warning:: 
+   This feature is currently only available on the main branch and will be
    released in the 4.4 release.
 
 .. note::

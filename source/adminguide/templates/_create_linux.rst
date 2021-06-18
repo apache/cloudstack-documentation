@@ -22,7 +22,7 @@ prepare your linux VMs for template deployment. For ease of
 documentation, the VM which you are configuring the template on will be
 referred to as "Main Template". The final product, as created and usable
 for deplyoment in Cloudstack, will be referred as "Final Template".
-This guide will cover cloud-init setup.  It is assumed that openssh-server
+This guide will cover cloud-init setup and scripted setups where available.  It is assumed that openssh-server
 is installed during installation.
 
 An overview of the procedure is as follow:
@@ -96,8 +96,8 @@ templating of Centos and Ubuntu.
 
    .. code:: bash
 
-	hostname localhost
-	echo "localhost" > /etc/hostname
+	  hostname localhost
+	  echo "localhost" > /etc/hostname
 
 #. **Password management**
    
@@ -114,19 +114,22 @@ templating of Centos and Ubuntu.
 	 
    User password management and reset cappabilities in GUI are available with:
    
-   *  via `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_
+   *  `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_
    *  `Adding Password Management to Your Templates <templates/_password.html#adding-password-management-to-templates>`_ /Legacy for non systemd systems only/
 	 
 #. **SSH-Keys management**
 
-   Cloudstack can create key pair and push certificates to instances. This feature can be opted for through `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_.
+   Cloudstack can create key pair and push certificates to instances. This feature is available with:
+   
+   *  `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_
+   *  `Implementing a SSH-Key bash script <virtual_machines.html?highlight=ssh%20key#creating-an-instance-template-that-supports-ssh-keys>`_
 	 
 #. **Partition management**
 	
    Volumes can autorextend after reboot when partition is extended in the GUI.
    This feature is possible with `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_.
    
-#. **User-data feature**
+#. **User-data**
 	
    Cloudstack can push user-data during instance creation.
    This feature is possible with `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_.
@@ -135,10 +138,10 @@ templating of Centos and Ubuntu.
     
    .. warning:: 
    
-	Cleanup steps should be run when all Main Template configuration
-	is done and just before the shutdown step. After shut down Final
-	template should be created. If the Main Template is started or 
-	rebooted before Final template creation all cleanup steps have to be rerun.
+    Cleanup steps should be run when all Main Template configuration
+    is done and just before the shutdown step. After shut down Final
+    template should be created. If the Main Template is started or 
+    rebooted before Final template creation all cleanup steps have to be rerun.
 
    - **Remove the udev persistent device rules**
    

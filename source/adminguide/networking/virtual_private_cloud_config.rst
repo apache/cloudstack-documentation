@@ -651,16 +651,16 @@ to be routed back to the gateway.
    Wait for few seconds until the new route is created.
 
 
-Blacklisting Routes
+Denylisting Routes
 ^^^^^^^^^^^^^^^^^^^
 
 CloudStack enables you to block a list of routes so that they are not
 assigned to any of the VPC private gateways. Specify the list of routes
-that you want to blacklist in the ``blacklisted.routes`` global
+that you want to denylist in the ``denied.routes`` global
 parameter. Note that the parameter update affects only new static route
 creations. If you block an existing static route, it remains intact and
 continue functioning. You cannot add a static route if the route is
-blacklisted for the zone.
+denied for the zone.
 
 
 Deploying VMs to the Tier

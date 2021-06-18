@@ -372,30 +372,30 @@ msgstr "例如：``db.ha.enabled=true``"
 # 147ac9efb2314312b6e97323a267fd7c
 #: ../../reliability.rst:207
 msgid ""
-"``db.cloud.slaves``: set to a comma-delimited set of slave hosts for the "
+"``db.cloud.replicas``: set to a comma-delimited set of replica hosts for the "
 "cloud database. This is the list of nodes set up with replication. The "
-"master node is not in the list, since it is already mentioned elsewhere in "
+"source node is not in the list, since it is already mentioned elsewhere in "
 "the properties file."
-msgstr "``db.cloud.slaves``：为云数据库设置多台slave主机，用逗号隔开。这是用于复制的节点清单。主节点不在列表中，因为在属性文件中的别处已经使用了它。"
+msgstr "``db.cloud.replicas``：为云数据库设置多台replica主机，用逗号隔开。这是用于复制的节点清单。主节点不在列表中，因为在属性文件中的别处已经使用了它。"
 
 # aa38f185ca8b4c1b86e19da970eb3901
 #: ../../reliability.rst:212
-msgid "Example: ``db.cloud.slaves=node2,node3,node4``"
-msgstr "例如：``db.cloud.slaves=node2,node3,node4``"
+msgid "Example: ``db.cloud.replicas=node2,node3,node4``"
+msgstr "例如：``db.cloud.replicas=node2,node3,node4``"
 
 # 1783ef0808884e28ab22f6b3172dba41
 #: ../../reliability.rst:214
 msgid ""
-"``db.usage.slaves``: set to a comma-delimited set of slave hosts for the "
+"``db.usage.replicas``: set to a comma-delimited set of replica hosts for the "
 "usage database. This is the list of nodes set up with replication. The "
-"master node is not in the list, since it is already mentioned elsewhere in "
+"source node is not in the list, since it is already mentioned elsewhere in "
 "the properties file."
-msgstr "``db.usage.slaves``：为用量数据库设置多台slave主机，用逗号隔开。这是用于复制的节点清单。主节点不在列表中，因为在属性文件中的别处已经使用了它。"
+msgstr "``db.usage.replicas``：为用量数据库设置多台replica主机，用逗号隔开。这是用于复制的节点清单。主节点不在列表中，因为在属性文件中的别处已经使用了它。"
 
 # 573fb04445dd4b0ba4f5b9a5f8517c75
 #: ../../reliability.rst:219
-msgid "Example: ``db.usage.slaves=node2,node3,node4``"
-msgstr "例如：``db.usage.slaves=node2,node3,node4``"
+msgid "Example: ``db.usage.replicas=node2,node3,node4``"
+msgstr "例如：``db.usage.replicas=node2,node3,node4``"
 
 # 739f9df2617d4e24aaa9adb209c65969
 #: ../../reliability.rst:221
@@ -413,37 +413,37 @@ msgstr "必须在db.properties中提供以下设置，但是你不用改变默�
 # bcfa8dcb331c4185bab0cbdfbb3624ca
 #: ../../reliability.rst:227
 msgid ""
-"``db.cloud.secondsBeforeRetryMaster``: The number of seconds the MySQL "
-"connector should wait before trying again to connect to the master after the"
-" master went down. Default is 1 hour. The retry might happen sooner if "
-"db.cloud.queriesBeforeRetryMaster is reached first."
-msgstr "``db.cloud.secondsBeforeRetryMaster``：在master宕机之后，MySQL连接器重试连接到master之前所等待的秒数。默认是1小时。如果首先达到了db.cloud.queriesBeforeRetryMaster 的限制，重试可能更早发生。"
+"``db.cloud.secondsBeforeRetrySource``: The number of seconds the MySQL "
+"connector should wait before trying again to connect to the source after the"
+" source went down. Default is 1 hour. The retry might happen sooner if "
+"db.cloud.queriesBeforeRetrySource is reached first."
+msgstr "``db.cloud.secondsBeforeRetrySource``：在source宕机之后，MySQL连接器重试连接到source之前所等待的秒数。默认是1小时。如果首先达到了db.cloud.queriesBeforeRetrySource 的限制，重试可能更早发生。"
 
 # 55d7217f8ea6408e8389bd39dbbfc3fc
 #: ../../reliability.rst:232
-msgid "Example: ``db.cloud.secondsBeforeRetryMaster=3600``"
-msgstr "例如：``db.cloud.secondsBeforeRetryMaster=3600``"
+msgid "Example: ``db.cloud.secondsBeforeRetrySource=3600``"
+msgstr "例如：``db.cloud.secondsBeforeRetrySource=3600``"
 
 # d8cfb3b10706434d8ad7c63b231e7ee9
 #: ../../reliability.rst:234
 msgid ""
-"``db.cloud.queriesBeforeRetryMaster``: The minimum number of queries to be "
-"sent to the database before trying again to connect to the master after the "
-"master went down. Default is 5000. The retry might happen sooner if "
-"db.cloud.secondsBeforeRetryMaster is reached first."
-msgstr "``db.cloud.queriesBeforeRetryMaster``：在master宕机之后，重新尝试连接到master之前向数据库查询的最小次数。默认值是5000。如果首先达到了db.cloud.secondsBeforeRetryMaster的限制，重试可能更早发生。"
+"``db.cloud.queriesBeforeRetrySource``: The minimum number of queries to be "
+"sent to the database before trying again to connect to the source after the "
+"source went down. Default is 5000. The retry might happen sooner if "
+"db.cloud.secondsBeforeRetrySource is reached first."
+msgstr "``db.cloud.queriesBeforeRetrySource``：在source宕机之后，重新尝试连接到source之前向数据库查询的最小次数。默认值是5000。如果首先达到了db.cloud.secondsBeforeRetrySource的限制，重试可能更早发生。"
 
 # f7b672a867c64854accef70177a0dd73
 #: ../../reliability.rst:239
-msgid "Example: ``db.cloud.queriesBeforeRetryMaster=5000``"
-msgstr "例如：``db.cloud.queriesBeforeRetryMaster=5000``"
+msgid "Example: ``db.cloud.queriesBeforeRetrySource=5000``"
+msgstr "例如：``db.cloud.queriesBeforeRetrySource=5000``"
 
 # 2283aca3081443c585804a3c9d63a45d
 #: ../../reliability.rst:241
 msgid ""
 "``db.cloud.initialTimeout``: Initial time the MySQL connector should wait "
-"before trying again to connect to the master. Default is 3600."
-msgstr "``db.cloud.initialTimeout``：在重新尝试连接至master之前，MySQL连接器等待的初始时间。默认是3600。"
+"before trying again to connect to the source. Default is 3600."
+msgstr "``db.cloud.initialTimeout``：在重新尝试连接至source之前，MySQL连接器等待的初始时间。默认是3600。"
 
 # bae95908743e448b967b6992b4e88816
 #: ../../reliability.rst:244
@@ -465,9 +465,9 @@ msgstr "目前此功能的实现还存在下列限制。"
 # 7c4a38ab45c943a489f2e7ae8f3ab0e2
 #: ../../reliability.rst:253
 msgid ""
-"Slave hosts can not be monitored through CloudStack. You will need to have a"
+"Replica hosts can not be monitored through CloudStack. You will need to have a"
 " separate means of monitoring."
-msgstr "Slave主机不能被CloudStack监控。你必须有单独的监控手段。"
+msgstr "Replica主机不能被CloudStack监控。你必须有单独的监控手段。"
 
 # 5270e63b8008415bbe847a54002660bc
 #: ../../reliability.rst:256
