@@ -218,6 +218,12 @@ These features can be implemented in `“Linux template creation process” <tem
 	 
 	  rm /var/lib/cloud/* -rf
 	  
+     Remove any users created by cloud-init previous runs
+
+     .. code:: bash
+	 
+	  rm /etc/sudoers.d/* -rf  
+	  
 #. **Finalize template**
 
    Proceed with `“Linux template creation process” <templates.html#creating-a-linux-template>`_ continuing with **Template cleanup** step. 
