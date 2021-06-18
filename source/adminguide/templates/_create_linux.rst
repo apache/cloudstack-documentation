@@ -114,25 +114,25 @@ templating of Centos and Ubuntu.
 	 
    User password management and reset cappabilities in GUI are available with:
    
-   *  `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_
-   *  `Adding Password Management to Your Templates <templates/_password.html#adding-password-management-to-templates>`_ /Legacy for non systemd systems only/
+   *  `Cloud-init integration <_cloud_init.html#linux-with-cloud-init>`_
+   *  `Adding Password Management to Your Templates <_password.html#adding-password-management-to-templates>`_ /Legacy for non systemd systems only/
 	 
-#. **SSH-Keys management**
+#. **SSH keys management**
 
    Cloudstack can create key pair and push certificates to instances. This feature is available with:
    
-   *  `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_
-   *  `Implementing a SSH-Key bash script <virtual_machines.html?highlight=ssh%20key#creating-an-instance-template-that-supports-ssh-keys>`_
+   *  `Cloud-init integration <_cloud_init.html#linux-with-cloud-init>`_
+   *  `Implementing a SSH-Key bash script <http://docs.cloudstack.apache.org/en/latest/adminguide/virtual_machines.html#creating-an-instance-template-that-supports-ssh-keys>`_  
 	 
 #. **Partition management**
 	
    Volumes can autorextend after reboot when partition is extended in the GUI.
-   This feature is possible with `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_.
+   This feature is possible with `Cloud-init integration <_cloud_init.html#linux-with-cloud-init>`_.
    
 #. **User-data**
 	
    Cloudstack can push user-data during instance creation.
-   This feature is possible with `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_.
+   This feature is possible with `Cloud-init integration <_cloud_init.html#linux-with-cloud-init>`_.
 	
 #. **Template cleanup**
     
