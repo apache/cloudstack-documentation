@@ -15,7 +15,7 @@
 
 
 Programmer Guide
-================        
+================
 
 This guide shows how to develop CloudStack, use the API for operation
 and integration, access the usage data and use CloudStack specific tools
@@ -64,7 +64,7 @@ API Reference Documentation
 
 You can find all the API reference documentation at the below site:
 
-`https://cloudstack.apache.org/api.html 
+`https://cloudstack.apache.org/api.html
 <https://cloudstack.apache.org/api.html>`__
 
 
@@ -156,9 +156,9 @@ Breaking this down, we have several distinct parts to this URL.
 -  Command String: This part of the query string comprises of the
    command, its parameters, and the API Key that identifies the account.
 
-   .. note:: 
-      As with all query string parameters of field-value pairs, the "field" 
-      component is case insensitive while all "value" values are case 
+   .. note::
+      As with all query string parameters of field-value pairs, the "field"
+      component is case insensitive while all "value" values are case
       sensitive.
 
    .. sourcecode: bash
@@ -216,9 +216,9 @@ step interactive session using Python.
 First import the required modules:
 
 .. parsed-literal::
-   
+
    $python
-   Python 2.7.3 (default, Nov 17 2012, 19:54:34) 
+   Python 2.7.3 (default, Nov 17 2012, 19:54:34)
    [GCC 4.2.1 Compatible Apple Clang 4.1 ((tags/Apple/clang-421.11.66))] on darwin
    Type "help", "copyright", "credits" or "license" for more information.
    >>> import urllib2
@@ -226,7 +226,7 @@ First import the required modules:
    >>> import hashlib
    >>> import hmac
    >>> import base64
-     
+
 
 Define the endpoint of the Cloud, the command that you want to execute
 and the keys of the user.
@@ -239,7 +239,7 @@ and the keys of the user.
    >>> request['response']='json'
    >>> request['apikey']='plgWJfZK4gyS3mOMTVmjUVg-X-jlWlnfaUJ9GAbBbf9EdM-kAYMmAiLqzzq1ElZLYq_u38zCm0bewzGUdP66mg'
    >>> secretkey='VDaACYb0LV9eNjTetIOElcVQkvJck_J_QljX_FcHRj87ZKiy0z0ty0ZsYBkoXkY9b7eq1EhwJaw7FF3akA3KBQ'
-      
+
 
 Build the request string:
 
@@ -248,14 +248,14 @@ Build the request string:
    >>> request_str='&'.join(['='.join([k,urllib.quote_plus(request[k])]) for k in request.keys()])
    >>> request_str
    'apikey=plgWJfZK4gyS3mOMTVmjUVg-X-jlWlnfaUJ9GAbBbf9EdM-kAYMmAiLqzzq1ElZLYq_u38zCm0bewzGUdP66mg&command=listUsers&response=json'
-      
+
 
 Compute the signature with hmac, do a 64 bit encoding and a url
 encoding:
 
 .. parsed-literal::
-      
-   >>> sig_str='&'.join(['='.join([k.lower(),urllib.quote_plus(request[k]).lower().replace('+','%20')])for k in sorted(request.iterkeys())]) 
+
+   >>> sig_str='&'.join(['='.join([k.lower(),urllib.quote_plus(request[k]).lower().replace('+','%20')])for k in sorted(request.iterkeys())])
    >>> sig_str 'apikey=plgwjfzk4gys3momtvmjuvg-x-jlwlnfauj9gabbbf9edm-kaymmailqzzq1elzlyq_u38zcm0bewzgudp66mg&command=listusers&response=json'
    >>> sig=hmac.new(secretkey,sig_str,hashlib.sha1)
    >>> sig
@@ -270,19 +270,19 @@ encoding:
    >>> sig
    'TTpdDq/7j/J58XCRHomKoQXEQds='
    >>> sig=urllib.quote_plus(base64.encodestring(hmac.new(secretkey,sig_str,hashlib.sha1).digest()).strip())
-      
+
 
 Finally, build the entire string and do an http GET:
 
 .. parsed-literal::
-      
+
    >>> req=baseurl+request_str+'&signature='+sig
    >>> req
    'http://localhost:8080/client/api?apikey=plgWJfZK4gyS3mOMTVmjUVg-X-jlWlnfaUJ9GAbBbf9EdM-kAYMmAiLqzzq1ElZLYq_u38zCm0bewzGUdP66mg&command=listUsers&response=json&signature=TTpdDq%2F7j%2FJ58XCRHomKoQXEQds%3D'
    >>> res=urllib2.urlopen(req)
    >>> res.read()
    '{ "listusersresponse" : { "count":3 ,"user" : [  {"id":"7ed6d5da-93b2-4545-a502-23d20b48ef2a","username":"admin","firstname":"admin","lastname":"cloud","created":"2012-07-05T12:18:27-0700","state":"enabled","account":"admin","accounttype":1,"domainid":"8a111e58-e155-4482-93ce-84efff3c7c77","domain":"ROOT","apikey":"plgWJfZK4gyS3mOMTVmjUVg-X-jlWlnfaUJ9GAbBbf9EdM-kAYMmAiLqzzq1ElZLYq_u38zCm0bewzGUdP66mg","secretkey":"VDaACYb0LV9eNjTetIOElcVQkvJck_J_QljX_FcHRj87ZKiy0z0ty0ZsYBkoXkY9b7eq1EhwJaw7FF3akA3KBQ","accountid":"7548ac03-af1d-4c1c-9064-2f3e2c0eda0d"}, {"id":"1fea6418-5576-4989-a21e-4790787bbee3","username":"runseb","firstname":"foobar","lastname":"goa","email":"joe@smith.com","created":"2013-04-10T16:52:06-0700","state":"enabled","account":"admin","accounttype":1,"domainid":"8a111e58-e155-4482-93ce-84efff3c7c77","domain":"ROOT","apikey":"Xhsb3MewjJQaXXMszRcLvQI9_NPy_UcbDj1QXikkVbDC9MDSPwWdtZ1bUY1H7JBEYTtDDLY3yuchCeW778GkBA","secretkey":"gIsgmi8C5YwxMHjX5o51pSe0kqs6JnKriw0jJBLceY5bgnfzKjL4aM6ctJX-i1ddQIHJLbLJDK9MRzsKk6xZ_w","accountid":"7548ac03-af1d-4c1c-9064-2f3e2c0eda0d"}, {"id":"52f65396-183c-4473-883f-a37e7bb93967","username":"toto","firstname":"john","lastname":"smith","email":"john@smith.com","created":"2013-04-23T04:27:22-0700","state":"enabled","account":"admin","accounttype":1,"domainid":"8a111e58-e155-4482-93ce-84efff3c7c77","domain":"ROOT","apikey":"THaA6fFWS_OmvU8od201omxFC8yKNL_Hc5ZCS77LFCJsRzSx48JyZucbUul6XYbEg-ZyXMl_wuEpECzK-wKnow","secretkey":"O5ywpqJorAsEBKR_5jEvrtGHfWL1Y_j1E4Z_iCr8OKCYcsPIOdVcfzjJQ8YqK0a5EzSpoRrjOFiLsG0hQrYnDA","accountid":"7548ac03-af1d-4c1c-9064-2f3e2c0eda0d"} ] } }'
-      
+
 
 Enabling API Call Expiration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -357,7 +357,7 @@ Limitations on API Throttling
 The following limitations exist in the current implementation of this
 feature.
 
-.. note:: 
+.. note::
    Even with these limitations, CloudStack is still able to effectively use
    API throttling to avoid malicious attacks causing denial of service.
 
@@ -391,13 +391,13 @@ Sample XML Response:
 
 .. parsed-literal::
 
-   <listipaddressesresponse> 
+   <listipaddressesresponse>
       <allocatedipaddress>
-      <ipaddress>192.168.10.141</ipaddress> 
-      <allocated>2009-09-18T13:16:10-0700</allocated> 
-      <zoneid>4</zoneid> 
-         <zonename>WC</zonename> 
-         <issourcenat>true</issourcenat> 
+      <ipaddress>192.168.10.141</ipaddress>
+      <allocated>2009-09-18T13:16:10-0700</allocated>
+      <zoneid>4</zoneid>
+         <zonename>WC</zonename>
+         <issourcenat>true</issourcenat>
       </allocatedipaddress>
    </listipaddressesresponse>
 
@@ -405,19 +405,19 @@ Sample JSON Response:
 
 .. parsed-literal::
 
-   { "listipaddressesresponse" : 
+   { "listipaddressesresponse" :
      { "allocatedipaddress" :
-       [ 
-         { 
-           "ipaddress" : "192.168.10.141", 
+       [
+         {
+           "ipaddress" : "192.168.10.141",
            "allocated" : "2009-09-18T13:16:10-0700",
-           "zoneid" : "4", 
-           "zonename" : "WC", 
-           "issourcenat" : "true" 
-         } 
+           "zoneid" : "4",
+           "zonename" : "WC",
+           "issourcenat" : "true"
+         }
        ]
-     } 
-   } 
+     }
+   }
 
 
 Maximum Result Pages Returned
@@ -642,7 +642,7 @@ data.
 
 .. parsed-literal::
 
-   <deployvirtualmachineresponse> 
+   <deployvirtualmachineresponse>
       <jobid>1</jobid>
       <id>100</id>
    </deployvirtualmachineresponse>
@@ -660,7 +660,7 @@ Job is still pending:
 
 .. parsed-literal::
 
-   <queryasyncjobresult> 
+   <queryasyncjobresult>
       <jobid>1</jobid>
       <jobstatus>0</jobstatus>
       <jobprocstatus>1</jobprocstatus>
@@ -725,12 +725,12 @@ Job has failed:
 .. parsed-literal::
 
    <queryasyncjobresult>
-      <jobid>1</jobid> 
-      <jobstatus>2</jobstatus> 
+      <jobid>1</jobid>
+      <jobstatus>2</jobstatus>
       <jobprocstatus>0</jobprocstatus>
       <jobresultcode>551</jobresultcode>
       <jobresulttype>text</jobresulttype>
-      <jobresult>Unable to deploy virtual machine id = 100 due to not enough capacity</jobresult> 
+      <jobresult>Unable to deploy virtual machine id = 100 due to not enough capacity</jobresult>
    </queryasyncjobresult>
 
 
@@ -1290,7 +1290,7 @@ Event Types
 Time Zones
 ----------
 
-The following time zone identifiers are accepted by PRODUCT. There are
+The following time zone identifiers are accepted by CloudStack. There are
 several places that have a time zone as a required or optional
 parameter. These include scheduling recurring snapshots, creating a
 user, and specifying the usage time zone in the Configuration table.

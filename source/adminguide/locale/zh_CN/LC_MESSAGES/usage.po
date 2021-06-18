@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -202,7 +202,7 @@ msgid ""
 "October 7, then it is assumed you would like to process records for October "
 "6, from midnight to midnight. CloudStack assumes this “midnight to midnight”"
 " is relative to the usage.execution.timezone."
-msgstr "当值为1440（一天一次）时有点特殊。该情况下，用量服务器并不需要处理上次运行之后的所有事件。&PRODUCT;假定您要一天一次处理昨天的，完成每日记录。例如，如果今天是10月7号，会假定您要处理6号的记录，从0点到24点。CloudStack假定的0点到24点采用的时区为 usage.execution.timezone的值。"
+msgstr "当值为1440（一天一次）时有点特殊。该情况下，用量服务器并不需要处理上次运行之后的所有事件。&CloudStack;假定您要一天一次处理昨天的，完成每日记录。例如，如果今天是10月7号，会假定您要处理6号的记录，从0点到24点。CloudStack假定的0点到24点采用的时区为 usage.execution.timezone的值。"
 
 # 657e01fff8404e7086e1a5cd318ed5b9
 #: ../../usage.rst:121
