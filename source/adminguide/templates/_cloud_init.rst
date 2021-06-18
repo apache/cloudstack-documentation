@@ -99,7 +99,7 @@ These features can be implemented in `“Linux template creation process” <tem
       disable_root: 0	                  # root remote login is 0 - enabled, 1 - disabled
       ssh_pwauth: 1	                      # password login is 0 - disabled, 1- enabled
 
-#. **SSH-Keys management**
+#. **SSH Keys management**
 
    Cloud-init `ssh module <https://cloudinit.readthedocs.io/en/latest/topics/modules.html#ssh>`_ can automatically install new SSH-Keys when set or reset from Cloudstack GUI.
    By default the module runs once during instance creation and will fetch Cloudstack keys without any additional configuration. 
