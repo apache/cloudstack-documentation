@@ -61,6 +61,84 @@ still available but the system VMs will not be able to contact the
 management server.
 
 
+Multiple Management Servers Support on agents
+---------------------------------------------
+
+In a Cloudstack environment with multiple management servers, an agent can be
+configured, based on an algorithm, to which management server to connect to.
+This can be useful as an internal loadbalancer or for high availability.
+An administrator is responsible for setting the list of management servers and
+choosing a sorting algorithm using global settings.
+The management server is responsible for propagating the settings to the
+connected agents.
+
+Examples of an agent includes, the process responsible for communication to the
+management server, running inside of the Secondary Storage Virtual Machine
+(SSVM), Console Proxy Virtual Machine (CPVM) or the cloudstack-agent running on
+a KVM host.
+
+The three global settings that need to be configured are the following:
+
+- hosts: a comma seperated list of management server IP addresses
+- indirect.agent.lb.algorithm: The algorithm for the indirect agent LB
+- indirect.agent.lb.check.interval: The preferred host check interval
+  for the agent's background task that checks and switches to an agent's
+  preferred host.
+
+These settings can be configured from the global settings page in the UI or
+using the updateConfiguration API call.
+
+The indirect.agent.lb.algorithm setting supports following algorithm options:
+
+- static: Use the list of management server IP addresses as provided.
+- roundrobin: Evenly spread hosts across management servers, based on the
+  host's id.
+- shuffle: Pseudo Randomly sort the list (this is not recommended for
+  production).
+
+Any changes to the global settings - `indirect.agent.lb.algorithm` and
+`host` does not require restarting of the management server(s) and the
+agents. A change in these global settings will be propagated to all connected
+agents.
+
+The comma-separated management server list is propagated to agents in
+following cases:
+- An addition of an agent (including ssvm, cpvm system VMs).
+- Connection or reconnection of an agent to a management server.
+- After an administrator changes the 'host' and/or the
+'indirect.agent.lb.algorithm' global settings.
+
+On the agent side, the 'host' setting is saved in its properties file as:
+`host=<comma separated addresses>@<algorithm name>`.
+
+From the agent's perspective, the first address in the propagated list
+will be considered the preferred host. A new background task can be
+activated by configuring the `indirect.agent.lb.check.interval` which is
+a cluster level global setting from CloudStack and adminitrators can also
+override this by configuring the 'host.lb.check.interval' in the
+`agent.properties` file.
+
+When an agent gets a host and algorithm combination, the host specific
+background check interval is also sent and is dynamically reconfigured
+in the background task without need to restart agents.
+
+Note: The 'static' and 'roundrobin' algorithms, strictly checks for the
+order as expected by them, however, the 'shuffle' algorithm just checks
+for content and not the order of the comma separate management server
+host addresses.
+
+To make things more clear, consider this example:
+Suppose an environment which has 3 management servers: A, B and C and
+3 KVM agents.
+
+Setting 'host' = 'A,B,C', agents will receive lists depending on
+'direct.agent.lb' value:
+
+'static': Each agent will receive the list: 'A,B,C'
+'roundrobin': First agent receives: 'A,B,C', second agent 
+receives: 'B,C,A', third agent receives: 'C,B,A'
+'shuffle': Each agent will receive a list in random order.
+
 HA-Enabled Virtual Machines
 ---------------------------
 
@@ -248,8 +326,10 @@ resource management service:
   state of the resource before transition. If it does not match the expected
   current state, the result of state action is ignored.
 
-For further information around the inner workings of Host HA, please refer
-to the design document at `https://cwiki.apache.org/confluence/display/CLOUDSTACK/Host+HA`
+For further information around the inner workings of Host HA, refer
+to the design document at 
+`https://cwiki.apache.org/confluence/display/CLOUDSTACK/Host+HA 
+<https://cwiki.apache.org/confluence/display/CLOUDSTACK/Host+HA>`_
 
 Primary Storage Outage and Data Loss
 ------------------------------------
