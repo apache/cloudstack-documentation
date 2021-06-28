@@ -29,22 +29,20 @@ Configure Guest Traffic in an Advanced Zone
 These steps assume you have already logged in to the CloudStack UI. To
 configure the base guest network:
 
-#. In the left navigation, choose Infrastructure. On Zones, click View
-   More, then click the zone to which you want to add a network.
+#. In the left navigation, choose Network.
 
-#. Click the Network tab.
-
-#. Click Add guest network.
+#. Click Add network.
 
    The Add guest network window is displayed:
 
    |addguestnetwork.png|
 
-#. Provide the following information:
+#. Provide the following information for creating an isolated network:
 
    -  **Name**: The name of the network. This will be user-visible
+ 
+   -  **Description**: The description of the network. This will be
 
-   -  **Display Text**: The description of the network. This will be
       user-visible
 
    -  **Zone**: The zone in which you are configuring the guest network.
@@ -52,10 +50,17 @@ configure the base guest network:
    -  **Network offering**: If the administrator has configured multiple
       network offerings, select the one you want to use for this network
 
-   -  **Guest Gateway**: The gateway that the guests should use
+   -  **External Id**: ID of the network in an external system.
+ 
+   -  **Gateway**: The gateway that the guests instances will use.
+ 
+   -  **Netmask**: The netmask in use on the subnet the guest instances
+      will use.
 
-   -  **Guest Netmask**: The netmask in use on the subnet the guests
-      will use
+   -  **Network Domain**: A custom DNS suffix at the level of a network. If you
+      want to assign a special domain name to the guest VM network, specify a
+      DNS suffix.
+
 
 #. Click OK.
 
