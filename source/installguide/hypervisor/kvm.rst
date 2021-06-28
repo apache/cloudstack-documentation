@@ -26,6 +26,8 @@ are recommended:
 
 -  CentOS / RHEL: 7.X
 
+-  CentOS / RHEL / Binary-compatible variants: 8.X
+
 -  Ubuntu: 18.04 +
 
 -  openSUSE / SLES: 15.2 +
@@ -325,7 +327,7 @@ cloudstack-agent and should already be installed.
 
       #LIBVIRTD_ARGS="--listen"
 
-   On RHEL / CentOS 8 / SUSE run the following command :
+   On RHEL 8 / CentOS 8 / SUSE run the following command :
 
    .. parsed-literal::
 
@@ -1325,7 +1327,7 @@ save them first.
    $ iptables-save > /etc/sysconfig/iptables
 
 .. warning::
-   On CentOS 8 / SUSE, firewalld is the default firewall manager and controls iptables. It is
+   On RHEL 8 / CentOS 8 / SUSE, firewalld is the default firewall manager and controls iptables. It is
    recommended that it be disabled ``systemctl stop firewalld ; systemctl disable firewalld``
 
 .. warning::

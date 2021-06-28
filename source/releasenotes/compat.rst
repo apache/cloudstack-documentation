@@ -24,11 +24,11 @@ CloudStack Management Server.
 
 -  Ubuntu 16.04 LTS, 18.04 LTS, 20.04 LTS
 -  CentOS versions 7, 8 (note: CentOS 8 will EOL in Dec 2021)
--  RHEL versions 7, 8
+-  RHEL versions 7, 8 (along with binary compatible versions)
 -  openSUSE Leap 15
 -  SUSE Linux Enterprise Server 15
 
-   .. note:: There is a known issue with ipmitool and SUSE, so certain functionality such as out of band management might not work
+   .. note:: There is a known issue with ipmitool with RHEL8 / SUSE, so certain functionality such as out of band management might not work
 
 Software Requirements
 ~~~~~~~~~~~~~~~~~~~~~
