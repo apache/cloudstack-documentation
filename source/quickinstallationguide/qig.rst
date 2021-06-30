@@ -53,8 +53,8 @@ To complete this guide you'll need the following items:
 
 #. At least one computer which supports and has enabled hardware virtualization.
 
-#. An `CentOS 7.7 x86_64 install ISO, on bootable media 
-   <http://mirrors.kernel.org/centos/7/isos/x86_64/>`_
+#. An `CentOS 7.9 minimal x86_64 install ISO, on bootable media
+   <http://isoredirect.centos.org/centos/7/isos/x86_64/>`_
 
 #. A /24 network with the gateway being at xxx.xxx.xxx.1, no DHCP should be on 
    this network and none of the computers running CloudStack will have a 
@@ -71,11 +71,11 @@ CloudStack. We will go over the steps to prepare now.
 Operating System
 ~~~~~~~~~~~~~~~~
 
-Using the CentOS 7.7 x86_64 install ISO, you'll need to install CentOS 7 
-on your hardware. The defaults will generally be acceptable for this 
-installation. You may want to configure network configuration during
-setup - either using the guidelines below, or using a standard access
-configuration which we will modify later.
+Using the CentOS 7.9.2009 minmal x86_64 install ISO, you'll need to install
+CentOS 7 on your hardware. The defaults will generally be acceptable for this
+installation. You may want to configure network configuration during setup -
+either using the guidelines below, or using a standard access configuration
+which we will modify later.
 
 Once this installation is complete, you'll want to gain access to your
 server - through SSH (if network is configured) or connected peripherals.
@@ -153,10 +153,17 @@ Open the configuration file of your interface and configure it as follows:
    BRIDGE=cloudbr0
 
 .. note:: 
-   You should not use the Hardware Address (aka the MAC address, or UUID) from our 
-   example for your configuration. It is network interface specific, so you 
+   You should not use the Hardware Address (aka the MAC address, or UUID) from our
+   example for your configuration. It is network interface specific, so you
    should keep the address already provided in the UUID directive.
 
+.. note::
+   If your physical nic (eth0 in the case of our example) has already been
+   setup before following this guide, make sure that there is no duplication
+   between /etc/sysconfig/network-scripts/ifcfg-cloudbr0 and
+   /etc/sysconfig/network-scripts/ifcfg-eth0 which will cause a failure that
+   would prevent the network from starting. Basically the majority eth0 config
+   moves over to the bridge and eth0 will point to the bridge.
 
 
 Now that we have the configuration files properly set up, we need to run a few 
@@ -378,6 +385,7 @@ First, as CentOS 7 no longer provides the MySQL binaries, we need to add a MySQL
 that will provide MySQL Server (and the Python MySQL connector later) : 
 
 .. parsed-literal::
+   # yum -y install wget
    # wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
    # rpm -ivh mysql-community-release-el7-5.noarch.rpm
 
@@ -623,109 +631,171 @@ UI Access
 To get access to CloudStack's web interface, merely point your browser to 
 http://172.16.10.2:8080/client The default username is 'admin', and the 
 default password is 'password'. You should see a splash screen that allows you 
-to choose several options for setting up CloudStack. You should choose the 
-Continue with Basic Setup option.
+to choose several options for setting up CloudStack.
 
 You should now see a prompt requiring you to change the password for the admin 
 user. Please do so.
 
 
 Setting up a Zone
-~~~~~~~~~~~~~~~~~
+-----------------
 
-A zone is the largest organization entity in CloudStack - and we'll be 
-creating one, this should be the screen that you see in front of you now. And 
-for us there are 5 pieces of information that we need.
+Zone Type
+~~~~~~~~~
+
+A zone is the largest organization entity in CloudStack - and we'll be
+creating one, this should be the screen that you see in front of you now.
+In previous versions of cloudstack there was the option to configure a zone
+with a "Basic Network" model, this has been removed leaving only the "Advanced
+Network" model. Here you can opt to use security groups for vm isolation or not.
+
+Click "Next" to continue on
+
+Zone Details
+~~~~~~~~~~~~
+On this page we enter where our dns servers are located.
+CloudStack distinguishes between internal and public DNS. Internal DNS is
+assumed to be capable of resolving internal-only hostnames, such as your
+NFS server’s DNS name. Public DNS is provided to the guest VMs to resolve
+public IP addresses. You can enter the same DNS server for both types, but
+if you do so, you must make sure that both internal and public IP addresses
+can route to the DNS server. In our specific case we will not use any names
+for resources internally, and we will indeed them set to look to the same
+external resource so as to not add a namerserver setup to our list of
+requirements.
 
 #. Name - we will set this to the ever-descriptive 'Zone1' for our cloud.
 
-#. Public DNS 1 - we will set this to ``8.8.8.8`` for our cloud.
+#. IPv4 DNS 1 - we will set this to ``8.8.8.8`` for our cloud.
 
-#. Public DNS 2 - we will set this to ``8.8.4.4`` for our cloud.
+#. IPV4 DNS 2 - we will set this to ``8.8.4.4`` for our cloud.
 
 #. Internal DNS1 - we will also set this to ``8.8.8.8`` for our cloud.
 
-#. Internal DNS2 - we will also set this to ``8.8.4.4`` for our cloud. 
+#. Internal DNS2 - we will also set this to ``8.8.4.4`` for our cloud.
 
-.. note:: 
-   CloudStack distinguishes between internal and public DNS. Internal DNS is 
-   assumed to be capable of resolving internal-only hostnames, such as your 
-   NFS server’s DNS name. Public DNS is provided to the guest VMs to resolve 
-   public IP addresses. You can enter the same DNS server for both types, but 
-   if you do so, you must make sure that both internal and public IP addresses 
-   can route to the DNS server. In our specific case we will not use any names 
-   for resources internally, and we have indeed them set to look to the same 
-   external resource so as to not add a namerserver setup to our list of 
-   requirements.
+#. Hypervisor - this will be the primary hypervisor used in this zone. In our
+   case, we will select KVM.
 
+Click "Next" to continue on
+
+Physical Network
+~~~~~~~~~~~~~~~~
+There are various network isolation methods supported by Cloudstack. The
+default VLAN option will be sufficient for our purposes. For improved
+performance and/or security, Cloudstack allows different trafic types to run
+over specifically dedicated network interface cards attached to the management
+server. We will not be making any changes here, the default settings are fine
+for a simple installation of Cloudstack.
+
+Click "Next" to continue on
+
+Public Traffic
+~~~~~~~~~~~~~~
+Public traffic is generated when VMs in the cloud access the internet.
+Publicly-accessible IPs must be allocated for this purpose.
+
+#. Gateway - We'll use ``172.16.10.1``
+
+#. Netmask - We'll use ``255.255.255.0``
+
+#. VLAN/VNI - We'll use ``50``
+
+#. Start IP - We'll use ``172.16.10.11``
+
+#. End IP - We'll use ``172.16.10.20``
+
+Click "Add" to add the range
+
+Click "Next" to continue on
 
 Pod Configuration
 ~~~~~~~~~~~~~~~~~
 
-Now that we've added a Zone, the next step that comes up is a prompt for 
-information regading a pod. Which is looking for several items.
+Here we will configure a range for Cloudstack's internal management traffic.
 
-#. Name - We'll use ``Pod1`` for our cloud.
+#. Pod Name - We'll use ``Pod1`` for our cloud.
 
-#. Gateway - We'll use ``172.16.10.1`` as our gateway
+#. Reserved system gateway - We'll use ``172.16.10.1``
 
-#. Netmask - We'll use ``255.255.255.0``
+#. Reserved system netmask - We'll use ``255.255.255.0``
 
-#. Start/end reserved system IPs - we will use ``172.16.10.10-172.16.10.20``
+#. Start reserved system IPs - we will use ``172.16.10.21-172.16.10.30``
 
-#. Guest gateway - We'll use ``172.16.10.1``
+Click "Next" to continue on
 
-#. Guest netmask - We'll use ``255.255.255.0``
+Guest Traffic
+~~~~~~~~~~~~~
 
-#. Guest start/end IP - We'll use ``172.16.10.30-172.16.10.200``
+Next we will configure a range of VLAN IDs for our guest VMs.
 
+A range of ``100`` - ``200`` would suffice.
+
+Click "Next" to continue on
 
 Cluster
 ~~~~~~~
 
-Now that we've added a Zone, we need only add a few more items for configuring 
-the cluster.
+Multiple clusters can belong to a pod and multiple hosts can belong to a
+cluster. We will have one cluster and we have to give our cluster a name.
 
 #. Name - We'll use ``Cluster1``
 
-#. Hypervisor - Choose ``KVM``
+Click "Next" to continue on
 
-You should be prompted to add the first host to your cluster at this point. 
-Only a few bits of information are needed.
+Host
+~~~~
+This is where we specify the details of our hypervisor host. In our case,
+we are running the management server on the same machine that we will be using
+as a hypervisor.
 
-#. Hostname - we'll use the IP address ``172.16.10.2`` since we didn't set up a 
-   DNS server.
+#. Hostname - we'll use the IP address ``172.16.10.2`` since we didn't set up a
+   DNS server for name resolution.
 
 #. Username - we'll use ``root``
 
 #. Password - enter the operating system password for the root user
 
+Click "Next" to continue on
 
 Primary Storage
 ^^^^^^^^^^^^^^^
 
 With your cluster now setup - you should be prompted for primary storage 
-information. Choose NFS as the storage type and then enter the following 
-values in the fields:
+information. Enter the following values in the fields:
 
 #. Name - We'll use ``Primary1``
+
+#. Scope - We'll use ``Cluster`` even though either is fine in this case. With
+   "Zone" scope, all hosts in all clusters would have access to this storage
+   pool.
+
+#. Protocol - We'll use ``NFS``
 
 #. Server - We'll be using the IP address ``172.16.10.2``
 
 #. Path - Well define ``/export/primary`` as the path we are using
 
+Click "Next" to continue on
 
 Secondary Storage
 ^^^^^^^^^^^^^^^^^
 
-If this is a new zone, you'll be prompted for secondary storage information - 
+If this is a new zone, you'll be prompted for secondary storage information -
 populate it as follows:
+
+#. Provider - Choose ``NFS``
+
+#. Name - We can call it ``Secondary1``
 
 #. NFS server - We'll use the IP address ``172.16.10.2``
 
 #. Path - We'll use ``/export/secondary``
 
-Now, click Launch and your cloud should begin setup - it may take several 
-minutes depending on your internet connection speed for setup to finalize.
+Click "Next" to continue on
+
+Now, click "Launch Zone" and your cloud should begin setup - it may take
+several minutes depending on your internet connection speed for setup to
+finalize.
 
 That's it, you are done with installation of your Apache CloudStack cloud.
