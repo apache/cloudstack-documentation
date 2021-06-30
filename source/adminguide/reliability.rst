@@ -236,64 +236,24 @@ opt-in where by only resources with a defined provider and HA enabled will be
 managed.
 
 For each resource in an HA partition, the HA Resource Management Service
-maintains and persists an FSM composed of the following states:
+maintains and persists an "Finite State Machine" composed of the following
+states:
 
-DISABLED:
-The resource is part of a partition where HA operations have been disabled.
-
-AVAILABLE:
-The initial health and eligibility of the resource for HA management is
-currently found to be fine. The resource stays in the AVAILABLE state based on
-the passage of the most recent health check and it's containing partition has
-an HA state of ACTIVE and all the eligibility conditions are met. When
-transitioning to this state, the number of retry attempts is reset.
-
-INELIGIBLE:
-The resource's enclosing partition has an HA state of ACTIVE but its current
-state does not support HA check and/or recovery operations. If it is a single
-host in the cluster for a KVM provider the host will become ineligible as the
-KVM provider requires a neighbouring host to carry on its investigations. Any
-resource in maintenance mode is automatically transitioned to INELIGIBLE.
-
-SUSPECT:
-The resource pending an activity check due to failing its most recent health
-check. If the maximum recovery attempts has been exceeded, the HA state is
-transitioned to FENCED. Otherwise, the node will be scheduled for an activity
-check. When a node fails multiple activity checks/recovery attempts, the
-duration between re-attempts will decay to the maximum interval specified by
-the provider (e.g. first check after 10 seconds, second check after 20 seconds,
-third check after 40 seconds to a maximum interval of 250 seconds).
-
-DEGRADED:
-The resource cannot be managed by the control plane but passed its
-most recent activity check indicating that the resource is still servicing
-end-user requests
-
-CHECKING:
-An activity check is currently being performed on the resource. The HA provider
-defines the number of activity checks must be performed and number of failed
-activity checks required to trigger recovery. If the number of activity checks
-is greater than or equal to the total number of acceptable failures, the HA
-state of the resource is transitioned to RECOVERING causing a recovery attempt.
-If the total number of activity checks has been attempted and number of failure
-is less than the number of acceptable failures, the HA state of the resource
-will be transitioned to DEGRADED. If the number of activity checks is less than
-the total number of required and the number of failures is
-less than the acceptable number of failures, then the HA state of the resource
-is transitioned to SUSPECT – triggering another activity check.
-
-RECOVERING:
-Recovery operations are in-progress to bring the resource back to
-a healthy state. If the recovery operation succeeds, the HA state of the
-resource will be transitioned to INITIALIZING. If the recovery operation fails,
-the HA state of the resource is transitioned to FENCED. Since Recovering is not
-idempotent it is further split into ‘Recovering’ and ‘Recovered’.
-
-FENCED:
-The resource is not operating normally and automated attempts to
-recover it failed. Manual operator intervention is required to recover the
-resource. Since Fenced operation is not idempotent it is further split into
-‘Fencing’ and ‘Fenced’.
+- Available - The feature is enabled and Host-HA is available.
+- Suspect - There are health checks failing with the host.
+- Checking - Activity checks are being performed.
+- Degraded - The host is passing the activity check ratio and still providing
+  service to the end user, but it cannot be managed from the CloudStack
+  management server.
+- Recovering - The Host-HA framework is trying to recover the host by issuing
+  OOBM jobs.
+- Recovered - The Host-HA framework has recovered the host successfully.
+- Fencing - The Host-HA framework is trying to fence the host by issuing OOBM
+  jobs.
+- Fenced - The Host-HA framework has fenced the host successfully.
+- Disabled - The feature is disabled for the host.
+- Ineligible - The feature is enabled, but it cannot be managed successfully by
+  the Host-HA framework. (OOBM is possibly not configured properly)
 
 When HA is enabled for a partition, the HA state of all contained resources 
 will be transitioned from DISABLED to AVAILABLE. Based on the state models, the
