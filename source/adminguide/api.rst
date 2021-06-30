@@ -103,8 +103,8 @@ To use the config drive the network offering must have the “ConfigDrive”
 provider selected for the userdata service.
 
 If the networkoffering uses ConfigDrive for userdata and the template is
-password enabled, the password string for the VM is placed in password.txt file
-and it is included in the ISO.
+password enabled, the password string for the VM is placed in the
+vm_password.txt file and it is included in the ISO.
 
 ConfigDrive availability
 ~~~~~~~~~~~~~~~~~~~~~~~~
