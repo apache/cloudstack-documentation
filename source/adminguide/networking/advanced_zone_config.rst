@@ -43,9 +43,9 @@ configure the base guest network:
  
    -  **Description**: The description of the network. This will be
       user-visible
- 
+
    -  **Zone**: The zone in which you are configuring the guest network.
- 
+
    -  **Network offering**: If the administrator has configured multiple
       network offerings, select the one you want to use for this network
 

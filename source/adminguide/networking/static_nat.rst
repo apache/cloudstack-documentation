@@ -39,7 +39,7 @@ function only if they are defined on the default network.
 
 #. Click the name of the network where you want to work with.
 
-#. Click View IP Addresses.
+#. Click Public IP Addresses.
 
 #. Click the IP address you want to work with.
 
