@@ -660,7 +660,7 @@ NFS server’s DNS name. Public DNS is provided to the guest VMs to resolve
 public IP addresses. You can enter the same DNS server for both types, but
 if you do so, you must make sure that both internal and public IP addresses
 can route to the DNS server. In our specific case we will not use any names
-for resources internally, and we will indeed them set to look to the same
+for resources internally, and we will indeed set them to look to the same
 external resource so as to not add a namerserver setup to our list of
 requirements.
 
