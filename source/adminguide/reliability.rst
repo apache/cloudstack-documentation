@@ -114,7 +114,7 @@ On the agent side, the 'host' setting is saved in its properties file as:
 From the agent's perspective, the first address in the propagated list
 will be considered the preferred host. A new background task can be
 activated by configuring the `indirect.agent.lb.check.interval` which is
-a cluster level global setting from CloudStack and adminitrators can also
+a cluster level global setting from CloudStack and administrators can also
 override this by configuring the 'host.lb.check.interval' in the
 `agent.properties` file.
 
