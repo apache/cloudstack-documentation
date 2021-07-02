@@ -96,6 +96,11 @@ The indirect.agent.lb.algorithm setting supports following algorithm options:
 - shuffle: Pseudo Randomly sort the list (this is not recommended for
   production).
 
+.. note:: 
+   The 'static' and 'roundrobin' algorithms, strictly checks for the order as
+   expected by them, however, the 'shuffle' algorithm just checks for content
+   and not the order of the comma separate management server host addresses.
+
 Any changes to the global settings - `indirect.agent.lb.algorithm` and
 `host` does not require restarting of the management server(s) and the
 agents. A change in these global settings will be propagated to all connected
@@ -121,11 +126,6 @@ override this by configuring the 'host.lb.check.interval' in the
 When an agent gets a host and algorithm combination, the host specific
 background check interval is also sent and is dynamically reconfigured
 in the background task without need to restart agents.
-
-Note: The 'static' and 'roundrobin' algorithms, strictly checks for the
-order as expected by them, however, the 'shuffle' algorithm just checks
-for content and not the order of the comma separate management server
-host addresses.
 
 To make things more clear, consider this example:
 Suppose an environment which has 3 management servers: A, B and C and
