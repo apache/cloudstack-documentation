@@ -70,12 +70,8 @@ This can be useful as an internal loadbalancer or for high availability.
 An administrator is responsible for setting the list of management servers and
 choosing a sorting algorithm using global settings.
 The management server is responsible for propagating the settings to the
-connected agents.
-
-Examples of an agent includes, the process responsible for communication to the
-management server (cloud.service), running inside of the Secondary Storage 
-Virtual Machine (SSVM), Console Proxy Virtual Machine (CPVM) or the
-cloudstack-agent running on a KVM host.
+connected agents (running inside of the Secondary Storage
+Virtual Machine, Console Proxy Virtual Machine or the KVM hosts).
 
 The three global settings that need to be configured are the following:
 
