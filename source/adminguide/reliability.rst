@@ -73,9 +73,9 @@ The management server is responsible for propagating the settings to the
 connected agents.
 
 Examples of an agent includes, the process responsible for communication to the
-management server, running inside of the Secondary Storage Virtual Machine
-(SSVM), Console Proxy Virtual Machine (CPVM) or the cloudstack-agent running on
-a KVM host.
+management server (cloud.service), running inside of the Secondary Storage 
+Virtual Machine (SSVM), Console Proxy Virtual Machine (CPVM) or the
+cloudstack-agent running on a KVM host.
 
 The three global settings that need to be configured are the following:
 
