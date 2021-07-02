@@ -216,9 +216,6 @@ recovering and fencing actions. Once determined that the host is in faulty
 state (health checks failed) it runs activity checks to figure out if there is 
 any disk activity on the VMs running on the specific host.
 
-HA Resource Management Service
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 The HA Resource Management Service manages the check/recovery cycle including
 periodic execution, concurrency management, persistence, back pressure and 
 clustering operations. Administrators associate a provider with a partition 
