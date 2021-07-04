@@ -43,58 +43,8 @@ possible as well. For example, see Using an LDAP Server for User
 Authentication.
 
 
-User Data and Meta Data 
------------------------
-
-Via Virtual Router
-~~~~~~~~~~~~~~~~~~
-
-CloudStack provides API access to attach up to 32KB of user data to a
-deployed VM. Deployed VMs also have access to instance metadata via the
-virtual router.
-
-User data can be accessed once the IP address of the virtual router is
-known. Once the IP address is known, use the following steps to access
-the user data:
-
-#. Run the following command to find the virtual router.
-
-   .. code:: bash
-
-      # cat /var/lib/dhclient/dhclient-eth0.leases | grep dhcp-server-identifier | tail -1
-
-#. Access user data by running the following command using the result of
-   the above command
-
-   .. code:: bash
-
-      # curl http://10.1.1.1/latest/user-data
-
-Meta Data can be accessed similarly, using a URL of the form
-http://10.1.1.1/latest/meta-data/{metadata type}. (For backwards
-compatibility, the previous URL http://10.1.1.1/latest/{metadata type}
-is also supported.) For metadata type, use one of the following:
-
--  service-offering. A description of the VMs service offering
-
--  availability-zone. The Zone name
-
--  local-ipv4. The guest IP of the VM
-
--  local-hostname. The hostname of the VM
-
--  public-ipv4. The first public IP for the router. (E.g. the first IP
-   of eth2)
-
--  public-hostname. This is the same as public-ipv4
-
--  instance-id. The instance name of the VM
-
-Via Config Drive
-~~~~~~~~~~~~~~~~
-
-The user-data service on a Shared or L2 Network can be provided through the
-Virtual Router or through an attached iso called the Config drive.
+User Data and Meta Data via Config Drive
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Config drive is an ISO file that is mounted as a cd-rom on a user VM and
 contains the user VM related userdata, metadata (incl. ssh-keys) and
@@ -116,7 +66,7 @@ user instance, such that any other ISO image (e.g. boot image or vmware tools)
 is mounted on 1st cd/dvd drive. This means existing functionality of
 supporting 1 cd rom drive is still available.
 
-At Password reset or update of user data, Secondary Storage VM will rebuild the
+At password reset or update of user data, Secondary Storage VM will rebuild the
 ConfigDrive ISO image. That is the existing ISO is mounted on a temporary directory,
 password, userdata or ssh-keys are updated and a new ISO is built from the
 updated directory structure.
@@ -127,8 +77,9 @@ To access the updated userdata, the user needs to remount the config drive ISO.
 When a VM is stopped, the ConfigDrive network element will trigger the
 Secondary Storage VM to remove the ISO from the secondary storage.
 
-Since the ISO is available on secondary storage, there is no need for an extra
-implementation in case of migration.
+The config drive ISO can be stored on primary storage by setting the global
+setting vm.configdrive.primarypool.enabled to true. This is currently only
+supported with use of the KVM Hypervisor.
 
 Supporting ConfigDrive
 ~~~~~~~~~~~~~~~~~~~~~~
