@@ -37,10 +37,8 @@ Overview of Upgrade Steps:
 
 #. Check any customisations and integrations
 #. Upload the |sysvm64-version| System VM template if not already using it.
-#. Confirm Java 11 is the default Java version
 #. Stop all running management servers
 #. Backup CloudStack database (MySQL)
-#. Add "serverTimezone=UTC" to your "db.properties"
 #. Upgrade 1st CloudStack management server
 #. Update hypervisors specific dependencies
 #. Restart 1st management server
@@ -56,8 +54,6 @@ Overview of Upgrade Steps:
     CloudStack packages.
 
 .. include:: _sysvm_templates.rst
-
-.. include:: _java_version.rst
 
 Packages repository
 -------------------
@@ -110,8 +106,6 @@ Backup current database
 
 Management Server
 -----------------
-
-.. include:: _timezone.rst
 
 Ubuntu
 ######
