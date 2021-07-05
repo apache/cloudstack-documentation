@@ -877,7 +877,10 @@ retrieved.
 The following files are retrieved by default for each of the supported VMs and
 are configurable as global settings;
 
-Virtual Router – ‘diagnostics.data.router.defaults’
+Virtual Router
+
+‘diagnostics.data.router.defaults’
+
 iptables, ipaddr, iproute, /etc/cloudstack-release, /etc/dnsmasq.conf,
 /etc/dhcphosts.txt, /etc/dhcpopts.txt, /etc/dnsmasq.d/cloud.conf,
 /etc/dnsmasq-resolv.conf, /var/lib/misc/dnsmasq.leases, /var/log/dnsmasq.log,
@@ -885,7 +888,10 @@ iptables, ipaddr, iproute, /etc/cloudstack-release, /etc/dnsmasq.conf,
 /etc/ipsec.d/l2tp.conf, /var/log/cloud.log, /var/log/routerServiceMonitor.log,
 /var/log/daemon.log"
 
-Secondary Storage VM and Console Proxy VM – ‘diagnostics.data.systemvm.defaults’
+Secondary Storage VM and Console Proxy VM
+
+‘diagnostics.data.systemvm.defaults’
+
 "iptables, ipaddr, iproute, /etc/cloudstack-release,
 /usr/local/cloud/systemvm/conf/agent.properties,
 /usr/local/cloud/systemvm/conf/consoleproxy.properties, /var/log/cloud.log,
