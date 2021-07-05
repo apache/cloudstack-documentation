@@ -815,7 +815,9 @@ The administrator can log in to the secondary storage VM if needed.
 Troubleshoot networks from System VMs
 -------------------------------------
 .. |run-diagnostics-icon.png| image:: /_static/images/run-diagnostics-icon.png
+.. |get-diagnostics-icon.png| image:: /_static/images/get-diagnostics-icon.png
 .. |diagnostics-form.png| image:: /_static/images/diagnostics-form.png
+.. |diagnostics-data-form.png| image:: /_static/images/diagnostics-data-form.png
 
 For troubleshooting of network issues in CloudStack hosted networks, CloudStack allows
 the administrator to execute network-utility commands (ping, traceroute or arping)
@@ -836,8 +838,8 @@ To run either a ping, traceroute or arping through the CloudStack UI:
 The Extra Args parameter is for specifying command line optional parameters
 as one would when executing any of the tools from the terminal or command line.
 
-The supported versions are Debian 9 based since system VMs are built using the
-same Debian 9 based templates.
+The supported versions are Debian 10 based since system VMs are built using the
+same Debian 10 based templates.
 
 | See:
 | Traceroute(1): https://manpages.debian.org/stretch/traceroute/traceroute.1.en.html
@@ -848,3 +850,95 @@ same Debian 9 based templates.
 Non-Alphanumeric characters (metacharacters) are not allowed for this parameter
 except for the “-“ and the “.”. Any metacharacter supplied will immediately result
 in an immediate termination of the command and report back to the operator that an illegal character was passed
+
+Get Diagnostics Data
+~~~~~~~~~~~~~~~~~~~~
+
+For further troubleshooting, a set of files can be retrieved from any system VM
+by using the Get Diagnostics feature, either via the UI or an API call. The
+files are compressed and a URL is returned where the diagnostics data can be
+retrieved.
+
+#. As an administrator, log in to the CloudStack UI.
+
+#. Navigate to Infrastructure > System VMs or Virtual Routers.
+
+#. Click on the Get Diagnostics button. |get-diagnostics-icon.png|
+
+#. A form will pop up similar to this;
+
+      |diagnostics-data-form.png|
+
+#. Click OK.
+
+#. Wait for the URL to generate and click it to download the zipped up
+   diagnostics files.
+
+The following files are retrieved by default for each of the supported VMs and
+are configurable as global settings;
+
+Virtual Router – ‘diagnostics.data.router.defaults’
+iptables, ipaddr, iproute, /etc/cloudstack-release, /etc/dnsmasq.conf,
+/etc/dhcphosts.txt, /etc/dhcpopts.txt, /etc/dnsmasq.d/cloud.conf,
+/etc/dnsmasq-resolv.conf, /var/lib/misc/dnsmasq.leases, /var/log/dnsmasq.log,
+/etc/hosts, /etc/resolv.conf, /etc/haproxy/haproxy.cfg, /var/log/haproxy.log,
+/etc/ipsec.d/l2tp.conf, /var/log/cloud.log, /var/log/routerServiceMonitor.log,
+/var/log/daemon.log"
+
+Secondary Storage VM and Console Proxy VM – ‘diagnostics.data.systemvm.defaults’
+"iptables, ipaddr, iproute, /etc/cloudstack-release,
+/usr/local/cloud/systemvm/conf/agent.properties,
+/usr/local/cloud/systemvm/conf/consoleproxy.properties, /var/log/cloud.log,
+/var/log/patchsystemvm.log /var/log/daemon.log"
+
+These global settings are all dynamic and do not require a restart of the
+management server in order for changes to be effective. The names wrapped in
+square brackets are for data types that need to first execute a script in the
+system vm and grab output for retrieval, e.g. the output from iptables-save is
+written to a file which will then be retrieved. This also allows an admin to
+pack their own custom scripts in the system VMs that can be executed and their
+output will be redirected to a text file that will be retrieved.
+
+The API also has an optional parameter ‘files’ which can be used for retrieving
+specific files. This parameter has to be the absolute path to where the file
+exists on the file system.
+
+The output from any command/script can be retrieved by wrapping the name with
+square brackets which will be executed and its output redirected to a file with
+a name similar to the name in square brackets in lower case. For example, a
+user can package their own custom script in the system VM called
+myscript.py/sh, the user will then retrieve output of this script by specifying
+it as ‘[MYSCRIPT]’ as either input parameter to files or setting it as a global
+setting. the API will then execute this script and redirect its output to a
+file called ‘myscript.log’. This could also be any command that can be executed
+from the shell and its output will be gathered and retrieved.
+
+Additional global settings can be configured related to garbage collection of
+generated diagnostics data files and are as follows:
+
+* diagnostics.data.gc.enable
+
+  Enables the garbage collector background task to delete old files. Changing
+  this setting requires a management server restart. The default value is True
+
+* diagnostics.data.gc.interval
+
+  The interval at which the garbage collector background tasks in seconds. This
+  setting requires a management server restart. The default value is 86400
+  (Once a day).
+
+* diagnostics.data.retrieval.timeout
+
+  The overall system VM script execution time out in seconds. This setting does
+  not require a management server restart. The default value is 1800.
+
+* diagnostics.data.max.file.age
+
+  Sets the maximum time in seconds a file can stay in storage before it is
+  deleted. The default value is 86400 (1 day).
+
+* diagnostics.data.disable.threshold
+
+  Sets the secondary storage disk utilisation percentage for file retrieval.
+  An exception is thrown when no secondary store is found with a lower capacity
+  than the specified value. The default value is 0.95 (95 %).
