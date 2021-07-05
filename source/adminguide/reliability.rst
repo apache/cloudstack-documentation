@@ -232,20 +232,20 @@ For each resource in an HA partition, the HA Resource Management Service
 maintains and persists an "Finite State Machine" composed of the following
 states:
 
-- Available - The feature is enabled and Host-HA is available.
-- Suspect - There are health checks failing with the host.
-- Checking - Activity checks are being performed.
-- Degraded - The host is passing the activity check ratio and still providing
+- AVAILABLE - The feature is enabled and Host-HA is available.
+- SUSPECT - There are health checks failing with the host.
+- CHECKING - Activity checks are being performed.
+- DEGRADED - The host is passing the activity check ratio and still providing
   service to the end user, but it cannot be managed from the CloudStack
   management server.
-- Recovering - The Host-HA framework is trying to recover the host by issuing
+- RECOVERING - The Host-HA framework is trying to recover the host by issuing
   OOBM jobs.
-- Recovered - The Host-HA framework has recovered the host successfully.
-- Fencing - The Host-HA framework is trying to fence the host by issuing OOBM
+- RECOVERED - The Host-HA framework has recovered the host successfully.
+- FENCING - The Host-HA framework is trying to fence the host by issuing OOBM
   jobs.
-- Fenced - The Host-HA framework has fenced the host successfully.
-- Disabled - The feature is disabled for the host.
-- Ineligible - The feature is enabled, but it cannot be managed successfully by
+- FENCED - The Host-HA framework has fenced the host successfully.
+- DISABLED - The feature is disabled for the host.
+- INELIGIBLE - The feature is enabled, but it cannot be managed successfully by
   the Host-HA framework. (OOBM is possibly not configured properly)
 
 When HA is enabled for a partition, the HA state of all contained resources 
