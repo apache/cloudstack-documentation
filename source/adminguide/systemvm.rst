@@ -874,12 +874,8 @@ retrieved.
 #. Wait for the URL to generate and click it to download the zipped up
    diagnostics files.
 
-The following files are retrieved by default for each of the supported VMs and
-are configurable as global settings;
-
-Virtual Router
-
-‘diagnostics.data.router.defaults’
+The following files are retrieved by default for the Virtual Router and
+is configurable using a global setting: ‘diagnostics.data.router.defaults’
 
 iptables, ipaddr, iproute, /etc/cloudstack-release, /etc/dnsmasq.conf,
 /etc/dhcphosts.txt, /etc/dhcpopts.txt, /etc/dnsmasq.d/cloud.conf,
@@ -888,8 +884,8 @@ iptables, ipaddr, iproute, /etc/cloudstack-release, /etc/dnsmasq.conf,
 /etc/ipsec.d/l2tp.conf, /var/log/cloud.log, /var/log/routerServiceMonitor.log,
 /var/log/daemon.log"
 
-Secondary Storage VM and Console Proxy VM
-
+The following files are retrieved by default for the Secondary Storage VM 
+and Console Proxy VM and is configurable using a global setting: 
 ‘diagnostics.data.systemvm.defaults’
 
 "iptables, ipaddr, iproute, /etc/cloudstack-release,
