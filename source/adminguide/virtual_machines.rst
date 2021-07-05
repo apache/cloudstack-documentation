@@ -127,7 +127,7 @@ To create a VM from a template:
 
 #. Log in to the CloudStack UI as an administrator or user.
 
-#. In the left navigation bar, click compute -> Instances.
+#. In the left navigation bar, click Compute -> Instances.
 
 #. Click the Add Instance button.
 
@@ -261,7 +261,7 @@ To delete a virtual machine:
 
 #. Log in to the CloudStack UI as a user or admin.
 
-#. In the left navigation, click Instances.
+#. In the left navigation, click Compute -> Instances.
 
 #. Choose the VM that you want to delete.
 
