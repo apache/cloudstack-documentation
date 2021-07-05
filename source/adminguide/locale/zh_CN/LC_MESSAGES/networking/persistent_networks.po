@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -41,7 +41,7 @@ msgid ""
 "ability to create a network in CloudStack in which physical devices can be "
 "deployed without having to run any VMs. Additionally, you can deploy "
 "physical devices on that network."
-msgstr "在您创建其它类型的网络时，在网络中第一台VM创建之前，该网络仅是数据库的一条记录。当第一个VM创建时，网络会指定一个VLAN ID并初始化。同样，当网络中最后一个VM销毁后，VLAN ID会被释放，这样该网络就不再可用。通过使用持久化网络，您就有能力在不部署VM的情况下在&PRODUCT;中创建一个网络用来部署物理设备。而且，您可以在该网络中部署物理设备。"
+msgstr "在您创建其它类型的网络时，在网络中第一台VM创建之前，该网络仅是数据库的一条记录。当第一个VM创建时，网络会指定一个VLAN ID并初始化。同样，当网络中最后一个VM销毁后，VLAN ID会被释放，这样该网络就不再可用。通过使用持久化网络，您就有能力在不部署VM的情况下在&CloudStack;中创建一个网络用来部署物理设备。而且，您可以在该网络中部署物理设备。"
 
 # 87f88f46858c41ba96f785b7c3122342
 #: ../../networking/persistent_networks.rst:33
