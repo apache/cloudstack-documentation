@@ -112,8 +112,8 @@ user instance, such that any other ISO image (e.g. boot image or vmware tools)
 is mounted on 1st cd/dvd drive. This means existing functionality of
 supporting 1 cd rom drive is still available.
 
-At password reset or update of user data, Secondary Storage VM will rebuild the
-ConfigDrive ISO image. That is the existing ISO is mounted on a temporary directory,
+At password reset or update of user data, the Config Drive ISO
+will be rebuilt. The existing ISO is mounted on a temporary directory,
 password, userdata or ssh-keys are updated and a new ISO is built from the
 updated directory structure.
 
@@ -122,6 +122,8 @@ To access the updated userdata, the user needs to remount the config drive ISO.
 
 When a VM is stopped, the ConfigDrive network element will trigger the
 Secondary Storage VM to remove the ISO from the secondary storage.
+If the config drive is stored on primary storage, the network element will
+trigger the host to remove the ISO.
 
 The config drive ISO can be stored on primary storage by setting the global
 setting vm.configdrive.primarypool.enabled to true. This is currently only
