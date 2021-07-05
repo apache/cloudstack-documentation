@@ -30,6 +30,11 @@ goal for this runbook is to provide a straightforward set of instructions to
 get you up and running with CloudStack with a minimum amount of trouble.
 
 
+.. warning::
+      This guide is meant to be used to build CloudStack test/demo cloud only, 
+      as certain choices have been made to get you up and running with minimal amount of time     
+      
+      
 High level overview of the process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -212,8 +217,13 @@ After you've modified that file, go ahead and restart the network using:
 
    # systemctl restart network
 
-Now recheck with the hostname --fqdn command and ensure that it returns a FQDN 
-response
+Now recheck with the
+
+.. parsed-literal::
+
+   # hostname --fqdn
+
+and ensure that it returns a FQDN response
 
 
 .. _conf-selinux:
@@ -407,19 +417,6 @@ section:
    log-bin=mysql-bin
    binlog-format = 'ROW'
 
-.. note::
-
-   For Ubuntu 16.04 and later, make sure you specify a ``server-id`` in your ``.cnf`` file for binary logging. Set the     ``server-id`` according to your database setup.
-    
-.. parsed-literal::
-
-   server-id=master-01
-   innodb_rollback_on_timeout=1
-   innodb_lock_wait_timeout=600
-   max_connections=350
-   log-bin=mysql-bin
-   binlog-format = 'ROW'
-
 Now that MySQL is properly configured we can start it and configure it to 
 start on boot as follows:
 
@@ -507,12 +504,6 @@ CloudStack, but we will do that after we get our hypervisor set up.
 
 KVM Setup and Installation
 --------------------------
-
-KVM is the hypervisor we'll be using - we will recover the initial setup which 
-has already been done on the hypervisor host and cover installation of the 
-agent software, you can use the same steps to add additional KVM nodes to your 
-CloudStack environment.
-
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -619,12 +610,6 @@ to using the CloudStack UI for the actual configuration of our cloud.
 Configuration
 -------------
 
-As we noted before we will be using security groups to provide isolation and 
-by default that implies that we'll be using a flat layer-2 network. It also 
-means that the simplicity of our setup means that we can use the quick 
-installer.
-
-
 UI Access
 ~~~~~~~~~
 
@@ -632,10 +617,6 @@ To get access to CloudStack's web interface, merely point your browser to
 http://172.16.10.2:8080/client The default username is 'admin', and the 
 default password is 'password'. You should see a splash screen that allows you 
 to choose several options for setting up CloudStack.
-
-You should now see a prompt requiring you to change the password for the admin 
-user. Please do so.
-
 
 Setting up a Zone
 -----------------
@@ -645,12 +626,18 @@ Zone Type
 
 A zone is the largest organization entity in CloudStack - and we'll be
 creating one, this should be the screen that you see in front of you now.
-In previous versions of cloudstack there was the option to configure a zone
-with a "Basic Network" model, this has been removed leaving only the "Advanced
-Network" model. Here you can opt to use security groups for vm isolation or not.
 
-Click "Next" to continue on
+.. warning::
+      We will be configuring an Advanced Zone in a way that will allow us to access both
+      the "Management" network of the cloud as well as the "Public" network - we will do so
+      by using the same CIDR (but different IP ranges) for both "Management" (Pod) and the "Public"
+      networks - which is something your would NEVER do in a production - this is for strictly for
+      testing purposes only!
 
+Click "Continue with Installation" to continue - you will be offered to change your 
+root admin password - please do so, and click on OK.
+
+A new Zone wizard will pop-up. Please chose Advanced (don't tick the "Security Groups") and click on Next.
 Zone Details
 ~~~~~~~~~~~~
 On this page we enter where our dns servers are located.
@@ -686,9 +673,10 @@ default VLAN option will be sufficient for our purposes. For improved
 performance and/or security, Cloudstack allows different trafic types to run
 over specifically dedicated network interface cards attached to the management
 server. We will not be making any changes here, the default settings are fine
-for a simple installation of Cloudstack.
+for this demo installation of Cloudstack.
 
 Click "Next" to continue on
+
 
 Public Traffic
 ~~~~~~~~~~~~~~
@@ -716,11 +704,13 @@ Here we will configure a range for Cloudstack's internal management traffic.
 
 #. Pod Name - We'll use ``Pod1`` for our cloud.
 
-#. Reserved system gateway - We'll use ``172.16.10.1``
+#. Reserved system gateway - we'll use ``172.16.10.1``
 
-#. Reserved system netmask - We'll use ``255.255.255.0``
+#. Reserved system netmask - we'll use ``255.255.255.0``
 
-#. Start reserved system IPs - we will use ``172.16.10.21-172.16.10.30``
+#. Start reserved system IPs - we will use ``172.16.10.21``
+
+#. End Reserved system IP - we will use ``172.16.10.30``
 
 Click "Next" to continue on
 
@@ -795,7 +785,8 @@ populate it as follows:
 Click "Next" to continue on
 
 Now, click "Launch Zone" and your cloud should begin setup - it may take
-several minutes depending on your internet connection speed for setup to
-finalize.
+several minutes for setup to finalize.
 
-That's it, you are done with installation of your Apache CloudStack cloud.
+When done, click on "Enable Zone" and your zone will be ready.
+
+That's it, you are done with installation of your Apache CloudStack demo cloud.
