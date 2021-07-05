@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2014, Apache Software Foundation
 # This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -164,7 +164,7 @@ msgstr "确保为主存储和辅助存储创建了文件夹。SMB共享和主机
 msgid ""
 "If you are using Windows SMB share, the location of the file share for the "
 "Hyper-V deployment will be the new folder created in the \\\\Shares on the "
-"selected volume. You can create sub-folders for both PRODUCT Primary and "
+"selected volume. You can create sub-folders for both CloudStack Primary and "
 "Secondary storage within the share location. When you select the profile for"
 " the file shares, ensure that you select SMB Share -Applications. This "
 "creates the file shares with settings appropriate for Hyper-V."
@@ -204,7 +204,7 @@ msgstr "虚拟交换机"
 #: ../../hypervisor/hyperv.rst:98
 msgid ""
 "If you are using Hyper-V 2012 R2, manually create an external virtual switch"
-" before adding the host to PRODUCT. If the Hyper-V host is added to the "
+" before adding the host to CloudStack. If the Hyper-V host is added to the "
 "Hyper-V manager, select the host, then click Virtual Switch Manager, then "
 "New Virtual Switch. In the External Network, select the desired NIC adapter "
 "and click Apply."
@@ -226,7 +226,7 @@ msgstr "虚拟交换机名称"
 #: ../../hypervisor/hyperv.rst:109
 msgid ""
 "Take a note of the name of the virtual switch. You need to specify that when"
-" configuring PRODUCT physical network labels."
+" configuring CloudStack physical network labels."
 msgstr ""
 
 # ad1036d7fef9481ca332cd4247790520
@@ -250,7 +250,7 @@ msgstr "域用户应该对提供主存储和辅助存储的SMB共享拥有完全
 #: ../../hypervisor/hyperv.rst:120
 msgid ""
 "This domain user should be part of the Hyper-V Administrators and Local "
-"Administrators group on the Hyper-V hosts that are to be managed by PRODUCT."
+"Administrators group on the Hyper-V hosts that are to be managed by CloudStack."
 msgstr ""
 
 # a99dc8722cb14924894d5b59a0f7a3bb
@@ -263,7 +263,7 @@ msgstr "Hyper-V代理服务使用域用户账号身份运行。"
 # 39ee910d4ba544e2b28f18e65ac8a889
 #: ../../hypervisor/hyperv.rst:128
 msgid ""
-"Specify the credential of the domain user while adding a host to PRODUCT so "
+"Specify the credential of the domain user while adding a host to CloudStack so "
 "that it can manage it."
 msgstr ""
 
