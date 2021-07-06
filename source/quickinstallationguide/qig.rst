@@ -699,7 +699,7 @@ Publicly-accessible IPs must be allocated for this purpose.
 
 #. Netmask - We'll use ``255.255.255.0``
 
-#. VLAN/VNI - We'll use ``50``
+#. VLAN/VNI - We'll leave this one empty
 
 #. Start IP - We'll use ``172.16.10.11``
 
