@@ -333,8 +333,23 @@ same node for MySQL. See `“Install the Database on the Management Server Node�
 
 #. Return to the root shell on your first Management Server.
 
-#. Set up the database. The following command creates the cloud user on
-   the database.
+#. Set up the database. 
+
+The cloudstack-setup-databases script is used for creating the cloudstack
+databases (cloud, cloud_usage), creating a user (cloud), granting permissions
+to the user and preparing the tables for the first startup of the management
+server.
+
+The following command creates the cloud user on the database.
+
+   .. parsed-literal::
+
+      cloudstack-setup-databases cloud:<dbpassword>@<ip address mysql server> \
+      --deploy-as=root:<password> \
+      -e <encryption_type> \
+      -m <management_server_key> \
+      -k <database_key> \
+      -i <management_server_ip>
 
    -  In dbpassword, specify the password to be assigned to the cloud
       user. You can choose to provide no password.
@@ -364,14 +379,13 @@ same node for MySQL. See `“Install the Database on the Management Server Node�
       cluster management server node IP. If not specified, the local IP
       address will be used.
 
-   .. parsed-literal::
-
-      cloudstack-setup-databases cloud:<dbpassword>@<ip address mysql server> \
-      --deploy-as=root:<password> \
-      -e <encryption_type> \
-      -m <management_server_key> \
-      -k <database_key> \
-      -i <management_server_ip>
+   -  (Optional) There is an option to bypass the two initial steps of creating
+      the databases and granting permissions to the user. This is useful if you
+      don't want to expose your root credentials but still want the database to
+      be prepeared for first start up. These skipped steps will have had to be
+      done manually prior to executing this script. This behaviour can be
+      envoked by passing the --schema-only flag. This flag conflicts with the
+      --deploy-as flag so the two cannot be used together.
 
    When this script is finished, you should see a message like 
    “Successfully initialized the database.”
