@@ -385,7 +385,26 @@ The following command creates the cloud user on the database.
       be prepeared for first start up. These skipped steps will have had to be
       done manually prior to executing this script. This behaviour can be
       envoked by passing the --schema-only flag. This flag conflicts with the
-      --deploy-as flag so the two cannot be used together.
+      --deploy-as flag so the two cannot be used together. To set up the
+      databases and user manually before executing the script with the flag,
+      these commands can be executed:
+
+      .. code:: mysql
+
+         CREATE DATABASE `cloud`;
+         CREATE DATABASE `cloud_usage`;
+
+         CREATE USER cloud@`localhost` identified by '<password>';
+         CREATE USER cloud@`%` identified by '<password>';
+
+         GRANT ALL ON cloud.* to cloud@`localhost`;
+         GRANT ALL ON cloud.* to cloud@`%`;
+
+         GRANT ALL ON cloud_usage.* to cloud@`localhost`;
+         GRANT ALL ON cloud_usage.* to cloud@`%`;
+
+         GRANT process ON *.* TO cloud@`localhost`;
+         GRANT process ON *.* TO cloud@`%`;
 
    When this script is finished, you should see a message like 
    “Successfully initialized the database.”
