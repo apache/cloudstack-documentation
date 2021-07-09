@@ -162,7 +162,7 @@ MySQL. See :ref:`install-database-on-separate-node`.
    .. parsed-literal::
 
       cloudstack-setup-databases cloud:<dbpassword>@localhost \
-      --deploy-as=root:<password> \
+      --deploy-as=root:<password> | --schema-only \
       -e <encryption_type> \
       -m <management_server_key> \
       -k <database_key> \
@@ -197,6 +197,32 @@ MySQL. See :ref:`install-database-on-separate-node`.
       cluster management server node IP. If not specified, the local IP
       address will be used.
 
+   -  (Optional) There is an option to bypass the creating of the databases,
+      user and granting permissions to the user. This is useful if you don't
+      want to expose your root credentials but still want the database to
+      be prepeared for first start up. These skipped steps will have had to be
+      done manually prior to executing this script. This behaviour can be
+      envoked by passing the --schema-only flag. This flag conflicts with the
+      --deploy-as flag so the two cannot be used together. To set up the
+      databases and user manually before executing the script with the flag,
+      these commands can be executed:
+
+      .. code:: mysql
+         -- Create the cloud and cloud_user databases
+         CREATE DATABASE `cloud`;
+         CREATE DATABASE `cloud_usage`;
+         -- Create the cloud user
+         CREATE USER cloud@`localhost` identified by '<password>';
+         CREATE USER cloud@`%` identified by '<password>';
+         -- Grant all privileges to the cloud user on the databases
+         GRANT ALL ON cloud.* to cloud@`localhost`;
+         GRANT ALL ON cloud.* to cloud@`%`;
+
+         GRANT ALL ON cloud_usage.* to cloud@`localhost`;
+         GRANT ALL ON cloud_usage.* to cloud@`%`;
+         -- Grant process list privilege for all other databases
+         GRANT process ON *.* TO cloud@`localhost`;
+         GRANT process ON *.* TO cloud@`%`;
 
    When this script is finished, you should see a message like
    “Successfully initialized the database.”
@@ -345,7 +371,7 @@ The following command creates the cloud user on the database.
    .. parsed-literal::
 
       cloudstack-setup-databases cloud:<dbpassword>@<ip address mysql server> \
-      --deploy-as=root:<password> \
+      --deploy-as=root:<password> | --schema-only \
       -e <encryption_type> \
       -m <management_server_key> \
       -k <database_key> \
@@ -379,9 +405,9 @@ The following command creates the cloud user on the database.
       cluster management server node IP. If not specified, the local IP
       address will be used.
 
-   -  (Optional) There is an option to bypass the two initial steps of creating
-      the databases and granting permissions to the user. This is useful if you
-      don't want to expose your root credentials but still want the database to
+   -  (Optional) There is an option to bypass the creating of the databases,
+      user and granting permissions to the user. This is useful if you don't
+      want to expose your root credentials but still want the database to
       be prepeared for first start up. These skipped steps will have had to be
       done manually prior to executing this script. This behaviour can be
       envoked by passing the --schema-only flag. This flag conflicts with the
@@ -390,19 +416,19 @@ The following command creates the cloud user on the database.
       these commands can be executed:
 
       .. code:: mysql
-
+         -- Create the cloud and cloud_user databases
          CREATE DATABASE `cloud`;
          CREATE DATABASE `cloud_usage`;
-
+         -- Create the cloud user
          CREATE USER cloud@`localhost` identified by '<password>';
          CREATE USER cloud@`%` identified by '<password>';
-
+         -- Grant all privileges to the cloud user on the databases
          GRANT ALL ON cloud.* to cloud@`localhost`;
          GRANT ALL ON cloud.* to cloud@`%`;
 
          GRANT ALL ON cloud_usage.* to cloud@`localhost`;
          GRANT ALL ON cloud_usage.* to cloud@`%`;
-
+         -- Grant process list privilege for all other databases
          GRANT process ON *.* TO cloud@`localhost`;
          GRANT process ON *.* TO cloud@`%`;
 
