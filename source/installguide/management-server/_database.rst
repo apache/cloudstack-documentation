@@ -162,7 +162,7 @@ MySQL. See :ref:`install-database-on-separate-node`.
    .. parsed-literal::
 
       cloudstack-setup-databases cloud:<dbpassword>@localhost \
-      --deploy-as=root:<password> | --schema-only \
+      [ --deploy-as=root:<password> | --schema-only ] \
       -e <encryption_type> \
       -m <management_server_key> \
       -k <database_key> \
@@ -371,7 +371,7 @@ The following command creates the cloud user on the database.
    .. parsed-literal::
 
       cloudstack-setup-databases cloud:<dbpassword>@<ip address mysql server> \
-      --deploy-as=root:<password> | --schema-only \
+      [ --deploy-as=root:<password> | --schema-only ]\
       -e <encryption_type> \
       -m <management_server_key> \
       -k <database_key> \
