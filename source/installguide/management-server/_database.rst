@@ -195,7 +195,7 @@ MySQL. See :ref:`install-database-on-separate-node`.
 
       .. code:: mysql
 
-         -- Create the cloud and cloud_user databases
+         -- Create the cloud and cloud_usage databases
          CREATE DATABASE `cloud`;
          CREATE DATABASE `cloud_usage`;
 
@@ -407,7 +407,7 @@ The following command creates the cloud user on the database.
 
       .. code:: mysql
 
-         -- Create the cloud and cloud_user databases
+         -- Create the cloud and cloud_usage databases
          CREATE DATABASE `cloud`;
          CREATE DATABASE `cloud_usage`;
 
