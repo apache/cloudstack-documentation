@@ -204,7 +204,7 @@ and fencing hosts. The current status of a host is reported when quering a
 specific host.
 
 Timely health investigations are done on HA-Enabled hosts to monitor for
-any failures. Specific thersholds can be set for failed investigations,
+any failures. Specific thresholds can be set for failed investigations,
 only when it’s exceeded, will the host transition to a different state.
 
 Host-HA uses both health checks and activity checks to make decisions on 
