@@ -296,17 +296,13 @@ Cloning VMs
 Users can clone their virtual machines. Administrators can clone
 any virtual machines.
 
-To clone a virtual machine:
+To clone a virtual machine: (cloudmonkey way)
 
-#. Log in to the CloudStack UI as a user or admin.
+#. Connect to the management server with Cloudmonkey.
 
-#. In the left navigation, click Instances.
+#. type the cloneVirtualMachine command with virtualmacineid specified
 
-#. Choose the VM that you want to delete.
-
-#. Click the Destroy Instance button. |Destroyinstance.png|
-
-#. Optionally both expunging and the deletion of any attached volumes can be enabled.
+#. Choose the VM id that you want to clone.
 
 When a virtual machine is **cloned**, it takes some time for the new cloned instance to be created and started,
 snapshots created during the clone procedures are not visible and will be cleaned up once the new instance is created.  
