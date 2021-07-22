@@ -290,6 +290,33 @@ Once a virtual machine is **expunged**, it cannot be recovered. All the
 resources used by the virtual machine will be reclaimed by the system,
 This includes the virtual machine’s IP address.
 
+Cloning VMs
+-------------------------
+
+Users can clone their virtual machines. Administrators can clone
+any virtual machines.
+
+To clone a virtual machine:
+
+#. Log in to the CloudStack UI as a user or admin.
+
+#. In the left navigation, click Instances.
+
+#. Choose the VM that you want to delete.
+
+#. Click the Destroy Instance button. |Destroyinstance.png|
+
+#. Optionally both expunging and the deletion of any attached volumes can be enabled.
+
+When a virtual machine is **cloned**, it takes some time for the new cloned instance to be created and started,
+snapshots created during the clone procedures are not visible and will be cleaned up once the new instance is created.  
+Global settings of creating snapshots should be enabled before commencing with the clone. When the new VM and its root disks have been attached and created, 
+snapshots will be expunged.
+
+Once a new virtual machine is created, it takes some time for the network to assign the new ip. All the
+resources used by the newly created virtual machine instance will be the same as the original machine,
+except the Ip address which will be automatically assigned by the system under the same VPC.
+
 Managing Virtual Machines
 =========================
 
