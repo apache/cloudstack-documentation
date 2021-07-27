@@ -518,13 +518,13 @@ For the UI to work with different servers, it is necessary to configure the Ngin
            root        /src/ui/dist;
            index       index.html;
        }
-       # for apiHost of server01 located in config.json
+       # for apiHost of server-1 located in config.json
        location /server-1/client/ {
            rewrite ^/server-1/(.*)$ /$1 break;
            # server's actual URI
            proxy_pass   https://server-1.your.domain;
        }
-       # for apiHost of server02 located in config.json
+       # for apiHost of server-2 located in config.json
        location /client/ {
            # server's actual URI
            proxy_pass   https://server-2.your.domain;
