@@ -337,7 +337,9 @@ appropriately on them with the following commands:
 CentOS 7.x releases use NFSv4 by default. NFSv4 requires that domain setting 
 matches on all clients. In our case, the domain is cloud.priv, so ensure that 
 the domain setting in /etc/idmapd.conf is uncommented and set as follows:
-Domain = cloud.priv
+
+.. parsed-literal::
+   Domain = cloud.priv
 
 Now you'll need to add the configuration values at the bottom in the file 
 /etc/sysconfig/nfs (or merely uncomment and set them)
