@@ -176,13 +176,10 @@ commands to start up the network:
 
 .. parsed-literal::
 
+   # systemctl disable NetworkManager; systemctl stop NetworkManager
    # systemctl enable network
-
-   # systemctl restart network
-   
-Note that if you were connected through SSH, you will be temporarily (~5 seconds depending on hardware) disconnected. If the disconnection lasts, there was an error in configuration.
-
-
+   # reboot
+ 
 .. _conf-hostname:
 
 Hostname
