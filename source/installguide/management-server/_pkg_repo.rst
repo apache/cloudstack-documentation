@@ -63,12 +63,12 @@ Now you should now be able to install CloudStack using Yum.
 
 In SUSE:
 
-Zypper repository information is found under ``/etc/zypp.repos.d``. You'll
+Zypper repository information is found under ``/etc/zypp/repos.d/``. You'll
 see several ``.repo`` files in this directory, each one denoting a
 specific repository.
 
 To add the CloudStack repository, create
-``/etc/zypp.repos.d/cloudstack.repo`` and insert the following
+``/etc/zypp/repos.d/cloudstack.repo`` and insert the following
 information.
 
 .. parsed-literal::
