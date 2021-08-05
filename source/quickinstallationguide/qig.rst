@@ -37,6 +37,7 @@ get you up and running with CloudStack with a minimum amount of trouble.
 .. warning::
       In case you don't have physical server to "play with", you can use e.g. Oracle VirtualBox 6.1+
       The requirement is that you enable "Enable Nested VT-x/AMD-V" as the Extended Feature on the System page of the Settings of the VM.
+      You will want to create a Vm of "Red Hat (64-bit)" type and 20+GB disk space.
       You will need to have 1 NIC in your VM, bridged to the NIC of your laptop/desktop
       (wifi or wired NIC, doesn't matter), and optimally to set Adapter Type="Paravirtualized Network (virtio-net)"
       for somewhat better network performance (Settings of VM, Network section, Adapter1,
