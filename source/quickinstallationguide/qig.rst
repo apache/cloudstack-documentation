@@ -800,5 +800,6 @@ To check the health of your CloudStack installation, go to Infrastructure --> Sy
 the UI from time to time - you should see “S-1-VM” and “V-2-VM” system VMs (SSVM and CPVM) in State=Running and Agent State=Up
 After that you can go to Images --> Templates, click on the built-in template named "CentOS 5.5(64-bit) no GUI (KVM)",
 then click on "Zones" tab - and observe how the Status is moving from a few percents downloaded up to fully downloaded,
-after which the Status will show as "Ready". After this template is ready, you will be able to deploy a VM from it.
+after which the Status will show as "Download Complete" and "Ready" column will say "Yes".
+After this is done, you will be able to deploy a VM from this template.
 
