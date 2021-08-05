@@ -474,8 +474,6 @@ up the management server by issuing the following command:
 
    # cloudstack-setup-management
 
-If the servlet container is Tomcat7 the argument --tomcat7 must be used.
-
 
 System Template Setup
 ~~~~~~~~~~~~~~~~~~~~~
