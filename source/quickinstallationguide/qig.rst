@@ -83,10 +83,7 @@ either using the guidelines below, or using a standard access configuration
 which we will modify later.
 
 Once this installation is complete, you'll want to gain access to your
-server - through SSH (if network is configured) or connected peripherals.
-Note that you should not allow remote root logins in a production
-environment, so be sure to turn off this feature once the installation
-and configuration is complete. 
+server - through SSH. 
 
 If your network interface was configured to grant the server internet
 access, it is always wise to update the system before starting: 
