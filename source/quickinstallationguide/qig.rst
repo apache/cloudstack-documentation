@@ -120,7 +120,10 @@ the bridge that Cloudstack will use for networking. Create and open
    a /24 network for your CloudStack implementation. This can be any RFC 1918 
    network. However, we are assuming that you will match the machine address 
    that we are using. Thus we may use 172.16.10.2 and because you might be 
-   using the 192.168.55.0/24 network you would use 192.168.55.2
+   using the 192.168.55.0/24 network you would use 192.168.55.2. Another example
+   would be if you are using i.e. VirtualBox on your local home network on 192.168.1.0/24 network - 
+   in this case you can use a single free IP address from your home range (VirtualBox NIC for this VM
+   should be in bridged mode for correct functioning)
    
 ::
 
@@ -131,8 +134,8 @@ the bridge that Cloudstack will use for networking. Create and open
    IPV6INIT=no
    IPV6_AUTOCONF=no
    DELAY=5
-   IPADDR=172.16.10.2
-   GATEWAY=172.16.10.1
+   IPADDR=172.16.10.2 #(or e.g. 192.168.1.2
+   GATEWAY=172.16.10.1 #(or e.g. 192.168.1.1 - this would be your physical home router)
    NETMASK=255.255.255.0
    DNS1=8.8.8.8
    DNS2=8.8.4.4
@@ -200,7 +203,8 @@ At this point it will likely return:
    localhost
 
 To rectify this situation - we'll set the hostname by editing the /etc/hosts 
-file so that it follows a similar format to this example:
+file so that it follows a similar format to this example (remember to replace
+the IP with your IP which might be e.g. 192.168.1.2):
 
 .. parsed-literal::
 
@@ -480,11 +484,14 @@ System Template Setup
 
 CloudStack uses a number of system VMs to provide functionality for accessing 
 the console of virtual machines, providing various networking services, and 
-managing various aspects of storage. This step will acquire those system 
-images ready for deployment when we bootstrap your cloud.
+managing various aspects of storage. 
 
-Now we need to download the system VM template and deploy that to the share we 
-just mounted. The management server includes a script to properly manipulate 
+Now we need to download the systemVM template and deploy that to the secondary storage.
+We will use the local path (/export/secondary) since we are already on the NFS server itself,
+but otherwise you would need to mount your Secondary Storage to a temporary mount point, and use
+that mount point instead of the /export/secondary path.
+
+The management server includes a script to properly manipulate 
 the system VMs images.
 
 .. parsed-literal::
@@ -593,7 +600,8 @@ and should already be installed.
 
 KVM configuration complete
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-For the sake of completeness you should check if KVM is running OK on your machine:
+For the sake of completeness you should check if KVM is running OK on your machine (you should see kvm_intel or kvm_amd shown as loaded):
+
    .. parsed-literal::
    
       # lsmod | grep kvm
@@ -611,9 +619,8 @@ UI Access
 ~~~~~~~~~
 
 To get access to CloudStack's web interface, merely point your browser to 
-http://172.16.10.2:8080/client The default username is 'admin', and the 
-default password is 'password'. You should see a splash screen that allows you 
-to choose several options for setting up CloudStack.
+the IP address of your machine e.g. http://172.16.10.2:8080/client
+1he default username is 'admin', and the default password is 'password'.
 
 Setting up a Zone
 -----------------
@@ -622,7 +629,7 @@ Zone Type
 ~~~~~~~~~
 
 A zone is the largest organization entity in CloudStack - and we'll be
-creating one, this should be the screen that you see in front of you now.
+creating one.
 
 .. warning::
       We will be configuring an Advanced Zone in a way that will allow us to access both
@@ -635,8 +642,10 @@ Click "Continue with Installation" to continue - you will be offered to change y
 root admin password - please do so, and click on OK.
 
 A new Zone wizard will pop-up. Please chose Advanced (don't tick the "Security Groups") and click on Next.
+
 Zone Details
 ~~~~~~~~~~~~
+
 On this page we enter where our dns servers are located.
 CloudStack distinguishes between internal and public DNS. Internal DNS is
 assumed to be capable of resolving internal-only hostnames, such as your
@@ -668,27 +677,28 @@ Physical Network
 There are various network isolation methods supported by Cloudstack. The
 default VLAN option will be sufficient for our purposes. For improved
 performance and/or security, Cloudstack allows different trafic types to run
-over specifically dedicated network interface cards attached to the management
-server. We will not be making any changes here, the default settings are fine
+over specifically dedicated network interface cards attached to hypervisors.
+We will not be making any changes here, the default settings are fine
 for this demo installation of Cloudstack.
 
-Click "Next" to continue on
+Click "Next" to continue.
 
 
 Public Traffic
 ~~~~~~~~~~~~~~
 Public traffic is generated when VMs in the cloud access the internet.
-Publicly-accessible IPs must be allocated for this purpose.
+Publicly-accessible IPs must be allocated for this purpose in normal/public cloud installations,
+but since we are deploying merely a demo/test env, we will use a PART of our local network (from .11 to .20 or other free range)
 
-#. Gateway - We'll use ``172.16.10.1``
+#. Gateway - We'll use ``172.16.10.1`` #or whatever is your physical gateway e.g. 192.168.1.1
 
 #. Netmask - We'll use ``255.255.255.0``
 
 #. VLAN/VNI - We'll leave this one empty
 
-#. Start IP - We'll use ``172.16.10.11``
+#. Start IP - We'll use ``172.16.10.11`` # or e.g. 192.168.1.11
 
-#. End IP - We'll use ``172.16.10.20``
+#. End IP - We'll use ``172.16.10.20`` # or e.g. 192.168.1.20
 
 Click "Add" to add the range
 
@@ -698,16 +708,18 @@ Pod Configuration
 ~~~~~~~~~~~~~~~~~
 
 Here we will configure a range for Cloudstack's internal management traffic.
+This will also be part of our local network (i.e. different part of your local home network,
+from .21 to .30 - but within the same IP range - same gateway, same netmask)
 
 #. Pod Name - We'll use ``Pod1`` for our cloud.
 
-#. Reserved system gateway - we'll use ``172.16.10.1``
+#. Reserved system gateway - we'll use ``172.16.10.1`` #or whatever is your physical gateway e.g. 192.168.1.1
 
 #. Reserved system netmask - we'll use ``255.255.255.0``
 
-#. Start reserved system IPs - we will use ``172.16.10.21``
+#. Start reserved system IPs - we will use ``172.16.10.21`` # or e.g. 192.168.1.21
 
-#. End Reserved system IP - we will use ``172.16.10.30``
+#. End Reserved system IP - we will use ``172.16.10.30`` # or e.g. 192.168.1.30
 
 Click "Next" to continue on
 
@@ -726,9 +738,9 @@ Cluster
 Multiple clusters can belong to a pod and multiple hosts can belong to a
 cluster. We will have one cluster and we have to give our cluster a name.
 
-#. Name - We'll use ``Cluster1``
+Enter ``Cluster1``
 
-Click "Next" to continue on
+Click "Next" to continue
 
 Host
 ~~~~
@@ -737,13 +749,13 @@ we are running the management server on the same machine that we will be using
 as a hypervisor.
 
 #. Hostname - we'll use the IP address ``172.16.10.2`` since we didn't set up a
-   DNS server for name resolution.
+   DNS server for name resolution. (this is your local server, so swap with the correct IP)
 
 #. Username - we'll use ``root``
 
 #. Password - enter the operating system password for the root user
 
-Click "Next" to continue on
+Click "Next" to continue
 
 Primary Storage
 ^^^^^^^^^^^^^^^
@@ -759,11 +771,11 @@ information. Enter the following values in the fields:
 
 #. Protocol - We'll use ``NFS``
 
-#. Server - We'll be using the IP address ``172.16.10.2``
+#. Server - We'll be using the IP address ``172.16.10.2`` (this is your local server, so swap with the correct IP)
 
 #. Path - Well define ``/export/primary`` as the path we are using
 
-Click "Next" to continue on
+Click "Next" to continue
 
 Secondary Storage
 ^^^^^^^^^^^^^^^^^
@@ -775,7 +787,7 @@ populate it as follows:
 
 #. Name - We can call it ``Secondary1``
 
-#. NFS server - We'll use the IP address ``172.16.10.2``
+#. NFS server - We'll use the IP address ``172.16.10.2`` (this is your local server, so swap with the correct IP)
 
 #. Path - We'll use ``/export/secondary``
 
