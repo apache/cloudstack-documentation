@@ -32,7 +32,15 @@ get you up and running with CloudStack with a minimum amount of trouble.
 
 .. warning::
       This guide is meant to be used to build CloudStack test/demo cloud only, 
-      as certain choices have been made to get you up and running with minimal amount of time     
+      as certain networking choices have been made to get you up and running with minimal amount of time
+      
+.. warning::
+      In case you don't have physical server to "play with", you can use e.g. Oracle VirtualBox 6.1+
+      The requirement is that you enable "Enable Nested VT-x/AMD-V" as the Extended Feature on the System page of the Settings of the VM.
+      You will need to have 1 NIC in your VM, bridged to the NIC of your laptop/desktop
+      (wifi or wired NIC, doesn't matter), and optimally to set Adapter Type="Paravirtualized Network (virtio-net)"
+      for somewhat better network performance (Settings of VM, Network section, Adapter1,
+      expand "Advanced settings"). Also, make sure you have allowed enough ram (6G+) and enough CPU cores (3+) for demo purposes.
       
       
 High level overview of the process
@@ -80,7 +88,7 @@ Using the CentOS 7.9.2009 minmal x86_64 install ISO, you'll need to install
 CentOS 7 on your hardware. The defaults will generally be acceptable for this
 installation. You may want to configure network configuration during setup -
 either using the guidelines below, or using a standard access configuration
-which we will modify later.
+which we will modify later - so that you can later install needed packages from internet, etc.
 
 Once this installation is complete, you'll want to gain access to your
 server - through SSH. 
@@ -97,18 +105,12 @@ access, it is always wise to update the system before starting:
 Configuring the network
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Unless you have configured it during install, which will not be covered by
-this guide, the network interface will not come up on your hardware and you
-will need to configure it to work in your environment. Since we specified 
-that there will be no DHCP server in this environment we will be manually 
-configuring your network interface. 
-
-Before going any further, make sure that "brctl" and "net-tools" are installed and available:
+Before going any further, make sure that "bridge-utils" and "net-tools" are installed and available:
 
 .. parsed-literal::
    # yum install bridge-utils net-tools -y
 
-Connecting via the console you should login as root. We will start by creating
+Connecting via the console or SSH, you should login as root. We will start by creating
 the bridge that Cloudstack will use for networking. Create and open
 /etc/sysconfig/network-scripts/ifcfg-cloudbr0 and add the following settings:
 
@@ -131,7 +133,7 @@ the bridge that Cloudstack will use for networking. Create and open
    IPV6INIT=no
    IPV6_AUTOCONF=no
    DELAY=5
-   IPADDR=172.16.10.2 #(or e.g. 192.168.1.2
+   IPADDR=172.16.10.2 #(or e.g. 192.168.1.2)
    GATEWAY=172.16.10.1 #(or e.g. 192.168.1.1 - this would be your physical home router)
    NETMASK=255.255.255.0
    DNS1=8.8.8.8
@@ -140,10 +142,11 @@ the bridge that Cloudstack will use for networking. Create and open
    USERCTL=no
    NM_CONTROLLED=no
 
-Save the configuration and exit. We will then edit the interface so that it
+Save the configuration and exit. We will then edit the NIC so that it
 makes use of this bridge.
    
-Open the configuration file of your interface and configure it as follows: 
+Open the configuration file of your NIC (e.g. /etc/sysconfig/network-scripts/ifcfg-eth0)
+and edit it as follows:
 
 .. note::
    Interface name used as example only. Replace eth0 with your default ethernet interface name.
@@ -157,18 +160,13 @@ Open the configuration file of your interface and configure it as follows:
    ONBOOT=yes
    BRIDGE=cloudbr0
 
-.. note:: 
-   You should not use the Hardware Address (aka the MAC address, or UUID) from our
-   example for your configuration. It is network interface specific, so you
-   should keep the address already provided in the UUID directive.
-
 .. note::
    If your physical nic (eth0 in the case of our example) has already been
    setup before following this guide, make sure that there is no duplication
-   between /etc/sysconfig/network-scripts/ifcfg-cloudbr0 and
+   between IP configuration of /etc/config/network-scripts/ifcfg-cloudbr0 and
    /etc/sysconfig/network-scripts/ifcfg-eth0 which will cause a failure that
-   would prevent the network from starting. Basically the majority eth0 config
-   moves over to the bridge and eth0 will point to the bridge.
+   would prevent the network from starting. Basically the majority of IP configuration
+   of eth0 config moves over to the bridge and eth0 will point to the bridge.
 
 
 Now that we have the configuration files properly set up, we need to run a few 
