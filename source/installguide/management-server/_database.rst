@@ -301,10 +301,11 @@ same node for MySQL. See `â€œInstall the Database on the Management Server Nodeâ
 
       service mysqld start
 
-   On SUSE, start MySQL
+   On SUSE, enable and start MySQL
 
    .. parsed-literal::
 
+      systemctl enable mysql
       systemctl start mysql
 
    On Ubuntu, restart MySQL.
@@ -353,10 +354,11 @@ same node for MySQL. See `â€œInstall the Database on the Management Server Nodeâ
 
    .. warning::
       On CentOS 8 / SUSE, firewalld is the default firewall manager and controls iptables. It is
-      recommended that it be disabled ``systemctl stop firewalld ; systemctl disable firewalld``
+      recommended that it be disabled ``systemctl stop firewalld ; systemctl disable firewalld``,
+      since CloudStack directly manipulates the iptable rules to manage networks.
 
    .. warning::
-      On SUSE, iptables are not persisted on reboot, so it is recommended that an iptables and
+      On SUSE, iptables are not persisted on reboot, so it is recommended that iptables and
       ip6tables service be created to ensure that they persist
 
 #. Return to the root shell on your first Management Server.
