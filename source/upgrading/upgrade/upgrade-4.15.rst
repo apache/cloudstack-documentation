@@ -13,7 +13,7 @@
     specific language governing permissions and limitations
     under the License.
 
-.. |version_to_upgrade| replace:: 4.14.x
+.. |version_to_upgrade| replace:: 4.15.x
 
 Upgrade Instruction from |version_to_upgrade|
 =============================================
@@ -54,6 +54,7 @@ Overview of Upgrade Steps:
     CloudStack packages.
 
 .. include:: _sysvm_templates.rst
+
 
 Packages repository
 -------------------

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -304,15 +304,6 @@ msgstr "新限制值必须小于 CloudStack系统管理员设置的全局限制�
 #: ../../projects.rst:328 ../../projects.rst:350 ../../projects.rst:380
 msgid "In the left navigation, click Projects."
 msgstr "在左侧导航栏点击项目。"
-
-# 028c250e7e6144e2a78bcb28aeb20c20
-# 2eb7b64a81f44d6381ff74cb4876454f
-# ced1ffd77bfc4a769d87a1e02b4f605b
-# c52047f8f2064bb2a2e81d5aa52a4c86
-#: ../../projects.rst:162 ../../projects.rst:286 ../../projects.rst:330
-#: ../../projects.rst:382
-msgid "In Select View, choose Projects."
-msgstr "在选择视图选择项目。"
 
 # af4be7e8b89f4da08c1391967263e362
 # dc1fc36ced6d4c48984c0a599e2893ba

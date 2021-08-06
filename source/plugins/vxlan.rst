@@ -20,7 +20,7 @@ The VXLAN Plugin
 System Requirements for VXLAN
 -----------------------------
 
-In PRODUCT 4.X.0, this plugin only supports the KVM hypervisor with the
+In CloudStack 4.X.0, this plugin only supports the KVM hypervisor with the
 standard linux bridge.
 
 The following table lists the requirements for the hypervisor.
@@ -30,7 +30,7 @@ The following table lists the requirements for the hypervisor.
 +----------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
 | Item           | Requirement                                   | Note                                                                                                           |
 +================+===============================================+================================================================================================================+
-| Hypervisor     | KVM                                           | OvsVifDriver is not supported by this plugin in PRODUCT 4.X, use BridgeVifDriver (default).                    |
+| Hypervisor     | KVM                                           | OvsVifDriver is not supported by this plugin in CloudStack 4.X, use BridgeVifDriver (default).                    |
 +----------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
 | Linux kernel   | version >= 3.7, VXLAN kernel module enabled   | It is recommended to use kernel >=3.9, since Linux kernel categorizes the VXLAN driver as experimental <3.9.   |
 +----------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
@@ -75,7 +75,7 @@ To check the capability of your system, execute the following commands.
    $ ip link add type vxlan help
    # Confirm the output is usage of the command and that it's for VXLAN.
    # If it's not, your iproute2 utility doesn't support VXLAN.
-        
+
 
 Important note on MTU size
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -153,7 +153,7 @@ Build kernel
 
    $ sudo reboot
    # Select the new kernel during the boot process.
-          
+
 
 Build iproute2
 ^^^^^^^^^^^^^^
@@ -172,12 +172,12 @@ Build iproute2
    $ ./configure
    $ make # -j N
    $ sudo make install
-          
+
 
 .. note:: Please use rebuild kernel and tools at your own risk.
 
 
-Configure PRODUCT to use VXLAN Plugin
+Configure CloudStack to use VXLAN Plugin
 -------------------------------------
 
 Configure hypervisor
@@ -186,7 +186,7 @@ Configure hypervisor
 Configure hypervisor: KVM
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In addition to "KVM Hypervisor Host Installation" in "PRODUCT
+In addition to "KVM Hypervisor Host Installation" in "CloudStack
 Installation Guide", you have to configure the following item on the
 host.
 
@@ -245,7 +245,7 @@ you would change the configuration similar to below.
    IPV6_AUTOCONF=no
    DELAY=5
    STP=yes
-            
+
 
 Configure in Ubuntu
 '''''''''''''''''''
@@ -319,7 +319,7 @@ you would change the configuration similar to below.
        bridge_fd 5
        bridge_stp off
        bridge_maxwait 1
-            
+
 
 Configure iptables to pass XVLAN packets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -337,7 +337,7 @@ extra ports by executing the following iptable commands:
 ::
 
    $ sudo iptables -I INPUT -p udp -m udp --dport 8472 -j ACCEPT
-            
+
 
 These iptable settings are not persistent accross reboots, we have to
 save them first.
@@ -345,7 +345,7 @@ save them first.
 ::
 
    $ sudo iptables-save > /etc/sysconfig/iptables
-            
+
 
 With this configuration you should be able to restart the network,
 although a reboot is recommended to see if everything works properly.
@@ -354,10 +354,10 @@ although a reboot is recommended to see if everything works properly.
 
    $ sudo service network restart
    $ sudo reboot
-            
 
-.. warning:: 
-   Make sure you have an alternative way like IPMI or ILO to reach the machine 
+
+.. warning::
+   Make sure you have an alternative way like IPMI or ILO to reach the machine
    in case you made a configuration error and the network stops functioning!
 
 
@@ -372,9 +372,9 @@ To open the required ports, execute the following commands:
 ::
 
    $ sudo ufw allow proto udp from any to any port 8472
-            
-.. note:: 
-   By default UFW is not enabled on Ubuntu. Executing these commands with the 
+
+.. note::
+   By default UFW is not enabled on Ubuntu. Executing these commands with the
    firewall disabled does not enable the firewall.
 
 With this configuration you should be able to restart the network,
@@ -384,9 +384,9 @@ although a reboot is recommended to see if everything works properly.
 
    $ sudo service networking restart
    $ sudo reboot
-            
-.. warning:: 
-   Make sure you have an alternative way like IPMI or ILO to reach the machine 
+
+.. warning::
+   Make sure you have an alternative way like IPMI or ILO to reach the machine
    in case you made a configuration error and the network stops functioning!
 
 
@@ -394,7 +394,7 @@ Setup zone using VXLAN
 ~~~~~~~~~~~~~~~~~~~~~~
 
 In almost all parts of zone setup, you can just follow the advanced zone
-setup istruction in "PRODUCT Installation Guide" to use this plugin. It
+setup istruction in "CloudStack Installation Guide" to use this plugin. It
 is not required to add a network element nor to reconfigure the network
 offering. The only thing you have to do is configure the physical
 network to use VXLAN as the isolation method for Guest Network.
@@ -423,6 +423,6 @@ Configure the guest traffic
 Specify a range of VNIs you would like to use for carrying guest network
 traffic.
 
-.. warning:: 
-   VNI must be unique per zone and no duplicate VNIs can exist in the zone. 
+.. warning::
+   VNI must be unique per zone and no duplicate VNIs can exist in the zone.
    Exercise care when designing your VNI allocation policy.

@@ -148,7 +148,7 @@ msgstr ""
 
 #: ../../hypervisor/hyperv.rst:82
 # 22eb1d2d75ef4c2b898ba205496f1923
-msgid "If you are using Windows SMB share, the location of the file share for the Hyper-V deployment will be the new folder created in the \\\\Shares on the selected volume. You can create sub-folders for both PRODUCT Primary and Secondary storage within the share location. When you select the profile for the file shares, ensure that you select SMB Share -Applications. This creates the file shares with settings appropriate for Hyper-V."
+msgid "If you are using Windows SMB share, the location of the file share for the Hyper-V deployment will be the new folder created in the \\\\Shares on the selected volume. You can create sub-folders for both CloudStack Primary and Secondary storage within the share location. When you select the profile for the file shares, ensure that you select SMB Share -Applications. This creates the file shares with settings appropriate for Hyper-V."
 msgstr ""
 
 #: ../../hypervisor/hyperv.rst:92
@@ -183,7 +183,7 @@ msgstr ""
 
 #: ../../hypervisor/hyperv.rst:98
 # 84b516f8c0844014922eb947cca2b078
-msgid "If you are using Hyper-V 2012 R2, manually create an external virtual switch before adding the host to PRODUCT. If the Hyper-V host is added to the Hyper-V manager, select the host, then click Virtual Switch Manager, then New Virtual Switch. In the External Network, select the desired NIC adapter and click Apply."
+msgid "If you are using Hyper-V 2012 R2, manually create an external virtual switch before adding the host to CloudStack. If the Hyper-V host is added to the Hyper-V manager, select the host, then click Virtual Switch Manager, then New Virtual Switch. In the External Network, select the desired NIC adapter and click Apply."
 msgstr ""
 
 #: ../../hypervisor/hyperv.rst:106
@@ -200,7 +200,7 @@ msgstr ""
 
 #: ../../hypervisor/hyperv.rst:109
 # cfebf27404b04a1799cecac6f0d87e84
-msgid "Take a note of the name of the virtual switch. You need to specify that when configuring PRODUCT physical network labels."
+msgid "Take a note of the name of the virtual switch. You need to specify that when configuring CloudStack physical network labels."
 msgstr ""
 
 #: ../../hypervisor/hyperv.rst:113
@@ -220,7 +220,7 @@ msgstr ""
 
 #: ../../hypervisor/hyperv.rst:120
 # b88a4f4ee49d4182aff6ba298990d862
-msgid "This domain user should be part of the Hyper-V Administrators and Local Administrators group on the Hyper-V hosts that are to be managed by PRODUCT."
+msgid "This domain user should be part of the Hyper-V Administrators and Local Administrators group on the Hyper-V hosts that are to be managed by CloudStack."
 msgstr ""
 
 #: ../../hypervisor/hyperv.rst:125
@@ -230,7 +230,7 @@ msgstr ""
 
 #: ../../hypervisor/hyperv.rst:128
 # 39ee910d4ba544e2b28f18e65ac8a889
-msgid "Specify the credential of the domain user while adding a host to PRODUCT so that it can manage it."
+msgid "Specify the credential of the domain user while adding a host to CloudStack so that it can manage it."
 msgstr ""
 
 #: ../../hypervisor/hyperv.rst:132

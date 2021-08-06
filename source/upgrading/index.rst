@@ -31,12 +31,14 @@ release.  Please read through all sections carefully before starting.
 .. note::
    For information on the API changes and issues fixed in this release, please see the Release Notes section of the documentation
 
-
 Contents:
 
 .. toctree::
    :maxdepth: 1
  
+   upgrade/mysql
+   upgrade/valid_source
+   upgrade/upgrade-4.15
    upgrade/upgrade-4.14
    upgrade/upgrade-4.13
    upgrade/upgrade-4.12
@@ -54,4 +56,3 @@ Contents:
 ..   upgrade/upgrade-4.0
 ..   upgrade/upgrade-3.0.x
 ..   upgrade/upgrade-2.2.14
-   upgrade/valid_source

@@ -13,30 +13,20 @@
    specific language governing permissions and limitations
    under the License.
 
+MySQL upgrade problems
+======================
 
-Acquiring a New IP Address
---------------------------
+With certain MySQL versions (see below), issues have been seen with "cloud.nics" table's 
+column type (which was not updated properly during CloudStack upgrades, due to MySQL limitations),
+which eventually may lead to exception seen in the management server logs, causing users to
+not be able to start any VM.
 
-#. Log in to the CloudStack UI as an administrator or end user.
+The following SQL statement needs to be manually executed in order to fix such issue:
 
-#. In the left navigation, choose Network.
+   .. parsed-literal::
+ALTER TABLE nics MODIFY COLUMN update_time timestamp DEFAULT CURRENT_TIMESTAMP;
 
-#. Click the name of the network where you want to work with.
+The issue is known to affect the following MySQL server versions:
 
-#. Click the Public IP Addresses tab.
-
-#. Click Acquire New IP.
-
-   The Acquire New IP window is displayed.
-
-#. Specify whether you want cross-zone IP or not.
-
-   If you want Portable IP click Yes in the confirmation dialog. If you
-   want a normal Public IP click No.
-
-   For more information on Portable IP, see `"Portable
-   IPs" <#portable-ips>`_.
-
-   Within a few moments, the new IP address should appear with the state
-   Allocated. You can now use the IP address in port forwarding or
-   static NAT rules.
+ -  5.7.34 or later
+ -  8+

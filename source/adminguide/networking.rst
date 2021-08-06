@@ -69,7 +69,7 @@ Shared Networks
 A shared network can be accessed by virtual machines that belong to many
 different accounts. Network Isolation on shared networks is accomplished
 by using techniques such as security groups, which is supported only in
-Basic zones in CloudStack 3.0.3 and later versions.
+Basic zones or Advanced Zones with Security Groups.
 
 -  Shared Networks are created by the administrator
 
@@ -246,9 +246,7 @@ To create a network offering:
 
 #. Log in with admin privileges to the CloudStack UI.
 
-#. In the left navigation bar, click Service Offerings.
-
-#. In Select Offering, choose Network Offering.
+#. In the left navigation bar, click Service Offerings and choose Network Offering.
 
 #. Click Add Network Offering.
 
