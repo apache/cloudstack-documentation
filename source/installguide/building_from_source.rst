@@ -383,7 +383,7 @@ line:
 
 .. parsed-literal::
 
-   deb <http://server.url>/cloudstack/repo/binary ./
+   deb http://<server.url>/cloudstack/repo/binary ./
 
 If you signed your Release file with GnuPG, import the signing key
 on your target system first.
