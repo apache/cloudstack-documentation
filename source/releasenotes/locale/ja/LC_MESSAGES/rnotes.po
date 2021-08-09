@@ -1512,7 +1512,7 @@ msgstr ""
 # 9c4f5494faa54226bfeea797c0d3bcdf
 #: ../../source/rnotes.rst:1826 ../../source/rnotes.rst:2656
 msgid ""
-"On the MySQL master, take a backup of the MySQL databases. We recommend "
+"On the MySQL source server, take a backup of the MySQL databases. We recommend "
 "performing this step even in test upgrades. If there is an issue, this will "
 "assist with debugging."
 msgstr ""

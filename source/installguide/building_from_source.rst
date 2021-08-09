@@ -18,52 +18,56 @@ Introduction
 ------------
 
 The official CloudStack release is always in source code form. You will
-likely be able to find "convenience binaries," the source is the
-canonical release. In this section, we'll cover acquiring the source
-release and building that so that you can deploy it using Maven or
-create Debian packages or RPMs.
+likely be able to find "convenience binaries", where the source is the
+canonical release. In this section, we will cover acquiring and building
+the source release so that you can deploy using Maven or
+build packages for distribution (e.g. ``.deb``, ``.rpm``).
 
-Note that building and deploying directly from source is typically not
-the most efficient way to deploy an IaaS. However, we will cover that
-method as well as building RPMs or Debian packages for deploying
-CloudStack.
+.. note::
 
-The instructions here are likely version-specific. That is, the method
-for building from source for the 4.7.x series is different from the
-4.2.x series.
+   Building and deploying directly from source is typically not
+   the most efficient way to deploy CloudStack. Also, please be aware that
+   development branches may contain unstable code. If you run into any issues
+   during the build process, please check the CloudStack `Issues
+   <https://github.com/apache/cloudstack/issues>`_ page on GitHub. You may find
+   that the issue you are experiencing has already been reported.
 
-If you are working with a unreleased version of CloudStack, see the
-INSTALL.md file in the top-level directory of the release.
+The instructions here are likely version-specific (i.e. Building 4.7.x
+is different from building 4.2.x).
+
+If you are working with an unreleased version of CloudStack, please read the
+``INSTALL.md`` file in the top-level directory of the release.
 
 
-Downloading the release
+Downloading the Release
 -----------------------
 
 You can download the latest CloudStack release from the `Apache
-CloudStack project download page 
+CloudStack project download page
 <http://cloudstack.apache.org/downloads.html>`_.
 
-Prior releases are available via archive.apache.org as well. See the
-downloads page for more information on archived releases.
+Prior releases are available via `archive.apache.org
+<https://archive.apache.org>`_ as well. Please see the
+Downloads page for more information on archived releases.
 
-You'll notice several links under the 'Latest release' section. A link
-to a file ending in ``tar.bz2``, as well as a PGP/GPG signature, MD5,
+You will notice several links under the *Latest CloudStack Releases* section.
+A link to a file ending in ``tar.bz2``, as well as a PGP/GPG signature, MD5,
 and SHA512 file.
 
--  The ``tar.bz2`` file contains the Bzip2-compressed tarball with the
+-  The ``tar.bz2`` file contains the bzip2-compressed tarball with the
    source code.
 
 -  The ``.asc`` file is a detached cryptographic signature that can be
-   used to help verify the authenticity of the release.
+   used to verify release authenticity.
 
--  The ``.md5`` file is an MD5 hash of the release to aid in verify the
-   validity of the release download.
+-  The ``.md5`` file is a MD5 hash that can be used to verify release
+   authenticity.
 
--  The ``.sha`` file is a SHA512 hash of the release to aid in verify
-   the validity of the release download.
+-  The ``.sha`` file is a SHA512 hash that can be used to verify release
+   authenticity.
 
 
-Verifying the downloaded release
+Verifying the Downloaded Release
 --------------------------------
 
 There are a number of mechanisms to check the authenticity and validity
@@ -142,7 +146,9 @@ You will need, at a minimum, the following to compile CloudStack:
 
 #. Maven (version 3)
 
-#. Java (Java 8/OpenJDK 1.8)
+#. Java (Java 11/OpenJDK 1.11)
+
+#. NodeJS (LTS/12)
 
 #. Apache Web Services Common Utilities (ws-commons-util)
 
@@ -202,7 +208,7 @@ Make sure to activate the repository for MySQL connectors.
 .. parsed-literal::
 
    sudo apt-get update
-   sudo apt-get install mysql-connector-python   
+   sudo apt-get install mysql-connector-python
 
 .. note::
 
@@ -250,7 +256,9 @@ several other dependencies. Note that we recommend using Maven 3.
    $ sudo apt-get install python-software-properties
    $ sudo apt-get update
    $ sudo apt-get install debhelper openjdk-11-jdk libws-commons-util-java genisoimage libcommons-codec-java libcommons-httpclient-java liblog4j1.2-java maven
-   
+   $ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+   $ sudo apt-get install -y nodejs
+
 .. note::
 
    If on Ubuntu 18.04, in above command, please replace "python-software-properties" with "software-properties-common"
@@ -267,14 +275,15 @@ running:
    $ mvn -P deps
 
 Now that we have resolved the dependencies we can move on to building
-CloudStack and packaging them into DEBs by issuing the following
-command.
+CloudStack and packaging them into DEBs by running the script in ``packaging`` folder:
+
 
 .. parsed-literal::
 
-   $ dpkg-buildpackage -uc -us
+   $ cd packaging/
+   $ ./build-deb.sh
 
-This command will build the following debian packages. You should have
+This script will build the following debian packages. You should have
 all of the following:
 
 .. parsed-literal::
@@ -397,10 +406,10 @@ You can now move on to the instructions under Install on Ubuntu.
 Building RPMs from Source
 -------------------------
 
-As mentioned previously in `“Prerequisites for building Apache CloudStack” 
-<#prerequisites-for-building-apache-cloudstack>`_, you will need to install 
+As mentioned previously in `“Prerequisites for building Apache CloudStack”
+<#prerequisites-for-building-apache-cloudstack>`_, you will need to install
 several prerequisites before you can build packages for CloudStack. Here we'll
-assume you're working with a 64-bit build of CentOS or Red Hat Enterprise 
+assume you're working with a 64-bit build of CentOS or Red Hat Enterprise
 Linux.
 
 .. parsed-literal::
@@ -410,6 +419,8 @@ Linux.
 .. parsed-literal::
 
    # yum install java-11-openjdk-devel genisoimage mysql mysql-server ws-commons-util MySQL-python python-setuptools createrepo
+   # curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -
+   # yum install nodejs
 
 Next, you'll need to install build-time dependencies for CloudStack with
 Maven. We're using Maven 3, so you'll want to grab `Maven 3.0.5 (Binary tar.gz)
@@ -449,16 +460,16 @@ minutes.
 
 .. note::
 
-   Packaging has changed. If you've created packages for CloudStack 
-   previously, you should be aware that the process has changed considerably 
-   since the project has moved to using Apache Maven. Please be sure to follow 
+   Packaging has changed. If you've created packages for CloudStack
+   previously, you should be aware that the process has changed considerably
+   since the project has moved to using Apache Maven. Please be sure to follow
    the steps in this section closely.
 
 
 Generating RPMS
 ~~~~~~~~~~~~~~~
 
-Now that we have the prerequisites and source, you will cd to the 
+Now that we have the prerequisites and source, you will cd to the
 `packaging/` directory.
 
 .. parsed-literal::
@@ -470,7 +481,7 @@ Generating RPMs is done using the ``package.sh`` script:
 .. parsed-literal::
 
    $ ./package.sh -d centos63
-   
+
 For other supported options(like centos7), run ``./package.sh --help``
 
 That will run for a bit and then place the finished packages in
@@ -537,11 +548,11 @@ to build from source.
 
 .. warning::
 
-   Some of the plugins supported by CloudStack cannot be distributed with 
-   CloudStack for licensing reasons. In some cases, some of the required 
-   libraries/JARs are under a proprietary license. In other cases, the 
-   required libraries may be under a license that's not compatible with 
-   `Apache's licensing guidelines for third-party products 
+   Some of the plugins supported by CloudStack cannot be distributed with
+   CloudStack for licensing reasons. In some cases, some of the required
+   libraries/JARs are under a proprietary license. In other cases, the
+   required libraries may be under a license that's not compatible with
+   `Apache's licensing guidelines for third-party products
    <http://www.apache.org/legal/resolved.html#category-x>`_.
 
 #. To build the Non-OSS plugins, you'll need to have the requisite JARs
@@ -549,7 +560,7 @@ to build from source.
 
    Because these modules require dependencies that can't be distributed
    with CloudStack you'll need to download them yourself. Links to the
-   most recent dependencies are listed on the `*How to build CloudStack* 
+   most recent dependencies are listed on the `*How to build CloudStack*
    <https://cwiki.apache.org/confluence/display/CLOUDSTACK/How+to+build+CloudStack>`_
    page on the wiki.
 
@@ -567,6 +578,13 @@ to build from source.
    $ mvn install -Dnoredist
 
 #. Once you've built CloudStack with the ``noredist`` profile, you can
-   package it using the `“Building RPMs from Source” <#building-rpms-from-source>`_ 
+   package it using the `“Building RPMs from Source” <#building-rpms-from-source>`_
    or `“Building DEB packages” <#building-deb-packages>`_ instructions.
 
+.. note::
+
+   In case you are building debian packages via script ``packaging/build-deb.sh``, you will need to export the following configuration:
+
+.. parsed-literal::
+
+   $ export ACS_BUILD_OPTS="-Dnoredist -Dnonoss"

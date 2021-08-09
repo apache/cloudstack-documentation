@@ -13,7 +13,7 @@
    specific language governing permissions and limitations
    under the License.
 
-API Changes Introduced in 4.14.0.0
+API Changes Introduced in 4.15.0.0
 ===================================
 For the complete list of API commands and params consult the `CloudStack Apidocs`_.
 
@@ -25,77 +25,51 @@ New API Commands
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | Name                                        | Description                                                                    |
 +=============================================+================================================================================+
-| ``startRollingMaintenance``                 | Start rolling maintenance                                                      |
+| ``listVsphereStoragePolicyCompatiblePools`` | List storage pools compatible with a vSphere storage policy                    |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``createBackupSchedule``                    | Creates a user-defined VM backup schedule                                      |
+| ``listProjectRolePermissions``              | Lists a project's project role permissions                                     |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listBackupOfferings``                     | Lists backup offerings                                                         |
+| ``importVsphereStoragePolicies``            | Import vSphere storage policies                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``createBackup``                            | Create VM backup                                                               |
+| ``migrateSecondaryStorageData``             | migrates data objects from one secondary storage to destination image store(s) |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``stopKubernetesCluster``                   | Stops a running Kubernetes cluster                                             |
+| ``unmanageVirtualMachine``                  | Unmanage a guest virtual machine.                                              |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listKubernetesClusters``                  | Lists Kubernetes clusters                                                      |
+| ``updateImageStore``                        | Updates image store read-only status                                           |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``scaleKubernetesCluster``                  | Scales a created, running or stopped Kubernetes cluster                        |
+| ``deleteProjectRole``                       | Delete Project roles in CloudStack                                             |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``destroyVolume``                           | Destroys a Volume.                                                             |
+| ``deleteUserFromProject``                   | Deletes user from the project                                                  |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``deleteBackupOffering``                    | Deletes a backup offering                                                      |
+| ``listProjectRoles``                        | Lists Project roles in CloudStack                                              |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``updateSecurityGroup``                     | Updates a security group                                                       |
+| ``createProjectRole``                       | Creates a Project role                                                         |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``getRouterHealthCheckResults``             | Starts a router.                                                               |
+| ``updateProjectRole``                       | Creates a Project role                                                         |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listBackups``                             | Lists VM backups                                                               |
+| ``listVsphereStoragePolicies``              | List vSphere storage policies                                                  |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listBackupProviders``                     | Lists Backup and Recovery providers                                            |
+| ``createProjectRolePermission``             | Adds API permissions to a project role                                         |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``deleteKubernetesSupportedVersion``        | Deletes a Kubernetes cluster                                                   |
+| ``updateProjectRolePermission``             | Updates a project role permission and/or order                                 |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``restoreBackup``                           | Restores an existing stopped or deleted VM using a VM backup                   |
+| ``addUserToProject``                        | Adds user to a project                                                         |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``addKubernetesSupportedVersion``           | Add a supported Kubernetes version                                             |
+| ``importRole``                              | Imports a role based on provided map of rule permissions                       |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``deleteKubernetesCluster``                 | Deletes a Kubernetes cluster                                                   |
+| ``deleteProjectRolePermission``             | Deletes a project role permission in the project                               |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``getKubernetesClusterConfig``              | Get Kubernetes cluster config                                                  |
+
+
+Removed API Commands
+--------------------
+
+.. cssclass:: table-striped table-bordered table-hover
+
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``updateKubernetesSupportedVersion``        | Update a supported Kubernetes version                                          |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``upgradeKubernetesCluster``                | Upgrades a running Kubernetes cluster                                          |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``deleteBackupSchedule``                    | Deletes the backup schedule of a VM                                            |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listBackupProviderOfferings``             | Lists external backup offerings of the provider                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``createKubernetesCluster``                 | Creates a Kubernetes cluster                                                   |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``importBackupOffering``                    | Imports a backup offering using a backup provider                              |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``removeVirtualMachineFromBackupOffering``  | Removes a VM from any existing backup offering                                 |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listKubernetesSupportedVersions``         | Lists container clusters                                                       |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``recoverVolume``                           | Recovers a Destroy volume.                                                     |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listUnmanagedInstances``                  | Lists unmanaged virtual machines for a given cluster.                          |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``importUnmanagedInstance``                 | Import unmanaged virtual machine from a given cluster.                         |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``getDiagnosticsData``                      | Get diagnostics and files from system VMs                                      |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``startKubernetesCluster``                  | Starts a stopped Kubernetes cluster                                            |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listBackupSchedule``                      | List backup schedule of a VM                                                   |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``restoreVolumeFromBackupAndAttachToVM``    | Restore and attach a backed up volume to VM                                    |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``updateBackupSchedule``                    | Updates a user-defined VM backup schedule                                      |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``deleteBackup``                            | Delete VM backup                                                               |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``assignVirtualMachineToBackupOffering``    | Assigns a VM to a backup offering                                              |
+| Name                                        | Description                                                                    |
++=============================================+================================================================================+
+| ``listTemplateOvfProperties``               | List template OVF properties if available.                                     |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 
 
@@ -107,552 +81,1295 @@ Parameters Changed API Commands
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | Name                                        | Description                                                                    |
 +=============================================+================================================================================+
+| ``copyIso``                                 | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``deployasis``                                                               |
+|                                             | - ``deployasisdetails``                                                        |
+|                                             | - ``downloaddetails``                                                          |
+|                                             | - ``url``                                                                      |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listVirtualMachinesMetrics``              | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``haenable`` (optional)                                                      |
+|                                             | - ``securitygroupid`` (optional)                                               |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
 | ``listHosts``                               | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
-|                                             | - ``ueficapability``                                                           |
-|                                             |                                                                                |
-|                                             | *Removed Parameters:*                                                          |
-|                                             |                                                                                |
-|                                             | - ``averageload``                                                              |
+|                                             | - ``cpuallocatedpercentage``                                                   |
+|                                             | - ``cpuallocatedvalue``                                                        |
+|                                             | - ``cpuallocatedwithoverprovisioning``                                         |
+|                                             | - ``memoryallocatedbytes``                                                     |
+|                                             | - ``memoryallocatedpercentage``                                                |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``importLdapUsers``                         | **Response:**                                                                  |
+| ``updateStoragePool``                       | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``conflictingusersource``                                                    |
+|                                             | - ``name`` (optional)                                                          |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listHostsMetrics``                        | **Response:**                                                                  |
+| ``rebootSystemVm``                          | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listNetworks``                            | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``networkofferingid`` (optional)                                             |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``aclname``                                                                  |
+|                                             | - ``vpcname``                                                                  |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``restoreVirtualMachine``                   | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``osdisplayname``                                                            |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``updateHost``                              | **Response:**                                                                  |
+| ``updateHost``                              | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
-|                                             | - ``ueficapability``                                                           |
+|                                             | - ``name`` (optional)                                                          |
 |                                             |                                                                                |
-|                                             | *Removed Parameters:*                                                          |
+|                                             | **Response:**                                                                  |
 |                                             |                                                                                |
-|                                             | - ``averageload``                                                              |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``cpuallocatedpercentage``                                                   |
+|                                             | - ``cpuallocatedvalue``                                                        |
+|                                             | - ``cpuallocatedwithoverprovisioning``                                         |
+|                                             | - ``memoryallocatedbytes``                                                     |
+|                                             | - ``memoryallocatedpercentage``                                                |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``destroySystemVm``                         | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``addSwift``                                | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``disksizetotal``                                                            |
+|                                             | - ``disksizeused``                                                             |
+|                                             | - ``readonly``                                                                 |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``scaleSystemVm``                           | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``stopRouter``                              | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``changeServiceForVirtualMachine``          | **Response:**                                                                  |
+| ``listProjectInvitations``                  | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``userid`` (optional)                                                        |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``userid``                                                                   |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listLdapConfigurations``                  | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``listall`` (optional)                                                       |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listSecondaryStagingStores``              | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``disksizetotal``                                                            |
+|                                             | - ``disksizeused``                                                             |
+|                                             | - ``readonly``                                                                 |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``startRouter``                             | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``rebootVirtualMachine``                    | **Response:**                                                                  |
+| ``changeServiceForVirtualMachine``          | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``osdisplayname``                                                            |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listVolumesMetrics``                      | **Request:**                                                                   |
+| ``listTemplates``                           | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``state`` (optional)                                                         |
+|                                             | - ``details`` (optional)                                                       |
+|                                             | - ``showunique`` (optional)                                                    |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``deployasis``                                                               |
+|                                             | - ``deployasisdetails``                                                        |
+|                                             | - ``downloaddetails``                                                          |
+|                                             | - ``url``                                                                      |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listPhysicalNetworks``                    | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``zonename``                                                                 |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createSecondaryStagingStore``             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``disksizetotal``                                                            |
+|                                             | - ``disksizeused``                                                             |
+|                                             | - ``readonly``                                                                 |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``rebootVirtualMachine``                    | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``bootintosetup`` (optional)                                                 |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``osdisplayname``                                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateVPC``                               | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``vpcofferingname``                                                          |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``stopSystemVm``                            | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listPrivateGateways``                     | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``aclname``                                                                  |
+|                                             | - ``vpcname``                                                                  |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``updateVmNicIp``                           | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``osdisplayname``                                                            |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``startInternalLoadBalancerVM``             | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``searchLdap``                              | **Response:**                                                                  |
+| ``updateDiskOffering``                      | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``conflictingusersource``                                                    |
+|                                             | - ``bytesreadrate`` (optional)                                                 |
+|                                             | - ``bytesreadratemax`` (optional)                                              |
+|                                             | - ``bytesreadratemaxlength`` (optional)                                        |
+|                                             | - ``byteswriterate`` (optional)                                                |
+|                                             | - ``byteswriteratemax`` (optional)                                             |
+|                                             | - ``byteswriteratemaxlength`` (optional)                                       |
+|                                             | - ``cachemode`` (optional)                                                     |
+|                                             | - ``iopsreadrate`` (optional)                                                  |
+|                                             | - ``iopsreadratemax`` (optional)                                               |
+|                                             | - ``iopsreadratemaxlength`` (optional)                                         |
+|                                             | - ``iopswriterate`` (optional)                                                 |
+|                                             | - ``iopswriteratemax`` (optional)                                              |
+|                                             | - ``iopswriteratemaxlength`` (optional)                                        |
+|                                             | - ``tags`` (optional)                                                          |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``vspherestoragepolicy``                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``addAccountToProject``                     | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``projectroleid`` (optional)                                                 |
+|                                             | - ``roletype`` (optional)                                                      |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listKubernetesClusters``                  | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``ipaddress``                                                                |
+|                                             | - ``ipaddressid``                                                              |
+|                                             | - ``virtualmachines``                                                          |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``virtualmachineids``                                                        |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``scaleKubernetesCluster``                  | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *Changed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``id`` was 'optional' and is now 'required'                                  |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``ipaddress``                                                                |
+|                                             | - ``ipaddressid``                                                              |
+|                                             | - ``virtualmachines``                                                          |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``virtualmachineids``                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``stopNetScalerVpx``                        | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listCapabilities``                        | **Response:**                                                                  |
+| ``updatePhysicalNetwork``                   | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``allowuserexpungerecovervolume``                                            |
-|                                             | - ``kubernetesclusterexperimentalfeaturesenabled``                             |
-|                                             | - ``kubernetesserviceenabled``                                                 |
+|                                             | - ``zonename``                                                                 |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listLdapUsers``                           | **Request:**                                                                   |
+| ``createRolePermission``                    | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``description``                                                              |
+|                                             | - ``permission``                                                               |
+|                                             | - ``rule``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listSystemVms``                           | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``domainid`` (optional)                                                      |
-|                                             | - ``userfilter`` (optional)                                                    |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createProject``                           | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``accountid`` (optional)                                                     |
+|                                             | - ``userid`` (optional)                                                        |
 |                                             |                                                                                |
 |                                             | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``conflictingusersource``                                                    |
+|                                             | - ``owner``                                                                    |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``changeServiceForSystemVm``                | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``rebootRouter``                            | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listNics``                                | **Response:**                                                                  |
+| ``findHostsForMigration``                   | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``adaptertype``                                                              |
-|                                             | - ``ipaddresses``                                                              |
-|                                             | - ``isolatedpvlan``                                                            |
-|                                             | - ``isolatedpvlantype``                                                        |
-|                                             | - ``vlanid``                                                                   |
+|                                             | - ``cpuallocatedpercentage``                                                   |
+|                                             | - ``cpuallocatedvalue``                                                        |
+|                                             | - ``cpuallocatedwithoverprovisioning``                                         |
+|                                             | - ``memoryallocatedbytes``                                                     |
+|                                             | - ``memoryallocatedpercentage``                                                |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``addNicToVirtualMachine``                  | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``osdisplayname``                                                            |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listExternalLoadBalancers``               | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
-|                                             | - ``ueficapability``                                                           |
-|                                             |                                                                                |
-|                                             | *Removed Parameters:*                                                          |
-|                                             |                                                                                |
-|                                             | - ``averageload``                                                              |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``updateDefaultNicForVirtualMachine``       | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``stopInternalLoadBalancerVM``              | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``createServiceOffering``                   | **Request:**                                                                   |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``cachemode`` (optional)                                                     |
-|                                             |                                                                                |
-|                                             | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``cacheMode``                                                                |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``assignVirtualMachine``                    | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``changeServiceForRouter``                  | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``updateVirtualMachine``                    | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``migrateVirtualMachine``                   | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``resetPasswordForVirtualMachine``          | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``associateIpAddress``                      | **Request:**                                                                   |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``ipaddress`` (optional)                                                     |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``resetSSHKeyForVirtualMachine``            | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listInternalLoadBalancerVMs``             | **Request:**                                                                   |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``fetchhealthcheckresults`` (optional)                                       |
-|                                             |                                                                                |
-|                                             | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``detachIso``                               | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``prepareHostForMaintenance``               | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
-|                                             | - ``ueficapability``                                                           |
-|                                             |                                                                                |
-|                                             | *Removed Parameters:*                                                          |
-|                                             |                                                                                |
-|                                             | - ``averageload``                                                              |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listVirtualMachines``                     | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``revertToVMSnapshot``                      | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``deployVirtualMachine``                    | **Request:**                                                                   |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``bootmode`` (optional)                                                      |
-|                                             | - ``boottype`` (optional)                                                      |
-|                                             |                                                                                |
-|                                             | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``cancelHostMaintenance``                   | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
-|                                             | - ``ueficapability``                                                           |
-|                                             |                                                                                |
-|                                             | *Removed Parameters:*                                                          |
-|                                             |                                                                                |
-|                                             | - ``averageload``                                                              |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``createDiskOffering``                      | **Request:**                                                                   |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``cachemode`` (optional)                                                     |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listVolumes``                             | **Request:**                                                                   |
+| ``listStaticRoutes``                        | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
 |                                             | - ``state`` (optional)                                                         |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``createNetwork``                           | **Request:**                                                                   |
+| ``listPublicIpAddresses``                   | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``isolatedpvlantype`` (optional)                                             |
+|                                             | - ``networkname``                                                              |
+|                                             | - ``vpcname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateIso``                               | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``deployasis``                                                               |
+|                                             | - ``deployasisdetails``                                                        |
+|                                             | - ``downloaddetails``                                                          |
+|                                             | - ``url``                                                                      |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listExternalLoadBalancers``               | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``cpuallocatedpercentage``                                                   |
+|                                             | - ``cpuallocatedvalue``                                                        |
+|                                             | - ``cpuallocatedwithoverprovisioning``                                         |
+|                                             | - ``memoryallocatedbytes``                                                     |
+|                                             | - ``memoryallocatedpercentage``                                                |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateDefaultNicForVirtualMachine``       | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``osdisplayname``                                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``prepareTemplate``                         | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``deployasis``                                                               |
+|                                             | - ``deployasisdetails``                                                        |
+|                                             | - ``downloaddetails``                                                          |
+|                                             | - ``url``                                                                      |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``stopInternalLoadBalancerVM``              | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``restartNetwork``                          | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``networkname``                                                              |
+|                                             | - ``vpcname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``addImageStore``                           | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``disksizetotal``                                                            |
+|                                             | - ``disksizeused``                                                             |
+|                                             | - ``readonly``                                                                 |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listRolePermissions``                     | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``description``                                                              |
+|                                             | - ``permission``                                                               |
+|                                             | - ``rule``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listNetworkACLs``                         | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``aclname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``copyTemplate``                            | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``deployasis``                                                               |
+|                                             | - ``deployasisdetails``                                                        |
+|                                             | - ``downloaddetails``                                                          |
+|                                             | - ``url``                                                                      |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createServiceOffering``                   | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``rootdisksize`` (optional)                                                  |
+|                                             | - ``storagepolicy`` (optional)                                                 |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``rootdisksize``                                                             |
+|                                             | - ``vspherestoragepolicy``                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listNiciraNvpDeviceNetworks``             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``aclname``                                                                  |
+|                                             | - ``vpcname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``assignVirtualMachine``                    | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``osdisplayname``                                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateTemplate``                          | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``templatetype`` (optional)                                                  |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``deployasis``                                                               |
+|                                             | - ``deployasisdetails``                                                        |
+|                                             | - ``downloaddetails``                                                          |
+|                                             | - ``url``                                                                      |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listPaloAltoFirewallNetworks``            | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``aclname``                                                                  |
+|                                             | - ``vpcname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``changeServiceForRouter``                  | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateVirtualMachine``                    | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``osdisplayname``                                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``addSecondaryStorage``                     | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``disksizetotal``                                                            |
+|                                             | - ``disksizeused``                                                             |
+|                                             | - ``readonly``                                                                 |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateNetwork``                           | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``aclname``                                                                  |
+|                                             | - ``vpcname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateVpnGateway``                        | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``vpcname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``migrateVirtualMachine``                   | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``osdisplayname``                                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createTemplate``                          | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``deployasis``                                                               |
+|                                             | - ``deployasisdetails``                                                        |
+|                                             | - ``downloaddetails``                                                          |
+|                                             | - ``url``                                                                      |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``resetPasswordForVirtualMachine``          | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``osdisplayname``                                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``associateIpAddress``                      | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``networkname``                                                              |
+|                                             | - ``vpcname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createNetworkACL``                        | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``aclname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``resetSSHKeyForVirtualMachine``            | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``osdisplayname``                                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createVPC``                               | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``vpcofferingname``                                                          |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listInternalLoadBalancerVMs``             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listSrxFirewallNetworks``                 | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``aclname``                                                                  |
+|                                             | - ``vpcname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``detachIso``                               | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``osdisplayname``                                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createRole``                              | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``roleid`` (optional)                                                        |
+|                                             |                                                                                |
+|                                             | *Changed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``type`` was 'required' and is now 'optional'                                |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``isdefault``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``id``                                                                       |
+|                                             | - ``description``                                                              |
+|                                             | - ``name``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``prepareHostForMaintenance``               | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``cpuallocatedpercentage``                                                   |
+|                                             | - ``cpuallocatedvalue``                                                        |
+|                                             | - ``cpuallocatedwithoverprovisioning``                                         |
+|                                             | - ``memoryallocatedbytes``                                                     |
+|                                             | - ``memoryallocatedpercentage``                                                |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listVirtualMachines``                     | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``haenable`` (optional)                                                      |
+|                                             | - ``securitygroupid`` (optional)                                               |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``osdisplayname``                                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listDiskOfferings``                       | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``vspherestoragepolicy``                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``upgradeKubernetesCluster``                | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``ipaddress``                                                                |
+|                                             | - ``ipaddressid``                                                              |
+|                                             | - ``virtualmachines``                                                          |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``virtualmachineids``                                                        |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listProjects``                            | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``username`` (optional)                                                      |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``owner``                                                                    |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``revertToVMSnapshot``                      | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``osdisplayname``                                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``registerIso``                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``deployasis``                                                               |
+|                                             | - ``deployasisdetails``                                                        |
+|                                             | - ``downloaddetails``                                                          |
+|                                             | - ``url``                                                                      |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``deployVirtualMachine``                    | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``bootintosetup`` (optional)                                                 |
+|                                             | - ``nicnetworklist`` (optional)                                                |
+|                                             | - ``properties`` (optional)                                                    |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``ovfproperties``                                                            |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``osdisplayname``                                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``cancelHostMaintenance``                   | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``cpuallocatedpercentage``                                                   |
+|                                             | - ``cpuallocatedvalue``                                                        |
+|                                             | - ``cpuallocatedwithoverprovisioning``                                         |
+|                                             | - ``memoryallocatedbytes``                                                     |
+|                                             | - ``memoryallocatedpercentage``                                                |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listProjectAccounts``                     | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``projectroleid`` (optional)                                                 |
+|                                             | - ``userid`` (optional)                                                        |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``owner``                                                                    |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createDiskOffering``                      | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``storagepolicy`` (optional)                                                 |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``vspherestoragepolicy``                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createNetwork``                           | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``aclname``                                                                  |
+|                                             | - ``vpcname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listVPCs``                                | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``vpcofferingname``                                                          |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``migrateVirtualMachineWithVolume``         | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``osdisplayname``                                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``restartVPC``                              | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``vpcofferingname``                                                          |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``addHost``                                 | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
-|                                             | - ``ueficapability``                                                           |
+|                                             | - ``cpuallocatedpercentage``                                                   |
+|                                             | - ``cpuallocatedvalue``                                                        |
+|                                             | - ``cpuallocatedwithoverprovisioning``                                         |
+|                                             | - ``memoryallocatedbytes``                                                     |
+|                                             | - ``memoryallocatedpercentage``                                                |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateProject``                           | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``roletype`` (optional)                                                      |
+|                                             | - ``swapowner`` (optional)                                                     |
+|                                             | - ``userid`` (optional)                                                        |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``owner``                                                                    |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listIsos``                                | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``showunique`` (optional)                                                    |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``deployasis``                                                               |
+|                                             | - ``deployasisdetails``                                                        |
+|                                             | - ``downloaddetails``                                                          |
+|                                             | - ``url``                                                                      |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateCloudToUseObjectStore``             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``disksizetotal``                                                            |
+|                                             | - ``disksizeused``                                                             |
+|                                             | - ``readonly``                                                                 |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateRole``                              | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``isdefault``                                                                |
 |                                             |                                                                                |
 |                                             | *Removed Parameters:*                                                          |
 |                                             |                                                                                |
-|                                             | - ``averageload``                                                              |
+|                                             | - ``id``                                                                       |
+|                                             | - ``description``                                                              |
+|                                             | - ``name``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listNetscalerLoadBalancerNetworks``       | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``aclname``                                                                  |
+|                                             | - ``vpcname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``startSystemVm``                           | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createKubernetesCluster``                 | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``ipaddress``                                                                |
+|                                             | - ``ipaddressid``                                                              |
+|                                             | - ``virtualmachines``                                                          |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``virtualmachineids``                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``updateVMAffinityGroup``                   | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``osdisplayname``                                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``migrateVPC``                              | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``vpcofferingname``                                                          |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``recoverVirtualMachine``                   | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``osdisplayname``                                                            |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listRouters``                             | **Request:**                                                                   |
+| ``getUploadParamsForTemplate``              | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *Changed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``ostypeid`` was 'required' and is now 'optional'                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateProjectInvitation``                 | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``fetchhealthcheckresults`` (optional)                                       |
+|                                             | - ``userid`` (optional)                                                        |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``migrateSystemVm``                         | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listVpnGateways``                         | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``vpcname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listRoles``                               | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``isdefault``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``id``                                                                       |
+|                                             | - ``description``                                                              |
+|                                             | - ``name``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateNetworkACLItem``                    | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``aclname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listRouters``                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listBrocadeVcsDeviceNetworks``            | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``aclname``                                                                  |
+|                                             | - ``vpcname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listSwifts``                              | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``disksizetotal``                                                            |
+|                                             | - ``disksizeused``                                                             |
+|                                             | - ``readonly``                                                                 |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listUsageRecords``                        | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``ostypeid``                                                                 |
+|                                             | - ``vpcid``                                                                    |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``suspendProject``                          | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``owner``                                                                    |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateIpAddress``                         | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``networkname``                                                              |
+|                                             | - ``vpcname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``migrateNetwork``                          | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``aclname``                                                                  |
+|                                             | - ``vpcname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``registerTemplate``                        | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *Changed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``ostypeid`` was 'required' and is now 'optional'                            |
 |                                             |                                                                                |
 |                                             | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
+|                                             | - ``deployasis``                                                               |
+|                                             | - ``deployasisdetails``                                                        |
+|                                             | - ``downloaddetails``                                                          |
+|                                             | - ``url``                                                                      |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``importUnmanagedInstance``                 | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``forced`` (optional)                                                        |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``osdisplayname``                                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``addImageStoreS3``                         | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``disksizetotal``                                                            |
+|                                             | - ``disksizeused``                                                             |
+|                                             | - ``readonly``                                                                 |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createPhysicalNetwork``                   | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``zonename``                                                                 |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listF5LoadBalancerNetworks``              | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``aclname``                                                                  |
+|                                             | - ``vpcname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listVMSnapshot``                          | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``hypervisor``                                                               |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``moveNetworkAclItem``                      | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``aclname``                                                                  |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``attachIso``                               | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``osdisplayname``                                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createVpnGateway``                        | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``vpcname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createVMSnapshot``                        | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``hypervisor``                                                               |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``destroyRouter``                           | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
+|                                             | - ``podname``                                                                  |
+|                                             | - ``templatename``                                                             |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listImageStores``                         | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``readonly`` (optional)                                                      |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``disksizetotal``                                                            |
+|                                             | - ``disksizeused``                                                             |
+|                                             | - ``readonly``                                                                 |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``removeNicFromVirtualMachine``             | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``osdisplayname``                                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``activateProject``                         | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``owner``                                                                    |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``reconnectHost``                           | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
-|                                             | - ``ueficapability``                                                           |
-|                                             |                                                                                |
-|                                             | *Removed Parameters:*                                                          |
-|                                             |                                                                                |
-|                                             | - ``averageload``                                                              |
+|                                             | - ``cpuallocatedpercentage``                                                   |
+|                                             | - ``cpuallocatedvalue``                                                        |
+|                                             | - ``cpuallocatedwithoverprovisioning``                                         |
+|                                             | - ``memoryallocatedbytes``                                                     |
+|                                             | - ``memoryallocatedpercentage``                                                |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``createPrivateGateway``                    | **Request:**                                                                   |
+| ``startKubernetesCluster``                  | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``bypassvlanoverlapcheck`` (optional)                                        |
+|                                             | - ``ipaddress``                                                                |
+|                                             | - ``ipaddressid``                                                              |
+|                                             | - ``virtualmachines``                                                          |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``virtualmachineids``                                                        |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createPrivateGateway``                    | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``aclname``                                                                  |
+|                                             | - ``vpcname``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``uploadSslCert``                           | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``enabledrevocationcheck`` (optional)                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``addBaremetalHost``                        | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
-|                                             | - ``ueficapability``                                                           |
-|                                             |                                                                                |
-|                                             | *Removed Parameters:*                                                          |
-|                                             |                                                                                |
-|                                             | - ``averageload``                                                              |
+|                                             | - ``cpuallocatedpercentage``                                                   |
+|                                             | - ``cpuallocatedvalue``                                                        |
+|                                             | - ``cpuallocatedwithoverprovisioning``                                         |
+|                                             | - ``memoryallocatedbytes``                                                     |
+|                                             | - ``memoryallocatedpercentage``                                                |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``destroyVirtualMachine``                   | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``osdisplayname``                                                            |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listServiceOfferings``                    | **Response:**                                                                  |
+| ``listServiceOfferings``                    | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``cacheMode``                                                                |
+|                                             | - ``cpunumber`` (optional)                                                     |
+|                                             | - ``cpuspeed`` (optional)                                                      |
+|                                             | - ``memory`` (optional)                                                        |
 |                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``startVirtualMachine``                     | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``stopVirtualMachine``                      | **Response:**                                                                  |
+|                                             | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``rootdisksize``                                                             |
+|                                             | - ``vspherestoragepolicy``                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``startVirtualMachine``                     | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``bootintosetup`` (optional)                                                 |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``osdisplayname``                                                            |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``updateServiceOffering``                   | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``cacheMode``                                                                |
+|                                             | - ``rootdisksize``                                                             |
+|                                             | - ``vspherestoragepolicy``                                                     |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
+| ``stopVirtualMachine``                      | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``osdisplayname``                                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+

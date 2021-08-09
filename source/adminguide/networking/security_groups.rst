@@ -86,6 +86,8 @@ advanced zone where KVM is the hypervisor. Using security groups in
 advanced zones rather than multiple VLANs allows a greater range of
 options for setting up guest isolation in a cloud.
 
+Both IPv4 and IPv6 are supported when using Security Groups.
+
 
 Limitations
 ^^^^^^^^^^^
@@ -155,8 +157,9 @@ Adding Ingress and Egress Rules to a Security Group
    -  **CIDR**. (Add by CIDR only) To accept only traffic from IP
       addresses within a particular address block, enter a CIDR or a
       comma-separated list of CIDRs. The CIDR is the base IP address of
-      the incoming traffic. For example, 192.168.0.0/22. To allow all
-      CIDRs, set to 0.0.0.0/0.
+      the incoming traffic. For example, 192.168.0.0/22 or
+      2001:db8:100::/64. To allow all CIDRs, set to 0.0.0.0/0 (IPv4) or
+      ::/0 (IPv6).
 
    -  **Account, Security Group**. (Add by Account only) To accept only
       traffic from another security group, enter the CloudStack account
@@ -198,8 +201,8 @@ Adding Ingress and Egress Rules to a Security Group
    -  **CIDR**. (Add by CIDR only) To send traffic only to IP addresses
       within a particular address block, enter a CIDR or a
       comma-separated list of CIDRs. The CIDR is the base IP address of
-      the destination. For example, 192.168.0.0/22. To allow all CIDRs,
-      set to 0.0.0.0/0.
+      the destination. For example, 192.168.0.0/22 or 2001:db8:200::/64.
+      To allow all CIDRs, set to 0.0.0.0/0 (IPv4) or ::/0 (IPv6).
 
    -  **Account, Security Group**. (Add by Account only) To allow
       traffic to be sent to another security group, enter the CloudStack

@@ -105,6 +105,7 @@ Storage media \\ hypervisor                    VMware vSphere   Citrix XenServer
 **Storage over-provisioning**                  NFS and iSCSI    NFS                  NFS                         No
 **SMB/CIFS**                                   No               No                   No                          Yes
 **Ceph/RBD**                                   No               No                   Yes                         No
+**PowerFlex/ScaleIO**                          No               No                   Yes                         No
 ============================================== ================ ==================== =========================== ============================
 
 XenServer uses a clustered LVM system to store VM images on iSCSI and
@@ -120,6 +121,14 @@ This shared mountpoint is assumed to be a clustered filesystem such as
 OCFS2. In this case the CloudStack does not attempt to mount or unmount
 the storage as is done with NFS. The CloudStack requires that the
 administrator insure that the storage is available
+
+VMware vSphere supports NFS, VMFS5, VMFS6, vSAN, vVols, DatastoreCluster storage types.
+For DatastoreCluster storage type, any changes to the datastore cluster
+at vCenter can be synchronised with CloudStack, like any addition of new
+child datastore to the DatastoreCluster or removal or existing child datastore
+from the DatastoreCluster. Synchronisation of DatastoreCluster happens during
+host connect or storage pool maintenance operations or by calling the API
+syncStoragePool.
 
 With NFS storage, CloudStack manages the overprovisioning. In this case
 the global configuration parameter storage.overprovisioning.factor
@@ -256,7 +265,7 @@ When creating a new volume from an existing ROOT volume snapshot,
 it is required to explicitly define a Disk offering (UI will offer only Disk
 offerings whose disk size is equal or bigger than the size of the snapshot).
 
-|volume-from-snap.PNG|
+|volume-from-snap.png|
 
 When creating a new volume from an existing DATA volume snapshot, the disk offering
 associated with the snapshots (inherited from the original volume) is assigned
@@ -617,6 +626,40 @@ To resize a volume:
 
 #. Click OK.
 
+Root Volume size defined via Service Offering
+~~~~~~~~~~~~~~~~
+
+If a Service Offering is created with a root disk size, then resizing the Root volume is possible only by resizing the VMs service offering.
+
+Service offering Root resizing constrains:
+
+#. Users cannot deploy VMs with custom root disk size when using such offerings
+
+#. Users cannot resize the VM root disk size when using such offerings
+
+#. The Root Volume of such VMs can only be resized when changing to another Service Offering with a Root disk size equals or larger than the current one.
+
+#. Users can change the VM offering to a service offering with a Root size of 0GB (default) and then customize the volume size.
+
+The following table shows possible combinations of Service offering supported resizing based on the offering Root disk size:
+
++---+----------------------------+---------------------------+-------------------------------+
+| # | Service Offering Root size | new Service Offering Root | Does support offering resize? |
++---+----------------------------+---------------------------+-------------------------------+
+| 1 | 0GB (default)              | Any                       | YES                           |
++---+----------------------------+---------------------------+-------------------------------+
+| 2 | 5GB                        | 5GB                       | YES                           |
++---+----------------------------+---------------------------+-------------------------------+
+| 3 | 5GB                        | 10GB                      | YES                           |
++---+----------------------------+---------------------------+-------------------------------+
+| 4 | 10GB                       | 5GB                       | NO                            |
++---+----------------------------+---------------------------+-------------------------------+
+| 5 | Any                        | 0GB                       | YES                           |
++---+----------------------------+---------------------------+-------------------------------+
+
+.. note::
+   Shrinking the Root disk is not supported via the service offering resizing workflow. All the combinations above assume a transition to Root disks with size equals or bigger than the original.
+   Service Offerings with Root size of 0GB do not change the disk size to Zero and indicates that the offering do not enforces a Root disk size.
 
 Reset VM to New Root Disk on Reboot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -847,5 +890,5 @@ snapshot data.
    :alt: Detach Disk Button.
 .. |Migrateinstance.png| image:: /_static/images/migrate-instance.png
    :alt: button to migrate a volume.
-.. |volume-from-snap.PNG| image:: /_static/images/volume-from-snap.PNG
+.. |volume-from-snap.png| image:: /_static/images/volume-from-snap.png
    :alt: Offering is needed when creating a volume from the ROOT volume snapshot.

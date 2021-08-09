@@ -27,19 +27,12 @@ management-server, cloudstack-usage, KVM agent and system-VMs.
 
 .. include:: _java_version.rst
 
-UI Deprecation Notice
----------------------
+UI Deprecation and Removal Notice
+---------------------------------
 
-The current jQuery-based CloudStack UI will be `deprecated
-<http://markmail.org/message/vxnskmwhfaagnm4r/>`_ in the next Apache CloudStack
-major release and removed in the subsequent future releases.
-
-`Primate <https://github.com/apache/cloudstack-primate/>`_ will ship as the
-modern UI for future Apache CloudStack releases. Users are encouraged to `test
-<https://github.com/apache/cloudstack-primate/wiki/Migrating-to-Primate/>`_
-Primate, report bugs and give feedback to the `dev community
-<http://cloudstack.apache.org/mailing-lists.html>`_ with this release of Apache
-CloudStack.
+The current jQuery-based CloudStack UI is `deprecated
+<http://markmail.org/message/vxnskmwhfaagnm4r/>`_ in this release of CloudStack
+and will be removed in the next release of Apache CloudStack.
 
 Migrating to dynamic roles feature
 ----------------------------------

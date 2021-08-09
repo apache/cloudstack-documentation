@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 
+# Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -89,7 +89,7 @@ msgstr ""
 
 #: ../../networking/ip_forwarding_and_firewalling.rst:65
 # d546be88025a4254b8eecf1f0b16bdf0
-msgid "Click View IP Addresses."
+msgid "Click Public IP Addresses."
 msgstr ""
 
 #: ../../networking/ip_forwarding_and_firewalling.rst:67
@@ -278,7 +278,7 @@ msgstr ""
 
 #: ../../networking/ip_forwarding_and_firewalling.rst:206
 # 7fce8b96f6e64727bb6063766c828bdd
-msgid "In Select Offering, choose Network Offering."
+msgid "In the left navigation bar, click Service Offerings and choose Network Offering."
 msgstr ""
 
 #: ../../networking/ip_forwarding_and_firewalling.rst:208

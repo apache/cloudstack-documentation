@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 
+# Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -103,7 +103,7 @@ msgstr ""
 
 #: ../../networking.rst:73
 # 4b159336d5054af78283deb65966e56d
-msgid "A shared network can be accessed by virtual machines that belong to many different accounts. Network Isolation on shared networks is accomplished by using techniques such as security groups, which is supported only in Basic zones in CloudStack 3.0.3 and later versions."
+msgid "A shared network can be accessed by virtual machines that belong to many different accounts. Network Isolation on shared networks is accomplished by using techniques such as security groups, which is supported only in Basic zones or Advanced Zones with Security Groups"
 msgstr ""
 
 #: ../../networking.rst:78
@@ -458,7 +458,7 @@ msgstr ""
 
 #: ../../networking.rst:231
 # 22b7bae2bee145399e00d289bccc7917
-msgid "In Select Offering, choose Network Offering."
+msgid "In the left navigation bar, click Service Offerings and choose Network Offering."
 msgstr ""
 
 #: ../../networking.rst:233
@@ -730,7 +730,7 @@ msgstr ""
 
 #: ../../networking.rst:369
 # 6c9c68a68ab14d30a00460dd3b13f8a6
-msgid "**Redundant router capability**: Available only when Virtual Router is selected as the Source NAT provider. Select this option if you want to use two virtual routers in the network for uninterrupted connection: one operating as the master virtual router and the other as the backup. The master virtual router receives requests from and sends responses to the user’s VM. The backup virtual router is activated only when the master is down. After the failover, the backup becomes the master virtual router. CloudStack deploys the routers on different hosts to ensure reliability if one host is down."
+msgid "**Redundant router capability**: Available only when Virtual Router is selected as the Source NAT provider. Select this option if you want to use two virtual routers in the network for uninterrupted connection: one operating as the primary virtual router and the other as the backup. The primary virtual router receives requests from and sends responses to the user’s VM. The backup virtual router is activated only when the primary is down. After the failover, the backup becomes the primary virtual router. CloudStack deploys the routers on different hosts to ensure reliability if one host is down."
 msgstr ""
 
 #: ../../networking.rst:380

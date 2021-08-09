@@ -26,7 +26,11 @@ are recommended:
 
 -  CentOS / RHEL: 7.X
 
--  Ubuntu: 16.04
+-  CentOS / RHEL / Binary-compatible variants: 8.X
+
+-  Ubuntu: 18.04 +
+
+-  openSUSE / SLES: 15.2 +
 
 The main requirement for KVM hypervisors is the libvirt and Qemu
 version. No matter what Linux distribution you are using, make sure the
@@ -122,21 +126,32 @@ KVM instances.
       NTP is required to synchronize the clocks of the servers in your
       cloud. Unsynchronized clocks can cause unexpected problems.
 
-   #. Install NTP
+
+#. Install NTP
+
+   In RHEL or CentOS:
 
       .. parsed-literal::
 
-         $ yum install ntp
+         $ yum install chrony
+
+   In Ubuntu:
 
       .. parsed-literal::
 
-         $ apt-get install openntpd
+         $ apt-get install chrony
+
+   In SUSE:
+
+      .. parsed-literal::
+
+         $ zypper install chrony
 
 #. Repeat all of these steps on every hypervisor host.
 
 .. warning::
    CloudStack |version| requires Java 11 JRE. Installing CloudStack agent will
-   automatically install Java 11, but it's good to explicitly confirm that the Java 11 
+   automatically install Java 11, but it's good to explicitly confirm that the Java 11
    is the selected/active one (in case you had a previous Java version already installed)
    with ``alternatives --config java``, after CloudStack agent is installed.
 
@@ -146,6 +161,10 @@ Install and configure the Agent
 To manage KVM instances on the host CloudStack uses a Agent. This Agent
 communicates with the Management server and controls all the instances
 on the host.
+
+.. note::
+   Depending on your distribution you might need to add the corresponding package repository
+   for CloudStack.
 
 First we start by installing the agent:
 
@@ -161,6 +180,13 @@ In Ubuntu:
 .. parsed-literal::
 
    $ apt-get install cloudstack-agent
+
+In SUSE:
+
+.. parsed-literal::
+
+   $ zypper install cloudstack-agent
+
 
 The host is now ready to be added to a cluster. This is covered in a
 later section, see :ref:`adding-a-host`. It is
@@ -259,6 +285,10 @@ CloudStack uses libvirt for managing virtual machines. Therefore it is
 vital that libvirt is configured correctly. Libvirt is a dependency of
 cloudstack-agent and should already be installed.
 
+.. note::
+   Please note that Cloudstack will automatically perform basic configuration of the agent and libvirt when the host is added. This is relevant if you are
+   planning to automate the deployment and configuration of your KVM hosts.
+
 #. In order to have live migration working libvirt has to listen for
    unsecured TCP connections. We also need to turn off libvirts attempt
    to use Multicast DNS advertising. Both of these settings are in
@@ -289,7 +319,7 @@ cloudstack-agent and should already be installed.
 #. Turning on "listen\_tcp" in libvirtd.conf is not enough, we have to
    change the parameters as well:
 
-   On RHEL or CentOS modify ``/etc/sysconfig/libvirtd``:
+   On RHEL or CentOS or SUSE modify ``/etc/sysconfig/libvirtd``:
 
    Uncomment the following line:
 
@@ -297,35 +327,14 @@ cloudstack-agent and should already be installed.
 
       #LIBVIRTD_ARGS="--listen"
 
-   On Ubuntu 14.04: modify ``/etc/default/libvirt-bin``
-
-   Add "-l" to the following line
+   On RHEL 8 / CentOS 8 / SUSE run the following command :
 
    .. parsed-literal::
 
-      libvirtd_opts="-d"
+      systemctl mask libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tls.socket libvirtd-tcp.socket
 
-   so it looks like:
 
-   .. parsed-literal::
-
-      libvirtd_opts="-d -l"
-
-   And modify ``/etc/init/libvirt-bin.conf``
-
-   Add "-l" to the following line
-
-   .. parsed-literal::
-
-      env libvirtd_opts="-d"
-
-   so it looks like:
-
-   .. parsed-literal::
-
-      env libvirtd_opts="-d -l"
-
-   On Ubuntu 16.04: just modify ``/etc/default/libvirt-bin``
+   On Ubuntu modify ``/etc/default/libvirt-bin``
 
    Uncomment and change the following line
 
@@ -339,22 +348,19 @@ cloudstack-agent and should already be installed.
 
       env libvirtd_opts="-l"
 
-
-
-
 #. Restart libvirt
 
-   In RHEL or CentOS:
+   In RHEL or CentOS or SUSE :
 
    .. parsed-literal::
 
-        $ service libvirtd restart
+        $ systemctl restart libvirtd
 
    In Ubuntu:
 
    .. parsed-literal::
 
-      $ service libvirt-bin restart
+      $ systemctl restart libvirt-bin
 
 
 Configure the Security Policies
@@ -364,7 +370,7 @@ CloudStack does various things which can be blocked by security
 mechanisms like AppArmor and SELinux. These have to be disabled to
 ensure the Agent has all the required permissions.
 
-#. Configure SELinux (RHEL and CentOS)
+#. Configure SELinux (RHEL, CentOS, SUSE)
 
    #. Check to see whether SELinux is installed on your machine. If not,
       you can skip this section.
@@ -448,19 +454,29 @@ Configuring the Networking
    implementation in Linux. Please refer to the next section if you intend to
    use OpenVswitch
 
-CloudStack uses the network bridges in conjunction with KVM to connect the guest instances to 
-each other and the outside world.  They also are used to connect the System VMs to your 
+CloudStack uses the network bridges in conjunction with KVM to connect the guest instances to
+each other and the outside world.  They also are used to connect the System VMs to your
 infrastructure.
 
-By default these bridges are called *cloudbr0* and *cloudbr1* etc, but this can be 
-changed to be more description. 
+By default these bridges are called *cloudbr0* and *cloudbr1* etc, but this can be
+changed to be more descriptive.
+
+.. note::
+   Ensure that the interfaces names to be used for configuring the bridges match one of the following patterns:
+   **'eth*', 'bond*', 'team*', 'vlan*', 'em*', 'p*p*', 'ens*', 'eno*', 'enp*', 'enx*'**.
+
+   Otherwise, the KVM agent will not be able to configure the bridges properly.
 
 .. warning::
    It is essential that you keep the configuration consistent across all of your hypervisors.
 
-There are many ways to configure your networking. Even within the scope of a given 
+There are many ways to configure your networking. Even within the scope of a given
 network mode.  Below are a few simple examples.
 
+.. note::
+   Since Ubuntu 20.04 the standard for manging network connections is by
+   using NetPlan YAML files. Please refer to the Ubuntu man pages for further
+   information and set up network connections figuratively.
 
 Network example for Basic Networks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -485,7 +501,7 @@ Configuring the Network Bridges for Basic Networks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It depends on the distribution you are using how to configure these,
-below you'll find examples for RHEL/CentOS and Ubuntu.
+below you'll find examples for RHEL/CentOS, SUSE and Ubuntu.
 
 .. note::
    The goal is to have two bridges called 'cloudbr0' and 'cloudbr1' after this
@@ -584,6 +600,95 @@ although a reboot is recommended to see if everything works properly.
    Make sure you have an alternative way like IPMI or ILO to reach the machine
    in case you made a configuration error and the network stops functioning!
 
+Configure SUSE for Basic Networks
+'''''''''''''''''''''''''''''''''''''
+
+The required packages were installed when libvirt was installed, we can
+proceed to configuring the network.
+
+First we configure eth0
+
+.. parsed-literal::
+
+   $ vi /etc/sysconfig/network/ifcfg-eth0
+
+Make sure it looks similar to:
+
+.. parsed-literal::
+
+   NAME=eth0
+   STARTMODE=auto
+   BOOTPROTO=none
+
+We now have to configure the VLAN interfaces:
+
+.. parsed-literal::
+
+   $ vi /etc/sysconfig/network/ifcfg-eth0.200
+
+.. parsed-literal::
+
+   NAME=eth0.200
+   STARTMODE=auto
+   BOOTPROTO=none
+   VLAN_ID=200
+   ETHERDEVICE=eth0
+
+Now that we have the VLAN interfaces configured we can add the bridges on top
+of them.
+
+.. parsed-literal::
+
+   $ vi /etc/sysconfig/network/ifcfg-cloudbr0
+
+Now we configure cloudbr0 and include the Management IP of the hypervisor.
+
+.. note::
+   The management IP of the hypervisor doesn't have to be in same subnet/VLAN as the
+   management network, but its quite common.
+
+.. parsed-literal::
+
+   NAME=cloudbr0
+   STARTMODE=auto
+   BOOTPROTO=static
+   BRIDGE=yes
+   BRIDGE_PORTS=eth0
+   BRIDGE_STP=on
+   BRIDGE_FORWARDDELAY=5
+   IPADDR=192.168.42.11
+   NETMASK=255.255.255.0
+
+Add the gatway in ``/etc/sysconfig/network/routes``
+
+.. parsed-literal::
+
+   default 192.168.42.1 - cloudbr0
+
+
+We configure cloudbr1 as a plain bridge without an IP address
+
+.. parsed-literal::
+
+   $ vi /etc/sysconfig/network/ifcfg-cloudbr1
+
+.. parsed-literal::
+
+   NAME=cloudbr1
+   STARTMODE=auto
+   BOOTPROTO=none
+   BRIDGE=yes
+   BRIDGE_PORTS=eth0.200
+   BRIDGE_STP=on
+   BRIDGE_FORWARDDELAY=5
+
+With this configuration you should be able to restart the network,
+although a reboot is recommended to see if everything works properly.
+
+.. warning::
+   Make sure you have an alternative way like IPMI or ILO to reach the machine
+   in case you made a configuration error and the network stops functioning!
+
 
 Configure Ubuntu for Basic Networks
 '''''''''''''''''''''''''''''''''''
@@ -642,11 +747,10 @@ although a reboot is recommended to see if everything works properly.
 Network Example for Advanced Networks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the Advanced networking mode is most common to have (at least) two physical interfaces.
-In this example we will again have the hypervisor management interface on cloudbr0 on the 
-untagged (native) VLAN. But now we will have a bridge on top of our additional interface (eth1)
-for public and guest traffic with no VLANs applied by us - CloudStack will add the VLANs
-as required.
+In the Advanced networking mode, it is most common to have (at least) two physical interfaces per hypervior-host.
+We will use the interface eth0 linked to the bridge 'cloudbr0' using the untagged (native) VLAN for hypervisor management.
+Additionally we configure the second interface for usage with the bridge 'cloudbr1' for public and guest traffic.
+This time there are no VLANs applied by us - CloudStack will add the VLANs as required during actual use.
 
 We again give the Hypervisor the IP-Address 192.168.42.11/24 with
 the gateway 192.168.42.1
@@ -659,7 +763,7 @@ Configuring the Network Bridges for Advanced Networks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It depends on the distribution you are using how to configure these,
-below you'll find examples for RHEL/CentOS and Ubuntu.
+below you'll find examples for RHEL/CentOS, SUSE and Ubuntu.
 
 .. note::
    The goal is to have two bridges called 'cloudbr0' and 'cloudbr1' after this
@@ -691,7 +795,7 @@ Make sure it looks similar to:
    TYPE=Ethernet
    BRIDGE=cloudbr0
 
-We now have to configure the VLAN interfaces:
+We now have to configure the second network-interface for use in guest VLANs:
 
 .. parsed-literal::
 
@@ -707,7 +811,7 @@ We now have to configure the VLAN interfaces:
    TYPE=Ethernet
    BRIDGE=cloudbr1
 
-Now we have the VLAN interfaces configured we can add the bridges on top
+Now we have the interfaces configured and can add the bridges on top
 of them.
 
 .. parsed-literal::
@@ -734,7 +838,7 @@ Now we configure cloudbr0 and include the Management IP of the hypervisor.
    NETMASK=255.255.255.0
    STP=yes
 
-We configure cloudbr1 as a plain bridge without an IP address
+We configure 'cloudbr1' as a plain bridge without an IP address or dedicated VLAN configuration.
 
 .. parsed-literal::
 
@@ -750,6 +854,92 @@ We configure cloudbr1 as a plain bridge without an IP address
    IPV6_AUTOCONF=no
    DELAY=5
    STP=yes
+
+With this configuration you should be able to restart the network,
+although a reboot is recommended to see if everything works properly.
+
+.. warning::
+   Make sure you have an alternative way like IPMI or ILO to reach the machine
+   in case you made a configuration error and the network stops functioning!
+
+Configure SUSE for Advanced Networks
+''''''''''''''''''''''''''''''''''''''''
+
+The required packages were installed when libvirt was installed, we can
+proceed to configuring the network.
+
+First we configure eth0
+
+.. parsed-literal::
+
+   $ vi /etc/sysconfig/network/ifcfg-eth0
+
+Make sure it looks similar to:
+
+.. parsed-literal::
+
+   NAME=eth0
+   STARTMODE=auto
+   BOOTPROTO=none
+
+We now have to configure the VLAN interfaces:
+
+.. parsed-literal::
+
+   $ vi /etc/sysconfig/network/ifcfg-eth1
+
+.. parsed-literal::
+
+   NAME=eth1
+   STARTMODE=auto
+   BOOTPROTO=none
+
+Now we have the VLAN interfaces configured we can add the bridges on top
+of them.
+
+.. parsed-literal::
+
+   $ vi /etc/sysconfig/network/ifcfg-cloudbr0
+
+Now we configure cloudbr0 and include the Management IP of the hypervisor.
+
+.. note::
+   The management IP of the hypervisor doesn't have to be in same subnet/VLAN as the
+   management network, but its quite common.
+
+.. parsed-literal::
+
+   NAME=cloudbr0
+   STARTMODE=auto
+   BOOTPROTO=static
+   BRIDGE=yes
+   BRIDGE_PORTS=eth0
+   BRIDGE_STP=on
+   BRIDGE_FORWARDDELAY=5
+   IPADDR=192.168.42.11
+   NETMASK=255.255.255.0
+
+Add the gatway in ``/etc/sysconfig/network/routes``
+
+.. parsed-literal::
+
+   default 192.168.42.1 - cloudbr0
+
+We configure cloudbr1 as a plain bridge without an IP address
+
+.. parsed-literal::
+
+   $ vi /etc/sysconfig/network/ifcfg-cloudbr1
+
+.. parsed-literal::
+
+   NAME=cloudbr1
+   STARTMODE=auto
+   BOOTPROTO=none
+   BRIDGE=yes
+   BRIDGE_PORTS=eth1
+   BRIDGE_STP=on
+   BRIDGE_FORWARDDELAY=5
 
 With this configuration you should be able to restart the network,
 although a reboot is recommended to see if everything works properly.
@@ -833,10 +1023,10 @@ Preparing
 ^^^^^^^^^
 
 To make sure that the native bridge module will not interfere with
-openvswitch the bridge module should be added to the blacklist. See the
-modprobe documentation for your distribution on where to find the
-blacklist. Make sure the module is not loaded either by rebooting or
-executing rmmod bridge before executing next steps.
+openvswitch the bridge module should be added to the denylist (likely named
+'denylist') see the modprobe documentation for your distribution on
+where to find the denylist. Make sure the module is not loaded either
+by rebooting or executing rmmod bridge before executing next steps.
 
 The network configurations below depend on the ifup-ovs and ifdown-ovs
 scripts which are part of the openvswitch installation. They should be
@@ -988,6 +1178,93 @@ although a reboot is recommended to see if everything works properly.
    in case you made a configuration error and the network stops functioning!
 
 
+Configure OpenVswitch in SUSE
+'''''''''''''''''''''''''''''''''
+
+The required packages were installed when openvswitch and libvirt were
+installed, we can proceed to configuring the network.
+
+First we configure eth0
+
+.. parsed-literal::
+
+   $ vi /etc/sysconfig/network/ifcfg-eth0
+
+Make sure it looks similar to:
+
+.. parsed-literal::
+
+   NAME=eth0
+   STARTMODE=auto
+   BOOTPROTO=none
+
+
+We have to configure the base bridge with the trunk.
+
+.. parsed-literal::
+
+   $ vi /etc/sysconfig/network/ifcfg-cloudbr
+
+.. parsed-literal::
+
+   NAME=cloudbr
+   STARTMODE=auto
+   BOOTPROTO=none
+   OVS_BRIDGE=yes
+
+We now have to configure the three VLAN bridges:
+
+.. parsed-literal::
+
+   $ vi /etc/sysconfig/network/mgmt0
+
+.. parsed-literal::
+
+   NAME=mgmt0
+   STARTMODE=auto
+   BOOTPROTO=static
+   OVS_BRIDGE=yes
+   IPADDR=192.168.42.11
+   NETMASK=255.255.255.0
+
+
+Add the gatway in ``/etc/sysconfig/network/routes``
+
+.. parsed-literal::
+
+   default 192.168.42.1 - mgmt0
+
+
+.. parsed-literal::
+
+   $ vi /etc/sysconfig/network/ifcfg-cloudbr0
+
+.. parsed-literal::
+
+   NAME=cloudbr0
+   STARTMODE=auto
+   BOOTPROTO=none
+   OVS_BRIDGE=yes
+
+
+.. parsed-literal::
+
+   $ vi /etc/sysconfig/network/ifcfg-cloudbr1
+
+.. parsed-literal::
+
+   NAME=cloudbr1
+   STARTMODE=auto
+   BOOTPROTO=none
+   OVS_BRIDGE=yes
+
+With this configuration you should be able to restart the network,
+although a reboot is recommended to see if everything works properly.
+
+.. warning::
+   Make sure you have an alternative way like IPMI or ILO to reach the machine
+   in case you made a configuration error and the network stops functioning!
+
 
 Configuring the firewall
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1012,8 +1289,8 @@ It depends on the firewall you are using how to open these ports. Below
 you'll find examples how to open these ports in RHEL/CentOS and Ubuntu.
 
 
-Open ports in RHEL/CentOS
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Open ports in RHEL / CentOS / SUSE
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 RHEL and CentOS use iptables for firewalling the system, you can open
 extra ports by executing the following iptable commands:
@@ -1048,6 +1325,14 @@ save them first.
 .. parsed-literal::
 
    $ iptables-save > /etc/sysconfig/iptables
+
+.. warning::
+   On RHEL 8 / CentOS 8 / SUSE, firewalld is the default firewall manager and controls iptables. It is
+   recommended that it be disabled ``systemctl stop firewalld ; systemctl disable firewalld``
+
+.. warning::
+   On SUSE, iptables are not persisted on reboot, so it is recommended that an iptables and
+   ip6tables service be created to ensure that they persist
 
 
 Open ports in Ubuntu
@@ -1086,6 +1371,16 @@ To open the required ports, execute the following commands:
    By default UFW is not enabled on Ubuntu. Executing these commands with the
    firewall disabled does not enable the firewall.
 
+   If you have an issue with ufw while using a bridged connection,
+   add those two lines at the end of the /etc/ufw/before.rules just before COMMIT
+
+.. parsed-literal::
+   sudo vi /etc/ufw/before.rules
+
+.. parsed-literal::
+   -A FORWARD -d 192.168.42.11 -j ACCEPT
+   -A FORWARD -s 192.168.42.11 -j ACCEPT
+
 
 Additional Packages Required for Features
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1100,7 +1395,7 @@ In order to facilitate this the **Aria2** (https://aria2.github.io/) package mus
 installed on all of your KVM hosts.
 
 As this package often is not available in standard distribution repos, you will need
-to install the package from your preferred source. 
+to install the package from your preferred source.
 
 
 Volume snapshots
@@ -1122,4 +1417,3 @@ The host is now ready to be added to a cluster. This is covered in a
 later section, see :ref:`adding-a-host`. It is
 recommended that you continue to read the documentation before adding
 the host!
-

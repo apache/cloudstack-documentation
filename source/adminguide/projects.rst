@@ -179,8 +179,6 @@ new limit.
 
 #. In the left navigation, click Projects.
 
-#. In Select View, choose Projects.
-
 #. Click the name of the project you want to work with.
 
 #. Click the Resources tab. This tab lists the current maximum amount
@@ -265,8 +263,6 @@ to true, end users can also create projects.
 
 #. In the left navigation, click Projects.
 
-#. In Select view, click Projects.
-
 #. Click New Project.
 
 #. Give the project a name and description for display to users, then
@@ -301,7 +297,7 @@ feature is enabled in the cloud as described in `“Setting
 Up Invitations” <#setting-up-invitations>`_. If the invitations feature is
 not turned on, use the procedure in Adding Project Members From the UI.
 
-#. Log in to the CloudStack Primate UI.
+#. Log in to the CloudStack UI.
 
 #. In the left navigation, click Projects.
 
@@ -334,8 +330,6 @@ Invitations” <#sending-project-membership-invitations>`_.
 
 #. In the left navigation, click Projects.
 
-#. In Select View, choose Projects.
-
 #. Click the name of the project you want to work with.
 
 #. Click on the `Add Account to Project` button. This will have 2 tabs, one to add account to the project and the other to add a user to the project. Here, we can specify the:
@@ -353,7 +347,7 @@ Accepting a Membership Invitation
 If you have received an invitation to join a CloudStack project, and you
 want to accept the invitation, follow these steps:
 
-#. Log in to the CloudStack’s Primate UI.
+#. Log in to the CloudStack’s UI.
 
 #. In the left navigation, click Projects.
 
@@ -386,8 +380,6 @@ parent domain, or the CloudStack root administrator.
 #. Log in to the CloudStack UI.
 
 #. In the left navigation, click Projects.
-
-#. In Select View, choose Projects.
 
 #. Click the name of the project.
 

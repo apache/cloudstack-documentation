@@ -17,7 +17,7 @@ The Kubernetes Service plugin adds Kubernetes integration to CloudStack. The plu
 
 With CoreOS having reached EOL, from 4.16 the Kubernetes Service Plugin will use the existing SystemVM template for deploying kubernetes clusters. For installation of Kubernetes binaries on the cluster nodes, a binaries ISO is used for each Kubernetes version to be made available via CloudStack. This allows faster, offline installation of Kubernetes binaries and docker images along with support for adding multiple versions of Kubernetes for upgrades and running different clusters.
 
-For deployment and setup of Kubernetes on cluster nodes, the plugin uses the Kubernetes tool, 'kubeadm'. kubeadm is the command-line tool for easily provisioning a secure Kubernetes cluster on top of physical or cloud servers or virtual machines. Under the hood, master node(s) of the cluster starts a Kubernetes cluster using kubeadm init command with a custom token, and worker nodes join this Kubernetes cluster using kubeadm join command with the same token. More about kubeadm here: https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/. Weave Net CNI provider plugin is used for cluster networking. More about Weave Net provide plugin here: https://www.weave.works/docs/net/latest/kubernetes/kube-addon/.
+For deployment and setup of Kubernetes on cluster nodes, the plugin uses the Kubernetes tool, 'kubeadm'. kubeadm is the command-line tool for easily provisioning a secure Kubernetes cluster on top of physical or cloud servers or virtual machines. Under the hood, control node(s) of the cluster starts a Kubernetes cluster using kubeadm init command with a custom token, and worker nodes join this Kubernetes cluster using kubeadm join command with the same token. More about kubeadm here: https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/. Weave Net CNI provider plugin is used for cluster networking. More about Weave Net provide plugin here: https://www.weave.works/docs/net/latest/kubernetes/kube-addon/.
 
 To access the Kubernetes dashboard securely, the plugin provides access to kubeconfig file data which uses the Kubernetes tool kubectl to run a local proxy and thereby access the dashboard. More about kubectl here: https://kubernetes.io/docs/reference/kubectl/overview/
 
@@ -144,8 +144,8 @@ The following Global Setting value must be set to the name of Network Offering t
 A new network offering named DefaultNetworkOfferingforKubernetesService has been added since 4.14.0
 
 .. note::
-   - Multi-master, HA cluster can be created for Kubernetes version 1.16 and above only.
-   - While creating multi-master, HA cluster over a shared network, an external load-balancer must be manually setup. This load-balancer should have port-forwarding rules for SSH, Kubernetes API server access. Service assumes SSH access to cluster nodes is available from port 2222 to (2222 + cluster node count -1). Similarly, for API access 6443 must be forwarded to master nodes. Over the CloudStack isolated network these rules are automatically provisioned.
+   - Multi-control nodes, HA cluster can be created for Kubernetes version 1.16 and above only.
+   - While creating multi-control nodes, HA cluster over a shared network, an external load-balancer must be manually setup. This load-balancer should have port-forwarding rules for SSH, Kubernetes API server access. Service assumes SSH access to cluster nodes is available from port 2222 to (2222 + cluster node count -1). Similarly, for API access 6443 must be forwarded to control nodes. Over the CloudStack isolated network these rules are automatically provisioned.
 
 Managing Kubernetes clusters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -171,7 +171,7 @@ createKubernetesCluster API can be used to create new Kubernetes cluster. It tak
 - **projectid** (Deploy cluster for the project)
 - **networkid** (Network in which Kubernetes cluster is to be launched)
 - **keypair** (name of the ssh key pair used to login to the virtual machines)
-- **masternodes** (number of Kubernetes cluster master nodes, default is 1) externalloadbalanceripaddress (external load balancer IP address while using shared network with Kubernetes HA cluster)
+- **controlnodes** (number of Kubernetes cluster control nodes, default is 1) externalloadbalanceripaddress (external load balancer IP address while using shared network with Kubernetes HA cluster)
 - **size** (number of Kubernetes cluster worker nodes; Required)
 - **noderootdisksize** (root disk size of root disk for each node)
 - **dockerregistryusername** (username for the docker image private registry; Experimental)
@@ -192,7 +192,7 @@ For example:
        "id": "74e3cc02-bbf7-438f-bfb0-9c193e90c1fb",
        "kubernetesversionid": "6668e999-fe6c-4a91-88d8-d10bcf280d02",
        "kubernetesversionname": "v1.13.2",
-       "masternodes": 1,
+       "controlnodes": 1,
        "memory": "4096",
        "name": "Test",
        "networkid": "148af2cb-4b94-42a2-b701-3b6aa884cbb0",

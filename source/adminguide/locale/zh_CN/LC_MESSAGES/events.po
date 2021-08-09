@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -51,7 +51,7 @@ msgid ""
 "event logs can be used to gain more information on the status of a pending "
 "job or can be used to identify a job that is hanging or has not started. The"
 " following sections provide more information on these events.."
-msgstr "这里有两种类型的事件记录在&PRODUCT;事件日志。标准事件记录一个事件的成功或失败，并且可以用于鉴别哪些是已经失败的任务或进程。这里也记录长时间运行任务事件。异步任务的制定，启动，完成这些事件都被记录。长时间运行的同步和异步事件日志可用于获取挂起任务更多的状态信息，也可以用来识别任务是被挂起或还未开始。以下各节提供有关这些事件的详细信息。"
+msgstr "这里有两种类型的事件记录在&CloudStack;事件日志。标准事件记录一个事件的成功或失败，并且可以用于鉴别哪些是已经失败的任务或进程。这里也记录长时间运行任务事件。异步任务的制定，启动，完成这些事件都被记录。长时间运行的同步和异步事件日志可用于获取挂起任务更多的状态信息，也可以用来识别任务是被挂起或还未开始。以下各节提供有关这些事件的详细信息。"
 
 # 127295678f0c4cf084cf737444f11087
 #: ../../events.rst:45

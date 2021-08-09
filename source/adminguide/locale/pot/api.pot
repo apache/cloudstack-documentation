@@ -38,7 +38,7 @@ msgstr ""
 
 #: ../../api.rst:31
 # 1f57015e966c480795b141ba3f87b86a
-msgid "See `the Developer’s Guide <https://cwiki.apache.org/confluence/display/CLOUDSTACK/Development+101>`_ and `the API Reference <http://cloudstack.apache.org/docs/api/>`_."
+msgid "See `the Developer’s Guide <https://cwiki.apache.org/confluence/display/CLOUDSTACK/Development+101>`_ and `the API Reference <https://cloudstack.apache.org/api.html>`_."
 msgstr ""
 
 #: ../../api.rst:36

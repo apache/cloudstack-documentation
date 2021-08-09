@@ -27,14 +27,6 @@ Need some help getting started? Feel free to ask on the `mailing list
    discussions about development and the project itself happen. This is a high
    volume list.
 
-
-Or on one of the following IRC channels on irc.freenode.net:
-
--  #cloudstack - General Apache CloudStack conversation and end user support
--  #cloudstack-dev - Development discussions
--  #cloudstack-meeting - Weekly and ad-hoc meeting room for the Apache CloudStack community
-
-
 Documentation Available
 -----------------------
 

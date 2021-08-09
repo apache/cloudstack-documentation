@@ -17,25 +17,39 @@
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is a |version| LTS release with over 15 major new features, and
-over 200 enhancements and fixes since 4.13.  Highlights include:
+Apache CloudStack 4.15.1.0 is a 4.15 LTS release with over 350 enhancements and
+fixes since 4.15.0.0. Highlights include:
 
-•	New modern UI (Project Primate, Technical preview)
-•	Backup and Recovery framework
-•	Backup and Recovery Provider for Veeam
-•	VM ingestion
-•	L2 network PVLAN enhancements
-•	CloudStack Kubernetes Service
-•	UEFI support
-•	KVM rolling maintenance
-•	Enable Direct Download for systemVM templates
-•	VR health checks
-•	Download logs and diagnostics data from SSVM/CPVM/VRs
-•	Enable additional configuration metadata to virtual machines
+• Support for XCP-ng 8.2
+• Support for VMware 7.0
+• Several VMware improvements such as vSphere datastore cluster synchronisation, deploy-as-is OVA template support and VM migration
+• Several VR fixes and improvements, support for IKEv2 VPN option
+• Several UI fixes and improvements, support for UI customisation and updated localisation
 
+What's New in 4.15.0.0
+======================
+
+Apache CloudStack 4.15.0.0 is a 4.15 LTS release with over 15 major new
+features, and over 250 enhancements and fixes since 4.14. Highlights include:
+
+• New modern UI (GA release)
+• Support for CentOS8 and Ubuntu 20.04 for management server and KVM hosts (note: CentOS 8 will EOL in Dec 2021)
+• Support for XCP-ng 8.1
+• Support for MySQL 8
+• NoVNC console integration
+• Unmanaging guest VMs
+• VMware advanced storage capabilities (vSAN, vVols, VMFS6, datastore clusters)
+• VMware full OVF properties support
+• Secondary Storage usage improvements
+• PVLAN support for L2 networks
+• Role-based users in Projects
+• Dynamic roles improvements
+• Boot into BIOS on VMware
+• Redfish OOBM Support
+• Human readable sizes in logs
 
 The full list of new features can be found in the project release notes at
-http://docs.cloudstack.apache.org/en/4.14.0.0/releasenotes/changes.html
+http://docs.cloudstack.apache.org/en/4.15.0.0/releasenotes/changes.html
 
 .. important::
    This version of CloudStack allows control over the visibility of the DNS services provided
@@ -72,23 +86,22 @@ workaround in their KVM host's /etc/ssh/sshd_config and restart ssh server
 before adding the KVM host in CloudStack:
 
    PubkeyAcceptedKeyTypes=+ssh-dss
+
    HostKeyAlgorithms=+ssh-dss
+
    KexAlgorithms=+diffie-hellman-group1-sha1
 
-New User Interface & Depreciation notice of existing UI
+New UI GA and Legacy UI Deprecation and Removal Notice
 =======================================================
 
-Cloudstack 4.14 ships with a Technical Preview of a new, modern User Interface (project Primate).
-This technical preview can be used by users & operators of Cloudstack environments for evaluation
-& testing purposes. With version 4.14, the existing UI remains the supported UI for production environments.
-However, with the 4.14 release, the Apache Cloudstack community will stop taking feature requests
-for new functionality in the existing UI. All new functionality will be developed against the new UI.
+Cloudstack 4.15 ships with the GA release of a new and modern User Interface as
+the default UI which deprecates the current legacy UI. With version 4.15, the
+existing legacy UI (deprecated) along with the new UI are the supported UI for
+production environments.
 
-The next LTS release (likely to be version 4.15) of Apache Cloudstack will ship
-with the production release of the new UI. It will also be the last version of
-CloudStack to ship with the old UI. This release will also have the final
-deprecation notice for the old UI.
+The default URL <host>:8080/client will serve the new UI and
+<host>:8080/client/legacy will serve the deprecated legacy UI.
 
-In the following release (likely to be 4.16), the old UI will be deprecated.
-
-Please see `Primate install guide <../installguide/primate.html>`_
+In the next release (4.16), the Apache Cloudstack community will remove the legacy
+UI. Users are encouraged to implement a migration path towards deprecating the
+legacy UI in their production environments.

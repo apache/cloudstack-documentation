@@ -204,19 +204,19 @@ Be sure you have set the following in db.properties:
 
    Example: ``db.ha.enabled=true``
 
--  ``db.cloud.slaves``: set to a comma-delimited set of slave hosts for the
+-  ``db.cloud.replicas``: set to a comma-delimited set of replica hosts for the
    cloud database. This is the list of nodes set up with replication.
-   The master node is not in the list, since it is already mentioned
+   The source node is not in the list, since it is already mentioned
    elsewhere in the properties file.
 
-   Example: ``db.cloud.slaves=node2,node3,node4``
+   Example: ``db.cloud.replicas=node2,node3,node4``
 
--  ``db.usage.slaves``: set to a comma-delimited set of slave hosts for the
+-  ``db.usage.replicas``: set to a comma-delimited set of replica hosts for the
    usage database. This is the list of nodes set up with replication.
-   The master node is not in the list, since it is already mentioned
+   The source node is not in the list, since it is already mentioned
    elsewhere in the properties file.
 
-   Example: ``db.usage.slaves=node2,node3,node4``
+   Example: ``db.usage.replicas=node2,node3,node4``
 
 **Optional Settings**
 
@@ -224,22 +224,22 @@ The following settings must be present in db.properties, but you are not
 required to change the default values unless you wish to do so for
 tuning purposes:
 
--  ``db.cloud.secondsBeforeRetryMaster``: The number of seconds the MySQL
-   connector should wait before trying again to connect to the master
-   after the master went down. Default is 1 hour. The retry might happen
-   sooner if db.cloud.queriesBeforeRetryMaster is reached first.
+-  ``db.cloud.secondsBeforeRetrySource``: The number of seconds the MySQL
+   connector should wait before trying again to connect to the source
+   after the source went down. Default is 1 hour. The retry might happen
+   sooner if db.cloud.queriesBeforeRetrySource is reached first.
 
-   Example: ``db.cloud.secondsBeforeRetryMaster=3600``
+   Example: ``db.cloud.secondsBeforeRetrySource=3600``
 
--  ``db.cloud.queriesBeforeRetryMaster``: The minimum number of queries to
-   be sent to the database before trying again to connect to the master
-   after the master went down. Default is 5000. The retry might happen
-   sooner if db.cloud.secondsBeforeRetryMaster is reached first.
+-  ``db.cloud.queriesBeforeRetrySource``: The minimum number of queries to
+   be sent to the database before trying again to connect to the source
+   after the source went down. Default is 5000. The retry might happen
+   sooner if db.cloud.secondsBeforeRetrySource is reached first.
 
-   Example: ``db.cloud.queriesBeforeRetryMaster=5000``
+   Example: ``db.cloud.queriesBeforeRetrySource=5000``
 
 -  ``db.cloud.initialTimeout``: Initial time the MySQL connector should wait
-   before trying again to connect to the master. Default is 3600.
+   before trying again to connect to the source. Default is 3600.
 
    Example: ``db.cloud.initialTimeout=3600``
 
@@ -250,7 +250,7 @@ Limitations on Database High Availability
 The following limitations exist in the current implementation of this
 feature.
 
--  Slave hosts can not be monitored through CloudStack. You will need to
+-  Replica hosts can not be monitored through CloudStack. You will need to
    have a separate means of monitoring.
 
 -  Events from the database side are not integrated with the CloudStack

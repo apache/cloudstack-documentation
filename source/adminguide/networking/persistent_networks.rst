@@ -12,7 +12,7 @@
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
-   
+
 
 Persistent Networks
 -------------------
@@ -43,7 +43,7 @@ discontinued.
 Persistent Network Considerations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
--  Persistent network is designed for isolated networks.
+-  Persistent network is designed for isolated and L2 networks.
 
 -  All default network offerings are non-persistent.
 
@@ -54,6 +54,12 @@ Persistent Network Considerations
 -  When you create a guest network, the network offering that you select
    defines the network persistence. This in turn depends on whether
    persistent network is enabled in the selected network offering.
+
+-  Creation of an Isolated Persistent network will deploy a Virtual Router
+   when the network is created.
+
+-  Creation of an L2 Persistent network setups up the network devices namely,
+   bridges, VLANs or port-groups across all hosts in a zone.
 
 -  An existing network can be made persistent by changing its network
    offering to an offering that has the Persistent option enabled. While
@@ -78,7 +84,7 @@ To create a persistent network, perform the following:
 
 #. Create a network offering with the Persistent option enabled.
 
-   See `"Creating a New Network Offering" 
+   See `"Creating a New Network Offering"
    <networking.html#creating-a-new-network-offering>`_.
 
 #. Select Network from the left navigation pane.

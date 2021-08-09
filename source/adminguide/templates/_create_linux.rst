@@ -20,7 +20,7 @@ Creating a Linux Template
 Linux templates should be prepared using this documentation in order to
 prepare your linux VMs for template deployment. For ease of
 documentation, the VM which you are configuring the template on will be
-referred to as "Template Master". This guide currently covers legacy
+referred to as "Template Primary". This guide currently covers legacy
 setups which do not take advantage of UserData and cloud-init and
 assumes openssh-server is installed during installation.
 
@@ -70,7 +70,7 @@ templating.
       BOOTPROTO=dhcp
       ONBOOT=yes
 
-   The next steps updates the packages on the Template Master.
+   The next steps updates the packages on the Template Primary.
 
    -  Ubuntu
 
@@ -165,14 +165,14 @@ templating.
 
    .. warning:: 
       The following steps should be run when you are ready to template 
-      your Template Master. If the Template Master is rebooted during 
+      your Template Primary. If the Template Primary is rebooted during 
       these steps you will have to run all the steps again. At the end 
-      of this process the Template Master should be shutdown and the 
+      of this process the Template Primary should be shutdown and the 
       template created in order to create and deploy the final template.
 
 #. **Remove the udev persistent device rules**
 
-   This step removes information unique to your Template Master such as
+   This step removes information unique to your Template Primary such as
    network MAC addresses, lease files and CD block devices, the files
    are automatically generated on next boot.
 
@@ -202,7 +202,7 @@ templating.
 
 #. **Cleaning log files**
 
-   It is good practice to remove old logs from the Template Master.
+   It is good practice to remove old logs from the Template Primary.
 
    .. code:: bash
 
@@ -215,7 +215,7 @@ templating.
 
    In order for the Ubuntu DHCP script to function and the CentOS
    dhclient to set the VM hostname they both require the Template
-   Master's hostname to be "localhost", run the following commands to
+   Primary's hostname to be "localhost", run the following commands to
    change the hostname.
 
    .. code:: bash
@@ -243,7 +243,7 @@ templating.
 
 #. **Shutdown the VM**
 
-   Your now ready to shutdown your Template Master and create a
+   Your now ready to shutdown your Template Primary and create a
    template!
 
    .. code:: bash

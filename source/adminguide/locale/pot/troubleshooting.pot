@@ -173,7 +173,7 @@ msgstr ""
 
 #: ../../troubleshooting.rst:132
 # 25bdb5c7a6a7454ea25d62c3f0a02c57
-msgid "For more information about the API syntax, see the API Reference at `http://cloudstack.apache.org/docs/api/ <http://cloudstack.apache.org/docs/api/>`_."
+msgid "For more information about the API syntax, see the API Reference at `https://cloudstack.apache.org/api.html <https://cloudstack.apache.org/api.html>`_."
 msgstr ""
 
 #: ../../troubleshooting.rst:137
