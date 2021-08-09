@@ -40,6 +40,9 @@ Restart the Management Server to enable the set configuration values.
 
 Once the Kubernetes service is running the new APIs will become accessible and the UI will show the Kubernetes tab under the Compute section.
 
+**NOTE:**
+From ACS 4.16 onwards, if a CKS cluster is to be deployed on VMware, the 'vmware.create.full.clone' configuration parameter will need to be set to true, so as to allow resizing of root volumes of the cluster nodes.
+
 Kubernetes Supported Versions
 ------------------------------
 
