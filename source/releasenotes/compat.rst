@@ -52,6 +52,18 @@ and VMware with vSphere.
 
    .. note:: It is now required to enable HA on the XenServer pool in order to recover from a pool-master failure. Please refer to the `XenServer documentation <https://docs.citrix.com/en-us/xencenter/7-1/pools-ha-enable.html>`_.
 
+   .. note::
+      CloudStack currently does not support passing the boot type of a VM to XenServer or XCP-ng. The hypervisor automatically determines
+      it based on the VM OS. Due to this internal mechanism, migrating VMs between hypervisor versions can cause the boot type to change,
+      which can cause the VM to not boot or freeze on the boot screen. To remediate this, the admin will have to manually change the
+      boot parameters either on Xen Orchestrator or on the hypervisor by running the command
+
+      .. parsed-literal::
+         xe vm-param-set uuid=<UUID> HVM-boot-params:firmware=<MODE>
+         xe vm-param-set uuid=<UUID> platform:secureboot=<OPTION>
+
+      For this reason, migrating VMs between XenServer and XCP-ng hypervisor versions is not recommended.
+
 -  VMware versions 6.5, 6.7 and 7.0
 
    .. note:: There is a known issue in 6.7 U1 (https://kb.vmware.com/s/article/67315) which blocks some CloudStack cloning operations. The use of linked clones is known to be effected.
