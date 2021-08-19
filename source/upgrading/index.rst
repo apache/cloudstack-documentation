@@ -13,7 +13,7 @@
    specific language governing permissions and limitations
    under the License.
 
-.. CloudStack Release Notes documentation master file, created by
+.. CloudStack Release Notes documentation main file, created by
    sphinx-quickstart on Fri Feb  7 16:00:59 2014.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -31,12 +31,14 @@ release.  Please read through all sections carefully before starting.
 .. note::
    For information on the API changes and issues fixed in this release, please see the Release Notes section of the documentation
 
-
 Contents:
 
 .. toctree::
    :maxdepth: 1
  
+   upgrade/mysql
+   upgrade/valid_source
+   upgrade/upgrade-4.15
    upgrade/upgrade-4.14
    upgrade/upgrade-4.13
    upgrade/upgrade-4.12
@@ -54,4 +56,3 @@ Contents:
 ..   upgrade/upgrade-4.0
 ..   upgrade/upgrade-3.0.x
 ..   upgrade/upgrade-2.2.14
-   upgrade/valid_source

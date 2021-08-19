@@ -12,7 +12,7 @@
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
-   
+
 
 Acquiring a New IP Address
 --------------------------
@@ -23,7 +23,7 @@ Acquiring a New IP Address
 
 #. Click the name of the network where you want to work with.
 
-#. Click View IP Addresses.
+#. Click the Public IP Addresses tab.
 
 #. Click Acquire New IP.
 

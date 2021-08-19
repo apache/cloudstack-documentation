@@ -2540,11 +2540,11 @@ msgstr ""
 
 #: ../../configuration.rst:1621
 # c8177a7ac4ea4c07bf0c16f2833e48bf
-msgid "blacklisted.routes"
+msgid "denied.routes"
 msgstr ""
 
 #: ../../configuration.rst:1621
 # d9441a44a1824e80804bbbe62fd7f531
-msgid "Routes that are blacklisted cannot be used for creating static routes for a VPC Private Gateway."
+msgid "Routes that are denied cannot be used for creating static routes for a VPC Private Gateway."
 msgstr ""
 

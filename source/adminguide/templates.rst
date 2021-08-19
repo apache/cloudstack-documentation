@@ -171,16 +171,11 @@ as the prototype for other VMs.
          PV (32-bit) or Other PV (64-bit). This choice is available only
          for XenServere:
 
-         .. note:: 
-            Generally you should not choose an older version of the OS 
-            than the version in the image. For example, choosing CentOS 
-            5.4 to support a CentOS 6.2 image will in general not work. 
-            In those cases you should choose Other.
-
          .. note::
-            Since version 4.15, VMware templates do not allow users or administrators
-            selecting an OS Type when registering a template. The OS Type is
-            obtained from the template after it is registered.
+            Generally you should not choose an older version of the OS
+            than the version in the image. For example, choosing CentOS
+            5.4 to support a CentOS 6.2 image will in general not work.
+            In those cases you should choose Other.
 
 
    -  **Public**. Choose Yes to make this template accessible to all
@@ -189,7 +184,7 @@ as the prototype for other VMs.
       Public Templates” <#private-and-public-templates>`_.
 
    -  **Password Enabled**. Choose Yes if your template has the
-      CloudStack password change script installed. See 
+      CloudStack password change script installed. See
       :ref:`adding-password-management-to-templates`.
 
 #. Click Add.
@@ -203,15 +198,15 @@ available when creating a new VM.
    automatically at registration time. If a template contains different deployment
    options (or configurations) as in the case of virtual appliances, then CloudStack
    display the information required by the template, allowing users or administrators
-   to configure their instances.  
+   to configure their instances.
 
 Creating a Template from a Snapshot
 -----------------------------------
 
 If you do not want to stop the VM in order to use the Create Template
-menu item (as described in `“Creating a Template from an Existing 
-Virtual Machine” <#creating-a-template-from-an-existing-virtual-machine>`_), 
-you can create a template directly from any snapshot through the 
+menu item (as described in `“Creating a Template from an Existing
+Virtual Machine” <#creating-a-template-from-an-existing-virtual-machine>`_),
+you can create a template directly from any snapshot through the
 CloudStack UI.
 
 
@@ -222,7 +217,7 @@ Uploading Templates from a remote HTTP server
 
 vSphere Templates and ISOs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. warning:: 
+.. warning::
       If you are uploading a template that was created using vSphere Client,
       be sure the OVA file does not contain an ISO. If it does, the deployment
       of VMs from the template will fail
@@ -249,7 +244,12 @@ To upload a template:
       available, or All Zones to make it available throughout
       CloudStack.
 
-   -  **OS Type**: (Except for VMware). This helps CloudStack and the hypervisor perform
+   - **Read VM settings from OVA**. (VMware only) If selected, the registered template will allow users to deploy VMs as clones of the template, including all their properties, configurations, end-user license agreements, disks, os type, etc. This option allows users to register virtual appliances. See `Support for Virtual Appliances <virtual_machines.html#about-virtual-appliances>`_.
+
+      .. note:: 
+         When this option is selected the following fields are hidden: Root disk controller, Keyboard type and OS Type. 
+
+   -  **OS Type**: This helps CloudStack and the hypervisor perform
       certain operations and make assumptions that improve the
       performance of the guest. Select one of the following:
 
@@ -257,15 +257,15 @@ To upload a template:
 
       -  If the OS type of the stopped VM is not listed, choose Other.
 
-         .. note:: 
-            You should not choose an older version of the OS than the 
-            version in the image. For example, choosing CentOS 5.4 to 
-            support a CentOS 6.2 image will in general not work. In 
+         .. note::
+            You should not choose an older version of the OS than the
+            version in the image. For example, choosing CentOS 5.4 to
+            support a CentOS 6.2 image will in general not work. In
             those cases you should choose Other.
 
          .. note::
-            Since version 4.15, VMware templates do not allow users or administrators
-            selecting an OS Type when registering a template. The OS Type is
+            Since version 4.15.1, VMware templates do not allow users or administrators
+            selecting an OS Type when registering a template if the option 'Read VM settings from OVA' is selected. In this case, the OS Type is
             obtained from the template after it is registered.
 
    -  **Hypervisor**: The supported hypervisors are listed. Select the
@@ -273,10 +273,6 @@ To upload a template:
 
    -  **Format**. The format of the template upload file, such as VHD or
       OVA.
-
-   -  **Password Enabled**. Choose Yes if your template has the
-      CloudStack password change script installed. 
-      See :ref:`adding-password-management-to-templates`.
 
    -  **Extractable**. Choose Yes if the template is available for
       extraction. If this option is selected, end users can download a
@@ -291,14 +287,16 @@ To upload a template:
       more prominent for users to select. The template will appear in
       the Featured Templates list. Only an administrator can make a
       template Featured.
-      
+
 Note that uploading multi-disk templates is also supported.
 
 .. note:: 
-   VMware only: If the selected template contains OVF properties, different deployment options or configurations,
-   multiple NICs or end-user license agreements, then the wizard will display these properties.
+   VMware only: If the template is registered with the option 'Read VM settings
+   from OVA' then the VM deployment wizard will display all the available OVF
+   properties, different deployment options or configurations, multiple NICs or
+   end-user license agreements.
 
-   See `“Support for Virtual Appliances” <virtual_machines.html#support-for-virtual-appliances>`_.
+   See `Support for Virtual Appliances <virtual_machines.html#about-virtual-appliances>`_.
 
 
 
@@ -311,17 +309,12 @@ Uploading Templates and ISOs from a local computer
 
 It's also possible to upload an already prepared template or an ISO from your local computer.
 The steps are similar as when Uploading a template/ISO from a remote HTTP server, except that you need to choose a local template/ISO file from your PC.
-For this feature to work, your SSVMs must be supporting HTTPS (for more info please visit `“Using a SSL Certificate for the Console Proxy” 
+For this feature to work, your SSVMs must be supporting HTTPS (for more info please visit `“Using a SSL Certificate for the Console Proxy”
 <systemvm.html#using-a-ssl-certificate-for-the-console-proxy>`_).
-
-.. note::
-   Since version 4.15, VMware templates do not allow users or administrators
-   selecting an OS Type when uploading a template. The OS Type is
-   obtained from the template after it is uploaded.
 
 Example GUI dialog of uploading Template/ISO from local (browser) is given below:
 
-|template-upload-from-local.PNG|
+|template-upload-from-local.png|
 
 |upload-iso-from-local.png|
 
@@ -332,54 +325,54 @@ Sharing templates and ISOs with other accounts/projects
 
 When adding a template/ISO, the owner can choose to make template/ISO public or to keep it private. Once the template/ISO is created, the owner can choose to share this template/ISO so that other accounts/projects can also use the template/ISO. 
 
-Currently, the owner can share his template/ISO with:
-  - other accounts inside his own domain (i.e. can't share the template/ISO with other accounts in the subdomain of his domain or any other domains)
-  - projects where he belongs to (i.e. projects where he is the owner/creator or other projects where he has been joined)
+Currently, the owners can share their template/ISO with:
+  - other accounts inside their own domain (i.e. can't share the template/ISO with other accounts in the subdomain of their domain or any other domains)
+  - projects where they belongs to (i.e. projects where they are the owners/creators or other projects where they have been joined)
 
 Template/ISO permissions can be changed via updateTemplatePermissions/updateIsoPermissions API call or via GUI. It is supported to add, remove or reset (remove all) template/ISO permissions.
 
-When adding or removing permissions to/from a template/ISO, it is required to specify account/project name which is being added/removed from the template/ISO permissions. 
+When adding or removing permissions to/from a template/ISO, it is required to specify account/project name which is being added/removed from the template/ISO permissions.
 
-Global setting "allow.user.view.all.domain.accounts" has a default value of "false". This makes sure that when a regular user (of a "User" role) wants to share a template/ISO via GUI, he will not be shown the list of all accounts in his domain and he will need to know the name of the destination account with which he is sharing the template/ISO. This makes sense in public clouds where each account of a single domain is a different tenant/customer and privacy is imperative. In this case, the user will be presented with an input field to enter the account name, as on the images below:
+Global setting "allow.user.view.all.domain.accounts" has a default value of "false". This makes sure that when the regular users (of a "User" role) wants to share a template/ISO via GUI,  they will not be shown the list of all accounts in their domain and they will need to know the name of the destination account with which they are sharing the template/ISO. This makes sense in public clouds where each account of a single domain is a different tenant/customer and privacy is imperative. In this case, the user will be presented with an input field to enter the account name, as on the images below:
 
-.. warning:: 
+.. warning::
       The images displayed below refer to template permissions, but the same applies for ISO permissions.
 
-|template-permissions-update-manually-1.PNG|
+|template-permissions-update-manually-1.png|
 
 Sharing the template with account "user2"
 
-|template-permissions-update-manually-2.PNG|
+|template-permissions-update-manually-2.png|
 
 Revoking permissions from account "user2"
 
-But in environments where privacy within a domain is not an issue, setting "allow.user.view.all.domain.accounts" setting to "true" will make sure that the user, who is sharing the template, will be presented a more user-friendly multi-select list, listing all the accounts in his domain. This is shown in the images below;
+But in environments where privacy within a domain is not an issue, setting "allow.user.view.all.domain.accounts" setting to "true" will make sure that the user, who is sharing the template, will be presented a more user-friendly multi-select list, listing all the accounts in their domain. This is shown in the images below;
 
-|template-permissions-update-1.PNG|
+|template-permissions-update-1.png|
 
 Sharing the template with just account "user8"
 
-|template-permissions-update-2.PNG|
+|template-permissions-update-2.png|
 
 Sharing template with 2 specific projects
 
-|template-permissions-update-3.PNG|
+|template-permissions-update-3.png|
 
 Revoking permissions from account "user8"
 
-|template-permissions-update-4.PNG|
+|template-permissions-update-4.png|
 
 Revoking permissions from both projects previously added
 
 
 Finally, template permissions can be reset:
 
-|template-permissions-update-5.PNG|
+|template-permissions-update-5.png|
 
 Resetting (removing all) permissions
 
-.. warning:: 
-      Project-owned templates are not supported to be shared outside of 
+.. warning::
+      Project-owned templates are not supported to be shared outside of
       the Project, and if attempted to do so, a proper error message is shown.
 
 Exporting Templates
@@ -520,10 +513,10 @@ part of a template.
          -  Red Hat Enterprise Linux 6
 
 
-      .. note:: 
-         It is not recommended to choose an older version of the OS than 
-         the version in the image. For example, choosing CentOS 5.4 to 
-         support a CentOS 6.2 image will usually not work. In these 
+      .. note::
+         It is not recommended to choose an older version of the OS than
+         the version in the image. For example, choosing CentOS 5.4 to
+         support a CentOS 6.2 image will usually not work. In these
          cases, choose Other.
 
    -  **Extractable**: Choose Yes if the ISO should be available for
@@ -573,19 +566,19 @@ Attaching an ISO to a VM
 .. |kvm-direct-download.png| image:: /_static/images/kvm-direct-download.png
 .. |upload-iso-from-local.png| image:: /_static/images/upload-iso-from-local.png
    :alt: Upload ISO from local
-.. |template-upload-from-local.PNG| image:: /_static/images/template-upload-from-local.PNG
+.. |template-upload-from-local.png| image:: /_static/images/template-upload-from-local.png
    :alt: Upload Template from local
-.. |template-permissions-update-manually-1.PNG| image:: /_static/images/template-permissions-update-manually-1.PNG
+.. |template-permissions-update-manually-1.png| image:: /_static/images/template-permissions-update-manually-1.png
    :alt: USharing template with account "user2"
-.. |template-permissions-update-manually-2.PNG| image:: /_static/images/template-permissions-update-manually-2.PNG
+.. |template-permissions-update-manually-2.png| image:: /_static/images/template-permissions-update-manually-2.png
    :alt: Revoking permissions from account "user2"
-.. |template-permissions-update-1.PNG| image:: /_static/images/template-permissions-update-1.PNG
+.. |template-permissions-update-1.png| image:: /_static/images/template-permissions-update-1.png
    :alt: Sharing template with just account "user8"
-.. |template-permissions-update-2.PNG| image:: /_static/images/template-permissions-update-2.PNG
+.. |template-permissions-update-2.png| image:: /_static/images/template-permissions-update-2.png
    :alt: Sharing template with 2 specific projects
-.. |template-permissions-update-3.PNG| image:: /_static/images/template-permissions-update-3.PNG
+.. |template-permissions-update-3.png| image:: /_static/images/template-permissions-update-3.png
    :alt: Revoking permissins from account "user8"
-.. |template-permissions-update-4.PNG| image:: /_static/images/template-permissions-update-4.PNG
+.. |template-permissions-update-4.png| image:: /_static/images/template-permissions-update-4.png
    :alt: Revoking permsissons from both projects previously added
-.. |template-permissions-update-5.PNG| image:: /_static/images/template-permissions-update-5.PNG
+.. |template-permissions-update-5.png| image:: /_static/images/template-permissions-update-5.png
    :alt: Reseting (removing all) permissions

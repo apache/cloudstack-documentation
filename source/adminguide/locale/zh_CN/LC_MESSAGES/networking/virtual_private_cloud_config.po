@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -1430,7 +1430,7 @@ msgstr "稍等片刻，新的路由就创建好了。"
 
 # f66d2b908d63453ba9331658c3105974
 #: ../../networking/virtual_private_cloud_config.rst:648
-msgid "Blacklisting Routes"
+msgid "Denylisting Routes"
 msgstr "路由黑名单"
 
 # 5e262d8f57f94df080de1ebfd57089c5
@@ -1438,11 +1438,11 @@ msgstr "路由黑名单"
 msgid ""
 "CloudStack enables you to block a list of routes so that they are not "
 "assigned to any of the VPC private gateways. Specify the list of routes that"
-" you want to blacklist in the ``blacklisted.routes`` global parameter. Note "
+" you want to denylist in the ``denied.routes`` global parameter. Note "
 "that the parameter update affects only new static route creations. If you "
 "block an existing static route, it remains intact and continue functioning. "
-"You cannot add a static route if the route is blacklisted for the zone."
-msgstr "CloudStack允许你定义一个路由黑名单，这样它们就不能关联到任何VPC私有网关。你需要在全局参数blacklisted.routes里定义。要注意，此参数只在新路由创建时才会生效。如果你在黑名单里加入了已存在的静态路由，则此静态路由还是会继续起作用。你不能把在路由黑名单里的路由加入到静态路由当中去。"
+"You cannot add a static route if the route is denied for the zone."
+msgstr "CloudStack允许你定义一个路由黑名单，这样它们就不能关联到任何VPC私有网关。你需要在全局参数denied.routes里定义。要注意，此参数只在新路由创建时才会生效。如果你在黑名单里加入了已存在的静态路由，则此静态路由还是会继续起作用。你不能把在路由黑名单里的路由加入到静态路由当中去。"
 
 # c95c27354e2b4308b6fe6cd594b07c4b
 #: ../../networking/virtual_private_cloud_config.rst:660
@@ -1820,7 +1820,7 @@ msgstr "使用用户或管理员登录到CloudStack用户界面。"
 # f974a014675745ceae4ebb19113bc49e
 #: ../../networking/virtual_private_cloud_config.rst:959
 #: ../../networking/virtual_private_cloud_config.rst:1165
-msgid "From the Select Offering drop-down, choose Network Offering."
+msgid "Naviagte to Service Offerings and choose Network OfferingPublic IP Addresses."
 msgstr "下拉选择方案，选择网络方案："
 
 # 08107e25d3ae4ed5a4e72a9ef68249af

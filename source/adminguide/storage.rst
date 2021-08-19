@@ -105,6 +105,7 @@ Storage media \\ hypervisor                    VMware vSphere   Citrix XenServer
 **Storage over-provisioning**                  NFS and iSCSI    NFS                  NFS                         No
 **SMB/CIFS**                                   No               No                   No                          Yes
 **Ceph/RBD**                                   No               No                   Yes                         No
+**PowerFlex/ScaleIO**                          No               No                   Yes                         No
 ============================================== ================ ==================== =========================== ============================
 
 XenServer uses a clustered LVM system to store VM images on iSCSI and
@@ -120,6 +121,14 @@ This shared mountpoint is assumed to be a clustered filesystem such as
 OCFS2. In this case the CloudStack does not attempt to mount or unmount
 the storage as is done with NFS. The CloudStack requires that the
 administrator insure that the storage is available
+
+VMware vSphere supports NFS, VMFS5, VMFS6, vSAN, vVols, DatastoreCluster storage types.
+For DatastoreCluster storage type, any changes to the datastore cluster
+at vCenter can be synchronised with CloudStack, like any addition of new
+child datastore to the DatastoreCluster or removal or existing child datastore
+from the DatastoreCluster. Synchronisation of DatastoreCluster happens during
+host connect or storage pool maintenance operations or by calling the API
+syncStoragePool.
 
 With NFS storage, CloudStack manages the overprovisioning. In this case
 the global configuration parameter storage.overprovisioning.factor
@@ -256,7 +265,7 @@ When creating a new volume from an existing ROOT volume snapshot,
 it is required to explicitly define a Disk offering (UI will offer only Disk
 offerings whose disk size is equal or bigger than the size of the snapshot).
 
-|volume-from-snap.PNG|
+|volume-from-snap.png|
 
 When creating a new volume from an existing DATA volume snapshot, the disk offering
 associated with the snapshots (inherited from the original volume) is assigned
@@ -881,5 +890,5 @@ snapshot data.
    :alt: Detach Disk Button.
 .. |Migrateinstance.png| image:: /_static/images/migrate-instance.png
    :alt: button to migrate a volume.
-.. |volume-from-snap.PNG| image:: /_static/images/volume-from-snap.PNG
+.. |volume-from-snap.png| image:: /_static/images/volume-from-snap.png
    :alt: Offering is needed when creating a volume from the ROOT volume snapshot.
