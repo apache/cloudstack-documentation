@@ -304,9 +304,15 @@ To clone a virtual machine: (cloudmonkey way)
 
 #. Choose the VM id that you want to clone.
 
+To clone a virtual machine: (UI)
+
+#. Go to the compute instance page
+
+#. Click the Clone VM button to clone the VM
+
 When a virtual machine is **cloned**, it takes some time for the new cloned instance to be created and started,
 snapshots created during the clone procedures are not visible and will be cleaned up once the new instance is created.  
-Global settings of creating snapshots should be enabled before commencing with the clone. When the new VM and its root disks have been attached and created, 
+Global settings of creating snapshots should be enabled (kvm.snapshot.enabled = true) before commencing with the clone. When the new VM and its root disks have been attached and created, 
 snapshots will be expunged.
 
 Once a new virtual machine is created, it takes some time for the network to assign the new ip. All the
