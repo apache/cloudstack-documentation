@@ -43,8 +43,8 @@ possible as well. For example, see Using an LDAP Server for User
 Authentication.
 
 
-User Data and Meta Data via Virtual Router
-------------------------------------------
+User Data and Meta Data via the Virtual Router
+----------------------------------------------
 
 CloudStack provides API access to attach up to 32KB of user data to a
 deployed VM. Deployed VMs also have access to instance metadata via the
