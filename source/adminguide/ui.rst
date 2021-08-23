@@ -472,66 +472,6 @@ Useful documentations:
 - `JavaScript ES6 Reference <https://www.tutorialspoint.com/es6/>`_
 - `Introduction to ES6 <https://scrimba.com/g/gintrotoes6>`_
 
-Multiple Management Support
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-User can use file `/etc/cloudstack/management/config.json` to configure the settings which allow Cloudstack to support multiple servers.
-
-To Cloudstack support use multiple servers, the following details can be edited in config.json:
-
-============================= ================================================================
-Property                      Description
-============================= ================================================================
-multipleServer                Configure to allow Cloudstack to support multiple servers.
-servers                       List of servers to which Cloudstack can connect.
-============================= ================================================================
-
-.. parsed-literal::
-
-   {
-      ...
-      "servers" [
-         {
-            "name": "server-1",
-            "apiHost": "/server-1",
-            "apiBase": "/client/api",
-         },
-         {
-            "name": "server-2",
-            "apiHost": "",
-            "apiBase": "/client/api",
-         }
-      ]
-      ...
-      "multipleServer": true
-   }
-
-For the UI to work with different servers, it is necessary to configure the Nginx config proxy to allow connections to the respective servers without Cross-Origin (to be put into /etc/nginx/conf.d/default/conf or similar).
-
-.. parsed-literal::
-
-   server {
-       listen          80;
-       server_name     localhost;
-       location / {
-           # /src/ui/dist contains the built UI webpack
-           root        /src/ui/dist;
-           index       index.html;
-       }
-       # for apiHost of server-1 located in config.json
-       location /server-1/client/ {
-           rewrite ^/server-1/(.*)$ /$1 break;
-           # server's actual URI
-           proxy_pass   https://server-1.your.domain;
-       }
-       # for apiHost of server-2 located in config.json
-       location /client/ {
-           # server's actual URI
-           proxy_pass   https://server-2.your.domain;
-       }
-   }
-
-|ui-multiple-server-management.png|
 
 Known Limitations
 ~~~~~~~~~~~~~~~~~
@@ -547,7 +487,4 @@ The following features are no longer supported or available in the UI but are st
    :alt: button to change a user's password
 
 .. |ui-custom-plugin.png| image:: /_static/images/ui-custom-plugin.png
-   :alt: Custom plugin shown in UI with navigation
-
-.. |ui-multiple-server-management.png| image:: /_static/images/ui-multiple-server-management.png
    :alt: Custom plugin shown in UI with navigation
