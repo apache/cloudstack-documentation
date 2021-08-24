@@ -79,7 +79,7 @@ Consider the following:
    IPv6 in shared network; the choice of Default Network will not affect
    the routing in the user VM.
 
--  A shared network  cannot be IPv6 only. Therefore, it is necessary to configure the IPv4 address range for the shared network with IPv6 addresses. The IPv4 range can be of a public or internal IPv4 network.
+-  A shared network cannot be IPv6 only. Therefore, it is necessary to configure the IPv4 address range for the shared network with IPv6 addresses. The IPv4 range can be of a public or internal IPv4 network.
 
 -  In a multiple shared network, the default route is set by the rack
    router, rather than the DHCP server, which is out of CloudStack
