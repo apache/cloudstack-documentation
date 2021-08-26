@@ -919,16 +919,10 @@ Support for Virtual Appliances
 .. include:: virtual_machines/virtual_appliances.rst
 
 
-Unmanaging Virtual Machines
-===========================
+Importing and Unmanaging Virtual Machines
+=========================================
 
-.. include:: virtual_machines/unmanage_vms.rst
-
-
-Importing Virtual Machines
-===========================
-
-.. include:: virtual_machines/VM_Ingestion.rst
+.. include:: ./virtual_machines/importing_unmanaging_vms.rst
 
 
 Virtual Machine Backups (Backup and Recovery Feature)

@@ -24,9 +24,9 @@ section tells how to set up the NFS shares before adding the storage to
 CloudStack.
 
 .. note::
-   NFS is not the only option for primary or secondary storage. For example, 
-   you may use Ceph RBD, PowerFlex, GlusterFS, iSCSI, and others. The choice of storage 
-   system will depend on the choice of hypervisor and whether you are dealing 
+   NFS is not the only option for primary or secondary storage. For example,
+   you may use Ceph RBD, PowerFlex, GlusterFS, iSCSI, and others. The choice of storage
+   system will depend on the choice of hypervisor and whether you are dealing
    with primary or secondary storage.
 
 The requirements for primary and secondary storage are described in:
@@ -35,7 +35,7 @@ The requirements for primary and secondary storage are described in:
 
 -  :ref:`about-secondary-storage`
 
-A production installation typically uses a separate NFS server. 
+A production installation typically uses a separate NFS server.
 See :ref:`using-a-separage-nfs-server`.
 
 You can also use the Management Server node as the NFS server. This is
@@ -118,14 +118,18 @@ on the host.
 The exact commands for the following steps may vary depending on your
 operating system version.
 
-#. On RHEL/CentOS systems, you'll need to install the nfs-utils package:
+#. On RHEL/CentOS/SUSE systems, you'll need to install the nfs-utils package:
 
    .. parsed-literal::
 
       yum install nfs-utils
 
+   .. parsed-literal::
+
+      zypper install nfs-utils
+
    or for Ubuntu
-   
+
    .. parsed-literal::
 
       apt-get install nfs-kernel-server
@@ -196,7 +200,7 @@ operating system version.
       -A INPUT -s <NETWORK> -m state --state NEW -p tcp --dport 875 -j ACCEPT
       -A INPUT -s <NETWORK> -m state --state NEW -p udp --dport 875 -j ACCEPT
       -A INPUT -s <NETWORK> -m state --state NEW -p tcp --dport 662 -j ACCEPT
-      -A INPUT -s <NETWORK> -m state --state NEW -p udp --dport 662 -j ACCEPT                
+      -A INPUT -s <NETWORK> -m state --state NEW -p udp --dport 662 -j ACCEPT
 
 #. Run the following commands:
 
