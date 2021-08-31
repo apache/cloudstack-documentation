@@ -668,7 +668,7 @@ There are volume operations like migrate volume and resize volume and both accep
 Instead of using these APIs directly, the operation can be performed in the UI using change offering in the details view for the volume.
 Upon changing the disk offering the volume will be resized and/or migrated to the suitable storage pool if required according to the new disk offering.
 
-Global setting "match.storage.pool.tags.with.disk.offering" gives flexibility or control to choose the new disk offering. 
+The zone level setting "match.storage.pool.tags.with.disk.offering" gives flexibility or control to choose the new disk offering. 
 If this setting is true, then the new disk offering should have the same storage tags as the exiting disk offering of the volume.
 
 To change the disk offering of a volume:
