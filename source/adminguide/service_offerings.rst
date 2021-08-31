@@ -160,12 +160,12 @@ Creating a New Compute Offering
 
 .. image:: /_static/images/compute_offering_dailog_with_compute_only_disk_offering.png
    :width: 400px
-   :align: left
+   :align: center
    :alt: Compute offering dialog box
 
 .. image:: /_static/images/compute_offering_dailog_with_diskoffering.png
    :width: 400px
-   :align: right
+   :align: center
    :alt: Compute offering dialog box
 
 

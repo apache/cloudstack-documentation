@@ -665,7 +665,7 @@ Change disk offering for volume
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are volume operations like migrate volume and resize volume and both accepts new disk offering to replace the existing disk offering of volume.
-Instead of those APIs, Disk offering of a volume can be changed directly using changeOfferingForVolume API, also supported from UI.
+Instead of using these APIs directly, the operation can be performed in the UI using change offering in the details view for the volume.
 Upon changing the disk offering the volume will be resized and/or migrated to the suitable storage pool if required according to the new disk offering.
 
 Global setting "match.storage.pool.tags.with.disk.offering" gives flexibility or control to choose the new disk offering. 
@@ -915,6 +915,8 @@ snapshot data.
    :alt: button to display the resize volume option.
 .. |resize-volume.png| image:: /_static/images/resize-volume.png
    :alt: option to resize a volume.
+.. |change-offering-for-volume.png| image:: /_static/images/change-offering-for-volume.png
+   :alt: option to change offering for a volume.
 .. |SnapshotButton.png| image:: /_static/images/SnapshotButton.png
    :alt: Snapshot Button.
 .. |DetachDiskButton.png| image:: /_static/images/detach-disk-icon.png
