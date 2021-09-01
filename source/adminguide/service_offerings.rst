@@ -393,6 +393,10 @@ To create a new compute offering:
 
 Creating a New Disk Offering
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. image:: /_static/images/disk_offering_dailog.png
+   :width: 400px
+   :align: center
+   :alt: Disk offering dialog box
 
 To create a new disk offering:
 
