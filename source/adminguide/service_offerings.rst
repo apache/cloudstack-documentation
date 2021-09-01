@@ -157,12 +157,13 @@ parameters, such as CPU, speed, RAM are recorded.
 
 Creating a New Compute Offering
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+Create compute only offering
 .. image:: /_static/images/compute_offering_dailog_with_compute_only_disk_offering.png
    :width: 400px
    :align: center
    :alt: Compute offering dialog box
 
+Create compute offerng associated to a disk offering
 .. image:: /_static/images/compute_offering_dailog_with_diskoffering.png
    :width: 400px
    :align: center
