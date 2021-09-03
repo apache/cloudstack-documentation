@@ -366,7 +366,7 @@ the user are used.
        #. CloudStack searches for it in LDAP by the configured
           ``ldap.username.attribute``.
 
-       #. If an LDAP user is found is found, CloudStack does a bind
+       #. If an LDAP user is found, CloudStack does a bind
           request with the returned principal for that LDAP user and
           the entered password.
 
@@ -374,7 +374,7 @@ the user are used.
           authenticated user exists in the domain it is trying to log
           on to.
 
-          #. If the user exists in CloudStack, it is ensured to be enabled
+          #. If the user exists in CloudStack, it is ensured to be enabled.
 
           #. If it doesn't exist it is created in a new account with
              the username as names for both account and user.
