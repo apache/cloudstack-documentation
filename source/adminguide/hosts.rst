@@ -209,13 +209,14 @@ any system that is not up to date with patches.
 
 Hypervisor Capabilities
 -----------------------
-For different hypervisors and their versions, various capabilities such as maximum number of guest VMs per host, maximum number of volumes per VM, security group support, etc are considered by CloudStack. These capabilities are stored in the `cloud.hypervisor_capabilities` table in the database. If a specific hypervisor version is not available in the database, values against the default version for the hypervisor will be used.
+For different hypervisors and their versions, various capabilities such as maximum number of guest VMs per host, maximum number of volumes per VM, security group support, etc are considered by CloudStack. These capabilities are stored in the **cloud.hypervisor_capabilities** table in the database. If a specific hypervisor version is not available in the database, values against the *default* version for the hypervisor will be used.
 
 Following hypervisor-specific domentations can be referred for different maximums for a prticular hypervisor host:
 
-VMware: `VMware Configuration Maximum tool <https://configmax.vmware.com/guest?vmwareproduct=vSphere&release=vSphere%207.0&categories=1-0,2-0>`
-Citrix Hypervisor/Xenserver/XCP-ng: `Configuration limits | Citrix Hypervisor 8.2
-<https://docs.citrix.com/en-us/citrix-hypervisor/system-requirements/configuration-limits.html>`
+- VMware: `VMware Configuration Maximum tool <https://configmax.vmware.com/guest?vmwareproduct=vSphere&release=vSphere%207.0&categories=1-0,2-0>`_.
+
+- Citrix Hypervisor/Xenserver/XCP-ng: `Configuration limits | Citrix Hypervisor 8.2 <https://docs.citrix.com/en-us/citrix-hypervisor/system-requirements/configuration-limits.html>`_.
+
 
 .. note::
    Guest VM limit check is not done while deploying a VM on a KVM host.
