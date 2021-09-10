@@ -32,12 +32,13 @@ get you up and running with CloudStack with a minimum amount of trouble.
 
 .. warning::
       This guide is meant to be used to build CloudStack test/demo cloud only, 
-      as certain networking choices have been made to get you up and running with minimal amount of time
+      as certain networking choices have been made to get you up and running with 
+      minimal amount of time. This guide can NOT be used for production setup.
       
 .. warning::
       In case you don't have physical server to "play with", you can use e.g. Oracle VirtualBox 6.1+
       The requirement is that you enable "Enable Nested VT-x/AMD-V" as the Extended Feature on the System page of the Settings of the VM.
-      You will want to create a Vm of "Red Hat (64-bit)" type and 40+GB disk space.
+      You will want to create a VM of "Red Hat (64-bit)" type and 40+GB disk space.
       You will need to have 1 NIC in your VM, bridged to the NIC of your laptop/desktop
       (wifi or wired NIC, doesn't matter), and optimally to set Adapter Type="Paravirtualized Network (virtio-net)"
       for somewhat better network performance (Settings of VM, Network section, Adapter1,
@@ -48,16 +49,13 @@ High level overview of the process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This guide will focus on building a CloudStack cloud using KVM on CentOS 
-7.7 with NFS storage on a flat layer-2 network utilizing layer-3 network 
-isolation (aka Security Groups), and doing it all on a single piece of 
-hardware.
+7.9 with NFS storage and layer-2 isolation using VLANs,
+(flat home network can be used for this as well) and on a single piece of 
+hardware (server/VM)
 
 KVM, or Kernel-based Virtual Machine is a virtualization technology for the 
 Linux kernel. KVM supports native virtualization atop processors with hardware 
 virtualization extensions.
-
-Security Groups act as distributed firewalls that control access to a group of 
-virtual machines.
 
 
 Prerequisites
@@ -70,8 +68,8 @@ To complete this guide you'll need the following items:
 #. An `CentOS 7.9 minimal x86_64 install ISO, on bootable media
    <http://isoredirect.centos.org/centos/7/isos/x86_64/>`_
 
-#. A /24 network with the gateway being at xxx.xxx.xxx.1, no DHCP should be on 
-   this network and none of the computers running CloudStack will have a 
+#. A /24 network with the gateway being at (e.g.) xxx.xxx.xxx.1, no DHCP is needed 
+   on this network and none of the computers running CloudStack will have a 
    dynamic address. Again this is done for the sake of simplicity.
 
 
@@ -87,15 +85,13 @@ Operating System
 
 Using the CentOS 7.9.2009 minmal x86_64 install ISO, you'll need to install
 CentOS 7 on your hardware. The defaults will generally be acceptable for this
-installation. You may want to configure network configuration during setup -
-either using the guidelines below, or using a standard access configuration
-which we will modify later - so that you can later install needed packages from internet, etc.
+installation - but make sure to configure IP address/parameters so that you can later install needed
+packages from internet. Later, we will change the network configuration as needed.
 
 Once this installation is complete, you'll want to gain access to your
 server - through SSH. 
 
-If your network interface was configured to grant the server internet
-access, it is always wise to update the system before starting: 
+It is always wise to update the system before starting: 
 
 .. parsed-literal::
    # yum -y upgrade
@@ -120,7 +116,7 @@ the bridge that Cloudstack will use for networking. Create and open
    a /24 network for your CloudStack implementation. This can be any RFC 1918 
    network. However, we are assuming that you will match the machine address 
    that we are using. Thus we may use 172.16.10.2 and because you might be 
-   using the 192.168.55.0/24 network you would use 192.168.55.2. Another example
+   using e.g. 192.168.55.0/24 network you would use 192.168.55.2. Another example
    would be if you are using i.e. VirtualBox on your local home network on 192.168.1.0/24 network - 
    in this case you can use a single free IP address from your home range (VirtualBox NIC for this VM
    should be in bridged mode for correct functioning)
@@ -135,7 +131,7 @@ the bridge that Cloudstack will use for networking. Create and open
    IPV6_AUTOCONF=no
    DELAY=5
    IPADDR=172.16.10.2 #(or e.g. 192.168.1.2)
-   GATEWAY=172.16.10.1 #(or e.g. 192.168.1.1 - this would be your physical home router)
+   GATEWAY=172.16.10.1 #(or e.g. 192.168.1.1 - this would be your physical/home router)
    NETMASK=255.255.255.0
    DNS1=8.8.8.8
    DNS2=8.8.4.4
@@ -150,7 +146,7 @@ Open the configuration file of your NIC (e.g. /etc/sysconfig/network-scripts/ifc
 and edit it as follows:
 
 .. note::
-   Interface name used as example only. Replace eth0 with your default ethernet interface name.
+   Interface name (eth0) used as example only. Replace eth0 with your default ethernet interface name.
 
 .. parsed-literal::
    TYPE=Ethernet
@@ -167,7 +163,7 @@ and edit it as follows:
    between IP configuration of /etc/config/network-scripts/ifcfg-cloudbr0 and
    /etc/sysconfig/network-scripts/ifcfg-eth0 which will cause a failure that
    would prevent the network from starting. Basically the majority of IP configuration
-   of eth0 config moves over to the bridge and eth0 will point to the bridge.
+   of eth0 config moves over to the bridge and eth0 will be added to the bridge.
 
 
 Now that we have the configuration files properly set up, we need to run a few 
@@ -184,7 +180,7 @@ commands to start up the network:
 Hostname
 ^^^^^^^^
 
-CloudStack requires that the hostname be properly set. If you used the default 
+CloudStack requires that the hostname is properly set. If you used the default 
 options in the installation, then your hostname is currently set to 
 localhost.localdomain. To test this we will run:
 
@@ -229,7 +225,7 @@ SELinux
 ^^^^^^^
 
 At the moment, for CloudStack to work properly SELinux must be set to 
-permissive. We want to both configure this for future boots and modify it in 
+permissive or disabled. We want to both configure this for future boots and modify it in 
 the current running system.
 
 To configure SELinux to be permissive in the running system we need to run the 
@@ -317,8 +313,7 @@ start out by installing nfs-utils.
    # yum -y install nfs-utils
 
 We now need to configure NFS to serve up two different shares. This is handled 
-comparatively easily in the /etc/exports file. You should ensure that it has 
-the following content:
+in the /etc/exports file. You should ensure that it has the following content:
 
 .. parsed-literal::
 
@@ -353,7 +348,7 @@ Now you'll need to add the configuration values at the bottom in the file
    STATD_PORT=662
    STATD_OUTGOING_PORT=2020
 
-Now we need to disable the firewall, so that it will not block connections.
+For simplicity, we need to disable the firewall, so that it will not block connections.
 
 .. note::
 
@@ -404,6 +399,7 @@ Install by running the following command:
 
    # yum -y install mysql-server
 
+This should install MySQL 5.x, as of the time of writing this guide.
 With MySQL now installed we need to make a few configuration changes to 
 /etc/my.cnf. Specifically we need to add the following options to the [mysqld] 
 section:
@@ -482,13 +478,12 @@ CloudStack uses a number of system VMs to provide functionality for accessing
 the console of virtual machines, providing various networking services, and 
 managing various aspects of storage. 
 
-Now we need to download the systemVM template and deploy that to the secondary storage.
+We need to download the systemVM template and deploy that to the secondary storage.
 We will use the local path (/export/secondary) since we are already on the NFS server itself,
 but otherwise you would need to mount your Secondary Storage to a temporary mount point, and use
 that mount point instead of the /export/secondary path.
 
-The management server includes a script to properly manipulate 
-the system VMs images.
+Execute the followint script:
 
 .. parsed-literal::
   
@@ -508,7 +503,7 @@ KVM Setup and Installation
 Prerequisites
 ~~~~~~~~~~~~~
 
-We explicitly are using the management server as a compute node as well, which 
+We are using the management server as a compute node as well, which 
 means that we have already performed many of the prerequisite steps when 
 setting up the management server, but we will list them here for clarity. 
 Those steps are:
@@ -523,15 +518,14 @@ Those steps are:
 
 :ref:`qigconf-pkg-repo`
 
-You shouldn't need to do that for the management server, of course, but any 
-additional hosts will need for you to complete the above steps.
+You don't need to do that for the management server now as we've already done that.
 
 
 Installation
 ~~~~~~~~~~~~
 
 Installation of the KVM agent is trivial with just a single command, but 
-afterwards we'll need to configure a few things.
+afterwards we'll need to configure a few things. We need to install the EPEL repository also.
 
 .. parsed-literal::
 
@@ -548,9 +542,8 @@ We have two different parts of KVM to configure, libvirt, and QEMU.
 QEMU Configuration
 ^^^^^^^^^^^^^^^^^^^
 
-KVM configuration is relatively simple at only a single item. We need to edit 
-the QEMU VNC configuration. This is done by editing /etc/libvirt/qemu.conf and 
-ensuring the following line is present and uncommented.
+We need to edit the QEMU VNC configuration. This is done by editing /etc/libvirt/qemu.conf 
+and ensuring the following line is present and uncommented.
 
 ::
 
@@ -564,7 +557,9 @@ CloudStack uses libvirt for managing virtual machines. Therefore it is vital
 that libvirt is configured correctly. Libvirt is a dependency of cloud-agent 
 and should already be installed.
 
-#. In order to have live migration working libvirt has to listen for unsecured 
+#. Even though we are using a single host, the following steps are recommended
+   to get faimilar with the general requirements.
+   In order to have live migration working libvirt has to listen for unsecured 
    TCP connections. We also need to turn off libvirts attempt to use Multicast 
    DNS advertising. Both of these settings are in /etc/libvirt/libvirtd.conf
 
@@ -596,7 +591,8 @@ and should already be installed.
 
 KVM configuration complete
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-For the sake of completeness you should check if KVM is running OK on your machine (you should see kvm_intel or kvm_amd shown as loaded):
+For the sake of completeness, you should check if KVM is running OK on your 
+machine (you should see kvm_intel or kvm_amd modules shown as loaded):
 
    .. parsed-literal::
    
@@ -616,7 +612,7 @@ UI Access
 
 To get access to CloudStack's web interface, merely point your browser to 
 the IP address of your machine e.g. http://172.16.10.2:8080/client
-1he default username is 'admin', and the default password is 'password'.
+The default username is 'admin', and the default password is 'password'.
 
 Setting up a Zone
 -----------------
@@ -630,9 +626,9 @@ creating one.
 .. warning::
       We will be configuring an Advanced Zone in a way that will allow us to access both
       the "Management" network of the cloud as well as the "Public" network - we will do so
-      by using the same CIDR (but different IP ranges) for both "Management" (Pod) and the "Public"
-      networks - which is something your would NEVER do in a production - this is for strictly for
-      testing purposes only!
+      by using the same CIDR (but different part of it, i.e. different IP ranges) for both 
+      "Management" (Pod) and "Public" networks - which is something your would NEVER do 
+      in a production - this is done strictly for testing purposes only in this guide!
 
 Click "Continue with Installation" to continue - you will be offered to change your 
 root admin password - please do so, and click on OK.
@@ -666,7 +662,7 @@ requirements.
 #. Hypervisor - this will be the primary hypervisor used in this zone. In our
    case, we will select KVM.
 
-Click "Next" to continue on
+Click "Next" to continue.
 
 Physical Network
 ~~~~~~~~~~~~~~~~
@@ -682,9 +678,8 @@ Click "Next" to continue.
 
 Public Traffic
 ~~~~~~~~~~~~~~
-Public traffic is generated when VMs in the cloud access the internet.
 Publicly-accessible IPs must be allocated for this purpose in normal/public cloud installations,
-but since we are deploying merely a demo/test env, we will use a PART of our local network (from .11 to .20 or other free range)
+but since we are deploying merely a demo/test env, we will use a PART of our local network (e.g. from .11 to .20 or other free range)
 
 #. Gateway - We'll use ``172.16.10.1`` #or whatever is your physical gateway e.g. 192.168.1.1
 
@@ -692,30 +687,31 @@ but since we are deploying merely a demo/test env, we will use a PART of our loc
 
 #. VLAN/VNI - We'll leave this one empty
 
-#. Start IP - We'll use ``172.16.10.11`` # or e.g. 192.168.1.11
+#. Start IP - We'll use ``172.16.10.11`` # (or e.g. 192.168.1.11)
 
-#. End IP - We'll use ``172.16.10.20`` # or e.g. 192.168.1.20
+#. End IP - We'll use ``172.16.10.20`` # (or e.g. 192.168.1.20)
 
-Click "Add" to add the range
+Click "Add" to add the range.
 
-Click "Next" to continue on
+Click "Next" to continue.
 
 Pod Configuration
 ~~~~~~~~~~~~~~~~~
 
-Here we will configure a range for Cloudstack's internal management traffic.
-This will also be part of our local network (i.e. different part of your local home network,
-from .21 to .30 - but within the same IP range - same gateway, same netmask)
+Here we will configure a range for Cloudstack's internal management traffic - CloudStack
+will assign IPs from this range to system VMs. This will also be part of our local network
+(i.e. different part of your local home network, from .21 to .30), with the rest of the IP parameters
+(netmaks/gateway) being the same as ised for Public Traffic.
 
 #. Pod Name - We'll use ``Pod1`` for our cloud.
 
-#. Reserved system gateway - we'll use ``172.16.10.1`` #or whatever is your physical gateway e.g. 192.168.1.1
+#. Reserved system gateway - we'll use ``172.16.10.1`` # (or whatever is your physical gateway e.g. 192.168.1.1)
 
 #. Reserved system netmask - we'll use ``255.255.255.0``
 
-#. Start reserved system IPs - we will use ``172.16.10.21`` # or e.g. 192.168.1.21
+#. Start reserved system IPs - we will use ``172.16.10.21`` # (or e.g. 192.168.1.21)
 
-#. End Reserved system IP - we will use ``172.16.10.30`` # or e.g. 192.168.1.30
+#. End Reserved system IP - we will use ``172.16.10.30`` # (or e.g. 192.168.1.30)
 
 Click "Next" to continue on
 
@@ -726,7 +722,7 @@ Next we will configure a range of VLAN IDs for our guest VMs.
 
 A range of ``100`` - ``200`` would suffice.
 
-Click "Next" to continue on
+Click "Next" to continue.
 
 Cluster
 ~~~~~~~
@@ -736,7 +732,7 @@ cluster. We will have one cluster and we have to give our cluster a name.
 
 Enter ``Cluster1``
 
-Click "Next" to continue
+Click "Next" to continue.
 
 Host
 ~~~~
@@ -751,7 +747,7 @@ as a hypervisor.
 
 #. Password - enter the operating system password for the root user
 
-Click "Next" to continue
+Click "Next" to continue.
 
 Primary Storage
 ^^^^^^^^^^^^^^^
@@ -771,23 +767,22 @@ information. Enter the following values in the fields:
 
 #. Path - Well define ``/export/primary`` as the path we are using
 
-Click "Next" to continue
+Click "Next" to continue.
 
 Secondary Storage
 ^^^^^^^^^^^^^^^^^
 
-If this is a new zone, you'll be prompted for secondary storage information -
-populate it as follows:
+You'll be prompted for secondary storage information - populate it as follows:
 
 #. Provider - Choose ``NFS``
 
-#. Name - We can call it ``Secondary1``
+#. Name - ``Secondary1``
 
 #. NFS server - We'll use the IP address ``172.16.10.2`` (this is your local server, so swap with the correct IP)
 
 #. Path - We'll use ``/export/secondary``
 
-Click "Next" to continue on
+Click "Next" to continue.
 
 Now, click "Launch Zone" and your cloud should begin setup - it may take
 several minutes for setup to finalize.
