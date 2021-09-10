@@ -36,9 +36,9 @@ get you up and running with CloudStack with a minimum amount of trouble.
       minimal amount of time. This guide can NOT be used for production setup.
       
 .. warning::
-      In case you don't have physical server to "play with", you can use e.g. Oracle VirtualBox 6.1+
-      The requirement is that you enable "Enable Nested VT-x/AMD-V" as the Extended Feature on the System page of the Settings of the VM.
-      You will want to create a VM of "Red Hat (64-bit)" type and 40+GB disk space.
+      In case you don't have physical server to "play with", you can use e.g. Oracle VirtualBox 6.1+. 
+      The requirement is that you enable "Enable Nested VT-x/AMD-V" as the Extended Feature on the System page of the Settings of the VM. 
+      You will want to create a VM of "Red Hat (64-bit)" type and 40+GB disk space. 
       You will need to have 1 NIC in your VM, bridged to the NIC of your laptop/desktop
       (wifi or wired NIC, doesn't matter), and optimally to set Adapter Type="Paravirtualized Network (virtio-net)"
       for somewhat better network performance (Settings of VM, Network section, Adapter1,
@@ -162,8 +162,8 @@ and edit it as follows:
    setup before following this guide, make sure that there is no duplication
    between IP configuration of /etc/config/network-scripts/ifcfg-cloudbr0 and
    /etc/sysconfig/network-scripts/ifcfg-eth0 which will cause a failure that
-   would prevent the network from starting. Basically the majority of IP configuration
-   of eth0 config moves over to the bridge and eth0 will be added to the bridge.
+   would prevent the network from starting. Basically, IP configuration
+   of eth0 should be moved to the bridge and eth0 will be added to the bridge.
 
 
 Now that we have the configuration files properly set up, we need to run a few 
@@ -701,7 +701,7 @@ Pod Configuration
 Here we will configure a range for Cloudstack's internal management traffic - CloudStack
 will assign IPs from this range to system VMs. This will also be part of our local network
 (i.e. different part of your local home network, from .21 to .30), with the rest of the IP parameters
-(netmaks/gateway) being the same as ised for Public Traffic.
+(netmaks/gateway) being the same as used for the Public Traffic.
 
 #. Pod Name - We'll use ``Pod1`` for our cloud.
 
