@@ -290,7 +290,7 @@ To create a network offering:
 
       *Accept* - The switch does not perform filtering, and permits all outbound frames.
 
-      *None* - Default to value from global settings - ``network.promiscuous.mode``.
+      *None* - Default to value from global setting - ``network.promiscuous.mode``.
 
    -  **Forged Transmits**. Applicable for isolated guest networks on VMware hypervisor only. It accepts the following values for desired behaviour of the network elements:
 
@@ -298,7 +298,7 @@ To create a network offering:
 
       *Accept* - The switch does not perform filtering, and permits all outbound frames.
 
-      *None* - Default to value from global settings - ``network.forged.transmits``.
+      *None* - Default to value from global setting - ``network.forged.transmits``.
 
    -  **MAC Address Changes**. Applicable for isolated guest networks on VMware hypervisor only. It accepts the following values for desired behaviour of the network elements:
 
@@ -308,7 +308,7 @@ To create a network offering:
 
       *Accept* - If the guest OS changes the effective MAC address of the virtual machine to a value that is different from the MAC address of the VM network adapter, the switch allows frames to the new address to pass.
 
-      *None* - Default to value from global settings - ``network.mac.address.changes``.
+      *None* - Default to value from global setting - ``network.mac.address.changes``.
 
    -  **MAC Learning**. Applicable for isolated guest networks on VMware hypervisor only with VMware Distributed Virtual Switches version 6.6.0 & above and vSphere version 6.7 & above. It accepts the following values for desired behaviour of the network elements:
 
@@ -316,7 +316,7 @@ To create a network offering:
 
       *Accept* - Enables network connectivity for multiple MAC addresses behind a single vNIC.
 
-      *None* - Default to value from global settings - ``network.mac.learning``.
+      *None* - Default to value from global setting - ``network.mac.learning``.
 
    -  **Supported Services**. Select one or more of the possible network
       services. For some services, you must also choose the service
