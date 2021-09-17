@@ -211,7 +211,7 @@ Hypervisor Capabilities
 -----------------------
 For different hypervisors and their versions, various capabilities such as maximum number of guest VMs per host, maximum number of volumes per VM, security group support, etc are considered by CloudStack. These capabilities are stored in the **cloud.hypervisor_capabilities** table in the database. If a specific hypervisor version is not available in the database, values against the *default* version for the hypervisor will be used.
 
-Following hypervisor-specific domentations can be referred for different maximums for a prticular hypervisor host:
+Following hypervisor-specific documentations can be referred for different maximums for a particular hypervisor host:
 
 - VMware: `VMware Configuration Maximum tool <https://configmax.vmware.com/guest?vmwareproduct=vSphere&release=vSphere%207.0&categories=1-0,2-0>`_.
 
@@ -219,7 +219,7 @@ Following hypervisor-specific domentations can be referred for different maximum
 
 
 .. note::
-   Guest VM limit check is not done while deploying a VM on a KVM host.
+   Guest VM limit check is not done while deploying a VM on a KVM hypervisor host.
 
 
 
