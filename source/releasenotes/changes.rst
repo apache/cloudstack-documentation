@@ -14,7 +14,7 @@
    under the License.
 
 
-Changes in |release| since 4.15.0.0
+Changes in |release| since 4.15.1.0
 ===================================
 
 Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/20?closed=1
@@ -287,7 +287,7 @@ to track its issues.
 Changes in 4.15.1.0 since 4.15.0.0
 ===================================
 
-Apache CloudStack uses GitHub <https://github.com/apache/cloudstack/milestone/17?closed=1>`_
+Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/17?closed=1
 to track its issues.
 
 
