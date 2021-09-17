@@ -24,7 +24,8 @@ CloudStack Management Server.
 
 -  Ubuntu 18.04 LTS, 20.04 LTS
 -  CentOS versions 7, 8 (note: CentOS 8 will EOL in Dec 2021)
--  RHEL versions 7, 8 (along with binary compatible versions such as Rocky Linux 8)
+-  Rocky Linux 8
+-  RHEL versions 7, 8
 -  openSUSE Leap 15
 -  SUSE Linux Enterprise Server 15
 
@@ -46,6 +47,7 @@ and VMware with vSphere.
 -  CentOS 7, 8 with KVM (note: CentOS 8 will EOL in Dec 2021)
 -  Rocky Linux 8 with KVM
 -  Red Hat Enterprise Linux 7, 8 with KVM
+-  Rocky Linux 8 with KVM
 -  openSUSE Leap 15
 -  SUSE Linux Enterprise Server 15
 -  XenServer versions 7.1, 7.2, 7.4, 7.5, 8.0 with latest hotfixes, XCP-ng 7.4, 7.6, 8.0, 8.1, 8.2

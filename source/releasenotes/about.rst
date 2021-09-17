@@ -17,6 +17,15 @@
 What's New in |release|
 =======================
 
+Apache CloudStack 4.15.2.0 is a 4.15 LTS release with over 75 fixes and
+improvements since 4.15.1.0. Highlights include:
+
+• Several VMware fixes and improvements
+• Several UI and VR fixes and improvements
+
+What's New in 4.15.1.0
+=======================
+
 Apache CloudStack 4.15.1.0 is a 4.15 LTS release with over 350 enhancements and
 fixes since 4.15.0.0. Highlights include:
 
