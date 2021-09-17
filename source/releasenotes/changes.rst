@@ -17,6 +17,276 @@
 Changes in |release| since 4.15.0.0
 ===================================
 
+Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/20?closed=1
+to track its issues.
+
+.. cssclass:: table-striped table-bordered table-hover
+
+
++-------------------------+----------+------------------------------------------------------------+
+| Version                 | Github   | Description                                                |
++=========================+==========+============================================================+
+| 4.15.2.0                | `#5463`_ | UI: list static routes with listall=true                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5435`_ | Fix public IP actions buttons not working unless           |
+|                         |          | refreshing the page                                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5432`_ | api, ui: return default ui pagesize as part of capability  |
+|                         |          | response                                                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5427`_ | ui: fix add management ip range form                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5431`_ | Hide settings button if not on development mode            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5429`_ | ui: show nicAdapter selection for VMware non-readfromova   |
+|                         |          | template                                                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5387`_ | api, ui: fix NPE with deployVirtualMachine when null       |
+|                         |          | boottype                                                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5408`_ | Legacy UI: Display Accounts Tab to Project Admins          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5404`_ | Allow public templates with no url to be migrated          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5394`_ | ui: Honour default.ui.page.size                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5259`_ | usage: create backup usage record for vmId-offeringId pair |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5307`_ | Filter disk / service offerings by domain at DB level      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5339`_ | server: check server capacity when start/deploy a vm       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5333`_ | vmware: delete snapshot disk after backup to secondary     |
+|                         |          | storage                                                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5403`_ | Add 4.15.2 schema and upgrade path                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5376`_ | Use source IP from same subnet for snat                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5375`_ | vr: ipsec/l2tp vpn secret with no ID selectors             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5374`_ | [VMware] Cancel the pending tasks for a worker VM before   |
+|                         |          | destroying it                                              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5379`_ | api: List details of template download state for stores    |
+|                         |          | corresponding to a zone                                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5380`_ | vmware: check checksum before copying systemvm ISO to      |
+|                         |          | decide if it is needed                                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5392`_ | UI - Scale VM - Fix compute offering selection not working |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5393`_ | ui: Refresh page on deployvm result                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5373`_ | server: do not remove volume from DB if fail to expunge it |
+|                         |          | from primary storage or secondary storage                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5335`_ | xcp-ng: allow passing vm boot options                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5349`_ | Fix of creating volumes from snapshots without backup to   |
+|                         |          | secondary storage                                          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5366`_ | updated maven dependency due to #5363                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5311`_ | [VMware] Start VM with deploy-as-is template having        |
+|                         |          | multiple controller types                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5377`_ | [VMware] Added Worker VM tags for few cloned VMs while     |
+|                         |          | performing some volume operations.                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5364`_ | server: allow destroy/recover volumes which are attached   |
+|                         |          | to removed vms                                             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5384`_ | ubuntu: Fix failure to scp diagnostic data file from SSVM  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5356`_ | server: detach data disks before destroying vms            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5367`_ | ui: Fix search with same parameters                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5360`_ | ui: Go back for delete actions before querying async job   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5319`_ | vr: reload dnsmasq when start vms                          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5354`_ | Fix security_groups for c8/suse                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5359`_ | UI - Add storage name to delete primary/secondary storage  |
+|                         |          | dialog                                                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5345`_ | UI - VM - hide button take vm volume snapshot for          |
+|                         |          | Destroyed state                                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5331`_ | vr: cleanup files in /var/cache/cloud/processed every day  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5348`_ | security group: fix component test                         |
+|                         |          | test_multiple_nic_support.py failures                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5328`_ | Fix iptable rules when chain reference count is 0          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5342`_ | add license header in HostMetricsResponseTest.java         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5326`_ | ui: Update placeholders for adding new tier                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5318`_ | Fix iptable rules in ubuntu 20 for bridge name             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5329`_ | metrics: fix hostsmetricsresponse for zero cpu, locale     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5303`_ | UI - Zone wizard - Fixes wrong add resource step with      |
+|                         |          | localstorageenabled                                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5327`_ | s2svpn: Set initial state as Connecting                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5304`_ | compatibility fix for Packer v1.7.4, update debian         |
+|                         |          | template to 10.10.0                                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5258`_ | vmware: get recommended disk controller only when root or  |
+|                         |          | data disk controller is osdefault                          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5052`_ | UI: Dark mode toggle button on Management Server           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5301`_ | ui: fix display host hypervisorversion                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#4885`_ | UI: Add multiple management server support                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5270`_ | server: skip zone check for PERHOST iso during attachIso   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5287`_ | UI - Zone Wizard - Fixes the IP range form fields are too  |
+|                         |          | narrow                                                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5275`_ | vr: restart conntrackd instead of '/usr/sbin/conntrackd    |
+|                         |          | -d'                                                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5292`_ | ui: Show host as unsecure in listview                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5269`_ | ui: fix capitalise filter                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5278`_ | ui: Add 'on / off' to status icon and make it case         |
+|                         |          | insensitive                                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5219`_ | [TEST] - Test unit - Fix failing UI unit test 4.15 branch  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5253`_ | UI -  zone wizard - change the argument of params.ipv6dns2 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5224`_ | ui: submit form with false boolean params                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5205`_ | ui: fix create shared network with multi-zone              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5231`_ | api: Fix pagination for list PublicIPAddresses             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5246`_ | ui: Fix comparator for boolean                             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5247`_ | ui: Fix current for vmsnapshots                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5225`_ | Fix of shrinking volumes with QCOW2 format                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5206`_ | UI: only display host information, if they are relevant    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5214`_ | ui: Refresh after async job completed only on current /    |
+|                         |          | parent page                                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#4782`_ | UI: Refactor async job polling codebase-wide               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5193`_ | kvm: pre-add 32 PCI controller for hot-plug issue on       |
+|                         |          | ARM64/aarch64                                              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5184`_ | server: fix network access for addNicToVirtualMachine API  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5199`_ | UI: deploy VM - FIX missing custom iops field              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5197`_ | UI: fix NIC table on instance view                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5144`_ | configdrive: fix some failures in                          |
+|                         |          | tests/component/test_configdrive.py                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5064`_ | ui: refactor get api params in forms                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#5164`_ | kvm: fix VM HA on zone-wide storage pools                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.15.2.0                | `#4843`_ | ui: deployvm - Add option to stay on page                  |
++-------------------------+----------+------------------------------------------------------------+
+
+76 Issues listed
+
+.. _`#5463`: https://github.com/apache/cloudstack/pull/5463
+.. _`#5435`: https://github.com/apache/cloudstack/pull/5435
+.. _`#5432`: https://github.com/apache/cloudstack/pull/5432
+.. _`#5427`: https://github.com/apache/cloudstack/pull/5427
+.. _`#5431`: https://github.com/apache/cloudstack/pull/5431
+.. _`#5429`: https://github.com/apache/cloudstack/pull/5429
+.. _`#5387`: https://github.com/apache/cloudstack/pull/5387
+.. _`#5408`: https://github.com/apache/cloudstack/pull/5408
+.. _`#5404`: https://github.com/apache/cloudstack/pull/5404
+.. _`#5394`: https://github.com/apache/cloudstack/pull/5394
+.. _`#5259`: https://github.com/apache/cloudstack/pull/5259
+.. _`#5307`: https://github.com/apache/cloudstack/pull/5307
+.. _`#5339`: https://github.com/apache/cloudstack/pull/5339
+.. _`#5333`: https://github.com/apache/cloudstack/pull/5333
+.. _`#5403`: https://github.com/apache/cloudstack/pull/5403
+.. _`#5376`: https://github.com/apache/cloudstack/pull/5376
+.. _`#5375`: https://github.com/apache/cloudstack/pull/5375
+.. _`#5374`: https://github.com/apache/cloudstack/pull/5374
+.. _`#5379`: https://github.com/apache/cloudstack/pull/5379
+.. _`#5380`: https://github.com/apache/cloudstack/pull/5380
+.. _`#5392`: https://github.com/apache/cloudstack/pull/5392
+.. _`#5393`: https://github.com/apache/cloudstack/pull/5393
+.. _`#5373`: https://github.com/apache/cloudstack/pull/5373
+.. _`#5335`: https://github.com/apache/cloudstack/pull/5335
+.. _`#5349`: https://github.com/apache/cloudstack/pull/5349
+.. _`#5366`: https://github.com/apache/cloudstack/pull/5366
+.. _`#5311`: https://github.com/apache/cloudstack/pull/5311
+.. _`#5377`: https://github.com/apache/cloudstack/pull/5377
+.. _`#5364`: https://github.com/apache/cloudstack/pull/5364
+.. _`#5384`: https://github.com/apache/cloudstack/pull/5384
+.. _`#5356`: https://github.com/apache/cloudstack/pull/5356
+.. _`#5367`: https://github.com/apache/cloudstack/pull/5367
+.. _`#5360`: https://github.com/apache/cloudstack/pull/5360
+.. _`#5319`: https://github.com/apache/cloudstack/pull/5319
+.. _`#5354`: https://github.com/apache/cloudstack/pull/5354
+.. _`#5359`: https://github.com/apache/cloudstack/pull/5359
+.. _`#5345`: https://github.com/apache/cloudstack/pull/5345
+.. _`#5331`: https://github.com/apache/cloudstack/pull/5331
+.. _`#5348`: https://github.com/apache/cloudstack/pull/5348
+.. _`#5328`: https://github.com/apache/cloudstack/pull/5328
+.. _`#5342`: https://github.com/apache/cloudstack/pull/5342
+.. _`#5326`: https://github.com/apache/cloudstack/pull/5326
+.. _`#5318`: https://github.com/apache/cloudstack/pull/5318
+.. _`#5329`: https://github.com/apache/cloudstack/pull/5329
+.. _`#5303`: https://github.com/apache/cloudstack/pull/5303
+.. _`#5327`: https://github.com/apache/cloudstack/pull/5327
+.. _`#5304`: https://github.com/apache/cloudstack/pull/5304
+.. _`#5258`: https://github.com/apache/cloudstack/pull/5258
+.. _`#5052`: https://github.com/apache/cloudstack/pull/5052
+.. _`#5301`: https://github.com/apache/cloudstack/pull/5301
+.. _`#4885`: https://github.com/apache/cloudstack/pull/4885
+.. _`#5270`: https://github.com/apache/cloudstack/pull/5270
+.. _`#5287`: https://github.com/apache/cloudstack/pull/5287
+.. _`#5275`: https://github.com/apache/cloudstack/pull/5275
+.. _`#5292`: https://github.com/apache/cloudstack/pull/5292
+.. _`#5269`: https://github.com/apache/cloudstack/pull/5269
+.. _`#5278`: https://github.com/apache/cloudstack/pull/5278
+.. _`#5219`: https://github.com/apache/cloudstack/pull/5219
+.. _`#5253`: https://github.com/apache/cloudstack/pull/5253
+.. _`#5224`: https://github.com/apache/cloudstack/pull/5224
+.. _`#5205`: https://github.com/apache/cloudstack/pull/5205
+.. _`#5231`: https://github.com/apache/cloudstack/pull/5231
+.. _`#5246`: https://github.com/apache/cloudstack/pull/5246
+.. _`#5247`: https://github.com/apache/cloudstack/pull/5247
+.. _`#5225`: https://github.com/apache/cloudstack/pull/5225
+.. _`#5206`: https://github.com/apache/cloudstack/pull/5206
+.. _`#5214`: https://github.com/apache/cloudstack/pull/5214
+.. _`#4782`: https://github.com/apache/cloudstack/pull/4782
+.. _`#5193`: https://github.com/apache/cloudstack/pull/5193
+.. _`#5184`: https://github.com/apache/cloudstack/pull/5184
+.. _`#5199`: https://github.com/apache/cloudstack/pull/5199
+.. _`#5197`: https://github.com/apache/cloudstack/pull/5197
+.. _`#5144`: https://github.com/apache/cloudstack/pull/5144
+.. _`#5064`: https://github.com/apache/cloudstack/pull/5064
+.. _`#5164`: https://github.com/apache/cloudstack/pull/5164
+.. _`#4843`: https://github.com/apache/cloudstack/pull/4843
+
+
+Changes in 4.15.1.0 since 4.15.0.0
+===================================
+
 Apache CloudStack uses GitHub <https://github.com/apache/cloudstack/milestone/17?closed=1>`_
 to track its issues.
 
