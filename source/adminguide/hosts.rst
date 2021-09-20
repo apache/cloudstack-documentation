@@ -210,6 +210,7 @@ any system that is not up to date with patches.
 Hypervisor Capabilities
 -----------------------
 For different hypervisors and their versions, various capabilities such as maximum number of guest VMs per host, maximum number of volumes per VM, security group support, etc are considered by CloudStack. These capabilities are stored in the **cloud.hypervisor_capabilities** table in the database. If a specific hypervisor version is not available in the database, values against the *default* version for the hypervisor will be used.
+These capabilities can be listed using API - ``listHypervisorCapabilities``. Some of the hypervisor capabilities can also be updated for a hypervisor type and version combination using API - ``updateHypervisorCapabilities``.
 
 Following hypervisor-specific documentations can be referred for different maximums for a particular hypervisor host:
 
