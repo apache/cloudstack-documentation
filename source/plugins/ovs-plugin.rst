@@ -18,8 +18,8 @@ The OVS Plugin
 ==============
 
 .. warning::
-   The OVS Plugin is no longer maintained and might not work on newer versions
-   of CloudStack. If you wish to use OVS as the default networking backend on Linux,
+   The OVS Plugin was not maintained in some CloudStack versions. Please use CloudStack
+   4.16.0.0 and later. If you wish to use OVS as the default networking backend on Linux,
    only follow the Agent Configuration part of this guide.
    CloudStack will automatically detect it up based on the configuration in the
    agent.properties file. This in spite of the OVS Plugin not being shown in the
