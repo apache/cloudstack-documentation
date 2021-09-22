@@ -127,18 +127,22 @@ To create a VM from a template:
 
 #. Log in to the CloudStack UI as an administrator or user.
 
-#. In the left navigation bar, click Instances.
+#. In the left navigation bar, click Compute -> Instances.
 
-#. Click Add Instance.
+#. Click the Add Instance button.
 
 #. Select a zone. Admin users will have the option to select a pod, cluster or host.
 
-#. Select a template, then follow the steps in the wizard. For more
-   information about how the templates came to be in this list, see
-   `*Working with Templates* <templates.html>`_.
+#. Select a template or ISO. For more information about how the templates came
+   to be in this list, see `*Working with Templates* <templates.html>`_.
 
 #. Be sure that the hardware you have allows starting the selected
    service offering.
+
+#. Select a disk offering.
+
+#. Select/Add a network.
+
 
    .. note::
       VMware only: If the selected template contains OVF properties, different deployment options or configurations,
@@ -146,13 +150,11 @@ To create a VM from a template:
 
       See `“Support for Virtual Appliances” <virtual_machines.html#support-for-virtual-appliances>`_.
 
-#. Click Submit and your VM will be created and started.
+#. Click Launch Virtual Machine and your VM will be created and started.
 
    .. note::
       For security reason, the internal name of the VM is visible
       only to the root admin.
-
-To create a VM from an ISO:
 
 .. note::
    **XenServer**
@@ -162,19 +164,6 @@ To create a VM from an ISO:
    created. The PV drivers are necessary for essential management
    functions such as mounting additional volumes and ISO images,
    live migration, and graceful shutdown.
-
-#. Log in to the CloudStack UI as an administrator or user.
-
-#. In the left navigation bar, click Instances.
-
-#. Click Add Instance.
-
-#. Select a zone. Admin users will have the option to select a pod, cluster or host.
-
-#. Select ISO Boot, and follow the steps in the wizard.
-
-#. Click Submit and your VM will be created and started.
-
 
 
 Install Required Tools and Drivers
@@ -217,7 +206,7 @@ To access a VM through the CloudStack UI:
 
 #. Log in to the CloudStack UI as a user or admin.
 
-#. Click Instances, then click the name of a running VM.
+#. Click Compute -> Instances, then click the name of a running VM.
 
 #. Click the View Console button |console-icon.png|.
 
@@ -272,7 +261,7 @@ To delete a virtual machine:
 
 #. Log in to the CloudStack UI as a user or admin.
 
-#. In the left navigation, click Instances.
+#. In the left navigation, click Compute -> Instances.
 
 #. Choose the VM that you want to delete.
 
