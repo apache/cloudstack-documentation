@@ -668,7 +668,7 @@ Physical Network
 ~~~~~~~~~~~~~~~~
 There are various network isolation methods supported by Cloudstack. The
 default VLAN option will be sufficient for our purposes. For improved
-performance and/or security, Cloudstack allows different trafic types to run
+performance and/or security, Cloudstack allows different traffic types to run
 over specifically dedicated network interface cards attached to hypervisors.
 We will not be making any changes here, the default settings are fine
 for this demo installation of Cloudstack.
