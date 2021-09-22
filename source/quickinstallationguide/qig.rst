@@ -638,7 +638,7 @@ A new Zone wizard will pop-up. Please chose Advanced (don't tick the "Security G
 Zone Details
 ~~~~~~~~~~~~
 
-On this page we enter where our dns servers are located.
+On this page, we enter where our DNS servers are located.
 CloudStack distinguishes between internal and public DNS. Internal DNS is
 assumed to be capable of resolving internal-only hostnames, such as your
 NFS server’s DNS name. Public DNS is provided to the guest VMs to resolve
