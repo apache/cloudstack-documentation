@@ -85,6 +85,14 @@ host to work with CloudStack.
    It is NOT recommended to run services on this host not controlled by
    CloudStack.
 
+.. warning::
+   Certain servers such as Dell provide the option to choose the Power Management Profile.
+   The Active Power Controller enables Dell System DBPM (Demand Based Power Management)
+   which can restrict the visibility of the maximum CPU clock speed availble to the OS,
+   which in turn can lead to CloudStack fetching the incorrect CPU speed of the server.
+   To ensure that CloudStack can always fetch the maximum cpu speed on the server, ensure
+   that "OS Control" is set as the Power Management Profile.
+
 The procedure for installing a KVM Hypervisor Host is:
 
 #. Prepare the Operating System
