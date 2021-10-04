@@ -17,7 +17,28 @@
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is a |version| LTS release with over 15 major new
+Apache CloudStack 4.15.2.0 is a 4.15 LTS release with over 75 fixes and
+improvements since 4.15.1.0. Highlights include:
+
+• Several VMware fixes and improvements
+• Several UI and VR fixes and improvements
+
+What's New in 4.15.1.0
+=======================
+
+Apache CloudStack 4.15.1.0 is a 4.15 LTS release with over 350 enhancements and
+fixes since 4.15.0.0. Highlights include:
+
+• Support for XCP-ng 8.2
+• Support for VMware 7.0
+• Several VMware improvements such as vSphere datastore cluster synchronisation, deploy-as-is OVA template support and VM migration
+• Several VR fixes and improvements, support for IKEv2 VPN option
+• Several UI fixes and improvements, support for UI customisation and updated localisation
+
+What's New in 4.15.0.0
+======================
+
+Apache CloudStack 4.15.0.0 is a 4.15 LTS release with over 15 major new
 features, and over 250 enhancements and fixes since 4.14. Highlights include:
 
 • New modern UI (GA release)

@@ -42,7 +42,6 @@ configure the base guest network:
    -  **Name**: The name of the network. This will be user-visible
  
    -  **Description**: The description of the network. This will be
-
       user-visible
 
    -  **Zone**: The zone in which you are configuring the guest network.

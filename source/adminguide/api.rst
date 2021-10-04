@@ -52,6 +52,7 @@ Virtual Router or through an attached iso called the Config drive.
 User Data and Meta Data Via Virtual Router
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
 CloudStack provides API access to attach up to 32KB of user data to a
 deployed VM. Deployed VMs also have access to instance metadata via the
 virtual router.

@@ -13,29 +13,20 @@
    specific language governing permissions and limitations
    under the License.
 
-.. CloudStack Installation Documentation master file, created by
-   sphinx-quickstart on Sat Jan 25 15:15:31 2014.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+MySQL upgrade problems
+======================
 
-|menu_acs_logo|
+With certain MySQL versions (see below), issues have been seen with "cloud.nics" table's 
+column type (which was not updated properly during CloudStack upgrades, due to MySQL limitations),
+which eventually may lead to exception seen in the management server logs, causing users to
+not be able to start any VM.
 
+The following SQL statement needs to be manually executed in order to fix such issue:
 
-Plugins Guide
-=============
+   .. parsed-literal::
+ALTER TABLE nics MODIFY COLUMN update_time timestamp DEFAULT CURRENT_TIMESTAMP;
 
+The issue is known to affect the following MySQL server versions:
 
-This is the Apache CloudStack Plugins guide. This section gives information for those wishing to develop CloudStack either contributing to the CloudStack core software or writing external plugins
-
-.. toctree::
-   :maxdepth: 2
-
-   cloudian-connector
-   nicira-plugin
-   vxlan
-   ovs-plugin
-   ipv6
-   quota
-   cloudstack-kubernetes-service
-   cloudstack-kubernetes-provider.rst
-
+ -  5.7.34 or later
+ -  8+

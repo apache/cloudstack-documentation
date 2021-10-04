@@ -383,14 +383,17 @@ line:
 
 .. parsed-literal::
 
-   deb http://server.url/cloudstack/repo/binary ./
+   deb http://<server.url>/cloudstack/repo/binary ./
 
 If you signed your Release file with GnuPG, import the signing key
 on your target system first.
 
 .. parsed-literal::
 
-   $ wget -q -O - http://server.url/cloudstack/repo/binary/KEY.gpg | sudo apt-key add -
+   $ wget -q -O - http://<server.url>/cloudstack/repo/binary/KEY.gpg | sudo apt-key add -
+
+.. note::
+   In the previous lines the variable <server.url> must be replaced with the address of the repository
 
 Now that you have the repository info in place, you'll want to run
 another update so that APT knows where to find the CloudStack packages.
