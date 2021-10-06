@@ -292,33 +292,40 @@ Configuring Network Access Control List
 
 Define Network Access Control List (ACL) on the VPC virtual router to
 control incoming (ingress) and outgoing (egress) traffic between the VPC
-tiers, and the tiers and Internet. By default, all incoming traffic to
-the guest networks is blocked and all outgoing traffic from guest
-networks is allowed, once you add an ACL rule for outgoing traffic, then
-only outgoing traffic specified in this ACL rule is allowed, the rest is
-blocked. To open the ports, you must create a new network ACL. The
-network ACLs can be created for the tiers only if the NetworkACL service
-is supported.
+tiers as well as between VPC tiers and public networks. By default, all
+incoming traffic into VPC tiers is blocked and all outgoing traffic from
+VPC tiers is allowed. To deny outgoing traffic, a "egress deny all" item 
+needs to be created. Afterwards egress-traffic can be whitelisted using
+dedicated ACL rules which are positioned before the "egress deny all" item.
 
 
 About Network ACL Lists
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-In CloudStack terminology, Network ACL is a group of Network ACL items.
-Network ACL items are nothing but numbered rules that are evaluated in
-order, starting with the lowest numbered rule. These rules determine
-whether traffic is allowed in or out of any tier associated with the
-network ACL. You need to add the Network ACL items to the Network ACL,
-then associate the Network ACL with a tier. Network ACL is associated
-with a VPC and can be assigned to multiple VPC tiers within a VPC. A
-Tier is associated with a Network ACL at all the times. Each tier can be
-associated with only one ACL.
+In CloudStack terminology, Network ACL is a group of Network ACL rules.
+Network ACL rules are evaluated in the given order, starting with the 
+lowest numbered rule. These rules determine whether traffic is allowed
+in or out of any tier associated with the network ACL. Each tier in a VPC
+requires a associated network ACL.
+A ACL can be used by multiple VPC tiers within a VPC.
 
-The default Network ACL is used when no ACL is associated. Default
-behavior is all the incoming traffic is blocked and outgoing traffic is
-allowed from the tiers. Default network ACL cannot be removed or
-modified. Contents of the default Network ACL is:
+.. note::
+   Following some additonal information for designing and developing
+   ACL rules for usage in Cloudstack VPC's:
+   - ACL rules for VPC tiers are statefull. This means if e.g. there is
+     an igress rule for ssh in place, there is no need to implemend a
+     corresponding egress rule for the tier.
+   - The generated rules can be checked on the virtual routers of the VPC.
+     For ingress rules look into the iptables "filter" table, while 
+     egress rules can be found in the "mangle" table.
+   - Ingress and egress rules are independent. So an egress rule
+     won't interfere ingress rules, even if is placed before the
+     ingress rule.
 
+Cloudstack provides two ACL Lists after installation. The "default_allow"
+includes rules which allow all incomeing and outgoing traffic while the 
+"deny_all" will deny both. Exemplary the content of the "default_deny" in 
+the following table.
 .. cssclass:: table-striped table-bordered table-hover
 
 ===== ======== ============ ====== =========
@@ -376,6 +383,14 @@ Creating ACL Lists
 
    -  **Description**: A short description of the ACL list that can be
       displayed to users.
+
+
+.. note::
+   Newly created ACL Lists don't contain any ACL rules. The default
+   behavior is that incoming traffic to the tier is denied and 
+   outgoing traffic is allowed from the tiers. These ACL rules can't
+   be deletetd and need to be concidered while implementing further
+   ACL rules.
 
 
 Creating an ACL Rule
@@ -1354,6 +1369,9 @@ Adding a Port Forwarding Rule on a VPC
 
       You can test the rule by opening an SSH session to the instance.
 
+.. note::
+   A portforwording rule will need the corresponding entries in the ACL
+   of the tier the portforwarding rule is aiming to.
 
 Removing Tiers
 ~~~~~~~~~~~~~~
