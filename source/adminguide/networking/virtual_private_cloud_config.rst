@@ -292,7 +292,7 @@ Configuring Network Access Control List
 
 .. note::
 Network Aceess Control Lists can only be created if the service "NetworkACL"
-is supported by the used offering.
+is supported by the used offering for deploying the VPC.
 
 Define a Network Access Control List (ACL) to control incoming
 (ingress) and outgoing (egress) traffic between the associated tier and
@@ -318,8 +318,8 @@ Rule  Protocol Traffic type Action CIDR
 ===== ======== ============ ====== =========
 
 Each Network ACL is associated with a VPC and can be assigned
-to multiple VPC tiers within a VPC and each tier needs to be associated with a
-Network ACL. Only one ACL can be associated with a tier.
+to multiple VPC tiers. Every tier needs to be associated with a
+Network ACL. Only one ACL can be associated with a tier at a time.
 If no custome network ACL is availeable at the time of tier creation, a
 default Network ACL is used. Curretly two default ACL are availeable. The
 "default_allow" ACL allows in- and egress traffic while the "default_deny" blocks
@@ -331,7 +331,7 @@ all outgoing traffic. To change the defaults add a "deny all egress destination"
 
 .. note::
 - ACL Rules for VPC tiers are stateful (different for private gateways)
-- Source / Destionation are always external networks
+- Source / Destination are always external networks
 - ACL rules can also beeen seen on the virtual router of the VPC. Ingress rules are listed
   in the table iptables table "filter" while egress rules are in the "mangle" table
 - ACL rules for ingress and egress are not correlating. A egress "deny all" won't affect traffic
