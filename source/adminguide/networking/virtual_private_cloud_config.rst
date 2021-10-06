@@ -291,22 +291,21 @@ Configuring Network Access Control List
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
-Network Aceess Control Lists can only be created if the service "NetworkACL"
-is supported by the used offering for deploying the VPC.
+Network Access Control Lists can only be created if the service
+"NetworkACL" is supported by the created VPC.
 
 Define a Network Access Control List (ACL) to control incoming
-(ingress) and outgoing (egress) traffic between the associated tier and
-external networks (other tiers of the VPC as well as public networks).
+(ingress) and outgoing (egress) traffic between the associated tier
+and external networks (other tiers of the VPC as well as public networks).
 
 About Network ACL Lists
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 In CloudStack terminology, a Network ACL is a group of Network ACL rules.
-Network ACL rules are processed by there order, starting with the lowest
-numbered rule. Each rule defines at least the affected protocol, traffic type,
-action and effected network. The following table shows the exemplary content 
-of a "default_deny" ACL.
-
+Network ACL rules are processed by theire order, starting with the lowest
+numbered rule. Each rule defines at least a affected protocol, traffic type,
+action and afected destination / source network. The following table shows a
+exemplary content of a "default_deny" ACL.
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -319,24 +318,27 @@ Rule  Protocol Traffic type Action CIDR
 
 Each Network ACL is associated with a VPC and can be assigned
 to multiple VPC tiers. Every tier needs to be associated with a
-Network ACL. Only one ACL can be associated with a tier at a time.
-If no custome network ACL is availeable at the time of tier creation, a
-default Network ACL is used. Curretly two default ACL are availeable. The
-"default_allow" ACL allows in- and egress traffic while the "default_deny" blocks
-all in- and egress traffic. Default network ACL cannot be removed or
-modified.
-Newly created ACLs deny all incoming traffic to the associated tier and allow 
-all outgoing traffic. To change the defaults add a "deny all egress destination" and / or
-"allow all ingress source" rule to the ACL. Afterwards traffic can be white- or blacklisted.
+Network ACL. Only one ACL can be associated with a tier at a time. If no
+custome network ACL is availeable at the time of tier creation, adefault
+Network ACL has to be used instead. Curretly two default ACL are
+availeable. The "default_allow" ACL allows in- and egress traffic while
+the "default_deny" blocks all in- and egress traffic. Default network
+ACL cannot be removed or modified. Newly created ACLs, while showing
+empty, deny all incoming traffic to the associated tier and allow all
+outgoing traffic. To change the defaults add a "deny all egress 
+destination" and / or "allow all ingress source" rule to the ACL. 
+Afterwards traffic can be white- or blacklisted.
 
 .. note::
-- ACL Rules for VPC tiers are stateful (different for private gateways)
-- Source / Destination are always external networks
-- ACL rules can also beeen seen on the virtual router of the VPC. Ingress rules are listed
-  in the table iptables table "filter" while egress rules are in the "mangle" table
-- ACL rules for ingress and egress are not correlating. A egress "deny all" won't affect traffic
-  in response of a "ingress allow ssh"
-
+- ACL Rules in Cloudstack are stateful
+- Source / Destination CIDRs are always external networks
+- ACL rules can also beeen seen on the virtual router of the VPC. Ingress 
+  rules are listed in the table iptables table "filter" while egress rules
+  are placed in the "mangle" table
+- ACL rules for ingress and egress are not correlating. For exampel a
+  egress "deny all" won't affect traffic in response to an allowed ingress
+  connection
+  
 
 Creating ACL Lists
 ^^^^^^^^^^^^^^^^^^
