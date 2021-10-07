@@ -1418,8 +1418,8 @@ replace your version of qemu-img with one which has been patched to include the 
 switch.
 
 
-Enable UEFI legacy / secureboot
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UEFI legacy / secureboot
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 For deploying instances using UEFI legacy / secureboot, there are some further tasks to
 perform.
