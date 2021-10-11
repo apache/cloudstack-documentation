@@ -166,13 +166,19 @@ MySQL. See :ref:`install-database-on-separate-node`.
 
          setenforce permissive
 
-#. Set up the database. The following command creates the "cloud" user
-   on the database.
+#. Set up the database.
+
+   The cloudstack-setup-databases script is used for creating the cloudstack
+   databases (cloud, cloud_usage), creating a user (cloud), granting permissions
+   to the user and preparing the tables for the first startup of the management
+   server.
+
+   The following command creates the "cloud" user on the database.
 
    .. parsed-literal::
 
       cloudstack-setup-databases cloud:<dbpassword>@localhost \
-      --deploy-as=root:<password> \
+      [ --deploy-as=root:<password> | --schema-only ] \
       -e <encryption_type> \
       -m <management_server_key> \
       -k <database_key> \
@@ -186,6 +192,37 @@ MySQL. See :ref:`install-database-on-separate-node`.
       deploying the database. In the following command, it is assumed
       the root user is deploying the database and creating the "cloud"
       user.
+
+   -  (Optional) There is an option to bypass the creating of the databases,
+      user and granting permissions to the user. This is useful if you don't
+      want to expose your root credentials but still want the database to
+      be prepared for first start up. These skipped steps will have had to be
+      done manually prior to executing this script. This behaviour can be
+      envoked by passing the --schema-only flag. This flag conflicts with the
+      --deploy-as flag so the two cannot be used together. To set up the
+      databases and user manually before executing the script with the flag,
+      these commands can be executed:
+
+      .. code:: mysql
+
+         -- Create the cloud and cloud_usage databases
+         CREATE DATABASE `cloud`;
+         CREATE DATABASE `cloud_usage`;
+
+         -- Create the cloud user
+         CREATE USER cloud@`localhost` identified by '<password>';
+         CREATE USER cloud@`%` identified by '<password>';
+
+         -- Grant all privileges to the cloud user on the databases
+         GRANT ALL ON cloud.* to cloud@`localhost`;
+         GRANT ALL ON cloud.* to cloud@`%`;
+
+         GRANT ALL ON cloud_usage.* to cloud@`localhost`;
+         GRANT ALL ON cloud_usage.* to cloud@`%`;
+
+         -- Grant process list privilege for all other databases
+         GRANT process ON *.* TO cloud@`localhost`;
+         GRANT process ON *.* TO cloud@`%`;
 
    -  (Optional) For encryption\_type, use file or web to indicate the
       technique used to pass in the database encryption password.
@@ -206,7 +243,6 @@ MySQL. See :ref:`install-database-on-separate-node`.
    -  (Optional) For management\_server\_ip, you may explicitly specify
       cluster management server node IP. If not specified, the local IP
       address will be used.
-
 
    When this script is finished, you should see a message like
    ‚ÄúSuccessfully initialized the database.‚Äù
@@ -363,8 +399,23 @@ same node for MySQL. See `‚ÄúInstall the Database on the Management Server Node‚
 
 #. Return to the root shell on your first Management Server.
 
-#. Set up the database. The following command creates the cloud user on
-   the database.
+#. Set up the database. 
+
+The cloudstack-setup-databases script is used for creating the cloudstack
+databases (cloud, cloud_usage), creating a user (cloud), granting permissions
+to the user and preparing the tables for the first startup of the management
+server.
+
+The following command creates the cloud user on the database.
+
+   .. parsed-literal::
+
+      cloudstack-setup-databases cloud:<dbpassword>@<ip address mysql server> \
+      [ --deploy-as=root:<password> | --schema-only ]\
+      -e <encryption_type> \
+      -m <management_server_key> \
+      -k <database_key> \
+      -i <management_server_ip>
 
    -  In dbpassword, specify the password to be assigned to the cloud
       user. You can choose to provide no password.
@@ -374,6 +425,37 @@ same node for MySQL. See `‚ÄúInstall the Database on the Management Server Node‚
       the root user is deploying the database and creating the cloud
       user.
 
+   -  (Optional) There is an option to bypass the creating of the databases,
+      user and granting permissions to the user. This is useful if you don't
+      want to expose your root credentials but still want the database to
+      be prepared for first start up. These skipped steps will have had to be
+      done manually prior to executing this script. This behaviour can be
+      envoked by passing the --schema-only flag. This flag conflicts with the
+      --deploy-as flag so the two cannot be used together. To set up the
+      databases and user manually before executing the script with the flag,
+      these commands can be executed:
+
+      .. code:: mysql
+
+         -- Create the cloud and cloud_usage databases
+         CREATE DATABASE `cloud`;
+         CREATE DATABASE `cloud_usage`;
+
+         -- Create the cloud user
+         CREATE USER cloud@`localhost` identified by '<password>';
+         CREATE USER cloud@`%` identified by '<password>';
+
+         -- Grant all privileges to the cloud user on the databases
+         GRANT ALL ON cloud.* to cloud@`localhost`;
+         GRANT ALL ON cloud.* to cloud@`%`;
+
+         GRANT ALL ON cloud_usage.* to cloud@`localhost`;
+         GRANT ALL ON cloud_usage.* to cloud@`%`;
+
+         -- Grant process list privilege for all other databases
+         GRANT process ON *.* TO cloud@`localhost`;
+         GRANT process ON *.* TO cloud@`%`;
+
    -  (Optional) For encryption\_type, use file or web to indicate the
       technique used to pass in the database encryption password.
       Default: file. See :ref:`about-password-key-encryption`.
@@ -381,8 +463,8 @@ same node for MySQL. See `‚ÄúInstall the Database on the Management Server Node‚
    -  (Optional) For management\_server\_key, substitute the default key
       that is used to encrypt confidential parameters in the CloudStack
       properties file. Default: password. It is highly recommended that
-      you replace this with a more secure value. See About Password and
-      Key Encryption.
+      you replace this with a more secure value. See 
+      :ref:`about-password-key-encryption`.
 
    -  (Optional) For database\_key, substitute the default key that is
       used to encrypt confidential parameters in the CloudStack
