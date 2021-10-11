@@ -302,8 +302,8 @@ About Network ACL Lists
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 In CloudStack terminology, a Network ACL is a group of Network ACL rules.
-Network ACL rules are processed by theire order, starting with the lowest
-numbered rule. Each rule defines at least a affected protocol, traffic type,
+Network ACL rules are processed by their order, starting with the lowest
+numbered rule. Each rule defines at least an affected protocol, traffic type,
 action and afected destination / source network. The following table shows a
 exemplary content of a "default_deny" ACL.
 
@@ -319,9 +319,9 @@ Rule  Protocol Traffic type Action CIDR
 Each Network ACL is associated with a VPC and can be assigned
 to multiple VPC tiers. Every tier needs to be associated with a
 Network ACL. Only one ACL can be associated with a tier at a time. If no
-custome network ACL is availeable at the time of tier creation, adefault
+custome network ACL is availeable at the time of tier creation, a default
 Network ACL has to be used instead. Curretly two default ACL are
-availeable. The "default_allow" ACL allows in- and egress traffic while
+available. The "default_allow" ACL allows in- and egress traffic while
 the "default_deny" blocks all in- and egress traffic. Default network
 ACL cannot be removed or modified. Newly created ACLs, while showing
 empty, deny all incoming traffic to the associated tier and allow all
@@ -335,7 +335,7 @@ Afterwards traffic can be white- or blacklisted.
 - ACL rules can also beeen seen on the virtual router of the VPC. Ingress 
   rules are listed in the table iptables table "filter" while egress rules
   are placed in the "mangle" table
-- ACL rules for ingress and egress are not correlating. For exampel a
+- ACL rules for ingress and egress are not correlating. For example a
   egress "deny all" won't affect traffic in response to an allowed ingress
   connection
   
