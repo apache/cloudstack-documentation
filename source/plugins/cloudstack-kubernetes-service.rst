@@ -67,6 +67,9 @@ Eg:
 
    # ./create-kubernetes-binaries-iso.sh ./ 1.12.5 0.7.1 1.12.0 "https://cloud.weave.works/k8s/net?k8s-version=1.12.5" https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta1/aio/deploy/recommended.yaml
 
+**NOTE:**
+From ACS 4.16 onwards, Kubernetes versions >= 1.20.x are only supported (https://endoflife.date/kubernetes).
+
 Working with Kubernetes supported version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
