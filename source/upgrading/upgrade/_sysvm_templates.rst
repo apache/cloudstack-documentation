@@ -28,7 +28,11 @@ Update System-VM templates
 #. Click Register template.
    The Register template dialog box is displayed.
 
-#. In the Register template dialog box, specify the following values
+#. From ACS 4.16 onwards, CloudStack will support automatic registration of systemVM
+   templates, if not done prior initiating upgrade. However, the usual upgrade process 
+   continues to be supported. To register the system VM template do the following:
+
+   In the Register template dialog box, specify the following values
    (do not change these):
 
    .. cssclass:: table-striped table-bordered table-hover
