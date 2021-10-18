@@ -81,6 +81,35 @@ The following API commands have the "tags" input parameter:
 
 -  listStaticRoutes
 
+Using Comments on the Resources in the Cloud
+--------------------------------------------
+
+CloudStack allows users and administrators to create comments against cloud objects with a UUID. The listing page of any cloud object includes a blue icon next to the object name indicating that the object contains comments.
+
+To create a new comment on an object:
+
+1. Click on the object to display the detail view
+
+2. Navigate to the Comments tab
+
+3. Add a comment on the text area and click the Submit button
+
+.. note::
+   Administrators only: Select the 'Only visible to Administrators' checkbox to create private comments across administrators
+
+To display al the comments created by the logged in user (or administrator):
+
+1. In the left navigation bar, click Tools
+
+2. Click Comments (the default filter is 'Created by me')
+
+To display all the comments on the objects that the logged in user (or administrator) has access:
+
+1. In the left navigation bar, click Tools
+
+2. Click Comments
+
+3. Select the 'All Comments' filter
 
 Reporting CPU Sockets
 ---------------------
