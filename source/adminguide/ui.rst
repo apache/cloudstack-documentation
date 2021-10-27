@@ -535,6 +535,7 @@ For the UI to work with different servers, it is necessary to configure the Ngin
 
 Footer text option
 ~~~~~~~~~~~~~~~~~~
+
 Users can use the file `/etc/cloudstack/management/config.json` to add the option to display text in the footer at the login screen to show where to get help or display a usage policy.
 
 To display the text in the footer at the login screen, make the following changes to the config.json file:
