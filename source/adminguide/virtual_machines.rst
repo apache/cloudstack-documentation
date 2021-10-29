@@ -433,8 +433,8 @@ variables:
 -  scale.retry: How many times to attempt the scaling operation. Default
    = 2.
 
-Along with these global configurations following are the options that needs
-to be enabled to make a VM dynamically scalable
+Along with these global configurations, the following options need to be enabled
+to make a VM dynamically scalable
 
 -  Template from which VM is created needs to have Xen tools (for XenServer hosts)
    or VMware Tools (for VMware hosts) and it should have 'Dynamically Scalable'
