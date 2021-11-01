@@ -543,13 +543,13 @@ To display the text in the footer at the login screen, make the following change
 ============================= ===================================================================
 Property                      Description
 ============================= ===================================================================
-footerText                    Configure to display text (HTML) in the footer at the login screen.
+loginFooter                   Configure to display text (HTML) in the footer at the login screen.
 ============================= ===================================================================
 
 .. parsed-literal::
    {
       ...
-      footerText: "By logging, you are accepting the <a href='https://www.apache.org/foundation/policies/privacy.html'>usage policy</a>"
+      loginFooter: "By logging, you are accepting the <a href='https://www.apache.org/foundation/policies/privacy.html'>usage policy</a>"
    }
 
 Known Limitations
