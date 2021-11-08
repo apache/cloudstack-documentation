@@ -17,6 +17,33 @@
 What's New in |release|
 =======================
 
+Apache CloudStack 4.16.0.0 is a 4.16 LTS release with over 22 major new
+features, and over 244 enhancements and fixes since 4.15. Highlights include:
+
+• System VM Template improvements
+• CKS Support for Cluster Autoscaling
+• Dell EMC VxFlex integration
+• Linstor Volume Plugin integration
+• Support for OpenSuse
+• Support for Rocky Linux
+• Granular control of dynamic scaling of VM's CPU/RAM
+• Comments in the UI
+• Resource Icons
+• Bulk actions through the UI
+• UI for VM Ingestion
+• L2 Networks Persistent modern
+• Script cloudstack-setup-databases improvement
+• Add mac learning mode in network offering
+• API-call to declare host as Degraded
+• New API endpoint to update pod management network IP range
+• Add New API endpoint: UpdateVlanIpRange
+
+The full list of new features can be found in the project release notes at
+http://docs.cloudstack.apache.org/en/4.16.0.0/releasenotes/changes.html
+
+What's New in 4.15.2.0
+=======================
+
 Apache CloudStack 4.15.2.0 is a 4.15 LTS release with over 75 fixes and
 improvements since 4.15.1.0. Highlights include:
 

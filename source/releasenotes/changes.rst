@@ -14,7 +14,20 @@
    under the License.
 
 
-Changes in |release| since 4.15.1.0
+Changes in |release| since 4.15.2.0
+===================================
+
+Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/16?closed=1
+to track its issues.
+
+.. cssclass:: table-striped table-bordered table-hover
+
+
++-------------------------+----------+------------------------------------------------------------+
+| Version                 | Github   | Description                                                |
++=========================+==========+============================================================+
+
+Changes in 4.15.2.0 since 4.15.1.0
 ===================================
 
 Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/20?closed=1
