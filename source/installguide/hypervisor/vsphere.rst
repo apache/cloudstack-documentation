@@ -51,6 +51,17 @@ Software requirements:
    Apply All Necessary Hotfixes. The lack of up-do-date hotfixes can lead to 
    data corruption and lost VMs.
 
+.. note::
+
+   When using vSphere and vCenter versions 6.0 and 6.5 there is a limitation on
+   instance names with a sequence number between 99999 and 1000000. For example if you take
+   a snapshot of a VM, the expected filename will be different to what cloudstack expects.
+   It is advisable to set the sequence number to 1M to prevent issues by executing the
+   following script on your cloudstack database:
+
+   UPDATE cloud.sequence
+   SET value = 1000000
+   WHERE name = 'vm_instance_seq';
 
 Hardware requirements:
 ^^^^^^^^^^^^^^^^^^^^^^

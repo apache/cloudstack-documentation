@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2014, Apache Software Foundation
 # This file is distributed under the same license as the Apache CloudStack Installation Documentation package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -7466,7 +7466,7 @@ msgstr "稍等片刻，新的路由就创建好了。"
 
 # 7a2e407277964cd18757e610c1197596
 #: ../../managing_networks.rst:5628
-msgid "Blacklisting Routes"
+msgid "Denylisting Routes"
 msgstr "路由黑名单"
 
 # a154d3d5488f418e95dbd3c0ae59a55f
@@ -7474,11 +7474,11 @@ msgstr "路由黑名单"
 msgid ""
 "CloudStack enables you to block a list of routes so that they are not "
 "assigned to any of the VPC private gateways. Specify the list of routes that"
-" you want to blacklist in the ``blacklisted.routes`` global parameter. Note "
+" you want to denylist in the ``denied.routes`` global parameter. Note "
 "that the parameter update affects only new static route creations. If you "
 "block an existing static route, it remains intact and continue functioning. "
-"You cannot add a static route if the route is blacklisted for the zone."
-msgstr "CloudStack允许你定义一个路由黑名单，这样它们就不能关联到任何VPC私有网关。你需要在全局参数blacklisted.routes里定义。要注意，此参数只在新路由创建时才会生效。如果你在黑名单里加入了已存在的静态路由，则此静态路由还是会继续起作用。你不能把在路由黑名单里的路由加入到静态路由当中去。"
+"You cannot add a static route if the route is denied for the zone."
+msgstr "CloudStack允许你定义一个路由黑名单，这样它们就不能关联到任何VPC私有网关。你需要在全局参数denied.routes里定义。要注意，此参数只在新路由创建时才会生效。如果你在黑名单里加入了已存在的静态路由，则此静态路由还是会继续起作用。你不能把在路由黑名单里的路由加入到静态路由当中去。"
 
 # 7f1bbdc7458942d88e89b8e0af49db0c
 #: ../../managing_networks.rst:5639
@@ -8352,7 +8352,7 @@ msgid ""
 "ability to create a network in CloudStack in which physical devices can be "
 "deployed without having to run any VMs. Additionally, you can deploy "
 "physical devices on that network."
-msgstr "在您创建其它类型的网络时，在网络中第一台VM创建之前，该网络仅是数据库的一条记录。当第一个VM创建时，网络会指定一个VLAN ID并初始化。同样，当网络中最后一个VM销毁后，VLAN ID会被释放，这样该网络就不再可用。通过使用持久化网络，您就有能力在不部署VM的情况下在&PRODUCT;中创建一个网络用来部署物理设备。而且，您可以在该网络中部署物理设备。"
+msgstr "在您创建其它类型的网络时，在网络中第一台VM创建之前，该网络仅是数据库的一条记录。当第一个VM创建时，网络会指定一个VLAN ID并初始化。同样，当网络中最后一个VM销毁后，VLAN ID会被释放，这样该网络就不再可用。通过使用持久化网络，您就有能力在不部署VM的情况下在&CloudStack;中创建一个网络用来部署物理设备。而且，您可以在该网络中部署物理设备。"
 
 # 66f7d3c48a604609a402136b8672bae5
 #: ../../managing_networks.rst:6759

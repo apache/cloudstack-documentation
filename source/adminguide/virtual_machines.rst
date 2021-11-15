@@ -38,8 +38,8 @@ names can be controlled by the user:
 
 .. note::
    You can append the display name of a guest VM to its internal name.
-   For more information, see `“Appending a Display Name to the Guest VM’s
-   Internal Name” <#appending-a-display-name-to-the-guest-vms-internal-name>`_.
+   For more information, see `“Appending a Name to the Guest VM’s
+   Internal Name” <#appending-a-name-to-the-guest-vms-internal-name>`_.
 
 Guest VMs can be configured to be Highly Available (HA). An HA-enabled
 VM is monitored by the system. If the system detects that the VM is
@@ -127,18 +127,22 @@ To create a VM from a template:
 
 #. Log in to the CloudStack UI as an administrator or user.
 
-#. In the left navigation bar, click Instances.
+#. In the left navigation bar, click Compute -> Instances.
 
-#. Click Add Instance.
+#. Click the Add Instance button.
 
 #. Select a zone. Admin users will have the option to select a pod, cluster or host.
 
-#. Select a template, then follow the steps in the wizard. For more
-   information about how the templates came to be in this list, see
-   `*Working with Templates* <templates.html>`_.
+#. Select a template or ISO. For more information about how the templates came
+   to be in this list, see `*Working with Templates* <templates.html>`_.
 
 #. Be sure that the hardware you have allows starting the selected
    service offering.
+
+#. Select a disk offering.
+
+#. Select/Add a network.
+
 
    .. note::
       VMware only: If the selected template contains OVF properties, different deployment options or configurations,
@@ -146,13 +150,11 @@ To create a VM from a template:
 
       See `“Support for Virtual Appliances” <virtual_machines.html#support-for-virtual-appliances>`_.
 
-#. Click Submit and your VM will be created and started.
+#. Click Launch Virtual Machine and your VM will be created and started.
 
    .. note::
       For security reason, the internal name of the VM is visible
       only to the root admin.
-
-To create a VM from an ISO:
 
 .. note::
    **XenServer**
@@ -162,19 +164,6 @@ To create a VM from an ISO:
    created. The PV drivers are necessary for essential management
    functions such as mounting additional volumes and ISO images,
    live migration, and graceful shutdown.
-
-#. Log in to the CloudStack UI as an administrator or user.
-
-#. In the left navigation bar, click Instances.
-
-#. Click Add Instance.
-
-#. Select a zone. Admin users will have the option to select a pod, cluster or host.
-
-#. Select ISO Boot, and follow the steps in the wizard.
-
-#. Click Submit and your VM will be created and started.
-
 
 
 Install Required Tools and Drivers
@@ -217,7 +206,7 @@ To access a VM through the CloudStack UI:
 
 #. Log in to the CloudStack UI as a user or admin.
 
-#. Click Instances, then click the name of a running VM.
+#. Click Compute -> Instances, then click the name of a running VM.
 
 #. Click the View Console button |console-icon.png|.
 
@@ -272,7 +261,7 @@ To delete a virtual machine:
 
 #. Log in to the CloudStack UI as a user or admin.
 
-#. In the left navigation, click Instances.
+#. In the left navigation, click Compute -> Instances.
 
 #. Choose the VM that you want to delete.
 
@@ -323,39 +312,29 @@ To access a VM through the CloudStack UI:
 #. Click Apply.
 
 
-Appending a Display Name to the Guest VM’s Internal Name
-----------------------------------------------------------
+Appending a Name to the Guest VM’s Internal Name
+--------------------------------------------------
 
-Every guest VM has an internal name. The host uses the internal name to
-identify the guest VMs. CloudStack gives you an option to provide a
-guest VM with a display name. You can set this display name as the
-internal name so that the vCenter can use it to identify the guest VM. A
-new global parameter, vm.instancename.flag, has now been added to
-achieve this functionality.
+Every guest VM has an internal name. The host uses the internal name to identify the guest VMs. CloudStack gives you an option to provide a guest VM with a  name. You can set this name as the internal name so that the vCenter can use it to identify the guest VM. A new global parameter, vm.instancename.flag, has now been added to achieve this functionality.
 
-The default format of the internal name is
-i-<user\_id>-<vm\_id>-<instance.name>, where instance.name is a global
-parameter. However, If vm.instancename.flag is set to true, and if a
-display name is provided during the creation of a guest VM, the display
-name is appended to the internal name of the guest VM on the host. This
-makes the internal name format as i-<user\_id>-<vm\_id>-<displayName>.
-The default value of vm.instancename.flag is set to false. This feature
-is intended to make the correlation between instance names and internal
-names easier in large data center deployments.
+The default format of the internal name is i-<account\_id>-<vm\_id>-<i.n>, where i.n is the value of the global configuration - instance.name. However, If vm.instancename.flag is set to true, and if a name is provided during the creation of a guest VM, the name is appended to the internal name of the guest VM on the host. This makes the internal name format as i-<account\_id>-<vm\_id>-<name>. The default value of vm.instancename.flag is set to false. This feature is intended to make the correlation between instance names and internal names easier in large data center deployments.
 
-The following table explains how a VM name is displayed in different
-scenarios.
+The following table explains how a VM name is displayed in different scenarios.
 
 .. cssclass:: table-striped table-bordered table-hover
 
-============================= ======================= ==================== ===================================== ==========================
-User-Provided Display Name    vm.instancename.flag    Hostname on the VM   Name on vCenter                       Internal Name
-============================= ======================= ==================== ===================================== ==========================
-Yes                           True                    Display name         i-<user\_id>-<vm\_id>-displayName     i-<user\_id>-<vm\_id>-displayName
-No                            True                    UUID                 i-<user\_id>-<vm\_id>-<instance.name> i-<user\_id>-<vm\_id>-<instance.name>
-Yes                           False                   Display name         i-<user\_id>-<vm\_id>-<instance.name> i-<user\_id>-<vm\_id>-<instance.name>
-No                            False                   UUID                 i-<user\_id>-<vm\_id>-<instance.name> i-<user\_id>-<vm\_id>-<instance.name>
-============================= ======================= ==================== ===================================== ==========================
+======================== =============================== ============================== ============================== ===========================
+**User-Provided Name**   Yes                             No                             Yes                            No
+**vm.instancename.flag** True                            True                           False                          False
+**Name**                 <Name>                          <i.n>-<UUID>                   <Name>                         <i.n>-<UUID>
+**Display Name**         <Display name>                  <i.n>-<UUID>                   <Display name>                 <i.n>-<UUID>
+**Hostname on the VM**   <Name>                          <i.n>-<UUID>                   <Name>                         <i.n>-<UUID>
+**Name on vCenter**      i-<account\_id>-<vm\_id>-<Name> <i.n>-<UUID>                   i-<account\_id>-<vm\_id>-<i.n> i-<account\_id>-<vm\_id>-<i.n>
+**Internal Name**        i-<account\_id>-<vm\_id>-<Name> i-<account\_id>-<vm\_id>-<i.n> i-<account\_id>-<vm\_id>-<i.n> i-<account\_id>-<vm\_id>-<i.n>
+======================== =============================== ============================== ============================== ===========================
+
+   .. note::
+      <i.n> represents the value of the global configuration - instance.name
 
 
 Changing the Service Offering for a VM
@@ -454,14 +433,28 @@ variables:
 -  scale.retry: How many times to attempt the scaling operation. Default
    = 2.
 
+Along with these global configurations, the following options need to be enabled
+to make a VM dynamically scalable
+
+-  Template from which VM is created needs to have Xen tools (for XenServer hosts)
+   or VMware Tools (for VMware hosts) and it should have 'Dynamically Scalable'
+   flag set to true.
+
+-  Service Offering of the VM should have 'Dynamic Scaling Enabled' flag set to true.
+   By default, this flag is true when a Service Offering is created.
+
+-  While deploying a VM, User or Admin needs to mark 'Dynamic Scaling Enabled' to true.
+   By default this flag is set to true.
+
+If any of the above settings are false then VM cannot be configured as dynamically scalable.
 
 How to Dynamically Scale CPU and RAM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To modify the CPU and/or RAM capacity of a virtual machine, you need to
 change the compute offering of the VM to a new compute offering that has
-the desired CPU and RAM values. You can use the same steps described
-above in `“Changing the Service Offering for a
+the desired CPU value and RAM value and 'Dynamic Scaling Enabled' flag as true.
+You can use the same steps described above in `“Changing the Service Offering for a
 VM” <#changing-the-service-offering-for-a-vm>`_, but skip the step where you
 stop the virtual machine. Of course, you might have to create a new
 compute offering first.
@@ -754,32 +747,37 @@ Advanced VM Instance Settings
 Each user VM has a set of "details" associated with it (as visible via listVirtualMachine API call) - those "details" are shown on the "Settings" tab of the VM in the GUI (words "setting(s)" and "detail(s)" are here used interchangeably).
 
 The Settings tab is always present/visible, but settings can be changed only when the VM is in a Stopped state.
-Some VM details/settings can be hidden via "user.vm.blacklisted.details" global setting (you can find below the list of those hidden by default).
+Some VM details/settings can be hidden for users via "user.vm.denied.details" global setting. VM details/settings can also be made read-only for users using "user.vm.readonly.details" global setting. List of default hidden and read-only details/settings is given below.
 
 .. note::
    Since version 4.15, VMware VM settings for the ROOT disk controller, NIC adapter type and data disk controller are populated automatically with the values inherited from the template.
 
 When adding a new setting or modifying the existing ones, setting names are shown/offered in a drop-down list, as well as their possible values (with the exception of boolean or numerical values).
 
-Read-only details/settings that are hidden by default:
+Details/settings that are hidden for users by default:
 
 - rootdisksize
 - cpuOvercommitRatio
 - memoryOvercommitRatio
 - Message.ReservedCapacityFreed.Flag
 
+Details/settings that are read-only for users by default:
+
+- dataDiskController
+- rootDiskController
+
 An example list of settings as well as their possible values are shown on the images below:
 
-|vm-settings-dropdown-list.PNG|
+|vm-settings-dropdown-list.png|
 (VMware hypervisor)
 
-|vm-settings-values-dropdown-list.PNG|
+|vm-settings-values-dropdown-list.png|
 (VMware disk controllers)
 
-|vm-settings-values1-dropdown-list.PNG|
+|vm-settings-values1-dropdown-list.png|
 (VMware NIC models)
 
-|vm-settings-values-dropdown-KVM-list.PNG|
+|vm-settings-values-dropdown-KVM-list.png|
 (KVM disk controllers)
 
 
@@ -920,21 +918,17 @@ snapshot:
    VM snapshots are deleted automatically when a VM is destroyed. You don't
    have to manually delete the snapshots in this case.
 
+
 Support for Virtual Appliances
 ==============================
 
 .. include:: virtual_machines/virtual_appliances.rst
 
-Unmanaging Virtual Machines
-===========================
 
-.. include:: virtual_machines/unmanage_vms.rst
+Importing and Unmanaging Virtual Machines
+=========================================
 
-
-Importing Virtual Machines
-===========================
-
-.. include:: virtual_machines/VM_Ingestion.rst
+.. include:: ./virtual_machines/importing_unmanaging_vms.rst
 
 
 Virtual Machine Backups (Backup and Recovery Feature)
@@ -1285,11 +1279,11 @@ CloudStack follows the below sequence of operations to provide GPU/vGPU support 
    :alt: depicts adding an iso image
 .. |StopButton.png| image:: /_static/images/stop-instance-icon.png
    :alt: depicts adding an iso image
-.. |vm-settings-dropdown-list.PNG| image:: /_static/images/vm-settings-dropdown-list.PNG
+.. |vm-settings-dropdown-list.png| image:: /_static/images/vm-settings-dropdown-list.png
    :alt: List of possible VMware settings
-.. |vm-settings-values-dropdown-list.PNG| image:: /_static/images/vm-settings-values-dropdown-list.PNG
+.. |vm-settings-values-dropdown-list.png| image:: /_static/images/vm-settings-values-dropdown-list.png
    :alt: List of possible VMware disk controllers
-.. |vm-settings-values1-dropdown-list.PNG| image:: /_static/images/vm-settings-values1-dropdown-list.PNG
+.. |vm-settings-values1-dropdown-list.png| image:: /_static/images/vm-settings-values1-dropdown-list.png
    :alt: List of possible VMware NIC models
-.. |vm-settings-values-dropdown-KVM-list.PNG| image:: /_static/images/vm-settings-values-dropdown-KVM-list.PNG
+.. |vm-settings-values-dropdown-KVM-list.png| image:: /_static/images/vm-settings-values-dropdown-KVM-list.png
    :alt: List of possible KVM disk controllers

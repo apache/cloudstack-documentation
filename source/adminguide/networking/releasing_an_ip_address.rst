@@ -27,7 +27,7 @@ picked up for any guest network again.
 
 #. Click the name of the network where you want to work with.
 
-#. Click View IP Addresses.
+#. Click Public IP Addresses.
 
 #. Click the IP address you want to release.
 

@@ -12,7 +12,7 @@
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
- 
+
 
 Roles, Accounts, Users, and Domains
 -----------------------------------
@@ -24,6 +24,8 @@ A role represents a set of allowed functions. All CloudStack accounts have a
 role attached to them that enforce access rules on them to be allowed or
 disallowed to make an API request. Typically there are four default roles:
 root admin, resource admin, domain admin and user.
+Newer roles have been added which include Read-Only Admin, Read-Only User,
+Support Admin and Support User which are in turn based on the aforementioned roles.
 
 
 Accounts
@@ -82,6 +84,33 @@ Root administrators have complete access to the system, including
 managing templates, service offerings, customer care administrators, and
 domains
 
+Read Only Administrator
+~~~~~~~~~~~~~~~~~~~~~~~
+
+A restricted admin role in which an account is only allowed to perform any list, get
+or find operations but not perform any other operation which can change the
+infrastructure, configuration or user resources.
+
+Read Only User
+~~~~~~~~~~~~~~
+
+A restricted user role in which an account is only allowed to perform list, get or find
+operations. It can be used by users who may only be interested in monitoring and usage
+of resources.
+
+Support Admin
+~~~~~~~~~~~~~
+
+A restricted admin role in which an admin account is limited to perform axilary support
+and maintenance tasks which do not directly affect the infrastucture, such as creating offerings,
+and put resources in maintenance, but cannot change the infrastructure such as physical networks.
+
+Support User
+~~~~~~~~~~~~
+
+A restricted user role in which an account cannot create or destroy resources, but can view resources
+and perform auxilary and support operations such as start or stop VMs, attach or detach volumes, ISOs etc.
+
 
 Resource Ownership
 ~~~~~~~~~~~~~~~~~~
@@ -125,7 +154,7 @@ CSV file format:
 
    rule,permission,description
    <Rule1>,<Permission1>,<Description1>
-   <Rule2>,<Permission2>,<Description2> 
+   <Rule2>,<Permission2>,<Description2>
    <Rule3>,<Permission3>,<Description3>
    …
    so on
@@ -148,8 +177,8 @@ After an upgrade, existing deployments can be migrated to use this feature by
 running a migration tool by the CloudStack admin. The migration tool is located
 at ``/usr/share/cloudstack-common/scripts/util/migrate-dynamicroles.py``.
 
-**NOTE: If you have not changed your commands.properties file at any time, then 
-it is recommended to use the -D (default) option as otherwise new API commands may 
+**NOTE: If you have not changed your commands.properties file at any time, then
+it is recommended to use the -D (default) option as otherwise new API commands may
 not be added to the dynamic roles database.**
 
 During migration, this tool enables an internal flag in the database,
@@ -182,7 +211,7 @@ Options:
 
 
 Example:
- 
+
 
 .. parsed-literal::
 
@@ -247,7 +276,7 @@ How to Use Dedicated Hosts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To use an explicitly dedicated host, use the explicit-dedicated type of
-affinity group (see `“Affinity Groups” <virtual_machines.html#affinity-groups>`_). 
+affinity group (see `“Affinity Groups” <virtual_machines.html#affinity-groups>`_).
 For example, when creating a new VM, an
 end user can choose to place it on dedicated infrastructure. This
 operation will succeed only if some infrastructure has already been
@@ -337,7 +366,7 @@ the user are used.
        #. CloudStack searches for it in LDAP by the configured
           ``ldap.username.attribute``.
 
-       #. If an LDAP user is found is found, CloudStack does a bind
+       #. If an LDAP user is found, CloudStack does a bind
           request with the returned principal for that LDAP user and
           the entered password.
 
@@ -345,7 +374,7 @@ the user are used.
           authenticated user exists in the domain it is trying to log
           on to.
 
-          #. If the user exists in CloudStack, it is ensured to be enabled
+          #. If the user exists in CloudStack, it is ensured to be enabled.
 
           #. If it doesn't exist it is created in a new account with
              the username as names for both account and user.
@@ -395,7 +424,7 @@ replicas. If one fails, the next one is used.
 	                                    port=389\
 					    domainid=12345678-90ab-cdef-fedc-ba0987654321
 
-This is all that is required to enable the manual importing of LDAP users, the 
+This is all that is required to enable the manual importing of LDAP users, the
 LisLdapUsers API can be used to query for users to import.
 
 For the auto import method, a CloudStack Domain needs to be linked to
@@ -483,7 +512,7 @@ LDAP groups:
 ~~~~~~~~~~~~
 
 -  ``ldap.group.object``: object type of groups within LDAP. Default value is
-   group for AD and **groupOfUniqueNames** for openldap.	
+   group for AD and **groupOfUniqueNames** for openldap.
 
 -  ``ldap.group.user.uniquemember``: attribute for uniquemembers within a group.
    Default value is **member** for AD and **uniquemember** for openldap.

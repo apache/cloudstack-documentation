@@ -13,7 +13,7 @@
    specific language governing permissions and limitations
    under the License.
 
-.. CloudStack Release Notes documentation master file, created by
+.. CloudStack Release Notes documentation main file, created by
    sphinx-quickstart on Fri Feb  7 16:00:59 2014.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -28,15 +28,23 @@ Upgrading CloudStack
 This document contains the instructions for upgrading CloudStack from prior releases, to the current 
 release.  Please read through all sections carefully before starting.
 
+From ACS 4.16 onwards, seeding of system-VM template is optional, as this will be taken care of by either the upgrade process or
+in case of a fresh deployment, registration of the systemVM template(s) is handled during the addition of the first image store to a zone.
+The `cloudstack-management` package will now include the systemVM templates for KVM, XenServer and VMWare. In case templates aren't already registered
+either prior upgrade or during fresh installation, ACS will handle the template registration automatically, by mounting the secondary store onto the 
+management server, copying the respective templates to the store and then creating the `template.properties` file.
+
 .. note::
    For information on the API changes and issues fixed in this release, please see the Release Notes section of the documentation
-
 
 Contents:
 
 .. toctree::
    :maxdepth: 1
  
+   upgrade/mysql
+   upgrade/valid_source
+   upgrade/upgrade-4.15
    upgrade/upgrade-4.14
    upgrade/upgrade-4.13
    upgrade/upgrade-4.12
@@ -54,4 +62,3 @@ Contents:
 ..   upgrade/upgrade-4.0
 ..   upgrade/upgrade-3.0.x
 ..   upgrade/upgrade-2.2.14
-   upgrade/valid_source

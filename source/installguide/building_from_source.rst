@@ -146,7 +146,9 @@ You will need, at a minimum, the following to compile CloudStack:
 
 #. Maven (version 3)
 
-#. Java (Java 8/OpenJDK 1.8)
+#. Java (Java 11/OpenJDK 1.11)
+
+#. NodeJS (LTS/12)
 
 #. Apache Web Services Common Utilities (ws-commons-util)
 
@@ -254,6 +256,8 @@ several other dependencies. Note that we recommend using Maven 3.
    $ sudo apt-get install python-software-properties
    $ sudo apt-get update
    $ sudo apt-get install debhelper openjdk-11-jdk libws-commons-util-java genisoimage libcommons-codec-java libcommons-httpclient-java liblog4j1.2-java maven
+   $ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+   $ sudo apt-get install -y nodejs
 
 .. note::
 
@@ -380,14 +384,17 @@ line:
 
 .. parsed-literal::
 
-   deb http://server.url/cloudstack/repo/binary ./
+   deb http://<server.url>/cloudstack/repo/binary ./
 
 If you signed your Release file with GnuPG, import the signing key
 on your target system first.
 
 .. parsed-literal::
 
-   $ wget -q -O - http://server.url/cloudstack/repo/binary/KEY.gpg | sudo apt-key add -
+   $ wget -q -O - http://<server.url>/cloudstack/repo/binary/KEY.gpg | sudo apt-key add -
+
+.. note::
+   In the previous lines the variable <server.url> must be replaced with the address of the repository
 
 Now that you have the repository info in place, you'll want to run
 another update so that APT knows where to find the CloudStack packages.
@@ -415,6 +422,8 @@ Linux.
 .. parsed-literal::
 
    # yum install java-11-openjdk-devel genisoimage mysql mysql-server ws-commons-util MySQL-python python-setuptools createrepo
+   # curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -
+   # yum install nodejs
 
 Next, you'll need to install build-time dependencies for CloudStack with
 Maven. We're using Maven 3, so you'll want to grab `Maven 3.0.5 (Binary tar.gz)

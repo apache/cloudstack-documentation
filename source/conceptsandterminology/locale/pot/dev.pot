@@ -2517,7 +2517,7 @@ msgstr ""
 
 #: ../../dev.rst:1323
 # 116de5edf8e449378280c02a410c56f1
-msgid "The following time zone identifiers are accepted by PRODUCT. There are several places that have a time zone as a required or optional parameter. These include scheduling recurring snapshots, creating a user, and specifying the usage time zone in the Configuration table."
+msgid "The following time zone identifiers are accepted by CloudStack. There are several places that have a time zone as a required or optional parameter. These include scheduling recurring snapshots, creating a user, and specifying the usage time zone in the Configuration table."
 msgstr ""
 
 #: ../../dev.rst:1329

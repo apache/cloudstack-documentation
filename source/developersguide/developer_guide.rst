@@ -46,7 +46,7 @@ for Apache CloudStack development.
 
 To build and test CloudStack from source you will need the following
 installed:
-* jdk 8+ (openjdk-8-jdk)
+* jdk 11+ (openjdk-11-jdk)
 * maven 3+
 * git
 * python-pip
@@ -60,7 +60,7 @@ Example Ubuntu 18.04
 ::
 
    apt update
-   apt install openjdk-8-jdk-headless maven git python-pip mkisofs git mysql-server
+   apt install openjdk-11-jdk-headless maven git python-pip mkisofs git mysql-server
 
 Example CentOS 7
 ~~~~~~~~~~~~~~~~
@@ -69,7 +69,7 @@ Example CentOS 7
 
    yum install -y epel-release
    yum localinstall -y http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
-   yum install -y java-1.8.0-openjdk-devel maven python-setuptools python-pip genisoimage git mysql-community-server
+   yum install -y java-1.11.0-openjdk-devel maven python-setuptools python-pip genisoimage git mysql-community-server
 
 Installing CloudStack from Source
 ----------------------------------

@@ -85,7 +85,7 @@ start:
 |            | y        | the file share for the Hyper-V deployment will be    |
 |            |          | the new folder created in the \\Shares on the        |
 |            |          | selected volume. You can create sub-folders for both |
-|            |          | PRODUCT Primary and Secondary storage within the     |
+|            |          | CloudStack Primary and Secondary storage within the     |
 |            |          | share location. When you select the profile for the  |
 |            |          | file shares, ensure that you select SMB Share        |
 |            |          | -Applications. This creates the file shares with     |
@@ -99,7 +99,7 @@ start:
 +------------+----------+------------------------------------------------------+
 | Virtual    |          | If you are using Hyper-V 2012 R2, manually create an |
 | Switch     |          | external virtual switch before adding the host to    |
-|            |          | PRODUCT. If the Hyper-V host is added to the Hyper-V |
+|            |          | CloudStack. If the Hyper-V host is added to the Hyper-V |
 |            |          | manager, select the host, then click Virtual Switch  |
 |            |          | Manager, then New Virtual Switch. In the External    |
 |            |          | Network, select the desired NIC adapter and click    |
@@ -109,7 +109,7 @@ start:
 |            |          | created automatically.                               |
 +------------+----------+------------------------------------------------------+
 | Virtual    |          | Take a note of the name of the virtual switch. You   |
-| Switch     |          | need to specify that when configuring PRODUCT        |
+| Switch     |          | need to specify that when configuring CloudStack        |
 | Name       |          | physical network labels.                             |
 +------------+----------+------------------------------------------------------+
 | Hyper-V    |          | -  Add the Hyper-V domain users to the Hyper-V       |
@@ -122,13 +122,13 @@ start:
 |            |          | -  This domain user should be part of the Hyper-V    |
 |            |          |    Administrators and Local Administrators group on  |
 |            |          |    the Hyper-V hosts that are to be managed by       |
-|            |          |    PRODUCT.                                          |
+|            |          |    CloudStack.                                          |
 |            |          |                                                      |
 |            |          | -  The Hyper-V Agent service runs with the           |
 |            |          |    credentials of this domain user account.          |
 |            |          |                                                      |
 |            |          | -  Specify the credential of the domain user while   |
-|            |          |    adding a host to PRODUCT so that it can manage    |
+|            |          |    adding a host to CloudStack so that it can manage    |
 |            |          |    it.                                               |
 |            |          |                                                      |
 |            |          | -  Specify the credential of the domain user while   |
@@ -156,10 +156,10 @@ start:
 Hyper-V Installation Steps
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Download the operating system from `Windows Server 2012 R2 
+#. Download the operating system from `Windows Server 2012 R2
    <http://technet.microsoft.com/en-us/windowsserver/hh534429>`_.
 
-#. Install it on the host as given in `Install and Deploy Windows Server 2012 
+#. Install it on the host as given in `Install and Deploy Windows Server 2012
    R2 <http://technet.microsoft.com/library/hh831620>`_.
 
 #. Post installation, ensure that you enable Hyper-V role in the server.
@@ -188,9 +188,9 @@ CloudStack Management Server communicates with Hyper-V Agent by using
 HTTPS. For secure communication between the Management Server and the
 host, install a self-signed certificate on port 8250.
 
-.. note:: 
-   The Agent installer automatically perform this operation. You have not 
-   selected this option during the Agent installation, it can also be done 
+.. note::
+   The Agent installer automatically perform this operation. You have not
+   selected this option during the Agent installation, it can also be done
    manually as given in step 1.
 
 #. Create and add a self-signed SSL certificate on port 8250:
@@ -212,7 +212,7 @@ host, install a self-signed certificate on port 8250.
 
       Thumbprint is the thumbprint of the certificate you created.
 
-#. Build the CloudStack Agent for Hyper-V as given in `Building CloudStack 
+#. Build the CloudStack Agent for Hyper-V as given in `Building CloudStack
    Hyper-V Agent <https://cwiki.apache.org/confluence/display/CLOUDSTACK/Creating+Hyperv+Agent+Installer>`__.
 
 #. As an administrator, run the installer.
@@ -248,13 +248,13 @@ Secondary Storage that uses SMB.
 
 #. Create a SMB storage and expose it over SMB Version 3.
 
-   For more information, see `Deploying Hyper-V over SMB 
+   For more information, see `Deploying Hyper-V over SMB
    <http://technet.microsoft.com/en-us/library/jj134187.aspx>`_.
 
    You can also create and export SMB share using Windows. After the
    Windows Server 2012 R2 installation, select File and Storage Services
    from Server Roles to create an SMB file share. For more information,
-   see `Creating an SMB File Share Using Server Manager 
+   see `Creating an SMB File Share Using Server Manager
    <http://technet.microsoft.com/en-us/library/jj134187.aspx#BKMK_Step3>`_.
 
 #. Add the SMB share to the Active Directory domain.

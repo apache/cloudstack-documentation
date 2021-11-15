@@ -839,22 +839,26 @@ msgstr ""
 
 #: ../../administration_guide.rst:355
 # 1883429edbe74fdd8a5fb620aec5fdb6
-msgid "CPU and memory (RAM) over-provisioning factors can be set for each cluster to change the number of VMs that can run on each host in the cluster. This helps optimize the use of resources. By increasing the over-provisioning ratio, more resource capacity will be used. If the ratio is set to 1, no over-provisioning is done."
+msgid "CPU and memory (RAM) over-provisioning factors can be set for each
+cluster to change the number of VMs that can run on each host in the
+cluster. This helps optimize the use of resources. By increasing the
+over-provisioning factor, more resource capacity will be used. If the
+factor is set to 1, no over-provisioning is done."
 msgstr ""
 
 #: ../../administration_guide.rst:357
 # 37b343a408374b90a7a4000a86cf66c1
-msgid "The administrator can also set global default over-provisioning ratios in the cpu.overprovisioning.factor and mem.overprovisioning.factor global configuration variables. The default value of these variables is 1: over-provisioning is turned off by default. Over-provisioning ratios are dynamically substituted in CloudStack's capacity calculations. For example:::"
+msgid "The administrator can also set global default over-provisioning factors in the cpu.overprovisioning.factor and mem.overprovisioning.factor global configuration variables. The default value of these variables is 1: over-provisioning is turned off by default. over-provisioning factors are dynamically substituted in CloudStack's capacity calculations. For example:::"
 msgstr ""
 
 #: ../../administration_guide.rst:367
 # 10a7f91d1b664361837ca349ac15d8fe
-msgid "The administrator can specify a memory over-provisioning ratio, and can specify both CPU and memory over-provisioning ratios on a per-cluster basis. In any given cloud, the optimum number of VMs for each host is affected by such things as the hypervisor, storage, and hardware configuration. These may be different for each cluster in the same cloud. A single global over-provisioning setting can not provide the best utilization for all the different clusters in the cloud. It has to be set for the lowest common denominator. The per-cluster setting provides a finer granularity for better utilization of resources, no matter where the CloudStack placement algorithm decides to place a VM."
+msgid "The administrator can specify a memory over-provisioning factor, and can specify both CPU and memory over-provisioning factors on a per-cluster basis. In any given cloud, the optimum number of VMs for each host is affected by such things as the hypervisor, storage, and hardware configuration. These may be different for each cluster in the same cloud. A single global over-provisioning setting can not provide the best utilization for all the different clusters in the cloud. It has to be set for the lowest common denominator. The per-cluster setting provides a finer granularity for better utilization of resources, no matter where the CloudStack placement algorithm decides to place a VM."
 msgstr ""
 
 #: ../../administration_guide.rst:370
 # b0413938593f4a7786b951b21e507d09
-msgid "The overprovisioning settings can be used along with dedicated resources (assigning a specific cluster to an account) to effectively offer different levels of service to different accounts. For example, an account paying for a more expensive level of service could be assigned to a dedicated cluster with an over-provisioning ratio of 1, and a lower-paying account to a cluster with a ratio of 2."
+msgid "The overprovisioning settings can be used along with dedicated resources (assigning a specific cluster to an account) to effectively offer different levels of service to different accounts. For example, an account paying for a more expensive level of service could be assigned to a dedicated cluster with an over-provisioning factor of 1, and a ower-paying account to a cluster with a factor of 2."
 msgstr ""
 
 #: ../../administration_guide.rst:372
@@ -956,22 +960,22 @@ msgstr ""
 
 #: ../../administration_guide.rst:422
 # 842b46aac75e4b55bc95a2884df153b1
-msgid "Setting Over-Provisioning Rations"
+msgid "Setting over-provisioning factorns"
 msgstr ""
 
 #: ../../administration_guide.rst:424
 # 8d093dbea4db42028ab4bf0469d67452
-msgid "There are two ways the root admin can set CPU and RAM over-provisioning ratios. First, the global configuration settings cpu.overprovisioning.factor and mem.overprovisioning.factor will be applied when a new cluster is created. Later, the ratios can be modified for an existing cluster."
+msgid "There are two ways the root admin can set CPU and RAM over-provisioning factors. First, the global configuration settings cpu.overprovisioning.factor and mem.overprovisioning.factor will be applied when a new cluster is created. Later, the ratios can be modified for an existing cluster."
 msgstr ""
 
 #: ../../administration_guide.rst:426
 # d585ebbb38104db185a30519f122ef38
-msgid "Only VMs deployed after the change are affected by the new setting. If you want VMs deployed before the change to adopt the new over-provisioning ratio, you must stop and restart the VMs. When this is done, CloudStack recalculates or scales the used and reserved capacities based on the new over-provisioning ratios, to ensure that CloudStack is correctly tracking the amount of free capacity."
+msgid "Only VMs deployed after the change are affected by the new setting. If you want VMs deployed before the change to adopt the new over-provisioning factor, you must stop and restart the VMs. When this is done, CloudStack recalculates or scales the used and reserved capacities based on the new over-provisioning factors, to ensure that CloudStack is correctly tracking the amount of free capacity."
 msgstr ""
 
 #: ../../administration_guide.rst:428
 # b3bf39b26142443c92ac98f1aa4e7be4
-msgid "To change the over-provisioning ratios for an existing cluster:"
+msgid "To change the over-provisioning factors for an existing cluster:"
 msgstr ""
 
 #: ../../administration_guide.rst:430
@@ -981,17 +985,17 @@ msgstr ""
 
 #: ../../administration_guide.rst:432
 # a64dd51e12c547658db1ade7de98ebd2
-msgid "Under Clusters, click View All."
+msgid "Select Clusters."
 msgstr ""
 
 #: ../../administration_guide.rst:433
 # 23c09f71b4e04bad89d9fc8af656468c
-msgid "Select the cluster you want to work with, and click the Edit button."
+msgid "Search for overprovisioning."
 msgstr ""
 
 #: ../../administration_guide.rst:434
 # 0e804d9f17db4c8a981a54fd41556317
-msgid "Fill in your desired over-provisioning multipliers in the fields CPU overcommit ratio and RAM overcommit ratio. The value which is intially shown in these fields is the default value inherited from the global configuration settings."
+msgid "Fill in your desired over-provisioning multipliers in the fields CPU overcommit factor and RAM overcommit factor. The value which is intially shown in these fields is the default value inherited from the global configuration settings."
 msgstr ""
 
 #: ../../administration_guide.rst:437
