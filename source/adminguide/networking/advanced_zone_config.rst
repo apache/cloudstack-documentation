@@ -60,6 +60,7 @@ configure the base guest network:
       want to assign a special domain name to the guest VM network, specify a
       DNS suffix.
 
+
 #. Click OK.
 
 
