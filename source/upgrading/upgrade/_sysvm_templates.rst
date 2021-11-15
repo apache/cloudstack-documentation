@@ -20,7 +20,7 @@ Update System-VM templates
 
 .. note::
    From ACS 4.16 onwards, CloudStack will support automatic registration of systemVM
-   templates, if not done prior initiating upgrade. However, the usual upgrade process 
+   templates (when using noredist packages), if not done prior initiating upgrade. However, the usual upgrade process 
    continues to be supported. 
 
 #. While running the existing |version_to_upgrade| system, log in to the UI as 
