@@ -597,9 +597,9 @@ There are several ways:
    service offering using those tags and offer it to the user.
 
 -  Affinity groups. By defining affinity groups and assigning VMs to
-   them, the user or administrator can influence (but not dictate) which
-   VMs should run on separate hosts. This feature is to let users
-   specify that certain VMs won't be on the same host.
+   them, the user or administrator can influence (but not dictate) whether
+   VMs should run on separate hosts or on the same host. This feature is to
+   let users specify whether certain VMs will or will not be on the same host.
 
 -  CloudStack also provides a pluggable interface for adding new
    allocators. These custom allocators can provide any policy the
@@ -611,11 +611,15 @@ Affinity Groups
 
 By defining affinity groups and assigning VMs to them, the user or
 administrator can influence (but not dictate) which VMs should run on
-separate hosts. This feature is to let users specify that VMs with the
+either the same or separate hosts. This feature is to let users specify
+the affinity groups to which a VM can belong. VMs with the
 same “host anti-affinity” type won’t be on the same host. This serves to
 increase fault tolerance. If a host fails, another VM offering the same
 service (for example, hosting the user's website) is still up and
 running on another host.
+It also lets the user specify that VMs with the same "host affinity" type
+run on the same host. This can be useful in ensuring connectivity and minimum
+latency in between guest VMs.
 
 The scope of an affinity group is per user account.
 
@@ -637,12 +641,11 @@ To add an affinity group:
    -  Description. Any desired text to tell more about the purpose of
       the group.
 
-   -  Type. The only supported type shipped with CloudStack is Host
-      Anti-Affinity. This indicates that the VMs in this group should
-      avoid being placed on the same host with each other. If you see
-      other types in this list, it means that your installation of
-      CloudStack has been extended with customized affinity group
-      plugins.
+   -  Type. CloudStack supports two types of affinity groups. "Host
+      Anti-Affinity" and "Host Affinity". "Host Anti-Affinity" indicates
+      that the VMs in this group should avoid being placed on the same
+      host with each other. "Host Affinity" on the other hand indicates
+      that VMs in this group should be placed on the same host.
 
 
 Assign a New VM to an Affinity Group
