@@ -87,8 +87,8 @@ DEB package repository
 ~~~~~~~~~~~~~~~~~~~~~~
 
 You can add a DEB package repository to your apt sources with the
-following commands. Please note that only packages for Ubuntu 20.04 (Focal),
-Ubuntu 18.04 (Bionic) and Ubuntu 16.04 (Xenial) are being built at this time.
+following commands. Replace the code name with your Ubuntu LTS version :
+Ubuntu 16.04 (Xenial), Ubuntu 18.04 (Bionic) and Ubuntu 20.04 (Focal) .
 Ubuntu 14.04 (Trusty) is no longer supported.
 
 Use your preferred editor and open (or create)
@@ -103,7 +103,7 @@ We now have to add the public key to the trusted keys.
 
 .. parsed-literal::
 
-   sudo wget -O - http://download.cloudstack.org/release.asc|apt-key add -
+   wget -O - http://download.cloudstack.org/release.asc |sudo apt-key add -
 
 Now update your local apt cache.
 
