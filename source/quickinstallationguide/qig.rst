@@ -42,7 +42,10 @@ get you up and running with CloudStack with a minimum amount of trouble.
       You will need to have 1 NIC in your VM, bridged to the NIC of your laptop/desktop
       (wifi or wired NIC, doesn't matter), and optimally to set Adapter Type="Paravirtualized Network (virtio-net)"
       for somewhat better network performance (Settings of VM, Network section, Adapter1,
-      expand "Advanced"). Also, make sure you have allowed enough ram (6G+) and enough CPU cores (3+) for demo purposes.
+      expand "Advanced"). Make sure the NIC on your VM is configured as promiscuous (in VirtualBox, 
+      choose "Allow All" or just "Allow VMs" as the Promiscuous Mode), so that it can pass traffic from 
+      CloudStack's system VMs to the gateway. Also, make sure you have allowed enough ram (6G+) and 
+      enough CPU cores (3+) for demo purposes.
       
       
 High level overview of the process
