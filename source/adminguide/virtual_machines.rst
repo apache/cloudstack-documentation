@@ -433,14 +433,28 @@ variables:
 -  scale.retry: How many times to attempt the scaling operation. Default
    = 2.
 
+Along with these global configurations, the following options need to be enabled
+to make a VM dynamically scalable
+
+-  Template from which VM is created needs to have Xen tools (for XenServer hosts)
+   or VMware Tools (for VMware hosts) and it should have 'Dynamically Scalable'
+   flag set to true.
+
+-  Service Offering of the VM should have 'Dynamic Scaling Enabled' flag set to true.
+   By default, this flag is true when a Service Offering is created.
+
+-  While deploying a VM, User or Admin needs to mark 'Dynamic Scaling Enabled' to true.
+   By default this flag is set to true.
+
+If any of the above settings are false then VM cannot be configured as dynamically scalable.
 
 How to Dynamically Scale CPU and RAM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To modify the CPU and/or RAM capacity of a virtual machine, you need to
 change the compute offering of the VM to a new compute offering that has
-the desired CPU and RAM values. You can use the same steps described
-above in `“Changing the Service Offering for a
+the desired CPU value and RAM value and 'Dynamic Scaling Enabled' flag as true.
+You can use the same steps described above in `“Changing the Service Offering for a
 VM” <#changing-the-service-offering-for-a-vm>`_, but skip the step where you
 stop the virtual machine. Of course, you might have to create a new
 compute offering first.
