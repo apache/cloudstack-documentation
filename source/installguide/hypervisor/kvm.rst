@@ -726,7 +726,7 @@ Modify the interfaces file to look like this:
    auto cloudbr0
    iface cloudbr0 inet static
        bridge_ports eth0
-       bridge_fd 5
+       bridge_fd 0
        bridge_stp off
        bridge_maxwait 1
        address 192.168.42.11
@@ -739,7 +739,7 @@ Modify the interfaces file to look like this:
    auto cloudbr1
    iface cloudbr1 inet manual
        bridge_ports eth0.200
-       bridge_fd 5
+       bridge_fd 0
        bridge_stp off
        bridge_maxwait 1
 
