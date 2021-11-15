@@ -88,8 +88,8 @@ Basic zones or Advanced Zones with Security Groups.
    Network” <networking_and_traffic.html#configuring-a-shared-guest-network>`_.
 
 
-L2 Networks
-~~~~~~~~~~~
+L2 (Layer 2) Networks
+~~~~~~~~~~~~~~~~~~~~~
 
 L2 networks provide network isolation without any other services.  This
 means that there will be no virtual router.  It is assumed that the end
