@@ -1418,6 +1418,18 @@ replace your version of qemu-img with one which has been patched to include the 
 switch.
 
 
+UEFI legacy / secureboot
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+For deploying instances using UEFI legacy / secureboot, there are some further tasks to
+perform.
+You can find further informations regarding prerequisites at the CloudStack Wiki
+(https://cwiki.apache.org/confluence/display/CLOUDSTACK/Enable+UEFI+booting+for+Instance)
+as well as limitations for using UEFI in CloudStack.
+The options to deploy a instances using UEFI can be found in the "Advanced Mode" section 
+of the instance deployment wizard.
+
+
 Add the host to CloudStack
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
