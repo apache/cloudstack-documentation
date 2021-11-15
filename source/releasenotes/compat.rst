@@ -27,7 +27,7 @@ CloudStack Management Server.
 -  Rocky Linux 8
 -  RHEL versions 7, 8
 -  openSUSE Leap 15
--  SUSE Linux Enterprise Server 15
+-  SUSE Linux Enterprise Server 15 (not tested, but expected to work same as with openSUSE 15)
 
    .. note:: There is a known issue with ipmitool with RHEL8 / SUSE, so certain functionality such as out of band management might not work
 
@@ -50,7 +50,7 @@ and VMware with vSphere.
 -  Rocky Linux 8 with KVM
 -  openSUSE Leap 15
 -  SUSE Linux Enterprise Server 15
--  XenServer versions 7.1, 7.2, 7.4, 7.5, 8.0 with latest hotfixes, XCP-ng 7.4, 7.6, 8.0, 8.1, 8.2
+-  XenServer versions 7.1, 7.2, 7.4, 7.5, 8.0 (8.1 and 8.2 expected to work, but not tested) with latest hotfixes, XCP-ng 7.4, 7.6, 8.0, 8.1, 8.2
 
    .. note:: It is now required to enable HA on the XenServer pool in order to recover from a pool-master failure. Please refer to the `XenServer documentation <https://docs.citrix.com/en-us/xencenter/7-1/pools-ha-enable.html>`_.
 
@@ -60,25 +60,26 @@ and VMware with vSphere.
 
    .. note:: There is a known issue in 6.7 U3 - 6.7 U3f where a mailformed OVA could crash vCenter services (for more information see `here <https://mail-archives.apache.org/mod_mbox/cloudstack-users/202005.mbox/%3CCAMvtBPNQqbe0XEsHyjFMror7HRvj-c%3DfEe7y12NfCDQSFTYgqQ%40mail.gmail.com%3E>`_). To avoid the issue, make sure to use 6.7 U3g or later.
 
--  LXC Host Containers on RHEL 7
--  Windows Server 2012 R2 (with Hyper-V Role enabled)
--  Hyper-V 2012 R2
--  Oracle VM 3.0+
+-  LXC Host Containers on RHEL 7 (not tested to work fine for last many CloudStack releases)
+-  Windows Server 2012 R2 with Hyper-V Role enabled (not tested to work fine for last many CloudStack releases)
+-  Hyper-V 2012 R2 (not tested to work fine for last many CloudStack releases)
+-  Oracle VM 3.0+ (not tested to work fine for last many CloudStack releases)
 -  Bare metal hosts are supported, which have no hypervisor. These hosts
    can run the following operating systems:
 
    -  Fedora 17
    -  Ubuntu 12.04
 
+(not tested to work fine for last many CloudStack releases)
 
 Supported External Devices
 --------------------------
 
--  Netscaler VPX and MPX versions 9.3, 10.1e and 10.5
--  Netscaler SDX version 9.3, 10.1e and 10.5
--  SRX (Model srx100b) versions 10.3 to 10.4 R7.5
--  F5 11.X
--  Force 10 Switch version S4810 for Baremetal Advanced Networks
+-  Netscaler VPX and MPX versions 9.3, 10.1e and 10.5 (not tested to work fine for last many CloudStack releases)
+-  Netscaler SDX version 9.3, 10.1e and 10.5 (not tested to work fine for last many CloudStack releases)
+-  SRX (Model srx100b) versions 10.3 to 10.4 R7.5 (not tested to work fine for last many CloudStack releases)
+-  F5 11.X (not tested to work fine for last many CloudStack releases)
+-  Force 10 Switch version S4810 for Baremetal Advanced Networks (not tested to work fine for last many CloudStack releases)
 
 
 Supported Browsers
