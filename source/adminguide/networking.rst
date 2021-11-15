@@ -284,6 +284,40 @@ To create a network offering:
       For more information on VPCs, see `“About Virtual
       Private Clouds” <networking_and_traffic.html#about-virtual-private-clouds>`_.
 
+   -  **Promiscuous Mode**. Applicable for guest networks on VMware hypervisor only. It accepts the following values for desired behaviour of the network elements:
+
+      *Reject* - The switch drops any outbound frame from a virtual machine adapter with a source MAC address that is different from the one in the .vmx configuration file.
+
+      *Accept* - The switch does not perform filtering, and permits all outbound frames.
+
+      *None* - Default to value from global setting - ``network.promiscuous.mode``.
+
+   -  **Forged Transmits**. Applicable for guest networks on VMware hypervisor only. It accepts the following values for desired behaviour of the network elements:
+
+      *Reject* - The switch drops any outbound frame from a virtual machine adapter with a source MAC address that is different from the one in the .vmx configuration file.
+
+      *Accept* - The switch does not perform filtering, and permits all outbound frames.
+
+      *None* - Default to value from global setting - ``network.forged.transmits``.
+
+   -  **MAC Address Changes**. Applicable for guest networks on VMware hypervisor only. It accepts the following values for desired behaviour of the network elements:
+
+      *Reject* - If the guest OS changes the effective MAC address of the virtual machine to a value that is different from the MAC address of the VM network adapter (set in the .vmx configuration file), the switch drops all inbound frames to the adapter.
+
+      If the guest OS changes the effective MAC address of the virtual machine back to the MAC address of the VM network adapter, the virtual machine receives frames again.
+
+      *Accept* - If the guest OS changes the effective MAC address of the virtual machine to a value that is different from the MAC address of the VM network adapter, the switch allows frames to the new address to pass.
+
+      *None* - Default to value from global setting - ``network.mac.address.changes``.
+
+   -  **MAC Learning**. Applicable for guest networks on VMware hypervisor only with VMware Distributed Virtual Switches version 6.6.0 & above and vSphere version 6.7 & above. It accepts the following values for desired behaviour of the network elements:
+
+      *Reject* - Network connectivity for multiple MAC address behind a single vNIC will not work.
+
+      *Accept* - Enables network connectivity for multiple MAC addresses behind a single vNIC.
+
+      *None* - Default to value from global setting - ``network.mac.learning``.
+
    -  **Supported Services**. Select one or more of the possible network
       services. For some services, you must also choose the service
       provider; for example, if you select Load Balancer, you can choose
