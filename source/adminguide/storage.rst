@@ -69,8 +69,7 @@ can be created and dynamically attached to VMs. Data volumes are not
 deleted when VMs are destroyed.
 
 Administrators should monitor the capacity of primary storage devices
-and add additional primary storage as needed. See the Advanced
-Installation Guide.
+and add additional primary storage as needed. See :ref:`add-primary-storage`.
 
 Administrators add primary storage to the system by creating a
 CloudStack storage pool. Each storage pool is associated with a cluster
@@ -189,8 +188,7 @@ Secondary Storage
 
 This section gives concepts and technical details about CloudStack
 secondary storage. For information about how to install and configure
-secondary storage through the CloudStack UI, see the Advanced
-Installation Guide. about-secondary-storage>`_
+secondary storage through the CloudStack UI, see :ref:`add-secondary-storage`.
 
 Migration of data between secondary storages is now supported. One may choose
 to completely migrate the data or migrate data such that the stores
@@ -627,7 +625,7 @@ To resize a volume:
 #. Click OK.
 
 Root Volume size defined via Service Offering
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If a Service Offering is created with a root disk size, then resizing the Root volume is possible only by resizing the VMs service offering.
 
@@ -876,6 +874,28 @@ snapshot data.
    snapshots after upgrade to CloudStack 4.2. Snapshots that have already
    been taken and stored in OVA format will continue to exist in that
    format, and will continue to work as expected.
+
+
+Linstor Primary Storage
+~~~~~~~~~~~~~~~~~~~~~~~
+
+LINSTOR is a configuration management system for storage on Linux systems.
+It manages LVM logical volumes and/or ZFS ZVOLs on a cluster of nodes.
+It leverages DRBD for replication between different nodes and to provide block storage devices
+to users and applications. It manages snapshots, encryption and caching of HDD backed data in SSDs via bcache.
+
+LINSTOR can be used as volume storage provider for Cloudstack, it currently only supports KVM hypervisors.
+To get started first setup your LINSTOR cluster according to the `LINSTOR User Guide <https://linbit.com/drbd-user-guide/linstor-guide-1_0-en/>`_
+
+.. note::
+   Make sure a LINSTOR-Satellite is running on all nodes where you want to have a storage provided for you VM's
+   and that the nodes have the exact same node names as the nodes in Cloudstack.
+   Also add a resource group to LINSTOR which you intend to use in Cloudstack.
+
+After you are finished with the LINSTOR cluster setup, you can add a Cloudstack primary storage as any other
+primary storage see :ref:`add-primary-storage`.
+For protocol choose ``Linstor`` and as server specify the controller REST-API URL e.g.: ``http://127.0.0.1:3370``
+and use the resource group name you added in the LINSTOR cluster.
 
 
 .. |AttachDiskButton.png| image:: /_static/images/attach-disk-icon.png
