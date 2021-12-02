@@ -101,8 +101,8 @@ Backup current database
 
    .. parsed-literal::
 
-      $ mysqldump -u root -p -R cloud > cloud-backup_\\`date '+%Y-%m-%d'\\`.sql
-      $ mysqldump -u root -p cloud_usage > cloud_usage-backup_\\`date '+%Y-%m-%d'\\`.sql
+      $ mysqldump -u root -p -R cloud > cloud-backup_$(date '+%Y-%m-%d').sql
+      $ mysqldump -u root -p cloud_usage > cloud_usage-backup_$(date '+%Y-%m-%d').sql
 
 
 .. _ubuntu413:
