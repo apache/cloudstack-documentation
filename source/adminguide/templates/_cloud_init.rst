@@ -108,7 +108,11 @@ These features can be implemented in `“Linux template creation process” <_cr
    .. code:: bash
    
     sudo sed -i s/" - ssh$"/" - [ssh, always]"/g /etc/cloud/cloud.cfg
+<<<<<<< Updated upstream
     
+=======
+	
+>>>>>>> Stashed changes
    .. warning::
     
     Cloud-init ssh module runs on every boot and will regenerate the certificate fingerprint of the host. This will cause a warning to anyone that logs in the system and also bring trouble to anyone trying to automate ssh access.
@@ -228,6 +232,7 @@ These features can be implemented in `“Linux template creation process” <_cr
 	 
 	  rm /var/lib/cloud/* -rf
 	  
+<<<<<<< Updated upstream
      Remove any users created by cloud-init previous runs
 
      .. code:: bash
@@ -237,3 +242,14 @@ These features can be implemented in `“Linux template creation process” <_cr
 #. **Finalize template**
 
    Proceed with `“Linux template creation process” <_create_linux.html>`_ continuing with **Template cleanup** step.
+=======
+     If **Password management** feature is used make sure there are no leftover files from cloud-init in /etc/sudoers
+	 
+     .. code:: bash
+	 
+	  rm -rf /etc/sudoers.d/*
+	  
+#. **Finalize template**
+
+   Proceed with `“Linux template creation process” <_create_linux.html>`_ continuing with **Template cleanup** step. 
+>>>>>>> Stashed changes
