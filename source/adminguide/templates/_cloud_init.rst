@@ -226,13 +226,13 @@ These features can be implemented in `“Linux template creation process” <_cr
 	 
 	  cloud-init clean
 	  
-     Or do it manually.
+   Or do it manually.
 
      .. code:: bash
 	 
-	  rm /var/lib/cloud/* -rf
+	  rm -rf /var/lib/cloud/*
 	  
-     If **Password management** feature is used make sure there are no leftover files from cloud-init in /etc/sudoers
+   If **Password management** feature is used clean /etc/sudoers from any cloud-init user setups.
 	 
      .. code:: bash
 	 
