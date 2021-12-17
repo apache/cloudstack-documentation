@@ -122,11 +122,7 @@ templating of Centos and Ubuntu.
    Cloudstack can create key pair and push certificates to instances. This feature is available with:
    
    *  `Cloud-init integration <_cloud_init.html#linux-with-cloud-init>`_
-<<<<<<< Updated upstream
-   *  `Implementing a SSH-Key bash script <http://docs.cloudstack.apache.org/en/latest/adminguide/virtual_machines.html#creating-an-instance-template-that-supports-ssh-keys>`_  
-=======
    *  `Implementing a SSH-Key bash script <http://docs.cloudstack.apache.org/en/latest/adminguide/virtual_machines.html#creating-an-instance-template-that-supports-ssh-keys>`_   
->>>>>>> Stashed changes
 	 
 #. **Partition management**
 	

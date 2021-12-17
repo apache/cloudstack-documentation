@@ -232,17 +232,6 @@ These features can be implemented in `“Linux template creation process” <_cr
 	 
 	  rm /var/lib/cloud/* -rf
 	  
-<<<<<<< Updated upstream
-     Remove any users created by cloud-init previous runs
-
-     .. code:: bash
-	 
-	  rm /etc/sudoers.d/* -rf  
-	  
-#. **Finalize template**
-
-   Proceed with `“Linux template creation process” <_create_linux.html>`_ continuing with **Template cleanup** step.
-=======
      If **Password management** feature is used make sure there are no leftover files from cloud-init in /etc/sudoers
 	 
      .. code:: bash
@@ -252,4 +241,3 @@ These features can be implemented in `“Linux template creation process” <_cr
 #. **Finalize template**
 
    Proceed with `“Linux template creation process” <_create_linux.html>`_ continuing with **Template cleanup** step. 
->>>>>>> Stashed changes
