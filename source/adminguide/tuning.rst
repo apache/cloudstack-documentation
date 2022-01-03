@@ -91,6 +91,24 @@ at `MySQL Reference
 Manual <http://dev.mysql.com/doc/refman/5.5/en/innodb-buffer-pool.html>`_.
 
 
+Monitor the DataBase Load
+-------------------------
+
+The load of the DB is monitorred. By default the queries for each
+minute are calculated in queries per second. Ten values are retaint by
+default. In the UI these are visible under the DB/Usage Server page
+under the infrastructure menu.
+
+.. |dbLoadAverages.png| image:: /_static/images/dbLoadAverages.png
+   :alt: load averages as displayed in the UI
+
+The configuration variable 'database.server.stats.interval' can be set
+to change the interval, which is 60 seconds by default.
+
+The value of 'database.server.stats.retention' can be changed to tweek
+the number of values that are maintained.
+
+
 Set and Monitor Total VM Limits per Host
 ----------------------------------------
 
