@@ -99,6 +99,8 @@ minute are calculated in queries per second. Ten values are retaint by
 default. In the UI these are visible under the DB/Usage Server page
 under the infrastructure menu.
 
+|dbLoadAverages.png|
+
 .. |dbLoadAverages.png| image:: /_static/images/dbLoadAverages.png
    :alt: load averages as displayed in the UI
 
