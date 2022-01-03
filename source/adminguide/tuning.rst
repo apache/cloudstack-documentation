@@ -105,7 +105,7 @@ under the infrastructure menu.
 The configuration variable 'database.server.stats.interval' can be set
 to change the interval, which is 60 seconds by default.
 
-The value of 'database.server.stats.retention' can be changed to tweek
+The value of 'database.server.stats.retention' can be changed to tweak
 the number of values that are maintained.
 
 
