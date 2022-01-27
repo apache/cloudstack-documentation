@@ -138,11 +138,11 @@ restarting the management server(s).
 .. Note:: Any user given the custom roles that include permission to
           create and/or update accounts will have the ability to
           assign new custom roles to themsevles or other users,
-          irrspective of the privialges given in those roles. This
-          could allow such a user to escalate their own privalges to
-          include any API they might not have had before. Thereofre,
+          irrespective of the privileges given in those roles. This
+          could allow such a user to escalate their own privileges to
+          include any API they might not have had before. Therefore,
           the dynamic roles should be carefully designed and the
-          `createAccount` and `updateAccount` priviledges should only
+          `createAccount` and `updateAccount` privileges should only
           be given to users who you are content to have this level of
           privilage
 
