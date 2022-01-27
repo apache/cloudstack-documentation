@@ -144,7 +144,7 @@ restarting the management server(s).
           the dynamic roles should be carefully designed and the
           `createAccount` and `updateAccount` privileges should only
           be given to users who you are content to have this level of
-          privilage
+          privilege
 
 For backward compatiblity, all roles resolve to one of the four role types:
 admin, resource admin, domain admin and user. A new role can be created using
