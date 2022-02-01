@@ -273,7 +273,7 @@ Adding Network Offering with IPv6 Support
 With 4.17.0, a new paramter - ``internetprotocol`` has been added to the ``createNetworkOffering`` API which can be used to create a network offering with IPv6 support by using the value dualstack.
 Corresponding option has also been provided in the UI form creating network offering:
 
-|dd-ipv6-network-offering-form.png|
+|add-ipv6-network-offering-form.png|
 
 
 .. |add-public-ipv6-range-form.png| image:: /_static/images/add-public-ipv6-range-form.png
