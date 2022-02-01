@@ -276,9 +276,9 @@ Corresponding option has also been provided in the UI form creating network offe
 |dd-ipv6-network-offering-form.png|
 
 
-.. |add-guest-ipv6-prefix-form.png| image:: /_static/images/cadd-guest-ipv6-prefix-form.png
-   :alt: Add Guest IPv6 Prefix form.
 .. |add-public-ipv6-range-form.png| image:: /_static/images/add-public-ipv6-range-form.png
    :alt: Add Public IPv6 Range form.
-.. |add-ipv6-network-offering-form.png| image:: /_static/images/dd-ipv6-network-offering-form.png
+.. |add-guest-ipv6-prefix-form.png| image:: /_static/images/add-guest-ipv6-prefix-form.png
+   :alt: Add Guest IPv6 Prefix form.
+.. |add-ipv6-network-offering-form.png| image:: /_static/images/add-ipv6-network-offering-form.png
    :alt: Add IPv6 supported Network Offering form.
