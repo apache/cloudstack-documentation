@@ -23,8 +23,11 @@ traffic. IPv6 uses a 128-bit address that exponentially expands the
 current address space that is available to the users. IPv6 addresses
 consist of eight groups of four hexadecimal digits separated by colons,
 for example, 5001:0dt8:83a3:1012:1000:8s2e:0870:7454. CloudStack
-supports IPv6 for public IPs in shared networks. With IPv6 support, VMs
-in shared networks can obtain both IPv4 and IPv6 addresses from the DHCP
+supports IPv6 for shared and isolated networks. It also supports IPv6 for VPC tiers.
+
+Shared network
+--------------
+With IPv6 support, VMs in shared networks can obtain both IPv4 and IPv6 addresses from the DHCP
 server. You can deploy VMs either in a IPv6 or IPv4 network, or in a
 dual network environment. If IPv6 network is used, the VM generates a
 link-local IPv6 address by itself, and receives a stateful IPv6 address
@@ -44,7 +47,7 @@ Here's the sequence of events when IPv6 is used:
 
 
 Prerequisites and Guidelines
-----------------------------
+############################
 
 Consider the following:
 
@@ -91,8 +94,8 @@ Consider the following:
    data.
 
 
-Limitations of IPv6 in CloudStack
----------------------------------
+Limitations
+###########
 
 The following are not yet supported:
 
@@ -104,7 +107,7 @@ The following are not yet supported:
 
 
 Guest VM Configuration for DHCPv6
----------------------------------
+#################################
 
 For the guest VMs to get IPv6 address, run dhclient command manually on
 each of the VMs. Use DUID-LL to set up dhclient.
@@ -199,3 +202,83 @@ each of the VMs. Use DUID-LL to set up dhclient.
          iface eth0 inet6 dhcp
          autoconf 0
          accept_ra 1
+
+
+Isolated network and VPC tier
+-----------------------------
+
+.. note::
+   The IPv6 support for isolated networks and VPC tiers is available from version 4.17.0.
+
+Guest VMs in an isolated network or VPC tier can obtain both IPv4 and IPv6 IP addresses by using a supported network offering and appropriate configurations for IPv6 support by the administrator.
+Both VR for such networks and the guest VMs using these networks obtain a SLAAC based IPv6 address. While VR is assigned an IPv6 address from the public IPv6 range, guest VMs get their IPv6 addresses from the IPv6 subnet assinged to the network.
+
+Here's the sequence of events when IPv6 is used:
+
+#. The administrator adds a public IPv6 range in an advanced zone.
+
+#. The administrator adds an IPv6 prefix for guest traffic type for the zone.
+
+#. The administrator creates a network offering with IPv4 + IPv6 (Dual stack) support.
+
+#. The user deploys an isolated network or a VPC tier with above network offering.
+
+#. CloudStack assigns a SLAAC based public IPv6 address to the network from the public IPv6 range of the zone. It also assigns an IPv6 subnet to the network from the guest IPv6 prefix for the zone. See `SLAAC <https://datatracker.ietf.org/doc/html/rfc4862>`__\ for more information.
+
+#. The user deploys a guest VM in the network. The VM is assigned a SLAAC based IPv6 address from the guest IPv6 subnet of the network.
+
+
+Prerequisites and Guidelines
+############################
+
+Consider the following:
+
+-  CIDR size for the public IPv6 range for a zone must be 64.
+
+-  CIDR size for the guest IPv6 prefix for the zone must be lesser than 64. Each guest network is assigned a subnet from this prefix with CIDR size 64 therefore only as many IPv6 supporting guest networks can be deployed from the guest prefix as the number of subnets with CIDR size 64.
+
+-  Currently, a guest network cannot be IPv6 only and it can only be either IPv4 only or Dual Stack (both IPv4 + IPv6).
+
+-  Once a public IPv6 address and guest subnet are assigned to the network or the network is successfully, the operator must update routing in the upstream router. For this, CloudStack returns the gateway and subnet for the network with listNetworks API response.
+
+
+Adding a Public IPv6 Range
+##########################
+
+The administrator can use both UI and API to add a public IPv6 range. UI is the preferable option.
+Option to add a new public Ipv6 range in the UI can be found in Infrastructure -> Zones -> Zone details -> Physical Network tab -> Physical network details -> Traffic Types tab -> Public -> *Add IP range*.
+In the Add IP range form, IPv6 can be selected as the IP Range Type. IPv6 Gateway and CIDR must be provided and optionally a VLAN/VNI can be provided.
+
+Alternatively, ``createVlanIpRange`` API can be used to add a new public IPv6 range.
+
+|add-public-ipv6-range-form.png|
+
+
+
+Adding Guest IPv6 Prefix
+########################
+
+Again, both UI and API to add a guest IPv6 prefix. UI is the preferable option.
+Option to add a new public Ipv6 range in the UI can be found in Infrastructure -> Zones -> Zone details -> Physical Network tab -> Physical network details -> Traffic Types tab -> Guest -> *Add IPv6 prefix*.
+In the Add IPv6 prefix form, an IPv6 prefix with CIDR size lesser than 64 must be provided.
+
+Alternatively, ``createGuestNetworkIpv6Prefix`` API can be used to add a new guest IPv6 prefix.
+
+|add-guest-ipv6-prefix-form.png|
+
+
+Adding Network Offering with IPv6 Support
+#########################################
+
+With 4.17.0, a new paramter - ``internetprotocol`` has been added to the ``createNetworkOffering`` API which can be used to create a network offering with IPv6 support by using the value dualstack.
+Corresponding option has also been provided in the UI form creating network offering:
+
+|dd-ipv6-network-offering-form.png|
+
+
+.. |add-guest-ipv6-prefix-form.png| image:: /_static/images/cadd-guest-ipv6-prefix-form.png
+   :alt: Add Guest IPv6 Prefix form.
+.. |add-public-ipv6-range-form.png| image:: /_static/images/add-public-ipv6-range-form.png
+   :alt: Add Public IPv6 Range form.
+.. |add-ipv6-network-offering-form.png| image:: /_static/images/dd-ipv6-network-offering-form.png
+   :alt: Add IPv6 supported Network Offering form.
