@@ -344,10 +344,6 @@ Kubernetes compatibility Matrix
 | 4.16.1       | v1.20 onward                    | SystemVM Template (Debian)  | cloud       |
 +--------------+---------------------------------+-----------------------------+-------------+
 
-**NOTE:**
-If there exists CKS clusters prior to upgrading to ACS 4.16.1 or above, it is advised to teardown the old cluster and deploy a new one.
-This is because, from 4.16.1 onward the SSH user is 'cloud' and while the Kubernetes clusters may scale fine, CKS will not report a successful scale
-operation as the CKS service will not be able to access the control node with 'core' user.
 
 .. |cks-add-version-form.png| image:: /_static/images/cks-add-version-form.png
    :alt: Add Kubernetes Supported Version form.
