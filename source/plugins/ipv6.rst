@@ -208,7 +208,9 @@ Isolated network and VPC tier
 -----------------------------
 
 .. note::
-   The IPv6 support for isolated networks and VPC tiers is available from version 4.17.0.
+   - The IPv6 support for isolated networks and VPC tiers is available from version 4.17.0.
+
+   - The IPv6 isolated networks and VPC tiers only supports **Static routing**, i.e, the administrator will need to add upstream routes for routing to work inside the networks.
 
 Guest VMs in an isolated network or VPC tier can obtain both IPv4 and IPv6 IP addresses by using a supported network offering and appropriate configurations for IPv6 support by the administrator.
 Both VR for such networks and the guest VMs using these networks obtain a SLAAC based IPv6 address. While VR is assigned an IPv6 address from the public IPv6 range, guest VMs get their IPv6 addresses from the IPv6 subnet assinged to the network.
@@ -254,7 +256,6 @@ Alternatively, ``createVlanIpRange`` API can be used to add a new public IPv6 ra
 |add-public-ipv6-range-form.png|
 
 
-
 Adding Guest IPv6 Prefix
 ########################
 
@@ -276,9 +277,33 @@ Corresponding option has also been provided in the UI form creating network offe
 |add-ipv6-network-offering-form.png|
 
 
+Adding Upstream Route
+#####################
+
+Currently, CloudStack supports IPv6 isolated networks and VPC tiers only with **static** routes and therefore the administrator needs to add upstream IPv6 routes once a network is successfully deployed.
+To facilitate the automation, *CloudStack Event Notification* can be used. CloudStack will generate appropriate events on network creation or deletion and while assigning or releasing a public IPv6 address for a network. Based on the events the corresponding network can be queried for the IPv6 routes that it needs configured in upstream network.
+Upstream IPv6 routes required by an IPv6 supported isolated network or VPC tier are also shown in the UI in the network details.
+
+|network-details-upstream-ipv6-routes.png|
+
+
+IPv6 Firewall
+#############
+
+For using and managing firewall rules with an IPv6 supported isolated network, CloudStack provides following APIs:
+
+-  ``listIpv6FirewallRules`` - To list existing IPv6 firewall rules for a network.
+-  ``createIpv6FirewallRule`` - To create a new IPv6 firewall rules for a network.
+-  ``updateIpv6FirewallRule`` - To update an exisitng IPv6 firewall rules for a network.
+-  ``deleteIpv6FirewallRule`` - To delete an exisitng IPv6 firewall rules for a network.
+
+These operations are also available using UI in the network details view of an IPv6 supported network.
+
 .. |add-public-ipv6-range-form.png| image:: /_static/images/add-public-ipv6-range-form.png
    :alt: Add Public IPv6 Range form.
 .. |add-guest-ipv6-prefix-form.png| image:: /_static/images/add-guest-ipv6-prefix-form.png
    :alt: Add Guest IPv6 Prefix form.
 .. |add-ipv6-network-offering-form.png| image:: /_static/images/add-ipv6-network-offering-form.png
    :alt: Add IPv6 supported Network Offering form.
+.. |network-details-upstream-ipv6-routes.png| image:: /_static/images/network-details-upstream-ipv6-routes.png
+   :alt: Upstream IPv6 routes in network details.
