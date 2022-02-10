@@ -329,6 +329,22 @@ Token for dashboard login can be retrieved using the following command:
    # kubectl --kubeconfig /custom/path/kube.config describe secret $(kubectl --kubeconfig /custom/path/kube.config get secrets -n kubernetes-dashboard | grep kubernetes-dashboard-token | awk '{print $1}') -n kubernetes-dashboard
 
 
+Kubernetes compatibility Matrix
+#################################
+
++--------------+---------------------------------+-----------------------------+-------------+
+|ACS Version   |  Supported Kubernetes Versions  |  CKS Template               |  SSH User   |
++==============+=================================+=============================+=============+
+| 4.14.x       | v1.11 onward (< 1.18)           | CoreOS                      | core        |
++--------------+---------------------------------+-----------------------------+-------------+
+| 4.15.x       | v1.11 onward (< 1.18)           | CoreOS                      | core        |
++--------------+---------------------------------+-----------------------------+-------------+
+| 4.16.0       | v1.20 onward                    | SystemVM Template (Debian)  | core        |
++--------------+---------------------------------+-----------------------------+-------------+
+| 4.16.1       | v1.20 onward                    | SystemVM Template (Debian)  | cloud       |
++--------------+---------------------------------+-----------------------------+-------------+
+
+
 .. |cks-add-version-form.png| image:: /_static/images/cks-add-version-form.png
    :alt: Add Kubernetes Supported Version form.
 .. |cks-cluster-access-tab.png| image:: /_static/images/cks-cluster-access-tab.png
