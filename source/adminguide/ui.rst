@@ -185,9 +185,9 @@ Users can customize the CloudStack's user interface by means of a configuration 
 
 To change the logo, login banner, error page icon, etc. the following details can be edited in config.json:
 
-============= ================================================================
+============================= ================================================================
 Property                      Description
-============= ================================================================
+============================= ================================================================
 apiBase                       Changes the suffix for the API endpoint
 docBase                       Changes the base URL for the documentation
 appTitle                      Changes the title of the portal
@@ -198,7 +198,7 @@ banner                        Changes the login banner image
 error.404                     Changes the image of error Page not found
 error.403                     Changes the image of error Forbidden
 error.500                     Changes the image of error Internal Server Error.
-============ ================================================================
+============================= ================================================================
 
 .. parsed-literal::
 
