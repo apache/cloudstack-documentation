@@ -734,7 +734,7 @@ offering used for Virtual Routers.
    For more information, see `“Creating a New System Offering”
    <service_offerings.html#creating-a-new-system-service-offering>`_.
 
-#. (Optional) Create a new network offering with System Offering
+#. (Optional) Create a new network offering with SystemOffering
 
    For more information, see `“Creating a New Network Offering”
    <networking.html#creating-a-new-network-offering>`_.
