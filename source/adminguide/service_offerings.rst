@@ -742,7 +742,8 @@ offering used for Virtual Routers.
 #. (Optional) Change account setting
 
    You can change the default system offering for Virtual Routers of a particular
-   account by changing account settings "router.service.offering" to uuid of system offering.
+   account by changing the account's setting "router.service.offering" to the uuid
+   of the system offering.
 
    For more information, see `“Setting Local Configuration Parameters”
    <../installguide/configuration.html#setting-local-configuration-parameters>`_.
