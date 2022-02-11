@@ -32,7 +32,7 @@ Editing, Restarting, and Removing a Guest Network
 
 #. In the Details tab, click the "Delete Network" button
 
-   You can remove the guest network by also using the remove button in the Quick
+   You can also remove the guest network by using the remove button in the Quick
    View.
 
    You can edit the name, description, network offering, CIDR, network domain of a 
