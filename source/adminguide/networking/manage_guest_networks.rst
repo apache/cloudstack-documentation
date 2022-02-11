@@ -17,7 +17,7 @@
 Editing, Restarting, and Removing a Guest Network
 --------------------------------------------------
 
-.. note:: Ensure that all the vms are removed before you remove a guest network.
+.. note:: Ensure that all the VMs are removed before you remove a guest network.
 
 #. Log in to the CloudStack UI as an administrator or end user.
 
