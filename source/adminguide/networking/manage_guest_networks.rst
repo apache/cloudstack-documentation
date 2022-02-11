@@ -15,7 +15,7 @@
 
 
 Editing, Restarting, and Removing a Guest Network
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------------------------
 
 .. note:: Ensure that all the vms are removed before you remove a guest network.
 

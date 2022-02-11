@@ -731,36 +731,35 @@ default system offering used for Virtual Routers.
 
 #. Create a new system Offering
 
-    For more information, see `“Creating a New System Offering”
-      <service_offerings.html#creating-a-new-system-service-offering>`_.
+   For more information, see `“Creating a New System Offering”
+   <service_offerings.html#creating-a-new-system-service-offering>`_.
 
 #. (Optional) Create a new network offering with System Offering
 
-    For more information, see `“Creating a New Network Offering”
-      <networking.html#creating-a-new-network-offering>`_.
+   For more information, see `“Creating a New Network Offering”
+   <networking.html#creating-a-new-network-offering>`_.
 
 #. (Optional) Change account setting
 
-    You can change the default system offering for Virtual Routers of a particular
-    account by changing account settings "router.service.offering" to uuid of system offering.
+   You can change the default system offering for Virtual Routers of a particular
+   account by changing account settings "router.service.offering" to uuid of system offering.
 
-    For more information, see `“Setting Local Configuration Parameters”
-      <installguide/configuration.html#setting-local-configuration-parameters>`_.
+   For more information, see `“Setting Local Configuration Parameters”
+   <installguide/configuration.html#setting-local-configuration-parameters>`_.
 
 #. (Optional) Change global configuration
 
-    You can change the default system offering for Virtual Routers of all accounts
-    by changing global configuration "router.service.offering" to uuid of the system offering.
+   You can change the default system offering for Virtual Routers of all accounts
+   by changing global configuration "router.service.offering" to uuid of the system offering.
 
-    For more information, see `“Setting Global Configuration Parameters”
-      <installguide/configuration.html#setting-global-configuration-parameters>`_.
+   For more information, see `“Setting Global Configuration Parameters”
+   <installguide/configuration.html#setting-global-configuration-parameters>`_.
 
 When you create a network, the virtual routers will use the system offering in Network Offering.
 If it is not set, the virtual routers will use system offering in account setting.
 If account setting is not set, the virtual routers will use system offering in global configuration.
 If global configuration is not set, the virtual routers will use the default system offering for virtual 
 routers ("System Offering For Software Router" or "System Offering For Software Router - Local Storage").
-
 
 For existing networks, you can update to a new network offering. For more information, see
 `“Changing the Network Offering on a Guest Network”
