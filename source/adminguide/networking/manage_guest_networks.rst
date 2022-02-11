@@ -25,7 +25,7 @@ Editing, Restarting, and Removing a Guest Network
 
 #. In the Select view, select Guest networks.
 
-   All the guest networks that you have created for the account is listed in the
+   All the guest networks that you have created for the account are listed in the
    page.
 
 #. Select the guest network you want to work with.
