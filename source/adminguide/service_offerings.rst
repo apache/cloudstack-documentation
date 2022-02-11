@@ -726,8 +726,8 @@ default system offering used for System VMs.
 Changing the Default System Offering for Virtual Routers
 ---------------------------------------------------
 
-Additionally, as a CloudStack administrator, you can change the
-default system offering used for Virtual Routers.
+As a CloudStack administrator, you can change the default system
+offering used for Virtual Routers.
 
 #. Create a new system Offering
 
