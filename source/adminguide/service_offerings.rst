@@ -763,7 +763,7 @@ If global configuration is not set, the virtual routers will use the default sys
 routers ("System Offering For Software Router" or "System Offering For Software Router - Local Storage").
 
 You can update an existing network to a new network offering. The new virtual routers will use the 
-new system offering set in Network Offering, account setting or global configuration.
+new system offering set in the NetworkOffering, account setting or global configuration.
 For more information, see `“Changing the Network Offering on a Guest Network”
 <networking_and_traffic.html#changing-the-network-offering-on-a-guest-network>`_.
 
