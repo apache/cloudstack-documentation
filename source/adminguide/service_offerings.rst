@@ -745,7 +745,7 @@ default system offering used for Virtual Routers.
    account by changing account settings "router.service.offering" to uuid of system offering.
 
    For more information, see `“Setting Local Configuration Parameters”
-   <installguide/configuration.html#setting-local-configuration-parameters>`_.
+   <../installguide/configuration.html#setting-local-configuration-parameters>`_.
 
 #. (Optional) Change global configuration
 
@@ -753,7 +753,7 @@ default system offering used for Virtual Routers.
    by changing global configuration "router.service.offering" to uuid of the system offering.
 
    For more information, see `“Setting Global Configuration Parameters”
-   <installguide/configuration.html#setting-global-configuration-parameters>`_.
+   <../installguide/configuration.html#setting-global-configuration-parameters>`_.
 
 When you create a network, the virtual routers will use the system offering in Network Offering.
 If it is not set, the virtual routers will use system offering in account setting.
@@ -761,11 +761,12 @@ If account setting is not set, the virtual routers will use system offering in g
 If global configuration is not set, the virtual routers will use the default system offering for virtual 
 routers ("System Offering For Software Router" or "System Offering For Software Router - Local Storage").
 
-For existing networks, you can update to a new network offering. For more information, see
-`“Changing the Network Offering on a Guest Network”
+You can update an existing network to a new network offering. The new virtual routers will use the 
+new system offering set in Network Offering, account setting or global configuration.
+For more information, see `“Changing the Network Offering on a Guest Network”
 <networking_and_traffic.html#changing-the-network-offering-on-a-guest-network>`_.
 
 You can restart the network with cleanup. The new virtual routers will use the new system offering
-set in Network Offering, account setting or global configuration. For more information, see
-`“Editing, Restarting, and Removing a Guest Network”
+set in Network Offering, account setting or global configuration.
+For more information, see `“Editing, Restarting, and Removing a Guest Network”
 <networking_and_traffic.html#editing-restarting-and-removing-a-guest-network>`_.
