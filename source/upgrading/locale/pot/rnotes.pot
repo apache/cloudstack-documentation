@@ -1475,7 +1475,7 @@ msgstr ""
 #: ../../rnotes.rst:2656
 # bda05cf21e784a1cbc68f3bbef5bcf32
 # d35c3cd591f547888c10e4a335ab6d70
-msgid "On the MySQL master, take a backup of the MySQL databases. We recommend performing this step even in test upgrades. If there is an issue, this will assist with debugging."
+msgid "On the MySQL source server, take a backup of the MySQL databases. We recommend performing this step even in test upgrades. If there is an issue, this will assist with debugging."
 msgstr ""
 
 #: ../../rnotes.rst:1830

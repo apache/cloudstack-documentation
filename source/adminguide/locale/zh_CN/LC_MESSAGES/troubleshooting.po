@@ -205,9 +205,9 @@ msgstr "使用restartNetwork API（参数cleanup=false）重建丢失的虚拟�
 #: ../../troubleshooting.rst:132
 msgid ""
 "For more information about the API syntax, see the API Reference at "
-"`http://cloudstack.apache.org/docs/api/ "
-"<http://cloudstack.apache.org/docs/api/>`_."
-msgstr "关于更多的API语法信息，参见API参考`http://cloudstack.apache.org/docs/api/ <http://cloudstack.apache.org/docs/api/>`_。"
+"`https://cloudstack.apache.org/api.html "
+"<https://cloudstack.apache.org/api.html>`_."
+msgstr "关于更多的API语法信息，参见API参考`https://cloudstack.apache.org/api.html <https://cloudstack.apache.org/api.html>`_。"
 
 # d1a32a2023024c72907911b8c7757cae
 #: ../../troubleshooting.rst:137

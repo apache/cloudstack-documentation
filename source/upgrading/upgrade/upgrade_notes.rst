@@ -27,19 +27,12 @@ management-server, cloudstack-usage, KVM agent and system-VMs.
 
 .. include:: _java_version.rst
 
-UI Deprecation Notice
----------------------
+UI Deprecation and Removal Notice
+---------------------------------
 
-The current jQuery-based CloudStack UI will be `deprecated
-<http://markmail.org/message/vxnskmwhfaagnm4r/>`_ in the next Apache CloudStack
-major release and removed in the subsequent future releases.
-
-`Primate <https://github.com/apache/cloudstack-primate/>`_ will ship as the
-modern UI for future Apache CloudStack releases. Users are encouraged to `test
-<https://github.com/apache/cloudstack-primate/wiki/Migrating-to-Primate/>`_
-Primate, report bugs and give feedback to the `dev community
-<http://cloudstack.apache.org/mailing-lists.html>`_ with this release of Apache
-CloudStack.
+The current jQuery-based CloudStack UI is `deprecated
+<http://markmail.org/message/vxnskmwhfaagnm4r/>`_ in this release of CloudStack
+and will be removed in the next release of Apache CloudStack.
 
 Migrating to dynamic roles feature
 ----------------------------------
@@ -108,3 +101,23 @@ added in CloudStack's db.properties file:
    db.cloud.driver=jdbc:mysql
 
    db.usage.driver=jdbc:mysql
+
+
+MySQL 8.0 sql mode change
+-------------------------
+
+MySQL mode (sql_mode) has changed in CloudStack db.properties to 
+"STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,
+ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION".
+
+This gets automatically applies to the MySQL session used by CloudStack management server.
+
+If the admin uses MySQL directly and wants to query tables it is advised to change the sql_mode in the corresponding session or globally.
+
+Eg. mysql> set global sql_mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,
+                             "> ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION";
+    Query OK, 0 rows affected (0.00 sec)
+
+    mysql> set sql_mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,
+                     "> ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION";
+    Query OK, 0 rows affected (0.00 sec)

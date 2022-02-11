@@ -12,7 +12,7 @@
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
- 
+
 
 Roles, Accounts, Users, and Domains
 -----------------------------------
@@ -24,6 +24,8 @@ A role represents a set of allowed functions. All CloudStack accounts have a
 role attached to them that enforce access rules on them to be allowed or
 disallowed to make an API request. Typically there are four default roles:
 root admin, resource admin, domain admin and user.
+Newer roles have been added which include Read-Only Admin, Read-Only User,
+Support Admin and Support User which are in turn based on the aforementioned roles.
 
 
 Accounts
@@ -82,6 +84,33 @@ Root administrators have complete access to the system, including
 managing templates, service offerings, customer care administrators, and
 domains
 
+Read Only Administrator
+~~~~~~~~~~~~~~~~~~~~~~~
+
+A restricted admin role in which an account is only allowed to perform any list, get
+or find operations but not perform any other operation which can change the
+infrastructure, configuration or user resources.
+
+Read Only User
+~~~~~~~~~~~~~~
+
+A restricted user role in which an account is only allowed to perform list, get or find
+operations. It can be used by users who may only be interested in monitoring and usage
+of resources.
+
+Support Admin
+~~~~~~~~~~~~~
+
+A restricted admin role in which an admin account is limited to perform axilary support
+and maintenance tasks which do not directly affect the infrastucture, such as creating offerings,
+and put resources in maintenance, but cannot change the infrastructure such as physical networks.
+
+Support User
+~~~~~~~~~~~~
+
+A restricted user role in which an account cannot create or destroy resources, but can view resources
+and perform auxilary and support operations such as start or stop VMs, attach or detach volumes, ISOs etc.
+
 
 Resource Ownership
 ~~~~~~~~~~~~~~~~~~
@@ -101,19 +130,50 @@ to any other account in the domain or any of its sub-domains.
 Using Dynamic Roles
 -------------------
 
-In addition to the four default roles, the dynamic role-based API checker feature
+In addition to the default roles, the dynamic role-based API checker feature
 allows CloudStack root admins to create new roles with customized permissions.
 The allow/deny rules can be configured dynamically during runtime without
 restarting the management server(s).
 
+.. Note:: in versions before 4.16.1, any user given the custom roles
+          that include permission to create and/or update accounts
+          will have the ability to assign new custom roles to
+          themsevles or other users, irrespective of the privileges
+          given in those roles. This could allow such a user to
+          escalate their own privileges to include any API they might
+          not have had before. Therefore, the dynamic roles should be
+          carefully designed and the `createAccount` and
+          `updateAccount` privileges should only be given to users who
+          you are content to have this level of privilege.
+
+          Since 4.16.1 a user will be prevented to create an account
+          with a role that has any permissions that they do not have
+          themselves. This check will also be performed, since that
+          version, on updating an account-role.
+
 For backward compatiblity, all roles resolve to one of the four role types:
 admin, resource admin, domain admin and user. A new role can be created using
-the roles tab in the UI and specifying a name, a role type and optionally a
-description.
+the roles tab in the UI and specifying a name, either a role type or ID of existing
+role, and optionally a description. When a new role is created using ID of existing
+role, all the rules of the existing role are copied to the new role and these rules
+can be modified as desired.
 
-Role specific rules can be configured through the rules tab on role specific
-details page. A rule is either an API name or a wildcard string that are one of
-allow or deny permission and optionally a description.
+Role specific rules can be either configured through the rules tab on role specific
+details page or imported from a CSV file while creating a new role with role type.
+A rule is either an API name or a wildcard string that are one of allow or deny
+permission and optionally a description. These rules can be exported to a
+CSV file, name defaulted to “<RoleName>_<RoleType>.csv”.
+
+CSV file format:
+
+.. parsed-literal::
+
+   rule,permission,description
+   <Rule1>,<Permission1>,<Description1>
+   <Rule2>,<Permission2>,<Description2>
+   <Rule3>,<Permission3>,<Description3>
+   …
+   so on
 
 When a user makes an API request, the backend checks the requested API against
 configured rules (in the order the rules were configured) for the caller
@@ -133,8 +193,8 @@ After an upgrade, existing deployments can be migrated to use this feature by
 running a migration tool by the CloudStack admin. The migration tool is located
 at ``/usr/share/cloudstack-common/scripts/util/migrate-dynamicroles.py``.
 
-**NOTE: If you have not changed your commands.properties file at any time, then 
-it is recommended to use the -D (default) option as otherwise new API commands may 
+**NOTE: If you have not changed your commands.properties file at any time, then
+it is recommended to use the -D (default) option as otherwise new API commands may
 not be added to the dynamic roles database.**
 
 During migration, this tool enables an internal flag in the database,
@@ -167,7 +227,7 @@ Options:
 
 
 Example:
- 
+
 
 .. parsed-literal::
 
@@ -232,7 +292,7 @@ How to Use Dedicated Hosts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To use an explicitly dedicated host, use the explicit-dedicated type of
-affinity group (see `“Affinity Groups” <virtual_machines.html#affinity-groups>`_). 
+affinity group (see `“Affinity Groups” <virtual_machines.html#affinity-groups>`_).
 For example, when creating a new VM, an
 end user can choose to place it on dedicated infrastructure. This
 operation will succeed only if some infrastructure has already been
@@ -322,7 +382,7 @@ the user are used.
        #. CloudStack searches for it in LDAP by the configured
           ``ldap.username.attribute``.
 
-       #. If an LDAP user is found is found, CloudStack does a bind
+       #. If an LDAP user is found, CloudStack does a bind
           request with the returned principal for that LDAP user and
           the entered password.
 
@@ -330,7 +390,7 @@ the user are used.
           authenticated user exists in the domain it is trying to log
           on to.
 
-          #. If the user exists in CloudStack, it is ensured to be enabled
+          #. If the user exists in CloudStack, it is ensured to be enabled.
 
           #. If it doesn't exist it is created in a new account with
              the username as names for both account and user.
@@ -380,7 +440,7 @@ replicas. If one fails, the next one is used.
 	                                    port=389\
 					    domainid=12345678-90ab-cdef-fedc-ba0987654321
 
-This is all that is required to enable the manual importing of LDAP users, the 
+This is all that is required to enable the manual importing of LDAP users, the
 LisLdapUsers API can be used to query for users to import.
 
 For the auto import method, a CloudStack Domain needs to be linked to
@@ -468,7 +528,7 @@ LDAP groups:
 ~~~~~~~~~~~~
 
 -  ``ldap.group.object``: object type of groups within LDAP. Default value is
-   group for AD and **groupOfUniqueNames** for openldap.	
+   group for AD and **groupOfUniqueNames** for openldap.
 
 -  ``ldap.group.user.uniquemember``: attribute for uniquemembers within a group.
    Default value is **member** for AD and **uniquemember** for openldap.

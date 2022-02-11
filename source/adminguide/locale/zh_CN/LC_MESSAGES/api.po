@@ -50,8 +50,8 @@ msgstr "API基于类似REST的查询, 可以返回XML或JSON格式."
 msgid ""
 "See `the Developer’s Guide "
 "<https://cwiki.apache.org/confluence/display/CLOUDSTACK/Development+101>`_ "
-"and `the API Reference <http://cloudstack.apache.org/docs/api/>`_."
-msgstr "参阅  `开发指南 <https://cwiki.apache.org/confluence/display/CLOUDSTACK/Development+101>`_ 和 `参考API <http://cloudstack.apache.org/docs/api/>`_."
+"and `the API Reference <https://cloudstack.apache.org/api.html>`_."
+msgstr "参阅  `开发指南 <https://cwiki.apache.org/confluence/display/CLOUDSTACK/Development+101>`_ 和 `参考API <https://cloudstack.apache.org/api.html>`_."
 
 # de3d35bb699f45f495251ceb69a2c238
 #: ../../api.rst:36

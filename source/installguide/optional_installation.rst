@@ -120,9 +120,10 @@ Database Replication (Optional)
 CloudStack supports database replication from one MySQL node to another.
 This is achieved using standard MySQL replication. You may want to do
 this as insurance against MySQL server or storage loss. MySQL
-replication is implemented using a master/slave model. The master is the
-node that the Management Servers are configured to use. The slave is a
-standby node that receives all write operations from the master and
+replication enables data from one MySQL database server (the source) to be
+copied to one or more MySQL database servers (the replicas). The source is the
+node that the Management Servers are configured to use. The replica is a
+standby node that receives all write operations from the source and
 applies them to a local, redundant copy of the database. The following
 steps are a guide to implementing MySQL replication.
 
@@ -130,9 +131,9 @@ steps are a guide to implementing MySQL replication.
    Creating a replica is not a backup solution. You should develop a backup 
    procedure for the MySQL data that is distinct from replication.
 
-#. Ensure that this is a fresh install with no data in the master.
+#. Ensure that this is a fresh install with no data in the source server.
 
-#. Edit my.cnf on the master and add the following in the [mysqld]
+#. Edit my.cnf on the source server and add the following in the [mysqld]
    section below datadir.
 
    .. parsed-literal::
@@ -141,8 +142,8 @@ steps are a guide to implementing MySQL replication.
       server_id=1
 
    The server\_id must be unique with respect to other servers. The
-   recommended way to achieve this is to give the master an ID of 1 and
-   each slave a sequential number greater than 1, so that the servers
+   recommended way to achieve this is to give the source server an ID of 1 and
+   each replica a sequential number greater than 1, so that the servers
    are numbered 1, 2, 3, etc.
 
 #. Restart the MySQL service. On RHEL/CentOS systems, use:
@@ -157,15 +158,15 @@ steps are a guide to implementing MySQL replication.
 
       # service mysql restart
 
-#. Create a replication account on the master and give it privileges. We
+#. Create a replication account on the source server and give it privileges. We
    will use the "cloud-repl" user with the password "password". This
-   assumes that master and slave run on the 172.16.1.0/24 network.
+   assumes that source and replica run on the 172.16.1.0/24 network.
 
    .. sourcecode: bash
    .. parsed-literal::
       # mysql -u root
       mysql> create user 'cloud-repl'@'172.16.1.%' identified by 'password';
-      mysql> grant replication slave on *.* TO 'cloud-repl'@'172.16.1.%';
+      mysql> grant replication replica on *.* TO 'cloud-repl'@'172.16.1.%';
       mysql> flush privileges;
       mysql> flush tables with read lock;
 
@@ -178,7 +179,7 @@ steps are a guide to implementing MySQL replication.
    .. parsed-literal::
 
       # mysql -u root
-      mysql> show master status;
+      mysql> show source status;
       +------------------+----------+--------------+------------------+
       | File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |
       +------------------+----------+--------------+------------------+
@@ -189,14 +190,14 @@ steps are a guide to implementing MySQL replication.
 
 #. Exit from this session.
 
-#. Complete the master setup. Returning to your first session on the
-   master, release the locks and exit MySQL.
+#. Complete the source server setup. Returning to your first session on the
+   source server, release the locks and exit MySQL.
 
    .. parsed-literal::
 
       mysql> unlock tables;
 
-#. Install and configure the slave. On the slave server, run the
+#. Install and configure the replica. On the replica server, run the
    following commands.
 
    .. parsed-literal::
@@ -225,26 +226,26 @@ steps are a guide to implementing MySQL replication.
 
       # service mysql restart
 
-#. Instruct the slave to connect to and replicate from the master.
+#. Instruct the replica to connect to and replicate from the source.
    Replace the IP address, password, log file, and position with the
    values you have used in the previous steps.
 
    .. parsed-literal::
 
-      mysql> change master to
-          -> master_host='172.16.1.217',
-          -> master_user='cloud-repl',
-          -> master_password='password',
-          -> master_log_file='mysql-bin.000001',
-          -> master_log_pos=412;
+      mysql> change source to
+          -> source_host='172.16.1.217',
+          -> source_user='cloud-repl',
+          -> source_password='password',
+          -> source_log_file='mysql-bin.000001',
+          -> source_log_pos=412;
 
-#. Then start replication on the slave.
+#. Then start replication on the replica.
 
    .. parsed-literal::
 
-      mysql> start slave;
+      mysql> start replica;
 
-#. Optionally, open port 3306 on the slave as was done on the master
+#. Optionally, open port 3306 on the replica as was done on the source
    earlier.
 
    This is not required for replication to work. But if you choose not
@@ -262,7 +263,7 @@ administrator. In the event of a database failure you should:
 
 #. Stop the Management Servers (via service cloudstack-management stop).
 
-#. Change the replica's configuration to be a master and restart it.
+#. Change the replica's configuration to be a source and restart it.
 
 #. Ensure that the replica's port 3306 is open to the Management
    Servers.

@@ -12,7 +12,7 @@
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
-   
+
 
 .. _configuring-vpc:
 
@@ -196,19 +196,19 @@ addresses in the form of a Classless Inter-Domain Routing (CIDR) block.
 
    -  **Zone**: Choose the zone where you want the VPC to be available.
 
-   -  **Super CIDR for Guest Networks**: Defines the CIDR range for all
+   -  **CIDR**: Defines the CIDR range for all
       the tiers (guest networks) within a VPC. When you create a tier,
       ensure that its CIDR is within the Super CIDR value you enter. The
       CIDR must be RFC1918 compliant.
 
-   -  **DNS domain for Guest Networks**: If you want to assign a special
+   -  **Network Domain**: If you want to assign a special
       domain name, specify the DNS suffix. This parameter is applied to
       all the tiers within the VPC. That implies, all the tiers you
       create in the VPC belong to the same DNS domain. If the parameter
       is not specified, a DNS domain name is generated automatically.
 
-   -  **Public Load Balancer Provider**: You have two options: VPC
-      Virtual Router and Netscaler.
+   -  **VPC Offering**: If the administrator has configured multiple
+      VPC offerings, select the one you want to use for this VPC
 
 #. Click OK.
 
@@ -231,7 +231,7 @@ other tiers within the VPC.
    All the VPC that you have created for the account is listed in the
    page.
 
-   .. note:: 
+   .. note::
       The end users can see their own VPCs, while root and domain admin can
       see any VPC they are authorized to see.
 
@@ -428,7 +428,7 @@ Creating an ACL Rule
       are opening a single port, use the same number in both fields.
 
    -  **Protocol Number**: The protocol number associated with IPv4 or
-      IPv6. For more information, see `Protocol Numbers 
+      IPv6. For more information, see `Protocol Numbers
       <http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xml>`_.
 
    -  **ICMP Type**, **ICMP Code** (ICMP only): The type of message and
@@ -545,6 +545,8 @@ with duplicated VLAN and IP are allowed in the same data center.
    -  **Physical Network**: The physical network you have created in the
       zone.
 
+   -  **VLAN**: The VLAN associated with the VPC gateway.
+
    -  **IP Address**: The IP address associated with the VPC gateway.
 
    -  **Gateway**: The gateway through which the traffic is routed to
@@ -552,12 +554,13 @@ with duplicated VLAN and IP are allowed in the same data center.
 
    -  **Netmask**: The netmask associated with the VPC gateway.
 
-   -  **VLAN**: The VLAN associated with the VPC gateway.
-
    -  **Source NAT**: Select this option to enable the source NAT
       service on the VPC private gateway.
 
       See ":ref:`source-nat-priv-gw`".
+
+   - **Bypass VLAN id/range overlap**: Bypasses the check for a VLAN
+     overlap. This way multiple networks with the same VLAN can be created
 
    -  **ACL**: Controls both ingress and egress traffic on a VPC private
       gateway. By default, all the traffic is blocked.
@@ -648,16 +651,16 @@ to be routed back to the gateway.
    Wait for few seconds until the new route is created.
 
 
-Blacklisting Routes
+Denylisting Routes
 ^^^^^^^^^^^^^^^^^^^
 
 CloudStack enables you to block a list of routes so that they are not
 assigned to any of the VPC private gateways. Specify the list of routes
-that you want to blacklist in the ``blacklisted.routes`` global
+that you want to denylist in the ``denied.routes`` global
 parameter. Note that the parameter update affects only new static route
 creations. If you block an existing static route, it remains intact and
 continue functioning. You cannot add a static route if the route is
-blacklisted for the zone.
+denied for the zone.
 
 
 Deploying VMs to the Tier
@@ -892,7 +895,7 @@ function only if they are defined on the default network.
 
 #. Click the IP you want to work with.
 
-#. In the Details tab,click the Static NAT button. |enable-disable.png| 
+#. In the Details tab,click the Static NAT button. |enable-disable.png|
    The button toggles between Enable and
    Disable, depending on whether static NAT is currently enabled for the
    IP address.
@@ -960,7 +963,7 @@ follows:
 
 #. Log in to the CloudStack UI as a user or admin.
 
-#. From the Select Offering drop-down, choose Network Offering.
+#. Naviagte to Service Offerings and choose Network Offering.
 
 #. Click Add Network Offering.
 
@@ -1101,7 +1104,7 @@ CloudStack supports sharing workload across different tiers within your
 VPC. Assume that multiple tiers are set up in your environment, such as
 Web tier and Application tier. Traffic to each tier is balanced on the
 VPC virtual router on the public side, as explained in
-`"Adding Load Balancing Rules on a VPC" <#adding-load-balancing-rules-on-a-vpc>`_. 
+`"Adding Load Balancing Rules on a VPC" <#adding-load-balancing-rules-on-a-vpc>`_.
 If you want the traffic coming
 from the Web tier to the Application tier to be balanced, use the
 internal load balancing feature offered by CloudStack.
@@ -1148,10 +1151,10 @@ Guidelines
 Enabling Internal LB on a VPC Tier
 ''''''''''''''''''''''''''''''''''
 
-#. Create a network offering, as given in 
+#. Create a network offering, as given in
    :ref:`creating-net-offering-internal-lb`.
 
-#. Create an internal load balancing rule and apply, as given in 
+#. Create an internal load balancing rule and apply, as given in
    :ref:`create-int-lb-rule`.
 
 
@@ -1166,7 +1169,7 @@ network offering as follows:
 
 #. Log in to the CloudStack UI as a user or admin.
 
-#. From the Select Offering drop-down, choose Network Offering.
+#. Naviagte to Service Offerings and choose Network OfferingPublic IP Addresses.
 
 #. Click Add Network Offering.
 

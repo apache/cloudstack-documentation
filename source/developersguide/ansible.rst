@@ -422,7 +422,7 @@ How is this example different from a production deployment?
 -----------------------------------------------------------
 
 In a production deployment, the Ansible playbooks would configure
-multiple management servers connected to master/slave replicating MySQL
+multiple management servers connected to the source/replica replicating MySQL
 databases along with any other infrastructure components required and
 deploy and configure the hypervisor hosts. We would also have a
 dedicated file describing the hosts in the environment and a dedicated

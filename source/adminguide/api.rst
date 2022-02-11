@@ -26,7 +26,7 @@ some indication of their state.
 The API has a REST-like query basis and returns results in XML or JSON.
 
 See `the Developer’s Guide <https://cwiki.apache.org/confluence/display/CLOUDSTACK/Development+101>`_
-and `the API Reference <http://cloudstack.apache.org/docs/api/>`_.
+and `the API Reference <https://cloudstack.apache.org/api.html>`_.
 
 
 Provisioning and Authentication API
@@ -44,7 +44,14 @@ Authentication.
 
 
 User Data and Meta Data
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The user-data service on a Shared or Isolated Network can be provided through the
+Virtual Router or through an attached iso called the Config drive.
+
+User Data and Meta Data Via Virtual Router
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 CloudStack provides API access to attach up to 32KB of user data to a
 deployed VM. Deployed VMs also have access to instance metadata via the
@@ -57,16 +64,12 @@ the user data:
 #. Run the following command to find the virtual router.
 
    .. code:: bash
-
       # cat /var/lib/dhclient/dhclient-eth0.leases | grep dhcp-server-identifier | tail -1
-
 #. Access user data by running the following command using the result of
    the above command
 
    .. code:: bash
-
       # curl http://10.1.1.1/latest/user-data
-
 Meta Data can be accessed similarly, using a URL of the form
 http://10.1.1.1/latest/meta-data/{metadata type}. (For backwards
 compatibility, the previous URL http://10.1.1.1/latest/{metadata type}
@@ -87,4 +90,93 @@ is also supported.) For metadata type, use one of the following:
 
 -  instance-id. The instance name of the VM
 
+User Data and Meta Data via Config Drive
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Config drive is an ISO file that is mounted as a cd-rom on a user VM and
+contains the user VM related userdata, metadata (incl. ssh-keys) and
+password files.
+
+Enable config drive
+~~~~~~~~~~~~~~~~~~~
+To use the config drive the network offering must have the “ConfigDrive”
+provider selected for the userdata service.
+
+If the networkoffering uses ConfigDrive for userdata and the template is
+password enabled, the password string for the VM is placed in the
+vm_password.txt file and it is included in the ISO.
+
+ConfigDrive availability
+~~~~~~~~~~~~~~~~~~~~~~~~
+At VM start the config drive ISO is attached on the 2nd cd/dvd drive of the
+user instance, such that any other ISO image (e.g. boot image or vmware tools)
+is mounted on 1st cd/dvd drive. This means existing functionality of
+supporting 1 cd rom drive is still available.
+
+At password reset or update of user data, the Config Drive ISO
+will be rebuilt. The existing ISO is mounted on a temporary directory,
+password, userdata or ssh-keys are updated and a new ISO is built from the
+updated directory structure.
+
+In case of a password reset, the new password will be picked-up at VM start.
+To access the updated userdata, the user needs to remount the config drive ISO.
+
+When a VM is stopped, the ConfigDrive network element will trigger the
+Secondary Storage VM to remove the ISO from the secondary storage.
+If the config drive is stored on primary storage, the network element will
+trigger the host to remove the ISO.
+
+The config drive ISO can be stored on primary storage by setting the global
+setting vm.configdrive.primarypool.enabled to true. This is currently only
+supported with use of the KVM Hypervisor.
+
+Supporting ConfigDrive
+~~~~~~~~~~~~~~~~~~~~~~
+
+Extra data is added to the VM profile to enable the creation of the config drive:
+
+VMdata - a list of String arrays representing [“directory”, “filename”, “content”] on the ConfigDrive device.
+
+- <mountdir>/cloudstack
+
+  - /metadata:
+
+    - availability-zone.txt
+
+    - instance-id.txt
+
+    - service-offering.txt
+
+    - cloud-identifier.txt
+
+    - local-hostname.txt
+
+    - vm-id.txt
+
+    - public-keys.txt
+
+  - /password
+
+    - vm_password.txt
+
+    - vm_password_md5checksum (for windows VM’s)
+
+- <mountdir>/openstack/version/:
+
+  - user_data (=hardlink to <mountdir>/cloudstack/user_data/user_data.txt)
+
+    - vendor_data.json
+
+    - meta_data.json
+
+    - Network_data.json
+
+  - label, which is configurable in global settings:
+
+    - name : vm.configdrive.label
+
+    - default: config-2
+
+For more detailed information about the Config Drive implementation refer to
+the `Wiki Article
+<https://cwiki.apache.org/confluence/display/CLOUDSTACK/Using+ConfigDrive+for+Metadata%2C+Userdata+and+Password#:~:text=CLOUDSTACK%2D9813%20%2D%20(),%2Dkeys)%20and%20password%20files>`_

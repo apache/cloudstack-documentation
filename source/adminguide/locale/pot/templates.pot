@@ -341,7 +341,7 @@ msgstr ""
 
 #: ../../templates.rst:288
 # 942a09f060a248499ad52006fb12910b
-msgid "Linux templates should be prepared using this documentation in order to prepare your linux VMs for template deployment. For ease of documentation, the VM which you are configuring the template on will be referred to as \"Template Master\". This guide currently covers legacy setups which do not take advantage of UserData and cloud-init and assumes openssh-server is installed during installation."
+msgid "Linux templates should be prepared using this documentation in order to prepare your linux VMs for template deployment. For ease of documentation, the VM which you are configuring the template on will be referred to as \"Template Primary\". This guide currently covers legacy setups which do not take advantage of UserData and cloud-init and assumes openssh-server is installed during installation."
 msgstr ""
 
 #: ../../templates.rst:295
@@ -417,7 +417,7 @@ msgstr ""
 
 #: ../../templates.rst:341
 # f68b6e4efb764f92a1e56ad9ea54f90c
-msgid "The next steps updates the packages on the Template Master."
+msgid "The next steps updates the packages on the Template Primary."
 msgstr ""
 
 #: ../../templates.rst:343
@@ -473,7 +473,7 @@ msgstr ""
 
 #: ../../templates.rst:434
 # 1f68693847f1433bb6541b70f1abedd5
-msgid "The following steps should be run when you are ready to template your Template Master. If the Template Master is rebooted during these steps you will have to run all the steps again. At the end of this process the Template Master should be shutdown and the template created in order to create and deploy the final template."
+msgid "The following steps should be run when you are ready to template your Template Primary. If the Template Primary is rebooted during these steps you will have to run all the steps again. At the end of this process the Template Primary should be shutdown and the template created in order to create and deploy the final template."
 msgstr ""
 
 #: ../../templates.rst:440
@@ -483,7 +483,7 @@ msgstr ""
 
 #: ../../templates.rst:442
 # 7a1b5554792c4cb1aa676f8e73a843b8
-msgid "This step removes information unique to your Template Master such as network MAC addresses, lease files and CD block devices, the files are automatically generated on next boot."
+msgid "This step removes information unique to your Template Primary such as network MAC addresses, lease files and CD block devices, the files are automatically generated on next boot."
 msgstr ""
 
 #: ../../templates.rst:460
@@ -503,7 +503,7 @@ msgstr ""
 
 #: ../../templates.rst:472
 # af913fb8f91b484bb83ac0737e1b1d10
-msgid "It is good practice to remove old logs from the Template Master."
+msgid "It is good practice to remove old logs from the Template Primary."
 msgstr ""
 
 #: ../../templates.rst:481
@@ -513,7 +513,7 @@ msgstr ""
 
 #: ../../templates.rst:483
 # 5a2162138fca40088196712b5650f551
-msgid "In order for the Ubuntu DHCP script to function and the CentOS dhclient to set the VM hostname they both require the Template Master's hostname to be \"localhost\", run the following commands to change the hostname."
+msgid "In order for the Ubuntu DHCP script to function and the CentOS dhclient to set the VM hostname they both require the Template Primary's hostname to be \"localhost\", run the following commands to change the hostname."
 msgstr ""
 
 #: ../../templates.rst:493
@@ -543,7 +543,7 @@ msgstr ""
 
 #: ../../templates.rst:513
 # f92b1a930b3e4d859616309b9db518e1
-msgid "Your now ready to shutdown your Template Master and create a template!"
+msgid "Your now ready to shutdown your Template Primary and create a template!"
 msgstr ""
 
 #: ../../templates.rst:520

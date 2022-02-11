@@ -76,7 +76,7 @@ steps (explained in more detail later in this section):
 #. Hardcode your plugin's required additional input fields into the code
    for the Add Secondary Storage or Add Primary Storage dialog box.
 
-#. Place your .jar file in `plugins/storage/volume/` or 
+#. Place your .jar file in `plugins/storage/volume/` or
    `plugins/storage/image/`.
 
 #. Edit `/client/tomcatconf/componentContext.xml.in`.
@@ -350,7 +350,7 @@ placed in a special directory within CloudStack’s installed code at any
 time after CloudStack installation. The new plugin appears only when it is
 enabled by the cloud administrator.
 
-.. figure:: /_static/images/plugin_intro.jpg
+.. figure:: /_static/images/plugin_intro.png
    :align: center
    :alt: New plugin button in CloudStack navbar
 
@@ -383,8 +383,8 @@ The basic procedure for writing a plugin is:
               +-- icon.png             --> Icon, shown on side nav bar and plugin listing
                                            (should be square, and ~50x50px)
               +-- csMyFirstPlugin.css  --> CSS file, loaded automatically when plugin loads
-              +-- csMyFirstPlugin.js   --> Main JS file, containing plugin code              
-                   
+              +-- csMyFirstPlugin.js   --> Main JS file, containing plugin code
+
 
    The same files must also be present at
    `/tomcat/webapps/client/plugins`.
@@ -406,7 +406,7 @@ The basic procedure for writing a plugin is:
 #. The next time the user refreshes the UI in the browser, your plugin
    will appear in the left navigation bar.
 
-   .. figure:: /_static/images/plugin4.jpg
+   .. figure:: /_static/images/plugin4.png
       :align: center
       :alt: The plugin appears in the UI
 
@@ -444,13 +444,13 @@ Plugins are written in a very similar way to the main UI.
       total 8
       drwxr-xr-x  2 bgregory  staff   68 Feb 11 14:44 csMyFirstPlugin
       -rw-r--r--  1 bgregory  staff  101 Feb 11 14:26 plugins.js
-                  
+
 #. **Change to your new plugin directory.**
 
    ::
 
       $ cd csMyFirstPlugin
-                   
+
 #. **Set up the listing.**
 
    Add the file `config.js`, using your favorite editor.
@@ -472,8 +472,8 @@ Plugins are written in a very similar way to the main UI.
           authorName: 'Test Plugin Developer',
           authorEmail: 'plugin.developer@example.com'
         };
-      }(cloudStack));            
-                 
+      }(cloudStack));
+
 
 #. **Add a new main section.**
 
@@ -500,8 +500,8 @@ Plugins are written in a very similar way to the main UI.
             }
           });
         };
-      }(cloudStack));            
-                 
+      }(cloudStack));
+
 
 #. **Register the plugin.**
 
@@ -512,8 +512,8 @@ Plugins are written in a very similar way to the main UI.
    ::
 
       $ cd cloudstack/ui/plugins
-      $ vi plugins.js              
-                   
+      $ vi plugins.js
+
 
    Now add the following to plugins.js:
 
@@ -523,8 +523,8 @@ Plugins are written in a very similar way to the main UI.
         cloudStack.plugins = [
           'csMyFirstPlugin'
         ];
-      }(jQuery, cloudStack));            
-                 
+      }(jQuery, cloudStack));
+
 
 #. **Check the plugin in the UI.**
 
@@ -552,8 +552,8 @@ Plugins are written in a very similar way to the main UI.
    ::
 
       $ cd csMyFirstPlugin
-      $ vi csMyFirstPlugin.js              
-                   
+      $ vi csMyFirstPlugin.js
+
 
    Add the following code in csMyFirstPlugin.js:
 
@@ -596,8 +596,8 @@ Plugins are written in a very similar way to the main UI.
             }
           });
         };
-      }(cloudStack));            
-                 
+      }(cloudStack));
+
 
 #. **Test the plugin.**
 
@@ -615,8 +615,8 @@ Plugins are written in a very similar way to the main UI.
 
    ::
 
-      $ vi csMyFirstPlugin.js              
-                   
+      $ vi csMyFirstPlugin.js
+
 
    Now add the following new code in csMyFirstPlugin.js. (The dots ...
    show where we have omitted some existing code for the sake of space.
@@ -648,7 +648,7 @@ Plugins are written in a very similar way to the main UI.
                  // Get the instance object of the selected row from context
                  //
                  // -- all currently loaded state is stored in 'context' as objects,
-                 //    such as the selected list view row, 
+                 //    such as the selected list view row,
                  //    the selected section, and active user
                  //
                  // -- for list view actions, the object's key will be the same as
@@ -676,8 +676,8 @@ Plugins are written in a very similar way to the main UI.
                        _custom: { jobId: json.rebootvirtualmachineresponse.jobid }
                      });
                    },
-                   
-                   
+
+
                    error: function(errorMessage) {
                      args.response.error(errorMessage); // Cancel action, show error message returned
                    }
@@ -700,8 +700,8 @@ Plugins are written in a very similar way to the main UI.
 
            dataProvider: function(args) {
              ...
-      ...             
-                   
+      ...
+
 
 #. **Add the thumbnail icon.**
 
@@ -716,8 +716,8 @@ Plugins are written in a very similar way to the main UI.
    `cloudstack/ui/plugins/csMyFirstPlugin/csMyFirstPlugin.css`.
 
 
-.. | plugin_intro.jpg: New plugin button in CloudStack navbar | image:: _static/images/plugin_intro.jpg
+.. | plugin_intro.png: New plugin button in CloudStack navbar | image:: _static/images/plugin_intro.png
 .. | plugin1.jpg: Write the plugin code | image:: _static/images/plugin1.jpg
 .. | plugin2.jpg: The plugin code is placed in the PLUGINS folder | image:: _static/images/plugin2.jpg
 .. | plugin3.jpg: The plugin name is added to plugin.js in the PLUGINS folder | image:: _static/images/plugin3.jpg
-.. | plugin4.jpg: The plugin appears in the UI | image:: _static/images/plugin4.jpg
+.. | plugin4.png: The plugin appears in the UI | image:: _static/images/plugin4.png

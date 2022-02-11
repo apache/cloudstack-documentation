@@ -13,7 +13,7 @@
    specific language governing permissions and limitations
    under the License.
 
-API Changes Introduced in 4.14.0.0
+API Changes Introduced in 4.16.0.0
 ===================================
 For the complete list of API commands and params consult the `CloudStack Apidocs`_.
 
@@ -25,77 +25,32 @@ New API Commands
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | Name                                        | Description                                                                    |
 +=============================================+================================================================================+
-| ``startRollingMaintenance``                 | Start rolling maintenance                                                      |
+| ``listResourceIcon``                        | Lists the resource icon for the specified resource(s)                          |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``createBackupSchedule``                    | Creates a user-defined VM backup schedule                                      |
+| ``updatePodManagementNetworkIpRange``       | Updates a management network IP range. Only allowed when no IPs are allocated. |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listBackupOfferings``                     | Lists backup offerings                                                         |
+| ``deleteResourceIcon``                      | deletes the resource icon from the specified resource(s)                       |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``createBackup``                            | Create VM backup                                                               |
+| ``updateBackupOffering``                    | Updates a backup offering.                                                     |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``stopKubernetesCluster``                   | Stops a running Kubernetes cluster                                             |
+| ``updateStorageCapabilities``               | Syncs capabilities of storage pools                                            |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listKubernetesClusters``                  | Lists Kubernetes clusters                                                      |
+| ``uploadResourceIcon``                      | Uploads an icon for the specified resource(s)                                  |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``scaleKubernetesCluster``                  | Scales a created, running or stopped Kubernetes cluster                        |
+| ``updateVlanIpRange``                       | Updates a VLAN IP range.                                                       |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``destroyVolume``                           | Destroys a Volume.                                                             |
+| ``declareHostAsDegraded``                   | Declare host as 'Degraded'. Host must be on 'Disconnected' or 'Alert' state.   |
+|                                             | The ADMIN must be sure that there are no VMs running on the respective host    |
+|                                             | otherwise this command might corrupted VMs that were running on the 'Degraded' |
+|                                             | host.                                                                          |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``deleteBackupOffering``                    | Deletes a backup offering                                                      |
+| ``updateAnnotationVisibility``              | update an annotation visibility.                                               |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``updateSecurityGroup``                     | Updates a security group                                                       |
+| ``cancelHostAsDegraded``                    | Cancel host status from 'Degraded'. Host will transit back to status           |
+|                                             | 'Enabled'.                                                                     |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``getRouterHealthCheckResults``             | Starts a router.                                                               |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listBackups``                             | Lists VM backups                                                               |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listBackupProviders``                     | Lists Backup and Recovery providers                                            |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``deleteKubernetesSupportedVersion``        | Deletes a Kubernetes cluster                                                   |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``restoreBackup``                           | Restores an existing stopped or deleted VM using a VM backup                   |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``addKubernetesSupportedVersion``           | Add a supported Kubernetes version                                             |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``deleteKubernetesCluster``                 | Deletes a Kubernetes cluster                                                   |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``getKubernetesClusterConfig``              | Get Kubernetes cluster config                                                  |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``updateKubernetesSupportedVersion``        | Update a supported Kubernetes version                                          |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``upgradeKubernetesCluster``                | Upgrades a running Kubernetes cluster                                          |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``deleteBackupSchedule``                    | Deletes the backup schedule of a VM                                            |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listBackupProviderOfferings``             | Lists external backup offerings of the provider                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``createKubernetesCluster``                 | Creates a Kubernetes cluster                                                   |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``importBackupOffering``                    | Imports a backup offering using a backup provider                              |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``removeVirtualMachineFromBackupOffering``  | Removes a VM from any existing backup offering                                 |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listKubernetesSupportedVersions``         | Lists container clusters                                                       |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``recoverVolume``                           | Recovers a Destroy volume.                                                     |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listUnmanagedInstances``                  | Lists unmanaged virtual machines for a given cluster.                          |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``importUnmanagedInstance``                 | Import unmanaged virtual machine from a given cluster.                         |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``getDiagnosticsData``                      | Get diagnostics and files from system VMs                                      |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``startKubernetesCluster``                  | Starts a stopped Kubernetes cluster                                            |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listBackupSchedule``                      | List backup schedule of a VM                                                   |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``restoreVolumeFromBackupAndAttachToVM``    | Restore and attach a backed up volume to VM                                    |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``updateBackupSchedule``                    | Updates a user-defined VM backup schedule                                      |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``deleteBackup``                            | Delete VM backup                                                               |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``assignVirtualMachineToBackupOffering``    | Assigns a VM to a backup offering                                              |
+| ``syncStoragePool``                         | Sync storage pool with management server (currently supported for Datastore    |
+|                                             | Cluster in VMware and syncs the datastores in it)                              |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 
 
@@ -107,552 +62,1666 @@ Parameters Changed API Commands
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | Name                                        | Description                                                                    |
 +=============================================+================================================================================+
-| ``listHosts``                               | **Response:**                                                                  |
+| ``createVPCOffering``                       | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
-|                                             | - ``ueficapability``                                                           |
-|                                             |                                                                                |
-|                                             | *Removed Parameters:*                                                          |
-|                                             |                                                                                |
-|                                             | - ``averageload``                                                              |
+|                                             | - ``enable`` (optional)                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``importLdapUsers``                         | **Response:**                                                                  |
+| ``ldapCreateAccount``                       | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``conflictingusersource``                                                    |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listHostsMetrics``                        | **Response:**                                                                  |
+| ``createPod``                               | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
+|                                             | - ``ipranges(*)``                                                              |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``copyIso``                                 | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listVirtualMachinesMetrics``              | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``showicon`` (optional)                                                      |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``rebootSystemVm``                          | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``forced`` (optional)                                                        |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``isdynamicallyscalable``                                                    |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listNetworks``                            | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``showicon`` (optional)                                                      |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``registerSSHKeyPair``                      | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``id``                                                                       |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``restoreVirtualMachine``                   | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``updateHost``                              | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
-|                                             | - ``ueficapability``                                                           |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
 |                                             |                                                                                |
 |                                             | *Removed Parameters:*                                                          |
 |                                             |                                                                                |
-|                                             | - ``averageload``                                                              |
+|                                             | - ``readonlyuidetails``                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``stopRouter``                              | **Response:**                                                                  |
+| ``uploadVolume``                            | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
+|                                             | - ``supportsstoragesnapshot``                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``destroySystemVm``                         | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``isdynamicallyscalable``                                                    |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listAnnotations``                         | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``annotationfilter`` (optional)                                              |
+|                                             | - ``userid`` (optional)                                                        |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``adminsonly``                                                               |
+|                                             | - ``entityname``                                                               |
+|                                             | - ``username``                                                                 |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``scaleSystemVm``                           | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``isdynamicallyscalable``                                                    |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateVpnCustomerGateway``                | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``ikeversion`` (optional)                                                    |
+|                                             | - ``splitconnections`` (optional)                                              |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``ikeversion``                                                               |
+|                                             | - ``splitconnections``                                                         |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``lockAccount``                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listProjectRolePermissions``              | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``id``                                                                       |
+|                                             | - ``projectid``                                                                |
+|                                             | - ``projectroleid``                                                            |
+|                                             | - ``projectrolename``                                                          |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``displaytext``                                                              |
+|                                             | - ``success``                                                                  |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``changeServiceForVirtualMachine``          | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``startRouter``                             | **Response:**                                                                  |
+| ``listTemplates``                           | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
+|                                             | - ``showicon`` (optional)                                                      |
 |                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``rebootVirtualMachine``                    | **Response:**                                                                  |
+|                                             | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``icon``                                                                     |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listVolumesMetrics``                      | **Request:**                                                                   |
+| ``rebootVirtualMachine``                    | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``state`` (optional)                                                         |
+|                                             | - ``forced`` (optional)                                                        |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``stopSystemVm``                            | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``isdynamicallyscalable``                                                    |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateVPC``                               | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``network``                                                                  |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``network(*)``                                                               |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createNetworkOffering``                   | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``enable`` (optional)                                                        |
+|                                             |                                                                                |
+|                                             | *Changed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``supportedservices`` was 'required' and is now 'optional'                   |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``updateVmNicIp``                           | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``startInternalLoadBalancerVM``             | **Response:**                                                                  |
+| ``listPods``                                | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
+|                                             | - ``ipranges(*)``                                                              |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``searchLdap``                              | **Response:**                                                                  |
+| ``resetVpnConnection``                      | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``conflictingusersource``                                                    |
+|                                             | - ``ikeversion``                                                               |
+|                                             | - ``splitconnections``                                                         |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``stopNetScalerVpx``                        | **Response:**                                                                  |
+| ``listKubernetesClusters``                  | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
+|                                             | - ``autoscalingenabled``                                                       |
+|                                             | - ``controlnodes``                                                             |
+|                                             | - ``maxsize``                                                                  |
+|                                             | - ``minsize``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``scaleKubernetesCluster``                  | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``autoscalingenabled`` (optional)                                            |
+|                                             | - ``maxsize`` (optional)                                                       |
+|                                             | - ``minsize`` (optional)                                                       |
+|                                             | - ``nodeids`` (optional)                                                       |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``autoscalingenabled``                                                       |
+|                                             | - ``controlnodes``                                                             |
+|                                             | - ``maxsize``                                                                  |
+|                                             | - ``minsize``                                                                  |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``listCapabilities``                        | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``allowuserexpungerecovervolume``                                            |
-|                                             | - ``kubernetesclusterexperimentalfeaturesenabled``                             |
-|                                             | - ``kubernetesserviceenabled``                                                 |
+|                                             | - ``defaultuipagesize``                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listLdapUsers``                           | **Request:**                                                                   |
+| ``destroyVolume``                           | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``domainid`` (optional)                                                      |
-|                                             | - ``userfilter`` (optional)                                                    |
-|                                             |                                                                                |
-|                                             | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``conflictingusersource``                                                    |
+|                                             | - ``supportsstoragesnapshot``                                                  |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``rebootRouter``                            | **Response:**                                                                  |
+| ``updateDomain``                            | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
+|                                             | - ``created``                                                                  |
+|                                             | - ``domaindetails``                                                            |
+|                                             | - ``icon``                                                                     |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listNics``                                | **Response:**                                                                  |
+| ``listSystemVms``                           | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``adaptertype``                                                              |
-|                                             | - ``ipaddresses``                                                              |
-|                                             | - ``isolatedpvlan``                                                            |
-|                                             | - ``isolatedpvlantype``                                                        |
-|                                             | - ``vlanid``                                                                   |
+|                                             | - ``isdynamicallyscalable``                                                    |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createProject``                           | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``account``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``detachVolume``                            | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``supportsstoragesnapshot``                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``markDefaultZoneForAccount``               | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``changeServiceForSystemVm``                | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``isdynamicallyscalable``                                                    |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``rebootRouter``                            | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``forced`` (optional)                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``addNicToVirtualMachine``                  | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listExternalLoadBalancers``               | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
-|                                             | - ``ueficapability``                                                           |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
 |                                             |                                                                                |
 |                                             | *Removed Parameters:*                                                          |
 |                                             |                                                                                |
-|                                             | - ``averageload``                                                              |
+|                                             | - ``readonlyuidetails``                                                        |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateIso``                               | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``updateDefaultNicForVirtualMachine``       | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``stopInternalLoadBalancerVM``              | **Response:**                                                                  |
+| ``prepareTemplate``                         | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createDomain``                            | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``domaindetails``                                                            |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``restartNetwork``                          | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``displaytext``                                                              |
+|                                             | - ``success``                                                                  |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``id``                                                                       |
+|                                             | - ``account``                                                                  |
+|                                             | - ``allocated``                                                                |
+|                                             | - ``associatednetworkid``                                                      |
+|                                             | - ``associatednetworkname``                                                    |
+|                                             | - ``domain``                                                                   |
+|                                             | - ``domainid``                                                                 |
+|                                             | - ``fordisplay``                                                               |
+|                                             | - ``forvirtualnetwork``                                                        |
+|                                             | - ``ipaddress``                                                                |
+|                                             | - ``isportable``                                                               |
+|                                             | - ``issourcenat``                                                              |
+|                                             | - ``isstaticnat``                                                              |
+|                                             | - ``issystem``                                                                 |
+|                                             | - ``networkid``                                                                |
+|                                             | - ``networkname``                                                              |
+|                                             | - ``physicalnetworkid``                                                        |
+|                                             | - ``project``                                                                  |
+|                                             | - ``projectid``                                                                |
+|                                             | - ``purpose``                                                                  |
+|                                             | - ``state``                                                                    |
+|                                             | - ``virtualmachinedisplayname``                                                |
+|                                             | - ``virtualmachineid``                                                         |
+|                                             | - ``virtualmachinename``                                                       |
+|                                             | - ``vlanid``                                                                   |
+|                                             | - ``vlanname``                                                                 |
+|                                             | - ``vmipaddress``                                                              |
+|                                             | - ``vpcid``                                                                    |
+|                                             | - ``vpcname``                                                                  |
+|                                             | - ``zoneid``                                                                   |
+|                                             | - ``zonename``                                                                 |
+|                                             | - ``tags(*)``                                                                  |
+|                                             | - ``jobid``                                                                    |
+|                                             | - ``jobstatus``                                                                |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``createServiceOffering``                   | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``cachemode`` (optional)                                                     |
+|                                             | - ``dynamicscalingenabled`` (optional)                                         |
 |                                             |                                                                                |
 |                                             | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``cacheMode``                                                                |
+|                                             | - ``dynamicscalingenabled``                                                    |
+|                                             | - ``storagetags``                                                              |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``tags``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``copyTemplate``                            | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listNiciraNvpDeviceNetworks``             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``assignVirtualMachine``                    | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``changeServiceForRouter``                  | **Response:**                                                                  |
+| ``resizeVolume``                            | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
+|                                             | - ``supportsstoragesnapshot``                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateTemplate``                          | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateVpnConnection``                     | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``ikeversion``                                                               |
+|                                             | - ``splitconnections``                                                         |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listPaloAltoFirewallNetworks``            | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateVolume``                            | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``name`` (optional)                                                          |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``supportsstoragesnapshot``                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateAccount``                           | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``updateVirtualMachine``                    | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``migrateVirtualMachine``                   | **Response:**                                                                  |
+| ``listDomains``                             | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``showicon`` (optional)                                                      |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``domaindetails``                                                            |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``disableAccount``                          | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateNetwork``                           | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``migrateVirtualMachine``                   | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``autoselect`` (optional)                                                    |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createTemplate``                          | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``resetPasswordForVirtualMachine``          | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``associateIpAddress``                      | **Request:**                                                                   |
+| ``listVpnCustomerGateways``                 | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``ipaddress`` (optional)                                                     |
+|                                             | - ``ikeversion``                                                               |
+|                                             | - ``splitconnections``                                                         |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``resetSSHKeyForVirtualMachine``            | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listInternalLoadBalancerVMs``             | **Request:**                                                                   |
+| ``addKubernetesSupportedVersion``           | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``fetchhealthcheckresults`` (optional)                                       |
+|                                             | - ``supportsautoscaling``                                                      |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createVPC``                               | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``network``                                                                  |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``network(*)``                                                               |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listSrxFirewallNetworks``                 | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateKubernetesSupportedVersion``        | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``supportsautoscaling``                                                      |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``detachIso``                               | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``forced`` (optional)                                                        |
 |                                             |                                                                                |
 |                                             | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``detachIso``                               | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``prepareHostForMaintenance``               | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
-|                                             | - ``ueficapability``                                                           |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
 |                                             |                                                                                |
 |                                             | *Removed Parameters:*                                                          |
 |                                             |                                                                                |
-|                                             | - ``averageload``                                                              |
+|                                             | - ``readonlyuidetails``                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listVirtualMachines``                     | **Response:**                                                                  |
+| ``listVirtualMachines``                     | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``clusterid`` (optional)                                                     |
+|                                             | - ``showicon`` (optional)                                                      |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``upgradeKubernetesCluster``                | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``autoscalingenabled``                                                       |
+|                                             | - ``controlnodes``                                                             |
+|                                             | - ``maxsize``                                                                  |
+|                                             | - ``minsize``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listProjects``                            | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``showicon`` (optional)                                                      |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``account``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createAccount``                           | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``revertToVMSnapshot``                      | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``addAnnotation``                           | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``adminsonly`` (optional)                                                    |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``adminsonly``                                                               |
+|                                             | - ``entityname``                                                               |
+|                                             | - ``username``                                                                 |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``registerIso``                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``deployVirtualMachine``                    | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``bootmode`` (optional)                                                      |
-|                                             | - ``boottype`` (optional)                                                      |
+|                                             | - ``dynamicscalingenabled`` (optional)                                         |
 |                                             |                                                                                |
 |                                             | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``cancelHostMaintenance``                   | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
-|                                             | - ``ueficapability``                                                           |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
 |                                             |                                                                                |
 |                                             | *Removed Parameters:*                                                          |
 |                                             |                                                                                |
-|                                             | - ``averageload``                                                              |
+|                                             | - ``readonlyuidetails``                                                        |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateZone``                              | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listProjectAccounts``                     | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``account``                                                                  |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``createDiskOffering``                      | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``cachemode`` (optional)                                                     |
+|                                             | - ``details`` (optional)                                                       |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``listVolumes``                             | **Request:**                                                                   |
+| ``listVolumes``                             | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``state`` (optional)                                                         |
+|                                             | - ``supportsstoragesnapshot``                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``lockUser``                                | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``createNetwork``                           | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``isolatedpvlantype`` (optional)                                             |
+|                                             | - ``routerip`` (optional)                                                      |
+|                                             | - ``routeripv6`` (optional)                                                    |
 |                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``migrateVirtualMachineWithVolume``         | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``addHost``                                 | **Response:**                                                                  |
+|                                             | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
-|                                             | - ``ueficapability``                                                           |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listVPCs``                                | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``showicon`` (optional)                                                      |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``network``                                                                  |
 |                                             |                                                                                |
 |                                             | *Removed Parameters:*                                                          |
 |                                             |                                                                                |
-|                                             | - ``averageload``                                                              |
+|                                             | - ``network(*)``                                                               |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``migrateVirtualMachineWithVolume``         | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *Changed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``hostid`` was 'required' and is now 'optional'                              |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateUser``                              | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``restartVPC``                              | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``success``                                                                  |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``id``                                                                       |
+|                                             | - ``account``                                                                  |
+|                                             | - ``cidr``                                                                     |
+|                                             | - ``created``                                                                  |
+|                                             | - ``distributedvpcrouter``                                                     |
+|                                             | - ``domain``                                                                   |
+|                                             | - ``domainid``                                                                 |
+|                                             | - ``fordisplay``                                                               |
+|                                             | - ``name``                                                                     |
+|                                             | - ``networkdomain``                                                            |
+|                                             | - ``project``                                                                  |
+|                                             | - ``projectid``                                                                |
+|                                             | - ``redundantvpcrouter``                                                       |
+|                                             | - ``regionlevelvpc``                                                           |
+|                                             | - ``restartrequired``                                                          |
+|                                             | - ``state``                                                                    |
+|                                             | - ``vpcofferingid``                                                            |
+|                                             | - ``vpcofferingname``                                                          |
+|                                             | - ``zoneid``                                                                   |
+|                                             | - ``zonename``                                                                 |
+|                                             | - ``network(*)``                                                               |
+|                                             | - ``service(*)``                                                               |
+|                                             | - ``tags(*)``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``attachVolume``                            | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``supportsstoragesnapshot``                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``addHost``                                 | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *Changed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``password`` was 'required' and is now 'optional'                            |
+|                                             | - ``username`` was 'required' and is now 'optional'                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateProject``                           | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``account``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listUsers``                               | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``showicon`` (optional)                                                      |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listVpnConnections``                      | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``ikeversion``                                                               |
+|                                             | - ``splitconnections``                                                         |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``disableUser``                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listIsos``                                | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``showicon`` (optional)                                                      |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listZones``                               | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``showicon`` (optional)                                                      |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listNetscalerLoadBalancerNetworks``       | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``startSystemVm``                           | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``isdynamicallyscalable``                                                    |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createKubernetesCluster``                 | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``controlnodes`` (optional)                                                  |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``autoscalingenabled``                                                       |
+|                                             | - ``controlnodes``                                                             |
+|                                             | - ``maxsize``                                                                  |
+|                                             | - ``minsize``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``migrateVolume``                           | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``supportsstoragesnapshot``                                                  |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``updateVMAffinityGroup``                   | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``resetApiLimit``                           | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``displaytext``                                                              |
+|                                             | - ``success``                                                                  |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``account``                                                                  |
+|                                             | - ``accountid``                                                                |
+|                                             | - ``apiAllowed``                                                               |
+|                                             | - ``apiIssued``                                                                |
+|                                             | - ``expireAfter``                                                              |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``migrateVPC``                              | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``network``                                                                  |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``network(*)``                                                               |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``getUploadParamsForTemplate``              | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``deployasis`` (optional)                                                    |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``recoverVirtualMachine``                   | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``migrateSystemVm``                         | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``autoselect`` (optional)                                                    |
+|                                             | - ``storageid`` (optional)                                                     |
+|                                             |                                                                                |
+|                                             | *Changed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``hostid`` was 'required' and is now 'optional'                              |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``isdynamicallyscalable``                                                    |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``listRouters``                             | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``fetchhealthcheckresults`` (optional)                                       |
+|                                             | - ``healthchecksfailed`` (optional)                                            |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createVpnConnection``                     | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``ikeversion``                                                               |
+|                                             | - ``splitconnections``                                                         |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listBrocadeVcsDeviceNetworks``            | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listKubernetesSupportedVersions``         | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``supportsautoscaling``                                                      |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listUsageRecords``                        | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``isrecursive`` (optional)                                                   |
 |                                             |                                                                                |
 |                                             | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
+|                                             | - ``oscategoryid``                                                             |
+|                                             | - ``oscategoryname``                                                           |
+|                                             | - ``osdisplayname``                                                            |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``attachIso``                               | **Response:**                                                                  |
+| ``recoverVolume``                           | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``supportsstoragesnapshot``                                                  |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``destroyRouter``                           | **Response:**                                                                  |
+| ``enableUser``                              | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``healthchecksfailed``                                                       |
-|                                             | - ``healthcheckresults(*)``                                                    |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listZonesMetrics``                        | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``showicon`` (optional)                                                      |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``suspendProject``                          | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``account``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``migrateNetwork``                          | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listUnmanagedInstances``                  | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``hostname``                                                                 |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``registerTemplate``                        | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``deployasis`` (optional)                                                    |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createZone``                              | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listDomainChildren``                      | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``showicon`` (optional)                                                      |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``domaindetails``                                                            |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``importUnmanagedInstance``                 | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listF5LoadBalancerNetworks``              | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createVolume``                            | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``supportsstoragesnapshot``                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listVMSnapshot``                          | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``virtualmachinename``                                                       |
+|                                             | - ``zonename``                                                                 |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``updatePod``                               | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``ipranges(*)``                                                              |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``attachIso``                               | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``forced`` (optional)                                                        |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createUser``                              | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createVMSnapshot``                        | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``virtualmachinename``                                                       |
+|                                             | - ``zonename``                                                                 |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listSSHKeyPairs``                         | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``id``                                                                       |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listAccounts``                            | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``showicon`` (optional)                                                      |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``removeNicFromVirtualMachine``             | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``reconnectHost``                           | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
-|                                             | - ``ueficapability``                                                           |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
 |                                             |                                                                                |
 |                                             | *Removed Parameters:*                                                          |
 |                                             |                                                                                |
-|                                             | - ``averageload``                                                              |
+|                                             | - ``readonlyuidetails``                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``createPrivateGateway``                    | **Request:**                                                                   |
+| ``activateProject``                         | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``bypassvlanoverlapcheck`` (optional)                                        |
-|                                             |                                                                                |
-+---------------------------------------------+--------------------------------------------------------------------------------+
-| ``addBaremetalHost``                        | **Response:**                                                                  |
-|                                             |                                                                                |
-|                                             | *New Parameters:*                                                              |
-|                                             |                                                                                |
-|                                             | - ``cpuloadaverage``                                                           |
-|                                             | - ``ueficapability``                                                           |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
 |                                             |                                                                                |
 |                                             | *Removed Parameters:*                                                          |
 |                                             |                                                                                |
-|                                             | - ``averageload``                                                              |
+|                                             | - ``account``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``enableAccount``                           | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``created``                                                                  |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``startKubernetesCluster``                  | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``autoscalingenabled``                                                       |
+|                                             | - ``controlnodes``                                                             |
+|                                             | - ``maxsize``                                                                  |
+|                                             | - ``minsize``                                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``deleteProject``                           | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``cleanup`` (optional)                                                       |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``getUser``                                 | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``icon``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createVpnCustomerGateway``                | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``ikeversion`` (optional)                                                    |
+|                                             | - ``splitconnections`` (optional)                                              |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``ikeversion``                                                               |
+|                                             | - ``splitconnections``                                                         |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``createManagementNetworkIpRange``          | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``ipranges(*)``                                                              |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``removeAnnotation``                        | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``adminsonly``                                                               |
+|                                             | - ``entityname``                                                               |
+|                                             | - ``username``                                                                 |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``addBaremetalHost``                        | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *Changed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``password`` was 'required' and is now 'optional'                            |
+|                                             | - ``username`` was 'required' and is now 'optional'                            |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``destroyVirtualMachine``                   | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``listServiceOfferings``                    | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``cacheMode``                                                                |
+|                                             | - ``dynamicscalingenabled``                                                    |
+|                                             | - ``storagetags``                                                              |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``tags``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``assignVirtualMachineToBackupOffering``    | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``displaytext``                                                              |
+|                                             | - ``success``                                                                  |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``id``                                                                       |
+|                                             | - ``account``                                                                  |
+|                                             | - ``accountid``                                                                |
+|                                             | - ``backupofferingid``                                                         |
+|                                             | - ``backupofferingname``                                                       |
+|                                             | - ``created``                                                                  |
+|                                             | - ``domain``                                                                   |
+|                                             | - ``domainid``                                                                 |
+|                                             | - ``externalid``                                                               |
+|                                             | - ``size``                                                                     |
+|                                             | - ``status``                                                                   |
+|                                             | - ``type``                                                                     |
+|                                             | - ``virtualmachineid``                                                         |
+|                                             | - ``virtualmachinename``                                                       |
+|                                             | - ``virtualsize``                                                              |
+|                                             | - ``volumes``                                                                  |
+|                                             | - ``zone``                                                                     |
+|                                             | - ``zoneid``                                                                   |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``startVirtualMachine``                     | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
 | ``stopVirtualMachine``                      | **Response:**                                                                  |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``backupofferingid``                                                         |
-|                                             | - ``backupofferingname``                                                       |
-|                                             | - ``bootmode``                                                                 |
-|                                             | - ``boottype``                                                                 |
+|                                             | - ``icon``                                                                     |
+|                                             | - ``lastupdated``                                                              |
+|                                             | - ``pooltype``                                                                 |
+|                                             | - ``readonlydetails``                                                          |
+|                                             | - ``receivedbytes``                                                            |
+|                                             | - ``sentbytes``                                                                |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``readonlyuidetails``                                                        |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
-| ``updateServiceOffering``                   | **Response:**                                                                  |
+| ``updateServiceOffering``                   | **Request:**                                                                   |
 |                                             |                                                                                |
 |                                             | *New Parameters:*                                                              |
 |                                             |                                                                                |
-|                                             | - ``cacheMode``                                                                |
+|                                             | - ``hosttags`` (optional)                                                      |
+|                                             | - ``storagetags`` (optional)                                                   |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``dynamicscalingenabled``                                                    |
+|                                             | - ``storagetags``                                                              |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``tags``                                                                     |
 |                                             |                                                                                |
 +---------------------------------------------+--------------------------------------------------------------------------------+
+

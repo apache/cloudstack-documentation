@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -125,11 +125,7 @@ msgstr "共享网络"
 
 # 4b159336d5054af78283deb65966e56d
 #: ../../networking.rst:73
-msgid ""
-"A shared network can be accessed by virtual machines that belong to many "
-"different accounts. Network Isolation on shared networks is accomplished by "
-"using techniques such as security groups, which is supported only in Basic "
-"zones in CloudStack 3.0.3 and later versions."
+msgid "A shared network can be accessed by virtual machines that belong to many different accounts. Network Isolation on shared networks is accomplished by using techniques such as security groups, which is supported only in Basic zones or Advanced Zones with Security Groups"
 msgstr "共享网络可以被属于不同客户的虚拟机访问。共享网络中的网络隔离通过安全组实现（仅在CloudStack 3.0.3及以后的基本区域中支持）"
 
 # 0eed59cfbc8447e98bc84e58489e3ae7
@@ -500,7 +496,7 @@ msgstr "在左侧导航栏中，点击 服务方案。"
 
 # 22b7bae2bee145399e00d289bccc7917
 #: ../../networking.rst:231
-msgid "In Select Offering, choose Network Offering."
+msgid "In the left navigation bar, click Service Offerings and choose Network Offering."
 msgstr "在选择方案中，选择网络方案。"
 
 # ef1169d122904044a6c0246757cbbb46
@@ -844,10 +840,10 @@ msgid ""
 "**Redundant router capability**: Available only when Virtual Router is "
 "selected as the Source NAT provider. Select this option if you want to use "
 "two virtual routers in the network for uninterrupted connection: one "
-"operating as the master virtual router and the other as the backup. The "
-"master virtual router receives requests from and sends responses to the "
-"user’s VM. The backup virtual router is activated only when the master is "
-"down. After the failover, the backup becomes the master virtual router. "
+"operating as the primary virtual router and the other as the backup. The "
+"primary virtual router receives requests from and sends responses to the "
+"user’s VM. The backup virtual router is activated only when the primary is "
+"down. After the failover, the backup becomes the primary virtual router. "
 "CloudStack deploys the routers on different hosts to ensure reliability if "
 "one host is down."
 msgstr "**冗余路由性能**:这个选项只有在虚拟路由作为Source NAT提供者时才是可选的。如果你希望提供不间断的网络连接，选中这个选项，则系统会提供两个虚拟路由：一个主的，一个辅的。主虚拟路由负载收发用户虚拟机器的相关请深圳市。如主的路由DOWN掉时，由辅助路由升级为主路由接替工作。CloudStack 会将两个邪气路由分别部署在不同的主机上，以保证可用性。"

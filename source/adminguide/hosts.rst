@@ -199,12 +199,29 @@ essential that your hosts are completely up to date with the provided
 hypervisor patches. The hypervisor vendor is likely to refuse to support
 any system that is not up to date with patches.
 
-.. note:: 
+.. note::
    The lack of up-do-date hotfixes can lead to data corruption and lost VMs.
 
-(XenServer) For more information, see 
-`Highly Recommended Hotfixes for XenServer in the CloudStack Knowledge Base 
+(XenServer) For more information, see
+`Highly Recommended Hotfixes for XenServer in the CloudStack Knowledge Base
 <http://docs.cloudstack.org/Knowledge_Base/Possible_VM_corruption_if_XenServer_Hotfix_is_not_Applied/Highly_Recommended_Hotfixes_for_XenServer_5.6_SP2>`_.
+
+
+Hypervisor Capabilities
+-----------------------
+For different hypervisors and their versions, various capabilities such as maximum number of guest VMs per host, maximum number of volumes per VM, security group support, etc are considered by CloudStack. These capabilities are stored in the **cloud.hypervisor_capabilities** table in the database. If a specific hypervisor version is not available in the database, values against the *default* version for the hypervisor will be used.
+These capabilities can be listed using API - ``listHypervisorCapabilities``. Some of the hypervisor capabilities can also be updated for a hypervisor type and version combination using API - ``updateHypervisorCapabilities``.
+
+Following hypervisor-specific documentations can be referred for different maximums for a particular hypervisor host:
+
+- VMware: `VMware Configuration Maximum tool <https://configmax.vmware.com/guest?vmwareproduct=vSphere&release=vSphere%207.0&categories=1-0,2-0>`_.
+
+- Citrix Hypervisor/Xenserver/XCP-ng: `Configuration limits | Citrix Hypervisor 8.2 <https://docs.citrix.com/en-us/citrix-hypervisor/system-requirements/configuration-limits.html>`_.
+
+
+.. note::
+   Guest VM limit check is not done while deploying a VM on a KVM hypervisor host.
+
 
 
 Changing Host Password
@@ -247,7 +264,7 @@ To change a Node's password:
 
    .. code:: bash
 
-      mysql> SELECT * FROM cloud.host_details WHERE name='password' AND host_id={previous step ID}; 
+      mysql> SELECT * FROM cloud.host_details WHERE name='password' AND host_id={previous step ID};
 
 #. Update the passwords for the host in the database. In this example,
    we change the passwords for hosts with host IDs 5 and 12 and host_details IDs 8 and 22 to
@@ -266,15 +283,15 @@ Over-Provisioning and Service Offering Limits
 CPU and memory (RAM) over-provisioning factors can be set for each
 cluster to change the number of VMs that can run on each host in the
 cluster. This helps optimize the use of resources. By increasing the
-over-provisioning ratio, more resource capacity will be used. If the
-ratio is set to 1, no over-provisioning is done.
+over-provisioning factor, more resource capacity will be used. If the
+factor is set to 1, no over-provisioning is done.
 
-The administrator can also set global default over-provisioning ratios
+The administrator can also set global default over-provisioning factors
 in the cpu.overprovisioning.factor and mem.overprovisioning.factor
 global configuration variables. The default value of these variables is
 1: over-provisioning is turned off by default.
 
-Over-provisioning ratios are dynamically substituted in CloudStack's
+Over-provisioning factors are dynamically substituted in CloudStack's
 capacity calculations. For example:
 
 Capacity = 2 GB
@@ -286,8 +303,8 @@ With this configuration, suppose you deploy 3 VMs of 1 GB each:
 Used = 3 GB
 Free = 1 GB
 
-The administrator can specify a memory over-provisioning ratio, and can
-specify both CPU and memory over-provisioning ratios on a per-cluster
+The administrator can specify a memory over-provisioning factor, and can
+specify both CPU and memory over-provisioning factors on a per-cluster
 basis.
 
 In any given cloud, the optimum number of VMs for each host is affected
@@ -303,8 +320,8 @@ The overprovisioning settings can be used along with dedicated resources
 (assigning a specific cluster to an account) to effectively offer
 different levels of service to different accounts. For example, an
 account paying for a more expensive level of service could be assigned
-to a dedicated cluster with an over-provisioning ratio of 1, and a
-lower-paying account to a cluster with a ratio of 2.
+to a dedicated cluster with an over-provisioning factor of 1, and a
+lower-paying account to a cluster with a factor of 2.
 
 When a new host is added to a cluster, CloudStack will assume the host
 has the capability to perform the CPU and RAM over-provisioning which is
@@ -366,8 +383,8 @@ administrator must set CONFIG\_VIRTIO\_BALLOON=y in the virtio
 configuration.
 
 
-Hypervisor capabilities
-^^^^^^^^^^^^^^^^^^^^^^^
+Hypervisor capability
+^^^^^^^^^^^^^^^^^^^^^
 
 The hypervisor must be capable of using the memory ballooning.
 
@@ -385,46 +402,48 @@ VMware, KVM
 Memory ballooning is supported by default.
 
 
-Setting Over-Provisioning Ratios
+Setting Over-Provisioning Factors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are two ways the root admin can set CPU and RAM over-provisioning
-ratios. First, the global configuration settings
+factors. First, the global configuration settings
 cpu.overprovisioning.factor and mem.overprovisioning.factor will be
-applied when a new cluster is created. Later, the ratios can be modified
+applied when a new cluster is created. Later, the factors can be modified
 for an existing cluster.
 
 Only VMs deployed after the change are affected by the new setting. If
 you want VMs deployed before the change to adopt the new
-over-provisioning ratio, you must stop and restart the VMs. When this is
+over-provisioning factor, you must stop and restart the VMs. When this is
 done, CloudStack recalculates or scales the used and reserved capacities
-based on the new over-provisioning ratios, to ensure that CloudStack is
+based on the new over-provisioning factors, to ensure that CloudStack is
 correctly tracking the amount of free capacity.
 
-.. note:: 
-   It is safer not to deploy additional new VMs while the capacity 
-   recalculation is underway, in case the new values for available 
-   capacity are not high enough to accommodate the new VMs. Just wait 
-   for the new used/available values to become available, to be sure 
+.. note::
+   It is safer not to deploy additional new VMs while the capacity
+   recalculation is underway, in case the new values for available
+   capacity are not high enough to accommodate the new VMs. Just wait
+   for the new used/available values to become available, to be sure
    there is room for all the new VMs you want.
 
-To change the over-provisioning ratios for an existing cluster:
+To change the over-provisioning factors for an existing cluster:
 
 #. Log in as administrator to the CloudStack UI.
 
 #. In the left navigation bar, click Infrastructure.
 
-#. Under Clusters, click View All.
+#. Select Clusters.
 
-#. Select the cluster you want to work with, and click the Edit button.
+#. Select the cluster you want to work with, and click the Settings button.
+
+#. Search for overprovisioning.
 
 #. Fill in your desired over-provisioning multipliers in the fields CPU
-   overcommit ratio and RAM overcommit ratio. The value which is
+   overcommit factor and RAM overcommit factor. The value which is
    intially shown in these fields is the default value inherited from
    the global configuration settings.
 
-   .. note:: 
-      In XenServer, due to a constraint of this hypervisor, you can not 
+   .. note::
+      In XenServer, due to a constraint of this hypervisor, you can not
       use an over-provisioning factor greater than 4.
 
 
@@ -514,8 +533,7 @@ range.
 
 #. In the left navigation, choose Infrastructure.
 
-#. On Zones, click View More, then click the zone to which you want to
-   work with.
+#. Click Zones and select the zone you'd like to modify.
 
 #. Click Physical Network.
 
@@ -572,8 +590,8 @@ To enable you to assign VLANs to Isolated networks,
    network and the state is changed to Setup. In this state, the network
    will not be garbage collected.
 
-.. note:: 
-   You cannot change a VLAN once it's assigned to the network. The VLAN 
+.. note::
+   You cannot change a VLAN once it's assigned to the network. The VLAN
    remains with the network for its entire life cycle.
 
 
@@ -641,6 +659,11 @@ power management actions such as on, off, reset, cycle, soft and status.
 
 If a host is in maintenance mode, Root admins are still allowed to perform
 power management actions but in the UI a warning is displayed.
+
+.. note::
+
+  IPMI based out-of-band management and Host HA may not work on Centos 8 using the default ipmitool version -
+  Installing ipmitool-1.8.18-12.el8_1.x86_64.rpm may solve the problem. Make sure to test the ipmitool on your physical equipment before using the IPMI-based out-of-band management and Host HA features.
 
 .. _host-security:
 
@@ -764,7 +787,7 @@ Feature Overview
 
 -  This feature applies to KVM hosts.
 -  KVM utilised under CloudStack uses the standard Libvirt hook script behaviour as outlined in the Libvirt documentation page `hooks`_.
--  During the install of the KVM CloudStack agent, the Libvirt hook script "/etc/libvirt/hooks/qemu", referred to as the qemu script hereafter is installed. 
+-  During the install of the KVM CloudStack agent, the Libvirt hook script "/etc/libvirt/hooks/qemu", referred to as the qemu script hereafter is installed.
 -  This is a python script that carries out network management tasks every time a VM is started, stopped or migrated, as per the Libvirt hooks specification.
 -  Custom network configuration tasks can be done at the same time as the qemu script is called.
 -  Since the tasks in question are user-specific, they cannot be included in the CloudStack-provided qemu script.
@@ -783,8 +806,8 @@ Usage
 ~~~~~~
 
 -  The cloudstack-agent package will install the qemu script in the /etc/libvirt/hooks directory of Libvirt.
--  The Libvirt documentation page `arguments`_ describes the arguments that can be passed to the qemu script. 
--  The input arguments are: 
+-  The Libvirt documentation page `arguments`_ describes the arguments that can be passed to the qemu script.
+-  The input arguments are:
 
     #. Name of the object involved in the operation, or '-' if there is none. For example, the name of a guest being started.
     #. Name of the operation being performed. For example, 'start' if a guest is being started.
@@ -795,7 +818,7 @@ Usage
 
 -  If an invalid operation argument is received, the qemu script will log the fact, not execute any custom scripts and exit.
 
--  All input arguments that are passed to the qemu script will also be passed to each custom script. 
+-  All input arguments that are passed to the qemu script will also be passed to each custom script.
 
 -  For each of the above actions, the qemu script will find and run scripts by the name "<action>_<custom script name>" in a custom include path /etc/libvirt/hooks/custom/. Custom scripts that do not follow this naming convention will be ignored and not be executed.
 
@@ -820,7 +843,7 @@ Timeout Configuration
 
 Custom Script Naming for a Specific VM Action
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--  For a custom script that needs to be executed at the end of a specific VM action, do the following: 
+-  For a custom script that needs to be executed at the end of a specific VM action, do the following:
 
     #. Navigate to the custom script that needs to be executed for a specific action.
     #. Rename the file by prefixing to the filename the specific action name followed by an underscore. For example, if a custom script is named abc.sh, then prefix 'migrate' and an underscore to the name to become migrate_abc.sh.
@@ -835,7 +858,7 @@ Custom Script Naming for All VM Actions
     #. Rename the file by prefixing 'all' to the filename, followed by an underscore.  For example, if a custom script is named def.py, then prefix 'all' and an underscore to the name to become all_def.py.
 
 Custom Script Execution Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -  Grant each custom script execute permissions so that the underlying host operating system can execute them:
 
     #. Navigate to the custom script that needs to be executable.
@@ -874,7 +897,7 @@ There are four stages in the KVM rolling maintenance process:
 
 #. Post-Maintenance stage: Post-maintenance script ((``PostMaintenance`` or ``PostMaintenance.sh`` or ``PostMaintenance.py``)) is expected to perform validation after the host exits maintenance. These scripts will help to detect any problem during the maintenance process, including reboots or restarts within scripts.
 
-.. note:: 
+.. note::
    Pre-flight and pre-maintenance scripts’ execution can determine if the maintenance stage is not required for a host. The special exit code = 70 on a pre-flight or pre-maintenance script will let CloudStack know that the maintenance stage is not required for a host.
 
 Administrators must define only one script per stage. In case a stage does not contain a script, it is skipped, continuing with the next stage. Administrators are responsible for defining and copying scripts into the hosts
@@ -947,7 +970,7 @@ Before attempting any maintenance actions, pre-flight and capacity checks are pe
 
 The pre-flight script may signal that no maintenance is needed on the host. In that case, the host is skipped from the rolling maintenance hosts iteration.
 
-Once pre-flight checks pass, then the management server iterates through each host in the selected scope and sends a command to execute each of the rest of the stages in order. The hosts in the selected scope are grouped by clusters, therefore all the hosts in a cluster are processed before processing the hosts of a different cluster. 
+Once pre-flight checks pass, then the management server iterates through each host in the selected scope and sends a command to execute each of the rest of the stages in order. The hosts in the selected scope are grouped by clusters, therefore all the hosts in a cluster are processed before processing the hosts of a different cluster.
 
 The management server iterates through hosts in each cluster on the selected scope and for each of the hosts does the following:
 
@@ -955,7 +978,7 @@ The management server iterates through hosts in each cluster on the selected sco
 - The existence of the maintenance script on the host is checked (this check is performed only for the maintenance script, not for the rest of the stages)
 
   - If the host does not contain a maintenance script, then the host is skipped and the iteration continues with the next host in the cluster.
-   
+
 -  Execute pre-maintenance script (if any) before entering maintenance mode.
 
    -  The pre-maintenance script may signal that no maintenance is needed on the host. In that case, the host is skipped and the iteration continues with the next host in the cluster.

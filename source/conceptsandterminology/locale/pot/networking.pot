@@ -23,7 +23,7 @@ msgstr ""
 
 #: ../../networking/autoscale_without_netscaler.rst:4
 # c9d0712245864f35982f232729bae189
-msgid "This feature is currently only available on the master branch and will be released in the 4.4 release."
+msgid "This feature is currently only available on the main branch and will be released in the 4.4 release."
 msgstr ""
 
 #: ../../networking/autoscale_without_netscaler.rst:7
@@ -1514,7 +1514,7 @@ msgstr ""
 
 #: ../../networking/ovs-plugin.rst:58
 # aec6d4e64ef34c9785419abc0d40a4ff
-msgid "To make sure that the native bridge module will not interfere with openvSwitch the bridge module should be added to the blacklist. See the modprobe documentation for your distribution on where to find the blacklist. Make sure the module is not loaded either by rebooting or executing rmmod bridge before executing next steps."
+msgid "To make sure that the native bridge module will not interfere with openvSwitch the bridge module should be added to the denylist. See the modprobe documentation for your distribution on where to find the denylist. Make sure the module is not loaded either by rebooting or executing rmmod bridge before executing next steps."
 msgstr ""
 
 #: ../../networking/ovs-plugin.rst:64
@@ -1608,7 +1608,7 @@ msgstr ""
 
 #: ../../networking/vxlan.rst:7
 # 0856b955a54e4897a16abb275756a9fd
-msgid "In PRODUCT 4.X.0, this plugin only supports the KVM hypervisor with the standard linux bridge."
+msgid "In CloudStack 4.X.0, this plugin only supports the KVM hypervisor with the standard linux bridge."
 msgstr ""
 
 #: ../../networking/vxlan.rst:10
@@ -1635,7 +1635,7 @@ msgstr ""
 
 #: ../../networking/vxlan.rst:15
 # e5bde3c30dc5441eb12a4ec4b45e7060
-msgid "OvsVifDriver is not supported by this plugin in PRODUCT 4.X, use BridgeVifDriver (default)."
+msgid "OvsVifDriver is not supported by this plugin in CloudStack 4.X, use BridgeVifDriver (default)."
 msgstr ""
 
 #: ../../networking/vxlan.rst:17
@@ -1785,7 +1785,7 @@ msgstr ""
 
 #: ../../networking/vxlan.rst:137
 # 6082e428d1cb4b658d787c71d0ad1dd5
-msgid "Configure PRODUCT to use VXLAN Plugin"
+msgid "Configure CloudStack to use VXLAN Plugin"
 msgstr ""
 
 #: ../../networking/vxlan.rst:140
@@ -1800,7 +1800,7 @@ msgstr ""
 
 #: ../../networking/vxlan.rst:145
 # 0b30975586c54132a8722bffbd37f88d
-msgid "In addition to \"KVM Hypervisor Host Installation\" in \"PRODUCT Installation Guide\", you have to configure the following item on the host."
+msgid "In addition to \"KVM Hypervisor Host Installation\" in \"CloudStack Installation Guide\", you have to configure the following item on the host."
 msgstr ""
 
 #: ../../networking/vxlan.rst:150
@@ -1905,7 +1905,7 @@ msgstr ""
 
 #: ../../networking/vxlan.rst:346
 # 151a7ea2c74744eeb7e1c0a2c6efa55e
-msgid "In almost all parts of zone setup, you can just follow the advanced zone setup istruction in \"PRODUCT Installation Guide\" to use this plugin. It is not required to add a network element nor to reconfigure the network offering. The only thing you have to do is configure the physical network to use VXLAN as the isolation method for Guest Network."
+msgid "In almost all parts of zone setup, you can just follow the advanced zone setup istruction in \"CloudStack Installation Guide\" to use this plugin. It is not required to add a network element nor to reconfigure the network offering. The only thing you have to do is configure the physical network to use VXLAN as the isolation method for Guest Network."
 msgstr ""
 
 #: ../../networking/vxlan.rst:353
