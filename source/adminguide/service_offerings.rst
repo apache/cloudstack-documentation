@@ -758,7 +758,7 @@ offering used for Virtual Routers.
 
 When you create a network, the virtual routers will use the system offering in their NetworkOffering.
 If it is not set, the virtual routers will use the system offering in the account setting.
-If account setting is not set, the virtual routers will use system offering in global configuration.
+If the account setting is not set, the virtual routers will use the system offering set in the global configuration.
 If global configuration is not set, the virtual routers will use the default system offering for virtual 
 routers ("System Offering For Software Router" or "System Offering For Software Router - Local Storage").
 
