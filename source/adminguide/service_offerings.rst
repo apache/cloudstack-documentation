@@ -751,7 +751,7 @@ offering used for Virtual Routers.
 #. (Optional) Change global configuration
 
    You can change the default system offering for Virtual Routers of all accounts
-   by changing global configuration "router.service.offering" to uuid of the system offering.
+   by changing the global configuration "router.service.offering" to the uuid of the system offering.
 
    For more information, see `“Setting Global Configuration Parameters”
    <../installguide/configuration.html#setting-global-configuration-parameters>`_.
