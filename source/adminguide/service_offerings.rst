@@ -721,3 +721,53 @@ default system offering used for System VMs.
 
 #. Destroy the existing CPVM or SSVM offerings and wait for them to be
    recreated. The new CPVM or SSVM are configured with the new offering.
+
+
+Changing the Default System Offering for Virtual Routers
+---------------------------------------------------
+
+As a CloudStack administrator, you can change the default system
+offering used for Virtual Routers.
+
+#. Create a new system service offering
+
+   For more information, see `“Creating a New System Offering”
+   <service_offerings.html#creating-a-new-system-service-offering>`_.
+
+#. (Optional) Create a new network offering with SystemOffering
+
+   For more information, see `“Creating a New Network Offering”
+   <networking.html#creating-a-new-network-offering>`_.
+
+#. (Optional) Change account setting
+
+   You can change the default system offering for Virtual Routers of a particular
+   account by changing the account's setting "router.service.offering" to the uuid
+   of the system offering.
+
+   For more information, see `“Setting Local Configuration Parameters”
+   <../installguide/configuration.html#setting-local-configuration-parameters>`_.
+
+#. (Optional) Change global configuration
+
+   You can change the default system offering for Virtual Routers of all accounts
+   by changing the global configuration "router.service.offering" to the uuid of the system offering.
+
+   For more information, see `“Setting Global Configuration Parameters”
+   <../installguide/configuration.html#setting-global-configuration-parameters>`_.
+
+When you create a network, the virtual routers will use the system offering in their Network Offering.
+If it is not set, the virtual routers will use the system offering in the account setting.
+If the account setting is not set, the virtual routers will use the system offering set in the global configuration.
+If the global configuration is not set, the virtual routers will use the default system offering for virtual 
+routers ("System Offering For Software Router" or "System Offering For Software Router - Local Storage").
+
+You can update an existing network to a new network offering. The new virtual routers will use the 
+new system offering set in the Network Offering, account setting or global configuration.
+For more information, see `“Changing the Network Offering on a Guest Network”
+<networking_and_traffic.html#changing-the-network-offering-on-a-guest-network>`_.
+
+You can restart the network with cleanup. The new virtual routers, created after the restart, will use
+the new system offering, set in the Network Offering, account setting or global configuration.
+For more information, see `“Editing, Restarting, and Removing a Guest Network”
+<networking_and_traffic.html#editing-restarting-and-removing-a-guest-network>`_.
