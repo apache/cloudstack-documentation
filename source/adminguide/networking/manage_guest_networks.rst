@@ -39,6 +39,6 @@ Editing, Restarting, and Removing a Guest Network
    guest network. To do that, click the "Edit" button.
 
    To restart a guest network, click the "Restart network" button. Please note 
-   all services provided by this network will be interrupted. When you check "Clean up",
+   all services provided by this network will be interrupted. When you enable "Clean up",
    the virtual routers of guest network will be destroyed and new virtual routers will
    be provisioned.
