@@ -756,7 +756,7 @@ offering used for Virtual Routers.
    For more information, see `“Setting Global Configuration Parameters”
    <../installguide/configuration.html#setting-global-configuration-parameters>`_.
 
-When you create a network, the virtual routers will use the system offering in their NetworkOffering.
+When you create a network, the virtual routers will use the system offering in their Network Offering.
 If it is not set, the virtual routers will use the system offering in the account setting.
 If the account setting is not set, the virtual routers will use the system offering set in the global configuration.
 If the global configuration is not set, the virtual routers will use the default system offering for virtual 
