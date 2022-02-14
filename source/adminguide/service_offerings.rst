@@ -768,6 +768,6 @@ For more information, see `“Changing the Network Offering on a Guest Network�
 <networking_and_traffic.html#changing-the-network-offering-on-a-guest-network>`_.
 
 You can restart the network with cleanup. The new virtual routers, created after the restart, will use
-the new system offering, set in the NetworkOffering, account setting or global configuration.
+the new system offering, set in the Network Offering, account setting or global configuration.
 For more information, see `“Editing, Restarting, and Removing a Guest Network”
 <networking_and_traffic.html#editing-restarting-and-removing-a-guest-network>`_.
