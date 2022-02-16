@@ -217,6 +217,8 @@ Both VR for such networks and the guest VMs using these networks obtain a SLAAC 
 
 Here's the sequence of events when IPv6 is used:
 
+#. The administrator sets global configuration - ``network.offering.ipv6.enabled`` to **true**.
+
 #. The administrator adds a public IPv6 range in an advanced zone.
 
 #. The administrator adds an IPv6 prefix for guest traffic type for the zone.
@@ -270,6 +272,8 @@ Alternatively, ``createGuestNetworkIpv6Prefix`` API can be used to add a new gue
 
 Adding Network Offering with IPv6 Support
 #########################################
+
+To create an IPv6 suported network offering, global configuration - ``network.offering.ipv6.enabled`` must be set to **true**.
 
 With 4.17.0, a new paramter - ``internetprotocol`` has been added to the ``createNetworkOffering`` API which can be used to create a network offering with IPv6 support by using the value dualstack.
 Corresponding option has also been provided in the UI form creating network offering:
