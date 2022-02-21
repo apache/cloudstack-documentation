@@ -258,6 +258,11 @@ Alternatively, ``createVlanIpRange`` API can be used to add a new public IPv6 ra
 |add-public-ipv6-range-form.png|
 
 
+
+   .. note::
+      As SLAAC based public IPv6 address will be assigned to the networks therefore public IPv6 range must be added without specifying start and end IP addresses.
+
+
 Adding Guest IPv6 Prefix
 ########################
 
