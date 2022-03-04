@@ -16,7 +16,7 @@
 Changes in |release| since 4.16.0.0
 ====================================
 
-Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/22
+Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/22?closed=1
  to track its issues.
 
 .. cssclass:: table-striped table-bordered table-hover
