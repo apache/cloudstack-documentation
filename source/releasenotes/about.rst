@@ -17,6 +17,24 @@
 What's New in |release|
 =======================
 
+Apache CloudStack |release| is a 4.16 LTS minor release with over 150 fixes and
+improvements since the 4.16.0.0 release. Highlights include:
+
+• System VM Template improvements
+• CKS enhancements
+• Support for VMware 7.0u2, 7.0u3
+• Several Hypervisor (VMware, KVM, XenServer) fixes and improvements 
+• Several UI fixes and improvements
+• First Install and Onboarding Message improvements
+• Log4j v1.x migration to reload4j v1.2.18.0
+• Several security fixes addressing multiple CVEs and improvements
+
+The full list of fixes and improvements can be found in the project release notes at
+https://docs.cloudstack.apache.org/en/4.16.1.0/releasenotes/changes.html
+
+What's New in 4.16.0.0
+=======================
+
 Apache CloudStack 4.16.0.0 is a 4.16 LTS release with over 22 major new
 features, and over 244 enhancements and fixes since 4.15. Highlights include:
 
