@@ -48,11 +48,6 @@ Overview of Upgrade Steps:
 
 .. include:: _customisation_warnings.rst
 
-.. note::
-    CloudStack 4.16.1.0 uses new System VM templates. If you are not already using the
-    |sysvm64-version| System VM template will be auto upgraded to the latest System VM
-    template prior to performing the upgrade of the CloudStack packages.
-
 .. include:: _sysvm_templates.rst
 
 
