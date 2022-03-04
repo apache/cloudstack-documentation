@@ -23,7 +23,7 @@ improvements since the 4.16.0.0 release. Highlights include:
 • System VM Template improvements
 • CKS enhancements
 • Support for VMware 7.0u2, 7.0u3
-• Several VMware, KVM fixes and improvements 
+• Several Hypervisor (VMware, KVM, XenServer) fixes and improvements 
 • Several UI fixes and improvements
 • First Install and Onboarding Message improvements
 • Log4j v1.x migration to reload4j v1.2.18.0
