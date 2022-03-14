@@ -212,6 +212,8 @@ Isolated network and VPC tier
 
    - The IPv6 isolated networks and VPC tiers only supports **Static routing**, i.e, the administrator will need to add upstream routes for routing to work inside the networks.
 
+   - IPv6 only isolated networks and VPC tiers are not supported currently. Public network for IPv6 supported isolated networks and VPC tiers must be on the same VLAN for both IPv4 and IPv6.
+
 Guest VMs in an isolated network or VPC tier can obtain both IPv4 and IPv6 IP addresses by using a supported network offering and appropriate configurations for IPv6 support by the administrator.
 Both VR for such networks and the guest VMs using these networks obtain a SLAAC based IPv6 address. While VR is assigned an IPv6 address from the public IPv6 range, guest VMs get their IPv6 addresses from the IPv6 subnet assinged to the network.
 
@@ -223,9 +225,9 @@ Here's the sequence of events when IPv6 is used:
 
 #. The administrator adds an IPv6 prefix for guest traffic type for the zone.
 
-#. The administrator creates a network offering with IPv4 + IPv6 (Dual stack) support.
+#. The administrator creates a VPC or network offering with IPv4 + IPv6 (Dual stack) support.
 
-#. The user deploys an isolated network or a VPC tier with above network offering.
+#. The user deploys an isolated network with the IPv6 supported network offering. For VPC, user creates a VPC with IPv6 supported VPC offering and then deploys a network tier with IPv6 supported network offering.
 
 #. CloudStack assigns a SLAAC based public IPv6 address to the network from the public IPv6 range of the zone. It also assigns an IPv6 subnet to the network from the guest IPv6 prefix for the zone. See `SLAAC <https://datatracker.ietf.org/doc/html/rfc4862>`__\ for more information.
 
@@ -250,7 +252,7 @@ Adding a Public IPv6 Range
 ##########################
 
 The administrator can use both UI and API to add a public IPv6 range. UI is the preferable option.
-Option to add a new public Ipv6 range in the UI can be found in Infrastructure -> Zones -> Zone details -> Physical Network tab -> Physical network details -> Traffic Types tab -> Public -> *Add IP range*.
+Option to add a new public IPv6 range in the UI can be found in Infrastructure > Zones > Zone details > Physical Network tab > Physical network details > Traffic Types tab > Public > *Add IP range*.
 In the Add IP range form, IPv6 can be selected as the IP Range Type. IPv6 Gateway and CIDR must be provided and optionally a VLAN/VNI can be provided.
 
 Alternatively, ``createVlanIpRange`` API can be used to add a new public IPv6 range.
@@ -260,14 +262,16 @@ Alternatively, ``createVlanIpRange`` API can be used to add a new public IPv6 ra
 
 
    .. note::
-      As SLAAC based public IPv6 address will be assigned to the networks therefore public IPv6 range must be added without specifying start and end IP addresses.
+      - The public IPv6 address range or CIDR must be added with same VLAN as that of public IPv4 address range.
+
+      - As SLAAC based public IPv6 addresses will be assigned to the networks therefore public IPv6 range must be added without specifying start and end IP addresses.
 
 
 Adding Guest IPv6 Prefix
 ########################
 
 Again, both UI and API to add a guest IPv6 prefix. UI is the preferable option.
-Option to add a new public Ipv6 range in the UI can be found in Infrastructure -> Zones -> Zone details -> Physical Network tab -> Physical network details -> Traffic Types tab -> Guest -> *Add IPv6 prefix*.
+Option to add a new public Ipv6 range in the UI can be found in Infrastructure > Zones > Zone details > Physical Network tab > Physical network details > Traffic Types tab > Guest > *Add IPv6 prefix*.
 In the Add IPv6 prefix form, an IPv6 prefix with CIDR size lesser than 64 must be provided.
 
 Alternatively, ``createGuestNetworkIpv6Prefix`` API can be used to add a new guest IPv6 prefix.
@@ -275,15 +279,19 @@ Alternatively, ``createGuestNetworkIpv6Prefix`` API can be used to add a new gue
 |add-guest-ipv6-prefix-form.png|
 
 
-Adding Network Offering with IPv6 Support
+Adding Network or VPC Offering with IPv6 Support
 #########################################
 
-To create an IPv6 suported network offering, global configuration - ``network.offering.ipv6.enabled`` must be set to **true**.
+To create an IPv6 suported network or VPC offering, global configuration - ``ipv6.offering.enabled`` must be set to **true**.
 
-With 4.17.0, a new paramter - ``internetprotocol`` has been added to the ``createNetworkOffering`` API which can be used to create a network offering with IPv6 support by using the value dualstack.
-Corresponding option has also been provided in the UI form creating network offering:
+With 4.17.0,
+ - a new paramter - ``internetprotocol`` has been added to the ``createNetworkOffering`` API which can be used to create a network offering with IPv6 support by using the value dualstack.
+ - a new paramter - ``internetprotocol`` has been added to the ``createVPCOffering`` API which can be used to create a VPC offering with IPv6 support by using the value dualstack.
+Corresponding option has also been provided in the UI form creating network/VPC offering:
 
 |add-ipv6-network-offering-form.png|
+
+|add-ipv6-vpc-offering-form.png|
 
 
 Adding Upstream Route
@@ -314,5 +322,7 @@ These operations are also available using UI in the network details view of an I
    :alt: Add Guest IPv6 Prefix form.
 .. |add-ipv6-network-offering-form.png| image:: /_static/images/add-ipv6-network-offering-form.png
    :alt: Add IPv6 supported Network Offering form.
+.. |add-ipv6-vpc-offering-form.png| image:: /_static/images/add-ipv6-vpc-offering-form.png
+   :alt: Add IPv6 supported VPC Offering form.
 .. |network-details-upstream-ipv6-routes.png| image:: /_static/images/network-details-upstream-ipv6-routes.png
    :alt: Upstream IPv6 routes in network details.
