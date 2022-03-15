@@ -219,13 +219,13 @@ Both VR for such networks and the guest VMs using these networks obtain a SLAAC 
 
 Here's the sequence of events when IPv6 is used:
 
-#. The administrator sets global configuration - ``network.offering.ipv6.enabled`` to **true**.
+#. The administrator sets global configuration - ``ipv6.offering.enabled`` to **true**.
 
 #. The administrator adds a public IPv6 range in an advanced zone.
 
 #. The administrator adds an IPv6 prefix for guest traffic type for the zone.
 
-#. The administrator creates a VPC or network offering with IPv4 + IPv6 (Dual stack) support.
+#. The administrator creates a network or VPC offering with IPv4 + IPv6 (Dual stack) support.
 
 #. The user deploys an isolated network with the IPv6 supported network offering. For VPC, user creates a VPC with IPv6 supported VPC offering and then deploys a network tier with IPv6 supported network offering.
 
@@ -280,13 +280,13 @@ Alternatively, ``createGuestNetworkIpv6Prefix`` API can be used to add a new gue
 
 
 Adding Network or VPC Offering with IPv6 Support
-#########################################
+################################################
 
 To create an IPv6 suported network or VPC offering, global configuration - ``ipv6.offering.enabled`` must be set to **true**.
 
-With 4.17.0,
- - a new paramter - ``internetprotocol`` has been added to the ``createNetworkOffering`` API which can be used to create a network offering with IPv6 support by using the value dualstack.
- - a new paramter - ``internetprotocol`` has been added to the ``createVPCOffering`` API which can be used to create a VPC offering with IPv6 support by using the value dualstack.
+With 4.17.0, a new paramter - ``internetprotocol`` has been added to:
+ - the ``createNetworkOffering`` API which can be used to create a network offering with IPv6 support by using the value dualstack.
+ - the ``createVPCOffering`` API which can be used to create a VPC offering with IPv6 support by using the value dualstack.
 Corresponding option has also been provided in the UI form creating network/VPC offering:
 
 |add-ipv6-network-offering-form.png|
