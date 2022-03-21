@@ -61,6 +61,8 @@ providing networking features for guest traffic.
 
 .. include:: networking/releasing_an_ip_address.rst
 
+.. include:: networking/reserving_an_ip_address.rst
+
 .. include:: networking/static_nat.rst
 
 .. include:: networking/ip_forwarding_and_firewalling.rst
