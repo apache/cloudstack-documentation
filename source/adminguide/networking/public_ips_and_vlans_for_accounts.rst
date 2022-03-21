@@ -152,7 +152,3 @@ Dedicating VLAN Ranges to an Account
 
 .. |addAccount-icon.png| image:: /_static/images/addAccount-icon.png
    :alt: button to assign an IP range to an account.
-
-Reserving Particular Public IP Addresses for Accounts
-----------------------------------------------------
-
