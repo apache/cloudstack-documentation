@@ -828,30 +828,21 @@ VMware documentation and the VMware Knowledge Base, especially
 Storage-based VM snapshots on KVM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. note::
+	 For now this functionality is limited for NFS and Local storage.
+
 CloudStack introduces a new Storage-based VM snapshots on KVM feature that provides
 crash-consistent snapshots of all disks attached to the VM. It employs the underlying storage
 providers’ capability to create/revert/delete disk snapshots. Consistency is obtained by freezing
-the virtual machine before the snapshotting. Memory snapshots are not supported. There are
-no limitations of disk formats - it supports both RAW and QCOW2 formats.
+the virtual machine before the snapshotting. Memory snapshots are not supported.
 
 .. note::
 	``freeze`` and ``thaw`` of virtual machine is maintained by the guest agent.
 	``qemu-guest-agent`` has to be installed in the VM.
 
-It is recommended to use this functionality on virtual machines with raw block storages. For
-virtual machines with mixed type of volumes (raw and qcow2 format), the QCOW2 disk will
-be snapshotted with qemu command ``drive-backup`` . This is a point-in-time copy of a block
-device to a new destination (slow operation).
-
-.. note::
-	``snapshot.backup.to.secondary`` must be enabled for volumes on NFS.
-
 When the snapshotting is complete, the virtual machine is thawed.
 
-.. note::
-	``qemu`` version 1.6+ is required.
-	Latest Ubuntu should already cover this, for RHEL/CentOS7 the ``qemu-kvm-ev`` package is required.
-
+You can use this functionality on virtual machines with raw block storages (E.g. Ceph/SolidFire/Linstor).
 
 Limitations on VM Snapshots
 ---------------------------
