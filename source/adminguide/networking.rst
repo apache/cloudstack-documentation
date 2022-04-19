@@ -275,7 +275,7 @@ To create a network offering:
       information, see `“Persistent
       Networks” <networking_and_traffic.html#persistent-networks>`_.
 
-   -  **Specify VLAN**. (Isolated guest networks only) Indicate whether
+   -  **Specify VLAN**. Indicate whether
       a VLAN could be specified when this offering is used. If you
       select this option and later use this network offering while
       creating a VPC tier or an isolated network, you will be able to
