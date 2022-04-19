@@ -135,7 +135,7 @@ Configuring a Shared Guest Network
       network offerings, select the one you want to use for this
       network.
 
-   -  **Associcated Network**: The L2 or Isolated network this network is
+   -  **Associated Network**: The L2 or Isolated network this network is
       associated to. This network will use same VLAN as associated network.
       This will be visible if network offering has specifyvlan is false.
 

@@ -488,7 +488,7 @@ Assigning a Custom ACL List to a Tier
 Adding a Private Gateway to a VPC
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A private gateway can be added by the root admin only. The VPC private
+A private gateway can be added by the root admin and users. The VPC private
 network has 1:1 relationship with the NIC of the physical network. You
 can configure multiple private gateways to a single VPC. No gateways
 with duplicated VLAN and IP are allowed in the same data center.
@@ -542,10 +542,10 @@ with duplicated VLAN and IP are allowed in the same data center.
 
 #. Specify the following:
 
-   -  **Physical Network**: The physical network you have created in the
-      zone.
+   -  **Physical Network**: (Administrators only) The physical network
+      you have created in the zone.
 
-   -  **VLAN**: The VLAN associated with the VPC gateway.
+   -  **VLAN**: (Administrators only) The VLAN associated with the VPC gateway.
 
    -  **IP Address**: The IP address associated with the VPC gateway.
 
@@ -559,8 +559,13 @@ with duplicated VLAN and IP are allowed in the same data center.
 
       See ":ref:`source-nat-priv-gw`".
 
-   - **Bypass VLAN id/range overlap**: Bypasses the check for a VLAN
-     overlap. This way multiple networks with the same VLAN can be created
+   - **Bypass VLAN id/range overlap**: (Administrators only) Bypasses
+     the check for a VLAN overlap. This way multiple networks with the
+     same VLAN can be created
+
+   -  **Associated Network**: The L2 or Isolated network this private
+      gateway is associated to. This private gateway network will use
+      the same VLAN as associated network.
 
    -  **ACL**: Controls both ingress and egress traffic on a VPC private
       gateway. By default, all the traffic is blocked.
