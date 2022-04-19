@@ -15,7 +15,22 @@
 
 .. sub-section included in upgrade notes.
 
-Once you've upgraded the packages on your management servers, you'll
+.. note::
+
+   From Apache CloudStack version 4.17.0 onward, there is support to live patch 
+   systemVMs, namely, SSVM, CPVM, Routers. Live patching provides support 
+   for zero-downtime upgrades, wherein, the SystemVM software is updated to the
+   latest code version without having to destroy and recreate them / restart them.
+
+   With this feature, users will have a choice wherein they can use the existing systemVM template with the latest
+   software by using the live patch feature, or can follow the usual workflow of restarting the
+   systemVM to use the latest systemVM template. Live Patching systemVMs serves to be especially
+   useful in cases when the code version has upgraded but the template hasn't. In such a scenario users
+   will no longer need to restart the systemVMs to use the latest code.
+
+
+However, in addition to the support for live patching, users still have the facility to follow the legacy workflow
+of restarting the system VMs once the packages on the management servers have been upgraded. Here you'll
 need to restart the system VMs in order for those VMs to be rebuilt 
 from the new systemVM template version.
 
