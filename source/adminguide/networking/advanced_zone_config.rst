@@ -172,4 +172,4 @@ Configuring a Shared Guest Network
    :alt: Add Guest network setup in a single zone.
 
 .. |addsharednetwork.png| image:: /_static/images/add-shared-network.png
-   :alt: Add SharedGuest network.
+   :alt: Add Shared Guest network.

@@ -538,7 +538,7 @@ with duplicated VLAN and IP are allowed in the same data center.
 
 #. Click Add new gateway:
 
-   |add-new-gateway-vpc.png|
+   |add-new-gateway-vpc2.png|
 
 #. Specify the following:
 
@@ -564,8 +564,8 @@ with duplicated VLAN and IP are allowed in the same data center.
      same VLAN can be created
 
    -  **Associated Network**: The L2 or Isolated network this private
-      gateway is associated to. This private gateway network will use
-      the same VLAN as associated network.
+      gateway is associated to. This private network will use the same
+      VLAN as the associated network.
 
    -  **ACL**: Controls both ingress and egress traffic on a VPC private
       gateway. By default, all the traffic is blocked.
@@ -1426,7 +1426,7 @@ Editing, Restarting, and Removing a Virtual Private Cloud
    :alt: adding a tier to a vpc.
 .. |replace-acl-icon.png| image:: /_static/images/replace-acl-icon.png
    :alt: button to replace an ACL list
-.. |add-new-gateway-vpc.png| image:: /_static/images/add-new-gateway-vpc.png
+.. |add-new-gateway-vpc2.png| image:: /_static/images/add-new-gateway-vpc2.png
    :alt: adding a private gateway for the VPC.
 .. |add-vm-vpc.png| image:: /_static/images/add-vm-vpc.png
    :alt: adding a VM to a vpc.
