@@ -29,6 +29,8 @@ providing networking features for guest traffic.
 
 .. include:: networking/advanced_zone_config.rst
 
+.. include:: networking/manage_guest_networks.rst
+
 .. include:: networking/multiple_guest_networks.rst
 
 .. include:: networking/ip_reservation_in_guest_networks.rst

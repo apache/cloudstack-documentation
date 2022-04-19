@@ -135,6 +135,22 @@ allows CloudStack root admins to create new roles with customized permissions.
 The allow/deny rules can be configured dynamically during runtime without
 restarting the management server(s).
 
+.. Note:: in versions before 4.16.1, any user given the custom roles
+          that include permission to create and/or update accounts
+          will have the ability to assign new custom roles to
+          themsevles or other users, irrespective of the privileges
+          given in those roles. This could allow such a user to
+          escalate their own privileges to include any API they might
+          not have had before. Therefore, the dynamic roles should be
+          carefully designed and the `createAccount` and
+          `updateAccount` privileges should only be given to users who
+          you are content to have this level of privilege.
+
+          Since 4.16.1 a user will be prevented to create an account
+          with a role that has any permissions that they do not have
+          themselves. This check will also be performed, since that
+          version, on updating an account-role.
+
 For backward compatiblity, all roles resolve to one of the four role types:
 admin, resource admin, domain admin and user. A new role can be created using
 the roles tab in the UI and specifying a name, either a role type or ID of existing

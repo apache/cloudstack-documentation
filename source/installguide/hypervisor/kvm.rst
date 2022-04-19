@@ -1418,6 +1418,15 @@ replace your version of qemu-img with one which has been patched to include the 
 switch.
 
 
+Live Migration
+^^^^^^^^^^^^^^
+
+For Live Migration of the guests, it is better to configure the guest network bridge on
+the same interface in the KVM hosts. In case, the guest network bridge is configured on
+different interfaces in the KVM hosts, ensure the destination host doesn't have interface
+with the interface name of guest network bridge in the source host.
+
+
 UEFI legacy / secureboot
 ^^^^^^^^^^^^^^^^^^^^^^^^
 

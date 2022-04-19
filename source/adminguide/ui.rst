@@ -185,19 +185,20 @@ Users can customize the CloudStack's user interface by means of a configuration 
 
 To change the logo, login banner, error page icon, etc. the following details can be edited in config.json:
 
-========== ==================================================
-Property   Description
-========== ==================================================
-apiBase    Changes the suffix for the API endpoint
-docBase    Changes the base URL for the documentation
-appTitle   Changes the title of the portal
-footer     Changes the footer text
-logo       Changes the logo top-left side image
-banner     Changes the login banner image
-error.404  Changes the image of error Page not found
-error.403  Changes the image of error Forbidden
-error.500  Changes the image of error Internal Server Error.
-========== ==================================================
+============================= ================================================================
+Property                      Description
+============================= ================================================================
+apiBase                       Changes the suffix for the API endpoint
+docBase                       Changes the base URL for the documentation
+appTitle                      Changes the title of the portal
+footer                        Changes the footer text
+loginFooter                   Configure to display text (HTML) in the footer at the login screen.
+logo                          Changes the logo top-left side image
+banner                        Changes the login banner image
+error.404                     Changes the image of error Page not found
+error.403                     Changes the image of error Forbidden
+error.500                     Changes the image of error Internal Server Error.
+============================= ================================================================
 
 .. parsed-literal::
 
@@ -205,6 +206,7 @@ error.500  Changes the image of error Internal Server Error.
     "docBase": "http://docs.cloudstack.apache.org/en/latest",
     "appTitle": "CloudStack",
     "footer": "Licensed under the <a href='http://www.apache.org/licenses/' target='_blank'>Apache License</a>, Version 2.0.",
+    "loginFooter": "By logging, you are accepting the <a href='https://www.apache.org/foundation/policies/privacy.html'>usage policy</a>",
     "logo": "assets/logo.svg",
     "banner": "assets/banner.svg",
     "error": {

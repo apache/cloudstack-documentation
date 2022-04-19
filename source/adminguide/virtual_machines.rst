@@ -531,7 +531,7 @@ following conditions:
 
 To manually live migrate a virtual machine
 
-#. Log in to the CloudStack UI as a user or admin.
+#. Log in to the CloudStack UI as root administrator.
 
 #. In the left navigation, click Instances.
 
