@@ -54,7 +54,7 @@ Removing a network permission
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To remove a network permission, click the Delete Network Permission icon of
-the network permission. |delete-icon.png|
+the network permission. |delete-button.png|
 
 
 Resetting network permissions
@@ -67,5 +67,5 @@ the Reset Network Permissions button on the page.
 
 .. |network-permissions.png| image:: /_static/images/network-permissions.png
    :alt: network permissions.
-.. |delete-icon.png| image:: /_static/images/delete-icon.png
+.. |delete-button.png| image:: /_static/images/delete-button.png
    :alt: button to delete.
