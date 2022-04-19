@@ -41,9 +41,7 @@ Adding a network permission
    All the network permissions that you have created for the network are
    listed in the page. |network-permissions.png|
 
-#. Click Add Network Permission icon
-
- Provide the following information:
+#. Click Add Network Permission icon. Provide the following information:
 
    -  **Account**: The name of the accounts this network will be shared to.
 
@@ -56,7 +54,7 @@ Removing a network permission
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To remove a network permission, click the Delete Network Permission icon of
-the network permission.
+the network permission. |delete-icon.png|
 
 
 Resetting network permissions
@@ -69,3 +67,5 @@ the Reset Network Permissions button on the page.
 
 .. |network-permissions.png| image:: /_static/images/network-permissions.png
    :alt: network permissions.
+.. |delete-icon.png| image:: /_static/images/delete-icon.png
+   :alt: button to delete.
