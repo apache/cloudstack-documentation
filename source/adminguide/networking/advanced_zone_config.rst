@@ -160,11 +160,12 @@ Configuring a Shared Guest Network
 
 #. Click OK to confirm.
 
-   .. note:: End users (not administrator) can only use the network
+   .. note::
+      End users (not administrator) can only use the network
       offerings with specifyvlan is false. Please create a network offering
       with specifyvlan is false to enable this for end users. See
-     `“Creating a New Network Offering”
-     <networking.html#creating-a-new-network-offering>`_.
+      `“Creating a New Network Offering”
+      <networking.html#creating-a-new-network-offering>`_.
 
 
 .. |addguestnetwork.png| image:: /_static/images/add-guest-network.png
