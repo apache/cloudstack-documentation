@@ -49,6 +49,12 @@ Adding a network permission
 
 #. Click OK.
 
+   .. note::
+      The accounts/projects are permitted to create VMs on the network.
+      However, they are not permitted to restart and update network, and
+      modify network rules (e.g. firewall, static nat, load balancer, port
+      forwarding).
+
 
 Removing a network permission
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
