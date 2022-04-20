@@ -71,7 +71,7 @@ different accounts. Network Isolation on shared networks is accomplished
 by using techniques such as security groups, which is supported only in
 Basic zones or Advanced Zones with Security Groups.
 
--  Shared Networks are created by the the end users, however network offerings
+-  Shared Networks are created by the the end users or the administrator. Network offerings
    which allow the network creator to specify a VLAN can only be created 
    by the root admins.
 
