@@ -21,9 +21,12 @@ From Apache CloudStack 4.17.0.0, guest networks can be shared to other
 accounts in the same domain by managing network permissions.
 
 The following networks can be shared:
-1. L2 networks not in Project
-2. Isolated networks not in Project
-3. Shared networks with scope is Account
+
+#. L2 networks not in Project
+
+#. Isolated networks not in Project
+
+#. Shared networks with scope is Account
 
 Adding a network permission
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
