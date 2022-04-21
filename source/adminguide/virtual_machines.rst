@@ -814,8 +814,9 @@ like many other resources in CloudStack.
 
 KVM supports VM snapshots when using NFS shared storage. If raw block storage
 is used (i.e. Ceph), then VM snapshots are not possible, since there is no possibility
-to write RAM memory content anywhere. In such cases you can use as an alternative
-:ref:`storage-based-snapshots-kvm`
+to write RAM memory content anywhere. In such cases you can use as an alternative 
+`Storage-based VM snapshots on KVM`_
+
 
 If you need more information about VM snapshots on VMware, check out the
 VMware documentation and the VMware Knowledge Base, especially
@@ -823,7 +824,7 @@ VMware documentation and the VMware Knowledge Base, especially
 <http://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&externalId=1015180>`_.
 
 
-.. _storage-based-snapshots-kvm:
+.. _`Storage-based VM snapshots on KVM`:
 
 Storage-based VM snapshots on KVM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
