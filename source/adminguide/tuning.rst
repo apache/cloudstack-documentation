@@ -95,7 +95,7 @@ Monitor the DataBase Load
 -------------------------
 
 The load of the DB is monitored. By default the queries for each
-minute are calculated in queries per second. Ten values are retaint by
+minute are calculated in queries per second. Three values are retaint by
 default. In the UI these are visible under the DB/Usage Server page
 under the infrastructure menu.
 
