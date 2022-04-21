@@ -452,7 +452,7 @@ Before you configure an AutoScale rule, consider the following:
    <#configuring-snmp-community-string-on-a-rhel-server>`_
    to configure SNMP on a RHEL machine.
 
--  Ensure that the endpointe.url parameter present in the Global
+-  Ensure that the endpoint.url parameter present in the Global
    Settings is set to the Management Server API URL. For example,
    ``http://10.102.102.22:8080/client/api``. In a multi-node Management
    Server deployment, use the virtual IP address configured in the load
@@ -460,7 +460,7 @@ Before you configure an AutoScale rule, consider the following:
    that the NetScaler device has access to this IP address to provide
    AutoScale support.
 
-   If you update the endpointe.url, disable the AutoScale functionality
+   If you update the endpoint.url, disable the AutoScale functionality
    of the load balancer rules in the system, then enable them back to
    reflect the changes. For more information see :ref:`update-autoscale`.
 
