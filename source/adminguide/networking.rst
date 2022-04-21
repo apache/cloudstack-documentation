@@ -71,7 +71,9 @@ different accounts. Network Isolation on shared networks is accomplished
 by using techniques such as security groups, which is supported only in
 Basic zones or Advanced Zones with Security Groups.
 
--  Shared Networks are created by the administrator
+-  Shared Networks are created by the the end users or the administrator. Network offerings
+   which allow the network creator to specify a VLAN can only be created 
+   by the root admins.
 
 -  Shared Networks can be designated to a certain domain
 
@@ -84,8 +86,10 @@ Basic zones or Advanced Zones with Security Groups.
 
 -  Source NAT per zone is not supported in Shared Network when the
    service provider is virtual router. However, Source NAT per account
-   is supported. For information, see `“Configuring a Shared Guest
-   Network” <networking_and_traffic.html#configuring-a-shared-guest-network>`_.
+   is supported.
+
+For more information, see `“Configuring a Shared Guest Network”
+<networking_and_traffic.html#configuring-a-shared-guest-network>`_.
 
 
 L2 (Layer 2) Networks
@@ -271,7 +275,7 @@ To create a network offering:
       information, see `“Persistent
       Networks” <networking_and_traffic.html#persistent-networks>`_.
 
-   -  **Specify VLAN**. (Isolated guest networks only) Indicate whether
+   -  **Specify VLAN**. Indicate whether
       a VLAN could be specified when this offering is used. If you
       select this option and later use this network offering while
       creating a VPC tier or an isolated network, you will be able to

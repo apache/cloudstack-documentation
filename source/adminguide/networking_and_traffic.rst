@@ -33,6 +33,8 @@ providing networking features for guest traffic.
 
 .. include:: networking/multiple_guest_networks.rst
 
+.. include:: networking/network_permissions.rst
+
 .. include:: networking/ip_reservation_in_guest_networks.rst
 
 .. include:: networking/public_ips_and_vlans_for_accounts.rst
