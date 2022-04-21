@@ -875,14 +875,13 @@ the Global Settings area of the CloudStack UI.
 
 .. cssclass:: table-striped table-bordered table-hover
 
-====================== ========================
-Configuration          Description       Type
-====================== ========================
-vmsnapshots.max        The maximum number of VM snapshots that can be saved for any given virtual machine in the cloud. The total possible number of VM snapshots in the cloud is (number of VMs) \* vmsnapshots.max. If the number of snapshots for any VM ever hits the maximum, the older ones are removed by the snapshot expunge job
-vmsnapshot.create.wait Number of seconds to wait for a snapshot job to succeed before declaring failure and issuing an error.
-kvm.vmstoragesnapshot.enabled For live snapshot of virtual machine instance on KVM hypervisor without memory. Requieres qemu version 1.6+ (on NFS or Local file system) and qemu-guest-agent installed on guest VM
-====================== ========================
-
+================================= ========================
+Configuration                     Description
+================================= ========================
+vmsnapshots.max		          The maximum number of VM snapshots that can be saved for any given virtual machine in the cloud. The total possible number of VM snapshots in the cloud is (number of VMs) \* vmsnapshots.max. If the number of snapshots for any VM ever hits the maximum, the older ones are removed by the snapshot expunge job.
+vmsnapshot.create.wait		  Number of seconds to wait for a snapshot job to succeed before declaring failure and issuing an error.
+kvm.vmstoragesnapshot.enabled	  Number of seconds to wait for a snapshot job to succeed before declaring failure and issuing an error.
+================================= ========================
 
 Using VM Snapshots
 ------------------
