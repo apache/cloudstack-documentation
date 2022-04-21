@@ -827,7 +827,7 @@ VMware documentation and the VMware Knowledge Base, especially
 .. _`Storage-based VM snapshots on KVM`:
 
 Storage-based VM snapshots on KVM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------
 
 .. note::
 	 For now this functionality is limited for NFS and Local storage.
