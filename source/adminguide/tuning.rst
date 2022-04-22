@@ -91,10 +91,10 @@ at `MySQL Reference
 Manual <http://dev.mysql.com/doc/refman/5.5/en/innodb-buffer-pool.html>`_.
 
 
-Monitor the DataBase Load
+Monitor the Database Load
 -------------------------
 
-The load of the DB is monitored. By default the queries for each
+The load of the database is monitored. By default the queries for each
 minute are calculated in queries per second. Three values are retaint by
 default. In the UI these are visible under the DB/Usage Server page
 under the infrastructure menu.
