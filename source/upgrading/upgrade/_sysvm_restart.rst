@@ -15,36 +15,38 @@
 
 .. sub-section included in upgrade notes.
 
+From Apache CloudStack version 4.17.0 onward, there is support to live patch 
+system VMs, namely, SSVM, CPVM, Routers. Live patching provides support 
+for zero-downtime upgrades, wherein, the System VM software is updated to the
+latest code version without having to destroy and recreate them / restart them.
+
+With this feature, users will have a choice wherein they can use the existing system VM template with the latest
+software by using the live patch feature, or can follow the usual workflow of restarting the
+system VM to use the latest system VM template. Live Patching system VMs serves to be especially
+useful in cases when the code version has upgraded but the template hasn't. In such a scenario users
+will no longer need to restart the system VMs to use the latest code.
+
+When one attempts to live-patch the system VMs, it pretty much mimics the patching process
+that happens when booting up the System VMs but with having to shut down the system VMs. 
+This will update the software packages, which were previously bundled in the systemvm.iso i.e., 
+agent.zip and cloud-scripts.tgz and restart the services that are present in the /var/cache/cloud/enabled_svcs file
+in the system VMs.
+
 .. note::
 
-   From Apache CloudStack version 4.17.0 onward, there is support to live patch 
-   system VMs, namely, SSVM, CPVM, Routers. Live patching provides support 
-   for zero-downtime upgrades, wherein, the System VM software is updated to the
-   latest code version without having to destroy and recreate them / restart them.
+   The following services will be restarted once a system VM is live patched:
 
-   With this feature, users will have a choice wherein they can use the existing system VM template with the latest
-   software by using the live patch feature, or can follow the usual workflow of restarting the
-   system VM to use the latest system VM template. Live Patching system VMs serves to be especially
-   useful in cases when the code version has upgraded but the template hasn't. In such a scenario users
-   will no longer need to restart the system VMs to use the latest code.
+            +---------------------+-------------------------------+
+            | **System VM**       |         **Services**          |
+            +---------------------+-------------------------------+
+            | SSVM                | cloud, apache2, portmap       |
+            +---------------------+-------------------------------+
+            | CPVM                | cloud                         |
+            +---------------------+-------------------------------+
+            | VRs                 | haproxy, apache2, dnsmasq     |
+            +---------------------+-------------------------------+
 
-   When one attempts to live-patch the system VMs, it pretty much mimics the patching process
-   that happens when booting up the System VMs but with having to shut down the system VMs. 
-   This will update the software packages, which were previously bundled in the systemvm.iso i.e., 
-   agent.zip and cloud-scripts.tgz and restart the services that are present in the /var/cache/cloud/enabled_svcs file
-   in the system VMs. This would mean the following services would be restarted:
-
-            +-----------------+---------------------------+
-            | System VM       |         Services          |
-            +-----------------+---------------------------+
-            | SSVM            | cloud, apache2, portmap   |
-            +-----------------+---------------------------+
-            | CPVM            | cloud                     |
-            +-----------------+---------------------------+
-            | VRs             | haproxy, apache2, dnsmasq |
-            +-----------------+---------------------------+
-
-   Also, with respect to VRs, a network restart without cleanup is initiated to ensure all rules
+   With respect to VRs, a network restart without cleanup is initiated to during live patching to ensure all rules
    are re-applied. 
 
    **NOTE:** In case there is an absolute need to upgrade the system VM template due to availability of
