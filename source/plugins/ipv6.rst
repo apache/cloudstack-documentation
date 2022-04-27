@@ -322,7 +322,7 @@ These operations are also available using UI in the network details view of an I
 IPv6 ACL
 ########
 
-IPv6 ACL rules for an IPv6 supported VPC network tier can be managed using Network ACL lists for the VPC. IPv6 CIDRs can specified while adding or updating an ACL rule.
+IPv6 ACL rules for an IPv6 supported VPC network tier can be managed using Network ACL lists for the VPC. IPv6 CIDRs can be specified while adding or updating an ACL rule.
 
 |add-ipv6-acl-rule-form.png|
 |ipv6-acl-list.png|
