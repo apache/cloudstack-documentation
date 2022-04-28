@@ -412,7 +412,4 @@ Restart management services
 
 .. _upg-sysvm43:
 
-System-VMs and Virtual-Routers
-------------------------------
-
 .. include:: _sysvm_restart.rst

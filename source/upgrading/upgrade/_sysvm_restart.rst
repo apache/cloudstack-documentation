@@ -15,6 +15,9 @@
 
 .. sub-section included in upgrade notes.
 
+System-VMs and Virtual-Routers
+------------------------------
+
 From Apache CloudStack version 4.17.0 onward, there is support to live patch 
 system VMs, namely, SSVM, CPVM, Routers. Live patching provides support 
 for zero-downtime upgrades, wherein, the System VM software is updated to the
