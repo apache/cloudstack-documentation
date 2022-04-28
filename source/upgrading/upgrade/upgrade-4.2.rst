@@ -422,7 +422,4 @@ values for ``mem.overporvisioning.factor`` and ``cpu.overporvisioning.factor``.
 
 .. _upg-sysvm42:
 
-System-VMs and Virtual-Routers
-------------------------------
-
 .. include:: _sysvm_restart.rst
