@@ -51,7 +51,19 @@ in the system VMs.
 
    **NOTE:** In case there is an absolute need to upgrade the system VM template due to availability of
    security patches or update in a package provided by the template, then the old workflow of recreating the system
-   VM will need to be followed, which would mean noticible downtime.
+   VM will need to be followed, which would mean noticible downtime. Following matrix lists the versions 
+   of CloudStack that support live patching.
+
+            +---------------------+-------------------------------+------------------------------------------+
+            | **ACS Version**     |   **Live Patching Support**   |     **Reason / Comment**                 |
+            +---------------------+-------------------------------+------------------------------------------+
+            | <=4.13              | No                            | Update in the openJDK version            |
+            +---------------------+-------------------------------+------------------------------------------+
+            | 4.14                | Yes                           | May notice some issue with remove access |
+            |                     |                               | VPN due to older version of Strongswan   |
+            +---------------------+-------------------------------+------------------------------------------+
+            | >=4.15              | Yes                           |       N/A                                |
+            +---------------------+-------------------------------+------------------------------------------+
 
 In addition to the support for live patching, users still have the facility to follow the legacy workflow
 of restarting the system VMs once the packages on the management servers have been upgraded. Here you'll
