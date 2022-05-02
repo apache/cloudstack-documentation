@@ -111,7 +111,6 @@ These features can be implemented in `“Linux template creation process” <_cr
     
 =======
 	
->>>>>>> Stashed changes
    .. warning::
     
     Cloud-init ssh module runs on every boot and will regenerate the certificate fingerprint of the host. This will cause a warning to anyone that logs in the system and also bring trouble to anyone trying to automate ssh access.
