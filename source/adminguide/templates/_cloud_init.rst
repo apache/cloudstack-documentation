@@ -108,7 +108,6 @@ These features can be implemented in `“Linux template creation process” <_cr
    .. code:: bash
    
     sudo sed -i s/" - ssh$"/" - [ssh, always]"/g /etc/cloud/cloud.cfg
-<<<<<<< Updated upstream
     
 =======
 	
