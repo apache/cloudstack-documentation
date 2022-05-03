@@ -23,7 +23,7 @@ This section lists the operating systems that are supported for running
 CloudStack Management Server.
 
 -  Ubuntu 18.04 LTS, 20.04 LTS
--  CentOS versions 7, 8 (note: CentOS 8 will EOL in Dec 2021)
+-  CentOS versions 7
 -  Rocky Linux 8
 -  RHEL versions 7, 8
 -  openSUSE Leap 15
@@ -44,15 +44,16 @@ CloudStack supports three hypervisor families, XenServer with XAPI, KVM,
 and VMware with vSphere.
 
 -  Ubuntu 18.04 LTS, 20.04 LTS with KVM
--  CentOS 7, 8 with KVM (note: CentOS 8 will EOL in Dec 2021)
+-  CentOS 7 with KVM
 -  Rocky Linux 8 with KVM
 -  Red Hat Enterprise Linux 7, 8 with KVM
--  Rocky Linux 8 with KVM
 -  openSUSE Leap 15
 -  SUSE Linux Enterprise Server 15
--  XenServer versions 7.1, 7.2, 7.4, 7.5, 8.0 (8.1 and 8.2 expected to work, but not tested) with latest hotfixes, XCP-ng 7.4, 7.6, 8.0, 8.1, 8.2
+-  XenServer versions 7.1, 7.2, 7.4, 7.5, 8.0 (8.1 and 8.2 expected to work, but not tested. For 8.2 please check the note below) with latest hotfixes, XCP-ng 7.4, 7.6, 8.0, 8.1, 8.2.0
 
    .. note:: It is now required to enable HA on the XenServer pool in order to recover from a pool-master failure. Please refer to the `XenServer documentation <https://docs.citrix.com/en-us/xencenter/7-1/pools-ha-enable.html>`_.
+
+   .. note:: For XenServer version 8.2 to work it might be necessary to manually add a custom storage repository with name "XenServer Tools" containing the systemvm.iso file.
 
 -  VMware versions 6.5, 6.7 and 7.0
 
@@ -112,12 +113,14 @@ The following hypervisors are no longer be supported in this release due to vend
 -  vSphere 5.5
 -  vSphere 6.0
 -  CentOS/RHEL (KVM) 6.x
+-  CentOS (KVM) 8.x
 -  Ubuntu 14.04
 -  Ubuntu 16.04
 
 The following Management Server Operating Systems are no longer supported in this release due to vendor EOL:
 
 -  CentOS 6.x
+-  CentOS 8.x
 -  Ubuntu 14.04
 -  Ubuntu 16.04
 
