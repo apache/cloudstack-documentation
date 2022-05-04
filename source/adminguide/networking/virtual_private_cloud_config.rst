@@ -12,7 +12,7 @@
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
-   
+
 
 .. _configuring-vpc:
 
@@ -196,19 +196,19 @@ addresses in the form of a Classless Inter-Domain Routing (CIDR) block.
 
    -  **Zone**: Choose the zone where you want the VPC to be available.
 
-   -  **Super CIDR for Guest Networks**: Defines the CIDR range for all
+   -  **CIDR**: Defines the CIDR range for all
       the tiers (guest networks) within a VPC. When you create a tier,
       ensure that its CIDR is within the Super CIDR value you enter. The
       CIDR must be RFC1918 compliant.
 
-   -  **DNS domain for Guest Networks**: If you want to assign a special
+   -  **Network Domain**: If you want to assign a special
       domain name, specify the DNS suffix. This parameter is applied to
       all the tiers within the VPC. That implies, all the tiers you
       create in the VPC belong to the same DNS domain. If the parameter
       is not specified, a DNS domain name is generated automatically.
 
-   -  **Public Load Balancer Provider**: You have two options: VPC
-      Virtual Router and Netscaler.
+   -  **VPC Offering**: If the administrator has configured multiple
+      VPC offerings, select the one you want to use for this VPC
 
 #. Click OK.
 
@@ -231,7 +231,7 @@ other tiers within the VPC.
    All the VPC that you have created for the account is listed in the
    page.
 
-   .. note:: 
+   .. note::
       The end users can see their own VPCs, while root and domain admin can
       see any VPC they are authorized to see.
 
@@ -290,34 +290,22 @@ other tiers within the VPC.
 Configuring Network Access Control List
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Define Network Access Control List (ACL) on the VPC virtual router to
-control incoming (ingress) and outgoing (egress) traffic between the VPC
-tiers, and the tiers and Internet. By default, all incoming traffic to
-the guest networks is blocked and all outgoing traffic from guest
-networks is allowed, once you add an ACL rule for outgoing traffic, then
-only outgoing traffic specified in this ACL rule is allowed, the rest is
-blocked. To open the ports, you must create a new network ACL. The
-network ACLs can be created for the tiers only if the NetworkACL service
-is supported.
+.. note::
+Network Access Control Lists can only be created if the service
+"NetworkACL" is supported by the created VPC.
 
+Define a Network Access Control List (ACL) to control incoming
+(ingress) and outgoing (egress) traffic between the associated tier
+and external networks (other tiers of the VPC as well as public networks).
 
 About Network ACL Lists
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-In CloudStack terminology, Network ACL is a group of Network ACL items.
-Network ACL items are nothing but numbered rules that are evaluated in
-order, starting with the lowest numbered rule. These rules determine
-whether traffic is allowed in or out of any tier associated with the
-network ACL. You need to add the Network ACL items to the Network ACL,
-then associate the Network ACL with a tier. Network ACL is associated
-with a VPC and can be assigned to multiple VPC tiers within a VPC. A
-Tier is associated with a Network ACL at all the times. Each tier can be
-associated with only one ACL.
-
-The default Network ACL is used when no ACL is associated. Default
-behavior is all the incoming traffic is blocked and outgoing traffic is
-allowed from the tiers. Default network ACL cannot be removed or
-modified. Contents of the default Network ACL is:
+In CloudStack terminology, a Network ACL is a group of Network ACL rules.
+Network ACL rules are processed by their order, starting with the lowest
+numbered rule. Each rule defines at least an affected protocol, traffic type,
+action and afected destination / source network. The following table shows a
+exemplary content of a "default_deny" ACL.
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -328,6 +316,29 @@ Rule  Protocol Traffic type Action CIDR
 2     All      Egress       Deny   0.0.0.0/0
 ===== ======== ============ ====== =========
 
+Each Network ACL is associated with a VPC and can be assigned
+to multiple VPC tiers. Every tier needs to be associated with a
+Network ACL. Only one ACL can be associated with a tier at a time. If no
+custome network ACL is availeable at the time of tier creation, a default
+Network ACL has to be used instead. Curretly two default ACL are
+available. The "default_allow" ACL allows in- and egress traffic while
+the "default_deny" blocks all in- and egress traffic. Default network
+ACL cannot be removed or modified. Newly created ACLs, while showing
+empty, deny all incoming traffic to the associated tier and allow all
+outgoing traffic. To change the defaults add a "deny all egress 
+destination" and / or "allow all ingress source" rule to the ACL. 
+Afterwards traffic can be white- or blacklisted.
+
+.. note::
+- ACL Rules in Cloudstack are stateful
+- Source / Destination CIDRs are always external networks
+- ACL rules can also beeen seen on the virtual router of the VPC. Ingress 
+  rules are listed in the table iptables table "filter" while egress rules
+  are placed in the "mangle" table
+- ACL rules for ingress and egress are not correlating. For example a
+  egress "deny all" won't affect traffic in response to an allowed ingress
+  connection
+  
 
 Creating ACL Lists
 ^^^^^^^^^^^^^^^^^^
@@ -428,7 +439,7 @@ Creating an ACL Rule
       are opening a single port, use the same number in both fields.
 
    -  **Protocol Number**: The protocol number associated with IPv4 or
-      IPv6. For more information, see `Protocol Numbers 
+      IPv6. For more information, see `Protocol Numbers
       <http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xml>`_.
 
    -  **ICMP Type**, **ICMP Code** (ICMP only): The type of message and
@@ -488,7 +499,7 @@ Assigning a Custom ACL List to a Tier
 Adding a Private Gateway to a VPC
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A private gateway can be added by the root admin only. The VPC private
+A private gateway can be added by the root admin and users. The VPC private
 network has 1:1 relationship with the NIC of the physical network. You
 can configure multiple private gateways to a single VPC. No gateways
 with duplicated VLAN and IP are allowed in the same data center.
@@ -538,12 +549,14 @@ with duplicated VLAN and IP are allowed in the same data center.
 
 #. Click Add new gateway:
 
-   |add-new-gateway-vpc.png|
+   |add-new-gateway-vpc2.png|
 
 #. Specify the following:
 
-   -  **Physical Network**: The physical network you have created in the
-      zone.
+   -  **Physical Network**: (Administrators only) The physical network
+      you have created in the zone.
+
+   -  **VLAN**: (Administrators only) The VLAN associated with the VPC gateway.
 
    -  **IP Address**: The IP address associated with the VPC gateway.
 
@@ -552,12 +565,18 @@ with duplicated VLAN and IP are allowed in the same data center.
 
    -  **Netmask**: The netmask associated with the VPC gateway.
 
-   -  **VLAN**: The VLAN associated with the VPC gateway.
-
    -  **Source NAT**: Select this option to enable the source NAT
       service on the VPC private gateway.
 
       See ":ref:`source-nat-priv-gw`".
+
+   - **Bypass VLAN id/range overlap**: (Administrators only) Bypasses
+     the check for a VLAN overlap. This way multiple networks with the
+     same VLAN can be created
+
+   -  **Associated Network**: The L2 or Isolated network this private
+      gateway is associated to. This private network will use the same
+      VLAN as the associated network.
 
    -  **ACL**: Controls both ingress and egress traffic on a VPC private
       gateway. By default, all the traffic is blocked.
@@ -648,16 +667,16 @@ to be routed back to the gateway.
    Wait for few seconds until the new route is created.
 
 
-Blacklisting Routes
+Denylisting Routes
 ^^^^^^^^^^^^^^^^^^^
 
 CloudStack enables you to block a list of routes so that they are not
 assigned to any of the VPC private gateways. Specify the list of routes
-that you want to blacklist in the ``blacklisted.routes`` global
+that you want to denylist in the ``denied.routes`` global
 parameter. Note that the parameter update affects only new static route
 creations. If you block an existing static route, it remains intact and
 continue functioning. You cannot add a static route if the route is
-blacklisted for the zone.
+denied for the zone.
 
 
 Deploying VMs to the Tier
@@ -892,7 +911,7 @@ function only if they are defined on the default network.
 
 #. Click the IP you want to work with.
 
-#. In the Details tab,click the Static NAT button. |enable-disable.png| 
+#. In the Details tab,click the Static NAT button. |enable-disable.png|
    The button toggles between Enable and
    Disable, depending on whether static NAT is currently enabled for the
    IP address.
@@ -960,7 +979,7 @@ follows:
 
 #. Log in to the CloudStack UI as a user or admin.
 
-#. From the Select Offering drop-down, choose Network Offering.
+#. Naviagte to Service Offerings and choose Network Offering.
 
 #. Click Add Network Offering.
 
@@ -1101,7 +1120,7 @@ CloudStack supports sharing workload across different tiers within your
 VPC. Assume that multiple tiers are set up in your environment, such as
 Web tier and Application tier. Traffic to each tier is balanced on the
 VPC virtual router on the public side, as explained in
-`"Adding Load Balancing Rules on a VPC" <#adding-load-balancing-rules-on-a-vpc>`_. 
+`"Adding Load Balancing Rules on a VPC" <#adding-load-balancing-rules-on-a-vpc>`_.
 If you want the traffic coming
 from the Web tier to the Application tier to be balanced, use the
 internal load balancing feature offered by CloudStack.
@@ -1148,10 +1167,10 @@ Guidelines
 Enabling Internal LB on a VPC Tier
 ''''''''''''''''''''''''''''''''''
 
-#. Create a network offering, as given in 
+#. Create a network offering, as given in
    :ref:`creating-net-offering-internal-lb`.
 
-#. Create an internal load balancing rule and apply, as given in 
+#. Create an internal load balancing rule and apply, as given in
    :ref:`create-int-lb-rule`.
 
 
@@ -1166,7 +1185,7 @@ network offering as follows:
 
 #. Log in to the CloudStack UI as a user or admin.
 
-#. From the Select Offering drop-down, choose Network Offering.
+#. Naviagte to Service Offerings and choose Network OfferingPublic IP Addresses.
 
 #. Click Add Network Offering.
 
@@ -1418,7 +1437,7 @@ Editing, Restarting, and Removing a Virtual Private Cloud
    :alt: adding a tier to a vpc.
 .. |replace-acl-icon.png| image:: /_static/images/replace-acl-icon.png
    :alt: button to replace an ACL list
-.. |add-new-gateway-vpc.png| image:: /_static/images/add-new-gateway-vpc.png
+.. |add-new-gateway-vpc2.png| image:: /_static/images/add-new-gateway-vpc2.png
    :alt: adding a private gateway for the VPC.
 .. |add-vm-vpc.png| image:: /_static/images/add-vm-vpc.png
    :alt: adding a VM to a vpc.

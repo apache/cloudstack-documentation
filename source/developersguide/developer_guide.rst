@@ -46,7 +46,7 @@ for Apache CloudStack development.
 
 To build and test CloudStack from source you will need the following
 installed:
-* jdk 8+ (openjdk-8-jdk)
+* jdk 11+ (openjdk-11-jdk)
 * maven 3+
 * git
 * python-pip
@@ -60,7 +60,7 @@ Example Ubuntu 18.04
 ::
 
    apt update
-   apt install openjdk-8-jdk-headless maven git python-pip mkisofs git mysql-server
+   apt install openjdk-11-jdk-headless maven git python-pip mkisofs git mysql-server
 
 Example CentOS 7
 ~~~~~~~~~~~~~~~~
@@ -69,7 +69,7 @@ Example CentOS 7
 
    yum install -y epel-release
    yum localinstall -y http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
-   yum install -y java-1.8.0-openjdk-devel maven python-setuptools python-pip genisoimage git mysql-community-server
+   yum install -y java-1.11.0-openjdk-devel maven python-setuptools python-pip genisoimage git mysql-community-server
 
 Installing CloudStack from Source
 ----------------------------------
@@ -346,7 +346,7 @@ Mapping exists between the AWS API and the CloudStack API as will be
 seen in the next section. Recently a Google Compute Engine interface was
 also developed that maps the GCE REST API to the CloudStack API
 described here. The API
-`docs <http://cloudstack.apache.org/docs/api/>`__ are a good start to
+`docs <https://cloudstack.apache.org/api.html>`__ are a good start to
 learn the extent of the API. Multiple clients exist on
 `github <https://github.com/search?q=cloudstack+client&ref=cmdform>`__
 to use this API, you should be able to find one in your favorite
@@ -365,7 +365,7 @@ http://localhost:8080/client/api). The API name is passed using the
 as key value pairs. The request is signed using the access key and
 secret key of the user making the call. Some calls are synchronous while
 some are asynchronous, this is documented in the API
-`docs <http://cloudstack.apache.org/docs/api/>`__. Asynchronous calls
+`docs <https://cloudstack.apache.org/api.html>`__. Asynchronous calls
 return a ``jobid``, the status and result of a job can be queried with
 the ``queryAsyncJobResult`` call. Let's get started and give an example
 of calling the ``listUsers`` API in Python.

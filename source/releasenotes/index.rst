@@ -13,7 +13,7 @@
    specific language governing permissions and limitations
    under the License.
 
-.. CloudStack Release Notes documentation master file, created by
+.. CloudStack Release Notes documentation main file, created by
    sphinx-quickstart on Fri Feb  7 16:00:59 2014.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -43,7 +43,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   fixed_issues
+   changes
 
 
 .. toctree::
@@ -56,10 +56,3 @@ Contents:
    :maxdepth: 2
 
    api-changes
-
-
-.. toctree::
-   :maxdepth: 2
-
-   known_issues   
- 

@@ -61,6 +61,80 @@ still available but the system VMs will not be able to contact the
 management server.
 
 
+Multiple Management Servers Support on agents
+---------------------------------------------
+
+In a Cloudstack environment with multiple management servers, an agent can be
+configured, based on an algorithm, to which management server to connect to.
+This can be useful as an internal loadbalancer or for high availability.
+An administrator is responsible for setting the list of management servers and
+choosing a sorting algorithm using global settings.
+The management server is responsible for propagating the settings to the
+connected agents (running inside of the Secondary Storage
+Virtual Machine, Console Proxy Virtual Machine or the KVM hosts).
+
+The three global settings that need to be configured are the following:
+
+- hosts: a comma seperated list of management server IP addresses
+- indirect.agent.lb.algorithm: The algorithm for the indirect agent LB
+- indirect.agent.lb.check.interval: The preferred host check interval
+  for the agent's background task that checks and switches to an agent's
+  preferred host.
+
+These settings can be configured from the global settings page in the UI or
+using the updateConfiguration API call.
+
+The indirect.agent.lb.algorithm setting supports following algorithm options:
+
+- static: Use the list of management server IP addresses as provided.
+- roundrobin: Evenly spread hosts across management servers, based on the
+  host's id.
+- shuffle: Pseudo Randomly sort the list (this is not recommended for
+  production).
+
+.. note:: 
+   The 'static' and 'roundrobin' algorithms, strictly checks for the order as
+   expected by them, however, the 'shuffle' algorithm just checks for content
+   and not the order of the comma separate management server host addresses.
+
+Any changes to the global settings - `indirect.agent.lb.algorithm` and
+`host` does not require restarting of the management server(s) and the
+agents. A change in these global settings will be propagated to all connected
+agents.
+
+The comma-separated management server list is propagated to agents in
+following cases:
+- An addition of an agent (including ssvm, cpvm system VMs).
+- Connection or reconnection of an agent to a management server.
+- After an administrator changes the 'host' and/or the
+'indirect.agent.lb.algorithm' global settings.
+
+On the agent side, the 'host' setting is saved in its properties file as:
+`host=<comma separated addresses>@<algorithm name>`.
+
+From the agent's perspective, the first address in the propagated list
+will be considered the preferred host. A new background task can be
+activated by configuring the `indirect.agent.lb.check.interval` which is
+a cluster level global setting from CloudStack and administrators can also
+override this by configuring the 'host.lb.check.interval' in the
+`agent.properties` file.
+
+When an agent gets a host and algorithm combination, the host specific
+background check interval is also sent and is dynamically reconfigured
+in the background task without need to restart agents.
+
+To make things more clear, consider this example:
+Suppose an environment which has 3 management servers: A, B and C and
+3 KVM agents.
+
+Setting 'host' = 'A,B,C', agents will receive lists depending on
+'direct.agent.lb' value:
+
+'static': Each agent will receive the list: 'A,B,C'
+'roundrobin': First agent receives: 'A,B,C', second agent 
+receives: 'B,C,A', third agent receives: 'C,B,A'
+'shuffle': Each agent will receive a list in random order.
+
 HA-Enabled Virtual Machines
 ---------------------------
 
@@ -78,25 +152,8 @@ HA features work with iSCSI or NFS primary storage. HA with local
 storage is not supported.
 
 
-HA for Hosts
-------------
-
-The user can specify a virtual machine as HA-enabled. By default, all
-virtual router VMs and Elastic Load Balancing VMs are automatically
-configured as HA-enabled. When an HA-enabled VM crashes, CloudStack
-detects the crash and restarts the VM automatically within the same
-Availability Zone. HA is never performed across different Availability
-Zones. CloudStack has a conservative policy towards restarting VMs and
-ensures that there will never be two instances of the same VM running at
-the same time. The Management Server attempts to start the VM on another
-Host in the same cluster.
-
-HA features work with iSCSI or NFS primary storage. HA with local
-storage is not supported.
-
-
 Dedicated HA Hosts
-~~~~~~~~~~~~~~~~~~
+------------------
 
 One or more hosts can be designated for use only by HA-enabled VMs that
 are restarting due to a host failure. Setting up a pool of such
@@ -125,6 +182,107 @@ that you want to dedicate to HA-enabled VMs.
    any host in the cloud, the HA-enabled VMs will fail to restart after 
    a crash.
 
+
+HA-Enabled Hosts
+----------------
+
+The user can specify a host as HA-enabled, In the event of a host 
+failure, attemps will be made to recover the failed host by first 
+issuing some OOBM commands. If the host recovery fails the host will be
+fenced and placed into maintenance mode. To restore the host to normal 
+operation, manual intervention would then be required.
+
+Out of band management is a requirement of HA-Enabled hosts and has to be 
+confiured on all intended participating hosts.
+(see `“Out of band management” <hosts.html#out-of-band-management>`_).
+
+Host-HA has granular configuration on a host/cluster/zone level. In a large 
+environment, some hosts from a cluster can be HA-enabled and some not, 
+
+Host-HA uses a state machine design to manage the operations of recovering
+and fencing hosts. The current status of a host is reported when quering a 
+specific host.
+
+Timely health investigations are done on HA-Enabled hosts to monitor for
+any failures. Specific thresholds can be set for failed investigations,
+only when it’s exceeded, will the host transition to a different state.
+
+Host-HA uses both health checks and activity checks to make decisions on 
+recovering and fencing actions. Once determined that the host is in faulty 
+state (health checks failed) it runs activity checks to figure out if there is 
+any disk activity on the VMs running on the specific host.
+
+The HA Resource Management Service manages the check/recovery cycle including
+periodic execution, concurrency management, persistence, back pressure and 
+clustering operations. Administrators associate a provider with a partition 
+type (e.g. KVM HA Host provider to clusters) and may override the provider on a
+per-partition (i.e. zone, cluster, or pod) basis. The service operates on all
+resources of the type supported by the provider contained in a partition.
+Administrators can also enable or disable HA operations globally or on a
+per-partition basis.
+
+Only one (1) HA provider per resource type may be specified for a partition.
+Nested HA providers by resource type is not supported (e.g. a pod
+specifying an HA resource provider for hosts and a containing cluster
+specifying a HA resource provider for hosts). The service is designed to be
+opt-in where by only resources with a defined provider and HA enabled will be
+managed.
+
+For each resource in an HA partition, the HA Resource Management Service
+maintains and persists an "Finite State Machine" composed of the following
+states:
+
+- AVAILABLE - The feature is enabled and Host-HA is available.
+- SUSPECT - There are health checks failing with the host.
+- CHECKING - Activity checks are being performed.
+- DEGRADED - The host is passing the activity check ratio and still providing
+  service to the end user, but it cannot be managed from the CloudStack
+  management server.
+- RECOVERING - The Host-HA framework is trying to recover the host by issuing
+  OOBM jobs.
+- RECOVERED - The Host-HA framework has recovered the host successfully.
+- FENCING - The Host-HA framework is trying to fence the host by issuing OOBM
+  jobs.
+- FENCED - The Host-HA framework has fenced the host successfully.
+- DISABLED - The feature is disabled for the host.
+- INELIGIBLE - The feature is enabled, but it cannot be managed successfully by
+  the Host-HA framework. (OOBM is possibly not configured properly)
+
+When HA is enabled for a partition, the HA state of all contained resources 
+will be transitioned from DISABLED to AVAILABLE. Based on the state models, the
+following failure scenarios and their responses will be handled by the HA 
+resource management service:
+
+- Activity check operation fails on the resource: Provide a semantic in the 
+  activity check protocol to express that an error while performing the 
+  activity check and a reason for the failure (e.g. unable to access the NFS 
+  mount). If the maximum number of activity check attempts has not been 
+  exceeded, the activity check will be retried.
+
+- Slow activity check operation: After a configurable timeout, the HA resource
+  management service abandons the check. The response to this condition would 
+  be the same as a failure to recover the resource.
+
+- Traffic flood due to a large number of resource recoveries: The HA resource 
+  management service must limit the number of concurrent recovery operations 
+  permitted to avoid overwhelming the management server with resource status 
+  updates as recovery operations complete.
+
+- Processor/memory starvation due to large number of activity check 
+  operations: The HA resource management service must limit the number of 
+  concurrent activity check operations permitted per management server to 
+  prevent checks from starving other management server activities of scarce
+  processor and/or memory resources.
+
+- A SUSPECT, CHECKING, or RECOVERING resource passes a health check before the
+  state action completes: The HA resource management service refreshes the HA
+  state of the resource before transition. If it does not match the expected
+  current state, the result of state action is ignored.
+
+For further information around the inner workings of Host HA, refer
+to the design document at 
+`https://cwiki.apache.org/confluence/display/CLOUDSTACK/Host+HA 
+<https://cwiki.apache.org/confluence/display/CLOUDSTACK/Host+HA>`_
 
 Primary Storage Outage and Data Loss
 ------------------------------------
@@ -204,19 +362,19 @@ Be sure you have set the following in db.properties:
 
    Example: ``db.ha.enabled=true``
 
--  ``db.cloud.slaves``: set to a comma-delimited set of slave hosts for the
+-  ``db.cloud.replicas``: set to a comma-delimited set of replica hosts for the
    cloud database. This is the list of nodes set up with replication.
-   The master node is not in the list, since it is already mentioned
+   The source node is not in the list, since it is already mentioned
    elsewhere in the properties file.
 
-   Example: ``db.cloud.slaves=node2,node3,node4``
+   Example: ``db.cloud.replicas=node2,node3,node4``
 
--  ``db.usage.slaves``: set to a comma-delimited set of slave hosts for the
+-  ``db.usage.replicas``: set to a comma-delimited set of replica hosts for the
    usage database. This is the list of nodes set up with replication.
-   The master node is not in the list, since it is already mentioned
+   The source node is not in the list, since it is already mentioned
    elsewhere in the properties file.
 
-   Example: ``db.usage.slaves=node2,node3,node4``
+   Example: ``db.usage.replicas=node2,node3,node4``
 
 **Optional Settings**
 
@@ -224,22 +382,22 @@ The following settings must be present in db.properties, but you are not
 required to change the default values unless you wish to do so for
 tuning purposes:
 
--  ``db.cloud.secondsBeforeRetryMaster``: The number of seconds the MySQL
-   connector should wait before trying again to connect to the master
-   after the master went down. Default is 1 hour. The retry might happen
-   sooner if db.cloud.queriesBeforeRetryMaster is reached first.
+-  ``db.cloud.secondsBeforeRetrySource``: The number of seconds the MySQL
+   connector should wait before trying again to connect to the source
+   after the source went down. Default is 1 hour. The retry might happen
+   sooner if db.cloud.queriesBeforeRetrySource is reached first.
 
-   Example: ``db.cloud.secondsBeforeRetryMaster=3600``
+   Example: ``db.cloud.secondsBeforeRetrySource=3600``
 
--  ``db.cloud.queriesBeforeRetryMaster``: The minimum number of queries to
-   be sent to the database before trying again to connect to the master
-   after the master went down. Default is 5000. The retry might happen
-   sooner if db.cloud.secondsBeforeRetryMaster is reached first.
+-  ``db.cloud.queriesBeforeRetrySource``: The minimum number of queries to
+   be sent to the database before trying again to connect to the source
+   after the source went down. Default is 5000. The retry might happen
+   sooner if db.cloud.secondsBeforeRetrySource is reached first.
 
-   Example: ``db.cloud.queriesBeforeRetryMaster=5000``
+   Example: ``db.cloud.queriesBeforeRetrySource=5000``
 
 -  ``db.cloud.initialTimeout``: Initial time the MySQL connector should wait
-   before trying again to connect to the master. Default is 3600.
+   before trying again to connect to the source. Default is 3600.
 
    Example: ``db.cloud.initialTimeout=3600``
 
@@ -250,7 +408,7 @@ Limitations on Database High Availability
 The following limitations exist in the current implementation of this
 feature.
 
--  Slave hosts can not be monitored through CloudStack. You will need to
+-  Replica hosts can not be monitored through CloudStack. You will need to
    have a separate means of monitoring.
 
 -  Events from the database side are not integrated with the CloudStack

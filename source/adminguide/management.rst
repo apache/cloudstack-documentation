@@ -81,20 +81,49 @@ The following API commands have the "tags" input parameter:
 
 -  listStaticRoutes
 
+Using Comments on the Resources in the Cloud
+--------------------------------------------
+
+CloudStack allows users and administrators to create comments against cloud objects with a UUID. The listing page of any cloud object includes a blue icon next to the object name indicating that the object contains comments.
+
+To create a new comment on an object:
+
+1. Click on the object to display the detail view
+
+2. Navigate to the Comments tab
+
+3. Add a comment on the text area and click the Submit button
+
+.. note::
+   Administrators only: Select the 'Only visible to Administrators' checkbox to create private comments across administrators
+
+To display al the comments created by the logged in user (or administrator):
+
+1. In the left navigation bar, click Tools
+
+2. Click Comments (the default filter is 'Created by me')
+
+To display all the comments on the objects that the logged in user (or administrator) has access:
+
+1. In the left navigation bar, click Tools
+
+2. Click Comments
+
+3. Select the 'All Comments' filter
 
 Reporting CPU Sockets
 ---------------------
 
-PRODUCT manages different types of hosts that contains one or more
+Cloudstack manages different types of hosts that contains one or more
 physical CPU sockets. CPU socket is considered as a unit of measure used
-for licensing and billing cloud infrastructure. PRODUCT provides both UI
+for licensing and billing cloud infrastructure. Cloudstack provides both UI
 and API support to collect the CPU socket statistics for billing
 purpose. The Infrastructure tab has a new tab for CPU sockets. You can
-view the statistics for CPU sockets managed by PRODUCT, which in turn
+view the statistics for CPU sockets managed by Cloudstack, which in turn
 reflects the size of the cloud. The CPU Socket page will give you the
 number of hosts and sockets used for each host type.
 
-1. Log in to the PRODUCT UI.
+1. Log in to the Cloudstack UI.
 
 2. In the left navigation bar, click Infrastructure.
 
@@ -150,7 +179,7 @@ add the encrypted password to
 
    .. code:: bash
 
-           # java -classpath /usr/share/cloudstack-common/lib/jasypt-1.9.2.jar \ org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI encrypt.sh \ input="newpassword123" password="`cat /etc/cloudstack/management/key`" \ verbose=false 
+           # java -classpath /usr/share/cloudstack-common/lib/jasypt-1.9.2.jar \ org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI encrypt.sh \ input="newpassword123" password="`cat /etc/cloudstack/management/key`" \ verbose=false
 
 
 File encryption type
@@ -166,7 +195,7 @@ File encryption type
 
    .. code:: bash
 
-       db.cloud.password=ENC(encrypted_password_from_above) 
+       db.cloud.password=ENC(encrypted_password_from_above)
        db.usage.password=ENC(encrypted_password_from_above)
 
 #. After copying the new password over, you can now start CloudStack
@@ -215,112 +244,112 @@ The alerts which can be sent are:
 The following is the list of alert type numbers. The current alerts can
 be found by calling listAlerts.
 
-:: 
-   
+::
+
    MEMORY = 0 // Available Memory below configured threshold
 
-:: 
-   
+::
+
    CPU = 1 // Unallocated CPU below configured threshold
 
-:: 
-   
+::
+
    STORAGE =2 // Available Storage below configured threshold
 
-:: 
-   
+::
+
    STORAGE_ALLOCATED = 3 // Remaining unallocated Storage is below configured threshold
 
-:: 
-   
+::
+
    PUBLIC_IP = 4 // Number of unallocated virtual network public IPs is below configured threshold
 
-:: 
-   
+::
+
    PRIVATE_IP = 5 // Number of unallocated private IPs is below configured threshold
 
-:: 
-   
+::
+
    SECONDARY_STORAGE = 6 //  Available Secondary Storage in availability zone is below configured threshold
 
-:: 
-   
+::
+
    HOST = 7 // Host related alerts like host disconnected
 
-:: 
-   
+::
+
    USERVM = 8 // User VM stopped unexpectedly
 
-:: 
-   
+::
+
    DOMAIN_ROUTER = 9 // Domain Router VM stopped unexpectedly
 
-:: 
-   
+::
+
    CONSOLE_PROXY = 10 // Console Proxy VM stopped unexpectedly
 
-:: 
-   
+::
+
    ROUTING = 11 // Lost connection to default route (to the gateway)
 
-:: 
-   
+::
+
    STORAGE_MISC = 12 // Storage issue in system VMs
 
-:: 
-   
+::
+
    USAGE_SERVER = 13 // No usage server process running
 
-:: 
-   
+::
+
    MANAGMENT_NODE = 14 // Management network CIDR is not configured originally
 
-:: 
-   
+::
+
    DOMAIN_ROUTER_MIGRATE = 15 // Domain Router VM Migration was unsuccessful
 
-:: 
-   
+::
+
    CONSOLE_PROXY_MIGRATE = 16 // Console Proxy VM Migration was unsuccessful
 
-:: 
-   
+::
+
    USERVM_MIGRATE = 17 // User VM Migration was unsuccessful
 
-:: 
-   
+::
+
    VLAN = 18 // Number of unallocated VLANs is below configured threshold in availability zone
 
-:: 
-   
+::
+
    SSVM = 19 // SSVM stopped unexpectedly
 
-:: 
-   
+::
+
    USAGE_SERVER_RESULT = 20 // Usage job failed
 
-:: 
-   
+::
+
    STORAGE_DELETE = 21 // Failed to delete storage pool
 
-:: 
-   
+::
+
    UPDATE_RESOURCE_COUNT = 22 // Failed to update the resource count
 
-:: 
-   
+::
+
    USAGE_SANITY_RESULT = 23 // Usage Sanity Check failed
 
-:: 
-   
+::
+
    DIRECT_ATTACHED_PUBLIC_IP = 24 // Number of unallocated shared network IPs is low in availability zone
 
-:: 
-   
+::
+
    LOCAL_STORAGE = 25 // Remaining unallocated Local Storage is below configured threshold
 
-:: 
-   
+::
+
    RESOURCE_LIMIT_EXCEEDED = 26 //Generated when the resource limit exceeds the limit. Currently used for recurring snapshots only
 
 
@@ -377,8 +406,8 @@ alerts from CloudStack:
    Syslog manager. To specify multiple external managers, separate the
    IP addresses and other configuration values with commas (,).
 
-   .. note:: 
-      The recommended maximum number of SNMP or Syslog managers is 20 
+   .. note::
+      The recommended maximum number of SNMP or Syslog managers is 20
       for each.
 
    The following example shows how to configure two SNMP managers at IP
@@ -409,7 +438,7 @@ alerts from CloudStack:
       <appender name="ALERTSYSLOG">
         <param name="Threshold" value="WARN"/>
         <param name="SyslogHosts" value="10.1.1.1,10.1.1.2"/>
-        <param name="Facility" value="LOCAL6"/>   
+        <param name="Facility" value="LOCAL6"/>
         <layout>
           <param name="ConversionPattern" value=""/>
         </layout>
@@ -448,8 +477,8 @@ these steps.
 #. Set the DNS suffix at the desired scope
 
    -  At the network level, the DNS suffix can be assigned through the
-      UI when creating a new network, as described in 
-      `“Adding an Additional Guest Network” 
+      UI when creating a new network, as described in
+      `“Adding an Additional Guest Network”
       <networking2#adding-an-additional-guest-network>`_ or with the
       updateNetwork command in the CloudStack API.
 

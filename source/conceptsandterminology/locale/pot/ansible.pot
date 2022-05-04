@@ -363,7 +363,7 @@ msgstr ""
 
 #: ../../ansible.rst:395
 # 55f1b360102642c992d5a63319701117
-msgid "In a production deployment, the Ansible playbooks would configure multiple management servers connected to master/slave replicating MySQL databases along with any other infrastructure components required and deploy and configure the hypervisor hosts. We would also have a dedicated file describing the hosts in the environment and a dedicated file containing variables which describe the environment."
+msgid "In a production deployment, the Ansible playbooks would configure multiple management servers connected to the source/replica replicating MySQL databases along with any other infrastructure components required and deploy and configure the hypervisor hosts. We would also have a dedicated file describing the hosts in the environment and a dedicated file containing variables which describe the environment."
 msgstr ""
 
 #: ../../ansible.rst:402

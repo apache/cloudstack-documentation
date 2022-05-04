@@ -28,7 +28,7 @@ System Requirements for vSphere Hosts
 Software requirements:
 ^^^^^^^^^^^^^^^^^^^^^^
 
--  vSphere and vCenter, versions 4.1, 5.0, 5.1 or 5.5.
+-  vSphere and vCenter, versions 6.0, 6.5 or 6.7.
 
    vSphere Standard is recommended. Note however that customers need to
    consider the CPU constraints in place with vSphere licensing. See
@@ -51,6 +51,17 @@ Software requirements:
    Apply All Necessary Hotfixes. The lack of up-do-date hotfixes can lead to 
    data corruption and lost VMs.
 
+.. note::
+
+   When using vSphere and vCenter versions 6.0 and 6.5 there is a limitation on
+   instance names with a sequence number between 99999 and 1000000. For example if you take
+   a snapshot of a VM, the expected filename will be different to what cloudstack expects.
+   It is advisable to set the sequence number to 1M to prevent issues by executing the
+   following script on your cloudstack database:
+
+   UPDATE cloud.sequence
+   SET value = 1000000
+   WHERE name = 'vm_instance_seq';
 
 Hardware requirements:
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -105,7 +116,7 @@ Requirements" <http://pubs.vmware.com/vsp40/wwhelp/wwhimpl/js/html/wwhelp.htm#hr
 Other requirements:
 ^^^^^^^^^^^^^^^^^^^
 
--  VMware vCenter Standard Edition 4.1, 5.0, 5.1 or 5.5 must be installed and
+-  VMware vCenter Standard Edition 6.0, 6.5 or 6.7 must be installed and
    available to manage the vSphere hosts.
 
 -  vCenter must be configured to use the standard port 443 so that it
@@ -114,7 +125,7 @@ Other requirements:
 -  You must re-install VMware ESXi if you are going to re-use a host
    from a previous install.
 
--  CloudStack requires VMware vSphere 4.1, 5.0, 5.1 or 5.5. VMware vSphere 4.0 is
+-  CloudStack requires VMware vSphere 6.0, 6.5 or 6.7. VMware vSphere 5.5 and older
    not supported.
 
 -  All hosts must be 64-bit and must support HVM (Intel-VT or AMD-V
@@ -339,19 +350,66 @@ port group so that CloudStack can find it:
 Extend Port Range for CloudStack Console Proxy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-(Applies only to VMware vSphere version 4.x)
-
-You need to extend the range of firewall ports that the console proxy
-works with on the hosts. This is to enable the console proxy to work
-with VMware-based VMs. The default additional port range is 59000-60000.
-To extend the port range, log in to the VMware ESX service console on
-each host and run the following commands:
+In production environments (large number of VMs), 
+it's needed to extend the range of firewall ports that the console proxy
+works with on the hosts. The default additional port range is 50000-50999
+(see global settings ``vmware.additional.vnc.portrange.size`` and ``vmware.additional.vnc.portrange.start``).
+ 
+Change global setting ``vmware.additional.vnc.portrange.size`` to i.e "10000" and restart the 
+management-server service on each management server.
+Add those additional ports to the ESXi firewall on each host.
+Log in via SSH to every VMware ESXi host and edit the file ``/etc/rc.local.d/local.sh``
+by adding the following lines just above the "exit 0" line.:
 
 .. parsed-literal::
 
-   esxcfg-firewall -o 59000-60000,tcp,in,vncextras
-   esxcfg-firewall -o 59000-60000,tcp,out,vncextras
+   cat <<EOF > /etc/vmware/firewall/vncAdditionalPorts.xml
+   <ConfigRoot>
+     <service>
+       <id>vncAdditionalPorts</id>
+       <rule id='0000'>
+         <direction>inbound</direction>
+         <protocol>tcp</protocol>
+         <porttype>dst</porttype>
+         <port>
+           <begin>51000</begin>
+           <end>60000</end>
+         </port>
+       </rule>
+       <enabled>true</enabled>
+       <required>false</required>
+     </service>
+   </ConfigRoot>
+   EOF
+   esxcli network firewall refresh
 
+This will ensure the needed firewall rules are applied on boot of ESXi hosts.
+
+To make the change on the running host, repeat the commands that were just added to ``local.sh`` script, at the shell command line:
+
+.. parsed-literal::
+
+   cat <<EOF > /etc/vmware/firewall/vncAdditionalPorts.xml
+   <ConfigRoot>
+     <service>
+       <id>vncAdditionalPorts</id>
+       <rule id='0000'>
+         <direction>inbound</direction>
+         <protocol>tcp</protocol>
+         <porttype>dst</porttype>
+         <port>
+           <begin>51000</begin>
+           <end>60000</end>
+         </port>
+       </rule>
+       <enabled>true</enabled>
+       <required>false</required>
+     </service>
+   </ConfigRoot>
+   EOF
+   esxcli network firewall refresh
+   
+Run the script ``/sbin/auto-backup.sh`` and then logout from each ESXi host.
 
 Configure NIC Bonding for vSphere
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -654,7 +712,7 @@ the zone is being created.
 After the zone is created, if you want to create an additional cluster
 along with Nexus 1000v virtual switch in the existing zone, use the Add
 Cluster option. For information on creating a cluster, see
-`"Add Cluster: vSphere" <configuration.html#add-cluster-vsphere>`_.
+:ref:`adding-a-cluster`.
 
 In both these cases, you must specify the following parameters to
 configure Nexus virtual switch:
@@ -865,8 +923,7 @@ created.
 
 Alternatively, at the cluster level, you can create an additional
 cluster with VDS enabled in the existing zone. Use the Add Cluster
-option. For information as given in `“Add Cluster: vSphere” 
-<configuration.html#add-cluster-vsphere>`_.
+option. For information as given in :ref:`adding-a-cluster`.
 
 In both these cases, you must specify the following parameters to
 configure VDS:
@@ -963,7 +1020,7 @@ Add Hosts or Configure Clusters (vSphere)
 
 Use vCenter to create a vCenter cluster and add your desired hosts to
 the cluster. You will later add the entire cluster to CloudStack. (see
-`“Add Cluster: vSphere” <configuration.html#add-cluster-vsphere>`_).
+:ref:`adding-a-cluster`).
 
 
 Applying Hotfixes to a VMware vSphere Host

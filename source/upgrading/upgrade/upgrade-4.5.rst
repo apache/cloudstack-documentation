@@ -34,12 +34,26 @@ working on a production system.
 
 Upgrade Steps:
 
+#. Check any customisations and integrations
+#. Upload the |sysvm64-version| System VM template if not already using it.
+#. Stop all running management servers
 #. Backup CloudStack database (MySQL)
-#. Install new systemvm template
 #. Add package repository for MySQL connector
 #. Upgrade CloudStack management server(s)
 #. Update hypervisors specific dependencies
 
+
+
+.. include:: _customisation_warnings.rst
+
+.. warning::
+    If you are not already using the |sysvm64-version| System VM template you will need to 
+    upgrade your System VM template prior to performing the upgrade of the 
+    CloudStack packages.
+
+.. include:: _sysvm_templates.rst
+
+.. include:: _java_version.rst
 
 Packages repository
 -------------------
@@ -57,9 +71,6 @@ them for :ref:`ubuntu45` or :ref:`rhel45` and :ref:`kvm45` hosts upgrade.
 
 Instructions for creating packages from the CloudStack source are in the 
 `CloudStack Installation Guide`_.
-
-.. include:: _sysvm_templates.rst
-
 
 Database Preparation
 --------------------
@@ -86,24 +97,8 @@ Backup current database
 
    .. parsed-literal::
 
-      $ mysqldump -u root -p cloud > cloud-backup_`date '+%Y-%m-%d'`.sql
-      $ mysqldump -u root -p cloud_usage > cloud_usage-backup_`date '+%Y-%m-%d'`.sql
-
-#. **(KVM Only)** If primary storage of type local storage is in use, the
-   path for this storage needs to be verified to ensure it passes new
-   validation. Check local storage by querying the cloud.storage\_pool
-   table:
-
-   .. parsed-literal::
-
-      $ mysql -u cloud -p -e "select id,name,path from cloud.storage_pool where pool_type='Filesystem'"
-
-   If local storage paths are found to have a trailing forward slash,
-   remove it:
-
-   .. parsed-literal::
-
-      $ mysql -u cloud -p -e 'update cloud.storage_pool set path="/var/lib/libvirt/images" where path="/var/lib/libvirt/images/"';
+      $ mysqldump -u root -p cloud > cloud-backup_$(date +%Y-%m-%d-%H%M%S)
+      $ mysqldump -u root -p cloud_usage > cloud_usage-backup_$(date +%Y-%m-%d-%H%M%S)
 
 
 .. _ubuntu45:
@@ -113,6 +108,8 @@ Management Server on Ubuntu
 
 If you are using Ubuntu, follow this procedure to upgrade your packages. If 
 not, skip to step :ref:`rhel45`.
+
+.. include:: _timezone.rst
 
 .. note:: 
    **Community Packages:** This section assumes you're using the community
@@ -127,7 +124,6 @@ be necessary for hosts that are running VMware or Xen.)
 
 .. _apt-repo45:
 
-.. include:: _java_8_ubuntu.rst
 
 CloudStack apt repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -141,11 +137,14 @@ This file should have one line, which contains:
 
    deb http://download.cloudstack.org/ubuntu precise 4.5
 
+Ubuntu 12.04 Precise is not supported with CloudStack |release|,
+so make sure to have updated your management servers to Xenial or Bionic first.
+
 We'll change it to point to the new package repository:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu precise 4.9
+   deb http://download.cloudstack.org/ubuntu bionic 4.13
 
 Setup the public key for the above repository:
 
@@ -184,6 +183,8 @@ Management Server on CentOS/RHEL
 If you are using CentOS or RHEL, follow this procedure to upgrade your 
 packages. If not, skip to hypervisors section :ref:`upg_hyp_45`.
 
+.. include:: _timezone.rst
+
 .. note:: 
    **Community Packages:** This section assumes you're using the community
    supplied packages for CloudStack. If you've created your own packages and
@@ -218,7 +219,7 @@ This file should have content similar to the following:
    gpgcheck=0
 
 If you are using the community provided package repository, change
-the base url to ``http://download.cloudstack.org/centos/$releasever/4.9/``.
+the base url to ``http://download.cloudstack.org/centos/$releasever/4.13/``.
 
 Setup the GPG public key if you wish to enable ``gpgcheck=1``:
 
@@ -403,7 +404,6 @@ For KVM hosts, upgrade the ``cloudstack-agent`` package
    .. parsed-literal::
 
       $ sudo service cloudstack-agent stop
-      $ sudo killall jsvc
       $ sudo service cloudstack-agent start
 
 
@@ -425,8 +425,6 @@ Restart management services
 
 .. _upg-sysvm45:
 
-System-VMs and Virtual-Routers
-------------------------------
 
 .. include:: _sysvm_restart.rst
 

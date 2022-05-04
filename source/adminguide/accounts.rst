@@ -12,7 +12,7 @@
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
- 
+
 
 Roles, Accounts, Users, and Domains
 -----------------------------------
@@ -24,6 +24,8 @@ A role represents a set of allowed functions. All CloudStack accounts have a
 role attached to them that enforce access rules on them to be allowed or
 disallowed to make an API request. Typically there are four default roles:
 root admin, resource admin, domain admin and user.
+Newer roles have been added which include Read-Only Admin, Read-Only User,
+Support Admin and Support User which are in turn based on the aforementioned roles.
 
 
 Accounts
@@ -43,9 +45,8 @@ delegated administrators with some authority over the domain and its
 subdomains. For example, a service provider with several resellers could
 create a domain for each reseller.
 
-For each account created, the Cloud installation creates three different
-types of user accounts: root administrator, domain administrator, and
-user.
+Beside the Root Administrator type of account (available in the root domain only), two different types
+of accounts can be created for each domain:  Domain Administrator and User.
 
 
 Users
@@ -83,6 +84,33 @@ Root administrators have complete access to the system, including
 managing templates, service offerings, customer care administrators, and
 domains
 
+Read Only Administrator
+~~~~~~~~~~~~~~~~~~~~~~~
+
+A restricted admin role in which an account is only allowed to perform any list, get
+or find operations but not perform any other operation which can change the
+infrastructure, configuration or user resources.
+
+Read Only User
+~~~~~~~~~~~~~~
+
+A restricted user role in which an account is only allowed to perform list, get or find
+operations. It can be used by users who may only be interested in monitoring and usage
+of resources.
+
+Support Admin
+~~~~~~~~~~~~~
+
+A restricted admin role in which an admin account is limited to perform axilary support
+and maintenance tasks which do not directly affect the infrastucture, such as creating offerings,
+and put resources in maintenance, but cannot change the infrastructure such as physical networks.
+
+Support User
+~~~~~~~~~~~~
+
+A restricted user role in which an account cannot create or destroy resources, but can view resources
+and perform auxilary and support operations such as start or stop VMs, attach or detach volumes, ISOs etc.
+
 
 Resource Ownership
 ~~~~~~~~~~~~~~~~~~
@@ -102,19 +130,50 @@ to any other account in the domain or any of its sub-domains.
 Using Dynamic Roles
 -------------------
 
-In addition to the four default roles, the dynamic role-based API checker feature
+In addition to the default roles, the dynamic role-based API checker feature
 allows CloudStack root admins to create new roles with customized permissions.
 The allow/deny rules can be configured dynamically during runtime without
 restarting the management server(s).
 
+.. Note:: in versions before 4.16.1, any user given the custom roles
+          that include permission to create and/or update accounts
+          will have the ability to assign new custom roles to
+          themsevles or other users, irrespective of the privileges
+          given in those roles. This could allow such a user to
+          escalate their own privileges to include any API they might
+          not have had before. Therefore, the dynamic roles should be
+          carefully designed and the `createAccount` and
+          `updateAccount` privileges should only be given to users who
+          you are content to have this level of privilege.
+
+          Since 4.16.1 a user will be prevented to create an account
+          with a role that has any permissions that they do not have
+          themselves. This check will also be performed, since that
+          version, on updating an account-role.
+
 For backward compatiblity, all roles resolve to one of the four role types:
 admin, resource admin, domain admin and user. A new role can be created using
-the roles tab in the UI and specifying a name, a role type and optionally a
-description.
+the roles tab in the UI and specifying a name, either a role type or ID of existing
+role, and optionally a description. When a new role is created using ID of existing
+role, all the rules of the existing role are copied to the new role and these rules
+can be modified as desired.
 
-Role specific rules can be configured through the rules tab on role specific
-details page. A rule is either an API name or a wildcard string that are one of
-allow or deny permission and optionally a description.
+Role specific rules can be either configured through the rules tab on role specific
+details page or imported from a CSV file while creating a new role with role type.
+A rule is either an API name or a wildcard string that are one of allow or deny
+permission and optionally a description. These rules can be exported to a
+CSV file, name defaulted to “<RoleName>_<RoleType>.csv”.
+
+CSV file format:
+
+.. parsed-literal::
+
+   rule,permission,description
+   <Rule1>,<Permission1>,<Description1>
+   <Rule2>,<Permission2>,<Description2>
+   <Rule3>,<Permission3>,<Description3>
+   …
+   so on
 
 When a user makes an API request, the backend checks the requested API against
 configured rules (in the order the rules were configured) for the caller
@@ -134,8 +193,8 @@ After an upgrade, existing deployments can be migrated to use this feature by
 running a migration tool by the CloudStack admin. The migration tool is located
 at ``/usr/share/cloudstack-common/scripts/util/migrate-dynamicroles.py``.
 
-**NOTE: If you have not changed your commands.properties file at any time, then 
-it is recommended to use the -D (default) option as otherwise new API commands may 
+**NOTE: If you have not changed your commands.properties file at any time, then
+it is recommended to use the -D (default) option as otherwise new API commands may
 not be added to the dynamic roles database.**
 
 During migration, this tool enables an internal flag in the database,
@@ -168,7 +227,7 @@ Options:
 
 
 Example:
- 
+
 
 .. parsed-literal::
 
@@ -233,7 +292,7 @@ How to Use Dedicated Hosts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To use an explicitly dedicated host, use the explicit-dedicated type of
-affinity group (see `“Affinity Groups” <virtual_machines.html#affinity-groups>`_). 
+affinity group (see `“Affinity Groups” <virtual_machines.html#affinity-groups>`_).
 For example, when creating a new VM, an
 end user can choose to place it on dedicated infrastructure. This
 operation will succeed only if some infrastructure has already been
@@ -279,22 +338,151 @@ or ApacheDS to authenticate CloudStack end-users. CloudStack will search
 the external LDAP directory tree starting at a specified base directory
 and gets user info such as first name, last name, email and username.
 
-Starting with CloudStack 4.11, an ldap connection per domain can be
-defined.
+Starting with CloudStack 4.11, an LDAP connection per domain can be
+defined. In this domain autosync per account can be configured,
+keeping the users in the domain up to date with their group membership
+in LDAP.
 
-To authenticate, username and password entered by the user are used.
-Cloudstack does a search for a user with the given username. If it
-exists, it does a bind request with DN and password.
+.. Note:: A caveat with this is that ApacheDS does not yet support the
+          virtual 'memberOf' attribute needed to check if a user moved
+          to another account. Microsoft AD and OpenLDAP as well as
+          OpenDJ do support this. It is a planned feature for ApacheDS
+          that can be tracked in
+          https://issues.apache.org/jira/browse/DIRSERVER-1844.
+
+There are now three ways to link LDAP users to CloudStack users. These
+three ways where developed as extensions on top of each other.
+
+To authenticate, in all three cases username and password entered by
+the user are used.
+
+#. **manual import**. A user is explicitely mapped to a domain/account
+   and created as a user in that account.
+
+       #. CloudStack does a search for a user with the given username.
+
+       #. If it exists, it checks if the user is enabled.
+
+       #. If the user is enabled, CloudStack searches for it in LDAP
+          by the configured ``ldap.username.attribute``.
+
+       #. If the LDAP user is found, CloudStack does a bind request
+          with the returned principal for that LDAP user and the
+          entered password.
+
+       #. The authentication result from LAP is honoured.
+
+#. **autoimport**. A domain is configured to import any user if it
+   does not yet exist in that domain. For these users, an account in the
+   same name as the user is automatically created  and the user is created
+   in that account.
+
+       #. If the domain is configured to be used with LDAP,
+
+       #. CloudStack searches for it in LDAP by the configured
+          ``ldap.username.attribute``.
+
+       #. If an LDAP user is found, CloudStack does a bind
+          request with the returned principal for that LDAP user and
+          the entered password.
+
+       #. If LDAP authentication checks out, CloudStack checks if the
+          authenticated user exists in the domain it is trying to log
+          on to.
+
+          #. If the user exists in CloudStack, it is ensured to be enabled.
+
+          #. If it doesn't exist it is created in a new account with
+             the username as names for both account and user.
+
+       #. In case authentication fails the user will be disabled in
+          cloudstack after the configured
+          ``incorrect.login.attempts.allowed`` number of attempts.
+
+#. **autosync**. A domain is configured to use a LDAP server and in this
+   domain a number of accounts are 'mapped' against LDAP groups. Any
+   user that is in one of these configured accounts will be checked against the
+   current state of LDAP and if they exist they will be asserted to be
+   in the right account according to their LDAP group. If they do not
+   exist in LDAP they will be disabled in CloudStack.
+
+       #. If the domain is configured to be used by LDAP,
+
+       #. CloudStack searches for it in LDAP by the configured
+          ``ldap.username.attribute``.
+
+       #. If an LDAP user is found, it is checked for
+          memberships of mapped account, i.e. accounts for which LDAP
+          groups are configured.
+
+          #. If the LDAP user has 0, 2 or more memberships the account
+             is disabled and authentication fails.
+
+       #. CloudStack then does a bind request with the returned
+          principal for that LDAP user and the entered password.
+
+       #. If no CloudStack user exists it is created in the
+          appropriate account.
+
+       #. If a CloudStack user exists but is not in the appropriate
+          account its credentials will be moved.
 
 To set up LDAP authentication in CloudStack, call the CloudStack API
 command ``addLdapConfiguration`` and provide Hostname or IP address
 and listening port of the LDAP server. Optionally a domain id can be
-given for the domain for which this LDP connection is valid. You could
-configure multiple servers as well. These are expected to be
+given for the domain for which this LDAP connection is valid. You could
+configure multiple servers as well, for the same domain. These are expected to be
 replicas. If one fails, the next one is used.
 
-The following global configurations should also be configured (the
-default values are for openldap)
+.. code:: bash
+
+	  cloudmonkey add ldapconfiguration hostname=localhost\
+	                                    port=389\
+					    domainid=12345678-90ab-cdef-fedc-ba0987654321
+
+This is all that is required to enable the manual importing of LDAP users, the
+LisLdapUsers API can be used to query for users to import.
+
+For the auto import method, a CloudStack Domain needs to be linked to
+LDAP. For instance
+
+.. code:: bash
+
+          cloudmonkey link domaintoldap domainid=12345678-90ab-cdef-fedc-ba0987654321\
+                                        accounttype=2\
+                                        ldapdomain="ou=people,dc=cloudstack,dc=apache,dc=org"\
+	                                type=OU
+
+When you want to use auto sync, no domain is linked to ldap but one or
+more accounts. Within a CloudStack domain one needs to link accounts
+to LDAP groups. The linkage of the domain is implicit and nit needed
+to be applied through the API call described above.
+
+.. code:: bash
+
+   #!/bin/bash
+   [ -z "$LDAP1PASSWORD" -o -z "$LDAP2PASSWORD" ] && exit 1
+   ROOTDOMAIN=`cloudmonkey -d json list domains name=ROOT filter=id | jq .domain[0].id`
+
+   # mapping domain and account(s) from ldap server 1
+   MAPPEDDOMAIN1=`cloudmonkey -d json create domain name=mappedDomain1 parentdomainid=$ROOTDOMAIN | jq .domain.id`
+   cloudmonkey -d json add ldapconfiguration hostname=10.1.2.5 port=389 domainid=$MAPPEDDOMAIN1
+   cloudmonkey -d json update configuration domainid=$MAPPEDDOMAIN1 name="ldap.basedn" value="dc=cloudstack,dc=apache,dc=org"
+   cloudmonkey -d json update configuration domainid=$MAPPEDDOMAIN1 name='ldap.bind.principal' value='cn=admin,dc=cloudstack,dc=apache,dc=org'
+   cloudmonkey -d json update configuration domainid=$MAPPEDDOMAIN1 name='ldap.bind.password' value=$LDAP1PASSWORD
+   cloudmonkey -d json update configuration domainid=$MAPPEDDOMAIN1 name='ldap.search.group.principle' value='cn=AcsAccessGroup,dc=cloudstack,dc=apache,dc=org'
+   cloudmonkey -d json update configuration domainid=$MAPPEDDOMAIN1 name='ldap.user.memberof.attribute' value='memberOf'
+
+   cloudmonkey -d json ldap createaccount account='seniors' accounttype=2 domainid=$MAPPEDDOMAIN1 username=guru
+   cloudmonkey -d json link accounttoldap account='seniors' accounttype=2 domainid=$MAPPEDDOMAIN1 ldapdomain='cn=AcsSeniorAdmins,ou=AcsGroups,dc=cloudstack,dc=apache,dc=org' type=GROUP
+   cloudmonkey -d json ldap createaccount account='juniors' accounttype=0 domainid=$MAPPEDDOMAIN1 username=bystander
+   cloudmonkey -d json link accounttoldap account='juniors' accounttype=0 domainid=$MAPPEDDOMAIN1 ldapdomain='cn=AcsJuniorAdmins,ou=AcsGroups,dc=cloudstack,dc=apache,dc=org' type=GROUP
+
+
+
+In addition to those shown in the example script above, the following
+configuration items can be configured (the default values are for
+openldap)
 
 -  ``ldap.basedn``:	Sets the basedn for LDAP. Ex: **OU=APAC,DC=company,DC=com**
 
@@ -340,7 +528,7 @@ LDAP groups:
 ~~~~~~~~~~~~
 
 -  ``ldap.group.object``: object type of groups within LDAP. Default value is
-   group for AD and **groupOfUniqueNames** for openldap.	
+   group for AD and **groupOfUniqueNames** for openldap.
 
 -  ``ldap.group.user.uniquemember``: attribute for uniquemembers within a group.
    Default value is **member** for AD and **uniquemember** for openldap.
@@ -352,13 +540,13 @@ which opens a dialog and the selected users can be imported.
    :align:   center
 
 
-You could also use api commands: ``listLdapUsers``, ``ldapCreateAccount`` and
-``importLdapUsers``.
+You could also use api commands:
+``listLdapUsers``, to list users in LDAP that could or would be imported in CloudStack
+``ldapCreateAccount``, to manually create a user in a specific account
+``importLdapUsers``, to batch import users from LDAP
 
 Once LDAP is enabled, the users will not be allowed to changed password
-directly in cloudstack.
-
-
+directly in CloudStack.
 
 .. |button to dedicate a zone, pod,cluster, or host| image:: /_static/images/dedicate-resource-button.png
 

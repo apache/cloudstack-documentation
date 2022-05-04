@@ -59,8 +59,8 @@ account. Isolated networks have the following properties.
 -  The network offering can be upgraded or downgraded but it is for the
    entire network
 
-For more information, see `“Configure Guest Traffic in an Advanced Zone” 
-<networking2.html#configure-guest-traffic-in-an-advanced-zone>`_.
+For more information, see `“Configure Guest Traffic in an Advanced Zone”
+<networking_and_traffic.html#configure-guest-traffic-in-an-advanced-zone>`_.
 
 
 Shared Networks
@@ -69,9 +69,11 @@ Shared Networks
 A shared network can be accessed by virtual machines that belong to many
 different accounts. Network Isolation on shared networks is accomplished
 by using techniques such as security groups, which is supported only in
-Basic zones in CloudStack 3.0.3 and later versions.
+Basic zones or Advanced Zones with Security Groups.
 
--  Shared Networks are created by the administrator
+-  Shared Networks are created by the the end users or the administrator. Network offerings
+   which allow the network creator to specify a VLAN can only be created 
+   by the root admins.
 
 -  Shared Networks can be designated to a certain domain
 
@@ -84,16 +86,18 @@ Basic zones in CloudStack 3.0.3 and later versions.
 
 -  Source NAT per zone is not supported in Shared Network when the
    service provider is virtual router. However, Source NAT per account
-   is supported. For information, see `“Configuring a Shared Guest 
-   Network” <networking2.html#configuring-a-shared-guest-network>`_.
+   is supported.
+
+For more information, see `“Configuring a Shared Guest Network”
+<networking_and_traffic.html#configuring-a-shared-guest-network>`_.
 
 
-L2 Networks
-~~~~~~~~~~~
+L2 (Layer 2) Networks
+~~~~~~~~~~~~~~~~~~~~~
 
 L2 networks provide network isolation without any other services.  This
 means that there will be no virtual router.  It is assumed that the end
-user will have their own IPAM in place, or that they will statically assign 
+user will have their own IPAM in place, or that they will statically assign
 IP addresses.
 
 -  L2 networks can be created by the end users, however network offerings
@@ -107,7 +111,7 @@ IP addresses.
 
 Example GUI dialog box (for a regular user account) is shown below:
 
-|L2-networks-gui.JPG|
+|L2-networks-gui.png|
 
 
 Runtime Allocation of Virtual Network Resources
@@ -124,8 +128,8 @@ helps to conserve network resources.
 Network Service Providers
 -------------------------
 
-.. note:: 
-   For the most up-to-date list of supported network service providers, 
+.. note::
+   For the most up-to-date list of supported network service providers,
    see the CloudStack UI or call `listNetworkServiceProviders`.
 
 A service provider (also called a network element) is hardware or
@@ -179,8 +183,8 @@ offering.
 Network Offerings
 -----------------
 
-.. note:: 
-   For the most up-to-date list of supported network services, see the 
+.. note::
+   For the most up-to-date list of supported network services, see the
    CloudStack UI or call listNetworkServices.
 
 A network offering is a named set of network services, such as:
@@ -220,12 +224,12 @@ running a web server farm and require a scalable firewall solution, load
 balancing solution, and alternate networks for accessing the database
 backend.
 
-.. note:: 
-   If you create load balancing rules while using a network service 
-   offering that includes an external load balancer device such as 
-   NetScaler, and later change the network service offering to one that 
-   uses the CloudStack virtual router, you must create a firewall rule 
-   on the virtual router for each of your existing load balancing rules 
+.. note::
+   If you create load balancing rules while using a network service
+   offering that includes an external load balancer device such as
+   NetScaler, and later change the network service offering to one that
+   uses the CloudStack virtual router, you must create a firewall rule
+   on the virtual router for each of your existing load balancing rules
    so that they continue to function.
 
 When creating a new virtual network, the CloudStack administrator
@@ -246,9 +250,7 @@ To create a network offering:
 
 #. Log in with admin privileges to the CloudStack UI.
 
-#. In the left navigation bar, click Service Offerings.
-
-#. In Select Offering, choose Network Offering.
+#. In the left navigation bar, click Service Offerings and choose Network Offering.
 
 #. Click Add Network Offering.
 
@@ -271,9 +273,9 @@ To create a network offering:
       or not. The network that you can provision without having to
       deploy a VM on it is termed persistent network. For more
       information, see `“Persistent
-      Networks” <networking2.html#persistent-networks>`_.
+      Networks” <networking_and_traffic.html#persistent-networks>`_.
 
-   -  **Specify VLAN**. (Isolated guest networks only) Indicate whether
+   -  **Specify VLAN**. Indicate whether
       a VLAN could be specified when this offering is used. If you
       select this option and later use this network offering while
       creating a VPC tier or an isolated network, you will be able to
@@ -284,7 +286,41 @@ To create a network offering:
       isolated part of CloudStack. A VPC can have its own virtual
       network topology that resembles a traditional physical network.
       For more information on VPCs, see `“About Virtual
-      Private Clouds” <networking2.html#about-virtual-private-clouds>`_.
+      Private Clouds” <networking_and_traffic.html#about-virtual-private-clouds>`_.
+
+   -  **Promiscuous Mode**. Applicable for guest networks on VMware hypervisor only. It accepts the following values for desired behaviour of the network elements:
+
+      *Reject* - The switch drops any outbound frame from a virtual machine adapter with a source MAC address that is different from the one in the .vmx configuration file.
+
+      *Accept* - The switch does not perform filtering, and permits all outbound frames.
+
+      *None* - Default to value from global setting - ``network.promiscuous.mode``.
+
+   -  **Forged Transmits**. Applicable for guest networks on VMware hypervisor only. It accepts the following values for desired behaviour of the network elements:
+
+      *Reject* - The switch drops any outbound frame from a virtual machine adapter with a source MAC address that is different from the one in the .vmx configuration file.
+
+      *Accept* - The switch does not perform filtering, and permits all outbound frames.
+
+      *None* - Default to value from global setting - ``network.forged.transmits``.
+
+   -  **MAC Address Changes**. Applicable for guest networks on VMware hypervisor only. It accepts the following values for desired behaviour of the network elements:
+
+      *Reject* - If the guest OS changes the effective MAC address of the virtual machine to a value that is different from the MAC address of the VM network adapter (set in the .vmx configuration file), the switch drops all inbound frames to the adapter.
+
+      If the guest OS changes the effective MAC address of the virtual machine back to the MAC address of the VM network adapter, the virtual machine receives frames again.
+
+      *Accept* - If the guest OS changes the effective MAC address of the virtual machine to a value that is different from the MAC address of the VM network adapter, the switch allows frames to the new address to pass.
+
+      *None* - Default to value from global setting - ``network.mac.address.changes``.
+
+   -  **MAC Learning**. Applicable for guest networks on VMware hypervisor only with VMware Distributed Virtual Switches version 6.6.0 & above and vSphere version 6.7 & above. It accepts the following values for desired behaviour of the network elements:
+
+      *Reject* - Network connectivity for multiple MAC address behind a single vNIC will not work.
+
+      *Accept* - Enables network connectivity for multiple MAC addresses behind a single vNIC.
+
+      *None* - Default to value from global setting - ``network.mac.learning``.
 
    -  **Supported Services**. Select one or more of the possible network
       services. For some services, you must also choose the service
@@ -298,12 +334,14 @@ To create a network offering:
       following supported services:
 
       .. cssclass:: table-striped table-bordered table-hover
-      
+
       =================== ============================================================================ ============= =============
-      Supported Services  Description                                                                  Isolated      Shared   
+      Supported Services  Description                                                                  Isolated      Shared
       =================== ============================================================================ ============= =============
-      DHCP                For more information, see `“DNS and DHCP” <networking2.html#dns-and-dhcp>`_. Supported     Supported
-      DNS                 For more information, see `“DNS and DHCP” <networking2.html#dns-and-dhcp>`_. Supported     Supported
+      DHCP                For more information, see `“DNS and                                          Supported     Supported
+                          DHCP” <networking_and_traffic.html#dns-and-dhcp>`_.
+      DNS                 For more information, see `“DNS and                                          Supported     Supported
+                          DHCP”  <networking_and_traffic.html#dns-and-dhcp>`_.
       Load Balancer       If you select Load Balancer, you can choose the CloudStack virtual           Supported     Supported
                           router or any other load balancers that have been configured in
                           the cloud.
@@ -318,13 +356,13 @@ To create a network offering:
                           virtual router or any other Port Forwarding providers that have
                           been configured in the cloud.
       VPN                 For more information, see `“Remote Access                                    Supported     Not Supported
-                          VPN” <networking2.html#remote-access-vpn>`_.
+                          VPN” <networking_and_traffic.html#remote-access-vpn>`_.
       User Data           For more information, see `“User Data and Meta                               Not Supported Supported
                           Data” <api.html#user-data-and-meta-data>`_.
-      Network ACL         For more information, see `“Configuring Network Access                       Supported     Not Supported
-                          Control List” <networking2.html#configuring-network-access-control-list>`_.
+      Network ACL         For more information, see `“Configuring Network Access Control List          Supported     Not Supported
+                          ” <networking_and_traffic.html#configuring-network-access-control-list>`_.
       Security Groups     For more information, see `“Adding a Security                                Not Supported Supported
-                          Group” <networking2.html#adding-a-security-group>`_.
+                          Group” <networking_and_traffic.html#adding-a-security-group>`_.
       =================== ============================================================================ ============= =============
 
 
@@ -338,7 +376,7 @@ To create a network offering:
       system service offering and any custom system service offerings
       that have been defined by the CloudStack root administrator.
 
-      For more information, see `“System Service Offerings” 
+      For more information, see `“System Service Offerings”
       <service_offerings.html#system-service-offerings>`_.
 
    -  **LB Isolation**: Specify what type of load balancer isolation you
@@ -369,7 +407,7 @@ To create a network offering:
          balancing traffic to the load balancer behind it. The load
          balancer in this case will not have the direct access to the
          public network.
-  
+
       -  **Side by Side**: In side by side mode, a firewall device is
          deployed in parallel with the load balancer device. So the traffic
          to the load balancer public IP is not routed through the firewall,
@@ -384,17 +422,17 @@ To create a network offering:
 
       -  Elastic IP is enabled.
 
-      For information on Elastic IP, see `“About Elastic IP” 
-      <networking2.html#about-elastic-ip>`_.
+      For information on Elastic IP, see `“About Elastic IP”
+      <networking/elastic_ips.html>`_.
 
    -  **Redundant router capability**: Available only when Virtual
       Router is selected as the Source NAT provider. Select this option
       if you want to use two virtual routers in the network for
-      uninterrupted connection: one operating as the master virtual
-      router and the other as the backup. The master virtual router
+      uninterrupted connection: one operating as the primary virtual
+      router and the other as the backup. The primary virtual router
       receives requests from and sends responses to the user’s VM. The
-      backup virtual router is activated only when the master is down.
-      After the failover, the backup becomes the master virtual router.
+      backup virtual router is activated only when the primary is down.
+      After the failover, the backup becomes the primary virtual router.
       CloudStack deploys the routers on different hosts to ensure
       reliability if one host is down.
 
@@ -407,10 +445,10 @@ To create a network offering:
       the conserve mode is on, you can define more than one service on
       the same public IP.
 
-      .. note:: 
-        If StaticNAT is enabled, irrespective of the status of the 
-        conserve mode, no port forwarding or load balancing rule can be 
-        created for the IP. However, you can add the firewall rules by 
+      .. note::
+        If StaticNAT is enabled, irrespective of the status of the
+        conserve mode, no port forwarding or load balancing rule can be
+        created for the IP. However, you can add the firewall rules by
         using the createFirewallRule command.
 
    -  **Tags**: Network tag to specify which physical network to use.
@@ -426,21 +464,21 @@ To create a network offering:
       guest network, rules are added to allow the specified traffic.
 
    -  **Public**: Indicate whether the network offering should be available to
-      all domains or only some domains. Choose Yes to make it available to 
+      all domains or only some domains. Choose Yes to make it available to
       all domains. Choose No to limit the scope to one or more domains.
 
    -  **Domain**: This is only visible When ‘Public’ is unchecked. When visible,
-      this controls the domains which will be able to use this network offering. 
-      A multi-selection list box will be displayed. One or more domains can be 
-      selected from this list box by holding down the control key and selecting 
+      this controls the domains which will be able to use this network offering.
+      A multi-selection list box will be displayed. One or more domains can be
+      selected from this list box by holding down the control key and selecting
       the desired domains.
 
-   -  **Zone**: This controls which zones a network offering is available in. 
-      ‘All zones’ or only specific zones can be selected. One or more zones can be 
-      selected from this list box by holding down the control key and selecting 
+   -  **Zone**: This controls which zones a network offering is available in.
+      ‘All zones’ or only specific zones can be selected. One or more zones can be
+      selected from this list box by holding down the control key and selecting
       the desired zones.
 
 #. Click Add.
 
-.. |L2-networks-gui.JPG| image:: /_static/images/L2-networks-gui.JPG
+.. |L2-networks-gui.png| image:: /_static/images/L2-networks-gui.png
    :alt: Creating L2 network from GUI

@@ -199,12 +199,29 @@ essential that your hosts are completely up to date with the provided
 hypervisor patches. The hypervisor vendor is likely to refuse to support
 any system that is not up to date with patches.
 
-.. note:: 
+.. note::
    The lack of up-do-date hotfixes can lead to data corruption and lost VMs.
 
-(XenServer) For more information, see 
-`Highly Recommended Hotfixes for XenServer in the CloudStack Knowledge Base 
+(XenServer) For more information, see
+`Highly Recommended Hotfixes for XenServer in the CloudStack Knowledge Base
 <http://docs.cloudstack.org/Knowledge_Base/Possible_VM_corruption_if_XenServer_Hotfix_is_not_Applied/Highly_Recommended_Hotfixes_for_XenServer_5.6_SP2>`_.
+
+
+Hypervisor Capabilities
+-----------------------
+For different hypervisors and their versions, various capabilities such as maximum number of guest VMs per host, maximum number of volumes per VM, security group support, etc are considered by CloudStack. These capabilities are stored in the **cloud.hypervisor_capabilities** table in the database. If a specific hypervisor version is not available in the database, values against the *default* version for the hypervisor will be used.
+These capabilities can be listed using API - ``listHypervisorCapabilities``. Some of the hypervisor capabilities can also be updated for a hypervisor type and version combination using API - ``updateHypervisorCapabilities``.
+
+Following hypervisor-specific documentations can be referred for different maximums for a particular hypervisor host:
+
+- VMware: `VMware Configuration Maximum tool <https://configmax.vmware.com/guest?vmwareproduct=vSphere&release=vSphere%207.0&categories=1-0,2-0>`_.
+
+- Citrix Hypervisor/Xenserver/XCP-ng: `Configuration limits | Citrix Hypervisor 8.2 <https://docs.citrix.com/en-us/citrix-hypervisor/system-requirements/configuration-limits.html>`_.
+
+
+.. note::
+   Guest VM limit check is not done while deploying a VM on a KVM hypervisor host.
+
 
 
 Changing Host Password
@@ -247,7 +264,7 @@ To change a Node's password:
 
    .. code:: bash
 
-      mysql> SELECT * FROM cloud.host_details WHERE name='password' AND host_id={previous step ID}; 
+      mysql> SELECT * FROM cloud.host_details WHERE name='password' AND host_id={previous step ID};
 
 #. Update the passwords for the host in the database. In this example,
    we change the passwords for hosts with host IDs 5 and 12 and host_details IDs 8 and 22 to
@@ -266,15 +283,15 @@ Over-Provisioning and Service Offering Limits
 CPU and memory (RAM) over-provisioning factors can be set for each
 cluster to change the number of VMs that can run on each host in the
 cluster. This helps optimize the use of resources. By increasing the
-over-provisioning ratio, more resource capacity will be used. If the
-ratio is set to 1, no over-provisioning is done.
+over-provisioning factor, more resource capacity will be used. If the
+factor is set to 1, no over-provisioning is done.
 
-The administrator can also set global default over-provisioning ratios
+The administrator can also set global default over-provisioning factors
 in the cpu.overprovisioning.factor and mem.overprovisioning.factor
 global configuration variables. The default value of these variables is
 1: over-provisioning is turned off by default.
 
-Over-provisioning ratios are dynamically substituted in CloudStack's
+Over-provisioning factors are dynamically substituted in CloudStack's
 capacity calculations. For example:
 
 Capacity = 2 GB
@@ -286,8 +303,8 @@ With this configuration, suppose you deploy 3 VMs of 1 GB each:
 Used = 3 GB
 Free = 1 GB
 
-The administrator can specify a memory over-provisioning ratio, and can
-specify both CPU and memory over-provisioning ratios on a per-cluster
+The administrator can specify a memory over-provisioning factor, and can
+specify both CPU and memory over-provisioning factors on a per-cluster
 basis.
 
 In any given cloud, the optimum number of VMs for each host is affected
@@ -303,8 +320,8 @@ The overprovisioning settings can be used along with dedicated resources
 (assigning a specific cluster to an account) to effectively offer
 different levels of service to different accounts. For example, an
 account paying for a more expensive level of service could be assigned
-to a dedicated cluster with an over-provisioning ratio of 1, and a
-lower-paying account to a cluster with a ratio of 2.
+to a dedicated cluster with an over-provisioning factor of 1, and a
+lower-paying account to a cluster with a factor of 2.
 
 When a new host is added to a cluster, CloudStack will assume the host
 has the capability to perform the CPU and RAM over-provisioning which is
@@ -366,8 +383,8 @@ administrator must set CONFIG\_VIRTIO\_BALLOON=y in the virtio
 configuration.
 
 
-Hypervisor capabilities
-^^^^^^^^^^^^^^^^^^^^^^^
+Hypervisor capability
+^^^^^^^^^^^^^^^^^^^^^
 
 The hypervisor must be capable of using the memory ballooning.
 
@@ -385,46 +402,48 @@ VMware, KVM
 Memory ballooning is supported by default.
 
 
-Setting Over-Provisioning Ratios
+Setting Over-Provisioning Factors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are two ways the root admin can set CPU and RAM over-provisioning
-ratios. First, the global configuration settings
+factors. First, the global configuration settings
 cpu.overprovisioning.factor and mem.overprovisioning.factor will be
-applied when a new cluster is created. Later, the ratios can be modified
+applied when a new cluster is created. Later, the factors can be modified
 for an existing cluster.
 
 Only VMs deployed after the change are affected by the new setting. If
 you want VMs deployed before the change to adopt the new
-over-provisioning ratio, you must stop and restart the VMs. When this is
+over-provisioning factor, you must stop and restart the VMs. When this is
 done, CloudStack recalculates or scales the used and reserved capacities
-based on the new over-provisioning ratios, to ensure that CloudStack is
+based on the new over-provisioning factors, to ensure that CloudStack is
 correctly tracking the amount of free capacity.
 
-.. note:: 
-   It is safer not to deploy additional new VMs while the capacity 
-   recalculation is underway, in case the new values for available 
-   capacity are not high enough to accommodate the new VMs. Just wait 
-   for the new used/available values to become available, to be sure 
+.. note::
+   It is safer not to deploy additional new VMs while the capacity
+   recalculation is underway, in case the new values for available
+   capacity are not high enough to accommodate the new VMs. Just wait
+   for the new used/available values to become available, to be sure
    there is room for all the new VMs you want.
 
-To change the over-provisioning ratios for an existing cluster:
+To change the over-provisioning factors for an existing cluster:
 
 #. Log in as administrator to the CloudStack UI.
 
 #. In the left navigation bar, click Infrastructure.
 
-#. Under Clusters, click View All.
+#. Select Clusters.
 
-#. Select the cluster you want to work with, and click the Edit button.
+#. Select the cluster you want to work with, and click the Settings button.
+
+#. Search for overprovisioning.
 
 #. Fill in your desired over-provisioning multipliers in the fields CPU
-   overcommit ratio and RAM overcommit ratio. The value which is
+   overcommit factor and RAM overcommit factor. The value which is
    intially shown in these fields is the default value inherited from
    the global configuration settings.
 
-   .. note:: 
-      In XenServer, due to a constraint of this hypervisor, you can not 
+   .. note::
+      In XenServer, due to a constraint of this hypervisor, you can not
       use an over-provisioning factor greater than 4.
 
 
@@ -514,8 +533,7 @@ range.
 
 #. In the left navigation, choose Infrastructure.
 
-#. On Zones, click View More, then click the zone to which you want to
-   work with.
+#. Click Zones and select the zone you'd like to modify.
 
 #. Click Physical Network.
 
@@ -572,8 +590,8 @@ To enable you to assign VLANs to Isolated networks,
    network and the state is changed to Setup. In this state, the network
    will not be garbage collected.
 
-.. note:: 
-   You cannot change a VLAN once it's assigned to the network. The VLAN 
+.. note::
+   You cannot change a VLAN once it's assigned to the network. The VLAN
    remains with the network for its entire life cycle.
 
 
@@ -593,6 +611,13 @@ IPMI 2.0 baseboard controller are supported out of the box with ``IPMITOOL``
 out-of-band management driver in CloudStack that uses ``ipmitool`` for performing
 IPMI 2.0 management operations.
 
+CloudStack also supports Redfish protocol for out-of-band management; Redfish provides an
+HTTP REST API to control servers and has been widely adopted on newer machines.
+The commands supported by CloudStack's Redfish out-of-band driver are the same supported by
+the IPMITOOL driver.
+
+Note: so far CloudStack officially supports Redfish protocol for Dell and Supermicro machines.
+
 Following are some global settings that control various aspects of this feature.
 
 .. cssclass:: table-striped table-bordered table-hover
@@ -605,6 +630,8 @@ outofbandmanagement.ipmitool.interface    lanplus                         The ou
 outofbandmanagement.ipmitool.path         /usr/bin/ipmitool               The out of band management ipmitool path used by the IpmiTool driver
 outofbandmanagement.ipmitool.retries      1                               The out of band management IpmiTool driver retries option -R
 outofbandmanagement.sync.poolsize         50                              The out of band management background sync thread pool size 50
+redfish.ignore.ssl                        true                            Default value is false, ensuring that the client requests validate the certificate when using SSL. If set to true the redfish client will ignore SSL certificate validation when sending requests to a Redfish server.
+redfish.use.https	                      true                            Use HTTPS/SSL for all connections.
 =======================================   =============================   ====================================================================================================
 
 A change in ``outofbandmanagement.sync.poolsize`` settings requires restarting of
@@ -632,6 +659,11 @@ power management actions such as on, off, reset, cycle, soft and status.
 
 If a host is in maintenance mode, Root admins are still allowed to perform
 power management actions but in the UI a warning is displayed.
+
+.. note::
+
+  IPMI based out-of-band management and Host HA may not work on Centos 8 using the default ipmitool version -
+  Installing ipmitool-1.8.18-12.el8_1.x86_64.rpm may solve the problem. Make sure to test the ipmitool on your physical equipment before using the IPMI-based out-of-band management and Host HA features.
 
 .. _host-security:
 
@@ -755,7 +787,7 @@ Feature Overview
 
 -  This feature applies to KVM hosts.
 -  KVM utilised under CloudStack uses the standard Libvirt hook script behaviour as outlined in the Libvirt documentation page `hooks`_.
--  During the install of the KVM CloudStack agent, the Libvirt hook script "/etc/libvirt/hooks/qemu", referred to as the qemu script hereafter is installed. 
+-  During the install of the KVM CloudStack agent, the Libvirt hook script "/etc/libvirt/hooks/qemu", referred to as the qemu script hereafter is installed.
 -  This is a python script that carries out network management tasks every time a VM is started, stopped or migrated, as per the Libvirt hooks specification.
 -  Custom network configuration tasks can be done at the same time as the qemu script is called.
 -  Since the tasks in question are user-specific, they cannot be included in the CloudStack-provided qemu script.
@@ -774,8 +806,8 @@ Usage
 ~~~~~~
 
 -  The cloudstack-agent package will install the qemu script in the /etc/libvirt/hooks directory of Libvirt.
--  The Libvirt documentation page `arguments`_ describes the arguments that can be passed to the qemu script. 
--  The input arguments are: 
+-  The Libvirt documentation page `arguments`_ describes the arguments that can be passed to the qemu script.
+-  The input arguments are:
 
     #. Name of the object involved in the operation, or '-' if there is none. For example, the name of a guest being started.
     #. Name of the operation being performed. For example, 'start' if a guest is being started.
@@ -786,7 +818,7 @@ Usage
 
 -  If an invalid operation argument is received, the qemu script will log the fact, not execute any custom scripts and exit.
 
--  All input arguments that are passed to the qemu script will also be passed to each custom script. 
+-  All input arguments that are passed to the qemu script will also be passed to each custom script.
 
 -  For each of the above actions, the qemu script will find and run scripts by the name "<action>_<custom script name>" in a custom include path /etc/libvirt/hooks/custom/. Custom scripts that do not follow this naming convention will be ignored and not be executed.
 
@@ -811,7 +843,7 @@ Timeout Configuration
 
 Custom Script Naming for a Specific VM Action
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--  For a custom script that needs to be executed at the end of a specific VM action, do the following: 
+-  For a custom script that needs to be executed at the end of a specific VM action, do the following:
 
     #. Navigate to the custom script that needs to be executed for a specific action.
     #. Rename the file by prefixing to the filename the specific action name followed by an underscore. For example, if a custom script is named abc.sh, then prefix 'migrate' and an underscore to the name to become migrate_abc.sh.
@@ -826,7 +858,7 @@ Custom Script Naming for All VM Actions
     #. Rename the file by prefixing 'all' to the filename, followed by an underscore.  For example, if a custom script is named def.py, then prefix 'all' and an underscore to the name to become all_def.py.
 
 Custom Script Execution Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -  Grant each custom script execute permissions so that the underlying host operating system can execute them:
 
     #. Navigate to the custom script that needs to be executable.
@@ -845,3 +877,129 @@ Custom Script Execution Configuration
 .. _`hooks`: https://libvirt.org/hooks.html
 .. _`qemu`: https://libvirt.org/hooks.html#qemu
 .. _`arguments`: https://libvirt.org/hooks.html#arguments
+
+
+KVM Rolling Maintenance
+-----------------------
+
+Overview
+~~~~~~~~
+
+CloudStack provides a flexible framework for automating the upgrade or patch process of KVM hosts within a zone, pod or cluster by executing custom scripts. These scripts are executed in the context of a stage. Each stage defines only one custom script to be executed.
+
+There are four stages in the KVM rolling maintenance process:
+
+#. Pre-Flight stage: Pre-flight script (``PreFlight`` or ``PreFlight.sh`` or ``PreFlight.py``) runs on hosts before commencing the rolling maintenance. If pre-flight check scripts return an error from any host, then rolling maintenance will be cancelled with no actions taken, and an error returned. If there are no pre-flight scripts defined, then no checks will be done from the hosts.
+
+#. Pre-Maintenace stage: Pre-maintenance script ((``PreMaintenance`` or ``PreMaintenance.sh`` or ``PreMaintenance.py``)) runs before a specific host is put into maintenance. If no pre-maintenance script is defined, then no pre-maintenance actions will be taken, and the management server will move straight to putting the host in maintenance followed by requesting that the agent runs the maintenance script.
+
+#. Maintenance stage: Maintenance script ((``Maintenance`` or ``Maintenance.sh`` or ``Maintenance.py``)) runs after a host has been put into maintenance. If no maintenance script is defined, or if the pre-flight or pre-maintenance scripts determine that no maintenance is required, then the host will not be put into maintenance, and the completion of the pre-maintenance scripts will signal the end of all maintenance tasks and the KVM agent will hand the host back to the management server. Once the maintenance scripts have signalled that it has completed, the host agent will signal to the management server that the maintenance tasks have completed, and therefore the host is ready to exit maintenance mode and any 'information' which was collected (such as processing times) will be returned to the management server.
+
+#. Post-Maintenance stage: Post-maintenance script ((``PostMaintenance`` or ``PostMaintenance.sh`` or ``PostMaintenance.py``)) is expected to perform validation after the host exits maintenance. These scripts will help to detect any problem during the maintenance process, including reboots or restarts within scripts.
+
+.. note::
+   Pre-flight and pre-maintenance scripts’ execution can determine if the maintenance stage is not required for a host. The special exit code = 70 on a pre-flight or pre-maintenance script will let CloudStack know that the maintenance stage is not required for a host.
+
+Administrators must define only one script per stage. In case a stage does not contain a script, it is skipped, continuing with the next stage. Administrators are responsible for defining and copying scripts into the hosts
+
+.. note::
+   The administrator will be responsible for the maintenance and copying of the scripts across all KVM hosts.
+
+On all the KVM hosts to undergo rolling maintenance, there are two types of script execution approaches:
+
+- Systemd service executor: This approach uses a systemd service to invoke a script execution. Once a script finishes its execution, it will write content to a file, which the agent reads and sends back the result to the management server.
+
+- Agent executor: The CloudStack agent invokes a script execution within the JVM. In case the agent is stopped or restarted, the management server will assume the stage was completed when the agent reconnects. This approach does not keep the state in a file.
+
+Configuration
+~~~~~~~~~~~~~
+
+The rolling maintenance process can be configured through the following global settings in the management server:
+
+- ``kvm.rolling.maintenance.stage.timeout``: Defines the timeout (in seconds) for rolling maintenance stage update from hosts to the management servers. The default value is 1800. This timeout is observed per stage.
+
+- ``kvm.rolling.maintenance.ping.interval``: Defines the ping interval (in seconds) between management server and hosts performing stages during rolling maintenance. The management server checks for updates from the hosts every ‘ping interval’ seconds. The default value is 10.
+
+- ``kvm.rolling.maintenance.wait.maintenance.timeout``: Defines the timeout (in seconds) to wait for a host preparing to enter maintenance mode as part of a rolling maintenance process. The default value is 1800.
+
+On each KVM host, the administrator must indicate the directory in which the scripts have been defined, be editing the ``agent.properties`` file, adding the property:
+
+- ``rolling.maintenance.hooks.dir=<SCRIPTS_DIR>``
+
+Optionally, the administrator can decide to disable the systemd executor for the rolling maintenance scripts on each host (enabled by default), allowing the agent to invoke the scripts through the agent execution. This can be done by editing the ``agent.properties`` file, adding the property:
+
+- ``rolling.maintenance.service.executor.disabled=true``
+
+Usage
+~~~~~
+
+An administrator can invoke a rolling maintenance process by the ``startRollingMaintenance`` API or through the UI, by selecting one or more zones, pods, clusters or hosts.
+
+The ``startRollingMaintenance`` API accepts the following parameters:
+
+- ``hostids``, ``clusterids``, ``podids`` and ``zoneids`` are mutually exclusive, and only one of them must be passed. Each of the mentioned parameters expects a comma-separated list of ids of the entity that it defines.
+
+- ``forced``: optional boolean parameter, false by default. When enabled, does not stop iterating through hosts in case of any error in the rolling maintenance process.
+
+- ``timeout``: optional parameter, defines a timeout in seconds for a stage to be completed in a host. This parameter takes precedence over the timeout defined in the global setting ``kvm.rolling.maintenance.stage.timeout``.
+
+.. note::
+   The timeout (defined by the API parameter or by the global setting) must be greater or equal than the ping interval defined by the global setting ‘kvm.rolling.maintenance.ping.interval’. In case the timeout is lower than the ping interval, the API does not start any maintenance actions and fails fast with a descriptive message.
+
+- ``payload``: optional string parameter, adds extra arguments to be passed to the scripts on each stage. The string set as parameter is used to invoke each of the scripts involved in the rolling maintenance process for each stage, by appending the payload at the end of the script invocation.
+
+.. note::
+   The payload parameter is appended at the end of each stage script execution. This allows the administrator to define scripts that can accept parameters and pass them through the payload parameter to each stage execution. For example: defining the payload parameter to “param1=val1 param2=val2” will pass both parameter to each stage execution, similar to execute: ‘./script param1=val1 param2=val2’.
+
+
+In the UI, the administrator must select one or multiple zones, pods, clusters or hosts and click the button: |kvm-rolling-maintenance.png|
+
+.. note::
+   Keep in mind that the rolling maintenance job results are not shown in the UI. To see the job output, one must use API/CLI (i.e. CloudMonkey).
+
+.. |kvm-rolling-maintenance.png| image:: /_static/images/kvm-rolling-maintenance.png
+
+Process
+~~~~~~~
+
+Before attempting any maintenance actions, pre-flight and capacity checks are performed on every host:
+
+#. The management server performs capacity checks to ensure that every host in the specified scope can be set into maintenance. These checks include host tags, affinity groups and compute checks
+
+#. The pre-flight scripts are executed on each host. If any of these scripts fail, then no action is performed unless the ‘force’ parameter is enabled.
+
+The pre-flight script may signal that no maintenance is needed on the host. In that case, the host is skipped from the rolling maintenance hosts iteration.
+
+Once pre-flight checks pass, then the management server iterates through each host in the selected scope and sends a command to execute each of the rest of the stages in order. The hosts in the selected scope are grouped by clusters, therefore all the hosts in a cluster are processed before processing the hosts of a different cluster.
+
+The management server iterates through hosts in each cluster on the selected scope and for each of the hosts does the following:
+
+- Disables the cluster (if it has not been disabled previously)
+- The existence of the maintenance script on the host is checked (this check is performed only for the maintenance script, not for the rest of the stages)
+
+  - If the host does not contain a maintenance script, then the host is skipped and the iteration continues with the next host in the cluster.
+
+-  Execute pre-maintenance script (if any) before entering maintenance mode.
+
+   -  The pre-maintenance script may signal that no maintenance is needed on the host. In that case, the host is skipped and the iteration continues with the next host in the cluster.
+
+   -  In case the pre-maintenance script fails and the ‘forced’ parameter is not set, then the rolling maintenance process fails and an error is reported. If the ‘forced’ parameter is set, the host is skipped and the iteration continues with the next host in the cluster
+
+-  Capacity checks are recalculated, to verify that the host can enter maintenance mode.
+
+   .. note::
+      Before recalculating the capacity, the capacity is updated, similar to performing a listCapacity API execution, setting the ‘fetchLatest’ parameter to true
+
+- The host is instructed to enter the maintenance mode. If the host doesn't enter the maintenance mode after ‘kvm.rolling.maintenance.wait.maintenance.timeout’ seconds an exception is thrown and the API will stop executing, but the host may eventually reach the maintenance mode as this is out of the control of the rolling maintenance API/code.
+
+- Execute maintenance script (if any) while the host is in maintenance.
+
+  - In case the maintenance script fails and the ‘forced’ parameter is not set, the rolling maintenance process fails, maintenance mode is cancelled and an error is reported. If the ‘forced’ parameter is set, the host is skipped and the iteration continues with the next host in the cluster
+
+- Cancel maintenance mode
+
+- Execute post maintenance script (if any) after cancelling maintenance mode.
+
+  - In case the post-maintenance script fails and the ‘forced’ parameter is not set, then the rolling maintenance process fails and an error is reported. If the ‘forced’ parameter is set, the host is skipped and the iteration continues with the next host in the cluster
+
+- Enable the cluster that has been disabled, after all the hosts in the cluster have been processed, or in case an error has occurred.

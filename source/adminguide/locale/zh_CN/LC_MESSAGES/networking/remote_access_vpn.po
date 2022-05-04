@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -148,7 +148,7 @@ msgstr "选择你要操作的网络名称"
 
 # a23f38b6e2c8464bb754dcb7965bd45e
 #: ../../networking/remote_access_vpn.rst:82
-msgid "Click View IP Addresses."
+msgid "Click Public IP Addresses."
 msgstr "点击查看IP地址。"
 
 # ddf12be035374568a290af5640b40e74

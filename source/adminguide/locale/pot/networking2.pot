@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 
+# Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -1745,7 +1745,7 @@ msgstr ""
 # 9751f6d58300447198381c3549bd481e
 # f8c3a0b896d14361b59692083c989410
 # 4bccc75dc7d0449097629003483b3545
-msgid "Click View IP Addresses."
+msgid "Click Public IP Addresses."
 msgstr ""
 
 #: ../../networking2.rst:1274
@@ -1857,7 +1857,7 @@ msgstr ""
 
 #: ../../networking2.rst:1367
 # 1f05243395c24667a0f7e9c75bbc190f
-msgid "On Zones, click View More, then click the zone to which you want to work with.."
+msgid "Click Zones and select the zone you'd like to modify.."
 msgstr ""
 
 #: ../../networking2.rst:1372
@@ -2771,12 +2771,12 @@ msgstr ""
 
 #: ../../networking2.rst:2451
 # c4bb8c60d3214089b1726fe9bea68db1
-msgid "Ensure that the endpointe.url parameter present in the Global Settings is set to the Management Server API URL. For example, ``http://10.102.102.22:8080/client/api``. In a multi-node Management Server deployment, use the virtual IP address configured in the load balancer for the management server's cluster. Additionally, ensure that the NetScaler device has access to this IP address to provide AutoScale support."
+msgid "Ensure that the endpoint.url parameter present in the Global Settings is set to the Management Server API URL. For example, ``http://10.102.102.22:8080/client/api``. In a multi-node Management Server deployment, use the virtual IP address configured in the load balancer for the management server's cluster. Additionally, ensure that the NetScaler device has access to this IP address to provide AutoScale support."
 msgstr ""
 
 #: ../../networking2.rst:2459
 # f6027494d923450aa21e243d185af107
-msgid "If you update the endpointe.url, disable the AutoScale functionality of the load balancer rules in the system, then enable them back to reflect the changes. For more information see :ref:`update-autoscale`."
+msgid "If you update the endpoint.url, disable the AutoScale functionality of the load balancer rules in the system, then enable them back to reflect the changes. For more information see :ref:`update-autoscale`."
 msgstr ""
 
 #: ../../networking2.rst:2465
@@ -3831,7 +3831,7 @@ msgstr ""
 
 #: ../../networking2.rst:3645
 # 9289d78fd54546e3ac890ba5e790db43
-msgid "In Select Offering, choose Network Offering."
+msgid "In the left navigation bar, click Service Offerings and choose Network Offering."
 msgstr ""
 
 #: ../../networking2.rst:3649
@@ -5988,12 +5988,12 @@ msgstr ""
 
 #: ../../networking2.rst:5737
 # 4bb61ba3dd1444269d2f517a3d774dac
-msgid "Blacklisting Routes"
+msgid "Denylisting Routes"
 msgstr ""
 
 #: ../../networking2.rst:5739
 # bf15aaf7395c48438bdfb1c5a1b303cd
-msgid "CloudStack enables you to block a list of routes so that they are not assigned to any of the VPC private gateways. Specify the list of routes that you want to blacklist in the ``blacklisted.routes`` global parameter. Note that the parameter update affects only new static route creations. If you block an existing static route, it remains intact and continue functioning. You cannot add a static route if the route is blacklisted for the zone."
+msgid "CloudStack enables you to block a list of routes so that they are not assigned to any of the VPC private gateways. Specify the list of routes that you want to denylist in the ``denied.routes`` global parameter. Note that the parameter update affects only new static route creations. If you block an existing static route, it remains intact and continue functioning. You cannot add a static route if the route is denied for the zone."
 msgstr ""
 
 #: ../../networking2.rst:5748
@@ -6272,7 +6272,7 @@ msgstr ""
 #: ../../networking2.rst:6482
 # bfaeb8a949fb4d25a618540dcc365471
 # 6c6e4ac1110442ba9ec325328e96bfb8
-msgid "From the Select Offering drop-down, choose Network Offering."
+msgid "Naviagte to Service Offerings and choose Network OfferingPublic IP Addresses."
 msgstr ""
 
 #: ../../networking2.rst:6185

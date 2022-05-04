@@ -26,13 +26,13 @@ Basic and Advanced Networking
 CloudStack provides two styles of networking:.
 
 **Basic**
-For AWS-style networking. Provides a single network where guest isolation can 
-be provided through layer-3 means such as security groups (IP address source 
+For AWS-style networking. Provides a single network where guest isolation can
+be provided through layer-3 means such as security groups (IP address source
 filtering).
 
 **Advanced**
-For more sophisticated network topologies. This network model provides the 
-most flexibility in defining guest networks, but requires more configuration 
+For more sophisticated network topologies. This network model provides the
+most flexibility in defining guest networks, but requires more configuration
 steps than basic networking.
 
 Each zone has either basic or advanced networking. Once the choice of
@@ -515,15 +515,15 @@ Prerequisites
 
 #. Deploy and configure Cisco VNMC.
 
-   For more information, see 
-   `Installing Cisco Virtual Network Management Center 
+   For more information, see
+   `Installing Cisco Virtual Network Management Center
    <http://www.cisco.com/en/US/docs/switches/datacenter/vsg/sw/4_2_1_VSG_2_1_1/install_upgrade/guide/b_Cisco_VSG_for_VMware_vSphere_Rel_4_2_1_VSG_2_1_1_and_Cisco_VNMC_Rel_2_1_Installation_and_Upgrade_Guide_chapter_011.html>`_
-   and `Configuring Cisco Virtual Network Management Center 
+   and `Configuring Cisco Virtual Network Management Center
    <http://www.cisco.com/en/US/docs/unified_computing/vnmc/sw/1.2/VNMC_GUI_Configuration/b_VNMC_GUI_Configuration_Guide_1_2_chapter_010.html>`_.
 
 #. Register Cisco Nexus 1000v dvSwitch with Cisco VNMC.
 
-   For more information, see `Registering a Cisco Nexus 1000V with Cisco VNMC 
+   For more information, see `Registering a Cisco Nexus 1000V with Cisco VNMC
    <http://www.cisco.com/en/US/docs/switches/datacenter/vsg/sw/4_2_1_VSG_1_2/vnmc_and_vsg_qi/guide/vnmc_vsg_install_5register.html#wp1064301>`_.
 
 #. Create Inside and Outside port profiles in Cisco Nexus 1000v dvSwitch.
@@ -532,7 +532,7 @@ Prerequisites
 
 #. Deploy and Cisco ASA 1000v appliance.
 
-   For more information, see `Setting Up the ASA 1000V Using VNMC 
+   For more information, see `Setting Up the ASA 1000V Using VNMC
    <http://www.cisco.com/en/US/docs/security/asa/quick_start/asa1000V/setup_vnmc.html>`_.
 
    Typically, you create a pool of ASA 1000v appliances and register
@@ -668,7 +668,7 @@ offering as follows:
 
 #. Log in to the CloudStack UI as a user or admin.
 
-#. From the Select Offering drop-down, choose Network Offering.
+#. Naviagte to Service Offerings and choose Network OfferingPublic IP Addresses.
 
 #. Click Add Network Offering.
 
@@ -987,7 +987,7 @@ To set up the integration between CloudStack and Traffic Sentinel:
 
 #. On your network infrastructure, install Traffic Sentinel and
    configure it to gather traffic data. For installation and
-   configuration steps, see inMon documentation at 
+   configuration steps, see inMon documentation at
    `Traffic Sentinel Documentation <http://inmon.com.>`_.
 
 #. In the Traffic Sentinel UI, configure Traffic Sentinel to accept
@@ -1002,8 +1002,8 @@ To set up the integration between CloudStack and Traffic Sentinel:
    CloudStack API command addTrafficMonitor. Pass in the URL of the
    Traffic Sentinel as protocol + host + port (optional); for example,
    http://10.147.28.100:8080. For the addTrafficMonitor command syntax,
-   see the API Reference at `API Documentation 
-   <http://cloudstack.apache.org/docs/api/index.html>`_.
+   see the API Reference at `API Documentation
+   <https://cloudstack.apache.org/api.html>`_.
 
    For information about how to call the CloudStack API, see the
    Developer’s Guide at the CloudStack API Developer's Guide :ref:`the-api`

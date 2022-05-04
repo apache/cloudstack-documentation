@@ -48,8 +48,8 @@ Use the following steps to begin the Linux OS installation:
 
 #. Download the latest version of the cloud-set-guest-password script from the repository:
 
-   -  `https://github.com/apache/cloudstack/blob/master/setup/bindir/cloud-set-guest-password.in 
-      <https://github.com/apache/cloudstack/blob/master/setup/bindir/cloud-set-guest-password.in>`_
+   -  `https://github.com/apache/cloudstack/blob/main/setup/bindir/cloud-set-guest-password.in 
+      <https://github.com/apache/cloudstack/blob/main/setup/bindir/cloud-set-guest-password.in>`_
 
 #. Rename the file:
 

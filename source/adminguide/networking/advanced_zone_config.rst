@@ -29,33 +29,37 @@ Configure Guest Traffic in an Advanced Zone
 These steps assume you have already logged in to the CloudStack UI. To
 configure the base guest network:
 
-#. In the left navigation, choose Infrastructure. On Zones, click View
-   More, then click the zone to which you want to add a network.
+#. In the left navigation, choose Network.
 
-#. Click the Network tab.
-
-#. Click Add guest network.
+#. Click Add network.
 
    The Add guest network window is displayed:
 
    |addguestnetwork.png|
 
-#. Provide the following information:
+#. Provide the following information for creating an isolated network:
 
    -  **Name**: The name of the network. This will be user-visible
  
-   -  **Display Text**: The description of the network. This will be
+   -  **Description**: The description of the network. This will be
       user-visible
- 
+
    -  **Zone**: The zone in which you are configuring the guest network.
- 
+
    -  **Network offering**: If the administrator has configured multiple
       network offerings, select the one you want to use for this network
+
+   -  **External Id**: ID of the network in an external system.
  
-   -  **Guest Gateway**: The gateway that the guests should use
+   -  **Gateway**: The gateway that the guests instances will use.
  
-   -  **Guest Netmask**: The netmask in use on the subnet the guests
-      will use
+   -  **Netmask**: The netmask in use on the subnet the guest instances
+      will use.
+
+   -  **Network Domain**: A custom DNS suffix at the level of a network. If you
+      want to assign a special domain name to the guest VM network, specify a
+      DNS suffix.
+
 
 #. Click OK.
 
@@ -70,25 +74,19 @@ one range of IP addresses for Internet traffic.
 Configuring a Shared Guest Network
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Log in to the CloudStack UI as administrator.
+#. Log in to the CloudStack UI as administrator or an end user.
 
-#. In the left navigation, choose Infrastructure.
+#. In the left navigation, choose Network.
 
-#. On Zones, click View More.
+#. Click the Guest networks tab
 
-#. Click the zone to which you want to add a guest network.
+#. Click the Add network icon.
 
-#. Click the Physical Network tab.
-
-#. Click the physical network you want to work with.
-
-#. On the Guest node of the diagram, click Configure.
-
-#. Click the Network tab.
-
-#. Click Add guest network.
+#. Click the Shared tab.
 
    The Add guest network window is displayed.
+
+   |addsharednetwork.png|
 
 #. Specify the following:
 
@@ -97,10 +95,21 @@ Configuring a Shared Guest Network
    -  **Description**: The short description of the network that can be
       displayed to users.
 
-   -  **VLAN ID**: The unique ID of the VLAN.
+   -  **Zone**: The zone for the network.
 
-   -  **Isolated VLAN ID**: The unique ID of the Secondary Isolated
-      VLAN.
+   -  **Physical Network**: The physical network ID the network belongs to.
+
+   -  **VLAN ID**: (Administrators only) The unique ID of the VLAN.
+
+   -  **Secondary VLAN Type**: (Administrators only) The isolation private
+      VLAN type for this network
+
+   -  **Secondary VLAN ID**: (Administrators only) The unique ID of the
+      Secondary Isolated VLAN.
+
+   -  **Bypass VLAN id/range overlap**: (Administrators only) When true
+      bypasses VLAN id/range overlap check during network creation for
+      shared and L2 networks
 
    -  **Scope**: The available scopes are Domain, Account, Project, and
       All.
@@ -119,12 +128,16 @@ Configuring a Shared Guest Network
          created for. You must specify the domain the project belongs
          to.
 
-      -  **All**: The guest network is available for all the domains,
-         account, projects within the selected zone.
+      -  **All**: (Administrators only) The guest network is available
+         for all the domains, account, projects within the selected zone.
 
    -  **Network Offering**: If the administrator has configured multiple
       network offerings, select the one you want to use for this
       network.
+
+   -  **Associated Network**: The L2 or Isolated network this network is
+      associated to. This network will use same VLAN as associated network.
+      This will be visible if network offering has specifyvlan is false.
 
    -  **Gateway**: The gateway that the guests should use.
 
@@ -147,6 +160,16 @@ Configuring a Shared Guest Network
 
 #. Click OK to confirm.
 
+   .. note::
+      End users (not administrator) can only use the network
+      offerings with specifyvlan is false. Please create a network offering
+      with specifyvlan is false to enable this for end users. See
+      `“Creating a New Network Offering”
+      <networking.html#creating-a-new-network-offering>`_.
+
 
 .. |addguestnetwork.png| image:: /_static/images/add-guest-network.png
    :alt: Add Guest network setup in a single zone.
+
+.. |addsharednetwork.png| image:: /_static/images/add-shared-network.png
+   :alt: Add Shared Guest network.

@@ -29,7 +29,7 @@ Primary Storage
 ---------------
 
 This section gives technical details about CloudStack
-primary storage. For more information about the concepts behind primary storage 
+primary storage. For more information about the concepts behind primary storage
 see :ref:`about-primary-storage` . For information about how to install and configure
 primary storage through the CloudStack UI, see the in the Installation Guide.
 
@@ -69,8 +69,7 @@ can be created and dynamically attached to VMs. Data volumes are not
 deleted when VMs are destroyed.
 
 Administrators should monitor the capacity of primary storage devices
-and add additional primary storage as needed. See the Advanced
-Installation Guide.
+and add additional primary storage as needed. See :ref:`add-primary-storage`.
 
 Administrators add primary storage to the system by creating a
 CloudStack storage pool. Each storage pool is associated with a cluster
@@ -105,6 +104,7 @@ Storage media \\ hypervisor                    VMware vSphere   Citrix XenServer
 **Storage over-provisioning**                  NFS and iSCSI    NFS                  NFS                         No
 **SMB/CIFS**                                   No               No                   No                          Yes
 **Ceph/RBD**                                   No               No                   Yes                         No
+**PowerFlex/ScaleIO**                          No               No                   Yes                         No
 ============================================== ================ ==================== =========================== ============================
 
 XenServer uses a clustered LVM system to store VM images on iSCSI and
@@ -120,6 +120,14 @@ This shared mountpoint is assumed to be a clustered filesystem such as
 OCFS2. In this case the CloudStack does not attempt to mount or unmount
 the storage as is done with NFS. The CloudStack requires that the
 administrator insure that the storage is available
+
+VMware vSphere supports NFS, VMFS5, VMFS6, vSAN, vVols, DatastoreCluster storage types.
+For DatastoreCluster storage type, any changes to the datastore cluster
+at vCenter can be synchronised with CloudStack, like any addition of new
+child datastore to the DatastoreCluster or removal or existing child datastore
+from the DatastoreCluster. Synchronisation of DatastoreCluster happens during
+host connect or storage pool maintenance operations or by calling the API
+syncStoragePool.
 
 With NFS storage, CloudStack manages the overprovisioning. In this case
 the global configuration parameter storage.overprovisioning.factor
@@ -180,9 +188,30 @@ Secondary Storage
 
 This section gives concepts and technical details about CloudStack
 secondary storage. For information about how to install and configure
-secondary storage through the CloudStack UI, see the Advanced
-Installation Guide. about-secondary-storage>`_
+secondary storage through the CloudStack UI, see :ref:`add-secondary-storage`.
 
+Migration of data between secondary storages is now supported. One may choose
+to completely migrate the data or migrate data such that the stores
+are balanced by choosing the appropriate Migration Policy. In order to facilitate
+distributing the migration load, SSVMs are spawned up if a file transfer takes
+more than a defined threshold. Following are the Global setting values to one may
+want to look at before proceeding with the migration task:
+
+
+   +----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Configuration Parameters         | Description                                                                                                                                                            |
+   +==================================+========================================================================================================================================================================+
+   | image.store.imbalance.threshold  | The storage imbalance threshold that is compared with the standard deviation percentage for a storage utilization metric. The value is a percentage in decimal format. |
+   +----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | secstorage.max.migrate.sessions  | The max number of concurrent copy command execution sessions that an SSVM can handle                                                                                   |
+   +----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | max.ssvm.count                   | Number of additional SSVMs to handle migration of data objects concurrently                                                                                            |
+   +----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | max.data.migration.wait.time     | Maximum wait time for a data migration task before spawning a new SSVM                                                                                                 |
+   +----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Secondary storages can also be set to read-only in order to cordon it off
+from being used for storing any further templates, volumes and snapshots.
 
 Working With Volumes
 --------------------
@@ -208,7 +237,7 @@ from a volume as well; this is the standard procedure for private
 template creation. Volumes are hypervisor-specific: a volume from one
 hypervisor type may not be used on a guest of another hypervisor type.
 
-.. note:: 
+.. note::
    CloudStack supports attaching up to
 
    - 13 data disks on XenServer hypervisor versions 6.0 and above,
@@ -230,6 +259,15 @@ are not allocated on the physical storage device until you attach the
 volume. This optimization allows the CloudStack to provision the volume
 nearest to the guest that will use it when the first attachment is made.
 
+When creating a new volume from an existing ROOT volume snapshot,
+it is required to explicitly define a Disk offering (UI will offer only Disk
+offerings whose disk size is equal or bigger than the size of the snapshot).
+
+|volume-from-snap.png|
+
+When creating a new volume from an existing DATA volume snapshot, the disk offering
+associated with the snapshots (inherited from the original volume) is assigned
+to the new volume.
 
 Using Local Storage for Data Volumes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -377,9 +415,9 @@ volume from one storage pool to another.
 Detaching and Moving Volumes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. note:: 
-   This procedure is different from moving volumes from one storage pool 
-   to another as described in `“VM Storage Migration” 
+.. note::
+   This procedure is different from moving volumes from one storage pool
+   to another as described in `“VM Storage Migration”
    <#vm-storage-migration>`_.
 
 A volume can be detached from a guest VM and attached to another guest.
@@ -408,9 +446,9 @@ VM Storage Migration
 
 Supported in XenServer, KVM, and VMware.
 
-.. note:: 
-   This procedure is different from moving disk volumes from one VM to 
-   another as described in `“Detaching and Moving Volumes” 
+.. note::
+   This procedure is different from moving disk volumes from one VM to
+   another as described in `“Detaching and Moving Volumes”
    <#detaching-and-moving-volumes>`_.
 
 You can migrate a virtual machine’s root disk volume or any additional
@@ -431,10 +469,10 @@ another, or to migrate a VM whose disks are on local storage, or even to
 migrate a VM’s disks from one storage repository to another, all while
 the VM is running.
 
-.. note:: 
-   Because of a limitation in VMware, live migration of storage for a 
-   VM is allowed only if the source and target storage pool are 
-   accessible to the source host; that is, the host where the VM is 
+.. note::
+   Because of a limitation in VMware, live migration of storage for a
+   VM is allowed only if the source and target storage pool are
+   accessible to the source host; that is, the host where the VM is
    running when the live migration operation is requested.
 
 
@@ -466,7 +504,7 @@ Migrating Storage For a Running VM
    Moving Volumes” <#detaching-and-moving-volumes>`_ but skip the “reattach”
    step at the end. You will do that after migrating to new storage.
 
-#. Click the Migrate Volume button |Migrateinstance.png| and choose the 
+#. Click the Migrate Volume button |Migrateinstance.png| and choose the
    destination from the dropdown list.
 
 #. Watch for the volume status to change to Migrating, then back to
@@ -482,7 +520,7 @@ Migrating Storage and Attaching to a Different VM
    Moving Volumes” <#detaching-and-moving-volumes>`_ but skip the “reattach”
    step at the end. You will do that after migrating to new storage.
 
-#. Click the Migrate Volume button |Migrateinstance.png| and choose the 
+#. Click the Migrate Volume button |Migrateinstance.png| and choose the
    destination from the dropdown list.
 
 #. Watch for the volume status to change to Migrating, then back to
@@ -511,12 +549,12 @@ be restarted.
 
 #. (KVM only) Stop the VM.
 
-#. Click the Migrate button |Migrateinstance.png| and choose the 
+#. Click the Migrate button |Migrateinstance.png| and choose the
    destination from the dropdown list.
 
-   .. note:: 
-      If the VM's storage has to be migrated along with the VM, this will 
-      be noted in the host list. CloudStack will take care of the storage 
+   .. note::
+      If the VM's storage has to be migrated along with the VM, this will
+      be noted in the host list. CloudStack will take care of the storage
       migration for you.
 
 #. Watch for the volume status to change to Migrating, then back to
@@ -586,6 +624,40 @@ To resize a volume:
 
 #. Click OK.
 
+Root Volume size defined via Service Offering
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If a Service Offering is created with a root disk size, then resizing the Root volume is possible only by resizing the VMs service offering.
+
+Service offering Root resizing constrains:
+
+#. Users cannot deploy VMs with custom root disk size when using such offerings
+
+#. Users cannot resize the VM root disk size when using such offerings
+
+#. The Root Volume of such VMs can only be resized when changing to another Service Offering with a Root disk size equals or larger than the current one.
+
+#. Users can change the VM offering to a service offering with a Root size of 0GB (default) and then customize the volume size.
+
+The following table shows possible combinations of Service offering supported resizing based on the offering Root disk size:
+
++---+----------------------------+---------------------------+-------------------------------+
+| # | Service Offering Root size | new Service Offering Root | Does support offering resize? |
++---+----------------------------+---------------------------+-------------------------------+
+| 1 | 0GB (default)              | Any                       | YES                           |
++---+----------------------------+---------------------------+-------------------------------+
+| 2 | 5GB                        | 5GB                       | YES                           |
++---+----------------------------+---------------------------+-------------------------------+
+| 3 | 5GB                        | 10GB                      | YES                           |
++---+----------------------------+---------------------------+-------------------------------+
+| 4 | 10GB                       | 5GB                       | NO                            |
++---+----------------------------+---------------------------+-------------------------------+
+| 5 | Any                        | 0GB                       | YES                           |
++---+----------------------------+---------------------------+-------------------------------+
+
+.. note::
+   Shrinking the Root disk is not supported via the service offering resizing workflow. All the combinations above assume a transition to Root disks with size equals or bigger than the original.
+   Service Offerings with Root size of 0GB do not change the disk size to Zero and indicates that the offering do not enforces a Root disk size.
 
 Reset VM to New Root Disk on Reboot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -657,7 +729,6 @@ to a VM.
 A completed snapshot is copied from primary storage to secondary
 storage, where it is stored until deleted or purged by newer snapshot.
 
-
 How to Snapshot a Volume
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -670,6 +741,21 @@ How to Snapshot a Volume
 #. Click the name of the volume you want to snapshot.
 
 #. Click the Snapshot button. |SnapshotButton.png|
+
+KVM volume Snapshot specifics
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In recent CloudStack versions, by default, creating a volume snapshot for a running VM is disabled
+due to a possible volume corruption in certain cases. To enable creating a volume snapshots while the VM
+is running, the global setting 'kvm.snapshot.enabled' must be set to 'True'.
+
+The volume snapshot creation has changed in recent versions:
+
+Under the hood, first, a full VM snapshot is taken - this means that during the taking of
+the VM snapshot the VM will be in the "Paused" state (while RAM memory is being written to the
+QCOW2 file), which means that VM will be unavailable from the network point of view.
+When the VM snapshot is created, VM is unpaused/resumed, the single volume snapshot is exported
+to the Secondary Storage, and then the VM snapshots is removed from the VM.
 
 
 Automatic Snapshot Creation and Retention
@@ -783,10 +869,10 @@ needed, on demand. To generate the OVA, CloudStack uses information in a
 properties file (\*.ova.meta) which it stored along with the original
 snapshot data.
 
-.. note:: 
-   For upgrading customers: This process applies only to newly created 
-   snapshots after upgrade to CloudStack 4.2. Snapshots that have already 
-   been taken and stored in OVA format will continue to exist in that 
+.. note::
+   For upgrading customers: This process applies only to newly created
+   snapshots after upgrade to CloudStack 4.2. Snapshots that have already
+   been taken and stored in OVA format will continue to exist in that
    format, and will continue to work as expected.
 
 Volume Metrics
@@ -819,6 +905,28 @@ Bytes read/write statistics are not exposed via UI, as shown in the image below.
 These statistics are obtained from the hypervisor directly and they represent
 "current" bytes/s and IO/s values at the time of collection.
 
+Linstor Primary Storage
+~~~~~~~~~~~~~~~~~~~~~~~
+
+LINSTOR is a configuration management system for storage on Linux systems.
+It manages LVM logical volumes and/or ZFS ZVOLs on a cluster of nodes.
+It leverages DRBD for replication between different nodes and to provide block storage devices
+to users and applications. It manages snapshots, encryption and caching of HDD backed data in SSDs via bcache.
+
+LINSTOR can be used as volume storage provider for Cloudstack, it currently only supports KVM hypervisors.
+To get started first setup your LINSTOR cluster according to the `LINSTOR User Guide <https://linbit.com/drbd-user-guide/linstor-guide-1_0-en/>`_
+
+.. note::
+   Make sure a LINSTOR-Satellite is running on all nodes where you want to have a storage provided for you VM's
+   and that the nodes have the exact same node names as the nodes in Cloudstack.
+   Also add a resource group to LINSTOR which you intend to use in Cloudstack.
+
+After you are finished with the LINSTOR cluster setup, you can add a Cloudstack primary storage as any other
+primary storage see :ref:`add-primary-storage`.
+For protocol choose ``Linstor`` and as server specify the controller REST-API URL e.g.: ``http://127.0.0.1:3370``
+and use the resource group name you added in the LINSTOR cluster.
+
+
 .. |AttachDiskButton.png| image:: /_static/images/attach-disk-icon.png
    :alt: Attach Disk Button.
 .. |resize-volume-icon.png| image:: /_static/images/resize-volume-icon.png
@@ -833,3 +941,5 @@ These statistics are obtained from the hypervisor directly and they represent
    :alt: button to migrate a volume.
 .. |volume-metrics.png| image:: /_static/images/volume-metrics.png
    :alt: Volume metrics   
+.. |volume-from-snap.png| image:: /_static/images/volume-from-snap.png
+   :alt: Offering is needed when creating a volume from the ROOT volume snapshot.

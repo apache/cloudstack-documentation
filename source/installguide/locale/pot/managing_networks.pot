@@ -2761,12 +2761,12 @@ msgstr ""
 
 #: ../../managing_networks.rst:2392
 # 596a2d14b50c4e298970de7db5c4d19b
-msgid "Ensure that the endpointe.url parameter present in the Global Settings is set to the Management Server API URL. For example, http://10.102.102.22:8080/client/api. In a multi-node Management Server deployment, use the virtual IP address configured in the load balancer for the management server’s cluster. Additionally, ensure that the NetScaler device has access to this IP address to provide AutoScale support."
+msgid "Ensure that the endpoint.url parameter present in the Global Settings is set to the Management Server API URL. For example, http://10.102.102.22:8080/client/api. In a multi-node Management Server deployment, use the virtual IP address configured in the load balancer for the management server’s cluster. Additionally, ensure that the NetScaler device has access to this IP address to provide AutoScale support."
 msgstr ""
 
 #: ../../managing_networks.rst:2400
 # 59583fe0dfc14e2db8bcc23629da18e3
-msgid "If you update the endpointe.url, disable the AutoScale functionality of the load balancer rules in the system, then enable them back to reflect the changes. For more information see `Updating an AutoScale Configuration <#update-autoscale>`__"
+msgid "If you update the endpoint.url, disable the AutoScale functionality of the load balancer rules in the system, then enable them back to reflect the changes. For more information see `Updating an AutoScale Configuration <#update-autoscale>`__"
 msgstr ""
 
 #: ../../managing_networks.rst:2407
@@ -5961,12 +5961,12 @@ msgstr ""
 
 #: ../../managing_networks.rst:5628
 # 7a2e407277964cd18757e610c1197596
-msgid "Blacklisting Routes"
+msgid "Denylisting Routes"
 msgstr ""
 
 #: ../../managing_networks.rst:5630
 # a154d3d5488f418e95dbd3c0ae59a55f
-msgid "CloudStack enables you to block a list of routes so that they are not assigned to any of the VPC private gateways. Specify the list of routes that you want to blacklist in the ``blacklisted.routes`` global parameter. Note that the parameter update affects only new static route creations. If you block an existing static route, it remains intact and continue functioning. You cannot add a static route if the route is blacklisted for the zone."
+msgid "CloudStack enables you to block a list of routes so that they are not assigned to any of the VPC private gateways. Specify the list of routes that you want to denylist in the ``denied.routes`` global parameter. Note that the parameter update affects only new static route creations. If you block an existing static route, it remains intact and continue functioning. You cannot add a static route if the route is denied for the zone."
 msgstr ""
 
 #: ../../managing_networks.rst:5639

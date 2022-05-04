@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 
+# Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -288,7 +288,7 @@ msgstr ""
 
 #: ../../networking/external_firewalls_and_load_balancers.rst:262
 # 20fc7dedf2cf482d94d8977ac64c6b0d
-msgid "Click View IP Addresses."
+msgid "Click Public IP Addresses."
 msgstr ""
 
 #: ../../networking/external_firewalls_and_load_balancers.rst:264
@@ -503,12 +503,12 @@ msgstr ""
 
 #: ../../networking/external_firewalls_and_load_balancers.rst:456
 # 0ac0707e74464bd0840f60e335716a25
-msgid "Ensure that the endpointe.url parameter present in the Global Settings is set to the Management Server API URL. For example, ``http://10.102.102.22:8080/client/api``. In a multi-node Management Server deployment, use the virtual IP address configured in the load balancer for the management server's cluster. Additionally, ensure that the NetScaler device has access to this IP address to provide AutoScale support."
+msgid "Ensure that the endpoint.url parameter present in the Global Settings is set to the Management Server API URL. For example, ``http://10.102.102.22:8080/client/api``. In a multi-node Management Server deployment, use the virtual IP address configured in the load balancer for the management server's cluster. Additionally, ensure that the NetScaler device has access to this IP address to provide AutoScale support."
 msgstr ""
 
 #: ../../networking/external_firewalls_and_load_balancers.rst:464
 # f8d93cd584a54fd8b2a72143d4107323
-msgid "If you update the endpointe.url, disable the AutoScale functionality of the load balancer rules in the system, then enable them back to reflect the changes. For more information see :ref:`update-autoscale`."
+msgid "If you update the endpoint.url, disable the AutoScale functionality of the load balancer rules in the system, then enable them back to reflect the changes. For more information see :ref:`update-autoscale`."
 msgstr ""
 
 #: ../../networking/external_firewalls_and_load_balancers.rst:468

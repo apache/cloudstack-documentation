@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 
+# Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -1749,7 +1749,7 @@ msgstr ""
 # d605e8bf3fb74b278bf0d265f1db6084
 # 5f4eacd3a2ba48349a41f04f8756ee37
 # ba3dfb6ca3af4d51a17fa31861d95379
-msgid "Click View IP Addresses."
+msgid "Click Public IP Addresses."
 msgstr ""
 
 #: ../../networking/portable_ips.rst:98
@@ -1861,7 +1861,7 @@ msgstr ""
 
 #: ../../networking/multiple_subnets_in_shared_network.rst:56
 # 5dead61f678f4f708dc471eb41eb51d7
-msgid "On Zones, click View More, then click the zone to which you want to work with.."
+msgid "Click Zones and select the zone you'd like to modify.."
 msgstr ""
 
 #: ../../networking/multiple_subnets_in_shared_network.rst:59
@@ -2758,12 +2758,12 @@ msgstr ""
 
 #: ../../networking/external_firewalls_and_load_balancers.rst:456
 # d8cef4ea8860477489a80f3a715fbd90
-msgid "Ensure that the endpointe.url parameter present in the Global Settings is set to the Management Server API URL. For example, ``http://10.102.102.22:8080/client/api``. In a multi-node Management Server deployment, use the virtual IP address configured in the load balancer for the management server's cluster. Additionally, ensure that the NetScaler device has access to this IP address to provide AutoScale support."
+msgid "Ensure that the endpoint.url parameter present in the Global Settings is set to the Management Server API URL. For example, ``http://10.102.102.22:8080/client/api``. In a multi-node Management Server deployment, use the virtual IP address configured in the load balancer for the management server's cluster. Additionally, ensure that the NetScaler device has access to this IP address to provide AutoScale support."
 msgstr ""
 
 #: ../../networking/external_firewalls_and_load_balancers.rst:464
 # 1cd70adcb30d47abbcc3dc69e3707036
-msgid "If you update the endpointe.url, disable the AutoScale functionality of the load balancer rules in the system, then enable them back to reflect the changes. For more information see :ref:`update-autoscale`."
+msgid "If you update the endpoint.url, disable the AutoScale functionality of the load balancer rules in the system, then enable them back to reflect the changes. For more information see :ref:`update-autoscale`."
 msgstr ""
 
 #: ../../networking/external_firewalls_and_load_balancers.rst:468
@@ -3818,7 +3818,7 @@ msgstr ""
 
 #: ../../networking/ip_forwarding_and_firewalling.rst:206
 # be40a0ea880c4159a9d420c70881eeba
-msgid "In Select Offering, choose Network Offering."
+msgid "In the left navigation bar, click Service Offerings and choose Network Offering."
 msgstr ""
 
 #: ../../networking/ip_forwarding_and_firewalling.rst:208
@@ -5979,12 +5979,12 @@ msgstr ""
 
 #: ../../networking/virtual_private_cloud_config.rst:648
 # f5f80f387b5246caa603111d30dcfab7
-msgid "Blacklisting Routes"
+msgid "Denylisting Routes"
 msgstr ""
 
 #: ../../networking/virtual_private_cloud_config.rst:650
 # 8515025cd30a4b30b46f527ea9be5b2b
-msgid "CloudStack enables you to block a list of routes so that they are not assigned to any of the VPC private gateways. Specify the list of routes that you want to blacklist in the ``blacklisted.routes`` global parameter. Note that the parameter update affects only new static route creations. If you block an existing static route, it remains intact and continue functioning. You cannot add a static route if the route is blacklisted for the zone."
+msgid "CloudStack enables you to block a list of routes so that they are not assigned to any of the VPC private gateways. Specify the list of routes that you want to denylist in the ``denied.routes`` global parameter. Note that the parameter update affects only new static route creations. If you block an existing static route, it remains intact and continue functioning. You cannot add a static route if the route is denied for the zone."
 msgstr ""
 
 #: ../../networking/virtual_private_cloud_config.rst:660
@@ -6263,7 +6263,7 @@ msgstr ""
 #: ../../networking/virtual_private_cloud_config.rst:1165
 # d6358f1cb80b45c6becf012d6670f0ff
 # 19877c93762c4d95b38bfafc90fc110c
-msgid "From the Select Offering drop-down, choose Network Offering."
+msgid "Naviagte to Service Offerings and choose Network OfferingPublic IP Addresses."
 msgstr ""
 
 #: ../../networking/virtual_private_cloud_config.rst:963

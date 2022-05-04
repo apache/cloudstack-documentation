@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C)
 # This file is distributed under the same license as the Apache CloudStack Administration Documentation package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -395,7 +395,7 @@ msgstr "点击拟进行负载均衡的网络名称"
 
 # 20fc7dedf2cf482d94d8977ac64c6b0d
 #: ../../networking/external_firewalls_and_load_balancers.rst:262
-msgid "Click View IP Addresses."
+msgid "Click Public IP Addresses."
 msgstr "点击查看IP地址。"
 
 # aff4544b414847af82ceceb0bd4e3b55
@@ -729,7 +729,7 @@ msgstr ""
 # 0ac0707e74464bd0840f60e335716a25
 #: ../../networking/external_firewalls_and_load_balancers.rst:456
 msgid ""
-"Ensure that the endpointe.url parameter present in the Global Settings is "
+"Ensure that the endpoint.url parameter present in the Global Settings is "
 "set to the Management Server API URL. For example, "
 "``http://10.102.102.22:8080/client/api``. In a multi-node Management Server "
 "deployment, use the virtual IP address configured in the load balancer for "
@@ -740,10 +740,10 @@ msgstr "确保在全局配置中的结束点地址参数已设置为管理服务
 # f8d93cd584a54fd8b2a72143d4107323
 #: ../../networking/external_firewalls_and_load_balancers.rst:464
 msgid ""
-"If you update the endpointe.url, disable the AutoScale functionality of the "
+"If you update the endpoint.url, disable the AutoScale functionality of the "
 "load balancer rules in the system, then enable them back to reflect the "
 "changes. For more information see :ref:`update-autoscale`."
-msgstr "如果更新了endpointe.url，在系统自动负载均衡器规则里，先关闭自缩放功能随后再开启，以应用此更新。。更多信息，参见 :ref:`update-autoscale`。"
+msgstr "如果更新了endpoint.url，在系统自动负载均衡器规则里，先关闭自缩放功能随后再开启，以应用此更新。。更多信息，参见 :ref:`update-autoscale`。"
 
 # f4e671d2a1814ee7936944319291f882
 #: ../../networking/external_firewalls_and_load_balancers.rst:468

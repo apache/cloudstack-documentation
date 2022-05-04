@@ -480,7 +480,7 @@ msgstr ""
 
 #: ../../installation.rst:350
 # aef5f1918b994df1a0da2b55407ba85f
-msgid "This bug has been fixed in master and upcoming 4.4 release and will also be fixed in bug fix releases 4.3.x"
+msgid "This bug has been fixed in main and upcoming 4.4 release and will also be fixed in bug fix releases 4.3.x"
 msgstr ""
 
 #: ../../installation.rst:353

@@ -18,6 +18,11 @@
 Update System-VM templates
 --------------------------
 
+.. note::
+   From ACS 4.16 onwards, CloudStack will support automatic registration of systemVM
+   templates (when using noredist packages), if not done prior initiating upgrade. However, the usual upgrade process 
+   continues to be supported. 
+
 #. While running the existing |version_to_upgrade| system, log in to the UI as 
    the root administrator.
 
@@ -28,7 +33,9 @@ Update System-VM templates
 #. Click Register template.
    The Register template dialog box is displayed.
 
-#. In the Register template dialog box, specify the following values
+#. To register the system VM template do the following:
+
+   In the Register template dialog box, specify the following values
    (do not change these):
 
    .. cssclass:: table-striped table-bordered table-hover
@@ -48,9 +55,7 @@ Update System-VM templates
    |            |                                                            |
    |            | Format: VHD                                                |
    |            |                                                            |
-   |            | OS Type: Debian GNU/Linux 7.0 (64-bit) (or the             |
-   |            | highest Debian release number available in the             |
-   |            | dropdown)                                                  |
+   |            | OS Type: Other Linux (64-bit)                              |
    |            |                                                            |
    |            | Extractable: no                                            |
    |            |                                                            |
@@ -100,7 +105,7 @@ Update System-VM templates
    |            |                                                            |
    |            | Format: OVA                                                |
    |            |                                                            |
-   |            | OS Type: Other Linux 64-bit                                |
+   |            | OS Type: Other Linux (64-bit)                              |
    |            |                                                            |
    |            | Extractable: no                                            |
    |            |                                                            |

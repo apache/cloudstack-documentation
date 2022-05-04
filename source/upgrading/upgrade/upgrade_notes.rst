@@ -18,15 +18,21 @@ General Upgrade Notes
 =====================
 
 
-Java version upgraded to Java 1.8
+Java version upgraded to Java 11
 ---------------------------------
 
-As of Apache CloudStack 4.10, Java version required is 1.8 for the
+As of Apache CloudStack 4.14, Java version required is 11 for the
 management-server, cloudstack-usage, KVM agent and system-VMs.
 
 
-.. include:: _java_8_ubuntu.rst
+.. include:: _java_version.rst
 
+UI Deprecation and Removal Notice
+---------------------------------
+
+The current jQuery-based CloudStack UI is `deprecated
+<http://markmail.org/message/vxnskmwhfaagnm4r/>`_ in this release of CloudStack
+and will be removed in the next release of Apache CloudStack.
 
 Migrating to dynamic roles feature
 ----------------------------------
@@ -97,10 +103,21 @@ added in CloudStack's db.properties file:
    db.usage.driver=jdbc:mysql
 
 
-Other Notes
------------
+MySQL 8.0 sql mode change
+-------------------------
 
-If you are experiencing CloudStack UI issues, please consider upgrading your
-tomcat instance to version 6.0.43  (tested version, but earlier versions prior
-to 6.0.37 might work as well), to address the tomcat response issues caused by
-latency between the browser/client and CloudStack Management server.
+MySQL mode (sql_mode) has changed in CloudStack db.properties to 
+"STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,
+ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION".
+
+This gets automatically applies to the MySQL session used by CloudStack management server.
+
+If the admin uses MySQL directly and wants to query tables it is advised to change the sql_mode in the corresponding session or globally.
+
+Eg. mysql> set global sql_mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,
+                             "> ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION";
+    Query OK, 0 rows affected (0.00 sec)
+
+    mysql> set sql_mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,
+                     "> ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION";
+    Query OK, 0 rows affected (0.00 sec)

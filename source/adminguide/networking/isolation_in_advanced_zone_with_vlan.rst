@@ -12,74 +12,18 @@
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
-   
-
-Isolation in Advanced Zone Using Private VLAN
----------------------------------------------
-
-Isolation of guest traffic in shared networks can be achieved by using
-Private VLANs (PVLAN). PVLANs provide Layer 2 isolation between ports
-within the same VLAN. In a PVLAN-enabled shared network, a user VM
-cannot reach other user VM though they can reach the DHCP server and
-gateway, this would in turn allow users to control traffic within a
-network and help them deploy multiple applications without communication
-between application as well as prevent communication with other users'
-VMs.
-
--  Isolate VMs in a shared networks by using Private VLANs.
-
--  Supported on KVM, XenServer, and VMware hypervisors
-
--  PVLAN-enabled shared network can be a part of multiple networks of a
-   guest VM.
 
 
-About Private VLAN
-~~~~~~~~~~~~~~~~~~
+Isolation in Advanced Zone Using Private VLANs
+-----------------------------------------------
 
-In an Ethernet switch, a VLAN is a broadcast domain where hosts can
-establish direct communication with each another at Layer 2. Private
-VLAN is designed as an extension of VLAN standard to add further
-segmentation of the logical broadcast domain. A regular VLAN is a single
-broadcast domain, whereas a private VLAN partitions a larger VLAN
-broadcast domain into smaller sub-domains. A sub-domain is represented
-by a pair of VLANs: a Primary VLAN and a Secondary VLAN. The original
-VLAN that is being divided into smaller groups is called Primary, which
-implies that all VLAN pairs in a private VLAN share the same Primary
-VLAN. All the secondary VLANs exist only inside the Primary. Each
-Secondary VLAN has a specific VLAN ID associated to it, which
-differentiates one sub-domain from another.
+About PVLANs (Secondary VLANs)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Three types of ports exist in a private VLAN domain, which essentially
-determine the behaviour of the participating hosts. Each ports will have
-its own unique set of rules, which regulate a connected host's ability
-to communicate with other connected host within the same private VLAN
-domain. Configure each host that is part of a PVLAN pair can be by using
-one of these three port designation:
+The clasic use-case for PVLANs is a shared backup network, where you wish all users'
+hosts to be able to communicate with a backup host, but not with each other.
 
--  **Promiscuous**: A promiscuous port can communicate with all the
-   interfaces, including the community and isolated host ports that
-   belong to the secondary VLANs. In Promiscuous mode, hosts are
-   connected to promiscuous ports and are able to communicate directly
-   with resources on both primary and secondary VLAN. Routers, DHCP
-   servers, and other trusted devices are typically attached to
-   promiscuous ports.
-
--  **Isolated VLANs**: The ports within an isolated VLAN cannot
-   communicate with each other at the layer-2 level. The hosts that are
-   connected to Isolated ports can directly communicate only with the
-   Promiscuous resources. If your customer device needs to have access
-   only to a gateway router, attach it to an isolated port.
-
--  **Community VLANs**: The ports within a community VLAN can
-   communicate with each other and with the promiscuous ports, but they
-   cannot communicate with the ports in other communities at the layer-2
-   level. In a Community mode, direct communication is permitted only
-   with the hosts in the same community and those that are connected to
-   the Primary PVLAN in promiscuous mode. If your customer has two
-   devices that need to be isolated from other customers' devices, but
-   to be able to communicate among themselves, deploy them in community
-   ports.
+   |pvlans.png|
 
 For further reading:
 
@@ -92,6 +36,19 @@ For further reading:
 -  `Private VLAN (PVLAN) on vNetwork Distributed Switch - Concept
    Overview (1010691) <http://kb.vmware.com>`_
 
+Supported Secondary VLAN types
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Of the three types of Private VLAN (promiscuous, community and isolated),
+CloudStack supports **one promiscuous** PVLAN, **one isolated** PVLAN and **multiple community** PVLANs **per
+primary VLAN**.
+PVLANs are currently supported on shared and layer 2 networks.
+The PVLAN concept is supported on KVM (when using OVS), XenServer (when using OVS), and VMware hypervisors
+
+   .. note::
+      OVS on XenServer and KVM does not support PVLAN natively. Therefore,
+      CloudStack managed to simulate PVLAN on OVS for XenServer and KVM by
+      modifying the flow table.
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -119,84 +76,40 @@ Prerequisites
 
 -  Before you use PVLAN on XenServer and KVM, enable Open vSwitch (OVS).
 
-   .. note:: 
-      OVS on XenServer and KVM does not support PVLAN natively. Therefore,
-      CloudStack managed to simulate PVLAN on OVS for XenServer and KVM by
-      modifying the flow table.
 
+Creating a PVLAN-Enabled Network
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Creating a PVLAN-Enabled Guest Network
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   .. note::
+      If you are facing issues with connectivity in PVLANS, especially community and promiscuous PVLANS
+      in a multi hypervisor environment, this could be caused by the way PVLANs were implemented
+      in 4.14.0, which was later fixed in 4.15.0. To resolve this, delete the PVLAN network and recreate it.
 
-#. Log in to the CloudStack UI as administrator.
+PVLAN-enabled networks can be either shared or layer 2 networks.
 
-#. In the left navigation, choose Infrastructure.
+For a general description of how to create a shared network see `"configuring a shared guest network" <#configuring-a-shared-guest-network>`_.
 
-#. On Zones, click View More.
+On top of the parameters required to create a *normal* shared or layer 2 network, the following
+parameters must be set:
 
-#. Click the zone to which you want to add a guest network.
+-  **VLAN ID**: The unique ID of the primary VLAN that you want to use.
 
-#. Click the Physical Network tab.
+-  **Secondary Isolated VLAN ID**: The PVLAN ID to use within the primary VLAN.
 
-#. Click the physical network you want to work with.
+-  **PVLAN Type**: The PVLAN type corresponding to the PVLAN ID to use within the primary VLAN.
 
-#. On the Guest node of the diagram, click Configure.
+Creating a PVLAN-enabled network can be done in multiple ways depending on the PVLAN type:
 
-#. Click the Network tab.
+   - For a **promiscuous** PVLAN:
+      - Set the secondary VLAN ID to the same VLAN ID as the primary VLAN that the promiscuous PVLAN will be inside (available only via API, not UI), or
+      - Set the PVLAN type to "Promiscuous" and do not set the secondary VLAN ID.
 
-#. Click Add guest network.
+   - For an **isolated** PVLAN:
+      - Set the secondary VLAN ID to the PVLAN ID which you wish to use inside the primary VLAN (available only via API, not UI), or
+      - Set the PVLAN type to "Isolated" and set the secondary VLAN ID to the PVLAN ID which you wish to use inside the primary VLAN.
 
-   The Add guest network window is displayed.
+   - For a **community** PVLAN:
+      - Set the PVLAN type to "Community" and set the secondary VLAN ID to the PVLAN ID which you wish to use inside the primary VLAN.
 
-#. Specify the following:
-
-   -  **Name**: The name of the network. This will be visible to the
-      user.
-
-   -  **Description**: The short description of the network that can be
-      displayed to users.
-
-   -  **VLAN ID**: The unique ID of the VLAN.
-
-   -  **Secondary Isolated VLAN ID**: The unique ID of the Secondary
-      Isolated VLAN.
-
-      For the description on Secondary Isolated VLAN, see
-      `About Private VLAN" <#about-private-vlan>`_.
-
-   -  **Scope**: The available scopes are Domain, Account, Project, and
-      All.
-
-      -  **Domain**: Selecting Domain limits the scope of this guest
-         network to the domain you specify. The network will not be
-         available for other domains. If you select Subdomain Access,
-         the guest network is available to all the sub domains within
-         the selected domain.
-
-      -  **Account**: The account for which the guest network is being
-         created for. You must specify the domain the account belongs
-         to.
-
-      -  **Project**: The project for which the guest network is being
-         created for. You must specify the domain the project belongs
-         to.
-
-      -  **All**: The guest network is available for all the domains,
-         account, projects within the selected zone.
-
-   -  **Network Offering**: If the administrator has configured multiple
-      network offerings, select the one you want to use for this
-      network.
-
-   -  **Gateway**: The gateway that the guests should use.
-
-   -  **Netmask**: The netmask in use on the subnet the guests will use.
-
-   -  **IP Range**: A range of IP addresses that are accessible from the
-      Internet and are assigned to the guest VMs.
-
-   -  **Network Domain**: A custom DNS suffix at the level of a network.
-      If you want to assign a special domain name to the guest VM
-      network, specify a DNS suffix.
-
-#. Click OK to confirm.
+.. |pvlans.png| image:: /_static/images/pvlans.png
+   :alt: Diagram of PVLAN communications
