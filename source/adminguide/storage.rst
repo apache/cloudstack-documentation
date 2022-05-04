@@ -898,7 +898,7 @@ API output bellow.
          "diskkbsread": 343124,
          "diskkbswrite": 217619,
          ...
-Bytes read/write statistics are not exposed via UI, as shown in the image below.
+Bytes read/write statistics, as well as the total IO/s are exposed via UI, as shown in the image below.
 
 |volume-metrics.png|
 
