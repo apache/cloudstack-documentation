@@ -49,7 +49,7 @@ and VMware with vSphere.
 -  Red Hat Enterprise Linux 7, 8 with KVM
 -  openSUSE Leap 15
 -  SUSE Linux Enterprise Server 15
--  XenServer versions 7.1, 7.2, 7.4, 7.5, 8.0 (8.1 and 8.2 expected to work, but not tested. For 8.2 please check the note below) with latest hotfixes, XCP-ng 7.4, 7.6, 8.0, 8.1, 8.2.0
+-  XenServer versions 7.1, 7.2, 7.4, 7.5, 8.0 (8.1 and 8.2 expected to work, but not tested. For 8.2 please check the note below) with latest hotfixes, XCP-ng 7.4.0, 7.6.0, 8.0.0, 8.1.0, 8.2.0
 
    .. note:: It is now required to enable HA on the XenServer pool in order to recover from a pool-master failure. Please refer to the `XenServer documentation <https://docs.citrix.com/en-us/xencenter/7-1/pools-ha-enable.html>`_.
 
