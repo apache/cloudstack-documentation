@@ -698,6 +698,36 @@ determine when the physical deletion of volumes will occur.
 Administrators should adjust these values depending on site policies
 around data retention.
 
+Volume Metrics
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Volume statistics are collected on a regular interval (defined by global
+setting volume.stats.interval with a default of 600 seconds). 
+This feature is currently only available for VMware and KVM. 
+Volume stats include include bytes/s and IO/s statistics as shown in the
+API output bellow.
+
+.. code:: bash
+
+   [root@mgmt]# cmk list volumesmetrics id=272c3d8b-ef2c-499e-abfb-736b54d3d6b1
+   {
+   "count": 1,
+   "volume": [
+      {
+         ...
+         "diskiopstotal": 30245,
+         "diskioread": 22443,
+         "diskiowrite": 7802,
+         "diskkbsread": 343124,
+         "diskkbswrite": 217619,
+         ...
+Bytes read/write, as well as the total IO/s, are exposed via UI, as shown in the image below.
+
+|volume-metrics.png|
+
+These statistics are obtained from the hypervisor directly and they represent
+"current" bytes/s and IO/s values at the time of collection.
+
 
 Working with Volume Snapshots
 -----------------------------
@@ -875,35 +905,6 @@ snapshot data.
    been taken and stored in OVA format will continue to exist in that
    format, and will continue to work as expected.
 
-Volume Metrics
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Volume statistics are collected on a regular interval (defined by global
-setting volume.stats.interval with a default of 600 seconds). 
-This feature is currently only available for VMware and KVM. 
-Volume stats include include bytes/s and IO/s statistics as shown in the
-API output bellow.
-
-.. code:: bash
-
-   [root@mgmt]# cmk list volumesmetrics id=272c3d8b-ef2c-499e-abfb-736b54d3d6b1
-   {
-   "count": 1,
-   "volume": [
-      {
-         ...
-         "diskiopstotal": 30245,
-         "diskioread": 22443,
-         "diskiowrite": 7802,
-         "diskkbsread": 343124,
-         "diskkbswrite": 217619,
-         ...
-Bytes read/write statistics, as well as the total IO/s are exposed via UI, as shown in the image below.
-
-|volume-metrics.png|
-
-These statistics are obtained from the hypervisor directly and they represent
-"current" bytes/s and IO/s values at the time of collection.
 
 Linstor Primary Storage
 ~~~~~~~~~~~~~~~~~~~~~~~
