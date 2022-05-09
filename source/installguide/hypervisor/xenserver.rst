@@ -34,8 +34,8 @@ System Requirements for XenServer Hosts
     -  XenServer 7.0 
     -  XenServer 7.1
     -  XenServer 7.5
-    -  XenServer 8.0
-    -  XenServer 8.1
+    -  XenServer 8.0 (not tested explicitly, but should work - see the release notes)
+    -  XenServer 8.1 (not tested explicitly, but should work - see the release notes)
     -  XCP-ng 7.4.0
     -  XCP-ng 7.5.0
     -  XCP-ng 7.6.0
