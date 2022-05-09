@@ -18,7 +18,7 @@ Host Citrix XenServer Installation
 ----------------------------------
 
 If you want to use the Citrix XenServer hypervisor to run guest virtual
-machines, install XenServer 6.0 or XenServer 6.0.2 on the host(s) in
+machines, install XenServer/XCP-ng 7.0 or later on the host(s) in
 your cloud. For an initial installation, follow the steps below. If you
 have previously installed XenServer and want to upgrade to another
 version, see :ref:`upgrading-xenserver-version`.
@@ -31,12 +31,18 @@ System Requirements for XenServer Hosts
    See the Citrix Hardware Compatibility Guide:
    `http://hcl.xensource.com <http://hcl.xensource.com>`_
 
-    -  XenServer 5.6 SP2
-    -  XenServer 6.0
-    -  XenServer 6.0.2
-    -  XenServer 6.1.0
-    -  XenServer 6.2.0
-    -  XenServer 6.5.0
+    -  XenServer 7.0 
+    -  XenServer 7.1
+    -  XenServer 7.5
+    -  XenServer 8.0 (not tested explicitly, but should work - see the release notes)
+    -  XenServer 8.1 (not tested explicitly, but should work - see the release notes)
+    -  XCP-ng 7.4.0
+    -  XCP-ng 7.5.0
+    -  XCP-ng 7.6.0
+    -  XCP-ng 8.0.0
+    -  XCP-ng 8.1.0
+    -  XCP-ng 8.2.0
+    
 
 -  You must re-install Citrix XenServer if you are going to re-use a
    host from a previous install.
@@ -100,9 +106,9 @@ Configure XenServer dom0 Memory
 Configure the XenServer dom0 settings to allocate more memory to dom0.
 This can enable XenServer to handle larger numbers of virtual machines.
 We recommend 2940 MB of RAM for XenServer dom0. For instructions on how
-to do this, see `http://support.citrix.com/article/CTX126531 
-<http://support.citrix.com/article/CTX126531>`_. The article refers to 
-XenServer 5.6, but the same information applies to XenServer 6.0.
+to do this, see `https://docs.citrix.com/en-us/xencenter/7-1/hosts-control-domain-memory.html 
+<https://docs.citrix.com/en-us/xencenter/7-1/hosts-control-domain-memory.html>`_. The article refers to 
+XenServer 7.1 LTSR.
 
 
 Username and Password
@@ -222,7 +228,7 @@ CSP functionality is already present in XenServer 6.1
 
    .. parsed-literal::
 
-      # xe-switch-network-backend  bridge
+      # xe-switch-network-backend bridge
 
    Restart the host machine when prompted.
 
@@ -648,6 +654,10 @@ Now the bonds are set up and configured properly across the cluster.
 Upgrading XenServer Versions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. note:: 
+   This section has been updated and the upgrade steps shown below
+   have been tested with XenServer 6.5 and up (i.e. upgrading from 6.5 to 7.1 and later)
+
 This section tells how to upgrade XenServer software on CloudStack
 hosts. The actual upgrade is described in XenServer documentation, but
 there are some additional steps you must perform before and after the
@@ -659,70 +669,39 @@ upgrade.
 
 To upgrade XenServer:
 
-#. Upgrade the database. On the Management Server node:
-
-   #. Back up the database:
-
-      .. parsed-literal::
-
-          # mysqldump --user=root --databases cloud > cloud.backup.sql
-          # mysqldump --user=root --databases cloud_usage > cloud_usage.backup.sql
-
-   #. You might need to change the OS type settings for VMs running on
-      the upgraded hosts.
-
-      -  If you upgraded from XenServer 5.6 GA to XenServer 5.6 SP2,
-         change any VMs that have the OS type CentOS 5.5 (32-bit),
-         Oracle Enterprise Linux 5.5 (32-bit), or Red Hat Enterprise
-         Linux 5.5 (32-bit) to Other Linux (32-bit). Change any VMs that
-         have the 64-bit versions of these same OS types to Other Linux
-         (64-bit).
-
-      -  If you upgraded from XenServer 5.6 SP2 to XenServer 6.0.2,
-         change any VMs that have the OS type CentOS 5.6 (32-bit),
-         CentOS 5.7 (32-bit), Oracle Enterprise Linux 5.6 (32-bit),
-         Oracle Enterprise Linux 5.7 (32-bit), Red Hat Enterprise Linux
-         5.6 (32-bit) , or Red Hat Enterprise Linux 5.7 (32-bit) to
-         Other Linux (32-bit). Change any VMs that have the 64-bit
-         versions of these same OS types to Other Linux (64-bit).
-
-      -  If you upgraded from XenServer 5.6 to XenServer 6.0.2, do all
-         of the above.
-
-   #. Restart the Management Server and Usage Server. You only need to
-      do this once for all clusters.
-
-      .. parsed-literal::
-
-         # service cloudstack-management start
-         # service cloudstack-usage start
-
 #. Disconnect the XenServer cluster from CloudStack.
 
-   #. Log in to the CloudStack UI as root.
+   #. Log in to the CloudStack UI as admin.
 
    #. Navigate to the XenServer cluster, and click Actions – Unmanage.
 
-   #. Watch the cluster status until it shows Unmanaged.
+   #. Watch the cluster status until it shows "Unmanaged".
+   
+   This ensures that any actions against hosts in this cluster
+   are not possible (i.e. VM stop/start/snapshot, etc.) and CloudStack will 
+   "ignore" the cluster (i.e. it will not react if the host goes down, etc.).
+   
+   This is important since in the following steps we will be migrating VMs out of band,
+   upgrading and rebooting each host in the cluster, etc.
 
 #. Log in to one of the hosts in the cluster, and run this command to
-   clean up the VLAN:
+   clean up the VLAN (all VLANs and networks are attempted to be removed, but only
+   the ones with no VIFs/PIFs are actually removed - i.e. we are doing a bit of housekeeping)
 
    .. parsed-literal::
 
-      # . /opt/xensource/bin/cloud-clean-vlan.sh
+      # /opt/cloud/bin/cloud-clean-vlan.sh
 
-#. Still logged in to the host, run the upgrade preparation script:
+#. Still logged in to the host, run the upgrade preparation script which will ensure that all existing VLANs and networks are propagated to all hosts, eject ISOs from all VMs and also "fake" presence of PV drivers on PV VMs - all of this is done to enable live migration of VMs between hosts later:
 
    .. parsed-literal::
 
-      # /opt/xensource/bin/cloud-prepare-upgrade.sh
+      # /opt/cloud/bin/cloud-prepare-upgrade.sh
 
    Troubleshooting: If you see the error "can't eject CD," log in to the
    VM and umount the CD, then run the script again.
 
-#. Upgrade the XenServer software on all hosts in the cluster. Upgrade
-   the master first.
+#. Upgrade the XenServer software on all hosts in the cluster. Upgrade the master first. Do NOT put the pool master host into the Maintenance mode as this will move the pool master role to another host.
 
    #. Live migrate all VMs on this host to other hosts. See the
       instructions for live migration in the Administrator's Guide.
@@ -740,57 +719,54 @@ To upgrade XenServer:
 
       .. parsed-literal::
 
-         # /opt/xensource/bin/make_migratable.sh  b6cf79c8-02ee-050b-922f-49583d9f1a14
+         # /opt/cloud/bin/make_migratable.sh  b6cf79c8-02ee-050b-922f-49583d9f1a14
 
    #. Reboot the host.
 
-   #. Upgrade to the newer version of XenServer. Use the steps in
-      XenServer documentation.
+   #. Upgrade to the newer version of XenServer using an ISO file. This will essentially backup the current root partition
+      of the host and install a new version of hypervisor, while preserving the existing VMs and configuration. Use the steps in XenServer documentation.
 
-   #. After the upgrade is complete, copy the following files from the
-      management server to this host, in the directory locations shown
-      below:
+   #. After the upgrade is complete and the host boots, create the destination folder "/opt/cloud/bin/" on the host
+      and copy the following files from the management server to this host, in the directory locations shown below:
 
       .. cssclass:: table-striped table-bordered table-hover
       
       =================================================================================   =======================================
       Copy this Management Server file                                                    To this location on the XenServer host
       =================================================================================   =======================================
-      /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/xenserver60/NFSSR.py   /opt/xensource/sm/NFSSR.py
-      /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/setupxenserver.sh      /opt/xensource/bin/setupxenserver.sh
-      /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/make\_migratable.sh    /opt/xensource/bin/make\_migratable.sh
-      /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-clean-vlan.sh    /opt/xensource/bin/cloud-clean-vlan.sh
+      /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/setupxenserver.sh      /opt/cloud/bin/setupxenserver.sh
+      /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/make\_migratable.sh    /opt/cloud/bin/make\_migratable.sh
+      /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/cloud-clean-vlan.sh    /opt/cloud/bin/cloud-clean-vlan.sh
       =================================================================================   =======================================
 
-   #. Run the following script:
+   #. Run the following script, which will configure a few things on the freshly upgraded XenServer host
+      (disable IPv6, configure VNC related firewall settings, configure a few network settings, clear the heartbeat file, etc.):
 
       .. parsed-literal::
 
-         # /opt/xensource/bin/setupxenserver.sh
+         # /opt/cloud/bin/setupxenserver.sh
 
-      Troubleshooting: If you see the following error message, you can
-      safely ignore it.
+      Troubleshooting: If you see the following error messages, you can
+      safely ignore them.
 
       .. parsed-literal::
 
-         mv: cannot stat `/etc/cron.daily/logrotate`: No such file or directory
+         iptables: Bad rule (does a matching rule exist in that chain?).
+         sed: can't read /opt/xensource/libexec/qemu-dm-wrapper: No such file or directory
+         mv: cannot stat ‘/etc/cron.daily/logrotate’: No such file or directory
 
    #. Plug in the storage repositories (physical block devices) to the
-      XenServer host:
+      XenServer host (although all of them should already be plugged in):
 
       .. parsed-literal::
 
-         # for pbd in `xe pbd-list currently-attached=false| grep ^uuid | awk '{print $NF}'`; do xe pbd-plug uuid=$pbd ; done
+         # for pbd in $(xe pbd-list currently-attached=false | grep ^uuid | awk '{print $NF}'); do xe pbd-plug uuid=$pbd ; done
 
-      .. note:: 
-         If you add a host to this XenServer pool, you need to migrate all VMs 
-         on this host to other hosts, and eject this host from XenServer pool.
 
-#. Repeat these steps to upgrade every host in the cluster to the same
-   version of XenServer.
+#. Repeat these steps to upgrade every host in the cluster to the same version of XenServer.
 
-#. Run the following command on one host in the XenServer cluster to
-   clean up the host tags:
+#. When all of the hosts in the pool are upgraded, run the following command on one host in the XenServer cluster to
+   clean up the host tags (this will make sure ACS later copies the rest of the required scripts and plugins to each host):
 
    .. parsed-literal::
 
@@ -803,13 +779,14 @@ To upgrade XenServer:
 
 #. Reconnect the XenServer cluster to CloudStack.
 
-   #. Log in to the CloudStack UI as root.
+   #. Log in to the CloudStack UI as admin.
 
    #. Navigate to the XenServer cluster, and click Actions – Manage.
 
-   #. Watch the status to see that all the hosts come up.
+   #. Watch the status to see that all the hosts come "Up" (it can take a few minutes, as it takes time for CloudStack to copy 
+      all of the required scripts and plugins to the upgraded hosts)
 
-#. After all hosts are up, run the following on one host in the cluster:
+#. Optionally, after all hosts are "Up", run the following on one host in the cluster:
 
    .. parsed-literal::
 
