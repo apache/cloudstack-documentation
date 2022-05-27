@@ -268,6 +268,13 @@ To upload a template:
             selecting an OS Type when registering a template if the option 'Read VM settings from OVA' is selected. In this case, the OS Type is
             obtained from the template after it is registered.
 
+   -  **Userdata**: The registered Userdata are listed. Select the
+      desired one.
+
+   -  **Userdata link policy**: Select the userdata override policy as required. 
+      For more information on userdata and override link policy, please check `Userdata section <virtual_machines.html#user-data-and-meta-data>`_.
+
+
    -  **Hypervisor**: The supported hypervisors are listed. Select the
       desired one.
 
