@@ -47,6 +47,27 @@ To register a new userdata:
    :align: center
    :alt: Regiser userdata dialog box
 
+If userdata content has variables declared in it, user can register the Userdata
+with userdata parameters.
+
+For example, if userdata content is like below having a custom variable "variable1"
+   .. code:: bash
+      ## template: jinja
+      #cloud-config
+      runcmd:
+         - echo 'TestVariable {{ ds.meta_data.variable1 }}' >> /tmp/variable
+         - echo 'Hostname {{ ds.meta_data.public_hostname }}' > /tmp/hostname
+
+Userdata has to be registered with userdata parameter "variable1" like below
+
+.. image:: /_static/images/register_userdata_with_variables.png
+   :width: 400px
+   :align: center
+   :alt: Regiser userdata with variables dialog box
+
+If the variables in userdata content are of a predefined metadata like "public_hostname"
+or "instance_id", then userdata parameters should not declare these variables. That is
+the reason in the above example "public_hostname" is not declared.
 
 There are three CloudStack APIs that can be used to provide user-data to VM:
 deployVirtualMachine, updateVirtualMachine and resetUserDataForVirtualMachine.
@@ -58,6 +79,14 @@ in userdata in a key value parameter map details.
    :width: 400px
    :align: center
    :alt: Provide userdata id or userdata text dialog box
+
+If the userdata contains variables that are declared during registration then those values
+has to be specified like below,
+
+.. image:: /_static/images/deployvm_userdata_with_variables.png
+   :width: 400px
+   :align: center
+   :alt: Provide userdata id or userdata with variables text dialog box
 
 These details will be saved as meta-data file(s) in both config drive and virtual router,
 which in turn support jinja based instance meta-data feature of cloud-init,
@@ -200,15 +229,15 @@ This example uses cloud-init to automatically update all OS packages on the firs
       base64 <<EOF
       Content-Type: multipart/mixed; boundary="//"
       MIME-Version: 1.0
-      
+
       --//
       Content-Type: text/cloud-config; charset="us-ascii"
       MIME-Version: 1.0
       Content-Transfer-Encoding: 7bit
       Content-Disposition: attachment; filename="cloud-config.txt"
-      
+
       #cloud-config
-      
+
       # Upgrade the instance on first boot
       # (ie run apt-get upgrade)
       #
