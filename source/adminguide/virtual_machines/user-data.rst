@@ -51,7 +51,9 @@ If userdata content has variables declared in it, user can register the Userdata
 with userdata parameters.
 
 For example, if userdata content is like below having a custom variable "variable1"
+
    .. code:: bash
+
       ## template: jinja
       #cloud-config
       runcmd:
