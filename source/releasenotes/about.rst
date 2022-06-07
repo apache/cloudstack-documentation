@@ -17,19 +17,21 @@
 What's New in |release|
 =======================
 
-Apache CloudStack 4.17.0.0 is a 4.17 LTS release with 16 major new
-features, and over 210 enhancements and fixes since 4.16. Highlights include:
+Apache CloudStack 4.17.0.0 is a 4.17 LTS release with 383 new
+features, improvements and bug fixes since 4.16, including 16 major
+new features. Some of the highlights include:
 
 • IPv6 with Static Routing
-• Deprecate systemvm.iso & Live Patch (Zero Downtime Upgrades)
-• CloudStack Status & management (API & UI)
-• User-Shared Networks
+• Zero Downtime Upgrades
+• Virtual Router Live Patching
+• CloudStack Status & management
+• User Shared Networks
 • StorPool storage plugin
-• Storage-based Snapshots for KVM VMs
-• UI: Added attach and detach features to UI for ROOT disks
-• KVM: Enable CloudStack to use multiple LOCAL storage pools
+• Storage-based Snapshots for KVM Instances
+• Attach and detach features to UI for ROOT disks
+• Enable CloudStack to use multiple LOCAL storage pools
 • Multiple SSH Keys support
-• Reserve and release Public Ips
+• Reserve and release Public IPs
 
 The full list of new features can be found in the project release notes at
 https://docs.cloudstack.apache.org/en/4.17.0.0/releasenotes/changes.html
