@@ -17,29 +17,22 @@
 What's New in |release|
 =======================
 
-Apache CloudStack 4.16.0.0 is a 4.16 LTS release with over 22 major new
-features, and over 244 enhancements and fixes since 4.15. Highlights include:
+Apache CloudStack 4.17.0.0 is a 4.17 LTS release with 16 major new
+features, and over 210 enhancements and fixes since 4.16. Highlights include:
 
-• System VM Template improvements
-• CKS Support for Cluster Autoscaling
-• Dell EMC VxFlex integration
-• Linstor Volume Plugin integration
-• Support for OpenSuse
-• Support for Rocky Linux
-• Granular control of dynamic scaling of VM's CPU/RAM
-• Comments in the UI
-• Resource Icons
-• Bulk actions through the UI
-• UI for VM Ingestion
-• L2 Networks Persistent modern
-• Script cloudstack-setup-databases improvement
-• Add mac learning mode in network offering
-• API-call to declare host as Degraded
-• New API endpoint to update pod management network IP range
-• Add New API endpoint: UpdateVlanIpRange
+• IPv6 with Static Routing
+• Deprecate systemvm.iso & Live Patch (Zero Downtime Upgrades)
+• CloudStack Status & management (API & UI)
+• User-Shared Networks
+• StorPool storage plugin
+• Storage-based Snapshots for KVM VMs
+• UI: Added attach and detach features to UI for ROOT disks
+• KVM: Enable CloudStack to use multiple LOCAL storage pools
+• Multiple SSH Keys support
+• Reserve and release Public Ips
 
 The full list of new features can be found in the project release notes at
-https://docs.cloudstack.apache.org/en/4.16.0.0/releasenotes/changes.html
+https://docs.cloudstack.apache.org/en/4.17.0.0/releasenotes/changes.html
 
 Legacy UI Removal Notice
 ========================
