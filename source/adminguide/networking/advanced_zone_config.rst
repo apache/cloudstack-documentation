@@ -56,6 +56,10 @@ configure the base guest network:
    -  **Netmask**: The netmask in use on the subnet the guest instances
       will use.
 
+   -  **DNS**: A set of custom DNS that will be used by the guest network. If not provided then DNS specified for the zone will be used. Available only when the selected network offering supports DNS service.
+
+   -  **IPv6 DNS**: A set of custom IPv6 DNS that will be used by the guest network. If not provided then IPv6 DNS specified for the zone will be used. Available only when the selected network offering is IPv6 enabled and supports DNS service.
+
    -  **Network Domain**: A custom DNS suffix at the level of a network. If you
       want to assign a special domain name to the guest VM network, specify a
       DNS suffix.
@@ -146,6 +150,8 @@ Configuring a Shared Guest Network
    -  **IP Range**: A range of IP addresses that are accessible from the
       Internet and are assigned to the guest VMs.
 
+   -  **DNS**: A set of custom DNS that will be used by the network. If not provided then DNS specified for the zone will be used. Available only when the selected network offering supports DNS service.
+
       If one NIC is used, these IPs should be in the same CIDR in the
       case of IPv6.
 
@@ -153,6 +159,8 @@ Configuring a Shared Guest Network
       subnet. This is the CIDR that describes the IPv6 addresses in use
       in the guest networks in this zone. To allot IP addresses from
       within a particular address block, enter a CIDR.
+
+   -  **IPv6 DNS**: A set of custom IPv6 DNS that will be used by the network. If not provided then IPv6 DNS specified for the zone will be used. Available only when the selected network offering supports DNS service.
 
    -  **Network Domain**: A custom DNS suffix at the level of a network.
       If you want to assign a special domain name to the guest VM
