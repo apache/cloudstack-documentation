@@ -54,14 +54,9 @@ them as a StorPool storage pool.
 
 To mitigate the issue, a CloudStack administrator needs to do the
 following on version 4.17.0.0:
-- On each management server: stop the CloudStack management service,
-remove the Storpool plugin jar on
-/usr/share/cloudstack-management/lib/cloud-plugin-storage-volume-storpool-4.17.0.0.jar
-and restart the Cloudstack management service
-- On each KVM host: stop the CloudStack agent service, remove the
-StorPool plugin jar on
-/usr/share/cloudstack-agent/lib/cloud-plugin-storage-volume-storpool-4.17.0.0.jar
-and restart the CloudStack agent service
+
+• On each management server: stop the CloudStack management service, remove the Storpool plugin jar on /usr/share/cloudstack-management/lib/cloud-plugin-storage-volume-storpool-4.17.0.0.jar and restart the Cloudstack management service
+• On each KVM host: stop the CloudStack agent service, remove the StorPool plugin jar on /usr/share/cloudstack-agent/lib/cloud-plugin-storage-volume-storpool-4.17.0.0.jar and restart the CloudStack agent service
 
 Note: This workaround removes the StorPool plugin support. StorPool
 users should not apply the workaround to continue using their Storpool
