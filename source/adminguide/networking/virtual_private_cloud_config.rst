@@ -208,7 +208,12 @@ addresses in the form of a Classless Inter-Domain Routing (CIDR) block.
       is not specified, a DNS domain name is generated automatically.
 
    -  **VPC Offering**: If the administrator has configured multiple
-      VPC offerings, select the one you want to use for this VPC
+      VPC offerings, select the one you want to use for this VPC.
+
+   -  **DNS**: A set of custom DNS that will be used by this VPC. If not provided then DNS specified for the zone will be used. Available only when the selected VPC offering supports DNS service.
+
+   -  **IPv6 DNS**: A set of custom IPv6 DNS that will be used by this VPC. If not provided then IPv6 DNS specified for the zone will be used. Available only when the selected VPC offering is IPv6 enabled and supports DNS service.
+
 
 #. Click OK.
 
