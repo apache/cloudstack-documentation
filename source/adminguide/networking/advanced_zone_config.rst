@@ -49,6 +49,14 @@ configure the base guest network:
    -  **Network offering**: If the administrator has configured multiple
       network offerings, select the one you want to use for this network
 
+   - **Public MTU**: The MTU that will be configured on the public interfaces
+      of the network's VR. 
+      **NOTE:** This will not be considered for VPC network tiers, as the 
+      public MTU defined at the VPC network creation level will be considered
+
+   - **Private MTU**: The MTU that will configured on the private interface(s)
+      of the network's VR
+
    -  **External Id**: ID of the network in an external system.
  
    -  **Gateway**: The gateway that the guests instances will use.
@@ -134,6 +142,12 @@ Configuring a Shared Guest Network
    -  **Network Offering**: If the administrator has configured multiple
       network offerings, select the one you want to use for this
       network.
+   
+   - **Public MTU**: The MTU that will be configured on the public interfaces
+      of the network's VR. This MTU will considered for redundant VRs 
+
+   - **Private MTU**: The MTU that will configured on the private interface(s)
+      of the network's VR
 
    -  **Associated Network**: The L2 or Isolated network this network is
       associated to. This network will use same VLAN as associated network.

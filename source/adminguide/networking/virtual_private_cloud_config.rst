@@ -210,6 +210,9 @@ addresses in the form of a Classless Inter-Domain Routing (CIDR) block.
    -  **VPC Offering**: If the administrator has configured multiple
       VPC offerings, select the one you want to use for this VPC
 
+   - **Public MTU**: The MTU to be configured on the public interfaces of the 
+      VPC network's VR
+
 #. Click OK.
 
 
