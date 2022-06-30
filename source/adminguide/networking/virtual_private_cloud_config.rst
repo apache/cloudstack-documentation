@@ -212,6 +212,9 @@ addresses in the form of a Classless Inter-Domain Routing (CIDR) block.
 
 #. Click OK.
 
+.. note:: 
+   In security groups-enabled Advanced zones and Basic zones, creation of
+   VPC and isolated networks are not supported.
 
 Adding Tiers
 ~~~~~~~~~~~~
