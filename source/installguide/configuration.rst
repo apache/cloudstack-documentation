@@ -485,6 +485,16 @@ Basic Zone Configuration
    -  **Password.** This is the password for the user named above (from
       your XenServer or KVM install).
 
+      One additional facility that is available in case of KVM is, host can also be added
+      using CloudStack's SSH key without having to provide host password.
+
+      Before adding the host in CloudStack do the following,
+
+         - Copy the SSH public key from /var/cloudstack/management/.ssh/id_rsa.pub on the management server
+         - Add the copied key to /root/.ssh/authorized_keys file on the host
+
+      Select "System SSH Key" and proceed with next steps.
+
    -  **Host Tags.** (Optional) Any labels that you use to categorize
       hosts for ease of maintenance. For example, you can set this to
       the cloud's HA tag (set in the ha.tag global configuration
@@ -1001,8 +1011,8 @@ KVM Host Additional Requirements
      cloudstack ALL=NOPASSWD: /usr/bin/cloudstack-setup-agent
      defaults:cloudstack !requiretty
 
-Adding a XenServer or KVM Host
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Adding a XenServer Host
+^^^^^^^^^^^^^^^^^^^^^^^
 
 #. If you have not already done so, install the hypervisor software on
    the host. You will need to know which version of the hypervisor
@@ -1030,8 +1040,7 @@ Adding a XenServer or KVM Host
 
    -  Username. Usually root.
 
-   -  Password. This is the password for the user from your XenServer or
-      KVM install).
+   -  Password. This is the password for the user from your XenServer install).
 
    -  Host Tags (Optional). Any labels that you use to categorize hosts
       for ease of maintenance. For example, you can set to the cloud's
@@ -1044,6 +1053,24 @@ Adding a XenServer or KVM Host
    automatically display in the UI.
 
 #. Repeat for additional hosts.
+
+
+Adding a KVM Host
+^^^^^^^^^^^^^^^^^
+
+The steps to add a KVM host are same as adding a XenServer Host as mentioned in
+the above section. 
+One additional facility that is available in case of KVM is, host can also be added
+using CloudStack's SSH key without having to provide host password.
+
+Before adding the host in CloudStack do the following,
+
+   - Copy the SSH public key from /var/cloudstack/management/.ssh/id_rsa.pub on the management server
+   - Add the copied key to /root/.ssh/authorized_keys file on the host
+
+While adding the host from CloudStack UI, select "System SSH Key" as shown below
+
+   |add-Host.png: Adding a KVM Host|
 
 
 .. _adding-a-host-vsphere:
