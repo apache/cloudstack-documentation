@@ -1072,7 +1072,6 @@ While adding the host from CloudStack UI, select "System SSH Key" as shown below
 
    |add-Host.png: Adding a KVM Host|
 
-
 .. _adding-a-host-vsphere:
 
 Adding a Host (vSphere)
@@ -1727,4 +1726,5 @@ zone      denied.routes                                              Routes that
 .. |provisioning-overview.png: Conceptual overview of a basic deployment| image:: /_static/images/provisioning-overview.png
 .. |vsphereclient.png: vSphere client| image:: /_static/images/vsphere-client.png
 .. |addcluster.png: add a cluster| image:: /_static/images/add-cluster.png
+.. |add-Host.png: Adding a KVM Host| image:: /_static/images/add-Host.png
 .. |ConsoleButton.png: button to launch a console| image:: /_static/images/console-icon.png
