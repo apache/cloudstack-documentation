@@ -101,7 +101,7 @@ Creating POLICIES on the Networker Side
 
 #. Create a dedicated Media Pool (recommended but not required).
 
-    |BnR-Networker-MediaPool-General.jpg|
+   |BnR-Networker-MediaPool-General.jpg|
 
 #. Set the configuration values according to your environment, equipment, needs and constraints.
 
@@ -110,11 +110,33 @@ Creating POLICIES on the Networker Side
 #. In Selection Criteria tab you can select the device(s) associated with that Media Pool. A use of a deduplication
    capable storage device (such as DataDomain) is recommended.
 
+#. Check your cluster name (e.g from cloud monkey).
+   Please note that cluster name case sensitivity matters.
+
+   |BnR-Networker-clustername.jpg|
+
+#. Create relevant DNS entries for all your KVM clusters in your nameservers or add it in the /etc/hosts of your
+   DELL EMC NETWORKER server. The IP addresses can be anything you want but must be present.
+
+#. Create a client representing the cluster on the EMC Networker Side
+
+   |BnR-Networker-Cluster-Client-General.jpg|
+   |BnR-Networker-Cluster-Client-Globals1.jpg|
+
+#. Include all the users and hypervisor hosts on the Global (2 of 2) page
+
+   |BnR-Networker-Cluster-Client-Globals2.jpg|
+
+#. Your final client configuration should have all KVM hosts and Clusters defined.
+
+   |BnR-Networker-Cluster-Clients-overview.jpg|
+
+
 Connecting CloudStack to DELL EMC Networker
 ----------------------------------------------
 
 Before enabling DELL EMC Networker make sure that the user account that Cloudstack uses to connect to your KVM Hypervisors
-can execute via SUDO and with no required passwords the following two scripts:
+can execute via SUDO and with no required password the following two scripts:
 
 #. /usr/share/cloudstack-common/scripts/vm/hypervisor/kvm/nsrkvmbackup.sh
 #. /usr/share/cloudstack-common/scripts/vm/hypervisor/kvm/nsrkvmrestore.sh
@@ -128,17 +150,18 @@ Plug-in specific settings:
 
 .. cssclass:: table-striped table-bordered table-hover
 
-==================================== ========================
-Configuration                         Description
-==================================== ========================
-backup.plugin.networker.url              DELL EMC Networker server URL. Default: https://localhost:9090/nwrestapi/v3
-backup.plugin.networker.username         DELL EMC Networker server username. Default: administrator
-backup.plugin.networker.password         DELL EMC Networker server password. Default: password
-backup.plugin.networker.pool             DELL EMC Networker Media Pool. Default: Default
-backup.plugin.networker.validate.ssl     Whether to validate API server (SSL/TLS) connection  Default: false
-backup.plugin.networker.request.timeout  DELL EMC Networker API request timeout in seconds. Default: 300
-backup.plugin.networker.client.verbosity DELL EMC Networker Client verbosity: Default: false
-==================================== ========================
+========================================  =============================================================================
+Configuration                             Description
+========================================  =============================================================================
+backup.plugin.networker.url               DELL EMC Networker server URL. Default: https://localhost:9090/nwrestapi/v3
+backup.plugin.networker.username          DELL EMC Networker server username. Default: administrator
+backup.plugin.networker.password          DELL EMC Networker server password. Default: password
+backup.plugin.networker.pool              DELL EMC Networker Media Pool. Default: Default
+backup.plugin.networker.validate.ssl      Whether to validate API server (SSL/TLS) connection.  Default: false
+backup.plugin.networker.request.timeout   DELL EMC Networker API request timeout in seconds. Default: 300
+backup.plugin.networker.client.verbosity  DELL EMC Networker Client verbosity: Default: false
+========================================  =============================================================================
+
 
 Client Logs and Verbosity
 -------------------------
@@ -150,13 +173,35 @@ list of all the actions and failures. For production use and when not debugging 
 
 .. |BnR-Networker-Policy.jpg| image:: /_static/images/BnR-Networker-Policy.jpg
    :alt: Create Networker Policy.
-   :width: 300 px
+   :width: 350 px
 .. |BnR-Networker-Policies.jpg| image:: /_static/images/BnR-Networker-Policies.jpg
    :alt: Networker Policies.
-   :width: 300 px
+   :width: 400 px
 .. |BnR-Networker-MediaPool-General.jpg| image:: /_static/images/BnR-Networker-MediaPool-General.jpg
    :alt: Media Pool General Properties.
-   :width: 300 px
+   :width: 350 px
 .. |BnR-Networker-MediaPool-Configuration.jpg| image:: /_static/images/BnR-Networker-MediaPool-Configuration.jpg
    :alt: Media Pool Configuration Properties.
-   :width: 600 px
+   :width: 350 px
+.. |BnR-Networker-clustername.jpg| image:: /_static/images/BnR-Networker-clustername.jpg
+   :alt: Cluster Client CMK.
+   :width: 400 px
+.. |BnR-Networker-Cluster-Client-General.jpg| image:: /_static/images/BnR-Networker-Cluster-Client-General.jpg
+   :alt: Cluster Client Creation.
+   :width: 350 px
+.. |BnR-Networker-Cluster-Client-Globals1.jpg| image:: /_static/images/BnR-Networker-Cluster-Client-Globals1.jpg
+   :alt: Cluster client Globals (1 of 2).
+   :width: 350 px
+.. |BnR-Networker-Cluster-Client-Globals2.jpg| image:: /_static/images/BnR-Networker-Cluster-Client-Globals2.jpg
+   :alt: Cluster client Globals (2 of 2).
+   :width: 350 px
+.. |BnR-Networker-Cluster-Clients-overview.jpg| image:: /_static/images/BnR-Networker-Cluster-Clients-overview.jpg
+   :alt: Cluster Clients Overview.
+   :width: 300 px
+
+
+
+
+
+
+
