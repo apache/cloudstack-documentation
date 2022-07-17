@@ -30,17 +30,18 @@ EMC Networker Server
 #. Network connectivity between the Cloudstack Management Servers in your zone and DELL EMC Networker Server
 #. Administration access to the DELL EMC Networker management consoles
 #. Unrestricted access to API port (running default at: 9090/tcp)
-#. A proper timezone set. Identical to the Hypervisors
+#. A proper timezone set. Identical to the Hypervisors and Management server
 #. Proper DNS resolution of the Clients
 
 KVM Hypervisor(s)
 
 #. A BASH shell at minimum version 4.4.19
-#. DELL EMC Networker must be installed and running
+#. DELL EMC Networker client must be installed and in running state
 #. Hypervisor must be associated with the DELL EMC Networker server as CLIENT
-#. In order to get backup for a VM running in a specific Hypervisor
-   State and Resource State must be UP and ENABLED respectively.
-#. A proper timezone set. Identical to the EMC Networker Server
+#. DELL EMC Networker can connect and verify certificates to the Hyper-v Client
+#. A Hypervisor must be in UP and ENABLED state and resource state respectively in order to be able to get backups
+   for the VMS running.
+#. A proper timezone set. Identical to the EMC Networker Server and Management server
 #. Proper DNS resolution of the EMC Networker server
 
 Virtual Machines
@@ -53,8 +54,10 @@ Virtual Machines
 General Concepts
 
 #. DELL EMC Networker POLICIES are presented as Backup Provider Offerings to Cloudstack.
-   At that level we can set the Protection Period (aka Expiration) to specify when old backups
+   At that level we can set the Protection Period (aka Expiration) to specify when backups
    will expire. Restricted data zones can also be defined in POLICIES to create fine grain permissions.
+#. As per EMC Networker Glossary and design those POLICIES are not actually used. They act as a placeholder
+   for the backup offerings and the retention policies.
 #. DELL EMC Networker has no ability to initiate backup tasks for KVM Virtual Machines at the moment.
    The implementation is based on manual save sets initiated by the Cloudstack Networker plugin.
 #. The tag -CSBKP- in the comment of the POLICY indicates that this policy is available to Cloudstack
@@ -65,7 +68,9 @@ General Concepts
    placeholder for being able to backup and restore your Virtual Machines from all hosts within the cluster.
 #. Cross cluster restores are indirectly supported by restoring to the original cluster and then migrating the Virtual
    Machine to the destination cluster.
-
+#. Any manual KVM backup you initiate (from the hyper-v command line) will be registered in Cloudstack automatically.
+   You need to use the client scripts and pass the proper parameteres to do so.
+#. Any backup you expire/remove from the DELL EMC Networker side will be unregistered in Cloudstack automatically.
 
 Installing DELL EMC Networker Backup and Recovery Plugin
 --------------------------------------------------------
@@ -75,7 +80,13 @@ backup suite. It has been developed and tested against 19.4.0.6 and the minimum 
 
 The installation and configuration of the DELL EMC Networker is out of scope and it is assumed that it has been properly
 performed in advance. Kindly make sure that DNS resolution, Timezones and system clocks are set/synced for KVM Hypervisors,
-Cloudstack Management Servers and DELL EMC Networker Server.
+Cloudstack Management Servers and DELL EMC Networker Server. Do not forget to perform your staging actions (if any)
+before the savesets expire.
+
+Depending on your topology, network bandwidth, backend storage speeds, number of customer VMs you should carefully plan,
+design and implement the Storage volumes, media pools. If you have multiple VMs that your customers want to be processed
+at the same time (e.g Friday night, end of business day in your timezone) this can easily overwhelm your resources since
+the backups are initiated outside DELL EMC Networker.
 
 A brief Outline of the prerequisite steps is provided.
 
@@ -169,6 +180,8 @@ Client Logs and Verbosity
 The default location for the logs is under /nsr/logs/cloudstack for each KVM Hypervisor. You should be familiar with that
 location from your usual Networker debugging. By setting the verbosity to true you will have comprehensive step by step
 list of all the actions and failures. For production use and when not debugging it is recommended to not use verbose logging.
+
+It is also recommended to add that location to your regular log rotating policy.
 
 
 .. |BnR-Networker-Policy.jpg| image:: /_static/images/BnR-Networker-Policy.jpg
