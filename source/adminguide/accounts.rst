@@ -14,18 +14,13 @@
    under the License.
 
 
-Roles, Accounts, Users, and Domains
+Role, konta, użytkownicy i domeny
 -----------------------------------
 
-Roles
+Role
 ~~~~~
 
-A role represents a set of allowed functions. All CloudStack accounts have a
-role attached to them that enforce access rules on them to be allowed or
-disallowed to make an API request. Typically there are four default roles:
-root admin, resource admin, domain admin and user.
-Newer roles have been added which include Read-Only Admin, Read-Only User,
-Support Admin and Support User which are in turn based on the aforementioned roles.
+Rola reprezentuje zestaw dozwolonych funkcji. Wszystkie konta Sinersio Cloud mają przypisaną rolę, która wymusza na nich reguły dostępu, aby umożliwić lub uniemożliwić wysyłanie żądań poleceń. Zazwyczaj istnieją cztery domyślne role: administrator root, administrator zasobów, administrator domeny i użytkownik. Dodano nowsze role, które obejmują administratora tylko do odczytu, użytkownika tylko do odczytu, administratora pomocy technicznej i użytkownika pomocy technicznej, które z kolei są oparte na wyżej wymienionych rolach.
 
 
 Accounts
