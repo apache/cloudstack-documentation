@@ -208,6 +208,7 @@ establish a websocket session, bypassing the VNC client on the console proxy.
 
 It is possible to add extra validation for the console proxy authentication, 
 with the following configurations:
+
 - ‘consoleproxy.extra.security.header.enabled’: Enable/disable extra security 
   validation for console proxy using client header
 - ‘consoleproxy.extra.security.header.name’: A client header for extra security 
@@ -224,6 +225,7 @@ the header matching the header name passed via parameters and its value matches
 the value passed via parameters, then the authentication is successful.
 
 It is also possible to change the VNC server port by the global setting:
+
 - novnc.console.port: The listen port for noVNC server
 
 Administrators must ensure a new console proxy VM is recreated after changing 
