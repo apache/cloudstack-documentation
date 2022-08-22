@@ -493,7 +493,7 @@ Limitations
    issue with these operating systems, which will freeze if an attempt
    is made to dynamically scale from less than 3 GB to more than 3 GB.
 
--  On KVM, not all versions of Qemu/KVM may support dynamic scaling and may result CPU or memory related failure during instance deployment.
+-  On KVM, not all versions of Qemu/KVM may support dynamic scaling. Some combinations may result CPU or memory related failures during instance deployment.
 
 
 
