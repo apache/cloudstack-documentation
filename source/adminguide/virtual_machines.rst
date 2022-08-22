@@ -496,7 +496,6 @@ Limitations
 -  On KVM, not all versions of Qemu/KVM may support dynamic scaling. Some combinations may result CPU or memory related failures during instance deployment.
 
 
-
 Resetting the Virtual Machine Root Volume on Reboot
 ---------------------------------------------------
 
