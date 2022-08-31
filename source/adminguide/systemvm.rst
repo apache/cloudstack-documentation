@@ -212,23 +212,17 @@ with the following configurations:
 - ‘consoleproxy.extra.security.validation.enabled’: Enable/disable extra security 
   validation for console proxy using a token
 
-
-- When ‘consoleproxy.extra.security.validation.enabled’ is true: then CloudStack 
+When ‘consoleproxy.extra.security.validation.enabled’ is true: then CloudStack 
 requests the ‘token’ parameter to the ‘createConsoleEndpoint’ API. The console URL 
 retrieved on the API response includes an ‘extra’ parameter for users validation on 
 the console proxy. 
 
-   - When the console proxy receives a request including the ‘extra’ parameter it 
-   will decode the ‘token’ parameter and uses the original token to compare it with 
-   the ‘extra’ token. Only in case both matches, then the console access is allowed. 
+When the console proxy receives a request including the ‘extra’ parameter it 
+will decode the ‘token’ parameter and uses the original token to compare it with 
+the ‘extra’ token. Only in case both matches, then the console access is allowed. 
    
-- When ‘consoleproxy.extra.security.validation.enabled’ is false: then CloudStack 
+When ‘consoleproxy.extra.security.validation.enabled’ is false: then CloudStack 
 does not require a token for validation.
-
-
-It is also possible to change the VNC server port by the global setting:
-
-- novnc.console.port: The listen port for noVNC server
 
 The websocket port is passed as a boot argument to the console proxy and the 
 management server decides between the secure or unsecure port (8443 or 8080) when 
