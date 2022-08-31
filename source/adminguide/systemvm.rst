@@ -209,30 +209,47 @@ establish a websocket session, bypassing the VNC client on the console proxy.
 It is possible to add extra validation for the console proxy authentication, 
 with the following configurations:
 
-- ‘consoleproxy.extra.security.header.enabled’: Enable/disable extra security 
-  validation for console proxy using client header
-- ‘consoleproxy.extra.security.header.name’: A client header for extra security 
-  validation when using the console proxy
+- ‘consoleproxy.extra.security.validation.enabled’: Enable/disable extra security 
+  validation for console proxy using a token
 
-When ‘consoleproxy.extra.security.header.enabled’ is true, then CloudStack 
-checks the ‘createConsoleEndpoint’ API request for the header with name set 
-on the configuration ‘consoleproxy.extra.security.header.name’. In case the 
-header is found, the header name and its value are set as part of the parameters 
-sent to the console proxy via the encrypted token. Once a connection to the 
-console proxy server is attempted, the server will check for this header and 
-its value on the websocket upgrade request. If the upgrade request contains 
-the header matching the header name passed via parameters and its value matches 
-the value passed via parameters, then the authentication is successful.
+
+- When ‘consoleproxy.extra.security.validation.enabled’ is true: then CloudStack 
+requests the ‘token’ parameter to the ‘createConsoleEndpoint’ API. The console URL 
+retrieved on the API response includes an ‘extra’ parameter for users validation on 
+the console proxy. 
+
+   - When the console proxy receives a request including the ‘extra’ parameter it 
+   will decode the ‘token’ parameter and uses the original token to compare it with 
+   the ‘extra’ token. Only in case both matches, then the console access is allowed. 
+   
+- When ‘consoleproxy.extra.security.validation.enabled’ is false: then CloudStack 
+does not require a token for validation.
+
 
 It is also possible to change the VNC server port by the global setting:
 
 - novnc.console.port: The listen port for noVNC server
 
+The websocket port is passed as a boot argument to the console proxy and the 
+management server decides between the secure or unsecure port (8443 or 8080) when 
+setting the boot arguments for the CPVM.
+
+- The secure port 8443 is sent as a boot argument when:
+
+   - The setting ‘consoleproxy.sslEnabled’ is true
+   
+   - The setting ‘consoleproxy.url.domain’ is not empty
+   
+   - There is a record on the ‘keystore’ database with name ‘CPVMCertificate’
+
+- In any other case, then the port 8080 is selected
+
+
 Administrators must ensure a new console proxy VM is recreated after changing 
-the value of this setting. Once the console proxy VM is recreated, the new VNC 
-server port will be passed as the websocket traffic port. The console proxy VM 
-startup will also ensure a new iptable rule is added for the new VNC port, 
-allowing the traffic on it
+the value of any of the settings. Once the console proxy VM is recreated, 
+the new VNC server port will be used as the websocket traffic port. The console proxy 
+VM startup will also ensure a new iptable rule is added for the new VNC port, 
+allowing the traffic on it.
 
 
 Using a SSL Certificate for the Console Proxy
