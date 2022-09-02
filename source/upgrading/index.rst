@@ -43,6 +43,7 @@ Contents:
    :maxdepth: 1
  
    upgrade/mysql
+   upgrade/kvm-417
    upgrade/valid_source
    upgrade/upgrade-4.16
    upgrade/upgrade-4.15

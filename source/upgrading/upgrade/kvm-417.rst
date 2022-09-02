@@ -13,21 +13,18 @@
    specific language governing permissions and limitations
    under the License.
 
-MySQL upgrade problems
-======================
+KVM agents CPU speed detection issue
+====================================
 
-With certain MySQL versions (see below), issues have been seen with "cloud.nics" table's 
-column type (which was not updated properly during CloudStack upgrades, due to MySQL limitations),
-which eventually may lead to exception seen in the management server logs, causing users to
-not be able to start any VM.
+There is an issue with AMD (and possibly other CPU architectures) on the CPU speed detection at the 
+4.17.0 and 4.17.0.1 CloudStack agents on KVM hosts at startup. The CloudStack agents will attempt to 
+get the CPU speed  by reading the `/sys/devices/system/cpu/cpu0/cpufreq/base_frequency` information. 
+However, the CPU speed information is not included in all the CPU architectures.
 
-The following SQL statement needs to be manually executed in order to fix such issue:
+The following property needs to be manually add to `/etc/cloudstack/agent/agent.properties` on the 
+KVM hosts in order to fix such issue:
 
    .. parsed-literal::
+   
+    host.cpu.manual.speed.mhz=<CPU-SPEED>
 
-      ALTER TABLE nics MODIFY COLUMN update_time timestamp DEFAULT CURRENT_TIMESTAMP;
-
-The issue is known to affect the following MySQL server versions:
-
- -  5.7.34 or later
- -  8+
