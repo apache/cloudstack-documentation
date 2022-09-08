@@ -14,14 +14,9 @@
    under the License.
 
 
-Configuring AutoScale without using NetScaler
+Configuring AutoScale with using CloudStack Virtual Router
 =============================================
 
-.. note::
-   AutoScaling is currently not supported in the new UI.
-   To manage AutoScaling, please directly invoke the
-   respective APIs or use `cloudmonkey <https://github.com/apache/cloudstack-cloudmonkey>`_,
-   the CLI tool for cloudstack
 
 What is AutoScaling?
 --------------------
