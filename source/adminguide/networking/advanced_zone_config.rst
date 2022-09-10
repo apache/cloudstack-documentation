@@ -63,6 +63,9 @@ configure the base guest network:
 
 #. Click OK.
 
+.. note:: 
+   In security groups-enabled Advanced zones and Basic zones, creation of
+   VPC and isolated networks are not supported.
 
 Configure Public Traffic in an Advanced Zone
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
