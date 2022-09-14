@@ -194,6 +194,57 @@ the capacity to handle new sessions is used.
 Console proxies can be restarted by administrators but this will
 interrupt existing console sessions for users.
 
+Creating a VM Console Endpointy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The access to a VM Console is created by the API 'createConsoleEndpoint', 
+for the VM specified in the parameter 'virtualmachineid'. By default, 
+the CloudStack UI connects to the URL that this API generates.
+
+The response of the 'createConsoleEndpoint' API also contain the information 
+to create a websocket session to the VNC server on the console proxy, this 
+infomation includes: the host, port, path and token parameters required to 
+establish a websocket session, bypassing the VNC client on the console proxy.
+
+It is possible to add extra validation for the console proxy authentication, 
+with the following configurations:
+
+- ‘consoleproxy.extra.security.validation.enabled’: Enable/disable extra security 
+  validation for console proxy using a token
+
+When ‘consoleproxy.extra.security.validation.enabled’ is true: then CloudStack 
+requests the ‘token’ parameter to the ‘createConsoleEndpoint’ API. The console URL 
+retrieved on the API response includes an ‘extra’ parameter for users validation on 
+the console proxy. 
+
+When the console proxy receives a request including the ‘extra’ parameter it 
+will decode the ‘token’ parameter and uses the original token to compare it with 
+the ‘extra’ token. Only in case both matches, then the console access is allowed. 
+   
+When ‘consoleproxy.extra.security.validation.enabled’ is false: then CloudStack 
+does not require a token for validation.
+
+The websocket port is passed as a boot argument to the console proxy and the 
+management server decides between the secure or unsecure port (8443 or 8080) when 
+setting the boot arguments for the CPVM.
+
+- The secure port 8443 is sent as a boot argument when:
+
+   - The setting ‘consoleproxy.sslEnabled’ is true
+   
+   - The setting ‘consoleproxy.url.domain’ is not empty
+   
+   - There is a record on the ‘keystore’ database with name ‘CPVMCertificate’
+
+- In any other case, then the port 8080 is selected
+
+
+Administrators must ensure a new console proxy VM is recreated after changing 
+the value of any of the settings. Once the console proxy VM is recreated, 
+the new VNC server port will be used as the websocket traffic port. The console proxy 
+VM startup will also ensure a new iptable rule is added for the new VNC port, 
+allowing the traffic on it.
+
 
 Using a SSL Certificate for the Console Proxy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
