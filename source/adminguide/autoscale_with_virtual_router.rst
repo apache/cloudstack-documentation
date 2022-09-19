@@ -273,8 +273,6 @@ The following parameters are supported.
 -  securitygroupids: The UUID of security groups, separated by a single comma
    character (,). This is valid only if the network provider is Netscaler.
 
-To apply the new AutoScale VM Profile, open the AutoScale VM Group details, then
-click the Enable AutoScale VM Group button.
 
 Adding an AutoScale policy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -312,8 +310,8 @@ Removing an AutoScale policy
 To remove an existing AutoScale policies, select a policy, click "Remove policy" button.
 
 .. note::
-  To apply the new AutoScale policies, open the AutoScale VM Group details, then
-  click the Enable AutoScale VM Group button.
+  To apply the new AutoScale VM Profile and AutoScale policies, open the AutoScale VM
+  Group details, then click the Enable AutoScale VM Group button.
 
 Deleting an AutoScale VM Group
 ----------------------
@@ -337,4 +335,20 @@ Making API calls outside the context of AutoScale, such as destroyVM, on an
 autoscaled VM leaves the load balancing configuration in an inconsistent state.
 Though VM is destroyed from the load balancer rule, it continues be showed as
 a service assigned to a rule inside the context of AutoScale.
+
+
+.. |autoscale-vmgroup-delete.png| image:: /_static/images/autoscale-vmgroup-delete.png
+   :alt: Delete AutoScale VM Group.
+.. |autoscale-vmgroup-deploy-parameters.png| image:: /_static/images/autoscale-vmgroup-deploy-parameters.png
+   :alt: AutoScale VM deploy parameters.
+.. |autoscale-vmgroup-details.png| image:: /_static/images/autoscale-vmgroup-details.png
+   :alt: AutoScale VM Group details.
+.. |autoscale-vmgroup-policy-new.png| image:: /_static/images/autoscale-vmgroup-policy-new.png
+   :alt: Add new AutoScale Policy.
+.. |autoscale-vmgroup-policy.png| image:: /_static/images/autoscale-vmgroup-policy.png
+   :alt: AutoScale Policies.
+.. |autoscale-vmgroup-profile.png| image:: /_static/images/autoscale-vmgroup-profile.png
+   :alt: AutoScale VM Profile.
+.. |autoscale-vmgroup-update.png| image:: /_static/images/autoscale-vmgroup-update.png
+   :alt: Update AutoScale VM Group.
 
