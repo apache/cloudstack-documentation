@@ -155,7 +155,7 @@ Specify the following:
    <virtual_machines.html#user-data-and-meta-data>`_.
 
 
-AutoScale policies
+AutoScale Policies
 -------------------------------------------------
 
 An AutoScale Vm Group must have one or more scale-up policies, and one or more
@@ -178,7 +178,7 @@ Each AutoScale Policy has the following parameters:
 
 -  Conditions: A policy must contain at least one condition.
 
-Each condition has the following parameter:
+Each condition in AutoScale policies has the following parameters:
 
 -  Counter: The performance counters expose the state of the monitored
    instances. We added five new counters to work with that feature:
@@ -218,12 +218,12 @@ If you want to perform any maintenance operation on the AutoScale VM instances,
 disable the AutoScale VM Group. When the AutoScale VM Group is
 disabled, no scaleup or scaledown action is performed. You can use this
 downtime for the maintenance activities. To disable the AutoScale VM Group,
-click the Disable AutoScale VM Group button. |disable-button.png|
+click the Disable AutoScale VM Group button.
 
 The button toggles between enable and disable, depending on whether AutoScale
 is currently enabled or not. After the maintenance operations are done, you
 can enable the AutoScale VM Group back. To enable the AutoScale VM Group, click
-the Enable AutoScale VM Group button. |enable-button.png|
+the Enable AutoScale VM Group button.
 
 
 Updating an AutoScale VM Group
@@ -234,24 +234,98 @@ conditions in a scaleup or scaledown policy. Before you update an AutoScale VM
 Group, ensure that you disable the AutoScale VM Group by clicking the
 Disable AutoScale button.
 
+To update the AutoScale VM Group, click the Update AutoScale VM Group button.
+
 |autoscale-vmgroup-update.png|
 
 Updating AutoScale VM Profile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+To update the VM Profile of the AutoScale VM Group, click the AutoScale VM Profile
+tab, then click Edit AutoScale VM Profile button.
+
 |autoscale-vmgroup-profile.png|
 
-Updating AutoScale policy
+You are also able to update the deploy parameters of the VM instances.
+
+|autoscale-vmgroup-deploy-parameters.png|
+
+The following parameters are supported.
+
+-  affinitygroupids: The UUID of the affinity groups, separated by a single 
+   comma character (,).
+
+-  diskofferingid: The UUID of the data disk.
+
+-  disksize: The size of data disk. This is valid only if the disk offering
+   is dynamic.
+
+-  keypairs: The name of the SSH Key pairs, separated by a single comma 
+   character (,).
+
+-  networkids: The UUID of the VM networks, separated by a single comma 
+   character (,).
+
+-  overridediskofferingid: The UUID of override disk offering for ROOT disk.
+
+-  rootdisksize: The size of the ROOT disk. This overrides the size of VM template.
+
+-  securitygroupids: The UUID of security groups, separated by a single comma
+   character (,). This is valid only if the network provider is Netscaler.
+
+To apply the new AutoScale VM Profile, open the AutoScale VM Group details, then
+click the Enable AutoScale VM Group button.
+
+Adding an AutoScale policy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To add a new Scale policy to the AutoScale VM Group, click the ScaleUp policy
+or ScaleDown policy tab, then click "Add policy".
+
+|autoscale-vmgroup-policy-new.png|
+
+   For more information, see `“AutoScale policies”
+   <autoscale_with_virtual_router.html#autoscale-policies>`_.
+
+Updating AutoScale policies
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To update the AutoScale policies of the AutoScale VM Group, click the ScaleUp policy
+or ScaleDown policy tab.
 
 |autoscale-vmgroup-policy.png|
 
-After you modify the required AutoScale parameters, click Apply. To apply the
-new AutoScale policies, open the AutoScale VM Group details, then
-click the Enable AutoScale VM Group button.
+To update an existing AutoScale policies, select a policy, input the new value
+of Duration or Quiet time, then click Edit button.
+
+To add a new condition to the policy, choose Counter and Operator and input the value,
+click Add condition.
+
+To remove an existing condition from the policy, click Delete button of the condition.
+
+To update a condition in the policy, click Edit button, choose Operator and input the
+value, click OK button.
+
+Removing an AutoScale policy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To remove an existing AutoScale policies, select a policy, click "Remove policy" button.
+
+.. note::
+  To apply the new AutoScale policies, open the AutoScale VM Group details, then
+  click the Enable AutoScale VM Group button.
 
 Deleting an AutoScale VM Group
 ----------------------
+
+To remove an AutoScale VM Group, click "Delete AutoScale VM Group" button.
+
+|autoscale-vmgroup-delete.png|
+
+AutoScale VM Group can be removed only if there is no VM in the group.
+
+To force-delete the AutoScale VM Group, check the cleanup checkbox, then click OK button.
+All the VMs in the group will be destroyed.
 
 Runtime Considerations
 ----------------------
