@@ -69,7 +69,7 @@ Setting up Networking for Users
    :maxdepth: 4
 
    networking
-   autoscale_without_netscaler
+   autoscale_with_virtual_router
 
 
 Working with Virtual Machines
