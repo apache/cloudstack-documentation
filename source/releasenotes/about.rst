@@ -20,7 +20,7 @@ What's New in |release|
 Apache CloudStack |release| is a 4.17 LTS minor release with over 150 fixes and
 improvements since the 4.17.0.0 release. Highlights include:
 
-• Imporvement for System VM storage migration on KVM
+• Improvements for System VM storage migration on KVM
 • CKS cluster upgrade enhancements
 • Several network and VPC related fixes especially related IPv6 and perimissions
 • KVM libvirt Java library upgrade
