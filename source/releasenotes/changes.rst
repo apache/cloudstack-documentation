@@ -13,8 +13,8 @@
    specific language governing permissions and limitations
    under the License.
 
-Changes in |release| since 4.16
-===============================
+Changes in |release| since 4.17.0.0
+===================================
 
 Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/25?closed=1
 to track its issues.
