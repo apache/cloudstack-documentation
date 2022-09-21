@@ -31,7 +31,7 @@ The full list of fixes and improvements can be found in the project release note
 https://docs.cloudstack.apache.org/en/4.17.1.0/releasenotes/changes.html
 
 What's New in 4.17.0.0
-=======================
+======================
 
 Apache CloudStack 4.17.0.0 is a 4.17 LTS release with 383 new
 features, improvements and bug fixes since 4.16, including 16 major
