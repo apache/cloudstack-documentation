@@ -17,6 +17,23 @@
 What's New in |release|
 =======================
 
+Apache CloudStack |release| is a 4.17 LTS minor release with over 150 fixes and
+improvements since the 4.17.0.0 release. Highlights include:
+
+• Support for Ubuntu 22.04 LTS as management server and KVM host
+• Improvements for System VM storage migration on KVM
+• CKS cluster upgrade enhancements
+• Several network and VPC related fixes especially related IPv6 and perimissions
+• KVM libvirt Java library upgrade
+• KVM Shared Mount Point fix
+• VMware local storage volume migration improvements
+
+The full list of fixes and improvements can be found in the project release notes at
+https://docs.cloudstack.apache.org/en/4.17.1.0/releasenotes/changes.html
+
+What's New in 4.17.0.0
+======================
+
 Apache CloudStack 4.17.0.0 is a 4.17 LTS release with 383 new
 features, improvements and bug fixes since 4.16, including 16 major
 new features. Some of the highlights include:
