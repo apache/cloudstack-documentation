@@ -89,7 +89,7 @@ Specify the following:
    of VM instances.
 
 -  Load balancing rule: When a VM instance is created, it will be automatically
-   assigned to the load balancing rule. When a VM instance is destroyed, it
+   assigned to the load balancing rule. When a VM instance is expunged, it
    will be removed from the load balancing rule.
 
 -  ScaleUp policies: The policies for ScaleUp action. When all of the conditions
@@ -100,7 +100,7 @@ Specify the following:
    <autoscale_with_virtual_router.html#autoscale-policies>`_.
 
 -  ScaleDown policies: The policies for ScaleDown action. When all of the
-   conditions in one of the ScaleDown policies are met, CloudStack will destroy
+   conditions in one of the ScaleDown policies are met, CloudStack will expunge
    a VM instance in the group if the number of VMs is larger than Min Instance.
 
    For more information, see `“AutoScale policies”
@@ -128,10 +128,10 @@ Specify the following:
    operator and threshold, are to be evaluated before taking a scale up or
    down action. The default polling interval is 30 seconds.
 
--  Destroy VM Grace Period: The duration in seconds, after a scaledown action
-   is initiated, to wait before the VM is destroyed as part of scaledown
+-  Expunge VM Grace Period: The duration in seconds, after a scaledown action
+   is initiated, to wait before the VM is expunged as part of scaledown
    action. This is to ensure graceful close of any pending sessions or
-   transactions being served by the VM marked for destroy. The default is 120
+   transactions being served by the VM marked for expunge. The default is 120
    seconds.
 
 -  Create: Click Create to create the AutoScale VM group.
@@ -323,7 +323,7 @@ To remove an AutoScale VM Group, click "Delete AutoScale VM Group" button.
 AutoScale VM Group can be removed only if there is no VM in the group.
 
 To force-delete the AutoScale VM Group, check the cleanup checkbox, then click OK button.
-All the VMs in the group will be destroyed.
+All the VMs in the group will be expunged.
 
 Runtime Considerations
 ----------------------
