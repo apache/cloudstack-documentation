@@ -209,7 +209,7 @@ sudoers file:
 .. parsed-literal::
 
    cloudstack ALL=NOPASSWD: /usr/bin/cloudstack-setup-agent
-   defaults:cloudstack !requiretty
+   Defaults:cloudstack !requiretty
 
 
 Configure CPU model for KVM guest (Optional)
