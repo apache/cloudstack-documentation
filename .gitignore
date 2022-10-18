@@ -3,3 +3,5 @@ build/
 source/_build/
 /.idea/
 /.tx/
+/.idea
+/.tx
