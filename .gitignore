@@ -1,7 +1,5 @@
 build/
 .vscode
 source/_build/
-/.idea/
-/.tx/
 /.idea
 /.tx
