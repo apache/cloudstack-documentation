@@ -162,7 +162,7 @@ operating system version.
 
       exportfs -a
 
-#. Edit the /etc/sysconfig/nfs file.
+#. Edit the /etc/sysconfig/nfs file(if not exists, create one).
 
    .. parsed-literal::
 
@@ -179,7 +179,7 @@ operating system version.
       STATD_PORT=662
       STATD_OUTGOING_PORT=2020
 
-#. Edit the /etc/sysconfig/iptables file.
+#. Edit the /etc/sysconfig/iptables file(if not exists, create one).
 
    .. parsed-literal::
 
@@ -246,6 +246,12 @@ operating system version.
          chkconfig rpcbind on
          reboot
 
+   #. The command chkconfig is no longer available in Ubuntu, to check if the nfs service has been running, use following command, if you see words like *nfsd*, the service has been started succcessfully:
+
+      .. parsed-literal::
+
+         ps axf | grep nfs
+              
    #. Log back in to the hypervisor host and try to mount the /export
       directories. For example, substitute your own management server
       name:
@@ -253,8 +259,8 @@ operating system version.
       .. parsed-literal::
 
          mkdir /primary
-         mount -t nfs <management-server-name>:/export/primary
+         mount -t nfs <management-server-name>:/export/primary /primary
          umount /primary
          mkdir /secondary
-         mount -t nfs <management-server-name>:/export/secondary
+         mount -t nfs <management-server-name>:/export/secondary /secondary
          umount /secondary
