@@ -353,6 +353,32 @@ CloudStack UI or call listNetworks and check the
 SupportedStickinessMethods capability.
 
 
+Load Balancer Configurations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+(CloudStack Virtual Router and Vpc Virtual Router only)
+
+CloudStack Virtual Routers use haproxy to provide load balancer.The following is the configurations of haproxy.
+
+.. cssclass:: table-striped table-bordered table-hover
+
+=================   ================   ====================================================================================================
+Configuration       Scope                           Description
+=================   ================   ====================================================================================================
+maxconn             global             the maximum per-process number of concurrent connections. The default value is 4096.
+maxpipes            global             the maximum per-process number of pipes. The default value is maxconn/4.
+timeout connect     defaults           the maximum time to wait for a connection attempt to a server to succeed. The default value is 5 seconds.
+timeout client      defaults           the maximum inactivity time on the server side. The default value is 50 seconds.
+timeout server      defaults           the maximum inactivity time on the client side. The default value is 50 seconds.
+option              defaults           the following options are enabled: redispatch, forwardfor, httpclose
+stats enable        stats              Enable statistics reporting with default settings. It listens on <Source NAT IP>:8081. The port can be changed by global setting "network.loadbalancer.haproxy.stats.port".
+stats uri           stats              Enable statistics and define the URI prefix to access them. The default value is "/admin?stats". The URI can be changed by global setting "network.loadbalancer.haproxy.stats.uri".
+stats realm         stats              Enable statistics and set authentication realm. The default value is "Haproxy\\ Statistics".
+stats auth          stats              Enable statistics with authentication and grant access to an account. The default value is "admin1:AdMiN123". The username/password can be changed by global setting "network.loadbalancer.haproxy.stats.auth".
+=================   ================   ====================================================================================================
+
+
+
 .. _health-check:
 
 Health Checks for Load Balancer Rules

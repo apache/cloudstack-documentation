@@ -52,8 +52,24 @@ Before you configure an AutoScale rule, consider the following:
    <networking_and_traffic.html#adding-a-load-balancer-rule>`_.
 
    .. note::
-      There is a know issue when CloudStack collects memory statistics from VMs on
-      KVM hosts, see https://github.com/apache/cloudstack/pull/6358
+      There is a known issue when CloudStack collects memory statistics from VMs on
+      KVM hosts, see https://github.com/apache/cloudstack/pull/6358 .
+      To get memory statistics on KVM hosts, please add the following line to
+      /etc/cloudstack/agent/agent.properties and restart cloudstack-agent:
+
+        vm.memballoon.stats.period = <Interval in seconds to get VM stats on KVM host>
+
+   .. note::
+      There is a known issue when CloudStack collects memory statistics from VMs on
+      XenServer/XCP-ng hosts, see https://github.com/apache/cloudstack/issues/6848
+
+   .. note::
+      There is a known issue when CloudStack collects average load balancer connections
+      from CloudStack Virtual Routers, see https://github.com/apache/cloudstack/issues/6849
+
+   .. note::
+      The Load Balancer configurations can be found at `“Load Balancer Configurations”
+      <networking_and_traffic.html#load-balancer-configurations>`_.
 
 
 Adding an AutoScale VM Group
@@ -185,8 +201,8 @@ Each condition in AutoScale policies has the following parameters:
 
    -  VM CPU - average percentage
    -  VM Memory - average percentage
-   -  Virtual Network - Received (in Bytes per second)
-   -  Virtual Network - Transmit (in Bytes per second)
+   -  Public Network - Received per vm (in Bytes per second)
+   -  Public Network - Transmit per vm (in Bytes per second)
    -  Load Balancer - average connections per vm
 
    Remember to choose one of them. If you choose anything else, the
@@ -199,6 +215,12 @@ Each condition in AutoScale policies has the following parameters:
 -  Threshold: Threshold value to be used for the counter. Once the counter
    defined above breaches the threshold value, the AutoScale feature initiates
    a scaleup or scaledown action.
+
+   .. note::
+      The counters "Public Network - Received per vm (in Bytes per second)" and
+      "Public Network - Transmit per vm (in Bytes per second)" consider all public
+      traffic through the VR public interface, including the traffic from/to other
+      VMs which are not in the AutoScale VM group.
 
 
 Disabling and Enabling an AutoScale VM Group
