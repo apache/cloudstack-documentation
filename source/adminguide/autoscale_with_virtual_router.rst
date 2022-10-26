@@ -60,10 +60,6 @@ Before you configure an AutoScale rule, consider the following:
         vm.memballoon.stats.period = <Interval in seconds to get VM stats on KVM host>
 
    .. note::
-      There is a known issue when CloudStack collects memory statistics from VMs on
-      XenServer/XCP-ng hosts, see https://github.com/apache/cloudstack/issues/6848
-
-   .. note::
       There is a known issue when CloudStack collects average load balancer connections
       from CloudStack Virtual Routers, see https://github.com/apache/cloudstack/issues/6849
 
@@ -215,6 +211,12 @@ Each condition in AutoScale policies has the following parameters:
 -  Threshold: Threshold value to be used for the counter. Once the counter
    defined above breaches the threshold value, the AutoScale feature initiates
    a scaleup or scaledown action.
+
+   .. note::
+      The counter "VM Memory - average percentage" calculates the average memory usage
+      of VMs in the AutoScale VM Group. The VM memory usage is calculated by
+
+        VM memory usage percentage = (total memory - free memory) * 100 / total memory
 
    .. note::
       The counters "Public Network - Received per vm (in Bytes per second)" and
