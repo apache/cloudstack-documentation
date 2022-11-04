@@ -146,11 +146,12 @@ Creating POLICIES on the Networker Side
 Connecting CloudStack to DELL EMC Networker
 ----------------------------------------------
 
-Before enabling DELL EMC Networker make sure that the user account that Cloudstack uses to connect to your KVM Hypervisors
-can execute via SUDO and with no required password the following two scripts:
+Before enabling DELL EMC Networker make sure that the user account Cloudstack uses to connect to your KVM Hypervisors
+can execute via SUDO and with no required password the following binary from EMC Networker:
 
-#. /usr/share/cloudstack-common/scripts/vm/hypervisor/kvm/nsrkvmbackup.sh
-#. /usr/share/cloudstack-common/scripts/vm/hypervisor/kvm/nsrkvmrestore.sh
+#. /usr/sbin/recover
+
+Also make sure that the user account Cloudstack uses to connect to your KVM Hypervisors is member of the libvirt group.
 
 Updating the global settings listed below will allow you to start the importing of the backup offerings to Cloudstack.
 
