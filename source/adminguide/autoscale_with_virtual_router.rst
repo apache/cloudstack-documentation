@@ -47,15 +47,19 @@ Before you configure an AutoScale rule, consider the following:
    deployed by using a template and when it comes up, the application should be
    up and running.
 
--  Create an Isolated network and a load balancer rule without any VM.
-   For more information, see `“Adding a Load Balancer Rule”
-   <networking_and_traffic.html#adding-a-load-balancer-rule>`_.
+-  Create an Isolated network using a network offering which supports VM AutoScaling,
+   acquire a new IP address (it will be used as Source NAT of the network) and create
+   a load balancer rule without any VM.
+   For more information, see `“Configure Guest Traffic in an Advanced Zone”
+   <networking_and_traffic.html#configure-guest-traffic-in-an-advanced-zone>`_ ,
+   `“Acquiring a New IP Address” <networking_and_traffic.html#acquiring-a-new-ip-address>`_
+   and `“Adding a Load Balancer Rule” <networking_and_traffic.html#adding-a-load-balancer-rule>`_.
 
    .. note::
       There is a known issue when CloudStack collects memory statistics from VMs on
       KVM hosts, see https://github.com/apache/cloudstack/pull/6358 .
       To get memory statistics on KVM hosts, please add the following line to
-      /etc/cloudstack/agent/agent.properties and restart cloudstack-agent:
+      /etc/cloudstack/agent/agent.properties and restart cloudstack-agent (5/10/60 are tested ok):
 
         vm.memballoon.stats.period = <Interval in seconds to get VM stats on KVM host>
 
@@ -66,6 +70,12 @@ Before you configure an AutoScale rule, consider the following:
    .. note::
       The Load Balancer configurations can be found at `“Load Balancer Configurations”
       <networking_and_traffic.html#load-balancer-configurations>`_.
+
+   .. note::
+      VmAutoScaling capability is enabled by default for network offerings which support
+      load balanacer. To disable it, please create a network offering without VmAutoScaling support.
+      For more information, see `“Creating a New Network Offering”
+      <networking.html#creating-a-new-network-offering>`_.
 
 
 Adding an AutoScale VM Group
@@ -223,6 +233,10 @@ Each condition in AutoScale policies has the following parameters:
       "Public Network - Transmit per vm (in Bytes per second)" consider all public
       traffic through the VR public interface, including the traffic from/to other
       VMs which are not in the AutoScale VM group.
+
+   .. note::
+      Each network has a network rate which are configured by global configuration
+      network.throttling.rate and "Network rate (Mb/s)" in network offering.
 
 
 Disabling and Enabling an AutoScale VM Group
