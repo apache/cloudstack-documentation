@@ -207,8 +207,8 @@ Each condition in AutoScale policies has the following parameters:
 
    -  VM CPU - average percentage
    -  VM Memory - average percentage
-   -  Public Network - Received per vm (in Bytes per second)
-   -  Public Network - Transmit per vm (in Bytes per second)
+   -  Public Network - mbps received per vm
+   -  Public Network - mbps transmit per vm
    -  Load Balancer - average connections per vm
 
    Remember to choose one of them. If you choose anything else, the
@@ -224,13 +224,14 @@ Each condition in AutoScale policies has the following parameters:
 
    .. note::
       The counter "VM Memory - average percentage" calculates the average memory usage
-      of VMs in the AutoScale VM Group. The VM memory usage is calculated by
+      of available VMs (in Starting, Stopping, Running, Migrating states) in the
+      AutoScale VM Group. On KVM/XenServer, the VM memory usage is calculated by
 
         VM memory usage percentage = (total memory - free memory) * 100 / total memory
 
    .. note::
-      The counters "Public Network - Received per vm (in Bytes per second)" and
-      "Public Network - Transmit per vm (in Bytes per second)" consider all public
+      The counters "Public Network - mbps received per vm" and
+      "Public Network - mbps transmit per vm" consider all public
       traffic through the VR public interface, including the traffic from/to other
       VMs which are not in the AutoScale VM group.
 
