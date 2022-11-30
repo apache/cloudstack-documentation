@@ -627,3 +627,80 @@ The following global configuration should be configured:
 
 - ``saml2.timeout``: SAML2 IDP Metadata refresh interval in seconds, minimum value is set to 300. Default is 1800
 
+Using Two Factor Authentication For Users
+------------------------------------------
+
+CloudStack supports two factor authentication 2FA for the users, wherein users needs
+to provide a 2FA code after the login using username and password. CloudStack currently
+supports google and staticpin as the 2FA providers. Other 2FA providers can be easily
+integrated with CloudStack using its plugin model.
+
+For admins, following are the settings available at global and domain level to configure
+2FA.
+
+.. cssclass:: table-striped table-bordered table-hover
+
+================================================   ================   ===================================================================
+Global setting                                     Default values     Description
+================================================   ================   ===================================================================
+enable.user.two.factor.authentication              false              Determines whether 2FA is enabled or not
+mandate.user.two.factor.authentication             false              Determines whether to make the 2FA mandatory or not for the users
+user.two.factor.authentication.default.provider    google             The default user 2FA provider plugin. Eg. google, staticpin
+================================================   ================   ===================================================================
+
+If 2FA is configured for the user, the 2FA verification page looks like below after the login.
+
+.. image:: /_static/images/verify-2fa.png
+   :width: 400px
+   :align: center
+   :alt: Verify 2FA page
+
+Users can configure 2FA in CloudStack using the action button in user form.
+
+.. image:: /_static/images/configure-2fa-action-button.png
+   :width: 400px
+   :align: center
+   :alt: Configure 2FA action button
+
+In the 2FA setup form, user needs to select one of the providers. CloudStack currently supports
+google and staticpin as the 2FA providers.
+
+When the google 2FA provider is selected, user must setup the account in google authenticator
+application in their device by either scanning the QR code or using the setup key provided by CloudStack.
+Once the account is setup in the authenticator application, user must verify 2FA with Cloudstack using
+the 2FA code in the authenticator application. Every time user has to use the same account in the
+authenticator application during login into CloudStack.
+
+.. image:: /_static/images/configure-google-2fa-form.png
+   :width: 400px
+   :align: center
+   :alt: Configure google 2FA form
+
+When the staticpin 2FA provider is selected, user must use the static pin as the 2FA code to verify 2FA
+with CloudStack. Every time user has to use this static pin as 2FA code during login into CloudStack.
+
+.. image:: /_static/images/configure-staticpin-2fa-form.png
+   :width: 400px
+   :align: center
+   :alt: Configure staticpin 2FA form
+
+.. Note:: While user configures 2FA, verification of the 2FA code is must to complete the process.
+
+Admin has the capability to mandate 2FA for users.
+When a new user is created ``mandate.user.two.factor.authentication`` setting will be used to enable
+2FA for the user. In that case user must configure 2FA during the first login into CloudStack.
+User's first login page to configure 2FA looks like below,
+
+.. image:: /_static/images/configure-2fa-at-login-page.png
+   :width: 400px
+   :align: center
+   :alt: Configure 2FA at login page
+
+For the existing users, admin can mandate 2FA using the 'updateUser' API with the parameter 'mandate2FA'.
+
+Admin can also disable 2FA for users using the action button as shown below,
+
+.. image:: /_static/images/disable-2fa.png
+   :width: 400px
+   :align: center
+   :alt: Disable 2FA action button
