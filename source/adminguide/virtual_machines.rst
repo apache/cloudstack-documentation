@@ -613,21 +613,23 @@ Affinity Groups
 
 By defining affinity groups and assigning VMs to them, the user or
 administrator can influence (but not dictate) which VMs should run on
-either the same or separate hosts. This feature is to let users specify
+either the same or separate hosts. This feature allows users to specify
 the affinity groups to which a VM can belong. VMs with the
-same “host anti-affinity” type won’t be on the same host. This serves to
+same “host anti-affinity” type won’t be on the same host, which serves to
 increase fault tolerance. If a host fails, another VM offering the same
 service (for example, hosting the user's website) is still up and
 running on another host.
-It also lets the user specify that VMs with the same "host affinity" type
-run on the same host. This can be useful in ensuring connectivity and minimum
-latency in between guest VMs.
-"non-strict host anti-affinity" is similar but more flexible than "host
-anti-affinity", VMs are not obliged to be deployed to different hosts.
-"non-strict host affinity" is similar but more flexible than "host affinity",
-VMs are not obliged to be deployed to same hosts.
+It also allows users to specify that VMs with the same "host affinity" type
+must run on the same host, which can be useful in ensuring connectivity and low
+latency between guest VMs.
+"non-strict host anti-affinity" is similar to, but more flexible than, "host
+anti-affinity". In that case VMs are deployed to different hosts as long as
+there are enough hosts to satisfy the requirement, otherwise they might be
+deployed to the same host.
+"non-strict host affinity" is similar to, but more flexible than, "host affinity",
+VMs are ideally placed together in the same host, but only if possible.
 
-The scope of an affinity group is per user account.
+The scope of an affinity group is on an account level.
 
 
 Creating a New Affinity Group
@@ -650,13 +652,13 @@ To add an affinity group:
    -  Type. CloudStack supports four types of affinity groups. "host
       anti-affinity", "host affinity", "non-strict host affinity" and
       "non-strict host anti-affinity". "host anti-affinity" indicates
-      that the VMs in this group should avoid being placed on the same
+      that the VMs in this group must not be placed on the same
       host with each other. "host affinity" on the other hand indicates
-      that VMs in this group should be placed on the same host.
+      that VMs in this group must be placed on the same host.
       "non-strict host anti-affinity" indicates that VMs in this group
-      are tried to be deployed to different hosts but not mandatory.
-      "non-strict host affinity" indicates that VMs in this group are
-      tried to be deployed to same hosts but not mandatory.
+      should be deployed to different hosts.
+      "non-strict host affinity" indicates that VMs in this group
+      shouldn’t be deployed to same hosts.
 
 
 Assign a New VM to an Affinity Group
