@@ -1281,7 +1281,7 @@ CloudStack follows the below sequence of operations to provide GPU/vGPU support 
       GPU resources are released automatically when you stop a VM. Once the destroy VM is successful, CloudStack will make a resource call to the host to get the remaining GPU capacity in the card and update the database accordingly.
 
 
-Virtual Metrics Metrics
+Virtual Machine Metrics
 =======================
 
 VM statistics are collected on a regular interval (defined by global
