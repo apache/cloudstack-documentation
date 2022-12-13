@@ -68,6 +68,8 @@ to track its issues.
 +-------------------------+----------+------------------------------------------------------------+
 | 4.17.2.0                | `#6779`_ | api: fix event type and description for createTag          |
 +-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6981`_ | schema: Add upgrade path from 4.17.1.0 to 4.17.2.0         |
++-------------------------+----------+------------------------------------------------------------+
 
 21 Issues listed
 
@@ -92,6 +94,7 @@ to track its issues.
 .. _`#6788`: https://github.com/apache/cloudstack/pull/6788
 .. _`#6768`: https://github.com/apache/cloudstack/pull/6768
 .. _`#6779`: https://github.com/apache/cloudstack/pull/6779
+.. _`#6981`: https://github.com/apache/cloudstack/pull/6981
 
 Changes in 4.17.1.0 since 4.17.0.0
 ===================================
