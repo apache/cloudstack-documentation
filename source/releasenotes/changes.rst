@@ -13,6 +13,336 @@
    specific language governing permissions and limitations
    under the License.
 
+Changes in |release| since 4.17.0.0
+===================================
+
+Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/25?closed=1
+to track its issues.
+
+.. cssclass:: table-striped table-bordered table-hover
+
+
++-------------------------+----------+------------------------------------------------------------+
+| Version                 | Github   | Description                                                |
++=========================+==========+============================================================+
+| 4.17.1.0                | `#6721`_ | UI fix Theme text color not bind navTextColorPick and      |
+|                         |          | reset button                                               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6725`_ | Reset unusable db connections                              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6729`_ | server: fix network upgrade for IPv6                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6728`_ | upgrade a backported patch                                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6730`_ | Jacoco: fix no coverage result in server and some other    |
+|                         |          | modules                                                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6706`_ | systemvm,vr: disable radvd for non-applicable VRs          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6711`_ | ui: Fix netowrkid not passed in deployvm                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6708`_ | UI: fix bulk delete project with cleanup                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6696`_ | kvm: add libvirt host capabilities method for cpu speed    |
+|                         |          | retrieval                                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6705`_ | server: fix check for ipv6 range overlap                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6707`_ | ui: fix set reservation toggle in add public ip range      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6693`_ | Ignore opensaml's slf4j dependencies                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6688`_ | server: fix scale vm with compute offering having same     |
+|                         |          | disk offering                                              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6643`_ | vmware: fix vm snapshot with datastore cluster, drs        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6687`_ | UI: Remove incorrect API calls when initializing the       |
+|                         |          | deploy VM page                                             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6675`_ | ui: fix update network updateinsequence param              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6655`_ | server: fix error when dedicatingguestvlanrange for        |
+|                         |          | physical nw without vlan range                             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6671`_ | UI: Fixes suffix icon on project selector not work         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6664`_ | vpc: prevent sourcenat ip disassociation for an active vpc |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6658`_ | cks: fix k8s cluster deployment with host tagged offering  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6276`_ | api, vmware: Allow VM setting/detail for disk controller   |
+|                         |          | (root/data) to override template details                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6642`_ | server: remove resource tags for disassociated public ip   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6654`_ | Fix SQL query for uuid wrong format                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6588`_ | server: fix ipv6 network deployment with separate guest nw |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6650`_ | ui: fix resource tags visibility in infocard               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6634`_ | server: fix delete resource tag permission                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6646`_ | ui: fix gputype in add compute offering                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6645`_ | UI - Fixes the warning in detail tab                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6625`_ | vmware,cks: fix attachiso failure with vmware drs          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6636`_ | ui: reset disksize param on offering change in scale vm    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6080`_ | Increase size of column 'value' at table 'account_details' |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6622`_ | Fixes #6621 - Update host memory stats                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6552`_ | removed the use of SharedMountPoint storage type for the   |
+|                         |          | StorPool plugin                                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6591`_ | vpc,network: fix createLoadBalancer access on user network |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6616`_ | ui: use ssh keypair uuid for listing                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6549`_ | test,xcp-ng: fix tests for VM PV driver issue              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6341`_ | Enable system VM volume migration for KVM                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6612`_ | ui: fix hypervisortrafficlabel for phy nw traffic          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6598`_ | UI: Fix delete ISO navigation after job is finished        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6605`_ | Shows quotaSummary in API documentation                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6607`_ | UI: Fixes notification error can't close when exit config  |
+|                         |          | limit tab                                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6600`_ | ui: fix icon for vr migrate storage                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6592`_ | ui: fix vpc loadbalancer listing for admins                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6579`_ | api: fix ipv6 firewall apis default role permissions       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6546`_ | Fixed list networks in projects after setting network      |
+|                         |          | permissions                                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6586`_ | ui: fix deploy vm override custom disk offering            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6583`_ | UI: Fix new network service provider dialog                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6578`_ | UI: Fix account limits values reset after focus is lost on |
+|                         |          | fields                                                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6564`_ | Remove psudo jobs from listAsyncJobs API                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6562`_ | utils: use safer parsing utility across codebase           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6527`_ | [KVM] Fix for Revert volume snapshot                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6547`_ | UI: Fix can't select schedule interval type                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6462`_ | UI: Fixes UI break with SAML authentication                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6338`_ | test: add, refactor ipv6 network, vpc tests                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6430`_ | Filter removed nics while listing LB vm instances          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6542`_ | Updated log message and throw error when unable to update  |
+|                         |          | the secret in key file                                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6543`_ | ui: fix zone icon in vm deploy zone selection              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6480`_ | UI: Fixes some issues from zone wizard with VMWare         |
+|                         |          | hypervisor                                                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6536`_ | kvm: add support nicAdapter detail for vm and template     |
+|                         |          | settings for KVM                                           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6537`_ | kvm: skip test that can't run and pass on M1 mac           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6513`_ | cks: fix k8s version upgrade                               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6525`_ | UI: Add authmethod field allowing to choose password or    |
+|                         |          | ssh key when adding host                                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6457`_ | Fix SAML SSO plugin redirect URL                           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6495`_ | ui: allow instances to be filtered by group                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6530`_ | Excluded fe80 or link local address in keystore setup      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6529`_ | refactor: new line, lint error fix                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6272`_ | Fix spelling                                               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6503`_ | UI: Clear all filter values after the reset button clicked |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6414`_ | Fix VMware memory retrieval                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6483`_ | Fix for VMware VM migration with volume in local storage   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6518`_ | Added information about device id 0 for root volume while  |
+|                         |          | attaching to VM                                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6142`_ | UI: Remove unused dependencies and fix travis build        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6446`_ | CKS: add created to k8s cluster and k8s version            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6476`_ | server: update lb rule with new protocol                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6496`_ | Fix global setting reference for max secondary storage     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6493`_ | UI fix message.add.vpn.customer.gateway.failed when        |
+|                         |          | catched error                                              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6502`_ | UI: Change notification title when resizing volume         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6475`_ | UI: fix create tags for LB rules                           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6367`_ | Updated PowerFlex/ScaleIO storage plugin to support        |
+|                         |          | separate (storage) network for Hosts(KVM)/Storage          |
+|                         |          | connection.                                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6477`_ | Fix rpfilter config values from integer to boolean on      |
+|                         |          | upgrade path                                               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6484`_ | ui: fix ui hang on offering creation with no zone          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6481`_ | UI primarystorage linstor fixes                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6472`_ | kvm: upgrade libvirt-java to v0.5.3                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6468`_ | UI: Fixes ui error when upgrade virtual routers from       |
+|                         |          | virtual router list                                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6462`_ | UI: Fixes UI break with SAML authentication                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6461`_ | api: Add vpc name and uuid to VMs list response (nics) and |
+|                         |          | nics response                                              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#5442`_ | some  component tests fixes                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6307`_ | fix pseudo random behaviour in pool selection              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6449`_ | Specify vm snapshot uuid in response over db id in the     |
+|                         |          | async job response                                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6449`_ | Specify vm snapshot uuid in response over db id in the     |
+|                         |          | async job response                                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6436`_ | UI: Fix hypervisor not selected by default when deploying  |
+|                         |          | VM from ISO                                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6445`_ | UI: fix create vpc private gw by regular users             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6439`_ | UI: Hide project delete button while in this project view  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6438`_ | UI: Fixes the added storage tags issues on adding primary  |
+|                         |          | storage                                                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6443`_ | UI: Fixes error when creating volume from the snapshot     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.1.0                | `#6441`_ | Fix deploy from ISO with custom disk offering              |
++-------------------------+----------+------------------------------------------------------------+
+
+96 Issues listed
+
+.. _`#6721`: https://github.com/apache/cloudstack/pull/6721 
+.. _`#6725`: https://github.com/apache/cloudstack/pull/6725 
+.. _`#6729`: https://github.com/apache/cloudstack/pull/6729 
+.. _`#6728`: https://github.com/apache/cloudstack/pull/6728 
+.. _`#6730`: https://github.com/apache/cloudstack/pull/6730 
+.. _`#6706`: https://github.com/apache/cloudstack/pull/6706 
+.. _`#6711`: https://github.com/apache/cloudstack/pull/6711 
+.. _`#6708`: https://github.com/apache/cloudstack/pull/6708 
+.. _`#6696`: https://github.com/apache/cloudstack/pull/6696 
+.. _`#6705`: https://github.com/apache/cloudstack/pull/6705 
+.. _`#6707`: https://github.com/apache/cloudstack/pull/6707 
+.. _`#6693`: https://github.com/apache/cloudstack/pull/6693 
+.. _`#6688`: https://github.com/apache/cloudstack/pull/6688 
+.. _`#6643`: https://github.com/apache/cloudstack/pull/6643 
+.. _`#6687`: https://github.com/apache/cloudstack/pull/6687 
+.. _`#6675`: https://github.com/apache/cloudstack/pull/6675 
+.. _`#6655`: https://github.com/apache/cloudstack/pull/6655 
+.. _`#6671`: https://github.com/apache/cloudstack/pull/6671 
+.. _`#6664`: https://github.com/apache/cloudstack/pull/6664 
+.. _`#6658`: https://github.com/apache/cloudstack/pull/6658 
+.. _`#6276`: https://github.com/apache/cloudstack/pull/6276 
+.. _`#6642`: https://github.com/apache/cloudstack/pull/6642 
+.. _`#6654`: https://github.com/apache/cloudstack/pull/6654 
+.. _`#6588`: https://github.com/apache/cloudstack/pull/6588 
+.. _`#6650`: https://github.com/apache/cloudstack/pull/6650 
+.. _`#6634`: https://github.com/apache/cloudstack/pull/6634 
+.. _`#6646`: https://github.com/apache/cloudstack/pull/6646 
+.. _`#6645`: https://github.com/apache/cloudstack/pull/6645 
+.. _`#6625`: https://github.com/apache/cloudstack/pull/6625 
+.. _`#6636`: https://github.com/apache/cloudstack/pull/6636 
+.. _`#6080`: https://github.com/apache/cloudstack/pull/6080 
+.. _`#6622`: https://github.com/apache/cloudstack/pull/6622 
+.. _`#6552`: https://github.com/apache/cloudstack/pull/6552 
+.. _`#6591`: https://github.com/apache/cloudstack/pull/6591 
+.. _`#6616`: https://github.com/apache/cloudstack/pull/6616 
+.. _`#6549`: https://github.com/apache/cloudstack/pull/6549 
+.. _`#6341`: https://github.com/apache/cloudstack/pull/6341 
+.. _`#6612`: https://github.com/apache/cloudstack/pull/6612 
+.. _`#6598`: https://github.com/apache/cloudstack/pull/6598 
+.. _`#6605`: https://github.com/apache/cloudstack/pull/6605 
+.. _`#6607`: https://github.com/apache/cloudstack/pull/6607 
+.. _`#6600`: https://github.com/apache/cloudstack/pull/6600 
+.. _`#6592`: https://github.com/apache/cloudstack/pull/6592 
+.. _`#6579`: https://github.com/apache/cloudstack/pull/6579 
+.. _`#6546`: https://github.com/apache/cloudstack/pull/6546 
+.. _`#6586`: https://github.com/apache/cloudstack/pull/6586 
+.. _`#6583`: https://github.com/apache/cloudstack/pull/6583 
+.. _`#6578`: https://github.com/apache/cloudstack/pull/6578 
+.. _`#6564`: https://github.com/apache/cloudstack/pull/6564 
+.. _`#6562`: https://github.com/apache/cloudstack/pull/6562 
+.. _`#6527`: https://github.com/apache/cloudstack/pull/6527 
+.. _`#6547`: https://github.com/apache/cloudstack/pull/6547 
+.. _`#6462`: https://github.com/apache/cloudstack/pull/6462 
+.. _`#6338`: https://github.com/apache/cloudstack/pull/6338 
+.. _`#6430`: https://github.com/apache/cloudstack/pull/6430 
+.. _`#6542`: https://github.com/apache/cloudstack/pull/6542 
+.. _`#6543`: https://github.com/apache/cloudstack/pull/6543 
+.. _`#6480`: https://github.com/apache/cloudstack/pull/6480 
+.. _`#6536`: https://github.com/apache/cloudstack/pull/6536 
+.. _`#6537`: https://github.com/apache/cloudstack/pull/6537 
+.. _`#6513`: https://github.com/apache/cloudstack/pull/6513 
+.. _`#6525`: https://github.com/apache/cloudstack/pull/6525 
+.. _`#6457`: https://github.com/apache/cloudstack/pull/6457 
+.. _`#6495`: https://github.com/apache/cloudstack/pull/6495 
+.. _`#6530`: https://github.com/apache/cloudstack/pull/6530 
+.. _`#6529`: https://github.com/apache/cloudstack/pull/6529 
+.. _`#6272`: https://github.com/apache/cloudstack/pull/6272 
+.. _`#6503`: https://github.com/apache/cloudstack/pull/6503 
+.. _`#6414`: https://github.com/apache/cloudstack/pull/6414 
+.. _`#6483`: https://github.com/apache/cloudstack/pull/6483 
+.. _`#6518`: https://github.com/apache/cloudstack/pull/6518 
+.. _`#6142`: https://github.com/apache/cloudstack/pull/6142 
+.. _`#6446`: https://github.com/apache/cloudstack/pull/6446 
+.. _`#6476`: https://github.com/apache/cloudstack/pull/6476 
+.. _`#6496`: https://github.com/apache/cloudstack/pull/6496 
+.. _`#6493`: https://github.com/apache/cloudstack/pull/6493 
+.. _`#6502`: https://github.com/apache/cloudstack/pull/6502 
+.. _`#6475`: https://github.com/apache/cloudstack/pull/6475 
+.. _`#6367`: https://github.com/apache/cloudstack/pull/6367 
+.. _`#6477`: https://github.com/apache/cloudstack/pull/6477 
+.. _`#6484`: https://github.com/apache/cloudstack/pull/6484 
+.. _`#6481`: https://github.com/apache/cloudstack/pull/6481 
+.. _`#6472`: https://github.com/apache/cloudstack/pull/6472 
+.. _`#6468`: https://github.com/apache/cloudstack/pull/6468 
+.. _`#6462`: https://github.com/apache/cloudstack/pull/6462 
+.. _`#6461`: https://github.com/apache/cloudstack/pull/6461 
+.. _`#5442`: https://github.com/apache/cloudstack/pull/5442 
+.. _`#6307`: https://github.com/apache/cloudstack/pull/6307 
+.. _`#6449`: https://github.com/apache/cloudstack/pull/6449 
+.. _`#6449`: https://github.com/apache/cloudstack/pull/6449 
+.. _`#6436`: https://github.com/apache/cloudstack/pull/6436 
+.. _`#6445`: https://github.com/apache/cloudstack/pull/6445 
+.. _`#6439`: https://github.com/apache/cloudstack/pull/6439 
+.. _`#6438`: https://github.com/apache/cloudstack/pull/6438 
+.. _`#6443`: https://github.com/apache/cloudstack/pull/6443 
+.. _`#6441`: https://github.com/apache/cloudstack/pull/6441 
+
 
 Changes in |release| since 4.16
 ===============================
@@ -834,4 +1164,3 @@ to track its issues.
 .. _`#6041`: https://github.com/apache/cloudstack/pull/6041
 .. _`#6019`: https://github.com/apache/cloudstack/pull/6019
 .. _`#5965`: https://github.com/apache/cloudstack/pull/5965
-

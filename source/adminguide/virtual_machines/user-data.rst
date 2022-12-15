@@ -17,15 +17,113 @@
 User-Data and Meta-Data
 -----------------------
 
-CloudStack provides APIs to attach up to 32KB of user-data to a deployed VM.
+Users can register userdata in CloudStack and refer the registered userdata while
+deploying or editing or reset userdata on a VM. The userdata content can also be
+directly provided while deploying the VM. Userdata content length can be up to 32kb.
 
-There are two CloudStack APIs that can be used to store user-data:
-`deployVirtualMachine <https://cloudstack.apache.org/docs/api/apidocs-4.14/user/deployVirtualMachine.html>`_
-and
-`updateVirtualMachine <https://cloudstack.apache.org/docs/api/apidocs-4.14/user/updateVirtualMachine.html>`_
-They both support the parameter ``userdata=``. The value for this parameter
-must be a `base64 <https://www.base64encode.org/>`_-encoded multi-part MIME
-message. See further below for an example of what this should look like.
+To register a new userdata:
+
+#. Log in to the CloudStack UI.
+
+#. In the left navigation bar, click Compute and then User Data.
+
+#. Click Register a userdata.
+
+#. In the dialog, make the following choices:
+
+   -  **Name**: Any desired name for the userdata.
+
+   -  **Userdata**: Plain userdata content. CloudStack UI does base64 encoding.
+
+   -  **Userdata parameters**: Comma separated list of variables which (if any) declared
+      in userdata content.
+
+   -  **Domain**: An optional domain for the userdata.
+
+   -  **Account**: An optional account for the userdata.
+
+.. image:: /_static/images/register_userdata.png
+   :width: 400px
+   :align: center
+   :alt: Regiser userdata dialog box
+
+If userdata content has variables declared in it, user can register the Userdata
+with userdata parameters.
+
+For example, if userdata content is like below having a custom variable "variable1"
+
+   .. code:: bash
+
+      ## template: jinja
+      #cloud-config
+      runcmd:
+         - echo 'TestVariable {{ ds.meta_data.variable1 }}' >> /tmp/variable
+         - echo 'Hostname {{ ds.meta_data.public_hostname }}' > /tmp/hostname
+
+Userdata has to be registered with userdata parameter "variable1" like below
+
+.. image:: /_static/images/register_userdata_with_variables.png
+   :width: 400px
+   :align: center
+   :alt: Regiser userdata with variables dialog box
+
+If the variables in userdata content are of a predefined metadata like "public_hostname"
+or "instance_id", then userdata parameters should not declare these variables. That is
+the reason in the above example "public_hostname" is not declared.
+
+There are three CloudStack APIs that can be used to provide user-data to VM:
+deployVirtualMachine, updateVirtualMachine and resetUserDataForVirtualMachine.
+These APIs accepts parameters ``userdataid`` and ``userdatadetails``.
+userdatadetails is to specify the custom values for the variables which are declared
+in userdata in a key value parameter map details.
+
+.. image:: /_static/images/deployvm_userdata.png
+   :width: 400px
+   :align: center
+   :alt: Provide userdata id or userdata text dialog box
+
+If the userdata contains variables that are declared during registration then those values
+has to be specified like below,
+
+.. image:: /_static/images/deployvm_userdata_with_variables.png
+   :width: 400px
+   :align: center
+   :alt: Provide userdata id or userdata with variables text dialog box
+
+These details will be saved as meta-data file(s) in both config drive and virtual router,
+which in turn support jinja based instance meta-data feature of cloud-init,
+refer to https://cloudinit.readthedocs.io/en/latest/topics/instancedata.html.
+
+These APIs also support the parameter ``userdata=`` to provide the userdata content
+directly. The value for this parameter must be a `base64 <https://www.base64encode.org/>`_-encoded
+multi-part MIME message. See further below for an example of what this should look like.
+
+The registered UserData can be linked to a template or ISO on registration/upload/editing
+using linkUserDataToTemplate API. The same API can be used to unlink the mapping of userdata and template.
+
+While linking userData to a template/ISO userdata override policy has to be specified.
+Following are the override policies available: 
+
+Allow Override: Allow users to override UserData for the template during VM deployment or on reset.
+                This is the default override policy if not specified 
+
+Deny Override: Override of UserData isn’t allowed during VM deployment or on reset. 
+
+Append Only: Don’t allow users to override linked UserData but allow users to pass userdata content 
+             or ID that should be appended to the linked UserData of the template.
+
+This is how it looks like in template/ISO register/upload/edit forms.
+
+.. image:: /_static/images/userdata_template_link.png
+   :width: 400px
+   :align: center
+   :alt: Linking userdata to template/ISO
+
+Based on these override policies, "Add Instance" UI form provides relevant options to either
+override or append. If it is "Deny Override" then "Add Instance" will not allow adding user specific userdata
+
+Storing and accessing userdata
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 HTTP GET parameters are limited to a length of 2048 bytes, but it is possible
 to store larger user-data blobs by sending them in the body via HTTP POST
@@ -124,36 +222,42 @@ Custom user-data example
 
 This example uses cloud-init to automatically update all OS packages on the first launch.
 
-#. Create user-data, wrapped into a multi-part MIME message and encoded in base64:
+#. Register the following user-data in CloudStack. If APIs are used to register userdata or to
+   provide direct userdata text then userdata needs to be wrapped into a multi-part MIME message
+   and encoded in base64:
 
-.. code:: bash
+   .. code:: bash
 
-   base64 <<EOF
-   Content-Type: multipart/mixed; boundary="//"
-   MIME-Version: 1.0
+      base64 <<EOF
+      Content-Type: multipart/mixed; boundary="//"
+      MIME-Version: 1.0
+
+      --//
+      Content-Type: text/cloud-config; charset="us-ascii"
+      MIME-Version: 1.0
+      Content-Transfer-Encoding: 7bit
+      Content-Disposition: attachment; filename="cloud-config.txt"
+
+      #cloud-config
+
+      # Upgrade the instance on first boot
+      # (ie run apt-get upgrade)
+      #
+      # Default: false
+      # Aliases: apt_upgrade
+      package_upgrade: true
+      EOF
    
-   --//
-   Content-Type: text/cloud-config; charset="us-ascii"
-   MIME-Version: 1.0
-   Content-Transfer-Encoding: 7bit
-   Content-Disposition: attachment; filename="cloud-config.txt"
-   
-   #cloud-config
-   
-   # Upgrade the instance on first boot
-   # (ie run apt-get upgrade)
-   #
-   # Default: false
-   # Aliases: apt_upgrade
-   package_upgrade: true
-   EOF
-   
-#. Deploy a VM with this user-data:
+#. Deploy a VM with this user-data either by providing the UUID of the registerd userdata
+   or by providing base64 encoded userdata:
 
-.. code:: bash
+   .. code:: bash
 
-   cmk deploy virtualmachine name=..... userdata=Q29udGVudC1UeXBlOiBtdWx0aXBhcnQvbWl4ZWQ7IGJvdW5kYXJ5PSIvLyIKTUlNRS1WZXJzaW9uOiAxLjAKCi0tLy8KQ29udGVudC1UeXBlOiB0ZXh0L2Nsb3VkLWNvbmZpZzsgY2hhcnNldD0idXMtYXNjaWkiCk1JTUUtVmVyc2lvbjogMS4wCkNvbnRlbnQtVHJhbnNmZXItRW5jb2Rpbmc6IDdiaXQKQ29udGVudC1EaXNwb3NpdGlvbjogYXR0YWNobWVudDsgZmlsZW5hbWU9ImNsb3VkLWNvbmZpZy50eHQiCgojY2xvdWQtY29uZmlnCgojIFVwZ3JhZGUgdGhlIGluc3RhbmNlIG9uIGZpcnN0IGJvb3QKIyAoaWUgcnVuIGFwdC1nZXQgdXBncmFkZSkKIwojIERlZmF1bHQ6IGZhbHNlCiMgQWxpYXNlczogYXB0X3VwZ3JhZGUKcGFja2FnZV91cGdyYWRlOiB0cnVlCg==
+      cmk deploy virtualmachine name=..... userdata=Q29udGVudC1UeXBlOiBtdWx0aXBhcnQvbWl4ZWQ7IGJvdW5kYXJ5PSIvLyIKTUlNRS1WZXJzaW9uOiAxLjAKCi0tLy8KQ29udGVudC1UeXBlOiB0ZXh0L2Nsb3VkLWNvbmZpZzsgY2hhcnNldD0idXMtYXNjaWkiCk1JTUUtVmVyc2lvbjogMS4wCkNvbnRlbnQtVHJhbnNmZXItRW5jb2Rpbmc6IDdiaXQKQ29udGVudC1EaXNwb3NpdGlvbjogYXR0YWNobWVudDsgZmlsZW5hbWU9ImNsb3VkLWNvbmZpZy50eHQiCgojY2xvdWQtY29uZmlnCgojIFVwZ3JhZGUgdGhlIGluc3RhbmNlIG9uIGZpcnN0IGJvb3QKIyAoaWUgcnVuIGFwdC1nZXQgdXBncmFkZSkKIwojIERlZmF1bHQ6IGZhbHNlCiMgQWxpYXNlczogYXB0X3VwZ3JhZGUKcGFja2FnZV91cGdyYWRlOiB0cnVlCg==
 
+   .. code:: bash
+
+      cmk deploy virtualmachine name=..... userdataid=<Userdata UUID>
 
 Disclaimer
 ~~~~~~~~~~

@@ -48,6 +48,8 @@ with OpenVswitch, the requirements are listed below
 
 -  openvswitch: 1.7.1 or higher
 
+Not all versions of Qemu/KVM may support dynamic scaling of instances. Some combinations may result CPU or memory related failures during instance deployment.
+
 In addition, the following hardware requirements apply:
 
 -  Within a single cluster, the hosts must be of the same distribution
@@ -207,7 +209,7 @@ sudoers file:
 .. parsed-literal::
 
    cloudstack ALL=NOPASSWD: /usr/bin/cloudstack-setup-agent
-   defaults:cloudstack !requiretty
+   Defaults:cloudstack !requiretty
 
 
 Configure CPU model for KVM guest (Optional)
