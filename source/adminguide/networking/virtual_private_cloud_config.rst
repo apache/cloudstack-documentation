@@ -221,8 +221,9 @@ addresses in the form of a Classless Inter-Domain Routing (CIDR) block.
 #. Click OK.
 
 .. note:: 
-   In security groups-enabled Advanced zones and Basic zones, creation of
-   VPC and isolated networks are not supported.
+   * In security groups-enabled Advanced zones and Basic zones, creation of
+     VPC and isolated networks are not supported.
+   * Public MTU option will be shown in the UI and considered only when zone configuration - `allow.end.users.to.specify.vr.mtu` is set to true. Maximum allowed value for public MTU can be controlled by zone-level configuration - `vr.public.interface.max.mtu`.
 
 Adding Tiers
 ~~~~~~~~~~~~
