@@ -13,7 +13,90 @@
    specific language governing permissions and limitations
    under the License.
 
-Changes in |release| since 4.17.0.0
+Changes in |release| since 4.17.1.0
+===================================
+
+Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/26?closed=1
+to track its issues.
+
+.. cssclass:: table-striped table-bordered table-hover
+
++-------------------------+----------+------------------------------------------------------------+
+| Version                 | Github   | Description                                                |
++=========================+==========+============================================================+
+| 4.17.2.0                | `#6921`_ | systemvm,vpc,vmware: fix management route                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6851`_ | api,server: fix listing vm metrics for infra resources     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6969`_ | test: fix failure on non-VMware env                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6964`_ | test: add nic validation in import vm test                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6435`_ | VPC VR: fix /etc/network/interfaces is misconfigured       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6953`_ | server: fix nic device id for imported vm                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6952`_ | ui: fix incorrect hypervisor on deploy VM wizard submit    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6912`_ | vmware: fix vmware vm snapshot operations for              |
+|                         |          | datastorecluster                                           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6936`_ | host affinity: fix vm cannot be started if a vm is stopped |
+|                         |          | in the affinity group                                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6907`_ | Fix C2S VPN in parallel to S2S VPN                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6704`_ | server: fix volume migration on user vm scale              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6879`_ | Check for null volume pool ID when tagging                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6916`_ | server: fix domain shared public template check            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6853`_ | orchestration: fix diskoffering for vr rootdisk            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6895`_ | ui: fix guest traffic vlan input                           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6852`_ | XenServer/XCP-ng: fix vm memory usage is always 99.9x%     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6824`_ | UI: Fix Volume Snapshot from user VM as admin              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6791`_ | UI: Fixes UI style on Microsoft Edge browser               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6788`_ | UI: Fixes login failed after session expired               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6768`_ | Allow template names upto 255 chars                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6779`_ | api: fix event type and description for createTag          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.17.2.0                | `#6981`_ | schema: Add upgrade path from 4.17.1.0 to 4.17.2.0         |
++-------------------------+----------+------------------------------------------------------------+
+
+21 Issues listed
+
+.. _`#6921`: https://github.com/apache/cloudstack/pull/6921
+.. _`#6851`: https://github.com/apache/cloudstack/pull/6851
+.. _`#6969`: https://github.com/apache/cloudstack/pull/6969
+.. _`#6964`: https://github.com/apache/cloudstack/pull/6964
+.. _`#6435`: https://github.com/apache/cloudstack/pull/6435
+.. _`#6953`: https://github.com/apache/cloudstack/pull/6953
+.. _`#6952`: https://github.com/apache/cloudstack/pull/6952
+.. _`#6912`: https://github.com/apache/cloudstack/pull/6912
+.. _`#6936`: https://github.com/apache/cloudstack/pull/6936
+.. _`#6907`: https://github.com/apache/cloudstack/pull/6907
+.. _`#6704`: https://github.com/apache/cloudstack/pull/6704
+.. _`#6879`: https://github.com/apache/cloudstack/pull/6879
+.. _`#6916`: https://github.com/apache/cloudstack/pull/6916
+.. _`#6853`: https://github.com/apache/cloudstack/pull/6853
+.. _`#6895`: https://github.com/apache/cloudstack/pull/6895
+.. _`#6852`: https://github.com/apache/cloudstack/pull/6852
+.. _`#6824`: https://github.com/apache/cloudstack/pull/6824
+.. _`#6791`: https://github.com/apache/cloudstack/pull/6791
+.. _`#6788`: https://github.com/apache/cloudstack/pull/6788
+.. _`#6768`: https://github.com/apache/cloudstack/pull/6768
+.. _`#6779`: https://github.com/apache/cloudstack/pull/6779
+.. _`#6981`: https://github.com/apache/cloudstack/pull/6981
+
+Changes in 4.17.1.0 since 4.17.0.0
 ===================================
 
 Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/25?closed=1

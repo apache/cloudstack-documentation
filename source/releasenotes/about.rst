@@ -17,7 +17,16 @@
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is a 4.17 LTS minor release with over 150 fixes and
+Apache CloudStack |release| is a 4.17 LTS minor release with about 20 fixes
+since the 4.17.1.0 release.
+
+The full list of fixes and improvements can be found in the project release notes at
+https://docs.cloudstack.apache.org/en/4.17.2.0/releasenotes/changes.html
+
+What's New in 4.17.1.0
+======================
+
+Apache CloudStack 4.17.1.0 is a 4.17 LTS minor release with over 150 fixes and
 improvements since the 4.17.0.0 release. Highlights include:
 
 • Support for Ubuntu 22.04 LTS as management server and KVM host
