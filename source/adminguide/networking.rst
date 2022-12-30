@@ -436,6 +436,12 @@ To create a network offering:
       CloudStack deploys the routers on different hosts to ensure
       reliability if one host is down.
 
+   -  **Supports VM auto scaling**: Indicate whether VM autoscaling feature
+      is supported. It is available only when Virtual Router or Netscaler
+      is selected as the Load Balancer provider. For more information on
+      VM autoscaling using Virtual Router, see `“Configuring AutoScale
+      with using CloudStack Virtual Router” <autoscale_with_virtual_router.html>`_.
+
    -  **Conserve mode**: Indicate whether to use conserve mode. In this
       mode, network resources are allocated only when the first virtual
       machine starts in the network. When conservative mode is off, the
