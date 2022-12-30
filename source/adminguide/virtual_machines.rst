@@ -613,17 +613,23 @@ Affinity Groups
 
 By defining affinity groups and assigning VMs to them, the user or
 administrator can influence (but not dictate) which VMs should run on
-either the same or separate hosts. This feature is to let users specify
+either the same or separate hosts. This feature allows users to specify
 the affinity groups to which a VM can belong. VMs with the
-same “host anti-affinity” type won’t be on the same host. This serves to
+same “host anti-affinity” type won’t be on the same host, which serves to
 increase fault tolerance. If a host fails, another VM offering the same
 service (for example, hosting the user's website) is still up and
 running on another host.
-It also lets the user specify that VMs with the same "host affinity" type
-run on the same host. This can be useful in ensuring connectivity and minimum
-latency in between guest VMs.
+It also allows users to specify that VMs with the same "host affinity" type
+must run on the same host, which can be useful in ensuring connectivity and low
+latency between guest VMs.
+"non-strict host anti-affinity" is similar to, but more flexible than, "host
+anti-affinity". In that case VMs are deployed to different hosts as long as
+there are enough hosts to satisfy the requirement, otherwise they might be
+deployed to the same host.
+"non-strict host affinity" is similar to, but more flexible than, "host affinity",
+VMs are ideally placed together in the same host, but only if possible.
 
-The scope of an affinity group is per user account.
+The scope of an affinity group is on an account level.
 
 
 Creating a New Affinity Group
@@ -643,11 +649,16 @@ To add an affinity group:
    -  Description. Any desired text to tell more about the purpose of
       the group.
 
-   -  Type. CloudStack supports two types of affinity groups. "Host
-      Anti-Affinity" and "Host Affinity". "Host Anti-Affinity" indicates
-      that the VMs in this group should avoid being placed on the same
-      host with each other. "Host Affinity" on the other hand indicates
-      that VMs in this group should be placed on the same host.
+   -  Type. CloudStack supports four types of affinity groups. "host
+      anti-affinity", "host affinity", "non-strict host affinity" and
+      "non-strict host anti-affinity". "host anti-affinity" indicates
+      that the VMs in this group must not be placed on the same
+      host with each other. "host affinity" on the other hand indicates
+      that VMs in this group must be placed on the same host.
+      "non-strict host anti-affinity" indicates that VMs in this group
+      should be deployed to different hosts.
+      "non-strict host affinity" indicates that VMs in this group
+      shouldn’t be deployed to same hosts.
 
 
 Assign a New VM to an Affinity Group
@@ -708,6 +719,41 @@ To delete an affinity group:
    normally on the current hosts, but if the VM is restarted, it will no
    longer follow the host allocation rules from its former affinity
    group.
+
+
+Determine Destination Host of VMs with Non-Strict Affinity Groups
+''''''''''''''''''''''''
+
+(Non-Strict Host Anti-Affinity and Non-Strict Host Affinity only)
+
+The destination host of VMs with Non-Strict Affinity Groups are determined
+by the host priorities. The hosts have default priority as 0. If there is a
+VM in the same Non-Strict Host Anti-Affinity group on the host, the host
+priority will be decreased by 1. If there is a VM in the same Non-Strict Host
+Affinity group on the host, the host priority will be increased by 1. All
+available hosts are reordered by host priorities when deploy or start a VM.
+
+Here are some examples how host priorities are calculated.
+
+- Example 1: VM has a non-strict host anti-affinity group.
+
+If Host-1 has 2 VMs in the group, Host-2 has 3 VMs in the group.
+Host-1 priority is -2, Host-2 priority is -3. If there are only 2 hosts,
+VM will be deployed to Host-1 as it has higher priority (-2 > -3).
+
+- Example 2: VM has a non-strict host affinity group.
+
+If Host-1 has 2 VMs in the group, Host-2 has 3 VMs in the group.
+Host-1 priority is 2, Host-2 priority is 3. If there are only 2 hosts,
+VM will be deployed to Host-2 (3 >2).
+
+- Example 3: VM has a non-strict host affinity group and also a non-strict host anti-affinity group.
+
+If Host-1 has 2 VMs in the non-strict host affinity group, and
+3 VMs in the non-strict host anti-affinity group. Host-1 priority is
+calculated by:
+
+    0 (default) + 2 (VMs in non-strict host affinity group) - 3 (VMs in the non-strict host anti-affinity group) = -1
 
 
 Changing a VM's Base Image
