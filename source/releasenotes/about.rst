@@ -49,7 +49,7 @@ features, and over 244 enhancements and fixes since 4.15. Highlights include:
 • Resource Icons
 • Bulk actions through the UI
 • UI for VM Ingestion
-• L2 Networks Persistent modern
+• L2 Networks Persistent mode
 • Script cloudstack-setup-databases improvement
 • Add mac learning mode in network offering
 • API-call to declare host as Degraded
