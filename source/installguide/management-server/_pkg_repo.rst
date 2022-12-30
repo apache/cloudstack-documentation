@@ -51,7 +51,7 @@ To add the CloudStack repository, create
 ``/etc/yum.repos.d/cloudstack.repo`` and insert the following
 information.
 
-In the case of RHEL you could replace centos by rhel in baseurl
+In the case of RHEL being used, you can replace 'centos' by 'rhel' in the value of baseurl
 
 .. parsed-literal::
 
