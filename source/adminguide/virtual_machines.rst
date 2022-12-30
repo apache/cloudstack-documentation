@@ -1296,7 +1296,7 @@ VM statistics retention time in the database is controlled by the global configu
 
 In UI, historical VM statistics are shown in the Metrics tab in an individual VM view, as shown in the image below.
 
-|volume-metrics-ui.png|
+|vm-metrics-ui.png|
 
 
 VM Disk Metrics
@@ -1314,7 +1314,7 @@ VM disk statistics retention in the database is controlled by the global configu
 
 VM disk statistics are shown in the Metrics tab in an individual volume view, as shown in the image below.
 
-|volume-disk-metrics-ui.png|
+|vm-disk-metrics-ui.png|
 
 
 .. |vm-lifecycle.png| image:: /_static/images/vm-lifecycle.png
