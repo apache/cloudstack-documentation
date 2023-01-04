@@ -258,7 +258,7 @@ communication with SSL:
 
 -  Set up a SSL wild-card certificate and domain name resolution
 
--  Set up SSL certificate for specific FQDN and configure load-balancer
+-  Set up SSL certificate for specific FQDN and configure load-balancer (optional ssl offloading)
 
 
 Changing the Console Proxy SSL Certificate and Domain
