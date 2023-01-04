@@ -258,7 +258,7 @@ communication with SSL:
 
 -  Set up a SSL wild-card certificate and domain name resolution
 
--  Set up SSL certificate for specific FQDN and configure load-balancer (optional ssl offloading)
+-  Set up SSL certificate for specific FQDN and configure load-balancer (with ssl offloading optional)
 
 
 Changing the Console Proxy SSL Certificate and Domain
@@ -372,17 +372,44 @@ are still in default PEM format (no URL encoding needed here).
 After editing the database, please restart management server, and destroy SSVM and CPVM after that,
 so the new SSVM and CPVM with new certificates are created.
 
-Load-balancing Console Proxies
+Load-balancing Console Proxies / Secondary Storage VMs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 An alternative to using dynamic DNS or creating a range of DNS entries
 as described in the last section would be to create a SSL certificate
 for a specific domain name, configure CloudStack to use that particular
 FQDN, and then configure a load balancer to load balance the console
-proxy's IP address behind the FQDN. As the functionality for this is
+proxy's IP address behind the FQDN. When using a load balancer it is
+also possible to perform SSL-Offloading, so no certificate needs to be
+configured on CloudStack itself. As the functionality for this is
 still new, please see
 https://cwiki.apache.org/confluence/display/CLOUDSTACK/Realhost+IP+changes
 for more details.
 
+These ports needed to be configured for load-balancing:
+- 443 to 443 (to CPVM)
+- 8080 to 8080 (to CPVM)
+- 443 to 443 (to SSVM)
+
+SSL-Offloading with Load-balancing for Console Proxies / Secondary Storage VMs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+To implement SSL-Offloading you need 2 public IP addresses (one for Console Proxy and one for Secondary Storage VM) which
+each of them resolve to a different FQDN and terminate at the load balancer. Also 3 global settings need to be edited.
+- The setting ‘consoleproxy.url.domain’ to the FQDN used by the certificate (For example: cpvm.company.com)
+- The setting ‘secstorage.ssl.cert.domain’ to the FQDN used by the cerrificate (For example: ssvm.company.com)
+- The setting ‘secstorage.encrypt.copy’ to true
+
+.. warning::
+   For sake of security you should block direct public access to the IP of Console Proxy and Secondary Storage VM. It is also
+   possible to add a fake public IP range to CloudStack which uses internal IP addresses for SystemVM use only. Please
+   be aware that the load balancer needs access to the used IP addresses to forward traffic.
+
+After edited global settings mentioned above you need to recreate both System VMs by destroying them. CloudStack will recreate
+them with the new settings automatically.
+
+When using SSL-Offloading you need to configure following ports on the load balancer after adding the correct certificate to the public IP of each FQDN:
+- lb-publicip1:443 to CPVM:80
+- lb-publicip1:8080 to CPVM:8080
+- lb-publicip2:443 to SSVM:80
 
 Virtual Router
 --------------
