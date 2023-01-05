@@ -1679,6 +1679,9 @@ the global configuration settings.
 
 #. In the Actions column, click the Edit icon to modify a value.
 
+   .. note::
+      Local configuration parameters will default to global configuration value when an explicit value is not set for them. Reset action for local configurations will also update their value to global configuration value.
+
 
 Granular Global Configuration Parameters
 ----------------------------------------

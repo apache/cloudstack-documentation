@@ -49,6 +49,14 @@ configure the base guest network:
    -  **Network offering**: If the administrator has configured multiple
       network offerings, select the one you want to use for this network
 
+   - **Public MTU**: The MTU that will be configured on the public interfaces
+      of the network's VR. 
+      **NOTE:** This will not be considered for VPC network tiers, as the 
+      public MTU defined at the VPC network creation level will be considered
+
+   - **Private MTU**: The MTU that will configured on the private interface(s)
+      of the network's VR
+
    -  **External Id**: ID of the network in an external system.
  
    -  **Gateway**: The gateway that the guests instances will use.
@@ -68,8 +76,8 @@ configure the base guest network:
 #. Click OK.
 
 .. note:: 
-   In security groups-enabled Advanced zones and Basic zones, creation of
-   VPC and isolated networks are not supported.
+   * In security groups-enabled Advanced zones and Basic zones, creation of VPC and isolated networks are not supported.
+   * MTU options will be shown in the UI and considered only when zone configuration - `allow.end.users.to.specify.vr.mtu` is set to true. Maximum allowed values for public and private MTU can be controlled by zone-level configurations, `vr.public.interface.max.mtu` and `vr.private.interface.max.mtu` respectively.
 
 Configure Public Traffic in an Advanced Zone
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -141,6 +149,12 @@ Configuring a Shared Guest Network
    -  **Network Offering**: If the administrator has configured multiple
       network offerings, select the one you want to use for this
       network.
+   
+   - **Public MTU**: The MTU that will be configured on the public interfaces
+      of the network's VR. This MTU will considered for redundant VRs 
+
+   - **Private MTU**: The MTU that will configured on the private interface(s)
+      of the network's VR
 
    -  **Associated Network**: The L2 or Isolated network this network is
       associated to. This network will use same VLAN as associated network.
@@ -172,11 +186,12 @@ Configuring a Shared Guest Network
 #. Click OK to confirm.
 
    .. note::
-      End users (not administrator) can only use the network
-      offerings with specifyvlan is false. Please create a network offering
-      with specifyvlan is false to enable this for end users. See
-      `“Creating a New Network Offering”
-      <networking.html#creating-a-new-network-offering>`_.
+      * End users (not administrator) can only use the network
+        offerings with specifyvlan is false. Please create a network offering
+        with specifyvlan is false to enable this for end users. See
+        `“Creating a New Network Offering”
+        <networking.html#creating-a-new-network-offering>`_.
+      * MTU options will be shown in the UI and considered only when zone configuration - `allow.end.users.to.specify.vr.mtu` is set to true. Maximum allowed values for public and private MTU can be controlled by zone-level configurations, `vr.public.interface.max.mtu` and `vr.private.interface.max.mtu` respectively.
 
 
 .. |addguestnetwork.png| image:: /_static/images/add-guest-network.png

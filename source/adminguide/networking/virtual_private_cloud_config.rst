@@ -215,11 +215,15 @@ addresses in the form of a Classless Inter-Domain Routing (CIDR) block.
    -  **IPv6 DNS**: A set of custom IPv6 DNS that will be used by this VPC. If not provided then IPv6 DNS specified for the zone will be used. Available only when the selected VPC offering is IPv6 enabled and supports DNS service.
 
 
+   - **Public MTU**: The MTU to be configured on the public interfaces of the 
+      VPC network's VR
+
 #. Click OK.
 
-.. note:: 
-   In security groups-enabled Advanced zones and Basic zones, creation of
-   VPC and isolated networks are not supported.
+.. note::
+   * In security groups-enabled Advanced zones and Basic zones, creation of
+     VPC and isolated networks are not supported.
+   * Public MTU option will be shown in the UI and considered only when zone configuration - `allow.end.users.to.specify.vr.mtu` is set to true. Maximum allowed value for public MTU can be controlled by zone-level configuration - `vr.public.interface.max.mtu`.
 
 Adding Tiers
 ~~~~~~~~~~~~
