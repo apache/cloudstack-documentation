@@ -13,6 +13,9 @@
    specific language governing permissions and limitations
    under the License.
 
+.. |guest-os-button.png| image:: /_static/images/guest-os-button.png
+   :alt: Guest OS section
+
 .. |add-guest-os-button.png| image:: /_static/images/add-guest-os-button.png
    :alt: Add guest OS button
 
