@@ -212,10 +212,3 @@ It is also recommended to add that location to your regular log rotating policy.
 .. |BnR-Networker-Cluster-Clients-overview.jpg| image:: /_static/images/BnR-Networker-Cluster-Clients-overview.jpg
    :alt: Cluster Clients Overview.
    :width: 300 px
-
-
-
-
-
-
-
