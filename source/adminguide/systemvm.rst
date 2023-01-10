@@ -385,9 +385,10 @@ https://cwiki.apache.org/confluence/display/CLOUDSTACK/Realhost+IP+changes
 for more details.
 
 These ports needed to be configured for load-balancing:
--  443 to 443 (to CPVM)
--  8080 to 8080 (to CPVM)
--  443 to 443 (to SSVM)
+
+- 443 to 443 (to CPVM)
+- 8080 to 8080 (to CPVM)
+- 443 to 443 (to SSVM)
 
 SSL-Offloading with Load-balancing for Console Proxies / Secondary Storage VMs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
