@@ -394,6 +394,7 @@ SSL-Offloading with Load-balancing for Console Proxies / Secondary Storage VMs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To implement SSL-Offloading you need 2 public IP addresses (one for Console Proxy and one for Secondary Storage VM) which
 each of them resolve to a different FQDN and terminate at the load balancer. Also 3 global settings need to be edited.
+
 - The setting ‘consoleproxy.url.domain’ to the FQDN used by the certificate (For example: cpvm.company.com)
 - The setting ‘secstorage.ssl.cert.domain’ to the FQDN used by the cerrificate (For example: ssvm.company.com)
 - The setting ‘secstorage.encrypt.copy’ to true
