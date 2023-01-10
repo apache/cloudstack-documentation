@@ -550,10 +550,10 @@ Advanced Zone Configuration
       within a domain. Only specified users or grous in that domain will 
       be allowed to create guest VMs in this zone.
 
-   -  **Enable local storage for User VMs.** Give the user the opperunity to 
+   -  **Enable local storage for User VMs.** Give the user the opportunity to 
       provide local storage (physical storage on the host) for User VMs to store data.
 
-   -  **Enable local storage for System VMs.** Give the system the opperunity to 
+   -  **Enable local storage for System VMs.** Give the system the opportunity to 
       use local storage (physical storage on the hosts) for System VMs.
 	  
 #. Click Next.
