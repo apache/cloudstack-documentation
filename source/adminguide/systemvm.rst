@@ -408,9 +408,10 @@ After edited global settings mentioned above you need to recreate both System VM
 them with the new settings automatically.
 
 When using SSL-Offloading you need to configure following ports on the load balancer after adding the correct certificate to the public IP of each FQDN:
--  lb-publicip1:443 to CPVM:80
--  lb-publicip1:8080 to CPVM:8080
--  lb-publicip2:443 to SSVM:80
+
+- lb-publicip1:443 to CPVM:80
+- lb-publicip1:8080 to CPVM:8080
+- lb-publicip2:443 to SSVM:80
 
 Virtual Router
 --------------
