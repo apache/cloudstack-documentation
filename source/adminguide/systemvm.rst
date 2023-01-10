@@ -390,7 +390,7 @@ These ports needed to be configured for load-balancing:
 -  443 to 443 (to SSVM)
 
 SSL-Offloading with Load-balancing for Console Proxies / Secondary Storage VMs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To implement SSL-Offloading you need 2 public IP addresses (one for Console Proxy and one for Secondary Storage VM) which
 each of them resolve to a different FQDN and terminate at the load balancer. Also 3 global settings need to be edited.
 - The setting ‘consoleproxy.url.domain’ to the FQDN used by the certificate (For example: cpvm.company.com)
