@@ -373,7 +373,7 @@ After editing the database, please restart management server, and destroy SSVM a
 so the new SSVM and CPVM with new certificates are created.
 
 Load-balancing Console Proxies / Secondary Storage VMs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 An alternative to using dynamic DNS or creating a range of DNS entries
 as described in the last section would be to create a SSL certificate
 for a specific domain name, configure CloudStack to use that particular
