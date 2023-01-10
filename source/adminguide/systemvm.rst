@@ -380,8 +380,7 @@ for a specific domain name, configure CloudStack to use that particular
 FQDN, and then configure a load balancer to load balance the console
 proxy's IP address behind the FQDN. When using a load balancer it is
 also possible to perform SSL-Offloading, so no certificate needs to be
-configured on CloudStack itself. As the functionality for this is
-still new, please see
+configured on CloudStack itself. For further information please see
 https://cwiki.apache.org/confluence/display/CLOUDSTACK/Realhost+IP+changes
 for more details.
 
