@@ -299,8 +299,10 @@ cloudstack-agent and should already be installed.
    Please note that Cloudstack will automatically perform basic configuration of the agent and libvirt when the host is added. This is relevant if you are
    planning to automate the deployment and configuration of your KVM hosts.
 
-#. In order to have live migration working libvirt has to listen for
-   unsecured TCP connections. We also need to turn off libvirts attempt
+#. To avoid potential security attack to virtual machines, We need to turn
+   off libvirt to listen on unsecure TCP port. CloudStack will automatically
+   set up cloud keystore and certificates when the host is added to cloudstack.
+   We also need to turn off libvirts attempt
    to use Multicast DNS advertising. Both of these settings are in
    ``/etc/libvirt/libvirtd.conf``
 
@@ -312,7 +314,11 @@ cloudstack-agent and should already be installed.
 
    .. parsed-literal::
 
-      listen_tcp = 1
+      listen_tcp = 0
+
+   .. parsed-literal::
+
+      tls_port = "16514"
 
    .. parsed-literal::
 
@@ -326,8 +332,7 @@ cloudstack-agent and should already be installed.
 
       mdns_adv = 0
 
-#. Turning on "listen\_tcp" in libvirtd.conf is not enough, we have to
-   change the parameters as well:
+#. We have to change the parameters as well:
 
    On RHEL or CentOS or SUSE modify ``/etc/sysconfig/libvirtd``:
 
@@ -344,33 +349,35 @@ cloudstack-agent and should already be installed.
       systemctl mask libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tls.socket libvirtd-tcp.socket
 
 
-   On Ubuntu modify ``/etc/default/libvirt-bin``
+   On Ubuntu 20.04 or older, modify ``/etc/default/libvirtd``
 
    Uncomment and change the following line
 
    .. parsed-literal::
 
-      #env libvirtd_opts=""
+      #libvirtd_opts=""
 
    so it looks like:
 
    .. parsed-literal::
 
-      env libvirtd_opts="-l"
+      libvirtd_opts="-l"
+
+   On Ubuntu 22.04 or newer version, modify ``/etc/default/libvirtd``:
+
+   Uncomment the following line:
+
+   .. parsed-literal::
+
+      #LIBVIRTD_ARGS="--listen"
 
 #. Restart libvirt
 
-   In RHEL or CentOS or SUSE :
+   In RHEL or CentOS or SUSE or Ubuntu:
 
    .. parsed-literal::
 
         $ systemctl restart libvirtd
-
-   In Ubuntu:
-
-   .. parsed-literal::
-
-      $ systemctl restart libvirt-bin
 
 
 Configure the Security Policies
@@ -1289,7 +1296,7 @@ using a firewall):
 
 #. 1798
 
-#. 16509, 16514 (libvirt)
+#. 16514 (libvirt)
 
 #. 5900 - 6100 (VNC consoles)
 
@@ -1312,10 +1319,6 @@ extra ports by executing the following iptable commands:
 .. parsed-literal::
 
    $ iptables -I INPUT -p tcp -m tcp --dport 1798 -j ACCEPT
-
-.. parsed-literal::
-
-   $ iptables -I INPUT -p tcp -m tcp --dport 16509 -j ACCEPT
 
 .. parsed-literal::
 
@@ -1360,10 +1363,6 @@ To open the required ports, execute the following commands:
 .. parsed-literal::
 
    $ ufw allow proto tcp from any to any port 1798
-
-.. parsed-literal::
-
-   $ ufw allow proto tcp from any to any port 16509
 
 .. parsed-literal::
 
