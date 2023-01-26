@@ -632,8 +632,8 @@ Using Two Factor Authentication For Users
 
 CloudStack supports two factor authentication 2FA for the users, wherein users needs
 to provide a 2FA code after the login using username and password. CloudStack currently
-supports google and staticpin as the 2FA providers. Other 2FA providers can be easily
-integrated with CloudStack using its plugin model.
+supports google authenticator along with other TOTP authenticators and staticpin as the 2FA providers.
+Other 2FA providers can be easily integrated with CloudStack using its plugin model.
 
 For admins, following are the settings available at global and domain level to configure
 2FA.
@@ -643,9 +643,9 @@ For admins, following are the settings available at global and domain level to c
 ================================================   ================   ===================================================================
 Global setting                                     Default values     Description
 ================================================   ================   ===================================================================
-enable.user.two.factor.authentication              false              Determines whether 2FA is enabled or not
-mandate.user.two.factor.authentication             false              Determines whether to make the 2FA mandatory or not for the users
-user.two.factor.authentication.default.provider    google             The default user 2FA provider plugin. Eg. google, staticpin
+enable.user.2fa                                    false              Determines whether 2FA is enabled or not
+mandate.user.2fa                                   false              Determines whether to make the 2FA mandatory or not for the users
+user.2fa.default.provider                          totp               The default user 2FA provider plugin. Eg. google, staticpin
 ================================================   ================   ===================================================================
 
 If 2FA is configured for the user, the 2FA verification page looks like below after the login.
@@ -663,9 +663,9 @@ Users can configure 2FA in CloudStack using the action button in user form.
    :alt: Configure 2FA action button
 
 In the 2FA setup form, user needs to select one of the providers. CloudStack currently supports
-google and staticpin as the 2FA providers.
+google authenticator along with other TOTP authenticators and staticpin as the 2FA providers.
 
-When the google 2FA provider is selected, user must setup the account in google authenticator
+When the google or other TOTP 2FA provider is selected, user must setup the account in google or other TOTP authenticator
 application in their device by either scanning the QR code or using the setup key provided by CloudStack.
 Once the account is setup in the authenticator application, user must verify 2FA with Cloudstack using
 the 2FA code in the authenticator application. Every time user has to use the same account in the
