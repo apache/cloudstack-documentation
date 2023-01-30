@@ -1294,7 +1294,7 @@ VM statistics retention time in the database is controlled by the global configu
 
 - `vm.stats.user.vm.only` - When set to 'false' stats for system VMs will be collected otherwise stats collection will be done only for user VMs.
 
-In UI, historical VM statistics are shown in the Metrics tab in an individual VM view, as shown in the image below.
+In the UI, historical VM statistics are shown in the Metrics tab in an individual VM view, as shown in the image below.
 
 |vm-metrics-ui.png|
 
