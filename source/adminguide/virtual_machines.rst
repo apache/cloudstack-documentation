@@ -1302,7 +1302,7 @@ In UI, historical VM statistics are shown in the Metrics tab in an individual VM
 VM Disk Metrics
 ---------------
 
-Similar to VM statistics, VM disk statistics can also be collected on a regular interval (defined by global setting vm.disk.stats.interval with a default value of 0 seconds which disables VM disk stats collection). VM disk stats are collected in form of diskiopstotal, diskioread, diskiowrite, diskkbsread and diskkbswrite.
+Similar to VM statistics, VM disk statistics (disk stats) can also be collected on a regular interval (defined by global setting vm.disk.stats.interval with a default value of 0 seconds which disables disk stats collection). Disk stats are collected in form of diskiopstotal, diskioread, diskiowrite, diskkbsread and diskkbswrite.
 
 VM disk statistics can also be made to store in the database and the historical statistics can be retrieved using listVolumesUsageHistory API.
 
