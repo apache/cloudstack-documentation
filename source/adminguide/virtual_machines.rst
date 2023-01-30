@@ -1290,7 +1290,7 @@ VM statistics include include compute, storage and network statistics.
 
 VM statistics are stored in the database for historical data for a desired time period. These historical statistics then can be retrieved using listVirtualMachinesUsageHistory API. For system VMs, the same historical stats can be retrieved using listSystemVmsUsageHistory API
 
-VM statistics retention time in the database is controlled by the global configuration - `vm.stats.max.retention.time`. Default value is 720 minutes, i.e., 12 hours. Other global configurations that affects virtual machine statistics is:
+VM statistics retention time in the database is controlled by the global configuration - `vm.stats.max.retention.time`. Default value is 720 minutes, i.e., 12 hours. Another global configuration that affects virtual machine statistics is:
 
 - `vm.stats.user.vm.only` - When set to 'false' stats for system VMs will be collected otherwise stats collection will be done only for user VMs.
 
