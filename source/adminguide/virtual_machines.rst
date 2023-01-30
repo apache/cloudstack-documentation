@@ -1327,6 +1327,42 @@ CloudStack follows the below sequence of operations to provide GPU/vGPU support 
       GPU resources are released automatically when you stop a VM. Once the destroy VM is successful, CloudStack will make a resource call to the host to get the remaining GPU capacity in the card and update the database accordingly.
 
 
+Virtual Machine Metrics
+=======================
+
+VM statistics are collected on a regular interval (defined by global
+setting vm.stats.interval with a default of 60000 milliseconds).
+VM statistics include include compute, storage and network statistics.
+
+VM statistics are stored in the database as historical data for a desired time period. These historical statistics then can be retrieved using listVirtualMachinesUsageHistory API. For system VMs, the same historical statistics can be retrieved using listSystemVmsUsageHistory API
+
+VM statistics retention time in the database is controlled by the global configuration - `vm.stats.max.retention.time`. Default value is 720 minutes, i.e., 12 hours. Another global configuration that affects virtual machine statistics is:
+
+- `vm.stats.user.vm.only` - When set to 'false' stats for system VMs will be collected otherwise stats collection will be done only for user VMs.
+
+In the UI, historical VM statistics are shown in the Metrics tab in an individual VM view, as shown in the image below.
+
+|vm-metrics-ui.png|
+
+
+VM Disk Metrics
+---------------
+
+Similar to VM statistics, VM disk statistics (disk stats) can also be collected on a regular interval (defined by global setting vm.disk.stats.interval with a default value of 0 seconds which disables disk stats collection). Disk stats are collected in form of diskiopstotal, diskioread, diskiowrite, diskkbsread and diskkbswrite.
+
+VM disk statistics can also be made to store in the database and the historical statistics can be retrieved using listVolumesUsageHistory API.
+
+VM disk statistics retention in the database is controlled by the global configuration - `vm.disk.stats.retention.enabled`. Default value is false, i.e., retention of VM disk statistics is disabled. Other global configurations that affects virtual machine disk statistics are:
+
+- `vm.disk.stats.interval.min` - Minimal interval (in seconds) to report vm disk statistics. If vm.disk.stats.interval is smaller than this, use this to report vm disk statistics.
+
+- `vm.disk.stats.max.retention.time` - The maximum time (in minutes) for keeping disk stats records in the database. The disk stats cleanup process will be disabled if this is set to 0 or less than 0.
+
+VM disk statistics are shown in the Metrics tab in an individual volume view, as shown in the image below.
+
+|vm-disk-metrics-ui.png|
+
+
 .. |vm-lifecycle.png| image:: /_static/images/vm-lifecycle.png
    :alt: Virtual Machine State Model
 .. |VMSnapshotButton.png| image:: /_static/images/VMSnapshotButton.png
@@ -1358,3 +1394,7 @@ CloudStack follows the below sequence of operations to provide GPU/vGPU support 
    :alt: List of possible VMware NIC models
 .. |vm-settings-values-dropdown-KVM-list.png| image:: /_static/images/vm-settings-values-dropdown-KVM-list.png
    :alt: List of possible KVM disk controllers
+.. |vm-metrics-ui.png| image:: /_static/images/vm-metrics-ui.png
+   :alt: VM metrics UI
+.. |vm-disk-metrics-ui.png| image:: /_static/images/vm-disk-metrics-ui.png
+   :alt: VM Disk metrics UI
