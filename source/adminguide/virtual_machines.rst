@@ -1310,7 +1310,7 @@ VM disk statistics retention in the database is controlled by the global configu
 
 - `vm.disk.stats.interval.min` - Minimal interval (in seconds) to report vm disk statistics. If vm.disk.stats.interval is smaller than this, use this to report vm disk statistics.
 
-- `vm.disk.stats.max.retention.time` - The maximum time (in minutes) for keeping VM disk stats records in the database. The VM disk stats cleanup process will be disabled if this is set to 0 or less than 0.
+- `vm.disk.stats.max.retention.time` - The maximum time (in minutes) for keeping disk stats records in the database. The disk stats cleanup process will be disabled if this is set to 0 or less than 0.
 
 VM disk statistics are shown in the Metrics tab in an individual volume view, as shown in the image below.
 
