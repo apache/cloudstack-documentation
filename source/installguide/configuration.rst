@@ -521,7 +521,7 @@ Basic Zone Configuration
 Advanced Zone Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For Advanced zone, you may chose Edge which will allow creating an Edge. If Edge is not selected then wizard will allow creating a Core zone.
+For Advanced zone, you may chose to select Edge which will allow creating an Edge Zone. If Edge is not selected then wizard will continue creating a Core zone.
 
 Core Zone
 *********
