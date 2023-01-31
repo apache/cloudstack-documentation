@@ -775,7 +775,7 @@ Edge Zone
    Support for Edge zones has been added with 4.18.0 and these zones will only be supported on KVM hypervisors
 
 An Edge Zone is a simpler, light-weight zone which may often contain a single hypervisor host. There will be no need for shared storage, public and management physical networks for an Edge zone.
-To work with limited compute resources, an Edge zone will not deploy system VMs. This type of zone only support shared and L2 guest networks. For virtual routers of a shared guest network, a direct-download System VM must be added after adding the zone.
+To work with limited compute resources, an Edge zone will not deploy system VMs. This type of zone only supports shared and L2 guest networks. For virtual routers of a shared guest network, a direct-download System VM must be added after adding the zone.
 
 #. For an Edge zone, you will be asked to enter the following details
 
