@@ -630,13 +630,12 @@ The following global configuration should be configured:
 Using Two Factor Authentication For Users
 ------------------------------------------
 
-CloudStack supports two factor authentication 2FA for the users, wherein users needs
-to provide a 2FA code after the login using username and password. CloudStack currently
-supports google authenticator along with other TOTP authenticators and staticpin as the 2FA providers.
-Other 2FA providers can be easily integrated with CloudStack using its plugin model.
+CloudStack supports two factor authentication wherein users need to provide a 2FA code after the
+regular login using username and password. CloudStack currently supports Google Authenticator or
+other TOTP authenticators and static PIN as the 2FA providers. Other 2FA providers can be easily
+integrated with CloudStack using its plugin model.
 
-For admins, following are the settings available at global and domain level to configure
-2FA.
+For admins, the following are the settings available at global and domain level to configure 2FA.
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -662,22 +661,22 @@ Users can configure 2FA in CloudStack using the action button in user form.
    :align: center
    :alt: Configure 2FA action button
 
-In the 2FA setup form, user needs to select one of the providers. CloudStack currently supports
-google authenticator along with other TOTP authenticators and staticpin as the 2FA providers.
+In the 2FA setup form, the user needs to select one of the providers. CloudStack currently supports
+Google Authenticator or other TOTP Authenticators and static PIN as the 2FA providers.
 
-When the google or other TOTP 2FA provider is selected, user must setup the account in google or other TOTP authenticator
-application in their device by either scanning the QR code or using the setup key provided by CloudStack.
-Once the account is setup in the authenticator application, user must verify 2FA with Cloudstack using
-the 2FA code in the authenticator application. Every time user has to use the same account in the
-authenticator application during login into CloudStack.
+When the Google Authenticator or other TOTP 2FA provider is selected, the user must setup the account in
+the respective application in their device by either scanning the QR code or using the setup key provided
+by CloudStack. Once the account is setup in the authenticator application, the user must verify 2FA with
+Cloudstack using the 2FA code in the authenticator application. Every time the user has to use the same
+account in the authenticator application during login into CloudStack.
 
 .. image:: /_static/images/configure-google-2fa-form.png
    :width: 400px
    :align: center
    :alt: Configure google 2FA form
 
-When the staticpin 2FA provider is selected, user must use the static pin as the 2FA code to verify 2FA
-with CloudStack. Every time user has to use this static pin as 2FA code during login into CloudStack.
+When the static PIN 2FA provider is selected, the user must use the static PIN as the code to verify 2FA
+with CloudStack. The user must input this static PIN as a 2FA code every time they need to login.
 
 .. image:: /_static/images/configure-staticpin-2fa-form.png
    :width: 400px
@@ -686,10 +685,11 @@ with CloudStack. Every time user has to use this static pin as 2FA code during l
 
 .. Note:: While user configures 2FA, verification of the 2FA code is must to complete the process.
 
-Admin has the capability to mandate 2FA for users.
-When a new user is created ``mandate.user.two.factor.authentication`` setting will be used to enable
-2FA for the user. In that case user must configure 2FA during the first login into CloudStack.
-User's first login page to configure 2FA looks like below,
+The admin has the capability to mandate 2FA for users. The setting ``mandate.user.2fa``
+is used to enable 2FA for the user. In that case the user must configure 2FA during their
+first login into CloudStack.
+
+The user's first login page to configure 2FA looks like the below,
 
 .. image:: /_static/images/configure-2fa-at-login-page.png
    :width: 400px
