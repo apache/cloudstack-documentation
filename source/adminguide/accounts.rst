@@ -666,14 +666,13 @@ Google Authenticator or other TOTP Authenticators and static PIN as the 2FA prov
 
 When the Google Authenticator or other TOTP 2FA provider is selected, the user must setup the account in
 the respective application in their device by either scanning the QR code or using the setup key provided
-by CloudStack. Once the account is setup in the authenticator application, the user must verify 2FA with
-Cloudstack using the 2FA code in the authenticator application. Every time the user has to use the same
-account in the authenticator application during login into CloudStack.
+by CloudStack. Once this is set up in the authenticator application, the user must always use the provided
+2FA codes to log in.
 
 .. image:: /_static/images/configure-google-2fa-form.png
    :width: 400px
    :align: center
-   :alt: Configure google 2FA form
+   :alt: Configure Google 2FA form
 
 When the static PIN 2FA provider is selected, the user must use the static PIN as the code to verify 2FA
 with CloudStack. The user must input this static PIN as a 2FA code every time they need to login.
@@ -681,24 +680,23 @@ with CloudStack. The user must input this static PIN as a 2FA code every time th
 .. image:: /_static/images/configure-staticpin-2fa-form.png
    :width: 400px
    :align: center
-   :alt: Configure staticpin 2FA form
+   :alt: Configure static PIN 2FA form
 
-.. Note:: While user configures 2FA, verification of the 2FA code is must to complete the process.
+.. Note:: While the user configures 2FA, verification of the 2FA code is a must to complete the process.
 
-The admin has the capability to mandate 2FA for users. The setting ``mandate.user.2fa``
-is used to enable 2FA for the user. In that case the user must configure 2FA during their
-first login into CloudStack.
+The admin has the capability to mandate 2FA for users via the setting ``mandate.user.2fa``.
+In this case the user must configure 2FA during their first login into CloudStack.
 
-The user's first login page to configure 2FA looks like the below,
+The user's first login page to configure 2FA looks like the below.
 
 .. image:: /_static/images/configure-2fa-at-login-page.png
    :width: 400px
    :align: center
    :alt: Configure 2FA at login page
 
-For the existing users, admin can mandate 2FA using the 'updateUser' API with the parameter 'mandate2FA'.
+For the existing users, the admin can mandate 2FA using the 'updateUser' API with the parameter 'mandate2FA'.
 
-Admin can also disable 2FA for users using the action button as shown below,
+The admin can also disable 2FA for a user using the action button as shown below.
 
 .. image:: /_static/images/disable-2fa.png
    :width: 400px
