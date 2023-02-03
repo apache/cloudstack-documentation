@@ -635,6 +635,9 @@ regular login using username and password. CloudStack currently supports Google 
 other TOTP authenticators and static PIN as the 2FA providers. Other 2FA providers can be easily
 integrated with CloudStack using its plugin model.
 
+.. Note:: Two Factor Authentication is applicable only for the logins using username and password,
+          it is not applicable for other authentication mechanisms like LDAP or SAML or using api key and secret key.
+
 For admins, the following are the settings available at global and domain level to configure 2FA.
 
 .. cssclass:: table-striped table-bordered table-hover
@@ -683,6 +686,12 @@ with CloudStack. The user must input this static PIN as a 2FA code every time th
    :alt: Configure static PIN 2FA form
 
 .. Note:: While the user configures 2FA, verification of the 2FA code is a must to complete the process.
+          If the user loses the authenticator application or forgets the static PIN, then the user must
+          contact admin to disable 2FA.
+          If the admin themself loses the authenticator application or forgets the static PIN, then the admin
+          will have to either use apikey to disable 2FA using the API setupUserTwoFactorAuthentication with
+          enable flag to false or to do the database changes in 'user' table by clearing the columns
+          'is_user_2fa_enabled', 'key_for_2fa', 'user_2fa_provider' for the specific entry.
 
 The admin has the capability to mandate 2FA for users via the setting ``mandate.user.2fa``.
 In this case the user must configure 2FA during their first login into CloudStack.
