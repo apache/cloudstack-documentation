@@ -521,8 +521,12 @@ Basic Zone Configuration
 Advanced Zone Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. After you select Advanced in the Add Zone wizard and click Next, you
-   will be asked to enter the following details. Then click Next.
+For Advanced zone, you may chose to select Edge which will allow creating an Edge Zone. If Edge is not selected then wizard will continue creating a Core zone.
+
+Core Zone
+*********
+
+#. For a Core zone, you will be asked to enter the following details. Then click Next.
 
    -  **Name.** A name for the zone.
 
@@ -762,6 +766,56 @@ Advanced Zone Configuration
    -  **Path.** The exported path from the server.
 
 #. Click Launch.
+
+
+Edge Zone
+*********
+
+.. note::
+   Support for Edge zones has been added with 4.18.0 and these zones will only be supported on KVM hypervisors
+
+An Edge Zone is a simpler, light-weight zone which may often contain a single hypervisor host. There will be no need for shared storage, public and management physical networks for an Edge zone.
+To work with limited compute resources, an Edge zone will not deploy system VMs. This type of zone only supports shared and L2 guest networks. For virtual routers of a shared guest network, a direct-download System VM must be added after adding the zone.
+
+#. For an Edge zone, you will be asked to enter the following details
+
+   -  **Name.** A name for the zone.
+
+   -  **Hypervisor.** (Obligatory) Choose the hypervisor for the zone. Currently, this is disabled and set to KVM.
+
+   -  **Dedicated.** A dedicated zone is available to selected users or groups within a domain. Only specified users or grous in that domain will be allowed to create guest VMs in this zone.
+
+#. Click Next.
+
+#. Choose the details for the physical network that will carry guest.
+
+#. Click Next.
+
+#. Specify VLAN/VNI range for guest traffic isolation.
+
+#. Click Next.
+
+#. Configure the host for the zone, enter the following, then click Next:
+
+   -  **Host Name.** (Obligatory) The DNS name or IP address of the host.
+
+   -  **Username.** (Obligatory) Username of a user who has administrator / root privilidges on the specified host (using Linux-hosts usually root).
+
+   -  **Authentication.** Atuthentication type used for the host, either Password or System SSH Key.
+
+   -  **Password.** (Obligatory if Password authentication is selected) This is the password for the user named above.
+
+   .. note::
+      For security reasons there are ways to use non-adminstrative users for
+      adding a host. Please refer to the hypervisor setup guides for further information.
+
+   -  **Host Tags.** Any labels that you use to categorize
+      hosts for ease of maintenance. For example, you can set to the
+      cloud's HA tag (set in the ha.tag global configuration parameter)
+      if you want this host to be used only for VMs with the "high
+      availability" feature enabled. For more information, see
+      HA-Enabled Virtual Machines as well as HA for Hosts, both in the
+      Administration Guide.
 
 
 .. _adding-a-pod:
