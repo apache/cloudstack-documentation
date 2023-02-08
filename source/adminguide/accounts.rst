@@ -635,8 +635,8 @@ regular login using username and password. CloudStack currently supports Google 
 other TOTP authenticators and static PIN as the 2FA providers. Other 2FA providers can be easily
 integrated with CloudStack using its plugin model.
 
-.. Note:: Two Factor Authentication is applicable only for the logins using username and password,
-          it is not applicable for other authentication mechanisms like LDAP or SAML or using api key and secret key.
+.. Note:: 2FA is applicable to authentication mechanisms in CloudStack using username/password,
+          LDAP, SAML. While using apikey/secretkey 2FA checks will be bypassed.
 
 For admins, the following are the settings available at global and domain level to configure 2FA.
 
@@ -647,15 +647,22 @@ Global setting                                     Default values     Descriptio
 ================================================   ================   ===================================================================
 enable.user.2fa                                    false              Determines whether 2FA is enabled or not
 mandate.user.2fa                                   false              Determines whether to make the 2FA mandatory or not for the users
-user.2fa.default.provider                          totp               The default user 2FA provider plugin. Eg. google, staticpin
+user.2fa.default.provider                          totp               The default user 2FA provider plugin. Eg. totp, staticpin
 ================================================   ================   ===================================================================
 
 If 2FA is configured for the user, the 2FA verification page looks like below after the login.
 
-.. image:: /_static/images/verify-2fa.png
+The verification page when the user configures 2FA using Google or other TOTP Authenticators
+.. image:: /_static/images/verify-2fa-totp.png
    :width: 400px
    :align: center
-   :alt: Verify 2FA page
+   :alt: Verify 2FA page using TOTP
+
+The verification page when the user configures 2FA using Static PIN
+.. image:: /_static/images/verify-2fa-staticpin.png
+   :width: 400px
+   :align: center
+   :alt: Verify 2FA page using static PIN
 
 Users can configure 2FA in CloudStack using the action button in user form.
 
