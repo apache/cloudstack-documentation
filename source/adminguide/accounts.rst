@@ -695,7 +695,7 @@ with CloudStack. The user must input this static PIN as a 2FA code every time th
    :alt: Configure static PIN 2FA form
 
 
-.. Note:: While the user configures 2FA, verification of the 2FA code is a must to complete the process.
+.. Note:: [2FA Recovery process] :
           If the user loses the authenticator application or forgets the static PIN, then the user must
           contact admin to disable 2FA.
           If the admin themself loses the authenticator application or forgets the static PIN, then the admin
