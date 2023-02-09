@@ -696,15 +696,6 @@ with CloudStack. The user must input this static PIN as a 2FA code every time th
    :align: center
    :alt: Configure static PIN 2FA form
 
-
-.. Note:: [2FA Recovery process] :
-          If the user loses the authenticator application or forgets the static PIN, then the user must
-          contact admin to disable 2FA.
-          If the admin themself loses the authenticator application or forgets the static PIN, then the admin
-          will have to either use apikey to disable 2FA using the API setupUserTwoFactorAuthentication with
-          enable flag to false or to do the database changes in 'user' table by clearing the columns
-          'is_user_2fa_enabled', 'key_for_2fa', 'user_2fa_provider' for the specific entry.
-
 The admin has the capability to mandate 2FA for users via the setting ``mandate.user.2fa``.
 In this case the user must configure 2FA during their first login into CloudStack.
 
@@ -724,3 +715,11 @@ The admin can also disable 2FA for a user using the action button as shown below
    :width: 400px
    :align: center
    :alt: Disable 2FA action button
+
+.. Note:: [2FA Recovery process] :
+          If the user loses the authenticator application or forgets the static PIN, then the user must
+          contact admin to disable 2FA.
+          If the admin themself loses the authenticator application or forgets the static PIN, then the admin
+          will have to either use apikey to disable 2FA using the API setupUserTwoFactorAuthentication with
+          enable flag to false or to do the database changes in 'user' table by clearing the columns
+          'is_user_2fa_enabled', 'key_for_2fa', 'user_2fa_provider' for the specific entry.
