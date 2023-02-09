@@ -653,12 +653,14 @@ user.2fa.default.provider                          totp               The defaul
 If 2FA is configured for the user, the 2FA verification page looks like below after the login.
 
 The verification page when the user configures 2FA using Google or other TOTP Authenticators.
+
 .. image:: /_static/images/verify-2fa-totp.png
    :width: 400px
    :align: center
    :alt: Verify 2FA page using TOTP
 
 The verification page when the user configures 2FA using Static PIN.
+
 .. image:: /_static/images/verify-2fa-staticpin.png
    :width: 400px
    :align: center
