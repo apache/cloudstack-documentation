@@ -652,13 +652,13 @@ user.2fa.default.provider                          totp               The defaul
 
 If 2FA is configured for the user, the 2FA verification page looks like below after the login.
 
-The verification page when the user configures 2FA using Google or other TOTP Authenticators
+The verification page when the user configures 2FA using Google or other TOTP Authenticators.
 .. image:: /_static/images/verify-2fa-totp.png
    :width: 400px
    :align: center
    :alt: Verify 2FA page using TOTP
 
-The verification page when the user configures 2FA using Static PIN
+The verification page when the user configures 2FA using Static PIN.
 .. image:: /_static/images/verify-2fa-staticpin.png
    :width: 400px
    :align: center
@@ -670,6 +670,7 @@ Users can configure 2FA in CloudStack using the action button in user form.
    :width: 400px
    :align: center
    :alt: Configure 2FA action button
+
 
 In the 2FA setup form, the user needs to select one of the providers. CloudStack currently supports
 Google Authenticator or other TOTP Authenticators and static PIN as the 2FA providers.
@@ -684,6 +685,7 @@ by CloudStack. Once this is set up in the authenticator application, the user mu
    :align: center
    :alt: Configure Google 2FA form
 
+
 When the static PIN 2FA provider is selected, the user must use the static PIN as the code to verify 2FA
 with CloudStack. The user must input this static PIN as a 2FA code every time they need to login.
 
@@ -691,6 +693,7 @@ with CloudStack. The user must input this static PIN as a 2FA code every time th
    :width: 400px
    :align: center
    :alt: Configure static PIN 2FA form
+
 
 .. Note:: While the user configures 2FA, verification of the 2FA code is a must to complete the process.
           If the user loses the authenticator application or forgets the static PIN, then the user must
@@ -709,6 +712,7 @@ The user's first login page to configure 2FA looks like the below.
    :width: 400px
    :align: center
    :alt: Configure 2FA at login page
+
 
 For the existing users, the admin can mandate 2FA using the 'updateUser' API with the parameter 'mandate2FA'.
 
