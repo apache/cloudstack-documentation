@@ -627,3 +627,99 @@ The following global configuration should be configured:
 
 - ``saml2.timeout``: SAML2 IDP Metadata refresh interval in seconds, minimum value is set to 300. Default is 1800
 
+Using Two Factor Authentication For Users
+------------------------------------------
+
+CloudStack supports two factor authentication wherein users need to provide a 2FA code after the
+regular login using username and password. CloudStack currently supports Google Authenticator or
+other TOTP authenticators and static PIN as the 2FA providers. Other 2FA providers can be easily
+integrated with CloudStack using its plugin model.
+
+.. Note:: 2FA is applicable to authentication mechanisms in CloudStack using username/password,
+          LDAP, SAML. While using apikey/secretkey 2FA checks will be bypassed.
+
+For admins, the following are the settings available at global and domain level to configure 2FA.
+
+.. cssclass:: table-striped table-bordered table-hover
+
+================================================   ================   ===================================================================
+Global setting                                     Default values     Description
+================================================   ================   ===================================================================
+enable.user.2fa                                    false              Determines whether 2FA is enabled or not
+mandate.user.2fa                                   false              Determines whether to make the 2FA mandatory or not for the users
+user.2fa.default.provider                          totp               The default user 2FA provider plugin. Eg. totp, staticpin
+================================================   ================   ===================================================================
+
+If 2FA is configured for the user, the 2FA verification page looks like below after the login.
+
+The verification page when the user configures 2FA using Google or other TOTP Authenticators.
+
+.. image:: /_static/images/verify-2fa-totp.png
+   :width: 400px
+   :align: center
+   :alt: Verify 2FA page using TOTP
+
+The verification page when the user configures 2FA using Static PIN.
+
+.. image:: /_static/images/verify-2fa-staticpin.png
+   :width: 400px
+   :align: center
+   :alt: Verify 2FA page using static PIN
+
+Users can configure 2FA in CloudStack using the action button in user form.
+
+.. image:: /_static/images/configure-2fa-action-button.png
+   :width: 400px
+   :align: center
+   :alt: Configure 2FA action button
+
+
+In the 2FA setup form, the user needs to select one of the providers. CloudStack currently supports
+Google Authenticator or other TOTP Authenticators and static PIN as the 2FA providers.
+
+When the Google Authenticator or other TOTP 2FA provider is selected, the user must setup the account in
+the respective application in their device by either scanning the QR code or using the setup key provided
+by CloudStack. Once this is set up in the authenticator application, the user must always use the provided
+2FA codes to log in.
+
+.. image:: /_static/images/configure-google-2fa-form.png
+   :width: 400px
+   :align: center
+   :alt: Configure Google 2FA form
+
+
+When the static PIN 2FA provider is selected, the user must use the static PIN as the code to verify 2FA
+with CloudStack. The user must input this static PIN as a 2FA code every time they need to login.
+
+.. image:: /_static/images/configure-staticpin-2fa-form.png
+   :width: 400px
+   :align: center
+   :alt: Configure static PIN 2FA form
+
+The admin has the capability to mandate 2FA for users via the setting ``mandate.user.2fa``.
+In this case the user must configure 2FA during their first login into CloudStack.
+
+The user's first login page to configure 2FA looks like the below.
+
+.. image:: /_static/images/configure-2fa-at-login-page.png
+   :width: 400px
+   :align: center
+   :alt: Configure 2FA at login page
+
+
+For the existing users, the admin can mandate 2FA using the 'updateUser' API with the parameter 'mandate2FA'.
+
+The admin can also disable 2FA for a user using the action button as shown below.
+
+.. image:: /_static/images/disable-2fa.png
+   :width: 400px
+   :align: center
+   :alt: Disable 2FA action button
+
+.. Note:: [2FA Recovery process] :
+          If the user loses the authenticator application or forgets the static PIN, then the user must
+          contact admin to disable 2FA.
+          If the admin themself loses the authenticator application or forgets the static PIN, then the admin
+          will have to either use apikey to disable 2FA using the API setupUserTwoFactorAuthentication with
+          enable flag to false or to do the database changes in 'user' table by clearing the columns
+          'is_user_2fa_enabled', 'key_for_2fa', 'user_2fa_provider' for the specific entry.
