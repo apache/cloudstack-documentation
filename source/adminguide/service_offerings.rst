@@ -168,14 +168,15 @@ disk offering for the root volume while creating the VM.
 
 Following are the two ways of creating the compute offering.
 
-Create compute only offering
+1. Create compute only offering
 
 .. image:: /_static/images/compute_offering_dailog_with_compute_only_disk_offering.png
    :width: 400px
    :align: center
    :alt: Compute offering dialog box
 
-Create compute offering associated to a disk offering
+
+2. Create compute offering associated to a disk offering
 
 .. image:: /_static/images/compute_offering_dailog_with_diskoffering.png
    :width: 400px
