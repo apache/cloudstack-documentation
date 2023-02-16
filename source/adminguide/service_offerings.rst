@@ -97,7 +97,7 @@ with billing systems.
 
 Compute offerings may be "fixed", "custom constrained" or "custom unconstrained".
 
-In fixed offering the Number of CPUs, Memory and CPU frequecy in each service
+In fixed offering the Number of CPUs, Memory and CPU frequency in each service
 offerings are predefined by the CloudStack administrator, in custom unconstrained
 offerings they are left undefined so that the end-user can enter their own desired
 values when creating a guest instance. Since 4.13 custom constrained offerings have
@@ -157,13 +157,26 @@ parameters, such as CPU, speed, RAM are recorded.
 
 Creating a New Compute Offering
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Along with the compute details of the VM, root volume definition is also
+included in the compute offering. The root volume specifications can be included
+in the computer offering in two ways. One is disk specifications like disk size,
+storage type, tags can be included directly in the compute offering. The other way
+is linking a disk offering in the compute offering. The linked disk offering will
+be used for the root disk while creating the VM. Users can also choose a different
+disk offering for the root volume while creating the VM.
+
+Following are the two ways of creating the compute offering.
+
 Create compute only offering
+
 .. image:: /_static/images/compute_offering_dailog_with_compute_only_disk_offering.png
    :width: 400px
    :align: center
    :alt: Compute offering dialog box
 
-Create compute offerng associated to a disk offering
+Create compute offering associated to a disk offering
+
 .. image:: /_static/images/compute_offering_dailog_with_diskoffering.png
    :width: 400px
    :align: center
@@ -393,10 +406,12 @@ To create a new compute offering:
 
 Creating a New Disk Offering
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. image:: /_static/images/disk_offering_dailog.png
    :width: 400px
    :align: center
    :alt: Disk offering dialog box
+
 
 To create a new disk offering:
 
