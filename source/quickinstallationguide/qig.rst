@@ -86,10 +86,10 @@ CloudStack. We will go over the steps to prepare now.
 Operating System
 ~~~~~~~~~~~~~~~~
 
-Using the CentOS 7.9.2009 minmal x86_64 install ISO, you'll need to install
+Using the CentOS 7.9.2009 minimal x86_64 install ISO, you'll need to install
 CentOS 7 on your hardware. The defaults will generally be acceptable for this
 installation - but make sure to configure IP address/parameters so that you can later install needed
-packages from internet. Later, we will change the network configuration as needed.
+packages from the internet. Later, we will change the network configuration as needed.
 
 Once this installation is complete, you'll want to gain access to your
 server - through SSH. 
@@ -447,7 +447,7 @@ Install Python MySQL connector from the MySQL community repository (which we've 
    # yum -y install mysql-connector-python
    
 Please note that the previously required ``mysql-connector-java`` library is now bundled with CloudStack
-Management server and is no more required to be installed separately.
+Management server and is no longer required to be installed separately.
 
 Installation
 ~~~~~~~~~~~~
@@ -460,14 +460,14 @@ following command:
    # yum -y install cloudstack-management
 
 CloudStack |version| requires Java 11 JRE. Installing the management server
-will automatically install Java 11, but it's good to explicitly confirm that the Java 11 
+will automatically install Java 11, but it's good to explicitly confirm that Java 11 
 is the selected/active one (in case you had a previous Java version already installed):
 
    .. parsed-literal::
 
       $ alternatives --config java
       
-Make sure that Java 11 is the chosen one.
+Make sure that Java 11 is selected.
 
 With the application itself installed we can now setup the database, we'll do 
 that with the following command and options:
