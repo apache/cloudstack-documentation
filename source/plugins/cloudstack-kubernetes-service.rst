@@ -153,16 +153,19 @@ A new network offering named DefaultNetworkOfferingforKubernetesService has been
    - Multi-control nodes, HA cluster can be created for Kubernetes version 1.16 and above only.
    - While creating multi-control nodes, HA cluster over a shared network, an external load-balancer must be manually setup. This load-balancer should have port-forwarding rules for SSH, Kubernetes API server access. Service assumes SSH access to cluster nodes is available from port 2222 to (2222 + cluster node count -1). Similarly, for API access 6443 must be forwarded to control nodes. Over the CloudStack isolated network these rules are automatically provisioned.
 
+
+Examples on how to ssh into the Control - and Worker nodes
+
+Control node
+
 .. parsed-literal::
-
-   Example to ssh into the Control node and worker node
-
-   Control node
 
    ssh -i <ssh-private.key > -p 2222 cloud@<Public ip address of Virtual Router>
    
-   Worker node
+Worker node
    
+.. parsed-literal::
+
    ssh -i <ssh-private.key > -p 2223 cloud@<Public ip address of Virtual Router>
 
    
