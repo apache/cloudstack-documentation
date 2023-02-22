@@ -97,7 +97,7 @@ with billing systems.
 
 Compute offerings may be "fixed", "custom constrained" or "custom unconstrained".
 
-In fixed offering the Number of CPUs, Memory and CPU frequecy in each service
+In fixed offering the Number of CPUs, Memory and CPU frequency in each service
 offerings are predefined by the CloudStack administrator, in custom unconstrained
 offerings they are left undefined so that the end-user can enter their own desired
 values when creating a guest instance. Since 4.13 custom constrained offerings have
@@ -158,7 +158,27 @@ parameters, such as CPU, speed, RAM are recorded.
 Creating a New Compute Offering
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /_static/images/compute_offering_dialog.png
+Along with the compute details of the VM, root volume definition is also
+included in the compute offering. The root volume specifications can be included
+in the computer offering in two ways. One is disk specifications like disk size,
+storage type, tags can be included directly in the compute offering. The other way
+is linking a disk offering in the compute offering. The linked disk offering will
+be used for the root disk while creating the VM. Users can also choose a different
+disk offering for the root volume while creating the VM.
+
+Following are the two ways of creating the compute offering.
+
+1. Create compute only offering
+
+.. image:: /_static/images/compute_offering_dailog_with_compute_only_disk_offering.png
+   :width: 400px
+   :align: center
+   :alt: Compute offering dialog box
+
+
+2. Create compute offering associated to a disk offering
+
+.. image:: /_static/images/compute_offering_dailog_with_diskoffering.png
    :width: 400px
    :align: center
    :alt: Compute offering dialog box
@@ -181,21 +201,6 @@ To create a new compute offering:
 
    -  **Description**: A short description of the offering that can be
       displayed to users
-
-   -  **Storage type**: The type of disk that should be allocated. Local
-      allocates from storage attached directly to the host where the
-      system VM is running. Shared allocates from storage accessible via
-      NFS.
-
-   -  **Provisioning type**: The type of disk that should be allocated.
-      Valid values are thin, sparse, fat. When using the VMWare hypervisor,
-      these values are mapped to the following vSphere disk provisioning types:
-
-      -  **thin**:  **Thin Provision**
-      -  **sparse**:  **Thick Provision Lazy Zeroed**
-      -  **fat**:   **Thick Provision Eager Zeroed**
-
-      The disk provisioning type strictness on VMWare is controlled with the zone level setting - **disk.provisioning.type.strictness**. If set to true, the disk is created only when there is a suitable storage pool that supports the disk provisioning type specified by the service/disk offering. If set to false, the disk is created with a disk provisioning type supported by the pool. Default value is false and this is currently supported for VMware only.
 
    -  **Compute Offering Type**: The amount of freedom that the end user
       has to customise the compute power that their instance has when using this
@@ -227,63 +232,18 @@ To create a new compute offering:
       can request. If 'Custom unconstrained' is selected, this field does
       not appear as the user will be prompted to enter a value when creating their guest instance.
 
+   -  **Host Tags**: (Optional) Any tags that you use to organize your
+      hosts
+
    -  **Network Rate**: Allowed data transfer rate in MB per second.
-
-   -  **Disk Read Rate** [1]_: Allowed disk read rate in bits per second.
-
-   -  **Disk Write Rate** [1]_: Allowed disk write rate in bits per second.
-
-   -  **Disk Read Rate** [1]_: Allowed disk read rate in IOPS (input/output
-      operations per second).
-
-   -  **Disk Write Rate** [1]_: Allowed disk write rate in IOPS (input/output
-      operations per second).
 
    -  **Offer HA**: If yes, the administrator can choose to have the
       system VM be monitored and as highly available as possible.
 
-   -  **QoS Type** [1]_: Three options: Empty (no Quality of Service), hypervisor
-      (rate limiting enforced on the hypervisor side), and storage
-      (guaranteed minimum and maximum IOPS enforced on the storage
-      side). If leveraging QoS, make sure that the hypervisor or storage
-      system supports this feature.
-
-   -  **Custom IOPS** [1]_: If checked, the user can set their own IOPS. If not
-      checked, the root administrator can define values. If the root
-      admin does not set values when using storage QoS, default values
-      are used (the defauls can be overridden if the proper parameters
-      are passed into CloudStack when creating the primary storage in
-      question).
-
-   -  **Min IOPS** [1]_: Appears only if storage QoS is to be used. Set a
-      guaranteed minimum number of IOPS to be enforced on the storage
-      side.
-
-   -  **Max IOPS** [1]_: Appears only if storage QoS is to be used. Set a maximum
-      number of IOPS to be enforced on the storage side (the system may
-      go above this limit in certain circumstances for short intervals).
-
-   -  **Hypervisor Snapshot Reserve** [1]_: For managed storage only. This is
-      a value that is a percentage of the size of the root disk. For example:
-      if the root disk is 20 GB and Hypervisor Snapshot Reserve is 200%, the
-      storage volume that backs the storage repository (XenServer) or
-      datastore (VMware) in question is sized at 60 GB (20 GB + (20 GB * 2)).
-      This enables space for hypervisor snapshots in addition to the virtual
-      disk that represents the root disk. This does not apply for KVM.
-
-   -  **Storage Tags**: The tags that should be associated with the
-      primary storage used by the system VM.
-
-   -  **Host Tags**: (Optional) Any tags that you use to organize your
-      hosts
+   -  **Dynamic Scaling Enabled**: If yes, virtual machine can be dynamically scalable of cpu or memory
 
    -  **CPU cap**: Whether to limit the level of CPU usage even if spare
       capacity is available.
-
-   -  **Public**: Indicate whether the compute offering should be
-      available to all domains or only some domains. Choose Yes to make it
-      available to all domains. Choose No to limit the scope to one or more
-      specific domains.
 
    -  **Volatile**: If checked, VMs created from this service offering
       will have their root disks reset upon reboot. This is useful for
@@ -342,6 +302,11 @@ To create a new compute offering:
       In this case, a physical GPU device is exclusively allotted to a single
       guest VM.
 
+   -  **Public**: Indicate whether the compute offering should be
+      available to all domains or only some domains. Choose Yes to make it
+      available to all domains. Choose No to limit the scope to one or more
+      specific domains.
+
    -  **Domain**: This is only visible When 'Public' is unchecked. When visible, this
       controls the domains which will be able to use this compute offering. A multi-selection
       list box will be displayed. One or more domains can be selected from
@@ -353,6 +318,83 @@ To create a new compute offering:
 
    -  **Storage Policy**: Name of the storage policy defined at vCenter, this is applicable only for VMware.
       When a specific Zone is selected, one of the storage policies can be selected from the list box.
+
+   -  **Compute only Disk Offering**: When this flag is enabled, a compute only disk offering
+      is created with the disk related information provided and then linked to the compute offering.
+      Compute only disk offering is specific to the newly created compute offering to record the
+      disk related information. when this flag is disabled, existing disk offering can be selected to
+      associate with the compute offering or a new disk offering can be created at the same time and
+      associate with the compute offering
+
+      When the flag is enabled
+
+         -  **Storage type**: The type of disk that should be allocated. Local
+            allocates from storage attached directly to the host where the
+            system VM is running. Shared allocates from storage accessible via
+            NFS.
+
+         -  **Provisioning type**: The type of disk that should be allocated.
+            Valid values are thin, sparse, fat. When using the VMWare hypervisor,
+            these values are mapped to the following vSphere disk provisioning types:
+
+            -  **thin**:  **Thin Provision**
+            -  **sparse**:  **Thick Provision Lazy Zeroed**
+            -  **fat**:   **Thick Provision Eager Zeroed**
+
+            The disk provisioning type strictness on VMWare is controlled with the zone level setting - **disk.provisioning.type.strictness**. If set to true, the disk is created only when there is a suitable storage pool that supports the disk provisioning type specified by the service/disk offering. If set to false, the disk is created with a disk provisioning type supported by the pool. Default value is false and this is currently supported for VMware only.
+
+         -  **QoS Type** [1]_: Three options: Empty (no Quality of Service), hypervisor
+            (rate limiting enforced on the hypervisor side), and storage
+            (guaranteed minimum and maximum IOPS enforced on the storage
+            side). If leveraging QoS, make sure that the hypervisor or storage
+            system supports this feature.
+
+         -  **Disk Read Rate** [1]_: Allowed disk read rate in bits per second.
+
+         -  **Disk Write Rate** [1]_: Allowed disk write rate in bits per second.
+
+         -  **Disk Read Rate** [1]_: Allowed disk read rate in IOPS (input/output
+            operations per second).
+
+         -  **Disk Write Rate** [1]_: Allowed disk write rate in IOPS (input/output
+            operations per second).
+
+         -  **Custom IOPS** [1]_: If checked, the user can set their own IOPS. If not
+            checked, the root administrator can define values. If the root
+            admin does not set values when using storage QoS, default values
+            are used (the defauls can be overridden if the proper parameters
+            are passed into CloudStack when creating the primary storage in
+            question).
+
+         -  **Min IOPS** [1]_: Appears only if storage QoS is to be used. Set a
+            guaranteed minimum number of IOPS to be enforced on the storage
+            side.
+
+         -  **Max IOPS** [1]_: Appears only if storage QoS is to be used. Set a maximum
+            number of IOPS to be enforced on the storage side (the system may
+            go above this limit in certain circumstances for short intervals).
+
+         -  **Hypervisor Snapshot Reserve** [1]_: For managed storage only. This is
+            a value that is a percentage of the size of the root disk. For example:
+            if the root disk is 20 GB and Hypervisor Snapshot Reserve is 200%, the
+            storage volume that backs the storage repository (XenServer) or
+            datastore (VMware) in question is sized at 60 GB (20 GB + (20 GB * 2)).
+            This enables space for hypervisor snapshots in addition to the virtual
+            disk that represents the root disk. This does not apply for KVM.
+
+         -  **Storage Tags**: The tags that should be associated with the
+            primary storage used by the system VM.
+      
+      When the flag is disabled
+
+         -  **Add Disk Offering**: Create a new disk offering while creating the compute offering itself.
+            Once disk offering is created, the new disk offering is auto selected from the below Disk Offerings list.
+
+         -  **Disk Offerings**: Select one disk offering from the list with which compute offering will be associated 
+
+         -  **Disk Offering Strictness**: This flag defines the strictness of the disk offering association 
+            with the compute offering. When set to true, overriding of disk offering is not allowed on deploy VM 
+            and change disk offering is not allowed for the ROOT disk
 
 #. Click Add.
 
@@ -375,6 +417,12 @@ To create a new disk offering:
 #. In Select Offering, choose Disk Offering.
 
 #. Click Add Disk Offering.
+
+   .. image:: /_static/images/disk_offering_dailog.png
+      :width: 400px
+      :align: center
+      :alt: Disk offering dialog box
+
 
 #. In the dialog, make the following choices:
 
@@ -399,6 +447,9 @@ To create a new disk offering:
       -  **fat**:   **Thick Provision Eager Zeroed**
 
       The disk provisioning type strictness on VMWare is controlled with the zone level setting - **disk.provisioning.type.strictness**. If set to true, the disk is created only when there is a suitable storage pool that supports the disk provisioning type specified by the service/disk offering. If set to false, the disk is created with a disk provisioning type supported by the pool. Default value is false and this is currently supported for VMware only.
+
+   -  **Disk Size Strictness**: The flag defines the size strictness of the volume created from this disk offering.
+      When flag is true, volume's size cannot be changed.
 
    -  **QoS Type** [2]_: Three options: Empty (no Quality of Service), hypervisor
       (rate limiting enforced on the hypervisor side), and storage
