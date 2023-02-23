@@ -127,7 +127,7 @@ The following Management Server Operating Systems are no longer supported in thi
 -  Ubuntu 14.04
 -  Ubuntu 16.04
 
-.. [1] in spite of of mostly being phased out some support is remaining in for now. See guestosids_ for details.
+.. [1] in spite of of mostly being phased out some support is remaining in for now. See :ref:`Possible Issue with Guest OS IDs <about>` for details.
 
 Please see `CloudStack Wiki <https://cwiki.apache.org/confluence/display/CLOUDSTACK/Hypervisor+and+Management+Server+OS+EOL+Dates>`_
 for details.
