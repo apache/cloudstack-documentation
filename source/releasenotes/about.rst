@@ -17,17 +17,17 @@
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is the initial 4.18 LTS release. It has about 290 fixes
+Apache CloudStack |release| is the initial 4.18 LTS release. It has over 300 fixes
  and features since the 4.17.1.0 release.
 
 The full list of fixes and improvements can be found in the project release notes at
 https://docs.cloudstack.apache.org/en/4.18.0.0/releasenotes/changes.html
 
-What's New in 4.18.0.0
+What's in since 4.18.0.0
 ======================
 
-Apache CloudStack 4.18.0.0 is the initial 4.18 LTS release with 293 new
-features, improvements and bug fixes since 4.17, including 16 major
+Apache CloudStack 4.18.0.0 is the initial 4.18 LTS release with 300 new
+features, improvements and bug fixes since 4.17, including 20 major
 new features. Some of the highlights include:
 
 • Edge Zones
@@ -49,7 +49,7 @@ new features. Some of the highlights include:
 • Support for Enterprise Linux 9
 • Networker Backup Plugin for KVM Hypervisor
 • Custom Quota Tariffs
-• Secure VNC for KVM  
+• Secure VNC for KVM
 
 The full list of new features can be found in the project release notes at
 https://docs.cloudstack.apache.org/en/4.18.0.0/releasenotes/changes.html
