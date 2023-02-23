@@ -53,3 +53,31 @@ new features. Some of the highlights include:
 
 The full list of new features can be found in the project release notes at
 https://docs.cloudstack.apache.org/en/4.18.0.0/releasenotes/changes.html
+
+.. _guestosids
+
+Possible Issue with Guest OS IDs
+================================
+
+It has been noticed during upgrade testing that some environment, where
+ custom guest OSses where added and mapping for those OSses where added,
+ problems may occur during upgrade. Part of the mitigation is to make sure
+ OSses that are newly mapped but should have already been in the guest_os
+ table are there. Make sure you apply thois before you start the new 4.18
+ management server.
+
+first check which you miss:
+
+.. parsed-literal::
+
+  SELECT * FROM cloud.guest_os WHERE display_name IN (´CentOS 8´, ´Debian GNU/Linux 10 (32-bit)´, ´Debian GNU/Linux 10 (64-bit)´, ´SUSE Linux Enterprise Server 15 (64-bit)´, ´Windows Server 2019 (64-bit)´)
+
+Then apply any of the following lines that you might need.
+
+.. parsed-literal::
+
+  INSERT INTO cloud.guest_os (uuid, category_id, display_name, created, is_user_defined) VALUES (UUID(), '1', 'CentOS 8', now(), '0');
+  INSERT INTO cloud.guest_os (uuid, category_id, display_name, created, is_user_defined) VALUES (UUID(), '2', 'Debian GNU/Linux 10 (32-bit)', now(), '0');
+  INSERT INTO cloud.guest_os (uuid, category_id, display_name, created, is_user_defined) VALUES (UUID(), '2', 'Debian GNU/Linux 10 (64-bit)', now(), '0');
+  INSERT INTO cloud.guest_os (uuid, category_id, display_name, created, is_user_defined) VALUES (UUID(), '5', 'SUSE Linux Enterprise Server 15 (64-bit)', now(), '0');
+  INSERT INTO cloud.guest_os (uuid, category_id, display_name, created, is_user_defined) VALUES (UUID(), '6', 'Windows Server 2019 (64-bit)', now(), '0');
