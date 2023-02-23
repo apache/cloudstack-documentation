@@ -18,7 +18,7 @@ What's New in |release|
 =======================
 
 Apache CloudStack |release| is the initial 4.18 LTS release. It has over 300 fixes
- and features since the 4.17.1.0 release.
+and features since the 4.17.1.0 release.
 
 The full list of fixes and improvements can be found in the project release notes at
 https://docs.cloudstack.apache.org/en/4.18.0.0/releasenotes/changes.html
@@ -60,13 +60,13 @@ Possible Issue with Guest OS IDs
 ================================
 
 It has been noticed during upgrade testing that some environment, where
- custom guest OSses where added and mapping for those OSses where added,
- problems may occur during upgrade. Part of the mitigation is to make sure
- OSses that are newly mapped but should have already been in the guest_os
- table are there. Make sure you apply thois before you start the new 4.18
- management server.
+custom guest OSses where added and mapping for those OSses where added,
+problems may occur during upgrade. Part of the mitigation is to make sure
+OSses that are newly mapped but should have already been in the guest_os
+table are there. Make sure you apply those before you start the new 4.18
+management server.
 
-first check which you miss:
+first check which of the guest_os entries you miss:
 
 .. parsed-literal::
 
