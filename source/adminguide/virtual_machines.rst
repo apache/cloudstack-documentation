@@ -230,6 +230,24 @@ To access a VM directly over the network:
    Forwarding and Firewalling” <advanced_zone_config.html#ip-forwarding-and-firewalling>`_.
 
 
+Securing VM Console Access (KVM only)
+-------------------------------------
+
+CloudStack provides a way to secure VNC console access on KVM using the CA Framework certificates to enable TLS on VNC on each KVM host.
+
+To enable TLS on a KVM host, navigate to the host and click on: Provision Host Security Keys (or invoke the provisionCertificate API for the host):
+
+- When a new host is added and it is provisioned with a certificate, TLS will also be enabled for VNC
+- The running VMs on a secured host will continue to be VNC unencrypted unless they are stopped and started.
+- New VMs created on a secured host will be VNC encrypted.
+
+Once the administrator concludes the certificates provisioning on Cloudstack, the VM console access for new VMs on the hosts will be encrypted. CloudStack displays the console of the virtual machines through the noVNC viewer embedded in the console proxy System VMs.
+The CloudStack users will notice the encrypted VNC sessions display a green bar stating the session is encrypted as in the image below. Also, the tab title includes ‘(TLS backend)’ when the session is encrypted.
+
+.. note::
+   CloudStack will give access to the certificates to the qemu group on the system depending on the distro used (for example: libvirt-qemu on Ubuntu 22).
+   CloudStack assumes there is only one group containing the 'qemu' substring on its name, in charge of the QEMU process set on the /etc/libvirt/qemu.conf (rather than the root user)
+
 Stopping and Starting VMs
 -------------------------
 
