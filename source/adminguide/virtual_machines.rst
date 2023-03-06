@@ -245,8 +245,7 @@ Once the administrator concludes the certificates provisioning on Cloudstack, th
 The CloudStack users will notice the encrypted VNC sessions display a green bar stating the session is encrypted as in the image below. Also, the tab title includes ‘(TLS backend)’ when the session is encrypted.
 
 .. note::
-   CloudStack will give access to the certificates to the qemu group on the system depending on the distro used (for example: libvirt-qemu on Ubuntu 22).
-   CloudStack assumes there is only one group containing the 'qemu' substring on its name, in charge of the QEMU process set on the /etc/libvirt/qemu.conf (rather than the root user)
+   CloudStack will give access to the certificates to the group defined on the /etc/libvirt/qemu.conf file (or the last one defined on the file in case of multiple lines setting a group).
 
 Stopping and Starting VMs
 -------------------------
