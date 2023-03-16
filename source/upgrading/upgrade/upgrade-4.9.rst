@@ -384,7 +384,6 @@ For KVM hosts, upgrade the ``cloudstack-agent`` package
    .. parsed-literal::
 
       $ sudo yum install -y epel-release
-      $ sudo yum install -y python36-libvirt
       $ sudo yum upgrade cloudstack-agent
 
 #. Verify that the file ``/etc/cloudstack/agent/environment.properties`` has a
