@@ -26,8 +26,8 @@ https://docs.cloudstack.apache.org/en/4.18.0.0/releasenotes/changes.html
 What's in since 4.18.0.0
 ======================
 
-Apache CloudStack 4.18.0.0 is the initial 4.18 LTS release with 300 new
-features, improvements and bug fixes since 4.17, including 20 major
+Apache CloudStack 4.18.0.0 is the initial 4.18 LTS release with 300+ new
+features, improvements and bug fixes since 4.17, including 19 major
 new features. Some of the highlights include:
 
 • Edge Zones
@@ -37,7 +37,6 @@ new features. Some of the highlights include:
 • Support for Time-based OTP (TOTP) Authenticator
 • Volume Encryption
 • SDN Integration – Tungsten Fabric
-• Live Storage Migration Support for ScaleIO
 • Ceph Multi Monitor Support
 • API-Driven Console Access
 • Console Access Security Improvements
