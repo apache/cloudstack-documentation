@@ -659,6 +659,37 @@ The following table shows possible combinations of Service offering supported re
    Shrinking the Root disk is not supported via the service offering resizing workflow. All the combinations above assume a transition to Root disks with size equals or bigger than the original.
    Service Offerings with Root size of 0GB do not change the disk size to Zero and indicates that the offering do not enforces a Root disk size.
 
+Change disk offering for volume
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are volume operations like migrate volume and resize volume and both accepts new disk offering to replace the existing disk offering of volume.
+Instead of using these APIs directly, the operation can be performed in the UI using change offering in the details view for the volume.
+Upon changing the disk offering the volume will be resized and/or migrated to the suitable storage pool if required according to the new disk offering.
+
+The zone level setting "match.storage.pool.tags.with.disk.offering" gives flexibility or control to choose the new disk offering. 
+If this setting is true, then the new disk offering should have the same storage tags as the exiting disk offering of the volume.
+
+To change the disk offering of a volume:
+
+#. Log in to the CloudStack UI as a user or admin.
+
+#. In the left navigation bar, click Storage.
+
+#. In Select View, choose Volumes.
+
+#. Select the volume name in the Volumes list, then click the Change Offering for Volume button
+
+#. In the Change Offering For Volume pop-up, choose desired disk offering for the
+   volume.
+
+   |change-offering-for-volume.png|
+
+   #. If you select Custom Disk, specify a custom size.
+
+   #. Enable or Disable "Auto migrate to another storage pool if required" as needed
+
+#. Click OK.
+
 Reset VM to New Root Disk on Reboot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -934,6 +965,8 @@ and use the resource group name you added in the LINSTOR cluster.
    :alt: button to display the resize volume option.
 .. |resize-volume.png| image:: /_static/images/resize-volume.png
    :alt: option to resize a volume.
+.. |change-offering-for-volume.png| image:: /_static/images/change-offering-for-volume.png
+   :alt: option to change offering for a volume.
 .. |SnapshotButton.png| image:: /_static/images/SnapshotButton.png
    :alt: Snapshot Button.
 .. |DetachDiskButton.png| image:: /_static/images/detach-disk-icon.png
