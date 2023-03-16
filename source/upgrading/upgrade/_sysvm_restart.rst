@@ -30,7 +30,7 @@ useful in cases when the code version has upgraded but the template hasn't. In s
 will no longer need to restart the system VMs to use the latest code.
 
 When one attempts to live-patch the system VMs, it pretty much mimics the patching process
-that happens when booting up the System VMs but with having to shut down the system VMs. 
+that happens when booting up the System VMs but without having to shut down the system VMs. 
 This will update the software packages, which were previously bundled in the systemvm.iso i.e., 
 agent.zip and cloud-scripts.tgz and restart the services that are present in the /var/cache/cloud/enabled_svcs file
 in the system VMs.
