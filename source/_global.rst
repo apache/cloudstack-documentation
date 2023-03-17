@@ -17,8 +17,8 @@
 .. This file contain Variables shared across other .rst files in this project
 
 
-.. _CloudStack Installation Guide: http://docs.cloudstack.apache.org/en/latest/installguide/index.html
-.. _CloudStack Administrator's Guide: http://docs.cloudstack.apache.org/en/latest/adminguide/index.html
+.. _CloudStack Installation Guide: https://docs.cloudstack.apache.org/en/latest/installguide/index.html
+.. _CloudStack Administrator's Guide: https://docs.cloudstack.apache.org/en/latest/adminguide/index.html
 .. _CloudStack Apidocs: https://cloudstack.apache.org/api.html
 
 .. |documentation_home| replace:: https://docs.cloudstack.apache.org/
