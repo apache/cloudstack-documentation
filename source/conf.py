@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Apache CloudStack'
-copyright = '2012-2022, Apache Foundation'
+copyright = '2012-2023, Apache Foundation'
 author = 'Apache CloudStack Project'
 
 # The short X.Y version
@@ -45,6 +45,7 @@ extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
+    'sphinx.ext.autosectionlabel',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
