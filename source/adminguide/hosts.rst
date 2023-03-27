@@ -1040,14 +1040,14 @@ The management server receives the health check results from the KVM agent, and 
 - If the host health check result is true, enable the host resource state if it is Disabled.
 - If the host health check result is false, disable the host resource state if it is Enabled.
 
-On every automatic enable or disable event, the management server will send an alert to the admin and add/update an automatic annotation (comment) on the specific host.
+On every automatic enable or disable event, the management server will send an alert to the admin and add an automatic annotation (comment) on the specific host.
 
 - If a host gets auto-disabled by a health check failure, then it can be auto-enabled when the health check succeeds. But if the host gets disabled by the admin, then it must not be auto-enabled when the health check succeeds (manual host disabling takes precedence over the auto-enabling of a host).
 - If a host gets auto-disabled by a health check failure, the admin could enable the host but unless they also disable the health check on the host then it will just get disabled again when the health check fails
 
 CloudStack controls when a host can/cannot be auto-enabled or auto-disabled by a host detail record (on the host_details table) with key ‘autoenablekvmhost’, in the following way:
 
-- If a host is auto-enabled or auto-disabled and there is no host detail with key ‘autoenablekvmhost’ for that host, then a new host detail record is created with the key ‘autoenablekvmhost’ and is set to ‘true’. (indicating that the host can be auto-enabled/auto-disabled)
+- If a host is auto-enabled or auto-disabled and there is no host detail with key ‘autoenablekvmhost’ for that host, then a new host detail record is created with the key ‘autoenablekvmhost’ and is set to ‘true’ (just before the host is auto-enabled/auto-disabled)
 - If the administrator manually disables a host and there is a host detail with key ‘autoenablekvmhost’ for that host, then the host detail ‘autoenablekvmhost’ is set to ‘false’ (indicating that the host cannot be auto-enabled if the health check succeeds)
 - If the administrator manually enables a host and there is a host detail with key ‘autoenablekvmhost’ for that host, then the host detail ‘autoenablekvmhost’ is set to ‘true’ (indicating that the host can be auto-disabled if the health check fails)
-- If the cluster setting is disabled, and the administrator enables/disables hosts in the cluster, then the host detail with key ‘autoenablekvmhost’ is not created for the hosts. (preserving the usual behavior)
+- If the cluster setting 'enable.kvm.host.auto.enable.disable' is disabled, and the administrator enables/disables hosts in the cluster, then the host detail with key ‘autoenablekvmhost’ is not created for the hosts. (preserving the usual behavior). If the cluster setting is then enabled, and the administrator enables/disables the host manually then the host detail with key '‘autoenablekvmhost’ is created, and is set to false.
