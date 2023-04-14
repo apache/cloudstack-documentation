@@ -214,6 +214,7 @@ addresses in the form of a Classless Inter-Domain Routing (CIDR) block.
 
    -  **IPv6 DNS**: A set of custom IPv6 DNS that will be used by this VPC. If not provided then IPv6 DNS specified for the zone will be used. Available only when the selected VPC offering is IPv6 enabled and supports DNS service.
 
+   -  **IPv4 address for the VR in this Network**: The source nat address or primary public network address to use by the guest network. If not provided then a random address from the available pool of addresses wil be used.
 
    - **Public MTU**: The MTU to be configured on the public interfaces of the 
       VPC network's VR
