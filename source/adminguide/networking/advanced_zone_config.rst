@@ -68,7 +68,7 @@ configure the base guest network:
 
    -  **IPv6 DNS**: A set of custom IPv6 DNS that will be used by the guest network. If not provided then IPv6 DNS specified for the zone will be used. Available only when the selected network offering is IPv6 enabled and supports DNS service.
 
-   -  **IPv4 address for the VR in this Network**: The source nat address or primary public network address to use by the guest network. If not provided then a random address from the available pool of addresses wil be used.
+   -  **IPv4 address for the VR in this Network**: The source NAT address or primary public network address to use by the guest network. If not provided then a random address from the available pool of addresses wil be used.
 
    -  **Network Domain**: A custom DNS suffix at the level of a network. If you
       want to assign a special domain name to the guest VM network, specify a
