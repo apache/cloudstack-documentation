@@ -348,10 +348,62 @@ automatically generated. A variety of options are provided to control
 the exact behavior of cookies, such as how they are generated and
 whether they are cached.
 
-For the most up to date list of available stickiness methods, see the
-CloudStack UI or call listNetworks and check the
-SupportedStickinessMethods capability.
+There are three stickiness methods that are supported explained with the possible options to configure as below,
 
+1. Lbcookie: In this method, cookie is created by the load balancer and sent to the client.
+The client sends this cookie back with every subsequent request, and the load balancer uses the
+cookie information to determine which backend server to route the request to.
+
+Following are the options available to configure,
+
+-  Cookie name: This is the name of the cookie that the load balancer will create and send to the client.
+
+-  Mode: This option determines how the load balancer should handle the cookie (default value is insert).
+   The available options are:
+
+   a. Insert: The load balancer will insert the cookie into the client's request.
+   b. Rewrite: The load balancer will rewrite the cookie in the client's request if it already exists.
+   c. Prefix: The load balancer will prefix the cookie name with a specified prefix.
+   d. Indirect: The load balancer will insert an indirect cookie, which contains a reference to the actual cookie value.
+
+-  No cache: This option specifies whether the cookie should be cached by the client's browser.
+   If this option is enabled, the client's browser will not cache the cookie.
+
+-  Indirect: If this is provided, then the cookie value will contain a reference to the actual value, which will be stored on the load balancer.
+
+-  Post only: This option specifies whether the cookie should be sent only with POST requests.
+
+-  Domain: This option specifies the domain for which the cookie is valid. You can specify a domain name or IP address.
+
+2. Appcookie: In this method, the application running on the backend servers creates a cookie and
+sends it to the client. The client sends this cookie back with every subsequent request, and the
+load balancer uses the cookie information to determine which backend server to route the request to.
+
+Following are the options available to configure,
+
+-  Cookie name and mode are same as above
+
+-  Length: This option specifies the length of the cookie value (default value is 52).
+
+-  Hold time: This option specifies the length of time that the cookie should be held (default value is 3hours).
+   The cookie will be held for this amount of time, after which it will expire.
+
+-  Request learn: This option specifies whether the load balancer should learn the cookie value from the first request that it receives.
+
+-  Prefix: This option specifies a prefix to be added to the cookie value.
+
+3. Source-based: In this method, the load balancer uses the source IP address of the client
+to determine which backend server to route the request to. The load balancer maintains a mapping of
+client IP addresses to backend servers and uses this mapping to ensure that subsequent requests from
+the same client are always routed to the same backend server.
+
+-  Table size: This option specifies the maximum number of entries (default 200k) that can be stored in the source-based stickiness table.
+   The table stores mappings between client IP addresses and backend servers.
+
+-  Expires: This option specifies the length of time (default 30m) that a mapping between a client IP address and a backend server
+   should be kept in the stickiness table. After this time has elapsed, the mapping will expire and be removed from the table.
+
+4. None: If None is selected after a sticky policy is already configured then it will be removed.
 
 Load Balancer Configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
