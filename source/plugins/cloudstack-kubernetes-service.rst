@@ -23,6 +23,8 @@ To access the Kubernetes dashboard securely, the plugin provides access to kubec
 
 The service allows creation of Kubernetes clusters using the UI or API. Both UI and API provide the ability to list, delete, scale, upgrade, stop and start these clusters.
 
+From ACS 4.19 onwards, you can also create `ExternalManaged` kubernetes clusters using the API. This helps provide a centralized view of kubernetes clusters managed by other providers.
+
 Enabling the Kubernetes Service
 --------------------------------
 
@@ -185,17 +187,19 @@ New Kubernetes clusters can be created using the API or via the UI. User will be
 createKubernetesCluster API can be used to create new Kubernetes cluster. It takes following parameters as input,
 
 - **name** (name for the Kubernetes cluster; Required)
-- **description** (description for the Kubernetes cluster; Required)
+- **description** (description for the Kubernetes cluster)
 - **zoneid** (availability zone in which Kubernetes cluster to be launched; Required)
-- **kubernetesversionid** (Kubernetes version with which cluster to be launched; Required)
-- **serviceofferingid** (the ID of the service offering for the virtual machines in the cluster; Required)
+- **clustertype** (Define the type of cluster: `CloudManaged` (managed by CloudStack), `ExternalManaged` (managed by an external kubernetes provider). Defaults to `CloudManaged`)
+- **kubernetesversionid** (Kubernetes version with which cluster to be launched; Required for CloudManaged clusters)
+- **serviceofferingid** (the ID of the service offering for the virtual machines in the cluster; Required for CloudManaged clusters)
 - **account** (an optional account for the virtual machine. Must be used with domainId)
 - **domainid** (an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used)
 - **projectid** (Deploy cluster for the project)
 - **networkid** (Network in which Kubernetes cluster is to be launched)
 - **keypair** (name of the ssh key pair used to login to the virtual machines)
-- **controlnodes** (number of Kubernetes cluster control nodes, default is 1) externalloadbalanceripaddress (external load balancer IP address while using shared network with Kubernetes HA cluster)
-- **size** (number of Kubernetes cluster worker nodes; Required)
+- **controlnodes** (number of Kubernetes cluster control nodes, default is 1)
+- **externalloadbalanceripaddress** (external load balancer IP address while using shared network with Kubernetes HA cluster)
+- **size** (number of Kubernetes cluster worker nodes; Required for manage clusters)
 - **noderootdisksize** (root disk size of root disk for each node)
 - **dockerregistryusername** (username for the docker image private registry; Experimental)
 - **dockerregistrypassword** (password for the docker image private registry; Experimental)
@@ -253,12 +257,18 @@ Stopping Kubernetes cluster
 
 A running Kubernetes cluster can be stopped using either the stopKubernetesCluster API which takes id of the cluster as an input parameter or |cks-stop-action.png| action icon from UI. action icon is shown for a running cluster in the UI.
 
+.. note::
+   This operation is supported only for CloudManaged kubernetes cluster.
+
 Starting a stopped Kubernetes cluster
 ######################################
 
 A stopped Kubernetes cluster can be started using either the startKubernetesCluster API which takes id of the cluster as the input parameter or the |cks-start-action.png| action icon from UI. action icon is shown for a stopped cluster in the UI.
 
 When the service fails to start a stopped cluster, the cluster will show in Alert state else it will show up as Running.
+
+.. note::
+   This operation is supported only for CloudManaged kubernetes cluster.
 
 Scaling Kubernetes cluster
 ###########################
@@ -275,7 +285,9 @@ scaleKubernetesCluster API can be used to scale a running (or stopped cluster) t
 
 Only running Kubernetes clusters can be scaled in size. When the service fails to scale the cluster, the cluster will show in Alert state else if the scaling is successfull cluster will show up in Running state.
 
-Note: Only up scaling is supported while scaling clusters for service offering.
+.. note::
+   - Only up scaling is supported while scaling clusters for service offering.
+   - This operation is supported only for CloudManaged kubernetes cluster
 
 Upgrading Kubernetes cluster
 #############################
@@ -291,7 +303,9 @@ upgradeKubernetesCluster API can be used to upgrade a running cluster. It takes 
 
 When the service fails to upgrade the cluster, the cluster will show up in Alert state, else if successful, the cluster appears Running state.
 
-.. note:: Kubernetes can be upgraded from one MINOR version to the next MINOR version, or between PATCH versions of the same MINOR. That is, you cannot skip MINOR versions when you upgrade. For example, you can upgrade from 1.y to 1.y+1, but not from 1.y to 1.y+2. Therefore, service can upgrade running clusters in the similar manner only.
+.. note::
+   - Kubernetes can be upgraded from one MINOR version to the next MINOR version, or between PATCH versions of the same MINOR. That is, you cannot skip MINOR versions when you upgrade. For example, you can upgrade from 1.y to 1.y+1, but not from 1.y to 1.y+2. Therefore, service can upgrade running clusters in the similar manner only.
+   - This operation is supported only for CloudManaged kubernetes cluster
 
 Deleting Kubernetes cluster
 ############################
@@ -360,6 +374,25 @@ Kubernetes compatibility Matrix
 +--------------+---------------------------------+-----------------------------+-------------+
 | 4.16.1       | v1.20 onward                    | SystemVM Template (Debian)  | cloud       |
 +--------------+---------------------------------+-----------------------------+-------------+
+
+Adding/Removing VMs for an ExternalManaged Kubernetes Cluster
+##############################################################
+The VMs launched by the external kubernetes provider can be linked to the ExternalManaged kubernetes cluster.
+
+To add a VM to an ExternalManaged Kubernetes cluster:
+
+.. code-block:: bash
+
+   cmk add VirtualMachinesToKubernetesCluster id=59028a81-d9c9-46f6-bd16-8da918571c23 virtualmachineids=1d991764-3be8-4d2e-a9f1-2de2fc80ca72,97172931-286b-46c5-9427-ffc19315479e
+
+To remove a VM from an ExternalManaged Kubernetes cluster:
+
+.. code-block:: bash
+
+   cmk remove VirtualMachinesFromKubernetesCluster id=59028a81-d9c9-46f6-bd16-8da918571c23 virtualmachineids=1d991764-3be8-4d2e-a9f1-2de2fc80ca72,97172931-286b-46c5-9427-ffc19315479e
+
+.. note::
+   These operations are only supported for an ExternalManaged Kubernetes Cluster
 
 
 .. |cks-add-version-form.png| image:: /_static/images/cks-add-version-form.png
