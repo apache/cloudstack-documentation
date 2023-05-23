@@ -167,7 +167,12 @@ To create a VM from a template:
 
    **VMware**
 
-   When rootDiskController and dataDiskController are not specified for an instance using instance details and they are set to use osdefault in the template or the global configuration then CloudStack tries to find the recommended disk controllers for it using guest OS from the hypervisor. In some specific cases, it may create issues with the instance deployment or start operation. To overcome this, a specific disk controller can be specified at the instance or template level. For an existing instance its settings can be updated while it is in stopped state by admin.
+   If the rootDiskController and dataDiskController are not specified for an instance using instance details and
+   these are set to use osdefault in the template or the global configuration, than CloudStack tries to find the
+   recommended disk controllers for it using guest OS from the hypervisor. In some specific cases, it may create
+   issues with the instance deployment or start operation. To overcome this, a specific disk controller can be
+   specified at the instance or template level. For an existing instance its settings can be updated while it is in
+   stopped state by admin.
 
 
 Install Required Tools and Drivers
