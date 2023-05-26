@@ -22,6 +22,7 @@ guest VMs. For requirements and instructions, see :ref:`adding-a-host`.
 
 Host Tags
 ~~~~~~~~~
+
 Host may be "tagged". A tag is a text string attribute associated
 with host, a Compute Offering, or a System Offering. Tags allow
 administrators to provide additional information about the host. Tags are not interpreted by
