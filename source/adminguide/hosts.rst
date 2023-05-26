@@ -20,6 +20,14 @@ Adding Hosts
 Additional hosts can be added at any time to provide more capacity for
 guest VMs. For requirements and instructions, see :ref:`adding-a-host`.
 
+Host Tags
+~~~~~~~~~
+Host may be "tagged". A tag is a text string attribute associated
+with host, a Compute Offering, or a System Offering. Tags allow
+administrators to provide additional information about the host. Tags are not interpreted by
+CloudStack. They are matched against tags placed on compute and system
+offerings. CloudStack requires all tags on Compute and System offerings to
+exist on the host before it allocates instances on to the hosts. These tags can be used to specify which host a VM should use. The CloudStack administrator decides whether to define host tags, then create a service offering using those tags and offer it to the user.
 
 Scheduled Maintenance and Maintenance Mode for Hosts
 ----------------------------------------------------
