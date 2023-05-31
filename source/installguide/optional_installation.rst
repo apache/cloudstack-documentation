@@ -62,7 +62,7 @@ Steps to Install the Usage Server
 
    .. parsed-literal::
       
-      # apt-get install cloudstack-usage
+      # apt install cloudstack-usage
 
 #. Once installed, start the Usage Server with the following command.
 

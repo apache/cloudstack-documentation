@@ -51,5 +51,5 @@ Install on Ubuntu
 
 .. parsed-literal::
 
-   sudo apt-get install cloudstack-management
+   sudo apt install cloudstack-management
 

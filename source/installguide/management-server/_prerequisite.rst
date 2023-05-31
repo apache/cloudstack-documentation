@@ -91,7 +91,7 @@ node.
 
       .. parsed-literal::
 
-         $ apt-get install chrony
+         $ apt install chrony
 
    In SUSE:
 
