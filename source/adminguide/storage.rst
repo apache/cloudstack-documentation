@@ -562,6 +562,10 @@ be restarted.
 
 #. (KVM only) Restart the VM.
 
+   .. note::
+      In case of KVM and PowerFlex/ScaleIO storage, live migration of VM's
+      root disk is allowed from one PowerFlex/ScaleIO storage pool
+      to another, without stopping the VM.
 
 Resizing Volumes
 ~~~~~~~~~~~~~~~~

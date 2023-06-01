@@ -558,7 +558,40 @@ To manually live migrate a virtual machine
 
       where i in [0,..,N] and N = number of volumes of the virtual machine
 
+Moving VM's Volumes Between Storage Pools (offline volume Migration)
+--------------------------------------------------------------------
 
+The CloudStack administrator can move a stopped VM's volumes from one
+storage pool to another within the cluster. This is called offline volume
+migration, and can be done under the following conditions:
+
+-  The root administrator is logged in. Domain admins and users can not
+   perform offline volume migration of VMs.
+
+-  The VM is stopped.
+
+-  The destination storage pool must have enough available capacity.
+
+-  UI operation allows only migrating the root volume upon selecting the
+   storage pool. To migrate all volumes to the desired storage pools
+   the 'migrateVirtualMachineWithVolume' API has to be used by providing
+   'migrateto' map parameter.
+
+
+To perform stopped VM's volumes migration
+
+#. Log in to the CloudStack UI as root administrator.
+
+#. In the left navigation, click Instances.
+
+#. Choose the VM that you want to migrate.
+
+#. Click the Migrate Instance button. |Migrateinstance.png|
+
+#. From the list of suitable storage pools, choose the one to which you want to
+   move the VM.
+
+#. Click OK.
 
 Assigning VMs to Hosts
 ----------------------
