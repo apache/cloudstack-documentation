@@ -465,7 +465,7 @@ weight is based on the clock speed in the service offering. Guests
 receive a CPU allocation that is proportionate to the GHz in the service
 offering. For example, a guest created from a 2 GHz service offering
 will receive twice the CPU allocation as a guest created from a 1 GHz
-service offering. CloudStack does not perform memory over-provisioning.
+service offering. 
 
 
 VLAN Provisioning
