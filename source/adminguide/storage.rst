@@ -566,6 +566,8 @@ can be restarted.
       In case of KVM and PowerFlex/ScaleIO storage, live migration of
       instance's root disk is allowed from one PowerFlex/ScaleIO storage pool
       to another, without stopping the instance.
+      If cloudstack-agent packages were changed(upgraded or reinstalled), qemu/libvirt would lose the instances secrets and migration would not be possible.
+      To regain these credentials a Stop/Start of the instance is required from the the CloudStack interface
 
 Resizing Volumes
 ~~~~~~~~~~~~~~~~
