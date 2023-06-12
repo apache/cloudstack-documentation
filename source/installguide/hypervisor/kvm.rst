@@ -676,7 +676,7 @@ Now we configure cloudbr0 and include the Management IP of the hypervisor.
    IPADDR=192.168.42.11
    NETMASK=255.255.255.0
 
-Add the gatway in ``/etc/sysconfig/network/routes``
+Add the gateway in ``/etc/sysconfig/network/routes``
 
 .. parsed-literal::
 
@@ -936,7 +936,7 @@ Now we configure cloudbr0 and include the Management IP of the hypervisor.
    IPADDR=192.168.42.11
    NETMASK=255.255.255.0
 
-Add the gatway in ``/etc/sysconfig/network/routes``
+Add the gateway in ``/etc/sysconfig/network/routes``
 
 .. parsed-literal::
 
@@ -1245,7 +1245,7 @@ We now have to configure the three VLAN bridges:
    NETMASK=255.255.255.0
 
 
-Add the gatway in ``/etc/sysconfig/network/routes``
+Add the gateway in ``/etc/sysconfig/network/routes``
 
 .. parsed-literal::
 
