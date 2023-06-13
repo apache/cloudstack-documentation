@@ -186,6 +186,11 @@ that you want to dedicate to HA-enabled VMs.
 HA-Enabled Hosts
 ----------------
 
+.. note::
+   This feature is only applicable to KVM clusters. It is not supported
+   on for instance vmware or xen. For those hypervisor type the Host HA
+   is left to the vmware-cluster or xen-pool respectively.
+
 The user can specify a host as HA-enabled, In the event of a host 
 failure, attemps will be made to recover the failed host by first 
 issuing some OOBM commands. If the host recovery fails the host will be
