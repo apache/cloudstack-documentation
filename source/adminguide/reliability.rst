@@ -151,6 +151,13 @@ Host in the same cluster.
 HA features work with iSCSI or NFS primary storage. HA with local
 storage is not supported.
 
+.. note::
+   HA-Enabled VMs will be restarted when it is detected that the VM is
+   crashed beyond a shadow of a doubt. When the host it is running on is
+   unreachable, either because of network issue or because it is crashed,
+   CloudStack can not be sure the disk image of the VM is not still being
+   accessed and will not restart the VM.
+
 
 Dedicated HA Hosts
 ------------------
@@ -188,8 +195,8 @@ HA-Enabled Hosts
 
 .. note::
    This feature is only applicable to KVM clusters. It is not supported
-   on for instance vmware or xen. For those hypervisor type the Host HA
-   is left to the vmware-cluster or xen-pool respectively.
+   on for instance VMware or Xen. For those hypervisor types, the Host HA
+   is left to the VMware-cluster or Xen-pool respectively.
 
 The user can specify a host as HA-enabled, In the event of a host 
 failure, attemps will be made to recover the failed host by first 
