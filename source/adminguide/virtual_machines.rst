@@ -299,6 +299,59 @@ This includes the virtual machine’s IP address.
 Managing Virtual Machines
 =========================
 
+Scheduling operations on a VM
+-------------------------------------
+
+After a VM is created, you can schedule VM lifecycle operations using cron expressions. The operations that can be scheduled are:
+
+- Start
+- Stop
+- Reboot
+- Force Stop
+- Force Reboot
+
+To schedule an operation on a VM through the UI:
+
+#. Log in to the CloudStack UI as a user or admin.
+
+#. In the left navigation, click Instances.
+
+#. Click the VM that you want to schedule the operation on.
+
+#. On the VM details page, click the **Schedule** button. |vm-schedule-tab.png|
+
+#. Click on **Add schedule** button to add a new schedule or click on Edit button |EditButton.png| to edit
+   an existing schedule. |vm-schedule-form.png|
+
+#. Configure the schedule as per requirements:
+
+   - **Description**: Enter a description for the schedule. If left empty, it's generated on the basis of action and the schedule.
+
+   - **Action**: Select the action to be triggered by the schedule. Can't be changed once the schedule has been created.
+
+   - **Schedule**: Select the frequency using cron format at which the action should be triggered.
+     For example, `* * * * *` will trigger the job every minute.
+
+   - **Timezone**: Select the timezone in which the schedule should be triggered.
+
+   - **Start Date**: Date at the specified time zone after which the schedule becomes active.
+     Defaults to current timestamp plus 1 minute.
+
+   - **End Date**: Date at the specified time zone before which the schedule is active.
+     If not set, schedule won't become inactive.
+
+   .. note::
+      It's not possible to remove the end date once it's configured.
+
+
+
+#. Click OK to save the schedule.
+
+   .. note::
+      If multiple schedules are configured for a VM and the scheduled time coincides, then only the schedule which was created first
+      will be executed and the rest will be skipped.
+
+
 Changing the VM Name, OS, or Group
 -------------------------------------
 
@@ -1382,6 +1435,10 @@ VM disk statistics are shown in the Metrics tab in an individual volume view, as
 
 .. |vm-lifecycle.png| image:: /_static/images/vm-lifecycle.png
    :alt: Virtual Machine State Model
+.. |vm-schedule-tab.png| image:: /_static/images/vm-schedule-tab.png
+   :alt: Virtual Machine Schedule Tab
+.. |vm-schedule-form.png| image:: /_static/images/vm-schedule-form.png
+   :alt: Virtual Machine Schedule Form
 .. |VMSnapshotButton.png| image:: /_static/images/VMSnapshotButton.png
    :alt: button to restart a VPC
 .. |delete-button.png| image:: /_static/images/delete-button.png
