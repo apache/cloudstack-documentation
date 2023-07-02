@@ -194,7 +194,7 @@ the capacity to handle new sessions is used.
 Console proxies can be restarted by administrators but this will
 interrupt existing console sessions for users.
 
-Creating a VM Console Endpointy
+Creating a VM Console Endpoint
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The access to a VM Console is created by the API 'createConsoleEndpoint', 
