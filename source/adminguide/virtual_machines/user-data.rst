@@ -110,7 +110,7 @@ Allow Override: Allow users to override UserData for the template during VM depl
 Deny Override: Override of UserData isn’t allowed during VM deployment or on reset. 
 
 Append Only: Don’t allow users to override linked UserData but allow users to pass userdata content 
-             or ID that should be appended to the linked UserData of the template.
+             or ID that should be appended to the linked UserData of the template. When the users pass userdata it is appended to the template userdata in the form of a multipart MIME message
 
 This is how it looks like in template/ISO register/upload/edit forms.
 
