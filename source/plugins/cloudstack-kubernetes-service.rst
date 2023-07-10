@@ -67,10 +67,20 @@ Eg:
 
 .. parsed-literal::
 
-   # ./create-kubernetes-binaries-iso.sh ./ 1.12.5 0.7.1 1.12.0 "https://cloud.weave.works/k8s/net?k8s-version=1.12.5" https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta1/aio/deploy/recommended.yaml
+   # ./create-kubernetes-binaries-iso.sh ./ 1.27.3 1.3.0 1.27.0 https://raw.githubusercontent.com/weaveworks/weave/master/prog/weave-kube/weave-daemonset-k8s-1.11.yaml https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml setup-1.27.3
 
 **NOTE:**
-From ACS 4.16 onwards, Kubernetes versions >= 1.20.x are only supported (https://endoflife.date/kubernetes).
+From ACS 4.18 onwards, Kubernetes versions >= 1.24.x are only supported (https://endoflife.date/kubernetes).
+
+For each of the configurable parameters, you may refer to the available releases
+and use the version for Kubernetes, CNI version, CRICTL version etc. by looking
+at the project releases. For example, based on the example above:
+
+- 1.27.3: the Kubernetes version, see https://github.com/kubernetes/kubernetes/releases
+- 1.3.0: the CNI version, see https://github.com/containernetworking/plugins/releases
+- 1.27.0: the cri-tools version, see https://github.com/kubernetes-sigs/cri-tools/releases
+- 1.11: the weave addon for kubernetes, see https://github.com/weaveworks/weave/tree/master/prog/weave-kube
+- 2.7.0: the Kubernetes dashboard, see https://github.com/kubernetes/dashboard/releases
 
 Working with Kubernetes supported version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
