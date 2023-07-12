@@ -17,11 +17,6 @@
 Deploying CloudStack with Ansible
 =================================
 
-In this article, `Paul Angus <https://twitter.com/CloudyAngus>`__ Cloud
-Architect at ShapeBlue takes a look at using Ansible to Deploy an
-Apache CloudStack cloud. 
-
-
 What is Ansible
 ---------------
 
