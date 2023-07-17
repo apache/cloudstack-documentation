@@ -259,6 +259,8 @@ This example uses cloud-init to automatically update all OS packages on the firs
 
       cmk deploy virtualmachine name=..... userdataid=<Userdata UUID>
 
+.. note:: When using multipart userdata, cloud-init expects userdata format of one particular type only in one multipart section.
+
 Disclaimer
 ~~~~~~~~~~
 
