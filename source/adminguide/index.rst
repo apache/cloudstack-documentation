@@ -89,6 +89,13 @@ Working with Templates & ISOs
 
    templates
 
+Working with Clusters
+------------------
+
+.. toctree::
+   :maxdepth: 4
+
+   clusters
 
 Working with Hosts
 ------------------
