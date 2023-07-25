@@ -73,7 +73,7 @@ These features can be implemented in `“Linux template creation process” <_cr
    
      .. code:: bash
    
-      sudo sed -i s/" - set_passwords"/" - [set_passwords, always]"/g /etc/cloud/cloud.cfg
+      sudo sed -i s/" - set[_|-]passwords"/" - [set_passwords, always]"/g /etc/cloud/cloud.cfg
 	
    - **Specify the managed user**
    
