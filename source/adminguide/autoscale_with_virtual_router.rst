@@ -281,9 +281,17 @@ Updating AutoScale VM Profile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To update the VM Profile of the AutoScale VM Group, click the AutoScale VM Profile
-tab, then click Edit AutoScale VM Profile button.
+tab, You will see the details of AutoScale VM Profile.
 
 |autoscale-vmgroup-profile.png|
+
+then click Edit AutoScale VM Profile button.
+
+|autoscale-vmgroup-profile-update.png|
+
+You are able to reset userdata of the VM instances, by clicking Reset Userdata on AutoScale VM Group button.
+
+|autoscale-vmgroup-profile-reset-userdata.png|
 
 You are also able to update the deploy parameters of the VM instances.
 
@@ -390,4 +398,8 @@ a service assigned to a rule inside the context of AutoScale.
    :alt: AutoScale VM Profile.
 .. |autoscale-vmgroup-update.png| image:: /_static/images/autoscale-vmgroup-update.png
    :alt: Update AutoScale VM Group.
+.. |autoscale-vmgroup-profile-update.png| image:: /_static/images/autoscale-vmgroup-profile-update.png
+   :alt: Update AutoScale VM Profile.
+.. |autoscale-vmgroup-profile-reset-userdata.png| image:: /_static/images/autoscale-vmgroup-profile-reset-userdata.png
+   :alt: Reset Userdata in AutoScale VM Profile.
 
