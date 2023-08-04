@@ -377,10 +377,11 @@ VMware tools installed.
 KVM
 '''
 
-All VMs are required to support the virtio drivers. These drivers are
+All KVM VMs are required to support the virtio drivers. These drivers are
 installed in all Linux kernel versions 2.6.25 and greater. The
 administrator must set CONFIG\_VIRTIO\_BALLOON=y in the virtio
-configuration.
+configuration. Drivers for Windows can be downloaded from
+https://github.com/virtio-win/virtio-win-pkg-scripts
 
 
 Hypervisor capability
@@ -396,10 +397,43 @@ The DMC (Dynamic Memory Control) capability of the hypervisor should be
 enabled. Only XenServer Advanced and above versions have this feature.
 
 
-VMware, KVM
-'''''''''''
+VMware
+''''''
 
 Memory ballooning is supported by default.
+
+
+KVM
+'''
+
+Memory ballooning is supported and enabled by default. This can be configured on
+per KVM host basis via the `vm.memballoon.disable=false` property and the
+`vm.memballoon.stats.period` property in the `agent.properties` of the KVM host.
+
+The memory ballooning feature on KVM allows the host to reclaim memory from
+guest VMs which is enabled by a virtio balloon device on the guest VM and the
+related virtio drivers inside the guest VMs. This feature is mainly intended to
+support over-committing memory on KVM hosts.
+
+A related feature, KSM (Kernel Same-page Merging), can also be enabled to assist
+with over-committing memory. On some distributions such as Ubuntu, this is
+enabled by default, and can be checked otherwise by checking/setting
+`/sys/kernel/mm/ksm/run` to 1 and for libvirt set the `KSM_ENABLED=AUTO` in
+`/etc/defaults/qemu-kvm`.
+
+Note: the memory ballooning feature isn't automatic on KVM and shouldn't be
+confused with the dynamic scaling feature that allows manual scaling of running
+VMs by changing the service offering (feature can be enabled via the setting
+enable.dynamic.scale.vm) of VMs that aren't using a fixed compute offering.
+
+By default, when memory is over provisioned (setting mem.overprovisioning.factor
+is greater than 1.0 at global or cluster level) the actual memory for the VM is
+the memory per the service offering divided by the global or cluster-specific
+memory overprovisioning factor. This means guests start with a lower memory than
+their service offering intended memory, which will not be changed or scaled
+automatically. When overcommitting memory, this behaviour can be disabled by
+turning off (set the value false) the setting
+`vm.min.memory.equals.memory.divided.by.mem.overprovisioning.factor`.
 
 
 Setting Over-Provisioning Factors
