@@ -1583,6 +1583,39 @@ zone:
 
    -  Path. The path to the zone's Secondary Staging Store.
 
+Adding Object Storage
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can add  storage object pools at any time to add more capacity or providers to CloudStack
+
+
+
+#. Make sure you have installed supported Object Storage provider and is accessible from CloudStack Management Server
+
+
+#. Log in to the CloudStack UI as root administrator.
+
+#. In the left navigation bar, click Infrastructure.
+
+#. In Object Storage, click View All.
+
+#. Click Add Object Storage.
+
+#. Fill in the following fields:
+
+   -  Name. Give the object store a descriptive name.
+
+   -  Provider. Choose provider and then fill in the related
+      fields which appear. The fields will vary depending on the object storage
+      provider; for more information, consult the provider's
+      documentation (such as the MinIO website).
+
+   -  URL: API endpoint of the object storage server
+
+   -  Access key: Credentials with access to admin API of the object storage server
+
+   -  Secret key: Credentials with access to admin API of the object storage server
+
 
 .. _initialize-and-test:
 
