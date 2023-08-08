@@ -502,6 +502,8 @@ cloud.
    you cannot set up multiple zones, one using NFS secondary and the other 
    using S3 or Swift secondary.
 
+.. _about-object-storage:
+
 About Object Storage
 ~~~~~~~~~~~~~~~~~~~~~~~
 Object storage (also known as object-based storage) is a data storage that manages data as objects.

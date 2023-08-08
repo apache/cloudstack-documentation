@@ -1583,14 +1583,15 @@ zone:
 
    -  Path. The path to the zone's Secondary Staging Store.
 
+
 Adding Object Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can add  storage object pools at any time to add more capacity or providers to CloudStack
+You can add  object storage pools at any time to add more capacity or providers to CloudStack
 
 
 
-#. Make sure you have installed supported Object Storage provider and is accessible from CloudStack Management Server
+#. Make sure you have installed supported Object Storage provider and the Object Store is accessible from CloudStack Management Server
 
 
 #. Log in to the CloudStack UI as root administrator.

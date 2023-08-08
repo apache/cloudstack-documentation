@@ -1096,7 +1096,7 @@ To create a new bucket, click create Bucket, provide the following details, and 
 
 #. Object Store: Select the object store where you want the Bucket to reside
 
-Based on the selected Object Store, you can specify additional details like quota, encryption, policy etc.
+Based on the selected Object Store, you can specify additional details like quota, encryption, policy.
 
 
 
