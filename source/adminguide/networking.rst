@@ -48,7 +48,7 @@ or isolated.
 Isolated Networks
 ~~~~~~~~~~~~~~~~~
 
-An isolated network can be accessed only by virtual machines of a single
+An isolated network can be accessed only by Instances of a single
 account. Isolated networks have the following properties.
 
 -  Resources such as VLAN are allocated and garbage collected
@@ -66,12 +66,12 @@ For more information, see `“Configure Guest Traffic in an Advanced Zone”
 Shared Networks
 ~~~~~~~~~~~~~~~
 
-A shared network can be accessed by virtual machines that belong to many
+A shared network can be accessed by Instances that belong to many
 different accounts. Network Isolation on shared networks is accomplished
 by using techniques such as security groups, which is supported only in
 Basic zones or Advanced Zones with Security Groups.
 
--  Shared Networks are created by the the end users or the administrator. Network offerings
+-  Shared Networks are created by the end users or the administrator. Network offerings
    which allow the network creator to specify a VLAN can only be created 
    by the root admins.
 
@@ -104,9 +104,9 @@ IP addresses.
    which allow the network creator to specify a VLAN can only be created
    by the root admins.
 
--  CloudStack does not assign IP addresses to VMs.
+-  CloudStack does not assign IP addresses to instances.
 
--  Userdata and metadata can be passed to the VM using a config drive
+-  Userdata and metadata can be passed to the instance using a config drive
    (which must be enabled in the network service offering)
 
 Example GUI dialog box (for a regular user account) is shown below:
@@ -119,8 +119,8 @@ Runtime Allocation of Virtual Network Resources
 
 When you define a new virtual network, all your settings for that
 network are stored in CloudStack. The actual network resources are
-activated only when the first virtual machine starts in the network.
-When all virtual machines have left the virtual network, the network
+activated only when the first Instance starts in the network.
+When all Instances have left the virtual network, the network
 resources are garbage collected so they can be allocated again. This
 helps to conserve network resources.
 
@@ -210,8 +210,8 @@ A network offering is a named set of network services, such as:
 
 -  (Optional) Network tag to specify which physical network to use
 
-When creating a new VM, the user chooses one of the available network
-offerings, and that determines which network services the VM can use.
+When creating a new instance, the user chooses one of the available network
+offerings, and that determines which network services the instance can use.
 
 The CloudStack administrator can create any number of custom network
 offerings, in addition to the default network offerings provided by
@@ -271,14 +271,14 @@ To create a network offering:
 
    -  **Persistent**. Indicate whether the guest network is persistent
       or not. The network that you can provision without having to
-      deploy a VM on it is termed persistent network. For more
+      deploy an instance on it is termed persistent network. For more
       information, see `“Persistent
       Networks” <networking_and_traffic.html#persistent-networks>`_.
 
    -  **Specify VLAN**. Indicate whether
       a VLAN could be specified when this offering is used. If you
       select this option and later use this network offering while
-      creating a VPC tier or an isolated network, you will be able to
+      creating a VPC Network Tier or an isolated network, you will be able to
       specify a VLAN ID for the network you create.
 
    -  **VPC**. This option indicate whether the guest network is Virtual
@@ -290,7 +290,7 @@ To create a network offering:
 
    -  **Promiscuous Mode**. Applicable for guest networks on VMware hypervisor only. It accepts the following values for desired behaviour of the network elements:
 
-      *Reject* - The switch drops any outbound frame from a virtual machine adapter with a source MAC address that is different from the one in the .vmx configuration file.
+      *Reject* - The switch drops any outbound frame from an Instance adapter with a source MAC address that is different from the one in the .vmx configuration file.
 
       *Accept* - The switch does not perform filtering, and permits all outbound frames.
 
@@ -298,7 +298,7 @@ To create a network offering:
 
    -  **Forged Transmits**. Applicable for guest networks on VMware hypervisor only. It accepts the following values for desired behaviour of the network elements:
 
-      *Reject* - The switch drops any outbound frame from a virtual machine adapter with a source MAC address that is different from the one in the .vmx configuration file.
+      *Reject* - The switch drops any outbound frame from an Instance adapter with a source MAC address that is different from the one in the .vmx configuration file.
 
       *Accept* - The switch does not perform filtering, and permits all outbound frames.
 
@@ -306,11 +306,11 @@ To create a network offering:
 
    -  **MAC Address Changes**. Applicable for guest networks on VMware hypervisor only. It accepts the following values for desired behaviour of the network elements:
 
-      *Reject* - If the guest OS changes the effective MAC address of the virtual machine to a value that is different from the MAC address of the VM network adapter (set in the .vmx configuration file), the switch drops all inbound frames to the adapter.
+      *Reject* - If the guest OS changes the effective MAC address of the Instance to a value that is different from the MAC address of the instance network adapter (set in the .vmx configuration file), the switch drops all inbound frames to the adapter.
 
-      If the guest OS changes the effective MAC address of the virtual machine back to the MAC address of the VM network adapter, the virtual machine receives frames again.
+      If the guest OS changes the effective MAC address of the Instance back to the MAC address of the instance network adapter, the Instance receives frames again.
 
-      *Accept* - If the guest OS changes the effective MAC address of the virtual machine to a value that is different from the MAC address of the VM network adapter, the switch allows frames to the new address to pass.
+      *Accept* - If the guest OS changes the effective MAC address of the Instance to a value that is different from the MAC address of the instance network adapter, the switch allows frames to the new address to pass.
 
       *None* - Default to value from global setting - ``network.mac.address.changes``.
 
@@ -414,7 +414,7 @@ To create a network offering:
          and therefore, is exposed to the public network.
 
    -  **Associate Public IP**: Select this option if you want to assign
-      a public IP address to the VMs deployed in the guest network. This
+      a public IP address to the instances deployed in the guest network. This
       option is available only if
       -  Guest network is shared.
 
@@ -430,16 +430,16 @@ To create a network offering:
       if you want to use two virtual routers in the network for
       uninterrupted connection: one operating as the primary virtual
       router and the other as the backup. The primary virtual router
-      receives requests from and sends responses to the user’s VM. The
+      receives requests from and sends responses to the user’s instance. The
       backup virtual router is activated only when the primary is down.
       After the failover, the backup becomes the primary virtual router.
       CloudStack deploys the routers on different hosts to ensure
       reliability if one host is down.
 
-   -  **Supports VM auto scaling**: Indicate whether VM autoscaling feature
+   -  **Supports instance auto scaling**: Indicate whether instance autoscaling feature
       is supported. It is available only when Virtual Router or Netscaler
       is selected as the Load Balancer provider. For more information on
-      VM autoscaling using Virtual Router, see `“Configuring AutoScale
+      instance autoscaling using Virtual Router, see `“Configuring AutoScale
       with using CloudStack Virtual Router” <autoscale_with_virtual_router.html>`_.
 
    -  **Conserve mode**: Indicate whether to use conserve mode. In this

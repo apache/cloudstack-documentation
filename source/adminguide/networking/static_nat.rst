@@ -18,7 +18,7 @@ Static NAT
 ----------
 
 A static NAT rule maps a public IP address to the private IP address of
-a VM in order to allow Internet traffic into the VM. The public IP
+an instance in order to allow Internet traffic into the instance. The public IP
 address always remains the same, which is why it is called static NAT.
 This section tells how to enable or disable static NAT for a particular
 IP address.
@@ -30,7 +30,7 @@ Enabling or Disabling Static NAT
 If port forwarding rules are already in effect for an IP address, you
 cannot enable static NAT to that IP.
 
-If a guest VM is part of more than one network, static NAT rules will
+If a Guest Instance is part of more than one network, static NAT rules will
 function only if they are defined on the default network.
 
 #. Log in to the CloudStack UI as an administrator or end user.
@@ -49,7 +49,7 @@ function only if they are defined on the default network.
    static NAT is currently enabled for the IP address.
 
 #. If you are enabling static NAT, a dialog appears where you can choose
-   the destination VM and click Apply.
+   the destination instance and click Apply.
 
 
 .. |enabledisablenat.png| image:: /_static/images/enable-disable.png

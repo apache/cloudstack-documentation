@@ -21,7 +21,7 @@ In addition to the physical and logical infrastructure of your cloud and
 the CloudStack software and servers, you also need a layer of user
 services so that people can actually make use of the cloud. This means
 not just a user UI, but a set of options and resources that users can
-choose from, such as templates for creating virtual machines, disk
+choose from, such as templates for creating Instances, disk
 storage, and more. If you are running a commercial service, you will be
 keeping track of what services and resources users are consuming and
 charging them for that usage. Even if you do not charge anything for
@@ -33,9 +33,9 @@ still keep track of what services they use and how much of them.
 Service Offerings, Disk Offerings, Network Offerings, and Templates
 -------------------------------------------------------------------
 
-A user creating a new instance can make a variety of choices about its
+A user creating a new Instance can make a variety of choices about its
 characteristics and capabilities. CloudStack provides several ways to
-present users with choices when creating a new instance:
+present users with choices when creating a new Instance:
 
 -  Service Offerings, defined by the CloudStack administrator, provide a
    choice of CPU speed, number of CPUs, RAM size, tags on the root disk,

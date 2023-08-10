@@ -36,7 +36,7 @@ Overview of Upgrade Steps:
 ----------------------------
 
 #. Check any customisations and integrations
-#. Upload the |sysvm64-version| System VM template if not already using it.
+#. Upload the |sysvm64-version| System VM Template if not already using it.
 #. Stop all running management servers
 #. Backup CloudStack database (MySQL)
 #. Upgrade 1st CloudStack management server
@@ -225,7 +225,7 @@ Hypervisor: VMware
    built using "noredist". Refer to :ref:`building-noredist`.
 
 
-No additional steps are requried for the VMware Hypervisor for this upgrade.
+No additional steps are required for the VMware Hypervisor for this upgrade.
 
 
 .. _kvm414:

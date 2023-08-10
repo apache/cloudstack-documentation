@@ -137,7 +137,7 @@ have to setup a physical infrastructure.
 Using the Simulator
 -------------------
 
-CloudStack comes with a simulator for hosts, VMs and network infrastructure,
+CloudStack comes with a simulator for hosts, Instances and Network infrastructure,
 allowing you to use the CloudStack management server without using real
 servers.  It also comes with Marvin, which can create a set of
 infrastructure based on a configuration file that defines the number
@@ -235,7 +235,7 @@ with the VirtualBox image. For KVM see the
 #. Verify the settings under > Settings and check the ``enable PAE``
    option in the processor menu
 
-#. Once the VM has booted try to ``ssh`` to it with credentials:
+#. Once the Instance has booted try to ``ssh`` to it with credentials:
    ``root/password``
 
    ssh root@192.168.56.10
@@ -264,7 +264,7 @@ Start the management server
    mvn -pl client jetty:run
 
 Then you are going to configure CloudStack to use the running DevCloud
-instance:
+Instance:
 
 ::
 
@@ -499,7 +499,7 @@ interface from installing packages. In this section we show you how to
 compile the interface with ``maven`` and test it with Python boto
 module.
 
-Starting from a running management server (with DevCloud for instance),
+Starting from a running management server (with DevCloud for Instance),
 start the AWS API interface in a separate shell with:
 
 ::
@@ -508,7 +508,7 @@ start the AWS API interface in a separate shell with:
 
 Log into the CloudStack UI ``http://localhost:8080/client``, go to
 *Service Offerings* and edit one of the compute offerings to have the
-name ``m1.small`` or any of the other AWS EC2 instance types.
+name ``m1.small`` or any of the other AWS EC2 Instance types.
 
 With access and secret keys generated for a user you should now be able
 to use Python `Boto <http://docs.pythonboto.org/en/latest/>`__ module:

@@ -39,7 +39,7 @@ To enable this option for a template:
 
    -  **Checksum**. Optional field. If this field is populated, the checksum is compared to the downloaded template checksum when the template is downloaded to primary storage at deployment time.
 
-After the template is registered, it is automatically available for VM deployments.
+After the template is registered, it is automatically available for instance deployments.
 
 From CloudStack 4.14.0, system VM templates also support direct download. An administrator can register a new system VM template as ROUTING or USER type with the direct download flag, and it can be changed to SYSTEM type during the upgrade or by out-of-band database changes. Type of newly registered template can be changed to SYSTEM in the database using a SQL query similar to:
 

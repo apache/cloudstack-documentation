@@ -23,13 +23,13 @@ traffic. IPv6 uses a 128-bit address that exponentially expands the
 current address space that is available to the users. IPv6 addresses
 consist of eight groups of four hexadecimal digits separated by colons,
 for example, 5001:0dt8:83a3:1012:1000:8s2e:0870:7454. CloudStack
-supports IPv6 for shared and isolated networks. It also supports IPv6 for VPC tiers.
+supports IPv6 for shared and isolated networks. It also supports IPv6 for VPC Network Tiers.
 
 Shared network
 --------------
-With IPv6 support, VMs in shared networks can obtain both IPv4 and IPv6 addresses from the DHCP
-server. You can deploy VMs either in a IPv6 or IPv4 network, or in a
-dual network environment. If IPv6 network is used, the VM generates a
+With IPv6 support, Instances in shared networks can obtain both IPv4 and IPv6 addresses from the DHCP
+server. You can deploy Instances either in a IPv6 or IPv4 network, or in a
+dual network environment. If IPv6 network is used, the Instance generates a
 link-local IPv6 address by itself, and receives a stateful IPv6 address
 from the DHCPv6 server.
 
@@ -40,9 +40,9 @@ Here's the sequence of events when IPv6 is used:
 
 #. The administrator creates an IPv6 shared network in an advanced zone.
 
-#. The user deploys a VM in an IPv6 shared network.
+#. The user deploys an Instance in an IPv6 shared network.
 
-#. The user VM generates an IPv6 link local address by itself, and gets
+#. The user Instance generates an IPv6 link local address by itself, and gets
    an IPv6 global or site local address through DHCPv6.
 
 
@@ -53,9 +53,9 @@ Consider the following:
 
 -  CIDR size must be 64 for IPv6 networks.
 
--  The DHCP client of the guest VMs should support generating DUID based
+-  The DHCP client of the Guest Instances should support generating DUID based
    on Link-layer Address (DUID- LL). DUID-LL derives from the MAC
-   address of guest VMs, and therefore the user VM can be identified by
+   address of Guest Instances, and therefore the user Instance can be identified by
    using DUID. See `Dynamic Host Configuration Protocol for
    IPv6 <http://tools.ietf.org/html/rfc3315>`__\ for more information.
 
@@ -72,7 +72,7 @@ Consider the following:
       available for address configuration in addition to any IPs set by
       using stateless address auto-configuration.
 
--  Use the System VM template exclusively designed to support IPv6.
+-  Use the System VM Template exclusively designed to support IPv6.
    Download the System VM template from
    `http://download.cloudstack.org/systemvm/ 
    <http://download.cloudstack.org/systemvm/>`__.
@@ -80,14 +80,14 @@ Consider the following:
 -  The concept of Default Network applies to IPv6 networks. However,
    unlike IPv4 CloudStack does not control the routing information of
    IPv6 in shared network; the choice of Default Network will not affect
-   the routing in the user VM.
+   the routing in the user Instance.
 
 -  A shared network cannot be IPv6 only. Therefore, it is necessary to configure the IPv4 address range for the shared network with IPv6 addresses. The IPv4 range can be of a public or internal IPv4 network.
 
 -  In a multiple shared network, the default route is set by the rack
    router, rather than the DHCP server, which is out of CloudStack
-   control. Therefore, in order for the user VM to get only the default
-   route from the default NIC, modify the configuration of the user VM,
+   control. Therefore, in order for the user Instance to get only the default
+   route from the default NIC, modify the configuration of the user Instance,
    and set non-default NIC's ``accept_ra`` to 0 explicitly. The
    ``accept_ra`` parameter accepts Router Advertisements and
    auto-configure ``/proc/sys/net/ipv6/conf/interface`` with received
@@ -106,22 +106,22 @@ The following are not yet supported:
 #. Passwords
 
 
-Guest VM Configuration for DHCPv6
-#################################
+Guest Instance Configuration for DHCPv6
+#######################################
 
-For the guest VMs to get IPv6 address, run dhclient command manually on
-each of the VMs. Use DUID-LL to set up dhclient.
+For the Guest Instances to get IPv6 address, run dhclient command manually on
+each of the Instances. Use DUID-LL to set up dhclient.
 
 .. note:: 
-   The IPv6 address is lost when a VM is stopped and started. Therefore,
-   use the same procedure to get an IPv6 address when a VM is stopped and
+   The IPv6 address is lost when an Instance is stopped and started. Therefore,
+   use the same procedure to get an IPv6 address when an Instance is stopped and
    started.
 
 #. Set up dhclient by using DUID-LL.
 
    Perform the following for DHCP Client 4.2 and above:
 
-   #. Run the following command on the selected VM to get the dhcpv6
+   #. Run the following command on the selected Instance to get the dhcpv6
       offer from VR:
 
       .. parsed-literal::
@@ -204,18 +204,18 @@ each of the VMs. Use DUID-LL to set up dhclient.
          accept_ra 1
 
 
-Isolated network and VPC tier
------------------------------
+Isolated network and VPC Network Tier
+-------------------------------------
 
 .. note::
-   - The IPv6 support for isolated networks and VPC tiers is available from version 4.17.0.
+   - The IPv6 support for isolated networks and VPC Network Tiers is available from version 4.17.0.
 
-   - The IPv6 isolated networks and VPC tiers only supports **Static routing**, i.e, the administrator will need to add upstream routes for routing to work inside the networks.
+   - The IPv6 isolated networks and VPC Network Tiers only supports **Static routing**, i.e, the administrator will need to add upstream routes for routing to work inside the networks.
 
-   - IPv6 only isolated networks and VPC tiers are not supported currently. Public network for IPv6 supported isolated networks and VPC tiers must be on the same VLAN for both IPv4 and IPv6.
+   - IPv6 only isolated networks and VPC Network Tiers are not supported currently. Public network for IPv6 supported isolated networks and VPC Network Tiers must be on the same VLAN for both IPv4 and IPv6.
 
-Guest VMs in an isolated network or VPC tier can obtain both IPv4 and IPv6 IP addresses by using a supported network offering and appropriate configurations for IPv6 support by the administrator.
-Both VR for such networks and the guest VMs using these networks obtain a SLAAC based IPv6 address. While VR is assigned an IPv6 address from the public IPv6 range, guest VMs get their IPv6 addresses from the IPv6 subnet assinged to the network.
+Guest Instances in an isolated network or VPC Network Tier can obtain both IPv4 and IPv6 IP addresses by using a supported network offering and appropriate configurations for IPv6 support by the administrator.
+Both VR for such networks and the Guest Instances using these networks obtain a SLAAC based IPv6 address. While VR is assigned an IPv6 address from the public IPv6 range, Guest Instances get their IPv6 addresses from the IPv6 subnet assigned to the network.
 
 Here's the sequence of events when IPv6 is used:
 
@@ -227,11 +227,11 @@ Here's the sequence of events when IPv6 is used:
 
 #. The administrator creates a network or VPC offering with IPv4 + IPv6 (Dual stack) support.
 
-#. The user deploys an isolated network with the IPv6 supported network offering. For VPC, user creates a VPC with IPv6 supported VPC offering and then deploys a network tier with IPv6 supported network offering.
+#. The user deploys an isolated network with the IPv6 supported network offering. For VPC, user creates a VPC with IPv6 supported VPC offering and then deploys a Network Tier with IPv6 supported network offering.
 
 #. CloudStack assigns a SLAAC based public IPv6 address to the network from the public IPv6 range of the zone. It also assigns an IPv6 subnet to the network from the guest IPv6 prefix for the zone. See `SLAAC <https://datatracker.ietf.org/doc/html/rfc4862>`__\ for more information.
 
-#. The user deploys a guest VM in the network. The VM is assigned a SLAAC based IPv6 address from the guest IPv6 subnet of the network.
+#. The user deploys a Guest Instance in the network. The Instance is assigned a SLAAC based IPv6 address from the guest IPv6 subnet of the network.
 
 
 Prerequisites and Guidelines
@@ -297,9 +297,9 @@ Corresponding option has also been provided in the UI form creating network/VPC 
 Adding Upstream Route
 #####################
 
-Currently, CloudStack supports IPv6 isolated networks and VPC tiers only with **static** routes and therefore the administrator needs to add upstream IPv6 routes once a network is successfully deployed.
+Currently, CloudStack supports IPv6 isolated networks and VPC Network Tiers only with **static** routes and therefore the administrator needs to add upstream IPv6 routes once a network is successfully deployed.
 To facilitate the automation, *CloudStack Event Notification* can be used. CloudStack will generate appropriate events on network creation or deletion and while assigning or releasing a public IPv6 address for a network. Based on the events the corresponding network can be queried for the IPv6 routes that it needs configured in upstream network.
-Upstream IPv6 routes required by an IPv6 supported isolated network or VPC tier are also shown in the UI in the network details.
+Upstream IPv6 routes required by an IPv6 supported isolated network or VPC Network Tier are also shown in the UI in the network details.
 
 |network-details-upstream-ipv6-routes.png|
 
@@ -322,7 +322,7 @@ These operations are also available using UI in the network details view of an I
 IPv6 ACL
 ########
 
-IPv6 ACL rules for an IPv6 supported VPC network tier can be managed using Network ACL lists for the VPC. IPv6 CIDRs can be specified while adding or updating an ACL rule.
+IPv6 ACL rules for an IPv6 supported VPC Network Tier can be managed using Network ACL lists for the VPC. IPv6 CIDRs can be specified while adding or updating an ACL rule.
 
 |add-ipv6-acl-rule-form.png|
 |ipv6-acl-list.png|

@@ -54,7 +54,7 @@ User Data and Meta Data Via Virtual Router
 
 
 CloudStack provides API access to attach up to 32KB of user data to a
-deployed VM. Deployed VMs also have access to instance metadata via the
+deployed Instance. Deployed Instances also have access to metadata via the
 virtual router.
 
 User data can be accessed once the IP address of the virtual router is
@@ -75,26 +75,26 @@ http://10.1.1.1/latest/meta-data/{metadata type}. (For backwards
 compatibility, the previous URL http://10.1.1.1/latest/{metadata type}
 is also supported.) For metadata type, use one of the following:
 
--  service-offering. A description of the VMs service offering
+-  service-offering. A description of the Instance service offering
 
 -  availability-zone. The Zone name
 
--  local-ipv4. The guest IP of the VM
+-  local-ipv4. The guest IP of the Instance
 
--  local-hostname. The hostname of the VM
+-  local-hostname. The hostname of the Instance
 
 -  public-ipv4. The first public IP for the router. (E.g. the first IP
    of eth2)
 
 -  public-hostname. This is the same as public-ipv4
 
--  instance-id. The instance name of the VM
+-  instance-id. The Instance name
 
 User Data and Meta Data via Config Drive
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Config drive is an ISO file that is mounted as a cd-rom on a user VM and
-contains the user VM related userdata, metadata (incl. ssh-keys) and
+Config drive is an ISO file that is mounted as a cd-rom on a user Instance and
+contains related userdata, metadata (incl. ssh-keys) and
 password files.
 
 Enable config drive
@@ -103,13 +103,13 @@ To use the config drive the network offering must have the “ConfigDrive”
 provider selected for the userdata service.
 
 If the networkoffering uses ConfigDrive for userdata and the template is
-password enabled, the password string for the VM is placed in the
+password enabled, the password string for the Instance is placed in the
 vm_password.txt file and it is included in the ISO.
 
 ConfigDrive availability
 ~~~~~~~~~~~~~~~~~~~~~~~~
-At VM start the config drive ISO is attached on the 2nd cd/dvd drive of the
-user instance, such that any other ISO image (e.g. boot image or vmware tools)
+At Instance start the config drive ISO is attached on the 2nd cd/dvd drive of the
+user Instance, such that any other ISO image (e.g. boot image or vmware tools)
 is mounted on 1st cd/dvd drive. This means existing functionality of
 supporting 1 cd rom drive is still available.
 
@@ -118,10 +118,10 @@ will be rebuilt. The existing ISO is mounted on a temporary directory,
 password, userdata or ssh-keys are updated and a new ISO is built from the
 updated directory structure.
 
-In case of a password reset, the new password will be picked-up at VM start.
+In case of a password reset, the new password will be picked-up at Instance start.
 To access the updated userdata, the user needs to remount the config drive ISO.
 
-When a VM is stopped, the ConfigDrive network element will trigger the
+When an Instance is stopped, the ConfigDrive network element will trigger the
 Secondary Storage VM to remove the ISO from the secondary storage.
 If the config drive is stored on primary storage, the network element will
 trigger the host to remove the ISO.
@@ -133,7 +133,7 @@ supported with use of the KVM Hypervisor.
 Supporting ConfigDrive
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Extra data is added to the VM profile to enable the creation of the config drive:
+Extra data is added to the Instance profile to enable the creation of the config drive:
 
 VMdata - a list of String arrays representing [“directory”, “filename”, “content”] on the ConfigDrive device.
 
@@ -159,7 +159,7 @@ VMdata - a list of String arrays representing [“directory”, “filename”, 
 
     - vm_password.txt
 
-    - vm_password_md5checksum (for windows VM’s)
+    - vm_password_md5checksum (for windows instances)
 
 - <mountdir>/openstack/version/:
 

@@ -16,11 +16,10 @@
 Prepare the System VM Template
 ------------------------------
 
-From Apache CloudStack v4.16 onwards, upgrade path handles systemVM template registration, if not done prior to initiating upgrade.
-One may choose, to also omit the systemVM template seeding step during fresh installation of CloudStack, as support has been added to 
-initiate systemVM template registration for all hypervisors present in the zone when the first secondary storage pool is added.
-Secondary storage must be seeded with a template that is used for
-CloudStack system VMs.
+From Apache CloudStack v4.16 onwards, upgrade path handles SystemVM Template registration, if not done prior to initiating upgrade.
+One may choose, to also omit the SystemVM Template seeding step during fresh installation of CloudStack, as support has been added to
+initiate SystemVM Template registration for all hypervisors present in the zone when the first secondary storage pool is added.
+Secondary storage must be seeded with a Template that is used for CloudStack System VMs.
 
 .. note::
    When copying and pasting a command, be sure the command has pasted as a 
@@ -29,7 +28,7 @@ CloudStack system VMs.
 
 #. On the Management Server, run one or more of the following
    ``cloud-install-sys-tmplt`` commands to retrieve and decompress the
-   system VM template. Run the command for each hypervisor type that you
+   System VM Template. Run the command for each hypervisor type that you
    expect end users to run in this Zone.
 
    If your secondary storage mount point is not named ``/mnt/secondary``,

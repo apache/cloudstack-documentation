@@ -256,7 +256,7 @@ Hypervisor: VMware
    build using "noredist". Refer to :ref:`building-noredist`.
 
 
-No additional steps are requried for the VMware Hypervisor for this upgrade.
+No additional steps are required for the VMware Hypervisor for this upgrade.
 
 
 .. _kvm411:

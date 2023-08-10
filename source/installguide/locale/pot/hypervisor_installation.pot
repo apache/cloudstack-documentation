@@ -1668,7 +1668,7 @@ msgstr ""
 #: ../../hypervisor_installation.rst:1484
 # 21486bfc4a50447a974137680f2e8750
 msgid "If no bonding is done, the administrator must set up and name-label the separate storage network on all hosts (masters and slaves)."
-msgstr ""
+msgstr "
 
 #: ../../hypervisor_installation.rst:1487
 # e74b734827c148e4abf67add41daf5fa

@@ -23,7 +23,7 @@ In addition to the physical and logical infrastructure of your cloud and
 the CloudStack software and servers, you also need a layer of user services
 so that people can actually make use of the cloud. This means not just a
 user UI, but a set of options and resources that users can choose from,
-such as templates for creating virtual machines, disk storage, and more.
+such as templates for creating Instances, disk storage, and more.
 If you are running a commercial service, you will be keeping track of
 what services and resources users are consuming and charging them for
 that usage. Even if you do not charge anything for people to use your
@@ -91,7 +91,7 @@ Compute and Disk Service Offerings
 A service offering is a set of virtual hardware features such as CPU
 core count and speed, memory, and disk size. The CloudStack administrator
 can set up various offerings, and then end users choose from the
-available offerings when they create a new VM. Based on the user’s
+available offerings when they create a new instance. Based on the user’s
 selected offering, CloudStack emits usage records that can be integrated
 with billing systems.
 
@@ -100,7 +100,7 @@ Compute offerings may be "fixed", "custom constrained" or "custom unconstrained"
 In fixed offering the Number of CPUs, Memory and CPU frequency in each service
 offerings are predefined by the CloudStack administrator, in custom unconstrained
 offerings they are left undefined so that the end-user can enter their own desired
-values when creating a guest instance. Since 4.13 custom constrained offerings have
+values when creating a Guest Instance. Since 4.13 custom constrained offerings have
 been introduced to allow the end-user to enter the number of CPUs and memory
 required within constraints set by the administrator.  The constraints can be
 different for different custom constrained offerings.  This is useful to reduce
@@ -108,7 +108,7 @@ the number of offerings the CloudStack administrator has to define; Instead of
 defining a compute offering for every imaginable combination of values that a user
 might want, the administrator can define offerings that provide some
 flexibility to the users and can serve as the basis for several
-different VM configurations.
+different instance configurations.
 
 A service offering includes the following elements:
 
@@ -149,22 +149,22 @@ The disk offering specifies:
 
 
 To support the custom offerings, usage events register events for dynamically
-assigned resources. Usage events are registered when a VM is created
+assigned resources. Usage events are registered when an instance is created
 from a custom compute offering, and upon changing
-the compute offering of a stopped or running VM. The values of the
+the compute offering of a stopped or running instance. The values of the
 parameters, such as CPU, speed, RAM are recorded.
 
 
 Creating a New Compute Offering
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Along with the compute details of the VM, root volume definition is also
+Along with the compute details of the instance, root volume definition is also
 included in the compute offering. The root volume specifications can be included
 in the computer offering in two ways. One is disk specifications like disk size,
 storage type, tags can be included directly in the compute offering. The other way
 is linking a disk offering in the compute offering. The linked disk offering will
-be used for the root disk while creating the VM. Users can also choose a different
-disk offering for the root volume while creating the VM.
+be used for the root disk while creating the instance. Users can also choose a different
+disk offering for the root volume while creating the instance.
 
 Following are the two ways of creating the compute offering.
 
@@ -220,7 +220,7 @@ To create a new compute offering:
    -  **CPU (in MHz)**: The CPU speed of the cores that the guest instance is
       allocated. For example, “2000” would provide a 2GHz CPU clock speed.
       **This setting only used if CPU cap is selected.**
-      This value is also passed to the hypervisor as a share value to give VMs
+      This value is also passed to the hypervisor as a share value to give instances
       relative priority when a hypervisor host is over-provisioned.
       If 'Custom unconstrained' is checked this field does not appear as the user
       will be prompted to enter a value when creating their guest instance.
@@ -240,30 +240,30 @@ To create a new compute offering:
    -  **Offer HA**: If yes, the administrator can choose to have the
       system VM be monitored and as highly available as possible.
 
-   -  **Dynamic Scaling Enabled**: If yes, virtual machine can be dynamically scalable of cpu or memory
+   -  **Dynamic Scaling Enabled**: If yes, Instance can be dynamically scalable of cpu or memory
 
    -  **CPU cap**: Whether to limit the level of CPU usage even if spare
       capacity is available.
 
-   -  **Volatile**: If checked, VMs created from this service offering
+   -  **Volatile**: If checked, instances created from this service offering
       will have their root disks reset upon reboot. This is useful for
       secure environments that need a fresh start on every boot and for
       desktops that should not retain state.
 
    -  **Deployment Planner**: Choose the technique that you would like
-      CloudStack to use when deploying VMs based on this service
+      CloudStack to use when deploying instances based on this service
       offering.
 
-      -  **First Fit**: places new VMs on the first host that is found having
-         sufficient capacity to support the VM's requirements.
+      -  **First Fit**: places new instances on the first host that is found having
+         sufficient capacity to support the instance's requirements.
 
-      -  **User Dispersing**: makes the best effort to evenly distribute VMs
+      -  **User Dispersing**: makes the best effort to evenly distribute instances
          belonging to the same account on different clusters or pods.
 
-      -  **User Concentrated**: prefers to deploy VMs belonging to the same
+      -  **User Concentrated**: prefers to deploy instances belonging to the same
          account within a single pod.
 
-      -  **Implicit Dedication**: will deploy VMs on private infrastructure that
+      -  **Implicit Dedication**: will deploy instances on private infrastructure that
          is dedicated to a specific domain or account. If you choose this
          planner, then you must also pick a value for Planner Mode. See
          `Dedicating Resources to Accounts and Domains <accounts.html#dedicating-resources-to-accounts-and-domains>`_.
@@ -272,7 +272,7 @@ To create a new compute offering:
          Installation in the Installation Guide.
 
    -  **Planner Mode**: Used when ImplicitDedicationPlanner is selected
-      in the previous field. The planner mode determines how VMs will be
+      in the previous field. The planner mode determines how instances will be
       deployed on private infrastructure that is dedicated to a single
       domain or account.
 
@@ -282,25 +282,25 @@ To create a new compute offering:
          be shared between different accounts without violating the desktop
          software's terms of license.
 
-      -  Preferred: The VM will be deployed in dedicated infrastructure if
-         possible. Otherwise, the VM can be deployed in shared infrastructure.
+      -  Preferred: The instance will be deployed in dedicated infrastructure if
+         possible. Otherwise, the instance can be deployed in shared infrastructure.
 
    -  **GPU**: Assign a physical GPU(GPU-passthrough) or a portion of a physical
-      GPU card (vGPU) to the guest VM. It allows graphical applications to run on the VM.
+      GPU card (vGPU) to the guest instance. It allows graphical applications to run on the instance.
       Select the card from the supported list of cards.
       The options given are NVIDIA GRID K1 and NVIDIA GRID K2. These are vGPU
       capable cards that allow multiple vGPUs on a single physical GPU. If you
       want to use a card other than these, follow the instructions in the
-      **"GPU and vGPU support for CloudStack Guest VMs"** page in the
+      **"GPU and vGPU support for CloudStack Guest instances"** page in the
       Cloudstack Version 4.4 Design Docs found in the Cloudstack Wiki.
 
    -  **vGPU Type**: Represents the type of virtual GPU to be assigned to a
-      guest VM. In this case, only a portion of a physical GPU card (vGPU) is
-      assigned to the guest VM.
+      guest instance. In this case, only a portion of a physical GPU card (vGPU) is
+      assigned to the guest instance.
       Additionally, the **passthrough vGPU** type is defined to represent a physical GPU
-      device. A **passthrough vGPU** can directly be assigned to a single guest VM.
+      device. A **passthrough vGPU** can directly be assigned to a single guest instance.
       In this case, a physical GPU device is exclusively allotted to a single
-      guest VM.
+      guest instance.
 
    -  **Public**: Indicate whether the compute offering should be
       available to all domains or only some domains. Choose Yes to make it
@@ -379,7 +379,7 @@ To create a new compute offering:
             if the root disk is 20 GB and Hypervisor Snapshot Reserve is 200%, the
             storage volume that backs the storage repository (XenServer) or
             datastore (VMware) in question is sized at 60 GB (20 GB + (20 GB * 2)).
-            This enables space for hypervisor snapshots in addition to the virtual
+            This enables space for hypervisor Snapshots in addition to the virtual
             disk that represents the root disk. This does not apply for KVM.
 
          -  **Storage Tags**: The tags that should be associated with the
@@ -393,14 +393,14 @@ To create a new compute offering:
          -  **Disk Offerings**: Select one disk offering from the list with which compute offering will be associated 
 
          -  **Disk Offering Strictness**: This flag defines the strictness of the disk offering association 
-            with the compute offering. When set to true, overriding of disk offering is not allowed on deploy VM 
+            with the compute offering. When set to true, overriding of disk offering is not allowed on deploy instance
             and change disk offering is not allowed for the ROOT disk
 
 #. Click Add.
 
 
 
-.. [1] These options are dependant on the capabilities of the hypervisor or the shared storage system which the VMs are on.
+.. [1] These options are dependant on the capabilities of the hypervisor or the shared storage system which the instances are on.
    If the hypervisor or underlying storage don't support a particular capability in the offering, the setting will have no effect.
 
 
@@ -477,7 +477,7 @@ To create a new disk offering:
       if the data disk is 20 GB and Hypervisor Snapshot Reserve is 200%, the
       storage volume that backs the storage repository (XenServer) or
       datastore (VMware) in question is sized at 60 GB (20 GB + (20 GB * 2)).
-      This enables space for hypervisor snapshots in addition to the virtual
+      This enables space for hypervisor Snapshots in addition to the virtual
       disk that represents the data disk. This does not apply for KVM.
 
    -  **(Optional)Storage Tags**: The tags that should be associated with
@@ -508,7 +508,7 @@ To create a new disk offering:
 
 #. Click Add.
 
-.. [2] These options are dependant on the capabilities of the hypervisor or the shared storage system which the VMs are on.
+.. [2] These options are dependant on the capabilities of the hypervisor or the shared storage system which the instances are on.
    If the hypervisor or underlying storage don't support a particular capability in the offering, the setting will have no effect.
 
 
@@ -524,7 +524,7 @@ click on the update offering access button |update-service-offering-button.png|.
 
 A service offering can be deleted. If it is no longer in use, it is
 deleted immediately and permanently. If the service offering is still in
-use, it will remain in the database until all the virtual machines
+use, it will remain in the database until all the Instances
 referencing it have been deleted. After deletion by the administrator, a
 service offering will not be available to end users that are creating
 new instances.
@@ -535,7 +535,7 @@ System Service Offerings
 
 System service offerings provide a choice of CPU speed, number of CPUs,
 tags, and RAM size, just as other service offerings do. But rather than
-being used for virtual machine instances and exposed to users, system
+being used for Instance and exposed to users, system
 service offerings are used to change the default properties of virtual
 routers, console proxies, and other system VMs. System service offerings
 are visible only to the CloudStack root administrator. CloudStack
@@ -658,13 +658,13 @@ Storage network of Console Proxy VM         System Network Offering
 Management network of Console Proxy VM      System Network Offering
 Storage network of Virtual Router           System Network Offering
 Management network of Virtual Router        System Network Offering
-Public network of Secondary Storage VM      System Network Offering
-Public network of Console Proxy VM          System Network Offering
-Default network of a guest VM               Compute Offering
-Additional networks of a guest VM           Corresponding Network Offerings
+Public network of Secondary Storage instance      System Network Offering
+Public network of Console Proxy instance          System Network Offering
+Default network of a guest instance               Compute Offering
+Additional networks of a guest instance           Corresponding Network Offerings
 =========================================== ===============================
 
-A guest VM must have a default network, and can also have many
+A guest instance must have a default network, and can also have many
 additional networks. Depending on various parameters, such as the host
 and virtual switch used, you can observe a difference in the network
 rate in your cloud. For example, on a VMware host the actual network

@@ -101,15 +101,15 @@ of resources.
 Support Admin
 ~~~~~~~~~~~~~
 
-A restricted admin role in which an admin account is limited to perform axilary support
-and maintenance tasks which do not directly affect the infrastucture, such as creating offerings,
+A restricted admin role in which an admin account is limited to perform auxiliary support
+and maintenance tasks which do not directly affect the infrastructure, such as creating offerings,
 and put resources in maintenance, but cannot change the infrastructure such as physical networks.
 
 Support User
 ~~~~~~~~~~~~
 
 A restricted user role in which an account cannot create or destroy resources, but can view resources
-and perform auxilary and support operations such as start or stop VMs, attach or detach volumes, ISOs etc.
+and perform auxiliary and support operations such as start or stop instances, attach or detach volumes, ISOs etc.
 
 
 Resource Ownership
@@ -120,9 +120,9 @@ For example, billing, resource limits, and so on are maintained by the
 account, not the users. A user can operate on any resource in the
 account provided the user has privileges for that operation. The
 privileges are determined by the role. A root administrator can change
-the ownership of any virtual machine from one account to any other
+the ownership of any Instance from one account to any other
 account by using the assignVirtualMachine API. A domain or sub-domain
-administrator can do the same for VMs within the domain from one account
+administrator can do the same for instances within the domain from one account
 to any other account in the domain or any of its sub-domains.
 
 .. _using-dynamics-roles:
@@ -138,7 +138,7 @@ restarting the management server(s).
 .. Note:: in versions before 4.16.1, any user given the custom roles
           that include permission to create and/or update accounts
           will have the ability to assign new custom roles to
-          themsevles or other users, irrespective of the privileges
+          themselves or other users, irrespective of the privileges
           given in those roles. This could allow such a user to
           escalate their own privileges to include any API they might
           not have had before. Therefore, the dynamic roles should be
@@ -263,8 +263,8 @@ There are several types of dedication available:
    no host can be shared between different accounts without violating
    the desktop software's terms of license.
 
--  Preferred implicit dedication. The VM will be deployed in dedicated
-   infrastructure if possible. Otherwise, the VM can be deployed in
+-  Preferred implicit dedication. The instance will be deployed in dedicated
+   infrastructure if possible. Otherwise, the instance can be deployed in
    shared infrastructure.
 
 
@@ -284,7 +284,7 @@ offering and in the Deployment Planner field, chooses
 ImplicitDedicationPlanner. Then in Planner Mode, the administrator
 specifies either Strict or Preferred, depending on whether it is
 permissible to allow some use of shared resources when dedicated
-resources are not available. Whenever a user creates a VM based on this
+resources are not available. Whenever a user creates an instance based on this
 service offering, it is allocated on one of the dedicated hosts.
 
 
@@ -293,7 +293,7 @@ How to Use Dedicated Hosts
 
 To use an explicitly dedicated host, use the explicit-dedicated type of
 affinity group (see `“Affinity Groups” <virtual_machines.html#affinity-groups>`_).
-For example, when creating a new VM, an
+For example, when creating a new instance, an
 end user can choose to place it on dedicated infrastructure. This
 operation will succeed only if some infrastructure has already been
 assigned as dedicated to the user's account or domain.
@@ -302,17 +302,17 @@ assigned as dedicated to the user's account or domain.
 Behavior of Dedicated Hosts, Clusters, Pods, and Zones
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The administrator can live migrate VMs away from dedicated hosts if
+The administrator can live migrate instances away from dedicated hosts if
 desired, whether the destination is a host reserved for a different
 account/domain or a host that is shared (not dedicated to any particular
 account or domain). CloudStack will generate an alert, but the operation
 is allowed.
 
 Dedicated hosts can be used in conjunction with host tags. If both a
-host tag and dedication are requested, the VM will be placed only on a
+host tag and dedication are requested, the instance will be placed only on a
 host that meets both requirements. If there is no dedicated resource
 available to that user that also has the host tag requested by the user,
-then the VM will not deploy.
+then the instance will not deploy.
 
 If you delete an account or domain, any hosts, clusters, pods, and zones
 that were dedicated to it are freed up. They will now be available to be
@@ -322,7 +322,7 @@ re-dedicate them to a different account or domain.
 System VMs and virtual routers affect the behavior of host dedication.
 System VMs and virtual routers are owned by the CloudStack system
 account, and they can be deployed on any host. They do not adhere to
-explicit dedication. The presence of system vms and virtual routers on a
+explicit dedication. The presence of system VMs and virtual routers on a
 host makes it unsuitable for strict implicit dedication. The host can
 not be used for strict implicit dedication, because the host already has
 VMs of a specific account (the default system account). However, a host
@@ -356,7 +356,7 @@ three ways where developed as extensions on top of each other.
 To authenticate, in all three cases username and password entered by
 the user are used.
 
-#. **manual import**. A user is explicitely mapped to a domain/account
+#. **manual import**. A user is explicitly mapped to a domain/account
    and created as a user in that account.
 
        #. CloudStack does a search for a user with the given username.

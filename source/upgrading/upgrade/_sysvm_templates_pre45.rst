@@ -15,11 +15,11 @@
 
 .. sub-section included in upgrade notes.
 
-Update System-VM templates
+Update System-VM Templates
 --------------------------
 
 .. warning::
-   Upgrading from 4.4 or older to 4.6.0 require 2 systemvm templates to be
+   Upgrading from 4.4 or older to 4.6.0 require 2 systemvm Templates to be
    downloaded, for 4.5 and 4.6.
 
 #. While running the existing |version_to_upgrade| system, log in to the UI as 
@@ -29,13 +29,13 @@ Update System-VM templates
 
 #. In Select view, click Templates.
 
-#. Register 4.5 systemvm template:
+#. Register 4.5 systemvm Template:
    
-   #. Click Register template.
+   #. Click Register Template.
 
-      The Register template dialog box is displayed.
+      The Register Template dialog box is displayed.
 
-   #. In the Register template dialog box, specify the following values
+   #. In the Register Template dialog box, specify the following values
       (do not change these):
 
       .. cssclass:: table-striped table-bordered table-hover
@@ -122,13 +122,13 @@ Update System-VM templates
       |            | Routing: no                                                |
       +------------+------------------------------------------------------------+
 
-#. Register |release| systemvm template:
+#. Register |release| System VM Template:
    
-   #. Click Register template.
+   #. Click Register Template.
 
-      The Register template dialog box is displayed.
+      The Register Template dialog box is displayed.
 
-   #. In the Register template dialog box, specify the following values
+   #. In the Register Template dialog box, specify the following values
       (do not change these):
 
       .. cssclass:: table-striped table-bordered table-hover
@@ -215,5 +215,5 @@ Update System-VM templates
       |            | Routing: no                                                |
       +------------+------------------------------------------------------------+
 
-#. Watch the screen to be sure that the template downloads successfully and 
+#. Watch the screen to be sure that the Template downloads successfully and
    enters the **READY** state. Do not proceed until this is successful.

@@ -86,11 +86,11 @@ Creating Template jobs
 
    |BnR-CreateDummyTag.jpg|
 
-#. Now create the template job in Veeam Backup and Replication Manager. using the New Backup Job (Virtual Machine) wizard.
+#. Now create the template job in Veeam Backup and Replication Manager. Using the New Backup Job (Instance) wizard.
 
    #. Give the job a name that describes what the job does ie *template_job_zone1_default* or *template_daily_job-14_kept*
       (the end user will not see this name).
-   #. In the Virtual Machines section of the wizard, click 'Add' and select the 'VMs and Tags' filter (top right of the 
+   #. In the Instances section of the wizard, click 'Add' and select the 'VMs and Tags' filter (top right of the
       'Add Objects' dialog box). And then select your dummy tag and click on Add.
 
       |BnR-VMsandTags.jpg|

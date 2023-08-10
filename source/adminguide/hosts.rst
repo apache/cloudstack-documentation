@@ -220,7 +220,7 @@ Following hypervisor-specific documentations can be referred for different maxim
 
 
 .. note::
-   Guest VM limit check is not done while deploying a VM on a KVM hypervisor host.
+   Guest VM limit check is not done while deploying an Instance on a KVM hypervisor host.
 
 
 
@@ -314,7 +314,7 @@ global over-provisioning setting can not provide the best utilization
 for all the different clusters in the cloud. It has to be set for the
 lowest common denominator. The per-cluster setting provides a finer
 granularity for better utilization of resources, no matter where the
-CloudStack placement algorithm decides to place a VM.
+CloudStack placement algorithm decides to place an Instance.
 
 The overprovisioning settings can be used along with dedicated resources
 (assigning a specific cluster to an account) to effectively offer
@@ -338,7 +338,7 @@ Limitations on Over-Provisioning in XenServer and KVM
 
 -  The KVM hypervisor can not manage memory allocation to VMs
    dynamically. CloudStack sets the minimum and maximum amount of memory
-   that a VM can use. The hypervisor adjusts the memory within the set
+   that an Instance can use. The hypervisor adjusts the memory within the set
    limits based on the memory contention.
 
 
@@ -356,28 +356,28 @@ Balloon Driver
 
 All VMs should have a balloon driver installed in them. The hypervisor
 communicates with the balloon driver to free up and make the memory
-available to a VM.
+available to an Instance.
 
 
 XenServer
 '''''''''
 
 The balloon driver can be found as a part of xen pv or PVHVM drivers.
-The xen pvhvm drivers are included in upstream linux kernels 2.6.36+.
+The xen PVHVM drivers are included in upstream linux kernels 2.6.36+.
 
 
 VMware
 ''''''
 
 The balloon driver can be found as a part of the VMware tools. All the
-VMs that are deployed in a over-provisioned cluster should have the
+Instances that are deployed in a over-provisioned cluster should have the
 VMware tools installed.
 
 
 KVM
 '''
 
-All KVM VMs are required to support the virtio drivers. These drivers are
+All KVM Instances are required to support the virtio drivers. These drivers are
 installed in all Linux kernel versions 2.6.25 and greater. The
 administrator must set CONFIG\_VIRTIO\_BALLOON=y in the virtio
 configuration. Drivers for Windows can be downloaded from
@@ -445,19 +445,19 @@ cpu.overprovisioning.factor and mem.overprovisioning.factor will be
 applied when a new cluster is created. Later, the factors can be modified
 for an existing cluster.
 
-Only VMs deployed after the change are affected by the new setting. If
-you want VMs deployed before the change to adopt the new
-over-provisioning factor, you must stop and restart the VMs. When this is
+Only Instances deployed after the change are affected by the new setting. If
+you want Instances deployed before the change to adopt the new
+over-provisioning factor, you must stop and restart the instances. When this is
 done, CloudStack recalculates or scales the used and reserved capacities
 based on the new over-provisioning factors, to ensure that CloudStack is
 correctly tracking the amount of free capacity.
 
 .. note::
-   It is safer not to deploy additional new VMs while the capacity
+   It is safer not to deploy additional new Instances while the capacity
    recalculation is underway, in case the new values for available
-   capacity are not high enough to accommodate the new VMs. Just wait
+   capacity are not high enough to accommodate the new instances. Just wait
    for the new used/available values to become available, to be sure
-   there is room for all the new VMs you want.
+   there is room for all the new Instances you want.
 
 To change the over-provisioning factors for an existing cluster:
 
@@ -822,7 +822,7 @@ Feature Overview
 -  This feature applies to KVM hosts.
 -  KVM utilised under CloudStack uses the standard Libvirt hook script behaviour as outlined in the Libvirt documentation page `hooks`_.
 -  During the install of the KVM CloudStack agent, the Libvirt hook script "/etc/libvirt/hooks/qemu", referred to as the qemu script hereafter is installed.
--  This is a python script that carries out network management tasks every time a VM is started, stopped or migrated, as per the Libvirt hooks specification.
+-  This is a python script that carries out network management tasks every time an Instance is started, stopped or migrated, as per the Libvirt hooks specification.
 -  Custom network configuration tasks can be done at the same time as the qemu script is called.
 -  Since the tasks in question are user-specific, they cannot be included in the CloudStack-provided qemu script.
 

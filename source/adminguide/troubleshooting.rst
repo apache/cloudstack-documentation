@@ -155,13 +155,13 @@ Solution
 Use vCenter to place the host in maintenance mode.
 
 
-Unable to deploy VMs from uploaded vSphere template
+Unable to deploy instances from uploaded vSphere template
 ---------------------------------------------------
 
 Symptom
 ~~~~~~~~
 
-When attempting to create a VM, the VM will not deploy.
+When attempting to create an instance, it does not deploy.
 
 
 Cause
@@ -169,7 +169,7 @@ Cause
 
 If the template was created by uploading an OVA file that was created
 using vSphere Client, it is possible the OVA contained an ISO image. If
-it does, the deployment of VMs from the template will fail.
+it does, the deployment of instances from the template will fail.
 
 
 Solution
@@ -178,29 +178,29 @@ Solution
 Remove the ISO and re-upload the template.
 
 
-Unable to power on virtual machine on VMware
---------------------------------------------
+Unable to power on Instance on VMware
+-------------------------------------
 
 Symptom
 ~~~~~~~
 
-Virtual machine does not power on. You might see errors like:
+Instance does not power on. You might see errors like:
 
 -  Unable to open Swap File
 
 -  Unable to access a file since it is locked
 
--  Unable to access Virtual machine configuration
+-  Unable to access Instance configuration
 
 
 Cause
 ~~~~~
 
 A known issue on VMware machines. ESX hosts lock certain critical
-virtual machine files and file systems to prevent concurrent changes.
-Sometimes the files are not unlocked when the virtual machine is powered
-off. When a virtual machine attempts to power on, it can not access
-these critical files, and the virtual machine is unable to power on.
+Instance files and file systems to prevent concurrent changes.
+Sometimes the files are not unlocked when the Instance is powered
+off. When an Instance attempts to power on, it can not access
+these critical files, and the Instance is unable to power on.
 
 
 Solution
@@ -343,7 +343,7 @@ Trouble Shooting Steps
    interfaces bridge. This virtual interface to physical interface mapping
    is done automatically by CloudStack using the traffic label settings for
    the Zone. If you have provided correct settings and still dont have a
-   working working Internet, check the switching layer before you debug any
+   working Internet, check the switching layer before you debug any
    further. You can verify traffic using tcpdump on the virtual, physical
    and bridge interfaces.
 
@@ -436,7 +436,7 @@ Trouble Shooting Steps
 
    .. image:: /_static/images/networking-ingress-rule.png
 
-#. The VM Instances by default wont be able to access the Internet. Add
+#. The instances by default won't be able to access the Internet. Add
    Egress rules to permit traffic.
 
    .. image:: /_static/images/networking-egress-rule.png

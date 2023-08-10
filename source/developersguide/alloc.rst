@@ -24,10 +24,10 @@ allocate guest virtual disk images.
 These are following categories of allocators currently supported:
 
 -  HostAllocators - Allows you to create custom rules to determine which
-   physical host to allocate the guest virtual machines on.
+   physical host to allocate the Guest Instances on.
 
 -  StoragePoolAllocators - Allows you to create custom rules to
-   determine which storage pool to allocate the guest virtual machines
+   determine which storage pool to allocate the Guest Instances
    on.
 
 
@@ -46,7 +46,7 @@ The interface defines the following two methods.
 ::
 
    /**
-     * Checks if the VM can be upgraded to the specified ServiceOffering
+     * Checks if the Instance can be upgraded to the specified ServiceOffering
      * @param UserVm vm
      * @param ServiceOffering offering
      * @return boolean true if the VM can be upgraded
@@ -55,7 +55,7 @@ The interface defines the following two methods.
    publicboolean isVirtualMachineUpgradable(final UserVm vm, final ServiceOffering offering);
 
    /**
-     * Determines which physical hosts are suitable to allocate the guest virtual machines on
+     * Determines which physical hosts are suitable to allocate the Guest Instances on
      *
      * @paramVirtualMachineProfile vmProfile
      * @paramDeploymentPlan plan
@@ -76,35 +76,35 @@ Input Parameters for the method ‘HostAllocator :: allocateTo’
 
 *com.cloud.vm.VirtualMachineProfile vmProfile*
 
-VirtualMachineProfile describes one virtual machine. This allows the
+VirtualMachineProfile describes one Instance. This allows the
 adapters like Allocators to process the information in the virtual
-machine and make determinations on what the virtual machine profile
+machine and make determinations on what the Instance profile
 should look like before it is actually started on the hypervisor.
 
 HostAllocators can make use of the following information present in the
 VirtualMachineProfile:
 
 -  The ServiceOffering that specifies configuration like requested CPU
-   speed, RAM etc necessary for the guest VM.
+   speed, RAM etc necessary for the Guest Instance.
 
--  The VirtualMachineTemplate, the template to be used to start the VM.
+-  The VirtualMachineTemplate, the Template to be used to start the Instance.
 
 *com.cloud.deploy.DeploymentPlan plan*
 
 DeploymentPlan should specify:
 
--  dataCenterId: The data center the VM should deploy in
+-  dataCenterId: The data center the Instance should deploy in
 
--  podId: The pod the Vm should deploy in; null if no preference
+-  podId: The pod the Instance should deploy in; null if no preference
 
--  clusterId: The cluster the VM should deploy in; null if no preference
+-  clusterId: The cluster the Instance should deploy in; null if no preference
 
--  poolId: The storage pool the VM should be created in; null if no
+-  poolId: The storage pool the Instance should be created in; null if no
    preference
 
 *com.cloud.host.Host.Type type*
 
-Type of the Host needed for this guest VM. Currently
+Type of the Host needed for this Guest Instance. Currently
 com.cloud.host.Host.Type interface defines the following Host types:
 
 -  Storage
@@ -122,7 +122,7 @@ com.cloud.host.Host.Type interface defines the following Host types:
 *com.cloud.deploy.DeploymentPlanner.ExcludeList avoid*
 
 The ExcludeList specifies what datacenters, pods, clusters, hosts,
-storagePools should not be considered for allocating this guest VM.
+storagePools should not be considered for allocating this Guest Instance.
 HostAllocators should avoid the hosts that are mentioned in
 ExcludeList.hostIds.
 
@@ -138,7 +138,7 @@ ExcludeList.hostIds.
 
 *int returnUpTo*
 
-This specifies return up to that many available hosts for this guest VM.
+This specifies return up to that many available hosts for this Guest Instance.
 
 To get all possible hosts, set this value to -1.
 
@@ -152,7 +152,7 @@ hosts in the specified datacenter, Pod, Cluster and considering the
 given ServiceOffering requirements.
 
 If returnUpTo = 1, this allocator would return the first Host that fits
-the requirements of the guest VM.
+the requirements of the Guest Instance.
 
 
 Loading a custom HostAllocator
@@ -198,7 +198,7 @@ A custom StoragePoolAllocator can be written by implementing the
 ::
 
    /**
-     * Determines which storage pools are suitable for the guest virtual machine
+     * Determines which storage pools are suitable for the guest Instance
      * @param DiskProfile dskCh
      * @param VirtualMachineProfile vmProfile
      * @param DeploymentPlan plan
@@ -227,36 +227,36 @@ searching for a storage pool.
 
 *com.cloud.vm.VirtualMachineProfile vmProfile*
 
-VirtualMachineProfile describes one virtual machine. This allows the
+VirtualMachineProfile describes one Instance. This allows the
 adapters like Allocators to process the information in the virtual
-machine and make determinations on what the virtual machine profile
+machine and make determinations on what the Instance profile
 should look like before it is actually started on the hypervisor.
 
 StoragePoolAllocators can make use of the following information present
 in the VirtualMachineProfile:
 
--  The VirtualMachine instance that specifies properties of the guest
-   VM.
+-  The VirtualMachine Instance that specifies properties of the guest
+   Instance.
 
--  The VirtualMachineTemplate, the template to be used to start the VM.
+-  The VirtualMachineTemplate, the Template to be used to start the Instance.
 
 *com.cloud.deploy.DeploymentPlan plan*
 
 DeploymentPlan should specify:
 
--  dataCenterId: The data center the VM should deploy in
+-  dataCenterId: The data center the Instance should deploy in
 
--  podId: The pod the VM should deploy in; null if no preference
+-  podId: The pod the Instance should deploy in; null if no preference
 
--  clusterId: The cluster the VM should deploy in; null if no preference
+-  clusterId: The cluster the Instance should deploy in; null if no preference
 
--  poolId: The storage pool the VM should be created in; null if no
+-  poolId: The storage pool the Instance should be created in; null if no
    preference
 
 *com.cloud.deploy.DeploymentPlanner.ExcludeList avoid*
 
 The ExcludeList specifies what datacenters, pods, clusters, hosts,
-storagePools should not be considered for allocating this guest VM.
+storagePools should not be considered for allocating this Guest Instance.
 StoragePoolAllocators should avoid the pools that are mentioned in
 ExcludeList.poolIds
 
@@ -272,7 +272,7 @@ ExcludeList.poolIds
 
 *int returnUpTo*
 
-This specifies return up to that many available pools for this guest VM
+This specifies return up to that many available pools for this Guest Instance
 
 To get all possible pools, set this value to -1
 
@@ -286,7 +286,7 @@ available pools in the specified datacenter, Pod, Cluster and
 considering the given DiskProfile characteristics.
 
 If returnUpTo = 1, this allocator would return the first Storage Pool
-that fits the requirements of the guest VM.
+that fits the requirements of the Guest Instance.
 
 
 Loading a custom StoragePoolAllocator

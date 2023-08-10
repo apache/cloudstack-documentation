@@ -186,7 +186,7 @@ operating system version.
       vi /etc/sysconfig/iptables
 
    Add the following lines at the beginning of the INPUT chain, where
-   <NETWORK> is the network that you'll be using:
+   <NETWORK> is the Network that you'll be using:
 
    .. parsed-literal::
 

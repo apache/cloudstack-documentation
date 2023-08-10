@@ -83,7 +83,7 @@ New API Commands
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``listTungstenFabricPolicyRule``                           | list Tungsten-Fabric policy                                                    |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``resetUserDataForVirtualMachine``                         | Resets the UserData for virtual machine. The virtual machine must be in a      |
+| ``resetUserDataForVirtualMachine``                         | Resets the UserData for Instance. The Instance must be in a                    |
 |                                                            | "Stopped" state. [async]                                                       |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``listTungstenFabricNetwork``                              | list Tungsten-Fabric network                                                   |
@@ -118,19 +118,19 @@ New API Commands
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``listVolumesUsageHistory``                                | Lists volume stats                                                             |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``createConsoleEndpoint``                                  | Create a console endpoint to connect to a VM console                           |
+| ``createConsoleEndpoint``                                  | Create a console endpoint to connect to an instance console                    |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``deleteTungstenFabricFirewallPolicy``                     | delete Tungsten-Fabric firewall policy                                         |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``updateTungstenFabricLBHealthMonitor``                    | update Tungsten-Fabric loadbalancer health monitor                             |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``updateCondition``                                        | Updates a condition for VM auto scaling                                        |
+| ``updateCondition``                                        | Updates a condition for instance auto scaling                                  |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``removeTungstenFabricTag``                                | remove Tungsten-Fabric tag                                                     |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``listTungstenFabricPolicy``                               | list Tungsten-Fabric policy                                                    |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``listTungstenFabricVm``                                   | list Tungsten-Fabric vm                                                        |
+| ``listTungstenFabricVm``                                   | list Tungsten-Fabric instance                                                  |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``addTungstenFabricPolicyRule``                            | add Tungsten-Fabric policy rule                                                |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
@@ -144,7 +144,7 @@ New API Commands
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``deleteTungstenFabricFirewallRule``                       | delete Tungsten-Fabric firewall rule                                           |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``listSystemVmsUsageHistory``                              | Lists System VM stats                                                          |
+| ``listSystemVmsUsageHistory``                              | Lists System instance stats                                                    |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``registerUserData``                                       | Register a new userdata.                                                       |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+

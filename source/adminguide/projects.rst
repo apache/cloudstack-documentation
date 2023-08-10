@@ -19,7 +19,7 @@ Overview of Projects
 
 Projects are used to organize people and resources. CloudStack users
 within a single domain can group themselves into project teams so they
-can collaborate and share virtual resources such as VMs, snapshots,
+can collaborate and share virtual resources such as Instances, Snapshots,
 templates, data disks, and IP addresses. CloudStack tracks resource
 usage per project as well as per user, so the usage can be billed to
 either a user account or a project. For example, a private cloud within
@@ -35,9 +35,9 @@ you can add others within your domain to the project. CloudStack can be
 set up to either add people directly to a project, or to send an
 invitation which the recipient must accept. Project members can view
 and manage all virtual resources created by anyone in the project
-(for example, share VMs). A user can be a member of any number of projects
+(for example, share instances). A user can be a member of any number of projects
 and can switch views in the CloudStack UI to show only project-related information,
-such as project VMs, fellow project members, project-related alerts, and so on.
+such as project instances, fellow project members, project-related alerts, and so on.
 
 From CloudStack 4.15 onwards, it is possible for a project to have
 multiple project administrators and to add/invite specific users of
@@ -66,7 +66,7 @@ The project administrator can also add more members, remove members
 from the project, set new resource limits (as long as they are
 below the global defaults set by the CloudStack administrator), and
 delete the project. When the administrator removes a member from the
-project, resources created by that user, such as VM instances, remain
+project, resources created by that user, such as instances, remain
 with the project. This brings us to the subject of resource ownership
 and which resources can be used by a project.
 
@@ -152,12 +152,11 @@ Setting Resource Limits for Projects
 The CloudStack administrator can set global default limits to control
 the amount of resources that can be owned by each project in the cloud.
 This serves to prevent uncontrolled usage of resources such as
-snapshots, IP addresses, and virtual machine instances. Domain
-administrators can override these resource limits for individual
-projects with their domains, as long as the new limits are below the
-global defaults set by the CloudStack root administrator. The root
-administrator can also set lower resource limits for any project in the
-cloud
+Snapshots, IP addresses, and Instances. Domain administrators can override
+these resource limits for individual projects with their domains,
+as long as the new limits are below the global defaults set by the CloudStack
+root administrator. The root administrator can also set lower resource limits
+for any project in the cloud.
 
 Setting Per-Project Resource Limits
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -209,11 +208,11 @@ Setting the Global Project Resource Limits
    +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
    | max.project.public.ips   | Maximum number of public IP addresses that can be owned by any project in the cloud. See About Public IP Addresses.          |
    +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
-   | max.project.snapshots    | Maximum number of snapshots that can be owned by any project in the cloud. See Working with Snapshots.                       |
+   | max.project.snapshots    | Maximum number of Snapshots that can be owned by any project in the cloud. See Working with Snapshots.                       |
    +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
-   | max.project.templates    | Maximum number of templates that can be owned by any project in the cloud. See Working with Templates.                       |
+   | max.project.templates    | Maximum number of Templates that can be owned by any project in the cloud. See Working with Templates.                       |
    +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
-   | max.project.uservms      | Maximum number of guest virtual machines that can be owned by any project in the cloud. See Working With Virtual Machines.   |
+   | max.project.uservms      | Maximum number of guest Instances that can be owned by any project in the cloud. See Working With Instances.                 |
    +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
    | max.project.volumes      | Maximum number of data volumes that can be owned by any project in the cloud. See Working with Volumes.                      |
    +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
@@ -403,7 +402,7 @@ and resources.
 
 #. Click Project View.
 
-#. The project dashboard appears, showing the project’s VMs, volumes,
+#. The project dashboard appears, showing the project’s instances, volumes,
    users, events, network settings, and more. From the dashboard, you
    can:
 

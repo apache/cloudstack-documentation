@@ -15,7 +15,7 @@
 
 .. sub-section included in upgrade notes.
 
-Update System-VM templates
+Update System VM Templates
 --------------------------
 
 Upgrade from |version_to_upgrade| to |version| does not require new systemvm-templates.
