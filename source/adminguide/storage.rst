@@ -75,7 +75,7 @@ Administrators add primary storage to the system by creating a
 CloudStack storage pool. Each storage pool is associated with a cluster
 or a zone.
 
-With regards to data disks, when a user executes a Disk Offering to
+With regards to data disks, when a User executes a Disk Offering to
 create a data disk, the information is initially written to the
 CloudStack database only. Upon the first request that the data disk be
 attached to an Instance, CloudStack determines what storage to place the volume

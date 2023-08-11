@@ -50,12 +50,12 @@ A user signs up for a 'Gold' offering, which might give them a RPO of 12 hours a
 allowed to perform additional backups nor set the exact time that these backups took place.  The user might be charged
 a fix rate for these backups regardless of the size of the backups.
 
-To use an SLA based backup policy the user adds their instances to the offering/policy.  The job then runs at its predetermined times and 'includes' the
-instance when it runs. A user can remove the instance from the offering/policy and it will no longer be included in the job when it runs.
+To use an SLA based backup policy the user adds their Instances to the offering/policy.  The job then runs at its predetermined times and 'includes' the
+Instance when it runs. A user can remove the Instance from the offering/policy and it will no longer be included in the job when it runs.
 
 Adhoc and user scheduled backups follow the same idea as Volume Snapshots, however they leverage the backup solution
 rather than secondary storage.  These could likely be billed on backup storage consumed or protected capacity (the full virtual
-size of the instance(s) being backed up.
+size of the Instance(s) being backed up.
 
 Adhoc and user scheduled backups are created and managed in the same fashion as Volume Snapshots are.
 
@@ -112,18 +112,18 @@ To import a backup provider offering;
 #. (As root) navigate to Service Offerings, click on the 'select offering' dropdown box and select 'Backup Offerings'
 #. Click on Import Backup Offering
 #. Enter your user-friendly name and description and select the applicable zone.  The External ID will then be populated with the
-   template jobs which CloudStack retrieves from the connected provider.
+   Template jobs which CloudStack retrieves from the connected provider.
 
    |B&R-backup_offering_policy.png|  |B&R-backup_offering.png|
 
-Creating instance Backups
----------------------
+Creating Instance Backups
+-------------------------
 
 SLA/Policy Based backups
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 With the backup and recovery feature enabled for a zone, users simply add and
-remove an instance from a backup offering.
+remove an Instance from a backup offering.
 
 |B&R-assignOffering.png|
 
@@ -131,16 +131,16 @@ Adhoc and Scheduled Backups
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For backup offerings that allow ad-hoc user backups and user-defined backup
-schedules, user will be allowed to define a backup schedule for an instance that is
-assigned to a backup offering using UI and API. An instance with backup will not be
+schedules, user will be allowed to define a backup schedule for an Instance that is
+assigned to a backup offering using UI and API. An Instance with backup will not be
 allowed to add/remove volumes similar to Instance Snapshots.
 
-To trigger an adhoc backup of an instance, navigate to the instance and click on the 'Create Backup'
+To trigger an adhoc backup of an Instance, navigate to the Instance and click on the 'Create Backup'
 icon.
 
 |B&R-createBackup.png|
 
-To setup a recurring backup schedule, navigate to the instance and click on the 'Backup Schedule'
+To setup a recurring backup schedule, navigate to the Instance and click on the 'Backup Schedule'
 icon.
 
 |B&R-BackupSchedule.png|
@@ -149,46 +149,46 @@ Then set the time and frequency of the backups, click 'Configure' and then 'Clos
 
 |B&R-BackupScheduleEntry.png|
 
-Restoring instance Backups
----------------------
+Restoring Instance Backups
+--------------------------
 
-Users will need to stop an instance to restore to any existing instance backup, restoration
-of an expunged instance will not restore nics and recovery any network which may/may
-not exist. User may however restore a specific volume from an instance backup and attach
-that volume to a specified instance.
+Users will need to stop an Instance to restore to any existing Instance backup, restoration
+of an expunged Instance will not restore nics and recovery any network which may/may
+not exist. User may however restore a specific volume from an Instance backup and attach
+that volume to a specified Instance.
 
 Supported APIs:
 ~~~~~~~~~~~~~~~~
 
-- **assignVirtualMachineToBackupOffering**: adds an instance to a backup offering.
-- **removeVirtualMachineFromBackupOffering**: removes an instance from a backup offering, if forced `true` parameter is passed this may also
-  remove any and all the backups of an instance associated with a backup offering.
-- **createBackupSchedule**: creates a backup schedule for an instance.
+- **assignVirtualMachineToBackupOffering**: adds an Instance to a backup offering.
+- **removeVirtualMachineFromBackupOffering**: removes an Instance from a backup offering, if forced `true` parameter is passed this may also
+  remove any and all the backups of an Instance associated with a backup offering.
+- **createBackupSchedule**: creates a backup schedule for an Instance.
 - **updateBackupSchedule**: updates backup schedule.
-- **listBackupSchedule**: returns backup schedule of an instance if defined.
-- **deleteBackupSchedule**: deletes backup schedule of an instance.
-- **createBackup**: creates an adhoc backup for an instance.
-- **deleteVMBackup**: deletes an instance backup (not support for per restore point for Veeam).
+- **listBackupSchedule**: returns backup schedule of an Instance if defined.
+- **deleteBackupSchedule**: deletes backup schedule of an Instance.
+- **createBackup**: creates an adhoc backup for an Instance.
+- **deleteVMBackup**: deletes an Instance backup (not support for per restore point for Veeam).
 - **listBackups**: lists backups.
-- **restoreBackup**: restore a previous instance backup in-place of a stopped or destroyed instance.
-- **restoreVolumeFromBackup**: restore and attach a backed-up volume (of an instance backup) to a specified instance.
+- **restoreBackup**: restore a previous Instance backup in-place of a stopped or destroyed Instance.
+- **restoreVolumeFromBackup**: restore and attach a backed-up volume (of an Instance backup) to a specified Instance.
 
 
 .. |B&R-assignOffering.png| image:: /_static/images/B&R-assignOffering.png
-   :alt: Assigning an SLA/Policy to an instance.
+   :alt: Assigning an SLA/Policy to an Instance.
    :width: 400 px
 .. |B&R-backup_offering_policy.png| image:: /_static/images/B&R-backup_offering_policy.png
    :alt: Importing an SLA/Policy offering.
    :width: 300 px
 .. |B&R-backup_offering.png| image:: /_static/images/B&R-backup_offering.png
-   :alt: Importing a template backup offering.
+   :alt: Importing a Template backup offering.
    :width: 300 px
 .. |B&R-createBackup.png| image:: /_static/images/B&R-createBackup.png
-   :alt: Triggering an adhoc backup for an instance.
+   :alt: Triggering an adhoc backup for an Instance.
    :width: 400 px
 .. |B&R-BackupSchedule.png| image:: /_static/images/B&R-BackupSchedule.png
-   :alt: Creating a backup schedule for an instance.
+   :alt: Creating a backup schedule for an Instance.
    :width: 400 px
 .. |B&R-BackupScheduleEntry.png| image:: /_static/images/B&R-BackupScheduleEntry.png
-   :alt: Creating a backup schedule for an instance.
+   :alt: Creating a backup schedule for an Instance.
    :width: 400px

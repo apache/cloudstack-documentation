@@ -21,7 +21,7 @@ In addition to the physical and logical infrastructure of your cloud and
 the CloudStack software and servers, you also need a layer of user
 services so that people can actually make use of the cloud. This means
 not just a user UI, but a set of options and resources that users can
-choose from, such as templates for creating Instances, disk
+choose from, such as Templates for creating Instances, disk
 storage, and more. If you are running a commercial service, you will be
 keeping track of what services and resources users are consuming and
 charging them for that usage. Even if you do not charge anything for
@@ -53,7 +53,7 @@ present users with choices when creating a new Instance:
 -  Templates, defined by the CloudStack administrator or by any
    CloudStack user, are the base OS images that the user can choose from
    when creating a new instance. For example, CloudStack includes CentOS
-   as a template. See Working with Templates.
+   as a Template. See Working with Templates.
 
 In addition to these choices that are provided for users, there is
 another type of service offering which is available only to the

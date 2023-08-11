@@ -26,12 +26,12 @@ Configuring AutoScale without using NetScaler
 What is AutoScaling?
 --------------------
 
-AutoScaling allows you to scale your back-end services or application instances up
+AutoScaling allows you to scale your back-end services or application Instances up
 or down seamlessly and automatically according to the conditions you define.
-With AutoScaling enabled, you can ensure that the number of instances you are using
+With AutoScaling enabled, you can ensure that the number of Instances you are using
 seamlessly scale up when demand increases, and automatically decreases when
 demand subsides. Thus it helps you save compute costs by terminating underused
-instances automatically and launching new instances when you need them, without the need
+Instances automatically and launching new Instances when you need them, without the need
 for manual intervention.
 
 
@@ -47,10 +47,10 @@ Prerequisites
 
 Before you configure an AutoScale rule, consider the following:
 
--  Ensure that the necessary template is prepared before configuring AutoScale.
+-  Ensure that the necessary Template is prepared before configuring AutoScale.
    Firstly you must install the PV-driver, which helps Xenserver collect
-   performance parameters (CPU and memory) into instances. Besides, When an instance is
-   deployed by using a template and when it comes up, the application should be
+   performance parameters (CPU and memory) into Instances. Besides, When an Instance is
+   deployed by using a Template and when it comes up, the application should be
    up and running.
 
 
@@ -61,31 +61,31 @@ Specify the following:
 
 .. image:: /_static/images/autoscale-config.png
 
--  Template: A template consists of a base OS image and application. A
-   template is used to provision the new instance of an application on a
-   scaleup action. When an instance is deployed from a template, it can start
+-  Template: A Template consists of a base OS image and application. A
+   Template is used to provision the new Instance of an application on a
+   scaleup action. When an Instance is deployed from a Template, it can start
    taking the traffic from the load balancer without any admin intervention.
-   For example, if the instance is deployed for a Web service, it should have the
+   For example, if the Instance is deployed for a Web service, it should have the
    Web server running, the database connected, and so on.
 
 -  Compute offering: A predefined set of virtual hardware attributes,
    including CPU speed, number of CPUs, and RAM size, that the user can select
-   when creating a new instance. Choose one of the compute offerings to be used
-   while provisioning an instance as part of scaleup action.
+   when creating a new Instance. Choose one of the compute offerings to be used
+   while provisioning an Instance as part of scaleup action.
 
--  Min Instance: The minimum number of active instances that is assigned to
-   a load balancing rule. The active instances are the application
-   instances that are up and serving the traffic, and are being load balanced.
+-  Min Instance: The minimum number of active Instances that is assigned to
+   a load balancing rule. The active Instances are the application
+   Instances that are up and serving the traffic, and are being load balanced.
    This parameter ensures that a load balancing rule has at least the
-   configured number of active instances are available to serve the traffic.
+   configured number of active Instances are available to serve the traffic.
 
--  Max Instance: Maximum number of active instances that should be assigned
+-  Max Instance: Maximum number of active Instances that should be assigned
    to a load balancing rule. This parameter defines the upper limit of active
-   instances that can be assigned to a load balancing rule.
+   Instances that can be assigned to a load balancing rule.
 
-   Specifying a large value for the maximum instance parameter might result in
-   provisioning large number of instances, which in turn leads to a single
-   load balancing rule exhausting the instances limit specified at the
+   Specifying a large value for the maximum Instance parameter might result in
+   provisioning large number of Instances, which in turn leads to a single
+   load balancing rule exhausting the Instances limit specified at the
    account or domain level.
 
 Specify the following scale-up and scale-down policies:
@@ -96,7 +96,7 @@ Specify the following scale-up and scale-down policies:
    invoked.
 
 -  Counter: The performance counters expose the state of the monitored
-   instances. We added two new counter to work with that feature:
+   Instances. We added two new counter to work with that feature:
 
    -  Linux User CPU [native] - percentage
    -  Linux User RAM [native] - percentage
@@ -123,14 +123,14 @@ Specify the following scale-up and scale-down policies:
 
 -  Quiet Time: This is the cool down period after an AutoScale action is
    initiated. The time includes the time taken to complete provisioning an
-   instance from its template and the time taken by an application to be ready
+   Instance from its Template and the time taken by an application to be ready
    to serve traffic. This quiet time allows the fleet to come up to a stable
    state before any action can take place. The default is 300 seconds.
 
 -  Destroy Instance Grace Period: The duration in seconds, after a scaledown action
-   is initiated, to wait before the instance is destroyed as part of scaledown
+   is initiated, to wait before the Instance is destroyed as part of scaledown
    action. This is to ensure graceful close of any pending sessions or
-   transactions being served by the instance marked for destroy. The default is 120
+   transactions being served by the Instance marked for destroy. The default is 120
    seconds.
 
 -  Apply: Click Apply to create the AutoScale configuration.
@@ -139,7 +139,7 @@ Specify the following scale-up and scale-down policies:
 Disabling and Enabling an AutoScale Configuration
 -------------------------------------------------
 
-If you want to perform any maintenance operation on the AutoScale instances,
+If you want to perform any maintenance operation on the AutoScale Instances,
 disable the AutoScale configuration. When the AutoScale configuration is
 disabled, no scaleup or scaledown action is performed. You can use this
 downtime for the maintenance activities. To disable the AutoScale
@@ -167,11 +167,11 @@ click the Enable AutoScale button.
 Runtime Considerations
 ----------------------
 
-An administrator should not assign an instance to a load balancing rule which is
+An administrator should not assign an Instance to a load balancing rule which is
 configured for AutoScale.
 
 Making API calls outside the context of AutoScale, such as destroyVM, on an
-autoscaled instance leaves the load balancing configuration in an inconsistent state.
-Even though the instance is destroyed from the load balancer rule, it continues to be shown
+autoscaled Instance leaves the load balancing configuration in an inconsistent state.
+Even though the Instance is destroyed from the load balancer rule, it continues to be shown
 as a service assigned to a rule inside the context of AutoScale.
 

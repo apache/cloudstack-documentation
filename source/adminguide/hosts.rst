@@ -447,7 +447,7 @@ for an existing cluster.
 
 Only Instances deployed after the change are affected by the new setting. If
 you want Instances deployed before the change to adopt the new
-over-provisioning factor, you must stop and restart the instances. When this is
+over-provisioning factor, you must stop and restart the Instances. When this is
 done, CloudStack recalculates or scales the used and reserved capacities
 based on the new over-provisioning factors, to ensure that CloudStack is
 correctly tracking the amount of free capacity.
@@ -455,7 +455,7 @@ correctly tracking the amount of free capacity.
 .. note::
    It is safer not to deploy additional new Instances while the capacity
    recalculation is underway, in case the new values for available
-   capacity are not high enough to accommodate the new instances. Just wait
+   capacity are not high enough to accommodate the new Instances. Just wait
    for the new used/available values to become available, to be sure
    there is room for all the new Instances you want.
 

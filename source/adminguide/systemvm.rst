@@ -24,7 +24,7 @@ roles to assist in debugging issues.
 The System VM Template
 ----------------------
 
-The System VMs come from a single template. The System VM has the
+The System VMs come from a single Template. The System VM has the
 following characteristics:
 
 -  Debian 10.8(buster), 4.19.0 kernel with the latest security
@@ -53,7 +53,7 @@ Changing the Default System VM Template
 Using the 64-bit template should be use with a System Offering of at least 512MB
 of memory.
 
-#. Based on the hypervisor you use, download the 64-bit template from
+#. Based on the hypervisor you use, download the 64-bit Template from
    the following location:
 
    .. cssclass:: table-striped table-bordered table-hover
@@ -69,22 +69,22 @@ of memory.
 
 #. As an administrator, log in to the CloudStack UI
 
-#. Register the 64 bit template.
+#. Register the 64 bit Template.
 
    For example: KVM64bitTemplate
 
-#. While registering the template, select Routing.
+#. While registering the Template, select Routing.
 
 #. Navigate to Infrastructure > Zone > Settings.
 
-#. Set the name of the 64-bit template, KVM64bitTemplate, in the
+#. Set the name of the 64-bit Template, KVM64bitTemplate, in the
    *``router.template.kvm``* global parameter.
 
-   If you are using a XenServer 64-bit template, set the name in the
+   If you are using a XenServer 64-bit Template, set the name in the
    *``router.template.xen``* global parameter.
 
    Any new virtual router created in this Zone automatically picks up
-   this template.
+   this Template.
 
 #. Restart the Management Server.
 
@@ -137,11 +137,11 @@ System VMs running on ESXi, the key is stored on the management server at
 Multiple System VM Support for VMware
 -------------------------------------
 
-Every CloudStack zone has single System VM for template processing tasks
-such as downloading templates, uploading templates, and uploading ISOs.
+Every CloudStack zone has single System VM for Template processing tasks
+such as downloading Templates, uploading Templates, and uploading ISOs.
 In a zone where VMware is being used, additional System VMs can be
 launched to process VMware-specific tasks such as taking Snapshots and
-creating private templates. The CloudStack management server launches
+creating private Templates. The CloudStack management server launches
 additional System VMs for VMware-specific tasks as the load increases.
 The management server monitors and weights all commands sent to these
 System VMs and performs dynamic load balancing and scaling-up of more
@@ -607,7 +607,7 @@ fresh checks is expensive and will cause management server doing the following:
 
    c. Fetch the result of the health check from router to be sent back in response.
 
-4. The patch also supports custom health checks with custom systemVM templates.
+4. The patch also supports custom health checks with custom systemVM Templates.
 This is achieved as follows:
 
    a. Each executable script placed in '/root/health_scripts/' is considered an
@@ -639,7 +639,7 @@ This is achieved as follows:
       wanted commands and print some output to STDOUT; otherwise if it receives 'advanced'
       as the first parameter, it should not execute any commands/logic nor print anything to STDOUT
 
-5. There are 9 health check scripts written in default systemvm template in '/root/health_checks/'
+5. There are 9 health check scripts written in default systemvm Template in '/root/health_checks/'
 folder. These indicate the health checks described in executive summary.
 
 6. The management server will connect periodically to each virtual router to confirm that the
@@ -690,7 +690,7 @@ Following global configs have been added for configuring health checks:
    - ``router.health.checks.to.exclude`` - Health checks that should be excluded when
    executing scheduled checks on the router. This can be a comma separated list of
    script names placed in the '/root/health_checks/' folder. Currently the following
-   scripts are placed in default systemvm template - cpu_usage_check.py,
+   scripts are placed in default systemvm Template - cpu_usage_check.py,
    disk_space_check.py, gateways_check.py, iptables_check.py, router_version_check.py,
    dhcp_check.py, dns_check.py, haproxy_check.py, memory_usage_check.py.
 
@@ -724,7 +724,7 @@ Details of individual checks:
    d. Memory usage check against a threshold – we use 'free' utility to get the
    used memory and compare that with the configured max memory usage threshold.
 
-   e. Router template and scripts version check – is done by comparing the contents
+   e. Router Template and scripts version check – is done by comparing the contents
    of the '/etc/cloudstack-release' and '/var/cache/cloud/cloud-scripts-signature'
    with the data given by management server.
 
@@ -820,7 +820,7 @@ Supported Virtual Routers
 Upgrading Virtual Routers
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Download the latest System VM template.
+#. Download the latest System VM Template.
 
 #. Download the latest System VM to all the primary storage pools.
 
@@ -877,12 +877,12 @@ In addition to the hosts, CloudStack’s Secondary Storage VM mounts and
 writes to secondary storage.
 
 Submissions to secondary storage go through the Secondary Storage VM.
-The Secondary Storage VM can retrieve templates and ISO images from URLs
+The Secondary Storage VM can retrieve Templates and ISO images from URLs
 using a variety of protocols.
 
 The secondary storage VM provides a background task that takes care of a
-variety of secondary storage activities: downloading a new template to a
-Zone, copying templates between Zones, and Snapshot backups.
+variety of secondary storage activities: downloading a new Template to a
+Zone, copying Templates between Zones, and Snapshot backups.
 
 The administrator can log in to the secondary storage VM if needed.
 
@@ -890,7 +890,7 @@ The administrator can log in to the secondary storage VM if needed.
 .. |update-ssl.png| image:: /_static/images/update-ssl.png
    :alt: Updating Console Proxy SSL Certificate
 .. |vr-upgrade.png| image:: /_static/images/vr-upgrade.png
-   :alt: Button to upgrade VR to use the new template.
+   :alt: Button to upgrade VR to use the new Template.
 
 Migrating System VMs
 --------------------
@@ -926,7 +926,7 @@ The Extra Args parameter is for specifying command line optional parameters
 as one would when executing any of the tools from the terminal or command line.
 
 The supported versions are Debian 10 based since system VMs are built using the
-same Debian 10 based templates.
+same Debian 10 based Templates.
 
 | See:
 | Traceroute(1): https://manpages.debian.org/stretch/traceroute/traceroute.1.en.html

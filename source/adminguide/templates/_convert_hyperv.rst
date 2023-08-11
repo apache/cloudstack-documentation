@@ -1,15 +1,15 @@
-Converting a Hyper-V instance to a Template
+Converting a Hyper-V Instance to a Template
 -------------------------------------------
 
-To convert a Hyper-V instance to a XenServer-compatible CloudStack template,
+To convert a Hyper-V Instance to a XenServer-compatible CloudStack Template,
 you will need a standalone XenServer host with an attached NFS VHD SR.
 Use whatever XenServer version you are using with CloudStack, but use
 XenCenter 5.6 FP1 or SP2 (it is backwards compatible to 5.6).
 Additionally, it may help to have an attached NFS ISO SR.
 
-For Linux instances, you may need to do some preparation in Hyper-V before
-trying to get the instance to work in XenServer. Clone the instance and work on the
-clone if you still want to use the instance in Hyper-V. Uninstall Hyper-V
+For Linux Instances, you may need to do some preparation in Hyper-V before
+trying to get the Instance to work in XenServer. Clone the Instance and work on the
+clone if you still want to use the Instance in Hyper-V. Uninstall Hyper-V
 Integration Components and check for any references to device names in
 /etc/fstab:
 
@@ -73,7 +73,7 @@ distribution.
    it, or from the XenServer host use sftp or scp to upload it to the
    web server.
 
-#. In CloudStack, create a new template using the following values:
+#. In CloudStack, create a new Template using the following values:
 
    -  URL. Give the URL for the VHD
 
@@ -85,4 +85,4 @@ distribution.
 
    -  Format. VHD
 
-The template will be created, and you can create instances from it.
+The Template will be created, and you can create instances from it.

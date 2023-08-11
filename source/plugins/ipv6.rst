@@ -73,7 +73,7 @@ Consider the following:
       using stateless address auto-configuration.
 
 -  Use the System VM Template exclusively designed to support IPv6.
-   Download the System VM template from
+   Download the System VM Template from
    `http://download.cloudstack.org/systemvm/ 
    <http://download.cloudstack.org/systemvm/>`__.
 

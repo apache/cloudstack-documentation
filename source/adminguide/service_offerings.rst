@@ -23,7 +23,7 @@ In addition to the physical and logical infrastructure of your cloud and
 the CloudStack software and servers, you also need a layer of user services
 so that people can actually make use of the cloud. This means not just a
 user UI, but a set of options and resources that users can choose from,
-such as templates for creating Instances, disk storage, and more.
+such as Templates for creating Instances, disk storage, and more.
 If you are running a commercial service, you will be keeping track of
 what services and resources users are consuming and charging them for
 that usage. Even if you do not charge anything for people to use your
@@ -35,9 +35,9 @@ what services they use and how much of them.
 Service Offerings, Disk Offerings, Network Offerings, and Templates
 -------------------------------------------------------------------
 
-A user creating a new instance can make a variety of choices about its
+A user creating a new Instance can make a variety of choices about its
 characteristics and capabilities. CloudStack provides several ways to
-present users with choices when creating a new instance:
+present users with choices when creating a new Instance:
 
 -  Service Offerings, defined by the CloudStack administrator, provide a
    choice of CPU speed, number of CPUs, RAM size, tags on the root disk,
@@ -54,8 +54,8 @@ present users with choices when creating a new instance:
 
 -  Templates, defined by the CloudStack administrator or by any CloudStack
    user, are the base OS images that the user can choose from when
-   creating a new instance. For example, CloudStack includes CentOS as a
-   template. See Working with Templates.
+   creating a new Instance. For example, CloudStack includes CentOS as a
+   Template. See Working with Templates.
 
 In addition to these choices that are provided for users, there is
 another type of service offering which is available only to the CloudStack
@@ -91,7 +91,7 @@ Compute and Disk Service Offerings
 A service offering is a set of virtual hardware features such as CPU
 core count and speed, memory, and disk size. The CloudStack administrator
 can set up various offerings, and then end users choose from the
-available offerings when they create a new instance. Based on the user’s
+available offerings when they create a new Instance. Based on the user’s
 selected offering, CloudStack emits usage records that can be integrated
 with billing systems.
 
@@ -108,7 +108,7 @@ the number of offerings the CloudStack administrator has to define; Instead of
 defining a compute offering for every imaginable combination of values that a user
 might want, the administrator can define offerings that provide some
 flexibility to the users and can serve as the basis for several
-different instance configurations.
+different Instance configurations.
 
 A service offering includes the following elements:
 
@@ -121,7 +121,7 @@ A service offering includes the following elements:
 -  How often the charges are generated
 
 For example, one service offering might allow users to create a virtual
-machine instance that is equivalent to a 1 GHz Intel® Core™ 2 CPU, with
+machine Instance that is equivalent to a 1 GHz Intel® Core™ 2 CPU, with
 1 GB memory at $0.20/hour, with network traffic metered at $0.10/GB.
 
 CloudStack separates service offerings into compute offerings and disk
@@ -149,22 +149,22 @@ The disk offering specifies:
 
 
 To support the custom offerings, usage events register events for dynamically
-assigned resources. Usage events are registered when an instance is created
+assigned resources. Usage events are registered when an Instance is created
 from a custom compute offering, and upon changing
-the compute offering of a stopped or running instance. The values of the
+the compute offering of a stopped or running Instance. The values of the
 parameters, such as CPU, speed, RAM are recorded.
 
 
 Creating a New Compute Offering
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Along with the compute details of the instance, root volume definition is also
+Along with the compute details of the Instance, root volume definition is also
 included in the compute offering. The root volume specifications can be included
 in the computer offering in two ways. One is disk specifications like disk size,
 storage type, tags can be included directly in the compute offering. The other way
 is linking a disk offering in the compute offering. The linked disk offering will
-be used for the root disk while creating the instance. Users can also choose a different
-disk offering for the root volume while creating the instance.
+be used for the root disk while creating the Instance. Users can also choose a different
+disk offering for the root volume while creating the Instance.
 
 Following are the two ways of creating the compute offering.
 
@@ -203,7 +203,7 @@ To create a new compute offering:
       displayed to users
 
    -  **Compute Offering Type**: The amount of freedom that the end user
-      has to customise the compute power that their instance has when using this
+      has to customise the compute power that their Instance has when using this
       compute offering.  The options are; Fixed offering - user has no
       ability to customise, Custom constrained - user has some latitude
       to customise the compute within parameters set by the offering,
@@ -214,23 +214,23 @@ To create a new compute offering:
    -  **# of CPU cores**: The number of cores which should be allocated
       to a system VM with this offering. If 'Custom constrained' is checked, the admin will
       be asked to enter the minimum and maximum number of CPUs that a user
-      can request. If 'Custom unconstrained' is checked, this
-      field does not appear as the user will be prompted to enter a value when creating their guest instance.
+      can request. If 'Custom unconstrained' is checked, this field does not appear
+      as the user will be prompted to enter a value when creating their guest Instance.
 
-   -  **CPU (in MHz)**: The CPU speed of the cores that the guest instance is
+   -  **CPU (in MHz)**: The CPU speed of the cores that the guest Instance is
       allocated. For example, “2000” would provide a 2GHz CPU clock speed.
       **This setting only used if CPU cap is selected.**
-      This value is also passed to the hypervisor as a share value to give instances
+      This value is also passed to the hypervisor as a share value to give Instances
       relative priority when a hypervisor host is over-provisioned.
       If 'Custom unconstrained' is checked this field does not appear as the user
-      will be prompted to enter a value when creating their guest instance.
+      will be prompted to enter a value when creating their guest Instance.
 
    -  **Memory (in MB)**: The amount of memory in megabytes that the
       system VM should be allocated. For example, “2048” would provide
       a 2 GB RAM allocation. If 'Custom constrained' is selected, the admin will
       be asked to enter the minimum and maximum amount of RAM that a user
       can request. If 'Custom unconstrained' is selected, this field does
-      not appear as the user will be prompted to enter a value when creating their guest instance.
+      not appear as the user will be prompted to enter a value when creating their guest Instance.
 
    -  **Host Tags**: (Optional) Any tags that you use to organize your
       hosts
@@ -245,22 +245,22 @@ To create a new compute offering:
    -  **CPU cap**: Whether to limit the level of CPU usage even if spare
       capacity is available.
 
-   -  **Volatile**: If checked, instances created from this service offering
+   -  **Volatile**: If checked, Instances created from this service offering
       will have their root disks reset upon reboot. This is useful for
       secure environments that need a fresh start on every boot and for
       desktops that should not retain state.
 
    -  **Deployment Planner**: Choose the technique that you would like
-      CloudStack to use when deploying instances based on this service
+      CloudStack to use when deploying Instances based on this service
       offering.
 
-      -  **First Fit**: places new instances on the first host that is found having
-         sufficient capacity to support the instance's requirements.
+      -  **First Fit**: places new Instances on the first host that is found having
+         sufficient capacity to support the Instance's requirements.
 
-      -  **User Dispersing**: makes the best effort to evenly distribute instances
+      -  **User Dispersing**: makes the best effort to evenly distribute Instances
          belonging to the same account on different clusters or pods.
 
-      -  **User Concentrated**: prefers to deploy instances belonging to the same
+      -  **User Concentrated**: prefers to deploy Instances belonging to the same
          account within a single pod.
 
       -  **Implicit Dedication**: will deploy instances on private infrastructure that

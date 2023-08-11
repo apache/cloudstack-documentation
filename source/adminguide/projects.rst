@@ -20,7 +20,7 @@ Overview of Projects
 Projects are used to organize people and resources. CloudStack users
 within a single domain can group themselves into project teams so they
 can collaborate and share virtual resources such as Instances, Snapshots,
-templates, data disks, and IP addresses. CloudStack tracks resource
+Templates, data disks, and IP addresses. CloudStack tracks resource
 usage per project as well as per user, so the usage can be billed to
 either a user account or a project. For example, a private cloud within
 a software company might have all members of the QA department assigned
@@ -35,9 +35,9 @@ you can add others within your domain to the project. CloudStack can be
 set up to either add people directly to a project, or to send an
 invitation which the recipient must accept. Project members can view
 and manage all virtual resources created by anyone in the project
-(for example, share instances). A user can be a member of any number of projects
+(for example, share Instances). A user can be a member of any number of projects
 and can switch views in the CloudStack UI to show only project-related information,
-such as project instances, fellow project members, project-related alerts, and so on.
+such as project Instances, fellow project members, project-related alerts, and so on.
 
 From CloudStack 4.15 onwards, it is possible for a project to have
 multiple project administrators and to add/invite specific users of
@@ -66,7 +66,7 @@ The project administrator can also add more members, remove members
 from the project, set new resource limits (as long as they are
 below the global defaults set by the CloudStack administrator), and
 delete the project. When the administrator removes a member from the
-project, resources created by that user, such as instances, remain
+project, resources created by that user, such as Instances, remain
 with the project. This brings us to the subject of resource ownership
 and which resources can be used by a project.
 
@@ -79,9 +79,9 @@ resource limits. You can create project-level networks to isolate
 traffic within the project and provide network services such as port
 forwarding, load balancing, VPN, and static NAT. A project can also make
 use of certain types of resources from outside the project, if those
-resources are shared. For example, a shared network or public template
+resources are shared. For example, a shared network or public Template
 is available to any project in the domain. A project can get access to a
-private template if the template’s owner will grant permission. A
+private Template if the Template’s owner will grant permission. A
 project can use any service offering or disk offering available in its
 domain; however, you can not create private service and disk offerings
 at the project level.
@@ -402,7 +402,7 @@ and resources.
 
 #. Click Project View.
 
-#. The project dashboard appears, showing the project’s instances, volumes,
+#. The project dashboard appears, showing the project’s Instances, volumes,
    users, events, network settings, and more. From the dashboard, you
    can:
 

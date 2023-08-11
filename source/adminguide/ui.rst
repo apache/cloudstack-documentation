@@ -50,7 +50,7 @@ excluding the root domain.
 
 For example, suppose multiple levels are created under the root domain,
 such as Comp1/hr. The Users in the Comp1 domain should enter Comp1 in
-the Domain field, whereas the users in the Comp1/sales domain should
+the Domain field, whereas the Users in the Comp1/sales domain should
 enter Comp1/sales.
 
 For more guidance about the choices that appear when you log in to this
@@ -138,7 +138,7 @@ provision, view, and manage your cloud infrastructure.
    You are logging in as the root administrator. This Account manages the
    CloudStack deployment, including physical infrastructure. The root 
    administrator can modify configuration settings to change basic 
-   functionality, create or delete user Accounts, and take many actions
+   functionality, create or delete User Accounts, and take many actions
    that should be performed only by an authorized person. Please change 
    the default password to a new, unique password.
 

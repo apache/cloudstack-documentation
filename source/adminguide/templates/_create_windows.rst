@@ -17,9 +17,9 @@
 Creating a Windows Template
 ---------------------------
 
-Windows templates must be prepared with Sysprep before they can be
+Windows Templates must be prepared with Sysprep before they can be
 provisioned on multiple machines. Sysprep allows you to create a generic
-Windows template and avoid any possible SID conflicts.
+Windows Template and avoid any possible SID conflicts.
 
 .. note:: 
    (XenServer) Windows instances running on XenServer require PV drivers, which

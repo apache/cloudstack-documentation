@@ -102,7 +102,7 @@ Enable config drive
 To use the config drive the network offering must have the “ConfigDrive”
 provider selected for the userdata service.
 
-If the networkoffering uses ConfigDrive for userdata and the template is
+If the networkoffering uses ConfigDrive for userdata and the Template is
 password enabled, the password string for the Instance is placed in the
 vm_password.txt file and it is included in the ISO.
 

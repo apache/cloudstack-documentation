@@ -81,7 +81,7 @@ Root Administrator
 ~~~~~~~~~~~~~~~~~~
 
 Root administrators have complete access to the system, including
-managing templates, service offerings, customer care administrators, and
+managing Templates, service offerings, customer care administrators, and
 domains
 
 Read Only Administrator
@@ -109,7 +109,7 @@ Support User
 ~~~~~~~~~~~~
 
 A restricted user role in which an account cannot create or destroy resources, but can view resources
-and perform auxiliary and support operations such as start or stop instances, attach or detach volumes, ISOs etc.
+and perform auxiliary and support operations such as start or stop Instances, attach or detach volumes, ISOs etc.
 
 
 Resource Ownership
@@ -122,7 +122,7 @@ account provided the user has privileges for that operation. The
 privileges are determined by the role. A root administrator can change
 the ownership of any Instance from one account to any other
 account by using the assignVirtualMachine API. A domain or sub-domain
-administrator can do the same for instances within the domain from one account
+administrator can do the same for Instances within the domain from one account
 to any other account in the domain or any of its sub-domains.
 
 .. _using-dynamics-roles:
@@ -263,8 +263,8 @@ There are several types of dedication available:
    no host can be shared between different accounts without violating
    the desktop software's terms of license.
 
--  Preferred implicit dedication. The instance will be deployed in dedicated
-   infrastructure if possible. Otherwise, the instance can be deployed in
+-  Preferred implicit dedication. The Instance will be deployed in dedicated
+   infrastructure if possible. Otherwise, the Instance can be deployed in
    shared infrastructure.
 
 
@@ -284,7 +284,7 @@ offering and in the Deployment Planner field, chooses
 ImplicitDedicationPlanner. Then in Planner Mode, the administrator
 specifies either Strict or Preferred, depending on whether it is
 permissible to allow some use of shared resources when dedicated
-resources are not available. Whenever a user creates an instance based on this
+resources are not available. Whenever a user creates an Instance based on this
 service offering, it is allocated on one of the dedicated hosts.
 
 
@@ -293,7 +293,7 @@ How to Use Dedicated Hosts
 
 To use an explicitly dedicated host, use the explicit-dedicated type of
 affinity group (see `“Affinity Groups” <virtual_machines.html#affinity-groups>`_).
-For example, when creating a new instance, an
+For example, when creating a new Instance, an
 end user can choose to place it on dedicated infrastructure. This
 operation will succeed only if some infrastructure has already been
 assigned as dedicated to the user's account or domain.
@@ -302,17 +302,17 @@ assigned as dedicated to the user's account or domain.
 Behavior of Dedicated Hosts, Clusters, Pods, and Zones
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The administrator can live migrate instances away from dedicated hosts if
+The administrator can live migrate Instances away from dedicated hosts if
 desired, whether the destination is a host reserved for a different
 account/domain or a host that is shared (not dedicated to any particular
 account or domain). CloudStack will generate an alert, but the operation
 is allowed.
 
 Dedicated hosts can be used in conjunction with host tags. If both a
-host tag and dedication are requested, the instance will be placed only on a
+host tag and dedication are requested, the Instance will be placed only on a
 host that meets both requirements. If there is no dedicated resource
 available to that user that also has the host tag requested by the user,
-then the instance will not deploy.
+then the Instance will not deploy.
 
 If you delete an account or domain, any hosts, clusters, pods, and zones
 that were dedicated to it are freed up. They will now be available to be

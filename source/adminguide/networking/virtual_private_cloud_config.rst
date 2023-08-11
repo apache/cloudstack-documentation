@@ -53,7 +53,7 @@ A VPC is comprised of the following Network components:
 -  **Virtual Router**: A virtual router is automatically created and
    started when you create a VPC. The virtual router connect the Network Tiers
    and direct traffic among the public gateway, the VPN gateways, and
-   the NAT instances. For each Network Tier, a corresponding NIC and IP exist in
+   the NAT Instances. For each Network Tier, a corresponding NIC and IP exist in
    the virtual router. The virtual router provides DNS and DHCP services
    through its IP.
 
@@ -1251,13 +1251,13 @@ network offering as follows:
 Creating an Internal LB Rule
 ''''''''''''''''''''''''''''
 
-When you create the Internal LB rule and applies to an instance, an Internal LB
-instance, which is responsible for load balancing, is created.
+When you create the Internal LB rule and applies to an Instance, an Internal LB
+Instance, which is responsible for load balancing, is created.
 
-You can view the created Internal LB instance in the Instances page if you
+You can view the created Internal LB Instance in the Instances page if you
 navigate to **Infrastructure** > **Zones** > <zone\_ name> >
 <physical\_network\_name> > **Network Service Providers** > **Internal
-LB instance**. You can manage the Internal LB instances as and when required from
+LB Instance**. You can manage the Internal LB instances as and when required from
 the location.
 
 #. Log in to the CloudStack UI as an administrator or end user.
