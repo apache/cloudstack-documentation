@@ -279,9 +279,17 @@ Updating AutoScale Instance Profile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To update the Instance Profile of the AutoScale Instance Group, click the AutoScale Instance Profile
-tab, then click Edit AutoScale Instance Profile button.
+tab, You will see the details of AutoScale Instance Profile.
 
 |autoscale-vmgroup-profile.png|
+
+then click Edit AutoScale Instance Profile button.
+
+|autoscale-vmgroup-profile-update.png|
+
+You are able to reset userdata of the Instance, by clicking Reset Userdata on AutoScale Instance Group button.
+
+|autoscale-vmgroup-profile-reset-userdata.png|
 
 You are also able to update the deploy parameters of the Instances.
 
@@ -388,4 +396,8 @@ a service assigned to a rule inside the context of AutoScale.
    :alt: AutoScale Instance Profile.
 .. |autoscale-vmgroup-update.png| image:: /_static/images/autoscale-vmgroup-update.png
    :alt: Update AutoScale Instance Group.
+.. |autoscale-vmgroup-profile-update.png| image:: /_static/images/autoscale-vmgroup-profile-update.png
+   :alt: Update AutoScale Instance Profile.
+.. |autoscale-vmgroup-profile-reset-userdata.png| image:: /_static/images/autoscale-vmgroup-profile-reset-userdata.png
+   :alt: Reset Userdata in AutoScale Instance Profile.
 
