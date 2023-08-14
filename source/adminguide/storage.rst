@@ -711,10 +711,18 @@ Volume Deletion and Garbage Collection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The deletion of a volume does not delete the snapshots that have been
-created from the volume
+created from the volume.
 
 When a VM is destroyed, data disk volumes that are attached to the VM
-are not deleted.
+are not deleted unless specified.
+
+In managed storage systems such as Solidfire and others, the volume snapshots
+are linked entities in the volumes wherein deletion of the volume would delete
+those snapshots. In such managed storage systems, the volume snapshots exist on
+the primary storage and may not be backed up to the secondary storages. For a
+volume deleted in CloudStack, it will not be deleted on the managed storage
+(such as Solidfire and others) until all the volume snapshots are deleted in
+CloudStack.
 
 Volumes are permanently destroyed using a garbage collection process.
 The global configuration variables expunge.delay and expunge.interval
