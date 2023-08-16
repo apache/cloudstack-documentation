@@ -1052,6 +1052,12 @@ Modify the *YAML* file to look like this:
          parameters:
            stp: true
 
+To apply the above configuration:
+
+.. parsed-literal::
+
+   netplan apply
+
 With this configuration you should be able to restart the network,
 although a reboot is recommended to see if everything works properly.
 
