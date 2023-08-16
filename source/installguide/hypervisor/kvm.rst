@@ -1016,41 +1016,41 @@ If you are using *netplan* with Ubuntu, below is a sample configuration.
 
 .. parsed-literal::
 
-$vi /etc/netplan/01-KVM-config.yaml 
+   $vi /etc/netplan/01-KVM-config.yaml 
 
 Modify the *YAML* file to look like this:
 
 .. parsed-literal::
 
----
-network:
-  version: 2
-  ethernets:
-    eth0: {}
-    eth1: {}
-  bridges:
-    cloudbr0:
-      addresses:
-        - 192.168.42.11/24
-      dhcp4: false
-      routes:
-        - to: default
-          via: 192.168.42.1
-      nameservers:
-        addresses:
-          - 8.8.8.8
-          - 8.8.4.4
-        search: []
-      interfaces:
-        - eth0
-      parameters:
-        stp: true
-    cloudbr1:
-      dhcp4: false
-      interfaces:
-        - eth1
-      parameters:
-        stp: true
+   ---
+   network:
+     version: 2
+     ethernets:
+       eth0: {}
+       eth1: {}
+     bridges:
+       cloudbr0:
+         addresses:
+           - 192.168.42.11/24
+         dhcp4: false
+         routes:
+           - to: default
+             via: 192.168.42.1
+         nameservers:
+           addresses:
+             - 8.8.8.8
+             - 8.8.4.4
+           search: []
+         interfaces:
+           - eth0
+         parameters:
+           stp: true
+       cloudbr1:
+         dhcp4: false
+         interfaces:
+           - eth1
+         parameters:
+           stp: true
 
 With this configuration you should be able to restart the network,
 although a reboot is recommended to see if everything works properly.
