@@ -52,9 +52,18 @@ in the system VMs.
    With respect to VRs, a network restart without cleanup is initiated to during live patching to ensure all rules
    are re-applied. 
 
-   **NOTE:** In case there is an absolute need to upgrade the system VM template due to availability of
-   security patches or update in a package provided by the template, then the old workflow of recreating the system
-   VM will need to be followed, which would mean noticible downtime.
+   **NOTE:** 
+
+   1. In case there is an absolute need to upgrade the system VM template due to availability of security patches, 
+   update in a package provided by the template, or in case live-patch doesn't seem to work for any reason
+   then please follow the legacy method of upgrading system VMs and virtual routers by recreating the system
+   VM, which would mean noticible downtime.
+
+
+   2. There is a known limitation in the System VM / VR live patch feature. If a VPC network either doesn't have any network tiers
+   or has no network tier in the **Implemented** state, then live patching is skipped on the associated VPC VR(s). In such a case, use the traditional workflow
+   of upgrading the system VMs and virtual routers - by either restarting the corresponding network with cleanup, or restarting the system VMs.
+   
    
 Following matrix lists the versions of CloudStack that support live patching.
 
