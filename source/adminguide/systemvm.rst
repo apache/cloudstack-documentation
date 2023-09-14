@@ -50,10 +50,10 @@ following characteristics:
 Changing the Default System VM Template
 ---------------------------------------
 
-Using the 64-bit template should be use with a System Offering of at least 512MB
+The 64-bit template should be used with a System Offering of at least 512MB
 of memory.
 
-#. Based on the hypervisor you use, download the 64-bit template from
+#. Based on the hypervisor you use, download the 64-bit template - e.g. from
    the following location:
 
    .. cssclass:: table-striped table-bordered table-hover
@@ -69,19 +69,22 @@ of memory.
 
 #. As an administrator, log in to the CloudStack UI
 
-#. Register the 64 bit template.
+#. Register the 64-bit template.
 
    For example: KVM64bitTemplate
 
 #. While registering the template, select Routing.
 
-#. Navigate to Infrastructure > Zone > Settings.
+#. Navigate to Configuration, Global Settings:
 
 #. Set the name of the 64-bit template, KVM64bitTemplate, in the
    *``router.template.kvm``* global parameter.
 
    If you are using a XenServer 64-bit template, set the name in the
-   *``router.template.xen``* global parameter.
+   *``router.template.xenserver``* global parameter.
+
+   If you are using a VMware 64-bit template, set the name in the
+   *``router.template.vmware``* global parameter.
 
    Any new virtual router created in this Zone automatically picks up
    this template.
@@ -261,7 +264,7 @@ communication with SSL:
 -  Set up SSL certificate for specific FQDN and configure a load-balancer with optional ssl offloading.
 
 
-Changing the Console Proxy SSL Certificate and Domain
+Changing the Console Proxy SSL Certificate and Domains
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The administrator can configure SSL encryption  by selecting a domain
