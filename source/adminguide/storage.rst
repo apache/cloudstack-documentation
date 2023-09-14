@@ -557,34 +557,39 @@ Migrating Storage and Attaching to a Different VM
    Volume” <#attaching-a-volume>`_
 
 
-Migrating a VM Root Volume to a New Storage Pool
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Migrating a Instance Root Volume to a New Storage Pool
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-(XenServer, VMware) You can live migrate a VM's root disk from one
-storage pool to another, without stopping the VM first.
+(XenServer, VMware) You can live migrate a instance's root disk from one
+storage pool to another, without stopping the instance first.
 
-(KVM) When migrating the root disk volume, the VM must first be stopped,
-and users can not access the VM. After migration is complete, the VM can
-be restarted.
+(KVM) When migrating the root disk volume, the instance must first be stopped,
+and users can not access the instance. After migration is complete, the instance
+can be restarted.
 
 #. Log in to the CloudStack UI as a user or admin.
 
-#. In the left navigation bar, click Instances, and click the VM name.
+#. In the left navigation bar, click Instances, and click the instance name.
 
-#. (KVM only) Stop the VM.
+#. (KVM only) Stop the instance.
 
 #. Click the Migrate button |Migrateinstance.png| and choose the
    destination from the dropdown list.
 
    .. note::
-      If the VM's storage has to be migrated along with the VM, this will
-      be noted in the host list. CloudStack will take care of the storage
+      If the instance's storage has to be migrated along with the instance,
+      this will be noted in the host list. CloudStack will take care of the storage
       migration for you.
 
 #. Watch for the volume status to change to Migrating, then back to
    Running (or Stopped, in the case of KVM). This can take some time.
 
-#. (KVM only) Restart the VM.
+#. (KVM only) Restart the instance.
+
+   .. note::
+      In case of KVM and PowerFlex/ScaleIO storage, live migration of
+      instance's root disk is allowed from one PowerFlex/ScaleIO storage pool
+      to another, without stopping the instance.
 
 
 Resizing Volumes
