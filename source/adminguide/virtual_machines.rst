@@ -298,7 +298,7 @@ To delete a virtual machine:
 When a virtual machine is **destroyed**, it can no longer be seen by the end user,
 however, it can be seen (and recovered) by a root admin.  In this state it still
 consumes logical resources.  Global settings control the maximum time from a VM
-being destroyed, to the physical disks being removed. When the VM and its rooot disk
+being destroyed, to the physical disks being removed. When the VM and its root disk
 have been deleted, the VM is said to have been expunged.
 
 Once a virtual machine is **expunged**, it cannot be recovered. All the
