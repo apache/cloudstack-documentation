@@ -13,6 +13,102 @@
    specific language governing permissions and limitations
    under the License.
 
+API Changes in |release| since 4.18.0.0
+===================================
+For the complete list of API commands and params consult the `CloudStack Apidocs`_.
+
+Parameters Changed in API Commands
+-------------------------------
+
+.. cssclass:: table-striped table-bordered table-hover
+
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+| Name                                                       | Description                                                                    |
++============================================================+================================================================================+
+| ``listStoragePools``                                       | **Request:**                                                                   |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``status`` (optional)                                                        |
+|                                                            |                                                                                |
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+| ``startVirtualMachine``                                    | **Request:**                                                                   |
+|                                                            |                                                                                |
+|                                                            | *Changed Parameters:*                                                          |
+|                                                            |                                                                                |
+|                                                            | - ``considerLastHost`` was available for users but now only for ROOT admins    |
+|                                                            |                                                                                |
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+| ``addGuestOs``                                             | **Request:**                                                                   |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``display`` (optional)                                                       |
+|                                                            |                                                                                |
+|                                                            | *Changed Parameters:*                                                          |
+|                                                            |                                                                                |
+|                                                            | - ``details`` was 'required' and is now 'optional'                             |
+|                                                            |                                                                                |
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateGuestOs``                                          | **Request:**                                                                   |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``display`` (optional)                                                       |
+|                                                            |                                                                                |
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+| ``listOsTypes``                                            | **Request:**                                                                   |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``display`` (optional)                                                       |
+|                                                            |                                                                                |
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+| ``createAutoScaleVmProfile``                               | **Request:**                                                                   |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``userdataid`` (optional)                                                    |
+|                                                            | - ``userdatadetails`` (optional)                                               |
+|                                                            |                                                                                |
+|                                                            | **Response:**                                                                  |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``userdataid``                                                               |
+|                                                            | - ``userdataname``                                                             |
+|                                                            | - ``userdatapolicy``                                                           |
+|                                                            | - ``userdatadetails``                                                          |
+|                                                            |                                                                                |
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateAutoScaleVmProfile``                               | **Request:**                                                                   |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``userdataid`` (optional)                                                    |
+|                                                            | - ``userdatadetails`` (optional)                                               |
+|                                                            |                                                                                |
+|                                                            | **Response:**                                                                  |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``userdataid``                                                               |
+|                                                            | - ``userdataname``                                                             |
+|                                                            | - ``userdatapolicy``                                                           |
+|                                                            | - ``userdatadetails``                                                          |
+|                                                            |                                                                                |
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+| ``listAutoScaleVmProfiles``                                | **Response:**                                                                  |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``userdataid``                                                               |
+|                                                            | - ``userdataname``                                                             |
+|                                                            | - ``userdatapolicy``                                                           |
+|                                                            | - ``userdatadetails``                                                          |
+|                                                            |                                                                                |
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+
 API Changes Introduced in 4.18.0.0
 ===================================
 For the complete list of API commands and params consult the `CloudStack Apidocs`_.
