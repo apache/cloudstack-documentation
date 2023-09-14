@@ -52,9 +52,7 @@ in the system VMs.
    With respect to VRs, a network restart without cleanup is initiated to during live patching to ensure all rules
    are re-applied. 
 
-   **NOTE:** 
-
-   In cases where upgrading the system VM template is necessary due to availability of security patches
+   **NOTE:** In cases where upgrading the system VM template is necessary due to availability of security patches
    or updated packages in the template, or in case live-patch fails for systemvms and virtual routers due
    to any issues or limitations (such as VPC networks without any network tiers) then please follow the
    traditional method of upgrading system VMs and virtual routers by restarting or recreating the system VMs
