@@ -17,11 +17,11 @@
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is the initial 4.18 LTS release. It has over 300 fixes
-and features since the 4.17.2.0 release.
+Apache CloudStack |release| is a 4.18 LTS minor release with 196 fixes
+since the 4.18.0.0 release.
 
 The full list of fixes and improvements can be found in the project release notes at
-https://docs.cloudstack.apache.org/en/4.18.0.0/releasenotes/changes.html
+https://docs.cloudstack.apache.org/en/4.18.1.0/releasenotes/changes.html
 
 What's in since 4.18.0.0
 ======================
