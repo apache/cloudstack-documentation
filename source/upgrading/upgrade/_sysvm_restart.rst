@@ -54,16 +54,11 @@ in the system VMs.
 
    **NOTE:** 
 
-   1. In case there is an absolute need to upgrade the system VM template due to availability of security patches, 
-   update in a package provided by the template, or in case live-patch doesn't seem to work for any reason
-   then please follow the legacy method of upgrading system VMs and virtual routers by recreating the system
-   VM, which would mean noticible downtime.
-
-
-   2. There is a known limitation in the System VM / VR live patch feature. If a VPC network either doesn't have any network tiers
-   or has no network tier in the **Implemented** state, then live patching is skipped on the associated VPC VR(s). In such a case, use the traditional workflow
-   of upgrading the system VMs and virtual routers - by either restarting the corresponding network with cleanup, or restarting the system VMs.
-   
+   In cases where upgrading the system VM template is necessary due to availability of security patches
+   or updated packages in the template, or in case live-patch fails for systemvms and virtual routers due
+   to any issues or limitations (such as VPC networks without any network tiers) then please follow the
+   traditional method of upgrading system VMs and virtual routers by restarting or recreating the system VMs
+   and virtual routers (including restarting the network with/without cleanup as required).   
    
 Following matrix lists the versions of CloudStack that support live patching.
 
