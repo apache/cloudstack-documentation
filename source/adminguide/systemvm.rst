@@ -50,7 +50,7 @@ following characteristics:
 Changing the Default System VM Template
 ---------------------------------------
 
-Using the 64-bit template should be used with a System Offering of at least 512MB
+The 64-bit template should be used with a System Offering of at least 512MB
 of memory.
 
 #. Based on the hypervisor you use, download the 64-bit template - e.g. from
