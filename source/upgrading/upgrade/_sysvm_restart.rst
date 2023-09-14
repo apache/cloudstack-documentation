@@ -58,7 +58,8 @@ in the system VMs.
    or updated packages in the template, or in case live-patch fails for systemvms and virtual routers due
    to any issues or limitations (such as VPC networks without any network tiers) then please follow the
    traditional method of upgrading system VMs and virtual routers by restarting or recreating the system VMs
-   and virtual routers (including restarting the network with/without cleanup as required).   
+   and virtual routers (including restarting the network with/without cleanup as required), which could mean
+   some downtime.
    
 Following matrix lists the versions of CloudStack that support live patching.
 
