@@ -928,7 +928,7 @@ snapshot request fails and returns an error message.
 
 
 Snapshot Copy
-~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
 CloudStack allows copying an exisiting backed-up snapshot to multiple zones.
 Users can either use the UI in the snapshot details view or the `copySnapshot` API to copy a snapshot from one zone to other zone(s).
