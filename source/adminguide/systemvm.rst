@@ -135,7 +135,7 @@ System VMs running on ESXi, the key is stored on the management server at
 
       Format: ssh -i <path-to-private-key> <vm-private-ip> -p 3922
 
-      Example: root@management:~# ssh -i /var/lib/cloudstack/management/.ssh/id_rsa 172.16.0.250 -p 3922
+      Example: root@management:~# ssh -i ~cloud/.ssh/id_rsa 172.16.0.250 -p 3922
 
 Multiple System VM Support for VMware
 -------------------------------------
