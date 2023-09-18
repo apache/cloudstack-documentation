@@ -132,7 +132,7 @@ operating system version.
 
    .. parsed-literal::
 
-      apt-get install nfs-kernel-server
+      apt install nfs-kernel-server
 
 #. On the Management Server host, create two directories that you will
    use for primary and secondary storage. For example:

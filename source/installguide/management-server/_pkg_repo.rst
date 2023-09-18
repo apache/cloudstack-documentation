@@ -99,19 +99,19 @@ repository to the file (replace "trusty" with "xenial" or "bionic" if it is the 
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu focal |version|
+   deb https://download.cloudstack.org/ubuntu focal |version|
 
 We now have to add the public key to the trusted keys.
 
 .. parsed-literal::
 
-   wget -O - http://download.cloudstack.org/release.asc |sudo apt-key add -
+   wget -O - https://download.cloudstack.org/release.asc |sudo tee /etc/apt/trusted.gpg.d/cloudstack.asc
 
 Now update your local apt cache.
 
 .. parsed-literal::
 
-   sudo apt-get update
+   sudo apt update
 
 Your DEB package repository should now be configured and ready for use.
 
