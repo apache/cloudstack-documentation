@@ -397,7 +397,7 @@ msgstr ""
 
 #: ../../administration_guide.rst:156
 # dcc9b190ecda432bbde1662354d32bef
-msgid "Format: ssh -i <path-to-private-key> <vm-private-ip> -p 3922 Example: root@management:~# ssh -i /var/lib/cloudstack/management/.ssh/id_rsa 172.16.0.250 -p 3922"
+msgid "Format: ssh -i <path-to-private-key> <vm-private-ip> -p 3922 Example: root@management:~# ssh -i /var/cloudstack/management/.ssh/id_rsa 172.16.0.250 -p 3922"
 msgstr ""
 
 #: ../../administration_guide.rst:160

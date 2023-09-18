@@ -103,7 +103,7 @@ Accessing System VMs over the network requires the use of private keys and
 connecting to System VMs SSH Daemon on port 3922. XenServer/KVM Hypervisors
 store this key at /root/.ssh/id_rsa.cloud on each CloudStack agent. To access
 System VMs running on ESXi, the key is stored on the management server at
-/var/lib/cloudstack/management/.ssh/id_rsa.
+/var/cloudstack/management/.ssh/id_rsa.
 
 
 #. Find the details of the System VM
