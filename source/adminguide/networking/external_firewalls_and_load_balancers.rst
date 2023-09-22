@@ -17,10 +17,8 @@
 External Firewalls and Load Balancers
 -------------------------------------
 
-CloudStack is capable of replacing its Virtual Router with an external
-Juniper SRX device and an optional external NetScaler or F5 load
-balancer for gateway and load balancing services. In this case, the VMs
-use the SRX as their gateway.
+CloudStack is capable of replacing its Virtual Router an optional
+external NetScaler or for gateway and load balancing services.
 
 
 About Using a NetScaler Load Balancer

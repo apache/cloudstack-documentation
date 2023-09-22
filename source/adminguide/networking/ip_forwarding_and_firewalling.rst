@@ -108,9 +108,6 @@ Prerequisites and Guidelines
 
 Consider the following scenarios to apply egress firewall rules:
 
--  Egress firewall rules are supported on Juniper SRX and virtual
-   router.
-
 -  The egress firewall rules are not supported on shared networks.
 
 -  Allow the egress traffic from specified source CIDR. The Source CIDR
@@ -195,7 +192,7 @@ traffic. While implementing a guest network, CloudStack adds the
 firewall egress rule specific to the default egress policy for the guest
 network.
 
-This feature is supported only on virtual router and Juniper SRX.
+This feature is supported only on the virtual router.
 
 #. Create a network offering with your desirable default egress policy:
 
