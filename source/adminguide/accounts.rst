@@ -658,7 +658,7 @@ The login page when the OAuth2 is enabled and corresponding providers are config
 OAuth providers.
 
 .. image:: /_static/images/oauth-sub-section.png
-   :width: 400px
+   :width: 120px
    :align: center
    :alt: OAuth configuration section
 
