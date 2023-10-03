@@ -554,14 +554,12 @@ the zone. That physical network carries the following traffic types:
    We strongly recommend the use of separate NICs for management traffic
    and guest traffic.
 
--  Public. Public traffic is generated when Instances in the cloud access the
-   Internet. Publicly accessible IPs must be allocated for this purpose.
-   End users can use the CloudStack UI to acquire these IPs to implement
-   NAT between their guest network and the public network, as described
-   in Acquiring a New IP Address.
+-  Public. Public traffic doesn't exist in the Basic Zone. Instead, the Guest
+   network can be assigned publicly routable IP space in case you want your
+   Instances to be directly exposed to the Internet
 
--  Storage. While labeled "storage" this is specifically about secondary
-   storage, and doesn't affect traffic for primary storage. This
+-  Storage. While labeled "storage" this is specifically about Secondary
+   Storage traffic, and doesn't affect traffic for primary storage. This
    includes traffic such as Instance Templates and Snapshots, which is sent
    between the secondary storage VM and secondary storage servers.
    CloudStack uses a separate Network Interface Controller (NIC) named
@@ -613,11 +611,20 @@ zone are:
    communicates directly with the CloudStack Management Server. You must
    configure the IP range for the system VMs to use.
 
--  Public. Public traffic is generated when Instances in the cloud access the
-   Internet. Publicly accessible IPs must be allocated for this purpose.
+-  Public. Public traffic is generated when Instances in the cloud need to access
+   systems that are external to CloudStack. Guest Instances will route the
+   traffic through their Virtual Router to access external systems.
    End users can use the CloudStack UI to acquire these IPs to implement
-   NAT between their guest network and the public network, as described
+   NAT between their guest network and the Public Network, as described
    in “Acquiring a New IP Address” in the Administration Guide.
+   Public IPs are assigned to the "Public" interface of system VMs, including
+   Virtual Routers. 
+
+.. note::
+   The IP space used in a "Public" network can either be really publicly 
+   routable IP space (e.g. in case of a Public cloud setup), or can be
+   any other company internal (RFC 1918) IP space that is not used with other
+   CloudStack networks (e.g. in case of a Private cloud setup
 
 -  Storage. While labeled "storage" this is specifically about secondary
    storage, and doesn't affect traffic for primary storage. This
@@ -652,7 +659,7 @@ Advanced Zone Public IP Addresses
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When advanced networking is used, the administrator can create
-additional networks for use by the guests. These networks can span the
+additional Public networks for use by the guests. These networks can span the
 zone and be available to all accounts, or they can be scoped to a single
 account, in which case only the named account may create guests that
 attach to these networks. The networks are defined by a VLAN ID, IP
