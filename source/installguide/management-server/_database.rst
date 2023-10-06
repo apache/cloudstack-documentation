@@ -47,7 +47,7 @@ MySQL. See :ref:`install-database-on-separate-node`.
 
    .. parsed-literal::
 
-      sudo apt-get install mysql-server
+      sudo apt install mysql-server
 
 #. Open the MySQL configuration file. The configuration file is
    ``/etc/my.cnf`` or ``/etc/mysql/my.cnf``, depending on your OS.
@@ -305,7 +305,7 @@ same node for MySQL. See `â€œInstall the Database on the Management Server Nodeâ
 
    .. parsed-literal::
 
-      sudo apt-get install mysql-server
+      sudo apt install mysql-server
 
 #. Edit the MySQL configuration (/etc/my.cnf or /etc/mysql/my.cnf,
    depending on your OS) and insert the following lines in the [mysqld]

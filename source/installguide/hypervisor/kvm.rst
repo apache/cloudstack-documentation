@@ -149,7 +149,7 @@ KVM Instances.
 
       .. parsed-literal::
 
-         $ apt-get install chrony
+         $ apt install chrony
 
    In SUSE:
 
@@ -189,7 +189,7 @@ In Ubuntu:
 
 .. parsed-literal::
 
-   $ apt-get install cloudstack-agent
+   $ apt install cloudstack-agent
 
 In SUSE:
 

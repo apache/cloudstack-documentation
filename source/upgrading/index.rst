@@ -44,6 +44,7 @@ Contents:
  
    upgrade/mysql
    upgrade/valid_source
+   upgrade/upgrade-4.18
    upgrade/upgrade-4.17
    upgrade/upgrade-4.16
    upgrade/upgrade-4.15

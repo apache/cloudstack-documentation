@@ -287,6 +287,44 @@ Some assorted primary theme colours:
 - Green: #52C41A
 - Purple: #722ED1
 
+The config.json also allows to configure a special-purpose card that shows on
+the account and project dashboards. This card is created using the `userCard`
+section that has a configurable title, icon and a list of configurable links
+that have a title, text (description), link and icon.
+
+.. parsed-literal::
+
+  "userCard": {
+    "title": "label.help",
+    "icon": "question-circle-outlined",
+    "links": [
+      {
+        "title": "Documentation",
+        "text": "CloudStack documentation website",
+        "link": "https://docs.cloudstack.apache.org/en/latest/",
+        "icon": "read-outlined"
+      },
+      {
+        "title": "API Documentation",
+        "text": "Refer to API documentation",
+        "link": "https://cloudstack.apache.org/api.html",
+        "icon": "api-outlined"
+      },
+      {
+        "title": "Email Support",
+        "text": "Join CloudStack users mailing list to seek and provide support",
+        "link": "mailto:users-subscribe@cloudstack.apache.org",
+        "icon": "mail-outlined"
+      },
+      {
+        "title": "Report Issue",
+        "text": "Submit a bug or improvement request",
+        "link": "https://github.com/apache/cloudstack/issues/new",
+        "icon": "bug-outlined"
+      }
+    ]
+  },
+
 Contextual help documentation URLs can be customized with the help of `docBase` and `docHelpMappings` properties.
 To override a particular documentation URL, a mapping can be added for the URL path in the config. A documentation URL is formed by combining the `docBase` URL base and a path set in the source code. Adding a mapping for any particular path in the configuration will result in generating documetation URL with overridden path.
 By default, `docHelpMappings` lists all existing documentation URL suffixes, mapped to themselves, in the configuration file that are used in the code.
