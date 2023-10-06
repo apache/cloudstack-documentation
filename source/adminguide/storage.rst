@@ -206,6 +206,21 @@ The CloudStack will bring the device back online and attempt to start
 all guests that were running at the time of the entry into maintenance
 mode.
 
+Browsing files on a primary storage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Files can be listed at a path on a primary storage using `listStoragePoolObjects` 
+command or via UI under "Browser" tab for a primary storage. Depending
+on the hypervisor, files and directories on a primary storage will get
+associated with the cloudstack resources like snapshots, volumes,
+templates, and ISOs.
+
+.. image:: /_static/images/primary-storage-file-browser.png
+   :align: center
+   :alt: File browser for primary storage
+
+.. note::
+   If files or folders are not associated with a cloudstack resource, it doesn't mean that they are not used by cloudstack.
 
 Secondary Storage
 -----------------
@@ -214,8 +229,27 @@ This section gives concepts and technical details about CloudStack
 secondary storage. For information about how to install and configure
 secondary storage through the CloudStack UI, see :ref:`add-secondary-storage`.
 
-Migration of data between secondary storages is now supported. One may choose
-to completely migrate the data or migrate data such that the stores
+Browsing files on a secondary storage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Files can be listed at a path on a secondary storage using `listImageStoreObjects` 
+command or via UI under "Browser" tab for a secondary storage. Depending
+on the hypervisor, files and directories on a primary storage will get
+associated with the cloudstack resources like snapshots, volumes,
+templates, and ISOs.
+
+.. image:: /_static/images/secondary-storage-file-browser.png
+   :align: center
+   :alt: File browser for secondary storage
+
+.. note::
+   If files or folders are not associated with a cloudstack resource, it doesn't mean that they are not used by cloudstack.
+
+
+Migration of data between secondary storages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+One may choose to completely migrate the data or migrate data such that the stores
 are balanced by choosing the appropriate Migration Policy. In order to facilitate
 distributing the migration load, SSVMs are spawned up if a file transfer takes
 more than a defined threshold. Following are the Global setting values to one may
@@ -234,8 +268,19 @@ want to look at before proceeding with the migration task:
    | max.data.migration.wait.time     | Maximum wait time for a data migration task before spawning a new SSVM                                                                                                 |
    +----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
+Selective migration of templates and snapshots across secondary storages is also
+possible using the `migrateResourceToAnotherSecondaryStorage` command. Or via UI
+under "Browser" tab for a secondary storage.
+
+Read only
+~~~~~~~~~
 Secondary storages can also be set to read-only in order to cordon it off
 from being used for storing any further templates, volumes and snapshots.
+
+.. code:: bash
+
+      cmk updateImageStore id=4440f406-b9b6-46f1-93a4-378a75cf15de readonly=true
+
 
 Working With Volumes
 --------------------
