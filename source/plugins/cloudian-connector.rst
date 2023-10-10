@@ -456,7 +456,7 @@ quite big.
 .. note::
    You can check if the system Template and the default Template have properly
    downloaded to the new secondary storage by navigating to Templates, selecting a
-   template, clicking on the Zones tab and checking its Status is Ready 100%
+   Template, clicking on the Zones tab and checking its Status is Ready 100%
    Downloaded.
 
 .. note::

@@ -1398,8 +1398,8 @@ Additional Packages Required for Features
 Secondary Storage Bypass
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-New in 4.11 is the ability to bypass storing a template on secondary storage, and
-instead directly downloading a 'template' from an alternate remote location.
+New in 4.11 is the ability to bypass storing a Template on secondary storage, and
+instead directly downloading a 'Template' from an alternate remote location.
 In order to facilitate this the **Aria2** (https://aria2.github.io/) package must be
 installed on all of your KVM hosts.
 

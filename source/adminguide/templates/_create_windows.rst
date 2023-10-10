@@ -23,7 +23,7 @@ Windows Template and avoid any possible SID conflicts.
 
 .. note:: 
    (XenServer) Windows instances running on XenServer require PV drivers, which
-   may be provided in the template or added after the instance is created. The
+   may be provided in the Template or added after the instance is created. The
    PV drivers are necessary for essential management functions such as 
    mounting additional volumes and ISO images, live migration, and 
    graceful shutdown.
@@ -45,7 +45,7 @@ An overview of the procedure is as follows:
    Windows Server
 
 #. The preparation steps are complete. Now you can actually create the
-   template as described in Creating the Windows Template.
+   Template as described in Creating the Windows Template.
 
 
 System Preparation for Windows Server 2008 R2
@@ -69,7 +69,7 @@ Use the following steps to run sysprep for Windows 2008 R2:
 
    .. note:: 
       Windows AIK should not be installed on the Windows 2008 R2 instance you
-      just created. Windows AIK should not be part of the template you 
+      just created. Windows AIK should not be part of the Template you
       create. It is only used to create the sysprep answer file.
 
 #. Copy the install.wim file in the \\sources directory of the Windows

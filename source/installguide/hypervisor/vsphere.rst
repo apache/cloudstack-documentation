@@ -453,8 +453,8 @@ provisioning for Instances. There are two types of port profiles:
 Ethernet port profile and vEthernet port profile. The Ethernet port
 profile is applied to the physical uplink ports-the NIC ports of the
 physical NIC adapter on an ESXi server. The vEthernet port profile is
-associated with the virtual NIC (vNIC) that is plumbed on a guest VM on
-the ESXi server. The port profiles help the network administrators
+associated with the virtual NIC (vNIC) that is plumbed on a guest Instance
+on the ESXi server. The port profiles help the network administrators
 define network policies which can be reused for new Instances.
 The Ethernet port profiles are created on the VSM and are represented as
 port groups on the vCenter server.
@@ -608,7 +608,7 @@ Creating a Port Profile
    resources in the CloudStack environment.
 
 -  You do not have to create any vEthernet port profiles – CloudStack
-   does that during VM deployment.
+   does that during Instance deployment.
 
 -  Ensure that you create required port profiles to be used by
    CloudStack for different traffic types of CloudStack, such as

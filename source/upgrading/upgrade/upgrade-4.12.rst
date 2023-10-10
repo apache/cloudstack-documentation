@@ -35,7 +35,7 @@ Overview of Upgrade Steps:
 ----------------------------
 
 #. Check any customisations and integrations
-#. Upload the |sysvm64-version| System VM template if not already using it.
+#. Upload the |sysvm64-version| System VM Template if not already using it.
 #. Stop all running management servers
 #. Backup CloudStack database (MySQL)
 #. Upgrade 1st CloudStack management server
@@ -48,8 +48,8 @@ Overview of Upgrade Steps:
 .. include:: _customisation_warnings.rst
 
 .. warning::
-    If you are not already using the |sysvm64-version| System VM template you will need to 
-    upgrade your System VM template prior to performing the upgrade of the 
+    If you are not already using the |sysvm64-version| System VM Template you will need to
+    upgrade your System VM Template prior to performing the upgrade of the
     CloudStack packages.
 
 .. include:: _sysvm_templates.rst

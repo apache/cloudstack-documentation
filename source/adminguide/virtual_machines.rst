@@ -112,9 +112,9 @@ With the intermediate states of
 Creating Instances
 ------------------
 
-Instance are usually created from a template. Users can also
+Instance are usually created from a Template. Users can also
 create blank Instances. A blank Instance is a virtual
-machine without an OS template. Users can attach an ISO file and install
+machine without an OS Template. Users can attach an ISO file and install
 the OS from the CD/DVD-ROM.
 
 .. note::
@@ -123,7 +123,7 @@ the OS from the CD/DVD-ROM.
    startVM, in the deployVm API provides this feature. For more information,
    see the Developer's Guide.
 
-To create an Instance from a template:
+To create an Instance from a Template:
 
 #. Log in to the CloudStack UI as an administrator or user.
 
@@ -133,7 +133,7 @@ To create an Instance from a template:
 
 #. Select a zone. Admin users will have the option to select a pod, cluster or host.
 
-#. Select a template or ISO. For more information about how the templates came
+#. Select a Template or ISO. For more information about how the Templates came
    to be in this list, see `*Working with Templates* <templates.html>`_.
 
 #. Be sure that the hardware you have allows starting the selected
@@ -145,7 +145,7 @@ To create an Instance from a template:
 
 
    .. note::
-      VMware only: If the selected template contains OVF properties, different deployment options or configurations,
+      VMware only: If the selected Template contains OVF properties, different deployment options or configurations,
       multiple NICs or end-user license agreements, then the wizard will display these properties.
 
       See `“Support for Virtual Appliances” <virtual_machines.html#support-for-virtual-appliances>`_.
@@ -160,7 +160,7 @@ To create an Instance from a template:
    **XenServer**
 
    Windows Instances running on XenServer require PV drivers,
-   which may be provided in the template or added after the Instance is
+   which may be provided in the Template or added after the Instance is
    created. The PV drivers are necessary for essential management
    functions such as mounting additional volumes and ISO images,
    live migration, and graceful shutdown.
@@ -168,10 +168,10 @@ To create an Instance from a template:
    **VMware**
 
    If the rootDiskController and dataDiskController are not specified for an Instance using Instance details and
-   these are set to use osdefault in the template or the global configuration, then CloudStack tries to find the
+   these are set to use osdefault in the Template or the global configuration, then CloudStack tries to find the
    recommended disk controllers for it using guest OS from the hypervisor. In some specific cases, it may create
    issues with the Instance deployment or start operation. To overcome this, a specific disk controller can be
-   specified at the Instance or template level. For an existing Instance its settings can be updated while it is in
+   specified at the Instance or Template level. For an existing Instance its settings can be updated while it is in
    stopped state by admin.
 
 
@@ -191,14 +191,14 @@ Be sure the following are installed on each Instance:
 To be sure that Xen tools or VMware Tools is installed, use one of the
 following techniques:
 
--  Create each Instance from a template that already has the tools installed;
+-  Create each Instance from a Template that already has the tools installed;
    or,
 
--  When registering a new template, the administrator or user can
-   indicate whether tools are installed on the template. This can be
+-  When registering a new Template, the administrator or user can
+   indicate whether tools are installed on the Template. This can be
    done through the UI or using the updateTemplate API; or,
 
--  If a user deploys an Instance with a template that does not
+-  If a user deploys an Instance with a Template that does not
    have Xen tools or VMware Tools, and later installs the tools on the
    Instance, then the user can inform CloudStack using the
    updateVirtualMachine API. After installing the tools and updating the
@@ -230,7 +230,7 @@ To access an Instance directly over the Network:
 
 #. If a port is open but you can not access the Instance using ssh, it’s
    possible that ssh is not already enabled on the Instance. This will depend
-   on whether ssh is enabled in the template you picked when creating
+   on whether ssh is enabled in the Template you picked when creating
    the Instance. Access the Instance through the CloudStack UI and enable ssh on the
    machine using the commands for the Instance’s operating system.
 
@@ -872,31 +872,31 @@ Changing an Instance's Base Image
 
 Every Instance is created from a base image, which is a Template or ISO which
 has been created and stored in CloudStack. Both cloud administrators and
-end users can create and modify templates, ISOs, and Instances.
+end users can create and modify Templates, ISOs, and Instances.
 
 In CloudStack, you can change an existing Instance's base image from one
-template to another, or from one ISO to another. (You can not change
-from an ISO to a template, or from a template to an ISO).
+Template to another, or from one ISO to another. (You can not change
+from an ISO to a Template, or from a Template to an ISO).
 
-For example, suppose there is a template based on a particular operating
+For example, suppose there is a Template based on a particular operating
 system, and the OS vendor releases a software patch. The administrator
 or user naturally wants to apply the patch and then make sure existing
 Instances start using it. Whether a software update is involved or not, it's
-also possible to simply switch an Instance from its current template to any
-other desired template.
+also possible to simply switch an Instance from its current Template to any
+other desired Template.
 
 To change an Instance's base image, call the restoreVirtualMachine API command
-and pass in the Instance ID and a new template ID. The template
-ID parameter may refer to either a template or an ISO, depending on
+and pass in the Instance ID and a new Template ID. The Template
+ID parameter may refer to either a Template or an ISO, depending on
 which type of base image the Instance was already using (it must match the
 previous type of image). When this call occurs, the Instance's root disk is
 first destroyed, then a new root disk is created from the source
-designated in the template ID parameter. The new root disk is attached
-to the Instance, and now the Instance is based on the new template.
+designated in the Template ID parameter. The new root disk is attached
+to the Instance, and now the Instance is based on the new Template.
 
-You can also omit the template ID parameter from the
+You can also omit the Template ID parameter from the
 restoreVirtualMachine call. In this case, the Instance's root disk is
-destroyed and recreated, but from the same template or ISO that was
+destroyed and recreated, but from the same Template or ISO that was
 already in use by the Instance.
 
 
@@ -909,7 +909,7 @@ The Settings tab is always present/visible, but settings can be changed only whe
 Some Instance details/settings can be hidden for users via "user.vm.denied.details" global setting. Instance details/settings can also be made read-only for users using "user.vm.readonly.details" global setting. List of default hidden and read-only details/settings is given below.
 
 .. note::
-   Since version 4.15, VMware Instance settings for the ROOT disk controller, NIC adapter type and data disk controller are populated automatically with the values inherited from the template.
+   Since version 4.15, VMware Instance settings for the ROOT disk controller, NIC adapter type and data disk controller are populated automatically with the values inherited from the Template.
 
 When adding a new setting or modifying the existing ones, setting names are shown/offered in a drop-down list, as well as their possible values (with the exception of boolean or numerical values).
 
@@ -1134,9 +1134,9 @@ files. Using a single SSH key pair, you can manage multiple Instances.
 Creating an Instance Template that Supports SSH Keys
 ----------------------------------------------------
 
-Create an Instance template that supports SSH Keys.
+Create an Instance Template that supports SSH Keys.
 
-#. Create a new Instance by using the template provided by cloudstack.
+#. Create a new Instance by using the Template provided by cloudstack.
 
    For more information on creating a new Instance, see
 
@@ -1232,7 +1232,7 @@ Creating an Instance
 --------------------
 
 After you save the SSH keypair file, you must create an Instance by
-using the template that you created at `Section 5.2.1, “ Creating an
+using the Template that you created at `Section 5.2.1, “ Creating an
 Instance Template that Supports SSH Keys” <#create-ssh-template>`__.
 Ensure that you use the same SSH key name that you created at
 `Section 5.2.2, “Creating the SSH Keypair” <#create-ssh-keypair>`__.
@@ -1247,7 +1247,7 @@ A sample curl command to create a new Instance is:
 
    curl --globoff http://localhost:<port number>/?command=deployVirtualMachine\&zoneId=1\&serviceOfferingId=18727021-7556-4110-9322-d625b52e0813\&templateId=e899c18a-ce13-4bbf-98a9-625c5026e0b5\&securitygroupids=ff03f02f-9e3b-48f8-834d-91b822da40c5\&account=admin\&domainid=1\&keypair=keypair-doc
 
-Substitute the template, service offering and security group IDs (if you
+Substitute the Template, service offering and security group IDs (if you
 are using the security group feature) that are in your cloud
 environment.
 

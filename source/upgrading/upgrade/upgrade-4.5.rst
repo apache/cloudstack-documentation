@@ -35,7 +35,7 @@ working on a production system.
 Upgrade Steps:
 
 #. Check any customisations and integrations
-#. Upload the |sysvm64-version| System VM template if not already using it.
+#. Upload the |sysvm64-version| System VM Template if not already using it.
 #. Stop all running management servers
 #. Backup CloudStack database (MySQL)
 #. Add package repository for MySQL connector

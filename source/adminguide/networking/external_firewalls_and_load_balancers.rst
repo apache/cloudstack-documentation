@@ -26,7 +26,7 @@ use the SRX as their gateway.
 About Using a NetScaler Load Balancer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Citrix NetScaler is supported as an external network element for load
+Citrix NetScaler is supported as an external Network element for load
 balancing in zones that use isolated networking in advanced zones. Set
 up an external load balancer when you want to provide load balancing
 through means other than CloudStack's provided virtual router.
@@ -98,7 +98,7 @@ Configuring SNMP Community String on a RHEL Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The SNMP Community string is similar to a user id or password that
-provides access to a network device, such as router. This string is sent
+provides access to a Network device, such as router. This string is sent
 along with all SNMP requests. If the community string is correct, the
 device responds with the requested information. If the community string
 is incorrect, the device discards the request and does not respond.
@@ -239,9 +239,9 @@ creates a rule, specifies an algorithm, and assigns the rule to a set of
 instances.
 
 .. note::
-   If you create load balancing rules while using a network service
+   If you create load balancing rules while using a Network service
    offering that includes an external load balancer device such as
-   NetScaler, and later change the network service offering to one that
+   NetScaler, and later change the Network service offering to one that
    uses the CloudStack virtual router, you must create a firewall rule on
    the virtual router for each of your existing load balancing rules so
    that they continue to function.
@@ -256,7 +256,7 @@ Adding a Load Balancer Rule
 
 #. In the left navigation, choose Network.
 
-#. Click the name of the network where you want to load balance the
+#. Click the name of the Network where you want to load balance the
    traffic.
 
 #. Click Public IP Addresses.
@@ -270,7 +270,7 @@ Adding a Load Balancer Rule
    IP when you create the load balancing rule, which is listed in the IP
    Addresses page when the rule is created.
 
-   To do that, select the name of the network, then click Add Load
+   To do that, select the name of the Network, then click Add Load
    Balancer tab. Continue with #7.
 
 #. Fill in the following:
@@ -549,7 +549,7 @@ Before you configure an AutoScale rule, consider the following:
 
 -  In an advanced Zone, ensure that at least one instance should be present
    before configuring a load balancer rule with AutoScale. Having one instance
-   in the network ensures that the network is in implemented state for
+   in the Network ensures that the Network is in implemented state for
    configuring AutoScale.
 
 
@@ -659,7 +659,7 @@ advanced settings, and specify the following:
 -  **Security Groups**: Security groups provide a way to isolate traffic
    to the instances. A security group is a group of instances that filter
    their incoming and outgoing traffic according to a set of rules,
-   called ingress and egress rules. These rules filter network traffic
+   called ingress and egress rules. These rules filter Network traffic
    according to the IP address that is attempting to communicate with
    the instance.
 
