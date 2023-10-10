@@ -936,9 +936,6 @@ VMware documentation and the VMware Knowledge Base, especially
 Storage-based VM snapshots on KVM
 ---------------------------------
 
-.. note::
-	 For now this functionality is limited for NFS and Local storage.
-
 CloudStack introduces a new Storage-based VM snapshots on KVM feature that provides
 crash-consistent snapshots of all disks attached to the VM. It employs the underlying storage
 providers’ capability to create/revert/delete disk snapshots. Consistency is obtained by freezing
@@ -950,7 +947,7 @@ the virtual machine before the snapshotting. Memory snapshots are not supported.
 
 When the snapshotting is complete, the virtual machine is thawed.
 
-You can use this functionality on virtual machines with raw block storages (E.g. Ceph/SolidFire/Linstor).
+You can use this functionality on virtual machines with local storage, NFS and raw block storages (E.g. Ceph/SolidFire/Linstor).
 
 Limitations on VM Snapshots
 ---------------------------
