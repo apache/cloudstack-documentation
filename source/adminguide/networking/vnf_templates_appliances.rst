@@ -75,31 +75,31 @@ Users need to add VNF nics and VNF details of the VNF templates.
 
 #. Click "VNF settings" tab of the VNF template
 
-|vnf-template-vnf-settings.png|
+   |vnf-template-vnf-settings.png|
 
 #. To add VNF nics, click "Add VNF nic"
 
-|vnf-add-nic.png|
+   |vnf-add-nic.png|
 
-The following parameters are supported.
+   The following parameters are supported.
 
-- deviceid: The device ID of the VNF nic. The device id must be consecutive and start from 0.
+   - deviceid: The device ID of the VNF nic. The device id must be consecutive and start from 0.
 
-- name: The name of the VNF nic.
+   - name: The name of the VNF nic.
 
-- required: True if the VNF nic is required. Otherwise it is optional. It cannot be true if a precedent nic is optional.
+   - required: True if the VNF nic is required. Otherwise it is optional. It cannot be true if a precedent nic is optional.
 
-- management: True if the VNF nic is a management interface. False otherwise
+   - management: True if the VNF nic is a management interface. False otherwise
 
-- description: The description of the VNF nic.
+   - description: The description of the VNF nic.
 
-When VNF nics are added, user will see the list of VNF nics.
+   When VNF nics are added, user will see the list of VNF nics.
 
-|vnf-nics-list.png|
+   |vnf-nics-list.png|
 
 #. To add VNF details, click click "Add VNF detail"
 
-|vnf-add-detail.png|
+   |vnf-add-detail.png|
 
 The following parameters are supported.
 
@@ -111,7 +111,7 @@ The following parameters are supported.
 
 Users are also able to edit or remove the existing VNF details.
 
-|vnf-details-list.png|
+   |vnf-details-list.png|
 
 
 Deploy VNF appliances
@@ -128,11 +128,11 @@ Deploy VNF appliances
 
 #. Choose the networks you want to add to the VNF appliance
 
-|vnf-appliance-networks-selection.png|
+   |vnf-appliance-networks-selection.png|
 
 #. In the "VNF nics" step, choose the network each VNF nic will use
 
-|vnf-appliance-vnf-nics.png|
+   |vnf-appliance-vnf-nics.png|
 
 #. Click "Launch VNF appliance" button
 
