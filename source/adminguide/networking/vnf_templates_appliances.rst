@@ -105,7 +105,7 @@ The following parameters are supported.
 
 - name: The name of the VNF detail. The valid values are: ACCESS_METHODS,
   USERNAME, PASSWORD, SSH_USER, SSH_PASSWORD, SSH_PORT, WEB_USER, WEB_PASSWORD,
-  HTTP_PATH, HTTP_PORT, HTTPS_PATH, HTTPS_PORT and ICON, VERSION, VENDOR, MAINTAINER
+  HTTP_PATH, HTTP_PORT, HTTPS_PATH, HTTPS_PORT, ICON, VERSION, VENDOR and MAINTAINER
 
 - value: The value of the VNF detail. If the name is access_methods, the valid values are: console, http, https, ssh-key, ssh-password
 
