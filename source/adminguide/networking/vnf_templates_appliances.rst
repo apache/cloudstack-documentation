@@ -134,7 +134,7 @@ Deploying VNF appliances
 
    |vnf-appliance-vnf-nics.png|
 
-#. Click "Launch VNF appliance" button
+#. Click the "Launch VNF appliance" button
 
 When the VNF appliance is deployed successfully, you will see the VNF appliance on
 the same page.
