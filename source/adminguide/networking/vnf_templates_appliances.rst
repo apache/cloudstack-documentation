@@ -59,7 +59,7 @@ HTTP server or local, or created from volume, to be a VNF template.
 
 #. Change the "Template type" to "VNF"
 
-#. Click OK button.
+#. Click the OK button.
 
 
 Update VNF settings of VNF template
