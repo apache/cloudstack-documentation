@@ -93,7 +93,7 @@ Users need to add the VNF nics and VNF details of the VNF templates.
 
    - description: The description of the VNF nic.
 
-   When VNF nics are added, user will see the list of VNF nics.
+   When VNF nics are added, users will see the list of VNF nics.
 
    |vnf-nics-list.png|
 
