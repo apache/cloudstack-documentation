@@ -47,7 +47,7 @@ Updating a VM template to VNF template
 -------
 
 Users are able to update an existing VM template, which is uploaded from
-HTTP server or local, or created from volume, to a VNF template.
+HTTP server or local, or created from volume, to be a VNF template.
 
 #. Log in to the CloudStack UI as an administrator or end user.
 
