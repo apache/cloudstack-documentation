@@ -55,7 +55,7 @@ HTTP server or local, or created from volume, to be a VNF template.
 
 #. Select the VM template you want to work with.
 
-#. Into System Preferences -> Network 
+#. Go into System Preferences -> Network 
 
 #. Change the "Template type" to "VNF"
 
