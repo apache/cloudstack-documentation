@@ -114,7 +114,7 @@ Users are also able to edit or remove existing VNF details.
    |vnf-details-list.png|
 
 
-Deploy VNF appliances
+Deploying VNF appliances
 -------------------
 
 #. Log in to the CloudStack UI as an administrator or end user.
