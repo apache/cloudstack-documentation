@@ -109,7 +109,7 @@ The following parameters are supported.
 
 - value: The value of the VNF detail. If the name is access_methods, the valid values are: console, http, https, ssh-key, ssh-password
 
-Users are also able to edit or remove the existing VNF details.
+Users are also able to edit or remove existing VNF details.
 
    |vnf-details-list.png|
 
