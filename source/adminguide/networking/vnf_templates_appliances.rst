@@ -65,7 +65,7 @@ HTTP server or local, or created from volume, to be a VNF template.
 Updating the VNF settings of a VNF template
 -------------------
 
-Users need to add VNF nics and VNF details of the VNF templates.
+Users need to add the VNF nics and VNF details of the VNF templates.
 
 #. Log in to the CloudStack UI as an administrator or end user.
 
