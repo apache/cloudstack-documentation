@@ -137,7 +137,7 @@ Deploying VNF appliances
 #. Click the "Launch VNF appliance" button
 
 When the VNF appliance is deployed successfully, you will see the VNF appliance on
-the same page.
+the "VNF appliances" page.
 
 
 .. |vnf-template-vnf-settings.png| image:: /_static/images/vnf-template-vnf-settings.png
