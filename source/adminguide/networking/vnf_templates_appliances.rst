@@ -34,7 +34,7 @@ To create a VNF appliance, user needs to register a VNF template and add VNF set
 
 #. Specify the "Template type" to "VNF"
 
-#. Click OK button.
+#. Click the OK button.
 
 When the VNF template is registered successfully, you will see the template on
 the same page or under Network -> VNF templates.
