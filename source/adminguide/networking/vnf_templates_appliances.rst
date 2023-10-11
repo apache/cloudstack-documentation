@@ -40,7 +40,7 @@ When the VNF template is registered successfully, you will see the template on
 the same page or under Network -> VNF templates.
 
    For more information, see `“Uploading Templates from a remote HTTP server”
-   <templates.html#uploading-templates-from-a-remote-http-server>`_.
+   <../templates.html#uploading-templates-from-a-remote-http-server>`_.
 
 
 Updating a VM template to VNF template
@@ -124,7 +124,7 @@ Deploying VNF appliances
 #. Click the "Add VNF Appliance" button.
 
    For more information, see `“Creating VMs”
-   <virtual_machines.html#creating-vms>`_.
+   <../virtual_machines.html#creating-vms>`_.
 
 #. Choose the networks you want to add to the VNF appliance
 
