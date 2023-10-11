@@ -73,7 +73,7 @@ Users need to add the VNF nics and VNF details of the VNF templates.
 
 #. Select the VNF template you want to work with.
 
-#. Click "VNF settings" tab of the VNF template
+#. Click on the "VNF settings" tab of the VNF template
 
    |vnf-template-vnf-settings.png|
 
