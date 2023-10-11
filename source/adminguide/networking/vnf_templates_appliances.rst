@@ -97,7 +97,7 @@ Users need to add the VNF nics and VNF details of the VNF templates.
 
    |vnf-nics-list.png|
 
-#. To add VNF details, click click "Add VNF detail"
+#. To add VNF details, click on "Add VNF detail"
 
    |vnf-add-detail.png|
 
