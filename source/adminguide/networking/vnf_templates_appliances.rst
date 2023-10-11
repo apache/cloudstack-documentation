@@ -87,7 +87,7 @@ Users need to add the VNF nics and VNF details of the VNF templates.
 
    - name: The name of the VNF nic.
 
-   - required: True if the VNF nic is required. Otherwise it is optional. It cannot be true if a precedent nic is optional.
+   - required: True if the VNF nic is required. Otherwise it is optional. It cannot be true if a preceding nic is optional.
 
    - management: True if the VNF nic is a management interface. False otherwise
 
