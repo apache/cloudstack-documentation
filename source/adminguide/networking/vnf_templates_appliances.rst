@@ -30,11 +30,11 @@ To create a VNF appliance, user needs to register a VNF template and add VNF set
 
 #. In the left navigation, choose Images -> Templates
 
-#. Click the "Register template from URL" button.
+#. Click on the "Register template from URL" button.
 
 #. Specify the "Template type" to "VNF"
 
-#. Click the OK button.
+#. Click on the OK button.
 
 When the VNF template is registered successfully, you will see the template on
 the same page or under Network -> VNF templates.
@@ -59,7 +59,7 @@ HTTP server or local, or created from volume, to be a VNF template.
 
 #. Change the "Template type" to "VNF"
 
-#. Click the OK button.
+#. Click on the OK button.
 
 
 Updating the VNF settings of a VNF template
@@ -77,7 +77,7 @@ Users need to add the VNF nics and VNF details of the VNF templates.
 
    |vnf-template-vnf-settings.png|
 
-#. To add VNF nics, click "Add VNF nic"
+#. To add VNF nics, click on the "Add VNF nic" button
 
    |vnf-add-nic.png|
 
@@ -97,19 +97,19 @@ Users need to add the VNF nics and VNF details of the VNF templates.
 
    |vnf-nics-list.png|
 
-#. To add VNF details, click on "Add VNF detail"
+#. To add VNF details, click on the "Add VNF detail" button
 
    |vnf-add-detail.png|
 
-The following parameters are supported.
+   The following parameters are supported.
 
-- name: The name of the VNF detail. The valid values are: ACCESS_METHODS,
-  USERNAME, PASSWORD, SSH_USER, SSH_PASSWORD, SSH_PORT, WEB_USER, WEB_PASSWORD,
-  HTTP_PATH, HTTP_PORT, HTTPS_PATH, HTTPS_PORT, ICON, VERSION, VENDOR and MAINTAINER
+   - name: The name of the VNF detail. The valid values are: ACCESS_METHODS,
+     USERNAME, PASSWORD, SSH_USER, SSH_PASSWORD, SSH_PORT, WEB_USER, WEB_PASSWORD,
+     HTTP_PATH, HTTP_PORT, HTTPS_PATH, HTTPS_PORT, ICON, VERSION, VENDOR and MAINTAINER
 
-- value: The value of the VNF detail. If the name is access_methods, the valid values are: console, http, https, ssh-key, ssh-password
+   - value: The value of the VNF detail. If the name is access_methods, the valid values are: console, http, https, ssh-key, ssh-password
 
-Users are also able to edit or remove existing VNF details.
+#. To edit or remove VNF details, click on the corresponding icon of each VNF detail.
 
    |vnf-details-list.png|
 
@@ -121,7 +121,7 @@ Deploying VNF appliances
 
 #. In the left navigation, choose Network -> VNF appliances
 
-#. Click the "Add VNF Appliance" button.
+#. Click on the "Add VNF Appliance" button.
 
    For more information, see `“Creating VMs”
    <../virtual_machines.html#creating-vms>`_.
@@ -134,7 +134,31 @@ Deploying VNF appliances
 
    |vnf-appliance-vnf-nics.png|
 
-#. Click the "Launch VNF appliance" button
+   The following parameters are supported, if the management network is an Isolated
+   network or Shared network with security groups.
+
+   - Configure rules for VNF management interfaces. False by default.
+
+   - Source cidr list of rules. It is The CIDR list to forward traffic from to the
+     VNF management interface. Multiple entries must be separated by a single comma
+     character (,). The default value is 0.0.0.0/0.
+
+   .. note::
+     The following network rules will be applied.
+
+     - If management network is an isolated network, CloudStack will acquire a public
+     IP, enable static nat on the VNF appliance, and create firewall rules to allow
+     traffic to ssh/http/https ports based on access_methods in VNF template details.
+
+     - If management network is a shared network with security groups, CloudStack will
+     create a new security group with rules to allow traffic to ssh/http/https ports 
+     based on access_methods in VNF template details, and assign to the VNF appliance.
+
+     - If management network is a L2 network or VPC tier, no network rules will be 
+     configured.
+
+
+#. Click on the "Launch VNF appliance" button
 
 When the VNF appliance is deployed successfully, you will see the VNF appliance on
 the "VNF appliances" page.
