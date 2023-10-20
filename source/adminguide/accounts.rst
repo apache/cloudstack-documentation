@@ -676,7 +676,33 @@ For Github, please follow the instructions mentioned here `"Setting up OAuth 2.0
 In any OAuth 2.0 configuration admin has to use the redirect URI "http://<management server IP>:<port>/#/verifyOauth"
 
 .. Note:: [Google OAuth 2.0 redirect URI] :
-          Google OAuth 2.0 configuration wont accept '#' in the URI, please use "http://<management server IP>:<port>/verifyOauth"
+          Google OAuth 2.0 configuration wont accept '#' in the URI, please use "http://<management server Domain>:<port>/?verifyOauth"
+          Google does not accept direct IP address in the redirect URI, it must be a domain. As a workaround one can add the management
+          server IP to host table in the local system and assign a domain, something like "management.cloud". In that redirect URI looks like
+          "http://management.cloud:8080/?verifyOauth"
+
+.. image:: /_static/images/oauth-provider-registration.png
+   :width: 400px
+   :align: center
+   :alt: OAuth provider registration
+
+Following are the details needs to be provided to register the OAuth provider, this is to call the API "registerOauthProvider"
+
+   -  **Provider**: Name of the provider from the list of OAuth providers supported in CloudStack
+
+   -  **Description**: A short description for the provider
+
+   -  **Provider Client ID**: Client ID pre-registered in the specific OAuth provider
+
+   -  **Redirect URI**: Redirect URI pre-registered in the specific OAuth provider
+
+   -  **Secret Key**: Secret Key pre-registered in the specific OAuth provider
+
+Cloudmonkey API call looks like
+
+   -  register oauthprovider provider=google description="Google Provider"
+      clientid="http://345798102268-3kp6qd6c16v6b9av2tmvqagj40na30l4.apps.googleusercontent.com"
+      redirecturi="http://local.cloud:8080/?verifyOauth" secretkey="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"
 
 Email address is the key to identify the user in CloudStack. In case if user belongs to any specific domain, domain name
 has to be provided in the login form and then click on OAuth login.
