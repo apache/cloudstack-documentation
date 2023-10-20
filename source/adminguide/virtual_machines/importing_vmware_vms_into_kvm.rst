@@ -67,10 +67,16 @@ CloudStack administrators must select the Source VMware Datacenter:
     - Existing: The existing zones are listed, and for each zone CloudStack will list if there is any VMware Datacenter associated to it. In case it is, it can be selected
     - External: CloudStack allows listing Virtual Machines from a VMware Datacenter that is not associated to any CloudStack zone. To do so, it needs the vCenter IP address, the datacenter name, and username and password credentials to log in the vCenter.
 
+Once the VMware Datacenter is selected, click on List VMware Instances to display the list of Virtual Machines on the Datacenter
+
+
+Importing a Virtual Machine from VMware into KVM
+------------------------------------------------
+
+.. note:: CloudStack allows importing Running Linux Virtual Machines, but it is recommended that the Virtual Machine to import is powered off and has been gracefully shutdown before the process starts. For Windows Virtual Machines, it is not possible to import them while running.
+
+
+
 .. |import-vm-from-vmware-to-kvm.png| image:: /_static/images/import-vm-from-vmware-to-kvm.png
    :alt: Import VMware Virtual Machines into KVM.
    :width: 800 px
-
-
-Selecting the VM from a VMware Datacenter
------------------------------------------
