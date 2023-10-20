@@ -1078,8 +1078,26 @@ Support for Virtual Appliances
 Importing and Unmanaging Virtual Machines
 =========================================
 
+In the UI, both unmanaged and managed virtual machines or instances are listed in *Tools > Import-Export Instances* section, selecting:
+
+   .. cssclass:: table-striped table-bordered table-hover
+
+   ==================== ========================
+   Source               Destination Hypervisor  
+   ==================== ========================
+   Unmanaged Instance   VMware
+   ==================== ========================
+
+   |vm-unmanagedmanaged.png|
+
+
 .. include:: ./virtual_machines/importing_unmanaging_vms.rst
 
+
+Importing Virtual Machines From VMware into KVM
+===============================================
+
+.. include:: ./virtual_machines/importing_vmware_vms_into_kvm.rst
 
 Virtual Machine Backups (Backup and Recovery Feature)
 =====================================================

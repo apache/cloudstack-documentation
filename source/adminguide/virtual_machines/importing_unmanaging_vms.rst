@@ -28,11 +28,6 @@ From ACS 4.16 onwards, importing of the unmanaged VMs can also be carried out wi
 
 From ACS 4.15 onwards, administrators are able to unmanage guest virtual machines.
 
-In the UI, both unmanaged and managed virtual machines or instances are listed in *Tools > Import-Export Instances* section:
-
-   |vm-unmanagedmanaged.png|
-
-
 Importing Unmanaged Virtual Machines
 ------------------------------------
 
