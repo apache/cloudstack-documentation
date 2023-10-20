@@ -27,8 +27,17 @@ In case virt-v2v is not installed on a KVM host attempting a Virtual Machine con
 The virt-v2v output is logged on the CloudStack agent logs to help administrators tracking the progress on the Virtual Machines conversion processes. The verbose mode for virt-v2v can be enabled by adding the following line to /etc/cloudstack/agent/agent.properties and restart cloudstack-agent:
 
     ::
-        
+
         virtv2v.verbose.enabled=true
+
+
+Installing virt-v2v on Ubuntu KVM hosts does not install nbdkit which is required in the conversion of VMWare VCenter guests. To install it, please execute:
+
+    ::
+
+        apt install nbdkit
+
+
 
 Usage
 -----
