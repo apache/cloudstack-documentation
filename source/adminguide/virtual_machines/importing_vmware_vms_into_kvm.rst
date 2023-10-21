@@ -38,6 +38,20 @@ Installing virt-v2v on Ubuntu KVM hosts does not install nbdkit which is require
         apt install nbdkit
 
 
+Supported Distributions for KVM Hypervisor:
+
+
+.. cssclass:: table-striped table-bordered table-hover
+
+========================    ========================
+Linux Distribution          Supported Versions
+========================    ========================
+Alma Linux                  8, 9
+Red Hat Enterprise Linux    8, 9
+Rocky Linux                 8, 9
+Ubuntu                      22.04 LTS
+========================    ========================
+
 
 Usage
 -----
