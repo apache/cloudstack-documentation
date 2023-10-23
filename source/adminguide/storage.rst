@@ -798,8 +798,10 @@ to a VM.
 A completed snapshot is copied from primary storage to secondary
 storage, where it is stored until deleted or purged by newer snapshot.
 
-Users can also select the desired zones at the time of taking manual snapshots or while creating a snapshot policy.
-When additional zone(s) are selected and snapshot backup is allowed, the snapshot will be first copied to the secondary storage of the native zone and then copied to the additional zone(s) from there.
+Users can also select the desired zones at the time of taking manual snapshots
+or while creating a snapshot policy. When additional zone(s) are selected and
+snapshot backup is allowed, the snapshot will be first copied to the secondary
+storage of the native zone and then copied to the additional zone(s) from there.
 
 How to Snapshot a Volume
 ~~~~~~~~~~~~~~~~~~~~~~~~
