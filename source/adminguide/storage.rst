@@ -898,7 +898,12 @@ recovered as needed. Alternatively, a template may be created from the
 snapshot of a root disk. The user can then boot a VM from this template
 to effect recovery of the root disk.
 
-Some hypervisor and storage combinations also allow for Instances and volumes to be reverted from snapshots. In such cases the **Revert to snapshot** action for a snapshot in the UI or the `revertSnapshot` API can be used to restore the volume to a particular snapshot. It should be noted that, when supported by the combination of hypervisor and storage, the snapshot must be available in the zone in which volume to be restored is present.
+Some hypervisor and storage combinations also allow for Instances and volumes
+to be reverted from snapshots. In such cases the **Revert to snapshot** action for
+a snapshot in the UI or the `revertSnapshot` API can be used to restore the volume
+to a particular snapshot. It should be noted that, when supported by the combination
+of hypervisor and storage, the snapshot must be available in the zone in which volume
+to be restored is present.
 
 .. note::
    When creating a volume from a snapshot of a DATA disk, it should be noted that
