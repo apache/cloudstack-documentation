@@ -947,9 +947,11 @@ Snapshot Copy
 ~~~~~~~~~~~~~
 
 CloudStack allows copying an exisiting backed-up snapshot to multiple zones.
-Users can either use the UI in the snapshot details view or the `copySnapshot` API to copy a snapshot from one zone to other zone(s).
-Snapshot copies can be used for disastser recovery and creating volumes and templates in the specific zone.
-Later if not needed, these copies or replicas can be individually deleted without affecting other replicas.
+Users can either use the UI in the snapshot details view or the `copySnapshot`
+API to copy a snapshot from one zone to other zone(s). Snapshot copies can
+be used for disastser recovery and creating volumes and templates in the
+specific zone. Later if not needed, these copies or replicas can be individually
+deleted without affecting other replicas.
 
 
 VMware Volume Snapshot Performance
