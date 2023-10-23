@@ -154,8 +154,8 @@ Deploying VNF appliances
      create a new security group with rules to allow traffic to ssh/http/https ports 
      based on access_methods in VNF template details, and assign to the VNF appliance.
 
-     - If management network is a L2 network or VPC tier, no network rules will be 
-     configured.
+     - If management network is a L2 network, VPC tier or Shared network without security
+     groups, no network rules will be configured.
 
 
 #. Click on the "Launch VNF appliance" button
