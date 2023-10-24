@@ -827,6 +827,11 @@ to a VM.
 A completed snapshot is copied from primary storage to secondary
 storage, where it is stored until deleted or purged by newer snapshot.
 
+Users can also select the desired zones at the time of taking manual snapshots
+or while creating a snapshot policy. When additional zone(s) are selected and
+snapshot backup is allowed, the snapshot will be first copied to the secondary
+storage of the native zone and then copied to the additional zone(s) from there.
+
 How to Snapshot a Volume
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -922,6 +927,20 @@ recovered as needed. Alternatively, a template may be created from the
 snapshot of a root disk. The user can then boot a VM from this template
 to effect recovery of the root disk.
 
+Some hypervisor and storage combinations also allow for Instances and volumes
+to be reverted from snapshots. In such cases the **Revert to snapshot** action for
+a snapshot in the UI or the `revertSnapshot` API can be used to restore the volume
+to a particular snapshot. It should be noted that, when supported by the combination
+of hypervisor and storage, the snapshot must be available in the zone in which volume
+to be restored is present.
+
+.. note::
+   When creating a volume from a snapshot of a DATA disk, it should be noted that
+   the volume's disk offering must be accessible in the target zone. In case the disk
+   offering is using storage tags then such tagged storage resources must be available
+   in the target zone.
+
+
 
 Snapshot Job Throttling
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -951,6 +970,17 @@ falls below the configured limit.
 The admin can also set job.expire.minutes to place a maximum on how long
 a snapshot request will wait in the queue. If this limit is reached, the
 snapshot request fails and returns an error message.
+
+
+Snapshot Copy
+~~~~~~~~~~~~~
+
+CloudStack allows copying an exisiting backed-up snapshot to multiple zones.
+Users can either use the UI in the snapshot details view or the `copySnapshot`
+API to copy a snapshot from one zone to other zone(s). Snapshot copies can
+be used for disastser recovery and creating volumes and templates in the
+specific zone. Later if not needed, these copies or replicas can be individually
+deleted without affecting other replicas.
 
 
 VMware Volume Snapshot Performance
