@@ -89,7 +89,12 @@ Importing a Virtual Machine from VMware into KVM
 
 .. note:: CloudStack allows importing Running Linux Virtual Machines, but it is recommended that the Virtual Machine to import is powered off and has been gracefully shutdown before the process starts. For Windows Virtual Machines, it is not possible to import them while running.
 
+When importing a Virtual Machine from VMware to KVM, CloudStack performs the following actions:
 
+    - Cloning the Source Virtual Machine on the selected VMware Datacenter: The source Virtual Machine will be cloned in the original state (running or stopped for Linux VMs, or stopped for Windows VMs). The recommended state is the stopped state to prevent inconsistencies when cloning the virtual machine.
+    - Converting the Cloned Virtual Machine to KVM using virt-v2v: CloudStack (or the administrator) selects a running and Enabled KVM host to perform the conversion from VMware to KVM using virt-v2v. If the binary is not installed, then the host will fail the migration. In case it is installed it will perform the conversion into a temporary location (which can be selected by the administrator) to store the converted QCOW2 disks of the virtual machine. The disks are then moved into the destination storage pools for the virtual machine. The conversion process is a long-lasting process which can be set to timeout by the global setting 'convert.vmware.instance.to.kvm.timeout'. The conversion processes are long-lasting processes since virt-v2v creates a virtual machine to inspect the source VM and generate the converted disks with the correct drivers. Also, it needs to copy the converted disks into the temporary location.
+
+.. note:: Please consider not restarting the management servers during the imports since this action can cause failures on the on-going importing processes.
 
 .. |import-vm-from-vmware-to-kvm.png| image:: /_static/images/import-vm-from-vmware-to-kvm.png
    :alt: Import VMware Virtual Machines into KVM.
