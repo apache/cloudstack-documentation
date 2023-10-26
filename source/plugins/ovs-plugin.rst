@@ -303,7 +303,7 @@ When the host agent connects to the management server, it sends the list of host
 
 Additional Instance configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In order to enable DPDK on Instance deployments, Users should pass addition configuration to Instances. The required configurations are listed on the next section. Administrators can allow users to pass additional configurations to their Instances by the Account scoped setting:
+In order to enable DPDK on Instance deployments, users should pass addition configuration to Instances. The required configurations are listed on the next section. Administrators can allow users to pass additional configurations to their Instances by the Account scoped setting:
 
 ::
 

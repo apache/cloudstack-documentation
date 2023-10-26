@@ -18,7 +18,7 @@ Configure package repository
 
 CloudStack is only distributed from source from the official mirrors.
 However, members of the CloudStack community may build convenience
-binaries so that Users can install Apache CloudStack without needing to
+binaries so that users can install Apache CloudStack without needing to
 build from source.
 
 If you didn't follow the steps to build your own packages from source in

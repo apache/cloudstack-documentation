@@ -40,7 +40,7 @@ Upgrade Steps:
 Packages repository
 -------------------
 
-Most Users of CloudStack manage the installation and upgrades of
+Most users of CloudStack manage the installation and upgrades of
 CloudStack with one of Linux's predominant package systems, RPM or
 APT. This guide assumes you'll be using RPM and Yum (for Red Hat
 Enterprise Linux or CentOS), or APT and Debian packages (for Ubuntu).

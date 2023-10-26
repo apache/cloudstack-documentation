@@ -59,7 +59,7 @@ A VPC is comprised of the following Network components:
 
 -  **Public Gateway**: The traffic to and from the Internet routed to
    the VPC through the public gateway. In a VPC, the public gateway is
-   not exposed to the end User; therefore, static routes are not support
+   not exposed to the end user; therefore, static routes are not support
    for the public gateway.
 
 -  **Private Gateway**: All the traffic to and from a private Network

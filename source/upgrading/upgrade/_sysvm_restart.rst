@@ -23,10 +23,10 @@ System VMs, namely, SSVM, CPVM, Routers. Live patching provides support
 for zero-downtime upgrades, wherein, the System VM software is updated to the
 latest code version without having to destroy and recreate them / restart them.
 
-With this feature, Users will have a choice wherein they can use the existing System VM Template with the latest
+With this feature, users will have a choice wherein they can use the existing System VM Template with the latest
 software by using the live patch feature, or can follow the usual workflow of restarting the
 system VM to use the latest System VM Template. Live Patching System VMs serves to be especially
-useful in cases when the code version has upgraded but the Template hasn't. In such a scenario Users
+useful in cases when the code version has upgraded but the Template hasn't. In such a scenario users
 will no longer need to restart the System VMs to use the latest code.
 
 When one attempts to live-patch the System VMs, it pretty much mimics the patching process
@@ -72,7 +72,7 @@ Following matrix lists the versions of CloudStack that support live patching.
          | >=4.15              | 4.17+                   |Yes                             |       N/A                                |
          +---------------------+-------------------------+--------------------------------+------------------------------------------+
 
-In addition to the support for live patching, Users still have the facility to follow the legacy workflow
+In addition to the support for live patching, users still have the facility to follow the legacy workflow
 of restarting the system VMs once the packages on the management servers have been upgraded. Here you'll
 need to restart the system VMs in order for those VMs to be rebuilt 
 from the new system VM Template version.

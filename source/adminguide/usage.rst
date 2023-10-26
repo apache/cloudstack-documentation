@@ -137,7 +137,7 @@ usage.stats.job.exec.time.
 
 Default: 00:15.
 
-For example, suppose that your server is in GMT, your User population is
+For example, suppose that your server is in GMT, your user population is
 predominantly in the East Coast of the United States, and you would like
 to process usage records every night at 2 AM local (EST) time. Choose
 these settings:
@@ -169,7 +169,7 @@ Setting Usage Limits
 CloudStack provides several administrator control points for capping
 resource usage by Users. Some of these limits are global configuration
 parameters. Others are applied at the ROOT domain and may be overridden
-on a per-Account basis.
+on a per-account basis.
 
 
 Globally Configured Limits
@@ -402,7 +402,7 @@ using Global configuration parameters, and they affect all Accounts
 within a cloud. The relevant parameters are those beginning with
 max.account, for example: max.account.snapshots.
 
-To override a default limit for a particular Account, set a per-Account
+To override a default limit for a particular Account, set a per-account
 resource limit.
 
 #. Log in to the CloudStack UI.

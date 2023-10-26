@@ -203,7 +203,7 @@ createKubernetesCluster API can be used to create new Kubernetes cluster. It tak
 - **kubernetesversionid** (Kubernetes version with which cluster to be launched; Required for CloudManaged clusters)
 - **serviceofferingid** (the ID of the service offering for the Instances in the cluster; Required for CloudManaged clusters)
 - **account** (an optional Account for the Instance. Must be used with domainId)
-- **domainid** (an optional domainId for the Instance. If the Account parameter is used, domainId must also be used)
+- **domainid** (an optional domainId for the Instance. If the account parameter is used, domainId must also be used)
 - **projectid** (Deploy cluster for the project)
 - **networkid** (Network in which Kubernetes cluster is to be launched)
 - **keypair** (name of the ssh key pair used to login to the Instances)

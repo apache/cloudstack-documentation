@@ -108,8 +108,8 @@ Table: Mapping Between Cloudian and CloudStack
 Special Admin User Mapping
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The special CloudStack admin is are mapped to a special HyperStore Admin User
-Account which defaults to the User id admin. As the admin user on HyperStore is
+The special CloudStack admin is are mapped to a special HyperStore Admin user
+account which defaults to the user id admin. As the admin user on HyperStore is
 configurable, there is a configuration option to control this mapping. This
 mapping dictates which HyperStore user is automatically logged in using SSO when
 the CloudStack admin user clicks "Cloudian Storage".

@@ -46,7 +46,7 @@ Overview of Upgrade Steps:
 #. Upgrade and restart the remaining management servers
 
 
-Apache CloudStack 4.10.0.0 Users who are upgrading to 4.11.0.0 should read the
+Apache CloudStack 4.10.0.0 users who are upgrading to 4.11.0.0 should read the
 following discussion and workaround for a db-upgrade issue:
 http://markmail.org/message/f42kqr3mx4r4hgih
 
@@ -64,7 +64,7 @@ http://markmail.org/message/f42kqr3mx4r4hgih
 Packages repository
 -------------------
 
-Most Users of CloudStack manage the installation and upgrades of
+Most users of CloudStack manage the installation and upgrades of
 CloudStack with one of Linux's predominant package systems, RPM or
 APT. This guide assumes you'll be using RPM and Yum (for Red Hat
 Enterprise Linux or CentOS), or APT and Debian packages (for Ubuntu).
