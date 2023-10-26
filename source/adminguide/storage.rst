@@ -254,9 +254,9 @@ CloudStack defines a volume as a unit of storage available to a Guest
 Instance. Volumes are either root disks or data disks. The root disk has "/"
 in the file system and is usually the boot device. Data disks provide
 for additional storage, for example: "/opt" or "D:". Every Guest Instance has
-a root disk, and Instances can also optionally have a data disk. End users can
+a root disk, and Instances can also optionally have a data disk. End Users can
 mount multiple data disks to Guest Instances. Users choose data disks from the
-disk offerings created by administrators. The user can create a Template
+disk offerings created by administrators. The User can create a Template
 from a volume as well; this is the standard procedure for private
 Template creation. Volumes are hypervisor-specific: a volume from one
 hypervisor type may not be used on a guest of another hypervisor type.
@@ -277,7 +277,7 @@ Creating a New Volume
 
 You can add more data disk volumes to a Guest Instance at any time, up to the
 limits of your storage capacity. Both CloudStack administrators and
-users can add volumes to Instances. When you create a new volume, it
+Users can add volumes to Instances. When you create a new volume, it
 is stored as an entity in CloudStack, but the actual storage resources
 are not allocated on the physical storage device until you attach the
 volume. This optimization allows the CloudStack to provision the volume
@@ -309,7 +309,7 @@ latency and cost reduction from using inexpensive local disks.
 In order for local volumes to be used, the feature must be enabled for
 the zone.
 
-You can create a data disk offering for local storage. When a user
+You can create a data disk offering for local storage. When a User
 creates a new Instance, they can select this disk offering in order to cause
 the data disk volume to be placed in local storage.
 
@@ -322,7 +322,7 @@ Instances with local data volumes on that host.
 To Create a New Volume
 ^^^^^^^^^^^^^^^^^^^^^^
 
-#. Log in to the CloudStack UI as a user or admin.
+#. Log in to the CloudStack UI as a User or admin.
 
 #. In the left navigation bar, click Storage.
 
@@ -351,7 +351,7 @@ Uploading an Existing Volume to an Instance
 Existing data can be made accessible to an Instance. This is
 called uploading a volume to the Instance. For example, this is useful to
 upload data from a local file system and attach it to an Instance. Root
-administrators, domain administrators, and end users can all upload
+administrators, domain administrators, and end Users can all upload
 existing volumes to Instances.
 
 The upload is performed using HTTP. The uploaded volume is placed in the
@@ -369,7 +369,7 @@ To upload a volume:
    you are going to upload. After uploading the data disk, CloudStack
    will use this value to verify that no data corruption has occurred.
 
-#. Log in to the CloudStack UI as an administrator or user
+#. Log in to the CloudStack UI as an administrator or User
 
 #. In the left navigation bar, click Storage.
 
@@ -588,8 +588,8 @@ be restarted.
 
    .. note::
       In case of KVM and PowerFlex/ScaleIO storage, live migration of
-      instance's root disk is allowed from one PowerFlex/ScaleIO storage pool
-      to another, without stopping the instance.
+      Instance's root disk is allowed from one PowerFlex/ScaleIO storage pool
+      to another, without stopping the Instance.
 
 
 Resizing Volumes
@@ -745,7 +745,7 @@ created from the volume.
 When an Instance is destroyed, data disk volumes that are attached to the Instance
 are not deleted unless specified.
 
-In managed storage systems such as Solidfire and others, the volume snapshots
+In managed storage systems such as Solidfire and others, the volume Snapshots
 are linked entities in the volumes wherein deletion of the volume would delete
 those Snapshots. In such managed storage systems, the volume Snapshots exist on
 the primary storage and may not be backed up to the secondary storages. For a

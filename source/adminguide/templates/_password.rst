@@ -82,4 +82,4 @@ Windows OS Installation
 
 Download the installer, CloudInstanceManager.msi, from the `Download
 page <http://sourceforge.net/projects/cloudstack/files/Password%20Management%20Scripts/CloudInstanceManager.msi/download>`_
-and run the installer in the newly created Windows instance.
+and run the installer in the newly created Windows Instance.

@@ -99,7 +99,7 @@ password files.
 
 Enable config drive
 ~~~~~~~~~~~~~~~~~~~
-To use the config drive the network offering must have the “ConfigDrive”
+To use the config drive the Network offering must have the “ConfigDrive”
 provider selected for the userdata service.
 
 If the networkoffering uses ConfigDrive for userdata and the Template is
@@ -159,7 +159,7 @@ VMdata - a list of String arrays representing [“directory”, “filename”, 
 
     - vm_password.txt
 
-    - vm_password_md5checksum (for windows instances)
+    - vm_password_md5checksum (for windows Instances)
 
 - <mountdir>/openstack/version/:
 

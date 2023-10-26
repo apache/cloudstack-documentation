@@ -189,12 +189,12 @@ Router.
 
 .. figure:: /_static/images/nvp-physical-network-stt.png
    :align: center
-   :alt: a screenshot of a network offering.
+   :alt: a screenshot of a Network offering.
 
 
 .. note::
-   The tag in the network offering should be set to the name of the
-   physical network with the NVP provider.
+   The tag in the Network offering should be set to the name of the
+   physical Network with the NVP provider.
 
 Isolated network with network services. The virtual router is still
 required to provide network services like dns and dhcp.
@@ -242,14 +242,14 @@ Logical Switch
 VPC Offering with Nicira NVP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To allow a VPC to use the Nicira NVP plugin to provision networks, a new
+To allow a VPC to use the Nicira NVP plugin to provision Networks, a new
 VPC offering needs to be created which allows the Virtual Networking
 service to be implemented by NiciraNVP.
 
 This is not currently possible with the UI. The API does provide the
 proper calls to create a VPC offering with Virtual Networking enabled.
 However due to a limitation in the 4.1 API it is not possible to select
-the provider for this network service. To configure the VPC offering
+the provider for this Network service. To configure the VPC offering
 with the NiciraNVP provider edit the database table
 'vpc\_offering\_service\_map' and change the provider to NiciraNvp for
 the service 'Connectivity'
@@ -272,8 +272,8 @@ provider 'NiciraNvp'
 VPC Network Offerings
 ~~~~~~~~~~~~~~~~~~~~~
 
-The VPC needs specific network offerings with the VPC flag enabled.
-Otherwise these network offerings are identical to regular network
+The VPC needs specific Network offerings with the VPC flag enabled.
+Otherwise these Network offerings are identical to regular Network
 offerings. To allow VPC networks with a Nicira NVP isolated network the
 offerings need to support the Virtual Networking service with the
 NiciraNVP provider.

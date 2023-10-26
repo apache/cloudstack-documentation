@@ -137,7 +137,7 @@ usage.stats.job.exec.time.
 
 Default: 00:15.
 
-For example, suppose that your server is in GMT, your user population is
+For example, suppose that your server is in GMT, your User population is
 predominantly in the East Coast of the United States, and you would like
 to process usage records every night at 2 AM local (EST) time. Choose
 these settings:
@@ -169,7 +169,7 @@ Setting Usage Limits
 CloudStack provides several administrator control points for capping
 resource usage by Users. Some of these limits are global configuration
 parameters. Others are applied at the ROOT domain and may be overridden
-on a per-account basis.
+on a per-Account basis.
 
 
 Globally Configured Limits
@@ -247,19 +247,19 @@ Parameter Name                      Description
 =================================== =================================================================
 max.account.cpus                    Maximum number of CPU cores that can be used for an Account.
                                     Default is 40.
-max.account.ram (MB)                Maximum RAM that can be used for an account.
+max.account.ram (MB)                Maximum RAM that can be used for an Account.
                                     Default is 40960.
-max.account.primary.storage (GB)    Maximum primary storage space that can be used for an account.
+max.account.primary.storage (GB)    Maximum primary storage space that can be used for an Account.
                                     Default is 200.
-max.account.secondary.storage (GB)  Maximum secondary storage space that can be used for an account.
+max.account.secondary.storage (GB)  Maximum secondary storage space that can be used for an Account.
                                     Default is 400.
-max.project.cpus                    Maximum number of CPU cores that can be used for an account.
+max.project.cpus                    Maximum number of CPU cores that can be used for an Account.
                                     Default is 40.
-max.project.ram (MB)                Maximum RAM that can be used for an account.
+max.project.ram (MB)                Maximum RAM that can be used for an Account.
                                     Default is 40960.
-max.project.primary.storage (GB)    Maximum primary storage space that can be used for an account.
+max.project.primary.storage (GB)    Maximum primary storage space that can be used for an Account.
                                     Default is 200.
-max.project.secondary.storage (GB)  Maximum secondary storage space that can be used for an account.
+max.project.secondary.storage (GB)  Maximum secondary storage space that can be used for an Account.
                                     Default is 400.
 =================================== =================================================================
 
@@ -275,10 +275,10 @@ and ``api.log`` files.
    limits.
 
 -  The domain administrators are allowed to list and change these
-   resource limits only for the sub-domains and accounts under their own
+   resource limits only for the sub-domains and Accounts under their own
    domain or the sub-domains.
 
--  The end users will the privilege to list resource limits. Use the
+-  The end Users will the privilege to list resource limits. Use the
    listResourceLimits API.
 
 
@@ -289,14 +289,14 @@ Limit Usage Considerations
    volume and not the physical size— the actual consumed size on disk in
    case of thin provisioning.
 
--  If the admin reduces the resource limit for an account and set it to
+-  If the admin reduces the resource limit for an Account and set it to
    less than the resources that are currently being consumed, the
    existing Instances/Templates/Volumes are not destroyed. Limits are imposed
-   only if the User under that account tries to execute a new operation
+   only if the User under that Account tries to execute a new operation
    using any of these resources. For example, the existing behavior in
    the case of an Instance are:
 
-   -  migrateVirtualMachine: The Users under that account will be able
+   -  migrateVirtualMachine: The Users under that Account will be able
       to migrate the running Instance into any other host without facing any
       limit issue.
 
@@ -304,18 +304,18 @@ Limit Usage Considerations
 
 -  For any resource type, if a domain has limit X, sub-domains or
    accounts under that domain can have there own limits. However, the
-   sum of resource allocated to a sub-domain or accounts under the
+   sum of resource allocated to a sub-domain or Accounts under the
    domain at any point of time should not exceed the value X.
 
    For example, if a domain has the CPU limit of 40 and the sub-domain
-   D1 and account A1 can have limits of 30 each, but at any point of
+   D1 and Account A1 can have limits of 30 each, but at any point of
    time the resource allocated to D1 and A1 should not exceed the limit
    of 40.
 
 -  If any operation needs to pass through two of more resource limit
    check, then the lower of 2 limits will be enforced, For example: if
-   an account has the Instance limit of 10 and CPU limit of 20, and a User
-   under that account requests 5 Instances of 4 CPUs each. The User can deploy
+   an Account has the Instance limit of 10 and CPU limit of 20, and a User
+   under that Account requests 5 Instances of 4 CPUs each. The User can deploy
    5 more Instances because Instance limit is 10. However, the User cannot deploy
    any more Instances because the CPU limit has been exhausted.
 
@@ -324,12 +324,12 @@ Limiting Resource Usage in a Domain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 CloudStack allows the configuration of limits on a domain basis. With a
-domain limit in place, all Users still have their account limits. They
+domain limit in place, all Users still have their Account limits. They
 are additionally limited, as a group, to not exceed the resource limits
-set on their domain. Domain limits aggregate the usage of all accounts
-in the domain as well as all the accounts in all the sub-domains of that
+set on their domain. Domain limits aggregate the usage of all Accounts
+in the domain as well as all the Accounts in all the sub-domains of that
 domain. Limits set at the root domain level apply to the sum of resource
-usage by the accounts in all the domains and sub-domains below that root
+usage by the Accounts in all the domains and sub-domains below that root
 domain.
 
 To set a domain limit:
@@ -397,19 +397,19 @@ To set a domain limit:
 Default Account Resource Limits
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can limit resource use by accounts. The default limits are set by
-using Global configuration parameters, and they affect all accounts
+You can limit resource use by Accounts. The default limits are set by
+using Global configuration parameters, and they affect all Accounts
 within a cloud. The relevant parameters are those beginning with
 max.account, for example: max.account.snapshots.
 
-To override a default limit for a particular account, set a per-account
+To override a default limit for a particular Account, set a per-Account
 resource limit.
 
 #. Log in to the CloudStack UI.
 
 #. In the left navigation tree, click Accounts.
 
-#. Select the account you want to modify. The current limits are
+#. Select the Account you want to modify. The current limits are
    displayed.
 
    A value of -1 shows that there is no limit in place.
@@ -424,61 +424,61 @@ resource limit.
 
    -  Instance Limits
 
-      The number of Instances that can be used in an account.
+      The number of Instances that can be used in an Account.
 
       The default is 20.
 
    -  Public IP Limits
 
-      The number of public IP addresses that can be used in an account.
+      The number of public IP addresses that can be used in an Account.
 
       The default is 20.
 
    -  Volume Limits
 
-      The number of disk volumes that can be created in an account.
+      The number of disk volumes that can be created in an Account.
 
       The default is 20.
 
    -  Snapshot Limits
 
-      The number of Templates that can be created in an account.
+      The number of Templates that can be created in an Account.
 
       The default is 20.
 
    -  Template Limits
 
-      The number of Templates that can be registered in an account.
+      The number of Templates that can be registered in an Account.
 
       The default is 20.
 
    -  VPC limits
 
-      The number of VPCs that can be created in an account.
+      The number of VPCs that can be created in an Account.
 
       The default is 20.
 
    -  CPU limits
 
-      The number of CPU cores that can be used for an account.
+      The number of CPU cores that can be used for an Account.
 
       The default is 40.
 
    -  Memory limits (MB)
 
-      The number of RAM that can be used for an account.
+      The number of RAM that can be used for an Account.
 
       The default is 40960.
 
    -  Primary Storage limits (GB)
 
-      The primary storage space that can be used for an account.
+      The primary storage space that can be used for an Account.
 
       The default is 200.
 
    -  Secondary Storage limits (GB)
 
-      The secondary storage space that can be used for an account.
+      The secondary storage space that can be used for an Account.
 
       The default is 400.
 
@@ -494,11 +494,11 @@ Instance Usage Record Format
 For running and allocated Instance usage, the following fields
 exist in a usage record:
 
--  account – name of the account
+-  account – name of the Account
 
--  accountid – ID of the account
+-  accountid – ID of the Account
 
--  domainid – ID of the domain in which this account resides
+-  domainid – ID of the domain in which this Account resides
 
 -  zoneid – Zone where the usage occurred
 
@@ -535,11 +535,11 @@ Network Usage Record Format
 For Network usage (bytes sent/received), the following fields exist in a
 usage record.
 
--  account – name of the account
+-  account – name of the Account
 
--  accountid – ID of the account
+-  accountid – ID of the Account
 
--  domainid – ID of the domain in which this account resides
+-  domainid – ID of the domain in which this Account resides
 
 -  zoneid – Zone where the usage occurred
 
@@ -562,9 +562,9 @@ IP Address Usage Record Format
 
 For IP address usage the following fields exist in a usage record.
 
--  account - name of the account
+-  account - name of the Account
 
--  accountid - ID of the account
+-  accountid - ID of the Account
 
 -  domainid - ID of the domain in which this account resides
 

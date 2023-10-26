@@ -125,7 +125,7 @@ The following table shows all quota types for which you can specify tariff.
 | 12               | PORT\_FORWARDING\_RULE            | Quota for port forwarding|
 |                  |                                   | policy month             |
 +------------------+-----------------------------------+--------------------------+
-| 13               | NETWORK\_OFFERING                 | Quota for network        |
+| 13               | NETWORK\_OFFERING                 | Quota for Network        |
 |                  |                                   | Offering for a month     |
 +------------------+-----------------------------------+--------------------------+
 | 14               | VPN\_USERS                        | Quota for VPN usage      |

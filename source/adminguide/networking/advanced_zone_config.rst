@@ -188,9 +188,9 @@ Configuring a Shared Guest Network
 #. Click OK to confirm.
 
    .. note::
-      * End users (not administrator) can only use the Network
+      * End Users (not administrator) can only use the Network
         offerings with specifyvlan is false. Please create a Network offering
-        with specifyvlan is false to enable this for end users. See
+        with specifyvlan is false to enable this for end Users. See
         `“Creating a New Network Offering”
         <networking.html#creating-a-new-network-offering>`_.
       * MTU options will be shown in the UI and considered only when zone configuration - `allow.end.users.to.specify.vr.mtu` is set to true. Maximum allowed values for public and private MTU can be controlled by zone-level configurations, `vr.public.interface.max.mtu` and `vr.private.interface.max.mtu` respectively.

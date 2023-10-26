@@ -173,7 +173,7 @@ MySQL. See :ref:`install-database-on-separate-node`.
    to the User and preparing the tables for the first startup of the management
    server.
 
-   The following command creates the "cloud" user on the database.
+   The following command creates the "cloud" User on the database.
 
    .. parsed-literal::
 
@@ -185,22 +185,22 @@ MySQL. See :ref:`install-database-on-separate-node`.
       -i <management_server_ip>
 
    -  In dbpassword, specify the password to be assigned to the "cloud"
-      user. You can choose to provide no password although that is not
+      User. You can choose to provide no password although that is not
       recommended.
 
-   -  In deploy-as, specify the username and password of the user
+   -  In deploy-as, specify the username and password of the User
       deploying the database. In the following command, it is assumed
-      the root user is deploying the database and creating the "cloud"
-      user.
+      the root User is deploying the database and creating the "cloud"
+      User.
 
    -  (Optional) There is an option to bypass the creating of the databases,
-      user and granting permissions to the user. This is useful if you don't
+      User and granting permissions to the User. This is useful if you don't
       want to expose your root credentials but still want the database to
       be prepared for first start up. These skipped steps will have had to be
       done manually prior to executing this script. This behaviour can be
       invoked by passing the --schema-only flag. This flag conflicts with the
       --deploy-as flag so the two cannot be used together. To set up the
-      databases and user manually before executing the script with the flag,
+      databases and User manually before executing the script with the flag,
       these commands can be executed:
 
       .. code:: mysql

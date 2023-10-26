@@ -103,7 +103,7 @@ templating of Centos and Ubuntu.
    
    .. note:: 
 	 
-    It is a good practice to remove any non root users that come with the OS (such as ones created during the Ubuntu 
+    It is a good practice to remove any non root Users that come with the OS (such as ones created during the Ubuntu
     installation). First ensure the root User Account is enabled by giving it a password and then login as root to continue.
 
    Once logged in as root, any custom User can be removed.

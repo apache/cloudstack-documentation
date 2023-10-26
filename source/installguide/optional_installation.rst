@@ -159,7 +159,7 @@ steps are a guide to implementing MySQL replication.
       # service mysql restart
 
 #. Create a replication Account on the source server and give it privileges. We
-   will use the "cloud-repl" user with the password "password". This
+   will use the "cloud-repl" User with the password "password". This
    assumes that source and replica run on the 172.16.1.0/24 Network.
 
    .. sourcecode: bash
@@ -698,7 +698,7 @@ Examples
 ~~~~~~~~
 
 There are many tools available to interface with a AWS compatible API.
-In this section we provide a few examples that users of CloudStack can
+In this section we provide a few examples that Users of CloudStack can
 build upon.
 
 

@@ -29,7 +29,7 @@ Secondary storage must be seeded with a Template that is used for CloudStack Sys
 #. On the Management Server, run one or more of the following
    ``cloud-install-sys-tmplt`` commands to retrieve and decompress the
    System VM Template. Run the command for each hypervisor type that you
-   expect end users to run in this Zone.
+   expect end Users to run in this Zone.
 
    If your secondary storage mount point is not named ``/mnt/secondary``,
    substitute your own mount point name.

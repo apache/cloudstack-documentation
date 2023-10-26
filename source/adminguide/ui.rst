@@ -19,7 +19,7 @@ Log In to the UI
 ----------------
 
 CloudStack provides a web-based UI that can be used by both
-administrators and end users. The appropriate version of the UI is
+administrators and end Users. The appropriate version of the UI is
 displayed depending on the credentials used to log in. The UI is
 available in all modern popular browsers including Chrome, Firefox, Edge and
 Safari. The UI uses API auto-discovery to discover APIs allowed for a logged-in
@@ -60,10 +60,10 @@ UI, see Logging In as the Root Administrator.
 End User's UI Overview
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The CloudStack UI helps users of cloud infrastructure to view and use
+The CloudStack UI helps Users of cloud infrastructure to view and use
 their cloud resources, including Instances, Templates and ISOs,
 data volumes and Snapshots, Guest Networks, and IP addresses. If the
-user is a member or administrator of one or more CloudStack projects,
+User is a member or administrator of one or more CloudStack projects,
 the UI can provide a project-oriented view.
 
 
@@ -90,7 +90,7 @@ Logging In as the Root Administrator
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 After the Management Server software is installed and running, you can
-run the CloudStack user interface. This UI is there to help you
+run the CloudStack User interface. This UI is there to help you
 provision, view, and manage your cloud infrastructure.
 
 #. Open your favorite Web browser and go to this URL. Substitute the IP
@@ -288,7 +288,7 @@ Some assorted primary theme colours:
 - Purple: #722ED1
 
 The config.json also allows to configure a special-purpose card that shows on
-the account and project dashboards. This card is created using the `userCard`
+the Account and project dashboards. This card is created using the `userCard`
 section that has a configurable title, icon and a list of configurable links
 that have a title, text (description), link and icon.
 

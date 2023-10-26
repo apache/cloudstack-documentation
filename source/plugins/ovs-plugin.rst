@@ -187,7 +187,7 @@ Enabling the service provider
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The OVS provider is disabled by default. Navigate to the "Network
-Service Providers" configuration of the physical network with the GRE
+Service Providers" configuration of the physical Network with the GRE
 isolation type. Navigate to the OVS provider and press the
 "Enable Provider" button.
 
@@ -199,7 +199,7 @@ isolation type. Navigate to the OVS provider and press the
 Network Offerings
 ~~~~~~~~~~~~~~~~~
 
-Using the OVS plugin requires a network offering with Virtual
+Using the OVS plugin requires a Network offering with Virtual
 Networking enabled and configured to use the OVS element. Typical
 use cases combine services from the Virtual Router appliance and the
 OVS plugin.
@@ -230,20 +230,20 @@ OVS plugin.
 | Virtual Networking   | OVS             |
 +----------------------+-----------------+
 
-Table: Isolated network offering with regular services from the Virtual
+Table: Isolated Network offering with regular services from the Virtual
 Router.
 
 .. figure:: /_static/images/ovs-network-offering.png
    :align: center
-   :alt: a screenshot of a network offering.
+   :alt: a screenshot of a Network offering.
 
 
 .. note::
-   The tag in the network offering should be set to the name of the
-   physical network with the OVS provider.
+   The tag in the Network offering should be set to the name of the
+   physical Network with the OVS provider.
 
-Isolated network with network services. The virtual router is still
-required to provide network services like dns and dhcp.
+Isolated Network with Network services. The virtual router is still
+required to provide Network services like dns and dhcp.
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -267,7 +267,7 @@ required to provide network services like dns and dhcp.
 | Virtual Networking   | OVS             |
 +----------------------+-----------------+
 
-Table: Isolated network offering with network services
+Table: Isolated Network offering with Network services
 
 
 Using the OVS plugin with VPC
@@ -303,7 +303,7 @@ When the host agent connects to the management server, it sends the list of host
 
 Additional Instance configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In order to enable DPDK on Instance deployments, users should pass addition configuration to Instances. The required configurations are listed on the next section. Administrators can allow users to pass additional configurations to their Instances by the Account scoped setting:
+In order to enable DPDK on Instance deployments, Users should pass addition configuration to Instances. The required configurations are listed on the next section. Administrators can allow users to pass additional configurations to their Instances by the Account scoped setting:
 
 ::
 
@@ -434,21 +434,21 @@ CloudStack determines that an Instance is a DPDK enabled VM when the following c
 - The Instance is a user Instance
 - The Instance state is Running
 - The host in which the Instance is running is a DPDK enabled host (i.e. host contains the 'dpdk' capability as part of its capabilities. Check `Agent configuration for DPDK support`_.)
-- The instance acquires the DPDK required configurations via instance details or service offering details. DPDK required additional configurations are additional configurations with name:
+- The Instance acquires the DPDK required configurations via Instance details or service offering details. DPDK required additional configurations are additional configurations with name:
    - 'extraconfig-dpdk-numa'
    - 'extraconfig-dpdk-hugepages'
 
-DPDK enabled instances can only be migrated between DPDK enabled hosts. Therefore the 'findHostsForMigration' API method excludes non-DPDK enabled hosts from the list of suitable hosts to migrate DPDK enabled instances.
+DPDK enabled Instances can only be migrated between DPDK enabled hosts. Therefore the 'findHostsForMigration' API method excludes non-DPDK enabled hosts from the list of suitable hosts to migrate DPDK enabled Instances.
 
 DPDK ports
 ~~~~~~~~~~
-When an instance is created or started, CloudStack creates ports with DPDK support with format: "csdpdk-N" where N is a number, incremented on new ports creation. This port is set into the 'source' property of the 'interface' tag on the XML domain of the instance, prepended by the value of the OVS path set on the property:
+When an Instance is created or started, CloudStack creates ports with DPDK support with format: "csdpdk-N" where N is a number, incremented on new ports creation. This port is set into the 'source' property of the 'interface' tag on the XML domain of the Instance, prepended by the value of the OVS path set on the property:
 
 ::
 
       openvswitch.dpdk.ovs.path=OVS_PATH
 
-That would set interfaces to type 'vhostuser' and reference the ports created in the XML domain of the instances as:
+That would set interfaces to type 'vhostuser' and reference the ports created in the XML domain of the Instances as:
 
 ::
 

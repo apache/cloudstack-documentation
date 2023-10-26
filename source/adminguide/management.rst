@@ -158,7 +158,7 @@ add the encrypted password to
        # service cloudstack-management stop
        # service cloudstack-usage stop
 
-#. Next, you'll update the password for the CloudStack user on the MySQL
+#. Next, you'll update the password for the CloudStack User on the MySQL
    server.
 
    .. code:: bash
@@ -391,7 +391,7 @@ alerts from CloudStack:
 
 #. For an SNMP manager, install the CloudStack MIB file on your SNMP
    manager system. This maps the SNMP OIDs to trap types that can be
-   more easily read by users. The file must be publicly available. For
+   more easily read by Users. The file must be publicly available. For
    more information on how to install this file, consult the
    documentation provided with the SNMP manager.
 

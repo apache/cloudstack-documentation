@@ -26,7 +26,7 @@ Normal operation of Hosts is not impacted by an outage of all Management
 Serves. All Guest Instances will continue to work.
 
 When the Management Server is down, no new Instances can be created, and the
-end user and admin UI, API, dynamic load distribution, and HA will cease
+end User and admin UI, API, dynamic load distribution, and HA will cease
 to work.
 
 .. _management-server-load-balancing:
@@ -248,7 +248,7 @@ states:
 - SUSPECT - There are health checks failing with the host.
 - CHECKING - Activity checks are being performed.
 - DEGRADED - The host is passing the activity check ratio and still providing
-  service to the end user, but it cannot be managed from the CloudStack
+  service to the end User, but it cannot be managed from the CloudStack
   management server.
 - RECOVERING - The Host-HA framework is trying to recover the host by issuing
   OOBM jobs.

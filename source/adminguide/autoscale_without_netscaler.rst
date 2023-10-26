@@ -86,7 +86,7 @@ Specify the following:
    Specifying a large value for the maximum Instance parameter might result in
    provisioning large number of Instances, which in turn leads to a single
    load balancing rule exhausting the Instances limit specified at the
-   account or domain level.
+   Account or domain level.
 
 Specify the following scale-up and scale-down policies:
 

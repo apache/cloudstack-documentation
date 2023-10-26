@@ -35,7 +35,7 @@ working on a production system.
 Upgrade Steps:
 
 #. Backup CloudStack database (MySQL)
-#. Install new systemvm template
+#. Install new systemvm Template
 #. Add package repository for MySQL connector
 #. Upgrade CloudStack management server(s)
 #. Update hypervisors specific dependencies

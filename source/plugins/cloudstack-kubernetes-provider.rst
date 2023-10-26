@@ -38,7 +38,7 @@ The CloudStack Kubernetes Provider is automatically deployed when a Kuberentes C
 created on CloudStack 4.16+
 
 In order to communicate with CloudStack, a separate service user **kubeadmin** is created
-in the same account as the cluster owner. The provider uses this user's API keys to get
+in the same Account as the cluster owner. The provider uses this user's API keys to get
 the details of the cluster as well as update the networking rules. It is imperative that
 this user is not altered or have its keys regenerated.
 
@@ -138,7 +138,7 @@ on the cluster nodes.
    .. parsed-literal::
       kubectl apply -f https://raw.githubusercontent.com/apache/cloudstack-kubernetes-provider/main/traefik-ingress-controller.yml
 
-#. On successfully deploying the yaml file, a new Public IP Address in the same network
+#. On successfully deploying the yaml file, a new Public IP Address in the same Network
    as the cluster will be created. It will automatically have the firewall and port forwarding
    rules configured to distribute any traffic amongst the cluster worker nodes
 

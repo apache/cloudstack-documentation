@@ -26,7 +26,7 @@ Integration Components and check for any references to device names in
    those entries (if any) to mount by LABEL or UUID. You can get that
    information with the blkid command.
 
-The next step is make sure the instance is not running in Hyper-V, then get
+The next step is make sure the Instance is not running in Hyper-V, then get
 the VHD into XenServer. There are two options for doing this.
 
 Option one:
@@ -36,10 +36,10 @@ Option one:
 
 #. Choose the VHD, then click Next.
 
-#. Name the instance, choose the NFS VHD SR under Storage, enable "Run
+#. Name the Instance, choose the NFS VHD SR under Storage, enable "Run
    Operating System Fixups" and choose the NFS ISO SR.
 
-#. Click Next, then Finish. An instance should be created.
+#. Click Next, then Finish. An Instance should be created.
 
 Option two:
 
@@ -50,21 +50,21 @@ Option two:
 
 #. Input the XenServer host info, then click Next.
 
-#. Name the instance, then click Next, then Convert. An instance should be created.
+#. Name the Instance, then click Next, then Convert. An Instance should be created.
 
-Once you have an instance created from the Hyper-V VHD, prepare it using the
+Once you have an Instance created from the Hyper-V VHD, prepare it using the
 following steps:
 
-#. Boot the instance, uninstall Hyper-V Integration Services, and reboot.
+#. Boot the Instance, uninstall Hyper-V Integration Services, and reboot.
 
 #. Install XenServer Tools, then reboot.
 
-#. Prepare the instance as desired. For example, run sysprep on Windows instances.
+#. Prepare the Instance as desired. For example, run sysprep on Windows Instances.
    See `“Creating a Windows
    Template” <#creating-a-windows-template>`_.
 
-Either option above will create an instance in HVM mode. This is fine for
-Windows instances, but Linux instances may not perform optimally. Converting a Linux
+Either option above will create an Instance in HVM mode. This is fine for
+Windows Instances, but Linux Instances may not perform optimally. Converting a Linux
 instance to PV mode will require additional steps and will vary by
 distribution.
 

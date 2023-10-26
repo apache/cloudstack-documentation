@@ -55,7 +55,7 @@ The CloudStack API supports three access roles:
 #. Domain Admin. Access to only the virtual resources of the clouds that
    belong to the administrator’s domain.
 
-#. User. Access to only the features that allow management of the user’s
+#. User. Access to only the features that allow management of the User’s
    Instances, storage, and Network.
 
 
@@ -115,7 +115,7 @@ and its request parameters, please refer to the appropriate section in
 the CloudStack API documentation. Each parameter field-value pair
 (field=value) is preceded by an ampersand character (&).
 
-Line 7 is the user API Key that uniquely identifies the Account. See
+Line 7 is the User API Key that uniquely identifies the Account. See
 Signing API Requests on page 7.
 
 Line 8 is the signature hash created to authenticate the User Account
@@ -166,7 +166,7 @@ Breaking this down, we have several distinct parts to this URL.
       command=deployVirtualMachine&serviceOfferingId=1&diskOfferingId=1&templateId=2&zoneId=4&apiKey=miVr6X7u6bN_sdahOBpjNejPgEsT35eXq-jB8CG20YI3yaxXcgpyuaIRmFI_EJTVwZ0nUkkJbPmY3y2bciKwFQ
 
 -  Signature: This is the signature of the command string that is
-   generated using a combination of the user’s Secret Key and the HMAC
+   generated using a combination of the User’s Secret Key and the HMAC
    SHA-1 hashing algorithm.
 
    .. parsed-literal::
@@ -194,7 +194,7 @@ To generate the signature.
 
 #. Take the sorted Command String and run it through the HMAC SHA-1
    hashing algorithm (most programming languages offer a utility method
-   to do this) with the user’s Secret Key. Base64 encode the resulting
+   to do this) with the User’s Secret Key. Base64 encode the resulting
    byte array in UTF-8 so that it can be safely transmitted via HTTP.
    The final string produced after Base64 encoding should be
    "Lxx1DM40AjcXU%2FcaiK8RAP0O1hU%3D".
@@ -229,7 +229,7 @@ First import the required modules:
 
 
 Define the endpoint of the Cloud, the command that you want to execute
-and the keys of the user.
+and the keys of the User.
 
 .. parsed-literal::
 

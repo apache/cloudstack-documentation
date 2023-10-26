@@ -36,7 +36,7 @@ Creating Templates: Overview
 
 CloudStack ships with a default Template for the CentOS operating
 system. There are a variety of ways to add more Templates.
-Administrators and end users can add Templates. The typical sequence of
+Administrators and end Users can add Templates. The typical sequence of
 events is:
 
 #. Launch an Instance that has the operating system you want. Make any
@@ -282,7 +282,7 @@ To upload a Template:
       OVA.
 
    -  **Extractable**. Choose Yes if the Template is available for
-      extraction. If this option is selected, end users can download a
+      extraction. If this option is selected, end Users can download a
       full image of a Template.
 
    -  **Public**. Choose Yes to make this Template accessible to all
@@ -385,7 +385,7 @@ Resetting (removing all) permissions
 Exporting Templates
 -------------------
 
-End users and Administrators may export Templates from the CloudStack.
+End Users and Administrators may export Templates from the CloudStack.
 Navigate to the Template in the UI and choose the Download function from
 the Actions menu.
 
@@ -446,7 +446,7 @@ an operating system image, but you can also add ISOs for other types of
 software, such as desktop applications that you want to be installed as
 part of a Template.
 
-#. Log in to the CloudStack UI as an administrator or end user.
+#. Log in to the CloudStack UI as an administrator or end User.
 
 #. In the left navigation bar, click Templates.
 

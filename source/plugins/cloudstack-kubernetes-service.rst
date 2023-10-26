@@ -203,7 +203,7 @@ createKubernetesCluster API can be used to create new Kubernetes cluster. It tak
 - **kubernetesversionid** (Kubernetes version with which cluster to be launched; Required for CloudManaged clusters)
 - **serviceofferingid** (the ID of the service offering for the Instances in the cluster; Required for CloudManaged clusters)
 - **account** (an optional Account for the Instance. Must be used with domainId)
-- **domainid** (an optional domainId for the Instance. If the account parameter is used, domainId must also be used)
+- **domainid** (an optional domainId for the Instance. If the Account parameter is used, domainId must also be used)
 - **projectid** (Deploy cluster for the project)
 - **networkid** (Network in which Kubernetes cluster is to be launched)
 - **keypair** (name of the ssh key pair used to login to the Instances)
@@ -345,7 +345,7 @@ Kubernetes cluster web dashboard
 
 The service while creating a cluster automatically deploys dashboard for the cluster. More details about Kubernetes dashboard here: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 
-Instructions for accessing the dashboard for a running cluster will be shown in the Access tab in the UI. Essentially, the user needs to run a local proxy first using kubectl and kubecofig file for the cluster to access the dashboard. For secure login, the service doesn’t enable kubeconfig based login for the dashboard. Token-based access is enabled and kubectl can be used to access service account secret token.
+Instructions for accessing the dashboard for a running cluster will be shown in the Access tab in the UI. Essentially, the user needs to run a local proxy first using kubectl and kubecofig file for the cluster to access the dashboard. For secure login, the service doesn’t enable kubeconfig based login for the dashboard. Token-based access is enabled and kubectl can be used to access service Account secret token.
 
 |cks-cluster-access-tab.png|
 
