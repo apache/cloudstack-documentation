@@ -53,6 +53,21 @@ Ubuntu                      22.04 LTS
 ========================    ========================
 
 
+Importing Windows guest VMs from VMware requires installing the virtio drivers on the hypervisor hosts for the virt-v2v conversion.
+
+On RHEL9 hosts:
+
+    ::
+
+        yum -y install http://jenkins.openvm.eu/files/virtio-win/virtio-win-1.9.33-0.el9_2.noarch.rpm
+
+
+For other Linux distributions:
+
+    ::
+
+        yum -y install https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.noarch.rpm
+
 Usage
 -----
 
@@ -84,8 +99,8 @@ CloudStack administrators must select the Source VMware Datacenter:
 Once the VMware Datacenter is selected, click on List VMware Instances to display the list of Virtual Machines on the Datacenter
 
 
-Importing a Virtual Machine from VMware into KVM
-------------------------------------------------
+Converting and importing a VMware VM
+------------------------------------
 
 .. note:: CloudStack allows importing Running Linux Virtual Machines, but it is recommended that the Virtual Machine to import is powered off and has been gracefully shutdown before the process starts. For Windows Virtual Machines, it is not possible to import them while running.
 
