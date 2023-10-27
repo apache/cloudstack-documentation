@@ -55,18 +55,18 @@ Ubuntu                      22.04 LTS
 
 Importing Windows guest VMs from VMware requires installing the virtio drivers on the hypervisor hosts for the virt-v2v conversion.
 
-On RHEL9 hosts:
+On (RH)EL hosts:
 
     ::
 
-        yum -y install http://jenkins.openvm.eu/files/virtio-win/virtio-win-1.9.33-0.el9_2.noarch.rpm
+        yum install virtio-win
+You can also install the RPM from https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.noarch.rpm
 
-
-For other Linux distributions:
+For Debian-based distributions:
 
     ::
 
-        yum -y install https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.noarch.rpm
+        apt install virtio-win
 
 Usage
 -----
@@ -106,7 +106,7 @@ Converting and importing a VMware VM
 
 When importing a Virtual Machine from VMware to KVM, CloudStack performs the following actions:
 
-    - Cloning the Source Virtual Machine on the selected VMware Datacenter: The source Virtual Machine will be cloned in the original state (running or stopped for Linux VMs, or stopped for Windows VMs). The recommended state is the stopped state to prevent inconsistencies when cloning the virtual machine.
+    - Cloning the Source Virtual Machine on the selected VMware Datacenter: The source Virtual Machine will be cloned in the original state (running or stopped for Linux VMs, or stopped for Windows VMs). The recommended state is the stopped state to prevent data inconsistencies or loss when cloning the virtual machine.
     - Converting the Cloned Virtual Machine to KVM using virt-v2v: CloudStack (or the administrator) selects a running and Enabled KVM host to perform the conversion from VMware to KVM using virt-v2v. If the binary is not installed, then the host will fail the migration. In case it is installed it will perform the conversion into a temporary location (which can be selected by the administrator) to store the converted QCOW2 disks of the virtual machine. The disks are then moved into the destination storage pools for the virtual machine. The conversion process is a long-lasting process which can be set to timeout by the global setting 'convert.vmware.instance.to.kvm.timeout'. The conversion processes are long-lasting processes since virt-v2v creates a virtual machine to inspect the source VM and generate the converted disks with the correct drivers. Also, it needs to copy the converted disks into the temporary location.
 
 .. note:: Please consider not restarting the management servers during the imports since this action can cause failures on the on-going importing processes.
