@@ -60,7 +60,8 @@ On (RH)EL hosts:
     ::
 
         yum install virtio-win
-You can also install the RPM from https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.noarch.rpm
+
+You can also install the RPM from [https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.noarch.rpm](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.noarch.rpm)
 
 For Debian-based distributions:
 
