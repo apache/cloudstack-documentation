@@ -23,13 +23,13 @@ For requirements and instructions, see :ref:`adding-a-cluster`.
 
 CloudStack DRS
 --------------
-DRS is a process that can rebalance instances across cluster as per the configured algorithm. 
+DRS is a process that can rebalance instances across hypervisor hosts in a cluster as defined by the algorithm selected. 
 There are two algorithms available:
 
 #. **Condensed** spread instances across hosts as densely as possible. 
-   This is useful for reducing the number of hosts used. This is the default algorithm.
+   This is useful for reducing the number of hosts used.
 #. **Balanced** spread instances across hosts as evenly as possible. 
-   This is useful for reducing the load on each host. 
+   This is useful for reducing the load on each host. This is the default algorithm.
 
 .. note::
    Deployment planner will not consider DRS while deploying instances.
@@ -55,10 +55,10 @@ Following are the configuration parameters for DRS.
      - The interval in minutes after which a periodic background thread will schedule DRS for a cluster.
    * - ``drs.max.migrations``
      - `50`
-     - Maximum number of instances to migrate for a DRS execution.
+     - Maximum number of instances to be migrated in one DRS execution.
    * - ``drs.algorithm``
      - `condensed`
-     - DRS algorithm to execute on the cluster. Available algorithms - `condensed`, `balanced`.
+     - DRS algorithm to be executed on the cluster. Available algorithms - `condensed`, `balanced`.
    * - ``drs.imbalance``
      - `0.4`
      - Percentage (as a value between 0.0 and 1.0) of imbalance allowed in the cluster. 1.0 means no imbalance
