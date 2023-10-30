@@ -627,6 +627,91 @@ The following global configuration should be configured:
 
 - ``saml2.timeout``: SAML2 IDP Metadata refresh interval in seconds, minimum value is set to 300. Default is 1800
 
+Using OAuth2 Authentication For Users
+------------------------------------------
+
+OAuth2, the industry-standard authorization or authentication framework, simplifies the process of
+granting access to resources. CloudStack supports OAuth2 authentication wherein users can login into
+CloudStack without using username and password. CloudStack currently supports Google and Github providers.
+Other OAuth2 providers can be easily integrated with CloudStack using its plugin framework.
+
+For admins, the following are the settings available at global level to configure OAuth2.
+
+.. cssclass:: table-striped table-bordered table-hover
+
+================================================   ================   ===================================================================
+Global setting                                     Default values     Description
+================================================   ================   ===================================================================
+oauth2.enabled                                     false              Indicates whether OAuth plugin is enabled or not
+oauth2.plugins                                     google,github      List of OAuth plugins
+oauth2.plugins.exclude                                                List of OAuth plugins which are excluded
+================================================   ================   ===================================================================
+
+The login page when the OAuth2 is enabled and corresponding providers are configured.
+
+.. image:: /_static/images/oauth-login.png
+   :width: 400px
+   :align: center
+   :alt: Login page with OAuth logins
+
+"OAuth configuration" sub-section is added under "Configuration" where admins can register the corresponding
+OAuth providers.
+
+.. image:: /_static/images/oauth-sub-section.png
+   :width: 120px
+   :align: center
+   :alt: OAuth configuration section
+
+.. image:: /_static/images/oauth-configuration-details.png
+   :width: 400px
+   :align: center
+   :alt: OAuth configuration details
+
+To register the OAuth provider client ID, redirect URI, secret key have to provided.
+OAuth 2.0 has to be first configured in the corresponding provider to obtain the client ID, redirect URI, secret Key.
+
+For Google, please follow the instructions mentioned here `"Setting up OAuth 2.0 in Google" <https://support.google.com/cloud/answer/6158849?hl=en>`_.
+For Github, please follow the instructions mentioned here `"Setting up OAuth 2.0 in Github" <https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app>`_.
+
+In any OAuth 2.0 configuration admin has to use the redirect URI "http://<management server IP>:<port>/#/verifyOauth"
+
+.. Note:: [Google OAuth 2.0 redirect URI] :
+          Google OAuth 2.0 configuration wont accept '#' in the URI, please use "http://<management server Domain>:<port>/?verifyOauth"
+          Google does not accept direct IP address in the redirect URI, it must be a domain. As a workaround one can add the management
+          server IP to host table in the local system and assign a domain, something like "management.cloud". In that redirect URI looks like
+          "http://management.cloud:8080/?verifyOauth"
+
+.. image:: /_static/images/oauth-provider-registration.png
+   :width: 400px
+   :align: center
+   :alt: OAuth provider registration
+
+Following are the details needs to be provided to register the OAuth provider, this is to call the API "registerOauthProvider"
+
+   -  **Provider**: Name of the provider from the list of OAuth providers supported in CloudStack
+
+   -  **Description**: A short description for the provider
+
+   -  **Provider Client ID**: Client ID pre-registered in the specific OAuth provider
+
+   -  **Redirect URI**: Redirect URI pre-registered in the specific OAuth provider
+
+   -  **Secret Key**: Secret Key pre-registered in the specific OAuth provider
+
+Cloudmonkey API call looks like
+
+   -  register oauthprovider provider=google description="Google Provider"
+      clientid="http://345798102268-3kp6qd6c16v6b9av2tmvqagj40na30l4.apps.googleusercontent.com"
+      redirecturi="http://local.cloud:8080/?verifyOauth" secretkey="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"
+
+Email address is the key to identify the user in CloudStack. In case if user belongs to any specific domain, domain name
+has to be provided in the login form and then click on OAuth login.
+
+.. image:: /_static/images/user-domain-login.png
+   :width: 400px
+   :align: center
+   :alt: Login page for user under specific domain
+
 Using Two Factor Authentication For Users
 ------------------------------------------
 
