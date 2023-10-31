@@ -403,7 +403,8 @@ the Actions menu.
 Deleting Templates
 ------------------
 
-Templates may be deleted. In general, when a template spans multiple
+Templates may be deleted.  However when the templates are used the default 
+behaviour is to refuse deletion. In general, when a template spans multiple
 Zones, only the copy that is selected for deletion will be deleted; the
 same template in other Zones will not be deleted. The provided CentOS
 template is an exception to this. If the provided CentOS template is
@@ -413,9 +414,9 @@ When templates are deleted, the VMs instantiated from them will continue
 to run. However, new VMs cannot be created based on the deleted
 template.
 
-Cloudstack refuses to delete a template when VMs based on the template
-exist. If this is the case, the parameter "forced" has to be
-set to "true" to delete the template anyways. These VMs can no longer be
+As said, Cloudstack refuses to delete a template when VMs based on the
+template exist. If this is the case, the parameter "forced" can be set 
+to "true" to delete the template anyways. These VMs can no longer be
 reinstalled from that template, but will be unaffected otherwise.
 
 Working with ISOs
