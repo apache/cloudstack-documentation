@@ -413,6 +413,11 @@ When templates are deleted, the VMs instantiated from them will continue
 to run. However, new VMs cannot be created based on the deleted
 template.
 
+Cloudstack refuses to delete a template when VMs based on the template
+exist. If this is the case, the parameter "forced" has to be
+set to "true" to delete the template anyways. These VMs can no longer be
+reinstalled from that template, but will be unaffected otherwise.
+
 Working with ISOs
 ===================
 
