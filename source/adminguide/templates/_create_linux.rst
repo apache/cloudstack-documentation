@@ -17,11 +17,11 @@
 Creating a Linux Template
 -------------------------
 
-Linux templates should be prepared using this documentation in order to
-prepare your linux VMs for template deployment. For ease of
-documentation, the VM which you are configuring the template on will be
+Linux Templates should be prepared using this documentation in order to
+prepare your linux Instances for Template deployment. For ease of
+documentation, the Instance which you are configuring the Template on will be
 referred to as "Main Template". The final product, as created and usable
-for deplyoment in Cloudstack, will be referred as "Final Template".
+for deployment in Cloudstack, will be referred as "Final Template".
 This guide will cover cloud-init setup and scripted setups where available.  It is assumed that openssh-server
 is installed during installation.
 
@@ -32,17 +32,17 @@ An overview of the procedure is as follow:
    For more information, see `“Adding an
    ISO” <virtual_machines.html#adding-an-iso>`_.
 
-#. Create a VM Instance with this ISO.
+#. Create an Instance with this ISO.
 
    For more information, see `“Creating
    VMs” <virtual_machines.html#creating-vms>`_.
 
-#. Prepare the Linux VM
+#. Prepare the Linux Instance
 
-#. Create a template from the VM.
+#. Create a Template from the Instance.
 
    For more information, see `“Creating a Template from an Existing 
-   Virtual Machine” <#creating-a-template-from-an-existing-virtual-machine>`_.
+   Instance” <#creating-a-template-from-an-existing-virtual-machine>`_.
 
 
 System preparation for Linux
@@ -74,7 +74,7 @@ templating of Centos and Ubuntu.
    
 #. **Networking**
 
-   Set template network interface configuration to DHCP so Cloudstack infrastructure can assign one on boot.
+   Set Template Network interface configuration to DHCP so Cloudstack infrastructure can assign one on boot.
 	
    .. warning::
    
@@ -92,7 +92,7 @@ templating of Centos and Ubuntu.
 
 #. **Hostname Management**
 
-   Set a generic name to the template VM during installation, this will ensure components such as LVM do not appear unique to a machine. It is recommended that the name of "localhost" is used for installation.
+   Set a generic name to the Template Instance during installation, this will ensure components such as LVM do not appear unique to a machine. It is recommended that the name of "localhost" is used for installation.
 
    .. code:: bash
 
@@ -103,10 +103,10 @@ templating of Centos and Ubuntu.
    
    .. note:: 
 	 
-    It is a good practice to remove any non root users that come with the OS (such as ones created during the Ubuntu 
-    installation). First ensure the root user account is enabled by giving it a password and then login as root to continue.
+    It is a good practice to remove any non root Users that come with the OS (such as ones created during the Ubuntu
+    installation). First ensure the root user Account is enabled by giving it a password and then login as root to continue.
 
-   Once logged in as root, any custom user can be removed.
+   Once logged in as root, any custom User can be removed.
 
    .. code:: bash
 
@@ -119,7 +119,7 @@ templating of Centos and Ubuntu.
 	 
 #. **SSH keys management**
 
-   Cloudstack can create key pair and push certificates to instances. This feature is available with:
+   Cloudstack can create key pair and push certificates to Instances. This feature is available with:
    
    *  `Cloud-init integration <_cloud_init.html#linux-with-cloud-init>`_
    *  `Implementing a SSH-Key bash script <http://docs.cloudstack.apache.org/en/latest/adminguide/virtual_machines.html#creating-an-instance-template-that-supports-ssh-keys>`_   
@@ -131,7 +131,7 @@ templating of Centos and Ubuntu.
    
 #. **User-data**
 	
-   Cloudstack can push user-data during instance creation.
+   Cloudstack can push user-data during Instance creation.
    This feature is possible with `Cloud-init integration <_cloud_init.html#linux-with-cloud-init>`_.
 	
 #. **Template cleanup**
@@ -140,13 +140,13 @@ templating of Centos and Ubuntu.
    
     Cleanup steps should be run when all Main Template configuration
     is done and just before the shutdown step. After shut down Final
-    template should be created. If the Main Template is started or 
-    rebooted before Final template creation all cleanup steps have to be rerun.
+    Template should be created. If the Main Template is started or
+    rebooted before Final Template creation all cleanup steps have to be rerun.
 
    - **Remove the udev persistent device rules**
    
      This step removes information unique to the Main Template such as
-     network MAC addresses, lease files and CD block devices, the files
+     Network MAC addresses, lease files and CD block devices, the files
      are automatically generated on next boot.
    
      ~  CentOS
@@ -165,7 +165,7 @@ templating of Centos and Ubuntu.
 
    - **Remove SSH Keys**
 
-     This step is to ensure all Templated VMs do not have the same
+     This step is to ensure all Templated Instances do not have the same
      SSH keys, which would decrease the security of the machines
      dramatically.
 
@@ -184,10 +184,10 @@ templating of Centos and Ubuntu.
       logrotate -f /etc/logrotate.conf 2>/dev/null
       rm -f /var/log/*-* /var/log/*.gz 2>/dev/null
 
-   - **Set user password to expire**
+   - **Set User password to expire**
 
-     This step forces the user to change the password of the VM after the
-     template has been deployed.
+     This step forces the User to change the password of the Instance after the
+     Template has been deployed.
 
      .. code:: bash
 
@@ -202,7 +202,7 @@ templating of Centos and Ubuntu.
       history -c
       unset HISTFILE
 
-#. **Shutdown the VM**
+#. **Shutdown the Instance**
 
    Shutdown the Main Template.
 
@@ -210,7 +210,7 @@ templating of Centos and Ubuntu.
 
       halt -p
 
-#. **Create the template!**
+#. **Create the Template!**
 
    You are now ready to create the Final Template, for more information see
    `“Creating a Template from an Existing Virtual

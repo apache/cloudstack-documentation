@@ -75,7 +75,7 @@ A typical GSLB environment is comprised of the following components:
    services.
 
 -  **GSLB Virtual Servers**: A GSLB virtual server refers to one or more
-   GSLB services and balances traffic between traffic across the VMs in
+   GSLB services and balances traffic between traffic across the instances in
    multiple zones by using the CloudStack functionality. It evaluates
    the configured GSLB methods or algorithms to select a GSLB service to
    which to send the client requests. One or more virtual servers from
@@ -273,11 +273,11 @@ Prerequisites and Guidelines
    A zone shall be considered as GSLB capable only if a GSLB service
    provider is provisioned in the zone.
 
--  When users have VMs deployed in multiple availability zones which are
+-  When users have instances deployed in multiple availability zones which are
    GSLB enabled, they can use the GSLB functionality to load balance
-   traffic across the VMs in multiple zones.
+   traffic across the instances in multiple zones.
 
--  The users can use GSLB to load balance across the VMs across zones in
+-  The users can use GSLB to load balance across the instances across zones in
    a region only if the admin has enabled GSLB in that region.
 
 -  The users can load balance traffic across the availability zones in

@@ -26,7 +26,7 @@ This section will guide you from CloudStack |version_to_upgrade| to CloudStack
 
 Upgrade Steps:
 
-#. Install new System-VM templates
+#. Install new System-VM Templates
 
 #. Backup CloudStack database (MySQL)
 

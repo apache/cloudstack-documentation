@@ -21,15 +21,15 @@ Introduction to the Nicira NVP Plugin
 -------------------------------------
 
 The Nicira NVP plugin adds Nicira NVP as one of the available SDN
-implementations in CloudStack. With the plugin an exisiting Nicira NVP
-setup can be used by CloudStack to implement isolated guest networks and
+implementations in CloudStack. With the plugin an existing Nicira NVP
+setup can be used by CloudStack to implement isolated guest Networks and
 to provide additional services like routing and NAT.
 
 
 Features of the Nicira NVP Plugin
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following table lists the CloudStack network services provided by
+The following table lists the CloudStack Network services provided by
 the Nicira NVP Plugin.
 
 .. cssclass:: table-striped table-bordered table-hover
@@ -103,8 +103,8 @@ Make sure you have the following information ready:
 Zone Configuration
 ~~~~~~~~~~~~~~~~~~
 
-CloudStack needs to have at least one physical network with the isolation
-method set to "STT". This network should be enabled for the Guest
+CloudStack needs to have at least one physical Network with the isolation
+method set to "STT". This Network should be enabled for the Guest
 traffic type.
 
 .. note::
@@ -115,14 +115,14 @@ traffic type.
 
 .. figure:: /_static/images/nvp-physical-network-stt.png
    :align: center
-   :alt: a screenshot of a physical network with the STT isolation type
+   :alt: a screenshot of a physical Network with the STT isolation type
 
 
 Enabling the service provider
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Nicira NVP provider is disabled by default. Navigate to the "Network
-Service Providers" configuration of the physical network with the STT
+Service Providers" configuration of the physical Network with the STT
 isolation type. Navigate to the Nicira NVP provider and press the
 "Enable Provider" button.
 
@@ -140,9 +140,9 @@ Device Management
 ~~~~~~~~~~~~~~~~~
 
 In CloudStack a Nicira NVP setup is considered a "device" that can be added
-and removed from a physical network. To complete the configuration of
+and removed from a physical Network. To complete the configuration of
 the Nicira NVP plugin a device needs to be added to the physical
-network. Press the "Add NVP Controller" button on the provider panel and
+Network. Press the "Add NVP Controller" button on the provider panel and
 enter the configuration details.
 
 .. figure:: /_static/images/nvp-physical-network-stt.png
@@ -153,7 +153,7 @@ enter the configuration details.
 Network Offerings
 ~~~~~~~~~~~~~~~~~
 
-Using the Nicira NVP plugin requires a network offering with Virtual
+Using the Nicira NVP plugin requires a Network offering with Virtual
 Networking enabled and configured to use the NiciraNvp element. Typical
 use cases combine services from the Virtual Router appliance and the
 Nicira NVP plugin.
@@ -184,17 +184,17 @@ Nicira NVP plugin.
 | Virtual Networking   | NiciraNVP       |
 +----------------------+-----------------+
 
-Table: Isolated network offering with regular services from the Virtual
+Table: Isolated Network offering with regular services from the Virtual
 Router.
 
 .. figure:: /_static/images/nvp-physical-network-stt.png
    :align: center
-   :alt: a screenshot of a network offering.
+   :alt: a screenshot of a Network offering.
 
 
 .. note::
-   The tag in the network offering should be set to the name of the
-   physical network with the NVP provider.
+   The tag in the Network offering should be set to the name of the
+   physical Network with the NVP provider.
 
 Isolated network with network services. The virtual router is still
 required to provide network services like dns and dhcp.
@@ -242,14 +242,14 @@ Logical Switch
 VPC Offering with Nicira NVP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To allow a VPC to use the Nicira NVP plugin to provision networks, a new
+To allow a VPC to use the Nicira NVP plugin to provision Networks, a new
 VPC offering needs to be created which allows the Virtual Networking
 service to be implemented by NiciraNVP.
 
 This is not currently possible with the UI. The API does provide the
 proper calls to create a VPC offering with Virtual Networking enabled.
 However due to a limitation in the 4.1 API it is not possible to select
-the provider for this network service. To configure the VPC offering
+the provider for this Network service. To configure the VPC offering
 with the NiciraNVP provider edit the database table
 'vpc\_offering\_service\_map' and change the provider to NiciraNvp for
 the service 'Connectivity'
@@ -272,8 +272,8 @@ provider 'NiciraNvp'
 VPC Network Offerings
 ~~~~~~~~~~~~~~~~~~~~~
 
-The VPC needs specific network offerings with the VPC flag enabled.
-Otherwise these network offerings are identical to regular network
+The VPC needs specific Network offerings with the VPC flag enabled.
+Otherwise these Network offerings are identical to regular Network
 offerings. To allow VPC networks with a Nicira NVP isolated network the
 offerings need to support the Virtual Networking service with the
 NiciraNVP provider.

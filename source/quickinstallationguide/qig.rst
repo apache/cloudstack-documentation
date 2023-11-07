@@ -37,14 +37,14 @@ get you up and running with CloudStack with a minimum amount of trouble.
       
 .. warning::
       In case you don't have physical server to "play with", you can use e.g. Oracle VirtualBox 6.1+. 
-      The requirement is that you enable "Enable Nested VT-x/AMD-V" as the Extended Feature on the System page of the Settings of the VM. 
-      You will want to create a VM of "Red Hat (64-bit)" type and 40+GB disk space. 
-      You will need to have 1 NIC in your VM, bridged to the NIC of your laptop/desktop
+      The requirement is that you enable "Enable Nested VT-x/AMD-V" as the Extended Feature on the System page of the Settings of the Instance.
+      You will want to create an Instance of "Red Hat (64-bit)" type and 40+GB disk space.
+      You will need to have 1 NIC in your Instance, bridged to the NIC of your laptop/desktop
       (wifi or wired NIC, doesn't matter), and optimally to set Adapter Type="Paravirtualized Network (virtio-net)"
-      for somewhat better network performance (Settings of VM, Network section, Adapter1,
-      expand "Advanced"). Make sure the NIC on your VM is configured as promiscuous (in VirtualBox, 
-      choose "Allow All" or just "Allow VMs" as the Promiscuous Mode), so that it can pass traffic from 
-      CloudStack's system VMs to the gateway. Also, make sure you have allowed enough ram (6G+) and 
+      for somewhat better network performance (Settings of Instance, Network section, Adapter1,
+      expand "Advanced"). Make sure the NIC on your Instance is configured as promiscuous (in VirtualBox,
+      choose "Allow All" or just "Allow Instances" as the Promiscuous Mode), so that it can pass traffic from
+      CloudStack's system VMs to the gateway. Also, make sure you have allowed enough ram (6G+) and
       enough CPU cores (3+) for demo purposes.
       
       
@@ -89,7 +89,7 @@ Operating System
 Using the CentOS 7.9.2009 minimal x86_64 install ISO, you'll need to install
 CentOS 7 on your hardware. The defaults will generally be acceptable for this
 installation - but make sure to configure IP address/parameters so that you can later install needed
-packages from the internet. Later, we will change the network configuration as needed.
+packages from the internet. Later, we will change the Network configuration as needed.
 
 Once this installation is complete, you'll want to gain access to your
 server - through SSH. 
@@ -102,7 +102,7 @@ It is always wise to update the system before starting:
 
 .. _conf-network:
 
-Configuring the network
+Configuring the Network
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Before going any further, make sure that "bridge-utils" and "net-tools" are installed and available:
@@ -117,11 +117,11 @@ the bridge that Cloudstack will use for networking. Create and open
 .. note:: 
    IP Addressing - Throughout this document we are assuming that you will have 
    a /24 network for your CloudStack implementation. This can be any RFC 1918 
-   network. However, we are assuming that you will match the machine address 
+   Network. However, we are assuming that you will match the machine address
    that we are using. Thus we may use 172.16.10.2 and because you might be 
    using e.g. 192.168.55.0/24 network you would use 192.168.55.2. Another example
    would be if you are using i.e. VirtualBox on your local home network on 192.168.1.0/24 network - 
-   in this case you can use a single free IP address from your home range (VirtualBox NIC for this VM
+   in this case you can use a single free IP address from your home range (VirtualBox NIC for this Instance
    should be in bridged mode for correct functioning)
    
 ::
@@ -491,15 +491,15 @@ System Template Setup
 ~~~~~~~~~~~~~~~~~~~~~
 
 CloudStack uses a number of system VMs to provide functionality for accessing 
-the console of virtual machines, providing various networking services, and 
+the console of Instances, providing various networking services, and
 managing various aspects of storage. 
 
-We need to download the systemVM template and deploy that to the secondary storage.
+We need to download the systemVM Template and deploy that to the secondary storage.
 We will use the local path (/export/secondary) since we are already on the NFS server itself,
 but otherwise you would need to mount your Secondary Storage to a temporary mount point, and use
 that mount point instead of the /export/secondary path.
 
-Execute the followint script:
+Execute the following script:
 
 .. parsed-literal::
   
@@ -569,7 +569,7 @@ and ensuring the following line is present and uncommented.
 Libvirt Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-CloudStack uses libvirt for managing virtual machines. Therefore it is vital 
+CloudStack uses libvirt for managing Instances. Therefore it is vital
 that libvirt is configured correctly. Libvirt is a dependency of cloud-agent 
 and should already be installed.
 
@@ -658,12 +658,12 @@ Zone Details
 On this page, we enter where our DNS servers are located.
 CloudStack distinguishes between internal and public DNS. Internal DNS is
 assumed to be capable of resolving internal-only hostnames, such as your
-NFS server’s DNS name. Public DNS is provided to the guest VMs to resolve
+NFS server’s DNS name. Public DNS is provided to the guest Instances to resolve
 public IP addresses. You can enter the same DNS server for both types, but
 if you do so, you must make sure that both internal and public IP addresses
 can route to the DNS server. In our specific case we will not use any names
 for resources internally, and we will indeed set them to look to the same
-external resource so as to not add a namerserver setup to our list of
+external resource so as to not add a nameserver setup to our list of
 requirements.
 
 #. Name - we will set this to the ever-descriptive 'Zone1' for our cloud.
@@ -735,7 +735,7 @@ Click "Next" to continue.
 Guest Traffic
 ~~~~~~~~~~~~~
 
-Next we will configure a range of VLAN IDs for our guest VMs.
+Next we will configure a range of VLAN IDs for our Guest Instances.
 
 A range of ``100`` - ``200`` would suffice.
 
@@ -810,8 +810,8 @@ That's it, you are done with installation of your Apache CloudStack demo cloud.
 
 To check the health of your CloudStack installation, go to Infrastructure --> System VMs and refresh
 the UI from time to time - you should see “S-1-VM” and “V-2-VM” system VMs (SSVM and CPVM) in State=Running and Agent State=Up
-After that you can go to Images --> Templates, click on the built-in template named "CentOS 5.5(64-bit) no GUI (KVM)",
+After that you can go to Images --> Templates, click on the built-in Template named "CentOS 5.5(64-bit) no GUI (KVM)",
 then click on "Zones" tab - and observe how the Status is moving from a few percents downloaded up to fully downloaded,
 after which the Status will show as "Download Complete" and "Ready" column will say "Yes".
-After this is done, you will be able to deploy a VM from this template.
+After this is done, you will be able to deploy an Instance from this Template.
 

@@ -64,25 +64,25 @@ highly recommended that you change these to more secure keys.
 Changing the Default Password Encryption
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Passwords are encoded when creating or updating users. CloudStack allows
+Passwords are encoded when creating or updating Users. CloudStack allows
 you to determine the default encoding and authentication mechanism for
-admin and user logins. Two new configurable lists have been
+admin and User logins. Two new configurable lists have been
 introduced—userPasswordEncoders and userAuthenticators.
 userPasswordEncoders allows you to configure the order of preference for
 encoding passwords, whereas userAuthenticators allows you to configure
-the order in which authentication schemes are invoked to validate user
+the order in which authentication schemes are invoked to validate User
 passwords.
 
-Additionally, the plain text user authenticator has been modified not to
+Additionally, the plain text User authenticator has been modified not to
 convert supplied passwords to their md5 sums before checking them with
 the database entries. It performs a simple string comparison between
 retrieved and supplied login passwords instead of comparing the
 retrieved md5 hash of the stored password against the supplied md5 hash
 of the password because clients no longer hash the password. The
 following method determines what encoding scheme is used to encode the
-password supplied during user creation or modification.
+password supplied during User creation or modification.
 
-When a new user is created, the user password is encoded by using the
+When a new User is created, the User password is encoded by using the
 first valid encoder loaded as per the sequence specified in the
 ``UserPasswordEncoders`` property in the ``ComponentContext.xml`` or
 ``nonossComponentContext.xml`` files. The order of authentication
@@ -122,11 +122,11 @@ desired order:
 
 In the above default ordering, SHA256Salt is used first for
 ``UserPasswordEncoders``. If the module is found and encoding returns a
-valid value, the encoded password is stored in the user table's password
+valid value, the encoded password is stored in the User table's password
 column. If it fails for any reason, the MD5UserAuthenticator will be
 tried next, and the order continues. For ``UserAuthenticators``,
-SHA256Salt authentication is tried first. If it succeeds, the user is
+SHA256Salt authentication is tried first. If it succeeds, the User is
 logged into the Management server. If it fails, md5 is tried next, and
-attempts continues until any of them succeeds and the user logs in . If
-none of them works, the user is returned an invalid credential message.
+attempts continues until any of them succeeds and the User logs in . If
+none of them works, the User is returned an invalid credential message.
 

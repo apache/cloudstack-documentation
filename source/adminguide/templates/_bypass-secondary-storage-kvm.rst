@@ -16,16 +16,16 @@
 
 .. _bypass-secondary-storage-kvm:
 
-Bypassing Secondary Storage For KVM templates
+Bypassing Secondary Storage For KVM Templates
 ---------------------------------------------
 
-CloudStack provides an additional way to register and use templates on KVM.
+CloudStack provides an additional way to register and use Templates on KVM.
 
-Instead of registering a template and storing it on secondary storage, the user can opt to skip downloading the template to secondary storage for KVM at template registration. At deployment time, the template is downloaded directly to primary storage from the registered source, instead of being copied from secondary storage.
+Instead of registering a Template and storing it on secondary storage, the user can opt to skip downloading the Template to secondary storage for KVM at Template registration. At deployment time, the Template is downloaded directly to primary storage from the registered source, instead of being copied from secondary storage.
 
-Supported protocols: HTTP/HTTPS, NFS and metalinks. The protocol is obtained from the template URL.
+Supported protocols: HTTP/HTTPS, NFS and metalinks. The protocol is obtained from the Template URL.
 
-To enable this option for a template:
+To enable this option for a Template:
 
 #. In the left navigation bar, click Templates.
 
@@ -37,11 +37,11 @@ To enable this option for a template:
 
    -  **Direct Download**. This option will be shown in the UI when KVM is selected as the hypervisor. Choose Yes to enable the bypassing secondary storage option.
 
-   -  **Checksum**. Optional field. If this field is populated, the checksum is compared to the downloaded template checksum when the template is downloaded to primary storage at deployment time.
+   -  **Checksum**. Optional field. If this field is populated, the checksum is compared to the downloaded Template checksum when the Template is downloaded to primary storage at deployment time.
 
-After the template is registered, it is automatically available for VM deployments.
+After the Template is registered, it is automatically available for instance deployments.
 
-From CloudStack 4.14.0, system VM templates also support direct download. An administrator can register a new system VM template as ROUTING or USER type with the direct download flag, and it can be changed to SYSTEM type during the upgrade or by out-of-band database changes. Type of newly registered template can be changed to SYSTEM in the database using a SQL query similar to:
+From CloudStack 4.14.0, system VM Templates also support direct download. An administrator can register a new system VM Template as ROUTING or USER type with the direct download flag, and it can be changed to SYSTEM type during the upgrade or by out-of-band database changes. Type of newly registered Template can be changed to SYSTEM in the database using a SQL query similar to:
 
 .. code:: bash
 
@@ -50,7 +50,7 @@ From CloudStack 4.14.0, system VM templates also support direct download. An adm
 
 Uploading Certificates for Direct Downloads
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For direct downloads over HTTPS, the KVM hosts must have valid certificates. These certificates can be either self-signed or signed and will allow the KVM hosts to access the templates/ISOs and download them.
+For direct downloads over HTTPS, the KVM hosts must have valid certificates. These certificates can be either self-signed or signed and will allow the KVM hosts to access the Templates/ISOs and download them.
 
 CloudStack provides some APIs to handle certificates for direct downloads:
 
@@ -84,8 +84,8 @@ CloudStack provides some APIs to handle certificates for direct downloads:
 
          upload templatedirectdownloadcertificate hypervisor=KVM name=CERTIFICATE_ALIAS zoneid=ZONE_ID certificate=CERTIFICATE_FORMATTED hostid=HOST_ID
 
-Syncronising Certificates for Direct Downloads
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Synchronising Certificates for Direct Downloads
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As new hosts may be added to a zone which do not include a certificate which was previously uploaded to pre-existing hosts.
 
@@ -99,7 +99,7 @@ CloudStack provides a way to synchronize certificates across all the connected h
 Direct Download Timeouts
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-With 4.14.0, ability to configure different timeout values for the direct downloading of templates has been added. Three new global settings have been added for this:
+With 4.14.0, ability to configure different timeout values for the direct downloading of Templates has been added. Three new global settings have been added for this:
 
 - **direct.download.connect.timeout** - Connection establishment timeout in milliseconds for direct download. Default value: 5000 milliseconds.
 

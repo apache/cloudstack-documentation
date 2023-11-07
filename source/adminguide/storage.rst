@@ -63,10 +63,10 @@ Best Practices for Primary Storage
 Runtime Behavior of Primary Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Root volumes are created automatically when a virtual machine is
-created. Root volumes are deleted when the VM is destroyed. Data volumes
-can be created and dynamically attached to VMs. Data volumes are not
-deleted when VMs are destroyed.
+Root volumes are created automatically when an Instance is
+created. Root volumes are deleted when the Instance is destroyed. Data volumes
+can be created and dynamically attached to Instances. Data volumes are not
+deleted when Instances are destroyed.
 
 Administrators should monitor the capacity of primary storage devices
 and add additional primary storage as needed. See :ref:`add-primary-storage`.
@@ -75,11 +75,11 @@ Administrators add primary storage to the system by creating a
 CloudStack storage pool. Each storage pool is associated with a cluster
 or a zone.
 
-With regards to data disks, when a user executes a Disk Offering to
+With regards to data disks, when a User executes a Disk Offering to
 create a data disk, the information is initially written to the
 CloudStack database only. Upon the first request that the data disk be
-attached to a VM, CloudStack determines what storage to place the volume
-on and space is taken from that storage (either from preallocated
+attached to an Instance, CloudStack determines what storage to place the volume
+on and space is taken from that storage (either from pre-allocated
 storage or from a storage system (ex. a SAN), depending on how the
 primary storage was added to CloudStack).
 
@@ -107,7 +107,7 @@ Storage media \\ hypervisor                    VMware vSphere   Citrix XenServer
 **PowerFlex/ScaleIO**                          No               No                   Yes                         No
 ============================================== ================ ==================== =========================== ============================
 
-XenServer uses a clustered LVM system to store VM images on iSCSI and
+XenServer uses a clustered LVM system to store Instance images on iSCSI and
 Fiber Channel volumes and does not support over-provisioning in the
 hypervisor. The storage server itself, however, can support
 thin-provisioning. As a result the CloudStack can still support storage
@@ -275,7 +275,7 @@ under "Browser" tab for a secondary storage.
 Read only
 ~~~~~~~~~
 Secondary storages can also be set to read-only in order to cordon it off
-from being used for storing any further templates, volumes and snapshots.
+from being used for storing any further Templates, Volumes and Snapshots.
 
 .. code:: bash
 
@@ -285,9 +285,9 @@ from being used for storing any further templates, volumes and snapshots.
 Working With Volumes
 --------------------
 
-A volume provides storage to a guest VM. The volume can provide for a
+A volume provides storage to a Guest Instance. The volume can provide for a
 root disk or an additional data disk. CloudStack supports additional
-volumes for guest VMs.
+volumes for Guest Instances.
 
 Volumes are created for a specific hypervisor type. A volume that has
 been attached to guest using one hypervisor type (e.g, XenServer) may
@@ -295,15 +295,15 @@ not be attached to a guest that is using another hypervisor type, for
 example:vSphere, KVM. This is because the different hypervisors use
 different disk image formats.
 
-CloudStack defines a volume as a unit of storage available to a guest
-VM. Volumes are either root disks or data disks. The root disk has "/"
+CloudStack defines a volume as a unit of storage available to a Guest
+Instance. Volumes are either root disks or data disks. The root disk has "/"
 in the file system and is usually the boot device. Data disks provide
-for additional storage, for example: "/opt" or "D:". Every guest VM has
-a root disk, and VMs can also optionally have a data disk. End users can
-mount multiple data disks to guest VMs. Users choose data disks from the
-disk offerings created by administrators. The user can create a template
+for additional storage, for example: "/opt" or "D:". Every Guest Instance has
+a root disk, and Instances can also optionally have a data disk. End Users can
+mount multiple data disks to Guest Instances. Users choose data disks from the
+disk offerings created by administrators. The User can create a Template
 from a volume as well; this is the standard procedure for private
-template creation. Volumes are hypervisor-specific: a volume from one
+Template creation. Volumes are hypervisor-specific: a volume from one
 hypervisor type may not be used on a guest of another hypervisor type.
 
 .. note::
@@ -320,31 +320,31 @@ hypervisor type may not be used on a guest of another hypervisor type.
 Creating a New Volume
 ~~~~~~~~~~~~~~~~~~~~~
 
-You can add more data disk volumes to a guest VM at any time, up to the
+You can add more data disk volumes to a Guest Instance at any time, up to the
 limits of your storage capacity. Both CloudStack administrators and
-users can add volumes to VM instances. When you create a new volume, it
+Users can add volumes to Instances. When you create a new volume, it
 is stored as an entity in CloudStack, but the actual storage resources
 are not allocated on the physical storage device until you attach the
 volume. This optimization allows the CloudStack to provision the volume
 nearest to the guest that will use it when the first attachment is made.
 
-When creating a new volume from an existing ROOT volume snapshot,
+When creating a new volume from an existing ROOT Volume Snapshot,
 it is required to explicitly define a Disk offering (UI will offer only Disk
-offerings whose disk size is equal or bigger than the size of the snapshot).
+offerings whose disk size is equal or bigger than the size of the Snapshot).
 
 |volume-from-snap.png|
 
-When creating a new volume from an existing DATA volume snapshot, the disk offering
-associated with the snapshots (inherited from the original volume) is assigned
+When creating a new volume from an existing DATA Volume Snapshot, the disk offering
+associated with the Snapshots (inherited from the original volume) is assigned
 to the new volume.
 
 Using Local Storage for Data Volumes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can create data volumes on local storage (supported with XenServer,
-KVM, and VMware). The data volume is placed on the same host as the VM
-instance that is attached to the data volume. These local data volumes
-can be attached to virtual machines, detached, re-attached, and deleted
+KVM, and VMware). The data volume is placed on the same host as the Instance,
+that is attached to the data volume. These local data volumes
+can be attached to Instances, detached, re-attached, and deleted
 just as with the other types of data volume.
 
 Local storage is ideal for scenarios where persistence of data volumes
@@ -354,20 +354,20 @@ latency and cost reduction from using inexpensive local disks.
 In order for local volumes to be used, the feature must be enabled for
 the zone.
 
-You can create a data disk offering for local storage. When a user
-creates a new VM, they can select this disk offering in order to cause
+You can create a data disk offering for local storage. When a User
+creates a new Instance, they can select this disk offering in order to cause
 the data disk volume to be placed in local storage.
 
-You can not migrate a VM that has a volume in local storage to a
+You can not migrate an Instance that has a volume in local storage to a
 different host, nor migrate the volume itself away to a different host.
 If you want to put a host into maintenance mode, you must first stop any
-VMs with local data volumes on that host.
+Instances with local data volumes on that host.
 
 
 To Create a New Volume
 ^^^^^^^^^^^^^^^^^^^^^^
 
-#. Log in to the CloudStack UI as a user or admin.
+#. Log in to the CloudStack UI as a User or admin.
 
 #. In the left navigation bar, click Storage.
 
@@ -379,7 +379,7 @@ To Create a New Volume
    -  Name. Give the volume a unique name so you can find it later.
 
    -  Availability Zone. Where do you want the storage to reside? This
-      should be close to the VM that will use the volume.
+      should be close to the Instance that will use the volume.
 
    -  Disk Offering. Choose the characteristics of the storage.
 
@@ -390,14 +390,14 @@ To Create a New Volume
 #. To start using the volume, continue to Attaching a Volume
 
 
-Uploading an Existing Volume to a Virtual Machine
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Uploading an Existing Volume to an Instance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Existing data can be made accessible to a virtual machine. This is
-called uploading a volume to the VM. For example, this is useful to
-upload data from a local file system and attach it to a VM. Root
-administrators, domain administrators, and end users can all upload
-existing volumes to VMs.
+Existing data can be made accessible to an Instance. This is
+called uploading a volume to the Instance. For example, this is useful to
+upload data from a local file system and attach it to an Instance. Root
+administrators, domain administrators, and end Users can all upload
+existing volumes to Instances.
 
 The upload is performed using HTTP. The uploaded volume is placed in the
 zone's secondary storage
@@ -414,7 +414,7 @@ To upload a volume:
    you are going to upload. After uploading the data disk, CloudStack
    will use this value to verify that no data corruption has occurred.
 
-#. Log in to the CloudStack UI as an administrator or user
+#. Log in to the CloudStack UI as an administrator or User
 
 #. In the left navigation bar, click Storage.
 
@@ -426,7 +426,7 @@ To upload a volume:
       that can be shown in the UI.
 
    -  Availability Zone. Choose the zone where you want to store the
-      volume. VMs running on hosts in this zone can attach the volume.
+      volume. Instances running on hosts in this zone can attach the volume.
 
    -  Format. Choose one of the following to indicate the disk image
       format of the volume.
@@ -458,9 +458,9 @@ To upload a volume:
 Attaching a Volume
 ~~~~~~~~~~~~~~~~~~
 
-You can attach a volume to a guest VM to provide extra disk storage.
+You can attach a volume to a Guest Instance to provide extra disk storage.
 Attach a volume when you first create a new volume, when you are moving
-an existing volume from one VM to another, or after you have migrated a
+an existing volume from one Instance to another, or after you have migrated a
 volume from one storage pool to another.
 
 #. Log in to the CloudStack UI as a user or admin.
@@ -472,13 +472,13 @@ volume from one storage pool to another.
 #. Click the volume name in the Volumes list, then click the Attach Disk
    button |AttachDiskButton.png|
 
-#. In the Instance popup, choose the VM to which you want to attach the
-   volume. You will only see instances to which you are allowed to
-   attach volumes; for example, a user will see only instances created
+#. In the Instance popup, choose the Instance to which you want to attach the
+   volume. You will only see Instances to which you are allowed to
+   attach volumes; for example, a user will see only Instances created
    by that user, but the administrator will have more choices.
 
 #. When the volume has been attached, you should be able to see it by
-   clicking Instances, the instance name, and View Volumes.
+   clicking Instances, the Instance name, and View Volumes.
 
 
 Detaching and Moving Volumes
@@ -486,62 +486,62 @@ Detaching and Moving Volumes
 
 .. note::
    This procedure is different from moving volumes from one storage pool
-   to another as described in `“VM Storage Migration”
+   to another as described in `“Instance Storage Migration”
    <#vm-storage-migration>`_.
 
-A volume can be detached from a guest VM and attached to another guest.
-Both CloudStack administrators and users can detach volumes from VMs and
-move them to other VMs.
+A volume can be detached from a Guest Instance and attached to another guest.
+Both CloudStack administrators and users can detach volumes from Instances and
+move them to other Instances.
 
-If the two VMs are in different clusters, and the volume is large, it
-may take several minutes for the volume to be moved to the new VM.
+If the two Instances are in different clusters, and the volume is large, it
+may take several minutes for the volume to be moved to the new Instance.
 
 #. Log in to the CloudStack UI as a user or admin.
 
 #. In the left navigation bar, click Storage, and choose Volumes in
-   Select View. Alternatively, if you know which VM the volume is
-   attached to, you can click Instances, click the VM name, and click
+   Select View. Alternatively, if you know which Instance the volume is
+   attached to, you can click Instances, click the Instance name, and click
    View Volumes.
 
 #. Click the name of the volume you want to detach, then click the
    Detach Disk button. |DetachDiskButton.png|
 
-#. To move the volume to another VM, follow the steps in
+#. To move the volume to another Instance, follow the steps in
    `“Attaching a Volume” <#attaching-a-volume>`_.
 
 
-VM Storage Migration
+Instance Storage Migration
 ~~~~~~~~~~~~~~~~~~~~
 
 Supported in XenServer, KVM, and VMware.
 
 .. note::
-   This procedure is different from moving disk volumes from one VM to
+   This procedure is different from moving disk volumes from one Instance to
    another as described in `“Detaching and Moving Volumes”
    <#detaching-and-moving-volumes>`_.
 
-You can migrate a virtual machine’s root disk volume or any additional
+You can migrate an Instance’s root disk volume or any additional
 data disk volume from one storage pool to another in the same zone.
 
 You can use the storage migration feature to achieve some commonly
 desired administration goals, such as balancing the load on storage
-pools and increasing the reliability of virtual machines by moving them
+pools and increasing the reliability of Instances by moving them
 away from any storage pool that is experiencing issues.
 
-On XenServer and VMware, live migration of VM storage is enabled through
+On XenServer and VMware, live migration of Instance storage is enabled through
 CloudStack support for XenMotion and vMotion. Live storage migration
-allows VMs to be moved from one host to another, where the VMs are not
+allows Instances to be moved from one host to another, where the Instances are not
 located on storage shared between the two hosts. It provides the option
-to live migrate a VM’s disks along with the VM itself. It is possible to
-migrate a VM from one XenServer resource pool / VMware cluster to
-another, or to migrate a VM whose disks are on local storage, or even to
-migrate a VM’s disks from one storage repository to another, all while
-the VM is running.
+to live migrate an Instance’s disks along with the Instance itself. It is possible to
+migrate an Instance from one XenServer resource pool / VMware cluster to
+another, or to migrate an Instance whose disks are on local storage, or even to
+migrate an Instance’s disks from one storage repository to another, all while
+the Instance is running.
 
 .. note::
-   Because of a limitation in VMware, live migration of storage for a
-   VM is allowed only if the source and target storage pool are
-   accessible to the source host; that is, the host where the VM is
+   Because of a limitation in VMware, live migration of storage for an
+   Instance is allowed only if the source and target storage pool are
+   accessible to the source host; that is, the host where the Instance is
    running when the live migration operation is requested.
 
 
@@ -551,25 +551,25 @@ Migrating a Data Volume to a New Storage Pool
 There are two situations when you might want to migrate a disk:
 
 -  Move the disk to new storage, but leave it attached to the same
-   running VM.
+   running Instance.
 
--  Detach the disk from its current VM, move it to new storage, and
-   attach it to a new VM.
+-  Detach the disk from its current Instance, move it to new storage, and
+   attach it to a new Instance.
 
 
-Migrating Storage For a Running VM
-''''''''''''''''''''''''''''''''''
+Migrating Storage For a Running Instance
+''''''''''''''''''''''''''''''''''''''''
 
 (Supported on XenServer and VMware)
 
 #. Log in to the CloudStack UI as a user or admin.
 
-#. In the left navigation bar, click Instances, click the VM name, and
+#. In the left navigation bar, click Instances, click the Instance name, and
    click View Volumes.
 
 #. Click the volume you want to migrate.
 
-#. Detach the disk from the VM. See `“Detaching and
+#. Detach the disk from the Instance. See `“Detaching and
    Moving Volumes” <#detaching-and-moving-volumes>`_ but skip the “reattach”
    step at the end. You will do that after migrating to new storage.
 
@@ -580,12 +580,12 @@ Migrating Storage For a Running VM
    Ready.
 
 
-Migrating Storage and Attaching to a Different VM
-'''''''''''''''''''''''''''''''''''''''''''''''''
+Migrating Storage and Attaching to a Different Instance
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 #. Log in to the CloudStack UI as a user or admin.
 
-#. Detach the disk from the VM. See `“Detaching and
+#. Detach the disk from the Instance. See `“Detaching and
    Moving Volumes” <#detaching-and-moving-volumes>`_ but skip the “reattach”
    step at the end. You will do that after migrating to new storage.
 
@@ -597,44 +597,44 @@ Migrating Storage and Attaching to a Different VM
    navigation bar. Make sure that Volumes is displayed at the top of the
    window, in the Select View dropdown.
 
-#. Attach the volume to any desired VM running in the same cluster as
+#. Attach the volume to any desired Instance running in the same cluster as
    the new storage server. See `“Attaching a
    Volume” <#attaching-a-volume>`_
 
 
-Migrating a Instance Root Volume to a New Storage Pool
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Migrating an Instance Root Volume to a New Storage Pool
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-(XenServer, VMware) You can live migrate a instance's root disk from one
-storage pool to another, without stopping the instance first.
+(XenServer, VMware) You can live migrate an Instance's root disk from one
+storage pool to another, without stopping the Instance first.
 
-(KVM) When migrating the root disk volume, the instance must first be stopped,
-and users can not access the instance. After migration is complete, the instance
-can be restarted.
+(KVM) When migrating the root disk volume, the Instance must first be stopped,
+and users can not access the Instance. After migration is complete, the Instance can
+be restarted.
 
 #. Log in to the CloudStack UI as a user or admin.
 
-#. In the left navigation bar, click Instances, and click the instance name.
+#. In the left navigation bar, click Instances, and click the Instance name.
 
-#. (KVM only) Stop the instance.
+#. (KVM only) Stop the Instance.
 
 #. Click the Migrate button |Migrateinstance.png| and choose the
    destination from the dropdown list.
 
    .. note::
-      If the instance's storage has to be migrated along with the instance,
-      this will be noted in the host list. CloudStack will take care of the storage
+      If the Instance's storage has to be migrated along with the Instance, this will
+      be noted in the host list. CloudStack will take care of the storage
       migration for you.
 
 #. Watch for the volume status to change to Migrating, then back to
    Running (or Stopped, in the case of KVM). This can take some time.
 
-#. (KVM only) Restart the instance.
+#. (KVM only) Restart the Instance.
 
    .. note::
       In case of KVM and PowerFlex/ScaleIO storage, live migration of
-      instance's root disk is allowed from one PowerFlex/ScaleIO storage pool
-      to another, without stopping the instance.
+      Instance's root disk is allowed from one PowerFlex/ScaleIO storage pool
+      to another, without stopping the Instance.
 
 
 Resizing Volumes
@@ -662,7 +662,7 @@ shrinking volumes is not supported on VMware hosts.
 
 Before you try to resize a volume, consider the following:
 
--  The VMs associated with the volume are stopped.
+-  The Instances associated with the volume are stopped.
 
 -  The data disks associated with the volume are removed.
 
@@ -701,17 +701,17 @@ To resize a volume:
 Root Volume size defined via Service Offering
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If a Service Offering is created with a root disk size, then resizing the Root volume is possible only by resizing the VMs service offering.
+If a Service Offering is created with a root disk size, then resizing the Root volume is possible only by resizing the Instances service offering.
 
 Service offering Root resizing constrains:
 
-#. Users cannot deploy VMs with custom root disk size when using such offerings
+#. Users cannot deploy Instances with custom root disk size when using such offerings
 
-#. Users cannot resize the VM root disk size when using such offerings
+#. Users cannot resize the Instance root disk size when using such offerings
 
-#. The Root Volume of such VMs can only be resized when changing to another Service Offering with a Root disk size equals or larger than the current one.
+#. The Root Volume of such Instances can only be resized when changing to another Service Offering with a Root disk size equals or larger than the current one.
 
-#. Users can change the VM offering to a service offering with a Root size of 0GB (default) and then customize the volume size.
+#. Users can change the Instance offering to a service offering with a Root size of 0GB (default) and then customize the volume size.
 
 The following table shows possible combinations of Service offering supported resizing based on the offering Root disk size:
 
@@ -764,19 +764,19 @@ To change the disk offering of a volume:
 
 #. Click OK.
 
-Reset VM to New Root Disk on Reboot
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Reset Instance to New Root Disk on Reboot
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can specify that you want to discard the root disk and create a new
-one whenever a given VM is rebooted. This is useful for secure
+one whenever a given Instance is rebooted. This is useful for secure
 environments that need a fresh start on every boot and for desktops that
-should not retain state. The IP address of the VM will not change due to
+should not retain state. The IP address of the Instance will not change due to
 this operation.
 
-**To enable root disk reset on VM reboot:**
+**To enable root disk reset on Instance reboot:**
 
 When creating a new service offering, set the parameter isVolatile to
-True. VMs created from this service offering will have their disks reset
+True. Instances created from this service offering will have their disks reset
 upon reboot. See `“Creating a New Compute
 Offering” <service_offerings.html#creating-a-new-compute-offering>`_.
 
@@ -784,18 +784,18 @@ Offering” <service_offerings.html#creating-a-new-compute-offering>`_.
 Volume Deletion and Garbage Collection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The deletion of a volume does not delete the snapshots that have been
+The deletion of a volume does not delete the Snapshots that have been
 created from the volume.
 
-When a VM is destroyed, data disk volumes that are attached to the VM
+When an Instance is destroyed, data disk volumes that are attached to the Instance
 are not deleted unless specified.
 
-In managed storage systems such as Solidfire and others, the volume snapshots
+In managed storage systems such as Solidfire and others, the volume Snapshots
 are linked entities in the volumes wherein deletion of the volume would delete
-those snapshots. In such managed storage systems, the volume snapshots exist on
+those Snapshots. In such managed storage systems, the volume Snapshots exist on
 the primary storage and may not be backed up to the secondary storages. For a
 volume deleted in CloudStack, it will not be deleted on the managed storage
-(such as Solidfire and others) until all the volume snapshots are deleted in
+(such as Solidfire and others) until all the volume Snapshots are deleted in
 CloudStack.
 
 Volumes are permanently destroyed using a garbage collection process.
@@ -848,29 +848,29 @@ Working with Volume Snapshots
 (Supported for the following hypervisors: **XenServer**, **VMware
 vSphere**, and **KVM**)
 
-CloudStack supports snapshots of disk volumes. Snapshots are a
-point-in-time capture of virtual machine disks. Memory and CPU states
+CloudStack supports Snapshots of disk volumes. Snapshots are a
+point-in-time capture of Instance disks. Memory and CPU states
 are not captured. If you are using the Oracle VM hypervisor, you can not
-take snapshots, since OVM does not support them.
+take Snapshots, since OVM does not support them.
 
 Snapshots may be taken for volumes, including both root and data disks
 (except when the Oracle VM hypervisor is used, which does not support
-snapshots). The administrator places a limit on the number of stored
-snapshots per user. Users can create new volumes from the snapshot for
-recovery of particular files and they can create templates from
-snapshots to boot from a restored disk.
+Snapshots). The administrator places a limit on the number of stored
+Snapshots per user. Users can create new volumes from the Snapshot for
+recovery of particular files and they can create Templates from
+Snapshots to boot from a restored disk.
 
-Users can create snapshots manually or by setting up automatic recurring
-snapshot policies. Users can also create disk volumes from snapshots,
-which may be attached to a VM like any other disk volume. Snapshots of
+Users can create Snapshots manually or by setting up automatic recurring
+Snapshot policies. Users can also create disk volumes from Snapshots,
+which may be attached to an Instance like any other disk volume. Snapshots of
 both root disks and data disks are supported. However, CloudStack does
-not currently support booting a VM from a recovered root disk. A disk
-recovered from snapshot of a root disk is treated as a regular data
+not currently support booting a Instance from a recovered root disk. A disk
+recovered from Snapshot of a root disk is treated as a regular data
 disk; the data on recovered disk can be accessed by attaching the disk
-to a VM.
+to an Instance.
 
-A completed snapshot is copied from primary storage to secondary
-storage, where it is stored until deleted or purged by newer snapshot.
+A completed Snapshot is copied from primary storage to secondary
+storage, where it is stored until deleted or purged by newer Snapshot.
 
 Users can also select the desired zones at the time of taking manual snapshots
 or while creating a snapshot policy. When additional zone(s) are selected and
@@ -886,24 +886,24 @@ How to Snapshot a Volume
 
 #. In Select View, be sure Volumes is selected.
 
-#. Click the name of the volume you want to snapshot.
+#. Click the name of the volume you want to Snapshot.
 
 #. Click the Snapshot button. |SnapshotButton.png|
 
 KVM volume Snapshot specifics
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In recent CloudStack versions, by default, creating a volume snapshot for a running VM is disabled
-due to a possible volume corruption in certain cases. To enable creating a volume snapshots while the VM
+In recent CloudStack versions, by default, creating a Volume Snapshot for a running Instance is disabled
+due to a possible volume corruption in certain cases. To enable creating a Volume Snapshots while the Instance
 is running, the global setting 'kvm.snapshot.enabled' must be set to 'True'.
 
-The volume snapshot creation has changed in recent versions:
+The Volume Snapshot creation has changed in recent versions:
 
-Under the hood, first, a full VM snapshot is taken - this means that during the taking of
-the VM snapshot the VM will be in the "Paused" state (while RAM memory is being written to the
-QCOW2 file), which means that VM will be unavailable from the network point of view.
-When the VM snapshot is created, VM is unpaused/resumed, the single volume snapshot is exported
-to the Secondary Storage, and then the VM snapshots is removed from the VM.
+Under the hood, first, a full Instance Snapshot is taken - this means that during the taking of
+the Instance Snapshot the Instance will be in the "Paused" state (while RAM memory is being written to the
+QCOW2 file), which means that Instance will be unavailable from the Network point of view.
+When the Instance Snapshot is created, Instance is unpaused/resumed, the single Volume Snapshot is exported
+to the Secondary Storage, and then the Instance Snapshots is removed from the Instance.
 
 
 Automatic Snapshot Creation and Retention
@@ -912,20 +912,20 @@ Automatic Snapshot Creation and Retention
 (Supported for the following hypervisors: **XenServer**, **VMware
 vSphere**, and **KVM**)
 
-Users can set up a recurring snapshot policy to automatically create
-multiple snapshots of a disk at regular intervals. Snapshots can be
-created on an hourly, daily, weekly, or monthly interval. One snapshot
+Users can set up a recurring Snapshot policy to automatically create
+multiple Snapshots of a disk at regular intervals. Snapshots can be
+created on an hourly, daily, weekly, or monthly interval. One Snapshot
 policy can be set up per disk volume. For example, a user can set up a
-daily snapshot at 02:30.
+daily Snapshot at 02:30.
 
-With each snapshot schedule, users can also specify the number of
-scheduled snapshots to be retained. Older snapshots that exceed the
+With each Snapshot schedule, users can also specify the number of
+scheduled Snapshots to be retained. Older Snapshots that exceed the
 retention limit are automatically deleted. This user-defined limit must
 be equal to or lower than the global limit set by the CloudStack
 administrator. See `“Globally Configured
 Limits” <usage.html#globally-configured-limits>`_. The limit applies only
-to those snapshots that are taken as part of an automatic recurring
-snapshot policy. Additional manual snapshots can be created and
+to those Snapshots that are taken as part of an automatic recurring
+Snapshot policy. Additional manual Snapshots can be created and
 retained.
 
 
@@ -933,7 +933,7 @@ Incremental Snapshots and Backup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Snapshots are created on primary storage where a disk resides. After a
-snapshot is created, it is immediately backed up to secondary storage
+Snapshot is created, it is immediately backed up to secondary storage
 and removed from primary storage for optimal utilization of space on
 primary storage.
 
@@ -952,24 +952,24 @@ incremental backups are supported, every N backup is a full backup.
 Volume Status
 ~~~~~~~~~~~~~
 
-When a snapshot operation is triggered by means of a recurring snapshot
-policy, a snapshot is skipped if a volume has remained inactive since
-its last snapshot was taken. A volume is considered to be inactive if it
-is either detached or attached to a VM that is not running. CloudStack
-ensures that at least one snapshot is taken since the volume last became
+When a Snapshot operation is triggered by means of a recurring Snapshot
+policy, a Snapshot is skipped if a volume has remained inactive since
+its last Snapshot was taken. A volume is considered to be inactive if it
+is either detached or attached to an Instance that is not running. CloudStack
+ensures that at least one Snapshot is taken since the volume last became
 inactive.
 
-When a snapshot is taken manually, a snapshot is always created
+When a Snapshot is taken manually, a Snapshot is always created
 regardless of whether a volume has been active or not.
 
 
 Snapshot Restore
 ~~~~~~~~~~~~~~~~
 
-There are two paths to restoring snapshots. Users can create a volume
-from the snapshot. The volume can then be mounted to a VM and files
-recovered as needed. Alternatively, a template may be created from the
-snapshot of a root disk. The user can then boot a VM from this template
+There are two paths to restoring Snapshots. Users can create a volume
+from the Snapshot. The volume can then be mounted to an Instance and files
+recovered as needed. Alternatively, a Template may be created from the
+Snapshot of a root disk. The user can then boot an Instance from this Template
 to effect recovery of the root disk.
 
 Some hypervisor and storage combinations also allow for Instances and volumes
@@ -990,31 +990,31 @@ to be restored is present.
 Snapshot Job Throttling
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-When a snapshot of a virtual machine is requested, the snapshot job runs
-on the same host where the VM is running or, in the case of a stopped
-VM, the host where it ran last. If many snapshots are requested for VMs
-on a single host, this can lead to problems with too many snapshot jobs
+When a Snapshot of an Instance is requested, the Snapshot job runs
+on the same host where the Instance is running or, in the case of a stopped
+Instance, the host where it ran last. If many Snapshots are requested for Instances
+on a single host, this can lead to problems with too many Snapshot jobs
 overwhelming the resources of the host.
 
 To address this situation, the cloud's root administrator can throttle
-how many snapshot jobs are executed simultaneously on the hosts in the
+how many Snapshot jobs are executed simultaneously on the hosts in the
 cloud by using the global configuration setting
 concurrent.snapshots.threshold.perhost. By using this setting, the
-administrator can better ensure that snapshot jobs do not time out and
+administrator can better ensure that Snapshot jobs do not time out and
 hypervisor hosts do not experience performance issues due to hosts being
-overloaded with too many snapshot requests.
+overloaded with too many Snapshot requests.
 
 Set concurrent.snapshots.threshold.perhost to a value that represents a
-best guess about how many snapshot jobs the hypervisor hosts can execute
+best guess about how many Snapshot jobs the hypervisor hosts can execute
 at one time, given the current resources of the hosts and the number of
-VMs running on the hosts. If a given host has more snapshot requests,
-the additional requests are placed in a waiting queue. No new snapshot
-jobs will start until the number of currently executing snapshot jobs
+Instances running on the hosts. If a given host has more Snapshot requests,
+the additional requests are placed in a waiting queue. No new Snapshot
+jobs will start until the number of currently executing Snapshot jobs
 falls below the configured limit.
 
 The admin can also set job.expire.minutes to place a maximum on how long
-a snapshot request will wait in the queue. If this limit is reached, the
-snapshot request fails and returns an error message.
+a Snapshot request will wait in the queue. If this limit is reached, the
+Snapshot request fails and returns an error message.
 
 
 Snapshot Copy
@@ -1031,20 +1031,20 @@ deleted without affecting other replicas.
 VMware Volume Snapshot Performance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When you take a snapshot of a data or root volume on VMware, CloudStack
+When you take a Snapshot of a data or root volume on VMware, CloudStack
 uses an efficient storage technique to improve performance.
 
-A snapshot is not immediately exported from vCenter to a mounted NFS
+A Snapshot is not immediately exported from vCenter to a mounted NFS
 share and packaged into an OVA file format. This operation would consume
 time and resources. Instead, the original file formats (e.g., VMDK)
 provided by vCenter are retained. An OVA file will only be created as
 needed, on demand. To generate the OVA, CloudStack uses information in a
 properties file (\*.ova.meta) which it stored along with the original
-snapshot data.
+Snapshot data.
 
 .. note::
    For upgrading customers: This process applies only to newly created
-   snapshots after upgrade to CloudStack 4.2. Snapshots that have already
+   Snapshots after upgrade to CloudStack 4.2. Snapshots that have already
    been taken and stored in OVA format will continue to exist in that
    format, and will continue to work as expected.
 
@@ -1055,13 +1055,13 @@ Linstor Primary Storage
 LINSTOR is a configuration management system for storage on Linux systems.
 It manages LVM logical volumes and/or ZFS ZVOLs on a cluster of nodes.
 It leverages DRBD for replication between different nodes and to provide block storage devices
-to users and applications. It manages snapshots, encryption and caching of HDD backed data in SSDs via bcache.
+to users and applications. It manages Snapshots, encryption and caching of HDD backed data in SSDs via bcache.
 
 LINSTOR can be used as volume storage provider for Cloudstack, it currently only supports KVM hypervisors.
 To get started first setup your LINSTOR cluster according to the `LINSTOR User Guide <https://linbit.com/drbd-user-guide/linstor-guide-1_0-en/>`_
 
 .. note::
-   Make sure a LINSTOR-Satellite is running on all nodes where you want to have a storage provided for you VM's
+   Make sure a LINSTOR-Satellite is running on all nodes where you want to have a storage provided for you Instances
    and that the nodes have the exact same node names as the nodes in Cloudstack.
    Also add a resource group to LINSTOR which you intend to use in Cloudstack.
 
@@ -1088,4 +1088,4 @@ and use the resource group name you added in the LINSTOR cluster.
 .. |volume-metrics.png| image:: /_static/images/volume-metrics.png
    :alt: Volume metrics   
 .. |volume-from-snap.png| image:: /_static/images/volume-from-snap.png
-   :alt: Offering is needed when creating a volume from the ROOT volume snapshot.
+   :alt: Offering is needed when creating a volume from the ROOT Volume Snapshot.

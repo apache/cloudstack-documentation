@@ -23,10 +23,10 @@ failures. The Management Server itself (as distinct from the MySQL
 database) is stateless and may be placed behind a load balancer.
 
 Normal operation of Hosts is not impacted by an outage of all Management
-Serves. All guest VMs will continue to work.
+Serves. All Guest Instances will continue to work.
 
-When the Management Server is down, no new VMs can be created, and the
-end user and admin UI, API, dynamic load distribution, and HA will cease
+When the Management Server is down, no new Instances can be created, and the
+end User and admin UI, API, dynamic load distribution, and HA will cease
 to work.
 
 .. _management-server-load-balancing:
@@ -66,7 +66,7 @@ Multiple Management Servers Support on agents
 
 In a Cloudstack environment with multiple management servers, an agent can be
 configured, based on an algorithm, to which management server to connect to.
-This can be useful as an internal loadbalancer or for high availability.
+This can be useful as an internal load balancer or for high availability.
 An administrator is responsible for setting the list of management servers and
 choosing a sorting algorithm using global settings.
 The management server is responsible for propagating the settings to the
@@ -75,7 +75,7 @@ Virtual Machine, Console Proxy Virtual Machine or the KVM hosts).
 
 The three global settings that need to be configured are the following:
 
-- hosts: a comma seperated list of management server IP addresses
+- hosts: a comma separated list of management server IP addresses
 - indirect.agent.lb.algorithm: The algorithm for the indirect agent LB
 - indirect.agent.lb.check.interval: The preferred host check interval
   for the agent's background task that checks and switches to an agent's
@@ -135,58 +135,58 @@ Setting 'host' = 'A,B,C', agents will receive lists depending on
 receives: 'B,C,A', third agent receives: 'C,B,A'
 'shuffle': Each agent will receive a list in random order.
 
-HA-Enabled Virtual Machines
----------------------------
+HA-Enabled Instances
+--------------------
 
-The user can specify a virtual machine as HA-enabled. By default, all
-virtual router VMs and Elastic Load Balancing VMs are automatically
-configured as HA-enabled. When an HA-enabled VM crashes, CloudStack
-detects the crash and restarts the VM automatically within the same
+The User can specify an Instance as HA-enabled. By default, all
+virtual router Instances and Elastic Load Balancing Instances are automatically
+configured as HA-enabled. When an HA-enabled Instance crashes, CloudStack
+detects the crash and restarts the Instance automatically within the same
 Availability Zone. HA is never performed across different Availability
-Zones. CloudStack has a conservative policy towards restarting VMs and
-ensures that there will never be two instances of the same VM running at
-the same time. The Management Server attempts to start the VM on another
+Zones. CloudStack has a conservative policy towards restarting Instances and
+ensures that there will never be two equal Instances running at
+the same time. The Management Server attempts to start the Instance on another
 Host in the same cluster.
 
 HA features work with iSCSI or NFS primary storage. HA with local
 storage is not supported.
 
 .. note::
-   HA-Enabled VMs will be restarted when it is detected that the VM is
+   HA-Enabled Instances will be restarted when it is detected that the Instance is
    crashed beyond a shadow of a doubt. When the host it is running on is
-   unreachable, either because of network issue or because it is crashed,
-   CloudStack can not be sure the disk image of the VM is not still being
-   accessed and will not restart the VM.
+   unreachable, either because of Network issue or because it is crashed,
+   CloudStack can not be sure the disk image of the Instance is not still being
+   accessed and will not restart the Instance.
 
 
 Dedicated HA Hosts
 ------------------
 
-One or more hosts can be designated for use only by HA-enabled VMs that
+One or more hosts can be designated for use only by HA-enabled Instances that
 are restarting due to a host failure. Setting up a pool of such
-dedicated HA hosts as the recovery destination for all HA-enabled VMs is
+dedicated HA hosts as the recovery destination for all HA-enabled Instances is
 useful to:
 
--  Make it easier to determine which VMs have been restarted as part of
-   the CloudStack high-availability function. If a VM is running on a
-   dedicated HA host, then it must be an HA-enabled VM whose original
+-  Make it easier to determine which Instances have been restarted as part of
+   the CloudStack high-availability function. If an Instance is running on a
+   dedicated HA host, then it must be an HA-enabled Instance whose original
    host failed. (With one exception: It is possible for an administrator
-   to manually migrate any VM to a dedicated HA host.).
+   to manually migrate any Instance to a dedicated HA host.).
 
--  Keep HA-enabled VMs from restarting on hosts which may be reserved
+-  Keep HA-enabled Instances from restarting on hosts which may be reserved
    for other purposes.
 
 The dedicated HA option is set through a special host tag when the host
 is created. To allow the administrator to dedicate hosts to only
-HA-enabled VMs, set the global configuration variable ha.tag to the
+HA-enabled Instances, set the global configuration variable ha.tag to the
 desired tag (for example, "ha\_host"), and restart the Management
 Server. Enter the value in the Host Tags field when adding the host(s)
-that you want to dedicate to HA-enabled VMs.
+that you want to dedicate to HA-enabled Instances.
 
 .. note:: 
    If you set ha.tag, be sure to actually use that tag on at least one 
    host in your cloud. If the tag specified in ha.tag is not set for 
-   any host in the cloud, the HA-enabled VMs will fail to restart after 
+   any host in the cloud, the HA-enabled Instances will fail to restart after
    a crash.
 
 
@@ -198,21 +198,21 @@ HA-Enabled Hosts
    on for instance VMware or Xen. For those hypervisor types, the Host HA
    is left to the VMware-cluster or Xen-pool respectively.
 
-The user can specify a host as HA-enabled, In the event of a host 
-failure, attemps will be made to recover the failed host by first 
+The User can specify a host as HA-enabled, In the event of a host
+failure, attempts will be made to recover the failed host by first
 issuing some OOBM commands. If the host recovery fails the host will be
 fenced and placed into maintenance mode. To restore the host to normal 
 operation, manual intervention would then be required.
 
 Out of band management is a requirement of HA-Enabled hosts and has to be 
-confiured on all intended participating hosts.
+configured on all intended participating hosts.
 (see `“Out of band management” <hosts.html#out-of-band-management>`_).
 
 Host-HA has granular configuration on a host/cluster/zone level. In a large 
 environment, some hosts from a cluster can be HA-enabled and some not, 
 
 Host-HA uses a state machine design to manage the operations of recovering
-and fencing hosts. The current status of a host is reported when quering a 
+and fencing hosts. The current status of a host is reported when querying a
 specific host.
 
 Timely health investigations are done on HA-Enabled hosts to monitor for
@@ -222,7 +222,7 @@ only when it’s exceeded, will the host transition to a different state.
 Host-HA uses both health checks and activity checks to make decisions on 
 recovering and fencing actions. Once determined that the host is in faulty 
 state (health checks failed) it runs activity checks to figure out if there is 
-any disk activity on the VMs running on the specific host.
+any disk activity on the Instances running on the specific host.
 
 The HA Resource Management Service manages the check/recovery cycle including
 periodic execution, concurrency management, persistence, back pressure and 
@@ -248,7 +248,7 @@ states:
 - SUSPECT - There are health checks failing with the host.
 - CHECKING - Activity checks are being performed.
 - DEGRADED - The host is passing the activity check ratio and still providing
-  service to the end user, but it cannot be managed from the CloudStack
+  service to the end User, but it cannot be managed from the CloudStack
   management server.
 - RECOVERING - The Host-HA framework is trying to recover the host by issuing
   OOBM jobs.
@@ -300,14 +300,14 @@ Primary Storage Outage and Data Loss
 ------------------------------------
 
 When a primary storage outage occurs the hypervisor immediately stops
-all VMs stored on that storage device. Guests that are marked for HA
+all Instances stored on that storage device. Guests that are marked for HA
 will be restarted as soon as practical when the primary storage comes
-back on line. With NFS, the hypervisor may allow the virtual machines to
+back on line. With NFS, the hypervisor may allow the Instances to
 continue running depending on the nature of the issue. For example, an
-NFS hang will cause the guest VMs to be suspended until storage
+NFS hang will cause the Guest Instances to be suspended until storage
 connectivity is restored.Primary storage is not designed to be backed
 up. Individual volumes in primary storage can be backed up using
-snapshots.
+Templates.
 
 
 Secondary Storage Outage and Data Loss
@@ -315,13 +315,13 @@ Secondary Storage Outage and Data Loss
 
 For a Zone that has only one secondary storage server, a secondary
 storage outage will have feature level impact to the system but will not
-impact running guest VMs. It may become impossible to create a VM with
-the selected template for a user. A user may also not be able to save
-snapshots or examine/restore saved snapshots. These features will
+impact running Guest Instances. It may become impossible to create an Instance
+with the selected Template for a User. A User may also not be able to save
+Templates or examine/restore saved Templates. These features will
 automatically be available when the secondary storage comes back online.
 
-Secondary storage data loss will impact recently added user data
-including templates, snapshots, and ISO images. Secondary storage should
+Secondary storage data loss will impact recently added User data
+including Templates, Snapshots, and ISO Images. Secondary storage should
 be backed up periodically. Multiple secondary storage servers can be
 provisioned within each zone to increase the scalability of the system.
 

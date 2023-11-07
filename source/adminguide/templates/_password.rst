@@ -24,20 +24,20 @@ to set a temporary admin or root password as well as reset the existing
 admin or root password from the CloudStack UI.
 
 To enable the Reset Password feature, you will need to download an
-additional script to patch your template. When you later upload the
-template into CloudStack, you can specify whether reset admin/root
-password feature should be enabled for this template.
+additional script to patch your Template. When you later upload the
+Template into CloudStack, you can specify whether reset admin/root
+password feature should be enabled for this Template.
 
 The password management feature works always resets the account password
-on instance boot. The script does an HTTP call to the virtual router to
+on Instance boot. The script does an HTTP call to the virtual router to
 retrieve the account password that should be set. As long as the virtual
 router is accessible the guest will have access to the account password
 that should be used. When the user requests a password reset the
 management server generates and sends a new password to the virtual
-router for the account. Thus an instance reboot is necessary to effect
+router for the account. Thus an Instance reboot is necessary to effect
 any password changes.
 
-If the script is unable to contact the virtual router during instance
+If the script is unable to contact the virtual router during Instance
 boot it will not set the password but boot will continue normally.
 
 
@@ -82,4 +82,4 @@ Windows OS Installation
 
 Download the installer, CloudInstanceManager.msi, from the `Download
 page <http://sourceforge.net/projects/cloudstack/files/Password%20Management%20Scripts/CloudInstanceManager.msi/download>`_
-and run the installer in the newly created Windows VM.
+and run the installer in the newly created Windows Instance.

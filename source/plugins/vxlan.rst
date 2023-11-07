@@ -80,12 +80,12 @@ To check the capability of your system, execute the following commands.
 Important note on MTU size
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When new vxlan interfaces are created, kernel will obtain current MTU size of the physical interface (ethX or the bridge)
-and then create vxlan interface/bridge that are exactly 50 bytes smaller than the MTU on physical interface/bridge.
-This means that in order to support default MTU size of 1500 bytes inside VM, your vxlan interface/bridge must also
+When new VXLAN interfaces are created, kernel will obtain current MTU size of the physical interface (ethX or the bridge)
+and then create VXLAN interface/bridge that are exactly 50 bytes smaller than the MTU on physical interface/bridge.
+This means that in order to support default MTU size of 1500 bytes inside Instance, your VXLAN interface/bridge must also
 have MTU of 1500 bytes, meaning that your physical interface/bridge must have MTU of at least 1550 bytes.
-In order to configure "jumbo frames" you can i.e. make physical interface/bridge with 9000 bytes MTU, then all the vxlan
-interfaces will be created with MTU of 8950 bytes, and then MTU size inside VM can be set to 8950 bytes.
+In order to configure "jumbo frames" you can i.e. make physical interface/bridge with 9000 bytes MTU, then all the VXLAN
+interfaces will be created with MTU of 8950 bytes, and then MTU size inside Instance can be set to 8950 bytes.
 
 Important note on max number of multicast groups (and thus VXLAN interfaces)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -95,7 +95,7 @@ Since all VXLAN (VTEP) interfaces provisioned on host are multicast-based (belon
 On Linux kernel 3.x you actually can provision more than 20, but ARP request will silently fail and cause client's networking problems
 On Linux kernel 4.x you can NOT provision (start) more than 20 VXLAN interfaces and error message "No buffer space available" can be observed in Cloudstack Agent logs after provisioning required bridges and VXLAN interfaces.
 Increase needed parameter to sane value (i.e. 100 or 200) as required.
-If you need to operate more than 20 VMs from different client's network, this change above is required.
+If you need to operate more than 20 Instances from different client's Network, this change above is required.
 
 Advanced: Build kernel and iproute2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -207,8 +207,8 @@ differs per host, you may use a bridge to set a same name. If you would
 like to use a bridge name as a traffic label, you may create a bridge in
 this way.
 
-Let ``cloudbr1`` be the bridge interface for the instances' private
-network.
+Let ``cloudbr1`` be the bridge interface for the Instances' private
+Network.
 
 
 Configure in RHEL or CentOS
@@ -347,7 +347,7 @@ save them first.
    $ sudo iptables-save > /etc/sysconfig/iptables
 
 
-With this configuration you should be able to restart the network,
+With this configuration you should be able to restart the Network,
 although a reboot is recommended to see if everything works properly.
 
 ::
@@ -358,7 +358,7 @@ although a reboot is recommended to see if everything works properly.
 
 .. warning::
    Make sure you have an alternative way like IPMI or ILO to reach the machine
-   in case you made a configuration error and the network stops functioning!
+   in case you made a configuration error and the Network stops functioning!
 
 
 Configure in Ubuntu
@@ -377,7 +377,7 @@ To open the required ports, execute the following commands:
    By default UFW is not enabled on Ubuntu. Executing these commands with the
    firewall disabled does not enable the firewall.
 
-With this configuration you should be able to restart the network,
+With this configuration you should be able to restart the Network,
 although a reboot is recommended to see if everything works properly.
 
 ::
@@ -387,25 +387,25 @@ although a reboot is recommended to see if everything works properly.
 
 .. warning::
    Make sure you have an alternative way like IPMI or ILO to reach the machine
-   in case you made a configuration error and the network stops functioning!
+   in case you made a configuration error and the Network stops functioning!
 
 
 Setup zone using VXLAN
 ~~~~~~~~~~~~~~~~~~~~~~
 
 In almost all parts of zone setup, you can just follow the advanced zone
-setup istruction in "CloudStack Installation Guide" to use this plugin. It
-is not required to add a network element nor to reconfigure the network
+setup instruction in "CloudStack Installation Guide" to use this plugin. It
+is not required to add a Network element nor to reconfigure the Network
 offering. The only thing you have to do is configure the physical
-network to use VXLAN as the isolation method for Guest Network.
+Network to use VXLAN as the isolation method for Guest Network.
 
 
-Configure the physical network
+Configure the physical Network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. figure:: /_static/images/vxlan-physicalnetwork.png
 
-CloudStack needs to have one physical network for Guest Traffic with the
+CloudStack needs to have one physical Network for Guest Traffic with the
 isolation method set to "VXLAN".
 
 .. figure:: /_static/images/vxlan-trafficlabel.png
@@ -420,7 +420,7 @@ Configure the guest traffic
 
 .. figure:: /_static/images/vxlan-vniconfig.png
 
-Specify a range of VNIs you would like to use for carrying guest network
+Specify a range of VNIs you would like to use for carrying guest Network
 traffic.
 
 .. warning::

@@ -72,8 +72,8 @@ Setting up Networking for Users
    autoscale_with_virtual_router
 
 
-Working with Virtual Machines
------------------------------
+Working with Instances
+----------------------
 
 .. toctree::
    :maxdepth: 4
@@ -115,8 +115,8 @@ Working with Storage
    storage
 
 
-Working with System Virtual Machines
-------------------------------------
+Working with System VMs
+-----------------------
 
 .. toctree::
    :maxdepth: 4

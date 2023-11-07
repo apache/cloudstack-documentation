@@ -25,7 +25,7 @@ Management Server, Database, and Storage System Requirements
 The machines that will run the Management Server and MySQL database must
 meet the following requirements. The same machines can also be used to
 provide primary and secondary storage, such as via localdisk or NFS. The
-Management Server may be placed on a virtual machine.
+Management Server may be placed on an Instance.
 
 -  Operating system:
 

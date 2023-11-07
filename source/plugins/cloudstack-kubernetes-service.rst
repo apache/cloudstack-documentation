@@ -15,9 +15,9 @@ CloudStack Kubernetes Service
 
 The Kubernetes Service plugin adds Kubernetes integration to CloudStack. The plugin is disabled by default and an admin can enable it using a Global Setting. It enables users to run containerized services using Kubernetes clusters.
 
-With CoreOS having reached EOL, from 4.16 the Kubernetes Service Plugin will use the existing SystemVM template for deploying kubernetes clusters. For installation of Kubernetes binaries on the cluster nodes, a binaries ISO is used for each Kubernetes version to be made available via CloudStack. This allows faster, offline installation of Kubernetes binaries and docker images along with support for adding multiple versions of Kubernetes for upgrades and running different clusters.
+With CoreOS having reached EOL, from 4.16 the Kubernetes Service Plugin will use the existing SystemVM Template for deploying kubernetes clusters. For installation of Kubernetes binaries on the cluster nodes, a binaries ISO is used for each Kubernetes version to be made available via CloudStack. This allows faster, offline installation of Kubernetes binaries and docker images along with support for adding multiple versions of Kubernetes for upgrades and running different clusters.
 
-For deployment and setup of Kubernetes on cluster nodes, the plugin uses the Kubernetes tool, 'kubeadm'. kubeadm is the command-line tool for easily provisioning a secure Kubernetes cluster on top of physical or cloud servers or virtual machines. Under the hood, control node(s) of the cluster starts a Kubernetes cluster using kubeadm init command with a custom token, and worker nodes join this Kubernetes cluster using kubeadm join command with the same token. More about kubeadm here: https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/. Weave Net CNI provider plugin is used for cluster networking. More about Weave Net provide plugin here: https://www.weave.works/docs/net/latest/kubernetes/kube-addon/.
+For deployment and setup of Kubernetes on cluster nodes, the plugin uses the Kubernetes tool, 'kubeadm'. kubeadm is the command-line tool for easily provisioning a secure Kubernetes cluster on top of physical or cloud servers or Instances. Under the hood, control node(s) of the cluster starts a Kubernetes cluster using kubeadm init command with a custom token, and worker nodes join this Kubernetes cluster using kubeadm join command with the same token. More about kubeadm here: https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/. Weave Net CNI provider plugin is used for cluster networking. More about Weave Net provide plugin here: https://www.weave.works/docs/net/latest/kubernetes/kube-addon/.
 
 To access the Kubernetes dashboard securely, the plugin provides access to kubeconfig file data which uses the Kubernetes tool kubectl to run a local proxy and thereby access the dashboard. More about kubectl here: https://kubernetes.io/docs/reference/kubectl/overview/
 
@@ -53,7 +53,7 @@ The Kubernetes service provides the functionality to manage multiple supported K
 - http://download.cloudstack.org/cks/
 - http://packages.shapeblue.com/cks/
 
-A script is provided (see below) to add other Kubernetes versions. Once an ISO is created for a Kubernetes version it can be added in the service and other CRUD operations can be performed using both the UI and API. Using a pre-packaged ISO containing required binaries and docker images allows faster provisioning on the node virtual machines of a Kubernetes cluster. Complete offline provisioning of the Kubernetes cluster is not supported at present as the kubeadm init command needs active Internet access.
+A script is provided (see below) to add other Kubernetes versions. Once an ISO is created for a Kubernetes version it can be added in the service and other CRUD operations can be performed using both the UI and API. Using a pre-packaged ISO containing required binaries and docker images allows faster provisioning on the node Instances of a Kubernetes cluster. Complete offline provisioning of the Kubernetes cluster is not supported at present as the kubeadm init command needs active Internet access.
 
 A script named create-kubernetes-binaries-iso.sh has been provided in the cloudstack-common package for creating a new setup ISO with the desired version of Kubernetes binaries and corresponding docker images.
 
@@ -149,21 +149,21 @@ deleteKubernetesSupportedVersion API has been provided for admins to delete an e
 Kubernetes clusters
 --------------------
 
-The Kubernetes service provides the functionality of running and managing Kubernetes clusters. Highly available, scalable Kubernetes clusters can be created to run containerized deployments without having to set up Kubernetes on each container node manually. The service will automatically provision the desired number of virtual machines as per cluster size using the binaries corresponding to the provided Kubernetes version. Additionally, the service provides the functionality to upgrade and scale clusters. Running clusters can be upgraded to a newer minor or patch Kubernetes version at a time. Running clusters can also be scaled up or down based on the number of worker nodes provided and to the service offering used by each node.
+The Kubernetes service provides the functionality of running and managing Kubernetes clusters. Highly available, scalable Kubernetes clusters can be created to run containerized deployments without having to set up Kubernetes on each container node manually. The service will automatically provision the desired number of Instances as per cluster size using the binaries corresponding to the provided Kubernetes version. Additionally, the service provides the functionality to upgrade and scale clusters. Running clusters can be upgraded to a newer minor or patch Kubernetes version at a time. Running clusters can also be scaled up or down based on the number of worker nodes provided and to the service offering used by each node.
 
-This provides functionality to create Kubernetes clusters for Shared, Isolated and VPC networks in CloudStack, but such networks must be accessible to the CloudStack management server for provisioning virtual machines on the cluster. The default network offering must be set in the Global Settings for the service to create Kubernetes clusters.
+This provides functionality to create Kubernetes clusters for Shared, Isolated and VPC Networks in CloudStack, but such Networks must be accessible to the CloudStack management server for provisioning Instances on the cluster. The default Network offering must be set in the Global Settings for the service to create Kubernetes clusters.
 
-The following Global Setting value must be set to the name of Network Offering to be used for creating a new network when no network has been selected while creating a Kubernetes cluster:
+The following Global Setting value must be set to the name of Network Offering to be used for creating a new Network when no Network has been selected while creating a Kubernetes cluster:
 
 .. parsed-literal::
 
    cloud.kubernetes.cluster.network.offering
 
-A new network offering named DefaultNetworkOfferingforKubernetesService has been added since 4.14.0
+A new Network offering named DefaultNetworkOfferingforKubernetesService has been added since 4.14.0
 
 .. note::
    - Multi-control nodes, HA cluster can be created for Kubernetes version 1.16 and above only.
-   - While creating multi-control nodes, HA cluster over a shared network, an external load-balancer must be manually setup. This load-balancer should have port-forwarding rules for SSH, Kubernetes API server access. Service assumes SSH access to cluster nodes is available from port 2222 to (2222 + cluster node count -1). Similarly, for API access 6443 must be forwarded to control nodes. Over the CloudStack isolated network these rules are automatically provisioned.
+   - While creating multi-control nodes, HA cluster over a shared Network, an external load-balancer must be manually setup. This load-balancer should have port-forwarding rules for SSH, Kubernetes API server access. Service assumes SSH access to cluster nodes is available from port 2222 to (2222 + cluster node count -1). Similarly, for API access 6443 must be forwarded to control nodes. Over the CloudStack isolated Network these rules are automatically provisioned.
 
 
 Examples of how to ssh into the Control and Worker nodes
@@ -201,14 +201,14 @@ createKubernetesCluster API can be used to create new Kubernetes cluster. It tak
 - **zoneid** (availability zone in which Kubernetes cluster to be launched; Required)
 - **clustertype** (Define the type of cluster: `CloudManaged` (managed by CloudStack), `ExternalManaged` (managed by an external kubernetes provider). Defaults to `CloudManaged`)
 - **kubernetesversionid** (Kubernetes version with which cluster to be launched; Required for CloudManaged clusters)
-- **serviceofferingid** (the ID of the service offering for the virtual machines in the cluster; Required for CloudManaged clusters)
-- **account** (an optional account for the virtual machine. Must be used with domainId)
-- **domainid** (an optional domainId for the virtual machine. If the account parameter is used, domainId must also be used)
+- **serviceofferingid** (the ID of the service offering for the Instances in the cluster; Required for CloudManaged clusters)
+- **account** (an optional Account for the Instance. Must be used with domainId)
+- **domainid** (an optional domainId for the Instance. If the account parameter is used, domainId must also be used)
 - **projectid** (Deploy cluster for the project)
 - **networkid** (Network in which Kubernetes cluster is to be launched)
-- **keypair** (name of the ssh key pair used to login to the virtual machines)
+- **keypair** (name of the ssh key pair used to login to the Instances)
 - **controlnodes** (number of Kubernetes cluster control nodes, default is 1)
-- **externalloadbalanceripaddress** (external load balancer IP address while using shared network with Kubernetes HA cluster)
+- **externalloadbalanceripaddress** (external load balancer IP address while using shared Network with Kubernetes HA cluster)
 - **size** (number of Kubernetes cluster worker nodes; Required for manage clusters)
 - **noderootdisksize** (root disk size of root disk for each node)
 - **dockerregistryusername** (username for the docker image private registry; Experimental)
@@ -248,8 +248,8 @@ For example:
    }
 
 On successful creation, the new cluster will automatically be started and will show up in Running state. If creation of the new cluster fails it can be in following states:
-- Alert – When node virtual machines were successfully provisioned, and cluster API server is accessible but further provisioning steps could not be completed.
-- Error – When the service was unable to provision the node virtual machines for the cluster or if the cluster API server is not accessible.
+- Alert – When node Instances were successfully provisioned, and cluster API server is accessible but further provisioning steps could not be completed.
+- Error – When the service was unable to provision the node Instances for the cluster or if the cluster API server is not accessible.
 
 .. note::
    - A minimum of 2 cores of CPU and 2GB of RAM is needed for deployment. Therefore, the serviceofferingid parameter of createKubernetesCluster API must be provided with the ID of such compute offerings that conform to these requirements.
@@ -290,7 +290,7 @@ A running or stopped Kubernetes cluster can be scaled using both API and UI. |ck
 scaleKubernetesCluster API can be used to scale a running (or stopped cluster) to a desired cluster size and service offering. It takes the following parameters as input:
 
 - **id** (the ID of the Kubernetes cluster to be scaled; Required)
-- **serviceofferingid** (the ID of the new service offering for the virtual machines in the cluster)
+- **serviceofferingid** (the ID of the new service offering for the Instances in the cluster)
 - **size** (number of Kubernetes cluster worker nodes)
 
 Only running Kubernetes clusters can be scaled in size. When the service fails to scale the cluster, the cluster will show in Alert state else if the scaling is successfull cluster will show up in Running state.
@@ -322,7 +322,7 @@ Deleting Kubernetes cluster
 
 A kubernetes cluster can be deleted using either the deleteKubernetesCluster API which takes cluster id as the input parameter or the |cks-delete-action.png| action icon from the UI.
 
-The Kubernetes service runs a background state scanner process which regularly checks the cluster health. For clusters in Alert state, this background process verifies their state and moves them to Running state if all node virtual machines of the cluster are running and the API server for the cluster is accessible.
+The Kubernetes service runs a background state scanner process which regularly checks the cluster health. For clusters in Alert state, this background process verifies their state and moves them to Running state if all node Instances of the cluster are running and the API server for the cluster is accessible.
 
 Working with Kubernetes cluster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -345,7 +345,7 @@ Kubernetes cluster web dashboard
 
 The service while creating a cluster automatically deploys dashboard for the cluster. More details about Kubernetes dashboard here: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 
-Instructions for accessing the dashboard for a running cluster will be shown in the Access tab in the UI. Essentially, the user needs to run a local proxy first using kubectl and kubecofig file for the cluster to access the dashboard. For secure login, the service doesn’t enable kubeconfig based login for the dashboard. Token-based access is enabled and kubectl can be used to access service account secret token.
+Instructions for accessing the dashboard for a running cluster will be shown in the Access tab in the UI. Essentially, the user needs to run a local proxy first using kubectl and kubecofig file for the cluster to access the dashboard. For secure login, the service doesn’t enable kubeconfig based login for the dashboard. Token-based access is enabled and kubectl can be used to access service Account secret token.
 
 |cks-cluster-access-tab.png|
 
@@ -385,17 +385,17 @@ Kubernetes compatibility Matrix
 | 4.16.1       | v1.20 onward                    | SystemVM Template (Debian)  | cloud       |
 +--------------+---------------------------------+-----------------------------+-------------+
 
-Adding/Removing VMs for an ExternalManaged Kubernetes Cluster
-##############################################################
-The VMs launched by the external kubernetes provider can be linked to the ExternalManaged kubernetes cluster.
+Adding/Removing Instances for an ExternalManaged Kubernetes Cluster
+###################################################################
+The Instances launched by the external kubernetes provider can be linked to the ExternalManaged kubernetes cluster.
 
-To add a VM to an ExternalManaged Kubernetes cluster:
+To add an Instance to an ExternalManaged Kubernetes cluster:
 
 .. code-block:: bash
 
    cmk add VirtualMachinesToKubernetesCluster id=59028a81-d9c9-46f6-bd16-8da918571c23 virtualmachineids=1d991764-3be8-4d2e-a9f1-2de2fc80ca72,97172931-286b-46c5-9427-ffc19315479e
 
-To remove a VM from an ExternalManaged Kubernetes cluster:
+To remove an Instance from an ExternalManaged Kubernetes cluster:
 
 .. code-block:: bash
 
