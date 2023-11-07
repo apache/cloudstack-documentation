@@ -89,6 +89,13 @@ Working with Templates & ISOs
 
    templates
 
+Working with Clusters
+------------------
+
+.. toctree::
+   :maxdepth: 4
+
+   clusters
 
 Working with Hosts
 ------------------
@@ -134,6 +141,7 @@ Managing Networks and Traffic
 
    networking_and_traffic
    networking/using_remote_access
+   networking/vnf_templates_appliances
 
 
 Managing the Cloud
