@@ -113,6 +113,8 @@ When importing a Virtual Machine from VMware to KVM, CloudStack performs the fol
 
 .. note:: Please consider not restarting the management servers while importing as it will lead to the interruption of the process and you will need to start again.
 
+.. note:: The success of the import process may vary based on factors such as the current OS version, installed packages, guest OS setup, file systems, and others. Success is not guaranteed. We strongly recommend testing the migration process before proceeding with production deployments.
+
 .. |import-vm-from-vmware-to-kvm.png| image:: /_static/images/import-vm-from-vmware-to-kvm.png
    :alt: Import VMware Virtual Machines into KVM.
    :width: 800 px
