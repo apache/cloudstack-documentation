@@ -60,7 +60,7 @@ In addition, the following hardware requirements apply:
 
 -  At least 1 NIC
 
--  When you deploy CloudStack, the hypervisor host must not have any VMs
+-  When you deploy CloudStack, the hypervisor host must not have any Instances
    already running
 
 
@@ -97,7 +97,7 @@ Prepare the Operating System
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The OS of the Host must be prepared to host the CloudStack Agent and run
-KVM instances.
+KVM Instances.
 
 #. Log in to your OS as root.
 
@@ -139,8 +139,8 @@ KVM instances.
 Install and configure the Agent
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To manage LXC instances on the host CloudStack uses a Agent. This Agent
-communicates with the Management server and controls all the instances
+To manage LXC Instances on the host CloudStack uses a Agent. This Agent
+communicates with the Management server and controls all the Instances
 on the host.
 
 First we start by installing the agent:
@@ -191,7 +191,7 @@ the host!
 Install and Configure libvirt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-CloudStack uses libvirt for managing virtual machines. Therefore it is
+CloudStack uses libvirt for managing Instances. Therefore it is
 vital that libvirt is configured correctly. Libvirt is a dependency of
 cloudstack-agent and should already be installed.
 
@@ -361,7 +361,7 @@ Configure the network bridges
    implementation in Linux. Please refer to the next section if you intend to 
    use OpenVswitch
 
-In order to forward traffic to your instances you will need at least two
+In order to forward traffic to your Instances you will need at least two
 bridges: *public* and *private*.
 
 By default these bridges are called *cloudbr0* and *cloudbr1*, but you
@@ -383,9 +383,9 @@ VLAN's:
 
 #. VLAN 100 for management of the hypervisor
 
-#. VLAN 200 for public network of the instances (cloudbr0)
+#. VLAN 200 for public network of the Instances (cloudbr0)
 
-#. VLAN 300 for private network of the instances (cloudbr1)
+#. VLAN 300 for private network of the Instances (cloudbr1)
 
 On VLAN 100 we give the Hypervisor the IP-Address 192.168.42.11/24 with
 the gateway 192.168.42.1

@@ -17,8 +17,8 @@
 Guest Traffic
 -------------
 
-A network can carry guest traffic only between VMs within one zone.
-Virtual machines in different zones cannot communicate with each other
+A network can carry guest traffic only between Instances within one zone.
+Instances in different zones cannot communicate with each other
 using their IP addresses; they must communicate with each other by
 routing through a public IP address.
 
@@ -27,7 +27,7 @@ See a typical guest traffic setup given below:
 |guest-traffic-setup.png| 
 
 Typically, the Management Server automatically creates a virtual router
-for each network. A virtual router is a special virtual machine that
+for each network. A virtual router is a special Instance that
 runs on the hosts. Each virtual router in an isolated network has three
 network interfaces. If multiple public VLAN is used, the router will
 have multiple public interfaces. Its eth0 interface serves as the
@@ -38,12 +38,12 @@ If multiple public VLAN is used, the router will have multiple public
 interfaces.
 
 The virtual router provides DHCP and will automatically assign an IP
-address for each guest VM within the IP range assigned for the network.
-The user can manually reconfigure guest VMs to assume different IP
+address for each Guest Instance within the IP range assigned for the network.
+The user can manually reconfigure Guest Instances to assume different IP
 addresses.
 
 Source NAT is automatically configured in the virtual router to forward
-outbound traffic for all guest VMs
+outbound traffic for all Guest Instances
 
 
 .. |guest-traffic-setup.png| image:: /_static/images/guest-traffic-setup.png

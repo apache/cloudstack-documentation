@@ -18,24 +18,24 @@ IP Reservation in Isolated Guest Networks
 -----------------------------------------
 
 In isolated guest networks, a part of the guest IP address space can be
-reserved for non-CloudStack VMs or physical servers. To do so, you
+reserved for non-CloudStack instances or physical servers. To do so, you
 configure a range of Reserved IP addresses by specifying the CIDR when a
 guest network is in Implemented state. If your customers wish to have
-non-CloudStack controlled VMs or physical servers on the same network,
+non-CloudStack controlled instances or physical servers on the same network,
 they can share a part of the IP address space that is primarily provided
 to the guest network.
 
 In an Advanced zone, an IP address range or a CIDR is assigned to a
 network when the network is defined. The CloudStack virtual router acts
 as the DHCP server and uses CIDR for assigning IP addresses to the guest
-VMs. If you decide to reserve CIDR for non-CloudStack purposes, you can
+instances. If you decide to reserve CIDR for non-CloudStack purposes, you can
 specify a part of the IP address range or the CIDR that should only be
-allocated by the DHCP service of the virtual router to the guest VMs
+allocated by the DHCP service of the virtual router to the Guest Instances
 created in CloudStack. The remaining IPs in that network are called
 Reserved IP Range. When IP reservation is configured, the administrator
-can add additional VMs or physical servers that are not part of
+can add additional instances or physical servers that are not part of
 CloudStack to the same network and assign them the Reserved IP
-addresses. CloudStack guest VMs cannot acquire IPs from the Reserved IP
+addresses. CloudStack Guest Instances cannot acquire IPs from the Reserved IP
 Range.
 
 
@@ -52,13 +52,13 @@ machines:
 
 -  No IP Reservation is done by default.
 
--  Guest VM CIDR you specify must be a subset of the network CIDR.
+-  Guest instance CIDR you specify must be a subset of the network CIDR.
 
--  Specify a valid Guest VM CIDR. IP Reservation is applied only if no
-   active IPs exist outside the Guest VM CIDR.
+-  Specify a valid Guest instance CIDR. IP Reservation is applied only if no
+   active IPs exist outside the Guest instance CIDR.
 
-   You cannot apply IP Reservation if any VM is alloted with an IP
-   address that is outside the Guest VM CIDR.
+   You cannot apply IP Reservation if any instance is alloted with an IP
+   address that is outside the Guest instance CIDR.
 
 -  To reset an existing IP Reservation, apply IP reservation by
    specifying the value of network CIDR in the CIDR field.
@@ -68,24 +68,24 @@ machines:
 
    .. cssclass:: table-striped table-bordered table-hover
 
-   ===== ============= ============== ======================================== ========================================================
-   Case  CIDR          Network CIDR   Reserved IP Range for Non-CloudStack VMs Description
-   ===== ============= ============== ======================================== ========================================================
-   1     10.1.1.0/24   None           None                                     No IP Reservation.
-   2     10.1.1.0/26   10.1.1.0/24    10.1.1.64 to 10.1.1.254                  IP Reservation configured by the UpdateNetwork API with
-                                                                               guestvmcidr=10.1.1.0/26 or enter 10.1.1.0/26 in the CIDR
-                                                                               field in the UI.
-   3     10.1.1.0/24   None           None                                     Removing IP Reservation by the UpdateNetwork API with
-                                                                               guestvmcidr=10.1.1.0/24 or enter 10.1.1.0/24 in the CIDR
-                                                                               field in the UI.
-   ===== ============= ============== ======================================== ========================================================
+   ===== ============= ============== ============================================== ========================================================
+   Case  CIDR          Network CIDR   Reserved IP Range for Non-CloudStack instances Description
+   ===== ============= ============== ============================================== ========================================================
+   1     10.1.1.0/24   None           None                                           No IP Reservation.
+   2     10.1.1.0/26   10.1.1.0/24    10.1.1.64 to 10.1.1.254                        IP Reservation configured by the UpdateNetwork API with
+                                                                                     guestvmcidr=10.1.1.0/26 or enter 10.1.1.0/26 in the CIDR
+                                                                                     field in the UI.
+   3     10.1.1.0/24   None           None                                           Removing IP Reservation by the UpdateNetwork API with
+                                                                                     guestvmcidr=10.1.1.0/24 or enter 10.1.1.0/24 in the CIDR
+                                                                                     field in the UI.
+   ===== ============= ============== ============================================== ========================================================
 
 
 Limitations
 ~~~~~~~~~~~
 
 -  The IP Reservation is not supported if active IPs that are found
-   outside the Guest VM CIDR.
+   outside the Guest instance CIDR.
 
 -  Upgrading network offering which causes a change in CIDR (such as
    upgrading an offering with no external devices to one with external
@@ -98,7 +98,7 @@ Best Practices
 
 Apply IP Reservation to the guest network as soon as the network state
 changes to Implemented. If you apply reservation soon after the first
-guest VM is deployed, lesser conflicts occurs while applying
+Guest Instance is deployed, lesser conflicts occurs while applying
 reservation.
 
 
@@ -113,7 +113,7 @@ Reserving an IP Range
 
 #. Click Edit. |ip-edit-icon.png|
 
-#. In CIDR, specify the Guest VM CIDR.
+#. In CIDR, specify the Guest instance CIDR.
 
 #. Click Apply.
 

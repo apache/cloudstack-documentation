@@ -17,71 +17,71 @@
 Overview of Projects
 --------------------
 
-Projects are used to organize people and resources. CloudStack users
+Projects are used to organize people and resources. CloudStack Users
 within a single domain can group themselves into project teams so they
-can collaborate and share virtual resources such as VMs, snapshots,
-templates, data disks, and IP addresses. CloudStack tracks resource
-usage per project as well as per user, so the usage can be billed to
-either a user account or a project. For example, a private cloud within
+can collaborate and share virtual resources such as Instances, Snapshots,
+Templates, data disks, and IP addresses. CloudStack tracks resource
+usage per project as well as per User, so the usage can be billed to
+either a User Account or a project. For example, a private cloud within
 a software company might have all members of the QA department assigned
 to one project, so the company can track the resources used in testing
 while the project members can more easily isolate their efforts from
-other users of the same cloud
+other Users of the same cloud
 
-You can configure CloudStack to allow any user to create a new project,
+You can configure CloudStack to allow any User to create a new project,
 or you can restrict that ability to just CloudStack administrators. Once
 you have created a project, you become that project’s administrator, and
 you can add others within your domain to the project. CloudStack can be
 set up to either add people directly to a project, or to send an
 invitation which the recipient must accept. Project members can view
 and manage all virtual resources created by anyone in the project
-(for example, share VMs). A user can be a member of any number of projects
+(for example, share Instances). A User can be a member of any number of projects
 and can switch views in the CloudStack UI to show only project-related information,
-such as project VMs, fellow project members, project-related alerts, and so on.
+such as project Instances, fellow project members, project-related alerts, and so on.
 
 From CloudStack 4.15 onwards, it is possible for a project to have
-multiple project administrators and to add/invite specific users of
-an account to a project in addition to adding accounts. By means of
-Project Roles associated with a user or an account of the project,
-it is possible to restrict access of users in a project, i.e., in
-addition to account-level roles, one can further restrict access to
+multiple project administrators and to add/invite specific Users of
+an Account to a project in addition to adding Accounts. By means of
+Project Roles associated with a User or an Account of the project,
+it is possible to restrict access of Users in a project, i.e., in
+addition to Account-level roles, one can further restrict access to
 operations (or APIs) by associating a project-level role to the
-user or account. However, if an account has already been added, one will not
-be able to associate a role to a specific user of that account.
+User or Account. However, if an Account has already been added, one will not
+be able to associate a role to a specific User of that Account.
 
-**NOTE:** Project Roles work over Account level Roles. If a user/account is
+**NOTE:** Project Roles work over Account level Roles. If a User/Account is
 added to a project without a project role, it would imply that the
-user / account added will have access to all APIs that are made available
+User / Account added will have access to all APIs that are made available
 by the Account level role. If there are no specific deny rules in the
-project role, it would again fallback onto the account-level role to decide
-whether the user has permissions to perform a specific action. It is also to be
+project role, it would again fallback onto the Account-level role to decide
+whether the User has permissions to perform a specific action. It is also to be
 noted that Project roles are restrictive in nature, i.e., to say that, one may
-not allow a user to perform an operation that is NOT allowed at the Account level.
+not allow a User to perform an operation that is NOT allowed at the Account level.
 Even if a rule is added at the project level, allowing such an action, it will not
 have any effect as the action will be prohibited by the Account Role.
 
 
-The project administrator can promote or demote a user in the project.
+The project administrator can promote or demote a User in the project.
 The project administrator can also add more members, remove members
 from the project, set new resource limits (as long as they are
 below the global defaults set by the CloudStack administrator), and
 delete the project. When the administrator removes a member from the
-project, resources created by that user, such as VM instances, remain
+project, resources created by that User, such as Instances, remain
 with the project. This brings us to the subject of resource ownership
 and which resources can be used by a project.
 
 Resources created within a project are owned by the project, not by any
-particular CloudStack account, and they can be used only within the
-project. A user who belongs to one or more projects can still create
+particular CloudStack Account, and they can be used only within the
+project. A User who belongs to one or more projects can still create
 resources outside of those projects, and those resources belong to the
-user’s account; they will not be counted against the project’s usage or
+User’s Account; they will not be counted against the project’s usage or
 resource limits. You can create project-level networks to isolate
 traffic within the project and provide network services such as port
 forwarding, load balancing, VPN, and static NAT. A project can also make
 use of certain types of resources from outside the project, if those
-resources are shared. For example, a shared network or public template
+resources are shared. For example, a shared network or public Template
 is available to any project in the domain. A project can get access to a
-private template if the template’s owner will grant permission. A
+private Template if the Template’s owner will grant permission. A
 project can use any service offering or disk offering available in its
 domain; however, you can not create private service and disk offerings
 at the project level.
@@ -90,7 +90,7 @@ at the project level.
 Configuring Projects
 --------------------
 
-Before CloudStack users start using projects, the CloudStack
+Before CloudStack Users start using projects, the CloudStack
 administrator must set up various systems to support them, including
 membership invitations, limits on project resources, and controls on who
 can create projects.
@@ -102,7 +102,7 @@ Setting Up Invitations
 CloudStack can be set up either so that project administrators can add
 people directly to a project, or so that it is necessary to send an
 invitation which the recipient must accept. The invitation can be sent
-by email or through the user’s CloudStack account. If you want
+by email or through the User’s CloudStack Account. If you want
 administrators to use invitations to add members to projects, turn on
 and set up the invitations feature in CloudStack.
 
@@ -152,12 +152,11 @@ Setting Resource Limits for Projects
 The CloudStack administrator can set global default limits to control
 the amount of resources that can be owned by each project in the cloud.
 This serves to prevent uncontrolled usage of resources such as
-snapshots, IP addresses, and virtual machine instances. Domain
-administrators can override these resource limits for individual
-projects with their domains, as long as the new limits are below the
-global defaults set by the CloudStack root administrator. The root
-administrator can also set lower resource limits for any project in the
-cloud
+Snapshots, IP addresses, and Instances. Domain administrators can override
+these resource limits for individual projects with their domains,
+as long as the new limits are below the global defaults set by the CloudStack
+root administrator. The root administrator can also set lower resource limits
+for any project in the cloud.
 
 Setting Per-Project Resource Limits
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -209,11 +208,11 @@ Setting the Global Project Resource Limits
    +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
    | max.project.public.ips   | Maximum number of public IP addresses that can be owned by any project in the cloud. See About Public IP Addresses.          |
    +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
-   | max.project.snapshots    | Maximum number of snapshots that can be owned by any project in the cloud. See Working with Snapshots.                       |
+   | max.project.snapshots    | Maximum number of Snapshots that can be owned by any project in the cloud. See Working with Snapshots.                       |
    +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
-   | max.project.templates    | Maximum number of templates that can be owned by any project in the cloud. See Working with Templates.                       |
+   | max.project.templates    | Maximum number of Templates that can be owned by any project in the cloud. See Working with Templates.                       |
    +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
-   | max.project.uservms      | Maximum number of guest virtual machines that can be owned by any project in the cloud. See Working With Virtual Machines.   |
+   | max.project.uservms      | Maximum number of guest Instances that can be owned by any project in the cloud. See Working With Instances.                 |
    +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
    | max.project.volumes      | Maximum number of data volumes that can be owned by any project in the cloud. See Working with Volumes.                      |
    +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
@@ -228,7 +227,7 @@ Setting the Global Project Resource Limits
 Setting Project Creator Permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can configure CloudStack to allow any user to create a new project,
+You can configure CloudStack to allow any User to create a new project,
 or you can restrict that ability to just CloudStack administrators.
 
 #. Log in as administrator to the CloudStack UI.
@@ -241,7 +240,7 @@ or you can restrict that ability to just CloudStack administrators.
 
    ``allow.user.create.projects``
 
-   Set to true to allow end users to create projects. Set to false if
+   Set to true to allow end Users to create projects. Set to false if
    you want only the CloudStack root administrator and domain
    administrators to create projects.
 
@@ -257,7 +256,7 @@ Creating a New Project
 
 CloudStack administrators and domain administrators can create projects.
 If the global configuration parameter allow.user.create.projects is set
-to true, end users can also create projects.
+to true, end Users can also create projects.
 
 #. Log in as administrator to the CloudStack UI.
 
@@ -265,7 +264,7 @@ to true, end users can also create projects.
 
 #. Click New Project.
 
-#. Give the project a name and description for display to users, then
+#. Give the project a name and description for display to Users, then
    click Create Project.
 
 #. A screen appears where you can immediately add more members to the
@@ -303,13 +302,13 @@ not turned on, use the procedure in Adding Project Members From the UI.
 
 #. Click the name of the project you want to work with.
 
-#. Click on the `Add Account to Project` button. This will have 2 tabs, one to add account to the project and the other to add a user to the project. Here, we can specify the:
+#. Click on the `Add Account to Project` button. This will have 2 tabs, one to add Account to the project and the other to add a User to the project. Here, we can specify the:
 
-      - account or user and/or email id of the user to be invited,
-      - (Optional) the Role i.e, Admin or Regular that the user is to be added as, defualts to Regular role,
-      - (Optional) the Project role specifying the list of APIs the user is allowed/ denied access to
+      - Account or User and/or email id of the User to be invited,
+      - (Optional) the Role i.e, Admin or Regular that the User is to be added as, defaults to Regular role,
+      - (Optional) the Project role specifying the list of APIs the User is allowed/ denied access to
 
-   You can invite only people who have an account in this cloud within the same domain as the project. However, you can send the invitation to any email address.
+   You can invite only people who have an Account in this cloud within the same domain as the project. However, you can send the invitation to any email address.
 
 #. To view and manage the invitations you have sent, return to this tab.
    When an invitation is accepted, the new member will appear in the
@@ -332,13 +331,13 @@ Invitations” <#sending-project-membership-invitations>`_.
 
 #. Click the name of the project you want to work with.
 
-#. Click on the `Add Account to Project` button. This will have 2 tabs, one to add account to the project and the other to add a user to the project. Here, we can specify the:
+#. Click on the `Add Account to Project` button. This will have 2 tabs, one to add Account to the project and the other to add a User to the project. Here, we can specify the:
 
-      - account or user and/or email id of the user to be invited,
-      - (Optional) the Role i.e, Admin or Regular that the user is to be added as, defualts to Regular role,
-      - (Optional) the Project role specifying the list of APIs the user is allowed/ denied access to
+      - Account or User and/or email id of the User to be invited,
+      - (Optional) the Role i.e, Admin or Regular that the User is to be added as, defaults to Regular role,
+      - (Optional) the Project role specifying the list of APIs the User is allowed/ denied access to
 
-#. You can add only people who have an account in this cloud and within the same domain as the project.
+#. You can add only people who have an Account in this cloud and within the same domain as the project.
 
 
 Accepting a Membership Invitation
@@ -356,7 +355,7 @@ want to accept the invitation, follow these steps:
 #. If you see the invitation listed onscreen, click the Accept button.
 
    Invitations listed on screen were sent to you using your CloudStack
-   account name.
+   Account name.
 
 #. If you received an email invitation, click the Enter Token button,
    and provide the project ID and unique ID code (token) from the email.
@@ -370,7 +369,7 @@ can no longer be used. No new resources or members can be added to a
 suspended project.
 
 When a project is deleted, its resources are destroyed, and member
-accounts are removed from the project. The project’s status is shown as
+Accounts are removed from the project. The project’s status is shown as
 Disabled pending final deletion.
 
 A project can be suspended or deleted by the project administrator, the
@@ -403,13 +402,13 @@ and resources.
 
 #. Click Project View.
 
-#. The project dashboard appears, showing the project’s VMs, volumes,
-   users, events, network settings, and more. From the dashboard, you
+#. The project dashboard appears, showing the project’s Instances, volumes,
+   Users, events, network settings, and more. From the dashboard, you
    can:
 
    -  Click the Accounts tab to view and manage project members. If you
       are the project administrator, you can add new members, remove
-      members, or change the role of a member from user to admin or vice versa.
+      members, or change the role of a member from User to admin or vice versa.
 
    -  (If invitations are enabled) Click the Invitations button to view and
       manage invitations that have been sent to new project members but

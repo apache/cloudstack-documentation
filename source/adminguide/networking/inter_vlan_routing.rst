@@ -22,12 +22,12 @@ traffic between VLANs. This feature enables you to build Virtual Private
 Clouds (VPC), an isolated segment of your cloud, that can hold
 multi-tier applications. These tiers are deployed on different VLANs
 that can communicate with each other. You provision VLANs to the tiers
-your create, and VMs can be deployed on different tiers. The VLANs are
+your create, and instances can be deployed on different tiers. The VLANs are
 connected to a virtual router, which facilitates communication between
-the VMs. In effect, you can segment VMs by means of VLANs into different
+the instances. In effect, you can segment instances by means of VLANs into different
 networks that can host multi-tier applications, such as Web,
 Application, or Database. Such segmentation by means of VLANs logically
-separate application VMs for higher security and lower broadcasts, while
+separate application instances for higher security and lower broadcasts, while
 remaining physically connected to the same device.
 
 This feature is supported on XenServer, KVM, and VMware hypervisors.
@@ -35,23 +35,23 @@ This feature is supported on XenServer, KVM, and VMware hypervisors.
 The major advantages are:
 
 -  The administrator can deploy a set of VLANs and allow users to deploy
-   VMs on these VLANs. A guest VLAN is randomly alloted to an account
-   from a pre-specified set of guest VLANs. All the VMs of a certain
+   instances on these VLANs. A guest VLAN is randomly allotted to an account
+   from a pre-specified set of guest VLANs. All the instances of a certain
    tier of an account reside on the guest VLAN allotted to that account.
 
    .. note:: 
       A VLAN allocated for an account cannot be shared between multiple accounts.
 
 -  The administrator can allow users create their own VPC and deploy the
-   application. In this scenario, the VMs that belong to the account are
+   application. In this scenario, the instances that belong to the account are
    deployed on the VLANs allotted to that account.
 
 -  Both administrators and users can create multiple VPCs. The guest
-   network NIC is plugged to the VPC virtual router when the first VM is
+   network NIC is plugged to the VPC virtual router when the first instance is
    deployed in a tier.
 
 -  The administrator can create the following gateways to send to or
-   receive traffic from the VMs:
+   receive traffic from the instances:
 
    -  **VPN Gateway**: For more information, see `"Creating a VPN gateway for the
       VPC" <#creating-a-vpn-gateway-for-the-vpc>`_.
@@ -70,12 +70,12 @@ The major advantages are:
    For example:
 
    -  **VLANs and Public Gateway**: For example, an application is
-      deployed in the cloud, and the Web application VMs communicate
+      deployed in the cloud, and the Web application instances communicate
       with the Internet.
 
    -  **VLANs, VPN Gateway, and Public Gateway**: For example, an
-      application is deployed in the cloud; the Web application VMs
-      communicate with the Internet; and the database VMs communicate
+      application is deployed in the cloud; the Web application instances
+      communicate with the Internet; and the database instances communicate
       with the on-premise devices.
 
 -  The administrator can define Network Access Control List (ACL) on the

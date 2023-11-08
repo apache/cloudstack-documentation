@@ -39,14 +39,14 @@ available so that storage providers can develop vendor-specific plugins
 based on well-defined contracts that can be seamlessly managed by
 CloudStack.
 
-Artifacts such as templates, ISOs and snapshots are kept in storage
+Artifacts such as Templates, ISOs and Snapshots are kept in storage
 which CloudStack refers to as secondary storage. To improve scalability and
 performance, as when a number of hosts access secondary storage
 concurrently, object storage can be used for secondary storage. Object
 storage can also provide built-in high availability capability. When
 using object storage, access to secondary storage data can be made
 available across multiple zones in a region. This is a huge benefit, as
-it is no longer necessary to copy templates, snapshots etc. across zones
+it is no longer necessary to copy Templates, Snapshots etc. across zones
 as would be needed in an environment using only zone-based NFS storage.
 
 The user enables a storage plugin through the UI. A new dialog box
@@ -70,7 +70,7 @@ steps (explained in more detail later in this section):
 
    -  DataStoreProvider
 
-   -  VMSnapshotStrategy (if you want to customize the VM snapshot
+   -  VMSnapshotStrategy (if you want to customize the Instance Snapshot
       functionality)
 
 #. Hardcode your plugin's required additional input fields into the code
@@ -167,7 +167,7 @@ VMSnapshotStrategy has the following methods:
 
 -  revertVMSnapshot()
 
--  canHandle(). For a given VM snapshot, tells whether this
+-  canHandle(). For a given Instance Snapshot, tells whether this
    implementation of VMSnapshotStrategy can handle it.
 
 
@@ -541,7 +541,7 @@ Plugins are written in a very similar way to the main UI.
    function in the plugin code with a 'listView' block, containing the
    required syntax for a list view. To get the data, use the
    listVirtualMachines API call. Without any parameters, it will return
-   VMs only for your active user. Use the provided 'apiCall' helper
+   Instances only for your active user. Use the provided 'apiCall' helper
    method to handle the server call. Of course, you are free to use any
    other method for making the AJAX call (for example, jQuery's $.ajax
    method).
@@ -604,12 +604,12 @@ Plugins are written in a very similar way to the main UI.
    First, copy all the plugin code that you have created so far to
    `/tomcat/webapps/client/plugins`. Then refresh the browser. You can
    see that your placeholder content was replaced with a list table,
-   containing 4 columns of virtual machine data.
+   containing 4 columns of Instance data.
 
 #. **Add an action button.**
 
    Let's add an action button to the list view, which will reboot the
-   VM. To do this, add an actions block under listView. After
+   Instance. To do this, add an actions block under listView. After
    specifying the correct format, the actions will appear automatically
    to the right of each row of data.
 

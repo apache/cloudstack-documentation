@@ -28,7 +28,7 @@ This is the Apache CloudStack installation guide. In this guide we first go thro
 
 .. toctree::
 
-Concepts and Terminolgy
+Concepts and Terminology
 ------------------------
 .. toctree::
    :maxdepth: 2

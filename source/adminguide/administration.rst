@@ -18,14 +18,14 @@ User Services
 =============
 
 In addition to the physical and logical infrastructure of your cloud and
-the CloudStack software and servers, you also need a layer of user
+the CloudStack software and servers, you also need a layer of User
 services so that people can actually make use of the cloud. This means
-not just a user UI, but a set of options and resources that users can
-choose from, such as templates for creating virtual machines, disk
+not just a User UI, but a set of options and resources that Users can
+choose from, such as Templates for creating Instances, disk
 storage, and more. If you are running a commercial service, you will be
-keeping track of what services and resources users are consuming and
+keeping track of what services and resources Users are consuming and
 charging them for that usage. Even if you do not charge anything for
-people to use your cloud – say, if the users are strictly internal to
+people to use your cloud – say, if the Users are strictly internal to
 your organization, or just friends who are sharing your cloud – you can
 still keep track of what services they use and how much of them.
 
@@ -33,9 +33,9 @@ still keep track of what services they use and how much of them.
 Service Offerings, Disk Offerings, Network Offerings, and Templates
 -------------------------------------------------------------------
 
-A user creating a new instance can make a variety of choices about its
+A User creating a new Instance can make a variety of choices about its
 characteristics and capabilities. CloudStack provides several ways to
-present users with choices when creating a new instance:
+present Users with choices when creating a new Instance:
 
 -  Service Offerings, defined by the CloudStack administrator, provide a
    choice of CPU speed, number of CPUs, RAM size, tags on the root disk,
@@ -46,16 +46,16 @@ present users with choices when creating a new instance:
    storage. See Creating a New Disk Offering.
 
 -  Network Offerings, defined by the CloudStack administrator, describe
-   the feature set that is available to end users from the virtual
+   the feature set that is available to end Users from the virtual
    router or external networking devices on a given guest network. See
    Network Offerings.
 
 -  Templates, defined by the CloudStack administrator or by any
-   CloudStack user, are the base OS images that the user can choose from
-   when creating a new instance. For example, CloudStack includes CentOS
-   as a template. See Working with Templates.
+   CloudStack User, are the base OS images that the User can choose from
+   when creating a new Instance. For example, CloudStack includes CentOS
+   as a Template. See Working with Templates.
 
-In addition to these choices that are provided for users, there is
+In addition to these choices that are provided for Users, there is
 another type of service offering which is available only to the
 CloudStack root administrator, and is used for configuring virtual
 infrastructure resources. For more information, see Upgrading a Virtual

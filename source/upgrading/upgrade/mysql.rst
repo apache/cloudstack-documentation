@@ -18,7 +18,7 @@ MySQL upgrade problems
 
 With certain MySQL versions (see below), issues have been seen with "cloud.nics" table's 
 column type (which was not updated properly during CloudStack upgrades, due to MySQL limitations),
-which eventually may lead to exception seen in the management server logs, causing users to
+which eventually may lead to exception seen in the management server logs, causing Users to
 not be able to start any VM.
 
 The following SQL statement needs to be manually executed in order to fix such issue:

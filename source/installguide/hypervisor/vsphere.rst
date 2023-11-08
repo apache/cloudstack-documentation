@@ -49,13 +49,13 @@ Software requirements:
 
 .. warning:: 
    Apply All Necessary Hotfixes. The lack of up-do-date hotfixes can lead to 
-   data corruption and lost VMs.
+   data corruption and lost Instances.
 
 .. note::
 
    When using vSphere and vCenter versions 6.0 and 6.5 there is a limitation on
-   instance names with a sequence number between 99999 and 1000000. For example if you take
-   a snapshot of a VM, the expected filename will be different to what cloudstack expects.
+   Instance names with a sequence number between 99999 and 1000000. For example if you take
+   a Snapshot of an Instance, the expected filename will be different to what cloudstack expects.
    It is advisable to set the sequence number to 1M to prevent issues by executing the
    following script on your cloudstack database:
 
@@ -140,7 +140,7 @@ Other requirements:
 -  CloudStack requires ESXi and vCenter. ESX is not supported.
 
 -  Ideally all resources used for CloudStack must be used for CloudStack only.
-   CloudStack should not share instance of ESXi or storage with other
+   CloudStack should not share Instance of ESXi or storage with other
    management consoles. Do not share the same storage volumes that will
    be used by CloudStack with a different set of ESXi servers that are
    not managed by CloudStack.
@@ -149,9 +149,9 @@ Other requirements:
    in vCenter.
 
 -  Ideally clusters that will be managed by CloudStack should not contain
-   any other VMs. Do not run the management server or vCenter on
+   any other Instances. Do not run the management server or vCenter on
    the cluster that is designated for CloudStack use. Create a separate
-   cluster for use of CloudStack and make sure that they are no VMs in
+   cluster for use of CloudStack and make sure that they are no Instances in
    this cluster.
 
 -  All of the required VLANs must be trunked into all network switches that
@@ -443,19 +443,19 @@ switch's supervisor. It controls multiple VEMs as a single network
 device. The VSM is installed independent of the VEM and is deployed in
 redundancy mode as pairs or as a standalone appliance. The VEM is
 installed on each VMware ESXi server to provide packet-forwarding
-capability. It provides each virtual machine with dedicated switch
+capability. It provides each Instance with dedicated switch
 ports. This VSM-VEM architecture is analogous to a physical Cisco
 switch's supervisor (standalone or configured in high-availability mode)
 and multiple linecards architecture.
 
 Nexus 1000v switch uses vEthernet port profiles to simplify network
-provisioning for virtual machines. There are two types of port profiles:
+provisioning for Instances. There are two types of port profiles:
 Ethernet port profile and vEthernet port profile. The Ethernet port
 profile is applied to the physical uplink ports-the NIC ports of the
 physical NIC adapter on an ESXi server. The vEthernet port profile is
-associated with the virtual NIC (vNIC) that is plumbed on a guest VM on
-the ESXi server. The port profiles help the network administrators
-define network policies which can be reused for new virtual machines.
+associated with the virtual NIC (vNIC) that is plumbed on a guest Instance
+on the ESXi server. The port profiles help the network administrators
+define network policies which can be reused for new Instances.
 The Ethernet port profiles are created on the VSM and are represented as
 port groups on the vCenter server.
 
@@ -608,7 +608,7 @@ Creating a Port Profile
    resources in the CloudStack environment.
 
 -  You do not have to create any vEthernet port profiles – CloudStack
-   does that during VM deployment.
+   does that during Instance deployment.
 
 -  Ensure that you create required port profiles to be used by
    CloudStack for different traffic types of CloudStack, such as
@@ -1042,10 +1042,10 @@ Applying Hotfixes to a VMware vSphere Host
 
    #. Move each of the ESXi hosts in the cluster to maintenance mode.
 
-   #. Ensure that all the VMs are migrated to other hosts in that
+   #. Ensure that all the Instances are migrated to other hosts in that
       cluster.
 
-   #. If there is only one host in that cluster, shutdown all the VMs
+   #. If there is only one host in that cluster, shutdown all the instances
       and move the host into maintenance mode.
 
    #. Apply the patch on the ESXi host.

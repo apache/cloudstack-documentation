@@ -40,15 +40,15 @@ KVM Hypervisor(s)
 #. Hypervisor must be associated with the DELL EMC Networker server as CLIENT
 #. DELL EMC Networker can connect and verify certificates to the Hyper-v Client
 #. A Hypervisor must be in UP and ENABLED state and resource state respectively in order to be able to get backups
-   for the VMS running.
+   for the Instances running.
 #. A proper timezone set. Identical to the EMC Networker Server and Management server
 #. Proper DNS resolution of the EMC Networker server
 
-Virtual Machines
+Instances
 
 #. It is HIGHLY recommended to run qemu-guest-agent on the Machines you are planning to backup.
-#. There has been no testing regarding KVM Primary Storage snapshots and possible problems with EMC DELL Networker plugin
-#. In case you are using KVM Primary Storage snapshots, you have EMC Networker and you want to proceed with the
+#. There has been no testing regarding KVM Primary Storage Snapshots and possible problems with EMC DELL Networker plugin
+#. In case you are using KVM Primary Storage Snapshots, you have EMC Networker and you want to proceed with the
    installation of this plugin proceed with extreme caution.
 
 General Concepts
@@ -58,18 +58,18 @@ General Concepts
    will expire. Restricted data zones can also be defined in POLICIES to create fine grain permissions.
 #. As per EMC Networker Glossary and design those POLICIES are not actually used. They act as a placeholder
    for the backup offerings and the retention policies.
-#. DELL EMC Networker has no ability to initiate backup tasks for KVM Virtual Machines at the moment.
+#. DELL EMC Networker has no ability to initiate backup tasks for KVM Instances at the moment.
    The implementation is based on manual save sets initiated by the Cloudstack Networker plugin.
 #. The tag -CSBKP- in the comment of the POLICY indicates that this policy is available to Cloudstack
    Other POLICIES used in your infrastructure will not be visible inside Cloudstack. It is recommended to create
    brand new POLICIES dedicated to Cloudstack and settings the Protection Periods to match the backup plan retention
    you wish to enable for each of the offerings.
 #. For each KVM Cluster you have, a relevant dummy client must be created in the DELL EMC Networker. This is used as a
-   placeholder for being able to backup and restore your Virtual Machines from all hosts within the cluster.
+   placeholder for being able to backup and restore your Instances from all hosts within the cluster.
 #. Cross cluster restores are indirectly supported by restoring to the original cluster and then migrating the Virtual
    Machine to the destination cluster.
 #. Any manual KVM backup you initiate (from the hyper-v command line) will be registered in Cloudstack automatically.
-   You need to use the client scripts and pass the proper parameteres to do so.
+   You need to use the client scripts and pass the proper parameters to do so.
 #. Any backup you expire/remove from the DELL EMC Networker side will be unregistered in Cloudstack automatically.
 
 Installing DELL EMC Networker Backup and Recovery Plugin
@@ -83,8 +83,8 @@ performed in advance. Kindly make sure that DNS resolution, Timezones and system
 Cloudstack Management Servers and DELL EMC Networker Server. Do not forget to perform your staging actions (if any)
 before the savesets expire.
 
-Depending on your topology, network bandwidth, backend storage speeds, number of customer VMs you should carefully plan,
-design and implement the Storage volumes, media pools. If you have multiple VMs that your customers want to be processed
+Depending on your topology, network bandwidth, backend storage speeds, number of customer Instances you should carefully plan,
+design and implement the Storage volumes, media pools. If you have multiple Instances that your customers want to be processed
 at the same time (e.g Friday night, end of business day in your timezone) this can easily overwhelm your resources since
 the backups are initiated outside DELL EMC Networker.
 

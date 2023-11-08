@@ -17,11 +17,24 @@
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is the initial 4.18 LTS release. It has over 300 fixes
-and features since the 4.17.2.0 release.
+Apache CloudStack |release| is a 4.18 LTS minor release with 196 fixes
+since the 4.18.0.0 release. Some of the highlights include:
+
+• Support Managed User Data in AutoScale VM groups
+• Support CKS (CloudStack Kubernetes Cluster) in VPC tiers
+• Support for VMware 8.0.0.x
+• Several Hypervisor (VMware, KVM, XenServer) fixes and improvements
+• Several UI fixes and improvements
+• Several Network (L2, VXLAN, etc) fixes and improvements
+• Several System VM (CPVM, SSVM) fixes and improvements
+• Improve Solidfire storage plugin integration on VMware
+• Support volume migration in ScaleIO/PowerFlex within and across ScaleIO/PowerFlex storage clusters
+• Volume encryption support for StorPool
+• Fix CloudStack upgrade with some MySQL versions
+• Fix guest OSes and guest OS mappings in CloudStack database
 
 The full list of fixes and improvements can be found in the project release notes at
-https://docs.cloudstack.apache.org/en/4.18.0.0/releasenotes/changes.html
+https://docs.cloudstack.apache.org/en/4.18.1.0/releasenotes/changes.html
 
 What's in since 4.18.0.0
 ======================
