@@ -104,7 +104,7 @@ Once the VMware Datacenter is selected, click on List VMware Instances to displa
 Converting and importing a VMware VM
 ------------------------------------
 
-.. note:: CloudStack allows importing Running Linux Virtual Machines, but it is recommended that the Virtual Machine to import is powered off and has been gracefully shutdown before the process starts. For Windows Virtual Machines, it is not possible to import them while running. In case a Linux VM is imported while running, it will be converted in "crash consistent" state.
+.. note:: CloudStack allows importing Running Linux Virtual Machines, but it is generally recommended that the Virtual Machine to import is powered off and has been gracefully shutdown before the process starts. In case a Linux VM is imported while running, it will be converted in "crash consistent" state. For Windows Virtual Machines, it is not possible to import them while running, it is mandatory they are shut down gracefully so the filesystem is in a clean state.
 
 When importing a Virtual Machine from VMware to KVM, CloudStack performs the following actions:
 
