@@ -13,10 +13,16 @@
    specific language governing permissions and limitations
    under the License.
 
-.. note:: This is currently only available for **vSphere** clusters.
-
-About Unmanaged Instances
+About Import Export Instances
 -------------------------
+
+CloudStack supports Import of Instances from Managed Hosts, External Hosts, Local Storage and Shared Storage.
+
+Manage or Unmanage Instances on Managed Hosts
+-------------------------
+
+.. note:: This is currently only available for **vSphere** and **KVM** clusters.
+
 
 As of ACS 4.14, CloudStack has the concept of **unmanaged** Instances.  These are Instances that are on CloudStack
 managed hosts, but that are not in CloudStack's database and therefore CloudStack cannot control (manage) then in any way.  Previously,
@@ -27,6 +33,8 @@ those unmanaged Instances via the importUnmanagedInstance API so that they becom
 From ACS 4.16 onwards, importing of the unmanaged Instances can also be carried out within the UI.
 
 From ACS 4.15 onwards, administrators are able to unmanage guest Instances.
+
+From ACS 4.19, this feature is available for KVM hosts also.
 
 In the UI, both unmanaged and managed Instances are listed in *Tools > Import-Export Instances* section:
 
@@ -45,7 +53,7 @@ replicated) and in the recreation of Instances which have been backed up (part o
 CloudStack's Backup and Recovery feature).
 
 The most complex part of importing Instances is the mapping of an unmanaged Instance's Networks to CloudStack Networks.  As an operator
-could be importing tens or even hundreds of Instances, a UI for this feature has not been created as yet.
+could be importing tens or even hundreds of Instances.
 
 If the 'destination' Network VLAN(s) and the requested service offerings match the existing Instance, then the Instance can be
 imported whilst it is running. If the VLANs or service offerings do not match, then the Instance to be imported must be stopped.
@@ -65,10 +73,10 @@ To import Instances, it is imagined that a Cloud Provider will:
 Listing unmanaged Instances
 ---------------------------
 
-Prerequisites to list unmanaged Instances (vSphere)
+Prerequisites to list unmanaged Instances (vSphere or KVM)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In order for CloudStack to list the Instances that are not managed by CloudStack on a host/cluster, the host(s) in the vSphere cluster
+In order for CloudStack to list the Instances that are not managed by CloudStack on a host/cluster, the host(s) in the vSphere or KVM cluster
 must have been added to CloudStack.  The standard prerequisites for adding a host to CloudStack apply.
 
 listUnmanagedInstances API
@@ -400,6 +408,170 @@ Unmanaging Instance actions
    - For Instance NICs destroyed: with type: ‘NETWORK.OFFERING.REMOVE’
 
    - For the Instance being unmanaged: stopped and destroyed usage events (similar to the generated usage events when expunging an Instance), with types: ‘VM.STOP’ and ‘VM.DESTROY', unless the instance has been already stopped before being unmanaged and in this case only ‘VM.DESTROY' is generated.
+
+Import Instances from External Hosts
+-------------------------
+.. note:: This is currently only available for **KVM** hypervisor.
+
+External Host
+~~~~~~~~~~~~~
+
+An External Host refers to a host that is not managed by CloudStack. The "Import from external host" feature enables the
+importation of instances from these external hosts. Administrators can execute this import process for instances from
+External KVM hosts either through the user interface (UI) or by utilizing the importVm API.
+
+Prerequisites
+~~~~~~~~~~~~~
+- Ensure that the External KVM host is equipped with the installation of libvirt.
+- Allow TCP libvirt connections from Managed KVM hosts within CloudStack to the External host.
+- It is imperative that instances residing on the external host are in a stopped state, as live migration of instances is not supported
+
+listVmsForImport API
+~~~~~~~~~~~~~~~~~~~~
+
+listVmsForImport API, created for functionality within the External KVM environment, serves the purpose of listing all
+instances currently in a stopped state on the designated External KVM host. To access this information programmatically,
+it is imperative to provide the corresponding username and password associated with the external host. These credentials
+serve as essential authentication measures, enabling secure interaction with the External KVM host and facilitating the
+retrieval of detailed insights into the status of instances that are currently halted or stopped.
+
+**Request parameters**:
+
+.. parsed-literal::
+   - **zoneid** (Zone to which Instance will be imported)
+   - **host** (the host name or IP address of External Host)
+   - **username** (the username of External Host for authentication)
+   - **password** (the password of External Host for authentication)
+
+**Response**:
+
+.. parsed-literal::
+   - **name**
+   - **osdisplayname**
+   - **memory**
+   - **powerstate**
+   - **cpuCoresPerSocket**
+   - **cpunumber**
+   - **cpuspeed**
+   - **disk**
+      - **id**
+      - **capacity** (in bytes)
+      - **controller**
+      - **controllerunit**
+      - **imagepath**
+      - **position**
+   - **nic**
+      - **id**
+      - **macaddress**
+      - **networkname**
+      - **vlanid**
+      - **pcislot**
+      - **adaptertype** (when available)
+      - **ipaddress**
+
+
+importVm API
+~~~~~~~~~~~~
+
+importVm API serves as a tool for import of instances, identified by the provided name, from an external
+host into the CloudStack environment. Throughout this import process, steps are taken to ensure the secure and
+efficient transfer of disk images, formatted in the QCOW2 standard, from the external host to a designated storage pool
+within CloudStack.
+
+The conversion of existing disk images to a complete QCOW2 format is handled by the qemu-img utility, streamlining
+compatibility and enhancing performance within the CloudStack ecosystem. Administrators have the flexibility to
+configure the temporary storage location on the external host for the converted file, with the default location set to /tmp.
+
+**Request parameters**:
+
+.. parsed-literal::
+   - **zoneid** (Zone to which Instance will be imported)
+   - **host** (the host name or IP address of External Host)
+   - **username** (the username of External Host for authentication)
+   - **password** (the password of External Host for authentication)
+   - **importsource** (Import source should be external)
+   - **tmppath** (Temp Path on external host for disk image copy)
+   - **name** (Instance name on External Host)
+   - **displayname**
+   - **hostname**
+   - **account** (An optional account name for the Instance. Must be used with domainid parameter)
+   - **domainid** (An optional domain ID for the Instance. Must be used with account parameter)
+   - **projectid**
+   - **serviceofferingid**
+   - **nicnetworklist** (Map for NIC ID and corresponding Network UUID)
+   - **nicipaddresslist** (Map for NIC ID and corresponding IP address)
+   - **datadiskofferinglist** (Map for data disk ID and corresponding disk offering UUID)
+   - **details** (Map for Instance details)
+   - **forced** (If true, an Instance is imported despite some of its NIC's MAC addresses being already present)
+
+.. note:: The `forced` parameter is false by default and prevents importing an Instance which has a NIC containing a
+MAC address that has been previously assigned by CloudStack. If it is set to true, the NICs with MAC addresses which
+already exist in the CloudStack database have the existing MAC addresses reassigned to its NICs.
+
+**Response**:
+
+.. parsed-literal::
+   Same response as that of deployVirtualMachine API.
+
+Import Instances from Local/Shared Storage
+----------------------------------------
+
+.. note:: This is currently only available for **KVM** hypervisor.
+
+Within CloudStack, the creation of KVM instances disk is a process that leverages existing disk images from either
+local or shared storage. The selected disk image should not be actively in use by any existing volume. The disk image
+must adhere to the QCOW2 file format.
+
+Import Instances from Local Storage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The importVm API is utilized to import instances from the local storage pool of a managed KVM host within the CloudStack infrastructure.
+
+**Request parameters**:
+
+.. parsed-literal::
+   - **zoneid** (Zone to which Instance will be imported)
+   - **hostid** (Host where disk image is located)
+   - **importsource** (Import source should be local)
+   - **diskpath** (Path of the disk image relative to local storage pool path)
+   - **name** (Instance name on External Host)
+   - **displayname**
+   - **hostname**
+   - **account** (An optional account name for the Instance. Must be used with domainid parameter)
+   - **domainid** (An optional domain ID for the Instance. Must be used with account parameter)
+   - **projectid**
+   - **serviceofferingid**
+
+**Response**:
+
+.. parsed-literal::
+   Same response as that of deployVirtualMachine API.
+
+Import Instances from Shared Storage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The importVm API is utilized to import instances from the shared storage pool of KVM cluster within the CloudStack infrastructure.
+Only NFS Storage Pool are supported.
+
+**Request parameters**:
+
+.. parsed-literal::
+   - **zoneid** (Zone to which Instance will be imported)
+   - **poolid** (Shared Storage Pool where disk image is located)
+   - **importsource** (Import source should be shared)
+   - **diskpath** (Path of the disk image relative to Shared storage pool path)
+   - **name** (Instance name on External Host)
+   - **displayname**
+   - **hostname**
+   - **account** (An optional account name for the Instance. Must be used with domainid parameter)
+   - **domainid** (An optional domain ID for the Instance. Must be used with account parameter)
+   - **projectid**
+   - **serviceofferingid**
+
+**Response**:
+
+.. parsed-literal::
+   Same response as that of deployVirtualMachine API.
 
 .. |br| raw:: html
 
