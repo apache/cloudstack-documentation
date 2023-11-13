@@ -98,7 +98,7 @@ Supported APIs:
 
 - **listBackupProviders**: lists available backup provider plugins
 - **listBackupProviderOfferings**: lists external backup policy/offering from a provider
-- **importBackupProviderOfferings**: allows importing of an external backup policy/offering to CloudStack as a backup offering
+- **importBackupOffering**: allows importing of an external backup policy/offering to CloudStack as a backup offering
 - **listBackupOfferings**: lists CloudStack's backup offerings (searching via keyword, and pagination supported)
 - **deleteBackupOffering**: deletes a backup offering by its ID
 
@@ -168,10 +168,10 @@ Supported APIs:
 - **listBackupSchedule**: returns backup schedule of an Instance if defined.
 - **deleteBackupSchedule**: deletes backup schedule of an Instance.
 - **createBackup**: creates an adhoc backup for an Instance.
-- **deleteVMBackup**: deletes an Instance backup (not support for per restore point for Veeam).
+- **deleteBackup**: deletes an Instance backup (not support for per restore point for Veeam).
 - **listBackups**: lists backups.
 - **restoreBackup**: restore a previous Instance backup in-place of a stopped or destroyed Instance.
-- **restoreVolumeFromBackup**: restore and attach a backed-up volume (of an Instance backup) to a specified Instance.
+- **restoreVolumeFromBackupAndAttachToVM**: restore and attach a backed-up volume (of an Instance backup) to a specified Instance.
 
 
 .. |B&R-assignOffering.png| image:: /_static/images/B&R-assignOffering.png
