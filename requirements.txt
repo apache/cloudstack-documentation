@@ -1,1 +1,4 @@
 docutils<0.18
+sphinx<2
+sphinx-rtd-theme<0.5
+readthedocs-sphinx-ext<2.3
