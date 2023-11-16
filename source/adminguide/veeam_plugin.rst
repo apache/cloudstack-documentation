@@ -47,7 +47,7 @@ There are a couple of important concepts to understand before working with the V
 Installing Veeam Backup and Recovery for use with CloudStack
 -------------------------------------------------------------
 
-The B&R Veeam plugin has been tested against Veeam Backup and Recovery 9.5 update 4b (Enterprise version).  The
+The B&R Veeam plugin has been tested against Veeam Backup and Recovery 11 and 12.  The
 enterprise edition is required for the Enterprise Manager API.  The final tested version of Veeam was on a
 Windows Server 2019 (with desktop), although much of the development work was done against a Windows Server 2016 OS (with
 desktop).
@@ -58,7 +58,7 @@ and Replication, however please read the steps below carefully to ensure that yo
 compatibility with the B&R Veeam plug-in.
 
 
-#. Install Backup and Replication 9.5 Manager - inc console - default settings
+#. Install Backup and Replication Manager - inc console - default settings
 #. Install Enterprise manager
 #. Install an SSH server on the 'Veeam Backup and Replication Manager' server. Windows Server 2019 has 'OpenSSH Server' as a
    builtin optional feature which is compatible.
