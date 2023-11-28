@@ -16,7 +16,7 @@
 About Import Export Instances
 -------------------------
 
-CloudStack supports Import of Instances from Managed Hosts, External Hosts, Local Storage and Shared Storage.
+For certain hypervisors, CloudStack supports importing of Instances from Managed Hosts, External Hosts, Local Storage and Shared Storage, into CloudStack.
 
 Manage or Unmanage Instances on Managed Hosts
 -------------------------
@@ -24,17 +24,17 @@ Manage or Unmanage Instances on Managed Hosts
 .. note:: This is currently only available for **vSphere** and **KVM** clusters.
 
 
-As of ACS 4.14, CloudStack has the concept of **unmanaged** Instances.  These are Instances that are on CloudStack
-managed hosts, but that are not in CloudStack's database and therefore CloudStack cannot control (manage) then in any way.  Previously,
+As of ACS 4.14, CloudStack has the concept of **unmanaged** Instances.  These are Instances that are on CloudStack-managed hosts, 
+but that are not in CloudStack's database and therefore CloudStack cannot control (manage) them in any way.  Previously,
 such Instances could exist, but CloudStack did not 'see' them (their existence *would* be reported in logs as unrecognised Instances).
 
-From ACS 4.14 onwards, CloudStack is able to list these Instances via the listUnmanagedInstances API command and then import (also known as ingest)
-those unmanaged Instances via the importUnmanagedInstance API so that they become CloudStack managed Guest Instances.
-From ACS 4.16 onwards, importing of the unmanaged Instances can also be carried out within the UI.
+From ACS 4.14 onwards, CloudStack is able to list VMware-based unmanaged instances via the listUnmanagedInstances API command and then import (also known as ingest)
+those unmanaged Instances via the importUnmanagedInstance API so that they become CloudStack-managed Guest Instances.
+From ACS 4.16 onwards, importing unmanaged Instances can also be carried out within the UI.
 
-From ACS 4.15 onwards, administrators are able to unmanage guest Instances.
+From ACS 4.15 onwards, administrators are able to unmanage VMware-based guest Instances.
 
-From ACS 4.19, this feature is available for KVM hosts also.
+From ACS 4.19, CloudStack also supports importing KVM-based guest instances.
 
 In the UI, both unmanaged and managed Instances are listed in *Tools > Import-Export Instances* section:
 
@@ -47,12 +47,12 @@ Importing Unmanaged Instances
 Use Cases and General Usage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ability to import Instances allows Cloud operators (both public and private) to onboard new tenants simply and quickly,
-with the minimum amount disk IO. But also can be used in disaster recovery scenarios at remote sites (if storage is
+The ability to import Instances allows Cloud operators to onboard new tenants simply and quickly,
+with the minimum amount of disk IO. It can also be used in disaster recovery scenarios at remote sites (if storage is
 replicated) and in the recreation of Instances which have been backed up (part of the code is indeed used in
 CloudStack's Backup and Recovery feature).
 
-The most complex part of importing Instances is the mapping of an unmanaged Instance's Networks to CloudStack Networks.  As an operator
+The most complex part of importing Instances is the mapping of an unmanaged Instance's Networks to CloudStack Networks, as an operator
 could be importing tens or even hundreds of Instances.
 
 If the 'destination' Network VLAN(s) and the requested service offerings match the existing Instance, then the Instance can be
