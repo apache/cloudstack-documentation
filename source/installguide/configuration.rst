@@ -1617,6 +1617,9 @@ You can add  object storage pools at any time to add more capacity or providers 
 
    -  Secret key: Credentials with access to admin API of the object storage server
 
+   |AddObjectStore.png: Add Object Storage|
+
+See https://min.io/docs/minio/linux/index.html for MinIO Documentation
 
 .. _initialize-and-test:
 
@@ -1819,3 +1822,4 @@ zone      denied.routes                                              Routes that
 .. |addcluster.png: add a cluster| image:: /_static/images/add-cluster.png
 .. |add-Host.png: Adding a KVM Host| image:: /_static/images/add-Host.png
 .. |ConsoleButton.png: button to launch a console| image:: /_static/images/console-icon.png
+.. |AddObjectStore.png: Add Object Storage| image:: /_static/images/add-object-storage.png

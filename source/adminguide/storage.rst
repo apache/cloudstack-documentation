@@ -1098,6 +1098,7 @@ To create a new bucket, click create Bucket, provide the following details, and 
 
 Based on the selected Object Store, you can specify additional details like quota, encryption, policy.
 
+|Createbucket.png|
 
 
 .. |AttachDiskButton.png| image:: /_static/images/attach-disk-icon.png
@@ -1118,3 +1119,5 @@ Based on the selected Object Store, you can specify additional details like quot
    :alt: Volume metrics   
 .. |volume-from-snap.png| image:: /_static/images/volume-from-snap.png
    :alt: Offering is needed when creating a volume from the ROOT Volume Snapshot.
+.. |Createbucket.png| image:: /_static/images/add-bucket.png
+   :alt: Create Bucket
