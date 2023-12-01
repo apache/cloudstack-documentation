@@ -29,9 +29,9 @@
    :alt: Add guest OS mapping button
 
 CloudStack provides administrators a good control to manage the guest operating systems for the
-virtual machines. CloudStack maintains the list of guest operating systems that are supported
+Instances. CloudStack maintains the list of guest operating systems that are supported
 by the hypervisors and also provides a way for operators or admins to add new guest OSs based on the need.
-For an operating system to be supported to CloudStack for the virtual machines, it has to be added in CloudStack
+For an operating system to be supported to CloudStack for the Instances, it has to be added in CloudStack
 and also need to have a mapping with the actual operating system name supported by hypervisor.
 
 Under "Configuration" section there are sub-sections for guest operating system.

@@ -18,8 +18,8 @@ User-Data and Meta-Data
 -----------------------
 
 Users can register userdata in CloudStack and refer the registered userdata while
-deploying or editing or reset userdata on a VM. The userdata content can also be
-directly provided while deploying the VM. Userdata content length can be up to 32kb.
+deploying or editing or reset userdata on an instance. The userdata content can also be
+directly provided while deploying the instance. Userdata content length can be up to 32kb.
 
 To register a new userdata:
 
@@ -71,7 +71,7 @@ If the variables in userdata content are of a predefined metadata like "public_h
 or "instance_id", then userdata parameters should not declare these variables. That is
 the reason in the above example "public_hostname" is not declared.
 
-There are three CloudStack APIs that can be used to provide user-data to VM:
+There are three CloudStack APIs that can be used to provide user-data to instance:
 deployVirtualMachine, updateVirtualMachine and resetUserDataForVirtualMachine.
 These APIs accepts parameters ``userdataid`` and ``userdatadetails``.
 userdatadetails is to specify the custom values for the variables which are declared
@@ -98,21 +98,21 @@ These APIs also support the parameter ``userdata=`` to provide the userdata cont
 directly. The value for this parameter must be a `base64 <https://www.base64encode.org/>`_-encoded
 multi-part MIME message. See further below for an example of what this should look like.
 
-The registered UserData can be linked to a template or ISO on registration/upload/editing
-using linkUserDataToTemplate API. The same API can be used to unlink the mapping of userdata and template.
+The registered UserData can be linked to a Template or ISO on registration/upload/editing
+using linkUserDataToTemplate API. The same API can be used to unlink the mapping of userdata and Template.
 
-While linking userData to a template/ISO userdata override policy has to be specified.
+While linking userData to a Template/ISO userdata override policy has to be specified.
 Following are the override policies available: 
 
-Allow Override: Allow users to override UserData for the template during VM deployment or on reset.
+Allow Override: Allow users to override UserData for the Template during instance deployment or on reset.
                 This is the default override policy if not specified 
 
-Deny Override: Override of UserData isn’t allowed during VM deployment or on reset. 
+Deny Override: Override of UserData isn’t allowed during instance deployment or on reset.
 
 Append Only: Don’t allow users to override linked UserData but allow users to pass userdata content 
-             or ID that should be appended to the linked UserData of the template. When the users pass userdata it is appended to the template userdata in the form of a multipart MIME message
+             or ID that should be appended to the linked UserData of the Template. When the users pass userdata it is appended to the Template userdata in the form of a multipart MIME message
 
-This is how it looks like in template/ISO register/upload/edit forms.
+This is how it looks like in Template/ISO register/upload/edit forms.
 
 .. image:: /_static/images/userdata_template_link.png
    :width: 400px
@@ -129,7 +129,7 @@ HTTP GET parameters are limited to a length of 2048 bytes, but it is possible
 to store larger user-data blobs by sending them in the body via HTTP POST
 instead of GET.
 
-From inside the VM, the user-data is accessible via the virtual router,
+From inside the instance, the user-data is accessible via the virtual router,
 if the UserData service is enabled on the network offering.
 
 If you are using the DNS service of the virtual router, a special hostname
@@ -137,31 +137,31 @@ called `data-server.` is provided, that will point to a valid user-data server.
 
 Otherwise you have to determine the virtual router address via other means,
 such as DHCP leases. Be careful to scan all routers if you have multiple
-networks attached to a VM, in case not all of them have the UserData service
+networks attached to an instance, in case not all of them have the UserData service
 enabled.
 
 User-data is available from the URL ``http://data-server./latest/user-data``
 and can be fetched via curl or other HTTP client.
 
-It is also possible to fetch VM metadata from the same service, via the URL
+It is also possible to fetch instance metadata from the same service, via the URL
 ``http://data-server./latest/{metadata type}``.  For backwards compatibility,
 the previous URL ``http://data-server./latest/{metadata type}`` is also supported.
 
 For metadata type, use one of the following:
 
--  ``service-offering``. A description of the VMs service offering
+-  ``service-offering``. A description of the instances service offering
 
 -  ``availability-zone``. The Zone name
 
--  ``local-ipv4``. The guest IP of the VM
+-  ``local-ipv4``. The guest IP of the instance
 
--  ``local-hostname``. The hostname of the VM
+-  ``local-hostname``. The hostname of the instance
 
 -  ``public-ipv4``. The first public IP for the router.
 
 -  ``public-hostname``. This is the same as public-ipv4
 
--  ``instance-id``. The instance name of the VM
+-  ``instance-id``. The instance name of the instance
 
 
 Determining the virtual router address without DNS
@@ -186,7 +186,7 @@ possible to determine the user-data server from a DHCP lease.
 Fetching user-data via the API
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-User-data is not included with the normal VM state for historic reasons.
+User-data is not included with the normal instance state for historic reasons.
 To read out the base64-encoded user-data via the API, use the `getVirtualMachineUserData <https://cloudstack.apache.org/docs/api/apidocs-4.14/user/getVirtualMachineUserData.html>`_
 API call:
 
@@ -199,11 +199,11 @@ Using cloud-init
 ~~~~~~~~~~~~~~~~
 
 `cloud-init <https://cloudinit.readthedocs.org/en/latest>`_ can be used to access
-and interpret user-data inside virtual machines. If you install cloud-init into your
-VM templates, it will allow you to store SSH keys and user passwords on each new
-VM deployment automatically (:ref:`adding-password-management-to-templates` and `using ssh keys <virtual_machines.html#using-ssh-keys-for-authentication>`_).
+and interpret user-data inside Instances. If you install cloud-init into your
+Instance Templates, it will allow you to store SSH keys and user passwords on each new
+Instance deployment automatically (:ref:`adding-password-management-to-templates` and `using ssh keys <virtual_machines.html#using-ssh-keys-for-authentication>`_).
 
-#. Install cloud-init package into a VM template:
+#. Install cloud-init package into an Instance Template:
 
    .. code:: bash
 
@@ -211,7 +211,7 @@ VM deployment automatically (:ref:`adding-password-management-to-templates` and 
         or
       $ sudo apt-get install cloud-init
 
-#. Create a datasource configuration file in the VM template: ``/etc/cloud/cloud.cfg.d/99_cloudstack.cfg``
+#. Create a datasource configuration file in the Instance Template: ``/etc/cloud/cloud.cfg.d/99_cloudstack.cfg``
 
    .. code:: yaml
 
@@ -248,7 +248,7 @@ This example uses cloud-init to automatically update all OS packages on the firs
       package_upgrade: true
       EOF
    
-#. Deploy a VM with this user-data either by providing the UUID of the registerd userdata
+#. Deploy an instance with this user-data either by providing the UUID of the registerd userdata
    or by providing base64 encoded userdata:
 
    .. code:: bash

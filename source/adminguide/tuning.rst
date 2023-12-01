@@ -111,32 +111,32 @@ The value of 'database.server.stats.retention' can be changed to tweak
 the number of values that are maintained.
 
 
-Set and Monitor Total VM Limits per Host
-----------------------------------------
+Set and Monitor Total Instance Limits per Host
+----------------------------------------------
 
-The CloudStack administrator should monitor the total number of VM
-instances in each cluster, and disable allocation to the cluster if the
+The CloudStack administrator should monitor the total number of
+Instances in each cluster and disable allocation to the cluster if the
 total is approaching the maximum that the hypervisor can handle. Be sure
 to leave a safety margin to allow for the possibility of one or more
-hosts failing, which would increase the VM load on the other hosts as
-the VMs are automatically redeployed. Consult the documentation for your
-chosen hypervisor to find the maximum permitted number of VMs per host,
+hosts failing, which would increase the Instance load on the other hosts as
+the Instances are automatically redeployed. Consult the documentation for your
+chosen hypervisor to find the maximum permitted number of Instances per host,
 then use CloudStack global configuration settings to set this as the
-default limit. Monitor the VM activity in each cluster at all times.
-Keep the total number of VMs below a safe level that allows for the
+default limit. Monitor the Instance activity in each cluster at all times.
+Keep the total number of Instances below a safe level that allows for the
 occasional host failure. For example, if there are N hosts in the
 cluster, and you want to allow for one host in the cluster to be down at
-any given time, the total number of VM instances you can permit in the
+any given time, the total number of Instances you can permit in the
 cluster is at most (N-1) \* (per-host-limit). Once a cluster reaches
-this number of VMs, use the CloudStack UI to disable allocation of more
-VMs to the cluster.
+this number of Instances, use the CloudStack UI to disable allocation of more
+Instances to the cluster.
 
 
 Configure XenServer dom0 Memory
 -------------------------------
 
 Configure the XenServer dom0 settings to allocate more memory to dom0.
-This can enable XenServer to handle larger numbers of virtual machines.
+This can enable XenServer to handle larger numbers of Instances.
 We recommend 2940 MB of RAM for XenServer dom0. For instructions on how
 to do this, see `Citrix Knowledgebase
 Article <http://support.citrix.com/article/CTX126531>`_.The article

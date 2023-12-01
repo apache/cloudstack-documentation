@@ -31,14 +31,14 @@ Introduction to the OVS Plugin
 
 The OVS plugin is the native SDN
 implementations in CloudStack, using GRE isolation method. The plugin can be
-used by CloudStack to implement isolated guest networks and to provide
+used by CloudStack to implement isolated guest Networks and to provide
 additional services like NAT, port forwarding and load balancing.
 
 
 Features of the OVS Plugin
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following table lists the CloudStack network services provided by
+The following table lists the CloudStack Network services provided by
 the OVS Plugin.
 
 .. cssclass:: table-striped table-bordered table-hover
@@ -101,8 +101,8 @@ KVM hypervisor:
 Zone Configuration
 ~~~~~~~~~~~~~~~~~~
 
-CloudStack needs to have at least one physical network with the isolation
-method set to “GRE”. This network should be enabled for the Guest
+CloudStack needs to have at least one physical Network with the isolation
+method set to “GRE”. This Network should be enabled for the Guest
 traffic type.
 
 .. note::
@@ -118,7 +118,7 @@ traffic type.
 
 .. figure:: /_static/images/ovs-physical-network-gre.png
    :align: center
-   :alt: a screenshot of a physical network with the GRE isolation type
+   :alt: a screenshot of a physical Network with the GRE isolation type
 
 
 Agent Configuration
@@ -127,7 +127,7 @@ Agent Configuration
 .. note::
    Only for KVM hypervisor
 
--  Configure network interfaces:
+-  Configure Network interfaces:
 
    ::
 
@@ -187,7 +187,7 @@ Enabling the service provider
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The OVS provider is disabled by default. Navigate to the "Network
-Service Providers" configuration of the physical network with the GRE
+Service Providers" configuration of the physical Network with the GRE
 isolation type. Navigate to the OVS provider and press the
 "Enable Provider" button.
 
@@ -199,7 +199,7 @@ isolation type. Navigate to the OVS provider and press the
 Network Offerings
 ~~~~~~~~~~~~~~~~~
 
-Using the OVS plugin requires a network offering with Virtual
+Using the OVS plugin requires a Network offering with Virtual
 Networking enabled and configured to use the OVS element. Typical
 use cases combine services from the Virtual Router appliance and the
 OVS plugin.
@@ -230,20 +230,20 @@ OVS plugin.
 | Virtual Networking   | OVS             |
 +----------------------+-----------------+
 
-Table: Isolated network offering with regular services from the Virtual
+Table: Isolated Network offering with regular services from the Virtual
 Router.
 
 .. figure:: /_static/images/ovs-network-offering.png
    :align: center
-   :alt: a screenshot of a network offering.
+   :alt: a screenshot of a Network offering.
 
 
 .. note::
-   The tag in the network offering should be set to the name of the
-   physical network with the OVS provider.
+   The tag in the Network offering should be set to the name of the
+   physical Network with the OVS provider.
 
-Isolated network with network services. The virtual router is still
-required to provide network services like dns and dhcp.
+Isolated Network with Network services. The virtual router is still
+required to provide Network services like dns and dhcp.
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -267,7 +267,7 @@ required to provide network services like dns and dhcp.
 | Virtual Networking   | OVS             |
 +----------------------+-----------------+
 
-Table: Isolated network offering with network services
+Table: Isolated Network offering with Network services
 
 
 Using the OVS plugin with VPC
@@ -301,16 +301,16 @@ When the host agent connects to the management server, it sends the list of host
 
       list hosts id=HOST_ID filter=capabilities
 
-Additional VM configurations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In order to enable DPDK on VM deployments, users should pass addition configuration to VMs. The required configurations are listed on the next section. Administrators can allow users to pass additional configurations to their VMs by the account scoped setting:
+Additional Instance configurations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In order to enable DPDK on Instance deployments, users should pass addition configuration to Instances. The required configurations are listed on the next section. Administrators can allow users to pass additional configurations to their Instances by the Account scoped setting:
 
 ::
 
       enable.additional.vm.configuration
 
 Users are able to pass extra configurations as part of the 'deployVirtualMachine' or 'updateVirtualMachine' API methods.
-These extra configurations are included on the resulting XML domain of the virtual machine and are also persisted on CloudStack database as details on the 'user_vm_details' table.
+These extra configurations are included on the resulting XML domain of the Instance and are also persisted on CloudStack database as details on the 'user_vm_details' table.
 
 The 'deployVirtualMachine' and 'updateVirtualMachine' API methods accept a URL UTF-8 string encoded parameter 'extraconfig'.
 
@@ -319,11 +319,11 @@ Parameter is decoded following these rules:
 - There could be multiple XML sections, separated by a new line
 - Each section can be named, setting a title ending on ':' at the first line
 - Double quotes instead of single quotes should be used
-- Configurations are persisted as VM details, with the key: 'extraconfig-TITLE' or 'extraconfig-N' where N is a number.
+- Configurations are persisted as Instance details, with the key: 'extraconfig-TITLE' or 'extraconfig-N' where N is a number.
 
 Example:
 
-In order to pass the below extra configuration to the VM, named 'config-1'
+In order to pass the below extra configuration to the Instance, named 'config-1'
 
 ::
 
@@ -341,11 +341,11 @@ The 'extraconfig' parameter should receive the UTF-8 URL encoded string:
 On 'user_vm_details' table the additional configuration is persisted with key: 'extraconfig-config-1'
 
 
-Additional configurations to enable DPDK on VMs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To enable DPDK on VM deployments:
+Additional configurations to enable DPDK on Instances
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+To enable DPDK on Instance deployments:
 
--  Set the global configuration to 'true' (as global setting or account setting)
+-  Set the global configuration to 'true' (as global setting or Account setting)
 
    ::
 
@@ -374,7 +374,7 @@ To enable DPDK on VM deployments:
 
       deployVirtualMachine extraconfig=dpdk-hugepages%3A%0A%3CmemoryBacking%3E%0A%20%20%20%3Chugepages%3E%0A%20%20%20%20%3C%2Fhugepages%3E%0A%3C%2FmemoryBacking%3E%0A%0Adpdk-numa%3A%0A%3Ccpu%20mode%3D%22host-passthrough%22%3E%0A%20%20%20%3Cnuma%3E%0A%20%20%20%20%20%20%20%3Ccell%20id%3D%220%22%20cpus%3D%220%22%20memory%3D%229437184%22%20unit%3D%22KiB%22%20memAccess%3D%22shared%22%2F%3E%0A%20%20%20%3C%2Fnuma%3E%0A%3C%2Fcpu%3E%0A
 
-- Additionally, users can pass extra configuration named 'dpdk-interface-TAG' to be included on VMs interfaces definition. Example below:
+- Additionally, users can pass extra configuration named 'dpdk-interface-TAG' to be included on Instances interfaces definition. Example below:
 
    ::
 
@@ -398,7 +398,7 @@ The vHost user mode describes a client/server model between Openvswitch along wi
 Applying additional configurations via service offerings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It is possible to avoid passing additional configuration on each VM deployment, but setting these configurations on a service offering, and those are passed to the VM.
+It is possible to avoid passing additional configuration on each Instance deployment, but setting these configurations on a service offering, and those are passed to the Instance.
 
 - To create a service offering with additional configurations, pass each key/value pair as service offering details on service offering creation, with keys starting with the "extraconfig" keyword, and each value an URL UTF-8 encoded string.
 - Additional configurations are stored as service offering details
@@ -409,46 +409,46 @@ For example, applying DPDK additional configurations via service offering:
 
    create serviceoffering name=<NAME> displaytext=<NAME> serviceofferingdetails[0].key=extraconfig-dpdk-hugepages serviceofferingdetails[0].value=%3CmemoryBacking%3E%20%3Chugepages%2F%3E%20%3C%2FmemoryBacking%3E serviceofferingdetails[1].key=extraconfig-dpdk-numa serviceofferingdetails[1].value=%3Ccpu%20mode%3D%22host-passthrough%22%3E%20%3Cnuma%3E%20%3Ccell%20id%3D%220%22%20cpus%3D%220%22%20memory%3D%229437184%22%20unit%3D%22KiB%22%20memAccess%3D%22shared%22%2F%3E%20%3C%2Fnuma%3E%20%3C%2Fcpu%3E
 
-The preferred DPDK vHost User Mode must be passed as a service offering detail, with special key name: "DPDK-VHOSTUSER". Possible values are: "client" or "server". The following table illustrates the expected behaviour on DPDK ports and VM guest interfaces.
+The preferred DPDK vHost User Mode must be passed as a service offering detail, with special key name: "DPDK-VHOSTUSER". Possible values are: "client" or "server". The following table illustrates the expected behaviour on DPDK ports and Instance guest interfaces.
 
 By default, the server mode is assumed if it is not passed as a service offering detail.
 
-+----------------------+------------------------+-------------------------+
-| DPDK vHost User Mode | OVS port creation type | VM guest interface mode |
-+======================+========================+=========================+
-| server               | dpdkvhostuser          |           client        |
-+----------------------+------------------------+-------------------------+
-| client               | dpdkvhostuserclient    |           server        |
-+----------------------+------------------------+-------------------------+
++----------------------+------------------------+-------------------------------+
+| DPDK vHost User Mode | OVS port creation type | Instance guest interface mode |
++======================+========================+===============================+
+| server               | dpdkvhostuser          |           client              |
++----------------------+------------------------+-------------------------------+
+| client               | dpdkvhostuserclient    |           server              |
++----------------------+------------------------+-------------------------------+
 
 ::
 
    create serviceoffering name=<NAME> displaytext=<NAME> serviceofferingdetails[0].key=DPDK-VHOSTUSER serviceofferingdetails[0].value=client serviceofferingdetails[1].key=extraconfig-dpdk-hugepages serviceofferingdetails[1].value=%3CmemoryBacking%3E%20%3Chugepages%2F%3E%20%3C%2FmemoryBacking%3E serviceofferingdetails[2].key=extraconfig-dpdk-numa serviceofferingdetails[2].value=%3Ccpu%20mode%3D%22host-passthrough%22%3E%20%3Cnuma%3E%20%3Ccell%20id%3D%220%22%20cpus%3D%220%22%20memory%3D%229437184%22%20unit%3D%22KiB%22%20memAccess%3D%22shared%22%2F%3E%20%3C%2Fnuma%3E%20%3C%2Fcpu%3E
 
-DPDK VMs live migrations
-~~~~~~~~~~~~~~~~~~~~~~~~
-It is possible to perform live migrations of DPDK enabled VMs since CloudStack version 4.13. DPDK enabled VMs can be migrated between hosts in the same cluster which are both DPDK enabled.
+DPDK Instances live migrations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+It is possible to perform live migrations of DPDK enabled Instances since CloudStack version 4.13. DPDK enabled Instances can be migrated between hosts in the same cluster which are both DPDK enabled.
 
-CloudStack determinates that a VM is a DPDK enabled VM when the following conditions are met:
+CloudStack determines that an Instance is a DPDK enabled VM when the following conditions are met:
 
-- The VM is a user VM
-- The VM state is Running
-- The host in which the VM is running is a DPDK enabled host (i.e. host contains the 'dpdk' capability as part of its capabilities. Check `Agent configuration for DPDK support`_.)
-- The VM acquires the DPDK required configurations via VM details or service offering details. DPDK required additional configurations are additional configurations with name:
+- The Instance is a user Instance
+- The Instance state is Running
+- The host in which the Instance is running is a DPDK enabled host (i.e. host contains the 'dpdk' capability as part of its capabilities. Check `Agent configuration for DPDK support`_.)
+- The Instance acquires the DPDK required configurations via Instance details or service offering details. DPDK required additional configurations are additional configurations with name:
    - 'extraconfig-dpdk-numa'
    - 'extraconfig-dpdk-hugepages'
 
-DPDK enabled VMs can only be migrated between DPDK enabled hosts. Therefore the 'findHostsForMigration' API method excludes non-DPDK enabled hosts from the list of suitable hosts to migrate DPDK enabled VMs.
+DPDK enabled Instances can only be migrated between DPDK enabled hosts. Therefore the 'findHostsForMigration' API method excludes non-DPDK enabled hosts from the list of suitable hosts to migrate DPDK enabled Instances.
 
 DPDK ports
 ~~~~~~~~~~
-When VM is created or started, CloudStack creates ports with DPDK support with format: "csdpdk-N" where N is a number, incremented on new ports creation. This port is set into the 'source' property of the 'interface' tag on the XML domain of the VM, prepended by the value of the OVS path set on the property:
+When an Instance is created or started, CloudStack creates ports with DPDK support with format: "csdpdk-N" where N is a number, incremented on new ports creation. This port is set into the 'source' property of the 'interface' tag on the XML domain of the Instance, prepended by the value of the OVS path set on the property:
 
 ::
 
       openvswitch.dpdk.ovs.path=OVS_PATH
 
-That would set interfaces to type 'vhostuser' and reference the ports created in the XML domain of the VMs as:
+That would set interfaces to type 'vhostuser' and reference the ports created in the XML domain of the Instances as:
 
 ::
 

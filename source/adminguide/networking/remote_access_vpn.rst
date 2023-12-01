@@ -19,8 +19,8 @@
 Remote Access VPN
 -----------------
 
-CloudStack account owners can create virtual private networks (VPN) to
-access their virtual machines. If the guest network is instantiated from
+CloudStack Account owners can create virtual private networks (VPN) to
+access their Instances. If the guest network is instantiated from
 a network offering that offers the Remote Access VPN service, the
 virtual router (based on the System VM) is used to provide the service.
 CloudStack provides a L2TP-over-IPsec-based remote access VPN service to
@@ -96,7 +96,7 @@ Configuring Remote Access VPN in VPC
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 On enabling Remote Access VPN on a VPC, any VPN client present outside
-the VPC can access VMs present in the VPC by using the Remote VPN
+the VPC can access instances present in the VPC by using the Remote VPN
 connection. The VPN client can be present anywhere except inside the VPC
 on which the user enabled the Remote Access VPN service.
 
@@ -113,7 +113,7 @@ To enable VPN for a VPC:
 
 #. Click the Configure button of the VPC.
 
-   For each tier, the following options are displayed:
+   For each Network Tier, the following options are displayed:
 
    -  Internal LB
 
@@ -121,7 +121,7 @@ To enable VPN for a VPC:
 
    -  Static NAT
 
-   -  Virtual Machines
+   -  Instances
 
    -  CIDR
 

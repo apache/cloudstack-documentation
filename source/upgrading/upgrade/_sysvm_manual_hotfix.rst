@@ -13,7 +13,7 @@
    specific language governing permissions and limitations
    under the License.
 
-.. sub-section optinaly included in upgrade notes.
+.. sub-section optionally included in upgrade notes.
 
 .. Add following to file when including this manual hotfix
    .. _manual_hofix:
@@ -26,13 +26,13 @@
 
 Some manual steps are required to upgrade of SystemVMs and Virtual Routers.
 
-Following MySQL commands will update the template ID used by Console Proxy VMs (CPVM)
-and Secondary Storage VMs (SSVM). It will also change the default template for
-Virtual Router to *systemvm-<hypervisor>-4.4* templates.
+Following MySQL commands will update the Template ID used by Console Proxy VMs (CPVM)
+and Secondary Storage VMs (SSVM). It will also change the default Template for
+Virtual Router to *systemvm-<hypervisor>-4.4* Templates.
 
 
-XenServer SystemVMs
-^^^^^^^^^^^^^^^^^^^
+XenServer System VMs
+^^^^^^^^^^^^^^^^^^^^
 
    Execute following MySQL queries in MySQL. 
    Please note ``<ID FROM COMMAND #1>`` from the first command
@@ -43,7 +43,7 @@ XenServer SystemVMs
 
          mysql -h localhost -u root -p cloud
 
-   #. get the id of the new template:
+   #. Get the id of the new Template:
 
       .. code-block:: mysql
 
@@ -71,7 +71,7 @@ KVM SystemVMs
 
          mysql -h localhost -u root -p cloud
 
-   #. get the id of the new template:
+   #. Get the id of the new Template:
 
       .. code-block:: mysql   
 
@@ -99,7 +99,7 @@ VMware SystemVMs
 
          mysql -h localhost -u root -p cloud
 
-   #. get the id of the new template:
+   #. Get the id of the new Template:
 
       .. code-block:: mysql   
 

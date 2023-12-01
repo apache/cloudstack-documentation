@@ -169,8 +169,8 @@ MySQL. See :ref:`install-database-on-separate-node`.
 #. Set up the database.
 
    The cloudstack-setup-databases script is used for creating the cloudstack
-   databases (cloud, cloud_usage), creating a user (cloud), granting permissions
-   to the user and preparing the tables for the first startup of the management
+   databases (cloud, cloud_usage), creating a User (cloud), granting permissions
+   to the User and preparing the tables for the first startup of the management
    server.
 
    The following command creates the "cloud" user on the database.
@@ -190,15 +190,15 @@ MySQL. See :ref:`install-database-on-separate-node`.
 
    -  In deploy-as, specify the username and password of the user
       deploying the database. In the following command, it is assumed
-      the root user is deploying the database and creating the "cloud"
-      user.
+      the root User is deploying the database and creating the "cloud"
+      User.
 
    -  (Optional) There is an option to bypass the creating of the databases,
-      user and granting permissions to the user. This is useful if you don't
+      User and granting permissions to the user. This is useful if you don't
       want to expose your root credentials but still want the database to
       be prepared for first start up. These skipped steps will have had to be
       done manually prior to executing this script. This behaviour can be
-      envoked by passing the --schema-only flag. This flag conflicts with the
+      invoked by passing the --schema-only flag. This flag conflicts with the
       --deploy-as flag so the two cannot be used together. To set up the
       databases and user manually before executing the script with the flag,
       these commands can be executed:
@@ -391,7 +391,7 @@ same node for MySQL. See `â€œInstall the Database on the Management Server Nodeâ
    .. warning::
       On CentOS 8 / SUSE, firewalld is the default firewall manager and controls iptables. It is
       recommended that it be disabled ``systemctl stop firewalld ; systemctl disable firewalld``,
-      since CloudStack directly manipulates the iptable rules to manage networks.
+      since CloudStack directly manipulates the iptable rules to manage Networks.
 
    .. warning::
       On SUSE, iptables are not persisted on reboot, so it is recommended that iptables and

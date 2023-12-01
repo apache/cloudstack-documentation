@@ -63,7 +63,7 @@ So let’s see something
 
 For this example we’re going to create an Ansible server which will then
 deploy a CloudStack server. Both of these servers will be CentOS 6.4
-virtual machines.
+Instances.
 
 
 Installing Ansible
@@ -234,7 +234,7 @@ the file will look like this:
 This needs to be saved as `/etc/ansible/roles/mysql/tasks/main.yml`
 
 As explained earlier, this playbook in fact describes the state of the
-host rather than setting out commands to be run. For instance, we
+host rather than setting out commands to be run. For Instance, we
 specify certain lines which must be in the my.cnf file and allow Ansible
 to decide whether or not it needs to add them.
 
@@ -267,7 +267,7 @@ For the management server role we create a main.yml task like this:
      yum: name=libselinux-python state=present
 
 
-   - name: Ensure the Apache Cloudstack Repo file exists as per template
+   - name: Ensure the Apache Cloudstack Repo file exists as per Template
 
      template: src=cloudstack.repo.j2 dest=/etc/yum.repos.d/cloudstack.repo
 
@@ -294,9 +294,9 @@ For the management server role we create a main.yml task like this:
 
 Save this as `/etc/ansible/roles/cloudstack-management/tasks/main.yml`
 
-Now we have some new elements to deal with. The Ansible template module
+Now we have some new elements to deal with. The Ansible Template module
 uses Jinja2 based templating.  As we’re doing a simplified example here,
-the Jinja template for the cloudstack.repo won’t have any variables in
+the Jinja Template for the cloudstack.repo won’t have any variables in
 it, so it would simply look like this:
 
 ::
@@ -335,7 +335,7 @@ There are some more variables here for us to declare later.
 System VM Templates:
 --------------------
 
-Finally we would want to seed the system VM templates into the secondary
+Finally we would want to seed the system VM Templates into the secondary
 storage.  The playbook for this would look as follows:
 
 ::
@@ -362,7 +362,7 @@ storage.  The playbook for this would look as follows:
 Save this as `/etc/ansible/roles/cloudstack-manager/tasks/seedstorage.yml`
 
 Again, there isn’t a CloudStack module so Ansible will always run this
-even if the secondary storage already has the templates in it.
+even if the secondary storage already has the Templates in it.
 
  
 Bringing it all together

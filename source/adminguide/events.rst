@@ -50,8 +50,8 @@ notification is achieved by implementing the concept of event bus
 abstraction in the Management Server.
 
 A new event for state change, resource state change, is introduced as
-part of Event notification framework. Every resource, such as user VM,
-volume, NIC, network, public IP, snapshot, and template, is associated
+part of Event notification framework. Every resource, such as user Instance,
+volume, NIC, network, public IP, Snapshot, and Template, is associated
 with a state machine and generates events as part of the state change.
 That implies that a change in the state of a resource results in a state
 change event, and the event is published in the corresponding state
@@ -113,11 +113,11 @@ changes can control the behaviour.
 
    -  port : The port on which RabbitMQ server is running.
 
-   -  username : The username associated with the account to access the
+   -  username : The username associated with the Account to access the
       RabbitMQ server.
 
    -  password : The password associated with the username of the
-      account to access the RabbitMQ server.
+      Account to access the RabbitMQ server.
 
    -  exchange : The exchange name on the RabbitMQ server where
       CloudStack events are published.
@@ -251,10 +251,10 @@ The events log records three types of standard events.
 
 -  WARN. This event is generated in the following circumstances.
 
-   -  When a network is disconnected while monitoring a template
+   -  When a network is disconnected while monitoring a Template
       download.
 
-   -  When a template download is abandoned.
+   -  When a Template download is abandoned.
 
    -  When an issue on the storage server causes the volumes to fail
       over to the mirror storage server.
@@ -273,10 +273,10 @@ The events log records three types of standard events.
 
 -  WARN. This event is generated in the following circumstances.
 
-   -  When a network is disconnected while monitoring a template
+   -  When a network is disconnected while monitoring a Template
       download.
 
-   -  When a template download is abandoned.
+   -  When a Template download is abandoned.
 
    -  When an issue on the storage server causes the volumes to fail
       over to the mirror storage server.
@@ -291,7 +291,7 @@ Event Log Queries
 Database logs can be queried from the user interface. The list of events
 captured by the system includes:
 
--  Virtual machine creation, deletion, and on-going management
+-  Instance creation, deletion, and on-going management
    operations
 
 -  Virtual router creation, deletion, and on-going management operations

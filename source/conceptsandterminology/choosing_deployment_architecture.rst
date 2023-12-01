@@ -27,20 +27,20 @@ Small-Scale Deployment
 
 |Small-Scale Deployment|
 
-This diagram illustrates the network architecture of a small-scale
+This diagram illustrates the Network architecture of a small-scale
 CloudStack deployment.
 
 -  A firewall provides a connection to the Internet. The firewall is
    configured in NAT mode. The firewall forwards HTTP requests and API
    calls from the Internet to the Management Server. The Management
-   Server resides on the management network.
+   Server resides on the Management Network.
 
 -  A layer-2 switch connects all physical servers and storage.
 
 -  A single NFS server functions as both the primary and secondary
    storage.
 
--  The Management Server is connected to the management network.
+-  The Management Server is connected to the Management Network.
 
 
 Large-Scale Redundant Setup
@@ -48,7 +48,7 @@ Large-Scale Redundant Setup
 
 |Large-Scale Redundant Setup|
 
-This diagram illustrates the network architecture of a large-scale
+This diagram illustrates the Network architecture of a large-scale
 CloudStack deployment.
 
 -  A layer-3 switching layer is at the core of the data center. A router
@@ -59,8 +59,8 @@ CloudStack deployment.
    mode. The firewalls provide the following functions:
 
    -  Forwards HTTP requests and API calls from the Internet to the
-      Management Server. The Management Server resides on the management
-      network.
+      Management Server. The Management Server resides on the Management
+      Network.
 
    -  When the cloud spans multiple zones, the firewalls should enable
       site-to-site VPN such that servers in different zones can directly
@@ -72,9 +72,9 @@ CloudStack deployment.
 
 -  The Management Server cluster (including front-end load balancers,
    Management Server nodes, and the MySQL database) is connected to the
-   management network through a pair of load balancers.
+   Management Network through a pair of load balancers.
 
--  Secondary storage servers are connected to the management network.
+-  Secondary storage servers are connected to the Management Network.
 
 -  Each pod contains storage and computing servers. Each storage and
    computing server should have redundant NICs connected to separate
@@ -85,10 +85,10 @@ Separate Storage Network
 ------------------------
 
 In the large-scale redundant setup described in the previous section,
-storage traffic can overload the management network. A separate storage
-network is optional for deployments. Storage protocols such as iSCSI are
-sensitive to network delays. A separate storage network ensures guest
-network traffic contention does not impact storage performance.
+storage traffic can overload the Management Network. A separate Storage
+Network is optional for deployments. Storage protocols such as iSCSI are
+sensitive to network delays. A separate Storage Network ensures Guest
+Network traffic contention does not impact storage performance.
 
 
 Multi-Node Management Server
@@ -127,19 +127,19 @@ Management Server installation in Data Center 2.
 
 |Separate Storage Network|
 
-This diagram illustrates a setup with a separate storage network. Each
+This diagram illustrates a setup with a separate Storage Network. Each
 server has four NICs, two connected to pod-level network switches and
-two connected to storage network switches.
+two connected to Storage Network switches.
 
-There are two ways to configure the storage network:
+There are two ways to configure the Storage Network:
 
 -  Bonded NIC and redundant switches can be deployed for NFS. In NFS
    deployments, redundant switches and bonded NICs still result in one
-   network (one CIDR block+ default gateway address).
+   Network (one CIDR block+ default gateway address).
 
--  iSCSI can take advantage of two separate storage networks (two CIDR
+-  iSCSI can take advantage of two separate Storage Networks (two CIDR
    blocks each with its own default gateway). Multipath iSCSI client can
-   failover and load balance between separate storage networks.
+   failover and load balance between separate Storage Networks.
 
 |NIC Bonding And Multipath I/O|
 
@@ -165,38 +165,38 @@ supported by CloudStack. The following table provides this information.
 
 .. cssclass:: table-striped table-bordered table-hover
 
-+-----------------------------------+-----------+----------+--------+-----+--------+-------+
-| Feature                           | XenServer | vSphere  | KVM -  | LXC | HyperV | Bare  |
-|                                   |           |          | RHEL   |     |        | Metal |
-+===================================+===========+==========+========+=====+========+=======+
-| Network Throttling                | Yes       | Yes      | Yes    | No  | ?      | N/A   |
-+-----------------------------------+-----------+----------+--------+-----+--------+-------+
-| Security groups in zones that use | Yes       | No       | Yes    | Yes | ?      | No    |
-| basic networking                  |           |          |        |     |        |       |
-+-----------------------------------+-----------+----------+--------+-----+--------+-------+
-| iSCSI                             | Yes       | Yes      | Yes    | Yes | Yes    | N/A   |
-+-----------------------------------+-----------+----------+--------+-----+--------+-------+
-| FibreChannel                      | Yes       | Yes      | Yes    | Yes | Yes    | N/A   |
-+-----------------------------------+-----------+----------+--------+-----+--------+-------+
-| Local Disk                        | Yes       | Yes      | Yes    | Yes | Yes    | Yes   |
-+-----------------------------------+-----------+----------+--------+-----+--------+-------+
-| HA                                | Yes       | Yes      | Yes    | ?   | Yes    | N/A   |
-|                                   |           | (Native) |        |     |        |       |
-+-----------------------------------+-----------+----------+--------+-----+--------+-------+
-| Snapshots of local disk           | Yes       | Yes      | Yes    | ?   | ?      | N/A   |
-+-----------------------------------+-----------+----------+--------+-----+--------+-------+
-| Local disk as data disk           | Yes       | No       | Yes    | Yes | Yes    | N/A   |
-+-----------------------------------+-----------+----------+--------+-----+--------+-------+
-| Work load balancing               | No        | DRS      | No     | No  | ?      | N/A   |
-+-----------------------------------+-----------+----------+--------+-----+--------+-------+
-| Manual live migration of VMs from | Yes       | Yes      | Yes    | ?   | Yes    | N/A   |
-| host to host                      |           |          |        |     |        |       |
-+-----------------------------------+-----------+----------+--------+-----+--------+-------+
-| Conserve management traffic IP    | Yes       | No       | Yes    | Yes | ?      | N/A   |
-| address by using link local       |           |          |        |     |        |       |
-| network to communicate with       |           |          |        |     |        |       |
-| virtual router                    |           |          |        |     |        |       |
-+-----------------------------------+-----------+----------+--------+-----+--------+-------+
++-----------------------------------------+-----------+----------+--------+-----+--------+-------+
+| Feature                                 | XenServer | vSphere  | KVM -  | LXC | HyperV | Bare  |
+|                                         |           |          | RHEL   |     |        | Metal |
++=========================================+===========+==========+========+=====+========+=======+
+| Network Throttling                      | Yes       | Yes      | Yes    | No  | ?      | N/A   |
++-----------------------------------------+-----------+----------+--------+-----+--------+-------+
+| Security groups in zones that use       | Yes       | No       | Yes    | Yes | ?      | No    |
+| basic networking                        |           |          |        |     |        |       |
++-----------------------------------------+-----------+----------+--------+-----+--------+-------+
+| iSCSI                                   | Yes       | Yes      | Yes    | Yes | Yes    | N/A   |
++-----------------------------------------+-----------+----------+--------+-----+--------+-------+
+| FibreChannel                            | Yes       | Yes      | Yes    | Yes | Yes    | N/A   |
++-----------------------------------------+-----------+----------+--------+-----+--------+-------+
+| Local Disk                              | Yes       | Yes      | Yes    | Yes | Yes    | Yes   |
++-----------------------------------------+-----------+----------+--------+-----+--------+-------+
+| HA                                      | Yes       | Yes      | Yes    | ?   | Yes    | N/A   |
+|                                         |           | (Native) |        |     |        |       |
++-----------------------------------------+-----------+----------+--------+-----+--------+-------+
+| Snapshots of local disk                 | Yes       | Yes      | Yes    | ?   | ?      | N/A   |
++-----------------------------------------+-----------+----------+--------+-----+--------+-------+
+| Local disk as data disk                 | Yes       | No       | Yes    | Yes | Yes    | N/A   |
++-----------------------------------------+-----------+----------+--------+-----+--------+-------+
+| Work load balancing                     | No        | DRS      | No     | No  | ?      | N/A   |
++-----------------------------------------+-----------+----------+--------+-----+--------+-------+
+| Manual live migration of Instances from | Yes       | Yes      | Yes    | ?   | Yes    | N/A   |
+| host to host                            |           |          |        |     |        |       |
++-----------------------------------------+-----------+----------+--------+-----+--------+-------+
+| Conserve management traffic IP          | Yes       | No       | Yes    | Yes | ?      | N/A   |
+| address by using link local             |           |          |        |     |        |       |
+| network to communicate with             |           |          |        |     |        |       |
+| virtual router                          |           |          |        |     |        |       |
++-----------------------------------------+-----------+----------+--------+-----+--------+-------+
 
 
 Hypervisor Support for Primary Storage
@@ -228,7 +228,7 @@ hypervisors.
 | SMB/CIFS                         | No          | No            | No             | No             | Yes    |
 +----------------------------------+-------------+---------------+----------------+----------------+--------+
 
-XenServer uses a clustered LVM system to store VM images on iSCSI and
+XenServer uses a clustered LVM system to store Instance images on iSCSI and
 Fiber Channel volumes and does not support over-provisioning in the
 hypervisor. The storage server itself, however, can support
 thin-provisioning. As a result the CloudStack can still support storage
@@ -311,7 +311,7 @@ Setup Best Practices
    reliability.
 
 -  10G networks are generally recommended for storage access when larger
-   servers that can support relatively more VMs are used.
+   servers that can support relatively more Instances are used.
 
 -  Host capacity should generally be modeled in terms of RAM for the
    guests. Storage and CPU may be overprovisioned. RAM may not. RAM is
@@ -319,7 +319,7 @@ Setup Best Practices
 
 -  (XenServer) Configure the XenServer dom0 settings to allocate more
    memory to dom0. This can enable XenServer to handle larger numbers of
-   virtual machines. We recommend 2940 MB of RAM for XenServer dom0. For
+   Instances. We recommend 2940 MB of RAM for XenServer dom0. For
    instructions on how to do this, see
    `http://support.citrix.com/article/CTX126531 
    <http://support.citrix.com/article/CTX126531>`_.
@@ -333,24 +333,24 @@ Maintenance Best Practices
 -  Monitor host disk space. Many host failures occur because the host's
    root disk fills up from logs that were not rotated adequately.
 
--  Monitor the total number of VM instances in each cluster, and disable
+-  Monitor the total number of Instances in each cluster, and disable
    allocation to the cluster if the total is approaching the maximum
    that the hypervisor can handle. Be sure to leave a safety margin to
    allow for the possibility of one or more hosts failing, which would
-   increase the VM load on the other hosts as the VMs are redeployed.
+   increase the Instance load on the other hosts as the Instances are redeployed.
    Consult the documentation for your chosen hypervisor to find the
-   maximum permitted number of VMs per host, then use CloudStack global
+   maximum permitted number of Instances per host, then use CloudStack global
    configuration settings to set this as the default limit. Monitor the
-   VM activity in each cluster and keep the total number of VMs below a
+   Instance activity in each cluster and keep the total number of Instances below a
    safe level that allows for the occasional host failure. For example,
    if there are N hosts in the cluster, and you want to allow for one
    host in the cluster to be down at any given time, the total number of
-   VM instances you can permit in the cluster is at most (N-1) \*
-   (per-host-limit). Once a cluster reaches this number of VMs, use the
+   Instances you can permit in the cluster is at most (N-1) \*
+   (per-host-limit). Once a cluster reaches this number of Instances, use the
    CloudStack UI to disable allocation to the cluster.
 
 .. warning::
-   The lack of up-do-date hotfixes can lead to data corruption and lost VMs.
+   The lack of up-do-date hotfixes can lead to data corruption and lost Instances.
 
 Be sure all the hotfixes provided by the hypervisor vendor are applied. Track 
 the release of hypervisor patches through your hypervisor vendor’s support 

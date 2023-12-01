@@ -15,25 +15,25 @@
 
 .. sub-section included in upgrade notes.
 
-System-VMs and Virtual-Routers
+System VMs and Virtual Routers
 ------------------------------
 
 From Apache CloudStack version 4.17.0 onward, there is support to live patch 
-system VMs, namely, SSVM, CPVM, Routers. Live patching provides support 
+System VMs, namely, SSVM, CPVM, Routers. Live patching provides support
 for zero-downtime upgrades, wherein, the System VM software is updated to the
 latest code version without having to destroy and recreate them / restart them.
 
-With this feature, users will have a choice wherein they can use the existing system VM template with the latest
+With this feature, users will have a choice wherein they can use the existing System VM Template with the latest
 software by using the live patch feature, or can follow the usual workflow of restarting the
-system VM to use the latest system VM template. Live Patching system VMs serves to be especially
-useful in cases when the code version has upgraded but the template hasn't. In such a scenario users
-will no longer need to restart the system VMs to use the latest code.
+system VM to use the latest System VM Template. Live Patching System VMs serves to be especially
+useful in cases when the code version has upgraded but the Template hasn't. In such a scenario users
+will no longer need to restart the System VMs to use the latest code.
 
-When one attempts to live-patch the system VMs, it pretty much mimics the patching process
-that happens when booting up the System VMs but without having to shut down the system VMs. 
+When one attempts to live-patch the System VMs, it pretty much mimics the patching process
+that happens when booting up the System VMs but without having to shut down the System VMs.
 This will update the software packages, which were previously bundled in the systemvm.iso i.e., 
 agent.zip and cloud-scripts.tgz and restart the services that are present in the /var/cache/cloud/enabled_svcs file
-in the system VMs.
+in the System VMs.
 
 .. note::
 
@@ -49,14 +49,14 @@ in the system VMs.
             | VRs                 | haproxy, apache2, dnsmasq     |
             +---------------------+-------------------------------+
 
-   With respect to VRs, a network restart without cleanup is initiated to during live patching to ensure all rules
+   With respect to VRs, a Network restart without cleanup is initiated to during live patching to ensure all rules
    are re-applied. 
 
-   **NOTE:** In cases where upgrading the system VM template is necessary due to availability of security patches
-   or updated packages in the template, or in case live-patch fails for systemvms and virtual routers due
-   to any issues or limitations (such as VPC networks without any network tiers) then please follow the
+   **NOTE:** In cases where upgrading the system VM Template is necessary due to availability of security patches
+   or updated packages in the Template, or in case live-patch fails for system VMs and virtual routers due
+   to any issues or limitations (such as VPC Networks without any Network tiers) then please follow the
    traditional method of upgrading system VMs and virtual routers by restarting or recreating the system VMs
-   and virtual routers (including restarting the network with/without cleanup as required), which could mean
+   and virtual routers (including restarting the Network with/without cleanup as required), which could mean
    some downtime.
    
 Following matrix lists the versions of CloudStack that support live patching.
@@ -75,7 +75,7 @@ Following matrix lists the versions of CloudStack that support live patching.
 In addition to the support for live patching, users still have the facility to follow the legacy workflow
 of restarting the system VMs once the packages on the management servers have been upgraded. Here you'll
 need to restart the system VMs in order for those VMs to be rebuilt 
-from the new system VM template version.
+from the new system VM Template version.
 
 .. note::
 
