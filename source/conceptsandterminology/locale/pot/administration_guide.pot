@@ -372,7 +372,7 @@ msgstr ""
 
 #: ../../administration_guide.rst:142
 # f13f9e8ecc4148f18b10202f85506f55
-msgid "Accessing System VMs over the network requires the use of private keys and connecting to System VMs SSH Daemon on port 3922. XenServer/KVM Hypervisors store this key at /root/.ssh/id_rsa.cloud on each CloudStack agent. To access System VMs running on ESXi, the key is stored on the management server at /var/lib/cloudstack/management/.ssh/id_rsa."
+msgid "Accessing System VMs over the network requires the use of private keys and connecting to System VMs SSH Daemon on port 3922. XenServer/KVM Hypervisors store this key at /root/.ssh/id_rsa.cloud on each CloudStack agent. To access System VMs running on ESXi, the key is stored on the management server at ~cloud/.ssh/id_rsa."
 msgstr ""
 
 #: ../../administration_guide.rst:144
@@ -397,7 +397,7 @@ msgstr ""
 
 #: ../../administration_guide.rst:156
 # dcc9b190ecda432bbde1662354d32bef
-msgid "Format: ssh -i <path-to-private-key> <vm-private-ip> -p 3922 Example: root@management:~# ssh -i /var/lib/cloudstack/management/.ssh/id_rsa 172.16.0.250 -p 3922"
+msgid "Format: ssh -i <path-to-private-key> <vm-private-ip> -p 3922 Example: root@management:~# ssh -i ~cloud/.ssh/id_rsa 172.16.0.250 -p 3922"
 msgstr ""
 
 #: ../../administration_guide.rst:160
