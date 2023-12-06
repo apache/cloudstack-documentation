@@ -26,7 +26,7 @@ Installing the Usage Server (Optional)
 
 You can optionally install the Usage Server once the Management Server
 is configured properly. The Usage Server takes data from the events in
-the system and enables usage-based billing for accounts.
+the system and enables usage-based billing for Accounts.
 
 When multiple Management Servers are present, the Usage Server may be
 installed on any number of them. The Usage Servers will coordinate usage
@@ -62,7 +62,7 @@ Steps to Install the Usage Server
 
    .. parsed-literal::
       
-      # apt-get install cloudstack-usage
+      # apt install cloudstack-usage
 
 #. Once installed, start the Usage Server with the following command.
 
@@ -158,9 +158,9 @@ steps are a guide to implementing MySQL replication.
 
       # service mysql restart
 
-#. Create a replication account on the source server and give it privileges. We
+#. Create a replication Account on the source server and give it privileges. We
    will use the "cloud-repl" user with the password "password". This
-   assumes that source and replica run on the 172.16.1.0/24 network.
+   assumes that source and replica run on the 172.16.1.0/24 Network.
 
    .. sourcecode: bash
    .. parsed-literal::
@@ -186,7 +186,7 @@ steps are a guide to implementing MySQL replication.
       | mysql-bin.000001 |      412 |              |                  |
       +------------------+----------+--------------+------------------+
 
-#. Note the file and the position that are returned by your instance.
+#. Note the file and the position that are returned by your Instance.
 
 #. Exit from this session.
 
@@ -287,7 +287,7 @@ Amazon Web Services Compatible Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 CloudStack can translate Amazon Web Services (AWS) API calls to native
-CloudStack API calls so that users can continue using existing
+CloudStack API calls so that Users can continue using existing
 AWS-compatible tools. This translation service runs as a separate web
 application in the same tomcat server as the management server of
 CloudStack, listening on a different port. The Amazon Web Services (AWS)
@@ -314,7 +314,7 @@ Limitations
 -  Features such as Elastic IP (EIP) and Elastic Load Balancing (ELB)
    are only available in an infrastructure with a Citrix NetScaler
    device. Users accessing a Zone with a NetScaler device will need to
-   use a NetScaler-enabled network offering (DefaultSharedNetscalerEIP
+   use a NetScaler-enabled Network offering (DefaultSharedNetscalerEIP
    and ELBNetworkOffering).
 
 
@@ -371,7 +371,7 @@ You do not have to enable both at the same time. Enable the ones you
 need. This can be done via the CloudStack GUI by going in *Global
 Settings* or via the API.
 
-The snapshot below shows you how to use the GUI to enable these services
+The Snapshot below shows you how to use the GUI to enable these services
 
 |Use the GUI to set the configuration variable to true|
 
@@ -397,7 +397,7 @@ types <http://aws.amazon.com/ec2/instance-types/>`_ API names (e.g
 m1.small,m1.large). This can be done via the CloudStack GUI. Go under
 *Service Offerings* select *Compute offering* and either create a new
 compute offering or modify an existing one, ensuring that the name
-matches an EC2 instance type API name. The snapshot below shows you how:
+matches an EC2 instance type API name. The Snapshot below shows you how:
 
 |Use the GUI to set the name of a compute service offering to an EC2
 instance type API name.|
@@ -427,16 +427,16 @@ and if need be update the port.
 AWS API User Setup
 ~~~~~~~~~~~~~~~~~~
 
-In general, users need not be aware that they are using a translation
+In general, Users need not be aware that they are using a translation
 service provided by CloudStack. They only need to send AWS API calls to
 CloudStack's endpoint, and it will translate the calls to the native
 CloudStack API. Users of the Amazon EC2 compatible interface will be
 able to keep their existing EC2 tools and scripts and use them with
 their CloudStack deployment, by specifying the endpoint of the
-management server and using the proper user credentials. In order to do
-this, each user must perform the following configuration steps:
+management server and using the proper User credentials. In order to do
+this, each User must perform the following configuration steps:
 
--  Generate user credentials.
+-  Generate User credentials.
 
 -  Register with the service.
 
@@ -447,7 +447,7 @@ this, each user must perform the following configuration steps:
 AWS API Command-Line Tools Setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To use the EC2 command-line tools, the user must perform these steps:
+To use the EC2 command-line tools, the User must perform these steps:
 
 #. Be sure you have the right version of EC2 Tools. The supported
    version is available at

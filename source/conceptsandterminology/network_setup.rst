@@ -287,7 +287,7 @@ External Guest Firewall Integration for Juniper SRX (Optional)
 
 CloudStack provides for direct management of the Juniper SRX series of
 firewalls. This enables CloudStack to establish static NAT mappings from
-public IPs to guest VMs, and to use the Juniper device in place of the
+public IPs to Guest Instances, and to use the Juniper device in place of the
 virtual router for firewall services. You can have one or more Juniper
 SRX per zone. This feature is optional. If Juniper integration is not
 provisioned, CloudStack will use the virtual router for these services.
@@ -482,9 +482,9 @@ Guidelines
 -  Use the public IP address range from a single subnet. You cannot add
    IP addresses from different subnets.
 
--  Only one ASA instance per VLAN is allowed because multiple VLANS
+-  Only one ASA Instance per VLAN is allowed because multiple VLANS
    cannot be trunked to ASA ports. Therefore, you can use only one ASA
-   instance in a guest network.
+   Instance in a guest network.
 
 -  Only one Cisco VNMC per zone is allowed.
 
@@ -538,7 +538,7 @@ Prerequisites
    Typically, you create a pool of ASA 1000v appliances and register
    them with CloudStack.
 
-   Specify the following while setting up a Cisco ASA 1000v instance:
+   Specify the following while setting up a Cisco ASA 1000v Instance:
 
    -  VNMC host IP.
 
@@ -558,7 +558,7 @@ Prerequisites
 
 #. Register Cisco ASA 1000v with VNMC.
 
-   After Cisco ASA 1000v instance is powered on, register VNMC from the
+   After Cisco ASA 1000v Instance is powered on, register VNMC from the
    ASA console.
 
 
@@ -569,11 +569,11 @@ Using Cisco ASA 1000v Services
 
    See `“Prerequisites” <#prerequisites>`_.
 
-#. Add a VNMC instance.
+#. Add a VNMC Instance.
 
    See `“Adding a VNMC Instance” <#adding-a-vnmc-instance>`_.
 
-#. Add a ASA 1000v instance.
+#. Add a ASA 1000v Instance.
 
    See :ref:`adding-an-asa-1000v-instance`.
 
@@ -610,9 +610,9 @@ Adding a VNMC Instance
 
 #. Click the Add VNMC Device and provide the following:
 
-   -  Host: The IP address of the VNMC instance.
+   -  Host: The IP address of the VNMC Instance.
 
-   -  Username: The user name of the account on the VNMC instance that
+   -  Username: The user name of the account on the VNMC Instance that
       CloudStack should use.
 
    -  Password: The password of the account.
@@ -645,14 +645,14 @@ Adding an ASA 1000v Instance
 
 #. Click the Add CiscoASA1000v Resource and provide the following:
 
-   -  **Host**: The management IP address of the ASA 1000v instance. The
+   -  **Host**: The management IP address of the ASA 1000v Instance. The
       IP address is used to connect to ASA 1000V.
 
    -  **Inside Port Profile**: The Inside Port Profile configured on
       Cisco Nexus1000v dvSwitch.
 
    -  **Cluster**: The VMware cluster to which you are adding the ASA
-      1000v instance.
+      1000v Instance.
 
       Ensure that the cluster is Cisco Nexus 1000v dvSwitch enabled.
 
@@ -689,7 +689,7 @@ offering as follows:
 
    -  **Persistent**: Indicate whether the guest network is persistent
       or not. The network that you can provision without having to
-      deploy a VM on it is termed persistent network.
+      deploy an Instance on it is termed persistent network.
 
    -  **VPC**: This option indicate whether the guest network is Virtual
       Private Cloud-enabled. A Virtual Private Cloud (VPC) is a private,
@@ -830,7 +830,7 @@ management:
 #. Click OK.
 
 The installation and provisioning of the external load balancer is
-finished. You can proceed to add VMs and NAT or load balancing rules.
+finished. You can proceed to add Instances and NAT or load balancing rules.
 
 
 Management Server Load Balancing
@@ -895,10 +895,10 @@ Storage Network Topology Requirements
 
 The secondary storage NFS export is mounted by the secondary storage VM.
 Secondary storage traffic goes over the management traffic network, even
-if there is a separate storage network. Primary storage traffic goes
-over the storage network, if available. If you choose to place secondary
-storage NFS servers on the storage network, you must make sure there is
-a route from the management traffic network to the storage network.
+if there is a separate Storage Network. Primary storage traffic goes
+over the Storage Network, if available. If you choose to place secondary
+storage NFS servers on the Storage Network, you must make sure there is
+a route from the management traffic network to the Storage Network.
 
 
 External Firewall Topology Requirements
@@ -1020,10 +1020,10 @@ To set up the integration between CloudStack and Traffic Sentinel:
 Setting Zone VLAN and Running VM Maximums
 -----------------------------------------
 
-In the external networking case, every VM in a zone must have a unique
+In the external networking case, every Instance in a zone must have a unique
 guest IP address. There are two variables that you need to consider in
 determining how to configure CloudStack to support this: how many Zone
-VLANs do you expect to have and how many VMs do you expect to have
+VLANs do you expect to have and how many Instances do you expect to have
 running in the Zone at any one time.
 
 Use the following table to determine how to configure CloudStack for
@@ -1031,14 +1031,14 @@ your deployment.
 
 .. cssclass:: table-striped table-bordered table-hover
 
-===============   ============================   ==================
-guest.vlan.bits   Maximum Running VMs per Zone   Maximum Zone VLANs
-===============   ============================   ==================
-12                4096                           4094
-11                8192                           2048
-10                16384                          1024
-10                32768                          512
-===============   ============================   ==================
+===============   ==================================   ==================
+guest.vlan.bits   Maximum Running Instances per Zone   Maximum Zone VLANs
+===============   ==================================   ==================
+12                4096                                 4094
+11                8192                                 2048
+10                16384                                1024
+10                32768                                512
+===============   ==================================   ==================
 
 Based on your deployment's needs, choose the appropriate value of
 guest.vlan.bits. Set it as described in Edit the Global Configuration

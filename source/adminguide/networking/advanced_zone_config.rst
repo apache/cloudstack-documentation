@@ -19,7 +19,7 @@ Advanced Zone Physical Network Configuration
 --------------------------------------------
 
 Within a zone that uses advanced networking, you need to tell the
-Management Server how the physical network is set up to carry different
+Management Server how the physical Network is set up to carry different
 kinds of traffic in isolation.
 
 
@@ -27,38 +27,59 @@ Configure Guest Traffic in an Advanced Zone
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 These steps assume you have already logged in to the CloudStack UI. To
-configure the base guest network:
+configure the base guest Network:
 
-#. In the left navigation, choose Infrastructure. On Zones, click View
-   More, then click the zone to which you want to add a network.
+#. In the left navigation, choose Network.
 
-#. Click the Network tab.
+#. Click Add Network.
 
-#. Click Add guest network.
-
-   The Add guest network window is displayed:
+   The Add guest Network window is displayed:
 
    |addguestnetwork.png|
 
-#. Provide the following information:
+#. Provide the following information for creating an isolated Network:
 
-   -  **Name**: The name of the network. This will be user-visible
+   -  **Name**: The name of the Network. This will be User-visible
+ 
+   -  **Description**: The description of the Network. This will be
+      User-visible
 
-   -  **Display Text**: The description of the network. This will be
-      user-visible
-
-   -  **Zone**: The zone in which you are configuring the guest network.
+   -  **Zone**: The zone in which you are configuring the guest Network.
 
    -  **Network offering**: If the administrator has configured multiple
-      network offerings, select the one you want to use for this network
+      Network offerings, select the one you want to use for this Network
 
-   -  **Guest Gateway**: The gateway that the guests should use
+   - **Public MTU**: The MTU that will be configured on the public interfaces
+      of the Network's VR.
+      **NOTE:** This will not be considered for VPC Network Tiers, as the
+      public MTU defined at the VPC Network creation level will be considered
 
-   -  **Guest Netmask**: The netmask in use on the subnet the guests
-      will use
+   - **Private MTU**: The MTU that will configured on the private interface(s)
+      of the Network's VR
+
+   -  **External Id**: ID of the Network in an external system.
+ 
+   -  **Gateway**: The gateway that the guests Instances will use.
+ 
+   -  **Netmask**: The netmask in use on the subnet the Guest Instances
+      will use.
+
+   -  **DNS**: A set of custom DNS that will be used by the guest Network. If not provided then DNS specified for the zone will be used. Available only when the selected Network offering supports DNS service.
+
+   -  **IPv6 DNS**: A set of custom IPv6 DNS that will be used by the guest Network. If not provided then IPv6 DNS specified for the zone will be used. Available only when the selected Network offering is IPv6 enabled and supports DNS service.
+
+   -  **IPv4 address for the VR in this Network**: The source NAT address or primary public Network address to use by the guest Network. If not provided then a random address from the available pool of addresses wil be used.
+
+   -  **Network Domain**: A custom DNS suffix at the level of a Network. If you
+      want to assign a special domain name to the Guest Instance Network, specify a
+      DNS suffix.
+
 
 #. Click OK.
 
+.. note:: 
+   * In security groups-enabled Advanced zones and Basic zones, creation of VPC and isolated Networks are not supported.
+   * MTU options will be shown in the UI and considered only when zone configuration - `allow.end.users.to.specify.vr.mtu` is set to true. Maximum allowed values for public and private MTU can be controlled by zone-level configurations, `vr.public.interface.max.mtu` and `vr.private.interface.max.mtu` respectively.
 
 Configure Public Traffic in an Advanced Zone
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -70,83 +91,113 @@ one range of IP addresses for Internet traffic.
 Configuring a Shared Guest Network
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Log in to the CloudStack UI as administrator.
+#. Log in to the CloudStack UI as administrator or an end User.
 
-#. In the left navigation, choose Infrastructure.
+#. In the left navigation, choose Network.
 
-#. On Zones, click View More.
+#. Click the Guest Networks tab
 
-#. Click the zone to which you want to add a guest network.
+#. Click the Add Network icon.
 
-#. Click the Physical Network tab.
+#. Click the Shared tab.
 
-#. Click the physical network you want to work with.
+   The Add guest Network window is displayed.
 
-#. On the Guest node of the diagram, click Configure.
-
-#. Click the Network tab.
-
-#. Click Add guest network.
-
-   The Add guest network window is displayed.
+   |addsharednetwork.png|
 
 #. Specify the following:
 
-   -  **Name**: The name of the network. This will be visible to the user.
+   -  **Name**: The name of the Network. This will be visible to the User.
 
-   -  **Description**: The short description of the network that can be
-      displayed to users.
+   -  **Description**: The short description of the Network that can be
+      displayed to Users.
 
-   -  **VLAN ID**: The unique ID of the VLAN.
+   -  **Zone**: The zone for the Network.
 
-   -  **Isolated VLAN ID**: The unique ID of the Secondary Isolated
-      VLAN.
+   -  **Physical Network**: The physical Network ID the Network belongs to.
+
+   -  **VLAN ID**: (Administrators only) The unique ID of the VLAN.
+
+   -  **Secondary VLAN Type**: (Administrators only) The isolation private
+      VLAN type for this Network
+
+   -  **Secondary VLAN ID**: (Administrators only) The unique ID of the
+      Secondary Isolated VLAN.
+
+   -  **Bypass VLAN id/range overlap**: (Administrators only) When true
+      bypasses VLAN id/range overlap check during Network creation for
+      shared and L2 Networks
 
    -  **Scope**: The available scopes are Domain, Account, Project, and
       All.
 
       -  **Domain**: Selecting Domain limits the scope of this guest
-         network to the domain you specify. The network will not be
+         Network to the domain you specify. The Network will not be
          available for other domains. If you select Subdomain Access,
-         the guest network is available to all the sub domains within
+         the guest Network is available to all the sub domains within
          the selected domain.
 
-      -  **Account**: The account for which the guest network is being
-         created for. You must specify the domain the account belongs
+      -  **Account**: The Account for which the guest Network is being
+         created for. You must specify the domain the Account belongs
          to.
 
-      -  **Project**: The project for which the guest network is being
+      -  **Project**: The project for which the guest Network is being
          created for. You must specify the domain the project belongs
          to.
 
-      -  **All**: The guest network is available for all the domains,
-         account, projects within the selected zone.
+      -  **All**: (Administrators only) The guest Network is available
+         for all the domains, Account, projects within the selected zone.
 
    -  **Network Offering**: If the administrator has configured multiple
-      network offerings, select the one you want to use for this
-      network.
+      Network offerings, select the one you want to use for this
+      Network.
+   
+   - **Public MTU**: The MTU that will be configured on the public interfaces
+      of the Network's VR. This MTU will considered for redundant VRs
+
+   - **Private MTU**: The MTU that will configured on the private interface(s)
+      of the Network's VR
+
+   -  **Associated Network**: The L2 or Isolated Network this Network is
+      associated to. This Network will use same VLAN as associated Network.
+      This will be visible if Network offering has specifyvlan is false.
 
    -  **Gateway**: The gateway that the guests should use.
 
    -  **Netmask**: The netmask in use on the subnet the guests will use.
 
    -  **IP Range**: A range of IP addresses that are accessible from the
-      Internet and are assigned to the guest VMs.
+      Internet and are assigned to the Guest Instances.
+
+   -  **DNS**: A set of custom DNS that will be used by the Network. If not provided then DNS specified for the zone will be used. Available only when the selected Network offering supports DNS service.
 
       If one NIC is used, these IPs should be in the same CIDR in the
       case of IPv6.
 
-   -  **IPv6 CIDR**: The network prefix that defines the guest network
+   -  **IPv6 CIDR**: The Network prefix that defines the guest Network
       subnet. This is the CIDR that describes the IPv6 addresses in use
-      in the guest networks in this zone. To allot IP addresses from
+      in the guest Networks in this zone. To allot IP addresses from
       within a particular address block, enter a CIDR.
 
-   -  **Network Domain**: A custom DNS suffix at the level of a network.
-      If you want to assign a special domain name to the guest VM
-      network, specify a DNS suffix.
+   -  **IPv6 DNS**: A set of custom IPv6 DNS that will be used by the Network. If not provided then IPv6 DNS specified for the zone will be used. Available only when the selected Network offering supports DNS service.
+
+   -  **Network Domain**: A custom DNS suffix at the level of a Network.
+      If you want to assign a special domain name to the Guest Instance
+      Network, specify a DNS suffix.
 
 #. Click OK to confirm.
+
+   .. note::
+      * End users (not administrator) can only use the Network
+        offerings with specifyvlan is false. Please create a Network offering
+        with specifyvlan is false to enable this for end users. See
+        `“Creating a New Network Offering”
+        <networking.html#creating-a-new-network-offering>`_.
+      * MTU options will be shown in the UI and considered only when zone configuration - `allow.end.users.to.specify.vr.mtu` is set to true. Maximum allowed values for public and private MTU can be controlled by zone-level configurations, `vr.public.interface.max.mtu` and `vr.private.interface.max.mtu` respectively.
 
 
 .. |addguestnetwork.png| image:: /_static/images/add-guest-network.png
    :alt: Add Guest network setup in a single zone.
+
+.. |addsharednetwork.png| image:: /_static/images/add-shared-network.png
+   :alt: Add Shared Guest Network.

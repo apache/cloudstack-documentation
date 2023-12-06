@@ -19,14 +19,14 @@ Using Tags to Organize Resources in the Cloud
 
 A tag is a key-value pair that stores metadata about a resource in the
 cloud. Tags are useful for categorizing resources. For example, you can
-tag a user VM with a value that indicates the user's city of residence.
+tag a User Instance with a value that indicates the User's city of residence.
 In this case, the key would be "city" and the value might be "Toronto"
 or "Tokyo." You can then request CloudStack to find all resources that
-have a given tag; for example, VMs for users in a given city.
+have a given tag; for example, Instances for Users in a given city.
 
-You can tag a user virtual machine, volume, snapshot, guest network,
-template, ISO, firewall rule, port forwarding rule, public IP address,
-security group, load balancer rule, project, VPC, network ACL, or static
+You can tag a User Instance, Volume, Snapshot, Guest Network,
+Template, ISO, firewall rule, port forwarding rule, public IP address,
+security group, load balancer rule, project, VPC, Network ACL, or static
 route. You can not tag a remote access VPN.
 
 You can work with tags through the UI or through the API commands
@@ -81,6 +81,35 @@ The following API commands have the "tags" input parameter:
 
 -  listStaticRoutes
 
+Using Comments on the Resources in the Cloud
+--------------------------------------------
+
+CloudStack allows Users and administrators to create comments against cloud objects with a UUID. The listing page of any cloud object includes a blue icon next to the object name indicating that the object contains comments.
+
+To create a new comment on an object:
+
+1. Click on the object to display the detail view
+
+2. Navigate to the Comments tab
+
+3. Add a comment on the text area and click the Submit button
+
+.. note::
+   Administrators only: Select the 'Only visible to Administrators' checkbox to create private comments across administrators
+
+To display al the comments created by the logged in User (or administrator):
+
+1. In the left navigation bar, click Tools
+
+2. Click Comments (the default filter is 'Created by me')
+
+To display all the comments on the objects that the logged in User (or administrator) has access:
+
+1. In the left navigation bar, click Tools
+
+2. Click Comments
+
+3. Select the 'All Comments' filter
 
 Reporting CPU Sockets
 ---------------------
@@ -186,8 +215,8 @@ cloud. Alerts are notices to an administrator, generally delivered by
 e-mail, notifying the administrator that an error has occurred in the
 cloud. Alert behavior is configurable.
 
-Events track all of the user and administrator actions in the cloud. For
-example, every guest VM start creates an associated event. Events are
+Events track all of the User and administrator actions in the cloud. For
+example, every Guest Instance start creates an associated event. Events are
 stored in the Management Server’s database.
 
 Emails will be sent to administrators under the following circumstances:
@@ -233,7 +262,7 @@ be found by calling listAlerts.
 
 ::
 
-   PUBLIC_IP = 4 // Number of unallocated virtual network public IPs is below configured threshold
+   PUBLIC_IP = 4 // Number of unallocated virtual Network public IPs is below configured threshold
 
 ::
 
@@ -249,7 +278,7 @@ be found by calling listAlerts.
 
 ::
 
-   USERVM = 8 // User VM stopped unexpectedly
+   USERVM = 8 // User Instance stopped unexpectedly
 
 ::
 
@@ -273,7 +302,7 @@ be found by calling listAlerts.
 
 ::
 
-   MANAGMENT_NODE = 14 // Management network CIDR is not configured originally
+   MANAGMENT_NODE = 14 // Management Network CIDR is not configured originally
 
 ::
 
@@ -285,7 +314,7 @@ be found by calling listAlerts.
 
 ::
 
-   USERVM_MIGRATE = 17 // User VM Migration was unsuccessful
+   USERVM_MIGRATE = 17 // User Instance Migration was unsuccessful
 
 ::
 
@@ -313,7 +342,7 @@ be found by calling listAlerts.
 
 ::
 
-   DIRECT_ATTACHED_PUBLIC_IP = 24 // Number of unallocated shared network IPs is low in availability zone
+   DIRECT_ATTACHED_PUBLIC_IP = 24 // Number of unallocated shared Network IPs is low in availability zone
 
 ::
 
@@ -321,7 +350,7 @@ be found by calling listAlerts.
 
 ::
 
-   RESOURCE_LIMIT_EXCEEDED = 26 //Generated when the resource limit exceeds the limit. Currently used for recurring snapshots only
+   RESOURCE_LIMIT_EXCEEDED = 26 //Generated when the resource limit exceeds the limit. Currently used for recurring Snapshots only
 
 
 You can also display the most up to date list by calling the API command ``listAlerts``.
@@ -416,7 +445,7 @@ alerts from CloudStack:
       </appender>
 
 #. If your cloud has multiple Management Server nodes, repeat these
-   steps to edit log4j-cloud.xml on every instance.
+   steps to edit log4j-cloud.xml on every Instance.
 
 #. If you have made these changes while the Management Server is
    running, wait a few minutes for the change to take effect.
@@ -440,20 +469,20 @@ Customizing the Network Domain Name
 -----------------------------------
 
 The root administrator can optionally assign a custom DNS suffix at the
-level of a network, account, domain, zone, or entire CloudStack
+level of a Network, Account, domain, zone, or entire CloudStack
 installation, and a domain administrator can do so within their own
 domain. To specify a custom domain name and put it into effect, follow
 these steps.
 
 #. Set the DNS suffix at the desired scope
 
-   -  At the network level, the DNS suffix can be assigned through the
-      UI when creating a new network, as described in
+   -  At the Network level, the DNS suffix can be assigned through the
+      UI when creating a new Network, as described in
       `“Adding an Additional Guest Network”
       <networking2#adding-an-additional-guest-network>`_ or with the
       updateNetwork command in the CloudStack API.
 
-   -  At the account, domain, or zone level, the DNS suffix can be
+   -  At the Account, domain, or zone level, the DNS suffix can be
       assigned with the appropriate CloudStack API commands:
       createAccount, editAccount, createDomain, editDomain, createZone,
       or editZone.
@@ -463,25 +492,25 @@ these steps.
       updateConfiguration. After modifying this global configuration,
       restart the Management Server to put the new setting into effect.
 
-#. To make the new DNS suffix take effect for an existing network, call
+#. To make the new DNS suffix take effect for an existing Network, call
    the CloudStack API command updateNetwork. This step is not necessary
-   when the DNS suffix was specified while creating a new network.
+   when the DNS suffix was specified while creating a new Network.
 
-The source of the network domain that is used depends on the following
+The source of the Network domain that is used depends on the following
 rules.
 
--  For all networks, if a network domain is specified as part of a
-   network's own configuration, that value is used.
+-  For all Networks, if a Network domain is specified as part of a
+   Network's own configuration, that value is used.
 
--  For an account-specific network, the network domain specified for the
-   account is used. If none is specified, the system looks for a value
+-  For an Account-specific Network, the Network domain specified for the
+   Account is used. If none is specified, the system looks for a value
    in the domain, zone, and global configuration, in that order.
 
--  For a domain-specific network, the network domain specified for the
+-  For a domain-specific Network, the Network domain specified for the
    domain is used. If none is specified, the system looks for a value in
    the zone and global configuration, in that order.
 
--  For a zone-specific network, the network domain specified for the
+-  For a zone-specific Network, the Network domain specified for the
    zone is used. If none is specified, the system looks for a value in
    the global configuration.
 

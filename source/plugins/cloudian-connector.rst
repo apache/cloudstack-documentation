@@ -26,8 +26,8 @@ Connector integrates Cloudian S3 Storage into the CloudStack Management GUI and
 allows administrators to easily give their CloudStack users access to and manage
 their own S3 storage areas.
 
-Compatibilty
-~~~~~~~~~~~~
+Compatibility
+~~~~~~~~~~~~~
 
 The following table shows the compatiblity of Cloudian Connector with CloudStack.
 
@@ -81,10 +81,10 @@ logged in.
 User Mapping and Provisioning/De-provisioning
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-CloudStack domains are mapped to Cloudian Groups. CloudStack accounts within
+CloudStack domains are mapped to Cloudian Groups. CloudStack Accounts within
 those domains are mapped to Cloudian users. The Cloudian user and group are
 created on demand if it doesn’t already exist when the CloudStack user accesses
-CMC through the Cloudian Storage button. When accounts and domains are created
+CMC through the Cloudian Storage button. When Accounts and domains are created
 or removed in CloudStack, they automatically create or remove users or groups in
 CMC.
 
@@ -166,7 +166,7 @@ Edit Puppet config to enable SSO on all CMC servers:
 
 
 .. note::
-   Once configured in Puppet, you should roll out out to each CMC server and
+   Once configured in Puppet, you should roll out to each CMC server and
    restart CMC services. Please refer to the HyperStore documentation for how to
    do this.
 
@@ -316,13 +316,13 @@ directly to S3 but instead talk through the standard file system API. As such,
 CloudStack requires an NFS staging server which the Hypervisors use to read and
 write data from/to. The NFS storage requirements for the staging server are
 small however as space is only required while objects are staged (moving)
-between the S3 server and the VMs.
+between the S3 server and the Instances.
 
 
 DNS Name Resolution Requirement
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-All CloudStack Management Servers, system VMs and customer VMs (if required)
+All CloudStack Management Servers, System VMs and customer Instances (if required)
 must be able to resolve your S3 bucket names. Usually, if you already have
 Cloudian installed and running in your environment, this is already working.
 At a minimum the following names should resolve to the correct IP addresses
@@ -348,7 +348,7 @@ Adding Cloudian as CloudStack Secondary Storage
 Setup a Cloudian User and Bucket for Secondary Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-S3 Secondary Storage stores the CloudStack templates, snapshots etc in a
+S3 Secondary Storage stores the CloudStack Templates, Snapshots etc in a
 dedicated S3 Bucket. To properly configure CloudStack you will need to know the
 S3 Bucket name and how to access your S3 Server (the S3 endpoint, access key and
 secret key).
@@ -379,9 +379,9 @@ Create a dedicated bucket:
 Open Up Access to your S3 Network from Secondary Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If your S3 server is on a different network to your Secondary Storage VM, you
-will need to open up access to the S3 network. This also allows users to
-download templates from their S3 object store areas.
+If your S3 server is on a different Network to your Secondary Storage VM, you
+will need to open up access to the S3 Network. This also allows users to
+download Templates from their S3 object store areas.
 
 .. figure:: /_static/images/cloudian-ss_globalopt.png
    :align: center
@@ -450,13 +450,13 @@ Adding S3 Secondary Storage:
 
 When you have finished adding Cloudian as Secondary Storage in the previous
 steps, CloudStack will populate the new secondary storage with the system and
-default templates. This can take some time do download as the templates are
+default Templates. This can take some time do download as the Templates are
 quite big.
 
 .. note::
-   You can check if the system template and the default template have properly
+   You can check if the system Template and the default Template have properly
    downloaded to the new secondary storage by navigating to Templates, selecting a
-   template, clicking on the Zones tab and checking its Status is Ready 100%
+   Template, clicking on the Zones tab and checking its Status is Ready 100%
    Downloaded.
 
 .. note::

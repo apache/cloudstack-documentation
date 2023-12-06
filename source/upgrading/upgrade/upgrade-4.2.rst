@@ -26,7 +26,7 @@ This section will guide you from CloudStack |version_to_upgrade| to CloudStack
 
 Upgrade Steps:
 
-#. Install new System-VM templates
+#. Install new System-VM Templates
 
 #. Backup CloudStack database (MySQL)
 
@@ -84,8 +84,8 @@ Backup current database
 
    .. parsed-literal::
 
-      $ mysqldump -u root -p cloud > cloud-backup_`date '+%Y-%m-%d'`.sql
-      $ mysqldump -u root -p cloud_usage > cloud_usage-backup_`date '+%Y-%m-%d'`.sql
+      $ mysqldump -u root -p cloud > cloud-backup_$(date +%Y-%m-%d-%H%M%S)
+      $ mysqldump -u root -p cloud_usage > cloud_usage-backup_$(date +%Y-%m-%d-%H%M%S)
 
 
 .. _ubuntu42:
@@ -421,8 +421,5 @@ values for ``mem.overporvisioning.factor`` and ``cpu.overporvisioning.factor``.
 
 
 .. _upg-sysvm42:
-
-System-VMs and Virtual-Routers
-------------------------------
 
 .. include:: _sysvm_restart.rst

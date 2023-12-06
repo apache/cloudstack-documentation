@@ -17,91 +17,79 @@
 What's New in |release|
 =======================
 
-Apache CloudStack 4.15.1.0 is a 4.15 LTS release with over 350 enhancements and
-fixes since 4.15.0.0. Highlights include:
+Apache CloudStack |release| is a 4.18 LTS minor release with 196 fixes
+since the 4.18.0.0 release. Some of the highlights include:
 
-• Support for XCP-ng 8.2
-• Support for VMware 7.0
-• Several VMware improvements such as vSphere datastore cluster synchronisation, deploy-as-is OVA template support and VM migration
-• Several VR fixes and improvements, support for IKEv2 VPN option
-• Several UI fixes and improvements, support for UI customisation and updated localisation
+• Support Managed User Data in AutoScale VM groups
+• Support CKS (CloudStack Kubernetes Cluster) in VPC tiers
+• Support for VMware 8.0.0.x
+• Several Hypervisor (VMware, KVM, XenServer) fixes and improvements
+• Several UI fixes and improvements
+• Several Network (L2, VXLAN, etc) fixes and improvements
+• Several System VM (CPVM, SSVM) fixes and improvements
+• Improve Solidfire storage plugin integration on VMware
+• Support volume migration in ScaleIO/PowerFlex within and across ScaleIO/PowerFlex storage clusters
+• Volume encryption support for StorPool
+• Fix CloudStack upgrade with some MySQL versions
+• Fix guest OSes and guest OS mappings in CloudStack database
 
-What's New in 4.15.0.0
+The full list of fixes and improvements can be found in the project release notes at
+https://docs.cloudstack.apache.org/en/4.18.1.0/releasenotes/changes.html
+
+What's in since 4.18.0.0
 ======================
 
-Apache CloudStack 4.15.0.0 is a 4.15 LTS release with over 15 major new
-features, and over 250 enhancements and fixes since 4.14. Highlights include:
+Apache CloudStack 4.18.0.0 is the initial 4.18 LTS release with 300+ new
+features, improvements and bug fixes since 4.17, including 19 major
+new features. Some of the highlights include:
 
-• New modern UI (GA release)
-• Support for CentOS8 and Ubuntu 20.04 for management server and KVM hosts (note: CentOS 8 will EOL in Dec 2021)
-• Support for XCP-ng 8.1
-• Support for MySQL 8
-• NoVNC console integration
-• Unmanaging guest VMs
-• VMware advanced storage capabilities (vSAN, vVols, VMFS6, datastore clusters)
-• VMware full OVF properties support
-• Secondary Storage usage improvements
-• PVLAN support for L2 networks
-• Role-based users in Projects
-• Dynamic roles improvements
-• Boot into BIOS on VMware
-• Redfish OOBM Support
-• Human readable sizes in logs
+• Edge Zones
+• Autoscaling
+• Managed User Data
+• Two-Factor Authentication Framework
+• Support for Time-based OTP (TOTP) Authenticator
+• Volume Encryption
+• SDN Integration – Tungsten Fabric
+• Ceph Multi Monitor Support
+• API-Driven Console Access
+• Console Access Security Improvements
+• New Global settings UI
+• Configurable MTU for VR
+• Adaptative Affinity Groups
+• Custom DNS Servers for Networks
+• Improved Guest OS Support Framework
+• Support for Enterprise Linux 9
+• Networker Backup Plugin for KVM Hypervisor
+• Custom Quota Tariffs
+• Secure VNC for KVM
 
 The full list of new features can be found in the project release notes at
-http://docs.cloudstack.apache.org/en/4.15.0.0/releasenotes/changes.html
+https://docs.cloudstack.apache.org/en/4.18.0.0/releasenotes/changes.html
 
-.. important::
-   This version of CloudStack allows control over the visibility of the DNS services provided
-   by the Virtual Router in Shared networks. By default CloudStack allows DNS queries via the
-   Guest interface from any IP address. This allows for the DNS resolution of guest VMs on the
-   Shared network by services outside of the shared network. While this can be useful, it can
-   also be an issue on Shared Networks which are using Internet routable/public (i.e. non-RFC1918)
-   IP addresses, as the DNS service is then queriable from the public internet at large. A new
-   global setting "expose.dns.externally" has been added (with a default value of "true" in
-   order to keep backward compatibility) which controls whether the source of DNS queries
-   should be limited to only hosts on the Shared Network guest subnet or not. If you wish
-   to disable 'outside' access to the DNS services running on Virtual Routers; set the value
-   to "false" and recreate the related Virtual Routers.
+.. _guestosids
 
-Apache CloudStack powers numerous elastic Cloud computing services, including solutions that have
-ranked as Gartner Magic Quadrant leaders. Highlighted in the Forrester Q4 2017 Enterprise Open Source
-Cloud Adoption report, Apache CloudStack "sits beneath hundreds of service provider clouds", including
-Fortune 5 multinational corporations. A list of known Apache CloudStack users are available
-at http://cloudstack.apache.org/users.html
+Possible Issue with Guest OS IDs
+================================
 
-Libvirt Python Dependency on KVM and CentOS
-===========================================
+It has been noticed during upgrade testing that some environment, where
+custom guest OSses where added and mapping for those OSses where added,
+problems may occur during upgrade. Part of the mitigation is to make sure
+OSses that are newly mapped but should have already been in the guest_os
+table are there. Make sure you apply those before you start the new 4.18
+management server.
 
-For CentOS users using the security groups feature on KVM it is needed to install the epel-release and python36-libvirt packages.
+first check which of the guest_os entries you miss:
 
-Workaround for adding newer KVM hosts
-=====================================
+.. parsed-literal::
 
-Newer GNU/Linux distributions with latest OpenSSH package disables some older
-SSH algorithms and ciphers and newer algorithms are not supported by trilead-ssh
-library used by CloudStack to SSH into KVM hosts during the host-add operation.
-Until the dependency library can support that users can use the following
-workaround in their KVM host's /etc/ssh/sshd_config and restart ssh server
-before adding the KVM host in CloudStack:
+  SELECT * FROM cloud.guest_os WHERE display_name IN (´CentOS 8´, ´Debian GNU/Linux 10 (32-bit)´, ´Debian GNU/Linux 10 (64-bit)´, ´SUSE Linux Enterprise Server 15 (64-bit)´, ´Windows Server 2019 (64-bit)´)
 
-   PubkeyAcceptedKeyTypes=+ssh-dss
+Then apply any of the following lines that you might need.
 
-   HostKeyAlgorithms=+ssh-dss
+.. parsed-literal::
 
-   KexAlgorithms=+diffie-hellman-group1-sha1
-
-New UI GA and Legacy UI Deprecation and Removal Notice
-=======================================================
-
-Cloudstack 4.15 ships with the GA release of a new and modern User Interface as
-the default UI which deprecates the current legacy UI. With version 4.15, the
-existing legacy UI (deprecated) along with the new UI are the supported UI for
-production environments.
-
-The default URL <host>:8080/client will serve the new UI and
-<host>:8080/client/legacy will serve the deprecated legacy UI.
-
-In the next release (4.16), the Apache Cloudstack community will remove the legacy
-UI. Users are encouraged to implement a migration path towards deprecating the
-legacy UI in their production environments.
+  INSERT INTO cloud.guest_os (uuid, category_id, display_name, created, is_user_defined) VALUES (UUID(), '1', 'CentOS 8', now(), '0');
+  INSERT INTO cloud.guest_os (uuid, category_id, display_name, created, is_user_defined) VALUES (UUID(), '2', 'Debian GNU/Linux 10 (32-bit)', now(), '0');
+  INSERT INTO cloud.guest_os (uuid, category_id, display_name, created, is_user_defined) VALUES (UUID(), '2', 'Debian GNU/Linux 10 (64-bit)', now(), '0');
+  INSERT INTO cloud.guest_os (uuid, category_id, display_name, created, is_user_defined) VALUES (UUID(), '5', 'SUSE Linux Enterprise Server 15 (64-bit)', now(), '0');
+  INSERT INTO cloud.guest_os (uuid, category_id, display_name, created, is_user_defined) VALUES (UUID(), '6', 'Windows Server 2019 (64-bit)', now(), '0');

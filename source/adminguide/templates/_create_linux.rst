@@ -17,12 +17,13 @@
 Creating a Linux Template
 -------------------------
 
-Linux templates should be prepared using this documentation in order to
-prepare your linux VMs for template deployment. For ease of
-documentation, the VM which you are configuring the template on will be
-referred to as "Template Primary". This guide currently covers legacy
-setups which do not take advantage of UserData and cloud-init and
-assumes openssh-server is installed during installation.
+Linux Templates should be prepared using this documentation in order to
+prepare your linux Instances for Template deployment. For ease of
+documentation, the Instance which you are configuring the Template on will be
+referred to as "Main Template". The final product, as created and usable
+for deployment in Cloudstack, will be referred as "Final Template".
+This guide will cover cloud-init setup and scripted setups where available.  It is assumed that openssh-server
+is installed during installation.
 
 An overview of the procedure is as follow:
 
@@ -31,231 +32,186 @@ An overview of the procedure is as follow:
    For more information, see `“Adding an
    ISO” <virtual_machines.html#adding-an-iso>`_.
 
-#. Create a VM Instance with this ISO.
+#. Create an Instance with this ISO.
 
    For more information, see `“Creating
    VMs” <virtual_machines.html#creating-vms>`_.
 
-#. Prepare the Linux VM
+#. Prepare the Linux Instance
 
-#. Create a template from the VM.
+#. Create a Template from the Instance.
 
    For more information, see `“Creating a Template from an Existing 
-   Virtual Machine” <#creating-a-template-from-an-existing-virtual-machine>`_.
+   Instance” <#creating-a-template-from-an-existing-virtual-machine>`_.
 
 
 System preparation for Linux
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------
 
-The following steps will prepare a basic Linux installation for
-templating.
+The following steps will provide basic Linux installation for
+templating of Centos and Ubuntu.
+	 
+#. **Update OS**
 
-#. **Installation**
+   The next step update the packages on the Main Template.
+   
+   ~  CentOS
+   
+    .. code:: bash
 
-   It is good practice to name your VM something generic during
-   installation, this will ensure components such as LVM do not appear
-   unique to a machine. It is recommended that the name of "localhost"
-   is used for installation.
+	 yum update -y
+	 reboot
+   
+   ~  Ubuntu
+   
+    .. code:: bash
 
-   .. warning:: 
-      For CentOS, it is necessary to take unique identification out of the
-      interface configuration file, for this edit
-      /etc/sysconfig/network-scripts/ifcfg-eth0 and change the content to
-      the following. 
+     sudo -i
+     apt-get update
+     apt-get upgrade -y
+     apt-get install -y acpid ntp
+     reboot
+   
+#. **Networking**
 
-   .. code:: bash
+   Set Template Network interface configuration to DHCP so Cloudstack infrastructure can assign one on boot.
+	
+   .. warning::
+   
+     For CentOS, it is mandatory to take unique identification out of the
+     interface configuration file /etc/sysconfig/network-scripts/ifcfg-eth0. Any entries starting with <VALUE> should be removed.
+	
+   ~ Centos
+	
+    .. code:: bash
 
-      DEVICE=eth0
-      TYPE=Ethernet
-      BOOTPROTO=dhcp
-      ONBOOT=yes
-
-   The next steps updates the packages on the Template Primary.
-
-   -  Ubuntu
-
-      .. code:: bash
-
-         sudo -i
-         apt-get update
-         apt-get upgrade -y
-         apt-get install -y acpid ntp
-         reboot
-
-   -  CentOS
-
-      .. code:: bash
-
-         ifup eth0
-         yum update -y
-         reboot
-
-#. **Password management**
-
-   .. note:: 
-      If preferred, custom users (such as ones created during the Ubuntu 
-      installation) should be removed. First ensure the root user account 
-      is enabled by giving it a password and then login as root to continue.
-
-   .. code:: bash
-
-      sudo passwd root
-      logout
-
-   As root, remove any custom user accounts created during the
-   installation process.
-
-   .. code:: bash
-
-      deluser myuser --remove-home
-
-   See :ref:`adding-password-management-to-templates` for
-   instructions to setup the password management script, this will allow
-   CloudStack to change your root password from the web interface.
+     echo "DEVICE=eth0
+     TYPE=Ethernet
+     BOOTPROTO=dhcp
+     ONBOOT=yes" > /etc/sysconfig/network-scripts/ifcfg-eth0
 
 #. **Hostname Management**
 
-   CentOS configures the hostname by default on boot. Unfortunately
-   Ubuntu does not have this functionality, for Ubuntu installations use
-   the following steps.
-
-   -  Ubuntu
-
-      The hostname of a Templated VM is set by a custom script in
-      `/etc/dhcp/dhclient-exit-hooks.d`, this script first checks if the
-      current hostname is localhost, if true, it will get the host-name,
-      domain-name and fixed-ip from the DHCP lease file and use those
-      values to set the hostname and append the `/etc/hosts` file for
-      local hostname resolution. Once this script, or a user has changed
-      the hostname from localhost, it will no longer adjust system files
-      regardless of its new hostname. The script also recreates
-      openssh-server keys, which should have been deleted before
-      templating (shown below). Save the following script to
-      `/etc/dhcp/dhclient-exit-hooks.d/sethostname`, and adjust the
-      permissions.
-
-      .. code:: bash
-
-         #!/bin/sh
-         # dhclient change hostname script for Ubuntu
-         oldhostname=$(hostname -s)
-         if [ $oldhostname = 'localhost' ]
-         then
-             sleep 10 # Wait for configuration to be written to disk
-             hostname=$(cat /var/lib/dhcp/dhclient.eth0.leases  |  awk ' /host-name/ { host = $3 }  END { printf host } ' | sed     's/[";]//g' )
-             fqdn="$hostname.$(cat /var/lib/dhcp/dhclient.eth0.leases  |  awk ' /domain-name/ { domain = $3 }  END { printf     domain } ' | sed 's/[";]//g')"
-             ip=$(cat /var/lib/dhcp/dhclient.eth0.leases  |  awk ' /fixed-address/ { lease = $2 }  END { printf lease } ' | sed     's/[";]//g')
-             echo "cloudstack-hostname: Hostname _localhost_ detected. Changing hostname and adding hosts."
-             printf " Hostname: $hostname\n FQDN: $fqdn\n IP: $ip"
-             # Update /etc/hosts
-             awk -v i="$ip" -v f="$fqdn" -v h="$hostname" "/^127/{x=1} !/^127/ && x { x=0; print i,f,h; } { print $0; }" /etc/hosts > /etc/hosts.dhcp.tmp
-             mv /etc/hosts /etc/hosts.dhcp.bak
-             mv /etc/hosts.dhcp.tmp /etc/hosts
-             # Rename Host
-             echo $hostname > /etc/hostname
-             hostname -b -F /etc/hostname
-             echo $hostname > /proc/sys/kernel/hostname
-             # Recreate SSH2
-             export DEBIAN_FRONTEND=noninteractive
-             dpkg-reconfigure openssh-server
-         fi
-         ### End of Script ###
-         
-         chmod 774  /etc/dhcp/dhclient-exit-hooks.d/sethostname
-
-   .. warning:: 
-      The following steps should be run when you are ready to template 
-      your Template Primary. If the Template Primary is rebooted during 
-      these steps you will have to run all the steps again. At the end 
-      of this process the Template Primary should be shutdown and the 
-      template created in order to create and deploy the final template.
-
-#. **Remove the udev persistent device rules**
-
-   This step removes information unique to your Template Primary such as
-   network MAC addresses, lease files and CD block devices, the files
-   are automatically generated on next boot.
-
-   -  Ubuntu
-
-      .. code:: bash
-
-         rm -f /etc/udev/rules.d/70*
-         rm -f /var/lib/dhcp/dhclient.*
-
-   -  CentOS
-
-      .. code:: bash
-
-         rm -f /etc/udev/rules.d/70*
-         rm -f /var/lib/dhclient/*
-
-#. **Remove SSH Keys**
-
-   This step is to ensure all your Templated VMs do not have the same
-   SSH keys, which would decrease the security of the machines
-   dramatically.
+   Set a generic name to the Template Instance during installation, this will ensure components such as LVM do not appear unique to a machine. It is recommended that the name of "localhost" is used for installation.
 
    .. code:: bash
+
+	  hostname localhost
+	  echo "localhost" > /etc/hostname
+
+#. **Password management**
+   
+   .. note:: 
+	 
+    It is a good practice to remove any non root Users that come with the OS (such as ones created during the Ubuntu
+    installation). First ensure the root user Account is enabled by giving it a password and then login as root to continue.
+
+   Once logged in as root, any custom User can be removed.
+
+   .. code:: bash
+
+     deluser myuser --remove-home
+	 
+   User password management and reset cappabilities in GUI are available with:
+   
+   *  `Cloud-init integration <_cloud_init.html#linux-with-cloud-init>`_
+   *  `Adding Password Management to Your Templates <_password.html#adding-password-management-to-templates>`_ /Legacy for non systemd systems only/
+	 
+#. **SSH keys management**
+
+   Cloudstack can create key pair and push certificates to Instances. This feature is available with:
+   
+   *  `Cloud-init integration <_cloud_init.html#linux-with-cloud-init>`_
+   *  `Implementing a SSH-Key bash script <http://docs.cloudstack.apache.org/en/latest/adminguide/virtual_machines.html#creating-an-instance-template-that-supports-ssh-keys>`_   
+	 
+#. **Partition management**
+	
+   Volumes can autorextend after reboot when partition is extended in the GUI.
+   This feature is possible with `Cloud-init integration <_cloud_init.html#linux-with-cloud-init>`_.
+   
+#. **User-data**
+	
+   Cloudstack can push user-data during Instance creation.
+   This feature is possible with `Cloud-init integration <_cloud_init.html#linux-with-cloud-init>`_.
+	
+#. **Template cleanup**
+    
+   .. warning:: 
+   
+    Cleanup steps should be run when all Main Template configuration
+    is done and just before the shutdown step. After shut down Final
+    Template should be created. If the Main Template is started or
+    rebooted before Final Template creation all cleanup steps have to be rerun.
+
+   - **Remove the udev persistent device rules**
+   
+     This step removes information unique to the Main Template such as
+     Network MAC addresses, lease files and CD block devices, the files
+     are automatically generated on next boot.
+   
+     ~  CentOS
+
+      .. code:: bash
+
+       rm -f /etc/udev/rules.d/70*
+       rm -f /var/lib/dhclient/*
+	
+     ~  Ubuntu
+
+      .. code:: bash
+
+       rm -f /etc/udev/rules.d/70*
+       rm -f /var/lib/dhcp/dhclient.*
+
+   - **Remove SSH Keys**
+
+     This step is to ensure all Templated Instances do not have the same
+     SSH keys, which would decrease the security of the machines
+     dramatically.
+
+     .. code:: bash
 
       rm -f /etc/ssh/*key*
 
-#. **Cleaning log files**
+   - **Cleaning log files**
 
-   It is good practice to remove old logs from the Template Primary.
+     It is good practice to remove old logs from the Main Template.
 
-   .. code:: bash
+     .. code:: bash
 
       cat /dev/null > /var/log/audit/audit.log 2>/dev/null
       cat /dev/null > /var/log/wtmp 2>/dev/null
       logrotate -f /etc/logrotate.conf 2>/dev/null
       rm -f /var/log/*-* /var/log/*.gz 2>/dev/null
 
-#. **Setting hostname**
+   - **Set User password to expire**
 
-   In order for the Ubuntu DHCP script to function and the CentOS
-   dhclient to set the VM hostname they both require the Template
-   Primary's hostname to be "localhost", run the following commands to
-   change the hostname.
+     This step forces the User to change the password of the Instance after the
+     Template has been deployed.
 
-   .. code:: bash
-
-      hostname localhost
-      echo "localhost" > /etc/hostname
-
-#. **Set user password to expire**
-
-   This step forces the user to change the password of the VM after the
-   template has been deployed.
-
-   .. code:: bash
+     .. code:: bash
 
       passwd --expire root
 
-#. **Clearing User History**
+   - **Clearing User History**
 
-   The next step clears the bash commands you have just run.
+     The next step clears the bash commands you have just run.
 
-   .. code:: bash
+    .. code:: bash
 
       history -c
       unset HISTFILE
 
-#. **Shutdown the VM**
+#. **Shutdown the Instance**
 
-   Your now ready to shutdown your Template Primary and create a
-   template!
+   Shutdown the Main Template.
 
    .. code:: bash
 
       halt -p
 
-#. **Create the template!**
+#. **Create the Template!**
 
-   You are now ready to create the template, for more information see
+   You are now ready to create the Final Template, for more information see
    `“Creating a Template from an Existing Virtual
    Machine” <#creating-a-template-from-an-existing-virtual-machine>`_.
-
-.. note::
-   Templated VMs for both Ubuntu and CentOS may require a reboot after 
-   provisioning in order to pickup the hostname.

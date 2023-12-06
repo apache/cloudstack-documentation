@@ -26,9 +26,9 @@ To allow incoming traffic, users may set up firewall rules and/or port
 forwarding rules. For example, you can use a firewall rule to open a
 range of ports on the public IP address, such as 33 through 44. Then use
 port forwarding rules to direct traffic from individual ports within
-that range to specific ports on user VMs. For example, one port
+that range to specific ports on user instances. For example, one port
 forwarding rule could route incoming traffic on the public IP's port 33
-to port 100 on one user VM's private IP.
+to port 100 on one user instance's private IP.
 
 
 Firewall Rules
@@ -108,9 +108,6 @@ Prerequisites and Guidelines
 
 Consider the following scenarios to apply egress firewall rules:
 
--  Egress firewall rules are supported on Juniper SRX and virtual
-   router.
-
 -  The egress firewall rules are not supported on shared networks.
 
 -  Allow the egress traffic from specified source CIDR. The Source CIDR
@@ -138,7 +135,7 @@ Configuring an Egress Firewall Rule
 
 #. To add an egress rule, click the Egress rules tab and fill out the
    following fields to specify what type of traffic is allowed to be
-   sent out of VM instances in this guest network:
+   sent out of instances in this guest network:
 
    |egress-firewall-rule.png|
 
@@ -148,7 +145,7 @@ Configuring an Egress Firewall Rule
       the destination. For example, 192.168.0.0/22. To allow all CIDRs,
       set to 0.0.0.0/0.
 
-   -  **Protocol**: The networking protocol that VMs uses to send
+   -  **Protocol**: The networking protocol that instances uses to send
       outgoing traffic. The TCP and UDP protocols are typically used for
       data exchange and end-user communications. The ICMP protocol is
       typically used to send error messages or network monitoring data.
@@ -195,7 +192,7 @@ traffic. While implementing a guest network, CloudStack adds the
 firewall egress rule specific to the default egress policy for the guest
 network.
 
-This feature is supported only on virtual router and Juniper SRX.
+This feature is supported only on the virtual router.
 
 #. Create a network offering with your desirable default egress policy:
 
@@ -224,15 +221,15 @@ Port Forwarding
 ~~~~~~~~~~~~~~~
 
 A port forward service is a set of port forwarding rules that define a
-policy. A port forward service is then applied to one or more guest VMs.
-The guest VM then has its inbound network access managed according to
+policy. A port forward service is then applied to one or more Guest Instances.
+The Guest Instance then has its inbound network access managed according to
 the policy defined by the port forwarding service. You can optionally
 specify one or more CIDRs to filter the source IPs. This is useful when
 you want to allow only incoming requests from certain IP addresses to be
 forwarded.
 
-A guest VM can be in any number of port forward services. Port forward
-services can be defined but have no members. If a guest VM is part of
+A Guest Instance can be in any number of port forward services. Port forward
+services can be defined but have no members. If a Guest Instance is part of
 more than one network, port forwarding rules will function only if they
 are defined on the default network
 
@@ -248,11 +245,11 @@ To set up port forwarding:
    zone in CloudStack. See Adding a Zone and Pod in the Installation
    Guide.
 
-#. Add one or more VM instances to CloudStack.
+#. Add one or more instances to CloudStack.
 
 #. In the left navigation bar, click Network.
 
-#. Click the name of the guest network where the VMs are running.
+#. Click the name of the guest network where the instances are running.
 
 #. Choose an existing IP address or acquire a new IP address. See
    `"Acquiring a New IP Address" <#acquiring-a-new-ip-address>`_.

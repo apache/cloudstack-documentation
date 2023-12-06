@@ -75,21 +75,21 @@ Adding Multiple Subnets to a Shared Network
 
    All the fields are mandatory.
 
-   -  **Gateway**: The gateway for the tier you create. Ensure that the
+   -  **Gateway**: The gateway for the Network Tier you create. Ensure that the
       gateway is within the Super CIDR range that you specified while
       creating the VPC, and is not overlapped with the CIDR of any
-      existing tier within the VPC.
+      existing Network Tier within the VPC.
 
-   -  **Netmask**: The netmask for the tier you create.
+   -  **Netmask**: The netmask for the Network Tier you create.
 
-      For example, if the VPC CIDR is 10.0.0.0/16 and the network tier
-      CIDR is 10.0.1.0/24, the gateway of the tier is 10.0.1.1, and the
-      netmask of the tier is 255.255.255.0.
+      For example, if the VPC CIDR is 10.0.0.0/16 and the Network Tier
+      CIDR is 10.0.1.0/24, the gateway of the Network Tier is 10.0.1.1, and the
+      netmask of the Network Tier is 255.255.255.0.
 
    -  **Start IP/ End IP**: A range of IP addresses that are accessible
-      from the Internet and will be allocated to guest VMs. Enter the
+      from the Internet and will be allocated to Guest Instances. Enter the
       first and last IP addresses that define a range that CloudStack
-      can assign to guest VMs.
+      can assign to Guest Instances.
 
    -  **VLAN/VNI**: the ID or VID of the VLAN. If not specified, will be
       defaulted to the vlan of the network or if vlan of the network is

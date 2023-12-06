@@ -21,8 +21,8 @@ Management Server on one host or many, is to install the software on a
 single node.
 
 .. note::
-   If you are planning to install the Management Server on multiple nodes for 
-   high availability, do not proceed to the additional nodes yet. That step 
+   If you are planning to install the Management Server on multiple nodes for
+   high availability, do not proceed to the additional nodes yet. That step
    will come later.
 
 The CloudStack Management server can be installed using either RPM or
@@ -34,16 +34,22 @@ the Management server.
 
 Install on CentOS/RHEL
 ^^^^^^^^^^^^^^^^^^^^^^
-   
+
 .. parsed-literal::
 
    yum install cloudstack-management
 
+Install on SUSE
+^^^^^^^^^^^^^^^
+
+.. parsed-literal::
+
+   zypper install cloudstack-management
 
 Install on Ubuntu
 ^^^^^^^^^^^^^^^^^
 
 .. parsed-literal::
 
-   sudo apt-get install cloudstack-management
+   sudo apt install cloudstack-management
 

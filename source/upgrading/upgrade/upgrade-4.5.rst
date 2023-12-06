@@ -35,7 +35,7 @@ working on a production system.
 Upgrade Steps:
 
 #. Check any customisations and integrations
-#. Upload the |sysvm64-version| System VM template if not already using it.
+#. Upload the |sysvm64-version| System VM Template if not already using it.
 #. Stop all running management servers
 #. Backup CloudStack database (MySQL)
 #. Add package repository for MySQL connector
@@ -47,8 +47,8 @@ Upgrade Steps:
 .. include:: _customisation_warnings.rst
 
 .. warning::
-    If you are not already using the |sysvm64-version| System VM template you will need to 
-    upgrade your System VM template prior to performing the upgrade of the 
+    If you are not already using the |sysvm64-version| System VM Template you will need to
+    upgrade your System VM Template prior to performing the upgrade of the
     CloudStack packages.
 
 .. include:: _sysvm_templates.rst
@@ -97,8 +97,8 @@ Backup current database
 
    .. parsed-literal::
 
-      $ mysqldump -u root -p cloud > cloud-backup_`date '+%Y-%m-%d'`.sql
-      $ mysqldump -u root -p cloud_usage > cloud_usage-backup_`date '+%Y-%m-%d'`.sql
+      $ mysqldump -u root -p cloud > cloud-backup_$(date +%Y-%m-%d-%H%M%S)
+      $ mysqldump -u root -p cloud_usage > cloud_usage-backup_$(date +%Y-%m-%d-%H%M%S)
 
 
 .. _ubuntu45:
@@ -425,8 +425,6 @@ Restart management services
 
 .. _upg-sysvm45:
 
-System-VMs and Virtual-Routers
-------------------------------
 
 .. include:: _sysvm_restart.rst
 

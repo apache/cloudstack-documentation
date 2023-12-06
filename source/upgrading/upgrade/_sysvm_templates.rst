@@ -15,8 +15,13 @@
 
 .. sub-section included in upgrade notes.
 
-Update System-VM templates
+Update System VM Templates
 --------------------------
+
+.. note::
+   From ACS 4.16 onwards, CloudStack will support automatic registration of System VM
+   Templates (when using noredist packages), if not done prior initiating upgrade. However, the usual upgrade process
+   continues to be supported. 
 
 #. While running the existing |version_to_upgrade| system, log in to the UI as 
    the root administrator.
@@ -25,10 +30,12 @@ Update System-VM templates
 
 #. In Select view, click Templates.
 
-#. Click Register template.
-   The Register template dialog box is displayed.
+#. Click Register Template.
+   The Register Template dialog box is displayed.
 
-#. In the Register template dialog box, specify the following values
+#. To register the System VM Template do the following:
+
+   In the Register Template dialog box, specify the following values
    (do not change these):
 
    .. cssclass:: table-striped table-bordered table-hover
@@ -137,6 +144,6 @@ Update System-VM templates
    |            | Routing: no                                                |
    +------------+------------------------------------------------------------+
 
-#. Watch the screen to be sure that the template downloads successfully and 
+#. Watch the screen to be sure that the Template downloads successfully and
    enters the **READY** state. Do not proceed until this is successful.
 

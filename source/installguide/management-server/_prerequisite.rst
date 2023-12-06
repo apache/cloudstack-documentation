@@ -29,7 +29,7 @@ In either case, each machine must meet the system requirements described
 in :ref:`minimum-system-requirements`.
 
 .. warning::
-   For the sake of security, be sure the public Internet can not access port 
+   For the sake of security, be sure the public Internet can not access port
    8096 or port 8250 on the Management Server.
 
 The procedure for installing the Management Server is:
@@ -81,19 +81,29 @@ node.
 
    Install chrony.
 
-   .. parsed-literal::
+   In RHEL or CentOS:
 
-      yum install chrony
+      .. parsed-literal::
 
-   .. parsed-literal::
+         $ yum install chrony
 
-      sudo apt install chrony
+   In Ubuntu:
+
+      .. parsed-literal::
+
+         $ apt install chrony
+
+   In SUSE:
+
+      .. parsed-literal::
+
+         $ zypper install chrony
 
 #. Repeat all of these steps on every host where the Management Server
    will be installed.
 
 .. warning::
    CloudStack |version| requires Java 11 JRE. Installing CloudStack packages will
-   automatically install Java 11, but it's good to explicitly confirm that the Java 11 
+   automatically install Java 11, but it's good to explicitly confirm that the Java 11
    is the selected/active one (in case you had a previous Java version already installed)
    with ``alternatives --config java`` after CloudStack packages are already installed.

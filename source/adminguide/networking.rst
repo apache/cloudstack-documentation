@@ -48,7 +48,7 @@ or isolated.
 Isolated Networks
 ~~~~~~~~~~~~~~~~~
 
-An isolated network can be accessed only by virtual machines of a single
+An isolated network can be accessed only by Instances of a single
 account. Isolated networks have the following properties.
 
 -  Resources such as VLAN are allocated and garbage collected
@@ -66,12 +66,14 @@ For more information, see `“Configure Guest Traffic in an Advanced Zone”
 Shared Networks
 ~~~~~~~~~~~~~~~
 
-A shared network can be accessed by virtual machines that belong to many
+A shared network can be accessed by Instances that belong to many
 different accounts. Network Isolation on shared networks is accomplished
 by using techniques such as security groups, which is supported only in
 Basic zones or Advanced Zones with Security Groups.
 
--  Shared Networks are created by the administrator
+-  Shared Networks are created by the end users or the administrator. Network offerings
+   which allow the network creator to specify a VLAN can only be created 
+   by the root admins.
 
 -  Shared Networks can be designated to a certain domain
 
@@ -84,12 +86,14 @@ Basic zones or Advanced Zones with Security Groups.
 
 -  Source NAT per zone is not supported in Shared Network when the
    service provider is virtual router. However, Source NAT per account
-   is supported. For information, see `“Configuring a Shared Guest
-   Network” <networking_and_traffic.html#configuring-a-shared-guest-network>`_.
+   is supported.
+
+For more information, see `“Configuring a Shared Guest Network”
+<networking_and_traffic.html#configuring-a-shared-guest-network>`_.
 
 
-L2 Networks
-~~~~~~~~~~~
+L2 (Layer 2) Networks
+~~~~~~~~~~~~~~~~~~~~~
 
 L2 networks provide network isolation without any other services.  This
 means that there will be no virtual router.  It is assumed that the end
@@ -100,9 +104,9 @@ IP addresses.
    which allow the network creator to specify a VLAN can only be created
    by the root admins.
 
--  CloudStack does not assign IP addresses to VMs.
+-  CloudStack does not assign IP addresses to instances.
 
--  Userdata and metadata can be passed to the VM using a config drive
+-  Userdata and metadata can be passed to the instance using a config drive
    (which must be enabled in the network service offering)
 
 Example GUI dialog box (for a regular user account) is shown below:
@@ -115,8 +119,8 @@ Runtime Allocation of Virtual Network Resources
 
 When you define a new virtual network, all your settings for that
 network are stored in CloudStack. The actual network resources are
-activated only when the first virtual machine starts in the network.
-When all virtual machines have left the virtual network, the network
+activated only when the first Instance starts in the network.
+When all Instances have left the virtual network, the network
 resources are garbage collected so they can be allocated again. This
 helps to conserve network resources.
 
@@ -152,28 +156,28 @@ offering.
 
 .. cssclass:: table-striped table-bordered table-hover
 
-+----------------------+-----------+------------+----------+-------------+-------------+
-|                      | Virtual   | Citrix     | Juniper  | F5 BigIP    | Host based  |
-|                      | Router    | NetScaler  | SRX      |             | (KVM/Xen)   |
-+======================+===========+============+==========+=============+=============+
-| Remote Access VPN    | Yes       | No         | No       | No          | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
-| DNS/DHCP/User Data   | Yes       | No         | No       | No          | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
-| Firewall             | Yes       | No         | Yes      | No          | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
-| Load Balancing       | Yes       | Yes        | No       | Yes         | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
-| Elastic IP           | No        | Yes        | No       | No          | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
-| Elastic LB           | No        | Yes        | No       | No          | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
-| Source NAT           | Yes       | No         | Yes      | No          | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
-| Static NAT           | Yes       | Yes        | Yes      | No          | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
-| Port Forwarding      | Yes       | No         | Yes      | No          | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
++----------------------+-----------+------------+-------------+
+|                      | Virtual   | Citrix     | Host based  |
+|                      | Router    | NetScaler  | (KVM/Xen)   |
++======================+===========+============+=============+
+| Remote Access VPN    | Yes       | No         | No          |
++----------------------+-----------+------------+-------------+
+| DNS/DHCP/User Data   | Yes       | No         | No          |
++----------------------+-----------+------------+-------------+
+| Firewall             | Yes       | No         | No          |
++----------------------+-----------+------------+-------------+
+| Load Balancing       | Yes       | Yes        | No          |
++----------------------+-----------+------------+-------------+
+| Elastic IP           | No        | Yes        | No          |
++----------------------+-----------+------------+-------------+
+| Elastic LB           | No        | Yes        | No          |
++----------------------+-----------+------------+-------------+
+| Source NAT           | Yes       | No         | No          |
++----------------------+-----------+------------+-------------+
+| Static NAT           | Yes       | Yes        | No          |
++----------------------+-----------+------------+-------------+
+| Port Forwarding      | Yes       | No         | No          |
++----------------------+-----------+------------+-------------+
 
 
 Network Offerings
@@ -202,12 +206,12 @@ A network offering is a named set of network services, such as:
 -  VPN
 
 -  (Optional) Name one of several available providers to use for a given
-   service, such as Juniper for the firewall
+   service
 
 -  (Optional) Network tag to specify which physical network to use
 
-When creating a new VM, the user chooses one of the available network
-offerings, and that determines which network services the VM can use.
+When creating a new instance, the user chooses one of the available network
+offerings, and that determines which network services the instance can use.
 
 The CloudStack administrator can create any number of custom network
 offerings, in addition to the default network offerings provided by
@@ -267,14 +271,14 @@ To create a network offering:
 
    -  **Persistent**. Indicate whether the guest network is persistent
       or not. The network that you can provision without having to
-      deploy a VM on it is termed persistent network. For more
+      deploy an instance on it is termed persistent network. For more
       information, see `“Persistent
       Networks” <networking_and_traffic.html#persistent-networks>`_.
 
-   -  **Specify VLAN**. (Isolated guest networks only) Indicate whether
+   -  **Specify VLAN**. Indicate whether
       a VLAN could be specified when this offering is used. If you
       select this option and later use this network offering while
-      creating a VPC tier or an isolated network, you will be able to
+      creating a VPC Network Tier or an isolated network, you will be able to
       specify a VLAN ID for the network you create.
 
    -  **VPC**. This option indicate whether the guest network is Virtual
@@ -283,6 +287,40 @@ To create a network offering:
       network topology that resembles a traditional physical network.
       For more information on VPCs, see `“About Virtual
       Private Clouds” <networking_and_traffic.html#about-virtual-private-clouds>`_.
+
+   -  **Promiscuous Mode**. Applicable for guest networks on VMware hypervisor only. It accepts the following values for desired behaviour of the network elements:
+
+      *Reject* - The switch drops any outbound frame from an Instance adapter with a source MAC address that is different from the one in the .vmx configuration file.
+
+      *Accept* - The switch does not perform filtering, and permits all outbound frames.
+
+      *None* - Default to value from global setting - ``network.promiscuous.mode``.
+
+   -  **Forged Transmits**. Applicable for guest networks on VMware hypervisor only. It accepts the following values for desired behaviour of the network elements:
+
+      *Reject* - The switch drops any outbound frame from an Instance adapter with a source MAC address that is different from the one in the .vmx configuration file.
+
+      *Accept* - The switch does not perform filtering, and permits all outbound frames.
+
+      *None* - Default to value from global setting - ``network.forged.transmits``.
+
+   -  **MAC Address Changes**. Applicable for guest networks on VMware hypervisor only. It accepts the following values for desired behaviour of the network elements:
+
+      *Reject* - If the guest OS changes the effective MAC address of the Instance to a value that is different from the MAC address of the instance network adapter (set in the .vmx configuration file), the switch drops all inbound frames to the adapter.
+
+      If the guest OS changes the effective MAC address of the Instance back to the MAC address of the instance network adapter, the Instance receives frames again.
+
+      *Accept* - If the guest OS changes the effective MAC address of the Instance to a value that is different from the MAC address of the instance network adapter, the switch allows frames to the new address to pass.
+
+      *None* - Default to value from global setting - ``network.mac.address.changes``.
+
+   -  **MAC Learning**. Applicable for guest networks on VMware hypervisor only with VMware Distributed Virtual Switches version 6.6.0 & above and vSphere version 6.7 & above. It accepts the following values for desired behaviour of the network elements:
+
+      *Reject* - Network connectivity for multiple MAC address behind a single vNIC will not work.
+
+      *Accept* - Enables network connectivity for multiple MAC addresses behind a single vNIC.
+
+      *None* - Default to value from global setting - ``network.mac.learning``.
 
    -  **Supported Services**. Select one or more of the possible network
       services. For some services, you must also choose the service
@@ -360,6 +398,8 @@ To create a network offering:
          its maximum capacity, the device will not be allocated to a new
          account.
 
+.. not sure how this works after deprecation of Juniper devices
+
    -  **Mode**: You can select either Inline mode or Side by Side mode:
 
       -  **Inline mode**: Supported only for Juniper SRX firewall and BigF5
@@ -376,7 +416,7 @@ To create a network offering:
          and therefore, is exposed to the public network.
 
    -  **Associate Public IP**: Select this option if you want to assign
-      a public IP address to the VMs deployed in the guest network. This
+      a public IP address to the instances deployed in the guest network. This
       option is available only if
       -  Guest network is shared.
 
@@ -392,11 +432,17 @@ To create a network offering:
       if you want to use two virtual routers in the network for
       uninterrupted connection: one operating as the primary virtual
       router and the other as the backup. The primary virtual router
-      receives requests from and sends responses to the user’s VM. The
+      receives requests from and sends responses to the user’s instance. The
       backup virtual router is activated only when the primary is down.
       After the failover, the backup becomes the primary virtual router.
       CloudStack deploys the routers on different hosts to ensure
       reliability if one host is down.
+
+   -  **Supports instance auto scaling**: Indicate whether instance autoscaling feature
+      is supported. It is available only when Virtual Router or Netscaler
+      is selected as the Load Balancer provider. For more information on
+      instance autoscaling using Virtual Router, see `“Configuring AutoScale
+      with using CloudStack Virtual Router” <autoscale_with_virtual_router.html>`_.
 
    -  **Conserve mode**: Indicate whether to use conserve mode. In this
       mode, network resources are allocated only when the first virtual

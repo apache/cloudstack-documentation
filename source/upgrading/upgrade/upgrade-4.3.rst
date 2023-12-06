@@ -35,7 +35,7 @@ working on a production system.
 Upgrade Steps:
 
 #. Backup CloudStack database (MySQL)
-#. Install new systemvm template
+#. Install new systemvm Template
 #. Add package repository for MySQL connector
 #. Upgrade CloudStack management server(s)
 #. Update hypervisors specific dependencies
@@ -88,8 +88,8 @@ Backup current database
 
    .. parsed-literal::
 
-      $ mysqldump -u root -p cloud > cloud-backup_`date '+%Y-%m-%d'`.sql
-      $ mysqldump -u root -p cloud_usage > cloud_usage-backup_`date '+%Y-%m-%d'`.sql
+      $ mysqldump -u root -p cloud > cloud-backup_$(date +%Y-%m-%d-%H%M%S)
+      $ mysqldump -u root -p cloud_usage > cloud_usage-backup_$(date +%Y-%m-%d-%H%M%S)
 
 
 .. _ubuntu43:
@@ -411,8 +411,5 @@ Restart management services
 
 
 .. _upg-sysvm43:
-
-System-VMs and Virtual-Routers
-------------------------------
 
 .. include:: _sysvm_restart.rst

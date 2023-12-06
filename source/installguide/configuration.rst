@@ -267,7 +267,7 @@ and secondary storage.
 #. Choose one of the following network types:
 
    -  **Basic.** For AWS-style networking. Provides a single network
-      where each VM instance is assigned an IP directly from the
+      where each instance is assigned an IP directly from the
       network. Guest isolation can be provided through layer-3 means
       such as security groups (IP address source filtering).
 
@@ -296,13 +296,13 @@ Basic Zone Configuration
 
    -  **Name.** A name for the zone.
 
-   -  **DNS 1 and 2.** These are DNS servers for use by guest VMs in the
+   -  **DNS 1 and 2.** These are DNS servers for use by Guest Instances in the
       zone. These DNS servers will be accessed via the public network
       you will add later. The public IP addresses for the zone must have
       a route to the DNS server named here.
 
    -  **Internal DNS 1 and Internal DNS 2.** These are DNS servers for
-      use by system VMs in the zone (these are VMs used by CloudStack
+      use by system VMs in the zone (these are instances used by CloudStack
       itself, such as virtual routers, console proxies, and Secondary
       Storage VMs.) These DNS servers will be accessed via the
       management traffic network interface of the System VMs. The
@@ -315,25 +315,25 @@ Basic Zone Configuration
       zone.
 
    -  **Network Offering.** Your choice here determines what network
-      services will be available on the network for guest VMs.
+      services will be available on the network for Guest Instances.
 
       .. cssclass:: table-striped table-bordered table-hover
 
       ===============================================  ===================================================================================================================
       Network Offering                                 Description
       ===============================================  ===================================================================================================================
-      DefaultSharedNetworkOfferingWithSGService        If you want to enable security groups for guest traffic isolation, choose this. (See Using Security Groups to                                                              Control Traffic to VMs.)
+      DefaultSharedNetworkOfferingWithSGService        If you want to enable security groups for guest traffic isolation, choose this. (See Using Security Groups to                                                              Control Traffic to instances.)
       DefaultSharedNetworkOffering                     If you do not need security groups, choose this.
       DefaultSharedNetscalerEIPandELBNetworkOffering   If you have installed a Citrix NetScaler appliance as part of your zone network, and you will be using its Elastic                                                         IP and Elastic Load Balancing features, choose this. With the EIP and ELB features, a basic zone with security                                                             groups enabled can offer 1:1 static NAT and load balancing.
       ===============================================  ===================================================================================================================
 
 
    -  **Network Domain.** (Optional) If you want to assign a special
-      domain name to the guest VM network, specify the DNS suffix.
+      domain name to the Guest Instance network, specify the DNS suffix.
 
    -  **Public.** A public zone is available to all users. A zone that
       is not public will be assigned to a particular domain. Only users
-      in that domain will be allowed to create guest VMs in this zone.
+      in that domain will be allowed to create Guest Instances in this zone.
 
 #. Choose which traffic types will be carried by the physical network.
 
@@ -402,7 +402,7 @@ Basic Zone Configuration
 
    -  **Start IP/End IP.** A range of IP addresses that are assumed to
       be accessible from the Internet and will be allocated for access
-      to guest VMs.
+      to Guest Instances.
 
 #. In a new zone, CloudStack adds the first pod for you. You can always
    add more pods later. For an overview of what a pod is, see :ref:`about-pods`
@@ -462,7 +462,7 @@ Basic Zone Configuration
 
    .. note::
       When you add a hypervisor host to CloudStack, the host must not have
-      any VMs already running.
+      any instances already running.
 
    Before you can configure the host, you need to install the hypervisor
    software on the host. You will need to know which version of the
@@ -485,12 +485,22 @@ Basic Zone Configuration
    -  **Password.** This is the password for the user named above (from
       your XenServer or KVM install).
 
+      One additional facility that is available in case of KVM is, host can also be added
+      using CloudStack's SSH key without having to provide host password.
+
+      Before adding the host in CloudStack do the following,
+
+         - Copy the SSH public key from /var/cloudstack/management/.ssh/id_rsa.pub on the management server
+         - Add the copied key to /root/.ssh/authorized_keys file on the host
+
+      Select "System SSH Key" and proceed with next steps.
+
    -  **Host Tags.** (Optional) Any labels that you use to categorize
       hosts for ease of maintenance. For example, you can set this to
       the cloud's HA tag (set in the ha.tag global configuration
-      parameter) if you want this host to be used only for VMs with the
+      parameter) if you want this host to be used only for instances with the
       "high availability" feature enabled. For more information, see
-      HA-Enabled Virtual Machines as well as HA for Hosts.
+      HA-Enabled Instances as well as HA for Hosts.
 
 #. In a new cluster, CloudStack adds the first primary storage server
    for you. You can always add more servers later. For an overview of
@@ -511,39 +521,43 @@ Basic Zone Configuration
 Advanced Zone Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. After you select Advanced in the Add Zone wizard and click Next, you
-   will be asked to enter the following details. Then click Next.
+For Advanced zone, you may chose to select Edge which will allow creating an Edge Zone. If Edge is not selected then wizard will continue creating a Core zone.
+
+Core Zone
+*********
+
+#. For a Core zone, you will be asked to enter the following details. Then click Next.
 
    -  **Name.** A name for the zone.
 
-   -  **DNS 1 and 2.** (DNS 1 obligatory)These are DNS servers for use by guest VMs in the
+   -  **DNS 1 and 2.** (DNS 1 obligatory)These are DNS servers for use by Guest Instances in the
       zone. These DNS servers will be accessed via the public network
       you will add later. The public IP addresses for the zone must have
       a route to the DNS server named here.
 
    -  **Internal DNS 1 and Internal DNS 2.** (DNS 1 obligatory)
       These are DNS servers for use by system VMs in the zone(these are 
-      VMs used by CloudStack itself, such as virtual routers, console
+      instances used by CloudStack itself, such as virtual routers, console
       proxies,and Secondary Storage VMs.) These DNS servers will be accessed via the
       management traffic network interface of the System VMs. The private
       IP address you provide for the pods must have a route to
       the internal DNS server named here.
 
    -  **Network Domain.** If you want to assign a special
-      domain name to the guest VM network, specify the DNS suffix.
+      domain name to the Guest Instance network, specify the DNS suffix.
 
    -  **Hypervisor.** (Obligatory) Choose the hypervisor for the first
       cluster in the zone. You can add clusters with different hypervisors
       later, after you finish adding the zone.
 
    -  **Dedicated.** A dedicated zone is available to selected users or groups 
-      within a domain. Only specified users or grous in that domain will 
-      be allowed to create guest VMs in this zone.
+      within a domain. Only specified users or groups in that domain will
+      be allowed to create Guest Instances in this zone.
 
-   -  **Enable local storage for User VMs.** Give the user the opperunity to 
-      provide local storage (physical storage on the host) for User VMs to store data.
+   -  **Enable local storage for User instances.** Give the user the opportunity to
+      provide local storage (physical storage on the host) for User instances to store data.
 
-   -  **Enable local storage for System VMs.** Give the system the opperunity to 
+   -  **Enable local storage for System VMs.** Give the system the opportunity to
       use local storage (physical storage on the hosts) for System VMs.
 	  
 #. Click Next.
@@ -604,7 +618,7 @@ Advanced Zone Configuration
       For more information, see :ref:`about_system_reserved_ip_addresses`
 
 #. Configure the IP range for guest traffic. Guest network traffic is 
-   communication between end-user virtual machines. Enter the
+   communication between end-user Instances. Enter the
    following details, then click Add. When done, click Next.
 
    -  **Guest Gateway.** The gateway in use for these IP addresses.
@@ -630,7 +644,7 @@ Advanced Zone Configuration
    always add more hosts later. For an overview of what a host is, see :ref:`about-hosts`.
 
    .. note::
-      When you deploy CloudStack, the hypervisor host must not have any VMs
+      When you deploy CloudStack, the hypervisor host must not have any instances
       already running.
 
    Before you can configure the host, you need to install the hypervisor
@@ -662,9 +676,9 @@ Advanced Zone Configuration
    -  **Host Tags.** Any labels that you use to categorize
       hosts for ease of maintenance. For example, you can set to the
       cloud's HA tag (set in the ha.tag global configuration parameter)
-      if you want this host to be used only for VMs with the "high
+      if you want this host to be used only for instances with the "high
       availability" feature enabled. For more information, see
-      HA-Enabled Virtual Machines as well as HA for Hosts, both in the
+      HA-Enabled Instances as well as HA for Hosts, both in the
       Administration Guide.
 
 #. In a new cluster, CloudStack adds the first primary storage server
@@ -744,7 +758,7 @@ Advanced Zone Configuration
 
    Before you can fill out this screen, you need to prepare the
    secondary storage by setting up NFS shares and installing the latest
-   CloudStack System VM template. See Adding Secondary Storage :
+   CloudStack System VM Template. See Adding Secondary Storage :
 
    -  **NFS Server.** The IP address of the server or fully qualified
       domain name of the server.
@@ -752,6 +766,56 @@ Advanced Zone Configuration
    -  **Path.** The exported path from the server.
 
 #. Click Launch.
+
+
+Edge Zone
+*********
+
+.. note::
+   Support for Edge zones has been added with 4.18.0 and these zones will only be supported on KVM hypervisors
+
+An Edge Zone is a simpler, light-weight zone which may often contain a single hypervisor host. There will be no need for shared storage, public and management physical networks for an Edge zone.
+To work with limited compute resources, an Edge zone will not deploy system VMs. This type of zone only supports shared and L2 guest networks. For virtual routers of a shared guest network, a direct-download System VM must be added after adding the zone.
+
+#. For an Edge zone, you will be asked to enter the following details
+
+   -  **Name.** A name for the zone.
+
+   -  **Hypervisor.** (Obligatory) Choose the hypervisor for the zone. Currently, this is disabled and set to KVM.
+
+   -  **Dedicated.** A dedicated zone is available to selected users or groups within a domain. Only specified users or groups in that domain will be allowed to create Guest Instances in this zone.
+
+#. Click Next.
+
+#. Choose the details for the physical network that will carry guest.
+
+#. Click Next.
+
+#. Specify VLAN/VNI range for guest traffic isolation.
+
+#. Click Next.
+
+#. Configure the host for the zone, enter the following, then click Next:
+
+   -  **Host Name.** (Obligatory) The DNS name or IP address of the host.
+
+   -  **Username.** (Obligatory) Username of a user who has administrator / root privilidges on the specified host (using Linux-hosts usually root).
+
+   -  **Authentication.** Atuthentication type used for the host, either Password or System SSH Key.
+
+   -  **Password.** (Obligatory if Password authentication is selected) This is the password for the user named above.
+
+   .. note::
+      For security reasons there are ways to use non-adminstrative users for
+      adding a host. Please refer to the hypervisor setup guides for further information.
+
+   -  **Host Tags.** Any labels that you use to categorize
+      hosts for ease of maintenance. For example, you can set to the
+      cloud's HA tag (set in the ha.tag global configuration parameter)
+      if you want this host to be used only for instances with the "high
+      availability" feature enabled. For more information, see
+      HA-Enabled Instances as well as HA for Hosts, both in the
+      Administration Guide.
 
 
 .. _adding-a-pod:
@@ -841,7 +905,7 @@ requirements:
 
 -  Do not put more than 8 hosts in a vSphere cluster
 
--  Make sure the hypervisor hosts do not have any VMs already running
+-  Make sure the hypervisor hosts do not have any instances already running
    before you add them to CloudStack.
 
 To add a vSphere cluster to CloudStack:
@@ -896,7 +960,7 @@ Adding a Host
 
 #. Before adding a host to the CloudStack configuration, you must first
    install your chosen hypervisor on the host. CloudStack can manage
-   hosts running VMs under a variety of hypervisors.
+   hosts running instances under a variety of hypervisors.
 
    The CloudStack Installation Guide provides instructions on how to
    install each supported hypervisor and configure it for use with
@@ -930,7 +994,7 @@ Requirements for XenServer and KVM Hosts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning::
-   Make sure the hypervisor host does not have any VMs already running before
+   Make sure the hypervisor host does not have any instances already running before
    you add it to CloudStack.
 
 Configuration requirements:
@@ -1001,8 +1065,8 @@ KVM Host Additional Requirements
      cloudstack ALL=NOPASSWD: /usr/bin/cloudstack-setup-agent
      defaults:cloudstack !requiretty
 
-Adding a XenServer or KVM Host
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Adding a XenServer Host
+^^^^^^^^^^^^^^^^^^^^^^^
 
 #. If you have not already done so, install the hypervisor software on
    the host. You will need to know which version of the hypervisor
@@ -1030,21 +1094,37 @@ Adding a XenServer or KVM Host
 
    -  Username. Usually root.
 
-   -  Password. This is the password for the user from your XenServer or
-      KVM install).
+   -  Password. This is the password for the user from your XenServer install).
 
    -  Host Tags (Optional). Any labels that you use to categorize hosts
       for ease of maintenance. For example, you can set to the cloud's
       HA tag (set in the ha.tag global configuration parameter) if you
       want this host to be used only for VMs with the "high
       availability" feature enabled. For more information, see
-      HA-Enabled Virtual Machines as well as HA for Hosts.
+      HA-Enabled Instances as well as HA for Hosts.
 
    There may be a slight delay while the host is provisioned. It should
    automatically display in the UI.
 
 #. Repeat for additional hosts.
 
+
+Adding a KVM Host
+^^^^^^^^^^^^^^^^^
+
+The steps to add a KVM host are same as adding a XenServer Host as mentioned in
+the above section. 
+One additional facility that is available in case of KVM is, host can also be added
+using CloudStack's SSH key without having to provide host password.
+
+Before adding the host in CloudStack do the following,
+
+   - Copy the SSH public key from /var/cloudstack/management/.ssh/id_rsa.pub on the management server
+   - Add the copied key to /root/.ssh/authorized_keys file on the host
+
+While adding the host from CloudStack UI, select "System SSH Key" as shown below
+
+   |add-Host.png: Adding a KVM Host|
 
 .. _adding-a-host-vsphere:
 
@@ -1081,7 +1161,7 @@ When setting up primary storage, follow these restrictions:
 
 -  If you do not provision shared primary storage, you must set the
    global configuration parameter system.vm.local.storage.required to
-   true, or else you will not be able to start VMs.
+   true, or else you will not be able to start instances.
 
 
 Adding Primary Storage
@@ -1328,6 +1408,57 @@ powerflex://<API_USER>:<API_PASSWORD>@<GATEWAY>/<STORAGEPOOL>
 
 -	<STORAGEPOOL>=[PowerFlex storage pool name (case sensitive)]
 
+StorPool Plug-in
+~~~~~~~~~~~~~~~~
+
+.. note::
+   The StorPool storage plug-in for CloudStack is part of the standard
+   CloudStack install. There is no additional work required to add this
+   component.
+
+The StorPool plug-in is deeply integrated with CloudStack and works on with KVM hypervisors.
+
+When used with service or disk offerings, an administrator is able to
+build an environment in which a root or data disk that a user creates
+leads to the dynamic creation of a StorPool volume, which has guaranteed
+performance. Such a StorPool volume is associated with one CloudStack volume,
+so performance of the CloudStack volume does not vary depending on how
+heavily other tenants are using the system. The volume migration is supported
+accross non-managed storage pools (e.g. NFS/Local storage/Ceph) to StorPool, and
+accross StorPool storage pools.
+
+More technical details could be found on `StorPool Knowledge Base <https://kb.storpool.com/>`_.
+
+The createStoragePool API has been augmented to support plugable storage providers.
+The following is a list of parameters to use when adding storage to CloudStack that is based on the StorPool plug-in:
+
+command=createStoragePool
+scope=[zone]
+zoneid=[your zone id]
+hypervisor=KVM
+name=[name for primary storage]
+protocol=SharedMountPoint
+provider=StorPool
+capacityBytes=[used for accounting purposes only. May be more or less than the actual StorPool Template capacity]
+url=[storage pool url]
+The url parameter contains the StorPool storage pool details, specified in the following format:
+
+SP_API_HTTP=address:port;SP_AUTH_TOKEN=token;SP_TEMPLATE=template_name
+
+-       <SP_API_HTTP>=[address of StorPool Api]
+-       <SP_AUTH_TOKEN>=[StorPool's token]
+-       <SP_TEMPLATE>=[name of StorPool's Template]
+
+================================= ====================================================================================================================================================================
+StorPool Configurations                     Description
+================================= ====================================================================================================================================================================
+sp.bypass.secondary.storage       For StorPool Managed storage backup to secondary
+sp.cluster.id                     For StorPool multi cluster authorization (It will be set automatically for each cluster)
+sp.enable.alternative.endpoint    Used for StorPool primary storage, defines if there is a need to be used alternative endpoint
+sp.alternative.endpoint           Used for StorPool primary storage for an alternative endpoint. Structure of the endpoint is `SP_API_HTTP=address:port; SP_AUTH_TOKEN=token; SP_TEMPLATE=template_name`
+storpool.volume.tags.checkup      Minimal interval (in seconds) to check and report if a StorPool volume created by CloudStack exists in CloudStack's database
+storpool.snapshot.tags.checkup    Minimal interval (in seconds) to check and report if a StorPool Snapshot created by CloudStack exists in CloudStack's database
+================================= ====================================================================================================================================================================
 
 .. _add-secondary-storage:
 
@@ -1347,7 +1478,7 @@ System Requirements for Secondary Storage
 -  100GB minimum capacity
 
 -  A secondary storage device must be located in the same zone as the
-   guest VMs it serves.
+   Guest Instances it serves.
 
 -  Each Secondary Storage server must be available to all hosts in the
    zone.
@@ -1371,7 +1502,7 @@ add more servers to an existing zone.
    If you are using an Hyper-V host, ensure that you have created a SMB
    share.
 
-#. Make sure you prepared the system VM template during Management
+#. Make sure you prepared the system VM Template during Management
    Server installation. See `“Prepare the System VM Template”
    <installation.html#prepare-the-system-vm-template>`_.
 
@@ -1453,6 +1584,43 @@ zone:
    -  Path. The path to the zone's Secondary Staging Store.
 
 
+Adding Object Storage
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can add  object storage pools at any time to add more capacity or providers to CloudStack
+
+
+
+#. Make sure you have installed supported Object Storage provider and the Object Store is accessible from CloudStack Management Server
+
+
+#. Log in to the CloudStack UI as root administrator.
+
+#. In the left navigation bar, click Infrastructure.
+
+#. In Object Storage, click View All.
+
+#. Click Add Object Storage.
+
+#. Fill in the following fields:
+
+   -  Name. Give the object store a descriptive name.
+
+   -  Provider. Choose provider and then fill in the related
+      fields which appear. The fields will vary depending on the object storage
+      provider; for more information, consult the provider's
+      documentation (such as the MinIO website).
+
+   -  URL: API endpoint of the object storage server
+
+   -  Access key: Credentials with access to admin API of the object storage server
+
+   -  Secret key: Credentials with access to admin API of the object storage server
+
+   |AddObjectStore.png: Add Object Storage|
+
+See https://min.io/docs/minio/linux/index.html for MinIO Documentation
+
 .. _initialize-and-test:
 
 Initialize and Test
@@ -1464,7 +1632,7 @@ of your network. When the initialization has completed successfully, the
 administrator's Dashboard should be displayed in the CloudStack UI.
 
 #. Verify that the system is ready. In the left navigation bar, select
-   Templates. Click on the CentOS 5.5 (64bit) no Gui (KVM) template.
+   Templates. Click on the CentOS 5.5 (64bit) no Gui (KVM) Template.
    Check to be sure that the status is "Download Complete." Do not
    proceed to the next step until this status is displayed.
 
@@ -1474,9 +1642,9 @@ administrator's Dashboard should be displayed in the CloudStack UI.
 
    #. Choose the zone you just added.
 
-   #. In the template selection, choose the template to use in the VM.
+   #. In the Template selection, choose the Template to use in the instance.
       If this is a fresh installation, likely only the provided CentOS
-      template is available.
+      Template is available.
 
    #. Select a service offering. Be sure that the hardware you have
       allows starting the selected service offering.
@@ -1484,27 +1652,27 @@ administrator's Dashboard should be displayed in the CloudStack UI.
    #. In data disk offering, if desired, add another data disk. This is
       a second volume that will be available to but not mounted in the
       guest. For example, in Linux on XenServer you will see /dev/xvdb
-      in the guest after rebooting the VM. A reboot is not required if
+      in the guest after rebooting the instance. A reboot is not required if
       you have a PV-enabled OS kernel in use.
 
    #. In default network, choose the primary network for the guest. In a
       trial installation, you would have only one option here.
 
-   #. Optionally give your VM a name and a group. Use any descriptive
+   #. Optionally give your instance a name and a group. Use any descriptive
       text you would like.
 
-   #. Click Launch VM. Your VM will be created and started. It might
-      take some time to download the template and complete the VM
-      startup. You can watch the VMâ€™s progress in the Instances
+   #. Click Launch instance. Your instance will be created and started. It might
+      take some time to download the Template and complete the instance
+      startup. You can watch the instance's progress in the Instances
       screen.
 
-#. To use the VM, click the View Console button. |ConsoleButton.png:
+#. To use the instance, click the View Console button. |ConsoleButton.png:
    button to launch a console|
 
-   For more information about using VMs, including instructions for how
-   to allow incoming network traffic to the VM, start, stop, and delete
-   VMs, and move a VM from one host to another, see Working With Virtual
-   Machines in the Administratorâ€™s Guide.
+   For more information about using instances, including instructions for how
+   to allow incoming network traffic to the instance, start, stop, and delete
+   instances, and move an instance from one host to another, see Working With Virtual
+   Machines in the Administrator's Guide.
 
 Congratulations! You have successfully completed a CloudStack
 Installation.
@@ -1541,11 +1709,11 @@ Field                              Value
 =================================  ================================================================================
 management.network.cidr            A CIDR that describes the network that the management CIDRs reside on. This                                        variable must be set for deployments that use vSphere. It is recommended to be                                     set for other deployments as well. Example: 192.168.3.0/24.
 xen.setup.multipath                For XenServer nodes, this is a true/false variable that instructs CloudStack to                                    enable iSCSI multipath on the XenServer Hosts when they are added. This                                            defaults to false. Set it to true if you would like CloudStack to enable                                           multipath.If this is true for a NFS-based deployment multipath will still be                                       enabled on the XenServer host. However, this does not impact NFS operation and                                     is harmless.
-secstorage.allowed.internal.sites  This is used to protect your internal network from rogue attempts to download                                      arbitrary files using the template download feature. This is a comma-separated                                     list of CIDRs. If a requested URL matches any of these CIDRs the Secondary                                         Storage VM will use the private network interface to fetch the URL. Other URLs                                     will go through the public interface. We suggest you set this to 1 or 2                                            hardened internal machines where you keep your templates. For example, set it                                      to 192.168.1.66/32.
-use.local.storage                  Determines whether CloudStack will use storage that is local to the Host for                                       data disks, templates, and snapshots. By default CloudStack will not use this                                      storage. You should change this to true if you want to use local storage and                                       you understand the reliability and feature drawbacks to choosing local storage.
+secstorage.allowed.internal.sites  This is used to protect your internal network from rogue attempts to download                                      arbitrary files using the Template download feature. This is a comma-separated                                     list of CIDRs. If a requested URL matches any of these CIDRs the Secondary                                         Storage VM will use the private network interface to fetch the URL. Other URLs                                     will go through the public interface. We suggest you set this to 1 or 2                                            hardened internal machines where you keep your Templates. For example, set it                                      to 192.168.1.66/32.
+use.local.storage                  Determines whether CloudStack will use storage that is local to the Host for                                       data disks, Templates, and Snapshots. By default CloudStack will not use this                                      storage. You should change this to true if you want to use local storage and                                       you understand the reliability and feature drawbacks to choosing local storage.
 host                               This is the IP address of the Management Server. If you are using multiple                                         Management Servers you should enter a load balanced IP address that is                                             reachable via the private network.
 default.page.size                  Maximum number of items per page that can be returned by a CloudStack API                                          command. The limit applies at the cloud level and can vary from cloud to cloud.                                    You can override this with a lower value on a particular API call by using the                                     page and pagesize API command parameters. For more information, see the                                            Developer's Guide. Default: 500.
-ha.tag                             The label you want to use throughout the cloud to designate certain hosts as                                       dedicated HA hosts. These hosts will be used only for HA-enabled VMs that are                                      restarting due to the failure of another host. For example, you could set this                                     to ha\_host. Specify the ha.tag value asa host tag when you add a new host to                                      the cloud.
+ha.tag                             The label you want to use throughout the cloud to designate certain hosts as                                       dedicated HA hosts. These hosts will be used only for HA-enabled instances that are                                restarting due to the failure of another host. For example, you could set this                                     to ha\_host. Specify the ha.tag value asa host tag when you add a new host to                                      the cloud.
 vmware.vcenter.session.timeout     Determines the vCenter session timeout value by using this parameter. The                                          default value is 20 minutes. Increase the timeout value to avoid timeout errors                                    in VMware deployments because certain VMware operations take more than 20                                          minutes.
 =================================  ================================================================================
 
@@ -1602,6 +1770,9 @@ the global configuration settings.
 
 #. In the Actions column, click the Edit icon to modify a value.
 
+   .. note::
+      Local configuration parameters will default to global configuration value when an explicit value is not set for them. Reset action for local configurations will also update their value to global configuration value.
+
 
 Granular Global Configuration Parameters
 ----------------------------------------
@@ -1616,9 +1787,10 @@ account, cluster, and zone.
 Field     Field                                                       Value
 ========  =========================================================  ======================================================================================================================================
 account   remote.access.vpn.client.iprange                           The range of IPs to be allocated to remotely access the VPN clients. The first IP in the range is                                                                                                          used by the VPN server.
-account   allow.public.user.templates                                If false, users will not be able to create public templates.
+account   allow.public.user.templates                                If false, users will not be able to create public Templates.
 account   use.system.public.ips                                      If true and if an account has one or more dedicated public IP ranges, IPs are                                                                                                                              acquired from the system pool after all the IPs dedicated to the account have been consumed.
 account   use.system.guest.vlans                                     If true and if an account has one or more dedicated guest VLAN ranges, VLANs are allocated from the                                                                                                        system pool after all the VLANs dedicated to the account have been consumed.
+account   router.service.offering                                    Uuid of the service offering used by virtual routers; if NULL - system offering will be used
 cluster   cluster.storage.allocated.capacity.notificationthreshold   The percentage, as a value between 0 and 1, of allocated storage utilization                                                                                                                               above which alerts are sent that the storage is below the threshold.
 cluster   cluster.storage.capacity.notificationthreshold             The percentage, as a value between 0 and 1, of storage utilization above which alerts are sent that the available storage is below                                                                         the threshold.
 cluster   cluster.cpu.allocated.capacity.notificationthreshold       The percentage, as a value between 0 and 1, of cpu utilization above which alerts are sent that the available CPU is below the                                                                             threshold.
@@ -1635,11 +1807,11 @@ zone      pool.storage.allocated.capacity.disablethreshold           The percent
 zone      pool.storage.capacity.disablethreshold                     The percentage, as a value between 0 and 1, of storage utilization above which allocators will disable the pool because the available                                                                      storage capacity is below the threshold.
 zone      storage.overprovisioning.factor                            Used for storage over-provisioning calculation; available storage will be the mathematical product of actualStorageSize and                                                                                storage.overprovisioning.factor.
 zone      network.throttling.rate                                    Default data transfer rate in megabits per second allowed in a network.
-zone      guest.domain.suffix                                        Default domain name for VMs inside a virtual networks with a router.
-zone      router.template.xen                                        Name of the default router template on Xenserver.
-zone      router.template.kvm                                        Name of the default router template on KVM.
-zone      router.template.vmware                                     Name of the default router template on VMware.
-zone      enable.dynamic.scale.vm                                    Enable or diable dynamically scaling of a VM.
+zone      guest.domain.suffix                                        Default domain name for instances inside a virtual networks with a router.
+zone      router.template.xen                                        Name of the default router Template on Xenserver.
+zone      router.template.kvm                                        Name of the default router Template on KVM.
+zone      router.template.vmware                                     Name of the default router Template on VMware.
+zone      enable.dynamic.scale.vm                                    Enable or disable dynamically scaling of a instance.
 zone      use.external.dns                                           Bypass internal DNS, and use the external DNS1 and DNS2
 zone      denied.routes                                              Routes that are denied cannot be used for creating static routes for a VPC Private Gateway.
 ========  =========================================================  ======================================================================================================================================  
@@ -1648,4 +1820,6 @@ zone      denied.routes                                              Routes that
 .. |provisioning-overview.png: Conceptual overview of a basic deployment| image:: /_static/images/provisioning-overview.png
 .. |vsphereclient.png: vSphere client| image:: /_static/images/vsphere-client.png
 .. |addcluster.png: add a cluster| image:: /_static/images/add-cluster.png
+.. |add-Host.png: Adding a KVM Host| image:: /_static/images/add-Host.png
 .. |ConsoleButton.png: button to launch a console| image:: /_static/images/console-icon.png
+.. |AddObjectStore.png: Add Object Storage| image:: /_static/images/add-object-store.png

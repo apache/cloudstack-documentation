@@ -28,6 +28,12 @@ Upgrading CloudStack
 This document contains the instructions for upgrading CloudStack from prior releases, to the current 
 release.  Please read through all sections carefully before starting.
 
+From ACS 4.16 onwards, seeding of system-VM Template is optional, as this will be taken care of by either the upgrade process or
+in case of a fresh deployment, registration of the systemVM Template(s) is handled during the addition of the first image store to a zone.
+The `cloudstack-management` package will now include the systemVM Templates for KVM, XenServer and VMWare. In case Templates aren't already registered
+either prior upgrade or during fresh installation, ACS will handle the Template registration automatically, by mounting the secondary store onto the
+management server, copying the respective Templates to the store and then creating the `template.properties` file.
+
 .. note::
    For information on the API changes and issues fixed in this release, please see the Release Notes section of the documentation
 
@@ -38,6 +44,9 @@ Contents:
  
    upgrade/mysql
    upgrade/valid_source
+   upgrade/upgrade-4.18
+   upgrade/upgrade-4.17
+   upgrade/upgrade-4.16
    upgrade/upgrade-4.15
    upgrade/upgrade-4.14
    upgrade/upgrade-4.13

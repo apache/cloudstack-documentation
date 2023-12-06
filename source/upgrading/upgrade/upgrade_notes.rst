@@ -38,7 +38,7 @@ Migrating to dynamic roles feature
 ----------------------------------
 
 As of Apache CloudStack 4.9, dynamic roles feature can be enabled after an
-upgrade. Dyanamic roles feature is enabled by default on new installations.
+upgrade. Dynamic roles feature is enabled by default on new installations.
 
 Please read more about :ref:`using-dynamics-roles`
 feature and process of migrating to using this after an upgrade.
@@ -65,13 +65,13 @@ A critical functionality issue came out with `CLOUDSTACK-6779 <https://issues.ap
 is observed that on VIF unplug Ovs-Vswitchd is crashing resulting in loosing all
 the openflow rules added to the bridge. Ovs daemon gets started and creates a
 bridge but configure openflow rules are lost resulting in the disruption of
-connectivity for the VM's on the host.
+connectivity for the Instances on the host.
 
 
 Active-Directory Authentication (LDAP)
 --------------------------------------
 
-If using Active-Directory (LDAP/LDAPs) as user authentication; Upgrading to 
+If using Active-Directory (LDAP/LDAPs) as User authentication; Upgrading to
 4.3 and later require changes in Global Settings. After upgrading CloudStack
 to 4.3 or latest, following Global Settings must be change:
 
@@ -88,7 +88,7 @@ ldap.username.attribute uid            sAMAccountName
 SystemVM 32bit deprecated
 -------------------------
 
-32bit versions of systemvm templates are in the process of behing deprecated. Upgrade instructions from this Release Notes use 64bit templates.
+32bit versions of System VM Templates are in the process of being deprecated. Upgrade instructions from this Release Notes use 64bit Templates.
 
 Explicit JDBC driver declaration
 --------------------------------
@@ -101,3 +101,23 @@ added in CloudStack's db.properties file:
    db.cloud.driver=jdbc:mysql
 
    db.usage.driver=jdbc:mysql
+
+
+MySQL 8.0 sql mode change
+-------------------------
+
+MySQL mode (sql_mode) has changed in CloudStack db.properties to 
+"STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,
+ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION".
+
+This gets automatically applies to the MySQL session used by CloudStack management server.
+
+If the admin uses MySQL directly and wants to query tables it is advised to change the sql_mode in the corresponding session or globally.
+
+Eg. mysql> set global sql_mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,
+                             "> ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION";
+    Query OK, 0 rows affected (0.00 sec)
+
+    mysql> set sql_mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,
+                     "> ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION";
+    Query OK, 0 rows affected (0.00 sec)

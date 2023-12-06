@@ -20,9 +20,9 @@ XenServer HA
 
 As of Apache CloudStack 4.4, CloudStack is not responsible to promote a new pool
 master on a Citrix XenServer pool. In case of failure of the pool master host,
-the responsability of electing a new pool master as been delegated back to the
+the responsibility of electing a new pool master as been delegated back to the
 HA feature of XenServer. CloudStack remain responsible to honored HA capability
-for Compute Offerings of instances. The XenServer HA feature must be enabled
+for Compute Offerings of Instances. The XenServer HA feature must be enabled
 only for the pool master, not for virtual-machines.
 
 

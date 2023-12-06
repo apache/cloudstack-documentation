@@ -25,35 +25,35 @@ About Virtual Private Clouds
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 CloudStack Virtual Private Cloud is a private, isolated part of
-CloudStack. A VPC can have its own virtual network topology that
-resembles a traditional physical network. You can launch VMs in the
-virtual network that can have private addresses in the range of your
-choice, for example: 10.0.0.0/16. You can define network tiers within
-your VPC network range, which in turn enables you to group similar kinds
-of instances based on IP address range.
+CloudStack. A VPC can have its own virtual Network topology that
+resembles a traditional physical Network. You can launch Instances in the
+virtual Network that can have private addresses in the range of your
+choice, for example: 10.0.0.0/16. You can define Network Tiers within
+your VPC Network range, which in turn enables you to group similar kinds
+of Instances based on IP address range.
 
 For example, if a VPC has the private range 10.0.0.0/16, its guest
-networks can have the network ranges 10.0.1.0/24, 10.0.2.0/24,
+Networks can have the Network ranges 10.0.1.0/24, 10.0.2.0/24,
 10.0.3.0/24, and so on.
 
 
 Major Components of a VPC
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A VPC is comprised of the following network components:
+A VPC is comprised of the following Network components:
 
--  **VPC**: A VPC acts as a container for multiple isolated networks
+-  **VPC**: A VPC acts as a container for multiple isolated Networks
    that can communicate with each other via its virtual router.
 
--  **Network Tiers**: Each tier acts as an isolated network with its own
+-  **Network Tiers**: Each Network Tier acts as an isolated Network with its own
    VLANs and CIDR list, where you can place groups of resources, such as
-   VMs. The tiers are segmented by means of VLANs. The NIC of each tier
-   acts as its gateway.
+   Instances. The Network Tiers are segmented by means of VLANs. The NIC of each
+   Network Tier acts as its gateway.
 
 -  **Virtual Router**: A virtual router is automatically created and
-   started when you create a VPC. The virtual router connect the tiers
+   started when you create a VPC. The virtual router connect the Network Tiers
    and direct traffic among the public gateway, the VPN gateways, and
-   the NAT instances. For each tier, a corresponding NIC and IP exist in
+   the NAT Instances. For each Network Tier, a corresponding NIC and IP exist in
    the virtual router. The virtual router provides DNS and DHCP services
    through its IP.
 
@@ -62,35 +62,35 @@ A VPC is comprised of the following network components:
    not exposed to the end user; therefore, static routes are not support
    for the public gateway.
 
--  **Private Gateway**: All the traffic to and from a private network
+-  **Private Gateway**: All the traffic to and from a private Network
    routed to the VPC through the private gateway. For more information,
    see ":ref:`adding-priv-gw-vpc`".
 
 -  **VPN Gateway**: The VPC side of a VPN connection.
 
 -  **Site-to-Site VPN Connection**: A hardware-based VPN connection
-   between your VPC and your datacenter, home network, or co-location
+   between your VPC and your datacenter, home Network, or co-location
    facility. For more information, see ":ref:`setting-s2s-vpn-conn`".
 
 -  **Customer Gateway**: The customer side of a VPN Connection. For more
    information, see `"Creating and Updating a VPN
    Customer Gateway" <#creating-and-updating-a-vpn-customer-gateway>`_.
 
--  **NAT Instance**: An instance that provides Port Address Translation
-   for instances to access the Internet via the public gateway. For more
+-  **NAT Instance**: An Instance that provides Port Address Translation
+   for Instances to access the Internet via the public gateway. For more
    information, see ":ref:`enabling-disabling-static-nat-on-vpc`".
 
 -  **Network ACL**: Network ACL is a group of Network ACL items. Network
    ACL items are nothing but numbered rules that are evaluated in order,
    starting with the lowest numbered rule. These rules determine whether
-   traffic is allowed in or out of any tier associated with the network
+   traffic is allowed in or out of any Network Tier associated with the Network
    ACL. For more information, see ":ref:`conf-net-acl`".
 
 
 Network Architecture in a VPC
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In a VPC, the following four basic options of network architectures are
+In a VPC, the following four basic options of Network architectures are
 present:
 
 -  VPC with a public gateway only
@@ -126,20 +126,20 @@ Consider the following before you create a VPC:
 -  A VPC can be created in Advance zone only, and can't belong to more
    than one zone at a time.
 
--  The default number of VPCs an account can create is 20. However, you
+-  The default number of VPCs an Account can create is 20. However, you
    can change it by using the max.account.vpcs global parameter, which
-   controls the maximum number of VPCs an account is allowed to create.
+   controls the maximum number of VPCs an Account is allowed to create.
 
--  The default number of tiers an account can create within a VPC is 3.
+-  The default number of Network Tiers an Account can create within a VPC is 3.
    You can configure this number by using the vpc.max.networks
    parameter.
 
--  Each tier should have an unique CIDR in the VPC. Ensure that the
-   tier's CIDR should be within the VPC CIDR range.
+-  Each Network Tier should have an unique CIDR in the VPC. Ensure that the
+   Network Tier's CIDR should be within the VPC CIDR range.
 
--  A tier belongs to only one VPC.
+-  A Network Tier belongs to only one VPC.
 
--  All network tiers inside the VPC should belong to the same account.
+-  All Network Tiers inside the VPC should belong to the same Account.
 
 -  When a VPC is created, by default, a SourceNAT IP is allocated to it.
    The Source NAT IP is released only when the VPC is removed.
@@ -147,38 +147,38 @@ Consider the following before you create a VPC:
 -  A public IP can be used for only one purpose at a time. If the IP is
    a sourceNAT, it cannot be used for StaticNAT or port forwarding.
 
--  The instances can only have a private IP address that you provision.
-   To communicate with the Internet, enable NAT to an instance that you
+-  The Instances can only have a private IP address that you provision.
+   To communicate with the Internet, enable NAT to an Instance that you
    launch in your VPC.
 
--  Only new networks can be added to a VPC. The maximum number of
-   networks per VPC is limited by the value you specify in the
+-  Only new Networks can be added to a VPC. The maximum number of
+   Networks per VPC is limited by the value you specify in the
    vpc.max.networks parameter. The default value is three.
 
--  The load balancing service can be supported by only one tier inside
-   the VPC.
+-  The load balancing service can be supported by only one Network Tier
+   inside the VPC.
 
--  If an IP address is assigned to a tier:
+-  If an IP address is assigned to a Network Tier:
 
-   -  That IP can't be used by more than one tier at a time in the VPC.
-      For example, if you have tiers A and B, and a public IP1, you can
+   -  That IP can't be used by more than one Network Tier at a time in the VPC.
+      For example, if you have Network Tiers A and B, and a public IP1, you can
       create a port forwarding rule by using the IP either for A or B,
       but not for both.
 
    -  That IP can't be used for StaticNAT, load balancing, or port
-      forwarding rules for another guest network inside the VPC.
+      forwarding rules for another guest Network inside the VPC.
 
--  Remote access VPN is not supported in VPC networks.
+-  Remote access VPN is not supported in VPC Networks.
 
 
 Adding a Virtual Private Cloud
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When creating the VPC, you simply provide the zone and a set of IP
-addresses for the VPC network address space. You specify this set of
+addresses for the VPC Network address space. You specify this set of
 addresses in the form of a Classless Inter-Domain Routing (CIDR) block.
 
-#. Log in to the CloudStack UI as an administrator or end user.
+#. Log in to the CloudStack UI as an administrator or end User.
 
 #. In the left navigation, choose Network.
 
@@ -197,92 +197,105 @@ addresses in the form of a Classless Inter-Domain Routing (CIDR) block.
    -  **Zone**: Choose the zone where you want the VPC to be available.
 
    -  **CIDR**: Defines the CIDR range for all
-      the tiers (guest networks) within a VPC. When you create a tier,
-      ensure that its CIDR is within the Super CIDR value you enter. The
-      CIDR must be RFC1918 compliant.
+      the Network Tiers (guest Networks) within a VPC. When you create a
+      Network Tier, ensure that its CIDR is within the Super CIDR value
+      you enter. The CIDR must be RFC1918 compliant.
 
    -  **Network Domain**: If you want to assign a special
       domain name, specify the DNS suffix. This parameter is applied to
-      all the tiers within the VPC. That implies, all the tiers you
-      create in the VPC belong to the same DNS domain. If the parameter
-      is not specified, a DNS domain name is generated automatically.
+      all the Network Tiers within the VPC. That implies, all the Network
+      Tiers you create in the VPC belong to the same DNS domain. If the
+      parameter is not specified, a DNS domain name is generated automatically.
 
    -  **VPC Offering**: If the administrator has configured multiple
-      VPC offerings, select the one you want to use for this VPC
+      VPC offerings, select the one you want to use for this VPC.
+
+   -  **DNS**: A set of custom DNS that will be used by this VPC. If not provided then DNS specified for the zone will be used. Available only when the selected VPC offering supports DNS service.
+
+   -  **IPv6 DNS**: A set of custom IPv6 DNS that will be used by this VPC. If not provided then IPv6 DNS specified for the zone will be used. Available only when the selected VPC offering is IPv6 enabled and supports DNS service.
+
+   -  **IPv4 address for the VR in this VPC**: The source NAT address or primary public Network address to use by the guest Networks. If not provided then a random address from the available pool of addresses wil be used.
+
+   - **Public MTU**: The MTU to be configured on the public interfaces of the 
+      VPC Network's VR
 
 #. Click OK.
 
+.. note::
+   * In security groups-enabled Advanced zones and Basic zones, creation of
+     VPC and isolated Networks are not supported.
+   * Public MTU option will be shown in the UI and considered only when zone configuration - `allow.end.users.to.specify.vr.mtu` is set to true. Maximum allowed value for public MTU can be controlled by zone-level configuration - `vr.public.interface.max.mtu`.
 
-Adding Tiers
-~~~~~~~~~~~~
+Adding Network Tiers
+~~~~~~~~~~~~~~~~~~~~
 
-Tiers are distinct locations within a VPC that act as isolated networks,
-which do not have access to other tiers by default. Tiers are set up on
-different VLANs that can communicate with each other by using a virtual
-router. Tiers provide inexpensive, low latency network connectivity to
-other tiers within the VPC.
+Network Tiers are distinct locations within a VPC that act as isolated Networks,
+which do not have access to other Network Tiers by default. Network Tiers are
+set up on different VLANs that can communicate with each other by using a virtual
+router. Network Tiers provide inexpensive, low latency Network connectivity to
+other Network Tiers within the VPC.
 
-#. Log in to the CloudStack UI as an administrator or end user.
+#. Log in to the CloudStack UI as an administrator or end User.
 
 #. In the left navigation, choose Network.
 
 #. In the Select view, select VPC.
 
-   All the VPC that you have created for the account is listed in the
+   All the VPC that you have created for the Account is listed in the
    page.
 
    .. note::
-      The end users can see their own VPCs, while root and domain admin can
+      The end Users can see their own VPCs, while root and domain admin can
       see any VPC they are authorized to see.
 
 #. Click the Configure button of the VPC for which you want to set up
-   tiers.
+   Network Tiers.
 
-#. Click Create network.
+#. Click Create Network.
 
-   The Add new tier dialog is displayed, as follows:
+   The Add new Network Tier dialog is displayed, as follows:
 
    |add-tier.png|
 
-   If you have already created tiers, the VPC diagram is displayed.
-   Click Create Tier to add a new tier.
+   If you have already created Network Tiers, the VPC diagram is displayed.
+   Click Create Network Tier to add a new Network Tier.
 
 #. Specify the following:
 
    All the fields are mandatory.
 
-   -  **Name**: A unique name for the tier you create.
+   -  **Name**: A unique name for the Network Tier you create.
 
-   -  **Network Offering**: The following default network offerings are
+   -  **Network Offering**: The following default Network offerings are
       listed: Internal LB,
       DefaultIsolatedNetworkOfferingForVpcNetworksNoLB,
       DefaultIsolatedNetworkOfferingForVpcNetworks
 
-      In a VPC, only one tier can be created by using LB-enabled network
+      In a VPC, only one Network Tier can be created by using LB-enabled Network
       offering.
 
-   -  **Gateway**: The gateway for the tier you create. Ensure that the
+   -  **Gateway**: The gateway for the Network Tier you create. Ensure that the
       gateway is within the Super CIDR range that you specified while
       creating the VPC, and is not overlapped with the CIDR of any
-      existing tier within the VPC.
+      existing Network Tier within the VPC.
 
-   -  **VLAN**: The VLAN ID for the tier that the root admin creates.
+   -  **VLAN**: The VLAN ID for the Network Tier that the root admin creates.
 
-      This option is only visible if the network offering you selected
+      This option is only visible if the Network offering you selected
       is VLAN-enabled.
 
       For more information, see `"Assigning VLANs to
       Isolated Networks" <hosts.html#assigning-vlans-to-isolated-networks>`_.
 
-   -  **Netmask**: The netmask for the tier you create.
+   -  **Netmask**: The netmask for the Network Tier you create.
 
-      For example, if the VPC CIDR is 10.0.0.0/16 and the network tier
-      CIDR is 10.0.1.0/24, the gateway of the tier is 10.0.1.1, and the
-      netmask of the tier is 255.255.255.0.
+      For example, if the VPC CIDR is 10.0.0.0/16 and the Network Tier
+      CIDR is 10.0.1.0/24, the gateway of the Network Tier is 10.0.1.1,
+      and the netmask of the Network Tier is 255.255.255.0.
 
 #. Click OK.
 
-#. Continue with configuring access control list for the tier.
+#. Continue with configuring access control list for the Network Tier.
 
 
 .. _conf-net-acl:
@@ -290,34 +303,22 @@ other tiers within the VPC.
 Configuring Network Access Control List
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Define Network Access Control List (ACL) on the VPC virtual router to
-control incoming (ingress) and outgoing (egress) traffic between the VPC
-tiers, and the tiers and Internet. By default, all incoming traffic to
-the guest networks is blocked and all outgoing traffic from guest
-networks is allowed, once you add an ACL rule for outgoing traffic, then
-only outgoing traffic specified in this ACL rule is allowed, the rest is
-blocked. To open the ports, you must create a new network ACL. The
-network ACLs can be created for the tiers only if the NetworkACL service
-is supported.
+.. note::
+Network Access Control Lists can only be created if the service
+"NetworkACL" is supported by the created VPC.
 
+Define a Network Access Control List (ACL) to control incoming
+(ingress) and outgoing (egress) traffic between the associated Network Tier
+and external Networks (other Network Tiers of the VPC as well as public Networks).
 
 About Network ACL Lists
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-In CloudStack terminology, Network ACL is a group of Network ACL items.
-Network ACL items are nothing but numbered rules that are evaluated in
-order, starting with the lowest numbered rule. These rules determine
-whether traffic is allowed in or out of any tier associated with the
-network ACL. You need to add the Network ACL items to the Network ACL,
-then associate the Network ACL with a tier. Network ACL is associated
-with a VPC and can be assigned to multiple VPC tiers within a VPC. A
-Tier is associated with a Network ACL at all the times. Each tier can be
-associated with only one ACL.
-
-The default Network ACL is used when no ACL is associated. Default
-behavior is all the incoming traffic is blocked and outgoing traffic is
-allowed from the tiers. Default network ACL cannot be removed or
-modified. Contents of the default Network ACL is:
+In CloudStack terminology, a Network ACL is a group of Network ACL rules.
+Network ACL rules are processed by their order, starting with the lowest
+numbered rule. Each rule defines at least an affected protocol, traffic type,
+action and affected destination / source Network. The following table shows a
+exemplary content of a "default_deny" ACL.
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -328,17 +329,40 @@ Rule  Protocol Traffic type Action CIDR
 2     All      Egress       Deny   0.0.0.0/0
 ===== ======== ============ ====== =========
 
+Each Network ACL is associated with a VPC and can be assigned
+to multiple VPC Network Tiers. Every Network Tier needs to be associated with a
+Network ACL. Only one ACL can be associated with a Network Tier at a time. If no
+custom Network ACL is available at the time of Network Tier creation, a default
+Network ACL has to be used instead. Currently two default ACL are
+available. The "default_allow" ACL allows in- and egress traffic while
+the "default_deny" blocks all in- and egress traffic. Default Network
+ACL cannot be removed or modified. Newly created ACLs, while showing
+empty, deny all incoming traffic to the associated tier and allow all
+outgoing traffic. To change the defaults add a "deny all egress 
+destination" and / or "allow all ingress source" rule to the ACL. 
+Afterwards traffic can be white- or blacklisted.
+
+.. note::
+- ACL Rules in Cloudstack are stateful
+- Source / Destination CIDRs are always external Networks
+- ACL rules can also been seen on the virtual router of the VPC. Ingress
+  rules are listed in the table iptables table "filter" while egress rules
+  are placed in the "mangle" table
+- ACL rules for ingress and egress are not correlating. For example a
+  egress "deny all" won't affect traffic in response to an allowed ingress
+  connection
+  
 
 Creating ACL Lists
 ^^^^^^^^^^^^^^^^^^
 
-#. Log in to the CloudStack UI as an administrator or end user.
+#. Log in to the CloudStack UI as an administrator or end User.
 
 #. In the left navigation, choose Network.
 
 #. In the Select view, select VPC.
 
-   All the VPCs that you have created for the account is listed in the
+   All the VPCs that you have created for the Account is listed in the
    page.
 
 #. Click the Configure button of the VPC.
@@ -351,7 +375,7 @@ Creating ACL Lists
 
    -  Static NAT
 
-   -  Virtual Machines
+   -  Instances
 
    -  CIDR
 
@@ -387,7 +411,7 @@ Creating an ACL Rule
 
 #. In the Select view, select VPC.
 
-   All the VPCs that you have created for the account is listed in the
+   All the VPCs that you have created for the Account is listed in the
    page.
 
 #. Click the Configure button of the VPC.
@@ -488,18 +512,18 @@ Assigning a Custom ACL List to a Tier
 Adding a Private Gateway to a VPC
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A private gateway can be added by the root admin only. The VPC private
+A private gateway can be added by the root admin and Users. The VPC private
 network has 1:1 relationship with the NIC of the physical network. You
 can configure multiple private gateways to a single VPC. No gateways
 with duplicated VLAN and IP are allowed in the same data center.
 
-#. Log in to the CloudStack UI as an administrator or end user.
+#. Log in to the CloudStack UI as an administrator or end User.
 
 #. In the left navigation, choose Network.
 
 #. In the Select view, select VPC.
 
-   All the VPCs that you have created for the account is listed in the
+   All the VPCs that you have created for the Account is listed in the
    page.
 
 #. Click the Configure button of the VPC to which you want to configure
@@ -518,7 +542,7 @@ with duplicated VLAN and IP are allowed in the same data center.
 
    -  Static NAT
 
-   -  Virtual Machines
+   -  Instances
 
    -  CIDR
 
@@ -538,14 +562,14 @@ with duplicated VLAN and IP are allowed in the same data center.
 
 #. Click Add new gateway:
 
-   |add-new-gateway-vpc.png|
+   |add-new-gateway-vpc2.png|
 
 #. Specify the following:
 
-   -  **Physical Network**: The physical network you have created in the
-      zone.
+   -  **Physical Network**: (Administrators only) The physical network
+      you have created in the zone.
 
-   -  **VLAN**: The VLAN associated with the VPC gateway.
+   -  **VLAN**: (Administrators only) The VLAN associated with the VPC gateway.
 
    -  **IP Address**: The IP address associated with the VPC gateway.
 
@@ -559,8 +583,13 @@ with duplicated VLAN and IP are allowed in the same data center.
 
       See ":ref:`source-nat-priv-gw`".
 
-   - **Bypass VLAN id/range overlap**: Bypasses the check for a VLAN
-     overlap. This way multiple networks with the same VLAN can be created
+   - **Bypass VLAN id/range overlap**: (Administrators only) Bypasses
+     the check for a VLAN overlap. This way multiple networks with the
+     same VLAN can be created
+
+   -  **Associated Network**: The L2 or Isolated network this private
+      gateway is associated to. This private network will use the same
+      VLAN as the associated network.
 
    -  **ACL**: Controls both ingress and egress traffic on a VPC private
       gateway. By default, all the traffic is blocked.
@@ -577,11 +606,11 @@ Source NAT on Private Gateway
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You might want to deploy multiple VPCs with the same super CIDR and
-guest tier CIDR. Therefore, multiple guest VMs from different VPCs can
+guest tier CIDR. Therefore, multiple Guest Instances from different VPCs can
 have the same IPs to reach a enterprise data center through the private
 gateway. In such cases, a NAT service need to be configured on the
 private gateway to avoid IP conflicts. If Source NAT is enabled, the
-guest VMs in VPC reaches the enterprise network via private gateway IP
+Guest Instances in VPC reaches the enterprise network via private gateway IP
 address by using the NAT service.
 
 The Source NAT service on a private gateway can be enabled while adding
@@ -663,39 +692,39 @@ continue functioning. You cannot add a static route if the route is
 denied for the zone.
 
 
-Deploying VMs to the Tier
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Deploying Instances to the Tier
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Log in to the CloudStack UI as an administrator or end user.
+#. Log in to the CloudStack UI as an administrator or end User.
 
 #. In the left navigation, choose Network.
 
 #. In the Select view, select VPC.
 
-   All the VPCs that you have created for the account is listed in the
+   All the VPCs that you have created for the Account is listed in the
    page.
 
 #. Click the Configure button of the VPC to which you want to deploy the
-   VMs.
+   Instances.
 
    The VPC page is displayed where all the tiers you have created are
    listed.
 
-#. Click Virtual Machines tab of the tier to which you want to add a VM.
+#. Click Instances tab of the tier to which you want to add an Instance.
 
    |add-vm-vpc.png|
 
    The Add Instance page is displayed.
 
-   Follow the on-screen instruction to add an instance. For information
-   on adding an instance, see the Installation Guide.
+   Follow the on-screen instruction to add an Instance. For information
+   on adding an Instance, see the Installation Guide.
 
 
-Deploying VMs to VPC Tier and Shared Networks
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Deploying Instances to VPC Tier and Shared Networks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-CloudStack allows you deploy VMs on a VPC tier and one or more shared
-networks. With this feature, VMs deployed in a multi-tier application
+CloudStack allows you deploy Instances on a VPC tier and one or more shared
+networks. With this feature, Instances deployed in a multi-tier application
 can receive monitoring services via a shared network provided by a
 service provider.
 
@@ -707,21 +736,21 @@ service provider.
 
 #. Select a zone.
 
-#. Select a template or ISO, then follow the steps in the wizard.
+#. Select a Template or ISO, then follow the steps in the wizard.
 
 #. Ensure that the hardware you have allows starting the selected
    service offering.
 
-#. Under Networks, select the desired networks for the VM you are
+#. Under Networks, select the desired networks for the Instance you are
    launching.
 
-   You can deploy a VM to a VPC tier and multiple shared networks.
+   You can deploy an Instance to a VPC tier and multiple shared networks.
 
    |addvm-tier-sharednw.png|
 
 #. Click Next, review the configuration and click Launch.
 
-   Your VM will be deployed to the selected VPC tier and shared network.
+   Your Instance will be deployed to the selected VPC tier and shared network.
 
 
 Acquiring a New IP Address for a VPC
@@ -733,17 +762,17 @@ guest network only when the first port-forwarding, load balancing, or
 Static NAT rule is created for the IP or the network. IP can't be
 associated to more than one network at a time.
 
-#. Log in to the CloudStack UI as an administrator or end user.
+#. Log in to the CloudStack UI as an administrator or end User.
 
 #. In the left navigation, choose Network.
 
 #. In the Select view, select VPC.
 
-   All the VPCs that you have created for the account is listed in the
+   All the VPCs that you have created for the Account is listed in the
    page.
 
 #. Click the Configure button of the VPC to which you want to deploy the
-   VMs.
+   Instances.
 
    The VPC page is displayed where all the tiers you created are listed
    in a diagram.
@@ -756,7 +785,7 @@ associated to more than one network at a time.
 
    -  Static NAT
 
-   -  Virtual Machines
+   -  Instances
 
    -  CIDR
 
@@ -782,8 +811,8 @@ associated to more than one network at a time.
    address in port forwarding, load balancing, and static NAT rules.
 
 
-Releasing an IP Address Alloted to a VPC
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Releasing an IP Address Allotted to a VPC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The IP address is a limited resource. If you no longer need a particular
 IP, you can disassociate it from its VPC and return it to the pool of
@@ -792,13 +821,13 @@ when all the networking ( port forwarding, load balancing, or StaticNAT
 ) rules are removed for this IP address. The released IP address will
 still belongs to the same VPC.
 
-#. Log in to the CloudStack UI as an administrator or end user.
+#. Log in to the CloudStack UI as an administrator or end User.
 
 #. In the left navigation, choose Network.
 
 #. In the Select view, select VPC.
 
-   All the VPCs that you have created for the account is listed in the
+   All the VPCs that you have created for the Account is listed in the
    page.
 
 #. Click the Configure button of the VPC whose IP you want to release.
@@ -814,7 +843,7 @@ still belongs to the same VPC.
 
    -  Static NAT
 
-   -  Virtual Machines
+   -  Instances
 
    -  CIDR
 
@@ -843,26 +872,26 @@ Enabling or Disabling Static NAT on a VPC
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A static NAT rule maps a public IP address to the private IP address of
-a VM in a VPC to allow Internet traffic to it. This section tells how to
+an Instance in a VPC to allow Internet traffic to it. This section tells how to
 enable or disable static NAT for a particular IP address in a VPC.
 
 If port forwarding rules are already in effect for an IP address, you
 cannot enable static NAT to that IP.
 
-If a guest VM is part of more than one network, static NAT rules will
+If a Guest Instance is part of more than one network, static NAT rules will
 function only if they are defined on the default network.
 
-#. Log in to the CloudStack UI as an administrator or end user.
+#. Log in to the CloudStack UI as an administrator or end User.
 
 #. In the left navigation, choose Network.
 
 #. In the Select view, select VPC.
 
-   All the VPCs that you have created for the account is listed in the
+   All the VPCs that you have created for the Account is listed in the
    page.
 
 #. Click the Configure button of the VPC to which you want to deploy the
-   VMs.
+   Instances.
 
    The VPC page is displayed where all the tiers you created are listed
    in a diagram.
@@ -875,7 +904,7 @@ function only if they are defined on the default network.
 
    -  Static NAT
 
-   -  Virtual Machines
+   -  Instances
 
    -  CIDR
 
@@ -904,7 +933,7 @@ function only if they are defined on the default network.
 
    |select-vmstatic-nat.png|
 
-#. Select the tier and the destination VM, then click Apply.
+#. Select the tier and the destination Instance, then click Apply.
 
 
 Adding Load Balancing Rules on a VPC
@@ -916,20 +945,20 @@ the traffic received at a public IP of the VPC virtual router. The
 traffic is load balanced within a tier based on your configuration.
 Citrix NetScaler and VPC virtual router are supported for external LB.
 When you use internal LB service, traffic received at a tier is load
-balanced across different VMs within that tier. For example, traffic
-reached at Web tier is redirected to another VM in that tier. External
+balanced across different Instances within that tier. For example, traffic
+reached at Web tier is redirected to another Instance in that tier. External
 load balancing devices are not supported for internal LB. The service is
-provided by a internal LB VM configured on the target tier.
+provided by a internal LB Instance configured on the target tier.
 
 
 Load Balancing Within a Tier (External LB)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A CloudStack user or administrator may create load balancing rules that
-balance traffic received at a public IP to one or more VMs that belong
-to a network tier that provides load balancing service in a VPC. A user
+balance traffic received at a public IP to one or more Instances that belong
+to a Network Tier that provides load balancing service in a VPC. A user
 creates a rule, specifies an algorithm, and assigns the rule to a set of
-VMs within a tier.
+Instances within a tier.
 
 
 Enabling NetScaler as the LB Provider on a VPC Tier
@@ -963,7 +992,7 @@ follows:
 
 #. Log in to the CloudStack UI as a user or admin.
 
-#. Naviagte to Service Offerings and choose Network Offering.
+#. Navigate to Service Offerings and choose Network Offering.
 
 #. Click Add Network Offering.
 
@@ -984,7 +1013,7 @@ follows:
 
    -  **Persistent**: Indicate whether the guest network is persistent
       or not. The network that you can provision without having to
-      deploy a VM on it is termed persistent network.
+      deploy an Instance on it is termed persistent network.
 
    -  **VPC**: This option indicate whether the guest network is Virtual
       Private Cloud-enabled. A Virtual Private Cloud (VPC) is a private,
@@ -1024,7 +1053,7 @@ Creating an External LB Rule
 
 #. In the Select view, select VPC.
 
-   All the VPCs that you have created for the account is listed in the
+   All the VPCs that you have created for the Account is listed in the
    page.
 
 #. Click the Configure button of the VPC, for which you want to
@@ -1041,7 +1070,7 @@ Creating an External LB Rule
 
    -  Static NAT
 
-   -  Virtual Machines
+   -  Instances
 
    -  CIDR
 
@@ -1073,7 +1102,7 @@ Creating an External LB Rule
    -  **Public Port**: The port that receives the incoming traffic to be
       balanced.
 
-   -  **Private Port**: The port that the VMs will use to receive the
+   -  **Private Port**: The port that the Instances will use to receive the
       traffic.
 
    -  **Algorithm**. Choose the load balancing algorithm you want
@@ -1090,7 +1119,7 @@ Creating an External LB Rule
       algorithm for the stickiness policy. See Sticky Session Policies
       for Load Balancer Rules.
 
-   -  **Add VMs**: Click Add VMs, then select two or more VMs that will
+   -  **Add Instances**: Click Add Instances, then select two or more Instances that will
       divide the load of incoming traffic, and click Apply.
 
 The new load balancing rule appears in the list. You can repeat these
@@ -1116,14 +1145,14 @@ How Does Internal LB Work in VPC?
 In this figure, a public LB rule is created for the public IP
 72.52.125.10 with public port 80 and private port 81. The LB rule,
 created on the VPC virtual router, is applied on the traffic coming from
-the Internet to the VMs on the Web tier. On the Application tier two
+the Internet to the Instances on the Web tier. On the Application tier two
 internal load balancing rules are created. An internal LB rule for the
-guest IP 10.10.10.4 with load balancer port 23 and instance port 25 is
-configured on the VM, InternalLBVM1. Another internal LB rule for the
-guest IP 10.10.10.4 with load balancer port 45 and instance port 46 is
-configured on the VM, InternalLBVM1. Another internal LB rule for the
-guest IP 10.10.10.6, with load balancer port 23 and instance port 25 is
-configured on the VM, InternalLBVM2.
+guest IP 10.10.10.4 with load balancer port 23 and Instance port 25 is
+configured on the Instance, InternalLBVM1. Another internal LB rule for the
+guest IP 10.10.10.4 with load balancer port 45 and Instance port 46 is
+configured on the Instance, InternalLBVM1. Another internal LB rule for the
+guest IP 10.10.10.6, with load balancer port 23 and Instance port 25 is
+configured on the Instance, InternalLBVM2.
 
 |vpc-lb.png|
 
@@ -1137,7 +1166,7 @@ Guidelines
 -  Internal LB is supported just on VPC networks in CloudStack 4.2
    release.
 
--  Only Internal LB VM can act as the Internal LB provider in CloudStack
+-  Only Internal LB Instance can act as the Internal LB provider in CloudStack
    4.2 release.
 
 -  Network upgrade is not supported from the network offering with
@@ -1169,7 +1198,7 @@ network offering as follows:
 
 #. Log in to the CloudStack UI as a user or admin.
 
-#. Naviagte to Service Offerings and choose Network OfferingPublic IP Addresses.
+#. Navigate to Service Offerings and choose Network OfferingPublic IP Addresses.
 
 #. Click Add Network Offering.
 
@@ -1190,7 +1219,7 @@ network offering as follows:
 
    -  **Persistent**: Indicate whether the guest network is persistent
       or not. The network that you can provision without having to
-      deploy a VM on it is termed persistent network.
+      deploy an Instance on it is termed persistent network.
 
    -  **VPC**: This option indicate whether the guest network is Virtual
       Private Cloud-enabled. A Virtual Private Cloud (VPC) is a private,
@@ -1222,13 +1251,13 @@ network offering as follows:
 Creating an Internal LB Rule
 ''''''''''''''''''''''''''''
 
-When you create the Internal LB rule and applies to a VM, an Internal LB
-VM, which is responsible for load balancing, is created.
+When you create the Internal LB rule and applies to an Instance, an Internal LB
+Instance, which is responsible for load balancing, is created.
 
-You can view the created Internal LB VM in the Instances page if you
+You can view the created Internal LB Instance in the Instances page if you
 navigate to **Infrastructure** > **Zones** > <zone\_ name> >
 <physical\_network\_name> > **Network Service Providers** > **Internal
-LB VM**. You can manage the Internal LB VMs as and when required from
+LB Instance**. You can manage the Internal LB Instances as and when required from
 the location.
 
 #. Log in to the CloudStack UI as an administrator or end user.
@@ -1237,7 +1266,7 @@ the location.
 
 #. In the Select view, select VPC.
 
-   All the VPCs that you have created for the account is listed in the
+   All the VPCs that you have created for the Account is listed in the
    page.
 
 #. Locate the VPC for which you want to configure internal LB, then
@@ -1264,13 +1293,13 @@ the location.
       specified, the IP address is automatically allocated from the
       network CIDR.
 
-      For every Source IP, a new Internal LB VM is created for load
+      For every Source IP, a new Internal LB Instance is created for load
       balancing.
 
    -  **Source Port**: The port associated with the source IP. Traffic
       on this port is load balanced.
 
-   -  **Instance Port**: The port of the internal LB VM.
+   -  **Instance Port**: The port of the internal LB Instance.
 
    -  **Algorithm**. Choose the load balancing algorithm you want
       CloudStack to use. CloudStack supports the following well-known
@@ -1292,11 +1321,11 @@ Adding a Port Forwarding Rule on a VPC
 
 #. In the Select view, select VPC.
 
-   All the VPCs that you have created for the account is listed in the
+   All the VPCs that you have created for the Account is listed in the
    page.
 
 #. Click the Configure button of the VPC to which you want to deploy the
-   VMs.
+   Instances.
 
    The VPC page is displayed where all the tiers you created are listed
    in a diagram.
@@ -1309,7 +1338,7 @@ Adding a Port Forwarding Rule on a VPC
 
    -  Static NAT
 
-   -  Virtual Machines
+   -  Instances
 
    -  CIDR
 
@@ -1339,7 +1368,7 @@ Adding a Port Forwarding Rule on a VPC
    -  **Public Port**: The port to which public traffic will be
       addressed on the IP address you acquired in the previous step.
 
-   -  **Private Port**: The port on which the instance is listening for
+   -  **Private Port**: The port on which the Instance is listening for
       forwarded public traffic.
 
    -  **Protocol**: The communication protocol in use between the two
@@ -1349,10 +1378,10 @@ Adding a Port Forwarding Rule on a VPC
 
       -  UDP
 
-   -  **Add VM**: Click Add VM. Select the name of the instance to which
+   -  **Add Instance**: Click Add Instance. Select the name of the Instance to which
       this rule applies, and click Apply.
 
-      You can test the rule by opening an SSH session to the instance.
+      You can test the rule by opening an SSH session to the Instance.
 
 
 Removing Tiers
@@ -1370,7 +1399,7 @@ belonging to the same VPC.
 
 #. In the Select view, select VPC.
 
-   All the VPC that you have created for the account is listed in the
+   All the VPC that you have created for the Account is listed in the
    page.
 
 #. Click the Configure button of the VPC for which you want to set up
@@ -1398,7 +1427,7 @@ Editing, Restarting, and Removing a Virtual Private Cloud
 
 #. In the Select view, select VPC.
 
-   All the VPCs that you have created for the account is listed in the
+   All the VPCs that you have created for the Account is listed in the
    page.
 
 #. Select the VPC you want to work with.
@@ -1421,12 +1450,12 @@ Editing, Restarting, and Removing a Virtual Private Cloud
    :alt: adding a tier to a vpc.
 .. |replace-acl-icon.png| image:: /_static/images/replace-acl-icon.png
    :alt: button to replace an ACL list
-.. |add-new-gateway-vpc.png| image:: /_static/images/add-new-gateway-vpc.png
+.. |add-new-gateway-vpc2.png| image:: /_static/images/add-new-gateway-vpc2.png
    :alt: adding a private gateway for the VPC.
 .. |add-vm-vpc.png| image:: /_static/images/add-vm-vpc.png
-   :alt: adding a VM to a vpc.
+   :alt: adding an Instance to a VPC.
 .. |addvm-tier-sharednw.png| image:: /_static/images/addvm-tier-sharednw.png
-   :alt: adding a VM to a VPC tier and shared network.
+   :alt: adding an Instance to a VPC tier and shared network.
 .. |release-ip-icon.png| image:: /_static/images/release-ip-icon.png
    :alt: button to release an IP.
 .. |enable-disable.png| image:: /_static/images/enable-disable.png

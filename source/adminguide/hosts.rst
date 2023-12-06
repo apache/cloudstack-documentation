@@ -18,15 +18,15 @@ Adding Hosts
 ------------
 
 Additional hosts can be added at any time to provide more capacity for
-guest VMs. For requirements and instructions, see :ref:`adding-a-host`.
+guest Instances. For requirements and instructions, see :ref:`adding-a-host`.
 
 
 Scheduled Maintenance and Maintenance Mode for Hosts
 ----------------------------------------------------
 
 You can place a host into maintenance mode. When maintenance mode is
-activated, the host becomes unavailable to receive new guest VMs, and
-the guest VMs already running on the host are seamlessly migrated to
+activated, the host becomes unavailable to receive new guest Instances, and
+the guest Instances already running on the host are seamlessly migrated to
 another host not in maintenance mode. This migration uses live migration
 technology and does not interrupt the execution of the guest.
 
@@ -39,13 +39,13 @@ must be used in concert. CloudStack and vCenter have separate
 maintenance modes that work closely together.
 
 #. Place the host into CloudStack's "scheduled maintenance" mode. This
-   does not invoke the vCenter maintenance mode, but only causes VMs to
+   does not invoke the vCenter maintenance mode, but only causes Instances to
    be migrated off the host
 
    When the CloudStack maintenance mode is requested, the host first
    moves into the Prepare for Maintenance state. In this state it cannot
-   be the target of new guest VM starts. Then all VMs will be migrated
-   off the server. Live migration will be used to move VMs off the host.
+   be the target of new guest Instance starts. Then all Instances will be migrated
+   off the server. Live migration will be used to move Instances off the host.
    This allows the guests to be migrated to other hosts with no
    disruption to the guests. After this migration is completed, the host
    will enter the Ready for Maintenance mode.
@@ -53,7 +53,7 @@ maintenance modes that work closely together.
 #. Wait for the "Ready for Maintenance" indicator to appear in the UI.
 
 #. Now use vCenter to perform whatever actions are necessary to maintain
-   the host. During this time, the host cannot be the target of new VM
+   the host. During this time, the host cannot be the target of new Instance
    allocations.
 
 #. When the maintenance tasks are complete, take the host out of
@@ -66,8 +66,8 @@ maintenance modes that work closely together.
    #. Then use CloudStack's administrator UI to cancel the CloudStack
       maintenance mode
 
-      When the host comes back online, the VMs that were migrated off of
-      it may be migrated back to it manually and new VMs can be added.
+      When the host comes back online, the Instances that were migrated off of
+      it may be migrated back to it manually and new Instances can be added.
 
 
 XenServer and Maintenance Mode
@@ -75,10 +75,10 @@ XenServer and Maintenance Mode
 
 For XenServer, you can take a server offline temporarily by using the
 Maintenance Mode feature in XenCenter. When you place a server into
-Maintenance Mode, all running VMs are automatically migrated from it to
+Maintenance Mode, all running Instances are automatically migrated from it to
 another host in the same pool. If the server is the pool master, a new
 master will also be selected for the pool. While a server is Maintenance
-Mode, you cannot create or start any VMs on it.
+Mode, you cannot create or start any Instances on it.
 
 **To place a server in Maintenance Mode:**
 
@@ -92,7 +92,7 @@ Mode, you cannot create or start any VMs on it.
 
 #. Click Enter Maintenance Mode.
 
-The server's status in the Resources pane shows when all running VMs
+The server's status in the Resources pane shows when all running Instances
 have been successfully migrated off the server.
 
 **To take a server out of Maintenance Mode:**
@@ -152,7 +152,7 @@ Removing XenServer and KVM Hosts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A node cannot be removed from a cluster until it has been placed in
-maintenance mode. This will ensure that all of the VMs on it have been
+maintenance mode. This will ensure that all of the Instances on it have been
 migrated to other Hosts. To remove a Host from the cloud:
 
 #. Place the node in maintenance mode.
@@ -200,11 +200,28 @@ hypervisor patches. The hypervisor vendor is likely to refuse to support
 any system that is not up to date with patches.
 
 .. note::
-   The lack of up-do-date hotfixes can lead to data corruption and lost VMs.
+   The lack of up-do-date hotfixes can lead to data corruption and lost Instances.
 
 (XenServer) For more information, see
 `Highly Recommended Hotfixes for XenServer in the CloudStack Knowledge Base
 <http://docs.cloudstack.org/Knowledge_Base/Possible_VM_corruption_if_XenServer_Hotfix_is_not_Applied/Highly_Recommended_Hotfixes_for_XenServer_5.6_SP2>`_.
+
+
+Hypervisor Capabilities
+-----------------------
+For different hypervisors and their versions, various capabilities such as maximum number of guest Instances per host, maximum number of volumes per Instance, security group support, etc are considered by CloudStack. These capabilities are stored in the **cloud.hypervisor_capabilities** table in the database. If a specific hypervisor version is not available in the database, values against the *default* version for the hypervisor will be used.
+These capabilities can be listed using API - ``listHypervisorCapabilities``. Some of the hypervisor capabilities can also be updated for a hypervisor type and version combination using API - ``updateHypervisorCapabilities``.
+
+Following hypervisor-specific documentations can be referred for different maximums for a particular hypervisor host:
+
+- VMware: `VMware Configuration Maximum tool <https://configmax.vmware.com/guest?vmwareproduct=vSphere&release=vSphere%207.0&categories=1-0,2-0>`_.
+
+- Citrix Hypervisor/Xenserver/XCP-ng: `Configuration limits | Citrix Hypervisor 8.2 <https://docs.citrix.com/en-us/citrix-hypervisor/system-requirements/configuration-limits.html>`_.
+
+
+.. note::
+   Guest Instance limit check is not done while deploying an Instance on a KVM hypervisor host.
+
 
 
 Changing Host Password
@@ -264,7 +281,7 @@ Over-Provisioning and Service Offering Limits
 (Supported for XenServer, KVM, and VMware)
 
 CPU and memory (RAM) over-provisioning factors can be set for each
-cluster to change the number of VMs that can run on each host in the
+cluster to change the number of Instances that can run on each host in the
 cluster. This helps optimize the use of resources. By increasing the
 over-provisioning factor, more resource capacity will be used. If the
 factor is set to 1, no over-provisioning is done.
@@ -281,7 +298,7 @@ Capacity = 2 GB
 Over-provisioning factor = 2
 Capacity after over-provisioning = 4 GB
 
-With this configuration, suppose you deploy 3 VMs of 1 GB each:
+With this configuration, suppose you deploy 3 Instances of 1 GB each:
 
 Used = 3 GB
 Free = 1 GB
@@ -290,14 +307,14 @@ The administrator can specify a memory over-provisioning factor, and can
 specify both CPU and memory over-provisioning factors on a per-cluster
 basis.
 
-In any given cloud, the optimum number of VMs for each host is affected
+In any given cloud, the optimum number of Instances for each host is affected
 by such things as the hypervisor, storage, and hardware configuration.
 These may be different for each cluster in the same cloud. A single
 global over-provisioning setting can not provide the best utilization
 for all the different clusters in the cloud. It has to be set for the
 lowest common denominator. The per-cluster setting provides a finer
 granularity for better utilization of resources, no matter where the
-CloudStack placement algorithm decides to place a VM.
+CloudStack placement algorithm decides to place an Instance.
 
 The overprovisioning settings can be used along with dedicated resources
 (assigning a specific cluster to an account) to effectively offer
@@ -319,9 +336,9 @@ Limitations on Over-Provisioning in XenServer and KVM
 -  In XenServer, due to a constraint of this hypervisor, you can not use
    an over-provisioning factor greater than 4.
 
--  The KVM hypervisor can not manage memory allocation to VMs
+-  The KVM hypervisor can not manage memory allocation to Instances
    dynamically. CloudStack sets the minimum and maximum amount of memory
-   that a VM can use. The hypervisor adjusts the memory within the set
+   that an Instance can use. The hypervisor adjusts the memory within the set
    limits based on the memory contention.
 
 
@@ -337,37 +354,38 @@ responsibility to ensure that these requirements are met.
 Balloon Driver
 ^^^^^^^^^^^^^^
 
-All VMs should have a balloon driver installed in them. The hypervisor
+All Instances should have a balloon driver installed in them. The hypervisor
 communicates with the balloon driver to free up and make the memory
-available to a VM.
+available to an Instance.
 
 
 XenServer
 '''''''''
 
 The balloon driver can be found as a part of xen pv or PVHVM drivers.
-The xen pvhvm drivers are included in upstream linux kernels 2.6.36+.
+The xen PVHVM drivers are included in upstream linux kernels 2.6.36+.
 
 
 VMware
 ''''''
 
 The balloon driver can be found as a part of the VMware tools. All the
-VMs that are deployed in a over-provisioned cluster should have the
+Instances that are deployed in a over-provisioned cluster should have the
 VMware tools installed.
 
 
 KVM
 '''
 
-All VMs are required to support the virtio drivers. These drivers are
+All KVM Instances are required to support the virtio drivers. These drivers are
 installed in all Linux kernel versions 2.6.25 and greater. The
 administrator must set CONFIG\_VIRTIO\_BALLOON=y in the virtio
-configuration.
+configuration. Drivers for Windows can be downloaded from
+https://github.com/virtio-win/virtio-win-pkg-scripts
 
 
-Hypervisor capabilities
-^^^^^^^^^^^^^^^^^^^^^^^
+Hypervisor capability
+^^^^^^^^^^^^^^^^^^^^^
 
 The hypervisor must be capable of using the memory ballooning.
 
@@ -379,10 +397,43 @@ The DMC (Dynamic Memory Control) capability of the hypervisor should be
 enabled. Only XenServer Advanced and above versions have this feature.
 
 
-VMware, KVM
-'''''''''''
+VMware
+''''''
 
 Memory ballooning is supported by default.
+
+
+KVM
+'''
+
+Memory ballooning is supported and enabled by default. This can be configured on
+per KVM host basis via the `vm.memballoon.disable=false` property and the
+`vm.memballoon.stats.period` property in the `agent.properties` of the KVM host.
+
+The memory ballooning feature on KVM allows the host to reclaim memory from
+guest VMs which is enabled by a virtio balloon device on the guest VM and the
+related virtio drivers inside the guest VMs. This feature is mainly intended to
+support over-committing memory on KVM hosts.
+
+A related feature, KSM (Kernel Same-page Merging), can also be enabled to assist
+with over-committing memory. On some distributions such as Ubuntu, this is
+enabled by default, and can be checked otherwise by checking/setting
+`/sys/kernel/mm/ksm/run` to 1 and for libvirt set the `KSM_ENABLED=AUTO` in
+`/etc/defaults/qemu-kvm`.
+
+Note: the memory ballooning feature isn't automatic on KVM and shouldn't be
+confused with the dynamic scaling feature that allows manual scaling of running
+Instances by changing the service offering (feature can be enabled via the setting
+enable.dynamic.scale.vm) of Instances that aren't using a fixed compute offering.
+
+By default, when memory is over provisioned (setting mem.overprovisioning.factor
+is greater than 1.0 at global or cluster level) the actual memory for the Instance is
+the memory per the service offering divided by the global or cluster-specific
+memory overprovisioning factor. This means guests start with a lower memory than
+their service offering intended memory, which will not be changed or scaled
+automatically. When overcommitting memory, this behaviour can be disabled by
+turning off (set the value false) the setting
+`vm.min.memory.equals.memory.divided.by.mem.overprovisioning.factor`.
 
 
 Setting Over-Provisioning Factors
@@ -394,19 +445,19 @@ cpu.overprovisioning.factor and mem.overprovisioning.factor will be
 applied when a new cluster is created. Later, the factors can be modified
 for an existing cluster.
 
-Only VMs deployed after the change are affected by the new setting. If
-you want VMs deployed before the change to adopt the new
-over-provisioning factor, you must stop and restart the VMs. When this is
+Only Instances deployed after the change are affected by the new setting. If
+you want Instances deployed before the change to adopt the new
+over-provisioning factor, you must stop and restart the Instances. When this is
 done, CloudStack recalculates or scales the used and reserved capacities
 based on the new over-provisioning factors, to ensure that CloudStack is
 correctly tracking the amount of free capacity.
 
 .. note::
-   It is safer not to deploy additional new VMs while the capacity
+   It is safer not to deploy additional new Instances while the capacity
    recalculation is underway, in case the new values for available
-   capacity are not high enough to accommodate the new VMs. Just wait
+   capacity are not high enough to accommodate the new Instances. Just wait
    for the new used/available values to become available, to be sure
-   there is room for all the new VMs you want.
+   there is room for all the new Instances you want.
 
 To change the over-provisioning factors for an existing cluster:
 
@@ -448,7 +499,7 @@ weight is based on the clock speed in the service offering. Guests
 receive a CPU allocation that is proportionate to the GHz in the service
 offering. For example, a guest created from a 2 GHz service offering
 will receive twice the CPU allocation as a guest created from a 1 GHz
-service offering. CloudStack does not perform memory over-provisioning.
+service offering. 
 
 
 VLAN Provisioning
@@ -756,7 +807,7 @@ and space are replaced with ``~``:
 
 Starting 4.11.1, a KVM host is considered secured when it has its keystore and
 certificates setup for both the agent and libvirtd process. A secured host will
-only allow and initiate TLS enabled live VM migration. This requires libvirtd
+only allow and initiate TLS enabled live Instance migration. This requires libvirtd
 to listen on default port 16514, and the port to be allowed in the firewall
 rules. Certificate renewal (using the ``provisionCertificate`` API) will restart
 both the libvirtd process and agent after deploying new certificates.
@@ -771,7 +822,7 @@ Feature Overview
 -  This feature applies to KVM hosts.
 -  KVM utilised under CloudStack uses the standard Libvirt hook script behaviour as outlined in the Libvirt documentation page `hooks`_.
 -  During the install of the KVM CloudStack agent, the Libvirt hook script "/etc/libvirt/hooks/qemu", referred to as the qemu script hereafter is installed.
--  This is a python script that carries out network management tasks every time a VM is started, stopped or migrated, as per the Libvirt hooks specification.
+-  This is a python script that carries out network management tasks every time an Instance is started, stopped or migrated, as per the Libvirt hooks specification.
 -  Custom network configuration tasks can be done at the same time as the qemu script is called.
 -  Since the tasks in question are user-specific, they cannot be included in the CloudStack-provided qemu script.
 
@@ -797,7 +848,7 @@ Usage
     #. Sub-operation indication, or '-' if there is none.
     #. An extra argument string, or '-' if there is none.
 
--  The operation argument is based on what actions KVM and Libvirt are carrying out on each VM: 'prepare', 'start', 'started', 'stopped', 'release', 'migrate', 'restore', 'reconnect', 'attach'.
+-  The operation argument is based on what actions KVM and Libvirt are carrying out on each Instance: 'prepare', 'start', 'started', 'stopped', 'release', 'migrate', 'restore', 'reconnect', 'attach'.
 
 -  If an invalid operation argument is received, the qemu script will log the fact, not execute any custom scripts and exit.
 
@@ -824,18 +875,18 @@ Timeout Configuration
     #. Find the "timeoutSeconds" timeout setting.
     #. Change the 10 * 60 value to a preferred timeout value. For example 20 * 60, for a 20-minute timeout.
 
-Custom Script Naming for a Specific VM Action
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--  For a custom script that needs to be executed at the end of a specific VM action, do the following:
+Custom Script Naming for a Specific Instance Action
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-  For a custom script that needs to be executed at the end of a specific Instance action, do the following:
 
     #. Navigate to the custom script that needs to be executed for a specific action.
     #. Rename the file by prefixing to the filename the specific action name followed by an underscore. For example, if a custom script is named abc.sh, then prefix 'migrate' and an underscore to the name to become migrate_abc.sh.
 
 
-Custom Script Naming for All VM Actions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Custom Script Naming for All Instance Actions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
--  For a custom script that needs to be executed at the end of all VM actions, do the following:
+-  For a custom script that needs to be executed at the end of all Instance actions, do the following:
 
     #. Navigate to the custom script that needs to be executed for all actions.
     #. Rename the file by prefixing 'all' to the filename, followed by an underscore.  For example, if a custom script is named def.py, then prefix 'all' and an underscore to the name to become all_def.py.
@@ -986,3 +1037,51 @@ The management server iterates through hosts in each cluster on the selected sco
   - In case the post-maintenance script fails and the ‘forced’ parameter is not set, then the rolling maintenance process fails and an error is reported. If the ‘forced’ parameter is set, the host is skipped and the iteration continues with the next host in the cluster
 
 - Enable the cluster that has been disabled, after all the hosts in the cluster have been processed, or in case an error has occurred.
+
+
+KVM Auto Enable/Disable Hosts
+-----------------------------
+
+The cluster configuration 'enable.kvm.host.auto.enable.disable' (disabled by default) allows CloudStack to auto-disable and auto-enable KVM hosts resource state based on customisable host/hypervisor health checks.
+
+KVM hosts health checks
+~~~~~~~~~~~~~~~~~~~~~~~
+
+For each KVM agent on the cluster, the property 'agent.health.check.script.path' must be added to the agent.properties file, indicating the path of an executable file/script for host health check.
+
+.. note:: The health script runs every 'ping.interval' seconds on a KVM host.
+
+.. note:: The health script will need execution permissions on a KVM host.
+
+Depending on the exit code of the health script, the KVM agent will report the management server with the following results:
+
+- The health check result is true, if the script is executed successfully and the exit code is 0
+- The health check result is false, if the script is executed successfully and the exit code is 1
+- The health check result is null, if
+
+   - Script file is not specified, or
+   - Script file does not exist, or
+   - Script file is not accessible by the user of the cloudstack-agent process, or
+   - Script file is not executable, or
+   - There are errors when the script is executed (exit codes other than 0 or 1)
+
+Management Server actions based on health checks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The management server receives the health check results from the KVM agent, and takes the following actions:
+
+- If the host health check result is null, do nothing.
+- If the host health check result is true, enable the host resource state if it is Disabled.
+- If the host health check result is false, disable the host resource state if it is Enabled.
+
+On every automatic enable or disable event, the management server will send an alert to the admin and add an automatic annotation (comment) on the specific host.
+
+- If a host gets auto-disabled by a health check failure, then it can be auto-enabled when the health check succeeds. But if the host gets disabled by the admin, then it must not be auto-enabled when the health check succeeds (manual host disabling takes precedence over the auto-enabling of a host).
+- If a host gets auto-disabled by a health check failure, the admin could enable the host but unless they also disable the health check on the host then it will just get disabled again when the health check fails
+
+CloudStack controls when a host can/cannot be auto-enabled or auto-disabled by a host detail record (on the host_details table) with key ‘autoenablekvmhost’, in the following way:
+
+- If a host is auto-enabled or auto-disabled and there is no host detail with key ‘autoenablekvmhost’ for that host, then a new host detail record is created with the key ‘autoenablekvmhost’ and is set to ‘true’ (just before the host is auto-enabled/auto-disabled)
+- If the administrator manually disables a host and there is a host detail with key ‘autoenablekvmhost’ for that host, then the host detail ‘autoenablekvmhost’ is set to ‘false’ (indicating that the host cannot be auto-enabled if the health check succeeds)
+- If the administrator manually enables a host and there is a host detail with key ‘autoenablekvmhost’ for that host, then the host detail ‘autoenablekvmhost’ is set to ‘true’ (indicating that the host can be auto-disabled if the health check fails)
+- If the feature was never enabled before ('enable.kvm.host.auto.enable.disable' global and cluster settings having their default values) and the administrator enables/disables hosts in the cluster, then the host detail with key ‘autoenablekvmhost’ is not created for the hosts. (preserving the usual behavior). If the cluster setting is then enabled, and the administrator enables/disables the host manually then the host detail with key '‘autoenablekvmhost’ is created, and is set to true/false.

@@ -36,7 +36,7 @@ Overview of Upgrade Steps:
 ----------------------------
 
 #. Check any customisations and integrations
-#. Upload the |sysvm64-version| System VM template if not already using it.
+#. Upload the |sysvm64-version| System VM Template if not already using it.
 #. Stop all running management servers
 #. Backup CloudStack database (MySQL)
 #. Upgrade 1st CloudStack management server
@@ -49,8 +49,8 @@ Overview of Upgrade Steps:
 .. include:: _customisation_warnings.rst
 
 .. warning::
-    If you are not already using the |sysvm64-version| System VM template you will need to
-    upgrade your System VM template prior to performing the upgrade of the
+    If you are not already using the |sysvm64-version| System VM Template you will need to
+    upgrade your System VM Template prior to performing the upgrade of the
     CloudStack packages.
 
 .. include:: _sysvm_templates.rst
@@ -97,8 +97,8 @@ Backup current database
 
    .. parsed-literal::
 
-      $ mysqldump -u root -p -R cloud > cloud-backup_`date '+%Y-%m-%d'`.sql
-      $ mysqldump -u root -p cloud_usage > cloud_usage-backup_`date '+%Y-%m-%d'`.sql
+      $ mysqldump -u root -p -R cloud > cloud-backup_$(date +%Y-%m-%d-%H%M%S)
+      $ mysqldump -u root -p cloud_usage > cloud_usage-backup_$(date +%Y-%m-%d-%H%M%S)
 
 
 .. _ubuntu414:
@@ -229,7 +229,7 @@ Hypervisor: VMware
    built using "noredist". Refer to :ref:`building-noredist`.
 
 
-No additional steps are requried for the VMware Hypervisor for this upgrade.
+No additional steps are required for the VMware Hypervisor for this upgrade.
 
 
 .. _kvm414:
@@ -276,7 +276,6 @@ For KVM hosts, upgrade the ``cloudstack-agent`` package
    .. parsed-literal::
 
       $ sudo yum install -y epel-release
-      $ sudo yum install -y python36-libvirt
       $ sudo yum upgrade cloudstack-agent
 
 #. Restart the agent:
@@ -302,7 +301,5 @@ Restart management services
 
       $ sudo service cloudstack-usage start
 
-System-VMs and Virtual-Routers
-------------------------------
 
 .. include:: _sysvm_restart.rst

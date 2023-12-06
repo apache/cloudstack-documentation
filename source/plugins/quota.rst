@@ -18,18 +18,18 @@ not exploited by attacks, careless use and program errors. To address this
 problem, employ the quota-enforcement service that allows resource
 usage within certain bounds as defined by policies and available quotas for
 various entities. Quota service extends the functionality of usage server to
-provide a measurement for the resources used by the accounts and domains using a
+provide a measurement for the resources used by the Accounts and domains using a
 common unit referred to as cloud currency in this document. It can be configured
-to ensure that your usage won’t exceed the budget allocated to accounts/domain
+to ensure that your usage won’t exceed the budget allocated to Accounts/domain
 in cloud currency. It will let users know how much of the cloud resources they are
 using. It will help the cloud admins, if they want, to ensure that a user does
-not go beyond their allocated quota. Per usage cycle if an account is found to be
-exceeding its quota then it is locked. Locking an account means that it will not
+not go beyond their allocated quota. Per usage cycle if an Account is found to be
+exceeding its quota then it is locked. Locking an Account means that it will not
 be able to initiate a new resource allocation request, whether it is more
-storage or an additional ip. To unlock an account you need to add more credit to it.
-In case you want the locking to be disabled on global or on account scope those 
+storage or an additional IP. To unlock an Account you need to add more credit to it.
+In case you want the locking to be disabled on global or on Account scope those
 provisions are also provided. Needless to say quota service as well as any action
-on the account is configurable.
+on the Account is configurable.
 
 Enabling the Quota Service 
 ----------------------------
@@ -46,8 +46,8 @@ set the following global configuration to true:
 
 #.  quota.enable.service
 
-By default Quota service does not lock the accounts that have exceeded the quota
-usage. To enable quota service to lock accounts set the following global
+By default Quota service does not lock the Accounts that have exceeded the quota
+usage. To enable quota service to lock Accounts set the following global
 configuration to true:
 
 #. quota.enable.enforcement
@@ -79,7 +79,7 @@ values.
    service cloudstack-management restart 
    service cloudstack-usage restart
 
-Once the quota service is running it will calculate the quota balance for each account.
+Once the quota service is running it will calculate the quota balance for each Account.
 The quota usage is calculated as per the quota tariff provided by the site administrator.
 
 
@@ -98,7 +98,7 @@ The following table shows all quota types for which you can specify tariff.
 |                  |                                   | Compute-Month            |
 +------------------+-----------------------------------+--------------------------+
 | 2                | ALLOCATED\_VM                     | One month of allocated   |
-|                  |                                   | VM                       |
+|                  |                                   | Instance                 |
 +------------------+-----------------------------------+--------------------------+
 | 3                | IP\_ADDRESS                       | Quota for a month of     |
 |                  |                                   | allocated IP             |
@@ -125,7 +125,7 @@ The following table shows all quota types for which you can specify tariff.
 | 12               | PORT\_FORWARDING\_RULE            | Quota for port forwarding|
 |                  |                                   | policy month             |
 +------------------+-----------------------------------+--------------------------+
-| 13               | NETWORK\_OFFERING                 | Quota for network        |
+| 13               | NETWORK\_OFFERING                 | Quota for Network        |
 |                  |                                   | Offering for a month     |
 +------------------+-----------------------------------+--------------------------+
 | 14               | VPN\_USERS                        | Quota for VPN usage      |
@@ -151,13 +151,13 @@ Quota Credits
 -------------
 
 The quota credit (quotaCredit) API lets you add or remove quota currency credits to
-an account. With this API you can also control the quota enforcement policy at
-account level. This will enable you to have some accounts where the quota policy is
+an Account. With this API you can also control the quota enforcement policy at
+Account level. This will enable you to have some Accounts where the quota policy is
 not enforced. The overall quota enforcement is controlled by the quota.enable.enforcement
 global setting.
 
 In addition to above the quota API lets you can fine tune the alert generation by specifying
-the quota threshold for each account. If not explictly stated, the threshold is taken as 80%
+the quota threshold for each Account. If not explicitly stated, the threshold is taken as 80%
 of the last deposit.
 
 Quota Balance
@@ -182,8 +182,8 @@ is running.
 Quota Alert Management
 -----------------------
 
-Quota module also provides APIs to customize various email templates that are used to
-alert account owners about quota going down below threshold and quota getting over.
+Quota module also provides APIs to customize various email Templates that are used to
+alert Account owners about quota going down below threshold and quota getting over.
 
 
 All the above functionality is also available via quota UI plugin.

@@ -80,6 +80,11 @@ Prerequisites
 Creating a PVLAN-Enabled Network
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+   .. note::
+      If you are facing issues with connectivity in PVLANS, especially community and promiscuous PVLANS
+      in a multi hypervisor environment, this could be caused by the way PVLANs were implemented
+      in 4.14.0, which was later fixed in 4.15.0. To resolve this, delete the PVLAN network and recreate it.
+
 PVLAN-enabled networks can be either shared or layer 2 networks.
 
 For a general description of how to create a shared network see `"configuring a shared guest network" <#configuring-a-shared-guest-network>`_.

@@ -21,7 +21,7 @@ Introduction to the MidoNet Plugin
 ----------------------------------
 
 The MidoNet plugin allows CloudStack to use the MidoNet virtualized
-networking solution as a provider for CloudStack networks and services. For
+networking solution as a provider for CloudStack Networks and services. For
 more information on MidoNet and how it works, see
 http://www.midokura.com/midonet/.
 
@@ -34,9 +34,9 @@ Features of the MidoNet Plugin
    combination with MidoNet.
 
 In CloudStack release 4.2.0 this plugin supports several services in the
-Advanced Isolated network mode.
+Advanced Isolated Network mode.
 
-When tenants create new isolated layer 3 networks, instead of spinning
+When tenants create new isolated layer 3 Networks, instead of spinning
 up extra Virtual Router VMs, the relevant L3 elements (routers etc) are
 created in the MidoNet virtual topology by making the appropriate calls
 to the MidoNet API. Instead of using VLANs, isolation is provided by
@@ -69,8 +69,8 @@ the MidoNet Agent, and the MidoNet API server must be available. Please
 consult the MidoNet User Guide for more information. The following
 section describes the CloudStack side setup.
 
-#. CloudStack needs to have at least one physical network with the
-   isolation method set to "MIDO". This network should be enabled for
+#. CloudStack needs to have at least one physical Network with the
+   isolation method set to "MIDO". This Network should be enabled for
    the Guest and Public traffic types.
 
 #. Next, we need to set the following CloudStack settings under "Global
@@ -121,8 +121,8 @@ section describes the CloudStack side setup.
 Enabling the MidoNet service provider via the UI
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To allow CloudStack to use the MidoNet Plugin the network service provider
-needs to be enabled on the physical network.
+To allow CloudStack to use the MidoNet Plugin the Network service provider
+needs to be enabled on the physical Network.
 
 The steps to enable via the UI are as follows:
 
@@ -152,11 +152,11 @@ To enable via the API, use the following API calls:
 
 -  name = "MidoNet"
 
--  physicalnetworkid = <the uuid of the physical network>
+-  physicalnetworkid = <the UUID of the physical Network>
 
 *updateNetworkServiceProvider*
 
--  id = <the provider uuid returned by the previous call>
+-  id = <the provider UUID returned by the previous call>
 
 -  state = "Enabled"
 

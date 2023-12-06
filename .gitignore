@@ -1,3 +1,5 @@
 build/
 .vscode
 source/_build/
+/.idea
+/.tx

@@ -69,11 +69,11 @@ Setting up Networking for Users
    :maxdepth: 4
 
    networking
-   autoscale_without_netscaler
+   autoscale_with_virtual_router
 
 
-Working with Virtual Machines
------------------------------
+Working with Instances
+----------------------
 
 .. toctree::
    :maxdepth: 4
@@ -89,6 +89,13 @@ Working with Templates & ISOs
 
    templates
 
+Working with Clusters
+------------------
+
+.. toctree::
+   :maxdepth: 4
+
+   clusters
 
 Working with Hosts
 ------------------
@@ -108,8 +115,8 @@ Working with Storage
    storage
 
 
-Working with System Virtual Machines
-------------------------------------
+Working with System VMs
+-----------------------
 
 .. toctree::
    :maxdepth: 4
@@ -134,6 +141,7 @@ Managing Networks and Traffic
 
    networking_and_traffic
    networking/using_remote_access
+   networking/vnf_templates_appliances
 
 
 Managing the Cloud
