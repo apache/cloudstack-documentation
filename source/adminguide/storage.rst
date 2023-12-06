@@ -644,7 +644,7 @@ The list also could include primary storages that are mentioned as 'Not suitable
 	- Doesn't have enough capacity. 
 	- Reached its disable threshold
 	- Disabled. 
-	- Mismatch in the type of storage such as shared /Local. 
+	- Mismatch in the type of storage such as Shared /Local. 
 
 Resizing Volumes
 ~~~~~~~~~~~~~~~~
