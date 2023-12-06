@@ -1822,4 +1822,4 @@ zone      denied.routes                                              Routes that
 .. |addcluster.png: add a cluster| image:: /_static/images/add-cluster.png
 .. |add-Host.png: Adding a KVM Host| image:: /_static/images/add-Host.png
 .. |ConsoleButton.png: button to launch a console| image:: /_static/images/console-icon.png
-.. |AddObjectStore.png: Add Object Storage| image:: /_static/images/add-object-storage.png
+.. |AddObjectStore.png: Add Object Storage| image:: /_static/images/add-object-store.png
