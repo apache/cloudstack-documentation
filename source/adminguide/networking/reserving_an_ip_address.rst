@@ -40,7 +40,7 @@ The public IP address can be reserved to the caller or other accounts.
 
 #. Click Submit button.
 
-    Reserved Public IP Addresses can be acquired and used in isolated networks
+    Reserved Public IP Addresses can be acquired and used in isolated Networks
     or VPCs of the accounts which the Public IP Addresses are reserved to.
 
     Reserved Public IP Addresses will be considered as an used Public IP of 

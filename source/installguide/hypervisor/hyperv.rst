@@ -17,7 +17,7 @@
 Host Hyper-V Installation
 -------------------------
 
-If you want to use Hyper-V hypervisor to run guest virtual machines,
+If you want to use Hyper-V hypervisor to run Guest Instances,
 install Hyper-V on the hosts in your cloud. The instructions in this
 section doesn't duplicate Hyper-V Installation documentation. It
 provides the CloudStack-specific steps that are needed to prepare a
@@ -179,7 +179,7 @@ Installing the CloudStack Agent on a Hyper-V Host
 
 The Hyper-V Agent helps CloudStack perform operations on the Hyper-V
 hosts. This Agent communicates with the Management Server and controls
-all the instances on the host. Each Hyper-V host must have the Hyper-V
+all the Instances on the host. Each Hyper-V host must have the Hyper-V
 Agent installed on it for successful interaction between the host and
 CloudStack. The Hyper-V Agent runs as a Windows service. Install the
 Agent on each host using the following steps.

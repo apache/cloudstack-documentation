@@ -19,11 +19,11 @@ Log In to the UI
 ----------------
 
 CloudStack provides a web-based UI that can be used by both
-administrators and end users. The appropriate version of the UI is
+administrators and end Users. The appropriate version of the UI is
 displayed depending on the credentials used to log in. The UI is
 available in all modern popular browsers including Chrome, Firefox, Edge and
 Safari. The UI uses API auto-discovery to discover APIs allowed for a logged-in
-user and creates navigation and views based on that, and requires the following:
+User and creates navigation and views based on that, and requires the following:
 
 - API discovery (listApis) enabled for all roles that must use the UI
 - Modern browsers that are `ES5-compliant <https://github.com/vuejs/vue#browser-compatibility>`_
@@ -38,19 +38,19 @@ On a fresh Management Server installation, a guided tour splash screen
 appears. On later visits, you’ll see a login screen where you specify
 the following to proceed to your Dashboard:
 
-Username -> The user ID of your account. The default username is admin.
+Username -> The User ID of your Account. The default username is admin.
 
-Password -> The password associated with the user ID. The password for 
+Password -> The password associated with the User ID. The password for
 the default username is password.
 
-Domain -> If you are a root user, leave this field blank.
+Domain -> If you are a root User, leave this field blank.
 
-If you are a user in the sub-domains, enter the full path to the domain,
+If you are a User in the sub-domains, enter the full path to the domain,
 excluding the root domain.
 
 For example, suppose multiple levels are created under the root domain,
-such as Comp1/hr. The users in the Comp1 domain should enter Comp1 in
-the Domain field, whereas the users in the Comp1/sales domain should
+such as Comp1/hr. The Users in the Comp1 domain should enter Comp1 in
+the Domain field, whereas the Users in the Comp1/sales domain should
 enter Comp1/sales.
 
 For more guidance about the choices that appear when you log in to this
@@ -60,10 +60,10 @@ UI, see Logging In as the Root Administrator.
 End User's UI Overview
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The CloudStack UI helps users of cloud infrastructure to view and use
-their cloud resources, including virtual machines, templates and ISOs,
-data volumes and snapshots, guest networks, and IP addresses. If the
-user is a member or administrator of one or more CloudStack projects,
+The CloudStack UI helps Users of cloud infrastructure to view and use
+their cloud resources, including Instances, Templates and ISOs,
+data volumes and Snapshots, Guest Networks, and IP addresses. If the
+User is a member or administrator of one or more CloudStack projects,
 the UI can provide a project-oriented view.
 
 
@@ -76,7 +76,7 @@ Root Administrator's UI Overview
    :align: left
 
 The CloudStack UI helps the CloudStack administrator provision, view,
-and manage the cloud infrastructure, domains, user accounts, projects,
+and manage the cloud infrastructure, domains, User Accounts, projects,
 and configuration settings. The first time you start the UI after a
 fresh Management Server installation, you can choose to follow a guided
 tour to provision your cloud infrastructure. On subsequent logins, the
@@ -90,7 +90,7 @@ Logging In as the Root Administrator
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 After the Management Server software is installed and running, you can
-run the CloudStack user interface. This UI is there to help you
+run the CloudStack User interface. This UI is there to help you
 provision, view, and manage your cloud infrastructure.
 
 #. Open your favorite Web browser and go to this URL. Substitute the IP
@@ -111,8 +111,8 @@ provision, view, and manage your cloud infrastructure.
       possible configuration so that you can get started right away.
       We'll help you set up a cloud with the following features: a
       single machine that runs CloudStack software and uses NFS to
-      provide storage; a single machine running VMs under the XenServer
-      or KVM hypervisor; and a shared public network.
+      provide storage; a single machine running Instances under the XenServer
+      or KVM hypervisor; and a shared public Network.
 
       The prompts in this guided tour should give you all the
       information you need, but if you want just a bit more detail, you
@@ -123,8 +123,8 @@ provision, view, and manage your cloud infrastructure.
       deployment, or you are ready to start scaling up a trial cloud
       that you set up earlier with the basic setup screens. In the
       Administrator UI, you can start using the more powerful features
-      of CloudStack, such as advanced VLAN networking, high
-      availability, additional network elements such as load balancers
+      of CloudStack, such as advanced VLAN Networking, high
+      availability, additional Network elements such as load balancers
       and firewalls, and support for multiple hypervisors including
       Citrix XenServer, KVM, and VMware vSphere.
 
@@ -135,10 +135,10 @@ provision, view, and manage your cloud infrastructure.
    chose experienced user, use the steps in :ref:`changing-root-password`.
 
 .. warning::
-   You are logging in as the root administrator. This account manages the 
+   You are logging in as the root administrator. This Account manages the
    CloudStack deployment, including physical infrastructure. The root 
    administrator can modify configuration settings to change basic 
-   functionality, create or delete user accounts, and take many actions 
+   functionality, create or delete User Accounts, and take many actions
    that should be performed only by an authorized person. Please change 
    the default password to a new, unique password.
 
@@ -149,9 +149,9 @@ Changing the Root Password
 
 During installation and ongoing cloud administration, you will need to
 log in to the UI as the root administrator. The root administrator
-account manages the CloudStack deployment, including physical
+Account manages the CloudStack deployment, including physical
 infrastructure. The root administrator can modify configuration settings
-to change basic functionality, create or delete user accounts, and take
+to change basic functionality, create or delete User Accounts, and take
 many actions that should be performed only by an authorized person. When
 first installing CloudStack, be sure to change the default password to a
 new, unique value.
@@ -163,12 +163,12 @@ new, unique value.
 
       http://<management-server-ip-address>:8080/client
 
-#. Log in to the UI using the current root user ID and password. The
+#. Log in to the UI using the current root User ID and password. The
    default is admin, password.
 
 #. Click Accounts.
 
-#. Click the admin account name.
+#. Click the admin Account name.
 
 #. Click View Users.
 
@@ -286,6 +286,44 @@ Some assorted primary theme colours:
 - Cyan: #13C2C2
 - Green: #52C41A
 - Purple: #722ED1
+
+The config.json also allows to configure a special-purpose card that shows on
+the Account and project dashboards. This card is created using the `userCard`
+section that has a configurable title, icon and a list of configurable links
+that have a title, text (description), link and icon.
+
+.. parsed-literal::
+
+  "userCard": {
+    "title": "label.help",
+    "icon": "question-circle-outlined",
+    "links": [
+      {
+        "title": "Documentation",
+        "text": "CloudStack documentation website",
+        "link": "https://docs.cloudstack.apache.org/en/latest/",
+        "icon": "read-outlined"
+      },
+      {
+        "title": "API Documentation",
+        "text": "Refer to API documentation",
+        "link": "https://cloudstack.apache.org/api.html",
+        "icon": "api-outlined"
+      },
+      {
+        "title": "Email Support",
+        "text": "Join CloudStack users mailing list to seek and provide support",
+        "link": "mailto:users-subscribe@cloudstack.apache.org",
+        "icon": "mail-outlined"
+      },
+      {
+        "title": "Report Issue",
+        "text": "Submit a bug or improvement request",
+        "link": "https://github.com/apache/cloudstack/issues/new",
+        "icon": "bug-outlined"
+      }
+    ]
+  },
 
 Contextual help documentation URLs can be customized with the help of `docBase` and `docHelpMappings` properties.
 To override a particular documentation URL, a mapping can be added for the URL path in the config. A documentation URL is formed by combining the `docBase` URL base and a path set in the source code. Adding a mapping for any particular path in the configuration will result in generating documetation URL with overridden path.
@@ -542,11 +580,11 @@ The following features are no longer supported or available in the UI but are st
 
 - Support for S3 based secondary storage.
 - NFS secondary staging storage list/resource view and add/update actions.
-- SSL certificate for Guest network LB rule.
+- SSL certificate for Guest Network LB rule.
 - Regions.
 
 .. |change-password.png| image:: /_static/images/change-password.png
-   :alt: button to change a user's password
+   :alt: button to change a User's password
 
 .. |ui-custom-plugin.png| image:: /_static/images/ui-custom-plugin.png
    :alt: Custom plugin shown in UI with navigation

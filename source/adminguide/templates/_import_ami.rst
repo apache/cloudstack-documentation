@@ -147,7 +147,7 @@ To import an AMI:
       PermitRootLogin yes
       PasswordAuthentication yes
 
-#. If you need the template to be enabled to reset passwords from the
+#. If you need the Template to be enabled to reset passwords from the
    CloudStack UI or API, install the password change script into the
    image at this point. See :ref:`adding-password-management-to-templates`.
 

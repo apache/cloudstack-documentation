@@ -11,7 +11,7 @@
    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
-   under the License.
+   under the License
 
 
 
@@ -61,18 +61,18 @@ CloudStack can manage tens of thousands of physical servers installed in
 geographically distributed datacenters. The management server scales 
 near-linearly eliminating the need for cluster-level management servers. 
 Maintenance or other outages of the management server can occur without 
-affecting the virtual machines running in the cloud. 
+affecting the Instances running in the cloud.
 
 
 Automatic Cloud Configuration Management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 CloudStack automatically configures the network and storage settings for each 
-virtual machine deployment. Internally, a pool of virtual appliances support 
+Instance deployment. Internally, a pool of virtual appliances support
 the operation of configuration of the cloud itself. These appliances offer 
 services such as firewalling, routing, DHCP, VPN, console proxy, storage 
 access, and storage replication. The extensive use of horizontally scalable 
-virtual machines simplifies the installation and ongoing operation of a cloud. 
+Instances simplifies the installation and ongoing operation of a cloud.
 
 
 Graphical User Interface
@@ -80,7 +80,7 @@ Graphical User Interface
 
 CloudStack offers an administrators web interface used for provisioning and 
 managing the cloud, as well as an end-user's Web interface, used for running 
-VMs and managing VM templates. The UI can be customized to reflect the desired 
+Instances and managing Instance Templates. The UI can be customized to reflect the desired
 service provider or enterprise look and feel.
 
 
@@ -137,25 +137,24 @@ The management server orchestrates and allocates the resources in your cloud
 deployment.
 
 The management server typically runs on a dedicated machine or as a virtual 
-machine.  It controls allocation of virtual machines to hosts and assigns 
-storage and IP addresses to the virtual machine instances. The Management 
-Server runs in an Apache Tomcat container and requires a MySQL database for 
-persistence.
+machine.  It controls allocation of Instances to hosts and assigns
+storage and IP addresses to the Instances. The Management Server runs
+in an Apache Tomcat container and requires a MySQL database for persistence.
 
 The management server:
 
--  Provides the web interface for both the adminstrator and end user. 
+-  Provides the web interface for both the administrator and end user.
 
 -  Provides the API interfaces for both the CloudStack API as well as the EC2 
    interface. 
 
--  Manages the assignment of guest VMs to a specific compute resource
+-  Manages the assignment of guest Instances to a specific compute resource
 
 -  Manages the assignment of public and private IP addresses. 
 
--  Allocates storage during the VM instantiation process. 
+-  Allocates storage during the VM instantiation process.
 
--  Manages snapshots, disk images (templates), and ISO images. 
+-  Manages Snapshots, disk images (Templates), and ISO images.
 
 -  Provides a single point of configuration for your cloud.
 
@@ -181,11 +180,11 @@ Resources within the cloud are managed as follows:
 -  Host: A single compute node within a cluster; often a hypervisor. 
 
 -  Primary Storage: A storage resource typically provided to a single cluster 
-   for the actual running of instance disk images. (Zone-wide primary storage 
+   for the actual running of Instance disk images. (Zone-wide primary storage
    is an option, though not typically used.)
 
--  Secondary Storage: A zone-wide resource which stores disk templates, ISO 
-   images, and snapshots. 
+-  Secondary Storage: A zone-wide resource which stores disk Templates, ISO
+   images, and Snapshots.
 
 
 Networking Overview
@@ -221,9 +220,9 @@ technique for providing fault tolerance and disaster recovery.
 
 By grouping zones into regions, the cloud can achieve higher
 availability and scalability. User accounts can span regions, so that
-users can deploy VMs in multiple, widely-dispersed regions. Even if one
+users can deploy Instances in multiple, widely-dispersed regions. Even if one
 of the regions becomes unavailable, the services are still available to
-the end-user through VMs deployed in another region. And by grouping
+the end-user through Instances deployed in another region. And by grouping
 communities of zones under their own nearby Management Servers, the
 latency of communications within the cloud is reduced compared to
 managing widely-dispersed zones from a single central Management Server.
@@ -234,11 +233,11 @@ creating reports or invoices for each geographic region.
 .. figure:: /_static/images/region-overview.png
 
 
-Regions are visible to the end user. When a user starts a guest VM on a
+Regions are visible to the end user. When a user starts a Guest Instance on a
 particular CloudStack Management Server, the user is implicitly
 selecting that region for their guest. Users might also be required to
-copy their private templates to additional regions to enable creation of
-guest VMs using their templates in those regions.
+copy their private Templates to additional regions to enable creation of
+Guest Instances using their Templates in those regions.
 
 
 .. _about-zones:
@@ -266,10 +265,10 @@ A zone consists of:
 
 .. figure:: /_static/images/zone-overview.png
 
-Zones are visible to the end user. When a user starts a guest VM, the
+Zones are visible to the end user. When a user starts a Guest Instance, the
 user must select a zone for their guest. Users might also be required to
-copy their private templates to additional zones to enable creation of
-guest VMs using their templates in those zones.
+copy their private Templates to additional zones to enable creation of
+Guest Instances using their Templates in those zones.
 
 Zones can be public or private. Public zones are visible to all users.
 This means that any user may create a guest in that zone. Private zones
@@ -337,12 +336,12 @@ About Clusters
 ~~~~~~~~~~~~~~
 
 A cluster provides a way to group hosts. To be precise, a cluster is a
-XenServer server pool, a set of KVM servers, , or a VMware cluster
+XenServer server pool, a set of KVM servers or a VMware cluster
 preconfigured in vCenter. The hosts in a cluster all have identical
 hardware, run the same hypervisor, are on the same subnet, and access
-the same shared primary storage. Virtual machine instances (VMs) can be
-live-migrated from one host to another within the same cluster, without
-interrupting service to the user.
+the same shared primary storage. Instances can be live-migrated from
+one host to another within the same cluster, without interrupting service
+to the user.
 
 A cluster is the fourth-largest organizational unit within a CloudStack
 deployment. Clusters are contained within pods, and pods are contained
@@ -371,8 +370,8 @@ About Hosts
 ~~~~~~~~~~~
 
 A host is a single computer. Hosts provide the computing resources that
-run guest virtual machines. Each host has hypervisor software installed
-on it to manage the guest VMs. For example, a host can be a Citrix
+run Guest Instances. Each host has hypervisor software installed
+on it to manage the Guest Instances. For example, a host can be a Citrix
 XenServer server, a Linux KVM-enabled server, an ESXi server, or a
 Windows Hyper-V server.
 
@@ -384,7 +383,7 @@ within regions.
 Hosts in a CloudStack deployment:
 
 -  Provide the CPU, memory, storage, and networking resources needed to
-   host the virtual machines
+   host the Instances
 
 -  Interconnect using a high bandwidth TCP/IP network and connect to the
    Internet
@@ -397,7 +396,7 @@ Hosts in a CloudStack deployment:
    be homogeneous
 
 Additional hosts can be added at any time to provide more capacity for
-guest VMs.
+Guest Instances.
 
 CloudStack automatically detects the amount of CPU and memory resources
 provided by the hosts.
@@ -418,7 +417,7 @@ About Primary Storage
 ~~~~~~~~~~~~~~~~~~~~~
 
 Primary storage is associated with a cluster, and it stores
-virtual disks for all the VMs running on hosts in that cluster.
+virtual disks for all the Instances running on hosts in that cluster.
 On KVM and VMware, you can provision primary storage on a per-zone basis.
 
 You can add multiple primary storage servers to a cluster or zone. At
@@ -428,8 +427,8 @@ virtual disks to particular primary storage devices.
 
 It is useful to set up zone-wide primary storage when you want to avoid
 extra data copy operations. With cluster-based primary storage, data in
-the primary storage is directly available only to VMs within that
-cluster. If a VM in a different cluster needs some of the data, it must
+the primary storage is directly available only to Instances within that
+cluster. If an Instance in a different cluster needs some of the data, it must
 be copied from one cluster to another, using the zone's secondary
 storage as an intermediate step. This operation can be unnecessarily
 time-consuming.
@@ -466,14 +465,14 @@ About Secondary Storage
 
 Secondary storage stores the following:
 
--  Templates — OS images that can be used to boot VMs and can include
+-  Templates — OS images that can be used to boot Instances and can include
    additional configuration information, such as installed applications
 
 -  ISO images — disc images containing data or bootable media for
    operating systems
 
--  Disk volume snapshots — saved copies of VM data which can be used for
-   data recovery or to create new templates
+-  Disk Volume Snapshots — saved copies of Instance data which can be used for
+   data recovery or to create new Templates
 
 The items in secondary storage are available to all hosts in the scope
 of the secondary storage, which may be defined as per zone or per
@@ -481,8 +480,8 @@ region.
 
 To make items in secondary storage available to all hosts throughout the
 cloud, you can add object storage in addition to the zone-based NFS
-Secondary Staging Store. It is not necessary to copy templates and
-snapshots from one zone to another, as would be required when using zone
+Secondary Staging Store. It is not necessary to copy Templates and
+Snapshots from one zone to another, as would be required when using zone
 NFS alone. Everything is available everywhere.
 
 For Hyper-V hosts, SMB/CIFS storage is supported.
@@ -493,9 +492,9 @@ Simple Storage Service (S3) object storage. When using one of these
 storage plugins, you configure Swift or S3 storage for the entire
 CloudStack, then set up the NFS Secondary Staging Store for each zone.
 The NFS storage in each zone acts as a staging area through which all
-templates and other secondary storage data pass before being forwarded
+Templates and other secondary storage data pass before being forwarded
 to Swift or S3. The backing object storage acts as a cloud-wide
-resource, making templates and other data available to any zone in the
+resource, making Templates and other data available to any zone in the
 cloud.
 
 .. warning::
@@ -503,6 +502,15 @@ cloud.
    you cannot set up multiple zones, one using NFS secondary and the other 
    using S3 or Swift secondary.
 
+.. _about-object-storage:
+
+About Object Storage
+~~~~~~~~~~~~~~~~~~~~~~~
+Object storage (also known as object-based storage) is a data storage that manages data as objects.
+CloudStack admin can setup supported Object Storage systems and add them to CloudStack as an Object Storage Pool.
+Users can create buckets within the object storage pool.
+The basic storage units of Object Store are objects. Any type of data, regardless of content type, is stored as an object.
+Buckets are logical containers for storing objects.
 
 About Physical Networks
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -538,8 +546,8 @@ Basic Zone Network Traffic Types
 When basic networking is used, there can be only one physical network in
 the zone. That physical network carries the following traffic types:
 
--  Guest. When end users run VMs, they generate guest traffic. The guest
-   VMs communicate with each other over a network that can be referred
+-  Guest. When end users run Instances, they generate guest traffic. The guest
+   Instances communicate with each other over a network that can be referred
    to as the guest network. Each pod in a basic zone is a broadcast
    domain, and therefore each pod has a different IP range for the guest
    network. The administrator must configure the IP range for each pod.
@@ -555,25 +563,23 @@ the zone. That physical network carries the following traffic types:
    We strongly recommend the use of separate NICs for management traffic
    and guest traffic.
 
--  Public. Public traffic is generated when VMs in the cloud access the
-   Internet. Publicly accessible IPs must be allocated for this purpose.
-   End users can use the CloudStack UI to acquire these IPs to implement
-   NAT between their guest network and the public network, as described
-   in Acquiring a New IP Address.
+-  Public. Public traffic doesn't exist in the Basic Zone. Instead, the Guest
+   network can be assigned publicly routable IP space in case you want your
+   Instances to be directly exposed to the Internet
 
--  Storage. While labeled "storage" this is specifically about secondary
-   storage, and doesn't affect traffic for primary storage. This
-   includes traffic such as VM templates and snapshots, which is sent
+-  Storage. While labeled "storage" this is specifically about Secondary
+   Storage traffic, and doesn't affect traffic for primary storage. This
+   includes traffic such as Instance Templates and Snapshots, which is sent
    between the secondary storage VM and secondary storage servers.
    CloudStack uses a separate Network Interface Controller (NIC) named
-   storage NIC for storage network traffic. Use of a storage NIC that
-   always operates on a high bandwidth network allows fast template and
-   snapshot copying. You must configure the IP range to use for the
-   storage network.
+   storage NIC for Storage Network traffic. Use of a storage NIC that
+   always operates on a high bandwidth network allows fast Template and
+   Snapshot copying. You must configure the IP range to use for the
+   Storage Network.
 
 In a basic network, configuring the physical network is fairly
 straightforward. In most cases, you only need to configure one guest
-network to carry traffic that is generated by guest VMs. If you use a
+network to carry traffic that is generated by Guest Instances. If you use a
 NetScaler load balancer and enable its elastic IP and elastic load
 balancing (EIP and ELB) features, you must also configure a network to
 carry public traffic. CloudStack takes care of presenting the necessary
@@ -599,13 +605,13 @@ traffic types, and you need to let CloudStack know which type of network
 traffic you want each network to carry. The traffic types in an advanced
 zone are:
 
--  Guest. When end users run VMs, they generate guest traffic. The guest
-   VMs communicate with each other over a network that can be referred
+-  Guest. When end users run Instances, they generate guest traffic. The guest
+   Instances communicate with each other over a network that can be referred
    to as the guest network. This network can be isolated or shared. In
    an isolated guest network, the administrator needs to reserve VLAN
    ranges to provide isolation for each CloudStack account’s network
    (potentially a large number of VLANs). In a shared guest network, all
-   guest VMs share a single network.
+   Guest Instances share a single network.
 
 -  Management. When CloudStack’s internal resources communicate with
    each other, they generate management traffic. This includes
@@ -614,21 +620,30 @@ zone are:
    communicates directly with the CloudStack Management Server. You must
    configure the IP range for the system VMs to use.
 
--  Public. Public traffic is generated when VMs in the cloud access the
-   Internet. Publicly accessible IPs must be allocated for this purpose.
+-  Public. Public traffic is generated when Instances in the cloud need to access
+   systems that are external to CloudStack. Guest Instances will route the
+   traffic through their Virtual Router to access external systems.
    End users can use the CloudStack UI to acquire these IPs to implement
-   NAT between their guest network and the public network, as described
+   NAT between their guest network and the Public Network, as described
    in “Acquiring a New IP Address” in the Administration Guide.
+   Public IPs are assigned to the "Public" interface of system VMs, including
+   Virtual Routers. 
+
+.. note::
+   The IP space used in a "Public" network can either be really publicly 
+   routable IP space (e.g. in case of a Public cloud setup), or can be
+   any other company internal (RFC 1918) IP space that is not used with other
+   CloudStack networks (e.g. in case of a Private cloud setup
 
 -  Storage. While labeled "storage" this is specifically about secondary
    storage, and doesn't affect traffic for primary storage. This
-   includes traffic such as VM templates and snapshots, which is sent
+   includes traffic such as Instance Templates and Snapshots, which is sent
    between the secondary storage VM and secondary storage servers.
    CloudStack uses a separate Network Interface Controller (NIC) named
-   storage NIC for storage network traffic. Use of a storage NIC that
-   always operates on a high bandwidth network allows fast template and
-   snapshot copying. You must configure the IP range to use for the
-   storage network.
+   storage NIC for Storage Network traffic. Use of a storage NIC that
+   always operates on a high bandwidth network allows fast Template and
+   Snapshot copying. You must configure the IP range to use for the
+   Storage Network.
 
 These traffic types can each be on a separate physical network, or they
 can be combined with certain restrictions. When you use the Add Zone
@@ -646,14 +661,14 @@ account, in which case only the named account may create guests that
 attach to these networks. The networks are defined by a VLAN ID, IP
 range, and gateway. The administrator may provision thousands of these
 networks if desired. Additionally, the administrator can reserve a part
-of the IP address space for non-CloudStack VMs and servers.
+of the IP address space for non-CloudStack Instances and servers.
 
 
 Advanced Zone Public IP Addresses
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When advanced networking is used, the administrator can create
-additional networks for use by the guests. These networks can span the
+additional Public networks for use by the guests. These networks can span the
 zone and be available to all accounts, or they can be scoped to a single
 account, in which case only the named account may create guests that
 attach to these networks. The networks are defined by a VLAN ID, IP

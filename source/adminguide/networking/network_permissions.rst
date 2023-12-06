@@ -17,60 +17,60 @@
 Guest Network Permissions
 -----------------------------
 
-From Apache CloudStack 4.17.0.0, guest networks can be shared to other
-accounts in the same domain by managing network permissions.
+From Apache CloudStack 4.17.0.0, guest Networks can be shared to other
+accounts in the same domain by managing Network permissions.
 
-The following networks can be shared:
+The following Networks can be shared:
 
-#. L2 networks not in Project
+#. L2 Networks not in Project
 
-#. Isolated networks not in Project
+#. Isolated Networks not in Project
 
-#. Shared networks with scope is Account
+#. Shared Networks with scope is Account
 
-Adding a network permission
+Adding a Network permission
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #. Log in to the CloudStack UI as an administrator or end user.
 
 #. In the left navigation, choose Network.
 
-#. In the Select view, select Guest networks.
+#. In the Select view, select Guest Networks.
 
-#. Select the guest network you want to work with.
+#. Select the guest Network you want to work with.
 
 #. Click the Network Permissions tab.
 
-   All the network permissions that you have created for the network are
+   All the Network permissions that you have created for the Network are
    listed in the page. |network-permissions.png|
 
 #. Click Add Network Permission icon. Provide the following information:
 
-   -  **Account**: The name of the accounts this network will be shared to.
+   -  **Account**: The name of the accounts this Network will be shared to.
 
-   -  **Project**. The name of the projects this network will be shared to.
+   -  **Project**. The name of the projects this Network will be shared to.
 
 #. Click OK.
 
    .. note::
-      The accounts/projects are permitted to create VMs on the network.
-      However, they are not permitted to restart and update network, and
-      modify network rules (e.g. firewall, static nat, load balancer, port
+      The accounts/projects are permitted to create Instances on the Network.
+      However, they are not permitted to restart and update Network, and
+      modify Network rules (e.g. firewall, static nat, load balancer, port
       forwarding).
 
 
-Removing a network permission
+Removing a Network permission
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To remove a network permission, click the Delete Network Permission icon of
-the network permission. |delete-button.png|
+To remove a Network permission, click the Delete Network Permission icon of
+the Network permission. |delete-button.png|
 
 
-Resetting network permissions
+Resetting Network permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-CloudStack provides the ability to reset the network permissions of a network.
-All network permissions will be removed. To reset the network permission, click
+CloudStack provides the ability to reset the Network permissions of a Network.
+All Network permissions will be removed. To reset the Network permission, click
 the Reset Network Permissions button on the page.
 
 

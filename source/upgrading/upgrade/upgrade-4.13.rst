@@ -36,7 +36,7 @@ Overview of Upgrade Steps:
 ----------------------------
 
 #. Check any customisations and integrations
-#. Upload the |sysvm64-version| System VM template if not already using it.
+#. Upload the |sysvm64-version| System VM Template if not already using it.
 #. Confirm Java 11 is the default Java version
 #. Stop all running management servers
 #. Backup CloudStack database (MySQL)
@@ -51,8 +51,8 @@ Overview of Upgrade Steps:
 .. include:: _customisation_warnings.rst
 
 .. warning::
-    If you are not already using the |sysvm64-version| System VM template you will need to 
-    upgrade your System VM template prior to performing the upgrade of the 
+    If you are not already using the |sysvm64-version| System VM Template you will need to
+    upgrade your System VM Template prior to performing the upgrade of the
     CloudStack packages.
 
 .. include:: _sysvm_templates.rst
@@ -235,7 +235,7 @@ Hypervisor: VMware
    built using "noredist". Refer to :ref:`building-noredist`.
 
 
-No additional steps are requried for the VMware Hypervisor for this upgrade.
+No additional steps are required for the VMware Hypervisor for this upgrade.
 
 
 .. _kvm413:

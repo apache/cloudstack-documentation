@@ -33,7 +33,7 @@ msgstr ""
 
 #: ../../networking/persistent_networks.rst:33
 # 87f88f46858c41ba96f785b7c3122342
-msgid "One of the advantages of having a persistent network is that you can create a VPC with a tier consisting of only physical devices. For example, you might create a VPC for a three-tier application, deploy VMs for Web and Application tier, and use physical machines for the Database tier. Another use case is that if you are providing services by using physical hardware, you can define the network as persistent and therefore even if all its VMs are destroyed the services will not be discontinued."
+msgid "One of the advantages of having a persistent network is that you can create a VPC with a temtier consisting of only physical devices. For example, you might create a VPC for a three-tier application, deploy VMs for Web and Application tier, and use physical machines for the Database tier. Another use case is that if you are providing services by using physical hardware, you can define the network as persistent and therefore even if all its VMs are destroyed the services will not be discontinued."
 msgstr ""
 
 #: ../../networking/persistent_networks.rst:44

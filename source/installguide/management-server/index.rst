@@ -49,7 +49,7 @@ What should you do next?
    CloudStack on an ongoing basis. See Log In to the UI.
 
 -  When you're ready, add the cloud infrastructure and try running some
-   virtual machines on it, so you can watch how CloudStack manages the
+   Instances on it, so you can watch how CloudStack manages the
    infrastructure. See Provision Your Cloud Infrastructure.
 
 

@@ -17,13 +17,13 @@
 Creating a Windows Template
 ---------------------------
 
-Windows templates must be prepared with Sysprep before they can be
+Windows Templates must be prepared with Sysprep before they can be
 provisioned on multiple machines. Sysprep allows you to create a generic
-Windows template and avoid any possible SID conflicts.
+Windows Template and avoid any possible SID conflicts.
 
 .. note:: 
-   (XenServer) Windows VMs running on XenServer require PV drivers, which 
-   may be provided in the template or added after the VM is created. The 
+   (XenServer) Windows instances running on XenServer require PV drivers, which
+   may be provided in the Template or added after the instance is created. The
    PV drivers are necessary for essential management functions such as 
    mounting additional volumes and ISO images, live migration, and 
    graceful shutdown.
@@ -35,17 +35,17 @@ An overview of the procedure is as follows:
    For more information, see `“Adding an
    ISO” <virtual_machines.html#adding-an-iso>`_.
 
-#. Create a VM Instance with this ISO.
+#. Create an instance with this ISO.
 
    For more information, see `“Creating
-   VMs” <virtual_machines.html#creating-vms>`_.
+   instances” <virtual_machines.html#creating-vms>`_.
 
 #. Follow the steps in Sysprep for Windows Server 2008 R2 (below) or
    Sysprep for Windows Server 2003 R2, depending on your version of
    Windows Server
 
 #. The preparation steps are complete. Now you can actually create the
-   template as described in Creating the Windows Template.
+   Template as described in Creating the Windows Template.
 
 
 System Preparation for Windows Server 2008 R2
@@ -68,8 +68,8 @@ Use the following steps to run sysprep for Windows 2008 R2:
 #. Download and install the Windows AIK
 
    .. note:: 
-      Windows AIK should not be installed on the Windows 2008 R2 VM you 
-      just created. Windows AIK should not be part of the template you 
+      Windows AIK should not be installed on the Windows 2008 R2 instance you
+      just created. Windows AIK should not be part of the Template you
       create. It is only used to create the sysprep answer file.
 
 #. Copy the install.wim file in the \\sources directory of the Windows
@@ -116,7 +116,7 @@ Use the following steps to run sysprep for Windows 2008 R2:
       |software-license.png|
 
    #. Make sure the license key is properly set. If you use MAK key, you
-      can just enter the MAK key on the Windows 2008 R2 VM. You need not
+      can just enter the MAK key on the Windows 2008 R2 instance. You need not
       input the MAK into the Windows System Image Manager. If you use
       KMS host for activation you need not enter the Product Key.
       Details of Windows Volume Activation can be found at
@@ -140,7 +140,7 @@ Use the following steps to run sysprep for Windows 2008 R2:
    messages that appear in the validation window.
 
 #. Copy the unattend.xml file into the c:\\windows\\system32\\sysprep
-   directory of the Windows 2008 R2 Virtual Machine
+   directory of the Windows 2008 R2 Instance
 
 #. Once you place the unattend.xml file in
    c:\\windows\\system32\\sysprep directory, you run the sysprep tool as
@@ -151,7 +151,7 @@ Use the following steps to run sysprep for Windows 2008 R2:
       cd c:\Windows\System32\sysprep
       sysprep.exe /oobe /generalize /shutdown
 
-   The Windows 2008 R2 VM will automatically shut down after sysprep is
+   The Windows 2008 R2 instance will automatically shut down after sysprep is
    complete.
 
 
@@ -163,7 +163,7 @@ steps for Windows Server 2003 R2.
 
 #. Extract the content of \\support\\tools\\deploy.cab on the Windows
    installation CD into a directory called c:\\sysprep on the Windows
-   2003 R2 VM.
+   2003 R2 instance.
 
 #. Run c:\\sysprep\\setupmgr.exe to create the sysprep.inf file.
 

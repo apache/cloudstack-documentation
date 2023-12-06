@@ -48,7 +48,7 @@ with OpenVswitch, the requirements are listed below
 
 -  openvswitch: 1.7.1 or higher
 
-Not all versions of Qemu/KVM may support dynamic scaling of instances. Some combinations may result CPU or memory related failures during instance deployment.
+Not all versions of Qemu/KVM may support dynamic scaling of Instances. Some combinations may result CPU or memory related failures during Instance deployment.
 
 In addition, the following hardware requirements apply:
 
@@ -66,7 +66,7 @@ In addition, the following hardware requirements apply:
 
 -  At least 1 NIC
 
--  When you deploy CloudStack, the hypervisor host must not have any VMs
+-  When you deploy CloudStack, the hypervisor host must not have any Instances
    already running. These will be destroy by CloudStack.
 
 
@@ -74,7 +74,7 @@ KVM Installation Overview
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to use the Linux Kernel Virtual Machine (KVM) hypervisor to
-run guest virtual machines, install KVM on the host(s) in your cloud.
+run Guest Instances, install KVM on the host(s) in your cloud.
 The material in this section doesn't duplicate KVM installation docs. It
 provides the CloudStack-specific steps that are needed to prepare a KVM
 host to work with CloudStack.
@@ -110,7 +110,7 @@ Prepare the Operating System
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The OS of the Host must be prepared to host the CloudStack Agent and run
-KVM instances.
+KVM Instances.
 
 #. Log in to your OS as root.
 
@@ -149,7 +149,7 @@ KVM instances.
 
       .. parsed-literal::
 
-         $ apt-get install chrony
+         $ apt install chrony
 
    In SUSE:
 
@@ -168,8 +168,8 @@ KVM instances.
 Install and configure the Agent
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To manage KVM instances on the host CloudStack uses a Agent. This Agent
-communicates with the Management server and controls all the instances
+To manage KVM Instances on the host CloudStack uses a Agent. This Agent
+communicates with the Management server and controls all the Instances
 on the host.
 
 .. note::
@@ -189,7 +189,7 @@ In Ubuntu:
 
 .. parsed-literal::
 
-   $ apt-get install cloudstack-agent
+   $ apt install cloudstack-agent
 
 In SUSE:
 
@@ -216,13 +216,13 @@ Configure CPU model for KVM guest (Optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In additional,the CloudStack Agent allows host administrator to control
-the guest CPU model which is exposed to KVM instances. By default, the
-CPU model of KVM instance is likely QEMU Virtual CPU version x.x.x with
+the guest CPU model which is exposed to KVM Instances. By default, the
+CPU model of KVM Instance is likely QEMU Virtual CPU version x.x.x with
 least CPU features exposed. There are a couple of reasons to specify the
 CPU model:
 
--  To maximise performance of instances by exposing new host CPU
-   features to the KVM instances;
+-  To maximise performance of Instances by exposing new host CPU
+   features to the KVM Instances;
 
 -  To ensure a consistent default CPU across all machines,removing
    reliance of variable QEMU defaults;
@@ -291,7 +291,7 @@ Here are some examples:
 Install and Configure libvirt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-CloudStack uses libvirt for managing virtual machines. Therefore it is
+CloudStack uses libvirt for managing Instances. Therefore it is
 vital that libvirt is configured correctly. Libvirt is a dependency of
 cloudstack-agent and should already be installed.
 
@@ -299,7 +299,7 @@ cloudstack-agent and should already be installed.
    Please note that Cloudstack will automatically perform basic configuration of the agent and libvirt when the host is added. This is relevant if you are
    planning to automate the deployment and configuration of your KVM hosts.
 
-#. To avoid potential security attack to virtual machines, We need to turn
+#. To avoid potential security attack to Instances, We need to turn
    off libvirt to listen on unsecure TCP port. CloudStack will automatically
    set up cloud keystore and certificates when the host is added to cloudstack.
    We also need to turn off libvirts attempt
@@ -471,7 +471,7 @@ Configuring the Networking
    implementation in Linux. Please refer to the next section if you intend to
    use OpenVswitch
 
-CloudStack uses the network bridges in conjunction with KVM to connect the guest instances to
+CloudStack uses the network bridges in conjunction with KVM to connect the Guest Instances to
 each other and the outside world.  They also are used to connect the System VMs to your
 infrastructure.
 
@@ -505,8 +505,8 @@ for the guest network.
 
 We assume that the hypervisor has one NIC (eth0) with one tagged VLAN trunked from the switch:
 
-#. Native VLAN for management network (cloudbr0)
-#. VLAN 200 for guest network of the instances (cloudbr1)
+#. Native VLAN for Management Network (cloudbr0)
+#. VLAN 200 for guest network of the Instances (cloudbr1)
 
 In this the following example we give the Hypervisor the IP-Address 192.168.42.11/24
 with the gateway 192.168.42.1
@@ -676,7 +676,7 @@ Now we configure cloudbr0 and include the Management IP of the hypervisor.
    IPADDR=192.168.42.11
    NETMASK=255.255.255.0
 
-Add the gatway in ``/etc/sysconfig/network/routes``
+Add the gateway in ``/etc/sysconfig/network/routes``
 
 .. parsed-literal::
 
@@ -936,7 +936,7 @@ Now we configure cloudbr0 and include the Management IP of the hypervisor.
    IPADDR=192.168.42.11
    NETMASK=255.255.255.0
 
-Add the gatway in ``/etc/sysconfig/network/routes``
+Add the gateway in ``/etc/sysconfig/network/routes``
 
 .. parsed-literal::
 
@@ -1026,7 +1026,7 @@ Configure the network using OpenVswitch
 .. warning::
    This is a very important section, please make sure you read this thoroughly.
 
-In order to forward traffic to your instances you will need at least two
+In order to forward traffic to your Instances you will need at least two
 bridges: *public* and *private*.
 
 By default these bridges are called *cloudbr0* and *cloudbr1*, but you
@@ -1062,7 +1062,7 @@ VLANs:
 
 #. VLAN 100 for management of the hypervisor
 
-#. VLAN 200 for public network of the instances (cloudbr0)
+#. VLAN 200 for public network of the Instances (cloudbr0)
 
 #. VLAN 300 for private network of the instances (cloudbr1)
 
@@ -1245,7 +1245,7 @@ We now have to configure the three VLAN bridges:
    NETMASK=255.255.255.0
 
 
-Add the gatway in ``/etc/sysconfig/network/routes``
+Add the gateway in ``/etc/sysconfig/network/routes``
 
 .. parsed-literal::
 
@@ -1398,8 +1398,8 @@ Additional Packages Required for Features
 Secondary Storage Bypass
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-New in 4.11 is the ability to bypass storing a template on secondary storage, and
-instead directly downloading a 'template' from an alternate remote location.
+New in 4.11 is the ability to bypass storing a Template on secondary storage, and
+instead directly downloading a 'Template' from an alternate remote location.
 In order to facilitate this the **Aria2** (https://aria2.github.io/) package must be
 installed on all of your KVM hosts.
 
@@ -1407,14 +1407,14 @@ As this package often is not available in standard distribution repos, you will 
 to install the package from your preferred source.
 
 
-Volume snapshots
+Volume Snapshots
 ^^^^^^^^^^^^^^^^
 
-CloudStack uses the qemu-img to perform snapshots.  In CentOS >= 6.5, the qemu-img
-supplied by RedHat/CentOS ceased to include a '-s' switch which performs snapshots. The
+CloudStack uses the qemu-img to perform Snapshots.  In CentOS >= 6.5, the qemu-img
+supplied by RedHat/CentOS ceased to include a '-s' switch which performs Snapshots. The
 '-s' switch has been restored in latest CentOS/RHEL 7.x versions.
 
-In order to be able to perform volume snapshots on CentOS 6.x (greater than 6.4) you must
+In order to be able to perform Volume Snapshots on CentOS 6.x (greater than 6.4) you must
 replace your version of qemu-img with one which has been patched to include the '-s'
 switch.
 

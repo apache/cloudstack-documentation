@@ -58,14 +58,16 @@ and VMware with vSphere.
 
    .. note:: For XenServer version 8.2 to work it might be necessary to manually add a custom storage repository with name "XenServer Tools" containing the systemvm.iso file.
 
--  VMware versions 6.5, 6.7 and 7.0. There is rudimentary VMware 8.0 support since this version.
+-  VMware versions 6.5, 6.7, 7.0 and 8.0.0
 
-   .. note:: The following VMware minor versions are supported and tested: 6.5, 6.7, 6.7.1, 6.7.2, 6.7.3, 7.0, 7.0.1.0, 7.0.2.0, 7.0.3.0.
-    For any minor versions without hypervisor mappings, all virtual machines have guest OS identifier "otherGuest64" (x86-64 architecture) or "otherGuest" (other architectures).
+   .. note:: The following VMware minor versions are supported and tested: 6.5, 6.7, 6.7.1, 6.7.2, 6.7.3, 7.0, 7.0.1.0, 7.0.2.0, 7.0.3.0, 8.0, 8.0a (8.0.0.1), 8.0b (8.0.0.2), 8.0c (8.0.0.3).
+    For any minor versions without hypervisor mappings, all Instances have guest OS identifier "otherGuest64" (x86-64 architecture) or "otherGuest" (other architectures).
 
    .. note:: There is a known issue in 6.7 U1 (https://kb.vmware.com/s/article/67315) which blocks some CloudStack cloning operations. The use of linked clones is known to be effected.
 
-   .. note:: There is a known issue in 6.7 U3 - 6.7 U3f where a mailformed OVA could crash vCenter services (for more information see `here <https://mail-archives.apache.org/mod_mbox/cloudstack-users/202005.mbox/%3CCAMvtBPNQqbe0XEsHyjFMror7HRvj-c%3DfEe7y12NfCDQSFTYgqQ%40mail.gmail.com%3E>`_). To avoid the issue, make sure to use 6.7 U3g or later.
+   .. note:: There is a known issue in 6.7 U3 - 6.7 U3f where a malformed OVA could crash vCenter services (for more information see `here <https://mail-archives.apache.org/mod_mbox/cloudstack-users/202005.mbox/%3CCAMvtBPNQqbe0XEsHyjFMror7HRvj-c%3DfEe7y12NfCDQSFTYgqQ%40mail.gmail.com%3E>`_). To avoid the issue, make sure to use 6.7 U3g or later.
+
+   .. note:: There are some known issues with 8.0 U1 (https://github.com/apache/cloudstack/issues/7572). VMware 8.0 U1 (8.0.1.0) is not supported yet.
 
 -  LXC Host Containers on RHEL 7 (not tested to work fine for last many CloudStack releases)
 -  Windows Server 2012 R2 with Hyper-V Role enabled (not tested to work fine for last many CloudStack releases)
@@ -127,7 +129,7 @@ The following Management Server Operating Systems are no longer supported in thi
 -  Ubuntu 14.04
 -  Ubuntu 16.04
 
-.. [1] in spite of of mostly being phased out some support is remaining in for now. See the section :ref:`Possible Issue with Guest OS IDs` for details.
+.. [1] in spite of mostly being phased out some support is remaining in for now. See the section :ref:`Possible Issue with Guest OS IDs` for details.
 
 Please see `CloudStack Wiki <https://cwiki.apache.org/confluence/display/CLOUDSTACK/Hypervisor+and+Management+Server+OS+EOL+Dates>`_
 for details.

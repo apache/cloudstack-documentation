@@ -21,12 +21,12 @@ Configuring AutoScale with using CloudStack Virtual Router
 What is AutoScaling?
 --------------------
 
-AutoScaling allows you to scale your back-end services or application VMs up
+AutoScaling allows you to scale your back-end services or application Instances up
 or down seamlessly and automatically according to the conditions you define.
-With AutoScaling enabled, you can ensure that the number of VMs you are using
+With AutoScaling enabled, you can ensure that the number of Instances you are using
 seamlessly scale up when demand increases, and automatically decreases when
 demand subsides. Thus it helps you save compute costs by terminating underused
-VMs automatically and launching new VMs when you need them, without the need
+Instances automatically and launching new ones when you need them, without the need
 for manual intervention.
 
 
@@ -41,27 +41,27 @@ Prerequisites
 
 Before you configure an AutoScale rule, consider the following:
 
--  Ensure that the necessary template is prepared before configuring AutoScale.
+-  Ensure that the necessary Template is prepared before configuring AutoScale.
    Firstly you must install the PV-driver or virtio driver, which helps CloudStack
-   collects performance parameters (CPU and memory) into VMs. Beside, When a VM is
-   deployed by using a template and when it comes up, the application should be
+   collects performance parameters (CPU and memory) into Instances. Besides, when an Instance is
+   deployed by using a Template and when it comes up, the application should be
    up and running.
 
--  Create an Isolated network using a network offering which supports VM AutoScaling,
-   acquire a new IP address (it will be used as Source NAT of the network) and create
-   a load balancer rule without any VM.
+-  Create an Isolated Network using a Network offering which supports Instance AutoScaling,
+   acquire a new IP address (it will be used as Source NAT of the Network) and create
+   a load balancer rule without any Instance.
    For more information, see `“Configure Guest Traffic in an Advanced Zone”
    <networking_and_traffic.html#configure-guest-traffic-in-an-advanced-zone>`_ ,
    `“Acquiring a New IP Address” <networking_and_traffic.html#acquiring-a-new-ip-address>`_
    and `“Adding a Load Balancer Rule” <networking_and_traffic.html#adding-a-load-balancer-rule>`_.
 
    .. note::
-      There is a known issue when CloudStack collects memory statistics from VMs on
+      There is a known issue when CloudStack collects memory statistics from Instances on
       KVM hosts, see https://github.com/apache/cloudstack/pull/6358 .
       To get memory statistics on KVM hosts, please add the following line to
       /etc/cloudstack/agent/agent.properties and restart cloudstack-agent (5/10/60 are tested ok):
 
-        vm.memballoon.stats.period = <Interval in seconds to get VM stats on KVM host>
+        vm.memballoon.stats.period = <Interval in seconds to get Instance stats on KVM host>
 
    .. note::
       There is a known issue when CloudStack collects average load balancer connections
@@ -72,106 +72,105 @@ Before you configure an AutoScale rule, consider the following:
       <networking_and_traffic.html#load-balancer-configurations>`_.
 
    .. note::
-      VmAutoScaling capability is enabled by default for network offerings which support
-      load balanacer. To disable it, please create a network offering without VmAutoScaling support.
+      VmAutoScaling capability is enabled by default for Network offerings which support
+      load balancer. To disable it, please create a Network offering without VmAutoScaling support.
       For more information, see `“Creating a New Network Offering”
       <networking.html#creating-a-new-network-offering>`_.
 
 
-Adding an AutoScale VM Group
+Adding an AutoScale Instance Group
 -------------
 
 #. Log in to the CloudStack UI as an administrator or end user.
 
-#. In the left navigation, choose Compute -> AutoScale VM Groups.
+#. In the left navigation, choose Compute -> AutoScale Instance Groups.
 
-#. Click the New AutoScale VM Group button.
+#. Click the New AutoScale Instance Group button.
 
 Specify the following:
 
--  Zone: A zone where the VMs will be deployed to.
+-  Zone: A zone where the Instances will be deployed to.
 
--  Template: A template consists of a base OS image and application. A
-   template is used to provision the new instance of an application on a
-   scaleup action. When a VM is deployed from a template, the VM can start
+-  Template: A Template consists of a base OS image and application. A
+   Template is used to provision the new Instance of an application on a
+   scaleup action. When an Instance is deployed from a Template, it can start
    taking the traffic from the load balancer without any admin intervention.
-   For example, if the VM is deployed for a Web service, it should have the
+   For example, if the Instance is deployed for a Web service, it should have the
    Web server running, the database connected, and so on.
 
 -  Compute offering: A predefined set of virtual hardware attributes,
    including CPU speed, number of CPUs, and RAM size, that the user can select
-   when creating a new virtual machine instance. Choose one of the compute
-   offerings to be used while provisioning a VM instance as part of scaleup
-   action.
+   when creating a new Instance. Choose one of the compute offerings to be used
+   while provisioning an Instance as part of the scaleup action.
 
--  Data disk: An extra disk attached to each VM instance in the VM group.
+-  Data disk: An extra disk attached to each Instance in the Instance group.
 
--  Networks: The networks of the VM instances. If there are multiple networks
-   checked, the network of the load balancer rule will be the default network
-   of VM instances.
+-  Networks: The Networks of the Instances. If there are multiple networks
+   checked, the network of the load balancer rule will be the default Network
+   of the Instances.
 
--  Load balancing rule: When a VM instance is created, it will be automatically
-   assigned to the load balancing rule. When a VM instance is expunged, it
+-  Load balancing rule: When an Instance is created, it will be automatically
+   assigned to the load balancing rule. When an Instance is expunged, it
    will be removed from the load balancing rule.
 
 -  ScaleUp policies: The policies for ScaleUp action. When all of the conditions
-   in one of the ScaleUp policies are met, CloudStack will create a VM instance
-   if the number of VMs do not exceed Max Instance.
+   in one of the ScaleUp policies are met, CloudStack will create an Instance
+   if the number of Instances do not exceed Max Instance.
 
    For more information, see `“AutoScale policies”
    <autoscale_with_virtual_router.html#autoscale-policies>`_.
 
 -  ScaleDown policies: The policies for ScaleDown action. When all of the
    conditions in one of the ScaleDown policies are met, CloudStack will expunge
-   a VM instance in the group if the number of VMs is larger than Min Instance.
+   an Instance in the group if the number of Instances is larger than Min Instance.
 
    For more information, see `“AutoScale policies”
    <autoscale_with_virtual_router.html#autoscale-policies>`_.
 
--  Name: The name of the VM group. The name of new VM instances will use the
-   name of the VM group as prefix.
+-  Name: The name of the Instance group. The name of the new Instances will use the
+   name of the Instance group as prefix.
 
--  Min Instance: The minimum number of active VM instances that is assigned to
-   a load balancing rule. The active VM instances are the application
-   instances that are up and serving the traffic, and are being load balanced.
+-  Min Instance: The minimum number of active Instances that is assigned to
+   a load balancing rule. The active Instances are the application
+   Instances that are up and serving the traffic, and are being load balanced.
    This parameter ensures that a load balancing rule has at least the
-   configured number of active VM instances are available to serve the traffic.
+   configured number of active Instances are available to serve the traffic.
 
--  Max Instance: Maximum number of active VM instances that should be assigned
+-  Max Instance: Maximum number of active Instances that should be assigned
    to a load balancing rule. This parameter defines the upper limit of active
-   VM instances that can be assigned to a load balancing rule.
+   Instances that can be assigned to a load balancing rule.
 
-   Specifying a large value for the maximum instance parameter might result in
-   provisioning large number of VM instances, which in turn leads to a single
-   load balancing rule exhausting the VM instances limit specified at the
+   Specifying a large value for the Maximum Instance parameter might result in
+   provisioning large number of Instances, which in turn leads to a single
+   load balancing rule exhausting the Instances limit specified at the
    account or domain level.
 
 -  Polling interval: Frequency in which the conditions, combination of counter,
    operator and threshold, are to be evaluated before taking a scale up or
    down action. The default polling interval is 30 seconds.
 
--  Expunge VM Grace Period: The duration in seconds, after a scaledown action
-   is initiated, to wait before the VM is expunged as part of scaledown
+-  Expunge Instance Grace Period: The duration in seconds, after a scaledown action
+   is initiated, to wait before the Instance is expunged as part of scaledown
    action. This is to ensure graceful close of any pending sessions or
-   transactions being served by the VM marked for expunge. The default is 120
+   transactions being served by the Instance marked for expunge. The default is 120
    seconds.
 
--  Create: Click Create to create the AutoScale VM group.
+-  Create: Click Create to create the AutoScale Instance group.
 
    Additionally, if you want to configure the advanced settings, click Show
    advanced settings, and specify the following:
 
--  SSH key pairs: The SSH Keys of the VM instances.
+-  SSH key pairs: The SSH Keys of the Instances.
 
    For more information, see `“Using SSH Keys for Authentication”
    <virtual_machines.html#using-ssh-keys-for-authentication>`_.
 
--  Affinity groups: The affinity groups of the VM instances.
+-  Affinity groups: The affinity groups of the Instances.
 
    For more information, see `“Affinity Groups”
    <virtual_machines.html#affinity-groups>`_.
 
--  Userdata: The userdata of the VM instances.
+-  Userdata: The userdata of the Instances.
 
    For more information, see `“User-Data and Meta-Data”
    <virtual_machines.html#user-data-and-meta-data>`_.
@@ -180,7 +179,7 @@ Specify the following:
 AutoScale Policies
 -------------------------------------------------
 
-An AutoScale Vm Group must have one or more scale-up policies, and one or more
+An AutoScale Instance Group must have one or more scale-up policies, and one or more
 scale-down policies.
 
 Each AutoScale Policy has the following parameters:
@@ -191,8 +190,8 @@ Each AutoScale Policy has the following parameters:
    invoked.
 
 -  Quiet Time: This is the cool down period after an AutoScale action is
-   initiated. The time includes the time taken to complete provisioning a VM
-   instance from its template and the time taken by an application to be ready
+   initiated. The time includes the time taken to complete provisioning an
+   Instance from its Template and the time taken by an application to be ready
    to serve traffic. This quiet time allows the fleet to come up to a stable
    state before any action can take place. The default is 300 seconds.
 
@@ -203,13 +202,13 @@ Each AutoScale Policy has the following parameters:
 Each condition in AutoScale policies has the following parameters:
 
 -  Counter: The performance counters expose the state of the monitored
-   instances. We added five new counters to work with that feature:
+   Instances. We added five new counters to work with that feature:
 
-   -  VM CPU - average percentage
-   -  VM Memory - average percentage
-   -  Public Network - mbps received per vm
-   -  Public Network - mbps transmit per vm
-   -  Load Balancer - average connections per vm
+   -  Instance CPU - average percentage
+   -  Instance Memory - average percentage
+   -  Public Network - mbps received per Instance
+   -  Public Network - mbps transmit per Instance
+   -  Load Balancer - average connections per Instance
 
    Remember to choose one of them. If you choose anything else, the
    autoscaling will not work.
@@ -223,69 +222,76 @@ Each condition in AutoScale policies has the following parameters:
    a scaleup or scaledown action.
 
    .. note::
-      The counter "VM Memory - average percentage" calculates the average memory usage
-      of available VMs (in Starting, Stopping, Running, Migrating states) in the
-      AutoScale VM Group. On KVM/XenServer, the VM memory usage is calculated by
+      The counter "Instance Memory - average percentage" calculates the average memory usage
+      of available Instances (in Starting, Stopping, Running, Migrating states) in the
+      AutoScale Instance Group. On KVM/XenServer, the Instance memory usage is calculated by
 
-        VM memory usage percentage = (total memory - free memory) * 100 / total memory
+        Instance memory usage percentage = (total memory - free memory) * 100 / total memory
 
    .. note::
-      The counters "Public Network - mbps received per vm" and
-      "Public Network - mbps transmit per vm" consider all public
+      The counters "Public Network - mbps received per Instance" and
+      "Public Network - mbps transmit per Instance" consider all public
       traffic through the VR public interface, including the traffic from/to other
-      VMs which are not in the AutoScale VM group.
+      Instances which are not in the AutoScale Instance group.
 
    .. note::
       Each network has a network rate which are configured by global configuration
       network.throttling.rate and "Network rate (Mb/s)" in network offering.
 
 
-Disabling and Enabling an AutoScale VM Group
+Disabling and Enabling an AutoScale Instance Group
 -------------------------------------------------
 
-You can view the detail of the AutoScale VM Group.
+You can view the detail of the AutoScale Instance Group.
 
 #. Log in to the CloudStack UI as an administrator or end user.
 
-#. In the left navigation, choose Compute -> AutoScale VM Groups.
+#. In the left navigation, choose Compute -> AutoScale Instance Groups.
 
-#. Select the AutoScale VM Group you want to work with.
+#. Select the AutoScale Instance Group you want to work with.
 
 |autoscale-vmgroup-details.png|
 
-If you want to perform any maintenance operation on the AutoScale VM instances,
-disable the AutoScale VM Group. When the AutoScale VM Group is
+If you want to perform any maintenance operation on the AutoScale Instances,
+disable the AutoScale Instance Group. When the AutoScale Instance Group is
 disabled, no scaleup or scaledown action is performed. You can use this
-downtime for the maintenance activities. To disable the AutoScale VM Group,
-click the Disable AutoScale VM Group button.
+downtime for the maintenance activities. To disable the AutoScale Instance Group,
+click the Disable AutoScale Instance Group button.
 
 The button toggles between enable and disable, depending on whether AutoScale
 is currently enabled or not. After the maintenance operations are done, you
-can enable the AutoScale VM Group back. To enable the AutoScale VM Group, click
-the Enable AutoScale VM Group button.
+can enable the AutoScale Instance Group back. To enable the AutoScale Instance Group, click
+the Enable AutoScale Instance Group button.
 
 
-Updating an AutoScale VM Group
+Updating an AutoScale Instance Group
 -----------------------------------
 
-You can update the various parameters of VM profile, and add or delete the
-conditions in a scaleup or scaledown policy. Before you update an AutoScale VM
-Group, ensure that you disable the AutoScale VM Group by clicking the
-Disable AutoScale button.
+You can update the various parameters of Instance profile, and add or delete the
+conditions in a scaleup or scaledown policy. Before you update an AutoScale Instance
+Group, ensure that you disable it first by clicking the Disable AutoScale button.
 
-To update the AutoScale VM Group, click the Update AutoScale VM Group button.
+To update the AutoScale Instance Group, click the Update AutoScale Instance Group button.
 
 |autoscale-vmgroup-update.png|
 
-Updating AutoScale VM Profile
+Updating AutoScale Instance Profile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To update the VM Profile of the AutoScale VM Group, click the AutoScale VM Profile
-tab, then click Edit AutoScale VM Profile button.
+To update the Instance Profile of the AutoScale Instance Group, click the AutoScale Instance Profile
+tab, You will see the details of AutoScale Instance Profile.
 
 |autoscale-vmgroup-profile.png|
 
-You are also able to update the deploy parameters of the VM instances.
+then click Edit AutoScale Instance Profile button.
+
+|autoscale-vmgroup-profile-update.png|
+
+You are able to reset userdata of the Instance, by clicking Reset Userdata on AutoScale Instance Group button.
+
+|autoscale-vmgroup-profile-reset-userdata.png|
+
+You are also able to update the deploy parameters of the Instances.
 
 |autoscale-vmgroup-deploy-parameters.png|
 
@@ -302,12 +308,12 @@ The following parameters are supported.
 -  keypairs: The name of the SSH Key pairs, separated by a single comma 
    character (,).
 
--  networkids: The UUID of the VM networks, separated by a single comma 
+-  networkids: The UUID of the Instance networks, separated by a single comma
    character (,).
 
 -  overridediskofferingid: The UUID of override disk offering for ROOT disk.
 
--  rootdisksize: The size of the ROOT disk. This overrides the size of VM template.
+-  rootdisksize: The size of the ROOT disk. This overrides the size of the Instance Template.
 
 -  securitygroupids: The UUID of security groups, separated by a single comma
    character (,). This is valid only if the network provider is Netscaler.
@@ -316,7 +322,7 @@ The following parameters are supported.
 Adding an AutoScale policy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To add a new Scale policy to the AutoScale VM Group, click the ScaleUp policy
+To add a new Scale policy to the AutoScale Instance Group, click the ScaleUp policy
 or ScaleDown policy tab, then click "Add policy".
 
 |autoscale-vmgroup-policy-new.png|
@@ -327,7 +333,7 @@ or ScaleDown policy tab, then click "Add policy".
 Updating AutoScale policies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To update the AutoScale policies of the AutoScale VM Group, click the ScaleUp policy
+To update the AutoScale policies of the AutoScale Instance Group, click the ScaleUp policy
 or ScaleDown policy tab.
 
 |autoscale-vmgroup-policy.png|
@@ -349,45 +355,49 @@ Removing an AutoScale policy
 To remove an existing AutoScale policies, select a policy, click "Remove policy" button.
 
 .. note::
-  To apply the new AutoScale VM Profile and AutoScale policies, open the AutoScale VM
-  Group details, then click the Enable AutoScale VM Group button.
+  To apply the new AutoScale Instance Profile and AutoScale policies, open the AutoScale Instance
+  Group details, then click the Enable AutoScale Instance Group button.
 
-Deleting an AutoScale VM Group
-----------------------
+Deleting an AutoScale Instance Group
+------------------------------------
 
-To remove an AutoScale VM Group, click "Delete AutoScale VM Group" button.
+To remove an AutoScale Instance Group, click "Delete AutoScale Instance Group" button.
 
 |autoscale-vmgroup-delete.png|
 
-AutoScale VM Group can be removed only if there is no VM in the group.
+AutoScale Instance Group can be removed only if there are no Instances in the group.
 
-To force-delete the AutoScale VM Group, check the cleanup checkbox, then click OK button.
-All the VMs in the group will be expunged.
+To force-delete the AutoScale Instance Group, check the cleanup checkbox, then click OK button.
+All the Instances in the group will be expunged.
 
 Runtime Considerations
 ----------------------
 
-An administrator should not assign a VM to a load balancing rule which is
+An administrator should not assign an Instance to a load balancing rule which is
 configured for AutoScale.
 
 Making API calls outside the context of AutoScale, such as destroyVM, on an
-autoscaled VM leaves the load balancing configuration in an inconsistent state.
-Though VM is destroyed from the load balancer rule, it continues be showed as
+autoscaled Instance leaves the load balancing configuration in an inconsistent state.
+Even though the Instance is destroyed from the load balancer rule, it continues to be shown as
 a service assigned to a rule inside the context of AutoScale.
 
 
 .. |autoscale-vmgroup-delete.png| image:: /_static/images/autoscale-vmgroup-delete.png
-   :alt: Delete AutoScale VM Group.
+   :alt: Delete AutoScale Instance Group.
 .. |autoscale-vmgroup-deploy-parameters.png| image:: /_static/images/autoscale-vmgroup-deploy-parameters.png
-   :alt: AutoScale VM deploy parameters.
+   :alt: AutoScale Instance deploy parameters.
 .. |autoscale-vmgroup-details.png| image:: /_static/images/autoscale-vmgroup-details.png
-   :alt: AutoScale VM Group details.
+   :alt: AutoScale Instance Group details.
 .. |autoscale-vmgroup-policy-new.png| image:: /_static/images/autoscale-vmgroup-policy-new.png
    :alt: Add new AutoScale Policy.
 .. |autoscale-vmgroup-policy.png| image:: /_static/images/autoscale-vmgroup-policy.png
    :alt: AutoScale Policies.
 .. |autoscale-vmgroup-profile.png| image:: /_static/images/autoscale-vmgroup-profile.png
-   :alt: AutoScale VM Profile.
+   :alt: AutoScale Instance Profile.
 .. |autoscale-vmgroup-update.png| image:: /_static/images/autoscale-vmgroup-update.png
-   :alt: Update AutoScale VM Group.
+   :alt: Update AutoScale Instance Group.
+.. |autoscale-vmgroup-profile-update.png| image:: /_static/images/autoscale-vmgroup-profile-update.png
+   :alt: Update AutoScale Instance Profile.
+.. |autoscale-vmgroup-profile-reset-userdata.png| image:: /_static/images/autoscale-vmgroup-profile-reset-userdata.png
+   :alt: Reset Userdata in AutoScale Instance Profile.
 

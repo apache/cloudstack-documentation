@@ -26,7 +26,7 @@ Using Remote Access VPN
 
 Remote Access VPN connection to VPC or Guest Network to access Instances and applications. This section considers you have enabled Remote acccess VPN, refer to: :ref:`remote-access-vpn`.
 
-When connected to a VPC via VPN, the client have access to all Tiers.
+When connected to a VPC via VPN, the client have access to all Network Tiers.
 
 Following information is required to confiture VPN client:
 

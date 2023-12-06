@@ -13,6 +13,102 @@
    specific language governing permissions and limitations
    under the License.
 
+API Changes in |release| since 4.18.0.0
+===================================
+For the complete list of API commands and params consult the `CloudStack Apidocs`_.
+
+Parameters Changed in API Commands
+-------------------------------
+
+.. cssclass:: table-striped table-bordered table-hover
+
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+| Name                                                       | Description                                                                    |
++============================================================+================================================================================+
+| ``listStoragePools``                                       | **Request:**                                                                   |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``status`` (optional)                                                        |
+|                                                            |                                                                                |
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+| ``startVirtualMachine``                                    | **Request:**                                                                   |
+|                                                            |                                                                                |
+|                                                            | *Changed Parameters:*                                                          |
+|                                                            |                                                                                |
+|                                                            | - ``considerLastHost`` was available for Users but now only for ROOT admins    |
+|                                                            |                                                                                |
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+| ``addGuestOs``                                             | **Request:**                                                                   |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``display`` (optional)                                                       |
+|                                                            |                                                                                |
+|                                                            | *Changed Parameters:*                                                          |
+|                                                            |                                                                                |
+|                                                            | - ``details`` was 'required' and is now 'optional'                             |
+|                                                            |                                                                                |
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateGuestOs``                                          | **Request:**                                                                   |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``display`` (optional)                                                       |
+|                                                            |                                                                                |
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+| ``listOsTypes``                                            | **Request:**                                                                   |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``display`` (optional)                                                       |
+|                                                            |                                                                                |
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+| ``createAutoScaleVmProfile``                               | **Request:**                                                                   |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``userdataid`` (optional)                                                    |
+|                                                            | - ``userdatadetails`` (optional)                                               |
+|                                                            |                                                                                |
+|                                                            | **Response:**                                                                  |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``userdataid``                                                               |
+|                                                            | - ``userdataname``                                                             |
+|                                                            | - ``userdatapolicy``                                                           |
+|                                                            | - ``userdatadetails``                                                          |
+|                                                            |                                                                                |
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+| ``updateAutoScaleVmProfile``                               | **Request:**                                                                   |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``userdataid`` (optional)                                                    |
+|                                                            | - ``userdatadetails`` (optional)                                               |
+|                                                            |                                                                                |
+|                                                            | **Response:**                                                                  |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``userdataid``                                                               |
+|                                                            | - ``userdataname``                                                             |
+|                                                            | - ``userdatapolicy``                                                           |
+|                                                            | - ``userdatadetails``                                                          |
+|                                                            |                                                                                |
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+| ``listAutoScaleVmProfiles``                                | **Response:**                                                                  |
+|                                                            |                                                                                |
+|                                                            | *New Parameters:*                                                              |
+|                                                            |                                                                                |
+|                                                            | - ``userdataid``                                                               |
+|                                                            | - ``userdataname``                                                             |
+|                                                            | - ``userdatapolicy``                                                           |
+|                                                            | - ``userdatadetails``                                                          |
+|                                                            |                                                                                |
++------------------------------------------------------------+--------------------------------------------------------------------------------+
+
 API Changes Introduced in 4.18.0.0
 ===================================
 For the complete list of API commands and params consult the `CloudStack Apidocs`_.
@@ -55,7 +151,7 @@ New API Commands
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``createTungstenFabricFirewallRule``                       | create Tungsten-Fabric firewall                                                |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``createTungstenFabricManagementNetwork``                  | create Tungsten-Fabric management network                                      |
+| ``createTungstenFabricManagementNetwork``                  | create Tungsten-Fabric management Network                                      |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``listTungstenFabricFirewallRule``                         | list Tungsten-Fabric firewall rule                                             |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
@@ -75,7 +171,7 @@ New API Commands
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``deleteTungstenFabricServiceGroup``                       | delete Tungsten-Fabric service group                                           |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``validateUserTwoFactorAuthenticationCode``                | Checks the 2FA code for the user.                                              |
+| ``validateUserTwoFactorAuthenticationCode``                | Checks the 2FA code for the User.                                              |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``synchronizeTungstenFabricData``                          | Synchronize Tungsten-Fabric data                                               |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
@@ -83,14 +179,14 @@ New API Commands
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``listTungstenFabricPolicyRule``                           | list Tungsten-Fabric policy                                                    |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``resetUserDataForVirtualMachine``                         | Resets the UserData for virtual machine. The virtual machine must be in a      |
+| ``resetUserDataForVirtualMachine``                         | Resets the UserData for Instance. The Instance must be in a                    |
 |                                                            | "Stopped" state. [async]                                                       |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``listTungstenFabricNetwork``                              | list Tungsten-Fabric network                                                   |
+| ``listTungstenFabricNetwork``                              | list Tungsten-Fabric Network                                                   |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``setupUserTwoFactorAuthentication``                       | Setup the 2FA for the user.                                                    |
+| ``setupUserTwoFactorAuthentication``                       | Setup the 2FA for the User.                                                    |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``linkUserDataToTemplate``                                 | Link or unlink a userdata to a template.                                       |
+| ``linkUserDataToTemplate``                                 | Link or unlink a userdata to a Template.                                       |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``listTungstenFabricProviders``                            | Lists Tungsten-Fabric providers                                                |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
@@ -102,13 +198,13 @@ New API Commands
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``removeTungstenFabricPolicy``                             | remove Tungsten-Fabric policy                                                  |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``addTungstenFabricNetworkGatewayToLogicalRouter``         | add Tungsten-Fabric network gateway to logical router                          |
+| ``addTungstenFabricNetworkGatewayToLogicalRouter``         | add Tungsten-Fabric Network gateway to logical router                          |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``listTungstenFabricNic``                                  | list Tungsten-Fabric nic                                                       |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``applyTungstenFabricPolicy``                              | apply Tungsten-Fabric policy                                                   |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``createTungstenFabricPublicNetwork``                      | create Tungsten-Fabric public network                                          |
+| ``createTungstenFabricPublicNetwork``                      | create Tungsten-Fabric public Network                                          |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``listTungstenFabricFirewallPolicy``                       | list Tungsten-Fabric firewall policy                                           |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
@@ -118,25 +214,25 @@ New API Commands
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``listVolumesUsageHistory``                                | Lists volume stats                                                             |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``createConsoleEndpoint``                                  | Create a console endpoint to connect to a VM console                           |
+| ``createConsoleEndpoint``                                  | Create a console endpoint to connect to an Instance console                    |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``deleteTungstenFabricFirewallPolicy``                     | delete Tungsten-Fabric firewall policy                                         |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``updateTungstenFabricLBHealthMonitor``                    | update Tungsten-Fabric loadbalancer health monitor                             |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``updateCondition``                                        | Updates a condition for VM auto scaling                                        |
+| ``updateCondition``                                        | Updates a condition for Instance auto scaling                                  |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``removeTungstenFabricTag``                                | remove Tungsten-Fabric tag                                                     |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``listTungstenFabricPolicy``                               | list Tungsten-Fabric policy                                                    |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``listTungstenFabricVm``                                   | list Tungsten-Fabric vm                                                        |
+| ``listTungstenFabricVm``                                   | list Tungsten-Fabric Instance                                                  |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``addTungstenFabricPolicyRule``                            | add Tungsten-Fabric policy rule                                                |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``deleteTungstenFabricTagType``                            | delete Tungsten-Fabric tag type                                                |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``removeTungstenFabricNetworkGatewayFromLogicalRouter``    | remove Tungsten-Fabric network gateway from logical router                     |
+| ``removeTungstenFabricNetworkGatewayFromLogicalRouter``    | remove Tungsten-Fabric Network gateway from logical router                     |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``quotaTariffCreate``                                      | Creates a quota tariff for a resource.                                         |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
@@ -144,7 +240,7 @@ New API Commands
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``deleteTungstenFabricFirewallRule``                       | delete Tungsten-Fabric firewall rule                                           |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``listSystemVmsUsageHistory``                              | Lists System VM stats                                                          |
+| ``listSystemVmsUsageHistory``                              | Lists System Instance stats                                                    |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``registerUserData``                                       | Register a new userdata.                                                       |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
@@ -154,7 +250,7 @@ New API Commands
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``listConfigurationGroups``                                | Lists all configuration groups (primarily used for UI).                        |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``listUserTwoFactorAuthenticatorProviders``                | Lists user two factor authenticator providers                                  |
+| ``listUserTwoFactorAuthenticatorProviders``                | Lists User two factor authenticator providers                                  |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 '
 
@@ -168,7 +264,7 @@ Removed API Commands
 +============================================================+================================================================================+
 | ``addExternalFirewall``                                    | Adds an external firewall appliance                                            |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``listSrxFirewalls``                                       | lists SRX firewall devices in a physical network                               |
+| ``listSrxFirewalls``                                       | lists SRX firewall devices in a physical Network                               |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``deleteExternalFirewall``                                 | Deletes an external firewall appliance.                                        |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
@@ -178,7 +274,7 @@ Removed API Commands
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``listExternalFirewalls``                                  | List external firewall appliances.                                             |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
-| ``listSrxFirewallNetworks``                                | lists network that are using SRX firewall device                               |
+| ``listSrxFirewallNetworks``                                | lists Network that are using SRX firewall device                               |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+
 | ``configureSrxFirewall``                                   | Configures a SRX firewall device                                               |
 +------------------------------------------------------------+--------------------------------------------------------------------------------+

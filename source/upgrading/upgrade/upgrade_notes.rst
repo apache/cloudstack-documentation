@@ -38,7 +38,7 @@ Migrating to dynamic roles feature
 ----------------------------------
 
 As of Apache CloudStack 4.9, dynamic roles feature can be enabled after an
-upgrade. Dyanamic roles feature is enabled by default on new installations.
+upgrade. Dynamic roles feature is enabled by default on new installations.
 
 Please read more about :ref:`using-dynamics-roles`
 feature and process of migrating to using this after an upgrade.
@@ -65,13 +65,13 @@ A critical functionality issue came out with `CLOUDSTACK-6779 <https://issues.ap
 is observed that on VIF unplug Ovs-Vswitchd is crashing resulting in loosing all
 the openflow rules added to the bridge. Ovs daemon gets started and creates a
 bridge but configure openflow rules are lost resulting in the disruption of
-connectivity for the VM's on the host.
+connectivity for the Instances on the host.
 
 
 Active-Directory Authentication (LDAP)
 --------------------------------------
 
-If using Active-Directory (LDAP/LDAPs) as user authentication; Upgrading to 
+If using Active-Directory (LDAP/LDAPs) as User authentication; Upgrading to
 4.3 and later require changes in Global Settings. After upgrading CloudStack
 to 4.3 or latest, following Global Settings must be change:
 
@@ -88,7 +88,7 @@ ldap.username.attribute uid            sAMAccountName
 SystemVM 32bit deprecated
 -------------------------
 
-32bit versions of systemvm templates are in the process of behing deprecated. Upgrade instructions from this Release Notes use 64bit templates.
+32bit versions of System VM Templates are in the process of being deprecated. Upgrade instructions from this Release Notes use 64bit Templates.
 
 Explicit JDBC driver declaration
 --------------------------------

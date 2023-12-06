@@ -14,7 +14,7 @@
    under the License.
 
 
-In a CloudStack, guest VMs can communicate with each other using shared
+In a CloudStack, Guest Instances can communicate with each other using shared
 infrastructure with the security and user perception that the guests
 have a private LAN. The CloudStack virtual router is the main component
 providing networking features for guest traffic.

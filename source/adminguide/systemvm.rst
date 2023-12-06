@@ -14,7 +14,7 @@
    under the License.
 
 
-CloudStack uses several types of system virtual machines to perform
+CloudStack uses several types of system Instances to perform
 tasks in the cloud. In general CloudStack manages these system VMs and
 creates, starts, and stops them as needed based on scale and immediate
 needs. However, the administrator should be aware of them and their
@@ -24,7 +24,7 @@ roles to assist in debugging issues.
 The System VM Template
 ----------------------
 
-The System VMs come from a single template. The System VM has the
+The System VMs come from a single Template. The System VM has the
 following characteristics:
 
 -  Debian 10.8(buster), 4.19.0 kernel with the latest security
@@ -50,10 +50,10 @@ following characteristics:
 Changing the Default System VM Template
 ---------------------------------------
 
-Using the 64-bit template should be use with a System Offering of at least 512MB
+The 64-bit template should be used with a System Offering of at least 512MB
 of memory.
 
-#. Based on the hypervisor you use, download the 64-bit template from
+#. Based on the hypervisor you use, download the 64-bit Template - e.g. from
    the following location:
 
    .. cssclass:: table-striped table-bordered table-hover
@@ -69,22 +69,25 @@ of memory.
 
 #. As an administrator, log in to the CloudStack UI
 
-#. Register the 64 bit template.
+#. Register the 64 bit Template.
 
    For example: KVM64bitTemplate
 
-#. While registering the template, select Routing.
+#. While registering the Template, select Routing.
 
-#. Navigate to Infrastructure > Zone > Settings.
+#. Navigate to Configuration, Global Settings:
 
-#. Set the name of the 64-bit template, KVM64bitTemplate, in the
+#. Set the name of the 64-bit Template, KVM64bitTemplate, in the
    *``router.template.kvm``* global parameter.
 
-   If you are using a XenServer 64-bit template, set the name in the
-   *``router.template.xen``* global parameter.
+   If you are using a XenServer 64-bit Template, set the name in the
+   *``router.template.xenserver``* global parameter.
+
+   If you are using a VMware 64-bit Template, set the name in the
+   *``router.template.vmware``* global parameter.
 
    Any new virtual router created in this Zone automatically picks up
-   this template.
+   this Template.
 
 #. Restart the Management Server.
 
@@ -137,11 +140,11 @@ System VMs running on ESXi, the key is stored on the management server at
 Multiple System VM Support for VMware
 -------------------------------------
 
-Every CloudStack zone has single System VM for template processing tasks
-such as downloading templates, uploading templates, and uploading ISOs.
+Every CloudStack zone has single System VM for Template processing tasks
+such as downloading Templates, uploading Templates, and uploading ISOs.
 In a zone where VMware is being used, additional System VMs can be
-launched to process VMware-specific tasks such as taking snapshots and
-creating private templates. The CloudStack management server launches
+launched to process VMware-specific tasks such as taking Snapshots and
+creating private Templates. The CloudStack management server launches
 additional System VMs for VMware-specific tasks as the load increases.
 The management server monitors and weights all commands sent to these
 System VMs and performs dynamic load balancing and scaling-up of more
@@ -161,12 +164,12 @@ Clicking a console icon brings up a new window. The console viewer
 into that window refers to the public IP address of a console proxy VM.
 There is exactly one public IP address allocated per console proxy VM.
 The viewer application connects to this IP. The console proxy then proxies
-the connection to the VNC port for the requested VM on the Host hosting
+the connection to the VNC port for the requested instance on the Host hosting
 the guest.
 
 Since 4.15, noVNC has been integrated into the console proxy and is the
 default viewer. It inherently supports multiple keyboard layouts configured
-in the guest virtual machine. Additionally, it can scale the display as
+in the Guest Instance. Additionally, it can scale the display as
 well as paste into the console.
 
 noVNC is set as the default console viewer which be changed via the
@@ -184,26 +187,26 @@ to the Management Server. The default reporting interval is five
 seconds. This can be changed through standard Management Server
 configuration with the parameter consoleproxy.loadscan.interval.
 
-Assignment of guest VM to console proxy is determined by first
-determining if the guest VM has a previous session associated with a
+Assignment of Guest Instance to console proxy is determined by first
+determining if the Guest Instance has a previous session associated with a
 console proxy. If it does, the Management Server will assign the guest
-VM to the target Console Proxy VM regardless of the load on the proxy
+instance to the target Console Proxy VM regardless of the load on the proxy
 VM. Failing that, the first available running Console Proxy VM that has
 the capacity to handle new sessions is used.
 
 Console proxies can be restarted by administrators but this will
 interrupt existing console sessions for users.
 
-Creating a VM Console Endpointy
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Creating an Instance Console Endpoint
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The access to a VM Console is created by the API 'createConsoleEndpoint', 
-for the VM specified in the parameter 'virtualmachineid'. By default, 
+The access to an instance console is created by the API 'createConsoleEndpoint',
+for the instance specified in the parameter 'virtualmachineid'. By default,
 the CloudStack UI connects to the URL that this API generates.
 
 The response of the 'createConsoleEndpoint' API also contain the information 
 to create a websocket session to the VNC server on the console proxy, this 
-infomation includes: the host, port, path and token parameters required to 
+information includes: the host, port, path and token parameters required to
 establish a websocket session, bypassing the VNC client on the console proxy.
 
 It is possible to add extra validation for the console proxy authentication, 
@@ -261,7 +264,7 @@ communication with SSL:
 -  Set up SSL certificate for specific FQDN and configure a load-balancer with optional ssl offloading.
 
 
-Changing the Console Proxy SSL Certificate and Domain
+Changing the Console Proxy SSL Certificate and Domains
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The administrator can configure SSL encryption  by selecting a domain
@@ -358,7 +361,7 @@ http://123.123.123.123:8080/client/api?command=uploadCustomCertificate&...&name=
 Here names are "root1" and "intermed1".
 If you used other names previously, please check the cloud.keystore table to obtain used names.
 
-If you still have problems and folowing errors in management.log while destroying CPVM:
+If you still have problems and following errors in management.log while destroying CPVM:
 
 - Unable to build keystore for CPVMCertificate due to CertificateException
 - Cold not find and construct a valid SSL certificate
@@ -396,7 +399,7 @@ To implement SSL-Offloading you need 2 public IP addresses (one for Console Prox
 each of them resolve to a different FQDN and terminate at the load balancer. Also 3 global settings need to be edited.
 
 - The setting ‘consoleproxy.url.domain’ to the FQDN used by the certificate (For example: cpvm.company.com)
-- The setting ‘secstorage.ssl.cert.domain’ to the FQDN used by the cerrificate (For example: ssvm.company.com)
+- The setting ‘secstorage.ssl.cert.domain’ to the FQDN used by the certificate (For example: ssvm.company.com)
 - The setting ‘secstorage.encrypt.copy’ to true
 
 .. warning::
@@ -427,7 +430,7 @@ There is no mechanism for the administrator to log in to the virtual
 router. Virtual routers can be restarted by administrators, but this
 will interrupt public network access and other services for end users. A
 basic test in debugging networking issues is to attempt to ping the
-virtual router from a guest VM. Some of the characteristics of the
+virtual router from a Guest Instance. Some of the characteristics of the
 virtual router are determined by its associated system service offering.
 
 
@@ -586,7 +589,7 @@ to the virtual router
 This happens in the following steps:
 
 1. Management server periodically pushes data to each running virtual router
-including schedule intervals, tests to skip, some configuration for LB, VMs,
+including schedule intervals, tests to skip, some configuration for LB, instances,
 Gateways, etc.
 
 2. Basic and advanced tests as scheduled as per the intervals in the data sent
@@ -607,7 +610,7 @@ fresh checks is expensive and will cause management server doing the following:
 
    c. Fetch the result of the health check from router to be sent back in response.
 
-4. The patch also supports custom health checks with custom systemVM templates.
+4. The patch also supports custom health checks with custom systemVM Templates.
 This is achieved as follows:
 
    a. Each executable script placed in '/root/health_scripts/' is considered an
@@ -639,7 +642,7 @@ This is achieved as follows:
       wanted commands and print some output to STDOUT; otherwise if it receives 'advanced'
       as the first parameter, it should not execute any commands/logic nor print anything to STDOUT
 
-5. There are 9 health check scripts written in default systemvm template in '/root/health_checks/'
+5. There are 9 health check scripts written in default systemvm Template in '/root/health_checks/'
 folder. These indicate the health checks described in executive summary.
 
 6. The management server will connect periodically to each virtual router to confirm that the
@@ -690,7 +693,7 @@ Following global configs have been added for configuring health checks:
    - ``router.health.checks.to.exclude`` - Health checks that should be excluded when
    executing scheduled checks on the router. This can be a comma separated list of
    script names placed in the '/root/health_checks/' folder. Currently the following
-   scripts are placed in default systemvm template - cpu_usage_check.py,
+   scripts are placed in default systemvm Template - cpu_usage_check.py,
    disk_space_check.py, gateways_check.py, iptables_check.py, router_version_check.py,
    dhcp_check.py, dns_check.py, haproxy_check.py, memory_usage_check.py.
 
@@ -724,7 +727,7 @@ Details of individual checks:
    d. Memory usage check against a threshold – we use 'free' utility to get the
    used memory and compare that with the configured max memory usage threshold.
 
-   e. Router template and scripts version check – is done by comparing the contents
+   e. Router Template and scripts version check – is done by comparing the contents
    of the '/etc/cloudstack-release' and '/var/cache/cloud/cloud-scripts-signature'
    with the data given by management server.
 
@@ -734,10 +737,10 @@ Details of individual checks:
 2. Advanced checks:
 
    a. DNS config match against MS – this is checked by comparing entries of '/etc/hosts'
-   on the VR and VM records passed by management server.
+   on the VR and instance records passed by management server.
 
    b. DHCP config match against MS – this is checked by comparing entries of
-   '/etc/dhcphosts.txt' on the VR with the VM entries passed by management server.
+   '/etc/dhcphosts.txt' on the VR with the instance entries passed by management server.
 
    c. HA Proxy config match against MS (internal LB and public LB) - this is checked
    by verifying the max connections, and entries for each load balancing rule in the
@@ -820,7 +823,7 @@ Supported Virtual Routers
 Upgrading Virtual Routers
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Download the latest System VM template.
+#. Download the latest System VM Template.
 
 #. Download the latest System VM to all the primary storage pools.
 
@@ -834,7 +837,7 @@ Upgrading Virtual Routers
       # cloudstack-sysvmadm -d <IP address> -u cloud -p -s
 
    Even when the VRs are still on older versions, existing services will
-   continue to be available to the VMs. The Management Server cannot
+   continue to be available to the instances. The Management Server cannot
    perform any operations on the VRs until they are upgraded.
 
 #. Selectively upgrade the VRs:
@@ -877,12 +880,12 @@ In addition to the hosts, CloudStack’s Secondary Storage VM mounts and
 writes to secondary storage.
 
 Submissions to secondary storage go through the Secondary Storage VM.
-The Secondary Storage VM can retrieve templates and ISO images from URLs
+The Secondary Storage VM can retrieve Templates and ISO images from URLs
 using a variety of protocols.
 
 The secondary storage VM provides a background task that takes care of a
-variety of secondary storage activities: downloading a new template to a
-Zone, copying templates between Zones, and snapshot backups.
+variety of secondary storage activities: downloading a new Template to a
+Zone, copying Templates between Zones, and Snapshot backups.
 
 The administrator can log in to the secondary storage VM if needed.
 
@@ -890,7 +893,7 @@ The administrator can log in to the secondary storage VM if needed.
 .. |update-ssl.png| image:: /_static/images/update-ssl.png
    :alt: Updating Console Proxy SSL Certificate
 .. |vr-upgrade.png| image:: /_static/images/vr-upgrade.png
-   :alt: Button to upgrade VR to use the new template.
+   :alt: Button to upgrade VR to use the new Template.
 
 Migrating System VMs
 --------------------
@@ -926,7 +929,7 @@ The Extra Args parameter is for specifying command line optional parameters
 as one would when executing any of the tools from the terminal or command line.
 
 The supported versions are Debian 10 based since system VMs are built using the
-same Debian 10 based templates.
+same Debian 10 based Templates.
 
 | See:
 | Traceroute(1): https://manpages.debian.org/stretch/traceroute/traceroute.1.en.html

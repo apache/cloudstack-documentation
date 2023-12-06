@@ -132,7 +132,7 @@ operating system version.
 
    .. parsed-literal::
 
-      apt-get install nfs-kernel-server
+      apt install nfs-kernel-server
 
 #. On the Management Server host, create two directories that you will
    use for primary and secondary storage. For example:
@@ -186,7 +186,7 @@ operating system version.
       vi /etc/sysconfig/iptables
 
    Add the following lines at the beginning of the INPUT chain, where
-   <NETWORK> is the network that you'll be using:
+   <NETWORK> is the Network that you'll be using:
 
    .. parsed-literal::
 

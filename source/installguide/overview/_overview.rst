@@ -23,7 +23,7 @@ For those who have already gone through a design phase and planned a
 more sophisticated deployment, or those who are ready to start scaling
 up a trial installation. With the following procedures, you can start
 using the more powerful features of CloudStack, such as advanced VLAN
-networking, high availability, additional network elements such as load
+networking, high availability, additional Network elements such as load
 balancers and firewalls, and support for multiple hypervisors including
 Citrix XenServer, KVM, and VMware vSphere.
 
