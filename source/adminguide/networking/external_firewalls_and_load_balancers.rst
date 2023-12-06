@@ -17,7 +17,7 @@
 External Firewalls and Load Balancers
 -------------------------------------
 
-CloudStack is capable of replacing its Virtual Router with an optional
+CloudStack is capable of moving some of its Virtual Router networking functionality
 to some of the external network service providers such as e.g. NetScaler.
 
 
