@@ -1070,6 +1070,36 @@ primary storage see :ref:`add-primary-storage`.
 For protocol choose ``Linstor`` and as server specify the controller REST-API URL e.g.: ``http://127.0.0.1:3370``
 and use the resource group name you added in the LINSTOR cluster.
 
+Object Storage
+---------------
+
+This section gives technical details about CloudStack
+object storage. For more information about the concepts behind object storage
+see :ref:`about-object-storage` . For information about how to install and configure
+object storage through the CloudStack UI, see the in the Installation Guide.
+
+
+Creating a New Bucket
+~~~~~~~~~~~~~~~~~~~~~
+
+Buckets are logical containers for storing objects. To create a New Bucket:
+
+#. Log in to the CloudStack UI as a user or administrator.
+
+#. In the left navigation bar, click Storage.
+
+#. In Select View, choose Buckets.
+
+To create a new bucket, click create Bucket, provide the following details, and click OK.
+
+#. Name: Give the bucket a unique name.
+
+#. Object Store: Select the object store where you want the Bucket to reside
+
+Based on the selected Object Store, you can specify additional details like quota, encryption, policy.
+
+|Createbucket.png|
+
 
 .. |AttachDiskButton.png| image:: /_static/images/attach-disk-icon.png
    :alt: Attach Disk Button.
@@ -1089,3 +1119,5 @@ and use the resource group name you added in the LINSTOR cluster.
    :alt: Volume metrics   
 .. |volume-from-snap.png| image:: /_static/images/volume-from-snap.png
    :alt: Offering is needed when creating a volume from the ROOT Volume Snapshot.
+.. |Createbucket.png| image:: /_static/images/add-bucket.png
+   :alt: Create Bucket

@@ -502,6 +502,15 @@ cloud.
    you cannot set up multiple zones, one using NFS secondary and the other 
    using S3 or Swift secondary.
 
+.. _about-object-storage:
+
+About Object Storage
+~~~~~~~~~~~~~~~~~~~~~~~
+Object storage (also known as object-based storage) is a data storage that manages data as objects.
+CloudStack admin can setup supported Object Storage systems and add them to CloudStack as an Object Storage Pool.
+Users can create buckets within the object storage pool.
+The basic storage units of Object Store are objects. Any type of data, regardless of content type, is stored as an object.
+Buckets are logical containers for storing objects.
 
 About Physical Networks
 ~~~~~~~~~~~~~~~~~~~~~~~
