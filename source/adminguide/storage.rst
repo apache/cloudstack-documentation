@@ -644,11 +644,11 @@ storages that are available and returns a list that is suitable for the selected
 volume's migration. 
 The list also could include primary storages that are mentioned as
 'Not suitable'. The criteria for which the primary storages are not suitable are: 
-	- Storage tag mismatch with the volume.
-	- Doesn't have enough capacity. 
-	- Reached its disable threshold
-	- Disabled. 
-Mismatch in the type of storage such as shared /Local. 
+-  Storage tag mismatch with the volume.
+-  Doesn't have enough capacity. 
+-  Reached its disable threshold.
+-  Disabled.
+-  Mismatch in the type of storage such as shared /Local. 
 
 Resizing Volumes
 ~~~~~~~~~~~~~~~~
