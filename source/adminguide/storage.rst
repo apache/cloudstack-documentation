@@ -642,7 +642,8 @@ When you click on migrate volume, CloudStack lists the available primary
 storage.  CloudStack uses its storage pool allocators to identify the primary
 storages that are available and returns a list that is suitable for the selected
 volume's migration. 
-The list also could include primary storages that are mentioned as 'Not suitable'. The criteria for which the primary storages are not suitable are: 
+The list also could include primary storages that are mentioned as
+'Not suitable'. The criteria for which the primary storages are not suitable are: 
 	- Storage tag mismatch with the volume.
 	- Doesn't have enough capacity. 
 	- Reached its disable threshold
