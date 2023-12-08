@@ -130,6 +130,7 @@ Plug-in specific settings:
 Configuration                         Description
 ==================================== ========================
 backup.plugin.veeam.url              Veeam B&R server URL. Default: http://<VEEAM_SERVER_IP>:9398/api/
+backup.plugin.veeam.version          Veeam B&R server version. CloudStack will get Veeam server version via PowerShell commands if it is not set
 backup.plugin.veeam.username         Veeam B&R server username. Default: administrator
 backup.plugin.veeam.password         Veeam B&R server password. Default:
 backup.plugin.veeam.validate.ssl     Whether to validate Veeam B&R server (SSL/TLS) connection while making API requests. Default: false
