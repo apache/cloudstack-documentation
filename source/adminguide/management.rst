@@ -13,7 +13,7 @@
    specific language governing permissions and limitations
    under the License.
 
-
+.. _resource_tags:
 Using Tags to Organize Resources in the Cloud
 ---------------------------------------------
 
