@@ -1466,12 +1466,12 @@ HPE Primera/3PAR Plug-in
 This plugin enables Hewlett Packard Enterprise (HPE) Primera (previously 3PAR) storage systems with FiberChannel on KVM hypervisors.
 
 This documentation assumes you have the following configured in your environment before configuring a storage pool in cloudstack:
-1. Deployed an HPE Primera storage system deployment supporting the HPE Web Services API v1.10+ (https://support.hpe.com/hpesc/public/docDisplay?docId=a00118636en_us&page=index.html)
-2. FiberChannel fabric and connectivity to every KVM host where volumes will be attached to virtual machines.
-3. Host definitions in the Primera Array that match the name of the host in CloudStack.  This can be fully-qualified or just the hostname.
-4. A hostset defined to match the group of hosts associated with the Cloudstack cluster.
-5. Username and password to access the API with at least Edit privleges.
-6. A CPG (Common Provisioning Group) defined in the HPE Primera storage system where volumes and snapshots can be provisioned.
+#. Deployed an HPE Primera storage system deployment supporting the HPE Web Services API v1.10+ (https://support.hpe.com/hpesc/public/docDisplay?docId=a00118636en_us&page=index.html)
+#. FiberChannel fabric and connectivity to every KVM host where volumes will be attached to virtual machines.
+#. Host definitions in the Primera Array that match the name of the host in CloudStack.  This can be fully-qualified or just the hostname.
+#. A hostset defined to match the group of hosts associated with the Cloudstack cluster.
+#. Username and password to access the API with at least Edit privleges.
+#. A CPG (Common Provisioning Group) defined in the HPE Primera storage system where volumes and snapshots can be provisioned.
 
 When this storage pool is used with Compute or Disk Offerings, an administrator is
 able to build an environment in which a root or data disk that a user creates leads
@@ -1523,12 +1523,12 @@ Pure Flasharray API
 This plugin enables Pure Flasharray storage systems with FiberChannel on KVM hypervisors.
 
 This documentation assumes you have the following configured in your environment before configuring a storage pool in cloudstack:
-1. Deployed a Pure Flasharray storage system deployment supporting version 2 of the API.
-2. FiberChannel fabric and connectivity to every KVM host where volumes will be attached to virtual machines.
-3. Host definitions in the Pure Flasharray that match the name of the host in CloudStack.  This can be fully-qualified or just the hostname.
-4. A hostgroup defined to match the group of hosts associated with the Cloudstack cluster.
-5. Username and password to access the API with at least Edit privleges.
-6. A Pure Flasharray pod defined in the HPE Primera storage system where volumes and snapshots can be provisioned.  NOTE: This "pod" is not the same as a "pod" in Cloudstack.
+#. Deployed a Pure Flasharray storage system deployment supporting version 2 of the API.
+#. FiberChannel fabric and connectivity to every KVM host where volumes will be attached to virtual machines.
+#. Host definitions in the Pure Flasharray that match the name of the host in CloudStack.  This can be fully-qualified or just the hostname.
+#. A hostgroup defined to match the group of hosts associated with the Cloudstack cluster.
+#. Username and password to access the API with at least Edit privleges.
+#. A Pure Flasharray pod defined in the HPE Primera storage system where volumes and snapshots can be provisioned.  NOTE: This "pod" is not the same as a "pod" in Cloudstack.
 
 When this storage pool is used with Compute or Disk Offerings, an administrator is
 able to build an environment in which a root or data disk that a user creates leads
