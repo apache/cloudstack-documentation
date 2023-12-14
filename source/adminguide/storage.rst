@@ -957,6 +957,9 @@ incremental backups are supported, every N backup is a full backup.
 | Support incremental backup   | No               | Yes              | No  |
 +------------------------------+------------------+------------------+-----+
 
+   .. note::
+      Between versions 4.17.x, 4.18.0 and 4.18.1, KVM volume snapshot backups were not full snapshots and they rely on the snapshots on the primary storage. To prevent any loss of data care must be taken during revert operation and it must be ensured that the source primary snapshot file is present.
+
 
 Volume Status
 ~~~~~~~~~~~~~
