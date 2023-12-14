@@ -1110,6 +1110,41 @@ Based on the selected Object Store, you can specify additional details like quot
 |Createbucket.png|
 
 
+Browsing objects in a bucket
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Once a bucket has been created, you can browse the files in the bucket by clicking the bucket name.
+|bucket-details-browser-tab.png|
+
+2. Open the `Browser` tab to list files in the bucket.
+|object-store-browser-tab.png|
+
+Under `Browser` tab, clicking a directory on the browser tab will list the objects in that directory.
+For a file, clicking it list the properties of that file with links to access the file.
+|object-store-file-properties.png|
+
+.. note:: 
+   To access the bucket, UI uses the URL, access key and secret key from the bucket's details.
+
+
+Uploading an object to a bucket
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. On the `Browser` tab, click the |upload-button.png| button to upload a file to the bucket. This will open up a dialog box to select the file to upload.
+|object-store-file-upload.png|
+
+2. Select the file you want to upload and specify the upload path & metadata for the object as per requirements.
+
+3. Click on `Upload` button to upload the file(s) to the bucket.
+
+
+Deleting objects from a bucket
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Select the files you want to remove from the bucket.
+
+2. Click on the |delete-button.png| button to delete the selected files from the bucket.
+
 .. |AttachDiskButton.png| image:: /_static/images/attach-disk-icon.png
    :alt: Attach Disk Button.
 .. |resize-volume-icon.png| image:: /_static/images/resize-volume-icon.png
@@ -1130,3 +1165,15 @@ Based on the selected Object Store, you can specify additional details like quot
    :alt: Offering is needed when creating a volume from the ROOT Volume Snapshot.
 .. |Createbucket.png| image:: /_static/images/add-bucket.png
    :alt: Create Bucket
+.. |bucket-details-browser-tab.png| image:: /_static/images/bucket-details-browser-tab.png
+   :alt: Bucket details browser tab
+.. |object-store-browser-tab.png| image:: /_static/images/object-store-browser-tab.png
+   :alt: Object store browser tab
+.. |object-store-file-properties.png| image:: /_static/images/object-store-file-properties.png
+   :alt: Object store file properties
+.. |object-store-file-upload.png| image:: /_static/images/object-store-file-upload.png
+   :alt: Object store file upload
+.. |delete-button.png| image:: /_static/images/delete-button.png
+   :alt: Delete button
+.. |upload-button.png| image:: /_static/images/upload-button.png
+   :alt: Upload button
