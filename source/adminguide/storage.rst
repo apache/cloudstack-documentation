@@ -281,6 +281,98 @@ from being used for storing any further Templates, Volumes and Snapshots.
 
       cmk updateImageStore id=4440f406-b9b6-46f1-93a4-378a75cf15de readonly=true
 
+Direct resources to a specific secondary storage
+~~~~~~~~~
+
+By default, ACS allocates ISOs, volumes, snapshots, and templates to the freest secondary storage of the zone. In order to direct these resources to a specific secondary storage, the user can utilize the functionality of the dynamic secondary storage selectors using heuristic rules. This functionality utilizes JavaScript rules, defined by the user, to direct these resources to a specific secondary storage. When creating the heuristic rule, the script will have access to some preset variables with information about the secondary storage in the zone, about the resource the rule will be applied upon, and about the account that triggered the allocation. These variables are presented in the table below:
+
+   +-----------------------------------+-----------------------------------+
+   | Resource                          | Variables                         |
+   +===================================+===================================+
+   | Secondary Storage                 | ``id``                            |
+   |                                   +-----------------------------------|
+   |                                   | ``name``                          |
+   |                                   +-----------------------------------|
+   |                                   | ``usedDiskSize``                  |
+   |                                   +-----------------------------------|
+   |                                   | ``totalDiskSize``                 |
+   |                                   +-----------------------------------|
+   |                                   | ``protocol``                      |
+   +-----------------------------------+-----------------------------------+
+   | Snapshot                          | ``size``                          |
+   |                                   +-----------------------------------|
+   |                                   | ``hypervisorType``                |
+   |                                   +-----------------------------------|
+   |                                   | ``name``                          |
+   +-----------------------------------+-----------------------------------+
+   | ISO/Template                      | ``format``                        |
+   |                                   +-----------------------------------|
+   |                                   | ``hypervisorType``                |
+   |                                   +-----------------------------------|
+   |                                   | ``templateType``                  |
+   |                                   +-----------------------------------|
+   |                                   | ``name``                          |
+   +-----------------------------------+-----------------------------------+
+   | Volume                            | ``size``                          |
+   |                                   +-----------------------------------|
+   |                                   | ``format``                        |
+   +-----------------------------------+-----------------------------------+
+   | Account                           | ``id``                            |
+   |                                   +-----------------------------------|
+   |                                   | ``name``                          |
+   |                                   +-----------------------------------|
+   |                                   | ``domain.id``                     |
+   |                                   +-----------------------------------|
+   |                                   | ``domain.name``                   |
+   +-----------------------------------+-----------------------------------+
+
+To utilize this functionality, the user needs to create a selector, using the API ``createSecondaryStorageSelector``. Each selector created specifies the type of resource the heuristic rule will be verified upon allocation (e.g. ISO, snapshot, template or volume), and the zone the heuristic will be applied on. It is noteworthy that can only be one heuristic rule for the same type within a zone. Another thing to consider is that the heuristic rule should return the ID of a valid secondary storage. Below, some examples are presented for heuristic rules considering different scenarios:
+
+1. Allocate a resource type to a specific secondary storage.
+
+.. code:: javascript
+      
+   function findStorageWithSpecificId(pool) {
+      return pool.id === '7432f961-c602-4e8e-8580-2496ffbbc45d';
+   }
+
+   secondaryStorages.filter(findStorageWithSpecificId)[0].id
+
+2. Dedicate storage pools for a type of template format.
+
+.. code:: javascript
+
+   function directToDedicatedQCOW2Pool(pool) {
+      return pool.id === '7432f961-c602-4e8e-8580-2496ffbbc45d';
+   }
+
+   function directToDedicatedVHDPool(pool) {
+      return pool.id === '1ea0109a-299d-4e37-8460-3e9823f9f25c';
+   }
+
+   if (template.format === 'QCOW2') {
+      secondaryStorages.filter(directToDedicatedQCOW2Pool)[0].id
+   } else if (template.format === 'VHD') {
+      secondaryStorages.filter(directToDedicatedVHDPool)[0].id
+   }
+
+3. Direct snapshot of volumes with the KVM hypervisor to a specific secondary storage.
+
+.. code:: javascript
+
+   if (snapshot.hypervisorType === 'KVM') {
+      '7432f961-c602-4e8e-8580-2496ffbbc45d';
+   }
+
+4. Direct resources to a specific domain:
+
+.. code:: javascript
+
+   if (account.domain.id == '52d83793-26de-11ec-8dcf-5254005dcdac') {
+      '1ea0109a-299d-4e37-8460-3e9823f9f25c'
+   } else if (account.domain.id == 'c1186146-5ceb-4901-94a1-dd1d24bd849d') {
+      '7432f961-c602-4e8e-8580-2496ffbbc45d'
+   }
 
 Working With Volumes
 --------------------
