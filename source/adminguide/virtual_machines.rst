@@ -1445,11 +1445,24 @@ Instance statistics are collected on a regular interval (defined by global
 setting vm.stats.interval with a default of 60000 milliseconds).
 Instance statistics include compute, storage and Network statistics.
 
-Instance statistics are stored in the database as historical data for a desired time period. These historical statistics then can be retrieved using listVirtualMachinesUsageHistory API. For system VMs, the same historical statistics can be retrieved using listSystemVmsUsageHistory API
+Instance statistics are stored in the database as historical data for a desired time period. These historical statistics then can be retrieved using ``listVirtualMachinesUsageHistory`` API. For system VMs, the same historical statistics can be retrieved using ``listSystemVmsUsageHistory`` API
 
-Instance statistics retention time in the database is controlled by the global configuration - `vm.stats.max.retention.time`. Default value is 720 minutes, i.e., 12 hours. Another global configuration that affects Instance statistics is:
+Instance statistics retention time in the database is controlled by the global configuration ``vm.stats.max.retention.time``, with a default value of 720 minutes, i.e., 12 hours. The interval in which the metrics are retrieved are defined by the global configuration ``vm.stats.interval``, which has a default value of 60,000 milliseconds, i.e., 1 minute. The default values are only meant for guideline, as they can have a major impact in DB performance. The equation below presents the overall storage size required considering the values of these configurations.
 
-- `vm.stats.user.vm.only` - When set to 'false' stats for system VMs will be collected otherwise stats collection will be done only for user Instances.
+.. math::
+
+   StatsSize = (\frac{retention * 60000}{interval}) * nodes * VMs * registrySize
+
+- **StatsSize**: the size, in `bytes`, required for storing the VM stats;
+- **retention**: the value of the configuration ``vm.stats.max.retention.time``;
+- **interval**: the value of the configuration ``vm.stats.interval``;
+- **nodes**: the number of nodes running the management server in the environment;
+- **VMs**: the number of running VMs in the environment;
+- **registrySize**: the estimated size, in `bytes`, of the registry in the DB;
+
+Considering the default values of the configurations ``vm.stats.max.retention.time`` and ``vm.stats.interval``, three nodes running the management server, 10,000 running VMs and an estimated registry size of 400 bytes, it would need, approximately, 8 GB of storage to store VM stats. Therefore, the values for these configurations should be changed considering the CloudStack environment, evaluating the required storage and its impact in DB performance.
+
+Another global configuration that affects Instance statistics is ``vm.stats.user.vm.only``. When set to 'false' stats for system VMs will be collected, otherwise stats collection will be done only for user Instances.
 
 In the UI, historical Instance statistics are shown in the Metrics tab in an individual Instance view, as shown in the image below.
 
