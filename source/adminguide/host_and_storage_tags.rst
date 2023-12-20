@@ -17,7 +17,7 @@
 Host and Storage Tags
 ======================
 
-Host tags and storage tags, despite the name, are not related to resource tags (section :ref:`resource-tags`) and are a feature to direct resource allocation, such as which host the VM will be deployed on or which storage the volume will be created on. There are several reasons for using tags (such as directing the volume to better quality storage, according to the offering).
+Host tags and storage tags, despite the name, are not related to resource tags, see section :ref:`resource-tags`, and are a feature to direct resource allocation, such as which host the VM will be deployed on or which storage the volume will be created on. There are several reasons for using tags (such as directing the volume to better quality storage, according to the offering).
     
 Host tags
 ---------
