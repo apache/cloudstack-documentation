@@ -180,7 +180,8 @@ Adding Local Storage Pool via UI
 When using UI, ensure that the scope of the storage is set to "Host", and 
 ensure that the protocol is set to "Filesystem" 
 
-|adding-local-pool-via-ui.png|
+.. |adding-local-pool-via-ui.png| image:: /_static/images/adding-local-pool-via-ui.png
+   :alt: Adding Local Storage Pool via UI
 
 Storage Tags
 ~~~~~~~~~~~~
