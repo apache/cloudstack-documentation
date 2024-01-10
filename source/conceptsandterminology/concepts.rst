@@ -18,13 +18,13 @@
 What is Apache CloudStack?
 --------------------------
 
-Apache CloudStack is an open source Infrastructure-as-a-Service platform that 
-manages and orchestrates pools of storage, network, and computer resources to 
-build a public or private IaaS compute cloud. 
+Apache CloudStack is an open source Infrastructure-as-a-Service platform that
+manages and orchestrates pools of storage, network, and computer resources to
+build a public or private IaaS compute cloud.
 
 With CloudStack you can:
 
--  Set up an on-demand elastic cloud computing service. 
+-  Set up an on-demand elastic cloud computing service.
 
 -  Allow end-users to provision resources
 
@@ -35,9 +35,9 @@ What can Apache CloudStack do?
 Multiple Hypervisor Support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-CloudStack works with a variety of hypervisors and hypervisor-like 
-technologies. A single cloud can contain multiple hypervisor implementations. 
-As of the current release CloudStack supports: 
+CloudStack works with a variety of hypervisors and hypervisor-like
+technologies. A single cloud can contain multiple hypervisor implementations.
+As of the current release CloudStack supports:
 
 -  BareMetal (via IPMI)
 
@@ -57,29 +57,29 @@ As of the current release CloudStack supports:
 Massively Scalable Infrastructure Management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-CloudStack can manage tens of thousands of physical servers installed in 
-geographically distributed datacenters. The management server scales 
-near-linearly eliminating the need for cluster-level management servers. 
-Maintenance or other outages of the management server can occur without 
+CloudStack can manage tens of thousands of physical servers installed in
+geographically distributed datacenters. The management server scales
+near-linearly eliminating the need for cluster-level management servers.
+Maintenance or other outages of the management server can occur without
 affecting the Instances running in the cloud.
 
 
 Automatic Cloud Configuration Management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-CloudStack automatically configures the network and storage settings for each 
+CloudStack automatically configures the network and storage settings for each
 Instance deployment. Internally, a pool of virtual appliances support
-the operation of configuration of the cloud itself. These appliances offer 
-services such as firewalling, routing, DHCP, VPN, console proxy, storage 
-access, and storage replication. The extensive use of horizontally scalable 
+the operation of configuration of the cloud itself. These appliances offer
+services such as firewalling, routing, DHCP, VPN, console proxy, storage
+access, and storage replication. The extensive use of horizontally scalable
 Instances simplifies the installation and ongoing operation of a cloud.
 
 
 Graphical User Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-CloudStack offers an administrators web interface used for provisioning and 
-managing the cloud, as well as an end-user's Web interface, used for running 
+CloudStack offers an administrators web interface used for provisioning and
+managing the cloud, as well as an end-user's Web interface, used for running
 Instances and managing Instance Templates. The UI can be customized to reflect the desired
 service provider or enterprise look and feel.
 
@@ -87,56 +87,56 @@ service provider or enterprise look and feel.
 API
 ~~~
 
-CloudStack provides a REST-like API for the operation, management and use of 
-the cloud. 
+CloudStack provides a REST-like API for the operation, management and use of
+the cloud.
 
 
 AWS EC2 API Support
 ~~~~~~~~~~~~~~~~~~~
 
-CloudStack provides an EC2 API translation layer to permit the common EC2 
-tools to be used in the use of a CloudStack cloud. 
+CloudStack provides an EC2 API translation layer to permit the common EC2
+tools to be used in the use of a CloudStack cloud.
 
 
 High Availability
 ~~~~~~~~~~~~~~~~~
 
-CloudStack has a number of features to increase the availability of the 
-system. The Management Server itself may be deployed in a multi-node 
-installation where the servers are load balanced. MySQL may be configured to 
-use replication to provide for failover in the event of database loss. For the 
-hosts, CloudStack supports NIC bonding and the use of separate networks for 
+CloudStack has a number of features to increase the availability of the
+system. The Management Server itself may be deployed in a multi-node
+installation where the servers are load balanced. MySQL may be configured to
+use replication to provide for failover in the event of database loss. For the
+hosts, CloudStack supports NIC bonding and the use of separate networks for
 storage as well as iSCSI Multipath.
 
 
 Deployment Architecture Overview
 --------------------------------
 
-Generally speaking, most CloudStack deployments consist of the management 
-server and the resources to be managed. During deployment you inform the 
-management server of the resources to be managed, such as IP address blocks, 
-storage devices, hypervisors, and VLANs. 
+Generally speaking, most CloudStack deployments consist of the management
+server and the resources to be managed. During deployment you inform the
+management server of the resources to be managed, such as IP address blocks,
+storage devices, hypervisors, and VLANs.
 
-The minimum installation consists of one machine running the CloudStack 
-Management Server and another machine to act as the cloud infrastructure (in 
-this case, a very simple infrastructure consisting of one host running 
-hypervisor software). In its smallest deployment, a single machine can act as 
+The minimum installation consists of one machine running the CloudStack
+Management Server and another machine to act as the cloud infrastructure (in
+this case, a very simple infrastructure consisting of one host running
+hypervisor software). In its smallest deployment, a single machine can act as
 both the Management Server and the hypervisor host (using the KVM hypervisor).
 
 .. image:: /_static/images/basic-deployment.png
 
-A more full-featured installation consists of a highly-available multi-node 
-Management Server installation and up to tens of thousands of hosts using any 
+A more full-featured installation consists of a highly-available multi-node
+Management Server installation and up to tens of thousands of hosts using any
 of several networking technologies.
 
 
 Management Server Overview
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The management server orchestrates and allocates the resources in your cloud 
+The management server orchestrates and allocates the resources in your cloud
 deployment.
 
-The management server typically runs on a dedicated machine or as a virtual 
+The management server typically runs on a dedicated machine or as a virtual
 machine.  It controls allocation of Instances to hosts and assigns
 storage and IP addresses to the Instances. The Management Server runs
 in an Apache Tomcat container and requires a MySQL database for persistence.
@@ -145,12 +145,12 @@ The management server:
 
 -  Provides the web interface for both the administrator and end user.
 
--  Provides the API interfaces for both the CloudStack API as well as the EC2 
-   interface. 
+-  Provides the API interfaces for both the CloudStack API as well as the EC2
+   interface.
 
 -  Manages the assignment of guest Instances to a specific compute resource
 
--  Manages the assignment of public and private IP addresses. 
+-  Manages the assignment of public and private IP addresses.
 
 -  Allocates storage during the VM instantiation process.
 
@@ -163,23 +163,23 @@ The management server:
 Cloud Infrastructure Overview
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Resources within the cloud are managed as follows: 
+Resources within the cloud are managed as follows:
 
--  Regions: A collection of one or more geographically proximate zones managed 
-   by one or more management servers. 
+-  Regions: A collection of one or more geographically proximate zones managed
+   by one or more management servers.
 
--  Zones: Typically, a zone is equivalent to a single datacenter. A zone 
+-  Zones: Typically, a zone is equivalent to a single datacenter. A zone
    consists of one or more pods and secondary storage.
 
--  Pods: A pod is usually a rack, or row of racks that includes a layer-2 
+-  Pods: A pod is usually a rack, or row of racks that includes a layer-2
    switch and one or more clusters.
 
--  Clusters: A cluster consists of one or more homogenous hosts and primary 
-   storage. 
+-  Clusters: A cluster consists of one or more homogenous hosts and primary
+   storage.
 
--  Host: A single compute node within a cluster; often a hypervisor. 
+-  Host: A single compute node within a cluster; often a hypervisor.
 
--  Primary Storage: A storage resource typically provided to a single cluster 
+-  Primary Storage: A storage resource typically provided to a single cluster
    for the actual running of Instance disk images. (Zone-wide primary storage
    is an option, though not typically used.)
 
@@ -190,14 +190,14 @@ Resources within the cloud are managed as follows:
 Networking Overview
 ~~~~~~~~~~~~~~~~~~~
 
-CloudStack offers many types of networking, but they typically fall into one 
-of two scenarios: 
+CloudStack offers many types of networking, but they typically fall into one
+of two scenarios:
 
--  Basic: Most analogous to AWS-classic style networking. Provides a single 
-   flat layer-2 network where guest isolation is provided at layer-3 by the 
-   hypervisors bridge device. 
+-  Basic: Most analogous to AWS-classic style networking. Provides a single
+   flat layer-2 network where guest isolation is provided at layer-3 by the
+   hypervisors bridge device.
 
--  Advanced: This typically uses layer-2 isolation such as VLANs, though this 
+-  Advanced: This typically uses layer-2 isolation such as VLANs, though this
    category also includes SDN technologies such as Nicira NVP.
 
 
@@ -309,11 +309,11 @@ the zone. If you are provisioning multiple VMware Datacenters, each one
 will be set up as a single zone in CloudStack.
 
 .. note::
-   If you are upgrading from a previous CloudStack version, and your existing 
-   deployment contains a zone with clusters from multiple VMware Datacenters, 
-   that zone will not be forcibly migrated to the new model. It will continue 
-   to function as before. However, any new zone-wide operations, such as 
-   zone-wide primary storage and live storage migration, will not be available 
+   If you are upgrading from a previous CloudStack version, and your existing
+   deployment contains a zone with clusters from multiple VMware Datacenters,
+   that zone will not be forcibly migrated to the new model. It will continue
+   to function as before. However, any new zone-wide operations, such as
+   zone-wide primary storage and live storage migration, will not be available
    in that zone.
 
 .. _about-pods:
@@ -456,6 +456,10 @@ for example:
 
 -  Dell EMC PowerFlex™ (v3.5)
 
+-  HPE Primera/3PAR for FiberChannel
+
+-  Pure FlashArray for FiberChannel
+
 If you intend to use only local disk for your installation, you can skip
 adding separate primary storage.
 
@@ -498,8 +502,8 @@ resource, making Templates and other data available to any zone in the
 cloud.
 
 .. warning::
-   Heterogeneous Secondary Storage is not supported in Regions. For example, 
-   you cannot set up multiple zones, one using NFS secondary and the other 
+   Heterogeneous Secondary Storage is not supported in Regions. For example,
+   you cannot set up multiple zones, one using NFS secondary and the other
    using S3 or Swift secondary.
 
 .. _about-object-storage:
@@ -627,10 +631,10 @@ zone are:
    NAT between their guest network and the Public Network, as described
    in “Acquiring a New IP Address” in the Administration Guide.
    Public IPs are assigned to the "Public" interface of system VMs, including
-   Virtual Routers. 
+   Virtual Routers.
 
 .. note::
-   The IP space used in a "Public" network can either be really publicly 
+   The IP space used in a "Public" network can either be really publicly
    routable IP space (e.g. in case of a Public cloud setup), or can be
    any other company internal (RFC 1918) IP space that is not used with other
    CloudStack networks (e.g. in case of a Private cloud setup
