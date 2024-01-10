@@ -180,8 +180,7 @@ Adding Local Storage Pool via UI
 When using UI, ensure that the scope of the storage is set to "Host", and 
 ensure that the protocol is set to "Filesystem" 
 
-.. image:: /_static/images/adding-local-pool-via-ui.png
-   :alt: Adding Local Storage Pool via UI
+|adding-local-pool-via-ui.png|
 
 Storage Tags
 ~~~~~~~~~~~~
@@ -1143,3 +1142,6 @@ Based on the selected Object Store, you can specify additional details like quot
    :alt: Offering is needed when creating a volume from the ROOT Volume Snapshot.
 .. |Createbucket.png| image:: /_static/images/add-bucket.png
    :alt: Create Bucket
+.. |adding-local-pool-via-ui.png| image:: /_static/images/adding-local-pool-via-ui.png
+   :align: center
+   :alt: Adding Local Storage Pool via UI
