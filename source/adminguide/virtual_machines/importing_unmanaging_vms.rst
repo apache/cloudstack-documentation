@@ -423,11 +423,12 @@ instances from these external hosts. This feature is available in both UI and AP
 
 Prerequisites
 ~~~~~~~~~~~~~
-- Ensure that the External KVM host is equipped with the installation of libvirt.
-- Allow TCP libvirt connections (listen_tpc=1) on those External Hosts from CloudStack hosts.
-- It is imperative that instances residing on the external host are in a stopped state, as live migration of instances is not supported
+- Ensure that the External KVM host are running libvirt
+- Allow libvirt TCP connections (listen_tcp=1) on those External Hosts from CloudStack hosts.
+- Instances on the external host have to be in a stopped state, as live migration of instances is not supported
 - For some guest operating systems, it's also required that the operating system inside the Instance has been gracefully shut down.
 - Currently, it's supported to only use NFS and Local storage as the destination Primary Storage pools in CloudStack
+- Currently, only libvirt-based instances can be migrated
 
 listVmsForImport API
 ~~~~~~~~~~~~~~~~~~~~
