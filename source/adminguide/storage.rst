@@ -156,11 +156,11 @@ It's advised that only one or the other method is used, not both.
 Manually adding Local Storage Pool
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to use multiple local storages, you need to
+In order to use multiple local storage pools, you need to
 
-#. Enable Local Storage For User VMs in the zone setting
+#. Enable Local Storage For User VMs in the zone details (Edit the Zone, tick the "Enable local storage for user VMs")
 
-#. Create local directories on kvm hosts
+#. Create local directories on KVM hosts
 
 #. Edit /etc/cloudstack/agent/agent.properties
 
@@ -171,10 +171,13 @@ In order to use multiple local storages, you need to
 
        local.storage.uuid=a43943c1-1759-4073-9db1-bc0ea19203aa,f5b1220b-4446-42dc-a872-cffd281f9f8c
        local.storage.path=/var/lib/libvirt/images,/var/lib/libvirt/images2
+#
 
 #. Restart cloudstack-agent service
 
-Adding Local Storage Pool via UI
+    - Storage pools will be automatically created in libvirt by the CloudStack agent
+
+Adding a Local Storage Pool via UI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When using UI, ensure that the scope of the storage is set to "Host", and 
