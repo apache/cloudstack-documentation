@@ -25,7 +25,7 @@ to track its issues.
 
 
 +-------------------------+----------+-------------------------------------------------------+
-| Version                 | Github   | Description                                           |
+| Version                 | GitHub   | Description                                           |
 +=========================+==========+=======================================================+
 | 4.19.0.0                | `#8547`_ | Externalise a few timeouts & fix timeout for          |
 |                         |          | hostSupportsUefi in libvirt ready command wrapper     |
