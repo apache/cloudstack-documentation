@@ -16,7 +16,7 @@
 
 IPv6 Support in CloudStack
 ===========================
-CloudStack supports IPv6 for shared and isolated networks. It also supports IPv6 for VPC Network Tiers.
+CloudStack has limited IPv6 support. It supports IPv6 for shared and isolated networks. It also supports IPv6 for VPC Network Tiers.
 
 Shared network
 --------------
