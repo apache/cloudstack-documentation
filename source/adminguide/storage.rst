@@ -149,7 +149,12 @@ when the first approaches capacity.
 Using Multiple Local Storages (KVM only)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since CloudStack 4.17.0.0, multiple local storages are supported on KVM hosts.
+Since CloudStack 4.17.0.0, multiple local storages are supported on KVM hosts. The changes have been possible by editing the agent.properties file.
+Since CloudStack 4.19.0.0, it's possible to add Local storage pool via UI/API as well.
+It's advised that only one or the other method is used, not both.
+
+Manually adding Local Storage Pool
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to use multiple local storages, you need to
 
@@ -169,6 +174,13 @@ In order to use multiple local storages, you need to
 
 #. Restart cloudstack-agent service
 
+Adding Local Storage Pool via UI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When using UI, ensure that the scope of the storage is set to "Host", and 
+ensure that the protocol is set to "Filesystem".
+
+|adding-local-pool-via-ui.png|
 
 Storage Tags
 ~~~~~~~~~~~~
@@ -1274,3 +1286,5 @@ Deleting objects from a bucket
    :alt: Delete button
 .. |upload-button.png| image:: /_static/images/upload-button.png
    :alt: Upload button
+.. |adding-local-pool-via-ui.png| image:: /_static/images/adding-local-pool-via-ui.png
+   :alt: Adding Local Storage Pool via UI
