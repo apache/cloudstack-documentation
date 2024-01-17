@@ -156,28 +156,28 @@ offering.
 
 .. cssclass:: table-striped table-bordered table-hover
 
-+----------------------+-----------+------------+----------+-------------+-------------+
-|                      | Virtual   | Citrix     | Juniper  | F5 BigIP    | Host based  |
-|                      | Router    | NetScaler  | SRX      |             | (KVM/Xen)   |
-+======================+===========+============+==========+=============+=============+
-| Remote Access VPN    | Yes       | No         | No       | No          | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
-| DNS/DHCP/User Data   | Yes       | No         | No       | No          | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
-| Firewall             | Yes       | No         | Yes      | No          | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
-| Load Balancing       | Yes       | Yes        | No       | Yes         | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
-| Elastic IP           | No        | Yes        | No       | No          | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
-| Elastic LB           | No        | Yes        | No       | No          | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
-| Source NAT           | Yes       | No         | Yes      | No          | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
-| Static NAT           | Yes       | Yes        | Yes      | No          | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
-| Port Forwarding      | Yes       | No         | Yes      | No          | No          |
-+----------------------+-----------+------------+----------+-------------+-------------+
++----------------------+-----------+------------+-------------+
+|                      | Virtual   | Citrix     | Host based  |
+|                      | Router    | NetScaler  | (KVM/Xen)   |
++======================+===========+============+=============+
+| Remote Access VPN    | Yes       | No         | No          |
++----------------------+-----------+------------+-------------+
+| DNS/DHCP/User Data   | Yes       | No         | No          |
++----------------------+-----------+------------+-------------+
+| Firewall             | Yes       | No         | No          |
++----------------------+-----------+------------+-------------+
+| Load Balancing       | Yes       | Yes        | No          |
++----------------------+-----------+------------+-------------+
+| Elastic IP           | No        | Yes        | No          |
++----------------------+-----------+------------+-------------+
+| Elastic LB           | No        | Yes        | No          |
++----------------------+-----------+------------+-------------+
+| Source NAT           | Yes       | No         | No          |
++----------------------+-----------+------------+-------------+
+| Static NAT           | Yes       | Yes        | No          |
++----------------------+-----------+------------+-------------+
+| Port Forwarding      | Yes       | No         | No          |
++----------------------+-----------+------------+-------------+
 
 
 Network Offerings
@@ -206,7 +206,7 @@ A network offering is a named set of network services, such as:
 -  VPN
 
 -  (Optional) Name one of several available providers to use for a given
-   service, such as Juniper for the firewall
+   service
 
 -  (Optional) Network tag to specify which physical network to use
 
@@ -397,6 +397,8 @@ To create a network offering:
          is used by the least number of accounts. Once the device reaches
          its maximum capacity, the device will not be allocated to a new
          account.
+
+.. not sure how this works after deprecation of Juniper devices
 
    -  **Mode**: You can select either Inline mode or Side by Side mode:
 

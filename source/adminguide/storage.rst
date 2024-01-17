@@ -149,7 +149,12 @@ when the first approaches capacity.
 Using Multiple Local Storages (KVM only)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since CloudStack 4.17.0.0, multiple local storages are supported on KVM hosts.
+Since CloudStack 4.17.0.0, multiple local storages are supported on KVM hosts. The changes have been possible by editing the agent.properties file.
+Since CloudStack 4.19.0.0, it's possible to add Local storage pool via UI/API as well.
+It's advised that only one or the other method is used, not both.
+
+Manually adding Local Storage Pool
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to use multiple local storage pools, you need to
 
@@ -170,7 +175,15 @@ In order to use multiple local storage pools, you need to
 
 #. Restart cloudstack-agent service
 
-    - Storage pools will be automatically created in libvirt by CloudStack agent
+    - Storage pools will be automatically created in libvirt by the CloudStack agent
+
+Adding Local Storage Pool via UI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When using UI, ensure that the scope of the storage is set to "Host", and 
+ensure that the protocol is set to "Filesystem".
+
+|adding-local-pool-via-ui.png|
 
 Storage Tags
 ~~~~~~~~~~~~
@@ -283,6 +296,98 @@ from being used for storing any further Templates, Volumes and Snapshots.
 
       cmk updateImageStore id=4440f406-b9b6-46f1-93a4-378a75cf15de readonly=true
 
+Direct resources to a specific secondary storage
+~~~~~~~~~
+
+By default, ACS allocates ISOs, volumes, snapshots, and templates to the freest secondary storage of the zone. In order to direct these resources to a specific secondary storage, the user can utilize the functionality of the dynamic secondary storage selectors using heuristic rules. This functionality utilizes JavaScript rules, defined by the user, to direct these resources to a specific secondary storage. When creating the heuristic rule, the script will have access to some preset variables with information about the secondary storage in the zone, about the resource the rule will be applied upon, and about the account that triggered the allocation. These variables are presented in the table below:
+
+   +-----------------------------------+-----------------------------------+
+   | Resource                          | Variables                         |
+   +===================================+===================================+
+   | Secondary Storage                 | ``id``                            |
+   |                                   +-----------------------------------|
+   |                                   | ``name``                          |
+   |                                   +-----------------------------------|
+   |                                   | ``usedDiskSize``                  |
+   |                                   +-----------------------------------|
+   |                                   | ``totalDiskSize``                 |
+   |                                   +-----------------------------------|
+   |                                   | ``protocol``                      |
+   +-----------------------------------+-----------------------------------+
+   | Snapshot                          | ``size``                          |
+   |                                   +-----------------------------------|
+   |                                   | ``hypervisorType``                |
+   |                                   +-----------------------------------|
+   |                                   | ``name``                          |
+   +-----------------------------------+-----------------------------------+
+   | ISO/Template                      | ``format``                        |
+   |                                   +-----------------------------------|
+   |                                   | ``hypervisorType``                |
+   |                                   +-----------------------------------|
+   |                                   | ``templateType``                  |
+   |                                   +-----------------------------------|
+   |                                   | ``name``                          |
+   +-----------------------------------+-----------------------------------+
+   | Volume                            | ``size``                          |
+   |                                   +-----------------------------------|
+   |                                   | ``format``                        |
+   +-----------------------------------+-----------------------------------+
+   | Account                           | ``id``                            |
+   |                                   +-----------------------------------|
+   |                                   | ``name``                          |
+   |                                   +-----------------------------------|
+   |                                   | ``domain.id``                     |
+   |                                   +-----------------------------------|
+   |                                   | ``domain.name``                   |
+   +-----------------------------------+-----------------------------------+
+
+To utilize this functionality, the user needs to create a selector, using the API ``createSecondaryStorageSelector``. Each selector created specifies the type of resource the heuristic rule will be verified upon allocation (e.g. ISO, snapshot, template or volume), and the zone the heuristic will be applied on. It is noteworthy that can only be one heuristic rule for the same type within a zone. Another thing to consider is that the heuristic rule should return the ID of a valid secondary storage. Below, some examples are presented for heuristic rules considering different scenarios:
+
+1. Allocate a resource type to a specific secondary storage.
+
+.. code:: javascript
+      
+   function findStorageWithSpecificId(pool) {
+      return pool.id === '7432f961-c602-4e8e-8580-2496ffbbc45d';
+   }
+
+   secondaryStorages.filter(findStorageWithSpecificId)[0].id
+
+2. Dedicate storage pools for a type of template format.
+
+.. code:: javascript
+
+   function directToDedicatedQCOW2Pool(pool) {
+      return pool.id === '7432f961-c602-4e8e-8580-2496ffbbc45d';
+   }
+
+   function directToDedicatedVHDPool(pool) {
+      return pool.id === '1ea0109a-299d-4e37-8460-3e9823f9f25c';
+   }
+
+   if (template.format === 'QCOW2') {
+      secondaryStorages.filter(directToDedicatedQCOW2Pool)[0].id
+   } else if (template.format === 'VHD') {
+      secondaryStorages.filter(directToDedicatedVHDPool)[0].id
+   }
+
+3. Direct snapshot of volumes with the KVM hypervisor to a specific secondary storage.
+
+.. code:: javascript
+
+   if (snapshot.hypervisorType === 'KVM') {
+      '7432f961-c602-4e8e-8580-2496ffbbc45d';
+   }
+
+4. Direct resources to a specific domain:
+
+.. code:: javascript
+
+   if (account.domain.id == '52d83793-26de-11ec-8dcf-5254005dcdac') {
+      '1ea0109a-299d-4e37-8460-3e9823f9f25c'
+   } else if (account.domain.id == 'c1186146-5ceb-4901-94a1-dd1d24bd849d') {
+      '7432f961-c602-4e8e-8580-2496ffbbc45d'
+   }
 
 Working With Volumes
 --------------------
@@ -638,6 +743,20 @@ be restarted.
       Instance's root disk is allowed from one PowerFlex/ScaleIO storage pool
       to another, without stopping the Instance.
 
+Finding Primary Storage for Migration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When you click on migrate volume, CloudStack lists the available primary
+storage.  CloudStack uses its storage pool allocators to identify the primary
+storages that are available and returns a list that is suitable for the selected
+volume's migration. 
+The list also could include primary storages that are mentioned as
+'Not suitable'. The criteria for which the primary storages are not suitable are: 
+-  Storage tag mismatch with the volume.
+-  Doesn't have enough capacity. 
+-  Reached its disable threshold.
+-  Disabled.
+-  Mismatch in the type of storage such as shared /Local. 
 
 Resizing Volumes
 ~~~~~~~~~~~~~~~~
@@ -1072,6 +1191,71 @@ primary storage see :ref:`add-primary-storage`.
 For protocol choose ``Linstor`` and as server specify the controller REST-API URL e.g.: ``http://127.0.0.1:3370``
 and use the resource group name you added in the LINSTOR cluster.
 
+Object Storage
+---------------
+
+This section gives technical details about CloudStack
+object storage. For more information about the concepts behind object storage
+see :ref:`about-object-storage` . For information about how to install and configure
+object storage through the CloudStack UI, see the in the Installation Guide.
+
+
+Creating a New Bucket
+~~~~~~~~~~~~~~~~~~~~~
+
+Buckets are logical containers for storing objects. To create a New Bucket:
+
+#. Log in to the CloudStack UI as a user or administrator.
+
+#. In the left navigation bar, click Storage.
+
+#. In Select View, choose Buckets.
+
+To create a new bucket, click create Bucket, provide the following details, and click OK.
+
+#. Name: Give the bucket a unique name.
+
+#. Object Store: Select the object store where you want the Bucket to reside
+
+Based on the selected Object Store, you can specify additional details like quota, encryption, policy.
+
+|Createbucket.png|
+
+
+Browsing objects in a bucket
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Once a bucket has been created, you can browse the files in the bucket by clicking the bucket name.
+|bucket-details-browser-tab.png|
+
+2. Open the `Browser` tab to list files in the bucket.
+|object-store-browser-tab.png|
+
+Under `Browser` tab, clicking a directory on the browser tab will list the objects in that directory.
+For a file, clicking it list the properties of that file with links to access the file.
+|object-store-file-properties.png|
+
+.. note:: 
+   To access the bucket, UI uses the URL, access key and secret key from the bucket's details.
+
+
+Uploading an object to a bucket
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. On the `Browser` tab, click the |upload-button.png| button to upload a file to the bucket. This will open up a dialog box to select the file to upload.
+|object-store-file-upload.png|
+
+2. Select the file you want to upload and specify the upload path & metadata for the object as per requirements.
+
+3. Click on `Upload` button to upload the file(s) to the bucket.
+
+
+Deleting objects from a bucket
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Select the files you want to remove from the bucket.
+
+2. Click on the |delete-button.png| button to delete the selected files from the bucket.
 
 .. |AttachDiskButton.png| image:: /_static/images/attach-disk-icon.png
    :alt: Attach Disk Button.
@@ -1091,3 +1275,19 @@ and use the resource group name you added in the LINSTOR cluster.
    :alt: Volume metrics   
 .. |volume-from-snap.png| image:: /_static/images/volume-from-snap.png
    :alt: Offering is needed when creating a volume from the ROOT Volume Snapshot.
+.. |Createbucket.png| image:: /_static/images/add-bucket.png
+   :alt: Create Bucket
+.. |bucket-details-browser-tab.png| image:: /_static/images/bucket-details-browser-tab.png
+   :alt: Bucket details browser tab
+.. |object-store-browser-tab.png| image:: /_static/images/object-store-browser-tab.png
+   :alt: Object store browser tab
+.. |object-store-file-properties.png| image:: /_static/images/object-store-file-properties.png
+   :alt: Object store file properties
+.. |object-store-file-upload.png| image:: /_static/images/object-store-file-upload.png
+   :alt: Object store file upload
+.. |delete-button.png| image:: /_static/images/delete-button.png
+   :alt: Delete button
+.. |upload-button.png| image:: /_static/images/upload-button.png
+   :alt: Upload button
+.. |adding-local-pool-via-ui.png| image:: /_static/images/adding-local-pool-via-ui.png
+   :alt: Adding Local Storage Pool via UI
