@@ -177,7 +177,7 @@ In order to use multiple local storage pools, you need to
 
     - Storage pools will be automatically created in libvirt by the CloudStack agent
 
-Adding Local Storage Pool via UI
+Adding a Local Storage Pool via UI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When using UI, ensure that the scope of the storage is set to "Host", and 
