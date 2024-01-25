@@ -74,7 +74,7 @@ Following are the configuration parameters for DRS.
    Very high value for ``drs.max.migrations`` can result in management server using up all of it's workers for DRS tasks
    and not being able to execute other tasks.
 
-There are some advanced parameters that can be configured for DRS. These paramters impact the way imbalance is calculated
+There are some advanced parameters that can be configured for DRS. These parameters impact the way imbalance is calculated
 for a cluster. Do not change these parameters unless you know what you are doing.
 
 .. list-table:: Advanced DRS related cluster parameters
