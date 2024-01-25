@@ -65,7 +65,7 @@ Following are the configuration parameters for DRS.
        is allowed and 0.0 means imbalance is allowed.
    * - ``drs.metric``
      - `memory`
-     - The cluster imbalance metric to use when considering the imbalance in cluster. Possible values are memory, cpu.
+     - The allocated resource metric to use for measuring imbalance for a cluster. Possible values are memory, cpu.
 
 .. note::
   Scope of ``drs.plan.expire.interval`` is global and for rest is cluster level.
