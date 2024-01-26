@@ -93,8 +93,8 @@ for a cluster. Do not change these parameters unless you know what you are doing
    * - ``drs.imbalance.condensed.skip.threshold``
      - `0.95`
      - Threshold to ignore the metric for a host while calculating the imbalance to decide whether DRS is required for 
-       a cluster.This is to avoid cases when the calculated imbalance gets skewed due to a single host having a very 
-       high/low metric  value resulting in imbalance being higher than 1. If ``drs.metric.type`` is ``free``, set a lower 
+       a cluster. This is to avoid cases when the calculated imbalance gets skewed due to a single host having a very 
+       high/low metric value resulting in imbalance being higher than 1. If ``drs.metric.type`` is ``free``, set a lower 
        value and if it is ``used`` set a higher value. The value should be between `0.0` and `1.0`. 
        This is applicable only for Condensed algorithm.
 
