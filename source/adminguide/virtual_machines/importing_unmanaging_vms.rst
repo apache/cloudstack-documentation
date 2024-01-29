@@ -63,7 +63,7 @@ those set in the CloudStack DB (e.g. the Instance might be moved to a different 
 
 To import Instances, it is imagined that a Cloud Provider will:
 
-#. List/get familiar all of the existing Networks on which the Instances to be imported are on.
+#. List/get familiar with all of the existing Networks on which the Instances to be imported are on.
 #. Create corresponding Networks in CloudStack (with the same VLANs, as needed)
 #. Use the listUnmanagedInstances API to create a CSV of Instances to be imported.
 #. Where required, add metadata to the CSV such as the Account to which the imported Instance should belong, the Network to which each Instance should be
