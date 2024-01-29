@@ -115,6 +115,8 @@ When importing a Virtual Machine from VMware to KVM, CloudStack performs the fol
 
 .. note:: As mentioned above, the migration/conversion process uses an external tool, virt-v2v, which supports most but not all the operating systems out there (this is true for both the host on which the virt-v2v tool is running as well as the guest OS of the instances being migrated by the tool). Thus, the success of the import process will, almost exclusively, depend on the success of the virt-v2v conversion. In other words, the success will vary based on factors such as the current OS version, installed packages, guest OS setup, file systems, and others. Success is not guaranteed. We strongly recommend testing the migration process before proceeding with production deployments.
 
+.. note:: The resulting imported VM is converted from VMware considering the source guest OS but it uses the default import template in CloudStack: CentOS 4/5. This does not mean that the converted VMs are CentOS VMs, it is simply a link to the default import template as it is not currently possible to select a template from which to import the VM.
+
 .. |import-vm-from-vmware-to-kvm.png| image:: /_static/images/import-vm-from-vmware-to-kvm.png
    :alt: Import VMware Virtual Machines into KVM.
    :width: 800 px
