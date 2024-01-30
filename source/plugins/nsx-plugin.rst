@@ -33,10 +33,27 @@ The VMware NSX Plugin introduces VMware NSX 4 as a network service provider in C
 - DHCP
 - Kubernetes host orchestration, supporting CKS on VPCs
 
-Supported versions
+Supported Versions
 ------------------
 
-- VMware NSX 4.1, since CloudStack 4.20
+.. cssclass:: table-striped table-bordered table-hover
 
++--------------+----------------------+--------------------+
+| Hypervisor   | CloudStack Version   | VMware NSX Version |
++==============+======================+====================+
+| VMware       | >= 4.20              | 4.1                |
++--------------+----------------------+--------------------+
 
- 
+Table: Supported Versions
+
+Configuration
+-------------
+
+Prerequisites
+~~~~~~~~~~~~~
+
+The VMware NSX plugin is enabled by the 'nsx.plugin.enable’ setting, false by default. It enables the NSX Plugin on CloudStack when it is set to true. The global setting is non-dynamic, that is, the management server would need to be restarted after being modified.
+
+Zone creation
+~~~~~~~~~~~~~
+
