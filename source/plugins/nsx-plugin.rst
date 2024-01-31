@@ -60,33 +60,35 @@ Zone creation
 For an NSX-based zone, the administrator will have to create atleast 2 physical networks, one for Public and Guest networks with **NSX** isolation method and one for Management (and / or storage networks),
 which uses VLAN isolation method.
 
-Physical network for Public and Guest traffic: 
-
-   Isolation method: NSX 
+**Physical network for Public and Guest traffic:**
+   Isolation method: NSX
    VLAN ID must be empty 
-   vSwitch type: distributed virtual switch (dvSwitch) 
+   vSwitch type: distributed virtual switch (dvSwitch)
    vSwitch name: name of the dvSwitch to handle NSX traffic 
 
-Phsyical network for Management traffic: 
+**Phsyical network for Management traffic:**
+   Isolation method: VLAN
+   VLAN ID: ID for Management traffic
+   vSwitch type: distributed virtual switch (dvSwitch)
+   vSwitch name: name of the dvSwitch to handle Management traffic.
 
-   Isolation method: VLAN 
-   VLAN ID: ID for Management traffic 
-   vSwitch type: distributed virtual switch (dvSwitch) 
-   vSwitch name: name of the dvSwitch to handle Management traffic. 
 
 An example of physical networks setup: 
 
-.. |Physical Networks with NSX | image:: /_static/images/nsx-phy-networks.png
+.. |nsx-phy-networks.png| image:: /_static/images/nsx-phy-networks.png
+   :alt: Physical Networks with NSX
 
 The next stage of zone creation would be to link the NSX controller to the CloudStack. 
 
-.. |NSX Provider details| image:: /_static/images/nsx-provider.png
+.. |nsx-provider.png| image:: /_static/images/nsx-provider.png
+   :alt: NSX Provider details
 
 The administrator then needs to setup the IP ranges for Public and NSX Public traffic.
    - Public Traffic: IP range for non-NSX public traffic used by system VMs 
    - NSX Public Traffic: IP range to use for Public IP Addresses on NSX-based VPCs or Isolated Networks.
 
-.. |NSX Provider details| image:: /_static/images/nsx-public-traffic.png
+.. |nsx-public-traffic.png| image:: /_static/images/nsx-public-traffic.png
+   :alt: NSX Traffic
 
 The subsequent steps of zone creation remain unchanged and once the zone is successfully created and enabled, the system VMs come up with IPs from the Public IP Range (not the NSX public IP range).
 
@@ -100,11 +102,11 @@ When a VPC is created in CloudStack, the following operations occur on NSX end:
       - Linked Tier0 Gateway: the Tier0 Gateway provided on the NSX Controller creation in CloudStack
       - For NAT mode VPCs, the following Route Advertisement settings are enabled: 
             - All IPSec Local Endpoints 
-            - All NAT IP’s 
+            - All NAT IPs 
             - All LB VIP Routes 
       - For ROUTED mode VPCs, the following Route Advertisement settings are enabled: 
             - All IPSec Local Endpoints 
-            - All NAT IP’s 
+            - All NAT IPs 
             - All LB VIP Routes  
             - All Connected Segments & Service Ports 
 
@@ -210,8 +212,8 @@ CKS on NSX
 
 To enable CKS clusters on NSX networks respective default network offerings have been created for isolated and VPC tiers. 
 
-__**DefaultNSXNetworkOfferingforKubernetesService**__ - is the default pre-created NSX-based network offering for enabling deployment of CKS clusters on isolated networks. 
-__**DefaultNSXVPCNetworkOfferingforKubernetesService**__ - is the default pre-created NSX-based network offering to enable CKS cluster deployment on VPC tiers. 
+**DefaultNSXNetworkOfferingforKubernetesService** - is the default pre-created NSX-based network offering for enabling deployment of CKS clusters on isolated networks. 
+**DefaultNSXVPCNetworkOfferingforKubernetesService** - is the default pre-created NSX-based network offering to enable CKS cluster deployment on VPC tiers. 
  
 
 When deploying CKS clusters, it is possible to either select a pre-existing network or allow CloudStack create a new network for the cluster during the deployment. If one chooses the latter means of cluster deployment on a NSX-based environment, it would be needed that the 'cloud.kubernetes.cluster.network.offering' global setting be updated to point to either the default offerings or the appropriate NSX-based offering created. 
