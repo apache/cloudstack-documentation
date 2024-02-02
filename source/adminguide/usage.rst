@@ -273,8 +273,12 @@ global settings:
 The limits for tagged resources are a subset of the overall limits and the maximum
 can be the value of the overall limit for the particular resource type.
 
-The administrator can also view used and available capacity of such tagged resource
+|accountlimits.png|
+
+The administrator can view used and available capacity of such tagged resource
 alongwith the overall capacities in the zone and cluster view in the UI.
+
+|zonecapacities.png|
 
 
 User Permission
