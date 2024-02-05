@@ -64,4 +64,5 @@ Possible Issue with volume snapshot revert with KVM
 Between versions 4.17.x, 4.18.0 and 4.18.1, KVM volume snapshot backups were
 not full snapshots and they rely on the snapshots on the primary storage.
 To prevent any loss of data, care must be taken during revert operation and
-it must be ensured that the source primary storage snapshot file is present.
+it must be ensured that the source primary storage snapshot file is present
+if the snapshot is created with any of these CloudStack versions.
