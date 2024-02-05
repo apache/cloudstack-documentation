@@ -14,6 +14,8 @@
    under the License.
 
 
+.. _resource-tags:
+
 Using Tags to Organize Resources in the Cloud
 ---------------------------------------------
 
