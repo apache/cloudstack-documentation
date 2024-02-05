@@ -26,6 +26,7 @@ CloudStack Management Server.
 -  CentOS versions 7
 -  Rocky Linux 8, 9
 -  Alma Linux 8, 9
+-  Oracle Linux 8, 9
 -  RHEL versions 7, 8, 9
 -  openSUSE Leap 15
 -  SUSE Linux Enterprise Server 15 (not tested, but expected to work same as with openSUSE 15)
