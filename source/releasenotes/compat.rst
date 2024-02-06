@@ -50,6 +50,7 @@ and VMware with vSphere.
 -  Rocky Linux 8, 9 with KVM
 -  Red Hat Enterprise Linux 7, 8, 9 with KVM
 -  Alma Linux 8, 9
+-  Oracle Linux 8, 9 with KVM
 -  openSUSE Leap 15
 -  SUSE Linux Enterprise Server 15
 -  XenServer versions 7.1, 7.2, 7.4, 7.5, 8.0 (8.1 and 8.2 expected to work, but not tested. For 8.2 please check the note below) with latest hotfixes
