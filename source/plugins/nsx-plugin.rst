@@ -52,7 +52,9 @@ Configuration
 Prerequisites
 ~~~~~~~~~~~~~
 
-The VMware NSX plugin is enabled by the 'nsx.plugin.enable’ setting, false by default. It enables the NSX Plugin on CloudStack when it is set to true. The global setting is non-dynamic, that is, the management server would need to be restarted after being modified.
+The VMware NSX plugin is enabled by the 'nsx.plugin.enable' setting, false by default. It enables the NSX Plugin on CloudStack when it is set to true. The global setting is non-dynamic, that is, the management server would need to be restarted after being modified.
+
+Prior to creating the zone, ensure that the global setting: 'vmware.management.portgroup' is set to the correct management network for ESXi hosts. 
 
 Zone creation
 ~~~~~~~~~~~~~
@@ -219,3 +221,9 @@ To enable CKS clusters on NSX networks respective default network offerings have
 When deploying CKS clusters, it is possible to either select a pre-existing network or allow CloudStack create a new network for the cluster during the deployment. If one chooses the latter means of cluster deployment on a NSX-based environment, it would be needed that the 'cloud.kubernetes.cluster.network.offering' global setting be updated to point to either the default offerings or the appropriate NSX-based offering created. 
 
 All the network resources required by the CKS cluster such as load balancer, firewall rules, port forwarding rules, etc., will be created on and provided by NSX. 
+
+Additional Notes 
+~~~~~~~~~~~~~~~~~
+
+- Ports 67-68 need to be manually opened for network tiers of VPCs created in NSX based zones with default_deny ACL for DHCP to work as expected. 
+- When creating routed VPC networks in NSX-enabled zones, ensure that no 2 VPCs use the same CIDR, to prevent IP conflicts upstream (BGP). 
