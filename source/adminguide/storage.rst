@@ -987,10 +987,6 @@ Following is the example for checkVolume API usage and the result in the volume 
 
    [root@mgmt]# cmk check volume id=55937826-2f08-414a-9eef-4c6b7d6fd3b1 repair=leaks
    {
-     "jobid": "aaa6f348-cbbd-4ead-bea3-97114ab22351"
-   }
-   [root@mgmt]# cmk query asyncjobresult jobid=aaa6f348-cbbd-4ead-bea3-97114ab22351
-   {
    .
    .
    "volumecheckresult": {
