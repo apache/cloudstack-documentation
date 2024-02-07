@@ -136,8 +136,9 @@ To create an Instance from a Template:
 #. Select a Template or ISO. For more information about how the Templates came
    to be in this list, see `*Working with Templates* <templates.html>`_.
 
-#. Be sure that the hardware you have allows starting the selected
-   service offering.
+#. Select a service offering. Be sure that the hardware you have allows starting the selected
+   service offering. If the selected template has a tag associated with it
+   then only supported service offerings will be available for the selection.
 
 #. Select a disk offering.
 
