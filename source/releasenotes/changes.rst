@@ -32,8 +32,6 @@ to track its issues.
 +-------------------------+----------+-------------------------------------------------------+
 | 4.19.0.0                | `#8539`_ | ui: fix create k8s cluster networks listing           |
 +-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8241`_ | Veeam: Support Veeam 11 and 12                        |
-+-------------------------+----------+-------------------------------------------------------+
 | 4.19.0.0                | `#8394`_ | CleanUp Async Jobs after mgmt server maintenance      |
 +-------------------------+----------+-------------------------------------------------------+
 | 4.19.0.0                | `#8529`_ | Use project version on pom dependencies               |
@@ -642,11 +640,10 @@ to track its issues.
 | 4.19.0.0                | `#7892`_ | Fix listLoadBalancerRuleInstances api call            |
 +-------------------------+----------+-------------------------------------------------------+
 
-259 Issues listed
+258 Issues listed
 
 .. _`#8547`: https://github.com/apache/cloudstack/pull/8547
 .. _`#8539`: https://github.com/apache/cloudstack/pull/8539
-.. _`#8241`: https://github.com/apache/cloudstack/pull/8241
 .. _`#8394`: https://github.com/apache/cloudstack/pull/8394
 .. _`#8529`: https://github.com/apache/cloudstack/pull/8529
 .. _`#8519`: https://github.com/apache/cloudstack/pull/8519
