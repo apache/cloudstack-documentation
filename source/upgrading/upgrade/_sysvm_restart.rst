@@ -64,12 +64,12 @@ Following matrix lists the versions of CloudStack that support live patching.
          +---------------------+-------------------------+--------------------------------+------------------------------------------+
          | **ACS Version**     |  **Upgrade Version**    |   **Live Patching Support**    |     **Reason / Comment**                 |
          +---------------------+-------------------------+--------------------------------+------------------------------------------+
-         | <=4.13              | 4.17+                   |  No                            | Update in the openJDK version            |
+         | <=4.15              | 4.20+                   |  No                            | Debian 10 (buster) is EOL on 2024-06-30  |
          +---------------------+-------------------------+--------------------------------+------------------------------------------+
-         | 4.14                | 4.17+                   |Yes                             | May notice some issue with remove access |
-         |                     |                         |                                | VPN due to older version of Strongswan   |
+         | >=4.16              | 4.19                    | Yes                            |       N/A                                |
          +---------------------+-------------------------+--------------------------------+------------------------------------------+
-         | >=4.15              | 4.17+                   |Yes                             |       N/A                                |
+         | >=4.16              | 4.20                    | Yes                            | May notice some issues due to the Debian |
+         |                     |                         |                                | upgrade from 11(bullseye) to 12(bookworm)|
          +---------------------+-------------------------+--------------------------------+------------------------------------------+
 
 In addition to the support for live patching, users still have the facility to follow the legacy workflow
