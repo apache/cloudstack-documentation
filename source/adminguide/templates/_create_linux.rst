@@ -35,7 +35,7 @@ An overview of the procedure is as follow:
 #. Create an Instance with this ISO.
 
    For more information, see `“Creating
-   Instnaces” <virtual_machines.html#creating-instances>`_.
+   Instances” <virtual_machines.html#creating-instances>`_.
 
 #. Prepare the Linux Instance
 
