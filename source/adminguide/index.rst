@@ -132,6 +132,13 @@ Working with Usage
 
    usage
 
+Managing VM and Volume Allocation
+---------------------------------
+
+.. toctree::
+   :maxdepth: 4
+
+   host_and_storage_tags
 
 Managing Networks and Traffic
 -----------------------------
