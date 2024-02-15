@@ -30,12 +30,12 @@ An overview of the procedure is as follow:
 #. Upload your Linux ISO.
 
    For more information, see `“Adding an
-   ISO” <virtual_machines.html#adding-an-iso>`_.
+   ISO” <templates.html#adding-an-iso>`_.
 
 #. Create an Instance with this ISO.
 
    For more information, see `“Creating
-   VMs” <virtual_machines.html#creating-instances>`_.
+   Instnaces” <virtual_machines.html#creating-instances>`_.
 
 #. Prepare the Linux Instance
 
