@@ -38,7 +38,7 @@ An overview of the procedure is as follows:
 #. Create an instance with this ISO.
 
    For more information, see `“Creating
-   instances” <virtual_machines.html#creating-vms>`_.
+   instances” <virtual_machines.html#creating-instances>`_.
 
 #. Follow the steps in Sysprep for Windows Server 2008 R2 (below) or
    Sysprep for Windows Server 2003 R2, depending on your version of
