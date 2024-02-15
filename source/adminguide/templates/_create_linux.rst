@@ -30,19 +30,19 @@ An overview of the procedure is as follow:
 #. Upload your Linux ISO.
 
    For more information, see `“Adding an
-   ISO” <virtual_machines.html#adding-an-iso>`_.
+   ISO” <templates.html#adding-an-iso>`_.
 
 #. Create an Instance with this ISO.
 
    For more information, see `“Creating
-   VMs” <virtual_machines.html#creating-vms>`_.
+   Instances” <virtual_machines.html#creating-instances>`_.
 
 #. Prepare the Linux Instance
 
 #. Create a Template from the Instance.
 
    For more information, see `“Creating a Template from an Existing 
-   Instance” <#creating-a-template-from-an-existing-virtual-machine>`_.
+   Instance” <#creating-a-template-from-an-existing-instance>`_.
 
 
 System preparation for Linux
@@ -114,25 +114,25 @@ templating of Centos and Ubuntu.
 	 
    User password management and reset cappabilities in GUI are available with:
    
-   *  `Cloud-init integration <_cloud_init.html#linux-with-cloud-init>`_
-   *  `Adding Password Management to Your Templates <_password.html#adding-password-management-to-templates>`_ /Legacy for non systemd systems only/
+   *  `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_
+   *  `Adding Password Management to Your Templates <templates.html#adding-password-management-to-templates>`_ /Legacy for non systemd systems only/
 	 
 #. **SSH keys management**
 
    Cloudstack can create key pair and push certificates to Instances. This feature is available with:
    
-   *  `Cloud-init integration <_cloud_init.html#linux-with-cloud-init>`_
+   *  `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_
    *  `Implementing a SSH-Key bash script <http://docs.cloudstack.apache.org/en/latest/adminguide/virtual_machines.html#creating-an-instance-template-that-supports-ssh-keys>`_   
 	 
 #. **Partition management**
 	
    Volumes can autorextend after reboot when partition is extended in the GUI.
-   This feature is possible with `Cloud-init integration <_cloud_init.html#linux-with-cloud-init>`_.
+   This feature is possible with `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_.
    
 #. **User-data**
 	
    Cloudstack can push user-data during Instance creation.
-   This feature is possible with `Cloud-init integration <_cloud_init.html#linux-with-cloud-init>`_.
+   This feature is possible with `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_.
 	
 #. **Template cleanup**
     
@@ -214,4 +214,4 @@ templating of Centos and Ubuntu.
 
    You are now ready to create the Final Template, for more information see
    `“Creating a Template from an Existing Virtual
-   Machine” <#creating-a-template-from-an-existing-virtual-machine>`_.
+   Machine” <#creating-a-template-from-an-existing-instance>`_.
