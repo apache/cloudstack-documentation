@@ -36,6 +36,12 @@ agent.zip and cloud-scripts.tgz and restart the services that are present in the
 in the System VMs.
 
 .. note::
+   The System VM template has been upgrade to Debian 12.x in Apache CloudStack 4.20.0.0.
+   Due to it, the memory size of default system offerings has been changed to 512 MiB.
+   If you use custom system offerings, please check the memory size of the offerings.
+   If memory size is small (for example 256 MiB), the System VMs and virtual routers might have the "kernel panic" issue on boot.
+
+.. note::
 
    The following services will be restarted once a system VM is live patched:
 
