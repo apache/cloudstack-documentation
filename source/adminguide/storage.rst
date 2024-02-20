@@ -967,7 +967,7 @@ Check and repair Volume
 
 When there are any leaks or any inconsistencies in the volume, then the checkVolume API can be used to
 check any such errors in the volume and helps in repairing. This feature is currently available only
-for KVM. This API uses "qemu-img check" command on the KVM host.
+for KVM and volumes with QCOW2 format. This API uses "qemu-img check" command on the KVM host.
 
 Also a global or storage pool level setting "volume.check.and.repair.leaks.before.use" is available which allows
 to do a check and repair leaks operation for the volume during instance start and volume attach operations.
