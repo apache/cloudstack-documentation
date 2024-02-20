@@ -966,12 +966,12 @@ Check and repair Volume
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When there are any leaks or any inconsistencies in the volume, then the checkVolume API can be used to
-check any such errors in the volume and helps in repairing. This feature is currently available only
+check for any such errors in the volume and helps in repairing them. This feature is currently available only
 for KVM and volumes with QCOW2 format. This API uses "qemu-img check" command on the KVM host.
 
-Also a global or storage pool level setting "volume.check.and.repair.leaks.before.use" is available which allows
-to do a check and repair leaks operation for the volume during instance start and volume attach operations.
-This will help in repairing any leaks for the volume before using it. This is a blocking operations, meaning
+Also, a global or storage pool level setting "volume.check.and.repair.leaks.before.use" is available which allows
+to check and repair any leaks of the volume during instance start and volume attach operations.
+This will help in repairing any leaks of the volume before using it. This is a blocking operation, meaning
 instance start or volume attach will be performed only after the check and repair operation is completed.
 The setting helps in defining whether to allow this operation or not.
 
