@@ -17,6 +17,15 @@
 General Upgrade Notes
 =====================
 
+Java version upgraded to Java 17
+---------------------------------
+
+As of Apache CloudStack 4.20, support for running with Java 17 has been added.
+In later versions, support for Java 11 will be removed.
+
+
+.. include:: _java_version.rst
+
 
 Java version upgraded to Java 11
 ---------------------------------
