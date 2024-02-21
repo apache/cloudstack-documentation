@@ -45,15 +45,16 @@ in the System VMs.
 
    The following services will be restarted once a system VM is live patched:
 
-            +---------------------+-------------------------------+
-            | **System VM**       |         **Services**          |
-            +---------------------+-------------------------------+
-            | SSVM                | cloud, apache2, portmap       |
-            +---------------------+-------------------------------+
-            | CPVM                | cloud                         |
-            +---------------------+-------------------------------+
-            | VRs                 | haproxy, apache2, dnsmasq     |
-            +---------------------+-------------------------------+
+            +---------------------+-------------------------------+---------------------------------------------------+
+            | **System VM**       |         **Services**          |  **Note**                                         |
+            +---------------------+-------------------------------+---------------------------------------------------+
+            | SSVM                | cloud, apache2, portmap       |                                                   |
+            +---------------------+-------------------------------+---------------------------------------------------+
+            | CPVM                | cloud                         |                                                   |
+            +---------------------+-------------------------------+---------------------------------------------------+
+            | VRs                 | haproxy, apache2, dnsmasq     | Please set setting `minreq.sysvmtemplate.version` |
+            |                     |                               | to proper value before live-patching              |
+            +---------------------+-------------------------------+---------------------------------------------------+
 
    With respect to VRs, a Network restart without cleanup is initiated to during live patching to ensure all rules
    are re-applied. 
