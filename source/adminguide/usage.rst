@@ -267,8 +267,8 @@ The administrator can also set limits for specific tagged host and storage
 resources for an account or domain. Such tags must be specified in the following
 global settings:
 
-- resource.limit.host.tags -  A comma-separated list of tags for host resource limits. It applies to resource types - User VM, CPU, Memory.
-- resource.limit.storage.tags - A comma-separated list of tags for storage resource limits. It applies to resource types - Volume, Primary storage.
+- `resource.limit.host.tags` -  A comma-separated list of tags for host resource limits. It applies to resource types - User VM, CPU, Memory.
+- `resource.limit.storage.tags` - A comma-separated list of tags for storage resource limits. It applies to resource types - Volume, Primary storage.
 
 The limits for tagged resources are a subset of the overall limits and the maximum
 can be the value of the overall limit for the particular resource type.
