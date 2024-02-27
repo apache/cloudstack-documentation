@@ -268,6 +268,9 @@ To upload a Template:
             selecting an OS Type when registering a Template if the option 'Read Instance settings from OVA' is selected. In this case, the OS Type is
             obtained from the Template after it is registered.
 
+   -  **Tag**: The tag for the template. This tag can be used with host tags to
+      allow deployment of Instances on specific hosts.
+
    -  **Userdata**: The registered Userdata are listed. Select the
       desired one.
 
