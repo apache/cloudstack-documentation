@@ -276,7 +276,7 @@ can be the value of the overall limit for the particular resource type.
 |accountlimits.png|
 
 The administrator can view used and available capacity of such tagged resource
-alongwith the overall capacities in the zone and cluster view in the UI.
+along with the overall capacities in the zone and cluster view in the UI.
 
 |zonecapacities.png|
 
