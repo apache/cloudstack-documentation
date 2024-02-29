@@ -43,7 +43,7 @@ In the UI, webhooks can be managed under *Tools > Webhhooks* menu.
 
 
 Creating a webhook
-------------------
+~~~~~~~~~~~~~~~~~~
 
 Any CloudStack user having createWebhook API access can create a new webhook
 for the event notifications.
@@ -94,7 +94,7 @@ To create a webhook:
 
 
 Working with webhook deliveries
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 CloudStack attempts webhook deliveries using a thread pool with given retries.
 The following global configuration can be used to configure thread pool size
