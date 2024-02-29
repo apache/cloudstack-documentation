@@ -157,8 +157,8 @@ as the payload. The following custom headers are sent with the request:
 
 
 .. |webhooks.png| image:: /_static/images/webhooks.png
-.. |create-webhooks.png| image:: /_static/images/create-webhooks.png
-.. |webhook-deliveries.png| image:: /_static/images/sysmanager.png
+.. |create-webhook.png| image:: /_static/images/create-webhook.png
+.. |webhook-deliveries.png| image:: /_static/images/webhook-deliveries.png
 
 
 

@@ -371,7 +371,4 @@ Procedure
 Webhooks
 --------
 
-.. toctree::
-   :maxdepth: 2
-
-   webhooks
+.. include:: events/webhooks.rst
