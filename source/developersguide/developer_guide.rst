@@ -348,7 +348,7 @@ also developed that maps the GCE REST API to the CloudStack API
 described here. The API
 `docs <https://cloudstack.apache.org/api.html>`__ are a good start to
 learn the extent of the API. Multiple clients exist on
-`github <https://github.com/search?q=cloudstack+client&ref=cmdform>`__
+`GitHub <https://github.com/search?q=cloudstack+client&ref=cmdform>`__
 to use this API, you should be able to find one in your favorite
 language. The reference documentation for the API and changes that might
 occur from version to version is availble
@@ -478,7 +478,7 @@ and the signature. Then do an http GET:
       }
    }
 
-All the clients that you will find on github will implement this
+All the clients that you will find on GitHub will implement this
 signature technique, you should not have to do it by hand. Now that you
 have explored the API through the UI and that you understand how to make
 low level calls, pick your favorite client of use

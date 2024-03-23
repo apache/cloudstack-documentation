@@ -632,7 +632,7 @@ Using OAuth2 Authentication For Users
 
 OAuth2, the industry-standard authorization or authentication framework, simplifies the process of
 granting access to resources. CloudStack supports OAuth2 authentication wherein users can login into
-CloudStack without using username and password. CloudStack currently supports Google and Github providers.
+CloudStack without using username and password. CloudStack currently supports Google and GitHub providers.
 Other OAuth2 providers can be easily integrated with CloudStack using its plugin framework.
 
 For admins, the following are the settings available at global level to configure OAuth2.
@@ -671,7 +671,7 @@ To register the OAuth provider client ID, redirect URI, secret key have to provi
 OAuth 2.0 has to be first configured in the corresponding provider to obtain the client ID, redirect URI, secret Key.
 
 For Google, please follow the instructions mentioned here `"Setting up OAuth 2.0 in Google" <https://support.google.com/cloud/answer/6158849?hl=en>`_.
-For Github, please follow the instructions mentioned here `"Setting up OAuth 2.0 in Github" <https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app>`_.
+For GitHub, please follow the instructions mentioned here `"Setting up OAuth 2.0 in GitHub" <https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app>`_.
 
 In any OAuth 2.0 configuration admin has to use the redirect URI "http://<management server IP>:<port>/#/verifyOauth"
 
