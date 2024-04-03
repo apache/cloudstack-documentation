@@ -1701,7 +1701,7 @@ zone:
    -  Path. The path to the zone's Secondary Staging Store.
 
 
-Adding Object Storage
+Add Object Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can add  object storage pools at any time to add more capacity or providers to CloudStack
