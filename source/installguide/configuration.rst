@@ -407,6 +407,9 @@ Basic Zone Configuration
 #. In a new zone, CloudStack adds the first pod for you. You can always
    add more pods later. For an overview of what a pod is, see :ref:`about-pods`
 
+.. note::
+   The network described below must be a subnet of the physical network marked as type "management".
+
    To configure the first pod, enter the following, then click Next:
 
    -  **Pod Name.** A name for the pod.
@@ -601,6 +604,9 @@ Core Zone
 
 #. In a new zone, CloudStack adds the first pod for you. You can always
    add more pods later. For an overview of what a pod is, see :ref:`about-pods`
+
+.. note::
+   The network described below must be a subnet of the physical network marked as type "management".
 
    To configure the first pod, enter the following, then click Next:
 
@@ -849,6 +855,9 @@ can add more pods at any time using the procedure in this section.
       network that CloudStack uses to manage various system VMs, such as
       Secondary Storage VMs, Console Proxy VMs, and DHCP. For more
       information, see System Reserved IP Addresses.
+
+.. note::
+   * The network described above must be a subnet of the management network.
 
 #. Click OK.
 
