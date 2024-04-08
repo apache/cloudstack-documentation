@@ -962,6 +962,54 @@ Bytes read/write, as well as the total IO/s, are exposed via UI, as shown in the
 These statistics are obtained from the hypervisor directly and they represent
 "current" bytes/s and IO/s values at the time of collection.
 
+Check and repair Volume
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When there are any leaks or any inconsistencies in the volume, then the checkVolume API can be used to
+check for any such errors in the volume and helps in repairing them. This feature is currently available only
+for KVM and volumes with QCOW2 format. This API uses "qemu-img check" command on the KVM host.
+
+Also, a global or storage pool level setting "volume.check.and.repair.leaks.before.use" is available which allows
+to check and repair any leaks of the volume during instance start and volume attach operations.
+This will help in repairing any leaks of the volume before using it. This is a blocking operation, meaning
+instance start or volume attach will be performed only after the check and repair operation is completed.
+The setting helps in defining whether to allow this operation or not.
+
+checkVolume API takes two parameters as input
+
+-  "id" for the volume UUID
+
+-  "repair" an optional parameter whether to repair the volume or not. Parameter takes "leaks" or "all" as the input.
+
+Following is the example for checkVolume API usage and the result in the volume response.
+
+.. code:: bash
+
+   [root@mgmt]# cmk check volume id=55937826-2f08-414a-9eef-4c6b7d6fd3b1 repair=leaks
+   {
+   .
+   .
+   "volumecheckresult": {
+   "allocated-clusters": "110",
+   "check-errors": "0",
+   "leaks": 73,
+   "filename": "/mnt/e72364b6-eab0-369f-af0b-2ec8bed9d8ac/55937826-2f08-414a-9eef-4c6b7d6fd3b1",
+   "format": "qcow2",
+   "fragmented-clusters": "32",
+   "image-end-offset": "7995392",
+   "total-clusters": "131072"
+   },
+   "volumerepairresult": {
+   "allocated-clusters": "110",
+   "check-errors": "0",
+   "leaks-fixed": 73,
+   "filename": "/mnt/e72364b6-eab0-369f-af0b-2ec8bed9d8ac/55937826-2f08-414a-9eef-4c6b7d6fd3b1",
+   "format": "qcow2",
+   "fragmented-clusters": "32",
+   "image-end-offset": "7995392",
+   "total-clusters": "131072"
+   },
+   }
 
 Working with Volume Snapshots
 -----------------------------
