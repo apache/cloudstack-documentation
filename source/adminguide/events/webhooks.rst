@@ -90,7 +90,7 @@ To create a webhook:
    -  **Enabled**. To specify whether the webhook be created with enabled or
       disabled state
 
-   |create-webhooks.png|
+   |create-webhook.png|
 
 
 Working with webhook deliveries
