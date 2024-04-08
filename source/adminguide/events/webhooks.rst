@@ -114,6 +114,13 @@ configurations:
    - **webhook.delivery.timeout**: Wait timeout (in seconds) for a webhook
      delivery attempt.
 
+.. note::
+   The onus of dealing with the duplicate event deliveries lies with the payload
+   server or application. During delivery, when the server doesn't respond in a
+   timely manner or returns a failure CloudStack will re-attempt the delivery of
+   the event, based on the above global settings, irrespective of the fact whether
+   the server already received the event in any previous attempts.
+
 
 CloudStack allows retrieving recent deliveries for a webhook with details such
 as event, headers, payload, respose, success, duration, etc.
