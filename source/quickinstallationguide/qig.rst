@@ -730,6 +730,9 @@ will assign IPs from this range to system VMs. This will also be part of our loc
 
 #. End Reserved system IP - we will use ``172.16.10.30`` # (or e.g. 192.168.1.30)
 
+.. note::
+   * The network described above must be a subnet of the management network.
+
 Click "Next" to continue.
 
 Guest Traffic
