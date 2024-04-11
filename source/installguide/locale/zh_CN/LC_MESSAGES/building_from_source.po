@@ -561,10 +561,10 @@ msgstr "由于这些模块需要的依赖项不能和CloudStack一起发行，�
 #: ../../building_from_source.rst:446
 msgid ""
 "You may also need to download `vhd-util "
-"<http://download.cloud.com.s3.amazonaws.com/tools/vhd-util>`_, which was "
+"<https://download.cloudstack.org/tools/vhd-util>`_, which was "
 "removed due to licensing issues. You'll copy vhd-util to the "
 "``scripts/vm/hypervisor/xenserver/`` directory."
-msgstr "你可能还需要下载`vhd-util <http://download.cloud.com.s3.amazonaws.com/tools/vhd-util>`_, 也是由于授权问题而被移除。 复制vhd-util到该目录： ``scripts/vm/hypervisor/xenserver/``."
+msgstr "你可能还需要下载`vhd-util <https://download.cloudstack.org/tools/vhd-util>`_, 也是由于授权问题而被移除。 复制vhd-util到该目录： ``scripts/vm/hypervisor/xenserver/``."
 
 # bfbd7215ff0345f183a7946f620b1368
 #: ../../building_from_source.rst:451
