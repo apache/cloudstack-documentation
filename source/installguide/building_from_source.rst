@@ -568,7 +568,7 @@ to build from source.
    page on the wiki.
 
 #. You may also need to download
-   `vhd-util <http://download.cloud.com.s3.amazonaws.com/tools/vhd-util>`_,
+   `vhd-util <https://download.cloudstack.org/tools/>`_,
    which was removed due to licensing issues. You'll copy vhd-util to
    the ``scripts/vm/hypervisor/xenserver/`` directory.
 
