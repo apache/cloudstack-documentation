@@ -418,7 +418,7 @@ msgstr ""
 
 #: ../../building_from_source.rst:446
 # d9d9d34be2604c18a3b9107dbf384181
-msgid "You may also need to download `vhd-util <http://download.cloud.com.s3.amazonaws.com/tools/vhd-util>`_, which was removed due to licensing issues. You'll copy vhd-util to the ``scripts/vm/hypervisor/xenserver/`` directory."
+msgid "You may also need to download `vhd-util <https://download.cloudstack.org/tools/vhd-util>`_, which was removed due to licensing issues. You'll copy vhd-util to the ``scripts/vm/hypervisor/xenserver/`` directory."
 msgstr ""
 
 #: ../../building_from_source.rst:451
