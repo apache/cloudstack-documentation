@@ -205,7 +205,7 @@ msgstr ""
 #: ../../source/rnotes.rst:1256 ../../source/rnotes.rst:1674
 #: ../../source/rnotes.rst:2499
 msgid ""
-"URL: http://download.cloud.com/templates/4.3/systemvm64template-2014-01-14"
+"URL: http://download.cloudstack.org/templates/4.3/systemvm64template-2014-01-14"
 "-master-xen.vhd.bz2"
 msgstr ""
 
@@ -426,7 +426,7 @@ msgstr ""
 #: ../../source/rnotes.rst:1281 ../../source/rnotes.rst:1700
 #: ../../source/rnotes.rst:2524
 msgid ""
-"URL: http://download.cloud.com/templates/4.3/systemvm64template-2014-01-14"
+"URL: http://download.cloudstack.org/templates/4.3/systemvm64template-2014-01-14"
 "-master-kvm.qcow2.bz2"
 msgstr ""
 
@@ -494,7 +494,7 @@ msgstr ""
 #: ../../source/rnotes.rst:1306 ../../source/rnotes.rst:1726
 #: ../../source/rnotes.rst:2549
 msgid ""
-"URL: http://download.cloud.com/templates/4.3/systemvm64template-2014-01-14"
+"URL: http://download.cloudstack.org/templates/4.3/systemvm64template-2014-01-14"
 "-master-vmware.ova"
 msgstr ""
 
@@ -2163,7 +2163,7 @@ msgstr ""
 msgid ""
 "If you are using version 2.2.0 - 2.2.13, first upgrade to 2.2.14 by using "
 "the instructions in the `2.2.14 Release Notes "
-"<http://download.cloud.com/releases/2.2.0/CloudStack2.2.14ReleaseNotes.pdf>`__."
+"<http://download.cloudstack.org/releases/2.2.0/CloudStack2.2.14ReleaseNotes.pdf>`__."
 msgstr ""
 
 # 43af6a2f821148dc933817dda7004642

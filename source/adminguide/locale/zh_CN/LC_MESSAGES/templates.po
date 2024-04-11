@@ -1487,10 +1487,10 @@ msgstr "下载cloud-set-guest-password脚本文件："
 # 7dfc38f9a99c4d0bbb5007329350693e
 #: ../../templates.rst:1039
 msgid ""
-"`http://download.cloud.com/templates/4.2/bindir/cloud-set-guest-password.in "
-"<http://download.cloud.com/templates/4.2/bindir/cloud-set-guest-"
+"`http://download.cloudstack.org/templates/4.2/bindir/cloud-set-guest-password.in "
+"<http://download.cloudstack.org/templates/4.2/bindir/cloud-set-guest-"
 "password.in>`_"
-msgstr "`http://download.cloud.com/templates/4.2/bindir/cloud-set-guest-password.in <http://download.cloud.com/templates/4.2/bindir/cloud-set-guest-password.in>`_"
+msgstr "`http://download.cloudstack.org/templates/4.2/bindir/cloud-set-guest-password.in <http://download.cloudstack.org/templates/4.2/bindir/cloud-set-guest-password.in>`_"
 
 # 6eead5e6602446c78f65d37e092b049f
 #: ../../templates.rst:1042

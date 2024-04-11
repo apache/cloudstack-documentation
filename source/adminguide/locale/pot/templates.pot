@@ -1160,7 +1160,7 @@ msgstr ""
 
 #: ../../templates.rst:1039
 # 7dfc38f9a99c4d0bbb5007329350693e
-msgid "`http://download.cloud.com/templates/4.2/bindir/cloud-set-guest-password.in <http://download.cloud.com/templates/4.2/bindir/cloud-set-guest-password.in>`_"
+msgid "`http://download.cloudstack.org/templates/4.2/bindir/cloud-set-guest-password.in <http://download.cloudstack.org/templates/4.2/bindir/cloud-set-guest-password.in>`_"
 msgstr ""
 
 #: ../../templates.rst:1042

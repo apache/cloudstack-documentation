@@ -197,18 +197,18 @@ CSP functionality is already present in XenServer 6.1
 
    For XenServer 6.0.2:
 
-   `http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz 
-   <http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz>`_
+   `http://download.cloudstack.org/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz
+   <http://download.cloudstack.org/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz>`_
 
    For XenServer 5.6 SP2:
 
-   `http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz 
-   <http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz>`_
+   `http://download.cloudstack.org/releases/2.2.0/xenserver-cloud-supp.tgz
+   <http://download.cloudstack.org/releases/2.2.0/xenserver-cloud-supp.tgz>`_
 
    For XenServer 6.0:
 
-   `http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz 
-   <http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz>`_
+   `http://download.cloudstack.org/releases/3.0/xenserver-cloud-supp.tgz
+   <http://download.cloudstack.org/releases/3.0/xenserver-cloud-supp.tgz>`_
 
  
 #. Extract the file:

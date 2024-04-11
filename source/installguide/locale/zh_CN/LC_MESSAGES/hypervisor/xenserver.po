@@ -302,10 +302,10 @@ msgstr "适用于XenServer 6.0.2："
 # c7d858231a3142109c09bfcc3340078b
 #: ../../hypervisor/xenserver.rst:193
 msgid ""
-"`http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz "
-"<http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-"
+"`http://download.cloudstack.org/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz "
+"<http://download.cloudstack.org/releases/3.0.1/XS-6.0.2/xenserver-cloud-"
 "supp.tgz>`_"
-msgstr "`http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz>`_"
+msgstr "`http://download.cloudstack.org/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz <http://download.cloudstack.org/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz>`_"
 
 # 2cbbc4bcdcdd42d0816a6b2df748a0d6
 #: ../../hypervisor/xenserver.rst:196
@@ -315,9 +315,9 @@ msgstr "适用于XenServer 5.6 SP2:"
 # beac106ea20e420cae0ca5acb450646b
 #: ../../hypervisor/xenserver.rst:198
 msgid ""
-"`http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz "
-"<http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz>`_"
-msgstr "`http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz>`_"
+"`http://download.cloudstack.org/releases/2.2.0/xenserver-cloud-supp.tgz "
+"<http://download.cloudstack.org/releases/2.2.0/xenserver-cloud-supp.tgz>`_"
+msgstr "`http://download.cloudstack.org/releases/2.2.0/xenserver-cloud-supp.tgz <http://download.cloudstack.org/releases/2.2.0/xenserver-cloud-supp.tgz>`_"
 
 # 62cd9713906c45dc96254605c7134b11
 #: ../../hypervisor/xenserver.rst:201
@@ -327,9 +327,9 @@ msgstr "适用于XenServer 6.0:"
 # 998fd323b14c42149cc6633f4df39b83
 #: ../../hypervisor/xenserver.rst:203
 msgid ""
-"`http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz "
-"<http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz>`_"
-msgstr "`http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz>`_"
+"`http://download.cloudstack.org/releases/3.0/xenserver-cloud-supp.tgz "
+"<http://download.cloudstack.org/releases/3.0/xenserver-cloud-supp.tgz>`_"
+msgstr "`http://download.cloudstack.org/releases/3.0/xenserver-cloud-supp.tgz <http://download.cloudstack.org/releases/3.0/xenserver-cloud-supp.tgz>`_"
 
 # 50f6122c6c5e42dbb34f5942e788bd76
 #: ../../hypervisor/xenserver.rst:207
