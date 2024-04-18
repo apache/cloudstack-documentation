@@ -23,6 +23,18 @@ Host tags
 ---------
 Host tags are responsible for directing VMs to compatible hosts. They are validated with the host tags informed in the compute offerings or in the system offerings.
 
+There are two types of host tags:
+
+- (Explicit) host tags: the host tags are managed by CloudStack. Users can set, update, and delete host tags via CloudStack API or GUI.
+- Implicit host tags: the host tags are not managed by CloudStack API.
+
+.. note::
+   Currently the implicit host tags are only configurable on KVM hosts. 
+   To set it, please add the following line to /etc/cloudstack/agent/agent.properties
+   and restart cloudstack-agent.
+
+   host.tags=<implicit host tags separated by comma>
+
 To explain the behavior of host tags, some examples will be demonstrated with two hosts (Host1 and Host2):
 
 #. Tag setup:
