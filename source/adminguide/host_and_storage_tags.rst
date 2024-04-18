@@ -25,7 +25,7 @@ Host tags are responsible for directing VMs to compatible hosts. They are valida
 
 There are two types of host tags:
 
-- (Explicit) host tags: the host tags are managed by CloudStack. Users can set, update, and delete host tags via CloudStack API or GUI.
+- (Explicit) host tags: the host tags are managed by CloudStack. Cloud operator can set, update, and delete host tags via CloudStack API or GUI.
 - Implicit host tags: the host tags are not managed by CloudStack API.
 
 .. note::
