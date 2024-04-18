@@ -30,8 +30,6 @@ since the 4.18.1.0 release. Some of the highlights include:
 The full list of fixes and improvements can be found in the project release notes at
 https://docs.cloudstack.apache.org/en/4.18.2.0/releasenotes/changes.html
 
-
-
 What's in since 4.18.1.0
 =======================
 
