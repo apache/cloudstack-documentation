@@ -14,7 +14,425 @@
    under the License.
 
 
-Changes in |release| since 4.18.0.0
+Changes in |release| since 4.18.1.0
+===================================
+
+Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/29?closed=1
+to track its issues.
+
+.. cssclass:: table-striped table-bordered table-hover
+
+
++-------------------------+----------+------------------------------------------------------------+
+| Version                 | Github   | Description                                                |
++=========================+==========+============================================================+
+| 4.18.2.0                | `#8897`_ | linstor: Do not pretend handling disconnect paths that are |
+|                         |          | non Linstor                                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8881`_ | server: fix haproxy misconfiguration after VPC VR start    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8870`_ | upgrade: add unit tests from/to a security release         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8787`_ | VPC VR: fix empty iptables if there is no vpc tier         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8735`_ | snapshot: don't schedule next snapshot job for a removed   |
+|                         |          | volume                                                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8776`_ | server: update default value of setting                    |
+|                         |          | 'expose.dns.externally' to 'false"                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8726`_ | Usage: Fixup entity exists exception                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8070`_ | Fix disk offering override in VM deployment wizard         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8030`_ | Quota tariff events                                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8616`_ | SG: fix SQL exception when add security group rule with    |
+|                         |          | allowed account/group                                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8716`_ | [UI] Allow detach ISO from instance toolbar when ISO is    |
+|                         |          | attached                                                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8719`_ | server: use ecdsa instead of ed25519 when generate         |
+|                         |          | public/private keys                                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8721`_ | UI: Fix error message in zone wizard                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8717`_ | UI: Add button to show public IPs associated with vlanid   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8300`_ | Logging improvements on migration in the VmwareResource    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8694`_ | console proxy client sleep more generic                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8709`_ | Update actions/setup-java from v3 to v4                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8655`_ | Storage plugin support to check if volume on datastore     |
+|                         |          | requires access for migration                              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8697`_ | CKS: fix /opt/bin/deploy-cloudstack-secret in CKS control  |
+|                         |          | nodes                                                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8677`_ | Fixup: Optimize getRouterHealthChecksConfig method         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8385`_ | vpc: optimize createMonitorServiceCommand() execution      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8658`_ | CKS: add kube config path in extra control nodes           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8599`_ | VR: fix issue between VPC VMs and other Public IPs in the  |
+|                         |          | same subnet as additional Public IPs                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8282`_ | kvm:  ITCO watchdog added                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8625`_ | zone wizard: allow only one untagged physical network with |
+|                         |          | guest traffic type                                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8633`_ | linstor: use relative hostname path                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8481`_ | Enable over provisioning for SharedMountPoint primary      |
+|                         |          | storages                                                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8610`_ | Linstor fix migration while node offline                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8568`_ | Fix cloudstack-ui package: bad directory permissions and   |
+|                         |          | missing WEB-INF                                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8402`_ | CKS: retry if unable to drain node or unable to upgrade    |
+|                         |          | k8s node                                                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8589`_ | UI: fix icmp code/type of ACL rule are not display if the  |
+|                         |          | value is -1                                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8560`_ | Added missing metrics English locale strings               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8549`_ | server: use ed25519 instead of rsa when generate           |
+|                         |          | public/private keys                                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8369`_ | systemvm: vncport evaluation                               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8482`_ | Change the check for the existence of `cryptsetup` command |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8570`_ | veeam: fix some issues with restoring volume from backup   |
+|                         |          | and attaching it to VM                                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8241`_ | Veeam: Support Veeam 11 and 12                             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8468`_ | UI: Add reconnect button to hosts on alert                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8426`_ | engine-schema: fix finding guestos mapping with parent     |
+|                         |          | version                                                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8370`_ | server: skip password policies check on empty password     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8383`_ | test: additional check to ensure hosts are left in up      |
+|                         |          | state                                                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8374`_ | server: fix debug message when expunge a vm                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8387`_ | server: improve stats collector logs to state what the     |
+|                         |          | collector does                                             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8380`_ | test: fix test_host_ping.py to restore original host state |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8316`_ | CKS: create Security Groups for CKS clusters of each       |
+|                         |          | account                                                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8252`_ | kvm: Add support for cgroupv2                              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8107`_ | Handle errors while scaling kubernetes cluster             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8171`_ | server: fix resource count during assign volume            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8135`_ | server: fix diskoffering details in vm response            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8258`_ | Acl export acls with proper tags encoding                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8297`_ | CKS: create HA cluster with 3 control VMs instead 2        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8327`_ | ui: add action to declare/cancel host as degraded          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8296`_ | CKS: update imagePullPolicy to IfNotPresent in yaml files  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8319`_ | linstor: Fix possible NPE if Linstor storage-pool data     |
+|                         |          | missing                                                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8233`_ | Add lock mechanism considering template id, pool id, host  |
+|                         |          | id in PowerFlex Storage                                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#7923`_ | kvm: fix error when enable SSL for kvm agent               |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8247`_ | kvm: fix ide controller for rocky/alma vms                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8305`_ | ui: change ipaddress tab label for shared networks         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8268`_ | Initial vpnuser state                                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8275`_ | UI: Removed redundant IP Address Column                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8253`_ | UI: Removed redundant input fields from ACL List rules     |
+|                         |          | modal                                                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8204`_ | server: check if there are active nics before network GC   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#7082`_ | allow filtering of listDiskOffering and                    |
+|                         |          | listServiceOffering APIs by account or project             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8191`_ | Fix typo in ssvm check script                              |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8202`_ | Clear pool id if volume allocation fails                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8248`_ | Fixed spelling and added missing states to response        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8228`_ | Let Prometheus exporter plugin support utf8 characters     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8115`_ | Fix deploy as is VM start after template deletion          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8213`_ | UI: fix scale vm if first disk offering is dymamic         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8142`_ | edge-zone,kvm,iso,cks: allow k8s deployment with           |
+|                         |          | direct-download iso                                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#7545`_ | updated the api documentation for createNetworkOffering    |
+|                         |          | and updateNetworkOffering                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8173`_ | make sure vmware adapter detail for nic is passed during   |
+|                         |          | registering template                                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8122`_ | Advanced SG: allow create/update physical networks with    |
+|                         |          | vlan range                                                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8193`_ | ui: Admin, account and project dashboard improvements      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8085`_ | Fix: Select another pod if all hosts in the pod becomes    |
+|                         |          | unavailable                                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8182`_ | CKS: fix wrong format of cluster size on UI                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8049`_ | Fix KVM cloudstack-agent start if there is vm not managed  |
+|                         |          | by cloudstack on the host                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8089`_ | Fix failure on agent reconnection                          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8117`_ | Create snapshot from VM snapshot without memory for        |
+|                         |          | NFS/Local storage                                          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8081`_ | Fix EULA section while parsing OVF file                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8072`_ | UI: Fix deploy VM wizard vApp properties                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#7859`_ | server: set Default NIC when VM has no default NIC         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8118`_ | ui: fix bulk delete template from zones                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8096`_ | marvin,test: fix directdownload template checksum test     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8119`_ | ui: correctly show volume physical size                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8114`_ | linstor: fix template copy on non hyperconverged setups    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8104`_ | test: add test for standalone snapshot                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8101`_ | Fix VM snapshot size during storage capacity check         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8057`_ | Fix UUID for child datastores in all cases                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8082`_ | linstor: Fix template volume missing on copy node          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8097`_ | test,refactor: fix test_project_resources cleanup          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8093`_ | kvm: fix direct download template size                     |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8019`_ | Update pom.xml reflections version                         |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#7606`_ | vm-import: fix stopped managed vms listing in unmanaged    |
+|                         |          | instances                                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8066`_ | Fix NPE if global setting implicit.host.tags is set to     |
+|                         |          | null                                                       |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8062`_ | storage: allow VM snapshots without memory for KVM when    |
+|                         |          | global setting allows                                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8075`_ | ui: update vm deploy form iso label                        |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8065`_ | Fix non admin logouts                                      |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8058`_ | .github: run Sonar Check only on PRs from                  |
+|                         |          | apache/cloudstack branches                                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#7731`_ | Default value of force should be false for template delete |
+|                         |          | operation                                                  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8048`_ | systemvm: remove config in /etc/pam.d/systemd-user to fix  |
+|                         |          | user@0.service                                             |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8029`_ | Improve template download error message                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8025`_ | Ensure getCapacityState() is not called for hosts in       |
+|                         |          | maintenance                                                |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8041`_ | Fix: Convert volume to another directory instead of        |
+|                         |          | copying it while taking volume snapshots on KVM            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#7953`_ | systemvm: check if patchfile exists and is valid tarball   |
+|                         |          | before patching                                            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8020`_ | server: fix mysql error when list Shared templates for     |
+|                         |          | projects                                                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#7952`_ | linstor: resize root disk on offerings with different size |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#7983`_ | cleanup: remove unused class                               |
+|                         |          | org.apache.cloudstack.network.NetworkOrchestrator          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8002`_ | fix: cleanup directory if empty after removal of snapshot  |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#7948`_ | Use direct download timeout configs for URL check during   |
+|                         |          | registerTemplate                                           |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#7982`_ | VR: remove apache2 config for removed VPC tiers            |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#8001`_ | fix units labels for max storage of volume                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#7972`_ | Fix 2FA becoming enabled when the user inputs the wrong    |
+|                         |          | code during setup                                          |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#7958`_ | VR live patching: Allow live patch of VPC VRs even if      |
+|                         |          | networks are in allocated / shutdown state                 |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#7878`_ | Publish event for VM.STOP when out of band stop is         |
+|                         |          | detected                                                   |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#7915`_ | ldap trust map cleanup on domain delete                    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#7959`_ | upgrade: fix upgrade from 4.18.1.0 to 4.18.2.0-SNAPSHOT    |
++-------------------------+----------+------------------------------------------------------------+
+| 4.18.2.0                | `#7955`_ | Increase reserve on ScaleIO disk formatting for            |
+|                         |          | fragmentation                                              |
++-------------------------+----------+------------------------------------------------------------+
+
+118 Issues listed
+
+.. _`#8897`: https://github.com/apache/cloudstack/pull/8897 
+.. _`#8881`: https://github.com/apache/cloudstack/pull/8881 
+.. _`#8870`: https://github.com/apache/cloudstack/pull/8870 
+.. _`#8787`: https://github.com/apache/cloudstack/pull/8787 
+.. _`#8735`: https://github.com/apache/cloudstack/pull/8735 
+.. _`#8776`: https://github.com/apache/cloudstack/pull/8776 
+.. _`#8726`: https://github.com/apache/cloudstack/pull/8726 
+.. _`#8070`: https://github.com/apache/cloudstack/pull/8070 
+.. _`#8030`: https://github.com/apache/cloudstack/pull/8030 
+.. _`#8616`: https://github.com/apache/cloudstack/pull/8616 
+.. _`#8716`: https://github.com/apache/cloudstack/pull/8716 
+.. _`#8719`: https://github.com/apache/cloudstack/pull/8719 
+.. _`#8721`: https://github.com/apache/cloudstack/pull/8721 
+.. _`#8717`: https://github.com/apache/cloudstack/pull/8717 
+.. _`#8300`: https://github.com/apache/cloudstack/pull/8300 
+.. _`#8694`: https://github.com/apache/cloudstack/pull/8694 
+.. _`#8709`: https://github.com/apache/cloudstack/pull/8709 
+.. _`#8655`: https://github.com/apache/cloudstack/pull/8655 
+.. _`#8697`: https://github.com/apache/cloudstack/pull/8697 
+.. _`#8677`: https://github.com/apache/cloudstack/pull/8677 
+.. _`#8385`: https://github.com/apache/cloudstack/pull/8385 
+.. _`#8658`: https://github.com/apache/cloudstack/pull/8658 
+.. _`#8599`: https://github.com/apache/cloudstack/pull/8599 
+.. _`#8282`: https://github.com/apache/cloudstack/pull/8282 
+.. _`#8625`: https://github.com/apache/cloudstack/pull/8625 
+.. _`#8633`: https://github.com/apache/cloudstack/pull/8633 
+.. _`#8481`: https://github.com/apache/cloudstack/pull/8481 
+.. _`#8610`: https://github.com/apache/cloudstack/pull/8610 
+.. _`#8568`: https://github.com/apache/cloudstack/pull/8568 
+.. _`#8402`: https://github.com/apache/cloudstack/pull/8402 
+.. _`#8589`: https://github.com/apache/cloudstack/pull/8589 
+.. _`#8560`: https://github.com/apache/cloudstack/pull/8560 
+.. _`#8549`: https://github.com/apache/cloudstack/pull/8549 
+.. _`#8369`: https://github.com/apache/cloudstack/pull/8369 
+.. _`#8482`: https://github.com/apache/cloudstack/pull/8482 
+.. _`#8570`: https://github.com/apache/cloudstack/pull/8570 
+.. _`#8241`: https://github.com/apache/cloudstack/pull/8241 
+.. _`#8468`: https://github.com/apache/cloudstack/pull/8468 
+.. _`#8426`: https://github.com/apache/cloudstack/pull/8426 
+.. _`#8370`: https://github.com/apache/cloudstack/pull/8370 
+.. _`#8383`: https://github.com/apache/cloudstack/pull/8383 
+.. _`#8374`: https://github.com/apache/cloudstack/pull/8374 
+.. _`#8387`: https://github.com/apache/cloudstack/pull/8387 
+.. _`#8380`: https://github.com/apache/cloudstack/pull/8380 
+.. _`#8316`: https://github.com/apache/cloudstack/pull/8316 
+.. _`#8252`: https://github.com/apache/cloudstack/pull/8252 
+.. _`#8107`: https://github.com/apache/cloudstack/pull/8107 
+.. _`#8171`: https://github.com/apache/cloudstack/pull/8171 
+.. _`#8135`: https://github.com/apache/cloudstack/pull/8135 
+.. _`#8258`: https://github.com/apache/cloudstack/pull/8258 
+.. _`#8297`: https://github.com/apache/cloudstack/pull/8297 
+.. _`#8327`: https://github.com/apache/cloudstack/pull/8327 
+.. _`#8296`: https://github.com/apache/cloudstack/pull/8296 
+.. _`#8319`: https://github.com/apache/cloudstack/pull/8319 
+.. _`#8233`: https://github.com/apache/cloudstack/pull/8233 
+.. _`#7923`: https://github.com/apache/cloudstack/pull/7923 
+.. _`#8247`: https://github.com/apache/cloudstack/pull/8247 
+.. _`#8305`: https://github.com/apache/cloudstack/pull/8305 
+.. _`#8268`: https://github.com/apache/cloudstack/pull/8268 
+.. _`#8275`: https://github.com/apache/cloudstack/pull/8275 
+.. _`#8253`: https://github.com/apache/cloudstack/pull/8253 
+.. _`#8204`: https://github.com/apache/cloudstack/pull/8204 
+.. _`#7082`: https://github.com/apache/cloudstack/pull/7082 
+.. _`#8191`: https://github.com/apache/cloudstack/pull/8191 
+.. _`#8202`: https://github.com/apache/cloudstack/pull/8202 
+.. _`#8248`: https://github.com/apache/cloudstack/pull/8248 
+.. _`#8228`: https://github.com/apache/cloudstack/pull/8228 
+.. _`#8115`: https://github.com/apache/cloudstack/pull/8115 
+.. _`#8213`: https://github.com/apache/cloudstack/pull/8213 
+.. _`#8142`: https://github.com/apache/cloudstack/pull/8142 
+.. _`#7545`: https://github.com/apache/cloudstack/pull/7545 
+.. _`#8173`: https://github.com/apache/cloudstack/pull/8173 
+.. _`#8122`: https://github.com/apache/cloudstack/pull/8122 
+.. _`#8193`: https://github.com/apache/cloudstack/pull/8193 
+.. _`#8085`: https://github.com/apache/cloudstack/pull/8085 
+.. _`#8182`: https://github.com/apache/cloudstack/pull/8182 
+.. _`#8049`: https://github.com/apache/cloudstack/pull/8049 
+.. _`#8089`: https://github.com/apache/cloudstack/pull/8089 
+.. _`#8117`: https://github.com/apache/cloudstack/pull/8117 
+.. _`#8081`: https://github.com/apache/cloudstack/pull/8081 
+.. _`#8072`: https://github.com/apache/cloudstack/pull/8072 
+.. _`#7859`: https://github.com/apache/cloudstack/pull/7859 
+.. _`#8118`: https://github.com/apache/cloudstack/pull/8118 
+.. _`#8096`: https://github.com/apache/cloudstack/pull/8096 
+.. _`#8119`: https://github.com/apache/cloudstack/pull/8119 
+.. _`#8114`: https://github.com/apache/cloudstack/pull/8114 
+.. _`#8104`: https://github.com/apache/cloudstack/pull/8104 
+.. _`#8101`: https://github.com/apache/cloudstack/pull/8101 
+.. _`#8057`: https://github.com/apache/cloudstack/pull/8057 
+.. _`#8082`: https://github.com/apache/cloudstack/pull/8082 
+.. _`#8097`: https://github.com/apache/cloudstack/pull/8097 
+.. _`#8093`: https://github.com/apache/cloudstack/pull/8093 
+.. _`#8019`: https://github.com/apache/cloudstack/pull/8019 
+.. _`#7606`: https://github.com/apache/cloudstack/pull/7606 
+.. _`#8066`: https://github.com/apache/cloudstack/pull/8066 
+.. _`#8062`: https://github.com/apache/cloudstack/pull/8062 
+.. _`#8075`: https://github.com/apache/cloudstack/pull/8075 
+.. _`#8065`: https://github.com/apache/cloudstack/pull/8065 
+.. _`#8058`: https://github.com/apache/cloudstack/pull/8058 
+.. _`#7731`: https://github.com/apache/cloudstack/pull/7731 
+.. _`#8048`: https://github.com/apache/cloudstack/pull/8048 
+.. _`#8029`: https://github.com/apache/cloudstack/pull/8029 
+.. _`#8025`: https://github.com/apache/cloudstack/pull/8025 
+.. _`#8041`: https://github.com/apache/cloudstack/pull/8041 
+.. _`#7953`: https://github.com/apache/cloudstack/pull/7953 
+.. _`#8020`: https://github.com/apache/cloudstack/pull/8020 
+.. _`#7952`: https://github.com/apache/cloudstack/pull/7952 
+.. _`#7983`: https://github.com/apache/cloudstack/pull/7983 
+.. _`#8002`: https://github.com/apache/cloudstack/pull/8002 
+.. _`#7948`: https://github.com/apache/cloudstack/pull/7948 
+.. _`#7982`: https://github.com/apache/cloudstack/pull/7982 
+.. _`#8001`: https://github.com/apache/cloudstack/pull/8001 
+.. _`#7972`: https://github.com/apache/cloudstack/pull/7972 
+.. _`#7958`: https://github.com/apache/cloudstack/pull/7958 
+.. _`#7878`: https://github.com/apache/cloudstack/pull/7878 
+.. _`#7915`: https://github.com/apache/cloudstack/pull/7915 
+.. _`#7959`: https://github.com/apache/cloudstack/pull/7959 
+.. _`#7955`: https://github.com/apache/cloudstack/pull/7955 
+
+
+Changes in 4.18.1.0 since 4.18.0.0
 ===================================
 
 Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/27?closed=1
