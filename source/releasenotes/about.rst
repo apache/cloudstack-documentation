@@ -13,11 +13,29 @@
    specific language governing permissions and limitations
    under the License.
 
-
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is a 4.18 LTS minor release with 196 fixes
+Apache CloudStack |release| is a 4.18 LTS minor release with 105 fixes
+since the 4.18.1.0 release. Some of the highlights include:
+
+- Enable over provisioning for SharedMountPoint primary storages
+- Support for Veeam 11 and 12
+- Improvements to Linstor storage plugin integration
+- Several Hypervisor (VMware, KVM, XenServer) fixes and improvements
+- Several UI fixes and improvements
+- Several Network (L2, VXLAN, etc) fixes and improvements
+- Several System VM (CPVM, SSVM) fixes and improvements
+
+The full list of fixes and improvements can be found in the project release notes at
+https://docs.cloudstack.apache.org/en/4.18.2.0/releasenotes/changes.html
+
+
+
+What's in since 4.18.1.0
+=======================
+
+Apache CloudStack 4.18.1.0 is a 4.18 LTS minor release with 196 fixes
 since the 4.18.0.0 release. Some of the highlights include:
 
 • Support Managed User Data in AutoScale VM groups
