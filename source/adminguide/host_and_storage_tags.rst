@@ -26,7 +26,7 @@ Host tags are responsible for directing VMs to compatible hosts. They are valida
 There are two types of host tags:
 
 - (Explicit) host tags: the host tags are managed by CloudStack, including the flexible host tags. Cloud operator can set, update, and delete host tags via CloudStack API or GUI.
-- Implicit host tags: the host tags are not managed by CloudStack API.
+- Implicit host tags: the host tags are not managed by CloudStack API. Cloud operator cannot use both implicit host tags and flexible host tags.
 
 .. note::
    Currently the implicit host tags are only configurable on KVM hosts. 
