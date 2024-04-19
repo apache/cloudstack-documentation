@@ -1036,7 +1036,7 @@ Since Apache CloudStack 4.19.1.0, importing and unmanaging volumes from primary 
 
 |list-unmanaged-managed-volumes.png|
 
-To import a volume, 
+To import a volume: 
 
 #. select a unmanaged volume from the left panel, click "Import Volume" icon. 
 
