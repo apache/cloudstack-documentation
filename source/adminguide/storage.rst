@@ -1049,7 +1049,7 @@ To import a volume:
 .. note::
    The volume to be imported must be placed in the root directory of the storage pool.
    The format of the volume should be QCOW2 on NFS/Local storage, and RAW on Ceph storage.
-   Encrypted volumes cannot be unmanaged or imported.
+   The following volumes cannot be unmanaged or imported: (1) volume is encrypted; (2) volume is locked; (3) volume has a backing file.
 
 .. note::
    By default, the volume is imported for the caller if Domain/Account/Project are not set. By default, the imported volumes use the default disk offering "Default Custom Offering for Volume Import"
