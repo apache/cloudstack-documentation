@@ -29,6 +29,8 @@ There are two types of host tags:
 - Implicit host tags: the host tags are not managed by CloudStack API. Cloud operator cannot use both implicit host tags and flexible host tags.
 
 .. note::
+   Cloud operator can easily set the implicit host tags per host based on server configurations,
+   for example hardware devices (GPU type, disk type, network card type, etc).
    Currently the implicit host tags are only configurable on KVM hosts. 
    To set it, please add the following line to /etc/cloudstack/agent/agent.properties
    and restart cloudstack-agent.
