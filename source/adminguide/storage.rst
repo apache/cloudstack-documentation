@@ -1055,7 +1055,7 @@ To import a volume,
    By default, the volume is imported for the caller if Domain/Account/Project are not set. By default, the imported volumes use the default disk offering "Default Custom Offering for Volume Import"
    (on Shared storages) or "Default Custom Offering for Volume Import - Local" (on Local storages).
 
-To unmanage volume(s), 
+To unmanage volume(s): 
 
 #. select the volumes to be unmanaged from the right panel
 
