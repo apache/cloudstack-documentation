@@ -1047,9 +1047,16 @@ To import a volume:
 |import-volume.png|
 
 .. note::
-   The volume to be imported must be placed in the root directory of the storage pool.
-   The format of the volume should be QCOW2 on NFS/Local storage, and RAW on Ceph storage.
-   The following volumes cannot be unmanaged or imported: (1) volume is encrypted; (2) volume is locked; (3) volume has a backing file.
+   - The volume to be imported must be placed in the root directory of the storage pool.
+
+   - The format of the volume must be QCOW2 on NFS/Local storage, and RAW on Ceph storage.
+
+   - The volume must not be encrypted.
+
+   - The volume must not be locked.
+
+   - The volume must not have a backing file.
+
 
 .. note::
    By default, the volume is imported for the caller if Domain/Account/Project are not set. By default, the imported volumes use the default disk offering "Default Custom Offering for Volume Import"
@@ -1064,6 +1071,18 @@ To unmanage volume(s):
 #. click OK in the confirmation dialog.
 
 |unmanage-volume.png|
+
+.. note::
+   - The volume to be unmanaged must not be attached to any VM as ROOT disk or DATA disk.
+
+   - The volume to be umnanaged must be at Ready state.
+
+   - The volume must not be encrypted.
+
+   - The volume must not be locked by another process.
+
+   - The volume must not have a backing file.
+
 
 Working with Volume Snapshots
 -----------------------------
