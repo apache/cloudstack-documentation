@@ -1041,6 +1041,79 @@ Following is the example for checkVolume API usage and the result in the volume 
    },
    }
 
+
+Importing and Unmanaging Volumes from Storage Pools
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Since Apache CloudStack 4.19.1.0, importing and unmanaging volumes from primary storage pools are supported.
+
+.. note::
+   Currenty the supported storage types are: NFS, Ceph and Local storage for KVM hypervisor.
+
+#. Log in to the CloudStack UI as an administrator.
+
+#. In the left navigation bar, click *Tools > Import DATA Volumes* section.
+
+#. Select the scope of the storage pool (Zone, Cluster, Host).
+
+#. Select the zone/pod/cluster/host of the storage pool.
+
+#. Select the storage pool.
+
+#. The unmanaged volumes on the storage pool are listed on the left panel.
+
+#. The managed volumes on the storage pool are listed on the right panel.
+
+|list-unmanaged-managed-volumes.png|
+
+To import a volume: 
+
+#. select a unmanaged volume from the left panel, click "Import Volume" icon. 
+
+#. In the Import Volume pop-up, select the Account Type, Domain/Account/Project and a disk offering.
+
+#. Click OK.
+
+|import-volume.png|
+
+.. note::
+   - The volume to be imported must be placed in the root directory of the storage pool.
+
+   - The format of the volume must be QCOW2 on NFS/Local storage, and RAW on Ceph storage.
+
+   - The volume must not be encrypted.
+
+   - The volume must not be locked.
+
+   - The volume must not have a backing file.
+
+
+.. note::
+   By default, the volume is imported for the caller if Domain/Account/Project are not set. By default, the imported volumes use the default disk offering "Default Custom Offering for Volume Import"
+   (on Shared storages) or "Default Custom Offering for Volume Import - Local" (on Local storages).
+
+To unmanage volume(s): 
+
+#. select the volumes to be unmanaged from the right panel
+
+#. click "Unmanage Volume" or "Unmanage Volumes" icon
+
+#. click OK in the confirmation dialog.
+
+|unmanage-volume.png|
+
+.. note::
+   - The volume to be unmanaged must not be attached to any VM as ROOT disk or DATA disk.
+
+   - The volume to be umnanaged must be at Ready state.
+
+   - The volume must not be encrypted.
+
+   - The volume must not be locked by another process.
+
+   - The volume must not have a backing file.
+
+
 Working with Volume Snapshots
 -----------------------------
 
@@ -1374,3 +1447,10 @@ Deleting objects from a bucket
    :alt: Adding Local Storage Pool via UI
 .. |change-storage-pool-scope-via-ui.png| image:: /_static/images/change-storage-pool-scope-via-ui.png
    :alt: Change Primary Storage Scope via UI
+.. |list-unmanaged-managed-volumes.png| image:: /_static/images/list-unmanaged-managed-volumes.png
+   :alt: List of Unmanaged and Managed Volumes
+.. |import-volume.png| image:: /_static/images/import-volume.png
+   :alt: Import Volume
+.. |unmanage-volume.png| image:: /_static/images/unmanage-volume.png
+   :alt: Unmanage Volume
+
