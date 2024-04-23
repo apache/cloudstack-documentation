@@ -185,6 +185,36 @@ ensure that the protocol is set to "Filesystem".
 
 |adding-local-pool-via-ui.png|
 
+Changing the Scope of the Primary Storage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Scope of a Primary Storage can be changed from Zone-wide to Cluster-wide
+and vice versa when the Primary Storage is in Disabled state.
+An action button is displayed in UI for each Primary Storage in Disabled state.
+
+|change-storage-pool-scope-via-ui.png|
+
+Scope change from Cluster to Zone will connect the Primary Storage to all Hosts
+of the zone running the same hypervisor as set on the storage pool.
+
+Scope change from Zone to Cluster will disconnect the Primary Storage from all
+Hosts that were previously connected to the Primary Storage and are not a part
+of the specified Cluster. So, if there are running VMs on such hosts using this
+Storage Pool, it cannot be disconnected from the hosts. In this case the Scope
+change operation will error out. Such VMs need to be stopped or migrated first.
+
+This feature is tested and supported for the following Hypervisor-Protocol-
+Storage Provider combinations:
+
+-  KVM - NFS - Default Primary
+
+-  KVM - CEPH/RBD - Default Primary
+
+-  VMWare - NFS - Default Primary
+
+It is possible to use this functionality with other configurations but some
+manual intervention might be needed by the Administrator to make it work.
+
+
 Storage Tags
 ~~~~~~~~~~~~
 
@@ -1342,3 +1372,5 @@ Deleting objects from a bucket
    :alt: Upload button
 .. |adding-local-pool-via-ui.png| image:: /_static/images/adding-local-pool-via-ui.png
    :alt: Adding Local Storage Pool via UI
+.. |change-storage-pool-scope-via-ui.png| image:: /_static/images/change-storage-pool-scope-via-ui.png
+   :alt: Change Primary Storage Scope via UI

@@ -463,6 +463,25 @@ for example:
 If you intend to use only local disk for your installation, you can skip
 adding separate primary storage.
 
+Changing the Scope of the Primary Storage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Starting 4.19.1.0, it is possible to change the Scope of a Primary Storage
+from Zone-wide to Cluster-wide and vice versa. The option will be visible only
+after the Primary Storage has been disabled.
+
+This feature is tested and supported for the following Hypervisor-Protocol-
+Storage Provider combinations:
+
+-  KVM - NFS - Default Primary
+
+-  KVM - CEPH/RBD - Default Primary
+
+-  VMWare - NFS - Default Primary
+
+It is possible to use this functionality with other configurations but some
+manual intervention might be needed by the Administrator to make it work.
+
 
 About Secondary Storage
 ~~~~~~~~~~~~~~~~~~~~~~~
