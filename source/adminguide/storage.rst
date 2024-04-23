@@ -196,6 +196,8 @@ An action button is displayed in UI for each Primary Storage in Disabled state.
 Scope change from Cluster to Zone will connect the Primary Storage to all Hosts
 of the zone running the same hypervisor as set on the storage pool.
 
+|change-storage-pool-scope-to-zone.png|
+
 Scope change from Zone to Cluster will disconnect the Primary Storage from all
 Hosts that were previously connected to the Primary Storage and are not a part
 of the specified Cluster. So, if there are running VMs on such hosts using this
@@ -1447,6 +1449,8 @@ Deleting objects from a bucket
    :alt: Adding Local Storage Pool via UI
 .. |change-storage-pool-scope-via-ui.png| image:: /_static/images/change-storage-pool-scope-via-ui.png
    :alt: Change Primary Storage Scope via UI
+.. |change-storage-pool-scope-to-zone.png| image:: /_static/images/change-storage-pool-scope-to-zone.png
+   :alt: Change Primary Storage Scope to Zone via UI
 .. |list-unmanaged-managed-volumes.png| image:: /_static/images/list-unmanaged-managed-volumes.png
    :alt: List of Unmanaged and Managed Volumes
 .. |import-volume.png| image:: /_static/images/import-volume.png
