@@ -256,13 +256,12 @@ from the Create Zone Wizard as well as the Add Primary Storage form.
 |nfs-mount-options-create-zone-wizard.png|
 |nfs-mount-options-add-primary-storage.png|
 
-NFS mount options can be changed on a pre-existing Storage Pool using the
-Edit Primary Storage form. Storage Pool needs to be unmounted and mounted
-again on the KVM host using the new options. Running VMs using volumes
-in the Storage Pool either need to be stopped or the volumes migrated.
-So the NFS Mount Options field below is only shown if the Storage Pool
-is in maintenance mode. Storage Pool will be remounted during the
-cancel maintenance operation.
+NFS mount options can be changed on a pre-existing Storage Pool in maintenance
+mode using the Edit Primary Storage form. Running VMs using volumes in the
+Storage Pool will either be stopped or the volumes would be migrated to other
+available pools upon enabling maintenance mode.
+Storage Pool will be unmounted and mounted again on the KVM hosts using the
+new options upon cancelling the maintenance mode.
 |nfs-mount-options-edit-primary-storage.png|
 
 Version Requirements
