@@ -204,6 +204,9 @@ of the specified Cluster. So, if there are running VMs on such hosts using this
 Storage Pool, it cannot be disconnected from the hosts. In this case the Scope
 change operation will error out. Such VMs need to be stopped or migrated first.
 
+This might be a long running operation depending on how many hosts are there
+in the zone which need to be connected or disconnected to the storage pool.
+
 This feature is tested and supported for the following hypervisor and storage
 combinations:
 
