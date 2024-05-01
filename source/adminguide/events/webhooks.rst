@@ -141,6 +141,9 @@ following global configurations:
    - **webhook.deliveries.cleanup.interval**: Interval (in seconds) for
      cleaning up webhook deliveries. Default value is 3600 or 1 hour.
 
+   - **webhook.deliveries.cleanup.initial.delay**:  Initial delay (in seconds)
+     for webhook deliveries cleanup task. Default value is 180.
+
 Based on the above configurations CloudStack will purge older deliveries in
 the database using a repeatedly running task.
 
@@ -157,6 +160,28 @@ as the payload. The following custom headers are sent with the request:
    -  **X-CS-Signature**. HMAC SHA256 signature created using the webhook
       secret key and the delivery payload. It is sent only when secret key
       is specified for the webhook.
+
+
+Working with HTTPS webhook payload URL with self-signed certificate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. Generate a self signed certificate for the server, make sure to mention the IP address of the server when it prompts.
+
+   .. parsed-literal::
+
+      openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
+
+#. Copy the genereated cert.pem to the management server(s).
+
+#. Import the certificate for JDK on the management server(s)
+
+   .. parsed-literal::
+
+      cp /etc/java/java-17-openjdk/java-17-openjdk-17.0.10.0.7-2.0.1.el8.x86_64/lib/security/cacerts /etc/java/java-17-openjdk/java-17-openjdk-17.0.10.0.7-2.0.1.el8.x86_64/lib/security/jssecacerts
+
+      keytool -importcert -file /root/kiran/cert.pem -alias webhook -keystore /etc/java/java-17-openjdk/java-17-openjdk-17.0.10.0.7-2.0.1.el8.x86_64/lib/security/jssecacerts -storepass changeit
+
+4. Test the webhook.
 
 
 
