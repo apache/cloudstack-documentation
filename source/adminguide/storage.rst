@@ -264,13 +264,12 @@ Storage Pool will be unmounted and mounted again on the KVM hosts using the
 new options upon cancelling the maintenance mode.
 |nfs-mount-options-edit-primary-storage.png|
 
-Mount failing due to an incorrect Mount Option
+Mount failing due to an incorrect mount option
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Add Storage Pool will fail with the error ``An incorrect mount option was specified``.
 
 In the Update storage pool case, cancel maintenance will throw the above error.
-The Administrator has to repeat the process of enabling maintenance mode,
-changing the mount option to the correct one and then cancelling the maintenance mode.
+The Administrator should set the correct mount option and cancel the maintenance mode again.
 
 
 Version Requirements
