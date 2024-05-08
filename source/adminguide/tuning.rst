@@ -146,7 +146,7 @@ refers to XenServer 5.6, but the same information applies to XenServer 6
 Purging Expunged Resources
 --------------------------
 
-..note::
+.. note::
   Currently only available for Instances and their linked resources.
 
 Over the time there are chances of piling up of millions of database records
@@ -207,7 +207,7 @@ Using configuration in offerings
 
 _purgeresources_ configuration for offerings can be used to allow immediately
 purging a resource when it is expunged. The configuration can be set to true or
-false _purgeresources_ parameter while creating the correspoding offerings. The
+false _purgeresources_ parameter while creating the corresponding offerings. The
 following global setting can be used to control the delay for purging the
 resource after expunge:
 
