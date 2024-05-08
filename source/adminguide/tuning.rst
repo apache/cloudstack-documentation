@@ -151,7 +151,7 @@ Purging Expunged Resources
 
 Over the time there are chances of piling up of millions of database records
 for the removed or expunged resources. The presence of a lot of useless
-records in the database can also affect the performance of cloud so it is
+records in the database can also affect the performance of the cloud so it is
 needed to purge such entries in a systematic way.
 CloudStack provides the following methods to allow purging of the expunged
 resources and their database records:
