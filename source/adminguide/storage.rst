@@ -201,8 +201,11 @@ of the zone running the same hypervisor as set on the storage pool.
 Scope change from Zone to Cluster will disconnect the Primary Storage from all
 Hosts that were previously connected to the Primary Storage and are not a part
 of the specified Cluster. So, if there are running VMs on such hosts using this
-Storage Pool, it cannot be disconnected from the hosts. In this case the Scope
-change operation will error out. Such VMs need to be stopped or migrated first.
+Storage Pool, they cannot be disconnected from the hosts. In this case the Scope
+change operation will error out.
+The user VMs need to be stopped or migrated and system VMs need to be destroyed
+while the primary Storage is disabled, before attempting the operation again.
+listAffectedVmsForstorageScopeChange API can be used to get the list of all such VMs.
 
 This might be a long running operation depending on how many hosts are there
 in the zone which need to be connected or disconnected to the storage pool.
