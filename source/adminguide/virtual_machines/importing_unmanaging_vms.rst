@@ -437,8 +437,6 @@ those same credentials are later used for SSH authentication when the QCOW2 imag
 .. parsed-literal::
    - **zoneid** (Zone to which Instance will be imported)
    - **host** (the host name or IP address of External Host)
-   - **username** (the username of External Host for authentication)
-   - **password** (the password of External Host for authentication)
 
 **Response**:
 
@@ -481,8 +479,6 @@ choose the temporary storage location on the external host for the converted fil
 .. parsed-literal::
    - **zoneid** (Zone to which Instance will be imported)
    - **host** (the host name or IP address of External Host)
-   - **username** (the username of External Host for authentication)
-   - **password** (the password of External Host for authentication)
    - **importsource** (Import source should be external)
    - **tmppath** (Temp Path on external host for disk image copy)
    - **name** (Instance name on External Host)
