@@ -205,6 +205,19 @@ following techniques:
    updateVirtualMachine API. After installing the tools and updating the
    Instance, stop and start the Instance.
 
+Instance Metdata
+~~~~~~~~~~~~~~~~
+
+CloudStack provides different means for controlling an instance's metadata.
+
+-  'extraconfig' parameter of 'deployVirtualMachine' or 'updateVirtualMachine' API methods
+   can be used for setting different metadata parameters for an instance.
+-  Global configurations - 'vm.metadata.manufacturer' and 'vm.metadata.product' can be used
+   to set the manufacturer and product respectively in the instance metadata. However, a
+   custom value for these parameters may affect cloud-init functionality for the instance
+   when used with CloudStack datasource. One of the requirement for cloud-init functionality
+   to work with CloudStack datasource is that product value should contain 'CloudStack'.
+
 
 Accessing Instances
 -------------------
