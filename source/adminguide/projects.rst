@@ -288,6 +288,16 @@ to add members in CloudStack, but only one way is enabled at a time:
    the UI.
 
 
+Working with Project Roles
+--------------------------
+CloudStack allows adding project members with a desired project role. A
+project role will be assigned to the member in addition to their base
+account role. Project Roles are retrictive in nature and can be used to
+further restrict certain API access to the members within the project.
+Project roles can be created or managed using `Project roles` tab in the
+project details UI.
+
+
 Sending Project Membership Invitations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
