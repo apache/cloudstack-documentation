@@ -52,13 +52,17 @@ To explain the behavior of host tags, some examples will be demonstrated with tw
 .. _strict-host-tags:
 Strict Host Tags
 -----------------
-During certain operations, like changing compute offering, and starting or live
-migrating an instance to a specific host, CloudStack will ignore the host tags,
-which can lead to issues where a instance starts on an undesired host.
+During certain operations, such as changing the compute offering or starting or
+live migrating an instance to a specific host, CloudStack may ignore the host
+tags. This behavior is intentional and is designed to provide flexibility in
+resource allocation. However, in some cases, this can lead to instances being
+deployed on undesired hosts.
 
-To avoid a mismatch of tags, tags which must always match during any operation
-can be defined in `vm.strict.host.tags`. If the tags which doesn't match are
-also part of `vm.strict.host.tags`, the operation will fail.
+To address this, CloudStack introduces an add-on feature that allows administrators
+to enforce tag checks during these operations. By specifying the required tags
+in the global configuration `vm.strict.host.tags`, CloudStack will ensure that
+the specified tags must match during the operations. If any of the specified
+tags do not match, the operation will fail.
 
 If `resource.limit.host.tags` are defined and
 `vm.strict.resource.limit.host.tag.check` is set to true, the tags defined in
