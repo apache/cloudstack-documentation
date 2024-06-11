@@ -171,13 +171,13 @@ configuring background task for purging the expunged resources:
 ================================================   ================   ===================================================================
 Global setting                                     Default values     Description
 ================================================   ================   ===================================================================
-expunged.resources.purge.enabled                   false              Whether to run a background task to purge the expunged resources.
-expunged.resources.purge.resources                 (empty)            A comma-separated list of resource types that will be considered by the background task to purge the expunged resources. Currently only VirtualMachine is supported. An empty "value will result in considering all resource types for purging.
-expunged.resources.purge.interval                  86400              Interval (in seconds) for the background task to purge the expunged resources.
-expunged.resources.purge.delay                     300                Initial delay (in seconds) to start the background task to purge the expunged resources task.
-expunged.resources.purge.batch.size                50                 Batch size to be used during expunged resources purging.
-expunged.resources.purge.start.time                (empty)            Start time to be used by the background task to purge the expunged resources. Use format yyyy-MM-dd or yyyy-MM-dd HH:mm:ss.
-expunged.resources.purge.keep.past.days            30                 The number of days in the past from the execution time of the background task to purge the expunged resources for which the expunged resources must not be purged. To enable purging expunged resource till the execution of the background task, set the value to zero.
+expunged.resources.purge.enabled                   false              Whether to run a background task to purge the DB records of the expunged resources.
+expunged.resources.purge.resources                 (empty)            A comma-separated list of resource types that will be considered by the background task to purge the DB records of the expunged resources. Currently only VirtualMachine is supported. An empty value will result in considering all resource types for purging.
+expunged.resources.purge.interval                  86400              Interval (in seconds) for the background task to purge the DB records of the expunged resources.
+expunged.resources.purge.delay                     300                Initial delay (in seconds) to start the background task to purge the DB records of the expunged resources task.
+expunged.resources.purge.batch.size                50                 Batch size to be used during purging of the DB records of the expunged resources.
+expunged.resources.purge.start.time                (empty)            Start time to be used by the background task to purge the DB records of the expunged resources. Use format yyyy-MM-dd or yyyy-MM-dd HH:mm:ss.
+expunged.resources.purge.keep.past.days            30                 The number of days in the past from the execution time of the background task to purge the DB records of the expunged resources for which the expunged resources must not be purged. To enable purging DB records of the expunged resource till the execution of the background task, set the value to zero.
 ================================================   ================   ===================================================================
 
 
@@ -214,5 +214,5 @@ resource after expunge:
 ================================================   ================   ===================================================================
 Global setting                                     Default values     Description
 ================================================   ================   ===================================================================
-expunged.resource.purge.job.delay                  180                Delay (in seconds) to execute the purging of an expunged resource initiated by the configuration in the offering. Minimum value should be 180 seconds and if a lower value is set then the minimum value will be used.
+expunged.resource.purge.job.delay                  180                Delay (in seconds) to execute the purging of the DB records of an expunged resource initiated by the configuration in the offering. Minimum value should be 180 seconds and if a lower value is set then the minimum value will be used.
 ================================================   ================   ===================================================================
