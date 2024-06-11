@@ -211,7 +211,7 @@ hypervisor and add it to your management server the way you would a real physica
 
 MonkeyBox or `mbx <https://github.com/shapeblue/mbx>`__
 enable VM/appliance-based CloudStack development. It is tested with Ubuntu and
-uses KVM and prebuilt imagesbto deploy QA and dev environments for anybody to
+uses KVM and prebuilt images to deploy QA and dev environments for anybody to
 try out CloudStack with a range of hypervisors, local and NFS storage.
 
 Please refer to the project for more details: https://github.com/shapeblue/mbx
