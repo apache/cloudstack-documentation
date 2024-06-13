@@ -1385,7 +1385,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:1181
 # 54880e3acb4945b4ae3d3fb251252130
-msgid "`http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz>`_"
+msgid "`http://download.cloudstack.org/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz <http://download.cloudstack.org/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz>`_"
 msgstr ""
 
 #: ../../hypervisor_installation.rst:1183
@@ -1395,7 +1395,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:1185
 # b1533b01dec04d8ea37cb07d541d8013
-msgid "`http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz>`_"
+msgid "`http://download.cloudstack.org/releases/2.2.0/xenserver-cloud-supp.tgz <http://download.cloudstack.org/releases/2.2.0/xenserver-cloud-supp.tgz>`_"
 msgstr ""
 
 #: ../../hypervisor_installation.rst:1187
@@ -1405,7 +1405,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:1189
 # bc80c4fa363248c292882b511d90808a
-msgid "`http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz>`_"
+msgid "`http://download.cloudstack.org/releases/3.0/xenserver-cloud-supp.tgz <http://download.cloudstack.org/releases/3.0/xenserver-cloud-supp.tgz>`_"
 msgstr ""
 
 #: ../../hypervisor_installation.rst:1193

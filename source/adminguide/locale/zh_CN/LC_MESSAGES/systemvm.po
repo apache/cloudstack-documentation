@@ -125,9 +125,9 @@ msgstr "XenServer"
 # 6ea0f846b0a34711b7c0090cb48d8c32
 #: ../../systemvm.rst:66
 msgid ""
-"http://download.cloud.com/templates/4.2/64bit/systemvmtemplate64-2013-07-15"
+"http://download.cloudstack.org/templates/4.2/64bit/systemvmtemplate64-2013-07-15"
 "-master-xen.vhd.bz2"
-msgstr "http://download.cloud.com/templates/4.2/64bit/systemvmtemplate64-2013-07-15-master-xen.vhd.bz2"
+msgstr "http://download.cloudstack.org/templates/4.2/64bit/systemvmtemplate64-2013-07-15-master-xen.vhd.bz2"
 
 # e8a51da6f6614114a91e4006eedfc912
 #: ../../systemvm.rst:67
@@ -137,9 +137,9 @@ msgstr "KVM"
 # fe251bca2b854129890cba8e7ac9bbbf
 #: ../../systemvm.rst:67
 msgid ""
-"http://download.cloud.com/templates/4.2/64bit/systemvmtemplate64-2013-07-15"
+"http://download.cloudstack.org/templates/4.2/64bit/systemvmtemplate64-2013-07-15"
 "-master-kvm.qcow2.bz2"
-msgstr "http://download.cloud.com/templates/4.2/64bit/systemvmtemplate64-2013-07-15-master-kvm.qcow2.bz2"
+msgstr "http://download.cloudstack.org/templates/4.2/64bit/systemvmtemplate64-2013-07-15-master-kvm.qcow2.bz2"
 
 # 2d498240d20c4683ab11ac2232135a16
 #: ../../systemvm.rst:70

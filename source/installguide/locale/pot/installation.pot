@@ -495,7 +495,7 @@ msgstr ""
 
 #: ../../installation.rst:358
 # d212ae279e594ea4a9b82dde3342f509
-msgid "Before setting up the Management Server, download vhd-util from `vhd-util <http://download.cloud.com.s3.amazonaws.com/tools/vhd-util>`_."
+msgid "Before setting up the Management Server, download vhd-util from `vhd-util <https://download.cloudstack.org/tools/vhd-util>`_."
 msgstr ""
 
 #: ../../installation.rst:361
@@ -1079,7 +1079,7 @@ msgstr ""
 
 #: ../../installation.rst:1085
 # 60bd480d13124c16b4c8774b8abd5439
-msgid "Download vhd-util from `vhd-util <http://download.cloud.com.s3.amazonaws.com/tools/vhd-util>`_"
+msgid "Download vhd-util from `vhd-util <https://download.cloudstack.org/tools/vhd-util>`_"
 msgstr ""
 
 #: ../../installation.rst:1088

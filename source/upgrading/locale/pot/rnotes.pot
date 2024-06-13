@@ -213,7 +213,7 @@ msgstr ""
 # a8b209e329fc41ce94ec334acd8dc4d0
 # a26c20ade808412ab062e4a910efcde5
 # bfaf491e156c4f9ab1e381a756900595
-msgid "URL: http://download.cloud.com/templates/4.3/systemvm64template-2014-01-14-master-xen.vhd.bz2"
+msgid "URL: http://download.cloudstack.org/templates/4.3/systemvm64template-2014-01-14-master-xen.vhd.bz2"
 msgstr ""
 
 #: ../../rnotes.rst:78
@@ -483,7 +483,7 @@ msgstr ""
 # b11d6d74b8e340d2af1246f535bed9e1
 # 9ded492ee518410f88bfa49eab1e31b8
 # 3fb14024946f4d70b472ccc0fa7b876a
-msgid "URL: http://download.cloud.com/templates/4.3/systemvm64template-2014-01-14-master-kvm.qcow2.bz2"
+msgid "URL: http://download.cloudstack.org/templates/4.3/systemvm64template-2014-01-14-master-kvm.qcow2.bz2"
 msgstr ""
 
 #: ../../rnotes.rst:105
@@ -561,7 +561,7 @@ msgstr ""
 # c5214485e9114e2eb71127c7d7de6965
 # 0c755ceff7c547348ff3a27a613ef83a
 # a56695f39bb84f899e7915122a3c430a
-msgid "URL: http://download.cloud.com/templates/4.3/systemvm64template-2014-01-14-master-vmware.ova"
+msgid "URL: http://download.cloudstack.org/templates/4.3/systemvm64template-2014-01-14-master-vmware.ova"
 msgstr ""
 
 #: ../../rnotes.rst:130
@@ -2009,7 +2009,7 @@ msgstr ""
 
 #: ../../rnotes.rst:2456
 # 0f112aff5e3a40229d261d3025697c2a
-msgid "If you are using version 2.2.0 - 2.2.13, first upgrade to 2.2.14 by using the instructions in the `2.2.14 Release Notes <http://download.cloud.com/releases/2.2.0/CloudStack2.2.14ReleaseNotes.pdf>`__."
+msgid "If you are using version 2.2.0 - 2.2.13, first upgrade to 2.2.14 by using the instructions in the `2.2.14 Release Notes <http://download.cloudstack.org/releases/2.2.0/CloudStack2.2.14ReleaseNotes.pdf>`__."
 msgstr ""
 
 #: ../../rnotes.rst:2460

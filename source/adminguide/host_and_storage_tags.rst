@@ -23,6 +23,11 @@ Host tags
 ---------
 Host tags are responsible for directing VMs to compatible hosts. They are validated with the host tags informed in the compute offerings or in the system offerings.
 
+There are two types of host tags:
+
+- (Explicit) host tags: the host tags are managed by CloudStack, including the flexible host tags. Cloud operator can set, update, and delete host tags via CloudStack API or GUI.
+- Implicit host tags: the host tags are not managed by CloudStack API. For more information, see section `“Implicit host tags” <host_and_storage_tags.html#id1>`_.
+
 To explain the behavior of host tags, some examples will be demonstrated with two hosts (Host1 and Host2):
 
 #. Tag setup:
@@ -78,7 +83,7 @@ To explain the behavior of storage tags, some examples will be demonstrated:
 In short, if the offering has tags, the storage will need to have all the tags for the volume to be allocated. If the offering does not have tags, the volume can be allocated, regardless of whether the storage has a tag or not.
 
 Flexible Tags
---------------
+-------------
 When defining tags for a resource (a host, for example), offerings with those tags will be directed to that resource. However, offerings without tags can also be targeted to it. So, even after adding tags to a resource with the intention of making it exclusive to certain types of offerings, this exclusivity can be ignored.
 
 Furthermore, the standard tag system only allows the user to enter a simple list of tags, without the possibility of creating more complex rules, such as checking whether the offering has certain pairs of tags.
@@ -90,3 +95,33 @@ Configuring flexible tags on hosts is carried out through the ``updateHost`` API
 It is worth mentioning that the compute offering or disk offering tags are injected in list format. Thus, when validating an offering with tags ``A, B``, during processing, there will be the variable ``tags``, where ``tags[0]`` will be tag A, and ``tags[1]`` will be tag B.
 
 It's also important to mention that flexible tags are not compatible with quota's activation rules.
+
+Implicit Host Tags
+------------------
+In Apache CloudStack 4.19 and prior, cloud operators are only able to set tags of host via Cloudstack API or on CloudStack GUI.
+
+Implicit host tags feature is supported since Apache CloudStack 4.20. With the feature, Cloud operators can easily set the
+implicit host tags per host based on the server configurations. For example, based on the following hardware devices and
+softwares which can be fetched by commands, scripts or tools:
+
+- CPU architecture and model
+- Network card type and speed
+- Hard disk type and raid type
+- GPU model
+- OS distribution and version
+
+To set it, please add the following line to /etc/cloudstack/agent/agent.properties and restart cloudstack-agent.
+
+.. parsed-literal::
+   host.tags=<implicit host tags separated by comma>
+
+Cloud operators can also get the information and set the implicit host tags by automation tools (chef, ansible, puppet, etc).
+
+.. note::
+   - Implicit host tags are only configurable on KVM hosts. They are not managed by CloudStack API.
+
+   - Implicit host tags are not compatible with flexible host tags.
+
+   - Flexible host tags and host tags managed by CloudStack API are explicit tags.
+
+   - Explicit and implicit host tags have no difference in VM instance deployment and migration.
