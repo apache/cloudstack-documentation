@@ -93,8 +93,6 @@ Instance can be given to retrieve Instance details. The API will filter all Clou
 .. parsed-literal::
    - **clusterid**
    - **hostid**
-   - **username** (the username of External Host for authentication)
-   - **password** (the password of External Host for authentication)
    - **name**
    - **osdisplayname**
    - **memory**
@@ -481,6 +479,8 @@ choose the temporary storage location on the external host for the converted fil
 .. parsed-literal::
    - **zoneid** (Zone to which Instance will be imported)
    - **host** (the host name or IP address of External Host)
+   - **username** (the username of External Host for authentication)
+   - **password** (the password of External Host for authentication)
    - **importsource** (Import source should be external)
    - **tmppath** (Temp Path on external host for disk image copy)
    - **name** (Instance name on External Host)
