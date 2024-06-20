@@ -319,6 +319,12 @@ To create a new compute offering:
    -  **Storage Policy**: Name of the storage policy defined at vCenter, this is applicable only for VMware.
       When a specific Zone is selected, one of the storage policies can be selected from the list box.
 
+   -  **Purge Resources**: Whether to cleanup instance and its associated resources from
+      database upon expunge. When set to true, the database records for the instances with the offering and its
+      associated resources such as volumes, NICs, etc will be purged immediately once the instance is
+      expunged. The duration between enpunge and purging of the records can be controlled using
+      the global configuration - _expunged.resource.purge.job.delay_.
+
    -  **Compute only Disk Offering**: When this flag is enabled, a compute only disk offering
       is created with the disk related information provided and then linked to the compute offering.
       Compute only disk offering is specific to the newly created compute offering to record the
