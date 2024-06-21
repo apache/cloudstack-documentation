@@ -118,3 +118,17 @@ After identifying the snapshots with a backing store and the related templates, 
 
 .. parsed-literal::
    qemu-img convert -O qcow2 -U --image-opts driver=qcow2,file.filename=<path to snapshot on secondary storage> <path to snapshot on secondary storage>-converted
+
+Issue regarding LDAP authentication on version 4.19.0
+=====================================================
+
+In version 4.19.0, the encryption of scoped configurations of Accounts and Domains was changed to only encrypt if there were sensitive data (e.g, they belonged to the Hidden or Secure category) as all configurations for Accounts and Domains were encrypted in previous versions. However, when using the encrypted values from these scopes, ACS did not correctly decrypt these values. For this reason, a simple solution was to update these configurations to their plain values with manual DB intervention, as reported in issue `#8637`.
+
+This issue has been fixed in Apache CloudStack 4.19.1.0. However, for users that manually set the configurations ``ldap.bind.password`` and ``ldap.truststore.password`` to a plain value in order to fix the faulty behaviour, it is required to store them encrypted after upgrading to version 4.19.1 and onwards. It will not be possible to update the configuration via UI, as an exception will be thrown when ACS tries to decrypt the plain value. To fix this, it is required to set the password again for ACS to encrypt it. There are two options:
+
+#. Manually set the configuration via CloudMonkey, for example ``update configuration domainid=<domain-uuid> name="ldap.bind.password" value="password"``;
+#. Or, removing the defined configuration through the database via the query ``DELETE from cloud.domain_details WHERE name like "%ldap%password%"``, and setting the configuration via UI for the affected domains.
+
+After updating these configurations, LDAP authentication should be working as expected.
+
+.. _`#8637`: https://github.com/apache/cloudstack/pull/8637
