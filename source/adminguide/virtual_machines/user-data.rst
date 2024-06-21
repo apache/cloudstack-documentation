@@ -217,6 +217,8 @@ Instance deployment automatically (:ref:`adding-password-management-to-templates
 
       datasource_list: [ CloudStack, None ]
 
+For more information, see `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_
+
 Custom user-data example
 ~~~~~~~~~~~~~~~~~~~~~~~~
 

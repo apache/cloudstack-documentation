@@ -62,6 +62,13 @@ These features can be implemented in `“Linux Template creation process” <_cr
      datasource:
        CloudStack: {}
        None: {}
+
+   .. note::
+      For the vm instances running on VMware or XenServer/XCP-ng hypervisors, if there are multiple cloud-init data sources, it is a known issue that ds-identify is not able to detect if "CloudStack" DataSource is enabled. To fix the problem, please run the following command to enable cloud-init without any aid from ds-identify.
+
+        .. code:: bash
+
+          echo "policy: enabled" >  /etc/cloud/ds-identify.cfg
 	   
 #. **Password management**
 

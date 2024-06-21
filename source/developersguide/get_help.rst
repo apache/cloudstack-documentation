@@ -27,6 +27,9 @@ Need some help getting started? Feel free to ask on the `mailing list
    discussions about development and the project itself happen. This is a high
    volume list.
 
+Github users can also start discussion at
+https://github.com/apache/cloudstack/discussions
+
 Documentation Available
 -----------------------
 
@@ -49,11 +52,15 @@ Books
 |60recipe| |acs-packt| |jp1| |jp2|
 
 
-Commercial support
-------------------
+Support
+-------
+
+For community support you may ask on the project's users mailing list or via
+Github discussions.
 
 Some companies offer commercial support for Apache CloudStack or their own
-product based on CloudStack.
+product based on CloudStack. You may ask on the list or `search yourself
+<https://www.google.com/search?q=cloudstack+support>`__.
 
 
 .. |60recipe| image:: /_static/images/60recipe.gif
