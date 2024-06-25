@@ -54,6 +54,41 @@ To explain the behavior of host tags, some examples will be demonstrated with tw
     * Offering: h3
     None of the hosts have compatible tags and it will not be possible to deploy a VM with the offering. However, CloudStack ignores this behavior when a host is manually selected.
 
+.. _strict-host-tags:
+Strict Host Tags
+-----------------
+During certain operations, such as changing the compute offering or starting or
+live migrating an instance to a specific host, CloudStack may ignore the host
+tags. This behavior is intentional and is designed to provide flexibility in
+resource allocation. However, in some cases, this can lead to instances being
+deployed on undesired hosts.
+
+To address this, CloudStack introduces an add-on feature that allows administrators
+to enforce tag checks during these operations. By specifying the required tags
+in the global configuration `vm.strict.host.tags`, CloudStack will ensure that
+the specified tags must match during the operations. If any of the specified
+tags do not match, the operation will fail.
+
+If `resource.limit.host.tags` are defined and
+`vm.strict.resource.limit.host.tag.check` is set to true, the tags defined in
+`resource.limit.host.tags` are included with the `vm.strict.host.tags`.
+
+.. list-table:: Strict host tags related global settings
+   :header-rows: 1
+
+   * - Parameter
+     - Default
+     - Description
+   * - ``vm.strict.host.tags``
+     - empty
+     - A comma-separated list of tags which must match during operations like
+       modifying the compute offering for an instance, and starting or live
+       migrating an instance to a specific host.
+   * - ``vm.strict.resource.limit.host.tag.check``
+     - `true`
+     - If set to true, tags specified in `resource.limit.host.tags` are also
+       included in `vm.strict.host.tags`.
+
 Storage tags
 ------------
 Storage tags are responsible for directing volumes to compatible primary storage. They are validated with the storage tags entered in the disk offerings or system offerings.

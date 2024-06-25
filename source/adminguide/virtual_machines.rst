@@ -276,6 +276,14 @@ CloudStack's database.  The reboot process does not do this.
 
 When starting an Instance, admin Users have the option to specify a pod, cluster, or host.
 
+.. note::
+   When starting an instance, it's possible to specify a host for deployment,
+   even if the host's tags don't match the instance's tags. This can lead to a
+   mismatch between the VM's tags and the host's tags, which may not be
+   desirable.
+
+   To avoid this, refer to the :ref:`strict-host-tags` section
+
 
 Deleting Instance
 ------------------
@@ -441,6 +449,11 @@ Instance, you can change the Instance's compute offering.
 
 #. Click OK.
 
+.. note::
+   When changing the service offering for an instance, it's possible to have a
+   mismatch of host tags which can be problematic.
+
+   For more information on how to prevent this, see :ref:`strict-host-tags`.
 
 .. _cpu-and-memory-scaling:
 
@@ -636,6 +649,12 @@ To manually live migrate an Instance
       (CloudMonkey) > migrate virtualmachinewithvolume virtualmachineid=<virtual machine uuid> hostid=<destination host uuid> migrateto[i].volume=<virtual machine volume number i uuid> migrateto[i].pool=<destination storage pool uuid for volume number i>
 
       where i in [0,..,N] and N = number of volumes of the Instance
+
+.. note::
+   During live migration, there can be a mismatch between the instance's tags
+   with the destination host's tags which might be undesirable.
+
+   For more details on how to prevent this, see :ref:`strict-host-tags`.
 
 Moving Instance's Volumes Between Storage Pools (offline volume Migration)
 --------------------------------------------------------------------------
