@@ -1444,6 +1444,26 @@ Editing, Restarting, and Removing a Virtual Private Cloud
    |restart-vpc.png|
 
 
+Working with Domain VPCs
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The functionality of domain VPCs allows operators to aggregate multiple
+tiers from distinct users on the same VPC, reducing the number of virtual
+routers necessary in the environment, and consequently, decreasing the
+amount of public IP addresses consumed. All tiers added to the VPC share
+the same VR, but each one has their own broadcast domain and features
+implemented by the VPC, such as DHCP, NAT, and so on.
+
+In order to utilize this functionality, a new tier must be included to an
+existing VPC by inputing the respective data for the account and the VPC
+on the **'createNetwork'** API. It is important to note that, in order
+for a tier of a different account to be created on the VPC, the account
+that creates the tier must have access to both the account that owns the
+VPC and the account that owns the tier. The owner of the VPC must also
+have access to the account that owns the network, however, the opposite
+is not required.
+
+
 .. |add-vpc.png| image:: /_static/images/add-vpc.png
    :alt: adding a vpc.
 .. |add-tier.png| image:: /_static/images/add-tier.png
