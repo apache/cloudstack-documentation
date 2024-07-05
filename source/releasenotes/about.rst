@@ -16,6 +16,12 @@
 What's New in |release|
 =======================
 
+Refer to the advisory blog at
+https://cloudstack.apache.org/blog/security-release-advisory-4.19.0.2-4.18.2.1
+
+What's in since 4.18.2.0
+========================
+
 Apache CloudStack |release| is a 4.18 LTS minor release with 105 fixes
 since the 4.18.1.0 release. Some of the highlights include:
 
