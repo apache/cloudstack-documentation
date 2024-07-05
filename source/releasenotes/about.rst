@@ -17,14 +17,23 @@
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is the initial 4.19 LTS release. It has over 300 fixes
+Refer to the advisory blog at
+https://cloudstack.apache.org/blog/security-release-advisory-4.19.0.2-4.18.2.1
+
+What's in 4.19.0.1
+==================
+
+Refer to the advisory blog at
+https://cloudstack.apache.org/blog/security-release-advisory-4.19.0.1-4.18.1.1
+
+What's in since 4.19.0.0
+========================
+
+Apache CloudStack 4.19.0.0 is the initial 4.19 LTS release. It has over 300 fixes
 and features since the 4.18.1.0 release.
 
 The full list of fixes and improvements can be found in the project release notes at
 https://docs.cloudstack.apache.org/en/4.19.0.0/releasenotes/changes.html
-
-What's in since 4.19.0.0
-========================
 
 Apache CloudStack 4.19.0.0 is the initial 4.19 LTS release with 300+ new
 features, improvements and bug fixes since 4.18, including 26 major
