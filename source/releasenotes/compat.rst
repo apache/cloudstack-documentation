@@ -36,7 +36,7 @@ CloudStack Management Server.
 Software Requirements
 ~~~~~~~~~~~~~~~~~~~~~
 
--  Java JRE 17, Java JRE 21
+-  Java JRE 11 or Java JRE 17
 -  MySQL 8.0
 
 Supported Hypervisor Versions
