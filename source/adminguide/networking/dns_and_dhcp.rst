@@ -17,6 +17,13 @@
 DNS and DHCP
 ------------
 
-The Virtual Router provides DNS and DHCP services to the guests. It
-proxies DNS requests to the DNS server configured on the Availability
-Zone.
+The Virtual Router & ConfigDrive (since Apache CloudStack 4.20) provides
+DNS and DHCP services to the guests. It proxies DNS requests to the DNS
+server configured on the Availability Zone.
+
+.. note::
+   In case of a network with ConfigDrive, adding/removing nic to/from an
+   instance or updating the ip address of a nic will not be reflected in the
+   instance if the instance is already running. To do so, run
+   `cloud-init clean --machine-id -s` to clean the machine id and seed data.
+   Then reboot the instance to apply the changes.
