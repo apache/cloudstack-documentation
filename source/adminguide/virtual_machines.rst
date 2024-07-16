@@ -1505,6 +1505,16 @@ Instance disk statistics are shown in the Metrics tab in an individual volume vi
 |vm-disk-metrics-ui.png|
 
 
+
+.. note::
+   The metrics or statistics for VMs and VM disks in CloudStack depend on the
+   hypervisor plugin used for each hypervisor. The behavior can vary across
+   different hypervisors. For instance, with KVM, metrics are real-time
+   statistics provided by libvirt. In contrast, with VMware, the metrics are
+   averaged data based on the global configuration parameter
+   `vmware.stats.time.window`.
+
+
 .. |vm-lifecycle.png| image:: /_static/images/vm-lifecycle.png
    :alt: Instance State Model
 .. |vm-schedule-tab.png| image:: /_static/images/vm-schedule-tab.png
