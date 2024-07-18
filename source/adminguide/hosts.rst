@@ -244,11 +244,10 @@ To change a Node's password:
 
    .. code:: bash
 
-      java -classpath /usr/share/cloudstack-common/lib/jasypt-1.9.0.jar \
-      org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI \
-      encrypt.sh input="newrootpassword" \
-      password="databasekey" \
-      verbose=false
+      java -classpath /usr/share/cloudstack-common/lib/cloudstack-utils.jar \
+      com.cloud.utils.crypt.EncryptionCLI \
+      -p databasekey \
+      -i newrootpassword
 
 #. Get the list of host IDs for the host in the cluster where you are
    changing the password. You will need to access the database to
