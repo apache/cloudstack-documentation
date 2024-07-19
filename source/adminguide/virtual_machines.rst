@@ -1512,7 +1512,8 @@ Instance disk statistics are shown in the Metrics tab in an individual volume vi
    different hypervisors. For instance, with KVM, metrics are real-time
    statistics provided by libvirt. In contrast, with VMware, the metrics are
    averaged data based on the global configuration parameter
-   `vmware.stats.time.window`.
+   `vmware.stats.time.window` and a lower value for the configuration may help
+   observe statistics closer to the real-time values.
 
 
 .. |vm-lifecycle.png| image:: /_static/images/vm-lifecycle.png
