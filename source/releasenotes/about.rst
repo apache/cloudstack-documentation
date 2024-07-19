@@ -17,7 +17,7 @@
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is a 4.19 LTS minor release with over 150 fixes
+Apache CloudStack |release| is a 4.19 LTS minor release with over 300 fixes
 and improvements since the 4.19.0.0 release. Some of the highlights include:
 
 • Improvements for VMware migration to KVM
