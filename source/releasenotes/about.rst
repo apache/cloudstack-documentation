@@ -17,11 +17,21 @@
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is the initial 4.19 LTS release. It has over 300 fixes
-and features since the 4.18.1.0 release.
+Apache CloudStack |release| is a 4.19 LTS minor release with over 150 fixes
+and improvements since the 4.19.0.0 release. Some of the highlights include:
+
+• Improvements for VMware migration to KVM
+• Support to manage/unmanage DATA volume of a primary storage on KVM
+• Support for NFS mount options for a primary storage on KVM
+• Support to change storage pool scope from Cluster to Zone and vice versa
+• Support for RHEL/OL/Rocky/Alma Linux in the same cluster
+• Import from remote KVM enhancements
+• Storage plugins, PowerFlex, StorPool, Linstor related fixes and improvements
+• Some CKS, Veeam (B&R) related fixes and improvements
+• Several UI fixes and improvements
 
 The full list of fixes and improvements can be found in the project release notes at
-https://docs.cloudstack.apache.org/en/4.19.0.0/releasenotes/changes.html
+https://docs.cloudstack.apache.org/en/4.19.1.0/releasenotes/changes.html
 
 What's in since 4.19.0.0
 ========================
