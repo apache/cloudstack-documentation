@@ -17,6 +17,12 @@ What's New in |release|
 =======================
 
 Refer to the advisory blog at
+https://cloudstack.apache.org/blog/security-release-advisory-cve-2024-41107
+
+What's in since 4.18.2.1
+========================
+
+Refer to the advisory blog at
 https://cloudstack.apache.org/blog/security-release-advisory-4.19.0.2-4.18.2.1
 
 What's in since 4.18.2.0
