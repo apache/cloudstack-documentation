@@ -1448,19 +1448,19 @@ Working with Domain VPCs
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 The functionality of domain VPCs allows operators to aggregate multiple
-tiers from distinct users on the same VPC, reducing the number of virtual
+Network Tiers from distinct users on the same VPC, reducing the number of virtual
 routers necessary in the environment, and consequently, decreasing the
-amount of public IP addresses consumed. All tiers added to the VPC share
+amount of public IP addresses consumed. All Network Tiers added to the VPC share
 the same VR, but each one has their own broadcast domain and features
 implemented by the VPC, such as DHCP, NAT, and so on.
 
-In order to utilize this functionality, a new tier must be included to an
+In order to utilize this functionality, a new Network Tier must be included to an
 existing VPC by inputing the respective data for the account and the VPC
 on the **'createNetwork'** API. It is important to note that, in order
-for a tier of a different account to be created on the VPC, the account
-that creates the tier must have access to both the account that owns the
-VPC and the account that owns the tier. The owner of the VPC must also
-have access to the account that owns the network, however, the opposite
+for a Network Tier of a different account to be created on the VPC, the account
+that creates the Network Tier must have access to both the account that owns the
+VPC and the account that owns the Network Tier. The owner of the VPC must also
+have access to the account that owns the Network Tier, however, the opposite
 is not required.
 
 
