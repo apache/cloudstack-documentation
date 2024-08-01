@@ -288,6 +288,11 @@ To create a network offering:
       For more information on VPCs, see `“About Virtual
       Private Clouds” <networking_and_traffic.html#about-virtual-private-clouds>`_.
 
+   -  **Network mode**. This option indicates the mode with which the network will operate.
+      Valid options are NATTED (default) or ROUTED. This applies on isolated networks only.
+      For more information on Network mode, Dynamic and Static routing, see `“Dynamic and
+      Static Routing” <networking_and_traffic.html#network-mode>`_.
+
    -  **Promiscuous Mode**. Applicable for guest networks on VMware hypervisor only. It accepts the following values for desired behaviour of the network elements:
 
       *Reject* - The switch drops any outbound frame from an Instance adapter with a source MAC address that is different from the one in the .vmx configuration file.
