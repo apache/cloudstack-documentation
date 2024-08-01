@@ -203,6 +203,23 @@ changes can control the behaviour.
 
 #. Restart the Management Server.
 
+#. CloudStack creates the exchange ‘cloudstack-events’ which will receive messages containing CloudStack events; however will be no queues created.
+
+   To create a queue and bind with cloudstack-events the following steps are needed:
+
+   - Go to Queues tab and add a queue, e.g. 'cloudstack-queue’
+   - Go to Exchanges tab and Bind to queue cloudstack-queue with the desired ‘Routing key’.
+
+
+#. Routing keys 
+
+   The routing key is a list of words, delimited by a period ("."). CloudStack builds routing keys according to each event type, some examples are:
+
+   Some example of routing keys that match CloudStack events:
+   - A pound symbol (“#”) indicates a match on zero or more words; thus, it will match any possible set of words; 
+   - Asterisk (“*”) matching any word and the period (“.”) delimiting example '\*.*.*.*.*'
+
+
 Kafka Configuration
 ~~~~~~~~~~~~~~~~~~~
 
@@ -214,7 +231,20 @@ changes can control the behaviour.
    which contains valid kafka configuration properties as documented in http://kafka.apache.org/documentation.html#newproducerconfigs
    The properties may contain an additional ``topic`` property which if not provided will default to ``cloudstack``.
    While ``key.serializer`` and ``value.serializer`` are usually required for a producer to correctly start, they may be omitted and
-   will default to ``org.apache.kafka.common.serialization.StringSerializer``.
+   will default to ``org.apache.kafka.common.serialization.StringSerializer``. A sample example which will be used by cloudstack for exporting of events
+
+   .. parsed-literal::
+
+      cat /etc/cloudstack/management/kafka.producer.properties
+
+      bootstrap.servers=<localhost>:9092
+      acks=all
+      topic=cs
+      retries=1
+    
+
+
+   
 
 #. Create the folder ``/etc/cloudstack/management/META-INF/cloudstack/core``
 
