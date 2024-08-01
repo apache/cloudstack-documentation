@@ -291,7 +291,10 @@ To create a network offering:
    -  **Network mode**. This option indicates the mode with which the network will operate.
       Valid options are NATTED (default) or ROUTED. This applies on isolated networks only.
       For more information on Network mode, Dynamic and Static routing, see `“Dynamic and
-      Static Routing” <networking_and_traffic.html#network-mode>`_.
+      Static Routing” <networking_and_traffic.html#dynamic-and-static-routing>`_.
+
+   -  **Routing mode**. This option indicates the routing mode for the network offering.
+      Supported types are: Static or Dynamic.
 
    -  **Promiscuous Mode**. Applicable for guest networks on VMware hypervisor only. It accepts the following values for desired behaviour of the network elements:
 
