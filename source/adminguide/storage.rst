@@ -1381,6 +1381,94 @@ Deleting objects from a bucket
 
 2. Click on the |delete-button.png| button to delete the selected files from the bucket.
 
+File Shares
+---------------
+
+Cloudstack offers fully managed NFS File Shares to all users.
+This section gives technical details on how to create/manage a File Share
+using basic lifecycle operations and also some implementation details.
+
+Creating a New File Share 
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. Log in to the CloudStack UI as a user or administrator.
+
+#. In the left navigation bar, click Storage.
+
+#. In the Select View, choose File Shares.
+
+Click on Create File Share, provide the following details and then click OK.
+
+#. Name
+#. Description
+#. Zone
+#. Format: Filesystem format (XFS, EXT4) which will be installed on the File Share.
+#. Network: Guest network to which the File Share will be attached.
+#. Compute offering: Offering using which the File Share VM will be deployed.
+#. Disk offering: Offering used by the underlying data volume.
+#. Size, MinIops and MaxIos: Displayed only when the disk offering takes custom size and custom iops.
+
+|create-fileshare.png|
+
+Admins will see extra fields in the create form where they can specify the
+account, domain and the project which will be owning the fileshare.
+|create-fileshare-admin.png|
+
+Access
+~~~~~~
+The File Share can be mounted by using the information given on the Access Tab.
+|fileshare-access-tab.png|
+
+Lifecycle Operations 
+~~~~~~~~~~~~~~~~~~~~
+
+Supported lifecycle operations are :
+
+#. Update File Share's Name and Description
+
+#. Stop/Start File Share - This will Stop and Start the File Share VM
+
+#. Restart File Share - Reboots the File Share VM. If Cleanup option is provided then a new VM
+   is deployed to serve the File Share and the old VM is destroyed. This will also change the
+   access IP address of the File Share. More details in the File Share VM section below.
+   |restart-fileshare.png|
+
+#. Change Disk Offering - The disk offering of the underlying volume can be changed without any downtime.
+
+#. Change Service Offering - The service offering of the file share VM can be changed as required.
+   This will internally do a Restart with cleanup of the File Share.
+
+#. Destroy File Share - The File Share will be destroyed. It can be recovered before it automatically gets expunged.
+   Expunge timeout is given by the global setting 'fileshare.cleanup.delay'.
+   |change-fileshare-svc-off.png|
+
+File Share VM
+~~~~~~~~~~~~~~
+The File Share VM is stateless and HA enabled. A new VM is deployed and will start
+serving the NFS share if the host or VM goes down.
+The VM is installed with the SystemVM template which is also used by the CPVM and SSVM.
+Users also have the option to do 'Restart with cleanup' which will destroy the old
+VM and deploy a new VM to serve the NFS share. This action can be used for troubleshooting and
+for upgrading the Systemvm template.
+
+The File Share VM can be seen in the Instance Tab as well. It's name is prefixed by the
+File Share name. Actions that might interfere with File Share operations are blocked or not shown.
+Basic operaions like Start, Stop and Reboot are allowed for troubleshooting.
+Users can access the VM using the 'View Console' button for throbleshooting although it is not
+recommended during normal operations.
+
+Service Offering
+~~~~~~~~~~~~~~~~
+There are two global settings that control what should be the minimum RAM size and minimum
+CPU count for the fileshare VM : 'storagefsvm.min.cpu.count' and 'storagefsvm.min.ram.size`.
+Only those offerings which meet these settings and have HA enabled are shown in the create form.
+
+File Share Data Volume
+~~~~~~~~~~~~~~~~~~~~~~
+The data volume is also visible to the users. It is recommended to use the File Share UI/API to
+manage the data but users or admin can perform actions directly on the data volume or the root volume
+as well if they wish. Attaching and detaching a disk is not allowed on a File Share VM.
+
 .. |AttachDiskButton.png| image:: /_static/images/attach-disk-icon.png
    :alt: Attach Disk Button.
 .. |resize-volume-icon.png| image:: /_static/images/resize-volume-icon.png
@@ -1421,4 +1509,14 @@ Deleting objects from a bucket
    :alt: Import Volume
 .. |unmanage-volume.png| image:: /_static/images/unmanage-volume.png
    :alt: Unmanage Volume
+.. |create-fileshare.png| image:: /_static/images/create-fileshare.png
+   :alt: Create File Share
+.. |create-fileshare-admin.png| image:: /_static/images/create-fileshare-admin.png
+   :alt: Create File Share Admin Options
+.. |restart-fileshare.png| image:: /_static/images/restart-fileshare.png
+   :alt: Restart File Share
+.. |change-fileshare-svc-off.png| image:: /_static/images/change-fileshare-svc-off.png
+   :alt: Change File Share Service Offering
+.. |fileshare-access-tab.png| image:: /_static/images/fileshare-access-tab.png
+   :alt: File Share Access Tab
 
