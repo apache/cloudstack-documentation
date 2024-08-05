@@ -321,7 +321,7 @@ you would change the configuration similar to below.
        bridge_maxwait 1
 
 
-Configure iptables to pass XVLAN packets
+Configure iptables to pass VXLAN packets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Since VXLAN uses UDP packet to forward encapsulated the L2 frames,
