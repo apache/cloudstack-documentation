@@ -119,7 +119,7 @@ Create Network with Static Routing for IPv4
 
 To create a network with static routing, users need to navigate to Network -> Add Network -> Isolated, and
 
-- Choose a network offering with ROUTED mode
+- Choose a network offering with ROUTED mode and routing mode is Static
 - Specify the gateway and netmask (available for ROOT admin only)
 - OR, specify the cidrsize (available for all users)
 
@@ -163,17 +163,63 @@ Supported CloudStack API for operators to manage the IPv4 Routing firewall rules
 Manage AS number for Dynamic Routing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TODO
+To create network with dynamic routing, operators must add AS number ranges in advance by navigating to Infrastructure -> Zones -> choose a zone -> AS Number.
+
+|dynamic-routing-as-number-ranges.png|
+
+Supported CloudStack API for operators to manage the AS number ranges and AS numbers are:
+
+- **createASNRange** : Creates a range of Autonomous Systems for BGP Dynamic Routing
+- **listASNRanges** : List Autonomous Systems Number Ranges
+- **deleteASNRange** : deletes a range of Autonomous Systems for BGP Dynamic Routing
+- **listASNumbers** : List Autonomous Systems Numbers
+- **releaseASNumber** : Releases an AS Number back to the pool
+
+Operators can list the AS numbers by navigating to Network -> AS Numbers
+
+|dynamic-routing-as-numbers.png|
+
 
 Manage BPG peers for Dynamic Routing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TODO
+To create network with dynamic routing, operators must add BGP peers in advance. Guest networks with Dynamic Routing will connect to all BGP peers the account can access.
+
+|dynamic-routing-bgp-peers.png|
+
+Supported CloudStack API for operators to manage the BGP peers are:
+
+- **createBgpPeer** : create a BGP peer
+- **dedicateBgpPeer** : dedicate a BGP peer to a domain or an account
+- **deleteBgpPeer** : delete a BGP peer
+- **listBgpPeers** : list BGP peers
+- **releaseBgpPeer** : release a dedicated IPv4 subnet for zone from a domain or an account
+- **updateBgpPeer** : update a BGP peer
+
 
 Create Network with Dynamic Routing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TODO
+The steps to create a network with dynamic routing is almost same as the network with static routing. The only difference is that, users need to choose a network offering with routing mode is Dynamic.
+
+During the network creation, CloudStack will
+
+- Allocate an AS number to the network
+- Configure BGP sessions in the network VR to connect to all BGP peers the network owner can access.
+
+ROOT admin can change BGP peers of an existing network with Dynamic routing.
+
+|dynamic-routing-change-network-bgp-peers.png|
+
+
+Create VPC with Dynamic Routing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The creation of VPC with Dynamic routing is almost as VPC with static routing. CloudStack will allocate an AS number to the VPC, and configure BGP session in the VPC VR to connect to all BGP peers the VPC owner can access.
+
+ROOT admin can change BGP peers of an existing VPC with Dynamic routing.
+
+|dynamic-routing-change-vpc-bgp-peers.png|
 
 
 .. |manage-ipv4-subnets-for-zone.png| image:: /_static/images/manage-ipv4-subnets-for-zone.png
@@ -196,4 +242,19 @@ TODO
 
 .. |routed-ipv4-routing-firewall.png| image:: /_static/images/routed-ipv4-routing-firewall.png
    :alt: IPv4 routing firewall rules
+
+.. |dynamic-routing-as-number-ranges.png| image:: /_static/images/dynamic-routing-as-number-ranges.png
+   :alt: AS number ranges for Dynamic Routing
+
+.. |dynamic-routing-as-numbers.png| image:: /_static/images/dynamic-routing-as-numbers.png
+   :alt: AS numbers for Dynamic Routing
+
+.. |dynamic-routing-bgp-peers.png| image:: /_static/images/dynamic-routing-bgp-peers.png
+   :alt: BGP peers for Dynamic Routing
+
+.. |dynamic-routing-change-network-bgp-peers.png| image:: /_static/images/dynamic-routing-change-network-bgp-peers.png
+   :alt: Change BGP peers for network with Dynamic Routing
+
+.. |dynamic-routing-change-vpc-bgp-peers.png| image:: /_static/images/dynamic-routing-change-vpc-bgp-peers.png
+   :alt: Change BGP peers for VPC with Dynamic Routing
 
