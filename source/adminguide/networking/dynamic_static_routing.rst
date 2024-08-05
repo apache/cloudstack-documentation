@@ -54,18 +54,67 @@ There are two valid options
 - Dynamic. The AS number will be automatically allocated, and BGP peer sessions will be set up automatically in the VR of the isolated networks or VPCs. The operators need to add the AS number ranges and BGP peers for each zone before creating network with Dynamic routing mode.
 
 
+Manage IPv4 Subnets for Zone
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Like IPv6 prefixes, operators need to configure the IPv4 subnets for zone, which will be eventually used by guest networks.
+
+Supported CloudStack API for operators to manage the IPv4 subnets for zone are:
+
+- **createIpv4SubnetForZone** : create an IPv4 subnet for zone
+- **dedicateIpv4SubnetForZone** : dedicate an IPv4 subnet for zone to a domain or an account
+- **deleteIpv4SubnetForZone** : delete an IPv4 subnet for zone
+- **listIpv4SubnetsForZone** : list IPv4 subnets for zone
+- **releaseIpv4SubnetForZone** : release a dedicated IPv4 subnet for zone from a domain or an account
+- **updateIpv4SubnetForZone** : update an IPv4 subnet for zone
+
+Operators (root admins) can manage the IPv4 subnets for zone by navigating to Infrastructure -> Zones -> IPv4 Subnets
+|manage-ipv4-subnets-for-zone.png|
+
+
+Manage IPv4 Subnets for Guest Networks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Unlike IPv6 (each isolated network with IPv6 support gets a /64 IPv6 network), operators need to manage IPv4 subnets for guest networks.
+An IPv4 subnet for guest networks is created from its parent which is a IPv4 subnet for zone.
+
+.. cssclass:: table-striped table-bordered table-hover
+
+======================================= ========================
+Configuration                            Description
+======================================= ========================
+routed.ipv4.network.cidr.auto.allocation.enabled    whether the auto-allocation of network CIDR for routed network is enabled or not. True by default.
+routed.ipv4.network.max.cidr.size       The maximum value of the cidr size for isolated networks in ROUTED mode	
+routed.ipv4.network.min.cidr.size       The minimum value of the cidr size for isolated networks in ROUTED mode	
+routed.ipv4.vpc.max.cidr.size           The maximum value of the cidr size for VPC in ROUTED mode	
+routed.ipv4.vpc.min.cidr.size           The minimum value of the cidr size for VPC in ROUTED mode	
+======================================= ========================
+
+Supported CloudStack API for operators to manage the IPv4 subnets for guest networks are:
+
+- **createIpv4SubnetForGuestNetwork** : create an IPv4 subnet for guest networks
+- **deleteIpv4SubnetForGuestNetwork** : delete an IPv4 subnet for guest networks
+- **listIpv4SubnetsForGuestNetwork** : list IPv4 subnets for guest networks
+ 
+Operators (root admins) can manage the IPv4 subnet by navigating to Network -> IPv4 Subnets
+|manage-ipv4-subnets-for-networks.png|
+
+
 Create Network and VPC Offering with ROUTED mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For more information, see `“Creating a New Network Offering” <networking.html#creating-a-new-network-offering>`_.
+To create network offering with ROUTED mode, see `“Creating a New Network Offering” <networking.html#creating-a-new-network-offering>`_.
 
-TODO
+|routed-add-network-offering.png|
+
+To create VPC offering with ROUTED mode, see below
+
+|routed-add-vpc-offering.png|
 
 
 Create Network with Static Routing for IPv4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TODO
 
 
 Create Network with Static Routing for IPv6
@@ -79,7 +128,7 @@ Manage IPv4 Routing Firewall
 
 TODO
 
-Manage AS number
+Manage AS number for Dynamic Routing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TODO
@@ -93,4 +142,17 @@ Create Network with Dynamic Routing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TODO
+
+
+.. |manage-ipv4-subnets-for-zone.png| image:: /_static/images/manage-ipv4-subnets-for-zone.png
+   :alt: Manage IPv4 subnets for zoone
+
+.. |manage-ipv4-subnets-for-networks.png| image:: /_static/images/manage-ipv4-subnets-for-networks.png
+   :alt: Manage IPv4 subnets for guest networks
+
+.. |routed-add-network-offering.png| image:: /_static/images/routed-add-network-offering.png
+   :alt: Add network offering with ROUTED mode
+
+.. |routed-add-vpc-offering.png| image:: /_static/images/routed-add-vpc-offering.png
+   :alt: Add vpc offering with ROUTED mode
 
