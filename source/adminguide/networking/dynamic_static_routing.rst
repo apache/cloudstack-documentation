@@ -78,17 +78,19 @@ Manage IPv4 Subnets for Guest Networks
 Unlike IPv6 (each isolated network with IPv6 support gets a /64 IPv6 network), operators need to manage IPv4 subnets for guest networks.
 An IPv4 subnet for guest networks is created from its parent which is a IPv4 subnet for zone.
 
+There are some global settings which can be set for each account. See below
+
 .. cssclass:: table-striped table-bordered table-hover
 
-======================================= ========================
-Configuration                            Description
-======================================= ========================
+================================================= ========================
+Configuration                                       Description
+================================================= ========================
 routed.ipv4.network.cidr.auto.allocation.enabled    whether the auto-allocation of network CIDR for routed network is enabled or not. True by default.
-routed.ipv4.network.max.cidr.size       The maximum value of the cidr size for isolated networks in ROUTED mode	
-routed.ipv4.network.min.cidr.size       The minimum value of the cidr size for isolated networks in ROUTED mode	
-routed.ipv4.vpc.max.cidr.size           The maximum value of the cidr size for VPC in ROUTED mode	
-routed.ipv4.vpc.min.cidr.size           The minimum value of the cidr size for VPC in ROUTED mode	
-======================================= ========================
+routed.ipv4.network.max.cidr.size                   The maximum value of the cidr size for isolated networks in ROUTED mode	
+routed.ipv4.network.min.cidr.size                   The minimum value of the cidr size for isolated networks in ROUTED mode	
+routed.ipv4.vpc.max.cidr.size                       The maximum value of the cidr size for VPC in ROUTED mode	
+routed.ipv4.vpc.min.cidr.size                       The minimum value of the cidr size for VPC in ROUTED mode	
+================================================= ========================
 
 Supported CloudStack API for operators to manage the IPv4 subnets for guest networks are:
 
@@ -115,6 +117,23 @@ To create VPC offering with ROUTED mode, see below
 Create Network with Static Routing for IPv4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+To create a network with static routing, users need to navigate to Network -> Add Network -> Isolated, and
+
+- Choose a network offering with ROUTED mode
+- Specify the gateway and netmask (available for ROOT admin only)
+- OR, specify the cidrsize (available for all users)
+
+|routed-add-network-cidrsize.png|
+
+If cidrsize is specified, CloudStack will allocate an IPv4 subnet for guest network to the net network
+
+- Check if there is an IPv4 subnet with same CIDR size available,
+- If not, and setting "routed.ipv4.network.cidr.auto.allocation.enabled" is true for account, allocate an IPv4 subnet for the new network, from the IPv4 subnet for zone which the account can access.
+- Otherwise, the network creation fails.
+
+When the network is implemented, the Ipv4 routes are displayed in the network details page.
+
+|routed-ipv4-routes.png|
 
 
 Create Network with Static Routing for IPv6
@@ -123,10 +142,23 @@ Create Network with Static Routing for IPv6
 The IPv6 static routing has been introduced in Apache CloudStack 4.17.0.0.
 For more information, see `“IPv6 support for isolated networks and VPC Network Tiers” <../plugins/ipv6.html#isolated-network-and-vpc-network-tier>`_.
 
+Users can create network with static routing for both IPv4 and IPv6, if the network offering supports DualStack.
+
+
 Manage IPv4 Routing Firewall
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TODO
+Users can manage the IPv4 Routing firewalls by navigating to Network -> Guest Networks -> choose a network -> IPv4 Routing Firewall
+
+|routed-ipv4-routing-firewall.png|
+
+Supported CloudStack API for operators to manage the IPv4 Routing firewall rules are:
+
+- **createRoutingFirewallRule** : create an IPv4 routing firewall rule
+- **updateRoutingFirewallRule** : update an IPv4 routing firewall rule
+- **deleteRoutingFirewallRule** : delete an IPv4 routing firewall rule
+- **listRoutingFirewallRules** : list IPv4 routing firewall rules
+
 
 Manage AS number for Dynamic Routing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -155,4 +187,13 @@ TODO
 
 .. |routed-add-vpc-offering.png| image:: /_static/images/routed-add-vpc-offering.png
    :alt: Add vpc offering with ROUTED mode
+
+.. |routed-add-network-cidrsize.png| image:: /_static/images/routed-add-network-cidrsize.png
+   :alt: Add ROUTED network with specified cidr size
+
+.. |routed-ipv4-routes.png| image:: /_static/images/routed-ipv4-routes.png
+   :alt: IPv4 static routes
+
+.. |routed-ipv4-routing-firewall.png| image:: /_static/images/routed-ipv4-routing-firewall.png
+   :alt: IPv4 routing firewall rules
 
