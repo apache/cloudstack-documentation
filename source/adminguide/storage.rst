@@ -1414,6 +1414,9 @@ Admins will see extra fields in the create form where they can specify the
 account, domain and the project which will be owning the fileshare.
 |create-fileshare-admin.png|
 
+.. note:: 
+   This feature is available only on advanced zones without security groups.
+
 Access
 ~~~~~~
 The File Share can be mounted by using the information given on the Access Tab.
@@ -1434,13 +1437,23 @@ Supported lifecycle operations are :
    |restart-fileshare.png|
 
 #. Change Disk Offering - The disk offering of the underlying volume can be changed without any downtime.
+   Please note that the size of the File Share can only be increased.
 
 #. Change Service Offering - The service offering of the file share VM can be changed as required.
    This will internally do a Restart with cleanup of the File Share.
 
+#. Add/Remove Network - Guest networks can be added to or removed from the File Share.
+   NFS share is exported to all networks. So VMs on different networks can mount the
+   same share using the respective IP addresses as given on the Access tab.
+   APIs serving these operations are addNicToVirtualMachine and removeNicToVirtualMachine
+   called with the File Share VM ID.
+   Please not that the added networks must not be on overlapping CIDR ranges.
+   |add-remove-fileshare-network.png|
+
 #. Destroy File Share - The File Share will be destroyed. It can be recovered before it automatically gets expunged.
    Expunge timeout is given by the global setting 'fileshare.cleanup.delay'.
    |change-fileshare-svc-off.png|
+
 
 File Share VM
 ~~~~~~~~~~~~~~
@@ -1454,7 +1467,7 @@ for upgrading the Systemvm template.
 The File Share VM can be seen in the Instance Tab as well. It's name is prefixed by the
 File Share name. Actions that might interfere with File Share operations are blocked or not shown.
 Basic operaions like Start, Stop and Reboot are allowed for troubleshooting.
-Users can access the VM using the 'View Console' button for throbleshooting although it is not
+Users can access the VM using the 'View Console' button for troubleshooting although it is not
 recommended during normal operations.
 
 Service Offering
@@ -1519,4 +1532,6 @@ as well if they wish. Attaching and detaching a disk is not allowed on a File Sh
    :alt: Change File Share Service Offering
 .. |fileshare-access-tab.png| image:: /_static/images/fileshare-access-tab.png
    :alt: File Share Access Tab
+.. |add-remove-fileshare-network.png| image:: /_static/images/add-remove-fileshare-network.png
+   :alt: File Share Networks
 
