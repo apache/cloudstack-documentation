@@ -518,7 +518,7 @@ Buckets are logical containers for storing objects.
 
 About File Shares
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Cloudstack users can setup Cloudstack managed NFS File Shares. Users can choose
+CloudStack users can setup CloudStack managed NFS File Shares. Users can choose
 the service offering, disk offering, filesystem format and network.
 The File Shares are deployed on a VM with the specified service offering.
 A data volume is created using the given disk offering and attached to the VM.

@@ -1384,9 +1384,12 @@ Deleting objects from a bucket
 File Shares
 ---------------
 
-Cloudstack offers fully managed NFS File Shares to all users.
+CloudStack offers fully managed NFS File Shares to all users.
 This section gives technical details on how to create/manage a File Share
 using basic lifecycle operations and also some implementation details.
+
+.. note:: 
+   This feature is available only on advanced zones without security groups.
 
 Creating a New File Share 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1414,9 +1417,6 @@ Admins will see extra fields in the create form where they can specify the
 account, domain and the project which will be owning the fileshare.
 |create-fileshare-admin.png|
 
-.. note:: 
-   This feature is available only on advanced zones without security groups.
-
 Access
 ~~~~~~
 The File Share can be mounted by using the information given on the Access Tab.
@@ -1427,7 +1427,7 @@ Lifecycle Operations
 
 Supported lifecycle operations are :
 
-#. Update File Share's Name and Description
+#. Update name and description of the File Share
 
 #. Stop/Start File Share - This will Stop and Start the File Share VM
 
@@ -1447,7 +1447,7 @@ Supported lifecycle operations are :
    same share using the respective IP addresses as given on the Access tab.
    APIs serving these operations are addNicToVirtualMachine and removeNicToVirtualMachine
    called with the File Share VM ID.
-   Please not that the added networks must not be on overlapping CIDR ranges.
+   Please note that the added networks must not be on overlapping CIDR ranges.
    |add-remove-fileshare-network.png|
 
 #. Destroy File Share - The File Share will be destroyed. It can be recovered before it automatically gets expunged.
