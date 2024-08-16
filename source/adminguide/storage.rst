@@ -1194,7 +1194,7 @@ incremental backups are supported, every N backup is a full backup.
 +------------------------------+------------------+------------------+-----+
 |                              | VMware vSphere   | Citrix XenServer | KVM |
 +==============================+==================+==================+=====+
-| Support incremental backup   | No               | Yes              | No  |
+| Support incremental backup   | No               | Yes              | Yes |
 +------------------------------+------------------+------------------+-----+
 
    .. note::
