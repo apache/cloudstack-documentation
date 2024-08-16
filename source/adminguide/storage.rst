@@ -1152,7 +1152,7 @@ Since 4.20.0.0, ACS supports incremental snapshots for the KVM hypervisor when u
 to enable incremental snapshots the ``kvm.incremental.snapshot`` configuration must be enabled. Furthermore, in order to take incremental snapshots
 the KVM host must have at least Libvirt version 7.6.0+ and qemu version 6.1+. The size of the snapshot chains
 will be determined by the ``snapshot.delta.max`` configuration, which affects both KVM and XenServer snapshots. 
-More information on the incremental snapshot feature for KVM can be found in its (specification)[https://github.com/apache/cloudstack/issues/8907].
+More information on the incremental snapshot feature for KVM can be found in its `specification <https://github.com/apache/cloudstack/issues/8907>`.
 
 
 Automatic Snapshot Creation and Retention
