@@ -152,7 +152,7 @@ Users can manage the IPv4 Routing firewalls by navigating to Network -> Guest Ne
 
 |routed-ipv4-routing-firewall.png|
 
-Supported CloudStack API for operators to manage the IPv4 Routing firewall rules are:
+Supported CloudStack APIs for operators to manage the IPv4 Routing firewall rules are:
 
 - **createRoutingFirewallRule** : create an IPv4 routing firewall rule
 - **updateRoutingFirewallRule** : update an IPv4 routing firewall rule
