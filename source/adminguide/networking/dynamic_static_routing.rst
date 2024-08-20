@@ -167,7 +167,7 @@ To create network with dynamic routing, operators must add AS number ranges in a
 
 |dynamic-routing-as-number-ranges.png|
 
-Supported CloudStack API for operators to manage the AS number ranges and AS numbers are:
+Supported CloudStack APIs for operators to manage the AS number ranges and AS numbers are:
 
 - **createASNRange** : Creates a range of Autonomous Systems for BGP Dynamic Routing
 - **listASNRanges** : List Autonomous Systems Number Ranges
