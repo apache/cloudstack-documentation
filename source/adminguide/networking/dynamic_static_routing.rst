@@ -85,7 +85,7 @@ There are some global settings which can be set for each account. See below
 ================================================= ========================
 Configuration                                       Description
 ================================================= ========================
-routed.ipv4.network.cidr.auto.allocation.enabled    whether the auto-allocation of network CIDR for routed network is enabled or not. True by default.
+routed.ipv4.network.cidr.auto.allocation.enabled    Whether the auto-allocation of network CIDR for routed network is enabled or not. True by default.
 routed.ipv4.network.max.cidr.size                   The maximum value of the cidr size for isolated networks in ROUTED mode	
 routed.ipv4.network.min.cidr.size                   The minimum value of the cidr size for isolated networks in ROUTED mode	
 routed.ipv4.vpc.max.cidr.size                       The maximum value of the cidr size for VPC in ROUTED mode	
