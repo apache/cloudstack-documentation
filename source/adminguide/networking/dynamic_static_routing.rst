@@ -187,7 +187,7 @@ To create network with dynamic routing, operators must add BGP peers in advance.
 
 |dynamic-routing-bgp-peers.png|
 
-Supported CloudStack API for operators to manage the BGP peers are:
+Supported CloudStack APIs for operators to manage the BGP peers are:
 
 - **createBgpPeer** : create a BGP peer
 - **dedicateBgpPeer** : dedicate a BGP peer to a domain or an account
