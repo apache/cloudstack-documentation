@@ -59,7 +59,7 @@ Manage IPv4 Subnets for Zone
 
 Like IPv6 prefixes, operators need to configure the IPv4 subnets for zone, which will be eventually used by guest networks.
 
-Supported CloudStack API for operators to manage the IPv4 subnets for zone are:
+Supported CloudStack APIs for operators to manage the IPv4 subnets for zone are:
 
 - **createIpv4SubnetForZone** : create an IPv4 subnet for zone
 - **dedicateIpv4SubnetForZone** : dedicate an IPv4 subnet for zone to a domain or an account
