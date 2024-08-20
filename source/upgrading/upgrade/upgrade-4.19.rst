@@ -13,7 +13,7 @@
     specific language governing permissions and limitations
     under the License.
 
-.. |version_to_upgrade| replace:: 4.18.x
+.. |version_to_upgrade| replace:: 4.19.x
 
 Upgrade Instruction from |version_to_upgrade|
 =============================================
