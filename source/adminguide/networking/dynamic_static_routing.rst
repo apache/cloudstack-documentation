@@ -92,7 +92,7 @@ routed.ipv4.vpc.max.cidr.size                       The maximum value of the cid
 routed.ipv4.vpc.min.cidr.size                       The minimum value of the cidr size for VPC in ROUTED mode	
 ================================================= ========================
 
-Supported CloudStack API for operators to manage the IPv4 subnets for guest networks are:
+Supported CloudStack APIs for operators to manage the IPv4 subnets for guest networks are:
 
 - **createIpv4SubnetForGuestNetwork** : create an IPv4 subnet for guest networks
 - **deleteIpv4SubnetForGuestNetwork** : delete an IPv4 subnet for guest networks
