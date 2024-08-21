@@ -193,7 +193,7 @@ Supported CloudStack APIs for operators to manage the BGP peers are:
 - **dedicateBgpPeer** : dedicate a BGP peer to a domain or an account
 - **deleteBgpPeer** : delete a BGP peer
 - **listBgpPeers** : list BGP peers
-- **releaseBgpPeer** : release a dedicated IPv4 subnet for zone from a domain or an account
+- **releaseBgpPeer** : release a dedicated BGP peer from a domain or an account
 - **updateBgpPeer** : update a BGP peer
 
 
