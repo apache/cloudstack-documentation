@@ -205,9 +205,10 @@ The steps to create a network with dynamic routing is almost same as the network
 During the network creation, CloudStack will
 
 - Allocate an AS number to the network
-- Configure BGP sessions in the network VR to connect to all BGP peers the network owner can access.
+- If the network owner does not have dedicated BGP peers, or account setting "use.system.bgp.peers" is set to true, configure BGP sessions in the network VR to connect to all BGP peers the network owner can access.
+- If the network owner has dedicated BGP peers, and account setting "use.system.bgp.peers" is set to false, configure BGP sessions in the network VR to connect to all dedicated BGP peers of the domain and the network owner.
 
-ROOT admin can change BGP peers of an existing network with Dynamic routing.
+ROOT admin can change BGP peers of an existing network with Dynamic routing. After that, the network VR will only connect to selected BGP peers.
 
 |dynamic-routing-change-network-bgp-peers.png|
 
@@ -215,12 +216,16 @@ ROOT admin can change BGP peers of an existing network with Dynamic routing.
 Create VPC with Dynamic Routing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The creation of VPC with Dynamic routing is almost as VPC with static routing. CloudStack will allocate an AS number to the VPC, and configure BGP session in the VPC VR to connect to all BGP peers the VPC owner can access.
+The creation of VPC with Dynamic routing is almost as VPC with static routing. CloudStack will allocate an AS number to the VPC, and 
+- If the VPC owner does not have dedicated BGP peers, or account setting "use.system.bgp.peers" is set to true, configure BGP sessions in the VPC VR to connect to all BGP peers the VPC owner can access.
+- If the VPC owner has dedicated BGP peers, and account setting "use.system.bgp.peers" is set to false, configure BGP sessions in the VOC VR to connect to all dedicated BGP peers of the domain and the VPC owner.
 
-ROOT admin can change BGP peers of an existing VPC with Dynamic routing.
+ROOT admin can change BGP peers of an existing VPC with Dynamic routing. After that, the VPC VR will only connect to selected BGP peers.
 
 |dynamic-routing-change-vpc-bgp-peers.png|
 
+.. note::
+   If a BGP peer is added, removed or updated, the existing network VRs and VPC VRs will not be automatically reconfigured. Please restart the network or VPC to reconfigure the VRs.
 
 .. |manage-ipv4-subnets-for-zone.png| image:: /_static/images/manage-ipv4-subnets-for-zone.png
    :alt: Manage IPv4 subnets for zoone
