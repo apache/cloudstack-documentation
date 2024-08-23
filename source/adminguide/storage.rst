@@ -171,7 +171,6 @@ In order to use multiple local storage pools, you need to
 
        local.storage.uuid=a43943c1-1759-4073-9db1-bc0ea19203aa,f5b1220b-4446-42dc-a872-cffd281f9f8c
        local.storage.path=/var/lib/libvirt/images,/var/lib/libvirt/images2
-#
 
 #. Restart cloudstack-agent service
 
@@ -184,6 +183,15 @@ When using UI, ensure that the scope of the storage is set to "Host", and
 ensure that the protocol is set to "Filesystem".
 
 |adding-local-pool-via-ui.png|
+
+Adding a Local Storage Pool via Command Line
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Using Cloudmonkey command line.
+
+      .. parsed-literal::
+
+         cmk create storagepool zoneid=07d64765-3123-4fc2-b947-25d2c36f5bb4 name=test provider=DefaultPrimary podid=0af34b96-e88d-440e-a6bd-c4e8aab4aa4a clusterid=49db6a16-2f6c-4583-9d07-37ccceb248ae  url=file://10.9.8.7/var/lib/libvirt/images2
 
 Changing the Scope of the Primary Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
