@@ -215,7 +215,7 @@ combinations:
 
 -  KVM with NFS
 
--  KVM wite CEPH/RBD
+-  KVM with CEPH/RBD
 
 -  VMWare with NFS
 
