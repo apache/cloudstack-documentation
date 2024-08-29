@@ -135,6 +135,9 @@ When the network is implemented, the Ipv4 routes are displayed in the network de
 
 |routed-ipv4-routes.png|
 
+.. note::
+   For networks or VPCs with ipv4 static routing, the administrator needs to add upstream IPv4 routes once a network or VPC is successfully deployed.
+
 
 Create Network with Static Routing for IPv6
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
