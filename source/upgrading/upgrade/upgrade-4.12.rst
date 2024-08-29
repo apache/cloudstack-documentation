@@ -163,13 +163,13 @@ read as appropriate for your |version| repository.
 
    .. parsed-literal::
 
-      $ sudo apt-get upgrade cloudstack-management
+      $ sudo apt-get install cloudstack-management
 
 #. If you use CloudStack usage server
 
    .. parsed-literal::
 
-      $ sudo apt-get upgrade cloudstack-usage
+      $ sudo apt-get install cloudstack-usage
 
 
 .. _rhel412:
@@ -285,7 +285,7 @@ hosts.
 
    .. parsed-literal::
 
-      $ sudo apt-get upgrade cloudstack-agent
+      $ sudo apt-get install cloudstack-agent
 
 #. Start the agent.
 
