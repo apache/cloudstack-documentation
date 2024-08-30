@@ -68,7 +68,7 @@ General Concepts
    placeholder for being able to backup and restore your Instances from all hosts within the cluster.
 #. Cross cluster restores are indirectly supported by restoring to the original cluster and then migrating the Virtual
    Machine to the destination cluster.
-#. Any manual KVM backup you initiate (from the hyper-v command line) will be registered in Cloudstack automatically.
+#. Any manual KVM backup you initiate (from the command line) will be registered in Cloudstack automatically.
    You need to use the client scripts and pass the proper parameters to do so.
 #. Any backup you expire/remove from the DELL EMC Networker side will be unregistered in Cloudstack automatically.
 
