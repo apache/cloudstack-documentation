@@ -230,6 +230,28 @@ ROOT admin can change BGP peers of an existing VPC with Dynamic routing. After t
 .. note::
    If a BGP peer is added, removed or updated, the existing network VRs and VPC VRs will not be automatically reconfigured. Please restart the network or VPC to reconfigure the VRs.
 
+
+CloudStack Kubernetes Service support on ROUTED networks and VPCs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To support CloudStack Kubernetes Service on ROUTED networks and VPCs, operators have to configure the networks.
+
+- The management server must be able to connect to the VMs on ROUTED networks or VPCs
+- Some routing firewall Ingress rules (for ROUTED networks) or Network ACL Ingress rules (for ROUTED VPCs) must be configured to open the following ports.
+
+.. cssclass:: table-striped table-bordered table-hover
+
+================= ========================
+Ports              Description
+================= ========================
+22                 The management server configures the CKS nodes via port 22.
+6443               The port of Kubernetes API server.
+8080               The port of Kubernetes Dashboard.
+================= ========================
+
+For more information, see `“CloudStack Kubernetes Service” <../plugins/cloudstack-kubernetes-service.html>`_.
+
+
 .. |manage-ipv4-subnets-for-zone.png| image:: /_static/images/manage-ipv4-subnets-for-zone.png
    :alt: Manage IPv4 subnets for zoone
 
