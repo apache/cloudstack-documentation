@@ -185,6 +185,43 @@ ensure that the protocol is set to "Filesystem".
 
 |adding-local-pool-via-ui.png|
 
+Changing the Scope of the Primary Storage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Scope of a Primary Storage can be changed from Zone-wide to Cluster-wide
+and vice versa when the Primary Storage is in Disabled state.
+An action button is displayed in UI for each Primary Storage in Disabled state.
+
+|change-storage-pool-scope-via-ui.png|
+
+Scope change from Cluster to Zone will connect the Primary Storage to all Hosts
+of the zone running the same hypervisor as set on the storage pool.
+
+|change-storage-pool-scope-to-zone.png|
+
+Scope change from Zone to Cluster will disconnect the Primary Storage from all
+Hosts that were previously connected to the Primary Storage and are not a part
+of the specified Cluster. So, if there are running VMs on such hosts using this
+Storage Pool, they cannot be disconnected from the hosts. In this case the Scope
+change operation will error out.
+The user VMs need to be stopped or migrated and system VMs need to be destroyed
+while the primary Storage is disabled, before attempting the operation again.
+listAffectedVmsForstorageScopeChange API can be used to get the list of all such VMs.
+
+This might be a long running operation depending on how many hosts are there
+in the zone which need to be connected or disconnected to the storage pool.
+
+This feature is tested and supported for the following hypervisor and storage
+combinations:
+
+-  KVM with NFS
+
+-  KVM with CEPH/RBD
+
+-  VMWare with NFS
+
+It is possible to use this functionality with other configurations but some
+manual intervention might be needed by the Administrator to make it work.
+
 Storage Tags
 ~~~~~~~~~~~~
 
@@ -236,6 +273,73 @@ templates, and ISOs.
 
 .. note::
    If files or folders are not associated with a cloudstack resource, it doesn't mean that they are not used by cloudstack.
+
+
+Setting NFS Mount Options on the Storage Pool
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+NFS mount options can be added while creating an NFS storage pool for
+KVM hosts. When the storage pool is mounted on the KVM hypervisor host,
+these options will be used. Options currently tested and supported are
+`vers` and `nconnect`. 
+
+Although it depends on the NFS server, but commonly supported `vers` values 
+are `3` for NFSv3 and minor versions `4.0, 4.1 and 4.2` for NFSv4. 
+`nconnect` values can range from 1 to 16.
+
+Administrator can give the NFS mount options while adding a Primary Storage
+from the Create Zone Wizard as well as the Add Primary Storage form.
+|nfs-mount-options-create-zone-wizard.png|
+|nfs-mount-options-add-primary-storage.png|
+
+NFS mount options can be changed on a pre-existing Storage Pool in maintenance
+mode using the Edit Primary Storage form. Running VMs using volumes in the
+Storage Pool will either be stopped or the volumes would be migrated to other
+available pools upon enabling maintenance mode.
+Storage Pool will be unmounted and mounted again on the KVM hosts using the
+new options upon cancelling the maintenance mode.
+|nfs-mount-options-edit-primary-storage.png|
+
+Mount failing due to an incorrect mount option
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Add Storage Pool will fail with the error ``An incorrect mount option was specified``.
+
+In the Update storage pool case, cancel maintenance will throw the above error.
+The Administrator should set the correct mount option and cancel the maintenance mode again.
+
+
+Version Requirements
+^^^^^^^^^^^^^^^^^^^^
+This feature needs libvirt version 5.1.0 and above on the KVM hosts.
+
+The `nconnect` mount option exists in all Linux distributions with kernel 5.3 or higher
+  
+A note on the `nconnect` option
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This option defines the count of TCP connections that the client makes
+to the NFS server. The `nconnect` setting is applied only during the
+first mount process to the particular NFS server for a given NFS version.
+
+If the same client executes the mount command again to the same NFS server using
+the same version, it will get the same `nconnect` value as the first mount.
+All mount point to the same server at a given version share the same number
+of TCP connections. To change the `nconnect` settings all the such mount points
+need to be unmounted and then mounted again with the new `nconnect` value.
+
+So, from CloudStack’s perspective also, the first storage pool created from an
+NFS server will set the `nconnect` setting on the hypervisor host corresponding
+to the server. Specifying a different `nconnect` mount option while creating a
+new storage pool from the same server will not change the `nconnect` setting on the host.
+
+Similarly if there is only one pre-existing storage pool from a give NFS server
+mounted on the host, modifying the `nconnect` mount option via CloudStack will
+change the `nconnect` setting on that host. If there are more than one storage pools
+from the same server mounted on a host. Changing the `nconnect` mount option on one
+of the storage pools via CloudStack will not do anything. To change the `nconnect`
+setting on the host, after modifying `nconnect` mount option on all storage pools,
+the host needs to be restarted.
+
 
 Secondary Storage
 -----------------
@@ -1514,6 +1618,10 @@ as well if they wish. Attaching and detaching a disk is not allowed on a Shared 
    :alt: Upload button
 .. |adding-local-pool-via-ui.png| image:: /_static/images/adding-local-pool-via-ui.png
    :alt: Adding Local Storage Pool via UI
+.. |change-storage-pool-scope-via-ui.png| image:: /_static/images/change-storage-pool-scope-via-ui.png
+   :alt: Change Primary Storage Scope via UI
+.. |change-storage-pool-scope-to-zone.png| image:: /_static/images/change-storage-pool-scope-to-zone.png
+   :alt: Change Primary Storage Scope to Zone via UI
 .. |list-unmanaged-managed-volumes.png| image:: /_static/images/list-unmanaged-managed-volumes.png
    :alt: List of Unmanaged and Managed Volumes
 .. |import-volume.png| image:: /_static/images/import-volume.png
@@ -1530,4 +1638,10 @@ as well if they wish. Attaching and detaching a disk is not allowed on a Shared 
    :alt: Shared FileSystem Access Tab
 .. |add-remove-sharedfs-network.png| image:: /_static/images/add-remove-sharedfs-network.png
    :alt: Shared FileSystem Networks
+.. |nfs-mount-options-create-zone-wizard.png| image:: /_static/images/nfs-mount-options-create-zone-wizard.png
+   :alt: NFS mount options in create Zone wizard
+.. |nfs-mount-options-add-primary-storage.png| image:: /_static/images/nfs-mount-options-add-primary-storage.png
+   :alt: NFS mount options in add Primary Storage
+.. |nfs-mount-options-edit-primary-storage.png| image:: /_static/images/nfs-mount-options-edit-primary-storage.png
+   :alt: NFS mount options in edit Primary Storage
 

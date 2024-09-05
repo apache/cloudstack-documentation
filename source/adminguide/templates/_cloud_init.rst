@@ -215,6 +215,21 @@ These features can be implemented in `“Linux Template creation process” <_cr
 
    Cloud-init can parse and execute user-data form Cloud-stack during Instance creation. This feature works as is without additional configuration.
 	 
+#. **Network configuration with ConfigDrive**
+
+    Cloud-init can fetch network configuration from ConfigDrive. To enable this,
+    ensure network configuration is not disabled in cloud-init configuration.
+    
+    .. code:: bash
+
+      echo -e "\nnetwork: {}" >> /etc/cloud/cloud.cfg
+
+    .. note::
+      Adding/removing nic to/from an instance or updating the ip address of a nic
+      will not be reflected in the instance if the instance is already running. To
+      do so, run `cloud-init clean --machine-id -s` to clean the machine id and
+      seed data. Then reboot the instance to apply the changes.
+
 #. **Cleanup**
 
    Once desired cloud-init features are implemented, clean cloud-init tracker files.

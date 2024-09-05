@@ -169,7 +169,7 @@ VMdata - a list of String arrays representing [“directory”, “filename”, 
 
     - meta_data.json
 
-    - Network_data.json
+    - network_data.json
 
   - label, which is configurable in global settings:
 
