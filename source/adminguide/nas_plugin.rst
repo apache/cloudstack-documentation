@@ -44,6 +44,7 @@ Consider the following mount, typically performed on a KVM/Linux host to mount s
 Some examples for variety of shared storage can be:
 
     mount -t nfs 10.10.1.10:/export /target -o vers=4.2,defaults
+
     mount -t ceph 10.10.1.10,10.10.1.11,10.10.1.12:/ /target -o name=user,secret=xyz,defaults
 
 The backup repository is designed to accept these parameters (type, address and
