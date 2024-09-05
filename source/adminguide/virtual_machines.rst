@@ -436,13 +436,13 @@ Delete protection can be enabled for an instance via updateVirtualMachine API.
 
 .. code:: bash
 
-   cmk update virtualmachine id=<instance id> deletionprotection=true
+   cmk update virtualmachine id=<instance id> deleteprotection=true
 
 To remove delete protection, use the following command:
 
 .. code:: bash
 
-   cmk update virtualmachine id=<instance id> deletionprotection=false
+   cmk update virtualmachine id=<instance id> deleteprotection=false
 
 To enable/disable delete protection for an instance using the UI, follow these steps:
 

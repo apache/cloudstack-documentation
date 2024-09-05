@@ -1017,13 +1017,13 @@ Delete protection can be enabled for a volume via updateVirtualMachine API.
 
 .. code:: bash
 
-   cmk update volume id=<volume id> deletionprotection=true
+   cmk update volume id=<volume id> deleteprotection=true
 
 To remove delete protection, use the following command:
 
 .. code:: bash
 
-   cmk update volume id=<volume id> deletionprotection=false
+   cmk update volume id=<volume id> deleteprotection=false
 
 To enable/disable delete protection for a volume using the UI, follow these steps:
 
