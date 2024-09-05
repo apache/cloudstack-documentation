@@ -28,21 +28,22 @@ to take full instance backups (qcow2) and requires libvirt-7.2.0 and QEMU-4.2,
 or high versions on the KVM hosts.
 
 The NAS B&R plugin requires admin to first add backup repositories which are
-network-attached storage (shared storage) such as NFS, CephFS and CIFS/Samba.
-This plugin currently supports NFS, CephFS and CIFS (Samba) based NAS storage
-pools. When initiating B&R operations on KVM instance, the assigned backup
-offering is used to infer backup repository (NAS) details which are then used to
-mount them temporarily on the KVM host to peform instance backup/restore disks
-operations. This also requires that admin installs NAS-storage specific
-utilities on the KVM hosts such as nfs-utils/nfs-common, ceph-common, cifs-utils
-etc.
+network-attached storage (shared storage). Currently it supports NFS, and may
+support other shared storage such as CephFS and CIFS/Samba in future.
+
+When initiating B&R operations on KVM instance, the assigned backup offering
+is used to infer backup repository (NAS) details which are then used to mount
+the shared storage temporarily on the KVM host to peform instance backup/restore
+disks operations. This also requires that admin installs NAS-storage specific
+utilities on the KVM hosts such as nfs-utils/nfs-common (ceph-common, cifs-utils).
 
 Consider the following mount, typically performed on a KVM/Linux host to mount storage:
 
     mount -t <nas/storage type> -o <mount options> <address> <mount point>
 
-For example, for CephFS, this can be:
+Some examples for variety of shared storage can be:
 
+    mount -t nfs 10.10.1.10:/export /target -o vers=4.2,defaults
     mount -t ceph 10.10.1.10,10.10.1.11,10.10.1.12:/ /target -o name=user,secret=xyz,defaults
 
 The backup repository is designed to accept these parameters (type, address and
@@ -58,9 +59,9 @@ Support Information and Limitation
 ----------------------------------
 
 The NAS B&R plugin has been tested with EL8, EL9, Ubuntu 22.04 and 24.04. Older
-KVM distros such as EL7 etc may not work due to libvirt/qemu version
-requirements. Other supported KVM-distros are not tested but may work such as
-Ubuntu 20.04, OpenSUSE 15, Debian 11 and Debian 12.
+KVM distros such as EL7, Ubuntu 20.04 etc may not work due to libvirt/qemu
+version requirements. Other supported KVM-distros are not tested but may work
+such as OpenSUSE 15, Debian 11 and Debian 12.
 
 Instance backups are full disk backups and limited by libvirt's ability to
 initiate and handle backup. All such backups are exported and stored in qcow2
@@ -78,3 +79,7 @@ For restore operations, the KVM instance must be stopped in CloudStack.
 Currently, only volume(s) restoration is supported only to NFS and local storage
 based primary storage pools, and restored volumes are fully baked disks (i.e.
 not using any backing template file).
+
+Restoring fully expunged and unmanaged instances are not supported. Backup and
+restore operations are not fully supported for CKS cluster instances and should
+be avoided.
