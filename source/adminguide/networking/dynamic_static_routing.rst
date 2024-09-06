@@ -18,7 +18,7 @@ Dynamic and Static Routing
 -----------------------------
 
 For VMs on Isolated networks, the IP of VMs are not publicly accessible.
-To access the VMs from the Internet, Users need to create Load balanceing rules,
+To access the VMs from the Internet, users need to create Load balancing rules,
 Port Forwarding rules, enable Static NAT, or enable VPN.
 
 The IPv6 static routing feature has been introduced in Apache CloudStack 4.17.0.0, so that
@@ -221,7 +221,7 @@ Create VPC with Dynamic Routing
 
 The creation of VPC with Dynamic routing is almost as VPC with static routing. CloudStack will allocate an AS number to the VPC, and 
 - If the VPC owner does not have dedicated BGP peers, or account setting "use.system.bgp.peers" is set to true, configure BGP sessions in the VPC VR to connect to all BGP peers the VPC owner can access.
-- If the VPC owner has dedicated BGP peers, and account setting "use.system.bgp.peers" is set to false, configure BGP sessions in the VOC VR to connect to all dedicated BGP peers of the domain and the VPC owner.
+- If the VPC owner has dedicated BGP peers, and account setting "use.system.bgp.peers" is set to false, configure BGP sessions in the VPC VR to connect to all dedicated BGP peers of the domain and the VPC owner.
 
 ROOT admin can change BGP peers of an existing VPC with Dynamic routing. After that, the VPC VR will only connect to selected BGP peers.
 
