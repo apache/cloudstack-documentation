@@ -28,12 +28,16 @@ The following providers are currently supported:
 
 - VMware with Veeam Backup and Recovery
 - KVM with DELL EMC Networker
+- KVM with NAS B&R Plugin (4.20 onwards)
 
 See the Veeam Backup and Recovery plugin documentation for plugin specific information.
 :ref:`Veeam Backup and Recovery Plugin`
 
 See the DELL EMC Networker Backup and Recovery plugin documentation for plugin specific information.
 :ref:`DELL EMC Networker Backup and Recovery Plugin`
+
+See the NAS Backup and Recovery plugin documentation for plugin specific information.
+:ref:`NAS Backup and Recovery Plugin`
 
 
 Backup and Recovery Concepts
@@ -73,7 +77,7 @@ the Global Settings area of the CloudStack UI.
 Configuration                     Description
 ================================= ========================
 backup.framework.enabled          Setting to enable or disable the feature. Default: false.
-backup.framework.provider.plugin  The backup provider (plugin) name. For example: 'dummy', 'veeam' and 'networker'. This is a zone specific setting. Default: dummy.
+backup.framework.provider.plugin  The backup provider (plugin) name. For example: 'dummy', 'veeam', 'networker' and 'nas'. This is a zone specific setting. Default: dummy.
 backup.framework.sync.interval    Background sync task internal in seconds that performs metrics/usage stats collection, backup reconciliation and backup scheduling. Default: 300.
 ================================= ========================
 
