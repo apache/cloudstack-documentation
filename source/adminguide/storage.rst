@@ -1005,6 +1005,46 @@ True. Instances created from this service offering will have their disks reset
 upon reboot. See `“Creating a New Compute
 Offering” <service_offerings.html#creating-a-new-compute-offering>`_.
 
+Volume delete protection
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+CloudStack protects volumes from accidental deletion using a delete protection
+flag, which is false by default. When delete protection is enabled for a volume,
+it cannot be deleted through the UI or API. It can only be deleted after
+removing delete protection from the volume.
+
+Delete protection can be enabled for a volume via updateVirtualMachine API.
+
+.. code:: bash
+
+   cmk update volume id=<volume id> deleteprotection=true
+
+To remove delete protection, use the following command:
+
+.. code:: bash
+
+   cmk update volume id=<volume id> deleteprotection=false
+
+To enable/disable delete protection for a volume using the UI, follow these steps:
+
+#. Log in to the CloudStack UI as a User or admin.
+
+#. In the navigation menu on the left, click Volumes under Storage.
+
+#. Choose the volume for which you want to enable/disable delete protection.
+
+#. Click on the Edit button |EditButton.png|
+
+#. Toggle the Delete Protection switch to enable or disable delete protection.
+
+#. Click Ok button to save the changes.
+
+.. note::
+   The volume delete protection is only considered when the volume is being
+   deleted through the UI or via `deleteVolume` or `destroyVolume` API. If the
+   domain/project is deleted, the volumes under the domain/project will be
+   deleted irrespective of the delete protection status.
+
 
 Volume Deletion and Garbage Collection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1614,6 +1654,8 @@ as well if they wish. Attaching and detaching a disk is not allowed on a Shared 
    :alt: Object store file upload
 .. |delete-button.png| image:: /_static/images/delete-button.png
    :alt: Delete button
+.. |EditButton.png| image:: /_static/images/edit-icon.png
+   :alt: button to edit the properties of a volume
 .. |upload-button.png| image:: /_static/images/upload-button.png
    :alt: Upload button
 .. |adding-local-pool-via-ui.png| image:: /_static/images/adding-local-pool-via-ui.png
