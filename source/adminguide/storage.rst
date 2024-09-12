@@ -1551,7 +1551,7 @@ Click on Create Shared FileSystem, provide the following details and then click 
 #. Zone
 #. Format: Filesystem format (XFS, EXT4) which will be installed on the Shared FileSystem.
 #. Network: Guest network to which the Shared FileSystem will be attached.
-#. Compute offering: Offering using which the Shared FileSystem VM will be deployed.
+#. Compute offering: Offering using which the Shared FileSystem Instance will be deployed.
 #. Disk offering: Offering used by the underlying data volume.
 #. Size, MinIops and MaxIos: Displayed only when the disk offering takes custom size and custom iops.
 
@@ -1573,26 +1573,25 @@ Supported lifecycle operations are :
 
 #. Update name and description of the Shared FileSystem
 
-#. Stop/Start Shared FileSystem - This will Stop and Start the Shared FileSystem VM 
+#. Stop/Start Shared FileSystem - This will Stop and Start the Shared FileSystem Instance 
 
-#. Restart Shared FileSystem - Reboots the Shared FileSystem VM. If Cleanup option is provided then the
-   VM state is cleaned up and restored to the original template. Configurations related to setting up the
-   NFS export will be done again. This will not affect the data on the VM.
-   Shared FileSystem.
+#. Restart Shared FileSystem - Reboots the Shared FileSystem Instance. If Cleanup option is provided then the
+   Instance state is cleaned up and restored to the original template. Configurations related to setting up the
+   NFS export will be done again. This will not affect the data on the volume attached to the Instance.
    |restart-sharedfs.png|
 
 #. Change Disk Offering - The disk offering of the underlying volume can be changed. Whether live resize
    is supported or not depends on the hyervisor.
    Please note that the size of the Shared FileSystem can only be increased.
 
-#. Change Service Offering - The service offering of the Shared FileSystem VM can be changed as required.
+#. Change Service Offering - The service offering of the Shared FileSystem Instance can be changed as required.
    This can only be done when the Shared FileSystem is in Stopped state.
 
 #. Add/Remove Network - Guest networks can be added to or removed from the Shared FileSystem.
-   NFS share is exported to all networks. So VMs on different networks can mount the
+   NFS share is exported to all networks. So instances on different networks can mount the
    same share using the respective IP addresses as given on the Access tab.
    APIs serving these operations are addNicToVirtualMachine and removeNicToVirtualMachine
-   called with the Shared FileSystem VM ID.
+   called with the Shared FileSystem Instance ID.
    Please note that the added networks must not be on overlapping CIDR ranges.
    |add-remove-sharedfs-network.png|
 
@@ -1600,14 +1599,14 @@ Supported lifecycle operations are :
    Expunge timeout is given by the global setting 'sharedfs.cleanup.delay'.
 
 
-Shared FileSystem VM
+Shared FileSystem Instance
 ~~~~~~~~~~~~~~
-The Shared FileSystem VM is stateless and HA enabled. A new VM is deployed and will start
+The Shared FileSystem Instance is stateless and HA enabled. A new instance is deployed and will start
 serving the NFS share if the host or VM goes down.
 The VM is installed with the SystemVM template which is also used by the CPVM and SSVM.
 
-The Shared FileSystem VM can be seen in the Instance Tab as well. It's name is prefixed by the
-Shared FileSystem name. Actions that might interfere with Shared FileSystem operations are blocked or not shown.
+The Shared FileSystem Instance can be seen in the Instances Tab as well. It's name is prefixed by the string
+"sharedfs-" plus the Shared FileSystem name. Actions that might interfere with Shared FileSystem operations are blocked or not shown.
 Basic operaions like Start, Stop and Reboot are allowed for troubleshooting.
 Users can access the VM using the 'View Console' button for troubleshooting although it is not
 required during normal operations.
@@ -1615,14 +1614,14 @@ required during normal operations.
 Service Offering
 ~~~~~~~~~~~~~~~~
 There are two global settings that control what should be the minimum RAM size and minimum
-CPU count for the Shared FileSystem VM : 'sharedfsvm.min.cpu.count' and 'sharedfsvm.min.ram.size`.
+CPU count for the Shared FileSystem Instance : 'sharedfsvm.min.cpu.count' and 'sharedfsvm.min.ram.size`.
 Only those offerings which meet these settings and have HA enabled are shown in the create form.
 
 Shared FileSystem Data Volume
 ~~~~~~~~~~~~~~~~~~~~~~
 The data volume is also visible to the users. It is recommended to use the Shared FileSystem UI/API to
 manage the data but users or admin can perform actions directly on the data volume or the root volume
-as well if they wish. Attaching and detaching a disk is not allowed on a Shared FileSystem VM.
+as well if they wish. Attaching and detaching a disk is not allowed on a Shared FileSystem Instance.
 
 .. |AttachDiskButton.png| image:: /_static/images/attach-disk-icon.png
    :alt: Attach Disk Button.
