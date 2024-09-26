@@ -69,7 +69,7 @@ To complete this guide you'll need the following items:
 #. At least one computer which supports and has enabled hardware virtualization.
 
 #. An `CentOS 7.9 minimal x86_64 install ISO, on bootable media
-   <http://isoredirect.centos.org/centos/7/isos/x86_64/>`_
+   <https://vault.centos.org/7.9.2009/isos/x86_64/>`_
 
 #. A /24 network with the gateway being at (e.g.) xxx.xxx.xxx.1, no DHCP is needed 
    on this network and none of the computers running CloudStack will have a 
