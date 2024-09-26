@@ -227,8 +227,8 @@ and ensure that it returns a FQDN response
 SELinux
 ^^^^^^^
 
-In an ideal environment, selinux would be set to enforcing and the necessary
-selinux policies would be created to allow the services to run. For this guide,
+In an ideal environment, selinux should be set to enforcing and the necessary
+selinux policies are created to allow the services to run. For this guide,
 we will set selinux to permissive mode. This will allow us to install and
 configure the services without having to worry about selinux policies.
 

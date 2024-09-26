@@ -529,8 +529,8 @@ ensure the Agent has all the required permissions.
 
          $ setenforce permissive
 
-.. note:: In a production environment, selinux would be set to enforcing
-   and the necessary selinux policies would be created to allow the
+.. note:: In a production environment, selinux should be set to enforcing
+   and the necessary selinux policies are created to allow the
    services to run.
 
 #. Configure Apparmor (Ubuntu)

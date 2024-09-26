@@ -294,8 +294,8 @@ For the management server role we create a main.yml task like this:
 
 Save this as `/etc/ansible/roles/cloudstack-management/tasks/main.yml`
 
-.. note:: In a production environment, selinux would be set to enforcing
-   and the necessary selinux policies would be created to allow the
+.. note:: In a production environment, selinux should be set to enforcing
+   and the necessary selinux policies are created to allow the
    services to run.
 
 Now we have some new elements to deal with. The Ansible Template module
