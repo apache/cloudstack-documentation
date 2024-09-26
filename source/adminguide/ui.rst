@@ -192,12 +192,15 @@ apiBase                       Changes the suffix for the API endpoint
 docBase                       Changes the base URL for the documentation
 appTitle                      Changes the title of the portal
 footer                        Changes the footer text
-loginFooter                   Configure to display text (HTML) in the footer at the login screen.
+loginFavicon                  Changes the favicon of the login page
+loginFooter                   Configure to display text (HTML) in the footer at the login screen
+loginTitle                    Changes the title of the login page
 logo                          Changes the logo top-left side image
+minilogo                      Changes the logo top-left side image when menu is collapsed
 banner                        Changes the login banner image
 error.404                     Changes the image of error Page not found
 error.403                     Changes the image of error Forbidden
-error.500                     Changes the image of error Internal Server Error.
+error.500                     Changes the image of error Internal Server Error
 ============================= ================================================================
 
 .. parsed-literal::
