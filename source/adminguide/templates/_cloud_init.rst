@@ -176,7 +176,7 @@ These features can be implemented in `“Linux Template creation process” <_cr
 	
      ~ CentOS
 	 	 
-      Centos 7 root volume is /dev/centos/root if no changes are done during installation. Change the value accordingly if setup is different.
+      CentOS root volume is /dev/centos/root if no changes are done during installation. Change the value accordingly if setup is different.
 	   
       .. code:: bash
 	  
