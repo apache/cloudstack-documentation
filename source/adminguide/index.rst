@@ -139,6 +139,7 @@ Managing VM and Volume Allocation
    :maxdepth: 4
 
    host_and_storage_tags
+   arch_types
 
 Managing Networks and Traffic
 -----------------------------
