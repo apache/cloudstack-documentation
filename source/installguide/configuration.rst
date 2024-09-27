@@ -871,6 +871,9 @@ You need to tell CloudStack about the hosts that it will manage. Hosts
 exist inside clusters, so before you begin adding hosts to the cloud,
 you must add at least one cluster.
 
+.. note::
+      Since CloudStack 4.20.0, it is possible to specify the hosts arch type which must be homogeneous within the cluster. AMD 64 bits (x86_64) and ARM 64 bits (aarch64) arch types are supported. The pre-existing clusters are set to arch type AMD 64 bits as well as new clusters in which the arch type is not specified.
+
 
 Add Cluster: KVM or XenServer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -888,6 +891,8 @@ hosts and logged in to the CloudStack UI.
 #. Click Add Cluster.
 
 #. Choose the hypervisor type for this cluster.
+
+#. Choose the arch type of the hosts within the cluster.
 
 #. Choose the pod in which you want to create the cluster.
 
@@ -1008,7 +1013,7 @@ Requirements for XenServer and KVM Hosts
 
 Configuration requirements:
 
--  Each cluster must contain only hosts with the identical hypervisor.
+-  Each cluster must contain only hosts with the identical hypervisor and arch type.
 
 -  For XenServer, do not put more than 8 hosts in a cluster.
 
@@ -1017,6 +1022,8 @@ Configuration requirements:
 For hardware requirements, see the installation section for your
 hypervisor in the CloudStack Installation Guide.
 
+.. note::
+   Since CloudStack 4.20.0, the host arch type is auto detected when adding the host into CloudStack and it must match the cluster arch type for the operation to succeed.
 
 XenServer Host Additional Requirements
 ''''''''''''''''''''''''''''''''''''''
