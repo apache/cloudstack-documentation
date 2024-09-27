@@ -51,8 +51,8 @@ get you up and running with CloudStack with a minimum amount of trouble.
 High level overview of the process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This guide will focus on building a CloudStack cloud using KVM on CentOS 
-7.9 with NFS storage and layer-2 isolation using VLANs,
+This guide will focus on building a CloudStack cloud using KVM on an EL8 distro
+ with NFS storage and layer-2 isolation using VLANs,
 (flat home network can be used for this as well) and on a single piece of 
 hardware (server/VM)
 
@@ -68,8 +68,11 @@ To complete this guide you'll need the following items:
 
 #. At least one computer which supports and has enabled hardware virtualization.
 
-#. An `CentOS 7.9 minimal x86_64 install ISO, on bootable media
-   <http://isoredirect.centos.org/centos/7/isos/x86_64/>`_
+#. A minimal EL8 distro like 
+
+   #. Oracle Linux 8 - https://yum.oracle.com/oracle-linux-isos.html 
+   #. Rocky Linux 8 - https://rockylinux.org/download 
+   #. AlmaLinux OS 8 - https://almalinux.org/get-almalinux/ 
 
 #. A /24 network with the gateway being at (e.g.) xxx.xxx.xxx.1, no DHCP is needed 
    on this network and none of the computers running CloudStack will have a 
@@ -86,8 +89,7 @@ CloudStack. We will go over the steps to prepare now.
 Operating System
 ~~~~~~~~~~~~~~~~
 
-Using the CentOS 7.9.2009 minimal x86_64 install ISO, you'll need to install
-CentOS 7 on your hardware. The defaults will generally be acceptable for this
+Install preferred EL8 distro on your hardware. The defaults will generally be acceptable for this
 installation - but make sure to configure IP address/parameters so that you can later install needed
 packages from the internet. Later, we will change the Network configuration as needed.
 
@@ -97,7 +99,7 @@ server - through SSH.
 It is always wise to update the system before starting: 
 
 .. parsed-literal::
-   # yum -y upgrade
+   # dnf -y upgrade
 
 
 .. _conf-network:
@@ -108,7 +110,7 @@ Configuring the Network
 Before going any further, make sure that "bridge-utils" and "net-tools" are installed and available:
 
 .. parsed-literal::
-   # yum install bridge-utils net-tools -y
+   # dnf install bridge-utils net-tools -y
 
 Connecting via the console or SSH, you should login as root. We will start by creating
 the bridge that Cloudstack will use for networking. Create and open
@@ -129,7 +131,7 @@ the bridge that Cloudstack will use for networking. Create and open
    DEVICE=cloudbr0
    TYPE=Bridge
    ONBOOT=yes
-   BOOTPROTO=static
+   BOOTPROTO=none
    IPV6INIT=no
    IPV6_AUTOCONF=no
    DELAY=5
@@ -174,8 +176,6 @@ commands to start up the network:
 
 .. parsed-literal::
 
-   # systemctl disable NetworkManager; systemctl stop NetworkManager
-   # systemctl enable network
    # reboot
  
 .. _conf-hostname:
@@ -197,23 +197,19 @@ At this point it will likely return:
 
    localhost
 
-To rectify this situation - we'll set the hostname by editing the /etc/hosts 
-file so that it follows a similar format to this example (remember to replace
-the IP with your IP which might be e.g. 192.168.1.2):
+To rectify this situation - we'll set the hostname so that it follows a similar format to this example:
 
 .. parsed-literal::
 
-   127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4
-   ::1 localhost localhost.localdomain localhost6 localhost6.localdomain6
-   172.16.10.2 srvr1.cloud.priv
+   hostnamectl set-hostname server.local --static
 
-After you've modified that file, go ahead and restart the network using:
+After you've modified that file, go ahead and reboot:
 
 .. parsed-literal::
 
-   # systemctl restart network
+   # reboot
 
-Now recheck with the
+Now recheck the hostname with the
 
 .. parsed-literal::
 
@@ -257,8 +253,8 @@ To ensure that it remains in that state we need to configure the file
 
 .. _conf-ntp:
 
-NTP
-^^^
+NTP (Chrony)
+^^^^^^^^^^^^
 
 NTP configuration is a necessity for keeping all of the clocks in your cloud 
 servers in sync. However, NTP is not installed by default. So we'll install 
@@ -266,15 +262,15 @@ and and configure NTP at this stage. Installation is accomplished as follows:
 
 .. parsed-literal::
 
-   # yum -y install ntp
+   # yum -y install chrony
 
 The actual default configuration is fine for our purposes, so we merely need 
 to enable it and set it to start on boot as follows:
 
 .. parsed-literal::
 
-   # systemctl enable ntpd
-   # systemctl start ntpd
+   # systemctl enable chronyd
+   # systemctl start chronyd
 
 
 .. _qigconf-pkg-repo:
@@ -332,9 +328,8 @@ appropriately on them with the following commands:
    # mkdir -p /export/primary
    # mkdir /export/secondary
 
-CentOS 7.x releases use NFSv4 by default. NFSv4 requires that domain setting 
-matches on all clients. In our case, the domain is cloud.priv, so ensure that 
-the domain setting in /etc/idmapd.conf is uncommented and set as follows:
+NFSv4 requires that domain setting matches on all clients. In our case, the
+domain is cloud.priv, so ensure that the domain setting in /etc/idmapd.conf is uncommented and set as follows:
 
 .. parsed-literal::
    Domain = cloud.priv
@@ -355,8 +350,7 @@ For simplicity, we need to disable the firewall, so that it will not block conne
 
 .. note::
 
-   Configuration of the firewall on CentOS7 is beyond the purview of this
-   guide.
+   Configuration of the firewall is beyond the purview of this guide.
    
 To do so, simply use the following two commands: 
 
@@ -371,9 +365,9 @@ it on the host by executing the following commands:
 .. parsed-literal::
 
    # systemctl enable rpcbind
-   # systemctl enable nfs
+   # systemctl enable nfs-server
    # systemctl start rpcbind
-   # systemctl start nfs
+   # systemctl start nfs-server
 
 
 Management Server Installation
@@ -388,21 +382,11 @@ Database Installation and Configuration
 We'll start with installing MySQL and configuring some options to ensure it 
 runs well with CloudStack. 
 
-First, as CentOS 7 no longer provides the MySQL binaries, we need to add a MySQL community repository,
-that will provide MySQL Server (and the Python MySQL connector later) : 
-
-.. parsed-literal::
-   # yum -y install wget
-   # wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
-   # rpm -ivh mysql-community-release-el7-5.noarch.rpm
-
-Install by running the following command: 
-
 .. parsed-literal::
 
    # yum -y install mysql-server
 
-This should install MySQL 5.x, as of the time of writing this guide.
+This should install MySQL 8.x, as of the time of writing this guide.
 With MySQL now installed we need to make a few configuration changes to 
 /etc/my.cnf. Specifically we need to add the following options to the [mysqld] 
 section:
@@ -436,19 +420,6 @@ start on boot as follows:
    # systemctl enable mysqld
    # systemctl start mysqld
 
-
-MySQL Connector Installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Install Python MySQL connector from the MySQL community repository (which we've added previously):
-
-.. parsed-literal:: 
-
-   # yum -y install mysql-connector-python
-   
-Please note that the previously required ``mysql-connector-java`` library is now bundled with CloudStack
-Management server and is no longer required to be installed separately.
-
 Installation
 ~~~~~~~~~~~~
 
@@ -457,7 +428,7 @@ following command:
 
 .. parsed-literal::
 
-   # yum -y install cloudstack-management
+   # dnf -y install cloudstack-management
 
 CloudStack |version| requires Java 17 JRE. Installing the management server
 will automatically install Java 17, but it's good to explicitly confirm that Java 17
@@ -545,8 +516,8 @@ afterwards we'll need to configure a few things. We need to install the EPEL rep
 
 .. parsed-literal::
 
-   # yum -y install epel-release
-   # yum -y install cloudstack-agent
+   # dnf -y install epel-release
+   # dnf -y install cloudstack-agent
 
 
 KVM Configuration
