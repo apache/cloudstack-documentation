@@ -896,6 +896,13 @@ Before you try to resize a volume, consider the following:
    Therefore, resize any partitions or file systems before you shrink a
    data disk so that all the data is moved off from that disk.
 
+-  In Apache CloudStack 4.20 and before, resizing volume will fail if 
+   the current storage pool does not have enough capacity for new volume size.
+   Since Apache CloudStack 4.21, it becomes possible if zone setting
+   volume.resize.allowed.beyond.allocation is set to true, and the new volume size
+   does not cross the resize threshold (pool.storage.allocated.resize.capacity.disablethreshold) of storage pool.
+   These two zone settings are configurable by ROOT admin.
+
 To resize a volume:
 
 #. Log in to the CloudStack UI as a user or admin.
@@ -912,7 +919,7 @@ To resize a volume:
 
    |resize-volume.png|
 
-   #. If you select Custom Disk, specify a custom size.
+   #. Specify a custom size.
 
    #. Click Shrink OK to confirm that you are reducing the size of a
       volume.
@@ -920,6 +927,8 @@ To resize a volume:
       This parameter protects against inadvertent shrinking of a disk,
       which might lead to the risk of data loss. You must sign off that
       you know what you are doing.
+
+   #. Check if you wish to auto migrate volume to another storage pool if required.
 
 #. Click OK.
 
