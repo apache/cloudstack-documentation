@@ -48,13 +48,11 @@ get you up and running with CloudStack with a minimum amount of trouble.
       enough CPU cores (3+) for demo purposes.
       
       
-High level overview of the process
+High-level overview of the process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This guide will focus on building a CloudStack cloud using KVM on an EL8 distro
- with NFS storage and layer-2 isolation using VLANs,
-(flat home network can be used for this as well) and on a single piece of 
-hardware (server/VM)
+This guide will focus on building a CloudStack cloud using KVM on an EL8 distro with NFS storage and layer-2 isolation using VLANs,
+(flat home network can be used for this as well) and on a single piece of hardware (server/VM)
 
 KVM, or Kernel-based Virtual Machine is a virtualization technology for the 
 Linux kernel. KVM supports native virtualization atop processors with hardware 
