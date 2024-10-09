@@ -342,7 +342,7 @@ A minimal configuration for FRR could look like this:
 This configuration will:
 
 - Establish two BGP sessions using BGP Unnumbered over the two uplinks (ens2f0np0 and ens2f1np1)
-- Twese BGP sessions are usually established with two Top-of-Rack (ToR) switches/routers which are BGP+EVPN capable
+- These BGP sessions are usually established with two Top-of-Rack (ToR) switches/routers which are BGP+EVPN capable
 - Enable the families ipv4, ipv6 and evpn
 - Announce the IPv4 (10.255.192.12/32) and IPv6 (2001:db8:100::1/128) loopback addresses
 - Advertise all VXLAN networks (VNI) detected locally on the hypervisor (vxlan network devices)
