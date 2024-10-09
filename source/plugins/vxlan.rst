@@ -266,10 +266,10 @@ A different version of this script is available which will use EVPN instead of M
 In order to use this script create a symlink on **each** KVM hypervisor
 
 ::
+  $ cd /usr/share
+  $ ln -s cloudstack-common/scripts/vm/network/vnet/modifyvxlan-evpn.sh modifyvxlan.sh
 
-  $ ln -s /usr/share/modifyvxlan.sh /usr/share/cloudstack-common/scripts/vm/network/vnet/modifyvxlan-evpn.sh
-
-This script is also available on `download.cloudstack.org <https://download.cloudstack.org/tools/scripts/vxlan/modifyvxlan.sh>`_.
+This script is also available in the CloudStack `GIT repository <https://raw.githubusercontent.com/apache/cloudstack/refs/heads/main/scripts/vm/network/vnet/modifyvxlan-evpn.sh>`_.
 
 View the contents of the script to understand it's inner workings, some key items:
 
