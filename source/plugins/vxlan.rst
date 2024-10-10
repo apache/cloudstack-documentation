@@ -21,7 +21,7 @@ General
 -------
 CloudStack supports VXLAN technology to enhance scalability and flexibility in networking designs.
 
-Using VXLAN (Virtual Extensible LAN) over traditional VLAN (Virtual LAN) offers several key benefits, especially for modern data centers and cloud networking environments that require high scalability and flexibility.
+Using VXLAN (Virtual Extensible LAN) instead of traditional VLAN (Virtual LAN) for layer 2 isolation method offers several key benefits, especially for modern data centers and cloud networking environments that require high scalability and flexibility.
 
 VXLAN overcomes the limitations of traditional VLANs by providing a highly scalable, flexible, and efficient networking solution. It enables the creation of a large number of isolated virtual networks over a common physical infrastructure,
 supports better utilization of network resources through Layer 3 routing capabilities, and simplifies network management and provisioning.
@@ -31,10 +31,10 @@ When deploying a VXLAN-based network, there are two options to choose from:
    •  Multicast
    •  EVPN using BGP
 
-While Multicast is the easiest to set up, EVPN offers much more control, scalability, and flexibility. Therefore, it is chosen in most VXLAN network deployments.
+While Multicast is the easiest to set up VXLAN isolation, EVPN offers much more control, scalability, and flexibility. Therefore, it is chosen for most VXLAN network deployments.
 
 .. warning::
-  Deploying VXLAN, especially with EVPN, requires extensive networking knowledge which isn't covered by this documentation or CloudStack in general.
+  Deploying VXLAN, especially with EVPN, requires extensive networking knowledge, which isn't covered by this documentation or CloudStack in general.
   Make sure to familiarize yourself with VXLAN, BGP and EVPN before attempting to deploy this network technology.
 
 System Requirements / Networking for VXLAN
@@ -53,7 +53,7 @@ The following table lists the requirements for using VXLAN in your deployment:
 +---------------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
 | IP Protocol         | IPv4 or IPv6                                  | CloudStack is agnostic to the IP-protocol being used as underlay. Both IPv4 and IPv6 are supported             |
 +---------------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
-| MTU                 | >=1550                                        | VXLAN has an overhead of 50 bytes, therefor 1550 is the minimum. See the notes below                           |
+| MTU                 | >=1550                                        | VXLAN has an overhead of 50 bytes, therefore 1550 is the minimum. See the notes below                          |
 +---------------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
 
 MTU size
@@ -82,12 +82,11 @@ Default value of "net.ipv4.igmp_max_memberships" (cat /proc/sys/net/ipv4/igmp_ma
 
 Since all VXLAN (VTEP) interfaces provisioned on host are multicast-based (belong to certain multicast group, and thus has it is own multicast IP that is used as VTEP), this means that you can not provision more than 20 (working) VXLAN interfaces per host.
 
-Under Linux you can NOT provision (start) more than 20 VXLAN interfaces and error message "No buffer space available" can be observed in Cloudstack Agent logs after provisioning required bridges and VXLAN interfaces.
+Under Linux you can NOT by default provision (start) more than 20 VXLAN interfaces and the error message "No buffer space available" will appear in the Cloudstack Agent logs after provisioning the required bridges and VXLAN interfaces.
 
-Increase needed parameter to sane value (i.e. 100 or 200) as required.
+Increase the needed parameter to an appropriate value (i.e. 100 or 200) as required.
 
-If you need to operate more than 20 Instances from different client's Network, this change above is required.
-
+If you need to operate more than 20 Instances from different client networks, the change above is required.
 
 Configure hypervisor: KVM
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -255,11 +254,12 @@ The main items for using EVPN:
 
 - BGP Routing Daemon on the hypervisor
 - No LACP/Bonding will be used
-- Modified script is required to use EVPN instead of Multicast
+- The modified script is required
+- BGP+EVPN capable and enabled network environment
 
 EVPN Bash script
 ~~~~~~~~~~~~~~~~
-The default 'modifyvxlan.sh' script this is installed by CloudStack uses Multicast for VXLAN.
+The default 'modifyvxlan.sh' script installed by CloudStack uses Multicast for VXLAN.
 
 A different version of this script is available which will use EVPN instead of Multicast and ships with CloudStack by default.
 
@@ -271,7 +271,7 @@ In order to use this script create a symlink on **each** KVM hypervisor
 
 This script is also available in the CloudStack `GIT repository <https://raw.githubusercontent.com/apache/cloudstack/refs/heads/main/scripts/vm/network/vnet/modifyvxlan-evpn.sh>`_.
 
-View the contents of the script to understand it is inner workings, some key items:
+View the contents of the script to understand its inner workings, some key items:
 
 - VXLAN (vtep) devices are created using 'nolearning', disabling the use of multicast
 - UDP port 4789 (RFC 7348)
