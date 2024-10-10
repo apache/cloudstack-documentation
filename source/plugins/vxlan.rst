@@ -66,7 +66,7 @@ have MTU of 1500 bytes, meaning that your physical interface/bridge must have MT
 In order to configure "jumbo frames" you can i.e. make physical interface/bridge with 9000 bytes MTU, then all the VXLAN
 interfaces will be created with MTU of 8950 bytes, and then MTU size inside Instance can be set to 8950 bytes.
 
-In general it's recommend to use an MTU of at least 9000 bytes or larger. Most VXLAN capable network cards and switch support an MTU of up to 9216.
+In general it is recommend to use an MTU of at least 9000 bytes or larger. Most VXLAN capable network cards and switch support an MTU of up to 9216.
 
 Using an MTU of 9216 bytes allows for using Jumbo Frames (9000) within guest networks. 
 
@@ -80,7 +80,7 @@ Important note on max number of multicast groups
 
 Default value of "net.ipv4.igmp_max_memberships" (cat /proc/sys/net/ipv4/igmp_max_memberships) is "20", which means that host can be joined to max 20 multicast groups (attach max 20 multicast IPs on the host).
 
-Since all VXLAN (VTEP) interfaces provisioned on host are multicast-based (belong to certain multicast group, and thus has it's own multicast IP that is used as VTEP), this means that you can not provision more than 20 (working) VXLAN interfaces per host.
+Since all VXLAN (VTEP) interfaces provisioned on host are multicast-based (belong to certain multicast group, and thus has it is own multicast IP that is used as VTEP), this means that you can not provision more than 20 (working) VXLAN interfaces per host.
 
 Under Linux you can NOT provision (start) more than 20 VXLAN interfaces and error message "No buffer space available" can be observed in Cloudstack Agent logs after provisioning required bridges and VXLAN interfaces.
 
@@ -271,7 +271,7 @@ In order to use this script create a symlink on **each** KVM hypervisor
 
 This script is also available in the CloudStack `GIT repository <https://raw.githubusercontent.com/apache/cloudstack/refs/heads/main/scripts/vm/network/vnet/modifyvxlan-evpn.sh>`_.
 
-View the contents of the script to understand it's inner workings, some key items:
+View the contents of the script to understand it is inner workings, some key items:
 
 - VXLAN (vtep) devices are created using 'nolearning', disabling the use of multicast
 - UDP port 4789 (RFC 7348)
@@ -346,7 +346,7 @@ This configuration will:
 - Enable the families ipv4, ipv6 and evpn
 - Announce the IPv4 (10.255.192.12/32) and IPv6 (2001:db8:100::1/128) loopback addresses
 - Advertise all VXLAN networks (VNI) detected locally on the hypervisor (vxlan network devices)
-- Use ASN 4200800212 for this hypervisor (each node has it's own unique ASN)
+- Use ASN 4200800212 for this hypervisor (each node has it is own unique ASN)
 
 BGP and EVPN in the upstream network
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -354,7 +354,7 @@ This documentation does not cover configuring BGP and EVPN in the upstream netwo
 
 This will differ per network and is therefor difficult to capture in this documentation. A couple of key items though:
 
-- Each hypervisor with establish eBGP session(s) with the Top-of-Rack router(s) in it's rack
+- Each hypervisor with establish eBGP session(s) with the Top-of-Rack router(s) in it is rack
 - These Top-of-Rack devices will connect to (a) Spine router(s)
 - On the Spine router(s) the VNIs will terminate and they will act as IPv4/IPv6 gateways
 
