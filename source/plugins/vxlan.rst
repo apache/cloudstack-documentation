@@ -254,7 +254,7 @@ The main items for using EVPN:
 
 - BGP Routing Daemon on the hypervisor
 - No LACP/Bonding will be used
-- The modified script is required
+- The modified script (modifyvxlan-evpn.sh) is required and this might require tailoring to your situation
 - BGP+EVPN capable and enabled network environment
 
 EVPN Bash script
