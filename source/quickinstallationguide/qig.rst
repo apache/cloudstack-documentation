@@ -40,7 +40,8 @@ get you up and running with CloudStack with a minimum amount of trouble.
       The requirement is that you enable "Enable Nested VT-x/AMD-V" as the Extended Feature on the System page of the Settings of the Instance.
       You will want to create an Instance of "Red Hat (64-bit)" type and 40+GB disk space.
       You will need to have 1 NIC in your Instance, bridged to the NIC of your laptop/desktop
-      (wifi or wired NIC, doesn't matter), and optimally to set Adapter Type="Paravirtualized Network (virtio-net)"
+      (bridging to a wireless adapter does frequently cause connectivity issues, so avoid it, and instead bridge to the wired adapted), 
+      and optimally to set Adapter Type="Paravirtualized Network (virtio-net)"
       for somewhat better network performance (Settings of Instance, Network section, Adapter1,
       expand "Advanced"). Make sure the NIC on your Instance is configured as promiscuous (in VirtualBox,
       choose "Allow All" or just "Allow Instances" as the Promiscuous Mode), so that it can pass traffic from
