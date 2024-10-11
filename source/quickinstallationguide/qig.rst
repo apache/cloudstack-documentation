@@ -328,22 +328,10 @@ appropriately on them with the following commands:
    # mkdir /export/secondary
 
 NFSv4 requires that domain setting matches on all clients. In our case, the
-domain is cloud.priv, so ensure that the domain setting in /etc/idmapd.conf is uncommented and set as follows:
+domain is "local", so ensure that the domain setting in /etc/idmapd.conf is uncommented and set as follows:
 
 .. parsed-literal::
-   Domain = cloud.priv
-
-Now you'll need to add the configuration values at the bottom in the file 
-/etc/sysconfig/nfs (or merely uncomment and set them)
-
-.. parsed-literal::
-
-   LOCKD_TCPPORT=32803
-   LOCKD_UDPPORT=32769
-   MOUNTD_PORT=892
-   RQUOTAD_PORT=875
-   STATD_PORT=662
-   STATD_OUTGOING_PORT=2020
+   Domain = local
 
 For simplicity, we need to disable the firewall, so that it will not block connections.
 
@@ -387,7 +375,7 @@ runs well with CloudStack.
 
 This should install MySQL 8.x, as of the time of writing this guide.
 With MySQL now installed we need to make a few configuration changes to 
-/etc/my.cnf. Specifically we need to add the following options to the [mysqld] 
+/etc/my.cnf.d/mysql-server.cnf. Specifically, we need to add the following options to the [mysqld] 
 section:
 
 .. parsed-literal::
@@ -398,18 +386,6 @@ section:
    log-bin=mysql-bin
    binlog-format = 'ROW'
 
-.. note::
-
-   For Ubuntu 16.04 and later, make sure you specify a ``server-id`` in your ``.cnf`` file for binary logging. Set the     ``server-id`` according to your database setup.
-    
-.. parsed-literal::
-
-   server-id=source-01
-   innodb_rollback_on_timeout=1
-   innodb_lock_wait_timeout=600
-   max_connections=350
-   log-bin=mysql-bin
-   binlog-format = 'ROW'
 
 Now that MySQL is properly configured we can start it and configure it to 
 start on boot as follows:
