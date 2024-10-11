@@ -544,6 +544,12 @@ and should already be installed.
 
       #LIBVIRTD_ARGS="--listen"
 
+# As of EL8, we'll have to do the socket masking:
+   
+   .. parsed-literal::  
+
+      # systemctl mask libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tls.socket libvirtd-tcp.socket
+
 #. Restart libvirt
 
    .. parsed-literal::
