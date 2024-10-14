@@ -18,6 +18,12 @@ What's New in |release|
 =======================
 
 Refer to the advisory blog at:
+https://cloudstack.apache.org/blog/security-release-advisory-4.18.2.4-4.19.1.2
+
+What's New in 4.19.1.1
+=======================
+
+Refer to the advisory blog at:
 https://cloudstack.apache.org/blog/security-release-advisory-4.19.1.1-4.18.2.3
 
 What's New in 4.19.1.0
