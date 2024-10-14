@@ -281,6 +281,8 @@ To upload a Template:
    -  **Hypervisor**: The supported hypervisors are listed. Select the
       desired one.
 
+   -  **Arch**: The supported arch types are listed. Select the desired one.
+
    -  **Format**. The format of the Template upload file, such as VHD or
       OVA.
 
@@ -328,7 +330,7 @@ Example GUI dialog of uploading Template/ISO from local (browser) is given below
 
 |upload-iso-from-local.png|
 
-Note that uploading multi-disk Templates is also supported.
+Note that uploading multi-disk Templates is also supported as well as selecting the template/ISO arch type.
 
 Sharing Templates and ISOs with other Accounts/projects
 -------------------------------------------------------
@@ -544,6 +546,8 @@ part of a Template.
    -  **Featured**: Choose Yes if you would like this ISO to be more
       prominent for Users to select. The ISO will appear in the Featured
       ISOs list. Only an administrator can make an ISO Featured.
+
+   -  **Arch**: The supported arch types are listed. Select the desired one.
 
 #. Click OK.
 
