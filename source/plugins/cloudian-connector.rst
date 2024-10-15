@@ -229,8 +229,7 @@ settings. To enable the connector, ensure that the global setting
 "cloudian.connector.enabled" is set to true. Finally, restart each of the
 management server(s) to reload and enable the connector.
 
-For example, here is how you can restart the CloudStack management server
-installed on CentOS7:
+For example, here is how you can restart the CloudStack management server:
 
    ::
 
