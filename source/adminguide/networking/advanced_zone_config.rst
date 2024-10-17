@@ -64,6 +64,8 @@ configure the base guest Network:
    -  **Netmask**: The netmask in use on the subnet the Guest Instances
       will use.
 
+   -  **CIDR Size**: The cidrsize of the subnet the Guest Instances will use. Available only when the selected Network offering supports ROUTED mode.
+
    -  **DNS**: A set of custom DNS that will be used by the guest Network. If not provided then DNS specified for the zone will be used. Available only when the selected Network offering supports DNS service.
 
    -  **IPv6 DNS**: A set of custom IPv6 DNS that will be used by the guest Network. If not provided then IPv6 DNS specified for the zone will be used. Available only when the selected Network offering is IPv6 enabled and supports DNS service.

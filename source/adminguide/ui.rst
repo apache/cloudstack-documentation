@@ -192,12 +192,15 @@ apiBase                       Changes the suffix for the API endpoint
 docBase                       Changes the base URL for the documentation
 appTitle                      Changes the title of the portal
 footer                        Changes the footer text
-loginFooter                   Configure to display text (HTML) in the footer at the login screen.
+loginFavicon                  Changes the favicon of the login page
+loginFooter                   Configure to display text (HTML) in the footer at the login screen
+loginTitle                    Changes the title of the login page
 logo                          Changes the logo top-left side image
+minilogo                      Changes the logo top-left side image when menu is collapsed
 banner                        Changes the login banner image
 error.404                     Changes the image of error Page not found
 error.403                     Changes the image of error Forbidden
-error.500                     Changes the image of error Internal Server Error.
+error.500                     Changes the image of error Internal Server Error
 ============================= ================================================================
 
 .. parsed-literal::
@@ -489,7 +492,7 @@ Example for adding custom plugins:
       ...
    }
 
-`icon` for the plugin can be chosen from Ant Design icons listed at `Icon - Ant Design Vue https://www.antdv.com/components/icon/`_.
+`icon` for the plugin can be chosen from Ant Design icons listed at `Icon - Ant Design Vue<https://www.antdv.com/components/icon/>`_.
 For displaying a custom HTML in the plugin, HTML file can be stored in the CloudStack management server's web application directory on the server, i.e., */usr/share/cloudstack-management/webapp* and `path` can be set to the name of the file. For displaying a service or a web page, URL can be set as the `path` of the plugin.
 
 |ui-custom-plugin.png|

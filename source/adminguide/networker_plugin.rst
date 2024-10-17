@@ -38,7 +38,7 @@ KVM Hypervisor(s)
 #. A BASH shell at minimum version 4.4.19
 #. DELL EMC Networker client must be installed and in running state
 #. Hypervisor must be associated with the DELL EMC Networker server as CLIENT
-#. DELL EMC Networker can connect and verify certificates to the Hyper-v Client
+#. DELL EMC Networker can connect and verify certificates to the KVM Client
 #. A Hypervisor must be in UP and ENABLED state and resource state respectively in order to be able to get backups
    for the Instances running.
 #. A proper timezone set. Identical to the EMC Networker Server and Management server
@@ -68,7 +68,7 @@ General Concepts
    placeholder for being able to backup and restore your Instances from all hosts within the cluster.
 #. Cross cluster restores are indirectly supported by restoring to the original cluster and then migrating the Virtual
    Machine to the destination cluster.
-#. Any manual KVM backup you initiate (from the hyper-v command line) will be registered in Cloudstack automatically.
+#. Any manual KVM backup you initiate (from the command line) will be registered in Cloudstack automatically.
    You need to use the client scripts and pass the proper parameters to do so.
 #. Any backup you expire/remove from the DELL EMC Networker side will be unregistered in Cloudstack automatically.
 

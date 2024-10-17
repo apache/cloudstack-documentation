@@ -166,6 +166,10 @@ MySQL. See :ref:`install-database-on-separate-node`.
 
          setenforce permissive
 
+.. note:: In a production environment, selinux should be set to enforcing
+   and the necessary selinux policies are created to allow the
+   services to run.
+
 #. Set up the database.
 
    The cloudstack-setup-databases script is used for creating the cloudstack

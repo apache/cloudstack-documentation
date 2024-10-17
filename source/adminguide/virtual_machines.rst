@@ -424,6 +424,47 @@ The following table explains how an Instance name is displayed in different scen
       <i.n> represents the value of the global configuration - instance.name
 
 
+Instance delete protection
+--------------------------
+
+CloudStack protects instances from accidental deletion using a delete protection
+flag, which is false by default. When delete protection is enabled for an
+instance, it cannot be deleted through the UI or API. It can only be deleted
+after removing delete protection from the instance.
+
+Delete protection can be enabled for an instance via updateVirtualMachine API.
+
+.. code:: bash
+
+   cmk update virtualmachine id=<instance id> deleteprotection=true
+
+To remove delete protection, use the following command:
+
+.. code:: bash
+
+   cmk update virtualmachine id=<instance id> deleteprotection=false
+
+To enable/disable delete protection for an instance using the UI, follow these steps:
+
+#. Log in to the CloudStack UI as a User or admin.
+
+#. In the navigation menu on the left, click Instances under Compute.
+
+#. Choose the Instance for which you want to enable/disable delete protection.
+
+#. Click on the Edit button |EditButton.png|
+
+#. Toggle the Delete Protection switch to enable or disable delete protection.
+
+#. Click Ok button to save the changes.
+
+.. note::
+   The instance delete protection is only considered when the instance is being
+   deleted through the UI or via `destroyVirtualMachine` or `expungeVirtualMachine`
+   API. If the domain/project is deleted, the instances under the domain/project
+   will be deleted irrespective of the delete protection status.
+
+
 Changing the Service Offering for an Instance
 ---------------------------------------------
 

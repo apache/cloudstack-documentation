@@ -91,6 +91,25 @@ at `MySQL Reference
 Manual <http://dev.mysql.com/doc/refman/5.5/en/innodb-buffer-pool.html>`_.
 
 
+Selecting Database Connection Pool Library
+------------------------------------------
+
+CloudStack uses JDBC connection pool to manage and use database connections
+in an optimal manner. It allows using either
+`HikariCP <https://github.com/brettwooldridge/HikariCP>`_ or
+`DBCP 2 <https://commons.apache.org/dbcp/>`_ based on the preference for
+individual CloudStack databases - cloud, cloud_usage, simulator.
+
+The following settings can be configured in the db.properties configuration
+file for the management server or usage server:
+db.cloud.connectionPoolLib
+db.cloud_usage.connectionPoolLib
+db.simulator.connectionPoolLib
+
+To use DBCP 2, the value for the configuration must be set to 'dbcp'. An
+empty value or 'hikaricp' will allow using HikariCP.
+
+
 Monitor the Database Load
 -------------------------
 

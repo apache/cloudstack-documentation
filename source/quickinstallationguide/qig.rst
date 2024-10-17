@@ -227,9 +227,10 @@ and ensure that it returns a FQDN response
 SELinux
 ^^^^^^^
 
-At the moment, for CloudStack to work properly SELinux must be set to 
-permissive or disabled. We want to both configure this for future boots and modify it in 
-the current running system.
+In an ideal environment, selinux should be set to enforcing and the necessary
+selinux policies are created to allow the services to run. For this guide,
+we will set selinux to permissive mode. This will allow us to install and
+configure the services without having to worry about selinux policies.
 
 To configure SELinux to be permissive in the running system we need to run the 
 following command:
