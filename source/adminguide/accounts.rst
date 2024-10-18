@@ -884,3 +884,76 @@ password for a user:
 
    .. figure:: /_static/images/reset-password.png
       :align:   center
+
+Using API Key and Secret Key based Authentication
+-------------------------------------------------
+Users can generate API key and Secret key to directly access CloudStack APIs.
+This authenctication method is used for programatically calling CloudStack APIs and thus helps in automation.
+The API key uniquely identifies the Account, while the Secret key is used to generate a secure singnature.
+When making an API call, the API key and signature are included along with the command and other parameters,
+and sent to the CloudStack API endpoint. For detailed information, refer to the CloudStack's Programmer Guide.
+
+Disabling Api Key and Secret Key based Access
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Root Administrators may choose to Disable Api key based access for certain Users, Accounts or Domains.
+Or the Administrator may choose to Disable Api Key based access globally and allow only for certain users.
+This could be particularly useful in cases where external authorization mechanisms like LDAP, SAML or OAuth2 are used,
+as then Api key based authorization is the only means for automation.
+This gives control to the Admin over who is allowed to run automation.
+
+Api key based access is enabled by default but it can be disabled (or enabled) at different granularities:
+
+1. Users
+
+Setting for a User can be changed through the Api Key Access field in the Edit User form, visible only to the Root Administrator.
+Three values are possible: Disable, Enable and Inherit. Inherit means that the User will inherit whatever value is set for the Account.
+
+    .. figure:: /_static/images/edit-user-api-key-access.png
+       :align:  center
+
+Admins can also search for Users having the required Api key access value using the User list view search filter.
+
+    .. figure:: /_static/images/filter-user-api-key-access.png
+       :align:  center
+
+2. Accounts
+
+Similar to Users, Api Key Access field is present in the Edit Account Form and the Account list view search filter, only for the Root Administrator. 
+If the value is set to Inherit, it means that Account will inherit whatever value is set for the Domain.
+
+3. Domains
+
+Api Key Access at Domain level is controlled by the Domain level setting "api.key.access". If the Domain level
+configuration is not set, then similar to other configurations it will consult the global value.
+
+4. Global
+
+The global value of the configuration setting "api.key.access" is set to 'True' by default. So Api Key Access at
+all levels is enabled by default. If the global value is changed to 'False' without setting any of the lower levels,
+then Api Key Access will be disabled for all Users.
+
+Order of Precedence
+^^^^^^^^^^^^^^^^^^^
+The local value always takes precedence over the global value. So if Api key access is disabled for a User but
+enabled for an Account, the User authorisation will still fail. Only if the User's Api key access is set to
+'Inherit', the Account's Api Key Access value is considered.
+Similarly if Account's Api Key Access is set to 'Inherit', only then the Domain level setting is considered,
+And only if the Domain level configuration is not set, the Global configuration is considered.
+
+Examples
+^^^^^^^^
+
+#. Disallow Api key access for all Accounts and Users in a Domain.
+
+    #. Leave all User and Account level Api Key Access values to the default 'Inherit'.
+    #. Set the Domain level setting "api.key.access" to False only for the required domain.
+
+#. Disallow Api key access for some Users, but allowed globally.
+
+    #. Set the User level permission to ‘Disabled’ only for the required Users.
+    #. All upper level permissions should either be Inherit or Enabled.
+
+#. Allow Api key access to some Users, but disallowed globally.
+
+    #. Set User level permission to ‘Enabled’ only for the required Users.
+    #. All upper level permissions should either be Inherit or Disabled.
