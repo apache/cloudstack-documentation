@@ -472,6 +472,13 @@ cloudstack-agent and should already be installed.
 
       #LIBVIRTD_ARGS="--listen"
 
+   Configure libvirt to connect to libvirtd and not to per-driver daemons, especially important on newer distros such as EL9 and Ubuntu 24.04. 
+   Edit ``/etc/libvirt/libvirt.conf`` and add the following:
+
+   .. parsed-literal::
+      remote_mode="legacy"
+
+
 #. Restart libvirt
 
    In RHEL or CentOS or SUSE or Ubuntu:
