@@ -109,6 +109,10 @@ db.simulator.connectionPoolLib
 To use DBCP 2, the value for the configuration must be set to 'dbcp'. An
 empty value or 'hikaricp' will allow using HikariCP.
 
+For large-scale environments, HikariCP should perform better. For environments
+running management server with constrained memory resources, using DBCP may
+work better in terms of memory usage.
+
 
 Monitor the Database Load
 -------------------------
