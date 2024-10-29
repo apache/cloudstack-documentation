@@ -47,4 +47,4 @@ JRE Upgrade
 Up until 4.19.x.x, the JRE used for ACS was JRE 11. In 4.20.0.0, the JRE was upgraded to JRE 17 as JRE 11 has reached EOL. 
 This means that Centos7 (EL7) is no longer supported.
 
-.. _official Log4j documentation: https://logging.apache.org/log4j/2.x/migrate-from-log4j1.html
+.. _official Log4j documentation_: https://logging.apache.org/log4j/2.x/migrate-from-log4j1.html
