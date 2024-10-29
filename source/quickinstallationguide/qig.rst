@@ -456,11 +456,10 @@ Installation
 ~~~~~~~~~~~~
 
 Installation of the KVM agent is trivial with just a single command, but 
-afterwards we'll need to configure a few things. We need to install the EPEL repository also.
+afterwards we'll need to configure a few things.
 
 .. parsed-literal::
 
-   # dnf -y install epel-release
    # dnf -y install cloudstack-agent
 
 
