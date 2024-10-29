@@ -106,14 +106,13 @@ It is always wise to update the system before starting:
 Configuring the Network
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Before going any further, make sure that "bridge-utils" and "net-tools" are installed and available:
+Starting with EL8, we must use the Network Manager to configure all network interfaces
+(instead of using the network-scripts we have used for so many years).
 
-.. parsed-literal::
-   # dnf install bridge-utils net-tools -y
-
-Connecting via the console or SSH, you should login as root. We will start by creating
-the bridge that Cloudstack will use for networking. Create and open
-/etc/sysconfig/network-scripts/ifcfg-cloudbr0 and add the following settings:
+We will start by creating the bridge that Cloudstack will use for networking
+To avoid remote (ssh) disconnections, you should be logging to the server locally,
+via console/physical screen (or save the commands below as a script and then run it
+via remote ssh session)
 
 .. note:: 
    IP Addressing - Throughout this document we are assuming that you will have 
@@ -127,51 +126,21 @@ the bridge that Cloudstack will use for networking. Create and open
    
 ::
 
-   DEVICE=cloudbr0
-   TYPE=Bridge
-   ONBOOT=yes
-   BOOTPROTO=none
-   IPV6INIT=no
-   IPV6_AUTOCONF=no
-   DELAY=5
-   IPADDR=172.16.10.2 #(or e.g. 192.168.1.2)
-   GATEWAY=172.16.10.1 #(or e.g. 192.168.1.1 - this would be your physical/home router)
-   NETMASK=255.255.255.0
-   DNS1=8.8.8.8
-   DNS2=8.8.4.4
-   STP=yes
-   USERCTL=no
-   NM_CONTROLLED=no
-
-Save the configuration and exit. We will then edit the NIC so that it
-makes use of this bridge.
-   
-Open the configuration file of your NIC (e.g. /etc/sysconfig/network-scripts/ifcfg-eth0)
-and edit it as follows:
+   #create an "empty” bridge, add eth0 to the bridge, set static IP and reactivate the whole configuration
+   nmcli connection add type bridge con-name cloudbr0 ifname cloudbr0
+   nmcli connection modify eth0 master cloudbr0
+   nmcli connection up eth0
+   nmcli connection modify cloudbr0 ipv4.addresses '172.16.10.2/24' ipv4.gateway '172.16.10.1' ipv4.dns '8.8.8.8' ipv4.method manual && nmcli connection up cloudbr0
 
 .. note::
    Interface name (eth0) used as example only. Replace eth0 with your default ethernet interface name.
 
+Optionally, we can install the net-tools:
+
 .. parsed-literal::
-   TYPE=Ethernet
-   BOOTPROTO=none
-   DEFROUTE=yes
-   NAME=eth0
-   DEVICE=eth0
-   ONBOOT=yes
-   BRIDGE=cloudbr0
+   # dnf install net-tools -y
 
-.. note::
-   If your physical nic (eth0 in the case of our example) has already been
-   setup before following this guide, make sure that there is no duplication
-   between IP configuration of /etc/config/network-scripts/ifcfg-cloudbr0 and
-   /etc/sysconfig/network-scripts/ifcfg-eth0 which will cause a failure that
-   would prevent the network from starting. Basically, IP configuration
-   of eth0 should be moved to the bridge and eth0 will be added to the bridge.
-
-
-Now that we have the configuration files properly set up, we need to run a few 
-commands to start up the network: 
+Now that we have the configuration files properly set up, let's reboot: 
 
 .. parsed-literal::
 
@@ -261,7 +230,7 @@ and and configure NTP at this stage. Installation is accomplished as follows:
 
 .. parsed-literal::
 
-   # yum -y install chrony
+   # dnf -y install chrony
 
 The actual default configuration is fine for our purposes, so we merely need 
 to enable it and set it to start on boot as follows:
@@ -308,7 +277,7 @@ start out by installing nfs-utils.
 
 .. parsed-literal::
 
-   # yum -y install nfs-utils
+   # dnf -y install nfs-utils
 
 We now need to configure NFS to serve up two different shares. This is handled 
 in the /etc/exports file. You should ensure that it has the following content:
@@ -371,7 +340,7 @@ runs well with CloudStack.
 
 .. parsed-literal::
 
-   # yum -y install mysql-server
+   # dnf -y install mysql-server
 
 This should install MySQL 8.x, as of the time of writing this guide.
 With MySQL now installed we need to make a few configuration changes to 
