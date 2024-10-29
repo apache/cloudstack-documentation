@@ -39,7 +39,7 @@ Up until 4.19.x.x, the logging library used for the project was Log4j 1.29.
 The 4.20.0.0 version has updated the library to Log4j2. The new Log4j2 configuration file format is not backwards 
 compatible with the old one. The 4.20.0.0 packages will come with the default configuration files updated. 
 Users that have made customizations to their files must update their configuration files to match with the new format, 
-the `official Log4j documentation` might help you migrate your custom configurations.
+the `official Log4j documentation`_ might help you migrate your custom configurations.
 
 JRE Upgrade
 ============
@@ -47,4 +47,4 @@ JRE Upgrade
 Up until 4.19.x.x, the JRE used for ACS was JRE 11. In 4.20.0.0, the JRE was upgraded to JRE 17 as JRE 11 has reached EOL. 
 This means that Centos7 (EL7) is no longer supported.
 
-.. _official Log4j documentation_: https://logging.apache.org/log4j/2.x/migrate-from-log4j1.html
+.. _official Log4j documentation: https://logging.apache.org/log4j/2.x/migrate-from-log4j1.html
