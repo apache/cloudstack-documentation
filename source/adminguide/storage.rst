@@ -1305,7 +1305,7 @@ policy can be set up per disk volume. For example, a user can set up a
 daily Snapshot at 02:30.
 
 With each Snapshot schedule, users can also specify the number of
-scheduled Snapshots to be retained. Older Snapshots that exceed the
+recurring Snapshots to be retained. Older Snapshots that exceed the
 retention limit are automatically deleted. This user-defined limit must
 be equal to or lower than the global limit set by the CloudStack
 administrator. See `“Globally Configured
