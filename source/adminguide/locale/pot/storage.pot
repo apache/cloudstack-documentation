@@ -1011,7 +1011,7 @@ msgstr ""
 
 #: ../../storage.rst:685
 # bc81c587ad8b4032b27d61690390e258
-msgid "With each snapshot schedule, users can also specify the number of recurring snapshots to be retained. Older snapshots that exceed the retention limit are automatically deleted. This user-defined limit must be equal to or lower than the global limit set by the CloudStack administrator. See `“Globally Configured Limits” <usage.html#globally-configured-limits>`_. The limit applies only to those snapshots that are taken as part of an automatic recurring snapshot policy. Additional manual snapshots can be created and retained."
+msgid "With each reccurring snapshot schedule, users can also specify the number of recurring snapshots to be retained. Older snapshots that exceed the retention limit are automatically deleted. This user-defined limit must be equal to or lower than the global limit set by the CloudStack administrator. See `“Globally Configured Limits” <usage.html#globally-configured-limits>`_. The limit applies only to those snapshots that are taken as part of an automatic recurring snapshot policy. Additional manual snapshots can be created and retained."
 msgstr ""
 
 #: ../../storage.rst:697
