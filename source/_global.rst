@@ -25,12 +25,12 @@
 
 .. Latest version systemvm template name
 
-.. |sysvm64-version|     replace:: 4.20
-.. |sysvm64-name-xen|    replace:: systemvm-xenserver-4.20
-.. |sysvm64-name-kvm|    replace:: systemvm-kvm-4.20
-.. |sysvm64-name-vmware| replace:: systemvm-vmware-4.20
-.. |sysvm64-name-hyperv| replace:: systemvm-hyperv-4.20
-.. |sysvm64-name-ovm|    replace:: systemvm-ovm-4.20
+.. |sysvm64-version|     replace:: 4.20.0
+.. |sysvm64-name-xen|    replace:: systemvm-xenserver-4.20.0-x86_64
+.. |sysvm64-name-kvm|    replace:: systemvm-kvm-4.20.0-x86_64
+.. |sysvm64-name-vmware| replace:: systemvm-vmware-4.20.0-x86_64
+.. |sysvm64-name-hyperv| replace:: systemvm-hyperv-4.20.0-x86_64
+.. |sysvm64-name-ovm|    replace:: systemvm-ovm-4.20.0-x86_64
 
 .. Latest version systemvm template URL
 .. |sysvm64-url-xen|    replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.0.0-x86_64-xen.vhd.bz2
