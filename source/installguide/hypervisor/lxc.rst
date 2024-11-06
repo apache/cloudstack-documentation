@@ -319,6 +319,10 @@ ensure the Agent has all the required permissions.
 
          $ setenforce permissive
 
+.. note:: In a production environment, selinux should be set to enforcing
+   and the necessary selinux policies are created to allow the
+   services to run.
+
 #. Configure Apparmor (Ubuntu)
 
    #. Check to see whether AppArmor is installed on your machine. If

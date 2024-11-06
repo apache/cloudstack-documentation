@@ -517,6 +517,52 @@ rules.
    the global configuration.
 
 
+Managing log files
+------------------
+
+The log files are located in `/var/log/cloudstack`. This directory has the
+following subdirectories:
+
+- `management` for the Management Server
+- `usage` for the Usage Server
+- `agent` for the Agent for KVM hosts
+
+CloudStack uses log4j2 to manage log files. The log4j2 configuration file
+is located in the corresponding subdirectories in the `/etc/cloudstack/` 
+directory and is named `log4j-cloud.xml`.
+
+By default, cloudstack uses `TimeBasedTriggeringPolicy` which rolls over
+the log file every day and are kept indefinitely. The log files are 
+compressed and archived in the same directory.
+
+Over time, the logs can fill up the entire disk space. To avoid this, you can 
+update the log4j-cloud.xml file to change the log file rollover and retention 
+policy. You can change the rollover policy to `SizeBasedTriggeringPolicy`
+and set the maximum size of the log file. You can also set the maximum number
+of archived log files to keep.
+
+For example, to change the rollover policy for `management-server.log` to 
+`SizeBasedTriggeringPolicy` and set the maximum size of the log file to 
+100MB and keep the maximum of 15 archived log files, you can update the 
+`log4j-cloud.xml` file as follows:
+
+.. code-block:: diff
+
+   -      <RollingFile name="FILE" append="true" fileName="/var/log/cloudstack/management/management-server.log" filePattern="/var/log/cloudstack/management/management-server.log.%d{yyyy-MM-dd}.gz">
+   +      <RollingFile name="FILE" append="true" fileName="/var/log/cloudstack/management/management-server.log" filePattern="/var/log/cloudstack/management/management-server.log.%i.gz">
+            <ThresholdFilter level="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
+   +          <DefaultRolloverStrategy max="15"/>
+            <Policies>
+   -            <TimeBasedTriggeringPolicy/>
+   +            <SizeBasedTriggeringPolicy size="100MB"/>
+            </Policies>
+            <PatternLayout pattern="%d{DEFAULT} %-5p [%c{1.}] (%t:%x) %m%ex%n"/>
+         </RollingFile>
+
+
+You can also checkout some configuration recipes from the log4j2 documentation
+`here <https://logging.apache.org/log4j/2.x/manual/appenders/rolling-file.html#recipes>`_.
+
 Stopping and Restarting the Management Server
 ---------------------------------------------------
 
