@@ -627,6 +627,7 @@ cluster.heartbeat.threshold             Threshold (in milliseconds) before self-
    - Every 60 seconds (configuable via management.server.stats.interval setting) each management server collects its statistics and publishs to all other management server peers. When other management server receives the published stats, it will set the peer state (owner is the receiver and peer is the sender) to Up.
    - Every 1.5 seconds (configurable via cluster.heartbeat.interval), each management server writes heartbeat to CloudStack database, and check the stats of other management servers.
    - If in the past 150 seconds (configurable via cluster.heartbeat.threshold), a management server does not write heartbeat and its peer states, its state and peer states will be set to Down by other management servers.
+   - In case a management server cannot write heartbeat to the database due to connection issue to the database, the host is set to Down state by other management server, when the database connection is restored, the management server will perform self-fencing and exit with code 219.
 
 .. |management-servers-list.png| image:: /_static/images/management-servers-list.png
    :alt: List of management servers
