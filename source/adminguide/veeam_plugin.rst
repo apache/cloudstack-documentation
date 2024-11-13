@@ -13,7 +13,7 @@
    specific language governing permissions and limitations
    under the License.
 
-.. _Veeam Backup and Recovery Plugin:
+.. _Veeam Backup and Replication Plugin:
 
 Veeam Backup and Replication Plugin
 =================================
