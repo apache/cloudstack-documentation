@@ -124,7 +124,7 @@ When importing a instance from VMware to KVM, CloudStack performs the following 
       selected by the administrator) from KVM host if ovftool installed or
       management server (can be forced by the administrator).
     - Converts the OVF on the temporary storage location to KVM using virt-v2v:
-      CloudStack (or the administrator) selects a running and enabled KVM host to
+      CloudStack (or the administrator) selects a running KVM host to
       perform the conversion from VMware to KVM using **virt-v2v**. If the binary
       is not installed, then the host will fail the migration. In case it is
       installed, it will perform the conversion into the temporary location to
@@ -137,7 +137,7 @@ When importing a instance from VMware to KVM, CloudStack performs the following 
       drivers. Additionally, it needs to copy the converted disks into
       the temporary location.
     - The converted instance is then imported into the selected KVM cluster.
-      The host for conversion is selected randomly from the selected
+      The host for import is selected randomly from the selected
       destination cluster if no host for importing is selected. Only enabled 
       cluster & enabled host are considered for importing.
 
