@@ -116,29 +116,30 @@ In the UI to import instance, you can optionally select a KVM host and temporary
 When importing a instance from VMware to KVM, CloudStack performs the following actions:
 
     - Clones the Source Instance on the selected VMware Datacenter for running
-    VMs: The source instance will be cloned in the original state for running
-    VMs. The recommended state is the stopped state to prevent data
-    inconsistencies or loss when cloning the instance.
+      VMs: The source instance will be cloned in the original state for running
+      VMs. The recommended state is the stopped state to prevent data
+      inconsistencies or loss when cloning the instance.
     - Imports the VM files (OVF) of the Cloned instance for running VMs, Source
-    Instance for stopped VMs to a temporary storage location (which can be
-    selected by the administrator) from KVM host if ovftool installed or
-    management server (can be forced by the administrator).
+      Instance for stopped VMs to a temporary storage location (which can be
+      selected by the administrator) from KVM host if ovftool installed or
+      management server (can be forced by the administrator).
     - Converts the OVF on the temporary storage location to KVM using virt-v2v:
-    CloudStack (or the administrator) selects a running and enabled KVM host to
-    perform the conversion from VMware to KVM using **virt-v2v**. If the binary
-    is not installed, then the host will fail the migration. In case it is
-    installed, it will perform the conversion into the temporary location to
-    store the converted QCOW2 disks of the instance. The disks are then moved
-    into the destination storage pools for the instance. The conversion is a
-    long-lasting process which can be set to time out by the global setting
-    'convert.vmware.instance.to.kvm.timeout'. The conversion processes takes a
-    long time because virt-v2v creates a temporary instance to inspect the
-    source VM and generate the converted disks with the correct
-    drivers. Additionally, it needs to copy the converted disks into
-    the temporary location.
+      CloudStack (or the administrator) selects a running and enabled KVM host to
+      perform the conversion from VMware to KVM using **virt-v2v**. If the binary
+      is not installed, then the host will fail the migration. In case it is
+      installed, it will perform the conversion into the temporary location to
+      store the converted QCOW2 disks of the instance. The disks are then moved
+      into the destination storage pools for the instance. The conversion is a
+      long-lasting process which can be set to time out by the global setting
+      'convert.vmware.instance.to.kvm.timeout'. The conversion processes takes a
+      long time because virt-v2v creates a temporary instance to inspect the
+      source VM and generate the converted disks with the correct
+      drivers. Additionally, it needs to copy the converted disks into
+      the temporary location.
     - The converted instance is then imported into the selected KVM cluster.
-    The instance for conversion is selected randomly from the selected
-    destination cluster if no host for importing is selected.
+      The host for conversion is selected randomly from the selected
+      destination cluster if no host for importing is selected. Only enabled 
+      cluster & enabled host are considered for importing.
 
 .. note:: Please consider not restarting the management servers while importing as it will lead to the interruption of the process and you will need to start again.
 
