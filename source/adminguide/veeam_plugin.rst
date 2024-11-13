@@ -15,10 +15,10 @@
 
 .. _Veeam Backup and Recovery Plugin:
 
-Veeam Backup and Recovery Plugin
+Veeam Backup and Replication Plugin
 =================================
 
-About the Veeam Backup and Recovery Plugin
+About the Veeam Backup and Replication Plugin
 -------------------------------------------
 
 There are a couple of important concepts to understand before working with the Veeam plugin.
@@ -44,10 +44,10 @@ There are a couple of important concepts to understand before working with the V
    remaining image(s)
 
 
-Installing Veeam Backup and Recovery for use with CloudStack
+Installing Veeam Backup and Replication for use with CloudStack
 -------------------------------------------------------------
 
-The B&R Veeam plugin has been tested against Veeam Backup and Recovery 11 and 12.  The
+The B&R Veeam plugin has been tested against Veeam Backup and Replication 11 and 12.  The
 enterprise edition is required for the Enterprise Manager API.  The final tested version of Veeam was on a
 Windows Server 2019 (with desktop), although much of the development work was done against a Windows Server 2016 OS (with
 desktop).
@@ -129,6 +129,7 @@ Plug-in specific settings:
 ======================================= ========================
 Configuration                            Description
 ======================================= ========================
+backup.framework.provider.plugin        The backup and recovery provider plugin. Set this to 'veeam'.
 backup.plugin.veeam.url                 Veeam B&R server URL. Default: http://<VEEAM_SERVER_IP>:9398/api/
 backup.plugin.veeam.version             Veeam B&R server version. CloudStack will get Veeam server version via PowerShell commands if it is 0 or not set
 backup.plugin.veeam.username            Veeam B&R server username. Default: administrator
