@@ -79,41 +79,41 @@ In the UI, Virtual Machines to import from VMware are listed in *Tools > Import-
 
 .. cssclass:: table-striped table-bordered table-hover
 
-==================== ========================
-Source               Destination Hypervisor  
-==================== ========================
-Migrate From VMware  KVM
-==================== ========================
+==================================================== =================================
+Select Import-Export Source Hypervisor               Action  
+==================================================== =================================
+VMware                                               Migrate existing instances to KVM
+==================================================== =================================
 
 |import-vm-from-vmware-to-kvm.png|
 
 Selecting the Destination cluster
 ---------------------------------
 
-CloudStack administrators must select a KVM cluster to import the VMware Virtual Machines (left side of the image above). Once a KVM cluster is selected, the VMware Datacenter selection part is displayed (right side of the image above).
+CloudStack administrators must select a KVM cluster to import the VMware Virtual Machines (right side of the image above). Once a KVM cluster is selected, the VMware Datacenter selection part is displayed.
 
 Selecting the VM from a VMware Datacenter
 -----------------------------------------
 
 CloudStack administrators must select the Source VMware Datacenter:
 
-    - Existing: The existing zones are listed, and for each zone CloudStack will list if there is any VMware Datacenter associated to it. In case it is, it can be selected
-    - External: CloudStack allows listing Virtual Machines from a VMware Datacenter that is not associated to any CloudStack zone. To do so, it needs the vCenter IP address, the datacenter name, and username and password credentials to log in the vCenter. You can use default datacenter name (ha-datacenter or other) along with host credentials to import from standalone VMware hosts (Only stopped VMs are supported).
+    - Existing: The existing zones are listed, and for each zone, CloudStack will list if there is any VMware Datacenter associated with it. In case it is, it can be selected
+    - External: CloudStack allows listing Virtual Machines from a VMware Datacenter that is not associated with any CloudStack zone. To do so, it needs the vCenter IP address, the datacenter name, and username and password credentials to log in to the vCenter. You can use the default datacenter name (ha-datacenter or other) along with host credentials to import from standalone VMware hosts (Only stopped VMs are supported).
 
 Once the VMware Datacenter is selected, click on List VMware Instances to display the list of Virtual Machines on the Datacenter. You must then select the VMware Instance for import and click on Import Instance.
 
 Converting and importing a VMware VM
 ------------------------------------
 
-.. note:: CloudStack allows importing Running Linux Virtual Machines, but it is generally recommended that the Virtual Machine to import is powered off and has been gracefully shutdown before the process starts. In case a Linux VM is imported while running, it will be converted in "crash consistent" state. For Windows Virtual Machines, it is not possible to import them while running, it is mandatory they are shut down gracefully so the filesystem is in a clean state.
+.. note:: CloudStack allows importing Running Linux Virtual Machines, but it is generally recommended that the Virtual Machine to import is powered off and has been gracefully shut down before the process starts. In case a Linux VM is imported while running, it will be converted in a "crash consistent" state. For Windows Virtual Machines, it is not possible to import them while running, they must be shut down gracefully so the filesystem is in a clean state.
 
 .. note:: You can configure the parallel import of VM disk files on KVM host and management server, using the global settings: threads.on.kvm.host.to.import.vmware.vm.files and threads.on.ms.to.import.vmware.vm.files respectively.
 
-In the UI to import instance, you can optionally select a KVM host and temporary destination storage (Default is Secondary Storage, Only NFS pools are supported) for the conversion. The conversion needs VM files (OVF) to be imported to temporary destination storage, the KVM host used for conversion can import them if the ovftool is installed in it, otherwise the management server imports them. You can force the management server to import them by enabling Force MS to import VM file(s), even the KVM host has ovftool installed in it.
+In the UI import wizard, you can optionally select a KVM host and temporary destination storage (default is Secondary Storage, but if using Primary Storage - only NFS pools are supported) for the conversion, where VM files (OVF) will be copied to. This can be done by a random (or explicitly chosen) KVM host (if the ovftools are installed), otherwise, the management server will import/copy the VM files (optionally, you can force this action to be done by the management server even the KVM hosts have the ovftools installed in it). Irrelevant if the KVM host or the management server performs the copy of the VM files (OVF), you can further either let CloudStack choose which KVM host should do the conversion of the VM files using virt-v2v and which host will import the files to the destination Primary Storage Pool, or you can explicitly choose these KVM hosts for each of the 2 mentioned operations.
 
 |import-vm-from-vmware-to-kvm-options.png|
 
-When importing a instance from VMware to KVM, CloudStack performs the following actions:
+When importing an instance from VMware to KVM, CloudStack performs the following actions:
 
     - Clones the Source Instance on the selected VMware Datacenter for running
       VMs: The source instance will be cloned in the original state for running
@@ -131,7 +131,7 @@ When importing a instance from VMware to KVM, CloudStack performs the following 
       store the converted QCOW2 disks of the instance. The disks are then moved
       into the destination storage pools for the instance. The conversion is a
       long-lasting process which can be set to time out by the global setting
-      'convert.vmware.instance.to.kvm.timeout'. The conversion processes takes a
+      'convert.vmware.instance.to.kvm.timeout'. The conversion process takes a
       long time because virt-v2v creates a temporary instance to inspect the
       source VM and generate the converted disks with the correct
       drivers. Additionally, it needs to copy the converted disks into
