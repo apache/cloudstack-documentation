@@ -27,6 +27,9 @@ new features. Some of the highlights include:
 • NSX integration
 • Shared Filesystem
 • Multi-arch Zones
+• Simple NAS backup plugin for KVM
+• Usage UI
+• API documentation in UI
 
 
 The full list of new features can be found in the project release notes at
