@@ -25,7 +25,7 @@ new features. Some of the highlights include:
 • Dynamic and Static Routing
 • Ceph RGW Object Store Support
 • NSX integration
-• Shared Filesystem
+• Shared Filesystems
 • Multi-arch Zones
 • Simple NAS backup plugin for KVM
 • Usage UI
