@@ -13,18 +13,16 @@
    specific language governing permissions and limitations
    under the License.
 
-.. note:: This functionality requires to install the **virt-v2v** (https://www.libguestfs.org/virt-v2v.1.html) binary installed on destination cluster hosts, as it is not a dependency of the CloudStack agent installed on the hosts.
-
-As of CS 4.19, it is possible to select a VMware VM from an external or existing VMware datacenter, convert it to a KVM Virtual Machine and importing it into an existing KVM cluster.
+.. note:: This functionality requires **virt-v2v** (https://www.libguestfs.org/virt-v2v.1.html) binary installed on destination cluster hosts (needs to be installed manually as it's not a dependency of the CloudStack agent during the agent installation.
 
 Requirements on the KVM hosts
 -----------------------------
 
-The CloudStack agent does not install the virt-v2v binary as a dependency, for which this functionality is not supported by default. To enable this functionality, the virt-v2v binary must be installed on the destination KVM hosts where to import the Virtual Machines.
+The CloudStack agent does not install the virt-v2v binary as a dependency. The virt-v2v binary must be installed manually on KVM hosts.
 
 In case virt-v2v is not installed on a KVM host attempting a Virtual Machine conversion from VMware, the process fails.
 
-The virt-v2v output is logged on the CloudStack agent logs to help administrators tracking the progress on the Virtual Machines conversion processes. The verbose mode for virt-v2v can be enabled by adding the following line to /etc/cloudstack/agent/agent.properties and restart cloudstack-agent:
+The virt-v2v output (progress) is logged in the CloudStack agent logs, to help administrators track the progress on the Virtual Machines conversion processes. The verbose mode for virt-v2v can be enabled by adding the following line to /etc/cloudstack/agent/agent.properties and restart cloudstack-agent:
 
     ::
 
@@ -49,7 +47,7 @@ Linux Distribution          Supported Versions
 Alma Linux                  8, 9
 Red Hat Enterprise Linux    8, 9
 Rocky Linux                 8, 9
-Ubuntu                      22.04 LTS
+Ubuntu                      22.04 LTS, 24.04 LTS
 ========================    ========================
 
 
@@ -68,9 +66,9 @@ For Debian-based distributions:
 
     ::
 
-        apt install virtio-win
+        apt install virtio-win (if the package is not available, then manual steps will be required to install the virtio drivers for windows)
 
-The OVF tool (ovftool) must be installed on the destination KVM hosts if the hosts should import VM files (OVF) from vCenter directly, if not management server imports them.
+The OVF tool (ovftool) must be installed on the destination KVM hosts if the hosts should import VM files (OVF) from vCenter directly. If not, management server imports them (management server is not using ovftool, so no need to install it on the management server hosts.
 
 Usage
 -----
@@ -115,41 +113,42 @@ In the UI import wizard, you can optionally select a KVM host and temporary dest
 
 When importing an instance from VMware to KVM, CloudStack performs the following actions:
 
-    - Import the VM files (OVF) of the instance to a temporary storage location
-      (which can be selected by the administrator).The import is performed on a
-      KVM host if ovftool installed or management server (can be forced by the 
-      administrator). The existence of ovftool on the host is checked using 
+    - Export the VM files (OVF) of the instance to a temporary storage location
+      (which can be selected by the administrator). The export is performed by a
+      KVM host if ovftool is installed or management server (can be forced by the 
+      administrator, doesn't need ovftool installed on the management server).
+      The existence of ovftool on KVM host is checked using 
       ``ovftool --version`` command.
 
       - If the instance on VMWare is in **running** state, we clone the instance on
-        VMWare and use the new cloned instance for conversion. This is to
-        prevent issues with the data consistency of the instance being
-        imported. For large instances, the cloning process can take a long time.
+        VMWare and use the new cloned instance to export OVF files.
+        The cloning process may take some time to complete and is used to ensure data consistency,
+        disk consolidation, etc.
       - If the instance on VMWare is in **stopped** state, we directly use the
-        instance for conversion.
+        instance to export it's OVF files.
     - Converts the OVF on the temporary storage location to KVM using
       **virt-v2v**. CloudStack (or the administrator) selects a running and
-      enabled KVM host to perform the conversion from VMware to KVM using
-      **virt-v2v**. If the binary is not installed, then the host will fail the
-      migration. In case it is installed, it will perform the conversion into
+      enabled KVM host to perform the conversion (of the previously exported OVF files) from VMware to KVM using
+      **virt-v2v**. If the binary is not installed, then the host will fail to convert the Instance.
+      In case it is installed, it will perform the conversion into
       the temporary location to store the converted QCOW2 disks of the instance.
       The disks are then moved into the destination storage pools for the
-      instance. The conversion is a long-lasting process which can be set to
+      instance. The virt-v2v conversion is a long-lasting process which can be set to
       time out by the global setting ``convert.vmware.instance.to.kvm.timeout``.
       The conversion process takes a long time because virt-v2v creates a
       temporary instance to inspect the source VM and generate the converted
       disks with the correct drivers. Additionally, it needs to copy the
       converted disks into the temporary location.
-    - The converted instance is then imported into the selected KVM cluster.
-      If no host is selected for importing, the host for qcow2 conversion is
-      selected randomly from the selected destination cluster. Only enabled 
-      cluster & enabled host are considered for importing.
+    - The converted instance is then imported into the chosen KVM cluster.
+      Administraator can choose the KVM host or let CloudStack choose it. . Only enabled 
+      cluster & enabled host are considered.
 
 .. note:: Please consider not restarting the management servers while importing as it will lead to the interruption of the process and you will need to start again.
 
 .. note:: As mentioned above, the migration/conversion process uses an external tool, virt-v2v, which supports most but not all the operating systems out there (this is true for both the host on which the virt-v2v tool is running as well as the guest OS of the instances being migrated by the tool). Thus, the success of the import process will, almost exclusively, depend on the success of the virt-v2v conversion. In other words, the success will vary based on factors such as the current OS version, installed packages, guest OS setup, file systems, and others. Success is not guaranteed. We strongly recommend testing the migration process before proceeding with production deployments.
 
-.. note:: The resulting imported VM uses the default Guest OS: CentOS 4.5 (32-bit). After importing the VM, please Edit the Instance to change the Guest OS Type accordingly.
+.. note:: The resulting imported VM uses the default Guest OS type: **CentOS 4.5 (32-bit)**. 
+After importing the VM, please Edit the Instance to change the Guest OS Type accordingly.
 
 .. |import-vm-from-vmware-to-kvm.png| image:: /_static/images/import-vm-from-vmware-to-kvm.png
    :alt: Import VMware Virtual Machines into KVM.
