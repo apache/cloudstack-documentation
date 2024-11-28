@@ -18,7 +18,7 @@
 Requirements on the KVM hosts
 -----------------------------
 
-The CloudStack agent does not install the virt-v2v binary as a dependency. The virt-v2v binary must be installed manually on KVM hosts, or the migration will fail
+The CloudStack agent does not install the virt-v2v binary as a dependency. The virt-v2v binary must be installed manually on KVM hosts, or the migration will fail.
 
 The virt-v2v output (progress) is logged in the CloudStack agent logs, to help administrators track the progress on the Instance conversion processes. The verbose mode for virt-v2v can be enabled by adding the following line to /etc/cloudstack/agent/agent.properties and restart cloudstack-agent:
 
@@ -49,7 +49,7 @@ Ubuntu                      22.04 LTS, 24.04 LTS
 ========================    ========================
 
 
-Importing Windows guest VMs from VMware requires installing the virtio drivers on the hypervisor hosts for the virt-v2v conversion.
+Importing Windows VMs from VMware requires installing the virtio drivers for Windows on the hypervisor hosts for the virt-v2v conversion.
 
 On (RH)EL hosts:
 
@@ -66,7 +66,7 @@ For Debian-based distributions:
 
         apt install virtio-win (if the package is not available, then manual steps will be required to install the virtio drivers for windows)
 
-The OVF tool (ovftool) must be installed on the destination KVM hosts if the hosts should export VM files (OVF) from vCenter. If not, the management server exportds them (the management server doesn't require ovftool installed).
+The OVF tool (ovftool) must be installed on the destination KVM hosts if the hosts should export VM files (OVF) from vCenter. If not, the management server exports them (the management server doesn't require ovftool installed).
 
 Usage
 -----
@@ -123,22 +123,21 @@ When importing an instance from VMware to KVM, CloudStack performs the following
         The cloning process may take some time to complete and is used to ensure data consistency,
         disk consolidation, etc.
       - If the instance on VMware is in **stopped** state, we directly use the
-        instance to export it's OVF files.
+        instance to export its OVF files.
     - Converts the OVF on the temporary storage location to KVM using
       **virt-v2v**. CloudStack (or the administrator) selects a running and
       enabled KVM host to perform the conversion (of the previously exported OVF files) from VMware to KVM using
       **virt-v2v**. If the binary is not installed, then the host will fail to convert the Instance.
       In case it is installed, it will perform the conversion into
       the temporary location to store the converted QCOW2 disks of the instance.
-      The disks are then moved into the destination storage pools for the
-      instance. The virt-v2v conversion is a long-lasting process which can be set to
+      The virt-v2v conversion is a long-lasting process which can be set to
       time out by the global setting ``convert.vmware.instance.to.kvm.timeout``.
       The conversion process takes a long time because virt-v2v creates a
       temporary instance to inspect the source VM and generate the converted
       disks with the correct drivers. Additionally, it needs to copy the
       converted disks into the temporary location.
     - The converted instance (i.e. QCOW2 files) is then imported into the chosen KVM cluster.
-      Administrator can choose the KVM host to perform the import, or let CloudStack choose it. Only enabled 
+      Administrator can choose the KVM host to perform the import or let CloudStack choose it. Only enabled 
       cluster and enabled hosts are considered.
 
 .. note:: Please do not restart the management servers while migration is in progress as it will lead to the interruption of the process and you will need to start again.
