@@ -345,8 +345,6 @@ to track its issues.
 | 4.20.0.0                | `#9390`_ | libvirtstorageadaptor: better handle failed libvirt        |
 |                         |          | storagepool destroy                                        |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.20.0.0                | `#22`_   | Vpc refactor clean for pr                                  |
-+-------------------------+----------+------------------------------------------------------------+
 | 4.20.0.0                | `#9447`_ | Fix snapshot chain being deleted on XenServer              |
 +-------------------------+----------+------------------------------------------------------------+
 | 4.20.0.0                | `#8615`_ | Add UI to view and download usage records                  |
