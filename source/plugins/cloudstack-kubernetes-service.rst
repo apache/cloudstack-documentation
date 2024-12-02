@@ -95,6 +95,9 @@ Once the ISO has been built for a desired Kubernetes version, it can be added by
 
 |cks-add-version-form.png|
 
+.. note::
+   Since 4.21.0 it is possible to deploy separate dedicated etcd nodes. This requires the Kubernetes ISO contains the etcd binaries.
+
 addKubernetesSupportedVersion API can be used by an admin to add a new supported version for the service. It takes following input parameters:
 
 - **name** (the name of the Kubernetes supported version) · semanticversion (the semantic version of the Kubernetes release in MAJOR.MINOR.PATCH format. More about semantic versioning here: https://semver.org/ Required)
@@ -197,6 +200,13 @@ New Kubernetes clusters can be created using the API or via the UI. User will be
 
 |cks-create-cluster-form.png|
 
+Since 4.21.0, users will be provided with an additional section displayed when toggling the option: 'Show Advanced Settings'. On this section, users can select templates and service offerings for:
+- Worker nodes
+- Control nodes
+- Etcd nodes (if one or more are selected, no etcd nodes are selected by default)
+
+|cks-create-cluster-additional-settings.png|
+
 createKubernetesCluster API can be used to create new Kubernetes cluster. It takes following parameters as input,
 
 - **name** (name for the Kubernetes cluster; Required)
@@ -218,6 +228,9 @@ createKubernetesCluster API can be used to create new Kubernetes cluster. It tak
 - **dockerregistrypassword** (password for the docker image private registry; Experimental)
 - **dockerregistryurl** (URL for the docker image private registry; Experimental)
 - **dockerregistryemail** (email of the docker image private registry user; Experimental)
+- **nodeofferings**: an optional map parameter to set the service offerings for worker, control or etcd nodes. If this parameter is not set, then every VM in the cluster will be deployed using the default service offering set on the serviceofferingid parameter.
+- **etcdnodes**: an optional integer parameter to specify the number etcd nodes in the cluster, the default value is 0. In case the number is greater than 0, etcd nodes are separate from master nodes and are provisioned accordingly.
+- **nodetemplates**: an optional map parameter to set the template to be used by worker, control or etcd nodes. If this parameter is not set, then every VM in the cluster will be deployed using the System VM template.
 
 For example:
 
@@ -420,6 +433,8 @@ To remove an Instance from an ExternalManaged Kubernetes cluster:
    :alt: Kubernetes clusters list.
 .. |cks-create-cluster-form.png| image:: /_static/images/cks-create-cluster-form.png
    :alt: Create Kubernetes Cluster form.
+.. |cks-create-cluster-additional-settings.png| image:: /_static/images/cks-create-cluster-additional-settings.png
+   :alt: Create Kubernetes Cluster form with Advanced Settings.
 .. |cks-delete-action.png| image:: /_static/images/cks-delete-action.png
    :alt: Delete action icon.
 .. |cks-kube-config-action.png| image:: /_static/images/cks-kube-config-action.png
