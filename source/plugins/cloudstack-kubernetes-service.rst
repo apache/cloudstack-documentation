@@ -15,7 +15,10 @@ CloudStack Kubernetes Service
 
 The Kubernetes Service plugin adds Kubernetes integration to CloudStack. The plugin is disabled by default and an admin can enable it using a Global Setting. It enables users to run containerized services using Kubernetes clusters.
 
-With CoreOS having reached EOL, from 4.16 the Kubernetes Service Plugin will use the existing SystemVM Template for deploying kubernetes clusters. For installation of Kubernetes binaries on the cluster nodes, a binaries ISO is used for each Kubernetes version to be made available via CloudStack. This allows faster, offline installation of Kubernetes binaries and docker images along with support for adding multiple versions of Kubernetes for upgrades and running different clusters.
+With CoreOS having reached EOL, from 4.16 the Kubernetes Service Plugin will use the existing SystemVM Template by default for deploying kubernetes clusters. For installation of Kubernetes binaries on the cluster nodes, a binaries ISO is used for each Kubernetes version to be made available via CloudStack. This allows faster, offline installation of Kubernetes binaries and docker images along with support for adding multiple versions of Kubernetes for upgrades and running different clusters.
+
+.. note::
+   Since version 4.21.0 users can choose different templates for different types of nodes (worker, control, etcd nodes) for deploying Kubernetes clusters. These templates must be previously registered selecting the 'For CKS' option.
 
 For deployment and setup of Kubernetes on cluster nodes, the plugin uses the Kubernetes tool, 'kubeadm'. kubeadm is the command-line tool for easily provisioning a secure Kubernetes cluster on top of physical or cloud servers or Instances. Under the hood, control node(s) of the cluster starts a Kubernetes cluster using kubeadm init command with a custom token, and worker nodes join this Kubernetes cluster using kubeadm join command with the same token. More about kubeadm here: https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/. Weave Net CNI provider plugin is used for cluster networking. More about Weave Net provide plugin here: https://www.weave.works/docs/net/latest/kubernetes/kube-addon/.
 
