@@ -266,6 +266,10 @@ other Network Tiers within the VPC.
 
    -  **Name**: A unique name for the Network Tier you create.
 
+   .. note::
+      Admins can choose to automatically prepend the VPC name to the Tier name during creation
+      using global configurations "vpc.tier.name.prepend" and "vpc.tier.name.prepend.delimiter".
+
    -  **Network Offering**: The following default Network offerings are
       listed: Internal LB,
       DefaultIsolatedNetworkOfferingForVpcNetworksNoLB,
