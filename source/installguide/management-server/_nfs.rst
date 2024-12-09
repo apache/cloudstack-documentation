@@ -253,8 +253,8 @@ operating system version.
       .. parsed-literal::
 
          mkdir /primary
-         mount -t nfs <management-server-name>:/export/primary
+         mount -t nfs <management-server-name>:/export/primary /primary
          umount /primary
          mkdir /secondary
-         mount -t nfs <management-server-name>:/export/secondary
+         mount -t nfs <management-server-name>:/export/secondary /secondary
          umount /secondary
