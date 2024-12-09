@@ -13,11 +13,12 @@
    specific language governing permissions and limitations
    under the License.
 
-Changes in |release| since 4.19.0.0
+Changes in |release| since 4.19.1.0
 ===================================
 
-Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/31?closed=1
+Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/30?closed=1
 to track its issues.
+
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -25,1905 +26,511 @@ to track its issues.
 +-------------------------+----------+------------------------------------------------------------+
 | Version                 | Github   | Description                                                |
 +=========================+==========+============================================================+
-| 4.19.1.0                | `#9392`_ | Fix list backups after backup vm is expunged               |
+| 4.20.0.0                | `#8911`_ | Linked clone migration between file-based storages on KVM  |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9391`_ | UI: Fix backup offering buttons for instances in data view |
+| 4.20.0.0                | `#9751`_ | API: Fix listing Userdata by keyword or name               |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8836`_ | Fix radio buttons in instance migration pop-up             |
+| 4.20.0.0                | `#9731`_ | Hide UserData field from the EditVM view for VMs that do   |
+|                         |          | not offer it                                               |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9339`_ | engine-schema,cks: fix finding non-removed network vms     |
+| 4.20.0.0                | `#9195`_ | cleanup validations for VPN connection creation            |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9377`_ | saml: purge token after first response and improve setting |
-|                         |          | description                                                |
+| 4.20.0.0                | `#9738`_ | debian12: update debian/control                            |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9381`_ | UI assorted fixes                                          |
+| 4.20.0.0                | `#9723`_ | Shutdown expunged resources cleanup executor properly, and |
+|                         |          | allow other components to configure/start/stop on error    |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9382`_ | LibvirtOvsFetchInterfaceCommandWrapperTest fix (test fails |
-|                         |          | in mac) - skip it if no interfaces with eth and wl         |
+| 4.20.0.0                | `#9739`_ | Fix ISO url in test_usage.py                               |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9367`_ | Fix: Switch back to CLOUD_DB after purging usage records   |
+| 4.20.0.0                | `#7650`_ | CKS: add ConfigDrive to cloud-init datasource_list in      |
+|                         |          | systemvm template                                          |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9376`_ | Ignore non-managed pools for storage pool access           |
-|                         |          | preparation                                                |
+| 4.20.0.0                | `#8588`_ | CKS: fix creation on shared network if HA is enabled       |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9384`_ | test: refactor ActionEventInterceptorTest to prevent       |
-|                         |          | failures                                                   |
+| 4.20.0.0                | `#9664`_ | PowerFlex on demand disable config key                     |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9356`_ | Copy on pool host when storage pool has ScopeType.HOST     |
+| 4.20.0.0                | `#9559`_ | server: fix nfs version option during mounts               |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9349`_ | systemvmtemplate: bump new systemvmtemplate 4.19.1         |
+| 4.20.0.0                | `#9374`_ | server: apply network ACL even if there is no network ACLs |
+|                         |          | rules in the ACL list                                      |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9355`_ | NPE fix, addresses test_hostha_kvm_host_fencing failure    |
+| 4.20.0.0                | `#9720`_ | Revert "list VMs by displayname instead of name"           |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9147`_ | Fix columns in VM details tabs                             |
+| 4.20.0.0                | `#9596`_ | Fix: Filter out networks without access while getting      |
+|                         |          | networks with SG with free IPs                             |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9357`_ | saml: make default signature check mandatory               |
+| 4.20.0.0                | `#9711`_ | ui: load project list with minimum details                 |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9354`_ | test: fix simulator CI failure test_cluster_drs            |
+| 4.20.0.0                | `#9006`_ | build/packaging: build tungsten plugin only if noredist is |
+|                         |          | passed                                                     |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9345`_ | ui: fix account list on domain change in filterview        |
+| 4.20.0.0                | `#9637`_ | Fixed Unable to create a domain when networkdomain is      |
+|                         |          | mentioned and cleared                                      |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9348`_ | UI: create network form constantly tries to list domains - |
-|                         |          | which is not permitted for normal users                    |
+| 4.20.0.0                | `#8846`_ | Removed deprecated instruction MAINTAINER                  |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9325`_ | linstor: deleteAsync fallback to volume UUID if path not   |
-|                         |          | set yet                                                    |
+| 4.20.0.0                | `#9714`_ | Fix main build errors                                      |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9334`_ | UI: fix "Request failed." error when open vnf appliances   |
-|                         |          | tab of network                                             |
+| 4.20.0.0                | `#9636`_ | [VMware] Make disk controller selection on volume          |
+|                         |          | attachment consistent with VM creation and start           |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9327`_ | linstor-ui: Fix add primary storage if Linstor protocol    |
-|                         |          | selected                                                   |
+| 4.20.0.0                | `#9699`_ | VR: fix password server exception when no password is      |
+|                         |          | found                                                      |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9323`_ | test_primary_storage_scope.py should only run with kvm,    |
-|                         |          | vmware and simulator                                       |
+| 4.20.0.0                | `#9698`_ | lb: fix haproxy cannot start if algorithm is not lowercase |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9326`_ | linstor: do not use the same static ApiClient for all      |
-|                         |          | calls                                                      |
+| 4.20.0.0                | `#9700`_ | UI: enable project menu on mobile devices                  |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9234`_ | Handle public IP race conditions                           |
+| 4.20.0.0                | `#9563`_ | Fix resource count discrepancy while associating IP        |
+|                         |          | address to a network                                       |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8875`_ | Change storage pool scope from Cluster to Zone and vise    |
-|                         |          | versa                                                      |
+| 4.20.0.0                | `#9676`_ | Enable Backup and Recovery for Shared Filesystems          |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9268`_ | PowerFlex/ScaleIO SDC client connection improvements       |
+| 4.20.0.0                | `#9200`_ | refactor: cloud-sysvmadm script                            |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9146`_ | Differentiate between instalation ISO and attached ISO     |
+| 4.20.0.0                | `#9557`_ | UI: Fix VPC network offerings listing on VPC tier creation |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9307`_ | UI: Minor UI improvements                                  |
+| 4.20.0.0                | `#8503`_ | list VMs by displayname instead of name                    |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8922`_ | extract host from websocket to add route                   |
+| 4.20.0.0                | `#9696`_ | pre-commit run --all-files; fix end of file                |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9310`_ | Fixed src datastore on copy check for PowerFlex/ScaleIO    |
-|                         |          | storage driver                                             |
+| 4.20.0.0                | `#9680`_ | Update of the schema 41910to42000.sql for compatibility    |
+|                         |          | with MariaDB version 10.3.38.                              |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9301`_ | Add, Delete Storage Pool commands should be able execute   |
-|                         |          | on a host in maintenance                                   |
+| 4.20.0.0                | `#9655`_ | Fix toc generation for api docs                            |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9184`_ | server: refactor listNetworks api database retrievals      |
+| 4.20.0.0                | `#9681`_ | Implemented the lateral expansion of the area-box in the   |
+|                         |          | forms (creat…                                              |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9240`_ | Fix for race when automatically assigning IP to Vms        |
+| 4.20.0.0                | `#9669`_ | CPVM: move focus on input area after clearing clipboard    |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9309`_ | Revert listAll behaviour for templates & iso               |
+| 4.20.0.0                | `#9661`_ | List Events returns intermittent SQL exception.Fixed       |
+|                         |          | listEvents intermittent exception.                         |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8354`_ | server: apply rules when VR of Domain VPC is recreated     |
+| 4.20.0.0                | `#9675`_ | Minor naming changes in Shared FileSystems 4.20 Feature    |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9283`_ | Change vm.stats.remove.batch.size to                       |
-|                         |          | delete.batch.query.size & allow delete of volume_stats in  |
-|                         |          | batches                                                    |
+| 4.20.0.0                | `#9663`_ | Provide encryption key for DATA volume type (in addition   |
+|                         |          | to ROOT) to copy volume.                                   |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8815`_ | Improve migration of external VMware VMs into KVM cluster  |
+| 4.20.0.0                | `#9585`_ | allow domain suffix update in shared networks              |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9306`_ | Fix AssignToLoadBalancerRule input param                   |
+| 4.20.0.0                | `#9662`_ | Host capacity calculation: use VM creation time if update  |
+|                         |          | time is null.                                              |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9216`_ | xenserver: attach regular iso with configdrive             |
+| 4.20.0.0                | `#9509`_ | Feature: Forgot password                                   |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8898`_ | prevent an NPE on an uninitialised TemplateObject          |
+| 4.20.0.0                | `#9656`_ | Fix the Cloudian Integration SSO Redirect link             |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9256`_ | veeam: fix issues with PreSetup and DVS and Solidfire      |
+| 4.20.0.0                | `#9188`_ | Enhance the `listAffinityGroups` API by adding the         |
+|                         |          | dedicated resources related to an affinity group           |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9202`_ | server: event for HA vm start                              |
+| 4.20.0.0                | `#9566`_ | Allow more generic searches of ACLs                        |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8169`_ | server: fix resource count updated unmanage vm             |
+| 4.20.0.0                | `#8924`_ | Add logs to CPVM connection process                        |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9258`_ | agent: reconnect after waiting 5 seconds                   |
+| 4.20.0.0                | `#9461`_ | Restore listNetworks behavior & clean up the code          |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9150`_ | Added ostypeid in the snapshot response                    |
+| 4.20.0.0                | `#9633`_ | Feature: Allow adding delete protection for VMs & volumes  |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8843`_ | Temporarily backup StorPool volume before expunge          |
+| 4.20.0.0                | `#9652`_ | UI: Fix starting VMs through group action by               |
+|                         |          | non-root-admin users                                       |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9231`_ | UI: ignore error host is already in the database when      |
-|                         |          | create a zone                                              |
+| 4.20.0.0                | `#9528`_ | Linstor: Fix migrate primary storage                       |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9186`_ | CKS/calico: set arp_ignore and arp_announce to 0 in k8s    |
-|                         |          | controller/nodes                                           |
+| 4.20.0.0                | `#8906`_ | NSX Integration fixes                                      |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9300`_ | Honour listall param for list templates api                |
+| 4.20.0.0                | `#9107`_ | Refactor type and range validation in configuration update |
+|                         |          | process                                                    |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9289`_ | Let network guru decide if ipv6 cidr size can't be equal   |
-|                         |          | to 64                                                      |
+| 4.20.0.0                | `#8511`_ | Add logs to `LibvirtComputingResource`'s metrics           |
+|                         |          | collection process                                         |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9245`_ | DRS: Ensure the destination host is part of the same       |
-|                         |          | cluster                                                    |
+| 4.20.0.0                | `#9639`_ | ui: refactor config update/reset notification              |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8236`_ | Accept a role ID on linking an account to LDAP             |
+| 4.20.0.0                | `#9619`_ | New Feature: Multi-arch Zones                              |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#7224`_ | [Veeam] Check for failures in the restore process          |
+| 4.20.0.0                | `#9647`_ | engine/schema: update url links to match new               |
+|                         |          | systemvmtemplate names                                     |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8947`_ | Ability to specify NFS mount options while adding a        |
-|                         |          | primary storage and modify them on a pre-existing primary  |
-|                         |          | storage                                                    |
+| 4.20.0.0                | `#9428`_ | Fix root disk resize issue when service offering has no    |
+|                         |          | root disk size specified                                   |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9207`_ | VMware: Improve error messaging / logs when starting       |
-|                         |          | non-user VMs, and secondary storage not available or       |
-|                         |          | doesn't have enough capacity                               |
+| 4.20.0.0                | `#9470`_ | New feature: Dynamic and Static Routing                    |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8889`_ | Updates to HPE-Primera and Pure FlashArray Drivers to use  |
-|                         |          | Host-based VLUN Assignments                                |
+| 4.20.0.0                | `#9451`_ | backup: simple NAS backup plugin for KVM                   |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9178`_ | fix: Update overcommit ratio during live VM migration      |
+| 4.20.0.0                | `#8389`_ | Add support for Ceph RGW Object Store                      |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8733`_ | engine-schema: fix options for host.allocators.order       |
-|                         |          | config                                                     |
+| 4.20.0.0                | `#9208`_ | Shared Filesystem as a First Class Feature                 |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8475`_ | api,server: allow updating hypervisor capabilities with    |
-|                         |          | hypervisor and  version                                    |
+| 4.20.0.0                | `#9415`_ | Shared Network Firewall (Security groups) in Advanced zone |
+|                         |          | without security groups                                    |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8641`_ | kvm: support Rocky/RHEL/OL/Alma in the same cluster        |
+| 4.20.0.0                | `#9624`_ | propagate sort order through retrieval sequence            |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8873`_ | Fix volume snapshot of encrypted NFS/StorPool volume       |
+| 4.20.0.0                | `#8925`_ | Go back to previous timestamp on logging                   |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8909`_ | Fix migration from local storage to NFS in KVM             |
+| 4.20.0.0                | `#9543`_ | Added update, enable, disable events to the                |
+|                         |          | updateStoragePool API                                      |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9263`_ | debian: add cpu-checker to debian/control                  |
+| 4.20.0.0                | `#9569`_ | Global setting to allow/disallow users to force stop a vm  |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9259`_ | Support migration of VM imported from a remote host        |
+| 4.20.0.0                | `#9449`_ | Display associated resource name on storage pools objects  |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9284`_ | Import VM logging improvements                             |
+| 4.20.0.0                | `#9518`_ | framework/db: use HikariCP as default and improvements     |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9183`_ | Allow deletion of external managed cks nodes               |
+| 4.20.0.0                | `#9628`_ | framework/config,server: configkey caching                 |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8887`_ | libvirtstorage: Make sure netfs storage was really mounted |
+| 4.20.0.0                | `#9591`_ | [VMware] Add support for VMware 8.0u2 (8.0.2.x) and 8.0u3  |
+|                         |          | (8.0.3.x)                                                  |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9281`_ | set isSystem for SVM IPs                                   |
+| 4.20.0.0                | `#9634`_ | UI: list vms with details=min when attach a volume to vm   |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9273`_ | Fix volume response for service offering with disk         |
-|                         |          | offering                                                   |
+| 4.20.0.0                | `#8683`_ | Bump org.apache.commons:commons-compress from 1.21 to      |
+|                         |          | 1.26.0                                                     |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8462`_ | Remove duplicate network state checks before shutdown      |
-|                         |          | network                                                    |
+| 4.20.0.0                | `#9632`_ | linstor: update java-linstor dependency to 0.5.2           |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8809`_ | server: add global setting consoleproxy.sslEnabled         |
+| 4.20.0.0                | `#9631`_ | Fix PR lint error caused by deps/install-non-oss.sh        |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9199`_ | Fixup startVM on simulator                                 |
+| 4.20.0.0                | `#7610`_ | Notify users when upgrades are available or restart is     |
+|                         |          | required for network or VPC                                |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9261`_ | server: fix additional zones cannot be removed             |
+| 4.20.0.0                | `#9239`_ | Fix snapshot deletion on template creation failure         |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9196`_ | remove Project Template Permissions inhibition             |
+| 4.20.0.0                | `#9236`_ | kvm: Present the UUID of the VM as serial through smbios   |
+|                         |          | information                                                |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8886`_ | Fix assignVirtualMachine template checkAccess              |
+| 4.20.0.0                | `#9205`_ | updated install-non-oss with vmware v7.0 and v8.0          |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9262`_ | test: fix test failure on ubuntu 24.04: "top: unknown      |
-|                         |          | option 'n'"                                                |
+| 4.20.0.0                | `#9116`_ | Testcases Added                                            |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9213`_ | Timeout config to copy the disks of remote KVM instance    |
-|                         |          | while importing the instance from an external host         |
+| 4.20.0.0                | `#8958`_ | Update en.json                                             |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9276`_ | plugins/shutdown: fix triggerShutdown scheduling and       |
-|                         |          | response                                                   |
+| 4.20.0.0                | `#9629`_ | Add FelipeM525 to .asf.yaml as a collaborator              |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8740`_ | Add configuration to limit the number of rows deleted from |
-|                         |          | vm_stats                                                   |
+| 4.20.0.0                | `#9206`_ | storage: fix private templates are not copied to new image |
+|                         |          | store                                                      |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9271`_ | [linstor] Fix revertSnapshot                               |
+| 4.20.0.0                | `#9567`_ | Add validation for secstorage.allowed.internal.sites       |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8508`_ | assertion improvement on cluster DRS                       |
+| 4.20.0.0                | `#9568`_ | VR: remove vpn user info when apply vpn users list         |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8994`_ | VNF: add API listVnfAppliances                             |
+| 4.20.0.0                | `#9578`_ | server: fix stopped vm volume migration check on local     |
+|                         |          | volume attach                                              |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9252`_ | User friendly name of Downloaded Templates Volumes and     |
-|                         |          | ISOs                                                       |
+| 4.20.0.0                | `#9588`_ | Updated listStoragePools response - added new managed      |
+|                         |          | parameter                                                  |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9253`_ | ui: fix user create featured template from volume          |
+| 4.20.0.0                | `#9616`_ | Add minimum details parameter to Search View's listDomains |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9232`_ | vxlan: do not create duplicated network for private        |
-|                         |          | gateway                                                    |
+| 4.20.0.0                | `#9625`_ | SystemVM template changes - updated debian version & other |
+|                         |          | changes                                                    |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9248`_ | Update extraconfig for platform param in xen/xcpng         |
+| 4.20.0.0                | `#9610`_ | engine-orchestration: fix issue for empty product in vm    |
+|                         |          | metadata                                                   |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8418`_ | User data content size validation, and related code        |
-|                         |          | improvements                                               |
+| 4.20.0.0                | `#9560`_ | linstor: set/unset allow-two-primaries and protocol on rc  |
+|                         |          | level                                                      |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9251`_ | Prevent network disruption on adding a VPC tier for        |
-|                         |          | redundant VRs                                              |
+| 4.20.0.0                | `#9627`_ | Update Debian version to 12 in systemvm welcome message    |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8791`_ | UI: Fix Userdata registration from UI                      |
+| 4.20.0.0                | `#9573`_ | Fix VGPU available devices listing                         |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9088`_ | Decrypt account and domain configurations when needed      |
+| 4.20.0.0                | `#9617`_ | Fixed incorrect label in VRs and  SVMs                     |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8941`_ | Extra parameter for UpdateImageStore                       |
+| 4.20.0.0                | `#9554`_ | ui: show guest networks for guest vlans list               |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9242`_ | Add action button to enable/disable Oauth provider         |
+| 4.20.0.0                | `#9575`_ | Fix userdata append header restrictions                    |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9243`_ | vmware: do not tear down vm disks if deploy-as-is vm has   |
-|                         |          | vm snapshots                                               |
+| 4.20.0.0                | `#8755`_ | Added support for storpool_qos service                     |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8581`_ | [Quota] Improve Quota balance calculation flow             |
+| 4.20.0.0                | `#8649`_ | Improve logs in primary storage removal process            |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9209`_ | Add volume encryption checks during the disk offering      |
-|                         |          | change                                                     |
+| 4.20.0.0                | `#9600`_ | systemvm: have flags to check x86_64 to install specifics  |
+|                         |          | for amd64 arch                                             |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9166`_ | fix: domain limits tab ui is now able to present 0 to the  |
-|                         |          | user                                                       |
+| 4.20.0.0                | `#9125`_ | Fix NPE when sending copy command to least busy SSVM       |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8611`_ | Fix allocation of VMs with multiple clusters               |
+| 4.20.0.0                | `#9255`_ | Add certificate validation to check headers                |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9235`_ | protect against missing service offering                   |
+| 4.20.0.0                | `#9455`_ | Updated invalid parameter/value error with proper          |
+|                         |          | exception                                                  |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9244`_ | test: fix test/integration/smoke/test_register_userdata.py |
-|                         |          | which caused networks not to be deleted                    |
+| 4.20.0.0                | `#8743`_ | Fix `deleteAccount` API to prevent deletion of the caller  |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8530`_ | prevent duplicate ip table rules in SSVM                   |
+| 4.20.0.0                | `#8751`_ | Configuration to disable URL validation when registering   |
+|                         |          | templates/ISOs                                             |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9070`_ | cks: fix events                                            |
+| 4.20.0.0                | `#9549`_ | New Feature: Enable/Disable Roles                          |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9124`_ | server: remove username required condition for             |
-|                         |          | listVmsForImport                                           |
+| 4.20.0.0                | `#8609`_ | Build: drop EL7 support, support JRE17 for packages and    |
+|                         |          | sonar check                                                |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9247`_ | ui: improve sort utility for metrics                       |
+| 4.20.0.0                | `#9572`_ | Update project account for all the events with project     |
+|                         |          | account owner, except for create project event             |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9177`_ | api: listVM API improvement followup, change returning of  |
-|                         |          | stats detail                                               |
+| 4.20.0.0                | `#9468`_ | [VMware] Disconnect/Detach config drive ISO (if exists) on |
+|                         |          | stop VM                                                    |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9238`_ | Fix unit test failure in                                   |
-|                         |          | LibvirtConvertInstanceCommandWrapperTest                   |
+| 4.20.0.0                | `#9433`_ | [VMware] Update data disk controller same as the root disk |
+|                         |          | controller type when it is not set in the VM detail        |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8796`_ | linstor: Support VM-Instance Disk snapshots                |
+| 4.20.0.0                | `#9589`_ | [UI] Add project toggle for buckets                        |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9138`_ | linstor: ui show Server and resource-group fields with     |
-|                         |          | custom protocol                                            |
+| 4.20.0.0                | `#9459`_ | Fix usage volume size after resizing                       |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9237`_ | ui: fix dashboard retrievals based on permissions          |
+| 4.20.0.0                | `#9540`_ | Added domain path to all entities                          |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9197`_ | engine-orchestration: expunge destroyed system vm volume   |
+| 4.20.0.0                | `#9329`_ | Add support for network data in Config Drive               |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8701`_ | cks: fix list apis response count                          |
+| 4.20.0.0                | `#9571`_ | test: fix component tests test_acl_isolatednetwork and     |
+|                         |          | test_acl_isolatednetwork_delete                            |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9218`_ | Fix error message if specific host does not have capacity  |
+| 4.20.0.0                | `#8832`_ | Fix snapshot scheduling with expired jobs                  |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9191`_ | add to cpu speed parameter a description of the cgroup2    |
-|                         |          | case                                                       |
+| 4.20.0.0                | `#9163`_ | orchestration,hypervisor: allow custom manufacturer,       |
+|                         |          | product for vm metadata                                    |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9198`_ | engine/schema: force index in user_vm_view to speed up     |
-|                         |          | instance listing                                           |
+| 4.20.0.0                | `#9422`_ | allow users to apply extraconfig on updating VMs           |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9194`_ | ui: list only accessible networks during import            |
+| 4.20.0.0                | `#9542`_ | server: do not check affinity groups if no vm group        |
+|                         |          | mappings                                                   |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9219`_ | saml: introduce saml2.check.signature                      |
+| 4.20.0.0                | `#8878`_ | Download Volume Snapshots                                  |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9230`_ | Ensure marvin package version is PEP440 compliant          |
+| 4.20.0.0                | `#9550`_ | Fix to allow actions on the network if it belongs to a     |
+|                         |          | project                                                    |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9212`_ | kvm: replace ISO path in vm XML configuration during vm    |
-|                         |          | migration                                                  |
+| 4.20.0.0                | `#9548`_ | UI: Add filter to list encrypted volumes                   |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9220`_ | logging: httpupload do not warn with exception trace       |
+| 4.20.0.0                | `#9545`_ | Fix Template and ISO upload events                         |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9097`_ | ui: fix dashboard on saml user login                       |
+| 4.20.0.0                | `#9553`_ | Fix main branch issues                                     |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9140`_ | ui: fix admin dashboard vue warnings                       |
+| 4.20.0.0                | `#9551`_ | UI: Improve router listing page                            |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9211`_ | List volumes by service offering id                        |
+| 4.20.0.0                | `#8689`_ | Fix being able to expunge a VM through                     |
+|                         |          | destroyVirtualMachine even when role rule does not allow   |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8643`_ | list by isEncrypted                                        |
+| 4.20.0.0                | `#9417`_ | linstor: Improve copyPhysicalDisk performance              |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9224`_ | Upload volume format check with the supported hypervisor,  |
-|                         |          | fail if supported hypervisor not found on zone             |
+| 4.20.0.0                | `#9264`_ | fix removeSecondaryStorageSelector response for docs       |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9113`_ | Configure config drive ISO with password file on           |
-|                         |          | reinstallation of VM  with password-enabled template       |
+| 4.20.0.0                | `#8556`_ | Allow deletion of system VM templates                      |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9174`_ | PowerFlex/ScaleIO volume live migration - use usable bytes |
-|                         |          | from source disk to format the destination disk            |
+| 4.20.0.0                | `#9225`_ | Improvements to quota tariffs APIs and UI                  |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9056`_ | server,event: fix events for storage maintenance           |
+| 4.20.0.0                | `#9435`_ | NSX: add back removed code for NSX                         |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9055`_ | vpc,event: fix events for createVpc                        |
+| 4.20.0.0                | `#8812`_ | Fix column from op_dc_ip_address_alloc not being           |
+|                         |          | referenced correctly by its ORM class                      |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9037`_ | While starting VM with 'considerlasthost' enabled, don't   |
-|                         |          | load host tags/details for the last host when it doesn't   |
-|                         |          | exist                                                      |
+| 4.20.0.0                | `#9396`_ | created VPC message a little less misleading               |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9215`_ | server: search template name and display text if keyword   |
-|                         |          | is passed                                                  |
+| 4.20.0.0                | `#9385`_ | add procedures procedure                                   |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9204`_ | Improve error messaging / logs when listing VMs on the     |
-|                         |          | remote KVM host (for import)                               |
+| 4.20.0.0                | `#9201`_ | Ensure affinity groups are honored when VMs are deployed   |
+|                         |          | in parallel                                                |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9203`_ | Fix vsphere storagepolicy                                  |
+| 4.20.0.0                | `#9487`_ | ui: rename autoscale instance group to simply autoscaling  |
+|                         |          | group                                                      |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9210`_ | Update the java doc for the method                         |
-|                         |          | disconnectPhysicalDiskByPath                               |
+| 4.20.0.0                | `#9499`_ | test: fix component test                                   |
+|                         |          | test_acl_sharednetwork_deployVM-impersonation.py           |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9105`_ | cks,ui: fix npe and check for disable zone                 |
+| 4.20.0.0                | `#9340`_ | Support user resource name / displaytext with emoji,       |
+|                         |          | unicode chars, and some sql exception msg improvements     |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9139`_ | ui: refactor global createmenu                             |
+| 4.20.0.0                | `#9390`_ | libvirtstorageadaptor: better handle failed libvirt        |
+|                         |          | storagepool destroy                                        |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8973`_ | api: listApis should return params based on caller         |
+| 4.20.0.0                | `#9447`_ | Fix snapshot chain being deleted on XenServer              |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9106`_ | api,server: encryptformat in volume response               |
+| 4.20.0.0                | `#8615`_ | Add UI to view and download usage records                  |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9072`_ | UI: Update AddAccountOrUserToProject to show a drop down   |
-|                         |          | for account & user                                         |
+| 4.20.0.0                | `#9450`_ | packaging: bundle latest cmk x86 build with deb and rpm    |
+|                         |          | packages                                                   |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8543`_ | ui: Updated units names                                    |
+| 4.20.0.0                | `#9426`_ | test: improve purge expunged resources b/g task testcase   |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9141`_ | kvm: consider provisioning type for local data volumes     |
+| 4.20.0.0                | `#9419`_ | API: Fix missing keys in listZonesMetrics response         |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9057`_ | server,cks: check if vm is cks node during vm destroy      |
+| 4.20.0.0                | `#9399`_ | ui: vm metrics note about behaviour across hypervisors     |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9143`_ | linstor: make getDevicePath more robust                    |
+| 4.20.0.0                | `#9434`_ | Fixup CKS UI for external managed clusters                 |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8782`_ | Do not retrieve VM's stats on normal VM listing            |
+| 4.20.0.0                | `#9458`_ | UI: Display Firewall, LB and Port Forwading rules tab for  |
+|                         |          | CKS clusters deployed on isolated networks                 |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9066`_ | Show site to site VPN connections in UI                    |
+| 4.20.0.0                | `#9442`_ | Fix removal of usage records                               |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8624`_ | server: fix fail to list public ips of shared networks     |
-|                         |          | sometimes                                                  |
+| 4.20.0.0                | `#9437`_ | Add systemvmtemplate arm64 build support                   |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9126`_ | utils,ui: obfuscate sensitive log info, use POST for       |
-|                         |          | configureOutOfBandManagement                               |
+| 4.20.0.0                | `#8739`_ | [4.20] VR: fix issue if userdata is binary data            |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8671`_ | Fixup response code on incorrect credentials               |
+| 4.20.0.0                | `#9043`_ | Enhancement in the accuracy of the logs regarding the      |
+|                         |          | capacity, usage, and threshold of secondary storages       |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9120`_ | engine-schema: add removed column for cloud.user_data, fix |
-|                         |          | delete op                                                  |
+| 4.20.0.0                | `#9062`_ | Change exception when orchestrating VM start               |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9104`_ | ui: fix create menu item access                            |
+| 4.20.0.0                | `#8833`_ | Fix link to removed volumes being shown in info card and   |
+|                         |          | list view                                                  |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9064`_ | server: honor listall param for listiso api                |
+| 4.20.0.0                | `#9409`_ | ui: add new API docs tab                                   |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9119`_ | ui: add move to top/bottom for acl rules list              |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9118`_ | ui: fix columns for exportacls csv                         |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9117`_ | ui: fix create network access in deploy vm wizard          |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9068`_ | UI: Add search filters                                     |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9046`_ | api,server: list autoscalevmgroups with keyword            |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9092`_ | ui: support isdynamicallyscalable param for iso            |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9094`_ | api,ui: vm template format, fix vm info link               |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9091`_ | ui: fix projectrolepermissions listing with description    |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9032`_ | server,test: fix resourceid for VOLUME.DESTROY in restore  |
-|                         |          | VM                                                         |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9060`_ | ui: fix dashboard limit format                             |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9023`_ | ui: change reporting link to Github Discussions            |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9007`_ | cleanup: remove test/src-not-used/                         |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9049`_ | ui: fix haenable in edit vm form                           |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9044`_ | ui: fix documentation link for VM autoscaling              |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8980`_ | Fix message publish in transaction                         |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9025`_ | Fixup e2e test_restore_vm                                  |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8811`_ | linstor: Fix volume download and make resource available   |
-|                         |          | on copy target                                             |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9035`_ | linstor: disconnect-disk also search for resource name in  |
-|                         |          | Linstor                                                    |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9012`_ | ui: add support to change Account role for admins          |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8986`_ | Use parameter dcId as wrapper to prevent NPE               |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#9011`_ | ui: show systemvm agent version in the list and resource   |
-|                         |          | view                                                       |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8781`_ | UI: Fix the Add / Remove Vmware DC button on Zone detail   |
-|                         |          | view                                                       |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8750`_ | Upgrade org.json:json version                              |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8981`_ | Fix: Update rootdisksize detail on restore VM              |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8593`_ | UI: hide Cleanup/Expunge when delete a CloudManaged CKS    |
-|                         |          | cluster                                                    |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8988`_ | utils: cleanup MacAddress and MacAddressTest               |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8977`_ | Fix restore VM with allocated root disk                    |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8904`_ | Update volume's passphrase to null if diskOffering doesn't |
-|                         |          | support encryption                                         |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8790`_ | linstor: cleanup diskless nodes on disconnect              |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8883`_ | explanatory error message on delete attempt of default     |
-|                         |          | system offering                                            |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8937`_ | Fixup listing of serivce offering & storagepools with tags |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8952`_ | Fix KVM live migration with NFS volumes                    |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8395`_ | systemvm: add template_zone_ref record when add a new zone |
-|                         |          | with same hypervisor type                                  |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8741`_ | VR: fix dnmasq misconfiguration if there are multiple IP   |
-|                         |          | ranges in a shared network                                 |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8932`_ | packaging: move juniper-contrail network plugin to         |
-|                         |          | noredist build                                             |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8621`_ | vpc: create vpc tiers with dns server of vpc instead of    |
-|                         |          | zone                                                       |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8948`_ | test: fix unknown parameter hostid in                      |
-|                         |          | test_vm_life_cycle.py                                      |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#7236`_ | [Usage] Create network billing                             |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8808`_ | New feature: Import/Unmanage DATA volume from storage pool |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8489`_ | UI: ignore error when list public ips for CKS clusters on  |
-|                         |          | Shared network                                             |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8960`_ | Infra25725 add codecov token to workflow                   |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8933`_ | server: fix duplicated records for templates if there are  |
-|                         |          | multiple zones                                             |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8778`_ | Fix permission to manipulate VMs and templates settings    |
-|                         |          | through UI                                                 |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8675`_ | field enlarged and db upgrade                              |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8930`_ | Fix null pointer exception in restore VM                   |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8945`_ | Update netty version for compatibility/staying current     |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8239`_ | add logs to ipallocation attempt                           |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8802`_ | linstor: Only set allow-two-primaries if resource is       |
-|                         |          | already in use                                             |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#7235`_ | [Usage] Create VPC billing                                 |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8940`_ | kvm: export sysinfo for arm64 domains for cloud-init to    |
-|                         |          | work                                                       |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8915`_ | protect against null-path                                  |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8792`_ | UI: Fix missing locale strings for Status widget           |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8896`_ | Add a shutdownhook to remove jobs owned by the process     |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8842`_ | Fix error message for checkVolume command                  |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8923`_ | ui: bump UI dependencies versions                          |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8845`_ | Fix display of properties related to backup size           |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8894`_ | Fix VR inheriting boot settings from user's VM             |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8885`_ | Fix listStoragePoolsMetricsCmd                             |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8905`_ | Fixup 4.19 build issue                                     |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8800`_ | Allow overriding root disk offering & size, and expunge    |
-|                         |          | old root disk while restoring a VM                         |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8897`_ | linstor: Do not pretend handling disconnect paths that are |
-|                         |          | non Linstor                                                |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8825`_ | Mark libvirt events experimental, add properties flag      |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8872`_ | Change iops on offering change                             |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8813`_ | Fix VM import & VM delete with custom offering             |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8881`_ | server: fix haproxy misconfiguration after VPC VR start    |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8630`_ | UI Fixes: allow filtering on alertype in UI & add events   |
-|                         |          | tab                                                        |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8821`_ | Allow listing of inactive offerings                        |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8870`_ | upgrade: add unit tests from/to a security release         |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8840`_ | Fix getRepair method in checkVolume command                |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8670`_ | Linstor 4.19 fix script alllines                           |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8838`_ | UI: Fix irrelevant conversion options in import instance   |
-|                         |          | modal                                                      |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8777`_ | Fix missing actions on Guest IP ranges for networks        |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8656`_ | api,server,ui: add project ID and name to UserDataResponse |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8793`_ | UI: add dialog to select a VPC tier when create LB for     |
-|                         |          | autoscaling                                                |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8807`_ | UI: Fix Virtual router count in Capacity dashboard         |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8753`_ | update mysql dependency version                            |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8737`_ | Add indexes for vm_stats                                   |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8787`_ | VPC VR: fix empty iptables if there is no vpc tier         |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8735`_ | snapshot: don't schedule next snapshot job for a removed   |
-|                         |          | volume                                                     |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8321`_ | Use join instead of views                                  |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8762`_ | storage,plugins: delegate allow zone-wide volume migration |
-|                         |          | check and access grant check to storage drivers            |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8650`_ | Fix 404 when moving a VM to out of a project               |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8776`_ | server: update default value of setting                    |
-|                         |          | 'expose.dns.externally' to 'false"                         |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8758`_ | Fix the removal of network offering tags                   |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8759`_ | VM Import: Use datastore name when datastore path is not   |
-|                         |          | set to search for pools on DB                              |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8726`_ | Usage: Fixup entity exists exception                       |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8070`_ | Fix disk offering override in VM deployment wizard         |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8653`_ | Linstor 4.19 fix selecting non enabled hosts               |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8591`_ | [Quota] Update pre-populated Quota tariffs' type           |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8030`_ | Quota tariff events                                        |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8616`_ | SG: fix SQL exception when add security group rule with    |
-|                         |          | allowed account/group                                      |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8720`_ | kvm: fix NPE while import KVM VMs from other hosts         |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8716`_ | [UI] Allow detach ISO from instance toolbar when ISO is    |
-|                         |          | attached                                                   |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8719`_ | server: use ecdsa instead of ed25519 when generate         |
-|                         |          | public/private keys                                        |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8686`_ | Sync the storage pool stats in DB with the actual stats    |
-|                         |          | from stats collector                                       |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8577`_ | New API "checkVolume" to check and repair any leaks or     |
-|                         |          | issues reported by qemu-img check                          |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8721`_ | UI: Fix error message in zone wizard                       |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8717`_ | UI: Add button to show public IPs associated with vlanid   |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8300`_ | Logging improvements on migration in the VmwareResource    |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8668`_ | UI: fix permission of VNF appliances                       |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8694`_ | console proxy client sleep more generic                    |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8709`_ | Update actions/setup-java from v3 to v4                    |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8655`_ | Storage plugin support to check if volume on datastore     |
-|                         |          | requires access for migration                              |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8705`_ | engine-schema: fix wrong cloud.domain_view                 |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8620`_ | Polish UI instance schedule modal                          |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#7418`_ | Added JS Script to pick Favicon, Title from config file    |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8697`_ | CKS: fix /opt/bin/deploy-cloudstack-secret in CKS control  |
-|                         |          | nodes                                                      |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8700`_ | Fixed deleteVlanIpRange API description                    |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8678`_ | UI: remove duplicated section for backup                   |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8677`_ | Fixup: Optimize getRouterHealthChecksConfig method         |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8545`_ | Fixup vm powerstate update                                 |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8385`_ | vpc: optimize createMonitorServiceCommand() execution      |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8446`_ | Refactor updateDiskOffering API                            |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8659`_ | test: fix test_guest_os.py failure on xcpng82              |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8647`_ | Move views into separate files for easier modification     |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8658`_ | CKS: add kube config path in extra control nodes           |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8371`_ | prevent nic removal on out of bounds router stop           |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8306`_ | Fix filter and pagination on API                           |
-|                         |          | findStoragePoolsForMigration                               |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8660`_ | UI: load domain lists only if listDomains API is available |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8661`_ | test: skip check for volume stats history on xenserver     |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8521`_ | Add advance settings to fine tune DRS imbalance            |
-|                         |          | calculation                                                |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8407`_ | Linstor: add HA support and small cleanups                 |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8631`_ | UI: Add Migrating state in volume filtering                |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8599`_ | VR: fix issue between VPC VMs and other Public IPs in the  |
-|                         |          | same subnet as additional Public IPs                       |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8282`_ | kvm:  ITCO watchdog added                                  |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8625`_ | zone wizard: allow only one untagged physical network with |
-|                         |          | guest traffic type                                         |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8614`_ | Veeam: revert unnecessary VM state change if restore       |
-|                         |          | backup and attach to another VM                            |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8574`_ | packaging: bundle cmk in cloudstack-management package     |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8633`_ | linstor: use relative hostname path                        |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8481`_ | Enable over provisioning for SharedMountPoint primary      |
-|                         |          | storages                                                   |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8377`_ | remove StorPool tags from detached volumes                 |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8610`_ | Linstor fix migration while node offline                   |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8568`_ | Fix cloudstack-ui package: bad directory permissions and   |
-|                         |          | missing WEB-INF                                            |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8568`_ | Fix cloudstack-ui package: bad directory permissions and   |
-|                         |          | missing WEB-INF                                            |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8410`_ | Add e2e tests for listing resources                        |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8447`_ | Add IOPS to disk offerings details                         |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8402`_ | CKS: retry if unable to drain node or unable to upgrade    |
-|                         |          | k8s node                                                   |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8509`_ | Update server.properties.in                                |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8356`_ | Option to create StorPool primary storage with a valid URL |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8579`_ | Fix typo in alert name                                     |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8499`_ | Fix API `moveUser` parameters descriptions                 |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8467`_ | Image Store: View Access status of the image store and     |
-|                         |          | view events                                                |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8589`_ | UI: fix icmp code/type of ACL rule are not display if the  |
-|                         |          | value is -1                                                |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8560`_ | Added missing metrics English locale strings               |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8549`_ | server: use ed25519 instead of rsa when generate           |
-|                         |          | public/private keys                                        |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8369`_ | systemvm: vncport evaluation                               |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8437`_ | Fix libvirt domain event listener by properly processing   |
-|                         |          | events                                                     |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8555`_ | Allocate new ROOT volume (on restore virtual machine       |
-|                         |          | operation) only when resource count increment succeeds     |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8553`_ | Remove sensitive params (VmPassword, etc) from VMWork log  |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8606`_ | tools,changelog: fix nextversion                           |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8482`_ | Change the check for the existence of `cryptsetup` command |
-+-------------------------+----------+------------------------------------------------------------+
-| 4.19.1.0                | `#8570`_ | veeam: fix some issues with restoring volume from backup   |
-|                         |          | and attaching it to VM                                     |
+| 4.20.0.0                | `#9402`_ | Icon changed for control-outlined                          |
 +-------------------------+----------+------------------------------------------------------------+
 
-301 Issues listed
+151 Issues listed
 
-.. _`#9392`: https://github.com/apache/cloudstack/pull/9392 
-.. _`#9391`: https://github.com/apache/cloudstack/pull/9391 
-.. _`#8836`: https://github.com/apache/cloudstack/pull/8836 
-.. _`#9339`: https://github.com/apache/cloudstack/pull/9339 
-.. _`#9377`: https://github.com/apache/cloudstack/pull/9377 
-.. _`#9381`: https://github.com/apache/cloudstack/pull/9381 
-.. _`#9382`: https://github.com/apache/cloudstack/pull/9382 
-.. _`#9367`: https://github.com/apache/cloudstack/pull/9367 
-.. _`#9376`: https://github.com/apache/cloudstack/pull/9376 
-.. _`#9384`: https://github.com/apache/cloudstack/pull/9384 
-.. _`#9356`: https://github.com/apache/cloudstack/pull/9356 
-.. _`#9349`: https://github.com/apache/cloudstack/pull/9349 
-.. _`#9355`: https://github.com/apache/cloudstack/pull/9355 
-.. _`#9147`: https://github.com/apache/cloudstack/pull/9147 
-.. _`#9357`: https://github.com/apache/cloudstack/pull/9357 
-.. _`#9354`: https://github.com/apache/cloudstack/pull/9354 
-.. _`#9345`: https://github.com/apache/cloudstack/pull/9345 
-.. _`#9348`: https://github.com/apache/cloudstack/pull/9348 
-.. _`#9325`: https://github.com/apache/cloudstack/pull/9325 
-.. _`#9334`: https://github.com/apache/cloudstack/pull/9334 
-.. _`#9327`: https://github.com/apache/cloudstack/pull/9327 
-.. _`#9323`: https://github.com/apache/cloudstack/pull/9323 
-.. _`#9326`: https://github.com/apache/cloudstack/pull/9326 
-.. _`#9234`: https://github.com/apache/cloudstack/pull/9234 
-.. _`#8875`: https://github.com/apache/cloudstack/pull/8875 
-.. _`#9268`: https://github.com/apache/cloudstack/pull/9268 
-.. _`#9146`: https://github.com/apache/cloudstack/pull/9146 
-.. _`#9307`: https://github.com/apache/cloudstack/pull/9307 
-.. _`#8922`: https://github.com/apache/cloudstack/pull/8922 
-.. _`#9310`: https://github.com/apache/cloudstack/pull/9310 
-.. _`#9301`: https://github.com/apache/cloudstack/pull/9301 
-.. _`#9184`: https://github.com/apache/cloudstack/pull/9184 
-.. _`#9240`: https://github.com/apache/cloudstack/pull/9240 
-.. _`#9309`: https://github.com/apache/cloudstack/pull/9309 
-.. _`#8354`: https://github.com/apache/cloudstack/pull/8354 
-.. _`#9283`: https://github.com/apache/cloudstack/pull/9283 
-.. _`#8815`: https://github.com/apache/cloudstack/pull/8815 
-.. _`#9306`: https://github.com/apache/cloudstack/pull/9306 
-.. _`#9216`: https://github.com/apache/cloudstack/pull/9216 
-.. _`#8898`: https://github.com/apache/cloudstack/pull/8898 
-.. _`#9256`: https://github.com/apache/cloudstack/pull/9256 
-.. _`#9202`: https://github.com/apache/cloudstack/pull/9202 
-.. _`#8169`: https://github.com/apache/cloudstack/pull/8169 
-.. _`#9258`: https://github.com/apache/cloudstack/pull/9258 
-.. _`#9150`: https://github.com/apache/cloudstack/pull/9150 
-.. _`#8843`: https://github.com/apache/cloudstack/pull/8843 
-.. _`#9231`: https://github.com/apache/cloudstack/pull/9231 
-.. _`#9186`: https://github.com/apache/cloudstack/pull/9186 
-.. _`#9300`: https://github.com/apache/cloudstack/pull/9300 
-.. _`#9289`: https://github.com/apache/cloudstack/pull/9289 
-.. _`#9245`: https://github.com/apache/cloudstack/pull/9245 
-.. _`#8236`: https://github.com/apache/cloudstack/pull/8236 
-.. _`#7224`: https://github.com/apache/cloudstack/pull/7224 
-.. _`#8947`: https://github.com/apache/cloudstack/pull/8947 
-.. _`#9207`: https://github.com/apache/cloudstack/pull/9207 
-.. _`#8889`: https://github.com/apache/cloudstack/pull/8889 
-.. _`#9178`: https://github.com/apache/cloudstack/pull/9178 
-.. _`#8733`: https://github.com/apache/cloudstack/pull/8733 
-.. _`#8475`: https://github.com/apache/cloudstack/pull/8475 
-.. _`#8641`: https://github.com/apache/cloudstack/pull/8641 
-.. _`#8873`: https://github.com/apache/cloudstack/pull/8873 
-.. _`#8909`: https://github.com/apache/cloudstack/pull/8909 
-.. _`#9263`: https://github.com/apache/cloudstack/pull/9263 
-.. _`#9259`: https://github.com/apache/cloudstack/pull/9259 
-.. _`#9284`: https://github.com/apache/cloudstack/pull/9284 
-.. _`#9183`: https://github.com/apache/cloudstack/pull/9183 
-.. _`#8887`: https://github.com/apache/cloudstack/pull/8887 
-.. _`#9281`: https://github.com/apache/cloudstack/pull/9281 
-.. _`#9273`: https://github.com/apache/cloudstack/pull/9273 
-.. _`#8462`: https://github.com/apache/cloudstack/pull/8462 
-.. _`#8809`: https://github.com/apache/cloudstack/pull/8809 
-.. _`#9199`: https://github.com/apache/cloudstack/pull/9199 
-.. _`#9261`: https://github.com/apache/cloudstack/pull/9261 
-.. _`#9196`: https://github.com/apache/cloudstack/pull/9196 
-.. _`#8886`: https://github.com/apache/cloudstack/pull/8886 
-.. _`#9262`: https://github.com/apache/cloudstack/pull/9262 
-.. _`#9213`: https://github.com/apache/cloudstack/pull/9213 
-.. _`#9276`: https://github.com/apache/cloudstack/pull/9276 
-.. _`#8740`: https://github.com/apache/cloudstack/pull/8740 
-.. _`#9271`: https://github.com/apache/cloudstack/pull/9271 
-.. _`#8508`: https://github.com/apache/cloudstack/pull/8508 
-.. _`#8994`: https://github.com/apache/cloudstack/pull/8994 
-.. _`#9252`: https://github.com/apache/cloudstack/pull/9252 
-.. _`#9253`: https://github.com/apache/cloudstack/pull/9253 
-.. _`#9232`: https://github.com/apache/cloudstack/pull/9232 
-.. _`#9248`: https://github.com/apache/cloudstack/pull/9248 
-.. _`#8418`: https://github.com/apache/cloudstack/pull/8418 
-.. _`#9251`: https://github.com/apache/cloudstack/pull/9251 
-.. _`#8791`: https://github.com/apache/cloudstack/pull/8791 
-.. _`#9088`: https://github.com/apache/cloudstack/pull/9088 
-.. _`#8941`: https://github.com/apache/cloudstack/pull/8941 
-.. _`#9242`: https://github.com/apache/cloudstack/pull/9242 
-.. _`#9243`: https://github.com/apache/cloudstack/pull/9243 
-.. _`#8581`: https://github.com/apache/cloudstack/pull/8581 
-.. _`#9209`: https://github.com/apache/cloudstack/pull/9209 
-.. _`#9166`: https://github.com/apache/cloudstack/pull/9166 
-.. _`#8611`: https://github.com/apache/cloudstack/pull/8611 
-.. _`#9235`: https://github.com/apache/cloudstack/pull/9235 
-.. _`#9244`: https://github.com/apache/cloudstack/pull/9244 
-.. _`#8530`: https://github.com/apache/cloudstack/pull/8530 
-.. _`#9070`: https://github.com/apache/cloudstack/pull/9070 
-.. _`#9124`: https://github.com/apache/cloudstack/pull/9124 
-.. _`#9247`: https://github.com/apache/cloudstack/pull/9247 
-.. _`#9177`: https://github.com/apache/cloudstack/pull/9177 
-.. _`#9238`: https://github.com/apache/cloudstack/pull/9238 
-.. _`#8796`: https://github.com/apache/cloudstack/pull/8796 
-.. _`#9138`: https://github.com/apache/cloudstack/pull/9138 
-.. _`#9237`: https://github.com/apache/cloudstack/pull/9237 
-.. _`#9197`: https://github.com/apache/cloudstack/pull/9197 
-.. _`#8701`: https://github.com/apache/cloudstack/pull/8701 
-.. _`#9218`: https://github.com/apache/cloudstack/pull/9218 
-.. _`#9191`: https://github.com/apache/cloudstack/pull/9191 
-.. _`#9198`: https://github.com/apache/cloudstack/pull/9198 
-.. _`#9194`: https://github.com/apache/cloudstack/pull/9194 
-.. _`#9219`: https://github.com/apache/cloudstack/pull/9219 
-.. _`#9230`: https://github.com/apache/cloudstack/pull/9230 
-.. _`#9212`: https://github.com/apache/cloudstack/pull/9212 
-.. _`#9220`: https://github.com/apache/cloudstack/pull/9220 
-.. _`#9097`: https://github.com/apache/cloudstack/pull/9097 
-.. _`#9140`: https://github.com/apache/cloudstack/pull/9140 
-.. _`#9211`: https://github.com/apache/cloudstack/pull/9211 
-.. _`#8643`: https://github.com/apache/cloudstack/pull/8643 
-.. _`#9224`: https://github.com/apache/cloudstack/pull/9224 
-.. _`#9113`: https://github.com/apache/cloudstack/pull/9113 
-.. _`#9174`: https://github.com/apache/cloudstack/pull/9174 
-.. _`#9056`: https://github.com/apache/cloudstack/pull/9056 
-.. _`#9055`: https://github.com/apache/cloudstack/pull/9055 
-.. _`#9037`: https://github.com/apache/cloudstack/pull/9037 
-.. _`#9215`: https://github.com/apache/cloudstack/pull/9215 
-.. _`#9204`: https://github.com/apache/cloudstack/pull/9204 
-.. _`#9203`: https://github.com/apache/cloudstack/pull/9203 
-.. _`#9210`: https://github.com/apache/cloudstack/pull/9210 
-.. _`#9105`: https://github.com/apache/cloudstack/pull/9105 
-.. _`#9139`: https://github.com/apache/cloudstack/pull/9139 
-.. _`#8973`: https://github.com/apache/cloudstack/pull/8973 
-.. _`#9106`: https://github.com/apache/cloudstack/pull/9106 
-.. _`#9072`: https://github.com/apache/cloudstack/pull/9072 
-.. _`#8543`: https://github.com/apache/cloudstack/pull/8543 
-.. _`#9141`: https://github.com/apache/cloudstack/pull/9141 
-.. _`#9057`: https://github.com/apache/cloudstack/pull/9057 
-.. _`#9143`: https://github.com/apache/cloudstack/pull/9143 
-.. _`#8782`: https://github.com/apache/cloudstack/pull/8782 
-.. _`#9066`: https://github.com/apache/cloudstack/pull/9066 
-.. _`#8624`: https://github.com/apache/cloudstack/pull/8624 
-.. _`#9126`: https://github.com/apache/cloudstack/pull/9126 
-.. _`#8671`: https://github.com/apache/cloudstack/pull/8671 
-.. _`#9120`: https://github.com/apache/cloudstack/pull/9120 
-.. _`#9104`: https://github.com/apache/cloudstack/pull/9104 
-.. _`#9064`: https://github.com/apache/cloudstack/pull/9064 
-.. _`#9119`: https://github.com/apache/cloudstack/pull/9119 
-.. _`#9118`: https://github.com/apache/cloudstack/pull/9118 
-.. _`#9117`: https://github.com/apache/cloudstack/pull/9117 
-.. _`#9068`: https://github.com/apache/cloudstack/pull/9068 
-.. _`#9046`: https://github.com/apache/cloudstack/pull/9046 
-.. _`#9092`: https://github.com/apache/cloudstack/pull/9092 
-.. _`#9094`: https://github.com/apache/cloudstack/pull/9094 
-.. _`#9091`: https://github.com/apache/cloudstack/pull/9091 
-.. _`#9032`: https://github.com/apache/cloudstack/pull/9032 
-.. _`#9060`: https://github.com/apache/cloudstack/pull/9060 
-.. _`#9023`: https://github.com/apache/cloudstack/pull/9023 
-.. _`#9007`: https://github.com/apache/cloudstack/pull/9007 
-.. _`#9049`: https://github.com/apache/cloudstack/pull/9049 
-.. _`#9044`: https://github.com/apache/cloudstack/pull/9044 
-.. _`#8980`: https://github.com/apache/cloudstack/pull/8980 
-.. _`#9025`: https://github.com/apache/cloudstack/pull/9025 
-.. _`#8811`: https://github.com/apache/cloudstack/pull/8811 
-.. _`#9035`: https://github.com/apache/cloudstack/pull/9035 
-.. _`#9012`: https://github.com/apache/cloudstack/pull/9012 
-.. _`#8986`: https://github.com/apache/cloudstack/pull/8986 
-.. _`#9011`: https://github.com/apache/cloudstack/pull/9011 
-.. _`#8781`: https://github.com/apache/cloudstack/pull/8781 
-.. _`#8750`: https://github.com/apache/cloudstack/pull/8750 
-.. _`#8981`: https://github.com/apache/cloudstack/pull/8981 
-.. _`#8593`: https://github.com/apache/cloudstack/pull/8593 
-.. _`#8988`: https://github.com/apache/cloudstack/pull/8988 
-.. _`#8977`: https://github.com/apache/cloudstack/pull/8977 
-.. _`#8904`: https://github.com/apache/cloudstack/pull/8904 
-.. _`#8790`: https://github.com/apache/cloudstack/pull/8790 
-.. _`#8883`: https://github.com/apache/cloudstack/pull/8883 
-.. _`#8937`: https://github.com/apache/cloudstack/pull/8937 
-.. _`#8952`: https://github.com/apache/cloudstack/pull/8952 
-.. _`#8395`: https://github.com/apache/cloudstack/pull/8395 
-.. _`#8741`: https://github.com/apache/cloudstack/pull/8741 
-.. _`#8932`: https://github.com/apache/cloudstack/pull/8932 
-.. _`#8621`: https://github.com/apache/cloudstack/pull/8621 
-.. _`#8948`: https://github.com/apache/cloudstack/pull/8948 
-.. _`#7236`: https://github.com/apache/cloudstack/pull/7236 
-.. _`#8808`: https://github.com/apache/cloudstack/pull/8808 
-.. _`#8489`: https://github.com/apache/cloudstack/pull/8489 
-.. _`#8960`: https://github.com/apache/cloudstack/pull/8960 
-.. _`#8933`: https://github.com/apache/cloudstack/pull/8933 
-.. _`#8778`: https://github.com/apache/cloudstack/pull/8778 
-.. _`#8675`: https://github.com/apache/cloudstack/pull/8675 
-.. _`#8930`: https://github.com/apache/cloudstack/pull/8930 
-.. _`#8945`: https://github.com/apache/cloudstack/pull/8945 
-.. _`#8239`: https://github.com/apache/cloudstack/pull/8239 
-.. _`#8802`: https://github.com/apache/cloudstack/pull/8802 
-.. _`#7235`: https://github.com/apache/cloudstack/pull/7235 
-.. _`#8940`: https://github.com/apache/cloudstack/pull/8940 
-.. _`#8915`: https://github.com/apache/cloudstack/pull/8915 
-.. _`#8792`: https://github.com/apache/cloudstack/pull/8792 
-.. _`#8896`: https://github.com/apache/cloudstack/pull/8896 
-.. _`#8842`: https://github.com/apache/cloudstack/pull/8842 
-.. _`#8923`: https://github.com/apache/cloudstack/pull/8923 
-.. _`#8845`: https://github.com/apache/cloudstack/pull/8845 
-.. _`#8894`: https://github.com/apache/cloudstack/pull/8894 
-.. _`#8885`: https://github.com/apache/cloudstack/pull/8885 
-.. _`#8905`: https://github.com/apache/cloudstack/pull/8905 
-.. _`#8800`: https://github.com/apache/cloudstack/pull/8800 
-.. _`#8897`: https://github.com/apache/cloudstack/pull/8897 
-.. _`#8825`: https://github.com/apache/cloudstack/pull/8825 
-.. _`#8872`: https://github.com/apache/cloudstack/pull/8872 
-.. _`#8813`: https://github.com/apache/cloudstack/pull/8813 
-.. _`#8881`: https://github.com/apache/cloudstack/pull/8881 
-.. _`#8630`: https://github.com/apache/cloudstack/pull/8630 
-.. _`#8821`: https://github.com/apache/cloudstack/pull/8821 
-.. _`#8870`: https://github.com/apache/cloudstack/pull/8870 
-.. _`#8840`: https://github.com/apache/cloudstack/pull/8840 
-.. _`#8670`: https://github.com/apache/cloudstack/pull/8670 
-.. _`#8838`: https://github.com/apache/cloudstack/pull/8838 
-.. _`#8777`: https://github.com/apache/cloudstack/pull/8777 
-.. _`#8656`: https://github.com/apache/cloudstack/pull/8656 
-.. _`#8793`: https://github.com/apache/cloudstack/pull/8793 
-.. _`#8807`: https://github.com/apache/cloudstack/pull/8807 
-.. _`#8753`: https://github.com/apache/cloudstack/pull/8753 
-.. _`#8737`: https://github.com/apache/cloudstack/pull/8737 
-.. _`#8787`: https://github.com/apache/cloudstack/pull/8787 
-.. _`#8735`: https://github.com/apache/cloudstack/pull/8735 
-.. _`#8321`: https://github.com/apache/cloudstack/pull/8321 
-.. _`#8762`: https://github.com/apache/cloudstack/pull/8762 
-.. _`#8650`: https://github.com/apache/cloudstack/pull/8650 
-.. _`#8776`: https://github.com/apache/cloudstack/pull/8776 
-.. _`#8758`: https://github.com/apache/cloudstack/pull/8758 
-.. _`#8759`: https://github.com/apache/cloudstack/pull/8759 
-.. _`#8726`: https://github.com/apache/cloudstack/pull/8726 
-.. _`#8070`: https://github.com/apache/cloudstack/pull/8070 
-.. _`#8653`: https://github.com/apache/cloudstack/pull/8653 
-.. _`#8591`: https://github.com/apache/cloudstack/pull/8591 
-.. _`#8030`: https://github.com/apache/cloudstack/pull/8030 
-.. _`#8616`: https://github.com/apache/cloudstack/pull/8616 
-.. _`#8720`: https://github.com/apache/cloudstack/pull/8720 
-.. _`#8716`: https://github.com/apache/cloudstack/pull/8716 
-.. _`#8719`: https://github.com/apache/cloudstack/pull/8719 
-.. _`#8686`: https://github.com/apache/cloudstack/pull/8686 
-.. _`#8577`: https://github.com/apache/cloudstack/pull/8577 
-.. _`#8721`: https://github.com/apache/cloudstack/pull/8721 
-.. _`#8717`: https://github.com/apache/cloudstack/pull/8717 
-.. _`#8300`: https://github.com/apache/cloudstack/pull/8300 
-.. _`#8668`: https://github.com/apache/cloudstack/pull/8668 
-.. _`#8694`: https://github.com/apache/cloudstack/pull/8694 
-.. _`#8709`: https://github.com/apache/cloudstack/pull/8709 
-.. _`#8655`: https://github.com/apache/cloudstack/pull/8655 
-.. _`#8705`: https://github.com/apache/cloudstack/pull/8705 
-.. _`#8620`: https://github.com/apache/cloudstack/pull/8620 
-.. _`#7418`: https://github.com/apache/cloudstack/pull/7418 
-.. _`#8697`: https://github.com/apache/cloudstack/pull/8697 
-.. _`#8700`: https://github.com/apache/cloudstack/pull/8700 
-.. _`#8678`: https://github.com/apache/cloudstack/pull/8678 
-.. _`#8677`: https://github.com/apache/cloudstack/pull/8677 
-.. _`#8545`: https://github.com/apache/cloudstack/pull/8545 
-.. _`#8385`: https://github.com/apache/cloudstack/pull/8385 
-.. _`#8446`: https://github.com/apache/cloudstack/pull/8446 
-.. _`#8659`: https://github.com/apache/cloudstack/pull/8659 
-.. _`#8647`: https://github.com/apache/cloudstack/pull/8647 
-.. _`#8658`: https://github.com/apache/cloudstack/pull/8658 
-.. _`#8371`: https://github.com/apache/cloudstack/pull/8371 
-.. _`#8306`: https://github.com/apache/cloudstack/pull/8306 
-.. _`#8660`: https://github.com/apache/cloudstack/pull/8660 
-.. _`#8661`: https://github.com/apache/cloudstack/pull/8661 
-.. _`#8521`: https://github.com/apache/cloudstack/pull/8521 
-.. _`#8407`: https://github.com/apache/cloudstack/pull/8407 
-.. _`#8631`: https://github.com/apache/cloudstack/pull/8631 
-.. _`#8599`: https://github.com/apache/cloudstack/pull/8599 
-.. _`#8282`: https://github.com/apache/cloudstack/pull/8282 
-.. _`#8625`: https://github.com/apache/cloudstack/pull/8625 
-.. _`#8614`: https://github.com/apache/cloudstack/pull/8614 
-.. _`#8574`: https://github.com/apache/cloudstack/pull/8574 
-.. _`#8633`: https://github.com/apache/cloudstack/pull/8633 
-.. _`#8481`: https://github.com/apache/cloudstack/pull/8481 
-.. _`#8377`: https://github.com/apache/cloudstack/pull/8377 
-.. _`#8610`: https://github.com/apache/cloudstack/pull/8610 
-.. _`#8568`: https://github.com/apache/cloudstack/pull/8568 
-.. _`#8568`: https://github.com/apache/cloudstack/pull/8568 
-.. _`#8410`: https://github.com/apache/cloudstack/pull/8410 
-.. _`#8447`: https://github.com/apache/cloudstack/pull/8447 
-.. _`#8402`: https://github.com/apache/cloudstack/pull/8402 
-.. _`#8509`: https://github.com/apache/cloudstack/pull/8509 
-.. _`#8356`: https://github.com/apache/cloudstack/pull/8356 
-.. _`#8579`: https://github.com/apache/cloudstack/pull/8579 
-.. _`#8499`: https://github.com/apache/cloudstack/pull/8499 
-.. _`#8467`: https://github.com/apache/cloudstack/pull/8467 
-.. _`#8589`: https://github.com/apache/cloudstack/pull/8589 
-.. _`#8560`: https://github.com/apache/cloudstack/pull/8560 
-.. _`#8549`: https://github.com/apache/cloudstack/pull/8549 
-.. _`#8369`: https://github.com/apache/cloudstack/pull/8369 
-.. _`#8437`: https://github.com/apache/cloudstack/pull/8437 
-.. _`#8555`: https://github.com/apache/cloudstack/pull/8555 
-.. _`#8553`: https://github.com/apache/cloudstack/pull/8553 
-.. _`#8606`: https://github.com/apache/cloudstack/pull/8606 
-.. _`#8482`: https://github.com/apache/cloudstack/pull/8482 
-.. _`#8570`: https://github.com/apache/cloudstack/pull/8570 
-
-
-Changes in |release| since 4.18.1.0
-===================================
-
-Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/24?closed=1
-to track its issues.
-
-
-.. cssclass:: table-striped table-bordered table-hover
-
-
-+-------------------------+----------+-------------------------------------------------------+
-| Version                 | GitHub   | Description                                           |
-+=========================+==========+=======================================================+
-| 4.19.0.0                | `#8547`_ | Externalise a few timeouts & fix timeout for          |
-|                         |          | hostSupportsUefi in libvirt ready command wrapper     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8539`_ | ui: fix create k8s cluster networks listing           |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8394`_ | CleanUp Async Jobs after mgmt server maintenance      |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8529`_ | Use project version on pom dependencies               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8519`_ | Rename "Import QCOW...." to "Import QCOW2....."       |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8524`_ | scripts: mark multipath scripts as executable         |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8502`_ | Fix host stuck in connecting state                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8500`_ | vm-import: kvm import and fix volume size when lesser |
-|                         |          | than 1GiB                                             |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8492`_ | Fixes for KVM unmanaged instances import on advanced  |
-|                         |          | network and VNC password                              |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8483`_ | Fix KVM imported unmanaged VMs disks path             |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8485`_ | Fix Vmware to KVM migration issue                     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8490`_ | ui: fix labels when migrating instances from vmware   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8373`_ | Fix reorder/list pools when cluster details are not   |
-|                         |          | set, while deploying vm / attaching volume            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8458`_ | DRS: Use free metrics instead of used for computation |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8465`_ | Fix KVM import unmanaged instances on basic zone      |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8445`_ | Fix KVM import and list unmanaged VMs                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8487`_ | Register managed user data using POST call from UI    |
-|                         |          | (to support user data content > 4096 bytes)           |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8468`_ | UI: Add reconnect button to hosts on alert            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8425`_ | minio: fix store user creation                        |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8420`_ | Support user data content upto 1048576 bytes -        |
-|                         |          | updated jetty maxFormContentSize value to 1048576     |
-|                         |          | bytes (default is 200000 bytes)                       |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8433`_ | Fix KVM import unmanaged instance                     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8444`_ | schema,engine-schema: explicit VMware 8.0.0.2,        |
-|                         |          | 8.0.0.3 support, logs                                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8448`_ | ui: prevent scheduling readyforshutdown job when api  |
-|                         |          | inaccessible                                          |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8426`_ | engine-schema: fix finding guestos mapping with       |
-|                         |          | parent version                                        |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8429`_ | Fix VMware VM ingestion template selection and        |
-|                         |          | default template failure                              |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8435`_ | ui: fix default domainid for add account              |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8434`_ | ui: fix layout for action button for template form    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8397`_ | Fix bootstrap exceptions                              |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8430`_ | Fix ssl check in object store browser                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8408`_ | contributers: change of the guard                     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8370`_ | server: skip password policies check on empty         |
-|                         |          | password                                              |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8396`_ | Revert "Add e2e tests for listing resources"          |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8383`_ | test: additional check to ensure hosts are left in up |
-|                         |          | state                                                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8374`_ | server: fix debug message when expunge a vm           |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8387`_ | server: improve stats collector logs to state what    |
-|                         |          | the collector does                                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8281`_ | Add e2e tests for listing resources                   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8380`_ | test: fix test_host_ping.py to restore original host  |
-|                         |          | state                                                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8378`_ | Fixup test_image_store_object_migration.py            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8316`_ | CKS: create Security Groups for CKS clusters of each  |
-|                         |          | account                                               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8309`_ | VPC: update default network offering for vpc tier to  |
-|                         |          | conserve_mode=1                                       |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8339`_ | Save the account which deliberately removed a public  |
-|                         |          | IP from quarantine                                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8365`_ | README: that time of the year! 🎄                     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8287`_ | UI: Project column in Default View                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8358`_ | Remove unneeded duplicate words                       |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8353`_ | server: fix url check for storages without a valid    |
-|                         |          | url                                                   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8346`_ | client/pom.xml: fix code coverage is not updated in   |
-|                         |          | some modules                                          |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7976`_ | KVM Ingestion - Import Instance                       |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8252`_ | kvm: Add support for cgroupv2                         |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8338`_ | Fix unmanage VM marvin tests and small UI fixes for   |
-|                         |          | import                                                |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8276`_ | events,alerts: Add missing indexes                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8107`_ | Handle errors while scaling kubernetes cluster        |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8171`_ | server: fix resource count during assign volume       |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8274`_ | .asf.yaml: Enable Github Discussions for CloudStack   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7446`_ | Move subdomains between domains                       |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8135`_ | server: fix diskoffering details in vm response       |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8258`_ | Acl export acls with proper tags encoding             |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8297`_ | CKS: create HA cluster with 3 control VMs instead 2   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7889`_ | FiberChannel Multipath for KVM + Pure Flash Array and |
-|                         |          | HPE-Primera Support                                   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8327`_ | ui: add action to declare/cancel host as degraded     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8094`_ | Add logs to listLoadBalancerRuleInstances API         |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8328`_ | Add missing hosts info to the prometheus exporter     |
-|                         |          | output.                                               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8296`_ | CKS: update imagePullPolicy to IfNotPresent in yaml   |
-|                         |          | files                                                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8319`_ | linstor: Fix possible NPE if Linstor storage-pool     |
-|                         |          | data missing                                          |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8233`_ | Add lock mechanism considering template id, pool id,  |
-|                         |          | host id in PowerFlex Storage                          |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8324`_ | Allow autoscale group and name override               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8312`_ | Fix intermittent build failures                       |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8329`_ | Update cloudstack-help-text                           |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8322`_ | Change available fields when editing a default role   |
-|                         |          | in the UI                                             |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7923`_ | kvm: fix error when enable SSL for kvm agent          |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7881`_ | New Feature: Import VMware VMs into KVM               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8254`_ | Prioritize hypervisor.uri configuration               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8247`_ | kvm: fix ide controller for rocky/alma vms            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8278`_ | lower level and no stack traces at info or higher     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8305`_ | ui: change ipaddress tab label for shared networks    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8271`_ | Linstor: Allow snapshot backup also to work on non    |
-|                         |          | hyperconverged setups                                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7659`_ | Add dynamic secondary storage selection               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8289`_ | api: make displaytext form upload template/iso        |
-|                         |          | optional                                              |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7752`_ | ObjectStore Framework with MinIO and Simulator        |
-|                         |          | plugins                                               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8268`_ | Initial vpnuser state                                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8275`_ | UI: Removed redundant IP Address Column               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8264`_ | Fix upload of volumes, templates and ISOs through     |
-|                         |          | HTTP                                                  |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7150`_ | Global ACL for VPCs                                   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8253`_ | UI: Removed redundant input fields from ACL List      |
-|                         |          | rules modal                                           |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7489`_ | Flexible tags for hosts and storage pools             |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8204`_ | server: check if there are active nics before network |
-|                         |          | GC                                                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7082`_ | allow filtering of listDiskOffering and               |
-|                         |          | listServiceOffering APIs by account or project        |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8244`_ | Fix rollback while creating a private gateway         |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8257`_ | Include domain and account field for createTemplate   |
-|                         |          | UI form                                               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8209`_ | [StepSecurity] ci: Harden GitHub Actions              |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8191`_ | Fix typo in ssvm check script                         |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8202`_ | Clear pool id if volume allocation fails              |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8222`_ | Added ipaddress argument to disassociateIPAddress api |
-|                         |          | (#8125)                                               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8248`_ | Fixed spelling and added missing states to response   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8227`_ | VNF: fix UI bugs and polish                           |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8245`_ | schema: revert incorrect removal of oauth changes in  |
-|                         |          | #7417                                                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7417`_ | Database VIEW management via separated files          |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7210`_ | Set number of hours per month with actual number in   |
-|                         |          | Quota                                                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8238`_ | Fixed Hashmap Key value comparision                   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#6699`_ | multi local storage handling for kvm                  |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8210`_ | Introduce domainid and account parameter in           |
-|                         |          | createTemplate API                                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7486`_ | Improved concatenation way in PropertiesStorage.java  |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#6892`_ | Externalize KVM HA heartbeat frequency                |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7954`_ | Create global configuration to allow changing the     |
-|                         |          | default nic adapter for user VMs in VMware            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7378`_ | Public IP quarantine feature                          |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8228`_ | Let Prometheus exporter plugin support utf8           |
-|                         |          | characters                                            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8215`_ | storagetype API param in list service/disk offerings  |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8232`_ | Fix flaky tungsten test using comparator              |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8115`_ | Fix deploy as is VM start after template deletion     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8138`_ | Inject hypervisor type and volume format on Quota     |
-|                         |          | tariffs                                               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8220`_ | PULL_REQUEST_TEMPLATE.md: fix spelling                |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7895`_ | Flexible URI for connection with DB and new MariaDB   |
-|                         |          | driver                                                |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8213`_ | UI: fix scale vm if first disk offering is dymamic    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8142`_ | edge-zone,kvm,iso,cks: allow k8s deployment with      |
-|                         |          | direct-download iso                                   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7901`_ | Update requirements file and fix minimum pre-commit   |
-|                         |          | version                                               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7545`_ | updated the api documentation for                     |
-|                         |          | createNetworkOffering and updateNetworkOffering       |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8173`_ | make sure vmware adapter detail for nic is passed     |
-|                         |          | during registering template                           |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8067`_ | Linstor backup snaphots                               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8199`_ | Remove powermock form VM Manager test                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8122`_ | Advanced SG: allow create/update physical networks    |
-|                         |          | with vlan range                                       |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8193`_ | ui: Admin, account and project dashboard improvements |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8180`_ | CKS: make clustertype optional to keep backwards      |
-|                         |          | compatibility                                         |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8085`_ | Fix: Select another pod if all hosts in the pod       |
-|                         |          | becomes unavailable                                   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8185`_ | Make authentication request parameter order to be     |
-|                         |          | deterministic                                         |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8045`_ | KVM Host HA enhancement for StorPool storage          |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8184`_ | indent issue in list view after merge forward of 4.18 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7855`_ | Polish UI                                             |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8183`_ | Fix JSON string comparision for tests                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8133`_ | Bump the `actions/checkout` action to `v4`            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7705`_ | Refactor testCRUDAcl to Separated Case to Improve the |
-|                         |          | Test Experience                                       |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#6890`_ | Add and improve logs in ACS bootstrap process         |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8098`_ | Refactoring                                           |
-|                         |          | org.apache.cloudstack.network.tungsten.service        |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8137`_ | refactor MockNetworkVO                                |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8139`_ | Update XenServer610WrapperTest.java                   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7980`_ | Standardize StringUtils usages in NetworkModelImpl    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8182`_ | CKS: fix wrong format of cluster size on UI           |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8049`_ | Fix KVM cloudstack-agent start if there is vm not     |
-|                         |          | managed by cloudstack on the host                     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8084`_ | appliance: use Debian 11.8.0 and systemvm version to  |
-|                         |          | 4.19.0                                                |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#6639`_ | Update GPU support for V100,T4,A5500.                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7728`_ | Add MGMT IP in management.network.cidr as alternate   |
-|                         |          | name in their self-signed certificate                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7549`_ | misc: fix spelling                                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7973`_ | ui: extend role isPublic parameter                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8071`_ | Add two more pre-commit hooks                         |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8164`_ | ui: fix snapshot copy actions for non-rootadmins      |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7949`_ | Storage Management                                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#6874`_ | Add logs to script and command execution              |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7996`_ | Oauth2 integration with CloudStack                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8060`_ | Fix allignment on layout on right panel               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8022`_ | New feature: VNF templates and appliances integration |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8089`_ | Fix failure on agent reconnection                     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8150`_ | Fixup updateSnapshotInfo failure due to forward       |
-|                         |          | merging                                               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8117`_ | Create snapshot from VM snapshot without memory for   |
-|                         |          | NFS/Local storage                                     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8012`_ | Use UserVmDao for listVirtualMachines API to increase |
-|                         |          | performance                                           |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7723`_ | Feature: Add support for DRS in a Cluster             |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8149`_ | reduce collaborators count to 10                      |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8147`_ | Add winterhazel to .asf.yaml collaborators            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8116`_ | Fixup: register vmscheduler configkey                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8144`_ | dashboard: on admin dashboard use red-dot icon when   |
-|                         |          | hosts are in alert                                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8128`_ | Fix os type response isuserdefined                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8081`_ | Fix EULA section while parsing OVF file               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8072`_ | UI: Fix deploy VM wizard vApp properties              |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7873`_ | api,server,ui: snapshot copy, multi-zone replica      |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7859`_ | server: set Default NIC when VM has no default NIC    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7974`_ | Fix templates and ISOs listing pagination             |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8118`_ | ui: fix bulk delete template from zones               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8096`_ | marvin,test: fix directdownload template checksum     |
-|                         |          | test                                                  |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8119`_ | ui: correctly show volume physical size               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8114`_ | linstor: fix template copy on non hyperconverged      |
-|                         |          | setups                                                |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8104`_ | test: add test for standalone snapshot                |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8101`_ | Fix VM snapshot size during storage capacity check    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7804`_ | pre-commit: standardize more line endings to `lf`     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8076`_ | ui: add action to delete traffic type                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8099`_ | Refactoring swift util test                           |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8057`_ | Fix UUID for child datastores in all cases            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8082`_ | linstor: Fix template volume missing on copy node     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8097`_ | test,refactor: fix test_project_resources cleanup     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8031`_ | Snapshot removal and storage cleanup logs             |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8093`_ | kvm: fix direct download template size                |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8019`_ | Update pom.xml reflections version                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#6863`_ | Add option to define password during password reset   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7386`_ | Add domainpath to listnetwork and UI network tab      |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#6947`_ | Allow password definition during VM deploy            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7977`_ | Run ResourceCountCheckTask only in the longest        |
-|                         |          | running management server                             |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7606`_ | vm-import: fix stopped managed vms listing in         |
-|                         |          | unmanaged instances                                   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8066`_ | Fix NPE if global setting implicit.host.tags is set   |
-|                         |          | to null                                               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8062`_ | storage: allow VM snapshots without memory for KVM    |
-|                         |          | when global setting allows                            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8075`_ | ui: update vm deploy form iso label                   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8065`_ | Fix non admin logouts                                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8069`_ | ui: update dashboard screenshot for README            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8058`_ | .github: run Sonar Check only on PRs from             |
-|                         |          | apache/cloudstack branches                            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7605`_ | Format quota email currency values                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7731`_ | Default value of force should be false for template   |
-|                         |          | delete operation                                      |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8048`_ | systemvm: remove config in /etc/pam.d/systemd-user to |
-|                         |          | fix user@0.service                                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7883`_ | pre-commit: add hook `check-merge-conflict`           |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7811`_ | Enable four more `flake8` rules                       |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8046`_ | UI: Fix sorter across different components            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7672`_ | [cleanup] Deleted file FakeDhcpSnooper.java and       |
-|                         |          | DhcpSnooper.java                                      |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8029`_ | Improve template download error message               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#6887`_ | user-shared networks: fix few issues                  |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7956`_ | UI: Admin, account and project dashboard improvements |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8025`_ | Ensure getCapacityState() is not called for hosts in  |
-|                         |          | maintenance                                           |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8041`_ | Fix: Convert volume to another directory instead of   |
-|                         |          | copying it while taking volume snapshots on KVM       |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7953`_ | systemvm: check if patchfile exists and is valid      |
-|                         |          | tarball before patching                               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7987`_ | KVM Agent config to reserve dom0 CPUs                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7225`_ | [Veeam] Don't interrupt backup syncronization         |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8036`_ | Add extra checks for test_vm_schedule to avoid        |
-|                         |          | intermittent failures                                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7088`_ | cleanups as suggested by errorprone                   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8028`_ | ui: add button in zone physical network list          |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8035`_ | We need people to do better testing                   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8020`_ | server: fix mysql error when list Shared templates    |
-|                         |          | for projects                                          |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7931`_ | load (domains) continuously in dropdown boxes         |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7952`_ | linstor: resize root disk on offerings with different |
-|                         |          | size                                                  |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7983`_ | cleanup: remove unused class                          |
-|                         |          | org.apache.cloudstack.network.NetworkOrchestrator     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7213`_ | Improve logs in UnmanagedVMsManagerImpl class         |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8002`_ | fix: cleanup directory if empty after removal of      |
-|                         |          | snapshot                                              |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7984`_ | removal of unused interfaces                          |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7868`_ | Removed state for removed accounts                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#6812`_ | Normalize encryption on global configurations values  |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7985`_ | ui: allow copying password from notification          |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7212`_ | Improve logs when searching one storage pool to       |
-|                         |          | allocate a new volume                                 |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7211`_ | Improve logs in NfsSecondaryStorageResource class     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8017`_ | mvn: fix userdata dependency version                  |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7858`_ | Keep deleted projects name                            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7938`_ | Add Service Offering to listSystemVMs and fix link    |
-|                         |          | from VR to its offering                               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7989`_ | Improve the description of config                     |
-|                         |          | password.policy.minimum.digits                        |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8004`_ | Fix the poll for the API ReadyForShutdown even after  |
-|                         |          | logout                                                |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7963`_ | Trigger out of band VM state update via libvirt event |
-|                         |          | when VM stops                                         |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7948`_ | Use direct download timeout configs for URL check     |
-|                         |          | during registerTemplate                               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7979`_ | LibvirtServerDiscoverer should only process added     |
-|                         |          | hosts relevant to hypervisor type                     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8009`_ | Fix tests on CS build when cloudstack-management      |
-|                         |          | service is running                                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7991`_ | Fix style for LibvirtComputingResource variable names |
-|                         |          | and its dependencies                                  |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8007`_ | Added JoaoJandre to .asf.yaml                         |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8006`_ | Added SadiJr to .asf.yaml collaborators               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8005`_ | Added GaOrtiga to .asf.yaml collaborators             |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8003`_ | Added BryanMLima to .asf.yaml                         |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7982`_ | VR: remove apache2 config for removed VPC tiers       |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7995`_ | contributor-howto                                     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8000`_ | Remove powermock from pom.xml                         |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#8001`_ | fix units labels for max storage of volume            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7964`_ | Allow configkey to set 'cloud-name' cloud-init        |
-|                         |          | metadata                                              |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7972`_ | Fix 2FA becoming enabled when the user inputs the     |
-|                         |          | wrong code during setup                               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7958`_ | VR live patching: Allow live patch of VPC VRs even if |
-|                         |          | networks are in allocated / shutdown state            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7997`_ | Fixup CheckedReservationTest                          |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7878`_ | Publish event for VM.STOP when out of band stop is    |
-|                         |          | detected                                              |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7645`_ | api: remove powermock from tests                      |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7988`_ | Remove powermock from engine/storage/configdrive      |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7986`_ | Remove powermock from server                          |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7975`_ | remove powermock from engine                          |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7978`_ | Remove powermock from core                            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#6925`_ | Add and improve logs in snapshot scheduling           |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7915`_ | ldap trust map cleanup on domain delete               |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7959`_ | upgrade: fix upgrade from 4.18.1.0 to                 |
-|                         |          | 4.18.2.0-SNAPSHOT                                     |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7782`_ | Fix issues in VM Scheduler                            |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7850`_ | Remove unneeded duplicate words                       |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7955`_ | Increase reserve on ScaleIO disk formatting for       |
-|                         |          | fragmentation                                         |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7784`_ | Generate coverage for Simulator based integration     |
-|                         |          | tests & ui tests in github actions                    |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7941`_ | Allow editing of host and storage tags of system      |
-|                         |          | offerings in the UI                                   |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7939`_ | UI: Fix user role login due to missing API access on  |
-|                         |          | custom hypervisor name                                |
-+-------------------------+----------+-------------------------------------------------------+
-| 4.19.0.0                | `#7892`_ | Fix listLoadBalancerRuleInstances api call            |
-+-------------------------+----------+-------------------------------------------------------+
-
-258 Issues listed
-
-.. _`#8547`: https://github.com/apache/cloudstack/pull/8547
-.. _`#8539`: https://github.com/apache/cloudstack/pull/8539
-.. _`#8394`: https://github.com/apache/cloudstack/pull/8394
-.. _`#8529`: https://github.com/apache/cloudstack/pull/8529
-.. _`#8519`: https://github.com/apache/cloudstack/pull/8519
-.. _`#8524`: https://github.com/apache/cloudstack/pull/8524
-.. _`#8502`: https://github.com/apache/cloudstack/pull/8502
-.. _`#8500`: https://github.com/apache/cloudstack/pull/8500
-.. _`#8492`: https://github.com/apache/cloudstack/pull/8492
-.. _`#8483`: https://github.com/apache/cloudstack/pull/8483
-.. _`#8485`: https://github.com/apache/cloudstack/pull/8485
-.. _`#8490`: https://github.com/apache/cloudstack/pull/8490
-.. _`#8373`: https://github.com/apache/cloudstack/pull/8373
-.. _`#8458`: https://github.com/apache/cloudstack/pull/8458
-.. _`#8465`: https://github.com/apache/cloudstack/pull/8465
-.. _`#8445`: https://github.com/apache/cloudstack/pull/8445
-.. _`#8487`: https://github.com/apache/cloudstack/pull/8487
-.. _`#8468`: https://github.com/apache/cloudstack/pull/8468
-.. _`#8425`: https://github.com/apache/cloudstack/pull/8425
-.. _`#8420`: https://github.com/apache/cloudstack/pull/8420
-.. _`#8433`: https://github.com/apache/cloudstack/pull/8433
-.. _`#8444`: https://github.com/apache/cloudstack/pull/8444
-.. _`#8448`: https://github.com/apache/cloudstack/pull/8448
-.. _`#8426`: https://github.com/apache/cloudstack/pull/8426
-.. _`#8429`: https://github.com/apache/cloudstack/pull/8429
-.. _`#8435`: https://github.com/apache/cloudstack/pull/8435
-.. _`#8434`: https://github.com/apache/cloudstack/pull/8434
-.. _`#8397`: https://github.com/apache/cloudstack/pull/8397
-.. _`#8430`: https://github.com/apache/cloudstack/pull/8430
-.. _`#8408`: https://github.com/apache/cloudstack/pull/8408
-.. _`#8370`: https://github.com/apache/cloudstack/pull/8370
-.. _`#8396`: https://github.com/apache/cloudstack/pull/8396
-.. _`#8383`: https://github.com/apache/cloudstack/pull/8383
-.. _`#8374`: https://github.com/apache/cloudstack/pull/8374
-.. _`#8387`: https://github.com/apache/cloudstack/pull/8387
-.. _`#8281`: https://github.com/apache/cloudstack/pull/8281
-.. _`#8380`: https://github.com/apache/cloudstack/pull/8380
-.. _`#8378`: https://github.com/apache/cloudstack/pull/8378
-.. _`#8316`: https://github.com/apache/cloudstack/pull/8316
-.. _`#8309`: https://github.com/apache/cloudstack/pull/8309
-.. _`#8339`: https://github.com/apache/cloudstack/pull/8339
-.. _`#8365`: https://github.com/apache/cloudstack/pull/8365
-.. _`#8287`: https://github.com/apache/cloudstack/pull/8287
-.. _`#8358`: https://github.com/apache/cloudstack/pull/8358
-.. _`#8353`: https://github.com/apache/cloudstack/pull/8353
-.. _`#8346`: https://github.com/apache/cloudstack/pull/8346
-.. _`#7976`: https://github.com/apache/cloudstack/pull/7976
-.. _`#8252`: https://github.com/apache/cloudstack/pull/8252
-.. _`#8338`: https://github.com/apache/cloudstack/pull/8338
-.. _`#8276`: https://github.com/apache/cloudstack/pull/8276
-.. _`#8107`: https://github.com/apache/cloudstack/pull/8107
-.. _`#8171`: https://github.com/apache/cloudstack/pull/8171
-.. _`#8274`: https://github.com/apache/cloudstack/pull/8274
-.. _`#7446`: https://github.com/apache/cloudstack/pull/7446
-.. _`#8135`: https://github.com/apache/cloudstack/pull/8135
-.. _`#8258`: https://github.com/apache/cloudstack/pull/8258
-.. _`#8297`: https://github.com/apache/cloudstack/pull/8297
-.. _`#7889`: https://github.com/apache/cloudstack/pull/7889
-.. _`#8327`: https://github.com/apache/cloudstack/pull/8327
-.. _`#8094`: https://github.com/apache/cloudstack/pull/8094
-.. _`#8328`: https://github.com/apache/cloudstack/pull/8328
-.. _`#8296`: https://github.com/apache/cloudstack/pull/8296
-.. _`#8319`: https://github.com/apache/cloudstack/pull/8319
-.. _`#8233`: https://github.com/apache/cloudstack/pull/8233
-.. _`#8324`: https://github.com/apache/cloudstack/pull/8324
-.. _`#8312`: https://github.com/apache/cloudstack/pull/8312
-.. _`#8329`: https://github.com/apache/cloudstack/pull/8329
-.. _`#8322`: https://github.com/apache/cloudstack/pull/8322
-.. _`#7923`: https://github.com/apache/cloudstack/pull/7923
-.. _`#7881`: https://github.com/apache/cloudstack/pull/7881
-.. _`#8254`: https://github.com/apache/cloudstack/pull/8254
-.. _`#8247`: https://github.com/apache/cloudstack/pull/8247
-.. _`#8278`: https://github.com/apache/cloudstack/pull/8278
-.. _`#8305`: https://github.com/apache/cloudstack/pull/8305
-.. _`#8271`: https://github.com/apache/cloudstack/pull/8271
-.. _`#7659`: https://github.com/apache/cloudstack/pull/7659
-.. _`#8289`: https://github.com/apache/cloudstack/pull/8289
-.. _`#7752`: https://github.com/apache/cloudstack/pull/7752
-.. _`#8268`: https://github.com/apache/cloudstack/pull/8268
-.. _`#8275`: https://github.com/apache/cloudstack/pull/8275
-.. _`#8264`: https://github.com/apache/cloudstack/pull/8264
-.. _`#7150`: https://github.com/apache/cloudstack/pull/7150
-.. _`#8253`: https://github.com/apache/cloudstack/pull/8253
-.. _`#7489`: https://github.com/apache/cloudstack/pull/7489
-.. _`#8204`: https://github.com/apache/cloudstack/pull/8204
-.. _`#7082`: https://github.com/apache/cloudstack/pull/7082
-.. _`#8244`: https://github.com/apache/cloudstack/pull/8244
-.. _`#8257`: https://github.com/apache/cloudstack/pull/8257
-.. _`#8209`: https://github.com/apache/cloudstack/pull/8209
-.. _`#8191`: https://github.com/apache/cloudstack/pull/8191
-.. _`#8202`: https://github.com/apache/cloudstack/pull/8202
-.. _`#8222`: https://github.com/apache/cloudstack/pull/8222
-.. _`#8248`: https://github.com/apache/cloudstack/pull/8248
-.. _`#8227`: https://github.com/apache/cloudstack/pull/8227
-.. _`#8245`: https://github.com/apache/cloudstack/pull/8245
-.. _`#7417`: https://github.com/apache/cloudstack/pull/7417
-.. _`#7210`: https://github.com/apache/cloudstack/pull/7210
-.. _`#8238`: https://github.com/apache/cloudstack/pull/8238
-.. _`#6699`: https://github.com/apache/cloudstack/pull/6699
-.. _`#8210`: https://github.com/apache/cloudstack/pull/8210
-.. _`#7486`: https://github.com/apache/cloudstack/pull/7486
-.. _`#6892`: https://github.com/apache/cloudstack/pull/6892
-.. _`#7954`: https://github.com/apache/cloudstack/pull/7954
-.. _`#7378`: https://github.com/apache/cloudstack/pull/7378
-.. _`#8228`: https://github.com/apache/cloudstack/pull/8228
-.. _`#8215`: https://github.com/apache/cloudstack/pull/8215
-.. _`#8232`: https://github.com/apache/cloudstack/pull/8232
-.. _`#8115`: https://github.com/apache/cloudstack/pull/8115
-.. _`#8138`: https://github.com/apache/cloudstack/pull/8138
-.. _`#8220`: https://github.com/apache/cloudstack/pull/8220
-.. _`#7895`: https://github.com/apache/cloudstack/pull/7895
-.. _`#8213`: https://github.com/apache/cloudstack/pull/8213
-.. _`#8142`: https://github.com/apache/cloudstack/pull/8142
-.. _`#7901`: https://github.com/apache/cloudstack/pull/7901
-.. _`#7545`: https://github.com/apache/cloudstack/pull/7545
-.. _`#8173`: https://github.com/apache/cloudstack/pull/8173
-.. _`#8067`: https://github.com/apache/cloudstack/pull/8067
-.. _`#8199`: https://github.com/apache/cloudstack/pull/8199
-.. _`#8122`: https://github.com/apache/cloudstack/pull/8122
-.. _`#8193`: https://github.com/apache/cloudstack/pull/8193
-.. _`#8180`: https://github.com/apache/cloudstack/pull/8180
-.. _`#8085`: https://github.com/apache/cloudstack/pull/8085
-.. _`#8185`: https://github.com/apache/cloudstack/pull/8185
-.. _`#8045`: https://github.com/apache/cloudstack/pull/8045
-.. _`#8184`: https://github.com/apache/cloudstack/pull/8184
-.. _`#7855`: https://github.com/apache/cloudstack/pull/7855
-.. _`#8183`: https://github.com/apache/cloudstack/pull/8183
-.. _`#8133`: https://github.com/apache/cloudstack/pull/8133
-.. _`#7705`: https://github.com/apache/cloudstack/pull/7705
-.. _`#6890`: https://github.com/apache/cloudstack/pull/6890
-.. _`#8098`: https://github.com/apache/cloudstack/pull/8098
-.. _`#8137`: https://github.com/apache/cloudstack/pull/8137
-.. _`#8139`: https://github.com/apache/cloudstack/pull/8139
-.. _`#7980`: https://github.com/apache/cloudstack/pull/7980
-.. _`#8182`: https://github.com/apache/cloudstack/pull/8182
-.. _`#8049`: https://github.com/apache/cloudstack/pull/8049
-.. _`#8084`: https://github.com/apache/cloudstack/pull/8084
-.. _`#6639`: https://github.com/apache/cloudstack/pull/6639
-.. _`#7728`: https://github.com/apache/cloudstack/pull/7728
-.. _`#7549`: https://github.com/apache/cloudstack/pull/7549
-.. _`#7973`: https://github.com/apache/cloudstack/pull/7973
-.. _`#8071`: https://github.com/apache/cloudstack/pull/8071
-.. _`#8164`: https://github.com/apache/cloudstack/pull/8164
-.. _`#7949`: https://github.com/apache/cloudstack/pull/7949
-.. _`#6874`: https://github.com/apache/cloudstack/pull/6874
-.. _`#7996`: https://github.com/apache/cloudstack/pull/7996
-.. _`#8060`: https://github.com/apache/cloudstack/pull/8060
-.. _`#8022`: https://github.com/apache/cloudstack/pull/8022
-.. _`#8089`: https://github.com/apache/cloudstack/pull/8089
-.. _`#8150`: https://github.com/apache/cloudstack/pull/8150
-.. _`#8117`: https://github.com/apache/cloudstack/pull/8117
-.. _`#8012`: https://github.com/apache/cloudstack/pull/8012
-.. _`#7723`: https://github.com/apache/cloudstack/pull/7723
-.. _`#8149`: https://github.com/apache/cloudstack/pull/8149
-.. _`#8147`: https://github.com/apache/cloudstack/pull/8147
-.. _`#8116`: https://github.com/apache/cloudstack/pull/8116
-.. _`#8144`: https://github.com/apache/cloudstack/pull/8144
-.. _`#8128`: https://github.com/apache/cloudstack/pull/8128
-.. _`#8081`: https://github.com/apache/cloudstack/pull/8081
-.. _`#8072`: https://github.com/apache/cloudstack/pull/8072
-.. _`#7873`: https://github.com/apache/cloudstack/pull/7873
-.. _`#7859`: https://github.com/apache/cloudstack/pull/7859
-.. _`#7974`: https://github.com/apache/cloudstack/pull/7974
-.. _`#8118`: https://github.com/apache/cloudstack/pull/8118
-.. _`#8096`: https://github.com/apache/cloudstack/pull/8096
-.. _`#8119`: https://github.com/apache/cloudstack/pull/8119
-.. _`#8114`: https://github.com/apache/cloudstack/pull/8114
-.. _`#8104`: https://github.com/apache/cloudstack/pull/8104
-.. _`#8101`: https://github.com/apache/cloudstack/pull/8101
-.. _`#7804`: https://github.com/apache/cloudstack/pull/7804
-.. _`#8076`: https://github.com/apache/cloudstack/pull/8076
-.. _`#8099`: https://github.com/apache/cloudstack/pull/8099
-.. _`#8057`: https://github.com/apache/cloudstack/pull/8057
-.. _`#8082`: https://github.com/apache/cloudstack/pull/8082
-.. _`#8097`: https://github.com/apache/cloudstack/pull/8097
-.. _`#8031`: https://github.com/apache/cloudstack/pull/8031
-.. _`#8093`: https://github.com/apache/cloudstack/pull/8093
-.. _`#8019`: https://github.com/apache/cloudstack/pull/8019
-.. _`#6863`: https://github.com/apache/cloudstack/pull/6863
-.. _`#7386`: https://github.com/apache/cloudstack/pull/7386
-.. _`#6947`: https://github.com/apache/cloudstack/pull/6947
-.. _`#7977`: https://github.com/apache/cloudstack/pull/7977
-.. _`#7606`: https://github.com/apache/cloudstack/pull/7606
-.. _`#8066`: https://github.com/apache/cloudstack/pull/8066
-.. _`#8062`: https://github.com/apache/cloudstack/pull/8062
-.. _`#8075`: https://github.com/apache/cloudstack/pull/8075
-.. _`#8065`: https://github.com/apache/cloudstack/pull/8065
-.. _`#8069`: https://github.com/apache/cloudstack/pull/8069
-.. _`#8058`: https://github.com/apache/cloudstack/pull/8058
-.. _`#7605`: https://github.com/apache/cloudstack/pull/7605
-.. _`#7731`: https://github.com/apache/cloudstack/pull/7731
-.. _`#8048`: https://github.com/apache/cloudstack/pull/8048
-.. _`#7883`: https://github.com/apache/cloudstack/pull/7883
-.. _`#7811`: https://github.com/apache/cloudstack/pull/7811
-.. _`#8046`: https://github.com/apache/cloudstack/pull/8046
-.. _`#7672`: https://github.com/apache/cloudstack/pull/7672
-.. _`#8029`: https://github.com/apache/cloudstack/pull/8029
-.. _`#6887`: https://github.com/apache/cloudstack/pull/6887
-.. _`#7956`: https://github.com/apache/cloudstack/pull/7956
-.. _`#8025`: https://github.com/apache/cloudstack/pull/8025
-.. _`#8041`: https://github.com/apache/cloudstack/pull/8041
-.. _`#7953`: https://github.com/apache/cloudstack/pull/7953
-.. _`#7987`: https://github.com/apache/cloudstack/pull/7987
-.. _`#7225`: https://github.com/apache/cloudstack/pull/7225
-.. _`#8036`: https://github.com/apache/cloudstack/pull/8036
-.. _`#7088`: https://github.com/apache/cloudstack/pull/7088
-.. _`#8028`: https://github.com/apache/cloudstack/pull/8028
-.. _`#8035`: https://github.com/apache/cloudstack/pull/8035
-.. _`#8020`: https://github.com/apache/cloudstack/pull/8020
-.. _`#7931`: https://github.com/apache/cloudstack/pull/7931
-.. _`#7952`: https://github.com/apache/cloudstack/pull/7952
-.. _`#7983`: https://github.com/apache/cloudstack/pull/7983
-.. _`#7213`: https://github.com/apache/cloudstack/pull/7213
-.. _`#8002`: https://github.com/apache/cloudstack/pull/8002
-.. _`#7984`: https://github.com/apache/cloudstack/pull/7984
-.. _`#7868`: https://github.com/apache/cloudstack/pull/7868
-.. _`#6812`: https://github.com/apache/cloudstack/pull/6812
-.. _`#7985`: https://github.com/apache/cloudstack/pull/7985
-.. _`#7212`: https://github.com/apache/cloudstack/pull/7212
-.. _`#7211`: https://github.com/apache/cloudstack/pull/7211
-.. _`#8017`: https://github.com/apache/cloudstack/pull/8017
-.. _`#7858`: https://github.com/apache/cloudstack/pull/7858
-.. _`#7938`: https://github.com/apache/cloudstack/pull/7938
-.. _`#7989`: https://github.com/apache/cloudstack/pull/7989
-.. _`#8004`: https://github.com/apache/cloudstack/pull/8004
-.. _`#7963`: https://github.com/apache/cloudstack/pull/7963
-.. _`#7948`: https://github.com/apache/cloudstack/pull/7948
-.. _`#7979`: https://github.com/apache/cloudstack/pull/7979
-.. _`#8009`: https://github.com/apache/cloudstack/pull/8009
-.. _`#7991`: https://github.com/apache/cloudstack/pull/7991
-.. _`#8007`: https://github.com/apache/cloudstack/pull/8007
-.. _`#8006`: https://github.com/apache/cloudstack/pull/8006
-.. _`#8005`: https://github.com/apache/cloudstack/pull/8005
-.. _`#8003`: https://github.com/apache/cloudstack/pull/8003
-.. _`#7982`: https://github.com/apache/cloudstack/pull/7982
-.. _`#7995`: https://github.com/apache/cloudstack/pull/7995
-.. _`#8000`: https://github.com/apache/cloudstack/pull/8000
-.. _`#8001`: https://github.com/apache/cloudstack/pull/8001
-.. _`#7964`: https://github.com/apache/cloudstack/pull/7964
-.. _`#7972`: https://github.com/apache/cloudstack/pull/7972
-.. _`#7958`: https://github.com/apache/cloudstack/pull/7958
-.. _`#7997`: https://github.com/apache/cloudstack/pull/7997
-.. _`#7878`: https://github.com/apache/cloudstack/pull/7878
-.. _`#7645`: https://github.com/apache/cloudstack/pull/7645
-.. _`#7988`: https://github.com/apache/cloudstack/pull/7988
-.. _`#7986`: https://github.com/apache/cloudstack/pull/7986
-.. _`#7975`: https://github.com/apache/cloudstack/pull/7975
-.. _`#7978`: https://github.com/apache/cloudstack/pull/7978
-.. _`#6925`: https://github.com/apache/cloudstack/pull/6925
-.. _`#7915`: https://github.com/apache/cloudstack/pull/7915
-.. _`#7959`: https://github.com/apache/cloudstack/pull/7959
-.. _`#7782`: https://github.com/apache/cloudstack/pull/7782
-.. _`#7850`: https://github.com/apache/cloudstack/pull/7850
-.. _`#7955`: https://github.com/apache/cloudstack/pull/7955
-.. _`#7784`: https://github.com/apache/cloudstack/pull/7784
-.. _`#7941`: https://github.com/apache/cloudstack/pull/7941
-.. _`#7939`: https://github.com/apache/cloudstack/pull/7939
-.. _`#7892`: https://github.com/apache/cloudstack/pull/7892
+.. _`#8911`: https://github.com/apache/cloudstack/pull/8911 
+.. _`#9751`: https://github.com/apache/cloudstack/pull/9751 
+.. _`#9731`: https://github.com/apache/cloudstack/pull/9731 
+.. _`#9195`: https://github.com/apache/cloudstack/pull/9195 
+.. _`#9738`: https://github.com/apache/cloudstack/pull/9738 
+.. _`#9723`: https://github.com/apache/cloudstack/pull/9723 
+.. _`#9739`: https://github.com/apache/cloudstack/pull/9739 
+.. _`#7650`: https://github.com/apache/cloudstack/pull/7650 
+.. _`#8588`: https://github.com/apache/cloudstack/pull/8588 
+.. _`#9664`: https://github.com/apache/cloudstack/pull/9664 
+.. _`#9559`: https://github.com/apache/cloudstack/pull/9559 
+.. _`#9374`: https://github.com/apache/cloudstack/pull/9374 
+.. _`#9720`: https://github.com/apache/cloudstack/pull/9720 
+.. _`#9596`: https://github.com/apache/cloudstack/pull/9596 
+.. _`#9711`: https://github.com/apache/cloudstack/pull/9711 
+.. _`#9006`: https://github.com/apache/cloudstack/pull/9006 
+.. _`#9637`: https://github.com/apache/cloudstack/pull/9637 
+.. _`#8846`: https://github.com/apache/cloudstack/pull/8846 
+.. _`#9714`: https://github.com/apache/cloudstack/pull/9714 
+.. _`#9636`: https://github.com/apache/cloudstack/pull/9636 
+.. _`#9699`: https://github.com/apache/cloudstack/pull/9699 
+.. _`#9698`: https://github.com/apache/cloudstack/pull/9698 
+.. _`#9700`: https://github.com/apache/cloudstack/pull/9700 
+.. _`#9563`: https://github.com/apache/cloudstack/pull/9563 
+.. _`#9676`: https://github.com/apache/cloudstack/pull/9676 
+.. _`#9200`: https://github.com/apache/cloudstack/pull/9200 
+.. _`#9557`: https://github.com/apache/cloudstack/pull/9557 
+.. _`#8503`: https://github.com/apache/cloudstack/pull/8503 
+.. _`#9696`: https://github.com/apache/cloudstack/pull/9696 
+.. _`#9680`: https://github.com/apache/cloudstack/pull/9680 
+.. _`#9655`: https://github.com/apache/cloudstack/pull/9655 
+.. _`#9681`: https://github.com/apache/cloudstack/pull/9681 
+.. _`#9669`: https://github.com/apache/cloudstack/pull/9669 
+.. _`#9661`: https://github.com/apache/cloudstack/pull/9661 
+.. _`#9675`: https://github.com/apache/cloudstack/pull/9675 
+.. _`#9663`: https://github.com/apache/cloudstack/pull/9663 
+.. _`#9585`: https://github.com/apache/cloudstack/pull/9585 
+.. _`#9662`: https://github.com/apache/cloudstack/pull/9662 
+.. _`#9509`: https://github.com/apache/cloudstack/pull/9509 
+.. _`#9656`: https://github.com/apache/cloudstack/pull/9656 
+.. _`#9188`: https://github.com/apache/cloudstack/pull/9188 
+.. _`#9566`: https://github.com/apache/cloudstack/pull/9566 
+.. _`#8924`: https://github.com/apache/cloudstack/pull/8924 
+.. _`#9461`: https://github.com/apache/cloudstack/pull/9461 
+.. _`#9633`: https://github.com/apache/cloudstack/pull/9633 
+.. _`#9652`: https://github.com/apache/cloudstack/pull/9652 
+.. _`#9528`: https://github.com/apache/cloudstack/pull/9528 
+.. _`#8906`: https://github.com/apache/cloudstack/pull/8906 
+.. _`#9107`: https://github.com/apache/cloudstack/pull/9107 
+.. _`#8511`: https://github.com/apache/cloudstack/pull/8511 
+.. _`#9639`: https://github.com/apache/cloudstack/pull/9639 
+.. _`#9619`: https://github.com/apache/cloudstack/pull/9619 
+.. _`#9647`: https://github.com/apache/cloudstack/pull/9647 
+.. _`#9428`: https://github.com/apache/cloudstack/pull/9428 
+.. _`#9470`: https://github.com/apache/cloudstack/pull/9470 
+.. _`#9451`: https://github.com/apache/cloudstack/pull/9451 
+.. _`#8389`: https://github.com/apache/cloudstack/pull/8389 
+.. _`#9208`: https://github.com/apache/cloudstack/pull/9208 
+.. _`#9415`: https://github.com/apache/cloudstack/pull/9415 
+.. _`#9624`: https://github.com/apache/cloudstack/pull/9624 
+.. _`#8925`: https://github.com/apache/cloudstack/pull/8925 
+.. _`#9543`: https://github.com/apache/cloudstack/pull/9543 
+.. _`#9569`: https://github.com/apache/cloudstack/pull/9569 
+.. _`#9449`: https://github.com/apache/cloudstack/pull/9449 
+.. _`#9518`: https://github.com/apache/cloudstack/pull/9518 
+.. _`#9628`: https://github.com/apache/cloudstack/pull/9628 
+.. _`#9591`: https://github.com/apache/cloudstack/pull/9591 
+.. _`#9634`: https://github.com/apache/cloudstack/pull/9634 
+.. _`#8683`: https://github.com/apache/cloudstack/pull/8683 
+.. _`#9632`: https://github.com/apache/cloudstack/pull/9632 
+.. _`#9631`: https://github.com/apache/cloudstack/pull/9631 
+.. _`#7610`: https://github.com/apache/cloudstack/pull/7610 
+.. _`#9239`: https://github.com/apache/cloudstack/pull/9239 
+.. _`#9236`: https://github.com/apache/cloudstack/pull/9236 
+.. _`#9205`: https://github.com/apache/cloudstack/pull/9205 
+.. _`#9116`: https://github.com/apache/cloudstack/pull/9116 
+.. _`#8958`: https://github.com/apache/cloudstack/pull/8958 
+.. _`#9629`: https://github.com/apache/cloudstack/pull/9629 
+.. _`#9206`: https://github.com/apache/cloudstack/pull/9206 
+.. _`#9567`: https://github.com/apache/cloudstack/pull/9567 
+.. _`#9568`: https://github.com/apache/cloudstack/pull/9568 
+.. _`#9578`: https://github.com/apache/cloudstack/pull/9578 
+.. _`#9588`: https://github.com/apache/cloudstack/pull/9588 
+.. _`#9616`: https://github.com/apache/cloudstack/pull/9616 
+.. _`#9625`: https://github.com/apache/cloudstack/pull/9625 
+.. _`#9610`: https://github.com/apache/cloudstack/pull/9610 
+.. _`#9560`: https://github.com/apache/cloudstack/pull/9560 
+.. _`#9627`: https://github.com/apache/cloudstack/pull/9627 
+.. _`#9573`: https://github.com/apache/cloudstack/pull/9573 
+.. _`#9617`: https://github.com/apache/cloudstack/pull/9617 
+.. _`#9554`: https://github.com/apache/cloudstack/pull/9554 
+.. _`#9575`: https://github.com/apache/cloudstack/pull/9575 
+.. _`#8755`: https://github.com/apache/cloudstack/pull/8755 
+.. _`#8649`: https://github.com/apache/cloudstack/pull/8649 
+.. _`#9600`: https://github.com/apache/cloudstack/pull/9600 
+.. _`#9125`: https://github.com/apache/cloudstack/pull/9125 
+.. _`#9255`: https://github.com/apache/cloudstack/pull/9255 
+.. _`#9455`: https://github.com/apache/cloudstack/pull/9455 
+.. _`#8743`: https://github.com/apache/cloudstack/pull/8743 
+.. _`#8751`: https://github.com/apache/cloudstack/pull/8751 
+.. _`#9549`: https://github.com/apache/cloudstack/pull/9549 
+.. _`#8609`: https://github.com/apache/cloudstack/pull/8609 
+.. _`#9572`: https://github.com/apache/cloudstack/pull/9572 
+.. _`#9468`: https://github.com/apache/cloudstack/pull/9468 
+.. _`#9433`: https://github.com/apache/cloudstack/pull/9433 
+.. _`#9589`: https://github.com/apache/cloudstack/pull/9589 
+.. _`#9459`: https://github.com/apache/cloudstack/pull/9459 
+.. _`#9540`: https://github.com/apache/cloudstack/pull/9540 
+.. _`#9329`: https://github.com/apache/cloudstack/pull/9329 
+.. _`#9571`: https://github.com/apache/cloudstack/pull/9571 
+.. _`#8832`: https://github.com/apache/cloudstack/pull/8832 
+.. _`#9163`: https://github.com/apache/cloudstack/pull/9163 
+.. _`#9422`: https://github.com/apache/cloudstack/pull/9422 
+.. _`#9542`: https://github.com/apache/cloudstack/pull/9542 
+.. _`#8878`: https://github.com/apache/cloudstack/pull/8878 
+.. _`#9550`: https://github.com/apache/cloudstack/pull/9550 
+.. _`#9548`: https://github.com/apache/cloudstack/pull/9548 
+.. _`#9545`: https://github.com/apache/cloudstack/pull/9545 
+.. _`#9553`: https://github.com/apache/cloudstack/pull/9553 
+.. _`#9551`: https://github.com/apache/cloudstack/pull/9551 
+.. _`#8689`: https://github.com/apache/cloudstack/pull/8689 
+.. _`#9417`: https://github.com/apache/cloudstack/pull/9417 
+.. _`#9264`: https://github.com/apache/cloudstack/pull/9264 
+.. _`#8556`: https://github.com/apache/cloudstack/pull/8556 
+.. _`#9225`: https://github.com/apache/cloudstack/pull/9225 
+.. _`#9435`: https://github.com/apache/cloudstack/pull/9435 
+.. _`#8812`: https://github.com/apache/cloudstack/pull/8812 
+.. _`#9396`: https://github.com/apache/cloudstack/pull/9396 
+.. _`#9385`: https://github.com/apache/cloudstack/pull/9385 
+.. _`#9201`: https://github.com/apache/cloudstack/pull/9201 
+.. _`#9487`: https://github.com/apache/cloudstack/pull/9487 
+.. _`#9499`: https://github.com/apache/cloudstack/pull/9499 
+.. _`#9340`: https://github.com/apache/cloudstack/pull/9340 
+.. _`#9390`: https://github.com/apache/cloudstack/pull/9390 
+.. _`#9447`: https://github.com/apache/cloudstack/pull/9447 
+.. _`#8615`: https://github.com/apache/cloudstack/pull/8615 
+.. _`#9450`: https://github.com/apache/cloudstack/pull/9450 
+.. _`#9426`: https://github.com/apache/cloudstack/pull/9426 
+.. _`#9419`: https://github.com/apache/cloudstack/pull/9419 
+.. _`#9399`: https://github.com/apache/cloudstack/pull/9399 
+.. _`#9434`: https://github.com/apache/cloudstack/pull/9434 
+.. _`#9458`: https://github.com/apache/cloudstack/pull/9458 
+.. _`#9442`: https://github.com/apache/cloudstack/pull/9442 
+.. _`#9437`: https://github.com/apache/cloudstack/pull/9437 
+.. _`#8739`: https://github.com/apache/cloudstack/pull/8739 
+.. _`#9043`: https://github.com/apache/cloudstack/pull/9043 
+.. _`#9062`: https://github.com/apache/cloudstack/pull/9062 
+.. _`#8833`: https://github.com/apache/cloudstack/pull/8833 
+.. _`#9409`: https://github.com/apache/cloudstack/pull/9409 
+.. _`#9402`: https://github.com/apache/cloudstack/pull/9402 
