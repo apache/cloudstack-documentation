@@ -144,12 +144,12 @@ icon.
 
 |B&R-createBackup.png|
 
-To setup a recurring backup schedule, navigate to the Instance and click on the 'Backup Schedule'
+To setup a recurring backup schedule, navigate to the Instance and click on the 'Configure Backup Schedule'
 icon.
 
 |B&R-BackupSchedule.png|
 
-Then set the time and frequency of the backups, click 'Configure' and then 'Close'
+Then set the Interval type, timezone, time of taking the backup and maximum numbers of backups to retain.
 
 |B&R-BackupScheduleEntry.png|
 
@@ -177,6 +177,13 @@ Supported APIs:
 - **restoreBackup**: restore a previous Instance backup in-place of a stopped or destroyed Instance.
 - **restoreVolumeFromBackupAndAttachToVM**: restore and attach a backed-up volume (of an Instance backup) to a specified Instance.
 
+
+Configuring resource limits on Backups
+--------------------------------------
+Administrators can enforce limits on the maximum number of backups that can be taken and
+the total backup storage size that can be used at an account, domain and project level.
+Administrators can do this by going to the configure limits tab in accounts, domains and projects
+similar to when enforcing resource limits on volumes, primary storage usage etc.
 
 .. |B&R-assignOffering.png| image:: /_static/images/B&R-assignOffering.png
    :alt: Assigning an SLA/Policy to an Instance.
