@@ -478,6 +478,12 @@ cloudstack-agent and should already be installed.
    .. parsed-literal::
       remote_mode="legacy"
 
+   On Ubuntu 24.04 or newer set libvirtd mode to traditional mode (see https://libvirt.org/manpages/libvirtd.html#system-socket-activation):
+
+   .. parsed-literal::
+
+      systemctl mask libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tls.socket libvirtd-tcp.socket
+
 
 #. Restart libvirt
 
