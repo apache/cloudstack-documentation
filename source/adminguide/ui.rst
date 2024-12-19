@@ -492,7 +492,7 @@ Example for adding custom plugins:
       ...
    }
 
-`icon` for the plugin can be chosen from Ant Design icons listed at `Icon - Ant Design Vue<https://www.antdv.com/components/icon/>`_.
+`icon` for the plugin can be chosen from Ant Design icons listed at `Icon - Ant Design Vue <https://www.antdv.com/components/icon/>`_.
 For displaying a custom HTML in the plugin, HTML file can be stored in the CloudStack management server's web application directory on the server, i.e., */usr/share/cloudstack-management/webapp* and `path` can be set to the name of the file. For displaying a service or a web page, URL can be set as the `path` of the plugin.
 
 |ui-custom-plugin.png|

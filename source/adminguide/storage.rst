@@ -171,14 +171,13 @@ In order to use multiple local storage pools, you need to
 
        local.storage.uuid=a43943c1-1759-4073-9db1-bc0ea19203aa,f5b1220b-4446-42dc-a872-cffd281f9f8c
        local.storage.path=/var/lib/libvirt/images,/var/lib/libvirt/images2
-#
 
 #. Restart cloudstack-agent service
 
     - Storage pools will be automatically created in libvirt by the CloudStack agent
 
 Adding a Local Storage Pool via UI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When using UI, ensure that the scope of the storage is set to "Host", and 
 ensure that the protocol is set to "Filesystem".
@@ -187,6 +186,7 @@ ensure that the protocol is set to "Filesystem".
 
 Changing the Scope of the Primary Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Scope of a Primary Storage can be changed from Zone-wide to Cluster-wide
 and vice versa when the Primary Storage is in Disabled state.
 An action button is displayed in UI for each Primary Storage in Disabled state.
@@ -276,7 +276,7 @@ templates, and ISOs.
 
 
 Setting NFS Mount Options on the Storage Pool
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 NFS mount options can be added while creating an NFS storage pool for
 KVM hosts. When the storage pool is mounted on the KVM hypervisor host,
@@ -393,6 +393,7 @@ under "Browser" tab for a secondary storage.
 
 Read only
 ~~~~~~~~~
+
 Secondary storages can also be set to read-only in order to cordon it off
 from being used for storing any further Templates, Volumes and Snapshots.
 
@@ -401,7 +402,7 @@ from being used for storing any further Templates, Volumes and Snapshots.
       cmk updateImageStore id=4440f406-b9b6-46f1-93a4-378a75cf15de readonly=true
 
 Direct resources to a specific secondary storage
-~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default, ACS allocates ISOs, volumes, snapshots, and templates to the freest secondary storage of the zone. In order to direct these resources to a specific secondary storage, the user can utilize the functionality of the dynamic secondary storage selectors using heuristic rules. This functionality utilizes JavaScript rules, defined by the user, to direct these resources to a specific secondary storage. When creating the heuristic rule, the script will have access to some preset variables with information about the secondary storage in the zone, about the resource the rule will be applied upon, and about the account that triggered the allocation. These variables are presented in the table below:
 
@@ -409,39 +410,39 @@ By default, ACS allocates ISOs, volumes, snapshots, and templates to the freest 
    | Resource                          | Variables                         |
    +===================================+===================================+
    | Secondary Storage                 | ``id``                            |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``name``                          |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``usedDiskSize``                  |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``totalDiskSize``                 |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``protocol``                      |
    +-----------------------------------+-----------------------------------+
    | Snapshot                          | ``size``                          |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``hypervisorType``                |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``name``                          |
    +-----------------------------------+-----------------------------------+
    | ISO/Template                      | ``format``                        |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``hypervisorType``                |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``templateType``                  |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``name``                          |
    +-----------------------------------+-----------------------------------+
    | Volume                            | ``size``                          |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``format``                        |
    +-----------------------------------+-----------------------------------+
    | Account                           | ``id``                            |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``name``                          |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``domain.id``                     |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``domain.name``                   |
    +-----------------------------------+-----------------------------------+
 
@@ -722,7 +723,7 @@ may take several minutes for the volume to be moved to the new Instance.
 
 
 Instance Storage Migration
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Supported in XenServer, KVM, and VMware.
 
@@ -1099,6 +1100,7 @@ API output bellow.
          "diskkbsread": 343124,
          "diskkbswrite": 217619,
          ...
+
 Bytes read/write, as well as the total IO/s, are exposed via UI, as shown in the image below.
 
 |volume-metrics.png|
@@ -1157,7 +1159,7 @@ Following is the example for checkVolume API usage and the result in the volume 
 
 
 Importing and Unmanaging Volumes from Storage Pools
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Since Apache CloudStack 4.19.1.0, importing and unmanaging volumes from primary storage pools are supported.
 
@@ -1526,7 +1528,7 @@ Deleting objects from a bucket
 2. Click on the |delete-button.png| button to delete the selected files from the bucket.
 
 Shared FileSystems
----------------
+------------------
 
 CloudStack offers fully managed NFS Shared FileSystems to all users.
 This section gives technical details on how to create/manage a Shared FileSystem
@@ -1536,7 +1538,7 @@ using basic lifecycle operations and also some implementation details.
    This feature is available only on advanced zones without security groups.
 
 Creating a New Shared FileSystem 
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #. Log in to the CloudStack UI as a user or administrator.
 
@@ -1600,7 +1602,8 @@ Supported lifecycle operations are :
 
 
 Shared FileSystem Instance
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 The Shared FileSystem Instance is stateless and HA enabled. A new instance is deployed and will start
 serving the NFS share if the host or VM goes down.
 The VM is installed with the SystemVM template which is also used by the CPVM and SSVM.
@@ -1613,12 +1616,14 @@ required during normal operations.
 
 Service Offering
 ~~~~~~~~~~~~~~~~
+
 There are two global settings that control what should be the minimum RAM size and minimum
 CPU count for the Shared FileSystem Instance : 'sharedfsvm.min.cpu.count' and 'sharedfsvm.min.ram.size`.
 Only those offerings which meet these settings and have HA enabled are shown in the create form.
 
 Shared FileSystem Data Volume
-~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 The data volume is also visible to the users. It is recommended to use the Shared FileSystem UI/API to
 manage the data but users or admin can perform actions directly on the data volume or the root volume
 as well if they wish. Attaching and detaching a disk is not allowed on a Shared FileSystem Instance.

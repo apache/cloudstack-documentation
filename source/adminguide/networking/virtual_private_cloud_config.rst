@@ -308,8 +308,8 @@ Configuring Network Access Control List
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
-Network Access Control Lists can only be created if the service
-"NetworkACL" is supported by the created VPC.
+    Network Access Control Lists can only be created if the service
+    "NetworkACL" is supported by the created VPC.
 
 Define a Network Access Control List (ACL) to control incoming
 (ingress) and outgoing (egress) traffic between the associated Network Tier
@@ -347,14 +347,14 @@ destination" and / or "allow all ingress source" rule to the ACL.
 Afterwards traffic can be white- or blacklisted.
 
 .. note::
-- ACL Rules in Cloudstack are stateful
-- Source / Destination CIDRs are always external Networks
-- ACL rules can also been seen on the virtual router of the VPC. Ingress
-  rules are listed in the table iptables table "filter" while egress rules
-  are placed in the "mangle" table
-- ACL rules for ingress and egress are not correlating. For example a
-  egress "deny all" won't affect traffic in response to an allowed ingress
-  connection
+    - ACL Rules in Cloudstack are stateful
+    - Source / Destination CIDRs are always external Networks
+    - ACL rules can also been seen on the virtual router of the VPC. Ingress
+      rules are listed in the table iptables table "filter" while egress rules
+      are placed in the "mangle" table
+    - ACL rules for ingress and egress are not correlating. For example a
+      egress "deny all" won't affect traffic in response to an allowed ingress
+      connection
   
 
 Creating ACL Lists

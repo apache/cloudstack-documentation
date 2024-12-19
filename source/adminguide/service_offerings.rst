@@ -653,22 +653,22 @@ on different types of networks in CloudStack.
 
 .. cssclass:: table-striped table-bordered table-hover
 
-=========================================== ===============================
-Networks                                    Network Rate Is Taken from
-=========================================== ===============================
-Guest network of Virtual Router             Guest Network Offering
-Public network of Virtual Router            Guest Network Offering
-Storage network of Secondary Storage VM     System Network Offering
-Management network of Secondary Storage VM  System Network Offering
-Storage network of Console Proxy VM         System Network Offering
-Management network of Console Proxy VM      System Network Offering
-Storage network of Virtual Router           System Network Offering
-Management network of Virtual Router        System Network Offering
-Public network of Secondary Storage instance      System Network Offering
-Public network of Console Proxy instance          System Network Offering
-Default network of a guest instance               Compute Offering
-Additional networks of a guest instance           Corresponding Network Offerings
-=========================================== ===============================
+============================================ ===============================
+Networks                                     Network Rate Is Taken from
+============================================ ===============================
+Guest network of Virtual Router              Guest Network Offering
+Public network of Virtual Router             Guest Network Offering
+Storage network of Secondary Storage VM      System Network Offering
+Management network of Secondary Storage VM   System Network Offering
+Storage network of Console Proxy VM          System Network Offering
+Management network of Console Proxy VM       System Network Offering
+Storage network of Virtual Router            System Network Offering
+Management network of Virtual Router         System Network Offering
+Public network of Secondary Storage instance System Network Offering
+Public network of Console Proxy instance     System Network Offering
+Default network of a guest instance          Compute Offering
+Additional networks of a guest instance      Corresponding Network Offerings
+============================================ ===============================
 
 A guest instance must have a default network, and can also have many
 additional networks. Depending on various parameters, such as the host

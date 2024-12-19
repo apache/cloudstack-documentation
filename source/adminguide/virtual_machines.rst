@@ -1035,7 +1035,7 @@ like many other resources in CloudStack.
 KVM supports Instance Snapshots when using NFS shared storage. If raw block storage
 is used (i.e. Ceph), then Instance Snapshots are not possible, since there is no possibility
 to write RAM memory content anywhere. In such cases you can use as an alternative 
-`Storage-based VM Snapshots on KVM`_
+:ref:`Storage-based-Instance-Snapshots-on-KVM`.
 
 
 If you need more information about Instance Snapshots on VMware, check out the
@@ -1044,7 +1044,7 @@ VMware documentation and the VMware Knowledge Base, especially
 <http://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&externalId=1015180>`_.
 
 
-.. _`Storage-based Instance Snapshots on KVM`:
+.. _Storage-based-Instance-Snapshots-on-KVM:
 
 Storage-based Instance Snapshots on KVM
 ---------------------------------------

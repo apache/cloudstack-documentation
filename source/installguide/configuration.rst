@@ -1005,7 +1005,7 @@ XenServer and KVM hosts can be added to a cluster at any time.
 
 
 Requirements for XenServer and KVM Hosts
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+****************************************
 
 .. warning::
    Make sure the hypervisor host does not have any instances already running before
@@ -1026,7 +1026,7 @@ hypervisor in the CloudStack Installation Guide.
    Since CloudStack 4.20.0, the host arch type is auto detected when adding the host into CloudStack and it must match the cluster arch type for the operation to succeed.
 
 XenServer Host Additional Requirements
-''''''''''''''''''''''''''''''''''''''
+**************************************
 
 If network bonding is in use, the administrator must cable the new host
 identically to other hosts in the cluster.
@@ -1060,7 +1060,7 @@ bonds on the new hosts in the cluster.
 
 
 KVM Host Additional Requirements
-''''''''''''''''''''''''''''''''
+********************************
 
 -  If shared mountpoint storage is in use, the administrator should
    ensure that the new host has all the same mountpoints (with storage
@@ -1082,7 +1082,7 @@ KVM Host Additional Requirements
      defaults:cloudstack !requiretty
 
 Adding a XenServer Host
-^^^^^^^^^^^^^^^^^^^^^^^
+***********************
 
 #. If you have not already done so, install the hypervisor software on
    the host. You will need to know which version of the hypervisor
@@ -1126,7 +1126,7 @@ Adding a XenServer Host
 
 
 Adding a KVM Host
-^^^^^^^^^^^^^^^^^
+*****************
 
 The steps to add a KVM host are same as adding a XenServer Host as mentioned in
 the above section.
