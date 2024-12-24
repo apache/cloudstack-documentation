@@ -772,7 +772,7 @@ There are two situations when you might want to migrate a disk:
 Migrating Storage For a Running Instance
 ''''''''''''''''''''''''''''''''''''''''
 
-(Supported on XenServer and VMware)
+(Supported on XenServer, KVM and VMware)
 
 #. Log in to the CloudStack UI as a user or admin.
 
@@ -814,15 +814,17 @@ Migrating Storage and Attaching to a Different Instance
    Volume” <#attaching-a-volume>`_
 
 
-Migrating an Instance Root Volume to a New Storage Pool
+Migrating an Instance Volume to a New Storage Pool
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-(XenServer, VMware) You can live migrate an Instance's root disk from one
+(XenServer, VMware) You can live migrate an Instance's volumes from one
 storage pool to another, without stopping the Instance first.
 
-(KVM) When migrating the root disk volume, the Instance must first be stopped,
-and users can not access the Instance. After migration is complete, the Instance can
-be restarted.
+(KVM) KVM does not support volume live migration due to the limited possibility
+to refresh VM XML domain. Therefore, to live migrate a volume between storage pools,
+one must migrate the VM to a different host as well to force the VM XML domain update.
+Use 'migrateVirtualMachineWithVolumes' instead or stop the Instance and then migrate
+the volume.
 
 #. Log in to the CloudStack UI as a user or admin.
 
