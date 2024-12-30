@@ -637,6 +637,9 @@ Core Zone
 
    -  **VLAN / VNI ID.** The VLAN / VNI ID's that will be used for guest traffic.
 
+            .. NOTE if the VNI is of a VXLan, the potocol prefix
+               `vxlan://` must be used, like in `vxlan://<vni>`
+
 #. In a new pod, CloudStack adds the first cluster for you. You can
    always add more clusters later. For an overview of what a cluster is,
    see :ref:`about-clusters`
