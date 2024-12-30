@@ -27,7 +27,8 @@ rules filter network traffic according to the IP address that is
 attempting to communicate with the instance. Security groups are particularly
 useful in zones that use basic networking, because there is a single
 guest network for all Guest Instances. In advanced zones, security groups are
-supported only on the KVM hypervisor and XenServer/XCP-ng with the network backend configured as "bridge". 
+supported only on the KVM hypervisor and XenServer/XCP-ng with the network backend
+configured as "bridge". 
 
 .. note:: 
    In a zone that uses advanced networking, you can instead define 
