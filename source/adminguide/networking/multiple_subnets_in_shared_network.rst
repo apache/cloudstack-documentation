@@ -95,8 +95,7 @@ Adding Multiple Subnets to a Shared Network
       defaulted to the vlan of the network or if vlan of the network is
       null - to Untagged
 
-      .. NOTE if the VNI is of a VXLAN, the protocol prefix `vxlan://`
-         must be used, like in `vxlan://<vni>`
+.. note:: If the VNI is of a VXLAN, the protocol prefix `vxlan://` must be used, like in `vxlan://<vni>`
 
 #. Click OK.
 
