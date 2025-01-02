@@ -148,6 +148,39 @@ on the cluster nodes.
 
 |ckp-ip-lb.png|
 
+.. note::
+   - In case of Cloudstack + Vmware Intergaration, if you want to expose the application via Public Ipaddress, you have to expose it as a Node-port service and manually add the rules in cloudstack.
+
+   Example 
+
+   .. parsed-literal::
+
+      1. Expose the application service as a Node port service.
+
+      kubectl  expose deploy/nginx-deployment --port=80 --type=Nodeport
+
+      NAME                TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+      kubernetes          ClusterIP      10.96.0.1        <none>        443/TCP        5d1h
+      nginx-deployment2   NodePort       10.103.111.85    <none>        80:32014/TCP   4s
+      
+      2. Navigate to network and acquire a public IP.
+
+      |cks-acquire-publicip.png|
+
+      3. Add a firewall rule on  port 80 on the public IP address
+
+      |cks-addfirewall.png|
+
+      4. Add a loadbalcner rule mentioning the private node port and add the corresponding kubenetes worker node.
+
+      |cks-addloadbalancer.png|
+
+      |cks-addnode.png| 
+
 .. |ckp-ip.png| image:: /_static/images/ckp-ip.png
 .. |ckp-ip-fw.png| image:: /_static/images/ckp-ip-fw.png
 .. |ckp-ip-lb.png| image:: /_static/images/ckp-ip-lb.png
+.. |cks-acquire-publicip.png| image:: /_static/images/cks-acquire-publicip.png
+.. |cks-addfirewall.png| image:: /_static/images/cks-addfirewall.png
+.. |cks-addloadbalancer.png| image:: /_static/images/cks-addloadbalancer.png
+.. |cks-addnode.png|  image:: /_static/images/cks-addnode.png
