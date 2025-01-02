@@ -171,7 +171,7 @@ on the cluster nodes.
 
       |cks-addfirewall.png|
 
-      4. Add a loadbalcner rule mentioning the private node port and add the corresponding kubenetes worker node.
+      4. Add a loadbalancer rule mentioning the private node port and add the corresponding kubenetes worker node.
 
       |cks-addloadbalancer.png|
 
