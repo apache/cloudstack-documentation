@@ -113,6 +113,33 @@ To display all the comments on the objects that the logged in User (or administr
 
 3. Select the 'All Comments' filter
 
+Use Cases
+~~~~~~~~~
+
+- As either a user or admin of an ACS environment, it is possible to make text comments against cloud elements such as VMs, volumes, networks, etc.
+
+- As well as the above elements, as admin, it is possible to make text comments against infrastructure elements such as hosts, zones, storage pools, etc.
+
+- As either a user or admin, it is possible to see the historic comments made by others. It is easily possible to access those comments in the UI from the object itself. Those comments are shown most recent first.
+
+- When looking at comments for any object, it is possible to see who made that comment (username) and when they made it (date stamp).
+
+- As a user, it is possible to see all the historic comments for an object that they have access to.
+
+- As an administrator it is possible to see all of the historic comments for an object made by the administrator and other users.
+
+- As a user, it is possible to delete comments created by them.
+
+- As an administrator, it is possible to delete any comment.
+
+- As a comment can be used to form an audit of an object’s history, comments cannot be edited by anybody.
+
+- As an administrator, it is possible to specify whether a comment can:
+ 
+   - only be viewed by the administrator and other administrators.
+   
+   - be viewed by all users with access to the object.
+
 Reporting CPU Sockets
 ---------------------
 
