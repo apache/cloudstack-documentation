@@ -116,7 +116,7 @@ To display all the comments on the objects that the logged in User (or administr
 Use Cases
 ~~~~~~~~~
 
-- As either a user or admin of an ACS environment, it is possible to make text comments against cloud elements such as VMs, volumes, networks, etc.
+- As either a user or admin of an ACS environment, it is possible to make text comments against cloud elements such as VMs, volumes, networks etc that they have access to.
 
 - As well as the above elements, as admin, it is possible to make text comments against infrastructure elements such as hosts, zones, storage pools, etc.
 
