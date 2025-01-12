@@ -59,7 +59,7 @@ Prior to creating the zone, ensure that the global setting: 'vmware.management.p
 Zone creation
 ~~~~~~~~~~~~~
 
-For an NSX-based zone, the administrator will have to create atleast 2 physical networks, one for Public and Guest networks with **NSX** isolation method and one for Management (and / or storage networks),
+For an NSX-based zone, the administrator will have to create at least 2 physical networks, one for Public and Guest networks with **NSX** isolation method and one for Management (and / or storage networks),
 which uses VLAN isolation method.
 
 **Physical network for Public and Guest traffic:**
@@ -68,7 +68,7 @@ which uses VLAN isolation method.
    vSwitch type: distributed virtual switch (dvSwitch)
    vSwitch name: name of the dvSwitch to handle NSX traffic 
 
-**Phsyical network for Management traffic:**
+**Physical network for Management traffic:**
    Isolation method: VLAN
    VLAN ID: ID for Management traffic
    vSwitch type: distributed virtual switch (dvSwitch)

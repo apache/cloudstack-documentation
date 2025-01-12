@@ -282,9 +282,9 @@ Alternatively, ``createGuestNetworkIpv6Prefix`` API can be used to add a new gue
 Adding Network or VPC Offering with IPv6 Support
 ################################################
 
-To create an IPv6 suported network or VPC offering, global configuration - ``ipv6.offering.enabled`` must be set to **true**.
+To create an IPv6 supported network or VPC offering, global configuration - ``ipv6.offering.enabled`` must be set to **true**.
 
-With 4.17.0, a new paramter - ``internetprotocol`` has been added to:
+With 4.17.0, a new parameter - ``internetprotocol`` has been added to:
  - the ``createNetworkOffering`` API which can be used to create a network offering with IPv6 support by using the value dualstack.
  - the ``createVPCOffering`` API which can be used to create a VPC offering with IPv6 support by using the value dualstack.
 Corresponding option has also been provided in the UI form creating network/VPC offering:
@@ -311,8 +311,8 @@ For using and managing firewall rules with an IPv6 supported isolated network, C
 
 -  ``listIpv6FirewallRules`` - To list existing IPv6 firewall rules for a network.
 -  ``createIpv6FirewallRule`` - To create a new IPv6 firewall rules for a network.
--  ``updateIpv6FirewallRule`` - To update an exisitng IPv6 firewall rules for a network.
--  ``deleteIpv6FirewallRule`` - To delete an exisitng IPv6 firewall rules for a network.
+-  ``updateIpv6FirewallRule`` - To update an existing IPv6 firewall rules for a network.
+-  ``deleteIpv6FirewallRule`` - To delete an existing IPv6 firewall rules for a network.
 
 These operations are also available using UI in the network details view of an IPv6 supported network.
 

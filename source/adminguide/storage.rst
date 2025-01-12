@@ -1084,7 +1084,7 @@ Volume statistics are collected on a regular interval (defined by global
 setting volume.stats.interval with a default of 600 seconds). 
 This feature is currently only available for VMware and KVM. 
 Volume stats include include bytes/s and IO/s statistics as shown in the
-API output bellow.
+API output below.
 
 .. code:: bash
 
@@ -1164,7 +1164,7 @@ Importing and Unmanaging Volumes from Storage Pools
 Since Apache CloudStack 4.19.1.0, importing and unmanaging volumes from primary storage pools are supported.
 
 .. note::
-   Currenty the supported storage types are: NFS, Ceph and Local storage for KVM hypervisor.
+   Currently the supported storage types are: NFS, Ceph and Local storage for KVM hypervisor.
 
 #. Log in to the CloudStack UI as an administrator.
 
@@ -1411,7 +1411,7 @@ Snapshot request fails and returns an error message.
 Snapshot Copy
 ~~~~~~~~~~~~~
 
-CloudStack allows copying an exisiting backed-up snapshot to multiple zones.
+CloudStack allows copying an existing backed-up snapshot to multiple zones.
 Users can either use the UI in the snapshot details view or the `copySnapshot`
 API to copy a snapshot from one zone to other zone(s). Snapshot copies can
 be used for disastser recovery and creating volumes and templates in the
@@ -1610,7 +1610,7 @@ The VM is installed with the SystemVM template which is also used by the CPVM an
 
 The Shared FileSystem Instance can be seen in the Instances Tab as well. It's name is prefixed by the string
 "sharedfs-" plus the Shared FileSystem name. Actions that might interfere with Shared FileSystem operations are blocked or not shown.
-Basic operaions like Start, Stop and Reboot are allowed for troubleshooting.
+Basic operations like Start, Stop and Reboot are allowed for troubleshooting.
 Users can access the VM using the 'View Console' button for troubleshooting although it is not
 required during normal operations.
 

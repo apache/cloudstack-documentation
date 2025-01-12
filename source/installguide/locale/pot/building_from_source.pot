@@ -233,7 +233,7 @@ msgstr ""
 
 #: ../../building_from_source.rst:194
 # 283980d16b48466bb2a2d3b17ff1fede
-msgid "While we have defined, and you have presumably already installed the bootstrap prerequisites, there are a number of build time prerequisites that need to be resolved. CloudStack uses maven for dependency resolution. You can resolve the buildtime depdencies for CloudStack by running:"
+msgid "While we have defined, and you have presumably already installed the bootstrap prerequisites, there are a number of build time prerequisites that need to be resolved. CloudStack uses maven for dependency resolution. You can resolve the buildtime dependencies for CloudStack by running:"
 msgstr ""
 
 #: ../../building_from_source.rst:204

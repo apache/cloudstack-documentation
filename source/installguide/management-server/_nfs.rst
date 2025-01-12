@@ -54,7 +54,7 @@ from the Management Server.
 
 The exact commands for the following steps may vary depending on your
 operating system version.
-The following steps asume you already have an NFS Server installed on your storage
+The following steps assume you already have an NFS Server installed on your storage
 system. Please refer to the guide of your OS on how to install a NFS Server.
 
 .. warning::

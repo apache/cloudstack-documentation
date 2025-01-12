@@ -1820,7 +1820,7 @@ msgstr "使用用户或管理员登录到CloudStack用户界面。"
 # f974a014675745ceae4ebb19113bc49e
 #: ../../networking/virtual_private_cloud_config.rst:959
 #: ../../networking/virtual_private_cloud_config.rst:1165
-msgid "Naviagte to Service Offerings and choose Network OfferingPublic IP Addresses."
+msgid "Navigate to Service Offerings and choose Network OfferingPublic IP Addresses."
 msgstr "下拉选择方案，选择网络方案："
 
 # 08107e25d3ae4ed5a4e72a9ef68249af

@@ -190,7 +190,7 @@ the file will look like this:
 
    yum: name=libselinux-python state=present
 
-   - name: Ensure cloudstack specfic my.cnf lines are present
+   - name: Ensure cloudstack specific my.cnf lines are present
 
    lineinfile: dest=/etc/my.cnf regexp=’$item’ insertafter=”symbolic-links=0″ line=’$item’ 
 

@@ -29,7 +29,7 @@ their own S3 storage areas.
 Compatibility
 ~~~~~~~~~~~~~
 
-The following table shows the compatiblity of Cloudian Connector with CloudStack.
+The following table shows the compatibility of Cloudian Connector with CloudStack.
 
 .. cssclass:: table-striped table-bordered table-hover
 

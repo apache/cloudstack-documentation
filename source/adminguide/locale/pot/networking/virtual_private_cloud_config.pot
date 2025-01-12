@@ -1547,7 +1547,7 @@ msgstr ""
 #: ../../networking/virtual_private_cloud_config.rst:1165
 # 2e6d402ef3d044488597c6501ca6749d
 # f974a014675745ceae4ebb19113bc49e
-msgid "Naviagte to Service Offerings and choose Network OfferingPublic IP Addresses."
+msgid "Navigate to Service Offerings and choose Network OfferingPublic IP Addresses."
 msgstr ""
 
 #: ../../networking/virtual_private_cloud_config.rst:961

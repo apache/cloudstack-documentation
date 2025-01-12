@@ -601,6 +601,6 @@ Attaching an ISO to a Instance
 .. |template-permissions-update-4.png| image:: /_static/images/template-permissions-update-4.png
    :alt: Revoking permsissons from both projects previously added
 .. |template-permissions-update-5.png| image:: /_static/images/template-permissions-update-5.png
-   :alt: Reseting (removing all) permissions
+   :alt: Resetting (removing all) permissions
 .. |iso.png| image:: /_static/images/iso-icon.png
    :alt: depicts adding an iso image
