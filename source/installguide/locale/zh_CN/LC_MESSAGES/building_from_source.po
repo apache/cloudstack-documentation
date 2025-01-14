@@ -296,7 +296,7 @@ msgid ""
 "While we have defined, and you have presumably already installed the "
 "bootstrap prerequisites, there are a number of build time prerequisites that"
 " need to be resolved. CloudStack uses maven for dependency resolution. You "
-"can resolve the buildtime depdencies for CloudStack by running:"
+"can resolve the buildtime dependencies for CloudStack by running:"
 msgstr "虽然我们做了一些定义，并且可能已经安装了引导的前提条件，但仍有一些在编译时需要解决的先决条件。CloudStack使用Maven进行依赖性解析。您可以通过运行以下命令，来解决编译CloudStack时的依赖性："
 
 # 7e08137b290649cda9b8e9b728ff33aa

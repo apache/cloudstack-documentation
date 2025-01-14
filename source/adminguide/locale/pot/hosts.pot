@@ -262,7 +262,7 @@ msgstr ""
 
 #: ../../hosts.rst:171
 # 400a182ceace4cef87ffe6c731ea45cd
-msgid "Then you may power down the Host, re-use its IP address, re-install it, etc"
+msgid "Then you may power down the Host, reuse its IP address, re-install it, etc"
 msgstr ""
 
 #: ../../hosts.rst:176
@@ -545,7 +545,7 @@ msgstr ""
 
 #: ../../hosts.rst:410
 # 4574765089c64df0a53ffd4b0d9052a0
-msgid "Fill in your desired over-provisioning multipliers in the fields CPU overcommit factor and RAM overcommit factor. The value which is intially shown in these fields is the default value inherited from the global configuration settings."
+msgid "Fill in your desired over-provisioning multipliers in the fields CPU overcommit factor and RAM overcommit factor. The value which is initially shown in these fields is the default value inherited from the global configuration settings."
 msgstr ""
 
 #: ../../hosts.rst:421
@@ -772,7 +772,7 @@ msgstr ""
 
 #: ../../hosts.rst:530
 # 47af367fd0e74e9c98c07d5fd93d9a6a
-msgid "The former behaviour also is supported — VLAN is randomly allocated to a network from the VNET range of the physical network when the network turns to Implemented state. The VLAN is released back to the VNET pool when the network shuts down as a part of the Network Garbage Collection. The VLAN can be re-used either by the same network when it is implemented again, or by any other network. On each subsequent implementation of a network, a new VLAN can be assigned."
+msgid "The former behaviour also is supported — VLAN is randomly allocated to a network from the VNET range of the physical network when the network turns to Implemented state. The VLAN is released back to the VNET pool when the network shuts down as a part of the Network Garbage Collection. The VLAN can be reused either by the same network when it is implemented again, or by any other network. On each subsequent implementation of a network, a new VLAN can be assigned."
 msgstr ""
 
 #: ../../hosts.rst:538

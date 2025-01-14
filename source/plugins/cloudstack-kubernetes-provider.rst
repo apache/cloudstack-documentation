@@ -34,7 +34,7 @@ The Prebuilt containers are available on `Docker Hub <https://hub.docker.com/r/a
 
 Deployment
 ----------
-The CloudStack Kubernetes Provider is automatically deployed when a Kuberentes Cluster is
+The CloudStack Kubernetes Provider is automatically deployed when a Kubernetes Cluster is
 created on CloudStack 4.16+
 
 In order to communicate with CloudStack, a separate service user **kubeadmin** is created
@@ -171,7 +171,7 @@ on the cluster nodes.
 
       |cks-addfirewall.png|
 
-      4. Add a loadbalancer rule mentioning the private node port and add the corresponding kubenetes worker node.
+      4. Add a loadbalancer rule mentioning the private node port and add the corresponding kubernetes worker node.
 
       |cks-addloadbalancer.png|
 

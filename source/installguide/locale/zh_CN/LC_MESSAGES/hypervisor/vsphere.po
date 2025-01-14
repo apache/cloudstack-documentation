@@ -101,7 +101,7 @@ msgstr "所有主机必须为64位架构并且支持HVM(启用Intel-VT或AMD-V)�
 # 0a5dabc432dc454396baf7e656897fe6
 #: ../../hypervisor/vsphere.rst:66
 msgid ""
-"All hosts within a cluster must be homogenous. That means the CPUs must be "
+"All hosts within a cluster must be homogeneous. That means the CPUs must be "
 "of the same type, count, and feature flags."
 msgstr "同一群集中的所有节点必须为同一架构。CPU型号、数量和功能参数必须相同。"
 
@@ -203,7 +203,7 @@ msgstr "必须配置vCenter使用443端口与CloudStack管理服务器通讯。"
 # 311e91fb341e4d30a649ba13d80e2e72
 #: ../../hypervisor/vsphere.rst:114
 msgid ""
-"You must re-install VMware ESXi if you are going to re-use a host from a "
+"You must re-install VMware ESXi if you are going to reuse a host from a "
 "previous install."
 msgstr "如果你计划利用之前安装的主机，那么必须重新安装VMware ESXi。"
 
@@ -1042,7 +1042,7 @@ msgstr ""
 msgid ""
 "**Management IP Address** This is the IP address of the VSM appliance. This "
 "is the IP address you specify in the virtual switch IP Address field while "
-"configuting Nexus virtual switch."
+"configuring Nexus virtual switch."
 msgstr ""
 
 # 26a1722f2c004284958a7d40035272d8
@@ -1050,7 +1050,7 @@ msgstr ""
 msgid ""
 "**SSL** Should be set to Enable.Always enable SSL. SSH is usually enabled by"
 " default during the VSM installation. However, check whether the SSH "
-"connection to the VSM is working, without which CloudStack failes to connect"
+"connection to the VSM is working, without which CloudStack fails to connect"
 " to the VSM."
 msgstr ""
 

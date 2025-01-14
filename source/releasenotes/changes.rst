@@ -360,7 +360,7 @@ to track its issues.
 +-------------------------+----------+------------------------------------------------------------+
 | 4.20.0.0                | `#9434`_ | Fixup CKS UI for external managed clusters                 |
 +-------------------------+----------+------------------------------------------------------------+
-| 4.20.0.0                | `#9458`_ | UI: Display Firewall, LB and Port Forwading rules tab for  |
+| 4.20.0.0                | `#9458`_ | UI: Display Firewall, LB and Port Forwarding rules tab for  |
 |                         |          | CKS clusters deployed on isolated networks                 |
 +-------------------------+----------+------------------------------------------------------------+
 | 4.20.0.0                | `#9442`_ | Fix removal of usage records                               |

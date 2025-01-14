@@ -292,7 +292,7 @@ Working with Project Roles
 --------------------------
 CloudStack allows adding project members with a desired project role. A
 project role will be assigned to the member in addition to their base
-account role. Project Roles are retrictive in nature and can be used to
+account role. Project Roles are restrictive in nature and can be used to
 further restrict certain API access to the members within the project.
 It is important to note that a project role cannot be used to elevate an
 existing user's permissions. Project roles can be created or managed

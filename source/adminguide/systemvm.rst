@@ -228,7 +228,7 @@ When ‘consoleproxy.extra.security.validation.enabled’ is false: then CloudSt
 does not require a token for validation.
 
 The websocket port is passed as a boot argument to the console proxy and the 
-management server decides between the secure or unsecure port (8443 or 8080) when 
+management server decides between the secure or insecure port (8443 or 8080) when
 setting the boot arguments for the CPVM.
 
 - The secure port 8443 is sent as a boot argument when:

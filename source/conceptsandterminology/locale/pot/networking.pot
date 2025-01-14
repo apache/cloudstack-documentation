@@ -744,7 +744,7 @@ msgstr ""
 
 #: ../../networking/nicira-plugin.rst:7
 # 0c134c3d04de4ba49f31e0c3f0108144
-msgid "The Nicira NVP plugin adds Nicira NVP as one of the available SDN implementations in CloudStack. With the plugin an exisiting Nicira NVP setup can be used by CloudStack to implement isolated guest networks and to provide additional services like routing and NAT."
+msgid "The Nicira NVP plugin adds Nicira NVP as one of the available SDN implementations in CloudStack. With the plugin an existing Nicira NVP setup can be used by CloudStack to implement isolated guest networks and to provide additional services like routing and NAT."
 msgstr ""
 
 #: ../../networking/nicira-plugin.rst:13
@@ -1810,7 +1810,7 @@ msgstr ""
 
 #: ../../networking/vxlan.rst:152
 # 6856ea7ca74549fb91a97823fda39f40
-msgid "This plugin requires an IPv4 address on the KVM host to terminate and originate VXLAN traffic. The address should be assinged to a physical interface or a bridge interface bound to a physical interface. Both a private address or a public address are fine for the purpose. It is not required to be in the same subnet for all hypervisors in a zone, but they should be able to reach each other via IP multicast with UDP/8472 port. A name of a physical interface or a name of a bridge interface bound to a physical interface can be used as a traffic label. Physical interface name fits for almost all cases, but if physical interface name differs per host, you may use a bridge to set a same name. If you would like to use a bridge name as a traffic label, you may create a bridge in this way."
+msgid "This plugin requires an IPv4 address on the KVM host to terminate and originate VXLAN traffic. The address should be assigned to a physical interface or a bridge interface bound to a physical interface. Both a private address or a public address are fine for the purpose. It is not required to be in the same subnet for all hypervisors in a zone, but they should be able to reach each other via IP multicast with UDP/8472 port. A name of a physical interface or a name of a bridge interface bound to a physical interface can be used as a traffic label. Physical interface name fits for almost all cases, but if physical interface name differs per host, you may use a bridge to set a same name. If you would like to use a bridge name as a traffic label, you may create a bridge in this way."
 msgstr ""
 
 #: ../../networking/vxlan.rst:165
@@ -1866,7 +1866,7 @@ msgstr ""
 
 #: ../../networking/vxlan.rst:298
 # 494b6216726d4b41ac1143c03c93ede2
-msgid "These iptable settings are not persistent accross reboots, we have to save them first."
+msgid "These iptable settings are not persistent across reboots, we have to save them first."
 msgstr ""
 
 #: ../../networking/vxlan.rst:306

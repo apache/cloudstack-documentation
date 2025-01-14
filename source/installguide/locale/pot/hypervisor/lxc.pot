@@ -80,7 +80,7 @@ msgstr ""
 
 #: ../../hypervisor/lxc.rst:52
 # 9a162b24f7fd499c9793ac22d8cd360f
-msgid "All hosts within a cluster must be homogenous. The CPUs must be of the same type, count, and feature flags."
+msgid "All hosts within a cluster must be homogeneous. The CPUs must be of the same type, count, and feature flags."
 msgstr ""
 
 #: ../../hypervisor/lxc.rst:55
@@ -230,7 +230,7 @@ msgstr ""
 
 #: ../../hypervisor/lxc.rst:160
 # 04df1ba82d804c3e93844dbf7cdd829d
-msgid "Next step is to update the Agent configuration setttings. The settings are in ``/etc/cloudstack/agent/agent.properties``"
+msgid "Next step is to update the Agent configuration settings. The settings are in ``/etc/cloudstack/agent/agent.properties``"
 msgstr ""
 
 #: ../../hypervisor/lxc.rst:163
@@ -262,7 +262,7 @@ msgstr ""
 
 #: ../../hypervisor/lxc.rst:197
 # f54bd7715b5441f687683613bff00956
-msgid "In order to have live migration working libvirt has to listen for unsecured TCP connections. We also need to turn off libvirts attempt to use Multicast DNS advertising. Both of these settings are in ``/etc/libvirt/libvirtd.conf``"
+msgid "In order to have live migration working libvirt has to listen for insecured TCP connections. We also need to turn off libvirts attempt to use Multicast DNS advertising. Both of these settings are in ``/etc/libvirt/libvirtd.conf``"
 msgstr ""
 
 #: ../../hypervisor/lxc.rst:202
@@ -591,7 +591,7 @@ msgstr ""
 
 #: ../../hypervisor/lxc.rst:623
 # d20a63121d8d4a90b51c2e5eb1dc1b8e
-msgid "These iptable settings are not persistent accross reboots, we have to save them first."
+msgid "These iptable settings are not persistent across reboots, we have to save them first."
 msgstr ""
 
 #: ../../hypervisor/lxc.rst:632

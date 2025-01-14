@@ -103,7 +103,7 @@ Create bridge interface with IPv4 address
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This plugin requires an IPv4 address on the KVM host to terminate and
-originate VXLAN traffic. The address should be assinged to a physical
+originate VXLAN traffic. The address should be assigned to a physical
 interface or a bridge interface bound to a physical interface. Both a
 private address or a public address are fine for the purpose. It is not
 required to be in the same subnet for all hypervisors in a zone, but
@@ -221,7 +221,7 @@ you would change the configuration similar to below.
    # Private network
    auto cloudbr1
    iface cloudbr1 inet static
-       addres 192.0.2.X
+       address 192.0.2.X
        netmask 255.255.255.0
        bridge_ports eth0.300
        bridge_fd 5
@@ -355,7 +355,7 @@ BGP and EVPN in the upstream network
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 This documentation does not cover configuring BGP and EVPN in the upstream network.
 
-This will differ per network and is therefor difficult to capture in this documentation. A couple of key items though:
+This will differ per network and is therefore difficult to capture in this documentation. A couple of key items though:
 
 - Each hypervisor with establish eBGP session(s) with the Top-of-Rack router(s) in it is rack
 - These Top-of-Rack devices will connect to (a) Spine router(s)

@@ -78,7 +78,7 @@ msgstr ""
 
 #: ../../hypervisor/vsphere.rst:66
 # 0a5dabc432dc454396baf7e656897fe6
-msgid "All hosts within a cluster must be homogenous. That means the CPUs must be of the same type, count, and feature flags."
+msgid "All hosts within a cluster must be homogeneous. That means the CPUs must be of the same type, count, and feature flags."
 msgstr ""
 
 #: ../../hypervisor/vsphere.rst:69
@@ -163,7 +163,7 @@ msgstr ""
 
 #: ../../hypervisor/vsphere.rst:114
 # 311e91fb341e4d30a649ba13d80e2e72
-msgid "You must re-install VMware ESXi if you are going to re-use a host from a previous install."
+msgid "You must re-install VMware ESXi if you are going to reuse a host from a previous install."
 msgstr ""
 
 #: ../../hypervisor/vsphere.rst:117
@@ -830,12 +830,12 @@ msgstr ""
 
 #: ../../hypervisor/vsphere.rst:507
 # c42b39990d6e4d0589467d0a4ff5be4c
-msgid "**Management IP Address** This is the IP address of the VSM appliance. This is the IP address you specify in the virtual switch IP Address field while configuting Nexus virtual switch."
+msgid "**Management IP Address** This is the IP address of the VSM appliance. This is the IP address you specify in the virtual switch IP Address field while configuring Nexus virtual switch."
 msgstr ""
 
 #: ../../hypervisor/vsphere.rst:512
 # 26a1722f2c004284958a7d40035272d8
-msgid "**SSL** Should be set to Enable.Always enable SSL. SSH is usually enabled by default during the VSM installation. However, check whether the SSH connection to the VSM is working, without which CloudStack failes to connect to the VSM."
+msgid "**SSL** Should be set to Enable.Always enable SSL. SSH is usually enabled by default during the VSM installation. However, check whether the SSH connection to the VSM is working, without which CloudStack fails to connect to the VSM."
 msgstr ""
 
 #: ../../hypervisor/vsphere.rst:519

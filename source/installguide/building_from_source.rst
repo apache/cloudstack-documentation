@@ -267,7 +267,7 @@ several other dependencies. Note that we recommend using Maven 3.
 While we have defined, and you have presumably already installed the
 bootstrap prerequisites, there are a number of build time prerequisites
 that need to be resolved. CloudStack uses maven for dependency
-resolution. You can resolve the buildtime depdencies for CloudStack by
+resolution. You can resolve the buildtime dependencies for CloudStack by
 running:
 
 .. parsed-literal::

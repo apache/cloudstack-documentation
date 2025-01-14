@@ -154,7 +154,7 @@ In Apache CloudStack 4.19 and prior, cloud operators are only able to set tags o
 
 Implicit host tags feature is supported since Apache CloudStack 4.20. With the feature, Cloud operators can easily set the
 implicit host tags per host based on the server configurations. For example, based on the following hardware devices and
-softwares which can be fetched by commands, scripts or tools:
+software which can be fetched by commands, scripts or tools:
 
 - CPU architecture and model
 - Network card type and speed

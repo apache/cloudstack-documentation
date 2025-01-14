@@ -83,7 +83,7 @@ msgstr ""
 
 #: ../../hypervisor/kvm.rst:52
 # fc001eaf8fb842d7adbbf5bb977be8fd
-msgid "All hosts within a cluster must be homogenous. The CPUs must be of the same type, count, and feature flags."
+msgid "All hosts within a cluster must be homogeneous. The CPUs must be of the same type, count, and feature flags."
 msgstr ""
 
 #: ../../hypervisor/kvm.rst:55
@@ -320,7 +320,7 @@ msgstr ""
 
 #: ../../hypervisor/kvm.rst:243
 # ed8dd766459147cbb85ff50d90c4b80e
-msgid "In order to have live migration working libvirt has to listen for unsecured TCP connections. We also need to turn off libvirts attempt to use Multicast DNS advertising. Both of these settings are in ``/etc/libvirt/libvirtd.conf``"
+msgid "In order to have live migration working libvirt has to listen for insecured TCP connections. We also need to turn off libvirts attempt to use Multicast DNS advertising. Both of these settings are in ``/etc/libvirt/libvirtd.conf``"
 msgstr ""
 
 #: ../../hypervisor/kvm.rst:248
@@ -735,7 +735,7 @@ msgstr ""
 
 #: ../../hypervisor/kvm.rst:836
 # f47cb1aac5b0422ea1409fd01b64e2db
-msgid "These iptable settings are not persistent accross reboots, we have to save them first."
+msgid "These iptable settings are not persistent across reboots, we have to save them first."
 msgstr ""
 
 #: ../../hypervisor/kvm.rst:845
