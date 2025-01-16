@@ -57,7 +57,7 @@ machines:
 -  Specify a valid Guest instance CIDR. IP Reservation is applied only if no
    active IPs exist outside the Guest instance CIDR.
 
-   You cannot apply IP Reservation if any instance is alloted with an IP
+   You cannot apply IP Reservation if any instance is allotted with an IP
    address that is outside the Guest instance CIDR.
 
 -  To reset an existing IP Reservation, apply IP reservation by

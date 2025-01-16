@@ -136,7 +136,7 @@ in a private Zone, it is available only to Users in the domain assigned
 to that Zone. If a public Template is created in a public Zone, it is
 available to all Users in all domains.
 
-
+.. _creating-a-template-from-an-existing-virtual-machine:
 Creating a Template from an Existing Instance
 ---------------------------------------------
 
@@ -601,4 +601,6 @@ Attaching an ISO to a Instance
 .. |template-permissions-update-4.png| image:: /_static/images/template-permissions-update-4.png
    :alt: Revoking permsissons from both projects previously added
 .. |template-permissions-update-5.png| image:: /_static/images/template-permissions-update-5.png
-   :alt: Reseting (removing all) permissions
+   :alt: Resetting (removing all) permissions
+.. |iso.png| image:: /_static/images/iso-icon.png
+   :alt: depicts adding an iso image

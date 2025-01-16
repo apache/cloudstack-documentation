@@ -174,7 +174,7 @@ Resources within the cloud are managed as follows:
 -  Pods: A pod is usually a rack, or row of racks that includes a layer-2
    switch and one or more clusters.
 
--  Clusters: A cluster consists of one or more homogenous hosts and primary
+-  Clusters: A cluster consists of one or more homogeneous hosts and primary
    storage.
 
 -  Host: A single compute node within a cluster; often a hypervisor.

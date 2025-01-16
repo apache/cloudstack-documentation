@@ -31,7 +31,7 @@ The following providers are currently supported:
 - KVM with NAS B&R Plugin (4.20 onwards)
 
 See the Veeam Backup and Recovery plugin documentation for plugin specific information.
-:ref:`Veeam Backup and Recovery Plugin`
+:ref:`Veeam Backup and Replication Plugin`
 
 See the DELL EMC Networker Backup and Recovery plugin documentation for plugin specific information.
 :ref:`DELL EMC Networker Backup and Recovery Plugin`
@@ -92,7 +92,7 @@ Backup Offerings
 ------------------
 
 Admins can import an external provider's backup offerings using UI or API for a
-particular zone, as well as manage a backup offering's lifecyle. Admins can also
+particular zone, as well as manage a backup offering's lifecycle. Admins can also
 specify if a backup offering allows user-defined backup schedules and ad-hoc
 backups. Users can list and consume the imported backup offerings, only root admins can import or
 delete offerings.

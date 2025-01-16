@@ -277,7 +277,7 @@ and secondary storage.
       VPN, or load balancer support.
 
    -  **Security Groups.** You can choose to enable Security Groups in your zone.
-      For further informations regarding Security Groups and there prequesits
+      For further information regarding Security Groups and there prequesits
       please refer to the Security Groups section in the documentation.
 
 #. The rest of the steps differ depending on whether you chose Basic or
@@ -637,6 +637,8 @@ Core Zone
 
    -  **VLAN / VNI ID.** The VLAN / VNI ID's that will be used for guest traffic.
 
+.. note:: If the VNI is of a VXLAN, the protocol prefix `vxlan://` must be used, like in `vxlan://<vni>`
+
 #. In a new pod, CloudStack adds the first cluster for you. You can
    always add more clusters later. For an overview of what a cluster is,
    see :ref:`about-clusters`
@@ -669,7 +671,7 @@ Core Zone
 
    -  **Host Name.** (Obligatory) The DNS name or IP address of the host.
 
-   -  **Username.** (Obligatory) Username of a user who has administrator / root privilidges on
+   -  **Username.** (Obligatory) Username of a user who has administrator / root privileges on
       the specified host (using Linux-hosts usually root).
 
    -  **Password.** (Obligatory) This is the password for the user named above (from
@@ -805,7 +807,7 @@ To work with limited compute resources, an Edge zone will not deploy system VMs.
 
    -  **Host Name.** (Obligatory) The DNS name or IP address of the host.
 
-   -  **Username.** (Obligatory) Username of a user who has administrator / root privilidges on the specified host (using Linux-hosts usually root).
+   -  **Username.** (Obligatory) Username of a user who has administrator / root privileges on the specified host (using Linux-hosts usually root).
 
    -  **Authentication.** Atuthentication type used for the host, either Password or System SSH Key.
 
@@ -1005,7 +1007,7 @@ XenServer and KVM hosts can be added to a cluster at any time.
 
 
 Requirements for XenServer and KVM Hosts
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+****************************************
 
 .. warning::
    Make sure the hypervisor host does not have any instances already running before
@@ -1026,7 +1028,7 @@ hypervisor in the CloudStack Installation Guide.
    Since CloudStack 4.20.0, the host arch type is auto detected when adding the host into CloudStack and it must match the cluster arch type for the operation to succeed.
 
 XenServer Host Additional Requirements
-''''''''''''''''''''''''''''''''''''''
+**************************************
 
 If network bonding is in use, the administrator must cable the new host
 identically to other hosts in the cluster.
@@ -1060,7 +1062,7 @@ bonds on the new hosts in the cluster.
 
 
 KVM Host Additional Requirements
-''''''''''''''''''''''''''''''''
+********************************
 
 -  If shared mountpoint storage is in use, the administrator should
    ensure that the new host has all the same mountpoints (with storage
@@ -1082,7 +1084,7 @@ KVM Host Additional Requirements
      defaults:cloudstack !requiretty
 
 Adding a XenServer Host
-^^^^^^^^^^^^^^^^^^^^^^^
+***********************
 
 #. If you have not already done so, install the hypervisor software on
    the host. You will need to know which version of the hypervisor
@@ -1126,7 +1128,7 @@ Adding a XenServer Host
 
 
 Adding a KVM Host
-^^^^^^^^^^^^^^^^^
+*****************
 
 The steps to add a KVM host are same as adding a XenServer Host as mentioned in
 the above section.
@@ -1317,7 +1319,7 @@ ever one) CloudStack volume, so performance of the CloudStack volume
 does not vary depending on how heavily other tenants are using the
 system.
 
-The createStoragePool API has been augmented to support plugable storage
+The createStoragePool API has been augmented to support pluggable storage
 providers. The following is a list of parameters to use when adding
 storage to CloudStack that is based on the SolidFire plug-in:
 
@@ -1389,7 +1391,7 @@ so performance of the CloudStack volume does not vary depending on how heavily o
 tenants are using the system. This volume migration is supported across PowerFlex storage
 pools only, which are on same or distinct storage instance.
 
-The createStoragePool API has been augmented to support plugable storage
+The createStoragePool API has been augmented to support pluggable storage
 providers. The following is a list of parameters to use when adding
 storage to CloudStack that is based on the PowerFlex plug-in:
 
@@ -1411,7 +1413,7 @@ storage to CloudStack that is based on the PowerFlex plug-in:
 
 -  url=[storage pool url]
 
-The url parameter contains the PowerFlex storage pool details, specifed
+The url parameter contains the PowerFlex storage pool details, specified
 in the following format:
 
 powerflex://<API_USER>:<API_PASSWORD>@<GATEWAY>/<STORAGEPOOL>
@@ -1440,12 +1442,12 @@ leads to the dynamic creation of a StorPool volume, which has guaranteed
 performance. Such a StorPool volume is associated with one CloudStack volume,
 so performance of the CloudStack volume does not vary depending on how
 heavily other tenants are using the system. The volume migration is supported
-accross non-managed storage pools (e.g. NFS/Local storage/Ceph) to StorPool, and
-accross StorPool storage pools.
+across non-managed storage pools (e.g. NFS/Local storage/Ceph) to StorPool, and
+across StorPool storage pools.
 
 More technical details could be found on `StorPool Knowledge Base <https://kb.storpool.com/>`_.
 
-The createStoragePool API has been augmented to support plugable storage providers.
+The createStoragePool API has been augmented to support pluggable storage providers.
 The following is a list of parameters to use when adding storage to CloudStack that is based on the StorPool plug-in:
 
 command=createStoragePool
@@ -1487,7 +1489,7 @@ This documentation assumes you have the following configured in your environment
 - FiberChannel fabric and connectivity to every KVM host where volumes  be attached to virtual machines.
 - Host definitions in the Primera Array that match the name of the hostwill in CloudStack.  This can be fully-qualified or just the hostname.
 - Hostset defined to match the group of hosts associated with the Cloudstack cluster.
-- Username and password to access the API with at least Edit privleges.
+- Username and password to access the API with at least Edit privileges.
 - CPG (Common Provisioning Group) defined in the HPE Primera storage system where volumes and snapshots can be provisioned.
 
 When this storage pool is used with Compute or Disk Offerings, an administrator is
@@ -1500,7 +1502,7 @@ HPE Primera Storage provider implementations, between HPE Primera Storage Pools 
 NFS Storage Pools, and between other providers that support cross-provider volume migration.
 
 The createStoragePool API can be used to configure an HPE Primera storage pool with the
-following paramaters:
+following parameters:
 
 -  command=createStoragePool
 -  scope=[zone | cluster].  Note this must match your Hostset configuration (below)
@@ -1510,10 +1512,10 @@ following paramaters:
 -  name=[name for primary storage]
 -  hypervisor=KVM
 -  provider=Primera
--  capacitybytes=The total capacity bytes avialable to the pool (before overprovisioning configuration is applied).  If provided, this must be less than the total available capacity of the CPG on the storage system.  If its not provided, defaults to the CPG maximum space.
+-  capacitybytes=The total capacity bytes available to the pool (before overprovisioning configuration is applied).  If provided, this must be less than the total available capacity of the CPG on the storage system.  If its not provided, defaults to the CPG maximum space.
 -  url=[url to storage system]
 
-The url parameter contains the HPE Primera storage pool details, specifed
+The url parameter contains the HPE Primera storage pool details, specified
 in the following format:
 
 https://<API_USER>:<API_PASSWORD>@<STORAGEIPORHOST>:<STORAGEPORT>/api/v1?cpg=<CPGNAME>&hostset=<HOSTSETNAME>&api_skiptlsvalidation=<true|false>"
@@ -1531,7 +1533,7 @@ When a volume is created by the plugin, it will create bi-directional mappings i
    -  vol: A root or data volume
    -  snap: A snapshot volume
    -  tpl: A template spooled to the storage device
--  Each volume's description field in the HPE Primera storage system will have a formatted key/value pair with metadata mappings for the Cloudstack volume defintion (user volume name, volume uuid, account/project information)
+-  Each volume's description field in the HPE Primera storage system will have a formatted key/value pair with metadata mappings for the Cloudstack volume definition (user volume name, volume uuid, account/project information)
 -  Each virtual volume's WWID will be stored in the volume's path field in Cloudstack
 
 Pure Flasharray API
@@ -1545,7 +1547,7 @@ This documentation assumes you have the following configured in your environment
 - FiberChannel fabric and connectivity to every KVM host where volumes will be attached to virtual machines.
 - Host definitions in the Pure Flasharray that match the name of the host in CloudStack.  This can be fully-qualified or just the hostname.
 - Hostgroup defined to match the group of hosts associated with the Cloudstack cluster.
-- Username and password to access the API with at least Edit privleges.
+- Username and password to access the API with at least Edit privileges.
 - Pure Flasharray pod defined in the HPE Primera storage system where volumes and snapshots can be provisioned.  NOTE: This "pod" is not the same as a "pod" in Cloudstack.
 
 When this storage pool is used with Compute or Disk Offerings, an administrator is
@@ -1558,7 +1560,7 @@ Pure Flasharray Storage provider implementations, between Pure Flasharray Storag
 NFS Storage Pools, and between other providers that support cross-provider volume migration.
 
 The createStoragePool API can be used to configure an Pure Flasharray storage pool with the
-following paramaters:
+following parameters:
 
 -  command=createStoragePool
 -  scope=[zone | cluster].  Note this must match your Hostset configuration (below)
@@ -1571,7 +1573,7 @@ following paramaters:
 -  capacitybytes=The total capacity bytes available to the pool (before overprovisioning configuration is applied).  If provided, this must be less than the total available capacity of the Flasharray pod on the storage system.  If its not provided, defaults to the Flasharray pod maximum space.
 -  url=[url to storage system]
 
-The url parameter contains the Pure Flasharray storage pool details, specifed
+The url parameter contains the Pure Flasharray storage pool details, specified
 in the following format:
 
 https://<API_USER>:<API_PASSWORD>@<STORAGE_IP_OR_HOST>:<STORAGE_PORT>/api?pod=<STORAGE_POD_NAME>&hostgroup=<STORAGE_HOSTGROUP_NAME>&api_skiptlsvalidation=<true|false>"
@@ -1590,7 +1592,7 @@ When a volume is created by the plugin, it will create bi-directional mappings i
    -  vol: A root or data volume
    -  snap: A snapshot volume
    -  tpl: A template spooled to the storage device
--  Each volume's description field in the Pure Flasharray storage system will have a formatted key/value pair with metadata mappings for the Cloudstack volume defintion (user volume name, volume uuid, account/project information)
+-  Each volume's description field in the Pure Flasharray storage system will have a formatted key/value pair with metadata mappings for the Cloudstack volume definition (user volume name, volume uuid, account/project information)
 -  Each virtual volume's WWID will be stored in the volume's path field in Cloudstack
 
 .. _add-secondary-storage:
@@ -1717,7 +1719,7 @@ zone:
    -  Path. The path to the zone's Secondary Staging Store.
 
 
-Adding Object Storage
+Add Object Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can add  object storage pools at any time to add more capacity or providers to CloudStack

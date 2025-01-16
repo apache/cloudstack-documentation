@@ -20,7 +20,7 @@ Isolation in Advanced Zone Using Private VLANs
 About PVLANs (Secondary VLANs)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The clasic use-case for PVLANs is a shared backup network, where you wish all users'
+The classic use-case for PVLANs is a shared backup network, where you wish all users'
 hosts to be able to communicate with a backup host, but not with each other.
 
    |pvlans.png|

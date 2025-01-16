@@ -41,7 +41,7 @@ Supported Versions
 +--------------+----------------------+--------------------+
 | Hypervisor   | CloudStack Version   | VMware NSX Version |
 +==============+======================+====================+
-| VMware       | >= 4.20              | 4.1                |
+| VMware       | >= 4.20              | 4.1.0              |
 +--------------+----------------------+--------------------+
 
 Table: Supported Versions
@@ -59,7 +59,7 @@ Prior to creating the zone, ensure that the global setting: 'vmware.management.p
 Zone creation
 ~~~~~~~~~~~~~
 
-For an NSX-based zone, the administrator will have to create atleast 2 physical networks, one for Public and Guest networks with **NSX** isolation method and one for Management (and / or storage networks),
+For an NSX-based zone, the administrator will have to create at least 2 physical networks, one for Public and Guest networks with **NSX** isolation method and one for Management (and / or storage networks),
 which uses VLAN isolation method.
 
 **Physical network for Public and Guest traffic:**
@@ -68,7 +68,7 @@ which uses VLAN isolation method.
    vSwitch type: distributed virtual switch (dvSwitch)
    vSwitch name: name of the dvSwitch to handle NSX traffic 
 
-**Phsyical network for Management traffic:**
+**Physical network for Management traffic:**
    Isolation method: VLAN
    VLAN ID: ID for Management traffic
    vSwitch type: distributed virtual switch (dvSwitch)
@@ -200,13 +200,13 @@ When the first VM is created on the network tier, CloudStack creates the followi
 
 .. note::
 
-The following notations were used in the above section: 
+    The following notations were used in the above section:
 
-   - d_id: the 'id' column on the 'domain' table for the caller domain 
-   - a_id: the 'id' column of the 'accounts' table for the owner account 
-   - z_id: the 'id' column of the 'datacenter' table for the zone 
-   - v_id: the 'id' column of the 'vpcs' table for the new VPC being created 
-   - s_id: the 'id' column of the 'networks' table for the network tier being created 
+       - d_id: the 'id' column on the 'domain' table for the caller domain
+       - a_id: the 'id' column of the 'accounts' table for the owner account
+       - z_id: the 'id' column of the 'datacenter' table for the zone
+       - v_id: the 'id' column of the 'vpcs' table for the new VPC being created
+       - s_id: the 'id' column of the 'networks' table for the network tier being created
 
 
 CKS on NSX
