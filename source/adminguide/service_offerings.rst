@@ -618,13 +618,11 @@ To create a system service offering:
 Network Throttling
 ------------------
 
-Network throttling is the process of controlling the network access and
-bandwidth usage based on certain rules. CloudStack controls this
+Network throttling is the process of controlling the network bandwith. CloudStack controls this
 behaviour of the guest networks in the cloud by using the network rate
 parameter. This parameter is defined as the default data transfer rate
 in Mbps (Megabits Per Second) allowed in a guest network. It defines the
-upper limits for network utilization. If the current utilization is
-below the allowed upper limits, access is granted, else revoked.
+upper limits for network bandwith.
 
 You can throttle the network bandwidth either to control the usage above
 a certain limit for some accounts, or to control network congestion in a

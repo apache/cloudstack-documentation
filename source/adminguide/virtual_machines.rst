@@ -541,8 +541,8 @@ Dynamic CPU and RAM scaling can be used in the following cases:
    update them using the following procedure.
 
 
-Updating Existing Instances
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Enable Dynamic Scaling for Existing Instances
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you are upgrading from a previous version of CloudStack, and you want
 your existing Instances created with previous versions to have the dynamic
