@@ -136,7 +136,7 @@ in a private Zone, it is available only to Users in the domain assigned
 to that Zone. If a public Template is created in a public Zone, it is
 available to all Users in all domains.
 
-
+.. _creating-a-template-from-an-existing-virtual-machine:
 Creating a Template from an Existing Instance
 ---------------------------------------------
 

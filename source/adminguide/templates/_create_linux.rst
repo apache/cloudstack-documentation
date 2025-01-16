@@ -213,5 +213,4 @@ templating of Centos and Ubuntu.
 #. **Create the Template!**
 
    You are now ready to create the Final Template, for more information see
-   `“Creating a Template from an Existing Virtual
-   Machine” <#creating-a-template-from-an-existing-instance>`_.
+   :ref:`creating-a-template-from-an-existing-virtual-machine`.
