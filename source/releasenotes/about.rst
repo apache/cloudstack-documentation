@@ -51,3 +51,10 @@ Up until 4.19.x.x, the JRE used for ACS was JRE 11. In 4.20.0.0, JRE has been up
 This means that Centos7 (EL7) is no longer supported.
 
 .. _official Log4j documentation: https://logging.apache.org/log4j/2.x/migrate-from-log4j1.html
+
+Events Message Bus Change
+=========================
+On upgrading from 4.19.x or lower, existing AMQP or Kafka intergration
+configurations should be moved from folder
+``/etc/cloudstack/management/META-INF/cloudstack/core`` to
+``/etc/cloudstack/management/META-INF/cloudstack/event``
