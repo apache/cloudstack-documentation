@@ -16,14 +16,7 @@
 
 IPv6 Support in CloudStack
 ===========================
-
-CloudStack supports Internet Protocol version 6 (IPv6), the recent
-version of the Internet Protocol (IP) that defines routing the network
-traffic. IPv6 uses a 128-bit address that exponentially expands the
-current address space that is available to the users. IPv6 addresses
-consist of eight groups of four hexadecimal digits separated by colons,
-for example, 5001:0dt8:83a3:1012:1000:8s2e:0870:7454. CloudStack
-supports IPv6 for shared and isolated networks. It also supports IPv6 for VPC Network Tiers.
+CloudStack has limited IPv6 support. It supports IPv6 for shared and isolated networks. It also supports IPv6 for VPC Network Tiers.
 
 Shared network
 --------------
