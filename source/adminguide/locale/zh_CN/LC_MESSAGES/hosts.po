@@ -317,7 +317,7 @@ msgstr "使用UI选项来移除主机。"
 # 400a182ceace4cef87ffe6c731ea45cd
 #: ../../hosts.rst:171
 msgid ""
-"Then you may power down the Host, re-use its IP address, re-install it, etc"
+"Then you may power down the Host, reuse its IP address, re-install it, etc"
 msgstr "然后你可以关掉主机，重用它的IP地址，重新安装系统，等等。"
 
 # b9297a05564a41f8aa6995f8f1e2265a
@@ -702,7 +702,7 @@ msgstr "选择你要操作的群集，点击编辑按钮。"
 #: ../../hosts.rst:410
 msgid ""
 "Fill in your desired over-provisioning multipliers in the fields CPU "
-"overcommit factor and RAM overcommit factor. The value which is intially shown"
+"overcommit factor and RAM overcommit factor. The value which is initially shown"
 " in these fields is the default value inherited from the global "
 "configuration settings."
 msgstr "在CPU overcommit ratio和RAM overcommit ratio区域里填入你希望的超配系数。这里的初始值是从全局配置设置里继承而来的。"
@@ -988,7 +988,7 @@ msgid ""
 "network from the VNET range of the physical network when the network turns "
 "to Implemented state. The VLAN is released back to the VNET pool when the "
 "network shuts down as a part of the Network Garbage Collection. The VLAN can"
-" be re-used either by the same network when it is implemented again, or by "
+" be reused either by the same network when it is implemented again, or by "
 "any other network. On each subsequent implementation of a network, a new "
 "VLAN can be assigned."
 msgstr "同样被支持—当网络转换为运行状态是，VLAN是随机地通过物理网络的VNET范围分配给网络。当网络作为网络垃圾回收过程的一部分而关闭时，VLAN会被回收到VNET池。当网络再次启用的时候VLAN还能被其重用，或者其他网络使用。在每个新启用的网络中，都有一个新的VLAN被分配。"

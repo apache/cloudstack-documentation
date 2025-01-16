@@ -45,7 +45,7 @@ To register a new userdata:
 .. image:: /_static/images/register_userdata.png
    :width: 400px
    :align: center
-   :alt: Regiser userdata dialog box
+   :alt: Register userdata dialog box
 
 If userdata content has variables declared in it, user can register the Userdata
 with userdata parameters.
@@ -65,7 +65,7 @@ Userdata has to be registered with userdata parameter "variable1" like below
 .. image:: /_static/images/register_userdata_with_variables.png
    :width: 400px
    :align: center
-   :alt: Regiser userdata with variables dialog box
+   :alt: Register userdata with variables dialog box
 
 If the variables in userdata content are of a predefined metadata like "public_hostname"
 or "instance_id", then userdata parameters should not declare these variables. That is
@@ -250,7 +250,7 @@ This example uses cloud-init to automatically update all OS packages on the firs
       package_upgrade: true
       EOF
    
-#. Deploy an instance with this user-data either by providing the UUID of the registerd userdata
+#. Deploy an instance with this user-data either by providing the UUID of the registered userdata
    or by providing base64 encoded userdata:
 
    .. code:: bash

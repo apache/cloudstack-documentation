@@ -205,6 +205,19 @@ following techniques:
    updateVirtualMachine API. After installing the tools and updating the
    Instance, stop and start the Instance.
 
+Instance Metdata
+~~~~~~~~~~~~~~~~
+
+CloudStack provides different means for controlling an instance's metadata.
+
+-  'extraconfig' parameter of 'deployVirtualMachine' or 'updateVirtualMachine' API methods
+   can be used for setting different metadata parameters for an instance.
+-  Zone-level configurations - 'vm.metadata.manufacturer' and 'vm.metadata.product' can be used
+   to set the manufacturer and product respectively in the instance metadata. However, a
+   custom value for these parameters may affect cloud-init functionality for the instance
+   when used with CloudStack datasource. One of the requirement for cloud-init functionality
+   to work with CloudStack datasource is that product value should contain 'CloudStack'.
+
 
 Accessing Instances
 -------------------
@@ -1035,7 +1048,7 @@ like many other resources in CloudStack.
 KVM supports Instance Snapshots when using NFS shared storage. If raw block storage
 is used (i.e. Ceph), then Instance Snapshots are not possible, since there is no possibility
 to write RAM memory content anywhere. In such cases you can use as an alternative 
-`Storage-based VM Snapshots on KVM`_
+:ref:`Storage-based-Instance-Snapshots-on-KVM`.
 
 
 If you need more information about Instance Snapshots on VMware, check out the
@@ -1044,7 +1057,7 @@ VMware documentation and the VMware Knowledge Base, especially
 <http://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&externalId=1015180>`_.
 
 
-.. _`Storage-based Instance Snapshots on KVM`:
+.. _Storage-based-Instance-Snapshots-on-KVM:
 
 Storage-based Instance Snapshots on KVM
 ---------------------------------------

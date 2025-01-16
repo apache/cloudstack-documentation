@@ -3,7 +3,7 @@ Install new MySQL connector
 
 Starting with 4.9.0, cloudstack-management RPM's now depend on the
 ``mysql-connector-python`` package. Therefore Apache CloudStack 
-|release| requires the instalation of the MySQL connector on CentOS.
+|release| requires the installation of the MySQL connector on CentOS.
 
 
 MySQL connector RPM repository

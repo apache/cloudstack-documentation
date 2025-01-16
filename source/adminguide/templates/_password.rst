@@ -42,7 +42,7 @@ boot it will not set the password but boot will continue normally.
 
 
 Linux OS Installation
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 
 Use the following steps to begin the Linux OS installation:
 
@@ -78,7 +78,7 @@ Use the following steps to begin the Linux OS installation:
 
 
 Windows OS Installation
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Download the installer, CloudInstanceManager.msi, from the `Download
 page <http://sourceforge.net/projects/cloudstack/files/Password%20Management%20Scripts/CloudInstanceManager.msi/download>`_

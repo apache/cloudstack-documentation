@@ -33,7 +33,7 @@ support other shared storage such as CephFS and CIFS/Samba in future.
 
 When initiating B&R operations on KVM instance, the assigned backup offering
 is used to infer backup repository (NAS) details which are then used to mount
-the shared storage temporarily on the KVM host to peform instance backup/restore
+the shared storage temporarily on the KVM host to perform instance backup/restore
 disks operations. This also requires that admin installs NAS-storage specific
 utilities on the KVM hosts such as nfs-utils/nfs-common (ceph-common, cifs-utils).
 

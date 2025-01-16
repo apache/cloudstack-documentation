@@ -368,7 +368,7 @@ To create a new compute offering:
          -  **Custom IOPS** [1]_: If checked, the user can set their own IOPS. If not
             checked, the root administrator can define values. If the root
             admin does not set values when using storage QoS, default values
-            are used (the defauls can be overridden if the proper parameters
+            are used (the defaults can be overridden if the proper parameters
             are passed into CloudStack when creating the primary storage in
             question).
 
@@ -406,7 +406,7 @@ To create a new compute offering:
 
 
 
-.. [1] These options are dependant on the capabilities of the hypervisor or the shared storage system which the instances are on.
+.. [1] These options are dependent on the capabilities of the hypervisor or the shared storage system which the instances are on.
    If the hypervisor or underlying storage don't support a particular capability in the offering, the setting will have no effect.
 
 
@@ -466,7 +466,7 @@ To create a new disk offering:
    -  **Custom IOPS** [2]_: If checked, the user can set their own IOPS. If not
       checked, the root administrator can define values. If the root
       admin does not set values when using storage QoS, default values
-      are used (the defauls can be overridden if the proper parameters
+      are used (the defaults can be overridden if the proper parameters
       are passed into CloudStack when creating the primary storage in
       question).
 
@@ -514,7 +514,7 @@ To create a new disk offering:
 
 #. Click Add.
 
-.. [2] These options are dependant on the capabilities of the hypervisor or the shared storage system which the instances are on.
+.. [2] These options are dependent on the capabilities of the hypervisor or the shared storage system which the instances are on.
    If the hypervisor or underlying storage don't support a particular capability in the offering, the setting will have no effect.
 
 
@@ -653,22 +653,22 @@ on different types of networks in CloudStack.
 
 .. cssclass:: table-striped table-bordered table-hover
 
-=========================================== ===============================
-Networks                                    Network Rate Is Taken from
-=========================================== ===============================
-Guest network of Virtual Router             Guest Network Offering
-Public network of Virtual Router            Guest Network Offering
-Storage network of Secondary Storage VM     System Network Offering
-Management network of Secondary Storage VM  System Network Offering
-Storage network of Console Proxy VM         System Network Offering
-Management network of Console Proxy VM      System Network Offering
-Storage network of Virtual Router           System Network Offering
-Management network of Virtual Router        System Network Offering
-Public network of Secondary Storage instance      System Network Offering
-Public network of Console Proxy instance          System Network Offering
-Default network of a guest instance               Compute Offering
-Additional networks of a guest instance           Corresponding Network Offerings
-=========================================== ===============================
+============================================ ===============================
+Networks                                     Network Rate Is Taken from
+============================================ ===============================
+Guest network of Virtual Router              Guest Network Offering
+Public network of Virtual Router             Guest Network Offering
+Storage network of Secondary Storage VM      System Network Offering
+Management network of Secondary Storage VM   System Network Offering
+Storage network of Console Proxy VM          System Network Offering
+Management network of Console Proxy VM       System Network Offering
+Storage network of Virtual Router            System Network Offering
+Management network of Virtual Router         System Network Offering
+Public network of Secondary Storage instance System Network Offering
+Public network of Console Proxy instance     System Network Offering
+Default network of a guest instance          Compute Offering
+Additional networks of a guest instance      Corresponding Network Offerings
+============================================ ===============================
 
 A guest instance must have a default network, and can also have many
 additional networks. Depending on various parameters, such as the host

@@ -416,7 +416,7 @@ msgstr ""
 
 #: ../../service_offerings.rst:304
 # 665e3b5c270e42979195e2837591595b
-msgid "Custom IOPS. If checked, the user can set their own IOPS. If not checked, the root administrator can define values. If the root admin does not set values when using storage QoS, default values are used (the defauls can be overridden if the proper parameters are passed into CloudStack when creating the primary storage in question)."
+msgid "Custom IOPS. If checked, the user can set their own IOPS. If not checked, the root administrator can define values. If the root admin does not set values when using storage QoS, default values are used (the defaults can be overridden if the proper parameters are passed into CloudStack when creating the primary storage in question)."
 msgstr ""
 
 #: ../../service_offerings.rst:311

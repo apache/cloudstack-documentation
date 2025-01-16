@@ -241,7 +241,7 @@ load balancing rules so that they continue to function.
 Troubleshooting Internet Traffic
 --------------------------------
 
-Below are a few troubleshooting steps to check whats going wrong with your
+Below are a few troubleshooting steps to check what's going wrong with your
 network...
 
 
@@ -270,7 +270,7 @@ Trouble Shooting Steps
 
    If the pings dont work, run *tcpdump(8)* all over the place to check
    who is gobbling up the packets. Ultimately, if the switches are not
-   configured correctly, CloudStack networking wont work so fix the
+   configured correctly, CloudStack networking won't work so fix the
    physical networking issues before you proceed to the next steps
 
 #. Ensure `Traffic Labels <http://cloudstack.apache.org/docs/en-US/Apache_CloudStack/4.2.0/html/Installation_Guide/about-physical-networks.html>`_ are set for the Zone.
@@ -321,7 +321,7 @@ Trouble Shooting Steps
 #. KVM traffic labels require to be named as *"cloudbr0"*, *"cloudbr2"*,
    *"cloudbrN"* etc and the corresponding bridge must exist on the KVM
    hosts. If you create labels/bridges with any other names, CloudStack
-   (atleast earlier versions did) seems to ignore them. CloudStack does not
+   (at least earlier versions did) seems to ignore them. CloudStack does not
    create the physical bridges on the KVM hosts, you need to create them
    **before** before adding the host to Cloudstack.
 
@@ -386,7 +386,7 @@ Trouble Shooting Steps
    Instances by default. Their public IPs will also be directly pingable
    from the Internet. Please note that these test would work only if your
    switches and traffic labels are configured correctly for your
-   environment. If your SSVM/CPVM cant reach the Internet, its very
+   environment. If your SSVM/CPVM can't reach the Internet, its very
    unlikely that the Virtual Router (VR) can also the reach the Internet
    suggesting that its either a switching issue or incorrectly assigned
    traffic labels. Fix the SSVM/CPVM issues before you debug VR issues.
@@ -430,7 +430,7 @@ Trouble Shooting Steps
       round-trip min/avg/max/stddev = 28.098/44.021/69.179/17.998 ms
 
 #. However, the Virtual Router's (VR) Source NAT Public IP address
-   **WONT** be reachable until appropriate Ingress rules are
+   **WON'T** be reachable until appropriate Ingress rules are
    in place. You can add *Ingress* rules under *Network, Guest Network, IP
    Address, Firewall* setting page.
 
@@ -451,6 +451,6 @@ Trouble Shooting Steps
 In a vast majority of the cases, the problem has turned out to be at the
 switching layer where the L3 switches were configured incorrectly.
 
-This section was contibuted by Shanker Balan and was originally published on
+This section was contributed by Shanker Balan and was originally published on
 `Shapeblue's blog <http://shankerbalan.net/blog/internet-not-working-on-cloudstack-vms/>`_
 
