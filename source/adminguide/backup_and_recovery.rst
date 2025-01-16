@@ -185,6 +185,14 @@ the total backup storage size that can be used at an account, domain and project
 Administrators can do this by going to the configure limits tab in accounts, domains and projects
 similar to when enforcing resource limits on volumes, primary storage usage etc.
 
+Unlike other resources like volumes, backup limits take into account the physical used size
+and not the allocated size of the backup. This is because the backup once taken can never
+grow into the allocated size. At the time of backup creation, Cloudstack doesn't know the
+size of the backup that will be taken, so it uses the physical size of the volumes to be
+backed up from Volume Stats to calculate the backup size for checking resource limits.
+If Volume Stats are not present, then the virtual size of the volumes is used to calculate
+the backup size, although the actual backup size may be less than the size use to do resource limit check.
+
 .. |B&R-assignOffering.png| image:: /_static/images/B&R-assignOffering.png
    :alt: Assigning an SLA/Policy to an Instance.
    :width: 400 px
