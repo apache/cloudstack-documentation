@@ -17,7 +17,7 @@
 CloudStack uses several types of system Instances to perform
 tasks in the cloud. In general CloudStack manages these system VMs and
 creates, starts, and stops them as needed based on scale and immediate
-needs. However, the administrator should be aware of them and their
+needs. Unlike user VMs, system VMs are expunged on destroying them. However, the administrator should be aware of them and their
 roles to assist in debugging issues.
 
 
