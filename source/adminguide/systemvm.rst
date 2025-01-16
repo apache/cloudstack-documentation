@@ -103,7 +103,7 @@ Accessing System VMs over the network requires the use of private keys and
 connecting to System VMs SSH Daemon on port 3922. XenServer/KVM Hypervisors
 store this key at /root/.ssh/id_rsa.cloud on each CloudStack agent. To access
 System VMs running on ESXi, the key is stored on the management server at
-/var/lib/cloudstack/management/.ssh/id_rsa.
+~cloud/.ssh/id_rsa.
 
 
 #. Find the details of the System VM
@@ -135,7 +135,7 @@ System VMs running on ESXi, the key is stored on the management server at
 
       Format: ssh -i <path-to-private-key> <vm-private-ip> -p 3922
 
-      Example: root@management:~# ssh -i /var/lib/cloudstack/management/.ssh/id_rsa 172.16.0.250 -p 3922
+      Example: root@management:~# ssh -i ~cloud/.ssh/id_rsa 172.16.0.250 -p 3922
 
 Multiple System VM Support for VMware
 -------------------------------------
@@ -198,7 +198,7 @@ Console proxies can be restarted by administrators but this will
 interrupt existing console sessions for users.
 
 Creating an Instance Console Endpoint
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The access to an instance console is created by the API 'createConsoleEndpoint',
 for the instance specified in the parameter 'virtualmachineid'. By default,
@@ -228,7 +228,7 @@ When ‘consoleproxy.extra.security.validation.enabled’ is false: then CloudSt
 does not require a token for validation.
 
 The websocket port is passed as a boot argument to the console proxy and the 
-management server decides between the secure or unsecure port (8443 or 8080) when 
+management server decides between the secure or insecure port (8443 or 8080) when
 setting the boot arguments for the CPVM.
 
 - The secure port 8443 is sent as a boot argument when:
@@ -265,7 +265,7 @@ communication with SSL:
 
 
 Changing the Console Proxy SSL Certificate and Domains
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The administrator can configure SSL encryption  by selecting a domain
 and uploading a new SSL certificate and private key. The domain must
@@ -656,55 +656,55 @@ column in 'Failed'/'Passed' if there are health check failures of any type.
 Following global configs have been added for configuring health checks:
 
    - ``router.health.checks.enabled`` - If true, router health checks are allowed
-   to be executed and read. If false, all scheduled checks and API calls for on
-   demand checks are disabled. Default is true.
+     to be executed and read. If false, all scheduled checks and API calls for on
+     demand checks are disabled. Default is true.
 
    - ``router.health.checks.basic.interval`` - Interval in minutes at which basic
-   router health checks are performed. If set to 0, no tests are scheduled. Default
-   is 3 mins as per the pre 4.14 monitor services.
+     router health checks are performed. If set to 0, no tests are scheduled. Default
+     is 3 mins as per the pre 4.14 monitor services.
 
    - ``router.health.checks.advanced.interval`` - Interval in minutes at which
-   advanced router health checks are performed. If set to 0, no tests are scheduled.
-   Default value is 10 minutes.
+     advanced router health checks are performed. If set to 0, no tests are scheduled.
+     Default value is 10 minutes.
 
    - ``router.health.checks.config.refresh.interval`` - Interval in minutes at which
-   router health checks config - such as scheduling intervals, excluded checks, etc
-   is updated on virtual routers by the management server. This value should be
-   sufficiently high (like 2x) from the router.health.checks.basic.interval and
-   router.health.checks.advanced.interval so that there is time between new results
-   generation for passed data. Default is 10 mins.
+     router health checks config - such as scheduling intervals, excluded checks, etc
+     is updated on virtual routers by the management server. This value should be
+     sufficiently high (like 2x) from the router.health.checks.basic.interval and
+     router.health.checks.advanced.interval so that there is time between new results
+     generation for passed data. Default is 10 mins.
 
    - ``router.health.checks.results.fetch.interval`` - Interval in minutes at which
-   router health checks results are fetched by management server. On each result fetch,
-   management server evaluates need to recreate VR as per configuration of
-   'router.health.checks.failures.to.recreate.vr'. This value should be sufficiently
-   high (like 2x) from the 'router.health.checks.basic.interval' and
-   'router.health.checks.advanced.interval' so that there is time between new
-   results generation and fetch.
+     router health checks results are fetched by management server. On each result fetch,
+     management server evaluates need to recreate VR as per configuration of
+     'router.health.checks.failures.to.recreate.vr'. This value should be sufficiently
+     high (like 2x) from the 'router.health.checks.basic.interval' and
+     'router.health.checks.advanced.interval' so that there is time between new
+     results generation and fetch.
 
    - ``router.health.checks.failures.to.recreate.vr`` - Health checks failures defined
-   by this config are the checks that should cause router recreation. If empty the
-   recreate is not attempted for any health check failure. Possible values are comma
-   separated script names from systemvm’s /root/health_scripts/ (namely - cpu_usage_check.py,
-   dhcp_check.py, disk_space_check.py, dns_check.py, gateways_check.py, haproxy_check.py,
-   iptables_check.py, memory_usage_check.py, router_version_check.py), connectivity.test
-   or services (namely - loadbalancing.service, webserver.service, dhcp.service)
+     by this config are the checks that should cause router recreation. If empty the
+     recreate is not attempted for any health check failure. Possible values are comma
+     separated script names from systemvm’s /root/health_scripts/ (namely - cpu_usage_check.py,
+     dhcp_check.py, disk_space_check.py, dns_check.py, gateways_check.py, haproxy_check.py,
+     iptables_check.py, memory_usage_check.py, router_version_check.py), connectivity.test
+     or services (namely - loadbalancing.service, webserver.service, dhcp.service)
 
    - ``router.health.checks.to.exclude`` - Health checks that should be excluded when
-   executing scheduled checks on the router. This can be a comma separated list of
-   script names placed in the '/root/health_checks/' folder. Currently the following
-   scripts are placed in default systemvm Template - cpu_usage_check.py,
-   disk_space_check.py, gateways_check.py, iptables_check.py, router_version_check.py,
-   dhcp_check.py, dns_check.py, haproxy_check.py, memory_usage_check.py.
+     executing scheduled checks on the router. This can be a comma separated list of
+     script names placed in the '/root/health_checks/' folder. Currently the following
+     scripts are placed in default systemvm Template - cpu_usage_check.py,
+     disk_space_check.py, gateways_check.py, iptables_check.py, router_version_check.py,
+     dhcp_check.py, dns_check.py, haproxy_check.py, memory_usage_check.py.
 
    - ``router.health.checks.free.disk.space.threshold`` - Free disk space threshold
-   (in MB) on VR below which the check is considered a failure. Default is 100MB.
+     (in MB) on VR below which the check is considered a failure. Default is 100MB.
 
    - ``router.health.checks.max.cpu.usage.threshold`` - Max CPU Usage threshold as
-   % above which check is considered a failure.
+     % above which check is considered a failure.
 
    - ``router.health.checks.max.memory.usage.threshold`` - Max Memory Usage threshold
-   as % above which check is considered a failure.
+     as % above which check is considered a failure.
 
 The scripts for following health checks are provided in '/root/health_checks/'. These
 are not exhaustive and can be modified for covering other scenarios not covered.

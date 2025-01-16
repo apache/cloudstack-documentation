@@ -14,7 +14,7 @@
    under the License.
 
 
-Configuring AutoScale with using CloudStack Virtual Router
+Configuring AutoScale with the CloudStack Virtual Router
 =============================================
 
 

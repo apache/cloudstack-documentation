@@ -214,7 +214,7 @@ addresses in the form of a Classless Inter-Domain Routing (CIDR) block.
 
    -  **IPv6 DNS**: A set of custom IPv6 DNS that will be used by this VPC. If not provided then IPv6 DNS specified for the zone will be used. Available only when the selected VPC offering is IPv6 enabled and supports DNS service.
 
-   -  **IPv4 address for the VR in this VPC**: The source NAT address or primary public Network address to use by the guest Networks. If not provided then a random address from the available pool of addresses wil be used.
+   -  **IPv4 address for the VR in this VPC**: The source NAT address or primary public Network address to use by the guest Networks. If not provided then a random address from the available pool of addresses will be used.
 
    - **Public MTU**: The MTU to be configured on the public interfaces of the 
       VPC Network's VR
@@ -266,6 +266,10 @@ other Network Tiers within the VPC.
 
    -  **Name**: A unique name for the Network Tier you create.
 
+   .. note::
+      Admins can choose to automatically prepend the VPC name to the Tier name during creation
+      using global configurations "vpc.tier.name.prepend" and "vpc.tier.name.prepend.delimiter".
+
    -  **Network Offering**: The following default Network offerings are
       listed: Internal LB,
       DefaultIsolatedNetworkOfferingForVpcNetworksNoLB,
@@ -304,8 +308,8 @@ Configuring Network Access Control List
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
-Network Access Control Lists can only be created if the service
-"NetworkACL" is supported by the created VPC.
+    Network Access Control Lists can only be created if the service
+    "NetworkACL" is supported by the created VPC.
 
 Define a Network Access Control List (ACL) to control incoming
 (ingress) and outgoing (egress) traffic between the associated Network Tier
@@ -343,14 +347,14 @@ destination" and / or "allow all ingress source" rule to the ACL.
 Afterwards traffic can be white- or blacklisted.
 
 .. note::
-- ACL Rules in Cloudstack are stateful
-- Source / Destination CIDRs are always external Networks
-- ACL rules can also been seen on the virtual router of the VPC. Ingress
-  rules are listed in the table iptables table "filter" while egress rules
-  are placed in the "mangle" table
-- ACL rules for ingress and egress are not correlating. For example a
-  egress "deny all" won't affect traffic in response to an allowed ingress
-  connection
+    - ACL Rules in Cloudstack are stateful
+    - Source / Destination CIDRs are always external Networks
+    - ACL rules can also been seen on the virtual router of the VPC. Ingress
+      rules are listed in the table iptables table "filter" while egress rules
+      are placed in the "mangle" table
+    - ACL rules for ingress and egress are not correlating. For example a
+      egress "deny all" won't affect traffic in response to an allowed ingress
+      connection
   
 
 Creating ACL Lists

@@ -65,7 +65,7 @@ Following are the configuration parameters for DRS.
        is allowed and 0.0 means imbalance is allowed.
    * - ``drs.metric``
      - `memory`
-     - The cluster imbalance metric to use when considering the imbalance in cluster. Possible values are memory, cpu.
+     - The allocated resource metric to use for measuring imbalance for a cluster. Possible values are memory, cpu.
 
 .. note::
   Scope of ``drs.plan.expire.interval`` is global and for rest is cluster level.
@@ -73,6 +73,30 @@ Following are the configuration parameters for DRS.
 .. note::
    Very high value for ``drs.max.migrations`` can result in management server using up all of it's workers for DRS tasks
    and not being able to execute other tasks.
+
+There are some advanced parameters that can be configured for DRS. These parameters impact the way imbalance is calculated
+for a cluster. Do not change these parameters unless you know what you are doing.
+
+.. list-table:: Advanced DRS related cluster parameters
+   :header-rows: 1
+
+   * - Parameter
+     - Default
+     - Description
+   * - ``drs.metric.type``
+     - `used`
+     - The metric type used to measure imbalance in a cluster. This can completely change the imbalance value. 
+       Possible values are free, used.
+   * - ``drs.metric.use.ratio``
+     - `true`
+     - Whether to use ratio of selected metric & total. Useful when the cluster has hosts with different capacities.
+   * - ``drs.imbalance.condensed.skip.threshold``
+     - `0.95`
+     - Threshold to ignore the metric for a host while calculating the imbalance to decide whether DRS is required for 
+       a cluster. This is to avoid cases when the calculated imbalance gets skewed due to a single host having a very 
+       high/low metric value resulting in imbalance being higher than 1. If ``drs.metric.type`` is ``free``, set a lower 
+       value and if it is ``used`` set a higher value. The value should be between `0.0` and `1.0`. 
+       This is applicable only for Condensed algorithm.
 
 Executing manual DRS on a cluster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -41,9 +41,11 @@ Contents:
 
 .. toctree::
    :maxdepth: 1
- 
+
    upgrade/mysql
    upgrade/valid_source
+   upgrade/upgrade-4.20
+   upgrade/upgrade-4.19
    upgrade/upgrade-4.18
    upgrade/upgrade-4.17
    upgrade/upgrade-4.16

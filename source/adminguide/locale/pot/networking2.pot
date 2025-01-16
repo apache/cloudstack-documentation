@@ -970,7 +970,7 @@ msgstr ""
 
 #: ../../networking2.rst:637
 # 7cd262eb2864435f953ba2f8d9b2e0a0
-msgid "You cannot apply IP Reservation if any VM is alloted with an IP address that is outside the Guest VM CIDR."
+msgid "You cannot apply IP Reservation if any VM is allotted with an IP address that is outside the Guest VM CIDR."
 msgstr ""
 
 #: ../../networking2.rst:642
@@ -5097,7 +5097,7 @@ msgstr ""
 
 #: ../../networking2.rst:4764
 # 9914db80271c45879b3763424ebbbe4e
-msgid "The administrator can deploy a set of VLANs and allow users to deploy VMs on these VLANs. A guest VLAN is randomly alloted to an account from a pre-specified set of guest VLANs. All the VMs of a certain tier of an account reside on the guest VLAN allotted to that account."
+msgid "The administrator can deploy a set of VLANs and allow users to deploy VMs on these VLANs. A guest VLAN is randomly allotted to an account from a pre-specified set of guest VLANs. All the VMs of a certain tier of an account reside on the guest VLAN allotted to that account."
 msgstr ""
 
 #: ../../networking2.rst:4770
@@ -6272,7 +6272,7 @@ msgstr ""
 #: ../../networking2.rst:6482
 # bfaeb8a949fb4d25a618540dcc365471
 # 6c6e4ac1110442ba9ec325328e96bfb8
-msgid "Naviagte to Service Offerings and choose Network OfferingPublic IP Addresses."
+msgid "Navigate to Service Offerings and choose Network OfferingPublic IP Addresses."
 msgstr ""
 
 #: ../../networking2.rst:6185

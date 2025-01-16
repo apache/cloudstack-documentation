@@ -115,9 +115,12 @@ In order for security groups to function in a zone, the security groups
 feature must first be enabled for the zone. The administrator can do
 this when creating a new zone, by selecting a network offering that
 includes security groups. The procedure is described in Basic Zone
-Configuration in the Advanced Installation Guide. The administrator can
-not enable security groups for an existing zone, only when creating a
-new zone.
+Configuration in the Advanced Installation Guide.
+
+To enable security groups for an existing advanced zone which doesn't have
+security groups enabled, the administrator can enable the
+`SecurityGroupProvider` for the physical network of the zone. This will allow
+user to create networks with Security Groups.
 
 
 Adding Ingress and Egress Rules to a Security Group

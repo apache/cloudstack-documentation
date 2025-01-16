@@ -108,7 +108,7 @@ msgstr "同一集群中主机必须使用相同版本的Linux系统。"
 # e392215de57d4843958e657b3d6d64c7
 #: ../../hypervisor_installation.rst:70 ../../hypervisor_installation.rst:3366
 msgid ""
-"All hosts within a cluster must be homogenous. The CPUs must be of the same "
+"All hosts within a cluster must be homogeneous. The CPUs must be of the same "
 "type, count, and feature flags."
 msgstr "同一群集中的所有节点架构必须一致。CPU的型号、数量和功能参数必须相同。"
 
@@ -473,7 +473,7 @@ msgstr "CloudStack使用libvirt管理虚拟机。因此正确地配置libvirt至
 #: ../../hypervisor_installation.rst:303
 #: ../../hypervisor_installation.rst:3539
 msgid ""
-"In order to have live migration working libvirt has to listen for unsecured "
+"In order to have live migration working libvirt has to listen for insecured "
 "TCP connections. We also need to turn off libvirts attempt to use Multicast "
 "DNS advertising. Both of these settings are in "
 "``/etc/libvirt/libvirtd.conf``"
@@ -1082,7 +1082,7 @@ msgstr "RHEL 及 CentOS使用iptables作为防火墙，执行以下iptables命�
 #: ../../hypervisor_installation.rst:903
 #: ../../hypervisor_installation.rst:3983
 msgid ""
-"These iptable settings are not persistent accross reboots, we have to save "
+"These iptable settings are not persistent across reboots, we have to save "
 "them first."
 msgstr "这些iptables配置并不会持久保存，重启之后将会消失，我们必须手动保存这些配置。"
 
@@ -1382,7 +1382,7 @@ msgstr "XenServer 6.2.0"
 # 7f67c993b17a4b25a8b436331132a38b
 #: ../../hypervisor_installation.rst:1022
 msgid ""
-"You must re-install Citrix XenServer if you are going to re-use a host from "
+"You must re-install Citrix XenServer if you are going to reuse a host from "
 "a previous install."
 msgstr "如果你想使用以前装的某台主机,你必须重新安装Citrix XenServer."
 
@@ -1565,10 +1565,10 @@ msgstr "适用于XenServer 6.0.2："
 # 54880e3acb4945b4ae3d3fb251252130
 #: ../../hypervisor_installation.rst:1181
 msgid ""
-"`http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz "
-"<http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-"
+"`http://download.cloudstack.org/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz "
+"<http://download.cloudstack.org/releases/3.0.1/XS-6.0.2/xenserver-cloud-"
 "supp.tgz>`_"
-msgstr "`http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz>`_"
+msgstr "`http://download.cloudstack.org/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz <http://download.cloudstack.org/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz>`_"
 
 # 4405c659cea34cb2895c0f43693473f1
 #: ../../hypervisor_installation.rst:1183
@@ -1578,9 +1578,9 @@ msgstr "适用于XenServer 5.6 SP2:"
 # b1533b01dec04d8ea37cb07d541d8013
 #: ../../hypervisor_installation.rst:1185
 msgid ""
-"`http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz "
-"<http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz>`_"
-msgstr "`http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz>`_"
+"`http://download.cloudstack.org/releases/2.2.0/xenserver-cloud-supp.tgz "
+"<http://download.cloudstack.org/releases/2.2.0/xenserver-cloud-supp.tgz>`_"
+msgstr "`http://download.cloudstack.org/releases/2.2.0/xenserver-cloud-supp.tgz <http://download.cloudstack.org/releases/2.2.0/xenserver-cloud-supp.tgz>`_"
 
 # 994df5c8945149b7b8663a2e603fc847
 #: ../../hypervisor_installation.rst:1187
@@ -1590,9 +1590,9 @@ msgstr "适用于XenServer 6.0:"
 # bc80c4fa363248c292882b511d90808a
 #: ../../hypervisor_installation.rst:1189
 msgid ""
-"`http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz "
-"<http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz>`_"
-msgstr "`http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz>`_"
+"`http://download.cloudstack.org/releases/3.0/xenserver-cloud-supp.tgz "
+"<http://download.cloudstack.org/releases/3.0/xenserver-cloud-supp.tgz>`_"
+msgstr "`http://download.cloudstack.org/releases/3.0/xenserver-cloud-supp.tgz <http://download.cloudstack.org/releases/3.0/xenserver-cloud-supp.tgz>`_"
 
 # 09db532336c943caa7e4713f7f57deaa
 #: ../../hypervisor_installation.rst:1193
@@ -3112,7 +3112,7 @@ msgstr "所有主机必须为64位架构并且支持HVM(启用Intel-VT或AMD-V)�
 # 444698b909b14c1bafa79d28ca6d0e0c
 #: ../../hypervisor_installation.rst:2258
 msgid ""
-"All hosts within a cluster must be homogenous. That means the CPUs must be "
+"All hosts within a cluster must be homogeneous. That means the CPUs must be "
 "of the same type, count, and feature flags."
 msgstr "同一群集中的所有节点必须为同一架构。CPU型号、数量和功能参数必须相同。"
 
@@ -3184,7 +3184,7 @@ msgstr "必须配置vCenter使用443端口与CloudStack管理服务器通讯。"
 # fa50c73129ea428e839debdffdc10099
 #: ../../hypervisor_installation.rst:2331
 msgid ""
-"You must re-install VMware ESXi if you are going to re-use a host from a "
+"You must re-install VMware ESXi if you are going to reuse a host from a "
 "previous install."
 msgstr "如果你计划利用之前安装的主机，那么必须重新安装VMware ESXi。"
 
@@ -4037,7 +4037,7 @@ msgstr "**管理 IP**"
 #: ../../hypervisor_installation.rst:2754
 msgid ""
 "This is the IP address of the VSM appliance. This is the IP address you "
-"specify in the virtual switch IP Address field while configuting Nexus "
+"specify in the virtual switch IP Address field while configuring Nexus "
 "virtual switch."
 msgstr "VSM appliance的IP地址。 当配置Nexus虚拟交换机时在虚拟交换机的IP地址区域输入的IP地址。"
 
@@ -4051,7 +4051,7 @@ msgstr "**SSL**"
 msgid ""
 "Should be set to Enable.Always enable SSL. SSH is usually enabled by default"
 " during the VSM installation. However, check whether the SSH connection to "
-"the VSM is working, without which CloudStack failes to connect to the VSM."
+"the VSM is working, without which CloudStack fails to connect to the VSM."
 msgstr "应该设置为启用。总是启用SSL。在VSM安装期间通常会启用SSH功能。尽管如此仍需检查是否能够使用SSH连接到VSM，如果不能无法连接，CloudStack到VSM的连接会失败。"
 
 # 747a5560bbed48598ec8fb9ad2739dde
@@ -5144,7 +5144,7 @@ msgstr "CloudStack使用代理管理LXC实例。管理服务器与代理通信�
 # 6e8937e78ff6442db35604533d058b4a
 #: ../../hypervisor_installation.rst:3497
 msgid ""
-"Next step is to update the Agent configuration setttings. The settings are "
+"Next step is to update the Agent configuration settings. The settings are "
 "in ``/etc/cloudstack/agent/agent.properties``"
 msgstr "接下来更新代理配置。在 ``/etc/cloudstack/agent/agent.properties`` 中配置"
 

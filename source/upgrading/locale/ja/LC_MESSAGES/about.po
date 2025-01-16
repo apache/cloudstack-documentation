@@ -1158,7 +1158,7 @@ msgstr ""
 # 7497b1ecef6e4aa78d5fc1945d1552e6
 #: ../../source/about.rst:589
 msgid ""
-"[VMWARE] Cancel vCenter tasks if the task invoked by CloudStack failes with "
+"[VMWARE] Cancel vCenter tasks if the task invoked by CloudStack fails with "
 "time..."
 msgstr ""
 
@@ -1533,7 +1533,7 @@ msgstr ""
 # d0f86a6e0cf344f6b651d4550e44c1e3
 #: ../../source/about.rst:621
 msgid ""
-"A stopped vm cant start after disable threshold has been reached on the "
+"A stopped vm can't start after disable threshold has been reached on the "
 "storage ..."
 msgstr ""
 

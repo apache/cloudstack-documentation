@@ -17,79 +17,37 @@
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is a 4.18 LTS minor release with 196 fixes
-since the 4.18.0.0 release. Some of the highlights include:
-
-• Support Managed User Data in AutoScale VM groups
-• Support CKS (CloudStack Kubernetes Cluster) in VPC tiers
-• Support for VMware 8.0.0.x
-• Several Hypervisor (VMware, KVM, XenServer) fixes and improvements
-• Several UI fixes and improvements
-• Several Network (L2, VXLAN, etc) fixes and improvements
-• Several System VM (CPVM, SSVM) fixes and improvements
-• Improve Solidfire storage plugin integration on VMware
-• Support volume migration in ScaleIO/PowerFlex within and across ScaleIO/PowerFlex storage clusters
-• Volume encryption support for StorPool
-• Fix CloudStack upgrade with some MySQL versions
-• Fix guest OSes and guest OS mappings in CloudStack database
-
-The full list of fixes and improvements can be found in the project release notes at
-https://docs.cloudstack.apache.org/en/4.18.1.0/releasenotes/changes.html
-
-What's in since 4.18.0.0
-======================
-
-Apache CloudStack 4.18.0.0 is the initial 4.18 LTS release with 300+ new
-features, improvements and bug fixes since 4.17, including 19 major
+Apache CloudStack 4.20.0.0 is the initial 4.20 LTS release with 190+ new
+features, improvements and bug fixes since 4.19, including 15 major
 new features. Some of the highlights include:
 
-• Edge Zones
-• Autoscaling
-• Managed User Data
-• Two-Factor Authentication Framework
-• Support for Time-based OTP (TOTP) Authenticator
-• Volume Encryption
-• SDN Integration – Tungsten Fabric
-• Ceph Multi Monitor Support
-• API-Driven Console Access
-• Console Access Security Improvements
-• New Global settings UI
-• Configurable MTU for VR
-• Adaptative Affinity Groups
-• Custom DNS Servers for Networks
-• Improved Guest OS Support Framework
-• Support for Enterprise Linux 9
-• Networker Backup Plugin for KVM Hypervisor
-• Custom Quota Tariffs
-• Secure VNC for KVM
+• Webhooks
+• Dynamic and Static Routing
+• Ceph RGW Object Store Support
+• NSX integration
+• Shared Filesystems
+• Multi-arch Zones
+• Simple NAS backup plugin for KVM
+• Usage UI
+• API documentation in UI
+
 
 The full list of new features can be found in the project release notes at
-https://docs.cloudstack.apache.org/en/4.18.0.0/releasenotes/changes.html
+https://docs.cloudstack.apache.org/en/4.20.0.0/releasenotes/changes.html
 
-.. _guestosids
+Log4j Upgrade
+=============
 
-Possible Issue with Guest OS IDs
-================================
+Up until 4.19.x.x, the logging library used for the project was Log4j 1.29. 
+The 4.20.0.0 version has updated the library to Log4j2. The new Log4j2 configuration file format is not backwards 
+compatible with the old one. The 4.20.0.0 packages will come with the default configuration files updated. 
+Users that have made customizations to their files must update their configuration files to match with the new format, 
+the `official Log4j documentation`_ might help you migrate your custom configurations.
 
-It has been noticed during upgrade testing that some environment, where
-custom guest OSses where added and mapping for those OSses where added,
-problems may occur during upgrade. Part of the mitigation is to make sure
-OSses that are newly mapped but should have already been in the guest_os
-table are there. Make sure you apply those before you start the new 4.18
-management server.
+JRE Upgrade
+============
 
-first check which of the guest_os entries you miss:
+Up until 4.19.x.x, the JRE used for ACS was JRE 11. In 4.20.0.0, JRE has been upgraded to JRE 17 as JRE 11 has reached EOL. 
+This means that Centos7 (EL7) is no longer supported.
 
-.. parsed-literal::
-
-  SELECT * FROM cloud.guest_os WHERE display_name IN (´CentOS 8´, ´Debian GNU/Linux 10 (32-bit)´, ´Debian GNU/Linux 10 (64-bit)´, ´SUSE Linux Enterprise Server 15 (64-bit)´, ´Windows Server 2019 (64-bit)´)
-
-Then apply any of the following lines that you might need.
-
-.. parsed-literal::
-
-  INSERT INTO cloud.guest_os (uuid, category_id, display_name, created, is_user_defined) VALUES (UUID(), '1', 'CentOS 8', now(), '0');
-  INSERT INTO cloud.guest_os (uuid, category_id, display_name, created, is_user_defined) VALUES (UUID(), '2', 'Debian GNU/Linux 10 (32-bit)', now(), '0');
-  INSERT INTO cloud.guest_os (uuid, category_id, display_name, created, is_user_defined) VALUES (UUID(), '2', 'Debian GNU/Linux 10 (64-bit)', now(), '0');
-  INSERT INTO cloud.guest_os (uuid, category_id, display_name, created, is_user_defined) VALUES (UUID(), '5', 'SUSE Linux Enterprise Server 15 (64-bit)', now(), '0');
-  INSERT INTO cloud.guest_os (uuid, category_id, display_name, created, is_user_defined) VALUES (UUID(), '6', 'Windows Server 2019 (64-bit)', now(), '0');
+.. _official Log4j documentation: https://logging.apache.org/log4j/2.x/migrate-from-log4j1.html

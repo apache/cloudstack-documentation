@@ -132,7 +132,7 @@ have both the API Key and Secret Key provided by the CloudStack
 administrator for your Account before proceeding with the signing
 process.
 
-To show how to sign a request, we will re-use the previous example.
+To show how to sign a request, we will reuse the previous example.
 
 .. parsed-literal::
 

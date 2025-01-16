@@ -18,25 +18,26 @@ CloudStack Installation from GIT repo for Developers
 ====================================================
 
 This guide is aimed at CloudStack developers who need to build the code.
-These instructions are valid on a Ubuntu 18.04 and CentOS 7 systems
-and were tested with the 4.11 release of Apache CloudStack.  Please
-adapt them if you are on a different operating system or using a newer/older
-version of CloudStack. This book is composed of the following sections:
+These instructions are valid on a Ubuntu 22.04 and 24.04 systems
+and were tested with the 4.19 release of Apache CloudStack. Community maintained
+CloudStack self-learning course is also available at `CloudStack HackerBook
+<https://github.com/shapeblue/hackerbook/tree/main>`__.
+
+Please adapt them if you are on a different operating system or using a
+newer/older version of CloudStack. This book is composed of the following
+sections:
 
 #. Installation of the prerequisites
 
 #. Compiling and installation from source
 
-#. Using the CloudStack simulator
+#. Using the CloudStack Simulator
 
-#. Installation with DevCloud the CloudStack sandbox
+#. Using Appliance for development
 
 #. Building your own packages
 
 #. The CloudStack API
-
-#. Testing the AWS API interface
-
 
 Prerequisites
 -------------
@@ -49,27 +50,22 @@ installed:
 * jdk 11+ (openjdk-11-jdk)
 * maven 3+
 * git
-* python-pip
-* python-setuptools
+* python3-pip
+* python3-setuptools
 * mkisofs
-* A MySql Server
+* MySql 8x Server
 
-Example Ubuntu 18.04
-~~~~~~~~~~~~~~~~~~~~
-
-::
-
-   apt update
-   apt install openjdk-11-jdk-headless maven git python-pip mkisofs git mysql-server
-
-Example CentOS 7
-~~~~~~~~~~~~~~~~
+Example Ubuntu
+~~~~~~~~~~~~~~
 
 ::
 
-   yum install -y epel-release
-   yum localinstall -y http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
-   yum install -y java-1.11.0-openjdk-devel maven python-setuptools python-pip genisoimage git mysql-community-server
+   sudo apt update
+   sudo apt install git openssh-client openjdk-11-jdk maven mysql-client mysql-server nfs-kernel-server quota genisoimage python3 python3-pip
+
+Note: ensure to install python 3.8/3.9/3.10, as required you can install
+specific Python3 versions using pyenv. Similarly, Java versions can be installed
+and managed using jenv.
 
 Installing CloudStack from Source
 ----------------------------------
@@ -86,7 +82,14 @@ To build a stable release, checkout the branch for that version:
 
 ::
 
-   git checkout 4.11.2
+   git checkout 4.19
+
+Optional, you can install noredist/nonoss dependencies:
+
+::
+
+   git clone https://github.com/shapeblue/cloudstack-nonoss
+   cd cloudstack-nonoss && bash -x install-non-oss.sh
 
 To compile Apache CloudStack, go to the cloudstack source folder and
 run:
@@ -96,7 +99,8 @@ run:
    mvn -Pdeveloper,systemvm clean install
 
 If you want to skip the tests add ``-DskipTests`` to the command above.
-Do NOT use ``-Dmaven.test.skip=true`` because that will break the build.
+Do NOT use ``-Dmaven.test.skip=true`` because that will break the build. To
+build noredist/nonoss add ``-Dnoredist`` flag to the command.
 
 If you have set a root mysql password, you will need to adjust the password in
 ``utils/conf/db.properties``
@@ -113,13 +117,24 @@ Run Apache CloudStack with jetty for testing
 
    mvn -pl :cloud-client-ui jetty:run
 
+To build and run the UI, do this:
+
+::
+
+   curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+   sudo apt install nodejs
+   cd cloudstack/ui
+   npm install
+   npm run serve
+
 Log Into Apache CloudStack:
 
 Open your Web browser and use this URL to connect to CloudStack:
 
 ::
 
-   http://localhost:8080/client/
+   http://localhost:5050 # this runs the UI
+   http://localhost:8080/client/ # this is the API backend
 
 Replace ``localhost`` with the IP of your management server if need be.
 
@@ -168,122 +183,38 @@ Start jetty with the simulator enabled
 
 ::
 
-   mvn -Dsimulator -Dorg.eclipse.jetty.annotations.maxWait=120 -pl :cloud-client-ui jetty:run
+   mvn -Dsimulator -pl :cloud-client-ui jetty:run
 
 Setup a basic or advanced zone with Marvin. In a separate shell://
 
 ::
 
-   python tools/marvin/marvin/deployDataCenter.py -i setup/dev/basic.cfg
+   python3 tools/marvin/marvin/deployDataCenter.py -i setup/dev/basic.cfg
    OR
-   python tools/marvin/marvin/deployDataCenter.py -i setup/dev/advanced.cfg
+   python3 tools/marvin/marvin/deployDataCenter.py -i setup/dev/advanced.cfg
 
-At this stage log in the CloudStack management server at
-http://localhost:8080/client with the credentials admin/password, you
-should see a fully configured zone infrastructure.
+At this stage log in the CloudStack management server UI at
+http://localhost:5050 or using CLI with the API endpoint at
+http://localhost:8080/client with the credentials admin/password, you should see
+a fully configured zone infrastructure.
 
 You can now run integration tests, use the API etc.
 
-Building non-free Packages
---------------------------
-
-Certain CloudStack packages are not built by default because they depend on
-libraries without redistribution rights.  To build these, you need to install
-the dependencies manually.
-
-::
-
-   git clone https://github.com/rhtyd/cloudstack-nonoss
-   cd cloudstack-nonoss
-   ./install-non-oss.sh
-
-You can then build and run CloudStack as normal by adding the `-Dnodist` flag
-to build and run lines, e.g.
-
-::
-
-   mvn -Dsimulator -Dnoredist -Dorg.eclipse.jetty.annotations.maxWait=120 -pl :cloud-client-ui jetty:run
-
-Using DevCloud
---------------
+Using Appliance for development
+-------------------------------
 
 The Installing from source section will only get you to the point of
-runnign the management server, it does not get you any hypervisors. The
-simulator section gets you a simulated datacenter for testing. With
-DevCloud you can run at least one hypervisor and add it to your
-management server the way you would a real physical machine.
+running the management server, it does not get you any hypervisors. The
+simulator section gets you a simulated datacenter for testing. An appliance
+based development such as using ``mbx`` can allow you to run at least one
+hypervisor and add it to your management server the way you would a real physical machine.
 
-`DevCloud <https://cwiki.apache.org/confluence/display/CLOUDSTACK/DevCloud>`__
-is the CloudStack sandbox, the standard version is a VirtualBox based
-image. There is also a KVM based image for it. Here we only show steps
-with the VirtualBox image. For KVM see the
-`wiki <https://cwiki.apache.org/confluence/display/CLOUDSTACK/devcloud-kvm>`__.
+MonkeyBox or `mbx <https://github.com/shapeblue/mbx>`__
+enable VM/appliance-based CloudStack development. It is tested with Ubuntu and
+uses KVM and prebuilt images to deploy QA and dev environments for anybody to
+try out CloudStack with a range of hypervisors, local and NFS storage.
 
-\*\* DevCloud Pre-requisites
-
-#. Install `VirtualBox <http://www.virtualbox.org>`__ on your machine
-
-#. Run VirtualBox and under >Preferences create a *host-only interface*
-   on which you disable the DHCP server
-
-#. Download the DevCloud `image
-   <http://people.apache.org/~bhaisaab/cloudstack/devcloud/devcloud2.ova>`__
-
-#. In VirtualBox, under File > Import Appliance import the DevCloud
-   image.
-
-#. Verify the settings under > Settings and check the ``enable PAE``
-   option in the processor menu
-
-#. Once the Instance has booted try to ``ssh`` to it with credentials:
-   ``root/password``
-
-   ssh root@192.168.56.10
-
-
-Adding DevCloud as an Hypervisor
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Picking up from a clean build:
-
-::
-
-   mvn -Pdeveloper,systemvm clean install
-   mvn -P developer -pl developer,tools/devcloud -Ddeploydb
-
-At this stage install marvin similarly than with the simulator:
-
-::
-
-   pip install tools/marvin/dist/Marvin-|release|.tar.gz
-
-Start the management server
-
-::
-
-   mvn -pl client jetty:run
-
-Then you are going to configure CloudStack to use the running DevCloud
-Instance:
-
-::
-
-   cd tools/devcloud
-   python ../marvin/marvin/deployDataCenter.py -i devcloud.cfg
-
-If you are curious, check the ``devcloud.cfg`` file and see how the data
-center is defined: 1 Zone, 1 Pod, 1 Cluster, 1 Host, 1 primary Storage,
-1 Seondary Storage, all provided by Devcloud.
-
-You can now log in the management server at
-``http://localhost:8080/client`` and start experimenting with the UI or
-the API.
-
-Do note that the management server is running in your local machine and
-that DevCloud is used only as a n Hypervisor. You could potentially run
-the management server within DevCloud as well, or memory granted, run
-multiple DevClouds.
-
+Please refer to the project for more details: https://github.com/shapeblue/mbx
 
 Building Packages
 -----------------
@@ -320,7 +251,6 @@ One directory up from the CloudStack root dir you will find:
    cloudstack_|release|.dsc
    cloudstack_|release|.tar.gz
    cloudstack-agent_|release|_all.deb
-   cloudstack-awsapi_|release|_all.deb
    cloudstack-cli_|release|_all.deb
    cloudstack-common_|release|_all.deb
    cloudstack-docs_|release|_all.deb
@@ -348,17 +278,17 @@ also developed that maps the GCE REST API to the CloudStack API
 described here. The API
 `docs <https://cloudstack.apache.org/api.html>`__ are a good start to
 learn the extent of the API. Multiple clients exist on
-`github <https://github.com/search?q=cloudstack+client&ref=cmdform>`__
+`GitHub <https://github.com/search?q=cloudstack+client&ref=cmdform>`__
 to use this API, you should be able to find one in your favorite
 language. The reference documentation for the API and changes that might
-occur from version to version is availble
+occur from version to version is available
 `on-line <http://cloudstack.apache.org/docs/en-US/Apache_CloudStack/4.1.1/html/Developers_Guide/index.html>`__.
 This short section is aimed at providing a quick summary to give you a
 base understanding of how to use this API. As a quick start, a good way
 to explore the API is to navigate the dashboard with a firebug console
 (or similar developer console) to study the queries.
 
-In a succint statement, the CloudStack query API can be used via http
+In a succinct statement, the CloudStack query API can be used via http
 GET requests made against your cloud endpoint (e.g
 http://localhost:8080/client/api). The API name is passed using the
 ``command`` key and the various parameters for this API call are passed
@@ -385,7 +315,7 @@ Open a Python shell and import the basic modules necessary to make the
 request. Do note that this request could be made many different ways,
 this is just a low level example. The ``urllib*`` modules are used to
 make the http request and do url encoding. The ``hashlib`` module gives
-us the sha1 hash function. It used to geenrate the ``hmac`` (Keyed
+us the sha1 hash function. It used to generate the ``hmac`` (Keyed
 Hashing for Message Authentication) using the secretkey. The result is
 encoded using the ``base64`` module.
 
@@ -478,7 +408,7 @@ and the signature. Then do an http GET:
       }
    }
 
-All the clients that you will find on github will implement this
+All the clients that you will find on GitHub will implement this
 signature technique, you should not have to do it by hand. Now that you
 have explored the API through the UI and that you understand how to make
 low level calls, pick your favorite client of use
@@ -486,53 +416,6 @@ low level calls, pick your favorite client of use
 is a sub-project of Apache CloudStack and gives operators/developers the
 ability to use any of the API methods. It has nice auto-completion and
 help feature as well as an API discovery mechanism since 4.2.
-
-
-Testing the AWS API interface
------------------------------
-
-While the native CloudStack API is not a standard, CloudStack provides a
-AWS EC2 compatible interface. It has the great advantage that existing
-tools written with EC2 libraries can be re-used against a CloudStack
-based cloud. In the installation books we described how to run this
-interface from installing packages. In this section we show you how to
-compile the interface with ``maven`` and test it with Python boto
-module.
-
-Starting from a running management server (with DevCloud for Instance),
-start the AWS API interface in a separate shell with:
-
-::
-
-   mvn -Pawsapi -pl :cloud-awsapi jetty:run
-
-Log into the CloudStack UI ``http://localhost:8080/client``, go to
-*Service Offerings* and edit one of the compute offerings to have the
-name ``m1.small`` or any of the other AWS EC2 Instance types.
-
-With access and secret keys generated for a user you should now be able
-to use Python `Boto <http://docs.pythonboto.org/en/latest/>`__ module:
-
-::
-
-   import boto
-   import boto.ec2
-
-   accesskey="2IUSA5xylbsPSnBQFoWXKg3RvjHgsufcKhC1SeiCbeEc0obKwUlwJamB_gFmMJkFHYHTIafpUx0pHcfLvt-dzw"
-   secretkey="oxV5Dhhk5ufNowey7OVHgWxCBVS4deTl9qL0EqMthfPBuy3ScHPo2fifDxw1aXeL5cyH10hnLOKjyKphcXGeDA"
-
-   region = boto.ec2.regioninfo.RegionInfo(name="ROOT", endpoint="localhost")
-   conn = boto.connect_ec2(aws_access_key_id=accesskey, aws_secret_access_key=secretkey, is_secure=False, region=region, port=7080, path="/awsapi", api_version="2012-08-15")
-
-   images=conn.get_all_images()
-   print images
-
-   res = images[0].run(instance_type='m1.small',security_groups=['default'])
-
-Note the new ``api_version`` number in the connection object and also
-note that there was no user registration to make like in previous
-CloudStack releases.
-
 
 Conclusions
 -----------
@@ -548,4 +431,4 @@ be. As a quick start, you might want to consider KVM+NFS and a Basic
 Zone.
 
 If you've run into any problems with this, please ask on the
-cloudstack-dev `mailing list <http://cloudstack.apache.org/mailing-lists.html>`__.
+cloudstack-dev `mailing list <https://cloudstack.apache.org/mailing-lists.html>`__.

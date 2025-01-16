@@ -23,8 +23,9 @@ not be able to start any VM.
 
 The following SQL statement needs to be manually executed in order to fix such issue:
 
-   .. parsed-literal::
-ALTER TABLE nics MODIFY COLUMN update_time timestamp DEFAULT CURRENT_TIMESTAMP;
+   .. code-block:: mysql
+
+       ALTER TABLE nics MODIFY COLUMN update_time timestamp DEFAULT CURRENT_TIMESTAMP;
 
 The issue is known to affect the following MySQL server versions:
 

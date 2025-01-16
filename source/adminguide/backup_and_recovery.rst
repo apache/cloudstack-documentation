@@ -28,12 +28,16 @@ The following providers are currently supported:
 
 - VMware with Veeam Backup and Recovery
 - KVM with DELL EMC Networker
+- KVM with NAS B&R Plugin (4.20 onwards)
 
 See the Veeam Backup and Recovery plugin documentation for plugin specific information.
 :ref:`Veeam Backup and Recovery Plugin`
 
 See the DELL EMC Networker Backup and Recovery plugin documentation for plugin specific information.
 :ref:`DELL EMC Networker Backup and Recovery Plugin`
+
+See the NAS Backup and Recovery plugin documentation for plugin specific information.
+:ref:`NAS Backup and Recovery Plugin`
 
 
 Backup and Recovery Concepts
@@ -73,7 +77,7 @@ the Global Settings area of the CloudStack UI.
 Configuration                     Description
 ================================= ========================
 backup.framework.enabled          Setting to enable or disable the feature. Default: false.
-backup.framework.provider.plugin  The backup provider (plugin) name. For example: 'dummy', 'veeam' and 'networker'. This is a zone specific setting. Default: dummy.
+backup.framework.provider.plugin  The backup provider (plugin) name. For example: 'dummy', 'veeam', 'networker' and 'nas'. This is a zone specific setting. Default: dummy.
 backup.framework.sync.interval    Background sync task internal in seconds that performs metrics/usage stats collection, backup reconciliation and backup scheduling. Default: 300.
 ================================= ========================
 
@@ -88,7 +92,7 @@ Backup Offerings
 ------------------
 
 Admins can import an external provider's backup offerings using UI or API for a
-particular zone, as well as manage a backup offering's lifecyle. Admins can also
+particular zone, as well as manage a backup offering's lifecycle. Admins can also
 specify if a backup offering allows user-defined backup schedules and ad-hoc
 backups. Users can list and consume the imported backup offerings, only root admins can import or
 delete offerings.
@@ -98,7 +102,7 @@ Supported APIs:
 
 - **listBackupProviders**: lists available backup provider plugins
 - **listBackupProviderOfferings**: lists external backup policy/offering from a provider
-- **importBackupProviderOfferings**: allows importing of an external backup policy/offering to CloudStack as a backup offering
+- **importBackupOffering**: allows importing of an external backup policy/offering to CloudStack as a backup offering
 - **listBackupOfferings**: lists CloudStack's backup offerings (searching via keyword, and pagination supported)
 - **deleteBackupOffering**: deletes a backup offering by its ID
 
@@ -168,10 +172,10 @@ Supported APIs:
 - **listBackupSchedule**: returns backup schedule of an Instance if defined.
 - **deleteBackupSchedule**: deletes backup schedule of an Instance.
 - **createBackup**: creates an adhoc backup for an Instance.
-- **deleteVMBackup**: deletes an Instance backup (not support for per restore point for Veeam).
+- **deleteBackup**: deletes an Instance backup (not support for per restore point for Veeam).
 - **listBackups**: lists backups.
 - **restoreBackup**: restore a previous Instance backup in-place of a stopped or destroyed Instance.
-- **restoreVolumeFromBackup**: restore and attach a backed-up volume (of an Instance backup) to a specified Instance.
+- **restoreVolumeFromBackupAndAttachToVM**: restore and attach a backed-up volume (of an Instance backup) to a specified Instance.
 
 
 .. |B&R-assignOffering.png| image:: /_static/images/B&R-assignOffering.png

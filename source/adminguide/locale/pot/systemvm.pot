@@ -103,7 +103,7 @@ msgstr ""
 
 #: ../../systemvm.rst:66
 # 6ea0f846b0a34711b7c0090cb48d8c32
-msgid "http://download.cloud.com/templates/4.2/64bit/systemvmtemplate64-2013-07-15-master-xen.vhd.bz2"
+msgid "http://download.cloudstack.org/templates/4.2/64bit/systemvmtemplate64-2013-07-15-master-xen.vhd.bz2"
 msgstr ""
 
 #: ../../systemvm.rst:67
@@ -113,7 +113,7 @@ msgstr ""
 
 #: ../../systemvm.rst:67
 # fe251bca2b854129890cba8e7ac9bbbf
-msgid "http://download.cloud.com/templates/4.2/64bit/systemvmtemplate64-2013-07-15-master-kvm.qcow2.bz2"
+msgid "http://download.cloudstack.org/templates/4.2/64bit/systemvmtemplate64-2013-07-15-master-kvm.qcow2.bz2"
 msgstr ""
 
 #: ../../systemvm.rst:70

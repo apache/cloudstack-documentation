@@ -136,8 +136,9 @@ To create an Instance from a Template:
 #. Select a Template or ISO. For more information about how the Templates came
    to be in this list, see `*Working with Templates* <templates.html>`_.
 
-#. Be sure that the hardware you have allows starting the selected
-   service offering.
+#. Select a service offering. Be sure that the hardware you have allows starting the selected
+   service offering. If the selected template has a tag associated with it
+   then only supported service offerings will be available for the selection.
 
 #. Select a disk offering.
 
@@ -274,6 +275,14 @@ a start command reconfigures the Instance to the stored parameters in
 CloudStack's database.  The reboot process does not do this.
 
 When starting an Instance, admin Users have the option to specify a pod, cluster, or host.
+
+.. note::
+   When starting an instance, it's possible to specify a host for deployment,
+   even if the host's tags don't match the instance's tags. This can lead to a
+   mismatch between the VM's tags and the host's tags, which may not be
+   desirable.
+
+   To avoid this, refer to the :ref:`strict-host-tags` section
 
 
 Deleting Instance
@@ -415,6 +424,47 @@ The following table explains how an Instance name is displayed in different scen
       <i.n> represents the value of the global configuration - instance.name
 
 
+Instance delete protection
+--------------------------
+
+CloudStack protects instances from accidental deletion using a delete protection
+flag, which is false by default. When delete protection is enabled for an
+instance, it cannot be deleted through the UI or API. It can only be deleted
+after removing delete protection from the instance.
+
+Delete protection can be enabled for an instance via updateVirtualMachine API.
+
+.. code:: bash
+
+   cmk update virtualmachine id=<instance id> deleteprotection=true
+
+To remove delete protection, use the following command:
+
+.. code:: bash
+
+   cmk update virtualmachine id=<instance id> deleteprotection=false
+
+To enable/disable delete protection for an instance using the UI, follow these steps:
+
+#. Log in to the CloudStack UI as a User or admin.
+
+#. In the navigation menu on the left, click Instances under Compute.
+
+#. Choose the Instance for which you want to enable/disable delete protection.
+
+#. Click on the Edit button |EditButton.png|
+
+#. Toggle the Delete Protection switch to enable or disable delete protection.
+
+#. Click Ok button to save the changes.
+
+.. note::
+   The instance delete protection is only considered when the instance is being
+   deleted through the UI or via `destroyVirtualMachine` or `expungeVirtualMachine`
+   API. If the domain/project is deleted, the instances under the domain/project
+   will be deleted irrespective of the delete protection status.
+
+
 Changing the Service Offering for an Instance
 ---------------------------------------------
 
@@ -440,6 +490,11 @@ Instance, you can change the Instance's compute offering.
 
 #. Click OK.
 
+.. note::
+   When changing the service offering for an instance, it's possible to have a
+   mismatch of host tags which can be problematic.
+
+   For more information on how to prevent this, see :ref:`strict-host-tags`.
 
 .. _cpu-and-memory-scaling:
 
@@ -635,6 +690,12 @@ To manually live migrate an Instance
       (CloudMonkey) > migrate virtualmachinewithvolume virtualmachineid=<virtual machine uuid> hostid=<destination host uuid> migrateto[i].volume=<virtual machine volume number i uuid> migrateto[i].pool=<destination storage pool uuid for volume number i>
 
       where i in [0,..,N] and N = number of volumes of the Instance
+
+.. note::
+   During live migration, there can be a mismatch between the instance's tags
+   with the destination host's tags which might be undesirable.
+
+   For more details on how to prevent this, see :ref:`strict-host-tags`.
 
 Moving Instance's Volumes Between Storage Pools (offline volume Migration)
 --------------------------------------------------------------------------
@@ -974,7 +1035,7 @@ like many other resources in CloudStack.
 KVM supports Instance Snapshots when using NFS shared storage. If raw block storage
 is used (i.e. Ceph), then Instance Snapshots are not possible, since there is no possibility
 to write RAM memory content anywhere. In such cases you can use as an alternative 
-`Storage-based VM Snapshots on KVM`_
+:ref:`Storage-based-Instance-Snapshots-on-KVM`.
 
 
 If you need more information about Instance Snapshots on VMware, check out the
@@ -983,7 +1044,7 @@ VMware documentation and the VMware Knowledge Base, especially
 <http://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&externalId=1015180>`_.
 
 
-.. _`Storage-based Instance Snapshots on KVM`:
+.. _Storage-based-Instance-Snapshots-on-KVM:
 
 Storage-based Instance Snapshots on KVM
 ---------------------------------------
@@ -1110,8 +1171,26 @@ Support for Virtual Appliances
 Importing and Unmanaging Instances
 ==================================
 
+In the UI, both unmanaged and managed virtual machines or instances are listed in *Tools > Import-Export Instances* section, selecting:
+
+   .. cssclass:: table-striped table-bordered table-hover
+
+   ==================== ========================
+   Source               Destination Hypervisor  
+   ==================== ========================
+   Unmanaged Instance   VMware
+   ==================== ========================
+
+   |vm-unmanagedmanaged.png|
+
+
 .. include:: ./virtual_machines/importing_unmanaging_vms.rst
 
+
+Importing Virtual Machines From VMware into KVM
+===============================================
+
+.. include:: ./virtual_machines/importing_vmware_vms_into_kvm.rst
 
 Instance Backups (Backup and Recovery Feature)
 ==============================================
@@ -1445,11 +1524,24 @@ Instance statistics are collected on a regular interval (defined by global
 setting vm.stats.interval with a default of 60000 milliseconds).
 Instance statistics include compute, storage and Network statistics.
 
-Instance statistics are stored in the database as historical data for a desired time period. These historical statistics then can be retrieved using listVirtualMachinesUsageHistory API. For system VMs, the same historical statistics can be retrieved using listSystemVmsUsageHistory API
+Instance statistics are stored in the database as historical data for a desired time period. These historical statistics then can be retrieved using ``listVirtualMachinesUsageHistory`` API. For system VMs, the same historical statistics can be retrieved using ``listSystemVmsUsageHistory`` API
 
-Instance statistics retention time in the database is controlled by the global configuration - `vm.stats.max.retention.time`. Default value is 720 minutes, i.e., 12 hours. Another global configuration that affects Instance statistics is:
+Instance statistics retention time in the database is controlled by the global configuration ``vm.stats.max.retention.time``, with a default value of 720 minutes, i.e., 12 hours. The interval in which the metrics are retrieved are defined by the global configuration ``vm.stats.interval``, which has a default value of 60,000 milliseconds, i.e., 1 minute. The default values are only meant for guideline, as they can have a major impact in DB performance. The equation below presents the overall storage size required considering the values of these configurations.
 
-- `vm.stats.user.vm.only` - When set to 'false' stats for system VMs will be collected otherwise stats collection will be done only for user Instances.
+.. math::
+
+   StatsSize = (\frac{retention * 60000}{interval}) * nodes * VMs * registrySize
+
+- **StatsSize**: the size, in `bytes`, required for storing the VM stats;
+- **retention**: the value of the configuration ``vm.stats.max.retention.time``;
+- **interval**: the value of the configuration ``vm.stats.interval``;
+- **nodes**: the number of nodes running the management server in the environment;
+- **VMs**: the number of running VMs in the environment;
+- **registrySize**: the estimated size, in `bytes`, of the registry in the DB;
+
+Considering the default values of the configurations ``vm.stats.max.retention.time`` and ``vm.stats.interval``, three nodes running the management server, 10,000 running VMs and an estimated registry size of 400 bytes, it would need, approximately, 8 GB of storage to store VM stats. Therefore, the values for these configurations should be changed considering the CloudStack environment, evaluating the required storage and its impact in DB performance.
+
+Another global configuration that affects Instance statistics is ``vm.stats.user.vm.only``. When set to 'false' stats for system VMs will be collected, otherwise stats collection will be done only for user Instances.
 
 In the UI, historical Instance statistics are shown in the Metrics tab in an individual Instance view, as shown in the image below.
 
@@ -1472,6 +1564,17 @@ Instance disk statistics retention in the database is controlled by the global c
 Instance disk statistics are shown in the Metrics tab in an individual volume view, as shown in the image below.
 
 |vm-disk-metrics-ui.png|
+
+
+
+.. note::
+   The metrics or statistics for VMs and VM disks in CloudStack depend on the
+   hypervisor plugin used for each hypervisor. The behavior can vary across
+   different hypervisors. For instance, with KVM, metrics are real-time
+   statistics provided by libvirt. In contrast, with VMware, the metrics are
+   averaged data based on the global configuration parameter
+   `vmware.stats.time.window` and a lower value for the configuration may help
+   observe statistics closer to the real-time values.
 
 
 .. |vm-lifecycle.png| image:: /_static/images/vm-lifecycle.png

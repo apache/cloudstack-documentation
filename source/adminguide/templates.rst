@@ -268,6 +268,9 @@ To upload a Template:
             selecting an OS Type when registering a Template if the option 'Read Instance settings from OVA' is selected. In this case, the OS Type is
             obtained from the Template after it is registered.
 
+   -  **Tag**: The tag for the template. This tag can be used with host tags to
+      allow deployment of Instances on specific hosts.
+
    -  **Userdata**: The registered Userdata are listed. Select the
       desired one.
 
@@ -277,6 +280,8 @@ To upload a Template:
 
    -  **Hypervisor**: The supported hypervisors are listed. Select the
       desired one.
+
+   -  **Arch**: The supported arch types are listed. Select the desired one.
 
    -  **Format**. The format of the Template upload file, such as VHD or
       OVA.
@@ -325,7 +330,7 @@ Example GUI dialog of uploading Template/ISO from local (browser) is given below
 
 |upload-iso-from-local.png|
 
-Note that uploading multi-disk Templates is also supported.
+Note that uploading multi-disk Templates is also supported as well as selecting the template/ISO arch type.
 
 Sharing Templates and ISOs with other Accounts/projects
 -------------------------------------------------------
@@ -444,7 +449,7 @@ hypervisor-specific.
 
 
 Adding an ISO
----------------
+-------------
 
 To make additional operating system or other software available for use
 with Guest Instances, you can add an ISO. The ISO is typically thought of as
@@ -542,6 +547,8 @@ part of a Template.
       prominent for Users to select. The ISO will appear in the Featured
       ISOs list. Only an administrator can make an ISO Featured.
 
+   -  **Arch**: The supported arch types are listed. Select the desired one.
+
 #. Click OK.
 
    The Management Server will download the ISO. Depending on the size of
@@ -594,4 +601,6 @@ Attaching an ISO to a Instance
 .. |template-permissions-update-4.png| image:: /_static/images/template-permissions-update-4.png
    :alt: Revoking permsissons from both projects previously added
 .. |template-permissions-update-5.png| image:: /_static/images/template-permissions-update-5.png
-   :alt: Reseting (removing all) permissions
+   :alt: Resetting (removing all) permissions
+.. |iso.png| image:: /_static/images/iso-icon.png
+   :alt: depicts adding an iso image

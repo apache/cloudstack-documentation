@@ -632,7 +632,7 @@ Using OAuth2 Authentication For Users
 
 OAuth2, the industry-standard authorization or authentication framework, simplifies the process of
 granting access to resources. CloudStack supports OAuth2 authentication wherein users can login into
-CloudStack without using username and password. CloudStack currently supports Google and Github providers.
+CloudStack without using username and password. CloudStack currently supports Google and GitHub providers.
 Other OAuth2 providers can be easily integrated with CloudStack using its plugin framework.
 
 For admins, the following are the settings available at global level to configure OAuth2.
@@ -671,12 +671,12 @@ To register the OAuth provider client ID, redirect URI, secret key have to provi
 OAuth 2.0 has to be first configured in the corresponding provider to obtain the client ID, redirect URI, secret Key.
 
 For Google, please follow the instructions mentioned here `"Setting up OAuth 2.0 in Google" <https://support.google.com/cloud/answer/6158849?hl=en>`_.
-For Github, please follow the instructions mentioned here `"Setting up OAuth 2.0 in Github" <https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app>`_.
+For GitHub, please follow the instructions mentioned here `"Setting up OAuth 2.0 in GitHub" <https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app>`_.
 
 In any OAuth 2.0 configuration admin has to use the redirect URI "http://<management server IP>:<port>/#/verifyOauth"
 
 .. Note:: [Google OAuth 2.0 redirect URI] :
-          Google OAuth 2.0 configuration wont accept '#' in the URI, please use "http://<management server Domain>:<port>/?verifyOauth"
+          Google OAuth 2.0 configuration won't accept '#' in the URI, please use "http://<management server Domain>:<port>/?verifyOauth"
           Google does not accept direct IP address in the redirect URI, it must be a domain. As a workaround one can add the management
           server IP to host table in the local system and assign a domain, something like "management.cloud". In that redirect URI looks like
           "http://management.cloud:8080/?verifyOauth"
@@ -808,3 +808,79 @@ The admin can also disable 2FA for a User using the action button as shown below
           will have to either use apikey to disable 2FA using the API setupUserTwoFactorAuthentication with
           enable flag to false or to do the database changes in 'user' table by clearing the columns
           'is_user_2fa_enabled', 'key_for_2fa', 'user_2fa_provider' for the specific entry.
+
+Password Recovery for Users (Forgot Password)
+---------------------------------------------
+
+CloudStack supports password recovery using email. To enable this feature,
+set global setting `user.password.reset.enabled` to `true`. The following
+global settings are available to configure SMTP for password recovery.
+
+
+.. list-table:: Password Recovery Global Settings
+   :header-rows: 1
+
+   * - Global setting
+     - Default
+     - Description
+   * - ``user.password.reset.enabled``
+     - `false`
+     - Determines whether password recovery via email is enabled or not.
+   * - ``user.password.reset.ttl``
+     - `30`
+     - TTL in minutes for the token generated to reset the ACS user's password.
+   * - ``user.password.reset.email.sender``
+     - `null`
+     - Sender for emails sent to the user to reset ACS user's password
+   * - ``user.password.reset.smtp.host``
+     - `null`
+     - Host for SMTP server
+   * - ``user.password.reset.smtp.port``
+     - `25`
+     - Port for SMTP server
+   * - ``user.password.reset.smtp.useAuth``
+     - `false`
+     - Use auth in the SMTP server
+   * - ``user.password.reset.smtp.username``
+     - `null`
+     - Username for SMTP server
+   * - ``user.password.reset.smtp.password``
+     - `null`
+     - Password for SMTP Server
+   * - ``user.password.reset.mail.template``
+     - `Hello {{username}}!`
+       
+       `You have requested to reset your password. Please click the following link to reset your password:``
+       
+       `http://{{{resetLink}}}`
+       
+       `If you did not request a password reset, please ignore this email.`
+
+
+       `Regards,`
+
+       `The CloudStack Team`
+     - Template of mail sent to the user to reset ACS user's password. This uses
+       mustache template engine. Available variables are: `username`, 
+       `firstName`, `lastName`, `resetLink`, `token`.
+
+
+Once the global settings are configured, follow the below steps to reset the
+password for a user:
+
+#. Open the "Forgot Password" link on the login page.
+
+   .. figure:: /_static/images/default-login.png
+      :align:   center
+
+#. Enter your username and domain name and click on "Submit".
+
+   .. figure:: /_static/images/forgot-password.png
+      :align:   center
+
+#. An email will be sent to the User with a link to reset the password.
+
+#. Open the link in the email and set the new password.
+
+   .. figure:: /_static/images/reset-password.png
+      :align:   center

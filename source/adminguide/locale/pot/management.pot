@@ -298,7 +298,7 @@ msgstr ""
 
 #: ../../management.rst:345
 # 653fb8fc18ea4f17ab01fe630ed6783b
-msgid "CloudStack generates a syslog message for every alert. Each syslog message incudes the fields alertType, message, podId, dataCenterId, and clusterId, in the following format. If any field does not have a valid value, it will not be included."
+msgid "CloudStack generates a syslog message for every alert. Each syslog message includes the fields alertType, message, podId, dataCenterId, and clusterId, in the following format. If any field does not have a valid value, it will not be included."
 msgstr ""
 
 #: ../../management.rst:354

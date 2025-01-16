@@ -93,7 +93,7 @@ msgstr "指定一个有效的客户虚拟机CIDR。只有不活动的IP在客户
 # 0710411bb18c4764970dffcc49fe5dab
 #: ../../networking/ip_reservation_in_guest_networks.rst:60
 msgid ""
-"You cannot apply IP Reservation if any VM is alloted with an IP address that"
+"You cannot apply IP Reservation if any VM is allotted with an IP address that"
 " is outside the Guest VM CIDR."
 msgstr "如果任一虚拟机被分配了客户虚拟机CIDR之外的IP地址时，IP预留将不能应用。"
 

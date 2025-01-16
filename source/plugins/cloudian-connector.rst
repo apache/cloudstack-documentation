@@ -29,7 +29,7 @@ their own S3 storage areas.
 Compatibility
 ~~~~~~~~~~~~~
 
-The following table shows the compatiblity of Cloudian Connector with CloudStack.
+The following table shows the compatibility of Cloudian Connector with CloudStack.
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -229,8 +229,7 @@ settings. To enable the connector, ensure that the global setting
 "cloudian.connector.enabled" is set to true. Finally, restart each of the
 management server(s) to reload and enable the connector.
 
-For example, here is how you can restart the CloudStack management server
-installed on CentOS7:
+For example, here is how you can restart the CloudStack management server:
 
    ::
 
