@@ -1505,6 +1505,8 @@ To create a new bucket, click create Bucket, provide the following details, and 
 
 #. Object Store: Select the object store where you want the Bucket to reside
 
+#. Quota in GiB: Enforce a quota on the bucket. This is a mandatory field since 4.21 as it is used to enforce resource limit on object store usage.
+
 Based on the selected Object Store, you can specify additional details like quota, encryption, policy.
 
 |Createbucket.png|
@@ -1544,6 +1546,15 @@ Deleting objects from a bucket
 1. Select the files you want to remove from the bucket.
 
 2. Click on the |delete-button.png| button to delete the selected files from the bucket.
+
+
+Configuring resource limits on buckets and object storage usage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Administrators can enforce limits on the maximum number of buckets they can be created and
+the total object storage space that can be allocated at an account, domain and project level.
+Allocated storage is the sum of quota used by all of the buckets.
+Administrators can do this by going to the configure limits tab in accounts, domains and projects
+similar to when enforcing resource limits on volumes, primary storage usage etc.
 
 Shared FileSystems
 ------------------
