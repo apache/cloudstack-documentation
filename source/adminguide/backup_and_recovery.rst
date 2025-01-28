@@ -217,9 +217,9 @@ Supported APIs:
 .. |B&R-BackupScheduleEntry.png| image:: /_static/images/B&R-BackupScheduleEntry.png
    :alt: Creating a backup schedule for an Instance.
    :width: 400px
-.. |B&R-CreateInstanceFromBackup.png|.png| image:: /_static/images/B&R-CreateInstanceFromBackup.png
+.. |B&R-CreateInstanceFromBackup.png| image:: /_static/images/B&R-CreateInstanceFromBackup.png
    :alt: Creating a new Instance from a backup.
    :width: 300px
-.. |B&R-ConfigureInstance.png|.png|.png| image:: /_static/images/B&R-ConfigureInstance.png
+.. |B&R-ConfigureInstance.png| image:: /_static/images/B&R-ConfigureInstance.png
    :alt: Configure Instance parameters before creating it from backup.
    :width: 400px
