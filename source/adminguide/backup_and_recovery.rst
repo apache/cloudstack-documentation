@@ -161,6 +161,27 @@ of an expunged Instance will not restore nics and recovery any network which may
 not exist. User may however restore a specific volume from an Instance backup and attach
 that volume to a specified Instance.
 
+Creating a new Instance from Backup
+-----------------------------------
+
+Since 4.21, Users can create a new Instance from a backup. The backup table will also store
+the instance configuration details at the time of taking the backup such as service offering,
+template, disk offering of all data volumes, networks attached to etc.
+The new Instance will be created with the same configuration as the original Instance
+from which the backup was taken with all the data from the backup.
+
+|B&R-CreateInstanceFromBackup.png|
+
+Users can also choose to configure the new Instance with different parameters similar to while deploying a new Instance.
+The form will be initially prefilled with the values stored in the backup.
+
+|B&R-ConfigureInstance.png|
+
+This will also work if the original Instance and the volumes used to create the backup are expunged.
+If one or few of the resources stored in the backup such as template, networks etc are no longer available
+in the system, the user will be prompted to reconfigure the Instance before creating it from backup.
+This feature is supported for Dummy, NAS and Veeam plugins.
+
 Supported APIs:
 ~~~~~~~~~~~~~~~~
 
@@ -195,4 +216,10 @@ Supported APIs:
    :width: 400 px
 .. |B&R-BackupScheduleEntry.png| image:: /_static/images/B&R-BackupScheduleEntry.png
    :alt: Creating a backup schedule for an Instance.
+   :width: 400px
+.. |B&R-CreateInstanceFromBackup.png|.png| image:: /_static/images/B&R-CreateInstanceFromBackup.png
+   :alt: Creating a new Instance from a backup.
+   :width: 300px
+.. |B&R-ConfigureInstance.png|.png|.png| image:: /_static/images/B&R-ConfigureInstance.png
+   :alt: Configure Instance parameters before creating it from backup.
    :width: 400px
