@@ -219,7 +219,7 @@ Supported APIs:
    :width: 400px
 .. |B&R-CreateInstanceFromBackup.png| image:: /_static/images/B&R-CreateInstanceFromBackup.png
    :alt: Creating a new Instance from a backup.
-   :width: 300px
+   :width: 400px
 .. |B&R-ConfigureInstance.png| image:: /_static/images/B&R-ConfigureInstance.png
    :alt: Configure Instance parameters before creating it from backup.
-   :width: 400px
+   :width: 700px
