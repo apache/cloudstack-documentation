@@ -22,6 +22,8 @@ Within a zone that uses advanced networking, you need to tell the
 Management Server how the physical Network is set up to carry different
 kinds of traffic in isolation.
 
+You can configure a zone with multiple Physical Networks having guest traffic type. In such zones, we need to tag the additional Physical networks. We must have one Physical Network that is not tagged for isolated/L2 network offerings not configured with any tags. For example the default network offerings.  
+
 
 Configure Guest Traffic in an Advanced Zone
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
