@@ -1886,10 +1886,16 @@ Configurations can also be set at more granular levels.
 All local settings can be configured at a global level as well.
 If set, the local setting takes precedence over the global setting.
 
-Some configurations might be available to be set at multiple levels.
-For example, the 'pool.storage.capacity.disablethreshold' configuration
-parameter can be set at the Zone level and the Primary Storage level.
-Here also the more granular setting (Primary Storage) will override the broader setting (Zone).
+Some configurations can be set at multiple levels.
+For example, the following configuration parameters can be set at the
+Zone level and the Primary Storage level.
+
+* pool.storage.capacity.disablethreshold
+* pool.storage.allocated.resize.capacity.disablethreshold
+* pool.storage.capacity.disablethreshold
+
+In this case also the more granular setting (Primary Storage)
+overrides the broader setting (Zone).
 
 Use the following steps to set local configuration parameters
 
