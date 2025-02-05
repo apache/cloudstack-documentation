@@ -1430,11 +1430,19 @@ StorPool Plug-in
 ~~~~~~~~~~~~~~~~
 
 .. note::
-   The StorPool storage plug-in for CloudStack is part of the standard
-   CloudStack install. There is no additional work required to add this
-   component.
+   The StorPool storage plug-in for CloudStack described here is part of
+   the standard installation for CloudStack versions 4.17.0.0 and newer.
+   There is no additional work required to add this component.
 
-The StorPool plug-in is deeply integrated with CloudStack and works on with KVM hypervisors.
+   In case you use a version before 4.17.0.0, you should install the
+   StorPool plug-in provided in the `StorPool CloudStack
+   <https://github.com/storpool/storpool-cloudstack-integration/>`_
+   repository.
+
+The StorPool plug-in is deeply integrated with CloudStack and works with KVM
+hypervisors. For more information on how you can accelerate your CloudStack
+deployment using CloudStack and StorPool together, see the `StorPool
+<https://storpool.com/cloudstack>`_ site.
 
 When used with service or disk offerings, an administrator is able to
 build an environment in which a root or data disk that a user creates
@@ -1442,41 +1450,14 @@ leads to the dynamic creation of a StorPool volume, which has guaranteed
 performance. Such a StorPool volume is associated with one CloudStack volume,
 so performance of the CloudStack volume does not vary depending on how
 heavily other tenants are using the system. The volume migration is supported
-across non-managed storage pools (e.g. NFS/Local storage/Ceph) to StorPool, and
-across StorPool storage pools.
+accross non-managed storage pools (e.g. NFS/Local storage/Ceph) to StorPool, and
+accross StorPool storage pools.
 
-More technical details could be found on `StorPool Knowledge Base <https://kb.storpool.com/>`_.
-
-The createStoragePool API has been augmented to support pluggable storage providers.
-The following is a list of parameters to use when adding storage to CloudStack that is based on the StorPool plug-in:
-
-command=createStoragePool
-scope=[zone]
-zoneid=[your zone id]
-hypervisor=KVM
-name=[name for primary storage]
-protocol=SharedMountPoint
-provider=StorPool
-capacityBytes=[used for accounting purposes only. May be more or less than the actual StorPool Template capacity]
-url=[storage pool url]
-The url parameter contains the StorPool storage pool details, specified in the following format:
-
-SP_API_HTTP=address:port;SP_AUTH_TOKEN=token;SP_TEMPLATE=template_name
-
--       <SP_API_HTTP>=[address of StorPool Api]
--       <SP_AUTH_TOKEN>=[StorPool's token]
--       <SP_TEMPLATE>=[name of StorPool's Template]
-
-================================= ====================================================================================================================================================================
-StorPool Configurations                     Description
-================================= ====================================================================================================================================================================
-sp.bypass.secondary.storage       For StorPool Managed storage backup to secondary
-sp.cluster.id                     For StorPool multi cluster authorization (It will be set automatically for each cluster)
-sp.enable.alternative.endpoint    Used for StorPool primary storage, defines if there is a need to be used alternative endpoint
-sp.alternative.endpoint           Used for StorPool primary storage for an alternative endpoint. Structure of the endpoint is `SP_API_HTTP=address:port; SP_AUTH_TOKEN=token; SP_TEMPLATE=template_name`
-storpool.volume.tags.checkup      Minimal interval (in seconds) to check and report if a StorPool volume created by CloudStack exists in CloudStack's database
-storpool.snapshot.tags.checkup    Minimal interval (in seconds) to check and report if a StorPool Snapshot created by CloudStack exists in CloudStack's database
-================================= ====================================================================================================================================================================
+For detailed information about *Command*, *Scope*, *Hypervisor*, and other
+parameters you need to specify when setting up the StorPool plug-in, see the
+`CloudStack integration
+<https://kb.storpool.com/storpool_integrations/github/cloudstack.html>`_
+documentation.
 
 HPE Primera/3PAR Plug-in
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
