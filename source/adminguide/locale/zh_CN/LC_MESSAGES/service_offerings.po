@@ -567,7 +567,7 @@ msgstr "QoS　类型。三种可选：空 （ 无服务质量）， hypervisor �
 msgid ""
 "Custom IOPS. If checked, the user can set their own IOPS. If not checked, "
 "the root administrator can define values. If the root admin does not set "
-"values when using storage QoS, default values are used (the defauls can be "
+"values when using storage QoS, default values are used (the defaults can be "
 "overridden if the proper parameters are passed into CloudStack when creating"
 " the primary storage in question)."
 msgstr "订制 IOPS 。 如选中，用户可以设置自己的 IOPS。如未被选中，root 管理员则能够定义该值。如果使用存储 QoS时，root 管理员没有设置该值，则采用默认值（如果创建主存储时考虑到对应的参数被传递到 CloudStack 中，则默认值将被覆盖）"

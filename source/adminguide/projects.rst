@@ -205,17 +205,35 @@ Setting the Global Project Resource Limits
 
    .. cssclass:: table-striped table-bordered table-hover
 
-   +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
-   | max.project.public.ips   | Maximum number of public IP addresses that can be owned by any project in the cloud. See About Public IP Addresses.          |
-   +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
-   | max.project.snapshots    | Maximum number of Snapshots that can be owned by any project in the cloud. See Working with Snapshots.                       |
-   +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
-   | max.project.templates    | Maximum number of Templates that can be owned by any project in the cloud. See Working with Templates.                       |
-   +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
-   | max.project.uservms      | Maximum number of guest Instances that can be owned by any project in the cloud. See Working With Instances.                 |
-   +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
-   | max.project.volumes      | Maximum number of data volumes that can be owned by any project in the cloud. See Working with Volumes.                      |
-   +--------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+   | max.project.public.ips      | Default maximum number of public IP addresses that can be owned by any project in the cloud. See About Public IP Addresses. |
+   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+   | max.project.snapshots       | Default maximum number of Snapshots that can be owned by any project in the cloud. See Working with Snapshots.              |
+   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+   | max.project.templates       | Default maximum number of Templates that can be owned by any project in the cloud. See Working with Templates.              |
+   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+   | max.project.uservms         | Default maximum number of guest Instances that can be owned by any project in the cloud. See Working With Instances.        |
+   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+   | max.project.volumes         | Default maximum number of data volumes that can be owned by any project in the cloud. See Working with Volumes.             |
+   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+   | max.project.networks        | Default maximum number of networks that can be owned by any project in the cloud.                                           |
+   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+   | max.project.vpcs            | Default maximum number of vpcs that can be owned by any project in the cloud.                                               |
+   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+   | max.project.cpus            | Default maximum number of cpu cores that can be owned by any project in the cloud.                                          |
+   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+   | max.project.memory          | Default maximum memory (in MB) that can be used by any project in the cloud.                                                |
+   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+   | max.project.primary.storage | Default maximum primary storage space (in GiB) that can be used by any project in the cloud.                                |
+   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+   | max.project.backups         | Default maximum number of backups that can be owned by any project in the cloud.                                            |
+   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+   | max.project.backup.storage  | Default maximum backup storage (in GiB) that can be used by any project in the cloud.                                       |
+   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+   | max.project.buckets         | Default maximum number of buckets that can be owned by any project in the cloud.                                            |
+   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+   | max.project.object storage  | Default maximum Object storage (in GiB) that can be used by any project in the cloud.                                       |
+   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------------+
 
 
 #. Restart the Management Server.
@@ -292,7 +310,7 @@ Working with Project Roles
 --------------------------
 CloudStack allows adding project members with a desired project role. A
 project role will be assigned to the member in addition to their base
-account role. Project Roles are retrictive in nature and can be used to
+account role. Project Roles are restrictive in nature and can be used to
 further restrict certain API access to the members within the project.
 It is important to note that a project role cannot be used to elevate an
 existing user's permissions. Project roles can be created or managed

@@ -434,7 +434,7 @@ The following command creates the cloud user on the database.
       want to expose your root credentials but still want the database to
       be prepared for first start up. These skipped steps will have had to be
       done manually prior to executing this script. This behaviour can be
-      envoked by passing the --schema-only flag. This flag conflicts with the
+      invoked by passing the --schema-only flag. This flag conflicts with the
       --deploy-as flag so the two cannot be used together. To set up the
       databases and user manually before executing the script with the flag,
       these commands can be executed:

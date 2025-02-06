@@ -204,7 +204,7 @@ Using Appliance for development
 -------------------------------
 
 The Installing from source section will only get you to the point of
-runnign the management server, it does not get you any hypervisors. The
+running the management server, it does not get you any hypervisors. The
 simulator section gets you a simulated datacenter for testing. An appliance
 based development such as using ``mbx`` can allow you to run at least one
 hypervisor and add it to your management server the way you would a real physical machine.
@@ -281,14 +281,14 @@ learn the extent of the API. Multiple clients exist on
 `GitHub <https://github.com/search?q=cloudstack+client&ref=cmdform>`__
 to use this API, you should be able to find one in your favorite
 language. The reference documentation for the API and changes that might
-occur from version to version is availble
+occur from version to version is available
 `on-line <http://cloudstack.apache.org/docs/en-US/Apache_CloudStack/4.1.1/html/Developers_Guide/index.html>`__.
 This short section is aimed at providing a quick summary to give you a
 base understanding of how to use this API. As a quick start, a good way
 to explore the API is to navigate the dashboard with a firebug console
 (or similar developer console) to study the queries.
 
-In a succint statement, the CloudStack query API can be used via http
+In a succinct statement, the CloudStack query API can be used via http
 GET requests made against your cloud endpoint (e.g
 http://localhost:8080/client/api). The API name is passed using the
 ``command`` key and the various parameters for this API call are passed
@@ -315,7 +315,7 @@ Open a Python shell and import the basic modules necessary to make the
 request. Do note that this request could be made many different ways,
 this is just a low level example. The ``urllib*`` modules are used to
 make the http request and do url encoding. The ``hashlib`` module gives
-us the sha1 hash function. It used to geenrate the ``hmac`` (Keyed
+us the sha1 hash function. It used to generate the ``hmac`` (Keyed
 Hashing for Message Authentication) using the secretkey. The result is
 encoded using the ``base64`` module.
 

@@ -964,7 +964,7 @@ msgstr ""
 
 #: ../../managing_networks.rst:638
 # 191010bd30424f3aa12cf309a48dcfc4
-msgid "You cannot apply IP Reservation if any VM is alloted with an IP address that is outside the Guest VM CIDR."
+msgid "You cannot apply IP Reservation if any VM is allotted with an IP address that is outside the Guest VM CIDR."
 msgstr ""
 
 #: ../../managing_networks.rst:643
@@ -5090,7 +5090,7 @@ msgstr ""
 
 #: ../../managing_networks.rst:4657
 # 37506050acaf40fda04742118858f794
-msgid "The administrator can deploy a set of VLANs and allow users to deploy VMs on these VLANs. A guest VLAN is randomly alloted to an account from a pre-specified set of guest VLANs. All the VMs of a certain tier of an account reside on the guest VLAN allotted to that account."
+msgid "The administrator can deploy a set of VLANs and allow users to deploy VMs on these VLANs. A guest VLAN is randomly allotted to an account from a pre-specified set of guest VLANs. All the VMs of a certain tier of an account reside on the guest VLAN allotted to that account."
 msgstr ""
 
 #: ../../managing_networks.rst:4662

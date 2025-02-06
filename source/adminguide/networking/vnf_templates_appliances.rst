@@ -15,14 +15,14 @@
 
 
 VNF Templates and Appliances
-=======================
+============================
 
 Virtualized Network Functions (VNFs) refers to virtualized software applications
 which offers network services, for example routers, firewalls, load balancers.
 
 
 Adding a VNF template from an URL
--------
+-----------------------------------------------------------
 
 To create a VNF appliance, user needs to register a VNF template and add VNF settings.
 
@@ -44,7 +44,7 @@ the same page or under Network -> VNF templates.
 
 
 Updating a VM template to VNF template
--------
+-----------------------------------------------------------
 
 Users are able to update an existing VM template, which is uploaded from
 HTTP server or local, or created from volume, to be a VNF template.
@@ -63,7 +63,7 @@ HTTP server or local, or created from volume, to be a VNF template.
 
 
 Updating the VNF settings of a VNF template
--------------------
+-----------------------------------------------------------
 
 Users need to add the VNF nics and VNF details of the VNF templates.
 
@@ -115,7 +115,7 @@ Users need to add the VNF nics and VNF details of the VNF templates.
 
 
 Deploying VNF appliances
--------------------
+-----------------------------------------------------------
 
 #. Log in to the CloudStack UI as an administrator or end user.
 
@@ -147,15 +147,15 @@ Deploying VNF appliances
      The following network rules will be applied.
 
      - If management network is an isolated network, CloudStack will acquire a public
-     IP, enable static nat on the VNF appliance, and create firewall rules to allow
-     traffic to ssh/http/https ports based on access_methods in VNF template details.
+       IP, enable static nat on the VNF appliance, and create firewall rules to allow
+       traffic to ssh/http/https ports based on access_methods in VNF template details.
 
      - If management network is a shared network with security groups, CloudStack will
-     create a new security group with rules to allow traffic to ssh/http/https ports 
-     based on access_methods in VNF template details, and assign to the VNF appliance.
+       create a new security group with rules to allow traffic to ssh/http/https ports
+       based on access_methods in VNF template details, and assign to the VNF appliance.
 
      - If management network is a L2 network, VPC tier or Shared network without security
-     groups, no network rules will be configured.
+       groups, no network rules will be configured.
 
 
 #. Click on the "Launch VNF appliance" button

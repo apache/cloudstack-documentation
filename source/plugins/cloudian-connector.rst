@@ -29,7 +29,7 @@ their own S3 storage areas.
 Compatibility
 ~~~~~~~~~~~~~
 
-The following table shows the compatiblity of Cloudian Connector with CloudStack.
+The following table shows the compatibility of Cloudian Connector with CloudStack.
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -156,7 +156,15 @@ Cloudian ships with SSO disabled by default. You will need to enable it on each
 CMC server. Additionally, you will need to choose a unique SSO shared key that
 you will also configure in the CloudStack connector further below.
 
-Edit Puppet config to enable SSO on all CMC servers:
+HyperStore 8+ instructions to enable SSO on all CMC servers:
+
+   ::
+
+     # hsctl config set cmc.sso.enabled=true
+     # hsctl config set cmc.sso.sharedKey=YourSecretKeyHere
+     # hsctl config apply cmc
+
+Older HyperStore versions use Puppet. Edit Puppet config to enable SSO on all CMC servers:
 
    ::
 
@@ -229,8 +237,7 @@ settings. To enable the connector, ensure that the global setting
 "cloudian.connector.enabled" is set to true. Finally, restart each of the
 management server(s) to reload and enable the connector.
 
-For example, here is how you can restart the CloudStack management server
-installed on CentOS7:
+For example, here is how you can restart the CloudStack management server:
 
    ::
 

@@ -68,7 +68,7 @@ msgstr ""
 
 #: ../../networking/ip_reservation_in_guest_networks.rst:60
 # 0710411bb18c4764970dffcc49fe5dab
-msgid "You cannot apply IP Reservation if any VM is alloted with an IP address that is outside the Guest VM CIDR."
+msgid "You cannot apply IP Reservation if any VM is allotted with an IP address that is outside the Guest VM CIDR."
 msgstr ""
 
 #: ../../networking/ip_reservation_in_guest_networks.rst:63

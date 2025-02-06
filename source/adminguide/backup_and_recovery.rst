@@ -31,7 +31,7 @@ The following providers are currently supported:
 - KVM with NAS B&R Plugin (4.20 onwards)
 
 See the Veeam Backup and Recovery plugin documentation for plugin specific information.
-:ref:`Veeam Backup and Recovery Plugin`
+:ref:`Veeam Backup and Replication Plugin`
 
 See the DELL EMC Networker Backup and Recovery plugin documentation for plugin specific information.
 :ref:`DELL EMC Networker Backup and Recovery Plugin`
@@ -92,7 +92,7 @@ Backup Offerings
 ------------------
 
 Admins can import an external provider's backup offerings using UI or API for a
-particular zone, as well as manage a backup offering's lifecyle. Admins can also
+particular zone, as well as manage a backup offering's lifecycle. Admins can also
 specify if a backup offering allows user-defined backup schedules and ad-hoc
 backups. Users can list and consume the imported backup offerings, only root admins can import or
 delete offerings.
@@ -144,12 +144,12 @@ icon.
 
 |B&R-createBackup.png|
 
-To setup a recurring backup schedule, navigate to the Instance and click on the 'Backup Schedule'
+To setup a recurring backup schedule, navigate to the Instance and click on the 'Configure Backup Schedule'
 icon.
 
 |B&R-BackupSchedule.png|
 
-Then set the time and frequency of the backups, click 'Configure' and then 'Close'
+Then set the Interval type, timezone, time of taking the backup and maximum numbers of backups to retain.
 
 |B&R-BackupScheduleEntry.png|
 
@@ -177,6 +177,21 @@ Supported APIs:
 - **restoreBackup**: restore a previous Instance backup in-place of a stopped or destroyed Instance.
 - **restoreVolumeFromBackupAndAttachToVM**: restore and attach a backed-up volume (of an Instance backup) to a specified Instance.
 
+
+Configuring resource limits on Backups
+--------------------------------------
+Administrators can enforce limits on the maximum number of backups that can be taken and
+the total backup storage size that can be used at an account, domain and project level.
+Administrators can do this by going to the configure limits tab in accounts, domains and projects
+similar to when enforcing resource limits on volumes, primary storage usage etc.
+
+Unlike other resources like volumes, backup limits take into account the physical used size
+and not the allocated size of the backup. This is because the backup once taken can never
+grow into the allocated size. At the time of backup creation, Cloudstack doesn't know the
+size of the backup that will be taken, so it uses the physical size of the volumes to be
+backed up from Volume Stats to calculate the backup size for checking resource limits.
+If Volume Stats are not present, then the virtual size of the volumes is used to calculate
+the backup size, although the actual backup size may be less than the size use to do resource limit check.
 
 .. |B&R-assignOffering.png| image:: /_static/images/B&R-assignOffering.png
    :alt: Assigning an SLA/Policy to an Instance.
