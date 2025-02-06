@@ -1874,7 +1874,7 @@ deployment.
 Setting Local Configuration Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Configurations can also be set at more granular levels.
+Configurations can also be set at more granular levels or scopes.
 
 #. Domain
 #. Account
@@ -1886,9 +1886,9 @@ Configurations can also be set at more granular levels.
 All local settings can be configured at a global level as well.
 If set, the local setting takes precedence over the global setting.
 
-Some configurations can be set at multiple levels.
+Some configurations can be set at multiple levels or scopes.
 For example, the following configuration parameters can be set at the
-Zone level and the Primary Storage level.
+Zone scope and the Primary Storage scope.
 
 * pool.storage.capacity.disablethreshold
 * pool.storage.allocated.resize.capacity.disablethreshold
