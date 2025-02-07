@@ -15,7 +15,10 @@ CloudStack Kubernetes Service
 
 The Kubernetes Service plugin adds Kubernetes integration to CloudStack. The plugin is disabled by default and an admin can enable it using a Global Setting. It enables users to run containerized services using Kubernetes clusters.
 
-With CoreOS having reached EOL, from 4.16 the Kubernetes Service Plugin will use the existing SystemVM Template for deploying kubernetes clusters. For installation of Kubernetes binaries on the cluster nodes, a binaries ISO is used for each Kubernetes version to be made available via CloudStack. This allows faster, offline installation of Kubernetes binaries and docker images along with support for adding multiple versions of Kubernetes for upgrades and running different clusters.
+With CoreOS having reached EOL, from 4.16 the Kubernetes Service Plugin will use the existing SystemVM Template by default for deploying kubernetes clusters. For installation of Kubernetes binaries on the cluster nodes, a binaries ISO is used for each Kubernetes version to be made available via CloudStack. This allows faster, offline installation of Kubernetes binaries and docker images along with support for adding multiple versions of Kubernetes for upgrades and running different clusters.
+
+.. note::
+   Since version 4.21.0 users can choose different templates for different types of nodes (worker, control, etcd nodes) for deploying Kubernetes clusters. These templates must be previously registered selecting the 'For CKS' option.
 
 For deployment and setup of Kubernetes on cluster nodes, the plugin uses the Kubernetes tool, 'kubeadm'. kubeadm is the command-line tool for easily provisioning a secure Kubernetes cluster on top of physical or cloud servers or Instances. Under the hood, control node(s) of the cluster starts a Kubernetes cluster using kubeadm init command with a custom token, and worker nodes join this Kubernetes cluster using kubeadm join command with the same token. More about kubeadm here: https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/. Weave Net CNI provider plugin is used for cluster networking. More about Weave Net provide plugin here: https://www.weave.works/docs/net/latest/kubernetes/kube-addon/.
 
@@ -91,6 +94,9 @@ Adding supported Kubernetes version
 Once the ISO has been built for a desired Kubernetes version, it can be added by the admin in the service for cluster deployment using both the UI and API. The UI provides the following form to add new supported version:
 
 |cks-add-version-form.png|
+
+.. note::
+   Since 4.21.0 it is possible to deploy separate dedicated etcd nodes. This requires the Kubernetes ISO contains the etcd binaries.
 
 addKubernetesSupportedVersion API can be used by an admin to add a new supported version for the service. It takes following input parameters:
 
@@ -194,6 +200,13 @@ New Kubernetes clusters can be created using the API or via the UI. User will be
 
 |cks-create-cluster-form.png|
 
+Since 4.21.0, users will be provided with an additional section displayed when toggling the option: 'Show Advanced Settings'. On this section, users can select templates and service offerings for:
+- Worker nodes
+- Control nodes
+- Etcd nodes (if one or more are selected, no etcd nodes are selected by default)
+
+|cks-create-cluster-additional-settings.png|
+
 createKubernetesCluster API can be used to create new Kubernetes cluster. It takes following parameters as input,
 
 - **name** (name for the Kubernetes cluster; Required)
@@ -215,6 +228,9 @@ createKubernetesCluster API can be used to create new Kubernetes cluster. It tak
 - **dockerregistrypassword** (password for the docker image private registry; Experimental)
 - **dockerregistryurl** (URL for the docker image private registry; Experimental)
 - **dockerregistryemail** (email of the docker image private registry user; Experimental)
+- **nodeofferings**: an optional map parameter to set the service offerings for worker, control or etcd nodes. If this parameter is not set, then every VM in the cluster will be deployed using the default service offering set on the serviceofferingid parameter.
+- **etcdnodes**: an optional integer parameter to specify the number etcd nodes in the cluster, the default value is 0. In case the number is greater than 0, etcd nodes are separate from master nodes and are provisioned accordingly.
+- **nodetemplates**: an optional map parameter to set the template to be used by worker, control or etcd nodes. If this parameter is not set, then every VM in the cluster will be deployed using the System VM template.
 
 For example:
 
@@ -417,6 +433,8 @@ To remove an Instance from an ExternalManaged Kubernetes cluster:
    :alt: Kubernetes clusters list.
 .. |cks-create-cluster-form.png| image:: /_static/images/cks-create-cluster-form.png
    :alt: Create Kubernetes Cluster form.
+.. |cks-create-cluster-additional-settings.png| image:: /_static/images/cks-create-cluster-additional-settings.png
+   :alt: Create Kubernetes Cluster form with Advanced Settings.
 .. |cks-delete-action.png| image:: /_static/images/cks-delete-action.png
    :alt: Delete action icon.
 .. |cks-kube-config-action.png| image:: /_static/images/cks-kube-config-action.png
