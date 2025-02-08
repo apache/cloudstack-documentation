@@ -493,7 +493,7 @@ Basic Zone Configuration
 
       Before adding the host in CloudStack do the following,
 
-         - Copy the SSH public key from /var/cloudstack/management/.ssh/id_rsa.pub on the management server
+         - Copy the SSH public key from /var/lib/cloudstack/management/.ssh/id_rsa.pub on the management server
          - Add the copied key to /root/.ssh/authorized_keys file on the host
 
       Select "System SSH Key" and proceed with next steps.
