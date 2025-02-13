@@ -1893,6 +1893,7 @@ Zone scope and the Primary Storage scope.
 * pool.storage.capacity.disablethreshold
 * pool.storage.allocated.resize.capacity.disablethreshold
 * pool.storage.capacity.disablethreshold
+* volume.resize.allowed.beyond.allocation
 
 In this case also the more granular setting (Primary Storage)
 overrides the broader setting (Zone).
