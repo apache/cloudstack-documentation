@@ -323,7 +323,7 @@ msgstr ""
 
 #: ../../developer_guide.rst:334
 # d99c1e63a66443539d663a0cba7beca0
-msgid "The Installing from source section will only get you to the point of runnign the management server, it does not get you any hypervisors. The simulator section gets you a simulated datacenter for testing. With DevCloud you can run at least one hypervisor and add it to your management server the way you would a real physical machine."
+msgid "The Installing from source section will only get you to the point of running the management server, it does not get you any hypervisors. The simulator section gets you a simulated datacenter for testing. With DevCloud you can run at least one hypervisor and add it to your management server the way you would a real physical machine."
 msgstr ""
 
 #: ../../developer_guide.rst:340
@@ -443,12 +443,12 @@ msgstr ""
 
 #: ../../developer_guide.rst:460
 # 7c104d4cd0fe475e863b91f53449a5c5
-msgid "The CloudStack API is a query based API using http that return results in XML or JSON. It is used to implement the default web UI. This API is not a standard like `OGF OCCI <http://www.ogf.org/gf/group_info/view.php?group=occi-wg>`__ or `DMTF CIMI <http://dmtf.org/standards/cloud>`__ but is easy to learn. Mapping exists between the AWS API and the CloudStack API as will be seen in the next section. Recently a Google Compute Engine interface was also developed that maps the GCE REST API to the CloudStack API described here. The API `docs <https://cloudstack.apache.org/api.html>`__ are a good start to learn the extent of the API. Multiple clients exist on `GitHub <https://github.com/search?q=cloudstack+client&ref=cmdform>`__ to use this API, you should be able to find one in your favorite language. The reference documentation for the API and changes that might occur from version to version is availble `on-line <http://cloudstack.apache.org/docs/en-US/Apache_CloudStack/4.1.1/html/Developers_Guide/index.html>`__. This short section is aimed at providing a quick summary to give you a base understanding of how to use this API. As a quick start, a good way to explore the API is to navigate the dashboard with a firebug console (or similar developer console) to study the queries."
+msgid "The CloudStack API is a query based API using http that return results in XML or JSON. It is used to implement the default web UI. This API is not a standard like `OGF OCCI <http://www.ogf.org/gf/group_info/view.php?group=occi-wg>`__ or `DMTF CIMI <http://dmtf.org/standards/cloud>`__ but is easy to learn. Mapping exists between the AWS API and the CloudStack API as will be seen in the next section. Recently a Google Compute Engine interface was also developed that maps the GCE REST API to the CloudStack API described here. The API `docs <https://cloudstack.apache.org/api.html>`__ are a good start to learn the extent of the API. Multiple clients exist on `GitHub <https://github.com/search?q=cloudstack+client&ref=cmdform>`__ to use this API, you should be able to find one in your favorite language. The reference documentation for the API and changes that might occur from version to version is available `on-line <http://cloudstack.apache.org/docs/en-US/Apache_CloudStack/4.1.1/html/Developers_Guide/index.html>`__. This short section is aimed at providing a quick summary to give you a base understanding of how to use this API. As a quick start, a good way to explore the API is to navigate the dashboard with a firebug console (or similar developer console) to study the queries."
 msgstr ""
 
 #: ../../developer_guide.rst:481
 # 0bcb8dd851254f9b9b0240917b405d84
-msgid "In a succint statement, the CloudStack query API can be used via http GET requests made against your cloud endpoint (e.g http://localhost:8080/client/api). The API name is passed using the ``command`` key and the various parameters for this API call are passed as key value pairs. The request is signed using the access key and secret key of the user making the call. Some calls are synchronous while some are asynchronous, this is documented in the API `docs <https://cloudstack.apache.org/api.html>`__. Asynchronous calls return a ``jobid``, the status and result of a job can be queried with the ``queryAsyncJobResult`` call. Let's get started and give an example of calling the ``listUsers`` API in Python."
+msgid "In a succinct statement, the CloudStack query API can be used via http GET requests made against your cloud endpoint (e.g http://localhost:8080/client/api). The API name is passed using the ``command`` key and the various parameters for this API call are passed as key value pairs. The request is signed using the access key and secret key of the user making the call. Some calls are synchronous while some are asynchronous, this is documented in the API `docs <https://cloudstack.apache.org/api.html>`__. Asynchronous calls return a ``jobid``, the status and result of a job can be queried with the ``queryAsyncJobResult`` call. Let's get started and give an example of calling the ``listUsers`` API in Python."
 msgstr ""
 
 #: ../../developer_guide.rst:493
@@ -458,7 +458,7 @@ msgstr ""
 
 #: ../../developer_guide.rst:504
 # f06d2f79776845b69c69945a988dc02d
-msgid "Open a Python shell and import the basic modules necessary to make the request. Do note that this request could be made many different ways, this is just a low level example. The ``urllib*`` modules are used to make the http request and do url encoding. The ``hashlib`` module gives us the sha1 hash function. It used to geenrate the ``hmac`` (Keyed Hashing for Message Authentication) using the secretkey. The result is encoded using the ``base64`` module."
+msgid "Open a Python shell and import the basic modules necessary to make the request. Do note that this request could be made many different ways, this is just a low level example. The ``urllib*`` modules are used to make the http request and do url encoding. The ``hashlib`` module gives us the sha1 hash function. It used to generate the ``hmac`` (Keyed Hashing for Message Authentication) using the secretkey. The result is encoded using the ``base64`` module."
 msgstr ""
 
 #: ../../developer_guide.rst:524
@@ -488,7 +488,7 @@ msgstr ""
 
 #: ../../developer_guide.rst:598
 # 4bf1c04a89934aca9d24a5a585888739
-msgid "While the native CloudStack API is not a standard, CloudStack provides a AWS EC2 compatible interface. It has the great advantage that existing tools written with EC2 libraries can be re-used against a CloudStack based cloud. In the installation books we described how to run this interface from installing packages. In this section we show you how to compile the interface with ``maven`` and test it with Python boto module."
+msgid "While the native CloudStack API is not a standard, CloudStack provides a AWS EC2 compatible interface. It has the great advantage that existing tools written with EC2 libraries can be reused against a CloudStack based cloud. In the installation books we described how to run this interface from installing packages. In this section we show you how to compile the interface with ``maven`` and test it with Python boto module."
 msgstr ""
 
 #: ../../developer_guide.rst:606

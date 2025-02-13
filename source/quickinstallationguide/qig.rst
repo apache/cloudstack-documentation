@@ -40,7 +40,8 @@ get you up and running with CloudStack with a minimum amount of trouble.
       The requirement is that you enable "Enable Nested VT-x/AMD-V" as the Extended Feature on the System page of the Settings of the Instance.
       You will want to create an Instance of "Red Hat (64-bit)" type and 40+GB disk space.
       You will need to have 1 NIC in your Instance, bridged to the NIC of your laptop/desktop
-      (wifi or wired NIC, doesn't matter), and optimally to set Adapter Type="Paravirtualized Network (virtio-net)"
+      (bridging to a wireless adapter does frequently cause connectivity issues, so avoid it, and instead bridge to the wired adapted), 
+      and optimally to set Adapter Type="Paravirtualized Network (virtio-net)"
       for somewhat better network performance (Settings of Instance, Network section, Adapter1,
       expand "Advanced"). Make sure the NIC on your Instance is configured as promiscuous (in VirtualBox,
       choose "Allow All" or just "Allow Instances" as the Promiscuous Mode), so that it can pass traffic from
@@ -48,13 +49,11 @@ get you up and running with CloudStack with a minimum amount of trouble.
       enough CPU cores (3+) for demo purposes.
       
       
-High level overview of the process
+High-level overview of the process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This guide will focus on building a CloudStack cloud using KVM on CentOS 
-7.9 with NFS storage and layer-2 isolation using VLANs,
-(flat home network can be used for this as well) and on a single piece of 
-hardware (server/VM)
+This guide will focus on building a CloudStack cloud using KVM on an EL8 distro with NFS storage and layer-2 isolation using VLANs,
+(flat home network can be used for this as well) and on a single piece of hardware (server/VM)
 
 KVM, or Kernel-based Virtual Machine is a virtualization technology for the 
 Linux kernel. KVM supports native virtualization atop processors with hardware 
@@ -68,8 +67,11 @@ To complete this guide you'll need the following items:
 
 #. At least one computer which supports and has enabled hardware virtualization.
 
-#. An `CentOS 7.9 minimal x86_64 install ISO, on bootable media
-   <http://isoredirect.centos.org/centos/7/isos/x86_64/>`_
+#. A minimal EL8 distro like 
+
+   #. Oracle Linux 8 - https://yum.oracle.com/oracle-linux-isos.html 
+   #. Rocky Linux 8 - https://rockylinux.org/download 
+   #. AlmaLinux OS 8 - https://almalinux.org/get-almalinux/ 
 
 #. A /24 network with the gateway being at (e.g.) xxx.xxx.xxx.1, no DHCP is needed 
    on this network and none of the computers running CloudStack will have a 
@@ -86,8 +88,7 @@ CloudStack. We will go over the steps to prepare now.
 Operating System
 ~~~~~~~~~~~~~~~~
 
-Using the CentOS 7.9.2009 minimal x86_64 install ISO, you'll need to install
-CentOS 7 on your hardware. The defaults will generally be acceptable for this
+Install preferred EL8 distro on your hardware. The defaults will generally be acceptable for this
 installation - but make sure to configure IP address/parameters so that you can later install needed
 packages from the internet. Later, we will change the Network configuration as needed.
 
@@ -97,7 +98,7 @@ server - through SSH.
 It is always wise to update the system before starting: 
 
 .. parsed-literal::
-   # yum -y upgrade
+   # dnf -y upgrade
 
 
 .. _conf-network:
@@ -105,14 +106,13 @@ It is always wise to update the system before starting:
 Configuring the Network
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Before going any further, make sure that "bridge-utils" and "net-tools" are installed and available:
+Starting with EL8, we must use the Network Manager to configure all network interfaces
+(instead of using the network-scripts we have used for so many years).
 
-.. parsed-literal::
-   # yum install bridge-utils net-tools -y
-
-Connecting via the console or SSH, you should login as root. We will start by creating
-the bridge that Cloudstack will use for networking. Create and open
-/etc/sysconfig/network-scripts/ifcfg-cloudbr0 and add the following settings:
+We will start by creating the bridge that Cloudstack will use for networking.
+To avoid remote (ssh) disconnections, you should be logging to the server locally,
+via console/physical screen (or save the commands below as a script and then run it
+via remote ssh session)
 
 .. note:: 
    IP Addressing - Throughout this document we are assuming that you will have 
@@ -126,56 +126,24 @@ the bridge that Cloudstack will use for networking. Create and open
    
 ::
 
-   DEVICE=cloudbr0
-   TYPE=Bridge
-   ONBOOT=yes
-   BOOTPROTO=static
-   IPV6INIT=no
-   IPV6_AUTOCONF=no
-   DELAY=5
-   IPADDR=172.16.10.2 #(or e.g. 192.168.1.2)
-   GATEWAY=172.16.10.1 #(or e.g. 192.168.1.1 - this would be your physical/home router)
-   NETMASK=255.255.255.0
-   DNS1=8.8.8.8
-   DNS2=8.8.4.4
-   STP=yes
-   USERCTL=no
-   NM_CONTROLLED=no
-
-Save the configuration and exit. We will then edit the NIC so that it
-makes use of this bridge.
-   
-Open the configuration file of your NIC (e.g. /etc/sysconfig/network-scripts/ifcfg-eth0)
-and edit it as follows:
+   #create an "empty” bridge, add eth0 to the bridge, set static IP and reactivate the whole configuration
+   nmcli connection add type bridge con-name cloudbr0 ifname cloudbr0
+   nmcli connection modify eth0 master cloudbr0
+   nmcli connection up eth0
+   nmcli connection modify cloudbr0 ipv4.addresses '172.16.10.2/24' ipv4.gateway '172.16.10.1' ipv4.dns '8.8.8.8' ipv4.method manual && nmcli connection up cloudbr0
 
 .. note::
    Interface name (eth0) used as example only. Replace eth0 with your default ethernet interface name.
 
+Optionally, we can install the net-tools:
+
 .. parsed-literal::
-   TYPE=Ethernet
-   BOOTPROTO=none
-   DEFROUTE=yes
-   NAME=eth0
-   DEVICE=eth0
-   ONBOOT=yes
-   BRIDGE=cloudbr0
+   # dnf install net-tools -y
 
-.. note::
-   If your physical nic (eth0 in the case of our example) has already been
-   setup before following this guide, make sure that there is no duplication
-   between IP configuration of /etc/config/network-scripts/ifcfg-cloudbr0 and
-   /etc/sysconfig/network-scripts/ifcfg-eth0 which will cause a failure that
-   would prevent the network from starting. Basically, IP configuration
-   of eth0 should be moved to the bridge and eth0 will be added to the bridge.
-
-
-Now that we have the configuration files properly set up, we need to run a few 
-commands to start up the network: 
+Now that we have the configuration files properly set up, let's reboot: 
 
 .. parsed-literal::
 
-   # systemctl disable NetworkManager; systemctl stop NetworkManager
-   # systemctl enable network
    # reboot
  
 .. _conf-hostname:
@@ -197,23 +165,19 @@ At this point it will likely return:
 
    localhost
 
-To rectify this situation - we'll set the hostname by editing the /etc/hosts 
-file so that it follows a similar format to this example (remember to replace
-the IP with your IP which might be e.g. 192.168.1.2):
+To rectify this situation - we'll set the hostname so that it follows a similar format to this example:
 
 .. parsed-literal::
 
-   127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4
-   ::1 localhost localhost.localdomain localhost6 localhost6.localdomain6
-   172.16.10.2 srvr1.cloud.priv
+   hostnamectl set-hostname server.local --static
 
-After you've modified that file, go ahead and restart the network using:
+After you've modified that file, go ahead and reboot:
 
 .. parsed-literal::
 
-   # systemctl restart network
+   # reboot
 
-Now recheck with the
+Now recheck the hostname with the
 
 .. parsed-literal::
 
@@ -258,8 +222,8 @@ To ensure that it remains in that state we need to configure the file
 
 .. _conf-ntp:
 
-NTP
-^^^
+NTP (Chrony)
+^^^^^^^^^^^^
 
 NTP configuration is a necessity for keeping all of the clocks in your cloud 
 servers in sync. However, NTP is not installed by default. So we'll install 
@@ -267,15 +231,15 @@ and and configure NTP at this stage. Installation is accomplished as follows:
 
 .. parsed-literal::
 
-   # yum -y install ntp
+   # dnf -y install chrony
 
 The actual default configuration is fine for our purposes, so we merely need 
 to enable it and set it to start on boot as follows:
 
 .. parsed-literal::
 
-   # systemctl enable ntpd
-   # systemctl start ntpd
+   # systemctl enable chronyd
+   # systemctl start chronyd
 
 
 .. _qigconf-pkg-repo:
@@ -314,7 +278,7 @@ start out by installing nfs-utils.
 
 .. parsed-literal::
 
-   # yum -y install nfs-utils
+   # dnf -y install nfs-utils
 
 We now need to configure NFS to serve up two different shares. This is handled 
 in the /etc/exports file. You should ensure that it has the following content:
@@ -333,31 +297,17 @@ appropriately on them with the following commands:
    # mkdir -p /export/primary
    # mkdir /export/secondary
 
-CentOS 7.x releases use NFSv4 by default. NFSv4 requires that domain setting 
-matches on all clients. In our case, the domain is cloud.priv, so ensure that 
-the domain setting in /etc/idmapd.conf is uncommented and set as follows:
+NFSv4 requires that domain setting matches on all clients. In our case, the
+domain is "local", so ensure that the domain setting in /etc/idmapd.conf is uncommented and set as follows:
 
 .. parsed-literal::
-   Domain = cloud.priv
-
-Now you'll need to add the configuration values at the bottom in the file 
-/etc/sysconfig/nfs (or merely uncomment and set them)
-
-.. parsed-literal::
-
-   LOCKD_TCPPORT=32803
-   LOCKD_UDPPORT=32769
-   MOUNTD_PORT=892
-   RQUOTAD_PORT=875
-   STATD_PORT=662
-   STATD_OUTGOING_PORT=2020
+   Domain = local
 
 For simplicity, we need to disable the firewall, so that it will not block connections.
 
 .. note::
 
-   Configuration of the firewall on CentOS7 is beyond the purview of this
-   guide.
+   Configuration of the firewall is beyond the purview of this guide.
    
 To do so, simply use the following two commands: 
 
@@ -372,9 +322,9 @@ it on the host by executing the following commands:
 .. parsed-literal::
 
    # systemctl enable rpcbind
-   # systemctl enable nfs
+   # systemctl enable nfs-server
    # systemctl start rpcbind
-   # systemctl start nfs
+   # systemctl start nfs-server
 
 
 Management Server Installation
@@ -389,23 +339,13 @@ Database Installation and Configuration
 We'll start with installing MySQL and configuring some options to ensure it 
 runs well with CloudStack. 
 
-First, as CentOS 7 no longer provides the MySQL binaries, we need to add a MySQL community repository,
-that will provide MySQL Server (and the Python MySQL connector later) : 
-
-.. parsed-literal::
-   # yum -y install wget
-   # wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
-   # rpm -ivh mysql-community-release-el7-5.noarch.rpm
-
-Install by running the following command: 
-
 .. parsed-literal::
 
-   # yum -y install mysql-server
+   # dnf -y install mysql-server
 
-This should install MySQL 5.x, as of the time of writing this guide.
+This should install MySQL 8.x, as of the time of writing this guide.
 With MySQL now installed we need to make a few configuration changes to 
-/etc/my.cnf. Specifically we need to add the following options to the [mysqld] 
+/etc/my.cnf.d/mysql-server.cnf. Specifically, we need to add the following options to the [mysqld] 
 section:
 
 .. parsed-literal::
@@ -416,18 +356,6 @@ section:
    log-bin=mysql-bin
    binlog-format = 'ROW'
 
-.. note::
-
-   For Ubuntu 16.04 and later, make sure you specify a ``server-id`` in your ``.cnf`` file for binary logging. Set the     ``server-id`` according to your database setup.
-    
-.. parsed-literal::
-
-   server-id=source-01
-   innodb_rollback_on_timeout=1
-   innodb_lock_wait_timeout=600
-   max_connections=350
-   log-bin=mysql-bin
-   binlog-format = 'ROW'
 
 Now that MySQL is properly configured we can start it and configure it to 
 start on boot as follows:
@@ -437,19 +365,6 @@ start on boot as follows:
    # systemctl enable mysqld
    # systemctl start mysqld
 
-
-MySQL Connector Installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Install Python MySQL connector from the MySQL community repository (which we've added previously):
-
-.. parsed-literal:: 
-
-   # yum -y install mysql-connector-python
-   
-Please note that the previously required ``mysql-connector-java`` library is now bundled with CloudStack
-Management server and is no longer required to be installed separately.
-
 Installation
 ~~~~~~~~~~~~
 
@@ -458,7 +373,7 @@ following command:
 
 .. parsed-literal::
 
-   # yum -y install cloudstack-management
+   # dnf -y install cloudstack-management
 
 CloudStack |version| requires Java 17 JRE. Installing the management server
 will automatically install Java 17, but it's good to explicitly confirm that Java 17
@@ -542,12 +457,11 @@ Installation
 ~~~~~~~~~~~~
 
 Installation of the KVM agent is trivial with just a single command, but 
-afterwards we'll need to configure a few things. We need to install the EPEL repository also.
+afterwards we'll need to configure a few things.
 
 .. parsed-literal::
 
-   # yum -y install epel-release
-   # yum -y install cloudstack-agent
+   # dnf -y install cloudstack-agent
 
 
 KVM Configuration
@@ -576,11 +490,11 @@ and should already be installed.
 
 #. Even though we are using a single host, the following steps are recommended
    to get faimilar with the general requirements.
-   In order to have live migration working libvirt has to listen for unsecured 
+   In order to have live migration working libvirt has to listen for insecured
    TCP connections. We also need to turn off libvirts attempt to use Multicast 
    DNS advertising. Both of these settings are in /etc/libvirt/libvirtd.conf
 
-   Set the following paramaters:
+   Set the following parameters:
    
    ::
    
@@ -598,6 +512,12 @@ and should already be installed.
    :: 
 
       #LIBVIRTD_ARGS="--listen"
+
+# As of EL8, we'll have to do the socket masking:
+   
+   .. parsed-literal::  
+
+      # systemctl mask libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tls.socket libvirtd-tcp.socket
 
 #. Restart libvirt
 
@@ -814,6 +734,7 @@ That's it, you are done with installation of your Apache CloudStack demo cloud.
 
 To check the health of your CloudStack installation, go to Infrastructure --> System VMs and refresh
 the UI from time to time - you should see “S-1-VM” and “V-2-VM” system VMs (SSVM and CPVM) in State=Running and Agent State=Up
+
 After that you can go to Images --> Templates, click on the built-in Template named "CentOS 5.5(64-bit) no GUI (KVM)",
 then click on "Zones" tab - and observe how the Status is moving from a few percents downloaded up to fully downloaded,
 after which the Status will show as "Download Complete" and "Ready" column will say "Yes".

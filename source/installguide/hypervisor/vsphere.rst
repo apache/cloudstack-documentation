@@ -74,7 +74,7 @@ Hardware requirements:
 -  All hosts must be 64-bit and must support HVM (Intel-VT or AMD-V
    enabled).
 
--  All hosts within a cluster must be homogenous. That means the CPUs
+-  All hosts within a cluster must be homogeneous. That means the CPUs
    must be of the same type, count, and feature flags.
 
 -  64-bit x86 CPU (more cores results in better performance)
@@ -122,7 +122,7 @@ Other requirements:
 -  vCenter must be configured to use the standard port 443 so that it
    can communicate with the CloudStack Management Server.
 
--  You must re-install VMware ESXi if you are going to re-use a host
+-  You must re-install VMware ESXi if you are going to reuse a host
    from a previous install.
 
 -  CloudStack requires VMware vSphere 6.0, 6.5 or 6.7. VMware vSphere 5.5 and older
@@ -575,13 +575,13 @@ these credentials while configuring Nexus virtual switch.
 
 **Management IP Address**
 This is the IP address of the VSM appliance. This is the IP address you 
-specify in the virtual switch IP Address field while configuting Nexus virtual 
+specify in the virtual switch IP Address field while configuring Nexus virtual
 switch.
 
 **SSL**
 Should be set to Enable.Always enable SSL. SSH is usually enabled by default 
 during the VSM installation. However, check whether the SSH connection to the 
-VSM is working, without which CloudStack failes to connect to the VSM.
+VSM is working, without which CloudStack fails to connect to the VSM.
 
 
 Creating a Port Profile

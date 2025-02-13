@@ -14,13 +14,13 @@
    under the License.
 
 About Import Export Instances
--------------------------
+-----------------------------
 
 
 For certain hypervisors, CloudStack supports importing of Instances from Managed Hosts, External Hosts, Local Storage and Shared Storage, into CloudStack.
 
 Manage or Unmanage Instances on Managed Hosts
--------------------------
+---------------------------------------------
 
 .. note:: This is currently only available for **vSphere** and **KVM** clusters.
 
@@ -72,7 +72,7 @@ Listing unmanaged Instances
 ---------------------------
 
 Prerequisites to list unmanaged Instances (vSphere or KVM)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order for CloudStack to list the Instances that are not managed by CloudStack on a host/cluster, the instances must exist on the hosts that are already part to the CloudStack.
 
@@ -407,7 +407,8 @@ Unmanaging Instance actions
    - For the Instance being unmanaged: stopped and destroyed usage events (similar to the generated usage events when expunging an Instance), with types: ‘VM.STOP’ and ‘VM.DESTROY', unless the instance has been already stopped before being unmanaged and in this case only ‘VM.DESTROY' is generated.
 
 Import Instances from External Hosts
--------------------------
+------------------------------------
+
 .. note:: This is currently only available for **KVM** hypervisor.
 
 External Host
@@ -504,7 +505,7 @@ choose the temporary storage location on the external host for the converted fil
    Same response as that of deployVirtualMachine API.
 
 Import Instances from Local/Shared Storage
-----------------------------------------
+------------------------------------------
 
 .. note:: This is currently only available for **KVM** hypervisor.
 
@@ -540,7 +541,7 @@ The importVm API is utilized to create instances using QCOW2 file from an existi
    Same response as that of deployVirtualMachine API.
 
 Import Instances from Shared Storage
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The importVm API is utilized to create instances using QCOW2 file from an existing Shared Storage pool of a KVM cluster within the CloudStack infrastructure.
 Only NFS Storage Pool are supported.

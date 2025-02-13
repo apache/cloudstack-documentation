@@ -64,12 +64,16 @@ the user data:
 #. Run the following command to find the virtual router.
 
    .. code:: bash
+
       # cat /var/lib/dhclient/dhclient-eth0.leases | grep dhcp-server-identifier | tail -1
+
 #. Access user data by running the following command using the result of
    the above command
 
    .. code:: bash
+
       # curl http://10.1.1.1/latest/user-data
+
 Meta Data can be accessed similarly, using a URL of the form
 http://10.1.1.1/latest/meta-data/{metadata type}. (For backwards
 compatibility, the previous URL http://10.1.1.1/latest/{metadata type}

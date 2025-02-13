@@ -136,7 +136,7 @@ in a private Zone, it is available only to Users in the domain assigned
 to that Zone. If a public Template is created in a public Zone, it is
 available to all Users in all domains.
 
-
+.. _creating-a-template-from-an-existing-virtual-machine:
 Creating a Template from an Existing Instance
 ---------------------------------------------
 
@@ -281,6 +281,8 @@ To upload a Template:
    -  **Hypervisor**: The supported hypervisors are listed. Select the
       desired one.
 
+   -  **Arch**: The supported arch types are listed. Select the desired one.
+
    -  **Format**. The format of the Template upload file, such as VHD or
       OVA.
 
@@ -328,7 +330,7 @@ Example GUI dialog of uploading Template/ISO from local (browser) is given below
 
 |upload-iso-from-local.png|
 
-Note that uploading multi-disk Templates is also supported.
+Note that uploading multi-disk Templates is also supported as well as selecting the template/ISO arch type.
 
 Sharing Templates and ISOs with other Accounts/projects
 -------------------------------------------------------
@@ -545,6 +547,8 @@ part of a Template.
       prominent for Users to select. The ISO will appear in the Featured
       ISOs list. Only an administrator can make an ISO Featured.
 
+   -  **Arch**: The supported arch types are listed. Select the desired one.
+
 #. Click OK.
 
    The Management Server will download the ISO. Depending on the size of
@@ -597,4 +601,6 @@ Attaching an ISO to a Instance
 .. |template-permissions-update-4.png| image:: /_static/images/template-permissions-update-4.png
    :alt: Revoking permsissons from both projects previously added
 .. |template-permissions-update-5.png| image:: /_static/images/template-permissions-update-5.png
-   :alt: Reseting (removing all) permissions
+   :alt: Resetting (removing all) permissions
+.. |iso.png| image:: /_static/images/iso-icon.png
+   :alt: depicts adding an iso image

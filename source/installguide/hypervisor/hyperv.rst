@@ -85,7 +85,7 @@ start:
 |            | y        | the file share for the Hyper-V deployment will be    |
 |            |          | the new folder created in the \\Shares on the        |
 |            |          | selected volume. You can create sub-folders for both |
-|            |          | CloudStack Primary and Secondary storage within the     |
+|            |          | CloudStack Primary and Secondary storage within the  |
 |            |          | share location. When you select the profile for the  |
 |            |          | file shares, ensure that you select SMB Share        |
 |            |          | -Applications. This creates the file shares with     |
@@ -99,17 +99,17 @@ start:
 +------------+----------+------------------------------------------------------+
 | Virtual    |          | If you are using Hyper-V 2012 R2, manually create an |
 | Switch     |          | external virtual switch before adding the host to    |
-|            |          | CloudStack. If the Hyper-V host is added to the Hyper-V |
-|            |          | manager, select the host, then click Virtual Switch  |
-|            |          | Manager, then New Virtual Switch. In the External    |
-|            |          | Network, select the desired NIC adapter and click    |
-|            |          | Apply.                                               |
+|            |          | CloudStack. If the Hyper-V host is added to the      |
+|            |          | Hyper-V manager, select the host, then click Virtual |
+|            |          | Switch Manager, then New Virtual Switch. In the      |
+|            |          | External Network, select the desired NIC adapter and |
+|            |          | click Apply.                                         |
 |            |          |                                                      |
 |            |          | If you are using Windows 2012 R2, virtual switch is  |
 |            |          | created automatically.                               |
 +------------+----------+------------------------------------------------------+
 | Virtual    |          | Take a note of the name of the virtual switch. You   |
-| Switch     |          | need to specify that when configuring CloudStack        |
+| Switch     |          | need to specify that when configuring CloudStack     |
 | Name       |          | physical network labels.                             |
 +------------+----------+------------------------------------------------------+
 | Hyper-V    |          | -  Add the Hyper-V domain users to the Hyper-V       |
@@ -122,13 +122,13 @@ start:
 |            |          | -  This domain user should be part of the Hyper-V    |
 |            |          |    Administrators and Local Administrators group on  |
 |            |          |    the Hyper-V hosts that are to be managed by       |
-|            |          |    CloudStack.                                          |
+|            |          |    CloudStack.                                       |
 |            |          |                                                      |
 |            |          | -  The Hyper-V Agent service runs with the           |
 |            |          |    credentials of this domain user account.          |
 |            |          |                                                      |
 |            |          | -  Specify the credential of the domain user while   |
-|            |          |    adding a host to CloudStack so that it can manage    |
+|            |          |    adding a host to CloudStack so that it can manage |
 |            |          |    it.                                               |
 |            |          |                                                      |
 |            |          | -  Specify the credential of the domain user while   |
@@ -151,6 +151,9 @@ start:
 | for        |          |                                                      |
 | Dial-in    |          |                                                      |
 +------------+----------+------------------------------------------------------+
+
+.. NOTE: For this kind of content it might be better to use a CSV table:
+..       https://docutils.sourceforge.io/docs/ref/rst/directives.html#csv-table
 
 
 Hyper-V Installation Steps

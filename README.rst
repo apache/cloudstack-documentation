@@ -90,7 +90,7 @@ On your computer, follow these steps to setup a local repository for working on 
 .. code:: bash
 
    $ git clone https://github.com/YOUR_ACCOUNT/cloudstack-documentation.git
-   $ cd cloudstack-docs-install
+   $ cd cloudstack-documentation
    $ git remote add upstream https://github.com/apache/cloudstack-documentation.git
    $ git checkout main
    $ git fetch upstream

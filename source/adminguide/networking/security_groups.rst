@@ -27,7 +27,8 @@ rules filter network traffic according to the IP address that is
 attempting to communicate with the instance. Security groups are particularly
 useful in zones that use basic networking, because there is a single
 guest network for all Guest Instances. In advanced zones, security groups are
-supported only on the KVM hypervisor.
+supported only on the KVM hypervisor and XenServer/XCP-ng with the network backend
+configured as "bridge". 
 
 .. note:: 
    In a zone that uses advanced networking, you can instead define 
@@ -41,8 +42,7 @@ desired set of rules.
 Any CloudStack user can set up any number of additional security groups.
 When a new instance is launched, it is assigned to the default security group
 unless another user-defined security group is specified. An instance can be a
-member of any number of security groups. Once an instance is assigned to a
-security group, it remains in that group for its entire lifetime; you
+member of any number of security groups. You can change the security groups of an instance only in a stopped state; you
 can not move a running instance from one security group to another.
 
 You can modify a security group by deleting or adding any number of

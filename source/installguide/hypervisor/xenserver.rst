@@ -44,7 +44,7 @@ System Requirements for XenServer Hosts
     -  XCP-ng 8.2.0
     
 
--  You must re-install Citrix XenServer if you are going to re-use a
+-  You must re-install Citrix XenServer if you are going to reuse a
    host from a previous install.
 
 -  Must support HVM (Intel-VT or AMD-V enabled)

@@ -63,7 +63,7 @@ msgstr ""
 
 #: ../../hypervisor/xenserver.rst:40
 # 5dee06ed5f2f472f9e0979ddbb241a63
-msgid "You must re-install Citrix XenServer if you are going to re-use a host from a previous install."
+msgid "You must re-install Citrix XenServer if you are going to reuse a host from a previous install."
 msgstr ""
 
 #: ../../hypervisor/xenserver.rst:43
