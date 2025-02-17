@@ -1864,9 +1864,31 @@ deployment.
 Setting Local Configuration Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Use the following steps to set local configuration parameters for an
-account, zone, cluster, or primary storage. These values will override
-the global configuration settings.
+Configurations can also be set at more granular levels or scopes.
+
+#. Domain
+#. Account
+#. Zone
+#. Cluster
+#. Primary Storage
+#. Secondary Storage
+
+All local settings can be configured at a global level as well.
+If set, the local setting takes precedence over the global setting.
+
+Some configurations can be set at multiple levels or scopes.
+For example, the following configuration parameters can be set at the
+Zone scope and the Primary Storage scope.
+
+* pool.storage.capacity.disablethreshold
+* pool.storage.allocated.resize.capacity.disablethreshold
+* pool.storage.capacity.disablethreshold
+* volume.resize.allowed.beyond.allocation
+
+In this case also the more granular setting (Primary Storage)
+overrides the broader setting (Zone).
+
+Use the following steps to set local configuration parameters
 
 #. Log in to the UI as administrator.
 
@@ -1900,7 +1922,7 @@ account, cluster, and zone.
 .. cssclass:: table-striped table-bordered table-hover
 
 ========  =========================================================  ======================================================================================================================================
-Field     Field                                                       Value
+Scope     Name                                                       Value
 ========  =========================================================  ======================================================================================================================================
 account   remote.access.vpn.client.iprange                           The range of IPs to be allocated to remotely access the VPN clients. The first IP in the range is                                                                                                          used by the VPN server.
 account   allow.public.user.templates                                If false, users will not be able to create public Templates.
@@ -1920,7 +1942,6 @@ cluster   vmware.reserve.cpu                                         Specify whe
 cluster   vmware.reserve.mem                                         Specify whether or not to reserve memory when not over-provisioning; In case of memory over-provisioning memory is always reserved.
 zone      pool.storage.allocated.capacity.disablethreshold           The percentage, as a value between 0 and 1, of allocated storage utilization above which allocators will disable that pool because the
                                                                      available allocated storage is below the threshold.
-zone      pool.storage.capacity.disablethreshold                     The percentage, as a value between 0 and 1, of storage utilization above which allocators will disable the pool because the available                                                                      storage capacity is below the threshold.
 zone      storage.overprovisioning.factor                            Used for storage over-provisioning calculation; available storage will be the mathematical product of actualStorageSize and                                                                                storage.overprovisioning.factor.
 zone      network.throttling.rate                                    Default data transfer rate in megabits per second allowed in a network.
 zone      guest.domain.suffix                                        Default domain name for instances inside a virtual networks with a router.
