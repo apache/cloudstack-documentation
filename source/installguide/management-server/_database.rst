@@ -64,20 +64,20 @@ MySQL. See :ref:`install-database-on-separate-node`.
       innodb_rollback_on_timeout=1
       innodb_lock_wait_timeout=600
       max_connections=350
-      log-bin=mysql-bin
-      binlog-format = 'ROW'
+      log_bin=mysql-bin
+      binlog_format=ROW
 
    .. note::
-      For Ubuntu 16.04 and later, make sure you specify a ``server-id`` in your ``.cnf`` file for binary logging. Set the         ``server-id`` according to your database setup.
+      For Ubuntu 16.04 and later, make sure you specify a ``server_id`` in your ``/etc/mysql/mysql.conf.d/mysqld.cnf`` file for binary logging. Set the ``server_id`` according to your database setup.
 
    .. parsed-literal::
 
-      server-id=source-01
+      server_id=source-01
       innodb_rollback_on_timeout=1
       innodb_lock_wait_timeout=600
       max_connections=350
-      log-bin=mysql-bin
-      binlog-format = 'ROW'
+      log_bin=mysql-bin
+      binlog_format=ROW
 
    .. note::
       You can also create a file ``/etc/mysql/conf.d/cloudstack.cnf``
@@ -328,8 +328,8 @@ same node for MySQL. See `â€œInstall the Database on the Management Server Nodeâ
       innodb_rollback_on_timeout=1
       innodb_lock_wait_timeout=600
       max_connections=700
-      log-bin=mysql-bin
-      binlog-format = 'ROW'
+      log_bin=mysql-bin
+      binlog_format = 'ROW'
       bind-address = 0.0.0.0
 
 #. Start or restart MySQL to put the new configuration into effect.
