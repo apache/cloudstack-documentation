@@ -354,7 +354,7 @@ section:
    innodb_lock_wait_timeout=600
    max_connections=350
    log_bin=mysql-bin
-   binlog_format = 'ROW'
+   binlog_format=ROW
 
 
 Now that MySQL is properly configured we can start it and configure it to 
