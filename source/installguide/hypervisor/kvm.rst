@@ -1551,8 +1551,8 @@ To open the required ports, execute the following commands:
    sudo vi /etc/ufw/before.rules
 
 .. parsed-literal::
-   -A FORWARD -d 192.168.42.11 -j ACCEPT
-   -A FORWARD -s 192.168.42.11 -j ACCEPT
+   -A FORWARD -d 192.168.42.0/24 -j ACCEPT
+   -A FORWARD -s 192.168.42.0/24 -j ACCEPT
 
 
 Additional Packages Required for Features
