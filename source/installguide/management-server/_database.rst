@@ -329,8 +329,8 @@ same node for MySQL. See `â€œInstall the Database on the Management Server Nodeâ
       innodb_lock_wait_timeout=600
       max_connections=700
       log_bin=mysql-bin
-      binlog_format = 'ROW'
-      bind-address = 0.0.0.0
+      binlog_format=ROW
+      bind-address=0.0.0.0
 
 #. Start or restart MySQL to put the new configuration into effect.
 
