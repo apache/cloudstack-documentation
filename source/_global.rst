@@ -33,11 +33,11 @@
 .. |sysvm64-name-ovm|    replace:: systemvm-ovm-4.20.0-x86_64
 
 .. Latest version systemvm template URL
-.. |sysvm64-url-xen|    replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.0.0-x86_64-xen.vhd.bz2
-.. |sysvm64-url-kvm|    replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.0.0-x86_64-kvm.qcow2.bz2
-.. |sysvm64-url-vmware| replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.0.0-x86_64-vmware.ova
-.. |sysvm64-url-hyperv| replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.0.0-x86_64-hyperv.vhd.zip
-.. |sysvm64-url-ovm|    replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.0.0-x86_64-ovm.raw.bz2
+.. |sysvm64-url-xen|    replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.0-x86_64-xen.vhd.bz2
+.. |sysvm64-url-kvm|    replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.0-x86_64-kvm.qcow2.bz2
+.. |sysvm64-url-vmware| replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.0-x86_64-vmware.ova
+.. |sysvm64-url-hyperv| replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.0-x86_64-hyperv.vhd.zip
+.. |sysvm64-url-ovm|    replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.0-x86_64-ovm.raw.bz2
 
 .. Images
 
