@@ -1541,17 +1541,17 @@ To open the required ports, execute the following commands:
    $ ufw allow proto tcp from any to any port 49152:49216
 
 .. note::
-   By default UFW is not enabled on Ubuntu. Executing these commands with the
-   firewall disabled does not enable the firewall.
-
-   If you have an issue with ufw while using a bridged connection,
-   add those two lines at the end of the /etc/ufw/before.rules just before COMMIT
+   Since Ubuntu 22.04 LTS, the UFW's default policy for forwarding is set to "DROP".
+   Change it to "ACCEPT".
 
 .. parsed-literal::
-   sudo vi /etc/ufw/before.rules
+   sudo vi /etc/default/ufw
 
 .. parsed-literal::
-   -A FORWARD -j ACCEPT
+   DEFAULT_FORWARD_POLICY="ACCEPT"
+
+.. parsed-literal::
+   sudo ufw enable
 
 
 Additional Packages Required for Features
