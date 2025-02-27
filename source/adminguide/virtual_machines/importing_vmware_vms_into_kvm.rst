@@ -104,7 +104,7 @@ Download the ovftool from https://developer.broadcom.com/tools/open-virtualizati
 
     ::
        
-       unzip VMware-ovftool-4.6.3-24031167-lin.x86_64.zip -d /usr/local/bin
+       unzip VMware-ovftool-4.6.3-24031167-lin.x86_64.zip -d /usr/local/
        
        #create a soft link 
 
