@@ -108,7 +108,7 @@ Download the ovftool from https://developer.broadcom.com/tools/open-virtualizati
        
        #create a soft link 
 
-       ln -s /usr/local/bin/ovftool/ovftool /usr/bin/ovftool
+       ln -s /usr/local/ovftool/ovftool /usr/local/bin/ovftool
 
 If you are hitting the following error when running ovftool, install the dependecy
 
