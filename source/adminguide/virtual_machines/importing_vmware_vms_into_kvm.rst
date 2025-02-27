@@ -104,11 +104,11 @@ Download the ovftool from https://developer.broadcom.com/tools/open-virtualizati
 
     ::
        
-       unzip VMware-ovftool-4.6.3-24031167-lin.x86_64.zip
+       unzip VMware-ovftool-4.6.3-24031167-lin.x86_64.zip -d /usr/local/bin
        
        #create a soft link 
 
-       ln -s /$HOME/ovftool/ovftool /usr/bin/ovftool
+       ln -s /usr/local/bin/ovftool/ovftool /usr/bin/ovftool
 
 If you are hitting the following error when running ovftool, install the dependecy
 
