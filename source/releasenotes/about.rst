@@ -21,8 +21,8 @@ Apache CloudStack |release| is a 4.19 LTS minor release with over 170 fixes
 and improvements including prior releases this tallies up to over 480 since
 the 4.19.0.0 release. Some of the highlights include:
 
-* Numerous fixes for UI and API behavious
-* Project access controll fixes
+* Numerous fixes for UI and API behaviours
+* Project access control fixes
 * Network improvements for the various kinds of networks
 • Improvements for VMware migration to KVM
 • Support to manage/unmanage DATA volume of a primary storage on KVM
