@@ -60,12 +60,12 @@ events, usage events) and the additional category of resource state
 change events, are published on to the events bus.
 
 .. note::
-   Alerts for some more important events will be send multiple
-   times for the same event. This is due to the nature of guarding
+   Alerts for some more important events will be sent multiple
+   times. This is due to the nature of guarding
    certain resources from multiple threads in the code, to make sure
    that events are not missed. Examples are "Host down" or
-   "HA starting VM". These are considered to important to not send
-   immediately and hence a check if they are queued can not be done.
+   "HA starting VM". These are considered too important to not send
+   immediately and hence a check if they are already queued can not be done.
 
 Implementations
 ~~~~~~~~~~~~~~~
