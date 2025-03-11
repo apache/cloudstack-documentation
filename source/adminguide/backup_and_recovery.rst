@@ -197,6 +197,7 @@ Supported APIs:
 - **listBackups**: lists backups.
 - **restoreBackup**: restore a previous Instance backup in-place of a stopped or destroyed Instance.
 - **restoreVolumeFromBackupAndAttachToVM**: restore and attach a backed-up volume (of an Instance backup) to a specified Instance.
+- **createInstanceFromBackup**: create a new Instance from a backup.
 
 
 .. |B&R-assignOffering.png| image:: /_static/images/B&R-assignOffering.png
