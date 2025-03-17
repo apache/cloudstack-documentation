@@ -1014,7 +1014,8 @@ Virtual Trusted Platform Module (vTPM) is the software-based representation of p
 CloudStack supports vTPM for instances running on KVM and VMware since 4.20.1.0 .
 
 |vm-settings-uefi-secure.png|
-The boot type and boot mode must be set to UEFI and SECURE.
+On Vmware, the boot type must be set to UEFI. Boot mode can be SECURE (recommended) or LEGACY.
+On KVM, it is recommended to set boot type to UEFI, and boot mode to SECURE. UEFI is required for some Windows versions.
 
 |vm-settings-virtual-tpm-model-kvm.png|
 TPM model for KVM. There are two options:
