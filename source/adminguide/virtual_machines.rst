@@ -1018,16 +1018,18 @@ The boot type and boot mode must be set to UEFI and SECURE.
 
 |vm-settings-virtual-tpm-model-kvm.png|
 TPM model for KVM. There are two options:
+
 - tpm-tis, TIS means TPM Interface Specification; 
 - tpm-crb, CRB means Command-Response Buffer.
 
 |vm-settings-virtual-tpm-version-kvm.png|
 TPM version for KVM. There are two options:
-- 2.0. This is the default TPM version, which is used when version is not specified or invalid.
+
+- 2.0. This is the default TPM version. It is used when version is not specified or invalid.
 - 1.2.
 
 |vm-settings-virtual-tpm-enabled-vmware.png|
-Enable vTPM or not for VMware.
+Enable or disable vTPM for VMware.
 
 Instance Snapshots
 ==================
