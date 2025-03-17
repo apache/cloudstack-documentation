@@ -40,6 +40,11 @@ An overview of the procedure is as follows:
    For more information, see `“Creating
    instances” <virtual_machines.html#creating-instances>`_.
 
+#. Add Virtual TPM device to the instance.
+
+   For more information, see `“Instance Settings for Virtual Trusted Platform Module (vTPM)
+   ” <virtual_machines.html#instance-settings-for-virtual-trusted-platform-module-vtpm>`_.
+
 #. Follow the steps in Sysprep for Windows Server 2008 R2 (below) or
    Sysprep for Windows Server 2003 R2, depending on your version of
    Windows Server
