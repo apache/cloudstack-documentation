@@ -287,6 +287,9 @@ and secondary storage.
 
    -  `“Advanced Zone Configuration” <#advanced-zone-configuration>`_
 
+.. note::
+      Since CloudStack 4.20.1, it is possible to specify the preferred architecture type for a zone for deployment of system VM including virtual routers. Zone setting - *system.vm.preferred.architecture* can be updated for this. The server will first try deployment on the preferred architecture and if it fails then will attempt on other architecture hosts.
+      Administrator can also register SYSTEM and ROUTING template with the same name for different architectures to allow deployment across them depending on the compute capacity.
 
 Basic Zone Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
