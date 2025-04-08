@@ -1067,6 +1067,8 @@ To disable lease using API:
 
 .. note:: DESTORY action will ignore instance if deleteprotection is enabled for it.
 
+.. note:: When the feature is disabled, the lease associated with instances is cancelled. Re-enabling the feature will not automatically reapply the lease to previously grandfathered instances.
+
 
 Advanced Instance Settings
 --------------------------
