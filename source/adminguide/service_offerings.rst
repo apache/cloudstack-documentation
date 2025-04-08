@@ -401,6 +401,31 @@ To create a new compute offering:
          -  **Disk Offering Strictness**: This flag defines the strictness of the disk offering association 
             with the compute offering. When set to true, overriding of disk offering is not allowed on deploy instance
             and change disk offering is not allowed for the ROOT disk
+      
+      -  **Enable Lease**: When this flag is enabled, compute offering is created with lease related metadata.
+      In CloudStack, a lease represents the specific duration for which an instance is allocated.
+      The user rents these resources for the duration of the lease. Once the lease period expires, instance may be stopped or destroyed.
+      Lease information is inherited from compute offering and gets associated to Instance.
+
+      When the flag is enabled
+
+         -  **Lease Duration (in days)**: Creates a compute offering with Lease duration. Instance created from this compute offering will inherit lease duration by default.
+
+         -  **Lease expiry action**: Denotes lease expiry action, which gets executed upon lease expiry for instances created from compute offering.
+            Suported values for lease expiry action are as follows:
+            - STOP
+            - DESTROY
+      
+      .. image:: /_static/images/compute_offering_dailog_with_lease.png
+         :width: 400px
+         :align: center
+         :alt: Compute offering dialog box
+         
+      .. note:: The following global configuration should be configured as true to create compute offering with lease:
+      ``instance.lease.enabled``: Indicates whether Instance Lease feature is enabled or not. Default is **false**
+      For more information, see `“Setting Global Configuration Parameters”
+      <../installguide/configuration.html#setting-global-configuration-parameters>`_.
+
 
 #. Click Add.
 

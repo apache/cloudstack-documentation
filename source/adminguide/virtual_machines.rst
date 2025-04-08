@@ -960,6 +960,113 @@ restoreVirtualMachine call. In this case, the Instance's root disk is
 destroyed and recreated, but from the same Template or ISO that was
 already in use by the Instance.
 
+Instance Lease
+--------------
+
+Cloudstack provides capability to create instance on lease. Lease denotes a set period for which resource is allocated and upon expiry cleanup is performed.
+This feature enables automated cleanup of instances created for specific duration and for specific purpose. This feature gives administrators the ability to automatically reclaim
+resources that are no longer needed by expired virtual machines, helping to optimize resource utilization and reduce wastage.
+
+
+**Configuring lease feature**
+
+The cloud administrator can use global configuration variables to control the behavior of Instance Lease.
+To set these variables, API or CloudStack UI can be used:
+
+.. cssclass:: table-striped table-bordered table-hover
+
+======================================= ========================
+Configuration                            Description
+======================================= ========================
+instance.lease.enabled                   Indicates whether to enable the Instance lease featuew, will be applicable only on instances created after lease is enabled. **Default: false**
+instance.lease.scheduler.interval		  Background task interval in seconds that executes Lease expiry action on eligibile expired instances. Default: 3600.
+instance.lease.alertscheduler.interval	  Background task interval in seconds that executes Lease alert for instances about to be expired in next N days. Default: 86400
+instance.lease.alert.daysbefore          Denotes number of days (N) for alert task. Default: 7 days
+======================================= ========================
+
+
+**Using Instance Lease**
+
+User can associate Lease to an instance during Deployment of instance or modify existing lease by editing instance.
+
+
+**Deployment of Instance**
+
+There are 2 ways to deploy instance with lease from UI:
+
+1. Use compute offering which has associated lease metadata for instance
+
+.. image:: /_static/images/deploy_instance_lease_offering.png
+   :width: 400px
+   :align: center
+   :alt: Deploy Instance with lease compute offering dialog box
+
+2. Enable lease under Advance settings during instance Deployment
+
+.. image:: /_static/images/deploy_instance_advanced_lease.png
+   :width: 400px
+   :align: center
+   :alt: Deploy Instance with lease using advance settings
+
+
+To enable lease during instance deployment via API:
+- Passing lease parameters
+
+.. code:: bash
+
+   cmk deploy virtualmachine name=..... leaseduration=... leaseexpiryaction=...
+
+- Use compute offering with lease
+
+.. code:: bash
+
+   cmk deploy virtualmachine name=..... serviceofferingid=lease-compute-offering
+
+
+**Lease Parameters**
+
+
+**leaseduration**
+Lease duration is specified in days. This can take Natural numbers and -1 to disable the lease.
+Lease can be disabled:
+   - During deployment of instance while using lease based compute offering
+   - Update instance with existing lease
+
+**leaseexpiryaction**
+There are 2 actions supported:
+   - STOP: The instance is stopped, and it will be out of lease. The user can restart the instance manually.
+   - DESTROY: The instance is destroyed when the lease expires.
+
+.. note:: Action is executed at most once on the instance, e.g. STOP action will bring instance in Stoppped state on expiry and instance will be out of lease. User may choose to start it again.
+
+
+**Editing Instance Lease**
+
+The lease duration for an instance can be extended, reduced, or disabled for instances that already have an active lease.
+However, it is not possible to enable the lease on an instance after it has already been deployed.
+
+From UI:
+
+.. image:: /_static/images/edit_instance_lease.png
+   :width: 400px
+   :align: center
+   :alt: Edit Instance lease dialog
+
+
+Using API:
+
+.. code:: bash
+
+   cmk update virtualmachine id=fa970d19-8340-455c-a9fb-569205954fdc leaseduration=20 leaseexpiryaction=DESTROY
+
+To disable lease using API:
+
+.. code:: bash
+
+   cmk update virtualmachine id=fa970d19-8340-455c-a9fb-569205954fdc leaseduration=-1
+
+.. note:: DESTORY action will ignore instance if deleteprotection is enabled for it.
+
 
 Advanced Instance Settings
 --------------------------
