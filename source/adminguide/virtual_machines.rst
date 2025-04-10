@@ -1087,6 +1087,20 @@ To disable lease using API:
 .. note:: When the feature is disabled, the lease associated with instances is cancelled. Re-enabling the feature will not automatically reapply the lease to previously grandfathered instances.
 
 
+**Instance Lease Events**
+
+Lease feature generates various events to help in auditing and monitoring:
+
+=================== ========================
+Event Type           Description
+=================== ========================
+VM.LEASE.EXPIRED	   Event is generated at lease expiry
+VM.LEASE.DISABLED	   Denotes if lease is disabled by user/admin
+VM.LEASE.CANCELLED   When lease is cancelled (feature gets disabled)
+VM.LEASE.EXPIRING	   Expiry intimation event for instance
+=================== ========================
+
+
 Advanced Instance Settings
 --------------------------
 
