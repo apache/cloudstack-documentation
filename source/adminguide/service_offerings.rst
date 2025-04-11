@@ -402,10 +402,9 @@ To create a new compute offering:
             with the compute offering. When set to true, overriding of disk offering is not allowed on deploy instance
             and change disk offering is not allowed for the ROOT disk
       
-   -  **Enable Lease**: When this flag is enabled, compute offering is created with lease related metadata.
-      In CloudStack, a lease represents the specific duration for which an instance is allocated.
-      The user rents these resources for the duration of the lease. Once the lease period expires, instance may be stopped or destroyed.
-      Lease information is inherited from compute offering and gets associated to Instance.
+   -  **Enable Lease**: When this flag is enabled, Compute Offering is created with 'Instance Lease' feature enabled. 
+      In CloudStack, a lease sets a specific time duration after which a chosen lease action action, such as stopping or destroying the instance, will take place. 
+      These lease settings are defined in the Compute Offering and are automatically applied to any Instance created using it.
       
       .. note:: The global configuration ``instance.lease.enabled`` should be configured as true to create compute offering with lease.
 
@@ -415,10 +414,10 @@ To create a new compute offering:
 
       When the flag is enabled
 
-         -  **Lease Duration (in days)**: Creates a compute offering with Lease duration. Instance created from this compute offering will inherit lease duration by default.
+         -  **Lease Duration (in days)**: Sets the lease duration. An instance created using this compute offering will inherit the lease duration by default.
 
-         -  **Lease expiry action**: Denotes lease expiry action, which gets executed upon lease expiry for instances created from compute offering.
-            Suported values for lease expiry action are as follows:
+         -  **Lease expiry action**: Lease expiry action: Denotes lease expiry action, which gets executed upon lease expiry for instances created using this compute offering.
+         Supported values for lease expiry action are as follows:
             
             - STOP
             - DESTROY
