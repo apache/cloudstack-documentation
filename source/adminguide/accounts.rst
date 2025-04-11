@@ -512,6 +512,7 @@ Restricting LDAP Users to a group:
 -  ``ldap.search.group.principle``: this is optional and if set only Users from
    this group are listed.
 
+   .. note:: this is required when using ``linkaccounttoldap``.
 
 LDAP SSL:
 ~~~~~~~~~
