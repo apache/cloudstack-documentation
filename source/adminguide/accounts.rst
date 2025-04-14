@@ -492,16 +492,16 @@ OpenLDAP)
      - Active Directory
      - Description
    * - ``ldap.basedn``
-     - `Ex: OU=APAC,DC=company,DC=com`
-     - `Ex: DC=company,DC=com`
+     - `Ex: OU=APAC, DC=company, DC=com`
+     - `Ex: DC=company, DC=com`
      - Sets the basedn for LDAP.
    * - ``ldap.search.group.principle``
-     - `Ex: CN=ACSGroup,DC=company,DC=com`
-     - `Ex: CN=ACSGroup,CN=Users,DC=company,DC=com`
+     - `Ex: CN=ACSGroup, DC=company, DC=com`
+     - `Ex: CN=ACSGroup, CN=Users, DC=company, DC=com`
      - (optional) if set only Users from this group are listed.
    * - ``ldap.bind.principal``
-     - `Ex: CN=ACSServiceAccount,OU=APAC,DC=company,DC=com`
-     - `Ex: CN=ACSServiceAccount,CN=Users,DC=company,DC=com`
+     - `Ex: CN=ACSServiceAccount, OU=APAC, DC=company, DC=com`
+     - `Ex: CN=ACSServiceAccount, CN=Users, DC=company, DC=com`
      - Service account that can list all the Users in the above basedn. Avoid using privileged account such as Administrator.
    * - ``ldap.bind.password``
      - `******************`
