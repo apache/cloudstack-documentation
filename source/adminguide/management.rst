@@ -291,89 +291,89 @@ be found by calling listAlerts.
 .. list-table:: List of Alerts
    :header-rows: 1
 
-   * - Name
-     - Default
+   * - Type Number
+     - Name
      - Description
-   * - ``MEMORY``
-     - `0`
+   * - `0`
+     - ``MEMORY``
      - Available Memory below configured threshold
-   * - ``CPU``
-     - `1`
+   * - `1`
+     - ``CPU``
      - Unallocated CPU below configured threshold
-   * - ``STORAGE``
-     - `2`
+   * - `2`
+     - ``STORAGE``
      - Available Storage below configured threshold
-   * - ``STORAGE_ALLOCATED``
-     - `3`
+   * - `3`
+     - ``STORAGE_ALLOCATED``
      - Remaining unallocated Storage is below configured threshold
-   * - ``PUBLIC_IP``
-     - `4`
+   * - `4`
+     - ``PUBLIC_IP``
      - Number of unallocated virtual Network public IPs is below configured threshold
-   * - ``PRIVATE_IP``
-     - `5`
+   * - `5`
+     - ``PRIVATE_IP``
      - Number of unallocated private IPs is below configured threshold
-   * - ``SECONDARY_STORAGE``
-     - `6`
+   * - `6`
+     - ``SECONDARY_STORAGE``
      - Available Secondary Storage in availability zone is below configured threshold
-   * - ``HOST``
-     - `7`
+   * - `7`
+     - ``HOST``
      - Host related alerts like host disconnected
-   * - ``USERVM``
-     - `8`
+   * - `8`
+     - ``USERVM``
      - User Instance stopped unexpectedly
-   * - ``DOMAIN_ROUTER``
-     - `9`
+   * - `9`
+     - ``DOMAIN_ROUTER``
      - Domain Router VM stopped unexpectedly
-   * - ``CONSOLE_PROXY``
-     - `10`
+   * - `10`
+     - ``CONSOLE_PROXY``
      - Console Proxy VM stopped unexpectedly
-   * - ``ROUTING``
-     - `11`
+   * - `11`
+     - ``ROUTING``
      - Lost connection to default route (to the gateway)
-   * - ``STORAGE_MISC``
-     - `12`
+   * - `12`
+     - ``STORAGE_MISC``
      - Storage issue in system VMs
-   * - ``USAGE_SERVER``
-     - `13`
+   * - `13`
+     - ``USAGE_SERVER``
      - No usage server process running
-   * - ``MANAGEMENT_NODE``
-     - `14`
+   * - `14`
+     - ``MANAGEMENT_NODE``
      - Management Network CIDR is not configured originally
-   * - ``DOMAIN_ROUTER_MIGRATE``
-     - `15`
+   * - `15`
+     - ``DOMAIN_ROUTER_MIGRATE``
      - Domain Router VM Migration was unsuccessful
-   * - ``CONSOLE_PROXY_MIGRATE``
-     - `16`
+   * - `16`
+     - ``CONSOLE_PROXY_MIGRATE``
      - Console Proxy VM Migration was unsuccessful
-   * - ``USERVM_MIGRATE``
-     - `17`
+   * - `17`
+     - ``USERVM_MIGRATE``
      - User Instance Migration was unsuccessful
-   * - ``VLAN``
-     - `18`
+   * - `18`
+     - ``VLAN``
      - Number of unallocated VLANs is below configured threshold in availability zone
-   * - ``SSVM``
-     - `19`
+   * - `19`
+     - ``SSVM``
      - SSVM stopped unexpectedly
-   * - ``USAGE_SERVER_RESULT``
-     - `20`
+   * - `20`
+     - ``USAGE_SERVER_RESULT``
      - Usage job failed
-   * - ``STORAGE_DELETE``
-     - `21`
+   * - `21`
+     - ``STORAGE_DELETE``
      - Failed to delete storage pool
-   * - ``UPDATE_RESOURCE_COUNT``
-     - `22`
+   * - `22`
+     - ``UPDATE_RESOURCE_COUNT``
      - Failed to update the resource count
-   * - ``USAGE_SANITY_RESULT``
-     - `23`
+   * - `23`
+     - ``USAGE_SANITY_RESULT``
      - Usage Sanity Check failed
-   * - ``DIRECT_ATTACHED_PUBLIC_IP``
-     - `24`
+   * - `24`
+     - ``DIRECT_ATTACHED_PUBLIC_IP``
      - Number of unallocated shared Network IPs is low in availability zone
-   * - ``LOCAL_STORAGE``
-     - `25`
+   * - `25`
+     - ``LOCAL_STORAGE``
      - Remaining unallocated Local Storage is below configured threshold
-   * - ``RESOURCE_LIMIT_EXCEEDED``
-     - `26`
+   * - `26`
+     - ``RESOURCE_LIMIT_EXCEEDED``
      - Generated when the resource limit exceeds the limit. Currently used for recurring Snapshots only
 
 
