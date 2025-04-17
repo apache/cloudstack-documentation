@@ -481,36 +481,75 @@ to be applied through the API call described above.
 
 
 In addition to those shown in the example script above, the following
-configuration items can be configured (the default values are for
-openldap)
+configuration items can be configured on a Global or on a per Domain level (the default values are for
+OpenLDAP) 
 
--  ``ldap.basedn``:	Sets the basedn for LDAP. Ex: **OU=APAC,DC=company,DC=com**
+.. list-table:: LDAP Settings
+   :header-rows: 1
 
--  ``ldap.bind.principal``, ``ldap.bind.password``: DN and password for a User
-   who can list all the Users in the above basedn. Ex:
-   **CN=Administrator, OU=APAC, DC=company, DC=com**
+   * - Setting
+     - OpenLDAP
+     - Active Directory
+     - Description
+   * - ``ldap.basedn``
+     - `Ex: OU=APAC, DC=company, DC=com`
+     - `Ex: DC=company, DC=com`
+     - Sets the basedn for LDAP.
+   * - ``ldap.search.group.principle``
+     - `Ex: CN=ACSGroup, DC=company, DC=com`
+     - `Ex: CN=ACSGroup, CN=Users, DC=company, DC=com`
+     - (optional) if set only Users from this group are listed.
+   * - ``ldap.bind.principal``
+     - `Ex: CN=ACSServiceAccount, OU=APAC, DC=company, DC=com`
+     - `Ex: CN=ACSServiceAccount, CN=Users, DC=company, DC=com`
+     - Service account that can list all the Users in the above basedn. Avoid using privileged account such as Administrator.
+   * - ``ldap.bind.password``
+     - `******************`
+     - `******************`
+     - Password for a DN User. Is entered in plain text but gets stored encrypted.
+   * - ``ldap.user.object``
+     - `interorgperson`
+     - `user`
+     - Object type of Users within LDAP.
+   * - ``ldap.email.attribute``
+     - `mail`
+     - `mail`
+     - Email attribute within ldap for a User.
+   * - ``ldap.firstname.attribute``
+     - `givenname`
+     - `givenname`
+     - firstname attribute within ldap for a User.
+   * - ``ldap.lastname.attribute``
+     - `sn`
+     - `sn`
+     - lastname attribute within ldap for a User.
+   * - ``ldap.group.object``
+     - `groupOfUniqueNames`
+     - `groupOfUniqueNames`
+     - Object type of groups within LDAP.
+   * - ``ldap.group.user.uniquemember``
+     - `uniquemember`
+     - `uniquemember`
+     - Attribute for uniquemembers within a group.
 
--  ``ldap.user.object``: object type of Users within LDAP. Defaults value is
-   **user** for AD and **interorgperson** for openldap.
+   .. note:: ``ldap.search.group.principle`` is required when using ``linkaccounttoldap``.
 
--  ``ldap.email.attribute``: email attribute within ldap for a User. Default
-   value for AD and openldap is **mail**.
+Once configured, on Add Account page, you will see an "Add LDAP Account" button which opens a dialog and the selected Users can be imported.
 
--  ``ldap.firstname.attribute``: firstname attribute within ldap for a User.
-   Default value for AD and openldap is **givenname**.
-
--  ``ldap.lastname.attribute``: lastname attribute within ldap for a User.
-   Default value for AD and openldap is **sn**.
-
--  ``ldap.username.attribute``: username attribute for a User within LDAP.
-   Default value is **SAMAccountName** for AD and **uid** for openldap.
+.. figure:: /_static/images/CloudStack-ldap-screen1.png
+   :align:   center
 
 
-Restricting LDAP Users to a group:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You could also use api commands:
+``listLdapUsers``, to list Users in LDAP that could or would be imported in CloudStack
+``ldapCreateAccount``, to manually create a User in a specific Account
+``importLdapUsers``, to batch import Users from LDAP
 
--  ``ldap.search.group.principle``: this is optional and if set only Users from
-   this group are listed.
+Once LDAP is enabled, the Users will not be allowed to changed password
+directly in CloudStack.
+
+
+
 
    .. note:: this is required when using ``linkaccounttoldap``.
 
@@ -524,30 +563,6 @@ You will need to know the path to the keystore and the password.
 -  ``ldap.truststore`` : truststore path
 -  ``ldap.truststore.password`` : truststore password
 
-
-LDAP groups:
-~~~~~~~~~~~~
-
--  ``ldap.group.object``: object type of groups within LDAP. Default value is
-   group for AD and **groupOfUniqueNames** for openldap.
-
--  ``ldap.group.user.uniquemember``: attribute for uniquemembers within a group.
-   Default value is **member** for AD and **uniquemember** for openldap.
-
-Once configured, on Add Account page, you will see an "Add LDAP Account" button
-which opens a dialog and the selected Users can be imported.
-
-.. figure:: /_static/images/CloudStack-ldap-screen1.png
-   :align:   center
-
-
-You could also use api commands:
-``listLdapUsers``, to list Users in LDAP that could or would be imported in CloudStack
-``ldapCreateAccount``, to manually create a User in a specific Account
-``importLdapUsers``, to batch import Users from LDAP
-
-Once LDAP is enabled, the Users will not be allowed to changed password
-directly in CloudStack.
 
 .. |button to dedicate a zone, pod,cluster, or host| image:: /_static/images/dedicate-resource-button.png
 
