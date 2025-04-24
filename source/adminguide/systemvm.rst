@@ -89,15 +89,15 @@ of memory.
 
    .. cssclass:: table-striped table-bordered table-hover
 
-   ==========  ============  =================================================================================
+   ==========  ============  ==================================================================================
    Hypervisor  Architecture  Download Location
-   ==========  ============  =================================================================================
+   ==========  ============  ==================================================================================
    XenServer   x86_64        |sysvm64-url-xen|
    KVM         x86_64        |sysvm64-url-kvm|
    KVM         aarch64       |sysvm64-url-kvm-aarch64|
    VMware      x86_64        |sysvm64-url-vmware|
    Hyper-V     x86_64        |sysvm64-url-hyperv|
-   ==========  ============  =================================================================================
+   ==========  ============  ==================================================================================
 
 #. As an administrator, log in to the CloudStack UI
 
@@ -120,6 +120,11 @@ of memory.
 
    Any new virtual router created in this Zone automatically picks up
    this Template.
+
+#. When using multiple architectures in the Zone, same name can be used
+   for different architectures for the same hypervisor to allow deployment
+   across them depending on the compute capacity and the zone setting -
+   *system.vm.preferred.architecture*
 
 #. Restart the Management Server.
 
