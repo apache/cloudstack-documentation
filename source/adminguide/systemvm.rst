@@ -48,7 +48,9 @@ following characteristics:
 
 Starting with 4.20.0 release, the following architectures are supported for KVM
 hypervisor:
+
 - Intel/AMD 64-bit (x86_64)
+
 - ARM 64-bit (aarch64)
 
 Other hypervisors only support Intel/AMD 64-bit (x86_64)
@@ -60,8 +62,11 @@ System VM Template bundled with packages
 The System VM Template is bundled with the official release DEB and RPM
 cloudstack-management packages for Intel/AMD 64-bit architecture and the
 following hypervisors:
+
 - KVM
+
 - VMware
+
 - XenServer
 
 Currently, the ARM 64-bit template(s) are not bundled with the packages.
@@ -122,9 +127,9 @@ of memory.
    this Template.
 
 #. When using multiple architectures in the Zone, same name can be used
-   for different architectures for the same hypervisor to allow deployment
-   across them depending on the compute capacity and the zone setting -
-   *system.vm.preferred.architecture*
+   for the templates for the different architectures and same hypervisor
+   to allow deployment across them depending on the compute capacity and
+   the zone setting - *system.vm.preferred.architecture*
 
 #. Restart the Management Server.
 
