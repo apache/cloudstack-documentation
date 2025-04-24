@@ -402,8 +402,8 @@ To create a new compute offering:
             with the compute offering. When set to true, overriding of disk offering is not allowed on deploy instance
             and change disk offering is not allowed for the ROOT disk
       
-   -  **Enable Lease**: When this flag is enabled, Compute Offering is created with 'Instance Lease' feature enabled. 
-      In CloudStack, a lease sets a specific time duration after which a chosen lease action action, such as stopping or destroying the instance, will take place. 
+   -  **Enable Lease**: When this flag is enabled, Compute Offering is created with 'Instance Lease' enabled. 
+      In CloudStack, a lease for an instance sets a specific time duration (in days) after which a chosen lease action, such as stopping or destroying the instance, will take place. 
       These lease settings are defined in the Compute Offering and are automatically applied to any Instance created using it.
       
       .. note:: The global configuration ``instance.lease.enabled`` should be configured as true to create compute offering with lease.

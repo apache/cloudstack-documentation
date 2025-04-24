@@ -963,10 +963,13 @@ already in use by the Instance.
 Instance Lease
 --------------
 
-CloudStack offers the option to create Instances with a Lease. A Lease defines a set time period after which a selected action, such as stopping or destroying the instance, 
-will be automatically performed. This helps optimize cloud resource usage by automatically freeing up resources that are no longer in use. 
-If a user needs an instance only for a limited time, this feature can be useful. When deploying an instance, users can either choose a Compute Offering that includes 
-the Instance Lease feature or enable it specifically for that instance, setting the number of days after which the instance should be stopped or destroyed once their task is complete.
+CloudStack offers the option to create Instances with a Lease. A Lease defines a set time period after which a selected action, 
+such as stopping or destroying the instance, will be automatically performed. This helps optimize cloud resource usage by automatically 
+freeing up resources that are no longer in use. 
+
+If a user needs an instance only for a limited time, this option can be very helpful. 
+When deploying an instance, users can either choose a Compute Offering that includes Instance Lease support or enable it specifically for that instance, 
+setting the number of days after which the instance should be stopped or destroyed once their task is complete.
 
 
 **Configuring Instance Lease feature**
@@ -978,9 +981,9 @@ To set these variables, API or CloudStack UI can be used:
 Configuration                            Description
 ======================================= ========================
 instance.lease.enabled                   Indicates whether to enable the Instance lease feature, will be applicable only on instances created after lease is enabled. **Default: false**
-instance.lease.scheduler.interval		  Background task interval in seconds that executes Lease expiry action on eligibile expired instances. Default: 3600.
-instance.lease.alertscheduler.interval	  Background task interval in seconds that executes Lease alert for instances about to be expired in next N days. Default: 86400
-instance.lease.alert.daysbefore          Denotes number of days (N) for alert task. Default: 7 days
+instance.lease.scheduler.interval        Background task interval in seconds that executes Lease expiry action on eligibile expired instances. Default: 3600.
+instance.lease.eventscheduler.interval   Background task interval in seconds that executes Lease event executor for instances about to be expired in next N days. Default: 86400
+instance.lease.expiryevent.daysbefore    Denotes number of days (N) in advance expiry events are generated for instance about to expire. Default: 7 days
 ======================================= ========================
 
 
@@ -1087,6 +1090,7 @@ To disable lease using API:
 
 .. note:: When the feature is disabled, the lease associated with instances is cancelled. Re-enabling the feature will not automatically reapply the lease to previously grandfathered instances.
 
+.. note:: Lease duration is considered as total lease for instance.
 
 **Instance Lease Events**
 
@@ -1095,10 +1099,10 @@ Lease feature generates various events to help in auditing and monitoring:
 =================== ========================
 Event Type           Description
 =================== ========================
-VM.LEASE.EXPIRED	   Event is generated at lease expiry
-VM.LEASE.DISABLED	   Denotes if lease is disabled by user/admin
+VM.LEASE.EXPIRED     Event is generated at lease expiry
+VM.LEASE.DISABLED    Denotes if lease is disabled by user/admin
 VM.LEASE.CANCELLED   When lease is cancelled (feature gets disabled)
-VM.LEASE.EXPIRING	   Expiry intimation event for instance
+VM.LEASE.EXPIRING    Expiry intimation event for instance
 =================== ========================
 
 
