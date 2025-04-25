@@ -779,7 +779,7 @@ msgstr ""
 
 #: ../../administration_guide.rst:331
 # 3748d1e9df464087a1ffe1ff96240883
-msgid "Then you may power down the Host, re-use its IP address, re-install it, etc"
+msgid "Then you may power down the Host, reuse its IP address, re-install it, etc"
 msgstr ""
 
 #: ../../administration_guide.rst:334
@@ -995,7 +995,7 @@ msgstr ""
 
 #: ../../administration_guide.rst:434
 # 0e804d9f17db4c8a981a54fd41556317
-msgid "Fill in your desired over-provisioning multipliers in the fields CPU overcommit factor and RAM overcommit factor. The value which is intially shown in these fields is the default value inherited from the global configuration settings."
+msgid "Fill in your desired over-provisioning multipliers in the fields CPU overcommit factor and RAM overcommit factor. The value which is initially shown in these fields is the default value inherited from the global configuration settings."
 msgstr ""
 
 #: ../../administration_guide.rst:437

@@ -363,7 +363,7 @@ msgstr "Syslog警报详情"
 #: ../../management.rst:345
 msgid ""
 "CloudStack generates a syslog message for every alert. Each syslog message "
-"incudes the fields alertType, message, podId, dataCenterId, and clusterId, "
+"includes the fields alertType, message, podId, dataCenterId, and clusterId, "
 "in the following format. If any field does not have a valid value, it will "
 "not be included."
 msgstr "CloudStack为每个警告生成一个syslog信息。每个syslog信息包含下列格式的字段alertType、message、podId、dataCenterId和clusterId。如果任何字段没有有效值的话，它将不会包含在内。"

@@ -55,7 +55,7 @@ In addition, the following hardware requirements apply:
 -  Within a single cluster, the hosts must be of the same distribution
    version.
 
--  All hosts within a cluster must be homogenous. The CPUs must be of
+-  All hosts within a cluster must be homogeneous. The CPUs must be of
    the same type, count, and feature flags.
 
 -  Must support HVM (Intel-VT or AMD-V enabled)
@@ -90,7 +90,7 @@ host to work with CloudStack.
 .. warning::
    Certain servers such as Dell provide the option to choose the Power Management Profile.
    The Active Power Controller enables Dell System DBPM (Demand Based Power Management)
-   which can restrict the visibility of the maximum CPU clock speed availble to the OS,
+   which can restrict the visibility of the maximum CPU clock speed available to the OS,
    which in turn can lead to CloudStack fetching the incorrect CPU speed of the server.
    To ensure that CloudStack can always fetch the maximum cpu speed on the server, ensure
    that "OS Control" is set as the Power Management Profile.
@@ -385,7 +385,7 @@ Here are some examples:
    host-passthrough may lead to migration failure,if you have this problem,
    you should use host-model or custom. guest.cpu.features will force cpu features
    as a required policy so make sure to put only those features that are provided
-   by the host CPU. As your kvm cluster needs to be made up of homogenous nodes anyway
+   by the host CPU. As your kvm cluster needs to be made up of homogeneous nodes anyway
    (see System Requirements), it might make most sense to use guest.cpu.mode=host-model
    or guest.cpu.mode=host-passthrough.
 
@@ -401,7 +401,7 @@ cloudstack-agent and should already be installed.
    planning to automate the deployment and configuration of your KVM hosts.
 
 #. To avoid potential security attack to Instances, We need to turn
-   off libvirt to listen on unsecure TCP port. CloudStack will automatically
+   off libvirt to listen on insecure TCP port. CloudStack will automatically
    set up cloud keystore and certificates when the host is added to cloudstack.
    We also need to turn off libvirts attempt
    to use Multicast DNS advertising. Both of these settings are in
@@ -472,6 +472,19 @@ cloudstack-agent and should already be installed.
 
       #LIBVIRTD_ARGS="--listen"
 
+   Configure libvirt to connect to libvirtd and not to per-driver daemons, especially important on newer distros such as EL9 and Ubuntu 24.04. 
+   Edit ``/etc/libvirt/libvirt.conf`` and add the following:
+
+   .. parsed-literal::
+      remote_mode="legacy"
+
+   On Ubuntu 24.04 or newer set libvirtd mode to traditional mode (see https://libvirt.org/manpages/libvirtd.html#system-socket-activation):
+
+   .. parsed-literal::
+
+      systemctl mask libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tls.socket libvirtd-tcp.socket
+
+
 #. Restart libvirt
 
    In RHEL or CentOS or SUSE or Ubuntu:
@@ -528,6 +541,10 @@ ensure the Agent has all the required permissions.
       .. parsed-literal::
 
          $ setenforce permissive
+
+.. note:: In a production environment, selinux should be set to enforcing
+   and the necessary selinux policies are created to allow the
+   services to run.
 
 #. Configure Apparmor (Ubuntu)
 
@@ -592,7 +609,7 @@ There are many ways to configure your networking. Even within the scope of a giv
 network mode.  Below are a few simple examples.
 
 .. note::
-   Since Ubuntu 20.04 the standard for manging network connections is by
+   Since Ubuntu 20.04 the standard for managing network connections is by
    using NetPlan YAML files. Please refer to the Ubuntu man pages for further
    information and set up network connections figuratively.
 
@@ -1479,7 +1496,7 @@ extra ports by executing the following iptable commands:
 
    $ iptables -I INPUT -p tcp -m tcp --dport 49152:49216 -j ACCEPT
 
-These iptable settings are not persistent accross reboots, we have to
+These iptable settings are not persistent across reboots, we have to
 save them first.
 
 .. parsed-literal::
@@ -1584,7 +1601,7 @@ perform.
 In case of KVM, UEFI enabled hypervisor hosts must have the ``ovmf`` or
 ``edk2-ovmf`` package installed.
 
-You can find further informations regarding prerequisites at the CloudStack Wiki
+You can find further information regarding prerequisites at the CloudStack Wiki
 (https://cwiki.apache.org/confluence/display/CLOUDSTACK/Enable+UEFI+booting+for+Instance)
 as well as limitations for using UEFI in CloudStack.
 

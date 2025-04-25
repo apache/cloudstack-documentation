@@ -95,7 +95,7 @@ msgstr "同一集群中主机必须使用相同版本的Linux系统。"
 # fc001eaf8fb842d7adbbf5bb977be8fd
 #: ../../hypervisor/kvm.rst:52
 msgid ""
-"All hosts within a cluster must be homogenous. The CPUs must be of the same "
+"All hosts within a cluster must be homogeneous. The CPUs must be of the same "
 "type, count, and feature flags."
 msgstr "同一群集中的所有节点架构必须一致。CPU的型号、数量和功能参数必须相同。"
 
@@ -383,7 +383,7 @@ msgstr "CloudStack使用libvirt管理虚拟机。因此正确地配置libvirt至
 # ed8dd766459147cbb85ff50d90c4b80e
 #: ../../hypervisor/kvm.rst:243
 msgid ""
-"In order to have live migration working libvirt has to listen for unsecured "
+"In order to have live migration working libvirt has to listen for insecured "
 "TCP connections. We also need to turn off libvirts attempt to use Multicast "
 "DNS advertising. Both of these settings are in "
 "``/etc/libvirt/libvirtd.conf``"
@@ -862,7 +862,7 @@ msgstr "RHEL 及 CentOS使用iptables作为防火墙，执行以下iptables命�
 # f47cb1aac5b0422ea1409fd01b64e2db
 #: ../../hypervisor/kvm.rst:836
 msgid ""
-"These iptable settings are not persistent accross reboots, we have to save "
+"These iptable settings are not persistent across reboots, we have to save "
 "them first."
 msgstr "这些iptables配置并不会持久保存，重启之后将会消失，我们必须手动保存这些配置。"
 

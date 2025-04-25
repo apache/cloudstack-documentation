@@ -33,7 +33,7 @@ support other shared storage such as CephFS and CIFS/Samba in future.
 
 When initiating B&R operations on KVM instance, the assigned backup offering
 is used to infer backup repository (NAS) details which are then used to mount
-the shared storage temporarily on the KVM host to peform instance backup/restore
+the shared storage temporarily on the KVM host to perform instance backup/restore
 disks operations. This also requires that admin installs NAS-storage specific
 utilities on the KVM hosts such as nfs-utils/nfs-common (ceph-common, cifs-utils).
 
@@ -55,6 +55,36 @@ With 'nas' B&R plugin enabled, after a backup repositories are added, root
 admins can create new backup offerings by selecting the zone and the backup
 repository. These backup offerings are then assigned and used with KVM instances
 to perform support B&R actions and operations.
+
+Using the NAS Backup and Recovery Plugin
+----------------------------------------
+To use the NAS Backup and Recovery Plugin, the Backup and Recovery framework needs to be enabled first. Then the backup plugin 'nas' needs to be enabled on either the global or zone settings. 
+
+================================= ========================
+Configuration                     Value
+================================= ========================
+backup.framework.enabled          true
+backup.framework.provider.plugin  nas
+================================= ========================
+
+Once the above two configurations are set, restart the cloudstack-management service. Once the service is restarted we can add the backup repository for the 'nas' Backup and Recovery plugin.
+Navigate to the configuration -> Backup Repository. Click on 'Add Backup Repository' and fill the form. 
+
+=================== ========================
+Field               Value
+=================== ========================
+Name                A suitable name to represent the Backup Repository
+Address             URL, in case of NFS <server IP>:/path
+Type                NFS ( only NFS type in 4.20)
+label.mountopts     Any mount point options to be passed while mouting this storage on the hypervisor. 
+Zone                The zone in CloudStack with which this Backup Repository must be associated.
+=================== ========================
+
+.. image:: /_static/images/B&R-Backup-Respository.png
+   :align: center
+   :alt: NAS Backup repository
+
+Once the Backup Repository is created, we need to add a Backup Offering, in this plugin the Backup offering is a placeholder to associate an instance to a Backup Repository. While creating the Backup Offering, select the desired Backup Repository. Associate the Backup Offering on an instance to create an Adhoc or scheduled backup. 
 
 Support Information and Limitation
 ----------------------------------

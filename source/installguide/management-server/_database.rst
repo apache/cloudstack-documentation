@@ -166,6 +166,10 @@ MySQL. See :ref:`install-database-on-separate-node`.
 
          setenforce permissive
 
+.. note:: In a production environment, selinux should be set to enforcing
+   and the necessary selinux policies are created to allow the
+   services to run.
+
 #. Set up the database.
 
    The cloudstack-setup-databases script is used for creating the cloudstack
@@ -430,7 +434,7 @@ The following command creates the cloud user on the database.
       want to expose your root credentials but still want the database to
       be prepared for first start up. These skipped steps will have had to be
       done manually prior to executing this script. This behaviour can be
-      envoked by passing the --schema-only flag. This flag conflicts with the
+      invoked by passing the --schema-only flag. This flag conflicts with the
       --deploy-as flag so the two cannot be used together. To set up the
       databases and user manually before executing the script with the flag,
       these commands can be executed:

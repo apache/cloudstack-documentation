@@ -112,7 +112,7 @@ templating of Centos and Ubuntu.
 
      deluser myuser --remove-home
 	 
-   User password management and reset cappabilities in GUI are available with:
+   User password management and reset capabilities in GUI are available with:
    
    *  `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_
    *  `Adding Password Management to Your Templates <templates.html#adding-password-management-to-templates>`_ /Legacy for non systemd systems only/
@@ -213,5 +213,4 @@ templating of Centos and Ubuntu.
 #. **Create the Template!**
 
    You are now ready to create the Final Template, for more information see
-   `“Creating a Template from an Existing Virtual
-   Machine” <#creating-a-template-from-an-existing-instance>`_.
+   :ref:`creating-a-template-from-an-existing-virtual-machine`.

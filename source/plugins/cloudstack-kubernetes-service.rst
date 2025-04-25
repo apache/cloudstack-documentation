@@ -293,7 +293,7 @@ scaleKubernetesCluster API can be used to scale a running (or stopped cluster) t
 - **serviceofferingid** (the ID of the new service offering for the Instances in the cluster)
 - **size** (number of Kubernetes cluster worker nodes)
 
-Only running Kubernetes clusters can be scaled in size. When the service fails to scale the cluster, the cluster will show in Alert state else if the scaling is successfull cluster will show up in Running state.
+Only running Kubernetes clusters can be scaled in size. When the service fails to scale the cluster, the cluster will show in Alert state else if the scaling is successful cluster will show up in Running state.
 
 .. note::
    - Only up scaling is supported while scaling clusters for service offering.

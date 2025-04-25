@@ -38,7 +38,7 @@ msgstr ""
 
 #: ../../networking/inter_vlan_routing.rst:37
 # dca4c4be393c4d7bbcda75f49ffc8efc
-msgid "The administrator can deploy a set of VLANs and allow users to deploy VMs on these VLANs. A guest VLAN is randomly alloted to an account from a pre-specified set of guest VLANs. All the VMs of a certain tier of an account reside on the guest VLAN allotted to that account."
+msgid "The administrator can deploy a set of VLANs and allow users to deploy VMs on these VLANs. A guest VLAN is randomly allotted to an account from a pre-specified set of guest VLANs. All the VMs of a certain tier of an account reside on the guest VLAN allotted to that account."
 msgstr ""
 
 #: ../../networking/inter_vlan_routing.rst:43

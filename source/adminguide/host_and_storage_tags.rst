@@ -31,30 +31,39 @@ There are two types of host tags:
 To explain the behavior of host tags, some examples will be demonstrated with two hosts (Host1 and Host2):
 
 #. Tag setup:
+
     * Host1: h1
     * Host2: h2
     * Offering: h1
+
     When a VM is created with the offering, the deployment will be carried out on Host1, as it is the one that has the tag compatible with the offering.
 
 #. Tag setup:
+
     * Host1: h1
     * Host2: h2,h3
     * Offering: h3
+
     Hosts and offerings accept a list of tags, with comma (,) being their separator. So in this example, Host2 has the h2 and h3 tags. When a VM is created with the offering, the deployment will be carried out on Host2, as it is the one that has the tag compatible with the offering.
 
 #. Tag setup:
+
     * Host1: h1
     * Host2: h2,h3
     * Offering: (no tag)
+
     When the offering does not have tags, it will be possible to deploy the VM on any host.
 
 #. Tag setup:
+
     * Host1: (no tag)
     * Host2: h2
     * Offering: h3
+
     None of the hosts have compatible tags and it will not be possible to deploy a VM with the offering. However, CloudStack ignores this behavior when a host is manually selected.
 
 .. _strict-host-tags:
+
 Strict Host Tags
 -----------------
 During certain operations, such as changing the compute offering or starting or
@@ -96,23 +105,31 @@ Storage tags are responsible for directing volumes to compatible primary storage
 To explain the behavior of storage tags, some examples will be demonstrated:
 
 #. Tag setup:
+
     * Storage: A
     * Offering: A,B
+
     Storage and offering accept a list of tags, with the comma (,) being their separator. Therefore, in this example, the offering has tags A and B. In this example, it will not be possible to allocate the volume, as all the offering tags must exist in the storage. Although the storage has the A tag, it does not have the B tag.
 
 #. Tag setup:
+
     * Storage: A,B,C,D,X
     * Offering: A,B,C
+
     In this example, it will be possible to allocate the volume, as all the offering tags exist in the storage.
 
 #. Tag setup:
+
     * Storage: A, B, C
     * Offering: (no tag)
+
     In this example, it will be possible to allocate the volume, as the offering does not have any tag requirements.
 
 #. Tag setup:
+
     * Storage: (no tag)
     * Offering: D,E
+
     In this example, it will not be possible to allocate the volume, as the storage does not have tags, therefore it does not meet the offering requirements.
 
 In short, if the offering has tags, the storage will need to have all the tags for the volume to be allocated. If the offering does not have tags, the volume can be allocated, regardless of whether the storage has a tag or not.
@@ -137,7 +154,7 @@ In Apache CloudStack 4.19 and prior, cloud operators are only able to set tags o
 
 Implicit host tags feature is supported since Apache CloudStack 4.20. With the feature, Cloud operators can easily set the
 implicit host tags per host based on the server configurations. For example, based on the following hardware devices and
-softwares which can be fetched by commands, scripts or tools:
+software which can be fetched by commands, scripts or tools:
 
 - CPU architecture and model
 - Network card type and speed

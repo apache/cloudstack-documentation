@@ -442,12 +442,12 @@ msgstr ""
 
 #: ../../qig.rst:498
 # 99f2fbc9c2454f3487ad43f84bb08a12
-msgid "In order to have live migration working libvirt has to listen for unsecured TCP connections. We also need to turn off libvirts attempt to use Multicast DNS advertising. Both of these settings are in /etc/libvirt/libvirtd.conf"
+msgid "In order to have live migration working libvirt has to listen for insecured TCP connections. We also need to turn off libvirts attempt to use Multicast DNS advertising. Both of these settings are in /etc/libvirt/libvirtd.conf"
 msgstr ""
 
 #: ../../qig.rst:502
 # 9fc492fb10044ee0844b1d25e91f50ee
-msgid "Set the following paramaters:"
+msgid "Set the following parameters:"
 msgstr ""
 
 #: ../../qig.rst:512

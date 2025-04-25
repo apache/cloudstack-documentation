@@ -73,7 +73,7 @@ msgstr "XenServer 6.2.0"
 # 5dee06ed5f2f472f9e0979ddbb241a63
 #: ../../hypervisor/xenserver.rst:40
 msgid ""
-"You must re-install Citrix XenServer if you are going to re-use a host from "
+"You must re-install Citrix XenServer if you are going to reuse a host from "
 "a previous install."
 msgstr "如果你想使用以前装的某台主机,你必须重新安装Citrix XenServer."
 
