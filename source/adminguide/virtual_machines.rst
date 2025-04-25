@@ -1005,10 +1005,10 @@ instance.lease.expiryevent.daysbefore    Denotes number of days (N) in advance e
 
 **leaseduration**: Lease duration is specified in days. This can take Natural numbers and -1 to disable the lease.
 
-Lease may require to be disabled in following scenarios:
+User can disable Lease for instance in two ways:
 
-- Users can disable the Instance Lease feature during instance deployment by unchecking the 'Enable Lease' option when using a Compute Offering that supports it.
-- For existing instances with a lease already enabled, the lease can be removed by editing the instance and unchecking the 'Enable Lease' option.
+- Disable the Instance Lease during instance deployment by unchecking the 'Enable Lease' option when using a Compute Offering that supports it.
+- For existing instances with a lease already enabled, it can be removed by editing the instance and unchecking the 'Enable Lease' option.
 
 **leaseexpiryaction**: There are two expiry action supported:
 
