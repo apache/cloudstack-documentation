@@ -1000,6 +1000,40 @@ An example list of settings as well as their possible values are shown on the im
 |vm-settings-values-dropdown-KVM-list.png|
 (KVM disk controllers)
 
+|vm-settings-kvm-guest-cpu-model.png|
+(KVM guest CPU model, available for root admin since 4.20.1.0)
+
+Instance Settings for Virtual Trusted Platform Module (vTPM)
+-----------------------------
+
+Trusted Platform Module (TPM) is a standard for a secure cryptoprocessor, which
+can securely store artifacts used to authenticate the platform, including passwords,
+certificates, or encryption keys. TPM is required by recent Windows releases.
+
+Virtual Trusted Platform Module (vTPM) is the software-based representation of physical TPM.
+CloudStack supports vTPM for instances running on KVM and VMware since 4.20.1.0 .
+
+|vm-settings-uefi-secure.png|
+UEFI setting
+
+- On Vmware, the boot type must be set to UEFI. Boot mode can be SECURE (recommended) or LEGACY.
+- On KVM, it is recommended to set boot type to UEFI, and boot mode to SECURE.
+- UEFI is required for some Windows versions.
+
+|vm-settings-virtual-tpm-model-kvm.png|
+TPM model for KVM. There are two options:
+
+- tpm-tis, TIS means TPM Interface Specification; 
+- tpm-crb, CRB means Command-Response Buffer.
+
+|vm-settings-virtual-tpm-version-kvm.png|
+TPM version for KVM. There are two options:
+
+- 2.0. This is the default TPM version. It is used when version is not specified or invalid.
+- 1.2. This is not supported with CRB model.
+
+|vm-settings-virtual-tpm-enabled-vmware.png|
+Enable or disable vTPM for VMware.
 
 Instance Snapshots
 ==================
@@ -1612,6 +1646,16 @@ Instance disk statistics are shown in the Metrics tab in an individual volume vi
    :alt: List of possible VMware NIC models
 .. |vm-settings-values-dropdown-KVM-list.png| image:: /_static/images/vm-settings-values-dropdown-KVM-list.png
    :alt: List of possible KVM disk controllers
+.. |vm-settings-kvm-guest-cpu-model.png| image:: /_static/images/vm-settings-kvm-guest-cpu-model.png
+   :alt: List of possible KVM guest CPU models
+.. |vm-settings-uefi-secure.png| image:: /_static/images/vm-settings-uefi-secure.png
+   :alt: Set boot type to UEFI and mode to SECURE
+.. |vm-settings-virtual-tpm-model-kvm.png| image:: /_static/images/vm-settings-virtual-tpm-model-kvm.png
+   :alt: List of TPM models for KVM
+.. |vm-settings-virtual-tpm-version-kvm.png| image:: /_static/images/vm-settings-virtual-tpm-version-kvm.png
+   :alt: List of TPM versions for KVM
+.. |vm-settings-virtual-tpm-enabled-vmware.png| image:: /_static/images/vm-settings-virtual-tpm-enabled-vmware.png
+   :alt: Enable vTPM or not for VMware
 .. |vm-metrics-ui.png| image:: /_static/images/vm-metrics-ui.png
    :alt: VM metrics UI
 .. |vm-disk-metrics-ui.png| image:: /_static/images/vm-disk-metrics-ui.png
