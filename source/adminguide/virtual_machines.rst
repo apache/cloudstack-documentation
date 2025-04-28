@@ -999,6 +999,8 @@ instance.lease.eventscheduler.interval   Background task interval in seconds tha
 instance.lease.expiryevent.daysbefore    Denotes number of days (N) in advance expiry events are generated for instance about to expire. Default: 7 days
 ======================================= ========================
 
+.. note:: it is recommended to configure the lowest possible value (in secs) for **instance.lease.scheduler.interval**, so that lease expiry action is taken as soon as lease is expired.
+
 
 **Lease Parameters**
 

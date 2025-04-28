@@ -411,8 +411,10 @@ To create a new compute offering:
       These lease settings are defined in the Compute Offering and are automatically applied to any Instance created using it.
       
       .. note:: The global configuration ``instance.lease.enabled`` should be configured as true to create compute offering with lease.
+      
+      .. note:: Lease duration or expiryaction can't be updated for compute offering.
 
-         ``instance.lease.enabled``: Indicates whether Instance Lease feature is enabled or not. Default is **false**
+      ``instance.lease.enabled``: Indicates whether Instance Lease feature is enabled or not. Default is **false**
          For more information, see `“Setting Global Configuration Parameters”
          <../installguide/configuration.html#setting-global-configuration-parameters>`_.
 
