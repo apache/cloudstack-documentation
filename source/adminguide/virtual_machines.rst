@@ -1264,7 +1264,25 @@ Create an Instance Template that supports SSH Keys.
 Creating the SSH Keypair
 ------------------------
 
-You must make a call to the createSSHKeyPair api method. You can either
+#. Log in to the CloudStack UI.
+
+#. In the left navigation bar, click Compute --> SSH Key Pairs.
+
+#. Click Create a SSH Key Pair.
+
+#. In the dialog, make the following choices:
+
+   -  **Name**: Any desired name for the SSH Key Pair.
+
+   -  **Public key**: (Optional) Public key material of the SSH Key Pair.
+
+      .. note:: If this field is filled in, CloudStack will register the public key.  If this field is left blank, CloudStack will create a new SSH key pair.
+
+   -  **Domain**: (Optional) domain for the SSH Key Pair.
+
+.. note:: If Cloudstack generates a New SSH Key Pair using a public key, it will not save the private key.  When shown, be sure to save a copy of it.
+
+You can also use the ``createSSHKeyPair`` api method to create an SSH Keypair. You can either
 use the CloudStack Python API library or the curl commands to make the
 call to the cloudstack api.
 
@@ -1363,11 +1381,21 @@ The -i parameter tells the ssh client to use a ssh key found at
 Resetting SSH Keys
 ------------------
 
-With the API command resetSSHKeyForVirtualMachine, a user can set or
-reset the SSH keypair assigned to an Instance. A lost or compromised
-SSH keypair can be changed, and the user can access the Instance
-by using the new keypair. Just create or register a new keypair, then
-call resetSSHKeyForVirtualMachine.
+A lost or compromised SSH keypair can be changed, and the user can access the Instance by using the new keypair.
+
+#. Log in to the CloudStack UI.
+
+#. In the left navigation bar, click Compute --> Instances.
+
+#. Choose the Instance.
+
+#. Click on Reset SSH Key Pair button the Instance.
+
+   .. note:: The Instance must be in a Stopped state.
+
+#. Select the SSH Key Pair(s) to add to instance
+
+.. note:: This can also be performed via API: ``resetSSHKeyForVirtualMachine``: Resets the assigned SSH keypair for an Instance.
 
 .. include:: virtual_machines/user-data.rst
 
