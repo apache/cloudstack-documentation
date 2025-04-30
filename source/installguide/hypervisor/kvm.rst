@@ -312,6 +312,23 @@ sudoers file:
    cloudstack ALL=NOPASSWD: /usr/bin/cloudstack-setup-agent
    Defaults:cloudstack !requiretty
 
+Please note that when adding the KVM host to your Cloudstack Management server,
+the setup commands will be run with sudo, even with root account.
+You should make sure that you are allowed to run binaries and sudo binaries.
+
+On security hardened machines, make sure that the following line is
+commented-out in your sudoers file if it exists:
+
+.. parsed-literal::
+
+   #Defaults noexec
+
+You may also want to make sure that sudo works by executing the following as
+the user you want to register the KVM host with:
+
+.. parsed-literal::
+
+   sudo /usr/in/cloudstack-setup-agent --help
 
 Configure CPU model for KVM guest (Optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
