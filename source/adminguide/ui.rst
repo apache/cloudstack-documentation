@@ -178,30 +178,33 @@ new, unique value.
 
 #. Type the new password, and click OK.
 
-Basic UI Customization
+Basic UI Customisation
 ~~~~~~~~~~~~~~~~~~~~~~
 
 Users can customize the CloudStack's user interface by means of a configuration file at /etc/cloudstack/management/config.json which can be used to modify the theme, logos, etc. to align to one's requirement.
 
 To change the logo, login banner, error page icon, etc. the following details can be edited in config.json:
 
-============================= ================================================================
+======================================= ==================================================================================================================================================================
 Property                      Description
-============================= ================================================================
-apiBase                       Changes the suffix for the API endpoint
-docBase                       Changes the base URL for the documentation
-appTitle                      Changes the title of the portal
-footer                        Changes the footer text
-loginFavicon                  Changes the favicon of the login page
-loginFooter                   Configure to display text (HTML) in the footer at the login screen
-loginTitle                    Changes the title of the login page
-logo                          Changes the logo top-left side image
-minilogo                      Changes the logo top-left side image when menu is collapsed
-banner                        Changes the login banner image
-error.404                     Changes the image of error Page not found
-error.403                     Changes the image of error Forbidden
-error.500                     Changes the image of error Internal Server Error
-============================= ================================================================
+======================================= ==================================================================================================================================================================
+apiBase                                 Changes the suffix for the API endpoint
+docBase                                 Changes the base URL for the documentation
+appTitle                                Changes the title of the portal
+footer                                  Changes the footer text
+loginFavicon                            Changes the favicon of the login page
+loginFooter                             Configure to display text (HTML) in the footer at the login screen
+loginTitle                              Changes the title of the login page
+logo                                    Changes the logo top-left side image
+minilogo                                Changes the logo top-left side image when menu is collapsed
+banner                                  Changes the login banner image
+error.404                               Changes the image of error Page not found
+error.403                               Changes the image of error Forbidden
+error.500                               Changes the image of error Internal Server Error
+imageSelectionInterface                 Allows specifying view for image(template/ISO) selection in several UI forms. Supported values are: "modern" and "legacy". Default view is "modern"
+showUserCategoryForModernImageSelection Enables showing or hiding _User_ category in the *modern* image selection view which will show all user-owned images for the logged in user. Default value is true
+showAllCategoryForModernImageSelection  Enables showing or hiding _All_ category in the *modern* image selection view which will show all available images for the logged in user. Default value is false
+======================================= ==================================================================================================================================================================
 
 .. parsed-literal::
 
@@ -219,7 +222,7 @@ error.500                     Changes the image of error Internal Server Error
     }
 
 
-Customization of themes is also possible, such as, modifying banner width, general color, etc. This can be done by editing the "theme" section of the config.json file. Theme section provides following properties for customization:
+Customisation of themes is also possible, such as, modifying banner width, general color, etc. This can be done by editing the "theme" section of the config.json file. Theme section provides following properties for customisation:
 
 ============================= ================================================================
 Property                      Description
@@ -497,6 +500,22 @@ For displaying a custom HTML in the plugin, HTML file can be stored in the Cloud
 
 |ui-custom-plugin.png|
 
+
+Instance Image Selction Customisation
+-------------------------------------
+
+In the UI, there are several forms where the user needs to select an image (template/ISO) for an instance, such as deploying an instance, reinstalling an instance, creating a VNF appliance, etc. The image selection interface for these forms can be selected by the operator based on preference by specifying properties in the UI configuration file (config.json).
+
+The configuration property _imageSelectionInterface_ can be set to one of these values: modern or legacy. The default value is *modern*.
+
+When the *modern* interface is used, images will be categorized based on the guest operating system categories. Further customisation can be done using the configuration properties showUserCategoryForModernImageSelection and showAllCategoryForModernImageSelection to allow or disallow the display of additional categories.
+
+|ui-modern-image-selection.png|
+
+The *legacy* interface will display images based on templatefilter/isofilter, i.e., Featured, Community, My Templates/ISOs, and Shared.
+
+|ui-legacy-image-selection.png|
+
 Advanced UI Customisation
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -588,6 +607,12 @@ The following features are no longer supported or available in the UI but are st
 
 .. |change-password.png| image:: /_static/images/change-password.png
    :alt: button to change a User's password
+
+.. |ui-modern-image-selection.png| image:: /_static/images/ui-modern-image-selection.png
+   :alt: Modern Image Selection
+
+.. |ui-legacy-image-selection.png| image:: /_static/images/ui-legacy-image-selection.png
+   :alt: Legacy Image Selection
 
 .. |ui-custom-plugin.png| image:: /_static/images/ui-custom-plugin.png
    :alt: Custom plugin shown in UI with navigation
