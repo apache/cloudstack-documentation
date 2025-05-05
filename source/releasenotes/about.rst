@@ -66,5 +66,5 @@ Guest OS Categories Change
 The guest operating system categories have been updated, resulting in a
 reorganization of the guest operating systems with respect to categories.
 
-If the oscategoryid functionality for hosts is being used, ensure it is
+If the ``oscategoryid`` functionality for hosts is being used, ensure it is
 pointing to the correct guest operating system category ID.
