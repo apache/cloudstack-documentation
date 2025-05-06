@@ -420,7 +420,7 @@ To create a new compute offering:
 
       When the flag is enabled
 
-         -  **Lease Duration (in days)**: Sets the lease duration. An instance created using this compute offering will inherit the lease duration by default.
+         -  **Lease Duration (in days)**: Sets the lease duration. An instance created using this compute offering will inherit the lease duration by default. Supported values are in range 1 <= N <= 36500.
 
          -  **Lease expiry action**: Lease expiry action: Denotes lease expiry action, which gets executed upon lease expiry for instances created using this compute offering.
          Supported values for lease expiry action are as follows:

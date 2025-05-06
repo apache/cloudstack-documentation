@@ -1005,7 +1005,7 @@ instance.lease.expiryevent.daysbefore    Denotes number of days (N) in advance e
 **Lease Parameters**
 
 
-**leaseduration**: Lease duration is specified in days. This can take Natural numbers and -1 to disable the lease.
+**leaseduration**: Lease duration is specified in days. This can take Natural numbers (>=1) and -1 to disable the lease. Max supported value is 36500 (100 years).
 
 User can disable Lease for instance in two ways:
 
