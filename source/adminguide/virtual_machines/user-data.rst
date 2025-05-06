@@ -12,14 +12,15 @@
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
-
-
 User-Data and Meta-Data
------------------------
+=======================
 
 Users can register userdata in CloudStack and refer the registered userdata while
 deploying or editing or reset userdata on an instance. The userdata content can also be
 directly provided while deploying the instance. Userdata content length can be up to 32kb.
+
+Register Userdata
+-----------------
 
 To register a new userdata:
 
@@ -123,7 +124,7 @@ Based on these override policies, "Add Instance" UI form provides relevant optio
 override or append. If it is "Deny Override" then "Add Instance" will not allow adding user specific userdata
 
 Storing and accessing userdata
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------
 
 HTTP GET parameters are limited to a length of 2048 bytes, but it is possible
 to store larger user-data blobs by sending them in the body via HTTP POST
@@ -163,6 +164,34 @@ For metadata type, use one of the following:
 
 -  ``instance-id``. The instance name of the instance
 
+Resetting UserData
+------------------
+
+#. Log in to the CloudStack UI.
+
+#. In the left navigation bar, click Compute --> Instances.
+
+#. Choose the Instance to reset userdata.
+
+   .. note:: The Instance must be in a stopped state.
+
+#. Click on Reset Userdata button on the Instance.
+
+   .. note:: If the instance already has userdata applied to it, an extra dialog box will appear.
+
+             - ``Disabled`` (Default) - This will reset the userdata using the already configured values.  Skip the next step.
+
+             - ``Enabled`` - Choose this to override the already configured values.  Continue to next step.
+
+#. In the dialog box, choose one of the following:
+
+   - Stored Userdata: Choose another userdata entry.
+
+      .. note:: Stored Userdata is created under Instances --> User Data
+
+   - Manual Userdata Entry: Manually provide userdata for this Instance
+
+.. note:: This can also be performed via API: ``resetUserDataForVirtualMachine``: Resets the UserData for virtual machine.
 
 Determining the virtual router address without DNS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
