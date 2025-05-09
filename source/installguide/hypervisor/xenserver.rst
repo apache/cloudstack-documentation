@@ -36,12 +36,14 @@ System Requirements for XenServer Hosts
     -  XenServer 7.5
     -  XenServer 8.0 (not tested explicitly, but should work - see the release notes)
     -  XenServer 8.1 (not tested explicitly, but should work - see the release notes)
+    -  XenServer 8.4
     -  XCP-ng 7.4.0
     -  XCP-ng 7.5.0
     -  XCP-ng 7.6.0
     -  XCP-ng 8.0.0
     -  XCP-ng 8.1.0
     -  XCP-ng 8.2.0
+    -  XCP-ng 8.3.0
     
 
 -  You must re-install Citrix XenServer if you are going to re-use a
