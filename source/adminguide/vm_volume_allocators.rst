@@ -54,7 +54,7 @@ Use global configuration parameter:
 Volme Allocator
 --------------
 
-VOlume allocator returns suitable storage pools available in the cluster where volumes of the given instance can be created. 
+Volume allocator returns suitable storage pools available in the cluster where volumes of the given instance can be created. 
 To decide the storage pools, it considers factors such as disk offering, storage capactiy, availability scope etc.
 
 Volume allocator supports following algorithms to select a host in the cluster:
@@ -65,15 +65,16 @@ Volume allocator supports following algorithms to select a host in the cluster:
 Algorithm                      Description
 ============================= ========================
 random		                   Selects a storage pool in the cluster randomly.
-firstfit		               Selects the first available storage pool in the cluster.
-userdispersing	               Selects the storage pool running least instances for the account, aims to spread out the instances belonging to a single user account.
+firstfit		                   Selects the first available storage pool in the cluster.
+userdispersing	                Selects the storage pool running least instances for the account, aims to spread out the instances belonging to a single user account.
 userconcentratedpod_random     Selects the storage pool randomly aiming to keep all instances belonging to single user account in same pod.
 userconcentratedpod_firstfit   Selects the first suitable pool from a pod running most instances for the user.
 firstfitleastconsumed          Selects the first storage pool after sorting eligible pools by least allocated resources.
 ============================= ========================
 
-Before 4.21.0, there was no named algorithm setting like vm.allocation.algorithm and volume allocator used to use the algorithm configured for VM allocator.
+.. note::
+   Since 4.21.0, dedicated named configuration is provided for admin to configure volume allocation algorithm.
+   
+      **volume.allocation.algorithm**: random (default)
 
-Since 4.21.0, dedicated named configuration is provided for user to configure volume allocation algorithm:
-
-**volume.allocation.algorithm**: random (default)
+   Before 4.21.0, **vm.allocation.algorithm** was used for both VM as well as Volume allocation.
