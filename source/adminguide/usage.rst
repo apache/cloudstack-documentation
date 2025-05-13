@@ -680,8 +680,6 @@ Load Balancer Policy or Port Forwarding Rule Usage Record Format
 
 -  usageid - ID of the load balancer policy or port forwarding rule
 
--  usagetype - A number representing the usage type (see Usage Types)
-
 -  startdate, enddate - The range of time for which the usage is
    aggregated; see Dates in the Usage Record
 
@@ -706,15 +704,11 @@ Network Offering Usage Record Format
 
 -  rawusage – A number representing the actual usage in hours
 
--  usageid – ID of the Network offering
+-  offeringid – ID of the Network offering
 
--  usagetype – A number representing the usage type (see Usage Types)
+-  virtualmachineid – The ID of the Instance
 
--  offeringid – Network offering ID
-
--  virtualMachineId – The ID of the Instance
-
--  virtualMachineId – The ID of the Instance
+-  isdefault – The default nic of the Instance
 
 -  startdate, enddate – The range of time for which the usage is
    aggregated; see Dates in the Usage Record
@@ -741,8 +735,6 @@ VPN User Usage Record Format
 -  rawusage – A number representing the actual usage in hours
 
 -  usageid – VPN User ID
-
--  usagetype – A number representing the usage type (see Usage Types)
 
 -  startdate, enddate – The range of time for which the usage is
    aggregated; see Dates in the Usage Record
