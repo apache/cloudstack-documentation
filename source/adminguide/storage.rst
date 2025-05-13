@@ -270,7 +270,6 @@ operator wants to limit the connection to a few hosts in just the first 2 cluste
 Storage Access Groups can be set on the primary storage and those specific hosts —
 or directly on the two clusters to achieve the same effect.
 
-
 Adding Storage Access Group on a primary storage.
 
 |adding-storage-access-group-on-primary-storage.png|
@@ -283,7 +282,8 @@ A primary storage with a Storage Access Group will connect only to hosts that ha
 same Storage Access Group. A storage pool without a Storage Access Group will connect to all hosts,
 including those with or without any Storage Access Group.
 
-Note, this is not applicable for local primary storages.
+Note: Storage Access Groups are not applicable for local primary storages. Currently this is tested with NFS
+and Dell Powerflex storages.
 
 Maintenance Mode for Primary Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
