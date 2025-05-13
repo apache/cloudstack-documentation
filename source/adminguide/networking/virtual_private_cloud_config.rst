@@ -315,7 +315,7 @@ Define a Network Access Control List (ACL) to control incoming
 (ingress) and outgoing (egress) traffic between the associated Network Tier
 and external Networks (other Network Tiers of the VPC as well as public Networks).
 
-About Network ACL Lists
+About Network ACLs
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 In CloudStack terminology, a Network ACL is a group of Network ACL rules.
@@ -357,7 +357,7 @@ Afterwards traffic can be white- or blacklisted.
   connection
   
 
-Creating ACL Lists
+Creating ACLs
 ^^^^^^^^^^^^^^^^^^
 
 #. Log in to the CloudStack UI as an administrator or end User.
@@ -391,18 +391,18 @@ Creating ACL Lists
 
    -  Site-to-Site VPNs
 
-   -  Network ACL Lists
+   -  Network ACLs
 
-#. Select Network ACL Lists.
+#. Select Network ACLs.
 
    The following default rules are displayed in the Network ACLs page:
    default\_allow, default\_deny.
 
-#. Click Add ACL Lists, and specify the following:
+#. Click Add Network ACL, and specify the following:
 
-   -  **ACL List Name**: A name for the ACL list.
+   -  **ACL Name**: A name for the ACL.
 
-   -  **Description**: A short description of the ACL list that can be
+   -  **Description**: A short description of the ACL that can be
       displayed to users.
 
 
@@ -420,15 +420,15 @@ Creating an ACL Rule
 
 #. Click the Configure button of the VPC.
 
-#. Select Network ACL Lists.
+#. Select Network ACLs.
 
-   In addition to the custom ACL lists you have created, the following
+   In addition to the custom ACLs you have created, the following
    default rules are displayed in the Network ACLs page: default\_allow,
    default\_deny.
 
-#. Select the desired ACL list.
+#. Select the desired ACL.
 
-#. Select the ACL List Rules tab.
+#. Select the ACL Rules tab.
 
    To add an ACL rule, fill in the following fields to specify what kind
    of network traffic is allowed in the VPC.
@@ -471,23 +471,23 @@ Creating an ACL Rule
    tab.
 
 
-Creating a Tier with Custom ACL List
+Creating a Tier with Custom ACL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Create a VPC.
 
-#. Create a custom ACL list.
+#. Create a custom ACL.
 
-#. Add ACL rules to the ACL list.
+#. Add ACL rules to the ACL.
 
 #. Create a tier in the VPC.
 
-   Select the desired ACL list while creating a tier.
+   Select the desired ACL while creating a tier.
 
 #. Click OK.
 
 
-Assigning a Custom ACL List to a Tier
+Assigning a Custom ACL to a Tier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Create a VPC.
@@ -496,17 +496,17 @@ Assigning a Custom ACL List to a Tier
 
 #. Associate the tier with the default ACL rule.
 
-#. Create a custom ACL list.
+#. Create a custom ACL.
 
-#. Add ACL rules to the ACL list.
+#. Add ACL rules to the ACL.
 
 #. Select the tier for which you want to assign the custom ACL.
 
-#. Click the Replace ACL List icon. |replace-acl-icon.png|
+#. Click the Replace ACL icon. |replace-acl-icon.png|
 
-   The Replace ACL List dialog is displayed.
+   The Replace ACL dialog is displayed.
 
-#. Select the desired ACL list.
+#. Select the desired ACL.
 
 #. Click OK.
 
@@ -558,7 +558,7 @@ with duplicated VLAN and IP are allowed in the same data center.
 
    -  Site-to-Site VPNs
 
-   -  Network ACL Lists
+   -  Network ACLs
 
 #. Select Private Gateways.
 
@@ -801,7 +801,7 @@ associated to more than one network at a time.
 
    -  Site-to-Site VPNs
 
-   -  Network ACL Lists
+   -  Network ACLs
 
 #. Select IP Addresses.
 
@@ -859,7 +859,7 @@ still belongs to the same VPC.
 
    -  Site-to-Site VPNs
 
-   -  Network ACL Lists
+   -  Network ACLs
 
 #. Select Public IP Addresses.
 
@@ -920,7 +920,7 @@ function only if they are defined on the default network.
 
    -  Site-to-Site VPNs
 
-   -  Network ACL Lists
+   -  Network ACLs
 
 #. In the Router node, select Public IP Addresses.
 
@@ -1086,7 +1086,7 @@ Creating an External LB Rule
 
    -  Site-to-Site VPNs
 
-   -  Network ACL Lists
+   -  Network ACLs
 
 #. In the Router node, select Public IP Addresses.
 
@@ -1354,7 +1354,7 @@ Adding a Port Forwarding Rule on a VPC
 
    -  Site-to-Site VPNs
 
-   -  Network ACL Lists
+   -  Network ACLs
 
 #. In the Router node, select Public IP Addresses.
 
@@ -1473,7 +1473,7 @@ is not required.
 .. |add-tier.png| image:: /_static/images/add-tier.png
    :alt: adding a tier to a vpc.
 .. |replace-acl-icon.png| image:: /_static/images/replace-acl-icon.png
-   :alt: button to replace an ACL list
+   :alt: button to replace an ACL
 .. |add-new-gateway-vpc2.png| image:: /_static/images/add-new-gateway-vpc2.png
    :alt: adding a private gateway for the VPC.
 .. |add-vm-vpc.png| image:: /_static/images/add-vm-vpc.png
