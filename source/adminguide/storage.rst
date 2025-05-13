@@ -283,7 +283,7 @@ same Storage Access Group. A storage pool without a Storage Access Group will co
 including those with or without any Storage Access Group.
 
 Note: Storage Access Groups are not applicable for local primary storages. Currently this is tested with NFS
-and Dell Powerflex storages.
+and Dell PowerFlex storages.
 
 Maintenance Mode for Primary Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
