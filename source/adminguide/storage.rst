@@ -1751,4 +1751,7 @@ as well if they wish. Attaching and detaching a disk is not allowed on a Shared 
    :alt: NFS mount options in add Primary Storage
 .. |nfs-mount-options-edit-primary-storage.png| image:: /_static/images/nfs-mount-options-edit-primary-storage.png
    :alt: NFS mount options in edit Primary Storage
-
+.. |adding-storage-access-group-on-primary-storage.png| image:: /_static/images/adding-storage-access-group-on-primary-storage.png
+   :alt: Adding storage access groups on primary storage
+.. |adding-storage-access-group-on-host.png| image:: /_static/images/adding-storage-access-group-on-host.png
+   :alt: Adding storage access groups on host
