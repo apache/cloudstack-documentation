@@ -259,10 +259,10 @@ When a primary storage is added in CloudStack, either at the Zone or Cluster sco
 it gets connected to all the hosts within that scope. Using Storage Access Groups,
 this behavior can be controlled by defining groups on both primary storage and hosts,
 ensuring connections are established only within those groups. When a Storage Access
-Group is set on a primary storage, and the same group is assigned to a host, the
-primary storage will connect only to that host. A Storage Access Group can also be
-applied at the Cluster, Pod, or Zone level, allowing all hosts in that entity to
-inherit the group automatically.
+Group is set on a primary storage (a text string attribute similar to tag),
+and the same group is assigned to a host, the primary storage will connect only to that host.
+A Storage Access Group can also be applied at the Cluster, Pod, or Zone level, allowing
+all hosts in that entity to inherit the group automatically.
 
 For example, if there are 50 hosts across 10 clusters, with 5 hosts per cluster,
 and a zone-wide primary storage is added, it will connect to all 50 hosts. If the
