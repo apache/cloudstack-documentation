@@ -827,7 +827,7 @@ The following table shows all usage types.
 |                  |                                   | also returned.              |
 +------------------+-----------------------------------+-----------------------------+
 | 9                | SNAPSHOT                          | Tracks the total time       |
-|                  |                                   | from when a Template        |
+|                  |                                   | from when a Snapshot        |
 |                  |                                   | has been created to         |
 |                  |                                   | the time it have been       |
 |                  |                                   | destroyed.                  |
@@ -857,7 +857,47 @@ The following table shows all usage types.
 |                  |                                   | VPN User is created         |
 |                  |                                   | until it is removed.        |
 +------------------+-----------------------------------+-----------------------------+
-
+| 21               | VM\_DISK\_IO\_READ                | Tracks the VM Disk usage    |
+|                  |                                   | (I/O Read) for an instance. |
++------------------+-----------------------------------+-----------------------------+
+| 22               | VM\_DISK\_IO\_WRITE               | Tracks the VM Disk usage    |
+|                  |                                   | (I/O Write) for an instance.|
++------------------+-----------------------------------+-----------------------------+
+| 23               | VM\_DISK\_BYTES\_READ             | Tracks the VM Disk usage    |
+|                  |                                   | (Bytes Read) for an         |
+|                  |                                   | instance.                   |
++------------------+-----------------------------------+-----------------------------+
+| 24               | VM\_DISK\_BYTES\_WRITE            | Tracks the VM Disk usage    |
+|                  |                                   | (Bytes Write) for an        |
+|                  |                                   | instance.                   |
++------------------+-----------------------------------+-----------------------------+
+| 25               | VM\_SNAPSHOT                      | Tracks the total time a     |
+|                  |                                   | VM Snapshot has been        |
+|                  |                                   | created to the time when    |
+|                  |                                   | it has been destroyed.      |
++------------------+-----------------------------------+-----------------------------+
+| 26               | VOLUME\_SECONDARY                 | Tracks the Volume           |
+|                  |                                   | usage on secondary storage  |
+|                  |                                   | for an account.             |
++------------------+-----------------------------------+-----------------------------+
+| 27               | VM\_SNAPSHOT\_ON\_PRIMARY         | Tracks the VM Snapshot      |
+|                  |                                   | usage on primary storage    |
+|                  |                                   | for an account.             |
++------------------+-----------------------------------+-----------------------------+
+| 28               | BACKUP                            | Tracks the Backup storage   |
+|                  |                                   | usage for an account.       |
++------------------+-----------------------------------+-----------------------------+
+| 29               | BUCKET                            | Tracks the Bucket storage   |
+|                  |                                   | usage for an account.       |
++------------------+-----------------------------------+-----------------------------+
+| 30               | NETWORK                           | Tracks the Network usage    |
+|                  |                                   | from the time it is         |
+|                  |                                   | created until it is removed.|
++------------------+-----------------------------------+-----------------------------+
+| 31               | VPC                               | Tracks the VPC usage        |
+|                  |                                   | from the time it is         |
+|                  |                                   | created until it is removed.|
++------------------+-----------------------------------+-----------------------------+
 
 Example response from listUsageRecords
 --------------------------------------
