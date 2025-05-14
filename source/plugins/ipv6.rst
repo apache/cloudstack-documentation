@@ -101,7 +101,7 @@ The following are not yet supported:
 
 #. Security groups
 
-#. Userdata and metadata
+#. User data and metadata
 
 #. Passwords
 

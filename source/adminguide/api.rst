@@ -94,15 +94,15 @@ User Data and Meta Data via Config Drive
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Config drive is an ISO file that is mounted as a cd-rom on a user Instance and
-contains related userdata, metadata (incl. ssh-keys) and
+contains related user data, metadata (incl. ssh-keys) and
 password files.
 
 Enable config drive
 ~~~~~~~~~~~~~~~~~~~
 To use the config drive the Network offering must have the “ConfigDrive”
-provider selected for the userdata service.
+provider selected for the user data service.
 
-If the networkoffering uses ConfigDrive for userdata and the Template is
+If the networkoffering uses ConfigDrive for user data and the Template is
 password enabled, the password string for the Instance is placed in the
 vm_password.txt file and it is included in the ISO.
 
@@ -115,11 +115,11 @@ supporting 1 cd rom drive is still available.
 
 At password reset or update of user data, the Config Drive ISO
 will be rebuilt. The existing ISO is mounted on a temporary directory,
-password, userdata or ssh-keys are updated and a new ISO is built from the
+password, user data or ssh-keys are updated and a new ISO is built from the
 updated directory structure.
 
 In case of a password reset, the new password will be picked-up at Instance start.
-To access the updated userdata, the user needs to remount the config drive ISO.
+To access the updated user data, the user needs to remount the config drive ISO.
 
 When an Instance is stopped, the ConfigDrive network element will trigger the
 Secondary Storage VM to remove the ISO from the secondary storage.

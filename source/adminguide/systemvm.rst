@@ -829,7 +829,7 @@ it is upgraded:
 
 -  SecurityGroup
 
--  UserData
+-  User Data
 
 -  DHCP
 
