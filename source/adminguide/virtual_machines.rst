@@ -993,8 +993,8 @@ To set these variables, API or CloudStack UI can be used:
 ======================================= ========================
 Configuration                            Description
 ======================================= ========================
-instance.lease.enabled                   Indicates whether to enable the Instance lease feature, will be applicable only on instances created after lease is enabled. **Default: false**
-instance.lease.scheduler.interval        Background task interval in seconds that executes Lease expiry action on eligibile expired instances. Default: 3600.
+instance.lease.enabled                   Indicates whether to enable the Instance Lease feature, will be applicable only on instances created after lease is enabled. **Default: false**
+instance.lease.scheduler.interval        Background task interval in seconds that executes Lease expiry action on eligible expired instances. Default: 3600.
 instance.lease.eventscheduler.interval   Background task interval in seconds that executes Lease event executor for instances about to be expired in next N days. Default: 86400
 instance.lease.expiryevent.daysbefore    Denotes number of days (N) in advance expiry events are generated for instance about to expire. Default: 7 days
 ======================================= ========================
@@ -1017,7 +1017,7 @@ User can disable Lease for instance in two ways:
 - STOP: The instance is stopped, and it will be out of lease. The user can restart the instance manually.
 - DESTROY: The instance is destroyed when the lease expires.
 
-.. note:: Expiry action is executed at most once on the instance, e.g. STOP action will bring instance in Stoppped state on expiry and instance will be out of lease. User may choose to start it again.
+.. note:: Expiry action is executed at most once on the instance, e.g. STOP action will bring instance in Stopped state on expiry and instance will be out of lease. User may choose to start it again.
 
 
 **Using Instance Lease**
@@ -1033,10 +1033,10 @@ lease is removed from the instance for any further action.
 **Notes:**
 
 #. Lease Assignment: A lease can only be assigned to an instance during deployment.
-#. Lease Acquisition: Instances without a lease cannot acquire one by switching to a different compute offering or by editing the instance.
-#. Lease Inheritance: Instances inherit the lease from a compute offering with 'Instance Lease' feature enabled. This lease can be overridden or disabled in the “Advanced Settings”.
-#. Lease Persistence: A lease is always tied to the instance. Modifications to the compute offering do not affect the instance's lease.
-#. Non-Lease Compute offering: Instances can have a lease by enabling it in the "Advanced Settings" for non-lease based compute offering too.
+#. Lease Acquisition: Instances without a lease cannot acquire one by switching to a different Compute Offering or by editing the instance.
+#. Lease Inheritance: Instances inherit the lease from a Compute Offering with 'Instance Lease' feature enabled. This lease can be overridden or disabled in the “Advanced Settings”.
+#. Lease Persistence: A lease is always tied to the instance. Modifications to the Compute Offering do not affect the instance's lease.
+#. Non-Lease Compute Offering: Instances can have a lease by enabling it in the "Advanced Settings" for non-lease based Compute Offering too.
 #. Lease Duration Management: The lease duration can be extended or reduced for instances before expiry. However, once the lease is disabled, it cannot be re-enabled for that instance.
 #. Lease Expiry: Once the lease expires and the associated action is completed, the lease is annulled and cannot be reattached or extended.
 #. Feature Disablement: If the lease feature is disabled, the lease associated with instances is canceled. Re-enabling the feature will not automatically reapply the lease to previously grandfathered instances.
@@ -1046,7 +1046,7 @@ lease is removed from the instance for any further action.
 
 There are 2 ways to deploy instance with lease from UI:
 
-1. Use compute offering which has 'Instance Lease' feature enabled.
+1. Use Compute Offering which has 'Instance Lease' feature enabled.
 
 .. image:: /_static/images/deploy_instance_lease_offering.png
    :width: 400px
@@ -1069,7 +1069,7 @@ Pass lease parameters in the command to enable lease during instance deployment:
 
    cmk deploy virtualmachine name=..... leaseduration=... leaseexpiryaction=...
 
-- Use compute offering with lease
+- Use Compute Offering with lease
 
 .. code:: bash
 
@@ -1086,7 +1086,7 @@ From UI:
 .. image:: /_static/images/edit_instance_lease.png
    :width: 400px
    :align: center
-   :alt: Edit Instance lease dialog
+   :alt: Edit Instance Lease dialog
 
 
 Using API:
@@ -1101,7 +1101,7 @@ To disable lease using API:
 
    cmk update virtualmachine id=fa970d19-8340-455c-a9fb-569205954fdc leaseduration=-1
 
-.. note:: DESTORY action will ignore instance if deleteprotection is enabled for it.
+.. note:: DESTROY action will ignore instance if deleteprotection is enabled for it.
 
 .. note:: When the feature is disabled, the lease associated with instances is cancelled. Re-enabling the feature will not automatically reapply the lease to previously grandfathered instances.
 
