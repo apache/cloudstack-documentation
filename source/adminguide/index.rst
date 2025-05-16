@@ -140,6 +140,7 @@ Managing VM and Volume Allocation
 
    host_and_storage_tags
    arch_types
+   vm_volume_allocators
 
 Managing Networks and Traffic
 -----------------------------
