@@ -106,7 +106,7 @@ IP addresses.
 
 -  CloudStack does not assign IP addresses to instances.
 
--  Userdata and metadata can be passed to the instance using a config drive
+-  User data and metadata can be passed to the instance using a config drive
    (which must be enabled in the network service offering)
 
 Example GUI dialog box (for a regular user account) is shown below:

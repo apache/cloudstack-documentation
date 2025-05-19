@@ -55,7 +55,7 @@ VPN support                No                                   Yes
 Port forwarding            Physical                             Physical and Virtual
 1:1 NAT                    Physical                             Physical and Virtual
 Source NAT                 No                                   Physical and Virtual
-Userdata                   Yes                                  Yes
+User data                  Yes                                 Yes
 Network usage monitoring   sFlow / netFlow at physical router   Hypervisor and Virtual Router
 DNS and DHCP               Yes                                  Yes
 =========================  ===================================  ===============================

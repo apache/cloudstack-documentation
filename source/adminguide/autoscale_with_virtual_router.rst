@@ -170,7 +170,7 @@ Specify the following:
    For more information, see `“Affinity Groups”
    <virtual_machines.html#affinity-groups>`_.
 
--  Userdata: The userdata of the Instances.
+-  User data: The user data of the Instances.
 
    For more information, see `“User-Data and Meta-Data”
    <virtual_machines.html#user-data-and-meta-data>`_.
@@ -287,7 +287,7 @@ then click Edit AutoScale Instance Profile button.
 
 |autoscale-vmgroup-profile-update.png|
 
-You are able to reset userdata of the Instance, by clicking Reset Userdata on AutoScale Instance Group button.
+You are able to reset user data of the Instance, by clicking Reset User data on AutoScale Instance Group button.
 
 |autoscale-vmgroup-profile-reset-userdata.png|
 
@@ -399,5 +399,5 @@ a service assigned to a rule inside the context of AutoScale.
 .. |autoscale-vmgroup-profile-update.png| image:: /_static/images/autoscale-vmgroup-profile-update.png
    :alt: Update AutoScale Instance Profile.
 .. |autoscale-vmgroup-profile-reset-userdata.png| image:: /_static/images/autoscale-vmgroup-profile-reset-userdata.png
-   :alt: Reset Userdata in AutoScale Instance Profile.
+   :alt: Reset User data in AutoScale Instance Profile.
 
