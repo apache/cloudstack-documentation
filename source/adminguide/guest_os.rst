@@ -43,8 +43,8 @@ and also need to have a mapping with the actual operating system name supported 
 
 Under "Configuration" section there are sub-sections for guest operating system.
 
-Guest OS Categores
-------------------
+Guest OS Categories
+-------------------
 
 A list of existing categories for the guest operating systems are shown as
 "Guest OS Categories" section. Operators can also add new guest operating
