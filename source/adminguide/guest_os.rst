@@ -17,7 +17,7 @@
 .. |guest-os-categories.png| image:: /_static/images/guest-os-categories.png
    :alt: Guest OS Categories
 
-.. |add-guest-os-category-form.png| image:: /_static/images/add-guest-os-category-form.png
+.. |add-guest-os-category.png| image:: /_static/images/add-guest-os-category.png
    :alt: Add Guest OS Category form
 
 .. |guest-os-button.png| image:: /_static/images/guest-os-button.png
@@ -73,7 +73,7 @@ The "Add guest OS category" option allows operators to create new categories,
 which can be marked as featured if they are meant to be displayed in the UI
 forms.
 
-|add-guest-os-category-form.png|
+|add-guest-os-category.png|
 
 Guest OS
 --------
