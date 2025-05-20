@@ -15,11 +15,9 @@
 
 
 .. |guest-os-categories.png| image:: /_static/images/guest-os-categories.png
-   :align: center
    :alt: Guest OS Categories
 
 .. |add-guest-os-category-form.png| image:: /_static/images/add-guest-os-category-form.png
-   :align: center
    :alt: Add Guest OS Category form
 
 .. |guest-os-button.png| image:: /_static/images/guest-os-button.png
