@@ -87,7 +87,7 @@ Zone                The zone in CloudStack with which this Backup Repository mus
    :align: center
    :alt: NAS Backup repository
 
-Pay attention to the "Name" given to this reposutory, as you will have to specify this in the "External ID" field when creating Backup Offerings (Importing backup offering)
+Pay attention to the "Name" given to this repository, as you will have to specify this in the "External ID" field when creating Backup Offerings (Importing backup offering)
 
 Once the Backup Repository is created, we need to add a Backup Offering, in this plugin the Backup offering is a placeholder to associate an instance to a Backup Repository. While creating the Backup Offering, select the desired Backup Repository. Associate the Backup Offering on an instance to create an Adhoc or scheduled backup. 
 
