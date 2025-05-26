@@ -532,6 +532,7 @@ OpenLDAP)
      - `uniquemember`
      - Attribute for uniquemembers within a group.
 
+   .. note:: ``ldap.search.group.principle`` is required when using ``linkaccounttoldap``.
 
 Once configured, on Add Account page, you will see an "Add LDAP Account" button which opens a dialog and the selected Users can be imported.
 
@@ -550,6 +551,7 @@ directly in CloudStack.
 
 
 
+   .. note:: this is required when using ``linkaccounttoldap``.
 
 LDAP SSL:
 ~~~~~~~~~
