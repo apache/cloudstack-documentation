@@ -973,6 +973,153 @@ restoreVirtualMachine call. In this case, the Instance's root disk is
 destroyed and recreated, but from the same Template or ISO that was
 already in use by the Instance.
 
+Instance Lease
+--------------
+
+CloudStack offers the option to create Instances with a Lease. A Lease defines a set time period after which a selected action, 
+such as stopping or destroying the instance, will be automatically performed. This helps optimize cloud resource usage by automatically 
+freeing up resources that are no longer in use. 
+
+If a user needs an instance only for a limited time, this option can be very helpful. 
+When deploying an instance, users can either choose a Compute Offering that includes Instance Lease support or enable it specifically for that instance, 
+setting the number of days after which the instance should be stopped or destroyed once their task is complete.
+
+
+**Configuring Instance Lease feature**
+
+The cloud administrator can use global configuration variables to control the behavior of Instance Lease.
+To set these variables, API or CloudStack UI can be used:
+
+======================================= ========================
+Configuration                            Description
+======================================= ========================
+instance.lease.enabled                   Indicates whether to enable the Instance Lease feature, will be applicable only on instances created after lease is enabled. **Default: false**
+instance.lease.scheduler.interval        Background task interval in seconds that executes Lease expiry action on eligible expired instances. Default: 3600.
+instance.lease.eventscheduler.interval   Background task interval in seconds that executes Lease event executor for instances about to be expired in next N days. Default: 86400
+instance.lease.expiryevent.daysbefore    Denotes number of days (N) in advance expiry events are generated for instance about to expire. Default: 7 days
+======================================= ========================
+
+.. note:: it is recommended to configure the lowest possible value (in secs) for **instance.lease.scheduler.interval**, so that lease expiry action is taken as soon as lease is expired.
+
+
+**Lease Parameters**
+
+
+**leaseduration**: Lease duration is specified in days. This can take Natural numbers (>=1) and -1 to disable the lease. Max supported value is 36500 (100 years).
+
+User can disable Lease for instance in two ways:
+
+- Disable the Instance Lease during instance deployment by unchecking the 'Enable Lease' option when using a Compute Offering that supports it.
+- For existing instances with a lease already enabled, it can be removed by editing the instance and unchecking the 'Enable Lease' option.
+
+**leaseexpiryaction**: There are two expiry action supported:
+
+- STOP: The instance is stopped, and it will be out of lease. The user can restart the instance manually.
+- DESTROY: The instance is destroyed when the lease expires.
+
+.. note:: Expiry action is executed at most once on the instance, e.g. STOP action will bring instance in Stopped state on expiry and instance will be out of lease. User may choose to start it again.
+
+
+**Using Instance Lease**
+
+Lease information is associated to an Instance and following parameters are used to enable lease for it:
+
+#. leaseduration
+#. leaseexpiryaction
+
+Instance remains active for specified leaseduration (in days). Upon lease expiry, configured expiryaction is executed on the instance and 
+lease is removed from the instance for any further action.
+
+**Notes:**
+
+#. Lease Assignment: A lease can only be assigned to an instance during deployment.
+#. Lease Acquisition: Instances without a lease cannot acquire one by switching to a different Compute Offering or by editing the instance.
+#. Lease Inheritance: Instances inherit the lease from a Compute Offering with 'Instance Lease' feature enabled. This lease can be overridden or disabled in the “Advanced Settings”.
+#. Lease Persistence: A lease is always tied to the instance. Modifications to the Compute Offering do not affect the instance's lease.
+#. Non-Lease Compute Offering: Instances can have a lease by enabling it in the "Advanced Settings" for non-lease based Compute Offering too.
+#. Lease Duration Management: The lease duration can be extended or reduced for instances before expiry. However, once the lease is disabled, it cannot be re-enabled for that instance.
+#. Lease Expiry: Once the lease expires and the associated action is completed, the lease is annulled and cannot be reattached or extended.
+#. Feature Disablement: If the lease feature is disabled, the lease associated with instances is canceled. Re-enabling the feature will not automatically reapply the lease to previously grandfathered instances.
+#. Delete Protection: The DESTROY lease expiry action is skipped for instances with delete protection enabled.
+
+**Deployment of Instance with lease**
+
+There are 2 ways to deploy instance with lease from UI:
+
+1. Use Compute Offering which has 'Instance Lease' feature enabled.
+
+.. image:: /_static/images/deploy_instance_lease_offering.png
+   :width: 400px
+   :align: center
+   :alt: Deploy Instance with lease compute offering dialog box
+
+2. Enable lease under Advance settings during instance Deployment
+
+.. image:: /_static/images/deploy_instance_advanced_lease.png
+   :width: 400px
+   :align: center
+   :alt: Deploy Instance with lease using advance settings
+
+
+**Using API**
+
+Pass lease parameters in the command to enable lease during instance deployment:
+
+.. code:: bash
+
+   cmk deploy virtualmachine name=..... leaseduration=... leaseexpiryaction=...
+
+- Use Compute Offering with lease
+
+.. code:: bash
+
+   cmk deploy virtualmachine name=..... serviceofferingid=lease-compute-offering
+
+
+**Editing Instance Lease**
+
+The lease duration for an instance can be extended, reduced, or disabled for instances that already have an active lease.
+However, it is not possible to enable the lease on an instance after it has already been deployed.
+
+From UI:
+
+.. image:: /_static/images/edit_instance_lease.png
+   :width: 400px
+   :align: center
+   :alt: Edit Instance Lease dialog
+
+
+Using API:
+
+.. code:: bash
+
+   cmk update virtualmachine id=fa970d19-8340-455c-a9fb-569205954fdc leaseduration=20 leaseexpiryaction=DESTROY
+
+To disable lease using API:
+
+.. code:: bash
+
+   cmk update virtualmachine id=fa970d19-8340-455c-a9fb-569205954fdc leaseduration=-1
+
+.. note:: DESTROY action will ignore instance if deleteprotection is enabled for it.
+
+.. note:: When the feature is disabled, the lease associated with instances is cancelled. Re-enabling the feature will not automatically reapply the lease to previously grandfathered instances.
+
+.. note:: Lease duration is considered as total lease for instance.
+
+**Instance Lease Events**
+
+Lease feature generates various events to help in auditing and monitoring:
+
+=================== ========================
+Event Type           Description
+=================== ========================
+VM.LEASE.EXPIRED     Event is generated at lease expiry
+VM.LEASE.DISABLED    Denotes if lease is disabled by user/admin
+VM.LEASE.CANCELLED   When lease is cancelled (feature gets disabled)
+VM.LEASE.EXPIRING    Expiry intimation event for instance
+=================== ========================
+
 
 Advanced Instance Settings
 --------------------------
@@ -1264,7 +1411,25 @@ Create an Instance Template that supports SSH Keys.
 Creating the SSH Keypair
 ------------------------
 
-You must make a call to the createSSHKeyPair api method. You can either
+#. Log in to the CloudStack UI.
+
+#. In the left navigation bar, click Compute --> SSH Key Pairs.
+
+#. Click Create a SSH Key Pair.
+
+#. In the dialog, make the following choices:
+
+   -  **Name**: Any desired name for the SSH Key Pair.
+
+   -  **Public key**: (Optional) Public key material of the SSH Key Pair.
+
+      .. note:: If this field is filled in, CloudStack will register the public key.  If this field is left blank, CloudStack will create a new SSH key pair.
+
+   -  **Domain**: (Optional) domain for the SSH Key Pair.
+
+.. note:: If Cloudstack generates a New SSH Key Pair using a public key, it will not save the private key.  When shown, be sure to save a copy of it.
+
+You can also use the ``createSSHKeyPair`` api method to create an SSH Keypair. You can either
 use the CloudStack Python API library or the curl commands to make the
 call to the cloudstack api.
 
@@ -1363,11 +1528,21 @@ The -i parameter tells the ssh client to use a ssh key found at
 Resetting SSH Keys
 ------------------
 
-With the API command resetSSHKeyForVirtualMachine, a user can set or
-reset the SSH keypair assigned to an Instance. A lost or compromised
-SSH keypair can be changed, and the user can access the Instance
-by using the new keypair. Just create or register a new keypair, then
-call resetSSHKeyForVirtualMachine.
+A lost or compromised SSH keypair can be changed, and the user can access the Instance by using the new keypair.
+
+#. Log in to the CloudStack UI.
+
+#. In the left navigation bar, click Compute --> Instances.
+
+#. Choose the Instance.
+
+#. Click on Reset SSH Key Pair button the Instance.
+
+   .. note:: The Instance must be in a Stopped state.
+
+#. Select the SSH Key Pair(s) to add to instance
+
+.. note:: This can also be performed via API: ``resetSSHKeyForVirtualMachine``: Resets the assigned SSH keypair for an Instance.
 
 .. include:: virtual_machines/user-data.rst
 
