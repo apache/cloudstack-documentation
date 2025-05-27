@@ -82,6 +82,19 @@ limitations to this fix. Noticably:
 - When attaching an ISO, the new ISO is attached as the first ISO (the existing configdrive ISO is detached),
 - Creating a VM from ISO on a network with ConfigDrive, is not expected to work. (untested)
 
+When upgrading from a new 4.19 installation
+===========================================
+
+Only new installations of 4.19.x will not have conservemode enabled by
+default vor VPCs. Upgrades from earlier versions will be alright. In
+order to make sure conserve mode is enabled for VPC-tiers, either
+create a clone of the default guestnetwork offering with conservemode
+enabled or execute the following sql:
+
+::
+   -- Re-apply VPC: update default network offering for vpc tier to conserve_mode=1 (#8309)
+   UPDATE `cloud`.`network_offerings` SET conserve_mode=1 WHERE name='DefaultIsolatedNetworkOfferingForVpcNetworks’;
+
 
 Possible Issue with volume snapshot revert with KVM
 ===================================================
