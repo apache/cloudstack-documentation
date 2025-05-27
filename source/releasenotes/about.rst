@@ -71,6 +71,18 @@ https://docs.cloudstack.apache.org/en/4.19.0.0/releasenotes/changes.html
 
 .. _guestosids
 
+Issues with ISO/config drive on Xcpng/Xen
+=========================================
+
+A fix was created for Xen like systems to work with config drive. (see
+https://github.com/apache/cloudstack/pull/10912) This had been broken
+for multiple releases, and passed unnoticed. There are some
+limitations to this fix. Noticably:
+
+- When attaching an ISO, the new ISO is attached as the first ISO (the existing configdrive ISO is detached),
+- Creating a VM from ISO on a network with ConfigDrive, is not expected to work. (untested)
+
+
 Possible Issue with volume snapshot revert with KVM
 ===================================================
 
