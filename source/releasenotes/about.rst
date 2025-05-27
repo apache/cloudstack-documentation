@@ -86,7 +86,8 @@ for multiple releases, and passed unnoticed. There are some
 limitations to this fix. Noticably:
 
 - When attaching an ISO, the new ISO is attached as the first ISO (the existing configdrive ISO is detached),
-- Creating a VM from ISO on a network with ConfigDrive, is not expected to work. (untested)
+- Creating a VM from ISO on a network with ConfigDrive, is not expected to work (untested),
+- `userdata` functionality using config drive doesn't work.
 
 When upgrading from a new 4.19 installation
 ===========================================
