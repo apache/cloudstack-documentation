@@ -99,7 +99,7 @@ repository to the file (replace "trusty" with "xenial" or "bionic" if it is the 
 
 .. parsed-literal::
 
-   deb https://download.cloudstack.org/ubuntu focal |version|
+   deb https://download.cloudstack.org/ubuntu noble |version|
 
 We now have to add the public key to the trusted keys.
 
