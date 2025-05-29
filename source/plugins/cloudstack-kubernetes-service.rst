@@ -459,7 +459,7 @@ From 4.21.0, many enhancements have been added to CloudStack Kubernetes Service 
 
 - Select the Hypervisor hype for the Kubernetes Cluster nodes
 - Specify different templates and/or service offerings for different types of Kubernetes Clusters nodes
-- Use CKS-ready custom and non-ready templates for Kubernetes cluster nodes
+- Use CKS-ready custom templates for Kubernetes cluster nodes marked as 'For CKS'
 - Separate etcd nodes from control nodes of the Kubernetes clusters
 - Add and remove a pre-created instance as a worker node to an existing Kubernetes cluster
 - Mark Kubernetes cluster nodes for manual-only upgrade
@@ -513,6 +513,7 @@ To register a template that will be listed as an option for Kubernetes cluster n
 
 - Mark the option 'For CKS'. This ensures the template is considered as an option for Kubernetes cluster nodes on the Advanced Settings section for clusters creation.
 
+|cks-custom-template-registration.png|
 
 Separate etcd nodes from control nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -520,6 +521,8 @@ Separate etcd nodes from control nodes
 By default, a CKS cluster has 0 dedicated etcd nodes, and the etcd service runs on the control nodes. If etcd node count is set to a value greater than or equal to 1 during cluster creation, CloudStack will provision separate nodes exclusively for the etcd service, isolating them from the control nodes with the desired template and service offering if specified.
 
 To use separate etcd nodes, it is required to build and register a CKS ISO version containing the etcd binaries as explained in: :ref:`kubernetes-supported-versions`
+
+For convenience, some CKS ISOs are uploaded to: https://download.cloudstack.org/testing/cks/custom_templates/iso-etcd/
 
 Add an external VM Instance as a worker node to a Kubernetes cluster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -530,7 +533,7 @@ Requirements for a VM Instance to be added as worker node to a Kubernetes cluste
 
 - The VM Instance must have a NIC on the Kubernetes cluster network
 
-- The Management Server’s SSH Public key must be added at the cloud user’s authorized_keys file at `~/.ssh/authorized_keys`.
+- **The Management Server’s SSH Public key must be added at the cloud user’s authorized_keys file at `~/.ssh/authorized_keys`**.
 
 The VM Instances meeting the requirements above can be added to the Kubernetes cluster by the `addNodesToKubernetesCluster` API specifying:
 
@@ -664,6 +667,80 @@ Sample Calico CNI configuration data used which is appended to the existing Kube
    - for i in {1..3}; do sudo /opt/bin/kubectl apply -f /home/cloud/bgp-peer.yaml && break || sleep 5; done
 
 
+The CNI Configuration creation allows specifying the parameters to be set as a comma separated list:
+
+|cks-cni-configuration-registration-sample.png|
+
+After a CNI Configuration is created, it can be appended to Kubernetes cluster nodes as part of 'Advanced Settings':
+
+|cks-cni-configuration-cluster-creation.png|
+
+For verification of the applied CNI Configuration, the following commands can be used:
+
+.. code-block:: bash
+
+   root@cksclusteradditon-control-190ca0ce253:~# kubectl get pods -A
+
+   NAMESPACE             NAME                                                           READY  STATUS                  RESTARTS         AGE
+
+   kube-system           calico-kube-controllers-8d76c5f9b-pkhcv                        1/1    Running                 6 (44m ago)      2d21h
+
+   kube-system           calico-node-n4msg                                              1/1    Running                 0                2d21h
+
+   kube-system           calico-node-pdz2w                                              1/1    Running                 0                2d18h
+
+   kube-system           calico-node-slmg2                                              1/1    Running                 0                2d21h
+
+
+
+   root@cksclusteradditon-control-190ca0ce253:~# kubectl get bgppeer
+
+   NAME        AGE
+
+   bgp-peer-1  2d22h
+
+
+
+   root@cksclusteradditon-control-190ca0ce253:~# kubectl get bgpconfiguration
+
+   NAME     AGE
+
+   default  2d22h
+
+
+   root@cksclusteradditon-control-190ca0ce253:~# kubectl describe bgpconfiguration
+
+   Name:        default
+
+   Namespace:
+
+   Labels:      <none>
+
+   Annotations: <none>
+
+   API Version: crd.projectcalico.org/v1
+
+   Kind:        BGPConfiguration
+
+   Metadata:
+
+   Creation Timestamp: 2024-07-19T08:25:14Z
+
+   Generation:         1
+
+   Resource Version:   580
+
+   UID:                2b927b4e-82d3-4200-a3c1-9bf0cd5f5824
+
+   Spec:
+
+   As Number:           65145
+
+   Log Severity Screen: Debug
+
+   Events:                <none>
+
+
 .. |cks-add-version-form.png| image:: /_static/images/cks-add-version-form.png
    :alt: Add Kubernetes Supported Version form.
 .. |cks-cluster-access-tab.png| image:: /_static/images/cks-cluster-access-tab.png
@@ -696,3 +773,9 @@ Sample Calico CNI configuration data used which is appended to the existing Kube
    :alt: Upgrade Kubernetes Cluster form.
 .. |cks-versions.png| image:: /_static/images/cks-versions.png
    :alt: Supported Kubernetes versions list.
+.. |cks-custom-template-registration.png| image:: /_static/images/cks-custom-template-registration.png
+   :alt: Custom Template Registration for Kubernetes cluster nodes.
+.. |cks-cni-configuration-cluster-creation.png| image:: /_static/images/cks-cni-configuration-cluster-creation.png
+   :alt: Kubernetes cluster creation setting a CNI configuration.
+.. |cks-cni-configuration-registration-sample.png| image:: /_static/images/cks-cni-configuration-registration-sample.png
+   :alt: CNI Configuration registration sample.
