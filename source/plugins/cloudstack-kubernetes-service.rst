@@ -15,10 +15,15 @@ CloudStack Kubernetes Service
 
 The Kubernetes Service plugin adds Kubernetes integration to CloudStack. The plugin is disabled by default and an admin can enable it using a Global Setting. It enables users to run containerized services using Kubernetes clusters.
 
-With CoreOS having reached EOL, from 4.16 the Kubernetes Service Plugin will use the existing SystemVM Template by default for deploying kubernetes clusters. For installation of Kubernetes binaries on the cluster nodes, a binaries ISO is used for each Kubernetes version to be made available via CloudStack. This allows faster, offline installation of Kubernetes binaries and docker images along with support for adding multiple versions of Kubernetes for upgrades and running different clusters.
+With CoreOS having reached EOL, from 4.16 on the Kubernetes Service Plugin will use
+the existing SystemVM Template by default for deploying kubernetes clusters. For
+installation of Kubernetes binaries on the cluster nodes, a binaries ISO is used for each
+Kubernetes version to be made available via CloudStack. This allows faster, offline
+installation of Kubernetes binaries and docker images along with support for adding
+multiple versions of Kubernetes for upgrades and running different clusters.
 
 .. note::
-   Since version 4.21.0 users can choose different templates and service offerings for different types of nodes (worker, control, etcd nodes) for deploying Kubernetes clusters. The templates must be previously registered selecting the 'For CKS' option.
+   From version 4.21.0, users can choose different templates and service offerings for different types of nodes (worker, control, etcd nodes) for deploying Kubernetes clusters. The templates must be previously registered selecting the 'For CKS' option.
    See :ref:`flexible-kubernetes-clusters`.
 
 For deployment and setup of Kubernetes on cluster nodes, the plugin uses the Kubernetes tool, 'kubeadm'. kubeadm is the command-line tool for easily provisioning a secure Kubernetes cluster on top of physical or cloud servers or Instances. Under the hood, control node(s) of the cluster starts a Kubernetes cluster using kubeadm init command with a custom token, and worker nodes join this Kubernetes cluster using kubeadm join command with the same token. More about kubeadm here: https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/. Weave Net CNI provider plugin is used for cluster networking. More about Weave Net provide plugin here: https://www.weave.works/docs/net/latest/kubernetes/kube-addon/.
@@ -89,7 +94,7 @@ Eg:
 From ACS 4.16 onwards, Kubernetes versions >= 1.20.x are only supported (https://endoflife.date/kubernetes).
 
 **NOTE:**
-From ACS 4.21 onwards, it is possible specify the version for etcd binaries on the create-kubernetes-binaries-iso.sh script as an optional parameter ETCD_VERSION. When the ETCD_VERSION parameter is set, the specified etcd version binaries are downloaded and stored on the /etcd directory on the Kubernetes ISO.
+From ACS 4.21 onwards, it is possible to specify the version for etcd binaries in the create-kubernetes-binaries-iso.sh script as an optional parameter - ETCD_VERSION. When the ETCD_VERSION parameter is set, the specified etcd version binaries are downloaded and stored in the Kubernetes ISO.
 
 Example for etcd version 3.5.1:
 
@@ -97,7 +102,8 @@ Example for etcd version 3.5.1:
 
    # ./create-kubernetes-binaries-iso.sh ./ 1.27.2 1.3.0 1.27.0 https://raw.githubusercontent.com/weaveworks/weave/master/prog/weave-kube/weave-daemonset-k8s-1.11.yaml https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml setup-v1.27.2 3.5.1
 
-The Kubernetes ISOs generated with an specific etcd version are required to create separate etcd nodes on Kubernetes clusters. See :ref:`flexible-kubernetes-clusters`.
+To deploy Kubernetes clusters with 
+Kubernetes ISOs built with a specified etcd version are necessary for creating Kubernetes clusters with separate etcd nodes. See :ref:`flexible-kubernetes-clusters`.
 
 Working with Kubernetes supported version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -110,7 +116,7 @@ Once the ISO has been built for a desired Kubernetes version, it can be added by
 |cks-add-version-form.png|
 
 .. note::
-   Since 4.21.0 it is possible to deploy separate dedicated etcd nodes. This requires
+   From 4.21.0, it is possible to deploy separate dedicated etcd nodes. This requires
    the Kubernetes ISO contains the etcd binaries.
 
 addKubernetesSupportedVersion API can be used by an admin to add a new supported version for the service. It takes following input parameters:
@@ -215,12 +221,12 @@ New Kubernetes clusters can be created using the API or via the UI. User will be
 
 |cks-create-cluster-form.png|
 
-Since 4.21.0, the Hypervisor selection is available for Kubernetes Cluster nodes. By default the Hypervisor selection is empty.
+From 4.21.0, you can select the hypervisor type for Kubernetes cluster nodes. By default, no hypervisor is selected.
 
-Since 4.21.0, users will be provided with an optional section displayed when toggling the option: 'Show Advanced Settings'. On this section, users can select templates and service offerings for:
+From 4.21.0, users will be provided with an optional section displayed on toggling the 'Show Advanced Settings' button. In this section, users can select templates and service offerings for:
 - Worker nodes
 - Control nodes
-- Etcd nodes (if one or more are selected, no etcd nodes are selected by default)
+- Etcd nodes (if etcd node count >= 1; By default etcd node count is 0)
 
 For more information about the Advanced Settings see :ref:`flexible-kubernetes-clusters`.
 
@@ -249,11 +255,11 @@ createKubernetesCluster API can be used to create new Kubernetes cluster. It tak
 - **dockerregistryemail** (email of the docker image private registry user; Experimental)
 - **hypervisor** (an optional parameter to specify the hypervisor on which the Kubernetes cluster will be deployed)
 - **nodeofferings** (an optional map parameter to set the service offerings for worker, control or etcd nodes. If this parameter is not set, then every VM in the cluster will be deployed using the default service offering set on the serviceofferingid parameter)
-- **etcdnodes** (an optional integer parameter to specify the number etcd nodes in the cluster, the default value is 0. In case the number is greater than 0, etcd nodes are separate from master nodes and are provisioned accordingly)
-- **nodetemplates**: (an optional map parameter to set the template to be used by worker, control or etcd nodes. If this parameter is not set, then every VM in the cluster will be deployed using the System VM template)
+- **etcdnodes** (An optional integer parameter that specifies the number of etcd nodes in the cluster. The default value is 0. If set to a value greater than 0, dedicated etcd nodes are created separately from the master nodes.)
+- **nodetemplates**: (an optional map parameter to set the template to be used by worker, control or etcd nodes. If not set, then every VM in the cluster will be deployed using the System VM template)
 - **asnumber** (an optional parameter to set the AS Number of the Kubernetes cluster network)
 - **cniconfigurationid** (an optional parameter to set the UUID of a registered CNI configuration)
-- **cniconfigdetails** (an optional parameter to specify the parameters values for the variables in the CNI configuration)
+- **cniconfigdetails** (an optional parameter to specify the parameters values for the variables defined in the CNI configuration)
 
 For example:
 
@@ -449,7 +455,7 @@ To remove an Instance from an ExternalManaged Kubernetes cluster:
 Flexible Kubernetes Clusters
 ----------------------------
 
-Since 4.21.0, CloudStack introduces many enhancements to Kubernetes Clusters allowing users to:
+From 4.21.0, many enhancements have been added to CloudStack Kubernetes Service that allows users to:
 
 - Select the Hypervisor hype for the Kubernetes Cluster nodes
 - Specify different templates and/or service offerings for different types of Kubernetes Clusters nodes
@@ -467,7 +473,7 @@ CloudStack provides a custom CKS-ready template based on Ubuntu 22.04 to be used
 
 This template contains all the required packages to be used as a Kubernetes cluster node. The default login credentials are: cloud:cloud.
 
-A user may decide not to use the provided CKS-ready template and build its own template. The following needs to be made sure is present on the template:
+A user may decide not to use the provided CKS-ready template and build their own template. The following needs to be made sure is present on the template:
 
 - The following packages or the equivalent ones for the specific OS need to be installed:
 
@@ -511,9 +517,9 @@ To register a template that will be listed as an option for Kubernetes cluster n
 Separate etcd nodes from control nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, the number of etcd nodes in a CKS cluster is 0, the etcd service is included on the control nodes. If the number of etcd nodes passed on the CKS cluster creation is at least 1, then CloudStack will dedicate nodes only to the etcd service, separating them from the control nodes.
+By default, a CKS cluster has 0 dedicated etcd nodes, and the etcd service runs on the control nodes. If etcd node count is set to a value greater than or equal to 1 during cluster creation, CloudStack will provision separate nodes exclusively for the etcd service, isolating them from the control nodes with the desired template and service offering if specified.
 
-To use separate etcd nodes, it is required to build and register a CKS ISO version containing the etcd service as explained on: :ref:`kubernetes-supported-versions`
+To use separate etcd nodes, it is required to build and register a CKS ISO version containing the etcd binaries as explained in: :ref:`kubernetes-supported-versions`
 
 Add an external VM Instance as a worker node to a Kubernetes cluster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -526,7 +532,7 @@ Requirements for a VM Instance to be added as worker node to a Kubernetes cluste
 
 - The Management Server’s SSH Public key must be added at the cloud user’s authorized_keys file at `~/.ssh/authorized_keys`.
 
-The VM Instances meeting the requirements above must be added to the Kubernetes cluster by the `addNodesToKubernetesCluster` API specifying:
+The VM Instances meeting the requirements above can be added to the Kubernetes cluster by the `addNodesToKubernetesCluster` API specifying:
 
 - **id** (UUID of the Kubernetes cluster. Required)
 - **nodeids** (comma separated list of (external) node (physical or virtual machines) IDs that need to be added as worker nodes to an existing managed Kubernetes cluster (CKS). Required)
@@ -534,7 +540,7 @@ The VM Instances meeting the requirements above must be added to the Kubernetes 
 - **manualupgrade** (optional parameter that indicates if the node is marked for manual upgrade and excluded from the Kubernetes cluster upgrade operation)
 
 .. note::
-   Users are able to add nodes to Kubernetes cluster and mark them for manual upgrade only. Once the nodes are marked for manual upgrade, the future cluster upgrade operations will exclude these nodes and their Kubernetes version won't be upgraded.
+   Users will have the ability to add nodes to the Kubernetes cluster and mark them for manual upgrade. Once the nodes are marked for manual upgrade, the future cluster upgrade operations will exclude these nodes i.e., the Kubernetes version won't be upgraded.
 
 The following course of actions are taken:
 
@@ -542,7 +548,7 @@ The following course of actions are taken:
 
 - Addition of port-forwarding rules and firewall rules (for isolated networks)
 
-- VM is rebooted with the Kubernetes config passed as userdata
+- VM is rebooted with the Kubernetes configuration passed as userdata
 
 - The ISO is attached either to the node or to the VR based on the value of `mountcksisoonvr` that is passed as a parameter to the addNodesToKubernetesCluster API (Vmware only).
 
@@ -553,7 +559,7 @@ The following course of actions are taken:
 Removing an external worker node from a Kubernetes cluster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-External worker nodes must be removed from a Kubernetes cluster by the `removeNodesFromKubernetesCluster` API specifying:
+External worker nodes can be removed from a Kubernetes cluster by the `removeNodesFromKubernetesCluster` API specifying:
 
 - **id** (UUID of the Kubernetes cluster. Required)
 - **nodeids** (comma separated list of (external) node (physical or virtual machines) IDs that need to be removed from an existing managed Kubernetes cluster (CKS). Required)
@@ -575,7 +581,7 @@ When node(s) are being removed from a Kubernetes cluster, the following happens:
 Dedicate specific hosts/clusters to a specific domain for CKS cluster deployment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Administratos are able to dedicate hosts to a domain or account. CloudStack will take the host dedication in consideration when deploying Kubernetes clusters.
+Administrators are able to dedicate hosts to a domain or account. CloudStack will take the host dedication into consideration when deploying Kubernetes clusters.
 
 - When there are no hosts dedicated to the domain/account the user belongs, then the nodes will be deployed on any host.
 
