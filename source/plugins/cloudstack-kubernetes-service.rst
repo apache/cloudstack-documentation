@@ -457,7 +457,7 @@ Flexible Kubernetes Clusters
 
 From 4.21.0, many enhancements have been added to CloudStack Kubernetes Service that allows users to:
 
-- Select the Hypervisor hype for the Kubernetes Cluster nodes
+- Select the Hypervisor type for the Kubernetes Cluster nodes
 - Specify different templates and/or service offerings for different types of Kubernetes Clusters nodes
 - Use CKS-ready custom templates for Kubernetes cluster nodes marked as 'For CKS'
 - Separate etcd nodes from control nodes of the Kubernetes clusters
