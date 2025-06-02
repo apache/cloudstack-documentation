@@ -51,11 +51,11 @@ Use global configuration parameter:
 **vm.allocation.algorithm** to specify the algorithm that the Allocator must use. By default it is configured to use "random" algorithm.
 
 
-Volme Allocator
+Volume Allocator
 --------------
 
 Volume allocator returns suitable storage pools available in the cluster where volumes of the given instance can be created. 
-To decide the storage pools, it considers factors such as disk offering, storage capactiy, availability scope etc.
+To decide the storage pools, it considers factors such as disk offering, storage capacity, availability scope etc.
 
 Volume allocator supports following algorithms to select a host in the cluster:
 

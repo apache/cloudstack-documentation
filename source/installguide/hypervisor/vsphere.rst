@@ -270,7 +270,7 @@ Configure Virtual Switch
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 During the initial installation of an ESXi host a default virtual switch
-vSwitch0 is created. You may need to create additional vSwiches depending
+vSwitch0 is created. You may need to create additional vSwitches depending
 on your required architecture. CloudStack requires all ESXi hosts in the cloud
 to use consistently named virtual switches. If
 you change the default virtual switch name, you will need to configure
@@ -878,7 +878,7 @@ The three fields to fill in are:
 
    **nexusdvs**: Represents Cisco Nexus 1000v distributed virtual switch.
 
-   If nothing specified (left empty), zone-level default virtual switchwould 
+   If nothing specified (left empty), zone-level default virtual switch would
    be defaulted, based on the value of global parameter you specify.
 
    Following are the global configuration parameters:
