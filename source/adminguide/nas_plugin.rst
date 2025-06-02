@@ -28,14 +28,13 @@ to take full instance backups (qcow2) and requires libvirt-7.2.0 and QEMU-4.2,
 or high versions on the KVM hosts.
 
 The NAS B&R plugin requires admin to first add backup repositories which are
-network-attached storage (shared storage). Currently it supports NFS, and may
-support other shared storage such as CephFS and CIFS/Samba in future.
+network-attached storage (shared storage). It supports NFS, CIFS/Samba and CephFS.
 
 When initiating B&R operations on KVM instance, the assigned backup offering
 is used to infer backup repository (NAS) details which are then used to mount
 the shared storage temporarily on the KVM host to perform instance backup/restore
 disks operations. This also requires that admin installs NAS-storage specific
-utilities on the KVM hosts such as nfs-utils/nfs-common (ceph-common, cifs-utils).
+utilities on the KVM hosts such as nfs-utils/nfs-common, ceph-common and cifs-utils.
 
 Consider the following mount, typically performed on a KVM/Linux host to mount storage:
 
@@ -75,7 +74,7 @@ Field               Value
 =================== ========================
 Name                A suitable name to represent the Backup Repository
 Address             URL, in case of NFS <server IP>:/path
-Type                NFS ( only NFS type in 4.20)
+Type                NFS / CIFS / CEPH
 label.mountopts     Any mount point options to be passed while mouting this storage on the hypervisor. 
 Zone                The zone in CloudStack with which this Backup Repository must be associated.
 =================== ========================
@@ -111,6 +110,5 @@ Currently, only volume(s) restoration is supported only to NFS and local storage
 based primary storage pools, and restored volumes are fully baked disks (i.e.
 not using any backing template file).
 
-Restoring fully expunged and unmanaged instances are not supported. Backup and
-restore operations are not fully supported for CKS cluster instances and should
+Backup and restore operations are not fully supported for CKS cluster instances and should
 be avoided.
