@@ -76,7 +76,7 @@ Field               Value
 Name                A suitable name to represent the Backup Repository
 Address             URL, in case of NFS <server IP>:/path
 Type                NFS ( only NFS type in 4.20)
-label.mountopts     Any mount point options to be passed while mouting this storage on the hypervisor. 
+label.mountopts     Any mount point options to be passed while mounting this storage on the hypervisor.
 Zone                The zone in CloudStack with which this Backup Repository must be associated.
 =================== ========================
 
