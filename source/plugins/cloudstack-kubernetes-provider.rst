@@ -149,7 +149,7 @@ on the cluster nodes.
 |ckp-ip-lb.png|
 
 .. note::
-   - In case of Cloudstack + Vmware Intergaration, if you want to expose the application via Public Ipaddress, you have to expose it as a Node-port service and manually add the rules in cloudstack.
+   - In case of Cloudstack + Vmware Integration, if you want to expose the application via Public Ipaddress, you have to expose it as a Node-port service and manually add the rules in cloudstack.
 
    Example 
 

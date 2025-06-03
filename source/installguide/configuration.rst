@@ -809,7 +809,7 @@ To work with limited compute resources, an Edge zone will not deploy system VMs.
 
    -  **Username.** (Obligatory) Username of a user who has administrator / root privileges on the specified host (using Linux-hosts usually root).
 
-   -  **Authentication.** Atuthentication type used for the host, either Password or System SSH Key.
+   -  **Authentication.** Authentication type used for the host, either Password or System SSH Key.
 
    -  **Password.** (Obligatory if Password authentication is selected) This is the password for the user named above.
 

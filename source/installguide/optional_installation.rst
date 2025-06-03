@@ -507,7 +507,7 @@ differences between the CloudStack and Amazon EC2 versions, and these
 differences are noted. The underlying SOAP call for each command is also
 given, for those who have built tools using those calls.
 
-Table 1. Elastic IP API mapping
+Table 1. Elastic IP API mapping
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -527,7 +527,7 @@ Table 1. Elastic IP API mapping
 
 |
 
-Table 2. Availability Zone API mapping
+Table 2. Availability Zone API mapping
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -539,7 +539,7 @@ Table 2. Availability Zone API mapping
 
 |
 
-Table 3. Images API mapping
+Table 3. Images API mapping
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -557,7 +557,7 @@ Table 3. Images API mapping
 
 |
 
-Table 4. Image Attributes API mapping
+Table 4. Image Attributes API mapping
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -573,7 +573,7 @@ Table 4. Image Attributes API mapping
 
 |
 
-Table 5. Instances API mapping
+Table 5. Instances API mapping
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -595,7 +595,7 @@ Table 5. Instances API mapping
 
 |
 
-Table 6. Instance Attributes Mapping
+Table 6. Instance Attributes Mapping
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -607,7 +607,7 @@ Table 6. Instance Attributes Mapping
 
 |
 
-Table 7. Keys Pairs Mapping
+Table 7. Keys Pairs Mapping
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -625,7 +625,7 @@ Table 7. Keys Pairs Mapping
 
 |
 
-Table 8. Passwords API Mapping
+Table 8. Passwords API Mapping
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -637,7 +637,7 @@ Table 8. Passwords API Mapping
 
 |
 
-Table 9. Security Groups API Mapping
+Table 9. Security Groups API Mapping
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -657,7 +657,7 @@ Table 9. Security Groups API Mapping
 
 |
 
-Table 10. Snapshots API Mapping
+Table 10. Snapshots API Mapping
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -673,7 +673,7 @@ Table 10. Snapshots API Mapping
 
 |
 
-Table 11. Volumes API Mapping
+Table 11. Volumes API Mapping
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -713,7 +713,7 @@ AWS API Interface.
 First is an EC2 example. Replace the Access and Secret Keys with your
 own and update the endpoint.
 
-Example 1. An EC2 Boto example
+Example 1. An EC2 Boto example
                                  
 .. sourcecode:: python
 
@@ -753,7 +753,7 @@ Example 1. An EC2 Boto example
 
 Second is an S3 example. The S3 interface in CloudStack is obsolete. If you need an S3 interface you should look at systems like RiakCS, Ceph or GlusterFS. This example is here for completeness and can be adapted to other S3 endpoint.
 
-Example 2. An S3 Boto Example
+Example 2. An S3 Boto Example
                                 
 .. sourcecode:: python
 
