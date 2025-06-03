@@ -45,6 +45,10 @@ the default username is password.
 
 Domain -> If you are a root User, leave this field blank.
 
+.. note::
+
+   Since 4.21 it is possible to login to a specific Project view by enabling the 'displayProjectFieldOnLogin' setting on config.json (which is disabled by default). Please refer to: :ref:`enable-login-to-project-view`.
+
 If you are a User in the sub-domains, enter the full path to the domain,
 excluding the root domain.
 
@@ -583,6 +587,23 @@ For the UI to work with different servers, it is necessary to configure the Ngin
 
 |ui-multiple-server-management.png|
 
+.. _enable-login-to-project-view:
+
+Enable Login to Project View
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+User can use the file /etc/cloudstack/management/config.json to enable the Project field displayed on Login by the setting:
+
+============================= =================================================================
+Property                      Description
+============================= =================================================================
+displayProjectFieldOnLogin    Disabled by default. When enabled, login directly to Project view
+============================= =================================================================
+
+When the Project field is set and the Project exists, the user is directly directed to the Project view instead of the Default View.
+
+|ui-login-project-view.png|
+
 Known Limitations
 ~~~~~~~~~~~~~~~~~
 
@@ -601,3 +622,6 @@ The following features are no longer supported or available in the UI but are st
 
 .. |ui-multiple-server-management.png| image:: /_static/images/ui-multiple-server-management.png
    :alt: Custom plugin shown in UI with navigation
+
+.. |ui-login-project-view.png| image:: /_static/images/ui-login-project-view.png
+   :alt: Enabling the Project field on login
