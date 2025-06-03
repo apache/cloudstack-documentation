@@ -157,3 +157,18 @@ Now, you need to add the VPN users.
 #. Click Add.
 
 #. Repeat the same steps to add the VPN users.
+
+Limitations of Remote Access VPN
+--------------------------------
+
+CloudStack's Remote Access VPN feature (L2TP over IPsec with pre-shared key) is subject to certain limitations:
+
+- **Single connection per source IP/CIDR:**  
+  Due to the use of StrongSwan in the virtual router implementation, CloudStack does not support multiple simultaneous VPN connections originating from the same source public IP or NAT'ed subnet.  
+  This means that if multiple users are behind the same NAT (e.g., office network or shared IP), only one of them can connect at a time. Additional connection attempts will fail until the first session is disconnected.
+
+- **No support for overlapping CIDRs or NAT before VPN:**  
+  Remote Access VPN does not provide NAT traversal or address translation features to handle overlapping subnets between the client and the VPC.
+
+**Recommendation:**  
+If your environment requires multiple concurrent VPN connections from the same location (NAT or IP), consider deploying a dedicated VPN appliance (e.g., OpenVPN or pfSense) inside the VPC to support advanced use cases.
