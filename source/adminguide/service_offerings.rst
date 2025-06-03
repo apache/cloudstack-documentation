@@ -212,7 +212,7 @@ To create a new compute offering:
       it enables the admin to set some boundaries.
 
    -  **# of CPU cores**: The number of cores which should be allocated
-      to a system VM with this offering. If 'Custom constrained' is checked, the admin will
+      to the VM with this offering. If 'Custom constrained' is checked, the admin will
       be asked to enter the minimum and maximum number of CPUs that a user
       can request. If 'Custom unconstrained' is checked, this field does not appear
       as the user will be prompted to enter a value when creating their guest Instance.
@@ -226,7 +226,7 @@ To create a new compute offering:
       will be prompted to enter a value when creating their guest Instance.
 
    -  **Memory (in MB)**: The amount of memory in megabytes that the
-      system VM should be allocated. For example, “2048” would provide
+      VM should be allocated. For example, “2048” would provide
       a 2 GB RAM allocation. If 'Custom constrained' is selected, the admin will
       be asked to enter the minimum and maximum amount of RAM that a user
       can request. If 'Custom unconstrained' is selected, this field does
@@ -238,7 +238,11 @@ To create a new compute offering:
    -  **Network Rate**: Allowed data transfer rate in MB per second.
 
    -  **Offer HA**: If yes, the administrator can choose to have the
-      system VM be monitored and as highly available as possible.
+      VM be monitored and as highly available as possible.
+
+      .. note::
+         The HA is offered when the VM High Availability manager is enabled in the zone using the setting 'vm.ha.enabled', by default this setting is enabled.
+         When disabled, alerts are sent during HA attempts when 'vm.ha.alerts.enabled' setting is enabled.
 
    -  **Dynamic Scaling Enabled**: If yes, Instance can be dynamically scalable of cpu or memory
 
@@ -336,7 +340,7 @@ To create a new compute offering:
 
          -  **Storage type**: The type of disk that should be allocated. Local
             allocates from storage attached directly to the host where the
-            system VM is running. Shared allocates from storage accessible via
+            VM is running. Shared allocates from storage accessible via
             NFS.
 
          -  **Provisioning type**: The type of disk that should be allocated.
@@ -389,7 +393,7 @@ To create a new compute offering:
             disk that represents the root disk. This does not apply for KVM.
 
          -  **Storage Tags**: The tags that should be associated with the
-            primary storage used by the system VM.
+            primary storage used by the VM.
       
       When the flag is disabled
 
@@ -598,6 +602,10 @@ To create a system service offering:
 
    -  **Offer HA**: If yes, the administrator can choose to have the system
       VM be monitored and as highly available as possible.
+
+      .. note::
+         The HA is offered when the VM High Availability manager is enabled in the zone using the setting 'vm.ha.enabled', by default this setting is enabled.
+         When disabled, alerts are sent during HA attempts when 'vm.ha.alerts.enabled' setting is enabled.
 
    -  **Storage Tags**: The tags that should be associated with the primary
       storage used by the system VM.

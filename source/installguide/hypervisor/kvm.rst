@@ -443,7 +443,7 @@ cloudstack-agent and should already be installed.
 
       #LIBVIRTD_ARGS="--listen"
 
-   On RHEL 8 / CentOS 8 / SUSE run the following command :
+   On RHEL 8 / CentOS 8 / SUSE / Ubuntu / Debian, run the following command :
 
    .. parsed-literal::
 
@@ -471,6 +471,19 @@ cloudstack-agent and should already be installed.
    .. parsed-literal::
 
       #LIBVIRTD_ARGS="--listen"
+
+   Configure libvirt to connect to libvirtd and not to per-driver daemons, especially important on newer distros such as EL9 and Ubuntu 24.04. 
+   Edit ``/etc/libvirt/libvirt.conf`` and add the following:
+
+   .. parsed-literal::
+      remote_mode="legacy"
+
+   On Ubuntu 24.04 or newer set libvirtd mode to traditional mode (see https://libvirt.org/manpages/libvirtd.html#system-socket-activation):
+
+   .. parsed-literal::
+
+      systemctl mask libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tls.socket libvirtd-tcp.socket
+
 
 #. Restart libvirt
 

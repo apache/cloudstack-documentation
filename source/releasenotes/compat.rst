@@ -36,7 +36,7 @@ CloudStack Management Server.
 Software Requirements
 ~~~~~~~~~~~~~~~~~~~~~
 
--  Java JRE 11 or Java JRE 17
+-  Java JRE 17
 -  MySQL 8.0 (or equivalent compatible DBMS)
 
 Supported Hypervisor Versions
@@ -53,7 +53,9 @@ and VMware with vSphere.
 -  openSUSE Leap 15 with KVM
 -  SUSE Linux Enterprise Server 15 with KVM
 -  XCP-ng 8.2.0
+-  XCP-ng 8.3.0
 -  Citrix Hypervisor/XenServer version 8.2 (not tested, but expected to work. For 8.2 please check the note below) with latest hotfixes
+-  Citrix Hypervisor/XenServer version 8.4
 -  Debian 12 with KVM (not tested, but expected to work same as Ubuntu)
 
    .. note:: It is now required to enable HA on the XenServer pool in order to recover from a pool-master failure. Please refer to the `XenServer documentation <https://docs.citrix.com/en-us/xencenter/7-1/pools-ha-enable.html>`_.

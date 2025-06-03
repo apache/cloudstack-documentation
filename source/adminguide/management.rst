@@ -517,6 +517,52 @@ rules.
    the global configuration.
 
 
+Managing log files
+------------------
+
+The log files are located in `/var/log/cloudstack`. This directory has the
+following subdirectories:
+
+- `management` for the Management Server
+- `usage` for the Usage Server
+- `agent` for the Agent for KVM hosts
+
+CloudStack uses log4j2 to manage log files. The log4j2 configuration file
+is located in the corresponding subdirectories in the `/etc/cloudstack/` 
+directory and is named `log4j-cloud.xml`.
+
+By default, cloudstack uses `TimeBasedTriggeringPolicy` which rolls over
+the log file every day and are kept indefinitely. The log files are 
+compressed and archived in the same directory.
+
+Over time, the logs can fill up the entire disk space. To avoid this, you can 
+update the log4j-cloud.xml file to change the log file rollover and retention 
+policy. You can change the rollover policy to `SizeBasedTriggeringPolicy`
+and set the maximum size of the log file. You can also set the maximum number
+of archived log files to keep.
+
+For example, to change the rollover policy for `management-server.log` to 
+`SizeBasedTriggeringPolicy` and set the maximum size of the log file to 
+100MB and keep the maximum of 15 archived log files, you can update the 
+`log4j-cloud.xml` file as follows:
+
+.. code-block:: diff
+
+   -      <RollingFile name="FILE" append="true" fileName="/var/log/cloudstack/management/management-server.log" filePattern="/var/log/cloudstack/management/management-server.log.%d{yyyy-MM-dd}.gz">
+   +      <RollingFile name="FILE" append="true" fileName="/var/log/cloudstack/management/management-server.log" filePattern="/var/log/cloudstack/management/management-server.log.%i.gz">
+            <ThresholdFilter level="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
+   +          <DefaultRolloverStrategy max="15"/>
+            <Policies>
+   -            <TimeBasedTriggeringPolicy/>
+   +            <SizeBasedTriggeringPolicy size="100MB"/>
+            </Policies>
+            <PatternLayout pattern="%d{DEFAULT} %-5p [%c{1.}] (%t:%x) %m%ex%n"/>
+         </RollingFile>
+
+
+You can also checkout some configuration recipes from the log4j2 documentation
+`here <https://logging.apache.org/log4j/2.x/manual/appenders/rolling-file.html#recipes>`_.
+
 Stopping and Restarting the Management Server
 ---------------------------------------------------
 
@@ -541,3 +587,53 @@ To start the Management Server:
 
    # service cloudstack-management start
 
+
+Management Server Statistics and Peers
+--------------------------------------
+
+Administrators are able to view the statistics and peers information of management server.
+      
+#. Log in to the CloudStack UI as administrator
+
+#. In the left navigation bar, click Infrastructure.
+
+#. Click "Management servers", all management servers are listed.
+
+|management-servers-list.png|
+
+#. Click the management server you'd like to view. The statistics of the management server are displayed.
+
+|management-server-statistics.png|
+
+#. Navigate to the "Peers" tab. The peers of the management servers are listed
+
+|management-server-peers.png|
+
+
+Global settings for management servers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. cssclass:: table-striped table-bordered table-hover
+
+======================================= ========================
+Configuration                            Description
+======================================= ========================
+management.server.stats.interval        Time interval in seconds, for management servers stats collection. Set to <= 0 to disable management servers stats. Default value is 60
+cluster.heartbeat.interval              Interval (in milliseconds) to check for the heart beat between management server nodes. Default value is 1500
+cluster.heartbeat.threshold             Threshold (in milliseconds) before self-fence the management server. The threshold should be larger than management.server.stats.interval. Default value is 150000
+======================================= ========================
+
+.. note::
+   - Every 60 seconds (configuable via management.server.stats.interval setting) each management server collects its statistics and publishs to all other management server peers. When other management server receives the published stats, it will set the peer state (owner is the receiver and peer is the sender) to Up.
+   - Every 1.5 seconds (configurable via cluster.heartbeat.interval), each management server writes heartbeat to CloudStack database, and check the stats of other management servers.
+   - If in the past 150 seconds (configurable via cluster.heartbeat.threshold), a management server does not write heartbeat and its peer states, its state and peer states will be set to Down by other management servers.
+   - In case a management server cannot write heartbeat to the database due to connection issue to the database, the host is set to Down state by other management server, when the database connection is restored, the management server will perform self-fencing and exit with code 219.
+
+.. |management-servers-list.png| image:: /_static/images/management-servers-list.png
+   :alt: List of management servers
+
+.. |management-server-statistics.png| image:: /_static/images/management-server-statistics.png
+   :alt: Details of management server
+
+.. |management-server-peers.png| image:: /_static/images/management-server-peers.png
+   :alt: List of management server peers

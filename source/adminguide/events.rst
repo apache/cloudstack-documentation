@@ -73,6 +73,13 @@ in the AMQP server.
 Additionally, both an in-memory implementation and an Apache Kafka
 implementation are also available.
 
+
+.. note::
+   On upgrading from 4.19.x or lower, existing AMQP or Kafka intergration
+   configurations should be moved from folder
+   ``/etc/cloudstack/management/META-INF/cloudstack/core`` to
+   ``/etc/cloudstack/management/META-INF/cloudstack/event``
+
 Use Cases
 ~~~~~~~~~
 
@@ -101,7 +108,7 @@ As a CloudStack administrator, perform the following one-time
 configuration to enable event notification framework. At run time no
 changes can control the behaviour.
 
-#. Create the folder ``/etc/cloudstack/management/META-INF/cloudstack/core``
+#. Create the folder ``/etc/cloudstack/management/META-INF/cloudstack/event``
 
 #. Inside that folder, open ``spring-event-bus-context.xml``.
 
@@ -216,7 +223,7 @@ changes can control the behaviour.
    While ``key.serializer`` and ``value.serializer`` are usually required for a producer to correctly start, they may be omitted and
    will default to ``org.apache.kafka.common.serialization.StringSerializer``.
 
-#. Create the folder ``/etc/cloudstack/management/META-INF/cloudstack/core``
+#. Create the folder ``/etc/cloudstack/management/META-INF/cloudstack/event``
 
 #. Inside that folder, open ``spring-event-bus-context.xml``.
 
