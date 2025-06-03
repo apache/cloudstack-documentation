@@ -38,7 +38,7 @@ The following guides are available:
 -  CloudStack Concepts and Terminology
 -  Quick Installation Guide
 -  Installation Guide
--  Upgradong CloudStack
+-  Upgrading CloudStack
 -  Usage Guide
 -  Developers Guide
 -  Plugins Guide

@@ -678,7 +678,7 @@ Core Zone
       your XenServer or KVM install).
 
    .. note::
-      For security reasons there are ways to use non-adminstrative users for
+      For security reasons there are ways to use non-administrative users for
       adding a host. Please refer to the hypervisor setup guides for further information.
 
    -  **Host Tags.** Any labels that you use to categorize
@@ -814,7 +814,7 @@ To work with limited compute resources, an Edge zone will not deploy system VMs.
    -  **Password.** (Obligatory if Password authentication is selected) This is the password for the user named above.
 
    .. note::
-      For security reasons there are ways to use non-adminstrative users for
+      For security reasons there are ways to use non-administrative users for
       adding a host. Please refer to the hypervisor setup guides for further information.
 
    -  **Host Tags.** Any labels that you use to categorize
@@ -1450,8 +1450,8 @@ leads to the dynamic creation of a StorPool volume, which has guaranteed
 performance. Such a StorPool volume is associated with one CloudStack volume,
 so performance of the CloudStack volume does not vary depending on how
 heavily other tenants are using the system. The volume migration is supported
-accross non-managed storage pools (e.g. NFS/Local storage/Ceph) to StorPool, and
-accross StorPool storage pools.
+across non-managed storage pools (e.g. NFS/Local storage/Ceph) to StorPool, and
+across StorPool storage pools.
 
 For detailed information about *Command*, *Scope*, *Hypervisor*, and other
 parameters you need to specify when setting up the StorPool plug-in, see the
