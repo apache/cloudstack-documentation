@@ -16,10 +16,293 @@
 Changes in |release| since 4.19.0.0
 ===================================
 
-Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/31?closed=1
+Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/38?closed=1
 to track its issues.
 
+.. cssclass:: table-striped table-bordered table-hover
 
+
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| Version                 | Github     | Type          | Priority | Description                                                |
++=========================+============+===============+==========+============================================================+
+| 4.19.3.0                | `#10916`_  |               |          | server: fix list diskoffering by domainid returns Inactive |
+|                         |            |               |          | offerings                                                  |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10912`_  |               |          | Fix issue with configdrive on XenServer                    |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10843`_  |               |          | backport #10744: engine/schema: create default network     |
+|                         |            |               |          | offering for vpc tier with conserve_mode=1 for fresh       |
+|                         |            |               |          | installation                                               |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10882`_  |               |          | Fixed some typos                                           |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10893`_  |               |          | test: cleanup acl in test_global_acls.py                   |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10849`_  |               |          | Fix issue with security group selection box display        |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10840`_  |               |          | ui: add an infinite scroll select component                |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10777`_  |               |          | Reset the pool id when create volume fails on the          |
+|                         |            |               |          | allocated pool, and update the resize error when no        |
+|                         |            |               |          | endpoint exists                                            |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10799`_  |               |          | Prevent data corruption for StorPool volumes               |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10837`_  |               |          | Fix for Vlan doesn't match issue while adding IP range for |
+|                         |            |               |          | the shared network without any IP range                    |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10876`_  |               |          | Correct typo in an exception message                       |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10433`_  |               |          | VMware import - logs sanitation                            |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10253`_  |               |          | ssvm: reset fields on destroy                              |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10852`_  |               |          | List usage records for network offering (usage type 13)    |
+|                         |            |               |          | when offering  id is specified in usage id                 |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10770`_  |               |          | [Vmware] Improve listing of Vmware Datacenter VMs for      |
+|                         |            |               |          | migration to KVM                                           |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10850`_  |               |          | Linstor:  implement volume and storage stats               |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10748`_  |               |          | [VMware] Sync the disk path or datastore changes for IDE   |
+|                         |            |               |          | disks, and before any volume resize during start vm (for   |
+|                         |            |               |          | the volumes on datastore cluster)                          |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10544`_  |               |          | refactor create duplicate alert check                      |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10612`_  |               |          | server: check if redundant router is supported when        |
+|                         |            |               |          | restart network with makeredundant = true                  |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10833`_  |               |          | xenserver: destroy halted vm on expunge                    |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10807`_  |               |          | cleanup call on super in affinity groups projects          |
+|                         |            |               |          | component test                                             |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10431`_  |               |          | server: fetch IP of VMs on L2 networks                     |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10824`_  |               |          | UI workaround for the inconsistent formatting of           |
+|                         |            |               |          | listVirtualMachinesUsageHistory                            |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10712`_  |               |          | Backport #9888 to 4.19: Fix Usage inconsistencies          |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10708`_  |               |          | [VMware] Update vlans with proper range before creating    |
+|                         |            |               |          | port group for dvSwitch                                    |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10624`_  |               |          | server: prevent duplicate HA works and alerts              |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10760`_  |               |          | Extra checks in UI when deleting accounts                  |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10805`_  |               |          | Update dependency required for test_outofbandmanagement.py |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10629`_  |               |          | check for custom offering and trim size                    |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10265`_  |               |          | [UI] Allow quiescevm and asyncbackup flags while taking    |
+|                         |            |               |          | volume snapshot from UI when these are supported for the   |
+|                         |            |               |          | volume                                                     |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10725`_  |               |          | UI: show checksum field when register or upload            |
+|                         |            |               |          | template/isos                                              |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10714`_  |               |          | UI: Allow editing a Running VM in an Advanced zone with    |
+|                         |            |               |          | security groups except for security group details          |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10726`_  |               |          | cloudutils: use "ip route" command instead of "route -n"   |
+|                         |            |               |          | in networkConfig.py                                        |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10761`_  |               |          | smoke tests: Fix cluster DRS & non-strict host affinity    |
+|                         |            |               |          | smoke test failures on XenServer / XCP-ng                  |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10755`_  |               |          | Network Usage event model adjustments                      |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10583`_  |               |          | Fix smoke tests due to change in behavior of restore VM    |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10762`_  |               |          | test: fix test_certauthority_root.py                       |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10746`_  |               |          | Don't specify ipv6 ranges for shared network               |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10647`_  |               |          | Revert "Add the option to filter by host when retrieving   |
+|                         |            |               |          | of unregistered VMs (#9925)"                               |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10745`_  |               |          | ui: confirm on reset configurations                        |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10568`_  |               |          | Remove the validation of the amount of acquired public IPs |
+|                         |            |               |          | when enabling static NAT, adding PF and LB rules on VPC    |
+|                         |            |               |          | public IPs                                                 |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10753`_  |               |          | .github: fix simulator CI caused by imcompatibility        |
+|                         |            |               |          | between python3.10 and nosetests                           |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10739`_  |               |          | VR: add bind-interfaces to /etc/dnsmasq.d/cloud.conf       |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10717`_  |               |          | plugin/shutdown: use mgmt server uuid in the shutdown      |
+|                         |            |               |          | response                                                   |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10728`_  |               |          | only clean details and annotations when this template no   |
+|                         |            |               |          | longer exists                                              |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10591`_  |               |          | HA: set correct hostId of HA work for vm migration         |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10709`_  |               |          | UI: Move templates creation date to the Zones tab          |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10704`_  |               |          | server: check startip and startipv6 of shared network      |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10311`_  |               |          | 4.19 fix saml account selector                             |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10649`_  |               |          | Usage server: remove logging of prameters including secret |
+|                         |            |               |          | keys                                                       |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10653`_  |               |          | Backport #10500 framework/cluster: fix NPE for ms-host     |
+|                         |            |               |          | status when mgr stops                                      |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#9175`_   |               |          | xenserver: do not destroy halted hypervisor vm             |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10652`_  |               |          | UI: Allow setting account and domain maximum amount of     |
+|                         |            |               |          | projects through the UI                                    |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10651`_  |               |          | UI: Fix projects metrics on dashboard                      |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10617`_  |               |          | Enhance VPC Network Tier form to auto-populate  Gateway,   |
+|                         |            |               |          | and Netmask                                                |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10263`_  |               |          | Updated setup-sysvm-tmplt script, to run cmds accessing    |
+|                         |            |               |          | destdir with sudo                                          |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10606`_  |               |          | Host status auto refresh                                   |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10595`_  |               |          | UI: fix list of vpc network offerings                      |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10602`_  |               |          | ui: fix considerlasthost for start vm                      |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10518`_  |               |          | deal with null return for create deployment plan for       |
+|                         |            |               |          | maintenance                                                |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10561`_  |               |          | linstor: implement missing deleteDatastore                 |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10563`_  |               |          | api: fix EntityReference in NetworkResponse.java           |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10366`_  |               |          | server: fix npe during start vr edge case                  |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10569`_  |               |          | List only VMs associated to a userdata                     |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10562`_  |               |          | Veeam BnR : Fix for error in remove backup offering        |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10443`_  |               |          | linstor: try to delete -rst resource before snapshot       |
+|                         |            |               |          | backup                                                     |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10516`_  |               |          | kvm: find cluster-wide pools only in Up state when         |
+|                         |            |               |          | investigate a host                                         |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10515`_  |               |          | KVM: return null state instead of Disconnected when        |
+|                         |            |               |          | investigate a host without NFS                             |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10257`_  |               |          | VPC: fix private mtu of vpc tier                           |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10484`_  |               |          | UI: Show Host OOBM parameter in form if configured         |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10472`_  |               |          | UI: List host OOBM details when enabled and configured     |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10455`_  |               |          | UI: Filter accounts by domain while creating templates -   |
+|                         |            |               |          | from Volume / Snapshot                                     |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10439`_  |               |          | linstor: improve integration-tests                         |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10466`_  |               |          | cloudstack-setup-databases: fix mode and group of key file |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10376`_  |               |          | add use of virsh domifaddr to get VM external DHCP IP      |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10266`_  |               |          | kvm: fix volume migration across cluster-scope pools       |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10351`_  |               |          | UI: Fixes and minor enhacements to the Public IP Addresses |
+|                         |            |               |          | section                                                    |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+| 4.19.3.0                | `#10425`_  |               |          | UI: Fix filtering of templates by account                  |
++-------------------------+------------+---------------+----------+------------------------------------------------------------+
+
+78 Issues listed
+
+.. _`#10916`: https://github.com/apache/cloudstack/pull/10916 
+.. _`#10912`: https://github.com/apache/cloudstack/pull/10912 
+.. _`#10843`: https://github.com/apache/cloudstack/pull/10843 
+.. _`#10882`: https://github.com/apache/cloudstack/pull/10882 
+.. _`#10893`: https://github.com/apache/cloudstack/pull/10893 
+.. _`#10849`: https://github.com/apache/cloudstack/pull/10849 
+.. _`#10840`: https://github.com/apache/cloudstack/pull/10840 
+.. _`#10777`: https://github.com/apache/cloudstack/pull/10777 
+.. _`#10799`: https://github.com/apache/cloudstack/pull/10799 
+.. _`#10837`: https://github.com/apache/cloudstack/pull/10837 
+.. _`#10876`: https://github.com/apache/cloudstack/pull/10876 
+.. _`#10433`: https://github.com/apache/cloudstack/pull/10433 
+.. _`#10253`: https://github.com/apache/cloudstack/pull/10253 
+.. _`#10852`: https://github.com/apache/cloudstack/pull/10852 
+.. _`#10770`: https://github.com/apache/cloudstack/pull/10770 
+.. _`#10850`: https://github.com/apache/cloudstack/pull/10850 
+.. _`#10748`: https://github.com/apache/cloudstack/pull/10748 
+.. _`#10544`: https://github.com/apache/cloudstack/pull/10544 
+.. _`#10612`: https://github.com/apache/cloudstack/pull/10612 
+.. _`#10833`: https://github.com/apache/cloudstack/pull/10833 
+.. _`#10807`: https://github.com/apache/cloudstack/pull/10807 
+.. _`#10431`: https://github.com/apache/cloudstack/pull/10431 
+.. _`#10824`: https://github.com/apache/cloudstack/pull/10824 
+.. _`#10712`: https://github.com/apache/cloudstack/pull/10712 
+.. _`#10708`: https://github.com/apache/cloudstack/pull/10708 
+.. _`#10624`: https://github.com/apache/cloudstack/pull/10624 
+.. _`#10760`: https://github.com/apache/cloudstack/pull/10760 
+.. _`#10805`: https://github.com/apache/cloudstack/pull/10805 
+.. _`#10629`: https://github.com/apache/cloudstack/pull/10629 
+.. _`#10265`: https://github.com/apache/cloudstack/pull/10265 
+.. _`#10725`: https://github.com/apache/cloudstack/pull/10725 
+.. _`#10714`: https://github.com/apache/cloudstack/pull/10714 
+.. _`#10726`: https://github.com/apache/cloudstack/pull/10726 
+.. _`#10761`: https://github.com/apache/cloudstack/pull/10761 
+.. _`#10755`: https://github.com/apache/cloudstack/pull/10755 
+.. _`#10583`: https://github.com/apache/cloudstack/pull/10583 
+.. _`#10762`: https://github.com/apache/cloudstack/pull/10762 
+.. _`#10746`: https://github.com/apache/cloudstack/pull/10746 
+.. _`#10647`: https://github.com/apache/cloudstack/pull/10647 
+.. _`#10745`: https://github.com/apache/cloudstack/pull/10745 
+.. _`#10568`: https://github.com/apache/cloudstack/pull/10568 
+.. _`#10753`: https://github.com/apache/cloudstack/pull/10753 
+.. _`#10739`: https://github.com/apache/cloudstack/pull/10739 
+.. _`#10717`: https://github.com/apache/cloudstack/pull/10717 
+.. _`#10728`: https://github.com/apache/cloudstack/pull/10728 
+.. _`#10591`: https://github.com/apache/cloudstack/pull/10591 
+.. _`#10709`: https://github.com/apache/cloudstack/pull/10709 
+.. _`#10704`: https://github.com/apache/cloudstack/pull/10704 
+.. _`#10311`: https://github.com/apache/cloudstack/pull/10311 
+.. _`#10649`: https://github.com/apache/cloudstack/pull/10649 
+.. _`#10653`: https://github.com/apache/cloudstack/pull/10653 
+.. _`#9175`: https://github.com/apache/cloudstack/pull/9175 
+.. _`#10652`: https://github.com/apache/cloudstack/pull/10652 
+.. _`#10651`: https://github.com/apache/cloudstack/pull/10651 
+.. _`#10617`: https://github.com/apache/cloudstack/pull/10617 
+.. _`#10263`: https://github.com/apache/cloudstack/pull/10263 
+.. _`#10606`: https://github.com/apache/cloudstack/pull/10606 
+.. _`#10595`: https://github.com/apache/cloudstack/pull/10595 
+.. _`#10602`: https://github.com/apache/cloudstack/pull/10602 
+.. _`#10518`: https://github.com/apache/cloudstack/pull/10518 
+.. _`#10561`: https://github.com/apache/cloudstack/pull/10561 
+.. _`#10563`: https://github.com/apache/cloudstack/pull/10563 
+.. _`#10366`: https://github.com/apache/cloudstack/pull/10366 
+.. _`#10569`: https://github.com/apache/cloudstack/pull/10569 
+.. _`#10562`: https://github.com/apache/cloudstack/pull/10562 
+.. _`#10443`: https://github.com/apache/cloudstack/pull/10443 
+.. _`#10516`: https://github.com/apache/cloudstack/pull/10516 
+.. _`#10515`: https://github.com/apache/cloudstack/pull/10515 
+.. _`#10257`: https://github.com/apache/cloudstack/pull/10257 
+.. _`#10484`: https://github.com/apache/cloudstack/pull/10484 
+.. _`#10472`: https://github.com/apache/cloudstack/pull/10472 
+.. _`#10455`: https://github.com/apache/cloudstack/pull/10455 
+.. _`#10439`: https://github.com/apache/cloudstack/pull/10439 
+.. _`#10466`: https://github.com/apache/cloudstack/pull/10466 
+.. _`#10376`: https://github.com/apache/cloudstack/pull/10376 
+.. _`#10266`: https://github.com/apache/cloudstack/pull/10266 
+.. _`#10351`: https://github.com/apache/cloudstack/pull/10351 
+.. _`#10425`: https://github.com/apache/cloudstack/pull/10425 
+
+
+https://github.com/apache/cloudstack/milestone/33?closed=1
+ 
 .. cssclass:: table-striped table-bordered table-hover
 
 
@@ -626,8 +909,10 @@ to track its issues.
 .. _`#9437`: https://github.com/apache/cloudstack/pull/9437 
 .. _`#8833`: https://github.com/apache/cloudstack/pull/8833 
 
-.. cssclass:: table-striped table-bordered table-hover
 
+https://github.com/apache/cloudstack/milestone/31?closed=1
+
+.. cssclass:: table-striped table-bordered table-hover
 
 +-------------------------+----------+------------------------------------------------------------+
 | Version                 | Github   | Description                                                |
