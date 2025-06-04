@@ -13,6 +13,107 @@
    specific language governing permissions and limitations
    under the License.
 
+API Changes Introduced in 4.19.3.0
+==================================
+For the complete list of API commands and params consult the `CloudStack Apidocs`_.
+
+Removed API Commands
+--------------------
+
+.. cssclass:: table-striped table-bordered table-hover
+
++---------------------------------------------+--------------------------------------------------------------------------------+
+| Name                                        | Description                                                                    |
++=============================================+================================================================================+
+| ``listVmwareDcHosts``                       | Lists the VMs in a Vmware Datacenter                                           |
++---------------------------------------------+--------------------------------------------------------------------------------+
+
+Parameters Changed API Commands
+-------------------------------
+
+.. cssclass:: table-striped table-bordered table-hover
+
++---------------------------------------------+--------------------------------------------------------------------------------+
+| Name                                        | Description                                                                    |
++=============================================+================================================================================+
+| ``listVirtualMachines``                     | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``userdataid`` (optional)                                                    |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listVirtualMachinesMetrics``              | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``userdataid`` (optional)                                                    |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listVmsForImport``                        | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``bootmode``                                                                 |
+|                                             | - ``boottype``                                                                 |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listVmwareDcVms``                         | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``hostname`` (optional)                                                      |
+|                                             | - ``instancename`` (optional)                                                  |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``batchsize``                                                                |
+|                                             | - ``host``                                                                     |
+|                                             | - ``token``                                                                    |
+|                                             |                                                                                |
+|                                             | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``bootmode``                                                                 |
+|                                             | - ``boottype``                                                                 |
+|                                             | - ``clusterid``                                                                |
+|                                             | - ``clustername``                                                              |
+|                                             | - ``cpucorepersocket``                                                         |
+|                                             | - ``cpunumber``                                                                |
+|                                             | - ``cpuspeed``                                                                 |
+|                                             | - ``hostid``                                                                   |
+|                                             | - ``hostname``                                                                 |
+|                                             | - ``memory``                                                                   |
+|                                             | - ``name``                                                                     |
+|                                             | - ``osdisplayname``                                                            |
+|                                             | - ``osid``                                                                     |
+|                                             | - ``powerstate``                                                               |
+|                                             | - ``disk(*)``                                                                  |
+|                                             | - ``nic(*)``                                                                   |
+|                                             |                                                                                |
+|                                             | *Removed Parameters:*                                                          |
+|                                             |                                                                                |
+|                                             | - ``token``                                                                    |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listUnmanagedInstances``                  | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``bootmode``                                                                 |
+|                                             | - ``boottype``                                                                 |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listVnfAppliances``                       | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``userdataid`` (optional)                                                    |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+
+
 API Changes Introduced in 4.19.2.0
 ==================================
 For the complete list of API commands and params consult the `CloudStack Apidocs`_.
