@@ -904,8 +904,8 @@ password for a user:
 Using API Key and Secret Key based Authentication
 -------------------------------------------------
 Users can generate API key and Secret key to directly access CloudStack APIs.
-This authenctication method is used for programatically calling CloudStack APIs and thus helps in automation.
-The API key uniquely identifies the Account, while the Secret key is used to generate a secure singnature.
+This authentication method is used for programmatically calling CloudStack APIs and thus helps in automation.
+The API key uniquely identifies the Account, while the Secret key is used to generate a secure signature.
 When making an API call, the API key and signature are included along with the command and other parameters,
 and sent to the CloudStack API endpoint. For detailed information, refer to the CloudStack's Programmer Guide.
 

@@ -75,7 +75,7 @@ implementation are also available.
 
 
 .. note::
-   On upgrading from 4.19.x or lower, existing AMQP or Kafka intergration
+   On upgrading from 4.19.x or lower, existing AMQP or Kafka integration
    configurations should be moved from folder
    ``/etc/cloudstack/management/META-INF/cloudstack/core`` to
    ``/etc/cloudstack/management/META-INF/cloudstack/event``

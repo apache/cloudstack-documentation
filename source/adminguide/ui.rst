@@ -498,7 +498,7 @@ Example for adding custom plugins:
    Not all ant icons are supported at the moment. You will find a list of supported icons 
    within the github repository in ui/src/core/lazy_lib/icons_use.js. To use an icon you 
    need to transform the listed name. For example "PieChartOutlined" needs to be transformed 
-   to "pie-chart-outlined", "ReadOutlined" needs to be tranformed to "read-outlined".
+   to "pie-chart-outlined", "ReadOutlined" needs to be transformed to "read-outlined".
 
 For displaying a custom HTML in the plugin, HTML file can be stored in the CloudStack management server's web application directory on the server, i.e., */usr/share/cloudstack-management/webapp* and `path` can be set to the name of the file. For displaying a service or a web page, URL can be set as the `path` of the plugin.
 

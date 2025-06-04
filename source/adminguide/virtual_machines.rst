@@ -1609,7 +1609,7 @@ Before proceeding, ensure that you have these prerequisites:
 - The vGPU-enabled XenServer 6.2 and later versions.
   For more information, see `Citrix 3D Graphics Pack <https://www.citrix.com/go/private/vgpu.html>`_.
 
-- GPU/vPGU functionality is supported for following HVM guest operating systems:
+- GPU/vGPU functionality is supported for following HVM guest operating systems:
   For more information, see `Citrix 3D Graphics Pack <https://www.citrix.com/go/private/vgpu.html>`_.
 
 - Windows 7 (x86 and x64)

@@ -555,7 +555,7 @@ is added to the new class named CSExceptionErrorCode.
 
 4475 : "com.cloud.exception.InsufficientStorageCapacityException"
 
-4480 : "com.cloud.exception.InsufficientVirtualNetworkCapcityException"
+4480 : "com.cloud.exception.InsufficientVirtualNetworkCapacityException"
 
 4485 : "com.cloud.exception.InternalErrorException"
 
