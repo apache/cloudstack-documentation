@@ -13,7 +13,7 @@
    specific language governing permissions and limitations
    under the License.
 
-Changes in |release| since 4.20.1.0
+Changes in |release| since 4.20.0.0
 ===================================
 
 Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/36?closed=1

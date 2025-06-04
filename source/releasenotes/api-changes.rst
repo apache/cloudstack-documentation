@@ -13,7 +13,7 @@
    specific language governing permissions and limitations
    under the License.
 
-API Changes Introduced in 4.21.0.0
+API Changes Introduced in 4.20.1.0
 ==================================
 For the complete list of API commands and params consult the `CloudStack Apidocs`_.
 
