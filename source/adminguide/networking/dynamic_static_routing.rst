@@ -253,7 +253,7 @@ For more information, see `“CloudStack Kubernetes Service” <../plugins/cloud
 
 
 .. |manage-ipv4-subnets-for-zone.png| image:: /_static/images/manage-ipv4-subnets-for-zone.png
-   :alt: Manage IPv4 subnets for zoone
+   :alt: Manage IPv4 subnets for zone
 
 .. |manage-ipv4-subnets-for-networks.png| image:: /_static/images/manage-ipv4-subnets-for-networks.png
    :alt: Manage IPv4 subnets for guest networks

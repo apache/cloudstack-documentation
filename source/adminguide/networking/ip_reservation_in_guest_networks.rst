@@ -90,7 +90,7 @@ Limitations
 -  Upgrading network offering which causes a change in CIDR (such as
    upgrading an offering with no external devices to one with external
    devices) IP Reservation becomes void if any. Reconfigure IP
-   Reservation in the new re-implemeted network.
+   Reservation in the new re-implemented network.
 
 
 Best Practices

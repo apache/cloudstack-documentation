@@ -102,14 +102,14 @@ To import an AMI:
       none       /sys      sysfs   defaults        0 0
 
 #. Enable login via the console. The default console device in a
-   XenServer system is xvc0. Ensure that etc/inittab and etc/securetty
+   XenServer system is xvc0. Ensure that etc/inittab and etc/security
    have the following lines respectively:
 
    .. code:: bash
 
       # grep xvc0 etc/inittab 
       co:2345:respawn:/sbin/agetty xvc0 9600 vt100-nav
-      # grep xvc0 etc/securetty 
+      # grep xvc0 etc/security
       xvc0
 
 #. Ensure the ramdisk supports PV disk and PV network. Customize this
