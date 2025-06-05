@@ -167,7 +167,7 @@ CloudStack's Remote Access VPN feature (L2TP over IPsec with pre-shared key) is 
   Due to the use of StrongSwan in the virtual router implementation, CloudStack does not support multiple simultaneous VPN connections originating from the same source public IP or NAT'ed subnet.  
   This means that if multiple users are behind the same NAT (e.g., office network or shared IP), only one of them can connect at a time. Additional connection attempts will fail until the first session is disconnected.
 
-- **No support for overlapping CIDRs or NAT before VPN:**  
+- **No support for overlapping subnets by the VPN:**  
   Remote Access VPN does not provide NAT traversal or address translation features to handle overlapping subnets between the client and the VPC.
 
 **Recommendation:**  
