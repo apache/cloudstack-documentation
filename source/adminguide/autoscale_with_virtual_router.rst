@@ -172,8 +172,8 @@ Specify the following:
 
 -  User data: The user data of the Instances.
 
-   For more information, see `“User-Data and Meta-Data”
-   <virtual_machines.html#user-data-and-meta-data>`_.
+   For more information, see `“User Data and Metadata”
+   <virtual_machines.html#user-data-and-metadata>`_.
 
 
 AutoScale Policies

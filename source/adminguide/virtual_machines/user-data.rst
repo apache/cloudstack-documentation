@@ -14,8 +14,8 @@
    under the License.
 
 
-User-Data and Meta-Data
------------------------
+User Data and Metadata
+----------------------
 
 Users can register user data in CloudStack and refer the registered user data while
 deploying or editing or reset user data on an instance. The user data content can also be
@@ -27,7 +27,7 @@ To register a new user data:
 
 #. In the left navigation bar, click Compute and then User Data Library.
 
-#. Click Register user data.
+#. Click Register User Data.
 
 #. In the dialog, make the following choices:
 
@@ -47,7 +47,7 @@ To register a new user data:
    :align: center
    :alt: Regiser user data dialog box
 
-If user data content has variables declared in it, user can register the User data
+If user data content has variables declared in it, user can register the user data
 with user data parameters.
 
 For example, if user data content is like below having a custom variable "variable1"
@@ -60,7 +60,7 @@ For example, if user data content is like below having a custom variable "variab
          - echo 'TestVariable {{ ds.meta_data.variable1 }}' >> /tmp/variable
          - echo 'Hostname {{ ds.meta_data.public_hostname }}' > /tmp/hostname
 
-User data has to be registered with user data parameter "variable1" like below
+User data has to be registered with the parameter "variable1" like below
 
 .. image:: /_static/images/register_userdata_with_variables.png
    :width: 400px
@@ -71,7 +71,7 @@ If the variables in user data content are of a predefined metadata like "public_
 or "instance_id", then user data parameters should not declare these variables. That is
 the reason in the above example "public_hostname" is not declared.
 
-There are three CloudStack APIs that can be used to provide user-data to instance:
+There are three CloudStack APIs that can be used to provide user data to instance:
 deployVirtualMachine, updateVirtualMachine and resetUserDataForVirtualMachine.
 These APIs accepts parameters ``userdataid`` and ``userdatadetails``.
 userdatadetails is to specify the custom values for the variables which are declared
@@ -90,27 +90,27 @@ has to be specified like below,
    :align: center
    :alt: Provide userdata id or user data with variables text dialog box
 
-These details will be saved as meta-data file(s) in both config drive and virtual router,
-which in turn support jinja based instance meta-data feature of cloud-init,
+These details will be saved as metadata file(s) in both config drive and virtual router,
+which in turn support jinja based instance metadata feature of cloud-init,
 refer to https://cloudinit.readthedocs.io/en/latest/topics/instancedata.html.
 
 These APIs also support the parameter ``userdata=`` to provide the user data content
 directly. The value for this parameter must be a `base64 <https://www.base64encode.org/>`_-encoded
 multi-part MIME message. See further below for an example of what this should look like.
 
-The registered User Data can be linked to a Template or ISO on registration/upload/editing
+The registered user data can be linked to a Template or ISO on registration/upload/editing
 using linkUserDataToTemplate API. The same API can be used to unlink the mapping of user data and Template.
 
-While linking user Data to a Template/ISO user data override policy has to be specified.
+While linking user data to a Template/ISO user data override policy has to be specified.
 Following are the override policies available: 
 
-Allow Override: Allow users to override User Data for the Template during instance deployment or on reset.
+Allow Override: Allow users to override user data for the Template during instance deployment or on reset.
                 This is the default override policy if not specified 
 
-Deny Override: Override of User Data isn’t allowed during instance deployment or on reset.
+Deny Override: Override of user data isn’t allowed during instance deployment or on reset.
 
-Append Only: Don’t allow users to override linked User Data but allow users to pass user data content
-             or ID that should be appended to the linked User Data of the Template. When the users pass user data it is appended to the Template user data in the form of a multipart MIME message
+Append Only: Don’t allow users to override linked user data but allow users to pass user data content
+             or ID that should be appended to the linked user data of the Template. When the users pass user data it is appended to the Template user data in the form of a multipart MIME message
 
 This is how it looks like in Template/ISO register/upload/edit forms.
 
@@ -123,24 +123,24 @@ Based on these override policies, "Add Instance" UI form provides relevant optio
 override or append. If it is "Deny Override" then "Add Instance" will not allow adding user specific user data
 
 Storing and accessing user data
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 HTTP GET parameters are limited to a length of 2048 bytes, but it is possible
-to store larger user-data blobs by sending them in the body via HTTP POST
+to store larger user data blobs by sending them in the body via HTTP POST
 instead of GET.
 
-From inside the instance, the user-data is accessible via the virtual router,
-if the User Data service is enabled on the network offering.
+From inside the instance, the user data is accessible via the virtual router,
+if the user data service is enabled on the network offering.
 
 If you are using the DNS service of the virtual router, a special hostname
-called `data-server.` is provided, that will point to a valid user-data server.
+called `data-server.` is provided, that will point to a valid user data server.
 
 Otherwise you have to determine the virtual router address via other means,
 such as DHCP leases. Be careful to scan all routers if you have multiple
-networks attached to an instance, in case not all of them have the User Data service
+networks attached to an instance, in case not all of them have the user data service
 enabled.
 
-User-data is available from the URL ``http://data-server./latest/user-data``
+User data is available from the URL ``http://data-server./latest/user-data``
 and can be fetched via curl or other HTTP client.
 
 It is also possible to fetch instance metadata from the same service, via the URL
@@ -168,7 +168,7 @@ Determining the virtual router address without DNS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If can't or don't want to use the virtual router's DNS service, it's also
-possible to determine the user-data server from a DHCP lease.
+possible to determine the user data server from a DHCP lease.
 
 #. Run the following command to find the virtual router.
 
@@ -176,18 +176,18 @@ possible to determine the user-data server from a DHCP lease.
 
       # cat /var/lib/dhcp/dhclient.eth0.leases | grep dhcp-server-identifier | tail -1
 
-#. Access the data-server via its IP
+#. Access the user data server via its IP
 
    .. code:: bash
 
       # curl http://10.1.1.1/latest/user-data
 
 
-Fetching user-data via the API
+Fetching user data via the API
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-User-data is not included with the normal instance state for historic reasons.
-To read out the base64-encoded user-data via the API, use the `getVirtualMachineUserData <https://cloudstack.apache.org/docs/api/apidocs-4.14/user/getVirtualMachineUserData.html>`_
+User data is not included with the normal instance state for historic reasons.
+To read out the base64-encoded user data via the API, use the `getVirtualMachineUserData <https://cloudstack.apache.org/docs/api/apidocs-4.14/user/getVirtualMachineUserData.html>`_
 API call:
 
 .. code:: bash
@@ -199,7 +199,7 @@ Using cloud-init
 ~~~~~~~~~~~~~~~~
 
 `cloud-init <https://cloudinit.readthedocs.org/en/latest>`_ can be used to access
-and interpret user-data inside Instances. If you install cloud-init into your
+and interpret user data inside Instances. If you install cloud-init into your
 Instance Templates, it will allow you to store SSH keys and user passwords on each new
 Instance deployment automatically (:ref:`adding-password-management-to-templates` and `using ssh keys <virtual_machines.html#using-ssh-keys-for-authentication>`_).
 
@@ -219,12 +219,12 @@ Instance deployment automatically (:ref:`adding-password-management-to-templates
 
 For more information, see `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_
 
-Custom user-data example
+Custom user data example
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 This example uses cloud-init to automatically update all OS packages on the first launch.
 
-#. Register the following user-data in CloudStack. If APIs are used to register user data or to
+#. Register the following user data in CloudStack. If APIs are used to register user data or to
    provide direct user data text then user data needs to be wrapped into a multi-part MIME message
    and encoded in base64:
 
@@ -250,7 +250,7 @@ This example uses cloud-init to automatically update all OS packages on the firs
       package_upgrade: true
       EOF
    
-#. Deploy an instance with this user-data either by providing the UUID of the registerd user data
+#. Deploy an instance with this user data either by providing the UUID of the registerd user data
    or by providing base64 encoded user data:
 
    .. code:: bash

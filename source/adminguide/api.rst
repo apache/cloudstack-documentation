@@ -46,7 +46,7 @@ Authentication.
 User Data and Meta Data
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The user-data service on a Shared or Isolated Network can be provided through the
+The user data service on a Shared or Isolated Network can be provided through the
 Virtual Router or through an attached iso called the Config drive.
 
 User Data and Meta Data Via Virtual Router
