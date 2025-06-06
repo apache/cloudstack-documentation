@@ -504,6 +504,61 @@ For displaying a custom HTML in the plugin, HTML file can be stored in the Cloud
 
 |ui-custom-plugin.png|
 
+Announcement Banner
+======================
+
+Admin can configure an **announcement banner** in `config.json` to display alerts or messages to all users. 
+This banner is useful for communicating important notices such as performance issues, scheduled maintenance, or general announcements.
+To enable and customize the banner, use the `announcementBanner` section in the config.json file. 
+
+This section supports the following properties:
+
+**Configuration Example**
+
+.. parsed-literal::
+
+  "announcementBanner": {
+    "enabled": true,
+    "showIcon": true,
+    "closable": true,
+    "persistDismissal": true,
+    "type": "warning",
+    "message": "<strong>Performance Notice:</strong> We're experiencing high load. Some operations may be slower than usual.",
+    "startDate": "2025-06-01T00:00:00Z",
+    "endDate": "2025-07-16T00:00:00Z"
+   }
+
+**Banner Display Example**
+
+Based on the configuration above, the following banner is shown in the user interface:
+
+.. image:: /_static/images/ui-announcement-banner.png
+   :align: center
+   :alt: UI Announcement banner
+
+--------
+
+**Properties Description**
+
+- **enabled**: Enables or disables the announcement banner (`true` or `false`).
+- **showIcon**: Displays an icon alongside the message. The icon corresponds to the banner `type`.
+- **closable**: Allows users to close the banner.
+- **persistDismissal**: Remembers the user's dismissal of the banner, so it doesn't reappear.
+- **type**: Specifies the type of banner. Supported values are:
+  
+  - `info`
+  - `warning`
+  - `error`
+  - `success`
+
+- **message**: The HTML-formatted content displayed in the banner.
+- **startDate** / **endDate**: Define the visibility window for the banner using ISO 8601 format (`YYYY-MM-DDTHH:MM:SSZ`).
+
+.. note::
+
+   The `message` property supports basic HTML, allowing styled content such as `<strong>` tags for emphasis.
+
+
 Advanced UI Customisation
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
