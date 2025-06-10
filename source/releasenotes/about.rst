@@ -17,7 +17,20 @@
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is a 4.19 LTS minor release with over 170 fixes
+Apache CloudStack 4.19.3 is a minor release with a limited number of
+assorted fixes.
+
+* Fixes broken console access after upgrade to 4.19.2.0
+* Improve listing of Vmware Datacenter VMs for migration to KVM
+* Infinite scroll UI component to retrieve more items on reaching end of list
+* Prevention of duplication HA jobs and alerts
+* Fix SAML2 plugin limitations and SAML multi-account selector in the UI
+* Improvements to Linstor
+
+What's New in 4.19.2
+====================
+
+Apache CloudStack 4.19.2 is a 4.19 LTS minor release with over 170 fixes
 and improvements including prior releases this tallies up to over 480 since
 the 4.19.0.0 release. Some of the highlights include:
 
@@ -70,6 +83,32 @@ The full list of new features can be found in the project release notes at
 https://docs.cloudstack.apache.org/en/4.19.0.0/releasenotes/changes.html
 
 .. _guestosids
+
+Issues with ISO/config drive on Xcpng/Xen
+=========================================
+
+A fix was created for Xen like systems to work with config drive. (see
+https://github.com/apache/cloudstack/pull/10912) This had been broken
+for multiple releases, and passed unnoticed. There are some
+limitations to this fix. Noticably:
+
+- When attaching an ISO, the new ISO is attached as the first ISO (the existing configdrive ISO is detached),
+- Creating a VM from ISO on a network with ConfigDrive, is not expected to work (untested),
+- `userdata` functionality using config drive doesn't work.
+
+When upgrading from a new 4.19 installation
+===========================================
+
+Only new installations of 4.19.x will not have conservemode enabled by
+default vor VPCs. Upgrades from earlier versions will be alright. In
+order to make sure conserve mode is enabled for VPC-tiers, either
+create a clone of the default guestnetwork offering with conservemode
+enabled or execute the following sql:
+
+::
+   -- Re-apply VPC: update default network offering for vpc tier to conserve_mode=1 (#8309)
+   UPDATE `cloud`.`network_offerings` SET conserve_mode=1 WHERE name='DefaultIsolatedNetworkOfferingForVpcNetworks’;
+
 
 Possible Issue with volume snapshot revert with KVM
 ===================================================
