@@ -20,6 +20,13 @@ What's New in |release|
 Apache CloudStack 4.19.3 is a minor release with a limited number of
 assorted fixes.
 
+* Fixes broken console access after upgrade to 4.19.2.0
+* Improve listing of Vmware Datacenter VMs for migration to KVM
+* Infinite scroll UI component to retrieve more items on reaching end of list
+* Prevention of duplication HA jobs and alerts
+* Fix SAML2 plugin limitations and SAML multi-account selector in the UI
+* Improvements to Linstor
+
 What's New in 4.19.2
 ====================
 
