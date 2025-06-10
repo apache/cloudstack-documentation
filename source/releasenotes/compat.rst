@@ -22,7 +22,7 @@ Supported OS Versions for Management Server
 This section lists the operating systems that are supported for running
 CloudStack Management Server.
 
--  Ubuntu 20.04 LTS, 22.04 LTS, 24.04 LTS
+-  Ubuntu 22.04 LTS, 24.04 LTS
 -  Oracle Linux 8, 9
 -  Alma Linux 8, 9
 -  Rocky Linux 8, 9
