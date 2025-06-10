@@ -32,6 +32,27 @@ and improvements since the 4.20.0.0 release. Some of the highlights include:
 The full list of new features can be found in the project release notes at
 https://docs.cloudstack.apache.org/en/4.20.1.0/releasenotes/changes.html
 
+What's New in 4.20.0.0
+=======================
+
+Apache CloudStack 4.20.0.0 is the initial 4.20 LTS release with 190+ new
+features, improvements and bug fixes since 4.19, including 15 major
+new features. Some of the highlights include:
+
+• Webhooks
+• Dynamic and Static Routing
+• Ceph RGW Object Store Support
+• NSX integration
+• Shared Filesystems
+• Multi-arch Zones
+• Simple NAS backup plugin for KVM
+• Usage UI
+• API documentation in UI
+
+
+The full list of new features can be found in the project release notes at
+https://docs.cloudstack.apache.org/en/4.20.0.0/releasenotes/changes.html
+
 Log4j Upgrade
 =============
 
