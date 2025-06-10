@@ -20,14 +20,13 @@ What's New in |release|
 Apache CloudStack |release| is a 4.20 LTS minor release with over 150 fixes
 and improvements since the 4.20.0.0 release. Some of the highlights include:
 
-• Improve listing of Vmware Datacenter VMs for migration to KVM
 • Improvements to multi-architecture support in CloudStack
 • vTPM support for KVM and VMware
 • Support for XenServer 8.4 / XCP-ng 8.3
 • Added support for VMware 80u2 and 80u3
-• Updated Sysyem VM template to Debian 12.10
-• Linstore improvements
+• Updated Sysyem VM template to Debian 12.11
 • NAS B&R improvements
+• Experimental Support of EL10 as Management Server and KVM host
 
 
 The full list of new features can be found in the project release notes at
