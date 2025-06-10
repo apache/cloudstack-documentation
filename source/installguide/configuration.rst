@@ -264,7 +264,13 @@ and secondary storage.
 
 #. Click Add Zone. The zone creation wizard will appear.
 
-#. Choose one of the following network types:
+#. Choose one of the following zone types:
+
+   - **Core.** Core Zones are intended for Datacenter based deployments and allow the full range of Networking and other functionality in Apache CloudStack. Core zones have a number of prerequisites and rely on the presence of shared storage and helper Instances. For more information see :ref:`core-zone`.
+
+   - **Edge.** Edge Zones are lightweight zones, designed for deploying in edge computing scenarios. They are limited in functionality but have far fewer prerequisites than core zones. Please refer to :ref:`edge-zone`.
+
+#. If Core Zone is selected, choose one of the following network types:
 
    -  **Basic.** For AWS-style networking. Provides a single network
       where each instance is assigned an IP directly from the
@@ -287,6 +293,9 @@ and secondary storage.
 
    -  `“Advanced Zone Configuration” <#advanced-zone-configuration>`_
 
+.. note::
+      Since CloudStack 4.20.1, it is possible to specify the preferred architecture type for a zone for deployment of system VM including virtual routers. Zone setting - *system.vm.preferred.architecture* can be updated for this. The server will first try deployment on the preferred architecture and if it fails then will attempt on other architecture hosts.
+      Administrator can also register ROUTING template with the same name for different architectures to allow deployment across them depending on the compute capacity. For other system VMs, server will attempt deployment using different architecture templates available.
 
 Basic Zone Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -525,6 +534,8 @@ Advanced Zone Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For Advanced zone, you may chose to select Edge which will allow creating an Edge Zone. If Edge is not selected then wizard will continue creating a Core zone.
+
+.. _core-zone:
 
 Core Zone
 *********
@@ -775,6 +786,8 @@ Core Zone
 
 #. Click Launch.
 
+
+.. _edge-zone:
 
 Edge Zone
 *********

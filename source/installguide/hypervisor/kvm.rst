@@ -443,7 +443,7 @@ cloudstack-agent and should already be installed.
 
       #LIBVIRTD_ARGS="--listen"
 
-   On RHEL 8 / CentOS 8 / SUSE run the following command :
+   On RHEL 8 / CentOS 8 / SUSE / Ubuntu / Debian, run the following command :
 
    .. parsed-literal::
 

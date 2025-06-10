@@ -188,3 +188,12 @@ Events and Troubleshooting
 
    events
    troubleshooting
+
+
+Best Practices
+--------------
+
+.. toctree::
+   :maxdepth: 4
+
+   best_practices

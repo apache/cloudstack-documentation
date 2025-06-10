@@ -17,6 +17,24 @@
 What's New in |release|
 =======================
 
+Apache CloudStack |release| is a 4.20 LTS minor release with over 150 fixes
+and improvements since the 4.20.0.0 release. Some of the highlights include:
+
+• Improvements to multi-architecture support in CloudStack
+• vTPM support for KVM and VMware
+• Support for XenServer 8.4 / XCP-ng 8.3
+• Added support for VMware 80u2 and 80u3
+• Updated Sysyem VM template to Debian 12.11
+• NAS B&R improvements
+• Experimental Support of EL10 as Management Server and KVM host
+
+
+The full list of new features can be found in the project release notes at
+https://docs.cloudstack.apache.org/en/4.20.1.0/releasenotes/changes.html
+
+What's New in 4.20.0.0
+=======================
+
 Apache CloudStack 4.20.0.0 is the initial 4.20 LTS release with 190+ new
 features, improvements and bug fixes since 4.19, including 15 major
 new features. Some of the highlights include:
@@ -58,3 +76,12 @@ On upgrading from 4.19.x or lower, existing AMQP or Kafka integration
 configurations should be moved from folder
 ``/etc/cloudstack/management/META-INF/cloudstack/core`` to
 ``/etc/cloudstack/management/META-INF/cloudstack/event``
+
+Guest OS Categories Change
+==========================
+
+The guest operating system categories have been updated in 4.21, resulting in a
+reorganization of the guest operating systems with respect to categories.
+
+If the ``oscategoryid`` functionality for hosts is being used, ensure it is
+pointing to the correct guest operating system category ID.
