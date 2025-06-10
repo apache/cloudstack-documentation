@@ -45,7 +45,7 @@ Supported Hypervisor Versions
 CloudStack supports three hypervisor families, KVM, XenServer/XCP-ng with XAPI,
 and VMware with vSphere.
 
--  22.04 LTS, 24.04 LTS with KVM
+-  Ubuntu 22.04 LTS, 24.04 LTS with KVM
 -  Oracle Linux 8, 9 with KVM
 -  Alma Linux 8, 9 with KVM
 -  Rocky Linux 8, 9 with KVM
