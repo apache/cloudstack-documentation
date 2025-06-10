@@ -72,7 +72,17 @@ This means that Centos7 (EL7) is no longer supported.
 
 Events Message Bus Change
 =========================
+
 On upgrading from 4.19.x or lower, existing AMQP or Kafka intergration
 configurations should be moved from folder
 ``/etc/cloudstack/management/META-INF/cloudstack/core`` to
 ``/etc/cloudstack/management/META-INF/cloudstack/event``
+
+Guest OS Categories Change
+==========================
+
+The guest operating system categories have been updated, resulting in a
+reorganization of the guest operating systems with respect to categories.
+
+If the ``oscategoryid`` functionality for hosts is being used, ensure it is
+pointing to the correct guest operating system category ID.
