@@ -82,6 +82,7 @@ configure the base guest Network:
 .. note:: 
    * In security groups-enabled Advanced zones and Basic zones, creation of VPC and isolated Networks are not supported.
    * MTU options will be shown in the UI and considered only when zone configuration - `allow.end.users.to.specify.vr.mtu` is set to true. Maximum allowed values for public and private MTU can be controlled by zone-level configurations, `vr.public.interface.max.mtu` and `vr.private.interface.max.mtu` respectively.
+   * We can configure a zone with multiple Physical Networks having guest traffic type. In such zones, we need to tag the additional Physical networks. We must have one Physical Network that is not tagged for isolated/L2 network offerings not configured with any tags. For example the default network offerings. 
 
 Configure Public Traffic in an Advanced Zone
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

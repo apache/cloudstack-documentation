@@ -214,7 +214,6 @@ createKubernetesCluster API can be used to create new Kubernetes cluster. It tak
 - **dockerregistryusername** (username for the docker image private registry; Experimental)
 - **dockerregistrypassword** (password for the docker image private registry; Experimental)
 - **dockerregistryurl** (URL for the docker image private registry; Experimental)
-- **dockerregistryemail** (email of the docker image private registry user; Experimental)
 
 For example:
 
