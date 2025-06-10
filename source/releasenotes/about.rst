@@ -76,3 +76,12 @@ On upgrading from 4.19.x or lower, existing AMQP or Kafka integration
 configurations should be moved from folder
 ``/etc/cloudstack/management/META-INF/cloudstack/core`` to
 ``/etc/cloudstack/management/META-INF/cloudstack/event``
+
+Guest OS Categories Change
+==========================
+
+The guest operating system categories have been updated in 4.21, resulting in a
+reorganization of the guest operating systems with respect to categories.
+
+If the ``oscategoryid`` functionality for hosts is being used, ensure it is
+pointing to the correct guest operating system category ID.
