@@ -180,11 +180,11 @@ The form will be initially prefilled with the values stored in the backup.
 This will also work if the original Instance and the volumes used to create the backup are expunged.
 If one or few of the resources stored in the backup such as template, networks etc are no longer available
 in the system, the user will be prompted to reconfigure the Instance before creating it from backup.
-This feature is supported for Dummy, NAS and Veeam plugins1.
+This feature is supported for Dummy, NAS and Veeam plugins.
 
 .. note::
    If the backup was created in a release prior to 4.21, the backup metadata won't contain the instance configuration details,
-   so users would have to fill in the required details by clicking on configure new Instance button.
+   so users would have to fill in the required details by clicking on the Configure Instance button.
 
 Supported APIs:
 ~~~~~~~~~~~~~~~~
