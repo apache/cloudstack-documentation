@@ -21,7 +21,7 @@ This allows users to consume event notifications without any external services
 such as an event streaming platforms.
 
 Webhooks can be managed using both API and UI. CloudStack provides following
-APIs for webhhoks:
+APIs for webhooks:
 
    .. cssclass:: table-striped table-bordered table-hover
 
@@ -37,7 +37,7 @@ APIs for webhhoks:
    executeWebhookDelivery Executes a Webhook delivery
    ====================== ===========================
 
-In the UI, webhooks can be managed under *Tools > Webhhooks* menu.
+In the UI, webhooks can be managed under *Tools > Webhooks* menu.
 
    |webhooks.png|
 

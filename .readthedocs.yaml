@@ -1,10 +1,16 @@
 version: 2
 
+sphinx:
+  configuration: source/conf.py
+
 build:
   os: "ubuntu-22.04"
   tools:
     python: "3.11"
 
 python:
-   install:
-   - requirements: requirements.txt
+  install:
+  - requirements: requirements.txt
+
+sphinx:
+  configuration: source/conf.py
