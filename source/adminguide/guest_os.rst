@@ -13,6 +13,13 @@
    specific language governing permissions and limitations
    under the License.
 
+
+.. |guest-os-categories.png| image:: /_static/images/guest-os-categories.png
+   :alt: Guest OS Categories
+
+.. |add-guest-os-category.png| image:: /_static/images/add-guest-os-category.png
+   :alt: Add Guest OS Category form
+
 .. |guest-os-button.png| image:: /_static/images/guest-os-button.png
    :alt: Guest OS section
 
@@ -36,8 +43,40 @@ and also need to have a mapping with the actual operating system name supported 
 
 Under "Configuration" section there are sub-sections for guest operating system.
 
+Guest OS Categories
+-------------------
+
+A list of existing categories for the guest operating systems are shown as
+"Guest OS Categories" section. Operators can also add new guest operating
+system categories from the view.
+
+|guest-os-categories.png|
+
+Guest operating system categories are useful for categorizing images, i.e.,
+templates and ISOs, in several UI forms such as deploying an instance,
+reinstalling an instance, etc., when the modern image selection is used in the
+UI configuration.
+
+To allow a guest operating system category to be displayed in the UI forms, it
+must be marked as featured. The order of the categories can also be controlled
+using the Order option in the categories view.
+
+Like other resources, a custom resource icon can be set for a particular guest
+operating system category for further control. If no resource icon is set for
+a category, the UI will display default icons based on the category
+name.
+
+An existing guest OS category can be deleted if it does not have any
+associated guest operating systems.
+
+The "Add guest OS category" option allows operators to create new categories,
+which can be marked as featured if they are meant to be displayed in the UI
+forms.
+
+|add-guest-os-category.png|
+
 Guest OS
----------
+--------
 
 A list of supported guest operating systems are shown under |guest-os-button.png| and also one can add new operating systems.
 

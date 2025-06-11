@@ -405,6 +405,34 @@ To create a new compute offering:
          -  **Disk Offering Strictness**: This flag defines the strictness of the disk offering association 
             with the compute offering. When set to true, overriding of disk offering is not allowed on deploy instance
             and change disk offering is not allowed for the ROOT disk
+      
+   -  **Enable Lease**: When this flag is enabled, Compute Offering is created with 'Instance Lease' enabled. 
+      In CloudStack, a lease for an instance sets a specific time duration (in days) after which a chosen lease action, such as stopping or destroying the instance, will take place. 
+      These lease settings are defined in the Compute Offering and are automatically applied to any Instance created using it.
+      
+      .. note:: The global configuration ``instance.lease.enabled`` should be configured as true to create compute offering with lease.
+      
+      .. note:: Lease duration or expiryaction can't be updated for compute offering.
+
+      ``instance.lease.enabled``: Indicates whether Instance Lease feature is enabled or not. Default is **false**
+         For more information, see `“Setting Global Configuration Parameters”
+         <../installguide/configuration.html#setting-global-configuration-parameters>`_.
+
+      When the flag is enabled
+
+         -  **Lease Duration (in days)**: Sets the lease duration. An instance created using this compute offering will inherit the lease duration by default. Supported values are in range 1 <= N <= 36500.
+
+         -  **Lease expiry action**: Lease expiry action: Denotes lease expiry action, which gets executed upon lease expiry for instances created using this compute offering.
+         Supported values for lease expiry action are as follows:
+            
+            - STOP
+            - DESTROY
+      
+   .. image:: /_static/images/compute_offering_dailog_with_lease.png
+      :width: 400px
+      :align: center
+      :alt: Compute offering dialog box
+
 
 #. Click Add.
 
@@ -626,11 +654,11 @@ To create a system service offering:
 Network Throttling
 ------------------
 
-Network throttling is the process of controlling the network bandwith. CloudStack controls this
+Network throttling is the process of controlling the network bandwidth. CloudStack controls this
 behaviour of the guest networks in the cloud by using the network rate
 parameter. This parameter is defined as the default data transfer rate
 in Mbps (Megabits Per Second) allowed in a guest network. It defines the
-upper limits for network bandwith.
+upper limits for network bandwidth.
 
 You can throttle the network bandwidth either to control the usage above
 a certain limit for some accounts, or to control network congestion in a

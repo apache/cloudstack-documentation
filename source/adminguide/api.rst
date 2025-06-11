@@ -12,7 +12,7 @@
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
- 
+
 
 The CloudStack API is a low level API that has been used to implement
 the CloudStack web UIs. It is also a good basis for implementing other
@@ -180,6 +180,29 @@ VMdata - a list of String arrays representing [“directory”, “filename”, 
     - name : vm.configdrive.label
 
     - default: config-2
+
+Virtual machine password via ConfigDrive
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ConfigDrive metadata provider delivers the virtual machine password simultaneously in two variants, leaving which one to use to the user discretion:
+
+1. As the ``<mountdir>/cloudstack/password/vm_password.txt`` file.
+
+This file is intended to be used by an external script that runs inside the virtual machine every boot, and changes the password if needed.
+The init-script that implements this functionality can be found in the `Cloudstack source <https://github.com/apache/cloudstack/blob/main/setup/bindir/cloud-set-guest-password-configdrive.in>`_.
+
+.. note::
+    The ``vm_password.txt`` file is not compatible with cloud-init password module, so the cloud-init will ignore it.
+    It is up to Cloudstack administrator to include the script processing it in the virtual machines and/or their templates.
+
+2. As the ``<mountdir>/openstack/latest/vendor_data.json``.
+This is a standard password location supported by cloud-init's both ConfigDrive datasource and the password module.
+Therefore, this variant allows using cloud-init as the only tool for provisioning a virtual machine, without using external scripts.
+
+.. warning::
+    Cloud-init password module is designed to only perform the initial virtual machine password setup.
+    It will ignore the changes in ``vendor_data.json`` after the first run. Therefore, resetting the virtual machine password from Cloudstack will not work with this variant.
+
 
 For more detailed information about the Config Drive implementation refer to
 the `Wiki Article

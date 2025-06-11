@@ -264,7 +264,13 @@ and secondary storage.
 
 #. Click Add Zone. The zone creation wizard will appear.
 
-#. Choose one of the following network types:
+#. Choose one of the following zone types:
+
+   - **Core.** Core Zones are intended for Datacenter based deployments and allow the full range of Networking and other functionality in Apache CloudStack. Core zones have a number of prerequisites and rely on the presence of shared storage and helper Instances. For more information see :ref:`core-zone`.
+
+   - **Edge.** Edge Zones are lightweight zones, designed for deploying in edge computing scenarios. They are limited in functionality but have far fewer prerequisites than core zones. Please refer to :ref:`edge-zone`.
+
+#. If Core Zone is selected, choose one of the following network types:
 
    -  **Basic.** For AWS-style networking. Provides a single network
       where each instance is assigned an IP directly from the
@@ -287,6 +293,9 @@ and secondary storage.
 
    -  `“Advanced Zone Configuration” <#advanced-zone-configuration>`_
 
+.. note::
+      Since CloudStack 4.20.1, it is possible to specify the preferred architecture type for a zone for deployment of system VM including virtual routers. Zone setting - *system.vm.preferred.architecture* can be updated for this. The server will first try deployment on the preferred architecture and if it fails then will attempt on other architecture hosts.
+      Administrator can also register ROUTING template with the same name for different architectures to allow deployment across them depending on the compute capacity. For other system VMs, server will attempt deployment using different architecture templates available.
 
 Basic Zone Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -526,6 +535,8 @@ Advanced Zone Configuration
 
 For Advanced zone, you may chose to select Edge which will allow creating an Edge Zone. If Edge is not selected then wizard will continue creating a Core zone.
 
+.. _core-zone:
+
 Core Zone
 *********
 
@@ -678,7 +689,7 @@ Core Zone
       your XenServer or KVM install).
 
    .. note::
-      For security reasons there are ways to use non-adminstrative users for
+      For security reasons there are ways to use non-administrative users for
       adding a host. Please refer to the hypervisor setup guides for further information.
 
    -  **Host Tags.** Any labels that you use to categorize
@@ -776,6 +787,8 @@ Core Zone
 #. Click Launch.
 
 
+.. _edge-zone:
+
 Edge Zone
 *********
 
@@ -814,7 +827,7 @@ To work with limited compute resources, an Edge zone will not deploy system VMs.
    -  **Password.** (Obligatory if Password authentication is selected) This is the password for the user named above.
 
    .. note::
-      For security reasons there are ways to use non-adminstrative users for
+      For security reasons there are ways to use non-administrative users for
       adding a host. Please refer to the hypervisor setup guides for further information.
 
    -  **Host Tags.** Any labels that you use to categorize
@@ -1450,8 +1463,8 @@ leads to the dynamic creation of a StorPool volume, which has guaranteed
 performance. Such a StorPool volume is associated with one CloudStack volume,
 so performance of the CloudStack volume does not vary depending on how
 heavily other tenants are using the system. The volume migration is supported
-accross non-managed storage pools (e.g. NFS/Local storage/Ceph) to StorPool, and
-accross StorPool storage pools.
+across non-managed storage pools (e.g. NFS/Local storage/Ceph) to StorPool, and
+across StorPool storage pools.
 
 For detailed information about *Command*, *Scope*, *Hypervisor*, and other
 parameters you need to specify when setting up the StorPool plug-in, see the

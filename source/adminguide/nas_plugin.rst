@@ -27,6 +27,9 @@ instances to any shared storage (NAS). It is based on `libvirt push backup mode
 to take full instance backups (qcow2) and requires libvirt-7.2.0 and QEMU-4.2,
 or high versions on the KVM hosts.
 
+Currently, only backup of VMs from the NFS-based Primary Storage are tested to work.
+You can also make backups of CEPH-based VMs, but restoring is not possible yet.
+
 The NAS B&R plugin requires admin to first add backup repositories which are
 network-attached storage (shared storage). It supports NFS, CIFS/Samba and CephFS.
 
@@ -66,8 +69,8 @@ backup.framework.enabled          true
 backup.framework.provider.plugin  nas
 ================================= ========================
 
-Once the above two configurations are set, restart the cloudstack-management service. Once the service is restarted we can add the backup repository for the 'nas' Backup and Recovery plugin.
-Navigate to the configuration -> Backup Repository. Click on 'Add Backup Repository' and fill the form. 
+Once the above two configurations are set, restart the cloudstack-management service. After restart check the Settings of the Zone where you want to enable NAS backups - make sure that the "backup.framework.enabled"="true" on the Setting tab of the Zone. Once this is done, we can add the backup repository for the 'nas' Backup and Recovery plugin.
+Navigate to the Configuration -> Backup Repository. Click on 'Add Backup Repository' and fill the form.
 
 =================== ========================
 Field               Value
@@ -83,7 +86,17 @@ Zone                The zone in CloudStack with which this Backup Repository mus
    :align: center
    :alt: NAS Backup repository
 
-Once the Backup Repository is created, we need to add a Backup Offering, in this plugin the Backup offering is a placeholder to associate an instance to a Backup Repository. While creating the Backup Offering, select the desired Backup Repository. Associate the Backup Offering on an instance to create an Adhoc or scheduled backup. 
+Pay attention to the "Name" given to this repository, as you will have to specify this in the "External ID" field when creating Backup Offerings (Importing backup offering)
+
+Once the Backup Repository is created, we need to add a Backup Offering, in this plugin the Backup offering is a placeholder to associate an instance to a Backup Repository. While creating the Backup Offering, select the desired Backup Repository. Associate the Backup Offering on an instance to create an Adhoc or scheduled backup.
+
+For the "External ID", please specify the name of the previously created backup repository.
+
+.. image:: /_static/images/B&R-Backup-Offerings.png
+   :align: center
+   :alt: NAS Backup offerings
+
+After this has been done, you can go to any Instance view and there will be buttons available for either ad-hoc backup or a scheduled backup of the VM
 
 Support Information and Limitation
 ----------------------------------

@@ -597,9 +597,9 @@ Attaching an ISO to a Instance
 .. |template-permissions-update-2.png| image:: /_static/images/template-permissions-update-2.png
    :alt: Sharing template with 2 specific projects
 .. |template-permissions-update-3.png| image:: /_static/images/template-permissions-update-3.png
-   :alt: Revoking permissins from Account "user8"
+   :alt: Revoking permissions from Account "user8"
 .. |template-permissions-update-4.png| image:: /_static/images/template-permissions-update-4.png
-   :alt: Revoking permsissons from both projects previously added
+   :alt: Revoking permissions from both projects previously added
 .. |template-permissions-update-5.png| image:: /_static/images/template-permissions-update-5.png
    :alt: Resetting (removing all) permissions
 .. |iso.png| image:: /_static/images/iso-icon.png

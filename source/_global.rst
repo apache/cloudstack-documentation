@@ -25,19 +25,20 @@
 
 .. Latest version systemvm template name
 
-.. |sysvm64-version|     replace:: 4.20.0
-.. |sysvm64-name-xen|    replace:: systemvm-xenserver-4.20.0-x86_64
-.. |sysvm64-name-kvm|    replace:: systemvm-kvm-4.20.0-x86_64
-.. |sysvm64-name-vmware| replace:: systemvm-vmware-4.20.0-x86_64
-.. |sysvm64-name-hyperv| replace:: systemvm-hyperv-4.20.0-x86_64
-.. |sysvm64-name-ovm|    replace:: systemvm-ovm-4.20.0-x86_64
+.. |sysvm64-version|     replace:: 4.20.1
+.. |sysvm64-name-xen|    replace:: systemvm-xenserver-4.20.1-x86_64
+.. |sysvm64-name-kvm|    replace:: systemvm-kvm-4.20.1-x86_64
+.. |sysvm64-name-vmware| replace:: systemvm-vmware-4.20.1-x86_64
+.. |sysvm64-name-hyperv| replace:: systemvm-hyperv-4.20.1-x86_64
+.. |sysvm64-name-ovm|    replace:: systemvm-ovm-4.20.1-x86_64
 
 .. Latest version systemvm template URL
-.. |sysvm64-url-xen|    replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.0-x86_64-xen.vhd.bz2
-.. |sysvm64-url-kvm|    replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.0-x86_64-kvm.qcow2.bz2
-.. |sysvm64-url-vmware| replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.0-x86_64-vmware.ova
-.. |sysvm64-url-hyperv| replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.0-x86_64-hyperv.vhd.zip
-.. |sysvm64-url-ovm|    replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.0-x86_64-ovm.raw.bz2
+.. |sysvm64-url-xen|            replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.1-x86_64-xen.vhd.bz2
+.. |sysvm64-url-kvm|            replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.1-x86_64-kvm.qcow2.bz2
+.. |sysvm64-url-kvm-aarch64|    replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.1-aarch64-kvm.qcow2.bz2
+.. |sysvm64-url-vmware|         replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.1-x86_64-vmware.ova
+.. |sysvm64-url-hyperv|         replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.1-x86_64-hyperv.vhd.zip
+.. |sysvm64-url-ovm|            replace:: http://download.cloudstack.org/systemvm/4.20/systemvmtemplate-4.20.1-x86_64-ovm.raw.bz2
 
 .. Images
 

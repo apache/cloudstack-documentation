@@ -59,6 +59,14 @@ machine on the event bus. All the CloudStack events (alerts, action
 events, usage events) and the additional category of resource state
 change events, are published on to the events bus.
 
+.. note::
+   Alerts for some more important events will be sent multiple
+   times. This is due to the nature of guarding
+   certain resources from multiple threads in the code, to make sure
+   that events are not missed. Examples are "Host down" or
+   "HA starting VM". These are considered too important to not send
+   immediately and hence a check if they are already queued can not be done.
+
 Implementations
 ~~~~~~~~~~~~~~~
 An event bus is introduced in the
@@ -75,7 +83,7 @@ implementation are also available.
 
 
 .. note::
-   On upgrading from 4.19.x or lower, existing AMQP or Kafka intergration
+   On upgrading from 4.19.x or lower, existing AMQP or Kafka integration
    configurations should be moved from folder
    ``/etc/cloudstack/management/META-INF/cloudstack/core`` to
    ``/etc/cloudstack/management/META-INF/cloudstack/event``
