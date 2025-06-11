@@ -164,9 +164,9 @@ that volume to a specified Instance.
 Creating a new Instance from Backup
 -----------------------------------
 
-Since 4.21, Users can create a new Instance from a backup. The backup table will also store
+Since 4.21, Users can create a new Instance from a backup. The backup metadata also stores
 the instance configuration details at the time of taking the backup such as service offering,
-template, disk offering of all data volumes, networks attached to etc.
+template, disk offering of all data volumes, networks attached etc.
 The new Instance will be created with the same configuration as the original Instance
 from which the backup was taken with all the data from the backup.
 
@@ -180,7 +180,11 @@ The form will be initially prefilled with the values stored in the backup.
 This will also work if the original Instance and the volumes used to create the backup are expunged.
 If one or few of the resources stored in the backup such as template, networks etc are no longer available
 in the system, the user will be prompted to reconfigure the Instance before creating it from backup.
-This feature is supported for Dummy, NAS and Veeam plugins.
+This feature is supported for Dummy, NAS and Veeam plugins1.
+
+.. note::
+   If the backup was created in a release prior to 4.21, the backup metadata won't contain the instance configuration details,
+   so users would have to fill in the required details by clicking on configure new Instance button.
 
 Supported APIs:
 ~~~~~~~~~~~~~~~~
