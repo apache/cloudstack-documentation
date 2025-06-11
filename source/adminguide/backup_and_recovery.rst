@@ -161,6 +161,31 @@ of an expunged Instance will not restore nics and recovery any network which may
 not exist. User may however restore a specific volume from an Instance backup and attach
 that volume to a specified Instance.
 
+Creating a new Instance from Backup
+-----------------------------------
+
+Since 4.21, Users can create a new Instance from a backup. The backup metadata also stores
+the instance configuration details at the time of taking the backup such as service offering,
+template, disk offering of all data volumes, networks attached etc.
+The new Instance will be created with the same configuration as the original Instance
+from which the backup was taken with all the data from the backup.
+
+|B&R-CreateInstanceFromBackup.png|
+
+Users can also choose to configure the new Instance with different parameters similar to while deploying a new Instance.
+The form will be initially prefilled with the values stored in the backup.
+
+|B&R-ConfigureInstance.png|
+
+This will also work if the original Instance and the volumes used to create the backup are expunged.
+If one or few of the resources stored in the backup such as template, networks etc are no longer available
+in the system, the user will be prompted to reconfigure the Instance before creating it from backup.
+This feature is supported for Dummy, NAS and Veeam plugins.
+
+.. note::
+   If the backup was created in a release prior to 4.21, the backup metadata won't contain the instance configuration details,
+   so users would have to fill in the required details by clicking on the Configure Instance button.
+
 Supported APIs:
 ~~~~~~~~~~~~~~~~
 
@@ -176,6 +201,7 @@ Supported APIs:
 - **listBackups**: lists backups.
 - **restoreBackup**: restore a previous Instance backup in-place of a stopped or destroyed Instance.
 - **restoreVolumeFromBackupAndAttachToVM**: restore and attach a backed-up volume (of an Instance backup) to a specified Instance.
+- **createInstanceFromBackup**: create a new Instance from a backup.
 
 
 Configuring resource limits on Backups
@@ -211,3 +237,9 @@ the backup size, although the actual backup size may be less than the size use t
 .. |B&R-BackupScheduleEntry.png| image:: /_static/images/B&R-BackupScheduleEntry.png
    :alt: Creating a backup schedule for an Instance.
    :width: 400px
+.. |B&R-CreateInstanceFromBackup.png| image:: /_static/images/B&R-CreateInstanceFromBackup.png
+   :alt: Creating a new Instance from a backup.
+   :width: 400px
+.. |B&R-ConfigureInstance.png| image:: /_static/images/B&R-ConfigureInstance.png
+   :alt: Configure Instance parameters before creating it from backup.
+   :width: 700px
