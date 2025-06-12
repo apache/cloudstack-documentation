@@ -27,7 +27,7 @@ The System VM Template
 The System VMs come from a single Template. The System VM has the
 following characteristics:
 
--  Debian 10.8(buster), 4.19.0 kernel with the latest security
+-  Debian 12(bookwork), 6.1.0 kernel with the latest security
    patches from the Debian security APT repository
 
 -  Has a minimal set of packages installed thereby reducing the attack
@@ -46,6 +46,42 @@ following characteristics:
 -  Latest version of JRE from Sun/Oracle ensures improved security and
    speed
 
+Starting with 4.20.0 release, the following architectures are supported for KVM
+hypervisor:
+
+- Intel/AMD 64-bit (x86_64)
+
+- ARM 64-bit (aarch64)
+
+Other hypervisors only support Intel/AMD 64-bit (x86_64)
+
+
+System VM Template bundled with packages
+----------------------------------------
+
+The System VM Template is bundled with the official release DEB and RPM
+cloudstack-management packages for Intel/AMD 64-bit architecture and the
+following hypervisors:
+
+- KVM
+
+- VMware
+
+- XenServer
+
+Currently, the ARM 64-bit template(s) are not bundled with the packages.
+
+During zone deployment and upgrade, the required templates, i.e., the
+templates for hypervisor and architecture which are in use in the zone
+if not already present will be automatically registered and seeded on
+the secondary storage.
+
+ARM 64-bit template(s) will be downloaded from the official repository
+and the same workflow for the registration and seeding will be used. If
+the automatic download and seeding of ARM 64-bit template fails, the
+template can be manually registered in a multi-architecture zone or
+will need manual registration and seeding in a ARM 64-bit only zone.
+
 
 Changing the Default System VM Template
 ---------------------------------------
@@ -58,18 +94,19 @@ of memory.
 
    .. cssclass:: table-striped table-bordered table-hover
 
-   ==========  ================================================================================================
-   Hypervisor  Download Location
-   ==========  ================================================================================================
-   XenServer   |sysvm64-url-xen|
-   KVM         |sysvm64-url-kvm|
-   VMware      |sysvm64-url-vmware|
-   Hyper-V     |sysvm64-url-hyperv|
-   ==========  ================================================================================================
+   ==========  ============  ==================================================================================
+   Hypervisor  Architecture  Download Location
+   ==========  ============  ==================================================================================
+   XenServer   x86_64        |sysvm64-url-xen|
+   KVM         x86_64        |sysvm64-url-kvm|
+   KVM         aarch64       |sysvm64-url-kvm-aarch64|
+   VMware      x86_64        |sysvm64-url-vmware|
+   Hyper-V     x86_64        |sysvm64-url-hyperv|
+   ==========  ============  ==================================================================================
 
 #. As an administrator, log in to the CloudStack UI
 
-#. Register the 64 bit Template.
+#. Register the 64-bit Template.
 
    For example: KVM64bitTemplate
 
@@ -88,6 +125,11 @@ of memory.
 
    Any new virtual router created in this Zone automatically picks up
    this Template.
+
+#. When using multiple architectures in the Zone, same name can be used
+   for the templates for the different architectures and same hypervisor
+   to allow deployment across them depending on the compute capacity and
+   the zone setting - *system.vm.preferred.architecture*
 
 #. Restart the Management Server.
 

@@ -697,11 +697,6 @@ In any OAuth 2.0 configuration admin has to use the redirect URI "http://<manage
           server IP to host table in the local system and assign a domain, something like "management.cloud". In that redirect URI looks like
           "http://management.cloud:8080/?verifyOauth"
 
-.. image:: /_static/images/oauth-provider-registration.png
-   :width: 400px
-   :align: center
-   :alt: OAuth provider registration
-
 Following are the details needs to be provided to register the OAuth provider, this is to call the API "registerOauthProvider"
 
    -  **Provider**: Name of the provider from the list of OAuth providers supported in CloudStack
@@ -713,6 +708,11 @@ Following are the details needs to be provided to register the OAuth provider, t
    -  **Redirect URI**: Redirect URI pre-registered in the specific OAuth provider
 
    -  **Secret Key**: Secret Key pre-registered in the specific OAuth provider
+
+.. image:: /_static/images/oauth-provider-registration.png
+   :width: 400px
+   :align: center
+   :alt: OAuth provider registration
 
 Cloudmonkey API call looks like
 

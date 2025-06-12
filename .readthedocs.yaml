@@ -9,5 +9,8 @@ build:
     python: "3.11"
 
 python:
-   install:
-   - requirements: requirements.txt
+  install:
+  - requirements: requirements.txt
+
+sphinx:
+  configuration: source/conf.py
