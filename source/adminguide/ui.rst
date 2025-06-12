@@ -508,23 +508,8 @@ For displaying a custom HTML in the plugin, HTML file can be stored in the Cloud
 |ui-custom-plugin.png|
 
 
-Instance Image Selection Customisation
--------------------------------------
-
-In the UI, there are several forms where the user needs to select an image (template/ISO) for an instance, such as deploying an instance, reinstalling an instance, creating a VNF appliance, etc. The image selection interface for these forms can be selected by the operator based on preference by specifying properties in the UI configuration file (config.json).
-
-The configuration property _imageSelectionInterface_ can be set to one of these values: modern or legacy. The default value is *modern*.
-
-When the *modern* interface is used, images will be categorized based on the guest operating system categories. Further customisation can be done using the configuration properties showUserCategoryForModernImageSelection and showAllCategoryForModernImageSelection to allow or disallow the display of additional categories.
-
-|ui-modern-image-selection.png|
-
-The *legacy* interface will display images based on templatefilter/isofilter, i.e., Featured, Community, My Templates/ISOs, and Shared.
-
-|ui-legacy-image-selection.png|
-
 Announcement Banner
-======================
+===================
 
 Admin can configure an **announcement banner** in `config.json` to display alerts or messages to all users. 
 This banner is useful for communicating important notices such as performance issues, scheduled maintenance, or general announcements.
@@ -576,6 +561,22 @@ Based on the configuration above, the following banner is shown in the user inte
 .. note::
 
    The `message` property supports basic HTML, allowing styled content such as `<strong>` tags for emphasis.
+
+
+Instance Image Selection Customisation
+-------------------------------------
+
+In the UI, there are several forms where the user needs to select an image (template/ISO) for an instance, such as deploying an instance, reinstalling an instance, creating a VNF appliance, etc. The image selection interface for these forms can be selected by the operator based on preference by specifying properties in the UI configuration file (config.json).
+
+The configuration property _imageSelectionInterface_ can be set to one of these values: modern or legacy. The default value is *modern*.
+
+When the *modern* interface is used, images will be categorized based on the guest operating system categories. Further customisation can be done using the configuration properties showUserCategoryForModernImageSelection and showAllCategoryForModernImageSelection to allow or disallow the display of additional categories.
+
+|ui-modern-image-selection.png|
+
+The *legacy* interface will display images based on templatefilter/isofilter, i.e., Featured, Community, My Templates/ISOs, and Shared.
+
+|ui-legacy-image-selection.png|
 
 
 Advanced UI Customisation
