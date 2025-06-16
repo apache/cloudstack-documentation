@@ -22,20 +22,18 @@ Introduction
 The Netris Plugin introduces Netris as a network service provider in CloudStack to be able to create and manage Virtual Private Clouds (VPCs) in CloudStack, being able to orchestrate the following network functionalities:
 
 - Network segmentation with Netris-VXLAN isolation method
-- Routing between “public” IP and network segments with an ACS ROUTED mode offering
-- SourceNAT, DNAT, 1:1 NAT between “public” IP and network segments with an ACS NATTED mode offering
+- Routing between "public" IP and network segments with an ACS ROUTED mode offering
+- SourceNAT, DNAT, 1:1 NAT between "public" IP and network segments with an ACS NATTED mode offering
 - Routing between VPC network segments (tiers in ACS nomenclature)
-- Access Lists (ACLs) between VPC tiers and "public" network (TCP, UDP, ICMP) both as global egress rules and “public” IP specific ingress rules.
+- Access Lists (ACLs) between VPC tiers and "public" network (TCP, UDP, ICMP) both as global egress rules and "public" IP specific ingress rules.
 - ACLs between VPC network tiers (TCP, UDP, ICMP)
-- External load balancing – between VPC network tiers and “public” IP
+- External load balancing – between VPC network tiers and "public" IP
 - Internal load balancing – between VPC network tiers
 - CloudStack Virtual Router services (DHCP, DNS, UserData, Password Injection, etc…)
 
 
 Supported Versions
 ------------------
-
-.. cssclass:: table-striped table-bordered table-hover
 
 +--------------+----------------------+----------------+
 | Hypervisor   | CloudStack Version   | Netris Version |
@@ -62,6 +60,8 @@ The CloudStack Zone creation wizard is extended:
 
 - A new isolation method is added for the Core zone, with Advanced networking and KVM hypervisor: NETRIS
 
+|netris-isolation-method|
+
 - When the NETRIS isolation method is selected, new steps are added to the zone creation wizard:
    - Netris Provider: in this step the administrator must provide:
       - Netris provider URL along with an internal name for reference
@@ -75,19 +75,25 @@ The CloudStack Zone creation wizard is extended:
 
       .. |Public IP Pool| image:: /_static/images/netris-sysvm-vr-ip-range.png
 
+      |Public IP Pool|
+
       - Netris IP Pool: Administrators must provide the Public IP range to be used by VPC operations: Source NAT, Load Balancing, Port Forwarding, Static NAT (this range is marked with the tag 'netris') 
 
       .. |Netris Public IP Pool| image:: /_static/images/netris-public-ip-pool.png
+
+      |Netris Public IP Pool|
 
 - When a new zone is being created,  CloudStack will check the Public IP ranges defined and will perform the following actions on Netris:
    - Create an IPAM allocation for the Netris IP Pool range linked to the default VPC.
    - If an existing IPAM allocation contains the Netris IP Pool provided, then the range must be created as a new IPAM subnet as a child entity of the existing allocation on Netris, with purpose: 'common'. The 'common' subnet purpose allows creating 'nat' and 'load-balancer' child subnets.
 
-..note::
-   Please note CloudStack expects the public IP ranges defined in the same order as the zone wizard creation displays them. The same order must be preserved in case of adding/editing/removing public IP ranges:   
-      - System VM Public Range
-      - VRs Public Range
-      - Netris Public Range
+.. note::
+   **Important:**
+   Please note CloudStack expects the public IP ranges defined in the same order as the zone wizard creation displays them. The same order must be preserved in case of adding/editing/removing public IP ranges:
+
+   - System VM Public Range
+   - VRs Public Range
+   - Netris Public Range
 
 The subsequent steps of zone creation remain unchanged and once the zone is successfully created and enabled, the system VMs come up with IPs from the Public IP Range reserved for System VMs (not the Netris public IP range).      
 
