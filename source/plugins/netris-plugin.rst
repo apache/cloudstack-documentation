@@ -58,11 +58,11 @@ Zone creation
 
 The CloudStack Zone creation wizard is extended:
 
+.. |netris-isolation-method| image:: /_static/images/netris-isolation-method.png
+
 - A new isolation method is added for the Core zone, with Advanced networking and KVM hypervisor: NETRIS
 
 - When the NETRIS isolation method is selected, new steps are added to the zone creation wizard:
-// TODO: Add image
-
    - Netris Provider: in this step the administrator must provide:
       - Netris provider URL along with an internal name for reference
       - Netris provider credentials to login into the Netris provider
@@ -70,11 +70,14 @@ The CloudStack Zone creation wizard is extended:
       - Admin Tenant Name: The name of the Admin Tenant on the Netris provider
       - Netris tag: A tag to be used on each Netris VNET creation
 
-// TODO: Add image
-
    - Public traffic and Netris IP Pool: The public traffic is split in two sections.
       - Public traffic: The first Public IP range defined on this section will be marked for system VMs (and a tag will be displayed accordingly, with the name 'systemvm'). The next Public IP ranges defined on this section will be available for VR Public IPs.
+
+      .. |Public IP Pool| image:: /_static/images/netris-sysvm-vr-ip-range.png
+
       - Netris IP Pool: Administrators must provide the Public IP range to be used by VPC operations: Source NAT, Load Balancing, Port Forwarding, Static NAT (this range is marked with the tag 'netris') 
+
+      .. |Netris Public IP Pool| image:: /_static/images/netris-public-ip-pool.png
 
 - When a new zone is being created,  CloudStack will check the Public IP ranges defined and will perform the following actions on Netris:
    - Create an IPAM allocation for the Netris IP Pool range linked to the default VPC.
