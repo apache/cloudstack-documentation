@@ -164,7 +164,7 @@ migrated to other Hosts. To remove a Host from the cloud:
 
 #. Use the UI option to remove the node.
 
-   Then you may power down the Host, re-use its IP address, re-install
+   Then you may power down the Host, reuse its IP address, re-install
    it, etc
 
 
@@ -472,7 +472,7 @@ To change the over-provisioning factors for an existing cluster:
 
 #. Fill in your desired over-provisioning multipliers in the fields CPU
    overcommit factor and RAM overcommit factor. The value which is
-   intially shown in these fields is the default value inherited from
+   initially shown in these fields is the default value inherited from
    the global configuration settings.
 
    .. note::
@@ -595,7 +595,7 @@ The former behaviour also is supported — VLAN is randomly allocated to a
 network from the VNET range of the physical network when the network
 turns to Implemented state. The VLAN is released back to the VNET pool
 when the network shuts down as a part of the Network Garbage Collection.
-The VLAN can be re-used either by the same network when it is
+The VLAN can be reused either by the same network when it is
 implemented again, or by any other network. On each subsequent
 implementation of a network, a new VLAN can be assigned.
 
@@ -676,7 +676,7 @@ management server(s).
 The ``outofbandmanagement.sync.poolsize`` is the maximum number of ipmitool
 background power state scanners that can run at a time. Based on the maximum
 number of hosts you've, you can increase/decrease the value depending on how much
-stress your management server host can endure. It will take atmost number of
+stress your management server host can endure. It will take at most number of
 total out-of-band-management enabled hosts in a round *
 ``outofbandmanagement.action.timeout`` / ``outofbandmanagement.sync.poolsize`` seconds
 to complete a background power-state sync scan in a single round.
@@ -703,7 +703,7 @@ power management actions but in the UI a warning is displayed.
 Security
 --------
 
-Starting 4.11, CloudStack has an inbuilt certicate authority (CA) framework and
+Starting 4.11, CloudStack has an inbuilt certificate authority (CA) framework and
 a default 'root' CA provider which acts as a self-signed CA. The CA framework
 participates in certificate issuance, renewal, revocation, and propagation of
 certificates during setup of a host. This framework is primary used to
@@ -924,7 +924,7 @@ There are four stages in the KVM rolling maintenance process:
 
 #. Pre-Flight stage: Pre-flight script (``PreFlight`` or ``PreFlight.sh`` or ``PreFlight.py``) runs on hosts before commencing the rolling maintenance. If pre-flight check scripts return an error from any host, then rolling maintenance will be cancelled with no actions taken, and an error returned. If there are no pre-flight scripts defined, then no checks will be done from the hosts.
 
-#. Pre-Maintenace stage: Pre-maintenance script ((``PreMaintenance`` or ``PreMaintenance.sh`` or ``PreMaintenance.py``)) runs before a specific host is put into maintenance. If no pre-maintenance script is defined, then no pre-maintenance actions will be taken, and the management server will move straight to putting the host in maintenance followed by requesting that the agent runs the maintenance script.
+#. Pre-Maintenance stage: Pre-maintenance script ((``PreMaintenance`` or ``PreMaintenance.sh`` or ``PreMaintenance.py``)) runs before a specific host is put into maintenance. If no pre-maintenance script is defined, then no pre-maintenance actions will be taken, and the management server will move straight to putting the host in maintenance followed by requesting that the agent runs the maintenance script.
 
 #. Maintenance stage: Maintenance script ((``Maintenance`` or ``Maintenance.sh`` or ``Maintenance.py``)) runs after a host has been put into maintenance. If no maintenance script is defined, or if the pre-flight or pre-maintenance scripts determine that no maintenance is required, then the host will not be put into maintenance, and the completion of the pre-maintenance scripts will signal the end of all maintenance tasks and the KVM agent will hand the host back to the management server. Once the maintenance scripts have signalled that it has completed, the host agent will signal to the management server that the maintenance tasks have completed, and therefore the host is ready to exit maintenance mode and any 'information' which was collected (such as processing times) will be returned to the management server.
 

@@ -16,14 +16,7 @@
 
 IPv6 Support in CloudStack
 ===========================
-
-CloudStack supports Internet Protocol version 6 (IPv6), the recent
-version of the Internet Protocol (IP) that defines routing the network
-traffic. IPv6 uses a 128-bit address that exponentially expands the
-current address space that is available to the users. IPv6 addresses
-consist of eight groups of four hexadecimal digits separated by colons,
-for example, 5001:0dt8:83a3:1012:1000:8s2e:0870:7454. CloudStack
-supports IPv6 for shared and isolated networks. It also supports IPv6 for VPC Network Tiers.
+CloudStack has limited IPv6 support. It supports IPv6 for shared and isolated networks. It also supports IPv6 for VPC Network Tiers.
 
 Shared network
 --------------
@@ -282,9 +275,9 @@ Alternatively, ``createGuestNetworkIpv6Prefix`` API can be used to add a new gue
 Adding Network or VPC Offering with IPv6 Support
 ################################################
 
-To create an IPv6 suported network or VPC offering, global configuration - ``ipv6.offering.enabled`` must be set to **true**.
+To create an IPv6 supported network or VPC offering, global configuration - ``ipv6.offering.enabled`` must be set to **true**.
 
-With 4.17.0, a new paramter - ``internetprotocol`` has been added to:
+With 4.17.0, a new parameter - ``internetprotocol`` has been added to:
  - the ``createNetworkOffering`` API which can be used to create a network offering with IPv6 support by using the value dualstack.
  - the ``createVPCOffering`` API which can be used to create a VPC offering with IPv6 support by using the value dualstack.
 Corresponding option has also been provided in the UI form creating network/VPC offering:
@@ -311,8 +304,8 @@ For using and managing firewall rules with an IPv6 supported isolated network, C
 
 -  ``listIpv6FirewallRules`` - To list existing IPv6 firewall rules for a network.
 -  ``createIpv6FirewallRule`` - To create a new IPv6 firewall rules for a network.
--  ``updateIpv6FirewallRule`` - To update an exisitng IPv6 firewall rules for a network.
--  ``deleteIpv6FirewallRule`` - To delete an exisitng IPv6 firewall rules for a network.
+-  ``updateIpv6FirewallRule`` - To update an existing IPv6 firewall rules for a network.
+-  ``deleteIpv6FirewallRule`` - To delete an existing IPv6 firewall rules for a network.
 
 These operations are also available using UI in the network details view of an IPv6 supported network.
 

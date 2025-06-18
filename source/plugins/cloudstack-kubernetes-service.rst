@@ -298,7 +298,7 @@ On successful creation, the new cluster will automatically be started and will s
 
 .. note::
    - A minimum of 2 cores of CPU and 2GB of RAM is needed for deployment. Therefore, the serviceofferingid parameter of createKubernetesCluster API must be provided with the ID of such compute offerings that conform to these requirements.
-   - Private docker registry related parameters of createKubenetesCluster API (dockerregistryusername, dockerregistryusername, dockerregistryurl, dockerregistryemail) provides experimental functionality. To use them during cluster deployment value for global setting, cloud.kubernetes.cluster.experimental.features.enabled, must be set to true by admin beforehand.
+   - Private docker registry related parameters of createKubernetesCluster API (dockerregistryusername, dockerregistryusername, dockerregistryurl, dockerregistryemail) provides experimental functionality. To use them during cluster deployment value for global setting, cloud.kubernetes.cluster.experimental.features.enabled, must be set to true by admin beforehand.
 
 Listing Kubernetes clusters
 ############################
@@ -338,7 +338,7 @@ scaleKubernetesCluster API can be used to scale a running (or stopped cluster) t
 - **serviceofferingid** (the ID of the new service offering for the Instances in the cluster)
 - **size** (number of Kubernetes cluster worker nodes)
 
-Only running Kubernetes clusters can be scaled in size. When the service fails to scale the cluster, the cluster will show in Alert state else if the scaling is successfull cluster will show up in Running state.
+Only running Kubernetes clusters can be scaled in size. When the service fails to scale the cluster, the cluster will show in Alert state else if the scaling is successful cluster will show up in Running state.
 
 .. note::
    - Only up scaling is supported while scaling clusters for service offering.

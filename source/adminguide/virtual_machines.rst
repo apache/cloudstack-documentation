@@ -205,6 +205,19 @@ following techniques:
    updateVirtualMachine API. After installing the tools and updating the
    Instance, stop and start the Instance.
 
+Instance Metdata
+~~~~~~~~~~~~~~~~
+
+CloudStack provides different means for controlling an instance's metadata.
+
+-  'extraconfig' parameter of 'deployVirtualMachine' or 'updateVirtualMachine' API methods
+   can be used for setting different metadata parameters for an instance.
+-  Zone-level configurations - 'vm.metadata.manufacturer' and 'vm.metadata.product' can be used
+   to set the manufacturer and product respectively in the instance metadata. However, a
+   custom value for these parameters may affect cloud-init functionality for the instance
+   when used with CloudStack datasource. One of the requirement for cloud-init functionality
+   to work with CloudStack datasource is that product value should contain 'CloudStack'.
+
 
 Accessing Instances
 -------------------
@@ -528,8 +541,8 @@ Dynamic CPU and RAM scaling can be used in the following cases:
    update them using the following procedure.
 
 
-Updating Existing Instances
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Enable Dynamic Scaling for Existing Instances
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you are upgrading from a previous version of CloudStack, and you want
 your existing Instances created with previous versions to have the dynamic
@@ -960,6 +973,153 @@ restoreVirtualMachine call. In this case, the Instance's root disk is
 destroyed and recreated, but from the same Template or ISO that was
 already in use by the Instance.
 
+Instance Lease
+--------------
+
+CloudStack offers the option to create Instances with a Lease. A Lease defines a set time period after which a selected action, 
+such as stopping or destroying the instance, will be automatically performed. This helps optimize cloud resource usage by automatically 
+freeing up resources that are no longer in use. 
+
+If a user needs an instance only for a limited time, this option can be very helpful. 
+When deploying an instance, users can either choose a Compute Offering that includes Instance Lease support or enable it specifically for that instance, 
+setting the number of days after which the instance should be stopped or destroyed once their task is complete.
+
+
+**Configuring Instance Lease feature**
+
+The cloud administrator can use global configuration variables to control the behavior of Instance Lease.
+To set these variables, API or CloudStack UI can be used:
+
+======================================= ========================
+Configuration                            Description
+======================================= ========================
+instance.lease.enabled                   Indicates whether to enable the Instance Lease feature, will be applicable only on instances created after lease is enabled. **Default: false**
+instance.lease.scheduler.interval        Background task interval in seconds that executes Lease expiry action on eligible expired instances. Default: 3600.
+instance.lease.eventscheduler.interval   Background task interval in seconds that executes Lease event executor for instances about to be expired in next N days. Default: 86400
+instance.lease.expiryevent.daysbefore    Denotes number of days (N) in advance expiry events are generated for instance about to expire. Default: 7 days
+======================================= ========================
+
+.. note:: it is recommended to configure the lowest possible value (in secs) for **instance.lease.scheduler.interval**, so that lease expiry action is taken as soon as lease is expired.
+
+
+**Lease Parameters**
+
+
+**leaseduration**: Lease duration is specified in days. This can take Natural numbers (>=1) and -1 to disable the lease. Max supported value is 36500 (100 years).
+
+User can disable Lease for instance in two ways:
+
+- Disable the Instance Lease during instance deployment by unchecking the 'Enable Lease' option when using a Compute Offering that supports it.
+- For existing instances with a lease already enabled, it can be removed by editing the instance and unchecking the 'Enable Lease' option.
+
+**leaseexpiryaction**: There are two expiry action supported:
+
+- STOP: The instance is stopped, and it will be out of lease. The user can restart the instance manually.
+- DESTROY: The instance is destroyed when the lease expires.
+
+.. note:: Expiry action is executed at most once on the instance, e.g. STOP action will bring instance in Stopped state on expiry and instance will be out of lease. User may choose to start it again.
+
+
+**Using Instance Lease**
+
+Lease information is associated to an Instance and following parameters are used to enable lease for it:
+
+#. leaseduration
+#. leaseexpiryaction
+
+Instance remains active for specified leaseduration (in days). Upon lease expiry, configured expiryaction is executed on the instance and 
+lease is removed from the instance for any further action.
+
+**Notes:**
+
+#. Lease Assignment: A lease can only be assigned to an instance during deployment.
+#. Lease Acquisition: Instances without a lease cannot acquire one by switching to a different Compute Offering or by editing the instance.
+#. Lease Inheritance: Instances inherit the lease from a Compute Offering with 'Instance Lease' feature enabled. This lease can be overridden or disabled in the “Advanced Settings”.
+#. Lease Persistence: A lease is always tied to the instance. Modifications to the Compute Offering do not affect the instance's lease.
+#. Non-Lease Compute Offering: Instances can have a lease by enabling it in the "Advanced Settings" for non-lease based Compute Offering too.
+#. Lease Duration Management: The lease duration can be extended or reduced for instances before expiry. However, once the lease is disabled, it cannot be re-enabled for that instance.
+#. Lease Expiry: Once the lease expires and the associated action is completed, the lease is annulled and cannot be reattached or extended.
+#. Feature Disablement: If the lease feature is disabled, the lease associated with instances is canceled. Re-enabling the feature will not automatically reapply the lease to previously grandfathered instances.
+#. Delete Protection: The DESTROY lease expiry action is skipped for instances with delete protection enabled.
+
+**Deployment of Instance with lease**
+
+There are 2 ways to deploy instance with lease from UI:
+
+1. Use Compute Offering which has 'Instance Lease' feature enabled.
+
+.. image:: /_static/images/deploy_instance_lease_offering.png
+   :width: 400px
+   :align: center
+   :alt: Deploy Instance with lease compute offering dialog box
+
+2. Enable lease under Advance settings during instance Deployment
+
+.. image:: /_static/images/deploy_instance_advanced_lease.png
+   :width: 400px
+   :align: center
+   :alt: Deploy Instance with lease using advance settings
+
+
+**Using API**
+
+Pass lease parameters in the command to enable lease during instance deployment:
+
+.. code:: bash
+
+   cmk deploy virtualmachine name=..... leaseduration=... leaseexpiryaction=...
+
+- Use Compute Offering with lease
+
+.. code:: bash
+
+   cmk deploy virtualmachine name=..... serviceofferingid=lease-compute-offering
+
+
+**Editing Instance Lease**
+
+The lease duration for an instance can be extended, reduced, or disabled for instances that already have an active lease.
+However, it is not possible to enable the lease on an instance after it has already been deployed.
+
+From UI:
+
+.. image:: /_static/images/edit_instance_lease.png
+   :width: 400px
+   :align: center
+   :alt: Edit Instance Lease dialog
+
+
+Using API:
+
+.. code:: bash
+
+   cmk update virtualmachine id=fa970d19-8340-455c-a9fb-569205954fdc leaseduration=20 leaseexpiryaction=DESTROY
+
+To disable lease using API:
+
+.. code:: bash
+
+   cmk update virtualmachine id=fa970d19-8340-455c-a9fb-569205954fdc leaseduration=-1
+
+.. note:: DESTROY action will ignore instance if deleteprotection is enabled for it.
+
+.. note:: When the feature is disabled, the lease associated with instances is cancelled. Re-enabling the feature will not automatically reapply the lease to previously grandfathered instances.
+
+.. note:: Lease duration is considered as total lease for instance.
+
+**Instance Lease Events**
+
+Lease feature generates various events to help in auditing and monitoring:
+
+=================== ========================
+Event Type           Description
+=================== ========================
+VM.LEASE.EXPIRED     Event is generated at lease expiry
+VM.LEASE.DISABLED    Denotes if lease is disabled by user/admin
+VM.LEASE.CANCELLED   When lease is cancelled (feature gets disabled)
+VM.LEASE.EXPIRING    Expiry intimation event for instance
+=================== ========================
+
 
 Advanced Instance Settings
 --------------------------
@@ -1000,6 +1160,40 @@ An example list of settings as well as their possible values are shown on the im
 |vm-settings-values-dropdown-KVM-list.png|
 (KVM disk controllers)
 
+|vm-settings-kvm-guest-cpu-model.png|
+(KVM guest CPU model, available for root admin since 4.20.1.0)
+
+Instance Settings for Virtual Trusted Platform Module (vTPM)
+-----------------------------
+
+Trusted Platform Module (TPM) is a standard for a secure cryptoprocessor, which
+can securely store artifacts used to authenticate the platform, including passwords,
+certificates, or encryption keys. TPM is required by recent Windows releases.
+
+Virtual Trusted Platform Module (vTPM) is the software-based representation of physical TPM.
+CloudStack supports vTPM for instances running on KVM and VMware since 4.20.1.0 .
+
+|vm-settings-uefi-secure.png|
+UEFI setting
+
+- On Vmware, the boot type must be set to UEFI. Boot mode can be SECURE (recommended) or LEGACY.
+- On KVM, it is recommended to set boot type to UEFI, and boot mode to SECURE.
+- UEFI is required for some Windows versions.
+
+|vm-settings-virtual-tpm-model-kvm.png|
+TPM model for KVM. There are two options:
+
+- tpm-tis, TIS means TPM Interface Specification; 
+- tpm-crb, CRB means Command-Response Buffer.
+
+|vm-settings-virtual-tpm-version-kvm.png|
+TPM version for KVM. There are two options:
+
+- 2.0. This is the default TPM version. It is used when version is not specified or invalid.
+- 1.2. This is not supported with CRB model.
+
+|vm-settings-virtual-tpm-enabled-vmware.png|
+Enable or disable vTPM for VMware.
 
 Instance Snapshots
 ==================
@@ -1035,7 +1229,7 @@ like many other resources in CloudStack.
 KVM supports Instance Snapshots when using NFS shared storage. If raw block storage
 is used (i.e. Ceph), then Instance Snapshots are not possible, since there is no possibility
 to write RAM memory content anywhere. In such cases you can use as an alternative 
-`Storage-based VM Snapshots on KVM`_
+:ref:`Storage-based-Instance-Snapshots-on-KVM`.
 
 
 If you need more information about Instance Snapshots on VMware, check out the
@@ -1044,7 +1238,7 @@ VMware documentation and the VMware Knowledge Base, especially
 <http://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&externalId=1015180>`_.
 
 
-.. _`Storage-based Instance Snapshots on KVM`:
+.. _Storage-based-Instance-Snapshots-on-KVM:
 
 Storage-based Instance Snapshots on KVM
 ---------------------------------------
@@ -1251,7 +1445,25 @@ Create an Instance Template that supports SSH Keys.
 Creating the SSH Keypair
 ------------------------
 
-You must make a call to the createSSHKeyPair api method. You can either
+#. Log in to the CloudStack UI.
+
+#. In the left navigation bar, click Compute --> SSH Key Pairs.
+
+#. Click Create a SSH Key Pair.
+
+#. In the dialog, make the following choices:
+
+   -  **Name**: Any desired name for the SSH Key Pair.
+
+   -  **Public key**: (Optional) Public key material of the SSH Key Pair.
+
+      .. note:: If this field is filled in, CloudStack will register the public key.  If this field is left blank, CloudStack will create a new SSH key pair.
+
+   -  **Domain**: (Optional) domain for the SSH Key Pair.
+
+.. note:: If Cloudstack generates a New SSH Key Pair using a public key, it will not save the private key.  When shown, be sure to save a copy of it.
+
+You can also use the ``createSSHKeyPair`` api method to create an SSH Keypair. You can either
 use the CloudStack Python API library or the curl commands to make the
 call to the cloudstack api.
 
@@ -1350,11 +1562,21 @@ The -i parameter tells the ssh client to use a ssh key found at
 Resetting SSH Keys
 ------------------
 
-With the API command resetSSHKeyForVirtualMachine, a user can set or
-reset the SSH keypair assigned to an Instance. A lost or compromised
-SSH keypair can be changed, and the user can access the Instance
-by using the new keypair. Just create or register a new keypair, then
-call resetSSHKeyForVirtualMachine.
+A lost or compromised SSH keypair can be changed, and the user can access the Instance by using the new keypair.
+
+#. Log in to the CloudStack UI.
+
+#. In the left navigation bar, click Compute --> Instances.
+
+#. Choose the Instance.
+
+#. Click on Reset SSH Key Pair button the Instance.
+
+   .. note:: The Instance must be in a Stopped state.
+
+#. Select the SSH Key Pair(s) to add to instance
+
+.. note:: This can also be performed via API: ``resetSSHKeyForVirtualMachine``: Resets the assigned SSH keypair for an Instance.
 
 .. include:: virtual_machines/user-data.rst
 
@@ -1421,7 +1643,7 @@ Before proceeding, ensure that you have these prerequisites:
 - The vGPU-enabled XenServer 6.2 and later versions.
   For more information, see `Citrix 3D Graphics Pack <https://www.citrix.com/go/private/vgpu.html>`_.
 
-- GPU/vPGU functionality is supported for following HVM guest operating systems:
+- GPU/vGPU functionality is supported for following HVM guest operating systems:
   For more information, see `Citrix 3D Graphics Pack <https://www.citrix.com/go/private/vgpu.html>`_.
 
 - Windows 7 (x86 and x64)
@@ -1612,6 +1834,16 @@ Instance disk statistics are shown in the Metrics tab in an individual volume vi
    :alt: List of possible VMware NIC models
 .. |vm-settings-values-dropdown-KVM-list.png| image:: /_static/images/vm-settings-values-dropdown-KVM-list.png
    :alt: List of possible KVM disk controllers
+.. |vm-settings-kvm-guest-cpu-model.png| image:: /_static/images/vm-settings-kvm-guest-cpu-model.png
+   :alt: List of possible KVM guest CPU models
+.. |vm-settings-uefi-secure.png| image:: /_static/images/vm-settings-uefi-secure.png
+   :alt: Set boot type to UEFI and mode to SECURE
+.. |vm-settings-virtual-tpm-model-kvm.png| image:: /_static/images/vm-settings-virtual-tpm-model-kvm.png
+   :alt: List of TPM models for KVM
+.. |vm-settings-virtual-tpm-version-kvm.png| image:: /_static/images/vm-settings-virtual-tpm-version-kvm.png
+   :alt: List of TPM versions for KVM
+.. |vm-settings-virtual-tpm-enabled-vmware.png| image:: /_static/images/vm-settings-virtual-tpm-enabled-vmware.png
+   :alt: Enable vTPM or not for VMware
 .. |vm-metrics-ui.png| image:: /_static/images/vm-metrics-ui.png
    :alt: VM metrics UI
 .. |vm-disk-metrics-ui.png| image:: /_static/images/vm-disk-metrics-ui.png

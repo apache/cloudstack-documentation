@@ -212,7 +212,7 @@ To create a new compute offering:
       it enables the admin to set some boundaries.
 
    -  **# of CPU cores**: The number of cores which should be allocated
-      to a system VM with this offering. If 'Custom constrained' is checked, the admin will
+      to the VM with this offering. If 'Custom constrained' is checked, the admin will
       be asked to enter the minimum and maximum number of CPUs that a user
       can request. If 'Custom unconstrained' is checked, this field does not appear
       as the user will be prompted to enter a value when creating their guest Instance.
@@ -226,7 +226,7 @@ To create a new compute offering:
       will be prompted to enter a value when creating their guest Instance.
 
    -  **Memory (in MB)**: The amount of memory in megabytes that the
-      system VM should be allocated. For example, “2048” would provide
+      VM should be allocated. For example, “2048” would provide
       a 2 GB RAM allocation. If 'Custom constrained' is selected, the admin will
       be asked to enter the minimum and maximum amount of RAM that a user
       can request. If 'Custom unconstrained' is selected, this field does
@@ -238,7 +238,11 @@ To create a new compute offering:
    -  **Network Rate**: Allowed data transfer rate in MB per second.
 
    -  **Offer HA**: If yes, the administrator can choose to have the
-      system VM be monitored and as highly available as possible.
+      VM be monitored and as highly available as possible.
+
+      .. note::
+         The HA is offered when the VM High Availability manager is enabled in the zone using the setting 'vm.ha.enabled', by default this setting is enabled.
+         When disabled, alerts are sent during HA attempts when 'vm.ha.alerts.enabled' setting is enabled.
 
    -  **Dynamic Scaling Enabled**: If yes, Instance can be dynamically scalable of cpu or memory
 
@@ -336,7 +340,7 @@ To create a new compute offering:
 
          -  **Storage type**: The type of disk that should be allocated. Local
             allocates from storage attached directly to the host where the
-            system VM is running. Shared allocates from storage accessible via
+            VM is running. Shared allocates from storage accessible via
             NFS.
 
          -  **Provisioning type**: The type of disk that should be allocated.
@@ -368,7 +372,7 @@ To create a new compute offering:
          -  **Custom IOPS** [1]_: If checked, the user can set their own IOPS. If not
             checked, the root administrator can define values. If the root
             admin does not set values when using storage QoS, default values
-            are used (the defauls can be overridden if the proper parameters
+            are used (the defaults can be overridden if the proper parameters
             are passed into CloudStack when creating the primary storage in
             question).
 
@@ -389,7 +393,7 @@ To create a new compute offering:
             disk that represents the root disk. This does not apply for KVM.
 
          -  **Storage Tags**: The tags that should be associated with the
-            primary storage used by the system VM.
+            primary storage used by the VM.
       
       When the flag is disabled
 
@@ -401,12 +405,40 @@ To create a new compute offering:
          -  **Disk Offering Strictness**: This flag defines the strictness of the disk offering association 
             with the compute offering. When set to true, overriding of disk offering is not allowed on deploy instance
             and change disk offering is not allowed for the ROOT disk
+      
+   -  **Enable Lease**: When this flag is enabled, Compute Offering is created with 'Instance Lease' enabled. 
+      In CloudStack, a lease for an instance sets a specific time duration (in days) after which a chosen lease action, such as stopping or destroying the instance, will take place. 
+      These lease settings are defined in the Compute Offering and are automatically applied to any Instance created using it.
+      
+      .. note:: The global configuration ``instance.lease.enabled`` should be configured as true to create compute offering with lease.
+      
+      .. note:: Lease duration or expiryaction can't be updated for compute offering.
+
+      ``instance.lease.enabled``: Indicates whether Instance Lease feature is enabled or not. Default is **false**
+         For more information, see `“Setting Global Configuration Parameters”
+         <../installguide/configuration.html#setting-global-configuration-parameters>`_.
+
+      When the flag is enabled
+
+         -  **Lease Duration (in days)**: Sets the lease duration. An instance created using this compute offering will inherit the lease duration by default. Supported values are in range 1 <= N <= 36500.
+
+         -  **Lease expiry action**: Lease expiry action: Denotes lease expiry action, which gets executed upon lease expiry for instances created using this compute offering.
+         Supported values for lease expiry action are as follows:
+            
+            - STOP
+            - DESTROY
+      
+   .. image:: /_static/images/compute_offering_dailog_with_lease.png
+      :width: 400px
+      :align: center
+      :alt: Compute offering dialog box
+
 
 #. Click Add.
 
 
 
-.. [1] These options are dependant on the capabilities of the hypervisor or the shared storage system which the instances are on.
+.. [1] These options are dependent on the capabilities of the hypervisor or the shared storage system which the instances are on.
    If the hypervisor or underlying storage don't support a particular capability in the offering, the setting will have no effect.
 
 
@@ -466,7 +498,7 @@ To create a new disk offering:
    -  **Custom IOPS** [2]_: If checked, the user can set their own IOPS. If not
       checked, the root administrator can define values. If the root
       admin does not set values when using storage QoS, default values
-      are used (the defauls can be overridden if the proper parameters
+      are used (the defaults can be overridden if the proper parameters
       are passed into CloudStack when creating the primary storage in
       question).
 
@@ -514,7 +546,7 @@ To create a new disk offering:
 
 #. Click Add.
 
-.. [2] These options are dependant on the capabilities of the hypervisor or the shared storage system which the instances are on.
+.. [2] These options are dependent on the capabilities of the hypervisor or the shared storage system which the instances are on.
    If the hypervisor or underlying storage don't support a particular capability in the offering, the setting will have no effect.
 
 
@@ -599,6 +631,10 @@ To create a system service offering:
    -  **Offer HA**: If yes, the administrator can choose to have the system
       VM be monitored and as highly available as possible.
 
+      .. note::
+         The HA is offered when the VM High Availability manager is enabled in the zone using the setting 'vm.ha.enabled', by default this setting is enabled.
+         When disabled, alerts are sent during HA attempts when 'vm.ha.alerts.enabled' setting is enabled.
+
    -  **Storage Tags**: The tags that should be associated with the primary
       storage used by the system VM.
 
@@ -618,13 +654,11 @@ To create a system service offering:
 Network Throttling
 ------------------
 
-Network throttling is the process of controlling the network access and
-bandwidth usage based on certain rules. CloudStack controls this
+Network throttling is the process of controlling the network bandwidth. CloudStack controls this
 behaviour of the guest networks in the cloud by using the network rate
 parameter. This parameter is defined as the default data transfer rate
 in Mbps (Megabits Per Second) allowed in a guest network. It defines the
-upper limits for network utilization. If the current utilization is
-below the allowed upper limits, access is granted, else revoked.
+upper limits for network bandwidth.
 
 You can throttle the network bandwidth either to control the usage above
 a certain limit for some accounts, or to control network congestion in a
@@ -653,22 +687,22 @@ on different types of networks in CloudStack.
 
 .. cssclass:: table-striped table-bordered table-hover
 
-=========================================== ===============================
-Networks                                    Network Rate Is Taken from
-=========================================== ===============================
-Guest network of Virtual Router             Guest Network Offering
-Public network of Virtual Router            Guest Network Offering
-Storage network of Secondary Storage VM     System Network Offering
-Management network of Secondary Storage VM  System Network Offering
-Storage network of Console Proxy VM         System Network Offering
-Management network of Console Proxy VM      System Network Offering
-Storage network of Virtual Router           System Network Offering
-Management network of Virtual Router        System Network Offering
-Public network of Secondary Storage instance      System Network Offering
-Public network of Console Proxy instance          System Network Offering
-Default network of a guest instance               Compute Offering
-Additional networks of a guest instance           Corresponding Network Offerings
-=========================================== ===============================
+============================================ ===============================
+Networks                                     Network Rate Is Taken from
+============================================ ===============================
+Guest network of Virtual Router              Guest Network Offering
+Public network of Virtual Router             Guest Network Offering
+Storage network of Secondary Storage VM      System Network Offering
+Management network of Secondary Storage VM   System Network Offering
+Storage network of Console Proxy VM          System Network Offering
+Management network of Console Proxy VM       System Network Offering
+Storage network of Virtual Router            System Network Offering
+Management network of Virtual Router         System Network Offering
+Public network of Secondary Storage instance System Network Offering
+Public network of Console Proxy instance     System Network Offering
+Default network of a guest instance          Compute Offering
+Additional networks of a guest instance      Corresponding Network Offerings
+============================================ ===============================
 
 A guest instance must have a default network, and can also have many
 additional networks. Depending on various parameters, such as the host

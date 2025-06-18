@@ -668,7 +668,7 @@ offering as follows:
 
 #. Log in to the CloudStack UI as a user or admin.
 
-#. Naviagte to Service Offerings and choose Network OfferingPublic IP Addresses.
+#. Navigate to Service Offerings and choose Network OfferingPublic IP Addresses.
 
 #. Click Add Network Offering.
 

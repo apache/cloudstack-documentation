@@ -21,7 +21,7 @@ This allows users to consume event notifications without any external services
 such as an event streaming platforms.
 
 Webhooks can be managed using both API and UI. CloudStack provides following
-APIs for webhhoks:
+APIs for webhooks:
 
    .. cssclass:: table-striped table-bordered table-hover
 
@@ -37,7 +37,7 @@ APIs for webhhoks:
    executeWebhookDelivery Executes a Webhook delivery
    ====================== ===========================
 
-In the UI, webhooks can be managed under *Tools > Webhhooks* menu.
+In the UI, webhooks can be managed under *Tools > Webhooks* menu.
 
    |webhooks.png|
 
@@ -80,8 +80,8 @@ To create a webhook:
    -  **Payload URL**. The payload URL of the Webhook. All events for the
       webhook will posted on this URL.
 
-   -  **SSL Verification**. An otional parameter to specify whether the HTTP
-      POST requests for event notications must be sent with strict SSL
+   -  **SSL Verification**. An optional parameter to specify whether the HTTP
+      POST requests for event notifications must be sent with strict SSL
       verification request when a HTTPS payload URL is used.
 
    -  **Secret Key**. An option secret key parameter which can be used to sign
@@ -123,7 +123,7 @@ configurations:
 
 
 CloudStack allows retrieving recent deliveries for a webhook with details such
-as event, headers, payload, respose, success, duration, etc.
+as event, headers, payload, response, success, duration, etc.
 In the UI, these can be accessed under Recent deliveries tab in the Webhook
 detail view.
 The user can redeliver an existing delivery. To check the working of the
@@ -155,7 +155,7 @@ as the payload. The following custom headers are sent with the request:
    -  **X-CS-Event**. Event for for which the webhook delivery is made.
 
    -  **User-Agent**. In the format - *CS-Hookshot/<ACCOUNT_ID>*. Here
-      ACCOUNT_ID is the ID of the account which trigerred the event.
+      ACCOUNT_ID is the ID of the account which triggered the event.
 
    -  **X-CS-Signature**. HMAC SHA256 signature created using the webhook
       secret key and the delivery payload. It is sent only when secret key
@@ -171,7 +171,7 @@ Working with HTTPS webhook payload URL with self-signed certificate
 
       openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
 
-#. Copy the genereated cert.pem to the management server(s).
+#. Copy the generated cert.pem to the management server(s).
 
 #. Import the certificate for JDK on the management server(s)
 

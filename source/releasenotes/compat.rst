@@ -36,7 +36,7 @@ CloudStack Management Server.
 Software Requirements
 ~~~~~~~~~~~~~~~~~~~~~
 
--  Java JRE 11 or Java JRE 17
+-  Java JRE 17
 -  MySQL 8.0 (or equivalent compatible DBMS)
 
 Supported Hypervisor Versions
@@ -53,7 +53,9 @@ and VMware with vSphere.
 -  openSUSE Leap 15 with KVM
 -  SUSE Linux Enterprise Server 15 with KVM
 -  XCP-ng 8.2.0
+-  XCP-ng 8.3.0
 -  Citrix Hypervisor/XenServer version 8.2 (not tested, but expected to work. For 8.2 please check the note below) with latest hotfixes
+-  Citrix Hypervisor/XenServer version 8.4
 -  Debian 12 with KVM (not tested, but expected to work same as Ubuntu)
 
    .. note:: It is now required to enable HA on the XenServer pool in order to recover from a pool-master failure. Please refer to the `XenServer documentation <https://docs.citrix.com/en-us/xencenter/7-1/pools-ha-enable.html>`_.
@@ -62,10 +64,9 @@ and VMware with vSphere.
 
 -  VMware versions 7.0 and 8.0.0
 
-   .. note:: The following VMware minor versions are supported and tested: 7.0, 7.0.1.0, 7.0.2.0, 7.0.3.0, 8.0, 8.0a (8.0.0.1), 8.0b (8.0.0.2), 8.0c (8.0.0.3).
+   .. note:: The following VMware minor versions are supported and tested: 7.0, 7.0.1.0, 7.0.2.0, 7.0.3.0, 8.0, 8.0a (8.0.0.1), 8.0b (8.0.0.2), 8.0c (8.0.0.3), 8.0 U1 (8.0.1.0), 8.0 U2 (8.0.2.0), 8.0 U3 (8.0.3.0).
     For any minor versions without hypervisor mappings, all Instances have guest OS identifier "otherGuest64" (x86-64 architecture) or "otherGuest" (other architectures).
 
-   .. note:: There are some known issues with 8.0 U1 (https://github.com/apache/cloudstack/issues/7572). VMware 8.0 U1 (8.0.1.0) is not supported yet.
 
 -  LXC Host Containers on RHEL 8, 9 (not tested to work fine for last many CloudStack releases)
 -  Windows Server 2012 R2 with Hyper-V Role enabled (not tested to work fine for last many CloudStack releases)

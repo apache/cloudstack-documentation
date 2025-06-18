@@ -490,11 +490,11 @@ and should already be installed.
 
 #. Even though we are using a single host, the following steps are recommended
    to get faimilar with the general requirements.
-   In order to have live migration working libvirt has to listen for unsecured 
+   In order to have live migration working libvirt has to listen for insecured
    TCP connections. We also need to turn off libvirts attempt to use Multicast 
    DNS advertising. Both of these settings are in /etc/libvirt/libvirtd.conf
 
-   Set the following paramaters:
+   Set the following parameters:
    
    ::
    

@@ -481,60 +481,60 @@ to be applied through the API call described above.
 
 
 In addition to those shown in the example script above, the following
-configuration items can be configured (the default values are for
-openldap)
+configuration items can be configured on a Global or on a per Domain level (the default values are for
+OpenLDAP) 
 
--  ``ldap.basedn``:	Sets the basedn for LDAP. Ex: **OU=APAC,DC=company,DC=com**
+.. list-table:: LDAP Settings
+   :header-rows: 1
 
--  ``ldap.bind.principal``, ``ldap.bind.password``: DN and password for a User
-   who can list all the Users in the above basedn. Ex:
-   **CN=Administrator, OU=APAC, DC=company, DC=com**
+   * - Setting
+     - OpenLDAP
+     - Active Directory
+     - Description
+   * - ``ldap.basedn``
+     - `Ex: OU=APAC, DC=company, DC=com`
+     - `Ex: DC=company, DC=com`
+     - Sets the basedn for LDAP.
+   * - ``ldap.search.group.principle``
+     - `Ex: CN=ACSGroup, DC=company, DC=com`
+     - `Ex: CN=ACSGroup, CN=Users, DC=company, DC=com`
+     - (optional) if set only Users from this group are listed.
+   * - ``ldap.bind.principal``
+     - `Ex: CN=ACSServiceAccount, OU=APAC, DC=company, DC=com`
+     - `Ex: CN=ACSServiceAccount, CN=Users, DC=company, DC=com`
+     - Service account that can list all the Users in the above basedn. Avoid using privileged account such as Administrator.
+   * - ``ldap.bind.password``
+     - `******************`
+     - `******************`
+     - Password for a DN User. Is entered in plain text but gets stored encrypted.
+   * - ``ldap.user.object``
+     - `interorgperson`
+     - `user`
+     - Object type of Users within LDAP.
+   * - ``ldap.email.attribute``
+     - `mail`
+     - `mail`
+     - Email attribute within ldap for a User.
+   * - ``ldap.firstname.attribute``
+     - `givenname`
+     - `givenname`
+     - firstname attribute within ldap for a User.
+   * - ``ldap.lastname.attribute``
+     - `sn`
+     - `sn`
+     - lastname attribute within ldap for a User.
+   * - ``ldap.group.object``
+     - `groupOfUniqueNames`
+     - `groupOfUniqueNames`
+     - Object type of groups within LDAP.
+   * - ``ldap.group.user.uniquemember``
+     - `uniquemember`
+     - `uniquemember`
+     - Attribute for uniquemembers within a group.
 
--  ``ldap.user.object``: object type of Users within LDAP. Defaults value is
-   **user** for AD and **interorgperson** for openldap.
+   .. note:: ``ldap.search.group.principle`` is required when using ``linkaccounttoldap``.
 
--  ``ldap.email.attribute``: email attribute within ldap for a User. Default
-   value for AD and openldap is **mail**.
-
--  ``ldap.firstname.attribute``: firstname attribute within ldap for a User.
-   Default value for AD and openldap is **givenname**.
-
--  ``ldap.lastname.attribute``: lastname attribute within ldap for a User.
-   Default value for AD and openldap is **sn**.
-
--  ``ldap.username.attribute``: username attribute for a User within LDAP.
-   Default value is **SAMAccountName** for AD and **uid** for openldap.
-
-
-Restricting LDAP Users to a group:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
--  ``ldap.search.group.principle``: this is optional and if set only Users from
-   this group are listed.
-
-
-LDAP SSL:
-~~~~~~~~~
-
-If the LDAP server requires SSL, you need to enable the below configurations.
-Before enabling SSL for LDAP, you need to get the certificate which the LDAP server is using and add it to a trusted keystore.
-You will need to know the path to the keystore and the password.
-
--  ``ldap.truststore`` : truststore path
--  ``ldap.truststore.password`` : truststore password
-
-
-LDAP groups:
-~~~~~~~~~~~~
-
--  ``ldap.group.object``: object type of groups within LDAP. Default value is
-   group for AD and **groupOfUniqueNames** for openldap.
-
--  ``ldap.group.user.uniquemember``: attribute for uniquemembers within a group.
-   Default value is **member** for AD and **uniquemember** for openldap.
-
-Once configured, on Add Account page, you will see an "Add LDAP Account" button
-which opens a dialog and the selected Users can be imported.
+Once configured, on Add Account page, you will see an "Add LDAP Account" button which opens a dialog and the selected Users can be imported.
 
 .. figure:: /_static/images/CloudStack-ldap-screen1.png
    :align:   center
@@ -547,6 +547,22 @@ You could also use api commands:
 
 Once LDAP is enabled, the Users will not be allowed to changed password
 directly in CloudStack.
+
+
+
+
+   .. note:: this is required when using ``linkaccounttoldap``.
+
+LDAP SSL:
+~~~~~~~~~
+
+If the LDAP server requires SSL, you need to enable the below configurations.
+Before enabling SSL for LDAP, you need to get the certificate which the LDAP server is using and add it to a trusted keystore.
+You will need to know the path to the keystore and the password.
+
+-  ``ldap.truststore`` : truststore path
+-  ``ldap.truststore.password`` : truststore password
+
 
 .. |button to dedicate a zone, pod,cluster, or host| image:: /_static/images/dedicate-resource-button.png
 
@@ -676,15 +692,10 @@ For GitHub, please follow the instructions mentioned here `"Setting up OAuth 2.0
 In any OAuth 2.0 configuration admin has to use the redirect URI "http://<management server IP>:<port>/#/verifyOauth"
 
 .. Note:: [Google OAuth 2.0 redirect URI] :
-          Google OAuth 2.0 configuration wont accept '#' in the URI, please use "http://<management server Domain>:<port>/?verifyOauth"
+          Google OAuth 2.0 configuration won't accept '#' in the URI, please use "http://<management server Domain>:<port>/?verifyOauth"
           Google does not accept direct IP address in the redirect URI, it must be a domain. As a workaround one can add the management
           server IP to host table in the local system and assign a domain, something like "management.cloud". In that redirect URI looks like
           "http://management.cloud:8080/?verifyOauth"
-
-.. image:: /_static/images/oauth-provider-registration.png
-   :width: 400px
-   :align: center
-   :alt: OAuth provider registration
 
 Following are the details needs to be provided to register the OAuth provider, this is to call the API "registerOauthProvider"
 
@@ -697,6 +708,11 @@ Following are the details needs to be provided to register the OAuth provider, t
    -  **Redirect URI**: Redirect URI pre-registered in the specific OAuth provider
 
    -  **Secret Key**: Secret Key pre-registered in the specific OAuth provider
+
+.. image:: /_static/images/oauth-provider-registration.png
+   :width: 400px
+   :align: center
+   :alt: OAuth provider registration
 
 Cloudmonkey API call looks like
 
@@ -884,3 +900,76 @@ password for a user:
 
    .. figure:: /_static/images/reset-password.png
       :align:   center
+
+Using API Key and Secret Key based Authentication
+-------------------------------------------------
+Users can generate API key and Secret key to directly access CloudStack APIs.
+This authentication method is used for programmatically calling CloudStack APIs and thus helps in automation.
+The API key uniquely identifies the Account, while the Secret key is used to generate a secure signature.
+When making an API call, the API key and signature are included along with the command and other parameters,
+and sent to the CloudStack API endpoint. For detailed information, refer to the CloudStack's Programmer Guide.
+
+Disabling Api Key and Secret Key based Access
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Root Administrators may choose to Disable Api key based access for certain Users, Accounts or Domains.
+Or the Administrator may choose to Disable Api Key based access globally and allow only for certain users.
+This could be particularly useful in cases where external authorization mechanisms like LDAP, SAML or OAuth2 are used,
+as then Api key based authorization is the only means for automation.
+This gives control to the Admin over who is allowed to run automation.
+
+Api key based access is enabled by default but it can be disabled (or enabled) at different granularities:
+
+1. Users
+
+Setting for a User can be changed through the Api Key Access field in the Edit User form, visible only to the Root Administrator.
+Three values are possible: Disable, Enable and Inherit. Inherit means that the User will inherit whatever value is set for the Account.
+
+    .. figure:: /_static/images/edit-user-api-key-access.png
+       :align:  center
+
+Admins can also search for Users having the required Api key access value using the User list view search filter.
+
+    .. figure:: /_static/images/filter-user-api-key-access.png
+       :align:  center
+
+2. Accounts
+
+Similar to Users, Api Key Access field is present in the Edit Account Form and the Account list view search filter, only for the Root Administrator. 
+If the value is set to Inherit, it means that Account will inherit whatever value is set for the Domain.
+
+3. Domains
+
+Api Key Access at Domain level is controlled by the Domain level setting "api.key.access". If the Domain level
+configuration is not set, then similar to other configurations it will consult the global value.
+
+4. Global
+
+The global value of the configuration setting "api.key.access" is set to 'True' by default. So Api Key Access at
+all levels is enabled by default. If the global value is changed to 'False' without setting any of the lower levels,
+then Api Key Access will be disabled for all Users.
+
+Order of Precedence
+^^^^^^^^^^^^^^^^^^^
+The local value always takes precedence over the global value. So if Api key access is disabled for a User but
+enabled for an Account, the User authorisation will still fail. Only if the User's Api key access is set to
+'Inherit', the Account's Api Key Access value is considered.
+Similarly if Account's Api Key Access is set to 'Inherit', only then the Domain level setting is considered,
+And only if the Domain level configuration is not set, the Global configuration is considered.
+
+Examples
+^^^^^^^^
+
+#. Disallow Api key access for all Accounts and Users in a Domain.
+
+    #. Leave all User and Account level Api Key Access values to the default 'Inherit'.
+    #. Set the Domain level setting "api.key.access" to False only for the required domain.
+
+#. Disallow Api key access for some Users, but allowed globally.
+
+    #. Set the User level permission to ‘Disabled’ only for the required Users.
+    #. All upper level permissions should either be Inherit or Enabled.
+
+#. Allow Api key access to some Users, but disallowed globally.
+
+    #. Set User level permission to ‘Enabled’ only for the required Users.
+    #. All upper level permissions should either be Inherit or Disabled.

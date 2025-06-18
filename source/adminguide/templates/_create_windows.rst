@@ -33,12 +33,17 @@ An overview of the procedure is as follows:
 #. Upload your Windows ISO.
 
    For more information, see `“Adding an
-   ISO” <virtual_machines.html#adding-an-iso>`_.
+   ISO” <../templates.html#adding-an-iso>`_.
 
 #. Create an instance with this ISO.
 
    For more information, see `“Creating
-   instances” <virtual_machines.html#creating-instances>`_.
+   instances” <../virtual_machines.html#creating-instances>`_.
+
+#. Add Virtual TPM device to the instance.
+
+   For more information, see `“Instance Settings for Virtual Trusted Platform Module (vTPM)
+   ” <../virtual_machines.html#instance-settings-for-virtual-trusted-platform-module-vtpm>`_.
 
 #. Follow the steps in Sysprep for Windows Server 2008 R2 (below) or
    Sysprep for Windows Server 2003 R2, depending on your version of
@@ -49,7 +54,7 @@ An overview of the procedure is as follows:
 
 
 System Preparation for Windows Server 2008 R2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For Windows 2008 R2, you run Windows System Image Manager to create a
 custom sysprep response XML file. Windows System Image Manager is
@@ -156,7 +161,7 @@ Use the following steps to run sysprep for Windows 2008 R2:
 
 
 System Preparation for Windows Server 2003 R2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Earlier versions of Windows have a different sysprep tool. Follow these
 steps for Windows Server 2003 R2.

@@ -588,14 +588,14 @@ msgstr "CloudStack使用libvirt管理虚拟机。因此正确的配置libvirt至
 # 99f2fbc9c2454f3487ad43f84bb08a12
 #: ../../qig.rst:498
 msgid ""
-"In order to have live migration working libvirt has to listen for unsecured "
+"In order to have live migration working libvirt has to listen for insecured "
 "TCP connections. We also need to turn off libvirts attempt to use Multicast "
 "DNS advertising. Both of these settings are in /etc/libvirt/libvirtd.conf"
 msgstr "为了实现动态迁移，libvirt需要监听使用非加密的TCP连接。还需要关闭libvirts尝试使用组播DNS进行广播。这些都是在 /etc/libvirt/libvirtd.conf文件中进行配置。"
 
 # 9fc492fb10044ee0844b1d25e91f50ee
 #: ../../qig.rst:502
-msgid "Set the following paramaters:"
+msgid "Set the following parameters:"
 msgstr "设置下列参数："
 
 # 95403c520e0647c88d0026cb30086615

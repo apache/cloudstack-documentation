@@ -49,7 +49,8 @@ From CloudStack 4.14.0, system VM Templates also support direct download. An adm
 
 
 Uploading Certificates for Direct Downloads
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 For direct downloads over HTTPS, the KVM hosts must have valid certificates. These certificates can be either self-signed or signed and will allow the KVM hosts to access the Templates/ISOs and download them.
 
 CloudStack provides some APIs to handle certificates for direct downloads:
@@ -85,7 +86,7 @@ CloudStack provides some APIs to handle certificates for direct downloads:
          upload templatedirectdownloadcertificate hypervisor=KVM name=CERTIFICATE_ALIAS zoneid=ZONE_ID certificate=CERTIFICATE_FORMATTED hostid=HOST_ID
 
 Synchronising Certificates for Direct Downloads
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As new hosts may be added to a zone which do not include a certificate which was previously uploaded to pre-existing hosts.
 
@@ -97,7 +98,7 @@ CloudStack provides a way to synchronize certificates across all the connected h
 - Upload missing certificates to hosts
 
 Direct Download Timeouts
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 With 4.14.0, ability to configure different timeout values for the direct downloading of Templates has been added. Three new global settings have been added for this:
 

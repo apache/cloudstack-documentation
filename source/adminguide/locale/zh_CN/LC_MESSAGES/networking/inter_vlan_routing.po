@@ -53,7 +53,7 @@ msgstr "主要的优势为："
 #: ../../networking/inter_vlan_routing.rst:37
 msgid ""
 "The administrator can deploy a set of VLANs and allow users to deploy VMs on"
-" these VLANs. A guest VLAN is randomly alloted to an account from a pre-"
+" these VLANs. A guest VLAN is randomly allotted to an account from a pre-"
 "specified set of guest VLANs. All the VMs of a certain tier of an account "
 "reside on the guest VLAN allotted to that account."
 msgstr "管理可以部署一个vlans集，同时运行用户部署虚拟机在这些vlan上。从预先指定的vlan集中随机的为租户分配一个来宾vlan.租户处于同一层的所有vm处于分配给这个租户的来宾vlan."

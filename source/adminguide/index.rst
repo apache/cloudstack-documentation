@@ -140,6 +140,7 @@ Managing VM and Volume Allocation
 
    host_and_storage_tags
    arch_types
+   vm_volume_allocators
 
 Managing Networks and Traffic
 -----------------------------
@@ -187,3 +188,12 @@ Events and Troubleshooting
 
    events
    troubleshooting
+
+
+Best Practices
+--------------
+
+.. toctree::
+   :maxdepth: 4
+
+   best_practices
