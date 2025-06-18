@@ -40,8 +40,8 @@ About Network Mode
 Network mode indicates the mode with which the isolated network or VPC will operate.
 There are two valid options
 
-- NATTED. This is the default network mode of isolated networks. The VR of isolated networks and VPCs provides Source NAT services, as well as Static NAT, Load Balancer, Port Forwarding, Vpn if the network offering supports.
-- ROUTED. For isolated networks in ROUTED mode, the VR no longer supports Source NAT, Static NAT, Load Balancer, Port Forwarding and Vpn. The supported services are Dns, Dhcp, User data, Firewall (for isolated networks) and Network ACL (for vpc and vpc networks).
+- NATTED. This is the default network mode of isolated networks. The VR of isolated networks and VPCs provides Source NAT services, as well as Static NAT, Load Balancer, Port Forwarding, VPN if the network offering supports.
+- ROUTED. For isolated networks in ROUTED mode, the VR no longer supports Source NAT, Static NAT, Load Balancer, Port Forwarding and VPN. The supported services are DNS, DHCP, User data, Firewall (for isolated networks) and Network ACL (for VPC and VPC networks).
 
 
 About Routing mode
