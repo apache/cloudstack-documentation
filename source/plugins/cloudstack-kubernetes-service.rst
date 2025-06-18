@@ -551,7 +551,7 @@ The following course of actions are taken:
 
 - Addition of port-forwarding rules and firewall rules (for isolated networks)
 
-- VM is rebooted with the Kubernetes configuration passed as userdata
+- VM is rebooted with the Kubernetes configuration passed as user data
 
 - The ISO is attached either to the node or to the VR based on the value of `mountcksisoonvr` that is passed as a parameter to the addNodesToKubernetesCluster API (Vmware only).
 
@@ -596,9 +596,9 @@ Administrators are able to dedicate hosts to a domain or account. CloudStack wil
 Use diverse CNI plugins (Calico, Cilium, etc)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A CNI framework has also been added which provides end users the flexibility to use the CNI plugin of their choice. The CNI framework internally leverages the managed Userdata feature provided by CloudStack.
+A CNI framework has also been added which provides end users the flexibility to use the CNI plugin of their choice. The CNI framework internally leverages the managed User data feature provided by CloudStack.
 
-Sample Calico CNI configuration data used which is appended to the existing Kubernetes control node userdata is:
+Sample Calico CNI configuration data used which is appended to the existing Kubernetes control node user data is:
 
 .. code-block:: bash
 
