@@ -78,3 +78,62 @@ firstfitleastconsumed          Selects the first storage pool after sorting elig
       **volume.allocation.algorithm**: random (default)
 
    Before 4.21.0, **vm.allocation.algorithm** was used for both VM as well as Volume allocation.
+
+
+Cluster, Pod and Host Ordering
+==============================
+
+Overview
+--------
+
+`The host.capacityType.to.order.clusters` is a global advanced configuration parameter in Apache CloudStack that controls how pods, clusters, 
+and hosts are prioritized during Instance deployment, based on available CPU, RAM, or a weighted combination of both in Host.
+This configuration is specifically leveraged when the VM allocation algorithm is set to `firstfitleastconsumed`.
+
+Configuration
+-------------
+
+Key: `host.capacityType.to.order.clusters`
+
+.. cssclass:: table-striped table-bordered table-hover
+
+========= ========================
+Value      Behavior
+========= ========================
+CPU		  Prioritizes resources with the most available CPU.
+RAM		  Prioritizes resources with the most available memory.
+COMBINED	  Uses a weighted formula to balance CPU and RAM in prioritization.
+========= ========================
+
+**Additional Configuration for COMBINED**
+
+- Key: `host.capacityType.to.order.clusters.cputomemoryweight`
+- Type: Float(0.0 to 1.0)
+- Default: 0.5
+- Purpose: Determines the weight of CPU vs RAM in the combined capacity calculation.
+
+Capacity calculation formula:
+
+.. code:: bash
+
+   capacity = (host.capacityType.to.order.clusters.cputomemoryweight * CPU) + ((1 - host.capacityType.to.order.clusters.cputomemoryweight) * RAM)
+
+
+This allows flexible tuning of prioritization depending on workload sensitivity.
+
+Example Configuration
+---------------------
+
+.. code:: bash
+
+   host.capacityType.to.order.clusters: COMBINED
+   host.capacityType.to.order.clusters.cputomemoryweight: 0.7
+
+Above config prioritizes CPU at 70% weight and RAM at 30% when ranking pods, clusters, and hosts.
+
+.. note::
+   - `host.capacityType.to.order.clusters` is only respected for host ordering when:
+   .. code:: bash
+
+      vm.allocation.algorithm: firstfitleastconsumed
+   - When using COMBINED, make sure to tune cpu.to.memory.capacity.weight to reflect your environment’s resource constraints and workload profiles.
