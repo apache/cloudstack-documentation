@@ -65,11 +65,11 @@ In addition to standard instance operations, extensions support custom actions. 
 
 Description, allowed role types, parameters, success/error messages, configuration details, timeout can be defined during creation or update.
 Alowed role types can be one or more of Admin, Resource Admin, Domain Admin, User.
-Success and error messages will be used and returned during action execution. They allow string expansion and the following can be used to customise messgaes:
+Success and error messages will be used and returned during action execution. They allow string expansion and the following can be used to customise messages:
 
    - {{actionName}} for showing name of the action
    - {{extensionName}} for showing name of the extension
-   - {{resourceName}} for showing name of the resource.
+   - {{resourceName}} for showing name of the resource
 
 An example usage can be - "Successfully completed {{actionName}} for {{resourceName}} using {{extensionName}}".
 Configuration details can be key-value pairs which will be passed to the extension entry-point during action execution.
