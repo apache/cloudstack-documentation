@@ -1551,9 +1551,9 @@ To open the required ports, execute the following commands:
    DEFAULT_FORWARD_POLICY="ACCEPT"
 
 .. parsed-literal::
-   # as ufw is disabled by default but may be enabled on the system, this step is optional.
    sudo ufw enable
 
+UFW is disabled by default, so enabling it is recommended but optional.
 
 Additional Packages Required for Features
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
