@@ -24,7 +24,7 @@ In the UI, extensions can be managed under *Extensions* menu.
    |extensions.png|
 
 Overview
-~~~~~~~~
+^^^^^^^^
 
 An extension in CloudStack is defined as an external binary (written in any programming language) that implements specific actions CloudStack can invoke. This allows operators to manage resource lifecycle operations outside CloudStack, such as provisioning VMs in third-party systems or triggering external automation pipelines.
 
@@ -33,7 +33,7 @@ Extensions are managed through the API and UI, with support for configuration, r
    |create-extension.png|
 
 Configuration
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
 Administrators can define and manage the following components of an extension:
 
@@ -44,19 +44,19 @@ Administrators can define and manage the following components of an extension:
    - Resource Mappings: Association between extensions and CloudStack resources such as clusters, etc.
 
 Entry Point
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 The entry point for an extension can be any binary or executable script. If no explicit entry point is provided, CloudStack uses a default base Bash script. The state of the entry point is validated across all management servers. In the UI, the Entry Point State is displayed as Not Ready if the file is missing, inaccessible, or differs across management servers.
 
 All extension entry point files are stored under a directory named after the extension within `/usr/share/cloudstack-management/extensions`.
 
 Payload
-~~~~~~~
+^^^^^^^
 
 CloudStack sends structured JSON payloads to the extension binary during each operation. These payloads are written to .json files stored under `/var/lib/cloudstack/management/extensions`. The extension binary is expected to read the file and return an appropriate result. CloudStack automatically attempts to clean up payload files older than one day.
 
 Orchestrator Extension
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 An Orchestrator extension enables CloudStack to delegate VM orchestration to an external system. Key features include:
 

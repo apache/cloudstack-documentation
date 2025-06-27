@@ -43,8 +43,9 @@ A single parameter can have the following details:
 
    - **valueoptions**: Options for the value of the parameter. This is allowed only for NUMBER and STRING type.
 
+
 Running Custom Action
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 
 All enabled custom actions can then be triggered for a resource of the type the action is defined for or provided while running, using the **Run Action** view or runCustomAction API.
 
