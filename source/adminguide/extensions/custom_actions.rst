@@ -49,6 +49,8 @@ Running Custom Action
 
 All enabled custom actions can then be triggered for a resource of the type the action is defined for or provided while running, using the **Run Action** view or runCustomAction API.
 
+   |run-custom-action-instance.png|
+
    |run-custom-action.png|
 
 
@@ -56,5 +58,5 @@ All enabled custom actions can then be triggered for a resource of the type the 
 
 
 .. |add-custom-action.png| image:: /_static/images/add-custom-action.png
-.. |run-custom-action.png| image:: /_static/images/run-custom-action.png
 .. |run-custom-action-instance.png| image:: /_static/images/run-custom-action-instance.png
+.. |run-custom-action.png| image:: /_static/images/run-custom-action.png
