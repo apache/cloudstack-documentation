@@ -37,18 +37,18 @@ Configuration
 
 Administrators can define and manage the following components of an extension:
 
-   - Entry Point: A file or script that will be executed during extension operations.
+   - Path: A path to a file or script that will be executed during extension operations.
 
    - Configuration Details: Key-value properties used by the extension at runtime.
 
    - Resource Mappings: Association between extensions and CloudStack resources such as clusters, etc.
 
-Entry Point
-^^^^^^^^^^^
+Path and Availabilty
+^^^^^^^^^^^^^^^^^^^^
 
-The entry point for an extension can be any binary or executable script. If no explicit entry point is provided, CloudStack uses a default base Bash script. The state of the entry point is validated across all management servers. In the UI, the Entry Point State is displayed as Not Ready if the file is missing, inaccessible, or differs across management servers.
+The path for an extension can point to any binary or executable script. If no explicit path is provided, CloudStack uses a default base Bash script. The state of the path is validated across all management servers. In the UI, the Availabilty is displayed as Not Ready if the file is missing, inaccessible, or differs across management servers.
 
-All extension entry point files are stored under a directory named after the extension within `/usr/share/cloudstack-management/extensions`.
+All extension files are stored under a directory named after the extension within `/usr/share/cloudstack-management/extensions`.
 
 Payload
 ^^^^^^^

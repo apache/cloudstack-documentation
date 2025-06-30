@@ -17,7 +17,7 @@
 Custom Actions
 --------------
 
-In addition to standard instance operations, extensions support custom actions. These can be configured via UI in the extension details view or the addCustomAction API. The extension entry-point must implement handlers for these action names and process any provided parameters.
+In addition to standard instance operations, extensions support custom actions. These can be configured via UI in the extension details view or the addCustomAction API. The extension binary or script must implement handlers for these action names and process any provided parameters.
 
    |add-custom-action.png|
 
@@ -30,7 +30,7 @@ Success and error messages will be used and returned during action execution. Th
    - {{resourceName}} for showing name of the resource
 
 An example usage can be - "Successfully completed {{actionName}} for {{resourceName}} using {{extensionName}}".
-Configuration details can be key-value pairs which will be passed to the extension entry-point during action execution.
+Configuration details can be key-value pairs which will be passed to the extension during action execution.
 Timeout value can be configured to adjust wait time for action completion.
 
 A single parameter can have the following details:

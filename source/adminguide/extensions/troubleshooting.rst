@@ -17,22 +17,22 @@
 Troubleshooting Extensions
 --------------------------
 
-Validate the Extension Entry Point
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Validate the Extension Path
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   - Ensure that the entry point path is correctly defined and accessible on all management servers.
+   - Ensure that the path is correctly defined and accessible on all management servers.
 
    - The script or binary must be executable and have appropriate permissions.
 
    - If the binary differs across management servers, the extension will be marked as Not Ready.
 
-   - Entry points are stored at: `/usr/share/cloudstack-management/extensions/<extension_name>`
+   - Ensure files are stored at: `/usr/share/cloudstack-management/extensions/<extension_name>`
 
-   - CloudStack runs a background task at regular intervals to verify entry point readiness. If the entry point is not ready, its state will appear as Not Ready in the UI or API responses.
+   - CloudStack runs a background task at regular intervals to verify path readiness. If the path is not ready, its state will appear as Not Ready in the UI or API responses.
 
-   - Alerts are generated if an entry point is not ready.
+   - Alerts are generated if the extension path is not ready.
 
-   - The check interval can be configured using the cloudstack.extensions.entrypoint.check.interval property in global.properties. The default is 5 minutes.
+   - The check interval can be configured using the global configuration - `extension.path.state.check.interval`. The default is 5 minutes.
 
 Verify Payload Handling
 ^^^^^^^^^^^^^^^^^^^^^^^
