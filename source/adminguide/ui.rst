@@ -560,7 +560,9 @@ Based on the configuration above, the following banner is shown in the user inte
 
 .. note::
 
-   The `message` property supports basic HTML, allowing styled content such as `<strong>` tags for emphasis.
+   - The `message` property supports basic HTML, allowing styled content such as `<strong>` tags for emphasis.
+   - Banner's background color changes based on `type` property value. White color is used for banner if `type` is not defined or has invalid value.
+   - Multi-line message is supported, however recommendation is to limit it to 2 lines. Content may overlap banner for more than 2 lines.
 
 
 Instance Image Selection Customisation
