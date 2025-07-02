@@ -78,7 +78,7 @@ Field               Value
 Name                A suitable name to represent the Backup Repository
 Address             URL, in case of NFS <server IP>:/path
 Type                NFS / CIFS / CEPH
-label.mountopts     Any mount point options to be passed while mouting this storage on the hypervisor. 
+Mount options       Any mount point options to be passed while mouting this storage on the hypervisor.
 Zone                The zone in CloudStack with which this Backup Repository must be associated.
 =================== ========================
 
@@ -97,6 +97,28 @@ For the "External ID", please specify the name of the previously created backup 
    :alt: NAS Backup offerings
 
 After this has been done, you can go to any Instance view and there will be buttons available for either ad-hoc backup or a scheduled backup of the VM
+
+Quiesce (Filesystem Freeze and Thaw)
+------------------------------------
+
+Users can set quiesce to true while creating a backup or a backup schedule.
+When a backup is initiated with quiesce enabled, CloudStack uses QEMU guest agent
+to freeze the filesystem before starting backup. This operation flushes all dirty
+filesystem buffers to disk and quiesces new writes. The filesystem is then thawed
+immediately after the backup process starts, keeping the freezing window very short.
+
+|NASB&R-quiesceInstance.png|
+
+This enhancement brings the NAS backup plugin from crash-consistent backups closer to
+application-consistent backups.
+
+Points to note:
+
+#. The feature requires qemu-guest-agent to be installed and running on the guest instance.
+#. This method does not capture the memory state of the guest. Any data held in application memory
+   that hasn’t been flushed to disk prior to the filesystem freeze will not be captured.
+#. For fully application-consistent backups, guest applications must implement pre-freeze hooks
+   to flush their internal state to disk before the filesystem is frozen.
 
 Support Information and Limitation
 ----------------------------------
@@ -120,8 +142,12 @@ in qcow2 format to the backup repository.
 
 For restore operations, the KVM instance must be stopped in CloudStack.
 Currently, only volume(s) restoration is supported only to NFS and local storage
-based primary storage pools, and restored volumes are fully baked disks (i.e.
+based primary storage pools, and restored volumes are fully backed disks (i.e.
 not using any backing template file).
 
 Backup and restore operations are not fully supported for CKS cluster instances and should
 be avoided.
+
+.. |NASB&R-quiesceInstance.png| image:: /_static/images/NASB&R-quiesceInstance.png
+   :alt: Quiesce option while creating backups.
+   :width: 400 px

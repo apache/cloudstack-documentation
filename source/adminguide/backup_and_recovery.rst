@@ -173,7 +173,8 @@ from which the backup was taken with all the data from the backup.
 |B&R-CreateInstanceFromBackup.png|
 
 Users can also choose to configure the new Instance with different parameters similar to while deploying a new Instance.
-The form will be initially prefilled with the values stored in the backup.
+The form will be initially prefilled with the values stored in the backup. If configuring volume sizes, users have to
+make sure that the size of a volume in the instance is not less than the size of the corresponding volume in the backup.
 
 |B&R-ConfigureInstance.png|
 
