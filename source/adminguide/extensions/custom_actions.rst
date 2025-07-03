@@ -15,7 +15,7 @@
    
 
 Custom Actions
---------------
+^^^^^^^^^^^^^^
 
 In addition to standard instance operations, extensions support custom actions. These can be configured via UI in the extension details view or the addCustomAction API. The extension binary or script must implement handlers for these action names and process any provided parameters.
 
@@ -45,7 +45,7 @@ A single parameter can have the following details:
 
 
 Running Custom Action
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 All enabled custom actions can then be triggered for a resource of the type the action is defined for or provided while running, using the **Run Action** view or runCustomAction API.
 

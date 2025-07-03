@@ -56,7 +56,7 @@ Payload
 CloudStack sends structured JSON payloads to the extension binary during each operation. These payloads are written to .json files stored under `/var/lib/cloudstack/management/extensions`. The extension binary is expected to read the file and return an appropriate result. CloudStack automatically attempts to clean up payload files older than one day.
 
 Orchestrator Extension
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 An Orchestrator extension enables CloudStack to delegate VM orchestration to an external system. Key features include:
 
@@ -79,6 +79,8 @@ An Orchestrator extension enables CloudStack to delegate VM orchestration to an 
 CloudStack provides sample built-in orchestrator extensions for demonstration and testing purposes.
 
 .. include:: extensions/custom_actions.rst
+
+.. include:: extensions/builtin_extensions.rst
 
 .. include:: extensions/troubleshooting.rst
 

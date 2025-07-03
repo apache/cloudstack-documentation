@@ -15,7 +15,7 @@
    
 
 Troubleshooting Extensions
---------------------------
+==========================
 
 Validate the Extension Path
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
