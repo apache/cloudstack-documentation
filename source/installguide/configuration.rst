@@ -47,6 +47,8 @@ follow these procedures:
 
 #. Add secondary storage to the zone. See :ref:`add-secondary-storage`.
 
+#. Register Templates to the zone. See :ref:`register-templates`.
+
 #. Initialize and test the new cloud. See :ref:`initialize-and-test`.
 
 When you have finished these steps, you will have a deployment with the
@@ -1750,6 +1752,28 @@ You can add  object storage pools at any time to add more capacity or providers 
 
 See https://min.io/docs/minio/linux/index.html for MinIO Documentation
 
+
+.. _register-templates:
+
+Register Cloud Templates
+------------------------
+
+For "KVM" hypervisor, admin can register cloud templates after Zone is enabled, through the optional step "Register Template" 
+
+   #. After selecting kvm hypervisor:
+
+      |ZoneKVMRegisterTemplates.png: KVM Register Templates|
+
+   #. Register Template step in Zone wizard:
+
+      |ZoneRegisterTemplates.png: Zone Register Templates|
+
+**Notes**
+
+- Cloud image templates are hosted in http://download.cloudstack.org/templates/cloud-images/
+- Metadata for the available templates is stored on the management server at: `/usr/share/cloudstack-management/webapp/cloud-image-templates.json`
+   
+
 .. _initialize-and-test:
 
 Initialize and Test
@@ -1973,3 +1997,5 @@ zone      denied.routes                                              Routes that
 .. |add-Host.png: Adding a KVM Host| image:: /_static/images/add-Host.png
 .. |ConsoleButton.png: button to launch a console| image:: /_static/images/console-icon.png
 .. |AddObjectStore.png: Add Object Storage| image:: /_static/images/add-object-store.png
+.. |ZoneKVMRegisterTemplates.png: KVM Register Templates| image:: /_static/images/zone-kvm-register-template.png
+.. |ZoneRegisterTemplates.png: Zone Register Templates| image:: /_static/images/zone-register-templates.png
