@@ -508,7 +508,64 @@ For displaying a custom HTML in the plugin, HTML file can be stored in the Cloud
 |ui-custom-plugin.png|
 
 
-Instance Image Selction Customisation
+Announcement Banner
+===================
+
+Admin can configure an **announcement banner** in `config.json` to display alerts or messages to all users. 
+This banner is useful for communicating important notices such as performance issues, scheduled maintenance, or general announcements.
+To enable and customize the banner, use the `announcementBanner` section in the config.json file. 
+
+This section supports the following properties:
+
+**Configuration Example**
+
+.. parsed-literal::
+
+  "announcementBanner": {
+    "enabled": true,
+    "showIcon": true,
+    "closable": true,
+    "persistDismissal": true,
+    "type": "warning",
+    "message": "<strong>Performance Notice:</strong> We're experiencing high load. Some operations may be slower than usual.",
+    "startDate": "2025-06-01T00:00:00Z",
+    "endDate": "2025-07-16T00:00:00Z"
+   }
+
+**Banner Display Example**
+
+Based on the configuration above, the following banner is shown in the user interface:
+
+.. image:: /_static/images/ui-announcement-banner.png
+   :align: center
+   :alt: UI Announcement banner
+
+--------
+
+**Properties Description**
+
+- **enabled**: Enables or disables the announcement banner (`true` or `false`).
+- **showIcon**: Displays an icon alongside the message. The icon corresponds to the banner `type`.
+- **closable**: Allows users to close the banner.
+- **persistDismissal**: Remembers the user's dismissal of the banner, so it doesn't reappear.
+- **type**: Specifies the type of banner. Supported values are:
+  
+  - `info`
+  - `warning`
+  - `error`
+  - `success`
+
+- **message**: The HTML-formatted content displayed in the banner.
+- **startDate** / **endDate**: Define the visibility window for the banner using ISO 8601 format (`YYYY-MM-DDTHH:MM:SSZ`).
+
+.. note::
+
+   - The `message` property supports basic HTML, allowing styled content such as `<strong>` tags for emphasis.
+   - Banner's background color changes based on `type` property value. White color is used for banner if `type` is not defined or has invalid value.
+   - Multi-line message is supported, however recommendation is to limit it to 2 lines. Content may overlap banner for more than 2 lines.
+
+
+Instance Image Selection Customisation
 -------------------------------------
 
 In the UI, there are several forms where the user needs to select an image (template/ISO) for an instance, such as deploying an instance, reinstalling an instance, creating a VNF appliance, etc. The image selection interface for these forms can be selected by the operator based on preference by specifying properties in the UI configuration file (config.json).
@@ -522,6 +579,7 @@ When the *modern* interface is used, images will be categorized based on the gue
 The *legacy* interface will display images based on templatefilter/isofilter, i.e., Featured, Community, My Templates/ISOs, and Shared.
 
 |ui-legacy-image-selection.png|
+
 
 Advanced UI Customisation
 ~~~~~~~~~~~~~~~~~~~~~~~~~
