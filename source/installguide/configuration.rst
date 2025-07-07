@@ -1772,6 +1772,7 @@ For "KVM" hypervisor, admin can register cloud templates after Zone is enabled, 
 
 - Cloud image templates are hosted in http://download.cloudstack.org/templates/cloud-images/
 - Metadata for the available templates is stored on the management server at: `/usr/share/cloudstack-management/webapp/cloud-image-templates.json`
+- `MD5 <https://download.cloudstack.org/templates/cloud-images/md5sum.txt>`_ and `SHA512 <https://download.cloudstack.org/templates/cloud-images/sha512sum.txt>`_ checksums can be used to validate available cloud images for registration.
    
 
 .. _initialize-and-test:
