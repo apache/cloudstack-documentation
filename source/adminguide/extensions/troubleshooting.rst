@@ -20,7 +20,7 @@ Troubleshooting Extensions
 Validate the Extension Path
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   - Ensure that the path is correctly defined and accessible on all management servers.
+   - Ensure that the path is correctly defined and accessible on all management servers. The executable must be owned by the `cloud` user and group, and have appropriate permissions to be executed by `cloud:cloud`.
 
    - The script or binary must be executable and have appropriate permissions.
 
