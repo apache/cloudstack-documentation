@@ -30,9 +30,9 @@ After installing or upgrading Cloudstack, these extensions will show up as disab
 Proxmox
 ^^^^^^^^
 
-The Proxmox Cloudstack extension is written in shell script and communicates with a Proxmox cluster using the `Proxmox VE API`_.
+The Proxmox Cloudstack extension is written in shell script and communicates with a Proxmox cluster using the `Proxmox VE API`_ over HTTPS.
 
-Before using the Proxmox extension, ensure that the Proxmox cluster is configured correctly and accessible to CloudStack.
+Before using the Proxmox extension, ensure that the Proxmox datacenter is configured correctly and accessible to CloudStack.
 
 Get the Api Token-Secret from Proxmox
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -57,9 +57,11 @@ To set up the Proxmox extension, follow these steps in CloudStack:
 
 #. **Add Host.** Add a host to the newly created cluster with the following details:
 
+   If the Proxmox nodes use a shared API endpoint or credentials, the `url`, `user`, `token`, and `secret` can be set in the Extension's `Configuration Details` instead of per host. However, `node` and `network_bridge` must still be specified individually for each host.
+
    |proxmox-add-host.png|
 
-   If the Proxmox nodes use a shared API endpoint or credentials, the `url`, `user`, `token`, and `secret` can be set in the Extension's `Configuration Details` instead of per host. However, `node` and `network_bridge` must still be specified individually for each host.
+   **Note**: If the TLS certificate cannot be verified when cloudstack connects to the Proxmox node, add the detail **verify_tls_certificate** and set it to **false** to skip certificate verification.
 
 #. **Create Template.** A Template in CloudStack can map to either a `Template` or an `ISO` in Proxmox.
    Provide a dummy `url` and template name. Select `External` as the hypervisor and `Proxmox` as the extension. Under `External Details`, specify:
@@ -103,9 +105,37 @@ firewall rules, port forwarding, and other networking features seamlessly throug
 Hyper-V
 ^^^^^^
 
-The Hyper-V CloudStack extension is a python script connects to the Hyper-V server using SSH and executes powershell commands to manage the VMs.
-Each Hyper-V host maps to a CloudStack host.
-Before using the Proxmox extension, ensure that the Proxmox cluster is configured correctly and accessible to CloudStack.
+The Hyper-V CloudStack extension is a Python-based script that communicates with the Hyper-V host using WinRM (Windows Remote Management) over HTTPS,
+using NTLM authentication for secure remote execution of PowerShell commands that manage the full lifecycle of virtual machines.
+
+Each Hyper-V host maps to a CloudStack host. Before using the Hyper-V extension, ensure that the Hyper-V host is accessible to the CloudStack Management Server via WinRM over HTTPS.
+
+Configuring WinRM over HTTPS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Windows Remote Management (WinRM)** is a protocol developed by Microsoft for securely managing Windows machines remotely using **WS-Management (Web Services for Management)**.
+It allows remote execution of PowerShell commands over HTTP or HTTPS and is widely used in automation tools such as **Ansible**, **Terraform**, and **Packer** for managing Windows infrastructure.
+
+To enable WinRM over HTTPS on the Hyper-V host, ensure the following:
+
+- WinRM is enabled and configured to listen on port 5986 (HTTPS).
+- A valid TLS certificate is installed and bound to the WinRM listener. You may use a certificate from a trusted Certificate Authority (CA) or a self-signed certificate.
+- The firewall on the Hyper-V host allows inbound connections on TCP port 5986.
+- The CloudStack Management Server has network access to the Hyper-V host on port 5986.
+- The Hyper-V host has a local or domain user account with appropriate permissions for managing virtual machines (e.g., creating, deleting, configuring VMs).
+
+Sample powershell script to configure WinRM over HTTPS with self-signed TLS certificate is given below:
+
+.. code-block:: powershell
+
+    Enable-PSRemoting -Force
+    $cert = New-SelfSignedCertificate -DnsName "$env:COMPUTERNAME" -CertStoreLocation Cert:\LocalMachine\My
+    New-Item -Path WSMan:\LocalHost\Listener -Transport HTTPS -Address * -CertificateThumbprint $cert.Thumbprint -Force
+    New-NetFirewallRule -DisplayName "WinRM HTTPS" -Name "WinRM-HTTPS" -Protocol TCP -LocalPort 5986 -Direction Inbound -Action Allow
+
+Install pywinrm on CloudStack Management Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**pywinrm** is a Python library that acts as a client to remotely execute commands on Windows machines via the WinRM protocol. Install it using ``pip3 install pywinrm``.
 
 Host Details
 ~~~~~~~~~~~~
@@ -115,6 +145,7 @@ Apart from the `url`, `username` and `password`, the following details are requi
 * **network_bridge**: Name of the network bridge to use for VM networking. This bridge must be configured on the Hyper-V host and connected to the appropriate network interface as explained in the `Configuring Networking` section below.
 * **vhd_path**: Path to the storage location where VM disks will be created.
 * **vm_path**: Path to the storage location where VM configuration files and metadata will be stored.
+* **verify_tls_certificate**: Set to `false` to skip TLS certificate verification for self-signed certificates.
 
 
 Adding Hyper-V to CloudStack

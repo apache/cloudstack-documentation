@@ -47,7 +47,7 @@ Sample Invocation:
 
 .. code-block:: bash
 
-   /usr/share/cloudstack-management/extensions/myext/myext.py /var/lib/cloudstack/management/extensions/myext/162345.json 60
+   /usr/share/cloudstack-management/extensions/myext/myext.py deploy /var/lib/cloudstack/management/extensions/myext/162345.json 60
 
 Input Format (Payload)
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -82,7 +82,8 @@ Your extension should write a response JSON to ``stdout``. Example:
      "message": "Deployment completed"
    }
 
-For custom actions, CloudStack may use the response to show it in the UI.
+For custom actions, CloudStack will display the ``message`` in the UI if the output JSON includes ``"print_message": "true"``.
+The ``message`` field can be a string, a JSON object or a JSON array.
 
 Action Lifecycle
 ^^^^^^^^^^^^^^^^
