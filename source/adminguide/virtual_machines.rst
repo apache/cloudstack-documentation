@@ -814,6 +814,12 @@ deployed to the same host.
 "non-strict host affinity" is similar to, but more flexible than, "host affinity",
 Instances are ideally placed together in the same host, but only if possible.
 
+.. note:: When using Vmware and enabling DRS, the results are
+   unpredictable. Vmware implements similar functionality but
+   CloudStack does not leverage the Vmware feature. As Vmware is
+   unaware of the CloudStack definition of affinity groups, its DRS
+   may go against the desired configuration.
+
 The scope of an affinity group is on an Account level.
 
 
