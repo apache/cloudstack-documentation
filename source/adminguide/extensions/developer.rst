@@ -59,13 +59,27 @@ Example:
 .. code-block:: json
 
    {
-     "resourceType": "VM",
-     "resourceUuid": "2b3c3e54-1ef3-4b8b-941d-61a1adcc7fa2",
-     "action": "deploy",
-     "accessDetails": {
-       "username": "admin",
-       "apiKey": "ABCD1234"
-     }
+     "externaldetails": {
+       "resourcemap": {
+         ...
+       },
+       "virtualmachine": {
+         "exttemplateid": "1"
+       },
+       "host": {
+         ...
+       },
+       "extension": {
+         ...
+       }
+     },
+     "virtualmachineid": "...",
+     "cloudstack.vm.details": {
+       "id": 25,
+       "name": "i-2-100-QA",
+       ...
+     },
+     "virtualmachinename": "i-2-100-QA"
    }
 
 The schema varies depending on the resource and action. Use this to perform context-specific logic.
@@ -82,7 +96,7 @@ Your extension should write a response JSON to ``stdout``. Example:
      "message": "Deployment completed"
    }
 
-For custom actions, CloudStack will display the ``message`` in the UI if the output JSON includes ``"print_message": "true"``.
+For custom actions, CloudStack will display the ``message`` in the UI if the output JSON includes ``"printmessage": "true"``.
 The ``message`` field can be a string, a JSON object or a JSON array.
 
 Action Lifecycle
