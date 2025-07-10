@@ -75,11 +75,11 @@ Example:
      },
      "virtualmachineid": "...",
      "cloudstack.vm.details": {
-       "id": 25,
-       "name": "i-2-100-QA",
+       "id": 100,
+       "name": "i-2-100-VM",
        ...
      },
-     "virtualmachinename": "i-2-100-QA"
+     "virtualmachinename": "i-2-100-VM"
    }
 
 The schema varies depending on the resource and action. Use this to perform context-specific logic.
