@@ -86,6 +86,7 @@ To set up the Proxmox extension, follow these steps in CloudStack:
 
 #. **Custom actions.** Custom actions **Create Snapshot**, **Restore Snapshot**, and **Delete Snapshot** are also supported for instances.
 
+.. _proxmox-networking:
 Configuring Networking
 ~~~~~~~~~~~~~~~~~~~~~~
 
