@@ -164,24 +164,32 @@ that volume to a specified Instance.
 Creating a new Instance from Backup
 -----------------------------------
 
-Since 4.21, Users can create a new Instance from a backup. The backup metadata also stores
-the instance configuration details at the time of taking the backup such as service offering,
-template, disk offering of all data volumes, networks attached etc.
-The new Instance will be created with the same configuration as the original Instance
-from which the backup was taken with all the data from the backup.
+Since CloudStack 4.21, users can now remove the backup offering and expunge or unmanage an instance
+that has existing backups, for the supported backup providers — Dummy, NAS, and Veeam.
+Additionally, users can create a new instance from a backup using any of these providers.
+
+Each backup now includes metadata that captures the instance’s configuration at the time of backup including service offering,
+template, disk offerings for all data volumes, attached networks, and instance-specific settings.
+The new instance will be created with the same configuration and data as the original instance at the time the backup was taken.
+
+.. warning::
+   Users should ensure that the entry for the expunged or unmanaged instance is not purged from the database, as the backup framework relies on it to function correctly.
 
 |B&R-CreateInstanceFromBackup.png|
 
-Users can also choose to configure the new Instance with different parameters similar to while deploying a new Instance.
-The form will be initially prefilled with the values stored in the backup. If configuring volume sizes, users have to
-make sure that the size of a volume in the instance is not less than the size of the corresponding volume in the backup.
+Users also have the option to customize the configuration of the new instance, similar to deploying a new instance from scratch.
+The deployment form will be pre-filled with the values captured in the backup, but users can modify them as needed.
+However, the number of volumes in the new instance must match the number of volumes in the backup.
+If volume sizes are customized, users must ensure that each volume is at least as large as the corresponding volume in the backup.
+Advanced settings are not pre-filled in the form by default, but if left unset, they will automatically be retrieved from the backup metadata.
+
+If the original instance from which the backup was created has been expunged, users will be presented with an option to reuse thesame IP address and
+MAC address stored in the backup metadata. The new instance will be assigned the same IP and MAC address, provided they are still available in the network.
 
 |B&R-ConfigureInstance.png|
 
-This will also work if the original Instance and the volumes used to create the backup are expunged.
 If one or few of the resources stored in the backup such as template, networks etc are no longer available
 in the system, the user will be prompted to reconfigure the Instance before creating it from backup.
-This feature is supported for Dummy, NAS and Veeam plugins.
 
 .. note::
    If the backup was created in a release prior to 4.21, the backup metadata won't contain the instance configuration details,
