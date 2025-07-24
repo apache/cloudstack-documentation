@@ -45,13 +45,13 @@ Note down the **user**, **token**, and **secret**.
    |proxmox-add-token.png|
    |proxmox-api-token-permission.png|
 
-To check whether the **token** and **secret** are working fine, you can check the following:
+To check whether the **token** and **secret** are working fine, you can check the following from the CloudStack Management Server:
 
 .. code-block:: bash
 
-    export PVE_TOKEN='root@pam!token2=secret'
+    export PVE_TOKEN='root@pam!<PROXMOX_TOKEN>=<PROXMOX_SECRET>'
 
-    curl -s -k -H "Authorization: PVEAPIToken=$PVE_TOKEN"  https://<proxmox-ip>:8006/api2/json/version | jq
+    curl -s -k -H "Authorization: PVEAPIToken=$PVE_TOKEN"  https://<PROXMOX_URL>:8006/api2/json/version | jq
 
 It should return a JSON response similar to this:
 
