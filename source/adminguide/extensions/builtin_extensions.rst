@@ -45,6 +45,26 @@ Note down the **user**, **token**, and **secret**.
    |proxmox-add-token.png|
    |proxmox-api-token-permission.png|
 
+To check whether the **token** and **secret** are working fine, you can check the following:
+
+.. code-block:: bash
+
+    export PVE_TOKEN='root@pam!token2=secret'
+
+    curl -s -k -H "Authorization: PVEAPIToken=$PVE_TOKEN"  https://<proxmox-ip>:8006/api2/json/version | jq
+
+It should return a JSON response similar to this:
+
+.. code-block:: json
+
+   {
+      "data": {
+         "repoid": "ec58e45e1bcdf2ac",
+         "version": "8.4.0",
+         "release": "8.4"
+      }
+   }
+
 Adding Proxmox to CloudStack
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
