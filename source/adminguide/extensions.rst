@@ -86,6 +86,8 @@ CloudStack provides sample built-in orchestrator extensions for demonstration an
 
    - For hosts linked to extensions, CloudStack will report zero for CPU and memory capacity, and host metrics will reflect the same. During instance deployment, capacity checks are the responsibility of the extension executable; CloudStack will not perform any capacity calculations.
 
+   - Some of the features that rely on interaction with VMs, such as VM snapshots, live migration, VM scaling, VM autoscaling groups, VNF appliance, Kubernetes clusters, etc are currently not supported for instances managed by orchestrator extensions.
+
 .. include:: extensions/custom_actions.rst
 
 .. include:: extensions/builtin_extensions.rst
