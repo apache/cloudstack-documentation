@@ -62,7 +62,6 @@ new features. Some of the highlights include:
 • CloudStack DRS
 • OAuth2 Authentication
 • VNF Appliances Support
-• CloudStack DRS
 • CloudStack Snapshot Copy
 • Scheduled Instance Lifecycle Operations
 • Guest OS Management
