@@ -146,8 +146,8 @@ VPC Tier creation on CloudStack performs the following actions on Netris:
 - The VPC tiers created from the default VPC network offering for Netris – Routed Mode extends the IPAM Subnet creation for the VPC Tier Guest CIDR by setting the parameter:
    - Global Routing = true. This parameter allows advertising the IPs for the VPC tier (required for Routed mode)
 
-..note::
-Important: Please consider at least one running VM per VPC tier to prevent VPC tier state transit to Allocated state    
+.. note::
+Important: Please consider at least one running VM per VPC tier to prevent VPC tier state transition to Allocated state    
 
 
 Supported VPC Services
