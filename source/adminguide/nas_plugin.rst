@@ -31,14 +31,13 @@ Currently, only backup of VMs from the NFS-based Primary Storage are tested to w
 You can also make backups of CEPH-based VMs, but restoring is not possible yet.
 
 The NAS B&R plugin requires admin to first add backup repositories which are
-network-attached storage (shared storage). Currently it supports NFS, and may
-support other shared storage such as CephFS and CIFS/Samba in future.
+network-attached storage (shared storage). It supports NFS, CIFS/Samba and CephFS.
 
 When initiating B&R operations on KVM instance, the assigned backup offering
 is used to infer backup repository (NAS) details which are then used to mount
 the shared storage temporarily on the KVM host to perform instance backup/restore
 disks operations. This also requires that admin installs NAS-storage specific
-utilities on the KVM hosts such as nfs-utils/nfs-common (ceph-common, cifs-utils).
+utilities on the KVM hosts such as nfs-utils/nfs-common, ceph-common and cifs-utils.
 
 Consider the following mount, typically performed on a KVM/Linux host to mount storage:
 
@@ -71,15 +70,15 @@ backup.framework.provider.plugin  nas
 ================================= ========================
 
 Once the above two configurations are set, restart the cloudstack-management service. After restart check the Settings of the Zone where you want to enable NAS backups - make sure that the "backup.framework.enabled"="true" on the Setting tab of the Zone. Once this is done, we can add the backup repository for the 'nas' Backup and Recovery plugin.
-Navigate to the Configuration -> Backup Repository. Click on 'Add Backup Repository' and fill the form. 
+Navigate to the Configuration -> Backup Repository. Click on 'Add Backup Repository' and fill the form.
 
 =================== ========================
 Field               Value
 =================== ========================
 Name                A suitable name to represent the Backup Repository
 Address             URL, in case of NFS <server IP>:/path
-Type                NFS ( only NFS type in 4.20)
-label.mountopts     Any mount point options to be passed while mounting this storage on the hypervisor.
+Type                NFS / CIFS / CEPH
+Mount options       Any mount point options to be passed while mouting this storage on the hypervisor.
 Zone                The zone in CloudStack with which this Backup Repository must be associated.
 =================== ========================
 
@@ -89,7 +88,7 @@ Zone                The zone in CloudStack with which this Backup Repository mus
 
 Pay attention to the "Name" given to this repository, as you will have to specify this in the "External ID" field when creating Backup Offerings (Importing backup offering)
 
-Once the Backup Repository is created, we need to add a Backup Offering, in this plugin the Backup offering is a placeholder to associate an instance to a Backup Repository. While creating the Backup Offering, select the desired Backup Repository. Associate the Backup Offering on an instance to create an Adhoc or scheduled backup. 
+Once the Backup Repository is created, we need to add a Backup Offering, in this plugin the Backup offering is a placeholder to associate an instance to a Backup Repository. While creating the Backup Offering, select the desired Backup Repository. Associate the Backup Offering on an instance to create an Adhoc or scheduled backup.
 
 For the "External ID", please specify the name of the previously created backup repository.
 
@@ -98,6 +97,28 @@ For the "External ID", please specify the name of the previously created backup 
    :alt: NAS Backup offerings
 
 After this has been done, you can go to any Instance view and there will be buttons available for either ad-hoc backup or a scheduled backup of the VM
+
+Quiesce (Filesystem Freeze and Thaw)
+------------------------------------
+
+Users can set quiesce to true while creating a backup or a backup schedule.
+When a backup is initiated with quiesce enabled, CloudStack uses QEMU guest agent
+to freeze the filesystem before starting backup. This operation flushes all dirty
+filesystem buffers to disk and quiesces new writes. The filesystem is then thawed
+immediately after the backup process starts, keeping the freezing window very short.
+
+|NASB&R-quiesceInstance.png|
+
+This enhancement brings the NAS backup plugin from crash-consistent backups closer to
+application-consistent backups.
+
+Points to note:
+
+#. The feature requires qemu-guest-agent to be installed and running on the guest instance.
+#. This method does not capture the memory state of the guest. Any data held in application memory
+   that hasn’t been flushed to disk prior to the filesystem freeze will not be captured.
+#. For fully application-consistent backups, guest applications must implement pre-freeze hooks
+   to flush their internal state to disk before the filesystem is frozen.
 
 Support Information and Limitation
 ----------------------------------
@@ -121,9 +142,12 @@ in qcow2 format to the backup repository.
 
 For restore operations, the KVM instance must be stopped in CloudStack.
 Currently, only volume(s) restoration is supported only to NFS and local storage
-based primary storage pools, and restored volumes are fully baked disks (i.e.
+based primary storage pools, and restored volumes are fully backed disks (i.e.
 not using any backing template file).
 
-Restoring fully expunged and unmanaged instances are not supported. Backup and
-restore operations are not fully supported for CKS cluster instances and should
+Backup and restore operations are not fully supported for CKS cluster instances and should
 be avoided.
+
+.. |NASB&R-quiesceInstance.png| image:: /_static/images/NASB&R-quiesceInstance.png
+   :alt: Quiesce option while creating backups.
+   :width: 400 px
