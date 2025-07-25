@@ -70,7 +70,7 @@ An Orchestrator extension enables CloudStack to delegate VM orchestration to an 
 
    - Custom Actions: Admins can define custom actions beyond the standard VM operations.
 
-   - Instance Preparation: Orchestrator extensions can optionally perform a preparation step during instance deployment. This step is executed before the instance is started on the external system. It allows the extension to update certain instance details in CloudStack. CloudStack sends a structured JSON containing the instance configuration, and the extension can respond with the values it wishes to modify. Currently, only a limited set of fields can be updated: the instance’s VNC password, MAC address, and the IPv4/IPv6 addresses of its NICs.
+   - Instance Preparation: Orchestrator extensions can optionally perform a preparation step during instance deployment. This step is executed before the instance is started on the external system. It allows the extension to update certain instance details in CloudStack. CloudStack sends a structured JSON containing the instance configuration, and the extension can respond with the values it wishes to modify. Currently, only a limited set of fields can be updated: the instance’s VNC password, MAC address, details, and the IPv4/IPv6 addresses of its NICs.
 
    - Networking: If networking is setup properly on the external system (See :ref:`built-in extensions networking <proxmox-networking>` for more details.), the Virtual Router in CloudStack can connect to the external VMs and provide DHCP, DNS, and routing services.
 
