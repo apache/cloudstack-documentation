@@ -248,7 +248,7 @@ msgstr ""
 
 #: ../../concepts.rst:134
 # d33af50f42ee45deb987f9d2ade53d3b
-msgid "Clusters: A cluster consists of one or more homogenous hosts and primary storage."
+msgid "Clusters: A cluster consists of one or more homogeneous hosts and primary storage."
 msgstr ""
 
 #: ../../concepts.rst:135

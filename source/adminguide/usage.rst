@@ -263,6 +263,23 @@ max.project.secondary.storage (GB)  Maximum secondary storage space that can be 
                                     Default is 400.
 =================================== =================================================================
 
+The administrator can also set limits for specific tagged host and storage
+resources for an account or domain. Such tags must be specified in the following
+global settings:
+
+- `resource.limit.host.tags` -  A comma-separated list of tags for host resource limits. It applies to resource types - User VM, CPU, Memory.
+- `resource.limit.storage.tags` - A comma-separated list of tags for storage resource limits. It applies to resource types - Volume, Primary storage.
+
+The limits for tagged resources are a subset of the overall limits and the maximum
+can be the value of the overall limit for the particular resource type.
+
+|accountlimits.png|
+
+The administrator can view used and available capacity of such tagged resource
+along with the overall capacities in the zone and cluster view in the UI.
+
+|zonecapacities.png|
+
 
 User Permission
 ~~~~~~~~~~~~~~~
@@ -923,3 +940,7 @@ aggregation.
 
 .. |editbutton.png| image:: /_static/images/edit-icon.png
    :alt: edits the settings.
+.. |accountlimits.png| image:: /_static/images/account-limits.png
+   :alt: Configure account resource limits in UI.
+.. |zonecapacities.png| image:: /_static/images/zone-capacities.png
+   :alt: Resource capacities for a zone.

@@ -231,6 +231,48 @@ Emails will be sent to administrators under the following circumstances:
 
 -  The Host cluster runs low on CPU, memory, or storage resources
 
+The following global settings are available to configure Alerts via SMTP.
+
+.. list-table:: Management Alerts Global Settings
+   :header-rows: 1
+
+   * - Global setting
+     - Default
+     - Description
+   * - ``alert.smtp.host``
+     - `null`
+     - SMTP hostname used for sending out email alerts.
+   * - ``alert.smtp.port``
+     - `465`
+     - Port the SMTP server is listening on.
+   * - ``alert.smtp.useAuth``
+     - `false`
+     - If true, use SMTP authentication when sending emails.
+   * - ``alert.smtp.username``
+     - `null`
+     - Username for SMTP authentication (applies only if alert.smtp.useAuth is true).
+   * - ``alert.smtp.password``
+     - `null`
+     - Password for SMTP authentication (applies only if alert.smtp.useAuth is true).
+   * - ``alert.smtp.useStartTLS``
+     - `false`
+     - If set to true and if we enable security via alert.smtp.useAuth, this will enable StartTLS to secure the connection.
+   * - ``(alert.smtp.enabledSecurityProtocols``
+     - `null`
+     - White-space separated security protocols; ex: "TLSv1 TLSv1.1". Supported protocols: SSLv2Hello, SSLv3, TLSv1, TLSv1.1 and TLSv1.2
+   * - ``alert.smtp.connectiontimeout``
+     - `30000`
+     - Socket connection timeout value in milliseconds. -1 for infinite timeout.
+   * - ``alert.smtp.timeout``
+     - `30000`
+     - Socket I/O timeout value in milliseconds. -1 for infinite timeout.
+   * - ``alert.email.addresses``
+     - `null`
+     - Comma separated list of email addresses which are going to receive alert emails.
+   * - ``alert.email.sender``
+     - `null`
+     - Sender of alert email (will be in the From header of the email).
+
 
 Sending Alerts to External SNMP and Syslog Managers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -246,116 +288,96 @@ The alerts which can be sent are:
 The following is the list of alert type numbers. The current alerts can
 be found by calling listAlerts.
 
-::
+.. list-table:: List of Alerts
+   :header-rows: 1
 
-   MEMORY = 0 // Available Memory below configured threshold
-
-::
-
-   CPU = 1 // Unallocated CPU below configured threshold
-
-::
-
-   STORAGE =2 // Available Storage below configured threshold
-
-::
-
-   STORAGE_ALLOCATED = 3 // Remaining unallocated Storage is below configured threshold
-
-::
-
-   PUBLIC_IP = 4 // Number of unallocated virtual Network public IPs is below configured threshold
-
-::
-
-   PRIVATE_IP = 5 // Number of unallocated private IPs is below configured threshold
-
-::
-
-   SECONDARY_STORAGE = 6 //  Available Secondary Storage in availability zone is below configured threshold
-
-::
-
-   HOST = 7 // Host related alerts like host disconnected
-
-::
-
-   USERVM = 8 // User Instance stopped unexpectedly
-
-::
-
-   DOMAIN_ROUTER = 9 // Domain Router VM stopped unexpectedly
-
-::
-
-   CONSOLE_PROXY = 10 // Console Proxy VM stopped unexpectedly
-
-::
-
-   ROUTING = 11 // Lost connection to default route (to the gateway)
-
-::
-
-   STORAGE_MISC = 12 // Storage issue in system VMs
-
-::
-
-   USAGE_SERVER = 13 // No usage server process running
-
-::
-
-   MANAGMENT_NODE = 14 // Management Network CIDR is not configured originally
-
-::
-
-   DOMAIN_ROUTER_MIGRATE = 15 // Domain Router VM Migration was unsuccessful
-
-::
-
-   CONSOLE_PROXY_MIGRATE = 16 // Console Proxy VM Migration was unsuccessful
-
-::
-
-   USERVM_MIGRATE = 17 // User Instance Migration was unsuccessful
-
-::
-
-   VLAN = 18 // Number of unallocated VLANs is below configured threshold in availability zone
-
-::
-
-   SSVM = 19 // SSVM stopped unexpectedly
-
-::
-
-   USAGE_SERVER_RESULT = 20 // Usage job failed
-
-::
-
-   STORAGE_DELETE = 21 // Failed to delete storage pool
-
-::
-
-   UPDATE_RESOURCE_COUNT = 22 // Failed to update the resource count
-
-::
-
-   USAGE_SANITY_RESULT = 23 // Usage Sanity Check failed
-
-::
-
-   DIRECT_ATTACHED_PUBLIC_IP = 24 // Number of unallocated shared Network IPs is low in availability zone
-
-::
-
-   LOCAL_STORAGE = 25 // Remaining unallocated Local Storage is below configured threshold
-
-::
-
-   RESOURCE_LIMIT_EXCEEDED = 26 //Generated when the resource limit exceeds the limit. Currently used for recurring Snapshots only
+   * - Type Number
+     - Name
+     - Description
+   * - `0`
+     - ``MEMORY``
+     - Available Memory below configured threshold
+   * - `1`
+     - ``CPU``
+     - Unallocated CPU below configured threshold
+   * - `2`
+     - ``STORAGE``
+     - Available Storage below configured threshold
+   * - `3`
+     - ``STORAGE_ALLOCATED``
+     - Remaining unallocated Storage is below configured threshold
+   * - `4`
+     - ``PUBLIC_IP``
+     - Number of unallocated virtual Network public IPs is below configured threshold
+   * - `5`
+     - ``PRIVATE_IP``
+     - Number of unallocated private IPs is below configured threshold
+   * - `6`
+     - ``SECONDARY_STORAGE``
+     - Available Secondary Storage in availability zone is below configured threshold
+   * - `7`
+     - ``HOST``
+     - Host related alerts like host disconnected
+   * - `8`
+     - ``USERVM``
+     - User Instance stopped unexpectedly
+   * - `9`
+     - ``DOMAIN_ROUTER``
+     - Domain Router VM stopped unexpectedly
+   * - `10`
+     - ``CONSOLE_PROXY``
+     - Console Proxy VM stopped unexpectedly
+   * - `11`
+     - ``ROUTING``
+     - Lost connection to default route (to the gateway)
+   * - `12`
+     - ``STORAGE_MISC``
+     - Storage issue in system VMs
+   * - `13`
+     - ``USAGE_SERVER``
+     - No usage server process running
+   * - `14`
+     - ``MANAGEMENT_NODE``
+     - Management Network CIDR is not configured originally
+   * - `15`
+     - ``DOMAIN_ROUTER_MIGRATE``
+     - Domain Router VM Migration was unsuccessful
+   * - `16`
+     - ``CONSOLE_PROXY_MIGRATE``
+     - Console Proxy VM Migration was unsuccessful
+   * - `17`
+     - ``USERVM_MIGRATE``
+     - User Instance Migration was unsuccessful
+   * - `18`
+     - ``VLAN``
+     - Number of unallocated VLANs is below configured threshold in availability zone
+   * - `19`
+     - ``SSVM``
+     - SSVM stopped unexpectedly
+   * - `20`
+     - ``USAGE_SERVER_RESULT``
+     - Usage job failed
+   * - `21`
+     - ``STORAGE_DELETE``
+     - Failed to delete storage pool
+   * - `22`
+     - ``UPDATE_RESOURCE_COUNT``
+     - Failed to update the resource count
+   * - `23`
+     - ``USAGE_SANITY_RESULT``
+     - Usage Sanity Check failed
+   * - `24`
+     - ``DIRECT_ATTACHED_PUBLIC_IP``
+     - Number of unallocated shared Network IPs is low in availability zone
+   * - `25`
+     - ``LOCAL_STORAGE``
+     - Remaining unallocated Local Storage is below configured threshold
+   * - `26`
+     - ``RESOURCE_LIMIT_EXCEEDED``
+     - Generated when the resource limit exceeds the limit. Currently used for recurring Snapshots only
 
 
-You can also display the most up to date list by calling the API command ``listAlerts``.
+You can also display the most up to date list by calling the API command ``listAlerts`` or unsing CLoudMonkey ``cmk list alerts``.
 
 
 SNMP Alert Details
@@ -371,7 +393,7 @@ Syslog Alert Details
 ^^^^^^^^^^^^^^^^^^^^
 
 CloudStack generates a syslog message for every alert. Each syslog
-message incudes the fields alertType, message, podId, dataCenterId, and
+message includes the fields alertType, message, podId, dataCenterId, and
 clusterId, in the following format. If any field does not have a valid
 value, it will not be included.
 
@@ -517,6 +539,52 @@ rules.
    the global configuration.
 
 
+Managing log files
+------------------
+
+The log files are located in `/var/log/cloudstack`. This directory has the
+following subdirectories:
+
+- `management` for the Management Server
+- `usage` for the Usage Server
+- `agent` for the Agent for KVM hosts
+
+CloudStack uses log4j2 to manage log files. The log4j2 configuration file
+is located in the corresponding subdirectories in the `/etc/cloudstack/` 
+directory and is named `log4j-cloud.xml`.
+
+By default, cloudstack uses `TimeBasedTriggeringPolicy` which rolls over
+the log file every day and are kept indefinitely. The log files are 
+compressed and archived in the same directory.
+
+Over time, the logs can fill up the entire disk space. To avoid this, you can 
+update the log4j-cloud.xml file to change the log file rollover and retention 
+policy. You can change the rollover policy to `SizeBasedTriggeringPolicy`
+and set the maximum size of the log file. You can also set the maximum number
+of archived log files to keep.
+
+For example, to change the rollover policy for `management-server.log` to 
+`SizeBasedTriggeringPolicy` and set the maximum size of the log file to 
+100MB and keep the maximum of 15 archived log files, you can update the 
+`log4j-cloud.xml` file as follows:
+
+.. code-block:: diff
+
+   -      <RollingFile name="FILE" append="true" fileName="/var/log/cloudstack/management/management-server.log" filePattern="/var/log/cloudstack/management/management-server.log.%d{yyyy-MM-dd}.gz">
+   +      <RollingFile name="FILE" append="true" fileName="/var/log/cloudstack/management/management-server.log" filePattern="/var/log/cloudstack/management/management-server.log.%i.gz">
+            <ThresholdFilter level="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
+   +          <DefaultRolloverStrategy max="15"/>
+            <Policies>
+   -            <TimeBasedTriggeringPolicy/>
+   +            <SizeBasedTriggeringPolicy size="100MB"/>
+            </Policies>
+            <PatternLayout pattern="%d{DEFAULT} %-5p [%c{1.}] (%t:%x) %m%ex%n"/>
+         </RollingFile>
+
+
+You can also checkout some configuration recipes from the log4j2 documentation
+`here <https://logging.apache.org/log4j/2.x/manual/appenders/rolling-file.html#recipes>`_.
+
 Stopping and Restarting the Management Server
 ---------------------------------------------------
 
@@ -541,3 +609,53 @@ To start the Management Server:
 
    # service cloudstack-management start
 
+
+Management Server Statistics and Peers
+--------------------------------------
+
+Administrators are able to view the statistics and peers information of management server.
+      
+#. Log in to the CloudStack UI as administrator
+
+#. In the left navigation bar, click Infrastructure.
+
+#. Click "Management servers", all management servers are listed.
+
+|management-servers-list.png|
+
+#. Click the management server you'd like to view. The statistics of the management server are displayed.
+
+|management-server-statistics.png|
+
+#. Navigate to the "Peers" tab. The peers of the management servers are listed
+
+|management-server-peers.png|
+
+
+Global settings for management servers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. cssclass:: table-striped table-bordered table-hover
+
+======================================= ========================
+Configuration                            Description
+======================================= ========================
+management.server.stats.interval        Time interval in seconds, for management servers stats collection. Set to <= 0 to disable management servers stats. Default value is 60
+cluster.heartbeat.interval              Interval (in milliseconds) to check for the heart beat between management server nodes. Default value is 1500
+cluster.heartbeat.threshold             Threshold (in milliseconds) before self-fence the management server. The threshold should be larger than management.server.stats.interval. Default value is 150000
+======================================= ========================
+
+.. note::
+   - Every 60 seconds (configurable via management.server.stats.interval setting) each management server collects its statistics and publishes to all other management server peers. When other management server receives the published stats, it will set the peer state (owner is the receiver and peer is the sender) to Up.
+   - Every 1.5 seconds (configurable via cluster.heartbeat.interval), each management server writes heartbeat to CloudStack database, and check the stats of other management servers.
+   - If in the past 150 seconds (configurable via cluster.heartbeat.threshold), a management server does not write heartbeat and its peer states, its state and peer states will be set to Down by other management servers.
+   - In case a management server cannot write heartbeat to the database due to connection issue to the database, the host is set to Down state by other management server, when the database connection is restored, the management server will perform self-fencing and exit with code 219.
+
+.. |management-servers-list.png| image:: /_static/images/management-servers-list.png
+   :alt: List of management servers
+
+.. |management-server-statistics.png| image:: /_static/images/management-server-statistics.png
+   :alt: Details of management server
+
+.. |management-server-peers.png| image:: /_static/images/management-server-peers.png
+   :alt: List of management server peers

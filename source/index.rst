@@ -53,13 +53,6 @@ Information can also be found at CloudStack's wiki https://cwiki.apache.org/conf
    Apache CloudStack on GitHub <https://github.com/apache/cloudstack>
 
 
-.. toctree::
-   :caption: Pre 4.11 Documentation:
-
-   Installation Guide <http://docs.cloudstack.apache.org/projects/cloudstack-installation>
-   Administration Guide <http://docs.cloudstack.apache.org/projects/cloudstack-administration>
-   Release Notes <http://docs.cloudstack.apache.org/projects/cloudstack-release-notes>
-
 
 Indices and Tables
 ==================

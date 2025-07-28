@@ -190,7 +190,7 @@ the file will look like this:
 
    yum: name=libselinux-python state=present
 
-   - name: Ensure cloudstack specfic my.cnf lines are present
+   - name: Ensure cloudstack specific my.cnf lines are present
 
    lineinfile: dest=/etc/my.cnf regexp=’$item’ insertafter=”symbolic-links=0″ line=’$item’ 
 
@@ -294,6 +294,10 @@ For the management server role we create a main.yml task like this:
 
 Save this as `/etc/ansible/roles/cloudstack-management/tasks/main.yml`
 
+.. note:: In a production environment, selinux should be set to enforcing
+   and the necessary selinux policies are created to allow the
+   services to run.
+
 Now we have some new elements to deal with. The Ansible Template module
 uses Jinja2 based templating.  As we’re doing a simplified example here,
 the Jinja Template for the cloudstack.repo won’t have any variables in
@@ -350,13 +354,13 @@ storage.  The playbook for this would look as follows:
 
    - name: Seed secondary storage
      command:
-   /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt -m {{ tmp\_nfs\_path }} -u http://download.cloud.com/templates/4.2/systemvmtemplate-2013-06-12-master-kvm.qcow2.bz2 -h kvm -F
+   /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt -m {{ tmp\_nfs\_path }} -u http://download.cloudstack.org/templates/4.2/systemvmtemplate-2013-06-12-master-kvm.qcow2.bz2 -h kvm -F
 
      command:
-   /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt -m {{ tmp\_nfs\_path }} -u http://download.cloud.com/templates/4.2/systemvmtemplate-2013-07-12-master-xen.vhd.bz2 -h xenserver -F
+   /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt -m {{ tmp\_nfs\_path }} -u http://download.cloudstack.org/templates/4.2/systemvmtemplate-2013-07-12-master-xen.vhd.bz2 -h xenserver -F
 
      command:
-   /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt -m {{ tmp\_nfs\_path }} -u http://download.cloud.com/templates/4.2/systemvmtemplate-4.2-vh7.ov -h vmware -F
+   /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt -m {{ tmp\_nfs\_path }} -u http://download.cloudstack.org/templates/4.2/systemvmtemplate-4.2-vh7.ov -h vmware -F
 
 
 Save this as `/etc/ansible/roles/cloudstack-manager/tasks/seedstorage.yml`

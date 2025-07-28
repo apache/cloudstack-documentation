@@ -591,8 +591,8 @@ msgstr "这个步骤仅适用于安装了XenServer的hypervisor主机。"
 #: ../../installation.rst:358
 msgid ""
 "Before setting up the Management Server, download vhd-util from `vhd-util "
-"<http://download.cloud.com.s3.amazonaws.com/tools/vhd-util>`_."
-msgstr "在设置管理服务器前，下载 `vhd-util<http://download.cloud.com.s3.amazonaws.com/tools/vhd-util>`_."
+"<https://download.cloudstack.org/tools/vhd-util>`_."
+msgstr "在设置管理服务器前，下载 `vhd-util<https://download.cloudstack.org/tools/vhd-util>`_."
 
 # d4c4d9a792ec46bbacc984b02fa8dd22
 #: ../../installation.rst:361
@@ -1409,8 +1409,8 @@ msgstr "这个步骤仅适用于安装了XenServer的hypervisor主机。"
 #: ../../installation.rst:1085
 msgid ""
 "Download vhd-util from `vhd-util "
-"<http://download.cloud.com.s3.amazonaws.com/tools/vhd-util>`_"
-msgstr "下载 `vhd-util <http://download.cloud.com.s3.amazonaws.com/tools/vhd-util>`_"
+"<https://download.cloudstack.org/tools/vhd-util>`_"
+msgstr "下载 `vhd-util <https://download.cloudstack.org/tools/vhd-util>`_"
 
 # 3b0ff1adaf804ec4b60b43307747e306
 #: ../../installation.rst:1088

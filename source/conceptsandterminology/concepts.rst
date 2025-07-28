@@ -174,7 +174,7 @@ Resources within the cloud are managed as follows:
 -  Pods: A pod is usually a rack, or row of racks that includes a layer-2
    switch and one or more clusters.
 
--  Clusters: A cluster consists of one or more homogenous hosts and primary
+-  Clusters: A cluster consists of one or more homogeneous hosts and primary
    storage.
 
 -  Host: A single compute node within a cluster; often a hypervisor.
@@ -534,6 +534,16 @@ CloudStack admin can setup supported Object Storage systems and add them to Clou
 Users can create buckets within the object storage pool.
 The basic storage units of Object Store are objects. Any type of data, regardless of content type, is stored as an object.
 Buckets are logical containers for storing objects.
+
+About Shared FileSystems
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CloudStack users can setup CloudStack managed Shared FileSystems which can be mounted via NFS.
+Users can choose the service offering, disk offering, filesystem format and network.
+The Shared FileSystem is deployed on an Instance with the specified service offering.
+A data volume is created using the given disk offering and attached to the Instance.
+User can specify which filesystem to use (XFS, EXT4).
+The filesystem is created on the data volume and exported via NFS.
+All Instances in the guest network can mount and read/write to the Shared FileSystem.
 
 About Physical Networks
 ~~~~~~~~~~~~~~~~~~~~~~~

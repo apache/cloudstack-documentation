@@ -104,7 +104,7 @@ msgstr ""
 #: ../../hypervisor_installation.rst:3366
 # 86c9ea55ffec4f399b8e7918b7bb43d0
 # e392215de57d4843958e657b3d6d64c7
-msgid "All hosts within a cluster must be homogenous. The CPUs must be of the same type, count, and feature flags."
+msgid "All hosts within a cluster must be homogeneous. The CPUs must be of the same type, count, and feature flags."
 msgstr ""
 
 #: ../../hypervisor_installation.rst:75
@@ -423,7 +423,7 @@ msgstr ""
 #: ../../hypervisor_installation.rst:3539
 # ff42e0ea9cf64b509d310c0071086352
 # 5b89b062abbe4cc89b7fd10ece8eb9e8
-msgid "In order to have live migration working libvirt has to listen for unsecured TCP connections. We also need to turn off libvirts attempt to use Multicast DNS advertising. Both of these settings are in ``/etc/libvirt/libvirtd.conf``"
+msgid "In order to have live migration working libvirt has to listen for insecured TCP connections. We also need to turn off libvirts attempt to use Multicast DNS advertising. Both of these settings are in ``/etc/libvirt/libvirtd.conf``"
 msgstr ""
 
 #: ../../hypervisor_installation.rst:308
@@ -968,7 +968,7 @@ msgstr ""
 #: ../../hypervisor_installation.rst:3983
 # d68286a4499a42d0af59d58cf3307ce8
 # cabb0609f32c4af983aec749c9a3bde6
-msgid "These iptable settings are not persistent accross reboots, we have to save them first."
+msgid "These iptable settings are not persistent across reboots, we have to save them first."
 msgstr ""
 
 #: ../../hypervisor_installation.rst:911
@@ -1239,7 +1239,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:1022
 # 7f67c993b17a4b25a8b436331132a38b
-msgid "You must re-install Citrix XenServer if you are going to re-use a host from a previous install."
+msgid "You must re-install Citrix XenServer if you are going to reuse a host from a previous install."
 msgstr ""
 
 #: ../../hypervisor_installation.rst:1031
@@ -1385,7 +1385,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:1181
 # 54880e3acb4945b4ae3d3fb251252130
-msgid "`http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz>`_"
+msgid "`http://download.cloudstack.org/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz <http://download.cloudstack.org/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz>`_"
 msgstr ""
 
 #: ../../hypervisor_installation.rst:1183
@@ -1395,7 +1395,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:1185
 # b1533b01dec04d8ea37cb07d541d8013
-msgid "`http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz>`_"
+msgid "`http://download.cloudstack.org/releases/2.2.0/xenserver-cloud-supp.tgz <http://download.cloudstack.org/releases/2.2.0/xenserver-cloud-supp.tgz>`_"
 msgstr ""
 
 #: ../../hypervisor_installation.rst:1187
@@ -1405,7 +1405,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:1189
 # bc80c4fa363248c292882b511d90808a
-msgid "`http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz <http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz>`_"
+msgid "`http://download.cloudstack.org/releases/3.0/xenserver-cloud-supp.tgz <http://download.cloudstack.org/releases/3.0/xenserver-cloud-supp.tgz>`_"
 msgstr ""
 
 #: ../../hypervisor_installation.rst:1193
@@ -2573,7 +2573,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:2258
 # 444698b909b14c1bafa79d28ca6d0e0c
-msgid "All hosts within a cluster must be homogenous. That means the CPUs must be of the same type, count, and feature flags."
+msgid "All hosts within a cluster must be homogeneous. That means the CPUs must be of the same type, count, and feature flags."
 msgstr ""
 
 #: ../../hypervisor_installation.rst:2286
@@ -2628,7 +2628,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:2331
 # fa50c73129ea428e839debdffdc10099
-msgid "You must re-install VMware ESXi if you are going to re-use a host from a previous install."
+msgid "You must re-install VMware ESXi if you are going to reuse a host from a previous install."
 msgstr ""
 
 #: ../../hypervisor_installation.rst:2336
@@ -3310,7 +3310,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:2754
 # 7febd6557b3742e9a3d478672eba6cad
-msgid "This is the IP address of the VSM appliance. This is the IP address you specify in the virtual switch IP Address field while configuting Nexus virtual switch."
+msgid "This is the IP address of the VSM appliance. This is the IP address you specify in the virtual switch IP Address field while configuring Nexus virtual switch."
 msgstr ""
 
 #: ../../hypervisor_installation.rst:2758
@@ -3320,7 +3320,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:2756
 # cab1502c5d5d4221873f13e86168b3d3
-msgid "Should be set to Enable.Always enable SSL. SSH is usually enabled by default during the VSM installation. However, check whether the SSH connection to the VSM is working, without which CloudStack failes to connect to the VSM."
+msgid "Should be set to Enable.Always enable SSL. SSH is usually enabled by default during the VSM installation. However, check whether the SSH connection to the VSM is working, without which CloudStack fails to connect to the VSM."
 msgstr ""
 
 #: ../../hypervisor_installation.rst:2761
@@ -4196,7 +4196,7 @@ msgstr ""
 
 #: ../../hypervisor_installation.rst:3497
 # 6e8937e78ff6442db35604533d058b4a
-msgid "Next step is to update the Agent configuration setttings. The settings are in ``/etc/cloudstack/agent/agent.properties``"
+msgid "Next step is to update the Agent configuration settings. The settings are in ``/etc/cloudstack/agent/agent.properties``"
 msgstr ""
 
 #: ../../hypervisor_installation.rst:3502

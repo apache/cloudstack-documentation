@@ -37,6 +37,7 @@ Overview of Upgrade Steps:
 
 #. Check any customisations and integrations
 #. Upload the |sysvm64-version| System VM template if not already using it.
+#. Confirm Java 17 is the default Java version
 #. Stop all running management servers
 #. Backup CloudStack database (MySQL)
 #. Upgrade 1st CloudStack management server
@@ -50,6 +51,7 @@ Overview of Upgrade Steps:
 
 .. include:: _sysvm_templates.rst
 
+.. include:: _java_version.rst
 
 Packages repository
 -------------------
@@ -145,13 +147,13 @@ Setup the public key for the above repository:
 
    .. parsed-literal::
 
-      $ sudo apt-get upgrade cloudstack-management
+      $ sudo apt-get install cloudstack-management
 
 #. If you use CloudStack usage server
 
    .. parsed-literal::
 
-      $ sudo apt-get upgrade cloudstack-usage
+      $ sudo apt-get install cloudstack-usage
 
 
 .. _rhel414:
@@ -225,7 +227,7 @@ Hypervisor: VMware
    built using "noredist". Refer to :ref:`building-noredist`.
 
 
-No additional steps are requried for the VMware Hypervisor for this upgrade.
+No additional steps are required for the VMware Hypervisor for this upgrade.
 
 
 .. _kvm414:
@@ -253,7 +255,8 @@ hosts.
 
    .. parsed-literal::
 
-      $ sudo apt-get upgrade cloudstack-agent
+      $ sudo apt-get update
+      $ sudo apt-get install cloudstack-agent
 
 #. Start the agent.
 

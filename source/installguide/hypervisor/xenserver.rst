@@ -36,15 +36,17 @@ System Requirements for XenServer Hosts
     -  XenServer 7.5
     -  XenServer 8.0 (not tested explicitly, but should work - see the release notes)
     -  XenServer 8.1 (not tested explicitly, but should work - see the release notes)
+    -  XenServer 8.4
     -  XCP-ng 7.4.0
     -  XCP-ng 7.5.0
     -  XCP-ng 7.6.0
     -  XCP-ng 8.0.0
     -  XCP-ng 8.1.0
     -  XCP-ng 8.2.0
+    -  XCP-ng 8.3.0
     
 
--  You must re-install Citrix XenServer if you are going to re-use a
+-  You must re-install Citrix XenServer if you are going to reuse a
    host from a previous install.
 
 -  Must support HVM (Intel-VT or AMD-V enabled)
@@ -197,18 +199,18 @@ CSP functionality is already present in XenServer 6.1
 
    For XenServer 6.0.2:
 
-   `http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz 
-   <http://download.cloud.com/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz>`_
+   `http://download.cloudstack.org/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz
+   <http://download.cloudstack.org/releases/3.0.1/XS-6.0.2/xenserver-cloud-supp.tgz>`_
 
    For XenServer 5.6 SP2:
 
-   `http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz 
-   <http://download.cloud.com/releases/2.2.0/xenserver-cloud-supp.tgz>`_
+   `http://download.cloudstack.org/releases/2.2.0/xenserver-cloud-supp.tgz
+   <http://download.cloudstack.org/releases/2.2.0/xenserver-cloud-supp.tgz>`_
 
    For XenServer 6.0:
 
-   `http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz 
-   <http://download.cloud.com/releases/3.0/xenserver-cloud-supp.tgz>`_
+   `http://download.cloudstack.org/releases/3.0/xenserver-cloud-supp.tgz
+   <http://download.cloudstack.org/releases/3.0/xenserver-cloud-supp.tgz>`_
 
  
 #. Extract the file:

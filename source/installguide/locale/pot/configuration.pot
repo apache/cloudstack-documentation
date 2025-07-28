@@ -1674,7 +1674,7 @@ msgstr ""
 
 #: ../../configuration.rst:1264
 # febca3ed36dc41f0bfe48a3170c1b282
-msgid "The createStoragePool API has been augmented to support plugable storage providers. The following is a list of parameters to use when adding storage to CloudStack that is based on the SolidFire plug-in:"
+msgid "The createStoragePool API has been augmented to support pluggable storage providers. The following is a list of parameters to use when adding storage to CloudStack that is based on the SolidFire plug-in:"
 msgstr ""
 
 #: ../../configuration.rst:1268

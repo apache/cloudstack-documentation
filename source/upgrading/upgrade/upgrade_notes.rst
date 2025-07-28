@@ -17,6 +17,15 @@
 General Upgrade Notes
 =====================
 
+Java version upgraded to Java 17
+---------------------------------
+
+As of Apache CloudStack 4.20, support for running with Java 17 has been added.
+In later versions, support for Java 11 will be removed.
+
+
+.. include:: _java_version.rst
+
 
 Java version upgraded to Java 11
 ---------------------------------
@@ -49,7 +58,7 @@ Agent and KVM Host Security
 Starting 4.11, a new CA framework has been introduced that is used to secure
 agent and management server connections. Starting 4.11.1, KVM hosts in UP
 state that are not secured (i.e. the KVM host agent and libvirtd don't have
-CA framework provisioned X509 certificates) will show up as 'Unsecure'. A new
+CA framework provisioned X509 certificates) will show up as 'Insecure'. A new
 button in the UI is available as well as an API to secure and onboard such
 hosts.
 
@@ -62,7 +71,7 @@ OVS plug-in
 OVS plug-in functionality is disrupted if ovsdaemon crashes
 
 A critical functionality issue came out with `CLOUDSTACK-6779 <https://issues.apache.org/jira/browse/CLOUDSTACK-6779>`_. On XenServer it
-is observed that on VIF unplug Ovs-Vswitchd is crashing resulting in loosing all
+is observed that on VIF unplug Ovs-Vswitchd is crashing resulting in losing all
 the openflow rules added to the bridge. Ovs daemon gets started and creates a
 bridge but configure openflow rules are lost resulting in the disruption of
 connectivity for the Instances on the host.

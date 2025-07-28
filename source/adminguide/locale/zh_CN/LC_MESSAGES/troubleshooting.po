@@ -338,7 +338,7 @@ msgstr "故障排查网络传输"
 # 5f383b9190f34ebcbdd6bb92b713ee21
 #: ../../troubleshooting.rst:244
 msgid ""
-"Below are a few troubleshooting steps to check whats going wrong with your "
+"Below are a few troubleshooting steps to check what's going wrong with your "
 "network..."
 msgstr "在下列故障排查步骤中检验你网络中出现的故障..."
 
@@ -370,7 +370,7 @@ msgstr "在*host2 (kvm2)*上"
 msgid ""
 "If the pings dont work, run *tcpdump(8)* all over the place to check who is "
 "gobbling up the packets. Ultimately, if the switches are not configured "
-"correctly, CloudStack networking wont work so fix the physical networking "
+"correctly, CloudStack networking won't work so fix the physical networking "
 "issues before you proceed to the next steps"
 msgstr "如果ping不通，运行 *tcpdump(8)*在所有VLAN上检查丢失的数据包。最终，如果交换机配置失败，CloudStack网络将无法工作，所以在处理下一部前要确定物理网络设备的问题。"
 
@@ -407,7 +407,7 @@ msgstr "列出正在使用的*CloudMonkey*"
 msgid ""
 "KVM traffic labels require to be named as *\"cloudbr0\"*, *\"cloudbr2\"*, "
 "*\"cloudbrN\"* etc and the corresponding bridge must exist on the KVM hosts."
-" If you create labels/bridges with any other names, CloudStack (atleast "
+" If you create labels/bridges with any other names, CloudStack (at least "
 "earlier versions did) seems to ignore them. CloudStack does not create the "
 "physical bridges on the KVM hosts, you need to create them **before** before"
 " adding the host to Cloudstack."
@@ -440,7 +440,7 @@ msgid ""
 "The Internet would be accessible from both the SSVM and CPVM instances by "
 "default. Their public IPs will also be directly pingable from the Internet. "
 "Please note that these test would work only if your switches and traffic "
-"labels are configured correctly for your environment. If your SSVM/CPVM cant"
+"labels are configured correctly for your environment. If your SSVM/CPVM can't"
 " reach the Internet, its very unlikely that the Virtual Router (VR) can also"
 " the reach the Internet suggesting that its either a switching issue or "
 "incorrectly assigned traffic labels. Fix the SSVM/CPVM issues before you "
@@ -458,16 +458,16 @@ msgstr "除非有些Egress规则，Virtual Router(VR)也是不能到达Internet�
 # fd961e75e43d4c48a4b779ef136e1d12
 #: ../../troubleshooting.rst:432
 msgid ""
-"However, the Virtual Router's (VR) Source NAT Public IP address **WONT** be "
+"However, the Virtual Router's (VR) Source NAT Public IP address **WON'T** be "
 "reachable until appropriate Ingress rules are in place. You can add "
 "*Ingress* rules under *Network, Guest Network, IP Address, Firewall* setting"
 " page."
-msgstr "尽管如此，Virtual Router(VR) Source NAT Pulic IP地址除非有近似的Ingress规则在此，要么**WONT** 达到。你可以添加 *Ingress* rules under *Network, Guest Network, IP Address, Firewall* 设置页。"
+msgstr "尽管如此，Virtual Router(VR) Source NAT Pulic IP地址除非有近似的Ingress规则在此，要么**WON'T** 达到。你可以添加 *Ingress* rules under *Network, Guest Network, IP Address, Firewall* 设置页。"
 
 # 7a1ba3d03cd64a0cb60486d361453ebd
 #: ../../troubleshooting.rst:439
 msgid ""
-"The VM Instances by default wont be able to access the Internet. Add Egress "
+"The VM Instances by default won't be able to access the Internet. Add Egress "
 "rules to permit traffic."
 msgstr "默认的VM Instances不能够连接Internet。添加Egress规则后可允许连接。"
 
@@ -491,7 +491,7 @@ msgstr "在海量的实例中，问题会出现在交换层，原因是L3的配�
 # 5fff1dc7083a4412a9e4051f2e239180
 #: ../../troubleshooting.rst:454
 msgid ""
-"This section was contibuted by Shanker Balan and was originally published on"
+"This section was contributed by Shanker Balan and was originally published on"
 " `Shapeblue's blog <http://shankerbalan.net/blog/internet-not-working-on-"
 "cloudstack-vms/>`_"
 msgstr "这些内容有Shanker Balan贡献，其原文发布在`Shapeblue'博客中<http://shankerbalan.net/blog/internet-not-working-on-cloudstack-vms/>`_"

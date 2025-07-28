@@ -17,16 +17,18 @@
 What's New in |release|
 =======================
 
-Apache CloudStack 4.19.3 is a minor release with a limited number of
-assorted fixes.
+Apache CloudStack |release| is a 4.20 LTS minor release with over 150 fixes
+and improvements since the 4.20.0.0 release. Some of the highlights include:
 
-* Fixes broken console access after upgrade to 4.19.2.0
-* Improve listing of Vmware Datacenter VMs for migration to KVM
-* Infinite scroll UI component to retrieve more items on reaching end of list
-* Prevention of duplication HA jobs and alerts
-* Fix SAML2 plugin limitations and SAML multi-account selector in the UI
-* Improvements to Linstor
+• Improvements to multi-architecture support in CloudStack
+• vTPM support for KVM and VMware
+• Support for XenServer 8.4 / XCP-ng 8.3
+• Added support for VMware 80u2 and 80u3
+• Updated Sysyem VM template to Debian 12.11
+• NAS B&R improvements
+• Experimental Support of EL10 as Management Server and KVM host
 
+<<<<<<< HEAD
 What's New in 4.19.2
 ====================
 
@@ -77,109 +79,62 @@ new features. Some of the highlights include:
 • Dynamic secondary storage selection
 • Domain VPCs
 • Global ACL for VPCs
+=======
+>>>>>>> upstream/main
 
 The full list of new features can be found in the project release notes at
-https://docs.cloudstack.apache.org/en/4.19.0.0/releasenotes/changes.html
+https://docs.cloudstack.apache.org/en/4.20.1.0/releasenotes/changes.html
 
-.. _guestosids
+What's New in 4.20.0.0
+=======================
 
-Issues with ISO/config drive on Xcpng/Xen
-=========================================
+Apache CloudStack 4.20.0.0 is the initial 4.20 LTS release with 190+ new
+features, improvements and bug fixes since 4.19, including 15 major
+new features. Some of the highlights include:
 
-A fix was created for Xen like systems to work with config drive. (see
-https://github.com/apache/cloudstack/pull/10912) This had been broken
-for multiple releases, and passed unnoticed. There are some
-limitations to this fix. Noticably:
-
-- When attaching an ISO, the new ISO is attached as the first ISO (the existing configdrive ISO is detached),
-- Creating a VM from ISO on a network with ConfigDrive, is not expected to work (untested),
-- `userdata` functionality using config drive doesn't work.
-
-When upgrading from a new 4.19 installation
-===========================================
-
-Only new installations of 4.19.x will not have conservemode enabled by
-default vor VPCs. Upgrades from earlier versions will be alright. In
-order to make sure conserve mode is enabled for VPC-tiers, either
-create a clone of the default guestnetwork offering with conservemode
-enabled or execute the following sql:
-
-::
-   -- Re-apply VPC: update default network offering for vpc tier to conserve_mode=1 (#8309)
-   UPDATE `cloud`.`network_offerings` SET conserve_mode=1 WHERE name='DefaultIsolatedNetworkOfferingForVpcNetworks’;
+• Webhooks
+• Dynamic and Static Routing
+• Ceph RGW Object Store Support
+• NSX integration
+• Shared Filesystems
+• Multi-arch Zones
+• Simple NAS backup plugin for KVM
+• Usage UI
+• API documentation in UI
 
 
-Possible Issue with volume snapshot revert with KVM
-===================================================
+The full list of new features can be found in the project release notes at
+https://docs.cloudstack.apache.org/en/4.20.0.0/releasenotes/changes.html
 
-Between versions 4.17.x, 4.18.0 and 4.18.1, KVM volume snapshot backups were
-not full snapshots and they rely on the primary storage as a backing store.
-To prevent any loss of data, care must be taken during revert operation and
-it must be ensured that the source primary storage snapshot file is present
-if the snapshot is created with any of these CloudStack versions.
+Log4j Upgrade
+=============
 
-Users will have a backing store in their volume snapshots in the following cases:
+Up until 4.19.x.x, the logging library used for the project was Log4j 1.29. 
+The 4.20.0.0 version has updated the library to Log4j2. The new Log4j2 configuration file format is not backwards 
+compatible with the old one. The 4.20.0.0 packages will come with the default configuration files updated. 
+Users that have made customizations to their files must update their configuration files to match with the new format, 
+the `official Log4j documentation`_ might help you migrate your custom configurations.
 
-- the snapshots are from a ROOT volume created from template;
+JRE Upgrade
+============
 
-Users will not have a backing store in their volume snapshots in the following cases:
+Up until 4.19.x.x, the JRE used for ACS was JRE 11. In 4.20.0.0, JRE has been upgraded to JRE 17 as JRE 11 has reached EOL. 
+This means that Centos7 (EL7) is no longer supported.
 
-- the snapshots are from ROOT volumes created with ISO;
-- the snapshots are from DATADISK volumes;
+.. _official Log4j documentation: https://logging.apache.org/log4j/2.x/migrate-from-log4j1.html
 
-Following there are two queries to help users identify snapshots with a backing store:
+Events Message Bus Change
+=========================
+On upgrading from 4.19.x or lower, existing AMQP or Kafka integration
+configurations should be moved from folder
+``/etc/cloudstack/management/META-INF/cloudstack/core`` to
+``/etc/cloudstack/management/META-INF/cloudstack/event``
 
-Identify snapshots that were not removed yet and were created from a volume that was created from a template:
+Guest OS Categories Change
+==========================
 
-.. parsed-literal::
-   SELECT  s.uuid AS "Snapshot ID",
-           s.name AS "Snapshot Name",
-           s.created AS "Snapshot creation datetime",
-           img_s.uuid AS "Sec Storage ID",
-           img_s.name AS "Sec Storage Name",
-           ssr.install_path AS "Snapshot path on Sec Storage",
-           v.uuid AS "Volume ID",
-           v.name AS "Volume Name"
-   FROM    cloud.snapshots s
-   INNER   JOIN cloud.volumes v ON (v.id = s.volume_id)
-   INNER   JOIN cloud.snapshot_store_ref ssr ON (ssr.snapshot_id = s.id
-                                             AND ssr.store_role = 'Image')
-   INNER   JOIN cloud.image_store img_s  ON (img_s.id = ssr.store_id)
-   WHERE   s.removed IS NULL
-   AND   v.template_id IS NOT NULL;
+The guest operating system categories have been updated in 4.21, resulting in a
+reorganization of the guest operating systems with respect to categories.
 
-With that, one can use qemu-img info in the snapshot file to check if they have a backing store.
-
-For those snapshots that have a backing store, one can use the following query to check which template is it and in which storage pool it is:
-
-.. parsed-literal::
-   SELECT  vt.uuid AS "Template ID",
-         vt.name AS "Template Name",
-         tsr.install_path AS "Template file on Pri Storage",
-         sp.uuid AS "Pri Storage ID",
-         sp.name AS "Pri Storage Name",
-         sp.`path` AS "Pri Storage Path",
-         sp.pool_type as "Pri Storage type"
-   FROM    cloud.template_spool_ref tsr
-   INNER   JOIN cloud.storage_pool sp ON (sp.id = tsr.pool_id AND sp.removed IS NULL)
-   INNER   JOIN cloud.vm_template vt ON (vt.id = tsr.template_id)
-   WHERE   tsr.install_path = "<template file in the snapshot backing store>";
-
-After identifying the snapshots with a backing store and the related templates, one can mount the secondary storage on a host that has access to the template and use qemu-img convert on the snapshot to consolidate it:
-
-.. parsed-literal::
-   qemu-img convert -O qcow2 -U --image-opts driver=qcow2,file.filename=<path to snapshot on secondary storage> <path to snapshot on secondary storage>-converted
-
-Issue regarding LDAP authentication on version 4.19.0
-=====================================================
-
-In version 4.19.0, the encryption of scoped configurations of Accounts and Domains was changed to only encrypt if there were sensitive data (e.g, they belonged to the Hidden or Secure category) as all configurations for Accounts and Domains were encrypted in previous versions. However, when using the encrypted values from these scopes, ACS did not correctly decrypt these values. For this reason, a simple solution was to update these configurations to their plain values with manual DB intervention, as reported in issue `#8637`.
-
-This issue has been fixed in Apache CloudStack 4.19.1.0. However, for users that manually set the configurations ``ldap.bind.password`` and ``ldap.truststore.password`` to a plain value in order to fix the faulty behaviour, it is required to store them encrypted after upgrading to version 4.19.1 and onwards. It will not be possible to update the configuration via UI, as an exception will be thrown when ACS tries to decrypt the plain value. To fix this, it is required to set the password again for ACS to encrypt it. There are two options:
-
-#. Manually set the configuration via CloudMonkey, for example ``update configuration domainid=<domain-uuid> name="ldap.bind.password" value="password"``;
-#. Or, removing the defined configuration through the database via the query ``DELETE from cloud.domain_details WHERE name like "%ldap%password%"``, and setting the configuration via UI for the affected domains.
-
-After updating these configurations, LDAP authentication should be working as expected.
-
-.. _`#8637`: https://github.com/apache/cloudstack/pull/8637
+If the ``oscategoryid`` functionality for hosts is being used, ensure it is
+pointing to the correct guest operating system category ID.

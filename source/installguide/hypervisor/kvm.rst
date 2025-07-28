@@ -55,7 +55,7 @@ In addition, the following hardware requirements apply:
 -  Within a single cluster, the hosts must be of the same distribution
    version.
 
--  All hosts within a cluster must be homogenous. The CPUs must be of
+-  All hosts within a cluster must be homogeneous. The CPUs must be of
    the same type, count, and feature flags.
 
 -  Must support HVM (Intel-VT or AMD-V enabled)
@@ -90,7 +90,7 @@ host to work with CloudStack.
 .. warning::
    Certain servers such as Dell provide the option to choose the Power Management Profile.
    The Active Power Controller enables Dell System DBPM (Demand Based Power Management)
-   which can restrict the visibility of the maximum CPU clock speed availble to the OS,
+   which can restrict the visibility of the maximum CPU clock speed available to the OS,
    which in turn can lead to CloudStack fetching the incorrect CPU speed of the server.
    To ensure that CloudStack can always fetch the maximum cpu speed on the server, ensure
    that "OS Control" is set as the Power Management Profile.
@@ -160,10 +160,111 @@ KVM Instances.
 #. Repeat all of these steps on every hypervisor host.
 
 .. warning::
-   CloudStack |version| requires Java 11 JRE. Installing CloudStack agent will
-   automatically install Java 11, but it's good to explicitly confirm that the Java 11
+   CloudStack |version| requires Java 17 JRE. Installing CloudStack agent will
+   automatically install Java 17, but it's good to explicitly confirm that the Java 17
    is the selected/active one (in case you had a previous Java version already installed)
    with ``alternatives --config java``, after CloudStack agent is installed.
+
+Configure package repository
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+CloudStack is only distributed from source from the official mirrors.
+However, members of the CloudStack community may build convenience
+binaries so that users can install Apache CloudStack without needing to
+build from source.
+
+If you didn't follow the steps to build your own packages from source in
+the sections for `“Building RPMs from Source”
+<../building_from_source.html#building-rpms-from-source>`__ or
+`“Building DEB packages” <../building_from_source.html#building-deb-packages>`__
+you may find pre-built DEB and RPM packages for your convenience linked from
+the `downloads <http://cloudstack.apache.org/downloads.html>`_ page.
+
+.. note::
+   These repositories contain both the Management Server and KVM Hypervisor
+   packages.
+
+RPM package repository
+~~~~~~~~~~~~~~~~~~~~~~
+
+There is a RPM package repository for CloudStack so you can easily
+install on RHEL and SUSE based platforms.
+
+If you're using an RPM-based system, you'll want to add the Yum
+repository so that you can install CloudStack with Yum.
+
+In RHEL or CentOS:
+
+Yum repository information is found under ``/etc/yum.repos.d``. You'll
+see several ``.repo`` files in this directory, each one denoting a
+specific repository.
+
+To add the CloudStack repository, create
+``/etc/yum.repos.d/cloudstack.repo`` and insert the following
+information.
+
+In the case of RHEL being used, you can replace 'centos' by 'rhel' in the value of baseurl
+
+.. parsed-literal::
+
+   [cloudstack]
+   name=cloudstack
+   baseurl=http://download.cloudstack.org/centos/$releasever/|version|/
+   enabled=1
+   gpgcheck=0
+
+Now you should now be able to install CloudStack using Yum.
+
+In SUSE:
+
+Zypper repository information is found under ``/etc/zypp/repos.d/``. You'll
+see several ``.repo`` files in this directory, each one denoting a
+specific repository.
+
+To add the CloudStack repository, create
+``/etc/zypp/repos.d/cloudstack.repo`` and insert the following
+information.
+
+.. parsed-literal::
+
+   [cloudstack]
+   name=cloudstack
+   baseurl=http://download.cloudstack.org/suse/|version|/
+   enabled=1
+   gpgcheck=0
+
+
+Now you should now be able to install CloudStack using zypper.
+
+
+DEB package repository
+~~~~~~~~~~~~~~~~~~~~~~
+
+You can add a DEB package repository to your apt sources with the
+following commands. Replace the code name with your Ubuntu LTS version :
+Ubuntu 20.04 (focal), Ubuntu 22.04 (jammy), Ubuntu 24.04 (noble).
+
+Use your preferred editor and open (or create)
+``/etc/apt/sources.list.d/cloudstack.list``. Add the community provided
+repository to the file (replace "trusty" with "xenial" or "bionic" if it is the case):
+
+.. parsed-literal::
+
+   deb https://download.cloudstack.org/ubuntu focal |version|
+
+We now have to add the public key to the trusted keys.
+
+.. parsed-literal::
+
+   wget -O - https://download.cloudstack.org/release.asc |sudo tee /etc/apt/trusted.gpg.d/cloudstack.asc
+
+Now update your local apt cache.
+
+.. parsed-literal::
+
+   sudo apt update
+
+Your DEB package repository should now be configured and ready for use.
 
 Install and configure the Agent
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -284,7 +385,7 @@ Here are some examples:
    host-passthrough may lead to migration failure,if you have this problem,
    you should use host-model or custom. guest.cpu.features will force cpu features
    as a required policy so make sure to put only those features that are provided
-   by the host CPU. As your kvm cluster needs to be made up of homogenous nodes anyway
+   by the host CPU. As your kvm cluster needs to be made up of homogeneous nodes anyway
    (see System Requirements), it might make most sense to use guest.cpu.mode=host-model
    or guest.cpu.mode=host-passthrough.
 
@@ -300,7 +401,7 @@ cloudstack-agent and should already be installed.
    planning to automate the deployment and configuration of your KVM hosts.
 
 #. To avoid potential security attack to Instances, We need to turn
-   off libvirt to listen on unsecure TCP port. CloudStack will automatically
+   off libvirt to listen on insecure TCP port. CloudStack will automatically
    set up cloud keystore and certificates when the host is added to cloudstack.
    We also need to turn off libvirts attempt
    to use Multicast DNS advertising. Both of these settings are in
@@ -342,7 +443,7 @@ cloudstack-agent and should already be installed.
 
       #LIBVIRTD_ARGS="--listen"
 
-   On RHEL 8 / CentOS 8 / SUSE run the following command :
+   On RHEL 8 / CentOS 8 / SUSE / Ubuntu / Debian, run the following command :
 
    .. parsed-literal::
 
@@ -370,6 +471,19 @@ cloudstack-agent and should already be installed.
    .. parsed-literal::
 
       #LIBVIRTD_ARGS="--listen"
+
+   Configure libvirt to connect to libvirtd and not to per-driver daemons, especially important on newer distros such as EL9 and Ubuntu 24.04. 
+   Edit ``/etc/libvirt/libvirt.conf`` and add the following:
+
+   .. parsed-literal::
+      remote_mode="legacy"
+
+   On Ubuntu 24.04 or newer set libvirtd mode to traditional mode (see https://libvirt.org/manpages/libvirtd.html#system-socket-activation):
+
+   .. parsed-literal::
+
+      systemctl mask libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tls.socket libvirtd-tcp.socket
+
 
 #. Restart libvirt
 
@@ -427,6 +541,10 @@ ensure the Agent has all the required permissions.
       .. parsed-literal::
 
          $ setenforce permissive
+
+.. note:: In a production environment, selinux should be set to enforcing
+   and the necessary selinux policies are created to allow the
+   services to run.
 
 #. Configure Apparmor (Ubuntu)
 
@@ -491,7 +609,7 @@ There are many ways to configure your networking. Even within the scope of a giv
 network mode.  Below are a few simple examples.
 
 .. note::
-   Since Ubuntu 20.04 the standard for manging network connections is by
+   Since Ubuntu 20.04 the standard for managing network connections is by
    using NetPlan YAML files. Please refer to the Ubuntu man pages for further
    information and set up network connections figuratively.
 
@@ -1378,7 +1496,7 @@ extra ports by executing the following iptable commands:
 
    $ iptables -I INPUT -p tcp -m tcp --dport 49152:49216 -j ACCEPT
 
-These iptable settings are not persistent accross reboots, we have to
+These iptable settings are not persistent across reboots, we have to
 save them first.
 
 .. parsed-literal::
@@ -1483,7 +1601,7 @@ perform.
 In case of KVM, UEFI enabled hypervisor hosts must have the ``ovmf`` or
 ``edk2-ovmf`` package installed.
 
-You can find further informations regarding prerequisites at the CloudStack Wiki
+You can find further information regarding prerequisites at the CloudStack Wiki
 (https://cwiki.apache.org/confluence/display/CLOUDSTACK/Enable+UEFI+booting+for+Instance)
 as well as limitations for using UEFI in CloudStack.
 

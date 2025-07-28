@@ -91,6 +91,29 @@ at `MySQL Reference
 Manual <http://dev.mysql.com/doc/refman/5.5/en/innodb-buffer-pool.html>`_.
 
 
+Selecting Database Connection Pool Library
+------------------------------------------
+
+CloudStack uses JDBC connection pool to manage and use database connections
+in an optimal manner. It allows using either
+`HikariCP <https://github.com/brettwooldridge/HikariCP>`_ or
+`DBCP 2 <https://commons.apache.org/dbcp/>`_ based on the preference for
+individual CloudStack databases - cloud, cloud_usage, simulator.
+
+The following settings can be configured in the db.properties configuration
+file for the management server or usage server:
+db.cloud.connectionPoolLib
+db.cloud_usage.connectionPoolLib
+db.simulator.connectionPoolLib
+
+To use DBCP 2, the value for the configuration must be set to 'dbcp'. An
+empty value or 'hikaricp' will allow using HikariCP.
+
+For large-scale environments, HikariCP should perform better. For environments
+running management server with constrained memory resources, using DBCP may
+work better in terms of memory usage.
+
+
 Monitor the Database Load
 -------------------------
 
@@ -143,3 +166,76 @@ Article <http://support.citrix.com/article/CTX126531>`_.The article
 refers to XenServer 5.6, but the same information applies to XenServer 6
 
 
+Purging Expunged Resources
+--------------------------
+
+.. note::
+  Currently only available for Instances and their linked resources.
+
+Over the time there are chances of piling up of millions of database records
+for the removed or expunged resources. The presence of a lot of useless
+records in the database can also affect the performance of the cloud so it is
+needed to purge such entries in a systematic way.
+CloudStack provides the following methods to allow purging of the expunged
+resources and their database records:
+
+Using background task
+~~~~~~~~~~~~~~~~~~~~~
+
+A background task will run at regular intervals. The interval for the task and
+other parameters for it such as resource types, start and end date and batch size
+can also be controlled with the help of global settings.
+
+The following new global settings have been introduced which would allow
+configuring background task for purging the expunged resources:
+
+.. cssclass:: table-striped table-bordered table-hover
+
+================================================   ================   ===================================================================
+Global setting                                     Default values     Description
+================================================   ================   ===================================================================
+expunged.resources.purge.enabled                   false              Whether to run a background task to purge the DB records of the expunged resources.
+expunged.resources.purge.resources                 (empty)            A comma-separated list of resource types that will be considered by the background task to purge the DB records of the expunged resources. Currently only VirtualMachine is supported. An empty value will result in considering all resource types for purging.
+expunged.resources.purge.interval                  86400              Interval (in seconds) for the background task to purge the DB records of the expunged resources.
+expunged.resources.purge.delay                     300                Initial delay (in seconds) to start the background task to purge the DB records of the expunged resources task.
+expunged.resources.purge.batch.size                50                 Batch size to be used during purging of the DB records of the expunged resources.
+expunged.resources.purge.start.time                (empty)            Start time to be used by the background task to purge the DB records of the expunged resources. Use format yyyy-MM-dd or yyyy-MM-dd HH:mm:ss.
+expunged.resources.purge.keep.past.days            30                 The number of days in the past from the execution time of the background task to purge the DB records of the expunged resources for which the expunged resources must not be purged. To enable purging DB records of the expunged resource till the execution of the background task, set the value to zero.
+================================================   ================   ===================================================================
+
+
+Using API
+~~~~~~~~~
+
+An admin-only API `purgeExpungedResources` allows purging the expunged resources
+with desired parameters. It will allow passing the following parameters -
+resourcetype, batchsize, startdate, enddate. An example of purgeExpungedResources
+API call is shown below:
+
+
+.. parsed-literal::
+
+   > purge expungedresources startdate=2024-04-15 enddate=2024-04-20 resourcetype=VirtualMachine
+   {
+      "purgeexpungedresourcesresponse": {
+         "resourcecount": 6
+      }
+   }
+
+
+Using configuration in offerings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+..note::
+  Available only for service offerings
+
+_purgeresources_ configuration for offerings can be used to allow immediately
+purging a resource when it is expunged. The configuration can be set to true or
+false _purgeresources_ parameter while creating the corresponding offerings. The
+following global setting can be used to control the delay for purging the
+resource after expunge:
+
+================================================   ================   ===================================================================
+Global setting                                     Default values     Description
+================================================   ================   ===================================================================
+expunged.resource.purge.job.delay                  180                Delay (in seconds) to execute the purging of the DB records of an expunged resource initiated by the configuration in the offering. Minimum value should be 180 seconds and if a lower value is set then the minimum value will be used.
+================================================   ================   ===================================================================

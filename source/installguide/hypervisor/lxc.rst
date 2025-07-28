@@ -49,7 +49,7 @@ In addition, the following hardware requirements apply:
 -  Within a single cluster, the hosts must be of the same distribution
    version.
 
--  All hosts within a cluster must be homogenous. The CPUs must be of
+-  All hosts within a cluster must be homogeneous. The CPUs must be of
    the same type, count, and feature flags.
 
 -  Must support HVM (Intel-VT or AMD-V enabled)
@@ -158,7 +158,7 @@ In Ubuntu:
 
    $ apt-get install cloudstack-agent
 
-Next step is to update the Agent configuration setttings. The settings
+Next step is to update the Agent configuration settings. The settings
 are in ``/etc/cloudstack/agent/agent.properties``
 
 #. Set the Agent to run in LXC mode:
@@ -196,7 +196,7 @@ vital that libvirt is configured correctly. Libvirt is a dependency of
 cloudstack-agent and should already be installed.
 
 #. In order to have live migration working libvirt has to listen for
-   unsecured TCP connections. We also need to turn off libvirts attempt
+   insecured TCP connections. We also need to turn off libvirts attempt
    to use Multicast DNS advertising. Both of these settings are in
    ``/etc/libvirt/libvirtd.conf``
 
@@ -318,6 +318,10 @@ ensure the Agent has all the required permissions.
       .. parsed-literal::
 
          $ setenforce permissive
+
+.. note:: In a production environment, selinux should be set to enforcing
+   and the necessary selinux policies are created to allow the
+   services to run.
 
 #. Configure Apparmor (Ubuntu)
 
@@ -621,7 +625,7 @@ extra ports by executing the following iptable commands:
 
    $ iptables -I INPUT -p tcp -m tcp --dport 49152:49216 -j ACCEPT
 
-These iptable settings are not persistent accross reboots, we have to
+These iptable settings are not persistent across reboots, we have to
 save them first.
 
 .. parsed-literal::

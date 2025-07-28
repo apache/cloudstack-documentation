@@ -178,27 +178,33 @@ new, unique value.
 
 #. Type the new password, and click OK.
 
-Basic UI Customization
+Basic UI Customisation
 ~~~~~~~~~~~~~~~~~~~~~~
 
 Users can customize the CloudStack's user interface by means of a configuration file at /etc/cloudstack/management/config.json which can be used to modify the theme, logos, etc. to align to one's requirement.
 
 To change the logo, login banner, error page icon, etc. the following details can be edited in config.json:
 
-============================= ================================================================
+======================================= ==================================================================================================================================================================
 Property                      Description
-============================= ================================================================
-apiBase                       Changes the suffix for the API endpoint
-docBase                       Changes the base URL for the documentation
-appTitle                      Changes the title of the portal
-footer                        Changes the footer text
-loginFooter                   Configure to display text (HTML) in the footer at the login screen.
-logo                          Changes the logo top-left side image
-banner                        Changes the login banner image
-error.404                     Changes the image of error Page not found
-error.403                     Changes the image of error Forbidden
-error.500                     Changes the image of error Internal Server Error.
-============================= ================================================================
+======================================= ==================================================================================================================================================================
+apiBase                                 Changes the suffix for the API endpoint
+docBase                                 Changes the base URL for the documentation
+appTitle                                Changes the title of the portal
+footer                                  Changes the footer text
+loginFavicon                            Changes the favicon of the login page
+loginFooter                             Configure to display text (HTML) in the footer at the login screen
+loginTitle                              Changes the title of the login page
+logo                                    Changes the logo top-left side image
+minilogo                                Changes the logo top-left side image when menu is collapsed
+banner                                  Changes the login banner image
+error.404                               Changes the image of error Page not found
+error.403                               Changes the image of error Forbidden
+error.500                               Changes the image of error Internal Server Error
+imageSelectionInterface                 Allows specifying view for image(template/ISO) selection in several UI forms. Supported values are: "modern" and "legacy". Default view is "modern"
+showUserCategoryForModernImageSelection Enables showing or hiding _User_ category in the *modern* image selection view which will show all user-owned images for the logged in user. Default value is true
+showAllCategoryForModernImageSelection  Enables showing or hiding _All_ category in the *modern* image selection view which will show all available images for the logged in user. Default value is false
+======================================= ==================================================================================================================================================================
 
 .. parsed-literal::
 
@@ -216,7 +222,7 @@ error.500                     Changes the image of error Internal Server Error.
     }
 
 
-Customization of themes is also possible, such as, modifying banner width, general color, etc. This can be done by editing the "theme" section of the config.json file. Theme section provides following properties for customization:
+Customisation of themes is also possible, such as, modifying banner width, general color, etc. This can be done by editing the "theme" section of the config.json file. Theme section provides following properties for customisation:
 
 ============================= ================================================================
 Property                      Description
@@ -326,7 +332,7 @@ that have a title, text (description), link and icon.
   },
 
 Contextual help documentation URLs can be customized with the help of `docBase` and `docHelpMappings` properties.
-To override a particular documentation URL, a mapping can be added for the URL path in the config. A documentation URL is formed by combining the `docBase` URL base and a path set in the source code. Adding a mapping for any particular path in the configuration will result in generating documetation URL with overridden path.
+To override a particular documentation URL, a mapping can be added for the URL path in the config. A documentation URL is formed by combining the `docBase` URL base and a path set in the source code. Adding a mapping for any particular path in the configuration will result in generating documentation URL with overridden path.
 By default, `docHelpMappings` lists all existing documentation URL suffixes, mapped to themselves, in the configuration file that are used in the code.
 
 .. parsed-literal::
@@ -367,7 +373,7 @@ By default, `docHelpMappings` lists all existing documentation URL suffixes, map
         "adminguide/networking_and_traffic.html#creating-a-vpn-gateway-for-the-vpc": "adminguide/networking_and_traffic.html#creating-a-vpn-gateway-for-the-vpc",
         "adminguide/networking_and_traffic.html#enabling-or-disabling-static-nat": "adminguide/networking_and_traffic.html#enabling-or-disabling-static-nat",
         "adminguide/networking_and_traffic.html#load-balancing-across-tiers": "adminguide/networking_and_traffic.html#load-balancing-across-tiers",
-        "adminguide/networking_and_traffic.html#releasing-an-ip-address-alloted-to-a-vpc": "adminguide/networking_and_traffic.html#releasing-an-ip-address-alloted-to-a-vpc",
+        "adminguide/networking_and_traffic.html#releasing-an-ip-address-allotted-to-a-vpc": "adminguide/networking_and_traffic.html#releasing-an-ip-address-allotted-to-a-vpc",
         "adminguide/networking_and_traffic.html#reserving-public-ip-addresses-and-vlans-for-accounts": "adminguide/networking_and_traffic.html#reserving-public-ip-addresses-and-vlans-for-accounts",
         "adminguide/networking_and_traffic.html#restarting-and-removing-a-vpn-connection": "adminguide/networking_and_traffic.html#restarting-and-removing-a-vpn-connection",
         "adminguide/networking_and_traffic.html#security-groups": "adminguide/networking_and_traffic.html#security-groups",
@@ -477,22 +483,103 @@ Example for adding custom plugins:
       plugins: [
          {
             "name": "ExamplePlugin",
-            "icon": "appstore",
+            "icon": "appstore-outlined",
             "path": "example.html"
          },
          {
             "name": "ExamplePlugin1",
-            "icon": "appstore",
+            "icon": "appstore-outlined",
             "path": "https://cloudstack.apache.org/"
          }
       ]
       ...
    }
 
-`icon` for the plugin can be chosen from Ant Design icons listed at `Icon - Ant Design Vue https://www.antdv.com/components/icon/`_.
+`icon` for the plugin can be chosen from Ant Design icons listed at `https://3x.antdv.com/components/icon <https://3x.antdv.com/components/icon>`_.
+
+.. warning::
+   Not all ant icons are supported at the moment. You will find a list of supported icons 
+   within the github repository in ui/src/core/lazy_lib/icons_use.js. To use an icon you 
+   need to transform the listed name. For example "PieChartOutlined" needs to be transformed 
+   to "pie-chart-outlined", "ReadOutlined" needs to be transformed to "read-outlined".
+
 For displaying a custom HTML in the plugin, HTML file can be stored in the CloudStack management server's web application directory on the server, i.e., */usr/share/cloudstack-management/webapp* and `path` can be set to the name of the file. For displaying a service or a web page, URL can be set as the `path` of the plugin.
 
 |ui-custom-plugin.png|
+
+
+Announcement Banner
+===================
+
+Admin can configure an **announcement banner** in `config.json` to display alerts or messages to all users. 
+This banner is useful for communicating important notices such as performance issues, scheduled maintenance, or general announcements.
+To enable and customize the banner, use the `announcementBanner` section in the config.json file. 
+
+This section supports the following properties:
+
+**Configuration Example**
+
+.. parsed-literal::
+
+  "announcementBanner": {
+    "enabled": true,
+    "showIcon": true,
+    "closable": true,
+    "persistDismissal": true,
+    "type": "warning",
+    "message": "<strong>Performance Notice:</strong> We're experiencing high load. Some operations may be slower than usual.",
+    "startDate": "2025-06-01T00:00:00Z",
+    "endDate": "2025-07-16T00:00:00Z"
+   }
+
+**Banner Display Example**
+
+Based on the configuration above, the following banner is shown in the user interface:
+
+.. image:: /_static/images/ui-announcement-banner.png
+   :align: center
+   :alt: UI Announcement banner
+
+--------
+
+**Properties Description**
+
+- **enabled**: Enables or disables the announcement banner (`true` or `false`).
+- **showIcon**: Displays an icon alongside the message. The icon corresponds to the banner `type`.
+- **closable**: Allows users to close the banner.
+- **persistDismissal**: Remembers the user's dismissal of the banner, so it doesn't reappear.
+- **type**: Specifies the type of banner. Supported values are:
+  
+  - `info`
+  - `warning`
+  - `error`
+  - `success`
+
+- **message**: The HTML-formatted content displayed in the banner.
+- **startDate** / **endDate**: Define the visibility window for the banner using ISO 8601 format (`YYYY-MM-DDTHH:MM:SSZ`).
+
+.. note::
+
+   - The `message` property supports basic HTML, allowing styled content such as `<strong>` tags for emphasis.
+   - Banner's background color changes based on `type` property value. White color is used for banner if `type` is not defined or has invalid value.
+   - Multi-line message is supported, however recommendation is to limit it to 2 lines. Content may overlap banner for more than 2 lines.
+
+
+Instance Image Selection Customisation
+-------------------------------------
+
+In the UI, there are several forms where the user needs to select an image (template/ISO) for an instance, such as deploying an instance, reinstalling an instance, creating a VNF appliance, etc. The image selection interface for these forms can be selected by the operator based on preference by specifying properties in the UI configuration file (config.json).
+
+The configuration property _imageSelectionInterface_ can be set to one of these values: modern or legacy. The default value is *modern*.
+
+When the *modern* interface is used, images will be categorized based on the guest operating system categories. Further customisation can be done using the configuration properties showUserCategoryForModernImageSelection and showAllCategoryForModernImageSelection to allow or disallow the display of additional categories.
+
+|ui-modern-image-selection.png|
+
+The *legacy* interface will display images based on templatefilter/isofilter, i.e., Featured, Community, My Templates/ISOs, and Shared.
+
+|ui-legacy-image-selection.png|
+
 
 Advanced UI Customisation
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -585,6 +672,12 @@ The following features are no longer supported or available in the UI but are st
 
 .. |change-password.png| image:: /_static/images/change-password.png
    :alt: button to change a User's password
+
+.. |ui-modern-image-selection.png| image:: /_static/images/ui-modern-image-selection.png
+   :alt: Modern Image Selection
+
+.. |ui-legacy-image-selection.png| image:: /_static/images/ui-legacy-image-selection.png
+   :alt: Legacy Image Selection
 
 .. |ui-custom-plugin.png| image:: /_static/images/ui-custom-plugin.png
    :alt: Custom plugin shown in UI with navigation

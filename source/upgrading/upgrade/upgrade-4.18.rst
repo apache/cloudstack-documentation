@@ -145,13 +145,13 @@ Setup the public key for the above repository:
 
    .. parsed-literal::
 
-      $ sudo apt-get upgrade cloudstack-management
+      $ sudo apt-get install cloudstack-management
 
 #. If you use CloudStack usage server
 
    .. parsed-literal::
 
-      $ sudo apt-get upgrade cloudstack-usage
+      $ sudo apt-get install cloudstack-usage
 
 
 .. _rhel414:
@@ -225,7 +225,7 @@ Hypervisor: VMware
    built using "noredist". Refer to :ref:`building-noredist`.
 
 
-No additional steps are requried for the VMware Hypervisor for this upgrade.
+No additional steps are required for the VMware Hypervisor for this upgrade.
 
 
 .. _kvm414:
@@ -253,7 +253,8 @@ hosts.
 
    .. parsed-literal::
 
-      $ sudo apt-get upgrade cloudstack-agent
+      $ sudo apt-get update
+      $ sudo apt-get install cloudstack-agent
 
 #. Start the agent.
 

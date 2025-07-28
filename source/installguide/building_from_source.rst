@@ -267,7 +267,7 @@ several other dependencies. Note that we recommend using Maven 3.
 While we have defined, and you have presumably already installed the
 bootstrap prerequisites, there are a number of build time prerequisites
 that need to be resolved. CloudStack uses maven for dependency
-resolution. You can resolve the buildtime depdencies for CloudStack by
+resolution. You can resolve the buildtime dependencies for CloudStack by
 running:
 
 .. parsed-literal::
@@ -483,9 +483,9 @@ Generating RPMs is done using the ``package.sh`` script:
 
 .. parsed-literal::
 
-   $ ./package.sh -d centos63
+   $ ./package.sh -d el8
 
-For other supported options(like centos7), run ``./package.sh --help``
+For other supported options, run ``./package.sh --help``
 
 That will run for a bit and then place the finished packages in
 ``dist/rpmbuild/RPMS/x86_64/``.
@@ -568,7 +568,7 @@ to build from source.
    page on the wiki.
 
 #. You may also need to download
-   `vhd-util <http://download.cloud.com.s3.amazonaws.com/tools/vhd-util>`_,
+   `vhd-util <https://download.cloudstack.org/tools/>`_,
    which was removed due to licensing issues. You'll copy vhd-util to
    the ``scripts/vm/hypervisor/xenserver/`` directory.
 

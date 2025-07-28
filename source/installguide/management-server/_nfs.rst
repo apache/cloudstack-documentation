@@ -54,7 +54,7 @@ from the Management Server.
 
 The exact commands for the following steps may vary depending on your
 operating system version.
-The following steps asume you already have an NFS Server installed on your storage
+The following steps assume you already have an NFS Server installed on your storage
 system. Please refer to the guide of your OS on how to install a NFS Server.
 
 .. warning::
@@ -253,8 +253,8 @@ operating system version.
       .. parsed-literal::
 
          mkdir /primary
-         mount -t nfs <management-server-name>:/export/primary
+         mount -t nfs <management-server-name>:/export/primary /primary
          umount /primary
          mkdir /secondary
-         mount -t nfs <management-server-name>:/export/secondary
+         mount -t nfs <management-server-name>:/export/secondary /secondary
          umount /secondary

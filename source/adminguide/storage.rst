@@ -172,22 +172,31 @@ In order to use multiple local storage pools, you need to
 
        local.storage.uuid=a43943c1-1759-4073-9db1-bc0ea19203aa,f5b1220b-4446-42dc-a872-cffd281f9f8c
        local.storage.path=/var/lib/libvirt/images,/var/lib/libvirt/images2
-#
 
 #. Restart cloudstack-agent service
 
     - Storage pools will be automatically created in libvirt by the CloudStack agent
 
 Adding a Local Storage Pool via UI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When using UI, ensure that the scope of the storage is set to "Host", and 
 ensure that the protocol is set to "Filesystem".
 
 |adding-local-pool-via-ui.png|
 
+Adding a Local Storage Pool via Command Line
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Using Cloudmonkey command line.
+
+      .. parsed-literal::
+
+         cmk create storagepool zoneid=07d64765-3123-4fc2-b947-25d2c36f5bb4 name=test provider=DefaultPrimary podid=0af34b96-e88d-440e-a6bd-c4e8aab4aa4a clusterid=49db6a16-2f6c-4583-9d07-37ccceb248ae  url=file://10.9.8.7/var/lib/libvirt/images2
+
 Changing the Scope of the Primary Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Scope of a Primary Storage can be changed from Zone-wide to Cluster-wide
 and vice versa when the Primary Storage is in Disabled state.
 An action button is displayed in UI for each Primary Storage in Disabled state.
@@ -216,7 +225,7 @@ combinations:
 
 -  KVM with NFS
 
--  KVM wite CEPH/RBD
+-  KVM with CEPH/RBD
 
 -  VMWare with NFS
 
@@ -244,6 +253,38 @@ same set of tags on the primary storage for all clusters in a pod. Even
 if different devices are used to present those tags, the set of exposed
 tags can be the same.
 
+Storage Access Groups
+~~~~~~~~~~~~~~~~~~~~~
+
+When a primary storage is added in CloudStack, either at the Zone or Cluster scope,
+it gets connected to all the hosts within that scope. Using Storage Access Groups,
+this behavior can be controlled by defining groups on both primary storage and hosts,
+ensuring connections are established only within those groups. When a Storage Access
+Group is set on a primary storage (a text string attribute similar to tag),
+and the same group is assigned to a host, the primary storage will connect only to that host.
+A Storage Access Group can also be applied at the Cluster, Pod, or Zone level, allowing
+all hosts in that entity to inherit the group automatically.
+
+For example, if there are 50 hosts across 10 clusters, with 5 hosts per cluster,
+and a zone-wide primary storage is added, it will connect to all 50 hosts. If the
+operator wants to limit the connection to a few hosts in just the first 2 clusters,
+Storage Access Groups can be set on the primary storage and those specific hosts —
+or directly on the two clusters to achieve the same effect.
+
+Adding Storage Access Group on a primary storage.
+
+|adding-storage-access-group-on-primary-storage.png|
+
+Adding Storage Access Group on a host. Similarly it can be applied Cluster/Pod/Zone.
+
+|adding-storage-access-group-on-host.png|
+
+A primary storage with a Storage Access Group will connect only to hosts that have the
+same Storage Access Group. A storage pool without a Storage Access Group will connect to all hosts,
+including those with or without any Storage Access Group.
+
+Note: Storage Access Groups are not applicable for local primary storages. Currently this is tested with NFS
+and Dell PowerFlex storages.
 
 Maintenance Mode for Primary Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -277,7 +318,7 @@ templates, and ISOs.
 
 
 Setting NFS Mount Options on the Storage Pool
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 NFS mount options can be added while creating an NFS storage pool for
 KVM hosts. When the storage pool is mounted on the KVM hypervisor host,
@@ -394,6 +435,7 @@ under "Browser" tab for a secondary storage.
 
 Read only
 ~~~~~~~~~
+
 Secondary storages can also be set to read-only in order to cordon it off
 from being used for storing any further Templates, Volumes and Snapshots.
 
@@ -402,7 +444,7 @@ from being used for storing any further Templates, Volumes and Snapshots.
       cmk updateImageStore id=4440f406-b9b6-46f1-93a4-378a75cf15de readonly=true
 
 Direct resources to a specific secondary storage
-~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default, ACS allocates ISOs, volumes, snapshots, and templates to the freest secondary storage of the zone. In order to direct these resources to a specific secondary storage, the user can utilize the functionality of the dynamic secondary storage selectors using heuristic rules. This functionality utilizes JavaScript rules, defined by the user, to direct these resources to a specific secondary storage. When creating the heuristic rule, the script will have access to some preset variables with information about the secondary storage in the zone, about the resource the rule will be applied upon, and about the account that triggered the allocation. These variables are presented in the table below:
 
@@ -410,39 +452,39 @@ By default, ACS allocates ISOs, volumes, snapshots, and templates to the freest 
    | Resource                          | Variables                         |
    +===================================+===================================+
    | Secondary Storage                 | ``id``                            |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``name``                          |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``usedDiskSize``                  |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``totalDiskSize``                 |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``protocol``                      |
    +-----------------------------------+-----------------------------------+
    | Snapshot                          | ``size``                          |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``hypervisorType``                |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``name``                          |
    +-----------------------------------+-----------------------------------+
    | ISO/Template                      | ``format``                        |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``hypervisorType``                |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``templateType``                  |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``name``                          |
    +-----------------------------------+-----------------------------------+
    | Volume                            | ``size``                          |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``format``                        |
    +-----------------------------------+-----------------------------------+
    | Account                           | ``id``                            |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``name``                          |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``domain.id``                     |
-   |                                   +-----------------------------------|
+   |                                   +-----------------------------------+
    |                                   | ``domain.name``                   |
    +-----------------------------------+-----------------------------------+
 
@@ -723,7 +765,7 @@ may take several minutes for the volume to be moved to the new Instance.
 
 
 Instance Storage Migration
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Supported in XenServer, KVM, and VMware.
 
@@ -772,7 +814,7 @@ There are two situations when you might want to migrate a disk:
 Migrating Storage For a Running Instance
 ''''''''''''''''''''''''''''''''''''''''
 
-(Supported on XenServer and VMware)
+(Supported on XenServer, KVM and VMware)
 
 #. Log in to the CloudStack UI as a user or admin.
 
@@ -814,15 +856,17 @@ Migrating Storage and Attaching to a Different Instance
    Volume” <#attaching-a-volume>`_
 
 
-Migrating an Instance Root Volume to a New Storage Pool
+Migrating an Instance Volume to a New Storage Pool
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-(XenServer, VMware) You can live migrate an Instance's root disk from one
+(XenServer, VMware) You can live migrate an Instance's volumes from one
 storage pool to another, without stopping the Instance first.
 
-(KVM) When migrating the root disk volume, the Instance must first be stopped,
-and users can not access the Instance. After migration is complete, the Instance can
-be restarted.
+(KVM) KVM does not support volume live migration due to the limited possibility
+to refresh VM XML domain. Therefore, to live migrate a volume between storage pools,
+one must migrate the VM to a different host as well to force the VM XML domain update.
+Use 'migrateVirtualMachineWithVolumes' instead or stop the Instance and then migrate
+the volume.
 
 #. Log in to the CloudStack UI as a user or admin.
 
@@ -1006,6 +1050,46 @@ True. Instances created from this service offering will have their disks reset
 upon reboot. See `“Creating a New Compute
 Offering” <service_offerings.html#creating-a-new-compute-offering>`_.
 
+Volume delete protection
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+CloudStack protects volumes from accidental deletion using a delete protection
+flag, which is false by default. When delete protection is enabled for a volume,
+it cannot be deleted through the UI or API. It can only be deleted after
+removing delete protection from the volume.
+
+Delete protection can be enabled for a volume via updateVirtualMachine API.
+
+.. code:: bash
+
+   cmk update volume id=<volume id> deleteprotection=true
+
+To remove delete protection, use the following command:
+
+.. code:: bash
+
+   cmk update volume id=<volume id> deleteprotection=false
+
+To enable/disable delete protection for a volume using the UI, follow these steps:
+
+#. Log in to the CloudStack UI as a User or admin.
+
+#. In the navigation menu on the left, click Volumes under Storage.
+
+#. Choose the volume for which you want to enable/disable delete protection.
+
+#. Click on the Edit button |EditButton.png|
+
+#. Toggle the Delete Protection switch to enable or disable delete protection.
+
+#. Click Ok button to save the changes.
+
+.. note::
+   The volume delete protection is only considered when the volume is being
+   deleted through the UI or via `deleteVolume` or `destroyVolume` API. If the
+   domain/project is deleted, the volumes under the domain/project will be
+   deleted irrespective of the delete protection status.
+
 
 Volume Deletion and Garbage Collection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1044,7 +1128,7 @@ Volume statistics are collected on a regular interval (defined by global
 setting volume.stats.interval with a default of 600 seconds). 
 This feature is currently only available for VMware and KVM. 
 Volume stats include include bytes/s and IO/s statistics as shown in the
-API output bellow.
+API output below.
 
 .. code:: bash
 
@@ -1060,6 +1144,7 @@ API output bellow.
          "diskkbsread": 343124,
          "diskkbswrite": 217619,
          ...
+
 Bytes read/write, as well as the total IO/s, are exposed via UI, as shown in the image below.
 
 |volume-metrics.png|
@@ -1118,12 +1203,12 @@ Following is the example for checkVolume API usage and the result in the volume 
 
 
 Importing and Unmanaging Volumes from Storage Pools
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Since Apache CloudStack 4.19.1.0, importing and unmanaging volumes from primary storage pools are supported.
 
 .. note::
-   Currenty the supported storage types are: NFS, Ceph and Local storage for KVM hypervisor.
+   Currently the supported storage types are: NFS, Ceph and Local storage for KVM hypervisor.
 
 #. Log in to the CloudStack UI as an administrator.
 
@@ -1246,11 +1331,18 @@ is running, the global setting 'kvm.snapshot.enabled' must be set to 'True'.
 
 The Volume Snapshot creation has changed in recent versions:
 
-Under the hood, first, a full Instance Snapshot is taken - this means that during the taking of
-the Instance Snapshot the Instance will be in the "Paused" state (while RAM memory is being written to the
-QCOW2 file), which means that Instance will be unavailable from the Network point of view.
-When the Instance Snapshot is created, Instance is unpaused/resumed, the single Volume Snapshot is exported
-to the Secondary Storage, and then the Instance Snapshots is removed from the Instance.
+When the VM is running, a disk-only VM snapshot is taken, exclusively for the volume in question.
+If the VM is stopped, the volume will be converted (with qemu-img convert). The final storage location is
+determined by the ``snapshot.backup.to.secondary`` configuration; if it is false the snapshot will be copied
+to a different directory in the same primary storage as the volume; if it is true the snapshot will be copied 
+to the secondary storage. If the snapshot is being taken in a file-based storage (NFS, SharedMountPoint, Local),
+it will be copied directly to its final storage location, according to the configuration.
+
+Since 4.21.0.0, ACS supports incremental snapshots for the KVM hypervisor when using file-based storage (NFS, SharedMountPoint, Local),
+to enable incremental snapshots the ``kvm.incremental.snapshot`` configuration must be enabled. Furthermore, in order to take incremental snapshots
+the KVM host must have at least Libvirt version 7.6.0+ and qemu version 6.1+. The size of the snapshot chains
+will be determined by the ``snapshot.delta.max`` configuration, which affects both KVM and XenServer snapshots. 
+More information on the incremental snapshot feature for KVM can be found in its `specification <https://github.com/apache/cloudstack/issues/8907>`_.
 
 
 Automatic Snapshot Creation and Retention
@@ -1266,7 +1358,7 @@ policy can be set up per disk volume. For example, a user can set up a
 daily Snapshot at 02:30.
 
 With each Snapshot schedule, users can also specify the number of
-scheduled Snapshots to be retained. Older Snapshots that exceed the
+recurring Snapshots to be retained. Older Snapshots that exceed the
 retention limit are automatically deleted. This user-defined limit must
 be equal to or lower than the global limit set by the CloudStack
 administrator. See `“Globally Configured
@@ -1292,7 +1384,7 @@ incremental backups are supported, every N backup is a full backup.
 +------------------------------+------------------+------------------+-----+
 |                              | VMware vSphere   | Citrix XenServer | KVM |
 +==============================+==================+==================+=====+
-| Support incremental backup   | No               | Yes              | No  |
+| Support incremental backup   | No               | Yes              | Yes |
 +------------------------------+------------------+------------------+-----+
 
    .. note::
@@ -1370,7 +1462,7 @@ Snapshot request fails and returns an error message.
 Snapshot Copy
 ~~~~~~~~~~~~~
 
-CloudStack allows copying an exisiting backed-up snapshot to multiple zones.
+CloudStack allows copying an existing backed-up snapshot to multiple zones.
 Users can either use the UI in the snapshot details view or the `copySnapshot`
 API to copy a snapshot from one zone to other zone(s). Snapshot copies can
 be used for disastser recovery and creating volumes and templates in the
@@ -1446,6 +1538,8 @@ To create a new bucket, click create Bucket, provide the following details, and 
 
 #. Object Store: Select the object store where you want the Bucket to reside
 
+#. Quota in GiB: Enforce a quota on the bucket. This is a mandatory field since 4.21 as it is used to enforce resource limit on object store usage.
+
 Based on the selected Object Store, you can specify additional details like quota, encryption, policy.
 
 |Createbucket.png|
@@ -1486,6 +1580,116 @@ Deleting objects from a bucket
 
 2. Click on the |delete-button.png| button to delete the selected files from the bucket.
 
+
+Configuring resource limits on buckets and object storage usage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Administrators can enforce limits on the maximum number of buckets they can be created and
+the total object storage space that can be allocated at an account, domain and project level.
+Allocated storage is the sum of quota used by all of the buckets.
+Administrators can do this by going to the configure limits tab in accounts, domains and projects
+similar to when enforcing resource limits on volumes, primary storage usage etc.
+
+Shared FileSystems
+------------------
+
+CloudStack offers fully managed NFS Shared FileSystems to all users.
+This section gives technical details on how to create/manage a Shared FileSystem
+using basic lifecycle operations and also some implementation details.
+
+.. note:: 
+   This feature is available only on advanced zones without security groups.
+
+Creating a New Shared FileSystem 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. Log in to the CloudStack UI as a user or administrator.
+
+#. In the left navigation bar, click Storage.
+
+#. In the Select View, choose Shared FileSystems.
+
+Click on Create Shared FileSystem, provide the following details and then click OK.
+
+#. Name
+#. Description
+#. Zone
+#. Format: Filesystem format (XFS, EXT4) which will be installed on the Shared FileSystem.
+#. Network: Guest network to which the Shared FileSystem will be attached.
+#. Compute offering: Offering using which the Shared FileSystem Instance will be deployed.
+#. Disk offering: Offering used by the underlying data volume.
+#. Size, MinIops and MaxIos: Displayed only when the disk offering takes custom size and custom iops.
+
+|create-sharedfs.png|
+
+Admins will see extra fields in the create form where they can specify the
+account, domain and the project which will be owning the Shared FileSystem.
+|create-sharedfs-admin.png|
+
+Access
+~~~~~~
+The Shared FileSystem can be mounted by using the information given on the Access Tab.
+|sharedfs-access-tab.png|
+
+Lifecycle Operations 
+~~~~~~~~~~~~~~~~~~~~
+
+Supported lifecycle operations are :
+
+#. Update name and description of the Shared FileSystem
+
+#. Stop/Start Shared FileSystem - This will Stop and Start the Shared FileSystem Instance 
+
+#. Restart Shared FileSystem - Reboots the Shared FileSystem Instance. If Cleanup option is provided then the
+   Instance state is cleaned up and restored to the original template. Configurations related to setting up the
+   NFS export will be done again. This will not affect the data on the volume attached to the Instance.
+   |restart-sharedfs.png|
+
+#. Change Disk Offering - The disk offering of the underlying volume can be changed. Whether live resize
+   is supported or not depends on the hyervisor.
+   Please note that the size of the Shared FileSystem can only be increased.
+
+#. Change Service Offering - The service offering of the Shared FileSystem Instance can be changed as required.
+   This can only be done when the Shared FileSystem is in Stopped state.
+
+#. Add/Remove Network - Guest networks can be added to or removed from the Shared FileSystem.
+   NFS share is exported to all networks. So instances on different networks can mount the
+   same share using the respective IP addresses as given on the Access tab.
+   APIs serving these operations are addNicToVirtualMachine and removeNicToVirtualMachine
+   called with the Shared FileSystem Instance ID.
+   Please note that the added networks must not be on overlapping CIDR ranges.
+   |add-remove-sharedfs-network.png|
+
+#. Destroy Shared FileSystem - The Shared FileSystem will be destroyed. It can be recovered before it automatically gets expunged.
+   Expunge timeout is given by the global setting 'sharedfs.cleanup.delay'.
+
+
+Shared FileSystem Instance
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Shared FileSystem Instance is stateless and HA enabled. A new instance is deployed and will start
+serving the NFS share if the host or VM goes down.
+The VM is installed with the SystemVM template which is also used by the CPVM and SSVM.
+
+The Shared FileSystem Instance can be seen in the Instances Tab as well. It's name is prefixed by the string
+"sharedfs-" plus the Shared FileSystem name. Actions that might interfere with Shared FileSystem operations are blocked or not shown.
+Basic operations like Start, Stop and Reboot are allowed for troubleshooting.
+Users can access the VM using the 'View Console' button for troubleshooting although it is not
+required during normal operations.
+
+Service Offering
+~~~~~~~~~~~~~~~~
+
+There are two global settings that control what should be the minimum RAM size and minimum
+CPU count for the Shared FileSystem Instance : 'sharedfsvm.min.cpu.count' and 'sharedfsvm.min.ram.size`.
+Only those offerings which meet these settings and have HA enabled are shown in the create form.
+
+Shared FileSystem Data Volume
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The data volume is also visible to the users. It is recommended to use the Shared FileSystem UI/API to
+manage the data but users or admin can perform actions directly on the data volume or the root volume
+as well if they wish. Attaching and detaching a disk is not allowed on a Shared FileSystem Instance.
+
 .. |AttachDiskButton.png| image:: /_static/images/attach-disk-icon.png
    :alt: Attach Disk Button.
 .. |resize-volume-icon.png| image:: /_static/images/resize-volume-icon.png
@@ -1516,6 +1720,8 @@ Deleting objects from a bucket
    :alt: Object store file upload
 .. |delete-button.png| image:: /_static/images/delete-button.png
    :alt: Delete button
+.. |EditButton.png| image:: /_static/images/edit-icon.png
+   :alt: button to edit the properties of a volume
 .. |upload-button.png| image:: /_static/images/upload-button.png
    :alt: Upload button
 .. |adding-local-pool-via-ui.png| image:: /_static/images/adding-local-pool-via-ui.png
@@ -1530,10 +1736,23 @@ Deleting objects from a bucket
    :alt: Import Volume
 .. |unmanage-volume.png| image:: /_static/images/unmanage-volume.png
    :alt: Unmanage Volume
+.. |create-sharedfs.png| image:: /_static/images/create-sharedfs.png
+   :alt: Create Shared FileSystem
+.. |create-sharedfs-admin.png| image:: /_static/images/create-sharedfs-admin.png
+   :alt: Create Shared FileSystem Admin Options
+.. |restart-sharedfs.png| image:: /_static/images/restart-sharedfs.png
+   :alt: Restart Shared FileSystem
+.. |sharedfs-access-tab.png| image:: /_static/images/sharedfs-access-tab.png
+   :alt: Shared FileSystem Access Tab
+.. |add-remove-sharedfs-network.png| image:: /_static/images/add-remove-sharedfs-network.png
+   :alt: Shared FileSystem Networks
 .. |nfs-mount-options-create-zone-wizard.png| image:: /_static/images/nfs-mount-options-create-zone-wizard.png
    :alt: NFS mount options in create Zone wizard
 .. |nfs-mount-options-add-primary-storage.png| image:: /_static/images/nfs-mount-options-add-primary-storage.png
    :alt: NFS mount options in add Primary Storage
 .. |nfs-mount-options-edit-primary-storage.png| image:: /_static/images/nfs-mount-options-edit-primary-storage.png
    :alt: NFS mount options in edit Primary Storage
-
+.. |adding-storage-access-group-on-primary-storage.png| image:: /_static/images/adding-storage-access-group-on-primary-storage.png
+   :alt: Adding storage access groups on primary storage
+.. |adding-storage-access-group-on-host.png| image:: /_static/images/adding-storage-access-group-on-host.png
+   :alt: Adding storage access groups on host

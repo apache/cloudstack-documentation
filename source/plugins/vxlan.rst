@@ -17,68 +17,50 @@
 The VXLAN Plugin
 ================
 
-System Requirements for VXLAN
------------------------------
+General
+-------
+CloudStack supports VXLAN technology to enhance scalability and flexibility in networking designs.
 
-In CloudStack 4.X.0, this plugin only supports the KVM hypervisor with the
-standard linux bridge.
+Using VXLAN (Virtual Extensible LAN) instead of traditional VLAN (Virtual LAN) for layer 2 isolation method offers several key benefits, especially for modern data centers and cloud networking environments that require high scalability and flexibility.
 
-The following table lists the requirements for the hypervisor.
+VXLAN overcomes the limitations of traditional VLANs by providing a highly scalable, flexible, and efficient networking solution. It enables the creation of a large number of isolated virtual networks over a common physical infrastructure,
+supports better utilization of network resources through Layer 3 routing capabilities, and simplifies network management and provisioning.
 
-.. cssclass:: table-striped table-bordered table-hover
+When deploying a VXLAN-based network, there are two options to choose from:
 
-+----------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
-| Item           | Requirement                                   | Note                                                                                                           |
-+================+===============================================+================================================================================================================+
-| Hypervisor     | KVM                                           | OvsVifDriver is not supported by this plugin in CloudStack 4.X, use BridgeVifDriver (default).                    |
-+----------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
-| Linux kernel   | version >= 3.7, VXLAN kernel module enabled   | It is recommended to use kernel >=3.9, since Linux kernel categorizes the VXLAN driver as experimental <3.9.   |
-+----------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
-| iproute2       | matches kernel version                        |                                                                                                                |
-+----------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+   •  Multicast
+   •  EVPN using BGP
 
-Table: Hypervisor Requirement for VXLAN
+While Multicast is the easiest to set up VXLAN isolation, EVPN offers much more control, scalability, and flexibility. Therefore, it is chosen for most VXLAN network deployments.
 
+.. warning::
+  Deploying VXLAN, especially with EVPN, requires extensive networking knowledge, which isn't covered by this documentation or CloudStack in general.
+  Make sure to familiarize yourself with VXLAN, BGP and EVPN before attempting to deploy this network technology.
 
-Linux Distributions that meet the requirements
-----------------------------------------------
-
-The following table lists distributions which meet requirements.
-
-.. cssclass:: table-striped table-bordered table-hover
-
-+----------------+-------------------+-------------------------------------------+----------------------------------------------------------------+
-| Distribution   | Release Version   | Kernel Version (Date confirmed)           | Note                                                           |
-+================+===================+===========================================+================================================================+
-| Ubuntu         | 13.04             | 3.8.0 (2013/07/23)                        |                                                                |
-+----------------+-------------------+-------------------------------------------+----------------------------------------------------------------+
-| Fedora         | >= 17             | 3.9.10 (2013/07/23)                       | Latest kernel packages are available in "update" repository.   |
-+----------------+-------------------+-------------------------------------------+----------------------------------------------------------------+
-| CentOS         | >= 6.5            | 2.6.32-431.3.1.el6.x86\_64 (2014/01/21)   |                                                                |
-+----------------+-------------------+-------------------------------------------+----------------------------------------------------------------+
-
-Table: List of Linux distributions which meet the hypervisor
-requirements
+System Requirements / Networking for VXLAN
+------------------------------------------
 
 
-Check the capability of your system
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To check the capability of your system, execute the following commands.
-
-::
-
-   $ sudo modprobe vxlan && echo $?
-   # Confirm the output is "0".
-   # If it's non-0 value or error message, your kernel doesn't have VXLAN kernel module.
-
-   $ ip link add type vxlan help
-   # Confirm the output is usage of the command and that it's for VXLAN.
-   # If it's not, your iproute2 utility doesn't support VXLAN.
+The following table lists the requirements for using VXLAN in your deployment:
 
 
-Important note on MTU size
-~~~~~~~~~~~~~~~~~~~~~~~~~~
++---------------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+| Item                | Requirement                                   | Note                                                                                                           |
++=====================+===============================================+================================================================================================================+
+| Hypervisor          | KVM                                           | Only the BridgeVifDriver (default) is supported                                                                |
++---------------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+| Network Card (NIC)  | VXLAN offloading                              | A NIC with VXLAN-offloading support is recommended. For example Mellanox ConnectX-5 or Intel X710              |
++---------------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+| IP Protocol         | IPv4 or IPv6                                  | CloudStack is agnostic to the IP-protocol being used as underlay. Both IPv4 and IPv6 are supported             |
++---------------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+| MTU                 | >=1550                                        | VXLAN has an overhead of 50 bytes, therefore 1550 is the minimum. See the notes below                          |
++---------------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+| BGP Routing         | FRRouting (>=10)                              | BGP Routing Daemon only required for EVPN. Version >=10 is recommended                                         |
++---------------------+-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
+
+
+MTU size
+~~~~~~~~
 
 When new VXLAN interfaces are created, kernel will obtain current MTU size of the physical interface (ethX or the bridge)
 and then create VXLAN interface/bridge that are exactly 50 bytes smaller than the MTU on physical interface/bridge.
@@ -87,101 +69,27 @@ have MTU of 1500 bytes, meaning that your physical interface/bridge must have MT
 In order to configure "jumbo frames" you can i.e. make physical interface/bridge with 9000 bytes MTU, then all the VXLAN
 interfaces will be created with MTU of 8950 bytes, and then MTU size inside Instance can be set to 8950 bytes.
 
-Important note on max number of multicast groups (and thus VXLAN interfaces)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In general it is recommend to use an MTU of at least 9000 bytes or larger. Most VXLAN capable network cards and switch support an MTU of up to 9216.
+
+Using an MTU of 9216 bytes allows for using Jumbo Frames (9000) within guest networks. 
+
+
+VXLAN using Multicast
+---------------------
+The default mode for using VXLAN is Multicast. The required configuration is described below.
+
+Important note on max number of multicast groups
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Default value of "net.ipv4.igmp_max_memberships" (cat /proc/sys/net/ipv4/igmp_max_memberships) is "20", which means that host can be joined to max 20 multicast groups (attach max 20 multicast IPs on the host).
-Since all VXLAN (VTEP) interfaces provisioned on host are multicast-based (belong to certain multicast group, and thus has it's own multicast IP that is used as VTEP), this means that you can not provision more than 20 (working) VXLAN interfaces per host.
-On Linux kernel 3.x you actually can provision more than 20, but ARP request will silently fail and cause client's networking problems
-On Linux kernel 4.x you can NOT provision (start) more than 20 VXLAN interfaces and error message "No buffer space available" can be observed in Cloudstack Agent logs after provisioning required bridges and VXLAN interfaces.
-Increase needed parameter to sane value (i.e. 100 or 200) as required.
-If you need to operate more than 20 Instances from different client's Network, this change above is required.
 
-Advanced: Build kernel and iproute2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Since all VXLAN (VTEP) interfaces provisioned on host are multicast-based (belong to certain multicast group, and thus has it is own multicast IP that is used as VTEP), this means that you can not provision more than 20 (working) VXLAN interfaces per host.
 
-Even if your system doesn't support VXLAN, you can compile the kernel
-and iproute2 by yourself. The following procedure is an example for
-CentOS 6.4.
+Under Linux you can NOT by default provision (start) more than 20 VXLAN interfaces and the error message "No buffer space available" will appear in the Cloudstack Agent logs after provisioning the required bridges and VXLAN interfaces.
 
+Increase the needed parameter to an appropriate value (i.e. 100 or 200) as required.
 
-Build kernel
-^^^^^^^^^^^^
-
-::
-
-   $ sudo yum groupinstall "Development Tools"
-   $ sudo yum install ncurses-devel hmaccalc zlib-devel binutils-devel elfutils-libelf-devel bc
-
-   $ KERNEL_VERSION=3.10.4
-   # Declare the kernel version you want to build.
-
-   $ wget https://www.kernel.org/pub/linux/kernel/v3.x/linux-${KERNEL_VERSION}.tar.xz
-   $ tar xvf linux-${KERNEL_VERSION}.tar.xz
-   $ cd linux-${KERNEL_VERSION}
-   $ cp /boot/config-`uname -r` .config
-   $ make oldconfig
-   # You may keep hitting enter and choose the default.
-
-   $ make menuconfig
-   # Dig into "Device Drivers" -> "Network device support",
-   # then select "Virtual eXtensible Local Area Network (VXLAN)" and hit space.
-   # Make sure it indicates "<M>" (build as module), then Save and Exit.
-
-   # You may also want to check "IPv4 NAT" and its child nodes in "IP: Netfilter Configuration"
-   # and "IPv6 NAT" and its child nodes in "IPv6: Netfilter Configuration".
-   # In 3.10.4, you can find the options in
-   # "Networking support" -> "Networking options"
-   #   -> "Network packet filtering framework (Netfilter)".
-
-   $ make # -j N
-   # You may use -j N option to make the build process parallel and faster,
-   # generally N = 1 + (cores your machine have).
-
-   $ sudo make modules_install
-   $ sudo make install
-   # You would get an error like "ERROR: modinfo: could not find module XXXX" here.
-   # This happens mainly due to config structure changes between kernel versions.
-   # You can ignore this error, until you find you need the kernel module.
-   # If you feel uneasy, you can go back to make menuconfig,
-   # find module XXXX by using '/' key, enable the module, build and install the kernel again.
-
-   $ sudo vi /etc/grub.conf
-   # Make sure the new kernel isn't set as the default and the timeout is long enough,
-   # so you can select the new kernel during boot process.
-   # It's not a good idea to set the new kernel as the default until you confirm the kernel works fine.
-
-   $ sudo reboot
-   # Select the new kernel during the boot process.
-
-
-Build iproute2
-^^^^^^^^^^^^^^
-
-::
-
-   $ sudo yum install db4-devel
-
-   $ git clone git://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git
-   $ cd iproute2
-   $ git tag
-   # Find the version that matches the kernel.
-   # If you built kernel 3.10.4 as above, it would be v3.10.0.
-
-   $ git checkout v3.10.0
-   $ ./configure
-   $ make # -j N
-   $ sudo make install
-
-
-.. note:: Please use rebuild kernel and tools at your own risk.
-
-
-Configure CloudStack to use VXLAN Plugin
--------------------------------------
-
-Configure hypervisor
-~~~~~~~~~~~~~~~~~~~~
+If you need to operate more than 20 Instances from different client networks, the change above is required.
 
 Configure hypervisor: KVM
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -195,7 +103,7 @@ Create bridge interface with IPv4 address
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This plugin requires an IPv4 address on the KVM host to terminate and
-originate VXLAN traffic. The address should be assinged to a physical
+originate VXLAN traffic. The address should be assigned to a physical
 interface or a bridge interface bound to a physical interface. Both a
 private address or a public address are fine for the purpose. It is not
 required to be in the same subnet for all hypervisors in a zone, but
@@ -267,7 +175,7 @@ When you configured ``cloudbr1`` as below,
        address 192.168.42.11
        netmask 255.255.255.240
        gateway 192.168.42.1
-       dns-nameservers 8.8.8.8 8.8.4.4
+       dns-nameservers 9.9.9.9
        dns-domain lab.example.org
 
    # Public network
@@ -299,7 +207,7 @@ you would change the configuration similar to below.
        address 192.168.42.11
        netmask 255.255.255.240
        gateway 192.168.42.1
-       dns-nameservers 8.8.8.8 8.8.4.4
+       dns-nameservers 9.9.9.9
        dns-domain lab.example.org
 
    # Public network
@@ -313,7 +221,7 @@ you would change the configuration similar to below.
    # Private network
    auto cloudbr1
    iface cloudbr1 inet static
-       addres 192.0.2.X
+       address 192.0.2.X
        netmask 255.255.255.0
        bridge_ports eth0.300
        bridge_fd 5
@@ -321,77 +229,142 @@ you would change the configuration similar to below.
        bridge_maxwait 1
 
 
-Configure iptables to pass XVLAN packets
+Configure iptables to pass VXLAN packets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Since VXLAN uses UDP packet to forward encapsulated the L2 frames,
 UDP/8472 port must be opened.
 
 
-Configure in RHEL or CentOS
-'''''''''''''''''''''''''''
-
-RHEL and CentOS use iptables for firewalling the system, you can open
-extra ports by executing the following iptable commands:
+Make sure that your firewall (firewalld, ufw, ...) allows UDP packets on port 8472, as an example:
 
 ::
 
-   $ sudo iptables -I INPUT -p udp -m udp --dport 8472 -j ACCEPT
-
-
-These iptable settings are not persistent accross reboots, we have to
-save them first.
-
-::
-
-   $ sudo iptables-save > /etc/sysconfig/iptables
-
-
-With this configuration you should be able to restart the Network,
-although a reboot is recommended to see if everything works properly.
-
-::
-
-   $ sudo service network restart
-   $ sudo reboot
-
-
-.. warning::
-   Make sure you have an alternative way like IPMI or ILO to reach the machine
-   in case you made a configuration error and the Network stops functioning!
-
-
-Configure in Ubuntu
-'''''''''''''''''''
-
-The default firewall under Ubuntu is UFW (Uncomplicated FireWall), which
-is a Python wrapper around iptables.
-
-To open the required ports, execute the following commands:
-
-::
-
+   $ sudo firewall-cmd --zone=public --permanent --add-port=8472/udp
    $ sudo ufw allow proto udp from any to any port 8472
 
-.. note::
-   By default UFW is not enabled on Ubuntu. Executing these commands with the
-   firewall disabled does not enable the firewall.
 
-With this configuration you should be able to restart the Network,
-although a reboot is recommended to see if everything works properly.
+
+VXLAN using EVPN
+---------------------
+Using VXLAN with BGP+EVPN as underlay is more complex to set up, but does allow for more scaling and provides much more flexibility.
+
+This documentation can not cover all elements of deploying BGP+EVPN in your environment.
+
+It is recommend to read `this blogpost <https://vincent.bernat.ch/en/blog/2017-vxlan-bgp-evpn>`_ before you continue. 
+
+The main items for using EVPN:
+
+- BGP Routing Daemon on the hypervisor
+- No LACP/Bonding will be used
+- The modified script (modifyvxlan-evpn.sh) is required and this might require tailoring to your situation
+- BGP+EVPN capable and enabled network environment
+
+EVPN Bash script
+~~~~~~~~~~~~~~~~
+The default 'modifyvxlan.sh' script installed by CloudStack uses Multicast for VXLAN.
+
+A different version of this script is available which will use EVPN instead of Multicast and ships with CloudStack by default.
+
+In order to use this script create a symlink on **each** KVM hypervisor
 
 ::
+  $ cd /usr/share
+  $ ln -s cloudstack-common/scripts/vm/network/vnet/modifyvxlan-evpn.sh modifyvxlan.sh
 
-   $ sudo service networking restart
-   $ sudo reboot
+This script is also available in the CloudStack `GIT repository <https://raw.githubusercontent.com/apache/cloudstack/refs/heads/main/scripts/vm/network/vnet/modifyvxlan-evpn.sh>`_.
 
-.. warning::
-   Make sure you have an alternative way like IPMI or ILO to reach the machine
-   in case you made a configuration error and the Network stops functioning!
+View the contents of the script to understand its inner workings, some key items:
 
+- VXLAN (vtep) devices are created using 'nolearning', disabling the use of multicast
+- UDP port 4789 (RFC 7348)
+- IPv4 is used as underlay
+- It assumes an IPv4 (/32) address is configured on the loopback interface and will be the VTEP source
+
+BGP routing daemon
+~~~~~~~~~~~~~~~~~~~
+Using `FRRouting <https://frrouting.org/>`_ as routing daemon is recommended, but not required. In general FRR is a BGP routing daemon with extensive EVPN support.
+
+Refer to the FRRouting documentation on how to install the proper packages and get started with FRR.
+
+A minimal configuration for FRR could look like this:
+
+.. code-block:: bash
+
+   frr defaults traditional
+   hostname hypervisor01
+   log syslog informational
+   no ipv6 forwarding
+   service integrated-vtysh-config
+   !
+   interface ens2f0np0
+    no ipv6 nd suppress-ra
+   !
+   interface ens2f1np1
+    no ipv6 nd suppress-ra
+   !
+   interface lo
+    ip address 10.255.192.12/32
+    ipv6 address 2001:db8:100::1/128
+   !
+   router bgp 4200800212
+    bgp router-id 10.255.192.12
+    no bgp ebgp-requires-policy
+    no bgp default ipv4-unicast
+    no bgp network import-check
+    neighbor uplinks peer-group
+    neighbor uplinks remote-as external
+    neighbor uplinks ebgp-multihop 255
+    neighbor ens2f0np0 interface peer-group uplinks
+    neighbor ens2f1np1 interface peer-group uplinks
+    !
+    address-family ipv4 unicast
+     network 10.255.192.12/32
+     neighbor uplinks activate
+     neighbor uplinks next-hop-self
+     neighbor uplinks soft-reconfiguration inbound
+     neighbor uplinks route-map upstream-v4-in in
+     neighbor uplinks route-map upstream-v4-out out
+    exit-address-family
+    !
+    address-family ipv6 unicast
+     network 2001:db8:100::1/128
+     neighbor uplinks activate
+     neighbor uplinks soft-reconfiguration inbound
+     neighbor uplinks route-map upstream-v6-in in
+     neighbor uplinks route-map upstream-v6-out out
+    exit-address-family
+    !
+    address-family l2vpn evpn
+     neighbor uplinks activate
+     advertise-all-vni
+     advertise-svi-ip
+    exit-address-family
+
+
+This configuration will:
+
+- Establish two BGP sessions using BGP Unnumbered over the two uplinks (ens2f0np0 and ens2f1np1)
+- These BGP sessions are usually established with two Top-of-Rack (ToR) switches/routers which are BGP+EVPN capable
+- Enable the families ipv4, ipv6 and evpn
+- Announce the IPv4 (10.255.192.12/32) and IPv6 (2001:db8:100::1/128) loopback addresses
+- Advertise all VXLAN networks (VNI) detected locally on the hypervisor (vxlan network devices)
+- Use ASN 4200800212 for this hypervisor (each node has it is own unique ASN)
+
+BGP and EVPN in the upstream network
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This documentation does not cover configuring BGP and EVPN in the upstream network.
+
+This will differ per network and is therefore difficult to capture in this documentation. A couple of key items though:
+
+- Each hypervisor with establish eBGP session(s) with the Top-of-Rack router(s) in it is rack
+- These Top-of-Rack devices will connect to (a) Spine router(s)
+- On the Spine router(s) the VNIs will terminate and they will act as IPv4/IPv6 gateways
+
+The exact BGP and EVPN configuration will differ per networking vendor and thus differs per deployment.
 
 Setup zone using VXLAN
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 In almost all parts of zone setup, you can just follow the advanced zone
 setup instruction in "CloudStack Installation Guide" to use this plugin. It
@@ -401,7 +374,7 @@ Network to use VXLAN as the isolation method for Guest Network.
 
 
 Configure the physical Network
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: /_static/images/vxlan-physicalnetwork.png
 
@@ -416,7 +389,7 @@ should have an IPv4 address. See ? for details.
 
 
 Configure the guest traffic
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: /_static/images/vxlan-vniconfig.png
 

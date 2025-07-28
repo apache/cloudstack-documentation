@@ -48,7 +48,7 @@ Steps to Install the Usage Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #. Package repository should already being configured. Refer to 
-   `Configure Package Repository <http://cloudstack-installation.readthedocs.org/en/latest/installation.html#configure-package-repository>`_
+   `Configure Package Repository <../installguide/management-server/_pkg_repo.html#configure-package-repository>`_
 
 #. Install package cloudstack-usage
 

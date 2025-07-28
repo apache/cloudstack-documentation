@@ -14,13 +14,13 @@
    under the License.
 
 About Import Export Instances
--------------------------
+-----------------------------
 
 
 For certain hypervisors, CloudStack supports importing of Instances from Managed Hosts, External Hosts, Local Storage and Shared Storage, into CloudStack.
 
 Manage or Unmanage Instances on Managed Hosts
--------------------------
+---------------------------------------------
 
 .. note:: This is currently only available for **vSphere** and **KVM** clusters.
 
@@ -72,7 +72,7 @@ Listing unmanaged Instances
 ---------------------------
 
 Prerequisites to list unmanaged Instances (vSphere or KVM)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order for CloudStack to list the Instances that are not managed by CloudStack on a host/cluster, the instances must exist on the hosts that are already part to the CloudStack.
 
@@ -148,7 +148,7 @@ importUnmanagedInstance API
    - **migrateallowed** (Instance and its volumes are allowed to migrate to different host/storage pool when offering tags conflict with host/storage pool)
    - **forced** (If true, an Instance is imported despite some of its NIC's MAC addresses being already present)
 
-.. note:: The `forced` parameter is false by default and thus prevents importing an Instance which has a NIC containing a MAC address that has been previously assigned by CloudStack to another existing VM. If it is set to true, importing a VM with such already-used MAC addresses of the NICS will be allowed. This should be done with a full understanding of possible consequences due to duplicate MAC addresses.
+.. note:: The `forced` parameter is false by default and thus prevents importing an Instance which has a NIC containing a MAC address that has been previously assigned by CloudStack to another existing VM. If it is set to true, importing a VM with such already-used MAC addresses of the NICS will be allowed, however, the original MAC address will be replaced with a newly generated MAC address.
 
 **Response**:
 
@@ -407,7 +407,8 @@ Unmanaging Instance actions
    - For the Instance being unmanaged: stopped and destroyed usage events (similar to the generated usage events when expunging an Instance), with types: ‘VM.STOP’ and ‘VM.DESTROY', unless the instance has been already stopped before being unmanaged and in this case only ‘VM.DESTROY' is generated.
 
 Import Instances from External Hosts
--------------------------
+------------------------------------
+
 .. note:: This is currently only available for **KVM** hypervisor.
 
 External Host
@@ -496,7 +497,7 @@ choose the temporary storage location on the external host for the converted fil
    - **details** (Map for Instance details)
    - **forced** (If true, an Instance is imported despite some of its NIC's MAC addresses being already present)
 
-.. note:: The `forced` parameter is false by default and thus prevents importing an Instance which has a NIC containing a MAC address that has been previously assigned by CloudStack to another existing VM. If it is set to true, importing a VM with such already-used MAC addresses of the NICS will be allowed. This should be done with a full understanding of possible consequences due to duplicate MAC addresses.
+.. note:: The `forced` parameter is false by default and thus prevents importing an Instance which has a NIC containing a MAC address that has been previously assigned by CloudStack to another existing VM. If it is set to true, importing a VM with such already-used MAC addresses of the NICS will be allowed, however, the original MAC address will be replaced with a newly generated MAC address.
 
 **Response**:
 
@@ -504,7 +505,7 @@ choose the temporary storage location on the external host for the converted fil
    Same response as that of deployVirtualMachine API.
 
 Import Instances from Local/Shared Storage
-----------------------------------------
+------------------------------------------
 
 .. note:: This is currently only available for **KVM** hypervisor.
 
@@ -540,7 +541,7 @@ The importVm API is utilized to create instances using QCOW2 file from an existi
    Same response as that of deployVirtualMachine API.
 
 Import Instances from Shared Storage
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The importVm API is utilized to create instances using QCOW2 file from an existing Shared Storage pool of a KVM cluster within the CloudStack infrastructure.
 Only NFS Storage Pool are supported.
