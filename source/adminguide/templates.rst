@@ -271,11 +271,11 @@ To upload a Template:
    -  **Tag**: The tag for the template. This tag can be used with host tags to
       allow deployment of Instances on specific hosts.
 
-   -  **User data**: The registered user data entries are listed. Select the
+   -  **User Data**: The registered User Data entries are listed. Select the
       desired one.
 
-   -  **User data link policy**: Select the user data override policy as required.
-      For more information on user data and override link policy, please check `User data section <virtual_machines.html#user-data-and-metadata>`_.
+   -  **User Data link policy**: Select the User Data override policy as required.
+      For more information on User Data and override link policy, please check `User Data section <virtual_machines.html#user-data-and-metadata>`_.
 
 
    -  **Hypervisor**: The supported hypervisors are listed. Select the

@@ -22,7 +22,7 @@ Cloudstack and cloud-init integration provide Instances with advanced management
 *  Password management
 *  SSH keys management
 *  Partition management
-*  User data input
+*  User Data input
 *  `Other modules <https://cloudinit.readthedocs.io/en/latest/topics/modules.html>`_  
 
 
@@ -211,9 +211,9 @@ These features can be implemented in `“Linux Template creation process” <_cr
       sudo sed -i s/" - runcmd"/" - [runcmd, always]"/g /etc/cloud/cloud.cfg
       sudo sed -i s/" - scripts-user"/" - [scripts-user, always]"/g /etc/cloud/cloud.cfg
 
-#. **User data**
+#. **User Data**
 
-   Cloud-init can parse and execute user data form Cloud-stack during Instance creation. This feature works as is without additional configuration.
+   Cloud-init can parse and execute User Data form Cloud-stack during Instance creation. This feature works as is without additional configuration.
 	 
 #. **Network configuration with ConfigDrive**
 
