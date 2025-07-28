@@ -197,6 +197,11 @@ MySQL. See :ref:`install-database-on-separate-node`.
       the root User is deploying the database and creating the "cloud"
       User.
 
+   - Since 4.21, the databases (cloud, cloud_usage) are only created if they 
+     do not exist. This behavior prevents accidental recreation of existing 
+     databases. The databases recreation can still be invoked by passing the 
+     --force-recreate flag.
+
    -  (Optional) There is an option to bypass the creating of the databases,
       User and granting permissions to the user. This is useful if you don't
       want to expose your root credentials but still want the database to
@@ -227,6 +232,10 @@ MySQL. See :ref:`install-database-on-separate-node`.
          -- Grant process list privilege for all other databases
          GRANT process ON *.* TO cloud@`localhost`;
          GRANT process ON *.* TO cloud@`%`;
+
+      .. note::
+         Since 4.21, it is required to pass the --force-recreate flag for 
+         schemas recreation.
 
    -  (Optional) For encryption\_type, use file or web to indicate the
       technique used to pass in the database encryption password.
