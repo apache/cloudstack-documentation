@@ -235,7 +235,7 @@ MySQL. See :ref:`install-database-on-separate-node`.
 
       .. note::
          Since 4.21, it is required to pass the --force-recreate flag for 
-         schemas recreation.
+         databases recreation.
 
    -  (Optional) For encryption\_type, use file or web to indicate the
       technique used to pass in the database encryption password.
