@@ -182,6 +182,7 @@ The deployment form will be pre-filled with the values captured in the backup, b
 However, the number of volumes in the new instance must match the number of volumes in the backup.
 If volume sizes are customized, users must ensure that each volume is at least as large as the corresponding volume in the backup.
 Advanced settings are not pre-filled in the form by default, but if left unset, they will automatically be retrieved from the backup metadata.
+The Template and ISO can only be updated via the UI if the UUID stored in the backup is no longer available in the environment.
 
 If the original instance from which the backup was created has been expunged, users will be presented with an option to reuse thesame IP address and
 MAC address stored in the backup metadata. The new instance will be assigned the same IP and MAC address, provided they are still available in the network.
