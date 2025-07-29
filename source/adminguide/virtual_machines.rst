@@ -1750,7 +1750,7 @@ CloudStack follows the below sequence of operations to provide GPU/vGPU support 
 
    - For more information for XenServer, see `XenServer Documentation <https://docs.xenserver.com/en-us/citrix-hypervisor/graphics/hv-graphics-config>`_.
 
-   - For KVM, to configure the host see how to `discover GPU Devices on Hosts here <hosts.html#discovering-gpu-devices-on-hosts>`_.
+   - For KVM, to configure the host see how to `discover GPU Devices on Hosts here <hosts.html#discovering-gpu-devices-on-kvm-hosts>`_.
 
 #. Add the host to CloudStack.
    CloudStack checks if the host is GPU-enabled or not. CloudStack queries the host and detect if it's GPU enabled.

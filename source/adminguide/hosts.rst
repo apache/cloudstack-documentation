@@ -223,9 +223,9 @@ Following hypervisor-specific documentations can be referred for different maxim
    Guest Instance limit check is not done while deploying an Instance on a KVM hypervisor host.
 
 
-.. _discovering-gpu-devices-on-hosts:
+.. _discovering-gpu-devices-on-kvm-hosts:
 
-Discovering GPU Devices on Hosts
+Discovering GPU Devices on KVM Hosts
 --------------------------------
 
 For KVM, the user needs to ensure that IOMMU is enabled and the necessary
