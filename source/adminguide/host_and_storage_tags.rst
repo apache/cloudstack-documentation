@@ -144,7 +144,22 @@ To overcome these situations, ACS allows hosts and storages to have tags that ar
 
 Configuring flexible tags on hosts is carried out through the ``updateHost`` API, entering the rule in the ``hosttags`` field. On the other hand, configuring flexible tags in the storages is done using the ``updateStoragePool`` API, informing the rule in the ``tags`` field. For the informed tag to be effectively interpreted as JavaScript, you must declare the ``istagarule`` parameter as true whenever you use one of the APIs presented.
 
-It is worth mentioning that the compute offering or disk offering tags are injected in list format. Thus, when validating an offering with tags ``A, B``, during processing, there will be the variable ``tags``, where ``tags[0]`` will be tag A, and ``tags[1]`` will be tag B.
+It is worth mentioning that the compute offering or disk offering tags are injected in list format. Thus, when validating an offering with tags ``A, B``, during processing, there will be the variable ``tags``, where ``tags[0]`` will be tag A, and ``tags[1]`` will be tag B. The order of the tags is significant and can affect the outcome, depending on how they are implemented. 
+
+Example: tags[0] == "slow" || tags[1] == "fast"
+	Tags and results:
+		“slow,fast” -> TRUE
+		“fast,slow” -> FALSE
+		“fast” -> FALSE
+
+If you want to avoid dependency on tag order, use the following approach:
+
+Example: tags.indexOf('slow') >= 0 || tags.indexOf('fast') >= 0
+	Tags and results:
+		“slow,fast” -> TRUE
+		“fast,slow” -> TRUE
+		“fast” -> TRUE
+
 
 It's also important to mention that flexible tags are not compatible with quota's activation rules.
 
