@@ -289,22 +289,22 @@ To create a new compute offering:
       -  Preferred: The instance will be deployed in dedicated infrastructure if
          possible. Otherwise, the instance can be deployed in shared infrastructure.
 
-   -  **GPU**: Assign a physical GPU(GPU-passthrough) or a portion of a physical
+   -  **GPU Card**: Assign a physical GPU(GPU-passthrough) or a portion of a physical
       GPU card (vGPU) to the guest instance. It allows graphical applications to run on the instance.
       Select the card from the supported list of cards.
-      The options given are NVIDIA GRID K1 and NVIDIA GRID K2. These are vGPU
-      capable cards that allow multiple vGPUs on a single physical GPU. If you
-      want to use a card other than these, follow the instructions in the
-      **"GPU and vGPU support for CloudStack Guest instances"** page in the
-      Cloudstack Version 4.4 Design Docs found in the Cloudstack Wiki.
 
-   -  **vGPU Type**: Represents the type of virtual GPU to be assigned to a
+   -  **GPU Profile**: Represents the type of virtual GPU to be assigned to a
       guest instance. In this case, only a portion of a physical GPU card (vGPU) is
       assigned to the guest instance.
-      Additionally, the **passthrough vGPU** type is defined to represent a physical GPU
-      device. A **passthrough vGPU** can directly be assigned to a single guest instance.
-      In this case, a physical GPU device is exclusively allotted to a single
-      guest instance.
+      Additionally, the **passthrough** type is defined to represent a physical GPU
+      device. A **passthrough** can directly be assigned to a single guest instance.
+      In this case, the physical GPU devices are exclusively allotted to a single guest instance.
+
+   -  **GPU Count**: The number of GPUs to be assigned to the guest instance.
+      This is applicable only for KVM hypervisor.
+
+   -  **GPU Display**: Whether to use the GPU device attached to the guest instance for display.
+      This is applicable only for KVM hypervisor.
 
    -  **Public**: Indicate whether the compute offering should be
       available to all domains or only some domains. Choose Yes to make it
