@@ -249,19 +249,28 @@ max.account.cpus                    Maximum number of CPU cores that can be used
                                     Default is 40.
 max.account.ram (MB)                Maximum RAM that can be used for an Account.
                                     Default is 40960.
+max.account.gpus                    Maximum number of GPUs that can be used for an Account.
+                                    Default is 20.
 max.account.primary.storage (GB)    Maximum primary storage space that can be used for an Account.
                                     Default is 200.
 max.account.secondary.storage (GB)  Maximum secondary storage space that can be used for an Account.
                                     Default is 400.
-max.project.cpus                    Maximum number of CPU cores that can be used for an Account.
+max.project.cpus                    Maximum number of CPU cores that can be used for a Project.
                                     Default is 40.
-max.project.ram (MB)                Maximum RAM that can be used for an Account.
+max.project.ram (MB)                Maximum RAM that can be used for a Project.
                                     Default is 40960.
-max.project.primary.storage (GB)    Maximum primary storage space that can be used for an Account.
+max.project.gpus                    Maximum number of GPUs that can be used for a Project.
+                                    Default is 20.
+max.project.primary.storage (GB)    Maximum primary storage space that can be used for a Project.
                                     Default is 200.
-max.project.secondary.storage (GB)  Maximum secondary storage space that can be used for an Account.
+max.project.secondary.storage (GB)  Maximum secondary storage space that can be used for a Project.
                                     Default is 400.
 =================================== =================================================================
+
+The GPU devices are not detached when the Instance is stopped. Therefore,
+the GPU devices for stopped Instances are counted towards the resource limits.
+To avoid this, the administrator can set the `gpu.detach.on.stop` global
+setting to `true` to detach the GPU devices when the Instance is stopped.
 
 The administrator can also set limits for specific tagged host and storage
 resources for an account or domain. Such tags must be specified in the following
