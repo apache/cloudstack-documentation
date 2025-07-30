@@ -71,8 +71,8 @@ LXC does not have any native system VMs, instead KVM will be used to run
 system VMs. This means that your host will need to support both LXC and
 KVM, thus most of the installation and configuration will be identical
 to the KVM installation. The material in this section doesn't duplicate
-KVM installation docs. It provides the CloudStack-specific steps that
-are needed to prepare a KVM host to work with CloudStack.
+information, so perform the steps in the Host KVM Installation section first
+:ref:`host-kvm-installation`.
 
 .. warning:: 
    Before continuing, make sure that you have applied the latest updates to 
@@ -123,18 +123,129 @@ KVM Instances.
       NTP is required to synchronize the clocks of the servers in your
       cloud. Unsynchronized clocks can cause unexpected problems.
 
-   #. Install NTP
+#. Install NTP
+
+   In RHEL or CentOS:
 
       .. parsed-literal::
 
-         $ yum install ntp
+         $ yum install chrony
+
+   In Ubuntu:
 
       .. parsed-literal::
 
-         $ apt-get install openntpd
+         $ apt install chrony
+
+   In SUSE:
+
+      .. parsed-literal::
+
+         $ zypper install chrony
 
 #. Repeat all of these steps on every hypervisor host.
 
+
+Configure package repository
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+CloudStack is only distributed from source from the official mirrors.
+However, members of the CloudStack community may build convenience
+binaries so that users can install Apache CloudStack without needing to
+build from source.
+
+If you didn't follow the steps to build your own packages from source in
+the sections for `“Building RPMs from Source”
+<../building_from_source.html#building-rpms-from-source>`__ or
+`“Building DEB packages” <../building_from_source.html#building-deb-packages>`__
+you may find pre-built DEB and RPM packages for your convenience linked from
+the `downloads <http://cloudstack.apache.org/downloads.html>`_ page.
+
+.. note::
+   These repositories contain both the Management Server and KVM Hypervisor
+   packages.
+
+RPM package repository
+~~~~~~~~~~~~~~~~~~~~~~
+
+There is a RPM package repository for CloudStack so you can easily
+install on RHEL and SUSE based platforms.
+
+If you're using an RPM-based system, you'll want to add the Yum
+repository so that you can install CloudStack with Yum.
+
+In RHEL or CentOS:
+
+Yum repository information is found under ``/etc/yum.repos.d``. You'll
+see several ``.repo`` files in this directory, each one denoting a
+specific repository.
+
+To add the CloudStack repository, create
+``/etc/yum.repos.d/cloudstack.repo`` and insert the following
+information.
+
+In the case of RHEL being used, you can replace 'centos' by 'rhel' in the value of baseurl
+
+.. parsed-literal::
+
+   [cloudstack]
+   name=cloudstack
+   baseurl=http://download.cloudstack.org/centos/$releasever/|version|/
+   enabled=1
+   gpgcheck=0
+
+Now you should now be able to install CloudStack using Yum.
+
+In SUSE:
+
+Zypper repository information is found under ``/etc/zypp/repos.d/``. You'll
+see several ``.repo`` files in this directory, each one denoting a
+specific repository.
+
+To add the CloudStack repository, create
+``/etc/zypp/repos.d/cloudstack.repo`` and insert the following
+information.
+
+.. parsed-literal::
+
+   [cloudstack]
+   name=cloudstack
+   baseurl=http://download.cloudstack.org/suse/|version|/
+   enabled=1
+   gpgcheck=0
+
+
+Now you should now be able to install CloudStack using zypper.
+
+
+DEB package repository
+~~~~~~~~~~~~~~~~~~~~~~
+
+You can add a DEB package repository to your apt sources with the
+following commands. Replace the code name with your Ubuntu LTS version :
+Ubuntu 20.04 (focal), Ubuntu 22.04 (jammy), Ubuntu 24.04 (noble).
+
+Use your preferred editor and open (or create)
+``/etc/apt/sources.list.d/cloudstack.list``. Add the community provided
+repository to the file (replace "trusty" with "xenial" or "bionic" if it is the case):
+
+.. parsed-literal::
+
+   deb https://download.cloudstack.org/ubuntu focal |version|
+
+We now have to add the public key to the trusted keys.
+
+.. parsed-literal::
+
+   wget -O - https://download.cloudstack.org/release.asc |sudo tee /etc/apt/trusted.gpg.d/cloudstack.asc
+
+Now update your local apt cache.
+
+.. parsed-literal::
+
+   sudo apt update
+
+Your DEB package repository should now be configured and ready for use.
 
 Install and configure the Agent
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -142,6 +253,10 @@ Install and configure the Agent
 To manage LXC Instances on the host CloudStack uses a Agent. This Agent
 communicates with the Management server and controls all the Instances
 on the host.
+
+.. note::
+   Depending on your distribution you might need to add the corresponding package repository
+   for CloudStack.
 
 First we start by installing the agent:
 
@@ -156,7 +271,22 @@ In Ubuntu:
 
 .. parsed-literal::
 
-   $ apt-get install cloudstack-agent
+   $ apt install cloudstack-agent
+
+In SUSE:
+
+.. parsed-literal::
+
+   $ zypper install cloudstack-agent
+
+
+If you're using a non-root user to add the LXC host, please add the user to
+sudoers file:
+
+.. parsed-literal::
+
+   cloudstack ALL=NOPASSWD: /usr/bin/cloudstack-setup-agent
+   Defaults:cloudstack !requiretty
 
 Next step is to update the Agent configuration settings. The settings
 are in ``/etc/cloudstack/agent/agent.properties``
@@ -191,84 +321,18 @@ the host!
 Install and Configure libvirt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-CloudStack uses libvirt for managing Instances. Therefore it is
+CloudStack uses libvirt for managing System VM Instances, even in a LXC host. Therefore it is
 vital that libvirt is configured correctly. Libvirt is a dependency of
 cloudstack-agent and should already be installed.
 
-#. In order to have live migration working libvirt has to listen for
-   insecured TCP connections. We also need to turn off libvirts attempt
-   to use Multicast DNS advertising. Both of these settings are in
-   ``/etc/libvirt/libvirtd.conf``
+Please refer to :ref:`install-and-configure-libvirt` for the steps to install and configure
+libvirt. Only the, perform the next steps.
 
-   Set the following parameters:
+In Ubuntu:
 
-   .. parsed-literal::
+.. parsed-literal::
 
-      listen_tls = 0
-
-   .. parsed-literal::
-
-      listen_tcp = 1
-
-   .. parsed-literal::
-
-      tcp_port = "16509"
-
-   .. parsed-literal::
-
-      auth_tcp = "none"
-
-   .. parsed-literal::
-
-      mdns_adv = 0
-
-#. Turning on "listen\_tcp" in libvirtd.conf is not enough, we have to
-   change the parameters as well:
-
-   On RHEL or CentOS modify ``/etc/sysconfig/libvirtd``:
-
-   Uncomment the following line:
-
-   .. parsed-literal::
-
-      #LIBVIRTD_ARGS="--listen"
-
-   On Ubuntu: modify ``/etc/default/libvirt-bin``
-
-   Add "-l" to the following line
-
-   .. parsed-literal::
-
-      libvirtd_opts="-d"
-
-   so it looks like:
-
-   .. parsed-literal::
-
-      libvirtd_opts="-d -l"
-
-#. In order to have the VNC Console work we have to make sure it will
-   bind on 0.0.0.0. We do this by editing ``/etc/libvirt/qemu.conf``
-
-   Make sure this parameter is set:
-
-   .. parsed-literal::
-
-      vnc_listen = "0.0.0.0"
-
-#. Restart libvirt
-
-   In RHEL or CentOS:
-
-   .. parsed-literal::
-
-      $ service libvirtd restart
-
-   In Ubuntu:
-
-   .. parsed-literal::
-
-      $ service libvirt-bin restart
+   apt install libvirt-daemon-driver-lxc -y
 
 
 Configure the Security Policies
@@ -278,80 +342,7 @@ CloudStack does various things which can be blocked by security
 mechanisms like AppArmor and SELinux. These have to be disabled to
 ensure the Agent has all the required permissions.
 
-#. Configure SELinux (RHEL and CentOS)
-
-   #. Check to see whether SELinux is installed on your machine. If not,
-      you can skip this section.
-
-      In RHEL or CentOS, SELinux is installed and enabled by default.
-      You can verify this with:
-
-      .. parsed-literal::
-
-         $ rpm -qa | grep selinux
-
-   #. Set the SELINUX variable in ``/etc/selinux/config`` to
-      "permissive". This ensures that the permissive setting will be
-      maintained after a system reboot.
-
-      In RHEL or CentOS:
-
-      .. parsed-literal::
-
-         $ vi /etc/selinux/config
-
-      Change the following line
-
-      .. parsed-literal::
-
-         SELINUX=enforcing
-
-      to this
-
-      .. parsed-literal::
-
-         SELINUX=permissive
-
-   #. Then set SELinux to permissive starting immediately, without
-      requiring a system reboot.
-
-      .. parsed-literal::
-
-         $ setenforce permissive
-
-.. note:: In a production environment, selinux should be set to enforcing
-   and the necessary selinux policies are created to allow the
-   services to run.
-
-#. Configure Apparmor (Ubuntu)
-
-   #. Check to see whether AppArmor is installed on your machine. If
-      not, you can skip this section.
-
-      In Ubuntu AppArmor is installed and enabled by default. You can
-      verify this with:
-
-      .. parsed-literal::
-
-         $ dpkg --list 'apparmor'
-
-   #. Disable the AppArmor profiles for libvirt
-
-      .. parsed-literal::
-
-         $ ln -s /etc/apparmor.d/usr.sbin.libvirtd /etc/apparmor.d/disable/
-
-      .. parsed-literal::
-
-         $ ln -s /etc/apparmor.d/usr.lib.libvirt.virt-aa-helper /etc/apparmor.d/disable/
-
-      .. parsed-literal::
-
-         $ apparmor_parser -R /etc/apparmor.d/usr.sbin.libvirtd
-
-      .. parsed-literal::
-
-         $ apparmor_parser -R /etc/apparmor.d/usr.lib.libvirt.virt-aa-helper
+Please refer to :ref:`configure-the-security-policies` for the steps to install and configure libvirt.
 
 
 Configure the network bridges
