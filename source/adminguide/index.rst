@@ -190,6 +190,15 @@ Events and Troubleshooting
    troubleshooting
 
 
+Extensions
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   extensions
+
+
 Best Practices
 --------------
 

@@ -50,6 +50,7 @@ and VMware with vSphere.
 -  Alma Linux 8, 9 with KVM
 -  Rocky Linux 8, 9 with KVM
 -  Red Hat Enterprise Linux 8, 9 with KVM
+-  Experimental support for Red Hat Enterprise Linux 10 with KVM
 -  openSUSE Leap 15 with KVM
 -  SUSE Linux Enterprise Server 15 with KVM
 -  XCP-ng 8.2.0

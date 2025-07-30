@@ -1593,39 +1593,54 @@ CloudStack meet the intensive graphical processing requirement by means of the
 high computation power of GPU/vGPU, and CloudStack users can run multimedia
 rich applications, such as Auto-CAD, that they otherwise enjoy at their desk on
 a virtualized environment.
-CloudStack leverages the XenServer support for NVIDIA GRID Kepler 1 and 2 series
-to run GPU/vGPU enabled Instances. NVIDIA GRID cards allows sharing a single GPU cards
-among multiple Instances by creating vGPUs for each Instance. With vGPU technology, the
-graphics commands from each Instance are passed directly to the underlying dedicated
-GPU, without the intervention of the hypervisor. This allows the GPU hardware
-to be time-sliced and shared across multiple Instances. XenServer hosts use the GPU
-cards in following ways:
 
-**GPU passthrough**: GPU passthrough represents a physical GPU which can be
+For KVM, CloudStack leverages libvirt's PCI passthrough feature to assign a
+physical GPU to a guest Instance. For vGPU profiles, depending on the vGPU type,
+CloudStack uses mediated devices or Virtual Functions(VF) to assign a virtual
+GPU to a guest Instance. It's the responsibility of the operator to ensure that
+GPU devices are in correct state and are available for use on the host. If the
+operator wants to use vGPU profiles, they need to ensure that the vGPU type is
+supported by the host and has been created on the host.
+
+For XenServer, CloudStack leverages the XenServer support for NVIDIA GRID
+Kepler 1 and 2 series to run GPU/vGPU enabled Instances.
+
+Some NVIDIA cards allow sharing a single GPU card among multiple Instances by
+creating vGPUs for each Instance. With vGPU technology, the graphics commands
+from each Instance are passed directly to the underlying dedicated GPU, without
+the intervention of the hypervisor. This allows the GPU hardware to be
+time-sliced and shared across multiple Instances. The GPU cards are used in the
+following ways:
+
+**passthrough**: GPU passthrough represents a physical GPU which can be
 directly assigned to an Instance. GPU passthrough can be used on a hypervisor alongside
 GRID vGPU, with some restrictions: A GRID physical GPU can either host GRID
 vGPUs or be used as passthrough, but not both at the same time.
 
-**GRID vGPU**: GRID vGPU enables multiple Instances to share a single physical GPU.
+**vGPU**: vGPU enables multiple Instances to share a single physical GPU.
 The Instances run an NVIDIA driver stack and get direct access to the GPU. GRID
 physical GPUs are capable of supporting multiple virtual GPU devices (vGPUs)
-that can be assigned directly to guest Instances. Guest Instances use GRID virtual GPUs in
+that can be assigned directly to guest Instances. Guest Instances use vGPUs in
 the same manner as a physical GPU that has been passed through by the
 hypervisor: an NVIDIA driver loaded in the guest Instance provides direct access to
 the GPU for performance-critical fast paths, and a paravirtualized interface to
-the GRID Virtual GPU Manager, which is used for nonperformant management
-operations. NVIDIA GRID Virtual GPU Manager for XenServer runs in dom0.
+the NVIDIA vGPU Manager, which is used for nonperformant management
+operations. NVIDIA vGPU Manager for XenServer runs in dom0.
+
 CloudStack provides you with the following capabilities:
 
-- Adding XenServer hosts with GPU/vGPU capability provisioned by the administrator.
+- Adding hosts with GPU/vGPU capability provisioned by the administrator.
+  (Supports only XenServer & KVM)
 
-- Creating a Compute Offering with GPU/vGPU capability.
+- Creating a Compute Offering with GPU/vGPU capability. For KVM, it is possible to
+  specify the GPU count and whether to use the GPU for display. For XenServer,
+  GPU count is simply ignored and only one device is assigned to the guest Instance.
 
 - Deploying an Instance with GPU/vGPU capability.
 
 - Destroying an Instance with GPU/vGPU capability.
 
-- Allowing an user to add GPU/vGPU support to an Instance without GPU/vGPU support by
+- Allowing a user to add GPU/vGPU support to an Instance without GPU/vGPU support by
   changing the Service Offering and vice-versa.
 
 - Migrating Instances (cold migration) with GPU/vGPU capability.
@@ -1635,57 +1650,78 @@ CloudStack provides you with the following capabilities:
 - Querying hosts to obtain information about the GPU cards, supported vGPU types
   in case of GRID cards, and capacity of the cards.
 
+- Limit an account/domain/project to use a certain number of GPUs.
+
 Prerequisites and System Requirements
 -------------------------------------
 
 Before proceeding, ensure that you have these prerequisites:
 
-- The vGPU-enabled XenServer 6.2 and later versions.
+- CloudStack does not restrict the deployment of GPU-enabled Instances with
+  guest OS types that are not supported for GPU/vGPU functionality. The deployment
+  would be successful and a GPU/vGPU will also get allocated for Instances; however,
+  due to missing guest OS drivers, Instance would not be able to leverage GPU resources.
+  Therefore, it is recommended to use GPU-enabled service offering only with supported guest OS.
+
+- NVIDIA GRID K1 (16 GiB video RAM) AND K2 (8 GiB of video RAM) cards supports
+  homogeneous virtual GPUs, implies that at any given time, the vGPUs resident on
+  a single physical GPU must be all of the same type. However, this restriction
+  doesn't extend across physical GPUs on the same card. Each physical GPU on a
+  K1 or K2 may host different types of virtual GPU at the same time. For example,
+  a GRID K2 card has two physical GPUs, and supports four types of virtual GPU;
+  GRID K200, GRID K220Q, GRID K240Q, AND GRID K260Q.
+
+- NVIDIA driver must be installed to enable vGPU operation as for a physical NVIDIA GPU.
+
+
+For XenServer:
+
+- the vGPU-enabled XenServer 6.2 and later versions.
   For more information, see `Citrix 3D Graphics Pack <https://www.citrix.com/go/private/vgpu.html>`_.
 
 - GPU/vGPU functionality is supported for following HVM guest operating systems:
   For more information, see `Citrix 3D Graphics Pack <https://www.citrix.com/go/private/vgpu.html>`_.
 
-- Windows 7 (x86 and x64)
+  - Windows 7 (x86 and x64)
 
-- Windows Server 2008 R2
+  - Windows Server 2008 R2
 
-- Windows Server 2012
+  - Windows Server 2012
 
-- Windows 8 (x86 and x64)
+  - Windows 8 (x86 and x64)
 
-- Windows 8.1 ("Blue") (x86 and x64)
+  - Windows 8.1 ("Blue") (x86 and x64)
 
-- Windows Server 2012 R2 (server equivalent of "Blue")
+  - Windows Server 2012 R2 (server equivalent of "Blue")
 
-- CloudStack does not restrict the deployment of GPU-enabled Instances with guest OS types that are not supported by XenServer for GPU/vGPU functionality. The deployment would be successful and a GPU/vGPU will also get allocated for Instances; however, due to missing guest OS drivers, Instance would not be able to leverage GPU resources. Therefore, it is recommended to use GPU-enabled service offering only with supported guest OS.
+- XenServer tools are installed in the Instance to get maximum performance on
+  XenServer, regardless of type of vGPU you are using. Without the optimized
+  networking and storage drivers that the XenServer tools provide, remote
+  graphics applications running on GRID vGPU will not deliver maximum performance.
 
-- NVIDIA GRID K1 (16 GiB video RAM) AND K2 (8 GiB of video RAM) cards supports homogeneous virtual GPUs, implies that at any given time, the vGPUs resident on a single physical GPU must be all of the same type. However, this restriction doesn't extend across physical GPUs on the same card. Each physical GPU on a K1 or K2 may host different types of virtual GPU at the same time. For example, a GRID K2 card has two physical GPUs, and supports four types of virtual GPU; GRID K200, GRID K220Q, GRID K240Q, AND GRID K260Q.
-
-- NVIDIA driver must be installed to enable vGPU operation as for a physical NVIDIA GPU.
-
-- XenServer tools are installed in the Instance to get maximum performance on XenServer, regardless of type of vGPU you are using. Without the optimized networking and storage drivers that the XenServer tools provide, remote graphics applications running on GRID vGPU will not deliver maximum performance.
-
-- To deliver high frames from multiple heads on vGPU, install XenDesktop with HDX 3D Pro remote graphics.
+- To deliver high frames from multiple heads on vGPU, install XenDesktop with
+  HDX 3D Pro remote graphics.
 
 Before continuing with configuration, consider the following:
 
-- Deploying Instances GPU/vGPU capability is not supported if hosts are not available with enough GPU capacity.
+- Deploying Instances with GPU/vGPU capability is not supported if hosts are
+  not available with enough GPU capacity.
 
-- A Service Offering cannot be created with the GPU values that are not supported by CloudStack UI. However, you can make an API call to achieve this.
-
-- Dynamic scaling is not supported. However, you can choose to deploy an Instance without GPU support, and at a later point, you can change the system offering to upgrade to the one with vGPU. You can achieve this by offline upgrade: stop the Instance, upgrade the Service Offering to the one with vGPU, then start the Instance.
+- Dynamic scaling is not supported. However, you can choose to deploy an
+  Instance without GPU support, and at a later point, you can change the system
+  offering to upgrade to the one with vGPU. You can achieve this by offline
+  upgrade: stop the Instance, upgrade the Service Offering to the one with
+  vGPU, then start the Instance.
 
 - Live migration of GPU/vGPU enabled Instance is not supported.
-
-- Limiting GPU resources per Account/Domain is not supported.
 
 - Disabling GPU at Cluster level is not supported.
 
 - Notification thresholds for GPU resource is not supported.
 
-Supported GPU Devices
----------------------
+
+Supported GPU Devices for XenServer
+-----------------------------------
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -1710,14 +1746,17 @@ GPU/vGPU Assignment Workflow
 
 CloudStack follows the below sequence of operations to provide GPU/vGPU support for Instances:
 
-#. Ensure that XenServer host is ready with GPU installed and configured.
-   For more information, see `Citrix 3D Graphics Pack <https://www.citrix.com/go/private/vgpu.html>`_.
+#. Ensure that the host is ready with GPU installed and configured.
+
+   - For more information for XenServer, see `XenServer Documentation <https://docs.xenserver.com/en-us/citrix-hypervisor/graphics/hv-graphics-config>`_.
+
+   - For KVM, to configure the host see how to `discover GPU Devices on Hosts here <hosts.html#discovering-gpu-devices-on-kvm-hosts>`_.
 
 #. Add the host to CloudStack.
    CloudStack checks if the host is GPU-enabled or not. CloudStack queries the host and detect if it's GPU enabled.
 
 #. Create a compute offering with GPU/vGPU support:
-   For more information, see `Creating a New Compute Offering <#creating-a-new-compute-offering>`__..
+   For more information, see `Creating a New Compute Offering <service_offerings.html#creating-a-new-compute-offering>`_.
 
 #. Continue with any of the following operations:
 
