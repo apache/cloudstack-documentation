@@ -161,6 +161,41 @@ of an expunged Instance will not restore nics and recovery any network which may
 not exist. User may however restore a specific volume from an Instance backup and attach
 that volume to a specified Instance.
 
+Creating a new Instance from Backup
+-----------------------------------
+
+Since CloudStack 4.21, users can now remove the backup offering and expunge or unmanage an instance
+that has existing backups, for the supported backup providers — Dummy, NAS, and Veeam.
+Additionally, users can create a new instance from a backup using any of these providers.
+
+Each backup now includes metadata that captures the instance’s configuration at the time of backup including service offering,
+template, disk offerings for all data volumes, attached networks, and instance-specific settings.
+The new instance will be created with the same configuration and data as the original instance at the time the backup was taken.
+
+.. warning::
+   Users should ensure that the entry for the expunged or unmanaged instance is not purged from the database, as the backup framework relies on it to function correctly.
+
+|B&R-CreateInstanceFromBackup.png|
+
+Users also have the option to customize the configuration of the new instance, similar to deploying a new instance from scratch.
+The deployment form will be pre-filled with the values captured in the backup, but users can modify them as needed.
+However, the number of volumes in the new instance must match the number of volumes in the backup.
+If volume sizes are customized, users must ensure that each volume is at least as large as the corresponding volume in the backup.
+Advanced settings are not pre-filled in the form by default, but if left unset, they will automatically be retrieved from the backup metadata.
+The Template and ISO can only be updated via the UI if the UUID stored in the backup is no longer available in the environment.
+
+If the original instance from which the backup was created has been expunged, users will be presented with an option to reuse thesame IP address and
+MAC address stored in the backup metadata. The new instance will be assigned the same IP and MAC address, provided they are still available in the network.
+
+|B&R-ConfigureInstance.png|
+
+If one or few of the resources stored in the backup such as template, networks etc are no longer available
+in the system, the user will be prompted to reconfigure the Instance before creating it from backup.
+
+.. note::
+   If the backup was created in a release prior to 4.21, the backup metadata won't contain the instance configuration details,
+   so users would have to fill in the required details by clicking on the Configure Instance button.
+
 Supported APIs:
 ~~~~~~~~~~~~~~~~
 
@@ -176,6 +211,7 @@ Supported APIs:
 - **listBackups**: lists backups.
 - **restoreBackup**: restore a previous Instance backup in-place of a stopped or destroyed Instance.
 - **restoreVolumeFromBackupAndAttachToVM**: restore and attach a backed-up volume (of an Instance backup) to a specified Instance.
+- **createInstanceFromBackup**: create a new Instance from a backup.
 
 
 Configuring resource limits on Backups
@@ -211,3 +247,9 @@ the backup size, although the actual backup size may be less than the size use t
 .. |B&R-BackupScheduleEntry.png| image:: /_static/images/B&R-BackupScheduleEntry.png
    :alt: Creating a backup schedule for an Instance.
    :width: 400px
+.. |B&R-CreateInstanceFromBackup.png| image:: /_static/images/B&R-CreateInstanceFromBackup.png
+   :alt: Creating a new Instance from a backup.
+   :width: 400px
+.. |B&R-ConfigureInstance.png| image:: /_static/images/B&R-ConfigureInstance.png
+   :alt: Configure Instance parameters before creating it from backup.
+   :width: 700px
