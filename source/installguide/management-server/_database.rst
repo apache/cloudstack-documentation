@@ -64,20 +64,20 @@ MySQL. See :ref:`install-database-on-separate-node`.
       innodb_rollback_on_timeout=1
       innodb_lock_wait_timeout=600
       max_connections=350
-      log-bin=mysql-bin
-      binlog-format = 'ROW'
+      log_bin=mysql-bin
+      binlog_format=ROW
 
    .. note::
-      For Ubuntu 16.04 and later, make sure you specify a ``server-id`` in your ``.cnf`` file for binary logging. Set the         ``server-id`` according to your database setup.
+      For Ubuntu 16.04 and later, make sure you specify a ``server_id`` in your ``/etc/mysql/mysql.conf.d/mysqld.cnf`` file for binary logging. Set the ``server_id`` according to your database setup.
 
    .. parsed-literal::
 
-      server-id=source-01
+      server_id=source-01
       innodb_rollback_on_timeout=1
       innodb_lock_wait_timeout=600
       max_connections=350
-      log-bin=mysql-bin
-      binlog-format = 'ROW'
+      log_bin=mysql-bin
+      binlog_format=ROW
 
    .. note::
       You can also create a file ``/etc/mysql/conf.d/cloudstack.cnf``
@@ -197,6 +197,11 @@ MySQL. See :ref:`install-database-on-separate-node`.
       the root User is deploying the database and creating the "cloud"
       User.
 
+   - Since 4.21, the databases (cloud, cloud_usage) are only created if they 
+     do not exist. This behavior prevents accidental recreation of existing 
+     databases. The databases recreation can still be invoked by passing the 
+     --force-recreate flag.
+
    -  (Optional) There is an option to bypass the creating of the databases,
       User and granting permissions to the user. This is useful if you don't
       want to expose your root credentials but still want the database to
@@ -227,6 +232,10 @@ MySQL. See :ref:`install-database-on-separate-node`.
          -- Grant process list privilege for all other databases
          GRANT process ON *.* TO cloud@`localhost`;
          GRANT process ON *.* TO cloud@`%`;
+
+      .. note::
+         Since 4.21, it is required to pass the --force-recreate flag for 
+         databases recreation.
 
    -  (Optional) For encryption\_type, use file or web to indicate the
       technique used to pass in the database encryption password.
@@ -328,9 +337,9 @@ same node for MySQL. See `â€œInstall the Database on the Management Server Nodeâ
       innodb_rollback_on_timeout=1
       innodb_lock_wait_timeout=600
       max_connections=700
-      log-bin=mysql-bin
-      binlog-format = 'ROW'
-      bind-address = 0.0.0.0
+      log_bin=mysql-bin
+      binlog_format=ROW
+      bind-address=0.0.0.0
 
 #. Start or restart MySQL to put the new configuration into effect.
 

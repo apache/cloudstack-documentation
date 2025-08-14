@@ -223,6 +223,62 @@ Following hypervisor-specific documentations can be referred for different maxim
    Guest Instance limit check is not done while deploying an Instance on a KVM hypervisor host.
 
 
+.. _discovering-gpu-devices-on-kvm-hosts:
+
+Discovering GPU Devices on KVM Hosts
+--------------------------------
+
+For KVM, the user needs to ensure that IOMMU is enabled and the necessary
+drivers are installed. If vGPU is to be used, the user needs to ensure that
+the vGPU type is supported by the host and has been created on the host. The
+cloudstack agent uses the ``gpudiscovery.sh`` script to discover the GPU devices
+on the host. For more information on how to prepare the host for GPU
+passthrough, see `Managing GPU devices in virtual machines <https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/assembly_managing-gpu-devices-in-virtual-machines_configuring-and-managing-virtualization>`_.
+
+Once the host is configured with the GPU devices, the operator can trigger the
+discovery of the GPU devices on the host by using ``discoverGPUdevices`` command
+using cmk or use the ``Discover GPU devices`` button on the host details page in the UI.
+This triggers a request to the cloudstack agent to discover the GPU devices on
+the host.
+
+The cloudstack agent uses the ``gpudiscovery.sh`` script to discover the GPU
+devices on a KVM host. The script is located in the
+``/usr/share/cloudstack-common/scripts/vm/`` directory on the host. The script
+relies on the ``lspci`` & ``xmlstarlet`` command to discover the GPU devices
+and their status on the host. So, for the discovery to be successful, the
+``lspci`` & ``xmlstarlet`` commands needs to be installed on the host.
+
+   .. parsed-literal::
+
+      dnf install pciutils xmlstarlet
+
+   .. parsed-literal::
+
+      sudo apt install pciutils xmlstarlet
+
+.. note::
+   The following table shows the compatibility matrix for NVIDIA vGPU types with CloudStack:
+
+   .. cssclass:: table-striped table-bordered table-hover
+
+   ===============================   ==================   =======================
+   NVIDIA vGPU Type                  VFIO Framework       Supported in CloudStack
+   ===============================   ==================   =======================
+   Legacy: SR-IOV not supported      `mdev`                 Yes
+   SR-IOV supported                  `mdev`                 Yes
+   SR-IOV supported                  `Vendor specific`      No
+   Multi Instance GPU                                       No
+   ===============================   ==================   =======================
+
+   The script can also be run manually to debug the discovery of the GPU devices on a host.
+
+   .. parsed-literal::
+
+      sudo /usr/share/cloudstack-common/scripts/vm/gpudiscovery.sh
+
+   The script will output the GPU devices in a JSON found on the host. The operator
+   can also update the script to customize the discovery of the GPU devices on the host.
+
 
 Changing Host Password
 ----------------------

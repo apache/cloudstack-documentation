@@ -33,6 +33,7 @@ This is the Apache CloudStack Plugins guide. This section gives information for 
    cloudian-connector
    nicira-plugin
    nsx-plugin
+   netris-plugin
    vxlan
    ovs-plugin
    ipv6
