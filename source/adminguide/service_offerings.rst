@@ -304,7 +304,9 @@ To create a new compute offering:
       This is applicable only for KVM hypervisor.
 
    -  **GPU Display**: Whether to use the GPU device attached to the guest instance for display.
-      This is applicable only for KVM hypervisor.
+      This is applicable only for KVM hypervisor. Depending on the OS and display configuration,
+      the user might need to set ``video.hardware`` to ``none`` in the instance's settings to
+      use CPVM for display.
 
    -  **Public**: Indicate whether the compute offering should be
       available to all domains or only some domains. Choose Yes to make it

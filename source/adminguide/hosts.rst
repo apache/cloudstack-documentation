@@ -243,10 +243,34 @@ the host.
 
 The cloudstack agent uses the ``gpudiscovery.sh`` script to discover the GPU
 devices on a KVM host. The script is located in the
-``/usr/share/cloudstack-common/scripts/vm/`` directory on the host.
+``/usr/share/cloudstack-common/scripts/vm/`` directory on the host. The script
+relies on the ``lspci`` & ``xmlstarlet`` command to discover the GPU devices
+and their status on the host. So, for the discovery to be successful, the
+``lspci`` & ``xmlstarlet`` commands needs to be installed on the host.
+
+   .. parsed-literal::
+
+      dnf install pciutils xmlstarlet
+
+   .. parsed-literal::
+
+      sudo apt install pciutils xmlstarlet
 
 .. note::
-   The script can be run manually to debug the discovery of the GPU devices on a host.
+   The following table shows the compatibility matrix for NVIDIA vGPU types with CloudStack:
+
+   .. cssclass:: table-striped table-bordered table-hover
+
+   ===============================   ==================   =======================
+   NVIDIA vGPU Type                  VFIO Framework       Supported in CloudStack
+   ===============================   ==================   =======================
+   Legacy: SR-IOV not supported      `mdev`                 Yes
+   SR-IOV supported                  `mdev`                 Yes
+   SR-IOV supported                  `Vendor specific`      No
+   Multi Instance GPU                                       No
+   ===============================   ==================   =======================
+
+   The script can also be run manually to debug the discovery of the GPU devices on a host.
 
    .. parsed-literal::
 
