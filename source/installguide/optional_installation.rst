@@ -117,7 +117,7 @@ and configure the same in the server.properties file as illustrated above.
 Health Checks and Monitoring (Optional)
 ---------------------------------------
 
-CloudStack as a plugin for exporting metrics in the format that Prometheus can consume.
+CloudStack has a plugin for exporting metrics in the format that Prometheus can consume.
 This is done by enabling the following configuration parameters in the Global Settings.
 
    .. parsed-literal::
