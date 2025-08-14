@@ -165,6 +165,16 @@ KVM Instances.
    is the selected/active one (in case you had a previous Java version already installed)
    with ``alternatives --config java``, after CloudStack agent is installed.
 
+.. note::
+SUSE Linux Enterprise Server 15 (SP7) requires the following steps to install Java 17 and prepare the host.
+SUSEConnect --product sle-module-legacy/15.7/x86_64
+zypper install java-17-openjdk-17.0.15.0-150400.3.54.1
+SUSEConnect --product PackageHub/15.7/x86_64
+zypper install rng-tools
+wget https://download.opensuse.org/repositories/openSUSE:/Leap:/15.2/standard/noarch/timezone-java-2020a-lp152.2.1.noarch.rpm
+rpm -ivh timezone-java-2020a-lp152.2.1.noarch.rpm
+
+
 Configure package repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -229,7 +239,7 @@ information.
 
    [cloudstack]
    name=cloudstack
-   baseurl=http://download.cloudstack.org/suse/|version|/
+   baseurl=http://download.cloudstack.org/suse/$releasever/|version|/
    enabled=1
    gpgcheck=0
 
@@ -298,6 +308,11 @@ In SUSE:
 
    $ zypper install cloudstack-agent
 
+SUSE Linux Enterprise Server 15 (SP7) requires the following entry to be made in the /etc/cloudstack/agent/agent.properties file; the clock speed can be set to match the host CPU. 
+
+.. parsed-literal::
+
+host.cpu.manual.speed.mhz=2350 
 
 The host is now ready to be added to a cluster. This is covered in a
 later section, see :ref:`adding-a-host`. It is
@@ -472,7 +487,7 @@ cloudstack-agent and should already be installed.
 
       #LIBVIRTD_ARGS="--listen"
 
-   Configure libvirt to connect to libvirtd and not to per-driver daemons, especially important on newer distros such as EL9 and Ubuntu 24.04. 
+   Configure libvirt to connect to libvirtd and not to per-driver daemons, especially important on newer distros such as EL9, SUSE 15 SP7 and Ubuntu 24.04. 
    Edit ``/etc/libvirt/libvirt.conf`` and add the following:
 
    .. parsed-literal::
