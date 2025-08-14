@@ -166,13 +166,16 @@ KVM Instances.
    with ``alternatives --config java``, after CloudStack agent is installed.
 
 .. note::
-SUSE Linux Enterprise Server 15 (SP7) requires the following steps to install Java 17 and prepare the host.
-SUSEConnect --product sle-module-legacy/15.7/x86_64
-zypper install java-17-openjdk-17.0.15.0-150400.3.54.1
-SUSEConnect --product PackageHub/15.7/x86_64
-zypper install rng-tools
-wget https://download.opensuse.org/repositories/openSUSE:/Leap:/15.2/standard/noarch/timezone-java-2020a-lp152.2.1.noarch.rpm
-rpm -ivh timezone-java-2020a-lp152.2.1.noarch.rpm
+   SUSE Linux Enterprise Server 15 (SP7) requires the following steps to install Java 17 and prepare the host.
+
+.. parsed-literal::
+
+   SUSEConnect --product sle-module-legacy/15.7/x86_64
+   zypper install java-17-openjdk-17.0.15.0-150400.3.54.1
+   SUSEConnect --product PackageHub/15.7/x86_64
+   zypper install rng-tools
+   wget https://download.opensuse.org/repositories/openSUSE:/Leap:/15.2/standard/noarch/timezone-java-2020a-lp152.2.1.noarch.rpm
+   rpm -ivh timezone-java-2020a-lp152.2.1.noarch.rpm
 
 
 Configure package repository
@@ -312,7 +315,7 @@ SUSE Linux Enterprise Server 15 (SP7) requires the following entry to be made in
 
 .. parsed-literal::
 
-host.cpu.manual.speed.mhz=2350 
+   host.cpu.manual.speed.mhz=2350 
 
 The host is now ready to be added to a cluster. This is covered in a
 later section, see :ref:`adding-a-host`. It is
