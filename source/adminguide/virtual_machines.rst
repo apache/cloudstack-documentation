@@ -1265,6 +1265,19 @@ When the snapshotting is complete, the Instance is thawed.
 
 You can use this functionality on Instances with raw block storages (E.g. Ceph/SolidFire/Linstor).
 
+Disk-only File-based Storage Instance Snapshot on KVM
+-----------------------------------------------------
+
+Since version 4.21, CloudStack supports incremental disk-only instance snapshots for VMs on KVM that are running on file-based storages (NFS, local, shared-mount-point).
+Different from :ref:`Storage-based-Instance-Snapshots-on-KVM`, the VM is not frozen by default; only if the ``quiescevm`` parameter is informed. Furthermore, if ``quiescevm`` is true
+the VM is only frozen during the operation of creating the deltas on the volumes of the VM, thus the downtime is minimal.
+
+When using this snapshot strategy, you will not be able to create volume snapshots, as these two features are not compatible. If you want to use both volume snapshots and instance snapshots
+at the same time, you may inform the value ``KvmFileBasedStorageVmSnapshotStrategy`` on the ``vmSnapshot.strategies.exclude`` configuration, so that 
+this strategy is not used and the :ref:`Storage-based-Instance-Snapshots-on-KVM` feature is used instead. 
+
+More information on this feature may be found in the `specification <https://github.com/apache/cloudstack/issues/9524>`_.
+
 Limitations on Instance Snapshots
 ---------------------------------
 
