@@ -246,7 +246,7 @@ devices on a KVM host. The script is located in the
 ``/usr/share/cloudstack-common/scripts/vm/`` directory on the host. The script
 relies on the ``lspci`` & ``xmlstarlet`` command to discover the GPU devices
 and their status on the host. So, for the discovery to be successful, the
-``lspci`` & ``xmlstarlet`` commands needs to be installed on the host.
+``lspci`` & ``xmlstarlet`` should be installed on the host.
 
    .. parsed-literal::
 
@@ -266,7 +266,7 @@ and their status on the host. So, for the discovery to be successful, the
    ===============================   ==================   =======================
    Legacy: SR-IOV not supported      `mdev`                 Yes
    SR-IOV supported                  `mdev`                 Yes
-   SR-IOV supported                  `Vendor specific`      No
+   SR-IOV supported                  `Vendor specific`      Yes
    Multi Instance GPU                                       No
    ===============================   ==================   =======================
 

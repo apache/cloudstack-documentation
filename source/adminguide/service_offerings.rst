@@ -306,7 +306,9 @@ To create a new compute offering:
    -  **GPU Display**: Whether to use the GPU device attached to the guest instance for display.
       This is applicable only for KVM hypervisor. Depending on the OS and display configuration,
       the user might need to set ``video.hardware`` to ``none`` in the instance's settings to
-      use CPVM for display.
+      use CPVM for display. To set the ``video.hardware`` setting, navigate to
+      the instance's details page in the CloudStack UI, click on the
+      "Settings" tab, and add/or update the ``video.hardware`` setting to ``none``.
 
    -  **Public**: Indicate whether the compute offering should be
       available to all domains or only some domains. Choose Yes to make it
