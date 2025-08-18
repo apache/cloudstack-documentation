@@ -114,6 +114,39 @@ For storing certificates, admins can create and configure a java keystore file
 and configure the same in the server.properties file as illustrated above.
 
 
+Health Checks and Monitoring (Optional)
+---------------------------------------
+
+CloudStack has a plugin for exporting metrics in the format that Prometheus can consume.
+This is done by enabling the following configuration parameters in the Global Settings.
+
+   .. parsed-literal::
+
+      # cloudmonkey update configuration name=prometheus.exporter.enable      value=true
+      # cloudmonkey update configuration name=prometheus.exporter.port        value=9595
+      # cloudmonkey update configuration name=prometheus.exporter.allowed.ips value="127.0.0.1,192.168.0.10"
+
+.. note:: 
+   These settings are available to be configured via the CloudStack UI as well.
+   CloudStack Management needs to be restarted for the changes to take effect.
+   Replace the mock IP address 192.168.0.10 with the actual IP address of the Prometheus server.
+
+.. warning::
+   A list of addresses can be provided as a comma separated list. It does NOT accept CIDR notation.
+
+Then, configure prometheus to start pulling metrics by adding the following configuration to ``/etc/prometheus/prometheus.yml``.
+
+   .. parsed-literal::
+
+      - job_name: 'management'
+         static_configs:
+            - targets: ['192.168.0.20:9595']
+
+.. note::
+   Replace the mock IP address 192.168.0.20 with the actual IP address of the Management server.
+   Public dashboards are available in the Grafana repository for visualizing CloudStack Management metrics.
+
+
 Database Replication (Optional)
 -------------------------------
 
