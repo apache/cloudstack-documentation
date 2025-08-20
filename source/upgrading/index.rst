@@ -42,6 +42,7 @@ Contents:
 .. toctree::
    :maxdepth: 1
 
+   upgrade/upgrade_java_17_notes
    upgrade/mysql
    upgrade/valid_source
    upgrade/upgrade-4.20
