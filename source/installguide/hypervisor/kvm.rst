@@ -331,81 +331,94 @@ sudoers file:
    Defaults:cloudstack !requiretty
 
 
-Configure CPU model for KVM guest (Optional)
+Configure CPU model for KVM guests (Optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In additional,the CloudStack Agent allows host administrator to control
-the guest CPU model which is exposed to KVM Instances. By default, the
-CPU model of KVM Instance is likely QEMU Virtual CPU version x.x.x with
-least CPU features exposed. There are a couple of reasons to specify the
-CPU model:
+The CloudStack Agent allows host administrators to control
+the CPU model which is exposed to KVM instances. By default, the
+default QEMU CPU models (``qemu32`` or ``qemu64``) will be used, which
+are designed to be compatible with all hosts and, as a consequence, will
+expose the least amount of CPU features possible. Therefore, there are
+a couple of reasons to specify the CPU model:
 
--  To maximise performance of Instances by exposing new host CPU
-   features to the KVM Instances;
+-  Maximize performance of instances by exposing new host CPU
+   features to them; and,
 
--  To ensure a consistent default CPU across all machines,removing
-   reliance of variable QEMU defaults;
+-  Ensure a consistent default CPU across all machines, removing
+   reliance of variable QEMU defaults.
 
-For the most part it will be sufficient for the host administrator to
-specify the guest CPU config in the per-host configuration file
-(/etc/cloudstack/agent/agent.properties). This will be achieved by
-introducing following configuration parameters:
+The guest CPU configuration can be configured per host in the
+``/etc/cloudstack/agent/agent.properties`` configuration file 
+through the following properties: ``guest.cpu.mode``, ``guest.cpu.model`` and ``guest.cpu.features``. 
 
-.. parsed-literal::
+The ``guest.cpu.mode`` property accepts three possible values:
 
-   guest.cpu.mode=custom|host-model|host-passthrough
-   guest.cpu.model=from /usr/share/libvirt/cpu_map.xml(only valid when guest.cpu.mode=custom)
-   guest.cpu.features=vmx ept aes smx mmx ht (space separated list of cpu flags to apply)
-
-There are three choices to fulfill the cpu model changes:
-
-#. **custom:** you can explicitly specify one of the supported named
-   model in /usr/share/libvirt/cpu\_map.xml
-
-#. **host-model:** libvirt will identify the CPU model in
-   /usr/share/libvirt/cpu\_map.xml which most closely matches the host,
-   and then request additional CPU flags to complete the match. This
-   should give close to maximum functionality/performance, which
-   maintaining good reliability/compatibility if the guest is migrated
-   to another host with slightly different host CPUs.
-
-#. **host-passthrough:** libvirt will tell KVM to passthrough the host
-   CPU with no modifications. The difference to host-model, instead of
-   just matching feature flags, every last detail of the host CPU is
-   matched. This gives absolutely best performance, and can be important
-   to some apps which check low level CPU details, but it comes at a
-   cost with respect to migration: the guest can only be migrated to an
-   exactly matching host CPU.
-
-Here are some examples:
-
--  custom
+#. **custom:** Allows the customization of the CPU model, which 
+   should be defined in the ``guest.cpu.model`` setting. For instance:
 
    .. parsed-literal::
 
       guest.cpu.mode=custom
       guest.cpu.model=SandyBridge
 
--  host-model
+   The available CPU models for a given architecture can be retrieved by
+   executing ``virsh cpu-models <architecture>``. The XML definition of each 
+   available model can be accessed at the ``/usr/share/libvirt/cpu_map/`` 
+   path of the KVM hosts.
+
+#. **host-model:** Libvirt will identify the CPU model in
+   ``/usr/share/libvirt/cpu_map`` which most closely matches the host's CPU,
+   and then request additional CPU flags to complete the match. This
+   should give close to maximum functionality/performance and
+   maintains good reliability/compatibility if the guest is migrated
+   to another host with slightly different CPUs.
+
+#. **host-passthrough:** Libvirt will tell KVM to passthrough the host
+   CPU with no modifications. The difference to ``host-model`` is that, instead of
+   just matching CPU flags, every last detail of the host's CPU is
+   matched. This gives absolutely best performance and can be important
+   to some apps that check low level CPU details. However, it comes at a
+   cost with respect to migration: the guest can only be migrated to an
+   exactly matching host's CPU.
+
+Furthermore, there is the ``guest.cpu.features`` setting that can be used 
+to add or remove individual CPU features. It is important to highlight 
+that Libvirt complains about specifying a list of flags without a CPU model. 
+Therefore, to apply CPU flags in KVM, one of the following requirements must be met:
+
+- Define ``guest.cpu.mode=host-model`` and specify the flags;
+- Define ``guest.cpu.mode=host-passthrough`` and specify the flags; or,
+- Define ``guest.cpu.mode=custom``, ``guest.cpu.model=<cpu-model>`` and specify the flags.
+
+Here are some examples:
+
+-  Custom CPU model:
+
+   .. parsed-literal::
+
+      guest.cpu.mode=custom
+      guest.cpu.model=SandyBridge
+
+-  Host model:
 
    .. parsed-literal::
 
       guest.cpu.mode=host-model
 
--  host-passthrough
+-  Host passthrough, adding the ``vmx`` and ``avx`` CPU flags, and removing the ``mmx`` one:
 
    .. parsed-literal::
 
       guest.cpu.mode=host-passthrough
-      guest.cpu.features=vmx
+      guest.cpu.features=vmx avx -mmx
 
 .. note::
-   host-passthrough may lead to migration failure,if you have this problem,
-   you should use host-model or custom. guest.cpu.features will force cpu features
-   as a required policy so make sure to put only those features that are provided
-   by the host CPU. As your kvm cluster needs to be made up of homogeneous nodes anyway
-   (see System Requirements), it might make most sense to use guest.cpu.mode=host-model
-   or guest.cpu.mode=host-passthrough.
+   ``host-passthrough`` may lead to migration failure. If you have this problem,
+   you should use ``host-model`` or a custom CPU model. ``guest.cpu.features`` will force CPU features
+   as a required policy, so make sure to put only those features that are provided
+   by the host's CPU. As your KVM cluster needs to be made up of homogeneous nodes
+   (see System Requirements), it might make most sense to use ``guest.cpu.mode=host-model``
+   or ``guest.cpu.mode=host-passthrough``.
 
 Install and Configure libvirt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
