@@ -13,10 +13,10 @@
    specific language governing permissions and limitations
    under the License.
 
-Built-in Orchestator Extensions
+Inbuilt Orchestator Extensions
 ===============================
 
-CloudStack provides sample built-in orchestrator extensions for Proxmox and Hyper-V. These extensions are intended for demonstration and testing purposes.
+CloudStack provides sample Inbuilt orchestrator extensions for Proxmox and Hyper-V. These extensions are intended for demonstration and testing purposes.
 The extension files are located at `/usr/share/cloudstack-management/extensions/Promox` and `/usr/share/cloudstack-management/extensions/HyperV` respectively.
 The Proxmox extension is written in shell script, while the Hyper-V extension is written in python.
 Both of these extensions support some custom actions in addition to the standard VM actions like deploy, start, stop, reboot, status and delete.
@@ -77,6 +77,13 @@ To set up the Proxmox extension, follow these steps in CloudStack:
 #. **Add Host.** Add a host to the newly created cluster with the following details:
 
    If the Proxmox nodes use a shared API endpoint or credentials, the `url`, `user`, `token`, and `secret` can be set in the Extension's `Configuration Details` instead of per host. However, `node` and `network_bridge` must still be specified individually for each host.
+
+   * **url**: IP address/URL for Proxmox API access, e.g., `https://<PROXMOX_URL>:8006`.
+   * **user**: User name for Proxmox API access
+   * **token**: API token for Proxmox
+   * **secret**: API secret for Proxmox
+   * **node**: Hostname of the Proxmox nodes
+   * **network_bridge**: Name of the network bridge to use for VM networking
 
    |proxmox-add-host.png|
 
