@@ -148,17 +148,17 @@ It is worth mentioning that the compute offering or disk offering tags are injec
 
 Example: tags[0] == "slow" || tags[1] == "fast"
 	Tags and results:
-		“slow,fast” -> TRUE
-		“fast,slow” -> FALSE
-		“fast” -> FALSE
+	- “slow,fast” -> TRUE
+	- “fast,slow” -> FALSE
+	- “fast” -> FALSE
 
 If you want to avoid dependency on tag order, use the following approach:
 
 Example: tags.indexOf('slow') >= 0 || tags.indexOf('fast') >= 0
 	Tags and results:
-		“slow,fast” -> TRUE
-		“fast,slow” -> TRUE
-		“fast” -> TRUE
+	- “slow,fast” -> TRUE
+	- “fast,slow” -> TRUE
+	- “fast” -> TRUE
 
 
 It's also important to mention that flexible tags are not compatible with quota's activation rules.
