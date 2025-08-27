@@ -179,6 +179,7 @@ Adding Hyper-V to CloudStack
 #. **Add Host.** Add a host to the newly created cluster with the following details:
 
    |hyperv-add-host.png|
+    **Note**: Add the detail **verify_tls_certificate** set to **false** to skip TLS certificate verification for self-signed certificates.
 
 #. **Create Template.** A Template in CloudStack can map to either a `Template` or an `ISO` in Hyper-V.
    Provide a dummy `url` and template name. Select `External` as the hypervisor and `HyperV` as the extension. Under `External Details`, specify:
