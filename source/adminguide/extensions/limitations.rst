@@ -34,15 +34,11 @@ by adding custom actions in the scripts written for the built-in extensions.
 
    - Affinity Groups.
 
-   - Usage and Billing.
+   - Migrate Instance.
 
 **Actions which can be implemented using Custom Actions in built-in extensions:**
 
    - Reinstall Instance.
-
-   - Migrate Instance to another Host.
-
-   - Migrate Instance to another Storage.
 
    - Backup and Restore.
 
