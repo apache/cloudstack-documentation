@@ -22,7 +22,7 @@ Instances in many ways, there are some limitations. Some of these
 limitations are due to the framework itself, while others can be addressed
 by adding custom actions in the scripts written for the built-in extensions.
 
-**Features / Actions not supported at the framework level:**
+**Some general features/actions not supported at the framework level:**
 
    - Console access to the external Instances.
 
@@ -35,6 +35,10 @@ by adding custom actions in the scripts written for the built-in extensions.
    - Affinity Groups.
 
    - Migrate Instance.
+
+   - Host Capacity and Utilization Stats.
+
+   - Add Nics to Instance post deployment.
 
 **Actions which can be implemented using Custom Actions in built-in extensions:**
 
