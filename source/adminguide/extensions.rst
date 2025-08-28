@@ -79,7 +79,7 @@ An Orchestrator extension enables CloudStack to delegate VM orchestration to an 
    |extension.png|
 
 
-CloudStack provides sample inbuilt orchestrator extensions for demonstration and testing purposes.
+CloudStack provides sample in-built orchestrator extensions for demonstration and testing purposes.
 
 .. note::
    - When a CloudStack host linked to an orchestrator extension is placed into Maintenance mode, all running instances on the host will be stopped.
