@@ -447,7 +447,7 @@ can also attach ISO images to Guest Instances. For example, this enables
 installing PV drivers into Windows. ISO images are not
 hypervisor-specific.
 
-
+.. _adding-an-iso:
 Adding an ISO
 -------------
 
