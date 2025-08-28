@@ -236,7 +236,7 @@ Creating a VPN gateway for the VPC
 
    -  Site-to-Site VPNs
 
-   -  Network ACL Lists
+   -  Network ACLs
 
 #. Select Site-to-Site VPN.
 
@@ -299,7 +299,7 @@ Creating a VPN Connection
 
    -  Site-to-Site VPNs
 
-   -  Network ACL Lists
+   -  Network ACLs
 
 #. Select Site-to-Site VPN.
 
@@ -431,7 +431,7 @@ Restarting and Removing a VPN Connection
 
    -  Site-to-Site VPNs
 
-   -  Network ACL Lists
+   -  Network ACLs
 
 #. Select Site-to-Site VPN.
 

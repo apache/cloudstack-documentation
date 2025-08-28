@@ -320,7 +320,7 @@ with the selected Template for a User. A User may also not be able to save
 Templates or examine/restore saved Templates. These features will
 automatically be available when the secondary storage comes back online.
 
-Secondary storage data loss will impact recently added User data
+Secondary storage data loss will impact recently added user data
 including Templates, Snapshots, and ISO Images. Secondary storage should
 be backed up periodically. Multiple secondary storage servers can be
 provisioned within each zone to increase the scalability of the system.

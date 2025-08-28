@@ -128,9 +128,9 @@ templating of Centos and Ubuntu.
    Volumes can autorextend after reboot when partition is extended in the GUI.
    This feature is possible with `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_.
    
-#. **User-data**
+#. **User Data**
 	
-   Cloudstack can push user-data during Instance creation.
+   Cloudstack can push User Data during Instance creation.
    This feature is possible with `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_.
 	
 #. **Template cleanup**

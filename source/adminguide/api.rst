@@ -46,28 +46,27 @@ Authentication.
 User Data and Meta Data
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The user-data service on a Shared or Isolated Network can be provided through the
+The User Data service on a Shared or Isolated Network can be provided through the
 Virtual Router or through an attached iso called the Config drive.
 
 User Data and Meta Data Via Virtual Router
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-CloudStack provides API access to attach up to 32KB of user data to a
+CloudStack provides API access to attach up to 32KB of User Data to a
 deployed Instance. Deployed Instances also have access to metadata via the
 virtual router.
 
-User data can be accessed once the IP address of the virtual router is
+User Data can be accessed once the IP address of the virtual router is
 known. Once the IP address is known, use the following steps to access
-the user data:
+the User Data:
 
 #. Run the following command to find the virtual router.
 
    .. code:: bash
 
       # cat /var/lib/dhclient/dhclient-eth0.leases | grep dhcp-server-identifier | tail -1
-
-#. Access user data by running the following command using the result of
+#. Access User Data by running the following command using the result of
    the above command
 
    .. code:: bash
@@ -98,15 +97,15 @@ User Data and Meta Data via Config Drive
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Config drive is an ISO file that is mounted as a cd-rom on a user Instance and
-contains related userdata, metadata (incl. ssh-keys) and
+contains related User Data, metadata (incl. ssh-keys) and
 password files.
 
 Enable config drive
 ~~~~~~~~~~~~~~~~~~~
 To use the config drive the Network offering must have the “ConfigDrive”
-provider selected for the userdata service.
+provider selected for the User Data service.
 
-If the networkoffering uses ConfigDrive for userdata and the Template is
+If the networkoffering uses ConfigDrive for User Data and the Template is
 password enabled, the password string for the Instance is placed in the
 vm_password.txt file and it is included in the ISO.
 
@@ -117,13 +116,13 @@ user Instance, such that any other ISO image (e.g. boot image or vmware tools)
 is mounted on 1st cd/dvd drive. This means existing functionality of
 supporting 1 cd rom drive is still available.
 
-At password reset or update of user data, the Config Drive ISO
+At password reset or update of User Data, the Config Drive ISO
 will be rebuilt. The existing ISO is mounted on a temporary directory,
-password, userdata or ssh-keys are updated and a new ISO is built from the
+password, User Data or ssh-keys are updated and a new ISO is built from the
 updated directory structure.
 
 In case of a password reset, the new password will be picked-up at Instance start.
-To access the updated userdata, the user needs to remount the config drive ISO.
+To access the updated User Data, the user needs to remount the config drive ISO.
 
 When an Instance is stopped, the ConfigDrive network element will trigger the
 Secondary Storage VM to remove the ISO from the secondary storage.

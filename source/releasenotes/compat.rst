@@ -24,14 +24,15 @@ CloudStack Management Server.
 
 -  Ubuntu 20.04 LTS, 22.04 LTS, 24.04 LTS
 -  Oracle Linux 8, 9
--  Alma Linux 8, 9
 -  Rocky Linux 8, 9
+-  Alma Linux 8, 9
 -  RHEL versions 8, 9
--  openSUSE Leap 15
--  SUSE Linux Enterprise Server 15 (not tested, but expected to work same as with openSUSE 15)
--  Debian 12 (not tested, but expected to work same as Ubuntu)
+-  Experimental support for RHEL 10
+-  openSUSE Leap 15 (not widely tested and used by the community, tested to work in past CloudStack versions)
+-  SUSE Linux Enterprise Server 15 (not tested, but expected to work same as with openSUSE 15 but likely require workarounds)
+-  Debian 12, 13 (not tested, but expected to work same as Ubuntu)
 
-   .. note:: There is a known issue with ipmitool with EL8 / EL9 / SUSE, so certain functionality such as out of band management might not work
+   .. note:: There is a known issue with ipmitool with the EL and SUSE distros, so certain functionality such as out of band management might not work
 
 Software Requirements
 ~~~~~~~~~~~~~~~~~~~~~
@@ -47,17 +48,17 @@ and VMware with vSphere.
 
 -  Ubuntu 20.04 LTS, 22.04 LTS, 24.04 LTS with KVM
 -  Oracle Linux 8, 9 with KVM
--  Alma Linux 8, 9 with KVM
 -  Rocky Linux 8, 9 with KVM
--  Red Hat Enterprise Linux 8, 9 with KVM
--  Experimental support for Red Hat Enterprise Linux 10 with KVM
--  openSUSE Leap 15 with KVM
--  SUSE Linux Enterprise Server 15 with KVM
+-  Alma Linux 8, 9 with KVM
+-  RHEL 8, 9 with KVM
+-  Experimental support for RHEL 10 with KVM
+-  openSUSE Leap 15 with KVM (not widely tested and used by the community, tested to work in past CloudStack versions)
+-  SUSE Linux Enterprise Server 15 with KVM (not tested, but expected to work same as with openSUSE 15 but likely require workarounds)
 -  XCP-ng 8.2.0
 -  XCP-ng 8.3.0
 -  Citrix Hypervisor/XenServer version 8.2 (not tested, but expected to work. For 8.2 please check the note below) with latest hotfixes
 -  Citrix Hypervisor/XenServer version 8.4
--  Debian 12 with KVM (not tested, but expected to work same as Ubuntu)
+-  Debian 12, 13 with KVM (not tested, but expected to work same as Ubuntu)
 
    .. note:: It is now required to enable HA on the XenServer pool in order to recover from a pool-master failure. Please refer to the `XenServer documentation <https://docs.citrix.com/en-us/xencenter/7-1/pools-ha-enable.html>`_.
 

@@ -133,7 +133,7 @@ To enable VPN for a VPC:
 
    -  Site-to-Site VPNs
 
-   -  Network ACL Lists
+   -  Network ACLs
 
 #. In the Router node, select Public IP Addresses.
 
