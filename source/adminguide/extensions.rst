@@ -92,6 +92,8 @@ CloudStack provides sample in-built orchestrator extensions for demonstration an
 
 .. include:: extensions/builtin_extensions.rst
 
+.. include:: extensions/limitations.rst
+
 .. include:: extensions/troubleshooting.rst
 
 .. include:: extensions/developer.rst

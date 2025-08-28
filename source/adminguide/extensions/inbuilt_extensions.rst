@@ -37,11 +37,20 @@ Get the Api Token-Secret from Proxmox
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If not already set up, create a new API Token in the Proxmox UI by navigating to `Datacenter > Permissions > API Tokens`.
-Uncheck the `Privilege Separation` checkbox in the `Add: Token` dialog or give permission to the API Token
-by navigating to `Datacenter > Permissions > Add > API Tokens Permission` and setting Role = `PVEAdmin` and Path = `/vms`.
-Note down the **user**, **token**, and **secret**.
+
+Uncheck the `Privilege Separation` checkbox in the `Add: Token` dialog
 
    |proxmox-add-token.png|
+
+Note down the **user**, **token**, and **secret**.
+
+Alternatively, check the `Privilege Separation` checkbox in the `Add: Token` dialog, and give permissions to the API Token
+by navigating to `Datacenter > Permissions > Add > API Tokens Permission` 
+
+- Set Role = `PVEAdmin` and Path = `/vms`
+- Set Role = `PVEAdmin` and Path = `/storage`
+- Set Role = `PVEAdmin` and Path = `/sdn`
+
    |proxmox-api-token-permission.png|
 
 To check whether the **token** and **secret** are working fine, you can check the following from the CloudStack Management Server:
@@ -186,6 +195,7 @@ Adding Hyper-V to CloudStack
 #. **Add Host.** Add a host to the newly created cluster with the following details:
 
    |hyperv-add-host.png|
+    **Note**: Add the detail **verify_tls_certificate** set to **false** to skip TLS certificate verification for self-signed certificates.
 
 #. **Create Template.** A Template in CloudStack can map to either a `Template` or an `ISO` in Hyper-V.
    Provide a dummy `url` and template name. Select `External` as the hypervisor and `HyperV` as the extension. Under `External Details`, specify:

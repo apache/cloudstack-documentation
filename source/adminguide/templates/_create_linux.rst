@@ -29,8 +29,7 @@ An overview of the procedure is as follow:
 
 #. Upload your Linux ISO.
 
-   For more information, see `“Adding an
-   ISO” <templates.html#adding-an-iso>`_.
+   For more information, see :ref:`adding-an-iso`.
 
 #. Create an Instance with this ISO.
 
