@@ -391,7 +391,7 @@ Note: The User Data and Metadata of the underlying host can be accessed by the c
 
   - The User Data and Metadata of the underlying worker-nodes can be accessed by the containers running on the CKS cluster
 
-     For example deploy a container on a cks cluster 
+     For example: Deploy a container on a CKS cluster 
 
       kubectl exec -it <container> -- /bin/sh
 
