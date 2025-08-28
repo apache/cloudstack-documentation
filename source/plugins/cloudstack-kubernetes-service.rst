@@ -389,7 +389,7 @@ Note: The User Data and Metadata of the underlying host can be accessed by the c
 
 .. parsed-literal::
 
-  - The meta-data and user-data of the underlying worker-nodes can be accessed by the containers running on the CKS cluster
+  - The User Data and Metadata of the underlying worker-nodes can be accessed by the containers running on the CKS cluster
 
      For example deploy a container on a cks cluster 
 
