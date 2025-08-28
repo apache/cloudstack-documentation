@@ -23,6 +23,15 @@ Java version upgraded to Java 17
 As of Apache CloudStack 4.20, support for running with Java 17 has been added.
 In later versions, support for Java 11 will be removed.
 
+If you are running CloudStack with Java 17, for CloudStack versions 4.20 and later:
+  * Verify /etc/default/cloudstack-management is consistent with https://github.com/apache/cloudstack/blob/main/packaging/systemd/cloudstack-management.default; Specifically, ensure that the following is present in the JAVA_OPTS:
+
+  .. code-block:: bash
+
+   --add-opens=java.base/java.lang=ALL-UNNAMED --add-exports=java.base/sun.security.x509=ALL-UNNAMED
+
+  * Verify /etc/default/cloudstack-usage is also consistent with the same file in the repository.
+  * Perform the same check for /etc/default/cloudstack-agent on the hypervisor hosts.
 
 .. include:: _java_version.rst
 
