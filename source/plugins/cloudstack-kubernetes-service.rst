@@ -385,7 +385,7 @@ The service provides functionality to access kubeconfig file for a running Kuber
 
 getKubernetesClusterConfig API can be used to retrieve kubeconfig file data for a cluster. It takes id of the cluster as the input parameter.
 
-Note: The meta-data and user-data of the underlying host can be accessed by the container running on the cks cluster. If you want prevent the access follow the below steps
+Note: The User Data and Metadata of the underlying host can be accessed by the container running on the CKS cluster. If you want prevent the access follow the below steps
 
 .. parsed-literal::
 
