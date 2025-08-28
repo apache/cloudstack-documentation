@@ -37,11 +37,20 @@ Get the Api Token-Secret from Proxmox
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If not already set up, create a new API Token in the Proxmox UI by navigating to `Datacenter > Permissions > API Tokens`.
-Uncheck the `Privilege Separation` checkbox in the `Add: Token` dialog or give permission to the API Token
-by navigating to `Datacenter > Permissions > Add > API Tokens Permission` and setting Role = `PVEAdmin` and Path = `/vms`.
-Note down the **user**, **token**, and **secret**.
+
+Uncheck the `Privilege Separation` checkbox in the `Add: Token` dialog
 
    |proxmox-add-token.png|
+
+Note down the **user**, **token**, and **secret**.
+
+Alternatively, check the `Privilege Separation` checkbox in the `Add: Token` dialog, and give permissions to the API Token
+by navigating to `Datacenter > Permissions > Add > API Tokens Permission` 
+
+- Set Role = `PVEAdmin` and Path = `/vms`
+- Set Role = `PVEAdmin` and Path = `/storage`
+- Set Role = `PVEAdmin` and Path = `/sdn`
+
    |proxmox-api-token-permission.png|
 
 To check whether the **token** and **secret** are working fine, you can check the following from the CloudStack Management Server:
