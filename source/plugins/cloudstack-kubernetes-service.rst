@@ -411,7 +411,7 @@ Note: The User Data and Metadata of the underlying host can be accessed by the c
       curl http://data-server/latest/user-data/
 
 
-  - If you want to prevent the access of meta-data and user-data from the containers running on cks-cluster, Execute the following yaml
+  - If you want to prevent the access of User Data and Metadata from the containers running on CKS cluster, Execute the following yaml
     
     kubectl apply -f  deny-meta-data.yaml   
       
