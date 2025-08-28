@@ -26,10 +26,8 @@ The virt-v2v output (progress) is logged in the CloudStack agent logs, to help a
 
         dnf install virt-v2v
 
-        cat <<EOF >> /etc/cloudstack/agent/agent.properties
-        virtv2v.verbose.enabled=true
-        EOF
-
+        echo "virtv2v.verbose.enabled=true" >> /etc/cloudstack/agent/agent.properties  
+    
         systemctl restart cloudstack-agent
 
 
