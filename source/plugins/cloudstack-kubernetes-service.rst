@@ -432,7 +432,6 @@ Note: The User Data and Metadata of the underlying host can be accessed by the c
             port: 80
       
      
-
 Kubernetes cluster web dashboard
 #################################
 
