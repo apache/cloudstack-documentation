@@ -13,7 +13,7 @@
    specific language governing permissions and limitations
    under the License.
 
-Inbuilt Orchestator Extensions
+In-built Orchestator Extensions
 ===============================
 
 CloudStack provides sample in-built orchestrator extensions for Proxmox and Hyper-V. These extensions are intended for demonstration and testing purposes.
