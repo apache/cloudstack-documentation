@@ -41,6 +41,10 @@ Some of the highlights include:
 • Storage plugins - Ceph, PowerFlex, StorPool, Linstor related fixes and improvements
 • Several UI fixes and improvements, including Deploy Instance Form, Announcement Banner, etc
 
+Known Issues
+------------
+
+• Usage data for Instance Backups does not update after the final backup of an Instance is deleted
 
 The full list of new features can be found in the project release notes at
 https://docs.cloudstack.apache.org/en/4.21.0.0/releasenotes/changes.html
