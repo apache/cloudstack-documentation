@@ -385,6 +385,53 @@ The service provides functionality to access kubeconfig file for a running Kuber
 
 getKubernetesClusterConfig API can be used to retrieve kubeconfig file data for a cluster. It takes id of the cluster as the input parameter.
 
+Note: The User Data and Metadata of the underlying host can be accessed by the container running on the CKS cluster. If you want prevent the access follow the below steps
+
+.. parsed-literal::
+
+  - The User Data and Metadata of the underlying worker-nodes can be accessed by the containers running on the CKS cluster
+
+     For example: Deploy a container on a CKS cluster 
+
+      kubectl exec -it <container> -- /bin/sh
+
+      curl http://data-server/latest/meta-data/
+      service-offering
+      availability-zone
+      local-ipv4
+      local-hostname
+      public-ipv4
+      public-hostname
+      instance-id
+      vm-id
+      public-keys
+      cloud-identifier
+      hypervisor-host-name
+      
+      curl http://data-server/latest/user-data/
+
+
+  - If you want to prevent the access of User Data and Metadata from the containers running on CKS cluster, Execute the following yaml
+    
+    kubectl apply -f  deny-meta-data.yaml   
+      
+      apiVersion: networking.k8s.io/v1
+      kind: NetworkPolicy
+      metadata:
+      name: deny-metadata-access
+      spec:
+      podSelector: {}
+      policyTypes:
+      - Egress
+      egress:
+      - to:
+         - ipBlock:
+            cidr: 169.254.188.68/32
+         ports:
+         - protocol: TCP
+            port: 80
+      
+     
 Kubernetes cluster web dashboard
 #################################
 
@@ -429,6 +476,13 @@ Kubernetes compatibility Matrix
 +--------------+---------------------------------+-----------------------------+-------------+
 | 4.16.1       | v1.20 onward                    | SystemVM Template (Debian)  | cloud       |
 +--------------+---------------------------------+-----------------------------+-------------+
+| 4.19.1       | v1.30 onward                    | SystemVM Template (Debian)  | cloud       | 
++--------------+---------------------------------+-----------------------------+-------------+
+| 4.20.1       | v1.30 onward                    | SystemVM Template (Debian)  | cloud       | 
++--------------+---------------------------------+-----------------------------+-------------+
+| 4.21.0       | v1.33 onward                    | SystemVM Template (Debian)  | cloud       |  
++--------------+---------------------------------+-----------------------------+-------------+
+
 
 Adding/Removing Instances for an ExternalManaged Kubernetes Cluster
 ###################################################################
