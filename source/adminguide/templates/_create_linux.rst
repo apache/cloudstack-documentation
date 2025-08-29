@@ -29,8 +29,7 @@ An overview of the procedure is as follow:
 
 #. Upload your Linux ISO.
 
-   For more information, see `“Adding an
-   ISO” <templates.html#adding-an-iso>`_.
+   For more information, see :ref:`adding-an-iso`.
 
 #. Create an Instance with this ISO.
 
@@ -129,9 +128,9 @@ templating of Centos and Ubuntu.
    Volumes can autorextend after reboot when partition is extended in the GUI.
    This feature is possible with `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_.
    
-#. **User-data**
+#. **User Data**
 	
-   Cloudstack can push user-data during Instance creation.
+   Cloudstack can push User Data during Instance creation.
    This feature is possible with `Cloud-init integration <templates/_cloud_init.html#linux-with-cloud-init>`_.
 	
 #. **Template cleanup**

@@ -28,7 +28,7 @@ The VMware NSX Plugin introduces VMware NSX 4 as a network service provider in C
 - Port Forwarding between “public” networks and VPC network tier
 - External load balancing – between VPCs network tiers and “public” networks (runs on Edge Cluster)
 - Internal load balancing – between VPC network tiers
-- Password injection, UserData and SSH Keys
+- Password injection, User Data and SSH Keys
 - External, Internal DNS
 - DHCP
 - Kubernetes host orchestration, supporting CKS on VPCs
