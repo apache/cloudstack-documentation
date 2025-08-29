@@ -13,8 +13,8 @@
    specific language governing permissions and limitations
    under the License.
 
-In-built Orchestator Extensions
-===============================
+In-built Orchestrator Extensions
+================================
 
 CloudStack provides sample in-built orchestrator extensions for Proxmox and Hyper-V. These extensions are intended for demonstration and testing purposes.
 The extension files are located at `/usr/share/cloudstack-management/extensions/Promox` and `/usr/share/cloudstack-management/extensions/HyperV` respectively.
@@ -33,7 +33,7 @@ The Proxmox Cloudstack extension is written in shell script and communicates wit
 
 Before using the Proxmox extension, ensure that the Proxmox datacenter is configured correctly and accessible to CloudStack.
 
-Get the Api Token-Secret from Proxmox
+Get the API Token-Secret from Proxmox
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If not already set up, create a new API Token in the Proxmox UI by navigating to `Datacenter > Permissions > API Tokens`.
@@ -78,7 +78,7 @@ Adding Proxmox to CloudStack
 
 To set up the Proxmox extension, follow these steps in CloudStack:
 
-#. **Enable extension.** Enable the extension by clicking the `Enable` button on the `Extensions` page in the UI.
+#. **Enable Extension.** Enable the extension by clicking the `Enable` button on the `Extensions` page in the UI.
 #. **Create Cluster**. Create a Cluster with hypervisor type `External` and extension type `Proxmox`.
 
    |proxmox-add-cluster.png|
@@ -117,9 +117,9 @@ To set up the Proxmox extension, follow these steps in CloudStack:
 
    |proxmox-deploy-instance.png|
 
-#. **Lifecycle operations.** Operations **Start**, **Stop**, **Reboot**, and **Delete** can be performed on the instance from CloudStack.
+#. **Lifecycle Operations.** Operations **Start**, **Stop**, **Reboot**, and **Delete** can be performed on the instance from CloudStack.
 
-#. **Custom actions.** Custom actions **Create Snapshot**, **Restore Snapshot**, and **Delete Snapshot** are also supported for instances.
+#. **Custom Actions.** Custom actions **Create Snapshot**, **Restore Snapshot**, and **Delete Snapshot** are also supported for instances.
 
 .. _proxmox-networking:
 Configuring Networking
@@ -217,9 +217,9 @@ Adding Hyper-V to CloudStack
    The VM will be configured with the MAC address and VLAN ID as defined in CloudStack.
    The VM in Hyper-V is created with the name `'CloudStack instance's internal name' + '-' + 'CloudStack instance's UUID'` to keep it unique.
 
-#. **Lifecycle operations.** Operations **Start**, **Stop**, **Reboot**, and **Delete** can be performed on the instance from CloudStack.
+#. **Lifecycle Operations.** Operations **Start**, **Stop**, **Reboot**, and **Delete** can be performed on the instance from CloudStack.
 
-#. **Custom actions.** Custom actions **Suspend**, **Resume**, **Create Snapshot**, **Restore Snapshot**, and **Delete Snapshot** are also supported for instances.
+#. **Custom Actions.** Custom actions **Suspend**, **Resume**, **Create Snapshot**, **Restore Snapshot**, and **Delete Snapshot** are also supported for instances.
 
 Configuring Networking
 ~~~~~~~~~~~~~~~~~~~~~~
