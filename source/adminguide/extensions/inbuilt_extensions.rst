@@ -16,7 +16,7 @@
 In-built Orchestrator Extensions
 ================================
 
-CloudStack provides sample in-built Orchestrator Extensions for Proxmox and Hyper-V. These Extensions are intended for demonstration and testing purposes.
+CloudStack provides in-built Orchestrator Extensions for Proxmox and Hyper-V. These extensions work with Proxmox and Hyper-V environments out of the box, and can also serve as reference implementations for anyone looking to develop new custom extensions.
 The Extension files are located at `/usr/share/cloudstack-management/extensions/Proxmox` and `/usr/share/cloudstack-management/extensions/HyperV` respectively.
 The Proxmox Extension is written in shell script, while the Hyper-V Extension is written in python.
 Both of these Extensions support some custom actions in addition to the standard VM actions like deploy, start, stop, reboot, status and delete.
