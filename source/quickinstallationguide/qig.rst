@@ -489,8 +489,8 @@ that libvirt is configured correctly. Libvirt is a dependency of cloud-agent
 and should already be installed.
 
 #. Even though we are using a single host, the following steps are recommended
-   to get faimilar with the general requirements.
-   In order to have live migration working libvirt has to listen for insecured
+   to get familiar with the general requirements.
+   In order to have live migration working libvirt has to listen for unsecured
    TCP connections. We also need to turn off libvirts attempt to use Multicast 
    DNS advertising. Both of these settings are in /etc/libvirt/libvirtd.conf
 
@@ -639,7 +639,7 @@ Pod Configuration
 Here we will configure a range for Cloudstack's internal management traffic - CloudStack
 will assign IPs from this range to system VMs. This will also be part of our local network
 (i.e. different part of your local home network, from .21 to .30), with the rest of the IP parameters
-(netmaks/gateway) being the same as used for the Public Traffic.
+(netmask/gateway) being the same as used for the Public Traffic.
 
 #. Pod Name - We'll use ``Pod1`` for our cloud.
 

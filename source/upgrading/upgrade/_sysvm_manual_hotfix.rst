@@ -16,7 +16,7 @@
 .. sub-section optionally included in upgrade notes.
 
 .. Add following to file when including this manual hotfix
-   .. _manual_hofix:
+   .. _manual_hotfix:
 
    Manual hotfix for systemvm upgrade
    ----------------------------------
