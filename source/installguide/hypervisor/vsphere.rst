@@ -116,7 +116,7 @@ Requirements" <http://pubs.vmware.com/vsp40/wwhelp/wwhimpl/js/html/wwhelp.htm#hr
 Other requirements:
 ^^^^^^^^^^^^^^^^^^^
 
--  VMware vCenter Standard Edition 6.0, 6.5 or 6.7 must be installed and
+-  VMware vCenter Standard Edition 6.0, 6.5, 6.7, or 7.0 must be installed and
    available to manage the vSphere hosts.
 
 -  vCenter must be configured to use the standard port 443 so that it
@@ -125,7 +125,7 @@ Other requirements:
 -  You must re-install VMware ESXi if you are going to reuse a host
    from a previous install.
 
--  CloudStack requires VMware vSphere 6.0, 6.5 or 6.7. VMware vSphere 5.5 and older
+-  CloudStack requires VMware vSphere 6.0, 6.5, 6.7, or 7.0. VMware vSphere 5.5 and older
    not supported.
 
 -  All hosts must be 64-bit and must support HVM (Intel-VT or AMD-V
@@ -223,9 +223,7 @@ vSphere Installation Steps
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #. If you haven't already, you'll need to download and purchase vSphere
-   from the VMware Website
-   (`https://www.vmware.com/tryvmware/index.php?p=vmware-vsphere&lp=1 <https://www.vmware.com/tryvmware/index.php?p=vmware-vsphere&lp=1>`_)
-   and install it by following the VMware vSphere Installation Guide.
+   from the VMware/Broadcom Website and install it by following the VMware vSphere Installation Guide.
 
 #. Following installation, perform the following configuration, which
    are described in the next few sections:

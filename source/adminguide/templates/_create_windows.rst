@@ -32,8 +32,7 @@ An overview of the procedure is as follows:
 
 #. Upload your Windows ISO.
 
-   For more information, see `“Adding an
-   ISO” <../templates.html#adding-an-iso>`_.
+   For more information, see :ref:`adding-an-iso`.
 
 #. Create an instance with this ISO.
 

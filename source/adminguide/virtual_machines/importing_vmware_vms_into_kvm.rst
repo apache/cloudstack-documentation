@@ -24,7 +24,11 @@ The virt-v2v output (progress) is logged in the CloudStack agent logs, to help a
 
     ::
 
-        virtv2v.verbose.enabled=true
+        dnf install virt-v2v
+
+        echo "virtv2v.verbose.enabled=true" >> /etc/cloudstack/agent/agent.properties  
+    
+        systemctl restart cloudstack-agent
 
 
 Installing virt-v2v on Ubuntu KVM hosts does not install nbdkit which is required in the conversion of VMware VCenter guests. To install it, please execute:
@@ -62,11 +66,56 @@ You can also install the RPM manually from https://fedorapeople.org/groups/virt/
 
 For Debian-based distributions:
 
+Ubuntu don’t seem to ship the virtio-win package with drivers, which causes virt-v2v not to convert the VMWare Windows guests to virtio profiles. This could result in slow IDE drives and Intel E1000 NICs. As a workaround, we can follow the below steps to install the package from the RPM on all KVM hosts running the virt-v2v:
+
     ::
 
         apt install virtio-win (if the package is not available, then manual steps will be required to install the virtio drivers for windows)
+        
+        wget https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.noarch.rpm
+
+        # install “alien” which can convert rpms to debs
+        apt -y install alien
+
+        # the conversion, can take a while
+        alien -d virtio-win.noarch.rpm
+
+        # install the resulting deb
+        dpkg -i virtio-win*.deb
+
+In addition to this, we need to install the below package as well to avoid the error “virt-v2v: error: One of rhsrvany.exe or pvvxsvc.exe is missing in /usr/share/virt-tools“.
+
+    :: 
+     
+        wget -nd -O srvany.rpm https://kojipkgs.fedoraproject.org//packages/mingw-srvany/1.1/4.fc38/noarch/mingw32-srvany-1.1-4.fc38.noarch.rpm
+
+        alien -d srvany.rpm
+
+        dpkg -i *srvany*.deb
+
 
 The OVF tool (ovftool) must be installed on the destination KVM hosts if the hosts should export VM files (OVF) from vCenter. If not, the management server exports them (the management server doesn't require ovftool installed).
+
+Steps to install ovftool
+
+Download the ovftool from https://developer.broadcom.com/tools/open-virtualization-format-ovf-tool/latest
+
+    ::
+       
+       unzip VMware-ovftool-4.6.3-24031167-lin.x86_64.zip -d /usr/local/
+       
+       #create a soft link 
+
+       ln -s /usr/local/ovftool/ovftool /usr/local/bin/ovftool
+
+If you are hitting the following error when running ovftool, install the dependecy
+
+./ovftool.bin: error while loading shared libraries: libnsl.so.1: cannot open shared object file: No such file or directory
+
+     ::
+     
+        dnf install libnsl
+
 
 Usage
 -----
