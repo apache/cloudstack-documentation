@@ -164,7 +164,7 @@ that volume to a specified Instance.
 Creating a new Instance from Backup
 -----------------------------------
 
-Since CloudStack 4.21, users can now remove the backup offering and expunge or unmanage an instance
+Since CloudStack 4.21, users can remove the backup offering and expunge or unmanage an instance
 that has existing backups, for the supported backup providers — Dummy, NAS, and Veeam.
 Additionally, users can create a new instance from a backup using any of these providers.
 
@@ -196,8 +196,60 @@ in the system, the user will be prompted to reconfigure the Instance before crea
    If the backup was created in a release prior to 4.21, the backup metadata won't contain the instance configuration details,
    so users would have to fill in the required details by clicking on the Configure Instance button.
 
+Creating a New Instance from Backup in Another Zone
+---------------------------------------------------
+
+Since **Apache CloudStack 4.22**, users can create a new Instance from a Backup in another Zone.
+Currently, this capability is supported only by the **NAS Backup & Recovery plugin**.
+
+When creating a Backup Repository, the administrator can enable the **Disaster Recovery as a Service (DRaaS)** option.
+This allows the repository to be used for creating Instances in other Zones. The setting can be changed later as well
+using the Edit Backup Repository action button.
+
+|B&R-DRaaS-Enable-Add.png|
+
+Once DRaaS is enabled for a Backup Repository, users will see the option to **select a Zone** while creating a new Instance from a Backup.
+
+|B&R-DRaaS-Select-Zone.png|
+
+The new Instance will be created in the selected Zone, with the configuration either inherited from the backup or chosen by the user.
+Configurations stored in the backup are automatically selected if the same resources are present in the destination Zone.
+
+For example, if the same template exists in both the source and destination Zones, it will be auto-selected.
+Users will still need to manually select configurations that are unique to a single Zone, such as networks.
+
+Points to Note
+~~~~~~~~~~~~~~
+
+- A DRaaS-enabled Backup Repository can be used to create Instances in **all Zones** within the CloudStack environment.
+- The administrator must ensure that the Backup Repository is **reachable and mountable** from hosts in other Zones.
+- Restore operations are performed by mounting the Backup Repository over **NFS, CIFS, or CephFS** (depending on configuration),
+  and then copying the backup files to Primary Storage.
+
+NFS Performance Considerations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+NFS performance over WAN may become a bottleneck. Two approaches are recommended:
+
+1. **Zone-Local Repositories**
+
+   - Administrators can set up Backup Repositories local to each Zone.
+   - Backup files are synchronized in the background between repositories.
+   - A domain name can be used for the repository URL, redirecting to the local repository for each Zone.
+
+2. **Global Repository with WAN Optimizations**
+
+   - A single global Backup Repository can be configured, accessible from all Zones.
+   - To improve NFS performance over WAN, the following NFS mount options are recommended:
+
+     - ``nconnect=16``: Open multiple TCP connections to the NFS server.
+     - ``rsize=1048576``: Use a larger chunk size for reads.
+     - ``wsize=1048576``: Use a larger chunk size for writes.
+
+   The actual read and write chunk sizes may be increased further, depending on the NFS server’s capabilities.
+
 Supported APIs:
-~~~~~~~~~~~~~~~~
+---------------
 
 - **assignVirtualMachineToBackupOffering**: adds an Instance to a backup offering.
 - **removeVirtualMachineFromBackupOffering**: removes an Instance from a backup offering, if forced `true` parameter is passed this may also
@@ -211,7 +263,7 @@ Supported APIs:
 - **listBackups**: lists backups.
 - **restoreBackup**: restore a previous Instance backup in-place of a stopped or destroyed Instance.
 - **restoreVolumeFromBackupAndAttachToVM**: restore and attach a backed-up volume (of an Instance backup) to a specified Instance.
-- **createInstanceFromBackup**: create a new Instance from a backup.
+- **createVMFromBackup**: create a new Instance from a backup.
 
 
 Configuring resource limits on Backups
@@ -253,3 +305,10 @@ the backup size, although the actual backup size may be less than the size use t
 .. |B&R-ConfigureInstance.png| image:: /_static/images/B&R-ConfigureInstance.png
    :alt: Configure Instance parameters before creating it from backup.
    :width: 700px
+.. |B&R-DRaaS-Enable-Add.png| image:: /_static/images/B&R-DRaaS-Enable-Add.png
+   :alt: Enable DRaaS on Backup Repository
+   :width: 400px
+.. |B&R-DRaaS-Select-Zone.png| image:: /_static/images/B&R-DRaaS-Select-Zone.png
+   :alt: Select Zone when creating Instance from Backup
+   :width: 700px
+
