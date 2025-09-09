@@ -185,7 +185,7 @@ new, unique value.
 Basic UI Customisation
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Users can customize the CloudStack's user interface by means of a configuration file at /etc/cloudstack/management/config.json which can be used to modify the theme, logos, etc. to align to one's requirement.
+Users can customize the CloudStack's user interface by means of a configuration file at /etc/cloudstack/management/config.json which can be used to modify the theme, logos, etc. to align with one's requirements.
 
 To change the logo, login banner, error page icon, etc. the following details can be edited in config.json:
 
