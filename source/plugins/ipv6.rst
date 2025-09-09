@@ -303,9 +303,9 @@ IPv6 Firewall
 For using and managing firewall rules with an IPv6 supported isolated network, CloudStack provides following APIs:
 
 -  ``listIpv6FirewallRules`` - To list existing IPv6 firewall rules for a network.
--  ``createIpv6FirewallRule`` - To create a new IPv6 firewall rules for a network.
--  ``updateIpv6FirewallRule`` - To update an existing IPv6 firewall rules for a network.
--  ``deleteIpv6FirewallRule`` - To delete an existing IPv6 firewall rules for a network.
+-  ``createIpv6FirewallRule`` - To create a new IPv6 firewall rule for a network.
+-  ``updateIpv6FirewallRule`` - To update an existing IPv6 firewall rule for a network.
+-  ``deleteIpv6FirewallRule`` - To delete an existing IPv6 firewall rule for a network.
 
 These operations are also available using UI in the network details view of an IPv6 supported network.
 
