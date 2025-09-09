@@ -264,7 +264,7 @@ Adding Guest IPv6 Prefix
 ########################
 
 Again, both UI and API to add a guest IPv6 prefix. UI is the preferable option.
-Option to add a new public Ipv6 range in the UI can be found in Infrastructure > Zones > Zone details > Physical Network tab > Physical network details > Traffic Types tab > Guest > *Add IPv6 prefix*.
+Option to add a new public IPv6 range in the UI can be found in Infrastructure > Zones > Zone details > Physical Network tab > Physical network details > Traffic Types tab > Guest > *Add IPv6 prefix*.
 In the Add IPv6 prefix form, an IPv6 prefix with CIDR size lesser than 64 must be provided.
 
 Alternatively, ``createGuestNetworkIpv6Prefix`` API can be used to add a new guest IPv6 prefix.
