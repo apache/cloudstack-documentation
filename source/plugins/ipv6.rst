@@ -264,7 +264,7 @@ Adding Guest IPv6 Prefix
 ########################
 
 Again, both UI and API to add a guest IPv6 prefix. UI is the preferable option.
-Option to add a new public Ipv6 range in the UI can be found in Infrastructure > Zones > Zone details > Physical Network tab > Physical network details > Traffic Types tab > Guest > *Add IPv6 prefix*.
+Option to add a new public IPv6 range in the UI can be found in Infrastructure > Zones > Zone details > Physical Network tab > Physical network details > Traffic Types tab > Guest > *Add IPv6 prefix*.
 In the Add IPv6 prefix form, an IPv6 prefix with CIDR size lesser than 64 must be provided.
 
 Alternatively, ``createGuestNetworkIpv6Prefix`` API can be used to add a new guest IPv6 prefix.
@@ -303,9 +303,9 @@ IPv6 Firewall
 For using and managing firewall rules with an IPv6 supported isolated network, CloudStack provides following APIs:
 
 -  ``listIpv6FirewallRules`` - To list existing IPv6 firewall rules for a network.
--  ``createIpv6FirewallRule`` - To create a new IPv6 firewall rules for a network.
--  ``updateIpv6FirewallRule`` - To update an existing IPv6 firewall rules for a network.
--  ``deleteIpv6FirewallRule`` - To delete an existing IPv6 firewall rules for a network.
+-  ``createIpv6FirewallRule`` - To create a new IPv6 firewall rule for a network.
+-  ``updateIpv6FirewallRule`` - To update an existing IPv6 firewall rule for a network.
+-  ``deleteIpv6FirewallRule`` - To delete an existing IPv6 firewall rule for a network.
 
 These operations are also available using UI in the network details view of an IPv6 supported network.
 
