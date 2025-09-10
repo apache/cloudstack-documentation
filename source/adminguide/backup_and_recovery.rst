@@ -200,6 +200,8 @@ Creating a New Instance from Backup in Another Zone
 ---------------------------------------------------
 
 Since **Apache CloudStack 4.22**, users can create a new Instance from a Backup in another Zone.
+i.e, the Instance being created can be on a different Zone from the Zone in which the Backup was created.
+This unlocks Disaster Recovery as a Service (DRaaS) capabilities for backups in CloudStack.
 Currently, this capability is supported only by the **NAS Backup & Recovery plugin**.
 
 When creating a Backup Repository, the administrator can enable the **Disaster Recovery as a Service (DRaaS)** option.
@@ -229,7 +231,7 @@ Points to Note
 NFS Performance Considerations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-NFS performance over WAN may become a bottleneck. Two approaches are recommended:
+NFS performance over WAN may become a bottleneck for restore operations in DRaaS scenarios. Two approaches are recommended:
 
 1. **Zone-Local Repositories**
 
