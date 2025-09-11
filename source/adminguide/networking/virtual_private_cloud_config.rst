@@ -1123,6 +1123,12 @@ Creating an External LB Rule
       algorithm for the stickiness policy. See Sticky Session Policies
       for Load Balancer Rules.
 
+   -  **Protocol**: The protocol for the Load Balancer Rule such as tcp, udp, tcp-proxy or ssl.
+
+   -  **SSL Certificate**: The SSL certificate assigned to the Load Balancer Rule.
+      This is visible only when protocol is ssl. see `"Configuring SSL Certificate for Load Balancer
+      Rules" <external_firewalls_and_load_balancers.html#configuring-ssl-certificate-for-load-balancer-rules>`_.
+
    -  **Add Instances**: Click Add Instances, then select two or more Instances that will
       divide the load of incoming traffic, and click Apply.
 

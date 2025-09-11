@@ -291,6 +291,11 @@ Adding a Load Balancer Rule
       algorithm for the stickiness policy. See Sticky Session Policies
       for Load Balancer Rules.
 
+   -  **Protocol**: The protocol for the Load Balancer Rule such as tcp, udp, tcp-proxy or ssl.
+
+   -  **SSL Certificate**: The SSL certificate assigned to the Load Balancer Rule.
+      This is visible only when protocol is ssl. See :ref:`conf-ssl-cert`.
+
    -  **AutoScale**: Click Configure and complete the AutoScale
       configuration as explained in :ref:`conf-autoscale`.
 
@@ -468,6 +473,70 @@ check policy.
 
 For details on how to set a health check policy using the UI, see
 :ref:`adding-lb-rule`.
+
+
+.. _conf-ssl-cert: 
+
+Configuring SSL Certificate for Load Balancer Rules
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+SSL Offloading allows load balancers to handle encryption and decryption of
+HTTP(s) traffic giving plain text HTTP to the back end servers freeing them
+from the resource intensive task of handling encryption and decryption.
+SSL Offloading supports CloudStack Virtual Router since Apache CloudStack 4.22.0.
+
+- Upload SSL certificates
+
+SSL certificate is required for SSL offloading feature. As the first step, users
+need to upload SSL certificates for the accounts or projects.
+
+|ssl-certificate-account.png|
+
+Click "Upload SSL Certificate" button, input the following fields in the dialog, click "Submit"
+
+    * Name: the name of the SSL certificate. This is required.
+    * Certificate: the SSL certificate. This is required.
+    * Private Key: the private key of the SSL certificate. This is required.
+    * Certificate chain: the ROOT CA and intermediate certificate(s) of the SSL certificate. Please input if exist, otherwise the SSL certificate might not work.
+    * Password: the password of the private key. Currently it is unsupported when use CloudStack Virtual Router for SSL offloading.
+    * Revocation check: Whether enables revocation checking for certificates. Please do not check if self-signed SSL certificate.
+
+|ssl-certificate-upload.png|
+
+Users can view or remove the SSL certificates on the same page.
+
+|ssl-certificate-list.png| 
+
+For projects, go to the project page and click "Certificates" tab
+
+|ssl-certificate-project.png|
+
+- Create Load balancer rule with SSL Certificate
+
+SSL certificate can be configured only when the protocol of load balancer rule is ssl.
+
+|ssl-certificate-new-lb-rule.png|
+
+Click "SSL certificate" button, select a SSL certificate, click "OK"
+
+|ssl-certificate-new-lb-rule-select.png|
+
+- Assign SSL certificate to existing Load balancer rule
+
+If the load balancer rule has been created without SSL certificate, update protocol to SSL if it is not
+
+|ssl-certificate-update-lb-rule-protocol.png|
+
+Click "Manage" button under the "SSL certificate" field, select a SSL certificate,
+click "Replace" or "Assign" button to assign a new SSL certificate.
+
+|ssl-certificate-update-lb-rule-ssl-cert.png|
+
+User can remove the SSL certificate from load balancer rule by clicking "Remove" button.
+
+.. note::
+   Since SSL offloading increases CPU utilization on the load balancer,
+   please allocate more resources to the Virtual Router when expecting high traffic.
 
 
 .. _conf-autoscale:
@@ -735,3 +804,19 @@ Runtime Considerations
    :alt: Configuring AutoScale.
 .. |EnableDisable.png| image:: /_static/images/enable-disable-autoscale.png
    :alt: button to enable or disable AutoScale.
+.. |ssl-certificate-account.png| image:: /_static/images/ssl-certificate-account.png
+   :alt: Manage certificates for account.
+.. |ssl-certificate-upload.png| image:: /_static/images/ssl-certificate-upload.png
+   :alt: Upload SSL certificate for account.
+.. |ssl-certificate-list.png| image:: /_static/images/ssl-certificate-list.png
+   :alt: List of certificates for account.
+.. |ssl-certificate-project.png| image:: /_static/images/ssl-certificate-project.png
+   :alt: Manage certificates for project.
+.. |ssl-certificate-new-lb-rule.png| image:: /_static/images/ssl-certificate-new-lb-rule.png
+   :alt: Create load balancer rule with SSL protocol
+.. |ssl-certificate-new-lb-rule-select.png| image:: /_static/images/ssl-certificate-new-lb-rule-select.png
+   :alt: Select SSL certificate for new load balancer rule.
+.. |ssl-certificate-update-lb-rule-protocol.png| image:: /_static/images/ssl-certificate-update-lb-rule-protocol.png
+   :alt: Update protocol of load balancer rule to SSL.
+.. |ssl-certificate-update-lb-rule-ssl-cert.png| image:: /_static/images/ssl-certificate-update-lb-rule-ssl-cert.png
+   :alt: Manage certificates of load balancer rule.
