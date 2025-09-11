@@ -38,7 +38,7 @@ by adding custom actions in the scripts written for the built-in extensions.
 
    - Add Nics to Instance post deployment.
 
-   - Console access to the in-built Hyper-V orchestrator Instances.
+   - Console access for instances using the built-in Hyper-V orchestrator is not available out of the box.
 
 **Actions which can be implemented using Custom Actions in built-in extensions:**
 

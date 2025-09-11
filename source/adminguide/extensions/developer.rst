@@ -125,12 +125,15 @@ Action Lifecycle
 Console Access for Instances with Orchestrator Extensions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Orchestrator extensions can provide console access for instances via VNC.
-To enable this, the extension must implement the ``getconsole`` action and return output in the following JSON format:
+Orchestrator extensions can provide console access for instances either through **VNC** or a **direct URL**.
+To enable this, the extension must implement the ``getconsole`` action and return output in one of the following JSON formats:
+
+VNC-based console:
 
 .. code-block:: json
 
     {
+      "status": "success",
       ...
       "console": {
         "host": "pve-node1.internal",
@@ -140,8 +143,20 @@ To enable this, the extension must implement the ``getconsole`` action and retur
       }
     }
 
-The returned details are forwarded to the Console Proxy VM (CPVM) running in the same zone as the instance.
-It is required that the specified **host** and **port** are reachable from the CPVM.
+For VNC-based access, the returned details are forwarded to the Console Proxy VM (CPVM) in the same zone as the instance. The specified **host** and **port** must be reachable from the CPVM.  
+
+Direct URL-based console:
+
+.. code-block:: json
+
+    {
+      "status": "success",
+      ...
+      "console": {
+        "url": "CONSOLE_URL",
+        "protocol": "direct"
+      }
+    }
 
 
 Custom Actions

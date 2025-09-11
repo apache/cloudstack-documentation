@@ -66,7 +66,7 @@ An Orchestrator extension enables CloudStack to delegate VM orchestration to an 
 
    - Instance Lifecycle Support: Orchestrator extensions can handle basic VM actions like prepare, deploy, start, stop, reboot, status and delete.
 
-   - Console Access: Instances can be accessed via VNC consoles. CloudStack retrieves console details from extensions using the ``getconsole`` action, and forwards them to the Console Proxy VM (CPVM) to provide users with console access. Currently, the built-in Proxmox extension supports console access for instances.
+   - Console Access: Instances can be accessed either via VNC consoles or through a direct URL, depending on the capabilities of the orchestrator extension. CloudStack retrieves console details from extensions using the ``getconsole`` action and either forwards them to the Console Proxy VM (CPVM) (for VNC access) or provides the direct console URL to the user. Out of the box, only the built-in Proxmox extension supports console access for instances.
 
    - Configuration Details: Key-value configuration details can be specified at different levels - extension, cluster mapping, host, template, service offering, instance.
 
