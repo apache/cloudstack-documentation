@@ -120,7 +120,29 @@ Action Lifecycle
 1. A CloudStack action (e.g., deploy VM) triggers a corresponding extension action.
 2. CloudStack invokes the extension’s executable with appropriate parameters.
 3. The extension processes the input and responds within the timeout.
-4. CloudStack continues orchestration based on the result.
+4. CloudStack continues action workflow based on the result.
+
+Console Access for Instances with Orchestrator Extensions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Orchestrator extensions can provide console access for instances via VNC.
+To enable this, the extension must implement the ``getconsole`` action and return output in the following JSON format:
+
+.. code-block:: json
+
+    {
+      ...
+      "console": {
+        "host": "pve-node1.internal",
+        "port": "5901",
+        "password": "PVEVNC:6329C6AA::ZPcs5MT....d9",
+        "protocol": "vnc"
+      }
+    }
+
+The returned details are forwarded to the Console Proxy VM (CPVM) running in the same zone as the instance.
+It is required that the specified **host** and **port** are reachable from the CPVM.
+
 
 Custom Actions
 ^^^^^^^^^^^^^^
@@ -183,4 +205,4 @@ For a clearer understanding of how to implement an extension, developers can ref
 
 It serves as a template with minimal required action handlers, making it a useful starting point for building new extensions.
 
-Additionally, CloudStack includes built-in extensions for Proxmox and Hyper-V that demonstrate how to implement extensions in different languages - Bash and Python.
+Additionally, CloudStack includes in-built extensions for Proxmox and Hyper-V that demonstrate how to implement extensions in different languages - Bash and Python.

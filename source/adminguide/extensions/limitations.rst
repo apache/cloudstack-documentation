@@ -24,8 +24,6 @@ by adding custom actions in the scripts written for the built-in extensions.
 
 **Some general features/actions not supported at the framework level:**
 
-   - Console access to the external Instances.
-
    - Data volumes.
 
    - User Data and Metadata services.
@@ -39,6 +37,8 @@ by adding custom actions in the scripts written for the built-in extensions.
    - Host Capacity and Utilization Stats.
 
    - Add Nics to Instance post deployment.
+
+   - Console access to the in-built Hyper-V orchestrator Instances.
 
 **Actions which can be implemented using Custom Actions in built-in extensions:**
 
