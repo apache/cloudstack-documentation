@@ -362,20 +362,21 @@ Preserving unmanaged Instance NICs
 The zone setting: unmanage.vm.preserve.nics can be used to preserve Instance NICs and its MAC addresses after unmanaging them. If set to true, the Instance NICs (and their MAC addresses) are preserved when unmanaging it. Otherwise, NICs are removed and MAC addresses can be reassigned.
 
 
-KVM Specific: Persistent Domain XML when unmanaging Instances
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Persistent KVM Domain XML for Unmanaged Instances
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since 4.22, domain XML will be made persistent when Instance is unmanaged from CloudStack. This will allow to manage the Instance outside of CloudStack using virsh or other libvirt tools. The domain XML will be stored in directory /etc/libvirt/qemu.
+Since 4.22, the domain XML of an Instance is made persistent when it is unmanaged from CloudStack. This allows the Instance to be managed directly outside of CloudStack using `virsh` or other libvirt tools. The domain XML will be stored in the directory `/etc/libvirt/qemu` on the relevant KVM host.
 
 Domain XML is taken from Instance but varies based on their state:
 
 - Running Instance
-   - Domain XML is contructed from the Instance and persisted on the Host where the Instance is running
+   - The existing domain XML is retrieved from the Instance and persisted on the host where the Instance is running.
 - Stopped Instance
-   - Domain XML is constructed from the Instance details available in CloudStack database
-   - Domain XML will pe persisted on the last host where the Instance was running before stopping it
+   - The domain XML is reconstructed from the Instance details available in the CloudStack database.
+   - The reconstructed domain XML is persisted on the last host where the Instance was running before is was stopped.
 
-.. note:: We recommend Unmanaging Instance in Running state to preserve the exact domain XML. There is potential to loose some information when unmanaging in Stopped state.
+.. note:: 
+   It is recommended to unmanage Instances while they are in the **Running** state to ensure that the exact domain XML is preserved. When unmanaged in the **Stopped** state, some information may be lost due to reconstruction.
 
 
 Unmanaging Instance actions
