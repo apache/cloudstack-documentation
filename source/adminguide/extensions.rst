@@ -79,7 +79,7 @@ An Orchestrator extension enables CloudStack to delegate VM orchestration to an 
    |extension.png|
 
 
-CloudStack provides in-built Orchestrator Extensions for Proxmox and Hyper-V which work with Proxmox and Hyper-V environments out of the box.
+CloudStack provides in-built Orchestrator Extensions for Proxmox, Hyper-V, MaaS which work with Proxmox, Hyper-V and MaaS environments out of the box.
 
 .. note::
    - When a CloudStack host linked to an orchestrator extension is placed into Maintenance mode, all running instances on the host will be stopped.
