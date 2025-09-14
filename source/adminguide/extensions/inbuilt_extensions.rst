@@ -163,7 +163,7 @@ using NTLM authentication for secure remote execution of PowerShell commands tha
 
 Each Hyper-V host maps to a CloudStack Host. Before using the Hyper-V Extension, ensure that the Hyper-V host is accessible to the CloudStack Management Server via WinRM over HTTPS.
 
-Console access for instances using the Hyper-V extension is not available out of the box.
+Console access for instances deployed using the Hyper-V extension is not available out of the box.
 
 Configuring WinRM over HTTPS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
