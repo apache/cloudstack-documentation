@@ -373,7 +373,7 @@ Domain XML is taken from Instance but varies based on their state:
    - The existing domain XML is retrieved from the Instance and persisted on the host where the Instance is running.
 - Stopped Instance
    - The domain XML is reconstructed from the Instance details available in the CloudStack database.
-   - The reconstructed domain XML is persisted on the last host where the Instance was running before it was stopped. If the host is no longer available, the domain XML is persisted on any other host available in the Zone.
+   - The reconstructed domain XML is persisted on the last host where the Instance was running before it was stopped. If that host is no longer available, the domain XML is saved on any other available host within the cluster.
 
 .. note:: 
    It is recommended to unmanage Instances while they are in the **Running** state to ensure that the exact domain XML is preserved. When unmanaged in the **Stopped** state, some information may be lost due to reconstruction.
