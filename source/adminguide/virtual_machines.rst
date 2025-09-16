@@ -1169,6 +1169,11 @@ An example list of settings as well as their possible values are shown on the im
 |vm-settings-kvm-guest-cpu-model.png|
 (KVM guest CPU model, available for root admin since 4.20.1.0)
 
+CloudStack supports setting the guest machine type for KVM instances since 4.22.0 by using the instance setting 'kvm.guest.os.machine.type'. The list of supported machine types will depend on the QEMU version on the KVM host.
+
+.. note::
+   For Ubuntu 24 KVM hosts (and other distros containing QEMU 8.x versions) setting the machine type for Windows VMs to 'pc-i440fx-8.0' mitigates the issue which prevents retrieving the instance UUID from within the guest VM via: `wmic path win32_computersystemproduct get uuid`.
+
 Instance Settings for Virtual Trusted Platform Module (vTPM)
 -----------------------------
 
