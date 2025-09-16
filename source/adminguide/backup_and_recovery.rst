@@ -201,18 +201,18 @@ Creating a New Instance from Backup in Another Zone
 
 Since **Apache CloudStack 4.22**, users can create a new Instance from a Backup in another Zone.
 i.e, the Instance being created can be on a different Zone from the Zone in which the Backup was created.
-This unlocks Disaster Recovery as a Service (DRaaS) capabilities for backups in CloudStack.
+This can be used to implement Disaster Recovery capabilities with Instance Backups.
 Currently, this capability is supported only by the **NAS Backup & Recovery plugin**.
 
-When creating a Backup Repository, the administrator can enable the **Disaster Recovery as a Service (DRaaS)** option.
+When creating a Backup Repository, the administrator can enable the **Cross-Zone Instance Creation** option.
 This allows the repository to be used for creating Instances in other Zones. The setting can be changed later as well
 using the Edit Backup Repository action button.
 
-|B&R-DRaaS-Enable-Add.png|
+|B&R-Cross-Zone-Enable-Add.png|
 
-Once DRaaS is enabled for a Backup Repository, users will see the option to **select a Zone** while creating a new Instance from a Backup.
+Once Cross-Zone Instance Creation is enabled for a Backup Repository, users will see the option to **select a Zone** while creating a new Instance from a Backup.
 
-|B&R-DRaaS-Select-Zone.png|
+|B&R-Cross-Zone-Select-Zone.png|
 
 The new Instance will be created in the selected Zone, with the configuration either inherited from the backup or chosen by the user.
 Configurations stored in the backup are automatically selected if the same resources are present in the destination Zone.
@@ -223,32 +223,35 @@ Users will still need to manually select configurations that are unique to a sin
 Points to Note
 ~~~~~~~~~~~~~~
 
-- A DRaaS-enabled Backup Repository can be used to create Instances in **all Zones** within the CloudStack environment.
+- A Cross-Zone enabled Backup Repository can be used to create Instances in **all Zones** within the CloudStack environment.
+- The Backups can be taken only from the original Zone.
 - The administrator must ensure that the Backup Repository is **reachable and mountable** from hosts in other Zones.
 - Restore operations are performed by mounting the Backup Repository over **NFS, CIFS, or CephFS** (depending on configuration),
   and then copying the backup files to Primary Storage.
 
-NFS Performance Considerations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Extending the Functionality for DRaaS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-NFS performance over WAN may become a bottleneck for restore operations in DRaaS scenarios. Two approaches are recommended:
+Administrators can extend this feature to implement Disaster Recovery as a Service (DRaaS) by adding additional configuration and instrumentation.
+Two common approaches are:
 
-1. **Zone-Local Repositories**
+1. **Zone-Local Repository**
 
-   - Administrators can set up Backup Repositories local to each Zone.
-   - Backup files are synchronized in the background between repositories.
-   - A domain name can be used for the repository URL, redirecting to the local repository for each Zone.
+   - Configure a Backup Repository that is local to the source Zone.
+   - Add this repository to the Zone and enable Cross-Zone Instance Creation.
+   - In other Zones, configure NAS servers and synchronize backup files in the background between the source repository and the NAS servers in those Zones.
+   - Use DNS to resolve the repository URL to the local NAS server in each Zone, ensuring Instance creation from Backup always use the closest copy.
 
 2. **Global Repository with WAN Optimizations**
 
-   - A single global Backup Repository can be configured, accessible from all Zones.
-   - To improve NFS performance over WAN, the following NFS mount options are recommended:
+   - Configure a single global Backup Repository accessible from all Zones.
+   - NFS performance over WAN may become a bottleneck for Cross-Zone Instance creation scenarios.
+     To improve NFS performance over WAN, the following NFS mount options are recommended:
 
      - ``nconnect=16``: Open multiple TCP connections to the NFS server.
      - ``rsize=1048576``: Use a larger chunk size for reads.
      - ``wsize=1048576``: Use a larger chunk size for writes.
-
-   The actual read and write chunk sizes may be increased further, depending on the NFS server’s capabilities.
+     - The actual read and write chunk sizes may be increased further, depending on the NFS server’s capabilities.
 
 Supported APIs:
 ---------------
@@ -307,10 +310,10 @@ the backup size, although the actual backup size may be less than the size use t
 .. |B&R-ConfigureInstance.png| image:: /_static/images/B&R-ConfigureInstance.png
    :alt: Configure Instance parameters before creating it from backup.
    :width: 700px
-.. |B&R-DRaaS-Enable-Add.png| image:: /_static/images/B&R-DRaaS-Enable-Add.png
-   :alt: Enable DRaaS on Backup Repository
+.. |B&R-Cross-Zone-Enable-Add.png| image:: /_static/images/B&R-Cross-Zone-Enable-Add.png
+   :alt: Enable Cross-Zone Instance Creation on Backup Repository
    :width: 400px
-.. |B&R-DRaaS-Select-Zone.png| image:: /_static/images/B&R-DRaaS-Select-Zone.png
+.. |B&R-Cross-Zone-Select-Zone.png| image:: /_static/images/B&R-Cross-Zone-Select-Zone.png
    :alt: Select Zone when creating Instance from Backup
    :width: 700px
 
