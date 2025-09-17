@@ -163,6 +163,8 @@ Direct URL-based console:
    For direct URL–based console access, CloudStack does not report the acquired or client IP address.
    In this mode, security and access control must be handled by the server providing the console.
 
+   Protocol value for direct URL–based console access can be any of the following value - link, direct, url.
+
 Custom Actions
 ^^^^^^^^^^^^^^
 
