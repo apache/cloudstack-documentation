@@ -339,7 +339,19 @@ Unmanaging Instances
 
 Administrators can unmanage guest Instances from CloudStack. Once unmanaged, CloudStack can no longer monitor, control or administer the provisioning and orchestration-related operations on an Instance.
 
-To unmanage a guest Instance, an administrator must either use the UI or invoke the unmanageVirtualMachine API passing the ID of the Instance to unmanage. The API has the following preconditions:
+To unmanage a guest Instance, an administrator must either use the UI or invoke the unmanageVirtualMachine API passing the ID of the Instance to unmanage. 
+
+.. code:: bash
+
+   cmk unmanage virtualmachine id=<instance-id>
+
+The API supports the `hostid` parameter for stopped instances on the KVM hypervisor, allowing the domain XML to be persisted on the specified host.
+
+.. code:: bash
+
+   cmk unmanage virtualmachine id=<instance-id> hostid=<host-id>
+
+The API has the following preconditions:
 
 - The Instance must not be destroyed
 - The Instance state must be 'Running’ or ‘Stopped’
