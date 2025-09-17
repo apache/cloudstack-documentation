@@ -27,7 +27,7 @@ CloudStack Management Server.
 -  Rocky Linux 8, 9, 10
 -  Alma Linux 8, 9, 10
 -  RHEL versions 8, 9, 10 (not tested, but expected to work same as other EL distros)
--  openSUSE Leap 15 (not widely tested and used by the community, tested to work in past CloudStack versions)
+-  openSUSE Leap 15 (not widely tested and used by the community, tested to work openSUSE Leap 15.6)
 -  SUSE Linux Enterprise Server 15 (not tested, but expected to work same as with openSUSE 15 but likely require workarounds)
 -  Debian 12, 13 (not tested, but expected to work same as Ubuntu)
 
@@ -50,7 +50,7 @@ and VMware with vSphere.
 -  Rocky Linux 8, 9, 10 with KVM
 -  Alma Linux 8, 9, 10 with KVM
 -  RHEL 8, 9, 10 with KVM (not tested, but expected to work same as other EL distros)
--  openSUSE Leap 15 with KVM (not widely tested and used by the community, tested to work in past CloudStack versions)
+-  openSUSE Leap 15 with KVM (not widely tested and used by the community, tested to work openSUSE Leap 15.6)
 -  SUSE Linux Enterprise Server 15 with KVM (not tested, but expected to work same as with openSUSE 15 but likely require workarounds)
 -  XCP-ng 8.2.0
 -  XCP-ng 8.3.0
