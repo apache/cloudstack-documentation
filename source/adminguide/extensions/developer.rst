@@ -139,9 +139,12 @@ VNC-based console:
         "host": "pve-node1.internal",
         "port": "5901",
         "password": "PVEVNC:6329C6AA::ZPcs5MT....d9",
+        "passwordonetimeuseonly": true
         "protocol": "vnc"
       }
     }
+
+``passwordonetimeuseonly`` is optional. It can be set to ``true`` if the system returns a one-time-use VNC ticket.
 
 For VNC-based access, the returned details are forwarded to the Console Proxy VM (CPVM) in the same zone as the instance. The specified **host** and **port** must be reachable from the CPVM.  
 

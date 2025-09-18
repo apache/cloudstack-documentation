@@ -33,7 +33,7 @@ The Proxmox CloudStack Extension is written in shell script and communicates wit
 
 Before using the Proxmox Extension, ensure that the Proxmox Datacenter is configured correctly and accessible to CloudStack.
 
-Since 4.22.0, console access support is available for instances deployed using the in-built Proxmox extension via VNC and console proxy VM. Only one console session will successfully connect at a time per instance.
+Since 4.22.0, console access support is available for instances deployed using the in-built Proxmox extension via VNC and console proxy VM.
 
 Get the API Token-Secret from Proxmox
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
