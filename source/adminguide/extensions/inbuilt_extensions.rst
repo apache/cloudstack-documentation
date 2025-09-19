@@ -33,6 +33,15 @@ The Proxmox CloudStack Extension is written in shell script and communicates wit
 
 Before using the Proxmox Extension, ensure that the Proxmox Datacenter is configured correctly and accessible to CloudStack.
 
+Since 4.22.0, console access support is available for instances deployed using the in-built Proxmox extension via VNC and console proxy VM.
+
+.. note::
+   Proxmox VNC connections have a short initial connection timeout (about 10 seconds),
+   even when accessing the console from the CloudStack UI. If the noVNC interface takes
+   longer to load, or if there is a delay between creating the console endpoint and
+   opening it, the connection may fail on the first attempt. In such cases, users can
+   simply retry to establish the console session.
+
 Get the API Token-Secret from Proxmox
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -160,6 +169,8 @@ The Hyper-V CloudStack Extension is a Python-based script that communicates with
 using NTLM authentication for secure remote execution of PowerShell commands that manage the full lifecycle of virtual machines.
 
 Each Hyper-V host maps to a CloudStack Host. Before using the Hyper-V Extension, ensure that the Hyper-V host is accessible to the CloudStack Management Server via WinRM over HTTPS.
+
+Console access for instances deployed using the Hyper-V extension is not available out of the box.
 
 Configuring WinRM over HTTPS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
