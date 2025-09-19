@@ -944,6 +944,58 @@ System VMs (any of the Console Proxy VM, Secondary Storage VM, Virtual Router or
 
 Since CloudStack 4.16, for VMware, migration of System VMs can also be done to a destination host in a different cluster belonging to the same pod (in case of cluster-wide primary storage pools, this will cause the Root volume of the system VM to be migrated to the appropriate datastore in the new cluster). Storage migration of stopped System VMs is also supported.
 
+Customizing System VMs
+----------------------
+
+CloudStack can provide User Data to System VMs at boot.
+Root administrators can supply initialization scripts or configuration to automate tasks
+such as installing additional packages, setting environment variables, or configuring telemetry.
+Ensure that the User Data is valid for cloud-init, invalid content may prevent
+a System VM from functioning correctly.
+
+.. warning::
+   User Data offers powerful customization, but inappropriate or intrusive scripts can
+   destabilise or break System VMs. Avoid modifying critical services or networking unless
+   you fully understand the impact, and always test changes in a non-production environment
+   before rollout.
+
+To enable and configure User Data for System VMs:
+
+#. Set the global setting ``systemvm.userdata.enabled`` to ``true``.
+#. Provide the User Data content per System VM type using the following global settings:
+
+   .. cssclass:: table-striped table-bordered table-hover
+   ================================= =====================================
+   Global Setting                     Description
+   ================================= =====================================
+   ``consoleproxy.userdata``          User Data for Console Proxy VMs
+   ``secondarystorage.userdata``      User Data for Secondary Storage VMs
+   ``router.userdata``                User Data for Virtual Routers
+   ================================= =====================================
+
+#. Destroy the System VMs and allow CloudStack to re-deploy them to apply the changes.
+
+.. note::
+   Initialization is performed by a CloudStack service, not by the systemd
+   cloud-init unit, to avoid conflicts with CloudStack System VM services.
+
+.. note::
+   Patching a System VM does not re-run User Data. To re-execute the User Data, reboot the System VM.
+
+.. note::
+   Unlike the default cloud-init behaviour, User Data is processed on each reboot of a System VM.
+   To achieve one-time execution, use a flag file to check if the User Data has already been executed.
+   If the flag file exists, skip execution.
+
+   .. code-block:: bash
+
+      if [[ -f "/home/cloud/success" ]]; then
+         echo "Already provisioned!"
+         exit 0
+      fi
+      # other commands
+      sudo touch /home/cloud/success
+
 Troubleshoot networks from System VMs
 -------------------------------------
 .. |run-diagnostics-icon.png| image:: /_static/images/run-diagnostics-icon.png
