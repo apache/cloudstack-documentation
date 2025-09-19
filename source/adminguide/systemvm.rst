@@ -944,6 +944,46 @@ System VMs (any of the Console Proxy VM, Secondary Storage VM, Virtual Router or
 
 Since CloudStack 4.16, for VMware, migration of System VMs can also be done to a destination host in a different cluster belonging to the same pod (in case of cluster-wide primary storage pools, this will cause the Root volume of the system VM to be migrated to the appropriate datastore in the new cluster). Storage migration of stopped System VMs is also supported.
 
+Customizing System VMs
+----------------------
+
+CloudStack supports User Data for System VMs at boot time.
+The default root administrator can supply initialization scripts or configuration to automate tasks
+such as installing additional packages, setting environment variables, or configuring telemetry.
+Ensure that the User Data is valid for cloud-init.
+Invalid content may prevent a System VM from functioning correctly.
+
+Initialization is performed by a CloudStack service, not by the systemd
+cloud-init unit, to avoid conflicts with CloudStack System VM services.
+
+.. warning::
+   User Data offers powerful customization, but inappropriate or intrusive scripts can
+   destabilize or break System VMs. Avoid modifying critical services or networking unless
+   you fully understand the impact, and always test changes in a non-production environment
+   before rollout.
+
+To enable and configure User Data for System VMs:
+
+#. Create a User Data entry under the default root administrator account.
+#. Set the global setting ``systemvm.userdata.enabled`` to ``true``.
+#. Provide the ID of the User Data per System VM type using the following global settings:
+
+   .. cssclass:: table-striped table-bordered table-hover
+   ================================= ============================================================
+   Global Setting                     Description
+   ================================= ============================================================
+   ``consoleproxy.userdata``          ID of the User Data for Console Proxy VMs
+   ``secondarystorage.userdata``      ID of the User Data for Secondary Storage VMs
+   ``router.userdata``                ID of the User Data for Virtual Routers, 
+                                      VPC VR, internal LB Instances, and elastic LB Instances
+   ================================= ============================================================
+
+#. Destroy the System VMs and allow CloudStack to re-deploy them to apply the changes.
+
+.. note::
+  Only the default root administrator can set the global settings for System VM User Data.
+  The associated User Data entries must also be created under the default root administrator account.
+
 Troubleshoot networks from System VMs
 -------------------------------------
 .. |run-diagnostics-icon.png| image:: /_static/images/run-diagnostics-icon.png
