@@ -34,7 +34,13 @@ The Proxmox CloudStack Extension is written in shell script and communicates wit
 Before using the Proxmox Extension, ensure that the Proxmox Datacenter is configured correctly and accessible to CloudStack.
 
 Since 4.22.0, console access support is available for instances deployed using the in-built Proxmox extension via VNC and console proxy VM.
-Proxmox VNC connections are short-lived (about 10 seconds) for the initial connection. A console endpoint created using the ``createConsoleEndpoint`` API may not remain valid if accessed later. It is recommended to use the CloudStack UI to access the console.
+
+.. note::
+   Proxmox VNC connections have a short initial connection timeout (about 10 seconds),
+   even when accessing the console from the CloudStack UI. If the noVNC interface takes
+   longer to load, or if there is a delay between creating the console endpoint and
+   opening it, the connection may fail on the first attempt. In such cases, users can
+   simply retry to establish the console session.
 
 Get the API Token-Secret from Proxmox
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
