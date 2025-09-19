@@ -355,6 +355,8 @@ Afterwards traffic can be white- or blacklisted.
 - ACL rules for ingress and egress are not correlating. For example a
   egress "deny all" won't affect traffic in response to an allowed ingress
   connection
+- The incoming traffic which does not match any ACL rules will be denied
+- The outgoing traffic which does not match any ACL rules will be allowed
   
 
 Creating ACLs
