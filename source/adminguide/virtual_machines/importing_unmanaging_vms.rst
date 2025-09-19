@@ -339,7 +339,19 @@ Unmanaging Instances
 
 Administrators can unmanage guest Instances from CloudStack. Once unmanaged, CloudStack can no longer monitor, control or administer the provisioning and orchestration-related operations on an Instance.
 
-To unmanage a guest Instance, an administrator must either use the UI or invoke the unmanageVirtualMachine API passing the ID of the Instance to unmanage. The API has the following preconditions:
+To unmanage a guest Instance, an administrator must either use the UI or invoke the unmanageVirtualMachine API passing the ID of the Instance to unmanage. 
+
+.. code:: bash
+
+   cmk unmanage virtualmachine id=<instance-id>
+
+The API supports the `hostid` parameter for stopped instances on the KVM hypervisor, allowing the domain XML to be persisted on the specified host.
+
+.. code:: bash
+
+   cmk unmanage virtualmachine id=<instance-id> hostid=<host-id>
+
+The API has the following preconditions:
 
 - The Instance must not be destroyed
 - The Instance state must be 'Running’ or ‘Stopped’
@@ -360,6 +372,23 @@ Preserving unmanaged Instance NICs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The zone setting: unmanage.vm.preserve.nics can be used to preserve Instance NICs and its MAC addresses after unmanaging them. If set to true, the Instance NICs (and their MAC addresses) are preserved when unmanaging it. Otherwise, NICs are removed and MAC addresses can be reassigned.
+
+
+Persistent KVM Domain XML for Unmanaged Instances
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Since 4.22, the domain XML of an Instance is made persistent when it is unmanaged from CloudStack. This allows the Instance to be managed directly outside of CloudStack using `virsh` or other libvirt tools. The domain XML will be stored in the directory `/etc/libvirt/qemu` on the relevant KVM host.
+
+Domain XML is taken from Instance but varies based on their state:
+
+- Running Instance
+   - The existing domain XML is retrieved from the Instance and persisted on the host where the Instance is running.
+- Stopped Instance
+   - The domain XML is reconstructed from the Instance details available in the CloudStack database.
+   - The reconstructed domain XML is persisted on the last host where the Instance was running before it was stopped. If that host is no longer available, the domain XML is saved on any other available host within the cluster.
+
+.. note:: 
+   It is recommended to unmanage Instances while they are in the **Running** state to ensure that the exact domain XML is preserved. When unmanaged in the **Stopped** state, some information may be lost due to reconstruction.
 
 
 Unmanaging Instance actions
