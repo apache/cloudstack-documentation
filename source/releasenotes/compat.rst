@@ -23,12 +23,11 @@ This section lists the operating systems that are supported for running
 CloudStack Management Server.
 
 -  Ubuntu 20.04 LTS, 22.04 LTS, 24.04 LTS
--  Oracle Linux 8, 9
--  Rocky Linux 8, 9
--  Alma Linux 8, 9
--  RHEL versions 8, 9
--  Experimental support for RHEL 10
--  openSUSE Leap 15 (not widely tested and used by the community, tested to work in past CloudStack versions)
+-  Oracle Linux 8, 9, 10
+-  Rocky Linux 8, 9, 10
+-  Alma Linux 8, 9, 10
+-  RHEL versions 8, 9, 10 (not tested, but expected to work same as other EL distros)
+-  openSUSE Leap 15 (not widely tested and used by the community, tested to work openSUSE Leap 15.6)
 -  SUSE Linux Enterprise Server 15 (not tested, but expected to work same as with openSUSE 15 but likely require workarounds)
 -  Debian 12, 13 (not tested, but expected to work same as Ubuntu)
 
@@ -47,12 +46,11 @@ CloudStack supports three hypervisor families, KVM, XenServer/XCP-ng with XAPI,
 and VMware with vSphere.
 
 -  Ubuntu 20.04 LTS, 22.04 LTS, 24.04 LTS with KVM
--  Oracle Linux 8, 9 with KVM
--  Rocky Linux 8, 9 with KVM
--  Alma Linux 8, 9 with KVM
--  RHEL 8, 9 with KVM
--  Experimental support for RHEL 10 with KVM
--  openSUSE Leap 15 with KVM (not widely tested and used by the community, tested to work in past CloudStack versions)
+-  Oracle Linux 8, 9, 10 with KVM
+-  Rocky Linux 8, 9, 10 with KVM
+-  Alma Linux 8, 9, 10 with KVM
+-  RHEL 8, 9, 10 with KVM (not tested, but expected to work same as other EL distros)
+-  openSUSE Leap 15 with KVM (not widely tested and used by the community, tested to work openSUSE Leap 15.6)
 -  SUSE Linux Enterprise Server 15 with KVM (not tested, but expected to work same as with openSUSE 15 but likely require workarounds)
 -  XCP-ng 8.2.0
 -  XCP-ng 8.3.0
