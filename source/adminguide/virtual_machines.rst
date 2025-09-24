@@ -1304,7 +1304,7 @@ Pause During Live Instance Snapshots on KVM
 -------------------------------------------
 
 When creating **Instance Snapshots with Memory**, CloudStack uses Libvirt’s
-*domain snapshot* API to create an Intlrnal Snapshot that includes Memory.
+*domain snapshot* API to create an Internal Snapshot that includes Memory.
 The guest’s memory state is written directly into the root volume’s QCOW2 file.
 This causes the instance to pause for the duration of the memory dump. The pause
 time is typically much longer than with VMware snapshots, but this is a limitation
