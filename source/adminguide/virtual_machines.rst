@@ -1265,6 +1265,8 @@ When the snapshotting is complete, the Instance is thawed.
 
 You can use this functionality on Instances with raw block storages (E.g. Ceph/SolidFire/Linstor).
 
+.. _Disk-only-File-based-Storage-Instance-Snapshots-on-KVM:
+
 Disk-only File-based Storage Instance Snapshot on KVM
 -----------------------------------------------------
 
@@ -1298,6 +1300,25 @@ Limitations on Instance Snapshots
    managed by CloudStack. Any Snapshots that you make directly on the
    hypervisor will not be tracked in CloudStack.
 
+Pause During Live Instance Snapshots on KVM
+-------------------------------------------
+
+When creating **Instance Snapshots with Memory**, CloudStack uses Libvirt’s
+*domain snapshot* API to create an Intlrnal Snapshot that includes Memory.
+The guest’s memory state is written directly into the root volume’s QCOW2 file.
+This causes the instance to pause for the duration of the memory dump. The pause
+time is typically much longer than with VMware snapshots, but this is a limitation
+with Internal Snapshots in Libvirt.
+
+**Instance Snapshots without Memory** has seen significant improvements since Cloudstack 4.21 with the
+:ref:`Disk-only-File-based-Storage-Instance-Snapshots-on-KVM` feature for NFS and local storage.
+Pre 4.21, the Instance would be frozen for the entire duration of the snapshot create operation.
+Since 4.21, the Instance is only frozen during the checkpointing operation, which is significantly less.
+
+Users looking for the Instance Snapshot feature in KVM are recommended to use the
+:ref:`Disk-only-File-based-Storage-Instance-Snapshots-on-KVM` feature, if the pause duration is a concern.
+App consistent snapshots can be created by using the ``quiescevm`` parameter with pre and post-freeze hooks.
+The Instance should have Qemu Guest Agent installed for this to work.
 
 Configuring Instance Snapshots
 ------------------------------
