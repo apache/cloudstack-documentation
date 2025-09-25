@@ -94,7 +94,15 @@ Example:
        "name": "i-2-100-VM",
        ...
      },
-     "virtualmachinename": "i-2-100-VM"
+     "virtualmachinename": "i-2-100-VM",
+     "caller": {
+       "roleid": "6b86674b-7e61-11f0-ba77-1e00c8000158",
+       "rolename": "Root Admin",
+       "name": "admin",
+       "roletype": "Admin",
+       "id": "93567ed9-7e61-11f0-ba77-1e00c8000158",
+       "type": "ADMIN"
+     }
    }
 
 The schema varies depending on the resource and action. Use this to perform context-specific logic.
