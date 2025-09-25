@@ -455,6 +455,8 @@ Prerequisites
 - Currently, it's supported to only use NFS and Local storage as the destination Primary Storage pools in CloudStack
 - Currently, only libvirt-based instances can be migrated
 
+.. note:: Allocate a NIC to any instance without one immediately after importing it into CloudStack.
+
 listVmsForImport API
 ~~~~~~~~~~~~~~~~~~~~
 
