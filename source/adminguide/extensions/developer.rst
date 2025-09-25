@@ -125,7 +125,7 @@ Action Lifecycle
 Console Access for Instances with Orchestrator Extensions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Orchestrator extensions can provide console access for instances either through **VNC** or a **direct URL**.
+Orchestrator extensions can provide console access for instances either through **VNC** or a **URL**.
 To enable this, the extension must implement the ``getconsole`` action and return output in one of the following JSON formats:
 
 VNC-based console:
@@ -163,10 +163,10 @@ Direct URL-based console:
 
 
 .. note::
-   For direct URL–based console access, CloudStack does not report the acquired or client IP address.
+   For URL–based console access, CloudStack does not report the acquired or client IP address.
    In this mode, security and access control must be handled by the server providing the console.
 
-   Protocol value of ``direct`` can be used for direct URL–based console access.
+   Protocol value of ``direct`` can be used for URL–based console access.
 
 Custom Actions
 ^^^^^^^^^^^^^^
