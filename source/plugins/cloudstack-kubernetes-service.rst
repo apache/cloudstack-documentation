@@ -653,6 +653,7 @@ Use diverse CNI plugins (Calico, Cilium, etc)
 A CNI framework has also been added which provides end users the flexibility to use the CNI plugin of their choice. The CNI framework internally leverages the managed User data feature provided by CloudStack.
 
 Sample Calico CNI configuration data used which is appended to the existing Kubernetes control node user data is:
+**NOTE**: This Calico sample requires prior external BGP peering — without BGP the CKS deployment will not work as expected
 
 .. code-block:: bash
 
