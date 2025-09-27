@@ -24,8 +24,6 @@ by adding custom actions in the scripts written for the built-in extensions.
 
 **Some general features/actions not supported at the framework level:**
 
-   - Console access to the external Instances.
-
    - Data volumes.
 
    - User Data and Metadata services.

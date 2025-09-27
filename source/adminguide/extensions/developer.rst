@@ -94,7 +94,15 @@ Example:
        "name": "i-2-100-VM",
        ...
      },
-     "virtualmachinename": "i-2-100-VM"
+     "virtualmachinename": "i-2-100-VM",
+     "caller": {
+       "roleid": "6b86674b-7e61-11f0-ba77-1e00c8000158",
+       "rolename": "Root Admin",
+       "name": "admin",
+       "roletype": "Admin",
+       "id": "93567ed9-7e61-11f0-ba77-1e00c8000158",
+       "type": "ADMIN"
+     }
    }
 
 The schema varies depending on the resource and action. Use this to perform context-specific logic.
@@ -120,7 +128,53 @@ Action Lifecycle
 1. A CloudStack action (e.g., deploy VM) triggers a corresponding extension action.
 2. CloudStack invokes the extension’s executable with appropriate parameters.
 3. The extension processes the input and responds within the timeout.
-4. CloudStack continues orchestration based on the result.
+4. CloudStack continues action workflow based on the result.
+
+Console Access for Instances with Orchestrator Extensions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Orchestrator extensions can provide console access for instances either through **VNC** or a **URL**.
+To enable this, the extension must implement the ``getconsole`` action and return output in one of the following JSON formats:
+
+VNC-based console:
+
+.. code-block:: json
+
+    {
+      "status": "success",
+      ...
+      "console": {
+        "host": "pve-node1.internal",
+        "port": "5901",
+        "password": "PVEVNC:6329C6AA::ZPcs5MT....d9",
+        "passwordonetimeuseonly": true
+        "protocol": "vnc"
+      }
+    }
+
+``passwordonetimeuseonly`` is optional. It can be set to ``true`` if the system returns a one-time-use VNC ticket.
+
+For VNC-based access, the returned details are forwarded to the Console Proxy VM (CPVM) in the same zone as the instance. The specified **host** and **port** must be reachable from the CPVM.  
+
+Direct URL-based console:
+
+.. code-block:: json
+
+    {
+      "status": "success",
+      ...
+      "console": {
+        "url": "CONSOLE_URL",
+        "protocol": "direct"
+      }
+    }
+
+
+.. note::
+   For URL–based console access, CloudStack does not report the acquired or client IP address.
+   In this mode, security and access control must be handled by the server providing the console.
+
+   Protocol value of ``direct`` can be used for URL–based console access.
 
 Custom Actions
 ^^^^^^^^^^^^^^
@@ -183,4 +237,4 @@ For a clearer understanding of how to implement an extension, developers can ref
 
 It serves as a template with minimal required action handlers, making it a useful starting point for building new extensions.
 
-Additionally, CloudStack includes built-in extensions for Proxmox and Hyper-V that demonstrate how to implement extensions in different languages - Bash and Python.
+Additionally, CloudStack includes in-built extensions for Proxmox and Hyper-V that demonstrate how to implement extensions in different languages - Bash and Python.
