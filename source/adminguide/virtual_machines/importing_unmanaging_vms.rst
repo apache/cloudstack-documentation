@@ -351,6 +351,9 @@ The API supports the `hostid` parameter for stopped instances on the KVM hypervi
 
    cmk unmanage virtualmachine id=<instance-id> hostid=<host-id>
 
+.. note::
+   Instances with Config Drive cannot be unmanaged by default, as the Config Drive ISO will be removed during the unmanage operation. To unmanage such instances via the API, use the forced=true parameter.
+
 The API has the following preconditions:
 
 - The Instance must not be destroyed
@@ -455,7 +458,9 @@ Prerequisites
 - Currently, it's supported to only use NFS and Local storage as the destination Primary Storage pools in CloudStack
 - Currently, only libvirt-based instances can be migrated
 
-.. note:: Allocate a NIC to any instance without one immediately after importing it into CloudStack.
+.. note:: 
+   - Allocate a NIC to any instance without one immediately after importing it into CloudStack.
+   - Instances imported on a Config Drive network must be stopped and started after import to properly attach the Config Drive ISO.
 
 listVmsForImport API
 ~~~~~~~~~~~~~~~~~~~~
