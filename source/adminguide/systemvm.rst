@@ -984,6 +984,22 @@ To enable and configure User Data for System VMs:
   Only the default root administrator can set the global settings for System VM User Data.
   The associated User Data entries must also be created under the default root administrator account.
 
+.. note::
+   The size of the User Data that can be sent is dependent on the
+   hypervisor. This is because of the way it is provided to the system VM.
+   The user data is compressed and encoded in base64 format when it is
+   provided to the system VM along with other system VM configurations.
+
+   -  KVM: Uses QEMU Guest Agent to write configuration directly to
+      ``/var/cache/cloud/cmdline`` inside the VM
+
+   -  XenServer (HVM): Stores in XenStore key ``vm-data/cloudstack/init``
+
+   -  VMware: Sets as ``machine.id`` extraConfig parameter
+
+   The operator needs to ensure that the user data is within the limits
+   of the hypervisor.
+
 Troubleshoot networks from System VMs
 -------------------------------------
 .. |run-diagnostics-icon.png| image:: /_static/images/run-diagnostics-icon.png
