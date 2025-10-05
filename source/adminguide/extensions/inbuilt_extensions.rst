@@ -326,10 +326,33 @@ To set up the MaaS Extension, follow these steps in CloudStack:
 
 #. **Create Template**
 
-   A Template in CloudStack can map to either a `Template` or an `ISO` in MaaS.
-   Provide a dummy `url` and template name. Select `External` as the hypervisor and `MaaS` as the extension. Under `External Details`, specify:
+   A Template in CloudStack maps to an image available in MaaS that can be deployed on a baremetal server.
+   Provide a dummy `url` and template name. Select `External` as the hypervisor and `MaaS` as the extension.
+   Under `External Details`, specify the following parameters:
 
-   * **distro_series**: The name of the operating system series available in MaaS to install on the machine. If not specified, script defaults to `ubuntu`
+   * **os**: Operating system name (e.g., `ubuntu` or `centos`)
+   * **distro_series**: Ubuntu codename or CentOS major version (e.g., `focal`, `jammy`, `8`)
+   * **release**: Numeric OS release (e.g., `20.04`, `22.04`)
+   * **architecture**: Image architecture name as listed in MaaS (e.g., `amd64/ga-20.04`, `amd64/hwe-22.04`, `amd64/generic`)
+
+   Example configurations:
+
+   .. code-block:: text
+
+       os=ubuntu
+       distro_series=focal
+       release=20.04
+       architecture=amd64/ga-20.04
+
+       os=ubuntu
+       distro_series=jammy
+       release=22.04
+       architecture=amd64/hwe-22.04
+
+       os=centos
+       distro_series=8
+       release=8
+       architecture=amd64/generic
 
    |MaaS-add-template.png|
 
