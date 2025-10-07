@@ -364,6 +364,7 @@ To set up the MaaS Extension, follow these steps in CloudStack:
 #. **Deploy Instance**
 
    Deploy an Instance using the Template created above. The Instance will be provisioned on a randomly selected MaaS machine.
+   **maas_system_id** value can be provided in the external details to deploy the instance on specific server.
 
    |MaaS-deploy-instance.png|
 
@@ -377,39 +378,48 @@ Configuring Networking and additional details
 The MaaS scenarios have been tested and verified with a Shared Network setup in CloudStack, using the MAAS Orchestrator Extension.
 Please find some additional notes with respect to the networking and access related configuration as below,
 
+#. **Configuring TFTP to point to MAAS**
+
+   Ensure that the TFTP or PXE boot configuration (for example, in pfSense or your network’s DHCP server) is set to point to the MAAS server as the TFTP source.
+   This ensures that VMs retrieve boot images directly from MAAS during PXE boot.
+
 #. **Using CloudStack Virtual Router (VR) as an External DHCP Server**
 
    If the end user wants the **CloudStack Virtual Router (VR)** to act as the external DHCP server for instances provisioned through MAAS, the following configuration steps must be performed.
 
    **In CloudStack**
 
-   1. Navigate to **Networks → Add Shared Network**.
-   2. Create a Shared Network using the **DefaultSharedNetworkOffering**, and define an appropriate **Guest IP range**.
+   a. Navigate to **Networks → Add Shared Network**.
+   b. Create a Shared Network using the **DefaultSharedNetworkOffering**, and define an appropriate **Guest IP range**.
 
    |CloudStack-shared-network.png|
 
    **In MAAS**
 
-   1. Navigate to **Networking → Subnets → Add Subnet** and create a subnet corresponding to the same IP range used in CloudStack.
+   a. Navigate to **Networking → Subnets → Add Subnet** and create a subnet corresponding to the same IP range used in CloudStack.
 
       |MaaS-add-subnet-1.png|
       |MaaS-add-subnet-2.png|
 
-   2. Once the subnet is added:
+   b. Once the subnet is added:
       - Ensure **Managed allocation** is **disabled**.
       - Ensure **Active discovery** is **enabled**.
 
       |MaaS-subnet-configuration.png|
 
-   3. Add a **Reserved IP range** that matches the CloudStack Guest range (optional, for clarity).
+   c. Add a **Reserved IP range** that matches the CloudStack Guest range (optional, for clarity).
 
       |MaaS-add-reserve-iprange.png|
 
-   4. Disable the DHCP service in MAAS:
+   d. Disable the DHCP service in MAAS:
       - Navigate to **Subnets → VLAN → Edit VLAN**.
       - Ensure the **DHCP service** is **disabled**.
 
       |MaaS-disable-dhcp.png|
+
+   e. For all the servers in MAAS, navigate to each server in the Ready state, go to Network → Server Interface → Edit Physical, and set the IP mode to DHCP.
+
+      |MaaS-enable-dhcp-on-servers.png|
 
    This configuration allows the CloudStack Virtual Router (VR) to provide IP address allocation and DHCP services for the baremetal instances managed through MAAS.
 
@@ -419,14 +429,14 @@ Please find some additional notes with respect to the networking and access rela
 
    **In CloudStack**
 
-   1. Navigate to **Compute → SSH Keypairs → Create SSH Keypair**.
-   2. Save the generated **private key** for later use (CloudStack stores only the public key).
+   a. Navigate to **Compute → SSH Keypairs → Create SSH Keypair**.
+   b. Save the generated **private key** for later use (CloudStack stores only the public key).
 
    **In MAAS**
 
-   1. Navigate to **Admin → SSH Keys → Import**.
-   2. Paste the **public key** from the CloudStack-generated SSH key pair.
-   3. Save the changes.
+   a. Navigate to **Admin → SSH Keys → Import**.
+   b. Paste the **public key** from the CloudStack-generated SSH key pair.
+   c. Save the changes.
 
    |MaaS-add-sshkeypair.png|
 
@@ -460,3 +470,4 @@ Please find some additional notes with respect to the networking and access rela
 .. |MaaS-add-reserve-iprange.png| image:: /_static/images/MaaS-add-reserve-iprange.png
 .. |MaaS-disable-dhcp.png| image:: /_static/images/MaaS-disable-dhcp.png
 .. |MaaS-add-sshkeypair.png| image:: /_static/images/MaaS-add-sshkeypair.png
+.. |MaaS-enable-dhcp-on-servers.png| image:: /_static/images/MaaS-enable-dhcp-on-servers.png
