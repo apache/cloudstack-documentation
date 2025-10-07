@@ -969,14 +969,14 @@ To enable and configure User Data for System VMs:
 #. Provide the ID of the User Data per System VM type using the following global settings:
 
    .. cssclass:: table-striped table-bordered table-hover
-   ================================= ============================================================
+   ================================= =========================================================
    Global Setting                     Description
-   ================================= ============================================================
-   ``consoleproxy.userdata``          ID of the User Data for Console Proxy VMs
-   ``secondarystorage.userdata``      ID of the User Data for Secondary Storage VMs
-   ``router.userdata``                ID of the User Data for Virtual Routers, 
-                                      VPC VR, internal LB Instances, and elastic LB Instances
-   ================================= ============================================================
+   ================================= =========================================================
+   ``console.proxy.vm.userdata``      ID of the User Data for Console Proxy VMs
+   ``secstorage.vm.userdata``         ID of the User Data for Secondary Storage VMs
+   ``virtual.router.userdata``        ID of the User Data for Virtual Routers, VPC VR,
+                                      internal LB Instances, and elastic LB Instances
+   ================================= =========================================================
 
 #. Destroy the System VMs and allow CloudStack to re-deploy them to apply the changes.
 
