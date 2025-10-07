@@ -344,13 +344,11 @@ To set up the MaaS Extension, follow these steps in CloudStack:
    Provide a dummy `url` and template name. Select `External` as the hypervisor and `MaaS` as the extension.
    Under `External Details`, specify the following parameters:
 
-   * **os**: Operating system name (e.g., `ubuntu` or `centos`)
-   * **distro_series**: Ubuntu codename or CentOS major version (e.g., `focal`, `jammy`, `8`)
-   * **release**: Numeric OS release (e.g., `20.04`, `22.04`)
+   * **os**: Operating system name (e.g., `ubuntu`)
+   * **distro_series**: Ubuntu codename (e.g., `focal`, `jammy`)
    * **architecture**: Image architecture name as listed in MaaS (e.g., `amd64/ga-20.04`, `amd64/hwe-22.04`, `amd64/generic`)
 
    MAAS uses only distro_series to identify the operating system for Ubuntu-based images (for example, focal, jammy).
-   Do not specify both release and distro_series, if both are provided, MAAS will ignore release.
 
    Example configurations:
 
@@ -360,16 +358,6 @@ To set up the MaaS Extension, follow these steps in CloudStack:
       os=ubuntu
       distro_series=focal
       architecture=amd64/ga-20.04
-
-      # Ubuntu 22.04 (Jammy)
-      os=ubuntu
-      distro_series=jammy
-      architecture=amd64/hwe-22.04
-
-      # CentOS 8
-      os=centos
-      release=8
-      architecture=amd64/generic
 
    |MaaS-add-template.png|
 
