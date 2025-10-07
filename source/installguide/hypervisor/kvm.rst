@@ -24,7 +24,7 @@ KVM is included with a variety of Linux-based operating systems.
 Although you are not required to run these distributions, the following
 are recommended:
 
--  CentOS / RHEL / Binary-compatible variants: 8.X
+-  CentOS / RHEL / Binary-compatible variants: 8.X or 9.X
 
 -  Ubuntu: 18.04 +
 
