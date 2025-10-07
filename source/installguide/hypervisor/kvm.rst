@@ -24,13 +24,11 @@ KVM is included with a variety of Linux-based operating systems.
 Although you are not required to run these distributions, the following
 are recommended:
 
--  CentOS / RHEL: 7.X
+-  CentOS / RHEL / Binary-compatible variants: 8.X or 9.X
 
--  CentOS / RHEL / Binary-compatible variants: 8.X
+-  Ubuntu: 22.04 +
 
--  Ubuntu: 18.04 +
-
--  openSUSE / SLES: 15.2 +
+-  openSUSE / SLES: 15.6 +
 
 The main requirement for KVM hypervisors is the libvirt and Qemu
 version. No matter what Linux distribution you are using, make sure the
