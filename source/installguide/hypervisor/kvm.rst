@@ -26,7 +26,7 @@ are recommended:
 
 -  CentOS / RHEL / Binary-compatible variants: 8.X or 9.X
 
--  Ubuntu: 18.04 +
+-  Ubuntu: 22.04 +
 
 -  openSUSE / SLES: 15.6 +
 
