@@ -375,7 +375,7 @@ To set up the MaaS Extension, follow these steps in CloudStack:
 Configuring Networking and additional details
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The MaaS scenarios have been tested and verified with a Shared Network setup in CloudStack, using the MAAS Orchestrator Extension.
+The MaaS scenarios have been tested and verified only with a Shared Network setup in CloudStack and with ubuntu based images, using the MAAS Orchestrator Extension.
 Please find some additional notes with respect to the networking and access related configuration as below,
 
 #. **Configuring TFTP to point to MAAS**
