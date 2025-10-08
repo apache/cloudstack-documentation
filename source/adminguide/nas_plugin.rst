@@ -27,8 +27,9 @@ instances to any shared storage (NAS). It is based on `libvirt push backup mode
 to take full instance backups (qcow2) and requires libvirt-7.2.0 and QEMU-4.2,
 or high versions on the KVM hosts.
 
-Currently, only backup of VMs from the NFS-based Primary Storage are tested to work.
-You can also make backups of CEPH-based VMs, but restoring is not possible yet.
+Currently, only backup of VMs from the NFS, CEPH, Shared Mountpoint (backed by NFS)
+and local storage based Primary Storage are tested to work. All other Primary Storages
+are not tested, backups on them may not work.
 
 The NAS B&R plugin requires admin to first add backup repositories which are
 network-attached storage (shared storage). It supports NFS, CIFS/Samba and CephFS.
@@ -130,8 +131,10 @@ such as OpenSUSE 15, Debian 11 and Debian 12.
 
 Instance backups are full disk backups and limited by libvirt's ability to
 initiate and handle backup. All such backups are exported and stored in qcow2
-format. Due to this, restore operation are supported for volumes of type qcow2
-and limited to NFS and local storage based primary storage pools.
+format only. Due to this, restore operation for volumes of type raw, on CEPH based
+primary storage pools, are converted from qcow2 to raw format using qemu-img convert.
+Restore operation for volumes of type qcow2, on NFS and local storage based primary
+storage pools, does not need such conversion as these can be directly copied.
 
 For running instances, their disks (of any format/storage type) are backed up by
 libvirtd's push based efficient-backup mechanism exported as qcow2 disks on the
@@ -141,8 +144,8 @@ For stopped instances, `qemu-img` is used to convert and export full-disk backup
 in qcow2 format to the backup repository.
 
 For restore operations, the KVM instance must be stopped in CloudStack.
-Currently, only volume(s) restoration is supported only to NFS and local storage
-based primary storage pools, and restored volumes are fully backed disks (i.e.
+Currently, only volume(s) restoration is supported only to NFS, CEPH, Shared Mountpoint (backed by NFS)
+and local storage based primary storage pools, and restored volumes are fully backed disks (i.e.
 not using any backing template file).
 
 Backup and restore operations are not fully supported for CKS cluster instances and should
