@@ -243,7 +243,7 @@ the host.
 
 The cloudstack agent uses the ``gpudiscovery.sh`` script to discover the GPU
 devices on a KVM host. The script is located in the
-``/usr/share/cloudstack-common/scripts/vm/`` directory on the host. The script
+``/usr/share/cloudstack-common/scripts/vm/kvm/`` directory on the host. The script
 relies on the ``lspci`` & ``xmlstarlet`` command to discover the GPU devices
 and their status on the host. So, for the discovery to be successful, the
 ``lspci`` & ``xmlstarlet`` should be installed on the host.
@@ -274,7 +274,7 @@ and their status on the host. So, for the discovery to be successful, the
 
    .. parsed-literal::
 
-      sudo /usr/share/cloudstack-common/scripts/vm/gpudiscovery.sh
+      sudo /usr/share/cloudstack-common/scripts/vm/kvm/gpudiscovery.sh
 
    The script will output the GPU devices in a JSON found on the host. The operator
    can also update the script to customize the discovery of the GPU devices on the host.
