@@ -37,6 +37,13 @@ Concepts and Terminology
 
 .. architecture:
 
+Object Types in CloudStack
+------------------------
+.. toctree::
+   :maxdepth: 2
+
+   object_types
+
 Choosing a Deployment Architecture
 ----------------------------------
 .. toctree::
