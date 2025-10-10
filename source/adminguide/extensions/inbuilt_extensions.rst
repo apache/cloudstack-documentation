@@ -268,7 +268,7 @@ Users can then manage the Hyper-V VM like any other CloudStack guest Instance. U
 Firewall Rules, Port Forwarding, and other networking features seamlessly through the CloudStack UI or API.
 
 MaaS
-^^^^^^^^
+^^^^
 
 The MaaS CloudStack Extension is written in python script and communicates with `Canonical MaaS <https://canonical.com/maas>`_ using the `MaaS APIs <https://canonical.com/maas/docs/api>`_.
 
