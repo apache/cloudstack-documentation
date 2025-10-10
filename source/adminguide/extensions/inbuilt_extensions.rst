@@ -270,7 +270,7 @@ Firewall Rules, Port Forwarding, and other networking features seamlessly throug
 MaaS
 ^^^^
 
-The MaaS CloudStack Extension is written in python script and communicates with `Canonical MaaS <https://canonical.com/maas>`_ using the `MaaS APIs <https://canonical.com/maas/docs/api>`_.
+The MaaS Extension for CloudStack is written in Python and communicates with `Canonical MaaS <https://canonical.com/maas>`_ using the `MaaS APIs <https://canonical.com/maas/docs/api>`_.
 
 Before using the MaaS Extension, ensure that the Canonical MaaS Service is configured correctly with servers added into it and accessible to CloudStack.
 
