@@ -70,7 +70,7 @@ backup.framework.provider.plugin  nas
 ================================= ========================
 
 Once the above two configurations are set, restart the cloudstack-management service. After restart check the Settings of the Zone where you want to enable NAS backups - make sure that the "backup.framework.enabled"="true" on the Setting tab of the Zone. Once this is done, we can add the backup repository for the 'nas' Backup and Recovery plugin.
-Navigate to the Configuration -> Backup Repository. Click on 'Add Backup Repository' and fill the form.
+Navigate to the Infrastructure -> Backup Repository. Click on 'Add Backup Repository' and fill the form.
 
 =================== ========================
 Field               Value
@@ -78,11 +78,11 @@ Field               Value
 Name                A suitable name to represent the Backup Repository
 Address             URL, in case of NFS <server IP>:/path
 Type                NFS / CIFS / CEPH
-Mount options       Any mount point options to be passed while mouting this storage on the hypervisor.
+Mount options       Any mount point options to be passed while mounting this storage on the hypervisor.
 Zone                The zone in CloudStack with which this Backup Repository must be associated.
 =================== ========================
 
-.. image:: /_static/images/B&R-Backup-Respository.png
+.. image:: /_static/images/B&R-Backup-Repository.png
    :align: center
    :alt: NAS Backup repository
 
