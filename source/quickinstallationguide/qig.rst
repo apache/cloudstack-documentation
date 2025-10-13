@@ -402,23 +402,43 @@ up the management server by issuing the following command:
 
    # cloudstack-setup-management
 
+   .. note::
+      Since CloudStack 4.23.0, the ``cloudstack-setup-management`` command
+      can download SystemVM templates on demand when they are not present.
+
+      Use the ``--systemvm-templates`` argument to specify which templates to
+      download. If not specified, ``kvm-x86_64`` template will be downloaded
+      by default.
+
+      For offline environments, provide a custom repository URL with the
+      ``--systemvm-templates-repository`` argument so the installer can fetch
+      templates from an internal mirror.
+
 
 System Template Setup
 ~~~~~~~~~~~~~~~~~~~~~
 
-CloudStack uses a number of system VMs to provide functionality for accessing 
-the console of Instances, providing various networking services, and
-managing various aspects of storage. 
+CloudStack relies on several System VMs (for example SSVM and CPVM) to
+provide console access, networking services and storage management. Manual
+installation of System VM templates is not required in recent CloudStack
+releases. Since 4.16.0, automatic seeding of System VM templates has been
+supported; the ``cloudstack-management`` package historically included bundled
+templates and the Management Server seeded them to secondary storage during
+startup or when a secondary store was added to a zone. Starting with 4.23.0,
+CloudStack supports on-demand downloading of System VM templates when they
+are not present locally or bundled with the package.
 
-We need to download the systemVM Template and deploy that to the secondary storage.
-We will use the local path (/export/secondary) since we are already on the NFS server itself,
-but otherwise you would need to mount your Secondary Storage to a temporary mount point, and use
-that mount point instead of the /export/secondary path.
+Templates are typically obtained in two ways: during initial setup via
+``cloudstack-setup-management`` or automatically at Management
+Server startup and secondary store addition (the Management Server
+will attempt to download and seed any missing templates).
 
-Execute the following script:
+When automated mechanisms are unsuitable, templates can be downloaded and
+deployed to secondary storage using the helper script. On the secondary
+storage host (or a temporary mount of the secondary store) run::
 
 .. parsed-literal::
-  
+
    /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt \
    -m /export/secondary \
    -u |sysvm64-url-kvm| \

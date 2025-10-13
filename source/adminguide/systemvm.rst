@@ -76,11 +76,18 @@ templates for hypervisor and architecture which are in use in the zone
 if not already present will be automatically registered and seeded on
 the secondary storage.
 
-ARM 64-bit template(s) will be downloaded from the official repository
-and the same workflow for the registration and seeding will be used. If
-the automatic download and seeding of ARM 64-bit template fails, the
-template can be manually registered in a multi-architecture zone or
-will need manual registration and seeding in a ARM 64-bit only zone.
+Template(s) will be downloaded from the configured repository
+and the same workflow for the registration and seeding will be used.
+Repository for downloading the templates can be configured using
+/etc/cloudstack/management/server.properties file by updating the
+``system.vm.templates.download.repository`` property.
+
+If the automatic download and seeding of template fails, the
+template can be registered and seeded manually.
+UI/API can be used to register the template if the secondary storage VM is
+running in the zone. In case the secondary storage VM is not present then
+manual registration and seeding can be done using ``cloud-install-sys-tmplt``
+script.
 
 
 Changing the Default System VM Template
