@@ -507,6 +507,9 @@ Basic Zone Configuration
          - Copy the SSH public key from /var/cloudstack/management/.ssh/id_rsa.pub on the management server
          - Add the copied key to /root/.ssh/authorized_keys file on the host
 
+      .. TIP::
+         On Ubuntu systems, the key will be in ``/var/lib/cloudstack/management/.ssh/id_rsa.pub`` instead.
+
       Select "System SSH Key" and proceed with next steps.
 
    -  **Host Tags.** (Optional) Any labels that you use to categorize
