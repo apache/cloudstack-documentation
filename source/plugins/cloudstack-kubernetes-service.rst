@@ -653,41 +653,43 @@ Use diverse CNI plugins (Calico, Cilium, etc)
 A CNI framework has also been added which provides end users the flexibility to use the CNI plugin of their choice. The CNI framework internally leverages the managed User data feature provided by CloudStack.
 
 Sample Calico CNI configuration data used which is appended to the existing Kubernetes control node user data is:
+   .. note::
+      This Calico sample requires prior external BGP peering — without BGP the CKS deployment will not work as expected
 
 .. code-block:: bash
 
    #cloud-config
-   - for i in {1..3}; do curl https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/calico.yaml -o /home/cloud/calico.yaml && break || sleep 5; done
-   - until [ -f /home/cloud/success ]; do sleep 5; done
-   - echo "Kubectl apply file"
-   - for i in {1..3}; do sudo /opt/bin/kubectl create -f /home/cloud/calico.yaml && break || sleep 5; done
-   - export PATH=$PATH:/home/cloud
-   - |
-   cat << 'EOF' > /home/cloud/create-configs.sh
-   #!/bin/bash
-   cat << 'EOL' > /home/cloud/bgp-config.yaml
-   apiVersion: crd.projectcalico.org/v1
-   kind: BGPConfiguration
-   metadata:
-   name: default
-   spec:
-   logSeverityScreen: Debug
-   asNumber: {{ AS_NUMBER }}
-   EOL
-   cat << 'EOL' > /home/cloud/bgp-peer.yaml
-   apiVersion: crd.projectcalico.org/v1
-   kind: BGPPeer
-   metadata:
-   name: bgp-peer-example
-   spec:
-   peerIP: {{ ds.meta_data.peer_ip_address }}
-   asNumber: {{ ds.meta_data.peer_as_number }}
-   EOL
-   EOF
-   - chmod +x /home/cloud/create-configs.sh
-   - /home/cloud/create-configs.sh
-   - for i in {1..3}; do sudo /opt/bin/kubectl apply -f /home/cloud/bgp-config.yaml && break || sleep 5; done
-   - for i in {1..3}; do sudo /opt/bin/kubectl apply -f /home/cloud/bgp-peer.yaml && break || sleep 5; done
+      - for i in {1..3}; do curl https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/calico.yaml -o /home/cloud/calico.yaml && break || sleep 5; done
+      - until [ -f /home/cloud/success ]; do sleep 5; done
+      - echo "Kubectl apply file"
+      - for i in {1..3}; do sudo /opt/bin/kubectl create -f /home/cloud/calico.yaml && break || sleep 5; done
+      - export PATH=$PATH:/home/cloud
+      - |
+         cat << 'EOF' > /home/cloud/create-configs.sh
+         #!/bin/bash
+         cat << 'EOL' > /home/cloud/bgp-config.yaml
+         apiVersion: crd.projectcalico.org/v1
+         kind: BGPConfiguration
+         metadata:
+            name: default
+         spec:
+            logSeverityScreen: Debug
+            asNumber: {{ AS_NUMBER }}
+         EOL
+         cat << 'EOL' > /home/cloud/bgp-peer.yaml
+         apiVersion: crd.projectcalico.org/v1
+         kind: BGPPeer
+         metadata:
+            name: bgp-peer-1
+         spec:
+            peerIP: {{ ds.meta_data.peer_ip_address }}
+            asNumber: {{ ds.meta_data.peer_as_number }}
+         EOL
+         EOF
+      - chmod +x /home/cloud/create-configs.sh
+      - /home/cloud/create-configs.sh
+      - for i in {1..3}; do sudo /opt/bin/kubectl apply -f /home/cloud/bgp-config.yaml && break || sleep 5; done
+      - for i in {1..3}; do sudo /opt/bin/kubectl apply -f /home/cloud/bgp-peer.yaml && break || sleep 5; done
 
 
 The CNI Configuration creation allows specifying the parameters to be set as a comma separated list:
