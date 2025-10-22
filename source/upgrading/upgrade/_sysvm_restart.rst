@@ -36,18 +36,25 @@ agent.zip and cloud-scripts.tgz and restart the services that are present in the
 in the System VMs.
 
 .. note::
+   The System VM template has been upgrade to Debian 12.x in Apache CloudStack 4.20.0.0.
+   Due to it, the memory size of default system offerings has been changed to 512 MiB.
+   If you use custom system offerings, please check the memory size of the offerings.
+   If memory size is small (for example 256 MiB), the System VMs and virtual routers might have the "kernel panic" issue on boot.
+
+.. note::
 
    The following services will be restarted once a system VM is live patched:
 
-            +---------------------+-------------------------------+
-            | **System VM**       |         **Services**          |
-            +---------------------+-------------------------------+
-            | SSVM                | cloud, apache2, portmap       |
-            +---------------------+-------------------------------+
-            | CPVM                | cloud                         |
-            +---------------------+-------------------------------+
-            | VRs                 | haproxy, apache2, dnsmasq     |
-            +---------------------+-------------------------------+
+            +---------------------+-------------------------------+---------------------------------------------------+
+            | **System VM**       |         **Services**          |  **Note**                                         |
+            +---------------------+-------------------------------+---------------------------------------------------+
+            | SSVM                | cloud, apache2, portmap       |                                                   |
+            +---------------------+-------------------------------+---------------------------------------------------+
+            | CPVM                | cloud                         |                                                   |
+            +---------------------+-------------------------------+---------------------------------------------------+
+            | VRs                 | haproxy, apache2, dnsmasq     | Please set setting `minreq.sysvmtemplate.version` |
+            |                     |                               | to proper value before live-patching              |
+            +---------------------+-------------------------------+---------------------------------------------------+
 
    With respect to VRs, a Network restart without cleanup is initiated to during live patching to ensure all rules
    are re-applied. 
@@ -64,12 +71,12 @@ Following matrix lists the versions of CloudStack that support live patching.
          +---------------------+-------------------------+--------------------------------+------------------------------------------+
          | **ACS Version**     |  **Upgrade Version**    |   **Live Patching Support**    |     **Reason / Comment**                 |
          +---------------------+-------------------------+--------------------------------+------------------------------------------+
-         | <=4.13              | 4.17+                   |  No                            | Update in the openJDK version            |
+         | <=4.15              | 4.20+                   |  No                            | Debian 10 (buster) is EOL on 2024-06-30  |
          +---------------------+-------------------------+--------------------------------+------------------------------------------+
-         | 4.14                | 4.17+                   |Yes                             | May notice some issue with remove access |
-         |                     |                         |                                | VPN due to older version of Strongswan   |
+         | >=4.16              | 4.19                    | Yes                            |       N/A                                |
          +---------------------+-------------------------+--------------------------------+------------------------------------------+
-         | >=4.15              | 4.17+                   |Yes                             |       N/A                                |
+         | >=4.16              | 4.20                    | Yes                            | May notice some issues due to Debian |
+         |                     |                         |                                | upgrade from 11(bullseye) to 12(bookworm)|
          +---------------------+-------------------------+--------------------------------+------------------------------------------+
 
 In addition to the support for live patching, users still have the facility to follow the legacy workflow
