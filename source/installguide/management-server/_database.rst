@@ -22,7 +22,7 @@ node, you can install the MySQL server locally. For an installation that
 has multiple management server nodes, we assume the MySQL database also
 runs on a separate node.
 
-CloudStack has been tested with MySQL 5.1 and 5.5. These versions are
+CloudStack has been tested with MySQL 8.0. These versions are
 included in RHEL/CentOS and Ubuntu.
 
 
