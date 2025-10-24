@@ -76,7 +76,7 @@ the Global Settings area of the CloudStack UI.
 ================================= ========================
 Configuration                     Description
 ================================= ========================
-backup.framework.enabled          Setting to enable or disable the feature. Default: false.
+backup.framework.enabled          Setting to enable or disable the feature. This is a zone specific setting. Default: false.
 backup.framework.provider.plugin  The backup provider (plugin) name. For example: 'dummy', 'veeam', 'networker' and 'nas'. This is a zone specific setting. Default: dummy.
 backup.framework.sync.interval    Background sync task internal in seconds that performs metrics/usage stats collection, backup reconciliation and backup scheduling. Default: 300.
 ================================= ========================
