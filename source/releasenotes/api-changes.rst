@@ -13,6 +13,36 @@
    specific language governing permissions and limitations
    under the License.
 
+API Changes Introduced in 4.20.2.0
+==================================
+
+For the complete list of API commands and params consult the `CloudStack Apidocs`_.
+
+Parameters Changed API Commands
+-------------------------------
+
+.. cssclass:: table-striped table-bordered table-hover
+
++---------------------------------------------+--------------------------------------------------------------------------------+
+| Name                                        | Description                                                                    |
++=============================================+================================================================================+
+| ``createTemplate``                          | **Request:**                                                                   |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``arch``                                                                     |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+| ``listCapabilities``                        | **Response:**                                                                  |
+|                                             |                                                                                |
+|                                             | *New Parameters:*                                                              |
+|                                             |                                                                                |
+|                                             | - ``dynamicscalingenabled``                                                    |
+|                                             | - ``additionalconfigenabled``                                                  |
+|                                             |                                                                                |
++---------------------------------------------+--------------------------------------------------------------------------------+
+
+
 API Changes Introduced in 4.20.1.0
 ==================================
 
