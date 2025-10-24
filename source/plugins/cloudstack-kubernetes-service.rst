@@ -765,6 +765,19 @@ For verification of the applied CNI Configuration, the following commands can be
 
    Events:                <none>
 
+CSI integration with CKS
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+From 4.22.0, CloudStack Kubernetes Service provides CSI integration that allows dynamic provisioning of CloudStack volumes for Kubernetes pods running on CKS clusters.
+To enable CSI integration, the CKS data ISOs must have the CSI manifests. Rebuilding the CKS data ISOs using the `create-kubernetes-binaries-iso.sh` script will build ISOs with CSI manifests and images. 
+
+|cks-custom-template-registration.png|
+
+Enabling CSI integration for a CKS cluster can be done by selecting the `Enable CSI Integration` checkbox in the Advanced Settings section of the Kubernetes cluster creation form.
+Doing so will setup the CSI components - the CSI controller and the CSI node daemonset - on the cluster during its creation.
+
+|cks-csi-pods.png|
+
+Further details about using CSI with CKS can be found at: https://github.com/cloudstack/cloudstack-csi-driver/blob/main/README.md
 
 .. |cks-add-version-form.png| image:: /_static/images/cks-add-version-form.png
    :alt: Add Kubernetes Supported Version form.
@@ -804,3 +817,7 @@ For verification of the applied CNI Configuration, the following commands can be
    :alt: Kubernetes cluster creation setting a CNI configuration.
 .. |cks-cni-configuration-registration-sample.png| image:: /_static/images/cks-cni-configuration-registration-sample.png
    :alt: CNI Configuration registration sample.
+.. |cks-add-version-action.png| image:: /_static/images/cks-csi-integration.png
+   :alt: Integration of CSI with CKS.
+.. |cks-csi-pods.png| image:: /_static/images/cks-csi-pods.png
+   :alt: CSI Pods.
