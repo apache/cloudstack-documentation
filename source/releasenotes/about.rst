@@ -17,7 +17,27 @@
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is a 4.20 LTS minor release with over 150 fixes
+Apache CloudStack |release| is a 4.20 LTS minor release with around 150 fixes
+and improvements since the 4.20.1.0 release. Some of the highlights include:
+
+• Improvements for Vmware to KVM Migration
+• Fix: Potential remote code execution on Javascript engine defined rules
+• Fix: Lack of user permission validation leading to data leak for few APIs
+• Optimise VNC console performance
+• Some network related fixes and improvements
+• ScaleIO/PowerFlex smoke tests improvements and fixes
+• Some CloudStack Kubernetes Service (CKS) related fixes and improvements
+• Several UI fixes and improvements
+• Systemvm templates now built on Debian 12.12.0
+
+
+The full list of new features can be found in the project release notes at
+https://docs.cloudstack.apache.org/en/4.20.2.0/releasenotes/changes.html
+
+What's New in 4.20.1.0
+=======================
+
+Apache CloudStack 4.20.1.0 is a 4.20 LTS minor release with over 150 fixes
 and improvements since the 4.20.0.0 release. Some of the highlights include:
 
 • Improvements to multi-architecture support in CloudStack
