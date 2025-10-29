@@ -40,4 +40,5 @@ This is the Apache CloudStack Plugins guide. This section gives information for 
    quota
    cloudstack-kubernetes-service
    cloudstack-kubernetes-provider.rst
+   cloudstack-csi-driver.rst
 
