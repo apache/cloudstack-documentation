@@ -253,7 +253,7 @@ DEB package repository
 
 You can add a DEB package repository to your apt sources with the
 following commands. Replace the code name with your Ubuntu LTS version :
-Ubuntu 20.04 (focal), Ubuntu 22.04 (jammy), Ubuntu 24.04 (noble).
+Ubuntu 22.04 (jammy), Ubuntu 24.04 (noble).
 
 Use your preferred editor and open (or create)
 ``/etc/apt/sources.list.d/cloudstack.list``. Add the community provided
