@@ -29,6 +29,8 @@ We have a number of guides, starting with a guide to cloudstack's terminology an
 
 Information can also be found at CloudStack's wiki https://cwiki.apache.org/confluence/display/CLOUDSTACK/Home and on cloudstack mailing lists http://cloudstack.apache.org/mailing-lists.html
 
+Documentation is maintained at https://github.com/apache/cloudstack-documentation/
+
 .. toctree::
    :maxdepth: 3
    :caption: Contents:
@@ -51,6 +53,7 @@ Information can also be found at CloudStack's wiki https://cwiki.apache.org/conf
    Apache CloudStack web site <http://cloudstack.apache.org/>
    Apache CloudStack Source Code <http://cloudstack.apache.org/downloads.html>
    Apache CloudStack on GitHub <https://github.com/apache/cloudstack>
+   Apache Cloudstack Documentation on GitHub <https://github.com/apache/cloudstack-documentation/
 
 
 
