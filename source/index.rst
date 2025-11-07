@@ -53,7 +53,7 @@ Documentation is maintained at https://github.com/apache/cloudstack-documentatio
    Apache CloudStack web site <http://cloudstack.apache.org/>
    Apache CloudStack Source Code <http://cloudstack.apache.org/downloads.html>
    Apache CloudStack on GitHub <https://github.com/apache/cloudstack>
-   Apache Cloudstack Documentation on GitHub <https://github.com/apache/cloudstack-documentation/
+   Apache Cloudstack Documentation on GitHub <https://github.com/apache/cloudstack-documentation>
 
 
 
