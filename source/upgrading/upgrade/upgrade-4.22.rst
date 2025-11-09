@@ -80,13 +80,13 @@ Backup current database
 
    .. parsed-literal::
 
-      $ sudo service cloudstack-management stop
+      $ sudo systemctl stop cloudstack-management
 
 #. If you are running a usage server or usage servers, stop those as well:
 
    .. parsed-literal::
 
-      $ sudo service cloudstack-usage stop
+      $ sudo systemctl stop cloudstack-usage
 
 #. Make a backup of your MySQL database. If you run into any issues or
    need to roll back the upgrade, this will assist in debugging or
@@ -105,7 +105,7 @@ Backup current database
 Management Server
 -----------------
 
-Ubuntu
+Ubuntu/Debian
 ######
 
 If you are using Ubuntu, follow this procedure to upgrade your packages. If
@@ -128,7 +128,13 @@ This file should have one line, which contains:
 
 .. parsed-literal::
 
-   deb http://download.cloudstack.org/ubuntu bionic |version|
+   deb http://download.cloudstack.org/ubuntu noble |version|
+
+If you are using Debian,
+
+.. parsed-literal::
+
+   deb http://download.cloudstack.org/debian bookworm |version|
 
 Setup the public key for the above repository:
 
@@ -147,13 +153,13 @@ Setup the public key for the above repository:
 
    .. parsed-literal::
 
-      $ sudo apt-get upgrade cloudstack-management
+      $ sudo apt-get install cloudstack-management
 
 #. If you use CloudStack usage server
 
    .. parsed-literal::
 
-      $ sudo apt-get upgrade cloudstack-usage
+      $ sudo apt-get install cloudstack-usage
 
 
 .. _rhel414:
@@ -235,7 +241,7 @@ No additional steps are required for the VMware Hypervisor for this upgrade.
 Hypervisor: KVM
 #################
 
-KVM on Ubuntu
+KVM on Ubuntu/Debian
 """"""""""""""
 
 (KVM only) Additional steps are required for each KVM host. These
@@ -249,7 +255,7 @@ hosts.
 
    .. parsed-literal::
 
-      $ sudo service cloudstack-agent stop
+      $ sudo systemctl stop cloudstack-agent
 
 #. Update the agent software.
 
@@ -261,7 +267,7 @@ hosts.
 
    .. parsed-literal::
 
-      $ sudo service cloudstack-agent start
+      $ sudo systemctl start cloudstack-agent
 
 
 KVM on CentOS/RHEL
@@ -280,8 +286,8 @@ For KVM hosts, upgrade the ``cloudstack-agent`` package
 
    .. parsed-literal::
 
-      $ sudo service cloudstack-agent stop
-      $ sudo service cloudstack-agent start
+      $ sudo systemctl stop cloudstack-agent
+      $ sudo systemctl start cloudstack-agent
 
 
 Restart management services
@@ -291,13 +297,13 @@ Restart management services
 
    .. parsed-literal::
 
-      $ sudo service cloudstack-management start
+      $ sudo systemctl start cloudstack-management
 
 #. If you use it, start the usage server
 
    .. parsed-literal::
 
-      $ sudo service cloudstack-usage start
+      $ sudo systemctl start cloudstack-usage
 
 
 .. include:: _sysvm_restart.rst

@@ -88,6 +88,8 @@ Now you should now be able to install CloudStack using zypper.
 DEB package repository
 ~~~~~~~~~~~~~~~~~~~~~~
 
+In Ubuntu:
+
 You can add a DEB package repository to your apt sources with the
 following commands. Replace the code name with your Ubuntu LTS version :
 Ubuntu 18.04 (Bionic), Ubuntu 20.04 (Focal), Ubuntu 22.04 (Jammy), and Ubuntu 24.04 (Noble).
@@ -115,4 +117,31 @@ Now update your local apt cache.
 
 Your DEB package repository should now be configured and ready for use.
 
+In Debian:
+
+You can also install CloudStack on Debian systems using APT in the same way
+as on Ubuntu. Replace the Debian release codename (for example, "bookworm"
+for Debian 12 or "bullseye" for Debian 11) as appropriate.
+
+Use your preferred editor and open (or create)
+``/etc/apt/sources.list.d/cloudstack.list``. Add the community provided
+repository to the file (replace "noble" with "bookworm" or "bullseye" if it is the case):
+
+.. parsed-literal::
+
+   deb https://download.cloudstack.org/debian bookworm |version|
+
+We now have to add the public key to the trusted keys.
+
+.. parsed-literal::
+
+   wget -O - https://download.cloudstack.org/release.asc |sudo tee /etc/apt/trusted.gpg.d/cloudstack.asc
+
+Now update your local apt cache.
+
+.. parsed-literal::
+
+   sudo apt update
+
+Your DEB package repository should now be configured and ready for use.
 
