@@ -17,8 +17,6 @@
 Deployment Planners
 ======================
 
-Deployment Planners
-===================
 
 Deployment planners determine *how and where instances* are placed across clusters within a zone.  
 A planner builds and orders a *list of candidate clusters* based on a placement strategy such as available capacity, user dispersion, or pod concentration.  
@@ -95,4 +93,7 @@ In other words, *pod-level ordering happens before cluster selection*.
 When ``apply.allocation.algorithm.to.pods = false`` (the default in many deployments):  
 The allocation algorithm operates at the *cluster level* across the entire zone.  
 
-|deployment planner diagram.png|
+|deployment-planner-diagram.png|
+
+.. |deployment-planner-diagram.png| image:: /_static/images/deployment-planner-diagram.png
+   :alt: Deployment Planner Diagram

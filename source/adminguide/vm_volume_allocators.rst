@@ -67,8 +67,8 @@ Algorithm                      Description
 random		                   Selects a storage pool in the cluster randomly.
 firstfit		                   Selects the first available storage pool in the cluster.
 userdispersing	                Selects the storage pool running least instances for the account, aims to spread out the instances belonging to a single user account.
-userconcentratedpod_random     Selects the storage pool randomly aiming to keep all instances belonging to single user account in same pod.
-userconcentratedpod_firstfit   Selects the first suitable pool from a pod running most instances for the user.
+userconcentratedpod_random     Behaves same as random algorithm.
+userconcentratedpod_firstfit   Behaves same as firstfit algorithm.
 firstfitleastconsumed          Selects the first storage pool after sorting eligible pools by least allocated resources.
 ============================= ========================
 
