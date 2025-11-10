@@ -95,3 +95,4 @@ In other words, *pod-level ordering happens before cluster selection*.
 When ``apply.allocation.algorithm.to.pods = false`` (the default in many deployments):  
 The allocation algorithm operates at the *cluster level* across the entire zone.  
 
+|deployment planner diagram.png|
