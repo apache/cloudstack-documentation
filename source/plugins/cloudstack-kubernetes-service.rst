@@ -13,7 +13,7 @@
 CloudStack Kubernetes Service
 ==============================
 
-The Kubernetes Service plugin adds Kubernetes integration to CloudStack. The plugin is disabled by default and an admin can enable it using a Global Setting. It enables users to run containerized services using Kubernetes clusters.
+The Kubernetes Service plugin adds Kubernetes integration to CloudStack. The plugin is disabled by default and an admin can enable it using a Global Setting. It enables users to run containerized services using Kubernetes clusters. Also the global setting "endpoint.url" needs to be set to the CloudStack management server ip example (http://management-server-ip:8080/client/api)
 
 The Kubernetes Service plugin will use the existing SystemVM Template by default for deploying Kubernetes clusters. For
 installation of Kubernetes binaries on the cluster nodes, a binaries ISO is used for each
@@ -27,9 +27,7 @@ multiple versions of Kubernetes for upgrades and running different clusters.
 
 For deployment and setup of Kubernetes on cluster nodes, the plugin uses the Kubernetes tool, 'kubeadm'. kubeadm is the command-line tool for easily provisioning a secure Kubernetes cluster on top of physical or cloud servers or Instances. Under the hood, control node(s) of the cluster starts a Kubernetes cluster using kubeadm init command with a custom token, and worker nodes join this Kubernetes cluster using kubeadm join command with the same token. More about kubeadm here: https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/.
 
-Weave Net CNI provider plugin is used for cluster networking. More about Weave Net provide plugin here: https://www.weave.works/docs/net/latest/kubernetes/kube-addon/.
-
-Calico CNI provider plugin is also supported from ACS 4.21 onwards. More about Calico CNI plugin here: https://docs.projectcalico.org/getting-started/kubernetes/.
+Calico CNI provider plugin is used for cluster networking supported from ACS 4.21 onwards. More about Calico CNI plugin here: https://docs.projectcalico.org/getting-started/kubernetes/.
 
 To access the Kubernetes dashboard securely, the plugin provides access to kubeconfig file data which uses the Kubernetes tool kubectl to run a local proxy and thereby access the dashboard. More about kubectl here: https://kubernetes.io/docs/reference/kubectl/overview/
 
@@ -75,10 +73,9 @@ Eg: To generate the latest kubernetes iso
 
 .. parsed-literal::
 
-   1.27.2,  kubernetes version, see https://github.com/kubernetes/kubernetes/releases
-   1.3.0, CNI version, see https://github.com/containernetworking/plugins/releases
-   1.27.0, cri-tools version, see https://github.com/kubernetes-sigs/cri-tools/releases
-   1.11, weave addon for kubernetes, see https://github.com/weaveworks/weave/tree/master/prog/weave-kube
+   1.33.1,  kubernetes version, see https://github.com/kubernetes/kubernetes/releases
+   1.7.1, CNI version, see https://github.com/containernetworking/plugins/releases
+   1.33.0, cri-tools version, see https://github.com/kubernetes-sigs/cri-tools/releases
    3.30.0, calico addon for kubernetes, see https://raw.githubusercontent.com/projectcalico/calico/v3.30.0/manifests/calico.yaml
    2.7.0, kubernetes dashboard version, see https://github.com/kubernetes/dashboard/release
 
@@ -86,13 +83,9 @@ Usage:
 
 .. parsed-literal::
 
-   # ./create-kubernetes-binaries-iso.sh OUTPUT_PATH KUBERNETES_VERSION CNI_VERSION CRICTL_VERSION WEAVENET_NETWORK_YAML_CONFIG DASHBOARD_YAML_CONFIG [OPTIONAL_OUTPUT_FILENAME] [OPTIONAL_ETCD_VERSION]
+   # ./create-kubernetes-binaries-iso.sh OUTPUT_PATH KUBERNETES_VERSION CNI_VERSION CRICTL_VERSION CALICO_NETWORK_YAML_CONFIG DASHBOARD_YAML_CONFIG [OPTIONAL_OUTPUT_FILENAME] [OPTIONAL_ETCD_VERSION]
 
-Eg: To generate the kubernetes iso with weave cni plugin
 
-.. parsed-literal::
-
-   # ./create-kubernetes-binaries-iso.sh ./ 1.27.2 1.3.0 1.27.0 https://raw.githubusercontent.com/weaveworks/weave/master/prog/weave-kube/weave-daemonset-k8s-1.11.yaml https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml setup-v1.27.2
 
 Eg: To generate the kubernetes iso with calico cni plugin
 
@@ -106,10 +99,6 @@ Eg: To generate the kubernetes iso with calico cni plugin for ARM64 architecture
    
    # ./create-kubernetes-binaries-iso.sh ./ 1.33.1 1.7.1 1.33.0 https://raw.githubusercontent.com/projectcalico/calico/v3.30.0/manifests/calico.yaml https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml aarch64 setup-v1.33.1-calico-arm64 
 
-
-**NOTE:**
-From ACS 4.16 onwards, Kubernetes versions >= 1.20.x are only supported (https://endoflife.date/kubernetes).
-
 **NOTE:**
 From ACS 4.21 onwards, it is possible to specify the version for etcd binaries in the create-kubernetes-binaries-iso.sh script as an optional parameter - ETCD_VERSION. When the ETCD_VERSION parameter is set, the specified etcd version binaries are downloaded and stored in the Kubernetes ISO.
 
@@ -117,7 +106,7 @@ Example for etcd version 3.5.1:
 
 .. parsed-literal::
 
-   # ./create-kubernetes-binaries-iso.sh ./ 1.27.2 1.3.0 1.27.0 https://raw.githubusercontent.com/weaveworks/weave/master/prog/weave-kube/weave-daemonset-k8s-1.11.yaml https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml setup-v1.27.2 3.5.1
+   # ./create-kubernetes-binaries-iso.sh ./ 1.33.1 1.7.1 1.33.0 https://raw.githubusercontent.com/projectcalico/calico/v3.30.0/manifests/calico.yaml https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml setup-v1.33.1-calico-etcd 3.5.1
 
 To deploy Kubernetes clusters with 
 Kubernetes ISOs built with a specified etcd version are necessary for creating Kubernetes clusters with separate etcd nodes. See :ref:`flexible-kubernetes-clusters`.
@@ -148,15 +137,15 @@ addKubernetesSupportedVersion API can be used by an admin to add a new supported
 For example:
 
 .. parsed-literal::
-   > add kubernetessupportedversion name=v1.13.2 semanticversion=1.13.2 url=http://172.20.0.1/files/setup-1.13.2.iso zoneid=34d23dd5-5ced-4e8b-9b0a-835a0b8ae2a6 mincpunumber=2 minmemory=2048
+   > add kubernetessupportedversion name=v1.33.1 semanticversion=1.33.1 url=http://172.20.0.1/files/setup-1.33.1.iso zoneid=34d23dd5-5ced-4e8b-9b0a-835a0b8ae2a6 mincpunumber=2 minmemory=2048
    {
       "kubernetessupportedversion": {
       "id": "6668e999-fe6c-4a91-88d8-d10bcf280d02",
       "isoid": "78d45e9b-a482-46f4-8cbc-cf7964564b85",
-      "isoname": "v1.13.2-Kubernetes-Binaries-ISO",
+      "isoname": "v1.33.1-Kubernetes-Binaries-ISO",
       "isostate": "Active",
-      "semanticversion": "1.13.2",
-      "name": "v1.13.2",
+      "semanticversion": "1.33.1",
+      "name": "v1.33.1",
       "supportsha": false,
       "zoneid": "34d23dd5-5ced-4e8b-9b0a-835a0b8ae2a6",
       "zonename": "KVM-advzone1"
@@ -165,7 +154,7 @@ For example:
       }
    }
 
-The minimum Kubernetes version that can be added in the service is 1.11. At present, v1.17 and above might not work due to their incompatibility with weave-net plugin.
+
 
 Listing supported Kubernetes versions
 ######################################
@@ -290,7 +279,7 @@ For example:
        "endpoint": "https://172.20.20.12:6443/",
        "id": "74e3cc02-bbf7-438f-bfb0-9c193e90c1fb",
        "kubernetesversionid": "6668e999-fe6c-4a91-88d8-d10bcf280d02",
-       "kubernetesversionname": "v1.13.2",
+       "kubernetesversionname": "v1.33.1",
        "controlnodes": 1,
        "memory": "4096",
        "name": "Test",
