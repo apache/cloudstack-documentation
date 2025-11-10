@@ -138,6 +138,7 @@ Managing VM and Volume Allocation
 .. toctree::
    :maxdepth: 4
 
+   deployment_planners
    host_and_storage_tags
    arch_types
    vm_volume_allocators
