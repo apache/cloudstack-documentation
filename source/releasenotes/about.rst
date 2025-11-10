@@ -21,21 +21,20 @@ Apache CloudStack |release| is a 4.22 LTS release with 10 new features,
 around 15 improvements and more than 140 bug fixes since the 4.21.0.0 release.
 Some of the highlights include:
 
-Support for NAS Backup & Restore with Ceph and Shared MountPoint
-Configurable backup and backup-schedule during instance deployment
-Instance creation from backup in another zone (DRaaS use-case)
-SSL offloading support in VR-based load balancers
-Baremetal support with built-in Canonical/MaaS extension
-Support for noVNC and External Console within the Extensions Framework, including built-in Proxmox extension
-VMware-to-KVM migration improvements
-Overview UI page and related APIs for scheduled snapshots
-Allow per-zone Console Proxy configuration
-Bypass secondary storage during the volume migration from one primary storage pool to another in the same cluster
-Make KVM domains persistent upon unmanaging them
-Support for userdata on System VMs - use case: rsyslog-based centralized logging for System VMs and VRs
-Support for EL10 (Oracle Linux, AlmaLinux, Rocky Linux, RHEL) and openSUSE 15.6 as Management Server and KVM host distributions
-Replace md5sum with sha512sum for improved security
-Support for CloudStack CSI driver to dynamically provision and manage the volumes and snapshots
+Enhanced Backup and Disaster Recovery
+SSL Offloading for Load Balancers
+Baremetal/MaaS Extension
+Additional Improvements
+CSI Driver for CKS
+Console Access in Extensions Framework
+VMware-to-KVM Migration Enhancements
+Snapshot/Backup Schedule Listing
+Per-Zone Console Proxy Configuration
+Direct Volume Migration within Cluster
+Persistent KVM Domains
+Centralised Logging with rsyslog
+EL10 & OpenSUSE 15.6 Platform Support
+Stronger Checksum Algorithm (SHA-512)
 Enable KVM volume and VM snapshot by default
 Support xz format for template registration
 Support for shared Filesystem on Config Drive Networks
