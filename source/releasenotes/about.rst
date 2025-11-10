@@ -25,7 +25,7 @@ Enhanced Backup and Disaster Recovery
 SSL Offloading for Load Balancers
 Baremetal/MaaS Extension
 CSI Driver for CKS
-Console Access in Extensions Framework
+Console Access for Proxmox in Extensions Framework
 VMware-to-KVM Migration Enhancements
 Snapshot/Backup Schedule Listing
 Per-Zone Console Proxy Configuration
