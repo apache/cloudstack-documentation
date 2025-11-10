@@ -24,7 +24,6 @@ Some of the highlights include:
 Enhanced Backup and Disaster Recovery
 SSL Offloading for Load Balancers
 Baremetal/MaaS Extension
-Additional Improvements
 CSI Driver for CKS
 Console Access in Extensions Framework
 VMware-to-KVM Migration Enhancements
@@ -32,7 +31,7 @@ Snapshot/Backup Schedule Listing
 Per-Zone Console Proxy Configuration
 Direct Volume Migration within Cluster
 Persistent KVM Domains
-Centralised Logging with rsyslog
+Support for userdata on System VMs
 EL10 & OpenSUSE 15.6 Platform Support
 Stronger Checksum Algorithm (SHA-512)
 Enable KVM volume and VM snapshot by default
