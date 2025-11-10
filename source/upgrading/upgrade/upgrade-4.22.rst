@@ -261,7 +261,7 @@ hosts.
 
    .. parsed-literal::
 
-      $ sudo apt-get upgrade cloudstack-agent
+      $ sudo apt-get install cloudstack-agent
 
 #. Start the agent.
 
