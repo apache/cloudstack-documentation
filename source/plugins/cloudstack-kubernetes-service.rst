@@ -15,7 +15,7 @@ CloudStack Kubernetes Service
 
 The Kubernetes Service plugin adds Kubernetes integration to CloudStack. The plugin is disabled by default and an admin can enable it using a Global Setting. It enables users to run containerized services using Kubernetes clusters.
 
-The Kubernetes Service Plugin will use the existing SystemVM Template by default for deploying kubernetes clusters. For
+The Kubernetes Service plugin will use the existing SystemVM Template by default for deploying Kubernetes clusters. For
 installation of Kubernetes binaries on the cluster nodes, a binaries ISO is used for each
 Kubernetes version to be made available via CloudStack. This allows faster, offline
 installation of Kubernetes binaries and docker images along with support for adding
