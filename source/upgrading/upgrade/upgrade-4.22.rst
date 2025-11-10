@@ -98,6 +98,9 @@ Backup current database
       $ mysqldump -u root -p -R cloud > cloud-backup_$(date +%Y-%m-%d-%H%M%S)
       $ mysqldump -u root -p cloud_usage > cloud_usage-backup_$(date +%Y-%m-%d-%H%M%S)
 
+.. note::
+   The -R option is required in the mysqldump command to retain MySQL stored procedures.
+
 
 .. _ubuntu414:
 .. _apt-repo414:
@@ -146,7 +149,7 @@ Setup the public key for the above repository:
 
    .. parsed-literal::
 
-      $ sudo apt-get update
+      $ sudo apt update
 
 #. Now that you have the repository configured, it's time to upgrade
    the ``cloudstack-management`` package.

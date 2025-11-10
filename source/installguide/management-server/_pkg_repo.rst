@@ -121,11 +121,11 @@ In Debian:
 
 You can also install CloudStack on Debian systems using APT in the same way
 as on Ubuntu. Replace the Debian release codename (for example, "bookworm"
-for Debian 12 or "bullseye" for Debian 11) as appropriate.
+for Debian 12) as appropriate.
 
 Use your preferred editor and open (or create)
 ``/etc/apt/sources.list.d/cloudstack.list``. Add the community provided
-repository to the file (replace "noble" with "bookworm" or "bullseye" if it is the case):
+repository to the file (replace "bookworm" with the codename of Debian release if it is the case):
 
 .. parsed-literal::
 
