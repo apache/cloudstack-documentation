@@ -21,22 +21,22 @@ Apache CloudStack |release| is a LTS release with 10 new features,
 around 15 improvements and more than 140 bug fixes since the 4.21.0.0 release.
 Some of the highlights include:
 
-· Enhanced Backup and Disaster Recovery
-· SSL Offloading for Load Balancers
-· Baremetal/MaaS Extension
-· CSI Driver for CKS
-· Console Access for Proxmox in Extensions Framework
-· VMware-to-KVM Migration Enhancements
-· Snapshot/Backup Schedule Listing
-· Per-Zone Console Proxy Configuration
-· Direct Volume Migrations by-passing Secondary Storage
-· Persistent domain for unmanaged KVM instances from CS
-· Support for User Data on System VMs
-· EL10 & OpenSUSE 15.6 Platform Support
-· Stronger Checksum Algorithm (SHA-512)
-· Enable KVM Volume and VM snapshot by default
-· Support XZ compression format for template registration with KVM
-· Support for Shared Filesystem on Networks with Config Drive
+• Enhanced Backup and Disaster Recovery
+• SSL Offloading for Load Balancers
+• Baremetal/MaaS Extension
+• CSI Driver for CKS
+• Console Access for Proxmox in Extensions Framework
+• VMware-to-KVM Migration Enhancements
+• Snapshot/Backup Schedule Listing
+• Per-Zone Console Proxy Configuration
+• Direct Volume Migrations by-passing Secondary Storage
+• Persistent domain for unmanaged KVM instances from CS
+• Support for User Data on System VMs
+• EL10 & OpenSUSE 15.6 Platform Support
+• Stronger Checksum Algorithm (SHA-512)
+• Enable KVM Volume and VM snapshot by default
+• Support XZ compression format for template registration with KVM
+• Support for Shared Filesystem on Networks with Config Drive
 
 Known Issues
 ------------
