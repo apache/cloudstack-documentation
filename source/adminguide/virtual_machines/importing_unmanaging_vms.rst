@@ -360,6 +360,10 @@ The API has the following preconditions:
 - The Instance state must be 'Running’ or ‘Stopped’
 - The Instance must be a VMware Instance (as of CloudStack 4.19, it's also possible to unmanage a KVM-based Instances)
 
+.. warning::
+   Starting with the 4.22.1 release, when a KVM instance is unmanaged, the infrastructure metadata (zone, pod, cluster, and host details) is preserved in the libvirt VM XML.
+   This information is left for the user’s discretion—allowing them to either retain it or remove it manually or through scripts.
+
 The API execution will perform the following pre-checks, failing if they are not met:
 
 - There are no Volume Snapshots associated with any of the Instance volumes
