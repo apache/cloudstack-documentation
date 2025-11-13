@@ -299,7 +299,8 @@ Setup Best Practices
 -  Use multiple clusters per pod if you need to achieve a certain switch
    density.
 
--  Primary storage mountpoints or LUNs should not exceed 6 TB in size.
+-  Primary storage mountpoints or LUNs should be limited to a manageable
+   capacity as the CloudStack does not impose any limit on them.
    It is better to have multiple smaller primary storage elements per
    cluster than one large one.
 
