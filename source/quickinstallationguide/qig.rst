@@ -403,20 +403,23 @@ up the management server by issuing the following command:
    # cloudstack-setup-management
 
    .. note::
-      Since CloudStack 4.23.0, the ``cloudstack-setup-management`` command
+      Since 4.23.0, the ``cloudstack-setup-management`` command
       can download SystemVM templates on demand when they are not present.
 
       Use the ``--systemvm-templates`` argument to specify which templates to
-      download. If not specified, ``kvm-x86_64`` template will be downloaded
-      by default.
+      download. Valid values are ``all``, ``kvm-aarch64``, ``kvm-x86_64``,
+      ``xenserver``, and ``vmware``. A comma-separated  list combining any of
+      these identifiers can also be supplied (for example
+      ``kvm-x86_64,xenserver``). If not specified, ``kvm-x86_64`` template
+      will be downloaded by default.
 
       For offline environments, provide a custom repository URL with the
       ``--systemvm-templates-repository`` argument so the installer can fetch
       templates from an internal mirror.
 
 
-System VM Template Setup
-~~~~~~~~~~~~~~~~~~~~~~~~
+System Template Setup
+~~~~~~~~~~~~~~~~~~~~~
 
 CloudStack relies on several System VMs (for example SSVM and CPVM) to
 provide console access, networking services and storage management. Manual
