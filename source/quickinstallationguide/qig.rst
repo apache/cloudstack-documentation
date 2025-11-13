@@ -415,8 +415,8 @@ up the management server by issuing the following command:
       templates from an internal mirror.
 
 
-System Template Setup
-~~~~~~~~~~~~~~~~~~~~~
+System VM Template Setup
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 CloudStack relies on several System VMs (for example SSVM and CPVM) to
 provide console access, networking services and storage management. Manual

@@ -287,8 +287,8 @@ MySQL. See :ref:`install-database-on-separate-node`.
    If the servlet container is Tomcat7 the argument --tomcat7 must be used.
 
    .. note::
-      Since CloudStack 4.23.0, the ``cloudstack-setup-management`` command
-      can download SystemVM templates on demand when they are not present.
+      Since 4.23.0, the ``cloudstack-setup-management`` command can download
+      System VM templates on demand when they are not present.
 
       Use the ``--systemvm-templates`` argument to specify which templates to
       download. Valid values are ``all``, ``kvm-aarch64``, ``kvm-x86_64``,
@@ -533,8 +533,8 @@ The following command creates the cloud user on the database.
       are in place to allow traffic to ports 8080, 8250 and 9090 to the management server.
 
    .. note::
-      Since CloudStack 4.23.0, the ``cloudstack-setup-management`` command
-      can download SystemVM templates on demand when they are not present.
+      Since 4.23.0, the ``cloudstack-setup-management`` command can download
+      System VM templates on demand when they are not present.
 
       Use the ``--systemvm-templates`` argument to specify which templates to
       download. Valid values are ``all``, ``kvm-aarch64``, ``kvm-x86_64``,
