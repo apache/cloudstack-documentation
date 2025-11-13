@@ -357,9 +357,7 @@ Basic Zone Configuration
       Starting with CloudStack version 4.21.0 and 4.20.2, the behavior of
       VLAN and networking configuration for the storage traffic type in KVM
       zones has changed. When a VLAN tag is specified for storage traffic,
-      a new vNet interface will be created on the storage bridge. If a
-      dedicated bridge is used for storage traffic, it is recommended not to
-      configure a VLAN tag for this traffic type.
+      a new vNet interface will be created on the storage bridge.
 
       This change in behavior may require administrators to review their
       existing configurations. For environments where a dedicated storage
