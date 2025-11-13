@@ -80,7 +80,9 @@ Template(s) will be downloaded from the configured repository
 and the same workflow for the registration and seeding will be used.
 Repository for downloading the templates can be configured using
 /etc/cloudstack/management/server.properties file by updating the
-``system.vm.templates.download.repository`` property.
+``system.vm.templates.download.repository`` property. If no custom
+repository is configured, templates will be downloaded from the default
+official Apache CloudStack repository.
 
 If the automatic download and seeding of template fails, the
 template can be registered and seeded manually.
