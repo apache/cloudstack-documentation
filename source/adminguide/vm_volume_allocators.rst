@@ -40,10 +40,10 @@ VM allocator supports following algorithms to select a host in the cluster:
 Algorithm                      Description
 ============================= ========================
 random		                   Selects a host in the cluster randomly.
-firstfit		               Selects the first available host in the cluster.
-userdispersing	               Selects the host running least instances for the account, aims to spread out the instances belonging to a single user account.
-userconcentratedpod_random     Selects the host randomly aiming to keep all instances belonging to single user account in same pod.
-userconcentratedpod_firstfit   Selects the first suitable host from a pod running most instances for the user.
+firstfit		                   Selects the first available host in the cluster.
+userdispersing	                Selects the host running least instances for the account, aims to spread out the instances belonging to a single user account.
+userconcentratedpod_random     Behaves same as random algorithm.
+userconcentratedpod_firstfit   Behaves same as firstfit algorithm.
 firstfitleastconsumed          Selects the first host after sorting eligible hosts by least allocated resources (such as CPU or RAM).
 ============================= ========================
 
@@ -67,8 +67,8 @@ Algorithm                      Description
 random		                   Selects a storage pool in the cluster randomly.
 firstfit		                   Selects the first available storage pool in the cluster.
 userdispersing	                Selects the storage pool running least instances for the account, aims to spread out the instances belonging to a single user account.
-userconcentratedpod_random     Selects the storage pool randomly aiming to keep all instances belonging to single user account in same pod.
-userconcentratedpod_firstfit   Selects the first suitable pool from a pod running most instances for the user.
+userconcentratedpod_random     Behaves same as random algorithm.
+userconcentratedpod_firstfit   Behaves same as firstfit algorithm.
 firstfitleastconsumed          Selects the first storage pool after sorting eligible pools by least allocated resources.
 ============================= ========================
 
@@ -132,8 +132,9 @@ Example Configuration
 Above config prioritizes CPU at 70% weight and RAM at 30% when ranking pods, clusters, and hosts.
 
 .. note::
-   - `host.capacityType.to.order.clusters` is only respected for host ordering when:
+   - `host.capacityType.to.order.clusters` is only respected for cluster/host ordering when:
    .. code:: bash
 
+      vm.deployment.planner: FirstFitPlanner, UserDispersingPlanner (when vm.user.dispersion.weight is < 1)
       vm.allocation.algorithm: firstfitleastconsumed
    - When using COMBINED, make sure to tune cpu.to.memory.capacity.weight to reflect your environment’s resource constraints and workload profiles.
