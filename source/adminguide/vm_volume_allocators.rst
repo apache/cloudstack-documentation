@@ -37,14 +37,14 @@ VM allocator supports following algorithms to select a host in the cluster:
 .. cssclass:: table-striped table-bordered table-hover
 
 ============================= ========================
-Algorithm                      Description
+Algorithm                     Description
 ============================= ========================
-random		                   Selects a host in the cluster randomly.
-firstfit		                   Selects the first available host in the cluster.
-userdispersing	                Selects the host running least instances for the account, aims to spread out the instances belonging to a single user account.
-userconcentratedpod_random     Behaves same as random algorithm.
-userconcentratedpod_firstfit   Behaves same as firstfit algorithm.
-firstfitleastconsumed          Selects the first host after sorting eligible hosts by least allocated resources (such as CPU or RAM).
+random	                     Selects a host in the cluster randomly.
+firstfit                      Selects the first available host in the cluster.
+userdispersing	               Selects the host running least instances for the account, aims to spread out the instances belonging to a single user account.
+userconcentratedpod_random    Behaves same as random algorithm.
+userconcentratedpod_firstfit  Behaves same as firstfit algorithm.
+firstfitleastconsumed         Selects the first host after sorting eligible hosts by least allocated resources (such as CPU or RAM).
 ============================= ========================
 
 Use global configuration parameter: 
@@ -62,14 +62,14 @@ Volume allocator supports following algorithms to select a host in the cluster:
 .. cssclass:: table-striped table-bordered table-hover
 
 ============================= ========================
-Algorithm                      Description
+Algorithm                     Description
 ============================= ========================
-random		                   Selects a storage pool in the cluster randomly.
-firstfit		                   Selects the first available storage pool in the cluster.
-userdispersing	                Selects the storage pool running least instances for the account, aims to spread out the instances belonging to a single user account.
-userconcentratedpod_random     Behaves same as random algorithm.
-userconcentratedpod_firstfit   Behaves same as firstfit algorithm.
-firstfitleastconsumed          Selects the first storage pool after sorting eligible pools by least allocated resources.
+random                        Selects a storage pool in the cluster randomly.
+firstfit                      Selects the first available storage pool in the cluster.
+userdispersing                Selects the storage pool running least instances for the account, aims to spread out the instances belonging to a single user account.
+userconcentratedpod_random    Behaves same as random algorithm.
+userconcentratedpod_firstfit  Behaves same as firstfit algorithm.
+firstfitleastconsumed         Selects the first storage pool after sorting eligible pools by least allocated resources.
 ============================= ========================
 
 .. note::
@@ -98,11 +98,11 @@ Key: `host.capacityType.to.order.clusters`
 .. cssclass:: table-striped table-bordered table-hover
 
 ========= ========================
-Value      Behavior
+Value     Behavior
 ========= ========================
-CPU		  Prioritizes resources with the most available CPU.
-RAM		  Prioritizes resources with the most available memory.
-COMBINED	  Uses a weighted formula to balance CPU and RAM in prioritization.
+CPU       Prioritizes resources with the most available CPU.
+RAM       Prioritizes resources with the most available memory.
+COMBINED  Uses a weighted formula to balance CPU and RAM in prioritization.
 ========= ========================
 
 **Additional Configuration for COMBINED**
