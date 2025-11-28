@@ -96,6 +96,8 @@ CloudStack provides built-in Orchestrator Extensions for Proxmox, Hyper-V, and M
 
 .. include:: extensions/limitations.rst
 
+.. include:: extensions/import_extensions.rst
+
 .. include:: extensions/troubleshooting.rst
 
 .. include:: extensions/developer.rst
