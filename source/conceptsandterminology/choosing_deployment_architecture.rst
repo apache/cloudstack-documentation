@@ -300,7 +300,7 @@ Setup Best Practices
    density.
 
 -  Primary storage mountpoints or LUNs should be limited to a manageable
-   capacity as the CloudStack does not impose any limit on them.
+   capacity as CloudStack does not impose any limit on them.
    It is better to have multiple smaller primary storage elements per
    cluster than one large one.
 
