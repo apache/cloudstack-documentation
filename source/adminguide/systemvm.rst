@@ -382,8 +382,10 @@ The Management Server generates URLs of the form
 The new console requests will be served with the new DNS domain name,
 certificate, and key.
 
-Uploading Custom Certificates
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Uploading Certificates
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. |ssl-certificates.png| image:: /_static/images/ssl-certificates.png
 
 Custom certificates for system VMs (SSVM and CPVM) can be uploaded using
 UI or API.
@@ -397,7 +399,8 @@ To upload custom certificates following details will be needed:
 - Domain name suffix
 
 To upload custom certificates using UI, go to Infrastructure -> SSL
-Certificates. This will open up the following form.
+Certificates around the top of the summary view. This will open up the
+following form.
 
    |ssl-certificates.png|
 
