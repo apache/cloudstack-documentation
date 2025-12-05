@@ -19,7 +19,7 @@
 
    During upgrades from versions prior to 4.20, the logging configuration file may not be migrated automatically to the new Log4j2 format - especially if the original log4j configuration file was manually customized or modified.
 
-   It is strongly recommended to verify **before starting the Management Server and the Usage Server** that the configuration file under `/etc/cloudstack/management` and `/etc/cloudstack/usage` (e.g., `log4j-cloud.xml`) respectively uses the Log4j2 format.
+   It is strongly recommended to verify **before starting the Management Server and the Usage Server** that the configuration file (e.g. `log4j-cloud.xml`) under `/etc/cloudstack/management` and `/etc/cloudstack/usage` respectively uses the Log4j2 format.
 
    If the file still uses legacy Log4j (version 1) syntax or structure, **manually replace or update** the configuration using the default Log4j2 configuration supplied with the latest package.
 
