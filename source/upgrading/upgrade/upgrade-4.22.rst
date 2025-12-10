@@ -216,6 +216,8 @@ Setup the GPG public key if you wish to enable ``gpgcheck=1``:
 
       $ sudo yum upgrade cloudstack-usage
 
+.. include:: _log4j_file_check.rst
+
 .. _upg_hyp_414:
 
 Upgrade Hypervisors
