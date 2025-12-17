@@ -1037,6 +1037,7 @@ Enable or disable vTPM for VMware.
 
 .. note::
      Data stored in the virtual TPM device is not persistent.
+
 Instance Snapshots
 ==================
 
