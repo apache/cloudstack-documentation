@@ -261,6 +261,18 @@ secure alternatives:
    the list of excluded and obsolete VPN Customer Gateway parameters, but
    only if these configuration settings are configured by the operator.
 
+**Events and Alerts:**
+
+There is a thread that run periodically to check for VPN Customer Gateways which
+are using excluded or obsolete cryptographic parameters.The interval at which this thread
+runs is configurable using the setting **vpn.customer.gateway.obsolete.check.interval**.
+The unit is in hours and the default value is 0 which means it is disabled by default.
+
+Each time the thread runs, it generates Events for each VPN Customer Gateway which is
+using excluded or obsolete parameters.
+It also generates Alerts to the Administrator about the number of VPN Customer Gateways
+that are using excluded and/or obsolete parameters.
+
 
 Updating and Removing a VPN Customer Gateway
 ''''''''''''''''''''''''''''''''''''''''''''
