@@ -69,6 +69,5 @@ Install on Debian
        wget https://dev.mysql.com/get/mysql-apt-config_0.8.36-1_all.deb -O /tmp/mysql-apt-config_0.8.36-1_all.deb
        sudo apt install -y /tmp/mysql-apt-config_0.8.36-1_all.deb
        sudo apt update
-       sudo apt install -y mysql-connector-python-py3
 
 
