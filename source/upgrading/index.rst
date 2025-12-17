@@ -41,7 +41,9 @@ will abort. If as an operator starting an MS you get the error
 a clustered environment.` during upgrade, check if you have stopped
 all MSses in your environment and retry. If is still fails it might be
 that an MS has stopped un-gracefully and you need to fix the DB-entry
-for it.
+for it. For example, make sure all MSses are stopped by checking the
+hosts in the output of `select name from mshost where state <> ‘Down’`
+and then, when all is safe, run `update mshost set state = ‘Down'`
 
 .. note::
    For information on the API changes and issues fixed in this release, please see the Release Notes section of the documentation
