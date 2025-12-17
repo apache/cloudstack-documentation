@@ -62,7 +62,7 @@ Install on Debian
    sudo apt install cloudstack-management
 
 .. note::
-   MySQL Python connector is unavailable in Debian 12 (bookworm), please install the package provided by MySQL:
+   The MySQL Python connector is not available in Debian's package repository sources, please add MySQL's own package repository:
 
    .. code:: bash
 
