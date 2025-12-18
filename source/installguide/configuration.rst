@@ -1705,6 +1705,26 @@ add more servers to an existing zone.
    -  Path. The path to the zone's Secondary Staging Store.
 
 
+When a new Secondary Storage is added, the Management Server attempts to make
+existing templates available on the new Secondary Storage.
+
+CloudStack improves template availability using the configuration:
+
++----------------------------------------------+-------------------------------------------------------------------------------------------------------------+-----------+
+| Name                                         | Description                                                                                                 | Default   |
++==============================================+=============================================================================================================+===========+
+| copy.templates.from.other.secondary.storages | Allow templates to be copied from existing Secondary Storage servers (within the same zone or across zones) | true      |
+|                                              | when adding a new Secondary Storage, instead of downloading them from the source URL.                       |           |
++----------------------------------------------+-------------------------------------------------------------------------------------------------------------+-----------+
+
+This setting is enabled by default and can be configured globally or at zone level.
+
+CloudStack applies the following order of steps while trying to make a template available in the new secondary storage:
+
+1. Attempt to copy the template from another Secondary Storage in the same zone.
+2. If not found, attempt to copy the template from a Secondary Storage in a different zone.
+3. If the copy operation fails, CloudStack falls back to downloading the template using its URL when it is registered.
+
 Adding an NFS Secondary Staging Store for Each Zone
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
