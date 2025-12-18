@@ -176,6 +176,21 @@ Specify the following:
    <virtual_machines.html#user-data-and-metadata>`_.
 
 
+.. note::
+   Hostnames for instances in an AutoScale Instance Group are automatically
+   generated from the group name and sanitized to meet the OS hostname rules
+   of the template. If the generated name exceeds the allowed limit,
+   it will be trimmed to fit within the limit. The limits are:
+
+   - **Windows templates:** 15 characters (NetBIOS limit). The hostname follows the format `as-WinVM-<6 random letters>`.
+   - **Other OS templates:** 63 characters. Unsupported characters may be normalized
+        (for example, lower-cased or replaced) to comply with OS constraints.
+
+   Unsupported characters may be normalized (for example, lower-cased or
+   replaced) to comply with OS constraints.
+
+
+
 AutoScale Policies
 -------------------------------------------------
 
