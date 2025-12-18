@@ -58,7 +58,9 @@ to perform support B&R actions and operations.
 
 Using the NAS Backup and Recovery Plugin
 ----------------------------------------
-To use the NAS Backup and Recovery Plugin, the Backup and Recovery framework needs to be enabled first. Then the backup plugin 'nas' needs to be enabled on either the global or zone settings. 
+To use the NAS Backup and Recovery Plugin, the Backup and Recovery framework needs to be enabled first,
+on either the global or zone settings. Then the backup plugin 'nas' needs to be enabled on either the global
+or that particular zone settings.
 
 ================================= ========================
 Configuration                     Value
@@ -67,7 +69,8 @@ backup.framework.enabled          true
 backup.framework.provider.plugin  nas
 ================================= ========================
 
-Once the above two configurations are set, restart the cloudstack-management service. Once the service is restarted we can add the backup repository for the 'nas' Backup and Recovery plugin.
+Once the above two configurations are set, restart the cloudstack-management service. Once the service is
+restarted we can add the backup repository for the 'nas' Backup and Recovery plugin.
 Navigate to the configuration -> Backup Repository. Click on 'Add Backup Repository' and fill the form. 
 
 =================== ========================
