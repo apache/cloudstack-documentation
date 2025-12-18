@@ -796,7 +796,7 @@ The following table shows all usage types.
 | 4                | NETWORK\_BYTES\_SENT              | Tracks the total            |
 |                  |                                   | number of bytes sent        |
 |                  |                                   | by all the Instances for an |
-|                  |                                   | account. Cloud.com          |
+|                  |                                   | account. CloudStack         |
 |                  |                                   | does not currently          |
 |                  |                                   | track Network traffic       |
 |                  |                                   | per Instance.               |
@@ -805,7 +805,7 @@ The following table shows all usage types.
 |                  |                                   | number of bytes             |
 |                  |                                   | received by all the         |
 |                  |                                   | Instances for an account.   |
-|                  |                                   | Cloud.com does not          |
+|                  |                                   | CloudStack does not         |
 |                  |                                   | currently track             |
 |                  |                                   | Network traffic per         |
 |                  |                                   | Instance.                   |
@@ -836,7 +836,7 @@ The following table shows all usage types.
 |                  |                                   | also returned.              |
 +------------------+-----------------------------------+-----------------------------+
 | 9                | SNAPSHOT                          | Tracks the total time       |
-|                  |                                   | from when a Template        |
+|                  |                                   | from when a Snapshot        |
 |                  |                                   | has been created to         |
 |                  |                                   | the time it have been       |
 |                  |                                   | destroyed.                  |
@@ -846,7 +846,7 @@ The following table shows all usage types.
 |                  |                                   | policy has been             |
 |                  |                                   | created to the time         |
 |                  |                                   | it has been removed.        |
-|                  |                                   | Cloud.com does not          |
+|                  |                                   | CloudStack does not         |
 |                  |                                   | track whether an Instance   |
 |                  |                                   | has been assigned to        |
 |                  |                                   | a policy.                   |
@@ -866,7 +866,47 @@ The following table shows all usage types.
 |                  |                                   | VPN User is created         |
 |                  |                                   | until it is removed.        |
 +------------------+-----------------------------------+-----------------------------+
-
+| 21               | VM\_DISK\_IO\_READ                | Tracks the VM Disk usage    |
+|                  |                                   | (I/O Read) for an instance. |
++------------------+-----------------------------------+-----------------------------+
+| 22               | VM\_DISK\_IO\_WRITE               | Tracks the VM Disk usage    |
+|                  |                                   | (I/O Write) for an instance.|
++------------------+-----------------------------------+-----------------------------+
+| 23               | VM\_DISK\_BYTES\_READ             | Tracks the VM Disk usage    |
+|                  |                                   | (Bytes Read) for an         |
+|                  |                                   | instance.                   |
++------------------+-----------------------------------+-----------------------------+
+| 24               | VM\_DISK\_BYTES\_WRITE            | Tracks the VM Disk usage    |
+|                  |                                   | (Bytes Write) for an        |
+|                  |                                   | instance.                   |
++------------------+-----------------------------------+-----------------------------+
+| 25               | VM\_SNAPSHOT                      | Tracks the total time a     |
+|                  |                                   | VM Snapshot has been        |
+|                  |                                   | created to the time when    |
+|                  |                                   | it has been destroyed.      |
++------------------+-----------------------------------+-----------------------------+
+| 26               | VOLUME\_SECONDARY                 | Tracks the Volume           |
+|                  |                                   | usage on secondary storage  |
+|                  |                                   | for an account.             |
++------------------+-----------------------------------+-----------------------------+
+| 27               | VM\_SNAPSHOT\_ON\_PRIMARY         | Tracks the VM Snapshot      |
+|                  |                                   | usage on primary storage    |
+|                  |                                   | for an account.             |
++------------------+-----------------------------------+-----------------------------+
+| 28               | BACKUP                            | Tracks the Backup storage   |
+|                  |                                   | usage for an account.       |
++------------------+-----------------------------------+-----------------------------+
+| 29               | BUCKET                            | Tracks the Bucket storage   |
+|                  |                                   | usage for an account.       |
++------------------+-----------------------------------+-----------------------------+
+| 30               | NETWORK                           | Tracks the Network usage    |
+|                  |                                   | from the time it is         |
+|                  |                                   | created until it is removed.|
++------------------+-----------------------------------+-----------------------------+
+| 31               | VPC                               | Tracks the VPC usage        |
+|                  |                                   | from the time it is         |
+|                  |                                   | created until it is removed.|
++------------------+-----------------------------------+-----------------------------+
 
 Example response from listUsageRecords
 --------------------------------------
