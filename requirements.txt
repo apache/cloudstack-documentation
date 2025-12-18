@@ -3,3 +3,4 @@ Sphinx==7.2.6
 sphinx-rtd-theme==2.0.0
 readthedocs-sphinx-ext==2.2.5
 Jinja2==3.1.5
+sphinx-autobuild==2025.8.25
