@@ -64,7 +64,7 @@ Creating and Updating a VPN Customer Gateway
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
-   A VPN customer gateway can be connected to only one VPN gateway at a time.
+   A VPN Customer Gateway can be connected to only one VPN gateway at a time.
 
 To add a VPN Customer Gateway:
 
@@ -80,7 +80,7 @@ To add a VPN Customer Gateway:
 
    Provide the following information:
 
-   -  **Name**: A unique name for the VPN customer gateway you create.
+   -  **Name**: A unique name for the VPN Customer Gateway you create.
 
    -  **Gateway**: The IP address for the remote gateway.
 
@@ -248,14 +248,11 @@ secure alternatives:
       warning message encouraging users to change it to a more secure
       alternative.
 
--  The ``listVpnCustomerGateways`` API response includes two new boolean
-   fields:
+-  The ``listVpnCustomerGateways`` API response includes two new fields:
 
-   -  **containsobsoleteparameters**: Indicates whether the gateway
-      contains any obsolete parameters
+   -  **obsoleteparameters**: List of all obsolete parameters used by the gateway
 
-   -  **containsexcludedparameters**: Indicates whether the gateway
-      contains any excluded parameters
+   -  **excludedparameters**: List of all excluded parameters used by the gateway
 
 -  The ``listCapabilities`` API response includes a new field containing
    the list of excluded and obsolete VPN Customer Gateway parameters, but
@@ -293,12 +290,12 @@ related VPN connection is in error state.
 
 #. In the Select view, select VPN Customer Gateway.
 
-#. Select the VPN customer gateway you want to work with.
+#. Select the VPN Customer Gateway you want to work with.
 
 #. To modify the required parameters, click the Edit VPN Customer
    Gateway button |vpn-edit-icon.png|
 
-#. To remove the VPN customer gateway, click the Delete VPN Customer
+#. To remove the VPN Customer Gateway, click the Delete VPN Customer
    Gateway button |delete.png|
 
 #. Click OK.
@@ -470,7 +467,7 @@ This feature is supported on all the hypervisors.
    For more information, see `"Creating a VPN gateway
    for the VPC" <#creating-a-vpn-gateway-for-the-vpc>`_.
 
-#. Create VPN customer gateway for both the VPCs.
+#. Create VPN Customer Gateway for both the VPCs.
 
    For more information, see `"Creating and Updating
    a VPN Customer Gateway" <#creating-and-updating-a-vpn-customer-gateway>`_.
@@ -570,6 +567,6 @@ Restarting and Removing a VPN Connection
 .. |reset-vpn.png| image:: /_static/images/reset-vpn.png
    :alt: button to reset a VPN connection
 .. |delete.png| image:: /_static/images/delete-button.png
-   :alt: button to remove a VPN customer gateway.
+   :alt: button to remove a VPN Customer Gateway.
 .. |vpn-edit-icon.png| image:: /_static/images/edit-icon.png
    :alt: button to edit.
