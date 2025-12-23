@@ -273,15 +273,17 @@ that are using excluded and/or obsolete parameters.
 **Configuration Scope:**
 
 The obsolete and excluded settings support Domain-level configuration.
-When set at Domain level, the values override global settings for that Domain
-and all its child Domains (unless the child Domain has its own override).
+When set at Domain level, the values override global settings for that specific Domain only.
 
 - Global Settings: Apply to all Domains without specific overrides
 
-- Domain Settings: Override global settings for that Domain and its children
+- Domain Settings: Override global settings for that specific Domain only
+
+Note: Domain settings do not cascade to child Domains. Each child Domain must be configured individually,
+or it will inherit from global settings (not from its parent Domain).
 
 To reset a Domain-specific override, navigate to Domains → [Domain Name] → Settings and reset the value.
-This will cause the Domain to inherit from its parent Domain or global settings.
+This will cause the Domain to fall back to global settings
 
 Updating and Removing a VPN Customer Gateway
 ''''''''''''''''''''''''''''''''''''''''''''
