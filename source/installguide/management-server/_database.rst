@@ -286,6 +286,20 @@ MySQL. See :ref:`install-database-on-separate-node`.
    done.”
    If the servlet container is Tomcat7 the argument --tomcat7 must be used.
 
+   .. note::
+      Since 4.23.0, the ``cloudstack-setup-management`` command can download
+      System VM templates on demand when they are not present.
+
+      Use the ``--systemvm-templates`` argument to specify which templates to
+      download. Valid values are ``all``, ``kvm-aarch64``, ``kvm-x86_64``,
+      ``xenserver``, and ``vmware``. A comma-separated  list combining any of
+      these identifiers can also be supplied (for example
+      ``kvm-x86_64,xenserver``). If not specified, ``kvm-x86_64`` template
+      will be downloaded by default.
+
+      For offline environments, provide a custom repository URL with the
+      ``--systemvm-templates-repository`` argument so the installer can fetch
+      templates from an internal mirror.
 
 .. _install-database-on-separate-node:
 
@@ -518,4 +532,18 @@ The following command creates the cloud user on the database.
       so ensure that the firewalld is disabled or ensure the correct firewalld rules
       are in place to allow traffic to ports 8080, 8250 and 9090 to the management server.
 
+   .. note::
+      Since 4.23.0, the ``cloudstack-setup-management`` command can download
+      System VM templates on demand when they are not present.
+
+      Use the ``--systemvm-templates`` argument to specify which templates to
+      download. Valid values are ``all``, ``kvm-aarch64``, ``kvm-x86_64``,
+      ``xenserver``, and ``vmware``. A comma-separated  list combining any of
+      these identifiers can also be supplied (for example
+      ``kvm-x86_64,xenserver``). If not specified, ``kvm-x86_64`` template
+      will be downloaded by default.
+
+      For offline environments, provide a custom repository URL with the
+      ``--systemvm-templates-repository`` argument so the installer can fetch
+      templates from an internal mirror.
 
