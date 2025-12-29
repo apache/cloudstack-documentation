@@ -1686,7 +1686,7 @@ add more servers to an existing zone.
          Swift or S3 is used as the secondary storage provider, an NFS staging
          storage in each zone is still required.
 
-   -  Zone. The zone where the NFS Secondary Staging Store is to be
+   -  Zone: The zone where the NFS Secondary Staging Store is to be
       located.
 
    -  **SMB Username**: Applicable only if you select SMB/CIFS provider.
@@ -1700,9 +1700,13 @@ add more servers to an existing zone.
    -  **SMB Domain**: Applicable only if you select SMB/CIFS provider.
       The Active Directory domain that the SMB share is a part of.
 
-   -  NFS server. The name of the zone's Secondary Staging Store.
+   -  NFS server: The name of the zone's Secondary Staging Store.
 
-   -  Path. The path to the zone's Secondary Staging Store.
+   -  Path: The path to the zone's Secondary Staging Store.
+
+   -  Copy templates from other storages: This switch can be used to automatically
+      copy existing templates from secondary storages in other zones instead of
+      fetching from their URLs, more details are as below.
 
 
 When a new Secondary Storage is added, the Management Server attempts to make
