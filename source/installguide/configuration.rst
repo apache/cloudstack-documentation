@@ -1664,9 +1664,9 @@ add more servers to an existing zone.
 
 #. Fill in the following fields:
 
-   -  Name. Give the storage a descriptive name.
+   -  **Name**: Give the storage a descriptive name.
 
-   -  Provider. Choose S3, Swift, NFS, or CIFS then fill in the related
+   -  **Provider**: Choose S3, Swift, NFS, or CIFS then fill in the related
       fields which appear. The fields will vary depending on the storage
       provider; for more information, consult the provider's
       documentation (such as the S3 or Swift website). NFS can be used
@@ -1677,7 +1677,7 @@ add more servers to an existing zone.
          Heterogeneous Secondary Storage is not supported in Regions. You can
          use only a single NFS, S3, or Swift account per region.
 
-   -  Create NFS Secondary Staging Store. This box must always be
+   -  **Create NFS Secondary Staging Store**: This box must always be
       checked.
 
       .. warning::
@@ -1686,7 +1686,7 @@ add more servers to an existing zone.
          Swift or S3 is used as the secondary storage provider, an NFS staging
          storage in each zone is still required.
 
-   -  Zone: The zone where the NFS Secondary Staging Store is to be
+   -  **Zone**: The zone where the NFS Secondary Staging Store is to be
       located.
 
    -  **SMB Username**: Applicable only if you select SMB/CIFS provider.
@@ -1700,34 +1700,34 @@ add more servers to an existing zone.
    -  **SMB Domain**: Applicable only if you select SMB/CIFS provider.
       The Active Directory domain that the SMB share is a part of.
 
-   -  NFS server: The name of the zone's Secondary Staging Store.
+   -  **NFS server**: The name of the zone's Secondary Staging Store.
 
-   -  Path: The path to the zone's Secondary Staging Store.
+   -  **Path**: The path to the zone's Secondary Staging Store.
 
-   -  Copy templates from other storages: This switch can be used to automatically
-      copy existing templates from secondary storages in other zones instead of
+   -  **Copy Templates from other storages**: This switch can be used to automatically
+      copy existing Templates from Secondary Storages in other Zones instead of
       fetching from their URLs, more details are as below.
 
 
 When a new Secondary Storage is added, the Management Server attempts to make
-existing templates available on the new Secondary Storage.
+existing Templates available on the new Secondary Storage.
 
-CloudStack improves template availability using the configuration:
+CloudStack improves Template availability using the configuration:
 
 +----------------------------------------------+-------------------------------------------------------------------------------------------------------------+-----------+
 | Name                                         | Description                                                                                                 | Default   |
 +==============================================+=============================================================================================================+===========+
-| copy.templates.from.other.secondary.storages | Allow templates to be copied from existing Secondary Storage servers (within the same zone or across zones) | true      |
+| copy.templates.from.other.secondary.storages | Allow templates to be copied from existing Secondary Storages (within the same Zone or across Zones) | true      |
 |                                              | when adding a new Secondary Storage, instead of downloading them from the source URL.                       |           |
 +----------------------------------------------+-------------------------------------------------------------------------------------------------------------+-----------+
 
-This setting is enabled by default and can be configured globally or at zone level.
+This setting is enabled by default and can be configured globally or at Zone level.
 
-CloudStack applies the following order of steps while trying to make a template available in the new secondary storage:
+CloudStack applies the following order of steps while trying to make a Template available in the new Secondary Storage:
 
-1. Attempt to copy the template from another Secondary Storage in the same zone.
-2. If not found, attempt to copy the template from a Secondary Storage in a different zone.
-3. If the copy operation fails, CloudStack falls back to downloading the template using its URL when it is registered.
+1. Attempt to copy the Template from another Secondary Storage in the same Zone.
+2. If not found, attempt to copy the Template from a Secondary Storage in a different Zone.
+3. If the copy operation fails, CloudStack falls back to downloading the Template using its URL when it is registered.
 
 Adding an NFS Secondary Staging Store for Each Zone
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
