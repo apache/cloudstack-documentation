@@ -1727,7 +1727,7 @@ CloudStack applies the following order of steps while trying to make a Template 
 
 1. Attempt to copy the Template from another Secondary Storage in the same Zone.
 2. If not found, attempt to copy the Template from a Secondary Storage in a different Zone.
-3. If the copy operation fails, CloudStack falls back to downloading the Template using its URL when it is registered.
+3. If the copy operation fails, CloudStack falls back to downloading the Template using its URL as registered.
 
 Adding an NFS Secondary Staging Store for Each Zone
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
