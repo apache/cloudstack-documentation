@@ -902,7 +902,7 @@ password for a user:
       :align:   center
 
 Enforce Password Change for Users
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------
 
 Since version 4.23.0, CloudStack provides a security feature that allows administrators to
 **enforce a password change on the next login** for a User. This feature
@@ -921,7 +921,7 @@ When password change enforcement is enabled for a User:
 - Until the password is changed, no other UI actions or API operations are permitted.
 
 Ways to Enforce Password Change
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Password change enforcement can be applied in the following ways.
 
@@ -930,12 +930,6 @@ Password change enforcement can be applied in the following ways.
 
 When creating a new User, administrators can choose to **enforce a
 password change on the User’s first login**.
-
-This is particularly useful when:
-
-- Initial passwords are set by administrators
-- Accounts are created in bulk
-- Temporary passwords are issued to new Users
 
 **UI Flow:**
 
@@ -948,9 +942,11 @@ This is particularly useful when:
 .. figure:: /_static/images/enforce-password-change-on-create.png
    :align: center
    :alt: Enforce password change during user creation
+   :width: 400px
 
-Upon first login, the User must change their password before accessing
-any resources.
+.. raw:: html
+
+   <br>
 
 2. Enforce Password Change When Changing a User Password
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -959,51 +955,44 @@ When an administrator changes a User’s password, CloudStack allows the
 administrator to **require the User to change the password on their next
 login**.
 
-This ensures that:
-
-- Administrators do not permanently know User passwords.
-- Temporary or reset passwords are only valid for a single login.
-
 **UI Flow:**
 
 #. Navigate to **Accounts → Users**.
 #. Open the required User details page.
 #. Select **Change Password**.
 #. Enable **User must change password at next login**.
-#. Save the changes.
+#. Change the password.
 
 .. figure:: /_static/images/enforce-password-change-on-update.png
    :align: center
    :alt: Enforce password change when updating user password
+   :width: 400px
 
-At the next login, the User must immediately choose a new password.
+.. raw:: html
+
+   <br>
 
 3. Enforce Password Change Without Changing the Password (Quick Action)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Administrators can enforce a password change **without modifying the
-current password**. This is useful when enforcing security policies such
-as:
-
-- Periodic password rotation
-- Organization-wide password policy updates
-- Suspected credential exposure
-
+current password**.
 A **Quick Action** is available directly from the User details page.
 
 **UI Flow:**
 
 #. Navigate to **Accounts → Users**.
 #. Open the required User details page.
-#. Click **Enforce Password Change** from the actions menu.
+#. Click **Force password reset** from the actions menu.
 #. Confirm the action.
 
-.. figure:: /_static/images/enforce-password-change-quick-action.png
+.. figure:: /_static/images/force-password-reset-quick-action.png
    :align: center
-   :alt: Enforce password change using quick action
+   :alt: Force password reset using quick action
 
-The User will be forced to change their password on the next successful
-login, even though their current password remains valid for authentication.
+.. raw:: html
+
+   <br>
 
 User Login Experience
 ^^^^^^^^^^^^^^^^^^^^^
@@ -1020,41 +1009,7 @@ When enforcement is active, the User login flow is as follows:
 .. figure:: /_static/images/force-password-change-login.png
    :align: center
    :alt: User prompted to change password after login
-
-Permissions and Scope
-^^^^^^^^^^^^^^^^^^^^^
-
-- **Root Administrators** and **Domain Administrators** can enforce password changes for any User in the system.
-- Regular Users cannot enforce password changes for themselves or others.
-
-API Support
-^^^^^^^^^^^
-
-Password change enforcement can also be managed using CloudStack APIs when
-updating a User.
-Refer to the API documentation for the ``createUser`` and ``updateUser``
-commands for details on password change enforcement parameters.
-
-Notes and Limitations
-^^^^^^^^^^^^^^^^^^^^^
-
-.. note::
-
-   - This feature applies only to **CloudStack-managed username/password
-     authentication**.
-   - Enforcement of password change is not supported for Users authenticated via **LDAP, SAML, or OAuth2**.
-   - API key and secret key-based authentication is not affected by
-     password change enforcement.
-
-Security Benefits
-^^^^^^^^^^^^^^^^^
-
-Enforcing password changes helps administrators:
-
-- Reduce the risk of credential reuse
-- Comply with organizational security standards
-- Safely assist Users during account recovery
-- Enforce password rotation policies without service disruption
+   :width: 400px
 
 Using API Key and Secret Key based Authentication
 -------------------------------------------------
