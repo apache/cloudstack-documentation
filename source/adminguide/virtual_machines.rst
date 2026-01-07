@@ -175,6 +175,18 @@ To create an Instance from a Template:
    specified at the Instance or Template level. For an existing Instance its settings can be updated while it is in
    stopped state by admin.
 
+   **KVM**
+
+   Instances running on the KVM hypervisor with UEFI Secure Boot have disk controllers automatically enforced:
+
+   - Windows OS instances use SATA
+   - Non-Windows OS instances use VirtIO
+
+   Starting with 4.20.3 and later, this behavior can be overridden by setting the following template or instance detail:
+
+   ``skip.force.disk.controller = true``
+
+   When set, disk controller enforcement is skipped and the controllers defined by template/instance details are used.
 
 Install Required Tools and Drivers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
