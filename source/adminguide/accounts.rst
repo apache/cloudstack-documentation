@@ -901,83 +901,91 @@ password for a user:
    .. figure:: /_static/images/reset-password.png
       :align:   center
 
-Enforce Password Change for Users
----------------------------------
+Add Users
+------------
+CloudStack allows administrators to create Users within an Account.
+Users represent individual identities that can access CloudStack
+resources based on their assigned roles and permissions.
 
-Since version 4.23.0, CloudStack provides a security feature that allows administrators to
-**enforce a password change on the next login** for a User. This feature
-helps administrators comply with security policies such as periodic
-password rotation, compromised credential recovery, or administrative
-enforcement after manual password updates.
+Who can add Users
+~~~~~~~~~~~~~~~~~~
 
-The enforcement can be applied by **Root Administrators** and
-**Domain Administrators** for Users within their scope.
+The following administrators can create Users:
 
-When password change enforcement is enabled for a User:
+- Root Administrators – across all domains and accounts
+- Domain Administrators – within their domain hierarchy
 
-- The User can successfully authenticate with their existing or temporary credentials.
-- Immediately after login, the User is redirected to a **Change Password** screen.
-- The User must set a new password before accessing any CloudStack resources.
-- Until the password is changed, no other UI actions or API operations are permitted.
-
-Ways to Enforce Password Change
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Password change enforcement can be applied in the following ways.
-
-1. Enforce Password Change During User Creation
-"""""""""""""""""""""""""""""""""""""""""""""""
-
-When creating a new User, administrators can choose to **enforce a
-password change on the User’s first login**.
+Users are always created under an existing Account.
 
 **UI Flow:**
 
 #. Navigate to **Accounts → Users**.
 #. Click **Add User**.
 #. Fill in the User details, including the initial password.
-#. Enable **User must change password at next login**.
+#. (Optional) Enable **User must change password at next login**.
 #. Add the User.
 
-.. figure:: /_static/images/enforce-password-change-on-create.png
+.. figure:: /_static/images/add-user-popup.png
    :align: center
-   :alt: Enforce password change during user creation
+   :alt: Add user by administrator
    :width: 400px
 
-.. raw:: html
+If password change is enforced during User creation, the User is prompted to
+change the password on first login.
+See :ref:`user-login-flow-enforced-password-change`.
 
-   <br>
 
-2. Enforce Password Change When Changing a User Password
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Password Change for Users
+-------------------------
+CloudStack allows User passwords to be changed either by the User
+themselves or by an administrator. Password changes may be performed
+voluntarily or as part of an administrative action.
 
-When an administrator changes a User’s password, CloudStack allows the
-administrator to **require the User to change the password on their next
-login**.
+User-initiated password changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Users can change their own password at any time after successfully
+logging in to the CloudStack UI.
+
+**UI Flow:**
+
+#. Log in to the CloudStack UI.
+#. Click the User profile menu.
+#. Select **Change Password**.
+#. Enter the current password.
+#. Enter and confirm the new password.
+#. Submit the change.
+
+.. figure:: /_static/images/user-change-password-popup.png
+   :align: center
+   :alt: User changing their own password
+   :width: 400px
+
+Administrator-initiated password changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Root and Domain Admins can change User's password when required, for example
+during account recovery or administrative maintenance.
 
 **UI Flow:**
 
 #. Navigate to **Accounts → Users**.
 #. Open the required User details page.
 #. Select **Change Password**.
-#. Enable **User must change password at next login**.
+#. (Optional) Enable **User must change password at next login**.
 #. Change the password.
 
-.. figure:: /_static/images/enforce-password-change-on-update.png
+.. figure:: /_static/images/admin-change-password-popup.png
    :align: center
-   :alt: Enforce password change when updating user password
+   :alt: Change user password by administrator
    :width: 400px
 
-.. raw:: html
+When password change is selected, the User must change the temporary password on the
+next login. See :ref:`user-login-flow-enforced-password-change`.
 
-   <br>
 
-3. Enforce Password Change Without Changing the Password (Quick Action)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Administrators can enforce a password change **without modifying the
-current password**.
-A **Quick Action** is available directly from the User details page.
+Force Password Reset for Users (Quick Action)
+-----------------------------------------------
+CloudStack allows administrators to enforce a password change
+**without modifying the current password**.
 
 **UI Flow:**
 
@@ -994,16 +1002,18 @@ A **Quick Action** is available directly from the User details page.
 
    <br>
 
-User Login Experience
-^^^^^^^^^^^^^^^^^^^^^
+.. _user-login-flow-enforced-password-change:
+User login flow for enforced password change
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When enforcement is active, the User login flow is as follows:
+When password change is enforced, the User login flow is as follows:
 
 #. The User enters username, domain, and password.
 #. Authentication succeeds.
 #. The User is redirected to the **Change Password** page.
 #. The User must set a new password that complies with configured
    password policies.
+#. Until the password is changed, no other UI actions or API operations are permitted.
 #. Upon successful password update, normal access is granted.
 
 .. figure:: /_static/images/force-password-change-login.png
