@@ -532,7 +532,7 @@ OpenLDAP)
      - If true, nested groups will also be queried.
    * - ``ldap.provider``
      - * OpenLDAP: ``openldap``
-       * Active Directory: ``microsftad``
+       * Active Directory: ``microsoftad``
      - LDAP provider (e.g. ``openldap``, ``microsoftad``).
 
 
