@@ -45,16 +45,31 @@ in the System VMs.
 
    The following services will be restarted once a system VM is live patched:
 
-            +---------------------+-------------------------------+---------------------------------------------------+
-            | **System VM**       |         **Services**          |  **Note**                                         |
-            +---------------------+-------------------------------+---------------------------------------------------+
-            | SSVM                | cloud, apache2, portmap       |                                                   |
-            +---------------------+-------------------------------+---------------------------------------------------+
-            | CPVM                | cloud                         |                                                   |
-            +---------------------+-------------------------------+---------------------------------------------------+
-            | VRs                 | haproxy, apache2, dnsmasq     | Please set setting `minreq.sysvmtemplate.version` |
-            |                     |                               | to proper value before live-patching              |
-            +---------------------+-------------------------------+---------------------------------------------------+
+            +---------------------+-------------------------------+
+            | **System VM**       |         **Services**          |
+            +---------------------+-------------------------------+
+            | SSVM                | cloud, apache2, portmap       |
+            +---------------------+-------------------------------+
+            | CPVM                | cloud                         |
+            +---------------------+-------------------------------+
+            | VRs                 | haproxy, apache2, dnsmasq     |
+            |                     |                               |
+            +---------------------+-------------------------------+
+   
+   **NOTE**: Before live patching Virtual Routers (VRs), administrators must ensure that
+   the global configuration parameter ``minreq.sysvmtemplate.version`` is set
+   to the minimum supported VR template version.
+
+   For example, if the deployed Virtual Router template version is ``4.20.1``,
+   set:
+
+   ::
+
+      minreq.sysvmtemplate.version = 4.20.1
+
+   This ensures that live patching is only performed on Virtual Routers running
+   template version ``4.20.1`` or later. Virtual Routers using older template
+   versions must be upgraded before live patching is attempted.
 
    With respect to VRs, a Network restart without cleanup is initiated to during live patching to ensure all rules
    are re-applied. 
