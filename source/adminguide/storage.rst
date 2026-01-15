@@ -260,7 +260,7 @@ all guests that were running at the time of the entry into maintenance
 mode.
 
 .. note::
-   Even user instances with VMHA enabled will be stopped when the primary storage is put into maintenance mode.
+   HA-Enabled Instances will also be stopped when the primary storage is put into maintenance mode.
    It is recommended to migrate any business-critical Instances to alternate primary storage before initiating maintenance.
 
 Browsing files on a primary storage
