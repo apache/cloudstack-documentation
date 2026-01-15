@@ -259,6 +259,10 @@ The CloudStack will bring the device back online and attempt to start
 all guests that were running at the time of the entry into maintenance
 mode.
 
+.. note::
+   HA-Enabled Instances will also be stopped when the primary storage is put into maintenance mode.
+   It is recommended to migrate any business-critical Instances to alternate primary storage before initiating maintenance.
+
 Browsing files on a primary storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
