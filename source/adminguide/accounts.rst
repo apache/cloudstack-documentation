@@ -49,6 +49,8 @@ Beside the Root Administrator type of Account (available in the root domain only
 of Accounts can be created for each domain:  Domain Administrator and User.
 
 
+.. _users:
+
 Users
 ~~~~~
 
@@ -903,7 +905,7 @@ password for a user:
 
 Add Users
 ------------
-CloudStack allows administrators to create Users within an Account.
+CloudStack allows administrators to create :ref:`users` within an Account.
 Users represent individual identities that can access CloudStack
 resources based on their assigned roles and permissions.
 
@@ -914,8 +916,6 @@ The following administrators can create Users:
 
 - Root Administrators – across all domains and accounts
 - Domain Administrators – within their domain hierarchy
-
-Users are always created under an existing Account.
 
 **UI Flow:**
 
