@@ -1191,9 +1191,7 @@ UEFI setting
 - On KVM, it is recommended to set boot type to UEFI, and boot mode to SECURE.
 - UEFI is required for some Windows versions.
 - On XenServer amd XCP-ng, the boot type must be set to UEFI, boot mode can be SECURE or LEGACY. vTPM is supported on XenServer 8.3 and later versions and XCP-ng 8.4 and later versions. vTPM can be enabled by setting the virtual.tpm.enabled setting on the template or vm instance as done on VMware.
-
-|vm-settings-virtual-tpm-model-kvm.png|
-TPM model for KVM. There are two options:
+- For XenServer and XCP-ng, to boot Windows VMs in UEFI Secure more, the host needs to have Microsoft UEFI Secure Boot certificates installed. Run `secureboot-certs install` on the host to install them. This makes certificates available to OVFM, QEMU, shim tooling.
 
 - tpm-tis, TIS means TPM Interface Specification; 
 - tpm-crb, CRB means Command-Response Buffer.
