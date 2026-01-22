@@ -46,8 +46,8 @@ Install on SUSE
 
    zypper install cloudstack-management
 
-Install on Ubuntu
-^^^^^^^^^^^^^^^^^
+Install on Ubuntu/Debian
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. parsed-literal::
 
