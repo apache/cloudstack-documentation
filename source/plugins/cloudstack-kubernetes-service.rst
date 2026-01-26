@@ -688,7 +688,6 @@ Different node types can have different affinity group configurations:
 The affinity group configuration is persisted and automatically applied when scaling the cluster - new worker nodes inherit the affinity group settings without requiring additional parameters.
 
 .. note::
-   - When used together with host dedication, affinity group rules are applied within the set of dedicated hosts.
    - When adding external worker nodes to an existing cluster using ``addNodesToKubernetesCluster``, the nodes are validated against any worker affinity groups configured for the cluster.
 
 Use diverse CNI plugins (Calico, Cilium, etc)
