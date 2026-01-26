@@ -653,6 +653,44 @@ Administrators are able to dedicate hosts to a domain or account. CloudStack wil
    .. note::
       By design the hosts dedication does not consider the deployment of system VMs on the dedicated hosts (SSVM, CPVM and Virtual Routers). In case the Kubernetes cluster is created on an unimplemented network then the Virtual Router of the network will not be deployed on the dedicated hosts.
 
+Affinity groups for CKS cluster nodes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+From 4.23.0 onwards, users can specify host affinity or anti-affinity groups for different types of Kubernetes cluster nodes (control, worker, etcd) during cluster creation. This provides control over VM placement on hosts for high availability requirements.
+
+To use affinity groups with CKS clusters:
+
+1. Create the desired affinity groups (host affinity or host anti-affinity) beforehand using the CloudStack UI or API.
+
+2. When creating a Kubernetes cluster, specify the affinity group mapping using the **nodeaffinitygroups** parameter. This parameter accepts a mapping of node types to affinity group UUIDs with two fields per entry:
+
+   - ``node``: The node type (permitted values: ``worker``, ``control``, ``etcd``)
+   - ``affinitygroup``: The UUID of the desired affinity group
+
+Example using the API:
+
+.. code-block:: bash
+
+   cmk create kubernetescluster name=MyCluster zoneid=<zone-uuid> kubernetesversionid=<version-uuid> serviceofferingid=<offering-uuid> size=3 nodeaffinitygroups[0].node=worker nodeaffinitygroups[0].affinitygroup=<affinity-group-uuid>
+
+Multiple affinity groups can be assigned to a single node type by providing comma-separated UUIDs:
+
+.. code-block:: bash
+
+   nodeaffinitygroups[0].affinitygroup=<uuid1>,<uuid2>
+
+Different node types can have different affinity group configurations:
+
+.. code-block:: bash
+
+   nodeaffinitygroups[0].node=control nodeaffinitygroups[0].affinitygroup=<control-ag-uuid> nodeaffinitygroups[1].node=worker nodeaffinitygroups[1].affinitygroup=<worker-ag-uuid>
+
+The affinity group configuration is persisted and automatically applied when scaling the cluster - new worker nodes inherit the affinity group settings without requiring additional parameters.
+
+.. note::
+   - When used together with host dedication, affinity group rules are applied within the set of dedicated hosts.
+   - When adding external worker nodes to an existing cluster using ``addNodesToKubernetesCluster``, the nodes are validated against any worker affinity groups configured for the cluster.
+
 Use diverse CNI plugins (Calico, Cilium, etc)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
