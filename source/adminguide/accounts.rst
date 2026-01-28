@@ -868,7 +868,7 @@ global settings are available to configure SMTP for password recovery.
        
        `You have requested to reset your password. Please click the following link to reset your password:``
        
-       `http://{{{resetLink}}}`
+       `{{{resetLink}}}`
        
        `If you did not request a password reset, please ignore this email.`
 
@@ -879,6 +879,12 @@ global settings are available to configure SMTP for password recovery.
      - Template of mail sent to the user to reset ACS user's password. This uses
        mustache template engine. Available variables are: `username`, 
        `firstName`, `lastName`, `resetLink`, `token`.
+   * - ``user.password.reset.mail.domain.url``
+     - `null`
+     - Domain URL (along with scheme - `http://` or `https://` and port as applicable)
+       for reset password links sent to the user via email. If this is not set, CloudStack
+       would determine the domain url based on the first management server from 'host' setting
+       and http scheme based on the https.enabled flag from server.properties file in the management server.
 
 
 Once the global settings are configured, follow the below steps to reset the
