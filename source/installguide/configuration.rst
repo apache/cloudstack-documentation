@@ -1717,7 +1717,7 @@ CloudStack improves Template availability using the configuration:
 +----------------------------------------------+-------------------------------------------------------------------------------------------------------------+-----------+
 | Name                                         | Description                                                                                                 | Default   |
 +==============================================+=============================================================================================================+===========+
-| copy.templates.from.other.secondary.storages | Allow Templates to be copied from existing Secondary Storages (within the same Zone or across Zones) | true      |
+| copy.templates.from.other.secondary.storages | Allow Templates to be copied from existing Secondary Storages (within the same Zone or across Zones)        | true      |
 |                                              | when adding a new Secondary Storage, instead of downloading them from the source URL.                       |           |
 +----------------------------------------------+-------------------------------------------------------------------------------------------------------------+-----------+
 
