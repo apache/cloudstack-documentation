@@ -881,7 +881,7 @@ global settings are available to configure SMTP for password recovery.
        `firstName`, `lastName`, `resetLink`, `token`.
    * - ``user.password.reset.mail.domain.url``
      - `null`
-     - Domain URL (along with scheme - http:// or https:// and port as applicable)
+     - Domain URL (along with scheme - `http://` or `https://` and port as applicable)
        for reset password links sent to the user via email. If this is not set, CloudStack
        would determine the domain url based on the first management server from 'host' setting
        and http scheme based on the https.enabled flag from server.properties file in the management server.
