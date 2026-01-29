@@ -58,8 +58,8 @@ to perform support B&R actions and operations.
 
 Using the NAS Backup and Recovery Plugin
 ----------------------------------------
-To use the NAS Backup and Recovery Plugin, the Backup and Recovery framework needs to be enabled first,
-on either the global or zone settings. Then the backup plugin 'nas' needs to be enabled on either the global
+To use the NAS Backup and Recovery Plugin, the Backup and Recovery framework needs to be enabled first
+on the global setting. Then the backup plugin 'nas' needs to be enabled on either the global
 or that particular zone settings.
 
 ================================= ========================
