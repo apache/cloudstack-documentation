@@ -1646,7 +1646,7 @@ switch.
 
 CloudStack uses rbd cmd to get the physical size of the snapshots for the volumes on ceph
 primary storage. This requires ceph-common package to be installed on the KVM hosts. If it
-is not installed, the allocated size is used for the physical size.
+is not installed, the allocated size is used for the physical size of the snapshots.
 
 Live Migration
 ^^^^^^^^^^^^^^
