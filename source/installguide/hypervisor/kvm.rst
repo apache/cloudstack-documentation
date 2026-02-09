@@ -321,33 +321,33 @@ Limit Resources For the Agent Service
 
 #. You can set the following resource controls in the cloudstack-agent service:
 
-- Limit the number of file descriptors
+   - Limit the number of file descriptors
 
-  Default configuration is usually higher, set to lower number explicitly when required. It is observed
-  that the average FDs for a host with 40 VMs was 380, we can reserve +20% based on the requirement.
+   Default configuration is usually higher, set to lower number explicitly when required. It is observed
+   that the average FDs for a host with 40 VMs was 380, we can reserve +20% based on the requirement. Example
+   shown below.
 
-   Example:
-     .. code:: bash
+      .. code:: bash
 
-      LimitNOFILE=1500
+         LimitNOFILE=1500
 
-- Limit the memory usage
+   - Limit the memory usage
 
-  You can limit the memory usage. For example, set to 2500MB (2500 * 1024 * 1024 bytes) as shown below.
+   You can limit the memory usage. For example, set to 2500MB (2500 * 1024 * 1024 bytes) as shown below.
 
-     .. code:: bash
+      .. code:: bash
 
-      MemoryMax=2500M
+         MemoryMax=2500M
 
-- Limit the CPU quota
+   - Limit the CPU quota
 
-  You can control the CPU allocation. For example,set to allow 2 full cores worth of CPU time as shown below.
+   You can control the CPU allocation. For example,set to allow 2 full cores worth of CPU time as shown below.
 
-     .. code:: bash
+      .. code:: bash
 
-      CPUQuota=200%
+         CPUQuota=200%
 
-#. Reload and restart the cloudstack-agent service after changing any of the controls:
+#. Reload and restart the cloudstack-agent service after changing any of the resource controls:
 
    .. code:: bash
 
