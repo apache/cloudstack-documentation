@@ -310,6 +310,71 @@ sudoers file:
    cloudstack ALL=NOPASSWD: /usr/bin/cloudstack-setup-agent
    Defaults:cloudstack !requiretty
 
+Limit Resources For the Agent Service
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Edit the cloudstack-agent.service file at:
+
+   .. code:: bash
+
+      /usr/lib/systemd/system/cloudstack-agent.service
+
+#. You can set the following resource controls in the cloudstack-agent service:
+
+- Limit the number of file descriptors
+
+  Default configuration is usually higher, set to lower number explicitly when required. It is observed
+  that the average FDs for a host with 40 VMs was 380, we can reserve +20% based on the requirement.
+
+   Example:
+     .. code:: bash
+
+      LimitNOFILE=1500
+
+- Limit the memory usage
+
+  You can limit the memory usage. For example, set to 2500MB (2500 * 1024 * 1024 bytes) as shown below.
+
+     .. code:: bash
+
+      MemoryMax=2500M
+
+- Limit the CPU quota
+
+  You can control the CPU allocation. For example,set to allow 2 full cores worth of CPU time as shown below.
+
+     .. code:: bash
+
+      CPUQuota=200%
+
+#. Reload and restart the cloudstack-agent service after changing any of the controls:
+
+   .. code:: bash
+
+      sudo systemctl daemon-reload
+      sudo systemctl restart cloudstack-agent
+
+
+Disable Omit Stack Trace
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+JVM by default stop printing some stack traces in the logs. To enable print stack traces always:
+
+#. Edit the cloudstack-agent.service configuration file at:
+
+   .. code:: bash
+
+      /etc/default/cloudstack-agent
+
+#. Add the command-line parameter -XX:-OmitStackTraceInFastThrow to disable omit stack trace flag in JVM so that all
+   the stack traces are always printed on the logs. This flag is enabled by default in JVM to omit the stack traces
+   for certain exceptions that are thrown frequently. Printing of the stack traces might impact performance, and is not
+   recommended for production, so it's better to disable this flag for troubleshooting or debugging purposes when required.
+
+   .. code:: bash
+
+      JAVA_OPTS="... -XX:-OmitStackTraceInFastThrow"
+
 
 Configure CPU model for KVM guest (Optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
