@@ -127,15 +127,26 @@ To set up the Proxmox Extension, follow these steps in CloudStack:
    * **iso_path**: Full path to the ISO in Proxmox (if `template_type` is `iso`)
    |proxmox-add-iso.png|
 
-   Note: Templates and ISOs should be stored on shared storage when using multiple Proxmox nodes. Or copy the template/iso to each host's local storage at the same location.
+   **Note**: Templates and ISOs should be stored on shared storage when using multiple Proxmox nodes. Or copy the template/iso to each host's local storage at the same location.
 
 #. **Deploy Instance**
 
-   Deploy an Instance using the Template created above. Optionally, provide the detail `vm_name` to specify the name of the VM in Proxmox.
-   Otherwise, the CloudStack Instance's internal name is used. The VM Id in Proxmox is mapped to the CloudStack Instance and stored as a detail in CloudStack DB.
-   The Instance will be provisioned on a randomly selected Proxmox host. The VM will be configured with the MAC address and VLAN ID as defined in CloudStack.
+   Deploy an Instance using the Template/ISO created above.
+
+   The VM Id in Proxmox is mapped to the CloudStack Instance and stored as a detail in CloudStack DB.
+   The Instance is provisioned on a randomly selected Proxmox host. The VM is configured with the MAC address and VLAN ID as defined in CloudStack.
+
+   The following external details can be provided optionally, while deploying the Instance:
+
+   * **vm_name**: Name of the VM in Proxmox. Default: *CloudStack Instance's internal name*.
+   * **storage**: Name of the storage in Proxmox to use for the VM's disk. Default: *local-lvm*.
+   * **is_full_clone**: Whether to create a full clone of the template (true) or a linked clone (false). Default: *false*.
+   * **iso_os_type**: Specify guest operating system if deploying from ISO. This is used to enable special optimization/features for specific operating systems. Valid values are: other | wxp | w2k | w2k3 | w2k8 | wvista | win7 | win8 | win10 | win11 | l24 | l26 | solarisOS. Default: *l26*
+   * **disk_size_gb**: Size of the disk in GB if deploying from ISO. Default: *64*.
 
    |proxmox-deploy-instance.png|
+
+   **Note**: Make sure that **is_full_clone** is set to **true** if the **storage** specified is different from the template's storage when deploying from template.
 
 #. **Lifecycle Operations**
 
