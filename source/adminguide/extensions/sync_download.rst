@@ -41,6 +41,8 @@ configure cache behavior, and secure download links.
 Share Endpoint Properties
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. cssclass:: table-striped table-bordered table-hover
+
 +----------------------+----------------------------------------------+---------------------------------------------+
 | Property             | Default Value                                | Description                                 |
 +======================+==============================================+=============================================+
@@ -48,19 +50,19 @@ Share Endpoint Properties
 |                      |                                              | feature. Must be ``true`` for extension     |
 |                      |                                              | downloads to function.                      |
 +----------------------+----------------------------------------------+---------------------------------------------+
-| share.base.dir       | <HOME_DIRECTORY_OF_CLOUD_USER>/share         | Base directory from which files can be     |
+| share.base.dir       | <HOME_DIRECTORY_OF_CLOUD_USER>/share         | Base directory from which files can be      |
 |                      |                                              | shared. If not explicitly set, the default  |
-|                      |                                              | directory under the CloudStack user home   |
+|                      |                                              | directory under the CloudStack user home    |
 |                      |                                              | is used.                                    |
 +----------------------+----------------------------------------------+---------------------------------------------+
-| share.cache.control  | public,max-age=86400,immutable               | Cache-Control header value applied to      |
-|                      |                                              | shared files. Controls browser/client      |
+| share.cache.control  | public,max-age=86400,immutable               | Cache-Control header value applied to       |
+|                      |                                              | shared files. Controls browser/client       |
 |                      |                                              | caching behavior.                           |
 +----------------------+----------------------------------------------+---------------------------------------------+
-| share.secret         | change-me                                    | Secret key used to generate HMAC-signed    |
-|                      |                                              | download links. It is strongly recommended |
-|                      |                                              | to change this value in production. If not |
-|                      |                                              | set, links will not be signed.             |
+| share.secret         | change-me                                    | Secret key used to generate HMAC-signed     |
+|                      |                                              | download links. It is strongly recommended  |
+|                      |                                              | to change this value in production. If not  |
+|                      |                                              | set, links will not be signed.              |
 +----------------------+----------------------------------------------+---------------------------------------------+
 
 Notes:
@@ -192,14 +194,17 @@ selected management server.
 Global Configuration Parameters
 --------------------------------
 
-+-----------------------------------------------+--------------------------------------------------------------+
-| Name                                          | Description                                                  |
-+===============================================+==============================================================+
-| extension.share.download.use.secondary.storage| If ``true``, forces extension downloads via Secondary       |
-|                                               | Storage (SSVM).                                             |
-+-----------------------------------------------+--------------------------------------------------------------+
-| extension.share.link.validity.interval        | Validity duration (in seconds) of the signed download URL.  |
-+-----------------------------------------------+--------------------------------------------------------------+
+.. cssclass:: table-striped table-bordered table-hover
+
++------------------------------------------------+---------------+-----------------------------------------+
+| Name                                           | Default Value | Description                             |
++================================================+===============+=========================================+
+| extension.share.download.use.secondary.storage | false         | If ``true``, forces extension downloads |
+|                                                |               | via Secondary Storage (SSVM).           |
++------------------------------------------------+---------------+-----------------------------------------+
+| extension.share.link.validity.interval         | 3600          | Validity duration (in seconds) of the   |
+|                                                |               | signed download URL.                    |
++------------------------------------------------+---------------+-----------------------------------------+
 
 Events and Logging
 ------------------
@@ -214,6 +219,8 @@ These changes improve traceability and operational visibility.
 
 Archive Formats
 ---------------
+
+.. cssclass:: table-striped table-bordered table-hover
 
 +---------------+----------+
 | Operation     | Format   |
