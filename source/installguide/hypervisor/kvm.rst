@@ -323,7 +323,7 @@ Limit Resources For the Agent Service
 
    - Limit the number of file descriptors
 
-   Default configuration is usually higher, set to lower number explicitly when required. It is observed
+   The default configuration is usually higher, set to a lower number explicitly when required. It is observed
    that the average FDs for a host with 40 VMs was 380, we can reserve +20% based on the requirement. Example
    shown below.
 
@@ -341,7 +341,7 @@ Limit Resources For the Agent Service
 
    - Limit the CPU quota
 
-   You can control the CPU allocation. For example,set to allow 2 full cores worth of CPU time as shown below.
+   You can control the CPU allocation. For example, set to allow 2 full cores worth of CPU time as shown below.
 
       .. code:: bash
 
@@ -358,7 +358,7 @@ Limit Resources For the Agent Service
 Disable Omit Stack Trace
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-JVM by default stop printing some stack traces in the logs. To enable print stack traces always:
+The JVM, by default stops printing some stack traces in the logs. To enable printing full stack traces at all times:
 
 #. Edit the cloudstack-agent.service configuration file at:
 
@@ -366,8 +366,8 @@ JVM by default stop printing some stack traces in the logs. To enable print stac
 
       /etc/default/cloudstack-agent
 
-#. Add the command-line parameter -XX:-OmitStackTraceInFastThrow to disable omit stack trace flag in JVM so that all
-   the stack traces are always printed on the logs. This flag is enabled by default in JVM to omit the stack traces
+#. Add the command-line parameter -XX:-OmitStackTraceInFastThrow to disable the omit stack trace flag in the JVM so that all
+   the stack traces are always printed on the logs. This flag is enabled by default in the JVM to omit the stack traces
    for certain exceptions that are thrown frequently. Printing of the stack traces might impact performance, and is not
    recommended for production, so it's better to disable this flag for troubleshooting or debugging purposes when required.
 
