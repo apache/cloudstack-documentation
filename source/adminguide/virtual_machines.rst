@@ -177,12 +177,12 @@ To create an Instance from a Template:
 
    **KVM**
 
-   Instances running on the KVM hypervisor with UEFI Secure Boot have disk controllers automatically enforced:
+   Instances running on the KVM hypervisor with UEFI Secure Boot have disk controllers automatically enforced as following:
 
    - Windows OS instances use SATA
    - Non-Windows OS instances use VirtIO
 
-   Starting with 4.20.3 and later, this behavior can be overridden by setting the following template or instance detail:
+   Starting with 4.20.3 and later, this behavior can be overridden by setting the following template or instance detail to true:
 
    ``skip.force.disk.controller = true``
 
