@@ -186,7 +186,7 @@ To create an Instance from a Template:
 
    ``skip.force.disk.controller = true``
 
-   When set, disk controller enforcement is skipped and the controllers defined by template/instance details are used.
+   When set to true, disk controller enforcement is skipped, and the controllers defined by template/instance details are used. If the detail is added at both template and instance level, the instance detail takes precedence.
 
 Install Required Tools and Drivers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
