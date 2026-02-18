@@ -176,7 +176,7 @@ Tuning
 .. toctree::
    :maxdepth: 4
 
-   tuning
+   tuning/tuning
 
 
 Events and Troubleshooting
