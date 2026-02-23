@@ -18,8 +18,8 @@ Synchronization and Download
 ============================
 
 In clustered Apache CloudStack management server deployments, extension files
-must remain consistent across all management nodes. This release introduces
-built-in support for:
+must remain consistent across all management nodes. Built-in support
+is provided for:
 
 * Synchronizing extension files across management servers
 * Downloading extension files as an archive
