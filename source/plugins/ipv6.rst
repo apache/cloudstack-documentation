@@ -20,11 +20,15 @@ CloudStack has limited IPv6 support. It supports IPv6 for shared and isolated ne
 
 Shared network
 --------------
-With IPv6 support, Instances in shared networks can obtain both IPv4 and IPv6 addresses from the DHCP
-server. You can deploy Instances either in a IPv6 or IPv4 network, or in a
-dual network environment. If IPv6 network is used, the Instance generates a
-link-local IPv6 address by itself, and receives a stateful IPv6 address
-from the DHCPv6 server.
+When IPv6 is enabled, Instances deployed in a Shared Network can obtain both IPv4 and IPv6 addresses.
+CloudStack supports the following deployment models:
+-  IPv4-only networks
+-  IPv6-only networks (with supported providers)
+-  Dual-stack networks (IPv4 + IPv6)
+In an IPv6-enabled network:
+-  The Instance automatically generates a link-local IPv6 address.
+-  A stateful IPv6 address is assigned through a DHCPv6 server when configured.
+Note: IPv6-only Shared Networks are not supported when using the Virtual Router provider. In such environments, IPv6 must be deployed in a dual-stack configuration.
 
 IPv6 is supported only on KVM and XenServer hypervisors. The IPv6
 support is only an experimental feature.
@@ -91,8 +95,6 @@ Limitations
 ###########
 
 The following are not yet supported:
-
-
 
 #. User Data and metadata
 
