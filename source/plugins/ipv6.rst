@@ -92,7 +92,7 @@ Limitations
 
 The following are not yet supported:
 
-#. Security groups
+
 
 #. User Data and metadata
 
