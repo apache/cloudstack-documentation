@@ -24,7 +24,6 @@ When IPv6 is enabled, Instances deployed in a Shared Network can obtain both IPv
 CloudStack supports the following deployment models:
 
 -  IPv4-only networks
--  IPv6-only networks (with supported providers)
 -  Dual-stack networks (IPv4 + IPv6)
 
 In an IPv6-enabled network:
