@@ -37,6 +37,39 @@ In an IPv6-enabled network:
    provider. In such environments, IPv6 must be deployed in a dual-stack
    configuration.
 
+IPv6 Address Assignment and Routing
+====================================
+
+In Shared Networks, IPv6 address assignment and routing are provided by the upstream network infrastructure, not by the CloudStack Virtual Router.
+
+When IPv6 is enabled on a Shared Network:
+
+-  Instances automatically generate a link-local IPv6 address.
+-  IPv6 global or ULA addresses are typically assigned via:
+
+   -  SLAAC (Router Advertisements) from the upstream router, or
+   -  An external DHCPv6 server (if present in the upstream network).
+
+-  CloudStack does not provide DHCPv6 services in Shared Networks via the Virtual Router.
+
+Important Notes
+~~~~~~~~~~~~~~~
+
+-  In Shared Networks, the Virtual Router does not act as the IPv6 gateway.
+-  IPv6 default routing is determined entirely by upstream infrastructure.
+-  CloudStack does not control IPv6 Router Advertisements in Shared Networks.
+-  IPv6-only Shared Networks using the Virtual Router provider are not supported.
+
+Operational Implications
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+For IPv6 to function correctly in a Shared Network:
+
+-  The upstream network must advertise the IPv6 prefix using Router Advertisements (SLAAC), or
+-  An external DHCPv6 server must be present.
+-  The upstream router must provide the IPv6 default gateway.
+-  CloudStack will not automatically generate or manage IPv6 gateway functionality in this mode.
+
 IPv6 is supported only on KVM and XenServer hypervisors. The IPv6
 support is only an experimental feature.
 
