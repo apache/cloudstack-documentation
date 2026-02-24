@@ -51,6 +51,17 @@ When IPv6 is enabled on a Shared Network:
 
 -  CloudStack does not provide DHCPv6 services in Shared Networks via the Virtual Router.
 
+SLAAC-based IPv6 Address Allocation in Shared Networks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In shared networks with IPv6 enabled:
+
+-  CloudStack allocates instance NICs with SLAAC-based IPv6 addresses calculated from the IPv6 CIDR and the MAC address of the NIC.
+-  This calculated SLAAC address matches the IPv6 address that the guest OS automatically assigns to the instance.
+-  When creating or configuring IPv6 ranges for shared networks, the **IPv6 Start IP** and **IPv6 End IP** parameters are optional in both the UI and API (e.g., ``createVlanIpRange``) and are **not used** for SLAAC-based address allocation in shared networks.
+-  If provided, these parameters should be filled with dummy IP addresses within the same IPv6 subnet (for example, any two valid addresses from your IPv6 CIDR).
+-  These optional parameters are reserved for potential future use.
+
 Important Notes
 ~~~~~~~~~~~~~~~
 
