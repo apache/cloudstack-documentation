@@ -671,7 +671,6 @@ but with some fields pre-filled with the settings of the existing offering.
 You can modify any of the settings as needed before clicking Add to create the new offering.
 
 
-
 Network Throttling
 ------------------
 
