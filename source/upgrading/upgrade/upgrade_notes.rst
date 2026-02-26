@@ -120,8 +120,18 @@ added in CloudStack's db.properties file:
 
    db.usage.driver=jdbc:mysql
 
+MySQL support updated to 8.4
+----------------------------
 
-MySQL 8.0 sql mode change
+As of Apache CloudStack 4.20.3, support for MySQL 8.4 has been added.
+
+Existing deployments upgraded to version 4.20.3 can still continue using MySQL 8.0
+without any changes.
+
+If you are running MySQL 8.0 and would like to upgrade to MySQL 8.4,
+you may follow the standard MySQL upgrade process to migrate safely to version 8.4.
+
+MySQL 8.4 sql mode change
 -------------------------
 
 MySQL mode (sql_mode) has changed in CloudStack db.properties to 
