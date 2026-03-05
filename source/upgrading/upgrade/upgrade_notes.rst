@@ -165,14 +165,14 @@ refer to MySQL documentation here: https://dev.mysql.com/doc/refman/8.4/en/cachi
 
    Note: Please ensure that the password used for the cloud database user matches the value 
    configured in /etc/cloudstack/management/db.properties. If the password in db.properties
-   is encrypted, you can retrieve it using:
+   is encrypted, you can retrieve it using the below command.
 
-      .. code-block:: bash
+   .. code-block:: bash
 
-         java -classpath /usr/share/cloudstack-common/lib/cloudstack-utils.jar \
-         com.cloud.utils.crypt.EncryptionCLI -d \
-         -i "$(grep -oP 'db.cloud.password=ENC\(\K[^\)]+(?=\))' /etc/cloudstack/management/db.properties)" \
-         -p "$(cat /etc/cloudstack/management/key)"
+      java -classpath /usr/share/cloudstack-common/lib/cloudstack-utils.jar \
+      com.cloud.utils.crypt.EncryptionCLI -d \
+      -i "$(grep -oP 'db.cloud.password=ENC\(\K[^\)]+(?=\))' /etc/cloudstack/management/db.properties)" \
+      -p "$(cat /etc/cloudstack/management/key)"
 
 #. Remove deprecated authentication plugin 'mysql_native_password' from the MySQL configuration. Either comment or remove the below line from /etc/my.cnf
 
