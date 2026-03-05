@@ -130,29 +130,29 @@ without any changes.
 
 If you are running MySQL 8.0 and would like to upgrade to MySQL 8.4,
 you may follow the standard MySQL upgrade process to migrate safely to version 8.4,
-and then update the authentication method for the CloudStack and root users with
+and then update the authentication method for the root and CloudStack (cloud) users with
 caching_sha2_password plugin using the below steps as the mysql_native_password plugin
 is deprecated as of MySQL 8.0.34, and disabled by default in MySQL 8.4.
 
-  * Stop MySQL if already running
+  * Stop MySQL server if already running
 
   .. code-block:: bash
 
    sudo systemctl stop mysqld
 
-  * Start in safe mode without auth
+  * Start MySQL server in safe mode without auth
 
   .. code-block:: bash
 
    sudo mysqld --skip-grant-tables --skip-networking &
 
-  * Login without password
+  * Login to MySQL without password
 
   .. code-block:: bash
 
    mysql -u root
 
-  * Reset passwords
+  * Reset passwords for root and CloudStack (cloud) user
 
   .. code-block:: bash
 
@@ -173,13 +173,13 @@ is deprecated as of MySQL 8.0.34, and disabled by default in MySQL 8.4.
       -i "$(grep -oP 'db.cloud.password=ENC\(\K[^\)]+(?=\))' /etc/cloudstack/management/db.properties)" \
       -p "$(cat /etc/cloudstack/management/key)"
 
-  * Remove deprecated authentication plugin 'mysql_native_password' from the configuration. Either comment or remove the below line from /etc/my.cnf
+  * Remove deprecated authentication plugin 'mysql_native_password' from the MySQL configuration. Either comment or remove the below line from /etc/my.cnf
 
   .. code-block:: bash
 
    default_authentication_plugin=mysql_native_password
 
-  * Restart mysql server
+  * Restart MySQL server
 
   .. code-block:: bash
 
