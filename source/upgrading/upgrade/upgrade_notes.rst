@@ -129,7 +129,63 @@ Existing deployments upgraded to version 4.20.3 can still continue using MySQL 8
 without any changes.
 
 If you are running MySQL 8.0 and would like to upgrade to MySQL 8.4,
-you may follow the standard MySQL upgrade process to migrate safely to version 8.4.
+you may follow the standard MySQL upgrade process to migrate safely to version 8.4,
+and then update the authentication method for the CloudStack and root users with
+caching_sha2_password plugin using the below steps as the mysql_native_password plugin
+is deprecated as of MySQL 8.0.34, and disabled by default in MySQL 8.4.
+
+  * Stop MySQL if already running
+
+  .. code-block:: bash
+
+   sudo systemctl stop mysqld
+
+  * Start in safe mode without auth
+
+  .. code-block:: bash
+
+   sudo mysqld --skip-grant-tables --skip-networking &
+
+  * Login without password
+
+  .. code-block:: bash
+
+   mysql -u root
+
+  * Reset passwords
+
+  .. code-block:: bash
+
+   ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'ROOT_PASSWORD';
+   ALTER USER 'root'@'%' IDENTIFIED WITH caching_sha2_password BY 'ROOT_PASSWORD';
+   ALTER USER 'cloud'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'CLOUD_PASSWORD';
+   ALTER USER 'cloud'@'%' IDENTIFIED WITH caching_sha2_password BY 'CLOUD_PASSWORD';
+   FLUSH PRIVILEGES;
+
+  Note: Please ensure that the password used for the cloud database user matches the value
+  configured in /etc/cloudstack/management/db.properties. If the password in db.properties
+  is encrypted, you can retrieve it using:
+
+   .. code-block:: bash
+
+      java -classpath /usr/share/cloudstack-common/lib/cloudstack-utils.jar \
+      com.cloud.utils.crypt.EncryptionCLI -d \
+      -i "$(grep -oP 'db.cloud.password=ENC\(\K[^\)]+(?=\))' /etc/cloudstack/management/db.properties)" \
+      -p "$(cat /etc/cloudstack/management/key)"
+
+  * Remove deprecated authentication plugin 'mysql_native_password' from the configuration. comment
+  or remove the below line from /etc/my.cnf
+
+  .. code-block:: bash
+
+   default_authentication_plugin=mysql_native_password
+
+  * Restart mysql server
+
+  .. code-block:: bash
+
+   killall mysqld
+   systemctl start mysqld
 
 MySQL 8.4 sql mode change
 -------------------------
