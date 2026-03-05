@@ -173,8 +173,7 @@ is deprecated as of MySQL 8.0.34, and disabled by default in MySQL 8.4.
       -i "$(grep -oP 'db.cloud.password=ENC\(\K[^\)]+(?=\))' /etc/cloudstack/management/db.properties)" \
       -p "$(cat /etc/cloudstack/management/key)"
 
-  * Remove deprecated authentication plugin 'mysql_native_password' from the configuration. comment
-  or remove the below line from /etc/my.cnf
+  * Remove deprecated authentication plugin 'mysql_native_password' from the configuration. Either comment or remove the below line from /etc/my.cnf
 
   .. code-block:: bash
 
