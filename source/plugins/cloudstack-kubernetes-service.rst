@@ -658,6 +658,8 @@ Affinity groups for CKS cluster nodes
 
 From 4.23.0 onwards, users can specify host affinity or anti-affinity groups for different types of Kubernetes cluster nodes (control, worker, etcd) during cluster creation. This provides control over VM placement on hosts for high availability requirements.
 
+|cks-create-cluster-affinity-groups.png|
+
 To use affinity groups with CKS clusters:
 
 1. Create the desired affinity groups (host affinity or host anti-affinity) beforehand using the CloudStack UI or API.
@@ -846,6 +848,8 @@ kubectl delete pod --all -A
    :alt: Create Kubernetes Cluster form.
 .. |cks-create-cluster-additional-settings.png| image:: /_static/images/cks-create-cluster-additional-settings.png
    :alt: Create Kubernetes Cluster form with Advanced Settings.
+.. |cks-create-cluster-affinity-groups.png| image:: /_static/images/cks-create-cluster-affinity-groups.png
+   :alt: Affinity groups selection in Create Kubernetes Cluster Advanced Settings.
 .. |cks-delete-action.png| image:: /_static/images/cks-delete-action.png
    :alt: Delete action icon.
 .. |cks-kube-config-action.png| image:: /_static/images/cks-kube-config-action.png
