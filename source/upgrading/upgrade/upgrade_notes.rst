@@ -108,34 +108,4 @@ SystemVM 32bit deprecated
 
 32bit versions of System VM Templates are in the process of being deprecated. Upgrade instructions from this Release Notes use 64bit Templates.
 
-Explicit JDBC driver declaration
---------------------------------
-
-While upgrading, on some environments the following may be required to be
-added in CloudStack's db.properties file:
-
-   # Add these to your db.properties file
-
-   db.cloud.driver=jdbc:mysql
-
-   db.usage.driver=jdbc:mysql
-
-
-MySQL 8.0 sql mode change
--------------------------
-
-MySQL mode (sql_mode) has changed in CloudStack db.properties to 
-"STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,
-ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION".
-
-This gets automatically applies to the MySQL session used by CloudStack management server.
-
-If the admin uses MySQL directly and wants to query tables it is advised to change the sql_mode in the corresponding session or globally.
-
-Eg. mysql> set global sql_mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,
-                             "> ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION";
-    Query OK, 0 rows affected (0.00 sec)
-
-    mysql> set sql_mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,
-                     "> ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION";
-    Query OK, 0 rows affected (0.00 sec)
+.. include:: mysql.rst

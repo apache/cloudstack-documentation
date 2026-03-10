@@ -38,7 +38,7 @@ Software Requirements
 ~~~~~~~~~~~~~~~~~~~~~
 
 -  Java JRE 17
--  MySQL 8.0 (or equivalent compatible DBMS)
+-  MySQL 8.4 (or equivalent compatible DBMS)
 
 Supported Hypervisor Versions
 -----------------------------
