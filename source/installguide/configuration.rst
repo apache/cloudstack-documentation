@@ -353,6 +353,18 @@ Basic Zone Configuration
    drag and drop traffic types onto the network. You can also change the
    network name if desired.
 
+   .. note::
+      Starting with CloudStack version 4.21.0 and 4.20.2, the behavior of
+      VLAN and networking configuration for the storage traffic type in KVM
+      zones has changed. When a VLAN tag is specified for storage traffic,
+      a new vNet interface will be created on the storage bridge.
+
+      This change in behavior may require administrators to review their
+      existing configurations. For environments where a dedicated storage
+      bridge is used and the creation of an additional vNet interface is not
+      desired, the traffic type configuration must be updated to clear the
+      VLAN tag.
+
 #. Assign a network traffic label to each traffic type on the physical
    network. These labels must match the labels you have already defined
    on the hypervisor host. To assign each label, click the Edit button
