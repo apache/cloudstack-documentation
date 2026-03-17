@@ -19,6 +19,9 @@
 .. |edit-icon.png| image:: /_static/images/edit-icon.png
    :alt: edit offering button
 
+.. |clone-icon.png| image:: /_static/images/clone-icon.png
+   :alt: clone offering button
+
 In addition to the physical and logical infrastructure of your cloud and
 the CloudStack software and servers, you also need a layer of user services
 so that people can actually make use of the cloud. This means not just a
@@ -653,6 +656,19 @@ To create a system service offering:
       CloudStack will then prompt for the subdomain's name.
 
 #. Click Add.
+
+
+Cloning Offerings
+-----------------
+
+From CloudStack 4.23, you can clone an existing compute, disk, network or VPC,
+system and backup offerings to create a new offering. This is useful when you want
+to create a new offering with similar settings as an existing offering.
+To clone an offering, navigate to the offering's list view or details page and
+click on the clone icon |clone-icon.png|.
+The dialog box for cloning an offering is similar to the one for creating a new offering,
+but with some fields pre-filled with the settings of the existing offering.
+You can modify any of the settings as needed before clicking Add to create the new offering.
 
 
 Network Throttling
