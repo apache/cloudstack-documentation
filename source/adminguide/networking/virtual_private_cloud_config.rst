@@ -210,6 +210,19 @@ addresses in the form of a Classless Inter-Domain Routing (CIDR) block.
    -  **VPC Offering**: If the administrator has configured multiple
       VPC offerings, select the one you want to use for this VPC.
 
+      .. note::
+         VPC Offerings can be created setting Conserve mode. In this mode, When conserve mode is off, the public IP can only be used for a single VPC Network Tier. When the conserve mode is on, you can define services from more than one VPC Network Tier on the same public IP.
+
+      .. note::
+        If StaticNAT is enabled, irrespective of the status of the
+        conserve mode, no port forwarding or load balancing rule can be
+        created for the IP. However, you can add the firewall rules by
+        using the createFirewallRule command.
+
+      .. note::
+         In case Conserve Mode is enabled on VPC Offering and VPC Network Tier Offerings, then the Source NAT IP address of the VPC can be reused for multiple services.
+
+
    -  **DNS**: A set of custom DNS that will be used by this VPC. If not provided then DNS specified for the zone will be used. Available only when the selected VPC offering supports DNS service.
 
    -  **IPv6 DNS**: A set of custom IPv6 DNS that will be used by this VPC. If not provided then IPv6 DNS specified for the zone will be used. Available only when the selected VPC offering is IPv6 enabled and supports DNS service.
