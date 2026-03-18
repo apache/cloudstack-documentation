@@ -160,7 +160,7 @@ Managing the Cloud
    :maxdepth: 4
 
    management
-
+   kms
 
 System Reliability and Availability
 -----------------------------------
