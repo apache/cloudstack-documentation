@@ -602,7 +602,7 @@ can be attached to Instances, detached, re-attached, and deleted
 just as with the other types of data volume.
 
 Local storage is ideal for scenarios where persistence of data volumes
-and HA is not required. Some of the benefits include reduced disk I/O
+and HA is not required. Some of the benefits include reduced disk I/O
 latency and cost reduction from using inexpensive local disks.
 
 In order for local volumes to be used, the feature must be enabled for
@@ -618,8 +618,24 @@ If you want to put a host into maintenance mode, you must first stop any
 Instances with local data volumes on that host.
 
 
+Volume Encryption
+^^^^^^^^^^^^^^^^^
+
+CloudStack supports LUKS-based volume encryption on KVM. Encrypted volumes are managed
+through the :ref:`key-management-system`, where you can create and manage the encryption
+keys used to protect your data.
+
+To create an encrypted volume, select a **KMS Key** from the UI when creating the volume,
+or supply the key ID via the API. The key must belong to the same zone as the volume.
+
+.. warning::
+   Deleting the KMS key used to encrypt a volume will render that volume permanently
+   unrecoverable.
+
+
 To Create a New Volume
 ^^^^^^^^^^^^^^^^^^^^^^
+
 
 #. Log in to the CloudStack UI as a User or admin.
 
@@ -636,6 +652,10 @@ To Create a New Volume
       should be close to the Instance that will use the volume.
 
    -  Disk Offering. Choose the characteristics of the storage.
+
+   -  KMS Key. (Optional) Select a KMS key to enable envelope-based
+      encryption for the volume. Requires KMS to be configured in the zone.
+      See :ref:`key-management-system`.
 
    The new volume appears in the list of volumes with the state
    “Allocated.” The volume data is stored in CloudStack, but the volume
