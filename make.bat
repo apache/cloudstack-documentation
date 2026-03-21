@@ -12,6 +12,9 @@ set BUILDDIR=build
 set SPHINXPROJ=ApacheCloudStack
 
 if "%1" == "" goto help
+REM --- Added section for 'livehtml' ---
+if "%1" == "livehtml" goto livehtml
+REM -------------------------------------
 
 %SPHINXBUILD% >NUL 2>NUL
 if errorlevel 9009 (
@@ -28,6 +31,11 @@ if errorlevel 9009 (
 rd %BUILDDIR% /q /s
 %SPHINXBUILD% -M %1 %SOURCEDIR% %BUILDDIR% %SPHINXOPTS%
 goto end
+
+:livehtml
+	REM
+	sphinx-autobuild "%SOURCEDIR%" "%BUILDDIR%" %SPHINXOPTS% %O%
+	goto end
 
 :help
 %SPHINXBUILD% -M help %SOURCEDIR% %BUILDDIR% %SPHINXOPTS%
