@@ -47,6 +47,8 @@ follow these procedures:
 
 #. Add secondary storage to the zone. See :ref:`add-secondary-storage`.
 
+#. Add Object Storage to the zone. See :ref:`add-object-storage`.
+
 #. Register Templates to the zone. See :ref:`register-templates`.
 
 #. Initialize and test the new cloud. See :ref:`initialize-and-test`.
@@ -1743,18 +1745,21 @@ You can add  object storage pools at any time to add more capacity or providers 
    -  Provider. Choose provider and then fill in the related
       fields which appear. The fields will vary depending on the object storage
       provider; for more information, consult the provider's
-      documentation (such as the MinIO website).
+      documentation. Currently supported providers are MiniO, Ceph and CloudianHyperStore.
 
    -  URL: API endpoint of the object storage server
 
    -  Access key: Credentials with access to admin API of the object storage server
 
    -  Secret key: Credentials with access to admin API of the object storage server
+   
+   In case of ceph make sure the user is a system user and has the necessary permissions to access the ceph pool specified in the url field. 
 
    |AddObjectStore.png: Add Object Storage|
 
 See https://min.io/docs/minio/linux/index.html for MinIO Documentation
-
+See https://docs.ceph.com/en/latest/radosgw/admin/ for Ceph Object Storage Documentation
+See https://cloudian.com/support/documentation/ for Cloudian HyperStore Documentation
 
 .. _register-templates:
 
