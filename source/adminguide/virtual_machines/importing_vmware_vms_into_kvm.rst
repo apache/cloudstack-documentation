@@ -154,9 +154,28 @@ Converting and importing a VMware VM
 
 .. note:: You can configure the parallel import of VM disk files on KVM host and management server, using the global settings: threads.on.kvm.host.to.import.vmware.vm.files and threads.on.ms.to.import.vmware.vm.files respectively.
 
-In the UI import wizard, you can optionally select a KVM host and temporary destination storage (default is Secondary Storage, but if using Primary Storage - only NFS pools are supported) for the conversion, where VM files (OVF) will be copied to. This can be done by a random (or explicitly chosen) KVM host (if the ovftools are installed), otherwise, the management server will export/copy the VM files (optionally, you can force this action to be done by the management server even the KVM hosts have the ovftools installed in it). Irrelevant if the KVM host or the management server performs the copy of the VM files (OVF), you can further either let CloudStack choose which KVM host should do the conversion of the VM files using virt-v2v and which host will import the files to the destination Primary Storage Pool, or you can explicitly choose these KVM hosts for each of the 2 mentioned operations.
-
 |import-vm-from-vmware-to-kvm-options.png|
+
+In the UI import wizard, administrators can select:
+
+    - (Optional) A KVM host to perform the conversion (must have virt-v2v installed). In case it is not set, then a KVM host is randomly selected.
+    - (Optional) A KVM host to import the converted files into CloudStack (this host must have access to the temporary conversion storage in order to move the converted files to the destination storage). In case it is not set, then a KVM host is randomly selected.
+    - (Optional) Extra parameters: in case the global setting **convert.vmware.instance.to.kvm.extra.params.allowed** (disabled by default) is enabled, then administrators are allowed to pass extra parameters for the virt-v2v conversion command. This setting must be set along with the setting **convert.vmware.instance.to.kvm.extra.params.allowed.list** (empty by default) which indicates the list of parameters that CloudStack will accept for passing to the virt-v2v conversion command on the KVM hosts.
+    
+Since version 4.22 it is possible to indicate converting to storage pool directly (not using temporary storage for conversion). This is set to false by default, in which case a temporary conversion storage is used.
+
+    - When set to false (temporary storage used), then administrators must select a Temporary destination storage. The default is Secondary Storage, but if using Primary Storage - only NFS pools are supported.
+    - When set to true (not using temporary storage), then administrators must select the destination storage pool. The supported storage pools are: NFS, Local Storage and SharedMountPoint storage pools, under the following assumptions:
+     - The KVM host for conversion must be selected and must have access to the destination storage
+     - The KVM host for importing must be selected and must have access to the destination storage
+     - In case of Local storage, the selected KVM host for conversion must be the same as the KVM host for importing
+
+Since version 4.22.1 it is possible to select the Guest OS for the VM to be imported, based on the source VMware VM Guest OS.
+
+    - When CloudStack has Guest OS mappings for the source VMware Guest OS VM, then the list of supported Guest OS is displayed and administratos can select one of them.
+    - In case there are no Guest OS mappings for the source VMware Guest OS VM, then the default import template Guest OS will be used.
+
+The conversion is performed on a random (or explicitly chosen) KVM host (if the ovftools are installed), otherwise, the management server will export/copy the VM files (optionally, you can force this action to be done by the management server even the KVM hosts have the ovftools installed in it). Irrelevant if the KVM host or the management server performs the copy of the VM files (OVF), you can further either let CloudStack choose which KVM host should do the conversion of the VM files using virt-v2v and which host will import the files to the destination Primary Storage Pool, or you can explicitly choose these KVM hosts for each of the 2 mentioned operations.
 
 When importing an instance from VMware to KVM, CloudStack performs the following actions:
 
@@ -195,10 +214,23 @@ When importing an instance from VMware to KVM, CloudStack performs the following
 
 .. note:: The resulting imported VM uses the default Guest OS type: **CentOS 4.5 (32-bit)**. After importing the VM, please Edit the Instance to change the Guest OS Type accordingly.
 
+VM Import Tasks
+---------------
+
+Since version 4.22 administrators can monitor the VMware to KVM migration jobs. The new section is displayed on *Tools > Import-Export Instances > Migrate existing instances to KVM > VM Import Tasks*:
+
+|import-vm-from-vmware-to-kvm-tasks.png|
+
+The tasks can be filtered by state: Completed, Running or Failed, or listing all the tasks.
+
 .. |import-vm-from-vmware-to-kvm.png| image:: /_static/images/import-vm-from-vmware-to-kvm.png
    :alt: Import VMware Virtual Machines into KVM.
    :width: 800 px
 
 .. |import-vm-from-vmware-to-kvm-options.png| image:: /_static/images/import-vm-from-vmware-to-kvm-options.png
    :alt: Import VMware Virtual Machines into KVM Options.
+   :width: 800 px
+
+.. |import-vm-from-vmware-to-kvm-tasks.png| image:: /_static/images/import-vm-from-vmware-to-kvm-tasks.png
+   :alt: Listing Importing Tasks to Migrate VMware Virtual Machines into KVM.
    :width: 800 px
