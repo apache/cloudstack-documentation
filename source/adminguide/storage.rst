@@ -1490,7 +1490,6 @@ Snapshot data.
    been taken and stored in OVA format will continue to exist in that
    format, and will continue to work as expected.
 
-
 Linstor Primary Storage
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1588,6 +1587,15 @@ the total object storage space that can be allocated at an account, domain and p
 Allocated storage is the sum of quota used by all of the buckets.
 Administrators can do this by going to the configure limits tab in accounts, domains and projects
 similar to when enforcing resource limits on volumes, primary storage usage etc.
+
+Block Storage
+----------------
+CloudStack offers fully managed block storage to all users. This section gives technical details on how to create and manage Block Storage.
+
+Block Storage is supported with CLVM/CLVM_NG (Clustered Logical Volume Manager).
+
+.. include:: storage/clvm.rst
+   :start-after: under the License.
 
 Shared FileSystems
 ------------------
