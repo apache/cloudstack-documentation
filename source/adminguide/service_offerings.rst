@@ -705,7 +705,7 @@ or directly update existing ones in the database:
 
 .. Note:: ``nw_rate`` stands for Network Rate,
           ``mc_rate`` stand for Multi Cast Rate,
-          and `0`, mean unlimited bandwidth.
+          and ``0`` means unlimited bandwidth.
 
 The following table gives an overview of how network rate is applied on
 different types of networks in CloudStack.
