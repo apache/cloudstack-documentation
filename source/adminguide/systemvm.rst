@@ -124,13 +124,13 @@ of memory.
 #. Navigate to Configuration, Global Settings:
 
 #. Set the name of the 64-bit Template, KVM64bitTemplate, in the
-   *``router.template.kvm``* global parameter.
+   ``router.template.kvm`` global parameter.
 
    If you are using a XenServer 64-bit Template, set the name in the
-   *``router.template.xenserver``* global parameter.
+   ``router.template.xenserver`` global parameter.
 
    If you are using a VMware 64-bit Template, set the name in the
-   *``router.template.vmware``* global parameter.
+   ``router.template.vmware`` global parameter.
 
    Any new virtual router created in this Zone automatically picks up
    this Template.
