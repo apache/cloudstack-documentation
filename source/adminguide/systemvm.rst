@@ -177,9 +177,17 @@ System VMs running on ESXi, the key is stored on the management server at
    #. SSH to the 'Link Local IP Address' of the System VM from the Host on
       which the VM is running.
 
-      Format: ``ssh -i <path-to-private-key> <link-local-ip> -p 3922``
+      Format:
 
-      Example: ``root@kvm01:~# ssh -i /root/.ssh/id_rsa.cloud 169.254.3.93 -p 3922``
+      .. code:: bash
+
+         ssh -i <path-to-private-key> <link-local-ip> -p 3922
+
+      Example: 
+
+      .. code:: bash
+
+         root@kvm01:~# ssh -i /root/.ssh/id_rsa.cloud 169.254.3.93 -p 3922
 
 #. For ESXi Hypervisors
 
