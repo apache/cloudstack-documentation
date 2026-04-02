@@ -674,36 +674,41 @@ You can modify any of the settings as needed before clicking Add to create the n
 Network Throttling
 ------------------
 
-Network throttling is the process of controlling the network bandwidth. CloudStack controls this
-behaviour of the guest networks in the cloud by using the network rate
-parameter. This parameter is defined as the default data transfer rate
-in Mbps (Megabits Per Second) allowed in a guest network. It defines the
-upper limits for network bandwidth.
+In CloudStack, this is done using network rate settings. These settings 
+define the maximum data transfer speed (in Mbps) that guest instance's 
+network interface can use.
 
-You can throttle the network bandwidth either to control the usage above
-a certain limit for some accounts, or to control network congestion in a
-large cloud environment. The network rate for your cloud can be
-configured on the following:
+There are 3 places where network rate (bandwidth limit) can be defined:
+
+-  Global Parameter
 
 -  Network Offering
 
 -  Service Offering
 
--  Global parameter
+If the network rate is **NULL** at:
 
-If network rate is set to NULL in service offering, the value provided
-in the vm.network.throttling.rate global parameter is applied. If the
-value is set to NULL for network offering, the value provided in the
-network.throttling.rate global parameter is considered.
+* The **Compute Offering**, it uses the ``vm.network.throttling.rate`` global setting.
+* The **Network Offering**, it uses the ``network.throttling.rate`` global setting.
 
-For the default public, storage, and management networks, network rate
-is set to 0. This implies that the public, storage, and management
-networks will have unlimited bandwidth by default. For default guest
-networks, network rate is set to NULL. In this case, network rate is
-defaulted to the global parameter value.
+For system's networks (Public, Storage, and Management), the rate
+is set to 0. This implies unlimited bandwidth by default.
 
-The following table gives you an overview of how network rate is applied
-on different types of networks in CloudStack.
+For guest networks, the default rate is set to ``NULL``. In this case, the rate is
+defaulted to the mentioned global parameter values.
+
+Changing defaults cannot be done via the UI. But you can either create new offerings,
+or directly update existing ones in the database:
+
+* ``cloud.network_offerings`` for Network Offerings.
+* ``cloud.service_offering`` for System VMs.
+
+.. Note:: ``nw_rate`` stands for Network Rate,
+          ``mc_rate`` stand for Multi Cast Rate,
+          and `0`, mean unlimited bandwidth.
+
+The following table gives an overview of how network rate is applied on
+different types of networks in CloudStack.
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -759,12 +764,12 @@ the instance if any, similar to shared networks.
 
 For example:
 
-Network rate of network offering = 10 Mbps
-Network rate of compute offering = 200 Mbps
+Network rate of network offering = 200 Mbps
+Network rate of compute offering = 1000 Mbps
 
 In shared networks, ingress traffic will not be limited for CloudStack,
-while egress traffic will be limited to 200 Mbps. In an isolated
-network, ingress traffic will be limited to 10 Mbps and egress to 200
+while egress traffic will be limited to 1000 Mbps. In an isolated
+network, ingress traffic will be limited to 200 Mbps and egress to 1000
 Mbps.
 
 
