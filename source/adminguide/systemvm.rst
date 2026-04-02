@@ -195,9 +195,17 @@ System VMs running on ESXi, the key is stored on the management server at
 
    #. ESXi users should SSH to the private IP address of the System VM.
 
-      Format: ``ssh -i <path-to-private-key> <vm-private-ip> -p 3922``
+      Format: 
 
-      Example: ``root@management:~# ssh -i ~cloud/.ssh/id_rsa 172.16.0.250 -p 3922``
+      .. code:: bash
+
+         ssh -i <path-to-private-key> <vm-private-ip> -p 3922
+
+      Example: 
+
+      .. code:: bash
+
+         root@management:~# ssh -i ~cloud/.ssh/id_rsa 172.16.0.250 -p 3922
 
 
 Option B: Accessing via the Web Console
@@ -251,12 +259,20 @@ To step up the security of the environment, by configuring the ``system.vm.rando
 
    #. Decrypt the password with the obtained key from the Management Server.
 
-      Format: ``java -classpath /usr/share/cloudstack-common/lib/cloudstack-utils.jar \
-      com.cloud.utils.crypt.EncryptionCLI -p <encryption-key> -i <encrypted-password> -d -e V2``
+      Format:
 
-      Example: ``root@management:~# java -classpath /usr/share/cloudstack-common/lib/cloudstack-utils.jar \
-      com.cloud.utils.crypt.EncryptionCLI -p `cat /etc/cloudstack/management/key` -i `cmk listconfigurations \
-      name=system.vm.password | jq -r '.configuration[0].value'` -d -e V2``
+      .. code:: bash
+
+         java -classpath /usr/share/cloudstack-common/lib/cloudstack-utils.jar \
+         com.cloud.utils.crypt.EncryptionCLI -p <encryption-key> -i <encrypted-password> -d -e V2
+
+      Example: 
+
+      .. code:: bash
+
+         root@management:~# java -classpath /usr/share/cloudstack-common/lib/cloudstack-utils.jar \
+         com.cloud.utils.crypt.EncryptionCLI -p `cat /etc/cloudstack/management/key` -i `cmk listconfigurations \
+         name=system.vm.password | jq -r '.configuration[0].value'` -d -e V2
 
 
 Multiple System VM Support for VMware
