@@ -172,7 +172,7 @@ System VMs running on ESXi, the key is stored on the management server at
 
 #. For XenServer/KVM Hypervisors
 
-   #. Connect via SSH as `root` to the Host of which the System VM is running.
+   #. Connect via SSH as ``root`` to the Host of which the System VM is running.
 
    #. SSH to the 'Link Local IP Address' of the System VM from the Host on
       which the VM is running.
