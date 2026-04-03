@@ -244,7 +244,7 @@ access the System VM directly through the CloudStack UI.
 How to Enable System VM Random Password
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To step up the security of the environment, by configuring the ``system.vm.random.password`` parameter to **True**, and restart the Management Server, a random password is generated and stored encrypted in the database. The decrypted password found under the ``system.vm.password`` global parameter, or by calling the ``listConfigurations`` API, still need to be decrypted to reveal the usable password.
+To improve the security of the environment, set the ``system.vm.random.password`` parameter to **True** and restart the Management Server. A random password is then generated and stored in encrypted form in the database. The value returned by the ``system.vm.password`` global parameter, or by calling the ``listConfigurations`` API, must be decrypted to obtain the usable password.
 
 #. Find the encrypted password and encryption key
 
