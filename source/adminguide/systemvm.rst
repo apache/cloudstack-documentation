@@ -238,7 +238,7 @@ access the System VM directly through the CloudStack UI.
 
       #. Default Username: ``root``
 
-      #. The decrypted password can be found under the ``system.vm.password`` global parameter.
+      #. The encrypted password can be found under the ``system.vm.password`` global parameter and must be decrypted to be usable.
 
 
 How to Enable System VM Random Password
