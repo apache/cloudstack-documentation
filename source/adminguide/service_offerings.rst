@@ -703,8 +703,8 @@ or directly update existing ones in the database:
 * ``cloud.network_offerings`` for Network Offerings.
 * ``cloud.service_offering`` for System VMs.
 
-.. Note:: ``nw_rate`` stands for Network Rate,
-          ``mc_rate`` stand for Multi Cast Rate,
+.. note:: ``nw_rate`` stands for Network Rate,
+          ``mc_rate`` stands for Multicast Rate,
           and ``0`` means unlimited bandwidth.
 
 The following table gives an overview of how network rate is applied on
