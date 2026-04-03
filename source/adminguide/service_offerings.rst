@@ -684,7 +684,7 @@ There are 3 places where network rate (bandwidth limit) can be defined:
 
 -  Network Offering
 
--  Service Offering
+-  Compute Offering
 
 If the network rate is **NULL** at:
 
