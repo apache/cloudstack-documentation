@@ -674,8 +674,8 @@ You can modify any of the settings as needed before clicking Add to create the n
 Network Throttling
 ------------------
 
-In CloudStack, this is done using network rate settings. These settings 
-define the maximum data transfer speed (in Mbps) that guest instance's 
+In CloudStack, this is done using network rate settings. These settings
+define the maximum data transfer speed (in Mbps) that guest instance's
 network interface can use.
 
 There are 3 places where network rate (bandwidth limit) can be defined:
