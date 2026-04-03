@@ -691,7 +691,7 @@ If the network rate is **NULL** at:
 * The **Compute Offering**, it uses the ``vm.network.throttling.rate`` global setting.
 * The **Network Offering**, it uses the ``network.throttling.rate`` global setting.
 
-For system's networks (Public, Storage, and Management), the rate
+For system networks (Public, Storage, and Management), the rate
 is set to 0. This implies unlimited bandwidth by default.
 
 For guest networks, the default rate is set to ``NULL``. In this case, the rate is
