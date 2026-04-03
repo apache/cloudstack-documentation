@@ -148,7 +148,7 @@ Accessing System VMs
 It may sometimes be necessary to access System VMs for diagnostics of certain
 issues, for example if you are experiencing SSVM (Secondary Storage VM)
 connection issues. Use the methods below in order to connect to any running 
-System VM, including VR (Virtual Router) and CPVM (ConsoleProxyVM).
+System VM, including VR (Virtual Router) and CPVM (Console Proxy VM).
 
 Option A: Accessing via SSH
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
