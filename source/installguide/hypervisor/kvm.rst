@@ -1691,6 +1691,9 @@ In order to be able to perform Volume Snapshots on CentOS 6.x (greater than 6.4)
 replace your version of qemu-img with one which has been patched to include the '-s'
 switch.
 
+CloudStack uses the rbd command to get the physical size of the snapshots for the volumes on ceph
+primary storage. This requires ceph-common package to be installed on the KVM hosts. If it
+is not installed, the allocated size is used as the physical size of the snapshots.
 
 Live Migration
 ^^^^^^^^^^^^^^
