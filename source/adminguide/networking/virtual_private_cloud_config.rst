@@ -211,7 +211,7 @@ addresses in the form of a Classless Inter-Domain Routing (CIDR) block.
       VPC offerings, select the one you want to use for this VPC.
 
       .. note::
-         VPC Offerings can be created setting Conserve mode. In this mode, When conserve mode is off, the public IP can only be used for a single VPC Network Tier. When the conserve mode is on, you can define services from more than one VPC Network Tier on the same public IP.
+         VPC Offerings can now be created with Conserve mode. When Conserve mode is off, the public IP can only be used for a single VPC Network Tier (e.g. you can add VMs from only a single VPC tier/network to the Load Balancer). But when the Conserve mode is on, you can define services (use VMS as targets) from more than one VPC Network Tier on the same public IP (e.g. add VMs1 from Tier1 and VM2 from Tier2 to a single Load Balancer.
 
       .. note::
         If StaticNAT is enabled, irrespective of the status of the
