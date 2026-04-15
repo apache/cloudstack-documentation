@@ -136,6 +136,89 @@ in a private Zone, it is available only to Users in the domain assigned
 to that Zone. If a public Template is created in a public Zone, it is
 available to all Users in all domains.
 
+Template Replication on Secondary Storage
+-----------------------------------------
+
+A Zone may have more than one secondary storage (image store). When a
+Template is registered, CloudStack decides how many of those image
+stores should hold a copy of the Template. Historically, this decision
+was tied to the Template's ``public`` flag:
+
+-  **Public Templates** were copied to **every** image store in the
+   Zone, so that the Template was readily available wherever a host
+   pulled from.
+
+-  **Private Templates** were copied to **exactly one** image store in
+   the Zone.
+
+This coupling mixed two unrelated concerns — *who can see a Template*
+(access control) and *how many copies are kept on secondary storage*
+(placement and durability). In environments where secondary storage
+already provides redundancy (for example Ceph, replicated NFS, or
+object storage), copying public Templates to every image store wastes
+capacity, lengthens sync times, and adds unnecessary network and I/O
+load. Conversely, operators who want a second copy of a private
+Template for availability had no way to ask for one.
+
+To give operators explicit control, CloudStack exposes two
+configuration settings that cap the number of secondary storage pools
+a Template is copied to:
+
+-  ``public.template.secstorage.copy`` — the maximum number of
+   secondary storage pools to which a public Template is copied. The
+   default is ``0``, which means "copy to every image store in the
+   Zone" and preserves the historical behavior.
+
+-  ``private.template.secstorage.copy`` — the maximum number of
+   secondary storage pools to which a private Template is copied. The
+   default is ``1``, which preserves the historical behavior.
+
+Replication stops once the configured replica count is reached. Image
+store selection reuses the existing CloudStack placement logic, so
+copies are spread across image stores in the Zone.
+
+Changing these settings does **not** change who can see or use a
+Template. The ``public`` flag continues to govern visibility exactly
+as described in the previous section; these settings only govern how
+many physical copies are kept.
+
+Example scenarios
+~~~~~~~~~~~~~~~~~
+
+-  **Large Zone with 5 secondary storages.** Setting
+   ``public.template.secstorage.copy = 2`` copies public Templates to
+   only 2 of the 5 image stores, freeing capacity on the others.
+
+-  **Ceph-backed secondary storage.** Setting
+   ``public.template.secstorage.copy = 1`` avoids redundant replication
+   because the storage layer already provides durability.
+
+-  **HA for private Templates.** Setting
+   ``private.template.secstorage.copy = 2`` keeps two copies of every
+   private Template so that the Template is still available if one
+   image store is down.
+
+-  **Default (backward compatible).** With
+   ``public.template.secstorage.copy = 0`` and
+   ``private.template.secstorage.copy = 1``, CloudStack behaves exactly
+   as in earlier releases.
+
+Scope of application
+~~~~~~~~~~~~~~~~~~~~
+
+The configured replica counts are applied when:
+
+-  A new Template is registered in a Zone.
+
+-  A new secondary storage is added to a Zone and CloudStack
+   synchronises existing Templates onto it.
+
+The settings do not alter Templates that have already been replicated
+beyond the configured count; they only affect future placement
+decisions. When replication is capped by these settings, the
+Management Server log records why an image store was skipped, which
+is useful when auditing placement.
+
 .. _creating-a-template-from-an-existing-virtual-machine:
 Creating a Template from an Existing Instance
 ---------------------------------------------
