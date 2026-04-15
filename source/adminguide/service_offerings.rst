@@ -249,6 +249,14 @@ To create a new compute offering:
    -  **CPU cap**: Whether to limit the level of CPU usage even if spare
       capacity is available.
 
+      .. note::
+         On KVM hypervisor, to allow CloudStack to relinquish CPU usage control
+         entirely, set this option to false and set CPU speed to zero. Note that Instances
+         with zero CPU speed offerings should not be co-hosted with Instances using
+         non-zero CPU speed offerings, as the CPU speed value is used as a relative
+         weight (share) in the ``cputune`` section of the domain XML, and mixing zero
+         and non-zero values would skew the weighting.
+
    -  **Volatile**: If checked, Instances created from this service offering
       will have their root disks reset upon reboot. This is useful for
       secure environments that need a fresh start on every boot and for
