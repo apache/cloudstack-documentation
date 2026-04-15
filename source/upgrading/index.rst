@@ -34,6 +34,17 @@ The `cloudstack-management` package will now include the systemVM Templates for 
 either prior upgrade or during fresh installation, ACS will handle the Template registration automatically, by mounting the secondary store onto the
 management server, copying the respective Templates to the store and then creating the `template.properties` file.
 
+From ACS 4.20.3 and 4.22.1 onwards, a starting Management Server that detects an
+upgrade is needed will abort if it also finds mshost entries for other Management Servers that are up.
+If as an operator starting a Management Server you get the error
+`Database upgrade is required but the management server is running in
+a clustered environment.` during upgrade, check if you have stopped
+all other Management Servers in your environment and retry. If it still fails, it might be
+that a Management Server has stopped un-gracefully and you need to fix the DB-entry
+for it. For example, make sure all Management Servers are stopped by checking the
+hosts in the output of `select name from mshost where state <> ‘Down’`
+and then, when all is safe, run `update mshost set state = ‘Down'`
+
 .. note::
    For information on the API changes and issues fixed in this release, please see the Release Notes section of the documentation
 
