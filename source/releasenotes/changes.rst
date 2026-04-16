@@ -13,6 +13,7 @@
    specific language governing permissions and limitations
    under the License.
 
+.. _changes-4.20.3.0:
 Changes in 4.20.3.0 since 4.20.2.0
 ===================================
 

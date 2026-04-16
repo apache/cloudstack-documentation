@@ -35,8 +35,7 @@ and improvements since the 4.20.2.0 release. Some of the highlights include:
 • Several UI fixes and improvements
 
 
-The full list of new features can be found in the project release notes at
-https://docs.cloudstack.apache.org/en/4.20.3.0/releasenotes/changes.html
+The full list of new features can be found in the project release notes at :ref:`4.20.3.0 changes <changes-4.20.3.0>`
 
 What's New in 4.20.2.0
 =======================
