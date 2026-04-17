@@ -953,6 +953,29 @@ function only if they are defined on the default network.
 #. Select the tier and the destination Instance, then click Apply.
 
 
+.. _adding-firewall-rules-on-a-public-IP-address-in-a-VPC:
+
+Adding Firewall rules on a public IP address in a VPC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In a VPC, once the public IP address is associated with a tier, you can
+create firewall rules for the public IP address. Firewall rules are created
+to allow traffic from the Internet to a tier. For example, you can create a
+firewall rule to allow HTTP traffic from the Internet to the Web tier.
+
+#. Log in to the CloudStack UI.
+#. In the left navigation, choose Network.
+#. In the Select view, select VPC.
+#. Enter Public IP addresses section and click on the
+   Public IP Address to which you want to add firewall rules.
+#. Click the Firewall Rules tab, which will appear only if the public IP address is associated with a tier.
+#. Click Add Firewall Rule and specify the following:
+   - *Source CIDR* - The CIDR that defines the source of the traffic.
+   - *Protocol* - The protocol that defines the type of traffic.
+   - *Start Port* and *End Port* - The port range that defines the destination of the traffic.
+     If you are opening a single port, use the same number in both fields.
+
+
 Adding Load Balancing Rules on a VPC
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
