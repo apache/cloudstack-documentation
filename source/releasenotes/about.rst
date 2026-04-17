@@ -18,6 +18,29 @@ What's New in |release|
 =======================
 
 Apache CloudStack |release| is a 4.20 LTS minor release with around 150 fixes
+and improvements since the 4.20.2.0 release. Some of the highlights include:
+
+• Support for Mysql 8.4
+• Copy templates from other secondary storage instead of downloading them
+• New Prometheus metric to track host certificate expiry
+• KVM DRS optimizations
+• Support for custom SSH port for KVM hosts
+• Support for configurable IP ranges per remote access VPN
+• Support live migration to Linstor from other primary storages
+• Support for deploy-as-is template as VNF template
+• Some improvements related to secondary storage selectors
+• CKS cluster scaling and resource limits fixes
+• Several Usage server related fixes
+• Some fixes related to Snapshot physical size reporting
+• Several UI fixes and improvements
+
+
+The full list of new features can be found in the project release notes at :ref:`4.20.3.0 changes <changes-4.20.3.0>`
+
+What's New in 4.20.2.0
+=======================
+
+Apache CloudStack 4.20.2.0 is a 4.20 LTS minor release with around 150 fixes
 and improvements since the 4.20.1.0 release. Some of the highlights include:
 
 • Improvements for Vmware to KVM Migration
