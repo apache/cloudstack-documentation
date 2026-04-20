@@ -297,7 +297,7 @@ If it is desired that the restored instance should instead be **assigned to the 
 
 ::
 
-   integration.veeam.instance.restore.assign.owner = true
+   integration.veeam.control.instance.restore.assign.owner = true
 
 When this configuration is enabled, the plugin will attempt to deploy the restored instance under the **original account ownership** and apply network access based on that account’s permissions.
 
