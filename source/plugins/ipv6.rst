@@ -20,11 +20,65 @@ CloudStack has limited IPv6 support. It supports IPv6 for shared and isolated ne
 
 Shared network
 --------------
-With IPv6 support, Instances in shared networks can obtain both IPv4 and IPv6 addresses from the DHCP
-server. You can deploy Instances either in a IPv6 or IPv4 network, or in a
-dual network environment. If IPv6 network is used, the Instance generates a
-link-local IPv6 address by itself, and receives a stateful IPv6 address
-from the DHCPv6 server.
+When IPv6 is enabled, Instances deployed in a Shared Network can obtain both IPv4 and IPv6 addresses.
+CloudStack supports the following deployment models:
+
+-  IPv4-only networks
+-  Dual-stack networks (IPv4 + IPv6)
+
+In an IPv6-enabled network:
+
+-  The Instance automatically generates a link-local IPv6 address.
+-  A stateful IPv6 address is assigned through a DHCPv6 server when configured.
+
+.. note::
+   IPv6-only Shared Networks are not supported when using the Virtual Router
+   provider. In such environments, IPv6 must be deployed in a dual-stack
+   configuration.
+
+IPv6 Address Assignment and Routing
+====================================
+
+In Shared Networks, IPv6 address assignment and routing are provided by the upstream network infrastructure, not by the CloudStack Virtual Router.
+
+When IPv6 is enabled on a Shared Network:
+
+-  Instances automatically generate a link-local IPv6 address.
+-  IPv6 global or ULA addresses are typically assigned via:
+
+   -  SLAAC (Router Advertisements) from the upstream router, or
+   -  An external DHCPv6 server (if present in the upstream network).
+
+-  CloudStack does not provide DHCPv6 services in Shared Networks via the Virtual Router.
+
+SLAAC-based IPv6 Address Allocation in Shared Networks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In shared networks with IPv6 enabled:
+
+-  CloudStack allocates instance NICs with SLAAC-based IPv6 addresses calculated from the IPv6 CIDR and the MAC address of the NIC.
+-  This calculated SLAAC address matches the IPv6 address that the guest OS automatically assigns to the instance.
+-  When creating or configuring IPv6 ranges for shared networks, the **IPv6 Start IP** and **IPv6 End IP** parameters are optional in both the UI and API (e.g., ``createVlanIpRange``) and are **not used** for SLAAC-based address allocation in shared networks.
+-  If provided, these parameters should be filled with dummy IP addresses within the same IPv6 subnet (for example, any two valid addresses from your IPv6 CIDR).
+-  These optional parameters are reserved for potential future use.
+
+Important Notes
+~~~~~~~~~~~~~~~
+
+-  In Shared Networks, the Virtual Router does not act as the IPv6 gateway.
+-  IPv6 default routing is determined entirely by upstream infrastructure.
+-  CloudStack does not control IPv6 Router Advertisements in Shared Networks.
+-  IPv6-only Shared Networks using the Virtual Router provider are not supported.
+
+Operational Implications
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+For IPv6 to function correctly in a Shared Network:
+
+-  The upstream network must advertise the IPv6 prefix using Router Advertisements (SLAAC), or
+-  An external DHCPv6 server must be present.
+-  The upstream router must provide the IPv6 default gateway.
+-  CloudStack will not automatically generate or manage IPv6 gateway functionality in this mode.
 
 IPv6 is supported only on KVM and XenServer hypervisors. The IPv6
 support is only an experimental feature.
@@ -91,8 +145,6 @@ Limitations
 ###########
 
 The following are not yet supported:
-
-#. Security groups
 
 #. User Data and metadata
 
