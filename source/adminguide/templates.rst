@@ -140,9 +140,10 @@ Template Replication on Secondary Storage
 -----------------------------------------
 
 A Zone may have more than one secondary storage (image store). When a
-Template is registered, CloudStack decides how many of those image
-stores should hold a copy of the Template. Historically, this decision
-was tied to the Template's ``public`` flag:
+Template is registered or a new Secondary Storage is added to the
+zone, CloudStack decides how many of those image stores should hold a
+copy of the Template. Historically, this decision was tied to the
+Template's ``public`` flag:
 
 -  **Public Templates** were copied to **every** image store in the
    Zone, so that the Template was readily available wherever a host
@@ -164,12 +165,12 @@ To give operators explicit control, CloudStack exposes two
 configuration settings that cap the number of secondary storage pools
 a Template is copied to:
 
--  ``public.template.secstorage.copy`` — the maximum number of
+-  ``secstorage.public.template.copy.max`` — the maximum number of
    secondary storage pools to which a public Template is copied. The
    default is ``0``, which means "copy to every image store in the
    Zone" and preserves the historical behavior.
 
--  ``private.template.secstorage.copy`` — the maximum number of
+-  ``secstorage.private.template.copy.max`` — the maximum number of
    secondary storage pools to which a private Template is copied. The
    default is ``1``, which preserves the historical behavior.
 
@@ -186,21 +187,21 @@ Example scenarios
 ~~~~~~~~~~~~~~~~~
 
 -  **Large Zone with 5 secondary storages.** Setting
-   ``public.template.secstorage.copy = 2`` copies public Templates to
+   ``secstorage.public.template.copy.max = 2`` copies public Templates to
    only 2 of the 5 image stores, freeing capacity on the others.
 
 -  **Ceph-backed secondary storage.** Setting
-   ``public.template.secstorage.copy = 1`` avoids redundant replication
+   ``secstorage.public.template.copy.max = 1`` avoids redundant replication
    because the storage layer already provides durability.
 
 -  **HA for private Templates.** Setting
-   ``private.template.secstorage.copy = 2`` keeps two copies of every
+   ``secstorage.private.template.copy.max = 2`` keeps two copies of every
    private Template so that the Template is still available if one
    image store is down.
 
 -  **Default (backward compatible).** With
-   ``public.template.secstorage.copy = 0`` and
-   ``private.template.secstorage.copy = 1``, CloudStack behaves exactly
+   ``secstorage.public.template.copy.max = 0`` and
+   ``secstorage.private.template.copy.max = 1``, CloudStack behaves exactly
    as in earlier releases.
 
 Scope of application
