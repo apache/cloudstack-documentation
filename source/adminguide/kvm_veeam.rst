@@ -123,6 +123,15 @@ This confirms that the API endpoints required by Veeam are reachable.
 3. Add CloudStack in Veeam Backup & Replication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. note::
+   **CloudStack KVM** is not currently available as a native hypervisor manager type in Veeam Backup & Replication.
+   For testing purposes, the **oVirt KVM** hypervisor manager can be used to connect to CloudStack environments.
+   When adding a new manager in Veeam, select **oVirt KVM** as the type and provide the CloudStack management server details.
+
+   This workaround is for testing only until native support for CloudStack KVM is introduced in a future Veeam Backup & Replication release.
+   There is no upgrade path for CloudStack environments added as **oVirt KVM** managers.
+   After native CloudStack KVM support becomes available, the existing manager must be removed and re-added using the native CloudStack KVM manager type.
+
 After confirming that the CloudStack control service is operational, CloudStack
 can be added as a hypervisor manager in Veeam.
 
