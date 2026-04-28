@@ -653,14 +653,17 @@ granting access to resources. CloudStack supports OAuth2 authentication wherein 
 CloudStack without using username and password. CloudStack currently supports Google and GitHub providers.
 Other OAuth2 providers can be easily integrated with CloudStack using its plugin framework.
 
-For admins, the following are the settings available at global level to configure OAuth2.
+For admins, the following are the settings available to configure OAuth2. ``oauth2.enabled``
+can be configured at both the global and domain scopes; ``oauth2.plugins`` and
+``oauth2.plugins.exclude`` are global-only.
 
 .. cssclass:: table-striped table-bordered table-hover
 
 ================================================   ================   ===================================================================
-Global setting                                     Default values     Description
+Setting                                            Default values     Description
 ================================================   ================   ===================================================================
-oauth2.enabled                                     false              Indicates whether OAuth plugin is enabled or not
+oauth2.enabled                                     false              Indicates whether OAuth plugin is enabled or not. Configurable at
+                                                                      global and domain scopes (see Per-Domain OAuth Providers below).
 oauth2.plugins                                     google,github      List of OAuth plugins
 oauth2.plugins.exclude                                                List of OAuth plugins which are excluded
 ================================================   ================   ===================================================================
@@ -729,6 +732,98 @@ has to be provided in the login form and then click on OAuth login.
    :width: 400px
    :align: center
    :alt: Login page for user under specific domain
+
+Per-Domain OAuth Providers
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to globally registered OAuth providers, admins can register OAuth providers
+at the domain level. This is useful in multi-tenant deployments where each domain
+(representing a customer, department, or team) needs to authenticate users against
+its own identity provider — for example, two domains can each have their own GitHub
+OAuth application, with separate client IDs and secrets.
+
+A provider registered without a domain remains a *global* provider and is available
+to all users. A provider registered against a domain is a *domain-specific* provider
+and is only used when the user logs in under that domain.
+
+Enabling OAuth for a domain
+'''''''''''''''''''''''''''
+
+The ``oauth2.enabled`` setting uses a strict scope at the domain level: domains do
+**not** inherit the global value. Each domain that should use OAuth must explicitly
+set ``oauth2.enabled=true`` at the domain scope, regardless of whether the global
+value is ``true`` or ``false``. The table below summarizes the resulting behavior:
+
+.. cssclass:: table-striped table-bordered table-hover
+
+=====================   =====================   ==========================
+Global oauth2.enabled   Domain oauth2.enabled   OAuth available in domain?
+=====================   =====================   ==========================
+false                   not set                 No
+false                   true                    Yes
+false                   false                   No
+true                    not set                 No
+true                    true                    Yes
+true                    false                   No
+=====================   =====================   ==========================
+
+.. TODO: Add screenshot showing the oauth2.enabled setting at the domain scope (Domain details > Settings tab, with oauth2.enabled toggled to true).
+
+Registering a domain-specific provider
+''''''''''''''''''''''''''''''''''''''
+
+The "OAuth configuration" sub-section under "Configuration" now accepts an optional
+**Domain** field when registering a provider. Leave the Domain field empty to register
+a global provider, or pick a domain to register a provider that only applies to users
+of that domain.
+
+The same fields described in the previous section (Provider, Description, Provider
+Client ID, Redirect URI, Secret Key) apply. Only one provider of a given type
+(``google``, ``github``, ...) may exist per domain — and at most one global provider
+of each type — so attempting to register a duplicate will be rejected.
+
+.. TODO: Add screenshot of the "Register OAuth provider" dialog showing the new Domain selector field, with a domain selected.
+
+.. TODO: Add screenshot of the OAuth configuration list view showing both global and domain-specific providers, with the new Domain column populated for domain-specific entries.
+
+CloudMonkey API call to register a domain-specific provider:
+
+   -  register oauthprovider provider=github description="Engineering GitHub"
+      clientid="Iv1.abc123" secretkey="secret456"
+      redirecturi="https://cloudstack.example.com/?verifyOauth"
+      domainid=<domain-uuid>
+
+To list providers visible to a particular domain (returns both that domain's
+providers and any global providers):
+
+   -  list oauthproviders domainid=<domain-uuid>
+
+Login behavior
+''''''''''''''
+
+When the login page first loads, only global OAuth providers are shown on the OAuth
+Login tab. Once the user enters a domain path in the login form, the UI re-queries
+for providers visible to that domain and updates the buttons accordingly:
+
+   -  If the domain has its own provider configured, the domain-specific provider
+      buttons replace the global ones for that login attempt.
+
+   -  If the domain has no providers configured and OAuth is enabled at that domain,
+      the message "No OAuth providers configured for this domain" is shown.
+
+   -  If OAuth is not enabled for that domain (``oauth2.enabled`` is not ``true`` at
+      the domain scope), the OAuth tab is not usable for that domain.
+
+   -  If no global providers exist but at least one domain has providers, the OAuth
+      tab prompts the user to enter their domain to see available providers.
+
+.. TODO: Add screenshot of the login page showing global OAuth providers (default state, no domain entered).
+
+.. TODO: Add screenshot of the login page after a domain path has been entered, showing the domain-specific OAuth provider buttons.
+
+The selected provider's stored credentials (client ID and secret) for the resolved
+domain are then used to exchange the OAuth authorization code for an access token
+and identify the user by email.
 
 Using Two Factor Authentication For Users
 ------------------------------------------
