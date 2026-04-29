@@ -50,7 +50,7 @@ Capabilities
 ^^^^^^^^^^^^
 The DNS Framework provides two primary capabilities:
 
-- DNS Management: Allows users and administrators to create, update, and delete DNS zones and records through CloudStack.
+- DNS Management: create and manage DNS zones and records.
 - Automatic DNS Record Registration: Automatically manages DNS records for Instances based on their lifecycle events.
 
 These capabilities can be used independently or together, depending on deployment requirements and operational preferences.
@@ -78,7 +78,7 @@ DNS Servers and DNS Zones are now available under the **Network** section in the
 Adding a DNS Server
 -------------------
 
-A DNS server represents the integration point between CloudStack and an external DNS provider. It defines how CloudStack connects to and manages DNS resources such as zones and records on the provider side.
+DNS server configuration is required to manage zones and records in CloudStack.
 
 When adding a DNS server, CloudStack stores the following information:
 
@@ -155,6 +155,21 @@ Using the API, a DNS server can be added with a command similar to the following
    3. Nameservers provided during DNS server addition are used for DNS zone creation.
 
 
+Listing DNS Servers
+-------------------
+
+The ``listDnsServers`` API returns DNS servers accessible to the caller.
+
+This includes:
+
+- DNS servers owned by the calling account
+- Public DNS servers available in the same domain or any parent domain
+
+.. code:: bash
+
+   cmk list dnsservers
+
+
 DNS Zone Management
 ^^^^^^^^^^^^^^^^^^^
 
@@ -200,6 +215,20 @@ Using the API:
      - No
      - The description of the DNS zone
 
+
+Listing DNS Zones
+-----------------
+
+The ``listDnsZones`` API returns DNS zones accessible to the caller.
+
+This includes:
+
+- DNS zones owned by the calling account
+- Any DNS zones created using DNS servers owned by the caller
+
+.. code:: bash
+
+   cmk list dnszones dnsserverid=<dns-server-id>
 
 Updating a DNS Zone
 -------------------
@@ -419,8 +448,8 @@ From API:
      - Optional subdomain to append to the DNS zone (e.g. ``dev`` creates ``vm1.dev.example.com`` for vm1 Instance in the network instead of ``vm1.example.com``)
 
 .. note::
-   - Automatic DNS registration will not work unless a DNS zone is associated with the network.
-   - Once association is complete, all instances deployed in the network become eligible for automatic DNS record management.
+   - Existing Instances in the network are not automatically assigned DNS records.
+   - If a DNS zone is associated with multiple networks, instance events from all networks will trigger DNS record management in the same zone, using the subdomain (if provided) to differentiate records between networks.
 
 DNS Naming Convention
 ---------------------
@@ -458,6 +487,29 @@ In the Instance details view, the DNS name assigned to each NIC is displayed alo
    - Record updates depend on the Instance lifecycle events triggered within CloudStack.
    - Provider synchronization delays may affect DNS propagation time.
    - Manual DNS records created in the same zone may conflict with auto-managed records. In such cases, automatic registration may skip creation and log a collision event.
+
+
+Disassociating a DNS Zone from a Network
+----------------------------------------
+
+A DNS zone can be disassociated from a network, which will stop automatic DNS record management for instances in that network. 
+
+This can be done via the CloudStack UI or API.
+
+From UI:
+
+Navigate to the **Guest Networks** page, select the network, and use the quick action to disassociate the DNS zone.
+
+From API:
+
+.. code:: bash
+
+   cmk disassociate dnszonefromnetwork networkid=<network-id>
+
+.. note::
+   - Disassociating a DNS zone from a network does not delete existing DNS records in the DNS provider.
+   - After disassociation, no new DNS records will be created or updated for instances in that network.
+
 
 Limitations
 ^^^^^^^^^^^
