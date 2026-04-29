@@ -107,7 +107,7 @@ Using the API, a DNS server can be added with a command similar to the following
 
    cmk add dnsserver name="pdns-01" provider="PowerDNS" \
       url="http://<powerdns-ip>:8081" dnsapikey="<api-key>" \
-      nameservers="ns1.example.com,ns2.example.com" externalserverid="localhost"
+      nameservers="ns1.cloud.internal,ns2.cloud.internal" details[0].pdnsServerId=localhost
 
 **Parameters**
 
@@ -132,13 +132,13 @@ Using the API, a DNS server can be added with a command similar to the following
      - API key or token used for authentication
    * - ``nameservers``
      - Yes
-     - Comma-separated list of authoritative name servers
+     - Comma separated list of name servers; used to create NS records for the DNS Zone (for example, ns1.example.com, ns2.example.com)
    * - ``dnsusername``
      - No
      - Username or email associated with the DNS provider account
-   * - ``externalserverid``
+   * - ``details``
      - No
-     - Identifier or hostname of the DNS server in the provider (for example, ``localhost`` in PowerDNS)
+     - Additional provider-specific details in key-value format (e.g., for PowerDNS, ``pdnsServerId`` can be used to specify the server ID in PowerDNS)
    * - ``port``
      - No
      - Port number of the DNS server (if different from default)
@@ -168,6 +168,68 @@ This includes:
 .. code:: bash
 
    cmk list dnsservers
+
+
+Updating a DNS Server
+---------------------
+
+DNS Server configuration can be updated to modify connection details, credentials, name servers, and other metadata. This allows administrators to maintain accurate configurations as DNS provider details change or to update operational parameters without needing to recreate the DNS server.
+
+From UI:
+
+.. image:: /_static/images/update_dns_server.png
+   :width: 400px
+   :align: center
+   :alt: Update DNS Server in CloudStack UI
+
+.. raw:: html
+
+   <br>
+
+Using the API:
+
+.. code:: bash
+
+    cmk update dnsserver id=<dns-server-id> \
+         nameservers="ns1.cloud.internal,ns2.cloud.internal,ns3.cloud.internal" \
+         name="pdns-new-server"
+
+
+**Parameters**
+
+.. list-table::
+    :widths: 20 15 65
+    :header-rows: 1
+
+    * - Name
+       - Required
+       - Description
+    * - ``id``
+       - Yes
+       - The ID of the DNS server to update
+    * - ``nameservers``
+       - No
+       - Comma separated list of name servers; used to create NS records for the DNS Zone (for example, ns1.example.com, ns2.example.com)
+    * - ``name``
+       - No
+       - Name of the DNS server
+    * - ``dnsapikey``
+       - No
+       - API key or credentials for the external provider
+    * - ``ispublic``
+       - No
+       - Whether this DNS server can be used by accounts other than the owner to create and manage DNS zones
+    * - ``port``
+       - No
+       - Port number of the external DNS server
+    * - ``publicdomainsuffix``
+       - No
+       - Domain suffix that restricts DNS zones created by non-owner accounts to subdomains of this suffix
+    * - ``url``
+       - No
+       - API URL of the provider
+
+.. note:: Updating ``nameservers`` only affects new DNS zones created through this server. Existing DNS zones and their current NS records are not modified.
 
 
 DNS Zone Management
@@ -492,15 +554,11 @@ In the Instance details view, the DNS name assigned to each NIC is displayed alo
 Disassociating a DNS Zone from a Network
 ----------------------------------------
 
-A DNS zone can be disassociated from a network, which will stop automatic DNS record management for instances in that network. 
-
-This can be done via the CloudStack UI or API.
-
-From UI:
+A DNS zone can be disassociated from a network, which will stop automatic DNS record management for instances in that network.
 
 Navigate to the **Guest Networks** page, select the network, and use the quick action to disassociate the DNS zone.
 
-From API:
+Or use the API to disassociate:
 
 .. code:: bash
 
