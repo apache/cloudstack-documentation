@@ -255,7 +255,7 @@ Using the API:
 
 .. code:: bash
 
-   cmk create dnszone dnsserverid=<dns-server-id> name="example.com" description="Example DNS zone"
+   cmk create dnszone dnsserverid=<dns-server-id> name="example.com" import=false description="Example DNS zone"
 
 
 **Parameters**
@@ -276,6 +276,9 @@ Using the API:
    * - ``description``
      - No
      - The description of the DNS zone
+   * - ``import``
+     - No
+     - If true, imports an existing DNS zone from the external DNS provider into CloudStack; if false, creates a new DNS zone in both CloudStack and the DNS provider. **Default**: ``false``
 
 
 Listing DNS Zones
@@ -322,7 +325,25 @@ Using the API:
 
 .. code:: bash
 
-   cmk delete dnszone id=<zone-id>
+   cmk delete dnszone id=<zone-id> unmanage=false
+
+
+**Parameters**
+
+.. list-table::
+   :widths: 20 15 65
+   :header-rows: 1
+
+   * - Name
+     - Required
+     - Description
+   * - ``id``
+     - Yes
+     - The ID of the DNS zone
+   * - ``unmanage``
+     - No
+     - If false, removes it from both CloudStack and the DNS provider, if true, removes the DNS zone only from CloudStack. **Default**: ``false``
+
 
 .. note:: Deleting a DNS zone will also delete all DNS records within that zone.
 
