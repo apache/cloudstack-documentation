@@ -33,7 +33,7 @@ CLVM (RAW format):
 
 Advantages:
 
-- Sligthly better performance (no QCOW2 overhead)
+- Slightly better performance (no QCOW2 overhead)
 - Simpler storage stack
 
 Disadvantages:
@@ -43,7 +43,7 @@ Disadvantages:
 - Slower snapshot operations
 - Higher secondary storage bandwidth usage
 
-..note:: 
+.. note:: 
 The original CLVM implementation used the clvmd (Clustered LVM daemon) along with corosync/pacemaker for cluster coordination. This technology has been deprecated in modern Linux distributions (RHEL 8+, Ubuntu 20.04+). CloudStack's current implementation uses the modern lvmlockd + sanlock stack, which is more reliable. This same modern infrastructure is shared with CLVM_NG - the only difference between CLVM and CLVM_NG is the disk image format (RAW vs QCOW2), not the locking mechanism.
 
 CLVM_NG (QCOW2 format):
@@ -204,3 +204,33 @@ clvm.secure.zero.fill
 For incremental snapshots to work with CLVM_NG enabled the `kvm.incremental.snapshot` global setting must also be set to `true`.
 
 VM snapshots are currently not supported on CLVM/CLVM_NG volumes.
+
+Setting up Clustered LVM on CloudStack KVM hosts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Configure shared storage using iSCSI, Fibre Channel, or shared SAS/NVMe devices.
+
+Install `lvm2` and `sanlock` packages on all cluster hosts that will access the CLVM storage pool.
+
+```
+# Example for OL9
+dnf install lvm2-lockd sanlock -y
+systemctl enable sanlock --now
+systemctl enable lvmlockd --now
+
+# Update /etc/lvm/lvm.conf to set use_lvmlockd = 1
+# Update /etc/lvm/lvmlocal.conf set host_id to a unique value for each host (e.g. hostname or IP or ID (1, 2, 3...))
+```
+
+Just on one of the hosts, initialize the shared physical volume (PV) that will be used for CLVM storage pools and start the VG in shared mode:
+
+```
+pvcreate /dev/sdb # Initialize the shared physical volume (replace with actual device)
+vgcreate --shared --lock-type sanlock sharedvg /dev/sdb
+```
+
+On all other hosts, perform the following:
+```
+lvmdevices --adddev /dev/sdb # adds the disk to /etc/lvm/devices/system.devices
+vgchange lockstart sharedvg # Start the VG in shared mode
+```
