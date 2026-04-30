@@ -39,6 +39,11 @@ following storage types:
 - Local storage
 - SharedMountPoint
 
+Backup and restore operations are currently supported for user instances
+only. Similar to other backup providers in CloudStack, system VMs (for
+example, VR, CPVM, SSVM, and other infrastructure VMs) are not considered
+by this integration.
+
 With this capability, administrators can:
 
 - Configure CloudStack as a virtualization manager within Veeam.
@@ -190,8 +195,17 @@ worker VM:
   additional worker VMs can be deployed using similar network and compute
   configurations.
 
+.. note::
+   If worker VM deployment fails, especially due to network connectivity
+   issues, worker VMs may remain in a **Stopped** state in CloudStack.
+   To clean up undesired worker VMs, in **Veeam Backup & Replication** go to
+   **Backup Infrastructure** > **Backup Proxies** and use the **Delete**
+   operation.
+
 The sizing of worker VMs, job concurrency, and deployment of multiple proxies
 should follow the recommendations provided in the Veeam documentation.
+
+
 
 Refer to the official Veeam documentation for further details:
 
