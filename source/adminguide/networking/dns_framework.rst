@@ -232,6 +232,55 @@ Using the API:
 .. note:: Updating ``nameservers`` only affects new DNS zones created through this server. Existing DNS zones and their current NS records are not modified.
 
 
+Deleting a DNS Server
+---------------------
+
+A DNS server can be deleted from CloudStack using the UI or API. 
+
+By default, all DNS zones associated with the server are also deleted. To retain them, set ``cleanup`` to ``false``. 
+
+When cleanup is enabled, you can use ``unmanage`` to remove DNS zones only from CloudStack without deleting them in the external DNS provider.
+
+From UI:
+
+Quick action buttons are available in the UI to delete a DNS server.
+
+.. image:: /_static/images/delete_dns_server.png
+   :width: 400px
+   :align: center
+   :alt: Delete DNS Server in CloudStack UI
+
+.. raw:: html
+
+   <br>
+
+Using the API:
+
+.. code:: bash
+
+   cmk delete dnsserver id=<dns-server-id> cleanup=true unmanage=false
+
+
+**Parameters**
+
+.. list-table::
+   :widths: 20 15 65
+   :header-rows: 1
+
+   * - Name
+     - Required
+     - Description
+   * - ``id``
+     - Yes
+     - The ID of the DNS server
+   * - ``cleanup``
+     - No
+     - If false, DNS zones associated with this server will not be deleted. **Default**: ``true``
+   * - ``unmanage``
+     - No
+     - Applicable only when ``cleanup: true``. If set to true, associated DNS zones are removed only from CloudStack and not from the external DNS provider. **Default**: ``false``
+
+
 DNS Zone Management
 ^^^^^^^^^^^^^^^^^^^
 
@@ -278,7 +327,7 @@ Using the API:
      - The description of the DNS zone
    * - ``existing``
      - No
-     - If true, imports an existing DNS zone from the external DNS provider into CloudStack; if false, creates a new DNS zone in both CloudStack and the DNS provider. **Default**: ``false``
+     - If true, imports an existing DNS zone from the external DNS provider into CloudStack; if false, creates the zone in the DNS provider and registers it in CloudStack. **Default**: ``false``
 
 
 Listing DNS Zones
@@ -342,7 +391,7 @@ Using the API:
      - The ID of the DNS zone
    * - ``unmanage``
      - No
-     - If false, removes it from both CloudStack and the DNS provider, if true, removes the DNS zone only from CloudStack. **Default**: ``false``
+     - If true, removes the DNS zone only from CloudStack (unmanaged); if false, removes it from CloudStack and deletes it from the DNS provider. **Default**: ``false``
 
 
 .. note:: Deleting a DNS zone will also delete all DNS records within that zone.
