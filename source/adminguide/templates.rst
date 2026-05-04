@@ -447,6 +447,16 @@ can also attach ISO images to Guest Instances. For example, this enables
 installing PV drivers into Windows. ISO images are not
 hypervisor-specific.
 
+A single Instance can hold more than one attached ISO simultaneously, with
+each ISO appearing as its own CD-ROM drive inside the guest. This is useful,
+for example, when installing Windows on a KVM Instance that uses VirtIO disks
+- the Windows installer ISO and the VirtIO drivers ISO can both be attached
+at the same time so the installer can load the drivers without an ISO swap.
+
+..
+   SCREENSHOT NEEDED: Instance detail page -> ISO tab showing two attached ISOs
+   each listed with its slot label tag (e.g. "hdc", "hdd").
+
 .. _adding-an-iso:
 Adding an ISO
 -------------
@@ -571,9 +581,59 @@ Attaching an ISO to a Instance
 
 #. Click the Attach ISO button. |iso.png|
 
-#. In the Attach ISO dialog box, select the desired ISO.
+#. In the Attach ISO dialog box, select one or more ISOs.
 
 #. Click OK.
+
+..
+   SCREENSHOT NEEDED: Multi-select Attach ISO dialog with the "ISO name (X / N)"
+   counter visible and one or two ISOs selected from the dropdown.
+
+The number of CD-ROM drives a single Instance may have is bounded by the
+global setting ``vm.cdrom.max.count`` (default ``1``) and by the hypervisor's
+own limit. The effective maximum for an Instance is the smaller of the two.
+
+On KVM with the default ``i440fx`` machine type, the IDE bus has four device
+slots in total - the root disk takes one, and the remaining usable slots map
+to ``hdc`` and ``hdd``, giving a practical maximum of **2** CD-ROMs per
+Instance regardless of how high ``vm.cdrom.max.count`` is set.
+
+When multiple ISOs are attached, the first one occupies the bootable
+``hdc`` slot and is the one the firmware will try to boot from first.
+Subsequent attachments are placed in the next free slots (``hdd``, etc.).
+The Attach ISO action is hidden from the Instance's action menu once the
+Instance has reached its effective maximum.
+
+The same multi-ISO behavior is available via the ``attachIso`` API. Each
+call attaches one ISO into the next free slot; attempting to attach the
+same ISO twice, or to attach beyond the effective maximum, returns an
+error.
+
+Detaching an ISO
+----------------
+
+#. In the left navigation, click Instances.
+
+#. Choose the Instance you want to work with.
+
+#. Click the Detach ISO button.
+
+#. In the Detach ISO dialog box, select one or more ISOs to detach.
+
+#. Click OK.
+
+..
+   SCREENSHOT NEEDED: Multi-select Detach ISO dialog showing two attached ISOs
+   with their slot labels (e.g. "Rocky 8.4 boot (hdc)", "dummy (hdd)").
+
+The dialog lists each currently attached ISO alongside the CD-ROM slot it
+occupies (``hdc``, ``hdd``, ...) so the right one can be picked. When only
+one ISO is attached, it is pre-selected and the user can simply click OK.
+
+The ``detachIso`` API accepts an optional ``id`` parameter naming the ISO
+to detach. The parameter may be omitted when only one ISO is attached
+(preserving the legacy single-ISO behavior); it is required when multiple
+ISOs are attached, otherwise the call is rejected.
 
 
 
