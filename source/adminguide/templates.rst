@@ -590,8 +590,8 @@ Attaching an ISO to a Instance
    counter visible and one or two ISOs selected from the dropdown.
 
 The maximum number of ISOs that may be attached to an Instance is controlled
-by the global setting ``vm.cdrom.max.count`` (default ``1``); on KVM, the
-hypervisor caps it at ``2``. The first ISO attached is the bootable one;
+by the configuration setting ``vm.cdrom.max.count`` (default ``1``); on KVM,
+the hypervisor caps it at ``2``. The first ISO attached is the bootable one;
 the Attach ISO action is hidden once the Instance reaches its limit.
 
 Detaching an ISO
