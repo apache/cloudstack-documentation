@@ -589,25 +589,10 @@ Attaching an ISO to a Instance
    SCREENSHOT NEEDED: Multi-select Attach ISO dialog with the "ISO name (X / N)"
    counter visible and one or two ISOs selected from the dropdown.
 
-The number of CD-ROM drives a single Instance may have is bounded by the
-global setting ``vm.cdrom.max.count`` (default ``1``) and by the hypervisor's
-own limit. The effective maximum for an Instance is the smaller of the two.
-
-On KVM with the default ``i440fx`` machine type, the IDE bus has four device
-slots in total - the root disk takes one, and the remaining usable slots map
-to ``hdc`` and ``hdd``, giving a practical maximum of **2** CD-ROMs per
-Instance regardless of how high ``vm.cdrom.max.count`` is set.
-
-When multiple ISOs are attached, the first one occupies the bootable
-``hdc`` slot and is the one the firmware will try to boot from first.
-Subsequent attachments are placed in the next free slots (``hdd``, etc.).
-The Attach ISO action is hidden from the Instance's action menu once the
-Instance has reached its effective maximum.
-
-The same multi-ISO behavior is available via the ``attachIso`` API. Each
-call attaches one ISO into the next free slot; attempting to attach the
-same ISO twice, or to attach beyond the effective maximum, returns an
-error.
+The maximum number of ISOs that may be attached to an Instance is controlled
+by the global setting ``vm.cdrom.max.count`` (default ``1``); on KVM, the
+hypervisor caps it at ``2``. The first ISO attached is the bootable one;
+the Attach ISO action is hidden once the Instance reaches its limit.
 
 Detaching an ISO
 ----------------
@@ -626,14 +611,8 @@ Detaching an ISO
    SCREENSHOT NEEDED: Multi-select Detach ISO dialog showing two attached ISOs
    with their slot labels (e.g. "Rocky 8.4 boot (hdc)", "dummy (hdd)").
 
-The dialog lists each currently attached ISO alongside the CD-ROM slot it
-occupies (``hdc``, ``hdd``, ...) so the right one can be picked. When only
-one ISO is attached, it is pre-selected and the user can simply click OK.
-
-The ``detachIso`` API accepts an optional ``id`` parameter naming the ISO
-to detach. The parameter may be omitted when only one ISO is attached
-(preserving the legacy single-ISO behavior); it is required when multiple
-ISOs are attached, otherwise the call is rejected.
+When more than one ISO is attached, each entry in the dialog shows its
+CD-ROM slot label so the right one can be picked.
 
 
 
