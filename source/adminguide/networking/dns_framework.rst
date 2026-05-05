@@ -26,17 +26,6 @@ This framework is designed with extensibility in mind, allowing additional DNS p
 
 As part of the initial implementation, PowerDNS is the supported DNS provider.
 
-Architecture
-^^^^^^^^^^^^
-The DNS Framework consists of the following components:
-
-- Core DNS service layer: Defines interfaces and orchestrates DNS operations
-- Provider plugins: Implementations for specific DNS providers (e.g., PowerDNS)
-- API layer: Exposes DNS functionality to users and administrators
-- UI integration: Provides user interface components for DNS management
-
-The framework abstracts provider-specific logic, enabling seamless integration of multiple DNS backends.
-
 Terminology and Hierarchy
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 The DNS Framework introduces several new concepts and entities:
@@ -495,11 +484,6 @@ Automatic DNS registration operates at the Instance level and integrates with In
 
 The feature ensures that DNS records reflect the current state of deployed Instances in real time or near real time, depending on the configured DNS provider behavior.
 
-Behavior
---------
-
-Automatic DNS registration is driven by instance lifecycle events and NIC-level changes within networks that have an associated DNS zone.
-
 **Prerequisites**
 
 Before automatic DNS registration can function, the following conditions must be met:
@@ -509,6 +493,11 @@ Before automatic DNS registration can function, the following conditions must be
 - The DNS zone must be associated with a network
 
 If any of the above prerequisites are not met, no automatic DNS operations will be performed.
+
+Behavior
+--------
+
+Automatic DNS registration is driven by instance lifecycle events and NIC-level changes within networks that have an associated DNS zone.
 
 
 **Event Mapping**
@@ -642,4 +631,4 @@ Or use the API to disassociate:
 Limitations
 ^^^^^^^^^^^
 
-- Automatic DNS registration for Instances is limited to **Shared Networks**
+- Automatic DNS registration for Instances is currently limited to **Shared Networks**
