@@ -184,10 +184,10 @@ that has connectivity to both:
 * The **CloudStack management server** running the Veeam Control Service.
 * The **KVM hypervisor hosts** that store and run the virtual machines.
 
-For a simple deployment, administrators can create a **shared network** that
-operates within the **management traffic range** configured in CloudStack. The
-worker VM can then be deployed in this network so that it can communicate with
-both the management server and the hypervisor hosts.
+One approach is to create a **shared network** within the **management traffic
+range** configured in CloudStack. The worker VM can then be deployed on this
+network so that it can communicate with both the management server and the
+hypervisor hosts.
 
 The following considerations should be taken into account when deploying the
 worker VM:
