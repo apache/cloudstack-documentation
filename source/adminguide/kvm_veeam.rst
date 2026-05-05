@@ -203,9 +203,10 @@ worker VM:
    operation.
 
 The sizing of worker VMs, job concurrency, and deployment of multiple proxies
-should follow the recommendations provided in the Veeam documentation.
-
-
+should follow the recommendations provided in the Veeam documentation. A
+compute offering corresponding to the compute resources configured for the
+worker VM must exist in CloudStack. This can be a custom offering, and
+CloudStack will try to use one matching the configured vCPU and memory.
 
 Refer to the official Veeam documentation for further details:
 
