@@ -107,6 +107,12 @@ CloudStack UI or using the CloudStack API.
 After updating the desired values, **restart the CloudStack management
 server(s)** for the changes to take effect.
 
+The CloudStack environment must have SSL enabled on the management server so
+that it can be added in Veeam as a KVM hypervisor manager.
+
+For instructions on enabling HTTPS/SSL on the management server, see:
+`SSL (Optional) <installguide/optional_installation.html#ssl-optional>`_.
+
 2. Verify the CloudStack Veeam Control Service
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
