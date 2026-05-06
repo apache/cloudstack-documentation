@@ -453,9 +453,7 @@ for example, when installing Windows on a KVM Instance that uses VirtIO disks
 - the Windows installer ISO and the VirtIO drivers ISO can both be attached
 at the same time so the installer can load the drivers without an ISO swap.
 
-..
-   SCREENSHOT NEEDED: Instance detail page -> ISO tab showing two attached ISOs
-   each listed with its slot label tag (e.g. "hdc", "hdd").
+|instance-iso-tab-multi.png|
 
 .. _adding-an-iso:
 Adding an ISO
@@ -585,9 +583,7 @@ Attaching an ISO to a Instance
 
 #. Click OK.
 
-..
-   SCREENSHOT NEEDED: Multi-select Attach ISO dialog with the "ISO name (X / N)"
-   counter visible and one or two ISOs selected from the dropdown.
+|attach-iso-multi.png|
 
 The maximum number of ISOs that may be attached to an Instance is controlled
 by the configuration setting ``vm.cdrom.max.count`` (default ``1``); on KVM,
@@ -607,9 +603,7 @@ Detaching an ISO
 
 #. Click OK.
 
-..
-   SCREENSHOT NEEDED: Multi-select Detach ISO dialog showing two attached ISOs
-   with their slot labels (e.g. "Rocky 8.4 boot (hdc)", "dummy (hdd)").
+|detach-iso-multi.png|
 
 When more than one ISO is attached, each entry in the dialog shows its
 CD-ROM slot label so the right one can be picked.
@@ -643,3 +637,9 @@ CD-ROM slot label so the right one can be picked.
    :alt: Resetting (removing all) permissions
 .. |iso.png| image:: /_static/images/iso-icon.png
    :alt: depicts adding an iso image
+.. |instance-iso-tab-multi.png| image:: /_static/images/instance-iso-tab-multi.png
+   :alt: Instance detail ISO tab listing two attached ISOs with their slot labels
+.. |attach-iso-multi.png| image:: /_static/images/attach-iso-multi.png
+   :alt: Attach ISO dialog with multi-select dropdown and slot counter
+.. |detach-iso-multi.png| image:: /_static/images/detach-iso-multi.png
+   :alt: Detach ISO dialog showing two attached ISOs with slot labels
