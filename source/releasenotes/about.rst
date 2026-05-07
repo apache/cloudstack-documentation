@@ -17,7 +17,13 @@
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is a LTS release with 10 new features,
+Refer to the advisory blog at:
+https://cloudstack.apache.org/blog/security-release-advisory-4.20.3.0-4.22.0.1
+
+What's New in 4.22.0.0
+=======================
+
+Apache CloudStack 4.22.0.0 is a LTS release with 10 new features,
 around 15 improvements and more than 140 bug fixes since the 4.21.0.0 release.
 Some of the highlights include:
 
