@@ -301,6 +301,8 @@ All restore-related operations are executed using the **service account configur
 
 If the service account does not have access to the networks selected in the **Veeam restore wizard**, the restore operation may fail.
 
+The plugin reconstructs the instance networking configuration using the metadata saved during backup. This ensures that the restored instance closely resembles the original instance configuration where possible.
+
 Compute Offering Selection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -308,15 +310,20 @@ During restore, the CloudStack Veeam integration plugin determines an appropriat
 
 The plugin attempts to match these characteristics with an available compute offering in the CloudStack environment. If an exact match is not found, the closest suitable compute offering may be selected.
 
-Network and Volume Reconstruction
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Network Reconstruction
+~~~~~~~~~~~~~~~~~~~~~~
 
-The plugin reconstructs the instance networking and storage configuration using the metadata saved during backup:
+**Networks** are attached to the restored instance in the same order and configuration as recorded in the backup metadata.
 
-* **Networks** are attached to the restored instance in the same order and configuration as recorded in the backup metadata.
-* **Volumes** are created and restored from the backup data and then attached to the instance.
+If one or more original networks cannot be attached during restore (for example, due to permission or capacity constraints), the instance is created without those networks and the restore process continues. Administrators can manually attach the missing networks after restore. To better handle such scenarios, it is recommended to restore instances without powering them on immediately.
 
-This process ensures that the restored instance closely resembles the original instance configuration where possible.
+Volume Reconstruction
+~~~~~~~~~~~~~~~~~~~~~
+
+**Volumes** are created and restored from the backup data and then attached to the instance.
+
+Restored volumes are always assigned an available custom disk offering. If needed, administrators can manually change the disk offering after the restore operation completes.
+
 
 Assigning Restored Instances to Original Owners
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
