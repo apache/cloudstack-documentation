@@ -301,7 +301,7 @@ All restore-related operations are executed using the **service account configur
 
 If the service account does not have access to the networks selected in the **Veeam restore wizard**, the restore operation may fail.
 
-The plugin reconstructs the instance networking configuration using the metadata saved during backup. This ensures that the restored instance closely resembles the original instance configuration where possible.
+The plugin restores the instance configuration using the metadata saved during backup, particularly for restore-to-original-location scenarios. This helps ensure that the restored instance closely resembles the original instance configuration where possible.
 
 Compute Offering Selection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -309,6 +309,11 @@ Compute Offering Selection
 During restore, the CloudStack Veeam integration plugin determines an appropriate **compute offering** for the restored instance based on the compute characteristics stored in the backup metadata. This typically includes parameters such as CPU and memory.
 
 The plugin attempts to match these characteristics with an available compute offering in the CloudStack environment. If an exact match is not found, the closest suitable compute offering may be selected.
+
+Template Selection
+~~~~~~~~~~~~~~~~~~
+
+The template for the instance is assigned from the value available in the backup metadata. If the original template is not available in the CloudStack environment, a dummy template is used during the restore process. After the restore completes, administrators can change the template to a valid one if needed for operations such as reinstalling the instance.
 
 Network Reconstruction
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -323,7 +328,6 @@ Volume Reconstruction
 **Volumes** are created and restored from the backup data and then attached to the instance.
 
 Restored volumes are always assigned an available custom disk offering. If needed, administrators can manually change the disk offering after the restore operation completes.
-
 
 Assigning Restored Instances to Original Owners
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -346,4 +350,5 @@ Restore Limitations
 * Restore operations always result in **deployment of a new instance** rather than restoring an existing instance in place.
 * All restore operations must be initiated from **Veeam Backup & Replication**.
 * CloudStack does not maintain state or visibility of backup or restore jobs executed through Veeam.
+* Certain configurations, such as affinity groups, host tags, and storage tags, are not followed during restore operations because host and storage selection is managed by Veeam.
 
