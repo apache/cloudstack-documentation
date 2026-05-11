@@ -284,71 +284,155 @@ appropriate configuration where possible.
 Instance Restore using Veeam Backup and Replication
 ---------------------------------------------------
 
-Restore operations for instances backed up through **Veeam Backup & Replication (Veeam B&R)** are initiated from the Veeam console. The restore workflow recreates the virtual machine in CloudStack using the metadata and disk data stored during backup.
+Restore operations for instances backed up through **Veeam Backup &
+Replication (Veeam B&R)** are initiated from the Veeam console. The
+restore workflow recreates the virtual machine in CloudStack using the
+metadata and disk data stored during backup.
 
 The restore process works as follows:
 
-* A **new instance is deployed in CloudStack** as part of the restore workflow. Restore operations do not overwrite an existing instance.
+* A **new instance is deployed in CloudStack** as part of the restore
+   workflow. Restore operations do not overwrite an existing instance.
 * Initially, a **blank instance** is created by the CloudStack Veeam integration plugin.
-* After the instance is created, **volumes and network interfaces are attached sequentially** based on the metadata stored in the backup.
+* After the instance is created, **volumes and network interfaces are
+   attached sequentially** based on the metadata stored in the backup.
 * The VM disks are then restored from the backup data into the attached volumes.
 
-All restore-related operations are executed using the **service account configured for the CloudStack Veeam Control Service**. Because of this, the service account must have sufficient permissions to perform the following actions:
+All restore-related operations are executed using the **service account
+configured for the CloudStack Veeam Control Service**. Because of this,
+the service account must have sufficient permissions to perform the
+following actions:
 
 * Deploy new instances.
 * Attach volumes.
 * Access and attach networks selected during the restore process.
 
-If the service account does not have access to the networks selected in the **Veeam restore wizard**, the restore operation may fail.
+If the service account does not have access to the networks selected in
+the **Veeam restore wizard**, the restore operation may fail.
 
-The plugin restores the instance configuration using the metadata saved during backup, particularly for restore-to-original-location scenarios. This helps ensure that the restored instance closely resembles the original instance configuration where possible.
+The plugin restores the instance configuration using the metadata saved
+during backup, particularly for restore-to-original-location scenarios.
+This helps ensure that the restored instance closely resembles the
+original instance configuration where possible.
 
 Compute Offering Selection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-During restore, the CloudStack Veeam integration plugin determines an appropriate **compute offering** for the restored instance based on the compute characteristics stored in the backup metadata. This typically includes parameters such as CPU and memory.
+During restore, the CloudStack Veeam integration plugin determines an
+appropriate **compute offering** for the restored instance based on the
+compute characteristics stored in the backup metadata. This typically
+includes parameters such as CPU and memory.
 
-The plugin attempts to match these characteristics with an available compute offering in the CloudStack environment. If an exact match is not found, the closest suitable compute offering may be selected.
+The plugin attempts to match these characteristics with an available
+compute offering in the CloudStack environment. If an exact match is
+not found, the closest suitable compute offering may be selected.
 
 Template Selection
 ~~~~~~~~~~~~~~~~~~
 
-The template for the instance is assigned from the value available in the backup metadata. If the original template is not available in the CloudStack environment, a dummy template is used during the restore process. After the restore completes, administrators can change the template to a valid one if needed for operations such as reinstalling the instance.
+The template for the instance is assigned from the value available in
+the backup metadata. If the original template is not available in the
+CloudStack environment, a dummy template is used during the restore
+process. After the restore completes, administrators can change the
+template to a valid one if needed for operations such as reinstalling
+the instance.
 
 Network Reconstruction
 ~~~~~~~~~~~~~~~~~~~~~~
 
-**Networks** are attached to the restored instance in the same order and configuration as recorded in the backup metadata.
+**Networks** are attached to the restored instance in the same order and
+configuration as recorded in the backup metadata.
 
-If one or more original networks cannot be attached during restore (for example, due to permission or capacity constraints), the instance is created without those networks and the restore process continues. Administrators can manually attach the missing networks after restore. To better handle such scenarios, it is recommended to restore instances without powering them on immediately.
+If one or more original networks cannot be attached during restore (for
+example, due to permission or capacity constraints), the instance is
+created without those networks and the restore process continues.
+Administrators can manually attach the missing networks after restore.
+To better handle such scenarios, it is recommended to restore instances
+without powering them on immediately.
 
 Volume Reconstruction
 ~~~~~~~~~~~~~~~~~~~~~
 
-**Volumes** are created and restored from the backup data and then attached to the instance.
+**Volumes** are created and restored from the backup data and then
+attached to the instance.
 
-Restored volumes are always assigned an available custom disk offering. If needed, administrators can manually change the disk offering after the restore operation completes.
+Restored volumes are always assigned an available custom disk offering.
+If needed, administrators can manually change the disk offering after
+the restore operation completes.
 
 Assigning Restored Instances to Original Owners
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, restored instances are deployed using the **service account** configured for the CloudStack Veeam Control Service. This ensures that restore operations can proceed even if the original account or network access constraints would otherwise prevent deployment.
+By default, restored instances are deployed using the **service
+account** configured for the CloudStack Veeam Control Service. This
+ensures that restore operations can proceed even if the original account
+or network access constraints would otherwise prevent deployment.
 
-If it is desired that the restored instance should instead be **assigned to the original account based on the instance metadata stored in the backup**, the following global configuration can be enabled:
+If it is desired that the restored instance should instead be **assigned
+to the original account based on the instance metadata stored in the
+backup**, the following global configuration can be enabled:
 
 ::
 
    integration.veeam.control.instance.restore.assign.owner = true
 
-When this configuration is enabled, the plugin will attempt to deploy the restored instance under the **original account ownership** and apply network access based on that account’s permissions.
+When this configuration is enabled, the plugin will attempt to deploy
+the restored instance under the **original account ownership** and apply
+network access based on that account's permissions.
 
-This configuration is **dynamic**, meaning it can be updated without restarting the management server and adjusted based on operational requirements.
+This configuration is **dynamic**, meaning it can be updated without
+restarting the management server and adjusted based on operational
+requirements.
 
-Restore Limitations
-~~~~~~~~~~~~~~~~~~~
+Restoring Shared Filesystem Instances
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+For instances associated with Shared Filesystem storage, only restore to
+the original location keeps the instance associated with the same Shared
+Filesystem. Restoring to a different location results in deployment of a
+regular instance.
 
-* Restore operations always result in **deployment of a new instance** rather than restoring an existing instance in place.
-* All restore operations must be initiated from **Veeam Backup & Replication**.
-* CloudStack does not maintain state or visibility of backup or restore jobs executed through Veeam.
-* Certain configurations, such as affinity groups, host tags, and storage tags, are not followed during restore operations because host and storage selection is managed by Veeam.
+Restore Guest Files with Windows Instance Backup
+------------------------------------------------
+
+When restoring guest files from a Windows instance backup, ensure that
+``ntfs-3g`` is installed on the KVM hypervisor hosts.
+
+For Debian/Ubuntu-based hosts, run the following commands:
+
+::
+
+   apt update
+   apt install ntfs-3g -y
+
+For RHEL/CentOS-based hosts, run the following commands:
+
+::
+
+   dnf install epel-release -y
+   dnf install ntfs-3g -y
+
+Limitations and Recommendations
+-------------------------------
+
+* Supported only with Advanced Core zones (without security groups) and
+   Edge zones using KVM hypervisor.
+* All backup and restore operations must be initiated from **Veeam Backup & Replication**.
+* CloudStack does not maintain state or visibility of backup or restore
+   jobs executed through Veeam.
+* Kubernetes cluster node instances cannot be backed up or restored.
+* Autoscale VM group instances cannot be backed up or restored.
+* The service account must have Root Admin privileges for restore operations to succeed.
+* Restore operations always result in **deployment of a new instance**
+   rather than restoring an existing instance in place. The
+   administrators must update the corresponding backup jobs for the new
+   instance if needed.
+* During restore, it is recommended to not select the option to power on the instance
+  immediately. This allows administrators to first verify the restored instance
+  configuration and attach any missing networks before powering on.
+* Certain configurations, such as affinity groups, host tags, and
+   storage tags, are not followed during restore operations because host
+   and storage selection is managed by Veeam.
+* Networking rules such as static NAT, port forwarding, etc for the
+   restored instance are not applied during restore. Administrators must
+   manually apply any necessary rules after restore completes.
 
