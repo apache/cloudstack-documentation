@@ -17,7 +17,9 @@
 Custom Actions
 ^^^^^^^^^^^^^^
 
-In addition to standard instance operations, extensions support custom actions. These can be configured via UI in the extension details view or the addCustomAction API. The extension binary or script must implement handlers for these action names and process any provided parameters.
+In addition to standard lifecycle operations, extensions support custom actions. These can be configured via UI in the extension details view or the addCustomAction API. The extension binary or script must implement handlers for these action names and process any provided parameters.
+
+For Orchestrator extensions, custom actions typically target ``VirtualMachine`` resources. For NetworkOrchestrator extensions, custom actions can target ``Network`` and ``Vpc`` resources when the extension advertises the ``CustomAction`` network service.
 
    |add-custom-action.png|
 
@@ -43,11 +45,26 @@ A single parameter can have the following details:
 
    - **valueoptions**: Options for the value of the parameter. This is allowed only for NUMBER and STRING type.
 
+Supported Resource Types
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Custom actions can be attached to the following resource types:
+
+   - ``VirtualMachine`` for Orchestrator extensions.
+
+   - ``Network`` for NetworkOrchestrator extensions.
+
+   - ``Vpc`` for NetworkOrchestrator extensions.
+
+For network and VPC custom actions, CloudStack dispatches the action to the external provider that serves the ``CustomAction`` service for the selected resource.
+
 
 Running Custom Action
 ~~~~~~~~~~~~~~~~~~~~~
 
 All enabled custom actions can then be triggered for a resource of the type the action is defined for or provided while running, using the **Run Action** view or runCustomAction API.
+
+The same API is used for VM, network, and VPC custom actions. The available actions shown in the UI depend on the selected resource type and the extension bound to that resource.
 
    |run-custom-action-instance.png|
 
