@@ -374,7 +374,6 @@ To schedule an operation on an Instance through the UI:
       It's not possible to remove the end date once it's configured.
 
 
-
 #. Click OK to save the schedule.
 
    .. note::

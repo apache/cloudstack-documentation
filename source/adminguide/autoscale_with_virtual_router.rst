@@ -275,6 +275,56 @@ To update the AutoScale Instance Group, click the Update AutoScale Instance Grou
 
 |autoscale-vmgroup-update.png|
 
+Scheduling updates for an AutoScale Instance Group
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+After an AutoScale Instance Group is created, you can schedule recurring
+group-size updates using cron expressions and the generic resource schedule
+APIs.
+
+To schedule an update for an AutoScale Instance Group:
+
+#. Log in to the CloudStack UI as a User or admin.
+
+#. In the left navigation, click Compute -> AutoScale Instance Groups.
+
+#. Select the AutoScale Instance Group you want to schedule the update for.
+
+#. On the AutoScale Instance Group details page, click the **Schedule** button. |autoscale-vmgroup-schedule-tab.png|
+
+#. Click on **Add schedule** button to add a new schedule or click on Edit button |EditButton.png| to edit
+   an existing schedule. |autoscale-vmgroup-schedule-form.png|
+
+#. Click the Add schedule button.
+
+#. Configure the schedule as per requirements:
+
+   - **Description**: Enter a description for the schedule. If left empty, it's generated on the basis of action and the schedule.
+
+   - **Min members**: Minimum number of members to scale the AutoScale Instance Group to.
+
+   - **Max members**: Maximum number of members to scale the AutoScale Instance Group to.
+
+   - **Schedule**: Select the frequency using cron format at which the action should be triggered.
+     For example, `* * * * *` will trigger the job every minute.
+
+   - **Timezone**: Select the timezone in which the schedule should be triggered.
+
+   - **Start Date**: Date at the specified time zone after which the schedule becomes active.
+     Defaults to current timestamp plus 1 minute.
+
+   - **End Date**: Date at the specified time zone before which the schedule is active.
+     If not set, schedule won't become inactive.
+
+
+#. Click OK to save the schedule.
+
+   .. note::
+      If multiple schedules are configured for an AutoScale Instance Group and the scheduled
+      time coincides, then only the schedule which was created first will be executed and the
+      rest will be skipped.
+
+
 Updating AutoScale Instance Profile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -400,4 +450,9 @@ a service assigned to a rule inside the context of AutoScale.
    :alt: Update AutoScale Instance Profile.
 .. |autoscale-vmgroup-profile-reset-userdata.png| image:: /_static/images/autoscale-vmgroup-profile-reset-userdata.png
    :alt: Reset User Data in AutoScale Instance Profile.
-
+.. |autoscale-vmgroup-schedule-tab.png| image:: /_static/images/autoscale-vmgroup-schedule-tab.png
+   :alt: AutoScale Instance Group schedule tab.
+.. |autoscale-vmgroup-schedule-form.png| image:: /_static/images/autoscale-vmgroup-schedule-form.png
+   :alt: AutoScale Instance Group schedule form.
+.. |EditButton.png| image:: /_static/images/edit-icon.png
+   :alt: button to edit the properties of an Instance.
