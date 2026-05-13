@@ -411,6 +411,26 @@ For RHEL/CentOS-based hosts, run the following commands:
    dnf install epel-release -y
    dnf install ntfs-3g -y
 
+Compatibility with other Backup Providers in CloudStack
+-------------------------------------------------------
+
+Other backup providers available in CloudStack cannot be used alongside
+the CloudStack Veeam integration for KVM within the same Zone in this release.
+This restriction avoids conflicts and unintended interactions at the hypervisor level.
+
+The only exception is the Veeam backup provider used for VMware environments.
+It can coexist in the same Zone as the KVM Veeam integration because
+the two integrations operate on different hypervisors.
+
+If other zones have different backup providers configured, the **dummy** provider can
+be used as a placeholder in the zone where the Veeam integration for KVM is required to avoid conflicts.
+
+To use the CloudStack Veeam integration for KVM, use one of the following configuration settings:
+
+* **backup.framework.enabled** = false, or
+* **backup.framework.provider.plugin** = dummy, or
+* **backup.framework.provider.plugin** = veeam (if VMware integration is also needed in the same Zone).
+
 Limitations and Recommendations
 -------------------------------
 
