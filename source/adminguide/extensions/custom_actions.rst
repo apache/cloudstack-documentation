@@ -58,13 +58,21 @@ Custom actions can be attached to the following resource types:
 
 For network and VPC custom actions, CloudStack dispatches the action to the external provider that serves the ``CustomAction`` service for the selected resource.
 
+For ``NetworkOrchestrator`` extensions, the action is executed as ``custom-action`` using the standard payload-file invocation model:
+
+.. code-block:: bash
+
+   /path/to/<extension_name>.sh custom-action <payload_file> <timeout_seconds>
+
+The payload file contains top-level keys such as ``action``, ``action-params``, ``physical-network-extension-details``, and ``network-extension-details``. Unlike other network extension commands, the custom action request does not wrap its command-specific values inside a nested ``payload`` object.
+
 
 Running Custom Action
 ~~~~~~~~~~~~~~~~~~~~~
 
-All enabled custom actions can then be triggered for a resource of the type the action is defined for or provided while running, using the **Run Action** view or runCustomAction API.
+All enabled custom actions can then be triggered for a resource of the type the action is defined for or provided while running, using the **Run Action** view or the relevant custom action API.
 
-The same API is used for VM, network, and VPC custom actions. The available actions shown in the UI depend on the selected resource type and the extension bound to that resource.
+For network and VPC custom actions, CloudStack passes the full request in the payload file and returns the script's ``stdout`` to the caller. The available actions shown in the UI depend on the selected resource type and the extension bound to that resource.
 
    |run-custom-action-instance.png|
 

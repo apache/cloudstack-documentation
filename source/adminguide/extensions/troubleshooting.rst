@@ -47,7 +47,13 @@ Verify Payload Handling
 
    - Improper parsing of the payload is a common cause of failure—log any parsing errors in your extension binary for debugging.
 
-   - NetworkOrchestrator extensions use command-specific CLI arguments in addition to JSON strings such as ``--physical-network-extension-details`` and ``--network-extension-details``. Verify that the script accepts the expected command names and argument format for the services it implements.
+   - NetworkOrchestrator extensions receive ``<command> <payload_file> <timeout_seconds>``. Verify that the script accepts the command name and reads the JSON payload file rather than expecting named CLI options.
+
+   - For standard network and VPC commands, confirm that the payload file contains the expected top-level keys: ``physical-network-extension-details``, ``network-extension-details``, and ``payload``.
+
+   - For ``custom-action``, confirm that the request uses top-level keys such as ``action`` and ``action-params`` instead of a nested ``payload`` object.
+
+   - For ``ensure-network-device``, confirm that the script prints a single-line JSON object to ``stdout``. For other commands, unexpected ``stdout`` output is usually a sign that the script is not following the current command contract.
 
 Check Resource Registration and Provider State
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -57,6 +63,8 @@ Check Resource Registration and Provider State
    - If resource-specific configuration changes are needed after registration, use the UI or the ``updateRegisteredExtension`` API instead of unregistering and recreating the mapping.
 
    - For NetworkOrchestrator extensions, confirm that a network service provider with the same name as the extension exists on the target physical network and is in the expected state before creating network or VPC offerings.
+
+   - If the provider exists but operations still fail, verify that the provider was enabled after registration and that the intended offering maps each supported service to the extension name.
 
 Verify Declared Network Services
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -94,5 +102,7 @@ Check Logs for Errors
         3. Output parsing
 
          4. Provider and service resolution for network and VPC operations
+
+         5. Failures while decoding nested payload values such as firewall rules, ACL rules, restore data, or VM metadata blobs
 
    - Any exceptions or exit code issues.
