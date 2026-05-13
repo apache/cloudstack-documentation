@@ -218,6 +218,16 @@ Refer to the official Veeam documentation for further details:
 
 https://helpcenter.veeam.com/
 
+Image Transfer for Backup and Restore
+-------------------------------------
+
+An Image Transfer service runs on the KVM hosts to facilitate the transfer of VM disk data
+during backup and restore operations. This service is used by Veeam Backup & Replication
+and/or the worker VM to read and write VM disk data from the hypervisor hosts.
+
+The Image Transfer service listens on port **54322** and the management network IP by default.
+This can be changed using the **image.server.listen.address** property in agent.properties
+on each KVM host to use any other dedicated network for doing data transfer.
 
 Instance Backup using Veeam Backup and Replication
 --------------------------------------------------
