@@ -164,6 +164,14 @@ Once the manager is successfully added, Veeam will connect to CloudStack,
 discover the infrastructure resources, and make the virtual machines available
 for backup and restore operations.
 
+.. warning::
+   A CloudStack environment should be added to only one Veeam Backup & Replication
+   platform to avoid conflicts and unintended interactions. To prevent accidental
+   addition to multiple Veeam platforms, use the
+   **integration.veeam.control.allowed.client.cidrs** global configuration to
+   restrict control service access to the IP addresses of authorized Veeam
+   platforms only.
+
 Backup Proxy or Worker VM for Veeam Backup and Replication
 ----------------------------------------------------------
 
@@ -204,6 +212,12 @@ worker VM, the management server, and the hypervisor hosts. For the Veeam
 Backup and Replication platform to communicate with the worker VM, an Ingress
 rule for the service account's security group should be added for all TCP
 ports (1-65355), with the platform IP as the CIDR.
+
+.. note::
+   The integration has been tested only with the worker VM deployed on a
+   shared network within the management traffic range or on a network with
+   appropriate security group rules allowing connectivity to the management
+   server and hypervisor hosts.
 
 The following considerations should be taken into account when deploying the
 worker VM:
