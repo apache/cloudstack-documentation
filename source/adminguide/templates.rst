@@ -447,6 +447,14 @@ can also attach ISO images to Guest Instances. For example, this enables
 installing PV drivers into Windows. ISO images are not
 hypervisor-specific.
 
+A single Instance can hold more than one attached ISO simultaneously, with
+each ISO appearing as its own CD-ROM drive inside the guest. This is useful,
+for example, when installing Windows on a KVM Instance that uses VirtIO disks
+- the Windows installer ISO and the VirtIO drivers ISO can both be attached
+at the same time so the installer can load the drivers without an ISO swap.
+
+|instance-iso-tab-multi.png|
+
 .. _adding-an-iso:
 Adding an ISO
 -------------
@@ -571,9 +579,34 @@ Attaching an ISO to a Instance
 
 #. Click the Attach ISO button. |iso.png|
 
-#. In the Attach ISO dialog box, select the desired ISO.
+#. In the Attach ISO dialog box, select one or more ISOs.
 
 #. Click OK.
+
+|attach-iso-multi.png|
+
+The maximum number of ISOs that may be attached to an Instance is controlled
+by the configuration setting ``vm.iso.max.count`` (default ``1``); on KVM,
+the hypervisor caps it at ``2``. The first ISO attached is the bootable one;
+the Attach ISO action is hidden once the Instance reaches its limit.
+
+Detaching an ISO
+----------------
+
+#. In the left navigation, click Instances.
+
+#. Choose the Instance you want to work with.
+
+#. Click the Detach ISO button.
+
+#. In the Detach ISO dialog box, select one or more ISOs to detach.
+
+#. Click OK.
+
+|detach-iso-multi.png|
+
+When more than one ISO is attached, each entry in the dialog shows its
+CD-ROM slot label so the right one can be picked.
 
 
 
@@ -604,3 +637,9 @@ Attaching an ISO to a Instance
    :alt: Resetting (removing all) permissions
 .. |iso.png| image:: /_static/images/iso-icon.png
    :alt: depicts adding an iso image
+.. |instance-iso-tab-multi.png| image:: /_static/images/instance-iso-tab-multi.png
+   :alt: Instance detail ISO tab listing two attached ISOs with their slot labels
+.. |attach-iso-multi.png| image:: /_static/images/attach-iso-multi.png
+   :alt: Attach ISO dialog with multi-select dropdown and slot counter
+.. |detach-iso-multi.png| image:: /_static/images/detach-iso-multi.png
+   :alt: Detach ISO dialog showing two attached ISOs with slot labels
