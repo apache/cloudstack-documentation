@@ -178,16 +178,32 @@ The worker VM is responsible for:
   infrastructure resources and coordinate backup activities.
 * Interacting with the KVM hypervisor hosts to read or write VM disk data.
 
-Because of these responsibilities, the worker VM must be deployed in a network
-that has connectivity to both:
+For worker VM deployment, the Veeam Backup & Replication platform must be
+able to connect to KVM hypervisor hosts to upload QCOW2 images. This upload
+is performed via CloudStack Image Service on the KVM hosts, which runs on
+port 54322.
 
-* The **CloudStack management server** running the Veeam Control Service.
-* The **KVM hypervisor hosts** that store and run the virtual machines.
+Because of these responsibilities, the worker VM must be deployed in a
+network that provides connectivity between the following components:
 
-One approach is to create a **shared network** within the **management traffic
-range** configured in CloudStack. The worker VM can then be deployed on this
-network so that it can communicate with both the management server and the
-hypervisor hosts.
+* The Veeam Backup and Replication platform and the worker VM.
+* The worker VM and the **CloudStack management server** running the Veeam
+   Control Service.
+* The worker VM and the **KVM hypervisor hosts** that store and run the
+   virtual machines.
+
+For Advanced network zones, including Edge zones, one approach is to create a
+**shared network** within the **management traffic range** configured in
+CloudStack. The worker VM can then be deployed on this network so that it can
+communicate with both the management server and the hypervisor hosts.
+
+For Advanced and Basic zones with security groups, the default security group
+for the service account must have Ingress and Egress rules configured to allow
+communication between the Veeam Backup and Replication platform, the Veeam
+worker VM, the management server, and the hypervisor hosts. For the Veeam
+Backup and Replication platform to communicate with the worker VM, an Ingress
+rule for the service account's security group should be added for all TCP
+ports (1-65355), with the platform IP as the CIDR.
 
 The following considerations should be taken into account when deploying the
 worker VM:
@@ -291,11 +307,13 @@ metadata and disk data stored during backup.
 The restore process works as follows:
 
 * A **new instance is deployed in CloudStack** as part of the restore
-   workflow. Restore operations do not overwrite an existing instance.
-* Initially, a **blank instance** is created by the CloudStack Veeam integration plugin.
+  workflow. Restore operations do not overwrite an existing instance.
+* Initially, a **blank instance** is created by the CloudStack Veeam
+  integration plugin.
 * After the instance is created, **volumes and network interfaces are
-   attached sequentially** based on the metadata stored in the backup.
-* The VM disks are then restored from the backup data into the attached volumes.
+  attached sequentially** based on the metadata stored in the backup.
+* The VM disks are then restored from the backup data into the attached
+  volumes.
 
 All restore-related operations are executed using the **service account
 configured for the CloudStack Veeam Control Service**. Because of this,
@@ -447,7 +465,8 @@ Limitations and Recommendations
 
 * Supported only with Advanced Core zones (without security groups) and
    Edge zones using KVM hypervisor.
-* All backup and restore operations must be initiated from **Veeam Backup & Replication**.
+* All backup and restore operations must be initiated from **Veeam Backup
+  & Replication**.
 * CloudStack does not maintain state or visibility of backup or restore
    jobs executed through Veeam.
 * Kubernetes cluster node instances cannot be backed up or restored.
