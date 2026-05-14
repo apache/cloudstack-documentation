@@ -489,20 +489,29 @@ Limitations and Recommendations
   jobs executed through Veeam.
 * Kubernetes cluster node instances cannot be backed up or restored.
 * Autoscale VM group instances cannot be backed up or restored.
-* The service account must have Root Admin privileges for restore operations to succeed.
+* The service account must have Root Admin privileges for restore operations
+  to succeed.
 * Restore operations always result in **deployment of a new instance**
   rather than restoring an existing instance in place. The
   administrators must update the corresponding backup jobs for the new
   instance if needed.
-* During restore, it is recommended to not select the option to power on the instance
-  immediately. This allows administrators to first verify the restored instance
-  configuration and attach any missing networks before powering on.
+* During restore, it is recommended to not select the option to power on the
+  instance immediately. This allows administrators to first verify the
+  restored instance configuration and attach any missing networks before
+  powering on.
+* When restore is done with the "Restore VM Tags" option enabled, only tags
+  with the "veeam_tag" prefix are restored. Other tags are not restored
+  because they are not accessible to Veeam. The key suffix after "veeam_tag"
+  may differ from the original, but the tag value is preserved.
 * Certain configurations, such as affinity groups, host tags, and
   storage tags, are not followed during restore operations because host
   and storage selection is managed by Veeam.
 * Networking rules such as static NAT, port forwarding, etc for the
   restored instance are not applied during restore. Administrators must
   manually apply any necessary rules after restore completes.
+* Resource icons, resource tags (except those with the "veeam_tag" prefix),
+  and other non-essential metadata are not preserved during backup and
+  restore operations.
 * Operations on the instance and its volumes should not be performed
   during backup or restore. During backup, CloudStack attempts to queue
   such operations until the backup completes; however, if they cannot be
