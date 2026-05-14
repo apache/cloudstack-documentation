@@ -216,6 +216,10 @@ worker VM:
 * If multiple backup proxies are required for scaling backup operations,
   additional worker VMs can be deployed using similar network and compute
   configurations.
+* Manual operations on the worker VM such as starting, stopping, or
+  modifying it directly in CloudStack should be avoided. The worker VM
+  lifecycle is managed entirely by the Veeam Backup & Replication platform,
+  and manual intervention may interfere with backup and restore operations.
 
 .. note::
    If worker VM deployment fails, especially due to network connectivity
@@ -464,25 +468,30 @@ Limitations and Recommendations
 -------------------------------
 
 * Supported only with Advanced Core zones (without security groups) and
-   Edge zones using KVM hypervisor.
+  Edge zones using KVM hypervisor.
 * All backup and restore operations must be initiated from **Veeam Backup
   & Replication**.
 * CloudStack does not maintain state or visibility of backup or restore
-   jobs executed through Veeam.
+  jobs executed through Veeam.
 * Kubernetes cluster node instances cannot be backed up or restored.
 * Autoscale VM group instances cannot be backed up or restored.
 * The service account must have Root Admin privileges for restore operations to succeed.
 * Restore operations always result in **deployment of a new instance**
-   rather than restoring an existing instance in place. The
-   administrators must update the corresponding backup jobs for the new
-   instance if needed.
+  rather than restoring an existing instance in place. The
+  administrators must update the corresponding backup jobs for the new
+  instance if needed.
 * During restore, it is recommended to not select the option to power on the instance
   immediately. This allows administrators to first verify the restored instance
   configuration and attach any missing networks before powering on.
 * Certain configurations, such as affinity groups, host tags, and
-   storage tags, are not followed during restore operations because host
-   and storage selection is managed by Veeam.
+  storage tags, are not followed during restore operations because host
+  and storage selection is managed by Veeam.
 * Networking rules such as static NAT, port forwarding, etc for the
-   restored instance are not applied during restore. Administrators must
-   manually apply any necessary rules after restore completes.
-
+  restored instance are not applied during restore. Administrators must
+  manually apply any necessary rules after restore completes.
+* Operations on the instance and its volumes should not be performed
+  during backup or restore. During backup, CloudStack attempts to queue
+  such operations until the backup completes; however, if they cannot be
+  queued successfully, the backup may fail. During restore, any
+  operations on the instance or its volumes may interfere with the
+  restore process and cause it to fail.
