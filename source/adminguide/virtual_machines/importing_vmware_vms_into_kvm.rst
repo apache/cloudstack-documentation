@@ -141,10 +141,11 @@ The VDDK-based workflow replaces both phases with a single streaming pipeline:
 
 This reduces disk I/O amplification, eliminates temporary staging storage, and shortens end-to-end migration time.
 
-.. note:: CloudStack does not distribute VDDK, operators must download it separately.
-Along with the new VDDK-based conversion method, the traditional OVF-based method remains supported for environments where VDDK cannot be used or installed.
-Operators can choose the conversion method on a per-migration basis in the UI import wizard.
+.. note::
 
+   CloudStack does not distribute VDDK, operators must download it separately.
+   Along with the new VDDK-based conversion method the traditional OVF-based method remains supported for environments.
+   Operators can choose the conversion method on a per-migration basis in the UI import wizard.
 Host Prerequisites for VDDK-based Conversion
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
