@@ -208,10 +208,10 @@ communicate with both the management server and the hypervisor hosts.
 For Advanced and Basic zones with security groups, the default security group
 for the service account must have Ingress and Egress rules configured to allow
 communication between the Veeam Backup and Replication platform, the Veeam
-worker VM, the management server, and the hypervisor hosts. For the Veeam
-Backup and Replication platform to communicate with the worker VM, an Ingress
-rule for the service account's security group should be added for all TCP
-ports (1-65355), with the platform IP as the CIDR.
+worker VM, the management server, and the hypervisor hosts. To allow the
+Veeam Backup and Replication platform to communicate with the worker VM,
+ingress and egress rules can be added for all protocols and ports as Veeam
+platform may connect with the worker VM on different ports.
 
 .. note::
    The integration has been tested only with the worker VM deployed on a
@@ -481,8 +481,9 @@ To use the CloudStack Veeam integration for KVM, use one of the following config
 Limitations and Recommendations
 -------------------------------
 
-* Supported only with Advanced Core zones (without security groups) and
-  Edge zones using KVM hypervisor.
+* Supported for all zone types using the KVM hypervisor when the
+  worker VM is deployed on a shared network. Additional ingress and
+  egress rules may be required depending on the network configuration.
 * All backup and restore operations must be initiated from **Veeam Backup
   & Replication**.
 * CloudStack does not maintain state or visibility of backup or restore
@@ -494,7 +495,11 @@ Limitations and Recommendations
 * Restore operations always result in **deployment of a new instance**
   rather than restoring an existing instance in place. The
   administrators must update the corresponding backup jobs for the new
-  instance if needed.
+  instance if needed. This may also result in cloud-init re-running on
+  the restored instance if cloud-init is used for instance
+  initialization. Instances restored from password-protected templates
+  must be stopped, have the password reset, and then be started before
+  use.
 * During restore, it is recommended to not select the option to power on the
   instance immediately. This allows administrators to first verify the
   restored instance configuration and attach any missing networks before
@@ -518,3 +523,5 @@ Limitations and Recommendations
   queued successfully, the backup may fail. During restore, any
   operations on the instance or its volumes may interfere with the
   restore process and cause it to fail.
+* After restore, instances and volumes may not show all associated
+  action events.
