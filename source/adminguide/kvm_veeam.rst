@@ -200,6 +200,10 @@ network that provides connectivity between the following components:
 * The worker VM and the **KVM hypervisor hosts** that store and run the
    virtual machines.
 
+Veeam uses userdata to configure the worker VM; therefore, the network
+offering of the network to which the worker VM is attached must support
+the Userdata service.
+
 For Advanced network zones, including Edge zones, one approach is to create a
 **shared network** within the **management traffic range** configured in
 CloudStack. The worker VM can then be deployed on this network so that it can
@@ -482,8 +486,9 @@ Limitations and Recommendations
 -------------------------------
 
 * Supported for all zone types using the KVM hypervisor when the
-  worker VM is deployed on a shared network. Additional ingress and
-  egress rules may be required depending on the network configuration.
+  worker VM is deployed on a shared network with offering that supports
+  Userdata service. Additional ingress and egress rules may be required
+  depending on the network configuration.
 * All backup and restore operations must be initiated from **Veeam Backup
   & Replication**.
 * CloudStack does not maintain state or visibility of backup or restore
