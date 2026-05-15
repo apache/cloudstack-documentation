@@ -234,3 +234,9 @@ On all other hosts, perform the following:
 lvmdevices --adddev /dev/sdb # adds the disk to /etc/lvm/devices/system.devices
 vgchange lockstart sharedvg # Start the VG in shared mode
 ```
+
+
+.. note::
+   It is reccommended to add CLVM / CLVM_NG storage pools as a Cluster scoped resource, so as to limited number of hosts that can access the pool for optimal performance and reliability.
+   Due to the lack of support from `lvm` to provide a centralized way to query which host has the lock for a given volume, CloudStack relies on tracking this information in the database. However, if there is a drift in this information, for example due to a host failure, CloudStack will attempt to query each host for the lock status of the volume. This can lead to performance issues if there are a large number of hosts in the cluster as each host will need to be queried for each volume.
+   
