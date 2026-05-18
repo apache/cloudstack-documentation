@@ -96,6 +96,10 @@ Update the following global configuration values in CloudStack:
 +------------------------------------------------+-------------------------------------------------------------+
 | integration.veeam.control.api.password         | Password used by Veeam to authenticate with the service.    |
 +------------------------------------------------+-------------------------------------------------------------+
+| integration.veeam.control.service.account      | ID of the service account that the Veeam Control            |
+|                                                | Service uses to perform operations on resources.            |
+|                                                | This should be a Root Admin account.                        |
++------------------------------------------------+-------------------------------------------------------------+
 | integration.veeam.control.allowed.client.cidrs | Comma-separated list of CIDR blocks representing clients    |
 |                                                | allowed to access the API. If empty, all clients will be    |
 |                                                | allowed. Example: 192.168.1.1/24,192.168.2.100/32           |
@@ -227,8 +231,8 @@ The following considerations should be taken into account when deploying the
 worker VM:
 
 * The **service account** configured for the CloudStack Veeam Control Service
-  should have permission to deploy and access virtual machines in the selected
-  network.
+  should be a **root-admin** account to have permission to deploy and access
+  virtual machines in the required networks.
 * The worker VM should use an appropriate **compute offering** depending on the
   resources allocated for the backup proxy in Veeam Backup & Replication.
 * If multiple backup proxies are required for scaling backup operations,
@@ -258,10 +262,6 @@ https://helpcenter.veeam.com/
 
 Instance Backup using Veeam Backup and Replication
 --------------------------------------------------
-
-For a KVM instance to be accessible for backup in **Veeam Backup & Replication (Veeam B&R)**,
-the instance must be visible and accessible to the **service account** configured for the
-CloudStack Veeam Control Service.
 
 Once CloudStack has been added as a hypervisor manager in Veeam B&R, instances managed by
 CloudStack will appear in the Veeam inventory. Backup jobs can then be created and managed
@@ -338,16 +338,12 @@ The restore process works as follows:
   volumes.
 
 All restore-related operations are executed using the **service account
-configured for the CloudStack Veeam Control Service**. Because of this,
-the service account must have sufficient permissions to perform the
-following actions:
+configured for the CloudStack Veeam Control Service**. As the service account
+is a root-admin it has permissions to perform the following actions:
 
 * Deploy new instances.
 * Attach volumes.
 * Access and attach networks selected during the restore process.
-
-If the service account does not have access to the networks selected in
-the **Veeam restore wizard**, the restore operation may fail.
 
 The plugin restores the instance configuration using the metadata saved
 during backup, particularly for restore-to-original-location scenarios.
