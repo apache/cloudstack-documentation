@@ -1597,6 +1597,10 @@ Block Storage is supported with CLVM/CLVM_NG (Clustered Logical Volume Manager).
 .. include:: storage/clvm.rst
    :start-after: under the License.
 
+
+.. note::
+   In an environment with different Storage Pools, you could leverage the global setting `preferred.storage.pool` to select which pool you'd want to use for volumes.
+
 Shared FileSystems
 ------------------
 
