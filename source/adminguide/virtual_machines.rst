@@ -1191,6 +1191,22 @@ UEFI setting
 - On KVM, it is recommended to set boot type to UEFI, and boot mode to SECURE.
 - UEFI is required for some Windows versions.
 
+.. note::
+
+   **Recommendations for UEFI-based instances on KVM (volumes and NICs)**
+
+   UEFI-based instances on KVM may encounter PCI slot exhaustion when attaching additional
+   volumes or network interfaces, due to high PCI device usage from the default
+   disk bus and NIC adapter selections. To avoid these issues:
+
+   - **Disk bus**: For Linux-based UEFI guests, it is recommended to use **SCSI** as
+     the guest disk bus instead of VIRTIO. This reduces PCI device usage and improves
+     support for attaching additional volumes.
+   - **NIC adapter**: Set the NIC adapter type to **e1000** for UEFI instances to avoid
+     NIC attachment issues caused by PCI slot exhaustion.
+
+   Both of these settings can be configured in the **VM Settings** for an instance.
+
 |vm-settings-virtual-tpm-model-kvm.png|
 TPM model for KVM. There are two options:
 
