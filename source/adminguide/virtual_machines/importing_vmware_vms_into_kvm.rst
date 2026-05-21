@@ -162,24 +162,11 @@ Example: prepare one KVM conversion host
     dnf config-manager --set-enabled crb
     dnf install -y virt-v2v libguestfs-tools libguestfs-xfs qemu-img nbdkit
 
-**Step 2: Configure libguestfs backend as** ``direct``
+**Step 2: Download and install VDDK**
 
-VDDK does not work with the default sandbox backend. Configure ``direct``:
-
-::
-
-    cat <<EOF > /etc/profile.d/libguestfs.sh
-    export LIBGUESTFS_BACKEND=direct
-    EOF
-
-    source /etc/profile.d/libguestfs.sh
-
-This can also be configured persistently with ``libguestfs.backend`` in ``/etc/cloudstack/agent/agent.properties`` (see `Agent Properties for VDDK-based Conversion`_ below).
-
-**Step 3: Download and install VDDK**
-
-Download the VDDK tarball and extract it to a known location on the KVM host, for example, ``/opt/vmware-vddk``.
-The resulting directory must contain the VDDK libraries under a ``lib64`` subdirectory.
+Download the VDDK tarball and extract it on the KVM host. The CloudStack agent will detect the VDDK library
+directory from the extracted package layout or it can also be configured explicitly via the ``vddk.lib.dir``
+property in ``/etc/cloudstack/agent/agent.properties``.
 
 ::
 
@@ -193,7 +180,7 @@ Expected layout after extraction::
       include/
       bin64/
 
-**Step 4: Add EL9 compatibility symlink (when using VDDK 9)**
+**Step 3: Add EL9 compatibility symlink (when using VDDK 9)**
 
 On EL9 distributions, virt-v2v may expect ``libvixDiskLib.so.8``. Create this compatibility symlink:
 
@@ -204,7 +191,7 @@ On EL9 distributions, virt-v2v may expect ``libvixDiskLib.so.8``. Create this co
 
 .. note:: This compatibility symlink is commonly required on RHEL 9, Rocky Linux 9, and Alma Linux 9.
 
-**Step 5: Verify host setup**
+**Step 4: Verify host setup**
 
 ::
 
@@ -212,9 +199,10 @@ On EL9 distributions, virt-v2v may expect ``libvixDiskLib.so.8``. Create this co
     virt-v2v --version
     nbdkit --version
 
-**Step 6: Verify required network access**
+**Step 5: Verify required network and firewall access**
 
-The KVM conversion host must be able to reach:
+Allow the following ports through any firewall or network security controls between the KVM conversion host and the
+VMware endpoints:
 
 .. cssclass:: table-striped table-bordered table-hover
 
@@ -238,9 +226,6 @@ These values can also be passed in details parameters in importVm API as key-val
 +------------------------+----------------------------------------------------------------------+-------------------------------------------------------+
 | Property               | Description                                                          | Default / Example                                     |
 +========================+======================================================================+=======================================================+
-| ``libguestfs.backend`` | The libguestfs backend for VDDK-based conversion.                    | ``direct``                                            |
-|                        | Must be set to ``direct`` for VDDK to work correctly.                |                                                       |
-+------------------------+----------------------------------------------------------------------+-------------------------------------------------------+
 | ``vddk.lib.dir``       | Path to the VDDK library directory on the KVM host.                  | ``/opt/vmware-vddk/vmware-vix-disklib-distrib``       |
 |                        | Passed to virt-v2v as ``-io vddk-libdir=<path>``.                    |                                                       |
 +------------------------+----------------------------------------------------------------------+-------------------------------------------------------+
