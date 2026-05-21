@@ -288,10 +288,8 @@ Recommendations for Using VDDK-based Conversion
 
 **VM state before conversion**
 
-- **Linux VMs**: Can be converted while running, but it is recommended to power off and gracefully shut down the VM
-  to avoid crash-consistent state conversions.
 - **Windows VMs**: Must be powered off and gracefully shut down before conversion to ensure the filesystem is in a
-  clean state. Conversion of running Windows VMs is not supported.
+  clean state.
 
 **Use a single primary storage pool for direct conversion**
 
