@@ -154,13 +154,30 @@ tools, install VDDK manually, configure libguestfs, and verify host connectivity
 
 Example: prepare one KVM conversion host
 
-**Step 1: Install the conversion stack (RHEL / Rocky / Alma Linux)**
+**Step 1: Install the conversion stack**
+
+Install the required conversion tools on the KVM host. Choose the appropriate command for your distribution:
+
+RHEL / Rocky / Alma Linux:
 
 ::
 
     dnf install -y epel-release
     dnf config-manager --set-enabled crb
     dnf install -y virt-v2v libguestfs-tools libguestfs-xfs qemu-img nbdkit
+
+Ubuntu:
+
+::
+
+    apt install -y \
+      virt-v2v \
+      libguestfs-tools \
+      libguestfs-xfs \
+      qemu-utils \
+      qemu-system-x86 \
+      libvirt-clients \
+      nbdkit
 
 **Step 2: Download and install VDDK**
 
@@ -199,7 +216,17 @@ On EL9 distributions, virt-v2v may expect ``libvixDiskLib.so.8``. Create this co
     virt-v2v --version
     nbdkit --version
 
-**Step 5: Verify required network and firewall access**
+**Step 5: Restart the CloudStack agent**
+
+Restart the CloudStack agent service so it detects the installed VDDK library and makes it available in the UI:
+
+::
+
+    systemctl restart cloudstack-agent
+
+After the agent restarts, verify that VDDK installation was detected by checking the host details in the CloudStack UI.
+
+**Step 6: Verify required network and firewall access**
 
 Allow the following ports through any firewall or network security controls between the KVM conversion host and the
 VMware endpoints:
@@ -258,6 +285,13 @@ Example configuration in ``/etc/cloudstack/agent/agent.properties``:
 
 Recommendations for Using VDDK-based Conversion
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**VM state before conversion**
+
+- **Linux VMs**: Can be converted while running, but it is recommended to power off and gracefully shut down the VM
+  to avoid crash-consistent state conversions.
+- **Windows VMs**: Must be powered off and gracefully shut down before conversion to ensure the filesystem is in a
+  clean state. Conversion of running Windows VMs is not supported.
 
 **Use a single primary storage pool for direct conversion**
 
