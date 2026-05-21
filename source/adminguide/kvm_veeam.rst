@@ -235,6 +235,8 @@ worker VM:
   virtual machines in the required networks.
 * The worker VM should use an appropriate **compute offering** depending on the
   resources allocated for the backup proxy in Veeam Backup & Replication.
+* The worker VM requires **UEFI Secure Boot**; therefore, the environment must
+  have **UEFI-enabled KVM hosts** with sufficient available capacity.
 * If multiple backup proxies are required for scaling backup operations,
   additional worker VMs can be deployed using similar network and compute
   configurations.
