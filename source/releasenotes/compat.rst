@@ -88,6 +88,7 @@ Supported External Devices
 -  SRX (Model srx100b) versions 10.3 to 10.4 R7.5 (not tested to work fine for last many CloudStack releases)
 -  F5 11.X (not tested to work fine for last many CloudStack releases)
 -  Force 10 Switch version S4810 for Baremetal Advanced Networks (not tested to work fine for last many CloudStack releases)
+-  Palo Alto Networks Firewall (not tested to work fine in the last recent CloudStack releases)
 
 Supported Browsers
 ------------------
