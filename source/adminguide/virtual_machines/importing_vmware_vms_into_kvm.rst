@@ -117,6 +117,196 @@ If you are hitting the following error when running ovftool, install the depende
         dnf install libnsl
 
 
+VDDK-based Optimized Conversion
+-------------------------------
+
+CloudStack supports an optimized VMware-to-KVM migration path using virt-v2v in vpx input mode combined with
+VMware's Virtual Disk Development Kit (VDDK). This method eliminates the OVF export phase entirely and streams
+disk blocks directly from the source hypervisor into the conversion pipeline, resulting in significantly faster
+migration times.
+
+The traditional OVF-based workflow operates in two sequential phases:
+
+1. Export the entire VM as OVF/VMDK files to temporary storage (full disk copy).
+2. Convert the local VMDK files using virt-v2v (second full disk read and write).
+
+The VDDK-based workflow replaces both phases with a single streaming pipeline:
+
+- virt-v2v connects directly to vCenter via ``vpx://``
+- Disk blocks are read on demand via VDDK (using nbdkit internally as the translation layer between the
+  VDDK API and virt-v2v's NBD block device interface)
+- Conversion and disk transfer happen concurrently
+- Only allocated blocks are transferred; zero-filled and sparse extents are skipped
+- No intermediate OVF or VMDK files are created
+
+This reduces disk I/O amplification, eliminates temporary staging storage, and shortens end-to-end migration time.
+
+.. note::
+
+   CloudStack does not distribute VDDK, operators must download it separately.
+   Along with the new VDDK-based conversion method the traditional OVF-based method remains supported for environments.
+   Operators can choose the conversion method on a per-migration basis in the UI import wizard.
+Host Prerequisites for VDDK-based Conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To use VDDK-based migration, operators must prepare each KVM host that will run the conversion: install the conversion
+tools, install VDDK manually, configure libguestfs, and verify host connectivity to vCenter/ESXi.
+
+Example: prepare one KVM conversion host
+
+**Step 1: Install the conversion stack**
+
+Install the required conversion tools on the KVM host. Choose the appropriate command for your distribution:
+
+RHEL / Rocky / Alma Linux:
+
+::
+
+    dnf install -y epel-release
+    dnf config-manager --set-enabled crb
+    dnf install -y virt-v2v libguestfs-tools libguestfs-xfs qemu-img nbdkit
+
+Ubuntu:
+
+::
+
+    apt install -y \
+      virt-v2v \
+      libguestfs-tools \
+      libguestfs-xfs \
+      qemu-utils \
+      qemu-system-x86 \
+      libvirt-clients \
+      nbdkit
+
+**Step 2: Download and install VDDK**
+
+Download the VDDK tarball and extract it on the KVM host. The CloudStack agent will detect the VDDK library
+directory from the extracted package layout or it can also be configured explicitly via the ``vddk.lib.dir``
+property in ``/etc/cloudstack/agent/agent.properties``.
+
+::
+
+    mkdir -p /opt/vmware-vddk
+    tar -xf VMware-vix-disklib-9*.tar.gz -C /opt/vmware-vddk
+
+Expected layout after extraction::
+
+    /opt/vmware-vddk/vmware-vix-disklib-distrib/
+      lib64/
+      include/
+      bin64/
+
+**Step 3: Add EL9 compatibility symlink (when using VDDK 9)**
+
+On EL9 distributions, virt-v2v may expect ``libvixDiskLib.so.8``. Create this compatibility symlink:
+
+::
+
+    cd /opt/vmware-vddk/vmware-vix-disklib-distrib/lib64
+    ln -s libvixDiskLib.so.9 libvixDiskLib.so.8
+
+.. note:: This compatibility symlink is commonly required on RHEL 9, Rocky Linux 9, and Alma Linux 9.
+
+**Step 4: Verify host setup**
+
+::
+
+    ls /opt/vmware-vddk/vmware-vix-disklib-distrib/lib64/libvixDiskLib.so.8
+    virt-v2v --version
+    nbdkit --version
+
+**Step 5: Restart the CloudStack agent**
+
+Restart the CloudStack agent service so it detects the installed VDDK library and makes it available in the UI:
+
+::
+
+    systemctl restart cloudstack-agent
+
+After the agent restarts, verify that VDDK installation was detected by checking the host details in the CloudStack UI.
+
+**Step 6: Verify required network and firewall access**
+
+Allow the following ports through any firewall or network security controls between the KVM conversion host and the
+VMware endpoints:
+
+.. cssclass:: table-striped table-bordered table-hover
+
+==============================  ======  ==============================
+Target                          Port    Purpose
+==============================  ======  ==============================
+vCenter                         443     API / authentication
+ESXi hosts                      902     VDDK NFC disk transfer
+ESXi hosts                      443     VM metadata
+==============================  ======  ==============================
+
+Agent Properties for VDDK-based Conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following properties can be configured in ``/etc/cloudstack/agent/agent.properties`` on each KVM host to enable and tune the VDDK-based conversion.
+After editing this file, restart the CloudStack agent (``systemctl restart cloudstack-agent``).
+These values can also be passed in details parameters in importVm API as key-value pairs.
+
+.. cssclass:: table-striped table-bordered table-hover
+
++------------------------+----------------------------------------------------------------------+-------------------------------------------------------+
+| Property               | Description                                                          | Default / Example                                     |
++========================+======================================================================+=======================================================+
+| ``vddk.lib.dir``       | Path to the VDDK library directory on the KVM host.                  | ``/opt/vmware-vddk/vmware-vix-disklib-distrib``       |
+|                        | Passed to virt-v2v as ``-io vddk-libdir=<path>``.                    |                                                       |
++------------------------+----------------------------------------------------------------------+-------------------------------------------------------+
+| ``vddk.transports``    | Ordered VDDK transport preference.                                   | Example: ``nbd:nbdssl``                               |
+|                        | Passed as ``-io vddk-transports=<value>`` to virt-v2v.               |                                                       |
++------------------------+----------------------------------------------------------------------+-------------------------------------------------------+
+| ``vddk.thumbprint``    | Optional vCenter SHA1 thumbprint.                                    | If unset, CloudStack computes it automatically on     |
+|                        | Passed as ``-io vddk-thumbprint=<value>`` to virt-v2v.               | the KVM host via ``openssl``.                         |
++------------------------+----------------------------------------------------------------------+-------------------------------------------------------+
+
+Example configuration in ``/etc/cloudstack/agent/agent.properties``:
+
+::
+
+    # LIBGUESTFS backend to use for VMware to KVM conversion via VDDK (default: direct)
+    libguestfs.backend=direct
+
+    # Path to the VDDK library directory for VMware to KVM conversion via VDDK,
+    # passed to virt-v2v as -io vddk-libdir=<path>
+    vddk.lib.dir=/opt/vmware-vddk/vmware-vix-disklib-distrib
+
+    # Ordered VDDK transport preference for VMware to KVM conversion via VDDK, passed as
+    # -io vddk-transports=<value> to virt-v2v. Example: nbd:nbdssl
+    # vddk.transports=nbd:nbdssl
+
+    # Optional vCenter SHA1 thumbprint for VMware to KVM conversion via VDDK, passed as
+    # -io vddk-thumbprint=<value>. If unset, CloudStack computes it on the KVM host via openssl.
+    # vddk.thumbprint=
+
+
+Recommendations for Using VDDK-based Conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**VM state before conversion**
+
+- **Windows VMs**: Must be powered off and gracefully shut down before conversion to ensure the filesystem is in a
+  clean state.
+
+**Use a single primary storage pool for direct conversion**
+
+When VDDK-based conversion is enabled, it is strongly recommended to configure the conversion to write directly
+to the destination primary storage pool (i.e., set *Convert to storage pool directly* to ``true`` in the import wizard).
+This eliminates the two-step process of the traditional OVF method, conversion to temporary storage followed by
+an import step, replacing it with a single streaming pipeline that writes converted QCOW2 disks directly to the
+destination primary storage.
+
+**Network placement for optimal disk transfer throughput**
+
+For best performance, place the KVM conversion host on the same high-bandwidth network as the source ESXi hosts.
+VDDK disk transfer uses VMware's NFC protocol on TCP port 902. ESXi routes NFC traffic to the conversion host based
+on standard IP routing, if the conversion host is reachable over a dedicated storage or migration network,
+ESXi will naturally select that VMkernel interface for disk transfer, keeping bulk data off the management network
+without requiring any special configuration in virt-v2v or CloudStack.
+
 Usage
 -----
 
