@@ -15,6 +15,12 @@
     padding-top: 4px;
 }
 
+.github-changes-table td:nth-child(2),
+.github-changes-table th:nth-child(2) {
+    white-space: nowrap;
+    word-break: normal;
+}
+
 /*
 div[class^="highlight"] pre {
   font-size:10px

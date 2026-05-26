@@ -1,5 +1,5 @@
 
-.. cssclass:: table-striped table-bordered table-hover
+.. cssclass:: table-striped table-bordered table-hover github-changes-table
 
 
 +-------------------------+---------------+------------------------------------------------------------+
@@ -1028,7 +1028,7 @@ Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/37?
 to track its issues
 
 
-.. cssclass:: table-striped table-bordered table-hover
+.. cssclass:: table-striped table-bordered table-hover github-changes-table
 
 
 +-------------------------+---------------+------------------------------------------------------------+
@@ -1652,7 +1652,7 @@ Changes in 4.21.0.0 since 4.20.1.0
 Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/35?closed=1
 to track its issues
 
-.. cssclass:: table-striped table-bordered table-hover
+.. cssclass:: table-striped table-bordered table-hover github-changes-table
 
 
 +-------------------------+---------------+------------------------------------------------------------+
@@ -2316,7 +2316,7 @@ Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/36?
 to track its issues.
 
 
-.. cssclass:: table-striped table-bordered table-hover
+.. cssclass:: table-striped table-bordered table-hover github-changes-table
 
 +-------------------------+--------------------+------------------------------------------------------------+
 | Version                 | Github             | Description                                                |
@@ -2848,7 +2848,7 @@ Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/30?
 to track its issues.
 
 
-.. cssclass:: table-striped table-bordered table-hover
+.. cssclass:: table-striped table-bordered table-hover github-changes-table
 
 
 +-------------------------+----------+------------------------------------------------------------+
