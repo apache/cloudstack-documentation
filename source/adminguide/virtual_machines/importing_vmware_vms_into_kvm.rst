@@ -54,36 +54,37 @@ Ubuntu                      22.04 LTS, 24.04 LTS
 
 
 Importing Windows VMs from VMware requires installing the virtio drivers for Windows on the hypervisor hosts for the virt-v2v conversion.
+The Fedora-provided ``virtio-win`` RPM installs the drivers under ``/usr/share/virtio-win``, which is one of virt-v2v's
+default search paths.
 
-On (RH)EL hosts:
+On EL-based hosts, including RHEL, Oracle Linux, Rocky Linux and Alma Linux, install the Fedora-provided RPM directly.
+The ``virtio-win`` package may not be available from the enabled distribution repositories on EL8 or EL9 hosts.
 
     ::
 
-        yum install virtio-win
+        dnf install -y https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.noarch.rpm
 
-You can also install the RPM manually from https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.noarch.rpm
+        rpm -qa | grep -i virtio-win
+        ls -l /usr/share/virtio-win
 
 
 For Debian-based distributions:
 
-Ubuntu don’t seem to ship the virtio-win package with drivers, which causes virt-v2v not to convert the VMWare Windows guests to virtio profiles. This could result in slow IDE drives and Intel E1000 NICs. As a workaround, we can follow the below steps to install the package from the RPM on all KVM hosts running the virt-v2v:
+Ubuntu does not always ship a ``virtio-win`` package with the Windows drivers, which causes virt-v2v not to convert
+the VMware Windows guests to virtio profiles. This can result in slow IDE drives and Intel E1000 NICs. As a workaround,
+download the Fedora RPM and convert it to a DEB on all KVM hosts running virt-v2v:
 
     ::
 
-        apt install virtio-win (if the package is not available, then manual steps will be required to install the virtio drivers for windows)
-        
-        wget https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.noarch.rpm
-
-        # install “alien” which can convert rpms to debs
         apt -y install alien
+        wget -O virtio-win.noarch.rpm https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.noarch.rpm
 
-        # the conversion, can take a while
         alien -d virtio-win.noarch.rpm
-
-        # install the resulting deb
         dpkg -i virtio-win*.deb
+        ls -l /usr/share/virtio-win
 
-In addition to this, we need to install the below package as well to avoid the error “virt-v2v: error: One of rhsrvany.exe or pvvxsvc.exe is missing in /usr/share/virt-tools“.
+In addition to this, install the package below to avoid the error
+``virt-v2v: error: One of rhsrvany.exe or pvvxsvc.exe is missing in /usr/share/virt-tools``.
 
     :: 
      
