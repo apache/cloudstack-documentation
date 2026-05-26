@@ -23,11 +23,11 @@ and improvements since the 4.22.0.0 release. Some of the highlights include:
 • VMware-to-KVM migration fixes and improvements, including VDDK support and guest OS handling
 • GPU domain parsing fixes and PCI display controller support
 • Support configurable settings in the Proxmox Extension
-• Improvements for host VM power reporting in Extensions
+• Host VM power reporting improvements in Extensions
 • B&R enhancements, including NAS backup support with Linstor, timeout configuration support and other backup fixes
 • KVM Host HA improvements and heartbeat enhancements for SharedMountPoint storage
 • Support for creating volumes directly on a specified storage pool
-• Support KVM import/unmanage operations for SharedMountPoint pools
+• Support KVM import and unmanage operations for SharedMountPoint pools
 • Support to list and query async jobs by resource
 • Better VM lifecycle handling, including reserved resource cleanup and improved expunge error reporting
 • Networking fixes and improvements for NSX, Routed VPCs, Load Balancer rules, Static Routes, and VPN DH groups
