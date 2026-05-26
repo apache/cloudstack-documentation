@@ -24,6 +24,7 @@ and improvements since the 4.22.0.0 release. Some of the highlights include:
 • GPU domain parsing fixes and PCI display controller support
 • Support configurable settings in the Proxmox Extension
 • Host VM power reporting improvements in Extensions
+• Support UEFI on KVM hosts by default with preconfigured default settings.
 • B&R enhancements, including NAS backup support with Linstor, timeout configuration support and other backup fixes
 • KVM Host HA improvements and heartbeat enhancements for SharedMountPoint storage
 • Support for creating volumes directly on a specified storage pool
