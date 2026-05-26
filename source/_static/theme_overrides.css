@@ -15,6 +15,16 @@
     padding-top: 4px;
 }
 
+.github-changes-table {
+    table-layout: auto;
+}
+
+.github-changes-table th:nth-child(1),
+.github-changes-table td:nth-child(1) {
+    white-space: nowrap;
+    width: 1%;
+}
+
 .github-changes-table td:nth-child(2),
 .github-changes-table th:nth-child(2) {
     white-space: nowrap;
