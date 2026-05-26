@@ -1833,7 +1833,7 @@ to track its issues.
 .. _`#10418`: https://github.com/apache/cloudstack/pull/10418 
 
 
-Changes in |release| since 4.19.1.0
+Changes in 4.20.0.0 since 4.19.1.0
 ===================================
 
 Apache CloudStack uses GitHub https://github.com/apache/cloudstack/milestone/30?closed=1

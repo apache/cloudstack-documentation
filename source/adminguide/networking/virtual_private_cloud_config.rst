@@ -347,14 +347,16 @@ destination" and / or "allow all ingress source" rule to the ACL.
 Afterwards traffic can be white- or blacklisted.
 
 .. note::
-    - ACL Rules in Cloudstack are stateful
-    - Source / Destination CIDRs are always external Networks
-    - ACL rules can also been seen on the virtual router of the VPC. Ingress
-      rules are listed in the table iptables table "filter" while egress rules
-      are placed in the "mangle" table
-    - ACL rules for ingress and egress are not correlating. For example a
-      egress "deny all" won't affect traffic in response to an allowed ingress
-      connection
+- ACL Rules in Cloudstack are stateful
+- Source / Destination CIDRs are always external Networks
+- ACL rules can also been seen on the virtual router of the VPC. Ingress
+  rules are listed in the table iptables table "filter" while egress rules
+  are placed in the "mangle" table
+- ACL rules for ingress and egress are not correlating. For example a
+  egress "deny all" won't affect traffic in response to an allowed ingress
+  connection
+- The incoming traffic which does not match any ACL rules will be denied
+- The outgoing traffic which does not match any ACL rules will be allowed
   
 
 Creating ACLs
