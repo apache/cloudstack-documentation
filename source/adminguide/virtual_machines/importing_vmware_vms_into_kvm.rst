@@ -147,6 +147,7 @@ This reduces disk I/O amplification, eliminates temporary staging storage, and s
    CloudStack does not distribute VDDK, operators must download it separately.
    Along with the new VDDK-based conversion method the traditional OVF-based method remains supported for environments.
    Operators can choose the conversion method on a per-migration basis in the UI import wizard.
+
 Host Prerequisites for VDDK-based Conversion
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -182,13 +183,26 @@ Ubuntu:
 
 **Step 2: Download and install VDDK**
 
-Download the VDDK tarball and extract it on the KVM host. The CloudStack agent will detect the VDDK library
-directory from the extracted package layout or it can also be configured explicitly via the ``vddk.lib.dir``
-property in ``/etc/cloudstack/agent/agent.properties``.
+Download the VDDK Linux tarball from Broadcom's VMware Virtual Disk Development Kit page:
+https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/
+
+For EL-based KVM hosts, use the latest available VDDK 8.x Linux tarball on EL8 hosts and the latest available
+VDDK 9.x Linux tarball on EL9 hosts. Ubuntu hosts should use the Linux tarball compatible with the installed
+``virt-v2v`` and ``nbdkit`` packages; validate this combination before enabling VDDK-based migrations in production.
+
+Extract the tarball under a consistent location such as the example below. The CloudStack agent auto-detects a valid
+``vmware-vix-disklib-distrib`` directory when it can find one on the host. If VDDK is extracted elsewhere, or if the
+host has more than one VDDK installation and a specific one should be used, configure the directory explicitly with the
+``vddk.lib.dir`` property in ``/etc/cloudstack/agent/agent.properties``.
 
 ::
 
     mkdir -p /opt/vmware-vddk
+
+    # EL8 example
+    tar -xf VMware-vix-disklib-8*.tar.gz -C /opt/vmware-vddk
+
+    # EL9 example
     tar -xf VMware-vix-disklib-9*.tar.gz -C /opt/vmware-vddk
 
 Expected layout after extraction::
