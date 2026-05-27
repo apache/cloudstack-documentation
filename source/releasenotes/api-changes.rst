@@ -16,7 +16,7 @@
 API Changes Introduced in 4.22.0.0
 ==================================
 
-For the complete list of API commands and params consult the `CloudStack Apidocs`_.
+For the complete list of API commands and params consult the `CloudStack API Documentation`_.
 
 Parameters Changed API Commands
 -------------------------------
