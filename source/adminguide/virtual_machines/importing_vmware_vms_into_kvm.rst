@@ -19,11 +19,11 @@ Requirements on the KVM hosts
 -----------------------------
 
 The CloudStack agent does not install the virt-v2v binary as a dependency. The virt-v2v binary must be installed manually on KVM hosts, or the migration will fail.
-Newer versions of virt-v2v - v2.7.x on EL9, v2.4.x on Ubuntu 24.04 - are strongly advised. Older version of virt-v2v - e.g. v1.4.x should be avoided.
+
+.. note:: Newer versions of virt-v2v - v2.7.x on EL9 variants, v2.4.x on Ubuntu 24.04 - are strongly advised. Older versions of virt-v2v - e.g. v1.4.x should be avoided.
+
 
 The virt-v2v output (progress) is logged in the CloudStack agent logs, to help administrators track the progress on the Instance conversion processes. The verbose mode for virt-v2v can be enabled by adding the following line to /etc/cloudstack/agent/agent.properties and restart cloudstack-agent:
-
-EL variants:
 
     ::
 
@@ -56,7 +56,23 @@ Ubuntu                      22.04 LTS, 24.04 LTS
 ========================    ========================
 
 
-Importing Windows VMs from VMware requires installing the virtio drivers for Windows on the hypervisor hosts for the virt-v2v conversion.
+Recommended distributions, due to the most recent virt-v2v version (EL9 prefered)
+
+
+.. cssclass:: table-striped table-bordered table-hover
+
+========================    ========================
+Linux Distribution           Versions
+========================    ========================
+Alma Linux                  9
+Red Hat Enterprise Linux    9
+Rocky Linux                 9
+Oracle Linux                9
+Ubuntu                      24.04 LTS
+========================    ========================
+
+
+Importing Windows VMs from VMware requires installing the virtio drivers inside that Windows VMs and that is executed by the host running virt-v2v conversion.
 The Fedora-provided ``virtio-win`` RPM installs the drivers under ``/usr/share/virtio-win``, which is one of virt-v2v's
 default search paths. 
 
@@ -70,7 +86,7 @@ On EL-based hosts, including RHEL, Oracle Linux, Rocky Linux and Alma Linux, ins
         ls -l /usr/share/virtio-win
 
 
-For Debian-based distributions (alien is needed for conversion of .rpm to .deb pavckage:
+For Debian-based distributions (alien is needed for conversion of .rpm to .deb package):
 
     ::
 
@@ -81,13 +97,21 @@ For Debian-based distributions (alien is needed for conversion of .rpm to .deb p
         dpkg -i virtio-win*.deb
         ls -l /usr/share/virtio-win
 
-On some distros, the Windows helper binary "rhsrvany.exe" which is used for Windows firstboot scripts and some other actions might be missing.
-To avoid virt-v2v error like ``virt-v2v: error: One of rhsrvany.exe or pvvxsvc.exe is missing in /usr/share/virt-tools`` - check if the file exists (it's actually a symbolic link):
-``ls -la /usr/share/virt-tools/rhsrvany.exe``
-If the file does not exist - proceed with the commands below (EL8 and EL9 hosts usually already have this in place, so are not affected)
+On some distros, the Windows helper binary "rhsrvany.exe", which is used for Windows-based VM firstboot scripts and some other actions, might be missing.
+
+To avoid virt-v2v error like  ``virt-v2v: error: One of rhsrvany.exe or pvvxsvc.exe is missing in /usr/share/virt-tools``  - check if the file exists (it's actually a symbolic link):
+
+    ::
+
+        ls -la /usr/share/virt-tools/rhsrvany.exe
+
+
+If the file does not exist, proceed with the commands below (EL8 and EL9 variants usually already have this in place, so are not affected)
+
+Ubuntu-based distros
+
     :: 
         
-        Ubuntu-based distros
         wget -nd -O srvany.rpm https://kojipkgs.fedoraproject.org/packages/mingw-srvany/1.1/4.fc38/noarch/mingw32-srvany-1.1-4.fc38.noarch.rpm
         [ -f /usr/bin/alien ] || apt -y install alien
         alien -d srvany.rpm
@@ -97,9 +121,7 @@ If the file does not exist - proceed with the commands below (EL8 and EL9 hosts 
         ln -sf /usr/i686-w64-mingw32/sys-root/mingw/bin/pnp_wait.exe /usr/share/virt-tools/pnp_wait.exe
         ls -la /usr/share/virt-tools/rhsrvany.exe
 
-The OVF tool (ovftool) must be installed on the destination KVM hosts if the hosts should export VM files (OVF) from vCenter. If not, the management server exports them (the management server doesn't require ovftool installed).
-
-Steps to install ovftool
+The OVF tool (ovftool) must be installed on the destination KVM hosts if the hosts are to export VM files (OVF) from vCenter. If not, the management server exports them (the management server doesn't require ovftool installed).
 
 Download the ovftool from https://developer.broadcom.com/tools/open-virtualization-format-ovf-tool/latest
 
@@ -111,7 +133,7 @@ Download the ovftool from https://developer.broadcom.com/tools/open-virtualizati
 
        ln -s /usr/local/ovftool/ovftool /usr/local/bin/ovftool
 
-If you are hitting the following error when running ovftool, install the dependecy
+If you are hitting the following error when running ovftool, install the dependency
 
 ./ovftool.bin: error while loading shared libraries: libnsl.so.1: cannot open shared object file: No such file or directory
 
@@ -147,7 +169,7 @@ This reduces disk I/O amplification, eliminates temporary staging storage, and s
 .. note::
 
    CloudStack does not distribute VDDK, operators must download it separately.
-   Along with the new VDDK-based conversion method the traditional OVF-based method remains supported for environments.
+   Along with the new VDDK-based conversion method, the traditional OVF-based method remains supported for environments.
    Operators can choose the conversion method on a per-migration basis in the UI import wizard.
 
 Host Prerequisites for VDDK-based Conversion
@@ -197,7 +219,7 @@ vSphere 9 and is not the expected default for vSphere 7 or vSphere 8 environment
 Extract the tarball under a consistent location such as the example below. The CloudStack agent auto-detects a valid
 ``vmware-vix-disklib-distrib`` directory when it can find one on the host. If VDDK is extracted elsewhere, or if the
 host has more than one VDDK installation and a specific one should be used, configure the directory explicitly with the
-``vddk.lib.dir`` property in ``/etc/cloudstack/agent/agent.properties``.
+``vddk.lib.dir`` property in ``/etc/cloudstack/agent/agent.properties`` - as explained in the 
 
 ::
 
@@ -217,7 +239,7 @@ Expected layout after extraction::
 
 ::
 
-    ls /opt/vmware-vddk/vmware-vix-disklib-distrib/lib64/libvixDiskLib.so.8
+    nbdkit vddk --dump-plugin libdir=/opt/vmware-vddk/vmware-vix-disklib-distrib/lib64 | grep vddk_library_version
     virt-v2v --version
     nbdkit --version
 
@@ -372,7 +394,7 @@ Since version 4.22.1 it is possible to select the Guest OS for the VM to be impo
 
 The conversion is performed on a random (or explicitly chosen) KVM host (if the ovftools are installed), otherwise, the management server will export/copy the VM files (optionally, you can force this action to be done by the management server even the KVM hosts have the ovftools installed in it). Irrelevant if the KVM host or the management server performs the copy of the VM files (OVF), you can further either let CloudStack choose which KVM host should do the conversion of the VM files using virt-v2v and which host will import the files to the destination Primary Storage Pool, or you can explicitly choose these KVM hosts for each of the 2 mentioned operations.
 
-When importing an instance from VMware to KVM, CloudStack performs the following actions:
+When importing an instance from VMware to KVM (OVF method), CloudStack performs the following actions:
 
     - Export the VM files (OVF) of the instance to a temporary storage location
       (which can be selected by the administrator). The export is performed by a
