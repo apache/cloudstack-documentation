@@ -186,9 +186,11 @@ Ubuntu:
 Download the VDDK Linux tarball from Broadcom's VMware Virtual Disk Development Kit page:
 https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/
 
-For EL-based KVM hosts, use the latest available VDDK 8.x Linux tarball on EL8 hosts and the latest available
-VDDK 9.x Linux tarball on EL9 hosts. Ubuntu hosts should use the Linux tarball compatible with the installed
-``virt-v2v`` and ``nbdkit`` packages; validate this combination before enabling VDDK-based migrations in production.
+Use the latest available VDDK 8.x Linux tarball for all supported KVM conversion hosts, including EL8, EL9,
+Ubuntu 22.04, and Ubuntu 24.04 hosts. VDDK 8.x covers vSphere 7 and vSphere 8 environments and is the recommended
+stable choice for most deployments. Do not use VDDK 9.x unless the source environment is vSphere 9 and the
+``virt-v2v`` and ``nbdkit`` package combination has been explicitly validated, because VDDK 9.x is targeted at
+vSphere 9 and is not the expected default for vSphere 7 or vSphere 8 environments.
 
 Extract the tarball under a consistent location such as the example below. The CloudStack agent auto-detects a valid
 ``vmware-vix-disklib-distrib`` directory when it can find one on the host. If VDDK is extracted elsewhere, or if the
@@ -199,11 +201,8 @@ host has more than one VDDK installation and a specific one should be used, conf
 
     mkdir -p /opt/vmware-vddk
 
-    # EL8 example
+    # VDDK 8.x example for EL8, EL9, Ubuntu 22.04, and Ubuntu 24.04 hosts
     tar -xf VMware-vix-disklib-8*.tar.gz -C /opt/vmware-vddk
-
-    # EL9 example
-    tar -xf VMware-vix-disklib-9*.tar.gz -C /opt/vmware-vddk
 
 Expected layout after extraction::
 
@@ -212,18 +211,7 @@ Expected layout after extraction::
       include/
       bin64/
 
-**Step 3: Add EL9 compatibility symlink (when using VDDK 9)**
-
-On EL9 distributions, virt-v2v may expect ``libvixDiskLib.so.8``. Create this compatibility symlink:
-
-::
-
-    cd /opt/vmware-vddk/vmware-vix-disklib-distrib/lib64
-    ln -s libvixDiskLib.so.9 libvixDiskLib.so.8
-
-.. note:: This compatibility symlink is commonly required on RHEL 9, Rocky Linux 9, and Alma Linux 9.
-
-**Step 4: Verify host setup**
+**Step 3: Verify host setup**
 
 ::
 
@@ -231,7 +219,7 @@ On EL9 distributions, virt-v2v may expect ``libvixDiskLib.so.8``. Create this co
     virt-v2v --version
     nbdkit --version
 
-**Step 5: Restart the CloudStack agent**
+**Step 4: Restart the CloudStack agent**
 
 Restart the CloudStack agent service so it detects the installed VDDK library and makes it available in the UI:
 
@@ -241,7 +229,7 @@ Restart the CloudStack agent service so it detects the installed VDDK library an
 
 After the agent restarts, verify that VDDK installation was detected by checking the host details in the CloudStack UI.
 
-**Step 6: Verify required network and firewall access**
+**Step 5: Verify required network and firewall access**
 
 Allow the following ports through any firewall or network security controls between the KVM conversion host and the
 VMware endpoints:
