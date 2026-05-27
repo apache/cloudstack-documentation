@@ -19,19 +19,22 @@ Requirements on the KVM hosts
 -----------------------------
 
 The CloudStack agent does not install the virt-v2v binary as a dependency. The virt-v2v binary must be installed manually on KVM hosts, or the migration will fail.
+Newer versions of virt-v2v - v2.7.x on EL9, v2.4.x on Ubuntu 24.04 - are strongly advised. Older version of virt-v2v - e.g. v1.4.x should be avoided.
 
 The virt-v2v output (progress) is logged in the CloudStack agent logs, to help administrators track the progress on the Instance conversion processes. The verbose mode for virt-v2v can be enabled by adding the following line to /etc/cloudstack/agent/agent.properties and restart cloudstack-agent:
 
+EL variants:
+
     ::
 
-        dnf install virt-v2v
+        dnf install virt-v2v / apt install virt-v2v
 
         echo "virtv2v.verbose.enabled=true" >> /etc/cloudstack/agent/agent.properties  
     
         systemctl restart cloudstack-agent
 
 
-Installing virt-v2v on Ubuntu KVM hosts does not install nbdkit which is required in the conversion of VMware VCenter guests. To install it, please execute:
+Installing virt-v2v on Ubuntu KVM hosts does not install nbdkit, which is required in the conversion of VMware VCenter guests. To install it, please execute:
 
     ::
 
@@ -55,10 +58,9 @@ Ubuntu                      22.04 LTS, 24.04 LTS
 
 Importing Windows VMs from VMware requires installing the virtio drivers for Windows on the hypervisor hosts for the virt-v2v conversion.
 The Fedora-provided ``virtio-win`` RPM installs the drivers under ``/usr/share/virtio-win``, which is one of virt-v2v's
-default search paths.
+default search paths. 
 
 On EL-based hosts, including RHEL, Oracle Linux, Rocky Linux and Alma Linux, install the Fedora-provided RPM directly.
-The ``virtio-win`` package may not be available from the enabled distribution repositories on EL8 or EL9 hosts.
 
     ::
 
@@ -68,32 +70,32 @@ The ``virtio-win`` package may not be available from the enabled distribution re
         ls -l /usr/share/virtio-win
 
 
-For Debian-based distributions:
-
-Ubuntu does not always ship a ``virtio-win`` package with the Windows drivers, which causes virt-v2v not to convert
-the VMware Windows guests to virtio profiles. This can result in slow IDE drives and Intel E1000 NICs. As a workaround,
-download the Fedora RPM and convert it to a DEB on all KVM hosts running virt-v2v:
+For Debian-based distributions (alien is needed for conversion of .rpm to .deb pavckage:
 
     ::
 
-        apt -y install alien
         wget -O virtio-win.noarch.rpm https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.noarch.rpm
-
+        apt -y install alien
         alien -d virtio-win.noarch.rpm
+
         dpkg -i virtio-win*.deb
         ls -l /usr/share/virtio-win
 
-In addition to this, install the package below to avoid the error
-``virt-v2v: error: One of rhsrvany.exe or pvvxsvc.exe is missing in /usr/share/virt-tools``.
-
+On some distros, the Windows helper binary "rhsrvany.exe" which is used for Windows firstboot scripts and some other actions might be missing.
+To avoid virt-v2v error like ``virt-v2v: error: One of rhsrvany.exe or pvvxsvc.exe is missing in /usr/share/virt-tools`` - check if the file exists (it's actually a symbolic link):
+``ls -la /usr/share/virt-tools/rhsrvany.exe``
+If the file does not exist - proceed with the commands below (EL8 and EL9 hosts usually already have this in place, so are not affected)
     :: 
-     
-        wget -nd -O srvany.rpm https://kojipkgs.fedoraproject.org//packages/mingw-srvany/1.1/4.fc38/noarch/mingw32-srvany-1.1-4.fc38.noarch.rpm
-
+        
+        Ubuntu-based distros
+        wget -nd -O srvany.rpm https://kojipkgs.fedoraproject.org/packages/mingw-srvany/1.1/4.fc38/noarch/mingw32-srvany-1.1-4.fc38.noarch.rpm
+        [ -f /usr/bin/alien ] || apt -y install alien
         alien -d srvany.rpm
-
         dpkg -i *srvany*.deb
-
+        mkdir -p /usr/share/virt-tools
+        ln -sf /usr/i686-w64-mingw32/sys-root/mingw/bin/rhsrvany.exe /usr/share/virt-tools/rhsrvany.exe 
+        ln -sf /usr/i686-w64-mingw32/sys-root/mingw/bin/pnp_wait.exe /usr/share/virt-tools/pnp_wait.exe
+        ls -la /usr/share/virt-tools/rhsrvany.exe
 
 The OVF tool (ovftool) must be installed on the destination KVM hosts if the hosts should export VM files (OVF) from vCenter. If not, the management server exports them (the management server doesn't require ovftool installed).
 
