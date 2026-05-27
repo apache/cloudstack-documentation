@@ -51,6 +51,7 @@ Information can also be found at CloudStack's wiki https://cwiki.apache.org/conf
    Apache CloudStack web site <http://cloudstack.apache.org/>
    Apache CloudStack Source Code <http://cloudstack.apache.org/downloads.html>
    Apache CloudStack on GitHub <https://github.com/apache/cloudstack>
+   Apache CloudStack Documentation on GitHub <https://github.com/apache/cloudstack-documentation>
 
 
 

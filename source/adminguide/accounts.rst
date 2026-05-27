@@ -49,6 +49,8 @@ Beside the Root Administrator type of Account (available in the root domain only
 of Accounts can be created for each domain:  Domain Administrator and User.
 
 
+.. _users:
+
 Users
 ~~~~~
 
@@ -900,6 +902,124 @@ password for a user:
 
    .. figure:: /_static/images/reset-password.png
       :align:   center
+
+Add Users
+------------
+CloudStack allows administrators to create :ref:`users` within an Account.
+Users represent individual identities that can access CloudStack
+resources based on their assigned roles and permissions.
+
+Who can add Users
+~~~~~~~~~~~~~~~~~~
+
+The following administrators can create Users:
+
+- Root Administrators – across all domains and accounts
+- Domain Administrators – within their domain hierarchy
+
+**UI Flow:**
+
+#. Navigate to **Accounts → Users**.
+#. Click **Add User**.
+#. Fill in the User details, including the initial password.
+#. (Optional) Enable **User must change password at next login**.
+#. Add the User.
+
+.. figure:: /_static/images/add-user-popup.png
+   :align: center
+   :alt: Add user by administrator
+   :width: 400px
+
+If password change is enforced during User creation, the User is prompted to
+change the password on first login.
+See :ref:`user-login-flow-enforced-password-change`.
+
+
+Password Change for Users
+-------------------------
+CloudStack allows User passwords to be changed either by the User
+themselves or by an administrator. Password changes may be performed
+voluntarily or as part of an administrative action.
+
+User-initiated password changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Users can change their own password at any time after successfully
+logging in to the CloudStack UI.
+
+**UI Flow:**
+
+#. Log in to the CloudStack UI.
+#. Click the User profile menu.
+#. Select **Change Password**.
+#. Enter the current password.
+#. Enter and confirm the new password.
+#. Submit the change.
+
+.. figure:: /_static/images/user-change-password-popup.png
+   :align: center
+   :alt: User changing their own password
+   :width: 400px
+
+Administrator-initiated password changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Root and Domain Admins can change User's password when required, for example
+during account recovery or administrative maintenance.
+
+**UI Flow:**
+
+#. Navigate to **Accounts → Users**.
+#. Open the required User details page.
+#. Select **Change Password**.
+#. (Optional) Enable **User must change password at next login**.
+#. Change the password.
+
+.. figure:: /_static/images/admin-change-password-popup.png
+   :align: center
+   :alt: Change user password by administrator
+   :width: 400px
+
+When password change is selected, the User must change the temporary password on the
+next login. See :ref:`user-login-flow-enforced-password-change`.
+
+
+Force Password Reset for Users (Quick Action)
+-----------------------------------------------
+CloudStack allows administrators to enforce a password change
+**without modifying the current password**.
+
+**UI Flow:**
+
+#. Navigate to **Accounts → Users**.
+#. Open the required User details page.
+#. Click **Force password reset** from the actions menu.
+#. Confirm the action.
+
+.. figure:: /_static/images/force-password-reset-quick-action.png
+   :align: center
+   :alt: Force password reset using quick action
+
+.. raw:: html
+
+   <br>
+
+.. _user-login-flow-enforced-password-change:
+User login flow for enforced password change
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When password change is enforced, the User login flow is as follows:
+
+#. The User enters username, domain, and password.
+#. Authentication succeeds.
+#. The User is redirected to the **Change Password** page.
+#. The User must set a new password that complies with configured
+   password policies.
+#. Until the password is changed, no other UI actions or API operations are permitted.
+#. Upon successful password update, normal access is granted.
+
+.. figure:: /_static/images/force-password-change-login.png
+   :align: center
+   :alt: User prompted to change password after login
+   :width: 400px
 
 Using API Key and Secret Key based Authentication
 -------------------------------------------------
