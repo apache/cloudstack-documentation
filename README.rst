@@ -17,7 +17,7 @@
 Apache CloudStack
 =================
 
-Apache CloudStack is an Apache project, see <http://cloudstack.apache.org> for
+Apache CloudStack is an Apache project - see <http://cloudstack.apache.org> for
 more information.
 
 

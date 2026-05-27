@@ -770,9 +770,9 @@ Following are some global settings that control various aspects of this feature.
 
 .. cssclass:: table-striped table-bordered table-hover
 
-=======================================   ====================================================================
+=======================================   ====================================================================================================
 Global setting                            Description
-=======================================   ====================================================================
+=======================================   ====================================================================================================
 ca.framework.provider.plugin              The configured CA provider plugin
 ca.framework.cert.keysize                 The key size used for certificate generation
 ca.framework.cert.signature.algorithm     The certificate signature algorithm
@@ -780,13 +780,15 @@ ca.framework.cert.validity.period         Certificate validity in days
 ca.framework.cert.automatic.renewal       Whether to auto-renew expiring certificate on hosts
 ca.framework.background.task.delay        The delay between each CA background task round in seconds
 ca.framework.cert.expiry.alert.period     The number of days to check and alert expiring certificates
-ca.plugin.root.private.key                (hidden/encrypted in database) Auto-generated CA private key
-ca.plugin.root.public.key                 (hidden/encrypted in database) CA public key
-ca.plugin.root.ca.certificate             (hidden/encrypted in database) CA certificate
-ca.plugin.root.issuer.dn                  The CA issue distinguished name used by the root CA provider
+ca.plugin.root.private.key                (hidden) CA private key. Auto-generated if empty. PKCS#8 format required
+ca.plugin.root.public.key                 (hidden) CA public key. Auto-generated if empty. X.509/SPKI format required
+ca.plugin.root.ca.certificate             (hidden) CA certificate chain. Auto-generated if empty. Supports intermediate CA chains
+ca.plugin.root.issuer.dn                  The CA issuer distinguished name used by the root CA provider
 ca.plugin.root.auth.strictness            Setting to enforce two-way SSL authentication and trust validation
 ca.plugin.root.allow.expired.cert         Setting to allow clients with expired certificates
-=======================================   ====================================================================
+ca.framework.inject.default.truststore    Injects CA certificate into JVM default truststore on startup for outgoing HTTPS trust
+                                          (default: ``true``). Restart management server(s) when changed
+=======================================   ====================================================================================================
 
 A change in ``ca.framework.background.task.delay`` settings requires restarting of
 management server(s) as the thread pool and a background tasks are configured
@@ -805,6 +807,76 @@ connected agents/hosts, and once all the agents/hosts are secured they may
 enforce authentication and validation strictness by setting
 ``ca.plugin.root.auth.strictness`` to ``true`` and restarting the management
 server(s).
+
+Custom CA Support
+~~~~~~~~~~~~~~~~~~
+
+The built-in ``root`` CA provider supports user-provided CA
+material. When the ``ca.plugin.root.private.key``,
+``ca.plugin.root.public.key``, and ``ca.plugin.root.ca.certificate``
+configuration keys are pre-populated, CloudStack uses the provided CA instead
+of auto-generating one. All internal certificate provisioning (agents,
+SystemVMs, management server keystores) automatically use the configured CA.
+
+Starting 4.23, this support was enhanced to include:
+
+- **Intermediate CA chains**: The ``ca.plugin.root.ca.certificate`` key can now
+  contain a PEM-concatenated chain of certificates.
+- **Outgoing HTTPS trust**: The configured CA is injected into the management
+  server's default truststore (controlled by ``ca.framework.inject.default.truststore``)
+  and the SystemVM's truststore, allowing outgoing HTTPS connections to trust
+  servers using this CA. This enables SystemVMs to download templates and ISOs
+  from HTTPS servers whose certificates are signed by the configured CA.
+- **Validation**: User-provided keys are validated on startup to prevent silent
+  overwriting of malformed keys.
+
+All three keys must be set together. If any key is missing or malformed, the CA
+provider will log a warning, overwrite them with auto-generated keys, and
+the user will need to update the global settings again with valid values.
+The private key must be in PKCS#8 format and the public key must be explicitly
+extracted. Use the following commands to prepare the CA material:
+
+.. code:: bash
+
+   # Convert private key to PKCS#8 format (required)
+   openssl pkcs8 -topk8 -nocrypt -in ca.key -out ca-pkcs8.key
+
+   # Extract the public key
+   openssl rsa -in ca.key -pubout -out ca.pub
+
+   # For intermediate CAs, concatenate into a single PEM chain
+   cat intermediate.crt root.crt > ca-chain.crt
+
+.. note::
+   When migrating from one CA to another on an existing environment, agents
+   holding certificates signed by the old CA will fail to connect after the
+   management server restarts with the new CA. Ensure
+   ``ca.plugin.root.auth.strictness`` is set to ``false`` to allow agents to
+   reconnect, then use ``provisionCertificate`` to re-provision each host and
+   SystemVM with certificates signed by the new CA. Alternatively, use forced
+   provisionin (see below) for hosts that cannot reconnect.
+
+Forced Certificate Provisioning
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``provisionCertificate`` API accepts a ``forced`` parameter (default:
+``false``). When set to ``true``, the management server provisions certificates
+directly via SSH instead of the agent communication channel. This is required
+when agents cannot connect to the management server — for example, after a CA
+change when the agent's keystore trusts the old CA.
+
+For KVM hosts, forced provisioning connects via SSH using stored host
+credentials, provisions the certificate, and restarts the ``cloudstack-agent``
+and ``libvirtd`` services. For SystemVMs, it routes commands through the
+SystemVM's SSH access.
+
+.. code:: bash
+
+   # Force re-provision a disconnected KVM host
+   cmk provision certificate hostid=<HOST_UUID> reconnect=true forced=true
+
+   # Force re-provision a disconnected SystemVM
+   cmk provision certificate hostid=<SYSTEMVM_HOST_UUID> reconnect=true forced=true
 
 Server Address Usage
 --------------------
