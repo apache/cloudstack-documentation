@@ -319,6 +319,13 @@ When a backup is restored back into the **same CloudStack environment**, the Clo
 Veeam integration plugin uses this stored metadata to recreate the instance with the
 appropriate configuration where possible.
 
+Instances with Encrypted Volumes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+During backup operations, data transfer is always in unecrypted form.
+Administrators can enable encryption from the Veeam Backup & Replication
+side to ensure backup data is stored in encrypted form.
+
 
 Instance Restore using Veeam Backup and Replication
 ---------------------------------------------------
@@ -351,6 +358,8 @@ The plugin restores the instance configuration using the metadata saved
 during backup, particularly for restore-to-original-location scenarios.
 This helps ensure that the restored instance closely resembles the
 original instance configuration where possible.
+
+
 
 Compute Offering Selection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -396,6 +405,23 @@ attached to the instance.
 Restored volumes are always assigned an available custom disk offering.
 If needed, administrators can manually change the disk offering after
 the restore operation completes.
+
+Restoring Instances with Encryption
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+During restore operations, as with backup, data is transferred in
+unencrypted form. Administrators can force restored volumes to be encrypted
+by enabling the following global configuration:
+
+::
+
+  integration.veeam.control.instance.encrypt.volumes = true
+
+When this configuration is enabled, the plugin attempts to use encrypted disk
+offerings for data volumes and a compute offering with the ``encryptroot``
+flag set to ``true``. If no encrypted disk offering is available, the restore
+operation fails.
+
 
 Assigning Restored Instances to Original Owners
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
