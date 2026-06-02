@@ -495,14 +495,13 @@ Limitations and Recommendations
 * Autoscale VM group instances cannot be backed up or restored.
 * The service account must have Root Admin privileges for restore operations
   to succeed.
-* Restore operations always result in **deployment of a new instance**
-  rather than restoring an existing instance in place. The
-  administrators must update the corresponding backup jobs for the new
-  instance if needed. This may also result in cloud-init re-running on
-  the restored instance if cloud-init is used for instance
-  initialization. Instances restored from password-protected templates
-  must be stopped, have the password reset, and then be started before
-  use.
+* Restore operations always result in **deployment of a new instance**.
+  For restore to the same location, a new instance is created with the
+  same instance ID. For restore to a new location, a completely new
+  instance is created. In this case, cloud-init may re-run on the restored
+  instance depending on its userdata configuration. Instances restored
+  from password-protected templates may require a password reset; use
+  the **Stop** and **Reset Password** functionality as needed.
 * During restore, it is recommended to not select the option to power on the
   instance immediately. This allows administrators to first verify the
   restored instance configuration and attach any missing networks before
