@@ -83,27 +83,32 @@ configured using CloudStack global configuration parameters.
 
 Update the following global configuration values in CloudStack:
 
-+------------------------------------------------+-------------------------------------------------------------+
-| Configuration Key                              | Description                                                 |
-+================================================+=============================================================+
-| integration.veeam.control.enabled              | Enables the CloudStack Veeam Control Service.               |
-+------------------------------------------------+-------------------------------------------------------------+
-| integration.veeam.control.bind.address         | IP address on which the control service listens.            |
-+------------------------------------------------+-------------------------------------------------------------+
-| integration.veeam.control.port                 | Port used by the service.                                   |
-+------------------------------------------------+-------------------------------------------------------------+
-| integration.veeam.control.api.username         | Username used by Veeam to authenticate with the service.    |
-+------------------------------------------------+-------------------------------------------------------------+
-| integration.veeam.control.api.password         | Password used by Veeam to authenticate with the service.    |
-+------------------------------------------------+-------------------------------------------------------------+
-| integration.veeam.control.service.account      | ID of the service account that the Veeam Control            |
-|                                                | Service uses to perform operations on resources.            |
-|                                                | This should be a Root Admin account.                        |
-+------------------------------------------------+-------------------------------------------------------------+
-| integration.veeam.control.allowed.client.cidrs | Comma-separated list of CIDR blocks representing clients    |
-|                                                | allowed to access the API. If empty, all clients will be    |
-|                                                | allowed. Example: 192.168.1.1/24,192.168.2.100/32           |
-+------------------------------------------------+-------------------------------------------------------------+
++--------------------------------------------------------+-------------------------------------------------------------+
+| Configuration Key                                      | Description                                                 |
++========================================================+=============================================================+
+| integration.veeam.control.enabled                      | Enables the CloudStack Veeam Control Service.               |
++--------------------------------------------------------+-------------------------------------------------------------+
+| integration.veeam.control.bind.address                 | IP address on which the control service listens.            |
++--------------------------------------------------------+-------------------------------------------------------------+
+| integration.veeam.control.port                         | Port used by the service.                                   |
++--------------------------------------------------------+-------------------------------------------------------------+
+| integration.veeam.control.api.username                 | Username used by Veeam to authenticate with the service.    |
++--------------------------------------------------------+-------------------------------------------------------------+
+| integration.veeam.control.api.password                 | Password used by Veeam to authenticate with the service.    |
++--------------------------------------------------------+-------------------------------------------------------------+
+| integration.veeam.control.service.account              | ID of the service account that the Veeam Control            |
+|                                                        | Service uses to perform operations on resources.            |
+|                                                        | This should be a Root Admin account.                        |
++--------------------------------------------------------+-------------------------------------------------------------+
+| integration.veeam.control.instance.encrypt.volumes     | Whether offerings with encryption enabled are always used   |
+|                                                        | when creating volumes and instances. If false, offerings    |
+|                                                        | are selected without explicitly considering encryption      |
+|                                                        | based on backup metadata, availability, and order.          |
++--------------------------------------------------------+-------------------------------------------------------------+
+| integration.veeam.control.allowed.client.cidrs         | Comma-separated list of CIDR blocks representing clients    |
+|                                                        | allowed to access the API. If empty, all clients will be    |
+|                                                        | allowed. Example: 192.168.1.1/24,192.168.2.100/32           |
++--------------------------------------------------------+-------------------------------------------------------------+
 
 These parameters can be configured from the **Global Settings** section of the
 CloudStack UI or using the CloudStack API.
