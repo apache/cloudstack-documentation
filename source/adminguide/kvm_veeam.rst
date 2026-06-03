@@ -454,8 +454,8 @@ the original location keeps the instance associated with the same Shared
 Filesystem. Restoring to a different location results in deployment of a
 regular instance.
 
-Restore Guest Files
--------------------
+Instances Guest Files Restore
+-----------------------------
 
 Guest file restore requires the backed-up instance IP address to be reachable
 from the host selected by Veeam for mounting the backup. Veeam can use either
@@ -475,10 +475,29 @@ out from the backup.
 Windows Instance
 ~~~~~~~~~~~~~~~~
 
+When restoring guest files from a Windows instance backup, ensure that
+``ntfs-3g`` is installed on the KVM hypervisor hosts to allow mounting
+instance backups.
+
+For Debian/Ubuntu-based hosts, run the following commands:
+
+::
+
+   apt update
+   apt install ntfs-3g -y
+
+For RHEL/CentOS-based hosts, run the following commands:
+
+::
+
+   dnf install epel-release -y
+   dnf install ntfs-3g -y
+
+
 Unlike Linux guest file restore, restore on a Windows instance may happen
-over SMB share. Ensure that the instance is reachable from the selected
-mounting host, or from the Veeam server when an automatically selected
-mounting host is used.
+over an SMB share. Ensure that the instance is reachable from the selected
+mounting host, or from the Veeam server when auto-selected mounting host
+processing is used.
 
 Ensure connectivity over the following ports:
 
@@ -502,24 +521,6 @@ To disable UAC remote token filtering for local administrator accounts, use:
      -Value 1 `
      -PropertyType DWord `
      -Force
-
-When restoring guest files from a Windows instance backup, ensure that
-``ntfs-3g`` is installed on the KVM hypervisor hosts to allow mounting
-instance backups.
-
-For Debian/Ubuntu-based hosts, run the following commands:
-
-::
-
-  apt update
-  apt install ntfs-3g -y
-
-For RHEL/CentOS-based hosts, run the following commands:
-
-::
-
-  dnf install epel-release -y
-  dnf install ntfs-3g -y
 
 
 Image Transfer for Backup and Restore
