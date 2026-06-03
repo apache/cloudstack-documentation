@@ -454,25 +454,73 @@ the original location keeps the instance associated with the same Shared
 Filesystem. Restoring to a different location results in deployment of a
 regular instance.
 
-Restore Guest Files with Windows Instance Backup
-------------------------------------------------
+Restore Guest Files
+-------------------
+
+Guest file restore requires the backed-up instance IP address to be reachable
+from the host selected by Veeam for mounting the backup. Veeam can use either
+a manually selected mounting host or an automatically selected mounting host.
+After mounting the backup on the selected host, files can be browsed and then
+restored or copied as needed.
+
+
+Linux Instance
+~~~~~~~~~~~~~~
+
+For Linux guest file restore, Veeam performs the restore workflow through the
+mounting host (KVM hypervisor host). The mounting host connects to the
+instance over SSH to restore files directly into the instance or copy files
+out from the backup.
+
+Windows Instance
+~~~~~~~~~~~~~~~~
+
+Unlike Linux guest file restore, restore on a Windows instance may happen
+over SMB share. Ensure that the instance is reachable from the selected
+mounting host, or from the Veeam server when an automatically selected
+mounting host is used.
+
+Ensure connectivity over the following ports:
+
+* 135
+* 445
+
+Also ensure that file sharing is enabled and allowed on the Windows instance.
+
+By default, when connecting remotely to a Windows machine using a local
+administrator account (not a domain account), Windows applies UAC filtering
+and provides a restricted token. This can prevent administrative operations
+over SMB administrative shares such as ADMIN$ and C$.
+
+To disable UAC remote token filtering for local administrator accounts, use:
+
+::
+
+   New-ItemProperty `
+     -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System `
+     -Name LocalAccountTokenFilterPolicy `
+     -Value 1 `
+     -PropertyType DWord `
+     -Force
 
 When restoring guest files from a Windows instance backup, ensure that
-``ntfs-3g`` is installed on the KVM hypervisor hosts.
+``ntfs-3g`` is installed on the KVM hypervisor hosts to allow mounting
+instance backups.
 
 For Debian/Ubuntu-based hosts, run the following commands:
 
 ::
 
-   apt update
-   apt install ntfs-3g -y
+  apt update
+  apt install ntfs-3g -y
 
 For RHEL/CentOS-based hosts, run the following commands:
 
 ::
 
-   dnf install epel-release -y
-   dnf install ntfs-3g -y
+  dnf install epel-release -y
+  dnf install ntfs-3g -y
+
 
 Image Transfer for Backup and Restore
 -------------------------------------
