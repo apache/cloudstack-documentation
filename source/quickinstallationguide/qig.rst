@@ -192,19 +192,17 @@ SELinux
 ^^^^^^^
 
 In an ideal environment, selinux should be set to enforcing and the necessary
-selinux policies are created to allow the services to run. For this guide,
-we will set selinux to permissive mode. This will allow us to install and
-configure the services without having to worry about selinux policies.
+selinux policies are created to allow the services to run.
 
-To configure SELinux to be permissive in the running system we need to run the 
+To configure SELinux to be enforcing in the running system we need to run the 
 following command:
 
 .. parsed-literal::
 
-   # setenforce 0
+   # setenforce 1
 
 To ensure that it remains in that state we need to configure the file 
-/etc/selinux/config to reflect the permissive state, as shown in this example:
+/etc/selinux/config to reflect the enforcing state, as shown in this example:
 
 .. parsed-literal::
 
@@ -213,7 +211,7 @@ To ensure that it remains in that state we need to configure the file
    # enforcing - SELinux security policy is enforced.
    # permissive - SELinux prints warnings instead of enforcing.
    # disabled - No SELinux policy is loaded.
-   SELINUX=permissive
+   SELINUX=enforcing
    # SELINUXTYPE= can take one of these two values:
    # targeted - Targeted processes are protected,
    # mls - Multi Level Security protection.
