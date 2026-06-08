@@ -138,33 +138,15 @@ MySQL. See :ref:`install-database-on-separate-node`.
          rpm -qa | grep selinux
 
    #. Set the SELINUX variable in ``/etc/selinux/config`` to
-      "permissive". This ensures that the permissive setting will be
+      "enforcing" or "permissive". This ensures that the setting will be
       maintained after a system reboot.
 
-      In RHEL or CentOS:
-
-      .. parsed-literal::
-
-         vi /etc/selinux/config
-
-      Change the following line
-
-      .. parsed-literal::
-
-         SELINUX=enforcing
-
-      to this:
-
-      .. parsed-literal::
-
-         SELINUX=permissive
-
-   #. Set SELinux to permissive starting immediately, without requiring
+   #. Set SELinux to enforcing or permissive starting immediately, without requiring
       a system reboot.
 
       .. parsed-literal::
 
-         setenforce permissive
+         setenforce enforcing
 
 .. note:: In a production environment, selinux should be set to enforcing
    and the necessary selinux policies are created to allow the

@@ -272,16 +272,6 @@ For the management server role we create a main.yml task like this:
      template: src=cloudstack.repo.j2 dest=/etc/yum.repos.d/cloudstack.repo
 
 
-   - name: Ensure selinux is in permissive mode
-
-     command: setenforce permissive
-
-
-   - name: Ensure selinux is set permanently
-
-     selinux: policy=targeted state=permissive
-
-
    -name: Ensure CloudStack packages are installed
 
      yum: name=cloud-client state=present

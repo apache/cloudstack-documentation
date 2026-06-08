@@ -547,7 +547,7 @@ CloudStack does various things which can be blocked by security
 mechanisms like AppArmor and SELinux. These have to be disabled to
 ensure the Agent has all the required permissions.
 
-#. Configure SELinux (RHEL, CentOS, SUSE)
+#. Configure SELinux (RHEL, CentOS)
 
    #. Check to see whether SELinux is installed on your machine. If not,
       you can skip this section.
@@ -560,39 +560,27 @@ ensure the Agent has all the required permissions.
          $ rpm -qa | grep selinux
 
    #. Set the SELINUX variable in ``/etc/selinux/config`` to
-      "permissive". This ensures that the permissive setting will be
+      "enforcing" or "permissive". This ensures that the setting will be
       maintained after a system reboot.
 
-      In RHEL or CentOS:
-
-      .. parsed-literal::
-
-         $ vi /etc/selinux/config
-
-      Change the following line
-
-      .. parsed-literal::
-
-         SELINUX=enforcing
-
-      to this
-
-      .. parsed-literal::
-
-         SELINUX=permissive
-
-   #. Then set SELinux to permissive starting immediately, without
+   #. Then set SELinux to enforcing or permissive starting immediately, without
       requiring a system reboot.
 
       .. parsed-literal::
 
-         $ setenforce permissive
+         $ setenforce enforcing
+
+   #. Set the security driver in ``/etc/libvirt/qemu.conf`` to "none".
+
+      .. parsed-literal::
+
+         security_driver="none"
 
 .. note:: In a production environment, selinux should be set to enforcing
    and the necessary selinux policies are created to allow the
    services to run.
 
-#. Configure Apparmor (Ubuntu)
+#. Configure Apparmor (Ubuntu, SUSE)
 
 
    #. Check to see whether AppArmor is installed on your machine. If
@@ -605,23 +593,23 @@ ensure the Agent has all the required permissions.
 
          $ dpkg --list 'apparmor'
 
-   #. Disable the AppArmor profiles for libvirt
+      In Ubuntu, install package apparmor-utils if not present.     
 
       .. parsed-literal::
 
-         $ ln -s /etc/apparmor.d/usr.sbin.libvirtd /etc/apparmor.d/disable/
+         $ apt install apparmor-utils
+
+   #. Then set Apparmor to enforcing mode
 
       .. parsed-literal::
 
-         $ ln -s /etc/apparmor.d/usr.lib.libvirt.virt-aa-helper /etc/apparmor.d/disable/
+         $ aa-enforce /etc/apparmor.d/*
+
+   #. Set the security driver in ``/etc/libvirt/qemu.conf`` to "none".
 
       .. parsed-literal::
 
-         $ apparmor_parser -R /etc/apparmor.d/usr.sbin.libvirtd
-
-      .. parsed-literal::
-
-         $ apparmor_parser -R /etc/apparmor.d/usr.lib.libvirt.virt-aa-helper
+         security_driver="none"
 
 
 Configuring the Networking
