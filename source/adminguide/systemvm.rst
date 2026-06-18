@@ -179,6 +179,11 @@ System VMs running on ESXi, the key is stored on the management server at
 
       Example: root@management:~# ssh -i ~cloud/.ssh/id_rsa 172.16.0.250 -p 3922
 
+
+For secure access, including through the VNC console, enable the global setting
+system.vm.random.password by setting it to true. System VMs must be recreated
+after changing this setting for it to take effect.
+
 Multiple System VM Support for VMware
 -------------------------------------
 
