@@ -677,8 +677,21 @@ provisioning and copy-on-write cloning:
    host the CloudStack agent refuses the attach with a clear error. Booting an Instance
    from an encrypted RBD root disk is **not** affected and works on older libvirt.
 
-Requirements on the KVM host: ``ceph-common`` (the ``rbd`` CLI) and a QEMU/librbd build
-that supports librbd LUKS2 encryption (Ceph Pacific / QEMU 6.1 and newer).
+Requirements on the KVM host: a QEMU/librbd build that supports librbd LUKS2 encryption
+(Ceph Pacific / QEMU 6.1 and newer), and ``ceph-common`` (the ``rbd`` CLI).
+
+.. important::
+   **Encrypted RBD adds a host dependency that non-encrypted RBD does not have.** Unlike
+   the qemu-native LUKS stack used for file-based storage and PowerFlex — which needs no
+   extra Ceph tooling — librbd RBD encryption requires ``ceph-common`` (the ``rbd`` CLI) to
+   be installed on **every** KVM host. A standard, non-encrypted KVM + Ceph/RBD deployment
+   does *not* need it, because normal RBD I/O goes entirely through libvirt and librbd; the
+   CLI is used only for the librbd LUKS2 *format* and encryption-aware *resize* steps, which
+   are driven through the ``rbd`` command line. Without ``ceph-common`` on the host, creating,
+   deploying, or resizing an encrypted RBD volume fails (existing non-encrypted volumes are
+   unaffected). This is an operational trade-off to weigh against the storage efficiency
+   librbd provides: install ``ceph-common`` from your distribution's Ceph packages, matching
+   the librbd version already present on the host, as part of host provisioning.
 
 
 To Create a New Volume
