@@ -951,6 +951,12 @@ specified source CIDRs to a tier through the selected public IP address. For
 example, you can create a firewall rule to allow SSH or HTTP traffic to the Web
 tier.
 
+Firewall rule management in a VPC depends on the Firewall service capability
+configured in the VPC offering. When creating the VPC, use a VPC offering that
+includes the Firewall service with VpcVirtualRouter as its provider.
+
+Steps to add a firewall rule on a public IP address in a VPC are as follows:
+
 #. Log in to the CloudStack UI.
 #. In the left navigation, choose Network.
 #. In the Select view, select VPC.
