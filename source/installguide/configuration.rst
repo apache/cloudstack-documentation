@@ -1594,6 +1594,47 @@ When a volume is created by the plugin, it will create bi-directional mappings i
 -  Each volume's description field in the Pure Flasharray storage system will have a formatted key/value pair with metadata mappings for the Cloudstack volume definition (user volume name, volume uuid, account/project information)
 -  Each virtual volume's WWID will be stored in the volume's path field in Cloudstack
 
+NetApp ONTAP Plug-in
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This plugin enables NetApp Unified ONTAP storage systems as a managed primary
+storage in CloudStack for KVM hypervisors. It supports both NFS 3.0 and iSCSI
+protocols, integrating with the traditional ONTAP unified storage architecture.
+
+This documentation assumes you have the following configured in your
+environment before adding a storage pool in CloudStack:
+
+-  NetApp Unified ONTAP 9.15.1 or higher.
+-  A Storage Virtual Machine (SVM) in ONTAP storage with NFS 3.0 or iSCSI protocol enabled.
+-  Only an IPv4-type Data LIF is supported. The Data LIF must be reachable from all KVM hypervisor hosts in CloudStack.
+-  Ensure Storage VM (SVM) is mapped to aggregates (aggrs) with sufficient
+   capacity.
+-  For iSCSI: iSCSI protocol enabled on the KVM host and adapter is configured.
+-  For NFS 3.0: NFS protocol enabled on the KVM host.
+
+When this storage pool is used with Compute or Disk Offerings, an administrator
+is able to build an environment in which a root or data disk that a user creates
+leads to the dynamic creation of a LUN or file on the ONTAP volume. Such a
+LUN or file is associated with one (and only ever one) CloudStack volume.
+
+Through the CloudStack UI, you can create ONTAP storage pool using these
+required fields:
+
+-  Provider: NetApp ONTAP
+-  Scope: Zone or Cluster
+-  Zone: target zone name
+-  Pod: Pod name (required for Cluster scope)
+-  Cluster: Cluster name (required for Cluster scope)
+-  Name: storage pool name
+-  Protocol: NFS3 or ISCSI
+-  Storage Array IP: ONTAP Storage IP or Management LIF
+-  Username: ONTAP Storage IP username (Cluster-level)
+-  Password: ONTAP Storage IP password (cluster-level)
+-  SVM Name: SVM name in ONTAP storage
+-  Capacity Bytes: total capacity in bytes
+-  Storage Tags: storage pool tags
+
+
 .. _add-secondary-storage:
 
 Add Secondary Storage
