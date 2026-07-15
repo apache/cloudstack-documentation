@@ -27,22 +27,22 @@ to create incremental backups of VMs. Its main characteristics are:
    - Support for backup compression.
    - Support for backup validation.
    - Support for "quick restore", inspired by Veeam's Instant Recovery.
-   - Incremental disk-only VM snapshot compatible (see :ref:`Disk-only-File-based-Storage-Instance-Snapshots-on-KVM`).
+   - Compatible with incremental disk-only VM snapshots (see :ref:`Disk-only-File-based-Storage-Instance-Snapshots-on-KVM`).
    - Backups are stored in the secondary storage.
 
-While by default the backups are stored in any secondary storage available, sharing the same space with templates, ISOs and snapshots, 
-using the :ref:`Direct resources to a specific secondary storage` feature, it is possible to create backup-exclusive secondary storages.
+By default, the backups are stored in any secondary storage available, sharing the same space with templates, ISOs and snapshots. 
+However, it is possible to create backup-exclusive secondary storages using the :ref:`Direct resources to a specific secondary storage` feature.
 
-Currently, only backup of VMs from the NFS, File-based Shared Mountpoint and Local Storage based Primary Storage are supported.
+Currently, only the backup of VMs consuming NFS, File-based Shared Mountpoint, and/or Local Storage is supported.
 
-Since the KBOSS plugin is fully implemented by ACS, and does not depend on any outside provider, the **importBackupOffering** API is not used. 
-Instead, use the **createBackupOffering**, which allows users to configure KBOSS features they want to use. These backup offerings are then 
-assigned and used with KVM instances to perform support B&R actions and operations.
+Since the KBOSS plugin is fully implemented by ACS, and does not depend on any external provider, the **importBackupOffering** API is not used. 
+Instead, the **createBackupOffering** is used to allow users to configure KBOSS features they want. These backup offerings can then 
+be assigned to KVM instances to perform B&R actions and operations.
 
 
 Using the KBOSS Backup and Recovery Plugin
 ------------------------------------------
-To use the KBOSS Backup and Recovery Plugin, the Backup and Recovery framework needs to be enabled first. Then the backup plugin 'kboss' needs to be enabled
+To use the KBOSS Backup and Recovery Plugin, the Backup and Recovery framework needs to be enabled first. Then, 'kboss' needs to be configured as the backup provider
 on either the global or zone settings. 
 
 ================================= ========================
@@ -52,15 +52,16 @@ backup.framework.enabled          true
 backup.framework.provider.plugin  kboss
 ================================= ========================
 
-Once the above two configurations are set, restart the cloudstack-management service. 
-After, we can create the first backup offering. Navigate to the Service Offerings -> Backup Offerings tab. Click on 'Create Backup Offering' and fill the form.
+Once the two configurations above are set, restart the cloudstack-management service. 
+
+After enabling the plugin, we can create the first backup offering. Navigate to the Service Offerings -> Backup Offerings tab, click on 'Create Backup Offering', and fill the wizard.
 
 =============================== ========================
 Field                           Value
 =============================== ========================
 Name                            A suitable name to represent the Backup Offering.
 Description                     A suitable description to represent the Backup Offering.
-Zone                            Zone UUID for the backup offering.
+Zone                            Zone in which this backup offering will be available.
 Allow User driven backups       Whether to allow backups from the ACS API. If this value is false, you will not be able to create backups using KBOSS. **It must be set as true**.
 Public                          Whether the offering is public or dedicated to a domain.
 Domain                          Domain to dedicate the offering, only shown when 'Public' is false.
@@ -75,28 +76,27 @@ Backup chain size               The backup chain size of the incremental backups
 
 .. image:: /_static/images/create-backup-offering.png
    :align: center
-   :alt: NAS Backup repository
+   :alt: KBOSS backup offering creation wizard
 
-After this has been done, you can go to any Instance view and assign the backup offering to it. Then, there will be buttons available for either ad-hoc
-backup or a scheduled backup of the VM.
+
+After creating the backup offering, you can assign it to any Instance and start to perform ad-hoc backups or schedule them.
 
 Quiesce (Filesystem Freeze and Thaw)
 ------------------------------------
 
 Users can set quiesce to true while creating a backup or a backup schedule.
-When a backup is initiated with quiesce enabled, CloudStack uses QEMU guest agent
-to freeze the filesystem before starting backup. This operation flushes all dirty
+When a backup is initiated with quiesce enabled, CloudStack uses the QEMU guest agent
+to freeze the filesystem before starting the backup. This operation flushes all dirty
 filesystem buffers to disk and quiesces new writes. The filesystem is then thawed
 immediately after the backup process starts, keeping the freezing window very short.
 
 |NASB&R-quiesceInstance.png|
 
-This enhancement brings the KBOSS backup plugin from crash-consistent backups closer to
-application-consistent backups.
+This feature makes the KBOSS backups closer to application-consistent backups, rather than crash-consistent backups.
 
 Points to note:
 
-#. The feature requires Qemu Guest Agent to be installed and running on the guest instance.
+#. The feature requires QEMU Guest Agent to be installed and running on the guest instance.
 #. This method does not capture the memory state of the guest. Any data held in application memory
    that hasn’t been flushed to disk prior to the filesystem freeze will not be captured.
 #. For fully application-consistent backups, guest applications must implement pre-freeze hooks
@@ -105,25 +105,24 @@ Points to note:
 Backup Chain Management
 -----------------------
 
-The size of the incremental backup chain is determined by the `backup.chain.size` zone-wide configuration; furthermore, it may be overwritten on the
+The size of the incremental backup chain is determined by the `backup.chain.size` zone-wide configuration; furthermore, it may be overridden on the
 offering level. Once the backup chain reaches the configured size, the next backup will be a full backup and a new chain will start.
 
 If users wish to finalize the backup chain early, the **finishBackupChain** API may be used. It is also available through the VM instance interface on the GUI.
-If the VM is in the `BackupError` state, ACS will try to normalize it. Most times ACS is able to normalize it, however, the VM may be unable to be recovered
+Additionally, this API can also be used when the VM is in the `BackupError` state to normalize it. Most times ACS is able to normalize it; however, the VM may be unable to be recovered
 automatically for a number of reasons, for example if the storage is unavailable.
 
 Isolated backups
 ----------------
 
-If you want to create a backup that does not depend on any backup chain, you may inform the `isolated` flag when creating a backup, or a backup schedule.
+If you want to create a backup that does not depend on, nor affects any backup chain, you may inform the `isolated` flag when creating a backup, or a backup schedule.
 When set, the created backup will be a full backup, with no dependencies on other backups, and no future backups will depend on it.
 
 Quick restore
 -------------
 
 If the backup was created using an offering with `allowQuickRestore` set, the user will be able to restore it using the `quickRestore` flag.
-When this is done, CloudStack creates new deltas on primary storage that have the backup as their backing files, while the backups are still on the 
-secondary storage. Then, the VM is automatically started and the volume consolidation process starts. While this is done, the VM is already available to use.
+When this is done, CloudStack creates new deltas on primary storage that have the backup on secondary storage as their backing files. Then, the VM is automatically started and the volume consolidation process starts. During consolidation, the VM is already available to use.
 
 While this process is ongoing, the VM should not be stopped (from inside the VM), otherwise, it will fail to consolidate the volume. The benefit of using quick restore 
 is that the VM is up and running in a very short time; however, the time to finish the consolidation process is bigger than normal restore. During 
@@ -178,10 +177,11 @@ To check information about compression jobs, the **listBackupServiceJobs** API m
 Validation
 ----------
 
-The backup validation process is executed asynchronously after the backup is created, for VMs using backup offerings that support it. To perform the validation, a temporary dummy
-VM is created using the backup being validated and a few configurable validation steps are executed. After the first successful validation, a Hash of the backup is taken,
-a new Hash is taken periodically and compared with the original to make sure the backup is still valid. Furthermore, most backup validation steps are dependant on the guest VM having
-Qemu Guest Agent installed and configured to run on start. There are three currently available validation steps:
+The backup validation process is executed asynchronously after the backup is created, for VMs using backup offerings that support it. Most backup validation steps are dependant on the guest VM having the QEMU Guest Agent installed and configured to run on start. To perform the validation, a temporary dummy
+VM is created using the backup being validated and a few configurable validation steps are executed. After the first successful validation, a Hash of the backup is taken.
+A new Hash is taken periodically and compared with the original to make sure the backup is still valid.
+
+There are three validation steps that can be configured currently:
 
 .. list-table:: Validation steps
    :widths: 20 60 20
@@ -189,12 +189,12 @@ Qemu Guest Agent installed and configured to run on start. There are three curre
 
    * - Step
      - Description
-     - Needs Qemu Gest Agent?
+     - Needs QEMU Guest Agent?
    * - `wait_for_boot`
      - Waits during a configurable timeout for the validation VM to boot.
      - Yes
    * - `execute_command`
-     - Executes a configurable command inside the VM using Qemu Guest Agent, compares the result with a configurable expected result
+     - Executes a configurable command inside the VM using the QEMU Guest Agent, and compares the result with a configurable expected result.
      - Yes
    * - `screenshot`
      - Takes a screenshot of the VM's window after a configurable time. The screenshot can then be downloaded via `downloadValidationScreenshot` API.
@@ -249,9 +249,9 @@ The configurations related to backup validation are detailed below:
      - `false` 
      - Account
 
-To configure the validation steps on a VM level, new VM settings were created. Most of them are available to end-users by default, except the timeouts. The availability of
-these settings to User accounts may be configured by the `user.vm.readonly.details` global configuration. It is expected that users use these settings to configure the validation
-process, especially the `execute_command` step, which if not configured using the VM settings will not run. Below is a table of the VM settings pertaining to the backup
+To allow configuring the validation steps on a VM basis, new VM settings were created. Most of them are available to end-users by default, except the timeouts. The availability of
+these settings to User accounts may be configured by the `user.vm.readonly.details` global configuration. It is expected that users utilize these settings to configure the validation
+process, especially the `execute_command` step, which will not run when not configured using the VM settings. Below, is a table of the VM settings pertaining to the backup
 validation process:
 
 .. list-table:: Validation VM settings
@@ -261,13 +261,13 @@ validation process:
    * - Setting
      - Description
    * - `backupValidationCommand`
-     - Command to be executed during the command execution step. The step will not run if this configuration does not have a value
+     - Command to be executed during the execute_command step. The step will not run if this configuration does not have a value
    * - `backupValidationCommandArguments`
-     - Arguments to be passed to the command executed during the command execution step
+     - Arguments to be passed to the command executed during the execute_command step
    * - `backupValidationCommandExpectedResult`
-     - Expected result of the command execution, coded in Base64. If not provided, the process exit code will be checked for value `0`
+     - Expected output of the command's execution, coded in Base64. If not provided, the process exit code will be checked for value `0`
    * - `backupValidationCommandTimeout`
-     - Timeout for the command executed during the command execution step. Overrides the global configuration
+     - Timeout for the command executed during the execute_command step. Overrides the global configuration
    * - `backupValidationScreenshotWait`
      - Waiting time before executing the screenshot during the screenshot step. Overrides the global configuration
    * - `backupValidationBootTimeout`
