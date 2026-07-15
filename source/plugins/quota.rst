@@ -311,6 +311,7 @@ Charging per Allocated CPU Capacity
 To charge **0.05 monetary units per MHz allocated per month**, configure:
 
 - **Type:** ``ALLOCATED_VM``
+- **Value:** ``0``
 
 - **Activation rule:**
 
@@ -328,6 +329,7 @@ To charge **10 monetary units per GiB of allocated memory per month**,
 configure:
 
 - **Type:** ``ALLOCATED_VM``
+- **Value:** ``0``
 
 - **Activation rule:**
 
@@ -344,7 +346,7 @@ To charge **2 monetary units per running virtual machine per month** only for
 a specific Account, with UUID ``c1558d9c-45bf-4721-8b4d-c67f911e3f65``, configure:
 
 - **Type:** ``RUNNING_VM``
-- **Value:** ``20``
+- **Value:** ``2``
 
 - **Activation rule:**
 
@@ -360,7 +362,7 @@ a predefined set of Accounts, with UUIDs ``c1558d9c-45bf-4721-8b4d-c67f911e3f65`
 and ``294ec2e8-89f7-422e-b201-6cd9a4d0e73b``, configure:
 
 - **Type:** ``RUNNING_VM``
-- **Value:** ``20``
+- **Value:** ``2``
 
 - **Activation rule:**
 
@@ -378,16 +380,16 @@ To charge **3 monetary units per running virtual machine per month** for
 a specific Domain, with UUID ``c875819c-2e76-40b0-9755-f3c628ff4743``, and **2 monetary units** for all other Domains, configure:
 
 - **Type:** ``RUNNING_VM``
-- **Value:** ``20``
+- **Value:** ``0``
 
 - **Activation rule:**
 
   .. code:: js
 
      if (domain.id === 'c875819c-2e76-40b0-9755-f3c628ff4743') {
-         33.15
+         3
      } else {
-         20
+         2
      }
 
 Charging a Domain and Its Subdomains
@@ -398,7 +400,7 @@ Accounts belonging to a Domain with ``customer-A`` in its path, as well as any
 of its subdomains, configure:
 
 - **Type:** ``RUNNING_VM``
-- **Value:** ``20``
+- **Value:** ``2``
 
 - **Activation rule:**
 
@@ -427,6 +429,7 @@ Charging a Fixed Monthly Fee per Volume
 To charge **1 monetary unit per volume per month**, configure:
 
 - **Type:** ``VOLUME``
+- **Value:** ``0``
 
 - **Activation rule:**
 
@@ -442,6 +445,7 @@ To charge **0.2 monetary units per GB of HDD storage per month**, assuming that
 the disk offering has ``hdd`` in its name, configure:
 
 - **Type:** ``VOLUME``
+- **Value:** ``0``
 
 - **Activation rule:**
 
@@ -491,6 +495,7 @@ To charge **30 monetary units per month** only for networks created from
 offerings containing ``.gold.`` in their name, configure:
 
 - **Type:** ``NETWORK``
+- **Value:** ``0``
 
 - **Activation rule:**
 
