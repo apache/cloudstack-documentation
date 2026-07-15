@@ -106,7 +106,9 @@ Backup Chain Management
 -----------------------
 
 The size of the incremental backup chain is determined by the `backup.chain.size` zone-wide configuration; furthermore, it may be overridden on the
-offering level. Once the backup chain reaches the configured size, the next backup will be a full backup and a new chain will start.
+offering level. Once the backup chain reaches the configured size, the next backup will be a full backup and a new chain will start. Moreover, the backup chains
+are currently separated by schedule ID, with manual backups having their own backup chain. Thus, if a user has a VM with two backup schedules, and also takes manual backups of the VM, it will have three
+concurrent backup chains.
 
 If users wish to finalize the backup chain early, the **finishBackupChain** API may be used. It is also available through the VM instance interface on the GUI.
 Additionally, this API can also be used when the VM is in the `BackupError` state to normalize it. Most times ACS is able to normalize it; however, the VM may be unable to be recovered
