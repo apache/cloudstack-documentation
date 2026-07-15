@@ -273,7 +273,7 @@ validation process:
    * - `backupValidationBootTimeout`
      - Timeout for the VM boot. Overrides the global configuration
 
-To check information about validation jobs, the **listBackupServiceJobs** API may be added.
+To check information about validation jobs, the **listBackupServiceJobs** API may be used.
 
 
 .. |NASB&R-quiesceInstance.png| image:: /_static/images/NASB&R-quiesceInstance.png
