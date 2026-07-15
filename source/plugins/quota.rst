@@ -175,6 +175,12 @@ how the tariff is applied:
 | ``false``     | Applies a tariff value of zero.                        |
 +---------------+--------------------------------------------------------+
 
+.. important::
+
+   Activation rules must not use the ``return`` keyword. Instead, the result of
+   the last evaluated expression is automatically used as the return value of
+   the activation rule.
+
 During rule evaluation, ACS automatically exposes resource metadata through
 preset variables. These variables provide access to information about the
 resource being processed, its attributes, and other execution context,
