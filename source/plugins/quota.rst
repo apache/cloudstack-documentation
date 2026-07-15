@@ -135,6 +135,11 @@ assigned to a specific type of resource consumption. Multiple tariffs may be
 associated with the same usage type, allowing cloud operators to implement
 different pricing strategies.
 
+Each tariff is associated with a tariff type, which determines the kind of
+resource consumption to which the tariff applies (for example, running virtual
+machines, allocated volumes, or network traffic). The measurement unit depends
+on the selected tariff type.
+
 The simplest form of tariff applies a fixed value per unit of resource consumed
 per month. For example, a tariff may apply 18.25 monetary units for each public
 IP used for a total of one month:
@@ -282,16 +287,34 @@ For example, if there are three tariffs with the same usage type, ordered as
        }
      ]
 
+The following example demonstrates how ``lastTariffs`` can be used to apply a
+5% discount to a previously calculated tariff when its value exceeds 100
+monetary units. This tariff must be configured with a higher position than the
+tariff whose value is being discounted.
+
+Suppose the first tariff charges 150 monetary units. A second tariff, configured
+with a higher position, can then apply the discount through its activation rule:
+
+.. code:: js
+
+   firstCharge = lastTariffs[0].value;
+
+   if (firstCharge > 100) {
+       firstCharge * -0.05
+   } else {
+       0
+   }
+
 
 Tariff Examples
 ~~~~~~~~~~~~~~~
 
-The following examples demonstrate common tariff configurations using both
-fixed values and activation rules. Unless stated otherwise, all monetary values applied 
+The following examples illustrate common tariff configurations using both fixed
+values and activation rules. Unless stated otherwise, all monetary values
 represent one month of resource consumption.
 
-Each example lists only the tariff attributes that differ from their default
-values. Unless specified otherwise, no activation rule is required.
+Each example lists only the relevant tariff attributes. Unless specified
+otherwise, no activation rule is required.
 
 Compute Resources
 ^^^^^^^^^^^^^^^^^
@@ -318,9 +341,9 @@ To charge **0.05 monetary units per MHz allocated per month**, configure:
   .. code:: js
 
      price = 0.05;
-     usage = value.computingResources.cpuNumber *
-             value.computingResources.cpuSpeed;
-     price * usage
+     allocatedCpuMHz = value.computingResources.cpuNumber *
+    		       value.computingResources.cpuSpeed;
+     price * allocatedCpuMHz
 
 Charging per Allocated Memory
 """""""""""""""""""""""""""""
