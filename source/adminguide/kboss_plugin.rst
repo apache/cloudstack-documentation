@@ -172,7 +172,7 @@ There are several configurations that affect the backup compression task and pro
      - Compression rate limit, in MB/s. Values less than 1 disable the limit
      - 0
    
-To check information about compression jobs, the **listBackupServiceJobs** API may be added.
+To check information about compression jobs, the **listBackupServiceJobs** API may be used.
 
 Validation
 ----------
