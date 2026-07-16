@@ -130,15 +130,12 @@ Overview
 ~~~~~~~~
 
 To define monetary values for cloud resource consumption, the Quota Plugin
-introduces the concept of tariffs. A tariff defines how monetary value is
-assigned to a specific type of resource consumption. Multiple tariffs may be
-associated with the same usage type, allowing cloud operators to implement
-different pricing strategies.
-
-Each tariff is associated with a tariff type, which determines the kind of
-resource consumption to which the tariff applies (for example, running virtual
-machines, allocated volumes, or network traffic). The measurement unit depends
-on the selected tariff type.
+introduces the concept of tariffs. Each tariff is associated with a usage
+type, which determines the kind of resource consumption to which the tariff
+applies (for example, running virtual machines, volumes, or network traffic).
+The measurement unit also depends on the usage type. Multiple tariffs
+may be associated with the same usage type, allowing cloud operators to
+implement different pricing strategies.
 
 The simplest form of tariff applies a fixed value per unit of resource consumed
 per month. For example, a tariff may apply 18.25 monetary units for each public
