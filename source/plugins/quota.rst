@@ -118,7 +118,7 @@ and configure the following settings:
    take effect.
 
 Once the Quota Plugin is enabled, the last step of the Usage job will calculate the
-quota balance for each Account based on the configured quota tariffs. You can
+quota consumption for each Account based on the configured quota tariffs. You can
 also manually trigger quota calculation for all unprocessed usage records by
 calling the ``quotaUpdate`` API.
 
