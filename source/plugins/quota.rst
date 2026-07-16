@@ -113,8 +113,8 @@ and configure the following settings:
 
 .. note::
 
-   After changing ``quota.enable.service``, you must restart both the
-   Management Server and the Usage Server services for the changes to
+   After changing ``quota.enable.service`` or ``quota.enable.enforcement``, you must
+   restart both the Management Server and the Usage Server services for the changes to
    take effect.
 
 Once the Quota Plugin is enabled, the last step of the Usage job will calculate the
