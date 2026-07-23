@@ -162,9 +162,19 @@ changes can control the behaviour.
 
       The ``eventNotificationBus`` bean represents the
       ``org.apache.cloudstack.mom.rabbitmq.RabbitMQEventBus`` class.
-      
+
       If you want to use encrypted values for the username and password, you have to include a bean to pass those
       as variables from a credentials file.
+
+      .. note::
+         Older versions of this guide referenced
+         ``org.jasypt.spring3.properties.EncryptablePropertyPlaceholderConfigurer``, which comes
+         from the ``jasypt-spring3`` artifact. That artifact is not shipped with CloudStack and is
+         not compatible with the Spring 5 used since CloudStack 4.x, so beans referencing it fail
+         to load with a ``ClassNotFoundException``. Use
+         ``com.cloud.utils.crypt.EncryptablePropertyPlaceholderConfigurer`` instead, which ships
+         with CloudStack and works the same way. This bean also expects encrypted values to be
+         wrapped as ``ENC(...)``, matching the convention used elsewhere in CloudStack.
 
       A sample is given below
 
@@ -191,29 +201,39 @@ changes can control the behaviour.
             </bean>
 
             <bean id="environmentVariablesConfiguration" class="org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig">
-               <property name="algorithm" value="PBEWithMD5AndDES" />
+               <property name="algorithm" value="PBEWITHHMACSHA512ANDAES_256" />
                <property name="passwordEnvName" value="APP_ENCRYPTION_PASSWORD" />
             </bean>
 
             <bean id="configurationEncryptor" class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">
                <property name="config" ref="environmentVariablesConfiguration" />
+               <property name="ivGenerator">
+                  <bean class="org.jasypt.iv.RandomIvGenerator" />
+               </property>
             </bean>
 
-            <bean id="propertyConfigurer" class="org.jasypt.spring3.properties.EncryptablePropertyPlaceholderConfigurer">
+            <bean id="propertyConfigurer" class="com.cloud.utils.crypt.EncryptablePropertyPlaceholderConfigurer">
                <constructor-arg ref="configurationEncryptor" />
                <property name="location" value="classpath:/cred.properties" />
             </bean>
          </beans>
 
 
-      Create a new file in the same folder called ``cred.properties`` and the specify the values for username and password as jascrypt encrypted strings
+      Create a new file in the same folder called ``cred.properties`` and specify the values for
+      username and password as jasypt encrypted strings, wrapped as ``ENC(...)``.
 
       Sample, with ``guest`` as values for both fields:
 
       .. code:: bash
 
-         username=nh2XrM7jWHMG4VQK18iiBQ==
-         password=nh2XrM7jWHMG4VQK18iiBQ==
+         username=ENC(nh2XrM7jWHMG4VQK18iiBQ==)
+         password=ENC(nh2XrM7jWHMG4VQK18iiBQ==)
+
+      ``PBEWithMD5AndDES``, used in earlier releases of this guide, is a weak algorithm and should
+      not be used for new deployments; ``PBEWITHHMACSHA512ANDAES_256`` above is a stronger,
+      future-proof alternative. Use the ``jasypt`` CLI tools (or any tool using the jasypt library)
+      with the same algorithm, IV generator and ``APP_ENCRYPTION_PASSWORD`` to produce the
+      encrypted values for ``cred.properties``.
 
 
 #. Restart the Management Server.
