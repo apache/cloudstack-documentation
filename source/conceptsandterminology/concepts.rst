@@ -91,13 +91,6 @@ CloudStack provides a REST-like API for the operation, management and use of
 the cloud.
 
 
-AWS EC2 API Support
-~~~~~~~~~~~~~~~~~~~
-
-CloudStack provides an EC2 API translation layer to permit the common EC2
-tools to be used in the use of a CloudStack cloud.
-
-
 High Availability
 ~~~~~~~~~~~~~~~~~
 
@@ -145,8 +138,7 @@ The management server:
 
 -  Provides the web interface for both the administrator and end user.
 
--  Provides the API interfaces for both the CloudStack API as well as the EC2
-   interface.
+-  Provides the CloudStack API.
 
 -  Manages the assignment of guest Instances to a specific compute resource
 
