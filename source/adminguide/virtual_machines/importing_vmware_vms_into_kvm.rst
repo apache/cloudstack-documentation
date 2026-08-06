@@ -250,10 +250,13 @@ stable choice for most deployments. Do not use VDDK 9.x unless the source enviro
 ``virt-v2v`` and ``nbdkit`` package combination has been explicitly validated, because VDDK 9.x is targeted at
 vSphere 9 and is not the expected default for vSphere 7 or vSphere 8 environments.
 
-Extract the tarball under a consistent location such as the example below. The CloudStack agent auto-detects a valid
-``vmware-vix-disklib-distrib`` directory when it can find one on the host. If VDDK is extracted elsewhere, or if the
-host has more than one VDDK installation and a specific one should be used, configure the directory explicitly with the
-``vddk.lib.dir`` property in ``/etc/cloudstack/agent/agent.properties`` - as explained in the 
+Extract the tarball under a consistent location such as the example below, and **always configure that directory
+explicitly** with the ``vddk.lib.dir`` property in ``/etc/cloudstack/agent/agent.properties`` (see the configuration
+reference further down). The agent does attempt to auto-detect a ``vmware-vix-disklib-distrib`` directory when the
+property is not set, but relying on auto-detection is strongly discouraged: on a real host the search can pick up the
+wrong VDDK libraries - leftovers from container images, a second VDDK installation, or a partially extracted tree -
+and the resulting conversion failures are hard to trace back to the wrong library path. Treat auto-detection as a
+fallback only; set ``vddk.lib.dir`` on every conversion host.
 
 ::
 
