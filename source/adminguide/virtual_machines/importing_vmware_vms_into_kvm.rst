@@ -97,6 +97,28 @@ For Debian-based distributions (alien is needed for conversion of .rpm to .deb p
         dpkg -i virtio-win*.deb
         ls -l /usr/share/virtio-win
 
+.. note::
+   Never rely on the ``virtio-win`` package from the Enterprise Linux distribution
+   repositories: it lags the upstream project considerably and may contain no drivers at
+   all for recent Windows releases (for example, the EL9 package 1.9.40 has no drivers
+   for Windows Server 2025). virt-v2v then converts the guest without a virtio storage
+   driver and the imported VM cannot boot from its virtio disk. If the guest's Windows
+   release is newer than the drivers in the installed RPM, overwrite the ISO with the
+   latest upstream build:
+
+    ::
+
+        curl -L -o /usr/share/virtio-win/virtio-win.iso https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso
+
+.. note::
+   Windows Server 2025 enforces a stricter driver-signature policy at runtime and, as of
+   virtio-win 0.1.285, rejects the optional ``smbus`` driver's certificate during the
+   first-boot driver installation. virt-v2v retries the failed installation on every
+   boot, which leaves the imported guest in a reboot loop. Until this is resolved in the
+   virtio-win project, remove ``smbus.inf`` and ``smbus.cat`` from the driver set on the
+   conversion host before converting Windows Server 2025 guests; the driver is a
+   non-essential SMBus stub and the essential storage and network drivers install fine.
+
 On some distros, the Windows helper binary "rhsrvany.exe", which is used for Windows-based VM firstboot scripts and some other actions, might be missing.
 
 To avoid virt-v2v error like  ``virt-v2v: error: One of rhsrvany.exe or pvvxsvc.exe is missing in /usr/share/virt-tools``  - check if the file exists (it's actually a symbolic link):
