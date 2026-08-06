@@ -114,10 +114,22 @@ For Debian-based distributions (alien is needed for conversion of .rpm to .deb p
    Windows Server 2025 enforces a stricter driver-signature policy at runtime and, as of
    virtio-win 0.1.285, rejects the optional ``smbus`` driver's certificate during the
    first-boot driver installation. virt-v2v retries the failed installation on every
-   boot, which leaves the imported guest in a reboot loop. Until this is resolved in the
-   virtio-win project, remove ``smbus.inf`` and ``smbus.cat`` from the driver set on the
-   conversion host before converting Windows Server 2025 guests; the driver is a
-   non-essential SMBus stub and the essential storage and network drivers install fine.
+   boot, which leaves the imported guest in a reboot loop. The driver is a non-essential
+   SMBus stub; the essential storage and network drivers install fine. Until this is
+   resolved in the virtio-win project, rebuild the ISO on the conversion host without the
+   ``smbus`` files before converting Windows Server 2025 guests (virt-v2v reads the
+   drivers from ``/usr/share/virtio-win/virtio-win.iso``, so the ISO itself has to be
+   modified):
+
+    ::
+
+        dnf install -y xorriso
+
+        xorriso -osirrox on -indev /usr/share/virtio-win/virtio-win.iso -extract / /tmp/virtio-win-extracted
+        chmod -R u+w /tmp/virtio-win-extracted
+        find /tmp/virtio-win-extracted -iname 'smbus.*' -delete
+        xorriso -as mkisofs -o /usr/share/virtio-win/virtio-win.iso -J -R -V virtio-win /tmp/virtio-win-extracted
+        rm -rf /tmp/virtio-win-extracted
 
 On some distros, the Windows helper binary "rhsrvany.exe", which is used for Windows-based VM firstboot scripts and some other actions, might be missing.
 
