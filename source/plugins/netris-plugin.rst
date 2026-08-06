@@ -146,7 +146,7 @@ VPC Tier creation on CloudStack performs the following actions on Netris:
    - Global Routing = true. This parameter allows advertising the IPs for the VPC tier (required for Routed mode)
 
 .. note::
-Important: Please consider at least one running VM per VPC tier to prevent VPC tier state transition to Allocated state    
+   Important: Please consider at least one running VM per VPC tier to prevent VPC tier state transition to Allocated state    
 
 
 Supported VPC Services

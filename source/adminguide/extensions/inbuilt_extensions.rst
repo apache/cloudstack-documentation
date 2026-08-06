@@ -122,10 +122,11 @@ To set up the Proxmox Extension, follow these steps in CloudStack:
    * **template_type**: `template` or `iso`
    * **template_id**: ID of the template in Proxmox (if `template_type` is `template`)
 
-   |proxmox-add-template.png|
+      |proxmox-add-template.png|
 
    * **iso_path**: Full path to the ISO in Proxmox (if `template_type` is `iso`)
-   |proxmox-add-iso.png|
+
+      |proxmox-add-iso.png|
 
    Note: Templates and ISOs should be stored on shared storage when using multiple Proxmox nodes. Or copy the template/iso to each host's local storage at the same location.
 

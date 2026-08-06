@@ -815,6 +815,7 @@ There could be Calico routing edge case encountered in some environments. By def
 kubectl get ippool.crd.projectcalico.org -o yaml
 
 .. code-block:: bash
+
    apiVersion: crd.projectcalico.org/v1
    kind: IPPool
    metadata:

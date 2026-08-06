@@ -191,32 +191,32 @@ Using the API:
     :header-rows: 1
 
     * - Name
-       - Required
-       - Description
+      - Required
+      - Description
     * - ``id``
-       - Yes
-       - The ID of the DNS server to update
+      - Yes
+      - The ID of the DNS server to update
     * - ``nameservers``
-       - No
-       - Comma separated list of name servers; used to create NS records for the DNS Zone (for example, ns1.example.com, ns2.example.com)
+      - No
+      - Comma separated list of name servers; used to create NS records for the DNS Zone (for example, ns1.example.com, ns2.example.com)
     * - ``name``
-       - No
-       - Name of the DNS server
+      - No
+      - Name of the DNS server
     * - ``dnsapikey``
-       - No
-       - API key or credentials for the external provider
+      - No
+      - API key or credentials for the external provider
     * - ``ispublic``
-       - No
-       - Whether this DNS server can be used by accounts other than the owner to create and manage DNS zones
+      - No
+      - Whether this DNS server can be used by accounts other than the owner to create and manage DNS zones
     * - ``port``
-       - No
-       - Port number of the external DNS server
+      - No
+      - Port number of the external DNS server
     * - ``publicdomainsuffix``
-       - No
-       - Domain suffix that restricts DNS zones created by non-owner accounts to subdomains of this suffix
+      - No
+      - Domain suffix that restricts DNS zones created by non-owner accounts to subdomains of this suffix
     * - ``url``
-       - No
-       - API URL of the provider
+      - No
+      - API URL of the provider
 
 .. note:: Updating ``nameservers`` only affects new DNS zones created through this server. Existing DNS zones and their current NS records are not modified.
 

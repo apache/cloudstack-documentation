@@ -133,7 +133,9 @@ Above config prioritizes CPU at 70% weight and RAM at 30% when ranking pods, clu
 
 .. note::
    - `host.capacityType.to.order.clusters` is only respected for host ordering when:
-   .. code:: bash
 
-      vm.allocation.algorithm: firstfitleastconsumed
+      .. code:: bash
+
+         vm.allocation.algorithm: firstfitleastconsumed
+
    - When using COMBINED, make sure to tune cpu.to.memory.capacity.weight to reflect your environment’s resource constraints and workload profiles.

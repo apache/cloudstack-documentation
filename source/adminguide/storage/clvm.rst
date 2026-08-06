@@ -14,10 +14,12 @@
    under the License.
 
 From CloudStack 4.23 onwards, CloudStack supports two types for Clustered Logical Volume Manager (CLVM) primary storage:
+
 - CLVM: LVM volumes with RAW format
 - CLVM_NG (Next Generation): LVM volumes with QCOW2 format that supports advanced features.
 
 Both use the same underlying infrastructure:
+
 - `lvmlockd` daemon for lock management
 - `sanlock` for distributed locking
 - Shared volume groups across cluster hosts
@@ -44,7 +46,7 @@ Disadvantages:
 - Higher secondary storage bandwidth usage
 
 .. note:: 
-The original CLVM implementation used the clvmd (Clustered LVM daemon) along with corosync/pacemaker for cluster coordination. This technology has been deprecated in modern Linux distributions (RHEL 8+, Ubuntu 20.04+). CloudStack's current implementation uses the modern lvmlockd + sanlock stack, which is more reliable. This same modern infrastructure is shared with CLVM_NG - the only difference between CLVM and CLVM_NG is the disk image format (RAW vs QCOW2), not the locking mechanism.
+   The original CLVM implementation used the clvmd (Clustered LVM daemon) along with corosync/pacemaker for cluster coordination. This technology has been deprecated in modern Linux distributions (RHEL 8+, Ubuntu 20.04+). CloudStack's current implementation uses the modern lvmlockd + sanlock stack, which is more reliable. This same modern infrastructure is shared with CLVM_NG - the only difference between CLVM and CLVM_NG is the disk image format (RAW vs QCOW2), not the locking mechanism.
 
 CLVM_NG (QCOW2 format):
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -195,8 +197,10 @@ clvm.secure.zero.fill
 - **Category:** Advanced
 - **Description:** When enabled, CLVM volumes are zero-filled at deletion time to prevent data recovery by VMs reusing the space, as thick LVM volumes write data linearly
 - **Impact:** 
+
   - Enabled: Volumes are securely wiped on deletion (slower deletion, more secure)
   - Disabled: Fast deletion, but data may be recoverable
+
 - **Propagation:** Setting is propagated to hosts when they connect to the storage pool. Changing requires disconnecting/reconnecting hosts or restarting KVM agent
 - **Recommendation:** Enable for environments with strict security/compliance requirements (PCI-DSS, HIPAA). Disable for performance-critical environments where deletion speed matters more than data security
 - **Use Case:** Production environments handling sensitive data, multi-tenant environments with strict data isolation requirements
