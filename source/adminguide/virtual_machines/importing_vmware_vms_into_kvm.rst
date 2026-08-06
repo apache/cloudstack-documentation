@@ -115,7 +115,11 @@ For Debian-based distributions (alien is needed for conversion of .rpm to .deb p
    virtio-win 0.1.285, rejects the optional ``smbus`` driver's certificate during the
    first-boot driver installation. virt-v2v retries the failed installation on every
    boot, which leaves the imported guest in a reboot loop. The driver is a non-essential
-   SMBus stub; the essential storage and network drivers install fine. Until this is
+   SMBus stub; the essential storage and network drivers install fine.
+
+   This affects **Windows Server 2025 and newer only** - older Windows releases
+   (Windows Server 2016/2019/2022, Windows 10/11) accept the driver's signature and work
+   fine with the unmodified upstream ISO, so no action is needed for them. Until this is
    resolved in the virtio-win project, rebuild the ISO on the conversion host without the
    ``smbus`` files before converting Windows Server 2025 guests (virt-v2v reads the
    drivers from ``/usr/share/virtio-win/virtio-win.iso``, so the ISO itself has to be
