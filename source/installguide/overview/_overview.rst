@@ -50,7 +50,7 @@ recommended that you read the following:
 
 #. Configure your cloud. See :ref:`Configuring_your_CloudStack_Installation`
 
-   #. Using CloudStack UI. See `*User Interface* :ref:`log-in-to-ui`
+   #. Using CloudStack UI. See *User Interface* :ref:`log-in-to-ui`
 
    #. Add a zone. Includes the first pod, cluster, and host. See :ref:`adding-a-zone`
 
