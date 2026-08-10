@@ -37,7 +37,7 @@ In an IPv6-enabled network:
    configuration.
 
 IPv6 Address Assignment and Routing
-====================================
+###################################
 
 In Shared Networks, IPv6 address assignment and routing are provided by the upstream network infrastructure, not by the CloudStack Virtual Router.
 
