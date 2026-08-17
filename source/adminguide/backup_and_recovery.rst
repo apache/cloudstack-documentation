@@ -339,5 +339,6 @@ The configured timeout can be verified in the Management Server log. For example
 .. note::
 The command timeout determines how long the Management Server waits for the operation to complete. 
 Timing out the command does not necessarily terminate the underlying backup or restore operation on the hypervisor. 
-For example, with the NAS Backup & Recovery plugin on KVM, the corresponding libvirt operation may continue after the command times out on the Management Server.
+For example, with the NAS Backup & Recovery plugin on KVM, the corresponding libvirt operation may continue after the command times out on the Management Server. 
+The finished backup will not be tracked by CloudStack in this case and as such won't be cleaned up by a configured rotation.
 
