@@ -162,9 +162,26 @@ changes can control the behaviour.
 
       The ``eventNotificationBus`` bean represents the
       ``org.apache.cloudstack.mom.rabbitmq.RabbitMQEventBus`` class.
-      
-      If you want to use encrypted values for the username and password, you have to include a bean to pass those
-      as variables from a credentials file.
+
+      If you want to use encrypted values for the username and password, you have to include a
+      bean that decrypts those values as they're read from a credentials file. CloudStack ships
+      such a bean, ``com.cloud.utils.crypt.EncryptablePropertyPlaceholderConfigurer``, which
+      decrypts any property value wrapped as ``ENC(...)`` using the management server's own
+      secret key, i.e. the same key configured via ``password.encryption.type`` in
+      ``db.properties`` (see :doc:`management`). No separate encryption library or encryptor
+      bean is required.
+
+      .. note::
+         Older versions of this guide referenced
+         ``org.jasypt.spring3.properties.EncryptablePropertyPlaceholderConfigurer``, which comes
+         from the ``jasypt-spring3`` artifact, configured with a hand-rolled jasypt
+         ``StringEncryptor`` bean and algorithm. That artifact is not shipped with CloudStack and
+         is not compatible with the Spring version used since CloudStack 4.x, so beans
+         referencing it fail to load with a ``ClassNotFoundException`` and the encrypted
+         credentials are never decrypted. Use
+         ``com.cloud.utils.crypt.EncryptablePropertyPlaceholderConfigurer`` as shown below
+         instead; it needs no separate encryptor bean, and reuses the management server's own
+         secret key rather than a weak, independently configured cipher.
 
       A sample is given below
 
@@ -190,30 +207,35 @@ changes can control the behaviour.
                <property name="exchange" value="cloudstack-events"/>
             </bean>
 
-            <bean id="environmentVariablesConfiguration" class="org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig">
-               <property name="algorithm" value="PBEWithMD5AndDES" />
-               <property name="passwordEnvName" value="APP_ENCRYPTION_PASSWORD" />
-            </bean>
-
-            <bean id="configurationEncryptor" class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">
-               <property name="config" ref="environmentVariablesConfiguration" />
-            </bean>
-
-            <bean id="propertyConfigurer" class="org.jasypt.spring3.properties.EncryptablePropertyPlaceholderConfigurer">
-               <constructor-arg ref="configurationEncryptor" />
+            <bean id="propertyConfigurer" class="com.cloud.utils.crypt.EncryptablePropertyPlaceholderConfigurer">
                <property name="location" value="classpath:/cred.properties" />
             </bean>
          </beans>
 
 
-      Create a new file in the same folder called ``cred.properties`` and the specify the values for username and password as jascrypt encrypted strings
-
-      Sample, with ``guest`` as values for both fields:
+      Create a new file in the same folder called ``cred.properties`` and specify the values for
+      username and password, each encrypted against the management server's secret key (for the
+      ``file`` encryption type, that's the key stored at ``/etc/cloudstack/management/key``).
+      Encrypt each value with the ``EncryptionCLI`` tool that ships with CloudStack, the same
+      tool used to encrypt the database password (see :doc:`management`):
 
       .. code:: bash
 
-         username=nh2XrM7jWHMG4VQK18iiBQ==
-         password=nh2XrM7jWHMG4VQK18iiBQ==
+         # java -classpath /usr/share/cloudstack-common/lib/cloudstack-utils.jar com.cloud.utils.crypt.EncryptionCLI -p `cat /etc/cloudstack/management/key` -i guest
+
+      Take the value printed by that command and wrap it in ``ENC(...)`` in ``cred.properties``,
+      for both ``username`` and ``password``:
+
+      .. code:: bash
+
+         username=ENC(<output of the command above for your username>)
+         password=ENC(<output of the command above for your password>)
+
+      This only works once encryption is enabled on the management server, i.e.
+      ``password.encryption.type`` in ``db.properties`` is set to something other than
+      ``none`` (see :doc:`management`). If encryption is not enabled, the ``ENC(...)`` values
+      are passed through undecrypted and the RabbitMQ connection will fail with a
+      bad-credentials error.
 
 
 #. Restart the Management Server.
