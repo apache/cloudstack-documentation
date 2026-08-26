@@ -139,7 +139,7 @@ importUnmanagedInstance API
    - **account** (An optional account name for the Instance. Must be used with domainid parameter)
    - **domainid** (An optional domain ID for the Instance. Must be used with account parameter)
    - **projectid**
-   - **templateid** (A template ID for the Instance. Must be set in case of importing unmanaged KVM instances, optional otherwise)
+   - **templateid** (A template ID for the Instance. Must be set in case of importing a KVM unmanaged instance. It is optional for other hypervisors)
    - **serviceofferingid**
    - **nicnetworklist** (Map for NIC ID and corresponding Network UUID)
    - **nicipaddresslist** (Map for NIC ID and corresponding IP address)
