@@ -41,9 +41,6 @@ rst_epilog = """
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.doctest',
-    'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.autosectionlabel',
 ]
@@ -185,11 +182,6 @@ epub_exclude_files = ['search.html']
 
 
 # -- Extension configuration -------------------------------------------------
-
-# -- Options for intersphinx extension ---------------------------------------
-
-# Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
 
 # -- Options for todo extension ----------------------------------------------
 
