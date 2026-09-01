@@ -124,13 +124,13 @@ of memory.
 #. Navigate to Configuration, Global Settings:
 
 #. Set the name of the 64-bit Template, KVM64bitTemplate, in the
-   *``router.template.kvm``* global parameter.
+   ``router.template.kvm`` global parameter.
 
    If you are using a XenServer 64-bit Template, set the name in the
-   *``router.template.xenserver``* global parameter.
+   ``router.template.xenserver`` global parameter.
 
    If you are using a VMware 64-bit Template, set the name in the
-   *``router.template.vmware``* global parameter.
+   ``router.template.vmware`` global parameter.
 
    Any new virtual router created in this Zone automatically picks up
    this Template.
@@ -147,51 +147,138 @@ Accessing System VMs
 
 It may sometimes be necessary to access System VMs for diagnostics of certain
 issues, for example if you are experiencing SSVM (Secondary Storage VM)
-connection issues. Use the steps below in order to connect to the SSH console
-of a running System VM.
+connection issues. Use the methods below in order to connect to any running 
+System VM, including VR (Virtual Router) and CPVM (Console Proxy VM).
+
+Option A: Accessing via SSH
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Accessing System VMs over the network requires the use of private keys and
-connecting to System VMs SSH Daemon on port 3922. XenServer/KVM Hypervisors
-store this key at /root/.ssh/id_rsa.cloud on each CloudStack agent. To access
+connecting to System VMs SSH Daemon on port **3922**. XenServer/KVM Hypervisors
+store this key at ``/root/.ssh/id_rsa.cloud`` on each CloudStack agent. To access
 System VMs running on ESXi, the key is stored on the management server at
-~cloud/.ssh/id_rsa.
+``~cloud/.ssh/id_rsa``.
 
 
 #. Find the details of the System VM
 
-   #. Log in with admin privileges to the CloudStack UI.
+   #. Log in with Root Admin privileges to the **CloudStack UI**.
 
-   #. Click Infrastructure, then System VMs, and then click the name of a
+   #. Click **Infrastructure > System VMs**, and then click the name of a
       running VM.
 
    #. Take a note of the 'Host', 'Private IP Address' and 'Link Local IP
       Address' of the System VM you wish to access.
 
-#. XenServer/KVM Hypervisors
+#. For XenServer/KVM Hypervisors
 
-   #. Connect to the Host of which the System VM is running.
+   #. Connect via SSH as ``root`` to the Host of which the System VM is running.
 
    #. SSH to the 'Link Local IP Address' of the System VM from the Host on
       which the VM is running.
 
-      Format: ssh -i <path-to-private-key> <link-local-ip> -p 3922
+      Format:
 
-      Example: root@kvm01:~# ssh -i /root/.ssh/id_rsa.cloud 169.254.3.93 -p 3922
+      .. code:: bash
 
-#. ESXi Hypervisors
+         ssh -i <path-to-private-key> <link-local-ip> -p 3922
+
+      Example: 
+
+      .. code:: bash
+
+         root@kvm01:~# ssh -i /root/.ssh/id_rsa.cloud 169.254.3.93 -p 3922
+
+#. For ESXi Hypervisors
 
    #. Connect to your CloudStack Management Server.
 
    #. ESXi users should SSH to the private IP address of the System VM.
 
-      Format: ssh -i <path-to-private-key> <vm-private-ip> -p 3922
+      Format: 
 
-      Example: root@management:~# ssh -i ~cloud/.ssh/id_rsa 172.16.0.250 -p 3922
+      .. code:: bash
+
+         ssh -i <path-to-private-key> <vm-private-ip> -p 3922
+
+      Example: 
+
+      .. code:: bash
+
+         root@management:~# ssh -i ~cloud/.ssh/id_rsa 172.16.0.250 -p 3922
+
+
+Option B: Accessing via the Web Console
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If network access is restricted or the SSH daemon is unresponsive, administrators can 
+access the System VM directly through the CloudStack UI.
+
+#. For any hypervisor, using the default password.
+
+   #. Log in with Root Admin privileges to the **CloudStack UI**.
+
+   #. Click **Infrastructure > System VMs**, and then click the name of a
+      running VM.
+
+   #. Click the **View Console** button (screen icon) in the top right toolbar.
+
+      #. Default Username: ``root``
+
+      #. Default Password: ``password``
+
+#. For any hypervisor, if ``system.vm.random.password`` is enabled (recommended).
+
+   #. Log in with Root Admin privileges to the **CloudStack UI**.
+
+   #. Click **Infrastructure > System VMs**, and then click the name of a
+      running VM.
+
+   #. Click the **View Console** button (screen icon) in the top right toolbar.
+
+      #. Default Username: ``root``
+
+      #. The encrypted password can be found under the ``system.vm.password`` global parameter and must be decrypted to be usable.
+
+
+How to Enable System VM Random Password
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To improve the security of the environment, set the ``system.vm.random.password`` parameter to **True** and restart the Management Server. A random password is then generated and stored in encrypted form in the database. The value returned by the ``system.vm.password`` global parameter, or by calling the ``listConfigurations`` API, must be decrypted to obtain the usable password.
+
+#. Find the encrypted password and encryption key
+
+   #. Log in with Root Admin privileges to the **CloudStack UI**.
+
+   #. Click **Configuration > Global Settings**, and search for ``system.vm.password``.
+
+      Or using CloudMonkey: ``cmk listconfigurations name=system.vm.password``
+
+   #. On the Management Server, read the content of the file ``/etc/cloudstack/management/key`` to obtain
+      the encryption/decryption key.
+
+   #. Decrypt the password with the obtained key from the Management Server.
+
+      Format:
+
+      .. code:: bash
+
+         java -classpath /usr/share/cloudstack-common/lib/cloudstack-utils.jar \
+         com.cloud.utils.crypt.EncryptionCLI -p <encryption-key> -i <encrypted-password> -d -e V2
+
+      Example: 
+
+      .. code:: bash
+
+         root@management:~# java -classpath /usr/share/cloudstack-common/lib/cloudstack-utils.jar \
+         com.cloud.utils.crypt.EncryptionCLI -p `cat /etc/cloudstack/management/key` -i `cmk listconfigurations \
+         name=system.vm.password | jq -r '.configuration[0].value'` -d -e V2
+
 
 Multiple System VM Support for VMware
 -------------------------------------
 
-Every CloudStack zone has single System VM for Template processing tasks
+Every CloudStack zone has a single System VM for Template processing tasks
 such as downloading Templates, uploading Templates, and uploading ISOs.
 In a zone where VMware is being used, additional System VMs can be
 launched to process VMware-specific tasks such as taking Snapshots and
