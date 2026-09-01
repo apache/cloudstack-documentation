@@ -105,6 +105,7 @@ Storage media \\ hypervisor                    VMware vSphere   Citrix XenServer
 **SMB/CIFS**                                   No               No                   No                          Yes
 **Ceph/RBD**                                   No               No                   Yes                         No
 **PowerFlex/ScaleIO**                          No               No                   Yes                         No
+**NetApp ONTAP**                               No               No                   Yes                         No
 ============================================== ================ ==================== =========================== ============================
 
 XenServer uses a clustered LVM system to store Instance images on iSCSI and
