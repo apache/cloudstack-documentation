@@ -20,6 +20,22 @@ Adding Hosts
 Additional hosts can be added at any time to provide more capacity for
 guest Instances. For requirements and instructions, see :ref:`adding-a-host`.
 
+Listing Host Attributes
+------------------------
+The `listHosts` API accepts a comma-separated list of requested items in its `details` parameter. Accepted values are `min`, `all`, `capacity`, `events`, `stats`, and `core`.
+
+- `listHosts details=capacity` includes each host's total and allocated CPU and memory, as well as host tag information, in the API response.
+- `listHosts details=stats` includes each host's used CPU and memory information in the API response.
+- `listHosts details=events` includes events related to each host in the API response.
+- `listHosts details=all` returns all available host information in the API response.
+- `listHosts details=min` excludes capacity, stats, and events information.
+- `listHosts details=core` returns only the core set of host information that CloudStack can retrieve without performing additional database queries.
+
+The `core` detail was introduced to improve `listHosts` API performance: because the information returned for each host is lightweight, it reduces the number of database lookups required when listing hosts.
+
+.. note::
+   When `details=core` is used, the response includes the host's owning management server ms_id (from the `ms_host` table) in the `msid` field. When any of `capacity`, `stats`, `events`, `min`, or `all` is used instead, `msid` is not populated; the `managementserverid` and `managementservername` fields are returned instead.
+
 
 Scheduled Maintenance and Maintenance Mode for Hosts
 ----------------------------------------------------
