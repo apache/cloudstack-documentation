@@ -488,51 +488,72 @@ OpenLDAP)
 
 .. list-table:: LDAP Settings
    :header-rows: 1
+   :widths: 20 25 55
 
    * - Setting
-     - OpenLDAP
-     - Active Directory
+     - OpenLDAP / Active Directory
      - Description
    * - ``ldap.basedn``
-     - `Ex: OU=APAC, DC=company, DC=com`
-     - `Ex: DC=company, DC=com`
-     - Sets the basedn for LDAP.
+     - ``OU=APAC,DC=company,DC=com``
+     - Sets the base DN for LDAP searches.
    * - ``ldap.search.group.principle``
-     - `Ex: CN=ACSGroup, DC=company, DC=com`
-     - `Ex: CN=ACSGroup, CN=Users, DC=company, DC=com`
-     - (optional) if set only Users from this group are listed.
+     - ``CN=ACSGroup,DC=company,DC=com``
+     - *(Optional)* If set, only users belonging to this group are listed.
    * - ``ldap.bind.principal``
-     - `Ex: CN=ACSServiceAccount, OU=APAC, DC=company, DC=com`
-     - `Ex: CN=ACSServiceAccount, CN=Users, DC=company, DC=com`
-     - Service account that can list all the Users in the above basedn. Avoid using privileged account such as Administrator.
+     - ``CN=ACSServiceAccount,OU=APAC,DC=company,DC=com``
+     - Service account used to list users under the configured base DN.
+       Avoid using privileged accounts such as ``Administrator``.
    * - ``ldap.bind.password``
-     - `******************`
-     - `******************`
-     - Password for a DN User. Is entered in plain text but gets stored encrypted.
+     - ``****************``
+     - Password for the bind DN. Entered in plain text but stored encrypted.
    * - ``ldap.user.object``
-     - `interorgperson`
-     - `user`
-     - Object type of Users within LDAP.
+     - * OpenLDAP: ``inetOrgPerson``
+       * Active Directory: ``user``
+     - LDAP object class representing user accounts.
    * - ``ldap.email.attribute``
-     - `mail`
-     - `mail`
-     - Email attribute within ldap for a User.
+     - ``mail``
+     - Attribute used to retrieve the user email address.
    * - ``ldap.firstname.attribute``
-     - `givenname`
-     - `givenname`
-     - firstname attribute within ldap for a User.
+     - ``givenName``
+     - Attribute used to retrieve the user first name.
    * - ``ldap.lastname.attribute``
-     - `sn`
-     - `sn`
-     - lastname attribute within ldap for a User.
+     - ``sn``
+     - Attribute used to retrieve the user last name.
    * - ``ldap.group.object``
-     - `groupOfUniqueNames`
-     - `groupOfUniqueNames`
-     - Object type of groups within LDAP.
+     - * OpenLDAP: ``groupOfUniqueNames``
+       * Active Directory: ``group``
+     - LDAP object class representing groups.
    * - ``ldap.group.user.uniquemember``
-     - `uniquemember`
-     - `uniquemember`
-     - Attribute for uniquemembers within a group.
+     - ``uniqueMember``
+     - Attribute defining user membership within a group.
+   * - ``ldap.username.attribute``
+     - * OpenLDAP: ``uid``
+       * Active Directory: ``sAMAccountName``
+     - Sets the username attribute used within LDAP.
+   * - ``ldap.nested.groups.enable``
+     - ``true``
+     - If true, nested groups will also be queried.
+   * - ``ldap.provider``
+     - * OpenLDAP: ``openldap``
+       * Active Directory: ``microsoftad``
+     - LDAP provider (e.g. ``openldap``, ``microsoftad``).
+
+
+
+Restart CloudStack Management Services
+
+
+After updating the configuration, restart the CloudStack Management Server:
+
+.. code-block:: bash
+
+   systemctl restart cloudstack-management
+
+Notes
+
+
+* Configuration changes do not take effect until the management service is restarted.
+
 
    .. note:: ``ldap.search.group.principle`` is required when using ``linkaccounttoldap``.
 
@@ -566,7 +587,111 @@ You will need to know the path to the keystore and the password.
 -  ``ldap.truststore.password`` : truststore password
 
 
-.. |button to dedicate a zone, pod,cluster, or host| image:: /_static/images/dedicate-resource-button.png
+Configuring LDAPS/ LDAP SSL Trust for LDAP Integration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When integrating Apache CloudStack with an LDAP directory over **LDAPS (TCP 636)**,
+the CloudStack Management Server must trust the TLS certificate presented by the
+LDAP server. This trust is established by importing the LDAP server certificate
+into a Java truststore and configuring CloudStack to use that truststore for LDAP
+communication.
+
+Retrieve the LDAP Server Certificate
+
+
+1. On a CloudStack Management Server, navigate to the CloudStack management
+   configuration directory:
+
+   .. code-block:: bash
+
+      cd /etc/cloudstack/management/
+
+2. Retrieve **only the LDAP server certificate** (not the full certificate chain
+   or root CA):
+
+   .. code-block:: bash
+
+      echo "" | openssl s_client -connect ldap.example.com:636 -showcerts 2>/dev/null | \
+      openssl x509 -out ldap-server-certificate.pem
+
+3. Verify the retrieved certificate:
+
+   .. code-block:: bash
+
+      openssl x509 -in ldap-server-certificate.pem -noout -text
+
+   Ensure that the certificate details (Subject, Issuer, and validity dates)
+   match the LDAP server configuration.
+
+Create and Populate a Java Truststore
+
+
+1. Import the LDAP server certificate into a Java KeyStore (JKS):
+
+   .. code-block:: bash
+
+      keytool -importcert \
+        -alias ldap-server \
+        -file ldap-server-certificate.pem \
+        -trustcacerts \
+        -keystore cloudstack-ldap-truststore.jks \
+        -storetype JKS
+
+2. Verify the contents of the truststore:
+
+   .. code-block:: bash
+
+      keytool -v -list -keystore cloudstack-ldap-truststore.jks
+
+3. Verify file permissions:
+
+   .. code-block:: bash
+
+      ls -l /etc/cloudstack/management/cloudstack-ldap-truststore.jks
+
+   Example output:
+
+   .. code-block:: text
+
+      -rw-r--r-- 1 root root 1332 <date> cloudstack-ldap-truststore.jks
+
+   Ensure that the CloudStack Management Server process has read access to the
+   truststore file.
+
+Distribute the Truststore
+
+
+If multiple CloudStack Management Servers are deployed:
+
+* Copy the truststore file to **all management servers**
+* Ensure the **file path is identical** on each server
+* Ensure file permissions allow CloudStack to read the truststore
+
+Example path:
+
+::
+
+   /etc/cloudstack/management/cloudstack-ldap-truststore.jks
+
+
+
+Restart CloudStack Management Services after updating the global settings.
+
+
+After updating the configuration, restart the CloudStack Management Server:
+
+.. code-block:: bash
+
+   systemctl restart cloudstack-management
+
+Notes
+
+
+* Configuration changes do not take effect until the management service is restarted.
+* Certificate renewal on the LDAP server requires repeating this procedure and
+  redeploying the updated truststore.
+
+
 
 Using a SAML 2.0 Identity Provider for User Authentication
 ----------------------------------------------------------

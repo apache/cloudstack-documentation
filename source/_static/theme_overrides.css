@@ -11,6 +11,18 @@
     overflow: visible;
 }
 
+/* Force table to respect column widths */
+.wy-table-responsive table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.wy-table-responsive table td,
+.wy-table-responsive table th {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
 .rst-content li {
     padding-top: 4px;
 }
