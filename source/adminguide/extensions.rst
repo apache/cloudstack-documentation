@@ -17,7 +17,7 @@
 Extensions
 ==========
 
-Extensions are a new mechanism introduced in Apache CloudStack to allow administrators to extend the platform's functionality by integrating external systems or custom workflows. Currently, CloudStack supports a single extension type called Orchestrator.
+Extensions are a new mechanism introduced in Apache CloudStack to allow administrators to extend the platform's functionality by integrating external systems or custom workflows. Currently, CloudStack supports two extension types: Orchestrator and NetworkOrchestrator.
 
 In the UI, extensions can be managed under *Extensions* menu.
 
@@ -26,7 +26,7 @@ In the UI, extensions can be managed under *Extensions* menu.
 Overview
 ^^^^^^^^
 
-An extension in CloudStack is defined as an external binary (written in any programming language) that implements specific actions CloudStack can invoke. This allows operators to manage resource lifecycle operations outside CloudStack, such as provisioning VMs in third-party systems or triggering external automation pipelines.
+An extension in CloudStack is defined as an external binary (written in any programming language) that implements specific actions CloudStack can invoke. This allows operators to manage resource lifecycle operations outside CloudStack, such as provisioning VMs in third-party systems, orchestrating network and VPC services on external devices, or triggering external automation pipelines.
 
 Extensions are managed through the API and UI, with support for configuration, resource mappings, and action execution.
 
@@ -41,7 +41,7 @@ Administrators can define and manage the following components of an extension:
 
    - Configuration Details: Key-value properties used by the extension at runtime.
 
-   - Resource Mappings: Association between extensions and CloudStack resources such as clusters, etc.
+   - Resource Mappings: Association between extensions and CloudStack resources such as clusters and physical networks.
 
 Path and Availabilty
 ^^^^^^^^^^^^^^^^^^^^
@@ -79,6 +79,25 @@ An Orchestrator extension enables CloudStack to delegate VM orchestration to an 
      **Note**: User data and ssh-key injection from within CloudStack is not supported for the external VMs in this release. The External systems should handle user-data and ssh-key injections natively using other mechanisms.
 
    |extension.png|
+
+NetworkOrchestrator Extension
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A NetworkOrchestrator extension enables CloudStack to delegate guest network and VPC service orchestration to an external network system. Key features include:
+
+    - Physical Network Mapping: NetworkOrchestrator extensions are registered with a CloudStack physical network instead of a cluster.
+
+    - Provider-based Integration: When a NetworkOrchestrator extension is registered with a physical network, CloudStack creates an external network service provider using the extension name. Network and VPC offerings can then use that provider.
+
+    - Capability-driven Services: Supported services are declared through the extension details ``network.services`` and optional per-service capabilities in ``network.service.capabilities``. CloudStack uses these declarations when exposing supported services and validating offering capabilities.
+
+    - Network and VPC Lifecycle: Depending on the declared services, the extension can handle operations for guest networks, VPCs, public IPs, NAT, load balancing, DHCP, DNS, userdata, network ACLs, and related restart or reapply flows.
+
+    - Registration Details: Resource-specific details such as device endpoints, credentials, host lists, or interface mappings can be stored on the physical-network registration and updated later through the UI or the ``updateRegisteredExtension`` API.
+
+    - Network and VPC Custom Actions: Admins can define custom actions for ``Network`` and ``Vpc`` resources when the extension advertises the ``CustomAction`` service.
+
+    - Reference Implementation: A Linux network namespace based implementation is available in `cloudstack-extensions <https://github.com/apache/cloudstack-extensions/tree/network-namespace/Network-Namespace>`_. This reference backend has been validated with KVM-based smoke tests.
 
 
 CloudStack provides built-in Orchestrator Extensions for Proxmox, Hyper-V, and MaaS, which work with their respective environments out of the box.
