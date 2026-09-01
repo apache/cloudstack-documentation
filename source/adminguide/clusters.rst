@@ -34,6 +34,9 @@ There are two algorithms available:
 .. note::
    Deployment planner will not consider DRS while deploying instances.
 
+.. note::
+   To exclude an Instance from a DRS plan, add ``skipFromDRS`` to the Instance's settings.
+
 Configuring DRS
 ~~~~~~~~~~~~~~~
 Following are the configuration parameters for DRS.
