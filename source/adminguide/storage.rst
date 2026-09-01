@@ -625,16 +625,77 @@ Instances with local data volumes on that host.
 Volume Encryption
 ^^^^^^^^^^^^^^^^^
 
-CloudStack supports LUKS-based volume encryption on KVM. Encrypted volumes are managed
-through the :ref:`key-management-system`, where you can create and manage the encryption
-keys used to protect your data.
+CloudStack supports LUKS-based volume encryption on KVM. Encryption is enabled through the
+storage offering: create a Disk Offering with encryption enabled (for data volumes) or a
+Compute Offering with root volume encryption enabled (for root disks), and deploy on a
+primary storage that supports encryption. Volumes deployed from such an offering are
+encrypted automatically with a per-volume passphrase. Encryption is performed on the KVM
+host, so the guest always sees a normal, decrypted disk and there is no encryption device
+to manage inside the Instance.
 
-To create an encrypted volume, select a **KMS Key** from the UI when creating the volume,
-or supply the key ID via the API. The key must belong to the same zone as the volume.
+By default the per-volume passphrase is protected by a single key stored in the database.
+Optionally, the :ref:`key-management-system` (KMS, introduced in 4.23) can instead wrap the
+passphrase with a key held in an external HSM/KMS provider, in which case you select a
+**KMS Key** for the volume. KMS is not required for volume encryption.
+
+This choice of key protection is independent of the storage backend: every
+encryption-capable backend, including Ceph/RBD, works with either the database key or a KMS
+key. The encryption engine on the KVM host uses the resulting per-volume passphrase and does
+not depend on how that passphrase was protected, so no storage-specific configuration is
+needed to use one method or the other.
 
 .. warning::
-   Deleting the KMS key used to encrypt a volume will render that volume permanently
-   unrecoverable.
+   If the key material protecting a volume's passphrase is lost — for example by deleting
+   the KMS key used to wrap it — that volume becomes permanently unrecoverable.
+
+Supported primary storage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* File-based storage (NFS, local, SharedMountPoint) and Dell PowerFlex/ScaleIO — encrypted
+  with the qemu-native LUKS stack.
+* Ceph/RBD — encrypted with **native librbd LUKS2**
+  (``<encryption format='luks2' engine='librbd'>``), for both data disks and root disks.
+
+The two stacks are not interchangeable: a volume is always decrypted by the same engine
+that encrypted it, and they are never mixed on a single volume.
+
+Ceph/RBD encryption
+~~~~~~~~~~~~~~~~~~~
+
+For Ceph/RBD, encryption is applied natively by librbd, which preserves Ceph's thin
+provisioning and copy-on-write cloning:
+
+* **Data disks** stay thin — only written blocks consume space (a 1 TB encrypted volume
+  with 400 GB written uses roughly 400 GB).
+* **Root disks** deployed from a template already on the same Ceph cluster are created as
+  thin copy-on-write clones: each Instance stores only its own (encrypted) writes and
+  shares the template blocks, so deploying many encrypted Instances from one template uses
+  far less storage than a full per-Instance copy. When the template is not on the same
+  cluster (for example on first use from secondary storage), the encrypted root is created
+  as a full copy instead.
+
+.. note::
+   Attaching an encrypted RBD volume to a **running** Instance (hot-plug) requires
+   **libvirt >= 10.1.0** on the KVM host. Older libvirt (for example 10.0.0 shipped with
+   Ubuntu 24.04 LTS) has a bug that breaks hot-plug of encrypted block devices; on such a
+   host the CloudStack agent refuses the attach with a clear error. Booting an Instance
+   from an encrypted RBD root disk is **not** affected and works on older libvirt.
+
+Requirements on the KVM host: a QEMU/librbd build that supports librbd LUKS2 encryption
+(Ceph Pacific / QEMU 6.1 and newer), and ``ceph-common`` (the ``rbd`` CLI).
+
+.. important::
+   **Encrypted RBD adds a host dependency that non-encrypted RBD does not have.** Unlike
+   the qemu-native LUKS stack used for file-based storage and PowerFlex — which needs no
+   extra Ceph tooling — librbd RBD encryption requires ``ceph-common`` (the ``rbd`` CLI) to
+   be installed on **every** KVM host. A standard, non-encrypted KVM + Ceph/RBD deployment
+   does *not* need it, because normal RBD I/O goes entirely through libvirt and librbd; the
+   CLI is used only for the librbd LUKS2 *format* and encryption-aware *resize* steps, which
+   are driven through the ``rbd`` command line. Without ``ceph-common`` on the host, creating,
+   deploying, or resizing an encrypted RBD volume fails (existing non-encrypted volumes are
+   unaffected). This is an operational trade-off to weigh against the storage efficiency
+   librbd provides: install ``ceph-common`` from your distribution's Ceph packages, matching
+   the librbd version already present on the host, as part of host provisioning.
 
 
 To Create a New Volume
