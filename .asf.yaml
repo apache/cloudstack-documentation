@@ -33,7 +33,6 @@ github:
   collaborators:
     - abh1sar
 
-  protected_branches:
 
   rulesets:
     - name: "Default Branch Protection"
