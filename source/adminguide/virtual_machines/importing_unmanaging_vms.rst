@@ -139,7 +139,7 @@ importUnmanagedInstance API
    - **account** (An optional account name for the Instance. Must be used with domainid parameter)
    - **domainid** (An optional domain ID for the Instance. Must be used with account parameter)
    - **projectid**
-   - **templateid**
+   - **templateid** (A template ID for the Instance. Must be set in case of importing a KVM unmanaged instance. It is optional for other hypervisors)
    - **serviceofferingid**
    - **nicnetworklist** (Map for NIC ID and corresponding Network UUID)
    - **nicipaddresslist** (Map for NIC ID and corresponding IP address)
@@ -149,6 +149,9 @@ importUnmanagedInstance API
    - **forced** (If true, an Instance is imported despite some of its NIC's MAC addresses being already present)
 
 .. note:: The `forced` parameter is false by default and thus prevents importing an Instance which has a NIC containing a MAC address that has been previously assigned by CloudStack to another existing VM. If it is set to true, importing a VM with such already-used MAC addresses of the NICS will be allowed, however, the original MAC address will be replaced with a newly generated MAC address.
+
+.. note::
+   The `templateid` parameter is only required for importing unmanaged KVM instances. For the rest of the import operations, it is an optional parameter.
 
 **Response**:
 
