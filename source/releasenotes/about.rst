@@ -21,27 +21,31 @@ Apache CloudStack |release| is a 4.23 Regular release with 9 new features,
 around 20 improvements and more than 120 bug fixes since the 4.22.0.0 release.
 Some of the highlights include:
 
-• NetApp ONTAP Primary Storage Support, including volume management and storage pool maintenance
+• CLVM (Clustered LVM) Enhancements for KVM
 • Key Management Service (KMS) with HSM Integration
-• CloudStack DNS Framework, with PowerDNS as the first plugin
-• Network Extension: Orchestrate External Network Devices
-• API Key Pair Restructure, allowing multiple API key pairs per user
-• Keycloak OAuth Provider Support
-• KVM Backup on Secondary Storage (KBOSS), a new backup provider
-• Veeam Backup and Recovery Integration for KVM
-• CLVM (Clustered LVM) Enhancements and Fixes
-• Support Firewall Rules on Public IPs in VPC
-• Clone Existing Compute/Service Offerings and Update Them
-• Incremental NAS Backup Support for KVM
+• NetApp ONTAP Primary Storage Support
+• KVM Backup on Secondary Storage (KBOSS), a new provider with support for incremental backups, compression, and validation
+• Incremental Backup Support for the NAS Backup and Recovery Provider
 • Support for Dedicating Backup Offerings to Domains
-• Per-Domain OAuth Provider Support (Google, GitHub)
+• Veeam Backup and Recovery Integration for KVM
 • Conserve Mode for VPC Offerings
-• Live Scaling for VMs with Fixed Service Offerings on KVM
-• Scheduled Min/Max Sizing for VM Autoscaling Groups
-• CKS: Affinity Group Selection during Cluster Creation
-• Headlamp as the New Kubernetes Dashboard (Legacy Dashboard Deprecated)
-• Support for Enabling/Disabling NICs on KVM
+• DNS Framework, with PowerDNS as the first plugin
+• DHCP Lease Timeout Support
 • MAC Address Reuse Control for Virtual Router Public NICs
+• Network Extension: Orchestrate External Network Devices
+• Support Firewall Rules on Public IPs in VPC
+• Support for Enabling/Disabling NICs on KVM
+• API Key Pairs with Limited Permissions and Expiry Dates
+• Keycloak OAuth Provider Support
+• Per-Domain OAuth Provider Support
+• Affinity Group Selection during Kubernetes Cluster Creation
+• Headlamp as the New Kubernetes Dashboard (Legacy Dashboard Deprecated)
+• Clone Existing Compute/Service Offerings and Update Them
+• Flexible JavaScript Rules for Guest OS Allocation
+• Quota Plugin Improvements and UI Rework
+• Scheduled Min/Max Sizing for VM Autoscaling Groups
+• Live Scaling for VMs with Fixed Service Offerings on KVM
+• XenServer/XCP-ng 8.3/8.4 vTPM Support
 • Several UI fixes and improvements
 
 Known Issues
