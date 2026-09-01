@@ -317,3 +317,28 @@ the backup size, although the actual backup size may be less than the size use t
    :alt: Select Zone when creating Instance from Backup
    :width: 700px
 
+Configuring Backup and Restore Timeouts
+---------------------------------------
+
+The default timeout for backup and restore commands is 3600 seconds (1 hour). 
+For large Instances or slower backup repositories, backup and restore operations may take longer than this timeout.
+
+The timeout for individual commands can be configured using the `commands.timeout` global setting. 
+This setting accepts comma-separated key-value pairs, where the key is the command name and the value is the timeout in seconds.
+
+For example, to configure a timeout of two hours for both backup and restore operations, add:
+
+`TakeBackupCommand=7200,RestoreBackupCommand=7200`
+
+The Management Server must be restarted after changing the `commands.timeout` setting.
+
+The configured timeout can be verified in the Management Server log. For example:
+
+`Wait time setting on org.apache.cloudstack.backup.TakeBackupCommand is 7200 seconds`
+
+.. note::
+The command timeout determines how long the Management Server waits for the operation to complete. 
+Timing out the command does not necessarily terminate the underlying backup or restore operation on the hypervisor. 
+For example, with the NAS Backup & Recovery plugin on KVM, the corresponding libvirt operation may continue after the command times out on the Management Server. 
+The finished backup will not be tracked by CloudStack in this case and as such won't be cleaned up by a configured rotation.
+
