@@ -382,40 +382,104 @@ The Management Server generates URLs of the form
 The new console requests will be served with the new DNS domain name,
 certificate, and key.
 
-Uploading ROOT CA and Intermediate CA
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-If you need to upload custom certificate with ROOT CA and intermediate CA, you can find more details here:
+Uploading Certificates
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. |ssl-certificates.png| image:: /_static/images/ssl-certificates.png
+
+Custom certificates for system VMs (SSVM and CPVM) can be uploaded using
+UI or API.
+
+To upload custom certificates following details will be needed:
+
+- ROOT CA certificate
+- Intermediate CA certificate(s) (if any)
+- Site or server certificate
+- Private key (in PKCS8 format)
+- Domain name suffix
+
+To upload custom certificates using UI, go to Infrastructure -> SSL
+Certificates around the top of the summary view. This will open up the
+following form.
+
+   |ssl-certificates.png|
+
+Root Certificate, Server Certificate, PKCS#8 private certificate can be
+added in the straightforward way.
+If there are Intermediate CA certificate(s), then add them one by one
+using the `Add intermediate certificate` button.
+For DNS domain suffix, you may use a wildcard domain name like
+`*.yourdomain.com`.
+Clicking on Submit will add certificate entries in the database,
+one for ROOT certificate, as many Intermediate certificates as added and one for
+server + private certificate.
+
+
+This can also be achieved using the API `uploadCustomCertificate`. Example
+API calls:
+
+.. code::
+
+   uploadCustomCertificate id=1 name='Root' certificate='-----BEGIN CERTIFICATE-----...-----END CERTIFICATE-----' domainsuffix='*.yourdomain.com'
+   uploadCustomCertificate id=2 name='Intermediate1' certificate='-----BEGIN CERTIFICATE-----...-----END CERTIFICATE-----' domainsuffix='*.yourdomain.com'
+   uploadCustomCertificate id=3 certificate='-----BEGIN CERTIFICATE-----...-----END CERTIFICATE-----' privatekey='-----BEGIN PRIVATE KEY-----...-----END PRIVATE KEY-----' domainsuffix='*.yourdomain.com'
+
+Note: We do not need to provide a name for the server certificate entry, as
+it will auto-generate a name since the privatekey is provided.
+If there are multiple Intermediate certificates, then multiple API calls will
+be needed to upload them one by one.
+Also, the first two API calls for Root and Intermediate certificates can be
+combined in a single call by using a certificate value which consists of both
+Root and Intermediate certificates.
+
+After successfully uploading custom certificates, CloudStack will attempt to
+restart all SSVMs and CPVMs. If not restarted then it can be done manually.
+
+More details regarding custom certificates can be found here:
 https://cwiki.apache.org/confluence/display/CLOUDSTACK/Procedure+to+Replace+realhostip.com+with+Your+Own+Domain+Name
 
 IMPORTANT NOTES:
 
-In order to avoid errors and problems while uploading custom certificates, please check following:
+In order to avoid errors and problems while uploading custom certificates,
+please check the following:
 
-1. While doing URL encoding of ROOT CA and any Intermediate CA, be sure that the plus signs ("+") inside certificates
-are not replaced by space (" "), because some URL/string encoding tools tend to do that.
+1. When calling the API as an HTTP request and while doing URL encoding of
+   ROOT CA and any Intermediate CA, be sure that the plus signs ("+") inside
+   certificates are not replaced by space (" "), because some URL/string
+   encoding tools tend to do that.
 
-2. If you are renewing certificates it might happen you need to upload new ROOT CA and Intermediate CA, together with new Server Certificate and key.
-In this case please be sure to use same names for certificates during API upload of certificate, example:
+2. If you are renewing certificates, you may need to upload new ROOT CA and
+   Intermediate CA, together with new Server Certificate and key.
+   In this case, please be sure to use the same names for certificates during
+   API upload of the certificate, for example:
 
-http://123.123.123.123:8080/client/api?command=uploadCustomCertificate&...&name=root1...
-http://123.123.123.123:8080/client/api?command=uploadCustomCertificate&...&name=intermed1...
+   .. code::
 
-Here names are "root1" and "intermed1".
-If you used other names previously, please check the cloud.keystore table to obtain used names.
+      http://123.123.123.123:8080/client/api?command=uploadCustomCertificate&...&name=root1...
+      http://123.123.123.123:8080/client/api?command=uploadCustomCertificate&...&name=intermed1...
 
-If you still have problems and following errors in management.log while destroying CPVM:
+   Here the names are "root1" and "intermed1".
+   If you used other names previously, please check the cloud.keystore table
+   to obtain the used names.
+
+If you still have problems and see the following errors in
+management-server.log while starting CPVM:
 
 - Unable to build keystore for CPVMCertificate due to CertificateException
-- Cold not find and construct a valid SSL certificate
+- Could not find and construct a valid SSL certificate
 
-that means that still some of the Root/intermediate/server certificates or the key is not in a good format, or incorrectly encoded or multiply Root CA/Intermediate CA present in database by mistake.
+This means that some of the Root/Intermediate/Server certificates or the key
+is not in a good format, or is incorrectly encoded, or multiple Root
+CA/Intermediate CA entries are present in the database by mistake.
 
-Other way to renew Certificates (Root,Intermediates,Server certificates and key) - although not recommended
-unless you fill comfortable - is to directly edit the database,
-while still respect the main requirement that the private key is PKCS8 encoded, while Root CA, Intermediate and Server certificates
-are still in default PEM format (no URL encoding needed here).
-After editing the database, please restart management server, and destroy SSVM and CPVM after that,
-so the new SSVM and CPVM with new certificates are created.
+Another way to renew certificates (Root, Intermediates, Server certificates
+and key) - although not recommended unless you feel comfortable - is to
+directly edit the database, while still respecting the main requirement that
+the private key is PKCS8 encoded, while Root CA, Intermediate and Server
+certificates are in the default PEM format (no URL encoding needed here).
+After editing the database, please restart the management server, and destroy
+the SSVM and CPVM after that, so that new SSVM and CPVM instances with new
+certificates are created.
 
 Load-balancing Console Proxies / Secondary Storage VMs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
