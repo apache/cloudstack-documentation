@@ -29,7 +29,8 @@ The following providers are currently supported:
 - VMware with Veeam Backup and Recovery
 - KVM with DELL EMC Networker
 - KVM with NAS B&R Plugin (4.20 onwards)
-- KVM with Veeam Backup and Recovery (4.23 onwards; supported only via Veeam Backup and Recovery console)
+- KVM with Veeam Backup and Replication (4.23 onwards; supported only via Veeam Backup & Replication console)
+- ```
 - KVM with KBOSS Plugin (4.23 onwards)
 
 See the Veeam Backup and Recovery plugin documentation for plugin specific information.
