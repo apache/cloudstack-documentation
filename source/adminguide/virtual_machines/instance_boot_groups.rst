@@ -242,8 +242,9 @@ Rules inherited from an owning Instance Group are shown read-only, tagged
    |instance_boot_group_member_readiness_rules.png|
 
 .. note:: When adding a ``GuestAgentLiveness`` rule, make sure the QEMU
-   guest agent is installed, running, and responsive inside the guest
-   Instance, the rule can only report Ready once the agent answers.
+   guest agent(``qemu-guest-agent`` package) is installed, running, and
+   responsive inside the guest Instance, the rule can only report Ready
+   once the agent answers.
 
 Using the API:
 
