@@ -105,6 +105,7 @@ Storage media \\ hypervisor                    VMware vSphere   Citrix XenServer
 **SMB/CIFS**                                   No               No                   No                          Yes
 **Ceph/RBD**                                   No               No                   Yes                         No
 **PowerFlex/ScaleIO**                          No               No                   Yes                         No
+**NetApp ONTAP**                               No               No                   Yes                         No
 ============================================== ================ ==================== =========================== ============================
 
 XenServer uses a clustered LVM system to store Instance images on iSCSI and
@@ -299,6 +300,10 @@ device is online again you may cancel maintenance mode for the device.
 The CloudStack will bring the device back online and attempt to start
 all guests that were running at the time of the entry into maintenance
 mode.
+
+.. note::
+   HA-Enabled Instances will also be stopped when the primary storage is put into maintenance mode.
+   It is recommended to migrate any business-critical Instances to alternate primary storage before initiating maintenance.
 
 Browsing files on a primary storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -608,7 +613,7 @@ can be attached to Instances, detached, re-attached, and deleted
 just as with the other types of data volume.
 
 Local storage is ideal for scenarios where persistence of data volumes
-and HA is not required. Some of the benefits include reduced disk I/O
+and HA is not required. Some of the benefits include reduced disk I/O
 latency and cost reduction from using inexpensive local disks.
 
 In order for local volumes to be used, the feature must be enabled for
@@ -624,8 +629,24 @@ If you want to put a host into maintenance mode, you must first stop any
 Instances with local data volumes on that host.
 
 
+Volume Encryption
+^^^^^^^^^^^^^^^^^
+
+CloudStack supports LUKS-based volume encryption on KVM. Encrypted volumes are managed
+through the :ref:`key-management-system`, where you can create and manage the encryption
+keys used to protect your data.
+
+To create an encrypted volume, select a **KMS Key** from the UI when creating the volume,
+or supply the key ID via the API. The key must belong to the same zone as the volume.
+
+.. warning::
+   Deleting the KMS key used to encrypt a volume will render that volume permanently
+   unrecoverable.
+
+
 To Create a New Volume
 ^^^^^^^^^^^^^^^^^^^^^^
+
 
 #. Log in to the CloudStack UI as a User or admin.
 
@@ -642,6 +663,10 @@ To Create a New Volume
       should be close to the Instance that will use the volume.
 
    -  Disk Offering. Choose the characteristics of the storage.
+
+   -  KMS Key. (Optional) Select a KMS key to enable envelope-based
+      encryption for the volume. Requires KMS to be configured in the zone.
+      See :ref:`key-management-system`.
 
    The new volume appears in the list of volumes with the state
    “Allocated.” The volume data is stored in CloudStack, but the volume
@@ -947,6 +972,13 @@ Before you try to resize a volume, consider the following:
    Therefore, resize any partitions or file systems before you shrink a
    data disk so that all the data is moved off from that disk.
 
+-  In Apache CloudStack 4.20 and before, resizing volume will fail if 
+   the current storage pool does not have enough capacity for new volume size.
+   Since Apache CloudStack 4.21, it becomes possible if zone setting
+   volume.resize.allowed.beyond.allocation is set to true, and the new volume size
+   does not cross the resize threshold (pool.storage.allocated.resize.capacity.disablethreshold) of storage pool.
+   These two zone settings are configurable by ROOT admin.
+
 To resize a volume:
 
 #. Log in to the CloudStack UI as a user or admin.
@@ -963,7 +995,7 @@ To resize a volume:
 
    |resize-volume.png|
 
-   #. If you select Custom Disk, specify a custom size.
+   #. Specify a custom size.
 
    #. Click Shrink OK to confirm that you are reducing the size of a
       volume.
@@ -971,6 +1003,8 @@ To resize a volume:
       This parameter protects against inadvertent shrinking of a disk,
       which might lead to the risk of data loss. You must sign off that
       you know what you are doing.
+
+   #. Check if you wish to auto migrate volume to another storage pool if required.
 
 #. Click OK.
 
@@ -1331,18 +1365,31 @@ How to Snapshot a Volume
 KVM volume Snapshot specifics
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In recent CloudStack versions, by default, creating a Volume Snapshot for a running Instance is disabled
-due to a possible volume corruption in certain cases. To enable creating a Volume Snapshots while the Instance
-is running, the global setting 'kvm.snapshot.enabled' must be set to 'True'.
+Since 4.22.0.0, creating a Volume Snapshot for a running Instance on KVM is allowed by default; in earlier
+versions it was disabled by default. This is controlled by the global setting ``kvm.snapshot.enabled``.
+Because taking a snapshot of a running Instance can lead to volume corruption in certain cases,
+administrators who want to require Instances to be stopped before a Volume Snapshot can be taken should set
+this global setting to ``false``.
 
 The Volume Snapshot creation has changed in recent versions:
 
-When the VM is running, a disk-only VM snapshot is taken, exclusively for the volume in question.
-If the VM is stopped, the volume will be converted (with qemu-img convert). The final storage location is
-determined by the ``snapshot.backup.to.secondary`` configuration; if it is false the snapshot will be copied
-to a different directory in the same primary storage as the volume; if it is true the snapshot will be copied 
-to the secondary storage. If the snapshot is being taken in a file-based storage (NFS, SharedMountPoint, Local),
-it will be copied directly to its final storage location, according to the configuration.
+For volumes on file-based primary storage (NFS, SharedMountPoint, Local), when the VM is running, a
+disk-only VM snapshot is taken, exclusively for the volume in question. If the VM is stopped, the volume
+will be converted (with qemu-img convert). For volumes on RBD (Ceph) and CLVM primary storage, the Volume
+Snapshot is instead taken natively by the storage layer (via the RBD ``snap create`` operation, or the
+``managesnapshot.sh`` script for CLVM), without any interaction with the libvirt domain; the same
+storage-side mechanism is used whether the Instance is running or stopped. Note that on RBD, a snapshot
+taken while the Instance is running is only crash-consistent, as writes still held in the Instance's memory
+are not flushed before the snapshot is taken.
+
+The final storage location is determined by the ``snapshot.backup.to.secondary`` configuration; if it is
+false the snapshot will be copied to a different directory in the same primary storage as the volume; if it
+is true the snapshot will be copied to the secondary storage. If the snapshot is being taken in a
+file-based storage (NFS, SharedMountPoint, Local), it will be copied directly to its final storage
+location, according to the configuration.
+
+Snapshots of encrypted volumes are only supported while the Instance is stopped. Taking a Volume Snapshot
+of an encrypted volume attached to a running Instance will fail.
 
 Since 4.21.0.0, ACS supports incremental snapshots for the KVM hypervisor when using file-based storage (NFS, SharedMountPoint, Local),
 to enable incremental snapshots the ``kvm.incremental.snapshot`` configuration must be enabled. Furthermore, in order to take incremental snapshots

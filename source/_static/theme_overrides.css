@@ -11,8 +11,36 @@
     overflow: visible;
 }
 
+/* Force table to respect column widths */
+.wy-table-responsive table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.wy-table-responsive table td,
+.wy-table-responsive table th {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
 .rst-content li {
     padding-top: 4px;
+}
+
+.github-changes-table {
+    table-layout: auto;
+}
+
+.github-changes-table th:nth-child(1),
+.github-changes-table td:nth-child(1) {
+    white-space: nowrap;
+    width: 1%;
+}
+
+.github-changes-table td:nth-child(2),
+.github-changes-table th:nth-child(2) {
+    white-space: nowrap;
+    word-break: normal;
 }
 
 /*

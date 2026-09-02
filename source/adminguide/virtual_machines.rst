@@ -175,6 +175,18 @@ To create an Instance from a Template:
    specified at the Instance or Template level. For an existing Instance its settings can be updated while it is in
    stopped state by admin.
 
+   **KVM**
+
+   Instances running on the KVM hypervisor with UEFI Secure Boot have disk controllers automatically enforced as following:
+
+   - Windows OS instances use SATA
+   - Non-Windows OS instances use VirtIO
+
+   Starting with 4.20.3 and later, this behavior can be overridden by setting the following template or instance detail to true:
+
+   ``skip.force.disk.controller = true``
+
+   When set to true, disk controller enforcement is skipped, and the controllers defined by template/instance details are used. If the detail is added at both template and instance level, the instance detail takes precedence.
 
 Install Required Tools and Drivers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1191,6 +1203,25 @@ UEFI setting
 - UEFI is required for some Windows versions.
 - On XenServer amd XCP-ng, the boot type must be set to UEFI, boot mode can be SECURE or LEGACY. vTPM is supported on XenServer 8.3 and later versions and XCP-ng 8.4 and later versions. vTPM can be enabled by setting the virtual.tpm.enabled setting on the template or vm instance as done on VMware.
 - For XenServer and XCP-ng, to boot Windows VMs in UEFI Secure more, the host needs to have Microsoft UEFI Secure Boot certificates installed. Run `secureboot-certs install` on the host to install them. This makes certificates available to OVFM, QEMU, shim tooling.
+
+.. note::
+
+   **Recommendations for UEFI-based instances on KVM (volumes and NICs)**
+
+   UEFI-based instances on KVM may encounter PCI slot exhaustion when attaching additional
+   volumes or network interfaces, due to high PCI device usage from the default
+   disk bus and NIC adapter selections. To avoid these issues:
+
+   - **Disk bus**: For Linux-based UEFI guests, it is recommended to use **SCSI** as
+     the guest disk bus instead of VIRTIO. This reduces PCI device usage and improves
+     support for attaching additional volumes.
+   - **NIC adapter**: Set the NIC adapter type to **e1000** for UEFI instances to avoid
+     NIC attachment issues caused by PCI slot exhaustion.
+
+   Both of these settings can be configured in the **VM Settings** for an instance.
+
+|vm-settings-virtual-tpm-model-kvm.png|
+TPM model for KVM. There are two options:
 
 - tpm-tis, TIS means TPM Interface Specification; 
 - tpm-crb, CRB means Command-Response Buffer.

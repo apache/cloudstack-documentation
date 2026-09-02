@@ -16,7 +16,18 @@
 Writing Extensions for CloudStack
 =================================
 
-The CloudStack Extensions Framework allows developers and operators to write extensions using any programming language or script. From CloudStack’s perspective, an extension is simply an executable capable of handling specific actions and processing input payloads. CloudStack invokes the executable by passing the action name and the path to a JSON-formatted payload file as command-line arguments. The extension processes the payload, performs the required operations on an external system, and returns the result as a JSON response written to `stdout`.
+The CloudStack Extensions Framework allows developers and operators to write extensions using any programming language or script. From CloudStack’s perspective, an extension is an executable capable of handling CloudStack actions and integrating with an external system.
+
+Extension Types
+^^^^^^^^^^^^^^^
+
+CloudStack currently supports two extension types:
+
+- ``Orchestrator`` for external instance lifecycle management. These extensions are registered with ``Cluster`` resources.
+
+- ``NetworkOrchestrator`` for external guest network and VPC service orchestration. These extensions are registered with ``PhysicalNetwork`` resources.
+
+Both types share the same extension lifecycle in the UI and API, but their invocation model and supported resource mappings differ.
 
 
 Create a New Extension
@@ -26,11 +37,12 @@ You must first register a new extension using the API or UI:
 
 .. code-block:: bash
 
-   cloudmonkey createExtension name=myext path=myext-executable
+  cloudmonkey createExtension name=myext type=Orchestrator path=myext-executable
 
 Arguments:
 
 - ``name``: Unique name
+- ``type``: ``Orchestrator`` or ``NetworkOrchestrator``
 - ``path``: Relative path to the executable. Root path will be `/usr/share/cloudstack-management/extensions/<extension_name>`
 
 The path must be:
@@ -43,10 +55,28 @@ If no explicit path is provided during extension creation, CloudStack will scaff
 
 CloudStack checks extension readiness periodically and shows its state in the UI/API.
 
-Extension Structure
-^^^^^^^^^^^^^^^^^^^
+For ``NetworkOrchestrator`` extensions, define supported services in the extension detail ``network.services`` and optionally declare per-service capabilities in ``network.service.capabilities``. CloudStack uses these values when exposing supported providers and validating network and VPC offerings.
 
-Your extension must support the following invocation structure:
+Register Extension With a Resource
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After creating an extension, register it with the CloudStack resource it serves:
+
+- ``Orchestrator`` extensions are registered with ``Cluster`` resources.
+
+- ``NetworkOrchestrator`` extensions are registered with ``PhysicalNetwork`` resources.
+
+Resource-level details supplied during registration are useful for endpoints, credentials, host lists, interface mappings, or other device-specific settings. These registration details can later be changed with the ``updateRegisteredExtension`` API without removing the existing mapping.
+
+When a ``NetworkOrchestrator`` extension is registered with a physical network, CloudStack creates a network service provider using the extension name. Network and VPC offerings can then use that provider name.
+
+Invocation Model
+^^^^^^^^^^^^^^^^
+
+Orchestrator Invocation
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Orchestrator extensions must support the following invocation structure:
 
 .. code-block:: bash
 
@@ -64,10 +94,29 @@ Sample Invocation:
 
    /usr/share/cloudstack-management/extensions/myext/myext.py deploy /var/lib/cloudstack/management/extensions/myext/162345.json 60
 
+NetworkOrchestrator Invocation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+NetworkOrchestrator extensions also use the payload-file invocation model:
+
+.. code-block:: bash
+
+  /path/to/<extension_name>.sh <command> <payload_file> <timeout_seconds>
+
+CloudStack resolves the executable in this order:
+
+- ``<extensionPath>/<extensionName>.sh``
+
+- ``<extensionPath>`` itself, if it is an executable file
+
+Depending on the declared services, CloudStack can invoke commands such as ``ensure-network-device``, ``implement-network``, ``shutdown-network``, ``destroy-network``, ``restore-network``, ``implement-vpc``, ``shutdown-vpc``, ``update-vpc-source-nat-ip``, ``assign-ip``, ``release-ip``, ``add-static-nat``, ``delete-static-nat``, ``add-port-forward``, ``delete-port-forward``, ``apply-fw-rules``, ``apply-network-acl``, ``add-dhcp-entry``, ``remove-dhcp-entry``, ``config-dhcp-subnet``, ``remove-dhcp-subnet``, ``set-dhcp-options``, ``add-dns-entry``, ``config-dns-subnet``, ``remove-dns-subnet``, ``save-vm-data``, ``save-password``, ``save-userdata``, ``save-sshkey``, ``save-hypervisor-hostname``, ``apply-lb-rules``, and ``custom-action``.
+
+The command name determines the operation. The payload file carries registration details, stored network or VPC state, and command-specific fields.
+
 Input Format (Payload)
 ^^^^^^^^^^^^^^^^^^^^^^
 
-CloudStack provides input via a JSON file, which your executable must read and parse.
+For Orchestrator extensions, CloudStack provides input via a JSON file, which your executable must read and parse.
 
 Example:
 
@@ -107,10 +156,26 @@ Example:
 
 The schema varies depending on the resource and action. Use this to perform context-specific logic.
 
+For NetworkOrchestrator extensions, CloudStack writes a JSON payload file and passes its path as the second argument. For standard network and VPC commands, the payload has this envelope:
+
+.. code-block:: json
+
+   {
+     "physical-network-extension-details": {},
+     "network-extension-details": {},
+     "payload": {}
+   }
+
+``physical-network-extension-details`` contains the registration details stored against the physical network, enriched with values such as the physical network name. ``network-extension-details`` contains the per-network or per-VPC state saved by the extension, including the output previously returned by ``ensure-network-device``. ``payload`` contains the command-specific fields.
+
+Frequently used payload fields include ``network_id``, ``vpc_id``, ``vlan``, ``gateway``, ``cidr``, ``extension_ip``, ``public_ip``, ``public_cidr``, ``public_vlan``, ``public_gateway``, ``private_ip``, ``nic_uuid``, ``dns``, and ``domain``.
+
+For ``custom-action``, CloudStack still uses a payload file, but the command-specific values are placed at the top level instead of under ``payload``. The request includes keys such as ``action``, ``action-params``, ``physical-network-extension-details``, and ``network-extension-details``.
+
 Output Format
 ^^^^^^^^^^^^^
 
-Your extension should write a response JSON to ``stdout``. Example:
+Orchestrator extensions should write a response JSON to ``stdout``. Example:
 
 .. code-block:: json
 
@@ -122,11 +187,58 @@ Your extension should write a response JSON to ``stdout``. Example:
 For custom actions, CloudStack will display the ``message`` in the UI if the output JSON includes ``"printmessage": "true"``.
 The ``message`` field can be a string, a JSON object or a JSON array.
 
+For NetworkOrchestrator extensions, all commands must exit with code ``0`` on success and a non-zero code on failure. ``ensure-network-device`` is special: it must write a single-line JSON object to ``stdout`` and CloudStack persists that JSON for later calls. ``custom-action`` may also return output on ``stdout``. Other commands should not rely on ``stdout`` for normal operation because CloudStack ignores it apart from debug logging.
+
+Declaring Network Services and Capabilities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+``NetworkOrchestrator`` extensions should declare their supported services in the extension detail ``network.services`` as a comma-separated list. Example values include ``SourceNat``, ``StaticNat``, ``PortForwarding``, ``Firewall``, ``Lb``, ``Dhcp``, ``Dns``, ``UserData``, ``NetworkACL``, ``Gateway``, ``Vpn``, and ``CustomAction``.
+
+Use ``network.service.capabilities`` to provide a JSON object describing capability values for the declared services. CloudStack uses these capabilities when listing supported providers and validating network or VPC offerings.
+
+For example, ``Firewall`` capabilities can declare values such as ``SupportedProtocols``, ``SupportedEgressProtocols``, and ``SupportedTrafficDirection``; ``Lb`` can declare ``SupportedLBAlgorithms`` and ``SupportedProtocols``; and ``SourceNat`` can declare ``SupportedSourceNatTypes``.
+
+CloudStack Setup for NetworkOrchestrator
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After creating a ``NetworkOrchestrator`` extension, the usual setup flow is:
+
+1. Deploy the executable to the path returned by ``listExtensions`` on every management server.
+2. Register the extension with a ``PhysicalNetwork`` using ``registerExtension`` and pass any device-specific details required by the script.
+3. Enable the generated network service provider on that physical network.
+4. Create network or VPC offerings that map supported services to the extension name.
+5. When registration details need to change, update them with ``updateRegisteredExtension`` instead of deleting and recreating the mapping.
+
+Service-to-Command Mapping
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+NetworkOrchestrator scripts only need to implement the commands for the services they advertise in ``network.services``.
+
+- ``SourceNat`` and ``Gateway`` trigger ``assign-ip`` and ``release-ip``.
+- ``StaticNat`` triggers ``add-static-nat`` and ``delete-static-nat``.
+- ``PortForwarding`` triggers ``add-port-forward`` and ``delete-port-forward``.
+- ``Firewall`` triggers ``apply-fw-rules``.
+- ``Lb`` triggers ``apply-lb-rules``.
+- ``NetworkACL`` triggers ``apply-network-acl``.
+- ``Dhcp`` triggers ``add-dhcp-entry``, ``remove-dhcp-entry``, ``config-dhcp-subnet``, ``remove-dhcp-subnet``, and ``set-dhcp-options``.
+- ``Dns`` triggers ``add-dns-entry``, ``config-dns-subnet``, and ``remove-dns-subnet``.
+- ``UserData`` triggers ``save-vm-data``, ``save-password``, ``save-userdata``, ``save-sshkey``, and ``save-hypervisor-hostname``.
+- Network lifecycle operations always include ``ensure-network-device``, ``implement-network``, ``shutdown-network``, ``destroy-network``, and ``restore-network``.
+- VPC lifecycle operations include ``ensure-network-device``, ``implement-vpc``, ``shutdown-vpc``, and ``update-vpc-source-nat-ip``.
+- Operator-triggered actions use ``custom-action``.
+
+VPC and Extension IP Notes
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For VPC-backed networks, CloudStack includes ``vpc_id`` in tier-level payloads and invokes VPC-level lifecycle commands without a ``network_id``. Use that value when the implementation needs to keep all tiers of a VPC on the same device.
+
+``extension_ip`` is the IP address the external device presents on the guest side. When the extension provides ``SourceNat`` or ``Gateway``, it typically matches the network gateway. When the extension only provides services such as ``Dhcp``, ``Dns``, or ``UserData``, CloudStack can allocate a dedicated guest-side IP for the device and pass it as ``extension_ip``.
+
 Action Lifecycle
 ^^^^^^^^^^^^^^^^
 
 1. A CloudStack action (e.g., deploy VM) triggers a corresponding extension action.
-2. CloudStack invokes the extension’s executable with appropriate parameters.
+2. CloudStack invokes the extension’s executable using the protocol defined by the extension type.
 3. The extension processes the input and responds within the timeout.
 4. CloudStack continues action workflow based on the result.
 
@@ -182,8 +294,13 @@ Custom Actions
 You can define new custom actions for users or admin-triggered workflows.
 
 - Register via UI or ``addCustomAction`` API
+- Choose a resource type that matches the extension type: ``VirtualMachine`` for Orchestrator, ``Network`` or ``Vpc`` for NetworkOrchestrator
 - Define input parameters (name, type, required)
 - Implement the handler for the custom action in your executable.
+
+For NetworkOrchestrator extensions, advertise the ``CustomAction`` service in ``network.services`` if the extension should receive custom actions for network or VPC resources.
+
+For network extension custom actions, the script should read the payload file passed on the command line and parse the top-level keys rather than looking for a nested ``payload`` object.
 
 CloudStack UI will render forms dynamically based on these definitions.
 
@@ -195,6 +312,9 @@ Best Practices
 - Avoid hard dependencies on CloudStack internals
 - Implement logging for troubleshooting
 - Use exit code and ``stdout`` for signaling success/failure
+- Keep ``network.services`` and ``network.service.capabilities`` aligned with the services your NetworkOrchestrator implementation actually handles
+- Use resource registration details for environment-specific settings and rotate them with ``updateRegisteredExtension`` instead of recreating mappings when possible
+- Keep non-``ensure-network-device`` commands quiet on ``stdout`` unless the command contract explicitly returns output, such as ``custom-action``
 
 Extension Examples
 ^^^^^^^^^^^^^^^^^^
@@ -231,10 +351,12 @@ Extension Examples
    else:
        print(json.dumps({"success": False, "result": {"message": "Unknown action"}}))
 
-For a clearer understanding of how to implement an extension, developers can refer to the base shell script scaffolded by CloudStack for orchestrator-type extensions. This script is located at:
+For a clearer understanding of how to implement an Orchestrator extension, developers can refer to the base shell script scaffolded by CloudStack for orchestrator-type extensions. This script is located at:
 
 /usr/share/cloudstack-common/scripts/vm/hypervisor/external/provisioner/provisioner.sh
 
 It serves as a template with minimal required action handlers, making it a useful starting point for building new extensions.
+
+For NetworkOrchestrator extensions, refer to the Network Extension Script Protocol in the CloudStack source tree and the reference implementation in `cloudstack-extensions <https://github.com/apache/cloudstack-extensions/tree/network-namespace/Network-Namespace>`_.
 
 Additionally, CloudStack includes in-built extensions for Proxmox and Hyper-V that demonstrate how to implement extensions in different languages - Bash and Python.

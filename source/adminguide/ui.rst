@@ -190,7 +190,7 @@ Users can customize the CloudStack's user interface by means of a configuration 
 To change the logo, login banner, error page icon, etc. the following details can be edited in config.json:
 
 ======================================= ==================================================================================================================================================================
-Property                      Description
+Property                                Description
 ======================================= ==================================================================================================================================================================
 apiBase                                 Changes the suffix for the API endpoint
 docBase                                 Changes the base URL for the documentation
@@ -570,7 +570,7 @@ Based on the configuration above, the following banner is shown in the user inte
 
 
 Instance Image Selection Customisation
--------------------------------------
+======================================
 
 In the UI, there are several forms where the user needs to select an image (template/ISO) for an instance, such as deploying an instance, reinstalling an instance, creating a VNF appliance, etc. The image selection interface for these forms can be selected by the operator based on preference by specifying properties in the UI configuration file (config.json).
 
@@ -584,6 +584,23 @@ The *legacy* interface will display images based on templatefilter/isofilter, i.
 
 |ui-legacy-image-selection.png|
 
+
+Advisories for Users
+====================
+
+UI shows advisories to logged-in users along with quick actions to resolve issues or fulfill prerequisites. These advisories are meant to give information to users if a prerequisite is missing or a configuration needs to be updated to allow use of a particular functionality. In the UI, they are displayed along with some actions to fix or fulfill those prerequisites.
+
+|ui-section-advisories.png|
+
+Advisories can be disabled by updating the property ``advisoriesDisabled`` to ``true`` in config.json:
+
+.. parsed-literal::
+
+   {
+      ...
+      "advisoriesDisabled": true
+      ...
+   }
 
 Advanced UI Customisation
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -708,3 +725,6 @@ The following features are no longer supported or available in the UI but are st
 
 .. |ui-login-project-view.png| image:: /_static/images/ui-login-project-view.png
    :alt: Enabling the Project field on login
+
+.. |ui-section-advisories.png| image:: /_static/images/ui-section-advisories.png
+   :alt: Advisories in the UI

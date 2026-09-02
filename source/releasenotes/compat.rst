@@ -22,7 +22,7 @@ Supported OS Versions for Management Server
 This section lists the operating systems that are supported for running
 CloudStack Management Server.
 
--  Ubuntu 22.04 LTS, 24.04 LTS
+-  Ubuntu 22.04 LTS, 24.04 LTS, 26.04 LTS
 -  Oracle Linux 8, 9, 10
 -  Rocky Linux 8, 9, 10
 -  Alma Linux 8, 9, 10
@@ -37,7 +37,7 @@ Software Requirements
 ~~~~~~~~~~~~~~~~~~~~~
 
 -  Java JRE 17
--  MySQL 8.0 (or equivalent compatible DBMS)
+-  MySQL 8.4 (or equivalent compatible DBMS)
 
 Supported Hypervisor Versions
 -----------------------------
@@ -45,7 +45,7 @@ Supported Hypervisor Versions
 CloudStack supports three hypervisor families, KVM, XenServer/XCP-ng with XAPI,
 and VMware with vSphere.
 
--  Ubuntu 22.04 LTS, 24.04 LTS with KVM
+-  Ubuntu 22.04 LTS, 24.04 LTS, 26.04 LTS with KVM
 -  Oracle Linux 8, 9, 10 with KVM
 -  Rocky Linux 8, 9, 10 with KVM
 -  Alma Linux 8, 9, 10 with KVM
@@ -88,6 +88,7 @@ Supported External Devices
 -  SRX (Model srx100b) versions 10.3 to 10.4 R7.5 (not tested to work fine for last many CloudStack releases)
 -  F5 11.X (not tested to work fine for last many CloudStack releases)
 -  Force 10 Switch version S4810 for Baremetal Advanced Networks (not tested to work fine for last many CloudStack releases)
+-  Palo Alto Networks Firewall (not tested to work fine in the last recent CloudStack releases)
 
 Supported Browsers
 ------------------

@@ -138,6 +138,7 @@ Managing VM and Volume Allocation
 .. toctree::
    :maxdepth: 4
 
+   deployment_planners
    host_and_storage_tags
    arch_types
    vm_volume_allocators
@@ -151,6 +152,7 @@ Managing Networks and Traffic
    networking_and_traffic
    networking/using_remote_access
    networking/vnf_templates_appliances
+   networking/dns_framework
 
 
 Managing the Cloud
@@ -160,7 +162,7 @@ Managing the Cloud
    :maxdepth: 4
 
    management
-
+   kms
 
 System Reliability and Availability
 -----------------------------------
@@ -177,7 +179,7 @@ Tuning
 .. toctree::
    :maxdepth: 4
 
-   tuning
+   tuning/tuning
 
 
 Events and Troubleshooting
