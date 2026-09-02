@@ -448,10 +448,12 @@ from being used for storing any further Templates, Volumes and Snapshots.
 
       cmk updateImageStore id=4440f406-b9b6-46f1-93a4-378a75cf15de readonly=true
 
+.. _Direct resources to a specific secondary storage:
+
 Direct resources to a specific secondary storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, ACS allocates ISOs, volumes, snapshots, and templates to the freest secondary storage of the zone. In order to direct these resources to a specific secondary storage, the user can utilize the functionality of the dynamic secondary storage selectors using heuristic rules. This functionality utilizes JavaScript rules, defined by the user, to direct these resources to a specific secondary storage. When creating the heuristic rule, the script will have access to some preset variables with information about the secondary storage in the zone, about the resource the rule will be applied upon, and about the account that triggered the allocation. These variables are presented in the table below:
+By default, ACS allocates ISOs, volumes, snapshots, templates and KBOSS backups to the freest secondary storage of the zone. In order to direct these resources to a specific secondary storage, the user can utilize the functionality of the dynamic secondary storage selectors using heuristic rules. This functionality utilizes JavaScript rules, defined by the user, to direct these resources to a specific secondary storage. When creating the heuristic rule, the script will have access to some preset variables with information about the secondary storage in the zone, about the resource the rule will be applied upon, and about the account that triggered the allocation. These variables are presented in the table below:
 
    +-----------------------------------+-----------------------------------+
    | Resource                          | Variables                         |
@@ -483,6 +485,10 @@ By default, ACS allocates ISOs, volumes, snapshots, and templates to the freest 
    | Volume                            | ``size``                          |
    |                                   +-----------------------------------+
    |                                   | ``format``                        |
+   +-----------------------------------+-----------------------------------+
+   | Backup                            | ``virtualSize``                   |
+   |                                   +-----------------------------------+
+   |                                   | ``offeringUuid``                  |
    +-----------------------------------+-----------------------------------+
    | Account                           | ``id``                            |
    |                                   +-----------------------------------+
