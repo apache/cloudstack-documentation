@@ -43,7 +43,7 @@ See the NAS Backup and Recovery plugin documentation for plugin specific informa
 :ref:`NAS Backup and Recovery Plugin`
 
 See the KVM with Veeam Backup and Replication documentation for plugin specific information.
-:ref:`KVM with Veeam Backup and Recovery`
+:ref:`KVM with Veeam Backup and Replication`
 
 See the KBOSS Backup and Recovery plugin documentation for plugin specific information.
 :ref:`KBOSS Backup and Recovery Plugin`
