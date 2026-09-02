@@ -42,7 +42,7 @@ See the DELL EMC Networker Backup and Recovery plugin documentation for plugin s
 See the NAS Backup and Recovery plugin documentation for plugin specific information.
 :ref:`NAS Backup and Recovery Plugin`
 
-See the KVM with Veeam Backup and Recovery documentation for plugin specific information.
+See the KVM with Veeam Backup and Replication documentation for plugin specific information.
 :ref:`KVM with Veeam Backup and Recovery`
 
 See the KBOSS Backup and Recovery plugin documentation for plugin specific information.
