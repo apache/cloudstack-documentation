@@ -24,6 +24,8 @@ web tier starts.
 An Instance Boot Group is owned by an account, just like an Instance, and is
 managed from **Compute > Instance Boot Groups** in the CloudStack UI.
 
+   |instance_boot_groups.png|
+
 .. note:: An Instance Boot Group is a different concept from an Instance
    Group (**Compute > Instance Groups**), which is a simple, unordered label
    used to organize Instances. An Instance Group can itself be added as a
@@ -143,6 +145,8 @@ Creating an Instance Boot Group
    reboot-on-retry behaviour for this Instance Boot Group only.
 #. Click **OK**.
 
+   |instance_boot_group_add.png|
+
 Using the API:
 
 .. code:: bash
@@ -155,6 +159,8 @@ Adding and Managing Members
 Once an Instance Boot Group has been created, Instances or Instance Groups
 can be added to it as members, each with its own Boot Order.
 
+   |instance_boot_group_members.png|
+
 Adding a Member
 ~~~~~~~~~~~~~~~~
 
@@ -164,6 +170,8 @@ Adding a Member
    select it from the list.
 #. Enter the Boot Order for the new member.
 #. Click **OK**.
+
+   |instance_boot_group_member_add.png|
 
 Using the API:
 
@@ -230,6 +238,8 @@ Configuring Readiness Rules for a Member
 
 Rules inherited from an owning Instance Group are shown read-only, tagged
 **Inherited**; they must be removed from the Instance Group member instead.
+
+   |instance_boot_group_member_readiness_rules.png|
 
 .. note:: When adding a ``GuestAgentLiveness`` rule, make sure the QEMU
    guest agent is installed, running, and responsive inside the guest
@@ -342,3 +352,10 @@ Limitations
 #. If starting an Instance Boot Group is halted because a tier fails to
    become ready, any Instances already started in earlier tiers are left
    running. The operation is not automatically rolled back.
+
+
+.. |instance_boot_groups.png| image:: /_static/images/instance_boot_groups.png
+.. |instance_boot_group_add.png| image:: /_static/images/instance_boot_group_add.png
+.. |instance_boot_group_members.png| image:: /_static/images/instance_boot_group_members.png
+.. |instance_boot_group_member_add.png| image:: /_static/images/instance_boot_group_member_add.png
+.. |instance_boot_group_member_readiness_rules.png| image:: /_static/images/instance_boot_group_member_readiness_rules.png
