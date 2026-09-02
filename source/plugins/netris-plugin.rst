@@ -247,3 +247,14 @@ Supported VPC Services
             - **Destination Port**: X-Y, where:
                - *X*: The ACL rule start port
                - *Y*: The ACL rule end port
+
+From Apache CloudStack version 4.22.2.0 onwards, Netris plugin has been enhanced to support the following:
+
+- CloudStack Kubernetes Service (CKS) integration with Netris plugin, allowing the creation of Kubernetes clusters on VPCs managed by Netris. Unlike the traditional CKS integration, with Netris, the Kubernetes cluster acquires separate public IPs for port forwarding and load balancing, which are managed by Netris. This is done because Netris has separate purposes for public IPs, such as 'nat' and 'load-balancer', which are used for port forwarding and load balancing respectively. The Netris plugin ensures that the Kubernetes cluster is properly configured to use these public IPs for its services
+- Source NAT, Port Forwarding, Static NAT and Load Balancing is supported on secondary IPs
+- Support for L2 networks - The Netris plugin now supports L2 networks. This, on Netris creates a VPC and a single vNet (tier) for the L2 network without any gateway
+- Support for VNF appliances which depends on L2 networks
+- Support for VPC redundant routers for Netris based VPCs
+- Netris based VPC offerings now support VPN service by default, which enables VPN gateway support for Netris based VPCs created with custom VPC offerings
+- Support for enabling autoscaling for Dual-Stack VPCs when LB service is enabled on the offering
+
