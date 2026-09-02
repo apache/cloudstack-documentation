@@ -1359,18 +1359,31 @@ How to Snapshot a Volume
 KVM volume Snapshot specifics
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In recent CloudStack versions, by default, creating a Volume Snapshot for a running Instance is disabled
-due to a possible volume corruption in certain cases. To enable creating a Volume Snapshots while the Instance
-is running, the global setting 'kvm.snapshot.enabled' must be set to 'True'.
+Since 4.22.0.0, creating a Volume Snapshot for a running Instance on KVM is allowed by default; in earlier
+versions it was disabled by default. This is controlled by the global setting ``kvm.snapshot.enabled``.
+Because taking a snapshot of a running Instance can lead to volume corruption in certain cases,
+administrators who want to require Instances to be stopped before a Volume Snapshot can be taken should set
+this global setting to ``false``.
 
 The Volume Snapshot creation has changed in recent versions:
 
-When the VM is running, a disk-only VM snapshot is taken, exclusively for the volume in question.
-If the VM is stopped, the volume will be converted (with qemu-img convert). The final storage location is
-determined by the ``snapshot.backup.to.secondary`` configuration; if it is false the snapshot will be copied
-to a different directory in the same primary storage as the volume; if it is true the snapshot will be copied 
-to the secondary storage. If the snapshot is being taken in a file-based storage (NFS, SharedMountPoint, Local),
-it will be copied directly to its final storage location, according to the configuration.
+For volumes on file-based primary storage (NFS, SharedMountPoint, Local), when the VM is running, a
+disk-only VM snapshot is taken, exclusively for the volume in question. If the VM is stopped, the volume
+will be converted (with qemu-img convert). For volumes on RBD (Ceph) and CLVM primary storage, the Volume
+Snapshot is instead taken natively by the storage layer (via the RBD ``snap create`` operation, or the
+``managesnapshot.sh`` script for CLVM), without any interaction with the libvirt domain; the same
+storage-side mechanism is used whether the Instance is running or stopped. Note that on RBD, a snapshot
+taken while the Instance is running is only crash-consistent, as writes still held in the Instance's memory
+are not flushed before the snapshot is taken.
+
+The final storage location is determined by the ``snapshot.backup.to.secondary`` configuration; if it is
+false the snapshot will be copied to a different directory in the same primary storage as the volume; if it
+is true the snapshot will be copied to the secondary storage. If the snapshot is being taken in a
+file-based storage (NFS, SharedMountPoint, Local), it will be copied directly to its final storage
+location, according to the configuration.
+
+Snapshots of encrypted volumes are only supported while the Instance is stopped. Taking a Volume Snapshot
+of an encrypted volume attached to a running Instance will fail.
 
 Since 4.21.0.0, ACS supports incremental snapshots for the KVM hypervisor when using file-based storage (NFS, SharedMountPoint, Local),
 to enable incremental snapshots the ``kvm.incremental.snapshot`` configuration must be enabled. Furthermore, in order to take incremental snapshots
