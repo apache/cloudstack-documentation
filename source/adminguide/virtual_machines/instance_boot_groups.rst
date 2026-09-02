@@ -13,9 +13,6 @@
    specific language governing permissions and limitations
    under the License.
 
-About Instance Boot Groups
----------------------------
-
 An **Instance Boot Group** lets a User or Administrator group a set of Instances
 and Instance Groups together so that they can be started, stopped, and
 rebooted as a single, ordered unit. This is useful for multi-tier
@@ -42,7 +39,7 @@ non-negative integer.
 - All members that share the same Boot Order value form a **tier**, and boot
   (or shut down) together, concurrently.
 - Tiers are processed strictly in order: when starting a group, tier 0 is
-  processed before tier 1, tier 1 before tier 5, and so on. When stopping a
+  processed before tier 1, tier 1 before tier 2, and so on. When stopping a
   group, tiers are processed in the reverse order.
 - An Instance or Instance Group can be a member of only one Instance Boot
   Group at a time.
@@ -55,10 +52,11 @@ non-negative integer.
 Readiness Rules
 ~~~~~~~~~~~~~~~~
 
-By default, CloudStack considers a member of an Instance Boot Group "ready"
+By default, CloudStack does not define any readiness rules for the members of
+an Instance Boot Group, so it considers a member of the group "ready"
 as soon as its Instance (or, for an Instance Group member, all of its
 Instances) reaches the Running state. For many applications this is not
-enough — for example, a database Instance may be Running but not yet
+enough. For example, a database Instance may be Running but not yet
 accepting connections.
 
 A **Readiness Rule** lets you define what "ready" really means for a member,
@@ -76,24 +74,23 @@ The following Readiness Rule types are supported:
 .. cssclass:: table-striped table-bordered table-hover
 
 ======================= ============================= ==========================================================================================
-Rule Type                Applies to                    Description
+Rule Type               Applies to                    Description
 ======================= ============================= ==========================================================================================
-Ping                     Instance, Instance Group      Checks that the Instance responds to an ICMP ping, issued from the Virtual Router on the
-                                                         Instance's default network. Requires a running Virtual Router on that network.
-PortCheck                Instance, Instance Group      Checks that a TCP port on the Instance can be connected to, from the Virtual Router on the
-                                                         Instance's default network. Requires the ``port`` detail (1-65535) and, optionally, the
-                                                         ``protocol`` detail (only ``tcp`` is supported).
-GuestAgentLiveness       Instance, Instance Group      Checks that the QEMU guest agent inside the Instance responds to a liveness ping. Supported
-                                                         on **KVM only**.
-MemberQuorum             Instance Group only            Considers the group ready once a threshold of its member Instances are ready, instead of
-                                                         requiring all of them. Requires the ``thresholdtype`` detail (``COUNT`` or ``PERCENTAGE``)
-                                                         and the ``thresholdvalue`` detail.
-CustomScript              Instance, Instance Group      Reserved for a future release. It can be created, but currently always evaluates as an
-                                                         error and is not offered in the CloudStack UI.
+Ping                     Instance, Instance Group     Checks that the Instance responds to an ICMP ping, issued from the Virtual Router on the
+                                                      Instance's default network. Requires a running Virtual Router on that network.
+PortCheck                Instance, Instance Group     Checks that a TCP port on the Instance can be connected to, from the Virtual Router on the
+                                                      Instance's default network. Requires the ``port`` detail (1-65535) and, optionally, the
+                                                      ``protocol`` detail (only ``tcp`` is supported).
+GuestAgentLiveness       Instance, Instance Group     Checks that the QEMU guest agent inside the Instance responds to a liveness ping.
+                                                      Supported on **KVM only**. Requires installing the ``qemu-guest-agent`` package on the
+                                                      guest Instances.
+MemberQuorum             Instance Group only          Considers the group ready once a threshold of its member Instances are ready, instead of
+                                                      requiring all of them. Requires the ``thresholdtype`` detail (``COUNT`` or ``PERCENTAGE``)
+                                                      and the ``thresholdvalue`` detail.
 ======================= ============================= ==========================================================================================
 
 .. note:: ``Ping``, ``GuestAgentLiveness``, and ``MemberQuorum`` are singleton
-   rules — only one of each can be attached to a given member. Multiple
+   rules, i.e., only one of each can be attached to a given member. Multiple
    ``PortCheck`` rules can be attached to the same member, one per port.
 
 .. note:: ``Ping`` and ``PortCheck`` rules require the target Instance to
@@ -115,23 +112,23 @@ Boot Group when it is created or updated.
 .. cssclass:: table-striped table-bordered table-hover
 
 ========================================================= ==========================================================================================
-Configuration                                               Description
+Configuration                                             Description
 ========================================================= ==========================================================================================
-instance.boot.group.readiness.timeout.seconds               Timeout, in seconds, for a single readiness check attempt. **Default: 300**
-                                                              (overridable per Instance Boot Group)
-instance.boot.group.readiness.max.retry.attempts             Maximum number of readiness check attempts for a member before the tier, and the
-                                                              Instance Boot Group start, is considered to have failed. **Default: 5**
-                                                              (overridable per Instance Boot Group)
-instance.boot.group.readiness.initial.delay.seconds           Delay, in seconds, after an Instance is started before its first readiness check
-                                                              attempt is made. **Default: 30** (overridable per Instance Boot Group)
-instance.boot.group.readiness.reboot.on.retry                 Whether a member Instance should be rebooted before each new readiness check retry,
-                                                              instead of simply being re-checked. **Default: false** (overridable per Instance Boot
-                                                              Group)
-instance.boot.group.readiness.poll.interval.seconds           Interval, in seconds, between readiness check attempts. **Default: 10** (global only)
-instance.boot.group.readiness.check.concurrency               Maximum number of members within a tier whose readiness is checked concurrently.
-                                                              **Default: 10** (global only)
-instance.boot.group.max.members                               Maximum number of members allowed in a single Instance Boot Group. This is a
-                                                              domain-scoped setting. **Default: 10**
+instance.boot.group.readiness.timeout.seconds             Timeout, in seconds, for a single readiness check attempt. **Default: 300**
+                                                          (overridable per Instance Boot Group)
+instance.boot.group.readiness.max.retry.attempts          Maximum number of readiness check attempts for a member before the tier, and the
+                                                          Instance Boot Group start, is considered to have failed. **Default: 5**
+                                                          (overridable per Instance Boot Group)
+instance.boot.group.readiness.initial.delay.seconds       Delay, in seconds, after an Instance is started before its first readiness check
+                                                          attempt is made. **Default: 30** (overridable per Instance Boot Group)
+instance.boot.group.readiness.reboot.on.retry             Whether a member Instance should be rebooted before each new readiness check retry,
+                                                          instead of simply being re-checked. **Default: false** (overridable per Instance Boot
+                                                          Group)
+instance.boot.group.readiness.poll.interval.seconds       Interval, in seconds, between readiness check attempts. **Default: 10** (global only)
+instance.boot.group.readiness.check.concurrency           Maximum number of members within a tier whose readiness is checked concurrently.
+                                                          **Default: 10** (global only)
+instance.boot.group.max.members                           Maximum number of members allowed in a single Instance Boot Group. This is a
+                                                          domain-scoped setting. **Default: 10**
 ========================================================= ==========================================================================================
 
 Creating an Instance Boot Group
@@ -236,7 +233,7 @@ Rules inherited from an owning Instance Group are shown read-only, tagged
 
 .. note:: When adding a ``GuestAgentLiveness`` rule, make sure the QEMU
    guest agent is installed, running, and responsive inside the guest
-   Instance — the rule can only report Ready once the agent answers.
+   Instance, the rule can only report Ready once the agent answers.
 
 Using the API:
 
@@ -271,7 +268,7 @@ asynchronous operations.
 
 - **Start**: tiers are started in ascending Boot Order. All members of a
   tier are started concurrently, and CloudStack waits for the tier to
-  become ready — based on its members' Readiness Rules — before starting
+  become ready based on its members' Readiness Rules before starting
   the next tier. If a member does not become ready within the configured
   number of retry attempts, or fails to start, the whole start operation is
   halted. Instances that were already started before the failure are left
@@ -330,19 +327,18 @@ INSTANCE.BOOT.GROUP.READINESS.RULE.DELETE          A Readiness Rule was deleted
 ================================================= ======================================================
 
 Limitations
-------------------
+-----------
 
 #. An Instance or Instance Group can belong to at most one Instance Boot
    Group at a time.
 #. Instances that are part of a VNF appliance, or already belong to an
    AutoScale VM group, cannot be added to an Instance Boot Group.
 #. The ``GuestAgentLiveness`` Readiness Rule requires the QEMU guest agent
-   and is supported on KVM Instances only.
+   and is supported on KVM Instances only. It requires installing the
+   ``qemu-guest-agent`` package on the guest Instances.
 #. ``Ping`` and ``PortCheck`` Readiness Rules require a running Virtual
    Router on the Instance's default network, and cannot be used on Instances
    connected only to an L2 network.
-#. The ``CustomScript`` Readiness Rule type is reserved for a future
-   release; it is not yet implemented and is not available from the UI.
 #. If starting an Instance Boot Group is halted because a tier fails to
    become ready, any Instances already started in earlier tiers are left
-   running — CloudStack does not automatically roll the operation back.
+   running. The operation is not automatically rolled back.
