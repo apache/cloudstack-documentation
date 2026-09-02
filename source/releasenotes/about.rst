@@ -17,64 +17,43 @@
 What's New in |release|
 =======================
 
-Apache CloudStack |release| is a 4.22 LTS minor release with around 290 fixes
-and improvements since the 4.22.0.0 release. Some of the highlights include:
-
-• VMware-to-KVM migration fixes and improvements, including VDDK support and guest OS handling
-• GPU domain parsing fixes and PCI display controller support
-• Support configurable settings in the Proxmox Extension
-• Host VM power reporting improvements in Extensions
-• Support UEFI on KVM hosts by default with preconfigured default settings.
-• B&R enhancements, including NAS backup support with Linstor, timeout configuration support and other backup fixes
-• KVM Host HA improvements and heartbeat enhancements for SharedMountPoint storage
-• Support for creating volumes directly on a specified storage pool
-• Support KVM import and unmanage operations for SharedMountPoint pools
-• Support to list and query async jobs by resource
-• Better VM lifecycle handling, including reserved resource cleanup and improved expunge error reporting
-• Networking fixes and improvements for NSX, Routed VPCs, Load Balancer rules, Static Routes, and VPN DH groups
-• Incremental volume snapshot fixes and snapshot rollback reliability improvements for KVM
-• Storage plugins - Ceph, Linstor, PowerFlex related fixes and improvements
-• Some CKS related fixes and improvements
-• Several UI fixes and improvements
-
-The full list of new features can be found in the project release notes at
-https://docs.cloudstack.apache.org/en/4.22.1.0/releasenotes/changes.html
-
-What's in since 4.22.0.0
-========================
-
-Apache CloudStack 4.22.0.0 is the initial 4.22 LTS release with 10 new features,
-around 15 improvements and more than 140 bug fixes since the 4.21.0.0 release.
+Apache CloudStack |release| is a 4.23 Regular release with 9 new features,
+around 20 improvements and more than 120 bug fixes since the 4.22.0.0 release.
 Some of the highlights include:
 
-• Enhanced Backup and Disaster Recovery
-• SSL Offloading for Load Balancers
-• Baremetal/MaaS Extension
-• CSI Driver for CKS
-• Console Access for Proxmox in Extensions Framework
-• VMware-to-KVM Migration Enhancements
-• Snapshot/Backup Schedule Listing
-• Per-Zone Console Proxy Configuration
-• Direct Volume Migrations by-passing Secondary Storage
-• Persistent domain for unmanaged KVM instances from CS
-• Support for User Data on System VMs
-• EL10 & OpenSUSE 15.6 Platform Support
-• Stronger Checksum Algorithm (SHA-512)
-• Enable KVM Volume and VM snapshot by default
-• Support XZ compression format for template registration with KVM
-• Support for Shared Filesystem on Networks with Config Drive
+• CLVM (Clustered LVM) Enhancements for KVM
+• Key Management Service (KMS) with HSM Integration
+• NetApp ONTAP Primary Storage Support
+• KVM Backup on Secondary Storage (KBOSS), a new provider with support for incremental backups, compression, and validation
+• Incremental Backup Support for the NAS Backup and Recovery Provider
+• Support for Dedicating Backup Offerings to Domains
+• Veeam Backup and Recovery Integration for KVM
+• Conserve Mode for VPC Offerings
+• DNS Framework, with PowerDNS as the first plugin
+• DHCP Lease Timeout Support
+• MAC Address Reuse Control for Virtual Router Public NICs
+• Network Extension: Orchestrate External Network Devices
+• Support Firewall Rules on Public IPs in VPC
+• Support for Enabling/Disabling NICs on KVM
+• API Key Pairs with Limited Permissions and Expiry Dates
+• Keycloak OAuth Provider Support
+• Per-Domain OAuth Provider Support
+• Affinity Group Selection during Kubernetes Cluster Creation
+• Headlamp as the New Kubernetes Dashboard (Legacy Dashboard Deprecated)
+• Clone Existing Compute/Service Offerings and Update Them
+• Flexible JavaScript Rules for Guest OS Allocation
+• Quota Plugin Improvements and UI Rework
+• Scheduled Min/Max Sizing for VM Autoscaling Groups
+• Live Scaling for VMs with Fixed Service Offerings on KVM
+• XenServer/XCP-ng 8.3/8.4 vTPM Support
+• Several UI fixes and improvements
 
 Known Issues
 ------------
 
-• Starting 4.21 VM snapshots are supported for instances on KVM hosts. However, volume snapshots and VM snapshots cannot coexist.
-  Restoring a volume snapshot will remove any existing VM snapshots and may lead to data loss.
-  There is a UI issue where error messages in such scenarios may not clearly indicate the problem.
-
-• When managing and unmanaging UEFI-based VMs on KVM hosts, migration of such VMs may fail in certain scenarios.
-  This typically occurs when a VM that was unmanaged and later re-imported is started on a different host and then
-  migrated back to its original host. The migration fails because the VM domain still exists on the original host,
-  resulting in a conflict. As a workaround, manually remove the old domain from the original host before attempting the migration again.
+• Restoring a backed up volume and attaching it to a VM can fail on KVM hosts, across NFS, Linstor and Ceph
+  primary storage, due to a regression in the restore-and-attach command handling. See
+  https://github.com/apache/cloudstack/pull/14007 for details and status.
 
 The full list of new features can be found in the project release notes at
-https://docs.cloudstack.apache.org/en/4.22.0.0/releasenotes/changes.html
+https://docs.cloudstack.apache.org/en/4.23.0.0/releasenotes/changes.html

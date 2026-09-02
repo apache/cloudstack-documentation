@@ -56,6 +56,7 @@ Contents:
    upgrade/upgrade_java_17_notes
    upgrade/mysql
    upgrade/valid_source
+   upgrade/upgrade-4.23
    upgrade/upgrade-4.22
    upgrade/upgrade-4.21
    upgrade/upgrade-4.20
