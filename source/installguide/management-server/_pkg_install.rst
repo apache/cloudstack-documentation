@@ -57,13 +57,17 @@ Install on Debian
 ^^^^^^^^^^^^^^^^^
 
 .. note::
-   The MySQL Python connector is not available in Debian's package repository sources, please add MySQL's own package repository:
+   The MySQL Python connector is not available in Debian 12's package repository sources, please add MySQL's own package repository:
 
    .. code:: bash
 
        wget https://dev.mysql.com/get/mysql-apt-config_0.8.36-1_all.deb -O /tmp/mysql-apt-config_0.8.36-1_all.deb
        sudo apt install -y /tmp/mysql-apt-config_0.8.36-1_all.deb
        sudo apt update
+
+    For Debian 13, please install python3-mysql.connector from Ubuntu 26.04:
+    https://launchpad.net/ubuntu/+source/mysql-connector-python
+
 
 .. parsed-literal::
 
