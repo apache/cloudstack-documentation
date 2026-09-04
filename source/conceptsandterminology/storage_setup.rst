@@ -34,9 +34,6 @@ Fiber Channel  Supported via Pre-existing SR   Supported           Supported via
 Local Disk     Supported                       Supported           Supported
 =============  ==============================  ==================  ===================================
 
-The use of the Cluster Logical Volume Manager (CLVM) for KVM is not officially supported with
-CloudStack.
-
 .. _about-secondary-storage:
 
 Secondary Storage
