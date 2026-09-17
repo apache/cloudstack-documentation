@@ -1610,8 +1610,11 @@ Under `Browser` tab, clicking a directory on the browser tab will list the objec
 For a file, clicking it list the properties of that file with links to access the file.
 |object-store-file-properties.png|
 
-.. note:: 
-   To access the bucket, UI uses the URL, access key and secret key from the bucket's details.
+.. note::
+   To access the bucket, the UI uses the object store URL and the bucket's access key and
+   secret key. For a bucket with its own credential, the keys are shown on the bucket's
+   ``Keys`` tab. For a bucket that uses its account's credential, they are shown on the
+   bucket's ``Details`` tab. See :ref:`per-bucket-credentials`.
 
 
 Uploading an object to a bucket
@@ -1631,6 +1634,117 @@ Deleting objects from a bucket
 1. Select the files you want to remove from the bucket.
 
 2. Click on the |delete-button.png| button to delete the selected files from the bucket.
+
+
+.. _per-bucket-credentials:
+
+Per-bucket credentials
+~~~~~~~~~~~~~~~~~~~~~~
+
+Since Apache CloudStack 24.0, each bucket can have its own credential for accessing the
+object store. A bucket's credential gives access to that bucket only, so it can be given to
+an application, rotated or revoked without affecting the account's other buckets.
+
+Each credential has two key slots. Both slots can hold an active key at the same time, so an
+application can be moved to a new key before the old key is revoked.
+
+Per-bucket credentials are available on Ceph object storage running Ceph Squid (v19) or
+later, with the admin user permissions described in :ref:`add-object-storage`. On other
+object storage platforms, all of an account's buckets use one credential.
+
+The **Credential Scope** of a bucket shows which kind of credential it uses:
+
+-  **Per-Bucket**: the bucket has its own credential.
+
+-  **Account**: the bucket uses its account's credential.
+
+The **Credential Scope** column appears in the bucket list once at least one bucket has its
+own credential, and the bucket list can be filtered by it.
+
+The global setting ``object.storage.per.bucket.credentials`` (default ``true``) determines
+how an account is set up the first time it uses an object store. When ``true``, every bucket
+the account creates gets its own credential. When ``false``, the account's buckets share one
+credential, and an administrator can migrate the account later. The setting has no effect on
+an account that has already been migrated.
+
+
+Managing a bucket's keys
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Log in to the CloudStack UI as a user or administrator.
+
+#. In the left navigation bar, click Storage.
+
+#. In Select View, choose Buckets.
+
+#. Click the bucket name, then open the ``Keys`` tab.
+
+The ``Keys`` tab lists both key slots, with each slot's state, access key, secret key and
+creation time. For each slot:
+
+-  **Create Key**: creates a key in an empty slot.
+
+-  **Rotate Key**: replaces the key in a slot with a new key. The replaced key stops working
+   immediately.
+
+-  **Revoke Key**: revokes the key in a slot. The key stops working immediately. The last
+   active key of a bucket cannot be revoked; create a key in the other slot first.
+
+To replace a key without interrupting an application:
+
+#. Create a key in the empty slot, or rotate the slot the application does not use.
+
+#. Update the application to use the new key.
+
+#. Revoke the old key.
+
+The same operations are available through the ``rotateBucketKey`` and ``revokeBucketKey``
+APIs.
+
+
+Migrating an account to per-bucket credentials
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+An account that used an object store before per-bucket credentials were available keeps
+one credential for all of its buckets until an administrator migrates it. Migration is done
+separately for each object store the account uses, by a root administrator or a domain
+administrator.
+
+.. warning::
+   Migrating an account cannot be undone. On Ceph, the account's existing object storage
+   user becomes the root user of a new RGW account, which takes ownership of all of the
+   account's buckets on that object store. Existing keys continue to work.
+
+#. Log in to the CloudStack UI as a root administrator or domain administrator.
+
+#. In the left navigation bar, click Accounts, then click the account name.
+
+#. Open the ``Object Storage`` tab. The tab lists each object store the account can use,
+   with the account's migration stage on it.
+
+#. Click **Migrate Account to Per-Bucket Credentials** for the object store, and confirm.
+   The account's existing buckets continue to use the account credential.
+
+#. Click **Show Buckets** to list the account's buckets that still use the account
+   credential. For each bucket, choose **Migrate to Per-Bucket Credential**. The bucket gets
+   its own credential, which can also access objects written before the migration.
+
+#. When no bucket on the object store uses the account credential, click
+   **Rotate Account Key** and confirm. CloudStack replaces the account credential it holds
+   for that object store, and the previous account key stops working. Any application still
+   using the previous account key loses access.
+
+When all stages are done, the tab shows **Per-Bucket Credentials In Use** for that object
+store. Buckets the account creates on it from then on get their own credential.
+
+If an object store does not support per-bucket credentials, the tab says so. Root
+administrators can see the reason on the object store's ``Details`` tab: in the left
+navigation bar, click Infrastructure, then Object Storage, then the object store. The
+**Per-Bucket Credentials** field shows **Ready** or **Not ready**, and
+**To Resolve Before Migration** names what needs to change.
+
+The same operations are available through the ``migrateObjectStoreAccount``,
+``migrateBucketCredential`` and ``rotateObjectStoreAccountKey`` APIs.
 
 
 Configuring resource limits on buckets and object storage usage
