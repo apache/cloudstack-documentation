@@ -30,13 +30,10 @@ Software requirements:
 
 -  vSphere and vCenter (see `"Supported Hypervisor Versions" <../../releasenotes/compat.html#supported-hypervisor-versions>`_)
 
-   vSphere Standard is recommended. Note however that customers need to
-   consider the CPU constraints in place with vSphere licensing. See
-   `http://www.vmware.com/files/pdf/vsphere\_pricing.pdf 
-   <http://www.vmware.com/files/pdf/vsphere_pricing.pdf>`_
-   and discuss with your VMware sales representative.
+-  vSphere Standard is recommended. Note however that customers need to
+   consider the CPU constraints in place with vSphere licensing. Talk to your VMware sales representative.
 
-   vCenter Server Standard is recommended.
+-  vCenter Server Standard is recommended.
 
 -  Be sure all the hotfixes provided by the hypervisor vendor are
    applied. Track the release of hypervisor patches through your
@@ -67,9 +64,7 @@ Hardware requirements:
 ^^^^^^^^^^^^^^^^^^^^^^
 
 -  The host must be certified as compatible with vSphere. See the VMware
-   Hardware Compatibility Guide at
-   `http://www.vmware.com/resources/compatibility/search.php 
-   <http://www.vmware.com/resources/compatibility/search.php>`_.
+   Hardware Compatibility Guide.
 
 -  All hosts must be 64-bit and must support HVM (Intel-VT or AMD-V
    enabled).
@@ -108,9 +103,6 @@ vCenter Server requirements:
    installation archive.
 
 -  Networking - 1Gbit or 10Gbit.
-
-For more information, see `"vCenter Server and the vSphere Client Hardware 
-Requirements" <http://pubs.vmware.com/vsp40/wwhelp/wwhimpl/js/html/wwhelp.htm#href=install/c_vc_hw.html>`_.
 
 
 Other requirements:
@@ -605,7 +597,7 @@ Creating a Port Profile
    configured or intended to be configured for use towards VMs or VM
    resources in the CloudStack environment.
 
--  You do not have to create any vEthernet port profiles – CloudStack
+-  You do not have to create any vEthernet port profiles - CloudStack
    does that during Instance deployment.
 
 -  Ensure that you create required port profiles to be used by
@@ -693,7 +685,7 @@ UpdateTrafficTypeCmd, and AddClusterCmd API calls.
 
 Unless the CloudStack global parameter "vmware.use.nexus.vswitch" is set
 to "true", CloudStack by default uses VMware standard vSwitch for
-virtual network infrastructure. In this release, CloudStack doesn’t
+virtual network infrastructure. In this release, CloudStack doesn't
 support configuring virtual networks in a deployment with a mix of
 standard vSwitch and Nexus 1000v virtual switch. The deployment can have
 either standard vSwitch or Nexus 1000v virtual switch.
@@ -709,8 +701,7 @@ the zone is being created.
 
 After the zone is created, if you want to create an additional cluster
 along with Nexus 1000v virtual switch in the existing zone, use the Add
-Cluster option. For information on creating a cluster, see
-:ref:`adding-a-cluster`.
+Cluster option.
 
 In both these cases, you must specify the following parameters to
 configure Nexus virtual switch:
