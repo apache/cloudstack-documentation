@@ -417,3 +417,9 @@ Webhooks
 --------
 
 .. include:: events/webhooks.rst
+
+
+Resource Alerts
+---------------
+
+.. include:: events/resource_alerts.rst
