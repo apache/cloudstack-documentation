@@ -156,8 +156,9 @@ How alerts are fired
 -  With more than one management server, only one of them checks the
    rules. Alerts are not doubled.
 
--  If a resource has its own rule for a metric, *All resources* rules for
-   the same metric skip that resource.
+-  If you have a rule on one resource for a metric, your *All resources*
+   rule for the same metric skips that resource. Rules of other accounts
+   are not affected.
 
 -  To keep a resource out of *All resources* rules, add the tag
    ``resource.alert.opt.out`` with the value ``true`` to it. Rules on that
@@ -181,7 +182,7 @@ Fired alerts can be seen in two places:
    |resource-alerts-tab.png|
 
 Old alerts are removed after ``resourcealert.history.retention.days``
-days.
+days. Deleting a rule also deletes its alert history.
 
 
 Where alerts are sent
