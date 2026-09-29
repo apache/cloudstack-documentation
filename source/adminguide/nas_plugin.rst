@@ -27,9 +27,11 @@ instances to any shared storage (NAS). It is based on `libvirt push backup mode
 to take full instance backups (qcow2) and requires libvirt-7.2.0 and QEMU-4.2,
 or high versions on the KVM hosts.
 
-Currently, only backup of VMs from the NFS, CEPH, File-based Shared Mountpoint
+Currently, only backup of VMs from the NFS, CEPH, Linstor, File-based Shared Mountpoint
 and Local Storage based Primary Storage are tested to work. All other Primary Storages
 are not tested, backups on them may not work.
+
+Since ACS 4.22, **Incremental Backups** are supported on NFS, Shared Mountpoint and Local Storage.
 
 The NAS B&R plugin requires admin to first add backup repositories which are
 network-attached storage (shared storage). It supports NFS, CIFS/Samba and CephFS.
@@ -99,6 +101,26 @@ For the "External ID", please specify the name of the previously created backup 
 
 After this has been done, you can go to any Instance view and there will be buttons available for either ad-hoc backup or a scheduled backup of the VM
 
+Incremental Backups
+--------------------
+Incremental Backups work by using libvirt checkpoints and qcow2 bitmaps to track and backup only the changed blocks since the last backup. The backup chain is flattened out and copied during restore.
+
+Some caveats:
+
+* Supported only on NFS, Shared Moutpoint and Local Storage.
+* Stopped VM backups are always full.
+* Backup after VM migration is full.
+* Backup after restore is full.
+
+Use these settings to configure incremental Backups:
+
+================================= ========================
+Configuration                     Value
+================================= ========================
+nas.backup.incremental.enabled    true (default false)
+nas.backup.full.every             (default 10)
+================================= ========================
+
 Quiesce (Filesystem Freeze and Thaw)
 ------------------------------------
 
@@ -144,7 +166,7 @@ For stopped instances, `qemu-img` is used to convert and export full-disk backup
 in qcow2 format to the backup repository.
 
 For restore operations, the KVM instance must be stopped in CloudStack.
-Currently, only volume(s) restoration is supported only to NFS, CEPH, File-based Shared Mountpoint
+Currently, only volume(s) restoration is supported only to NFS, CEPH, Linstor, File-based Shared Mountpoint
 and Local Storage based primary storage pools, and restored volumes are fully backed disks (i.e.
 not using any backing template file).
 
