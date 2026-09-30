@@ -128,8 +128,7 @@ Metrics
    Virtual Machine CPU Utilization %, Memory Utilization %, Disk Read IOPS,
                    Disk Write IOPS, Disk Read KB/s, Disk Write KB/s,
                    Network In KB/s, Network Out KB/s
-   Volume          Disk Read IOPS, Disk Write IOPS, Disk Read KB/s,
-                   Disk Write KB/s, Volume Size (GB)
+   Volume          Volume Size (GB)
    Host            CPU Utilization %, Memory Utilization %, Load Average,
                    Network In KB/s, Network Out KB/s
    Storage Pool    Storage Utilization %, Storage Used IOPS
@@ -139,6 +138,10 @@ Values come from the stats CloudStack already collects. If a resource does
 not report a metric, the rule is skipped for it and no alert is fired. For
 example, NFS storage pools do not report IOPS, and Instance memory needs
 the guest to report it.
+
+Disk metrics are only on Instances. CloudStack does not collect disk
+reads and writes per volume by default, so a rule on a Volume cannot use
+them.
 
 For metrics that are a percentage, the threshold cannot be more than 100.
 
