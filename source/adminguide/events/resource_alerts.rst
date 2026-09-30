@@ -128,7 +128,7 @@ Metrics
    Virtual Machine CPU Utilization %, Memory Utilization %, Disk Read IOPS,
                    Disk Write IOPS, Disk Read KB/s, Disk Write KB/s,
                    Network In KB/s, Network Out KB/s
-   Volume          Volume Size (GB)
+   Volume          Volume Used (GB), Volume Used %
    Host            CPU Utilization %, Memory Utilization %, Load Average,
                    Network In KB/s, Network Out KB/s
    Storage Pool    Storage Utilization %, Storage Used IOPS
@@ -138,6 +138,9 @@ Values come from the stats CloudStack already collects. If a resource does
 not report a metric, the rule is skipped for it and no alert is fired. For
 example, NFS storage pools do not report IOPS, and Instance memory needs
 the guest to report it.
+
+Volume Used is the space the volume takes on the storage, not its disk
+size. Volume Used % is that space out of the disk size.
 
 Disk metrics are only on Instances. CloudStack does not collect disk
 reads and writes per volume by default, so a rule on a Volume cannot use
@@ -247,8 +250,8 @@ Settings
                                                     server restart.
    resourcealert.repeat.interval.default    600     Cooldown in seconds for rules that don't set one.
    resourcealert.history.retention.days     30      Days to keep fired alerts. 0 keeps them forever.
-   resourcealert.per.user.limit             20      Most rules an account can own. 0 is unlimited. Can be
-                                                    set per account.
+   resourcealert.per.user.limit             20      Most rules an account can own, admin accounts
+                                                    included. 0 is unlimited. Can be set per account.
    ======================================== ======= ======================================================
 
 
