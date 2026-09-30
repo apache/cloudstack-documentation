@@ -32,6 +32,9 @@ Rules can be set on:
 A rule can watch one resource, or all resources of that type that the
 rule owner can see.
 
+Instance and Volume rules only cover user Instances and their volumes.
+System VMs, virtual routers and their volumes are not included.
+
 Resource alerts can be managed using both API and UI. CloudStack provides
 the following APIs:
 
