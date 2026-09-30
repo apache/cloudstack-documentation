@@ -116,7 +116,12 @@ Creating a rule
 |resource-alert-create.png|
 
 The rule details page shows the rule and the webhooks it sends to. It can
-be edited or deleted from there.
+be edited, disabled or deleted from there.
+
+A disabled rule is not checked and fires no alerts, but it keeps its alert
+history. Enable it again to start checking. This is useful during planned
+maintenance. A disabled rule on one resource does not stop your *All
+resources* rule for that resource.
 
 |resource-alert-details.png|
 
