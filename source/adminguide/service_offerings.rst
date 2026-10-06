@@ -844,17 +844,12 @@ The rate that applies to a VPC is:
    means unlimited. The parameter accepts -1, 0 (both unlimited) or a
    positive number.
 
-The effective rate is stored when the VPC is created and is refreshed
-when the VPC is restarted successfully with the cleanup option (the
-virtual router is recreated and the new rate is applied to its public
-interface). Changing the global parameter therefore affects an existing
-VPC only after the VPC is restarted with cleanup. A restart without
-cleanup does not change the rate of the VPC. The rate of a VPC is shown
-as **Public network rate (Mb/s)** in the VPC details, and as
-**publicnetworkrate** in the listVPCs API response. This value is
-updated only when the VPC is restarted with cleanup. A virtual router
-that is recreated by other means may apply a new value of the global
-parameter to its public interface without the VPC details being updated.
+The rate of a VPC is updated when the VPC is restarted with the cleanup
+option, which recreates the virtual router. A restart without cleanup does
+not update it. Changing vpc.public.network.throttling.rate therefore
+affects an existing VPC only after a restart with cleanup. The rate of a
+VPC is shown as **Public network rate (Mb/s)** in the VPC details, and as
+**publicnetworkrate** in the listVPCs API response.
 
 .. image:: /_static/images/vpc_details_public_network_rate.png
    :width: 335px
@@ -879,21 +874,26 @@ uses the public network rate of the new offering.
    network rate. After the restart the VPC uses the value of
    vpc.public.network.throttling.rate.
 
-.. note::
-   When upgrading to 24.0.0, the network rate that applies to the existing
-   networks and NICs is recorded using the rules that applied before the
-   upgrade, so the bandwidth limits of running instances and routers do
-   not change. Existing VPCs have no public network limit (unlimited). The
-   new rules described above apply to the networks and NICs created after
-   the upgrade.
+Network Rates After Upgrading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   For existing instances and virtual routers, the new rules apply the next
-   time they are started: an instance is stopped and started, and a router
-   is recreated by restarting its network or VPC with the cleanup option.
-   A restart without cleanup keeps the router and the rates of its NICs.
-   The network rate of such a NIC can therefore increase or decrease at
-   that point, for example when the system offering of the router, or the
-   compute offering of the instance, now takes precedence.
+When you upgrade to 24.0.0, CloudStack keeps the network rates of existing
+networks and NICs as they were before the upgrade. Running instances and
+virtual routers are not changed. Existing VPCs have no public network
+limit.
+
+The new rules described above apply to new networks and NICs. They apply
+to existing instances and virtual routers the next time they are started:
+stop and start an instance, or stop and start a virtual router, or restart
+its network or VPC with the cleanup option. At that point the rate of a NIC
+can increase or decrease, for example when the system offering of the
+router, or the compute offering of the instance, takes precedence.
+
+.. note::
+   The rate shown for a NIC is the rate CloudStack calculated for it. It is
+   not read from the hypervisor. Until an instance or virtual router is
+   restarted, the bandwidth in effect can differ from the rate shown, for
+   example if a throttling setting was changed after it was started.
 
 
 Changing the Default System Offering for System VMs
