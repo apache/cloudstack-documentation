@@ -671,6 +671,8 @@ but with some fields pre-filled with the settings of the existing offering.
 You can modify any of the settings as needed before clicking Add to create the new offering.
 
 
+.. _network-throttling:
+
 Network Throttling
 ------------------
 
@@ -687,14 +689,20 @@ configured on the following:
 
 -  Network Offering
 
--  Service Offering
+-  Service Offering (the compute offering of an instance, and the
+   system offering of a virtual router)
+
+-  VPC Offering (the public gateway of a VPC), since 24.0
 
 -  Global parameter
 
 If network rate is set to NULL in service offering, the value provided
 in the vm.network.throttling.rate global parameter is applied. If the
 value is set to NULL for network offering, the value provided in the
-network.throttling.rate global parameter is considered.
+network.throttling.rate global parameter is considered. If a VPC
+offering has no public network rate, the value provided in the
+vpc.public.network.throttling.rate global parameter is used for the
+VPCs created with it.
 
 For the default public, storage, and management networks, network rate
 is set to 0. This implies that the public, storage, and management
@@ -707,11 +715,15 @@ on different types of networks in CloudStack.
 
 .. cssclass:: table-striped table-bordered table-hover
 
-============================================ ===============================
+============================================ =========================================================
 Networks                                     Network Rate Is Taken from
-============================================ ===============================
-Guest network of Virtual Router              Guest Network Offering
-Public network of Virtual Router             Guest Network Offering
+============================================ =========================================================
+Guest network of Virtual Router              System Offering of the Virtual Router, if it sets a
+                                             network rate; otherwise Guest Network Offering
+Public network of Virtual Router in a VPC    VPC Offering (public network rate), or the
+                                             vpc.public.network.throttling.rate global parameter
+                                             if not set
+Public network of Virtual Router (not VPC)   Guest Network Offering
 Storage network of Secondary Storage VM      System Network Offering
 Management network of Secondary Storage VM   System Network Offering
 Storage network of Console Proxy VM          System Network Offering
@@ -721,11 +733,16 @@ Management network of Virtual Router         System Network Offering
 Public network of Secondary Storage instance System Network Offering
 Public network of Console Proxy instance     System Network Offering
 Default network of a guest instance          Compute Offering
-Additional networks of a guest instance      Corresponding Network Offerings
-============================================ ===============================
+Additional networks of a guest instance      Compute Offering
+============================================ =========================================================
+
+Since 24.0, the Compute Offering network rate applies to every network of
+an instance, not only the default network. If the Compute Offering has no
+network rate, vm.network.throttling.rate is used.
 
 A guest instance must have a default network, and can also have many
-additional networks. Depending on various parameters, such as the host
+additional networks. The compute offering network rate applies to all of
+them. Depending on various parameters, such as the host
 and virtual switch used, you can observe a difference in the network
 rate in your cloud. For example, on a VMware host the actual network
 rate varies based on where they are configured (compute offering,
@@ -766,6 +783,105 @@ In shared networks, ingress traffic will not be limited for CloudStack,
 while egress traffic will be limited to 200 Mbps. In an isolated
 network, ingress traffic will be limited to 10 Mbps and egress to 200
 Mbps.
+
+.. note::
+   Since 24.0, the network rate of the network offering no longer applies
+   to the NICs of a user instance; the compute offering rate (or
+   vm.network.throttling.rate) does. The network offering rate still
+   applies to the guest interface of the virtual router, unless the
+   system offering of the router sets a rate.
+
+.. _throttling-vpc-public-gateway:
+
+Throttling the Public Gateway of a VPC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Since 24.0, an administrator can limit the bandwidth of the public
+(internet-facing) gateway of a VPC. The limit is set on the VPC offering,
+so that different VPC offerings can give different tenants different
+levels of service. It is applied to the public interface of the VPC
+virtual router, independently of the network rate of the guest networks
+(tiers) of the VPC.
+
+To create a VPC offering with a public network rate:
+
+#. Log in to the CloudStack UI as an administrator.
+
+#. Navigate to Service Offerings and choose VPC Offerings.
+
+#. Click Add VPC Offering.
+
+#. In the dialog, set **Public network rate (Mb/s)** together with the
+   other settings of the offering:
+
+   -  Enter a positive number to limit the public gateway to that rate in
+      megabits per second.
+
+   -  Enter -1 or 0 for unlimited bandwidth.
+
+   -  Leave the field empty if the offering should not set a rate.
+
+   .. image:: /_static/images/vpc_offering_dialog_public_network_rate.png
+      :width: 400px
+      :align: center
+      :alt: Add VPC Offering dialog box with the Public network rate field
+
+#. Click OK.
+
+The same can be done with the **publicnetworkrate** parameter of the
+createVPCOffering API.
+
+The public network rate cannot be changed after the VPC offering is
+created. To use another rate, create a new VPC offering.
+
+The rate that applies to a VPC is:
+
+-  the public network rate of its VPC offering, if the offering has one.
+   -1 or 0 means unlimited and the global parameter is not used;
+
+-  otherwise the value of the zone level global parameter
+   vpc.public.network.throttling.rate. Its default value is -1, which
+   means unlimited. The parameter accepts -1, 0 (both unlimited) or a
+   positive number.
+
+The effective rate is stored when the VPC is created and is refreshed
+when the VPC is restarted successfully with the cleanup option (the
+virtual router is recreated and the new rate is applied to its public
+interface). Changing the global parameter therefore affects an existing
+VPC only after the VPC is restarted with cleanup. A restart without
+cleanup does not change the rate of the VPC. The rate of a VPC is shown
+as **Public network rate (Mb/s)** in the VPC details, and as
+**publicnetworkrate** in the listVPCs API response.
+
+.. image:: /_static/images/vpc_details_public_network_rate.png
+   :width: 335px
+   :align: center
+   :alt: VPC details showing the Public network rate
+
+The details of a VPC offering show the same field. An offering with an
+unlimited public network rate (-1) shows **Unlimited**. An offering that
+has no rate set does not show the field.
+
+.. image:: /_static/images/vpc_offering_details_unlimited_rate.png
+   :width: 300px
+   :align: center
+   :alt: VPC offering details showing an unlimited public network rate
+
+If a VPC is moved to another VPC offering with the migrateVPC API, it
+uses the public network rate of the new offering.
+
+.. note::
+   Converting a VPC to a redundant VPC (restartVPC with makeredundant=true)
+   moves it to the built-in Redundant VPC offering, which has no public
+   network rate. After the restart the VPC uses the value of
+   vpc.public.network.throttling.rate.
+
+.. note::
+   When upgrading to 24.0, the network rate that applies to the existing
+   networks and NICs is recorded using the rules that applied before the
+   upgrade, so the bandwidth limits of existing resources do not change.
+   Existing VPCs have no public network limit (unlimited). The new rules
+   described above apply to the networks and NICs created after the upgrade.
 
 
 Changing the Default System Offering for System VMs

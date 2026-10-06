@@ -1985,6 +1985,8 @@ zone      pool.storage.allocated.capacity.disablethreshold           The percent
                                                                      available allocated storage is below the threshold.
 zone      storage.overprovisioning.factor                            Used for storage over-provisioning calculation; available storage will be the mathematical product of actualStorageSize and                                                                                storage.overprovisioning.factor.
 zone      network.throttling.rate                                    Default data transfer rate in megabits per second allowed in a network.
+zone      vpc.public.network.throttling.rate                         Default data transfer rate in megabits per second allowed for a VPC's public network, used when the VPC offering does not
+                                                                     specify a rate. -1 or 0 means unlimited.
 zone      guest.domain.suffix                                        Default domain name for instances inside a virtual networks with a router.
 zone      router.template.xen                                        Name of the default router Template on Xenserver.
 zone      router.template.kvm                                        Name of the default router Template on KVM.

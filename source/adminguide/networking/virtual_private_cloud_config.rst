@@ -222,6 +222,11 @@ addresses in the form of a Classless Inter-Domain Routing (CIDR) block.
       .. note::
          In case Conserve Mode is enabled on VPC Offering and VPC Network Tier Offerings, then the Source NAT IP address of the VPC can be reused for multiple services.
 
+      .. note::
+         Since 24.0, a VPC offering can limit the bandwidth of the public
+         gateway of the VPCs created with it. See
+         :ref:`throttling-vpc-public-gateway`.
+
 
    -  **DNS**: A set of custom DNS that will be used by this VPC. If not provided then DNS specified for the zone will be used. Available only when the selected VPC offering supports DNS service.
 
@@ -1499,6 +1504,11 @@ Editing, Restarting, and Removing a Virtual Private Cloud
 
    To restart a VPC, select the VPC, then click the Restart button.
    |restart-vpc.png|
+
+   Since 24.0, a change of the public network rate of the VPC, for example
+   after the global parameter vpc.public.network.throttling.rate was
+   changed, is applied only when the VPC is restarted with the **Clean up**
+   option. See :ref:`throttling-vpc-public-gateway`.
 
 
 Working with Domain VPCs
