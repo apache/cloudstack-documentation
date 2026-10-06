@@ -671,8 +671,6 @@ but with some fields pre-filled with the settings of the existing offering.
 You can modify any of the settings as needed before clicking Add to create the new offering.
 
 
-.. _network-throttling:
-
 Network Throttling
 ------------------
 
@@ -696,13 +694,15 @@ configured on the following:
 
 -  Global parameter
 
-If network rate is set to NULL in service offering, the value provided
-in the vm.network.throttling.rate global parameter is applied. If the
-value is set to NULL for network offering, the value provided in the
-network.throttling.rate global parameter is considered. If a VPC
-offering has no public network rate, the value provided in the
-vpc.public.network.throttling.rate global parameter is used for the
-VPCs created with it.
+For an instance, if network rate is set to NULL in the compute offering,
+the value provided in the vm.network.throttling.rate global parameter is
+applied. For the guest network of a virtual router, the network rate of
+the system offering of the router is used if it is set. Otherwise the
+network rate of the guest network offering is used, and if that is NULL,
+the value provided in the network.throttling.rate global parameter is
+considered. If a VPC offering has no public network rate, the value
+provided in the vpc.public.network.throttling.rate global parameter is
+used for the VPCs created with it.
 
 For the default public, storage, and management networks, network rate
 is set to 0. This implies that the public, storage, and management
@@ -766,12 +766,12 @@ network used in CloudStack. In shared networks, ingress traffic is
 unlimited for CloudStack, and egress traffic is limited to the rate that
 applies to the port group used by the instance if any. If the compute
 offering has a network rate configured, this rate applies to the egress
-traffic, otherwise the network rate set for the network offering
-applies. For isolated networks, the network rate set for the network
-offering, if any, effectively applies to the ingress traffic. This is
-mainly because the network rate set for the network offering applies to
-the egress traffic from the virtual router to the instance. The egress
-traffic is limited by the rate that applies to the port group used by
+traffic, otherwise the value of the vm.network.throttling.rate global
+parameter applies. For isolated networks, the network rate set for the
+network offering, if any, effectively applies to the ingress traffic.
+This is mainly because the network rate set for the network offering
+applies to the egress traffic from the virtual router to the instance.
+The egress traffic is limited by the rate that applies to the port group used by
 the instance if any, similar to shared networks.
 
 For example:
@@ -815,7 +815,7 @@ To create a VPC offering with a public network rate:
    other settings of the offering:
 
    -  Enter a positive number to limit the public gateway to that rate in
-      megabits per second.
+      Mbps.
 
    -  Enter -1 or 0 for unlimited bandwidth.
 
@@ -851,7 +851,11 @@ interface). Changing the global parameter therefore affects an existing
 VPC only after the VPC is restarted with cleanup. A restart without
 cleanup does not change the rate of the VPC. The rate of a VPC is shown
 as **Public network rate (Mb/s)** in the VPC details, and as
-**publicnetworkrate** in the listVPCs API response.
+**publicnetworkrate** in the listVPCs API response. This value is
+updated only when the VPC is restarted with cleanup. A virtual router
+that is stopped and started, or recreated by other means, may apply a
+new value of the global parameter to its public interface without the
+VPC details being updated.
 
 .. image:: /_static/images/vpc_details_public_network_rate.png
    :width: 335px
@@ -879,9 +883,15 @@ uses the public network rate of the new offering.
 .. note::
    When upgrading to 24.0, the network rate that applies to the existing
    networks and NICs is recorded using the rules that applied before the
-   upgrade, so the bandwidth limits of existing resources do not change.
-   Existing VPCs have no public network limit (unlimited). The new rules
-   described above apply to the networks and NICs created after the upgrade.
+   upgrade, and running instances and routers keep those limits. The new
+   rules described above apply to the networks and NICs created after the
+   upgrade, and to existing instances and routers when they are next
+   started, for example after a stop and start, or after a router is
+   recreated.
+
+   Existing VPCs are reported as having an unlimited public network rate.
+   Their virtual routers keep the previous limit until the VPC is
+   restarted with cleanup, after which the rules above apply.
 
 
 Changing the Default System Offering for System VMs
