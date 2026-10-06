@@ -106,7 +106,7 @@ Creating a rule
 
    -  **Cooldown (seconds)**: how long to wait before the same rule
       alerts again for the same resource. Leave empty to use
-      ``resourcealert.repeat.interval.default``.
+      ``resource.alert.repeat.interval.default``.
 
    -  **Webhooks**: optional. Webhooks the alert is sent to. Only webhooks
       the rule owner can use are listed.
@@ -160,7 +160,7 @@ For metrics that are a percentage, the threshold cannot be more than 100.
 How alerts are fired
 ~~~~~~~~~~~~~~~~~~~~
 
--  Rules are checked every ``resourcealert.evaluation.interval`` seconds.
+-  Rules are checked every ``resource.alert.evaluation.interval`` seconds.
 
 -  When a rule's condition is true, an alert is fired. After that, the
    same rule does not alert again for the same resource until the
@@ -195,7 +195,7 @@ Fired alerts can be seen in two places:
 
    |resource-alerts-tab.png|
 
-Old alerts are removed after ``resourcealert.history.retention.days``
+Old alerts are removed after ``resource.alert.history.retention.days``
 days. Deleting a rule also deletes its alert history.
 
 
@@ -254,11 +254,11 @@ Settings
    ======================================== ======= ======================================================
    Setting                                  Default Description
    ======================================== ======= ======================================================
-   resourcealert.evaluation.interval        60      Seconds between rule checks. Needs a management
+   resource.alert.evaluation.interval       60      Seconds between rule checks. Needs a management
                                                     server restart.
-   resourcealert.repeat.interval.default    600     Cooldown in seconds for rules that don't set one.
-   resourcealert.history.retention.days     30      Days to keep fired alerts. 0 keeps them forever.
-   resourcealert.per.user.limit             20      Most rules an account can own, admin accounts
+   resource.alert.repeat.interval.default   600     Cooldown in seconds for rules that don't set one.
+   resource.alert.history.retention.days    30      Days to keep fired alerts. 0 keeps them forever.
+   resource.alert.per.user.limit            20      Most rules an account can own, admin accounts
                                                     included. 0 is unlimited. Can be set per account.
    ======================================== ======= ======================================================
 
