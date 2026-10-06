@@ -853,9 +853,8 @@ cleanup does not change the rate of the VPC. The rate of a VPC is shown
 as **Public network rate (Mb/s)** in the VPC details, and as
 **publicnetworkrate** in the listVPCs API response. This value is
 updated only when the VPC is restarted with cleanup. A virtual router
-that is stopped and started, or recreated by other means, may apply a
-new value of the global parameter to its public interface without the
-VPC details being updated.
+that is recreated by other means may apply a new value of the global
+parameter to its public interface without the VPC details being updated.
 
 .. image:: /_static/images/vpc_details_public_network_rate.png
    :width: 335px
@@ -883,15 +882,18 @@ uses the public network rate of the new offering.
 .. note::
    When upgrading to 24.0.0, the network rate that applies to the existing
    networks and NICs is recorded using the rules that applied before the
-   upgrade, and running instances and routers keep those limits. The new
-   rules described above apply to the networks and NICs created after the
-   upgrade, and to existing instances and routers when they are next
-   started, for example after a stop and start, or after a router is
-   recreated.
+   upgrade, so the bandwidth limits of running instances and routers do
+   not change. Existing VPCs have no public network limit (unlimited). The
+   new rules described above apply to the networks and NICs created after
+   the upgrade.
 
-   Existing VPCs are reported as having an unlimited public network rate.
-   Their virtual routers keep the previous limit until the VPC is
-   restarted with cleanup, after which the rules above apply.
+   For existing instances and virtual routers, the new rules apply the next
+   time they are started: an instance is stopped and started, and a router
+   is recreated by restarting its network or VPC with the cleanup option.
+   A restart without cleanup keeps the router and the rates of its NICs.
+   The network rate of such a NIC can therefore increase or decrease at
+   that point, for example when the system offering of the router, or the
+   compute offering of the instance, now takes precedence.
 
 
 Changing the Default System Offering for System VMs
