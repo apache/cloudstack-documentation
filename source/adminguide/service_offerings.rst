@@ -690,7 +690,7 @@ configured on the following:
 -  Service Offering (the compute offering of an instance, and the
    system offering of a virtual router)
 
--  VPC Offering (the public gateway of a VPC), since 24.0
+-  VPC Offering (the public gateway of a VPC), since 24.0.0
 
 -  Global parameter
 
@@ -736,7 +736,7 @@ Default network of a guest instance          Compute Offering
 Additional networks of a guest instance      Compute Offering
 ============================================ =========================================================
 
-Since 24.0, the Compute Offering network rate applies to every network of
+Since 24.0.0, the Compute Offering network rate applies to every network of
 an instance, not only the default network. If the Compute Offering has no
 network rate, vm.network.throttling.rate is used.
 
@@ -785,7 +785,7 @@ network, ingress traffic will be limited to 10 Mbps and egress to 200
 Mbps.
 
 .. note::
-   Since 24.0, the network rate of the network offering no longer applies
+   Since 24.0.0, the network rate of the network offering no longer applies
    to the NICs of a user instance; the compute offering rate (or
    vm.network.throttling.rate) does. The network offering rate still
    applies to the guest interface of the virtual router, unless the
@@ -796,7 +796,7 @@ Mbps.
 Throttling the Public Gateway of a VPC
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since 24.0, an administrator can limit the bandwidth of the public
+Since 24.0.0, an administrator can limit the bandwidth of the public
 (internet-facing) gateway of a VPC. The limit is set on the VPC offering,
 so that different VPC offerings can give different tenants different
 levels of service. It is applied to the public interface of the VPC
@@ -881,7 +881,7 @@ uses the public network rate of the new offering.
    vpc.public.network.throttling.rate.
 
 .. note::
-   When upgrading to 24.0, the network rate that applies to the existing
+   When upgrading to 24.0.0, the network rate that applies to the existing
    networks and NICs is recorded using the rules that applied before the
    upgrade, and running instances and routers keep those limits. The new
    rules described above apply to the networks and NICs created after the
