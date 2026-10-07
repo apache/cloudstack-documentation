@@ -591,8 +591,9 @@ Configure the Security Policies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 CloudStack does various things which can be blocked by security
-mechanisms like AppArmor and SELinux. These have to be disabled to
-ensure the Agent has all the required permissions.
+mechanisms like AppArmor and SELinux. Both mechanisms can stay enabled on the
+host, but the libvirt per-Instance security driver must be turned off so that
+the Agent has all the required permissions for Instance and storage operations.
 
 #. Configure SELinux (RHEL, CentOS)
 
@@ -623,36 +624,67 @@ ensure the Agent has all the required permissions.
 
          security_driver="none"
 
-.. note:: In a production environment, selinux should be set to enforcing
-   and the necessary selinux policies are created to allow the
-   services to run.
+   .. note:: In a production environment, SELinux should be set to enforcing
+      and the necessary SELinux policies should be created to allow the
+      services to run.
 
-#. Configure Apparmor (Ubuntu, SUSE)
+#. Configure AppArmor (Ubuntu, Debian, SUSE)
 
+   AppArmor enforcement and ``security_driver="none"`` control different
+   security layers. The AppArmor profiles of ``libvirtd`` and
+   ``virt-aa-helper`` still protect the libvirt daemon itself, while
+   ``security_driver="none"`` disables the dynamic per-Instance AppArmor (sVirt)
+   confinement. This keeps the basic host protection while avoiding possible
+   compatibility problems with CloudStack Instance and storage operations.
 
    #. Check to see whether AppArmor is installed on your machine. If
       not, you can skip this section.
 
-      In Ubuntu AppArmor is installed and enabled by default. You can
-      verify this with:
+      In Ubuntu and Debian, AppArmor is installed and enabled by default. You
+      can verify this with:
 
       .. parsed-literal::
 
          $ dpkg --list 'apparmor'
 
-      In Ubuntu, install package apparmor-utils if not present.     
+      If the ``apparmor-utils`` package is not present, install it.
+
+      On Ubuntu and Debian:
 
       .. parsed-literal::
 
          $ apt install apparmor-utils
 
-   #. Then set Apparmor to enforcing mode
+      On SUSE:
 
       .. parsed-literal::
 
-         $ aa-enforce /etc/apparmor.d/*
+         $ zypper install apparmor-utils
+
+   #. Set the libvirt AppArmor profiles to enforcing mode. This step is mainly
+      needed on existing hosts, because previous CloudStack versions disabled
+      these profiles. On fresh hosts, the libvirt profiles are normally already
+      enabled.
+
+      On existing hosts, first remove the links which were created by previous
+      CloudStack versions to disable the profiles. Otherwise the profiles will
+      be skipped again at the next boot.
+
+      .. parsed-literal::
+
+         $ rm -f /etc/apparmor.d/disable/usr.sbin.libvirtd
+         $ rm -f /etc/apparmor.d/disable/usr.lib.libvirt.virt-aa-helper
+
+      Then enforce only the libvirt profiles:
+
+      .. parsed-literal::
+
+         $ aa-enforce /usr/sbin/libvirtd
+         $ aa-enforce /usr/lib/libvirt/virt-aa-helper
 
    #. Set the security driver in ``/etc/libvirt/qemu.conf`` to "none".
+      Existing hosts may already have this setting, while it must be
+      configured manually on fresh hosts.
 
       .. parsed-literal::
 
