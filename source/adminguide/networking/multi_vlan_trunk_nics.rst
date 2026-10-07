@@ -56,6 +56,20 @@ Requirements
    delivered on the wire (native libvirt ``<vlan>`` tags versus a manual
    ``bridge vlan`` fallback); it does not change what the feature can do.
 
+A host's readiness is visible in the UI without needing to inspect its
+host details directly: the Hosts list marks a VLAN-filtering-enabled host
+with a **VLAN filtering** badge next to its name, and a zone's Resources
+tab includes a **Multi-VLAN trunk NIC ready hosts** capacity bar showing
+how many of its hosts are ready out of the total.
+
+.. figure:: /_static/images/trunk-nic-host-vlan-filtering-badge.png
+   :align: center
+   :alt: Hosts list showing the VLAN filtering badge on ready hosts
+
+.. figure:: /_static/images/trunk-nic-zone-readiness-capacity.png
+   :align: center
+   :alt: Zone Resources tab showing the Multi-VLAN trunk NIC ready hosts capacity bar
+
 Enabling VLAN Filtering on a Host
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -203,6 +217,14 @@ Associating and Disassociating Networks
 #. Use Associate Network / Disassociate Network on the NIC you want to
    change, and choose the network to associate or remove.
 
+.. figure:: /_static/images/trunk-nic-associate-network-nics-tab.png
+   :align: center
+   :alt: NICs tab showing a NIC's Associate Network action and its existing associated network
+
+.. figure:: /_static/images/trunk-nic-disassociate-network.png
+   :align: center
+   :alt: Disassociate Network action on an associated network
+
 This can also be done directly via the API:
 
 .. code:: bash
@@ -248,6 +270,19 @@ id in an entry is that NIC's primary network, and any further ids become
 associated networks. ``nicnetworkslist`` cannot be combined with
 ``networkids`` or ``iptonetworklist`` in the same call, and a VNF
 appliance's management NIC cannot be requested as a trunk.
+
+In the UI, the same thing is done from the VNF NIC mappings step of the
+deploy wizard: click the **+** next to a data-plane NIC's network to open
+the Associate Network dialog and pick one or more additional networks for
+that NIC.
+
+.. figure:: /_static/images/trunk-nic-vnf-nic-mappings.png
+   :align: center
+   :alt: VNF NIC mappings step showing Add Associated Networks on a data-plane NIC
+
+.. figure:: /_static/images/trunk-nic-associate-network-modal.png
+   :align: center
+   :alt: Associate Network dialog at deploy time, selecting additional networks for a NIC
 
 Guest-Side Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -330,6 +365,10 @@ these rule types groups a NIC's addresses under Primary, Secondary IPs,
 and Associated Networks, so an associated network's address is clearly
 distinguished from an ordinary secondary IP before you pick it.
 
+.. figure:: /_static/images/trunk-nic-rule-ip-picker-grouping.png
+   :align: center
+   :alt: Enable Static NAT picker grouping a NIC's addresses under Primary, Secondary IPs, and Associated Networks
+
 Via the API, pass the associated network's own id alongside its address:
 
 .. code:: bash
@@ -371,6 +410,34 @@ since the second detail has no effect when the first is off:
      - on
      - One shared bridge; VLAN membership, including a trunk's tags,
        expressed directly in the libvirt domain XML.
+
+These profile names are used by name throughout this guide and in the UI
+(for example the host and zone readiness indicators in Requirements
+above), so it is worth being precise about what each word means:
+
+-  **Legacy** is a host that has not been converted for this feature at
+   all. It keeps CloudStack's original delivery model, a separate dynamic
+   bridge per VLAN, and corresponds to ``vlan.filtering.enabled`` being
+   off.
+
+-  **Shared** is a host that has been converted (``vlan_filtering=1`` on
+   its guest bridge), so every VLAN-tagged guest NIC, trunk or not,
+   delivers over that one shared bridge instead of a per-VLAN bridge. It
+   refers to this one-shared-bridge delivery model, not to a Shared guest
+   network type.
+
+-  **Manual** and **native** only distinguish *how* VLAN membership gets
+   applied on that one shared bridge, never what traffic can flow across
+   it. **Manual** means CloudStack applies membership itself with
+   ``bridge vlan add`` commands, used when the host's libvirt cannot
+   express a trunk in its own domain XML. **Native** means libvirt is
+   given a ``<vlan>`` block in the domain XML and applies membership
+   itself. The two are functionally equivalent to the guest; which one a
+   host uses is exactly what ``vlan.trunk.xml.supported`` records, which
+   CloudStack derives from the host's libvirt version: libvirt 11.0.0 and
+   later support expressing a trunk directly in domain XML, so a host on
+   an older libvirt is always detected as manual, regardless of its
+   ``vlan_filtering`` setting.
 
 CloudStack rewrites a migrating VM's interface definition to match the
 destination host's own profile, so a VM can move between any two hosts
@@ -423,3 +490,11 @@ works for an ordinary NIC, and always works between two Shared profiles
 for either kind of NIC regardless of which one is manual versus native;
 the only hard restriction is that a trunk NIC can never land on a host
 that lacks ``vlan.filtering.enabled``, in either direction.
+
+The Migrate Instance wizard surfaces this restriction directly: a
+destination host that cannot take the Instance's trunk NIC is marked
+unsuitable, with a tooltip explaining why.
+
+.. figure:: /_static/images/trunk-nic-migration-suitability-warning.png
+   :align: center
+   :alt: Migrate Instance wizard showing a host marked unsuitable because it lacks VLAN filtering
