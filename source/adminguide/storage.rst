@@ -1351,6 +1351,12 @@ to a different directory in the same primary storage as the volume; if it is tru
 to the secondary storage. If the snapshot is being taken in a file-based storage (NFS, SharedMountPoint, Local),
 it will be copied directly to its final storage location, according to the configuration.
 
+.. note::
+   If ``snapshot.backup.to.secondary`` is false and the volume is on RBD (Ceph) primary storage, the Volume
+   Snapshots are kept in the storage layer, as RBD snapshots of the volume's image. Deleting such a volume
+   will therefore first delete all of its Volume Snapshots, as an RBD image cannot be removed while it still
+   has snapshots.
+
 Since 4.21.0.0, ACS supports incremental snapshots for the KVM hypervisor when using file-based storage (NFS, SharedMountPoint, Local),
 to enable incremental snapshots the ``kvm.incremental.snapshot`` configuration must be enabled. Furthermore, in order to take incremental snapshots
 the KVM host must have at least Libvirt version 7.6.0+ and qemu version 6.1+. The size of the snapshot chains
