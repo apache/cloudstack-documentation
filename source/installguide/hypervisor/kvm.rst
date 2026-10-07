@@ -698,6 +698,46 @@ the Agent has all the required permissions for Instance and storage operations.
          accessing volumes and ISOs on primary and secondary storage.
 
 
+To check the current security settings of a KVM host, the following commands can be used:
+
+- SELinux (RHEL, CentOS, Rocky Linux, Alma Linux, etc.):
+
+  .. parsed-literal::
+
+     # Show the SELinux status, mode and loaded policy
+     $ sestatus
+     # Show the current mode (Enforcing, Permissive or Disabled)
+     $ getenforce
+     # List the SELinux booleans related to virtualization
+     $ getsebool -a | grep -E 'virt|qemu'
+     # Check whether libvirt/QEMU is allowed to use NFS storage
+     $ getsebool virt_use_nfs
+     # Show recent SELinux denials
+     $ ausearch -m avc -ts recent
+
+- AppArmor (Ubuntu, Debian, SUSE):
+
+  .. parsed-literal::
+
+     # Show the loaded profiles and their modes
+     $ aa-status
+     # Show the libvirt profiles which are in enforce mode
+     $ aa-status --filter.mode=enforce | grep libvirt
+     # List the AppArmor profiles installed on the host
+     $ ls /etc/apparmor.d/
+     # List the profiles which are disabled (e.g. links created by previous CloudStack versions)
+     $ ls /etc/apparmor.d/disable
+     # Show recent AppArmor denials
+     $ dmesg | grep -i 'apparmor.*denied'
+
+- libvirt security driver:
+
+  .. parsed-literal::
+
+     # Show the security driver configured for libvirt QEMU (should be "none")
+     $ grep -E '^\s*security_driver' /etc/libvirt/qemu.conf
+
+
 Configuring the Networking
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
