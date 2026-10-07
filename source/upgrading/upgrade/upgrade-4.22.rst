@@ -218,6 +218,8 @@ Setup the GPG public key if you wish to enable ``gpgcheck=1``:
 
 .. include:: _log4j_file_check.rst
 
+.. include:: _post_upgrade.rst
+
 .. _upg_hyp_414:
 
 Upgrade Hypervisors
