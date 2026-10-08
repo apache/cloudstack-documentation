@@ -257,9 +257,9 @@ Settings
    resource.alert.evaluation.interval       60      Seconds between rule checks. Needs a management
                                                     server restart.
    resource.alert.repeat.interval.default   600     Cooldown in seconds for rules that don't set one.
-   resource.alert.history.retention.days    30      Days to keep fired alerts. 0 keeps them forever.
+   resource.alert.history.retention.days    30      Days to keep fired alerts. -1 keeps them forever.
    resource.alert.per.user.limit            20      Most rules an account can own, admin accounts
-                                                    included. 0 is unlimited. Can be set per account.
+                                                    included. -1 is unlimited. Can be set per account.
    ======================================== ======= ======================================================
 
 
