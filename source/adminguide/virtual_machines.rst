@@ -1235,6 +1235,12 @@ TPM version for KVM. There are two options:
 |vm-settings-virtual-tpm-enabled-vmware.png|
 Enable or disable vTPM for VMware.
 
+Instance Boot Groups
+=====================
+
+.. include:: virtual_machines/instance_boot_groups.rst
+
+
 Instance Snapshots
 ==================
 
