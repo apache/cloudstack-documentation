@@ -671,6 +671,8 @@ but with some fields pre-filled with the settings of the existing offering.
 You can modify any of the settings as needed before clicking Add to create the new offering.
 
 
+.. _network-throttling:
+
 Network Throttling
 ------------------
 
@@ -738,7 +740,9 @@ Additional networks of a guest instance      Compute Offering
 
 Since 24.0.0, the Compute Offering network rate applies to every network of
 an instance, not only the default network. If the Compute Offering has no
-network rate, vm.network.throttling.rate is used.
+network rate, vm.network.throttling.rate is used. When you change the
+compute offering of a stopped instance, the network rate of its NICs is
+updated to the rate of the new offering.
 
 A guest instance must have a default network, and can also have many
 additional networks. The compute offering network rate applies to all of
