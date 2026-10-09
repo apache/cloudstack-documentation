@@ -520,6 +520,11 @@ Instance, you can change the Instance's compute offering.
 
    For more information on how to prevent this, see :ref:`strict-host-tags`.
 
+.. note::
+   Since 24.0.0, when you change the compute offering of a stopped Instance,
+   the network rate of its NICs is updated to the network rate of the new
+   compute offering. See :ref:`network-throttling`.
+
 .. _cpu-and-memory-scaling:
 
 CPU and Memory Scaling for Running Instances
