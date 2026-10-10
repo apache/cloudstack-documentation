@@ -55,5 +55,16 @@ Known Issues
   primary storage, due to a regression in the restore-and-attach command handling. See
   https://github.com/apache/cloudstack/pull/14007 for details and status.
 
+SELinux and AppArmor on KVM Hosts
+---------------------------------
+
+In older versions, CloudStack set SELinux to permissive mode and disabled the
+libvirt AppArmor profiles when configuring a KVM host. Since 24.0.0,
+CloudStack no longer changes these settings. If you face issues on a KVM host,
+for example Instances failing to start or storage operations failing with
+permission errors, please check the SELinux and AppArmor settings of the host
+and the ``security_driver`` setting in ``/etc/libvirt/qemu.conf``. See
+:ref:`kvm-security-policies` for the recommended configuration.
+
 The full list of new features can be found in the project release notes at
 https://docs.cloudstack.apache.org/en/4.23.0.0/releasenotes/changes.html
