@@ -113,9 +113,14 @@ with it enabled:
    prevent the host from coming back into service, but it will silently
    drop traffic once it does.
 
-#. Restart the CloudStack agent on the host (or simply bring it out of
-   maintenance), so CloudStack re-detects ``vlan.filtering.enabled`` as
-   true.
+#. Restart the CloudStack agent on the host, so CloudStack re-detects
+   ``vlan.filtering.enabled`` as true. Only an actual agent restart (or
+   reconnect) triggers this re-detection; cancelling maintenance on its
+   own does not restart or reconnect the agent, so it will not pick up
+   the change by itself.
+
+#. Confirm ``vlan.filtering.enabled`` is now true for the host (host
+   details, or the VLAN filtering badge in the UI) before proceeding.
 
 #. Take the host out of maintenance.
 
@@ -145,14 +150,13 @@ only the guest taps.
    on the uplink at the same time; it falls outside the range already
    opened above.
 
--  If Storage or Public/Management traffic is also tagged and shares the
-   same physical bridge and uplink as guest traffic, rather than having
-   its own separate physical NIC, open those VLANs on the uplink as well.
-   Once filtering is enabled, the bridge does not distinguish traffic
-   type, only VLAN membership; a tagged VLAN that is not explicitly
-   allowed gets dropped the same way an unlisted guest VLAN would, even
-   if it carries storage or management traffic that has nothing to do
-   with this feature.
+-  Storage or Public/Management traffic that is also tagged and shares
+   the same physical uplink NIC as guest traffic needs no action here.
+   That traffic rides its own dedicated per-VLAN bridge (a kernel VLAN
+   sub-interface on the uplink feeding a separate bridge), not the
+   VLAN-filtering-enabled guest bridge, so the guest bridge's VLAN
+   membership enforcement never applies to it regardless of this
+   feature.
 
 -  If any network already reaches this bridge untagged (for example, an
    existing Shared/L2 network), make sure the uplink keeps a matching
