@@ -163,6 +163,7 @@ Managing the Cloud
 
    management
    kms
+   error_messages
 
 System Reliability and Availability
 -----------------------------------
