@@ -208,6 +208,12 @@ Guidelines and Limitations
    with ``vlan.filtering.enabled``, see Migration Behavior below for the
    full picture across host capability combinations.
 
+-  Multi-VLAN trunk NICs are supported only in zones with a single Guest
+   physical network. A host's VLAN filtering readiness is detected per
+   host, not per physical network, so it is only guaranteed correct when
+   there is exactly one. Using trunk NICs in a zone with more than one
+   Guest physical network is unsupported in this release.
+
 Associating and Disassociating Networks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
