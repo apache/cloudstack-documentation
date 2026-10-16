@@ -103,7 +103,8 @@ node.
    will be installed.
 
 .. warning::
-   CloudStack |version| requires Java 17 JRE. Installing CloudStack packages will
-   automatically install Java 17, but it's good to explicitly confirm that the Java 17
-   is the selected/active one (in case you had a previous Java version already installed)
+   CloudStack |version| requires Java 17 or 21 JRE. Installing CloudStack packages will
+   automatically install Java 17 (or Java 21 where Java 17 is not available), but it's good
+   to explicitly confirm that Java 17 or 21 is the selected/active one (in case you had a
+   previous Java version already installed)
    with ``alternatives --config java`` after CloudStack packages are already installed.

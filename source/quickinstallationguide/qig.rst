@@ -375,7 +375,7 @@ following command:
 
    # dnf -y install cloudstack-management
 
-CloudStack |version| requires Java 17 JRE. Installing the management server
+CloudStack |version| requires Java 17 or 21 JRE. Installing the management server
 will automatically install Java 17, but it's good to explicitly confirm that Java 17
 is the selected/active one (in case you had a previous Java version already installed):
 
@@ -383,7 +383,7 @@ is the selected/active one (in case you had a previous Java version already inst
 
       $ alternatives --config java
       
-Make sure that Java 17 is selected.
+Make sure that Java 17 or 21 is selected.
 
 With the application itself installed we can now setup the database, we'll do 
 that with the following command and options:

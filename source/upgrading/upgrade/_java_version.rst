@@ -18,9 +18,9 @@
 Java Version Requirement
 ------------------------
 
-CloudStack |version| requires installation of Java 17 JRE for management server
+CloudStack |version| requires installation of Java 17 or 21 JRE for management server
 and the KVM agent. On installing or upgrading cloudstack-management and/or
-cloudstack-agent packages, please configure Java 17 as the default java
+cloudstack-agent packages, please configure Java 17 or 21 as the default java
 version using:
 
    .. parsed-literal::
