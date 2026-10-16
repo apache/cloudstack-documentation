@@ -37,7 +37,7 @@ Overview of Upgrade Steps:
 
 #. Check any customisations and integrations
 #. Upload the |sysvm64-version| System VM template if not already using it.
-#. Confirm Java 17 is the default Java version
+#. Confirm Java 17 or 21 is the default Java version
 #. Stop all running management servers
 #. Backup CloudStack database (MySQL)
 #. Upgrade 1st CloudStack management server
