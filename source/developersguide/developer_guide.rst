@@ -272,12 +272,8 @@ in XML or JSON. It is used to implement the default web UI. This API is
 not a standard like `OGF
 OCCI <http://www.ogf.org/gf/group_info/view.php?group=occi-wg>`__ or
 `DMTF CIMI <http://dmtf.org/standards/cloud>`__ but is easy to learn.
-Mapping exists between the AWS API and the CloudStack API as will be
-seen in the next section. Recently a Google Compute Engine interface was
-also developed that maps the GCE REST API to the CloudStack API
-described here. The API
-`docs <https://cloudstack.apache.org/api.html>`__ are a good start to
-learn the extent of the API. Multiple clients exist on
+The API `docs <https://cloudstack.apache.org/api.html>`__ are a good start
+to learn the extent of the API. Multiple clients exist on
 `GitHub <https://github.com/search?q=cloudstack+client&ref=cmdform>`__
 to use this API, you should be able to find one in your favorite
 language. The reference documentation for the API and changes that might
