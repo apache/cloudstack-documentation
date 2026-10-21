@@ -247,6 +247,13 @@ Guidelines and Limitations
    there is exactly one. Using trunk NICs in a zone with more than one
    Guest physical network is unsupported in this release.
 
+-  A router's DHCP script is only refreshed by the standard post-upgrade
+   Virtual Router restart or live patch (see
+   :ref:`system-vms-and-virtual-routers`). Associating or disassociating
+   a network on a trunk NIC whose router existed before the upgrade, and
+   has not yet been restarted or live-patched since, can drop the DHCP
+   entry for the primary or an associated network.
+
 Associating and Disassociating Networks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
