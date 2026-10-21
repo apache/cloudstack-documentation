@@ -164,6 +164,39 @@ only the guest taps.
    membership, untagged traffic with nowhere to classify to is dropped
    just as a missing tagged VLAN would be.
 
+Bridge STP and Forward Delay
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Some bridge management tools (NetworkManager on EL hosts, for example)
+enable Spanning Tree Protocol with a 15 second forward delay by default
+on a newly created bridge. If the guest bridge is left this way after
+converting a host, every new port on it, not just a trunk NIC, spends
+about twice the forward delay (around 30 seconds with the default) in
+STP's listening and learning states before it forwards any traffic. This
+hits a freshly started Instance, a NIC plugged into a running Instance,
+and an Instance migrated onto the host equally; it is not specific to
+trunk NICs.
+
+As part of converting a host, also disable STP (or set its forward delay
+to 0) on the guest bridge, the same way the per-VLAN dynamic bridges
+CloudStack creates for a legacy host already have it off by kernel
+default:
+
+.. code:: bash
+
+   ip link set dev cloudbr1 type bridge stp_state 0
+
+Make this persistent in whatever network configuration mechanism manages
+the bridge, the same as the ``vlan_filtering`` setting above.
+
+If STP is left enabled on a ``vlan_filtering`` host's guest bridge,
+CloudStack detects it and adds a non-blocking caution to that host's
+entry in the Migrate Instance wizard (and the ``findHostsForMigration``
+API), warning of the forward-delay outage. This caution does not prevent
+the migration, and only appears there; it is not raised for a freshly
+started Instance or a NIC plug, even though those are affected the same
+way.
+
 Key Concepts
 ~~~~~~~~~~~~
 
