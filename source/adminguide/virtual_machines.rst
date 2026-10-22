@@ -1186,6 +1186,75 @@ CloudStack supports setting the guest machine type for KVM instances since 4.22.
 .. note::
    For Ubuntu 24 KVM hosts (and other distros containing QEMU 8.x versions) setting the machine type for Windows VMs to 'pc-i440fx-8.0' mitigates the issue which prevents retrieving the instance UUID from within the guest VM via: `wmic path win32_computersystemproduct get uuid`.
 
+CPU Topology Settings
+~~~~~~~~~~~~~~~~~~~~~
+
+The CPU topology presented to the guest OS (number of virtual sockets, cores per
+socket and threads per core) can be controlled with the following Instance settings.
+The number of sockets is derived from the vCPU count of the service offering, so the
+values must divide evenly into the number of vCPUs.
+
+- ``cpu.corespersocket`` - number of cores per virtual socket. Supported on VMware,
+  XenServer and KVM (since 4.14.1.0).
+- ``cpu.threadspercore`` - number of threads per core. Supported on KVM only (since
+  4.20.0.0).
+
+The settings are applied when the Instance is started, so a running Instance must be
+stopped and started again for a change to take effect.
+
+The hypervisors apply ``cpu.corespersocket`` differently:
+
+**VMware**: the value is applied as-is to the Instance's ``numCoresPerSocket``
+property. For example, an Instance with 8 vCPUs and ``cpu.corespersocket=1`` is
+presented with 8 sockets of 1 core each, exactly as configured.
+
+**XenServer**: the value is applied as-is to the Instance's ``cores-per-socket``
+platform parameter.
+
+**KVM**: the value is used to build the ``<topology>`` element of the libvirt domain
+XML, but a default coupling is applied whenever the settings do not result in an
+explicit multi-core topology. The topology is derived as follows:
+
+#. ``cpu.corespersocket`` and ``cpu.threadspercore`` are read, each defaulting to 1
+   when not set or not a valid number.
+#. If cores per socket multiplied by threads per core is greater than the number of
+   vCPUs, or does not divide evenly into it, both values are reset to 1.
+#. If both values are 1 at this point - whether because they were not set, were
+   invalid, were reset in the previous step, or were explicitly set to 1 - the default
+   coupling is applied: 6 cores per socket if the vCPU count is a multiple of 6,
+   otherwise 4 cores per socket if it is a multiple of 4, otherwise 1 core per socket.
+#. The number of sockets is the number of vCPUs divided by cores per socket and
+   threads per core.
+
+As a consequence, on KVM it is not possible to explicitly request 1 core per socket
+for an Instance whose vCPU count is a multiple of 4 or 6; such an Instance always
+gets 4 or 6 cores per socket. For example, an Instance with 8 vCPUs and
+``cpu.corespersocket=1`` is presented with ``sockets=2, cores=4, threads=1`` on KVM,
+while the same setting on VMware yields 8 sockets of 1 core each. Setting
+``cpu.corespersocket=8`` on the same Instance yields ``sockets=1, cores=8, threads=1``
+as expected. Setting ``cpu.corespersocket=3`` on it is ignored (3 does not divide 8)
+and the default ``sockets=2, cores=4, threads=1`` is applied.
+
+Examples of the resulting topology on KVM:
+
+======= ================== ================== =============================
+vCPUs   cpu.corespersocket cpu.threadspercore Resulting topology
+======= ================== ================== =============================
+8       unset              unset              sockets=2, cores=4, threads=1
+8       1                  unset              sockets=2, cores=4, threads=1
+8       2                  unset              sockets=4, cores=2, threads=1
+8       8                  unset              sockets=1, cores=8, threads=1
+8       2                  2                  sockets=2, cores=2, threads=2
+12      unset              unset              sockets=2, cores=6, threads=1
+7       unset              unset              sockets=7, cores=1, threads=1
+======= ================== ================== =============================
+
+The KVM agent only sets the CPU topology when the
+``enable.manually.setting.cpu.topology.on.kvm.vm`` property in ``agent.properties``
+is ``true`` (the default). When it is set to ``false``, no ``<topology>`` element is
+written for any Instance started on that host; both settings are ignored and the
+hypervisor default topology is used.
+
 Instance Settings for Virtual Trusted Platform Module (vTPM)
 -----------------------------
 
