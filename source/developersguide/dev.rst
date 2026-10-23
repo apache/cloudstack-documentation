@@ -607,6 +607,8 @@ differ from synchronous commands by the following:
    ID.
 
 
+.. _async-commands:
+
 Job Status
 ~~~~~~~~~~
 
@@ -625,6 +627,18 @@ values:
 
 -  2 - Job has failed to complete. Please check the "jobresultcode" tag
    for failure reason code and "jobresult" for the failure reason.
+
+-  3 - Job was cancelled (since 24.0). "jobresult" carries who cancelled
+   it and through which management server, with "jobresultcode" 530.
+
+Since 24.0 the jobs of an account can also be listed with ``listAsyncJobs``,
+by status, period, resource and management server, including completed
+ones; the response reports ``cancellable`` for each job. A job in progress
+can be cancelled by an administrator with ``cancelAsyncJob``, which stops
+the work the job started on the hypervisor where that is possible and is
+refused with the reason otherwise. ``listApis`` reports ``cancellable``
+per command. See the Administration Guide on working with asynchronous
+jobs.
 
 
 Example
@@ -767,6 +781,8 @@ Event Types
 |                   | VM.MOVE                                                |
 |                   |                                                        |
 |                   | VM.RESTORE                                             |
++-------------------+--------------------------------------------------------+
+| Job               | JOB.CANCEL                                             |
 +-------------------+--------------------------------------------------------+
 | Domain Router     | ROUTER.CREATE                                          |
 |                   |                                                        |

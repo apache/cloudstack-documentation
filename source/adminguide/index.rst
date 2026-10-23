@@ -189,6 +189,7 @@ Events and Troubleshooting
    :maxdepth: 4
 
    events
+   jobs
    troubleshooting
 
 
