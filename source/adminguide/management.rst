@@ -215,7 +215,8 @@ Administrator Alerts
 The system provides alerts and events to help with the management of the
 cloud. Alerts are notices to an administrator, generally delivered by
 e-mail, notifying the administrator that an error has occurred in the
-cloud. Alert behavior is configurable.
+cloud. Alert behavior is configurable. In the UI, alerts are listed under
+Activity, then Alerts, in the left navigation.
 
 Events track all of the User and administrator actions in the cloud. For
 example, every Guest Instance start creates an associated event. Events are
@@ -630,6 +631,13 @@ Administrators are able to view the statistics and peers information of manageme
 #. Navigate to the "Peers" tab. The peers of the management servers are listed
 
 |management-server-peers.png|
+
+#. Navigate to the "Jobs" tab to see the asynchronous jobs this management server executed,
+   pending ones by default, with the same status and period filters as the Jobs view under
+   Activity (see :ref:`working-with-jobs`); a running job can be cancelled from here.
+
+#. Navigate to the "Usage Jobs" tab to see the runs of the Usage Server (see
+   :ref:`listing-usage-jobs`).
 
 
 Global settings for management servers

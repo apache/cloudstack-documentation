@@ -163,6 +163,21 @@ defined by the EST (America/New\_York) time zone.
    run.
 
 
+.. _listing-usage-jobs:
+
+Listing Usage Jobs
+~~~~~~~~~~~~~~~~~~
+
+Since 24.0 the runs of the Usage Server can be checked without reading its
+log. In the UI, open a Management Server under Infrastructure and go to its
+"Usage Jobs" tab: each run is listed with the usage server that ran it, the
+job type (recurring or single), whether it was scheduled, its start and end
+dates, execution time, outcome and heartbeat, for the last hour, day or
+week or all runs. With the API, ``listUsageJobs`` takes ``usageserver`` (host
+name or IP), ``startdate`` and ``enddate``, and ``duration`` (hours up to
+now). Both are available to administrators.
+
+
 Setting Usage Limits
 --------------------
 
