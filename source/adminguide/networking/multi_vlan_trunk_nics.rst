@@ -43,7 +43,13 @@ Requirements
 
 -  The zone-level setting ``multi.network.nic.enabled`` must be enabled.
    It is disabled by default, so this feature is inert until an operator
-   opts a zone in.
+   opts a zone in. The host and zone readiness indicators described below
+   are themselves only shown in the UI while the setting is on.
+
+   Turning the setting off does not remove any existing association.
+   ``disassociateNetworkFromNic`` and ``changeNicPrimaryNetwork`` are
+   refused while the setting is off, so remove any associations an
+   Instance still needs removed before disabling it for the zone.
 
 -  A KVM host can only deliver a trunk NIC if its guest bridge has VLAN
    filtering enabled (``vlan_filtering=1``). CloudStack detects this
@@ -213,10 +219,7 @@ Key Concepts
 
 -  Every network associated with a NIC must be the same type as its
    primary network (for example, all Isolated or all Shared), on the same
-   physical network, in the same zone, and VLAN-isolated. An Isolated
-   primary network additionally restricts associations to tiers of the
-   same VPC, or to other non-VPC networks if the primary is not in a VPC
-   itself.
+   physical network, in the same zone, and VLAN-isolated.
 
 -  Managing associations is an administrator-only operation. A tenant
    cannot create or remove an association on their own NIC.
@@ -254,6 +257,21 @@ Guidelines and Limitations
    has not yet been restarted or live-patched since, can drop the DHCP
    entry for the primary or an associated network.
 
+-  An Instance with a trunk NIC cannot be unmanaged (the call is refused
+   with an error such as ``Instance [...] has a trunk nic [...] with
+   network associations; unmanaging such instances is not supported.``),
+   imported, or backed up and restored; restoring a backup today does not
+   recreate the NIC's associations.
+
+-  Also not supported in this release: VXLAN-isolated associated
+   networks, two untagged networks on the same host, and preserving a
+   trunk NIC's tap VLAN membership when the host's own network tooling
+   recreates its guest bridge (keeping that membership across such a
+   recreation is the operator's responsibility). After an in-place
+   libvirt upgrade (for example 9 to 11) on a host with running Instances,
+   stop and start any Instance with a trunk NIC on that host rather than
+   relying on a live transition.
+
 Associating and Disassociating Networks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -288,6 +306,11 @@ membership, DHCP, and metadata (see below) are all updated immediately.
 ``associateNetworkToNic`` optionally accepts ``ipaddresses[N].networkid``/
 ``ipaddresses[N].ipaddress`` to request a specific address on an
 associated network, instead of auto-allocating one.
+
+Each association is billed separately: associating a network raises its
+own ``NETWORK.OFFERING.ASSIGN`` usage event, and disassociating it (or
+removing the NIC) raises the matching ``NETWORK.OFFERING.REMOVE`` event,
+the same as the primary network's own offering usage.
 
 Changing a Trunk NIC's Primary Network
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -341,12 +364,19 @@ CloudStack does not configure anything inside the guest for an associated
 network. The primary network needs nothing extra, since it already
 arrives untagged and the guest learns it via DHCP as usual. For each
 associated network, the guest must create its own VLAN sub-interface for
-the tag that network was given, for example:
+the tag that network was given, bring it up, and obtain an address on it.
+The exact commands depend on the guest OS and image; for example, on
+Ubuntu 24.04, which ships ``dhcpcd``/``networkctl`` rather than
+``dhclient``:
 
 .. code:: bash
 
    ip link add link eth0 name eth0.1161 type vlan id 1161
-   dhclient eth0.1161
+   ip link set eth0.1161 up
+   dhcpcd -4 eth0.1161
+
+The base interface name (``eth0`` above) depends on the image and is not
+guaranteed; it may instead be ``ens3``, ``enp1s0``, or similar.
 
 The VLAN tag for each associated network is visible in the NIC's own API
 response (``associatednetworks[].broadcasturi``, as ``vlan://<tag>``), or
@@ -382,7 +412,7 @@ giving that network's id, name, and VLAN tag:
 .. code:: json
 
    [
-     {"networkid": "2348f240-7587-4ed2-8b87-18c227f36605", "networkname": "appNetwork", "vlan": 1161}
+     {"networkId": "2348f240-7587-4ed2-8b87-18c227f36605", "networkName": "appNetwork", "vlan": "1161"}
    ]
 
 A few things worth knowing about this file:
@@ -419,6 +449,11 @@ distinguished from an ordinary secondary IP before you pick it.
    :align: center
    :alt: Enable Static NAT picker grouping a NIC's addresses under Primary, Secondary IPs, and Associated Networks
 
+A NIC's own ``listNics`` response carries the same addresses, under
+``ip4address``/``ip6address`` for its primary address and
+``ip4addresses``/``ip6addresses`` for its secondary and associated
+addresses.
+
 Via the API, pass the associated network's own id alongside its address:
 
 .. code:: bash
@@ -429,6 +464,12 @@ Via the API, pass the associated network's own id alongside its address:
    cmk createPortForwardingRule ipaddressid=<public ip id> virtualmachineid=<instance id> \
        vmguestip=<associated network's address> networkid=<associated network id> \
        protocol=tcp privateport=22 publicport=2222
+
+   cmk createLoadBalancerRule algorithm=roundrobin name=<rule name> \
+       privateport=80 publicport=80 publicipid=<public ip id> \
+       networkid=<associated network id>
+   cmk assignToLoadBalancerRule id=<load balancer rule id> \
+       virtualmachineid=<instance id> vmguestip=<associated network's address>
 
 Migration Behavior
 ~~~~~~~~~~~~~~~~~~
