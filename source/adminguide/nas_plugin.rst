@@ -158,6 +158,13 @@ to the KVM host, and each diff is replayed in order with ``rbd import-diff``. Th
 image is recreated before the restore, which also removes the RBD snapshots of the volume.
 
 .. note::
+   When incremental backups are enabled, the full backup of an RBD chain is also written as an
+   ``export-diff`` stream (``.rbddiff``) and not as a qcow2 image. Therefore every backup of an RBD
+   chain, the full backup included, can only be restored to Ceph RBD primary storage, and not to
+   NFS, SharedMountPoint or local storage. Only the legacy full backups, taken while incremental
+   backups were disabled, can be restored to other types of primary storage.
+
+.. note::
    The KVM host runs the ``rbd`` command line tool for these backups, so ``ceph-common`` must be
    installed on the KVM hosts with volumes on Ceph RBD primary storage.
 
