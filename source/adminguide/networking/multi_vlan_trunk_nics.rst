@@ -203,6 +203,51 @@ the migration, and only appears there; it is not raised for a freshly
 started Instance or a NIC plug, even though those are affected the same
 way.
 
+Host Network Changes on a Converted Host
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On a converted host, the guest taps of running Instances and virtual
+routers are ports of the guest bridge that CloudStack added at runtime. The
+host's network tool (NetworkManager, for example) does not know about them
+and rebuilds the bridge or its port VLANs without them. CloudStack does not
+detect this and raises no alert.
+
+.. warning::
+
+   On a converted host with running Instances:
+
+   -  Do not re-activate the guest bridge or uplink connection (for example
+      ``nmcli connection up cloudbr1``). Re-activating the guest bridge
+      removes every guest tap from it, and all Instances and routers on the
+      host lose network until they are restarted.
+
+   -  Do not restart the network service (for example NetworkManager) and
+      then re-activate the uplink connection. This makes VLAN 1 the PVID of
+      every guest tap, so Instances of different networks end up in one
+      VLAN and their traffic leaves the host untagged.
+
+   Before any such network change, put the host into maintenance mode so
+   its Instances are migrated off.
+
+This is recoverable. No Instance data is lost, and only the network
+attachment of the affected guests is wrong. If it happens anyway, check for
+these symptoms on the host:
+
+-  Guest taps are no longer ports of the guest bridge (``bridge link
+   show``). The affected Instances and routers have no network.
+
+-  Guest taps show ``1 PVID Egress Untagged`` (``bridge vlan show``). The
+   affected Instances and routers are in the wrong VLAN.
+
+To recover, stop and start each affected Instance and reboot each
+affected virtual router. Starting or rebooting re-plugs the guest taps with
+the correct VLANs, and it is only needed for the guests on that host. An
+agent restart alone does not repair the taps. Fix the host network
+configuration first, so the guests are not affected again.
+
+A legacy host is not affected, because its guest taps are on per-VLAN
+bridges created by the agent.
+
 Key Concepts
 ~~~~~~~~~~~~
 
