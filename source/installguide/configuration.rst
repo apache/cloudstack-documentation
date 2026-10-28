@@ -47,6 +47,8 @@ follow these procedures:
 
 #. Add secondary storage to the zone. See :ref:`add-secondary-storage`.
 
+#. Add Object Storage to the zone. See :ref:`add-object-storage`.
+
 #. Register Templates to the zone. See :ref:`register-templates`.
 
 #. Initialize and test the new cloud. See :ref:`initialize-and-test`.
@@ -354,6 +356,18 @@ Basic Zone Configuration
    starts out with some traffic types already assigned. To add more,
    drag and drop traffic types onto the network. You can also change the
    network name if desired.
+
+   .. note::
+      Starting with CloudStack version 4.21.0 and 4.20.2, the behavior of
+      VLAN and networking configuration for the storage traffic type in KVM
+      zones has changed. When a VLAN tag is specified for storage traffic,
+      a new vNet interface will be created on the storage bridge.
+
+      This change in behavior may require administrators to review their
+      existing configurations. For environments where a dedicated storage
+      bridge is used and the creation of an additional vNet interface is not
+      desired, the traffic type configuration must be updated to clear the
+      VLAN tag.
 
 #. Assign a network traffic label to each traffic type on the physical
    network. These labels must match the labels you have already defined
@@ -1594,6 +1608,47 @@ When a volume is created by the plugin, it will create bi-directional mappings i
 -  Each volume's description field in the Pure Flasharray storage system will have a formatted key/value pair with metadata mappings for the Cloudstack volume definition (user volume name, volume uuid, account/project information)
 -  Each virtual volume's WWID will be stored in the volume's path field in Cloudstack
 
+NetApp ONTAP Plug-in
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This plugin enables NetApp Unified ONTAP storage systems as a managed primary
+storage in CloudStack for KVM hypervisors. It supports both NFS 3.0 and iSCSI
+protocols, integrating with the traditional ONTAP unified storage architecture.
+
+This documentation assumes you have the following configured in your
+environment before adding a storage pool in CloudStack:
+
+-  NetApp Unified ONTAP 9.15.1 or higher.
+-  A Storage Virtual Machine (SVM) in ONTAP storage with NFS 3.0 or iSCSI protocol enabled.
+-  Only an IPv4-type Data LIF is supported. The Data LIF must be reachable from all KVM hypervisor hosts in CloudStack.
+-  Ensure Storage VM (SVM) is mapped to aggregates (aggrs) with sufficient
+   capacity.
+-  For iSCSI: iSCSI protocol enabled on the KVM host and adapter is configured.
+-  For NFS 3.0: NFS protocol enabled on the KVM host.
+
+When this storage pool is used with Compute or Disk Offerings, an administrator
+is able to build an environment in which a root or data disk that a user creates
+leads to the dynamic creation of a LUN or file on the ONTAP volume. Such a
+LUN or file is associated with one (and only ever one) CloudStack volume.
+
+Through the CloudStack UI, you can create ONTAP storage pool using these
+required fields:
+
+-  Provider: NetApp ONTAP
+-  Scope: Zone or Cluster
+-  Zone: target zone name
+-  Pod: Pod name (required for Cluster scope)
+-  Cluster: Cluster name (required for Cluster scope)
+-  Name: storage pool name
+-  Protocol: NFS3 or ISCSI
+-  Storage Array IP: ONTAP Storage IP or Management LIF
+-  Username: ONTAP Storage IP username (Cluster-level)
+-  Password: ONTAP Storage IP password (cluster-level)
+-  SVM Name: SVM name in ONTAP storage
+-  Capacity Bytes: total capacity in bytes
+-  Storage Tags: storage pool tags
+
+
 .. _add-secondary-storage:
 
 Add Secondary Storage
@@ -1621,9 +1676,9 @@ System Requirements for Secondary Storage
 Adding Secondary Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-When you create a new zone, the first secondary storage is added as part
-of that procedure. You can add secondary storage servers at any time to
-add more servers to an existing zone.
+When you create a new Zone, the first Secondary Storage is added as part
+of that procedure. You can add Secondary Storage servers at any time to
+add more servers to an existing Zone.
 
 .. warning::
    Ensure that nothing is stored on the server. Adding the server to
@@ -1650,29 +1705,29 @@ add more servers to an existing zone.
 
 #. Fill in the following fields:
 
-   -  Name. Give the storage a descriptive name.
+   -  **Name**: Give the storage a descriptive name.
 
-   -  Provider. Choose S3, Swift, NFS, or CIFS then fill in the related
+   -  **Provider**: Choose S3, Swift, NFS, or CIFS then fill in the related
       fields which appear. The fields will vary depending on the storage
       provider; for more information, consult the provider's
       documentation (such as the S3 or Swift website). NFS can be used
-      for zone-based storage, and the others for region-wide storage.
+      for Zone-based storage, and the others for region-wide storage.
       For Hyper-V, select SMB/CIFS.
 
       .. warning::
          Heterogeneous Secondary Storage is not supported in Regions. You can
          use only a single NFS, S3, or Swift account per region.
 
-   -  Create NFS Secondary Staging Store. This box must always be
+   -  **Create NFS Secondary Staging Store**: This box must always be
       checked.
 
       .. warning::
          Even if the UI allows you to uncheck this box, do not do so. This
          checkbox and the three fields below it must be filled in. Even when
-         Swift or S3 is used as the secondary storage provider, an NFS staging
+         Swift or S3 is used as the Secondary Storage provider, an NFS staging
          storage in each zone is still required.
 
-   -  Zone. The zone where the NFS Secondary Staging Store is to be
+   -  **Zone**: The Zone where the NFS Secondary Staging Store is to be
       located.
 
    -  **SMB Username**: Applicable only if you select SMB/CIFS provider.
@@ -1686,10 +1741,34 @@ add more servers to an existing zone.
    -  **SMB Domain**: Applicable only if you select SMB/CIFS provider.
       The Active Directory domain that the SMB share is a part of.
 
-   -  NFS server. The name of the zone's Secondary Staging Store.
+   -  **NFS server**: The name of the Zone's Secondary Staging Store.
 
-   -  Path. The path to the zone's Secondary Staging Store.
+   -  **Path**: The path to the Zone's Secondary Staging Store.
 
+   -  **Copy Templates from other storages**: This switch can be used to automatically
+      copy existing Templates from Secondary Storages in other Zones instead of
+      fetching from their URLs, more details are as below.
+
+
+When a new Secondary Storage is added, the Management Server attempts to make
+existing Templates available on the new Secondary Storage.
+
+CloudStack improves Template availability using the configuration:
+
++----------------------------------------------+-------------------------------------------------------------------------------------------------------------+-----------+
+| Name                                         | Description                                                                                                 | Default   |
++==============================================+=============================================================================================================+===========+
+| copy.templates.from.other.secondary.storages | Allow Templates to be copied from existing Secondary Storages (within the same Zone or across Zones)        | true      |
+|                                              | when adding a new Secondary Storage, instead of downloading them from the source URL.                       |           |
++----------------------------------------------+-------------------------------------------------------------------------------------------------------------+-----------+
+
+This setting is enabled by default and can be configured globally or at Zone level.
+
+CloudStack applies the following order of steps while trying to make a Template available in the new Secondary Storage:
+
+1. Attempt to copy the Template from another Secondary Storage in the same Zone.
+2. If not found, attempt to copy the Template from a Secondary Storage in a different Zone.
+3. If the copy operation fails, CloudStack falls back to downloading the Template using its URL as registered.
 
 Adding an NFS Secondary Staging Store for Each Zone
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1743,18 +1822,21 @@ You can add  object storage pools at any time to add more capacity or providers 
    -  Provider. Choose provider and then fill in the related
       fields which appear. The fields will vary depending on the object storage
       provider; for more information, consult the provider's
-      documentation (such as the MinIO website).
+      documentation. Currently supported providers are MiniO, Ceph and CloudianHyperStore.
 
    -  URL: API endpoint of the object storage server
 
    -  Access key: Credentials with access to admin API of the object storage server
 
    -  Secret key: Credentials with access to admin API of the object storage server
+   
+   In case of ceph make sure the user is a system user and has the necessary permissions to access the ceph pool specified in the url field. 
 
    |AddObjectStore.png: Add Object Storage|
 
 See https://min.io/docs/minio/linux/index.html for MinIO Documentation
-
+See https://docs.ceph.com/en/latest/radosgw/admin/ for Ceph Object Storage Documentation
+See https://cloudian.com/support/documentation/ for Cloudian HyperStore Documentation
 
 .. _register-templates:
 

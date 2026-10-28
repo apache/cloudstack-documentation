@@ -146,3 +146,68 @@ Following instruction have been perform using Windows 8.1 using Native VPN clien
    .. image:: /_static/images/vpn/win14.png
       :align: center 
       :width: 400 px
+
+
+Ubuntu 22.04 LTS
+-------
+
+Ubuntu 22.04 LTS does not provide native IPsec VPN client via Network Manager.
+
+#. Install the following packages to enable L2TP over IPsec VPN support:
+
+   ```
+   add-apt-repository universe
+   apt update
+   apt install network-manager-l2tp-gnome network-manager-l2tp strongswan xl2tpd
+   ```
+
+#. Restart Network Manager service to load the new plugins:
+
+   ```
+   systemctl restart NetworkManager
+   ```
+
+#. Navigate to Settings -> Network
+
+   .. image:: /_static/images/vpn/ubuntuvpn1.png
+      :align: center 
+      :width: 400 px
+
+
+#. Click "+" button and add a select Layer 2 Tunneling Protocol (L2TP):
+
+   
+   .. image:: /_static/images/vpn/ubuntuvpn2.png
+      :align: center 
+      :width: 400 px
+
+#. Provide the VPN connection information:
+
+.. image:: /_static/images/vpn/ubuntuvpn3.png
+      :align: center
+      :width: 400 px
+
+#. Click on IpSec Settings and configure the following:
+
+   .. image:: /_static/images/vpn/ubuntuvpn4.png
+      :align: center
+      :width: 400 px
+
+#. Click on PPP Settings and select use MPPE encryption:
+
+   .. image:: /_static/images/vpn/ubuntuvpn5.png
+      :align: center
+      :width: 400 px 
+
+#. Connect into VPN
+
+   #. Enable the cloudstack vpn connection.
+   #. verify the connection by checking the ip address assigned on the ppp0 interface
+
+   .. image:: /_static/images/vpn/ubuntuvpn6.png
+      :align: center
+      :width: 400 px 
+
+   .. image:: /_static/images/vpn/ubuntuvpn7.png
+      :align: center
+      :width: 400 px    

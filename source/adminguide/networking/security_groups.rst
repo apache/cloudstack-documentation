@@ -216,6 +216,11 @@ Adding Ingress and Egress Rules to a Security Group
 #. Click Add.
 
 
+.. note::
+- If there is no Egress rule in a Security Group, all the outgoing traffic will be allowed
+- If there are Egress rules in a Security Group, only the outgoing traffic which match a Egress rule will be allowed
+- Only the incoming traffic which match a Ingress rule will be allowed
+
 .. |httpaccess.png| image:: /_static/images/http-access.png
    :alt: allows inbound HTTP access from anywhere.
 

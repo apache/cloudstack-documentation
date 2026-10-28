@@ -25,8 +25,8 @@ a network offering that offers the Remote Access VPN service, the
 virtual router (based on the System VM) is used to provide the service.
 CloudStack provides a L2TP-over-IPsec-based remote access VPN service to
 guest virtual networks. Since each network gets its own virtual router,
-VPNs are not shared across the networks. VPN clients native to `Windows,
-Mac OS X <networking/using_remote_access.html>`_ and iOS can be used to connect to the guest networks. The
+VPNs are not shared across the networks. VPN clients native to `Mac OS X <networking/using_remote_access.html#mac-osx>`_,
+`Windows <networking/using_remote_access.html#microsoft-windows-8>`_, `Linux-Ubuntu <networking/using_remote_access.html#ubuntu-22-04-lts>`_ and iOS can be used to connect to the guest networks. The
 account owner can create and manage users for their VPN. CloudStack does
 not use its account database for this purpose but uses a separate table.
 The VPN user database is shared across all the VPNs created by the

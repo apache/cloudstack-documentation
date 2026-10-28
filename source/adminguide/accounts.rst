@@ -488,51 +488,72 @@ OpenLDAP)
 
 .. list-table:: LDAP Settings
    :header-rows: 1
+   :widths: 20 25 55
 
    * - Setting
-     - OpenLDAP
-     - Active Directory
+     - OpenLDAP / Active Directory
      - Description
    * - ``ldap.basedn``
-     - `Ex: OU=APAC, DC=company, DC=com`
-     - `Ex: DC=company, DC=com`
-     - Sets the basedn for LDAP.
+     - ``OU=APAC,DC=company,DC=com``
+     - Sets the base DN for LDAP searches.
    * - ``ldap.search.group.principle``
-     - `Ex: CN=ACSGroup, DC=company, DC=com`
-     - `Ex: CN=ACSGroup, CN=Users, DC=company, DC=com`
-     - (optional) if set only Users from this group are listed.
+     - ``CN=ACSGroup,DC=company,DC=com``
+     - *(Optional)* If set, only users belonging to this group are listed.
    * - ``ldap.bind.principal``
-     - `Ex: CN=ACSServiceAccount, OU=APAC, DC=company, DC=com`
-     - `Ex: CN=ACSServiceAccount, CN=Users, DC=company, DC=com`
-     - Service account that can list all the Users in the above basedn. Avoid using privileged account such as Administrator.
+     - ``CN=ACSServiceAccount,OU=APAC,DC=company,DC=com``
+     - Service account used to list users under the configured base DN.
+       Avoid using privileged accounts such as ``Administrator``.
    * - ``ldap.bind.password``
-     - `******************`
-     - `******************`
-     - Password for a DN User. Is entered in plain text but gets stored encrypted.
+     - ``****************``
+     - Password for the bind DN. Entered in plain text but stored encrypted.
    * - ``ldap.user.object``
-     - `interorgperson`
-     - `user`
-     - Object type of Users within LDAP.
+     - * OpenLDAP: ``inetOrgPerson``
+       * Active Directory: ``user``
+     - LDAP object class representing user accounts.
    * - ``ldap.email.attribute``
-     - `mail`
-     - `mail`
-     - Email attribute within ldap for a User.
+     - ``mail``
+     - Attribute used to retrieve the user email address.
    * - ``ldap.firstname.attribute``
-     - `givenname`
-     - `givenname`
-     - firstname attribute within ldap for a User.
+     - ``givenName``
+     - Attribute used to retrieve the user first name.
    * - ``ldap.lastname.attribute``
-     - `sn`
-     - `sn`
-     - lastname attribute within ldap for a User.
+     - ``sn``
+     - Attribute used to retrieve the user last name.
    * - ``ldap.group.object``
-     - `groupOfUniqueNames`
-     - `groupOfUniqueNames`
-     - Object type of groups within LDAP.
+     - * OpenLDAP: ``groupOfUniqueNames``
+       * Active Directory: ``group``
+     - LDAP object class representing groups.
    * - ``ldap.group.user.uniquemember``
-     - `uniquemember`
-     - `uniquemember`
-     - Attribute for uniquemembers within a group.
+     - ``uniqueMember``
+     - Attribute defining user membership within a group.
+   * - ``ldap.username.attribute``
+     - * OpenLDAP: ``uid``
+       * Active Directory: ``sAMAccountName``
+     - Sets the username attribute used within LDAP.
+   * - ``ldap.nested.groups.enable``
+     - ``true``
+     - If true, nested groups will also be queried.
+   * - ``ldap.provider``
+     - * OpenLDAP: ``openldap``
+       * Active Directory: ``microsoftad``
+     - LDAP provider (e.g. ``openldap``, ``microsoftad``).
+
+
+
+Restart CloudStack Management Services
+
+
+After updating the configuration, restart the CloudStack Management Server:
+
+.. code-block:: bash
+
+   systemctl restart cloudstack-management
+
+Notes
+
+
+* Configuration changes do not take effect until the management service is restarted.
+
 
    .. note:: ``ldap.search.group.principle`` is required when using ``linkaccounttoldap``.
 
@@ -566,7 +587,111 @@ You will need to know the path to the keystore and the password.
 -  ``ldap.truststore.password`` : truststore password
 
 
-.. |button to dedicate a zone, pod,cluster, or host| image:: /_static/images/dedicate-resource-button.png
+Configuring LDAPS/ LDAP SSL Trust for LDAP Integration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When integrating Apache CloudStack with an LDAP directory over **LDAPS (TCP 636)**,
+the CloudStack Management Server must trust the TLS certificate presented by the
+LDAP server. This trust is established by importing the LDAP server certificate
+into a Java truststore and configuring CloudStack to use that truststore for LDAP
+communication.
+
+Retrieve the LDAP Server Certificate
+
+
+1. On a CloudStack Management Server, navigate to the CloudStack management
+   configuration directory:
+
+   .. code-block:: bash
+
+      cd /etc/cloudstack/management/
+
+2. Retrieve **only the LDAP server certificate** (not the full certificate chain
+   or root CA):
+
+   .. code-block:: bash
+
+      echo "" | openssl s_client -connect ldap.example.com:636 -showcerts 2>/dev/null | \
+      openssl x509 -out ldap-server-certificate.pem
+
+3. Verify the retrieved certificate:
+
+   .. code-block:: bash
+
+      openssl x509 -in ldap-server-certificate.pem -noout -text
+
+   Ensure that the certificate details (Subject, Issuer, and validity dates)
+   match the LDAP server configuration.
+
+Create and Populate a Java Truststore
+
+
+1. Import the LDAP server certificate into a Java KeyStore (JKS):
+
+   .. code-block:: bash
+
+      keytool -importcert \
+        -alias ldap-server \
+        -file ldap-server-certificate.pem \
+        -trustcacerts \
+        -keystore cloudstack-ldap-truststore.jks \
+        -storetype JKS
+
+2. Verify the contents of the truststore:
+
+   .. code-block:: bash
+
+      keytool -v -list -keystore cloudstack-ldap-truststore.jks
+
+3. Verify file permissions:
+
+   .. code-block:: bash
+
+      ls -l /etc/cloudstack/management/cloudstack-ldap-truststore.jks
+
+   Example output:
+
+   .. code-block:: text
+
+      -rw-r--r-- 1 root root 1332 <date> cloudstack-ldap-truststore.jks
+
+   Ensure that the CloudStack Management Server process has read access to the
+   truststore file.
+
+Distribute the Truststore
+
+
+If multiple CloudStack Management Servers are deployed:
+
+* Copy the truststore file to **all management servers**
+* Ensure the **file path is identical** on each server
+* Ensure file permissions allow CloudStack to read the truststore
+
+Example path:
+
+::
+
+   /etc/cloudstack/management/cloudstack-ldap-truststore.jks
+
+
+
+Restart CloudStack Management Services after updating the global settings.
+
+
+After updating the configuration, restart the CloudStack Management Server:
+
+.. code-block:: bash
+
+   systemctl restart cloudstack-management
+
+Notes
+
+
+* Configuration changes do not take effect until the management service is restarted.
+* Certificate renewal on the LDAP server requires repeating this procedure and
+  redeploying the updated truststore.
+
+
 
 Using a SAML 2.0 Identity Provider for User Authentication
 ----------------------------------------------------------
@@ -653,14 +778,17 @@ granting access to resources. CloudStack supports OAuth2 authentication wherein 
 CloudStack without using username and password. CloudStack currently supports Google and GitHub providers.
 Other OAuth2 providers can be easily integrated with CloudStack using its plugin framework.
 
-For admins, the following are the settings available at global level to configure OAuth2.
+For admins, the following are the settings available to configure OAuth2. ``oauth2.enabled``
+can be configured at both the global and domain scopes; ``oauth2.plugins`` and
+``oauth2.plugins.exclude`` are global-only.
 
 .. cssclass:: table-striped table-bordered table-hover
 
 ================================================   ================   ===================================================================
-Global setting                                     Default values     Description
+Setting                                            Default values     Description
 ================================================   ================   ===================================================================
-oauth2.enabled                                     false              Indicates whether OAuth plugin is enabled or not
+oauth2.enabled                                     false              Indicates whether OAuth plugin is enabled or not. Configurable at
+                                                                      global and domain scopes (see Per-Domain OAuth Providers below).
 oauth2.plugins                                     google,github      List of OAuth plugins
 oauth2.plugins.exclude                                                List of OAuth plugins which are excluded
 ================================================   ================   ===================================================================
@@ -729,6 +857,98 @@ has to be provided in the login form and then click on OAuth login.
    :width: 400px
    :align: center
    :alt: Login page for user under specific domain
+
+Per-Domain OAuth Providers
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to globally registered OAuth providers, admins can register OAuth providers
+at the domain level. This is useful in multi-tenant deployments where each domain
+(representing a customer, department, or team) needs to authenticate users against
+its own identity provider — for example, two domains can each have their own GitHub
+OAuth application, with separate client IDs and secrets.
+
+A provider registered without a domain remains a *global* provider and is available
+to all users. A provider registered against a domain is a *domain-specific* provider
+and is only used when the user logs in under that domain.
+
+Enabling OAuth for a domain
+'''''''''''''''''''''''''''
+
+The ``oauth2.enabled`` setting uses a strict scope at the domain level: domains do
+**not** inherit the global value. Each domain that should use OAuth must explicitly
+set ``oauth2.enabled=true`` at the domain scope, regardless of whether the global
+value is ``true`` or ``false``. The table below summarizes the resulting behavior:
+
+.. cssclass:: table-striped table-bordered table-hover
+
+=====================   =====================   ==========================
+Global oauth2.enabled   Domain oauth2.enabled   OAuth available in domain?
+=====================   =====================   ==========================
+false                   not set                 No
+false                   true                    Yes
+false                   false                   No
+true                    not set                 No
+true                    true                    Yes
+true                    false                   No
+=====================   =====================   ==========================
+
+.. TODO: Add screenshot showing the oauth2.enabled setting at the domain scope (Domain details > Settings tab, with oauth2.enabled toggled to true).
+
+Registering a domain-specific provider
+''''''''''''''''''''''''''''''''''''''
+
+The "OAuth configuration" sub-section under "Configuration" now accepts an optional
+**Domain** field when registering a provider. Leave the Domain field empty to register
+a global provider, or pick a domain to register a provider that only applies to users
+of that domain.
+
+The same fields described in the previous section (Provider, Description, Provider
+Client ID, Redirect URI, Secret Key) apply. Only one provider of a given type
+(``google``, ``github``, ...) may exist per domain — and at most one global provider
+of each type — so attempting to register a duplicate will be rejected.
+
+.. TODO: Add screenshot of the "Register OAuth provider" dialog showing the new Domain selector field, with a domain selected.
+
+.. TODO: Add screenshot of the OAuth configuration list view showing both global and domain-specific providers, with the new Domain column populated for domain-specific entries.
+
+CloudMonkey API call to register a domain-specific provider:
+
+   -  register oauthprovider provider=github description="Engineering GitHub"
+      clientid="Iv1.abc123" secretkey="secret456"
+      redirecturi="https://cloudstack.example.com/?verifyOauth"
+      domainid=<domain-uuid>
+
+To list providers visible to a particular domain (returns both that domain's
+providers and any global providers):
+
+   -  list oauthproviders domainid=<domain-uuid>
+
+Login behavior
+''''''''''''''
+
+When the login page first loads, only global OAuth providers are shown on the OAuth
+Login tab. Once the user enters a domain path in the login form, the UI re-queries
+for providers visible to that domain and updates the buttons accordingly:
+
+   -  If the domain has its own provider configured, the domain-specific provider
+      buttons replace the global ones for that login attempt.
+
+   -  If the domain has no providers configured and OAuth is enabled at that domain,
+      the message "No OAuth providers configured for this domain" is shown.
+
+   -  If OAuth is not enabled for that domain (``oauth2.enabled`` is not ``true`` at
+      the domain scope), the OAuth tab is not usable for that domain.
+
+   -  If no global providers exist but at least one domain has providers, the OAuth
+      tab prompts the user to enter their domain to see available providers.
+
+.. TODO: Add screenshot of the login page showing global OAuth providers (default state, no domain entered).
+
+.. TODO: Add screenshot of the login page after a domain path has been entered, showing the domain-specific OAuth provider buttons.
+
+The selected provider's stored credentials (client ID and secret) for the resolved
+domain are then used to exchange the OAuth authorization code for an access token
+and identify the user by email.
 
 Using Two Factor Authentication For Users
 ------------------------------------------
@@ -870,7 +1090,7 @@ global settings are available to configure SMTP for password recovery.
        
        `You have requested to reset your password. Please click the following link to reset your password:``
        
-       `http://{{{resetLink}}}`
+       `{{{resetLink}}}`
        
        `If you did not request a password reset, please ignore this email.`
 
@@ -881,6 +1101,12 @@ global settings are available to configure SMTP for password recovery.
      - Template of mail sent to the user to reset ACS user's password. This uses
        mustache template engine. Available variables are: `username`, 
        `firstName`, `lastName`, `resetLink`, `token`.
+   * - ``user.password.reset.mail.domain.url``
+     - `null`
+     - Domain URL (along with scheme - `http://` or `https://` and port as applicable)
+       for reset password links sent to the user via email. If this is not set, CloudStack
+       would determine the domain url based on the first management server from 'host' setting
+       and http scheme based on the https.enabled flag from server.properties file in the management server.
 
 
 Once the global settings are configured, follow the below steps to reset the

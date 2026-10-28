@@ -29,6 +29,8 @@ The following providers are currently supported:
 - VMware with Veeam Backup and Recovery
 - KVM with DELL EMC Networker
 - KVM with NAS B&R Plugin (4.20 onwards)
+- KVM with Veeam Backup and Replication (4.23 onwards; supported only via Veeam Backup & Replication console)
+- KVM with KBOSS Plugin (4.23 onwards)
 
 See the Veeam Backup and Recovery plugin documentation for plugin specific information.
 :ref:`Veeam Backup and Replication Plugin`
@@ -38,6 +40,12 @@ See the DELL EMC Networker Backup and Recovery plugin documentation for plugin s
 
 See the NAS Backup and Recovery plugin documentation for plugin specific information.
 :ref:`NAS Backup and Recovery Plugin`
+
+See the KVM with Veeam Backup and Replication documentation for plugin specific information.
+:ref:`KVM with Veeam Backup and Replication`
+
+See the KBOSS Backup and Recovery plugin documentation for plugin specific information.
+:ref:`KBOSS Backup and Recovery Plugin`
 
 
 Backup and Recovery Concepts
@@ -77,7 +85,7 @@ the Global Settings area of the CloudStack UI.
 Configuration                     Description
 ================================= ========================
 backup.framework.enabled          Setting to enable or disable the feature. Default: false.
-backup.framework.provider.plugin  The backup provider (plugin) name. For example: 'dummy', 'veeam', 'networker' and 'nas'. This is a zone specific setting. Default: dummy.
+backup.framework.provider.plugin  The backup provider (plugin) name. For example: 'dummy', 'veeam', 'networker', 'nas' and 'kboss'. This is a zone specific setting. Default: dummy.
 backup.framework.sync.interval    Background sync task internal in seconds that performs metrics/usage stats collection, backup reconciliation and backup scheduling. Default: 300.
 ================================= ========================
 
@@ -316,4 +324,29 @@ the backup size, although the actual backup size may be less than the size use t
 .. |B&R-Cross-Zone-Select-Zone.png| image:: /_static/images/B&R-Cross-Zone-Select-Zone.png
    :alt: Select Zone when creating Instance from Backup
    :width: 700px
+
+Configuring Backup and Restore Timeouts
+---------------------------------------
+
+The default timeout for backup and restore commands is 3600 seconds (1 hour). 
+For large Instances or slower backup repositories, backup and restore operations may take longer than this timeout.
+
+The timeout for individual commands can be configured using the `commands.timeout` global setting. 
+This setting accepts comma-separated key-value pairs, where the key is the command name and the value is the timeout in seconds.
+
+For example, to configure a timeout of two hours for both backup and restore operations, add:
+
+`TakeBackupCommand=7200,RestoreBackupCommand=7200`
+
+The Management Server must be restarted after changing the `commands.timeout` setting.
+
+The configured timeout can be verified in the Management Server log. For example:
+
+`Wait time setting on org.apache.cloudstack.backup.TakeBackupCommand is 7200 seconds`
+
+.. note::
+The command timeout determines how long the Management Server waits for the operation to complete. 
+Timing out the command does not necessarily terminate the underlying backup or restore operation on the hypervisor. 
+For example, with the NAS Backup & Recovery plugin on KVM, the corresponding libvirt operation may continue after the command times out on the Management Server. 
+The finished backup will not be tracked by CloudStack in this case and as such won't be cleaned up by a configured rotation.
 

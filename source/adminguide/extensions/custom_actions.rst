@@ -17,7 +17,9 @@
 Custom Actions
 ^^^^^^^^^^^^^^
 
-In addition to standard instance operations, extensions support custom actions. These can be configured via UI in the extension details view or the addCustomAction API. The extension binary or script must implement handlers for these action names and process any provided parameters.
+In addition to standard lifecycle operations, extensions support custom actions. These can be configured via UI in the extension details view or the addCustomAction API. The extension binary or script must implement handlers for these action names and process any provided parameters.
+
+For Orchestrator extensions, custom actions typically target ``VirtualMachine`` resources. For NetworkOrchestrator extensions, custom actions can target ``Network`` and ``Vpc`` resources when the extension advertises the ``CustomAction`` network service.
 
    |add-custom-action.png|
 
@@ -43,11 +45,34 @@ A single parameter can have the following details:
 
    - **valueoptions**: Options for the value of the parameter. This is allowed only for NUMBER and STRING type.
 
+Supported Resource Types
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Custom actions can be attached to the following resource types:
+
+   - ``VirtualMachine`` for Orchestrator extensions.
+
+   - ``Network`` for NetworkOrchestrator extensions.
+
+   - ``Vpc`` for NetworkOrchestrator extensions.
+
+For network and VPC custom actions, CloudStack dispatches the action to the external provider that serves the ``CustomAction`` service for the selected resource.
+
+For ``NetworkOrchestrator`` extensions, the action is executed as ``custom-action`` using the standard payload-file invocation model:
+
+.. code-block:: bash
+
+   /path/to/<extension_name>.sh custom-action <payload_file> <timeout_seconds>
+
+The payload file contains top-level keys such as ``action``, ``action-params``, ``physical-network-extension-details``, and ``network-extension-details``. Unlike other network extension commands, the custom action request does not wrap its command-specific values inside a nested ``payload`` object.
+
 
 Running Custom Action
 ~~~~~~~~~~~~~~~~~~~~~
 
-All enabled custom actions can then be triggered for a resource of the type the action is defined for or provided while running, using the **Run Action** view or runCustomAction API.
+All enabled custom actions can then be triggered for a resource of the type the action is defined for or provided while running, using the **Run Action** view or the relevant custom action API.
+
+For network and VPC custom actions, CloudStack passes the full request in the payload file and returns the script's ``stdout`` to the caller. The available actions shown in the UI depend on the selected resource type and the extension bound to that resource.
 
    |run-custom-action-instance.png|
 

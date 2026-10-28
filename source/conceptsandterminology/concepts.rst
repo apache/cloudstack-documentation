@@ -442,6 +442,10 @@ as Zone-wide Primary Storage.
 PowerFlex/ScaleIO (v3.5) is only supported by the KVM hypervisor. It can be used
 as Cluster-wide or Zone-wide Primary Storage.
 
+NetApp ONTAP is only supported by the KVM hypervisor. It can be used as
+Cluster-wide or Zone-wide Primary Storage. It supports both NFS 3.0 and iSCSI
+protocols.
+
 CloudStack is designed to work with all standards-compliant iSCSI and
 NFS servers that are supported by the underlying hypervisor, including,
 for example:
@@ -459,6 +463,8 @@ for example:
 -  HPE Primera/3PAR for FiberChannel
 
 -  Pure FlashArray for FiberChannel
+
+-  NetApp ONTAP for NFS 3.0 and iSCSI
 
 If you intend to use only local disk for your installation, you can skip
 adding separate primary storage.

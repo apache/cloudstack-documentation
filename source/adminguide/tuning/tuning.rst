@@ -57,6 +57,9 @@ For more information about memory issues, see "FAQ: Memory" at `Tomcat
 Wiki. <http://wiki.apache.org/tomcat/FAQ/Memory>`_
 
 
+.. include:: disable_omit_stack_trace.rst
+
+
 Set Database Buffer Pool Size
 -----------------------------
 

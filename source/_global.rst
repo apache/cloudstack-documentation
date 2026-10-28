@@ -19,7 +19,7 @@
 
 .. _CloudStack Installation Guide: https://docs.cloudstack.apache.org/en/latest/installguide/index.html
 .. _CloudStack Administrator's Guide: https://docs.cloudstack.apache.org/en/latest/adminguide/index.html
-.. _CloudStack Apidocs: https://cloudstack.apache.org/api.html
+.. _CloudStack API Documentation: https://cloudstack.apache.org/api.html
 
 .. |documentation_home| replace:: https://docs.cloudstack.apache.org/
 

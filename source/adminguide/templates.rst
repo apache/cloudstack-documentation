@@ -136,6 +136,90 @@ in a private Zone, it is available only to Users in the domain assigned
 to that Zone. If a public Template is created in a public Zone, it is
 available to all Users in all domains.
 
+Template Replication on Secondary Storage
+-----------------------------------------
+
+A Zone may have more than one secondary storage (image store). When a
+Template is registered or a new Secondary Storage is added to the
+zone, CloudStack decides how many of those image stores should hold a
+copy of the Template. Historically, this decision was tied to the
+Template's ``public`` flag:
+
+-  **Public Templates** were copied to **every** image store in the
+   Zone, so that the Template was readily available wherever a host
+   pulled from.
+
+-  **Private Templates** were copied to **exactly one** image store in
+   the Zone.
+
+This coupling mixed two unrelated concerns — *who can see a Template*
+(access control) and *how many copies are kept on secondary storage*
+(placement and durability). In environments where secondary storage
+already provides redundancy (for example Ceph, replicated NFS, or
+object storage), copying public Templates to every image store wastes
+capacity, lengthens sync times, and adds unnecessary network and I/O
+load. Conversely, operators who want a second copy of a private
+Template for availability had no way to ask for one.
+
+To give operators explicit control, CloudStack exposes two
+configuration settings that cap the number of secondary storage pools
+a Template is copied to:
+
+-  ``secstorage.public.template.copy.max`` — the maximum number of
+   secondary storage pools to which a public Template is copied. The
+   default is ``0``, which means "copy to every image store in the
+   Zone" and preserves the historical behavior.
+
+-  ``secstorage.private.template.copy.max`` — the maximum number of
+   secondary storage pools to which a private Template is copied. The
+   default is ``1``, which preserves the historical behavior.
+
+Replication stops once the configured replica count is reached. Image
+store selection reuses the existing CloudStack placement logic, so
+copies are spread across image stores in the Zone.
+
+Changing these settings does **not** change who can see or use a
+Template. The ``public`` flag continues to govern visibility exactly
+as described in the previous section; these settings only govern how
+many physical copies are kept.
+
+Example scenarios
+~~~~~~~~~~~~~~~~~
+
+-  **Large Zone with 5 secondary storages.** Setting
+   ``secstorage.public.template.copy.max = 2`` copies public Templates to
+   only 2 of the 5 image stores, freeing capacity on the others.
+
+-  **Ceph-backed secondary storage.** Setting
+   ``secstorage.public.template.copy.max = 1`` avoids redundant replication
+   because the storage layer already provides durability.
+
+-  **HA for private Templates.** Setting
+   ``secstorage.private.template.copy.max = 2`` keeps two copies of every
+   private Template so that the Template is still available if one
+   image store is down.
+
+-  **Default (backward compatible).** With
+   ``secstorage.public.template.copy.max = 0`` and
+   ``secstorage.private.template.copy.max = 1``, CloudStack behaves exactly
+   as in earlier releases.
+
+Scope of application
+~~~~~~~~~~~~~~~~~~~~
+
+The configured replica counts are applied when:
+
+-  A new Template is registered in a Zone.
+
+-  A new secondary storage is added to a Zone and CloudStack
+   synchronises existing Templates onto it.
+
+The settings do not alter Templates that have already been replicated
+beyond the configured count; they only affect future placement
+decisions. When replication is capped by these settings, the
+Management Server log records why an image store was skipped, which
+is useful when auditing placement.
+
 .. _creating-a-template-from-an-existing-virtual-machine:
 Creating a Template from an Existing Instance
 ---------------------------------------------
@@ -447,6 +531,14 @@ can also attach ISO images to Guest Instances. For example, this enables
 installing PV drivers into Windows. ISO images are not
 hypervisor-specific.
 
+A single Instance can hold more than one attached ISO simultaneously, with
+each ISO appearing as its own CD-ROM drive inside the guest. This is useful,
+for example, when installing Windows on a KVM Instance that uses VirtIO disks
+- the Windows installer ISO and the VirtIO drivers ISO can both be attached
+at the same time so the installer can load the drivers without an ISO swap.
+
+|instance-iso-tab-multi.png|
+
 .. _adding-an-iso:
 Adding an ISO
 -------------
@@ -571,9 +663,34 @@ Attaching an ISO to a Instance
 
 #. Click the Attach ISO button. |iso.png|
 
-#. In the Attach ISO dialog box, select the desired ISO.
+#. In the Attach ISO dialog box, select one or more ISOs.
 
 #. Click OK.
+
+|attach-iso-multi.png|
+
+The maximum number of ISOs that may be attached to an Instance is controlled
+by the configuration setting ``vm.iso.max.count`` (default ``1``); on KVM,
+the hypervisor caps it at ``2``. The first ISO attached is the bootable one;
+the Attach ISO action is hidden once the Instance reaches its limit.
+
+Detaching an ISO
+----------------
+
+#. In the left navigation, click Instances.
+
+#. Choose the Instance you want to work with.
+
+#. Click the Detach ISO button.
+
+#. In the Detach ISO dialog box, select one or more ISOs to detach.
+
+#. Click OK.
+
+|detach-iso-multi.png|
+
+When more than one ISO is attached, each entry in the dialog shows its
+CD-ROM slot label so the right one can be picked.
 
 
 
@@ -604,3 +721,9 @@ Attaching an ISO to a Instance
    :alt: Resetting (removing all) permissions
 .. |iso.png| image:: /_static/images/iso-icon.png
    :alt: depicts adding an iso image
+.. |instance-iso-tab-multi.png| image:: /_static/images/instance-iso-tab-multi.png
+   :alt: Instance detail ISO tab listing two attached ISOs with their slot labels
+.. |attach-iso-multi.png| image:: /_static/images/attach-iso-multi.png
+   :alt: Attach ISO dialog with multi-select dropdown and slot counter
+.. |detach-iso-multi.png| image:: /_static/images/detach-iso-multi.png
+   :alt: Detach ISO dialog showing two attached ISOs with slot labels
