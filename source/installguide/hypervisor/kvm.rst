@@ -737,6 +737,11 @@ To check the current security settings of a KVM host, the following commands can
      # Show the security driver configured for libvirt QEMU (should be "none")
      $ grep -E '^\s*security_driver' /etc/libvirt/qemu.conf
 
+.. warning:: Use the same ``security_driver`` setting on all KVM hosts of a
+   cluster. If the hosts have different ``security_driver`` settings (for
+   example "none" on one host and "apparmor" or "selinux" on another), the
+   migration of Instances between them may be denied by libvirt.
+
 
 Configuring the Networking
 ~~~~~~~~~~~~~~~~~~~~~~~~~~

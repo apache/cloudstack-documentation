@@ -63,7 +63,9 @@ libvirt AppArmor profiles when configuring a KVM host. Since 24.0.0,
 CloudStack no longer changes these settings. If you face issues on a KVM host,
 for example Instances failing to start or storage operations failing with
 permission errors, please check the SELinux and AppArmor settings of the host
-and the ``security_driver`` setting in ``/etc/libvirt/qemu.conf``. See
+and the ``security_driver`` setting in ``/etc/libvirt/qemu.conf``. Please
+note that if the hosts of a cluster have different ``security_driver`` settings,
+the migration of Instances between them may be denied by libvirt. See
 :ref:`kvm-security-policies` for the recommended configuration.
 
 The full list of new features can be found in the project release notes at
