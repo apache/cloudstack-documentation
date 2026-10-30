@@ -15,8 +15,6 @@
 
 .. sub-section included in upgrade notes.
 
-.. _system-vms-and-virtual-routers:
-
 System VMs and Virtual Routers
 ------------------------------
 

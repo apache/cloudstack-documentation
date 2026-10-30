@@ -164,6 +164,11 @@ only the guest taps.
    membership enforcement never applies to it regardless of this
    feature.
 
+-  On a converted host, VLAN 1 is the uplink's untagged segment, so an
+   Instance with a NIC on a VLAN 1 network (trunk or not) is not started,
+   migrated or live-plugged on a converted host; it is only placed on
+   Legacy hosts, where VLAN 1 keeps its own bridge and leaves tagged.
+
 -  If any network already reaches this bridge untagged (for example, an
    existing Shared/L2 network), make sure the uplink keeps a matching
    native/untagged VLAN assignment. Once the bridge enforces VLAN
@@ -266,6 +271,11 @@ Key Concepts
    primary network (for example, all Isolated or all Shared), on the same
    physical network, in the same zone, and VLAN-isolated.
 
+-  Associations are not limited by VPC: a NIC can carry tiers of
+   different VPCs, or a VPC tier on a non-VPC primary network. As with
+   multiple NICs, traffic between these networks inside the guest is not
+   subject to the VPC network ACLs.
+
 -  Managing associations is an administrator-only operation. A tenant
    cannot create or remove an association on their own NIC.
 
@@ -277,13 +287,17 @@ Guidelines and Limitations
    leave an associated network's traffic unfiltered.
 
 -  A VNF appliance's management NIC cannot be trunked. This is rejected
-   both at deploy time and on a later ``associateNetworkToNic`` call
-   against a Running appliance.
+   both at deploy time and on a later ``associateNetworkToNic`` call,
+   whatever the appliance's state.
 
 -  A NIC's primary network can only be changed to one of its own
    already-associated networks, and only while the Instance is stopped.
    There is no in-place repointing of a primary network to something it
    was not already associated with.
+
+-  While an Instance has Instance snapshots, a trunk NIC's networks
+   cannot be associated, disassociated or made primary; delete the
+   snapshots first. Reverting to a snapshot keeps the NIC's associations.
 
 -  Migrating a VM with a trunk NIC is restricted to destination hosts
    with ``vlan.filtering.enabled``, see Migration Behavior below for the
@@ -296,17 +310,27 @@ Guidelines and Limitations
    Guest physical network is unsupported in this release.
 
 -  A router's DHCP script is only refreshed by the standard post-upgrade
-   Virtual Router restart or live patch (see
-   :ref:`system-vms-and-virtual-routers`). Associating or disassociating
-   a network on a trunk NIC whose router existed before the upgrade, and
-   has not yet been restarted or live-patched since, can drop the DHCP
-   entry for the primary or an associated network.
+   Virtual Router restart or live patch (see the
+   :doc:`upgrade instructions </upgrading/index>`). Associating or
+   disassociating a network on a trunk NIC whose router existed before
+   the upgrade, and has not yet been restarted or live-patched since, can
+   drop the DHCP entry for the primary or an associated network.
 
 -  An Instance with a trunk NIC cannot be unmanaged (the call is refused
    with an error such as ``Instance [...] has a trunk nic [...] with
    network associations; unmanaging such instances is not supported.``),
    imported, or backed up and restored; restoring a backup today does not
    recreate the NIC's associations.
+
+-  A network on VLAN 1 cannot be on a trunk NIC, as VLAN 1 is the native
+   VLAN of the host uplink. Associating it, or deploying with it in
+   ``nicnetworkslist``, is refused with ``Network <uuid> is on VLAN 1,
+   the native VLAN of the host uplink, and cannot be on a trunk nic``.
+
+-  Assigning an Instance with a trunk NIC to another account
+   (``assignVirtualMachine``) requires ``nicnetworkslist``, usable only
+   by a root administrator; otherwise the call is refused, as a plain
+   move would drop the NIC's associations.
 
 -  Also not supported in this release: VXLAN-isolated associated
    networks, two untagged networks on the same host, and preserving a
@@ -626,6 +650,13 @@ works for an ordinary NIC, and always works between two Shared profiles
 for either kind of NIC regardless of which one is manual versus native;
 the only hard restriction is that a trunk NIC can never land on a host
 that lacks ``vlan.filtering.enabled``, in either direction.
+
+One exception: Instances and routers powered on out of band after their
+host recovered from Down cannot be live migrated until restarted. The
+migration is refused with ``Refusing to migrate nic <MAC>: the broadcast
+URI of its primary or an associated network is not set``, and the
+Instance keeps running on the source host. Reboot the router or stop and
+start the Instance, then migrate.
 
 The Migrate Instance wizard surfaces this restriction directly: a
 destination host that cannot take the Instance's trunk NIC is marked
