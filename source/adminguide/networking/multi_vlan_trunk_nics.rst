@@ -165,9 +165,19 @@ only the guest taps.
    feature.
 
 -  On a converted host, VLAN 1 is the uplink's untagged segment, so an
-   Instance with a NIC on a VLAN 1 network (trunk or not) is not started,
+   Instance with a NIC on a VLAN 1 Guest network is not started,
    migrated or live-plugged on a converted host; it is only placed on
    Legacy hosts, where VLAN 1 keeps its own bridge and leaves tagged.
+   Public, Management and Storage networks are not affected. An
+   Instance already running on VLAN 1 on a converted host keeps running,
+   also through a reboot, until its next stop, and then starts on a
+   Legacy host; host maintenance moves it to a Legacy host. If no Legacy
+   host is available, the Instance cannot start, and
+   ``prepareHostForMaintenance`` ends in ``ErrorInPrepareForMaintenance``
+   while migration retries are pending, then ``ErrorInMaintenance`` once
+   they are exhausted, with the Instance still running. Keep a Legacy host available, or
+   move these Instances to another VLAN, before converting the last
+   Legacy host.
 
 -  If any network already reaches this bridge untagged (for example, an
    existing Shared/L2 network), make sure the uplink keeps a matching
@@ -326,6 +336,11 @@ Guidelines and Limitations
    VLAN of the host uplink. Associating it, or deploying with it in
    ``nicnetworkslist``, is refused with ``Network <uuid> is on VLAN 1,
    the native VLAN of the host uplink, and cannot be on a trunk nic``.
+   An Instance with a trunk NIC also cannot have another NIC on a VLAN 1
+   network, as no host could run it: a trunk NIC needs a converted host
+   and a VLAN 1 NIC a Legacy host. ``addNicToVirtualMachine``,
+   ``associateNetworkToNic`` and deploy with ``nicnetworkslist`` refuse
+   the combination.
 
 -  Assigning an Instance with a trunk NIC to another account
    (``assignVirtualMachine``) requires ``nicnetworkslist``, usable only
@@ -645,15 +660,18 @@ host:
      - Ordinary and Trunk NIC: supported; native ``<vlan>`` XML is
        preserved.
 
-In short: crossing between a Shared profile and the Legacy profile always
-works for an ordinary NIC, and always works between two Shared profiles
-for either kind of NIC regardless of which one is manual versus native;
-the only hard restriction is that a trunk NIC can never land on a host
-that lacks ``vlan.filtering.enabled``, in either direction.
+In short: crossing between a Shared profile and the Legacy profile works
+for an ordinary NIC, and always works between two Shared profiles for
+either kind of NIC regardless of which one is manual versus native; the
+hard restriction is that a trunk NIC can never land on a host that lacks
+``vlan.filtering.enabled``, in either direction.
 
-One exception: Instances and routers powered on out of band after their
-host recovered from Down cannot be live migrated until restarted. The
-migration is refused with ``Refusing to migrate nic <MAC>: the broadcast
+Two exceptions: an Instance with a Guest NIC on a VLAN 1 network cannot
+be migrated to a host with ``vlan.filtering.enabled``; the migration is
+refused with ``Instance has a NIC on VLAN 1, the native VLAN of the guest
+bridge, but this host has VLAN filtering enabled``. Instances and routers
+powered on out of band after their host recovered from Down cannot be
+live migrated until restarted. The latter is refused with ``Refusing to migrate nic <MAC>: the broadcast
 URI of its primary or an associated network is not set``, and the
 Instance keeps running on the source host. Reboot the router or stop and
 start the Instance, then migrate.
