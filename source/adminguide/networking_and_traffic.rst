@@ -33,6 +33,8 @@ providing networking features for guest traffic.
 
 .. include:: networking/multiple_guest_networks.rst
 
+.. include:: networking/multi_vlan_trunk_nics.rst
+
 .. include:: networking/dynamic_static_routing.rst
 
 .. include:: networking/network_permissions.rst
