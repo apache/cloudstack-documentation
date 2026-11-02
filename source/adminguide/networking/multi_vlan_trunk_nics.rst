@@ -60,9 +60,12 @@ Requirements
 -  Detection does not depend on the zone setting: a host whose guest
    bridge already has ``vlan_filtering=1`` is treated as converted after
    the upgrade, and its VLAN guest NICs then use the shared bridge on
-   their next start or migration. Before upgrading, check that
-   ``/sys/class/net/<guest bridge>/bridge/vlan_filtering`` is ``0`` on
-   every KVM host, unless you intend to use the feature there.
+   their next start or migration. The guest bridge is the Guest traffic
+   label's bridge, or ``guest.network.device`` from ``agent.properties``,
+   or the management bridge if neither is set. Before upgrading, check
+   that ``/sys/class/net/<guest bridge>/bridge/vlan_filtering`` is ``0``
+   on every KVM host, unless you intend to use the feature there.
+   Filtering on any other bridge has no effect.
 
 -  Whether libvirt on a given host can express a trunk directly in its
    domain XML (``vlan.trunk.xml.supported``) only changes how the trunk is
