@@ -57,6 +57,13 @@ Requirements
    detail; hosts without it are never offered as a placement or migration
    destination for a VM with a trunk NIC.
 
+-  Detection does not depend on the zone setting: a host whose guest
+   bridge already has ``vlan_filtering=1`` is treated as converted after
+   the upgrade, and its VLAN guest NICs then use the shared bridge on
+   their next start or migration. Before upgrading, check that
+   ``/sys/class/net/<guest bridge>/bridge/vlan_filtering`` is ``0`` on
+   every KVM host, unless you intend to use the feature there.
+
 -  Whether libvirt on a given host can express a trunk directly in its
    domain XML (``vlan.trunk.xml.supported``) only changes how the trunk is
    delivered on the wire (native libvirt ``<vlan>`` tags versus a manual
