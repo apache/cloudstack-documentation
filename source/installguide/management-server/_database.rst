@@ -122,8 +122,8 @@ MySQL. See :ref:`install-database-on-separate-node`.
       mysql_secure_installation
 
 #. CloudStack can be blocked by security mechanisms, such as SELinux.
-   Disable SELinux to ensure + that the Agent has all the required
-   permissions.
+   SELinux can stay enabled, as long as the necessary SELinux policies allow
+   the services to run.
 
    Configure SELinux (RHEL and CentOS):
 
@@ -138,37 +138,15 @@ MySQL. See :ref:`install-database-on-separate-node`.
          rpm -qa | grep selinux
 
    #. Set the SELINUX variable in ``/etc/selinux/config`` to
-      "permissive". This ensures that the permissive setting will be
+      "enforcing" or "permissive". This ensures that the setting will be
       maintained after a system reboot.
 
-      In RHEL or CentOS:
-
-      .. parsed-literal::
-
-         vi /etc/selinux/config
-
-      Change the following line
-
-      .. parsed-literal::
-
-         SELINUX=enforcing
-
-      to this:
-
-      .. parsed-literal::
-
-         SELINUX=permissive
-
-   #. Set SELinux to permissive starting immediately, without requiring
+   #. Set SELinux to enforcing or permissive starting immediately, without requiring
       a system reboot.
 
       .. parsed-literal::
 
-         setenforce permissive
-
-.. note:: In a production environment, selinux should be set to enforcing
-   and the necessary selinux policies are created to allow the
-   services to run.
+         setenforce enforcing
 
 #. Set up the database.
 
