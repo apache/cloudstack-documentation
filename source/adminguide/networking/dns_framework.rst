@@ -15,7 +15,7 @@
 
 
 CloudStack DNS Framework
-=======================
+========================
 
 Overview
 ^^^^^^^^
@@ -60,12 +60,16 @@ The CloudStack UI has been enhanced to include DNS management capabilities.
 DNS Servers and DNS Zones are now available under the **Network** section in the left navigation panel.
 
 .. figure:: /_static/images/dns_server_zone_nav.png
-   :width: 300px
+   :width: 319px
    :alt: DNS UI navigation showing DNS Servers and DNS Zones under Network
    :align: center
 
+DNS Servers are managed by the root admin. Users and domain admins see only the DNS servers they own and the public DNS servers available to them.
+
 Adding a DNS Server
 -------------------
+
+.. note:: Only the root admin can add a DNS server.
 
 DNS server configuration is required to manage zones and records in CloudStack.
 
@@ -82,7 +86,7 @@ This configuration enables CloudStack to perform DNS operations on behalf of use
 DNS servers can be added either through the CloudStack UI or using the API.
 
 .. image:: /_static/images/add_dns_server.png
-   :width: 400px
+   :width: 406px
    :align: center
    :alt: Add DNS Server in CloudStack UI
 
@@ -139,7 +143,7 @@ Using the API, a DNS server can be added with a command similar to the following
      - Specifies the domain suffix under which the DNS zone is created when the DNS server is not owned by the user (e.g., ``example.com``)
 
 .. note::
-   1. Public DNS servers can be used by other accounts, only admin and domain admins can create Public DNS server.
+   1. Public DNS servers can be used by other accounts. Only the root admin can create a DNS server, including a public DNS server.
    2. If user creates a DNS zone using non-owned Public DNS server, the zone will be created with a domain suffix defined in the Public DNS server configuration (e.g., if the suffix is ``example.com`` and user creates a zone named ``test.com``, the actual zone created in the DNS provider will be ``test.example.com``).
    3. Nameservers provided during DNS server addition are used for DNS zone creation.
 
@@ -162,12 +166,14 @@ This includes:
 Updating a DNS Server
 ---------------------
 
+.. note:: Only the root admin can update a DNS server.
+
 DNS Server configuration can be updated to modify connection details, credentials, name servers, and other metadata. This allows administrators to maintain accurate configurations as DNS provider details change or to update operational parameters without needing to recreate the DNS server.
 
 From UI:
 
 .. image:: /_static/images/update_dns_server.png
-   :width: 400px
+   :width: 404px
    :align: center
    :alt: Update DNS Server in CloudStack UI
 
@@ -187,36 +193,36 @@ Using the API:
 **Parameters**
 
 .. list-table::
-    :widths: 20 15 65
-    :header-rows: 1
+   :widths: 20 15 65
+   :header-rows: 1
 
-    * - Name
-       - Required
-       - Description
-    * - ``id``
-       - Yes
-       - The ID of the DNS server to update
-    * - ``nameservers``
-       - No
-       - Comma separated list of name servers; used to create NS records for the DNS Zone (for example, ns1.example.com, ns2.example.com)
-    * - ``name``
-       - No
-       - Name of the DNS server
-    * - ``dnsapikey``
-       - No
-       - API key or credentials for the external provider
-    * - ``ispublic``
-       - No
-       - Whether this DNS server can be used by accounts other than the owner to create and manage DNS zones
-    * - ``port``
-       - No
-       - Port number of the external DNS server
-    * - ``publicdomainsuffix``
-       - No
-       - Domain suffix that restricts DNS zones created by non-owner accounts to subdomains of this suffix
-    * - ``url``
-       - No
-       - API URL of the provider
+   * - Name
+     - Required
+     - Description
+   * - ``id``
+     - Yes
+     - The ID of the DNS server to update
+   * - ``nameservers``
+     - No
+     - Comma separated list of name servers; used to create NS records for the DNS Zone (for example, ns1.example.com, ns2.example.com)
+   * - ``name``
+     - No
+     - Name of the DNS server
+   * - ``dnsapikey``
+     - No
+     - API key or credentials for the external provider
+   * - ``ispublic``
+     - No
+     - Whether this DNS server can be used by accounts other than the owner to create and manage DNS zones
+   * - ``port``
+     - No
+     - Port number of the external DNS server
+   * - ``publicdomainsuffix``
+     - No
+     - Domain suffix that restricts DNS zones created by non-owner accounts to subdomains of this suffix
+   * - ``url``
+     - No
+     - API URL of the provider
 
 .. note:: Updating ``nameservers`` only affects new DNS zones created through this server. Existing DNS zones and their current NS records are not modified.
 
@@ -224,7 +230,9 @@ Using the API:
 Deleting a DNS Server
 ---------------------
 
-A DNS server can be deleted from CloudStack using the UI or API. 
+.. note:: Only the root admin can delete a DNS server.
+
+A DNS server can be deleted from CloudStack using the UI or API.
 
 By default, all DNS zones associated with the server are also deleted. To retain them, set ``cleanup`` to ``false``. 
 
@@ -235,7 +243,7 @@ From UI:
 Quick action buttons are available in the UI to delete a DNS server.
 
 .. image:: /_static/images/delete_dns_server.png
-   :width: 400px
+   :width: 404px
    :align: center
    :alt: Delete DNS Server in CloudStack UI
 
@@ -281,7 +289,7 @@ A DNS zone is always created under an existing DNS server configured in CloudSta
 From UI:
 
 .. image:: /_static/images/create_dns_zone.png
-   :width: 400px
+   :width: 401px
    :align: center
    :alt: Create DNS Zone in CloudStack UI
 
@@ -317,6 +325,38 @@ Using the API:
    * - ``existing``
      - No
      - If true, imports an existing DNS zone from the external DNS provider into CloudStack; if false, creates the zone in the DNS provider and registers it in CloudStack. **Default**: ``false``
+   * - ``account``
+     - No
+     - (Root admin only) The account that will own the DNS zone. Must be used with ``domainid``
+   * - ``domainid``
+     - No
+     - (Root admin only) The domain of the account that will own the DNS zone. Must be used with ``account``
+
+Creating a DNS Zone on Behalf of an Account
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A root admin can create a DNS zone on a DNS server it owns and assign the zone to another account. This lets the root admin provision a zone, such as a customer domain, without sharing the DNS server or its public domain suffix with that account.
+
+From UI:
+
+On the **Create DNS Zone** form shown above, the root admin can select a **Domain** and then an **Account** in that domain. The **Account** list is enabled only after a domain is selected. If either field is left empty, the zone is created for the root admin's own account.
+
+Using the API:
+
+.. code:: bash
+
+   cmk create dnszone dnsserverid=<dns-server-id> name="customer.com" account=<account-name> domainid=<domain-id>
+
+When a zone is created on behalf of an account:
+
+- The DNS zone is owned by the specified account and belongs to that account's domain.
+- The zone is created with the exact name provided. The public domain suffix of the DNS server is not appended, and the zone name is not checked against zones owned by other accounts.
+- The account sees the zone in ``listDnsZones`` and can update it, delete it, and manage its DNS records. The root admin that owns the DNS server also sees the zone.
+
+.. note::
+   - Only the root admin can create a DNS zone on behalf of an account. For other callers, ``account`` and ``domainid`` are ignored and the zone is created for the caller.
+   - The DNS server must be owned by the calling root admin. It can be a public or a private DNS server.
+   - The account must exist in the specified domain and must be enabled.
 
 
 Listing DNS Zones
@@ -351,7 +391,7 @@ Quick action buttons are available in the UI to delete a DNS zone.
 From UI:
 
 .. image:: /_static/images/delete_dns_zone.png
-   :width: 400px
+   :width: 405px
    :align: center
    :alt: Delete DNS Zone in CloudStack UI
 
@@ -438,7 +478,7 @@ A DNS record represents a mapping between a domain name and its corresponding re
 From UI:
 
 .. image:: /_static/images/create_dns_record.png
-   :width: 400px
+   :width: 405px
    :align: center
    :alt: Create DNS Record in CloudStack UI
 
@@ -534,7 +574,7 @@ From UI:
 We can associate a DNS zone to a network using a quick action on the Network by navigating to the **Guest Networks** page.
 
 .. image:: /_static/images/associate_dns_zone_network.png
-   :width: 400px
+   :width: 406px
    :align: center
    :alt: Associate DNS Zone to Network in CloudStack UI
 
@@ -589,7 +629,7 @@ A warning is logged and an event of type ``DNS.NAME.COLLISION`` is generated for
 Users can then choose to manually create a unique DNS record for the instance or update the hostname to resolve the conflict
 
 Instance DNS Information
----------------------
+------------------------
 Once a DNS zone is associated with a network, Instances deployed in that network will automatically receive DNS records based on their NIC configuration.
 
 In the Instance details view, the DNS name assigned to each NIC is displayed along with the corresponding IP address. This reflects the DNS record that has been automatically created for the instance.
