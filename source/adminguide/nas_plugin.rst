@@ -121,6 +121,53 @@ Points to note:
 #. For fully application-consistent backups, guest applications must implement pre-freeze hooks
    to flush their internal state to disk before the filesystem is frozen.
 
+Incremental Backups
+-------------------
+
+Incremental backups are controlled by the ``nas.backup.incremental.enabled`` zone setting, which
+defaults to ``false``. When enabled, a full backup is taken every ``nas.backup.full.every`` backups
+and the backups in between only store the data changed since the previous one. The mechanism is
+chosen per Instance, according to the primary storage of its volumes:
+
+=============================================== ============ ==========================================================
+Primary storage                                 Chain format Mechanism
+=============================================== ============ ==========================================================
+NFS, SharedMountPoint, host-scoped (local)      QCOW2        QEMU dirty bitmap and libvirt checkpoint
+Ceph RBD                                        RBD          ``rbd snap`` anchor and ``rbd export-diff --from-snap``
+Any other, or a mix of RBD and file-based pools Unsupported  Full backups only
+=============================================== ============ ==========================================================
+
+The two chain formats cannot be combined in one backup, hence an Instance with volumes on both
+RBD and file-based storage is backed up with full backups only.
+
+Other primary storage types, such as Linstor and StorPool, cannot carry the dirty bitmaps or
+checkpoints required for incremental backups and have no equivalent chain format, so Instances
+with a volume on them are backed up with full backups only.
+
+For Ceph RBD, an RBD snapshot (named with the ``csbackup-`` prefix) is kept as the anchor of the
+chain and each incremental backup is the ``export-diff`` computed by Ceph from that snapshot.
+Only the newest anchor is kept for each image, and a full backup also removes every older
+``csbackup-`` snapshot. As the anchor is stored in Ceph and not in the QEMU process:
+
+#. A stopped Instance keeps taking incremental backups. With QCOW2 chains, the next backup of a
+   stopped Instance is a full backup.
+#. The chain survives a restart or a migration of the Instance to another host.
+
+To restore an RBD backup, the whole chain from the full backup up to the selected backup is sent
+to the KVM host, and each diff is replayed in order with ``rbd import-diff``. The destination
+image is recreated before the restore, which also removes the RBD snapshots of the volume.
+
+.. note::
+   When incremental backups are enabled, the full backup of an RBD chain is also written as an
+   ``export-diff`` stream (``.rbddiff``) and not as a qcow2 image. Therefore every backup of an RBD
+   chain, the full backup included, can only be restored to Ceph RBD primary storage, and not to
+   NFS, SharedMountPoint or local storage. Only the legacy full backups, taken while incremental
+   backups were disabled, can be restored to other types of primary storage.
+
+.. note::
+   The KVM host runs the ``rbd`` command line tool for these backups, so ``ceph-common`` must be
+   installed on the KVM hosts with volumes on Ceph RBD primary storage.
+
 Support Information and Limitation
 ----------------------------------
 
@@ -129,7 +176,7 @@ KVM distros such as EL7, Ubuntu 20.04 etc may not work due to libvirt/qemu
 version requirements. Other supported KVM-distros are not tested but may work
 such as OpenSUSE 15, Debian 11 and Debian 12.
 
-Instance backups are full disk backups and limited by libvirt's ability to
+Unless incremental backups are enabled, Instance backups are full disk backups and limited by libvirt's ability to
 initiate and handle backup. All such backups are exported and stored in qcow2
 format only. Due to this, restore operation for volumes of type raw, on CEPH based
 primary storage pools, are converted from qcow2 to raw format using qemu-img convert.
