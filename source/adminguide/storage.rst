@@ -963,10 +963,6 @@ shrinking volumes is not supported on VMware hosts.
 
 Before you try to resize a volume, consider the following:
 
--  The Instances associated with the volume are stopped.
-
--  The data disks associated with the volume are removed.
-
 -  When a volume is shrunk, the disk associated with it is simply
    truncated, and doing so would put its content at risk of data loss.
    Therefore, resize any partitions or file systems before you shrink a
