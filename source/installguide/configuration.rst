@@ -1797,6 +1797,8 @@ zone:
    -  Path. The path to the zone's Secondary Staging Store.
 
 
+.. _add-object-storage:
+
 Add Object Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1830,7 +1832,19 @@ You can add  object storage pools at any time to add more capacity or providers 
 
    -  Secret key: Credentials with access to admin API of the object storage server
    
-   In case of ceph make sure the user is a system user and has the necessary permissions to access the ceph pool specified in the url field. 
+   In case of ceph make sure the user is a system user and has the necessary permissions to access the ceph pool specified in the url field.
+
+   .. note::
+      Per-bucket credentials on Ceph require Ceph Squid (v19) or later, and the admin
+      user must also hold the ``info`` and ``accounts`` capabilities:
+
+      .. code:: bash
+
+         radosgw-admin caps add --uid=<admin user> --caps="info=*;accounts=*"
+
+      Without both capabilities, the object store works as before, with one credential
+      per account. Root administrators can check whether an object store is ready on its
+      ``Details`` tab. See :ref:`per-bucket-credentials`.
 
    |AddObjectStore.png: Add Object Storage|
 
