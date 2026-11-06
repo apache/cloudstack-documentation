@@ -266,6 +266,8 @@ createKubernetesCluster API can be used to create new Kubernetes cluster. It tak
 - **asnumber** (an optional parameter to set the AS Number of the Kubernetes cluster network)
 - **cniconfigurationid** (an optional parameter to set the UUID of a registered CNI configuration)
 - **cniconfigdetails** (an optional parameter to specify the parameters values for the variables defined in the CNI configuration)
+- **nodelabels** (an optional map parameter to set the Kubernetes labels of the nodes of the default node group, see :ref:`kubernetes-node-groups`)
+- **nodetaints** (an optional map parameter to set the Kubernetes taints of the nodes of the default node group; only the PreferNoSchedule effect is allowed, see :ref:`kubernetes-node-groups`)
 
 For example:
 
@@ -346,9 +348,12 @@ scaleKubernetesCluster API can be used to scale a running (or stopped cluster) t
 
 Only running Kubernetes clusters can be scaled in size. When the service fails to scale the cluster, the cluster will show in Alert state else if the scaling is successful cluster will show up in Running state.
 
+From 24.0.0, the size, the worker nodes service offering and the autoscaling settings of the scaleKubernetesCluster API apply to the default node group of the cluster. The other node groups are scaled with their own APIs, see :ref:`kubernetes-node-groups`.
+
 .. note::
    - Only up scaling is supported while scaling clusters for service offering.
    - This operation is supported only for CloudManaged kubernetes cluster
+   - The nodes of the node groups other than the default one can not be removed with the nodeids parameter of the scaleKubernetesCluster API, they are removed with the scaleKubernetesClusterNodeGroup API.
 
 Upgrading Kubernetes cluster
 #############################
@@ -691,6 +696,119 @@ The affinity group configuration is persisted and automatically applied when sca
 
 .. note::
    - When adding external worker nodes to an existing cluster using ``addNodesToKubernetesCluster``, the nodes are validated against any worker affinity groups configured for the cluster.
+
+.. _kubernetes-node-groups:
+
+Node groups
+~~~~~~~~~~~
+
+From 24.0.0, the worker nodes of a CloudManaged Kubernetes cluster are organized in node groups (also known as node pools). All the nodes of a node group share the same service offering, template, Kubernetes labels and taints, and the size of a node group can be managed by the cluster autoscaler. Node groups allow running different workloads on different nodes of the same cluster, for example GPU or high memory workloads on a dedicated node group.
+
+Every CloudManaged cluster has a **default node group**, named ``default``, holding the worker nodes of the cluster size, which uses the worker nodes service offering and template of the cluster. The default node group of the clusters created before 24.0.0 is created by the management server on startup, with the existing worker nodes of the cluster. The default node group:
+
+- can not be deleted
+- keeps at least one node
+- only allows taints with the ``PreferNoSchedule`` effect, so that the system pods of the cluster can always run on its nodes
+
+The scaleKubernetesCluster API keeps working as before and applies to the default node group. External worker nodes added with the addNodesToKubernetesCluster API do not belong to any node group.
+
+Every node of a node group is registered with the ``cloudstack.apache.org/nodegroup`` Kubernetes label, whose value is the name of its node group, which can be used in node selectors and affinity rules:
+
+.. code-block:: yaml
+
+   spec:
+     nodeSelector:
+       cloudstack.apache.org/nodegroup: gpu
+
+The node groups of a cluster are listed in the **Node groups** tab of the cluster in the UI, where node groups can be created, scaled, updated and deleted. Each node group can be expanded to list its nodes and update the labels and taints of each node.
+
+Creating a node group
+#####################
+
+A node group can be added to a running cluster with the createKubernetesClusterNodeGroup API, which takes the following parameters as input:
+
+- **clusterid** (the ID of the Kubernetes cluster; Required)
+- **name** (name of the node group, unique in the cluster: at most 20 lower case alphanumeric characters or '-', starting and ending with an alphanumeric character; Required)
+- **serviceofferingid** (the ID of the service offering of the nodes of the node group; Required)
+- **size** (number of nodes of the node group, can be 0; Required)
+- **templateid** (the ID of the CKS template of the nodes of the node group, defaults to the worker nodes template of the cluster. The template must have the same hypervisor and architecture as the other nodes of the cluster)
+- **nodelabels** (Kubernetes labels of the nodes of the node group)
+- **nodetaints** (Kubernetes taints of the nodes of the node group, with the NoSchedule, PreferNoSchedule or NoExecute effect)
+- **autoscalingenabled**, **minsize** and **maxsize** (autoscaling settings of the node group, see :ref:`kubernetes-node-groups-autoscaling`)
+
+Labels and taints are passed as maps, for example:
+
+.. code-block:: bash
+
+   cmk create kubernetesclusternodegroup clusterid=<cluster-uuid> name=gpu serviceofferingid=<offering-uuid> size=2 nodelabels[0].key=accelerator nodelabels[0].value=gpu nodetaints[0].key=dedicated nodetaints[0].value=gpu nodetaints[0].effect=NoSchedule
+
+Label and taint keys in the ``kubernetes.io`` and ``k8s.io`` namespaces as well as the ``cloudstack.apache.org/nodegroup`` label can not be set. The nodes of the node group are named ``<cluster name>-<node group name>-<suffix>``.
+
+Listing node groups
+###################
+
+The listKubernetesClusterNodeGroups API lists the node groups of a cluster, given the **clusterid** parameter, or a node group, given its **id**. Besides the settings of the node group, the response contains:
+
+- **isdefault** (whether the node group is the default node group of the cluster)
+- **state** (the state of the node group: Ready, Scaling, Updating, Deleting or Error)
+- **nodes** (the nodes of the node group, with their own labels and taints)
+- **cpunumber** and **memory** (the CPU and memory of each node of the node group)
+
+The listKubernetesClusters API returns the node groups of each cluster, and the total number of worker nodes of the cluster in all its node groups in the **workernodes** field.
+
+Scaling a node group
+####################
+
+The scaleKubernetesClusterNodeGroup API scales a node group, given its **id** and one of the following parameters:
+
+- **size** (the new number of nodes of the node group; the most recently added nodes are removed first)
+- **nodeids** (the IDs of the Instances of the nodes to be removed from the node group)
+- **serviceofferingid** (the new service offering of the nodes of the node group, which can only offer more resources than the current one; can be passed along with size)
+
+Updating a node group
+#####################
+
+The updateKubernetesClusterNodeGroup API updates the Kubernetes labels and taints or the autoscaling settings of a node group, given its **id**:
+
+- **nodelabels** and **nodetaints** replace the labels and taints of the node group
+- **cleanupnodelabels** and **cleanupnodetaints** remove all the labels or taints of the node group
+- **autoscalingenabled**, **minsize** and **maxsize** update the autoscaling settings of the node group
+
+New labels and taints are applied to the existing nodes of the node group as well as to the nodes added later. Labels and taints which are not present anymore are removed from the nodes.
+
+Deleting a node group
+#####################
+
+The deleteKubernetesClusterNodeGroup API removes all the nodes of a node group from the cluster and deletes the node group, given its **id**. The default node group can not be deleted.
+
+Labels and taints of nodes
+##########################
+
+Each node of a node group can have its own Kubernetes labels and taints, in addition to the ones of its node group, set with the updateKubernetesClusterNode API given the **id** of the Instance of the node and the **nodelabels**, **nodetaints**, **cleanupnodelabels** and **cleanupnodetaints** parameters. The labels and taints applied to a node are the ones of its node group merged with its own ones:
+
+- a label of the node overrides the label of the node group with the same key
+- a taint of the node overrides the taint of the node group with the same key and effect
+
+Removing a label or a taint of a node restores the one of its node group, if any. The nodes of the default node group only allow taints with the ``PreferNoSchedule`` effect.
+
+.. _kubernetes-node-groups-autoscaling:
+
+Autoscaling node groups
+#######################
+
+Each node group has its own autoscaling settings: when **autoscalingenabled** is true, the cluster autoscaler adds nodes to the node group when pods can not be scheduled on the existing nodes and removes underutilized nodes, within the **minsize** and **maxsize** of the node group. The minimum size of the default node group is at least 1, it can be 0 for the other node groups. The current size of a node group must be within its minimum and maximum size, and the maximum size of all the node groups along with the control nodes can not exceed the ``cloud.kubernetes.cluster.max.size`` setting.
+
+A single cluster autoscaler is deployed in the cluster, with one ``--nodes=<min>:<max>:<id>`` argument per node group with autoscaling enabled, where ``<id>`` is the ID of the cluster for the default node group and the ID of the node group for the other node groups. It is removed when autoscaling is disabled for all the node groups of the cluster. The autoscaling settings of the scaleKubernetesCluster API are the autoscaling settings of the default node group.
+
+.. note::
+   The upstream CloudStack cluster autoscaler image only supports a single node group, identified by the ID of the cluster. Autoscaling node groups other than the default one requires a cluster autoscaler image supporting node groups, set by the administrator with the ``cloud.kubernetes.cluster.autoscaler.image`` global setting, which is used instead of the image of the autoscaler manifest of the Kubernetes version ISO.
+
+Concurrent operations on node groups
+####################################
+
+Operations on different node groups of a cluster can run at the same time, for example scaling two node groups. While operations on its node groups are in progress, the cluster is in the Scaling state and the operations on the cluster itself, such as upgrading or stopping it, can not be performed. Operations on the same node group run one at a time.
+
+When an operation on a node group fails, the nodes added by the operation are removed, the node group moves to the Error state and the cluster goes back to the Running state. The operation can then be retried. Operations which do not complete within the ``cloud.kubernetes.cluster.scale.timeout`` setting, for example due to a management server restart, are marked as failed by the Kubernetes service state scanner.
 
 Use diverse CNI plugins (Calico, Cilium, etc)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
