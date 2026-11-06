@@ -400,7 +400,7 @@ Procedure
 
 #. Log in as administrator to the CloudStack UI.
 
-#. In the left navigation, click Events.
+#. In the left navigation, click Activity, then Events.
 
 #. Perform either of the following:
 
