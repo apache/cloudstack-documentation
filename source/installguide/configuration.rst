@@ -78,7 +78,7 @@ the default region by displaying the region in the CloudStack UI and
 clicking the Edit button.
 
 
-Adding a Region
+Adding a Second Region
 ~~~~~~~~~~~~~~~
 
 Use these steps to add a second region in addition to the default
@@ -95,52 +95,49 @@ region.
 
    .. parsed-literal::
 
-      # cloudstack-setup-databases cloud:<dbpassword>@localhost --deploy-as=root:<password> -e <encryption_type> -m <management_server_key> -k <database_key> -r <region_id>
+      # cloudstack-setup-databases cloud:<dbpassword>@localhost --deploy-as=root:<password> -e <encryption_type> -m <management_server_key> -k <database_key> -r 2
 
 #. By the end of the installation procedure, the Management Server
    should have been started. Be sure that the Management Server
    installation was successful and complete.
 
-#. Now add the new region to region 1 in CloudStack.
+#. Now add the new region (2) to CloudStack of region 1 using CloudMonkey.
 
-   #. Log in to CloudStack in the first region as root administrator
-      (that is, log in to <region.1.IP.address>:8080/client).
+   .. parsed-literal::
 
-   #. In the left navigation bar, click Regions.
+      # cloudmonkey add region id=2 endpoint="http://<region.2.IP.address>:8080/client" name="Region 2"
 
-   #. Click Add Region. In the dialog, fill in the following fields:
+   -  ID. A unique identifying number. Use the same number you set in
+      the database during Management Server installation in the new
+      region; for example, 2.
 
-      -  ID. A unique identifying number. Use the same number you set in
-         the database during Management Server installation in the new
-         region; for example, 2.
+   -  Name. Give the new region a descriptive name.
 
-      -  Name. Give the new region a descriptive name.
+   -  Endpoint. The URL where you can log in to the Management Server
+      in the new region. This has the format
+      <region.2.IP.address>:8080/client.
 
-      -  Endpoint. The URL where you can log in to the Management Server
-         in the new region. This has the format
-         <region.2.IP.address>:8080/client.
-
-#. Now perform the same procedure in reverse. Log in to region 2, and
+#. Now perform the same procedure in reverse. On CloudStacl of the region 2,
    add region 1.
 
-#. Copy the account, user, and domain tables from the region 1 database
+   .. parsed-literal::
+
+      # cloudmonkey add region id=1 endpoint="http://<region.1.IP.address>:8080/client" name="Region 1"
+
+#. Copy the **account**, **user**, and **domain** tables from the region 1 database
    to the region 2 database.
 
-   In the following commands, it is assumed that you have set the root
-   password on the database, which is a CloudStack recommended best
-   practice. Substitute your own MySQL root password.
-
-   #. First, run this command to copy the contents of the database:
+   #. First, run this command to dumnp the tables into a file:
 
       .. parsed-literal::
 
-         # mysqldump -u root -p<mysql_password> -h <region1_db_host> cloud account user domain > region1.sql
+         # mysqldump -u root -p -h <region1_db_host> cloud account user domain > region1.sql
 
    #. Then run this command to put the data onto the region 2 database:
 
       .. parsed-literal::
 
-         # mysql -u root -p<mysql_password> -h <region2_db_host> cloud < region1.sql
+         # mysql -u root -p -h <region2_db_host> cloud < region1.sql
 
 #. Remove project accounts. Run these commands on the region 2 database:
 
@@ -169,54 +166,39 @@ repeat certain steps additional times for each additional region:
 
    .. parsed-literal::
 
-      cloudstack-setup-databases cloud:<dbpassword>@localhost --deploy-as=root:<password> -e <encryption_type> -m <management_server_key> -k <database_key> -r <region_id>
+      # cloudstack-setup-databases cloud:<dbpassword>@localhost --deploy-as=root:<password> -e <encryption_type> -m <management_server_key> -k <database_key> -r <region_id>
 
-#. Once the Management Server is running, add your new region to all
-   existing regions by repeatedly using the Add Region button in the UI.
-   For example, if you were adding region 3:
+#. Once the Management Server is running, add your new region into **all
+   existing regions** using CloudMonkey:
 
-   #. Log in to CloudStack in the first region as root administrator
-      (that is, log in to <region.1.IP.address>:8080/client), and add a
-      region with ID 3, the name of region 3, and the endpoint
-      <region.3.IP.address>:8080/client.
+   .. parsed-literal::
 
-   #. Log in to CloudStack in the second region as root administrator
-      (that is, log in to <region.2.IP.address>:8080/client), and add a
-      region with ID 3, the name of region 3, and the endpoint
-      <region.3.IP.address>:8080/client.
+      # cloudmonkey add region id=<region_id> endpoint="http://<region.IP.address>:8080/client" name="Region <region_id>"
 
 #. Repeat the procedure in reverse to add all existing regions to the
    new region. For example, for the third region, add the other two
    existing regions:
 
-   #. Log in to CloudStack in the third region as root administrator
-      (that is, log in to <region.3.IP.address>:8080/client).
+   .. parsed-literal::
 
-   #. Add a region with ID 1, the name of region 1, and the endpoint
-      <region.1.IP.address>:8080/client.
+      # cloudmonkey add region id=1 endpoint="http://<region.1.IP.address>:8080/client" name="Region 1"
+      # cloudmonkey add region id=2 endpoint="http://<region.2.IP.address>:8080/client" name="Region 2"
 
-   #. Add a region with ID 2, the name of region 2, and the endpoint
-      <region.2.IP.address>:8080/client.
-
-#. Copy the account, user, and domain tables from any existing region's
+#. Copy the **account**, **user**, and **domain** tables from any existing region's
    database to the new region's database.
 
-   In the following commands, it is assumed that you have set the root
-   password on the database, which is a CloudStack recommended best
-   practice. Substitute your own MySQL root password.
-
-   #. First, run this command to copy the contents of the database:
+   #. First, run this command to dumnp the tables into a file:
 
       .. parsed-literal::
 
-         # mysqldump -u root -p<mysql_password> -h <region1_db_host> cloud account user domain > region1.sql
+         # mysqldump -u root -p -h <region1_db_host> cloud account user domain > region1.sql
 
    #. Then run this command to put the data onto the new region's
       database. For example, for region 3:
 
       .. parsed-literal::
 
-         # mysql -u root -p<mysql_password> -h <region3_db_host> cloud < region1.sql
+         # mysql -u root -p -h <region3_db_host> cloud < region1.sql
 
 #. Remove project accounts. Run these commands on the region 3 database:
 
@@ -236,20 +218,13 @@ repeat certain steps additional times for each additional region:
 Deleting a Region
 ~~~~~~~~~~~~~~~~~
 
-Log in to each of the other regions, navigate to the one you want to
-delete, and click Remove Region. For example, to remove the third region
-in a 3-region cloud:
+On each of the other regions, use CloudMontey to remove the desired region:
 
-#. Log in to <region.1.IP.address>:8080/client.
+.. parsed-literal::
 
-#. In the left navigation bar, click Regions.
+   # cloudmonkey remove region id=<region_id>
 
-#. Click the name of the region you want to delete.
-
-#. Click the Remove Region button.
-
-#. Repeat these steps for <region.2.IP.address>:8080/client.
-
+- Only the Region ID is required.
 
 .. _adding-a-zone:
 
