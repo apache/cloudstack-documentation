@@ -159,7 +159,19 @@ only the guest taps.
    already known and bounded by the zone's own configuration, and
    ``specifyvlan=true`` (letting a network request a VLAN outside that
    range) is already restricted to root administrators, so this is a
-   one-time, predictable step.
+   one-time, predictable step. On each host, against the guest bridge's
+   uplink interface (or its bond, if the uplink is bonded):
+
+   .. code:: bash
+
+      bridge vlan add dev <guest_uplink_interface> vid <start_vlan>-<end_vlan>
+      bridge vlan show dev <guest_uplink_interface>
+
+   This takes effect immediately but is not persistent. Also save this
+   VLAN membership in the host's own network configuration tool so it
+   survives a reboot (for example ``bridge-port.vlans`` under
+   NetworkManager, or a ``[BridgeVLAN]`` section under
+   systemd-networkd).
 
 -  Whenever ``specifyvlan=true`` is used to put a network on a VLAN
    outside the zone's normal dynamic range, also open that specific VLAN
