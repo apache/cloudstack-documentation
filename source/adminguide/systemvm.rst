@@ -27,7 +27,7 @@ The System VM Template
 The System VMs come from a single Template. The System VM has the
 following characteristics:
 
--  Debian 12(bookwork), 6.1.0 kernel with the latest security
+-  Debian 13 (trixie) with its default kernel and the latest security
    patches from the Debian security APT repository
 
 -  Has a minimal set of packages installed thereby reducing the attack
