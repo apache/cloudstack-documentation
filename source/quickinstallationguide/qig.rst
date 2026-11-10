@@ -761,3 +761,32 @@ then click on "Zones" tab - and observe how the Status is moving from a few perc
 after which the Status will show as "Download Complete" and "Ready" column will say "Yes".
 After this is done, you will be able to deploy an Instance from this Template.
 
+Debian 13 Built-in Template
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The built-in templates are Debian 13 (trixie) cloud images, patched for CloudStack, which
+replace the CentOS 5.x templates of earlier releases. Each hypervisor has its own template:
+
+#. KVM: "Debian 13 (64-bit) genericcloud (KVM)"
+#. XenServer: "Debian 13 (64-bit) genericcloud (XenServer)"
+#. VMware: "Debian 13 (64-bit) genericcloud (vSphere)"
+
+The template for your hypervisor is downloaded to secondary storage the first time it is
+used, so the first Instance deployment can take several minutes. Wait until the template
+shows "Download Complete" and "Ready" before deploying an Instance from it.
+
+The templates include the guest agent for each hypervisor:
+
+#. KVM: QEMU guest agent (``qemu-guest-agent``)
+#. VMware: open-vm-tools (``open-vm-tools``)
+#. XenServer: XenServer guest utilities (``xe-guest-utilities``)
+
+cloud-init supports the ConfigDrive and CloudStack datasources.
+
+The default user is ``debian``. Password and SSH key access are supported. Both can be reset from CloudStack.
+
+SSH login as root is disabled. The root password is ``password``, and you can use it to log in from the VM console.
+
+.. warning::
+   The root password of the built-in template is publicly known. Change it, or use an SSH
+   key, before you expose an Instance deployed from this template to a network.
+
