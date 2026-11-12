@@ -774,6 +774,10 @@ The template for your hypervisor is downloaded to secondary storage the first ti
 used, so the first Instance deployment can take several minutes. Wait until the template
 shows "Download Complete" and "Ready" before deploying an Instance from it.
 
+.. note::
+   Upgrades from earlier releases do not get the built-in Debian 13 templates. Register the
+   Debian 13 template for your hypervisor manually, as described in the upgrade instructions.
+
 The templates include the guest agent for each hypervisor:
 
 #. KVM: QEMU guest agent (``qemu-guest-agent``)
