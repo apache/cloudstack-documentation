@@ -105,7 +105,23 @@ Requirements:
 
 - Each host needs a unique numeric ``host_id`` in ``/etc/lvm/lvmlocal.conf`` (1 to 2000), the same for all volume groups of the host, and must have joined the lockspace of every volume group of its pools.
 - The KVM agent reports the ``host_id`` as ``host.sanlock.id`` each time it connects. After changing ``host_id``, make the host rejoin the lockspace (reboot it), then restart the agent.
-- A host without ``host.sanlock.id`` is logged with a warning, and a duplicate raises an alert. In both cases lookups ask every host.
+- A host without ``host.sanlock.id`` raises an alert when it connects to a CLVM pool, and a duplicate id raises an alert too. In both cases lookups ask every host, and a host without an id cannot be fenced, see *High availability*.
+
+High availability
+^^^^^^^^^^^^^^^^^
+
+On CLVM and CLVM_NG pools no heartbeat file is written. The sanlock lease of a host is its heartbeat: a host that has not renewed its lease for 140 seconds (8 x ``io_timeout`` + 60 with the default sanlock ``io_timeout`` of 10) is considered dead. The watchdog (``wdmd``) resets a host that stops renewing, so a host judged dead no longer writes to the volume group. In a cluster with several pools, a host is considered dead only when none of its pools shows a heartbeat, unless ``kvm.ha.fence.on.storage.heartbeat.failure`` is ``true``.
+
+Requirements:
+
+- ``wdmd``, ``sanlock`` and ``lvmlockd`` must start at boot on every host, and the host needs a watchdog device (a hardware watchdog in production), otherwise a host that loses its lease is not reset.
+- Each host must report its ``host.sanlock.id``. Without it the leases of the host cannot be checked: the host is assumed to be alive, so it cannot be fenced and its HA VMs are not restarted. CloudStack raises an alert when such a host connects to a CLVM pool, and logs an error when fencing fails for this reason. Restart the agent and check that ``lvmlockd`` is running on the host.
+- After upgrading from a release without CLVM HA, restart the agents after the management server, then check that every host reports an id: ``select host_id, value from host_details where name = 'host.sanlock.id';``
+
+Timing:
+
+- The management server investigates a host once, when its agent disconnects. Keep ``ping.interval`` x ``ping.timeout`` above the 140 seconds of the lease. The defaults (60 x 2.5 = 150 seconds) leave a small margin, so a higher ``ping.timeout``, for example 4, is safer.
+- A host that is investigated while its lease is still valid is considered alive: it goes to the Alert state and its VMs are not restarted, and it is not investigated again. Host HA (out-of-band management) checks the host repeatedly and is recommended for hosts that use CLVM pools.
 
 Lightweight Migration
 ^^^^^^^^^^^^^^^^^^^^^
