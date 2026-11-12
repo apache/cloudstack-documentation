@@ -77,6 +77,8 @@ Incremental Snapshots with QCOW2 bitmaps (CLVM_NG only)
 
 CLVM_NG supports incremental snapshots using QCOW2's bitmap feature. When a snapshot is taken, a bitmap is created to track which blocks have changed since the last snapshot.
 
+Incremental snapshots on CLVM_NG are always backed up to secondary storage, as a CLVM_NG pool has no place to keep snapshot files. They work only when the ``snapshot.backup.to.secondary`` global setting is ``true`` (the default). With it set to ``false``, taking a snapshot of a CLVM_NG volume fails with ``Incremental snapshots for CLVM_NG require secondary storage``, unlike NFS where the snapshot can stay on primary storage.
+
 CLVM (RAW format) always performs full snapshots, copying all data regardless of changes, which results in larger snapshot sizes and longer snapshot times.
 
 Exclusive volume locking
@@ -264,7 +266,7 @@ clvm.lock.query.threads
 - **Description:** Number of threads a management server uses to send CLVM lock commands to several hosts in parallel: the fallback lookup that asks every host, and the deactivation of a template volume on all hosts before it is removed.
 - **Propagation:** Requires a management server restart.
 
-For incremental snapshots to work with CLVM_NG enabled the `kvm.incremental.snapshot` global setting must also be set to `true`.
+For incremental snapshots to work with CLVM_NG enabled the `kvm.incremental.snapshot` global setting must also be set to `true`, and `snapshot.backup.to.secondary` must be `true` (the default), as these snapshots are always backed up to secondary storage.
 
 VM snapshots are currently not supported on CLVM/CLVM_NG volumes.
 
@@ -303,4 +305,4 @@ vgchange lockstart sharedvg # Start the VG in shared mode
    It is reccommended to add CLVM / CLVM_NG storage pools as a Cluster scoped resource, so as to limited number of hosts that can access the pool for optimal performance and reliability.
    `lvm` has no centralized way to query which host has the lock for a given volume, so CloudStack tracks it in the database and verifies it against the sanlock lease of the volume (see *Finding the lock holder*). Only when the lease cannot be read or mapped to a single host does CloudStack query each host of the pool, which is slower with a large number of hosts. This is another reason to add the pool as a cluster scoped resource.
    
-   VM snapshots are not supported for CLVM/CLVM_NG volumes as of CloudStack 4.23.0.0. Incremental volume snapshots are supported on CLVM_NG only, and need the ``kvm.incremental.snapshot`` global setting set to ``true``.
+   VM snapshots are not supported for CLVM/CLVM_NG volumes as of CloudStack 4.23.0.0. Incremental volume snapshots are supported on CLVM_NG only, and need the ``kvm.incremental.snapshot`` and ``snapshot.backup.to.secondary`` global settings set to ``true``.
