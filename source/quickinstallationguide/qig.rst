@@ -776,7 +776,8 @@ shows "Download Complete" and "Ready" before deploying an Instance from it.
 
 .. note::
    Upgrades from earlier releases do not get the built-in Debian 13 templates. Register the
-   Debian 13 template for your hypervisor manually, as described in the upgrade instructions.
+   Debian 13 template for your hypervisor manually, as described in
+   `Uploading Templates from a remote HTTP server <../adminguide/templates.html#uploading-templates-from-a-remote-http-server>`_.
 
 The templates include the guest agent for each hypervisor:
 
@@ -785,6 +786,10 @@ The templates include the guest agent for each hypervisor:
 #. XenServer: XenServer guest utilities (``xe-guest-utilities``)
 
 cloud-init supports the ConfigDrive and CloudStack datasources.
+
+The VMware template uses the vmxnet3 NIC adapter and the pvscsi root disk controller. The guest
+kernel has no driver for the default e1000 NIC. These are set as the template details
+``nicAdapter`` and ``rootDiskController``.
 
 The default user is ``debian``. Password and SSH key access are supported. Both can be reset from CloudStack.
 
