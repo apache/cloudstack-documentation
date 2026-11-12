@@ -756,8 +756,46 @@ That's it, you are done with installation of your Apache CloudStack demo cloud.
 To check the health of your CloudStack installation, go to Infrastructure --> System VMs and refresh
 the UI from time to time - you should see “S-1-VM” and “V-2-VM” system VMs (SSVM and CPVM) in State=Running and Agent State=Up
 
-After that you can go to Images --> Templates, click on the built-in Template named "CentOS 5.5(64-bit) no GUI (KVM)",
+After that you can go to Images --> Templates, click on the built-in Template named "Debian 13 (64-bit) genericcloud (KVM)",
 then click on "Zones" tab - and observe how the Status is moving from a few percents downloaded up to fully downloaded,
 after which the Status will show as "Download Complete" and "Ready" column will say "Yes".
 After this is done, you will be able to deploy an Instance from this Template.
+
+Debian 13 Built-in Template
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The built-in templates are Debian 13 (trixie) cloud images, patched for CloudStack, which
+replace the CentOS 5.x templates of earlier releases. Each hypervisor has its own template:
+
+#. KVM: "Debian 13 (64-bit) genericcloud (KVM)"
+#. XenServer: "Debian 13 (64-bit) genericcloud (XenServer)"
+#. VMware: "Debian 13 (64-bit) genericcloud (vSphere)"
+
+The template for your hypervisor is downloaded to secondary storage the first time it is
+used, so the first Instance deployment can take several minutes. Wait until the template
+shows "Download Complete" and "Ready" before deploying an Instance from it.
+
+.. note::
+   Upgrades from earlier releases do not get the built-in Debian 13 templates. Register the
+   Debian 13 template for your hypervisor manually, as described in
+   `Uploading Templates from a remote HTTP server <../adminguide/templates.html#uploading-templates-from-a-remote-http-server>`_.
+
+   The VMware template uses the vmxnet3 NIC adapter and the pvscsi root disk controller. The guest
+   kernel has no driver for the default e1000 NIC. These are set as the template details
+   ``nicAdapter`` and ``rootDiskController``.
+
+The templates include the guest agent for each hypervisor:
+
+#. KVM: QEMU guest agent (``qemu-guest-agent``)
+#. VMware: open-vm-tools (``open-vm-tools``)
+#. XenServer: XenServer guest utilities (``xe-guest-utilities``)
+
+cloud-init supports the ConfigDrive and CloudStack datasources.
+
+The default user is ``debian``. Password and SSH key access are supported. Both can be reset from CloudStack.
+
+SSH login as root is disabled. The root password is ``password``, and you can use it to log in from the VM console.
+
+.. warning::
+   The root password of the built-in template is publicly known. Change it, or use an SSH
+   key, before you expose an Instance deployed from this template to a network.
 
