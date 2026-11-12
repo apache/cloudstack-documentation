@@ -787,9 +787,10 @@ The templates include the guest agent for each hypervisor:
 
 cloud-init supports the ConfigDrive and CloudStack datasources.
 
-The VMware template uses the vmxnet3 NIC adapter and the pvscsi root disk controller. The guest
-kernel has no driver for the default e1000 NIC. These are set as the template details
-``nicAdapter`` and ``rootDiskController``.
+.. note::
+   The VMware template uses the vmxnet3 NIC adapter and the pvscsi root disk controller. The guest
+   kernel has no driver for the default e1000 NIC. These are set as the template details
+   ``nicAdapter`` and ``rootDiskController``.
 
 The default user is ``debian``. Password and SSH key access are supported. Both can be reset from CloudStack.
 
