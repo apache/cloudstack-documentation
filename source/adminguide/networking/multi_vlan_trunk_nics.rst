@@ -49,7 +49,8 @@ Requirements
    Turning the setting off does not remove any existing association.
    ``disassociateNetworkFromNic`` and ``changeNicPrimaryNetwork`` are
    refused while the setting is off, so remove any associations an
-   Instance still needs removed before disabling it for the zone.
+   Instance still needs removed before disabling it for the zone. See
+   `Turning Off the Zone Setting`_ for what else to do before and after.
 
 -  A KVM host can only deliver a trunk NIC if its guest bridge has VLAN
    filtering enabled (``vlan_filtering=1``). CloudStack detects this
@@ -57,15 +58,20 @@ Requirements
    detail; hosts without it are never offered as a placement or migration
    destination for a VM with a trunk NIC.
 
--  Detection does not depend on the zone setting: a host whose guest
-   bridge already has ``vlan_filtering=1`` is treated as converted after
-   the upgrade, and its VLAN guest NICs then use the shared bridge on
-   their next start or migration. The guest bridge is the Guest traffic
-   label's bridge, or ``guest.network.device`` from ``agent.properties``,
-   or the management bridge if neither is set. Before upgrading, check
-   that ``/sys/class/net/<guest bridge>/bridge/vlan_filtering`` is ``0``
-   on every KVM host, unless you intend to use the feature there.
-   Filtering on any other bridge has no effect.
+-  Detection does not depend on the zone setting, but using the shared
+   bridge does. A host whose guest bridge has ``vlan_filtering=1`` is
+   detected as converted (``vlan.filtering.enabled``), but an ordinary VLAN
+   NIC uses the shared bridge only while the zone setting is on. With it off
+   the host keeps its per-VLAN bridges, so upgrading changes nothing for a
+   zone that does not enable the feature. A trunk NIC always uses the shared
+   bridge. The guest bridge is the Guest traffic label's bridge of the NIC's
+   network, else ``guest.network.device`` from ``agent.properties``, else the
+   management bridge. Filtering on any other bridge has no effect.
+
+   All of a host's guest bridges should have ``vlan_filtering`` either on or
+   off. If they differ the agent logs a warning: each NIC is decided by its
+   own bridge, but host readiness and the placement and migration checks
+   reflect only one.
 
 -  Whether libvirt on a given host can express a trunk directly in its
    domain XML (``vlan.trunk.xml.supported``) only changes how the trunk is
@@ -577,6 +583,44 @@ Via the API, pass the associated network's own id alongside its address:
    cmk assignToLoadBalancerRule id=<load balancer rule id> \
        virtualmachineid=<instance id> vmguestip=<associated network's address>
 
+Turning Off the Zone Setting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Turning ``multi.network.nic.enabled`` off does not move running Instances:
+they keep the bridge they were started with. A trunk NIC is unaffected. A
+plain VLAN NIC plugged while the setting was on stays on the shared bridge
+with its VLAN membership no longer managed, so after a live migration or a
+memory snapshot revert it can sit on VLAN 1. The agent logs a warning naming
+such a NIC.
+
+.. warning::
+
+   To turn the setting off safely:
+
+   #. While it is on, disassociate the networks of trunk NICs you no longer
+      need, as ``disassociateNetworkFromNic`` is refused once it is off.
+
+   #. Turn it off.
+
+   #. Stop and start every Instance that ran on a host with
+      ``vlan.filtering.enabled``. Do not live migrate or memory-revert them
+      before that.
+
+   An Instance with only plain VLAN NICs can instead be live migrated to a
+   host without ``vlan.filtering.enabled`` before the setting is turned off.
+
+VLAN Membership Failures After Migration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On a Shared, manual destination the VLANs are applied after the Instance
+resumes, so its tap is briefly on VLAN 1. The post-migration command is
+retried up to three times, also for a migration that moves storage. If a NIC
+still cannot get its VLANs, its link is set down and an alert is raised; the
+other NICs are still processed. The NIC comes back after a stop and start or
+a later successful migration: a Shared, native or Legacy destination brings
+the link up on arrival, a Shared, manual one after the VLANs are applied. A
+NIC disabled with ``updateVmNic`` stays down.
+
 Migration Behavior
 ~~~~~~~~~~~~~~~~~~
 
@@ -618,10 +662,10 @@ above), so it is worth being precise about what each word means:
    off.
 
 -  **Shared** is a host that has been converted (``vlan_filtering=1`` on
-   its guest bridge), so every VLAN-tagged guest NIC, trunk or not,
-   delivers over that one shared bridge instead of a per-VLAN bridge. It
-   refers to this one-shared-bridge delivery model, not to a Shared guest
-   network type.
+   its guest bridge), so every trunk NIC, and every VLAN-tagged guest NIC
+   while the zone setting is on, delivers over that one shared bridge instead
+   of a per-VLAN bridge. It refers to this one-shared-bridge delivery
+   model, not to a Shared guest network type.
 
 -  **Manual** and **native** only distinguish *how* VLAN membership gets
    applied on that one shared bridge, never what traffic can flow across
@@ -688,9 +732,10 @@ either kind of NIC regardless of which one is manual versus native; the
 hard restriction is that a trunk NIC can never land on a host that lacks
 ``vlan.filtering.enabled``, in either direction.
 
-Two exceptions: an Instance with a Guest NIC on a VLAN 1 network cannot
-be migrated to a host with ``vlan.filtering.enabled``; the migration is
-refused with ``Instance has a NIC on VLAN 1, the native VLAN of the guest
+Two exceptions: while the zone setting is on, an Instance with a Guest NIC
+on a VLAN 1 network cannot be migrated to, or deployed on, a host with
+``vlan.filtering.enabled``; with the setting off there is no such
+restriction. The migration is refused with ``Instance has a NIC on VLAN 1, the native VLAN of the guest
 bridge, but this host has VLAN filtering enabled``. Instances and routers
 powered on out of band after their host recovered from Down cannot be
 live migrated until restarted. The latter is refused with ``Refusing to migrate nic <MAC>: the broadcast

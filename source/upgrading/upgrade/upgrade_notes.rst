@@ -22,10 +22,12 @@ VLAN filtering on KVM guest bridges
 
 A KVM host whose guest bridge has ``vlan_filtering=1`` is detected as
 VLAN-filtering ready after the upgrade to Apache CloudStack 24.0 or later,
-whether or not multi-VLAN trunk NICs are used. Before upgrading to 24.0 or
-later, check that
-``/sys/class/net/<guest bridge>/bridge/vlan_filtering`` is ``0`` on every KVM
-host, unless you intend to use the feature there. See
+whether or not multi-VLAN trunk NICs are used. Detection alone changes no
+network behaviour: ordinary VLAN NICs keep their per-VLAN bridges until the
+zone setting ``multi.network.nic.enabled`` is turned on. Before turning it on,
+check that ``/sys/class/net/<guest bridge>/bridge/vlan_filtering`` is ``0`` on
+every KVM host where you do not want the shared bridge, as a NIC on a bridge
+with filtering then uses it. See
 :doc:`/adminguide/networking/multi_vlan_trunk_nics`.
 
 Java version upgraded to Java 17
