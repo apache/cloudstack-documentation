@@ -190,6 +190,8 @@ that you want to dedicate to HA-enabled Instances.
    a crash.
 
 
+.. _ha-enabled-hosts:
+
 HA-Enabled Hosts
 ----------------
 
@@ -207,6 +209,29 @@ operation, manual intervention would then be required.
 Out of band management is a requirement of HA-Enabled hosts and has to be 
 configured on all intended participating hosts.
 (see `“Out of band management” <hosts.html#out-of-band-management>`_).
+
+Host-HA relies on a heartbeat and on a VM activity check of the host. The
+supported primary storage types are NFS, SharedMountPoint, Ceph RBD, StorPool
+and Linstor. Other primary storage types, such as PowerFlex/ScaleIO, SolidFire,
+iSCSI and multipath SCSI, are not supported by Host-HA.
+
+- NFS and SharedMountPoint: the heartbeat is a file on the mount point of the
+  storage pool, and the activity of an Instance is detected from the
+  modification time of its disk files.
+- Ceph RBD: RBD has no mount point, so the KVM agent stores the heartbeat of
+  each host as a small RADOS object in the Ceph pool, and detects the activity
+  of an Instance through the watchers of its RBD images. The checks use the
+  Python bindings of Ceph, so the ``python3-rados`` and ``python3-rbd``
+  packages are required on the KVM hosts (they are dependencies of the
+  CloudStack agent package). The monitors, the pool and the cephx user and key
+  of the primary storage are used for these checks.
+- StorPool: no heartbeat is written to the storage. The KVM agent checks with
+  the ``storpool`` command that the StorPool node of the host is running, and
+  uses the same check for the activity of the host.
+- Linstor: no heartbeat is written to the storage. The KVM agent checks the
+  connections of the host with ``drbdsetup status`` and asks the Linstor
+  controller whether the node of the host is online, and uses the same check
+  for the activity of the host.
 
 Host-HA has granular configuration on a host/cluster/zone level. In a large 
 environment, some hosts from a cluster can be HA-enabled and some not, 
