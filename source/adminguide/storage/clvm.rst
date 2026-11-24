@@ -67,7 +67,7 @@ CLVM_NG (QCOW2 format):
 
 - Slight performance overhead from QCOW2 layer
 - More complex storage stack
-- Bitmaps lost during volume migration - hence the next snapshot will be a full snapshot (but subsequent snapshots will be incremental again)
+- After a VM migration with storage, the snapshot chain is ended: the next snapshot is a full snapshot and a new chain starts. Moving a volume to another volume group, even across clusters, keeps its bitmaps and the next snapshot stays incremental
 
 Key features
 ~~~~~~~~~~~~
@@ -76,6 +76,8 @@ Incremental Snapshots with QCOW2 bitmaps (CLVM_NG only)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 CLVM_NG supports incremental snapshots using QCOW2's bitmap feature. When a snapshot is taken, a bitmap is created to track which blocks have changed since the last snapshot.
+
+Incremental snapshots on CLVM_NG are always backed up to secondary storage, as a CLVM_NG pool has no place to keep snapshot files. They work only when the ``snapshot.backup.to.secondary`` global setting is ``true`` (the default). With it set to ``false``, taking a snapshot of a CLVM_NG volume fails with ``Incremental snapshots for CLVM_NG require secondary storage``, unlike NFS where the snapshot can stay on primary storage.
 
 CLVM (RAW format) always performs full snapshots, copying all data regardless of changes, which results in larger snapshot sizes and longer snapshot times.
 
@@ -87,7 +89,41 @@ CLVM/CLVM_NG use `lvmlockd` and `sanlock` to provide exclusive locking of logica
 - **Active Volumes**: Locked exclusively on the host running the VM
 - **Inactive Volumes**: Can be in shared mode or deactivated
 - **Lock Transfer**: Automatic during VM migration
-- **Lock Tracking**: CloudStack tracks which host owns each volume lock
+- **Lock Tracking**: CloudStack records which host owns each volume lock as a hint and verifies it against the real state, see *Finding the lock holder*
+
+Finding the lock holder
+^^^^^^^^^^^^^^^^^^^^^^^
+
+CloudStack records each volume's lock holder (the ``clvmLockHostId`` volume detail) only as a hint, and verifies it when an operation needs the holder:
+
+#. It asks the recorded host whether the volume is active there.
+#. If not, it reads the volume's sanlock lease from the hidden ``lvmlock`` volume of the volume group, which any host can read even when the holder is down. The lease names the owner's sanlock ``host_id``, which is mapped to a CloudStack host through the ``host.sanlock.id`` host detail and confirmed with that host.
+#. If the lease is free, or its owner has restarted since it took the lock, the volume is activated exclusively on a chosen host, preferring the destination of the operation.
+#. Only when the lease cannot be read, or the owner cannot be mapped to exactly one host, CloudStack asks every host in parallel (see ``clvm.lock.query.threads``).
+
+Right after a host failure or restart, an activation can be refused temporarily: ``locked by other host`` until the old holder's lease expires (140 seconds by default), and ``lock start in progress`` while the lockspace starts (about two minutes). These are retried until ``clvm.lock.recovery.retry.timeout``.
+
+Requirements:
+
+- Each host needs a unique numeric ``host_id`` in ``/etc/lvm/lvmlocal.conf`` (1 to 2000), the same for all volume groups of the host, and must have joined the lockspace of every volume group of its pools.
+- The KVM agent reports the ``host_id`` as ``host.sanlock.id`` each time it connects. After changing ``host_id``, make the host rejoin the lockspace (reboot it), then restart the agent.
+- A host without ``host.sanlock.id`` raises an alert when it connects to a CLVM pool, and a duplicate id raises an alert too. In both cases lookups ask every host, and a host without an id cannot be fenced, see *High availability*.
+
+High availability
+^^^^^^^^^^^^^^^^^
+
+On CLVM and CLVM_NG pools no heartbeat file is written. The sanlock lease of a host is its heartbeat: a host that has not renewed its lease for 140 seconds (8 x ``io_timeout`` + 60 with the default sanlock ``io_timeout`` of 10) is considered dead. The watchdog (``wdmd``) resets a host that stops renewing, so a host judged dead no longer writes to the volume group. In a cluster with several pools, a host is considered dead only when none of its pools shows a heartbeat, unless ``kvm.ha.fence.on.storage.heartbeat.failure`` is ``true``.
+
+Requirements:
+
+- ``wdmd``, ``sanlock`` and ``lvmlockd`` must start at boot on every host, and the host needs a watchdog device (a hardware watchdog in production), otherwise a host that loses its lease is not reset.
+- Each host must report its ``host.sanlock.id``. Without it the leases of the host cannot be checked: the host is assumed to be alive, so it cannot be fenced and its HA VMs are not restarted. CloudStack raises an alert when such a host connects to a CLVM pool, and logs an error when fencing fails for this reason. Restart the agent and check that ``lvmlockd`` is running on the host.
+- After upgrading from a release without CLVM HA, restart the agents after the management server, then check that every host reports an id: ``select host_id, value from host_details where name = 'host.sanlock.id';``
+
+Timing:
+
+- The management server investigates a host once, when its agent disconnects. Keep ``ping.interval`` x ``ping.timeout`` above the 140 seconds of the lease. The defaults (60 x 2.5 = 150 seconds) leave a small margin, so a higher ``ping.timeout``, for example 4, is safer.
+- A host that is investigated while its lease is still valid is considered alive: it goes to the Alert state and its VMs are not restarted, and it is not investigated again. Host HA (out-of-band management) checks the host repeatedly and is recommended for hosts that use CLVM pools.
 
 Lightweight Migration
 ^^^^^^^^^^^^^^^^^^^^^
@@ -201,7 +237,36 @@ clvm.secure.zero.fill
 - **Recommendation:** Enable for environments with strict security/compliance requirements (PCI-DSS, HIPAA). Disable for performance-critical environments where deletion speed matters more than data security
 - **Use Case:** Production environments handling sensitive data, multi-tenant environments with strict data isolation requirements
 
-For incremental snapshots to work with CLVM_NG enabled the `kvm.incremental.snapshot` global setting must also be set to `true`.
+clvm.lock.recovery.retry.timeout
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- **Type:** Integer
+- **Default:** `180`
+- **Scope:** Global
+- **Category:** Advanced
+- **Description:** Maximum time in seconds, counted from the start of the lock holder lookup, to keep retrying the exclusive activation of a volume that is refused only temporarily: the previous holder's lease has not expired yet, or the lockspace of the volume group is still starting on the host. `0` disables the retry.
+- **Recommendation:** The lease expires 8 x `io_timeout` + 60 seconds after the holder stops renewing it (140 seconds with the default lvmlockd sanlock `io_timeout` of 10). If lvmlockd runs with a different `--sanlock-timeout`, set this to at least that value plus about 40 seconds.
+
+clvm.lock.recovery.retry.interval
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- **Type:** Integer
+- **Default:** `10`
+- **Scope:** Global
+- **Category:** Advanced
+- **Description:** Time in seconds between retries of an activation that is refused only temporarily.
+
+clvm.lock.query.threads
+^^^^^^^^^^^^^^^^^^^^^^^
+
+- **Type:** Integer
+- **Default:** `5`
+- **Scope:** Global
+- **Category:** Advanced
+- **Description:** Number of threads a management server uses to send CLVM lock commands to several hosts in parallel: the fallback lookup that asks every host, and the deactivation of a template volume on all hosts before it is removed.
+- **Propagation:** Requires a management server restart.
+
+For incremental snapshots to work with CLVM_NG enabled the `kvm.incremental.snapshot` global setting must also be set to `true`, and `snapshot.backup.to.secondary` must be `true` (the default), as these snapshots are always backed up to secondary storage.
 
 VM snapshots are currently not supported on CLVM/CLVM_NG volumes.
 
@@ -219,7 +284,7 @@ systemctl enable sanlock --now
 systemctl enable lvmlockd --now
 
 # Update /etc/lvm/lvm.conf to set use_lvmlockd = 1
-# Update /etc/lvm/lvmlocal.conf set host_id to a unique value for each host (e.g. hostname or IP or ID (1, 2, 3...))
+# Update /etc/lvm/lvmlocal.conf set host_id to a unique number (1 to 2000) for each host (e.g. 1, 2, 3...); it must be numeric and is used for every volume group of the host
 ```
 
 Just on one of the hosts, initialize the shared physical volume (PV) that will be used for CLVM storage pools and start the VG in shared mode:
@@ -238,6 +303,6 @@ vgchange lockstart sharedvg # Start the VG in shared mode
 
 .. note::
    It is reccommended to add CLVM / CLVM_NG storage pools as a Cluster scoped resource, so as to limited number of hosts that can access the pool for optimal performance and reliability.
-   Due to the lack of support from `lvm` to provide a centralized way to query which host has the lock for a given volume, CloudStack relies on tracking this information in the database. However, if there is a drift in this information, for example due to a host failure, CloudStack will attempt to query each host for the lock status of the volume. This can lead to performance issues if there are a large number of hosts in the cluster as each host will need to be queried for each volume.
+   `lvm` has no centralized way to query which host has the lock for a given volume, so CloudStack tracks it in the database and verifies it against the sanlock lease of the volume (see *Finding the lock holder*). Only when the lease cannot be read or mapped to a single host does CloudStack query each host of the pool, which is slower with a large number of hosts. This is another reason to add the pool as a cluster scoped resource.
    
-   VM snapshots and incremental volume snapshot are not supported for CLVM/CLVM_NG volumes as of CloudStack 4.23.0.0.
+   VM snapshots are not supported for CLVM/CLVM_NG volumes as of CloudStack 4.23.0.0. Incremental volume snapshots are supported on CLVM_NG only, and need the ``kvm.incremental.snapshot`` and ``snapshot.backup.to.secondary`` global settings set to ``true``.
