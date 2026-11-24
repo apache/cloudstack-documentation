@@ -893,17 +893,30 @@ Migrating an Instance Volume to a New Storage Pool
 (XenServer, VMware) You can live migrate an Instance's volumes from one
 storage pool to another, without stopping the Instance first.
 
-(KVM) KVM does not support volume live migration due to the limited possibility
-to refresh VM XML domain. Therefore, to live migrate a volume between storage pools,
-one must migrate the VM to a different host as well to force the VM XML domain update.
-Use 'migrateVirtualMachineWithVolumes' instead or stop the Instance and then migrate
-the volume.
+(KVM) A volume of a running Instance can be live migrated, without stopping or moving
+the Instance, between:
+
+- two Ceph RBD primary storage pools;
+- a Ceph RBD pool and an NFS, SharedMountPoint or local (host-scoped) pool, in both directions.
+
+For a local pool, the pool must be the one of the host the Instance is running on, as the copy
+runs on that host. The whole disk is copied, hence a volume created from a template does not
+depend on the backing file of the source pool afterwards, and the source volume is removed once
+the migration is completed. Encrypted volumes can be migrated between RBD and NFS pools, both
+online and offline.
+
+For any other pair of pools, such as two NFS pools, KVM does not support volume live migration
+due to the limited possibility to refresh VM XML domain. Therefore, one must migrate the
+Instance to a different host as well to force the VM XML domain update, using
+'migrateVirtualMachineWithVolumes', or stop the Instance and then migrate the volume.
+A volume which is not attached to a running Instance can be migrated between any of these pools.
 
 #. Log in to the CloudStack UI as a user or admin.
 
 #. In the left navigation bar, click Instances, and click the Instance name.
 
-#. (KVM only) Stop the Instance.
+#. (KVM only) Stop the Instance, unless the volume is migrated live between the
+   storage pools listed above.
 
 #. Click the Migrate button |Migrateinstance.png| and choose the
    destination from the dropdown list.
@@ -916,7 +929,7 @@ the volume.
 #. Watch for the volume status to change to Migrating, then back to
    Running (or Stopped, in the case of KVM). This can take some time.
 
-#. (KVM only) Restart the Instance.
+#. (KVM only) Restart the Instance, if it was stopped.
 
    .. note::
       In case of KVM and PowerFlex/ScaleIO storage, live migration of
