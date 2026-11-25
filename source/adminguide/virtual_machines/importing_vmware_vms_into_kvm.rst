@@ -110,20 +110,45 @@ For Debian-based distributions (alien is needed for conversion of .rpm to .deb p
 
         curl -L -o /usr/share/virtio-win/virtio-win.iso https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso
 
-.. note::
-   Windows Server 2025 enforces a stricter driver-signature policy at runtime and, as of
-   virtio-win 0.1.285, rejects the optional ``smbus`` driver's certificate during the
-   first-boot driver installation. virt-v2v retries the failed installation on every
-   boot, which leaves the imported guest in a reboot loop. The driver is a non-essential
-   SMBus stub; the essential storage and network drivers install fine.
+.. warning::
+   **Windows Server 2025 guests** need three things to boot after the import and to finish
+   their first boot (see https://github.com/apache/cloudstack/issues/13241):
 
-   This affects **Windows Server 2025 and newer only** - older Windows releases
-   (Windows Server 2016/2019/2022, Windows 10/11) accept the driver's signature and work
-   fine with the unmodified upstream ISO, so no action is needed for them. Until this is
-   resolved in the virtio-win project, rebuild the ISO on the conversion host without the
-   ``smbus`` files before converting Windows Server 2025 guests (virt-v2v reads the
-   drivers from ``/usr/share/virtio-win/virtio-win.iso``, so the ISO itself has to be
-   modified):
+   1. **UEFI boot with the q35 machine type.** A Windows Server 2025 guest that uses UEFI on
+      VMware must also boot with UEFI on KVM. If the imported Instance is created with BIOS
+      boot and the older i440fx machine type, it stops at "No bootable device". Before the
+      first start, set the Instance setting ``UEFI`` to ``LEGACY`` (or to ``SECURE`` for Secure
+      Boot). UEFI Instances use the q35 machine type.
+
+   2. **A host CPU model.** Windows Server 2025 requires CPU features (SSE4.2 and POPCNT) that
+      the default QEMU CPU model does not offer. On the KVM hosts, set
+      ``guest.cpu.mode=host-passthrough`` (or ``host-model``) in
+      ``/etc/cloudstack/agent/agent.properties`` and restart the CloudStack agent.
+
+   3. **A first boot that does not loop.** On its first boot, the converted guest runs a
+      script from virt-v2v that installs every virtio driver. The upstream virtio-win ISO, as
+      of version 0.1.285, includes an optional ``smbus`` driver for Windows Server 2022 and 2025
+      and Windows 11, signed with a certificate Windows does not trust, so Windows rejects it
+      (seen on Windows Server 2022 Core and Windows Server 2025). The ``virtio-win`` package
+      that EL9 ships (1.9.61 at the time of writing) has no ``smbus`` driver; the problem
+      appears when the upstream ISO is used, for example placed at
+      ``/usr/share/virtio-win/virtio-win.iso``. The virt-v2v shipped with EL9
+      (``virt-v2v-2.7.1-19.el9_7`` at the time of writing) then retries the whole script on
+      every boot, so the guest restarts forever. The storage and network drivers are not
+      affected. This was fixed in upstream virt-v2v
+      (https://github.com/libguestfs/virt-v2v/pull/202 and
+      https://github.com/libguestfs/libguestfs-common/pull/54): a failing driver is reported,
+      and the first boot carries on. Until EL9 ships these fixes, use one of the two options
+      below on the conversion hosts.
+
+   Item 3 also applies to Windows Server 2022 and Windows 11 guests. Windows Server 2016 and
+   2019 and Windows 10 are not affected by it: the ISO has no ``smbus`` driver for them.
+
+**Option A: remove the smbus driver from the virtio-win ISO**
+
+virt-v2v reads the drivers from ``/usr/share/virtio-win/virtio-win.iso``, so the ISO itself has
+to be rebuilt without the ``smbus`` files before converting Windows Server 2022, Windows Server
+2025 or Windows 11 guests:
 
     ::
 
@@ -134,6 +159,75 @@ For Debian-based distributions (alien is needed for conversion of .rpm to .deb p
         find /tmp/virtio-win-extracted -iname 'smbus.*' -delete
         xorriso -as mkisofs -o /usr/share/virtio-win/virtio-win.iso -J -R -V virtio-win /tmp/virtio-win-extracted
         rm -rf /tmp/virtio-win-extracted
+
+This avoids the ``smbus`` failure only. Any other driver that fails on the first boot still
+causes the same loop with the stock EL9 virt-v2v.
+
+**Option B (optional): a community-maintained virt-v2v build for EL9 hosts**
+
+A community-maintained rebuild of the stock EL9 ``virt-v2v-2.7.1-19.el9_7`` package is
+published at https://github.com/v2kmigrate/virt-v2v-el9 (GPL-2.0+; source RPM included). It
+adds the upstream fixes above and further first-boot fixes for Windows guests. It is a drop-in
+replacement for the stock package on EL9 hosts: the CloudStack agent keeps calling
+``virt-v2v`` as before. Each release lists its fixes and where each one comes from (upstream
+pull request, or a downstream patch). This build is not provided, tested or supported by the
+Apache CloudStack project; use it at your own discretion.
+
+To install it on an EL9 KVM host, take the latest release from
+https://github.com/v2kmigrate/virt-v2v-el9/releases, then check its signature before
+installing:
+
+    ::
+
+        VER=2.7.1-19.el9_7.v2k5
+        URL=https://github.com/v2kmigrate/virt-v2v-el9/releases/download/v${VER}
+
+        curl -LO ${URL}/RPM-GPG-KEY-v2kmigrate
+        curl -LO ${URL}/SHA256SUMS
+        curl -LO ${URL}/virt-v2v-${VER}.x86_64.rpm
+
+        # expected key fingerprint: 7DD7 2D9D B1D8 3F05 0853  D6C8 B1A0 4AAE 39CA ECD0
+        gpg --show-keys RPM-GPG-KEY-v2kmigrate
+        rpm --import RPM-GPG-KEY-v2kmigrate
+        sha256sum -c SHA256SUMS --ignore-missing
+        rpm -K virt-v2v-${VER}.x86_64.rpm
+
+        dnf install -y ./virt-v2v-${VER}.x86_64.rpm
+        rpm -q virt-v2v
+
+``rpm -K`` must report ``digests signatures OK``, and ``rpm -q virt-v2v`` must show the
+``.v2k`` release that was installed. Restart the CloudStack agent afterwards, so that it reads
+the virt-v2v version again:
+
+    ::
+
+        systemctl restart cloudstack-agent
+
+The host details in CloudStack show only the upstream virt-v2v version (for example ``2.7.1``),
+which is the same for the stock package and for this build. Use ``rpm -q virt-v2v`` on the host
+to see which one is installed.
+
+A later ``dnf update`` replaces this build with a newer stock ``virt-v2v`` from the
+distribution, which may not contain the fixes yet. To prevent that, lock the package, and check
+the repository for a matching new build when your distribution updates virt-v2v:
+
+    ::
+
+        dnf install -y python3-dnf-plugin-versionlock
+        dnf versionlock add virt-v2v
+
+Installing the versionlock plugin may also update ``dnf-plugins-core`` from the distribution.
+
+To return to the stock package:
+
+    ::
+
+        dnf versionlock delete virt-v2v
+        dnf downgrade -y virt-v2v
+        systemctl restart cloudstack-agent
+
+The imported signing key stays in the RPM database. If it is no longer needed, remove it with
+``rpm -e gpg-pubkey-39caecd0``.
 
 On some distros, the Windows helper binary "rhsrvany.exe", which is used for Windows-based VM firstboot scripts and some other actions, might be missing.
 
