@@ -666,29 +666,113 @@ Moving Instances Between Hosts (Manual Live Migration)
 ------------------------------------------------------
 
 The CloudStack administrator can move a running Instance from one host to
-another without interrupting service to Users or going into maintenance
-mode. This is called manual live migration, and can be done under the
-following conditions:
+another without interrupting service to Users and without putting the source
+host into maintenance mode. This is called manual live migration.
 
--  The root administrator is logged in. Domain admins and Users can not
-   perform manual live migration of Instances.
+Prerequisites
+~~~~~~~~~~~~~
 
--  The Instance is running. Stopped Instances can not be live migrated.
+-  You are logged in as root administrator. Domain admins and Users can not
+   live migrate Instances.
 
--  The destination host must have enough available capacity. If not, the
-   Instance will remain in the "migrating" state until memory becomes
-   available.
+-  The Instance is Running. To move the volumes of a stopped Instance, see
+   `Moving Instance's Volumes Between Storage Pools (Offline Volume Migration)`_
+   below.
 
--  (KVM) The Instance must not be using local disk storage. (On XenServer and
-   VMware, Instance live migration with local disk is enabled by CloudStack
-   support for XenMotion and vMotion.)
+-  The destination host runs the same hypervisor as the source host, is Up and
+   Enabled, and has enough available capacity for the Instance. If no host
+   satisfies these conditions, the migration is refused and the Instance keeps
+   running where it is.
 
--  (KVM) The destination host must be in the same cluster as the
-   original host. (On XenServer and VMware, Instance live migration from one
-   cluster to another is enabled by CloudStack support for XenMotion and
-   vMotion.)
+-  The destination host can access the storage that the Instance's volumes will
+   be placed on after the migration.
 
-To manually live migrate an Instance
+What Moves During a Live Migration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Depending on where the volumes are stored, either one or two things are
+transferred:
+
+-  **The Instance only.** Every volume already resides on storage that the
+   destination host can access, so only the CPU and memory state is
+   transferred. Nothing is copied on the storage side.
+
+-  **The Instance and some of its volumes (live migration with storage).** A volume
+   resides on storage that the destination host can not access (for example
+   local storage, or cluster-wide storage belonging to another cluster) so
+   that volume is moved as part of the migration.
+
+CloudStack evaluates this per volume and leaves untouched every volume that
+does not have to move. An Instance with its root volume on cluster-wide NFS and
+a data volume on zone-wide storage can therefore be migrated to another cluster
+by moving only the root volume.
+
+KVM Live Migration Compatibility
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+   Since CloudStack 4.15.0, KVM Instances can be live migrated **between hosts
+   of different clusters** of the same pod, including Instances that use local
+   storage. It is no longer required for the source and the destination host to
+   belong to the same cluster.
+
+During a KVM live storage migration, the disk contents are streamed directly
+from the source host to the destination host over the QEMU/libvirt migration
+channel. Secondary storage is **not** used as an intermediate step, unlike in
+the offline volume migration described in the next section.
+
+The table below lists which primary storage types support having a volume moved
+during a KVM live migration.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 25 20 55
+
+   * - Primary storage type
+     - Live migration with storage
+     - Notes
+   * - NFS
+     - Supported
+     - Since 4.13.0.
+   * - Local storage
+     - Supported
+     - Since 4.12.0.
+   * - SharedMountPoint
+     - Supported
+     - Since 4.16.0.
+   * - CLVM and CLVM_NG
+     - Supported
+     - Since 4.23.0. The volume is always copied in full, as incremental
+       copies are not possible on block devices.
+   * - Ceph/RBD
+     - Not supported
+     - The volume has to remain on its current storage pool.
+   * - Managed storage
+     - Not supported
+     - For example PowerFlex/ScaleIO and SolidFire. The volume has to remain
+       on its current storage pool.
+
+The restriction on Ceph/RBD and managed storage only applies to volumes that
+would have to move. As those storage types are normally configured zone-wide,
+the destination host can usually access them, and the Instance itself still
+migrates freely between clusters.
+
+PowerFlex/ScaleIO volumes are an exception: they can not be moved as part of an
+Instance migration, but they can be live migrated on their own, from one
+PowerFlex/ScaleIO storage pool to another, while the Instance keeps running.
+See `Migrating an Instance Volume to a New Storage Pool <storage.html#migrating-an-instance-volume-to-a-new-storage-pool>`_.
+
+.. note::
+   When the destination pool is NFS, local storage or SharedMountPoint and the
+   root volume was deployed from a template, CloudStack copies the template
+   from secondary storage to the destination pool if it is not there yet, so
+   that the migrated volume keeps its backing file and only the differences are
+   transferred. Volumes
+   migrated to or from CLVM and CLVM_NG pools are always copied in full
+   instead.
+
+Migrating an Instance
+~~~~~~~~~~~~~~~~~~~~~
 
 #. Log in to the CloudStack UI as root administrator.
 
@@ -696,52 +780,107 @@ To manually live migrate an Instance
 
 #. Choose the Instance that you want to migrate.
 
-#. Click the Migrate Instance button. |Migrateinstance.png|
+#. Click the Migrate Instance to another host button. |Migrateinstance.png|
 
-#. From the list of suitable hosts, choose the one to which you want to
-   move the Instance.
+#. From the list of suitable hosts, choose the one to which you want to move
+   the Instance. Hosts that require the Instance's storage to be migrated as
+   well are flagged in the list.
 
-   .. note::
-      If the Instance's storage has to be migrated along with the Instance, this will
-      be noted in the host list. CloudStack will take care of the storage
-      migration for you.
+#. Optionally, enable "Migrate with storage" to control where the volumes are
+   placed. You can either send all volumes to a single storage pool or pick a
+   destination pool per volume. If you leave this option disabled, CloudStack
+   automatically selects, for each volume that has to move, a suitable pool
+   that is accessible from the destination host.
 
 #. Click OK.
 
-.. note::
-      (KVM) If the Instance's storage has to be migrated along with the Instance, from a mounted NFS storage pool to a cluster-wide mounted NFS storage pool, then the 'migrateVirtualMachineWithVolume' API has to be used. There is no UI integration for this feature.
+The UI calls the ``migrateVirtualMachine`` API when only the Instance has to
+move and ``migrateVirtualMachineWithVolume`` when volumes have to move as well.
+Both operations can also be run directly, for example with CloudMonkey:
 
-      (CloudMonkey) > migrate virtualmachinewithvolume virtualmachineid=<virtual machine uuid> hostid=<destination host uuid> migrateto[i].volume=<virtual machine volume number i uuid> migrateto[i].pool=<destination storage pool uuid for volume number i>
+::
 
-      where i in [0,..,N] and N = number of volumes of the Instance
+   > migrate virtualmachine virtualmachineid=<instance uuid> hostid=<destination host uuid>
+
+   > migrate virtualmachinewithvolume virtualmachineid=<instance uuid> hostid=<destination host uuid> migrateto[0].volume=<volume uuid> migrateto[0].pool=<destination storage pool uuid>
+
+For ``migrateVirtualMachineWithVolume``, repeat the ``migrateto[i].volume`` and
+``migrateto[i].pool`` pair for each volume that has to be moved, with ``i`` in
+``[0..N-1]``, where ``N`` is the number of volumes to move.
 
 .. note::
    During live migration, there can be a mismatch between the instance's tags
-   with the destination host's tags which might be undesirable.
+   with the destination host's tags which might be undesirable. For more
+   details on how to prevent this, see :ref:`strict-host-tags`.
 
-   For more details on how to prevent this, see :ref:`strict-host-tags`.
-
-Moving Instance's Volumes Between Storage Pools (offline volume Migration)
+Moving Instance's Volumes Between Storage Pools (Offline Volume Migration)
 --------------------------------------------------------------------------
 
-The CloudStack administrator can move a stopped Instance's volumes from one
-storage pool to another within the cluster. This is called offline volume
-migration, and can be done under the following conditions:
+The CloudStack administrator can move the volumes of a stopped Instance from
+one storage pool to another. This is called offline volume migration.
 
--  The root administrator is logged in. Domain admins and Users can not
+As the Instance is not running, its volumes are not bound to a host and can be
+moved to any storage pool that is compatible with the Instance, including pools
+of another cluster.
+
+Prerequisites
+~~~~~~~~~~~~~
+
+-  You are logged in as root administrator. Domain admins and Users can not
    perform offline volume migration of Instances.
 
--  The Instance is stopped.
+-  The Instance is Stopped. To move the volumes of a running Instance, see
+   `Moving Instances Between Hosts (Manual Live Migration)`_ above.
 
--  The destination storage pool must have enough available capacity.
+-  The Instance has no Instance snapshots. Remove them before migrating.
 
--  UI operation allows only migrating the root volume upon selecting the
-   storage pool. To migrate all volumes to the desired storage pools
-   the 'migrateVirtualMachineWithVolume' API has to be used by providing
-   'migrateto' map parameter.
+-  Each destination storage pool matches the Instance's hypervisor type and
+   shares a storage access group with the pool the volume currently lives on.
+   If they have no group in common, at least one running host has to be
+   connected to both pools.
 
+-  The number of migration jobs already queued for the destination pool is
+   below ``concurrent.migrations.per.target.datastore``, when that setting is
+   not 0.
 
-To perform stopped Instance's volumes migration
+-  (Hypervisors other than KVM and VMware, such as XenServer) The Instance has
+   no data disks attached. Detach them before migrating.
+
+-  (KVM) None of the volumes have volume snapshots that exist only on primary
+   storage. Move them to secondary storage with the ``archiveSnapshot`` API or
+   delete them.
+
+.. note::
+   The storage pool list of the UI flags the pools that are not suitable for
+   the volume, for example because of a storage tag mismatch or a lack of
+   capacity. See
+   `Finding Primary Storage for Migration <storage.html#finding-primary-storage-for-migration>`_.
+   Those criteria are not enforced by the API, so a migration started directly
+   with ``migrateVirtualMachine`` or ``migrateVirtualMachineWithVolume`` can
+   still be sent to a pool that does not fit the volume.
+
+How the Volumes Are Copied
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By default, each volume is copied to secondary storage first and then from
+secondary storage to the destination pool. The staging area is an NFS or SMB/CIFS
+secondary storage of the zone, so at least one has to be available.
+
+The copy is made directly between the two primary storage pools, without
+touching secondary storage, when both of the following are true:
+
+-  The source and the destination pool are both of type NFS, local storage or
+   Ceph/RBD.
+
+-  Their scopes are compatible: both pools have the same scope, or one of them
+   is zone-wide, or a host-wide pool is paired with a pool of the cluster it
+   belongs to.
+
+Two cluster-wide pools of *different* clusters are therefore always copied
+through secondary storage.
+
+Migrating the Volumes
+~~~~~~~~~~~~~~~~~~~~~
 
 #. Log in to the CloudStack UI as root administrator.
 
@@ -749,12 +888,33 @@ To perform stopped Instance's volumes migration
 
 #. Choose the Instance that you want to migrate.
 
-#. Click the Migrate Instance button. |Migrateinstance.png|
+#. Click the Migrate Instance to another primary storage button.
+   |Migrateinstance.png|
 
-#. From the list of suitable storage pools, choose the one to which you want to
-   move the Instance root volume.
+#. Choose where the volumes are placed. You can either send all volumes to a
+   single storage pool or pick a destination pool per volume.
 
 #. Click OK.
+
+The UI calls the ``migrateVirtualMachine`` API when all volumes go to the same
+pool and ``migrateVirtualMachineWithVolume`` when a pool is picked per volume.
+Both operations can also be run directly, for example with CloudMonkey:
+
+::
+
+   > migrate virtualmachine virtualmachineid=<instance uuid> storageid=<destination storage pool uuid>
+
+   > migrate virtualmachinewithvolume virtualmachineid=<instance uuid> migrateto[0].volume=<volume uuid> migrateto[0].pool=<destination storage pool uuid>
+
+For ``migrateVirtualMachineWithVolume``, repeat the ``migrateto[i].volume`` and
+``migrateto[i].pool`` pair for each volume, with ``i`` in ``[0..N-1]``, where
+``N`` is the number of volumes to move. All the cluster-wide destination pools
+given in the same call have to belong to the same cluster.
+
+.. note::
+   To move a single volume instead of all the volumes of an Instance, use the
+   volume migration described in
+   `Migrating an Instance Volume to a New Storage Pool <storage.html#migrating-an-instance-volume-to-a-new-storage-pool>`_.
 
 Assigning Instances to Hosts
 ----------------------------
