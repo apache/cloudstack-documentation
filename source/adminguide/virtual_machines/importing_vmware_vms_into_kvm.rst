@@ -190,12 +190,17 @@ installing:
         dnf install -y ./virt-v2v-${VER}.x86_64.rpm
         rpm -q virt-v2v
 
-``rpm -K`` must report ``digests signatures OK``. Restart the CloudStack agent afterwards, so the
-host details show the new virt-v2v version:
+``rpm -K`` must report ``digests signatures OK``, and ``rpm -q virt-v2v`` must show the
+``.v2k`` release that was installed. Restart the CloudStack agent afterwards, so that it reads
+the virt-v2v version again:
 
     ::
 
         systemctl restart cloudstack-agent
+
+The host details in CloudStack show only the upstream virt-v2v version (for example ``2.7.1``),
+which is the same for the stock package and for this build. Use ``rpm -q virt-v2v`` on the host
+to see which one is installed.
 
 A later ``dnf update`` replaces this build with a newer stock ``virt-v2v`` from the
 distribution, which may not contain the fixes yet. To prevent that, lock the package, and check
@@ -206,6 +211,8 @@ the repository for a matching new build when your distribution updates virt-v2v:
         dnf install -y python3-dnf-plugin-versionlock
         dnf versionlock add virt-v2v
 
+Installing the versionlock plugin may also update ``dnf-plugins-core`` from the distribution.
+
 To return to the stock package:
 
     ::
@@ -213,6 +220,9 @@ To return to the stock package:
         dnf versionlock delete virt-v2v
         dnf downgrade -y virt-v2v
         systemctl restart cloudstack-agent
+
+The imported signing key stays in the RPM database. If it is no longer needed, remove it with
+``rpm -e gpg-pubkey-39caecd0``.
 
 On some distros, the Windows helper binary "rhsrvany.exe", which is used for Windows-based VM firstboot scripts and some other actions, might be missing.
 
