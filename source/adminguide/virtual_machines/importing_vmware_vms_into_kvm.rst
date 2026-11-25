@@ -243,10 +243,14 @@ Ubuntu:
       libvirt-clients \
       nbdkit
 
-**Step 2: Download and install VDDK**
+**Step 2: Install a VDDK library**
 
-Download the VDDK Linux tarball from Broadcom's VMware Virtual Disk Development Kit page:
-https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/
+CloudStack does not distribute a VDDK library. Use VMware's VDDK, or a compatible library such as OpenVDDK
+(below).
+
+**VMware VDDK.** Broadcom distributes VDDK and sets its availability and terms. Its SDK portal
+(https://developer.broadcom.com/sdks) notes that some SDKs are made available only through certain offerings and
+programs.
 
 Use the latest available VDDK 8.x Linux tarball for all supported KVM conversion hosts, including EL8, EL9,
 Ubuntu 22.04, and Ubuntu 24.04 hosts. VDDK 8.x covers vSphere 7 and vSphere 8 environments and is the recommended
@@ -275,6 +279,22 @@ Expected layout after extraction::
       lib64/
       include/
       bin64/
+
+**OpenVDDK.** OpenVDDK is an independent implementation of the VDDK 8.0.3 library interface for Linux, licensed
+Apache-2.0 (https://github.com/openvddk/openvddk). It reads disks over NBD and NBDSSL. It is not provided, tested or
+supported by the Apache CloudStack project; test it in your environment before production use.
+
+::
+
+    VER=0.7.5-d7262efa169c
+    URL=https://github.com/openvddk/openvddk/releases/download/v0.7.5
+    curl -LO ${URL}/openvddk-runtime-${VER}.tar.gz
+    curl -LO ${URL}/SHA256SUMS
+    sha256sum -c SHA256SUMS --ignore-missing
+    mkdir -p /opt/openvddk
+    tar -xf openvddk-runtime-${VER}.tar.gz -C /opt/openvddk --strip-components=1
+
+Then set ``vddk.lib.dir=/opt/openvddk``, and use ``libdir=/opt/openvddk`` in the check of step 3.
 
 **Step 3: Verify host setup**
 
