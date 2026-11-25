@@ -126,9 +126,13 @@ For Debian-based distributions (alien is needed for conversion of .rpm to .deb p
       ``/etc/cloudstack/agent/agent.properties`` and restart the CloudStack agent.
 
    3. **A first boot that does not loop.** On its first boot, the converted guest runs a
-      script from virt-v2v that installs every virtio driver. As of virtio-win 0.1.285,
-      Windows Server 2025 rejects the optional ``smbus`` driver, because that driver is signed
-      with a certificate Windows does not trust. The virt-v2v shipped with EL9
+      script from virt-v2v that installs every virtio driver. The upstream virtio-win ISO, as
+      of version 0.1.285, includes an optional ``smbus`` driver for Windows Server 2022 and 2025
+      and Windows 11, signed with a certificate Windows does not trust, so Windows rejects it
+      (seen on Windows Server 2022 Core and Windows Server 2025). The ``virtio-win`` package
+      that EL9 ships (1.9.61 at the time of writing) has no ``smbus`` driver; the problem
+      appears when the upstream ISO is used, for example placed at
+      ``/usr/share/virtio-win/virtio-win.iso``. The virt-v2v shipped with EL9
       (``virt-v2v-2.7.1-19.el9_7`` at the time of writing) then retries the whole script on
       every boot, so the guest restarts forever. The storage and network drivers are not
       affected. This was fixed in upstream virt-v2v
@@ -137,13 +141,14 @@ For Debian-based distributions (alien is needed for conversion of .rpm to .deb p
       and the first boot carries on. Until EL9 ships these fixes, use one of the two options
       below on the conversion hosts.
 
-   Older Windows releases (Windows Server 2016/2019/2022, Windows 10/11) accept the
-   ``smbus`` driver and are not affected by item 3.
+   Item 3 also applies to Windows Server 2022 and Windows 11 guests. Windows Server 2016 and
+   2019 and Windows 10 are not affected by it: the ISO has no ``smbus`` driver for them.
 
 **Option A: remove the smbus driver from the virtio-win ISO**
 
 virt-v2v reads the drivers from ``/usr/share/virtio-win/virtio-win.iso``, so the ISO itself has
-to be rebuilt without the ``smbus`` files before converting Windows Server 2025 guests:
+to be rebuilt without the ``smbus`` files before converting Windows Server 2022, Windows Server
+2025 or Windows 11 guests:
 
     ::
 
