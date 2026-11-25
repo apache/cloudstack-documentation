@@ -149,7 +149,12 @@ async job results) also include:
   ``vm.stop.vm.not.found``), unaffected by any customization of the message
   text itself.
 - ``errormetadata``: the raw metadata values used to fill in the message
-  template, as a key/value map.
+  template, as a key/value map. Unlike ``errortextkey``, the set of keys
+  present here is **not** stable: it only includes the ``{{placeholder}}``
+  tokens that the *currently configured* message template for that key
+  actually references. If you reword a template and remove a placeholder,
+  that field disappears from ``errormetadata`` on the next response, even
+  though CloudStack still had the information available internally.
 
 These are useful for API clients and integrations that want to react to a
 specific error condition or localize the message themselves, rather than
@@ -178,10 +183,6 @@ resource limit returns:
        }
    }
 
-``errortextkey`` and the keys inside ``errormetadata`` stay the same no
-matter how ``error-messages.json`` is customized; only ``errortext`` changes
-with the template.
-
 Localizing messages in the UI
 ---------------------------------
 
@@ -201,6 +202,11 @@ the current locale, the UI falls back to the server's ``errortext`` as-is.
 This means a developer or operator can add or edit a UI-side translation for
 a specific error message by adding a key equal to its ``errortextkey`` to the
 relevant locale file, with no change needed on the management server.
+
+Because a locale file is independent of ``error-messages.json``, keep the two
+in sync yourself: a placeholder dropped from ``errormetadata`` (see
+"Structured fields in the API response" above) will show up unresolved in
+any UI translation still referencing it.
 
 **Admin variant**: like the server, before falling back to the base key, the
 UI first tries a key suffixed ``.admin`` when the current user is a root
