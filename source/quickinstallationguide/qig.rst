@@ -770,6 +770,10 @@ replace the CentOS 5.x templates of earlier releases. Each hypervisor has its ow
 #. XenServer: "Debian 13 (64-bit) genericcloud (XenServer)"
 #. VMware: "Debian 13 (64-bit) genericcloud (vSphere)"
 
+The templates are registered with the guest OS "Debian GNU/Linux 12 (64-bit)".
+
+If your hypervisor does not support "Debian GNU/Linux 12 (64-bit)", change the guest OS of the template to "Debian GNU/Linux 11 (64-bit)".
+
 The template for your hypervisor is downloaded to secondary storage the first time it is
 used, so the first Instance deployment can take several minutes. Wait until the template
 shows "Download Complete" and "Ready" before deploying an Instance from it.
