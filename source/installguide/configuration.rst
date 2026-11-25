@@ -1871,7 +1871,7 @@ of your network. When the initialization has completed successfully, the
 administrator's Dashboard should be displayed in the CloudStack UI.
 
 #. Verify that the system is ready. In the left navigation bar, select
-   Templates. Click on the CentOS 5.5 (64bit) no Gui (KVM) Template.
+   Templates. Click on the Debian 13 (64-bit) genericcloud (KVM) Template.
    Check to be sure that the status is "Download Complete." Do not
    proceed to the next step until this status is displayed.
 
@@ -1882,7 +1882,7 @@ administrator's Dashboard should be displayed in the CloudStack UI.
    #. Choose the zone you just added.
 
    #. In the Template selection, choose the Template to use in the instance.
-      If this is a fresh installation, likely only the provided CentOS
+      If this is a fresh installation, likely only the provided Debian 13
       Template is available.
 
    #. Select a service offering. Be sure that the hardware you have
