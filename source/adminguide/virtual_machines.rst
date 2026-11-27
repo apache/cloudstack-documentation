@@ -1244,7 +1244,7 @@ The VirtIO storage driver (viostor) must be installed in the guest.
 
       cmk add resourcedetail resourcetype=UserVm resourceid=<instance id> details[0].key=honour.disk.controller details[0].value=true fordisplay=false
 
-#. Start the Instance. Device Manager shows the disks under the Red Hat VirtIO storage controller.
+#. Start the Instance. Device Manager shows the disks under Red Hat VirtIO SCSI controller (Storage controllers).
 
 Every boot from SATA disks, even a single one, marks the VirtIO driver as not needed at boot again. Repeat the
 registry step before moving the disks back to VirtIO after any such boot, for example after the controller settings of
