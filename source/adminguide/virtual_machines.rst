@@ -188,6 +188,10 @@ To create an Instance from a Template:
 
    When set to true, disk controller enforcement is skipped, and the controllers defined by template/instance details are used. If the detail is added at both template and instance level, the instance detail takes precedence.
 
+   Starting with 24.0.0, Instances created or imported with an explicit disk controller use it on every primary
+   storage type, and Instances that existed before the upgrade keep their disk buses. See
+   :ref:`kvm-instance-disk-controllers`.
+
 Install Required Tools and Drivers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1184,6 +1188,84 @@ CloudStack supports setting the guest machine type for KVM instances since 4.22.
 
 .. note::
    For Ubuntu 24 KVM hosts (and other distros containing QEMU 8.x versions) setting the machine type for Windows VMs to 'pc-i440fx-8.0' mitigates the issue which prevents retrieving the instance UUID from within the guest VM via: `wmic path win32_computersystemproduct get uuid`.
+
+.. _kvm-instance-disk-controllers:
+
+Disk Controllers of KVM Instances
+---------------------------------
+
+Starting with 24.0.0, the KVM agent uses the ``rootDiskController`` and ``dataDiskController`` settings of an
+Instance on every primary storage type, but only for Instances that have the setting
+``honour.disk.controller = true``. CloudStack adds that setting, hidden, when it creates or imports a KVM Instance with
+an explicit disk controller (``virtio``, ``scsi``, ``sata`` or ``ide``), for example in a VMware to KVM import.
+
+Instances that existed before the upgrade do not have the setting. They keep the disk buses they had, even when their
+settings name another controller. This protects Windows guests. Windows keeps only the storage driver it last booted
+from ready for boot, so an Instance that has booted from SATA disks stops with INACCESSIBLE_BOOT_DEVICE (stop code
+0x7B) when its disks are moved to VirtIO.
+
+Where the setting comes from:
+
+- A controller inherited from a Template counts only when the Template has ``honour.disk.controller = true``. KVM
+  Templates registered or uploaded from 24.0.0 on have it. A Template created from an Instance's volume or snapshot has
+  it only when that Instance has it.
+
+- Instances created from a backup, a volume or a snapshot follow the Instance they come from.
+
+- Instances without any controller setting do not get it, and use the default disk buses.
+
+Instances with ``skip.force.disk.controller = true`` already use their controllers on file-based primary storage
+(NFS, local, SharedMountPoint). They need no change on that storage.
+
+Root admins can see the hidden setting with:
+
+.. code:: bash
+
+   cmk list resourcedetails resourcetype=UserVm resourceid=<instance id> fordisplay=false
+
+Moving an Existing Windows Instance from SATA to VirtIO Disks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The VirtIO storage driver (viostor) must be installed in the guest.
+
+#. Inside Windows, in PowerShell as Administrator, remove the registry key that marks the VirtIO storage driver as not
+   needed at boot:
+
+   .. code:: powershell
+
+      Remove-Item -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\viostor\StartOverride' -Force
+
+#. Stop the Instance.
+
+#. Set ``rootDiskController`` and ``dataDiskController`` to ``virtio`` if they are not set yet, and add the
+   ``honour.disk.controller`` setting as root admin:
+
+   .. code:: bash
+
+      cmk add resourcedetail resourcetype=UserVm resourceid=<instance id> details[0].key=honour.disk.controller details[0].value=true fordisplay=false
+
+#. Start the Instance. Device Manager shows the disks under Red Hat VirtIO SCSI controller (Storage controllers).
+
+Every boot from SATA disks, even a single one, marks the VirtIO driver as not needed at boot again. Repeat the
+registry step before moving the disks back to VirtIO after any such boot, for example after the controller settings of
+the Instance were removed for a while.
+
+Moving from VirtIO back to SATA is safe on UEFI Instances. Their CD-ROM drives always use the SATA controller, so
+Windows keeps the SATA driver ready for boot.
+
+Upgrading KVM Hosts
+~~~~~~~~~~~~~~~~~~~
+
+Upgrade the KVM agents together with the management servers, or soon after them. Agents from 24.0.0 on report the
+host detail ``host.honour.disk.controller = true``. When an Instance with ``honour.disk.controller`` starts on a host
+whose agent does not report it, CloudStack removes the setting from the Instance for good. The Instance keeps the disk
+buses that agent gives it, for example SATA for a Windows UEFI Instance on NFS. It can be moved to VirtIO later with
+the steps above.
+
+If the management servers and KVM agents are rolled back to an older version and upgraded again later, Instances keep
+``honour.disk.controller`` while the older version starts them on its own disk buses. Before the new upgrade, remove
+the setting from Windows Instances that started in between (``cmk remove resourcedetail resourcetype=UserVm
+resourceid=<instance id> key=honour.disk.controller``), or repeat the registry step in those Instances.
 
 Instance Settings for Virtual Trusted Platform Module (vTPM)
 -----------------------------
