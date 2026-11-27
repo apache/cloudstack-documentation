@@ -200,6 +200,13 @@ There are three validation steps that can be configured currently:
      - Takes a screenshot of the VM's window after a configurable time. The screenshot can then be downloaded via `downloadValidationScreenshot` API.
      - No
 
+.. note::
+   The `execute_command` step uses the QEMU Guest Agent command `guest-exec`. Many hardened
+   images, and some cloud operators, disable `guest-exec`, because it lets anyone with access
+   to the KVM host run any program inside the VM as root or SYSTEM. If `guest-exec` is
+   disabled in the guest, this step cannot run; the `wait_for_boot` and `screenshot` steps
+   still work.
+
 More validation steps may be added in the future. 
 
 The configurations related to backup validation are detailed below:
